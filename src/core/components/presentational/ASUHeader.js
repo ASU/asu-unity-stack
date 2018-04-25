@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 import ASUSearchBox from "../ASUSearchBox";
 import ASUNav from "../ASUNav";
 
@@ -56,22 +54,5 @@ class ASUHeader extends Component {
 
     }
 }
-
-ASUHeader.propTypes = {
-    headerObj: PropTypes.object.isRequired
-};
-
-ASUHeader.defaultProps = {
-    headerObj: {
-        site_menu: {
-            json: [
-
-            ]
-        },
-        site_title: {
-
-        }
-    }
-};
 
 export default ASUHeader;

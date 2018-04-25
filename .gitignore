@@ -1,4 +1,4 @@
 .DS_Store
 .idea
-polymer_src
+*.log
 node_modules

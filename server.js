@@ -2,10 +2,8 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import ReactDOMServer from 'react-dom/server';
-import {ASUHeaderContainer, ASUFooter} from './src/core/core.js';
-
+import {ASUHeaderContainer, ASUFooter} from './dist/core/js/core.js';
 
 function renderASUComponent(req, res, component) {
 
@@ -43,10 +41,10 @@ app.get('/footer', function (req, res) {
     renderASUComponent(req, res, {type: ASUFooter, domId: 'asu-footer-container', props: {}, template: './src/core/templates/footer.html'});
 });
 
-app.get('/js/:name', function (req, res, next) {
+app.get('/:name/:type/:file', function (req, res, next) {
 
     var options = {
-        root: __dirname + '/dist/js/',
+        root: __dirname + '/dist/' + req.params.name + '/' + req.params.type + '/',
         dotfiles: 'deny',
         headers: {
             'x-timestamp': Date.now(),
@@ -54,7 +52,7 @@ app.get('/js/:name', function (req, res, next) {
         }
     };
 
-    var fileName = req.params.name;
+    var fileName = req.params.file;
     res.sendFile(fileName, options, function (err) {
         if (err) {
             next(err);
