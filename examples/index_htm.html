@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            #main-content {
+                height: 1200px;
+            }
+        </style>
+        <title>ASU React Unity Components</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <!-- Import the bundled component JS -->
+        <script type="text/javascript" src="dist/js/core.js"></script>
+
+    </head>
+    <body>
+    <!--<script type="module" src="dist/header.html"></script>-->
+
+        <div id="create-asu-header">
+        </div>
+
+        <script>
+            var ASUHeader = {};
+
+            ASUHeader.site_menu = {
+                json: [
+                    {
+                        title:"Home",
+                        path:"http://www.asu.edu/absolute_path"
+                    },
+                    {
+                        title:"Degree Programs",
+                        path:"/absolute_path/page",
+                        children: [
+                            {
+                                title:"Admissions",
+                                path:"/?url=variable",
+                                children: [
+                                    {
+                                        title:"Student Life",
+                                        path:"/#hash"
+                                    }
+                                ]
+                            },
+                            {
+                                title:"Ross",
+                                path:"https://www.asu.edu/"
+                            }
+                        ]
+                    },
+                ]
+            };
+
+            ASUHeader.site_title = {title: "Name of Site", parent_org: "Name of Parent Organization", site_url: "URL of for title link", parent_org_url: "URL of for parent org title link"};
+
+            ASUnity.core.initASUHeader(ASUHeader, document.getElementById("create-asu-header"));
+        </script>
+
+        <div id="main-content">
+        </div>
+
+    </body>
+    <footer>
+        <div id="asu-footer"></div>
+        <script>
+            ReactDOM.render(React.createElement(ASUnity.core.ASUFooter), document.getElementById("asu-footer"));
+        </script>
+    </footer>
+</html>
+

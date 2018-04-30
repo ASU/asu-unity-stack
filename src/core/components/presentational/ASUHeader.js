@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ASUSearchBox from "../ASUSearchBox";
 import ASUNav from "../ASUNav";
+import styles from '../../styles/css/ASUHeader.css';
 
 class ASUHeader extends Component {
     constructor() {
@@ -14,7 +15,7 @@ class ASUHeader extends Component {
             <div>
                 <div id="main-search" className="main-search closed" />
                 <div className="accessibility-hide"><a href="https://www.asu.edu/accessibility/" className="sr-only">Report an accessibility problem</a></div>
-                <div id="asu_hdr" className="asu_hdr_white">
+                <div id="asu_hdr" className={styles.asu_hdr_white}>
                     <div id="asu_mobile_hdr">
                         <div id="asu_logo">
                             <a href="//www.asu.edu/" target="_top">

@@ -1,7 +1,6 @@
-import fs from 'fs';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {ASUHeaderContainer, ASUFooter} from './core.js';
+import {ASUHeaderContainer, ASUFooter} from './core/core.js';
 import template from './templates/template';
 
 const ASUHeaderObj = {};
