@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ASUSearchBox from "../ASUSearchBox";
-import ASUNav from "../ASUNav";
-import styles from '../../styles/css/ASUHeader.css';
+import ASUSearchBox from "./ASUSearchBox";
+import ASUNav from "./ASUNav";
+import styles from '../styles/ASUHeader.css';
 
 class ASUHeader extends Component {
     constructor() {
@@ -10,7 +10,6 @@ class ASUHeader extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <div id="main-search" className="main-search closed" />

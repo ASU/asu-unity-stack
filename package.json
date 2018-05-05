@@ -7,7 +7,7 @@
     "build": "webpack --config webpack/webpack.prod.js",
     "build:dev": "parallel-webpack --config=webpack/webpack.dev.js",
     "start": "npm-run-all --parallel watch:server watch:build",
-    "watch:build": "parallel-webpack --config=webpack/webpack.dev.js --watch",
+    "watch:build": "parallel-webpack --watch --config=webpack/webpack.dev.js",
     "watch:server": "nodemon --verbose server/server.js --exec babel-node"
   },
   "repository": {
@@ -36,6 +36,10 @@
     "mini-css-extract-plugin": "^0.4.0",
     "nodemon": "^1.17.3",
     "parallel-webpack": "^2.3.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-nesting": "^5.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "style-loader": "^0.20.3",

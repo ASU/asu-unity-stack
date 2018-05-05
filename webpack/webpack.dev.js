@@ -25,7 +25,15 @@ module.exports.push(merge(common, {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    'css-loader?module&localIdentName=[name]__[local]___[hash:base64:5]'
+                    { loader: 'css-loader', options: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]___[hash:base64:5]'} },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: path.join(__dirname, './postcss.config.js')
+                            }
+                        }
+                    }
                 ]
             }
         ]
@@ -53,7 +61,15 @@ module.exports.push(merge(common, {
             {
                 test: /\.css$/,
                 use: [
-                    "css-loader/locals?module&localIdentName=[name]__[local]___[hash:base64:5]"
+                    'css-loader/locals?module&localIdentName=[name]__[local]___[hash:base64:5]',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: path.join(__dirname, './postcss.config.js')
+                            }
+                        }
+                    }
                 ]
             }
         ]

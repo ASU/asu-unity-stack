@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ASUHeader from "../presentational/ASUHeader";
+import ASUHeader from "./ASUHeader";
 
 class ASUHeaderContainer extends Component {
 
@@ -17,6 +17,5 @@ class ASUHeaderContainer extends Component {
             </header>
         );
     }
-
 }
 export default ASUHeaderContainer;
