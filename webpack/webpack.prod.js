@@ -1,12 +1,13 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 
 
 module.exports = merge(common, {
     mode: 'production',
     entry: {
-        core: '../src/core/core.js'
+        core: './core/core.js'
     },
     output: {
         path: path.resolve(__dirname, '..', "dist"),
@@ -16,21 +17,9 @@ module.exports = merge(common, {
         umdNamedDefine: true,
         globalObject: "typeof self !== 'undefined' ? self : this"
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
-    },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: "[name]/[name].production.css",
         })
     ],
     module: {
@@ -39,9 +28,13 @@ module.exports = merge(common, {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader"
+                    { loader: 'css-loader', options: { modules: true, importLoaders: 1, localIdentName: '[name]__[local]___[hash:base64:5]'} }
                 ]
             }
         ]
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
     }
 });

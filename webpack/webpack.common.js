@@ -3,8 +3,9 @@
  */
 const path = require("path");
 
-module.exports = {
 
+module.exports = {
+    context: path.join(__dirname, '..', 'src'),
     module: {
         rules: [
             {
@@ -24,4 +25,5 @@ module.exports = {
             }
         ]
     },
+
 };

@@ -13,8 +13,8 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <!-- Import the bundled component JS -->
-    <script type="text/javascript" src="http://localhost:3000/core/js/core.js"></script>
-    <link type="text/css" rel="stylesheet" media="all" href="http://localhost:3000/core/css/core.css"/>
+    <script type="text/javascript" src="http://localhost:3000/core/core.production.js"></script>
+    <link type="text/css" rel="stylesheet" media="all" href="http://localhost:3000/core/core.production.css"/>
 </head>
 <body>
 <?php echo file_get_contents('http://dstack_node_1:3000/header'); ?>
