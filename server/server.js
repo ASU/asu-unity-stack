@@ -1,21 +1,22 @@
 import express from 'express';
 import path from 'path';
+import render from '../dist/ssr/ssr'
 
-const render = require('../dist/SSR');
 const app = express();
 
+// Render an example of an SSR page we header and footer
+app.get('/SSR', render.renderSSRFullPage);
 
-// Serve built files with static files middleware
-app.use('/dist', express.static(path.join(__dirname, 'dist')));
+// Renders ASU Header
+app.get('/header', render.sendASUHeader);
 
-// Serve requests with our renderHeader function
-app.get('/header', render.renderASUHeader);
+// Renders ASU Footer
+app.get('/footer', render.sendASUFooter);
 
-app.get('/footer', render.renderASUFooter);
-
+// Serve bundles
 app.get('/:name/:file', function (req, res, next) {
 
-    var options = {
+    const options = {
         root: __dirname + '/../dist/' + req.params.name + '/',
         dotfiles: 'deny',
         headers: {
@@ -24,7 +25,7 @@ app.get('/:name/:file', function (req, res, next) {
         }
     };
 
-    var fileName = req.params.file;
+    const fileName = req.params.file;
     res.sendFile(fileName, options, function (err) {
         if (err) {
             next(err);
@@ -32,7 +33,6 @@ app.get('/:name/:file', function (req, res, next) {
             console.log('Sent:', fileName);
         }
     });
-
 });
 
 // Start server

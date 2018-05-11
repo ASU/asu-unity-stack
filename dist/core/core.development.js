@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("React"));
 	else if(typeof define === 'function' && define.amd)
-		define("core", ["React"], factory);
+		define(["React"], factory);
 	else if(typeof exports === 'object')
 		exports["core"] = factory(require("React"));
 	else
@@ -76,7 +76,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./core/core.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -205,7 +205,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _ASUNav = __webpack_require__(/*! ./components/ASUNav */ \"./core/components/ASUNav.js\");\n\nvar _ASUNav2 = _interopRequireDefault(_ASUNav);\n\nvar _ASUFooter = __webpack_require__(/*! ./components/ASUFooter */ \"./core/components/ASUFooter.js\");\n\nvar _ASUFooter2 = _interopRequireDefault(_ASUFooter);\n\nvar _ASUHeaderContainer = __webpack_require__(/*! ./components/ASUHeaderContainer */ \"./core/components/ASUHeaderContainer.js\");\n\nvar _ASUHeaderContainer2 = _interopRequireDefault(_ASUHeaderContainer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * Created by ctestama on 3/21/18.\n */\nvar initASUHeader = function initASUHeader(asu_header, element) {\n    element ? ReactDOM.render(React.createElement(_ASUHeaderContainer2.default, { headerObj: asu_header }), element) : false;\n};\n\nmodule.exports = {\n    initASUHeader: initASUHeader,\n    ASUHeaderContainer: _ASUHeaderContainer2.default,\n    ASUNav: _ASUNav2.default,\n    ASUFooter: _ASUFooter2.default\n};\n\n//# sourceURL=webpack://ASUnity.%5Bname%5D/./core/core.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _ASUNav = __webpack_require__(/*! ./components/ASUNav */ \"./core/components/ASUNav.js\");\n\nvar _ASUNav2 = _interopRequireDefault(_ASUNav);\n\nvar _ASUFooter = __webpack_require__(/*! ./components/ASUFooter */ \"./core/components/ASUFooter.js\");\n\nvar _ASUFooter2 = _interopRequireDefault(_ASUFooter);\n\nvar _ASUHeaderContainer = __webpack_require__(/*! ./components/ASUHeaderContainer */ \"./core/components/ASUHeaderContainer.js\");\n\nvar _ASUHeaderContainer2 = _interopRequireDefault(_ASUHeaderContainer);\n\nvar _ASUHeader = __webpack_require__(/*! ./components/ASUHeader */ \"./core/components/ASUHeader.js\");\n\nvar _ASUHeader2 = _interopRequireDefault(_ASUHeader);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initASUHeader = function initASUHeader(asu_header, element) {\n    element ? ReactDOM.render(React.createElement(_ASUHeaderContainer2.default, { headerObj: asu_header }), element) : false;\n}; /**\n    * Created by ctestama on 3/21/18.\n    */\n\n\nmodule.exports = {\n    initASUHeader: initASUHeader,\n    ASUHeaderContainer: _ASUHeaderContainer2.default,\n    ASUHeader: _ASUHeader2.default,\n    ASUNav: _ASUNav2.default,\n    ASUFooter: _ASUFooter2.default\n};\n\n//# sourceURL=webpack://ASUnity.%5Bname%5D/./core/core.js?");
 
 /***/ }),
 
@@ -217,6 +217,17 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _ASUN
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/postcss-loader/lib??ref--6-2!./ASUHeader.css */ \"../node_modules/css-loader/index.js??ref--6-1!../node_modules/postcss-loader/lib/index.js??ref--6-2!./core/styles/ASUHeader.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ \"../node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack://ASUnity.%5Bname%5D/./core/styles/ASUHeader.css?");
+
+/***/ }),
+
+/***/ 0:
+/*!****************************!*\
+  !*** multi ./core/core.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./core/core.js */\"./core/core.js\");\n\n\n//# sourceURL=webpack://ASUnity.%5Bname%5D/multi_./core/core.js?");
 
 /***/ }),
 

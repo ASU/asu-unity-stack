@@ -1,7 +1,9 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -11,21 +13,20 @@ const postCSSLoader = {
     }
 };
 
-
 module.exports = [];
 
 // Dev client bundle config
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-        core: './core/core.js'
+        core: ['./core/core.js']
     },
     output: {
         path: path.join(__dirname, '..', 'dist'),
         filename: "[name]/[name].development.js",
         libraryTarget: 'umd',
         library: ["ASUnity", "[name]"],
-        umdNamedDefine: true
+        publicPath: ""
     },
     module: {
         rules: [
@@ -46,6 +47,12 @@ module.exports.push(merge(common, {
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./templates/index.html",
+            filename: "./index.html"
+        })
+    ],
     externals: {
         react: 'React',
         'react-dom': 'ReactDOM'
@@ -56,10 +63,10 @@ module.exports.push(merge(common, {
 module.exports.push(merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: './SSR.js',
+    entry: './ssr/SSR.js',
     output: {
         path: path.join(__dirname, '..', 'dist'),
-        filename: 'SSR.js',
+        filename: 'ssr/ssr.js',
         libraryTarget: 'umd'
     },
     target: 'node',
