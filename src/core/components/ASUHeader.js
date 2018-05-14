@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ASUSearchBox from "./ASUSearchBox";
 import ASUNav from "./ASUNav";
 import styles from '../styles/ASUHeader.css';
+import navtree from './ASUNav.json';
 
 class ASUHeader extends Component {
     constructor() {
@@ -26,7 +27,7 @@ class ASUHeader extends Component {
                         <div className="f-search" id="search_new" onClick={this.toggleASU()} />
                     </div>
                     <div className="closed" id="asu_mobile_menu">
-                        <ASUNav/>
+                        <ASUNav nav={navtree}/>
                         <ASUSearchBox/>
                     </div>
                 </div>

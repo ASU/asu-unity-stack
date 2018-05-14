@@ -1,4 +1,4 @@
-import {ASUHeaderContainer, ASUFooter, ASUNav, ASUHeader} from './core/core';
+import {ASUHeaderContainer, ASUFooter, ASUNav, ASUHeader} from '../core/core';
 
 
 const ASUHeaderObj = {};
