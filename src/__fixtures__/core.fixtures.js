@@ -1,6 +1,5 @@
 import {ASUHeaderContainer, ASUFooter, ASUNav, ASUHeader} from '../core/core';
 
-
 const ASUHeaderObj = {};
 
 ASUHeaderObj.site_menu = {
@@ -33,9 +32,6 @@ ASUHeaderObj.site_menu = {
 };
 
 ASUHeaderObj.site_title = {title: "ASU Custom Site Title", parent_org: "ASU Custom Parent Org", site_url: "https://asu.edu", parent_org_url: "https://uto.asu.edu"};
-
-
-
 
 export default [
     {
