@@ -16,16 +16,7 @@ const postCSSLoader = {
 // Dev client bundle config
 module.exports = merge(common, {
     mode: 'development',
-    entry: {
-        core: ['./core/core.js']
-    },
-    output: {
-        path: path.join(__dirname, '..', 'dist'),
-        filename: "[name]/[name].development.js",
-        libraryTarget: 'umd',
-        library: ["ASUnity", "[name]"],
-        publicPath: ""
-    },
+    devtool: 'eval',
     module: {
         rules: [
             {
@@ -47,12 +38,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./templates/index.html",
-            filename: "./index.html"
+            title: 'React Cosmos'
         })
-    ],
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
-    }
+    ]
 });

@@ -19,15 +19,15 @@ const ASUNav = props => {
 };
 
 const renderNav = nav => (
-    nav.map(item => renderItem(item))
+    nav.map((item, index) => renderItem(item, index))
 );
 
-const renderItem = item => {
+const renderItem = (item, index) => {
 
     const children = item.children ? renderNav(item.children) : '';
 
     return (
-        <li key={item.href}>
+        <li key={index}>
             <ASULink {...item}/>
             {children &&
                 <ul>

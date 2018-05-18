@@ -14,7 +14,6 @@ const postCSSLoader = {
 };
 
 module.exports = [];
-
 // Dev client bundle config
 module.exports.push(merge(common, {
     mode: 'development',
@@ -47,12 +46,6 @@ module.exports.push(merge(common, {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: "./templates/index.html",
-            filename: "./index.html"
-        })
-    ],
     externals: {
         react: 'React',
         'react-dom': 'ReactDOM'

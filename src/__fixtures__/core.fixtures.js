@@ -1,4 +1,5 @@
 import {ASUHeaderContainer, ASUFooter, ASUNav, ASUHeader} from '../core/core';
+import navtree from '../core/components/ASUNav.json';
 
 const ASUHeaderObj = {};
 
@@ -38,24 +39,28 @@ export default [
         component: ASUHeaderContainer,
         props: {
             headerObj: ASUHeaderObj
-        }
+        },
+        name: 'normal'
     },
     {
         component: ASUHeader,
         props: {
             headerObj: ASUHeaderObj
-        }
+        },
+        name: 'normal'
     },
     {
         component: ASUNav,
         props: {
-            headerObj: ASUHeaderObj
+            nav: navtree
         },
+        name: 'normal'
     },
     {
         component: ASUFooter,
-        name: 'ASUFooter',
         props: {
-        }
+            test: 'nonempty'
+        },
+        name: 'normal'
     }
 ];
