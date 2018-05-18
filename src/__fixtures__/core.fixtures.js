@@ -1,4 +1,13 @@
-import {ASUHeaderContainer, ASUFooter, ASUNav, ASUHeader} from '../core/core';
+import {
+    ASUFooter,
+    ASUHeader,
+    ASUHeaderContainer,
+    ASULink,
+    ASULogin,
+    ASUNav,
+    ASUSearchBox
+} from '../core/core';
+
 import navtree from '../core/components/ASUNav.json';
 
 const ASUHeaderObj = {};
@@ -36,6 +45,13 @@ ASUHeaderObj.site_title = {title: "ASU Custom Site Title", parent_org: "ASU Cust
 
 export default [
     {
+        component: ASUFooter,
+        props: {
+            test: 'nonempty'
+        },
+        name: 'normal'
+    },
+    {
         component: ASUHeaderContainer,
         props: {
             headerObj: ASUHeaderObj
@@ -50,6 +66,20 @@ export default [
         name: 'normal'
     },
     {
+        component: ASULink,
+        props: {
+
+        },
+        name: 'normal'
+    },
+    {
+        component: ASULogin,
+        props: {
+
+        },
+        name: 'normal'
+    },
+    {
         component: ASUNav,
         props: {
             nav: navtree
@@ -57,9 +87,9 @@ export default [
         name: 'normal'
     },
     {
-        component: ASUFooter,
+        component: ASUSearchBox,
         props: {
-            test: 'nonempty'
+            drupal: true
         },
         name: 'normal'
     }

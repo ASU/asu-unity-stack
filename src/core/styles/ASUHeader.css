@@ -29,75 +29,8 @@
     color:#D23065
 }
 
-/**  CSS Modules -- ASUHeader.css ****/
-.asu_hdr_white {
-    position:relative;
-    background-color:#fff;
-    display:block;
-    overflow:visible!important;
-    margin:0;
-    font-size:.8rem;
-    font-family: var(--asu-fonts);
-    line-height:1em;
-    color:#000;
-    z-index:500;
-    height:58px
-}
-
-.closed {
-    display:none;
-}
-
-
-/** End CSS module **/
-
-
-#asu_hdr *{
-    -webkit-box-sizing:initial!important;
-    -moz-box-sizing:initial!important;
-    box-sizing:initial!important
-}
-
-
-
-
-#asu_hdr img {
-    border:0
-}
-
-#asu_logo {
-    margin:0;
-    float:left;
-    width:200px;
-    padding:12px 0 0;
-}
-
-#asu_logo a img {
-    width: 100%;
-}
-
-
-#asu_mobile_hdr {
-    padding:0 12px
-}
-
 #asu_mobile_button,#asu_print_logo {
     display:none
-}
-
-#asu_nav_wrapper {
-    margin:0;
-    display:block;
-    z-index:100
-}
-
-#asu_nav_menu {
-    position:relative;
-    float:right;
-    display:inline-block;
-    margin:0 auto;
-    text-align:center;
-    z-index:100
 }
 
 #asu_universal_nav ul {
@@ -338,15 +271,6 @@
     display:inherit!important
 }
 
-#main-search .closed,
-#asu_hdr .hidden,
-#asu_hdr .icn,
-#asu_hdr .icn2,
-#asu_universal_nav_new,
-.main-search {
-    display:none!important
-}
-
 #blackOut {
     display:none;
     background-color:rgba(0,0,0,.7);
@@ -404,36 +328,7 @@
   margin: 0 auto;
 }
 
-#asu_hdr_parent_title .asu-parent-org {
-    border-right: 2px solid #666;
-    padding-right: 7px;
-    margin-right: 7px;
-}
 
-#asu_hdr_parent_title .asu-site-title {
-    color: #666666;
-}
-
-.header__sitename {
-    color: #2a2a2a;
-    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 1.5em;
-    line-height: 1;
-    letter-spacing: -0.5px;
-    padding: 0 0 2px 10px;
-    margin-top: 5px;
-    overflow: hidden;
-    display: block;
-}
-.header__sitename a {
-    color: #2a2a2a;
-    text-decoration: none;
-    border-bottom: none;
-    transition: none;
-}
-.header__sitename span {
-    font-weight: bold;
-}
 
 #asu_search_module input::-webkit-input-placeholder {
    color: #555;
@@ -454,21 +349,4 @@
     position: absolute;
     left: -999999px;
 }
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-}
-.sr-only:focus {
-  position: static;
-  clip: auto;
-  overflow: visible;
-  width: auto;
-  height: auto;
-  margin: 0;
-}
+

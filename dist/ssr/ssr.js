@@ -384,7 +384,7 @@ exports.default = ASUHeader;
 
 /***/ "./core/components/ASUHeaderContainer.js":
 /*!***********************************************!*\
-  !*** ./core/components/ASUHeaderContainer.js ***!
+  !*** ./core/components/ASUBrandHeader.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -750,7 +750,7 @@ var _ASUFooter = __webpack_require__(/*! ./components/ASUFooter */ "./core/compo
 
 var _ASUFooter2 = _interopRequireDefault(_ASUFooter);
 
-var _ASUHeaderContainer = __webpack_require__(/*! ./components/ASUHeaderContainer */ "./core/components/ASUHeaderContainer.js");
+var _ASUHeaderContainer = __webpack_require__(/*! ./components/ASUBrandHeader */ "./core/components/ASUBrandHeader.js");
 
 var _ASUHeaderContainer2 = _interopRequireDefault(_ASUHeaderContainer);
 
@@ -941,7 +941,7 @@ var FullPageSSR = function FullPageSSR(_ref2) {
     var header = _ref2.header,
         footer = _ref2.footer,
         title = _ref2.title;
-    return "\n  <!DOCTYLE html>\n  <html>\n    <head>\n      <title>" + title + "</title>\n      <style>\n        #main-content {\n            height: 1200px;\n        }\n        </style>\n    </head>\n    <body>\n      <div>" + header + "</div>\n      <div id=\"main-content\"> </div>\n    </body>\n    <script crossorigin src=\"https://unpkg.com/react@16/umd/react.development.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@16/umd/react-dom.development.js\"></script>\n    <script src=\"/core/core.development.js\"></script>\n    <script>\n        var ASUHeader = {};\n    \n        ASUHeader.site_menu = {\n            json: [\n                {\n                    title:\"Home\",\n                    path:\"http://www.asu.edu/absolute_path\"\n                },\n                {\n                    title:\"Degree Programs\",\n                    path:\"/absolute_path/page\",\n                    children: [\n                        {\n                            title:\"Admissions\",\n                            path:\"/?url=variable\",\n                            children: [\n                                {\n                                    title:\"Student Life\",\n                                    path:\"/#hash\"\n                                }\n                            ]\n                        },\n                        {\n                            title:\"Ross\",\n                            path:\"https://www.asu.edu/\"\n                        }\n                    ]\n                },\n            ]\n        };\n        \n        console.log(ASUnity, 'ASUNITY');\n    \n        ASUHeader.site_title = {title: \"ASU Custom Site Title\", parent_org: \"ASU Custom Parent Org\", site_url: \"https://asu.edu\", parent_org_url: \"https://uto.asu.edu\"};\n        \n        ReactDOM.hydrate(React.createElement(ASUnity.core.ASUHeaderContainer, {headerObj: ASUHeader}), document.getElementById(\"asu-header-container\"));\n    </script>\n    \n    <footer>\n        " + footer + "\n    </footer>\n  </html>\n";
+    return "\n  <!DOCTYLE html>\n  <html>\n    <head>\n      <title>" + title + "</title>\n      <style>\n        #main-content {\n            height: 1200px;\n        }\n        </style>\n    </head>\n    <body>\n      <div>" + header + "</div>\n      <div id=\"main-content\"> </div>\n    </body>\n    <script crossorigin src=\"https://unpkg.com/react@16/umd/react.development.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@16/umd/react-dom.development.js\"></script>\n    <script src=\"/core/core.development.js\"></script>\n    <script>\n        var ASUHeader = {};\n    \n        ASUHeader.site_menu = {\n            json: [\n                {\n                    title:\"Home\",\n                    path:\"http://www.asu.edu/absolute_path\"\n                },\n                {\n                    title:\"Degree Programs\",\n                    path:\"/absolute_path/page\",\n                    children: [\n                        {\n                            title:\"Admissions\",\n                            path:\"/?url=variable\",\n                            children: [\n                                {\n                                    title:\"Student Life\",\n                                    path:\"/#hash\"\n                                }\n                            ]\n                        },\n                        {\n                            title:\"Ross\",\n                            path:\"https://www.asu.edu/\"\n                        }\n                    ]\n                },\n            ]\n        };\n        \n        console.log(ASUnity, 'ASUNITY');\n    \n        ASUHeader.site_title = {title: \"ASU Custom Site Title\", parent_org: \"ASU Custom Parent Org\", site_url: \"https://asu.edu\", parent_org_url: \"https://uto.asu.edu\"};\n        \n        ReactDOM.hydrate(React.createElement(ASUnity.core.ASUBrandHeader, {headerObj: ASUHeader}), document.getElementById(\"asu-header-container\"));\n    </script>\n    \n    <footer>\n        " + footer + "\n    </footer>\n  </html>\n";
 };
 
 exports.Item = Item;

@@ -4,8 +4,11 @@
 import { Component, React } from "react";
 import ASUNav from './components/ASUNav'
 import ASUFooter from './components/ASUFooter'
-import ASUHeaderContainer from "./components/ASUHeaderContainer";
-import ASUHeader from "./components/ASUHeader";
+import ASUHeaderContainer from './components/ASUBrandHeader';
+import ASUHeader from './components/ASUHeader';
+import ASULink from './components/ASULink';
+import ASUSearchBox from './components/ASUSearchBox';
+import ASULogin from './components/ASULogin';
 
 const initASUHeader = (asu_header, element) => {
     element ? ReactDOM.render(<ASUHeaderContainer headerObj={asu_header} />, element) : false;
@@ -13,8 +16,11 @@ const initASUHeader = (asu_header, element) => {
 
 module.exports = {
     initASUHeader,
-    ASUHeaderContainer,
+    ASUFooter,
     ASUHeader,
+    ASUHeaderContainer,
+    ASULink,
+    ASULogin,
     ASUNav,
-    ASUFooter
+    ASUSearchBox
 };

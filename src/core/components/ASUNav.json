@@ -4,7 +4,7 @@
     "text":"ASU Home",
     "href":"https://www.asu.edu/",
     "classes": "parent",
-    "children": [
+    "subtree": [
       {
         "classes": "first",
         "href": "https://www.asu.edu/?feature=newsevents",
@@ -68,7 +68,7 @@
     "text": "Map and Locations",
     "href": "https://www.asu.edu/map/",
     "target": "_top",
-    "children": [
+    "subtree": [
       {
         "classes": "first",
         "href": "https://artsandsciences.asu.edu/",
@@ -175,7 +175,7 @@
     "text": "Map and Locations",
     "href": "https://www.asu.edu/map/",
     "target": "_top",
-    "children": [
+    "subtree": [
       {
         "classes": "border first",
         "href": "https://www.asu.edu/map/",

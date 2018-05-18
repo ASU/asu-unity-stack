@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import ASULogin from './ASULogin';
-import ASULink from './ASULink'
+import ASUNavItem from './ASUNavItem';
+import styles from '../styles/ASU.css';
 
 const ASUNav = props => {
 
     const navMenu = renderNav(props.nav);
 
     return (
-        <div id="asu_nav_wrapper">
-            <ASULogin/>
-            <div id="asu_nav_menu" role="navigation" aria-label="ASU">
+        <div className={styles.asu_nav_wrapper}>
+
+            {props.children}
+            <div className={styles.asu_nav_menu} role="navigation" aria-label="ASU">
                 <div id="asu_universal_nav">
                     {navMenu}
                 </div>
@@ -18,23 +20,20 @@ const ASUNav = props => {
     );
 };
 
-const renderNav = nav => (
-    nav.map((item, index) => renderItem(item, index))
-);
-
-const renderItem = (item, index) => {
-
-    const children = item.children ? renderNav(item.children) : '';
+const renderNav = nav => {
 
     return (
-        <li key={index}>
-            <ASULink {...item}/>
-            {children &&
-                <ul>
-                    {children}
-                </ul>
+        <ul>
+            {
+                nav.map((item, index) => {
+                    return (
+                        <ASUNavItem {...item} key={index}>
+                            { item.subtree ? renderNav(item.subtree): null}
+                        </ASUNavItem>
+                    );
+                })
             }
-        </li>
+        </ul>
     );
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {ASUHeaderContainer, ASUFooter} from '../core/core.js';
+import {ASUBrandHeader, ASUFooter} from '../core/core.js';
 import {Item, FullPageSSR} from '../templates/template';
 
 const componentList = {
     header: {
-        type: ASUHeaderContainer,
+        type: ASUBrandHeader,
         domId: 'asu-header-container',
         props: {
             headerObj: ASUHeaderObj
@@ -17,8 +17,6 @@ const componentList = {
         props: {}
     }
 };
-
-
 
 const ASUHeaderObj = {};
 

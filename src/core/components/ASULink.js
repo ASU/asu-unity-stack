@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 const ASULink = props => {
     return (
-        <a href={props.href} title={props.title} target={props.target} className={props.classes}>
-            {props.text}
+        <a {...props}>
+            {props.children}
         </a>
     );
 };

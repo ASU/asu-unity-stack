@@ -1,656 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<header
-  id="asu-header-container"
+<div
+  id="innovation-footer"
 >
-  <div>
+  <div
+    id="innovation-bar"
+  >
     <div
-      className="main-search closed"
-      id="main-search"
-    />
-    <div
-      className="accessibility-hide"
-    >
-      <a
-        className="sr-only"
-        href="https://www.asu.edu/accessibility/"
-      >
-        Report an accessibility problem
-      </a>
-    </div>
-    <div
-      className="asu_hdr_white"
-      id="asu_hdr"
+      className="innovation-top"
     >
       <div
-        id="asu_mobile_hdr"
-      >
-        <div
-          id="asu_logo"
-        >
-          <a
-            href="//www.asu.edu/"
-            target="_top"
-          >
-            <img
-              alt="A S U"
-              src="//www.asu.edu/asuthemes/4.6/assets/full_logo.png"
-            />
-          </a>
-        </div>
-        <div
-          className="asuhide f-navicon"
-          id="asu_mobile_button"
-          onClick={undefined}
-        >
-          <a
-            href="javascript:ASUHeader.toggleASU();"
-          >
-            Menu
-          </a>
-        </div>
-        <div
-          className="f-search"
-          id="search_new"
-          onClick={undefined}
-        />
-      </div>
-      <div
-        className="closed"
-        id="asu_mobile_menu"
-      >
-        <div
-          id="asu_nav_wrapper"
-        >
-          <div>
-            <span
-              className="hidden"
-            >
-              Sign In / Sign Out
-            </span>
-            <ul
-              id="asu_login_module"
-            >
-              <li
-                className="end"
-                id="asu_hdr_ssi"
-              >
-                <a
-                  href="//weblogin.asu.edu/cgi-bin/login"
-                  target="_top"
-                >
-                  Sign In
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div
-            aria-label="ASU"
-            id="asu_nav_menu"
-            role="navigation"
-          >
-            <div
-              id="asu_universal_nav"
-            >
-              <li>
-                <a
-                  className="parent"
-                  href="https://www.asu.edu/"
-                  target={undefined}
-                  title=""
-                >
-                  ASU Home
-                </a>
-                <ul>
-                  <li>
-                    <a
-                      className="first"
-                      href="https://www.asu.edu/?feature=newsevents"
-                      target="_top"
-                      title="News and Events"
-                    >
-                      News/Events
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=academics"
-                      target="_top"
-                      title="Academics"
-                    >
-                      Academics
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=research"
-                      target="_top"
-                      title="Research"
-                    >
-                      Research
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=athletics"
-                      target="_top"
-                      title="Athletics"
-                    >
-                      Athletics
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=alumni"
-                      target="_top"
-                      title="Alumni"
-                    >
-                      Alumni
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=giving"
-                      target="_top"
-                      title="Giving"
-                    >
-                      Giving
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/?feature=president"
-                      target="_top"
-                      title="President"
-                    >
-                      President
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.asu.edu/about"
-                      target="_top"
-                      title="About ASU"
-                    >
-                      About ASU
-                    </a>
-                    
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a
-                  className={undefined}
-                  href="https://my.asu.edu/"
-                  target="_top"
-                  title=""
-                >
-                  My ASU
-                </a>
-                
-              </li>
-              <li>
-                <a
-                  className="parent"
-                  href="https://www.asu.edu/map/"
-                  target="_top"
-                  title=""
-                >
-                  Map and Locations
-                </a>
-                <ul>
-                  <li>
-                    <a
-                      className="first"
-                      href="https://artsandsciences.asu.edu/"
-                      target="_top"
-                      title="Arts and Sciences website"
-                    >
-                      Arts and Sciences
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://wpcarey.asu.edu/"
-                      target="_top"
-                      title="W. P. Carey School of Business Web and Morrison School of Agribusiness website"
-                    >
-                      Business
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://herbergerinstitute.asu.edu"
-                      target="_top"
-                      title="Herberger Institute for Design and the Arts website"
-                    >
-                      Design and the Arts
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://education.asu.edu/"
-                      target="_top"
-                      title="Mary Lou Fulton Teachers College website"
-                    >
-                      Education
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://engineering.asu.edu/"
-                      target="_top"
-                      title="Engineering website"
-                    >
-                      Engineering
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://sfis.asu.edu/"
-                      target="_top"
-                      title="Future of Innovation in Society website"
-                    >
-                      Future of Innovation in Society
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://graduate.asu.edu"
-                      target="_top"
-                      title="Graduate College website"
-                    >
-                      Graduate
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://chs.asu.edu/"
-                      target="_top"
-                      title="Health Solutions website"
-                    >
-                      Health Solutions
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://honors.asu.edu/"
-                      target="_top"
-                      title="Barrett, The Honors College website"
-                    >
-                      Honors
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://cronkite.asu.edu"
-                      target="_top"
-                      title="Walter Cronkite School of Journalism and Mass Communication website"
-                    >
-                      Journalism
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.law.asu.edu/"
-                      target="_top"
-                      title="Sandra Day O' Connor College of Law website"
-                    >
-                      Law
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://nursingandhealth.asu.edu/"
-                      target="_top"
-                      title="College of Nursing and Health Innovation website"
-                    >
-                      Nursing and Health Innovation
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="//copp.asu.edu"
-                      target="_top"
-                      title="College of Public Programs website"
-                    >
-                      Public Service and Community Solutions
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://schoolofsustainability.asu.edu"
-                      target="_top"
-                      title="School of Sustainability website"
-                    >
-                      Sustainability
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="//uc.asu.edu/"
-                      target="_top"
-                      title="University College website"
-                    >
-                      University College
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://www.thunderbird.edu/"
-                      target="_top"
-                      title="Thunderbird School of Global Management website"
-                    >
-                      Thunderbird School of Global Management
-                    </a>
-                    
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a
-                  className="parent"
-                  href="https://www.asu.edu/map/"
-                  target="_top"
-                  title=""
-                >
-                  Map and Locations
-                </a>
-                <ul>
-                  <li>
-                    <a
-                      className="border first"
-                      href="https://www.asu.edu/map/"
-                      target="_top"
-                      title=""
-                    >
-                      Map
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://campus.asu.edu/tempe/"
-                      target="_top"
-                      title="Tempe campus"
-                    >
-                      Tempe
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://campus.asu.edu/west/"
-                      target="_top"
-                      title="West campus"
-                    >
-                      West
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://campus.asu.edu/polytechnic/"
-                      target="_top"
-                      title="Polytechnic campus"
-                    >
-                      Polytechnic
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://campus.asu.edu/downtown/"
-                      target="_top"
-                      title="Downtown Phoenix campus"
-                    >
-                      Downtown Phoenix
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://asuonline.asu.edu/"
-                      target="_top"
-                      title="Online and Extended campus"
-                    >
-                      Online and Extended
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://havasu.asu.edu/"
-                      target="_top"
-                      title=""
-                    >
-                      Lake Havasu
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className="border"
-                      href="https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona"
-                      target="_top"
-                      title=""
-                    >
-                      Thunderbird
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://skysong.asu.edu/"
-                      target="_top"
-                      title=""
-                    >
-                      Skysong
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://asuresearchpark.com/"
-                      target="_top"
-                      title=""
-                    >
-                      Research Park
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://washingtoncenter.asu.edu/"
-                      target="_top"
-                      title=""
-                    >
-                      Washington D.C.
-                    </a>
-                    
-                  </li>
-                  <li>
-                    <a
-                      className={undefined}
-                      href="https://wpcarey.asu.edu/mba/china-program/english/"
-                      target="_top"
-                      title=""
-                    >
-                      China
-                    </a>
-                    
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a
-                  className={undefined}
-                  href="https://isearch.asu.edu/"
-                  target="_top"
-                  title="Directory, Index and other info"
-                >
-                  Directory
-                </a>
-                
-              </li>
-            </div>
-          </div>
-        </div>
-        <div
-          id="asu_search_module"
-        >
-          <h2
-            className="hidden"
-          >
-            Search
-          </h2>
-          <form
-            action="https://search.asu.edu/search"
-            method="get"
-            name="gs"
-            role="search"
-            target="_top"
-          >
-            <label
-              htmlFor="masu_search_box"
-            >
-              Search
-            </label>
-            <input
-              name="site"
-              type="hidden"
-              value="default_collection"
-            />
-            <input
-              name="sort"
-              type="hidden"
-              value="date:D:L:d1"
-            />
-            <input
-              name="output"
-              type="hidden"
-              value="xml_no_dtd"
-            />
-            <input
-              name="proxystylesheet"
-              type="hidden"
-              value="asu_frontend"
-            />
-            <input
-              name="ie"
-              type="hidden"
-              value="UTF-8"
-            />
-            <input
-              name="oe"
-              type="hidden"
-              value="UTF-8"
-            />
-            <input
-              name="client"
-              type="hidden"
-              value="asu_frontend"
-            />
-            <input
-              className="asu_search_button"
-              type="submit"
-              value="Search"
-            />
-            <input
-              autoComplete="off"
-              className="asu_search_box"
-              id="masu_search_box"
-              name="q"
-              placeholder="Search"
-              type="text"
-            />
-          </form>
-        </div>
-      </div>
-    </div>
-    <div
-      className="header__sitename"
-      id="asu_hdr_title_gen"
-    >
-      <div
-        id="asu_hdr_parent_title"
+        className="innovation-status"
       >
         <a
-          href="https://uto.asu.edu"
+          href="https://www.asu.edu/rankings"
         >
-          <span
-            className="asu-parent-org"
-          >
-            ASU Custom Parent Org
+          <span>
+            ASU is #1 in the U.S. for Innovation
           </span>
         </a>
+      </div>
+      <div
+        className="innovation-hidden"
+      >
         <a
-          href="https://asu.edu"
-          rel="home"
-          title="Home"
+          href="https://www.asu.edu/rankings"
         >
-          <span
-            className="asu-site-title"
-          >
-            ASU Custom Site Title
-          </span>
+          <img
+            alt="Best Colleges U.S. News Most Innovative 2018"
+            src="//www-dev.asu.edu/asuthemes/4.6/assets/best-college-2018.png"
+          />
         </a>
       </div>
     </div>
   </div>
-</header>
+  <div
+    className="footer-menu"
+  >
+    <ul
+      className="default"
+    >
+      <li>
+        <a
+          href="https://www.asu.edu/copyright/"
+        >
+          Copyright and Trademark
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.asu.edu/accessibility/"
+        >
+          Accessibility
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.asu.edu/privacy/"
+        >
+          Privacy
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.asu.edu/tou/"
+        >
+          Terms of Use
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.asu.edu/asujobs"
+        >
+          Jobs
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.asu.edu/emergency/"
+        >
+          Emergency
+        </a>
+      </li>
+      <li
+        className="no-border"
+      >
+        <a
+          href="https://www.asu.edu/contactasu/"
+        >
+          Contact ASU
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 `;
