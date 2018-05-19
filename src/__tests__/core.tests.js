@@ -1,5 +1,3 @@
-
-// React needs to be in scope for JSX to work
 import React from 'react';
 import { create as renderer } from 'react-test-renderer';
 import createContext from 'react-cosmos-test/generic';

@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import ASULink from './ASULink'
+import ASULink from './ASULink';
+import styles from '../styles/ASU.css';
 
 const ASUNavItem = props => {
 
+    const classes = styles.asuNavItem + (props.classes ? ' ' +  props.classes : '');
+
     return (
-        <li {...(props.classes ? {className: props.classes} : {})}>
+        <li className={classes}>
             <ASULink href={props.href} target={props.target}>{props.text}</ASULink>
             {props.children}
         </li>

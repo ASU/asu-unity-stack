@@ -9,12 +9,9 @@ const ASUNav = props => {
 
     return (
         <div className={styles.asu_nav_wrapper}>
-
             {props.children}
-            <div className={styles.asu_nav_menu} role="navigation" aria-label="ASU">
-                <div id="asu_universal_nav">
-                    {navMenu}
-                </div>
+            <div className={styles.asuNav} role="navigation" aria-label="ASU">
+                {navMenu}
             </div>
         </div>
     );
@@ -23,7 +20,7 @@ const ASUNav = props => {
 const renderNav = nav => {
 
     return (
-        <ul>
+        <ul className={styles.navList}>
             {
                 nav.map((item, index) => {
                     return (
