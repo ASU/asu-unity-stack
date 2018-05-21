@@ -5,7 +5,7 @@ import styles from "../styles/ASU.css"
 const ASULogo = props => {
 
     return (
-        <div className={styles.asu_logo}>
+        <div className={styles.asuLogo}>
             <a href={props.href} target={props.target}>
                 <ASUImage alt={props.alt} src={props.src} />
             </a>

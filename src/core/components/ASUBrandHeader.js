@@ -8,12 +8,6 @@ import ASULogin from "./ASULogin";
 import styles from '../styles/ASU.css';
 import navtree from './ASUNav.json';
 
-const logoprops = {
-    src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png",
-    href: "https://www.asu.edu/",
-    alt: "ASU"
-};
-
 class ASUBrandHeader extends Component {
 
     constructor() {
@@ -23,15 +17,17 @@ class ASUBrandHeader extends Component {
 
     render() {
 
+        const header = this.props.headerObj;
+
         return (
-            <ASUHeader logo={logoprops} className={styles.asu_hdr_white}>
-                <ASUButton className="asu_mobile_button" onClick={this.toggleASU}/>
-                <ASULogin/>
-                <ASUNav nav={navtree}/>
-                <ASUSearchBox/>
+            <ASUHeader logo={header.logo} className={styles.asuHeader}>
+                <ASUNav nav={navtree}>
+                    <ASULogin {...header.login}/>
+                    <ASUSearchBox/>
+                </ASUNav>
                 {
-                    this.state.renderClient && this.props.headerObj.site_title &&
-                    <ASUSiteName siteTitle={this.props.headerObj.site_title}/>
+                    this.state.renderClient && header.siteTitle &&
+                    <ASUSiteName siteTitle={header.siteTitle}/>
                 }
             </ASUHeader>
         );

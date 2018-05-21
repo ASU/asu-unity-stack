@@ -11,9 +11,9 @@ class ASUHeader extends Component {
 
     render() {
         return (
-            <header>
-                <div className={styles.asu_hdr}>
-                    <ASULink href="https://www.asu.edu/accessibility/" className={styles.sr_only}>Report an accessibility problem</ASULink>
+            <header {...(this.props.className ? {className: this.props.className} : {})}>
+                <ASULink href="https://www.asu.edu/accessibility/" className={styles.srOnly}>Report an accessibility problem</ASULink>
+                <div className={styles.asuHeaderGrid}>
                     {this.props.logo ? <ASULogo {...this.props.logo} /> : ''}
                     {this.props.children}
                 </div>
