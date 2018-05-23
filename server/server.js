@@ -5,7 +5,11 @@ import render from '../dist/ssr/ssr'
 const app = express();
 
 // Render an example of an SSR page we header and footer
-app.get('/SSR', render.renderSSRFullPage);
+app.get('/ssr', render.renderSSRFullPage);
+
+app.get('/ssrprod', function (req, res) {
+    render.renderSSRFullPage(req, res, true);
+});
 
 // Renders ASU Header
 app.get('/header', render.sendASUHeader);

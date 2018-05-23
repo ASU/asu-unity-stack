@@ -23,10 +23,6 @@ class ASUHeader extends Component {
 
     componentDidMount() {
     }
-
-    toggleASU() {
-
-    }
 }
 
 export default ASUHeader;

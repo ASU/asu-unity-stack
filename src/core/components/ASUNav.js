@@ -11,13 +11,15 @@ const ASUNav = props => {
 
     // extract the login if passed as a child. The login link will
     // be rendered inline with the navmenu per the brand standards
-    for (let i = 0; i < props.children.length; i++) {
-        const child = props.children[i];
+    if (props.children) {
+        for (let i = 0; i < props.children.length; i++) {
+            const child = props.children[i];
 
-        if (child.type === ASULogin) {
-            login = child;
-        } else {
-            children.push(child);
+            if (child.type === ASULogin) {
+                login = child;
+            } else {
+                children.push(child);
+            }
         }
     }
 

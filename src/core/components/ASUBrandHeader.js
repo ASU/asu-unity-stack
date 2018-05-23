@@ -6,7 +6,7 @@ import ASUNav from "./ASUNav";
 import ASUSiteName from "./ASUSiteName";
 import ASULogin from "./ASULogin";
 import styles from '../styles/ASU.css';
-import navtree from './ASUNav.json';
+import navtree from './ASUNavDefaultTree';
 
 class ASUBrandHeader extends Component {
 
@@ -35,10 +35,6 @@ class ASUBrandHeader extends Component {
 
     componentDidMount() {
         this.setState({ renderClient: true });
-    }
-
-    toggleASU() {
-
     }
 }
 export default ASUBrandHeader;

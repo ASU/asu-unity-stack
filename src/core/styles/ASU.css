@@ -199,7 +199,6 @@ Header
 
 .asuHeaderGrid {
     display: grid;
-    min-height: 100%;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
 }

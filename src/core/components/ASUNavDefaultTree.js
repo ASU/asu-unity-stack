@@ -1,4 +1,4 @@
-[
+const ASUnavDefaultTree = [
   {
     "title":"",
     "text":"ASU Home",
@@ -258,4 +258,6 @@
     "href": "https://isearch.asu.edu/",
     "target": "_top"
   }
-]
+];
+
+export default ASUnavDefaultTree;

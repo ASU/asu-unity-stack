@@ -4,7 +4,7 @@
 import { Component, React } from "react";
 import ASUNav from './components/ASUNav'
 import ASUFooter from './components/ASUFooter'
-import ASUHeaderContainer from './components/ASUBrandHeader';
+import ASUBrandHeader from './components/ASUBrandHeader';
 import ASUHeader from './components/ASUHeader';
 import ASULink from './components/ASULink';
 import ASUSearchBox from './components/ASUSearchBox';
@@ -18,7 +18,7 @@ module.exports = {
     initASUHeader,
     ASUFooter,
     ASUHeader,
-    ASUHeaderContainer,
+    ASUBrandHeader,
     ASULink,
     ASULogin,
     ASUNav,

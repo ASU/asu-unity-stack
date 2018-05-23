@@ -1,14 +1,14 @@
 import {
     ASUFooter,
     ASUHeader,
-    ASUHeaderContainer,
+    ASUBrandHeader,
     ASULink,
     ASULogin,
     ASUNav,
     ASUSearchBox
 } from '../core/core';
 
-import navtree from '../core/components/ASUNav.json';
+import navtree from '../core/components/ASUNavDefaultTree';
 
 const ASUHeaderObj = {};
 
@@ -62,7 +62,7 @@ export default [
         name: 'normal'
     },
     {
-        component: ASUHeaderContainer,
+        component: ASUBrandHeader,
         props: {
             headerObj: ASUHeaderObj
         },

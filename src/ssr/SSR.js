@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import {ASUBrandHeader, ASUFooter} from '../core/core.js';
-import {Item, FullPageSSR} from '../templates/template';
+import {Item, FullPageSSR, FullPageSSRProd} from '../templates/template';
+import ASUBrandHeaderExampleConfig from '../../examples/ASUBrandHeaderExampleConfig';
 
 const componentList = {
     header: {
         type: ASUBrandHeader,
         domId: 'asu-header-container',
         props: {
-            headerObj: ASUHeaderObj
+            headerObj: ASUBrandHeaderExampleConfig
         }
     },
     footer: {
@@ -17,8 +18,6 @@ const componentList = {
         props: {}
     }
 };
-
-const ASUHeaderObj = {};
 
 const renderASUComponent =  (req, res, component) => {
 
@@ -33,16 +32,28 @@ const renderASUComponent =  (req, res, component) => {
     });
 }
 
-const renderSSRFullPage = (req, res) => {
+const renderSSRFullPage = (req, res, prod) => {
     const header = renderASUComponent(req, res, componentList.header);
     const footer = renderASUComponent(req, res, componentList.footer);
+    const config = JSON.stringify(ASUBrandHeaderExampleConfig);
+    prod = prod ? true: false;
 
-    res.send(FullPageSSR({
-        header: header,
-        footer: footer,
-        title: 'Test Page'
-    }));
-}
+    if (prod) {
+        res.send(FullPageSSRProd({
+            header: header,
+            footer: footer,
+            title: 'Test Page',
+            props: config
+        }));
+    } else {
+        res.send(FullPageSSR({
+            header: header,
+            footer: footer,
+            title: 'Test Page',
+            props: config
+        }));
+    }
+};
 
 const sendASUHeader = (req, res) => {
     const html = renderASUComponent(req, res, componentList.header);
