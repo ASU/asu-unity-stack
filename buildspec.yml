@@ -10,9 +10,9 @@ phases:
       - npm run test
   post_build:
     commands:
-      - cd $CODEBUILD_SRC_DIR/dist; zip -r ../package.zip *
+      - cd $CODEBUILD_SRC_DIR; tar -zcvf asu-unity.tar.gz dist
 artifacts:
   files:
     - dist/*
-    - package.zip
+    - asu-unity.tar.gz
   discard-paths: yes
