@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - cd $CODEBUILD_SRC_DIR; npm install
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR; npm run build
+      - npm run test
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR/dist; zip -r ../package.zip *
+artifacts:
+  files:
+    - dist/*
+    - package.zip
+  discard-paths: yes
