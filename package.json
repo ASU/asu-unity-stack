@@ -50,6 +50,7 @@
     "postcss-nesting": "^5.0.0",
     "react": "^16.3.0",
     "react-cosmos": "^4.1.2",
+    "react-cosmos-test": "^4.4.0",
     "react-dom": "^16.3.0",
     "react-test-renderer": "^16.3.2",
     "style-loader": "^0.20.3",
@@ -71,7 +72,10 @@
     "roots": [
       "src"
     ],
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
