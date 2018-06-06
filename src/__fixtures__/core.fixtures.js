@@ -39,7 +39,12 @@ ASUHeaderObj.siteMenu = [
     },
 ];
 
-ASUHeaderObj.siteTitle = {title: "ASU Custom Site Title", parent_org: "ASU Custom Parent Org", site_url: "https://asu.edu", parent_org_url: "https://uto.asu.edu"};
+ASUHeaderObj.siteTitle = {
+    title: "ASU Custom Site Title",
+    parent_org: "ASU Custom Parent Org",
+    site_url: "https://asu.edu",
+    parent_org_url: "https://uto.asu.edu"
+};
 
 ASUHeaderObj.logo = {
     src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png",
@@ -71,7 +76,7 @@ export default [
     {
         component: ASUHeader,
         props: {
-            headerObj: ASUHeaderObj
+            logo: ASUHeaderObj.logo
         },
         name: 'normal'
     },

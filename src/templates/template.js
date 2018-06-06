@@ -51,7 +51,7 @@ const FullPageSSRProd =  ({ header, footer, title, props}) => (`
       <div>${header}</div>
       <div id="main-content"> </div>
     </body>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="/node_modules/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="/core/core.production.js"></script>
     <link rel="stylesheet" type="text/css" href="/core/core.production.css">

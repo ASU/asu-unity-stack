@@ -16,7 +16,6 @@ class ASUBrandHeader extends Component {
     }
 
     render() {
-
         const header = this.props.headerObj;
 
         return (
