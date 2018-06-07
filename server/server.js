@@ -5,7 +5,9 @@ import render from '../dist/ssr/ssr'
 const app = express();
 
 // Render an example of an SSR page we header and footer
-app.get('/ssr', render.renderSSRFullPage);
+app.get('/ssr', function (req, res) {
+    render.renderSSRFullPage(req, res, false);
+});
 
 app.get('/ssrprod', function (req, res) {
     render.renderSSRFullPage(req, res, true);
