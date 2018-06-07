@@ -4,7 +4,7 @@ import render from '../dist/ssr/ssr'
 
 const app = express();
 
-// Render an example of an SSR page we header and footer
+// Render an example of an SSR page with header and footer
 app.get('/ssr', function (req, res) {
     render.renderSSRFullPage(req, res, false);
 });
