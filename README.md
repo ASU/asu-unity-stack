@@ -34,5 +34,4 @@ See the developer documentation on react-cosmos at https://github.com/react-cosm
  - src - The source code for the asu-unity-stack react components
  - webpack - Webpack configuration
  - server - Express.js server configuration
- - cosmos-export - Static export of cosmos playground. Don't use this for local dev.
 

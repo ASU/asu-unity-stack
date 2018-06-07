@@ -2,9 +2,11 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const devWebpack = require('./webpack.development.js');
 
+module.exports = devWebpack;
 
-module.exports = merge(common, {
+module.exports.push(merge(common, {
     mode: 'production',
     entry: {
         core: './core/core.js'
@@ -37,4 +39,4 @@ module.exports = merge(common, {
         react: 'React',
         'react-dom': 'ReactDOM'
     }
-});
+}));
