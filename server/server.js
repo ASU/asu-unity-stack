@@ -39,5 +39,31 @@ app.get('/:name/:file', function (req, res, next) {
     });
 });
 
+// Serve bundles
+app.get('/:file', function (req, res, next) {
+
+    const options = {
+        root: __dirname + '/../cosmos-export/',
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    };
+
+    const fileName = req.params.file;
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(err);
+        } else {
+            console.log('Sent cosmos file:', fileName);
+        }
+    });
+});
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '..', 'cosmos-export', 'index.html'));
+});
+
 // Start server
 app.listen(3000);
