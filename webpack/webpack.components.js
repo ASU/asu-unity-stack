@@ -1,3 +1,8 @@
+/***
+ * Configuration for outputtting a bundle of react components wrapped
+ * as web components.
+ * @type {merge}
+ **/
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
@@ -14,24 +19,24 @@ const postCSSLoader = {
 module.exports = [];
 
 // Dev client bundle config
-module.exports.push(merge(common, {
+module.exports = merge(common, {
     mode: 'development',
     entry: {
-        core: ['./core/core.js']
+        webcomponents: ['./core/webcomponents.js']
     },
     output: {
         path: path.join(__dirname, '..', 'dist'),
         filename: "[name]/[name].development.js",
         libraryTarget: 'umd',
-        library: '',
-        umdNamedDefine: true
+        library: [""],
+        publicPath: ""
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    { loader: "react-web-component-style-loader" },
                     {
                         loader: 'css-loader',
                         options: {
@@ -44,38 +49,10 @@ module.exports.push(merge(common, {
                 ]
             }
         ]
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
     }
-}));
+});
 
-// Dev SSR bundle config
-module.exports.push(merge(common, {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    entry: path.join(__dirname, '..', 'server', 'ssr', 'ssr.js'),
-    output: {
-        path: path.join(__dirname, '..', 'server', 'ssr'),
-        filename: 'ssr.bundled.js',
-        libraryTarget: 'umd'
-    },
-    target: 'node',
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'css-loader/locals',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
-                    },
-                    postCSSLoader
-                ]
-            }
-        ]
-    },
-    externals: [nodeExternals()],
-
-}));

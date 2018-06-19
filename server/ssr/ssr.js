@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {ASUBrandHeader, ASUFooter} from '../core/core.js';
-import {Item, FullPageSSR, FullPageSSRProd} from '../templates/template';
+import {ASUBrandHeader, ASUFooter} from '../../src/core/core.js';
+import {Item, FullPageSSR, FullPageSSRProd, ComponentPage} from '../templates/template';
 import ASUBrandHeaderExampleConfig from '../../examples/ASUBrandHeaderExampleConfig';
 
 const componentList = {
@@ -19,6 +19,13 @@ const componentList = {
     }
 };
 
+/***
+ * Render a single ASU Unity component server side
+ * @param req
+ * @param res
+ * @param component
+ * @returns {*}
+ */
 const renderASUComponent =  (req, res, component) => {
 
     const ASUComponent = component.type;
@@ -31,6 +38,23 @@ const renderASUComponent =  (req, res, component) => {
         body: html
     });
 }
+
+/**
+ * Serves page with web components bundle.
+ * @param req
+ * @param res
+ * @param prod
+ */
+const renderComponentPage = (req, res, prod) => {
+    const config = JSON.stringify(ASUBrandHeaderExampleConfig);
+    prod = prod ? true: false;
+
+
+    res.send(ComponentPage({
+        title: 'Test Page',
+        props: config
+    }));
+};
 
 const renderSSRFullPage = (req, res, prod) => {
     const header = renderASUComponent(req, res, componentList.header);
@@ -69,5 +93,6 @@ module.exports = {
     renderASUComponent,
     sendASUHeader,
     sendASUFooter,
-    renderSSRFullPage
+    renderSSRFullPage,
+    renderComponentPage
 };

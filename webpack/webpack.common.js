@@ -3,7 +3,6 @@
  */
 const path = require("path");
 
-
 module.exports = {
     context: path.join(__dirname, '..', 'src'),
     module: {
@@ -27,6 +26,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx']
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
     }
-
 };

@@ -15,7 +15,7 @@ module.exports.push(merge(common, {
         path: path.resolve(__dirname, '..', "dist"),
         filename: "[name]/[name].production.js",
         libraryTarget: 'umd',
-        library: ["ASUnity", "[name]"],
+        library: '',
         umdNamedDefine: true,
         globalObject: "typeof self !== 'undefined' ? self : this"
     },
@@ -34,9 +34,5 @@ module.exports.push(merge(common, {
                 ]
             }
         ]
-    },
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
     }
 }));

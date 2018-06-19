@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ASUButton from './ASUButton';
+import PropTypes from 'prop-types';
 import ASUHeader from './ASUHeader';
 import ASUSearchBox from "./ASUSearchBox";
 import ASUNav from "./ASUNav";
 import ASUSiteName from "./ASUSiteName";
 import ASULogin from "./ASULogin";
 import styles from '../styles/ASU.css';
-import navtree from './ASUNavDefaultTree';
+import defaultNav from './ASUNavDefaultTree';
 
 class ASUBrandHeader extends Component {
 
@@ -16,24 +16,41 @@ class ASUBrandHeader extends Component {
     }
 
     render() {
-        const header = this.props.headerObj;
 
         return (
-            <ASUHeader logo={header.logo} className={styles.asuHeader}>
-                <ASUNav nav={navtree}>
-                    <ASULogin {...header.login}/>
+            <ASUHeader logo={this.props.logo} className={styles.asuHeader}>
+                <ASUNav nav={this.props.navTree}>
+                    <ASULogin {...this.props.login}/>
                     <ASUSearchBox/>
                 </ASUNav>
                 {
-                    this.state.renderClient && header.siteTitle &&
-                    <ASUSiteName siteTitle={header.siteTitle}/>
+                    this.state.renderClient && this.props.siteTitle &&
+                    <ASUSiteName siteTitle={this.props.siteTitle}/>
                 }
             </ASUHeader>
         );
     }
 
+
     componentDidMount() {
         this.setState({ renderClient: true });
     }
 }
+
+
+ASUBrandHeader.propTypes = {
+    logo: PropTypes.object,
+    login: PropTypes.object,
+    navTree: PropTypes.arrayOf(PropTypes.object),
+    siteTitle: PropTypes.object
+};
+
+// Specifies the default values for props:
+ASUBrandHeader.defaultProps = {
+    logo: ASUHeader.defaultProps.logo,
+    login: ASULogin.defaultProps,
+    navTree: defaultNav
+};
+
+
 export default ASUBrandHeader;

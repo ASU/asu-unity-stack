@@ -32,9 +32,9 @@ const ASUBrandHeaderExampleConfig = {
   },
   "siteTitle": {
     "title": "ASU Custom Site Title",
-    "parent_org": "ASU Custom Parent Org",
-    "site_url": "https://asu.edu",
-    "parent_org_url": "https://uto.asu.edu"
+    "parentOrg": "ASU Custom Parent Org",
+    "siteUrl": "https://asu.edu",
+    "parentOrgUrl": "https://uto.asu.edu"
   },
   "login": {
     "loginUrl": "https://weblogin.asu.edu/cgi-bin/login",

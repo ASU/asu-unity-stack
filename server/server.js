@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import render from '../dist/ssr/ssr'
+import render from './ssr/ssr.bundled.js'
 
 const app = express();
 
@@ -11,6 +11,10 @@ app.get('/ssr', function (req, res) {
 
 app.get('/ssrprod', function (req, res) {
     render.renderSSRFullPage(req, res, true);
+});
+
+app.get('/components', function (req, res) {
+    render.renderComponentPage(req, res, true);
 });
 
 // Renders ASU Header

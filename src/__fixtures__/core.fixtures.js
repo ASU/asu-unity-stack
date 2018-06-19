@@ -46,17 +46,6 @@ ASUHeaderObj.siteTitle = {
     parent_org_url: "https://uto.asu.edu"
 };
 
-ASUHeaderObj.logo = {
-    src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png",
-    href: "https://www.asu.edu/",
-    alt: "ASU"
-};
-
-ASUHeaderObj.login = {
-    loginUrl: 'https://weblogin.asu.edu/cgi-bin/login',
-    logoutUrl: '/cas/logout',
-    loggedIn: false
-};
 
 export default [
     {
@@ -68,9 +57,7 @@ export default [
     },
     {
         component: ASUBrandHeader,
-        props: {
-            headerObj: ASUHeaderObj
-        },
+        props: ASUHeaderObj,
         name: 'normal'
     },
     {

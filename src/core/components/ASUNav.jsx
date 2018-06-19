@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import ASUNavItem from './ASUNavItem';
 import ASULogin from './ASULogin';
+import defaultNav from "./ASUNavDefaultTree";
+import PropTypes from 'prop-types';
 import styles from '../styles/ASU.css';
 
 const ASUNav = props => {
 
-    const navMenu = renderNav(props.nav);
+    const navMenu = renderNav(props.navTree);
     let login = null;
     let children = [];
 
@@ -50,5 +52,15 @@ const renderNav = nav => {
         </ul>
     );
 };
+
+ASUNav.propTypes = {
+    navTree: PropTypes.arrayOf(PropTypes.object)
+};
+
+// Specifies the default values for props:
+ASUNav.defaultProps = {
+    navTree: defaultNav
+};
+
 
 export default ASUNav;
