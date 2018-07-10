@@ -1,9 +1,11 @@
+/***
+ * Configuration for outputtting a bundle of react components wrapped
+ * as web components.
+ * @type {merge}
+ **/
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -13,10 +15,21 @@ const postCSSLoader = {
     }
 };
 
+module.exports = [];
+
 // Dev client bundle config
 module.exports = merge(common, {
     mode: 'development',
-    devtool: 'eval',
+    entry: {
+        webcomponents: ['./core/webcomponents.js']
+    },
+    output: {
+        path: path.join(__dirname, '..', 'dist'),
+        filename: "[name]/[name].development.js",
+        libraryTarget: 'umd',
+        library: "",
+        publicPath: ""
+    },
     module: {
         rules: [
             {
@@ -35,10 +48,6 @@ module.exports = merge(common, {
                 ]
             }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'React Cosmos'
-        })
-    ]
+    }
 });
+
