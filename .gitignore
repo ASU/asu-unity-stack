@@ -2,3 +2,5 @@
 .idea
 *.log
 node_modules
+dist
+cosmos-export

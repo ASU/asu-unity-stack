@@ -1,9 +1,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
-const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -14,6 +12,7 @@ const postCSSLoader = {
 };
 
 module.exports = [];
+
 // Dev client bundle config
 module.exports.push(merge(common, {
     mode: 'development',
@@ -24,8 +23,8 @@ module.exports.push(merge(common, {
         path: path.join(__dirname, '..', 'dist'),
         filename: "[name]/[name].development.js",
         libraryTarget: 'umd',
-        library: ["ASUnity", "[name]"],
-        publicPath: ""
+        library: '',
+        umdNamedDefine: true
     },
     module: {
         rules: [
@@ -45,10 +44,6 @@ module.exports.push(merge(common, {
                 ]
             }
         ]
-    },
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
     }
 }));
 
@@ -56,10 +51,10 @@ module.exports.push(merge(common, {
 module.exports.push(merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: './ssr/SSR.js',
+    entry: path.join(__dirname, '..', 'server', 'ssr', 'ssr.js'),
     output: {
-        path: path.join(__dirname, '..', 'dist'),
-        filename: 'ssr/ssr.js',
+        path: path.join(__dirname, '..', 'server', 'ssr'),
+        filename: 'ssr.bundled.js',
         libraryTarget: 'umd'
     },
     target: 'node',
@@ -68,7 +63,14 @@ module.exports.push(merge(common, {
             {
                 test: /\.css$/,
                 use: [
-                    'css-loader/locals?module&localIdentName=[name]__[local]___[hash:base64:5]',
+                    {
+                        loader: 'css-loader/locals',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                        }
+                    },
                     postCSSLoader
                 ]
             }

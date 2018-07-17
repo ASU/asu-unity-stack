@@ -2,9 +2,11 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const devWebpack = require('./webpack.development.js');
 
+module.exports = devWebpack;
 
-module.exports = merge(common, {
+module.exports.push(merge(common, {
     mode: 'production',
     entry: {
         core: './core/core.js'
@@ -13,7 +15,7 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, '..', "dist"),
         filename: "[name]/[name].production.js",
         libraryTarget: 'umd',
-        library: ["ASUnity", "[name]"],
+        library: '',
         umdNamedDefine: true,
         globalObject: "typeof self !== 'undefined' ? self : this"
     },
@@ -32,9 +34,5 @@ module.exports = merge(common, {
                 ]
             }
         ]
-    },
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
     }
-});
+}));

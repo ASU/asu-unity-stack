@@ -18,7 +18,7 @@ module.exports = merge(common, {
     entry: './ssr/SSR.js',
     output: {
         path: path.join(__dirname, '..', 'dist'),
-        filename: 'ssr/SSR.js',
+        filename: 'dist/ssr.bundled.js',
         libraryTarget: 'umd'
     },
     target: 'node',

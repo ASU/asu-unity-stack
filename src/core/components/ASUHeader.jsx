@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ASULogo from "./ASULogo";
 import ASULink from "./ASULink";
 import styles from '../styles/ASU.css';
+import PropTypes from 'prop-types';
 
 class ASUHeader extends Component {
 
@@ -24,5 +25,14 @@ class ASUHeader extends Component {
     componentDidMount() {
     }
 }
+
+ASUHeader.propTypes = {
+    logo: PropTypes.object
+};
+
+// Specifies the default values for props:
+ASUHeader.defaultProps = {
+    logo: ASULogo.defaultProps
+};
 
 export default ASUHeader;

@@ -3,13 +3,12 @@
  */
 const path = require("path");
 
-
 module.exports = {
     context: path.join(__dirname, '..', 'src'),
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -25,5 +24,11 @@ module.exports = {
             }
         ]
     },
-
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
+    }
 };

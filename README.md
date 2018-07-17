@@ -1,31 +1,37 @@
 # ASU Unity Stack
 Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
 
-## Getting Started
+## Dependencies
 
-In order to build the project and run the development server, the dev environment needs to have the following programs installed:
+In order to build the project and run the server, the dev environment needs to have the following programs installed:
 - Node.js 
 - NPM
 
-### Building the package bundles
+## What's included
 
-1. Run 'npm install' to install and build for the first time
-2. To re-build the bundles after development:
+- React (https://reactjs.org/)
+- Cosmos (https://github.com/react-cosmos/react-cosmos)
+- Webpack (https://webpack.js.org/)
+- Expressjs (https://expressjs.com/)
 
-```
-npm run build
-```
+## Quickstart Guide
 
-or alternatively, to have Webpack watch files and automatically rebuild
+#### Local development
+The easiest way to get started is to spin up react-cosmos as a dev environment:
 
-```
-npm run watch:build
-```
+1. ```npm install```
+2. ```npm run cosmos```
 
-### Server side rendering with Express.js development server
+See the developer documentation on react-cosmos at https://github.com/react-cosmos/react-cosmos
 
-1. Run 'npm start' from the project route. This will run 'webpack --watch' and 'nodemon --verbose server.js --exec babel-node' in parallel. In 
-watch mode Webpack will automatically re-transpile any changes made during development, and nodemon will automatically 
-re-start the Express server when server changes are made (server.js).
+#### Server-side rendering with Express.js development server
+
+1. Run ```npm start:dev```. Webpack and Node will watch for changes and automatically re-bundle assets if changes are made.
 2. The prerendered asset routes will be available on port 3000. For example, the prerendered header should be accessible at:
- http://localhost:3000/header
+ http://localhost:3000/header (Available routes can be found in server/server.js)
+
+## Structure
+ - src - The source code for the asu-unity-stack react components
+ - webpack - Webpack configuration
+ - server - Express.js server configuration
+
