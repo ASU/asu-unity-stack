@@ -1,8 +1,12 @@
 import express from 'express';
 import path from 'path';
-import render from '../dist/ssr.bundled.js';
+import render from '../dist/ssr/ssr.bundled.js';
 const app = express();
 
+
+/***
+ * SSR rendering server
+ */
 // Render an example of an SSR page with header and footer
 app.get('/ssr', function (req, res) {
     render.renderSSRFullPage(req, res, false);
@@ -35,7 +39,7 @@ app.get('/:name/:file', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            console.log('Sent:', fileName);
+            //console.log('Sent:', fileName);
         }
     });
 });
@@ -51,7 +55,6 @@ app.get('/components', function (req, res) {
 /*****
  * COSMOS
  */
-
 // Serve the static cosmos playground if it has been exported.
 app.get('/', function(req, res) {
     // todo: add not found message
@@ -77,7 +80,7 @@ app.get('/:file', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            console.log('Sent cosmos file:', fileName);
+            //console.log('Sent cosmos file:', fileName);
         }
     });
 });

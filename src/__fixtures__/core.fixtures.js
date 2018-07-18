@@ -9,8 +9,7 @@ import {
 } from '../core/core';
 
 import navtree from '../core/components/ASUNavDefaultTree';
-
-const ASUHeaderObj = {};
+import ASUHeaderObj from "../core/components/ASUBrandHeaderDefaults";
 
 ASUHeaderObj.siteMenu = [
     {
@@ -41,9 +40,9 @@ ASUHeaderObj.siteMenu = [
 
 ASUHeaderObj.siteTitle = {
     title: "ASU Custom Site Title",
-    parent_org: "ASU Custom Parent Org",
-    site_url: "https://asu.edu",
-    parent_org_url: "https://uto.asu.edu"
+    parentOrg: "ASU Custom Parent Org",
+    siteUrl: "https://asu.edu",
+    parentOrgUrl: "https://uto.asu.edu"
 };
 
 
@@ -59,6 +58,14 @@ export default [
         component: ASUBrandHeader,
         props: ASUHeaderObj,
         name: 'normal'
+    },
+    {
+        component: ASUBrandHeader,
+        props: ASUHeaderObj,
+        state: {
+          renderClient: false
+        },
+        name: 'dehydrated'
     },
     {
         component: ASUHeader,

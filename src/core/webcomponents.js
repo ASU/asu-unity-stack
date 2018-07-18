@@ -40,7 +40,7 @@ class ASUnityComponent extends React.Component {
 // Set shadow DOM to false so that React CSS works
 const ASUnityWebComponent = convert(ASUnityComponent, ['name', 'props'], {}, {useShadowDom: false});
 
-ASUnityWebComponent.prototype.behaviors = [HAXBehaviors.propertyBehaviors];
+/ASUnityWebComponent.prototype.behaviors = [HAXBehaviors.propertyBehaviors];
 
 ASUnityWebComponent.prototype.connectedCallback = () => {
 
@@ -100,7 +100,7 @@ ASUnityWebComponent.prototype.connectedCallback = () => {
     };
     console.log(ASUnityWebComponent, 'the web component');
 
-    this.setHaxProperties(props);
+    //this.setHaxProperties(props);
 };
 
 console.log(ASUnityWebComponent.prototype, 'THE PROTOTYPE');

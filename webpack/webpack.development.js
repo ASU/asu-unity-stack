@@ -44,16 +44,22 @@ module.exports.push(merge(common, {
                 ]
             }
         ]
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
     }
 }));
+
+console.log(__dirname, 'THE DIR NAME');
 
 // Dev SSR bundle config
 module.exports.push(merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: path.join(__dirname, '..', 'server', 'ssr', 'ssr.js'),
+    entry: './ssr/ssr.js',
     output: {
-        path: path.join(__dirname, '..', 'server', 'ssr'),
+        path: path.join(__dirname, '..', 'dist', 'ssr'),
         filename: 'ssr.bundled.js',
         libraryTarget: 'umd'
     },

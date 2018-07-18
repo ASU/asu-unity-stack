@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {ASUBrandHeader, ASUFooter} from '../../src/core/core.js';
-import {Item, FullPageSSR, FullPageSSRProd, ComponentPage} from '../templates/template';
+import {ASUBrandHeader, ASUFooter} from '../core/core.js';
+import {Item, FullPageSSR, FullPageSSRProd, ComponentPage} from './templates/template';
 import ASUBrandHeaderExampleConfig from '../../examples/ASUBrandHeaderExampleConfig';
 
 const componentList = {

@@ -2,97 +2,280 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  id="innovation-footer"
+  className="asuSearch"
 >
-  <div
-    id="innovation-bar"
+  <h2
+    className="srOnly"
   >
-    <div
-      className="innovation-top"
-    >
-      <div
-        className="innovation-status"
-      >
-        <a
-          href="https://www.asu.edu/rankings"
-        >
-          <span>
-            ASU is #1 in the U.S. for Innovation
-          </span>
-        </a>
-      </div>
-      <div
-        className="innovation-hidden"
-      >
-        <a
-          href="https://www.asu.edu/rankings"
-        >
-          <img
-            alt="Best Colleges U.S. News Most Innovative 2018"
-            src="//www-dev.asu.edu/asuthemes/4.6/assets/best-college-2018.png"
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    className="footer-menu"
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
   >
-    <ul
-      className="default"
+    <label
+      htmlFor="masu_search_box"
     >
-      <li>
-        <a
-          href="https://www.asu.edu/copyright/"
-        >
-          Copyright and Trademark
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.asu.edu/accessibility/"
-        >
-          Accessibility
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.asu.edu/privacy/"
-        >
-          Privacy
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.asu.edu/tou/"
-        >
-          Terms of Use
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.asu.edu/asujobs"
-        >
-          Jobs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.asu.edu/emergency/"
-        >
-          Emergency
-        </a>
-      </li>
-      <li
-        className="no-border"
-      >
-        <a
-          href="https://www.asu.edu/contactasu/"
-        >
-          Contact ASU
-        </a>
-      </li>
-    </ul>
-  </div>
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 2`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 3`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 4`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 5`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 6`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 7`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
+</div>
+`;
+
+exports[`matches snapshot 8`] = `
+<div
+  className="asuSearch"
+>
+  <h2
+    className="srOnly"
+  >
+    Search
+  </h2>
+  <form
+    _lpchecked="1"
+    id="google/appliance/block/form"
+    method="post"
+  >
+    <label
+      htmlFor="masu_search_box"
+    >
+      Search
+    </label>
+    <input
+      autoComplete="off"
+      className="asuSearchBox"
+      name="search_header"
+      placeholder="Search"
+      type="text"
+    />
+    <input
+      className="asuSearchButton"
+      type="submit"
+      value="Search"
+    />
+  </form>
 </div>
 `;
