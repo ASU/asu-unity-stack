@@ -20,10 +20,14 @@
 <script>
     // Initialize configuration object
     const ASUHeader = {};
-    ASUHeader.siteTitle = {title: "ASU Custom Site Title", parentOrg: "ASU Custom Parent Org"};
+    ASUHeader.siteTitle = {
+        title: "ASU Custom Site Title",
+        parentOrg: "ASU Custom Parent Org"
+    };
 
     // Hydrate the pre-rendered header with above configs
-    ReactDOM.hydrate(React.createElement(ASUBrandHeader, {headerObj: ASUHeader}), document.getElementById("asu-header-container"));
+    ReactDOM.hydrate(React.createElement(ASUBrandHeader, {headerObj: ASUHeader}),
+        document.getElementById("asu-header-container"));
 </script>
 
 <div id="main-content">

@@ -50,9 +50,8 @@ export default [
     {
         component: ASUFooter,
         props: {
-            test: 'nonempty'
         },
-        name: 'normal'
+        name: 'todo'
     },
     {
         component: ASUBrandHeader,
@@ -65,20 +64,16 @@ export default [
         state: {
           renderClient: false
         },
-        name: 'dehydrated'
-    },
-    {
-        component: ASUHeader,
-        props: {
-            logo: ASUHeaderObj.logo
-        },
-        name: 'normal'
+        name: 'pre-rendered'
     },
     {
         component: ASULink,
         props: {
-
+            href: "https://www.asu.edu"
         },
+        children: (
+            "ASU Link Text"
+        ),
         name: 'normal'
     },
     {
@@ -86,7 +81,20 @@ export default [
         props: {
 
         },
-        name: 'normal'
+        state: {
+            loggedIn: true
+        },
+        name: 'logged in'
+    },
+    {
+        component: ASULogin,
+        props: {
+
+        },
+        state: {
+            loggedIn: false
+        },
+        name: 'logged out'
     },
     {
         component: ASUNav,
