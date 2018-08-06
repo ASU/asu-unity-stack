@@ -9,6 +9,8 @@ import ASUHeader from './components/ASUHeader';
 import ASULink from './components/ASULink';
 import ASUSearchBox from './components/ASUSearchBox';
 import ASULogin from './components/ASULogin';
+import AsuButton from './components/atoms/buttons/AsuButton';
+import AsuRfiLargeButton from './components/atoms/buttons/AsuRfiLargeButton';
 
 const initASUHeader = (asu_header, element) => {
     element ? ReactDOM.render(<ASUHeaderContainer headerObj={asu_header} />, element) : false;
@@ -22,5 +24,7 @@ module.exports = {
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
+    ASUSearchBox,
+    AsuButton,
+    AsuRfiLargeButton,
 };

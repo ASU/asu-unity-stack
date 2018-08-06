@@ -5,11 +5,14 @@ import {
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
+    ASUSearchBox,
+    AsuButton,
+    AsuRfiLargeButton,
 } from '../core/core';
 
 import navtree from '../core/components/ASUNavDefaultTree';
 import ASUHeaderObj from "../core/components/ASUBrandHeaderDefaults";
+import styles from "../core/components/atoms/buttons/AsuButtons.css";
 
 ASUHeaderObj.siteMenu = [
     {
@@ -109,5 +112,69 @@ export default [
             drupal: true
         },
         name: 'normal'
+    },
+    {
+        component: AsuButton,
+        name: 'CTA Primary Button',
+        props: {
+          label: 'Primary CTA',
+          className: styles.btn + ' ' + styles.btnPrimary,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'CTA Primary Button Large',
+        props: {
+          label: 'Large Primary CTA',
+          className: styles.btn + ' ' + styles.btnPrimary + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'CTA Secondary Button',
+        props: {
+          label: 'Secondary CTA',
+          className: styles.btn + ' ' + styles.btnSecondary,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'CTA Secondary Button Large',
+        props: {
+          label: 'Large Secondary CTA',
+          className: styles.btn + ' ' + styles.btnSecondary + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'RFI Button',
+        props: {
+          label: 'RFI, apply, and visit button',
+          className: styles.btn + ' ' + styles.btnGold,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'RFI Button Large',
+        props: {
+          label: 'Large RFI, apply, and visit button',
+          className: styles.btn + ' ' + styles.btnGold + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'Explore Programs Button',
+        props: {
+          label: 'Explore programs button',
+          className: styles.btn + ' ' + styles.btnBlue,
+        }
+    },
+    {
+        component: AsuButton,
+        name: 'Explore Programs Button Large',
+        props: {
+          label: 'Large explore Programs Button',
+          className: styles.btn + ' ' + styles.btnBlue + ' ' + styles.btnLg,
+        }
     }
 ];
