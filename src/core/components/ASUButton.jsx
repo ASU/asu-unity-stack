@@ -1,5 +1,8 @@
-import React, { Component } from "react";
-import styles from "../styles/ASU.css"
+import React from "react";
+import PropTypes from 'prop-types';
+import ASUHeader from "./ASUHeader";
+import ASULogo from "./ASULogo";
+
 
 const ASUButton = props => {
 
@@ -9,5 +12,10 @@ const ASUButton = props => {
         </button>
     );
 };
+
+ASUButton.propTypes = {
+    children: PropTypes.node
+};
+
 
 export default ASUButton;

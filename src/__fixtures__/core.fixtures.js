@@ -1,6 +1,5 @@
 import {
     ASUFooter,
-    ASUHeader,
     ASUBrandHeader,
     ASULink,
     ASULogin,

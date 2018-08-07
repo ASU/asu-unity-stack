@@ -27,7 +27,9 @@ class ASUHeader extends Component {
 }
 
 ASUHeader.propTypes = {
-    logo: PropTypes.object
+    logo: PropTypes.object,
+    className: PropTypes.string,
+    children: PropTypes.node
 };
 
 // Specifies the default values for props:

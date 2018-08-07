@@ -8,4 +8,8 @@ const ASULink = props => {
     );
 };
 
+ASULink.propTypes = {
+    children: PropTypes.node
+};
+
 export default ASULink;

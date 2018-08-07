@@ -47,8 +47,6 @@ const renderASUComponent =  (req, res, component) => {
  */
 const renderComponentPage = (req, res, prod) => {
     const config = JSON.stringify(ASUBrandHeaderExampleConfig);
-    prod = prod ? true: false;
-
 
     res.send(ComponentPage({
         title: 'Test Page',
@@ -89,7 +87,7 @@ const sendASUFooter = (req, res) => {
     res.send(html);
 };
 
-module.exports = {
+export {
     renderASUComponent,
     sendASUHeader,
     sendASUFooter,

@@ -7,6 +7,7 @@
     "build": "webpack --config webpack/webpack.production.js",
     "build:watch": "webpack --watch --config=webpack/webpack.development.js",
     "build:dev": "webpack --config=webpack/webpack.development.js",
+    "eslint": "eslint src/**/*.js src/**/components/*.jsx",
     "watch:components": "webpack --watch --config=webpack/webpack.components.js",
     "start": "babel-node server/server.js",
     "start:dev": "npm-run-all --parallel  build:watch server:watch",
@@ -39,6 +40,9 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "eslint": "^5.3.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-react": "^7.10.0",
     "express": "^4.16.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -88,6 +92,36 @@
     },
     "globals": {
       "__DEV__": true
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
+    },
+    "settings": {
+      "react": {
+        "createClass": "createReactClass",
+        "pragma": "React",
+        "version": "16.3"
+      },
+      "propWrapperFunctions": [
+        "forbidExtraProps"
+      ]
     }
   }
 }

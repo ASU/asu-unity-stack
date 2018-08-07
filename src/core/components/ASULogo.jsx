@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ASUImage from "./ASUImage"
 import PropTypes from 'prop-types';
 import styles from "../styles/ASU.css"
