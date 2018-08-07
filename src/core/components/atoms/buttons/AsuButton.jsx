@@ -5,8 +5,8 @@ const AsuButton = props => {
     return (
       <div>
         <button {...props}>
-          {props.label}
-          {props.children}
+          { props.label }
+          { props.children }
         </button>
       </div>
     );

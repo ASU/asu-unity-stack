@@ -7,7 +7,6 @@ import {
     ASUNav,
     ASUSearchBox,
     AsuButton,
-    AsuRfiLargeButton,
 } from '../core/core';
 
 import navtree from '../core/components/ASUNavDefaultTree';
