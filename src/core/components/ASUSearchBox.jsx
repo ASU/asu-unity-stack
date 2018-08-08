@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from '../styles/ASU.css'
+import PropTypes from 'prop-types';
 
 class ASUSearchBox extends Component {
     constructor() {
@@ -38,4 +39,16 @@ class ASUSearchBox extends Component {
         );
     }
 }
+
+
+
+ASUSearchBox.propTypes = {
+    drupal: PropTypes.bool
+};
+
+// Specifies the default values for props:
+ASUSearchBox.defaultProps = {
+    drupal: false
+};
+
 export default ASUSearchBox;

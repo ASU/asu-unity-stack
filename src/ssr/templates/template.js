@@ -1,6 +1,4 @@
-/**
- * Created by ctestama on 4/25/18.
- */
+/*eslint-env node*/
 const Item = ({ id, body }) => (`
     <div>
         <div id=${id}>${body}</div>

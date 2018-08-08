@@ -25,7 +25,7 @@ class ASUBrandHeader extends Component {
                 </ASUNav>
                 {
                     this.state.renderClient && this.props.siteTitle &&
-                    <ASUSiteName siteTitle={this.props.siteTitle}/>
+                    <ASUSiteName {...this.props.siteTitle}/>
                 }
             </ASUHeader>
         );

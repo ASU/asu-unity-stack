@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import ASULink from './ASULink';
 import styles from '../styles/ASU.css';
+import ASULogo from "./ASULogo";
+import PropTypes from 'prop-types';
 
 const ASUNavItem = props => {
 
@@ -12,6 +14,19 @@ const ASUNavItem = props => {
             {props.children}
         </li>
     );
+};
+
+ASUNavItem.propTypes = {
+    classes: PropTypes.string,
+    href: PropTypes.string,
+    target: PropTypes.string,
+    text: PropTypes.string,
+    children: PropTypes.node
+};
+
+// Specifies the default values for props:
+ASUNavItem.defaultProps = {
+    logo: ASULogo.defaultProps
 };
 
 export default ASUNavItem;

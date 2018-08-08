@@ -38,9 +38,9 @@ ASUHeaderObj.siteMenu = [
 ];
 
 ASUHeaderObj.siteTitle = {
-    title: "ASU Custom Site Title",
-    parentOrg: "ASU Custom Parent Org",
+    siteTitle: "ASU Custom Site Title",
     siteUrl: "https://asu.edu",
+    parentOrg: "ASU Custom Parent Org",
     parentOrgUrl: "https://uto.asu.edu"
 };
 
