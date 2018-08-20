@@ -6,7 +6,7 @@ import ASUFooter from './components/ASUFooter'
 import ASUBrandHeader from './components/ASUBrandHeader';
 import ASUHeader from './components/ASUHeader';
 import ASULink from './components/ASULink';
-import ASUSearchBox from './components/ASUSearchBox';
+import ASUGlobalSearch from './components/ASUGlobalSearch';
 import ASULogin from './components/ASULogin';
 
 export {
@@ -16,5 +16,5 @@ export {
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
+    ASUGlobalSearch
 };

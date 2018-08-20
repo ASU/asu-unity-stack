@@ -2,10 +2,14 @@ import React from "react";
 import ASUImage from "./ASUImage"
 import PropTypes from 'prop-types';
 import styles from "../styles/ASU.css"
+import classNames from 'classnames';
 
 const ASULogo = props => {
+
+    const logoClass = classNames(styles.asuLogo, props.className);
+
     return (
-        <div className={styles.asuLogo}>
+        <div className={logoClass}>
             <a href={props.href} target={props.target}>
                 <ASUImage alt={props.alt} src={props.src} />
             </a>
@@ -17,7 +21,8 @@ ASULogo.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     alt: PropTypes.string,
-    src: PropTypes.string
+    src: PropTypes.string,
+    className: PropTypes.string
 };
 
 // Specifies the default values for props:

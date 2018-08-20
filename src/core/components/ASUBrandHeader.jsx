@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import ASUHeader from './ASUHeader';
-import ASUSearchBox from "./ASUSearchBox";
+import ASULogo from "./ASULogo";
+import ASUGlobalSearch from "./ASUGlobalSearch";
 import ASUNav from "./ASUNav";
 import ASUSiteName from "./ASUSiteName";
 import ASULogin from "./ASULogin";
@@ -18,19 +19,18 @@ class ASUBrandHeader extends Component {
     render() {
 
         return (
-            <ASUHeader logo={this.props.logo} className={styles.asuHeader}>
-                <ASUNav nav={this.props.navTree}>
-                    <ASULogin {...this.props.login}/>
-                    <ASUSearchBox/>
-                </ASUNav>
+            <ASUHeader className={styles.asuBrandHeader}>
+                <ASULogo className={styles.asuBrandHeaderLogo} {...this.props.logo} />
+                <ASUNav className={styles.asuBrandHeaderNav} nav={this.props.navTree} />
+                <ASULogin className={styles.asuBrandHeaderLogin} {...this.props.login}/>
+                <ASUGlobalSearch className={styles.asuBrandHeaderSearchBox}/>
                 {
                     this.state.renderClient && this.props.siteTitle &&
-                    <ASUSiteName {...this.props.siteTitle}/>
+                    <ASUSiteName className={styles.asuBrandHeaderSiteName} {...this.props.siteTitle}/>
                 }
             </ASUHeader>
         );
     }
-
 
     componentDidMount() {
         this.setState({ renderClient: true });
@@ -47,7 +47,7 @@ ASUBrandHeader.propTypes = {
 
 // Specifies the default values for props:
 ASUBrandHeader.defaultProps = {
-    logo: ASUHeader.defaultProps.logo,
+    logo: ASULogo.defaultProps,
     login: ASULogin.defaultProps,
     navTree: defaultNav
 };

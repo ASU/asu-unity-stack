@@ -4,7 +4,7 @@ import {
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
+    ASUGlobalSearch
 } from '../core/core';
 
 import navtree from '../core/components/ASUNavDefaultTree';
@@ -103,7 +103,7 @@ export default [
         name: 'normal'
     },
     {
-        component: ASUSearchBox,
+        component: ASUGlobalSearch,
         props: {
             drupal: true
         },

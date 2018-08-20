@@ -4,7 +4,6 @@
 /***
 ASUSiteName component
  */
-
 .asuSiteName {
     color: #2a2a2a;
     font-family: var(--asu-fonts);
@@ -191,17 +190,12 @@ Header
 }
 
 /**  CSS Modules -- ASUHeader.css ****/
-.asuHeader {
+.asuBrandHeader {
     width: 100%;
 }
 
-.asuHeaderGrid {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
-}
 
-.asuHeader>div {
+.asuBrandHeader {
     position:relative;
     background-color:#fff;
     overflow:visible!important;
@@ -222,9 +216,86 @@ Header
     /*display:none;*/
 }
 
-.asuHeader img {
+.asuBrandHeader img {
     border:0;
     width: 100%;
+}
+
+.asuHeaderGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto 70px;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "logo nav nav nav login"
+            "logo . . searchbox searchbox"
+            "sitename . . . .";
+}
+
+.asuBrandHeaderLogin {
+    grid-area: login;
+    justify-self: end;
+}
+
+.asuBrandHeaderNav {
+    grid-area: nav;
+    justify-self:end;
+}
+
+.asuBrandHeaderLogo {
+    grid-area: logo;
+}
+
+.asuBrandHeaderSiteName {
+    grid-area: sitename;
+}
+
+.asuBrandHeaderSearchBox {
+    grid-area: searchbox;
+    justify-self: end;
+}
+
+@media(max-width: 768px) {
+
+    .asuHeaderGrid {
+        display: grid;
+        grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
+        grid-template-columns: [left] 50% [right] 50%;
+        grid-template-areas:
+                "searchbox searchbox"
+                "logo ."
+                "sitename sitename"
+                "login login"
+                "nav nav";
+    }
+
+    #asu_footer ul li{display:block;margin:5px 0}
+    #asu_logo a img {
+        /*content: url('../assets/mobile_logo.png');*/
+    }
+    #asu_logo a {
+        background-color:transparent;
+        background-position:left top;
+        background-repeat:no-repeat;
+        display:block;
+        width:77px;
+        height:32px
+    }
+    #innovation-footer .footer-menu ul li{
+        clear: left;
+    }
+    #innovation-footer .footer-menu ul.default{
+        margin-left: 0;
+    }
+    h1.header__sitename {
+        margin: 0;
+    }
+
+    #innovation-bar .innovation-top {
+        text-align: left;
+    }
+    .innovation-rank-one>span {
+        display: block;
+    }
 }
 
 .asu_mobile_hdr {
@@ -243,12 +314,10 @@ Header
     list-style-type:none;
 }
 
-
-
 .asuLogin {
-    display:inline-block;
+   /* display:inline-block;
     margin: 0 auto;
-    vertical-align: top;
+    vertical-align: top;*/
 }
 
 .asuLogin li.end {
@@ -357,3 +426,7 @@ Search Box
     position: absolute;
     left: -999999px;
 }
+
+
+
+

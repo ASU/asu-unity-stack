@@ -2,11 +2,14 @@ import React from "react";
 import ASULink from "./ASULink"
 import styles from "../styles/ASU.css"
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const ASUSiteName = props => {
 
+    const sitenameClass = classNames(styles.asuSiteName, props.className);
+
     return (
-        <div className={styles.asuSiteName}>
+        <div className={sitenameClass}>
             <div>
                 <ASULink className={styles.asuSiteNameLink} href={props.parentOrgUrl}>
                     <span className={styles.asuSiteNameParentOrg}>
@@ -27,7 +30,8 @@ ASUSiteName.propTypes = {
     siteTitle: PropTypes.string,
     siteUrl: PropTypes.string,
     parentOrg: PropTypes.string,
-    parentOrgUrl: PropTypes.string
+    parentOrgUrl: PropTypes.string,
+    className: PropTypes.string
 };
 
 // Specifies the default values for props:

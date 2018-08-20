@@ -1,32 +1,21 @@
 import React from 'react';
 import ASUNavItem from './ASUNavItem';
-import ASULogin from './ASULogin';
 import defaultNav from "./ASUNavDefaultTree";
 import PropTypes from 'prop-types';
 import styles from '../styles/ASU.css';
+import classNames from 'classnames';
 
 const ASUNav = props => {
 
     const navMenu = renderNav(props.navTree);
-    const children = props.children;
-    let login = null;
     let childArray = [];
-
-    // extract the login if passed as a child. The login link will
-    // be rendered inline with the navmenu per the brand standards
-    React.Children.forEach(children, (child) => {
-        if (child.type === ASULogin) {
-            login = child;
-        } else {
-            childArray.push(child);
-        }
-    });
+    const navClass = classNames(styles.asuNavWrapper, props.className);
 
     return (
-        <nav className={styles.asuNavWrapper}>
+        <nav className={navClass}>
             <div className={styles.asuNav} role="navigation" aria-label="ASU">
                 {navMenu}
-                {login !== null ? login : ''}
+                {props.children}
             </div>
             {childArray.length > 0 ? childArray : ''}
         </nav>
@@ -52,7 +41,8 @@ const renderNav = nav => {
 
 ASUNav.propTypes = {
     navTree: PropTypes.arrayOf(PropTypes.object),
-    children: PropTypes.node
+    children: PropTypes.node,
+    className: PropTypes.string
 };
 
 // Specifies the default values for props:
