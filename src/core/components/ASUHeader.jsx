@@ -17,6 +17,8 @@ class ASUHeader extends Component {
                 <ASULink href="https://www.asu.edu/accessibility/" className={styles.srOnly}>Report an accessibility problem</ASULink>
                 <div className={styles.asuHeaderGrid}>
                     {this.props.children}
+                    <div className={styles.mobileNavIcon} role="button"/>
+                    <div className={styles.mobileSearchButton}/>
                 </div>
             </header>
         );
