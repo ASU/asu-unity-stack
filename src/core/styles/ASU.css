@@ -9,6 +9,7 @@
     font-style: normal
 }
 
+/** Basic Icons **/
 .icoFont {
     font-family: 'icomoon';
     speak:none;
@@ -25,21 +26,21 @@
     content: "\f002";
 }
 
+.icoSearch {
+    composes: icoFont;
+}
+
 .icoNavIcon:before {
     content: "\f0c9";
 }
 
-
-
-.mobileSearchButton {
+.icoNavIcon {
     composes: icoFont;
-
 }
 
-.mobileNavIcon {
-    composes: icoFont;
 
-}
+
+
 
 /***
 ASUSiteName component
@@ -294,52 +295,16 @@ Header
     justify-self: end;
 }
 
-@media only screen and (max-width: 990px) {
-
-    .asuHeaderGrid {
-        display: grid;
-        grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
-        grid-template-columns: [left] 50% [right] 50%;
-        grid-template-areas:
-                "searchbox searchbox"
-                "logo ."
-                "sitename sitename"
-                "login login"
-                "nav nav";
-    }
-
-    .opened {
-        -moz-transition-duration: .3s;
-        -webkit-transition-duration: .3s;
-        -o-transition-duration: .3s;
-        transition-duration: .3s;
-        -moz-transition-timing-function: ease-in;
-        -webkit-transition-timing-function: ease-in;
-        -o-transition-timing-function: ease-in;
-        transition-timing-function: ease-in;
-        max-height: 1000px;
-        overflow: hidden;
-        display: inherit !important;
-    }
-
-    #asu_mobile_button, #search_new {
-        color: #999;
-        cursor: pointer;
-        float: right;
-        font-size: 22px;
-        padding: 18px 5px;
-        width: 35px;
-        text-align: center;
-    }
-
-    #asu_hdr .clicked {
-        background-color: #E7E7E7;
-    }
+.asuHeaderMobileControls {
+    grid-area: mobile;
+    display: none;
+    justify-self: end;
 }
 
+
+/*** ASUHeader mobile ***/
+
 @media(max-width: 768px) {
-
-
 
     #asu_footer ul li{display:block;margin:5px 0}
     #asu_logo a img {
@@ -374,6 +339,9 @@ Header
 .asu_mobile_hdr {
     padding:0 12px
 }
+
+
+
 /** End CSS module **/
 
 /*** asuLogin ***/
@@ -498,4 +466,82 @@ Search Box
 .asuSearch>form>label {
     position: absolute;
     left: -999999px;
+}
+
+/*** Mobile ASUHeader **/
+
+@media only screen and (max-width: 990px) {
+
+    .asuHeaderMobileControls {
+        /*grid-area: mobile;*/
+        display:block;
+    }
+
+    .asuHeaderGrid {
+        display: grid;
+        grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
+        grid-template-columns: [left] 50% [right] 50%;
+        grid-template-areas:
+                "searchbox searchbox"
+                "logo mobile"
+                "sitename sitename"
+                "login login"
+                "nav nav";
+    }
+
+    #asu_mobile_button, #search_new {
+        color: #999;
+        cursor: pointer;
+        float: right;
+        font-size: 22px;
+        padding: 18px 5px;
+        width: 35px;
+        text-align: center;
+    }
+
+    #asu_hdr .clicked {
+        background-color: #E7E7E7;
+    }
+
+    .asuSearch {
+        display: none;
+    }
+
+    .asuSearchBox {
+        position: relative;
+        z-index: 500;
+        width: 100%;
+        border: none;
+        color: #505558;
+        font-size: 16px;
+        padding: 10px 12px;
+        outline: 0;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+    .openedSearch {
+        & .asuSearch {
+            transition-duration: .3s;
+            -moz-transition-timing-function: ease-in;
+            -webkit-transition-timing-function: ease-in;
+            -o-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+            max-height: 1000px;
+            display: inherit !important;
+            -moz-transition-duration: .3s;
+            -webkit-transition-duration: .3s;
+            -o-transition-duration: .3s;
+            overflow: hidden;
+        }
+    }
+
+    .closedSearch {
+        & .asuSearch {
+            -moz-transition-duration: .3s;
+            -webkit-transition-duration: .3s;
+            -o-transition-duration: .3s;
+            overflow: hidden;
+        }
+    }
 }
