@@ -20,6 +20,7 @@ class ASUHeader extends Component {
 
     render() {
 
+
         let cx = classNames.bind(styles);
 
         const headerClass = cx(this.props.className, {
