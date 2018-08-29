@@ -2,7 +2,7 @@ import React from 'react';
 import ASUNavItem from './ASUNavItem';
 import defaultNav from "./ASUNavDefaultTree";
 import PropTypes from 'prop-types';
-import styles from '../styles/ASU.css';
+import styles from './nav.css';
 import classNames from 'classnames';
 
 const ASUNav = props => {

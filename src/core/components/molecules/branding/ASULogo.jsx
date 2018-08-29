@@ -1,7 +1,7 @@
-import React from "react";
-import ASUImage from "./ASUImage"
+import React from 'react';
+import ASUImage from '../../atoms/images/ASUImage'
 import PropTypes from 'prop-types';
-import styles from "../styles/ASU.css"
+import styles from './branding.css';
 import classNames from 'classnames';
 
 const ASULogo = props => {

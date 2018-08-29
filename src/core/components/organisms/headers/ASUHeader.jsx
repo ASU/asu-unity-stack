@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ASULink from "./ASULink";
-import styles from '../styles/ASU.css';
+import ASULink from "../../atoms/links/ASULink";
+import styles from './headers.css';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
@@ -20,7 +20,7 @@ class ASUHeader extends Component {
 
     render() {
 
-
+        // add necessary classes
         let cx = classNames.bind(styles);
 
         const headerClass = cx(this.props.className, {
@@ -31,7 +31,6 @@ class ASUHeader extends Component {
         });
 
         return (
-
             <header className={headerClass}>
                 <ASULink href="https://www.asu.edu/accessibility/" className={styles.srOnly}>Report an accessibility problem</ASULink>
                 <div className={styles.asuHeaderGrid}>

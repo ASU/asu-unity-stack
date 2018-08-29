@@ -1,0 +1,33 @@
+@import '../../../styles/ASU.css';
+
+
+/*** asuLogin ***/
+.asuLogin>div {
+    border-left:1px solid #999;
+    margin: 8px 0 0 8px;
+    padding: 1px 8px 1px;
+    color:#000;
+    font-weight:700;
+    line-height:1em;
+    list-style-type:none;
+}
+
+.asuLogin {
+    /* display:inline-block;
+     margin: 0 auto;
+     vertical-align: top;*/
+}
+
+.asuLogin li.end {
+    text-transform:uppercase;
+    padding-right:0
+}
+
+.asuLoginLink {
+    text-decoration:none;
+    line-height:1em
+}
+
+.asuLoginLink:hover {
+    text-decoration:underline
+}

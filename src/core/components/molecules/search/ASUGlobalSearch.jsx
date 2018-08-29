@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styles from '../styles/ASU.css'
+import React, { Component } from 'react';
+import styles from './search.css';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
