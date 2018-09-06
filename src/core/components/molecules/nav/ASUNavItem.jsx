@@ -1,6 +1,6 @@
 import React from "react";
 import ASULink from '../../atoms/links/ASULink';
-import styles from '../../../styles/ASU.css';
+import styles from './nav.css';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 

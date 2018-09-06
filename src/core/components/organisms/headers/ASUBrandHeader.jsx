@@ -36,7 +36,6 @@ class ASUBrandHeader extends Component {
     }
 }
 
-
 ASUBrandHeader.propTypes = {
     logo: PropTypes.object,
     login: PropTypes.object,
@@ -50,6 +49,5 @@ ASUBrandHeader.defaultProps = {
     login: ASULogin.defaultProps,
     navTree: defaultNav
 };
-
 
 export default ASUBrandHeader;

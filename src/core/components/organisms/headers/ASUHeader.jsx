@@ -4,7 +4,6 @@ import styles from './headers.css';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
-
 class ASUHeader extends Component {
 
     constructor() {
@@ -25,9 +24,7 @@ class ASUHeader extends Component {
 
         const headerClass = cx(this.props.className, {
             openedSearch : this.state.searchOpen,
-            closedSearch: !this.state.searchOpen,
-            openedNav: this.state.mobileNavOpen,
-            closedNav: !this.state.mobileNavOpen
+            openedNav: this.state.mobileNavOpen
         });
 
         return (
@@ -35,7 +32,6 @@ class ASUHeader extends Component {
                 <ASULink href="https://www.asu.edu/accessibility/" className={styles.srOnly}>Report an accessibility problem</ASULink>
                 <div className={styles.asuHeaderGrid}>
                     {this.props.children}
-
                     <div className={styles.asuHeaderMobileControls}>
                         <span className={styles.icoNavIcon} onClick={this.toggleMobileNav} role="button" />
                         <span className={styles.icoSearch} onClick={this.toggleMobileSearch} />
@@ -56,7 +52,7 @@ class ASUHeader extends Component {
         e.preventDefault();
         this.setState({
             mobileNavOpen: !this.state.mobileNavOpen
-         })
+        })
     }
 
     componentDidMount() {

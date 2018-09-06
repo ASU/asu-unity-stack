@@ -31,3 +31,47 @@
 .asuLoginLink:hover {
     text-decoration:underline
 }
+
+
+.icoUser {
+    display: none;
+}
+
+
+/***
+Mobile
+ */
+@media only screen and (max-width: 990px) {
+
+    .asuLoginLink {
+        display: inline;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .asuLogin {
+        width: 100%;
+        color: #77797B;
+        background: #fff;
+        border-bottom: solid 1px #ddd;
+        font-weight: 600;
+        position: relative;
+    }
+
+    .asuLogin > div {
+        display: inline-block;
+    }
+
+    .icoUser {
+        display: inline-block;
+        float: right;
+        width: 35px;
+        height: 15px;
+        background: #F4F4F4;
+        border-left: solid 1px #DDD;
+        text-align: center;
+        font-size: 14px;
+        color: #B2B2B2;
+        padding: 10px;
+    }
+}

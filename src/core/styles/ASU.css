@@ -25,18 +25,26 @@
 
 .icoSearch {
     composes: icoFont;
+
+    &:before {
+         content: "\f002";
+    }
 }
 
 .icoNavIcon {
     composes: icoFont;
+
+    &:before {
+         content: "\f0c9";
+    }
 }
 
-.icoSearch:before {
-    content: "\f002";
-}
+.icoUser {
+    composes: icoFont;
 
-.icoNavIcon:before {
-    content: "\f0c9";
+    &:before {
+         content: "\f007";
+    }
 }
 
 

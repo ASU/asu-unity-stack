@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import styles from '../../../styles/ASU.css';
+import styles from './auth.css';
 import classNames from 'classnames';
 
 class ASULogin extends Component {
@@ -30,6 +30,7 @@ class ASULogin extends Component {
                         )
                     }
                 </div>
+                <div className={styles.icoUser}></div>
             </div>
         )
     }

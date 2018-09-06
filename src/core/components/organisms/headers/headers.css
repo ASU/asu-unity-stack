@@ -18,16 +18,16 @@ Header
 .asuBrandHeader {
     position:relative;
     background-color:#fff;
-    overflow:visible!important;
+    overflow:visible;
     margin:0;
     font-size:.8rem;
     font-family: var(--asu-fonts);
     line-height:1em;
     color:#000;
     z-index:500;
-    -webkit-box-sizing:initial!important;
-    -moz-box-sizing:initial!important;
-    box-sizing:initial!important;
+    -webkit-box-sizing:initial;
+    -moz-box-sizing:initial;
+    box-sizing:initial;
     height: auto;
     width: 100%;
 }
@@ -91,12 +91,24 @@ Mobile ASUHeader
         display: grid;
         grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
         grid-template-columns: [left] 50% [right] 50%;
-        grid-template-areas: "searchbox searchbox" "logo mobile" "sitename sitename" "login login" "nav nav";
+        grid-template-areas:
+                "searchbox searchbox"
+                "logo mobile"
+                "sitename sitename"
+                "login login"
+                "nav nav";
     }
 
     /** Header menu open/close CSS **/
-    .asuHeaderGlobalSearch, .asuHeaderNav, .asuBrandHeaderLogin, .asuHeaderSiteName {
+    .asuHeaderGlobalSearch, .asuHeaderNav, .asuBrandHeaderLogin {
         display: none;
+    }
+
+    .asuHeaderGlobalSearch {
+        -moz-transition-duration: .3s;
+        -webkit-transition-duration: .3s;
+        -o-transition-duration: .3s;
+        overflow: hidden;
     }
 
     .icoNavIcon, .icoSearch {
@@ -121,7 +133,7 @@ Mobile ASUHeader
           -o-transition-timing-function: ease-in;
           transition-timing-function: ease-in;
           max-height: 1000px;
-          display: inherit;
+          display: block;
           -moz-transition-duration: .3s;
           -webkit-transition-duration: .3s;
           -o-transition-duration: .3s;
@@ -133,17 +145,6 @@ Mobile ASUHeader
         }
     }
 
-    .closedSearch {
-
-        &  .asuHeaderGlobalSearch {
-            -moz-transition-duration: .3s;
-            -webkit-transition-duration: .3s;
-            -o-transition-duration: .3s;
-            overflow: hidden;
-        }
-
-    }
-
     .openedNav {
 
         &  .asuHeaderNav, &  .asuBrandHeaderLogin, & .asuHeaderSiteName {
@@ -153,7 +154,7 @@ Mobile ASUHeader
             -o-transition-timing-function: ease-in;
             transition-timing-function: ease-in;
             max-height: 1000px;
-            display: inherit !important;
+            display: block;
             -moz-transition-duration: .3s;
             -webkit-transition-duration: .3s;
             -o-transition-duration: .3s;

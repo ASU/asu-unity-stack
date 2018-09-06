@@ -45,3 +45,34 @@ Logo
     padding:12px 0 0;
 }
 
+
+
+
+
+/***
+Mobile
+ */
+@media only screen and (max-width: 990px) {
+
+    .asuSiteName {
+        font-size: .9375em;
+        padding: 12px .9375em;
+        color: #FFF;
+        background: #505558;
+        font-weight: 600;
+        line-height: 1em;
+    }
+
+    .asuSiteNameLink {
+        display: inline-block;
+        padding: 0;
+        color: #fff;
+        background-color: #505558;
+        line-height: 1em;
+        letter-spacing: -.5px;
+    }
+
+    .asuSiteNameTitle {
+        color: #FFF;
+    }
+}
