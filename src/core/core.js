@@ -8,6 +8,7 @@ import ASUHeader from './components/organisms/headers/ASUHeader';
 import ASULink from './components/atoms/links/ASULink';
 import ASUGlobalSearch from './components/molecules/search/ASUGlobalSearch';
 import ASULogin from './components/molecules/auth/ASULogin';
+import ASUButton from './components/atoms/buttons/ASUButton';
 
 export {
     ASUFooter,
@@ -16,5 +17,6 @@ export {
     ASULink,
     ASULogin,
     ASUNav,
-    ASUGlobalSearch
+    ASUGlobalSearch,
+    ASUButton
 };

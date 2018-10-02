@@ -1,6 +1,5 @@
 @import '../../../styles/ASU.css';
 
-
 /*** asuLogin ***/
 .asuLogin>div {
     border-left:1px solid #999;
@@ -10,12 +9,6 @@
     font-weight:700;
     line-height:1em;
     list-style-type:none;
-}
-
-.asuLogin {
-    /* display:inline-block;
-     margin: 0 auto;
-     vertical-align: top;*/
 }
 
 .asuLogin li.end {
@@ -32,15 +25,13 @@
     text-decoration:underline
 }
 
-
 .icoUser {
     display: none;
 }
 
-
-/***
+/*****
 Mobile
- */
+******/
 @media only screen and (max-width: 990px) {
 
     .asuLoginLink {

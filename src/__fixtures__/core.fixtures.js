@@ -5,7 +5,7 @@ import {
     ASULogin,
     ASUNav,
     ASUGlobalSearch,
-    AsuButton,
+    ASUButton
 } from '../core/core';
 
 import navtree from '../core/components/molecules/nav/ASUNavDefaultTree';
@@ -112,7 +112,7 @@ export default [
         name: 'normal'
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'CTA Primary Button',
         props: {
           label: 'Primary CTA',
@@ -120,7 +120,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'CTA Primary Button Large',
         props: {
           label: 'Large Primary CTA',
@@ -128,7 +128,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'CTA Secondary Button',
         props: {
           label: 'Secondary CTA',
@@ -136,7 +136,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'CTA Secondary Button Large',
         props: {
           label: 'Large Secondary CTA',
@@ -144,7 +144,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'RFI Button',
         props: {
           label: 'RFI, apply, and visit button',
@@ -152,7 +152,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'RFI Button Large',
         props: {
           label: 'Large RFI, apply, and visit button',
@@ -160,7 +160,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'Explore Programs Button',
         props: {
           label: 'Explore programs button',
@@ -168,7 +168,7 @@ export default [
         }
     },
     {
-        component: AsuButton,
+        component: ASUButton,
         name: 'Explore Programs Button Large',
         props: {
           label: 'Large explore Programs Button',

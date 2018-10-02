@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import styles from "./buttons.css";
+import React from "react";
 
-const AsuButton = props => {
+
+const ASUButton = props => {
     return (
       <div>
         <button {...props}>
@@ -12,4 +12,4 @@ const AsuButton = props => {
     );
 };
 
-export default AsuButton;
+export default ASUButton;
