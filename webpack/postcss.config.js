@@ -8,7 +8,7 @@ module.exports = {
             path: [path.join(__dirname, '../src')]
         },
         'postcss-preset-env': {
-            stage: 2,
+            stage: 1,
             features: {
                 'nesting-rules': true
             }

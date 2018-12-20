@@ -15,7 +15,7 @@ class ASUNav extends Component {
     }
 
     render() {
-        const navMenu = this.renderNav(this.props.navTree);
+        const navMenu = this.renderNav(this.props.navTree, true);
         const navClass = classNames(styles.asuNavWrapper, this.props.className);
 
         return (
@@ -29,14 +29,15 @@ class ASUNav extends Component {
     }
 
 
-    renderNav(nav) {
+    renderNav(nav, toplevel) {
+
         return (
             <ul className={styles.navList}>
                 {
                     nav.map((item, index) => {
                         return (
-                            <ASUNavItem {...item} key={index}>
-                                { item.subtree ? this.renderNav(item.subtree): null}
+                            <ASUNavItem {...item} key={index} top={toplevel}>
+                                { item.subtree ? this.renderNav(item.subtree, false): null}
                             </ASUNavItem>
                         );
                     })

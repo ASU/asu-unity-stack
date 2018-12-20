@@ -47,6 +47,21 @@
     }
 }
 
+.icoSortUp {
+    composes: icoFont;
+
+    &:before {
+         content: "\f0de";
+    }
+}
+
+.icoSortDown {
+    composes: icoFont;
+
+    &:before {
+         content: "\f0dd";
+    }
+}
 
 /***
 Accessibility
