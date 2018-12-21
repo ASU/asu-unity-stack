@@ -9,20 +9,22 @@ asuNav
 
 .asuNavWrapper {
     margin:0;
+    width: 100%;
     display:block;
     z-index:100;
-    justify-self: end;
 }
 
 .asuNav {
     position:relative;
     display:inline-block;
+    width: inherit;
     margin:0 auto;
     z-index:100
 }
 
 .navList {
     margin:0;
+    width: 100%;
     list-style:none;
     white-space:nowrap;
     text-align:left;
@@ -36,7 +38,8 @@ asuNav
     padding:0;
     list-style:none;
     position:relative;
-    z-index:100
+    z-index:100;
+    text-align: left;
 }
 
 .asuNavItemSub {
@@ -48,16 +51,14 @@ asuNav
     display:inline-block;
 }
 
-
-
 .asuNav>ul {
     display:inline-block;
     margin:0 auto
 }
 
 
-.asuNav ul a {
-    display:block;
+.asuNavA {
+    display:inline-block;
     color:#000;
     text-decoration:none;
     padding:8px 8px 5px
@@ -117,7 +118,7 @@ asuNav
     }
 
     .asuNav ul:hover+img.asu_touch {
-        display:block
+        display: block
     }
 
     .subMenu {
@@ -129,12 +130,11 @@ asuNav
         -webkit-box-shadow:0 3px 3px 0 #999;
         box-shadow:0 3px 3px 0 #999;
         zoom:1;
-        /*filter:progid:DXImageTransform.Microsoft.Shadow(color=#dddddd,direction=135,strength=5),progid:DXImageTransform.Microsoft.Shadow(color=#dddddd,direction=225,strength=5); todo: do we need this?*/
     }
 }
 
 @media (--mobile) {
-    /* your styles here */
+
     .asuNav .icoSortUp, .asuNav .icoSortDown {
         display: inline-block;
     }
@@ -157,5 +157,11 @@ asuNav
         max-height: 0
     }
 
-
+    .asuNavItemTop {
+        color: #77797B;
+        background: #fff;
+        border-bottom: solid 1px #ddd;
+        font-weight: 600;
+        position: relative;
+    }
 }

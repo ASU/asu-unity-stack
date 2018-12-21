@@ -14,13 +14,14 @@ const ASUNavItem = props => {
 
     return (
         <li className={navClass}>
-            <ASULink href={props.href} target={props.target}>{props.text}</ASULink>
-            {props.children ?
-                <span className={open ? styles.icoSortUp: styles.icoSortDown}
-                      onClick={() => {setOpen(!open)}}>
-                </span> : ''
-
-            }
+            <div>
+                <ASULink className={styles.asuNavA} href={props.href} target={props.target}>{props.text}</ASULink>
+                {props.children ?
+                    <span className={open ? styles.icoSortUp: styles.icoSortDown}
+                          onClick={() => {setOpen(!open)}}>
+                    </span> : ''
+                }
+            </div>
             {props.children ? <div className={subStyles}>{props.children}</div> : ''}
         </li>
     );

@@ -79,7 +79,7 @@ Header
 Mobile ASUHeader
 **/
 
-@media only screen and (max-width: 990px) {
+@media (--mobile) {
 
     .asuHeaderMobileControls {
         /*grid-area: mobile;*/
@@ -96,6 +96,10 @@ Mobile ASUHeader
                 "sitename sitename"
                 "login login"
                 "nav nav";
+    }
+
+    .asuHeaderNav {
+        justify-self: start;
     }
 
     /** Header menu open/close CSS **/
