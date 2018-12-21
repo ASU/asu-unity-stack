@@ -1,14 +1,16 @@
+/*global customElements*/
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ASUNav from './components/ASUNav'
-import ASUFooter from './components/ASUFooter'
-import ASUBrandHeader from './components/ASUBrandHeader';
-import ASUHeader from './components/ASUHeader';
-import ASULink from './components/ASULink';
-import ASUSearchBox from './components/ASUSearchBox';
-import ASULogin from './components/ASULogin';
+import ASUNav from './components/molecules/nav/ASUNav'
+import ASUFooter from './components/organisms/footers/ASUFooter'
+import ASUBrandHeader from './components/organisms/headers/ASUBrandHeader';
+import ASUHeader from './components/organisms/headers/ASUHeader';
+import ASULink from './components/atoms/links/ASULink';
+import ASUGlobalSearch from './components/molecules/search/ASUGlobalSearch';
+import ASULogin from './components/molecules/auth/ASULogin';
 import { convert } from 'web-react-components';
 import HAXBehaviors from '../../../hax-body-behaviors/hax-body-behaviors.html';
+import PropTypes from 'prop-types';
 
 const components = {
     ASUFooter: ASUFooter,
@@ -17,35 +19,31 @@ const components = {
     ASULink: ASULink,
     ASULogin: ASULogin,
     ASUNav: ASUNav,
-    ASUSearchBox: ASUSearchBox
-};
-
-const initASUHeader = (asu_header, element) => {
-    element ? ReactDOM.render(<ASUHeaderContainer headerObj={asu_header} />, element) : false;
+    ASUSearchBox: ASUGlobalSearch
 };
 
 class ASUnityComponent extends React.Component {
-
     render() {
-        const Comp = this.props.name;
-
-        console.log(this.props, 'THE PROPS PASSED');
-
         return (
-            React.createElement(components[this.props.name], this.props.props, this.children)
+            React.createElement(components[this.props.name], this.props.properties, this.children)
         );
     }
 }
 
-// Set shadow DOM to false so that React CSS works
-const ASUnityWebComponent = convert(ASUnityComponent, ['name', 'props'], {}, {useShadowDom: false});
+ASUnityComponent.propTypes = {
+    name: PropTypes.string.isRequired,
+    properties: PropTypes.object
+};
 
-/ASUnityWebComponent.prototype.behaviors = [HAXBehaviors.propertyBehaviors];
+// Set shadow DOM to false so that React CSS works
+const ASUnityWebComponent = convert(ASUnityComponent, ['name', 'properties'], {}, {useShadowDom: false});
+
+ASUnityWebComponent.prototype.behaviors = [HAXBehaviors.propertyBehaviors];
 
 ASUnityWebComponent.prototype.connectedCallback = () => {
 
     // Establish hax properties if they exist
-    let props = {
+    /*let props = {
         'canScale': true,
         'canPosition': true,
         'canEditSource': false,
@@ -97,26 +95,22 @@ ASUnityWebComponent.prototype.connectedCallback = () => {
         'saveOptions': {
             'wipeSlot': true,
         },
-    };
-    console.log(ASUnityWebComponent, 'the web component');
+    };*/
 
     //this.setHaxProperties(props);
 };
 
-console.log(ASUnityWebComponent.prototype, 'THE PROTOTYPE');
 
 // register it here
+
 customElements.define('asu-unity-component', ASUnityWebComponent);
 
-module.exports = components;
-
-/*{
-    initASUHeader,
+export {
     ASUFooter,
     ASUHeader,
     ASUBrandHeader,
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
-};*/
+    ASUGlobalSearch
+};

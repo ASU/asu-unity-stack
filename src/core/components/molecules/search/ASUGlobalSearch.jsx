@@ -1,15 +1,20 @@
-import React, { Component } from "react";
-import styles from '../styles/ASU.css'
+import React, { Component } from 'react';
+import styles from './search.css';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-class ASUSearchBox extends Component {
+class ASUGlobalSearch extends Component {
     constructor() {
         super();
     }
 
     render() {
+
+        const searchClass = classNames(styles.asuSearch, this.props.className);
+
         if (this.props.drupal) {
             return (
-                <div className={styles.asuSearch}>
+                <div className={searchClass}>
                     <h2 className={styles.srOnly}>Search</h2>
                     <form id="google/appliance/block/form" method="post" _lpchecked="1"><label htmlFor="masu_search_box">Search</label>
                         <input name="search_header" className={styles.asuSearchBox} placeholder="Search" autoComplete="off" type="text"/>
@@ -20,7 +25,7 @@ class ASUSearchBox extends Component {
         }
 
         return (
-            <div className={styles.asuSearch}>
+            <div className={searchClass}>
                 <h2 className={styles.srOnly}>Search</h2>
                 <form target="_top" action="https://search.asu.edu/search" method="get" name="gs" role="search">
                     <label className={styles.srOnly} htmlFor="masu_search_box">Search</label>
@@ -38,4 +43,17 @@ class ASUSearchBox extends Component {
         );
     }
 }
-export default ASUSearchBox;
+
+
+
+ASUGlobalSearch.propTypes = {
+    drupal: PropTypes.bool,
+    className: PropTypes.string
+};
+
+// Specifies the default values for props:
+ASUGlobalSearch.defaultProps = {
+    drupal: false
+};
+
+export default ASUGlobalSearch;

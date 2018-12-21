@@ -34,4 +34,4 @@ class ASUFooter extends Component {
     }
 }
 
-module.exports = ASUFooter;
+export default ASUFooter;

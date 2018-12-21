@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import styles from '../styles/ASU.css';
+import styles from './auth.css';
+import classNames from 'classnames';
 
 class ASULogin extends Component {
 
@@ -12,8 +13,11 @@ class ASULogin extends Component {
     }
 
     render() {
+
+        const loginClass = classNames(styles.asuLogin, this.props.className);
+
         return (
-            <div className={styles.asuLogin}>
+            <div className={loginClass}>
                 <span className={styles.srOnly}>
                     Sign In / Sign Out
                 </span>
@@ -26,6 +30,7 @@ class ASULogin extends Component {
                         )
                     }
                 </div>
+                <div className={styles.icoUser}></div>
             </div>
         )
     }
@@ -34,7 +39,8 @@ class ASULogin extends Component {
 ASULogin.propTypes = {
     loginUrl: PropTypes.string,
     logoutUrl: PropTypes.string,
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
+    className: PropTypes.string
 };
 
 // Specifies the default values for props:

@@ -1,0 +1,167 @@
+@import '../../../styles/ASU.css';
+@import '../../../styles/colors.css';
+@import '../../../styles/variables.css';
+
+/****
+Header
+****/
+.main_search {
+    /*display:none;*/
+}
+
+/**  CSS Modules -- ASUHeader.css ****/
+.asuBrandHeader {
+    width: 100%;
+}
+
+.asuBrandHeader {
+    position:relative;
+    background-color:#fff;
+    overflow:visible;
+    margin:0;
+    font-size:.8rem;
+    font-family: var(--asu-fonts);
+    line-height:1em;
+    color:#000;
+    z-index:500;
+    -webkit-box-sizing:initial;
+    -moz-box-sizing:initial;
+    box-sizing:initial;
+    height: auto;
+    width: 100%;
+}
+
+.asuBrandHeader img {
+    border:0;
+    width: 100%;
+}
+
+.asuHeaderGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto 70px;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "logo nav nav nav login"
+            "logo . . searchbox searchbox"
+            "sitename . . . .";
+}
+
+.asuBrandHeaderLogin {
+    grid-area: login;
+    justify-self: end;
+}
+
+.asuHeaderNav {
+    grid-area: nav;
+    justify-self:end;
+}
+
+.asuHeaderLogo {
+    grid-area: logo;
+}
+
+.asuHeaderSiteName {
+    grid-area: sitename;
+}
+
+.asuHeaderGlobalSearch {
+    grid-area: searchbox;
+    justify-self: end;
+}
+
+.asuHeaderMobileControls {
+    grid-area: mobile;
+    display: none;
+    justify-self: end;
+}
+
+/***
+Mobile ASUHeader
+**/
+
+@media (--mobile) {
+
+    .asuHeaderMobileControls {
+        /*grid-area: mobile;*/
+        display: block;
+    }
+
+    .asuHeaderGrid {
+        display: grid;
+        grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
+        grid-template-columns: [left] 50% [right] 50%;
+        grid-template-areas:
+                "searchbox searchbox"
+                "logo mobile"
+                "sitename sitename"
+                "login login"
+                "nav nav";
+    }
+
+    .asuHeaderNav {
+        justify-self: start;
+    }
+
+    /** Header menu open/close CSS **/
+    .asuHeaderGlobalSearch, .asuHeaderNav, .asuBrandHeaderLogin {
+        display: none;
+    }
+
+    .asuHeaderGlobalSearch {
+        -moz-transition-duration: .3s;
+        -webkit-transition-duration: .3s;
+        -o-transition-duration: .3s;
+        overflow: hidden;
+    }
+
+    .icoNavIcon, .icoSearch {
+          float: right;
+          margin: 0;
+          padding: 21px 5px;
+          text-align: center;
+          color: #999;
+          cursor: pointer;
+          float: right;
+          font-size: 22px;
+          width: 35px;
+          text-align: center;
+    }
+
+    .openedSearch {
+
+        & .asuHeaderGlobalSearch {
+          transition-duration: .3s;
+          -moz-transition-timing-function: ease-in;
+          -webkit-transition-timing-function: ease-in;
+          -o-transition-timing-function: ease-in;
+          transition-timing-function: ease-in;
+          max-height: 1000px;
+          display: block;
+          -moz-transition-duration: .3s;
+          -webkit-transition-duration: .3s;
+          -o-transition-duration: .3s;
+          overflow: hidden;
+        }
+
+        & .icoSearch {
+              background-color: #E7E7E7;
+        }
+    }
+
+    .openedNav {
+
+        &  .asuHeaderNav, &  .asuBrandHeaderLogin, & .asuHeaderSiteName {
+            transition-duration: .3s;
+            -moz-transition-timing-function: ease-in;
+            -webkit-transition-timing-function: ease-in;
+            -o-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+            max-height: 1000px;
+            display: block;
+            -moz-transition-duration: .3s;
+            -webkit-transition-duration: .3s;
+            -o-transition-duration: .3s;
+            overflow: hidden;
+        }
+    }
+}

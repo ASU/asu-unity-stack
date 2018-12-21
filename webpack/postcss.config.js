@@ -1,5 +1,5 @@
-
 const path = require('path');
+
 
 module.exports = {
     plugins: {
@@ -7,7 +7,11 @@ module.exports = {
             root: path.join(__dirname, '../'),
             path: [path.join(__dirname, '../src')]
         },
-        'postcss-nesting': {},
-        'postcss-cssnext': {},
+        'postcss-preset-env': {
+            stage: 1,
+            features: {
+                'nesting-rules': true
+            }
+        }
     }
 }

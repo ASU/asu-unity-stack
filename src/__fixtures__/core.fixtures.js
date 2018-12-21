@@ -1,15 +1,16 @@
 import {
     ASUFooter,
-    ASUHeader,
     ASUBrandHeader,
     ASULink,
     ASULogin,
     ASUNav,
-    ASUSearchBox
+    ASUGlobalSearch,
+    ASUButton
 } from '../core/core';
 
-import navtree from '../core/components/ASUNavDefaultTree';
-import ASUHeaderObj from "../core/components/ASUBrandHeaderDefaults";
+import navtree from '../core/components/molecules/nav/ASUNavDefaultTree';
+import ASUHeaderObj from "../core/components/organisms/headers/ASUBrandHeaderDefaults";
+import styles from "../core/components/atoms/buttons/buttons.css";
 
 ASUHeaderObj.siteMenu = [
     {
@@ -39,9 +40,9 @@ ASUHeaderObj.siteMenu = [
 ];
 
 ASUHeaderObj.siteTitle = {
-    title: "ASU Custom Site Title",
-    parentOrg: "ASU Custom Parent Org",
+    siteTitle: "ASU Custom Site Title",
     siteUrl: "https://asu.edu",
+    parentOrg: "ASU Custom Parent Org",
     parentOrgUrl: "https://uto.asu.edu"
 };
 
@@ -104,10 +105,74 @@ export default [
         name: 'normal'
     },
     {
-        component: ASUSearchBox,
+        component: ASUGlobalSearch,
         props: {
             drupal: true
         },
         name: 'normal'
+    },
+    {
+        component: ASUButton,
+        name: 'CTA Primary Button',
+        props: {
+          label: 'Primary CTA',
+          className: styles.btn + ' ' + styles.btnPrimary,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'CTA Primary Button Large',
+        props: {
+          label: 'Large Primary CTA',
+          className: styles.btn + ' ' + styles.btnPrimary + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'CTA Secondary Button',
+        props: {
+          label: 'Secondary CTA',
+          className: styles.btn + ' ' + styles.btnSecondary,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'CTA Secondary Button Large',
+        props: {
+          label: 'Large Secondary CTA',
+          className: styles.btn + ' ' + styles.btnSecondary + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'RFI Button',
+        props: {
+          label: 'RFI, apply, and visit button',
+          className: styles.btn + ' ' + styles.btnGold,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'RFI Button Large',
+        props: {
+          label: 'Large RFI, apply, and visit button',
+          className: styles.btn + ' ' + styles.btnGold + ' ' + styles.btnLg,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'Explore Programs Button',
+        props: {
+          label: 'Explore programs button',
+          className: styles.btn + ' ' + styles.btnBlue,
+        }
+    },
+    {
+        component: ASUButton,
+        name: 'Explore Programs Button Large',
+        props: {
+          label: 'Large explore Programs Button',
+          className: styles.btn + ' ' + styles.btnBlue + ' ' + styles.btnLg,
+        }
     }
 ];
