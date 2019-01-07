@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/ASU/asu_unity_stack#readme",
   "peerDependencies": {
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2"
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -58,11 +58,11 @@
     "postcss-loader": "^2.1.5",
     "postcss-nesting": "^5.0.0",
     "postcss-preset-env": "^5.3.0",
-    "react": "^16.7.0-alpha.2",
+    "react": "16.7.0-alpha.2",
     "react-cosmos": "^4.1.2",
     "react-cosmos-test": "^4.4.0",
-    "react-dom": "^16.7.0-alpha.2",
-    "react-test-renderer": "^16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-test-renderer": "16.7.0-alpha.2",
     "react-web-component": "^1.0.14",
     "regenerator-runtime": "^0.13.1",
     "style-loader": "^0.20.3",
