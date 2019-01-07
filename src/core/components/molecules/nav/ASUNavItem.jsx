@@ -10,8 +10,6 @@ const ASUNavItem = props => {
     const [open, setOpen] = useState(false);
     const subStyles = classNames(styles.subMenu, (open ? styles.subSlideIn : styles.subSlideOut));
 
-    console.log(open, 'the open state');
-
     return (
         <li className={navClass}>
             <div>

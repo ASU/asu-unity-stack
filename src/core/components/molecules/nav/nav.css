@@ -9,7 +9,6 @@ asuNav
 
 .asuNavWrapper {
     margin:0;
-    width: 100%;
     display:block;
     z-index:100;
 }
@@ -134,6 +133,10 @@ asuNav
 }
 
 @media (--mobile) {
+
+    .asuNavWrapper {
+        width: 100%;
+    }
 
     .asuNav .icoSortUp, .asuNav .icoSortDown {
         display: inline-block;
