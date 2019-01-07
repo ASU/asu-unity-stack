@@ -1,281 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches snapshot 1`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 2`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 3`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 4`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 5`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 6`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 7`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
-  >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
 </div>
 `;
 
 exports[`matches snapshot 8`] = `
-<div
-  className="asuSearch"
->
-  <h2
-    className="srOnly"
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    Search
-  </h2>
-  <form
-    _lpchecked="1"
-    id="google/appliance/block/form"
-    method="post"
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 9`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
   >
-    <label
-      htmlFor="masu_search_box"
-    >
-      Search
-    </label>
-    <input
-      autoComplete="off"
-      className="asuSearchBox"
-      name="search_header"
-      placeholder="Search"
-      type="text"
-    />
-    <input
-      className="asuSearchButton"
-      type="submit"
-      value="Search"
-    />
-  </form>
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 10`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 11`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 12`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 13`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 14`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 15`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
+</div>
+`;
+
+exports[`matches snapshot 16`] = `
+<div>
+  <button
+    className="btn btnBlue btnLg"
+    label="Large explore Programs Button"
+  >
+    Large explore Programs Button
+  </button>
 </div>
 `;
