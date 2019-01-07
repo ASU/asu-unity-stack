@@ -40,6 +40,7 @@ See the developer documentation on react-cosmos at https://github.com/react-cosm
 ## Building, Testing and Deployment
 
 ```npm run build``` - build the project
+
 ```npm run test``` - run Jest tests
 
 A component playground is currently deployed at http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000  
