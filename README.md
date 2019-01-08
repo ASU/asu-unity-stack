@@ -34,4 +34,14 @@ See the developer documentation on react-cosmos at https://github.com/react-cosm
  - src - The source code for the asu-unity-stack react components
  - webpack - Webpack configuration
  - server - Express.js server configuration
+ - src/\__fixtures__ - Cosmos playground fixture configuration
+ - src/\__tests__ - Jest tests
+
+## Building, Testing and Deployment
+
+```npm run build``` - build the project
+
+```npm run test``` - run Jest tests
+
+A component playground is currently deployed at http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000  
 
