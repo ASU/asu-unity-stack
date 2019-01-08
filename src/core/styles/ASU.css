@@ -86,3 +86,17 @@ Accessibility
     margin: 0;
 }
 
+
+/** Transitions **/
+.slideDownBase {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.subSlideIn {
+    max-height: 2000px;
+}
+
+.subSlideOut {
+    max-height: 0
+}

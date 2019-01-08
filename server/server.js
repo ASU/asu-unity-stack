@@ -3,7 +3,6 @@ import path from 'path';
 import {renderComponentpage, renderSSRFullPage, sendASUHeader, sendASUFooter} from '../dist/ssr/ssr.bundled.js';
 const app = express();
 
-
 /***
  * SSR rendering server
  */
@@ -57,7 +56,6 @@ app.get('/components', function (req, res) {
 // Serve the static cosmos playground if it has been exported.
 app.get('/', function(req, res) {
     // todo: add not found message
-
     res.sendFile(path.join(__dirname, '..', 'cosmos-export', 'index.html'));
 });
 

@@ -30,7 +30,7 @@ class ASULogin extends Component {
                         )
                     }
                 </div>
-                <div className={styles.icoUser}></div>
+                <span className={styles.icoUser}></span>
             </div>
         )
     }

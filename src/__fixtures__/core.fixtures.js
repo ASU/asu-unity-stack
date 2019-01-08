@@ -8,32 +8,39 @@ import {
     ASUButton
 } from '../core/core';
 
-import navtree from '../core/components/molecules/nav/ASUNavDefaultTree';
+import navtree from '../core/components/molecules/nav/ASUHeaderMenuDefaults';
 import ASUHeaderObj from "../core/components/organisms/headers/ASUBrandHeaderDefaults";
 import styles from "../core/components/atoms/buttons/buttons.css";
 
 ASUHeaderObj.siteMenu = [
     {
         title:"Home",
-        path:"http://www.asu.edu/absolute_path"
+        text: "Home",
+        classes: "parent",
+        href:"http://www.asu.edu/absolute_path"
     },
     {
         title:"Degree Programs",
-        path:"/absolute_path/page",
-        children: [
+        text: "Degree Programs",
+        classes: "parent",
+        href:"/absolute_path/page",
+        subtree: [
             {
                 title:"Admissions",
-                path:"/?url=variable",
-                children: [
+                text:"Admissions",
+                href:"/?url=variable",
+                subtree: [
                     {
                         title:"Student Life",
-                        path:"/#hash"
+                        text:"Student Life",
+                        href:"/#hash"
                     }
                 ]
             },
             {
                 title:"Ross",
-                path:"https://www.asu.edu/"
+                text:"Ross",
+                href:"https://www.asu.edu/"
             }
         ]
     },

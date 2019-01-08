@@ -7,7 +7,7 @@ import ASUNav from "../../molecules/nav/ASUNav";
 import ASUSiteName from "../../molecules/branding/ASUSiteName";
 import ASULogin from "../../molecules/auth/ASULogin";
 import styles from './headers.css';
-import defaultNav from '../../molecules/nav/ASUNavDefaultTree';
+import defaultNav from '../../molecules/nav/ASUHeaderMenuDefaults';
 
 class ASUBrandHeader extends Component {
 
@@ -17,10 +17,15 @@ class ASUBrandHeader extends Component {
     }
 
     render() {
+        const completeTree = defaultNav.concat(this.props.siteMenu);
+        
+        console.log(this.props.siteMenu, 'THE SITE MENU');
+        console.log(completeTree, 'complete tree');
+
         return (
             <ASUHeader className={styles.asuBrandHeader}>
                 <ASULogo className={styles.asuHeaderLogo} {...this.props.logo} />
-                <ASUNav className={styles.asuHeaderNav} nav={this.props.navTree} />
+                <ASUNav className={styles.asuHeaderNav} menuTree={completeTree} />
                 <ASULogin className={styles.asuBrandHeaderLogin} {...this.props.login}/>
                 <ASUGlobalSearch className={styles.asuHeaderGlobalSearch}/>
                 {
@@ -39,7 +44,7 @@ class ASUBrandHeader extends Component {
 ASUBrandHeader.propTypes = {
     logo: PropTypes.object,
     login: PropTypes.object,
-    navTree: PropTypes.arrayOf(PropTypes.object),
+    siteMenu: PropTypes.arrayOf(PropTypes.object),
     siteTitle: PropTypes.object
 };
 
@@ -47,7 +52,7 @@ ASUBrandHeader.propTypes = {
 ASUBrandHeader.defaultProps = {
     logo: ASULogo.defaultProps,
     login: ASULogin.defaultProps,
-    navTree: defaultNav
+    siteMenu: []
 };
 
 export default ASUBrandHeader;

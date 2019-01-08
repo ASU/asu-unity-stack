@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ASUNavItem from './ASUNavItem';
-import defaultNav from "./ASUNavDefaultTree";
+import defaultNav from "./ASUHeaderMenuDefaults";
 import PropTypes from 'prop-types';
 import styles from './nav.css';
 import classNames from 'classnames';
@@ -15,7 +15,8 @@ class ASUNav extends Component {
     }
 
     render() {
-        const navMenu = this.renderNav(this.props.navTree, true);
+
+        const navMenu = this.renderNav(this.props.menuTree, true);
         const navClass = classNames(styles.asuNavWrapper, this.props.className);
 
         return (
@@ -48,14 +49,14 @@ class ASUNav extends Component {
 }
 
 ASUNav.propTypes = {
-    navTree: PropTypes.arrayOf(PropTypes.object),
+    menuTree: PropTypes.arrayOf(PropTypes.object),
     children: PropTypes.node,
     className: PropTypes.string
 };
 
 // Specifies the default values for props:
 ASUNav.defaultProps = {
-    navTree: defaultNav
+    menuTree: defaultNav
 };
 
 

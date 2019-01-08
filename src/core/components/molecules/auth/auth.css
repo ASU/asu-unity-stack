@@ -18,7 +18,8 @@
 
 .asuLoginLink {
     text-decoration:none;
-    line-height:1em
+    line-height:1em;
+    color: inherit;
 }
 
 .asuLoginLink:hover {
@@ -32,12 +33,16 @@
 /*****
 Mobile
 ******/
-@media only screen and (max-width: 990px) {
+@media only screen and (--mobile) {
 
     .asuLoginLink {
         display: inline;
         overflow: hidden;
         white-space: nowrap;
+    }
+
+    .asuLoginLink:hover {
+        text-decoration: none;
     }
 
     .asuLogin {
@@ -47,10 +52,13 @@ Mobile
         border-bottom: solid 1px #ddd;
         font-weight: 600;
         position: relative;
-    }
 
-    .asuLogin > div {
-        display: inline-block;
+        & > div {
+            display: inline-block;
+            border-left: none;
+        }
+
+        
     }
 
     .icoUser {
