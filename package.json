@@ -119,7 +119,8 @@
       "react/jsx-uses-vars": "error",
       "no-unused-vars": "warn",
       "no-console": "warn",
-      "no-undef": "warn"
+      "no-undef": "warn",
+      "no-useless-escape": "off"
     },
     "settings": {
       "react": {

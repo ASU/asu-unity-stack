@@ -27,9 +27,9 @@ asuNav
     list-style:none;
     white-space:nowrap;
     text-align:left;
-    background-color:transparent;
+    background-color: #FFFFFF;
     padding:0;
-    display:inline
+    display: block
 }
 
 .asuNavItem {

@@ -11,6 +11,9 @@ import {
 import navtree from '../core/components/molecules/nav/ASUHeaderMenuDefaults';
 import ASUHeaderObj from "../core/components/organisms/headers/ASUBrandHeaderDefaults";
 import styles from "../core/components/atoms/buttons/buttons.css";
+import Locations from "../core/locations.js";
+
+console.log(Locations, 'THE LOCATIONS');
 
 ASUHeaderObj.siteMenu = [
     {
@@ -52,6 +55,8 @@ ASUHeaderObj.siteTitle = {
     parentOrg: "ASU Custom Parent Org",
     parentOrgUrl: "https://uto.asu.edu"
 };
+
+
 
 
 export default [

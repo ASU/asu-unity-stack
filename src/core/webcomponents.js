@@ -8,7 +8,7 @@ import ASUHeader from './components/organisms/headers/ASUHeader';
 import ASULink from './components/atoms/links/ASULink';
 import ASUGlobalSearch from './components/molecules/search/ASUGlobalSearch';
 import ASULogin from './components/molecules/auth/ASULogin';
-import { convert } from 'web-react-components';
+import {convert} from 'web-react-components';
 import HAXBehaviors from '../../../hax-body-behaviors/hax-body-behaviors.html';
 import PropTypes from 'prop-types';
 
