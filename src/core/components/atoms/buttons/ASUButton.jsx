@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 
 const ASUButton = props => {
@@ -10,6 +11,11 @@ const ASUButton = props => {
         </button>
       </div>
     );
+};
+
+ASUButton.propTypes = {
+    label: PropTypes.node,
+    children: PropTypes.node
 };
 
 export default ASUButton;

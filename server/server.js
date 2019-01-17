@@ -1,26 +1,24 @@
 import express from 'express';
 import path from 'path';
-import render from '../dist/ssr/ssr.bundled.js';
+import {renderComponentpage, renderSSRFullPage, sendASUHeader, sendASUFooter} from '../dist/ssr/ssr.bundled.js';
 const app = express();
-
 
 /***
  * SSR rendering server
  */
-// Render an example of an SSR page with header and footer
 app.get('/ssr', function (req, res) {
-    render.renderSSRFullPage(req, res, false);
+    renderSSRFullPage(req, res, false);
 });
 
 app.get('/ssrprod', function (req, res) {
-    render.renderSSRFullPage(req, res, true);
+   renderSSRFullPage(req, res, true);
 });
 
 // Server side rendering of ASU Header
-app.get('/header', render.sendASUHeader);
+app.get('/header', sendASUHeader);
 
 // Server side rendering of ASU Footer
-app.get('/footer', render.sendASUFooter);
+app.get('/footer', sendASUFooter);
 
 // Serve bundles
 app.get('/:name/:file', function (req, res, next) {
@@ -48,7 +46,7 @@ app.get('/:name/:file', function (req, res, next) {
 
 // Serves an example of a Unity component wrapped as a custom HTML element (web component)
 app.get('/components', function (req, res) {
-    render.renderComponentPage(req, res, true);
+    renderComponentPage(req, res, true);
 });
 
 
@@ -58,7 +56,6 @@ app.get('/components', function (req, res) {
 // Serve the static cosmos playground if it has been exported.
 app.get('/', function(req, res) {
     // todo: add not found message
-
     res.sendFile(path.join(__dirname, '..', 'cosmos-export', 'index.html'));
 });
 

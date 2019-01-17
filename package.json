@@ -29,17 +29,18 @@
   },
   "homepage": "https://github.com/ASU/asu_unity_stack#readme",
   "peerDependencies": {
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2"
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.2.2",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^22.4.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^0.28.11",
     "eslint": "^5.3.0",
@@ -49,20 +50,21 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^22.4.3",
-    "jest-cli": "^22.4.3",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "mini-css-extract-plugin": "^0.4.0",
     "nodemon": "^1.17.4",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.5",
     "postcss-nesting": "^5.0.0",
     "postcss-preset-env": "^5.3.0",
-    "react": "^16.7.0-alpha.2",
+    "react": "16.7.0-alpha.2",
     "react-cosmos": "^4.1.2",
     "react-cosmos-test": "^4.4.0",
-    "react-dom": "^16.7.0-alpha.2",
-    "react-test-renderer": "^16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-test-renderer": "16.7.0-alpha.2",
     "react-web-component": "^1.0.14",
+    "regenerator-runtime": "^0.13.1",
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "web-react-components": "^1.4.1",
@@ -76,6 +78,7 @@
   "jest": {
     "verbose": true,
     "automock": false,
+    "testURL": "http://localhost/",
     "moduleDirectories": [
       "node_modules",
       "src"
@@ -116,7 +119,8 @@
       "react/jsx-uses-vars": "error",
       "no-unused-vars": "warn",
       "no-console": "warn",
-      "no-undef": "warn"
+      "no-undef": "warn",
+      "no-useless-escape": "off"
     },
     "settings": {
       "react": {

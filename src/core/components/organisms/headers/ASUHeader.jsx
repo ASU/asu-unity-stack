@@ -23,7 +23,7 @@ class ASUHeader extends Component {
         let cx = classNames.bind(styles);
 
         const headerClass = cx(this.props.className, {
-            openedSearch : this.state.searchOpen,
+            openedSearch: this.state.searchOpen,
             openedNav: this.state.mobileNavOpen
         });
 
