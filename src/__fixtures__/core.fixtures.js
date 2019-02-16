@@ -8,12 +8,16 @@ import {
     ASUButton
 } from '../core/core';
 
+import {
+    ASUSearchKitForm
+} from '../searchkit';
+
 import navtree from '../core/components/molecules/nav/ASUHeaderMenuDefaults';
 import ASUHeaderObj from "../core/components/organisms/headers/ASUBrandHeaderDefaults";
 import styles from "../core/components/atoms/buttons/buttons.css";
 import Locations from "../core/locations.js";
 
-console.log(Locations, 'THE LOCATIONS');
+console.log(ASUSearchKitForm);
 
 ASUHeaderObj.siteMenu = [
     {
@@ -60,6 +64,11 @@ ASUHeaderObj.siteTitle = {
 
 
 export default [
+    {
+        component: ASUSearchKitForm,
+        name: 'Searchkit Form',
+        props: {}
+    },
     {
         component: ASUFooter,
         props: {

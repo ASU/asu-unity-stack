@@ -17,7 +17,8 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-        core: ['./core/core.js']
+        core: ['./core/core.js'],
+        searchkit: ['./searchkit/index.js']
     },
     output: {
         path: path.join(__dirname, '..', 'dist'),
@@ -50,8 +51,6 @@ module.exports.push(merge(common, {
         'react-dom': 'ReactDOM'
     }
 }));
-
-console.log(__dirname, 'THE DIR NAME');
 
 // Dev SSR bundle config
 module.exports.push(merge(common, {
