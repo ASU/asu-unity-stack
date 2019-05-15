@@ -10,7 +10,7 @@ In order to build the project and run the server, the dev environment needs to h
 ## What's included
 
 - React (https://reactjs.org/)
-- Cosmos (https://github.com/react-cosmos/react-cosmos)
+- Storybook (https://storybook.js.org/)
 - Webpack (https://webpack.js.org/)
 - Expressjs (https://expressjs.com/)
 
@@ -20,11 +20,11 @@ In order to build the project and run the server, the dev environment needs to h
 The easiest way to get started is to spin up react-cosmos as a dev environment:
 
 1. ```npm install```
-2. ```npm run cosmos```
+2. ```npm run storybook```
 
-See the developer documentation on react-cosmos at https://github.com/react-cosmos/react-cosmos
+See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
-#### Server-side rendering with Express.js development server
+#### Server-side rendering example with Express.js development server
 
 1. Run ```npm start:dev```. Webpack and Node will watch for changes and automatically re-bundle assets if changes are made.
 2. The prerendered asset routes will be available on port 3000. For example, the prerendered header should be accessible at:
@@ -34,8 +34,6 @@ See the developer documentation on react-cosmos at https://github.com/react-cosm
  - src - The source code for the asu-unity-stack react components
  - webpack - Webpack configuration
  - server - Express.js server configuration
- - src/\__fixtures__ - Cosmos playground fixture configuration
- - src/\__tests__ - Jest tests
 
 ## Building, Testing and Deployment
 

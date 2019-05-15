@@ -69,11 +69,12 @@ module.exports.push(merge(common, {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: 'css-loader/locals',
+                        loader: 'css-loader',
                         options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                            exportOnlyLocals: true
                         }
                     },
                     postCSSLoader
