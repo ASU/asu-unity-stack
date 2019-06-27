@@ -42,7 +42,7 @@ const ASUPeopleSearchForm = props => {
               searchOnChange={true}
               queryOptions={{analyzer:"standard"}}
               queryFields={["displayName"]}/>
-            <Hits 
+            <Hits
               hitsPerPage={50} 
               highlightFields={["displayName"]} 
               itemComponent={HitItem}

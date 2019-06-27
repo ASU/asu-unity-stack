@@ -17,8 +17,7 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-        core: ['./core/core.js'],
-        searchkit: ['./searchkit/index.js']
+        AsuDropdownMenu: ['./components/AsuDropdownMenu/index.js']
     },
     output: {
         path: path.join(__dirname, '..', 'dist'),
@@ -53,6 +52,7 @@ module.exports.push(merge(common, {
 }));
 
 // Dev SSR bundle config
+/*
 module.exports.push(merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
@@ -84,4 +84,4 @@ module.exports.push(merge(common, {
     },
     externals: [nodeExternals()],
 
-}));
+}));*/

@@ -3,6 +3,7 @@ import ASUNavItem from './ASUNavItem';
 import defaultNav from "./ASUHeaderMenuDefaults";
 import PropTypes from 'prop-types';
 import styles from './nav.css';
+import gstyles from '../../../styles/ASU.css';
 import classNames from 'classnames';
 
 class ASUNav extends Component {
