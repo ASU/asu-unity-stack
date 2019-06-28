@@ -5,6 +5,6 @@ import ASUDropdownMenu from './AsuDropdownMenu'
 describe('<AsuDropdownMenu /> spec', () => {
     it('renders the component', () => {
       const container = render(<ASUDropdownMenu />, {title: 'ASU Home'});
-      expect(container.firstChild).toMatchSnapshot()
-     })
+            expect(container.firstChild).toMatchSnapshot()
+    })
 });
