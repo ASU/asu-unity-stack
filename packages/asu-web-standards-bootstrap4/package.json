@@ -1,0 +1,11 @@
+{
+  "name": "asu-web-standards-bootstrap4-prototype",
+  "version": "1.0.0",
+  "description": "Preliminary scaffolding for the new ASU web Standards Bootstrap 4 project",
+  "main": "index.js",
+  "repository": "https://github.com/gios-asu/asu-web-standards-bootstrap4-prototype.git",
+  "author": "Nathan Rollins <nathan.rollins@asu.edu>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {}
+}
