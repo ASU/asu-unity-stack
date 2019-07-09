@@ -14,7 +14,7 @@
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook"
   },
   "dependencies": {},

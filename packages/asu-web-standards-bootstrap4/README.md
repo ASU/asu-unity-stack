@@ -30,8 +30,7 @@
 - [Import into application or theme](#-import-into-application-or-theme)
 - [Features of this UI kit](#-features-of-this-ui-kit)
 - [Development Overview](#-development-overview)
-- [Local Development Setup](#-local-development-setup)
-- [Docker Development Setup](#-docker-development-setup)
+- [Setup Local Development Environment](#-setup-local-development-environment)
 - [Project Structure](#-project-structure)
 - [Contribute to project](#-contribute-to-project)
 - [Further Documentation](#-further-documentation)
@@ -42,6 +41,7 @@
 
 ## ❯ Load into website
 
+### TODO
 
 ## ❯ Import into application or theme
 
@@ -53,9 +53,78 @@
 
 ## ❯ Development Overview
 
-### TODO
+The goal of this project is to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
 
-## ❯ Local Development Setup
+StorybookJS has been configured to be the primary, live development interface for this theme, and some example stories have been installed to demonstrate how Storybook works. Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
+
+Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that are auto-loaded by VS Code when you load the project folder.
+
+
+### Clone and initialize this project
+
+Once you have verified that node and yarn installed correctly, it is time to download and initialize this project and all its software dependencies.
+
+First, use your favorite git client ([Gitkraken](https://www.gitkraken.com/) is a popular and easy-to-use option), and clone this repo to your preferred folder on your computer; e.g. on MacOS/Linux:
+
+```
+cd ~
+mkdir projects
+cd projects
+
+git clone https://github.com/gios-asu/asu-web-standards-bootstrap4
+cd asu-web-standards-bootstrap4
+```
+
+Now that you are located in the root of the project, initialize the project and install all of its build tools:
+
+```
+yarn install
+```
+
+Wait until this install process completes.
+
+### Launch Storybook Dev Server
+
+In your terminal, still located at the root of the project, type:
+
+```
+yarn storybook
+```
+
+Storybook will launch a live development server at http://localhost:9009 and compile all the SCSS source files defined in src/scss/bootstrap-asu.scss. Using these source files, and the stories defined in '/stories/' (all files with filenames ending `.stories.js`), Storybook will dynamically generate a development preview of styled UI elements in our theme. Any time you make changes to existing source files, or save new `.stories.js` files, Storybook will re-read your files and immediately refresh the Storybook dev website.
+
+### Run local visual snapshot tests on all theme components.
+
+The Jest testing framework has been configured to run visual snapshot tests on the theme's components when enabled in `.test.js` files (located in the same directory as the `component.stories.js` files.) These visual snapshot tests are very simplistic and fast. Once a component is determined to have been completed and meets Web Standards, the snapshjot tests will be run on that component and the resulting `__test-snapshot__` folder can be committed into the repository. Every time these snapshot tests are performed in the future, those future snapshots will be compared against our reference snapshots in `__test-snapshots__`. If that component is ever accidentally altered by unintended side-effects from other theme updates, these tests will warn us and prevent us from committing a "visual regression bug" into our theme.
+
+To run snapshot tests on the theme components:
+
+```
+yarn test:integration
+```
+
+### Run cross-browser visual regression tests using Happo.io service
+
+Note: Happo.io is currently configured in a free trial mode with a limited number of tests performed per month. This free account is configured through the Sustainability team in KE. If a contributer would like to view the results of this testing service, a free account access can be arranged upon request.
+
+Happo.io provides a cross-platform, cross-browser screenshot testing platform. This project is currently configured to run the Happo tests on the Kitchen Sink story, the full-page render of all the UI components offered by the framework rendered in-context, just like a regular webpage. Any cross-browser irregularities not caught during normal development or Jest snapshot testing should be caught by this service.
+
+The happo service can interacted with using the installed happo script. To display a help screen for Happo, type
+
+```
+yarn happo
+```
+
+A full happo run and report can be executed using
+
+```
+yarn happo run
+```
+
+
+## ❯ Setup Local Development Environment
+
+### Install Node and Yarn
 
 You need to set up your development environment before you can do anything.
 
@@ -111,89 +180,18 @@ npm install yarn -g
 ```
 Yarn is an alternative package manager to `npm`. In particular, yarn provides performance and added features for monorepos and other configuration elements in our project.
 
-![divider](./divider.png)
+### Install VS Code
 
-## ❯ Docker Development Setup
+Browse to the [VS Code homepage](https://code.visualstudio.com/) and click on the Download button. Once VS Code is downloaded, run the install package to install the software on uyour computer. Later, after you have cloned this project into a development folder on your computer, launch VS Code and then open this project folder:
 
-### Install Docker
+1. Click on the File menu
+2. Click "Add Folder to Workspace"
+3. Begin exploring!
 
-Before you start, make sure you have a recent version of [Docker](https://docs.docker.com/engine/installation/) installed
+A Workspace in VS Code is your project workspace and special settings you choose to configure for the project (vs global settings that affect the entire IDE and any projects you ever work on.) You can save your project as a Workspace [File->Save Workspace As], which makes it easier to track your project and reload it and your settings in the future.
 
-### Build Docker image
-
-```shell
-docker build -t <your-image-name> .
-```
-
-### Run Docker image in container and map port
-
-The port which runs your application inside Docker container is either configured as `PORT` property in your `.env` configuration file or passed to Docker container via environment variable `PORT`. Default port is `3000`.
-
-#### Run image in detached mode
-
-```shell
-docker run -d -p <port-on-host>:<port-inside-docker-container> <your-image-name>
-```
-
-#### Run image in foreground mode
-
-```shell
-docker run -i -t -p <port-on-host>:<port-inside-docker-container> <your-image-name>
-```
-
-### Stop Docker container
-
-#### Detached mode
-
-```shell
-docker stop <container-id>
-```
-
-You can get a list of all running Docker container and its ids by following command
-
-```shell
-docker images
-```
-
-#### Foreground mode
-
-Go to console and press <CTRL> + C at any time.
-
-### Docker environment variables
-
-There are several options to configure your app inside a Docker container
-
-#### project .env file
-
-You can use `.env` file in project root folder which will be copied inside Docker image. If you want to change a property inside `.env` you have to rebuild your Docker image.
-
-#### run options
-
-You can also change app configuration by passing environment variables via `docker run` option `-e` or `--env`.
-
-```shell
-docker run --env DB_HOST=localhost -e DB_PORT=3306
-```
-
-#### environment file
-
-Last but not least you can pass a config file to `docker run`.
-
-```shell
-docker run --env-file ./env.list
-```
-
-`env.list` example:
-
-```
-# this is a comment
-DB_TYPE=mysql
-DB_HOST=localhost
-DB_PORT=3306
-```
 
 ![divider](./divider.png)
-
 
 ## ❯ Project Structure
 
@@ -202,17 +200,17 @@ DB_PORT=3306
 | **.vscode/**                      | VSCode tasks, launch configuration and some other settings |
 | **dist/**                         | Compiled source files will be placed here |
 | **src/**                          | Source files |
-| **test**                          | Tests |
-| **test/e2e/** *.test.ts           | End-2-End tests (like e2e) |
-| **test/integration/** *.test.ts   | Integration tests |
-| **test/unit/** *.test.ts          | Unit tests |
+| **stories/**                      | Storybook stories and tests for UI components |
+| **test**                          | Separate tests folder |
+| **test/e2e/** *.test.ts           | End-2-End tests (Not Yet Implemented) |
+| **test/integration/** *.test.ts   | Integration tests (Not Yet Implemented) |
 
 
 ![divider](./divider.png)
 
 ## ❯ Contribute to project
 
-### TODO
+View our [Contributing Guidelines](./CONTRIBUTING.md)
 
 ![divider](./divider.png)
 
