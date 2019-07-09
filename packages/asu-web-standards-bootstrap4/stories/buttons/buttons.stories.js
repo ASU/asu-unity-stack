@@ -1,13 +1,13 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-import ButtonsExampleReadme from './buttons.example.readme.md'
+import ButtonsReadme from './buttons.readme.md'
 
 storiesOf('Buttons', module)
   .addParameters({
     happo: false,
     readme: {
-      sidebar: ButtonsExampleReadme,
+      sidebar: ButtonsReadme,
     },
   })
   .add('Types', () => `<div>
