@@ -1,0 +1,86 @@
+/* ========================================================================
+ * ASU Web Standards: bootstrap-asu.css v1.0.0-alpha1
+ * ========================================================================
+ * Copyright 2019 ASU
+ * Licensed under MIT (https://github.com/gios-asu/asu-web-standards-bootstrap4/blob/master/LICENSE)
+ * ======================================================================== */
+
+// Apply variable overrides before importing Bootstrap’s Sass files
+// @import 'variables';
+
+//== Bootstrap Required
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// To remove values from Bootstrap maps, these must occur between Required and Optional imports.
+// $theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
+//= Bootstrap Scaffolding (optional)
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/input-group";
+@import "../../node_modules/bootstrap/scss/custom-forms";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/jumbotron";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/media";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/toasts";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/spinners";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/print";
+
+//== Override Scaffolding
+// @import 'scaffolding';
+// @import 'asu-scaffolding';
+// @import 'tables';
+// @import 'forms';
+
+//== Override Components
+// @import 'alerts';
+// @import 'badges';
+// @import 'breadcrumbs';
+// @import 'buttons';
+// @import 'calendar';
+// @import 'carousel';
+// etc...
+
+//= ASU extensions
+// @import 'animations';
+// @import 'articles';
+// @import 'campus-visit';
+// @import 'flex-video';
+// @import 'hover-effects';
+// @import 'hero';
+// @import 'mega-menu';
+// @import 'profile';
+// @import 'related-links';
+// @import 'thumbnails';
+
+
+//== FontAwesome
+// sass-lint:disable-all
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+// sass-lint:enable-all

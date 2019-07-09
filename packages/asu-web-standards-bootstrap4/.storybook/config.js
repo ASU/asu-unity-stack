@@ -2,10 +2,8 @@ import { configure, addDecorator, addParameters } from '@storybook/html';
 import { withA11y } from '@storybook/addon-a11y';
 import { addReadme } from 'storybook-readme/html';
 import 'happo-plugin-storybook/register';
-import centered from '@storybook/addon-centered/react';
 
 import WebFont from 'webfontloader';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '!style-loader!css-loader!sass-loader!./scss-loader.scss';
 
 WebFont.load({
@@ -15,7 +13,6 @@ WebFont.load({
 });
 
 addDecorator(withA11y)
-addDecorator(centered);
 
 addParameters({
   options: {

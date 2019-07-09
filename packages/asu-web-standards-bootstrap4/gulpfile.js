@@ -111,18 +111,7 @@ gulp.task('scripts', function() {
     'node_modules/fastclick/lib/fastclick.js',
     'src/js/_fastclick.js',
     'node_modules/smooth-scroll/dist/js/smooth-scroll.js',
-    'src/js/_smoothscroll.js',
-    'node_modules/moment/moment.js',
-    'src/js/_calendar.js',
-    'src/js/_iframe-overlay.js',
-    'src/js/_smartresize.js',
-    'src/js/_sidebar.js',
-    'src/js/_collapse-footer.js',
-    'src/js/_wait-for.js',
-    'src/js/_mobile-menu.js',
-    'src/js/_sticky-nav.js',
-    'src/js/_navs-click-and-hover.js',
-    'src/js/_print-footnote-links.js'
+    'src/js/_smoothscroll.js'
 	];
 	gulp
 		.src(scripts, { allowEmpty: true })
