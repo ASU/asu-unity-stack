@@ -129,11 +129,6 @@ gulp.task('scripts', function() {
 		.pipe(gulp.dest(paths.dist + '/js'));
 });
 
-// Deleting any file inside the /src folder
-gulp.task('clean-source', function() {
-	return del(['src/**/*']);
-});
-
 // Copy all assets needed for ASU Web Standards
 gulp.task('copy-assets', function(done) {
 	// Copy Font Awesome Fonts
@@ -162,4 +157,4 @@ gulp.task('validate', gulp.series('eslint', 'sasslint'));
 // Run:
 // gulp
 // Starts watcher (default task)
-gulp.task('default', gulp.series('watch'));
+gulp.task('default', gulp.series('validate'));

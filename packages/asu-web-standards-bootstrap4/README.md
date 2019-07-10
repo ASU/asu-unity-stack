@@ -26,30 +26,31 @@
 
 ## ❯ Table of Contents
 
-- [Load into website](#-load-into-website)
-- [Import into application or theme](#-import-into-application-or-theme)
-- [Features of this UI kit](#-features-of-this-ui-kit)
+- [Load Theme into Webpage](#-load-theme-into-webpage)
+- [Import into Application](#-import-into-application)
 - [Development Overview](#-development-overview)
 - [Setup Local Development Environment](#-setup-local-development-environment)
+- [Development Procedures](#-development-procedures)
+- [Prepare Releases](#-prepare-releases)
 - [Project Structure](#-project-structure)
-- [Contribute to project](#-contribute-to-project)
+- [Contribute to Project](#-contribute-to-project)
 - [Further Documentation](#-further-documentation)
 - [Related Projects](#-related-projects)
 - [License](#-license)
 
 ![divider](./divider.png)
 
-## ❯ Load into website
+## ❯ Load Theme into Webpage
 
 ### TODO
 
-## ❯ Import into application or theme
+![divider](./divider.png)
+
+## ❯ Import into Application
 
 ### TODO
 
-## ❯ Features of this UI kit
-
-### TODO
+![divider](./divider.png)
 
 ## ❯ Development Overview
 
@@ -59,68 +60,7 @@ StorybookJS has been configured to be the primary, live development interface fo
 
 Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that you can install with a single-click when VS Code pops up a notification about the recommended extensions.
 
-
-### Clone and initialize this project
-
-Once you have verified that node and yarn installed correctly, it is time to download and initialize this project and all its software dependencies.
-
-First, use your favorite git client ([Gitkraken](https://www.gitkraken.com/) is a popular and easy-to-use option), and clone this repo to your preferred folder on your computer; e.g. on MacOS/Linux:
-
-```
-cd ~
-mkdir projects
-cd projects
-
-git clone https://github.com/gios-asu/asu-web-standards-bootstrap4
-cd asu-web-standards-bootstrap4
-```
-
-Now that you are located in the root of the project, initialize the project and install all of its build tools:
-
-```
-yarn install
-```
-
-Wait until this install process completes.
-
-### Launch Storybook Dev Server
-
-In your terminal, still located at the root of the project, type:
-
-```
-yarn storybook
-```
-
-Storybook will launch a live development server at http://localhost:9009 and compile all the SCSS source files defined in src/scss/bootstrap-asu.scss. Using these source files, and the stories defined in '/stories/' (all files with filenames ending `.stories.js`), Storybook will dynamically generate a development preview of styled UI elements in our theme. Any time you make changes to existing source files, or save new `.stories.js` files, Storybook will re-read your files and immediately refresh the Storybook dev website.
-
-### Run local visual snapshot tests on all theme components.
-
-The Jest testing framework has been configured to run visual snapshot tests on the theme's components when enabled in `.test.js` files (located in the same directory as the `component.stories.js` files.) These visual snapshot tests are very simplistic and fast. Once a component is determined to have been completed and meets Web Standards, the snapshjot tests will be run on that component and the resulting `__test-snapshot__` folder can be committed into the repository. Every time these snapshot tests are performed in the future, those future snapshots will be compared against our reference snapshots in `__test-snapshots__`. If that component is ever accidentally altered by unintended side-effects from other theme updates, these tests will warn us and prevent us from committing a "visual regression bug" into our theme.
-
-To run snapshot tests on the theme components:
-
-```
-yarn test:integration
-```
-
-### Run cross-browser visual regression tests using Happo.io service
-
-Note: Happo.io is currently configured in a free trial mode with a limited number of tests performed per month. This free account is configured through the Sustainability team in KE. If a contributer would like to view the results of this testing service, a free account access can be arranged upon request.
-
-Happo.io provides a cross-platform, cross-browser screenshot testing platform. This project is currently configured to run the Happo tests on the Kitchen Sink story, the full-page render of all the UI components offered by the framework rendered in-context, just like a regular webpage. Any cross-browser irregularities not caught during normal development or Jest snapshot testing should be caught by this service.
-
-The happo service can interacted with using the installed happo script. To display a help screen for Happo, type
-
-```
-yarn happo
-```
-
-A full happo run and report can be executed using
-
-```
-yarn happo run
-```
-
+![divider](./divider.png)
 
 ## ❯ Setup Local Development Environment
 
@@ -193,6 +133,116 @@ A Workspace in VS Code is your project workspace and special settings you choose
 
 ![divider](./divider.png)
 
+## ❯ Development Procedures
+
+### Clone and initialize this project
+
+Once you have verified that node and yarn installed correctly, it is time to download and initialize this project and all its software dependencies.
+
+First, use your favorite git client ([Gitkraken](https://www.gitkraken.com/) is a popular and easy-to-use option), and clone this repo to your preferred folder on your computer; e.g. on MacOS/Linux:
+
+```
+cd ~
+mkdir projects
+cd projects
+
+git clone https://github.com/gios-asu/asu-web-standards-bootstrap4
+cd asu-web-standards-bootstrap4
+```
+
+Now that you are located in the root of the project, initialize the project and install all of its build tools:
+
+```
+yarn install
+```
+
+Wait until this install process completes.
+
+### Launch Storybook Dev Server
+
+In your terminal, still located at the root of the project, type:
+
+```
+yarn storybook
+```
+
+Storybook will launch a live development server at http://localhost:9009 and compile all the SCSS source files defined in src/scss/bootstrap-asu.scss. Using these source files, and the stories defined in '/stories/' (all files with filenames ending `.stories.js`), Storybook will dynamically generate a development preview of styled UI elements in our theme. Any time you make changes to existing source files, or save new `.stories.js` files, Storybook will re-read your files and immediately refresh the Storybook dev website.
+
+### Run local visual snapshot tests on all theme components.
+
+The Jest testing framework has been configured to run visual snapshot tests on the theme's components when enabled in `.test.js` files (located in the same directory as the `component.stories.js` files.) These visual snapshot tests are very simplistic and fast. Once a component is determined to have been completed and meets Web Standards, the snapshjot tests will be run on that component and the resulting `__test-snapshot__` folder can be committed into the repository. Every time these snapshot tests are performed in the future, those future snapshots will be compared against our reference snapshots in `__test-snapshots__`. If that component is ever accidentally altered by unintended side-effects from other theme updates, these tests will warn us and prevent us from committing a "visual regression bug" into our theme.
+
+To run snapshot tests on the theme components:
+
+```
+yarn test:integration
+```
+
+### Run cross-browser visual regression tests using Happo.io service
+
+Note: Happo.io is currently configured in a free trial mode with a limited number of tests performed per month. This free account is configured through the Sustainability team in KE. If a contributer would like to view the results of this testing service, a free account access can be arranged upon request.
+
+Happo.io provides a cross-platform, cross-browser screenshot testing platform. This project is currently configured to run the Happo tests on the Kitchen Sink story, the full-page render of all the UI components offered by the framework rendered in-context, just like a regular webpage. Any cross-browser irregularities not caught during normal development or Jest snapshot testing should be caught by this service.
+
+The happo service can interacted with using the installed happo script. To display a help screen for Happo, type
+
+```
+yarn happo
+```
+
+A full happo run and report can be executed using
+
+```
+yarn happo run
+```
+
+![divider](./divider.png)
+
+## ❯ Prepare Releases
+
+### Linting and compiling the source code
+
+[GulpJS](https://gulpjs.com/) is a toolkit for automating tasks, and is used in this project for performing common tasks to prepare the project for production releases. Currently, Gulp is configured to perform the following tasks:
+
+* Compile SASS/SCSS source code into CSS
+* Lint (validate code for coding standards) SASS source code
+* Lint Javascript code
+* Optimize any images included in the framework
+* Compress the compiled CSS into .min.css files
+* Concatenate and compress the utility javascripts files
+* Perform housecleaning tasks on output folders
+
+Two top-level Gulp tasks have been configured to execute all necessaary sub-tasks to validate and compile the production output of this theme:
+
+```
+yarn gulp validate  # Lint and validate the source styles and scripts
+yarn gulp compile   # Compile the styles, scripts, and update all assets into the dist/ folder
+```
+
+Running these these two tasks in order will generate an up-to-date version of the ASU Web Standards production build, all contained within the `/dist/` project folder. The contents of the `/dist/` is sufficient to be copied into any website or application to be used in production.
+
+Gulp is also configured with a series of sub-tasks, which can be executed on their own for the purposes of debugging and development:
+
+```
+yarn gulp sass          # Compiles the SASS/SCSS into CSS
+yarn gulp eslint        # Lint the scripts
+yarn gulp sasslint      # Lint the SASS/SCSS source code
+yarn gulp imagemin      # Optimize images and copy into `/dist/img/`
+yarn gulp minifycss     # Minify the compiled CSS
+yarn gulp scripts       # Concatenate and minify the scripts into `/dist/js/`
+yarn gulp copy-assets   # Copy font-awesome fonts into `/dist/fonts/`
+yarn gulp clean-dist    # Delete the contents of `/dist/`
+yarn gulp styles        # Execute the 'sass' and 'minifycss' sub-tasks
+yarn gulp               # Execute the default Gulp task (validate)
+```
+
+### Publish Package Releases
+
+#### TODO
+
+
+![divider](./divider.png)
+
 ## ❯ Project Structure
 
 | Name                              | Description |
@@ -208,7 +258,7 @@ A Workspace in VS Code is your project workspace and special settings you choose
 
 ![divider](./divider.png)
 
-## ❯ Contribute to project
+## ❯ Contribute to Project
 
 View our [Contributing Guidelines](./CONTRIBUTING.md)
 
