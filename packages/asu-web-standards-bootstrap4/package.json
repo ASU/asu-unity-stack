@@ -64,7 +64,7 @@
     "sass-loader": "^7.1.0",
     "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll/archive/v10.3.1.tar.gz",
     "start-server-and-test": "^1.9.1",
-    "storybook-readme": "5.0.4-alpha.2",
+    "storybook-readme": "^5.0.5",
     "style-loader": "^0.23.1",
     "webfontloader": "^1.6.28"
   }
