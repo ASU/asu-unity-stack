@@ -17,7 +17,7 @@ addDecorator(withA11y)
 addParameters({
   options: {
     showPanel: true,
-    panelPosition: 'right',
+    panelPosition: 'bottom',
     // theme: basicTheme,
     // theme: themes.dark,
   },

@@ -5,11 +5,13 @@ storiesOf('Kitchen Sink', module)
   .addParameters({
     readme: {
       sidebar: [
-        '# Kitchen Sink'
+        `# Kitchen Sink
+The 'kitchen sink' page is an all-in-one implementation of all UI kit features, rendered in-context like a regular production web page. This makes for an excellent platform to perform visual regression tests on the UI kit as well as perform any integration tests on the ui features.`
       ],
     },
   })
   .add('bootstrap3-example', () => `
+<h1>NOTE: This is an example page from the old GIOS Bootstrap 3 framework.</h1>
 <!-- Global Navigation -->
 <nav class="navbar navbar-ws" role="navigation">
   <div class="container">
