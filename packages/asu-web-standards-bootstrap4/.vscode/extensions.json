@@ -1,11 +1,14 @@
 {
   "recommendations": [
-    "patbenatar.advanced-new-file",
-    "sleistner.vscode-fileutils",
+    "bierner.markdown-preview-github-styles",
     "dbaeumer.vscode-eslint",
-    "oderwat.indent-rainbow",
+    "editorconfig.editorconfig",
     "eg2.vscode-npm-script",
     "esbenp.prettier-vscode",
-    "robinbentley.sass-indented"
+    "oderwat.indent-rainbow",
+    "patbenatar.advanced-new-file",
+    "robinbentley.sass-indented",
+    "sleistner.vscode-fileutils",
+    "yzhang.markdown-all-in-one",
   ]
 }

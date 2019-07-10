@@ -20,7 +20,7 @@
 - **StorybookJS** provides a live, development enviroment to view styling changes immediately as the code is edited.
 - **GatsbyJS** generates a stylish Style Guide for all UI kit features and instructions on how to use this library.
 - **Cross-browser validation** of all UI kit components provided by the fantastic Happo.io visual testing service.
-- **Quality-of-life improvmeent scripts** bundled into the theme for immediate use in all web site environments.
+- **Quality-of-life improvement scripts** bundled into the theme for immediate use in all web site environments.
 
 ![divider](./divider.png)
 
@@ -57,7 +57,7 @@ The goal of this project is to retheme the vanilla Bootstrap 4 UI Kit to meet AS
 
 StorybookJS has been configured to be the primary, live development interface for this theme, and some example stories have been installed to demonstrate how Storybook works. Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
 
-Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that are auto-loaded by VS Code when you load the project folder.
+Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that you can install with a single-click when VS Code pops up a notification about the recommended extensions.
 
 
 ### Clone and initialize this project
