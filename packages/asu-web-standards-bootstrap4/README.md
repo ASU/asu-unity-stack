@@ -12,7 +12,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/gios-asu/asu-web-standards-bootstrap4.svg)
 [![Build Status](https://travis-ci.com/gios-asu/asu-web-standards-bootstrap4.svg?branch=develop)](https://travis-ci.com/gios-asu/asu-web-standards-bootstrap4)
-[![Dev Dependencies Status](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4.svg)](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4.svg)
+[![Dev Dependencies Status](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4.svg)](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4?type=dev)
 
 ![divider](./divider.png)
 
