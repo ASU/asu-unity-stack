@@ -1,14 +1,9 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-import ButtonsReadme from './buttons.readme.md'
-
 storiesOf('Buttons', module)
   .addParameters({
     happo: false,
-    readme: {
-      sidebar: ButtonsReadme,
-    },
   })
 
   .add('Examples', () => `<button type="button" class="btn btn-primary">Primary</button>
