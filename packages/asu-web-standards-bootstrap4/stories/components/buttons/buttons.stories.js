@@ -1,7 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-storiesOf('Buttons', module)
+storiesOf('Components/Buttons', module)
   .addParameters({
     happo: false,
   })
