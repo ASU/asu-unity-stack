@@ -1,16 +1,3 @@
-import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
-
-storiesOf('Kitchen Sink', module)
-  .addParameters({
-    readme: {
-      sidebar: [
-        `# Kitchen Sink
-The 'kitchen sink' page is an all-in-one implementation of all UI kit features, rendered in-context like a regular production web page. This makes for an excellent platform to perform visual regression tests on the UI kit as well as perform any integration tests on the ui features.`
-      ],
-    },
-  })
-  .add('bootstrap3-example', () => `
 <h1>NOTE: This is an example page from the old GIOS Bootstrap 3 framework.</h1>
 <!-- Global Navigation -->
 <nav class="navbar navbar-ws" role="navigation">
@@ -29,9 +16,12 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-example">
       <ul class="nav navbar-nav">
-        <li><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm" aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
-        <li class="active"><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm" aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
-        <li class="hover"><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm" aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
+        <li><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm"
+              aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
+        <li class="active"><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm"
+              aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
+        <li class="hover"><a href="/example-site" title="Home"><span class="fa fa-home hidden-xs hidden-sm"
+              aria-hidden="true"></span><span class="hidden-md hidden-lg">Home</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Degree Programs <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -173,25 +163,29 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
   <div class="row space-top-xl">
     <div class="col-xs-12">
       <h2 class="text-center">Discover why ASU is the university for you.</h2>
-      <p class="text-center">You can thrive in tomorrow's dynamic work environment at one of the world's most innovative universities.</p>
+      <p class="text-center">You can thrive in tomorrow's dynamic work environment at one of the world's most innovative
+        universities.</p>
     </div>
   </div><!-- /.row -->
   <div class="row space-bot-xl">
     <div class="col-sm-6 col-md-4 space-bot-md">
-      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="">
+      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+        alt="">
       <h3><a href="#">Define a successful future</a></h3>
       <p>Actuarial Science is consistently one of the most secure and highest-paying jobs.</p>
       <button class="btn btn-gold btn-block btn-lg">Request information</button>
     </div>
     <div class="col-sm-6 col-md-4 space-bot-md">
-      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="">
+      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+        alt="">
       <h3><a href="#">Discover excellence</a></h3>
       <p>ASU ranked #21 in the world for top institution in mathematics.</p>
       <button class="btn btn-gold btn-block btn-lg">Schedule a visit</button>
     </div>
     <div class="clearfix visible-sm-block"></div>
     <div class="col-sm-6 col-md-4 space-bot-md">
-      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="">
+      <img class="img-responsive space-bot-md" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+        alt="">
       <h3><a href="#">Become a master learner</a></h3>
       <p>ASU math grad selected for Woodrow Wilson fellowship.</p>
       <button class="btn btn-gold btn-block btn-lg">How and when to apply</button>
@@ -215,16 +209,20 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
     <div class="row space-bot-xl">
       <div class="col-sm-6 col-md-4">
         <h3><a href="#">ASU math professor earns international Marie Curie fellowship</a></h3>
-        <p>Top class researchers from outside Europe are selected for the fellowship to encourage research cooperation between Europe and other parts of the world.</p>
+        <p>Top class researchers from outside Europe are selected for the fellowship to encourage research cooperation
+          between Europe and other parts of the world.</p>
       </div>
       <div class="col-sm-6 col-md-4">
         <h3><a href="#">Dean's Medalist melds mathematics and music degrees</a></h3>
-        <p>"I usually get either shock and confusion that these things are so different, how could they possibly meld. Or a deep empathy and a realization that yes, of course, what better majors to combine."</p>
+        <p>"I usually get either shock and confusion that these things are so different, how could they possibly meld.
+          Or a deep empathy and a realization that yes, of course, what better majors to combine."</p>
       </div>
       <div class="clearfix visible-sm-block"></div>
       <div class="col-sm-6 col-md-4">
         <h3><a href="#">ASU mathematician earns prestigious NSF CAREER Award</a></h3>
-        <p>The $400,000 CAREER Award will support Kao's research in an increasingly important area: he is designing functional brain imaging experiments that are crucially important for understanding the inner workings of the brain.</p>
+        <p>The $400,000 CAREER Award will support Kao's research in an increasingly important area: he is designing
+          functional brain imaging experiments that are crucially important for understanding the inner workings of the
+          brain.</p>
       </div>
     </div><!-- /.row -->
 
@@ -312,7 +310,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
       <!-- Main Content -->
       <div class="col-md-8 col-md-pull-4">
 
-        <p class="lead">This page is a list of elements and how they display for reference. Use this page when building new content, and as a syntax example.</p>
+        <p class="lead">This page is a list of elements and how they display for reference. Use this page when building
+          new content, and as a syntax example.</p>
 
         <hr>
 
@@ -337,7 +336,11 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
 
         <p class="lead">This is a lead paragraph.</p>
 
-        <p>This is an <b>ordinary paragraph</b> that is <i>long enough</i> to wrap to <u>multiple lines</u> so that you can see how the line spacing looks. Lorem ipsum dolor sit amet, et vis purto tibique inimicus, euismod assueverit at mei, mea odio decore adipisci no. Pro ei inermis fierent, ut eam quodsi iriure. Volutpat maluisset id mea, mea eu omittam voluptua inciderint. Eum ut accusamus molestiae dissentiet, mei ex ponderum inimicus corrumpit, dicit fierent ut sea.</p>
+        <p>This is an <b>ordinary paragraph</b> that is <i>long enough</i> to wrap to <u>multiple lines</u> so that you
+          can see how the line spacing looks. Lorem ipsum dolor sit amet, et vis purto tibique inimicus, euismod
+          assueverit at mei, mea odio decore adipisci no. Pro ei inermis fierent, ut eam quodsi iriure. Volutpat
+          maluisset id mea, mea eu omittam voluptua inciderint. Eum ut accusamus molestiae dissentiet, mei ex ponderum
+          inimicus corrumpit, dicit fierent ut sea.</p>
 
         <div class="row">
           <div class="col-sm-6 col-md-4">
@@ -403,7 +406,7 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
 
         <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
         <p>Use <code>&lt;pre&gt;</code> for multiple lines of code</p>
-  <pre><code>function preFormatting() {
+        <pre><code>function preFormatting() {
   // looks like this;
   var foo = bar;
   return true;
@@ -499,7 +502,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
             <div class="panel explore-programs">
               <div class="panel-body">
                 <h3>Explore Our Programs</h3>
-                <p>Cu quo exerci petentium, unum ubique mentitum vel ex, eu est quis ridens. Et sed prima dissentiunt accommodare.</p>
+                <p>Cu quo exerci petentium, unum ubique mentitum vel ex, eu est quis ridens. Et sed prima dissentiunt
+                  accommodare.</p>
                 <button class="btn btn-blue btn-block">Undergraduate programs</button>
                 <button class="btn btn-blue btn-block">Graduate programs</button>
               </div>
@@ -613,7 +617,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
             <div class="row">
               <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="profile-pic">
-                  <img src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="Jason Striker" class="img-responsive space-bot-md">
+                  <img src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="Jason Striker"
+                    class="img-responsive space-bot-md">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
@@ -653,16 +658,26 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane fade in active" id="bio">
-            <p>Jason Striker is an advocate and educator who facilitates intercultural, interpersonal and meaningful discourse. His specialization in digital communication, social media and online community building fosters the know-how and know-why, to support accessibility and accountability — for all — within online mediums. He strives to teach how to communicate effectively and judiciously, digitally and face to face.</p>
-            <p>Jason serves the ASU Community as the communication manager for the University Technology Office; as a teaching assistant for COM 324; is the Vice President of Professional Development for the Graduate Professional Student Association, volunteers nationally with the National Assocation of Graduate &amp; Professional Students (NAGPS) as their Director of Relations, and serves on the Committee for Campus Inclusion (CCI).</p>
+              <p>Jason Striker is an advocate and educator who facilitates intercultural, interpersonal and meaningful
+                discourse. His specialization in digital communication, social media and online community building
+                fosters the know-how and know-why, to support accessibility and accountability — for all — within online
+                mediums. He strives to teach how to communicate effectively and judiciously, digitally and face to face.
+              </p>
+              <p>Jason serves the ASU Community as the communication manager for the University Technology Office; as a
+                teaching assistant for COM 324; is the Vice President of Professional Development for the Graduate
+                Professional Student Association, volunteers nationally with the National Assocation of Graduate &amp;
+                Professional Students (NAGPS) as their Director of Relations, and serves on the Committee for Campus
+                Inclusion (CCI).</p>
             </div>
             <div class="tab-pane fade" id="research">
               <h3>Profile example tab</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus arcu felis, blandit a lorem nec; adipiscing pretium est. </p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus arcu felis, blandit a lorem nec;
+                adipiscing pretium est. </p>
             </div>
             <div class="tab-pane fade" id="vitae">
               <h3>Profile example tab</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus arcu felis, blandit a lorem nec; adipiscing pretium est.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus arcu felis, blandit a lorem nec;
+                adipiscing pretium est.</p>
             </div>
           </div><!-- /.tab-content -->
         </div><!-- /.profile -->
@@ -703,7 +718,9 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
         <div class="panel">
           <div class="panel-body">
             <h2>Lorem Ipsum Dolor</h2>
-            <p>Cu quo exerci petentium, unum ubique mentitum vel ex, eu est quis ridens. Et sed prima dissentiunt accommodare, ut duo dicit denique, his facete definitionem ei. Omnis partiendo et sea, quo populo consulatu at.</p>
+            <p>Cu quo exerci petentium, unum ubique mentitum vel ex, eu est quis ridens. Et sed prima dissentiunt
+              accommodare, ut duo dicit denique, his facete definitionem ei. Omnis partiendo et sea, quo populo
+              consulatu at.</p>
             <button class="btn btn-primary btn-block">Primary Call to Action</button>
             <button class="btn btn-secondary btn-block">Secondary Call to Action</button>
           </div>
@@ -726,56 +743,68 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           </thead>
           <tbody>
             <tr>
-              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="profile pic"></td>
+              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                  alt="profile pic"></td>
               <td>
                 <a href="#">Jane Applebee</a><br>
-                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty Leader, Human Dimensions
+                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty
+                Leader, Human Dimensions
               </td>
               <td>
                 <a href="#">maienschein@asu.edu</a><br>
                 <a class="no-border" href="tel:480-965-6105">(480) 965-6105</a><br>
                 Office: <a class="no-border" href="#">LSC 282</a>
               </td>
-              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a></td>
+              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a>
+              </td>
             </tr>
             <tr>
-              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="profile pic"></td>
+              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                  alt="profile pic"></td>
               <td>
                 <a href="#">Jane Applebee</a><br>
-                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty Leader, Human Dimensions
+                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty
+                Leader, Human Dimensions
               </td>
               <td>
                 <a href="#">maienschein@asu.edu</a><br>
                 <a class="no-border" href="tel:480-965-6105">(480) 965-6105</a><br>
                 Office: <a class="no-border" href="#">LSC 282</a>
               </td>
-              <td><a href="#">Science and Society</a>, <a href="#">Science Communication</a>, <a href="#">Science Policy</a></td>
+              <td><a href="#">Science and Society</a>, <a href="#">Science Communication</a>, <a href="#">Science
+                  Policy</a></td>
             </tr>
             <tr>
-              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="profile pic"></td>
+              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                  alt="profile pic"></td>
               <td>
                 <a href="#">Jane Applebee</a><br>
-                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty Leader, Human Dimensions
+                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty
+                Leader, Human Dimensions
               </td>
               <td>
                 <a href="#">maienschein@asu.edu</a><br>
                 <a class="no-border" href="tel:480-965-6105">(480) 965-6105</a><br>
                 Office: <a class="no-border" href="#">LSC 282</a>
               </td>
-              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a></td>
+              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a>
+              </td>
             </tr>
             <tr>
-              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png" alt="profile pic"></td>
+              <td><img class="img-bordered" src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                  alt="profile pic"></td>
               <td>
                 <a href="#">Jane Applebee</a><br>
-                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty Leader, Human Dimensions
+                Regents’, President’s, and Parents Association Professor; Dir., Center for Biology and Society; Faculty
+                Leader, Human Dimensions
               </td>
               <td>
                 <a href="#">maienschein@asu.edu</a><br>
                 <a class="no-border" href="tel:480-965-6105">(480) 965-6105</a><br>
                 Office: <a class="no-border" href="#">LSC 282</a>
               </td>
-              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a></td>
+              <td><a href="#">Bioethics</a>, <a href="#">History of Science</a>, <a href="#">Philosophy of Science</a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -975,7 +1004,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           <div class="input-group section-search space-bot-sm">
             <input type="text" placeholder="Search News" class="form-control input-md">
             <span class="input-group-btn">
-              <button class="btn" type="button"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Search news</span></button>
+              <button class="btn" type="button"><i class="fa fa-search" aria-hidden="true"></i><span
+                  class="sr-only">Search news</span></button>
             </span>
           </div><!-- /input-group -->
 
@@ -1078,7 +1108,7 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
             </select>
           </div>
           <p>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </p>
 
         </form>
@@ -1123,8 +1153,10 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
             <p>Open List Group</p>
             <!-- List Group, linked items -->
             <div class="list-group open">
-              <a class="list-group-item" href="#">List Group Linked Items <span class="label label-success pull-right">99.971%</span></a>
-              <a class="list-group-item active" href="#">Link with Active Class <span class="label label-success pull-right">99.971%</span></a>
+              <a class="list-group-item" href="#">List Group Linked Items <span
+                  class="label label-success pull-right">99.971%</span></a>
+              <a class="list-group-item active" href="#">Link with Active Class <span
+                  class="label label-success pull-right">99.971%</span></a>
               <a class="list-group-item" href="#">Morbi leo risus</a>
               <a class="list-group-item" href="#">Porta ac consectetur ac</a>
               <a class="list-group-item" href="#">Vestibulum at eros</a>
@@ -1155,31 +1187,37 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
               <div class="carousel-inner">
                 <div class="item active">
                   <div class="col-sm-6">
-                    <a href="#"><img src="https://static.sustainability.asu.edu/manual-uploads/100.png" class="img-responsive img-link"></a>
+                    <a href="#"><img src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                        class="img-responsive img-link"></a>
                   </div>
                   <div class="col-sm-6">
                     <h4><a href="#">Connected Treadmills</a></h4>
-                    <p>Cupcake ipsum dolor sit amet toffee oat cake gingerbread cake. Hal&shy;vah halvah lollipop lollipop pudding lollipop cupcake biscuit. Apple pie cake chocolate cake marshmallow jelly-o.<br>
-                    <a href="#">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                    <p>Cupcake ipsum dolor sit amet toffee oat cake gingerbread cake. Hal&shy;vah halvah lollipop
+                      lollipop pudding lollipop cupcake biscuit. Apple pie cake chocolate cake marshmallow jelly-o.<br>
+                      <a href="#">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
                   </div>
                 </div><!-- /.item -->
 
                 <div class="item">
                   <div class="col-sm-6">
-                    <a href="#"><img src="https://static.sustainability.asu.edu/manual-uploads/100.png" class="img-responsive img-link"></a>
+                    <a href="#"><img src="https://static.sustainability.asu.edu/manual-uploads/100.png"
+                        class="img-responsive img-link"></a>
                   </div>
                   <div class="col-sm-6">
                     <h4><a href="#">Success Story for Websites</a></h4>
-                    <p>Cupcake ipsum dolor sit amet toffee oat cake gingerbread cake. Halvah halvah lollipop lollipop pudding lollipop cupcake biscuit. Apple pie cake chocolate cake marshmallow jelly-o.<br>
-                    <a href="#">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+                    <p>Cupcake ipsum dolor sit amet toffee oat cake gingerbread cake. Halvah halvah lollipop lollipop
+                      pudding lollipop cupcake biscuit. Apple pie cake chocolate cake marshmallow jelly-o.<br>
+                      <a href="#">Continue Reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
                   </div>
                 </div><!-- /.item -->
               </div><!-- /.carousel-inner -->
               <!-- Controls -->
               <div class="col-md-12 carousel-nav">
                 <ul class="pager carousel-nav">
-                  <li class="previous disabled"><a data-slide="prev" href="#carouselHomepage"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous Story</a></li>
-                  <li class="next"><a data-slide="next" href="#carouselHomepage">Next Story <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                  <li class="previous disabled"><a data-slide="prev" href="#carouselHomepage"><i
+                        class="fa fa-angle-left" aria-hidden="true"></i> Previous Story</a></li>
+                  <li class="next"><a data-slide="next" href="#carouselHomepage">Next Story <i class="fa fa-angle-right"
+                        aria-hidden="true"></i></a></li>
                 </ul>
               </div>
             </div><!-- /#carouselHomepage -->
@@ -1205,19 +1243,23 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
 
         <div class="alert alert-success alert-dismissable">
           <strong>Success!</strong> You've done a swell job with timetravel, fella.
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i
+              class="fa fa-times"></i></button>
         </div>
         <div class="alert alert-info alert-dismissable">
           <strong>Info!</strong> You should consider <em>not</em> going to 1984.
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i
+              class="fa fa-times"></i></button>
         </div>
         <div class="alert alert-warning alert-dismissable">
           <strong>Warning!</strong> Imminent Dalek attack. Battle stations.
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i
+              class="fa fa-times"></i></button>
         </div>
         <div class="alert alert-danger alert-dismissable">
           <strong>Danger!</strong> You can't defend the tardis with a carrot.
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i
+              class="fa fa-times"></i></button>
         </div>
         <hr>
       </div>
@@ -1234,20 +1276,37 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
       <div class="row">
         <div class="col-md-4 col-sm-12 space-bot-md">
 
-            <address>
-                            a Unit of: <br>
-              <a href="https://sustainability.asu.edu">Julie Ann Wrigley Global Institute of Sustainability</a><br>
-              <br>
-              School of Sustainability, Arizona State University<br>
-              800 South Cady Mall <br>
-              Tempe, AZ 85281<br>
-              Phone: <a class="phone-link" href="tel:480-727-6963" id="phone-link-in-footer">480-727-6963</a><br>              Fax: 480-965-8087<br>            </address>
-            <p><a class="contact-link" href="mailto:schoolofsustainability@asu.edu?subject=SOS%20Contact%20Us" id="contact-us-link-in-footer">Contact Us</a></p>            <ul class="social-media">
-              <li><a href="https://www.facebook.com/ASUsustainability" title="Facebook" id="facebook-link-in-footer"><i class="fa fa-facebook-square"></i></a></li>              <li><a href="https://twitter.com/asugreen" title="Twitter" id="twitter-link-in-footer"><i class="fa fa-twitter-square"></i></a></li>              <li><a href="https://plus.google.com/+SchoolofSustainabilityTempe" title="Google+" id="google_plus-link-in-footer"><i class="fa fa-google-plus-square"></i></a></li><li><a href="https://sustainability.asu.edu/linkedin" title="LinkedIn" id="linkedin-link-in-footer"><i class="fa fa-linkedin-square"></i></a></li><li><a href="https://vimeo.com/sustainability" title="Vimeo" id="vimeo-link-in-footer"><i class="fa fa-vimeo-square"></i></a></li><li><a href="https://www.flickr.com/photos/asu-gios/" title="Flickr" id="flickr-link-in-footer"><i class="fa fa-flickr"></i></a></li>            </ul>
-            <a class="btn btn-primary" href="http://www.asufoundation.org/SchoolOfSustainability" id="contribute-button-in-footer">Contribute</a>
-          </div>
+          <address>
+            a Unit of: <br>
+            <a href="https://sustainability.asu.edu">Julie Ann Wrigley Global Institute of Sustainability</a><br>
+            <br>
+            School of Sustainability, Arizona State University<br>
+            800 South Cady Mall <br>
+            Tempe, AZ 85281<br>
+            Phone: <a class="phone-link" href="tel:480-727-6963" id="phone-link-in-footer">480-727-6963</a><br> Fax:
+            480-965-8087<br> </address>
+          <p><a class="contact-link" href="mailto:schoolofsustainability@asu.edu?subject=SOS%20Contact%20Us"
+              id="contact-us-link-in-footer">Contact Us</a></p>
+          <ul class="social-media">
+            <li><a href="https://www.facebook.com/ASUsustainability" title="Facebook" id="facebook-link-in-footer"><i
+                  class="fa fa-facebook-square"></i></a></li>
+            <li><a href="https://twitter.com/asugreen" title="Twitter" id="twitter-link-in-footer"><i
+                  class="fa fa-twitter-square"></i></a></li>
+            <li><a href="https://plus.google.com/+SchoolofSustainabilityTempe" title="Google+"
+                id="google_plus-link-in-footer"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a href="https://sustainability.asu.edu/linkedin" title="LinkedIn" id="linkedin-link-in-footer"><i
+                  class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="https://vimeo.com/sustainability" title="Vimeo" id="vimeo-link-in-footer"><i
+                  class="fa fa-vimeo-square"></i></a></li>
+            <li><a href="https://www.flickr.com/photos/asu-gios/" title="Flickr" id="flickr-link-in-footer"><i
+                  class="fa fa-flickr"></i></a></li>
+          </ul>
+          <a class="btn btn-primary" href="http://www.asufoundation.org/SchoolOfSustainability"
+            id="contribute-button-in-footer">Contribute</a>
+        </div>
         <div class="col-md-2 col-sm-3 space-bot-md">
-          <h2 data-toggle="collapse" data-target="#academics-menu">Academics <span class="caret hidden-sm hidden-md hidden-lg"></span></h2>
+          <h2 data-toggle="collapse" data-target="#academics-menu">Academics <span
+              class="caret hidden-sm hidden-md hidden-lg"></span></h2>
           <ul class="big-foot-nav collapse" id="academics-menu">
             <li><a class="" href="#">Departments</a></li>
             <li><a class="" href="#">Executive Education</a></li>
@@ -1257,7 +1316,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           </ul>
         </div>
         <div class="col-md-2 col-sm-3 space-bot-md">
-          <h2 data-toggle="collapse" data-target="#connect-menu">Connect <span class="caret hidden-sm hidden-md hidden-lg"></span></h2>
+          <h2 data-toggle="collapse" data-target="#connect-menu">Connect <span
+              class="caret hidden-sm hidden-md hidden-lg"></span></h2>
           <ul class="big-foot-nav collapse" id="connect-menu">
             <li><a class="" href="#">Calendar of Events</a></li>
             <li><a class="" href="#">Contact Us</a></li>
@@ -1267,7 +1327,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           </ul>
         </div>
         <div class="col-md-2 col-sm-3 space-bot-md">
-          <h2 data-toggle="collapse" data-target="#impact-menu">Impact <span class="caret hidden-sm hidden-md hidden-lg"></span></h2>
+          <h2 data-toggle="collapse" data-target="#impact-menu">Impact <span
+              class="caret hidden-sm hidden-md hidden-lg"></span></h2>
           <ul class="big-foot-nav collapse" id="impact-menu">
             <li><a class="" href="#">China Programs</a></li>
             <li><a class="" href="#">Invest</a></li>
@@ -1277,7 +1338,8 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
           </ul>
         </div>
         <div class="col-md-2 col-sm-3 space-bot-md">
-          <h2 data-toggle="collapse" data-target="#people-menu">People <span class="caret hidden-sm hidden-md hidden-lg"></span></h2>
+          <h2 data-toggle="collapse" data-target="#people-menu">People <span
+              class="caret hidden-sm hidden-md hidden-lg"></span></h2>
           <ul class="big-foot-nav collapse" id="people-menu">
             <li><a class="" href="#">Alumni</a></li>
             <li><a class="" href="#">Current Students</a></li>
@@ -1309,4 +1371,3 @@ The 'kitchen sink' page is an all-in-one implementation of all UI kit features, 
 </div><!-- /.footer -->
 
 <!-- End Footer -->
-`);

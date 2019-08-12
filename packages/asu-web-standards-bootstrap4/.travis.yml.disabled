@@ -9,8 +9,8 @@ sudo: false
 #install:
 #  - yarn install
 
-script:
-  - yarn happo-ci-travis
+# script:
+#   - yarn happo-ci-travis
 
 # deploy:
 #   provider: pages
