@@ -1,8 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-import './asu-bootstrap3.html';
-
 storiesOf('Kitchen Sink', module)
   .addParameters({
     readme: {
