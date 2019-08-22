@@ -6,49 +6,63 @@ storiesOf('Components/Buttons', module)
     happo: false,
   })
 
-  .add('Examples', () => `<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-<button type="button" class="btn btn-link">Link</button>`)
-
-  .add('Button tags', () => `<a class="btn btn-primary" href="#" role="button">Link</a>
-<button class="btn btn-primary" type="submit">Button</button>
+.add('Standard button tags', () => `<button class="btn btn-primary" type="submit">Primary CTA</button>
 <input class="btn btn-primary" type="button" value="Input">
 <input class="btn btn-primary" type="submit" value="Submit">
-<input class="btn btn-primary" type="reset" value="Reset">`)
+<input class="btn btn-primary" type="submit" value="Send">
+<input class="btn btn-primary" type="reset" value="Contribute"><hr>
+<input class="btn btn-secondary" type="button" value="Secondary CTA"><hr>
+<input class="btn btn-rfi" type="button" value="Apply">
+<input class="btn btn-rfi" type="button" value="Request Info">
+<input class="btn btn-rfi" type="button" value="Visit"><hr/>
+<input class="btn btn-program" type="button" value="Undergraduate Programs">
+<input class="btn btn-program" type="button" value="Graduate Programs"><hr/>
+<input class="btn btn-program" type="button" value="Explore Programs">
+<input class="btn btn-program" type="button" value="Explore accelerated degrees">
+<input class="btn btn-program" type="button" value="Explore minors and cerfificates">`)
 
-  .add('Outline buttons', () => `<button type="button" class="btn btn-outline-primary">Primary</button>
+.add('Other color examples', () => `<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-program">Programs</button>
+<button type="button" class="btn btn-rfi">Request Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button><hr>
+<button type="button" class="btn btn-success">Alert: Success</button>
+<button type="button" class="btn btn-danger">Alert: Danger</button>
+<button type="button" class="btn btn-warning">Alert: Warning</button>
+<button type="button" class="btn btn-info">Alert: Info</button>
+`)
+.add('Outline buttons', () => `<button type="button" class="btn btn-outline-primary">Primary</button>
 <button type="button" class="btn btn-outline-secondary">Secondary</button>
-<button type="button" class="btn btn-outline-success">Success</button>
-<button type="button" class="btn btn-outline-danger">Danger</button>
-<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-program">Programs</button>
+<button type="button" class="btn btn-outline-rfi">Request Info</button>
 <button type="button" class="btn btn-outline-info">Info</button>
 <button type="button" class="btn btn-outline-light">Light</button>
-<button type="button" class="btn btn-outline-dark">Dark</button>`)
+<button type="button" class="btn btn-outline-dark">Dark</button><hr>
+<button type="button" class="btn btn-outline-success">Alert: Success</button>
+<button type="button" class="btn btn-outline-danger">Alert: Danger</button>
+<button type="button" class="btn btn-outline-warning">Alert: Warning</button>
+<button type="button" class="btn btn-outline-info">Alert: Info</button>`)
 
-  .add('Sizes', () => `<button type="button" class="btn btn-primary btn-lg">Large button</button>
+.add('Sizes', () => `<button type="button" class="btn btn-primary btn-lg">Large button</button>
 <button type="button" class="btn btn-secondary btn-lg">Large button</button><hr/><button type="button" class="btn btn-primary btn-sm">Small button</button>
 <button type="button" class="btn btn-secondary btn-sm">Small button</button><hr/><button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>`)
 
-  .add('Active state', () => `<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+.add('Active state', () => `<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
 <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>`)
 
-  .add('Disabled state', () => `<button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+.add('Disabled state', () => `<button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
 <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button><hr/><a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
 <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`)
 
-  .add('Button plugin - toggle state', () => `<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+.add('Button plugin - toggle state', () => `<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
   Single toggle
 </button>`)
 
-  .add('Checkbox and radio buttons', () => `<div class="btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
+.add('Checkbox and radio buttons', () => `<div class="btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-secondary active">
     <input type="checkbox" checked autocomplete="off"> Checked
   </label>
 </div><hr/><div class="btn-group btn-group-toggle" data-toggle="buttons">

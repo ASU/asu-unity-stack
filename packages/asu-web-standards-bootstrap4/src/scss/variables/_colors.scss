@@ -1,102 +1,54 @@
-// Colors
-//
-// @see https://hub.asu.edu/brand-hq/brand-standards/color-palette
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+// ASU Brand Standard Colors
+// Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
+$maroon:     #8C1D40;
+$gold:       #FFC627;
+$blue:       #00A3E0;
+$green:      #78BE20;
+$orange:     #FF7F32;
+$gray:       #5C6670;
+$black:      #000000;
+$white:      #FFFFFF;
+// Plus these additional colors from ASU Brand Guide: https://brandguide.asu.edu/Executing-the-brand/Web-and-mobile/ui-kit
+// need Unity Group discussion: these 'alt' colors need review with Hub
+$alt-success: #148E4B;
+$alt-info:    #008ED6;
+$alt-warning: #EC5937;
+$alt-danger:  #BFE319;
+$alt-gray:    #DBDBDB; // used for 'secondary' color variant (e.g. btn-secondary)
 
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
-
-$grays: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$grays: map-merge(
-  (
-    "100": $gray-100,
-    "200": $gray-200,
-    "300": $gray-300,
-    "400": $gray-400,
-    "500": $gray-500,
-    "600": $gray-600,
-    "700": $gray-700,
-    "800": $gray-800,
-    "900": $gray-900
-  ),
-  $grays
-);
-
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+// Bootstrap modifier colors
+$primary:    $maroon;
+$secondary:  $alt-gray;
+$success:    $alt-success;
+$info:       $alt-info;
+$warning:    $alt-warning;
+$danger:     $alt-danger; // need Unity Group discussion: no approved color is available for this; but wouldn't Bootstrap's $red be a better choice?
+$rfi:        $gold;
+$program:     $blue;
+// $light:      $gray-100;  // need Unity Group discussion: unsure what to do with these colors right now;
+// $dark:       $gray-800;  // need Unity Group discussion: need testing to determine if it makes sense to assign to our ASU gray colors
 
 $colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
 $colors: map-merge(
   (
-    "blue":       $blue,
-    "indigo":     $indigo,
-    "purple":     $purple,
-    "pink":       $pink,
-    "red":        $red,
-    "orange":     $orange,
-    "yellow":     $yellow,
-    "green":      $green,
-    "teal":       $teal,
-    "cyan":       $cyan,
-    "white":      $white,
-    "gray":       $gray-600,
-    "gray-dark":  $gray-800
+    "maroon":       $maroon,
+    "gold":         $gold,
+    "blue":         $blue,
+    "green":        $green,
+    "orange":       $orange,
+    "gray":         $gray,
+    "black":        $black,
+    "white":        $white,
+    "alt-success":  $alt-success,
+    "alt-info":     $alt-info,
+    "alt-warning":  $alt-warning,
+    "alt-danger":   $alt-danger,
+    "alt-gray":     $alt-gray,
   ),
   $colors
 );
 
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
-
-$theme-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$theme-colors: map-merge(
-  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-  ),
-  $theme-colors
+$theme-colors: (
+  "rfi": $rfi,
+  "program": $program,
 );
-
-// Set a specific jump point for requesting color jumps
-$theme-color-interval:      8% !default;
-
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  150 !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;

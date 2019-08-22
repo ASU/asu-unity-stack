@@ -6,7 +6,7 @@
  * ======================================================================== */
 
 // Apply variable overrides before importing Bootstrap’s Sass files
-// @import 'variables';
+@import 'variables/colors';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
@@ -52,7 +52,7 @@
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../node_modules/bootstrap/scss/print';
 
-//== Override Scaffolding
+//== Override Scaffolding Examples
 // @import 'scaffolding';
 // @import 'asu-scaffolding';
 // @import 'tables';
