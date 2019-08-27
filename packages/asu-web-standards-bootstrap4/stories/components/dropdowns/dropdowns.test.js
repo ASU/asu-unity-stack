@@ -19,7 +19,7 @@ describe('Dropdowns', () => {
 
   it('button variants visually look correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--with-button-variants');
+    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--with-color-variants');
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
@@ -46,7 +46,7 @@ describe('Dropdowns', () => {
 
   it('dropup visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-dropup');
+    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-drop-up');
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
@@ -55,7 +55,7 @@ describe('Dropdowns', () => {
 
   it('dropleft visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-dropleft');
+    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-drop-left');
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
@@ -64,7 +64,7 @@ describe('Dropdowns', () => {
 
   it('dropright visually look correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-dropright');
+    await page.goto('http://localhost:9009/iframe.html?id=components-dropdowns--directions-drop-right');
     const image = await page.screenshot();
 
     // API from jest-image-snapshot

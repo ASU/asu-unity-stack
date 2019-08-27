@@ -29,7 +29,7 @@ storiesOf('Components/Dropdowns', module)
   </ul>
 </div>`)
 
-  .add('With button variants', () => `<div class="bd-example">
+  .add('With color variants', () => `<div class="bd-example">
   <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Primary</button>
     <ul class="dropdown-menu">
@@ -42,6 +42,26 @@ storiesOf('Components/Dropdowns', module)
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Secondary</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-rfi dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Request Info</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-program dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Program</button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -119,6 +139,32 @@ storiesOf('Components/Dropdowns', module)
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-rfi">Request Info</button>
+    <button type="button" class="btn btn-rfi dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-program">Program</button>
+    <button type="button" class="btn btn-program dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+    </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-success">Success</button>
     <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
@@ -230,7 +276,7 @@ storiesOf('Components/Dropdowns', module)
   </div><!-- /btn-toolbar -->
 </div>`)
 
-  .add('Directions - Dropup', () => `<div class="bd-example">
+  .add('Directions - drop up', () => `<div class="bd-example">
   <div class="btn-group dropup">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       Dropup
@@ -260,7 +306,7 @@ storiesOf('Components/Dropdowns', module)
   </div>
 </div>`)
 
-  .add('Directions - Dropright', () => `<div class="bd-example">
+  .add('Directions - drop right', () => `<div class="bd-example">
   <div class="btn-group dropright">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       Dropright
@@ -290,7 +336,7 @@ storiesOf('Components/Dropdowns', module)
   </div>
 </div>`)
 
-.add('Directions - dropleft', () => `<div class="bd-example">
+.add('Directions - drop left', () => `<div class="bd-example">
 <div class="btn-group dropleft">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     Dropleft
