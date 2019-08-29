@@ -13,13 +13,11 @@ storiesOf('Overview', module)
     'Read Me',
     () => `<h1>ASU Web Standards Bootstrap 4 Theme</h1>
 
-<p>This styleguide demonstrates all the available components, markup, and styles that are available in this CMS agnostic implementation of the ASU Web Standards set forth by the [ASU Marketing Hub](https://brandguide.asu.edu/).</p>
+<p>This Storybook live development site demonstrates all the available components, markup, and styles that are available in this CMS agnostic implementation of the ASU Web Standards set forth by the <a href="https://brandguide.asu.edu/">ASU Marketing Hub</a>.</p>
 
-<p>For more information on how these styles are created and how to use them, head on over to the [project GitHub repository](https://github.com/gios-asu/asu-web-standards-bootstrap4/). If you have any questions, [post an issue](https://github.com/gios-asu/asu-web-standards-bootstrap4/issues).</p>
+<p>For more information on how these styles are created and how to use them, head on over to the <a href="https://github.com/gios-asu/asu-web-standards-bootstrap4/">project GitHub repository</a>. If you have any questions, <a href="https://github.com/gios-asu/asu-web-standards-bootstrap4/issues">post an issue</a>.</p>
 
-<p>Watch here for live rendered UI components.</p>
-
-<p>Don\'t forget to view the Accessibility Test Results in the service panel below.</p>`
+<p>Don\'t forget to view the Accessibility Test Results in the service panel below!</p>`
   )
 
   .add(
