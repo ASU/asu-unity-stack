@@ -19,7 +19,7 @@ describe('Colors', () => {
 
   it('background colors visually look correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=utilities-colors--background-color');
+    await page.goto('http://localhost:9009/iframe.html?id=utilities-colors--background-colors');
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
