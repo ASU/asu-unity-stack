@@ -5,20 +5,28 @@ import Downshift from 'downshift';
 
 const AsuDropdownMenu = (props) => {
 
-  let links = [];
-  const [active, setActive] = useState(-1);
+  let linkRefs = [];
 
-  useEffect(() => {
-    if (active != -1) {
-      links[active].current.focus();
-    }
-  });
+  for (let i=0; i < props.items.length; i++) {
+    let newRef = React.createRef();
+    linkRefs.push(newRef);
+  }
 
   return(
     <Wrapper>
       <Downshift
         stateReducer={stateReducer}
         itemToString={item => (item ? item.value : '')}
+        onStateChange={(changes, stateAndHelpers)=> {
+
+          console.log(changes, 'changes');
+          console.log(stateAndHelpers, 'the helpers');
+
+          if (changes.hasOwnProperty('highlightedIndex') && changes.highlightedIndex !== null) {
+            //todo: focus the menu item when it's selected
+            linkRefs[changes.highlightedIndex].current.focus();
+          }
+        }}
       >
         {({
           getItemProps,
@@ -30,31 +38,25 @@ const AsuDropdownMenu = (props) => {
         }) => (
           <div role="navigation">
             <button {...getToggleButtonProps()}>{props.title}</button>
+            <input {...getInputProps()} type="hidden"></input>
             <ul {...getMenuProps()} >
               { isOpen ? props.items.map((item, index) => {
-                // create ref to control link focus
-                let newRef = React.createRef();
-                links.push(newRef);
-
-                if (highlightedIndex === index) {
-                  setActive(index);
-                }
-
                 return (
                   <li
                     {...getItemProps({
                       item,
-                      index
+                      index,
+                      onBlur: (event) => { event.nativeEvent.preventDownshiftDefault = true; },
+                      onFocus: (event) => { event.nativeEvent.preventDownshiftDefault = true; }
                     })}
                     key={item.value}
                     style={{
                       cursor: 'pointer',
-                      backgroundColor: highlightedIndex === index ? '#bed5df' : 'transparent'
+                      backgroundColor: highlightedIndex === index ? '#bed5df' : 'transparent',
                     }}
                   >
-                    <a {...getInputProps({
-                      'aria-autocomplete': 'none'
-                    })} href={item.href} ref={links[index]} tabIndex="0">{item.value}</a>
+                    <a onFocus={(event) => { // Prevent Downshift's default 'Enter' behavior.
+                        event.nativeEvent.preventDownshiftDefault = true; event.stopPropagation(); }} href={item.href} ref={linkRefs[index]} tabIndex="0">{item.value}</a>
                   </li>
                 )
               }) : null }
@@ -84,13 +86,13 @@ const stateReducer = (state, changes) => {
       return {
         ...changes,
         isOpen: state.isOpen,
-        highlightedIndex: state.highlightedIndex,
+        highlightedIndex: state.highlightedIndex
       }
     case Downshift.stateChangeTypes.blurInput:
       return {
         ...changes,
         isOpen: state.isOpen,
-        highlightedIndex: state.highlightedIndex,
+        highlightedIndex: state.highlightedIndex
       }
     default:
       return changes
