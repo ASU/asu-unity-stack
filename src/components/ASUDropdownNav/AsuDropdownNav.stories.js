@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ASUDropdownMenu from './AsuDropdownMenu';
+import AsuDropdownNav from './AsuDropdownNav';
 
 const items = [
   {
@@ -14,7 +14,7 @@ const items = [
 ]
 
 
-storiesOf('ASUDropdownMenu', module)
+storiesOf('AsuDropdownNav')
   .add('basic', () => (
-    <ASUDropdownMenu {...{title: 'ASU Home', items: items}}/>
+    <AsuDropdownNav {...{title: 'ASU Home', items: items}}/>
   ));

@@ -1,13 +1,15 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export default [
 	{
-		input: 'src/components/AsuDropdownMenu/index.js',
+		input: 'src/components/AsuDropdownNav/index.js',
 		output: {
-			name: 'ASUDropdownMenu',
-			file: 'dist/ASUDropdownMenu.bundled.js',
+			name: 'ASUDropdownNav',
+			file: 'dist/ASUDropdownNav.bundled.js',
 			format: 'umd'
 		},
 		plugins: [
@@ -17,13 +19,21 @@ export default [
             }),
 			babel({
                 exclude: 'node_modules/**' // only transpile our source code
-             })
-		],
-		external: [
-            'react',
-            'react-dom',
-            'styled-components'
+             }),
+             postcss({
+                plugins: [
+                    postcssPresetEnv({ /* use stage 3 features + css nesting rules */
+                        stage: 3,
+                        features: {
+                        'nesting-rules': true
+                        }
+                    }) 
+                ]
+            }),
         ],
-        globals: { 'styled-components': 'styled' },
+        external: [
+            'react',
+            'react-dom'
+        ]
     }
 ];

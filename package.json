@@ -69,6 +69,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
     "searchkit": "^2.3.1-alpha.7",
     "style-loader": "^0.20.3",
     "tailwindcss": "^1.0.5",
@@ -144,8 +145,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "downshift": "^3.2.12",
-    "jest-styled-components": "^6.3.3",
-    "styled-components": "^5.0.0-beta.6-ej4"
+    "jest-styled-components": "^6.3.3"
   }
 }
