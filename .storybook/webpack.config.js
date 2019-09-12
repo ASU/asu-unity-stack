@@ -1,6 +1,6 @@
 const path = require('path');
 // your app's webpack.config.js
-const custom = require('../webpack/webpack.storybook.js');
+const custom = require('./webpack.storybook.js');
 
 console.log(custom);
 

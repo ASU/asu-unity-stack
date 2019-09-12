@@ -1,12 +1,12 @@
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const common = require('../webpack/webpack.common.js');
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
         config: {
-            path: path.join(__dirname, './postcss.config.js')
+            path: path.join(__dirname, '../postcss.config.js')
         },
         sourceMap: true
     }
