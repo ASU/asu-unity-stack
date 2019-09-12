@@ -17,12 +17,11 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-        AsuDropdownNav: ['./components/AsuDropdownNav/index.js'],
-        AsuBrandHeader: ['./components/AsuBrandHeader/index.js'],
+      'asu-brand': './index.js'
     },
     output: {
-        path: path.join(__dirname, '..', 'src', 'components', '[name]', 'dist'),
-        filename: "[name]/[name].development.js",
+        path: path.resolve(__dirname, '..', 'dist'),
+        filename: "[name].development.js",
         libraryTarget: 'umd',
         library: '',
         umdNamedDefine: true
