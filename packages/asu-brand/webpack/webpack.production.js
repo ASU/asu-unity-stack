@@ -9,19 +9,19 @@ module.exports = devWebpack;
 module.exports.push(merge(common, {
     mode: 'production',
     entry: {
-        core: './core/core.js'
+      'asu-brand': './index.js'
     },
     output: {
-        path: path.resolve(__dirname, '..', "dist"),
-        filename: "[name]/[name].production.js",
-        libraryTarget: 'umd',
-        library: '',
-        umdNamedDefine: true,
-        globalObject: "typeof self !== 'undefined' ? self : this"
+      path: path.resolve(__dirname, '..', 'dist'),
+      filename: "[name].production.js",
+      libraryTarget: 'umd',
+      library: '',
+      umdNamedDefine: true,
+      globalObject: "typeof self !== 'undefined' ? self : this"
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name]/[name].production.css",
+            filename: "[name].production.css",
         })
     ],
     module: {

@@ -20,32 +20,30 @@ const AsuDropdownNav = props => {
 
   return (
     <div role="navigation" className={navClass}>
-
-          <a className={styles.asuNavA} href={props.href} target={props.target}>
-            {props.title}
-          </a>
-          {props.items ? (
-            <span
-              className={open ? styles.icoSortUp : styles.icoSortDown}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            ></span>
-          ) : (
-            ""
-          )}
-        <ul className={subStyles}>
-          {props.items.map((item, index) => {
-            return (
-              <li className={styles.asuNavItem} key={index}>
-                <a href={item.href} ref={linkRefs[index]} tabIndex="0">
-                  {item.value}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-
+      <a className={styles.asuNavA} href={props.href} target={props.target}>
+        {props.title}
+      </a>
+      {props.items ? (
+        <span
+          className={open ? styles.icoSortUp : styles.icoSortDown}
+          onClick={() => {
+            setOpen(!open);
+          }}
+        ></span>
+      ) : (
+        ""
+      )}
+      <ul className={subStyles}>
+        {props.items.map((item, index) => {
+          return (
+            <li className={styles.asuNavItem} key={index}>
+              <a href={item.href} ref={linkRefs[index]} tabIndex="0">
+                {item.value}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

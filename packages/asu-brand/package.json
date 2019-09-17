@@ -1,11 +1,11 @@
 {
   "name": "@asu/asu-brand",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "main": "src/index.js",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "private": true,
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "peerDependencies": {
     "react": "^16.8.2",
@@ -57,10 +57,11 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
+    "prepare" : "npm run build",
     "build": "webpack --config webpack/webpack.production.js",
     "build:watch": "webpack --watch --config=webpack/webpack.development.js",
     "build:dev": "webpack --config=webpack/webpack.development.js"
   },
   "description": "ASU Brand React Components",
-  "author": ""
+  "author": "Colton Testamarck (colt@asu.edu)"
 }
