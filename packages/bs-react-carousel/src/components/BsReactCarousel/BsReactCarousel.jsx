@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { UncontrolledCarousel, Util} from 'reactstrap';
 import bootstrap from '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+// Needs to be set for CSS modules.
+// See https://github.com/reactstrap/reactstrap/issues/1049
 Util.setGlobalCssModule(bootstrap);
 
 const BsReactCarousel = (props) => (

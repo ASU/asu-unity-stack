@@ -1,3 +1,0 @@
-{
-  "presets": [["@babel/env",{"modules": "auto", "targets": {"node": "11"}}], "@babel/react"]
-}

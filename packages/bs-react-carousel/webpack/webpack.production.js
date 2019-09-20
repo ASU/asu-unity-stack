@@ -34,5 +34,9 @@ module.exports.push(merge(common, {
                 ]
             }
         ]
-    }
+    },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+  }
 }));
