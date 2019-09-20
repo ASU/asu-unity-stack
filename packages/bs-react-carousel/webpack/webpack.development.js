@@ -17,7 +17,7 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-      'asu-brand': './index.js'
+      'bs-react-carousel': './index.js'
     },
     output: {
         path: path.resolve(__dirname, '..', 'dist'),

@@ -9,7 +9,7 @@ module.exports = devWebpack;
 module.exports.push(merge(common, {
     mode: 'production',
     entry: {
-      'asu-brand': './index.js'
+      'bs-react-carousel': './index.js'
     },
     output: {
       path: path.resolve(__dirname, '..', 'dist'),
