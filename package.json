@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/ASU/asu_unity_stack.git"
   },
-  "author": "Colton Testamarck",
-  "license": "MIT",
+  "author": "Colton Testamarck (colt@asu.edu)",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/ASU/asu_unity_stack/issues"
   },

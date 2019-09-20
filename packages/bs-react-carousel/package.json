@@ -1,0 +1,25 @@
+{
+  "name": "bs-react-carousel",
+  "version": "0.0.1",
+  "description": "ASU React implementation of Bootstrap 4 carousel",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+  },
+  "author": "Colton Testamarck",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ASU/asu-unity-stack/issues"
+  },
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "reactstrap": "^8.0.1"
+  }
+}
