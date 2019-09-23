@@ -43,7 +43,7 @@ const items = [
     value: "Item 9",
     href: "https://asu.edu"
   }
-]
+];
 
 storiesOf('AsuDropdownNav', module)
   .add('basic', () => (

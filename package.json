@@ -73,10 +73,10 @@
     ],
     "moduleDirectories": [
       "node_modules",
-      "src"
+      "packages"
     ],
     "roots": [
-      "src"
+      "packages"
     ],
     "moduleFileExtensions": [
       "js",

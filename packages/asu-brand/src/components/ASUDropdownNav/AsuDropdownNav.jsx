@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
+import Fragment from ""
 
 const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
@@ -13,9 +14,11 @@ const AsuDropdownNav = props => {
 
   let linkRefs = [];
 
-  for (let i = 0; i < props.items.length; i++) {
-    let newRef = React.createRef();
-    linkRefs.push(newRef);
+  if (props.items) {
+    for (let i = 0; i < props.items.length; i++) {
+      let newRef = React.createRef();
+      linkRefs.push(newRef);
+    }
   }
 
   return (
@@ -24,26 +27,31 @@ const AsuDropdownNav = props => {
         {props.title}
       </a>
       {props.items ? (
-        <span
-          className={open ? styles.icoSortUp : styles.icoSortDown}
-          onClick={() => {
-            setOpen(!open);
-          }}
-        ></span>
+        <React.Fragment>
+          <span
+            className={open ? styles.icoSortUp : styles.icoSortDown}
+            onClick={() => {
+              setOpen(!open);
+            }}
+          ></span>
+
+          <ul className={subStyles}>
+            {props.items.map((item, index) => {
+              return (
+                <li className={styles.asuNavItem} key={index}>
+                  <a href={item.href} ref={linkRefs[index]} tabIndex="0">
+                    {item.value}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+        </React.Fragment>
       ) : (
         ""
       )}
-      <ul className={subStyles}>
-        {props.items.map((item, index) => {
-          return (
-            <li className={styles.asuNavItem} key={index}>
-              <a href={item.href} ref={linkRefs[index]} tabIndex="0">
-                {item.value}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+
     </div>
   );
 };
