@@ -157,4 +157,4 @@ gulp.task('validate', gulp.series('eslint', 'sasslint'));
 // Run:
 // gulp
 // Starts watcher (default task)
-gulp.task('default', gulp.series('validate'));
+gulp.task('default', gulp.series('validate', 'compile'));
