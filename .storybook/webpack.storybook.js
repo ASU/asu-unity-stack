@@ -34,10 +34,5 @@ module.exports = merge(common, {
                 ]
             }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'React Cosmos'
-        })
-    ]
+    }
 });

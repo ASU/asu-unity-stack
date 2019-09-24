@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssoWebpackPlugin = require('csso-webpack-plugin').default;
 const path = require("path");
 const devWebpack = require('./webpack.development.js');
 
@@ -22,7 +23,9 @@ module.exports.push(merge(common, {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].production.css",
-        })
+        }),
+        new CssoWebpackPlugin(),
+
     ],
     module: {
         rules: [

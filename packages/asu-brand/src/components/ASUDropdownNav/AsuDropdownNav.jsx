@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
-import Fragment from ""
 
 const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
@@ -51,7 +50,6 @@ const AsuDropdownNav = props => {
       ) : (
         ""
       )}
-
     </div>
   );
 };

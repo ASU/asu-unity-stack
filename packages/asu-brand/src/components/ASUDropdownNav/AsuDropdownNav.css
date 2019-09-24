@@ -156,11 +156,11 @@ asuNav
 
 
 .asuNavA {
-    @apply inline-flex text-black px-1 py-1 no-underline;
-    /*display:inline-block;
+    /*@apply inline-flex text-black px-1 py-1 no-underline;*/
+    display:inline-block;
     color:#000;
     text-decoration:none;
-    padding:8px 8px 5px*/
+    padding:8px 8px 5px;
 }
 
 .asuNav>ul>li.parent>a {
@@ -229,11 +229,11 @@ asuNav
 @media (--mobile) {
 
     .asuNavA {
-        @apply px-3 py-3;
+       /* @apply px-3 py-3;*/
 
         max-width: 100%;
         width: auto;
-        /*padding: 12px 12px 12px 14px;*/
+        padding: 12px 12px 12px 14px;
     }
 
     .asuNavWrapper {
