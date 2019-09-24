@@ -2,7 +2,6 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
 const nodeExternals = require('webpack-node-externals');
-const CssoWebpackPlugin = require('csso-webpack-plugin').default;
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -46,9 +45,6 @@ module.exports.push(merge(common, {
             }
         ]
     },
-    plugins: [
-      new CssoWebpackPlugin()
-    ],
     externals: {
         react: 'React',
         'react-dom': 'ReactDOM'
