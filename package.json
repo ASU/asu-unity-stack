@@ -52,6 +52,7 @@
     "postcss-loader": "^2.1.5",
     "postcss-modules": "^1.4.1",
     "postcss-preset-env": "^6.7.0",
+    "postcss-purifycss": "^1.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "regenerator-runtime": "^0.13.3",
@@ -127,7 +128,9 @@
     }
   },
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "classnames": "^2.2.6"
   }

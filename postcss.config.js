@@ -13,6 +13,15 @@ module.exports = {
             tags: ["a", "body", "div", "ul", "li", "h1", "h2", "h3", "h4", "span", "img"]
         }
       }
+    },
+    "postcss-purifycss": {
+     content: ["packages/*/src/*.jsx"],
+     //whitelist: [],
+      purifyOptions: {
+        info: true,
+        rejected: true,
+        whitelist: [],
+      }
     }
   }
 }

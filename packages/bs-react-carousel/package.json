@@ -22,7 +22,8 @@
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "reactstrap": "^8.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
@@ -33,7 +34,6 @@
     "@storybook/addon-knobs": "^5.2.1",
     "@storybook/react": "^5.2.1",
     "@testing-library/react": "^8.0.5",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
@@ -53,6 +53,7 @@
     "postcss-loader": "^2.1.5",
     "postcss-modules": "^1.4.1",
     "postcss-preset-env": "^6.7.0",
+    "postcss-purifycss": "^1.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "reactstrap": "^8.0.1",
