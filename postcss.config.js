@@ -15,11 +15,11 @@ module.exports = {
       }
     },
     "postcss-purifycss": {
-     content: ["packages/*/src/*.jsx"],
+     content: ["packages/*/src/components/*/*.jsx"],
      //whitelist: [],
       purifyOptions: {
         info: true,
-        rejected: true,
+        rejected: false,
         whitelist: [],
       }
     }
