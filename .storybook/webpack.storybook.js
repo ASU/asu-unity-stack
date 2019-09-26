@@ -6,7 +6,7 @@ const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
         config: {
-            path: path.join(__dirname, '../postcss.config.js')
+            path: path.join(__dirname, './postcss.config.js')
         },
         sourceMap: true
     }
@@ -23,12 +23,13 @@ module.exports = merge(common, {
                 use: [
                     'style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
+                      loader: 'css-loader',
+                      options: {
+                          modules: {
                             localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
+                          },
+                          importLoaders: 1
+                      }
                     },
                     postCSSLoader
                 ]

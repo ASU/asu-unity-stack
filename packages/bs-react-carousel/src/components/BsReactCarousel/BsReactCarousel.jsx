@@ -75,10 +75,10 @@ class BsReactCarousel extends Component {
         previous={this.previous}
         cssModule={bootstrap}
       >
-        <CarouselIndicators items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators cssModule={bootstrap} items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+        <CarouselControl  direction="prev" directionText="Previous" onClickHandler={this.previous} />
+        <CarouselControl  direction="next" directionText="Next" onClickHandler={this.next} />
       </Carousel>
     );
   }

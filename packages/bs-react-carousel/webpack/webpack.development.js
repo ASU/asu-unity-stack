@@ -17,7 +17,7 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-      'bs-react-carousel': './index.js'
+      'bs-react-carousel': './src/index.js'
     },
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
@@ -33,12 +33,13 @@ module.exports.push(merge(common, {
                 use: [
                     'style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
+                      loader: 'css-loader',
+                      options: {
+                          modules: {
                             localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
+                          },
+                          importLoaders: 1,
+                      }
                     },
                     postCSSLoader
                 ]
@@ -47,7 +48,8 @@ module.exports.push(merge(common, {
     },
     externals: {
         react: 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        reactstrap: "reactstrap"
     }
 }));
 

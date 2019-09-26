@@ -3,8 +3,17 @@ const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const devWebpack = require("./webpack.development.js");
+const postCSSLoader = {
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss-loader',
+    config: {
+        path: path.join(__dirname, './postcss.config.js')
+    }
+  }
+};
 
-module.exports = devWebpack;
+module.exports = [];//devWebpack;
 
 module.exports.push(
   merge(common, {
@@ -32,13 +41,15 @@ module.exports.push(
           use: [
             MiniCssExtractPlugin.loader,
             {
-              loader: "css-loader",
-              options: {
-                modules: true,
-                importLoaders: 1,
-                localIdentName: "[local]___[hash:base64:5]"
-              }
-            }
+                loader: 'css-loader',
+                options: {
+                    modules: {
+                      localIdentName: '[name]__[local]___[hash:base64:5]'
+                    },
+                    importLoaders: 1
+                }
+            },
+            postCSSLoader
           ]
         }
       ]
