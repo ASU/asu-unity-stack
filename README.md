@@ -17,7 +17,7 @@ In order to build the project and run the server, the dev environment needs to h
 ## Quickstart Guide
 
 #### Local development
-The easiest way to get started is to spin up react-cosmos as a dev environment:
+The easiest way to get started is to spin up storybook as a dev environment:
 
 1. ```yarn install```
 2. ```yarn storybook```
