@@ -25,9 +25,9 @@ The easiest way to get started is to spin up react-cosmos as a dev environment:
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
 ## Structure
- - packages/<package-name> - NPM package root
- - packages/<package-name>/src - React source code
- - packages/<package-name>/webpack - Webpack configuration for package
+ - packages/[package-name] - NPM package root
+ - packages/[package-name]/src - React source code
+ - packages/[package-name]/webpack - Webpack configuration for package
  
 ## Building, Testing
 
