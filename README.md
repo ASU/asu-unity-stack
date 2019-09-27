@@ -3,7 +3,7 @@ Arizona State University Unity StaCK(Standards Compliance Kit). This project is 
 
 ## Dependencies
 
-In order to build the project and run the server, the dev environment needs to have the following programs installed:
+In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js 
 - NPM
 - Yarn
