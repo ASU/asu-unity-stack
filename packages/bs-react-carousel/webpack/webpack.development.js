@@ -17,7 +17,7 @@ module.exports = [];
 module.exports.push(merge(common, {
     mode: 'development',
     entry: {
-      'bs-react-carousel': './src/index.js'
+      'bs-react-carousel': './index.js'
     },
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
@@ -48,8 +48,7 @@ module.exports.push(merge(common, {
     },
     externals: {
         react: 'React',
-        'react-dom': 'ReactDOM',
-        reactstrap: "reactstrap"
+        'react-dom': 'ReactDOM'
     }
 }));
 

@@ -19,7 +19,12 @@ module.exports = {
         "carousel-control-prev",
         "carousel-control-prev-icon",
         "carousel-control-next",
-        "carousel-control-next-icon"
+        "carousel-control-next-icon",
+        "carousel",
+        "btn",
+        "btn-primary",
+        "jumbotron",
+        "jumbotron-fluid"
       ]
     }
   }

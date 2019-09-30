@@ -22,8 +22,7 @@
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
