@@ -31,7 +31,7 @@ const BsHeroImage = (props) => {
     <Jumbotron cssModule={bootstrap} fluid style={bgStyles}>
       <img src={props.src} alt={props.altText} className={bootstrap['sr-only']}/>
       <div className={bootstrap.container}>
-        <h2 className={bootstrap["display-4"] }>{props.title}</h2>
+        <h2 className={bootstrap["display-4"]}>{props.title}</h2>
         <p>{props.tagline}</p>
         {buttons}
       </div>
