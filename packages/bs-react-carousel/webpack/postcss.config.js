@@ -24,7 +24,8 @@ module.exports = {
         "btn",
         "btn-primary",
         "jumbotron",
-        "jumbotron-fluid"
+        "jumbotron-fluid",
+        "sr-only"
       ]
     }
   }
