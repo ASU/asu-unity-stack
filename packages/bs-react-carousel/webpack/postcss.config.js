@@ -21,11 +21,15 @@ module.exports = {
         "carousel-control-next",
         "carousel-control-next-icon",
         "carousel",
+        "carousel-item",
+        "carousel-indicators",
+        "carousel-inner",
         "btn",
         "btn-primary",
         "jumbotron",
         "jumbotron-fluid",
-        "sr-only"
+        "sr-only",
+        "active"
       ]
     }
   }
