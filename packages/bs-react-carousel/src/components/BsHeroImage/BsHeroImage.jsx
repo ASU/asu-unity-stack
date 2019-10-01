@@ -15,12 +15,15 @@ const heroButtons = (buttons) => {
 
     return buttons.map((item, index) => {
 
+      if (!item.text || !item.url) {
+        return '';
+      }
+
       let bcolor = 'primary';
 
       if (item.color == 'blue') {
         bcolor = 'secondary';
       }
-
 
       return (<Button key={index} tag='a' href={item.url} color={bcolor}>{item.text}</Button>)
     })
