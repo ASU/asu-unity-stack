@@ -25,6 +25,7 @@ module.exports = {
         "carousel-item-left",
         "carousel-item-right",
         "carousel-item-next",
+        "carousel-item-prev",
         "carousel-indicators",
         "carousel-inner",
         "slide",
