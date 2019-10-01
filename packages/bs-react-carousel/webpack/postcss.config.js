@@ -24,6 +24,7 @@ module.exports = {
         "carousel-item",
         "carousel-indicators",
         "carousel-inner",
+        "slide",
         "btn",
         "btn-primary",
         "btn-secondary",
