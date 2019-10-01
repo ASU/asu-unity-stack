@@ -26,6 +26,8 @@ module.exports = {
         "carousel-inner",
         "btn",
         "btn-primary",
+        "btn-red",
+        "btn-blue",
         "jumbotron",
         "jumbotron-fluid",
         "sr-only",
