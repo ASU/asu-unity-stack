@@ -9,8 +9,20 @@ Util.setGlobalCssModule(bootstrap);
 
 
 const heroButtons = (buttons) => {
+
+
+
+
     return buttons.map((item, index) => {
-      return (<Button key={index} tag='a' href={item.url} color={item.color}>{item.text}</Button>)
+
+      let bcolor = 'primary';
+
+      if (item.color == 'blue') {
+        bcolor = 'secondary';
+      }
+
+
+      return (<Button key={index} tag='a' href={item.url} color={bcolor}>{item.text}</Button>)
     })
 }
 
