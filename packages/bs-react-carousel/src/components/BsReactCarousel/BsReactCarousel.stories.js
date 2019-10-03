@@ -33,5 +33,8 @@ const items = [
 storiesOf('BsReactCarousel')
   .add('basic', () => (
     <BsReactCarousel items={items}/>
+
+  )).add('With custom interval', () => (
+    <BsReactCarousel items={items} interval={1000}/>
   ));
 

@@ -8,7 +8,8 @@ const item = {
   tagline: 'Some tagline information here',
   title: 'Hero One Title',
   buttons: [
-    {text: 'button 1', url: 'https://asu.edu', color: 'primary'}
+    {text: 'button 1', url: 'https://asu.edu', color: 'primary'},
+    {text: 'button 2', url: 'https://asu.edu', color: 'secondary'},
   ],
   titleLink: 'https://asu.edu'
 };

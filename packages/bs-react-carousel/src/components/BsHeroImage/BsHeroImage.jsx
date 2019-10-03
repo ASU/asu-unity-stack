@@ -15,13 +15,16 @@ const heroButtons = buttons => {
     }
 
     let bcolor = "primary";
+    let style = {
+      marginLeft: (index == 0) ? "0": "1em"
+    };
 
     if (item.color == "blue") {
       bcolor = "secondary";
     }
 
     return (
-      <Button key={index} tag="a" href={item.url} color={bcolor}>
+      <Button key={index} tag="a" href={item.url} color={bcolor} style={style}>
         {item.text}
       </Button>
     );
@@ -54,7 +57,7 @@ const BsHeroImage = props => {
       />
       <div className={bootstrap.container}>
         {title}
-        <p>{props.tagline}</p>
+        <p className={styles.heroP}>{props.tagline}</p>
         {buttons}
       </div>
     </Jumbotron>

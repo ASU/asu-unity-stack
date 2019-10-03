@@ -73,6 +73,7 @@ class BsReactCarousel extends Component {
         next={this.next}
         previous={this.previous}
         cssModule={bootstrap}
+        interval={this.props.interval}
       >
         <CarouselIndicators cssModule={bootstrap} items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
@@ -84,10 +85,16 @@ class BsReactCarousel extends Component {
 }
 
 BsReactCarousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  interval: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ])
 };
 
 BsReactCarousel.defaultProps = {
+  interval: 5000
 };
 
 export default BsReactCarousel;
