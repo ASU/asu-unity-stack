@@ -9,7 +9,8 @@ const item = {
   title: 'Hero One Title',
   buttons: [
     {text: 'button 1', url: 'https://asu.edu', color: 'primary'}
-  ]
+  ],
+  titleLink: 'https://asu.edu'
 };
 
 storiesOf('BsHeroImage')

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Jumbotron, Button, Util } from "reactstrap";
 import bootstrap from "../../styles/bs4/css/bootstrap-asu.min.css";
+import styles from "./BsHeroImage.css";
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049
@@ -38,10 +39,10 @@ const BsHeroImage = props => {
   };
 
   const buttons = props.buttons ? heroButtons(props.buttons) : "";
-  let title = <h2 className={bootstrap["display-4"]}>{props.title}</h2>;
+  let title = <h2 className={styles.heroTitle} >{props.title}</h2>;
 
   if (props.titleLink) {
-    title = <a href={props.titleLink}>{title}</a>
+    title = <a className={styles.heroLink} href={props.titleLink}>{title}</a>
   }
 
   return (
