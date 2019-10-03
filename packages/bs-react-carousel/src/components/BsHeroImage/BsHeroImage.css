@@ -1,0 +1,9 @@
+.heroTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 3.5rem;
+}
+
+.heroLink:hover {
+    text-decoration: none;
+}
