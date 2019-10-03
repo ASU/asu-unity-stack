@@ -38,7 +38,8 @@ const BsHeroImage = props => {
     backgroundPosition: "center",
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
-    height: "100vh"
+    height: "100vh",
+    maxHeight: "800px"
   };
 
   const buttons = props.buttons ? heroButtons(props.buttons) : "";
