@@ -1,6 +1,6 @@
 {
   "name": "@asu/bs-react-carousel",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "ASU React implementation of Bootstrap 4 carousel",
   "main": "src/index.js",
   "scripts": {
