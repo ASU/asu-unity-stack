@@ -2,10 +2,10 @@
   <img src="./asu_university_horiz_rgb_maroongold_150_4.png" alt="Arizona State University" width="400" />
 </p>
 
-<h1 align="center">ASU Web Standards UI Kit and Style Guide using Bootstrap 4, StorybookJS, and Hugo.</h1>
+<h1 align="center">ASU Web Standards UI Kit and Style Guide using Bootstrap 4, Jest, and StorybookJS.</h1>
 
 <p align="center">
-  A Bootstrap 4-based web ui kit for website developers building new websites from scratch or for inlcusion as a standardized theming foundation for ASU application frameworks, such as Drupal, WordPress, or other application frameworks. A comprehensive development and testing framework has been implemented using best-in-class tools like StorybookJS, Hugo, and Jest.
+  A Bootstrap 4-based web ui kit for website developers building new websites from scratch or for inlcusion as a standardized theming foundation for ASU application frameworks, such as Drupal, WordPress, or other application frameworks. A comprehensive development and testing framework has been implemented using best-in-class tools like StorybookJS and Jest.
 </p>
 
 <br />
@@ -22,7 +22,6 @@
 - **Font Awesome 5** bundled into the theme for immediate use in your website.
 - **Google Webfonts** bundled into the theme for immediate use in your website.
 - **StorybookJS** provides a live, development enviroment to view styling changes immediately as the code is edited.
-- **Hugo** generates a stylish Style Guide for all UI kit features and instructions on how to use this library.
 - **Cross-browser validation** of all UI kit components provided by the fantastic Happo.io visual testing service.
 - **Quality-of-life improvement scripts** bundled into the theme for immediate use in all web site environments.
 
@@ -257,7 +256,6 @@ View our [Contributing Guidelines](./CONTRIBUTING.md)
 | [Bootstrap 4](https://getbootstrap.com/docs/4.3/getting-started/introduction/) | Build responsive, mobile-first projects on the web with the world’s most popular front-end component library. Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery. |
 | [Font Awesome 5](https://fontawesome.com/) | Get vector icons and social logos on your website with Font Awesome, the web's most popular icon set and toolkit. |
 | [StorybookJS](https://storybook.js.org/) | Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient. |
-| [Hugo](https://gohugo.io/) | A flexible, highly performant site builder that leverages Markdown, variables, and shortcodes to rapidly build rich websites.
 | [Jest](https://jestjs.io/) | Jest is a delightful JavaScript Testing Framework with a focus on simplicity. |
 
 ![divider](./divider.png)
