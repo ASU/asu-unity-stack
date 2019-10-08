@@ -1,6 +1,5 @@
 import { configure, addDecorator, addParameters } from '@storybook/html';
 import { withA11y } from '@storybook/addon-a11y';
-import 'happo-plugin-storybook/register';
 
 import WebFont from 'webfontloader';
 import '!style-loader!css-loader!sass-loader!./scss-loader.scss';

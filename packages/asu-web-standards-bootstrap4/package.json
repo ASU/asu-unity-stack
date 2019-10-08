@@ -8,8 +8,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "happo": "happo",
-    "happo-ci-travis": "happo-ci-travis",
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
@@ -49,8 +47,6 @@
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
-    "happo-plugin-storybook": "^2.4.0",
-    "happo.io": "^3.17.0",
     "jest": "^24.8.0",
     "jest-image-snapshot": "^2.8.2",
     "jest-puppeteer": "^4.2.0",

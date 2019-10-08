@@ -182,24 +182,6 @@ To run snapshot tests on the theme components:
 yarn test:integration
 ```
 
-### Run cross-browser visual regression tests using Happo.io service
-
-Note: Happo.io is currently configured in a free trial mode with a limited number of tests performed per month. This free account is configured through the Sustainability team in KE. If a contributer would like to view the results of this testing service, a free account access can be arranged upon request.
-
-Happo.io provides a cross-platform, cross-browser screenshot testing platform. This project is currently configured to run the Happo tests on the Kitchen Sink story, the full-page render of all the UI components offered by the framework rendered in-context, just like a regular webpage. Any cross-browser irregularities not caught during normal development or Jest snapshot testing should be caught by this service.
-
-The happo service can interacted with using the installed happo script. To display a help screen for Happo, type
-
-```
-yarn happo
-```
-
-A full happo run and report can be executed using
-
-```
-yarn happo run
-```
-
 ![divider](./divider.png)
 
 ## ❯ Prepare Releases
@@ -277,7 +259,6 @@ View our [Contributing Guidelines](./CONTRIBUTING.md)
 | [StorybookJS](https://storybook.js.org/) | Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient. |
 | [Hugo](https://gohugo.io/) | A flexible, highly performant site builder that leverages Markdown, variables, and shortcodes to rapidly build rich websites.
 | [Jest](https://jestjs.io/) | Jest is a delightful JavaScript Testing Framework with a focus on simplicity. |
-| [Happo.io](https://happo.io/) | Cross-platform, cross-browser screenshot testing for modern user interfaces. |
 
 ![divider](./divider.png)
 
