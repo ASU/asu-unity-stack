@@ -21,9 +21,9 @@ const AsuDropdownNav = props => {
   }
 
   return (
-    <div role="navigation" className={navClass}>
+    <div title={props.title ? props.title : props.text} role="navigation" className={navClass}>
       <a className={styles.asuNavA} href={props.href} target={props.target}>
-        {props.title}
+        {props.text}
       </a>
       {props.items ? (
         <React.Fragment>
@@ -36,16 +36,16 @@ const AsuDropdownNav = props => {
 
           <ul className={subStyles}>
             {props.items.map((item, index) => {
+
               return (
                 <li className={styles.asuNavItem} key={index}>
-                  <a href={item.href} ref={linkRefs[index]} tabIndex="0">
-                    {item.value}
+                  <a title={item.title} href={item.href} ref={linkRefs[index]} tabIndex="0">
+                    {item.text}
                   </a>
                 </li>
               );
             })}
           </ul>
-
         </React.Fragment>
       ) : (
         ""
@@ -56,13 +56,13 @@ const AsuDropdownNav = props => {
 
 AsuDropdownNav.propTypes = {
   title: PropTypes.string,
+  text: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object),
-  href: PropTypes.string,
+  href: PropTypes.string.isRequired,
   target: PropTypes.string
 };
 
 AsuDropdownNav.defaultProps = {
-  title: "test"
 };
 
 export default AsuDropdownNav;

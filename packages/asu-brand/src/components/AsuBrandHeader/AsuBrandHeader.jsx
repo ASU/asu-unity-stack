@@ -10,49 +10,31 @@ import defaultNav from "./AsuHeaderNavDefaults";
 class AsuBrandHeader extends Component {
   constructor() {
     super();
-    this.state = { renderClient: false };
   }
 
   render() {
-    const completeTree = defaultNav.concat(this.props.siteMenu);
-
     return (
-      <AsuHeader className={styles.asuBrandHeader}>
-        {this.props.logo ? this.siteLogo(this.props.logo) : ""}
-
-        <AsuNav className={styles.asuHeaderNav} menuTree={completeTree} />
-
-        <AsuLogin
-          className={styles.asuBrandHeaderLogin}
-          {...this.props.login}
-        />
-
-        <AsuGcseSearch className={styles.asuHeaderGlobalSearch} />
-
-        {/* Render the site title only on the client side */ }
-        {this.state.renderClient && this.props.siteName && this.siteName(this.props.siteName)}
-      </AsuHeader>
-    );
-  }
-
-  siteName(title) {
-    const sitenameClass = styles.asuSiteName;
-
-    return (
-        <div className={sitenameClass}>
-            <div>
-                <a className={styles.asuSiteNameLink} href={title.parentOrgUrl}>
-                    <span className={styles.asuSiteNameParentOrg}>
-                        {title.parentOrg}
-                    </span>
-                </a>
-                <a className={styles.asuSiteNameLink} title="Home" rel="home" href={title.siteUrl}>
-                    <span className={styles.asuSiteNameTitle}>
-                        {title.siteTitle}
-                    </span>
-                </a>
-            </div>
-        </div>
+      <AsuHeader
+        className={styles.asuBrandHeader}
+        nav={
+          <React.Fragment>
+            {this.siteLogo(this.props.logo)}
+            <AsuNav
+              className={styles.asuHeaderNav}
+              globalNav={defaultNav}
+              siteNav={this.props.siteNav}
+            />
+            <AsuLogin
+              className={styles.asuBrandHeaderLogin}
+              {...this.props.login}
+            />
+          </React.Fragment>
+        }
+        search={<AsuGcseSearch className={styles.asuHeaderGlobalSearch} />}
+        siteName={
+          this.props.siteName ? this.siteName(this.props.siteName) : undefined
+        }
+      />
     );
   }
 
@@ -68,24 +50,44 @@ class AsuBrandHeader extends Component {
     );
   }
 
-  componentDidMount() {
-    this.setState({ renderClient: true });
+  siteName(title) {
+    const sitenameClass = styles.asuSiteName;
+
+    return (
+      <div className={sitenameClass}>
+        <div>
+          <a className={styles.asuSiteNameLink} href={title.parentOrgUrl}>
+            <span className={styles.asuSiteNameParentOrg}>
+              {title.parentOrg}
+            </span>
+          </a>
+          <a
+            className={styles.asuSiteNameLink}
+            title="Home"
+            rel="home"
+            href={title.siteUrl}
+          >
+            <span className={styles.asuSiteNameTitle}>{title.siteTitle}</span>
+          </a>
+        </div>
+      </div>
+    );
   }
 }
 
 AsuBrandHeader.propTypes = {
   logo: PropTypes.object,
   login: PropTypes.object,
-  siteMenu: PropTypes.arrayOf(PropTypes.object),
+  siteNav: PropTypes.arrayOf(PropTypes.object),
   siteName: PropTypes.object
 };
 
 // Specifies the default values for props:
 AsuBrandHeader.defaultProps = {
   logo: {
-    href: '/',
-    target: '_top',
-    alt: 'A S U',
+    href: "/",
+    target: "_top",
+    alt: "A S U",
     src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png"
   },
   login: AsuLogin.defaultProps,

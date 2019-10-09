@@ -2,13 +2,6 @@
 @import '../../styles/colors.css';
 @import '../../styles/variables.css';
 
-/****
-Header
-****/
-.main_search {
-    /*display:none;*/
-}
-
 /**  CSS Modules -- ASUHeader.css ****/
 .asuBrandHeader {
     width: 100%;
@@ -37,27 +30,25 @@ Header
 }
 
 .asuHeaderGrid {
-    display: grid;
-    grid-template-columns: auto auto auto auto 70px;
-    grid-template-rows: auto;
-    grid-template-areas:
-            "logo nav nav nav login"
-            "logo . . searchbox searchbox"
-            "sitename . . . .";
+  display: flex;
+  flex-flow: row wrap;
+  & > * {
+    flex: 1 100%;
+  }
+}
+
+.asuHeaderTopRow {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
 }
 
 .asuBrandHeaderLogin {
-    grid-area: login;
     justify-self: end;
 }
 
 .asuHeaderNav {
-    grid-area: nav;
     justify-self:end;
-}
-
-.asuHeaderLogo {
-    grid-area: logo;
 }
 
 .asuHeaderSiteName {
@@ -153,8 +144,6 @@ Mobile ASUHeader
 Logo
  */
  .asuLogo {
-  margin:0;
-  float:left;
+  margin-right: auto;
   width:200px;
-  padding:12px 0 0;
 }

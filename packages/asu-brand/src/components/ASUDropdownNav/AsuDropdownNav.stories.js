@@ -4,48 +4,56 @@ import AsuDropdownNav from './index.js';
 
 const items = [
   {
-    value: "Item 0",
-    href: 'https://asu.edu'
+    href: "https://www.asu.edu/?feature=newsevents",
+    target: "_top",
+    title: "News and Events",
+    text: "News/Events"
   },
   {
-    value: "Item 1",
-    href: "https://asu.edu"
+    href: "https://www.asu.edu/?feature=academics",
+    target: "_top",
+    title: "Academics",
+    text: "Academics"
   },
   {
-    value: "Item 2",
-    href: 'https://asu.edu'
+    href: "https://www.asu.edu/?feature=research",
+    target: "_top",
+    title: "Research",
+    text: "Research"
   },
   {
-    value: "Item 3",
-    href: "https://asu.edu"
+    href: "https://www.asu.edu/?feature=athletics",
+    target: "_top",
+    title: "Athletics",
+    text: "Athletics"
   },
   {
-    value: "Item 4",
-    href: 'https://asu.edu'
+    href: "https://www.asu.edu/?feature=alumni",
+    target: "_top",
+    title: "Alumni",
+    text: "Alumni"
   },
   {
-    value: "Item 5",
-    href: "https://asu.edu"
+    href: "https://www.asu.edu/?feature=giving",
+    target: "_top",
+    title: "Giving",
+    text: "Giving"
   },
   {
-    value: "Item 6",
-    href: 'https://asu.edu'
+    href: "https://www.asu.edu/?feature=president",
+    target: "_top",
+    title: "President",
+    text: "President"
   },
   {
-    value: "Item 7",
-    href: "https://asu.edu"
-  },
-  {
-    value: "Item 8",
-    href: 'https://asu.edu'
-  },
-  {
-    value: "Item 9",
-    href: "https://asu.edu"
+    href: "https://www.asu.edu/about",
+    target: "_top",
+    title: "About ASU",
+    text: "About ASU"
   }
-];
+]
 
 storiesOf('AsuDropdownNav', module)
   .add('basic', () => (
-    <AsuDropdownNav {...{title: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
+    <AsuDropdownNav {...{text: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
   ));
