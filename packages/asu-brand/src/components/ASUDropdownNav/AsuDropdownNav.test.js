@@ -1,5 +1,5 @@
-import React from 'react'
-import { render, fireEvent} from '@testing-library/react'
+import React from './node_modules/react'
+import { render, fireEvent} from './node_modules/@testing-library/react'
 import ASUDropdownNav from './AsuDropdownNav'
 
 

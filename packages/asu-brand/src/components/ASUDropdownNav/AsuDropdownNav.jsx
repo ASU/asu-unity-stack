@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "./node_modules/react";
+import PropTypes from "./node_modules/prop-types";
 import styles from "./AsuDropdownNav.css";
-import classNames from "classnames";
+import classNames from "./node_modules/classnames";
 
 const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AsuNav.css';
-import AsuDropdownNav from '../ASUDropdownNav';
+import AsuDropdownNav from '../AsuDropdownNav';
+import classnames from 'classnames';
 
 
 // todo: handle the keyboard navigation here
 const AsuNav = (props) => {
 
-  const navClass = styles.asuNavWrapper;
+  const navClass = classnames(styles.asuNavWrapper, props.className);
 
   return (
     <nav className={navClass}>
@@ -24,7 +25,8 @@ const AsuNav = (props) => {
 
 AsuNav.propTypes = {
   siteNav: PropTypes.arrayOf(PropTypes.object),
-  globalNav: PropTypes.arrayOf(PropTypes.object)
+  globalNav: PropTypes.arrayOf(PropTypes.object),
+  className: PropTypes.string
 };
 
 AsuNav.defaultProps = {

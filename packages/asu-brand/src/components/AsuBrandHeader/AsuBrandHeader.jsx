@@ -20,7 +20,7 @@ class AsuBrandHeader extends Component {
           <React.Fragment>
             {this.siteLogo(this.props.logo)}
             <AsuNav
-              className={styles.asuHeaderNav}
+              className={styles.asuBrandHeaderNav}
               globalNav={defaultNav}
               siteNav={this.props.siteNav}
             />
