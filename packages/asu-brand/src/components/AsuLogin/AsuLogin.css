@@ -57,15 +57,13 @@ Mobile
             display: inline-block;
             border-left: none;
         }
-
-
     }
 
     .icoUser {
         display: inline-block;
         float: right;
         width: 35px;
-        height: 15px;
+        height: auto;
         background: #F4F4F4;
         border-left: solid 1px #DDD;
         text-align: center;
