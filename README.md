@@ -3,45 +3,39 @@ Arizona State University Unity StaCK(Standards Compliance Kit). This project is 
 
 ## Dependencies
 
-In order to build the project and run the server, the dev environment needs to have the following programs installed:
+In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js 
 - NPM
+- Yarn
 
 ## What's included
 
 - React (https://reactjs.org/)
-- Cosmos (https://github.com/react-cosmos/react-cosmos)
+- Storybook (https://storybook.js.org/)
 - Webpack (https://webpack.js.org/)
-- Expressjs (https://expressjs.com/)
 
 ## Quickstart Guide
 
 #### Local development
-The easiest way to get started is to spin up react-cosmos as a dev environment:
+The easiest way to get started is to spin up storybook as a dev environment:
 
-1. ```npm install```
-2. ```npm run cosmos```
+1. ```yarn install```
+2. ```yarn storybook```
 
-See the developer documentation on react-cosmos at https://github.com/react-cosmos/react-cosmos
-
-#### Server-side rendering with Express.js development server
-
-1. Run ```npm start:dev```. Webpack and Node will watch for changes and automatically re-bundle assets if changes are made.
-2. The prerendered asset routes will be available on port 3000. For example, the prerendered header should be accessible at:
- http://localhost:3000/header (Available routes can be found in server/server.js)
+See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
 ## Structure
- - src - The source code for the asu-unity-stack react components
- - webpack - Webpack configuration
- - server - Express.js server configuration
- - src/\__fixtures__ - Cosmos playground fixture configuration
- - src/\__tests__ - Jest tests
+ - packages/[package-name] - NPM package root
+ - packages/[package-name]/src - React source code
+ - packages/[package-name]/webpack - Webpack configuration for package
+ 
+## Building, Testing (build from the package root)
 
-## Building, Testing and Deployment
+```yarn build``` - build the project
 
-```npm run build``` - build the project
+```yarn test``` - run Jest tests
 
-```npm run test``` - run Jest tests
+It's also possible to build a package from the git project root with a Yarn workspace command like: 
 
-A component playground is currently deployed at http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000  
+```yarn workspace @asu/asu-brand build```
 
