@@ -89,24 +89,22 @@ const AsuDropdownNav = props => {
       >
         <TopItem {...props} />
         {props.items ? (
-          <React.Fragment>
-            <ul className={subStyles}>
-              {props.items.map((item, index) => {
-                return (
-                  <li className={styles.asuNavItem} key={index}>
-                    <a
-                      title={item.title}
-                      href={item.href}
-                      ref={linkRefs[index]}
-                      tabIndex="0"
-                    >
-                      {item.text}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </React.Fragment>
+          <ul className={subStyles}>
+            {props.items.map((item, index) => {
+              return (
+                <li className={styles.asuNavItem} key={index}>
+                  <a
+                    title={item.title}
+                    href={item.href}
+                    ref={linkRefs[index]}
+                    tabIndex="0"
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         ) : (
           ""
         )}
