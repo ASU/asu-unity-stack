@@ -55,7 +55,33 @@
     "prepare": "npm run build",
     "build": "webpack --config webpack/webpack.production.js",
     "build:watch": "webpack --watch --config=webpack/webpack.development.js",
-    "build:dev": "webpack --config=webpack/webpack.development.js"
+    "build:dev": "webpack --config=webpack/webpack.development.js",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "automock": false,
+    "testURL": "http://localhost/",
+    "setupFilesAfterEnv": [
+      "@testing-library/react/cleanup-after-each"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "roots": [
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "globals": {
+      "__DEV__": true
+    }
   },
   "description": "ASU Brand React Components",
   "author": "Colton Testamarck (colt@asu.edu)"

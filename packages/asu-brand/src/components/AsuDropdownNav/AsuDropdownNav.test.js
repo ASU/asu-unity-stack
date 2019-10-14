@@ -7,7 +7,7 @@ import ASUDropdownNav from './AsuDropdownNav'
 describe('The AsuDropdownMenu', () => {
     it('renders the component', () => {
 
-      const container = render(<ASUDropdownNav  {...{title: 'ASU Home'}} />);
+      const container = render(<ASUDropdownNav  {...{text: 'ASU Home'}} />);
             expect(container.firstChild).toMatchSnapshot()
     })
 
@@ -15,48 +15,48 @@ describe('The AsuDropdownMenu', () => {
 
       const titems = [
         {
-          value: "Item 0",
+          text: "Item 0",
           href: 'https://asu.edu'
         },
         {
-          value: "Item 1",
+          text: "Item 1",
           href: "https://asu.edu"
         },
         {
-          value: "Item 2",
+          text: "Item 2",
           href: 'https://asu.edu'
         },
         {
-          value: "Item 3",
+          text: "Item 3",
           href: "https://asu.edu"
         },
         {
-          value: "Item 4",
+          text: "Item 4",
           href: 'https://asu.edu'
         },
         {
-          value: "Item 5",
+          text: "Item 5",
           href: "https://asu.edu"
         },
         {
-          value: "Item 6",
+          text: "Item 6",
           href: 'https://asu.edu'
         },
         {
-          value: "Item 7",
+          text: "Item 7",
           href: "https://asu.edu"
         },
         {
-          value: "Item 8",
+          text: "Item 8",
           href: 'https://asu.edu'
         },
         {
-          value: "Item 9",
+          text: "Item 9",
           href: "https://asu.edu"
         }
       ];
 
-      const { getByText, findAllByText } = render(<ASUDropdownNav {...{title: 'ASU Home', items: titems}} />);
+      const { getByText, findAllByText } = render(<ASUDropdownNav {...{text: 'ASU Home', items: titems}} />);
       // Click button
       fireEvent.click(getByText('ASU Home'));
 

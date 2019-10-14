@@ -76,8 +76,8 @@ ASUHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   nav: PropTypes.node,
-  search: PropTypes.search,
-  siteName: PropTypes.Node
+  search: PropTypes.node,
+  siteName: PropTypes.node
 };
 
 export default ASUHeader;
