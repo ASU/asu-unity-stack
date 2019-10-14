@@ -30,7 +30,7 @@ const items = [
   }
 ];
 
-storiesOf('BsReactCarousel')
+storiesOf('BsReactCarousel', module)
   .add('basic', () => (
     <BsReactCarousel items={items}/>
 

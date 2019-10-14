@@ -18,25 +18,23 @@ const useDropdownContext = () => {
 const TopItem = props => {
   const { open, toggle } = useDropdownContext();
 
-  // if the item doesn't have an href property, render as a toggle instead of
-  // a link
-  let topItem =
-    props.items && !props.href ? (
-      <span onClick={toggle}>{props.text}</span>
-    ) : (
-      <span>{props.text}</span>
-    );
+  // if the item doesn't have an href property, render as a toggle
+  let topItem = (
+    <span onClick={props.items && !props.href ? toggle : undefined}>
+      {props.text}
+    </span>
+  );
 
   // Wrap in a link if href provided for top level item
   if (props.href) {
     topItem = (
       <a className={styles.asuNavA} href={props.href} target={props.target}>
-        {props.text}
+        {topItem}
       </a>
     );
   }
 
-  // Add the arrow icon if child items
+  // Add the arrow toggle icon if child items
   if (props.items) {
     topItem = (
       <React.Fragment>
@@ -56,21 +54,15 @@ const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
   const [open, setOpen] = useState(false);
   const toggle = React.useCallback(() => setOpen(oldOpen => !oldOpen), []);
+  const value = React.useMemo(() => ({ open, toggle }), [open]);
 
-  const mouseEnter = React.useCallback( (event) => {
-
-    console.log(event, 'THE EVENT');
-
+  const mouseEnter = React.useCallback(() => {
     setOpen(true);
   }, [open]);
 
-  const mouseLeave = React.useCallback( (event) => {
-    console.log(event, 'event2');
-
+  const mouseLeave = React.useCallback(() => {
     setOpen(false);
   }, [open]);
-
-  const value = React.useMemo(() => ({ open, toggle }), [open]);
 
   const subStyles = classNames(
     styles.subMenu,
@@ -92,8 +84,8 @@ const AsuDropdownNav = props => {
         title={props.title ? props.title : props.text}
         role="navigation"
         className={navClass}
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
+        onMouseEnter={props.items ? mouseEnter : undefined}
+        onMouseLeave={props.items ? mouseLeave : undefined}
       >
         <TopItem {...props} />
         {props.items ? (
