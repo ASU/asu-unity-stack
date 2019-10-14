@@ -56,6 +56,20 @@ const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
   const [open, setOpen] = useState(false);
   const toggle = React.useCallback(() => setOpen(oldOpen => !oldOpen), []);
+
+  const mouseEnter = React.useCallback( (event) => {
+
+    console.log(event, 'THE EVENT');
+
+    setOpen(true);
+  }, [open]);
+
+  const mouseLeave = React.useCallback( (event) => {
+    console.log(event, 'event2');
+
+    setOpen(false);
+  }, [open]);
+
   const value = React.useMemo(() => ({ open, toggle }), [open]);
 
   const subStyles = classNames(
@@ -78,6 +92,8 @@ const AsuDropdownNav = props => {
         title={props.title ? props.title : props.text}
         role="navigation"
         className={navClass}
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
       >
         <TopItem {...props} />
         {props.items ? (

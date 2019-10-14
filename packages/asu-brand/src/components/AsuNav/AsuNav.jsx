@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './AsuNav.css';
 import AsuDropdownNav from '../AsuDropdownNav';
 import classnames from 'classnames';
+import AsuNavGlobalDefaults from './AsuNavGlobalDefaults';
 
 
 // todo: handle the keyboard navigation here
@@ -30,7 +31,7 @@ AsuNav.propTypes = {
 };
 
 AsuNav.defaultProps = {
-
+  globalNav: AsuNavGlobalDefaults
 };
 
 export default AsuNav;
