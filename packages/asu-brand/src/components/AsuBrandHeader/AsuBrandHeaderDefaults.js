@@ -1,5 +1,4 @@
 const AsuBrandHeaderDefaults = {
-  "siteMenu": [],
   "logo": {
     "src": "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png",
     "href": "https://www.asu.edu/",

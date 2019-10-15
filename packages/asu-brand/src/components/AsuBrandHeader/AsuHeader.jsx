@@ -33,7 +33,6 @@ class ASUHeader extends Component {
         <div className={styles.asuHeaderGrid}>
           <div className={styles.asuHeaderTopRow}>{this.props.nav}</div>
           {this.props.search}
-
           {this.state.renderClient && this.props.siteName
             ? this.props.siteName
             : ""}
@@ -76,8 +75,8 @@ ASUHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   nav: PropTypes.node,
-  search: PropTypes.search,
-  siteName: PropTypes.Node
+  search: PropTypes.node,
+  siteName: PropTypes.node
 };
 
 export default ASUHeader;

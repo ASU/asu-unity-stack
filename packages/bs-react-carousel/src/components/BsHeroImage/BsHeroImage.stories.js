@@ -14,7 +14,7 @@ const item = {
   titleLink: 'https://asu.edu'
 };
 
-storiesOf('BsHeroImage')
+storiesOf('BsHeroImage', module)
   .add('basic', () => (
     <BsHeroImage {...item}/>
   ));

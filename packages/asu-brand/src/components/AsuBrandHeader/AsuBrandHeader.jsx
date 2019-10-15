@@ -7,73 +7,60 @@ import AsuLogin from "../AsuLogin";
 import styles from "./AsuBrandHeader.css";
 import defaultNav from "./AsuHeaderNavDefaults";
 
-class AsuBrandHeader extends Component {
-  constructor() {
-    super();
-  }
+const siteLogo = logo => {
+  const logoClass = styles.asuLogo;
 
-  render() {
-    return (
-      <AsuHeader
-        className={styles.asuBrandHeader}
-        nav={
-          <React.Fragment>
-            {this.siteLogo(this.props.logo)}
-            <AsuNav
-              className={styles.asuBrandHeaderNav}
-              globalNav={defaultNav}
-              siteNav={this.props.siteNav}
-            />
-            <AsuLogin
-              className={styles.asuBrandHeaderLogin}
-              {...this.props.login}
-            />
-          </React.Fragment>
-        }
-        search={<AsuGcseSearch className={styles.asuHeaderGlobalSearch} />}
-        siteName={
-          this.props.siteName ? this.siteName(this.props.siteName) : undefined
-        }
-      />
-    );
-  }
+  return (
+    <div className={logoClass}>
+      <a href={logo.href} target={logo.target}>
+        <img alt={logo.alt} src={logo.src} />
+      </a>
+    </div>
+  );
+};
 
-  siteLogo(logo) {
-    const logoClass = styles.asuLogo;
+const siteName = title => {
+  const sitenameClass = styles.asuSiteName;
 
-    return (
-      <div className={logoClass}>
-        <a href={logo.href} target={logo.target}>
-          <img alt={logo.alt} src={logo.src} />
+  return (
+    <div className={sitenameClass}>
+      <div>
+        <a className={styles.asuSiteNameLink} href={title.parentOrgUrl}>
+          <span className={styles.asuSiteNameParentOrg}>{title.parentOrg}</span>
+        </a>
+        <a
+          className={styles.asuSiteNameLink}
+          title="Home"
+          rel="home"
+          href={title.siteUrl}
+        >
+          <span className={styles.asuSiteNameTitle}>{title.siteTitle}</span>
         </a>
       </div>
-    );
-  }
+    </div>
+  );
+};
 
-  siteName(title) {
-    const sitenameClass = styles.asuSiteName;
-
-    return (
-      <div className={sitenameClass}>
-        <div>
-          <a className={styles.asuSiteNameLink} href={title.parentOrgUrl}>
-            <span className={styles.asuSiteNameParentOrg}>
-              {title.parentOrg}
-            </span>
-          </a>
-          <a
-            className={styles.asuSiteNameLink}
-            title="Home"
-            rel="home"
-            href={title.siteUrl}
-          >
-            <span className={styles.asuSiteNameTitle}>{title.siteTitle}</span>
-          </a>
-        </div>
-      </div>
-    );
-  }
-}
+const AsuBrandHeader = props => {
+  return (
+    <AsuHeader
+      className={styles.asuBrandHeader}
+      nav={
+        <React.Fragment>
+          {siteLogo(props.logo)}
+          <AsuNav
+            className={styles.asuBrandHeaderNav}
+            globalNav={defaultNav}
+            siteNav={props.siteNav}
+          />
+          <AsuLogin className={styles.asuBrandHeaderLogin} {...props.login} />
+        </React.Fragment>
+      }
+      search={<AsuGcseSearch className={styles.asuHeaderGlobalSearch} />}
+      siteName={props.siteName ? siteName(props.siteName) : undefined}
+    />
+  );
+};
 
 AsuBrandHeader.propTypes = {
   logo: PropTypes.object,
