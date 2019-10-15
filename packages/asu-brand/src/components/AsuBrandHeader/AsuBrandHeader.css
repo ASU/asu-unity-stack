@@ -1,78 +1,50 @@
-@import '../../styles/ASU.css';
-@import '../../styles/colors.css';
-@import '../../styles/variables.css';
-
-/****
-Header
-****/
-.main_search {
-    /*display:none;*/
-}
+@import "../../styles/ASU.css";
+@import "../../styles/colors.css";
+@import "../../styles/variables.css";
 
 /**  CSS Modules -- ASUHeader.css ****/
 .asuBrandHeader {
-    width: 100%;
+  width: 100%;
 }
 
 .asuBrandHeader {
-    position:relative;
-    background-color:#fff;
-    overflow:visible;
-    margin:0;
-    font-size:.8rem;
-    font-family: var(--asu-fonts);
-    line-height:1em;
-    color:#000;
-    z-index:500;
-    -webkit-box-sizing:initial;
-    -moz-box-sizing:initial;
-    box-sizing:initial;
-    height: auto;
-    width: 100%;
+  position: relative;
+  background-color: #fff;
+  overflow: visible;
+  margin: 0;
+  font-size: 0.8rem;
+  font-family: var(--asu-fonts);
+  line-height: 1em;
+  color: #000;
+  z-index: 500;
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  box-sizing: initial;
+  height: auto;
+  width: 100%;
 }
 
 .asuBrandHeader img {
-    border:0;
-    width: 100%;
+  border: 0;
+  width: 100%;
 }
 
 .asuHeaderGrid {
-    display: grid;
-    grid-template-columns: auto auto auto auto 70px;
-    grid-template-rows: auto;
-    grid-template-areas:
-            "logo nav nav nav login"
-            "logo . . searchbox searchbox"
-            "sitename . . . .";
+  display: flex;
+  flex-flow: row wrap;
+  & > * {
+    flex: 1 100%;
+  }
 }
 
-.asuBrandHeaderLogin {
-    grid-area: login;
-    justify-self: end;
-}
-
-.asuHeaderNav {
-    grid-area: nav;
-    justify-self:end;
-}
-
-.asuHeaderLogo {
-    grid-area: logo;
-}
-
-.asuHeaderSiteName {
-    grid-area: sitename;
-}
-
-.asuHeaderGlobalSearch {
-    grid-area: searchbox;
-    justify-self: end;
+.asuHeaderTopRow {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .asuHeaderMobileControls {
-    grid-area: mobile;
-    display: none;
-    justify-self: end;
+  display: none;
+  justify-self: end;
 }
 
 /***
@@ -80,81 +52,80 @@ Mobile ASUHeader
 **/
 
 @media (--mobile) {
+  .asuHeaderMobileControls {
+    /*grid-area: mobile;*/
+    display: block;
+    order: 1;
+  }
 
-    .asuHeaderMobileControls {
-        /*grid-area: mobile;*/
-        display: block;
+  .asuHeaderGrid {
+    flex-flow: column;
+  }
+
+  /** Header menu open/close CSS **/
+  .asuHeaderTopRow {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+    order: 2;
+    flex-flow: column;
+  }
+
+  .asuHeaderGlobalSearch {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+    order: 0;
+  }
+
+  .asuBrandHeaderLogin {
+    order: 0;
+  }
+
+  .asuBrandHeaderNav {
+    order: 1;
+  }
+
+  .asuLogo {
+    order: 3;
+    display: none;
+  }
+
+  .icoNavIcon,
+  .icoSearch {
+    float: right;
+    margin: 0;
+    padding: 21px 5px;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+    float: right;
+    font-size: 22px;
+    width: 35px;
+    text-align: center;
+  }
+
+  .openedSearch {
+    & .asuHeaderGlobalSearch {
+      max-height: 2000px;
     }
 
-    .asuHeaderGrid {
-        display: grid;
-        grid-template-rows: [top] auto [two] auto [three] auto [four] auto [bottom] auto;
-        grid-template-columns: [left] 50% [right] 50%;
-        grid-template-areas:
-                "searchbox searchbox"
-                "logo mobile"
-                "sitename sitename"
-                "login login"
-                "nav nav";
+    & .icoSearch {
+      background-color: #e7e7e7;
     }
+  }
 
-    .asuHeaderNav {
-        justify-self: start;
+  .openedNav {
+    & .asuHeaderTopRow {
+      max-height: 2000px;
     }
-
-    /** Header menu open/close CSS **/
-    .asuHeaderGlobalSearch, .asuHeaderNav, .asuBrandHeaderLogin {
-        max-height: 0;
-        transition: max-height 0.5s ease-in-out;
-        overflow: hidden;
-    }
-
-    .asuHeaderGlobalSearch {
-        max-height: 0;
-        transition: max-height 0.5s ease-in-out;
-        overflow: hidden;
-    }
-
-    .icoNavIcon, .icoSearch {
-          float: right;
-          margin: 0;
-          padding: 21px 5px;
-          text-align: center;
-          color: #999;
-          cursor: pointer;
-          float: right;
-          font-size: 22px;
-          width: 35px;
-          text-align: center;
-    }
-
-    .openedSearch {
-
-        & .asuHeaderGlobalSearch {
-            max-height: 2000px;
-
-        }
-
-        & .icoSearch {
-              background-color: #E7E7E7;
-        }
-    }
-
-    .openedNav {
-
-        &  .asuHeaderNav, &  .asuBrandHeaderLogin, & .asuHeaderSiteName {
-            max-height: 2000px;
-        }
-    }
+  }
 }
-
 
 /***
 Logo
  */
- .asuLogo {
-  margin:0;
-  float:left;
-  width:200px;
-  padding:12px 0 0;
+.asuLogo {
+  margin-right: auto;
+  width: 200px;
 }

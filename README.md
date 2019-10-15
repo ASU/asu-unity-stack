@@ -3,7 +3,7 @@ Arizona State University Unity StaCK(Standards Compliance Kit). This project is 
 
 ## Dependencies
 
-In order to build the project and run the server, the dev environment needs to have the following programs installed:
+In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js 
 - NPM
 - Yarn
@@ -29,9 +29,13 @@ See the developer documentation on storybook at https://storybook.js.org/docs/ba
  - packages/[package-name]/src - React source code
  - packages/[package-name]/webpack - Webpack configuration for package
  
-## Building, Testing
+## Building, Testing (build from the package root)
 
 ```yarn build``` - build the project
 
 ```yarn test``` - run Jest tests
+
+It's also possible to build a package from the git project root with a Yarn workspace command like: 
+
+```yarn workspace @asu/asu-brand build```
 

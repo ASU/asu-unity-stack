@@ -13,7 +13,7 @@ const postCSSLoader = {
   }
 };
 
-module.exports = [];//devWebpack;
+module.exports = devWebpack;
 
 module.exports.push(
   merge(common, {
@@ -54,10 +54,12 @@ module.exports.push(
         }
       ]
     },
+    optimization: {
+      usedExports: true,
+    },
     externals: {
       react: "React",
-      "react-dom": "ReactDOM",
-      reactstrap: "reactstrap"
+      "react-dom": "ReactDOM"
     }
   })
 );

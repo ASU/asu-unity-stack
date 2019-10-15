@@ -3,36 +3,57 @@ import { storiesOf } from '@storybook/react';
 import AsuBrandHeader from './index.js';
 import AsuHeaderObj from "./AsuBrandHeaderDefaults";
 
-AsuHeaderObj.siteMenu = [
+
+
+AsuHeaderObj.siteNav = [
     {
         title:"Home",
-        text: "Home",
-        classes: "parent",
         href:"http://www.asu.edu/absolute_path"
     },
     {
         title:"Degree Programs",
-        text: "Degree Programs",
-        classes: "parent",
         href:"/absolute_path/page",
-        subtree: [
-            {
-                title:"Admissions",
-                text:"Admissions",
-                href:"/?url=variable",
-                subtree: [
-                    {
-                        title:"Student Life",
-                        text:"Student Life",
-                        href:"/#hash"
-                    }
-                ]
-            },
-            {
-                title:"Ross",
-                text:"Ross",
-                href:"https://www.asu.edu/"
-            }
+        items: [
+          {
+            value: "Item 0",
+            href: 'https://asu.edu'
+          },
+          {
+            value: "Item 1",
+            href: "https://asu.edu"
+          },
+          {
+            value: "Item 2",
+            href: 'https://asu.edu'
+          },
+          {
+            value: "Item 3",
+            href: "https://asu.edu"
+          },
+          {
+            value: "Item 4",
+            href: 'https://asu.edu'
+          },
+          {
+            value: "Item 5",
+            href: "https://asu.edu"
+          },
+          {
+            value: "Item 6",
+            href: 'https://asu.edu'
+          },
+          {
+            value: "Item 7",
+            href: "https://asu.edu"
+          },
+          {
+            value: "Item 8",
+            href: 'https://asu.edu'
+          },
+          {
+            value: "Item 9",
+            href: "https://asu.edu"
+          }
         ]
     },
 ];

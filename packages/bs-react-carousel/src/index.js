@@ -1,3 +1,7 @@
 import BsReactCarousel from './components/BsReactCarousel';
+import BsHeroImage from './components/BsHeroImage';
 
-export default BsReactCarousel;
+export {
+  BsReactCarousel,
+  BsHeroImage
+}

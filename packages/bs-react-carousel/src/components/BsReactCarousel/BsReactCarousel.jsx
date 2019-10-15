@@ -5,9 +5,9 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption,
   Util
 } from 'reactstrap';
+import BsHeroImage from '../BsHeroImage';
 import bootstrap from '../../styles/bs4/css/bootstrap-asu.min.css';
 
 // Needs to be set for CSS modules.
@@ -54,16 +54,15 @@ class BsReactCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = this.props.items.map((item) => {
+    const slides = this.props.items.map((item, index) => {
       return (
         <CarouselItem
           tag="div"
-          key={item.id}
+          key={index}
           onExiting={this.onExiting}
           onExited={this.onExited}
         >
-          <img style={{width:'100%'}} src={item.src} alt={item.altText} />
-          <CarouselCaption captionText={item.caption} captionHeader={item.header || item.caption} />
+          <BsHeroImage {...item}/>
         </CarouselItem>
       );
     });
@@ -74,6 +73,7 @@ class BsReactCarousel extends Component {
         next={this.next}
         previous={this.previous}
         cssModule={bootstrap}
+        interval={this.props.interval}
       >
         <CarouselIndicators cssModule={bootstrap} items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
@@ -85,10 +85,16 @@ class BsReactCarousel extends Component {
 }
 
 BsReactCarousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  interval: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ])
 };
 
 BsReactCarousel.defaultProps = {
+  interval: 5000
 };
 
 export default BsReactCarousel;
