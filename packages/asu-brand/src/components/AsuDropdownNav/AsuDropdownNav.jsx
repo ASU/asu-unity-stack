@@ -13,7 +13,7 @@ const TopItem = props => {
   // Wrap in a link if href provided for top level item
   if (props.href) {
     topItem = (
-      <a className={styles.asuNavA} href={props.href} target={props.target} >
+      <a className={styles.asuNavA} href={props.href} target={props.target} ref={props.topRef}>
         {topItem}
       </a>
     );
@@ -30,6 +30,7 @@ const TopItem = props => {
     </React.Fragment>
   );
 };
+
 
 /** TODO: test */
 const AsuDropdownNav = props => {
@@ -70,7 +71,7 @@ const AsuDropdownNav = props => {
         onFocus={navOpen}
         onBlur={navClose}
       >
-        <TopItem {...props} toggle={toggle} open={open} focus={navOpen}/>
+        <TopItem {...props} toggle={toggle} open={open}/>
 
         <ul className={subStyles}>
           {props.items.map((item, index) => {
@@ -97,7 +98,8 @@ AsuDropdownNav.propTypes = {
   text: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   href: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
+  topRef: PropTypes.ref
 };
 
 AsuDropdownNav.defaultProps = {};
@@ -108,8 +110,13 @@ TopItem.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   href: PropTypes.string,
   target: PropTypes.string,
+  topRef: PropTypes.oneOfType([
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]),
   toggle: PropTypes.func.isRequired,
-  focus: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired
 };
 
