@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuNav.css";
 import AsuDropdownNav from "../AsuDropdownNav";
@@ -8,12 +8,12 @@ import AsuNavGlobalDefaults from "./AsuNavGlobalDefaults";
 // todo: handle the keyboard navigation here
 const AsuNav = props => {
   const navClass = classnames(styles.asuNavWrapper, props.className);
-  const [focused, setFocus] = React.useState(0);
+  const [focused, setFocus] = useState(0);
 
   let navList = [];
 
   //event handler for side-to-side keyboard navigation (top level items)
-  const handleKeyDown = React.useCallback(
+  const handleKeyDown = useCallback(
     e => {
       if (e.keyCode === 37 && focused > 0) {
         navList[focused - 1].current.focus();

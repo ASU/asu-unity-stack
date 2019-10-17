@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback} from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
@@ -36,13 +36,13 @@ const TopItem = props => {
 const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
   const [open, setOpen] = useState(false);
-  const toggle = React.useCallback(() => setOpen(oldOpen => !oldOpen), []);
+  const toggle = useCallback(() => setOpen(oldOpen => !oldOpen), []);
 
-  const navOpen = React.useCallback(() => {
+  const navOpen = useCallback(() => {
     setOpen(true);
   }, [open]);
 
-  const navClose = React.useCallback(() => {
+  const navClose = useCallback(() => {
     setOpen(false);
   }, [open]);
 
