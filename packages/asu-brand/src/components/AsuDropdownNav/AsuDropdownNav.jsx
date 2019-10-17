@@ -13,7 +13,7 @@ const TopItem = props => {
   // Wrap in a link if href provided for top level item
   if (props.href) {
     topItem = (
-      <a className={styles.asuNavA} href={props.href} target={props.target} ref={props.topRef}>
+      <a className={styles.asuNavA} href={props.href} target={props.target} ref={props.topRef} onFocus={props.focus}>
         {topItem}
       </a>
     );
@@ -71,7 +71,7 @@ const AsuDropdownNav = props => {
         onFocus={navOpen}
         onBlur={navClose}
       >
-        <TopItem {...props} toggle={toggle} open={open}/>
+        <TopItem {...props} toggle={toggle} open={open} />
 
         <ul className={subStyles}>
           {props.items.map((item, index) => {
@@ -99,7 +99,8 @@ AsuDropdownNav.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   href: PropTypes.string,
   target: PropTypes.string,
-  topRef: PropTypes.ref
+  topRef: PropTypes.ref,
+  focus: PropTypes.func
 };
 
 AsuDropdownNav.defaultProps = {};
@@ -117,7 +118,8 @@ TopItem.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(Element) })
   ]),
   toggle: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  focus: PropTypes.func
 };
 
 TopItem.defaultProps = {};

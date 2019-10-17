@@ -1,14 +1,13 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuNav.css";
 import AsuDropdownNav from "../AsuDropdownNav";
 import classnames from "classnames";
 import AsuNavGlobalDefaults from "./AsuNavGlobalDefaults";
 
-// todo: handle the keyboard navigation here
 const AsuNav = props => {
   const navClass = classnames(styles.asuNavWrapper, props.className);
-  const [focused, setFocus] = useState(0);
+  const [focused, setFocus] = useState(-1);
 
   let navList = [];
 
@@ -16,17 +15,21 @@ const AsuNav = props => {
   const handleKeyDown = useCallback(
     e => {
       if (e.keyCode === 37 && focused > 0) {
-        navList[focused - 1].current.focus();
 
         setFocus(prevFoc => prevFoc - 1);
       } else if (e.keyCode === 39 && focused < navList.length - 1) {
-        navList[focused + 1].current.focus();
 
         setFocus(prevFoc => prevFoc + 1);
       }
     },
     [focused]
   );
+
+  useEffect(() => {
+    if (focused != -1) {
+      navList[focused].current.focus();
+    }
+  }, [focused]);
 
   return (
     <nav className={navClass}>
@@ -38,13 +41,16 @@ const AsuNav = props => {
       >
         {props.globalNav.map((item, index) => {
           const newRef = React.createRef();
+          const setFocusCallback = useCallback(() => {
+            setFocus(index)
+          }, [focused]);
 
           navList.push(newRef);
 
           return (
             <li key={index} className={styles.asuNavItemTop}>
               {item.items ? (
-                <AsuDropdownNav {...item} topRef={newRef} />
+                <AsuDropdownNav {...item} topRef={newRef} focus={setFocusCallback}/>
               ) : (
                 // if no child items, render as link
                 <a
@@ -52,6 +58,7 @@ const AsuNav = props => {
                   title={item.title ? item.title : item.text}
                   target={item.target}
                   ref={newRef}
+                  onFocus={setFocusCallback}
                 >
                   {item.text}
                 </a>
