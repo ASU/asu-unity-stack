@@ -149,22 +149,13 @@ Object {
                     </li>
                   </ul>
                 </div>
-                <div
-                  class="asuNavItemTop"
-                  role="navigation"
+                <a
+                  href="https://my.asu.edu/"
+                  target="_top"
                   title="My ASU"
                 >
-                  <a
-                    class="asuNavA"
-                    href="https://my.asu.edu/"
-                    target="_top"
-                  >
-                    <span>
-                      My ASU
-                    </span>
-                  </a>
-                  
-                </div>
+                  My ASU
+                </a>
                 <div
                   class="asuNavItemTop"
                   role="navigation"
@@ -319,22 +310,13 @@ Object {
                     </li>
                   </ul>
                 </div>
-                <div
-                  class="asuNavItemTop"
-                  role="navigation"
+                <a
+                  href="https://isearch.asu.edu/"
+                  target="_top"
                   title="Directory, Index and other info"
                 >
-                  <a
-                    class="asuNavA"
-                    href="https://isearch.asu.edu/"
-                    target="_top"
-                  >
-                    <span>
-                      Directory
-                    </span>
-                  </a>
-                  
-                </div>
+                  Directory
+                </a>
               </div>
             </nav>
             <div
@@ -591,22 +573,13 @@ Object {
                   </li>
                 </ul>
               </div>
-              <div
-                class="asuNavItemTop"
-                role="navigation"
+              <a
+                href="https://my.asu.edu/"
+                target="_top"
                 title="My ASU"
               >
-                <a
-                  class="asuNavA"
-                  href="https://my.asu.edu/"
-                  target="_top"
-                >
-                  <span>
-                    My ASU
-                  </span>
-                </a>
-                
-              </div>
+                My ASU
+              </a>
               <div
                 class="asuNavItemTop"
                 role="navigation"
@@ -761,22 +734,13 @@ Object {
                   </li>
                 </ul>
               </div>
-              <div
-                class="asuNavItemTop"
-                role="navigation"
+              <a
+                href="https://isearch.asu.edu/"
+                target="_top"
                 title="Directory, Index and other info"
               >
-                <a
-                  class="asuNavA"
-                  href="https://isearch.asu.edu/"
-                  target="_top"
-                >
-                  <span>
-                    Directory
-                  </span>
-                </a>
-                
-              </div>
+                Directory
+              </a>
             </div>
           </nav>
           <div

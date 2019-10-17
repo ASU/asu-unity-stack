@@ -4,48 +4,48 @@ import AsuDropdownNav from './index.js';
 
 const items = [
   {
-    value: "Item 0",
+    text: "Item 0",
     href: 'https://asu.edu'
   },
   {
-    value: "Item 1",
+    text: "Item 1",
     href: "https://asu.edu"
   },
   {
-    value: "Item 2",
+    text: "Item 2",
     href: 'https://asu.edu'
   },
   {
-    value: "Item 3",
+    text: "Item 3",
     href: "https://asu.edu"
   },
   {
-    value: "Item 4",
+    text: "Item 4",
     href: 'https://asu.edu'
   },
   {
-    value: "Item 5",
+    text: "Item 5",
     href: "https://asu.edu"
   },
   {
-    value: "Item 6",
+    text: "Item 6",
     href: 'https://asu.edu'
   },
   {
-    value: "Item 7",
+    text: "Item 7",
     href: "https://asu.edu"
   },
   {
-    value: "Item 8",
+    text: "Item 8",
     href: 'https://asu.edu'
   },
   {
-    value: "Item 9",
+    text: "Item 9",
     href: "https://asu.edu"
   }
 ];
 
 storiesOf('AsuDropdownNav', module)
   .add('basic', () => (
-    <AsuDropdownNav {...{title: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
+    <AsuDropdownNav {...{text: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
   ));

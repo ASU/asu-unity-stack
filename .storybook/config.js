@@ -4,7 +4,7 @@ import { configure } from '@storybook/react';
 function loadStories() {
 
   // exclude node_modules directories
-  const req = require.context('../packages', true, /^(?!.*node_modules).*\.stories\.js$/);
+  const req = require.context('../packages', true, /^(?!.*(node_modules|asu-web-standards-bootstrap4)).*\.stories\.js$/);
   req.keys().forEach(filename => req(filename));
   // You can require as many stories as you need.
 }

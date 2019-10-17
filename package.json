@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "eslint packages/**/src/components/**/*.js packages/**/src/components/**/*.jsx",
     "test": "jest",
-    "storybook": "start-storybook",
+    "storybook:react": "start-storybook",
     "build-storybook": "build-storybook -c .storybook -o export"
   },
   "repository": {

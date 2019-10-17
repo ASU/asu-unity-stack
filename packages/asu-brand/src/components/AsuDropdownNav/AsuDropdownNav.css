@@ -94,6 +94,10 @@ Accessibility
 
 .subSlideIn {
     max-height: 2000px;
+    display: block;
+    left: 0 !important;
+    top: 20px;
+    z-index: -1;
 }
 
 .subSlideOut {
