@@ -1,12 +1,8 @@
 {
-  "name": "asu-web-standards-bootstrap4-prototype",
+  "name": "asu-web-standards-bootstrap4",
   "version": "1.0.0-alpha1",
-  "description": "Preliminary scaffolding for the new ASU web Standards Bootstrap 4 project",
+  "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
-  "repository": "https://github.com/gios-asu/asu-web-standards-bootstrap4-prototype.git",
-  "author": "Nathan Rollins <nathan.rollins@asu.edu>",
-  "license": "MIT",
-  "private": true,
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",

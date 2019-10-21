@@ -1,134 +1,22 @@
 {
-  "name": "asu_unity_stack",
-  "version": "1.0.0",
-  "description": "Reusable component-based Web Standards style kit for front end development.",
-  "main": "src/core/core.js",
-  "scripts": {
-    "eslint": "eslint packages/**/src/components/**/*.js packages/**/src/components/**/*.jsx",
-    "test": "jest",
-    "storybook:react": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o export"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ASU/asu_unity_stack.git"
-  },
-  "author": "Colton Testamarck (colt@asu.edu)",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/ASU/asu_unity_stack/issues"
-  },
-  "homepage": "https://github.com/ASU/asu_unity_stack#readme",
-  "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/node": "^7.6.1",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
-    "@fullhuman/postcss-purgecss": "^1.3.0",
-    "@storybook/addon-knobs": "^5.2.1",
-    "@storybook/react": "^5.2.1",
-    "@testing-library/react": "^8.0.9",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "eslint": "^5.3.0",
-    "eslint-loader": "^2.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "express": "^4.17.1",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "jest-cli": "^24.9.0",
-    "lerna": "^3.16.4",
-    "mini-css-extract-plugin": "^0.8.0",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "regenerator-runtime": "^0.13.3",
-    "searchkit": "^2.3.1-alpha.7",
-    "style-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-middleware": "^3.7.1",
-    "webpack-merge": "^4.2.2",
-    "webpack-node-externals": "^1.7.2"
-  },
-  "jest": {
-    "verbose": true,
-    "automock": false,
-    "testURL": "http://localhost/",
-    "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "packages"
-    ],
-    "roots": [
-      "packages"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
-    },
-    "globals": {
-      "__DEV__": true
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-      "no-unused-vars": "warn",
-      "no-console": "warn",
-      "no-undef": "warn",
-      "no-useless-escape": "off"
-    },
-    "settings": {
-      "react": {
-        "createClass": "createReactClass",
-        "pragma": "React",
-        "version": "16.6"
-      },
-      "propWrapperFunctions": [
-        "forbidExtraProps"
-      ]
-    }
-  },
   "private": true,
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {
-    "classnames": "^2.2.6"
+  "scripts": {
+    "clean": "lerna run clean --stream --parallel",
+    "build": "tsc -b packages/core packages/client-library",
+    "rollup": "lerna exec -- rollup -c=../../rollup.config.js",
+    "watch": "lerna exec --no-sort -- rollup -w -c=../../rollup.config.js",
+    "test": "lerna run test --stream --parallel",
+    "format": "prettier \"packages/**/*.{json,js,ts,tsx}\" --write",
+    "publish": "lerna run tsc && lerna publish"
+  },
+  "devDependencies": {
+    "husky": "^3.0.5",
+    "lerna": "^3.16.4",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2"
   }
 }
