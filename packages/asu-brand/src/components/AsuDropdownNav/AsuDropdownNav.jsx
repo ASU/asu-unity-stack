@@ -1,10 +1,9 @@
-import React, { useState, useCallback} from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
 
 const TopItem = props => {
-
   // if the item doesn't have an href property, render as a toggle
   let topItem = (
     <span onClick={!props.href ? props.toggle : undefined}>{props.text}</span>
@@ -13,7 +12,13 @@ const TopItem = props => {
   // Wrap in a link if href provided for top level item
   if (props.href) {
     topItem = (
-      <a className={styles.asuNavA} href={props.href} target={props.target} ref={props.topRef} onFocus={props.focus}>
+      <a
+        className={styles.asuNavA}
+        href={props.href}
+        target={props.target}
+        ref={props.topRef}
+        onFocus={props.focus}
+      >
         {topItem}
       </a>
     );
@@ -30,7 +35,6 @@ const TopItem = props => {
     </React.Fragment>
   );
 };
-
 
 /** TODO: test */
 const AsuDropdownNav = props => {
@@ -61,35 +65,34 @@ const AsuDropdownNav = props => {
   }
 
   return (
+    <div
+      title={props.title ? props.title : props.text}
+      role="navigation"
+      className={navClass}
+      onMouseEnter={navOpen}
+      onMouseLeave={navClose}
+      onFocus={navOpen}
+      onBlur={navClose}
+    >
+      <TopItem {...props} toggle={toggle} open={open} />
 
-      <div
-        title={props.title ? props.title : props.text}
-        role="navigation"
-        className={navClass}
-        onMouseEnter={navOpen}
-        onMouseLeave={navClose}
-        onFocus={navOpen}
-        onBlur={navClose}
-      >
-        <TopItem {...props} toggle={toggle} open={open} />
-
-        <ul className={subStyles}>
-          {props.items.map((item, index) => {
-            return (
-              <li className={styles.asuNavItem} key={index}>
-                <a
-                  title={item.title}
-                  href={item.href}
-                  ref={linkRefs[index]}
-                  tabIndex="0"
-                >
-                  {item.text}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <ul className={subStyles}>
+        {props.items.map((item, index) => {
+          return (
+            <li className={styles.asuNavItem} key={index}>
+              <a
+                title={item.title}
+                href={item.href}
+                ref={linkRefs[index]}
+                tabIndex="0"
+              >
+                {item.text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
