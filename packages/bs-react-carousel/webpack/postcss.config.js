@@ -1,5 +1,4 @@
 const glob = require('glob');
-const path = require("path");
 
 module.exports = {
   plugins: {

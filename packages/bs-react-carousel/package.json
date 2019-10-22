@@ -1,14 +1,16 @@
 {
-  "name": "@asu/bs-react-carousel",
+  "name": "@asu/rs-carousel",
   "version": "0.0.16",
-  "description": "ASU React implementation of Bootstrap 4 carousel",
+  "description": "ASU implementation of Bootstrap 4 carousel built with Reactstrap",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
     "prepare": "npm run build",
     "build": "webpack --config webpack/webpack.production.js",
     "build:watch": "webpack --watch --config=webpack/webpack.development.js",
-    "build:dev": "webpack --config=webpack/webpack.development.js"
+    "build:dev": "webpack --config=webpack/webpack.development.js",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o export"
   },
   "repository": {
     "type": "git",
