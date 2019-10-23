@@ -1,6 +1,4 @@
-@import "../../styles/ASU.css";
-@import "../../styles/colors.css";
-@import "../../styles/variables.css";
+@import '../../styles/ASU.css';
 
 /**  CSS Modules -- ASUHeader.css ****/
 .asuBrandHeader {

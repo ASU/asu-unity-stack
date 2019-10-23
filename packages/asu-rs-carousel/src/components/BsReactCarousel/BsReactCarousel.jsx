@@ -8,7 +8,7 @@ import {
   Util
 } from 'reactstrap';
 import BsHeroImage from '../BsHeroImage';
-import bootstrap from '../../styles/bs4/css/bootstrap-asu.min.css';
+import bootstrap from 'asu-web-standards-bootstrap4-prototype/dist/css/bootstrap-asu.min.css';
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049

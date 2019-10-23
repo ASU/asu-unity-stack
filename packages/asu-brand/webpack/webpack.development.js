@@ -35,10 +35,11 @@ module.exports.push(merge(common, {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
-                            importLoaders: 1,
+                          modules: {
                             localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
+                          },
+                          importLoaders: 1
+                      }
                     },
                     postCSSLoader
                 ]

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const TopItem = props => {
   // if the item doesn't have an href property, render as a toggle
@@ -36,11 +37,11 @@ const TopItem = props => {
   );
 };
 
-/** TODO: test */
 const AsuDropdownNav = props => {
   const navClass = styles.asuNavItemTop;
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen(oldOpen => !oldOpen), []);
+  const { height, width } = useWindowDimensions();
 
   const navOpen = useCallback(() => {
     setOpen(true);
@@ -69,10 +70,12 @@ const AsuDropdownNav = props => {
       title={props.title ? props.title : props.text}
       role="navigation"
       className={navClass}
-      onMouseEnter={navOpen}
-      onMouseLeave={navClose}
-      onFocus={navOpen}
-      onBlur={navClose}
+      {...(width > 990 && {
+        onMouseEnter: navOpen,
+        onMouseLeave: navClose,
+        onFocus: navOpen, 
+        onBlur: navClose
+      })}
     >
       <TopItem {...props} toggle={toggle} open={open} />
 

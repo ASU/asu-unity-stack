@@ -1,75 +1,49 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AsuBrandHeader.css";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 
-class ASUHeader extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchOpen: false,
-      mobileNavOpen: false,
-      renderClient: false
-    };
+const ASUHeader = props => {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileNavOpen, setNavOpen] = useState(false);
+  const [renderClient, setRendered] = useState(false);
 
-    this.toggleMobileNav = this.toggleMobileNav.bind(this);
-    this.toggleMobileSearch = this.toggleMobileSearch.bind(this);
-  }
+  // add necessary classes
+  let cx = classNames.bind(styles);
 
-  render() {
-    // add necessary classes
-    let cx = classNames.bind(styles);
+  const headerClass = cx(props.className, {
+    openedSearch: searchOpen,
+    openedNav: mobileNavOpen
+  });
 
-    const headerClass = cx(this.props.className, {
-      openedSearch: this.state.searchOpen,
-      openedNav: this.state.mobileNavOpen
-    });
+  useEffect(() => {
+    setRendered(true);
+  }, [renderClient]);
 
-    return (
-      <header className={headerClass}>
-        <a href="https://www.asu.edu/accessibility/" className={styles.srOnly}>
-          Report an accessibility problem
-        </a>
-        <div className={styles.asuHeaderGrid}>
-          <div className={styles.asuHeaderTopRow}>{this.props.nav}</div>
-          {this.props.search}
-          {this.state.renderClient && this.props.siteName
-            ? this.props.siteName
-            : ""}
-          <div className={styles.asuHeaderMobileControls}>
-            <span
-              className={styles.icoNavIcon}
-              onClick={this.toggleMobileNav}
-              role="button"
-            />
-            <span
-              className={styles.icoSearch}
-              onClick={this.toggleMobileSearch}
-            />
-          </div>
+  return (
+    <header className={headerClass}>
+      <a href="https://www.asu.edu/accessibility/" className={styles.srOnly}>
+        Report an accessibility problem
+      </a>
+      <div className={styles.asuHeaderGrid}>
+        <div className={styles.asuHeaderTopRow}>{props.nav}</div>
+        {props.search}
+        {renderClient && props.siteName ? this.props.siteName : ""}
+        <div className={styles.asuHeaderMobileControls}>
+          <span
+            className={styles.icoNavIcon}
+            onClick={() => setNavOpen(oldOpen => !oldOpen)}
+            role="button"
+          />
+          <span
+            className={styles.icoSearch}
+            onClick={() => setSearchOpen(oldOpen => !oldOpen)}
+          />
         </div>
-      </header>
-    );
-  }
-
-  toggleMobileSearch(e) {
-    e.preventDefault();
-    this.setState({
-      searchOpen: !this.state.searchOpen
-    });
-  }
-
-  toggleMobileNav(e) {
-    e.preventDefault();
-    this.setState({
-      mobileNavOpen: !this.state.mobileNavOpen
-    });
-  }
-
-  componentDidMount() {
-    this.setState({ renderClient: true });
-  }
-}
+      </div>
+    </header>
+  );
+};
 
 ASUHeader.propTypes = {
   className: PropTypes.string,
