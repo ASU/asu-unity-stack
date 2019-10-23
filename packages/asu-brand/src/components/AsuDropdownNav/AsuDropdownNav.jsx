@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./AsuDropdownNav.css";
 import classNames from "classnames";
@@ -42,6 +42,24 @@ const AsuDropdownNav = props => {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen(oldOpen => !oldOpen), []);
   const { height, width } = useWindowDimensions();
+  const [focused, setFocus] = useState(-1);
+
+  let linkRefs = [];
+  linkRefs.push(props.topRef);
+
+  //event handler for side-to-side keyboard navigation (top level items)
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.keyCode === 38 && focused > 0) {
+        setFocus(prevFoc => prevFoc - 1);
+      } else if (e.keyCode === 40 && focused === -1) {
+        setFocus(1);
+      } else if (e.keyCode === 40 && focused < linkRefs.length - 1) {
+        setFocus(prevFoc => prevFoc + 1);
+      }
+    },
+    [focused]
+  );
 
   const navOpen = useCallback(() => {
     setOpen(true);
@@ -51,44 +69,52 @@ const AsuDropdownNav = props => {
     setOpen(false);
   }, [open]);
 
+  const onBlur = useCallback(
+    e => {
+      // only change state if focus moves away from
+      // container element
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        setOpen(false);
+        setFocus(-1);
+      }
+    },
+    [open, focused]
+  );
+
   const subStyles = classNames(
     styles.subMenu,
     open ? styles.subSlideIn : styles.subSlideOut
   );
 
-  let linkRefs = [];
-
-  if (props.items) {
-    for (let i = 0; i < props.items.length; i++) {
-      let newRef = React.createRef();
-      linkRefs.push(newRef);
+  useEffect(() => {
+    if (focused != -1) {
+      linkRefs[focused].current.focus();
     }
-  }
+  }, [focused]);
 
   return (
     <div
       title={props.title ? props.title : props.text}
       role="navigation"
       className={navClass}
+      onKeyDown={handleKeyDown}
       {...(width > 990 && {
         onMouseEnter: navOpen,
         onMouseLeave: navClose,
-        onFocus: navOpen, 
-        onBlur: navClose
+        onFocus: navOpen,
+        onBlur: onBlur
       })}
     >
       <TopItem {...props} toggle={toggle} open={open} />
 
       <ul className={subStyles}>
         {props.items.map((item, index) => {
+          const newRef = React.createRef();
+          linkRefs.push(newRef);
+
           return (
             <li className={styles.asuNavItem} key={index}>
-              <a
-                title={item.title}
-                href={item.href}
-                ref={linkRefs[index]}
-                tabIndex="0"
-              >
+              <a title={item.title} href={item.href} ref={newRef} tabIndex="0">
                 {item.text}
               </a>
             </li>
