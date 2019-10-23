@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Jumbotron, Button, Util } from "reactstrap";
-import bootstrap from "../../styles/bs4/css/bootstrap-asu.min.css";
+import bootstrap from "asu-web-standards-bootstrap4-prototype/dist/css/bootstrap-asu.min.css";
 import styles from "./BsHeroImage.css";
 
 // Needs to be set for CSS modules.
