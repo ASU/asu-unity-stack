@@ -65,6 +65,41 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
   },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
+      "no-unused-vars": "warn",
+      "no-console": "warn",
+      "no-undef": "warn",
+      "no-useless-escape": "off"
+    },
+    "settings": {
+      "react": {
+        "createClass": "createReactClass",
+        "pragma": "React",
+        "version": "16.6"
+      },
+      "propWrapperFunctions": [
+        "forbidExtraProps"
+      ]
+    }
+  },
   "dependencies": {
     "asu-web-standards-bootstrap4-prototype": "1.0.0-alpha1",
     "reactstrap": "^8.0.1"
