@@ -244,7 +244,7 @@ asuNav
         width: 100%;
     }
 
-    .asuNav .icoSortUp, .asuNav .icoSortDown {
+    .asuNavItemTop .icoSortUp, .asuNavItemTop .icoSortDown {
         display: inline-block;
         width: 35px;
         height: 15px;
@@ -292,9 +292,10 @@ asuNav
 
     .asuNavItemTop {
         color: #77797B;
-        background: #fff;
         border-bottom: solid 1px #ddd;
         font-weight: 600;
         position: relative;
+        background: #fff;
+        width: 100%;
     }
 }

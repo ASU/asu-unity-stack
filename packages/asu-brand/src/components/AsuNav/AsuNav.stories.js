@@ -158,4 +158,7 @@ const siteNav = [
 storiesOf('AsuNav', module)
   .add('basic w/out local nav', () => (
     <AsuNav/>
+  ))
+  .add('basic w/ local nav', () => (
+    <AsuNav siteNav={siteNav}/>
   ));

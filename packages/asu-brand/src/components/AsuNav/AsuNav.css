@@ -118,7 +118,8 @@ asuNav
     display:inline-block;
     width: inherit;
     margin:0 auto;
-    z-index:100
+    z-index:100;
+    padding: 0;
 }
 
 .navList {
@@ -238,21 +239,6 @@ asuNav
 
     .asuNavWrapper {
         width: 100%;
-    }
-
-    .asuNav .icoSortUp, .asuNav .icoSortDown {
-        display: inline-block;
-        width: 35px;
-        height: 15px;
-        background: #F4F4F4;
-        border-left: solid 1px #DDD;
-        text-align: center;
-        font-size: 14px;
-        color: #B2B2B2;
-        padding: 10px;
-        position: absolute;
-        top: 0;
-        right: 0;
     }
 
     .asuNavItem {

@@ -131,7 +131,10 @@ AsuDropdownNav.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   href: PropTypes.string,
   target: PropTypes.string,
-  topRef: PropTypes.ref,
+  topRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
   focus: PropTypes.func
 };
 
@@ -144,10 +147,8 @@ TopItem.propTypes = {
   href: PropTypes.string,
   target: PropTypes.string,
   topRef: PropTypes.oneOfType([
-    // Either a function
     PropTypes.func,
-    // Or the instance of a DOM native element (see the note about SSR)
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    PropTypes.shape({ current: PropTypes.any })
   ]),
   toggle: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
