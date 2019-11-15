@@ -56,7 +56,8 @@
     "build:dev": "webpack --config=webpack/webpack.development.js",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -c .storybook -o export",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./src --ext .js --ext .jsx"
   },
   "jest": {
     "verbose": true,
@@ -76,7 +77,7 @@
       "jsx"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "globals": {
@@ -111,7 +112,7 @@
       "react": {
         "createClass": "createReactClass",
         "pragma": "React",
-        "version": "16.6"
+        "version": "16.9"
       },
       "propWrapperFunctions": [
         "forbidExtraProps"
