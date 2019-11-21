@@ -123,5 +123,6 @@
   "author": "Colton Testamarck (colt@asu.edu)",
   "dependencies": {
     "classnames": "^2.2.6"
-  }
+  },
+  "gitHead": "becaf80fd76325417df17ca148edfb1da197191f"
 }

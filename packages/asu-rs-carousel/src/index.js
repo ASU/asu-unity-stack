@@ -1,7 +1,8 @@
-import BsReactCarousel from './components/BsReactCarousel';
-import BsHeroImage from './components/BsHeroImage';
+import AsuCarousel from './components/AsuCarousel';
+import {AsuHeroImage, AsuBgHeroImage} from './components/BsHeroImage';
 
 export {
-  BsReactCarousel,
-  BsHeroImage
+  AsuCarousel,
+  AsuHeroImage,
+  AsuBgHeroImage
 }
