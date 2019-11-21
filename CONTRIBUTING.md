@@ -127,8 +127,9 @@ git checkout -b i21
 
 3. Make code changes
 4. Increment the version in the changed project's package.json. This project adheres to the same semantic versioning process as [React](https://reactjs.org/docs/faq-versioning.html)
-5. Commit and push changes
-6. Submit pull request on Github from your issue branch to 'dev' branch
+5. Add details about changes to the project's CHANGELOG
+6. Commit and push changes to issue branch
+7. Submit pull request on Github from your issue branch to 'dev' branch
 
 ##
 

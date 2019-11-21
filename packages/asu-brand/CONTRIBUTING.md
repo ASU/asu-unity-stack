@@ -22,7 +22,7 @@ yarn test
 
 ### Guidelines
 
-1. Should work for React >16.8
+1. Should work for React 16.8
 2. Use React functional components over class components
 3. Update Jest testing snapshots if changing the look of a component
 4. Add new Jest test(s) if adding new functionality

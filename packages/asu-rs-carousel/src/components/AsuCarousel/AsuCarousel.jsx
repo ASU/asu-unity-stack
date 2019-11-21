@@ -7,14 +7,14 @@ import {
   CarouselIndicators,
   Util
 } from 'reactstrap';
-import BsHeroImage from '../BsHeroImage';
+import {AsuHeroImage, AsuBgHeroImage} from '../AsuHeroImage';
 import bootstrap from 'asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css';
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049
 Util.setGlobalCssModule(bootstrap);
 
-class BsReactCarousel extends Component {
+class AsuCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
@@ -62,7 +62,7 @@ class BsReactCarousel extends Component {
           onExiting={this.onExiting}
           onExited={this.onExited}
         >
-          <BsHeroImage {...item}/>
+          <AsuHeroImage {...item}/>
         </CarouselItem>
       );
     });
@@ -74,6 +74,10 @@ class BsReactCarousel extends Component {
         previous={this.previous}
         cssModule={bootstrap}
         interval={this.props.interval}
+        keyboard={this.props.keyboard}
+        pause={this.props.pause}
+        ride={this.props.ride}
+        slide={this.props.slide}
       >
         <CarouselIndicators cssModule={bootstrap} items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
@@ -84,17 +88,31 @@ class BsReactCarousel extends Component {
   }
 }
 
-BsReactCarousel.propTypes = {
+AsuCarousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   interval: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
     PropTypes.bool,
-  ])
+  ]),
+  keyboard: PropTypes.bool,
+   /* If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on
+   * mouseleave. If set to false, hovering over the carousel won't pause it. (default: "hover")
+   */
+  pause: PropTypes.oneOf(['hover', false]),
+  // Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.
+  // This is how bootstrap defines it... I would prefer a bool named autoplay or something...
+  ride: PropTypes.oneOf(['carousel']),
+  // controls whether the slide animation on the Carousel works or not
+  slide: PropTypes.bool
 };
 
-BsReactCarousel.defaultProps = {
-  interval: 5000
+AsuCarousel.defaultProps = {
+  interval: 5000,
+  keyboard: true,
+  pause: 'hover',
+  ride: 'carousel',
+  slide: true
 };
 
-export default BsReactCarousel;
+export default AsuCarousel;

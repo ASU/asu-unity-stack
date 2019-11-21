@@ -1,13 +1,12 @@
 import React from 'react'
 import { render} from '@testing-library/react'
-import BsHeroImage from './BsHeroImage'
+import AsuHeroImage from './BsHeroImage'
 
 
 
-describe('The BsHeroImage', () => {
+describe('The AsuHeroImage', () => {
     it('renders the component', () => {
-
-      const container = render(<BsHeroImage  {...{title: 'ASU Home'}} />);
+      const container = render(<AsuHeroImage {...{title: 'ASU Home'}} />);
           expect(container.firstChild).toMatchSnapshot();
     })
 });

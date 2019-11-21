@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import BsReactCarousel from "./index.js";
+import AsuCarousel from "./index.js";
 
 const items = [
   {
@@ -31,8 +31,8 @@ const items = [
   }
 ];
 
-storiesOf("BsReactCarousel", module)
-  .add("basic", () => <BsReactCarousel items={items} />)
+storiesOf("AsuCarousel", module)
+  .add("basic", () => <AsuCarousel items={items} />)
   .add("With custom interval", () => (
-    <BsReactCarousel items={items} interval={1000} />
+    <AsuCarousel items={items} interval={1000} />
   ));
