@@ -131,7 +131,7 @@ AsuBgHeroImage.propTypes = {
 };
 
 AsuBgHeroImage.defaultProps = {
-  maxHeight: 800
+  maxHeight: 380
 };
 
 export {AsuHeroImage, AsuBgHeroImage};

@@ -1,6 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import AsuCarousel from "./index.js";
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
 const items = [
   {
@@ -32,7 +33,8 @@ const items = [
 ];
 
 storiesOf("AsuCarousel", module)
-  .add("basic", () => <AsuCarousel items={items} />)
-  .add("With custom interval", () => (
-    <AsuCarousel items={items} interval={1000} />
-  ));
+  .add("Basic", () => <AsuCarousel items={items} />)
+  .add("Customized", () => (
+    <AsuCarousel items={items} interval={number("interval", 5000)} />
+  ))
+  .addDecorator(withKnobs);

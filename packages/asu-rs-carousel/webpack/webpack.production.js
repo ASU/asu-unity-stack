@@ -19,7 +19,7 @@ module.exports.push(
   merge(common, {
     mode: "production",
     entry: {
-      "bs-react-carousel": "./index.js"
+      "asu-rs-carousel": "./index.js"
     },
     output: {
       path: path.resolve(__dirname, "..", "dist"),
@@ -44,7 +44,7 @@ module.exports.push(
                 loader: 'css-loader',
                 options: {
                     modules: {
-                      localIdentName: '[name]__[local]___[hash:base64:5]'
+                      localIdentName: '[local]___[hash:base64:5]'
                     },
                     importLoaders: 1
                 }
