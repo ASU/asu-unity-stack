@@ -31,6 +31,7 @@ module.exports = {
         "btn",
         "btn-primary",
         "btn-secondary",
+        "btn-info",
         "jumbotron",
         "jumbotron-fluid",
         "sr-only",

@@ -14,14 +14,10 @@ const heroButtons = buttons => {
       return "";
     }
 
-    let bcolor = "primary";
+    let bcolor = item.color || "primary";
     let style = {
       marginLeft: index == 0 ? "0" : "1em"
     };
-
-    if (item.color == "blue") {
-      bcolor = "secondary";
-    }
 
     return (
       <Button key={index} tag="a" href={item.url} color={bcolor} style={style}>
@@ -31,17 +27,23 @@ const heroButtons = buttons => {
   });
 };
 
-const AsuHeroImage = props => {
-  const buttons = props.buttons ? heroButtons(props.buttons) : "";
-  let title = <h2 className={styles.heroTitle}>{props.title}</h2>;
+const heroTitle = (title, titleLink) => {
+  let markup = <h2 className={styles.heroTitle}>{title}</h2>;
 
-  if (props.titleLink) {
-    title = (
-      <a className={styles.heroLink} href={props.titleLink}>
-        {title}
+  if (titleLink) {
+    markup = (
+      <a className={styles.heroLink} href={titleLink}>
+        {markup}
       </a>
     );
   }
+
+  return markup;
+};
+
+const AsuHeroImage = props => {
+  const buttons = props.buttons ? heroButtons(props.buttons) : "";
+  const title = heroTitle(props.title, props.titleLink);
 
   return (
     <Jumbotron cssModule={bootstrap} fluid style={{ padding: "0" }}>
@@ -94,19 +96,11 @@ const AsuBgHeroImage = props => {
   };
 
   const buttons = props.buttons ? heroButtons(props.buttons) : "";
-  let title = <h2 className={styles.heroTitle} >{props.title}</h2>;
-
-  if (props.titleLink) {
-    title = <a className={styles.heroLink} href={props.titleLink}>{title}</a>
-  }
+  const title = heroTitle(props.title, props.titleLink);
 
   return (
     <Jumbotron cssModule={bootstrap} fluid style={bgStyles}>
-      <span
-        className={bootstrap["sr-only"]}
-      >
-        {props.altText}
-      </span>
+      <span className={bootstrap["sr-only"]}>{props.altText}</span>
       <div className={bootstrap.container}>
         {title}
         <p className={styles.heroP}>{props.tagline}</p>
@@ -126,7 +120,7 @@ AsuBgHeroImage.propTypes = {
   maxHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.bool,
+    PropTypes.bool
   ])
 };
 
@@ -134,4 +128,4 @@ AsuBgHeroImage.defaultProps = {
   maxHeight: 380
 };
 
-export {AsuHeroImage, AsuBgHeroImage};
+export { AsuHeroImage, AsuBgHeroImage };

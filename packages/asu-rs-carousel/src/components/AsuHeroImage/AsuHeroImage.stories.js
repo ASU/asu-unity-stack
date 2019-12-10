@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { AsuHeroImage, AsuBgHeroImage } from "./index.js";
 import { withKnobs, text, number } from "@storybook/addon-knobs";
+import { withA11y } from '@storybook/addon-a11y';
 
 let item = {
   src:
@@ -16,6 +17,13 @@ let item = {
   titleLink: "https://asu.edu"
 };
 
+const altButtons = [
+  { text: "button 1", url: "https://asu.edu", color: "info" },
+  { text: "button 2", url: "https://asu.edu", color: "secondary" }
+];
+
+
+
 storiesOf("AsuHeroImage", module)
   .add("basic", () => (
     <AsuHeroImage
@@ -27,7 +35,17 @@ storiesOf("AsuHeroImage", module)
       buttons={item.buttons}
     />
   ))
-  .addDecorator(withKnobs);
+  .add("alternate button colors", () => (
+    <AsuHeroImage
+      title={text("title", item.title)}
+      altText={text("altText", item.altText)}
+      src={text("src", item.src)}
+      tagline={text("tagline", item.tagline)}
+      titleLink={text("titleLink", item.titleLink)}
+      buttons={altButtons}
+    />
+  ))
+  .addDecorator(withKnobs, withA11y);
 
 storiesOf("AsuBgHeroImage", module)
   .add("default height", () => (
@@ -52,4 +70,4 @@ storiesOf("AsuBgHeroImage", module)
       maxHeight={number("maxHeight", 700)}
     />
   ))
-  .addDecorator(withKnobs);
+  .addDecorator(withKnobs, withA11y);
