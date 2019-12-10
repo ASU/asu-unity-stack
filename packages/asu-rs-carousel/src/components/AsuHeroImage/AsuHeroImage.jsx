@@ -10,6 +10,7 @@ Util.setGlobalCssModule(bootstrap);
 
 const heroButtons = buttons => {
   return buttons.map((item, index) => {
+
     if (!item.text || !item.url) {
       return "";
     }

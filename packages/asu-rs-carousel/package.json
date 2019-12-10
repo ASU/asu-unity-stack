@@ -1,6 +1,6 @@
 {
   "name": "asu-rs-carousel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ASU implementation of Bootstrap 4 carousel built with Reactstrap",
   "main": "src/index.js",
   "scripts": {
@@ -103,7 +103,7 @@
   },
   "dependencies": {
     "asu-web-standards-bootstrap4": "1.0.0-alpha1",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.2.0"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

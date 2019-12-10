@@ -34,8 +34,7 @@ const items = [
 ];
 
 storiesOf("AsuCarousel", module)
-  .add("Basic", () => <AsuCarousel items={items} />)
-  .add("Customized", () => (
+  .add("Default", () => (
     <AsuCarousel
       items={items}
       interval={number("interval", 5000)}
@@ -43,6 +42,17 @@ storiesOf("AsuCarousel", module)
       pause={text("pause", "hover")}
       ride={text("ride", "carousel")}
       slide={boolean("slide", true)}
+    />
+  ))
+  .add("Background variant", () => (
+    <AsuCarousel
+      items={items}
+      interval={number("interval", 5000)}
+      keyboard={boolean("keyboard", true)}
+      pause={text("pause", "hover")}
+      ride={text("ride", "carousel")}
+      slide={boolean("slide", true)}
+      variant={text("variant", "background")}
     />
   ))
   .addDecorator(withKnobs, withA11y);

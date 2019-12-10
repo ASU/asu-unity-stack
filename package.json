@@ -11,7 +11,7 @@
     "watch": "lerna exec --no-sort -- rollup -w -c=../../rollup.config.js",
     "test": "lerna run test --stream --parallel",
     "format": "prettier \"packages/**/*.{json,js,ts,tsx}\" --write",
-    "publish": "lerna run tsc && lerna publish"
+    "publish": "lerna publish from-package"
   },
   "devDependencies": {
     "husky": "^3.0.5",
