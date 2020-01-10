@@ -66,6 +66,31 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
   },
+  "jest": {
+    "verbose": true,
+    "automock": false,
+    "testURL": "http://localhost/",
+    "setupFilesAfterEnv": [
+      "@testing-library/react/cleanup-after-each"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "roots": [
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "globals": {
+      "__DEV__": true
+    }
+  },
   "eslintConfig": {
     "extends": [
       "eslint:recommended",

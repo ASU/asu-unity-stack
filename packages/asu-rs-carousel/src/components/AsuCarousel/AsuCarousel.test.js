@@ -7,7 +7,7 @@ import AsuCarousel from './AsuCarousel'
 describe('The AsuCarousel', () => {
     it('renders the component', () => {
 
-      const container = render(<AsuCarousel  {...{items: [{}]}} />);
+      const container = render(<AsuCarousel  {...{items: [{title: "test"}]}} />);
             expect(container.firstChild).toMatchSnapshot()
     })
 });
