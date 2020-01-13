@@ -138,8 +138,6 @@ const AsuGisFeaturePicker = props => {
           onCheck={checkCallback}
           onExpand={expandCallback}
           nodes={layers}
-          iconsClass="fa5"
-          checkModel="all"
           nativeCheckboxes={true}
           onlyLeafCheckboxes={true}
         />
