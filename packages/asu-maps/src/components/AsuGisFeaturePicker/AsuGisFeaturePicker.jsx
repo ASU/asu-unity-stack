@@ -2,28 +2,80 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import defaultLayers from "./AsuGisLayersBackup.json";
 import CheckboxTree from "react-checkbox-tree";
+import FeatureSelect from "./FeatureSelect";
 import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
+/* Helper function to do fetch request to the GIS layer
+   endpoint, then sets the 'options' state variable with
+   retrieved items. This in turn causes the select list to
+   re-render with new options.*/
+const getOptions = (currentLayer, setOptions, props) => {
+  // Get the currently selected layer to build query
+  const node = currentLayer.current ? currentLayer.current : undefined;
+  const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
+
+  if (node) {
+    // build URL from layer data, then fetch feature options
+    // and set state
+    const parent = node.hasOwnProperty("parent") ? node.parent : null;
+    const id =
+      parent.hasOwnProperty("id") && parent.hasOwnProperty("value")
+        ? node.value.substring(parent.value.length)
+        : node.value;
+    const url = parent.hasOwnProperty("url") ? parent.url : node.url;
+
+    if (url) {
+      fetch(url + "/" + id + query)
+        .then(res => res.json())
+        .then(
+          result => {
+
+            // set the options state.
+            setOptions(result.features);
+
+            // run the onChange function with an empty value since
+            // swapping out the Select list got rid of the old value
+            const emptyVal = "{}";
+            if (props.onChange) {
+              props.onChange(emptyVal);
+            }
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          error => {
+            console.log(error);
+          }
+        );
+    }
+  }
+};
+
+/**
+ * Main parent component which renders entire ASU Maps GIS Feature Select UI
+ * @param {*} props
+ */
 const AsuGisFeaturePicker = props => {
   // Layer data and state hooks for the
   // GIS map layer tree select
   const layers = props.layers;
   const [checked, setChecked] = useState([]);
   const [expanded, setExpanded] = useState([]);
-  // mutable ref used for keeping track of currently
-  // selected layer
+  // mutable ref used for storing currently
+  // selected layer node
   const currentLayer = useRef();
 
-  // state handling for feature picker
+  // State hooks for the feature select list component
   const [options, setOptions] = useState([]);
-  const [selectedFeature, setSelected] = useState("{}");
 
-  // Callbacks for setting state of the
-  // layer tree component
+  // Callbacks for setting state of the react-checkbox-tree tree component and
+  // saving the tree node for later use.
   const checkCallback = useCallback(
     (checked, targetNode) => {
+      // save the currently selected layer node
       currentLayer.current = targetNode;
 
+      // set the checked value for the react-checkbox-tree
       setChecked([targetNode.value]);
     },
     [checked]
@@ -35,93 +87,21 @@ const AsuGisFeaturePicker = props => {
     [expanded]
   );
 
-  /* This effect only runs when the selected map layer changes.
-   It does an AJAX fetch request to the GIS layer
-   endpoint, then sets the 'options' state variable with
-   retrieved items. This in turn causes the select list to
-   re-render. */
+  //This effect only runs when the selected map layer changes.
   useEffect(() => {
-    // reset selectedFeature to empty when checking a new layer
-    setSelected("{}");
-
-    // Get the currently selected layer to build query
-    const node = currentLayer.current;
-    const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
-
-    if (node) {
-      // build URL from layer data, then fetch feature options
-      // and set state
-      const parent = node.hasOwnProperty("parent") ? node.parent : null;
-
-      const id =
-        parent.hasOwnProperty("id") && parent.hasOwnProperty("value")
-          ? node.value.substring(parent.value.length)
-          : node.value;
-      const url = parent.hasOwnProperty("url") ? parent.url : node.url;
-
-      if (url) {
-        fetch(url + "/" + id + query)
-          .then(res => res.json())
-          .then(
-            result => {
-              setOptions(result.features);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            error => {
-              console.log(error);
-            }
-          );
-      }
-    }
+    getOptions(currentLayer, setOptions, props);
   }, [checked]);
 
-  /**
-   * Renders features retrieved from layer api into a
-   * select list
-   * @param {*} options
-   */
-  const layerSelect = options => {
-    // handles changes in select list
-    const handleChange = e => {
-      const val = e.target.value;
-      setSelected(val);
+  // get the parent layer id which will be passed down to FeatureSelect component
+  let parent = "";
 
-      if (props.onChange) {
-        props.onChange(e);
-      }
-    };
+  if (checked.length > 0) {
+    parent = checked[0];
+  }
 
-    if (options && options.length > 0) {
-      return (
-        <div>
-          <h2>Select a Feature</h2>
-          <select value={selectedFeature} onChange={e => handleChange(e)}>
-            <option value="{}">Choose...</option>
-            {options.map((item, index) => {
-              // reshape the item data from the API
-              const data = {
-                id: item.attributes.OBJECTID,
-                name: item.attributes.Name,
-                lat: item.geometry.x,
-                long: item.geometry.y
-              };
-
-              return (
-                <option key={index} value={JSON.stringify(data)}>
-                  {item.attributes.Name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      );
-    } else {
-      return "";
-    }
-  };
-
+  // Not much styling yet so we'll apply these inline for now.
+  // As we theme this component in the future we may want to add a modular CSS
+  // stylesheet as well.
   const containerStyle = {
     display: "flex",
     flexDirection: "row"
@@ -142,18 +122,29 @@ const AsuGisFeaturePicker = props => {
           onlyLeafCheckboxes={true}
         />
       </div>
-      {layerSelect(options)}
+      {options.length > 0 && (
+        <FeatureSelect
+          {...{
+            parent: parent,
+            options: options,
+            onChange: props.onChange,
+            selected: props.selected
+          }}
+        />
+      )}
     </div>
   );
 };
 
 AsuGisFeaturePicker.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  selected: PropTypes.string
 };
 
 AsuGisFeaturePicker.defaultProps = {
-  layers: defaultLayers
+  layers: defaultLayers,
+  selected: "{}"
 };
 
 export default AsuGisFeaturePicker;
