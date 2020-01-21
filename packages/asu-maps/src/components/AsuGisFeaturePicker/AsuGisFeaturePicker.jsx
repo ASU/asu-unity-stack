@@ -18,6 +18,7 @@ const getOptions = (currentLayer, setOptions, props) => {
     // build URL from layer data, then fetch feature options
     // and set state
     const parent = node.hasOwnProperty("parent") ? node.parent : null;
+
     const id =
       parent.hasOwnProperty("id") && parent.hasOwnProperty("value")
         ? node.value.substring(parent.value.length)
@@ -30,8 +31,13 @@ const getOptions = (currentLayer, setOptions, props) => {
         .then(
           result => {
 
-            // set the options state.
-            setOptions(result.features);
+            if (result.features) {
+              // set the options state.
+              setOptions(result.features);
+            } else {
+              // set empty if no features returned from result
+              setOptions([]);
+            }
 
             // run the onChange function with an empty value since
             // swapping out the Select list got rid of the old value
