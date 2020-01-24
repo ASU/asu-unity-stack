@@ -11,7 +11,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "yarn run lerna bootstrap"
+                sh "yarn install"
+                sh "yarn build"
             }
         }
         stage('Test') {
