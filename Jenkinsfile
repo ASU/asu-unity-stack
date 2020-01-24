@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh "yarn test"
             }
         }
         stage('Deploy') {
