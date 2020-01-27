@@ -1,7 +1,7 @@
 {
-  "name": "asu-rs-carousel",
-  "version": "0.0.2",
-  "description": "ASU implementation of Bootstrap 4 carousel built with Reactstrap",
+  "name": "asu-maps",
+  "version": "0.0.1",
+  "description": "ASU implementation of GIS maps. Built with react-checkbox-tree and Reactstrap",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
@@ -119,7 +119,7 @@
       "react": {
         "createClass": "createReactClass",
         "pragma": "React",
-        "version": "16.6"
+        "version": "16.9"
       },
       "propWrapperFunctions": [
         "forbidExtraProps"
@@ -127,8 +127,7 @@
     }
   },
   "dependencies": {
-    "asu-web-standards-bootstrap4": "1.0.0-alpha1",
-    "reactstrap": "^8.2.0"
+    "react-checkbox-tree": "^1.6.0"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

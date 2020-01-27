@@ -1,4 +1,5 @@
 {
+  "name": "root",
   "private": true,
   "license": "MIT",
   "workspaces": [
@@ -6,17 +7,11 @@
   ],
   "scripts": {
     "clean": "lerna run clean --stream --parallel",
-    "build": "tsc -b packages/core packages/client-library",
-    "rollup": "lerna exec -- rollup -c=../../rollup.config.js",
-    "watch": "lerna exec --no-sort -- rollup -w -c=../../rollup.config.js",
+    "build": "lerna run build",
     "test": "lerna run test --stream --parallel",
-    "format": "prettier \"packages/**/*.{json,js,ts,tsx}\" --write",
     "publish": "lerna publish from-package"
   },
   "devDependencies": {
-    "husky": "^3.0.5",
-    "lerna": "^3.16.4",
-    "lint-staged": "^9.2.5",
-    "prettier": "^1.18.2"
+    "lerna": "^3.16.4"
   }
 }

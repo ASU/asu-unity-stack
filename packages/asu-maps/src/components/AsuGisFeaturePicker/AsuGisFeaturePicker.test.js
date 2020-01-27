@@ -1,13 +1,13 @@
 import React from 'react'
 import { render} from '@testing-library/react'
-import AsuCarousel from './AsuCarousel'
+import AsuGisFeaturePicker from './AsuGisFeaturePicker'
 
 
 
-describe('The AsuCarousel', () => {
+describe('The AsuGisFeaturePicker', () => {
     it('renders the component', () => {
 
-      const container = render(<AsuCarousel  {...{items: [{title: "test"}]}} />);
+      const container = render(<AsuGisFeaturePicker/>);
             expect(container.firstChild).toMatchSnapshot()
     })
 });

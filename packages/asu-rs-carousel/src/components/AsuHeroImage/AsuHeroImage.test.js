@@ -1,8 +1,6 @@
 import React from 'react'
 import { render} from '@testing-library/react'
-import AsuHeroImage from './BsHeroImage'
-
-
+import {AsuHeroImage} from './AsuHeroImage'
 
 describe('The AsuHeroImage', () => {
     it('renders the component', () => {

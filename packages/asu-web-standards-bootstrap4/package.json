@@ -9,7 +9,9 @@
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "gulp styles",
+    "prepare": "yarn run build"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
