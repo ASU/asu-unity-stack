@@ -73,6 +73,8 @@ Yarn is an alternative package manager to `npm`. In particular, yarn provides pe
 The easiest way to get started is to spin up storybook as a dev environment:
 
 ```bash
+git clone https://github.com/ASU/asu-unity-stack.git # clone the package
+cd asu-unity-stack # cd into git root
 yarn install # do this at git root
 cd packages/<package-name> # step into package root
 yarn storybook # run storybook
