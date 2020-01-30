@@ -16,7 +16,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22040",
+        "value": "CampusTransit_2204_0",
         "label": "ASU Cart Daytime Parking "
       },
       {
@@ -25,7 +25,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22041",
+        "value": "CampusTransit_2204_1",
         "label": "ASU Cart Paths"
       },
       {
@@ -34,7 +34,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22043",
+        "value": "CampusTransit_2204_3",
         "label": "Bike Parking"
       },
       {
@@ -43,7 +43,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22044",
+        "value": "CampusTransit_2204_4",
         "label": "Bike Repair"
       },
       {
@@ -52,7 +52,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22045",
+        "value": "CampusTransit_2204_5",
         "label": "Car Share"
       },
       {
@@ -61,7 +61,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22046",
+        "value": "CampusTransit_2204_6",
         "label": "Flash Shuttle"
       },
       {
@@ -70,7 +70,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22047",
+        "value": "CampusTransit_2204_7",
         "label": "Intercampus Shuttle stops"
       },
       {
@@ -79,7 +79,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_22049",
+        "value": "CampusTransit_2204_9",
         "label": "Light Rail Stops"
       },
       {
@@ -88,13 +88,13 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220410",
+        "value": "CampusTransit_2204_10",
         "label": "Park-and-Rides"
       },
       {
         "id": 11,
         "name": "Parking",
-        "value": "CampusTransit_220411",
+        "value": "CampusTransit_2204_11",
         "label": "Parking"
       },
       {
@@ -103,7 +103,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220412",
+        "value": "CampusTransit_2204_12",
         "label": "Accessible Parking"
       },
       {
@@ -112,22 +112,22 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220413",
+        "value": "CampusTransit_2204_13",
         "label": "EV Charging"
       },
       {
         "id": 15,
         "name": "Permit",
         "layerDefinition": {
-          "definitionExpression": "Visible = 1"
+          "definitionExpression": "Visible = 1 OR Visible = 0"
         },
-        "value": "CampusTransit_220415",
+        "value": "CampusTransit_2204_15",
         "label": "Permit"
       },
       {
         "id": 16,
         "name": "Visitor",
-        "value": "CampusTransit_220416",
+        "value": "CampusTransit_2204_16",
         "label": "Visitor"
       },
       {
@@ -136,7 +136,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220417",
+        "value": "CampusTransit_2204_17",
         "label": "DayPass"
       },
       {
@@ -145,25 +145,25 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220418",
+        "value": "CampusTransit_2204_18",
         "label": "Event"
       },
       {
         "id": 19,
         "name": "Gated",
         "layerDefinition": {
-          "definitionExpression": "Visible = 1"
+          "definitionExpression": "Visible = 1 OR Visible = 0"
         },
-        "value": "CampusTransit_220419",
+        "value": "CampusTransit_2204_19",
         "label": "Gated"
       },
       {
         "id": 20,
         "name": "Pay Station",
         "layerDefinition": {
-          "definitionExpression": "Visible = 1"
+          "definitionExpression": "Visible = 1 OR Visible = 0"
         },
-        "value": "CampusTransit_220420",
+        "value": "CampusTransit_2204_20",
         "label": "Pay Station"
       },
       {
@@ -172,7 +172,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220421",
+        "value": "CampusTransit_2204_21",
         "label": "Valet"
       },
       {
@@ -181,7 +181,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220424",
+        "value": "CampusTransit_2204_24",
         "label": "Scooter Parking"
       },
       {
@@ -190,7 +190,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220425",
+        "value": "CampusTransit_2204_25",
         "label": "Scooter Boundary"
       },
       {
@@ -199,7 +199,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220426",
+        "value": "CampusTransit_2204_26",
         "label": "Walk-only Zones"
       },
       {
@@ -207,7 +207,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220414",
+        "value": "CampusTransit_2204_14",
         "label": null
       },
       {
@@ -215,7 +215,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusTransit_220422",
+        "value": "CampusTransit_2204_22",
         "label": null
       }
     ]
@@ -237,7 +237,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusSustainability_25080",
+        "value": "CampusSustainability_2508_0",
         "label": "EV Charging"
       },
       {
@@ -246,7 +246,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusSustainability_25081",
+        "value": "CampusSustainability_2508_1",
         "label": "Gardens"
       },
       {
@@ -255,7 +255,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusSustainability_25082",
+        "value": "CampusSustainability_2508_2",
         "label": "Renewables"
       }
     ]
@@ -277,7 +277,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41600",
+        "value": "CampusServices_4160_0",
         "label": "AED"
       },
       {
@@ -286,7 +286,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41601",
+        "value": "CampusServices_4160_1",
         "label": "Computing Center"
       },
       {
@@ -295,7 +295,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41602",
+        "value": "CampusServices_4160_2",
         "label": "Dining"
       },
       {
@@ -304,7 +304,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41603",
+        "value": "CampusServices_4160_3",
         "label": "Emergency Call Box"
       },
       {
@@ -313,7 +313,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41604",
+        "value": "CampusServices_4160_4",
         "label": "Gender-Neutral Restroom"
       },
       {
@@ -322,7 +322,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41605",
+        "value": "CampusServices_4160_5",
         "label": "Health"
       },
       {
@@ -331,7 +331,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41606",
+        "value": "CampusServices_4160_6",
         "label": "Information"
       },
       {
@@ -340,7 +340,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41607",
+        "value": "CampusServices_4160_7",
         "label": "Library"
       },
       {
@@ -349,7 +349,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41608",
+        "value": "CampusServices_4160_8",
         "label": "Merchandise"
       },
       {
@@ -358,7 +358,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_41609",
+        "value": "CampusServices_4160_9",
         "label": "Museum"
       },
       {
@@ -367,7 +367,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_416010",
+        "value": "CampusServices_4160_10",
         "label": "Police"
       },
       {
@@ -376,7 +376,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_416011",
+        "value": "CampusServices_4160_11",
         "label": "Tutoring Centers"
       },
       {
@@ -385,7 +385,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_416012",
+        "value": "CampusServices_4160_12",
         "label": "Universal Changing Table"
       },
       {
@@ -394,7 +394,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusServices_416013",
+        "value": "CampusServices_4160_13",
         "label": "Wellness\/Lactation Rooms"
       }
     ]
@@ -412,12 +412,12 @@
     "children": [
       {
         "id": 0,
-        "name": "Fraternity & Sorority Life",
+        "name": "Fraternity \u0026 Sorority Life",
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusPointsofPride_42840",
-        "label": "Fraternity & Sorority Life"
+        "value": "CampusPointsofPride_4284_0",
+        "label": "Fraternity \u0026 Sorority Life"
       },
       {
         "id": 1,
@@ -425,7 +425,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusPointsofPride_42841",
+        "value": "CampusPointsofPride_4284_1",
         "label": "Public Art"
       },
       {
@@ -434,7 +434,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusPointsofPride_42842",
+        "value": "CampusPointsofPride_4284_2",
         "label": "Tempe Arboretum"
       },
       {
@@ -443,7 +443,7 @@
         "layerDefinition": {
           "definitionExpression": "Visible = 1"
         },
-        "value": "CampusPointsofPride_42843",
+        "value": "CampusPointsofPride_4284_3",
         "label": "Other Points of Pride"
       },
       {
@@ -452,7 +452,7 @@
         "layerDefinition": {
           "definitionExpression": "Created_By IS NOT NULL"
         },
-        "value": "CampusPointsofPride_42844",
+        "value": "CampusPointsofPride_4284_4",
         "label": "Malls"
       }
     ]
@@ -483,7 +483,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71471",
+        "value": "CampusBuilding_7147_1",
         "label": "Academic"
       },
       {
@@ -500,7 +500,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71472",
+        "value": "CampusBuilding_7147_2",
         "label": "Administrative"
       },
       {
@@ -517,7 +517,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71473",
+        "value": "CampusBuilding_7147_3",
         "label": "Athletics"
       },
       {
@@ -534,7 +534,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71474",
+        "value": "CampusBuilding_7147_4",
         "label": "Fine Arts"
       },
       {
@@ -551,7 +551,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71475",
+        "value": "CampusBuilding_7147_5",
         "label": "Housing"
       },
       {
@@ -568,7 +568,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71476",
+        "value": "CampusBuilding_7147_6",
         "label": "Library"
       },
       {
@@ -585,7 +585,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71477",
+        "value": "CampusBuilding_7147_7",
         "label": "Off-Campus"
       },
       {
@@ -602,7 +602,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71478",
+        "value": "CampusBuilding_7147_8",
         "label": "Research"
       },
       {
@@ -619,7 +619,7 @@
         "maxScale": 0,
         "parentLayerId": -1,
         "defaultVisibility": false,
-        "value": "CampusBuilding_71479",
+        "value": "CampusBuilding_7147_9",
         "label": "Student Services"
       }
     ]
@@ -752,7 +752,7 @@
                 "type": "esriSFS",
                 "style": "esriSFSSolid"
               },
-              "label": "> 50 \u2013 150",
+              "label": "\u003E 50 \u2013 150",
               "classMaxValue": 150
             },
             {
@@ -777,7 +777,7 @@
                 "type": "esriSFS",
                 "style": "esriSFSSolid"
               },
-              "label": "> 150 \u2013 300",
+              "label": "\u003E 150 \u2013 300",
               "classMaxValue": 300
             },
             {
@@ -802,7 +802,7 @@
                 "type": "esriSFS",
                 "style": "esriSFSSolid"
               },
-              "label": "> 300",
+              "label": "\u003E 300",
               "classMaxValue": 2500
             }
           ],
@@ -1052,7 +1052,7 @@
           "stringFieldOption": "textbox"
         }
       ],
-      "description": "{Description}<br \/><br \/><a href='https:\/\/fdm-apps.asu.edu\/UFRM\/FDS\/FacilityData.aspx?bNum={BLDG_NUMBER}' target='_blank'>Additional Building Information (FDS)\u00a0<\/a>",
+      "description": "{Description}\u003Cbr \/\u003E\u003Cbr \/\u003E\u003Ca href=\u0027https:\/\/fdm-apps.asu.edu\/UFRM\/FDS\/FacilityData.aspx?bNum={BLDG_NUMBER}\u0027 target=\u0027_blank\u0027\u003EAdditional Building Information (FDS)\u00a0\u003C\/a\u003E",
       "showAttachments": true,
       "mediaInfos": [
         {

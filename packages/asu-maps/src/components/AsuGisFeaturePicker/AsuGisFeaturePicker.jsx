@@ -9,41 +9,23 @@ import "react-checkbox-tree/lib/react-checkbox-tree.css";
    endpoint, then sets the 'options' state variable with
    retrieved items. This in turn causes the select list to
    re-render with new options.*/
-const getOptions = (currentLayer, setOptions, props) => {
-  // Get the currently selected layer to build query
-  const node = currentLayer.current ? currentLayer.current : undefined;
-  const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
+const getOptions = (value, setOptions, props) => {
 
-  if (node) {
-    // build URL from layer data, then fetch feature options
-    // and set state
-    const parent = node.hasOwnProperty("parent") ? node.parent : null;
-
-    const id =
-      parent.hasOwnProperty("id") && parent.hasOwnProperty("value")
-        ? node.value.substring(parent.value.length)
-        : node.value;
-    const url = parent.hasOwnProperty("url") ? parent.url : node.url;
+  if (value) {
+    // Build query URL given the currently checked value and layer tree
+    const url = getLayerUrl(props.layers, value);
 
     if (url) {
-      fetch(url + "/" + id + query)
+      fetch(url)
         .then(res => res.json())
         .then(
           result => {
-
             if (result.features) {
               // set the options state.
               setOptions(result.features);
             } else {
               // set empty if no features returned from result
               setOptions([]);
-            }
-
-            // run the onChange function with an empty value since
-            // swapping out the Select list got rid of the old value
-            const emptyVal = "{}";
-            if (props.onChange) {
-              props.onChange(emptyVal);
             }
           },
           // Note: it's important to handle errors here
@@ -57,6 +39,40 @@ const getOptions = (currentLayer, setOptions, props) => {
   }
 };
 
+// Get the  numerical layer ID given a tree node from the
+// react-checkbox-tree component
+const getParentId = (layers, value) => {
+  let id;
+
+  if (value) {
+    for (let i = 0; i < layers.length; i++) {
+      if (value.includes(layers[i].id)) {
+        const topLayer = layers[i];
+        id = topLayer.id;
+      }
+    }
+  }
+
+  return id;
+};
+
+/** Get the layer API URL given the tree and a selected tree value */
+const getLayerUrl = (layers, value) => {
+  let url;
+
+  for (let i = 0; i < layers.length; i++) {
+    if (value.includes(layers[i].id)) {
+      const topLayer = layers[i];
+      const childId = value.substring(topLayer.id.length + 1);
+      const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
+
+      url = topLayer.url + "/" + childId + query;
+    }
+  }
+
+  return url;
+};
+
 /**
  * Main parent component which renders entire ASU Maps GIS Feature Select UI
  * @param {*} props
@@ -65,11 +81,11 @@ const AsuGisFeaturePicker = props => {
   // Layer data and state hooks for the
   // GIS map layer tree select
   const layers = props.layers;
-  const [checked, setChecked] = useState([]);
-  const [expanded, setExpanded] = useState([]);
-  // mutable ref used for storing currently
-  // selected layer node
-  const currentLayer = useRef();
+  const savedLayer = props.selected ? [props.selected.parent] : [];
+  const parentLayer = savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
+
+  const [checked, setChecked] = useState(savedLayer);
+  const [expanded, setExpanded] = useState(parentLayer);
 
   // State hooks for the feature select list component
   const [options, setOptions] = useState([]);
@@ -78,11 +94,15 @@ const AsuGisFeaturePicker = props => {
   // saving the tree node for later use.
   const checkCallback = useCallback(
     (checked, targetNode) => {
-      // save the currently selected layer node
-      currentLayer.current = targetNode;
-
       // set the checked value for the react-checkbox-tree
       setChecked([targetNode.value]);
+
+      // run the onChange function with an empty value since
+      // swapping out the Select list got rid of the old value
+      const emptyVal = "{}";
+      if (props.onChange) {
+        props.onChange(emptyVal);
+      }
     },
     [checked]
   );
@@ -95,15 +115,8 @@ const AsuGisFeaturePicker = props => {
 
   //This effect only runs when the selected map layer changes.
   useEffect(() => {
-    getOptions(currentLayer, setOptions, props);
+    getOptions(checked[0], setOptions, props);
   }, [checked]);
-
-  // get the parent layer id which will be passed down to FeatureSelect component
-  let parent = "";
-
-  if (checked.length > 0) {
-    parent = checked[0];
-  }
 
   // Not much styling yet so we'll apply these inline for now.
   // As we theme this component in the future we may want to add a modular CSS
@@ -131,10 +144,10 @@ const AsuGisFeaturePicker = props => {
       {options.length > 0 && (
         <FeatureSelect
           {...{
-            parent: parent,
+            parent: checked.length > 0 ? checked[0]: undefined,
             options: options,
             onChange: props.onChange,
-            selected: props.selected
+            selected: props.selected ? JSON.stringify(props.selected) : undefined
           }}
         />
       )}
@@ -145,12 +158,12 @@ const AsuGisFeaturePicker = props => {
 AsuGisFeaturePicker.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChange: PropTypes.func,
-  selected: PropTypes.string
+  selected: PropTypes.object
 };
 
 AsuGisFeaturePicker.defaultProps = {
   layers: defaultLayers,
-  selected: "{}"
+  selected: {}
 };
 
 export default AsuGisFeaturePicker;

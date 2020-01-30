@@ -25,7 +25,7 @@ const FeatureSelect = (props) => {
 
   if (options && options.length > 0) {
     return (
-      <div>
+      <div style={{paddingLeft: '75px'}}>
         <h2>Select a Feature</h2>
         <select value={selected} onChange={e => handleChange(e)}>
           <option value="{}">Choose...</option>
@@ -35,12 +35,12 @@ const FeatureSelect = (props) => {
               id: item.attributes.OBJECTID,
               name: item.attributes.Name,
               lat: item.geometry.x,
-              long: item.geometry.y,
+              lng: item.geometry.y,
               parent: parent
             };
 
             return (
-              <option key={index} value={JSON.stringify(data)}>
+              <option key={item.attributes.OBJECTID} value={JSON.stringify(data)}>
                 {item.attributes.Name}
               </option>
             );
