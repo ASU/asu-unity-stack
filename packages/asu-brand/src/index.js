@@ -1,3 +1,3 @@
-import AsuBrandHeader from './components/AsuBrandHeader';
+import AsuBrandHeader from "./components/AsuBrandHeader";
 
-export default AsuBrandHeader;
+export { AsuBrandHeader };

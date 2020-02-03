@@ -1,23 +1,21 @@
 /*eslint-env node*/
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {ASUBrandHeader, ASUFooter} from '../core/core.js';
+import {AsuBrandHeader} from '../index.js';
 import {Item, FullPageSSR, FullPageSSRProd, ComponentPage} from './templates/template';
-import ASUBrandHeaderExampleConfig from '../../examples/ASUBrandHeaderExampleConfig';
 
 const componentList = {
     header: {
-        type: ASUBrandHeader,
+        type: AsuBrandHeader,
         domId: 'asu-header-container',
         props: {
-            headerObj: ASUBrandHeaderExampleConfig
         }
-    },
+    },/*
     footer: {
         type: ASUFooter,
         domId: 'asu-footer-container',
         props: {}
-    }
+    }*/
 };
 
 /***
@@ -46,33 +44,32 @@ const renderASUComponent =  (req, res, component) => {
  * @param res
  */
 const renderComponentPage = (req, res) => {
-    const config = JSON.stringify(ASUBrandHeaderExampleConfig);
+    //const config = JSON.stringify(ASUBrandHeaderExampleConfig);
 
     res.send(ComponentPage({
         title: 'Test Page',
-        props: config
+        props: {}
     }));
 };
 
 const renderSSRFullPage = (req, res, prod) => {
     const header = renderASUComponent(req, res, componentList.header);
-    const footer = renderASUComponent(req, res, componentList.footer);
-    const config = JSON.stringify(ASUBrandHeaderExampleConfig);
+    //const config = JSON.stringify(ASUBrandHeaderExampleConfig);
     prod = prod ? true: false;
 
     if (prod) {
         res.send(FullPageSSRProd({
             header: header,
-            footer: footer,
+            //
             title: 'Test Page',
-            props: config
+            props: {}
         }));
     } else {
         res.send(FullPageSSR({
             header: header,
-            footer: footer,
+            //footer: footer,
             title: 'Test Page',
-            props: config
+            props: {}
         }));
     }
 };

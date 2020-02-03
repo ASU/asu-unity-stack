@@ -9,9 +9,11 @@
     "clean": "lerna run clean --stream --parallel",
     "build": "lerna run build",
     "test": "lerna run test --stream --parallel",
-    "publish": "lerna publish from-package"
+    "publish": "lerna publish from-package",
+    "start": "node server/server.js"
   },
   "devDependencies": {
+    "express": "^4.17.1",
     "lerna": "^3.16.4"
   }
 }

@@ -1,7 +1,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
-const nodeExternals = require('webpack-node-externals');
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -36,7 +35,7 @@ module.exports.push(merge(common, {
                         loader: 'css-loader',
                         options: {
                           modules: {
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                            localIdentName: '[local]___[hash:base64:5]'
                           },
                           importLoaders: 1
                       }
@@ -52,37 +51,4 @@ module.exports.push(merge(common, {
     }
 }));
 
-// Dev SSR bundle config
-/*
-module.exports.push(merge(common, {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    entry: './ssr/ssr.js',
-    output: {
-        path: path.join(__dirname, '..', 'dist', 'ssr'),
-        filename: 'ssr.bundled.js',
-        libraryTarget: 'umd'
-    },
-    target: 'node',
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: '[name]__[local]___[hash:base64:5]',
-                            exportOnlyLocals: true
-                        }
-                    },
-                    postCSSLoader
-                ]
-            }
-        ]
-    },
-    externals: [nodeExternals()],
 
-}));*/
