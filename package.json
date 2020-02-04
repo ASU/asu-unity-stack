@@ -9,12 +9,21 @@
     "clean": "lerna run clean --stream --parallel",
     "build": "lerna run build",
     "test": "lerna run test --stream --parallel",
+    "test:e2e": "jest",
     "publish": "lerna publish from-package",
     "start": "node server/server.js"
   },
+  "jest": {
+    "preset":"jest-puppeteer",
+    "verbose": true,
+    "roots": ["tests"]
+  },
   "devDependencies": {
     "express": "^4.17.1",
+    "jest": "^25.1.0",
+    "jest-puppeteer": "^4.4.0",
     "lerna": "^3.16.4",
-    "nunjucks": "^3.2.0"
+    "nunjucks": "^3.2.0",
+    "puppeteer": "^2.1.0"
   }
 }
