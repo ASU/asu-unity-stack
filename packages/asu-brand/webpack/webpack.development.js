@@ -15,9 +15,6 @@ module.exports = [];
 // Dev client bundle config
 module.exports.push(merge(common, {
     mode: 'development',
-    entry: {
-      'asu-brand': './index.js'
-    },
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: "[name].development.js",

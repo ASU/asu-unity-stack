@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "example-package",
   "version": "0.0.1",
   "description": "Example package",
   "main": "src/index.js",

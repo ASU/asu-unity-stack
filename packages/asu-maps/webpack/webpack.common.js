@@ -2,9 +2,13 @@
  * Created by ctestama on 3/21/18.
  */
 const path = require("path");
+const packageInfo = require("../package.json");
 
 module.exports = {
     context: path.join(__dirname, '..', 'src'),
+    entry: {
+      [packageInfo.name]: "./index.js"
+    },
     module: {
         rules: [
             {

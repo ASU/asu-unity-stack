@@ -2,7 +2,6 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-const packageInfo = require("../package.json");
 const devWebpack = require("./webpack.development.js");
 const postCSSLoader = {
   loader: "postcss-loader",
@@ -21,9 +20,6 @@ module.exports.push(devWebpack);
 module.exports.push(
   merge(common, {
     mode: "production",
-    entry: {
-      [packageInfo.name]: "./index.js"
-    },
     output: {
       path: path.resolve(__dirname, "..", "dist"),
       filename: "[name].production.js",

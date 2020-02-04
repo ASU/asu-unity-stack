@@ -19,9 +19,6 @@ module.exports = devWebpack;
 module.exports.push(
   merge(common, {
     mode: "production",
-    entry: {
-      "asu-brand": "./index.js"
-    },
     output: {
       path: path.resolve(__dirname, "..", "dist"),
       filename: "[name].production.js",
