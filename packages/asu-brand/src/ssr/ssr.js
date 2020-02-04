@@ -84,10 +84,13 @@ const sendASUFooter = (req, res) => {
     res.send(html);
 };
 
+const renderedHeader = ReactDOMServer.renderToString(<AsuBrandHeader />);
+
 export {
     renderASUComponent,
     sendASUHeader,
     sendASUFooter,
     renderSSRFullPage,
-    renderComponentPage
+    renderComponentPage,
+    renderedHeader
 };

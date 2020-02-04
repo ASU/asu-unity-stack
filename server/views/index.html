@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>ASU React Unity Components</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- include react from CDN for now-->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <!-- include bundled scripts -->
+  <script crossorigin src="/asu-brand/dist/asu-brand.production.js"></script>
+  <link href="/asu-brand/dist/asu-brand.production.css" rel="stylesheet" type="text/css" media="all">
+
+  <!-- include global bootstrap styles -->
+  <link href="/asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css" rel="stylesheet" type="text/css"
+    media="all">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Include pre-rendered AsuBrandHeader component -->
+    <div id="headerContainer">{{header}}</div>
+
+    <h1>Unity Kitchen Sink Page</h1>
+    <!-- Import the bundled component JS -->
+  </div>
+
+</body>
+<footer>
+  <script>
+
+    // Hydrate the component which was pre-rendered on server
+    document.addEventListener("DOMContentLoaded", function () {
+      var contain = document.getElementById("headerContainer");
+      ReactDOM.hydrate(React.createElement(AsuBrandHeader, {}), contain);
+    });
+  </script>
+</footer>
+
+</html>
