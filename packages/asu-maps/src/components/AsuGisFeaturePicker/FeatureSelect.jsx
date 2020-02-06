@@ -34,8 +34,8 @@ const FeatureSelect = (props) => {
             const data = {
               id: item.attributes.OBJECTID,
               name: item.attributes.Name,
-              lat: item.geometry.x,
-              lng: item.geometry.y,
+              lat: item.geometry.y,
+              lng: item.geometry.x,
               parent: parent
             };
 

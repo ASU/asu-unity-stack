@@ -14,13 +14,16 @@
     "start": "node server/server.js"
   },
   "jest": {
-    "preset":"jest-puppeteer",
+    "preset": "jest-puppeteer",
     "verbose": true,
-    "roots": ["tests"]
+    "roots": [
+      "tests"
+    ]
   },
   "devDependencies": {
     "express": "^4.17.1",
     "jest": "^25.1.0",
+    "jest-image-snapshot": "^2.12.0",
     "jest-puppeteer": "^4.4.0",
     "lerna": "^3.16.4",
     "nunjucks": "^3.2.0",

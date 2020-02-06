@@ -10,7 +10,8 @@ const app = express();
 //configure nunjucks
 nunjucks.configure("server/views", {
   autoescape: false,
-  express: app
+  express: app,
+  watch: true
 });
 
 // configure packages directory to serve static files (bundles)
