@@ -1,9 +1,7 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import AsuBrandHeader from './index.js';
 import AsuHeaderObj from "./AsuBrandHeaderDefaults";
-
-
+import { withA11y } from '@storybook/addon-a11y';
 
 AsuHeaderObj.siteNav = [
     {
@@ -65,8 +63,14 @@ AsuHeaderObj.siteTitle = {
     parentOrgUrl: "https://uto.asu.edu"
 };
 
-storiesOf('AsuBrandHeader', module)
-  .add('basic', () => (
-    <AsuBrandHeader {...AsuHeaderObj}/>
-  ));
+
+export default {
+  component: AsuBrandHeader,
+  title: 'AsuBrandHeader',
+  decorators: [withA11y]
+};
+
+export const basic = () => (
+  <AsuBrandHeader {...AsuHeaderObj}/>
+);
 
