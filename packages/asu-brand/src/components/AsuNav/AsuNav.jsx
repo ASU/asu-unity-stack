@@ -35,7 +35,6 @@ const AsuNav = props => {
     <nav className={navClass}>
       <ul
         className={styles.asuNav}
-        role="navigation"
         aria-label="ASU"
         onKeyDown={handleKeyDown}
       >

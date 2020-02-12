@@ -861,6 +861,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.8.3":
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
+  integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.4.0", "@babel/template@^7.7.4", "@babel/template@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.8.3.tgz#e02ad04fe262a657809327f578056ca15fd4d1b8"
@@ -3270,6 +3277,14 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
+"@wordpress/jest-puppeteer-axe@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/jest-puppeteer-axe/-/jest-puppeteer-axe-1.6.0.tgz#896fdb10f1f7f89054945b41a0fd6eb4e9212cad"
+  integrity sha512-GtvqLN9pabS4zKHkxeitumoPLRWSPkVPiBJrHaMd7k1TC3QY95pZvop75wxLT+8Zbejf3up6j/62kWehrRpYKA==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
+    axe-puppeteer "^1.0.0"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -3967,10 +3982,22 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.9.1.tgz#7e33d8f7d449b3f673cd72deb9abdc552dbe528e"
   integrity sha512-wMHVg2EOHaMRxbzgFJ9gtjOOCrI80OHLG14rxi28XwOW8ux6IiEbRCGGGqCtdAIg4FQCbW20k9RsT4y3gJlFug==
 
+axe-core@^3.1.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.4.2.tgz#d51d2fcb401685e8b49a1dd94212da0759fd7ca0"
+  integrity sha512-aPpM84KPiRfeaK3LhA9ag4OmjLUZkNKMH0sZuK+YRBS+QJcegjveidCyvWSBlBr/iIMQdn/1hU00e3YBiuTEdw==
+
 axe-core@^3.3.2:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.4.1.tgz#e42623918bb85b5ef674633852cb9029db0309c5"
   integrity sha512-+EhIdwR0hF6aeMx46gFDUy6qyCfsL0DmBrV3Z+LxYbsOd8e1zBaPHa3f9Rbjsz2dEwSBkLw6TwML/CAIIAqRpw==
+
+axe-puppeteer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/axe-puppeteer/-/axe-puppeteer-1.0.0.tgz#cebbeec2c65a2e0cb7d5fd1e7aef26c5f71895a4"
+  integrity sha512-hTF3u4mtatgTN7fsLVyVgbRdNc15ngjDcTEuqhn9A7ugqLhLCryJWp9fzqZkNlrW8awPcxugyTwLPR7mRdPZmA==
+  dependencies:
+    axe-core "^3.1.2"
 
 babel-code-frame@^6.22.0:
   version "6.26.0"

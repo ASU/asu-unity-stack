@@ -14,7 +14,9 @@ const postCSSLoader = {
   }
 };
 
-module.exports = devWebpack;
+module.exports = [];
+
+module.exports.push(devWebpack);
 
 module.exports.push(
   merge(common, {

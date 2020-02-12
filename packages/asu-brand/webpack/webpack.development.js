@@ -10,10 +10,10 @@ const postCSSLoader = {
     }
 };
 
-module.exports = [];
+//module.exports = [];
 
 // Dev client bundle config
-module.exports.push(merge(common, {
+module.exports = merge(common, {
     mode: 'development',
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
@@ -46,6 +46,6 @@ module.exports.push(merge(common, {
         react: 'React',
         'react-dom': 'ReactDOM'
     }
-}));
+});
 
 
