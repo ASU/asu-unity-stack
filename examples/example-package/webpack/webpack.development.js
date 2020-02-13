@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require("path");
 const nodeExternals = require('webpack-node-externals');
+/*
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
@@ -10,6 +11,7 @@ const postCSSLoader = {
         }
     }
 };
+*/
 
 module.exports = [];
 
@@ -38,7 +40,7 @@ module.exports.push(merge(common, {
                           importLoaders: 1,
                       }
                     },
-                    postCSSLoader
+                    //postCSSLoader
                 ]
             }
         ]

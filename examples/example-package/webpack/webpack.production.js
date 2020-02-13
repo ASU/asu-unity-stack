@@ -3,6 +3,7 @@ const common = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const devWebpack = require("./webpack.development.js");
+/*
 const postCSSLoader = {
   loader: 'postcss-loader',
   options: {
@@ -12,6 +13,7 @@ const postCSSLoader = {
     }
   }
 };
+*/
 
 module.exports = devWebpack;
 
@@ -46,7 +48,7 @@ module.exports.push(
                     importLoaders: 1
                 }
             },
-            postCSSLoader
+            //postCSSLoader
           ]
         }
       ]
