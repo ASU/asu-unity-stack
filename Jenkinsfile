@@ -20,6 +20,12 @@ pipeline {
                 sh "yarn test"
             }
         }
+        stage('e2e Test') {
+            steps {
+                sh "yarn start"
+                sh "yarn test:e2e"
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
