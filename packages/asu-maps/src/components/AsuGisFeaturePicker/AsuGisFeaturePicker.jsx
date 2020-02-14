@@ -81,7 +81,6 @@ const AsuGisFeaturePicker = props => {
   // GIS map layer tree select
   const layers = props.layers;
 
-  console.log(layers, 'THE LAYERS');
   const savedLayer = props.selected ? [props.selected.parent] : [];
   const parentLayer =
     savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
