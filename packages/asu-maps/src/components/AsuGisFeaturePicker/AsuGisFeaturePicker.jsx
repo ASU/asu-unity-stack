@@ -10,7 +10,6 @@ import "react-checkbox-tree/lib/react-checkbox-tree.css";
    retrieved items. This in turn causes the select list to
    re-render with new options.*/
 const getOptions = (value, setOptions, props) => {
-
   if (value) {
     // Build query URL given the currently checked value and layer tree
     const url = getLayerUrl(props.layers, value);
@@ -81,8 +80,11 @@ const AsuGisFeaturePicker = props => {
   // Layer data and state hooks for the
   // GIS map layer tree select
   const layers = props.layers;
+
+  console.log(layers, 'THE LAYERS');
   const savedLayer = props.selected ? [props.selected.parent] : [];
-  const parentLayer = savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
+  const parentLayer =
+    savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
 
   const [checked, setChecked] = useState(savedLayer);
   const [expanded, setExpanded] = useState(parentLayer);
@@ -139,15 +141,18 @@ const AsuGisFeaturePicker = props => {
           nodes={layers}
           nativeCheckboxes={true}
           onlyLeafCheckboxes={true}
+          id="asu-gis-fp"
         />
       </div>
       {options.length > 0 && (
         <FeatureSelect
           {...{
-            parent: checked.length > 0 ? checked[0]: undefined,
+            parent: checked.length > 0 ? checked[0] : undefined,
             options: options,
             onChange: props.onChange,
-            selected: props.selected ? JSON.stringify(props.selected) : undefined
+            selected: props.selected
+              ? JSON.stringify(props.selected)
+              : undefined
           }}
         />
       )}

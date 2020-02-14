@@ -10,7 +10,7 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
     </h2>
     <div
       class="react-checkbox-tree rct-icons-fa4 rct-native-display"
-      id="rct--sTGHbD"
+      id="asu-gis-fp"
     >
       <ol>
         <li
@@ -202,11 +202,11 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
               />
             </span>
             <label
-              for="rct--sTGHbD-VectorTile_3677"
+              for="asu-gis-fp-VectorTile_3677"
               title="Building Labels"
             >
               <input
-                id="rct--sTGHbD-VectorTile_3677"
+                id="asu-gis-fp-VectorTile_3677"
                 type="checkbox"
               />
               <span
@@ -245,11 +245,11 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
               />
             </span>
             <label
-              for="rct--sTGHbD-ASUParkingAreaAll_105"
+              for="asu-gis-fp-ASUParkingAreaAll_105"
               title="Parking"
             >
               <input
-                id="rct--sTGHbD-ASUParkingAreaAll_105"
+                id="asu-gis-fp-ASUParkingAreaAll_105"
                 type="checkbox"
               />
               <span
@@ -288,11 +288,11 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
               />
             </span>
             <label
-              for="rct--sTGHbD-CampusBuilding_2921"
+              for="asu-gis-fp-CampusBuilding_2921"
               title="BuildingHidden"
             >
               <input
-                id="rct--sTGHbD-CampusBuilding_2921"
+                id="asu-gis-fp-CampusBuilding_2921"
                 type="checkbox"
               />
               <span
