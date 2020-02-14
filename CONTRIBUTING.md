@@ -146,4 +146,4 @@ with them.
 If you have a package you'd like to contribute, or want to build a new package, start by creating an issue on this repo with details about the package. From there we can discuss the details of the package and any individual needs. Once a package has been approved for inclusion in the repo, there are a couple of helpful resources for package setup and testing:
 
 1. Example package [config](./examples/example-package/README.md)
-2. Package testing [requirements](./tests/example-package/README.md)
+2. Package testing [requirements](./tests/README.md)
