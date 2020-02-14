@@ -129,4 +129,4 @@ AsuBgHeroImage.defaultProps = {
   maxHeight: 380
 };
 
-export { AsuHeroImage, AsuBgHeroImage };
+export { AsuHeroImage, heroTitle, heroButtons };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import AsuDropdownNav from './index.js';
+import { withA11y } from '@storybook/addon-a11y';
 
 const items = [
   {
@@ -45,7 +45,12 @@ const items = [
   }
 ];
 
-storiesOf('AsuDropdownNav', module)
-  .add('basic', () => (
-    <AsuDropdownNav {...{text: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
-  ));
+export default {
+  component: AsuDropdownNav,
+  title: 'AsuDropdownNav',
+  decorators: [withA11y]
+};
+
+export const basic = () => (
+  <AsuDropdownNav {...{text: 'ASU Home', href:'https://asu.edu', target: '_blank', items: items}}/>
+);

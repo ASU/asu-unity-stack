@@ -11,10 +11,8 @@ const postCSSLoader = {
     }
 };
 
-module.exports = [];
-
 // Dev client bundle config
-module.exports.push(merge(common, {
+module.exports = merge(common, {
     mode: 'development',
     entry: {
       'asu-rs-carousel': './index.js'
@@ -50,7 +48,7 @@ module.exports.push(merge(common, {
         react: 'React',
         'react-dom': 'ReactDOM'
     }
-}));
+});
 
 // Dev SSR bundle config
 /*

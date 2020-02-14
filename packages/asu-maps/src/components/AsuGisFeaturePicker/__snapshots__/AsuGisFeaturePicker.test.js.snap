@@ -1,3 +1,324 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The AsuGisFeaturePicker renders the component 1`] = `undefined`;
+exports[`The AsuGisFeaturePicker renders the component 1`] = `
+<div
+  style="display: flex; flex-direction: row;"
+>
+  <div>
+    <h2>
+      Select a Layer
+    </h2>
+    <div
+      class="react-checkbox-tree rct-icons-fa4 rct-native-display"
+      id="rct--sTGHbD"
+    >
+      <ol>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Transit"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Transit
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Sustainability"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Sustainability
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Services"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Services
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Points of Pride"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Points of Pride
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Buildings"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Buildings
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-leaf"
+        >
+          <span
+            class="rct-text"
+          >
+            <span
+              class="rct-collapse"
+            >
+              <span
+                class="rct-icon"
+              />
+            </span>
+            <label
+              for="rct--sTGHbD-VectorTile_3677"
+              title="Building Labels"
+            >
+              <input
+                id="rct--sTGHbD-VectorTile_3677"
+                type="checkbox"
+              />
+              <span
+                class="rct-checkbox"
+              >
+                <span
+                  class="rct-icon rct-icon-uncheck"
+                />
+              </span>
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-leaf"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Building Labels
+              </span>
+            </label>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-leaf"
+        >
+          <span
+            class="rct-text"
+          >
+            <span
+              class="rct-collapse"
+            >
+              <span
+                class="rct-icon"
+              />
+            </span>
+            <label
+              for="rct--sTGHbD-ASUParkingAreaAll_105"
+              title="Parking"
+            >
+              <input
+                id="rct--sTGHbD-ASUParkingAreaAll_105"
+                type="checkbox"
+              />
+              <span
+                class="rct-checkbox"
+              >
+                <span
+                  class="rct-icon rct-icon-uncheck"
+                />
+              </span>
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-leaf"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Parking
+              </span>
+            </label>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-leaf"
+        >
+          <span
+            class="rct-text"
+          >
+            <span
+              class="rct-collapse"
+            >
+              <span
+                class="rct-icon"
+              />
+            </span>
+            <label
+              for="rct--sTGHbD-CampusBuilding_2921"
+              title="BuildingHidden"
+            >
+              <input
+                id="rct--sTGHbD-CampusBuilding_2921"
+                type="checkbox"
+              />
+              <span
+                class="rct-checkbox"
+              >
+                <span
+                  class="rct-icon rct-icon-uncheck"
+                />
+              </span>
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-leaf"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                BuildingHidden
+              </span>
+            </label>
+          </span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+`;

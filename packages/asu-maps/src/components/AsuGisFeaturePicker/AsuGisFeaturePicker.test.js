@@ -7,7 +7,7 @@ import AsuGisFeaturePicker from './AsuGisFeaturePicker'
 describe('The AsuGisFeaturePicker', () => {
     it('renders the component', () => {
 
-      const container = render(<AsuGisFeaturePicker/>);
-            expect(container.firstChild).toMatchSnapshot()
+      const {container} = render(<AsuGisFeaturePicker/>);
+            expect(container.firstChild).toMatchSnapshot();
     })
 });

@@ -48,13 +48,11 @@ const titems = [
 describe('The AsuDropdownMenu', () => {
     it('renders the component', () => {
 
-      const container = render(<ASUDropdownNav  {...{text: 'ASU Home', items: titems}} />);
+      const {container} = render(<ASUDropdownNav  {...{text: 'ASU Home', items: titems}} />);
             expect(container.firstChild).toMatchSnapshot()
     })
 
     it('drops down when button clicked', async () => {
-
-
 
       const { getByText, findAllByText } = render(<ASUDropdownNav {...{text: 'ASU Home', items: titems}} />);
       // Click button

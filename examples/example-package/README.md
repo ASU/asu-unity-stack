@@ -1,4 +1,4 @@
-# Setting up a Unity Component Using the Example Component
+# Setting up a new Unity package Using the example package
 
 1. Start under packages/
 2. Create a folder for the new component and copy over contents of ./example.

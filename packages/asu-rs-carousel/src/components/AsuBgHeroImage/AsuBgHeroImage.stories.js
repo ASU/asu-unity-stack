@@ -1,7 +1,7 @@
 import React from "react";
-import { AsuHeroImage} from "./index.js";
+import AsuBgHeroImage from "./index.js";
 import { withKnobs, text, number } from "@storybook/addon-knobs";
-import { withA11y } from '@storybook/addon-a11y';
+import { withA11y } from "@storybook/addon-a11y";
 
 let item = {
   src:
@@ -16,35 +16,32 @@ let item = {
   titleLink: "https://asu.edu"
 };
 
-const altButtons = [
-  { text: "button 1", url: "https://asu.edu", color: "info" },
-  { text: "button 2", url: "https://asu.edu", color: "secondary" }
-];
+export default {
+  component: AsuBgHeroImage,
+  title: "AsuBgHeroImage",
+  decorators: [withA11y, withKnobs]
+};
 
-  export default {
-    component: AsuHeroImage,
-    title: 'AsuHeroImage',
-    decorators: [withA11y, withKnobs]
-  };
+export const basic = () => (
+  <AsuBgHeroImage
+    title={text("title", item.title)}
+    altText={text("altText", item.altText)}
+    src={text("src", item.src)}
+    tagline={text("tagline", item.tagline)}
+    titleLink={text("titleLink", item.titleLink)}
+    buttons={item.buttons}
+    maxHeight={number("maxHeight", 380)}
+  />
+);
 
-  export const basic = () => (
-    <AsuHeroImage
-      title={text("title", item.title)}
-      altText={text("altText", item.altText)}
-      src={text("src", item.src)}
-      tagline={text("tagline", item.tagline)}
-      titleLink={text("titleLink", item.titleLink)}
-      buttons={item.buttons}
-    />
-  );
-
-  export const altButtonColors = () => (
-    <AsuHeroImage
-      title={text("title", item.title)}
-      altText={text("altText", item.altText)}
-      src={text("src", item.src)}
-      tagline={text("tagline", item.tagline)}
-      titleLink={text("titleLink", item.titleLink)}
-      buttons={altButtons}
-    />
-  );
+export const maxHeight700 = () => (
+  <AsuBgHeroImage
+    title={text("title", item.title)}
+    altText={text("altText", item.altText)}
+    src={text("src", item.src)}
+    tagline={text("tagline", item.tagline)}
+    titleLink={text("titleLink", item.titleLink)}
+    buttons={item.buttons}
+    maxHeight={number("maxHeight", 700)}
+  />
+);

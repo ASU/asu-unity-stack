@@ -1,3 +1,3 @@
-import {AsuHeroImage, AsuBgHeroImage} from './AsuHeroImage';
+import {AsuHeroImage, heroTitle, heroButtons} from './AsuHeroImage';
 
-export {AsuHeroImage, AsuBgHeroImage};
+export {AsuHeroImage, heroTitle, heroButtons};

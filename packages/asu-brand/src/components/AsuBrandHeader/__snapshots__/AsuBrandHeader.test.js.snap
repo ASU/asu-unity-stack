@@ -1,938 +1,440 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The AsuBrandHeader renders the component 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <header
-        class="asuBrandHeader"
+<header
+  class="asuBrandHeader"
+>
+  <a
+    class="srOnly"
+    href="https://www.asu.edu/accessibility/"
+  >
+    Report an accessibility problem
+  </a>
+  <div
+    class="asuHeaderGrid"
+  >
+    <div
+      class="asuHeaderTopRow"
+    >
+      <div
+        class="asuLogo"
       >
         <a
-          class="srOnly"
-          href="https://www.asu.edu/accessibility/"
+          href="https://www.asu.edu/"
         >
-          Report an accessibility problem
+          <img
+            alt="ASU"
+            src="https://www.asu.edu/asuthemes/4.6/assets/full_logo.png"
+          />
         </a>
-        <div
-          class="asuHeaderGrid"
+      </div>
+      <nav
+        class="asuNavWrapper asuBrandHeaderNav"
+      >
+        <ul
+          aria-label="ASU"
+          class="asuNav"
         >
-          <div
-            class="asuHeaderTopRow"
+          <li
+            class="asuNavItemTop"
           >
             <div
-              class="asuLogo"
+              class="asuNavItemTop"
+              role="navigation"
+              title="ASU Home"
             >
               <a
+                class="asuNavA"
                 href="https://www.asu.edu/"
               >
-                <img
-                  alt="ASU"
-                  src="https://www.asu.edu/asuthemes/4.6/assets/full_logo.png"
-                />
+                <span>
+                  ASU Home
+                </span>
               </a>
-            </div>
-            <nav
-              class="asuNavWrapper asuBrandHeaderNav"
-            >
+              <span
+                class="icoSortDown"
+              />
               <ul
-                aria-label="ASU"
-                class="asuNav"
-                role="navigation"
+                class="subMenu subSlideOut"
               >
                 <li
-                  class="asuNavItemTop"
-                >
-                  <div
-                    class="asuNavItemTop"
-                    role="navigation"
-                    title="ASU Home"
-                  >
-                    <a
-                      class="asuNavA"
-                      href="https://www.asu.edu/"
-                    >
-                      <span>
-                        ASU Home
-                      </span>
-                    </a>
-                    <span
-                      class="icoSortDown"
-                    />
-                    <ul
-                      class="subMenu subSlideOut"
-                    >
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=newsevents"
-                          tabindex="0"
-                          title="News and Events"
-                        >
-                          News/Events
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=academics"
-                          tabindex="0"
-                          title="Academics"
-                        >
-                          Academics
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=research"
-                          tabindex="0"
-                          title="Research"
-                        >
-                          Research
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=athletics"
-                          tabindex="0"
-                          title="Athletics"
-                        >
-                          Athletics
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=alumni"
-                          tabindex="0"
-                          title="Alumni"
-                        >
-                          Alumni
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=giving"
-                          tabindex="0"
-                          title="Giving"
-                        >
-                          Giving
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/?feature=president"
-                          tabindex="0"
-                          title="President"
-                        >
-                          President
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/about"
-                          tabindex="0"
-                          title="About ASU"
-                        >
-                          About ASU
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li
-                  class="asuNavItemTop"
+                  class="asuNavItem"
                 >
                   <a
-                    href="https://my.asu.edu/"
-                    target="_top"
-                    title="My ASU"
+                    href="https://www.asu.edu/?feature=newsevents"
+                    tabindex="0"
+                    title="News and Events"
                   >
-                    My ASU
+                    News/Events
                   </a>
                 </li>
                 <li
-                  class="asuNavItemTop"
-                >
-                  <div
-                    class="asuNavItemTop"
-                    role="navigation"
-                    title="Map and Locations"
-                  >
-                    <a
-                      class="asuNavA"
-                      href="https://www.asu.edu/map/"
-                      target="_top"
-                    >
-                      <span>
-                        Map and Locations
-                      </span>
-                    </a>
-                    <span
-                      class="icoSortDown"
-                    />
-                    <ul
-                      class="subMenu subSlideOut"
-                    >
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.asu.edu/map/"
-                          tabindex="0"
-                          title="Map"
-                        >
-                          Map
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://campus.asu.edu/tempe/"
-                          tabindex="0"
-                          title="Tempe campus"
-                        >
-                          Tempe
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://campus.asu.edu/west/"
-                          tabindex="0"
-                          title="West campus"
-                        >
-                          West
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://campus.asu.edu/polytechnic/"
-                          tabindex="0"
-                          title="Polytechnic campus"
-                        >
-                          Polytechnic
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://campus.asu.edu/downtown/"
-                          tabindex="0"
-                          title="Downtown Phoenix campus"
-                        >
-                          Downtown Phoenix
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://asuonline.asu.edu/"
-                          tabindex="0"
-                          title="Online and Extended campus"
-                        >
-                          Online and Extended
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://havasu.asu.edu/"
-                          tabindex="0"
-                          title=""
-                        >
-                          Lake Havasu
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona"
-                          tabindex="0"
-                          title=""
-                        >
-                          Thunderbird
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://skysong.asu.edu/"
-                          tabindex="0"
-                          title=""
-                        >
-                          Skysong
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://asuresearchpark.com/"
-                          tabindex="0"
-                          title=""
-                        >
-                          Research Park
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://washingtoncenter.asu.edu/"
-                          tabindex="0"
-                          title=""
-                        >
-                          Washington D.C.
-                        </a>
-                      </li>
-                      <li
-                        class="asuNavItem"
-                      >
-                        <a
-                          href="https://wpcarey.asu.edu/mba/china-program/english/"
-                          tabindex="0"
-                          title=""
-                        >
-                          China
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li
-                  class="asuNavItemTop"
+                  class="asuNavItem"
                 >
                   <a
-                    href="https://isearch.asu.edu/"
-                    target="_top"
-                    title="Directory, Index and other info"
+                    href="https://www.asu.edu/?feature=academics"
+                    tabindex="0"
+                    title="Academics"
                   >
-                    Directory
+                    Academics
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/?feature=research"
+                    tabindex="0"
+                    title="Research"
+                  >
+                    Research
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/?feature=athletics"
+                    tabindex="0"
+                    title="Athletics"
+                  >
+                    Athletics
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/?feature=alumni"
+                    tabindex="0"
+                    title="Alumni"
+                  >
+                    Alumni
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/?feature=giving"
+                    tabindex="0"
+                    title="Giving"
+                  >
+                    Giving
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/?feature=president"
+                    tabindex="0"
+                    title="President"
+                  >
+                    President
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/about"
+                    tabindex="0"
+                    title="About ASU"
+                  >
+                    About ASU
                   </a>
                 </li>
               </ul>
-            </nav>
-            <div
-              class="asuLogin asuBrandHeaderLogin"
-            >
-              <span
-                class="srOnly"
-              >
-                Sign In / Sign Out
-              </span>
-              <div>
-                <a
-                  class="asuLoginLink"
-                  href="https://weblogin.asu.edu/cgi-bin/login"
-                  target="_top"
-                >
-                  Sign In
-                </a>
-              </div>
-              <span
-                class="icoUser"
-              />
             </div>
-          </div>
-          <div
-            class="asuSearch asuHeaderGlobalSearch"
-          >
-            <h2
-              class="srOnly"
-            >
-              Search
-            </h2>
-            <form
-              action="https://search.asu.edu/search"
-              method="get"
-              name="gs"
-              role="search"
-              target="_top"
-            >
-              <label
-                class="srOnly"
-                for="masu_search_box"
-              >
-                Search
-              </label>
-              <input
-                name="site"
-                type="hidden"
-                value="default_collection"
-              />
-              <input
-                name="sort"
-                type="hidden"
-                value="date:D:L:d1"
-              />
-              <input
-                name="output"
-                type="hidden"
-                value="xml_no_dtd"
-              />
-              <input
-                name="proxystylesheet"
-                type="hidden"
-                value="asu_frontend"
-              />
-              <input
-                name="ie"
-                type="hidden"
-                value="UTF-8"
-              />
-              <input
-                name="oe"
-                type="hidden"
-                value="UTF-8"
-              />
-              <input
-                name="client"
-                type="hidden"
-                value="asu_frontend"
-              />
-              <input
-                class="asuSearchButton"
-                type="submit"
-                value="Search"
-              />
-              <input
-                autocomplete="off"
-                class="asuSearchBox"
-                id="masu_search_box"
-                name="q"
-                placeholder="Search"
-                type="text"
-              />
-            </form>
-          </div>
-          
-          <div
-            class="asuHeaderMobileControls"
-          >
-            <span
-              class="icoNavIcon"
-              role="button"
-            />
-            <span
-              class="icoSearch"
-            />
-          </div>
-        </div>
-      </header>
-    </div>
-  </body>,
-  "container": <div>
-    <header
-      class="asuBrandHeader"
-    >
-      <a
-        class="srOnly"
-        href="https://www.asu.edu/accessibility/"
-      >
-        Report an accessibility problem
-      </a>
-      <div
-        class="asuHeaderGrid"
-      >
-        <div
-          class="asuHeaderTopRow"
-        >
-          <div
-            class="asuLogo"
+          </li>
+          <li
+            class="asuNavItemTop"
           >
             <a
-              href="https://www.asu.edu/"
+              href="https://my.asu.edu/"
+              target="_top"
+              title="My ASU"
             >
-              <img
-                alt="ASU"
-                src="https://www.asu.edu/asuthemes/4.6/assets/full_logo.png"
-              />
+              My ASU
             </a>
-          </div>
-          <nav
-            class="asuNavWrapper asuBrandHeaderNav"
+          </li>
+          <li
+            class="asuNavItemTop"
           >
-            <ul
-              aria-label="ASU"
-              class="asuNav"
+            <div
+              class="asuNavItemTop"
               role="navigation"
+              title="Map and Locations"
             >
-              <li
-                class="asuNavItemTop"
-              >
-                <div
-                  class="asuNavItemTop"
-                  role="navigation"
-                  title="ASU Home"
-                >
-                  <a
-                    class="asuNavA"
-                    href="https://www.asu.edu/"
-                  >
-                    <span>
-                      ASU Home
-                    </span>
-                  </a>
-                  <span
-                    class="icoSortDown"
-                  />
-                  <ul
-                    class="subMenu subSlideOut"
-                  >
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=newsevents"
-                        tabindex="0"
-                        title="News and Events"
-                      >
-                        News/Events
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=academics"
-                        tabindex="0"
-                        title="Academics"
-                      >
-                        Academics
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=research"
-                        tabindex="0"
-                        title="Research"
-                      >
-                        Research
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=athletics"
-                        tabindex="0"
-                        title="Athletics"
-                      >
-                        Athletics
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=alumni"
-                        tabindex="0"
-                        title="Alumni"
-                      >
-                        Alumni
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=giving"
-                        tabindex="0"
-                        title="Giving"
-                      >
-                        Giving
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/?feature=president"
-                        tabindex="0"
-                        title="President"
-                      >
-                        President
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/about"
-                        tabindex="0"
-                        title="About ASU"
-                      >
-                        About ASU
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li
-                class="asuNavItemTop"
-              >
-                <a
-                  href="https://my.asu.edu/"
-                  target="_top"
-                  title="My ASU"
-                >
-                  My ASU
-                </a>
-              </li>
-              <li
-                class="asuNavItemTop"
-              >
-                <div
-                  class="asuNavItemTop"
-                  role="navigation"
-                  title="Map and Locations"
-                >
-                  <a
-                    class="asuNavA"
-                    href="https://www.asu.edu/map/"
-                    target="_top"
-                  >
-                    <span>
-                      Map and Locations
-                    </span>
-                  </a>
-                  <span
-                    class="icoSortDown"
-                  />
-                  <ul
-                    class="subMenu subSlideOut"
-                  >
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.asu.edu/map/"
-                        tabindex="0"
-                        title="Map"
-                      >
-                        Map
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://campus.asu.edu/tempe/"
-                        tabindex="0"
-                        title="Tempe campus"
-                      >
-                        Tempe
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://campus.asu.edu/west/"
-                        tabindex="0"
-                        title="West campus"
-                      >
-                        West
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://campus.asu.edu/polytechnic/"
-                        tabindex="0"
-                        title="Polytechnic campus"
-                      >
-                        Polytechnic
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://campus.asu.edu/downtown/"
-                        tabindex="0"
-                        title="Downtown Phoenix campus"
-                      >
-                        Downtown Phoenix
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://asuonline.asu.edu/"
-                        tabindex="0"
-                        title="Online and Extended campus"
-                      >
-                        Online and Extended
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://havasu.asu.edu/"
-                        tabindex="0"
-                        title=""
-                      >
-                        Lake Havasu
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona"
-                        tabindex="0"
-                        title=""
-                      >
-                        Thunderbird
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://skysong.asu.edu/"
-                        tabindex="0"
-                        title=""
-                      >
-                        Skysong
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://asuresearchpark.com/"
-                        tabindex="0"
-                        title=""
-                      >
-                        Research Park
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://washingtoncenter.asu.edu/"
-                        tabindex="0"
-                        title=""
-                      >
-                        Washington D.C.
-                      </a>
-                    </li>
-                    <li
-                      class="asuNavItem"
-                    >
-                      <a
-                        href="https://wpcarey.asu.edu/mba/china-program/english/"
-                        tabindex="0"
-                        title=""
-                      >
-                        China
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li
-                class="asuNavItemTop"
-              >
-                <a
-                  href="https://isearch.asu.edu/"
-                  target="_top"
-                  title="Directory, Index and other info"
-                >
-                  Directory
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div
-            class="asuLogin asuBrandHeaderLogin"
-          >
-            <span
-              class="srOnly"
-            >
-              Sign In / Sign Out
-            </span>
-            <div>
               <a
-                class="asuLoginLink"
-                href="https://weblogin.asu.edu/cgi-bin/login"
+                class="asuNavA"
+                href="https://www.asu.edu/map/"
                 target="_top"
               >
-                Sign In
+                <span>
+                  Map and Locations
+                </span>
               </a>
+              <span
+                class="icoSortDown"
+              />
+              <ul
+                class="subMenu subSlideOut"
+              >
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.asu.edu/map/"
+                    tabindex="0"
+                    title="Map"
+                  >
+                    Map
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://campus.asu.edu/tempe/"
+                    tabindex="0"
+                    title="Tempe campus"
+                  >
+                    Tempe
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://campus.asu.edu/west/"
+                    tabindex="0"
+                    title="West campus"
+                  >
+                    West
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://campus.asu.edu/polytechnic/"
+                    tabindex="0"
+                    title="Polytechnic campus"
+                  >
+                    Polytechnic
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://campus.asu.edu/downtown/"
+                    tabindex="0"
+                    title="Downtown Phoenix campus"
+                  >
+                    Downtown Phoenix
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://asuonline.asu.edu/"
+                    tabindex="0"
+                    title="Online and Extended campus"
+                  >
+                    Online and Extended
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://havasu.asu.edu/"
+                    tabindex="0"
+                    title=""
+                  >
+                    Lake Havasu
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona"
+                    tabindex="0"
+                    title=""
+                  >
+                    Thunderbird
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://skysong.asu.edu/"
+                    tabindex="0"
+                    title=""
+                  >
+                    Skysong
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://asuresearchpark.com/"
+                    tabindex="0"
+                    title=""
+                  >
+                    Research Park
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://washingtoncenter.asu.edu/"
+                    tabindex="0"
+                    title=""
+                  >
+                    Washington D.C.
+                  </a>
+                </li>
+                <li
+                  class="asuNavItem"
+                >
+                  <a
+                    href="https://wpcarey.asu.edu/mba/china-program/english/"
+                    tabindex="0"
+                    title=""
+                  >
+                    China
+                  </a>
+                </li>
+              </ul>
             </div>
-            <span
-              class="icoUser"
-            />
-          </div>
-        </div>
-        <div
-          class="asuSearch asuHeaderGlobalSearch"
-        >
-          <h2
-            class="srOnly"
+          </li>
+          <li
+            class="asuNavItemTop"
           >
-            Search
-          </h2>
-          <form
-            action="https://search.asu.edu/search"
-            method="get"
-            name="gs"
-            role="search"
+            <a
+              href="https://isearch.asu.edu/"
+              target="_top"
+              title="Directory, Index and other info"
+            >
+              Directory
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div
+        class="asuLogin asuBrandHeaderLogin"
+      >
+        <span
+          class="srOnly"
+        >
+          Sign In / Sign Out
+        </span>
+        <div>
+          <a
+            class="asuLoginLink"
+            href="https://weblogin.asu.edu/cgi-bin/login"
             target="_top"
           >
-            <label
-              class="srOnly"
-              for="masu_search_box"
-            >
-              Search
-            </label>
-            <input
-              name="site"
-              type="hidden"
-              value="default_collection"
-            />
-            <input
-              name="sort"
-              type="hidden"
-              value="date:D:L:d1"
-            />
-            <input
-              name="output"
-              type="hidden"
-              value="xml_no_dtd"
-            />
-            <input
-              name="proxystylesheet"
-              type="hidden"
-              value="asu_frontend"
-            />
-            <input
-              name="ie"
-              type="hidden"
-              value="UTF-8"
-            />
-            <input
-              name="oe"
-              type="hidden"
-              value="UTF-8"
-            />
-            <input
-              name="client"
-              type="hidden"
-              value="asu_frontend"
-            />
-            <input
-              class="asuSearchButton"
-              type="submit"
-              value="Search"
-            />
-            <input
-              autocomplete="off"
-              class="asuSearchBox"
-              id="masu_search_box"
-              name="q"
-              placeholder="Search"
-              type="text"
-            />
-          </form>
+            Sign In
+          </a>
         </div>
-        
-        <div
-          class="asuHeaderMobileControls"
-        >
-          <span
-            class="icoNavIcon"
-            role="button"
-          />
-          <span
-            class="icoSearch"
-          />
-        </div>
+        <span
+          class="icoUser"
+        />
       </div>
-    </header>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+    </div>
+    <div
+      class="asuSearch asuHeaderGlobalSearch"
+    >
+      <h2
+        class="srOnly"
+      >
+        Search
+      </h2>
+      <form
+        action="https://search.asu.edu/search"
+        method="get"
+        name="gs"
+        role="search"
+        target="_top"
+      >
+        <label
+          class="srOnly"
+          for="masu_search_box"
+        >
+          Search
+        </label>
+        <input
+          name="site"
+          type="hidden"
+          value="default_collection"
+        />
+        <input
+          name="sort"
+          type="hidden"
+          value="date:D:L:d1"
+        />
+        <input
+          name="output"
+          type="hidden"
+          value="xml_no_dtd"
+        />
+        <input
+          name="proxystylesheet"
+          type="hidden"
+          value="asu_frontend"
+        />
+        <input
+          name="ie"
+          type="hidden"
+          value="UTF-8"
+        />
+        <input
+          name="oe"
+          type="hidden"
+          value="UTF-8"
+        />
+        <input
+          name="client"
+          type="hidden"
+          value="asu_frontend"
+        />
+        <input
+          class="asuSearchButton"
+          type="submit"
+          value="Search"
+        />
+        <input
+          autocomplete="off"
+          class="asuSearchBox"
+          id="masu_search_box"
+          name="q"
+          placeholder="Search"
+          type="text"
+        />
+      </form>
+    </div>
+    
+    <div
+      class="asuHeaderMobileControls"
+    >
+      <span
+        class="icoNavIcon"
+        role="button"
+      />
+      <span
+        class="icoSearch"
+      />
+    </div>
+  </div>
+</header>
 `;

@@ -1,5 +1,4 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
 import AsuCarousel from "./index.js";
 import { withKnobs, boolean, text, number } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
@@ -33,8 +32,14 @@ const items = [
   }
 ];
 
-storiesOf("AsuCarousel", module)
-  .add("Default", () => (
+
+  export default {
+    component: AsuCarousel,
+    title: 'AsuCarousel',
+    decorators: [withA11y, withKnobs]
+  };
+
+  export const basic = () => (
     <AsuCarousel
       items={items}
       interval={number("interval", 5000)}
@@ -43,8 +48,9 @@ storiesOf("AsuCarousel", module)
       ride={text("ride", "carousel")}
       slide={boolean("slide", true)}
     />
-  ))
-  .add("Background variant", () => (
+  );
+
+  export const backgroundVariant = () => (
     <AsuCarousel
       items={items}
       interval={number("interval", 5000)}
@@ -54,5 +60,4 @@ storiesOf("AsuCarousel", module)
       slide={boolean("slide", true)}
       variant={text("variant", "background")}
     />
-  ))
-  .addDecorator(withKnobs, withA11y);
+  );

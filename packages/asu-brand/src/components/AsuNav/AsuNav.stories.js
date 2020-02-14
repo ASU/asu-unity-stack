@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import AsuNav from './index.js';
+import { withA11y } from '@storybook/addon-a11y';
 
 const siteNav = [
   {
@@ -155,10 +155,16 @@ const siteNav = [
   }
 ];
 
-storiesOf('AsuNav', module)
-  .add('basic w/out local nav', () => (
-    <AsuNav/>
-  ))
-  .add('basic w/ local nav', () => (
-    <AsuNav siteNav={siteNav}/>
-  ));
+export default {
+  component: AsuNav,
+  title: 'AsuNav',
+  decorators: [withA11y]
+};
+
+export const basic = () => (
+  <AsuNav/>
+);
+
+export const wLocalNav = () => (
+  <AsuNav siteNav={siteNav}/>
+);

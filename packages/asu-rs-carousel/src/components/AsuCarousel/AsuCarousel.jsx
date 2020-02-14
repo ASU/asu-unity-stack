@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Carousel,
@@ -7,7 +7,8 @@ import {
   CarouselIndicators,
   Util
 } from "reactstrap";
-import { AsuHeroImage, AsuBgHeroImage } from "../AsuHeroImage";
+import { AsuHeroImage } from "../AsuHeroImage";
+import AsuBgHeroImage from "../AsuBgHeroImage";
 import bootstrap from "asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css";
 
 // Needs to be set for CSS modules.
@@ -44,7 +45,11 @@ const AsuCarousel = props => {
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
       >
-         {props.variant == "background" ? <AsuBgHeroImage {...item} /> : <AsuHeroImage {...item} />}
+        {props.variant == "background" ? (
+          <AsuBgHeroImage {...item} />
+        ) : (
+          <AsuHeroImage {...item} />
+        )}
       </CarouselItem>
     );
   });

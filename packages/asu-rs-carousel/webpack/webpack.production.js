@@ -13,7 +13,7 @@ const postCSSLoader = {
   }
 };
 
-module.exports = devWebpack;
+module.exports = [devWebpack];
 
 module.exports.push(
   merge(common, {
