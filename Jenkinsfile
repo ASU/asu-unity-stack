@@ -1,14 +1,12 @@
 pipeline {
     agent {
         docker {
-            image 'node:11-alpine'
+            image 'node:11'
             args '-p 3000:3000'
         }
     }
     environment {
         HOME = '.'
-        CHROME_BIN='/usr/bin/chromium-browser'
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD='true'
     }
     stages {
         stage('Build') {
