@@ -11,7 +11,8 @@
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "publish": "lerna publish from-package",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "stop": "node server/server.stop.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -32,6 +33,7 @@
     "jest-puppeteer": "^4.4.0",
     "lerna": "^3.16.4",
     "nunjucks": "^3.2.0",
-    "puppeteer": "^2.1.0"
+    "puppeteer": "^2.1.0",
+    "socket.io": "^2.3.0"
   }
 }

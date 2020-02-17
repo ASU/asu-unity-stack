@@ -36,4 +36,17 @@ app.get("/header", brandRender.sendASUHeader);
 //app.get('/footer', sendASUFooter);
 
 // Start server
-app.listen(3000);
+//app.listen(3000);
+
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
+server.listen(3000);
+
+// Listen for stop command with socket.io. Referenced from stackoverflow answer:
+// https://stackoverflow.com/questions/23258421/how-to-stop-app-that-node-js-express-npm-start/39128820
+io.on('connection', (socketServer) => {
+  socketServer.on('npmStop', () => {
+    process.exit(0);
+  });
+});
