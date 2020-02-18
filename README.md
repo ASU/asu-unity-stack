@@ -91,9 +91,30 @@ See the developer documentation on storybook at https://storybook.js.org/docs/ba
 ```bash
 yarn build #build the project
 yarn test #run tests
+
+
 ```
 
 It's also possible to build a package from the git project root with a Yarn workspace command like:
 
 ```yarn workspace @asu/asu-brand build```
+
+
+## ❯ Running end-to-end testing (from the Git project root)
+
+```bash
+yarn build # build the project
+yarn start # start the testing server
+yarn test:e2e # run tests
+
+
+```
+
+## ❯ Supplemental links
+
+  Storybook (https://storybook.js.org/docs/basics/introduction/)
+  LernaJS (https://lerna.js.org/)
+  Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
+  Jest (https://jestjs.io/docs/en/getting-started)
+  Puppeteer (https://pptr.dev/)
 

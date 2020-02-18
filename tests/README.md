@@ -11,7 +11,7 @@ Included with each package should be a Jest testing suite which includes unit an
 
 ### Unit testing
 
-Jest component snapshot testing is an example of unit testing (https://jestjs.io/docs/en/snapshot-testing). At a mininum every visual component should have at least 1 snapshot test.
+Jest component snapshot testing is an example of unit testing (https://jestjs.io/docs/en/snapshot-testing). At a mininum every visual component should have at least 1 snapshot test. For an example React snapshot test see the [example](../examples/example-package/src/components/Example/Example.test.js)
 
 Unit testing for utility functions (non-visual) is recommended.
 

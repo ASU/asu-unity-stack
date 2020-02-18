@@ -145,5 +145,18 @@ with them.
 
 If you have a package you'd like to contribute, or want to build a new package, start by creating an issue on this repo with details about the package. From there we can discuss the details of the package and any individual needs. Once a package has been approved for inclusion in the repo, there are a couple of helpful resources for package setup and testing:
 
-1. Example package [config](./examples/example-package/README.md)
-2. Package testing [requirements](./tests/README.md)
+For a full explanation of basic configuration see example package [config](./examples/example-package/README.md)
+
+### Storybook configuration
+
+Storybook is the standard component explorer which we use for local development. Each package should have a Storybook configuration under a root '.storybook' directory. For more info see the Storybook config in the 'examples/example-package/.storybook' directory, and the example story [here](../examples/example-package/src/components/Example/Example.stories.js).
+
+### Webpack configuration
+
+We are using Webpack to statically bundle React component modules for universal deployment in any application. Typically there are separate development and production Webpack configurations located under a 'webpack' directory at the package root. See the 'examples/example-package/webpack' directory for inspiration.
+
+Note: The PostCSS plugin is used alongside Webpack for some advanced CSS processing, but is not required for all packages.
+
+### Testing configuration
+
+Jest configuration is included in the package.json for most packages. See testing [requirements](./tests/README.md), and also example [test](../examples/example-package/src/components/Example/Example.test.js).
