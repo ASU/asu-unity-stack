@@ -14,6 +14,7 @@ const getOptions = (value, setOptions, props) => {
     // Build query URL given the currently checked value and layer tree
     const url = getLayerUrl(props.layers, value);
 
+    // Fetch map features from GIS api and set options state using setOptions hook
     if (url) {
       fetch(url)
         .then(res => res.json())
@@ -35,6 +36,10 @@ const getOptions = (value, setOptions, props) => {
           }
         );
     }
+
+    // reset options to empty if nothing checked
+  } else {
+    setOptions([]);
   }
 };
 
@@ -58,13 +63,13 @@ const getParentId = (layers, value) => {
 /** Get the layer API URL given the tree and a selected tree value */
 const getLayerUrl = (layers, value) => {
   let url;
+  const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
 
   for (let i = 0; i < layers.length; i++) {
-    if (value.includes(layers[i].id)) {
+
+    if (value.includes(layers[i].id) && value != layers[i].id) {
       const topLayer = layers[i];
       const childId = value.substring(topLayer.id.length + 1);
-      const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
-
       url = topLayer.url + "/" + childId + query;
     }
   }
@@ -81,7 +86,7 @@ const AsuGisFeaturePicker = props => {
   // GIS map layer tree select
   const layers = props.layers;
 
-  const savedLayer = props.selected ? [props.selected.parent] : [];
+  const savedLayer = props.selected.parent ? [props.selected.parent] : [];
   const parentLayer =
     savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
 
@@ -95,10 +100,17 @@ const AsuGisFeaturePicker = props => {
   // saving the tree node for later use.
   const checkCallback = useCallback(
     (checked, targetNode) => {
-      // set the checked value for the react-checkbox-tree
-      setChecked([targetNode.value]);
+      // Set checked state to only the latest checked node value. This logic
+      // in effect only allows one selected value at a time.
+      if (checked.length > 0) {
+        setChecked([targetNode.value]);
 
-      // run the onChange function with an empty value since
+      // if checked is empty (unchecked), set to the empty val
+      } else {
+        setChecked(checked);
+      }
+
+      // run the onChange function with an empty select option value since
       // swapping out the Select list got rid of the old value
       const emptyVal = "{}";
       if (props.onChange) {
@@ -107,6 +119,7 @@ const AsuGisFeaturePicker = props => {
     },
     [checked]
   );
+
   const expandCallback = useCallback(
     (expanded, targetNode) => {
       setExpanded(expanded);
@@ -131,7 +144,6 @@ const AsuGisFeaturePicker = props => {
   return (
     <div style={containerStyle}>
       <div>
-        <h2>Select a Layer</h2>
         <CheckboxTree
           checked={checked}
           expanded={expanded}
@@ -143,18 +155,22 @@ const AsuGisFeaturePicker = props => {
           id="asu-gis-fp"
         />
       </div>
-      {options.length > 0 && (
-        <FeatureSelect
-          {...{
-            parent: checked.length > 0 ? checked[0] : undefined,
-            options: options,
-            onChange: props.onChange,
-            selected: props.selected
-              ? JSON.stringify(props.selected)
-              : undefined
-          }}
-        />
-      )}
+      <div>
+        {checked.length > 0 ? (
+          <FeatureSelect
+            {...{
+              parent: checked.length > 0 ? checked[0] : undefined,
+              options: options,
+              onChange: props.onChange,
+              selected: props.selected
+                ? JSON.stringify(props.selected)
+                : undefined
+            }}
+          />
+        ) : (
+          <h2 style={{paddingLeft: '1em'}}>&#8592; Select a layer to display options.</h2>
+        )}
+      </div>
     </div>
   );
 };
