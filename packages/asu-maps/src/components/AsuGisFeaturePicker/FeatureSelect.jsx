@@ -22,7 +22,7 @@ const FeatureSelect = props => {
     }
   };
 
-  if (options && options.length > 0) {
+  if (options.length > 0) {
     return (
       <div style={{ paddingLeft: "75px" }}>
         <label>
