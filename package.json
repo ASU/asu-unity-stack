@@ -7,7 +7,9 @@
   ],
   "scripts": {
     "clean": "lerna run clean --stream --parallel",
+    "lint": "lerna run lint --stream --parallel",
     "build": "lerna run build",
+    "prebuild": "yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "publish": "lerna publish from-package",
