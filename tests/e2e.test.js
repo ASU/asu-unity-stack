@@ -62,12 +62,12 @@ describe("Main", () => {
     expect(await search.evaluate(node => node.method)).toBe("get");
   });
 
-  it("Axe Testing", async () => {
+  /*it("Axe Testing", async () => {
     await expect(page).toPassAxeTests({
       runOnly: {
         type: "tag",
         values: ["wcag2aa"]
       }
     });
-  });
+  });*/
 });
