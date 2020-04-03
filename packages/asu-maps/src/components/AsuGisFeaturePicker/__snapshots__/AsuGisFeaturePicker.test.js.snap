@@ -7,7 +7,7 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
   <div>
     <div
       class="react-checkbox-tree rct-icons-fa4 rct-native-display"
-      id="rct-lPdXOWh"
+      id="asu-gis-fp"
     >
       <ol>
         <li

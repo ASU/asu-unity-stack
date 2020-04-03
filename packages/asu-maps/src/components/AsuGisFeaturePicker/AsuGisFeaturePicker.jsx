@@ -201,6 +201,7 @@ const AsuGisFeaturePicker = props => {
           nodes={layers}
           nativeCheckboxes={true}
           onlyLeafCheckboxes={true}
+          id="asu-gis-fp"
         />
       </div>
       <div>
