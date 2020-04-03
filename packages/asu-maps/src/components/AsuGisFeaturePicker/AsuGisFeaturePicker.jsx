@@ -156,13 +156,6 @@ const AsuGisFeaturePicker = props => {
     getOptions(checked[0]);
   }, [checked]);
 
-  // Not much styling yet so we'll apply these inline for now.
-  // As we theme this component in the future we may want to add a modular CSS
-  // stylesheet as well.
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "row"
-  };
 
   // Render the select box or messages depending
   // on current status
@@ -186,6 +179,14 @@ const AsuGisFeaturePicker = props => {
         }}
       />
     );
+  };
+
+  // Apply container style inline for now.
+  // As we theme this component in the future we may want to add a modular CSS
+  // stylesheet as well.
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "row"
   };
 
   // return complete feature selection widget
