@@ -4,7 +4,7 @@ expect.extend({ toMatchImageSnapshot });
 
 describe("Main", () => {
   beforeAll(async () => {
-    await page.goto("http://localhost:3000", {
+    await page.goto("http://localhost:3000/kitchen-sink", {
       waitUntil: "networkidle0"
     });
   });

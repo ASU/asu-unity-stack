@@ -98,4 +98,6 @@ typings/
 *.sass.map
 *.scss.map
 
+dist
+
 # End of https://www.gitignore.io/api/node,sass
