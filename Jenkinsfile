@@ -49,7 +49,7 @@ pipeline {
                 sh 'docker push $REPOSITORY_URI:latest'
                 sh 'docker push $REPOSITORY_URI:v_$BUILD_NUMBER'
                 echo 'Deploying container to ECS..'
-                sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-redeployment'
+                sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment'
             }
         }
     }
