@@ -15,7 +15,7 @@
     "publish": "lerna publish from-package",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "deploy-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --dry-run"
+    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --dry-run"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -37,9 +37,7 @@
     "lerna": "^3.16.4",
     "nunjucks": "^3.2.0",
     "puppeteer": "^2.1.0",
-    "socket.io": "^2.3.0"
-  },
-  "dependencies": {
+    "socket.io": "^2.3.0",
     "@storybook/storybook-deployer": "^2.8.5"
   }
 }

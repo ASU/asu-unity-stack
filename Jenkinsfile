@@ -22,6 +22,7 @@ pipeline {
             steps {
                 sh 'yarn install'
                 sh 'yarn build'
+                sh 'yarn build-storybook'
             }
         }
         stage('Test') {
@@ -33,16 +34,6 @@ pipeline {
             }
             steps {
                 sh 'yarn test'
-            }
-        }
-        stage('e2e Test') {
-            agent {
-                docker {
-                    image 'buildkite/puppeteer:v1.15.0'
-                    args '-p 3000:3000'
-                }
-            }
-            steps {
                 sh 'yarn start & yarn test:e2e'
             }
         }
@@ -58,7 +49,7 @@ pipeline {
                 sh 'docker push $REPOSITORY_URI:latest'
                 sh 'docker push $REPOSITORY_URI:v_$BUILD_NUMBER'
                 echo 'Deploying container to ECS..'
-                sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME'
+                sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-redeployment'
             }
         }
     }
