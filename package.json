@@ -15,7 +15,7 @@
     "publish": "lerna publish from-package",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --dry-run"
+    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -29,6 +29,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/storybook-deployer": "^2.8.5",
     "@wordpress/jest-puppeteer-axe": "^1.6.0",
     "express": "^4.17.1",
     "jest": "^25.1.0",
@@ -37,7 +38,6 @@
     "lerna": "^3.16.4",
     "nunjucks": "^3.2.0",
     "puppeteer": "^2.1.0",
-    "socket.io": "^2.3.0",
-    "@storybook/storybook-deployer": "^2.8.5"
+    "socket.io": "^2.3.0"
   }
 }
