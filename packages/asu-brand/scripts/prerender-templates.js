@@ -1,7 +1,6 @@
 const shell = require('shelljs');
 const fs = require('fs');
 const path = require('path');
-const h = require('preact');
 
 // import prerendering functions for ASU Brand header
 const brandRender = require("../dist/asu-brand.ssr");
