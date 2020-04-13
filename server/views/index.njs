@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
-  {% include "head.html" %}
+  {% include "head.njs" %}
 </head>
 
 <body>
@@ -24,7 +24,7 @@
           <p class="lead">This section contains HTML elements styled and controlled by Bootstrap CSS and JS.</p>
         </div>
       </div>
-      {% include "asu-web-standards-bootstrap4.html" %}
+      {% include "asu-web-standards-bootstrap4.njs" %}
     </section>
 
     <!-- React Components-->
@@ -52,7 +52,7 @@
     </section>
   </div>
   <footer>
-    {% include "scripts.html" %}
+    {% include "scripts.njs" %}
   </footer>
 </body>
 

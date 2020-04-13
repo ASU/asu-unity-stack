@@ -25,9 +25,9 @@ app.use(express.static("packages"));
  * Serve HTML page which tests bundled packages
  */
 app.get("/kitchen-sink", function(req, res) {
-  // Important: This index.html is a nunjucks template and resides in 'server/views'.
+  // Important: This index.njs is a nunjucks template and resides in 'server/views'.
   // Not to be confused with the root index.html in the static Storybook 'build' directory.
-  res.render("index.html");
+  res.render("index.njs");
 });
 
 
