@@ -31,9 +31,7 @@ module.exports = generateHTML = packages => `
       <div class="col">
         <div class="jumbotron">
           <h1>Welcome to Unity QA</h1>
-
         </div>
-
         <a href="/kitchen-sink"><h2>Kitchen sink page</h2></a>
       </div>
     </div>
