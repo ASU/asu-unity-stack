@@ -10,7 +10,8 @@
     "build:watch": "webpack --watch --config=webpack/webpack.development.js",
     "build:dev": "webpack --config=webpack/webpack.development.js",
     "storybook": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o export"
+    "build-storybook": "build-storybook -c .storybook -o export",
+    "lint": "eslint ./src --ext .js --ext .jsx"
   },
   "repository": {
     "type": "git",

@@ -5,39 +5,6 @@ import CheckboxTree from "react-checkbox-tree";
 import FeatureSelect from "./FeatureSelect";
 import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
-/* Helper function to do fetch request to the GIS layer
-   endpoint, then sets the 'options' state variable with
-   retrieved items. This in turn causes the select list to
-   re-render with new options.*/
-const getOptions = (value, setOptions, props) => {
-  if (value) {
-    // Build query URL given the currently checked value and layer tree
-    const url = getLayerUrl(props.layers, value);
-
-    if (url) {
-      fetch(url)
-        .then(res => res.json())
-        .then(
-          result => {
-            if (result.features) {
-              // set the options state.
-              setOptions(result.features);
-            } else {
-              // set empty if no features returned from result
-              setOptions([]);
-            }
-          },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          error => {
-            console.log(error);
-          }
-        );
-    }
-  }
-};
-
 // Get the  numerical layer ID given a tree node from the
 // react-checkbox-tree component
 const getParentId = (layers, value) => {
@@ -58,13 +25,12 @@ const getParentId = (layers, value) => {
 /** Get the layer API URL given the tree and a selected tree value */
 const getLayerUrl = (layers, value) => {
   let url;
+  const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
 
   for (let i = 0; i < layers.length; i++) {
-    if (value.includes(layers[i].id)) {
+    if (value.includes(layers[i].id) && value != layers[i].id) {
       const topLayer = layers[i];
       const childId = value.substring(topLayer.id.length + 1);
-      const query = "/query?where=1=1&outFields=OBJECTID,Name,SHAPE&f=json";
-
       url = topLayer.url + "/" + childId + query;
     }
   }
@@ -81,24 +47,36 @@ const AsuGisFeaturePicker = props => {
   // GIS map layer tree select
   const layers = props.layers;
 
-  const savedLayer = props.selected ? [props.selected.parent] : [];
+  const savedLayer = props.selected.parent ? [props.selected.parent] : [];
   const parentLayer =
     savedLayer.length > 0 ? [getParentId(layers, savedLayer[0])] : [];
 
+  // These are required in order to control the react-checkbox-tree
+  // component
   const [checked, setChecked] = useState(savedLayer);
   const [expanded, setExpanded] = useState(parentLayer);
 
-  // State hooks for the feature select list component
-  const [options, setOptions] = useState([]);
+  // State hooks for the GIS feature select list component
+  const [selectState, setSelectState] = useState({
+    status: "noselection",
+    options: []
+  });
 
   // Callbacks for setting state of the react-checkbox-tree tree component and
   // saving the tree node for later use.
   const checkCallback = useCallback(
     (checked, targetNode) => {
-      // set the checked value for the react-checkbox-tree
-      setChecked([targetNode.value]);
+      // Set checked state to only the latest checked node value. This logic
+      // in effect only allows one selected value at a time.
+      if (checked.length > 0) {
+        setChecked([targetNode.value]);
 
-      // run the onChange function with an empty value since
+        // if checked is empty (unchecked), set to the empty val
+      } else {
+        setChecked(checked);
+      }
+
+      // run the onChange function with an empty select option value since
       // swapping out the Select list got rid of the old value
       const emptyVal = "{}";
       if (props.onChange) {
@@ -107,6 +85,7 @@ const AsuGisFeaturePicker = props => {
     },
     [checked]
   );
+
   const expandCallback = useCallback(
     (expanded, targetNode) => {
       setExpanded(expanded);
@@ -116,10 +95,93 @@ const AsuGisFeaturePicker = props => {
 
   //This effect only runs when the selected map layer changes.
   useEffect(() => {
-    getOptions(checked[0], setOptions, props);
+
+    /* Helper function to do fetch request to the GIS layer
+    endpoint, then sets the 'options' state variable with
+    retrieved items. This in turn causes the select list to
+    re-render with new options.*/
+    const getOptions = async value => {
+      let result = [];
+      let error = false;
+
+      if (value) {
+        // Build query URL given the currently checked value and layer tree
+        const url = getLayerUrl(props.layers, value);
+
+        // Fetch map features from GIS api and set options state using setOptions hook
+        if (url) {
+          result = await fetch(url)
+            .then(res => res.json())
+            .then(
+              result => {
+                if (result.features) {
+                  // set the options state.
+                  return result.features;
+                } else {
+                  // set empty if no features returned from result
+                  return [];
+                }
+              },
+              // Note: it's important to handle errors here
+              // instead of a catch() block so that we don't swallow
+              // exceptions from actual bugs in components.
+              error => {
+                error = true;
+                console.error(error);
+                return [];
+              }
+            );
+        }
+
+        if (error) {
+          setSelectState({
+            status: "error",
+            options: []
+          });
+        } else {
+          setSelectState({
+            status: "success",
+            options: result
+          });
+        }
+      }
+    };
+
+    // set state to 'loading' before getting options
+    setSelectState({
+      status: "loading",
+      options: []
+    });
+
+    getOptions(checked[0]);
   }, [checked]);
 
-  // Not much styling yet so we'll apply these inline for now.
+
+  // Render the select box or messages depending
+  // on current status
+  const renderSelect = (selectState, props) => {
+    if (selectState.status == "error") {
+      return <div>Something went wrong</div>;
+    }
+
+    if (selectState.status == "loading") {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <FeatureSelect
+        {...{
+          parent: checked.length > 0 ? checked[0] : undefined,
+          options: selectState.options,
+          status: selectState.status,
+          onChange: props.onChange,
+          selected: props.selected ? JSON.stringify(props.selected) : undefined
+        }}
+      />
+    );
+  };
+
+  // Apply container style inline for now.
   // As we theme this component in the future we may want to add a modular CSS
   // stylesheet as well.
   const containerStyle = {
@@ -127,11 +189,10 @@ const AsuGisFeaturePicker = props => {
     flexDirection: "row"
   };
 
-  // return complete rendered component
+  // return complete feature selection widget
   return (
     <div style={containerStyle}>
       <div>
-        <h2>Select a Layer</h2>
         <CheckboxTree
           checked={checked}
           expanded={expanded}
@@ -143,18 +204,15 @@ const AsuGisFeaturePicker = props => {
           id="asu-gis-fp"
         />
       </div>
-      {options.length > 0 && (
-        <FeatureSelect
-          {...{
-            parent: checked.length > 0 ? checked[0] : undefined,
-            options: options,
-            onChange: props.onChange,
-            selected: props.selected
-              ? JSON.stringify(props.selected)
-              : undefined
-          }}
-        />
-      )}
+      <div>
+        {checked.length > 0 ? (
+          renderSelect(selectState, props)
+        ) : (
+          <h2 style={{ paddingLeft: "1em" }}>
+            &#8592; Select a layer to display options.
+          </h2>
+        )}
+      </div>
     </div>
   );
 };

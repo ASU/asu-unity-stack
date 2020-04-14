@@ -1,13 +1,21 @@
 # ASU Unity Stack
 Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
 
+## ❯ Packages in this repository
+
+This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
+
+1. [asu-web-standards-bootstrap-4](./packages/asu-web-standards-bootstrap-4/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages. See the [AsuHeroImage component](./packages/asu-rs-carousel/src/components/AsuHeroImage/AsuHeroImage.jsx) for an example of integrating this package into a Reactstrap component.
+2. [asu-brand](./packages/asu-brand/README.md) - Contains ASU-branded global header and footer React components.
+4. [asu-maps](./packages/asu-maps/README.md) - React components for configuring and displaying ASU GIS maps, built with react-checkbox-tree.
+5. [asu-rs-carousel](./packages/asu-rs-carousel/README.md) - ASU hero images and carousel built with Reactstrap and asu-web-standards-bootstrap-4.
+
 ## ❯ Dependencies
 
 In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js
 - NPM
 - Yarn
-
 
 ## ❯ Setup Local Development Environment
 
@@ -85,14 +93,13 @@ See the developer documentation on storybook at https://storybook.js.org/docs/ba
 ## ❯ Structure
  - packages/[package-name] - NPM package root
  - packages/[package-name]/src - Source code
+ - packages/[package-name]/.storybook - Storybook configuration
 
-## ❯ Building, Testing (from the package root)
+## ❯ Building, Testing (from the package root at packages/[package-name])
 
 ```bash
-yarn build #build the project
-yarn test #run tests
-
-
+yarn build # build the project
+yarn test # run tests
 ```
 
 It's also possible to build a package from the git project root with a Yarn workspace command like:
@@ -104,17 +111,17 @@ It's also possible to build a package from the git project root with a Yarn work
 
 ```bash
 yarn build # build the project
-yarn start # start the testing server
-yarn test:e2e # run tests
-
-
+yarn start & yarn test:e2e # start the testing server and run e2e tests
+yarn stop # stop the testing server
 ```
 
 ## ❯ Supplemental links
 
-  Storybook (https://storybook.js.org/docs/basics/introduction/)
-  LernaJS (https://lerna.js.org/)
-  Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
-  Jest (https://jestjs.io/docs/en/getting-started)
-  Puppeteer (https://pptr.dev/)
+ - Storybook (https://storybook.js.org/docs/basics/introduction/)
+ - LernaJS (https://lerna.js.org/)
+ - Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
+ - Jest (https://jestjs.io/docs/en/getting-started)
+ - Puppeteer (https://pptr.dev/)
+
+
 

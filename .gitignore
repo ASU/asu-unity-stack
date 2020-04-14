@@ -99,8 +99,9 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# Rollup build files
+# build files
 dist
+build
 stats.html
 
 # End of https://www.gitignore.io/api/node

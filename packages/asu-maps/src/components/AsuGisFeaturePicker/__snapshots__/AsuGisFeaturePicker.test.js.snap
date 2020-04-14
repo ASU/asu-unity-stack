@@ -5,9 +5,6 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
   style="display: flex; flex-direction: row;"
 >
   <div>
-    <h2>
-      Select a Layer
-    </h2>
     <div
       class="react-checkbox-tree rct-icons-fa4 rct-native-display"
       id="asu-gis-fp"
@@ -188,137 +185,15 @@ exports[`The AsuGisFeaturePicker renders the component 1`] = `
             </span>
           </span>
         </li>
-        <li
-          class="rct-node rct-node-leaf"
-        >
-          <span
-            class="rct-text"
-          >
-            <span
-              class="rct-collapse"
-            >
-              <span
-                class="rct-icon"
-              />
-            </span>
-            <label
-              for="asu-gis-fp-VectorTile_3677"
-              title="Building Labels"
-            >
-              <input
-                id="asu-gis-fp-VectorTile_3677"
-                type="checkbox"
-              />
-              <span
-                class="rct-checkbox"
-              >
-                <span
-                  class="rct-icon rct-icon-uncheck"
-                />
-              </span>
-              <span
-                class="rct-node-icon"
-              >
-                <span
-                  class="rct-icon rct-icon-leaf"
-                />
-              </span>
-              <span
-                class="rct-title"
-              >
-                Building Labels
-              </span>
-            </label>
-          </span>
-        </li>
-        <li
-          class="rct-node rct-node-leaf"
-        >
-          <span
-            class="rct-text"
-          >
-            <span
-              class="rct-collapse"
-            >
-              <span
-                class="rct-icon"
-              />
-            </span>
-            <label
-              for="asu-gis-fp-ASUParkingAreaAll_105"
-              title="Parking"
-            >
-              <input
-                id="asu-gis-fp-ASUParkingAreaAll_105"
-                type="checkbox"
-              />
-              <span
-                class="rct-checkbox"
-              >
-                <span
-                  class="rct-icon rct-icon-uncheck"
-                />
-              </span>
-              <span
-                class="rct-node-icon"
-              >
-                <span
-                  class="rct-icon rct-icon-leaf"
-                />
-              </span>
-              <span
-                class="rct-title"
-              >
-                Parking
-              </span>
-            </label>
-          </span>
-        </li>
-        <li
-          class="rct-node rct-node-leaf"
-        >
-          <span
-            class="rct-text"
-          >
-            <span
-              class="rct-collapse"
-            >
-              <span
-                class="rct-icon"
-              />
-            </span>
-            <label
-              for="asu-gis-fp-CampusBuilding_2921"
-              title="BuildingHidden"
-            >
-              <input
-                id="asu-gis-fp-CampusBuilding_2921"
-                type="checkbox"
-              />
-              <span
-                class="rct-checkbox"
-              >
-                <span
-                  class="rct-icon rct-icon-uncheck"
-                />
-              </span>
-              <span
-                class="rct-node-icon"
-              >
-                <span
-                  class="rct-icon rct-icon-leaf"
-                />
-              </span>
-              <span
-                class="rct-title"
-              >
-                BuildingHidden
-              </span>
-            </label>
-          </span>
-        </li>
       </ol>
     </div>
+  </div>
+  <div>
+    <h2
+      style="padding-left: 1em;"
+    >
+      ← Select a layer to display options.
+    </h2>
   </div>
 </div>
 `;
