@@ -1,0 +1,22 @@
+{
+    "color": {
+      "notif": {
+        "error": {"value" : "#CC2F2F"},
+        "success": {"value": "{color.brand.green.value}"},
+        "warning": {"value": "{color.brand.orange.value}"},
+        "info": {"value": "{color.brand.blue.value}"},
+        "text": {
+            "error": {"value" : "#B72A2A"},
+            "success": {"value": "#446D12"},
+            "warning": {"value": "#BD4800"},
+            "info": {"value": "#126877"}
+        },
+        "bg": {
+            "error": {"value" : "#F7DDDD"},
+            "success": {"value": "#E9F5DB"},
+            "warning": {"value": "#FFEADE"},
+            "info": {"value": "#D6F0FA"}
+        }
+      }
+    }
+  }

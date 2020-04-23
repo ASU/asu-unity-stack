@@ -1,0 +1,17 @@
+{
+    "color": {
+      "text": {
+        "light": {"value": "{color.brand.gray.6.value}"},
+        "dark": {"value": "{color.brand.gray.0.value}"}
+      },
+      "bg": {
+        "white": {"value": "{color.brand.white.value}"},
+        "gray": {"value": "{color.brand.gray.5.value}"},
+        "black": {"value": "{color.brand.gray.0.value}"}
+      },
+      "link": {
+        "maroon": {"value": "{color.brand.maroon.value}"},
+        "gold": {"value": "{color.brand.gold.value}"}
+      }
+    }
+  }

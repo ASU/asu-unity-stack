@@ -1,0 +1,21 @@
+{
+    "color": {
+      "brand": {
+        "gold": {"value" : "#FFC627"},
+        "maroon": {"value" : "#8C1D40"},
+        "white": {"value" : "#FFFFFF"},
+        "green": {"value" : "#78BE20"},
+        "orange": {"value" : "#FF7F32"},
+        "blue": {"value" : "#00A3E0"},
+        "gray": {
+          "0" : { "value": "#191919" },
+          "1": { "value": "#484848" },
+          "2"  : { "value": "#747474" },
+          "3" : { "value": "#BFBFBF" },
+          "4": { "value": "#D0D0D0" },
+          "5"  : { "value": "#E8E8E8" },
+          "6"  : { "value": "#FAFAFA" }
+        }
+      }
+    }
+  }
