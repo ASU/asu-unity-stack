@@ -1,4 +1,4 @@
-.ASUHeader
+.ASUHeading
 {
     font-family: Arial;
     font-weight: bold;
@@ -10,7 +10,7 @@
 {
     background-repeat: no-repeat;
     background-origin: padding-box;
-    padding: 4px 8px;
+    padding: 0.25rem 0.5rem;
 }
 
 .highlightWhite
@@ -31,63 +31,65 @@
     color: #fff;
 }
 
-.HeaderOne
+.HeadingOne
 {
-    font-size: 48px;
-    line-height: 40px;
+    font-size: 3rem;
+    line-height: 2.5rem;
     letter-spacing: -1.26px;
 }
 
-.highlightHeaderOne
+.highlightHeadingOne
 {
-    line-height: 44px;
+    line-height: 2.75rem;
 }
 
-.HeaderTwo
+.HeadingTwo
 {
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 1.875rem;
+    line-height: 2.125rem;
     letter-spacing: -1.05px;
 }
 
-.highlightHeaderTwo
+.highlightHeadingTwo
 {
-    line-height: 38px;
+    line-height: 2.375rem;
 }
 
-.HeaderThree
+.HeadingThree
 {
-    font: Bold 24px/28px Arial;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
     letter-spacing: -0.84px;
 }
 
-.HeaderFour
+.HeadingFour
 {
-    font: Bold 20px/26px Arial;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
     letter-spacing: -0.5px;
 }
 
-.HeaderFive
+.HeadingFive
 {
     font: Bold 16px/24px Arial;
     letter-spacing: -0.24px;
 }
 
 @media (min-width: 577px) {
-    .HeaderOne
+    .HeadingOne
     {
         font-size: 64px;
         line-height: 68px;
         letter-spacing: -2.24px;
     }
 
-    .highlightHeaderOne
+    .highlightHeadingOne
     {
         padding: 4px 12px;
         line-height: 72px;
     }
 
-    .HeaderTwo
+    .HeadingTwo
     {
         font-size: 40px;
         line-height: 44px;
