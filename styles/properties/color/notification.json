@@ -1,6 +1,6 @@
 {
     "color": {
-      "notif": {
+      "notification": {
         "error": {"value" : "#CC2F2F"},
         "success": {"value": "{color.brand.green.value}"},
         "warning": {"value": "{color.brand.orange.value}"},

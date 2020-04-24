@@ -1,0 +1,14 @@
+{
+    "font":
+    {
+      "family":
+      {
+          "value": "Arial, sans-serif"
+      },
+      "weight":
+      {
+          "normal": {"value": "400"},
+          "bold": {"value": "700"}
+      }
+    }
+  }
