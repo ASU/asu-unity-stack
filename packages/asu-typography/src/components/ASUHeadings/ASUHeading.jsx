@@ -7,7 +7,7 @@ const header = (type, color, children) =>
 {
     let heading = null;
     let highlight = null;
-    let headerStyles = [classes.Heading];
+    let headerStyles = [classes["heading"]];
     let highlightStyles = [classes.highlight];
 
     if (color == 'gold') {
@@ -24,36 +24,38 @@ const header = (type, color, children) =>
     switch (type)
     {
         case '1':
-            headerStyles.push(classes.HeadingOne);
-            highlightStyles.push(classes.highlightHeadingOne);
+            headerStyles.push(classes["heading-one"]);
+            highlightStyles.push(classes["highlight-heading-one"]);
+            highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
             heading = highlight === null
                     ? <h1 className={headerStyles.join(' ')}>{children}</h1>
                     : <h1 className={headerStyles.join(' ')}>{highlight}</h1>
             break;
         case '2':
-            headerStyles.push(classes.HeadingTwo);
-            highlightStyles.push(classes.highlightHeadingTwo);
+            headerStyles.push(classes["heading-two"]);
+            highlightStyles.push(classes["highlight-heading-two"]);
+            highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
             heading = highlight === null
                     ? <h2 className={headerStyles.join(' ')}>{children}</h2>
                     : <h2 className={headerStyles.join(' ')}>{highlight}</h2>
             break;
         case '3':
-            headerStyles.push(classes.HeadingThree);
-            highlightStyles.push(classes.highlightHeadingThree);
+            headerStyles.push(classes["heading-three"]);
+            highlightStyles.push(classes["heading-three-highlight"]);
             heading = highlight === null
                     ? <h3 className={headerStyles.join(' ')}>{children}</h3>
                     : <h3 className={headerStyles.join(' ')}>{highlight}</h3>
             break;
         case '4':
-            headerStyles.push(classes.HeadingFour);
-            highlightStyles.push(classes.highlightHeadingFour);
+            headerStyles.push(classes["heading-four"]);
+            highlightStyles.push(classes["heading-four-highlight"]);
             heading = highlight === null
                     ? <h4 className={headerStyles.join(' ')}>{children}</h4>
                     : <h4 className={headerStyles.join(' ')}>{highlight}</h4>
             break;
         default:
-            headerStyles.push(classes.HeadingFive);
-            highlightStyles.push(classes.highlightHeadingFive);
+            headerStyles.push(classes["heading-five"]);
+            highlightStyles.push(classes["heading-five-highlight"]);
             heading = highlight === null
                     ? <h5 className={headerStyles.join(' ')}>{children}</h5>
                     : <h5 className={headerStyles.join(' ')}>{highlight}</h5>

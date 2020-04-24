@@ -1,31 +1,46 @@
-.Heading {
+.heading {
   font-family: Arial;
   font-weight: bold;
   text-align: left;
   opacity: 1;
 }
-.HeadingOne {
+.heading-one {
   font-size: 3rem;
   line-height: 2.5rem;
   letter-spacing: -1.26px;
 }
-.HeadingTwo {
+@media (min-width: 577px) {
+  .heading-one {
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: -2.24px;
+  }
+}
+.heading-two {
   font-size: 1.875rem;
   line-height: 2.125rem;
   letter-spacing: -1.05px;
 }
-.HeadingThree {
+@media (min-width: 577px) {
+  .heading-two {
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.4px;
+  }
+}
+.heading-three {
   font-size: 1.5rem;
   line-height: 1.75rem;
   letter-spacing: -0.84px;
 }
-.HeadingFour {
+.heading-four {
   font-size: 1.25rem;
   line-height: 1.625rem;
   letter-spacing: -0.5px;
 }
-.HeadingFive {
-  font: Bold 16px/24px Arial;
+.heading-five {
+  font-size: 1rem;
+  line-height: 1.5rem;
   letter-spacing: -0.24px;
 }
 
@@ -46,30 +61,15 @@
   background-color: #191919;
   color: #ffffff;
 }
-
-.highlightHeadingOne {
+.highlight-heading-one {
   line-height: 2.75rem;
 }
-
-.highlightHeadingTwo {
-  line-height: 2.375rem;
-}
-
 @media (min-width: 577px) {
-  .HeadingOne {
-    font-size: 64px;
-    line-height: 68px;
-    letter-spacing: -2.24px;
-  }
-
-  .highlightHeadingOne {
+  .highlight-heading-one {
     padding: 4px 12px;
     line-height: 72px;
   }
-
-  .HeadingTwo {
-    font-size: 40px;
-    line-height: 44px;
-    letter-spacing: -1.4px;
-  }
+}
+.highlight-heading-two {
+  line-height: 2.375rem;
 }
