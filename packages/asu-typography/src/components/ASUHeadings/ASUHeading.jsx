@@ -7,19 +7,19 @@ const header = (type, color, children) =>
 {
     let heading = null;
     let highlight = null;
-    let headerStyles = [classes.ASUHeading];
+    let headerStyles = [classes.Heading];
     let highlightStyles = [classes.highlight];
 
     if (color == 'gold') {
-        highlightStyles.push(classes.highlightGold);
+        highlightStyles.push(classes["highlight-gold"]);
         highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
     }
     else if (color == 'black') {
-        highlightStyles.push(classes.highlightBlack);
+        highlightStyles.push(classes["highlight-black"]);
         highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
     }
     else
-        headerStyles.push(classes.highlightWhite);
+        headerStyles.push(classes["highlight-white"]);
 
     switch (type)
     {

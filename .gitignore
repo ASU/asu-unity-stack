@@ -104,4 +104,7 @@ dist
 build
 stats.html
 
+# Prepros configuration files (for preprocessing)
+packages/asu-typography/prepros.config
+
 # End of https://www.gitignore.io/api/node

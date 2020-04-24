@@ -1,98 +1,75 @@
-.ASUHeading
-{
-    font-family: Arial;
-    font-weight: bold;
-    text-align: left;
-    opacity: 1;
+.Heading {
+  font-family: Arial;
+  font-weight: bold;
+  text-align: left;
+  opacity: 1;
+}
+.HeadingOne {
+  font-size: 3rem;
+  line-height: 2.5rem;
+  letter-spacing: -1.26px;
+}
+.HeadingTwo {
+  font-size: 1.875rem;
+  line-height: 2.125rem;
+  letter-spacing: -1.05px;
+}
+.HeadingThree {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.84px;
+}
+.HeadingFour {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  letter-spacing: -0.5px;
+}
+.HeadingFive {
+  font: Bold 16px/24px Arial;
+  letter-spacing: -0.24px;
 }
 
-.highlight
-{
-    background-repeat: no-repeat;
-    background-origin: padding-box;
-    padding: 0.25rem 0.5rem;
+.highlight {
+  background-repeat: no-repeat;
+  background-origin: padding-box;
+  padding: 0.25rem 0.5rem;
+}
+.highlight-white {
+  background-color: #ffffff;
+  color: #191919;
+}
+.highlight-gold {
+  background-color: #ffc627;
+  color: #191919;
+}
+.highlight-black {
+  background-color: #191919;
+  color: #ffffff;
 }
 
-.highlightWhite
-{
-    background-color: #ffffff;
-    color: #191919;
+.highlightHeadingOne {
+  line-height: 2.75rem;
 }
 
-.highlightGold
-{
-    background-color: #ffc627;
-    color: #191919;
-}
-
-.highlightBlack
-{
-    background-color: #191919;
-    color: #fff;
-}
-
-.HeadingOne
-{
-    font-size: 3rem;
-    line-height: 2.5rem;
-    letter-spacing: -1.26px;
-}
-
-.highlightHeadingOne
-{
-    line-height: 2.75rem;
-}
-
-.HeadingTwo
-{
-    font-size: 1.875rem;
-    line-height: 2.125rem;
-    letter-spacing: -1.05px;
-}
-
-.highlightHeadingTwo
-{
-    line-height: 2.375rem;
-}
-
-.HeadingThree
-{
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-    letter-spacing: -0.84px;
-}
-
-.HeadingFour
-{
-    font-size: 1.25rem;
-    line-height: 1.625rem;
-    letter-spacing: -0.5px;
-}
-
-.HeadingFive
-{
-    font: Bold 16px/24px Arial;
-    letter-spacing: -0.24px;
+.highlightHeadingTwo {
+  line-height: 2.375rem;
 }
 
 @media (min-width: 577px) {
-    .HeadingOne
-    {
-        font-size: 64px;
-        line-height: 68px;
-        letter-spacing: -2.24px;
-    }
+  .HeadingOne {
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: -2.24px;
+  }
 
-    .highlightHeadingOne
-    {
-        padding: 4px 12px;
-        line-height: 72px;
-    }
+  .highlightHeadingOne {
+    padding: 4px 12px;
+    line-height: 72px;
+  }
 
-    .HeadingTwo
-    {
-        font-size: 40px;
-        line-height: 44px;
-        letter-spacing: -1.4px;
-    }
+  .HeadingTwo {
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.4px;
+  }
 }
