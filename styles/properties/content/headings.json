@@ -1,130 +1,142 @@
 {
-    "heading":
-    {
-      "font":
-      {
-        "family":
-        {
-            "value": "{font.family.value}"
+    "heading": {
+        "font": {
+            "family": {
+                "value": "{font.family.value}"
+            },
+            "weight": {
+                "value": "{font.weight.bold.value}"
+            }
         },
-        "weight":
-        {
-            "value": "{font.weight.bold.value}"
-        },
-        "text-align":
-        {
+        "text-align": {
             "value": "left"
         },
-        "opacity":
-        {
+        "opacity": {
             "value": "1"
-        }
-      },
-      "highlight":
-      {
-          "padding": {"value": "0.25rem 0.5rem"},
-          "white":
-          {
-              "bg-color": {"value": "{color.white.value}"},
-              "text-color": {"value": "{color.dark.value}"}
-          },
-          "gold":
-          {
-              "bg-color": {"value": "{color.primary.gold.value}"},
-              "text-color": {"value": "{color.dark.value}"}
-          },
-          "black":
-          {
-              "bg-color": {"value": "{color.dark.value}"},
-              "text-color": {"value": "{color.white.value}"}
-          }
-      },
-      "one":
-      {
-        "font-size":
-        {
-            "value": "4rem"
         },
-        "line-height":
-        {
-            "value": "4.25rem"
-        },
-        "mobile":
-        {
-            "font-size":
-            {
-                "value": "3rem"
+        "highlight": {
+            "padding": {
+                "value": "0.25rem 0.5rem"
             },
-            "line-height":
-            {
-                "value": "2.5rem"
+            "white": {
+                "bg-color": {
+                    "value": "{color.white.value}"
+                },
+                "text-color": {
+                    "value": "{color.dark.value}"
+                }
+            },
+            "gold": {
+                "bg-color": {
+                    "value": "{color.primary.gold.value}"
+                },
+                "text-color": {
+                    "value": "{color.dark.value}"
+                }
+            },
+            "black": {
+                "bg-color": {
+                    "value": "{color.dark.value}"
+                },
+                "text-color": {
+                    "value": "{color.white.value}"
+                }
+            }
+        },
+        "one": {
+            "font-size": {
+                "value": "4rem"
+            },
+            "line-height": {
+                "value": "4.25rem"
+            },
+            "letter-spacing": {
+                "value": "-2.24px"
+            },
+            "mobile": {
+                "font-size": {
+                    "value": "3rem"
+                },
+                "line-height": {
+                    "value": "2.5rem"
+                },
+                "letter-spacing": {
+                    "value": "-1.26px "
+                },
+                "highlight": {
+                    "line-height": {
+                        "value": "2.75rem"
+                    }
+                }
             },
             "highlight": {
-                "line-height": {"value": "2.75rem"}
+                "padding": {
+                    "value": "0.25rem 0.75rem"
+                },
+                "line-height": {
+                    "value": "4.5rem"
+                }
             }
         },
-        "highlight": {
-            "padding": {"value": "0.25rem 0.75rem"},
-            "line-height": {"value": "4.5rem"}
-        }
-      },
-      "two":
-      {
-        "font-size":
-        {
-            "value": "2.5rem"
-        },
-        "line-height":
-        {
-            "value": "2.75rem"
-        },
-        "mobile":
-        {
-            "font-size":
-            {
-                "value": "1.875rem"
+        "two": {
+            "font-size": {
+                "value": "2.5rem"
             },
-            "line-height":
-            {
-                "value": "2.125rem"
+            "line-height": {
+                "value": "2.75rem"
+            },
+            "letter-spacing": {
+                "value": "-1.4px"
+            },
+            "mobile": {
+                "font-size": {
+                    "value": "1.875rem"
+                },
+                "line-height": {
+                    "value": "2.125rem"
+                },
+                "letter-spacing": {
+                    "value": "-1.05px"
+                }
+            },
+            "highlight": {
+                "line-height": {
+                    "value": "2.375rem"
+                }
             }
         },
-        "highlight": {
-            "line-height": {"value": "2.375rem"}
-        }
-      },
-      "three":
-      {
-        "font-size":
-        {
-            "value": "1.5rem"
+        "three": {
+            "font-size": {
+                "value": "1.5rem"
+            },
+            "line-height": {
+                "value": "1.75rem"
+            },
+            "letter-spacing": {
+                "value": "-0.84px"
+            }
         },
-        "line-height":
-        {
-            "value": "1.75rem"
-        }
-      },
-      "four":
-      {
-        "font-size":
-        {
-            "value": "1.25rem"
+        "four": {
+            "font-size": {
+                "value": "1.25rem"
+            },
+            "line-height": {
+                "value": "1.625rem"
+            },
+            "letter-spacing": {
+                "value": "-0.5px"
+            }
         },
-        "line-height":
-        {
-            "value": "1.625rem"
+        "five": {
+            "font-size": {
+                "value": "1rem"
+            },
+            "line-height": {
+                "value": "1.5rem"
+            },
+            "letter-spacing": {
+                "value": "-0.24px"
+            }
         }
-      },
-      "five":
-      {
-        "font-size":
-        {
-            "value": "1rem"
-        },
-        "line-height":
-        {
-            "value": "1.5rem"
-        }
-      }
     }
-  }
+}

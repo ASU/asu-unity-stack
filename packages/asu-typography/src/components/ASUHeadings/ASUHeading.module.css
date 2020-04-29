@@ -1,31 +1,31 @@
 .heading {
-  font-family: Arial;
-  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
   text-align: left;
   opacity: 1;
 }
 .heading-one {
-  font-size: 3rem;
-  line-height: 2.5rem;
-  letter-spacing: -1.26px;
+  font-size: 4rem;
+  line-height: 4.25rem;
+  letter-spacing: -2.24px;
 }
 @media (min-width: 577px) {
   .heading-one {
-    font-size: 64px;
-    line-height: 68px;
-    letter-spacing: -2.24px;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    letter-spacing: -1.26px;
   }
 }
 .heading-two {
-  font-size: 1.875rem;
-  line-height: 2.125rem;
-  letter-spacing: -1.05px;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
+  letter-spacing: -1.4px;
 }
 @media (min-width: 577px) {
   .heading-two {
-    font-size: 40px;
-    line-height: 44px;
-    letter-spacing: -1.4px;
+    font-size: 1.875rem;
+    line-height: 2.125rem;
+    letter-spacing: -1.05px;
   }
 }
 .heading-three {
@@ -45,8 +45,6 @@
 }
 
 .highlight {
-  background-repeat: no-repeat;
-  background-origin: padding-box;
   padding: 0.25rem 0.5rem;
 }
 .highlight-white {
@@ -62,12 +60,12 @@
   color: #ffffff;
 }
 .highlight-heading-one {
-  line-height: 2.75rem;
+  line-height: 4.5rem;
 }
 @media (min-width: 577px) {
   .highlight-heading-one {
-    padding: 4px 12px;
-    line-height: 72px;
+    padding: 0.25rem 0.75rem;
+    line-height: 2.75rem;
   }
 }
 .highlight-heading-two {

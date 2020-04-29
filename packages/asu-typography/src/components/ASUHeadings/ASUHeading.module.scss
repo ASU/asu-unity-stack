@@ -2,98 +2,96 @@
 
 .heading
 {
-    font-family: Arial;
-    font-weight: bold;
-    text-align: left;
-    opacity: 1;
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    text-align: $heading-text-align;
+    opacity: $heading-opacity;
 
     &-one
     {
-        font-size: 3rem;
-        line-height: 2.5rem;
-        letter-spacing: -1.26px;
+        font-size: $heading-one-font-size;
+        line-height: $heading-one-line-height;
+        letter-spacing: $heading-one-letter-spacing;
 
         @media (min-width: 577px)
         {
-            font-size: 64px;
-            line-height: 68px;
-            letter-spacing: -2.24px;
+            font-size: $heading-one-mobile-font-size;
+            line-height: $heading-one-mobile-line-height;
+            letter-spacing: $heading-one-mobile-letter-spacing;
         }
     }
 
     &-two
     {
-        font-size: 1.875rem;
-        line-height: 2.125rem;
-        letter-spacing: -1.05px;
+        font-size: $heading-two-font-size;
+        line-height: $heading-two-line-height;
+        letter-spacing: $heading-two-letter-spacing;
 
         @media (min-width: 577px)
         {
-            font-size: 40px;
-            line-height: 44px;
-            letter-spacing: -1.4px;
+            font-size: $heading-two-mobile-font-size;
+            line-height: $heading-two-mobile-line-height;
+            letter-spacing: $heading-two-mobile-letter-spacing;
         }
     }
 
     &-three
     {
-        font-size: 1.5rem;
-        line-height: 1.75rem;
-        letter-spacing: -0.84px;
+        font-size: $heading-three-font-size;
+        line-height: $heading-three-line-height;
+        letter-spacing: $heading-three-letter-spacing;
     }
 
     &-four
     {
-        font-size: 1.25rem;
-        line-height: 1.625rem;
-        letter-spacing: -0.5px;
+        font-size: $heading-four-font-size;
+        line-height: $heading-four-line-height;
+        letter-spacing: $heading-four-letter-spacing;
     }
 
     &-five
     {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        letter-spacing: -0.24px;
+        font-size: $heading-five-font-size;
+        line-height: $heading-five-line-height;
+        letter-spacing: $heading-five-letter-spacing;
     }
 }
 
 .highlight
 {
-    background-repeat: no-repeat;
-    background-origin: padding-box;
-    padding: 0.25rem 0.5rem;
+    padding: $heading-highlight-padding;
 
     &-white
     {
-        background-color: $color-brand-white;
-        color: $color-brand-gray-0;
+        background-color: $heading-highlight-white-bg-color;
+        color: $heading-highlight-white-text-color;
     }
 
     &-gold
     {
-        background-color: $color-brand-gold;
-        color: $color-brand-gray-0;
+        background-color: $heading-highlight-gold-bg-color;
+        color: $heading-highlight-gold-text-color;
     }
 
     &-black
     {
-        background-color: $color-brand-gray-0;
-        color: $color-brand-white;
+        background-color: $heading-highlight-black-bg-color;
+        color: $heading-highlight-black-text-color;
     }
 
     &-heading-one
     {
-        line-height: 2.75rem;
+        line-height: $heading-one-highlight-line-height;
         @media (min-width: 577px)
         {
 
-            padding: 4px 12px;
-            line-height: 72px;
+            padding: $heading-one-highlight-padding;
+            line-height: $heading-one-mobile-highlight-line-height;
         }
     }
 
     &-heading-two
     {
-        line-height: 2.375rem;
+        line-height: $heading-two-highlight-line-height;
     }
 }

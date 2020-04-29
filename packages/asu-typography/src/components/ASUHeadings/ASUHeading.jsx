@@ -3,87 +3,109 @@ import PropTypes from "prop-types";
 
 import classes from "./ASUHeading.module.css";
 
-const header = (type, color, children) =>
-{
-    let heading = null;
-    let highlight = null;
-    let headerStyles = [classes["heading"]];
-    let highlightStyles = [classes.highlight];
+/**
+ * @param {integer} type - The type of HTML heading to render via JSX (ranges from <h1> to <h6>)
+ * @param {string} color - The color of the heading highlight, which can be white, black or gold (white is default)
+ * @param {node} children - Child elements to rendered within the heading tags (could be text or additional elements)
+ */
+const headingCreate = (type, color, children) => {
+    let heading = null; // Holds heading JSX to be returned
+    let highlight = null; // Configurable highlight property
+    let headerStyles = [classes["heading"]]; // Adds general ASU heading styles (e.g. font size, font weight, etc.)
+    let highlightStyles = [classes.highlight]; // Adds general ASU highlight styles (e.g. line height)
 
+    // Checks the color of the highlight property and applies it accordingly
     if (color == 'gold') {
         highlightStyles.push(classes["highlight-gold"]);
-        highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+        // Creates span with child elements and adds new highlight styles
     }
     else if (color == 'black') {
         highlightStyles.push(classes["highlight-black"]);
-        highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
     }
     else
-        headerStyles.push(classes["highlight-white"]);
+        headerStyles.push(classes["highlight-white"]); // Adds white highlight to heading itself since that is the default
 
-    switch (type)
-    {
+    switch (type) {
         case '1':
-            headerStyles.push(classes["heading-one"]);
-            highlightStyles.push(classes["highlight-heading-one"]);
-            highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
-            heading = highlight === null
-                    ? <h1 className={headerStyles.join(' ')}>{children}</h1>
-                    : <h1 className={headerStyles.join(' ')}>{highlight}</h1>
+            headerStyles.push(classes["heading-one"]); // Adds style for component heading
+            // If there is a highlight, return the span with the with highlight span. Otherwise, return the heading with
+            // child elements
+            if (color !== 'white') {
+                highlightStyles.push(classes["highlight-heading-one"]); // Adds style for component highlight
+                highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+                heading = <h1 className={headerStyles.join(' ')}>{highlight}</h1>;
+            }
+            else {
+                heading = <h1 className={headerStyles.join(' ')}>{children}</h1>;
+            }
             break;
         case '2':
             headerStyles.push(classes["heading-two"]);
-            highlightStyles.push(classes["highlight-heading-two"]);
-            highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
-            heading = highlight === null
-                    ? <h2 className={headerStyles.join(' ')}>{children}</h2>
-                    : <h2 className={headerStyles.join(' ')}>{highlight}</h2>
+            if (color !== 'white') {
+                highlightStyles.push(classes["highlight-heading-two"]);
+                highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+                heading = <h2 className={headerStyles.join(' ')}>{highlight}</h2>;
+            }
+            else {
+                heading = <h2 className={headerStyles.join(' ')}>{children}</h2>;
+            }
             break;
+        // No special highlight sizings for h3 - h6
         case '3':
             headerStyles.push(classes["heading-three"]);
-            highlightStyles.push(classes["heading-three-highlight"]);
-            heading = highlight === null
-                    ? <h3 className={headerStyles.join(' ')}>{children}</h3>
-                    : <h3 className={headerStyles.join(' ')}>{highlight}</h3>
+            if (color !== 'white') {
+                highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+                heading = <h3 className={headerStyles.join(' ')}>{highlight}</h3>;
+            }
+            else {
+                heading = <h3 className={headerStyles.join(' ')}>{children}</h3>;
+            }
             break;
         case '4':
             headerStyles.push(classes["heading-four"]);
-            highlightStyles.push(classes["heading-four-highlight"]);
-            heading = highlight === null
-                    ? <h4 className={headerStyles.join(' ')}>{children}</h4>
-                    : <h4 className={headerStyles.join(' ')}>{highlight}</h4>
+            if (color !== 'white') {
+                highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+                heading = <h4 className={headerStyles.join(' ')}>{highlight}</h4>;
+            }
+            else {
+                heading = <h4 className={headerStyles.join(' ')}>{children}</h4>;
+            }
             break;
         default:
             headerStyles.push(classes["heading-five"]);
-            highlightStyles.push(classes["heading-five-highlight"]);
-            heading = highlight === null
-                    ? <h5 className={headerStyles.join(' ')}>{children}</h5>
-                    : <h5 className={headerStyles.join(' ')}>{highlight}</h5>
+            if (color !== 'white') {
+                highlight = <span className={highlightStyles.join(' ')}>{children}</span>;
+                heading = <h5 className={headerStyles.join(' ')}>{highlight}</h5>;
+            }
+            else {
+                heading = <h5 className={headerStyles.join(' ')}>{children}</h5>;
+            }
             break;
     }
 
     return heading;
 };
 
-const header1 = (props) => (header('1', props.highlight, props.children));
-const header2 = (props) => (header('2', props.highlight, props.children));
-const header3 = (props) => (header('3', props.highlight, props.children));
-const header4 = (props) => (header('4', props.highlight, props.children));
-const header5 = (props) => (header('5', props.highlight, props.children));
+// Creates multiple headings for export
+const heading1 = (props) => (headingCreate('1', props.highlight, props.children));
+const heading2 = (props) => (headingCreate('2', props.highlight, props.children));
+const heading3 = (props) => (headingCreate('3', props.highlight, props.children));
+const heading4 = (props) => (headingCreate('4', props.highlight, props.children));
+const heading5 = (props) => (headingCreate('5', props.highlight, props.children));
 
-header1.propTypes = header2.propTypes = header3.propTypes = header4.propTypes = header5.propTypes = {
+heading1.propTypes = heading2.propTypes = heading3.propTypes = heading4.propTypes = heading5.propTypes = {
     highlight: PropTypes.string,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired, // Children can be any text or JSX elements
 }
 
-header1.defaultProps = header2.defaultProps = header3.defaultProps = header4.defaultProps = header5.defaultProps = {
-    highlight: 'white'
+heading1.defaultProps = heading2.defaultProps = heading3.defaultProps = heading4.defaultProps = heading5.defaultProps = {
+    highlight: 'white' // If no highlight is specified, default is white with black text
 }
 
 export {
-    header1 as ASUHeadingOne,
-    header2 as ASUHeadingTwo,
-    header3 as ASUHeadingThree,
-    header4 as ASUHeadingFour,
-    header5 as ASUHeadingFive,
+    heading1 as ASUHeadingOne,
+    heading2 as ASUHeadingTwo,
+    heading3 as ASUHeadingThree,
+    heading4 as ASUHeadingFour,
+    heading5 as ASUHeadingFive,
 };
