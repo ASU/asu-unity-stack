@@ -4,10 +4,39 @@
     "scss": {
       "transformGroup": "scss",
       "buildPath": "build/scss/",
-      "files": [{
+      "files": [
+      {
         "destination": "_variables.scss",
         "format": "scss/variables"
-      }]
+      },
+      {
+        "destination": "_colors.scss",
+        "format": "scss/map-deep",
+        "filter": {
+          "attributes": {
+            "category": "color"
+          }
+        }
+      },
+      {
+        "destination": "_fonts.scss",
+        "format": "scss/map-deep",
+        "filter": {
+          "attributes": {
+            "category": "font"
+          }
+        }
+      },
+      {
+        "destination": "_headings.scss",
+        "format": "scss/map-deep",
+        "filter": {
+          "attributes": {
+            "category": "heading"
+          }
+        }
+      }
+    ]
     },
     "android": {
       "transformGroup": "android",
