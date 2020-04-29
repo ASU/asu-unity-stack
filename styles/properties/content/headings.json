@@ -1,0 +1,130 @@
+{
+    "heading":
+    {
+      "font":
+      {
+        "family":
+        {
+            "value": "{font.family.value}"
+        },
+        "weight":
+        {
+            "value": "{font.weight.bold.value}"
+        },
+        "text-align":
+        {
+            "value": "left"
+        },
+        "opacity":
+        {
+            "value": "1"
+        }
+      },
+      "highlight":
+      {
+          "padding": {"value": "0.25rem 0.5rem"},
+          "white":
+          {
+              "bg-color": {"value": "{color.white.value}"},
+              "text-color": {"value": "{color.dark.value}"}
+          },
+          "gold":
+          {
+              "bg-color": {"value": "{color.primary.gold.value}"},
+              "text-color": {"value": "{color.dark.value}"}
+          },
+          "black":
+          {
+              "bg-color": {"value": "{color.dark.value}"},
+              "text-color": {"value": "{color.white.value}"}
+          }
+      },
+      "one":
+      {
+        "font-size":
+        {
+            "value": "4rem"
+        },
+        "line-height":
+        {
+            "value": "4.25rem"
+        },
+        "mobile":
+        {
+            "font-size":
+            {
+                "value": "3rem"
+            },
+            "line-height":
+            {
+                "value": "2.5rem"
+            },
+            "highlight": {
+                "line-height": {"value": "2.75rem"}
+            }
+        },
+        "highlight": {
+            "padding": {"value": "0.25rem 0.75rem"},
+            "line-height": {"value": "4.5rem"}
+        }
+      },
+      "two":
+      {
+        "font-size":
+        {
+            "value": "2.5rem"
+        },
+        "line-height":
+        {
+            "value": "2.75rem"
+        },
+        "mobile":
+        {
+            "font-size":
+            {
+                "value": "1.875rem"
+            },
+            "line-height":
+            {
+                "value": "2.125rem"
+            }
+        },
+        "highlight": {
+            "line-height": {"value": "2.375rem"}
+        }
+      },
+      "three":
+      {
+        "font-size":
+        {
+            "value": "1.5rem"
+        },
+        "line-height":
+        {
+            "value": "1.75rem"
+        }
+      },
+      "four":
+      {
+        "font-size":
+        {
+            "value": "1.25rem"
+        },
+        "line-height":
+        {
+            "value": "1.625rem"
+        }
+      },
+      "five":
+      {
+        "font-size":
+        {
+            "value": "1rem"
+        },
+        "line-height":
+        {
+            "value": "1.5rem"
+        }
+      }
+    }
+  }
