@@ -63,7 +63,7 @@ module.exports = {
     "attribute/cti": CTITransform,
   },
   platforms: {
-    css: {
+    "css": {
       transformGroup: "css",
       buildPath: buildPath,
       files: [
@@ -74,9 +74,9 @@ module.exports = {
       ],
     },
 
-    scss: {
+    "scss": {
       transformGroup: "scss",
-      buildPath: "build/scss/",
+      buildPath: buildPath + "scss/",
       files: [
         {
           destination: "_variables.scss",
