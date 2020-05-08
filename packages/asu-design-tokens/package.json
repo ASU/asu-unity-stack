@@ -1,0 +1,20 @@
+{
+  "name": "asu-design-tokens",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/index.js",
+  "files": [
+    "build",
+    "properties"
+  ],
+  "scripts": {
+    "build": "yarn run clean && yarn run style-dictionary build",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "style-dictionary": "^2.9.0",
+    "prettier": "^1.18.2"
+  }
+}

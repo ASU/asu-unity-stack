@@ -1,0 +1,16 @@
+{
+  "size": {
+    "spacing": {
+      "2"    : { "value": "0.0125" },
+      "4"    : { "value": "0.25" },
+      "8"    : { "value": "0.5" },
+      "16"   : { "value": "1" },
+      "24"   : { "value": "1.5" },
+      "32"   : { "value": "2" },
+      "48"   : { "value": "2.5" },
+      "64"   : { "value": "3" },
+      "128"  : { "value": "6" },
+      "base" : { "value": "{size.padding.medium.value}" }
+    }
+  }
+}
