@@ -1,0 +1,10 @@
+{
+  "headings": {
+    "font": {
+      "family": {
+        "value": "{font.family.base.value}",
+        "comment": "Bootstrap"
+      }
+    }
+  }
+}

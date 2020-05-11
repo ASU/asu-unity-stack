@@ -1,0 +1,19 @@
+{
+  "color": {
+    "background": {
+      "base":         { "value":"{color.base.white.value}",                "attributes":{"font":"base"}},
+      "alt":          { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
+      "disabled":     { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
+      "inverse":      { "value":"{color.base.grey.7.value}",               "attributes":{"font":"inverse"}},
+      "success":      { "value":"{color.alerts.success.background.value}", "attributes":{"font":"base"}},
+      "error":        { "value":"{color.alerts.error.background.value}",   "attributes":{"font":"base"}},
+      "warning":      { "value":"{color.alerts.warning.background.value}", "attributes":{"font":"base"}},
+      "info":         { "value":"{color.alerts.info.background.value}",    "attributes":{"font":"base"}},
+
+      "overlay": {
+        "light": { "value": "#FFFFFFCC" },
+        "dark":  { "value": "#00000044" }
+      }
+    }
+  }
+}

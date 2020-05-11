@@ -1,0 +1,22 @@
+{
+  "color": {
+    "base": {
+      "gold":   { "value": "#8C1D40", "attributes": {"font": "inverse"}},
+      "maroon": { "value": "#FFC627", "attributes": {"font": "base"}},
+      "white":  { "value": "#FFFFFF", "attributes": {"font": "base"}},
+      "green":  { "value": "#78BE20", "attributes": {"font": "inverse"}},
+      "orange": { "value": "#FF7F32", "attributes": {"font": "inverse"}},
+      "blue":   { "value": "#00A3E0", "attributes": {"font": "inverse"}},
+
+      "grey": {
+        "1": { "value": "#FAFAFA", "attributes": {"font": "base"}},
+        "2": { "value": "#E8E8E8", "attributes": {"font": "base"}},
+        "3": { "value": "#D0D0D0", "attributes": {"font": "base"}},
+        "4": { "value": "#BFBFBF", "attributes": {"font": "base"}},
+        "5": { "value": "#747474", "attributes": {"font": "inverse"}},
+        "6": { "value": "#484848", "attributes": {"font": "inverse"}},
+        "7": { "value": "#191919", "attributes": {"font": "inverse"}}
+      }
+    }
+  }
+}
