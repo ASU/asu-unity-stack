@@ -13,9 +13,6 @@ const postCSSLoader = {
 // Dev client bundle config
 module.exports = merge(common, {
     mode: 'development',
-    entry: {
-      'asu-rs-carousel': './index.js'
-    },
     output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: "[name].development.js",

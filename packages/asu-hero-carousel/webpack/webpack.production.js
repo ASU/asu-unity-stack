@@ -18,9 +18,6 @@ module.exports = [devWebpack];
 module.exports.push(
   merge(common, {
     mode: "production",
-    entry: {
-      "asu-rs-carousel": "./index.js"
-    },
     output: {
       path: path.resolve(__dirname, "..", "dist"),
       filename: "[name].production.js",

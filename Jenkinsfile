@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'buildkite/puppeteer:v1.15.0'
+                    image 'buildkite/puppeteer:v3.0.1'
                     args '-p 3000:3000'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'buildkite/puppeteer:v1.15.0'
+                    image 'buildkite/puppeteer:v3.0.1'
                     args '-p 3000:3000'
                 }
             }
@@ -37,7 +37,10 @@ pipeline {
                 sh 'yarn start & yarn test:e2e'
             }
         }
-        stage('Deploy') {
+        stage('Deploy QA Environment') {
+            when {
+                branch 'dev'
+            }
             steps {
                 echo 'Logging in to Amazon ECR...'
                 sh 'aws --version'
@@ -50,6 +53,23 @@ pipeline {
                 sh 'docker push $REPOSITORY_URI:v_$BUILD_NUMBER'
                 echo 'Deploying container to ECS..'
                 sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment'
+            }
+        }
+        stage('Publish Packages to Registry') {
+            agent {
+                docker {
+                    image 'buildkite/puppeteer:v3.0.1'
+                    args '-p 3000:3000'
+                }
+            }
+            when {
+                branch 'master'
+            }
+            steps {
+                withNPM(npmrcConfig:'jenkins-npmrc') {
+                    echo 'Publishing packages to private NPM registry...'
+                    sh 'yarn publish-packages'
+                }
             }
         }
     }

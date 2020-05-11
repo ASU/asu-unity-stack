@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
 <!-- include bundled scripts from React packages (CSS is in the <head>) -->
 <script src="/asu-brand/dist/asu-brand.production.js"></script>
 <script src="/asu-maps/dist/asu-maps.production.js"></script>
-<script src="/asu-rs-carousel/dist/asu-rs-carousel.production.js"></script>
+<script src="/asu-hero-carousel/dist/asu-hero-carousel.production.js"></script>
 
 <script>
 

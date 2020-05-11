@@ -2,7 +2,10 @@ const { toMatchImageSnapshot } = require("jest-image-snapshot");
 
 expect.extend({ toMatchImageSnapshot });
 
+
+
 describe("Main", () => {
+
   beforeAll(async () => {
     await page.goto("http://localhost:3000/kitchen-sink", {
       waitUntil: "networkidle0"

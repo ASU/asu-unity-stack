@@ -12,7 +12,7 @@
     "prebuild": "yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
-    "publish": "lerna publish from-package",
+    "publish-packages": "lerna publish from-package --registry http://ec2-52-34-106-215.us-west-2.compute.amazonaws.com --yes",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
     "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run"
@@ -26,7 +26,8 @@
     "setupFilesAfterEnv": [
       "@wordpress/jest-puppeteer-axe",
       "expect-puppeteer"
-    ]
+    ],
+    "testTimeout": 30000
   },
   "devDependencies": {
     "@storybook/storybook-deployer": "^2.8.5",

@@ -1,6 +1,6 @@
 {
   "name": "asu-web-standards-bootstrap4",
-  "version": "1.0.0-alpha1",
+  "version": "0.0.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-sass-lint": "^1.4.0",
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
@@ -48,7 +48,7 @@
     "jest-image-snapshot": "^2.8.2",
     "jest-puppeteer": "^4.2.0",
     "jquery": "^3.4.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "popper.js": "^1.15.0",
     "prettier": "^1.17.0",
     "puppeteer": "^1.17.0",

@@ -1,11 +1,16 @@
 {
   "name": "asu-brand",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "main": "src/index.js",
   "license": "UNLICENSED",
   "private": false,
   "publishConfig": {
     "access": "restricted"
+  },
+  "repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/asu/asu-unity-stack.git",
+    "directory": "packages/asu-brand"
   },
   "peerDependencies": {
     "react": "^16.9.0",

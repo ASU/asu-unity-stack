@@ -12,4 +12,4 @@ media="all">
 
 <link href="/asu-maps/dist/asu-maps.production.css" rel="stylesheet" type="text/css" media="all">
 
-<link href="/asu-rs-carousel/dist/asu-rs-carousel.production.css" rel="stylesheet" type="text/css" media="all">
+<link href="/asu-hero-carousel/dist/asu-hero-carousel.production.css" rel="stylesheet" type="text/css" media="all">
