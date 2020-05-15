@@ -1,0 +1,12 @@
+{
+  "font": {
+    "family": {
+      "base": {
+        "value": "{asset.font.roboto.name.value}"
+      },
+      "icons": {
+        "value": "{asset.font.icon.name.value}"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "color": {
+    "font": {
+      "base":         { "value": "{color.base.grey.7.value}" },
+      "secondary":    { "value": "{color.base.grey.5.value}"  },
+      "tertiary":     { "value": "{color.base.grey.4.value}"  },
+      "link":         { "value": "{color.brand.primary.base.value}" },
+      "active":       { "value": "{color.brand.secondary.base.value}" },
+      "error":        { "value": "{color.alerts.error.font.value}" },
+      "warning":      { "value": "{color.alerts.warning.font.value}" },
+      "success":      { "value": "{color.alerts.success.font.value}" },
+      "info":         { "value": "{color.alerts.info.font.value}" },
+      "disabled":     { "value": "{color.font.secondary.value}" },
+
+      "inverse": {
+        "base":         { "value": "{color.base.grey.1.value}" },
+        "secondary":    { "value": "{color.base.grey.3.value}" },
+        "tertiary":     { "value": "{color.base.grey.5.value}" },
+        "link":         { "value": "{color.base.gold.value}" },
+        "active":       { "value": "" },
+        "error":        { "value": "" },
+        "warning":      { "value": "" },
+        "success":      { "value": "" },
+        "info":         { "value": "" },
+        "disabled":     { "value": "" }
+      },
+
+      "button": {
+        "primary":   { "value":"{color.font.inverse.base.value}" },
+        "secondary": { "value":"{color.font.link.value}" }
+      }
+    }
+  }
+}

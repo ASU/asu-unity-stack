@@ -1,0 +1,8 @@
+@custom-media --mobile (max-width: 992px);
+@custom-media --not-mobile (min-width: 992px);
+
+:root {
+    --asu-fonts: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+

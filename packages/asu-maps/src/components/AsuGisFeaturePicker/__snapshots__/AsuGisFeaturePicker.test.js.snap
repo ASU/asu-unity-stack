@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The AsuGisFeaturePicker renders the component 1`] = `
+<div
+  style="display: flex; flex-direction: row;"
+>
+  <div>
+    <div
+      class="react-checkbox-tree rct-icons-fa4 rct-native-display"
+      id="asu-gis-fp"
+    >
+      <ol>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Transit"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Transit
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Sustainability"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Sustainability
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Services"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Services
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Points of Pride"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Points of Pride
+              </span>
+            </span>
+          </span>
+        </li>
+        <li
+          class="rct-node rct-node-parent rct-node-collapsed"
+        >
+          <span
+            class="rct-text"
+          >
+            <button
+              aria-label="Toggle"
+              class="rct-collapse rct-collapse-btn"
+              title="Toggle"
+              type="button"
+            >
+              <span
+                class="rct-icon rct-icon-expand-close"
+              />
+            </button>
+            <span
+              class="rct-bare-label"
+              title="Buildings"
+            >
+              <span
+                class="rct-node-icon"
+              >
+                <span
+                  class="rct-icon rct-icon-parent-close"
+                />
+              </span>
+              <span
+                class="rct-title"
+              >
+                Buildings
+              </span>
+            </span>
+          </span>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div>
+    <h2
+      style="padding-left: 1em;"
+    >
+      ← Select a layer to display options.
+    </h2>
+  </div>
+</div>
+`;

@@ -1,40 +1,44 @@
 {
-  "name": "asu_unity_stack",
-  "version": "1.0.0",
-  "description": "Reusable component-based Web Standards style kit for front end development.",
-  "main": "index.js",
+  "name": "root",
+  "private": true,
+  "license": "UNLICENSED",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "start"        : "npm-run-all --parallel watch:server watch:build",
-    "watch:build"  : "webpack --watch",
-    "watch:server" : "nodemon --verbose server.js --exec babel-node"
+    "clean": "lerna run clean --stream --parallel",
+    "lint": "lerna run lint --stream --parallel",
+    "build": "lerna run build",
+    "prebuild": "yarn lint",
+    "test": "lerna run test --stream --parallel",
+    "test:e2e": "jest",
+    "publish-packages": "lerna publish from-package --registry http://ec2-52-34-106-215.us-west-2.compute.amazonaws.com --yes",
+    "start": "node server/server.js",
+    "stop": "node server/server.stop.js",
+    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ctestama/asu_unity_stack.git"
+  "jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true,
+    "roots": [
+      "tests"
+    ],
+    "setupFilesAfterEnv": [
+      "@wordpress/jest-puppeteer-axe",
+      "expect-puppeteer"
+    ],
+    "testTimeout": 30000
   },
-  "author": "Colton Testamarck",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ctestama/asu_unity_stack/issues"
-  },
-  "homepage": "https://github.com/ctestama/asu_unity_stack#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "html-loader": "^0.5.5",
-    "nodemon": "^1.17.3",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "style-loader": "^0.20.3",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.13"
-  },
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "express": "^4.16.3"
+    "@storybook/storybook-deployer": "^2.8.5",
+    "@wordpress/jest-puppeteer-axe": "^1.6.0",
+    "express": "^4.17.1",
+    "jest": "^25.1.0",
+    "jest-image-snapshot": "^2.12.0",
+    "jest-puppeteer": "^4.4.0",
+    "lerna": "^3.16.4",
+    "nunjucks": "^3.2.0",
+    "puppeteer": "^2.1.0",
+    "socket.io": "^2.3.0"
   }
 }

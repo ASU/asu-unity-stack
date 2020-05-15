@@ -1,0 +1,119 @@
+@import './colors.css';
+@import './variables.css';
+
+
+
+/* START MYASU */
+#myasu_bar {
+    position:relative;
+    font-size:12px;
+	font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    z-index:1;
+    background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAUAAA/+4ADkFkb2JlAGTAAAAAAf/bAIQAAgICAgICAgICAgMCAgIDBAMCAgMEBQQEBAQEBQYFBQUFBQUGBgcHCAcHBgkJCgoJCQwMDAwMDAwMDAwMDAwMDAEDAwMFBAUJBgYJDQsJCw0PDg4ODg8PDAwMDAwPDwwMDAwMDA8MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgAGQADAwERAAIRAQMRAf/EAFoAAQEBAAAAAAAAAAAAAAAAAAgFCQEBAQEAAAAAAAAAAAAAAAAAAAECEAABAQkBAAAAAAAAAAAAAAAAAgGRUpIDFFQFFhcRAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwDQrx7XYiZTVZK6wpwMIqJ1+syEPACQV//Z);
+	background-repeat: repeat-x;
+	padding:6px 15px;
+}
+#myasu_bar a{
+	text-decoration:none;
+	color:#666;
+	display:inline-block;
+}
+.myasu_text{
+	letter-spacing:4px;	
+}
+.myasu_arrow{
+	margin:0 5px 0 15px;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent; 
+	border-right:5px solid #666; 
+	display:inline-block;
+}
+/* END MYASU */
+
+@media print {
+	#asu_footer,#asu_logo,#asu_nav_wrapper,#asu_search_module {
+		display:none
+	}
+	
+	#asu_print_logo {
+		display:block
+	}
+	
+	#asu_footer_contact_info {
+		border-top:thin solid #ccc;
+		margin:.25in 0 .1in;
+		font-size:90%;
+		line-height:1.1em
+	}
+}
+
+#asu_login_module,#asu_search {
+    padding-right:12px
+}
+
+.asu_search_button,.navmenu {
+    display:inherit!important
+}
+
+#blackOut {
+    display:none;
+    background-color:rgba(0,0,0,.7);
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%
+}
+#asu_hdr #asu_login_module a,
+#asu_hdr #asu_universal_nav a{font-weight:400;color:#000}
+#asu_hdr #asu_login_module a:hover,
+#asu_hdr #asu_universal_nav a:hover,
+#asu_hdr #asu_universal_nav a:focus{color: #d23153;}
+
+
+#innovation-bar span {
+/*  font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+}
+
+#innovation-bar .innovation-hidden {
+  float:right;
+  width: 19%;
+  height: 0;
+}
+#innovation-bar img {
+  margin-top: -1em;  
+  height: 121px;
+}
+
+#innovation-bar {
+  background-color: #FFC627; /** ASU Gold */
+  font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#innovation-bar .innovation-status {
+  text-align: right;
+  width: 78%;
+  display: inline-block;
+  margin-bottom: .7em;
+  margin-top: .7em;
+}
+
+#innovation-bar a {
+  border-bottom: 0;
+  color: black;
+  font-size: x-large;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+
+
+#innovation-bar .innovation-top {
+  margin: 0 auto;
+}
+
+
+
+

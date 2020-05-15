@@ -1,0 +1,23 @@
+.heroTitle {
+  color: #fff;
+  font-size: 3.75rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  padding: 0.625rem 0;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.heroP {
+  margin: 0 0 .75em 0;
+  padding: 0;
+  color: #fff;
+  font-size: 1.33em;
+  line-height: 1.33em;
+  font-weight: 900;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.heroLink:hover {
+    text-decoration: none;
+}

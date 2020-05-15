@@ -1,0 +1,26 @@
+{
+  "color": {
+    "alerts": {
+      "error":  {
+        "base":       { "value":"#CC2F2F"},
+        "font":       { "value":"#B72A2A"},
+        "background": { "value":"#F7DDDD"}
+      },
+      "warning":  {
+        "base":       { "value":"#FF7F32"},
+        "font":       { "value":"#BD4800"},
+        "background": { "value":"#FFEADE"}
+      },
+      "info":  {
+        "base":       { "value":"#00A3E0"},
+        "font":       { "value":"#126877"},
+        "background": { "value":"#D6F0FA"}
+      },
+      "success":  {
+        "base":       { "value":"#78BE20"},
+        "font":       { "value":"#446D12"},
+        "background": { "value":"#E9F5DB"}
+      }
+    }
+  }
+}

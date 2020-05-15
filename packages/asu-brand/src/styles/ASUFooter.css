@@ -1,0 +1,98 @@
+#asu_footer{font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#E5E5E5;padding:5px 0px}
+#asu_footer ul{list-style-type:none;margin-left:-40px}
+#asu_footer ul li{display:inline;margin-right:20px}
+#asu_footer a{text-decoration:none;font-size:1.1em;font-weight:400;color:#333}
+#asu_footer a:hover{color:#666}
+
+#asu_footer_contact_info {
+    clear:both;
+    text-align:right;
+    margin:0;
+    padding:10px 30px 10px 0;
+    font:400 .75em/1.2em Arial,sans-serif;
+    color:#666;
+    background-color:#fff;
+    display:block
+}
+
+#asu_footer_contact_info p {
+    font-size:.95em;
+    margin:0 0 10px;
+    padding:0
+}
+
+#asu_footer_contact_info a {
+    color: #d23153;
+    text-decoration:underline;
+    font-size:inherit
+}
+
+#asu_footer_contact_info a:hover {
+    color: #d23153;
+    text-decoration:underline
+}
+
+#asu_footer_contact_info a:visited {
+    color:#666
+}
+.footer_img_wrap {
+    float: left;
+}
+.footer_innovate {
+    font-size: 1em;
+    font-weight: bold;
+}
+#asu_footer .footer_innovate a {
+    font-size: 1.3em;
+    color: #a30046 !important;
+    font-weight: bold !important;
+}
+#asu_footer .footer_innovate span {
+    font-size: 1.3em;
+}
+.footer_innovate a:hover {
+    color: #d23153 !important;
+}
+.footer_right {
+    padding: 15px 10px;
+    float: left;
+}
+
+#innovation-footer .footer-menu {
+    padding: 0 15px 0 15px;
+    background-color: #e5e5e5;
+}
+
+#innovation-footer .footer-menu ul {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: table;
+    list-style: none;
+    margin: 0 auto;
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+}
+#innovation-footer .footer-menu ul.default{
+    padding-left: 15px;
+}
+#innovation-footer .footer-menu ul li {
+    float: left;
+    padding-bottom: 12px
+}
+
+#innovation-footer .footer-menu ul li a {
+    font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333;
+    font-weight: 400;
+    font-size: 1.0em;
+    margin-right: 30px;
+    text-decoration: none;
+    border-bottom: none;
+    transition: all .25s ease-in-out;
+}
+
+#innovation-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+}

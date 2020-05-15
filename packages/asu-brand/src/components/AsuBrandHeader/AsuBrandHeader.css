@@ -1,0 +1,129 @@
+@import '../../styles/ASU.css';
+
+/**  CSS Modules -- ASUHeader.css ****/
+.asuBrandHeader {
+  width: 100%;
+}
+
+.asuBrandHeader {
+  position: relative;
+  background-color: #fff;
+  overflow: visible;
+  margin: 0;
+  font-size: 0.8rem;
+  font-family: var(--asu-fonts);
+  line-height: 1em;
+  color: #000;
+  z-index: 500;
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+  box-sizing: initial;
+  height: auto;
+  width: 100%;
+}
+
+.asuBrandHeader img {
+  border: 0;
+  width: 100%;
+}
+
+.asuHeaderGrid {
+  display: flex;
+  flex-flow: row wrap;
+  & > * {
+    flex: 1 100%;
+  }
+}
+
+.asuHeaderTopRow {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.asuHeaderMobileControls {
+  display: none;
+  justify-self: end;
+}
+
+/***
+Mobile ASUHeader
+**/
+
+@media (--mobile) {
+  .asuHeaderMobileControls {
+    /*grid-area: mobile;*/
+    display: block;
+    order: 1;
+  }
+
+  .asuHeaderGrid {
+    flex-flow: column;
+  }
+
+  /** Header menu open/close CSS **/
+  .asuHeaderTopRow {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+    order: 2;
+    flex-flow: column;
+  }
+
+  .asuHeaderGlobalSearch {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+    order: 0;
+  }
+
+  .asuBrandHeaderLogin {
+    order: 0;
+  }
+
+  .asuBrandHeaderNav {
+    order: 1;
+  }
+
+  .asuLogo {
+    order: 3;
+    display: none;
+  }
+
+  .icoNavIcon,
+  .icoSearch {
+    float: right;
+    margin: 0;
+    padding: 21px 5px;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+    float: right;
+    font-size: 22px;
+    width: 35px;
+    text-align: center;
+  }
+
+  .openedSearch {
+    & .asuHeaderGlobalSearch {
+      max-height: 2000px;
+    }
+
+    & .icoSearch {
+      background-color: #e7e7e7;
+    }
+  }
+
+  .openedNav {
+    & .asuHeaderTopRow {
+      max-height: 2000px;
+    }
+  }
+}
+
+/***
+Logo
+ */
+.asuLogo {
+  margin-right: auto;
+  width: 200px;
+}
