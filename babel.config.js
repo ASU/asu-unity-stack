@@ -17,11 +17,11 @@ module.exports = function (api) {
             ],
             node: "10"
           },
-          modules: false,
-          useBuiltIns: "usage",
+          modules: "auto",
+          useBuiltIns: "usage",  // really could go "entry" or"usage" here. I thought usage might be easier to work with...
           corejs: {
             version: 3,
-            proposals: true,
+            shippedProposals: true,
           },
         },
       ],
