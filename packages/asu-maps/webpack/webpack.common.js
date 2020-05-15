@@ -15,8 +15,13 @@ module.exports = {
                 test: /\.(jsx|js)?$/,
                 exclude: /node_modules/,
                 use: [
-                    "babel-loader",
-                    "eslint-loader"
+                  {
+                    loader: "babel-loader",
+                    options: {
+                      rootMode: "upward",
+                    },
+                  },
+                  "eslint-loader"
                 ]
             },
             {
