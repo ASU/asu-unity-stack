@@ -11,7 +11,7 @@
     "build:dev": "webpack --config=webpack/webpack.development.js",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -c .storybook -o export",
-    "lint": "eslint ./src --ext .js --ext .jsx"
+    "lint": "eslint ./src --ext .js --ext .jsx --fix --ignore-path ../../.eslintignore"
   },
   "repository": {
     "type": "git",
@@ -56,45 +56,6 @@
     "globals": {
       "__DEV__": true
     }
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-      "no-unused-vars": "warn",
-      "no-console": "warn",
-      "no-undef": "warn",
-      "no-useless-escape": "off"
-    },
-    "settings": {
-      "react": {
-        "createClass": "createReactClass",
-        "pragma": "React",
-        "version": "16.6"
-      },
-      "propWrapperFunctions": [
-        "forbidExtraProps"
-      ]
-    }
-  },
-  "dependencies": {
-    "asu-web-standards-bootstrap4": "0.0.1",
-    "reactstrap": "^8.2.0"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }
