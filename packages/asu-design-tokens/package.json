@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "main": "build/index.js",
-  "files": [
-    "build",
-    "properties"
-  ],
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
     "clean": "rm -rf build",
