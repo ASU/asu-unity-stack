@@ -1,23 +1,73 @@
 {
   "component": {
     "button": {
-      "border-radius": { "value": "1.5" },
-      "padding": { "value": "{size.padding.medium.value}" },
-      "font-size": { "value": "2" },
-      "text-align": { "value": "center" },
-
-      "primary": {
-        "background-color": { "value": "{color.brand.primary.base.value}" },
-        "color": { "value": "{color.font.inverse.base.value}" }
+      "background-origin": {
+        "value": "padding-box",
+        "type": "text-property"
       },
-
-      "secondary": {
-        "background-color": { "value": "{color.brand.secondary.base.value}" },
-        "color": { "value": "{color.font.base.value}" }
+      "background-position": {
+        "value": "0 0",
+        "type": "text-property"
       },
-
+      "background-repeat": {
+        "value": "no-repeat",
+        "type": "text-property"
+      },
+      "border-radius": {
+        "value": "1.5",
+        "type": "radius"
+      },
       "disabled": {
-        "opacity": { "value": "50%" }
+        "opacity": {
+          "value": "50%",
+          "type": "percent"
+        }
+      },
+      "font-size": {
+        "value": "2",
+        "type": "rem"
+      },
+      "padding": {
+        "value": "{size.padding.medium.value}",
+        "type": "rem"
+      },
+      "text-align": {
+        "value": "center",
+        "type": "text-property"
+      },
+      "primary": {
+        "background-color": {
+          "value": "{color.brand.primary.value}",
+          "type": "color"
+        },
+        "color": {
+          "value": "{color.font.base.value}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "background-color": {
+          "value": "{color.brand.secondary.value}"
+        },
+        "color": {
+          "value": "{color.font.inverse.base.value}"
+        }
+      },
+      "dark": {
+        "background-color": {
+          "value": "{color.brand.dark.value}"
+        },
+        "color": {
+          "value": "{color.font.inverse.base.value}"
+        }
+      },
+      "light": {
+        "background-color": {
+          "value": "{color.brand.light.value}"
+        },
+        "color": {
+          "value": "{color.font.base.value}"
+        }
       }
     }
   }
