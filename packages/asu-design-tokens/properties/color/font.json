@@ -1,33 +1,82 @@
 {
   "color": {
     "font": {
-      "base":         { "value": "{color.base.grey.7.value}" },
-      "secondary":    { "value": "{color.base.grey.5.value}"  },
-      "tertiary":     { "value": "{color.base.grey.4.value}"  },
-      "link":         { "value": "{color.brand.primary.base.value}" },
-      "active":       { "value": "{color.brand.secondary.base.value}" },
-      "error":        { "value": "{color.alerts.error.font.value}" },
-      "warning":      { "value": "{color.alerts.warning.font.value}" },
-      "success":      { "value": "{color.alerts.success.font.value}" },
-      "info":         { "value": "{color.alerts.info.font.value}" },
-      "disabled":     { "value": "{color.font.secondary.value}" },
-
-      "inverse": {
-        "base":         { "value": "{color.base.grey.1.value}" },
-        "secondary":    { "value": "{color.base.grey.3.value}" },
-        "tertiary":     { "value": "{color.base.grey.5.value}" },
-        "link":         { "value": "{color.base.gold.value}" },
-        "active":       { "value": "" },
-        "error":        { "value": "" },
-        "warning":      { "value": "" },
-        "success":      { "value": "" },
-        "info":         { "value": "" },
-        "disabled":     { "value": "" }
+      "base": {
+        "value": "{color.base.gray.1.value}",
+        "type": "color",
+        "comment": "Default text color"
       },
-
-      "button": {
-        "primary":   { "value":"{color.font.inverse.base.value}" },
-        "secondary": { "value":"{color.font.link.value}" }
+      "alternate": {
+        "value": "#2A2A2A",
+        "type": "color",
+        "comment": "Alternate font color with lighter black level"
+      },
+      "link": {
+        "value": "{color.brand.primary.value}",
+        "type": "color",
+        "comment": "Link text on light"
+      },
+      "active": {
+        "value": "{color.brand.primary.value}",
+        "type": "color",
+        "comment": "Active text on light"
+      },
+      "error": {
+        "value": "#B72A2A",
+        "type": "color",
+        "comment": "Error -text on light"
+      },
+      "warning": {
+        "value": "#BD4800",
+        "type": "color",
+        "comment": "Warning - text on light"
+      },
+      "success": {
+        "value": "#446D12",
+        "type": "color",
+        "comment": "Success - text on light"
+      },
+      "info": {
+        "value": "#126877",
+        "type": "color",
+        "comment": "Information - text on light"
+      },
+      "inverse": {
+        "base": {
+          "value": "{color.base.gray.1.value}",
+          "type": "color",
+          "comment": "Base text on dark"
+        },
+        "link": {
+          "value": "{color.base.gold.value}",
+          "type": "color",
+          "comment": "Link text on dark"
+        },
+        "active": {
+          "value": "{color.base.gold.value}",
+          "type": "color",
+          "comment": "Active text on dark"
+        },
+        "error": {
+          "value": "#FF7B7D",
+          "type": "color",
+          "comment": "Error - text on dark"
+        },
+        "warning": {
+          "value": "#FF8034",
+          "type": "color",
+          "comment": "Warning - text on dark"
+        },
+        "success": {
+          "value": "#78BE20",
+          "type": "color",
+          "comment": "Success - text on dark"
+        },
+        "info": {
+          "value": "#00B0F3",
+          "type": "color",
+          "comment": "Information - text on dark"
+        }
       }
     }
   }

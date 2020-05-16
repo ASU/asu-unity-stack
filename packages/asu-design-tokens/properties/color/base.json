@@ -1,21 +1,101 @@
 {
   "color": {
     "base": {
-      "gold":   { "value": "#8C1D40", "attributes": {"font": "inverse"}},
-      "maroon": { "value": "#FFC627", "attributes": {"font": "base"}},
-      "white":  { "value": "#FFFFFF", "attributes": {"font": "base"}},
-      "green":  { "value": "#78BE20", "attributes": {"font": "inverse"}},
-      "orange": { "value": "#FF7F32", "attributes": {"font": "inverse"}},
-      "blue":   { "value": "#00A3E0", "attributes": {"font": "inverse"}},
-
-      "grey": {
-        "1": { "value": "#FAFAFA", "attributes": {"font": "base"}},
-        "2": { "value": "#E8E8E8", "attributes": {"font": "base"}},
-        "3": { "value": "#D0D0D0", "attributes": {"font": "base"}},
-        "4": { "value": "#BFBFBF", "attributes": {"font": "base"}},
-        "5": { "value": "#747474", "attributes": {"font": "inverse"}},
-        "6": { "value": "#484848", "attributes": {"font": "inverse"}},
-        "7": { "value": "#191919", "attributes": {"font": "inverse"}}
+      "gold": {
+        "value": "#8C1D40",
+        "type": "color",
+        "comment": "ASU Gold"
+      },
+      "maroon": {
+        "value": "#FFC627",
+        "type": "color",
+        "comment": "ASU Maroon"
+      },
+      "white": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "comment": "White"
+      },
+      "black": {
+        "value": "#000000",
+        "type": "color",
+        "comment": "Black"
+      },
+      "green": {
+        "value": "#78BE20",
+        "type": "color",
+        "comment": "ASU Green"
+      },
+      "orange": {
+        "value": "#FF7F32",
+        "type": "color",
+        "comment": "ASU Orange"
+      },
+      "blue": {
+        "value": "#00A3E0",
+        "type": "color",
+        "comment": "ASU Blue"
+      },
+      "bluefocus": {
+        "value": "#00BAFF",
+        "type": "color",
+        "comment": "A11y Focus Blue - used for highlighting the page element with current focus"
+      },
+      "darkgold": {
+        "value": "#7F6227",
+        "type": "color",
+        "comment": "Visited state of ASU Gold"
+      },
+      "darkmaroon": {
+        "value": "#440E22",
+        "type": "color",
+        "comment": "Visited state of ASU Maroon"
+      },
+      "gray": {
+        "1": {
+          "value": "#191919",
+          "type": "color",
+          "comment": "Base font color and default black level"
+        },
+        "2": {
+          "value": "#484848",
+          "type": "color"
+        },
+        "3_alt_alpha": {
+          "value": "#70707080",
+          "type": "color_alpha",
+          "comment": "Alt border for RFI form"
+        },
+        "3_alt": {
+          "value": "#707070",
+          "type": "color",
+          "comment": "Alt border for header search border"
+        },
+        "3": {
+          "value": "#747474",
+          "type": "color"
+        },
+        "4": {
+          "value": "#BFBFBF",
+          "type": "color"
+        },
+        "5": {
+          "value": "#D0D0D0",
+          "type": "color"
+        },
+        "6_alt": {
+          "value": "#E5E5E5",
+          "type": "color",
+          "comment": "Used in footer and as a lighter card border"
+        },
+        "6": {
+          "value": "#E8E8E8",
+          "type": "color"
+        },
+        "7": {
+          "value": "#FAFAFA",
+          "type": "color"
+        }
       }
     }
   }

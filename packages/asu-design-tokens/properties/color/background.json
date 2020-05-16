@@ -1,18 +1,45 @@
 {
   "color": {
     "background": {
-      "base":         { "value":"{color.base.white.value}",                "attributes":{"font":"base"}},
-      "alt":          { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
-      "disabled":     { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
-      "inverse":      { "value":"{color.base.grey.7.value}",               "attributes":{"font":"inverse"}},
-      "success":      { "value":"{color.alerts.success.background.value}", "attributes":{"font":"base"}},
-      "error":        { "value":"{color.alerts.error.background.value}",   "attributes":{"font":"base"}},
-      "warning":      { "value":"{color.alerts.warning.background.value}", "attributes":{"font":"base"}},
-      "info":         { "value":"{color.alerts.info.background.value}",    "attributes":{"font":"base"}},
-
+      "base": {
+        "value": "{color.base.white.value}",
+        "type": "color",
+        "comment": "Background - White"
+      },
+      "light": {
+        "value": "{color.base.gray.6.value}",
+        "type": "color",
+        "comment": "Background - Gray"
+      },
+      "dark": {
+        "value": "{color.brand.dark.value}",
+        "type": "color",
+        "comment": "Background - Dark"
+      },
+      "success": {
+        "value": "#E9F5DB",
+        "type": "color",
+        "comment": "Background - Success"
+      },
+      "error": {
+        "value": "#F7DDDD",
+        "type": "color",
+        "comment": "Background - Error"
+      },
+      "warning": {
+        "value": "#FFEADE",
+        "type": "color",
+        "comment": "Background - Warning"
+      },
+      "info": {
+        "value": "#D6F0FA",
+        "type": "color",
+        "comment": "Background - Information"
+      },
       "overlay": {
-        "light": { "value": "#FFFFFFCC" },
-        "dark":  { "value": "#00000044" }
+        "value": "#19191900",
+        "type": "color",
+        "comment": "Background - Modal overlay"
       }
     }
   }
