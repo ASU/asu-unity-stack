@@ -4,7 +4,7 @@
       "lighter": {
         "value": "{color.base.gray.6_alt.value}",
         "type": "color",
-        "comment": "BOrder - Used for one card border variant"
+        "comment": "Border - Used for one card border variant"
       },
       "light": {
         "value": "{color.base.gray.6.value}",

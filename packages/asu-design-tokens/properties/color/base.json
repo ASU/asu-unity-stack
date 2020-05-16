@@ -2,12 +2,12 @@
   "color": {
     "base": {
       "gold": {
-        "value": "#8C1D40",
+        "value": "#FFC627",
         "type": "color",
         "comment": "ASU Gold"
       },
       "maroon": {
-        "value": "#FFC627",
+        "value": "#8C1D40",
         "type": "color",
         "comment": "ASU Maroon"
       },
@@ -63,13 +63,13 @@
         },
         "3_alt_alpha": {
           "value": "#70707080",
-          "type": "color_alpha",
-          "comment": "Alt border for RFI form"
+          "type": "color",
+          "comment": "Alt border for RFI form card"
         },
         "3_alt": {
           "value": "#707070",
           "type": "color",
-          "comment": "Alt border for header search border"
+          "comment": "Alt border for header search input border"
         },
         "3": {
           "value": "#747474",
