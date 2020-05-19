@@ -77,6 +77,7 @@ module.exports = {
     "scss": {
       transformGroup: "scss",
       buildPath: buildPath + "scss/",
+      prefix: "uds",
       files: [
         {
           destination: "_variables.scss",
