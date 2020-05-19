@@ -1,54 +1,60 @@
 // ASU Brand Standard Colors
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
-$maroon:     #8c1d40;
-$gold:       #ffc627;
-$blue:       #00a3e0;
-$green:      #78be20;
-$orange:     #ff7f32;
-$gray:       #5c6670;
-$black:      #000000;
-$white:      #ffffff;
-// Plus these additional colors from ASU Brand Guide: https://brandguide.asu.edu/Executing-the-brand/Web-and-mobile/ui-kit
-// need Unity Group discussion: these 'alt' colors need review with Hub
-$alt-success: #148e4b;
-$alt-info:    #008ed6;
-$alt-warning: #ec5937;
-$alt-danger:  #bfe319;
-$alt-gray:    #dbdbdb; // used for 'secondary' color variant (e.g. btn-secondary)
+$maroon: $uds-color-base-maroon;
+$gold: $uds-color-base-gold;
+$blue: $uds-color-base-blue;
+$green: $uds-color-base-green;
+$orange: $uds-color-base-orange;
+$black: $uds-color-base-black;
+$white: $uds-color-base-white;
+$bluefocus: $uds-color-base-bluefocus;
+$darkgold: $uds-color-base-darkgold;
+$darkmaroon: $uds-color-base-darkmaroon;
 
-// Bootstrap modifier colors
-$primary:    $maroon;
-$secondary:  $alt-gray;
-$success:    $alt-success;
-$info:       $alt-info;
-$warning:    $alt-warning;
-$danger:     $alt-danger; // need Unity Group discussion: no approved color is available for this; but wouldn't Bootstrap's $red be a better choice?
-$rfi:        $gold;
-$program:    $blue;
-// $light:      $gray-100;  // need Unity Group discussion: unsure what to do with these colors right now;
-// $dark:       $gray-800;  // need Unity Group discussion: need testing to determine if it makes sense to assign to our ASU gray colors
+$gray-1: $uds-color-base-gray-1;
+$gray-2: $uds-color-base-gray-2;
+$gray-3: $uds-color-base-gray-3;
+$gray-4: $uds-color-base-gray-4;
+$gray-5: $uds-color-base-gray-5;
+$gray-6: $uds-color-base-gray-6;
+$gray-7: $uds-color-base-gray-7;
+
+$primary: $uds-color-brand-primary;
+$secondary: $uds-color-brand-secondary;
+$dark: $uds-color-brand-dark;
+$light: $uds-color-brand-light;
+
+$danger: $uds-color-alerts-error;
+$warning: $uds-color-alerts-warning;
+$success: $uds-color-alerts-success;
+$info: $uds-color-alerts-info;
+
+$gray-3-alt-alpha: $uds-color-base-gray-3-alt-alpha;
+$gray-3-alt: $uds-color-base-gray-3-alt;
 
 $colors: () !default;
 $colors: map-merge(
   (
-    "maroon":       $maroon,
-    "gold":         $gold,
-    "blue":         $blue,
-    "green":        $green,
-    "orange":       $orange,
-    "gray":         $gray,
-    "black":        $black,
-    "white":        $white,
-    "alt-success":  $alt-success,
-    "alt-info":     $alt-info,
-    "alt-warning":  $alt-warning,
-    "alt-danger":   $alt-danger,
-    "alt-gray":     $alt-gray,
+    'maroon': $maroon,
+    'gold': $gold,
+    'blue': $blue,
+    'green': $green,
+    'orange': $orange,
+    'black': $black,
+    'white': $white,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'light': $light,
+    'dark': $dark,
+    'gray-1': $gray-1,
+    'gray-2': $gray-2,
+    'gray-3': $gray-3,
+    'gray-4': $gray-4,
+    'gray-5': $gray-5,
+    'gray-6': $gray-6,
+    'gray-7': $gray-7,
   ),
-    $colors
-);
-
-$theme-colors: (
-  "rfi": $rfi,
-  "program": $program,
+  $colors
 );

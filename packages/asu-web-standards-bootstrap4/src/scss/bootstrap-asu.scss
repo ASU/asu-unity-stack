@@ -1,12 +1,17 @@
 /* ========================================================================
- * ASU Web Standards: bootstrap-asu.css v1.0.0-alpha1
+ * ASU Web Standards: bootstrap-asu.css v0.0.1
  * ========================================================================
- * Copyright 2019 ASU
- * Licensed under MIT (https://github.com/gios-asu/asu-web-standards-bootstrap4/blob/master/LICENSE)
+ * Copyright 2020 ASU
+ * All Rights Reserved
  * ======================================================================== */
+
+// Import UDS Design Tokens
+@import '../../build/variables';
 
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';
+@import 'variables/spacing';
+@import 'variables/typography';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
@@ -14,7 +19,22 @@
 @import '../../node_modules/bootstrap/scss/mixins';
 
 // To remove values from Bootstrap maps, these must occur between Required and Optional imports.
-// $theme-colors: map-remove($theme-colors, "info", "light", "dark");
+// clean the vanilla colors from 'colors' map
+$colors: map-remove(
+  $colors,
+  'blue',
+  'indigo',
+  'purple',
+  'pink',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'cyan',
+  'gray',
+  'gray-dark'
+);
 
 //= Bootstrap Scaffolding (optional)
 @import '../../node_modules/bootstrap/scss/root';
@@ -52,32 +72,5 @@
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../node_modules/bootstrap/scss/print';
 
-//== Override Scaffolding Examples
-// @import 'scaffolding';
-// @import 'asu-scaffolding';
-// @import 'tables';
-// @import 'forms';
-
-//== Override Components
-// @import 'alerts';
-// @import 'badges';
-// @import 'breadcrumbs';
-// @import 'buttons';
-// @import 'calendar';
-// @import 'carousel';
-// etc...
-
-//= ASU extensions
-// @import 'animations';
-// @import 'articles';
-// @import 'campus-visit';
-// @import 'flex-video';
-// @import 'hover-effects';
-// @import 'hero';
-// @import 'mega-menu';
-// @import 'profile';
-// @import 'related-links';
-// @import 'thumbnails';
-
 //== FontAwesome
-// @import '/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
