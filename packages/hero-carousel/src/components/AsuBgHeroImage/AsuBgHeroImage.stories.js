@@ -11,15 +11,15 @@ let item = {
   title: "Hero One Title",
   buttons: [
     { text: "button 1", url: "https://asu.edu", color: "primary" },
-    { text: "button 2", url: "https://asu.edu", color: "secondary" }
+    { text: "button 2", url: "https://asu.edu", color: "secondary" },
   ],
-  titleLink: "https://asu.edu"
+  titleLink: "https://asu.edu",
 };
 
 export default {
   component: AsuBgHeroImage,
   title: "AsuBgHeroImage",
-  decorators: [withA11y, withKnobs]
+  decorators: [withA11y, withKnobs],
 };
 
 export const basic = () => (

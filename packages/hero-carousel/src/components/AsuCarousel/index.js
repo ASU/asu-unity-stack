@@ -1,3 +1,3 @@
-import AsuCarousel from './AsuCarousel';
+import AsuCarousel from "./AsuCarousel";
 
 export default AsuCarousel;

@@ -1,3 +1,3 @@
-import AsuBgHeroImage from './AsuBgHeroImage';
+import AsuBgHeroImage from "./AsuBgHeroImage";
 
 export default AsuBgHeroImage;

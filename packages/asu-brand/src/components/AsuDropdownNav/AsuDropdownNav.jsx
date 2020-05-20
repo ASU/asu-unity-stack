@@ -102,7 +102,7 @@ const AsuDropdownNav = props => {
         onMouseEnter: navOpen,
         onMouseLeave: navClose,
         onFocus: navOpen,
-        onBlur: onBlur
+        onBlur: onBlur,
       })}
     >
       <TopItem {...props} toggle={toggle} open={open} />
@@ -133,9 +133,9 @@ AsuDropdownNav.propTypes = {
   target: PropTypes.string,
   topRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
-  focus: PropTypes.func
+  focus: PropTypes.func,
 };
 
 AsuDropdownNav.defaultProps = {};
@@ -148,11 +148,11 @@ TopItem.propTypes = {
   target: PropTypes.string,
   topRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
   toggle: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  focus: PropTypes.func
+  focus: PropTypes.func,
 };
 
 TopItem.defaultProps = {};

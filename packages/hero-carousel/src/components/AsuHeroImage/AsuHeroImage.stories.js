@@ -1,7 +1,7 @@
 import React from "react";
-import { AsuHeroImage} from "./index.js";
+import { AsuHeroImage } from "./index.js";
 import { withKnobs, text, number } from "@storybook/addon-knobs";
-import { withA11y } from '@storybook/addon-a11y';
+import { withA11y } from "@storybook/addon-a11y";
 
 let item = {
   src:
@@ -11,40 +11,40 @@ let item = {
   title: "Hero One Title",
   buttons: [
     { text: "button 1", url: "https://asu.edu", color: "primary" },
-    { text: "button 2", url: "https://asu.edu", color: "secondary" }
+    { text: "button 2", url: "https://asu.edu", color: "secondary" },
   ],
-  titleLink: "https://asu.edu"
+  titleLink: "https://asu.edu",
 };
 
 const altButtons = [
   { text: "button 1", url: "https://asu.edu", color: "info" },
-  { text: "button 2", url: "https://asu.edu", color: "secondary" }
+  { text: "button 2", url: "https://asu.edu", color: "secondary" },
 ];
 
-  export default {
-    component: AsuHeroImage,
-    title: 'AsuHeroImage',
-    decorators: [withA11y, withKnobs]
-  };
+export default {
+  component: AsuHeroImage,
+  title: "AsuHeroImage",
+  decorators: [withA11y, withKnobs],
+};
 
-  export const basic = () => (
-    <AsuHeroImage
-      title={text("title", item.title)}
-      altText={text("altText", item.altText)}
-      src={text("src", item.src)}
-      tagline={text("tagline", item.tagline)}
-      titleLink={text("titleLink", item.titleLink)}
-      buttons={item.buttons}
-    />
-  );
+export const basic = () => (
+  <AsuHeroImage
+    title={text("title", item.title)}
+    altText={text("altText", item.altText)}
+    src={text("src", item.src)}
+    tagline={text("tagline", item.tagline)}
+    titleLink={text("titleLink", item.titleLink)}
+    buttons={item.buttons}
+  />
+);
 
-  export const altButtonColors = () => (
-    <AsuHeroImage
-      title={text("title", item.title)}
-      altText={text("altText", item.altText)}
-      src={text("src", item.src)}
-      tagline={text("tagline", item.tagline)}
-      titleLink={text("titleLink", item.titleLink)}
-      buttons={altButtons}
-    />
-  );
+export const altButtonColors = () => (
+  <AsuHeroImage
+    title={text("title", item.title)}
+    altText={text("altText", item.altText)}
+    src={text("src", item.src)}
+    tagline={text("tagline", item.tagline)}
+    titleLink={text("titleLink", item.titleLink)}
+    buttons={altButtons}
+  />
+);

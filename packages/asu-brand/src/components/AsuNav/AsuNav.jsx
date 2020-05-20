@@ -15,10 +15,8 @@ const AsuNav = props => {
   const handleKeyDown = useCallback(
     e => {
       if (e.keyCode === 37 && focused > 0) {
-
         setFocus(prevFoc => prevFoc - 1);
       } else if (e.keyCode === 39 && focused < navList.length - 1) {
-
         setFocus(prevFoc => prevFoc + 1);
       }
     },
@@ -33,15 +31,11 @@ const AsuNav = props => {
 
   return (
     <nav className={navClass}>
-      <ul
-        className={styles.asuNav}
-        aria-label="ASU"
-        onKeyDown={handleKeyDown}
-      >
+      <ul className={styles.asuNav} aria-label="ASU" onKeyDown={handleKeyDown}>
         {props.globalNav.map((item, index) => {
           const newRef = React.createRef();
           const setFocusCallback = useCallback(() => {
-            setFocus(index)
+            setFocus(index);
           }, [focused]);
 
           navList.push(newRef);
@@ -49,7 +43,11 @@ const AsuNav = props => {
           return (
             <li key={index} className={styles.asuNavItemTop}>
               {item.items ? (
-                <AsuDropdownNav {...item} topRef={newRef} focus={setFocusCallback}/>
+                <AsuDropdownNav
+                  {...item}
+                  topRef={newRef}
+                  focus={setFocusCallback}
+                />
               ) : (
                 // if no child items, render as link
                 <a
@@ -73,11 +71,11 @@ const AsuNav = props => {
 AsuNav.propTypes = {
   siteNav: PropTypes.arrayOf(PropTypes.object),
   globalNav: PropTypes.arrayOf(PropTypes.object),
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 AsuNav.defaultProps = {
-  globalNav: AsuNavGlobalDefaults
+  globalNav: AsuNavGlobalDefaults,
 };
 
 export default AsuNav;
