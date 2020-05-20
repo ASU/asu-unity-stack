@@ -1,5 +1,5 @@
 {
-  "name": "asu-web-standards-bootstrap4",
+  "name": "@asu-design-system/asu-web-standards-bootstrap4",
   "version": "0.0.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
