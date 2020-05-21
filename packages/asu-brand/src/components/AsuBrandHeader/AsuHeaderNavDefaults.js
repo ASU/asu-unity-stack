@@ -8,57 +8,57 @@ const AsuHeaderNavDefaults = [
         href: "https://www.asu.edu/?feature=newsevents",
         target: "_top",
         title: "News and Events",
-        text: "News/Events"
+        text: "News/Events",
       },
       {
         href: "https://www.asu.edu/?feature=academics",
         target: "_top",
         title: "Academics",
-        text: "Academics"
+        text: "Academics",
       },
       {
         href: "https://www.asu.edu/?feature=research",
         target: "_top",
         title: "Research",
-        text: "Research"
+        text: "Research",
       },
       {
         href: "https://www.asu.edu/?feature=athletics",
         target: "_top",
         title: "Athletics",
-        text: "Athletics"
+        text: "Athletics",
       },
       {
         href: "https://www.asu.edu/?feature=alumni",
         target: "_top",
         title: "Alumni",
-        text: "Alumni"
+        text: "Alumni",
       },
       {
         href: "https://www.asu.edu/?feature=giving",
         target: "_top",
         title: "Giving",
-        text: "Giving"
+        text: "Giving",
       },
       {
         href: "https://www.asu.edu/?feature=president",
         target: "_top",
         title: "President",
-        text: "President"
+        text: "President",
       },
       {
         href: "https://www.asu.edu/about",
         target: "_top",
         title: "About ASU",
-        text: "About ASU"
-      }
-    ]
+        text: "About ASU",
+      },
+    ],
   },
   {
     title: "My ASU",
     text: "My ASU",
     href: "https://my.asu.edu/",
-    target: "_top"
+    target: "_top",
   },
   {
     title: "Map and Locations",
@@ -71,43 +71,43 @@ const AsuHeaderNavDefaults = [
         href: "https://www.asu.edu/map/",
         target: "_top",
         title: "Map",
-        text: "Map"
+        text: "Map",
       },
       {
         href: "https://campus.asu.edu/tempe/",
         target: "_top",
         title: "Tempe campus",
-        text: "Tempe"
+        text: "Tempe",
       },
       {
         href: "https://campus.asu.edu/west/",
         target: "_top",
         title: "West campus",
-        text: "West"
+        text: "West",
       },
       {
         href: "https://campus.asu.edu/polytechnic/",
         target: "_top",
         title: "Polytechnic campus",
-        text: "Polytechnic"
+        text: "Polytechnic",
       },
       {
         href: "https://campus.asu.edu/downtown/",
         target: "_top",
         title: "Downtown Phoenix campus",
-        text: "Downtown Phoenix"
+        text: "Downtown Phoenix",
       },
       {
         href: "https://asuonline.asu.edu/",
         target: "_top",
         title: "Online and Extended campus",
-        text: "Online and Extended"
+        text: "Online and Extended",
       },
       {
         href: "https://havasu.asu.edu/",
         target: "_top",
         title: "",
-        text: "Lake Havasu"
+        text: "Lake Havasu",
       },
       {
         href:
@@ -115,40 +115,40 @@ const AsuHeaderNavDefaults = [
         target: "_top",
         classes: "border",
         title: "",
-        text: "Thunderbird"
+        text: "Thunderbird",
       },
       {
         href: "https://skysong.asu.edu/",
         target: "_top",
         title: "",
-        text: "Skysong"
+        text: "Skysong",
       },
       {
         href: "https://asuresearchpark.com/",
         target: "_top",
         title: "",
-        text: "Research Park"
+        text: "Research Park",
       },
       {
         href: "https://washingtoncenter.asu.edu/",
         target: "_top",
         title: "",
-        text: "Washington D.C."
+        text: "Washington D.C.",
       },
       {
         href: "https://wpcarey.asu.edu/mba/china-program/english/",
         target: "_top",
         title: "",
-        text: "China"
-      }
-    ]
+        text: "China",
+      },
+    ],
   },
   {
     title: "Directory, Index and other info",
     text: "Directory",
     href: "https://isearch.asu.edu/",
-    target: "_top"
-  }
+    target: "_top",
+  },
 ];
 
 export default AsuHeaderNavDefaults;

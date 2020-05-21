@@ -1,14 +1,16 @@
 {
-  "name": "asu-brand",
+  "name": "@asu-design-system/asu-brand",
   "version": "0.0.1",
+  "description": "ASU Brand React Components",
+  "author": "Colton Testamarck (colt@asu.edu)",
+  "private": false,
   "main": "src/index.js",
   "license": "UNLICENSED",
-  "private": false,
   "publishConfig": {
     "access": "restricted"
   },
-  "repository" : {
-    "type" : "git",
+  "repository": {
+    "type": "git",
     "url": "ssh://git@github.com/asu/asu-unity-stack.git",
     "directory": "packages/asu-brand"
   },
@@ -56,7 +58,5 @@
       "__DEV__": true
     }
   },
-  "description": "ASU Brand React Components",
-  "author": "Colton Testamarck (colt@asu.edu)",
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

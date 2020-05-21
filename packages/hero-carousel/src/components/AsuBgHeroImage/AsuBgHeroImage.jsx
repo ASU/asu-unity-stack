@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Jumbotron, Util } from "reactstrap";
 import bootstrap from "asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css";
 import styles from "./AsuBgHeroImage.css";
-import {heroTitle, heroButtons} from "../AsuHeroImage";
+import { heroTitle, heroButtons } from "../AsuHeroImage";
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049
@@ -18,7 +18,7 @@ const AsuBgHeroImage = props => {
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     height: "100vh",
-    maxHeight: parseInt(props.maxHeight) + "px"
+    maxHeight: parseInt(props.maxHeight) + "px",
   };
 
   const buttons = props.buttons ? heroButtons(props.buttons) : "";
@@ -46,12 +46,12 @@ AsuBgHeroImage.propTypes = {
   maxHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.bool
-  ])
+    PropTypes.bool,
+  ]),
 };
 
 AsuBgHeroImage.defaultProps = {
-  maxHeight: 380
+  maxHeight: 380,
 };
 
 export default AsuBgHeroImage;

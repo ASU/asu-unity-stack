@@ -66,7 +66,7 @@ AsuBrandHeader.propTypes = {
   logo: PropTypes.object,
   login: PropTypes.object,
   siteNav: PropTypes.arrayOf(PropTypes.object),
-  siteName: PropTypes.object
+  siteName: PropTypes.object,
 };
 
 // Specifies the default values for props:
@@ -75,10 +75,10 @@ AsuBrandHeader.defaultProps = {
     href: "/",
     target: "_top",
     alt: "A S U",
-    src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png"
+    src: "https://www.asu.edu/asuthemes/4.6/assets/full_logo.png",
   },
   login: AsuLogin.defaultProps,
-  siteMenu: []
+  siteMenu: [],
 };
 
 export default AsuBrandHeader;

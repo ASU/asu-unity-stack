@@ -1,5 +1,5 @@
 {
-  "name": "asu-web-standards-bootstrap4",
+  "name": "@asu-design-system/asu-web-standards-bootstrap4",
   "version": "0.0.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
@@ -14,6 +14,7 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
+    "@asu-design-system/design-tokens": "^0.0.1",
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@storybook/addon-google-analytics": "^5.1.9",
     "@storybook/addon-jest": "^5.1.9",

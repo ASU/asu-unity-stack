@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  Util
+  Util,
 } from "reactstrap";
 import { AsuHeroImage } from "../AsuHeroImage";
 import AsuBgHeroImage from "../AsuBgHeroImage";
@@ -92,7 +92,7 @@ AsuCarousel.propTypes = {
   interval: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.bool
+    PropTypes.bool,
   ]),
   keyboard: PropTypes.bool,
   /* If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on
@@ -104,7 +104,7 @@ AsuCarousel.propTypes = {
   ride: PropTypes.oneOf(["carousel"]),
   // controls whether the slide animation on the Carousel works or not
   slide: PropTypes.bool,
-  variant: PropTypes.oneOf(["default", "background"])
+  variant: PropTypes.oneOf(["default", "background"]),
 };
 
 AsuCarousel.defaultProps = {
@@ -113,7 +113,7 @@ AsuCarousel.defaultProps = {
   pause: "hover",
   ride: "carousel",
   slide: true,
-  variant: "default"
+  variant: "default",
 };
 
 export default AsuCarousel;

@@ -1,10 +1,12 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import AsuGisFeaturePicker from "./AsuGisFeaturePicker";
+import AsuCarousel from "./AsuCarousel";
 
-describe("The AsuGisFeaturePicker", () => {
+describe("The AsuCarousel", () => {
   it("renders the component", () => {
-    const { container } = render(<AsuGisFeaturePicker />);
+    const { container } = render(
+      <AsuCarousel {...{ items: [{ title: "test" }] }} />
+    );
     expect(container.firstChild).toMatchSnapshot();
   });
 });

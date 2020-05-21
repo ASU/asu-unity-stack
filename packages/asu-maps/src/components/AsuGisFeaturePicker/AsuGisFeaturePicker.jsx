@@ -59,7 +59,7 @@ const AsuGisFeaturePicker = props => {
   // State hooks for the GIS feature select list component
   const [selectState, setSelectState] = useState({
     status: "noselection",
-    options: []
+    options: [],
   });
 
   // Callbacks for setting state of the react-checkbox-tree tree component and
@@ -95,7 +95,6 @@ const AsuGisFeaturePicker = props => {
 
   //This effect only runs when the selected map layer changes.
   useEffect(() => {
-
     /* Helper function to do fetch request to the GIS layer
     endpoint, then sets the 'options' state variable with
     retrieved items. This in turn causes the select list to
@@ -136,12 +135,12 @@ const AsuGisFeaturePicker = props => {
         if (error) {
           setSelectState({
             status: "error",
-            options: []
+            options: [],
           });
         } else {
           setSelectState({
             status: "success",
-            options: result
+            options: result,
           });
         }
       }
@@ -150,12 +149,11 @@ const AsuGisFeaturePicker = props => {
     // set state to 'loading' before getting options
     setSelectState({
       status: "loading",
-      options: []
+      options: [],
     });
 
     getOptions(checked[0]);
   }, [checked]);
-
 
   // Render the select box or messages depending
   // on current status
@@ -175,7 +173,7 @@ const AsuGisFeaturePicker = props => {
           options: selectState.options,
           status: selectState.status,
           onChange: props.onChange,
-          selected: props.selected ? JSON.stringify(props.selected) : undefined
+          selected: props.selected ? JSON.stringify(props.selected) : undefined,
         }}
       />
     );
@@ -186,7 +184,7 @@ const AsuGisFeaturePicker = props => {
   // stylesheet as well.
   const containerStyle = {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   };
 
   // return complete feature selection widget
@@ -220,12 +218,12 @@ const AsuGisFeaturePicker = props => {
 AsuGisFeaturePicker.propTypes = {
   layers: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChange: PropTypes.func,
-  selected: PropTypes.object
+  selected: PropTypes.object,
 };
 
 AsuGisFeaturePicker.defaultProps = {
   layers: defaultLayers,
-  selected: {}
+  selected: {},
 };
 
 export default AsuGisFeaturePicker;

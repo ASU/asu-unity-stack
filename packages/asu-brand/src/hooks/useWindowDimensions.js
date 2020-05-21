@@ -10,7 +10,7 @@ function getWindowDimensions() {
     : { innerWidth: 1920, innerHeight: 1080 };
   return {
     width,
-    height
+    height,
   };
 }
 

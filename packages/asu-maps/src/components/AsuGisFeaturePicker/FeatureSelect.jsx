@@ -47,7 +47,7 @@ const FeatureSelect = props => {
                     name: item.attributes.Name,
                     lat: item.geometry.y,
                     lng: item.geometry.x,
-                    parent: parent
+                    parent: parent,
                   };
 
                   return (
@@ -65,9 +65,8 @@ const FeatureSelect = props => {
       </div>
     );
   } else {
-
     const noResStyles = {
-      padding: '2em'
+      padding: "2em",
     };
 
     return (
@@ -82,12 +81,12 @@ FeatureSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChange: PropTypes.func,
   parent: PropTypes.string,
-  selected: PropTypes.string
+  selected: PropTypes.string,
 };
 
 FeatureSelect.defaultProps = {
   options: [],
-  selected: "{}"
+  selected: "{}",
 };
 
 export default FeatureSelect;

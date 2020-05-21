@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import AsuGisFeaturePicker from "./AsuGisFeaturePicker";
+import { AsuHeroImage } from "./AsuHeroImage";
 
-describe("The AsuGisFeaturePicker", () => {
+describe("The AsuHeroImage", () => {
   it("renders the component", () => {
-    const { container } = render(<AsuGisFeaturePicker />);
+    const { container } = render(<AsuHeroImage {...{ title: "ASU Home" }} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

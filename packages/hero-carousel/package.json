@@ -1,5 +1,5 @@
 {
-  "name": "asu-hero-carousel",
+  "name": "@asu-design-system/hero-carousel",
   "version": "0.0.1",
   "description": "ASU implementation of Bootstrap 4 carousel built with Reactstrap",
   "main": "src/index.js",
@@ -28,7 +28,7 @@
     "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "asu-web-standards-bootstrap4": "0.0.1",
+    "@asu-design-system/asu-web-standards-bootstrap4": "0.0.1",
     "reactstrap": "^8.2.0"
   },
   "devDependencies": {},

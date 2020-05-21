@@ -1,12 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 //import { Test } from './AsuGisMap.styles';
 
-const AsuGisMap = (props) => (
-  <div className="AsuGisMapWrapper">
-    Test content
-  </div>
-);
+const AsuGisMap = props => <div className="AsuGisMapWrapper">Test content</div>;
 
 AsuGisMap.propTypes = {
   // bla: PropTypes.string,
