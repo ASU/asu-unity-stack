@@ -1,6 +1,3 @@
-import AsuGisFeaturePicker from './components/AsuGisFeaturePicker';
+import AsuGisFeaturePicker from "./components/AsuGisFeaturePicker";
 
-
-export {
-  AsuGisFeaturePicker
-}
+export { AsuGisFeaturePicker };

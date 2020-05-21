@@ -1,3 +1,3 @@
-import AsuNav from './AsuNav';
+import AsuNav from "./AsuNav";
 
 export default AsuNav;

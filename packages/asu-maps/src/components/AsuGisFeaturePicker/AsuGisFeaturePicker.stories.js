@@ -7,7 +7,7 @@ import { withA11y } from "@storybook/addon-a11y";
 export default {
   component: AsuGisFeaturePicker,
   title: "AsuGisFeaturePicker",
-  decorators: [withA11y, withKnobs]
+  decorators: [withA11y, withKnobs],
 };
 
 export const basic = () => <AsuGisFeaturePicker />;
@@ -19,7 +19,7 @@ export const withSelection = () => (
       name: "Mercado F",
       lat: -112.06557500040057,
       lng: 33.45072599973827,
-      parent: "CampusBuilding_7147_1"
+      parent: "CampusBuilding_7147_1",
     })}
   />
 );

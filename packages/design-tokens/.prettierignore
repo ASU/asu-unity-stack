@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+esm
+lib
+.cache
+coverage
+*.md

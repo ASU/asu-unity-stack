@@ -1,5 +1,5 @@
 {
-  "name": "asu-maps",
+  "name": "@asu-design-system/asu-maps",
   "version": "0.0.1",
   "description": "ASU implementation of GIS maps. Built with react-checkbox-tree and Reactstrap",
   "main": "src/index.js",
