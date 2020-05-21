@@ -1,3 +1,3 @@
-import AsuGcseSearch from './AsuGcseSearch';
+import AsuGcseSearch from "./AsuGcseSearch";
 
 export default AsuGcseSearch;

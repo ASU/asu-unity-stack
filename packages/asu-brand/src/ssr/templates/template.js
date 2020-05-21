@@ -1,13 +1,13 @@
 /**
  * Created by ctestama on 4/25/18.
  */
-const Item = ({ id, body }) => (`
+const Item = ({ id, body }) => `
     <div>
         <div id=${id}>${body}</div>
     </div>  
-`);
+`;
 
-const ComponentPage =  ({ title, props}) => (`
+const ComponentPage = ({ title, props }) => `
   <!DOCTYLE html>
   <html>
     <head>
@@ -31,9 +31,9 @@ const ComponentPage =  ({ title, props}) => (`
     <footer>
     </footer>
   </html>
-`);
+`;
 
-const FullPageSSR =  ({ header, footer, title, props}) => (`
+const FullPageSSR = ({ header, footer, title, props }) => `
   <!DOCTYLE html>
   <html>
     <head>
@@ -60,9 +60,9 @@ const FullPageSSR =  ({ header, footer, title, props}) => (`
         ${footer}
     </footer>
   </html>
-`);
+`;
 
-const FullPageSSRProd =  ({ header, footer, title, props}) => (`
+const FullPageSSRProd = ({ header, footer, title, props }) => `
   <!DOCTYLE html>
   <html>
     <head>
@@ -90,6 +90,6 @@ const FullPageSSRProd =  ({ header, footer, title, props}) => (`
         ${footer}
     </footer>
   </html>
-`);
+`;
 
-export {Item, FullPageSSR, FullPageSSRProd, ComponentPage};
+export { Item, FullPageSSR, FullPageSSRProd, ComponentPage };

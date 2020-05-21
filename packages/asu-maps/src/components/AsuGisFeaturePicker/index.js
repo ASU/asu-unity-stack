@@ -1,3 +1,3 @@
-import AsuGisFeaturePicker from './AsuGisFeaturePicker';
+import AsuGisFeaturePicker from "./AsuGisFeaturePicker";
 
 export default AsuGisFeaturePicker;

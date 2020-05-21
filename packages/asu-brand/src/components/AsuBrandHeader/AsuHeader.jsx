@@ -13,7 +13,7 @@ const ASUHeader = props => {
 
   const headerClass = cx(props.className, {
     openedSearch: searchOpen,
-    openedNav: mobileNavOpen
+    openedNav: mobileNavOpen,
   });
 
   useEffect(() => {
@@ -50,7 +50,7 @@ ASUHeader.propTypes = {
   children: PropTypes.node,
   nav: PropTypes.node,
   search: PropTypes.node,
-  siteName: PropTypes.node
+  siteName: PropTypes.node,
 };
 
 export default ASUHeader;

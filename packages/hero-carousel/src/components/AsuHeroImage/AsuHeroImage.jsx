@@ -10,14 +10,13 @@ Util.setGlobalCssModule(bootstrap);
 
 const heroButtons = buttons => {
   return buttons.map((item, index) => {
-
     if (!item.text || !item.url) {
       return "";
     }
 
     let bcolor = item.color || "primary";
     let style = {
-      marginLeft: index == 0 ? "0" : "1em"
+      marginLeft: index == 0 ? "0" : "1em",
     };
 
     return (
@@ -50,7 +49,7 @@ const AsuHeroImage = props => {
     <Jumbotron cssModule={bootstrap} fluid style={{ padding: "0" }}>
       <div
         style={{
-          position: "relative"
+          position: "relative",
         }}
       >
         <img
@@ -77,7 +76,7 @@ AsuHeroImage.propTypes = {
   tagline: PropTypes.string,
   title: PropTypes.string.isRequired,
   titleLink: PropTypes.string,
-  buttons: PropTypes.arrayOf(PropTypes.object)
+  buttons: PropTypes.arrayOf(PropTypes.object),
 };
 
 AsuHeroImage.defaultProps = {
@@ -93,7 +92,7 @@ const AsuBgHeroImage = props => {
     backgroundRepeat: "norepeat",
     backgroundSize: "cover",
     height: "100vh",
-    maxHeight: parseInt(props.maxHeight) + "px"
+    maxHeight: parseInt(props.maxHeight) + "px",
   };
 
   const buttons = props.buttons ? heroButtons(props.buttons) : "";
@@ -121,12 +120,12 @@ AsuBgHeroImage.propTypes = {
   maxHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.bool
-  ])
+    PropTypes.bool,
+  ]),
 };
 
 AsuBgHeroImage.defaultProps = {
-  maxHeight: 380
+  maxHeight: 380,
 };
 
 export { AsuHeroImage, heroTitle, heroButtons };

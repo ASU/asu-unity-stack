@@ -1,3 +1,3 @@
-import AsuGisMap from './AsuGisMap';
+import AsuGisMap from "./AsuGisMap";
 
 export default AsuGisMap;

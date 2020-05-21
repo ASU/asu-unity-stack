@@ -1,6 +1,6 @@
-import React from 'react'
-import { render} from '@testing-library/react'
-import AsuBgHeroImage from './'
+import React from "react";
+import { render } from "@testing-library/react";
+import AsuBgHeroImage from "./";
 
 let item = {
   src:
@@ -10,14 +10,14 @@ let item = {
   title: "Hero One Title",
   buttons: [
     { text: "button 1", url: "https://asu.edu", color: "primary" },
-    { text: "button 2", url: "https://asu.edu", color: "secondary" }
+    { text: "button 2", url: "https://asu.edu", color: "secondary" },
   ],
-  titleLink: "https://asu.edu"
+  titleLink: "https://asu.edu",
 };
 
-describe('The AsuBgHeroImage', () => {
-    it('renders the component', () => {
-      const {container} = render(<AsuBgHeroImage {...item} />);
-          expect(container.firstChild).toMatchSnapshot();
-    })
+describe("The AsuBgHeroImage", () => {
+  it("renders the component", () => {
+    const { container } = render(<AsuBgHeroImage {...item} />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
