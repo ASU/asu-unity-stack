@@ -59,6 +59,17 @@ module.exports = {
     "attribute/cti": CTITransform,
   },
   platforms: {
+    "js": {
+      transformGroup: "js",
+      buildPath: buildPath,
+      files: [
+        {
+          format: "javascript/module",
+          destination: "js/theme.js",
+        },
+      ],
+    },
+
     "css": {
       transformGroup: "css",
       buildPath: buildPath,
