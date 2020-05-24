@@ -24,7 +24,6 @@
     "bootstrap": "^4.3.1",
     "del": "^4.1.0",
     "dotenv": "^8.0.0",
-    "fastclick": "^1.0.6",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -48,7 +47,6 @@
     "sass-lint": "^1.13.1",
     "sass-lint-auto-fix": "^0.17.0",
     "sass-loader": "^7.1.0",
-    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll/archive/v10.3.1.tar.gz",
     "start-server-and-test": "^1.9.1",
     "storybook-readme": "^5.0.5",
     "webfontloader": "^1.6.28"

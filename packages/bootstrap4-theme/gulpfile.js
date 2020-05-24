@@ -144,7 +144,7 @@ gulp.task('clean-dist', function() {
 // Compiles the styles, scripts, and assets into the dist folder
 gulp.task(
   'compile',
-  gulp.series('styles', 'scripts', 'imagemin', 'copy-assets')
+  gulp.series('styles', 'imagemin', 'copy-assets')
 );
 
 // Run
