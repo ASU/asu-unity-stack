@@ -27,17 +27,17 @@
       "text-align": {
         "value": "center"
       },
-      "primary": {
+      "gold": {
         "background-color": {
-          "value": "{color.brand.primary.value}"
+          "value": "{color.brand.gold.value}"
         },
         "color": {
           "value": "{color.font.base.value}"
         }
       },
-      "secondary": {
+      "maroon": {
         "background-color": {
-          "value": "{color.brand.secondary.value}"
+          "value": "{color.brand.maroon.value}"
         },
         "color": {
           "value": "{color.font.inverse.base.value}"
