@@ -3,7 +3,7 @@
     "font": {
       "base": {
         "value": "{color.base.gray.1.value}",
-        "comment": "Default text color"
+        "comment": "Default text color on light background"
       },
       "alternate": {
         "value": "#2A2A2A",
@@ -11,31 +11,31 @@
       },
       "link": {
         "value": "{color.base.maroon.value}",
-        "comment": "Link text on light"
+        "comment": "Link text on light background"
       },
       "active": {
         "value": "{color.base.maroon.value}",
-        "comment": "Active link text on light"
+        "comment": "Active link text on light background"
       },
       "visited": {
         "value": "{color.base.darkmaroon.value}",
-        "comment": "Visited link text on light"
+        "comment": "Visited link text on light background"
       },
       "error": {
         "value": "#B72A2A",
-        "comment": "Error text on light"
+        "comment": "Error text on light background"
       },
       "warning": {
         "value": "#BD4800",
-        "comment": "Warning text on light"
+        "comment": "Warning text on light background"
       },
       "success": {
         "value": "#446D12",
-        "comment": "Success text on light"
+        "comment": "Success text on light background"
       },
       "info": {
         "value": "#126877",
-        "comment": "Information - text on light"
+        "comment": "Information - text on light background"
       },
       "inverse": {
         "base": {
