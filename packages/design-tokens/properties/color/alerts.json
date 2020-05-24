@@ -3,22 +3,18 @@
     "alerts": {
       "error": {
         "value": "#CC2F2F",
-        "type": "color",
         "comment": "Error"
       },
       "warning": {
         "value": "#FF7F32",
-        "type": "color",
         "comment": "Warning"
       },
       "info": {
         "value": "#00A3E0",
-        "type": "color",
         "comment": "Information"
       },
       "success": {
         "value": "#78BE20",
-        "type": "color",
         "comment": "Success"
       }
     }

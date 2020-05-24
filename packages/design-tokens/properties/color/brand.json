@@ -3,22 +3,18 @@
     "brand": {
       "primary": {
         "value": "{color.base.gold.value}",
-        "type": "color",
         "comment": "Primary brand color - Gold"
       },
       "secondary": {
         "value": "{color.base.maroon.value}",
-        "type": "color",
         "comment": "Secondary brand color - Maroon"
       },
       "dark": {
         "value": "{color.base.gray.1.value}",
-        "type": "color",
         "comment": "Dark brand color - Near Black"
       },
       "light": {
         "value": "{color.base.gray.4.value}",
-        "type": "color",
         "comment": "Light brand color - Gray"
       }
     }

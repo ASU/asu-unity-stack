@@ -3,47 +3,38 @@
     "border": {
       "lighter": {
         "value": "{color.base.gray.6_alt.value}",
-        "type": "color",
         "comment": "Border - Used for one card border variant"
       },
       "light": {
         "value": "{color.base.gray.6.value}",
-        "type": "color",
         "comment": "Border - Light"
       },
       "base": {
         "value": "{color.base.gray.5.value}",
-        "type": "color",
         "comment": "Border - Base"
       },
       "dark": {
         "value": "{color.base.gray.4.value}",
-        "type": "color",
         "comment": "Border - Dark"
       },
       "focus": {
         "value": "{color.base.bluefocus.value}",
-        "type": "color",
         "comment": "Border - Used for highlighting the page element with current focus"
       },
       "error": {
         "value": "{color.alerts.error.value}",
-        "type": "color",
         "comment": "Border - Error"
       },
       "warning": {
         "value": "{color.alerts.warning.value}",
-        "type": "color",
         "comment": "Border - Warning"
       },
       "success": {
         "value": "{color.alerts.success.value}",
-        "type": "color",
         "comment": "Border - Success"
       },
       "info": {
         "value": "{color.alerts.info.value}",
-        "type": "color",
         "comment": "Border - Information"
       }
     }

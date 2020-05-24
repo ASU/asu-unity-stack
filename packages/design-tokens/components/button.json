@@ -2,47 +2,37 @@
   "component": {
     "button": {
       "background-origin": {
-        "value": "padding-box",
-        "type": "text-property"
+        "value": "padding-box"
       },
       "background-position": {
-        "value": "0 0",
-        "type": "text-property"
+        "value": "0 0"
       },
       "background-repeat": {
-        "value": "no-repeat",
-        "type": "text-property"
+        "value": "no-repeat"
       },
       "border-radius": {
-        "value": "1.5",
-        "type": "radius"
+        "value": "1.5"
       },
       "disabled": {
         "opacity": {
-          "value": "50%",
-          "type": "percent"
+          "value": "50%"
         }
       },
       "font-size": {
-        "value": "2",
-        "type": "rem"
+        "value": "2"
       },
       "padding": {
-        "value": "{size.padding.medium.value}",
-        "type": "rem"
+        "value": "{size.padding.medium.value}"
       },
       "text-align": {
-        "value": "center",
-        "type": "text-property"
+        "value": "center"
       },
       "primary": {
         "background-color": {
-          "value": "{color.brand.primary.value}",
-          "type": "color"
+          "value": "{color.brand.primary.value}"
         },
         "color": {
-          "value": "{color.font.base.value}",
-          "type": "color"
+          "value": "{color.font.base.value}"
         }
       },
       "secondary": {

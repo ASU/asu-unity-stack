@@ -3,89 +3,72 @@
     "font": {
       "base": {
         "value": "{color.base.gray.1.value}",
-        "type": "color",
         "comment": "Default text color"
       },
       "alternate": {
         "value": "#2A2A2A",
-        "type": "color",
         "comment": "Alternate font color with lighter black level"
       },
       "link": {
         "value": "{color.base.maroon.value}",
-        "type": "color",
         "comment": "Link text on light"
       },
       "active": {
         "value": "{color.base.maroon.value}",
-        "type": "color",
         "comment": "Active link text on light"
       },
       "visited": {
         "value": "{color.base.darkmaroon.value}",
-        "type": "color",
         "comment": "Visited link text on light"
       },
       "error": {
         "value": "#B72A2A",
-        "type": "color",
-        "comment": "Error -text on light"
+        "comment": "Error text on light"
       },
       "warning": {
         "value": "#BD4800",
-        "type": "color",
-        "comment": "Warning - text on light"
+        "comment": "Warning text on light"
       },
       "success": {
         "value": "#446D12",
-        "type": "color",
-        "comment": "Success - text on light"
+        "comment": "Success text on light"
       },
       "info": {
         "value": "#126877",
-        "type": "color",
         "comment": "Information - text on light"
       },
       "inverse": {
         "base": {
           "value": "{color.base.gray.7.value}",
-          "type": "color",
-          "comment": "Base text on dark"
+          "comment": "Default text on dark background"
         },
         "link": {
           "value": "{color.base.gold.value}",
-          "type": "color",
-          "comment": "Link text on dark"
+          "comment": "Link text on dark background"
         },
         "active": {
           "value": "{color.base.gold.value}",
-          "type": "color",
-          "comment": "Active text on dark"
+          "comment": "Active link text on dark background"
         },
         "visited": {
           "value": "{color.base.darkgold.value}",
-          "type": "color",
-          "comment": "Visited link text on dark"
+          "comment": "Visited link text on dark background"
         },
         "error": {
           "value": "#FF7B7D",
-          "type": "color",
-          "comment": "Error - text on dark"
+          "comment": "Error text on dark background"
         },
         "warning": {
           "value": "#FF8034",
-          "type": "color",
-          "comment": "Warning - text on dark"
+          "comment": "Warning text on dark background"
         },
         "success": {
           "value": "#78BE20",
-          "type": "color",
-          "comment": "Success - text on dark"
+          "comment": "Success text on dark background"
         },
         "info": {
           "value": "#00B0F3",
-          "type": "color",
-          "comment": "Information - text on dark"
+          "comment": "Information text on dark background"
         }
       }
     }

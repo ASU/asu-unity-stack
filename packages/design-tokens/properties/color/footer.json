@@ -3,12 +3,10 @@
     "divider": {
       "darker": {
         "value": "#1E1E1E",
-        "type": "color",
         "comment": "Footer accent - darker"
       },
       "lighter": {
         "value": "#393939",
-        "type": "color",
         "comment": "Footer accent - lighter"
       }
     }
