@@ -10,7 +10,7 @@
     "prebuild:storybook": "yarn run test:generate-output",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
-    "build": "gulp styles",
+    "build": "gulp",
     "prepare": "yarn run build"
   },
   "devDependencies": {
