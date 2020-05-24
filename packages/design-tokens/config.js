@@ -64,10 +64,21 @@ module.exports = {
       buildPath: buildPath,
       files: [
         {
-          format: "javascript/module",
           destination: "js/theme.js",
+          format: "javascript/module",
         },
       ],
+    },
+
+    es6: {
+      transformGroup: "js",
+      buildPath: buildPath,
+      files: [
+        {
+          destination: "es6/tokens.js",
+          format: "javascript/es6"
+        }
+      ]
     },
 
     "css": {
