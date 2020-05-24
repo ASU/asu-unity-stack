@@ -1,16 +1,16 @@
 {
   "color": {
     "background": {
-      "base": {
+      "white": {
         "value": "{color.base.white.value}",
         "comment": "Background - White"
       },
-      "light": {
+      "gray": {
         "value": "{color.base.gray.6.value}",
         "comment": "Background - Gray"
       },
       "dark": {
-        "value": "{color.brand.dark.value}",
+        "value": "{color.base.gray.1.value}",
         "comment": "Background - Dark"
       },
       "success": {
