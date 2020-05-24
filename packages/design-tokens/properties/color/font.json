@@ -13,6 +13,10 @@
         "value": "{color.base.maroon.value}",
         "comment": "Link text on light background"
       },
+      "hover": {
+        "value": "{color.base.maroon.value}",
+        "comment": "Hover link text on light background"
+      },
       "active": {
         "value": "{color.base.maroon.value}",
         "comment": "Active link text on light background"
@@ -45,6 +49,10 @@
         "link": {
           "value": "{color.base.gold.value}",
           "comment": "Link text on dark background"
+        },
+        "hover": {
+          "value": "{color.base.gold.value}",
+          "comment": "Hover link text on dark background"
         },
         "active": {
           "value": "{color.base.gold.value}",
