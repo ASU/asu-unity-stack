@@ -1,11 +1,11 @@
 {
   "color": {
     "brand": {
-      "primary": {
+      "gold": {
         "value": "{color.base.gold.value}",
         "comment": "Primary brand color - Gold"
       },
-      "secondary": {
+      "maroon": {
         "value": "{color.base.maroon.value}",
         "comment": "Secondary brand color - Maroon"
       },
