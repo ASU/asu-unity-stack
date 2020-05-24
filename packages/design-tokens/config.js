@@ -70,7 +70,7 @@ module.exports = {
       ],
     },
 
-    es6: {
+    "es6": {
       transformGroup: "js",
       buildPath: buildPath,
       files: [
