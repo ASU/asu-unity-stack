@@ -1,3 +1,5 @@
+/** @jsx h */
+
 import { h } from "preact";
 import styled, { css } from "styled-components";
 import { Component } from "../../theme";
