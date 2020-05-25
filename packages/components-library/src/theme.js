@@ -1,7 +1,5 @@
 import theme from "@asu-design-system/design-tokens/build/js/theme";
 
-console.log(theme, "the theme");
-
 const Asset = theme.asset;
 
 const Color = theme.color;
