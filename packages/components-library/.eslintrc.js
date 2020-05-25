@@ -14,4 +14,9 @@ module.exports = {
     "no-useless-escape": "off",
     // "prettier/prettier": "error",
   },
+  settings: {
+    react: {
+      pragma: 'h',
+    },
+  },
 };

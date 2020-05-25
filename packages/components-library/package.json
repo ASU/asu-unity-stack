@@ -13,14 +13,14 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "yarn shx rm -rf ./build",
-    "build": "yarn clean && preact build",
+    "clean": "yarn shx rm -rf ./dist",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
     "serve": "sirv build --cors --single",
-    "dev": "preact watch",
+    "dev": "yarn clean && cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "jest",
     "storybook": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o export"
+    "build-storybook": "build-storybook -c .storybook -s public -o export"
   },
   "devDependencies": {
     "@asu-design-system/design-tokens": "0.0.1",
@@ -29,10 +29,14 @@
     "enzyme-adapter-preact-pure": "^2.0.0",
     "preact-cli": "^3.0.0-rc.6",
     "preact-render-spy": "^1.2.1",
+    "preact-render-to-json": "^3.6.6",
     "sirv-cli": "^0.4.5",
     "styled-components": "^5.1.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "global": "^4.3.2",
+    "preact": "^8.4.2"
+  },
   "peerDependencies": {
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4"
