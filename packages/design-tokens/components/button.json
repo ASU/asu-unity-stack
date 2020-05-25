@@ -115,7 +115,7 @@
           },
           "light": {
             "background-color": {
-              "value": "{color.base.light.value}"
+              "value": "{color.brand.light.value}"
             }
           },
           "white": {
