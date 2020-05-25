@@ -54,7 +54,6 @@
           "color": "{color.font.light.base.value}"
         }
       },
-      ,
       "close": {
         "height": {
           "value": "2"
