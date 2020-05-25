@@ -1,0 +1,47 @@
+{
+  "name": "@asu-design-system/components-library",
+  "version": "0.0.1",
+  "description": "ASU Web Standards-compliant web components library",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "restricted"
+  },
+  "repository": "https://github.com/asu/asu-unity-stack",
+  "author": "Colton Testamarck",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "clean": "yarn shx rm -rf ./build",
+    "build": "yarn clean && preact build",
+    "serve": "sirv build --cors --single",
+    "dev": "preact watch",
+    "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
+    "test": "jest",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o export"
+  },
+  "devDependencies": {
+    "@asu-design-system/design-tokens": "0.0.1",
+    "@storybook/preact": "^5.3.19",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-preact-pure": "^2.0.0",
+    "preact-cli": "^3.0.0-rc.6",
+    "preact-render-spy": "^1.2.1",
+    "sirv-cli": "^0.4.5",
+    "styled-components": "^5.1.0"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "preact": "^10.3.2",
+    "preact-render-to-string": "^5.1.4"
+  },
+  "jest": {
+    "preset": "jest-preset-preact",
+    "setupFiles": [
+      "<rootDir>/tests/__mocks__/browserMocks.js",
+      "<rootDir>/tests/__mocks__/setupTests.js"
+    ]
+  }
+}
