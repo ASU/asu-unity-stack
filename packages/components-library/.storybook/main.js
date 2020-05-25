@@ -13,7 +13,7 @@ module.exports = {
     '@storybook/addon-contexts',
     '@storybook/addon-a11y',
   ],
-  stories: ['../src/stories/**/*.stories.js'],
+  stories: ['../src/**/*.stories.js'],
   webpackFinal: config => {
     config.module.rules.push({
       test: [/\.stories\.js$/],

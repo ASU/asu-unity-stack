@@ -3,7 +3,7 @@
 import { h } from 'preact';
 import { linkTo } from '@storybook/addon-links';
 
-import Welcome from '../components/Button';
+import Welcome from '.';
 
 export default {
   title: 'Welcome',
