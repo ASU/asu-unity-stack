@@ -32,7 +32,7 @@
           "value": "{color.brand.gold.value}"
         },
         "color": {
-          "value": "{color.font.base.value}"
+          "value": "{color.font.dark.base.value}"
         }
       },
       "maroon": {
@@ -40,7 +40,7 @@
           "value": "{color.brand.maroon.value}"
         },
         "color": {
-          "value": "{color.font.inverse.base.value}"
+          "value": "{color.font.light.base.value}"
         }
       },
       "dark": {
@@ -48,7 +48,7 @@
           "value": "{color.brand.dark.value}"
         },
         "color": {
-          "value": "{color.font.inverse.base.value}"
+          "value": "{color.font.light.base.value}"
         }
       },
       "light": {
@@ -56,7 +56,7 @@
           "value": "{color.brand.light.value}"
         },
         "color": {
-          "value": "{color.font.base.value}"
+          "value": "{color.font.dark.base.value}"
         }
       }
     }

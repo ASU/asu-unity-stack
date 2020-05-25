@@ -1,47 +1,49 @@
 {
   "color": {
     "font": {
-      "base": {
-        "value": "{color.base.gray.1.value}",
-        "comment": "Default text color on light background"
+      "dark": {
+        "base": {
+          "value": "{color.base.gray.1.value}",
+          "comment": "Default text color on light background"
+        },
+        "alternate": {
+          "value": "#2A2A2A",
+          "comment": "Alternate font color with lighter black level"
+        },
+        "link": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Link text on light background"
+        },
+        "hover": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Hover link text on light background"
+        },
+        "active": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Active link text on light background"
+        },
+        "visited": {
+          "value": "{color.base.darkmaroon.value}",
+          "comment": "Visited link text on light background"
+        },
+        "error": {
+          "value": "#B72A2A",
+          "comment": "Error text on light background"
+        },
+        "warning": {
+          "value": "#BD4800",
+          "comment": "Warning text on light background"
+        },
+        "success": {
+          "value": "#446D12",
+          "comment": "Success text on light background"
+        },
+        "info": {
+          "value": "#126877",
+          "comment": "Information - text on light background"
+        }
       },
-      "alternate": {
-        "value": "#2A2A2A",
-        "comment": "Alternate font color with lighter black level"
-      },
-      "link": {
-        "value": "{color.base.maroon.value}",
-        "comment": "Link text on light background"
-      },
-      "hover": {
-        "value": "{color.base.maroon.value}",
-        "comment": "Hover link text on light background"
-      },
-      "active": {
-        "value": "{color.base.maroon.value}",
-        "comment": "Active link text on light background"
-      },
-      "visited": {
-        "value": "{color.base.darkmaroon.value}",
-        "comment": "Visited link text on light background"
-      },
-      "error": {
-        "value": "#B72A2A",
-        "comment": "Error text on light background"
-      },
-      "warning": {
-        "value": "#BD4800",
-        "comment": "Warning text on light background"
-      },
-      "success": {
-        "value": "#446D12",
-        "comment": "Success text on light background"
-      },
-      "info": {
-        "value": "#126877",
-        "comment": "Information - text on light background"
-      },
-      "inverse": {
+      "light": {
         "base": {
           "value": "{color.base.gray.7.value}",
           "comment": "Default text on dark background"

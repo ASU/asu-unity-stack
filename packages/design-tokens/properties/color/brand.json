@@ -3,19 +3,19 @@
     "brand": {
       "gold": {
         "value": "{color.base.gold.value}",
-        "comment": "Primary brand color - Gold"
+        "comment": "ASU Gold brand color"
       },
       "maroon": {
         "value": "{color.base.maroon.value}",
-        "comment": "Secondary brand color - Maroon"
+        "comment": "ASU Maroon brand color"
       },
       "dark": {
         "value": "{color.base.gray.1.value}",
-        "comment": "Dark brand color - Near Black"
+        "comment": "ASU Dark brand color - Near Black"
       },
       "light": {
         "value": "{color.base.gray.4.value}",
-        "comment": "Light brand color - Gray"
+        "comment": "ASU Light brand color - Gray"
       }
     }
   }
