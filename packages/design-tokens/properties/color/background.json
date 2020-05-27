@@ -1,18 +1,37 @@
 {
   "color": {
     "background": {
-      "base":         { "value":"{color.base.white.value}",                "attributes":{"font":"base"}},
-      "alt":          { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
-      "disabled":     { "value":"{color.base.grey.2.value}",               "attributes":{"font":"base"}},
-      "inverse":      { "value":"{color.base.grey.7.value}",               "attributes":{"font":"inverse"}},
-      "success":      { "value":"{color.alerts.success.background.value}", "attributes":{"font":"base"}},
-      "error":        { "value":"{color.alerts.error.background.value}",   "attributes":{"font":"base"}},
-      "warning":      { "value":"{color.alerts.warning.background.value}", "attributes":{"font":"base"}},
-      "info":         { "value":"{color.alerts.info.background.value}",    "attributes":{"font":"base"}},
-
+      "white": {
+        "value": "{color.base.white.value}",
+        "comment": "Background - White"
+      },
+      "gray": {
+        "value": "{color.base.gray.6.value}",
+        "comment": "Background - Gray"
+      },
+      "dark": {
+        "value": "{color.base.gray.1.value}",
+        "comment": "Background - Dark"
+      },
+      "success": {
+        "value": "#E9F5DB",
+        "comment": "Background - Success"
+      },
+      "error": {
+        "value": "#F7DDDD",
+        "comment": "Background - Error"
+      },
+      "warning": {
+        "value": "#FFEADE",
+        "comment": "Background - Warning"
+      },
+      "info": {
+        "value": "#D6F0FA",
+        "comment": "Background - Information"
+      },
       "overlay": {
-        "light": { "value": "#FFFFFFCC" },
-        "dark":  { "value": "#00000044" }
+        "value": "#19191900",
+        "comment": "Background - Modal overlay"
       }
     }
   }

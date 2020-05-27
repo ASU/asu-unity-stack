@@ -1,25 +1,21 @@
 {
   "color": {
     "alerts": {
-      "error":  {
-        "base":       { "value":"#CC2F2F"},
-        "font":       { "value":"#B72A2A"},
-        "background": { "value":"#F7DDDD"}
+      "error": {
+        "value": "#CC2F2F",
+        "comment": "Error"
       },
-      "warning":  {
-        "base":       { "value":"#FF7F32"},
-        "font":       { "value":"#BD4800"},
-        "background": { "value":"#FFEADE"}
+      "warning": {
+        "value": "#FF7F32",
+        "comment": "Warning"
       },
-      "info":  {
-        "base":       { "value":"#00A3E0"},
-        "font":       { "value":"#126877"},
-        "background": { "value":"#D6F0FA"}
+      "info": {
+        "value": "#00A3E0",
+        "comment": "Information"
       },
-      "success":  {
-        "base":       { "value":"#78BE20"},
-        "font":       { "value":"#446D12"},
-        "background": { "value":"#E9F5DB"}
+      "success": {
+        "value": "#78BE20",
+        "comment": "Success"
       }
     }
   }

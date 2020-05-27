@@ -1,0 +1,31 @@
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// ASU Brand Standard Fonts
+// Reference: https://brandguide.asu.edu/Elements-of-the-brand/Fonts
+
+$font-family-sans-serif: Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$font-weight-lighter: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: 900;
+
+// Body Font Color
+$body-color: $dark;
+
+// Text formatting
+.text-white {
+  color: $light !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}

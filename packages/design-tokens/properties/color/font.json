@@ -1,33 +1,85 @@
 {
   "color": {
     "font": {
-      "base":         { "value": "{color.base.grey.7.value}" },
-      "secondary":    { "value": "{color.base.grey.5.value}"  },
-      "tertiary":     { "value": "{color.base.grey.4.value}"  },
-      "link":         { "value": "{color.brand.primary.base.value}" },
-      "active":       { "value": "{color.brand.secondary.base.value}" },
-      "error":        { "value": "{color.alerts.error.font.value}" },
-      "warning":      { "value": "{color.alerts.warning.font.value}" },
-      "success":      { "value": "{color.alerts.success.font.value}" },
-      "info":         { "value": "{color.alerts.info.font.value}" },
-      "disabled":     { "value": "{color.font.secondary.value}" },
-
-      "inverse": {
-        "base":         { "value": "{color.base.grey.1.value}" },
-        "secondary":    { "value": "{color.base.grey.3.value}" },
-        "tertiary":     { "value": "{color.base.grey.5.value}" },
-        "link":         { "value": "{color.base.gold.value}" },
-        "active":       { "value": "" },
-        "error":        { "value": "" },
-        "warning":      { "value": "" },
-        "success":      { "value": "" },
-        "info":         { "value": "" },
-        "disabled":     { "value": "" }
+      "dark": {
+        "base": {
+          "value": "{color.base.gray.1.value}",
+          "comment": "Default text color on light background"
+        },
+        "alternate": {
+          "value": "#2A2A2A",
+          "comment": "Alternate font color with lighter black level"
+        },
+        "link": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Link text on light background"
+        },
+        "hover": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Hover link text on light background"
+        },
+        "active": {
+          "value": "{color.base.maroon.value}",
+          "comment": "Active link text on light background"
+        },
+        "visited": {
+          "value": "{color.base.darkmaroon.value}",
+          "comment": "Visited link text on light background"
+        },
+        "error": {
+          "value": "#B72A2A",
+          "comment": "Error text on light background"
+        },
+        "warning": {
+          "value": "#BD4800",
+          "comment": "Warning text on light background"
+        },
+        "success": {
+          "value": "#446D12",
+          "comment": "Success text on light background"
+        },
+        "info": {
+          "value": "#126877",
+          "comment": "Information - text on light background"
+        }
       },
-
-      "button": {
-        "primary":   { "value":"{color.font.inverse.base.value}" },
-        "secondary": { "value":"{color.font.link.value}" }
+      "light": {
+        "base": {
+          "value": "{color.base.gray.7.value}",
+          "comment": "Default text on dark background"
+        },
+        "link": {
+          "value": "{color.base.gold.value}",
+          "comment": "Link text on dark background"
+        },
+        "hover": {
+          "value": "{color.base.gold.value}",
+          "comment": "Hover link text on dark background"
+        },
+        "active": {
+          "value": "{color.base.gold.value}",
+          "comment": "Active link text on dark background"
+        },
+        "visited": {
+          "value": "{color.base.darkgold.value}",
+          "comment": "Visited link text on dark background"
+        },
+        "error": {
+          "value": "#FF7B7D",
+          "comment": "Error text on dark background"
+        },
+        "warning": {
+          "value": "#FF8034",
+          "comment": "Warning text on dark background"
+        },
+        "success": {
+          "value": "#78BE20",
+          "comment": "Success text on dark background"
+        },
+        "info": {
+          "value": "#00B0F3",
+          "comment": "Information text on dark background"
+        }
       }
     }
   }

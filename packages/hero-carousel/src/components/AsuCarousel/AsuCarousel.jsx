@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import { AsuHeroImage } from "../AsuHeroImage";
 import AsuBgHeroImage from "../AsuBgHeroImage";
-import bootstrap from "asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css";
+import bootstrap from "@asu-design-system/bootstrap4-theme/dist/css/bootstrap-asu.min.css";
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049

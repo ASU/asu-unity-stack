@@ -1,0 +1,43 @@
+// ASU Design System Spacing
+
+// If we are going to override the spacing schema in Bootstrap 4,
+// we need to keep in mind how these spacing variables are used in various
+// utilities. See Spacing Documentation here:
+// https://getbootstrap.com/docs/4.4/utilities/spacing/
+//
+// Because the familiar size abbreviations, "xs", "sm", "lg", are actually only
+// used for the media query context, it would be a mistake to use the same
+// schema here for spacing. THis is why the vanilla Bootstrap Spacing schema is
+// numeric.
+
+// SPACE Variables
+$asu-space-0: 0;
+$asu-space-2: 0.125rem; // 2px
+$asu-space-4: 0.25rem;  // 4px
+$asu-space-8: 0.5rem;   // 8px
+$asu-space-16: 1rem;    // 16px
+$asu-space-24: 1.5rem;  // 24px
+$asu-space-32: 2rem;    // 32px
+$asu-space-48: 3rem;    // 48px
+$asu-space-56: 3.5rem;  // 56px
+$asu-space-64: 4rem;    // 64px
+$asu-space-96: 6rem;    // 64px
+$asu-space-128: 8rem;   // 128px
+
+// Spacing
+//
+// control the default styling of most of elements
+$spacers: (
+  '0': 0,
+  '2': $asu-space-2,
+  '4': $asu-space-4,
+  '8': $asu-space-8,
+  '16': $asu-space-16,
+  '24': $asu-space-24,
+  '32': $asu-space-32,
+  '48': $asu-space-48,
+  '56': $asu-space-56,
+  '64': $asu-space-64,
+  '96': $asu-space-96,
+  '128': $asu-space-128,
+);

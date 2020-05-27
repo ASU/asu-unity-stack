@@ -9,6 +9,8 @@
 
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';
+@import 'variables/spacing';
+@import 'variables/typography';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
@@ -16,7 +18,46 @@
 @import '../../node_modules/bootstrap/scss/mixins';
 
 // To remove values from Bootstrap maps, these must occur between Required and Optional imports.
-// $theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
+// clean the vanilla colors from 'colors' map
+$colors: map-remove(
+  $colors,
+  'blue',
+  'indigo',
+  'purple',
+  'pink',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'cyan',
+  'gray',
+  'gray-dark'
+);
+
+// Remove vanilla grayscale colors
+$grays: map-remove(
+  $grays,
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900'
+);
+
+// Remove the vanilla primary and secondary brand colors
+$theme-colors: map-remove($theme-colors, 'primary', 'secondary');
+
+// Remove the vanilla primary and secondary brand colors
+$theme-colors: map-remove($theme-colors, 'primary', 'secondary');
+
+// Remove the vanilla spacing units not overwritten already
+$theme-colors: map-remove($theme-colors, 1, 3, 5);
 
 //= Bootstrap Scaffolding (optional)
 @import '../../node_modules/bootstrap/scss/root';
@@ -54,32 +95,5 @@
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../node_modules/bootstrap/scss/print';
 
-//== Override Scaffolding Examples
-// @import 'scaffolding';
-// @import 'asu-scaffolding';
-// @import 'tables';
-// @import 'forms';
-
-//== Override Components
-// @import 'alerts';
-// @import 'badges';
-// @import 'breadcrumbs';
-// @import 'buttons';
-// @import 'calendar';
-// @import 'carousel';
-// etc...
-
-//= ASU extensions
-// @import 'animations';
-// @import 'articles';
-// @import 'campus-visit';
-// @import 'flex-video';
-// @import 'hover-effects';
-// @import 'hero';
-// @import 'mega-menu';
-// @import 'profile';
-// @import 'related-links';
-// @import 'thumbnails';
-
 //== FontAwesome
-// @import '/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
