@@ -13,6 +13,24 @@
       "border-radius": {
         "value": "1.5"
       },
+      "display": {
+        "value": "block"
+      },
+      "font-weight": {
+        "value": "bold"
+      },
+      "line-height": {
+        "value": "1.5"
+      },
+      "max-width": {
+        "value": "17.5"
+      },
+      "padding": {
+        "value": "{size.padding.medium.value}"
+      },
+      "text-align": {
+        "value": "left-align"
+      },
       "disabled": {
         "opacity": {
           "value": "50%"
@@ -26,6 +44,132 @@
       },
       "text-align": {
         "value": "center"
+      "badge": {
+        "background-color": {
+          "value": "{color.brand.light.value}"
+        },
+        "border-radius": {
+          "value": "1.25"
+        },
+        "font-weight": {
+          "value": "normal"
+        },
+        "height": {
+          "value": "1.375",
+          "comment": "Possible error in XD Buttons: 22px not factor of 8"
+        },
+        "dark": {
+          "color": "{color.font.dark.base.value}"
+        },
+        "light": {
+          "color": "{color.font.light.base.value}"
+        }
+      },
+      "close": {
+        "height": {
+          "value": "2"
+        },
+        "opacity": {
+          "value": "50%"
+        },
+        "width": {
+          "value": "2"
+        },
+        "disabled": {
+          "opacity": {
+            "value": "100%"
+          }
+        },
+        "white": {
+          "background-color": {
+            "value": "{color.base.white.value}"
+          }
+        },
+        "gray": {
+          "background-color": {
+            "value": "{color.brand.light.value}"
+          }
+        }
+      },
+      "carousel": {
+        "position": {
+          "height": {
+            "value": "1"
+          },
+          "width": {
+            "value": "1"
+          },
+          "inactive": {
+            "background-color": {
+              "value": "{color.brand.light.value}"
+            },
+            "opacity": {
+              "value": "25%"
+            }
+          },
+          "black": {
+            "background-color": {
+              "value": "{color.brand.dark.value}"
+            }
+          },
+          "white": {
+            "background-color": {
+              "value": "{color.base.white.value}"
+            }
+          }
+        },
+        "slider": {
+          "disabled": {
+            "opacity": {
+              "value": "50%"
+            }
+          },
+          "light": {
+            "background-color": {
+              "value": "{color.brand.light.value}"
+            }
+          },
+          "white": {
+            "background-color": {
+              "value": "{color.base.white.value}"
+            }
+          }
+        }
+      },
+      "small": {
+        "font-size": {
+          "value": "0.75"
+        },
+        "height": {
+          "value": "1.375",
+          "comment": "Possible error in XD Buttons: 22px not factor of 8"
+        },
+        "min-width": {
+          "value": "4"
+        }
+      },
+      "medium": {
+        "font-size": {
+          "value": "0.875"
+        },
+        "height": {
+          "value": "2"
+        },
+        "min-width": {
+          "value": "5"
+        }
+      },
+      "large": {
+        "font-size": {
+          "value": "2"
+        },
+        "height": {
+          "value": "3",
+          "comment": "Possible error in XD buttons: 49px not factor of 8, even ratio for REMs"
+        },
+        "min-width": {
+          "value": "8"
+        }
       },
       "gold": {
         "background-color": {
