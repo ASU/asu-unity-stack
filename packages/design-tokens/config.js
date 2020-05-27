@@ -84,6 +84,7 @@ module.exports = {
     "css": {
       transformGroup: "css",
       buildPath: buildPath,
+      prefix: "uds",
       files: [
         {
           destination: "variables.css",
