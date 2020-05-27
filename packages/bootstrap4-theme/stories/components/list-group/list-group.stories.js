@@ -1,6 +1,14 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
+// List type: ordered, unordered, steps
+// icons fa
+// darkmode, lightmode
+// maroon bullets/#s/icons/steps
+// gold bullets/#s/icons/steps
+// black bullets/#s/icons/steps
+// white bullets/#s/icons/steps
+
 storiesOf('Components/List group', module)
   .addParameters({
     happo: false,
