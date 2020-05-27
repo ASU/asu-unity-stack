@@ -40,15 +40,15 @@ storiesOf('Components/Buttons', module)
 
 .add('Button sizes', () => `<button type="button" class="btn btn-gold btn-lg">Large button</button><button type="button" class="btn btn-maroon btn-lg">Large button</button><hr/>
 <button type="button" class="btn btn-gold">Default button</button><button type="button" class="btn btn-maroon">Default button</button><hr/>
-<button type="button" class="btn btn-gold btn-sm">Small button</button><button type="button" class="btn btn-maroon btn-sm">Small button</button><hr/>
+<button type="button" class="btn btn-gold btn-md">Medium button</button><button type="button" class="btn btn-maroon btn-md">Medium button</button><hr/><button type="button" class="btn btn-gold btn-sm">Small button</button><button type="button" class="btn btn-maroon btn-sm">Small button</button><hr/>
 <button type="button" class="btn btn-gold btn-lg btn-block">Block level button</button><button type="button" class="btn btn-maroon btn-lg btn-block">Block level button</button>`)
 
-.add('Active state', () => `<a href="#" class="btn btn-gold btn-lg active" role="button" aria-pressed="true">Gold link</a>
-<a href="#" class="btn btn-maroon btn-lg active" role="button" aria-pressed="true">Link</a>`)
+.add('Active state', () => `<a href="#" class="btn btn-gold active" role="button" aria-pressed="true">Gold link</a>
+<a href="#" class="btn btn-maroon active" role="button" aria-pressed="true">Link</a>`)
 
-.add('Disabled state', () => `<button type="button" class="btn btn-lg btn-gold" disabled>Gold button</button>
-<button type="button" class="btn btn-maroon btn-lg" disabled>Button</button><hr/><a href="#" class="btn btn-gold btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Gold link</a>
-<a href="#" class="btn btn-maroon btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`)
+.add('Disabled state', () => `<button type="button" class="btn btn-gold" disabled>Gold button</button>
+<button type="button" class="btn btn-maroon" disabled>Button</button><hr/><a href="#" class="btn btn-gold disabled" tabindex="-1" role="button" aria-disabled="true">Gold link</a>
+<a href="#" class="btn btn-maroon disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`)
 
 .add('Button toggle state', () => `<button type="button" class="btn btn-gold" data-toggle="button" aria-pressed="false" autocomplete="off">
   Single toggle

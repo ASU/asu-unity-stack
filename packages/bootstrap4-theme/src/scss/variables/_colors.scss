@@ -96,3 +96,24 @@ $link-hover-decoration: underline;
 
 // $stretched-link-pseudo-element: after;
 // $stretched-link-z-index: 1;
+
+$card-cap-bg:                       rgba($white, .03);
+
+$pagination-color:                  $dark;
+$pagination-border-width:           0;
+$pagination-border-color:           $white;
+$pagination-outline:                0;
+$pagination-line-height:            1;
+
+$pagination-focus-outline:          0;
+
+$pagination-active-color:           $white;
+$pagination-active-bg:              $maroon;
+$pagination-active-border-color:    $maroon;
+
+$nav-tabs-link-color:               $dark;
+$nav-tabs-border-width:             1px;
+$nav-tabs-border-color:             $gray-3;
+$nav-tabs-border-radius:            0;
+$nav-tabs-link-active-color:        $maroon;
+$nav-tabs-link-active-border-color: $maroon;

@@ -97,3 +97,6 @@ $theme-colors: map-remove($theme-colors, 1, 3, 5);
 
 //== FontAwesome
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
+// css Bootstrap doesn't have variables for
+@import 'variables/misc';

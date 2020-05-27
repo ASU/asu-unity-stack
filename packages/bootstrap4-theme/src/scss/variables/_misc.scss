@@ -1,0 +1,230 @@
+// Headings
+h1 {
+  font-size:64px;
+  font-weight:700;
+  line-height: 68px;
+  letter-spacing:-0.035em;
+}
+h2 {
+  font-size:40px;
+  font-weight:700;
+  line-height: 44px;
+  letter-spacing:-0.030em;
+}
+h3 {
+  font-size:24px;
+  font-weight:700;
+  line-height: 28px;
+  letter-spacing:-0.025em;
+}
+h4 {
+  font-size:20px;
+  font-weight:700;
+  line-height: 26px;
+  letter-spacing:-0.02em;
+}
+h5 {
+  font-size:16px;
+  font-weight:700;
+  line-height: 24px;
+  letter-spacing:-0.01em;
+}
+.btn {
+  text-decoration:none;
+  font-weight:bold;
+}
+.btn-medium {
+  font-size:14px;
+  padding:8px 16px;
+}
+.btn-small {
+  font-size:12px;
+  padding:4px 12px;
+}
+.btn {
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1);
+  }
+}
+.accordion .btn {
+  &:hover {
+    transform: none;
+  }
+  &:active {
+    transform: none;
+  }
+}
+.btn-gray {
+  background-color:$gray-4;
+  color:$black;
+}
+.img-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+}
+.col.card {
+  padding-right:0;
+  padding-left:0;
+}
+.page-link {
+  border-radius:400px;
+  text-decoration: none;
+  font-weight:bold;
+}
+.page-item:last-child .page-link {
+  border-radius:400px;
+}
+.page-item:first-child .page-link {
+  border-radius:400px;
+}
+.nav-tabs .nav-link {
+  color:#000;
+  padding: 0.25em 1em;
+  border-right:0;
+  border-left:0;
+  border-top:0;
+  text-decoration:none;
+  font-weight:bold;
+}
+.nav-tabs .nav-link.active {
+  border-bottom: solid 4px !important; /* Temp */
+}
+label {
+  font-weight:bold;
+  font-size:.85em;
+}
+
+//
+// Accordion
+//
+
+.accordion {
+  > .card {
+    overflow: hidden;
+    border-left:solid 4px $gold;
+    margin-bottom:$asu-space-16;
+
+    &:not(:last-of-type) {
+      border-bottom:solid $card-border-width $card-border-color;
+      @include border-radius(0);
+    }
+
+    &:not(:first-of-type) {
+      //@include border-top-radius(0);
+      border-bottom: solid $card-border-width $card-border-color;
+      @include border-radius(0);
+    }
+
+    > .card-header {
+      @include border-radius(0);
+      margin-bottom: 0;
+      background-color:$white;
+      padding: .25rem .25rem;
+      border-bottom: solid $card-border-width $card-border-color;
+    }
+    > .card-header button {
+      color:#000;
+      font-weight: bold;
+      width: 100%;
+      text-align: left;
+    }
+    > .card-header button:focus {
+      text-decoration:none;
+    }
+    > div > .card-body {
+      background-color:$light;
+    }
+  }
+}
+
+[data-toggle="collapse"]:after {
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>");
+    transform: rotate(180deg) ;
+    transition: all linear 0.25s;
+    float: right;
+    height: 20px;
+    width: 20px;
+  }
+[data-toggle="collapse"].collapsed:after {
+  transform: rotate(0deg) ;
+}
+
+
+
+//
+// Cards
+//
+
+.card-img-top img {
+  max-width:100%;
+  height:auto;
+}
+.card-header {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.card-header .card-title {
+  margin-bottom:0;
+}
+.card-title a {
+  color:$black;
+  text-decoration: none;
+}
+.card-title a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-header .card-title:after {
+  content:"";
+  width:32px;
+  height:4px;
+  display:block;
+  background-color:$gold;
+  margin-top:16px;
+}
+.card-degree .card-footer {
+  background-color:$white;
+}
+.card-degree .card-footer a {
+  color: $black;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-degree .card-footer a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-footer a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+.card-news .card-header,
+.card-news .card-body {
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color:$white;
+}
+.card-news .card-img-top {
+  margin-bottom: -32px;
+}
+.card-event .card-header {
+  border-top: solid 4px $gold;
+}
+.bg-dark a, .bg-primary a, .bg-black a {
+  color:$light;
+}
+.bg-light a, .bg-secondary a, .bg-white a {
+  color:$primary;
+}
