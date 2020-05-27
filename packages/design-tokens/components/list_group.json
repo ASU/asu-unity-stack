@@ -1,0 +1,10 @@
+{
+  "component": {
+    "list_group": {},
+    "list_group_item": {
+      "border": {
+        "value": "none"
+      }
+    }
+  }
+}
