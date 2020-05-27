@@ -28,15 +28,13 @@ storiesOf('Components/Buttons', module)
 <button type="button" class="btn btn-warning">Alert: Warning</button>
 <button type="button" class="btn btn-info">Alert: Info</button>`)
 
-.add('Button outlines', () => `<button type="button" class="btn btn-gold">Gold</button>
-<button type="button" class="btn btn-outline-maroon">Maroon</button>
-<button type="button" class="btn btn-outline-link">Link</button>
-<button type="button" class="btn btn-outline-light">Light</button>
-<button type="button" class="btn btn-outline-dark">Dark</button><hr>
-<button type="button" class="btn btn-outline-success">Alert: Success</button>
-<button type="button" class="btn btn-outline-danger">Alert: Danger</button>
-<button type="button" class="btn btn-outline-warning">Alert: Warning</button>
-<button type="button" class="btn btn-outline-info">Alert: Info</button>`)
+.add('Button tags', () => `<div class="container-fluid"><div class="row"><div class="col col-sm-4 bg-white p-3"><button type="button" class="btn btn-tag btn-tag-alt-white">Default tag</button></div>
+<div class="col col-sm-4 bg-light p-3"><button type="button" class="btn btn-tag btn-tag-alt-gray">Tag alt gray</button></div>
+<div class="col col-sm-4 bg-dark p-3"><button type="button" class="btn btn-tag btn-tag-alt-black">Tag alt black</button></div></div></div>`)
+
+.add('Links', () => `<div class="container-fluid"><div class="row"><div class="col col-sm-4 bg-white p-3"><a href="#" class="">This is a default link</a></div>
+<div class="col col-sm-4 bg-light p-3"><a href="#" class="">This is a default link</a></div>
+<div class="col col-sm-4 bg-dark p-3"><a href="#" class="text-gold">This is a default link</a></div></div></div>`)
 
 .add('Button sizes', () => `<button type="button" class="btn btn-gold btn-lg">Large button</button><button type="button" class="btn btn-maroon btn-lg">Large button</button><hr/>
 <button type="button" class="btn btn-gold">Default button</button><button type="button" class="btn btn-maroon">Default button</button><hr/>
