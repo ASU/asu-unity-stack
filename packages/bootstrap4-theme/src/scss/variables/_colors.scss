@@ -1,10 +1,5 @@
 // ASU Brand Standard Colors
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
-$maroon: $uds-color-base-maroon;
-$gold: $uds-color-base-gold;
-$blue: $uds-color-base-blue;
-$green: $uds-color-base-green;
-$orange: $uds-color-base-orange;
 
 $black: $uds-color-base-black;
 $gray-1: $uds-color-base-gray-1;
@@ -16,15 +11,28 @@ $gray-6: $uds-color-base-gray-6;
 $gray-7: $uds-color-base-gray-7;
 $white: $uds-color-base-white;
 
-$primary: $uds-color-base-gold;
-$secondary: $uds-color-base-maroon;
+$grays: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    '1': $gray-1,
+    '2': $gray-2,
+    '3': $gray-3,
+    '4': $gray-4,
+    '5': $gray-5,
+    '6': $gray-6,
+    '7': $gray-7,
+  ),
+  $grays
+);
+
+$gold: $uds-color-base-gold;
+$maroon: $uds-color-base-maroon;
 $dark: $uds-color-base-gray-1;
 $light: $uds-color-base-gray-4;
-
-$danger: $uds-color-alerts-error;
-$warning: $uds-color-alerts-warning;
-$success: $uds-color-alerts-success;
-$info: $uds-color-alerts-info;
+$blue: $uds-color-base-blue;
+$green: $uds-color-base-green;
+$orange: $uds-color-base-orange;
 
 $bluefocus: $uds-color-base-bluefocus;
 $darkgold: $uds-color-base-darkgold;
@@ -33,7 +41,7 @@ $darkmaroon: $uds-color-base-darkmaroon;
 $gray-3-alt-alpha: $uds-color-base-gray-3-alt-alpha;
 $gray-3-alt: $uds-color-base-gray-3-alt;
 
-$colors: () !default;
+$colors: ();
 $colors: map-merge(
   (
     'gold': $gold,
@@ -43,19 +51,48 @@ $colors: map-merge(
     'orange': $orange,
     'black': $black,
     'white': $white,
+    'bluefocus': $bluefocus,
+    'darkgold': $darkgold,
+    'darkmaroon': $darkmaroon,
+  ),
+  $colors
+);
+
+$danger: $uds-color-alerts-error;
+$warning: $uds-color-alerts-warning;
+$success: $uds-color-alerts-success;
+$info: $uds-color-alerts-info;
+
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    'gold': $gold,
+    'maroon': $maroon,
     'success': $success,
     'info': $info,
     'warning': $warning,
     'danger': $danger,
     'light': $light,
     'dark': $dark,
-    'gray-1': $gray-1,
-    'gray-2': $gray-2,
-    'gray-3': $gray-3,
-    'gray-4': $gray-4,
-    'gray-5': $gray-5,
-    'gray-6': $gray-6,
-    'gray-7': $gray-7,
   ),
-  $colors
+  $theme-colors
 );
+
+// Links
+//
+// Copied from vanilla Bootstrap _variables.scss to override them
+//
+// Unsure if the link hover darken and stretched link variables will cause issues for us
+// Commented out for now, until we determine if we need to override.
+
+$link-color: $maroon;
+$link-decoration: none;
+$link-hover-color: $maroon;
+$link-hover-decoration: underline;
+
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+// $emphasized-link-hover-darken-percentage: 15%;
+
+// $stretched-link-pseudo-element: after;
+// $stretched-link-z-index: 1;
