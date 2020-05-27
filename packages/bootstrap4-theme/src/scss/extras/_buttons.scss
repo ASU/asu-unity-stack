@@ -1,0 +1,33 @@
+// Extra styles that don't have bootstrap variables to override
+.btn {
+  text-decoration:$uds-component-button-text-decoration;
+  font-weight:$uds-component-button-font-weight;
+}
+.btn-md {
+  font-size:$uds-component-button-medium-font-size;
+  padding: $uds-component-button-padding-y-medium $uds-component-button-padding-x-medium;
+}
+.btn-sm {
+  font-size:$uds-component-button-small-font-size;
+  padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small; 
+}
+.btn {
+  &:hover {
+    transform: $uds-component-button-hover-state-transform;
+  }
+  &:active {
+    transform: $uds-component-button-active-state-transform;
+  }
+}
+.accordion .btn {
+  &:hover {
+    transform: none;
+  }
+  &:active {
+    transform: none;
+  }
+}
+.btn-gray {
+  background-color:$gray-4;
+  color:$black;
+}

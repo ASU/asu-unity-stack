@@ -41,8 +41,7 @@ $darkmaroon: $uds-color-base-darkmaroon;
 $gray-3-alt-alpha: $uds-color-base-gray-3-alt-alpha;
 $gray-3-alt: $uds-color-base-gray-3-alt;
 
-$colors: () !default;
-
+$colors: ();
 $colors: map-merge(
   (
     'gold': $gold,
@@ -76,6 +75,8 @@ $theme-colors: map-merge(
     'danger': $danger,
     'light': $light,
     'dark': $dark,
+<<<<<<< HEAD
+=======
     'gray-1': $gray-1,
     'gray-2': $gray-2,
     'gray-3': $gray-3,
@@ -83,6 +84,7 @@ $theme-colors: map-merge(
     'gray-5': $gray-5,
     'gray-6': $gray-6,
     'gray-7': $gray-7,
+>>>>>>> 7620a5878602275e47d096894ca7c76213e775c4
   ),
   $theme-colors
 );
