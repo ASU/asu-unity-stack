@@ -36,6 +36,14 @@
           "value": "50%"
         }
       },
+      "font-size": {
+        "value": "2"
+      },
+      "padding": {
+        "value": "{size.padding.medium.value}"
+      },
+      "text-align": {
+        "value": "center"
       "badge": {
         "background-color": {
           "value": "{color.brand.light.value}"
