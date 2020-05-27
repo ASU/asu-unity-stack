@@ -18,7 +18,6 @@
 @import '../../node_modules/bootstrap/scss/mixins';
 
 // To remove values from Bootstrap maps, these must occur between Required and Optional imports.
-
 // clean the vanilla colors from 'colors' map
 $colors: map-remove(
   $colors,
