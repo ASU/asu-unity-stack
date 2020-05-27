@@ -1,10 +1,5 @@
 // ASU Brand Standard Colors
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
-$maroon: $uds-color-base-maroon;
-$gold: $uds-color-base-gold;
-$blue: $uds-color-base-blue;
-$green: $uds-color-base-green;
-$orange: $uds-color-base-orange;
 
 $black: $uds-color-base-black;
 $gray-1: $uds-color-base-gray-1;
@@ -15,17 +10,6 @@ $gray-5: $uds-color-base-gray-5;
 $gray-6: $uds-color-base-gray-6;
 $gray-7: $uds-color-base-gray-7;
 $white: $uds-color-base-white;
-
-
-$primary: $uds-color-base-gold;
-$secondary: $uds-color-base-maroon;
-$dark: $uds-color-base-gray-1;
-$light: $uds-color-base-gray-4;
-
-$danger: $uds-color-alerts-error;
-$warning: $uds-color-alerts-warning;
-$success: $uds-color-alerts-success;
-$info: $uds-color-alerts-info;
 
 $grays: ();
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -57,8 +41,7 @@ $darkmaroon: $uds-color-base-darkmaroon;
 $gray-3-alt-alpha: $uds-color-base-gray-3-alt-alpha;
 $gray-3-alt: $uds-color-base-gray-3-alt;
 
-$colors: () !default;
-
+$colors: ();
 $colors: map-merge(
   (
     'gold': $gold,
@@ -92,17 +75,6 @@ $theme-colors: map-merge(
     'danger': $danger,
     'light': $light,
     'dark': $dark,
-    'gray-1': $gray-1,
-    'gray-2': $gray-2,
-    'gray-3': $gray-3,
-    'gray-4': $gray-4,
-    'gray-5': $gray-5,
-    'gray-6': $gray-6,
-    'gray-7': $gray-7,
-  ),
-  $colors
-);
-=======
   ),
   $theme-colors
 );
