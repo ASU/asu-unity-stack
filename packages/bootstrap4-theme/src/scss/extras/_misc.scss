@@ -29,38 +29,6 @@ h5 {
   line-height: 24px;
   letter-spacing:-0.01em;
 }
-.btn {
-  text-decoration:none;
-  font-weight:bold;
-}
-.btn-medium {
-  font-size:14px;
-  padding:8px 16px;
-}
-.btn-small {
-  font-size:12px;
-  padding:4px 12px;
-}
-.btn {
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:active {
-    transform: scale(1);
-  }
-}
-.accordion .btn {
-  &:hover {
-    transform: none;
-  }
-  &:active {
-    transform: none;
-  }
-}
-.btn-gray {
-  background-color:$gray-4;
-  color:$black;
-}
 .img-background {
   background-size: cover;
   background-repeat: no-repeat;

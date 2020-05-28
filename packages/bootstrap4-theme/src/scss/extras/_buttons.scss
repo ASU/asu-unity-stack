@@ -26,19 +26,47 @@
       color: $gray-7;
     }
   }
+  &.btn-circle {
+    padding: $asu-space-4 $asu-space-4;
+    width:$asu-space-32;
+    height:$asu-space-32;
+    &.btn-circle-alt-white {
+      background: $gray-6;
+      color: $body-color;
+    }
+    &.btn-circle-alt-gray {
+      background: $gray-4;
+      color: $body-color;
+    }
+    &.btn-circle-alt-black {
+      background: $gray-3;
+      color: $gray-7;
+    }
+    &.btn-circle-large {
+      width:$asu-space-64;
+      height:$asu-space-64;
+      font-size:$uds-component-button-large-font-size;
+    }
+  }
   &:hover {
     transform: $uds-component-button-hover-state-transform;
   }
   &:active {
     transform: $uds-component-button-active-state-transform;
   }
-  .btn-gray {
-    background-color:$gray-4;
-    color:$black;
-  }
 }
 
-
+// Remove background changing hover effects from all buttons
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value,
+    $hover-background: $value,
+    $hover-border: $value,
+    $active-background: $value,
+    $active-border: $value
+    );
+  }
+}
 
 .accordion .btn {
   &:hover {
