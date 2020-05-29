@@ -1,0 +1,131 @@
+// ASU Design System Lists without Bootstrap variables to override.
+
+// General list spacing.
+ul,
+ol {
+  padding: 48px 48px 48px 56px;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  padding: 12px 28px 0px;
+}
+
+ul li,
+ol li {
+  max-width: 75ch; // TODO Confirm should apply globally and not just on dark.
+  margin-bottom: 12px;
+}
+ul li:last-of-type,
+ol li:last-of-type {
+  margin-bottom: 0;
+}
+
+// Unordered list base styles
+ul {
+  list-style: none;
+}
+
+ul li:before,
+ul ul ul li:before,
+ul ul ul ul ul li:before {
+  content: '\2022 ';
+  font-size: 32px;
+  vertical-align: middle;
+  line-height: 24px;
+  padding-right: 0.8rem;
+  margin-left: -1.5rem;
+}
+
+ul ul li:before,
+ul ul ul ul li:before {
+  content: '\25E6 ';
+}
+
+// Ordered list base styles.
+// We manually manage the counter since we need to remove the trailing periods.
+ol {
+  list-style-type: none;
+  counter-reset: listcounter;
+}
+ol li::before {
+  content: counter(listcounter) ' ';
+  counter-increment: listcounter;
+  line-height: 24px;
+  padding-right: 0.75rem;
+  margin-left: -1.6rem;
+}
+
+ol li:nth-of-type(9) ~ li::before {
+  content: counter(listcounter) ' ';
+}
+
+// Maroon bullets
+ul.maroon li:before,
+ol.maroon li::before {
+  color: $maroon;
+}
+
+// Maroon icon bullets
+ul.fa-ul.maroon li .fa-li {
+  color: $maroon;
+}
+
+// Icon bullets styles
+ul.fa-ul {
+  list-style-type: none;
+}
+
+ul.fa-ul {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 48px 48px 48px 56px;
+}
+
+ul.fa-ul li:before {
+  content: none;
+  font-size: 32px;
+  vertical-align: middle;
+  line-height: 24px;
+  padding-right: 0.8rem;
+  margin-left: -1.5rem;
+}
+
+// Dark mode.
+ul.darkmode,
+ol.darkmode {
+  background-color: $dark;
+  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+}
+
+ul.fa-ul.darkmode {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 48px 48px 48px 56px;
+  background-color: $dark;
+  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+}
+
+// Default white list bullets (for dark mode)
+ul.fa-ul.darkmode li:before {
+  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+}
+
+// Default white list bullets (for dark mode)
+ul.darkmode li:before,
+ol.darkmode li::before {
+  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+}
+
+// Gold list bullets (for dark mode)
+ul.darkmode.gold li:before,
+ol.darkmode.gold li::before {
+  color: $gold;
+}
+
+// Gold list icon bullets (for dark mode)
+ul.fa-ul.darkmode.gold li .fa-li {
+  color: $gold;
+}
