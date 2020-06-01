@@ -98,7 +98,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Multilevel list', () => `
+.add('Multilevel unordered list', () => `
 <ul>
   <li>Lorem ipsum dolor sit amet
       <ul>
@@ -145,7 +145,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Multilevel list, top-level icons (only)', () => `
+.add('Multilevel unordered list, top-level icons (only)', () => `
 <ul>
   <li>Lorem ipsum dolor sit amet
       <ul>

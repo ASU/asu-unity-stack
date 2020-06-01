@@ -51,15 +51,32 @@ ol {
   counter-reset: listcounter;
 }
 ol li::before {
-  content: counter(listcounter) ' ';
-  counter-increment: listcounter;
   line-height: 24px;
   padding-right: 0.75rem;
   margin-left: -1.6rem;
+  // ??? working on double digit indent...  text-align: right;
+}
+ol li::before,
+ol ol ol li::before,
+ol ol ol ol ol li::before {
+  content: counter(listcounter) ' ';
+  counter-increment: listcounter;
+}
+ol ol li::before,
+ol ol ol ol li::before {
+  content: counter(listcounter, upper-alpha) ' ';
+  counter-increment: listcounter;
 }
 
 ol li:nth-of-type(9) ~ li::before {
+  // What is this line doing?
   content: counter(listcounter) ' ';
+  margin-left: -2.1rem;
+}
+ol li:nth-of-type(99) ~ li::before {
+  // What is this line doing?
+  content: counter(listcounter) ' ';
+  margin-left: -2.7rem;
 }
 
 // Maroon bullets
