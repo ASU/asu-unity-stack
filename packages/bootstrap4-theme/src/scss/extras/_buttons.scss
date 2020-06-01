@@ -2,16 +2,52 @@
 .btn {
   text-decoration:$uds-component-button-text-decoration;
   font-weight:$uds-component-button-font-weight;
-}
-.btn-md {
-  font-size:$uds-component-button-medium-font-size;
-  padding: $uds-component-button-padding-y-medium $uds-component-button-padding-x-medium;
-}
-.btn-sm {
-  font-size:$uds-component-button-small-font-size;
-  padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small; 
-}
-.btn {
+  &.btn-md {
+    font-size:$uds-component-button-medium-font-size;
+    padding: $uds-component-button-padding-y-medium $uds-component-button-padding-x-medium;
+  }
+  &.btn-sm {
+    font-size:$uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small;
+  }
+  &.btn-tag {
+    font-size:$uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small;
+    &.btn-tag-alt-white {
+      background: $gray-6;
+      color: $body-color;
+    }
+    &.btn-tag-alt-gray {
+      background: $gray-4;
+      color: $body-color;
+    }
+    &.btn-tag-alt-black {
+      background: $gray-3;
+      color: $gray-7;
+    }
+  }
+  &.btn-circle {
+    padding: $asu-space-4 $asu-space-4;
+    width:$asu-space-32;
+    height:$asu-space-32;
+    &.btn-circle-alt-white {
+      background: $gray-6;
+      color: $body-color;
+    }
+    &.btn-circle-alt-gray {
+      background: $gray-4;
+      color: $body-color;
+    }
+    &.btn-circle-alt-black {
+      background: $gray-3;
+      color: $gray-7;
+    }
+    &.btn-circle-large {
+      width:$asu-space-64;
+      height:$asu-space-64;
+      font-size:$uds-component-button-large-font-size;
+    }
+  }
   &:hover {
     transform: $uds-component-button-hover-state-transform;
   }
@@ -19,6 +55,19 @@
     transform: $uds-component-button-active-state-transform;
   }
 }
+
+// Remove background changing hover effects from all buttons
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value,
+    $hover-background: $value,
+    $hover-border: $value,
+    $active-background: $value,
+    $active-border: $value
+    );
+  }
+}
+
 .accordion .btn {
   &:hover {
     transform: none;
@@ -27,7 +76,7 @@
     transform: none;
   }
 }
-.btn-gray {
-  background-color:$gray-4;
-  color:$black;
+
+a:visited {
+  color:$uds-color-base-darkmaroon;
 }
