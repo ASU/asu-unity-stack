@@ -1,47 +1,101 @@
 // ASU Design System Lists without Bootstrap variables to override.
 
+$base: 16px;
+
 // General list spacing.
 ul,
 ol {
-  padding: 48px 48px 48px 56px;
-}
-
-ul ul,
-ul ol,
-ol ol,
-ol ul {
-  padding: 12px 28px 0px;
-}
-
-ul li,
-ol li {
-  max-width: 75ch; // TODO Confirm should apply globally and not just on dark.
-  margin-bottom: 12px;
-}
-ul li:last-of-type,
-ol li:last-of-type {
-  margin-bottom: 0;
+  padding: 48px 72px;
+  li {
+    max-width: 75ch; // TODO Revisit.
+    margin-bottom: $base * 0.75;
+    &:last-of-type,
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  ol,
+  ul {
+    padding: 12px 28px 0px;
+  }
+  &.maroon li:before {
+    color: $maroon;
+  }
+  // Dark mode.
+  &.darkmode {
+    margin-left: 0;
+    margin-bottom: 0;
+    background-color: $dark;
+    color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+    // Default white list bullets (for dark mode)
+    li:before {
+      color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+    }
+    // Gold list icon bullets (for dark mode)
+    &.gold li .fa-li {
+      color: $gold;
+    }
+    background-color: $dark;
+    color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+    // Default white list bullets (for dark mode)
+    li:before {
+      color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+    }
+    // Gold list bullets (for dark mode)
+    &.gold li:before {
+      color: $gold;
+    }
+    &.uds-steplist li:before {
+      background-color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+      color: $dark;
+    }
+  }
+  &.smokemode {
+    margin-left: 0;
+    margin-bottom: 0;
+    background-color: $uds-color-background-gray;
+    //color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+  }
 }
 
 // Unordered list base styles
 ul {
   list-style: none;
-}
 
-ul li:before,
-ul ul ul li:before,
-ul ul ul ul ul li:before {
-  content: '\2022 ';
-  font-size: 32px;
-  vertical-align: middle;
-  line-height: 24px;
-  padding-right: 0.8rem;
-  margin-left: -1.5rem;
-}
+  li:before,
+  ul ul li:before,
+  ul ul ul ul li:before {
+    content: '\2022 ';
+    font-size: 32px;
+    vertical-align: middle;
+    line-height: 24px;
+    padding-right: 0.8rem;
+    margin-left: -1.5rem;
+  }
+  ul li:before,
+  ul ul ul li:before {
+    content: '\25E6 ';
+  }
 
-ul ul li:before,
-ul ul ul ul li:before {
-  content: '\25E6 ';
+  // Icon bullets styles
+  &.fa-ul {
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 48px 72px;
+    li:before {
+      content: none;
+      font-size: 32px;
+      vertical-align: middle;
+      line-height: 24px;
+      padding-right: 0.8rem;
+      margin-left: -1.5rem;
+    }
+    // Maroon icon bullets
+    &.maroon li .fa-li {
+      color: $maroon;
+    }
+  }
 }
 
 // Ordered list base styles.
@@ -49,100 +103,72 @@ ul ul ul ul li:before {
 ol {
   list-style-type: none;
   counter-reset: listcounter;
-}
-ol li::before {
-  line-height: 24px;
-  padding-right: 0.75rem;
-  margin-left: -1.6rem;
-  // ??? working on double digit indent...  text-align: right;
-}
-ol li::before,
-ol ol ol li::before,
-ol ol ol ol ol li::before {
-  content: counter(listcounter) ' ';
-  counter-increment: listcounter;
-}
-ol ol li::before,
-ol ol ol ol li::before {
-  content: counter(listcounter, upper-alpha) ' ';
-  counter-increment: listcounter;
+  li:before {
+    line-height: 24px;
+    padding-right: 0.75rem;
+    margin-left: -1.6rem;
+  }
+  li:before,
+  ol ol li:before,
+  ol ol ol ol li:before {
+    content: counter(listcounter) ' ';
+    counter-increment: listcounter;
+  }
+
+  ol li:before,
+  ol ol ol li:before {
+    content: counter(listcounter, lower-alpha) ' ';
+    counter-increment: listcounter;
+  }
+
+  // Step List styles
+  &.uds-steplist {
+    margin-left: 0;
+    padding-left: 0;
+    li {
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid $uds-color-brand-light; // TODO Do we have a higher level var name?
+      font-weight: 600;
+      span {
+        padding-left: 4.4rem;
+        display: block;
+        margin-top: 1rem;
+        font-weight: 400;
+      }
+      &:before {
+        border-radius: 50%;
+        background-color: $black;
+        color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
+        padding: 0.5rem 0.8rem;
+        margin-right: 2rem;
+        margin-left: 0;
+        font-size: 1.25rem;
+        font-weight: 500;
+        content: counter(
+          listcounter
+        ); // Remove space as it messes with centering.
+        width: 1.25rem;
+        line-height: 1.25rem;
+        text-align: center;
+      }
+    }
+    &.uds-steplist-gold li:before {
+      background-color: $gold;
+      color: $black;
+    }
+    &.uds-steplist-maroon li:before {
+      background-color: $maroon;
+    }
+  }
+  // Adjust indent for double digits.
+  li:nth-of-type(9) ~ li:before {
+    margin-left: -2.1rem;
+  }
+  // Adjust indent for triple digits.
+  li:nth-of-type(99) ~ li:before {
+    margin-left: -2.7rem;
+  }
 }
 
-ol li:nth-of-type(9) ~ li::before {
-  // What is this line doing?
-  content: counter(listcounter) ' ';
-  margin-left: -2.1rem;
-}
-ol li:nth-of-type(99) ~ li::before {
-  // What is this line doing?
-  content: counter(listcounter) ' ';
-  margin-left: -2.7rem;
-}
-
-// Maroon bullets
-ul.maroon li:before,
-ol.maroon li::before {
-  color: $maroon;
-}
-
-// Maroon icon bullets
-ul.fa-ul.maroon li .fa-li {
-  color: $maroon;
-}
-
-// Icon bullets styles
-ul.fa-ul {
-  list-style-type: none;
-}
-
-ul.fa-ul {
-  margin-left: 0;
-  margin-bottom: 0;
-  padding: 48px 48px 48px 56px;
-}
-
-ul.fa-ul li:before {
-  content: none;
-  font-size: 32px;
-  vertical-align: middle;
-  line-height: 24px;
-  padding-right: 0.8rem;
-  margin-left: -1.5rem;
-}
-
-// Dark mode.
-ul.darkmode,
-ol.darkmode {
-  background-color: $dark;
-  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
-}
-
-ul.fa-ul.darkmode {
-  margin-left: 0;
-  margin-bottom: 0;
-  padding: 48px 48px 48px 56px;
-  background-color: $dark;
-  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
-}
-
-// Default white list bullets (for dark mode)
-ul.fa-ul.darkmode li:before {
-  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
-}
-
-// Default white list bullets (for dark mode)
-ul.darkmode li:before,
-ol.darkmode li::before {
-  color: $uds-color-font-light-base; // TODO Do we have a higher level var name?
-}
-
-// Gold list bullets (for dark mode)
-ul.darkmode.gold li:before,
-ol.darkmode.gold li::before {
-  color: $gold;
-}
-
-// Gold list icon bullets (for dark mode)
-ul.fa-ul.darkmode.gold li .fa-li {
-  color: $gold;
-}
+// Maroon bullets ul.maroon li:before, ol.maroon li:before { color: $maroon; } // TODO Add rules to block icons below top level list items. It probably won't // look good anyway as no attention was given to that.
