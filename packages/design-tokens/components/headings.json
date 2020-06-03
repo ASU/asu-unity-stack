@@ -19,129 +19,122 @@
         "value": "{size.spacing.32.value}"
       },
       "highlight": {
-        "padding": {
-          "x": {
-            "value": "0.5rem"
+        "box-shadow": {
+          "one": {
+            "offset-x": {
+              "value": "-0.15em"
+            },
+            "offset-y": {
+              "value": "0"
+            },
+            "blur-radius": {
+              "value": "0"
+            }
           },
-          "y": {
-            "value": "0.25rem"
+          "two": {
+            "offset-x": {
+              "value": "0.15em"
+            },
+            "offset-y": {
+              "value": "0"
+            },
+            "blur-radius": {
+              "value": "0"
+            }
           }
         },
         "gold": {
           "bg-color": {
-            "value": "{color.base.gold.value}"
+            "value": "{color.brand.gold.value}"
           },
           "text-color": {
-            "value": "{color.base.gray.1.value}"
+            "value": "{color.font.dark.base.value}"
           }
         },
         "black": {
           "bg-color": {
-            "value": "{color.base.gray.1.value}"
+            "value": "{color.brand.dark.value}"
           },
           "text-color": {
-            "value": "{color.base.white.value}"
+            "value": "{color.font.light.base.value}"
           }
         }
       },
       "one": {
         "font-size": {
-          "value": "4rem"
+          "value": "4em"
         },
         "line-height": {
-          "value": "4.25rem"
+          "value": "2.13em"
         },
         "letter-spacing": {
-          "value": "-2.24px"
+          "value": "-0.035em"
         },
         "mobile": {
           "font-size": {
-            "value": "3rem"
+            "value": "3em"
           },
           "line-height": {
-            "value": "2.5rem"
+            "value": "2.5em"
           },
           "letter-spacing": {
-            "value": "-1.26px "
-          },
-          "highlight": {
-            "line-height": {
-              "value": "2.75rem"
-            }
-          }
-        },
-        "highlight": {
-          "padding": {
-            "x": {
-              "value": "0.75rem"
-            },
-            "y": {
-              "value": "0.25rem"
-            }
-          },
-          "line-height": {
-            "value": "4.5rem"
+            "value": "-0.035em"
           }
         }
       },
       "two": {
         "font-size": {
-          "value": "2.5rem"
+          "value": "2.5em"
         },
         "line-height": {
-          "value": "2.75rem"
+          "value": "2.75em"
         },
         "letter-spacing": {
-          "value": "-1.4px"
+          "value": "-0.035em"
         },
         "mobile": {
           "font-size": {
-            "value": "1.875rem"
+            "value": "1.875em"
           },
           "line-height": {
-            "value": "2.125rem"
+            "value": "2.125em"
           },
           "letter-spacing": {
-            "value": "-1.05px"
-          }
-        },
-        "highlight": {
-          "line-height": {
-            "value": "2.375rem"
+            "value": "-0.035em"
           }
         }
       },
       "three": {
         "font-size": {
-          "value": "1.5rem"
+          "value": "1.5em"
         },
         "line-height": {
-          "value": "1.75rem"
+          "value": "1.75em"
         },
         "letter-spacing": {
-          "value": "-0.84px"
+          "value": "-0.035em"
         }
       },
       "four": {
         "font-size": {
-          "value": "1.25rem"
+          "value": "1.25em"
         },
         "line-height": {
-          "value": "1.625rem"
+          "value": "1.625em"
         },
         "letter-spacing": {
-          "value": "-0.5px"
+          "value": "-0.015em"
         }
       },
       "five": {
         "font-size": {
-          "value": "1rem"
+          "value": "1em"
         },
         "line-height": {
-          "value": "1.5rem"
+          "value": "1.5em"
         },
         "letter-spacing": {
-          "value": "-0.24px"
+          "value": "-0.015em"
         }
       }
     }
