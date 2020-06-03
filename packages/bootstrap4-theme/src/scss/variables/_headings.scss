@@ -1,77 +1,123 @@
-.heading {
-  font-family: $uds-component-heading-font-family;
-  font-weight: $uds-component-heading-font-weight;
-  text-align: $uds-component-heading-text-align;
-  opacity: $uds-component-heading-opacity;
-  margin: $uds-component-heading-margin;
+$heading-font-family: $uds-component-heading-font-family;
+$heading-font-weight: $uds-component-heading-font-weight;
+$heading-text-align: $uds-component-heading-text-align;
+$heading-opacity: $uds-component-heading-opacity;
+$heading-margin: $uds-component-heading-margin;
 
-  &-one {
-    font-size: $uds-component-heading-one-font-size;
-    line-height: $uds-component-heading-one-line-height;
-    letter-spacing: $uds-component-heading-one-letter-spacing;
+$heading-one-font-size: $uds-component-heading-one-font-size;
+$heading-one-line-height: $uds-component-heading-one-line-height;
+$heading-one-letter-spacing: $uds-component-heading-one-letter-spacing;
+$heading-one-highlight-line-height: $uds-component-heading-one-highlight-line-height;
 
-    @media (max-width: 577px) {
-      font-size: $uds-component-heading-one-mobile-font-size;
-      line-height: $uds-component-heading-one-mobile-line-height;
-      letter-spacing: $uds-component-heading-one-mobile-letter-spacing;
-    }
-  }
+$heading-one-mobile-font-size: $uds-component-heading-one-mobile-font-size;
+$heading-one-mobile-line-height: $uds-component-heading-one-mobile-line-height;
+$heading-one-mobile-letter-spacing: $uds-component-heading-one-mobile-letter-spacing;
+$heading-one-highlight-mobile-padding: $uds-component-heading-one-highlight-padding-y $uds-component-heading-one-highlight-padding-x;
+$heading-one-highlight-line-height: $uds-component-heading-one-mobile-highlight-line-height;
 
-  &-two {
-    font-size: $uds-component-heading-two-font-size;
-    line-height: $uds-component-heading-two-line-height;
-    letter-spacing: $uds-component-heading-two-letter-spacing;
+$heading-two-font-size: $uds-component-heading-two-font-size;
+$heading-two-line-height: $uds-component-heading-two-line-height;
+$heading-two-letter-spacing: $uds-component-heading-two-letter-spacing;
+$heading-two-highlight-line-height: $uds-component-heading-two-highlight-line-height;
 
-    @media (max-width: 577px) {
-      font-size: $uds-component-heading-two-mobile-font-size;
-      line-height: $uds-component-heading-two-mobile-line-height;
-      letter-spacing: $uds-component-heading-two-mobile-letter-spacing;
-    }
-  }
+$heading-two-mobile-font-size: $uds-component-heading-two-mobile-font-size;
+$heading-two-mobile-line-height: $uds-component-heading-two-mobile-line-height;
+$heading-two-mobile-letter-spacing: $uds-component-heading-two-mobile-letter-spacing;
 
-  &-three {
-    font-size: $uds-component-heading-three-font-size;
-    line-height: $uds-component-heading-three-line-height;
-    letter-spacing: $uds-component-heading-three-letter-spacing;
-  }
+$heading-three-font-size: $uds-component-heading-three-font-size;
+$heading-three-line-height: $uds-component-heading-three-line-height;
+$heading-three-letter-spacing: $uds-component-heading-three-letter-spacing;
 
-  &-four {
-    font-size: $uds-component-heading-four-font-size;
-    line-height: $uds-component-heading-four-line-height;
-    letter-spacing: $uds-component-heading-four-letter-spacing;
-  }
+$heading-four-font-size: $uds-component-heading-four-font-size;
+$heading-four-line-height: $uds-component-heading-four-line-height;
+$heading-four-letter-spacing: $uds-component-heading-four-letter-spacing;
 
-  &-five {
-    font-size: $uds-component-heading-five-font-size;
-    line-height: $uds-component-heading-five-line-height;
-    letter-spacing: $uds-component-heading-five-letter-spacing;
-  }
-}
+$heading-five-font-size: $uds-component-heading-five-font-size;
+$heading-five-line-height: $uds-component-heading-five-line-height;
+$heading-five-letter-spacing: $uds-component-heading-five-letter-spacing;
 
-.highlight {
-  padding: $uds-component-heading-highlight-padding-y
-    $uds-component-heading-highlight-padding-x;
+$heading-highlight-padding: $uds-component-heading-highlight-padding-y $uds-component-heading-highlight-padding-x;
 
-  &-gold {
-    background-color: $uds-component-heading-highlight-gold-bg-color;
-    color: $uds-component-heading-highlight-gold-text-color;
-  }
+$heading-highlight-gold-background-color: $uds-component-heading-highlight-gold-bg-color;
+$heading-highlight-gold-color: $uds-component-heading-highlight-gold-text-color;
 
-  &-black {
-    background-color: $uds-component-heading-highlight-black-bg-color;
-    color: $uds-component-heading-highlight-black-text-color;
-  }
+$heading-highlight-black-background-color: $uds-component-heading-highlight-black-bg-color;
+$heading-highlight-black-color: $uds-component-heading-highlight-black-text-color;
 
-  &-heading-one {
-    line-height: $uds-component-heading-one-highlight-line-height;
-    @media (max-width: 577px) {
-      padding: $uds-component-heading-one-highlight-padding-y
-        $uds-component-heading-one-highlight-padding-x;
-      line-height: $uds-component-heading-one-mobile-highlight-line-height;
-    }
-  }
+// .heading {
+//   font-family: $uds-component-heading-font-family;
+//   font-weight: $uds-component-heading-font-weight;
+//   text-align: $uds-component-heading-text-align;
+//   opacity: $uds-component-heading-opacity;
+//   margin: $uds-component-heading-margin;
 
-  &-heading-two {
-    line-height: $uds-component-heading-two-highlight-line-height;
-  }
-}
+//   &-one {
+//     font-size: $uds-component-heading-one-font-size;
+//     line-height: $uds-component-heading-one-line-height;
+//     letter-spacing: $uds-component-heading-one-letter-spacing;
+
+//     @media (max-width: 577px) {
+//       font-size: $uds-component-heading-one-mobile-font-size;
+//       line-height: $uds-component-heading-one-mobile-line-height;
+//       letter-spacing: $uds-component-heading-one-mobile-letter-spacing;
+//     }
+//   }
+
+//   &-two {
+//     font-size: $uds-component-heading-two-font-size;
+//     line-height: $uds-component-heading-two-line-height;
+//     letter-spacing: $uds-component-heading-two-letter-spacing;
+
+//     @media (max-width: 577px) {
+//       font-size: $uds-component-heading-two-mobile-font-size;
+//       line-height: $uds-component-heading-two-mobile-line-height;
+//       letter-spacing: $uds-component-heading-two-mobile-letter-spacing;
+//     }
+//   }
+
+//   &-three {
+//     font-size: $uds-component-heading-three-font-size;
+//     line-height: $uds-component-heading-three-line-height;
+//     letter-spacing: $uds-component-heading-three-letter-spacing;
+//   }
+
+//   &-four {
+//     font-size: $uds-component-heading-four-font-size;
+//     line-height: $uds-component-heading-four-line-height;
+//     letter-spacing: $uds-component-heading-four-letter-spacing;
+//   }
+
+//   &-five {
+//     font-size: $uds-component-heading-five-font-size;
+//     line-height: $uds-component-heading-five-line-height;
+//     letter-spacing: $uds-component-heading-five-letter-spacing;
+//   }
+// }
+
+// .highlight {
+//   padding: $uds-component-heading-highlight-padding-y
+//     uds-component-heading-highlight-padding-x;
+
+//   &-gold {
+//     background-color: $uds-component-heading-highlight-gold-bg-color;
+//     color: $uds-component-heading-highlight-gold-text-color;
+//   }
+
+//   &-black {
+//     background-color: $uds-component-heading-highlight-black-bg-color;
+//     color: $uds-component-heading-highlight-black-text-color;
+//   }
+
+//   &-heading-one {
+//     line-height: $uds-component-heading-one-highlight-line-height;
+//     @media (max-width: 577px) {
+//       padding: $uds-component-heading-one-highlight-padding-y
+//         $uds-component-heading-one-highlight-padding-x;
+//       line-height: $uds-component-heading-one-mobile-highlight-line-height;
+//     }
+//   }
+
+//   &-heading-two {
+//     line-height: $uds-component-heading-two-highlight-line-height;
+//   }
+// }
