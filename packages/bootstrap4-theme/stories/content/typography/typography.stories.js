@@ -30,6 +30,17 @@ storiesOf('Content/Typography', module)
   <h1 class="display-3">Display 3</h1>
   <h1 class="display-4">Display 4</h1>`)
 
+  .add('ASU Headings', () => `<h1 class="heading heading-one">Heading 1</h1>
+  <h2 class="heading heading-two">Heading 2</h2>
+  <h3 class="heading heading-three">Heading 3</h3>
+  <h4 class="heading heading-four">Heading 4</h4>
+  <h5 class="heading heading-five">Heading 5</h5>`)
+
+  .add('ASU Headings - Highlights', () => `<h1 class="heading heading-one"><span class="highlight highlight-gold highlight-heading-one">Heading 1</span></h1>
+  <h2 class="heading heading-two"><span class="highlight highlight-black highlight-heading-two">Heading 2</span></h2>
+  <h3 class="heading heading-three"><span class="highlight highlight-gold">Heading 3</span></h3>
+  <h4 class="heading heading-four"><span class="highlight highlight-black">Heading 4</span></h4>`)
+
   .add('Lead', () => `<p class="lead">
   Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
 </p>`)
