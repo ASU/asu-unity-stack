@@ -1,5 +1,9 @@
 {
   "component": {
-    "list": {}
+    "list": {
+      "line-height": {
+        "value": "1.5"
+      }
+    }
   }
 }
