@@ -35,25 +35,26 @@
         "value": "scale(1)"
       },
       "padding": {
-        "value": "{size.spacing.16.value} {size.spacing.32.value}"
+        "value": "{size.spacing.2.value} {size.spacing.4.value}"
       },
       "padding-y": {
-        "value": "{size.spacing.16.value}"
+        "value": "{size.spacing.2.value}"
       },
       "padding-x": {
-        "value": "{size.spacing.32.value}"
+        "value": "{size.spacing.4.value}"
       },
       "padding-y-medium": {
-        "value": "{size.spacing.8.value}"
+        "value": "{size.spacing.1.value}"
       },
       "padding-x-medium": {
-        "value": "{size.spacing.16.value}"
+        "value": "{size.spacing.2.value}"
       },
       "padding-x-small": {
-        "value": "{size.spacing.8.value}"
+        "value": ".75rem",
+        "comment": "Magic number: 12px not a multiple of 8."
       },
       "padding-y-small": {
-        "value": "{size.spacing.4.value}"
+        "value": "{size.spacing.half.value}"
       },
       "text-align": {
         "value": "center"
@@ -78,7 +79,7 @@
         },
         "height": {
           "value": "1.375",
-          "comment": "Possible error in XD Buttons: 22px not factor of 8"
+          "comment": "Magic number: 22px not a multiple of 8"
         },
         "dark": {
           "color": "{color.font.dark.base.value}"
@@ -164,7 +165,7 @@
         },
         "height": {
           "value": "1.375",
-          "comment": "Possible error in XD Buttons: 22px not factor of 8"
+          "comment": "Magic number: 22px not factor of 8"
         },
         "min-width": {
           "value": "4"
@@ -187,7 +188,7 @@
         },
         "height": {
           "value": "3",
-          "comment": "Possible error in XD buttons: 49px not factor of 8, even ratio for REMs"
+          "comment": "XD contained a magic number. 49px not factor of 8, not an even ratio for REMs"
         },
         "min-width": {
           "value": "8"

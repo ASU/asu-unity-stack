@@ -1,33 +1,33 @@
 // Headings
 h1 {
-  font-size:64px;
-  font-weight:700;
+  font-size: 64px;
+  font-weight: 700;
   line-height: 68px;
-  letter-spacing:-0.035em;
+  letter-spacing: -0.035em;
 }
 h2 {
-  font-size:40px;
-  font-weight:700;
+  font-size: 40px;
+  font-weight: 700;
   line-height: 44px;
-  letter-spacing:-0.030em;
+  letter-spacing: -0.03em;
 }
 h3 {
-  font-size:24px;
-  font-weight:700;
+  font-size: 24px;
+  font-weight: 700;
   line-height: 28px;
-  letter-spacing:-0.025em;
+  letter-spacing: -0.025em;
 }
 h4 {
-  font-size:20px;
-  font-weight:700;
+  font-size: 20px;
+  font-weight: 700;
   line-height: 26px;
-  letter-spacing:-0.02em;
+  letter-spacing: -0.02em;
 }
 h5 {
-  font-size:16px;
-  font-weight:700;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 24px;
-  letter-spacing:-0.01em;
+  letter-spacing: -0.01em;
 }
 .img-background {
   background-size: cover;
@@ -36,35 +36,35 @@ h5 {
   background-attachment: scroll;
 }
 .col.card {
-  padding-right:0;
-  padding-left:0;
+  padding-right: 0;
+  padding-left: 0;
 }
 .page-link {
-  border-radius:400px;
+  border-radius: 400px;
   text-decoration: none;
-  font-weight:bold;
+  font-weight: bold;
 }
 .page-item:last-child .page-link {
-  border-radius:400px;
+  border-radius: 400px;
 }
 .page-item:first-child .page-link {
-  border-radius:400px;
+  border-radius: 400px;
 }
 .nav-tabs .nav-link {
-  color:#000;
+  color: #000;
   padding: 0.25em 1em;
-  border-right:0;
-  border-left:0;
-  border-top:0;
-  text-decoration:none;
-  font-weight:bold;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  text-decoration: none;
+  font-weight: bold;
 }
 .nav-tabs .nav-link.active {
   border-bottom: solid 4px !important; /* Temp */
 }
 label {
-  font-weight:bold;
-  font-size:.85em;
+  font-weight: bold;
+  font-size: 0.85em;
 }
 
 //
@@ -74,11 +74,11 @@ label {
 .accordion {
   > .card {
     overflow: hidden;
-    border-left:solid 4px $gold;
-    margin-bottom:$asu-space-16;
+    border-left: solid 4px $gold;
+    margin-bottom: $uds-size-spacing-2;
 
     &:not(:last-of-type) {
-      border-bottom:solid $card-border-width $card-border-color;
+      border-bottom: solid $card-border-width $card-border-color;
       @include border-radius(0);
     }
 
@@ -91,78 +91,76 @@ label {
     > .card-header {
       @include border-radius(0);
       margin-bottom: 0;
-      background-color:$white;
-      padding: .25rem .25rem;
+      background-color: $white;
+      padding: 0.25rem 0.25rem;
       border-bottom: solid $card-border-width $card-border-color;
     }
     > .card-header button {
-      color:#000;
+      color: #000;
       font-weight: bold;
       width: 100%;
       text-align: left;
     }
     > .card-header button:focus {
-      text-decoration:none;
+      text-decoration: none;
     }
     > div > .card-body {
-      background-color:$light;
+      background-color: $light;
     }
   }
 }
 
-[data-toggle="collapse"]:after {
-    display: inline-block;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Font Awesome\ 5 Free';
-    font-weight: 900;
-    content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>");
-    transform: rotate(180deg) ;
-    transition: all linear 0.25s;
-    float: right;
-    height: 20px;
-    width: 20px;
-  }
-[data-toggle="collapse"].collapsed:after {
-  transform: rotate(0deg) ;
+[data-toggle='collapse']:after {
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+  content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>");
+  transform: rotate(180deg);
+  transition: all linear 0.25s;
+  float: right;
+  height: 20px;
+  width: 20px;
 }
-
-
+[data-toggle='collapse'].collapsed:after {
+  transform: rotate(0deg);
+}
 
 //
 // Cards
 //
 
 .card-img-top img {
-  max-width:100%;
-  height:auto;
+  max-width: 100%;
+  height: auto;
 }
 .card-header {
   padding-bottom: 0;
   border-bottom: 0;
 }
 .card-header .card-title {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 .card-title a {
-  color:$black;
+  color: $black;
   text-decoration: none;
 }
 .card-title a:hover {
   text-decoration: underline;
 }
 .card-degree .card-header .card-title:after {
-  content:"";
-  width:32px;
-  height:4px;
-  display:block;
-  background-color:$gold;
-  margin-top:16px;
+  content: '';
+  width: 32px;
+  height: 4px;
+  display: block;
+  background-color: $gold;
+  margin-top: 16px;
 }
 .card-degree .card-footer {
-  background-color:$white;
+  background-color: $white;
 }
 .card-degree .card-footer a {
   color: $black;
@@ -182,7 +180,7 @@ label {
 .card-news .card-body {
   margin-right: 15px;
   margin-left: 15px;
-  background-color:$white;
+  background-color: $white;
 }
 .card-news .card-img-top {
   margin-bottom: -32px;
@@ -190,9 +188,13 @@ label {
 .card-event .card-header {
   border-top: solid 4px $gold;
 }
-.bg-dark a, .bg-primary a, .bg-black a {
-  color:$light;
+.bg-dark a,
+.bg-primary a,
+.bg-black a {
+  color: $light;
 }
-.bg-light a, .bg-secondary a, .bg-white a {
-  color:$primary;
+.bg-light a,
+.bg-secondary a,
+.bg-white a {
+  color: $primary;
 }

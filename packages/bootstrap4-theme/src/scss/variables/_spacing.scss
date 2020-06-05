@@ -7,39 +7,44 @@
 //
 // Because the familiar size abbreviations, "xs", "sm", "lg", are actually only
 // used for the media query context, it would be a mistake to use the same
-// schema here for spacing. THis is why the vanilla Bootstrap Spacing schema is
+// schema here for spacing. This is why the vanilla Bootstrap Spacing schema is
 // numeric.
-
-// SPACE Variables
-$asu-space-0: 0;
-$asu-space-2: 0.125rem; // 2px
-$asu-space-4: 0.25rem;  // 4px
-$asu-space-8: 0.5rem;   // 8px
-$asu-space-16: 1rem;    // 16px
-$asu-space-24: 1.5rem;  // 24px
-$asu-space-32: 2rem;    // 32px
-$asu-space-48: 3rem;    // 48px
-$asu-space-56: 3.5rem;  // 56px
-$asu-space-64: 4rem;    // 64px
-$asu-space-96: 6rem;    // 64px
-$asu-space-128: 8rem;   // 128px
+//
+// Our schema references spacing units as multiples of 8. For reference:
+//
+// $uds-size-spacing-0: 0rem;
+// $uds-size-spacing-1: 0.5rem;
+// $uds-size-spacing-2: 1rem;
+// $uds-size-spacing-3: 1.5rem;
+// $uds-size-spacing-4: 2rem;
+// $uds-size-spacing-5: 2.5rem;
+// $uds-size-spacing-6: 3rem;
+// $uds-size-spacing-7: 3.5rem;
+// $uds-size-spacing-8: 4rem;
+// $uds-size-spacing-9: 4.5rem;
+// $uds-size-spacing-10: 5rem;
+// $uds-size-spacing-12: 6rem;
+// $uds-size-spacing-14: 7rem;
+// $uds-size-spacing-16: 8rem;
 
 // Spacing
 //
 // control the default styling of most of elements
 $spacers: (
-  '0': 0,
-  '2': $asu-space-2,
-  '4': $asu-space-4,
-  '8': $asu-space-8,
-  '16': $asu-space-16,
-  '24': $asu-space-24,
-  '32': $asu-space-32,
-  '48': $asu-space-48,
-  '56': $asu-space-56,
-  '64': $asu-space-64,
-  '96': $asu-space-96,
-  '128': $asu-space-128,
+  '0': $uds-size-spacing-0,
+  '1': $uds-size-spacing-1,
+  '2': $uds-size-spacing-2,
+  '3': $uds-size-spacing-3,
+  '4': $uds-size-spacing-4,
+  '5': $uds-size-spacing-5,
+  '6': $uds-size-spacing-6,
+  '7': $uds-size-spacing-7,
+  '8': $uds-size-spacing-8,
+  '9': $uds-size-spacing-9,
+  '10': $uds-size-spacing-10,
+  '12': $uds-size-spacing-12,
+  '14': $uds-size-spacing-14,
+  '16': $uds-size-spacing-16,
 );
 
 $card-border-radius: 0;
