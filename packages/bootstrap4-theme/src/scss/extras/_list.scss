@@ -3,22 +3,25 @@
 $list-line-height: $uds-component-list-line-height;
 $list-space-8: $uds-size-spacing-1;
 $list-space-16: $uds-size-spacing-2;
-$list-space-base: $list-space-2;
-$list-space-20: $list-space-2 * 1.25;
-$list-space-24: $uds-size-spacing-3; // $uds-size-padding-large ...same
-$list-space-32: $uds-size-spacing-4; // $uds-size-padding-large ...same
+$list-space-base: $list-space-16;
+$list-space-20: $list-space-16 * 1.25;
+$list-space-24: $uds-size-spacing-3;
+$list-space-32: $uds-size-spacing-4;
+$list-space-40: $uds-size-spacing-5;
 $list-space-48: $uds-size-spacing-6;
 $list-space-64: $uds-size-spacing-8;
+$list-space-80: $uds-size-spacing-10;
 $list-font-xxl: $uds-size-font-xxl;
 $list-font-large: $uds-size-font-large;
 $list-smoke: $uds-color-background-gray;
 $list-font-light: $uds-color-font-light-base;
+$list-darkmode-font-light: $uds-color-base-gray-6;
 $list-brand-light: $uds-color-brand-light;
 
 ul,
 ol {
   // General list spacing.
-  padding: $list-space-48 $list-space-64;
+  padding: $list-space-48 $list-space-80;
   li {
     max-width: 75ch; // TODO Revisit.
     margin-bottom: $list-space-base;
@@ -39,27 +42,27 @@ ol {
     margin-left: 0;
     margin-bottom: 0;
     background-color: $dark;
-    color: $list-font-light;
+    color: $list-darkmode-font-light;
     // Default white list bullets (for dark mode)
     li:before {
-      color: $list-font-light;
+      color: $list-darkmode-font-light;
     }
     // Gold list icon bullets (for dark mode)
     &.gold li .fa-li {
       color: $gold;
     }
     background-color: $dark;
-    color: $list-font-light;
+    color: $list-darkmode-font-light;
     // Default white list bullets (for dark mode)
     li:before {
-      color: $list-font-light;
+      color: $list-darkmode-font-light;
     }
     // Gold list bullets (for dark mode)
     &.gold li:before {
       color: $gold;
     }
     &.uds-steplist li:before {
-      background-color: $list-font-light;
+      background-color: $list-darkmode-font-light;
       color: $dark;
     }
   }
@@ -95,14 +98,17 @@ ul {
     list-style-type: none;
     margin-left: 0;
     margin-bottom: 0;
-    padding: $list-space-48 $list-space-64;
+    padding: $list-space-48 $list-space-80;
+    li .fa-li {
+      left: -$list-space-40;
+    }
     li:before {
       content: none;
       font-size: $list-font-xxl;
       vertical-align: middle;
       line-height: $list-line-height;
       padding-right: $list-space-base;
-      margin-left: -1.5rem;
+      margin-left: -$list-space-24;
     }
     // Maroon icon bullets
     &.maroon li .fa-li {
@@ -119,7 +125,7 @@ ol {
   li:before {
     line-height: $list-line-height;
     padding-right: $list-space-base;
-    margin-left: -1.6rem;
+    margin-left: -$list-space-32;
   }
   li:before,
   ol ol li:before,
@@ -134,36 +140,42 @@ ol {
     counter-increment: listcounter;
   }
 
+  // Adjust indent for double digits.
+  li:nth-of-type(9) ~ li:before {
+    margin-left: -$list-space-40;
+  }
+  // Adjust indent for triple digits.
+  li:nth-of-type(99) ~ li:before {
+    margin-left: -$list-space-48;
+  }
+
   // Step List styles
   &.uds-steplist {
     //margin-left: 0;
     padding-left: $list-space-24;
     li {
-      padding-bottom: 2rem;
-      margin-bottom: 3rem;
+      padding-bottom: $list-space-32;
+      margin-bottom: $list-space-48;
       border-bottom: 1px solid $list-brand-light;
       font-weight: 600;
       span {
-        padding-left: 4.4rem;
+        padding-left: 4.3rem; // Text alignment below headline, tweaky due to oblong fix below.
         display: block;
-        margin-top: 1rem;
+        margin-top: $list-space-16;
         font-weight: 400;
       }
       &:before {
         border-radius: 50%;
         background-color: $black;
         color: $list-font-light;
-        padding: $list-space-8 0.8rem;
-        margin-right: 2rem;
+        padding: $list-space-8 0.8rem; // If set to 1rem, circle oblongs.
+        margin-right: $list-space-32;
         margin-left: 0;
         font-size: $list-font-large;
         font-weight: 500;
         content: counter(
           listcounter
         ); // Remove space as it messes with centering.
-        width: 1.25rem;
-        line-height: $list-line-height;
-        text-align: center;
       }
     }
     &.uds-steplist-gold li:before {
@@ -173,13 +185,5 @@ ol {
     &.uds-steplist-maroon li:before {
       background-color: $maroon;
     }
-  }
-  // Adjust indent for double digits.
-  li:nth-of-type(9) ~ li:before {
-    margin-left: -2.1rem;
-  }
-  // Adjust indent for triple digits.
-  li:nth-of-type(99) ~ li:before {
-    margin-left: -2.7rem;
   }
 }

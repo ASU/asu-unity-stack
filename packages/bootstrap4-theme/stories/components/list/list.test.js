@@ -1,122 +1,221 @@
-/*
 describe('List', () => {
-  it('basic example visually looks correct', async () => {
+  it('Unordered list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--basic-example');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--unordered-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('active items visually looks correct', async () => {
+  it('Unordered list, darkmode visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--active-items');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--unordered-list-darkmode'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('disabled items visually looks correct', async () => {
+  it('Ordered list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--disabled-items');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--ordered-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('links list visually looks correct', async () => {
+  it('Ordered list, smokemode visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--links-list');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--ordered-list-smokemode'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('buttons list visually looks correct', async () => {
+  it('Icon list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--buttons-list');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--icon-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('flush visually looks correct', async () => {
+  it('Unordered list, maroon visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--flush');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--unordered-list-maroon'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('horizontal visually looks correct', async () => {
+  it('Ordered list, maroon visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--horizontal');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--ordered-list-maroon'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('horizontal sizing visually looks correct', async () => {
+  it('Icon list, maroon visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--horizontal-sizing');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--icon-list-maroon'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('horizontal equal width visually looks correct', async () => {
+  it('Icon list, darkmode visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--horizontal-equal-width');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--icon-list-darkmode'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('contextual colors visually looks correct', async () => {
+  it('Icon list, gold darkmode visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--contextual-colors');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--icon-list-gold-darkmode'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('contextual links visually looks correct', async () => {
+  it('Multilevel unordered list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--contextual-links');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--multilevel-unordered-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('with badges visually looks correct', async () => {
+  it('Multilevel ordered list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--with-badges');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--multilevel-ordered-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
-  it('custom content visually looks correct', async () => {
+  it('Step list visually looks correct', async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=components-list-group--custom-content');
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list'
+    );
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
 
+  it('Step list, gold visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-gold'
+    );
+    const image = await page.screenshot();
 
-}); //close
-*/
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, maroon visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-maroon'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, smokemode visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-smokemode'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, gold smokemode visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-gold-smokemode'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, maroon smokemode visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-maroon-smokemode'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, darkmode visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-darkmode'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it('Step list, gold darkmode visually looks correct', async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      'http://localhost:9009/iframe.html?id=components-list--step-list-gold-darkmode'
+    );
+    const image = await page.screenshot();
+
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
+}); // close
