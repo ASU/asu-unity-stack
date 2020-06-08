@@ -17,6 +17,8 @@ $list-smoke: $uds-color-background-gray;
 $list-font-light: $uds-color-font-light-base;
 $list-darkmode-font-light: $uds-color-base-gray-6;
 $list-brand-light: $uds-color-brand-light;
+$list-font-weight: $font-weight-normal;
+$list-font-weight-bold: $font-weight-bold;
 
 ul,
 ol {
@@ -151,28 +153,27 @@ ol {
 
   // Step List styles
   &.uds-steplist {
-    //margin-left: 0;
     padding-left: $list-space-24;
     li {
       padding-bottom: $list-space-32;
       margin-bottom: $list-space-48;
       border-bottom: 1px solid $list-brand-light;
-      font-weight: 600;
+      font-weight: $list-font-weight-bold;
       span {
         padding-left: 4.3rem; // Text alignment below headline, tweaky due to oblong fix below.
         display: block;
         margin-top: $list-space-16;
-        font-weight: 400;
+        font-weight: $list-font-weight;
       }
       &:before {
         border-radius: 50%;
         background-color: $black;
         color: $list-font-light;
-        padding: $list-space-8 0.8rem; // If set to 1rem, circle oblongs.
+        padding: $list-space-8 0.8rem; // Following is more true to XD step circle sizing, but looks less rounded: padding: 0.4rem 0.6rem;
         margin-right: $list-space-32;
         margin-left: 0;
         font-size: $list-font-large;
-        font-weight: 500;
+        font-weight: $list-font-weight-bold;
         content: counter(
           listcounter
         ); // Remove space as it messes with centering.
