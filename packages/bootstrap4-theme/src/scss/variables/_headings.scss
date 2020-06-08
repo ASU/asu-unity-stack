@@ -8,6 +8,9 @@ $heading-one-font-size: $uds-component-heading-one-font-size;
 $heading-one-line-height: $uds-component-heading-one-line-height;
 $heading-one-letter-spacing: $uds-component-heading-one-letter-spacing;
 
+$heading-one-article-font-size: $uds-component-heading-one-article-font-size;
+$heading-one-article-line-height: $uds-component-heading-one-article-line-height;
+
 $heading-one-mobile-font-size: $uds-component-heading-one-mobile-font-size;
 $heading-one-mobile-line-height: $uds-component-heading-one-mobile-line-height;
 $heading-one-mobile-letter-spacing: $uds-component-heading-one-mobile-letter-spacing;
@@ -37,6 +40,9 @@ $heading-highlight-gold-text-color: $uds-component-heading-highlight-gold-text-c
 
 $heading-highlight-black-background-color: $uds-component-heading-highlight-black-bg-color;
 $heading-highlight-black-text-color: $uds-component-heading-highlight-black-text-color;
+
+$heading-highlight-white-background-color: $uds-component-heading-highlight-white-bg-color;
+$heading-highlight-white-text-color: $uds-component-heading-highlight-white-text-color;
 
 @mixin heading-highlight-box-shadow($bsColor, $textColor) {
   box-shadow: $uds-component-heading-highlight-box-shadow-one-offset-x

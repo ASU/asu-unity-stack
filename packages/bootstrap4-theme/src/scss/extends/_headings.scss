@@ -8,13 +8,17 @@ h5 {
   text-align: $heading-text-align;
   opacity: $heading-opacity;
   margin: $heading-margin;
-  line-height: calc(100% + 0.13em);
 }
 
 h1 {
   font-size: $heading-one-font-size;
   line-height: $heading-one-line-height;
   letter-spacing: $heading-one-letter-spacing;
+
+  &.article {
+    font-size: $heading-one-article-font-size;
+    line-height: $heading-one-article-line-height;
+  }
 
   @media (max-width: 577px) {
     font-size: $heading-one-mobile-font-size;
@@ -65,6 +69,13 @@ h5 {
     @include heading-highlight-box-shadow(
       $heading-highlight-black-background-color,
       $heading-highlight-black-text-color
+    );
+  }
+
+  &-white {
+    @include heading-highlight-box-shadow(
+      $heading-highlight-white-background-color,
+      $heading-highlight-white-text-color
     );
   }
 }
