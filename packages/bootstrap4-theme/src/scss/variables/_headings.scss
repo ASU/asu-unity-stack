@@ -44,13 +44,28 @@ $heading-highlight-black-text-color: $uds-component-heading-highlight-black-text
 $heading-highlight-white-background-color: $uds-component-heading-highlight-white-bg-color;
 $heading-highlight-white-text-color: $uds-component-heading-highlight-white-text-color;
 
-@mixin heading-highlight-box-shadow($bsColor, $textColor) {
-  box-shadow: $uds-component-heading-highlight-box-shadow-one-offset-x
-      $uds-component-heading-highlight-box-shadow-one-offset-y
-      $uds-component-heading-highlight-box-shadow-one-blur-radius $bsColor,
-    $uds-component-heading-highlight-box-shadow-two-offset-x
-      $uds-component-heading-highlight-box-shadow-two-offset-y
-      $uds-component-heading-highlight-box-shadow-two-blur-radius $bsColor;
+@mixin heading-highlight-large-box-shadow($bsColor, $textColor) {
+  box-shadow: $uds-component-heading-highlight-box-shadow-large-first-offset-x
+      $uds-component-heading-highlight-box-shadow-large-first-offset-y
+      $uds-component-heading-highlight-box-shadow-large-first-blur-radius
+      $bsColor,
+    $uds-component-heading-highlight-box-shadow-large-second-offset-x
+      $uds-component-heading-highlight-box-shadow-large-second-offset-y
+      $uds-component-heading-highlight-box-shadow-large-second-blur-radius
+      $bsColor;
+  background: $bsColor;
+  color: $textColor;
+}
+
+@mixin heading-highlight-small-box-shadow($bsColor, $textColor) {
+  box-shadow: $uds-component-heading-highlight-box-shadow-small-first-offset-x
+      $uds-component-heading-highlight-box-shadow-small-first-offset-y
+      $uds-component-heading-highlight-box-shadow-small-first-blur-radius
+      $bsColor,
+    $uds-component-heading-highlight-box-shadow-small-second-offset-x
+      $uds-component-heading-highlight-box-shadow-small-second-offset-y
+      $uds-component-heading-highlight-box-shadow-small-second-blur-radius
+      $bsColor;
   background: $bsColor;
   color: $textColor;
 }
