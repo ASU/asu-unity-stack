@@ -20,26 +20,52 @@
       },
       "highlight": {
         "box-shadow": {
-          "one": {
-            "offset-x": {
-              "value": "-0.35rem"
+          "large": {
+            "first": {
+              "offset-x": {
+                "value": "-0.65rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
             },
-            "offset-y": {
-              "value": "0"
-            },
-            "blur-radius": {
-              "value": "0"
+            "second": {
+              "offset-x": {
+                "value": "0.65rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
             }
           },
-          "two": {
-            "offset-x": {
-              "value": "0.35rem"
+          "small": {
+            "first": {
+              "offset-x": {
+                "value": "-0.40rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
             },
-            "offset-y": {
-              "value": "0"
-            },
-            "blur-radius": {
-              "value": "0"
+            "second": {
+              "offset-x": {
+                "value": "0.40rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
             }
           }
         },
