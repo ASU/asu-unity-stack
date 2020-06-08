@@ -1,0 +1,112 @@
+
+.col.card {
+  padding-right:0;
+  padding-left:0;
+}
+
+//
+// Cards
+//
+.card-icon-top {
+  width:32px;
+  height:32px;
+  margin: $asu-space-32;
+  margin-bottom: 0;
+}
+.card-img-top img,
+.card-img-top {
+  max-width:100%;
+  height:auto;
+  object-fit: cover;
+}
+.card-centered {
+  .card-icon-top {
+    margin: auto;
+    margin-top: $asu-space-32;
+    margin-bottom: 0;
+  }
+  .card-header {
+    text-align:center;
+  }
+}
+.card-body {
+  padding: $asu-space-32;
+  padding-top:0;
+}
+.card-header {
+  padding: $asu-space-32;
+  border-bottom: 0;
+}
+.card-less-padding {
+  .card-body {
+    padding: $asu-space-24;
+    padding-top:0;
+  }
+  .card-header {
+    padding: $asu-space-24;
+    border-bottom: 0;
+  }
+}
+
+.card-header .card-title {
+  margin-bottom:0;
+}
+.card-title a {
+  color:$black;
+  text-decoration: none;
+}
+.card-title a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-header .card-title:after {
+  content:"";
+  width:32px;
+  height:4px;
+  display:block;
+  background-color:$gold;
+  margin-top:16px;
+}
+.card-degree .card-footer {
+  background-color:$white;
+}
+.card-degree .card-footer a {
+  color: $black;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-degree .card-footer a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-footer a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+.card-story .card-header,
+.card-story .card-body {
+  margin-right: 32px;
+  margin-left: 32px;
+  background-color:$white;
+  padding:24px;
+}
+.card-story .card-body {
+  padding-top:0;
+  padding-bottom:32px;
+}
+.card-story .card-img-top {
+  margin-bottom: -48px;
+}
+.card-story.card-less-padding {
+  .card-body {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+  .card-header {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}
+.card-event .card-header {
+  border-top: solid 4px $gold;
+}
