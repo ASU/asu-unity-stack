@@ -23,7 +23,30 @@ storiesOf('Components/Cards - degree', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
+      <div class="col col-sm-8 p-3">
+        <div style="background-color:#e5e5e5;padding:16px;">
+        <strong>Correct markup for card components<br/><br/></strong>
+          <pre>
+&lt;div class="card card-degree"&gt;
+  &lt;img class="card-img-top" /&gt; (optional)
+  &lt;div class="card-header"&gt;
+    Any brand aligned heading element
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    Any brand aligned body content (optional)
+  &lt;/div&gt;
+  &lt;div class="card-button"&gt;
+    One brand aligned button (optional)
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+     Additional links (.list-group) (optional)
+  &lt;/div&gt;
+&lt;/div&gt;
+          </pre>
+        </div>
+      </div>
     </div>
+  </div>
   `)
 
   .add('Variations', () => `
