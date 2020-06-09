@@ -1,14 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-// List type: ordered, unordered, steps
-// icons fa
-// darkmode, lightmode
-// maroon bullets/#s/icons/steps
-// gold bullets/#s/icons/steps
-// black bullets/#s/icons/steps
-// white bullets/#s/icons/steps
-
 storiesOf('Components/List', module)
   .addParameters({
     happo: false,
@@ -68,10 +60,10 @@ storiesOf('Components/List', module)
 
 .add('Icon list', () => `
 <ul class="fa-ul">
-  <li><i class="fa-li fas fa-rocket"></i>Lorem ipsum dolor sit amet</li>
-  <li><i class="fa-li fas fa-bus"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-  <li><i class="fa-li fas fa-car"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-  <li><i class="fa-li fas fa-bicycle"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-rocket" aria-hidden="true"></i>Lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-bus" aria-hidden="true"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li><i class="fa-li fas fa-car" aria-hidden="true"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>We hide icons from aria in these examples, but whether to hide or not is to be evaluated by the developer. See https://fontawesome.com/v4.7.0/accessibility/ for guidelines.</li>
 </ul>
 `)
 
@@ -95,28 +87,28 @@ storiesOf('Components/List', module)
 
 .add('Icon list, maroon', () => `
 <ul class="fa-ul maroon">
-  <li><i class="fa-li fas fa-rocket"></i>Lorem ipsum dolor sit amet</li>
-  <li><i class="fa-li fas fa-bus"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-  <li><i class="fa-li fas fa-car"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-  <li><i class="fa-li fas fa-bicycle"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-rocket" aria-hidden="true"></i>Lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-bus" aria-hidden="true"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li><i class="fa-li fas fa-car" aria-hidden="true"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
 </ul>
 `)
 
 .add('Icon list, darkmode', () => `
 <ul class="fa-ul darkmode">
-  <li><i class="fa-li fas fa-rocket"></i>Lorem ipsum dolor sit amet</li>
-  <li><i class="fa-li fas fa-bus"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-  <li><i class="fa-li fas fa-car"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-  <li><i class="fa-li fas fa-bicycle"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-rocket" aria-hidden="true"></i>Lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-bus" aria-hidden="true"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li><i class="fa-li fas fa-car" aria-hidden="true"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
 </ul>
 `)
 
 .add('Icon list, gold darkmode', () => `
 <ul class="fa-ul darkmode gold">
-  <li><i class="fa-li fas fa-rocket"></i>Lorem ipsum dolor sit amet</li>
-  <li><i class="fa-li fas fa-bus"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-  <li><i class="fa-li fas fa-car"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-  <li><i class="fa-li fas fa-bicycle"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-rocket" aria-hidden="true"></i>Lorem ipsum dolor sit amet</li>
+  <li><i class="fa-li fas fa-bus" aria-hidden="true"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li><i class="fa-li fas fa-car" aria-hidden="true"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
 </ul>
 `)
 
