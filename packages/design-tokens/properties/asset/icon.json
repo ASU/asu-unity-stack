@@ -1,35 +1,6 @@
 {
   "asset": {
     "icon": {
-      "home": {
-        "value": "fa-home"
-      },
-      "bars": {
-        "value": "fa-bars"
-      },
-      "times": {
-        "value": "fa-times"
-      },
-      "chevron": {
-        "up": {
-          "value": "fa-chevron-up"
-        },
-        "down": {
-          "value": "fa-chevron-down"
-        },
-        "left": {
-          "value": "fa-chevron-left"
-        },
-        "right": {
-          "value": "fa-chevron-right"
-        }
-      },
-      "arrow": {
-        "value": "fa-arrow-right"
-      },
-      "arrow": {
-        "value": "fa-arrow-right"
-      },
       "opensans": {
         "name": {
           "value": "Open Sans"
