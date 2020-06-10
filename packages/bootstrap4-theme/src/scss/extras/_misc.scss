@@ -44,7 +44,7 @@ label {
   > .card {
     overflow: hidden;
     border-left: solid 4px $gold;
-    margin-bottom: $asu-space-16;
+    margin-bottom: $uds-size-spacing-2;
 
     &:not(:last-of-type) {
       border-bottom: solid $card-border-width $card-border-color;
