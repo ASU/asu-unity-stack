@@ -155,12 +155,12 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md" id="social-media">
-            <ul>
-              <li><a href="#" title="Title"><i class="fab fa-facebook-square"></i></a></li>
-              <li><a href="#" title="Title"><i class="fab fa-twitter-square"></i></a></li>
-              <li><a href="#" title="Title"><i class="fab fa-linkedin"></i></a></li>
-              <li><a href="#" title="Title"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#" title="Title"><i class="fab fa-youtube-square"></i></a></li>
+            <ul class="nav">
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><i class="fab fa-facebook-square"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><i class="fab fa-twitter-square"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><i class="fab fa-linkedin"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><i class="fab fa-instagram"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><i class="fab fa-youtube-square"></i></a></li>
             </ul>
           </div>
 
