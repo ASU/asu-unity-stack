@@ -20,66 +20,21 @@ $list-brand-light: $uds-color-brand-light;
 $list-font-weight: $font-weight-normal;
 $list-font-weight-bold: $font-weight-bold;
 
-ul,
-ol {
-  // General list spacing.
+@mixin uds-list-spacing {
   padding: $list-space-48 $list-space-80;
+  list-style: none;
+
   li {
     max-width: 75ch; // TODO Revisit.
     margin-bottom: $list-space-base;
-    &:last-of-type,
+
     &:last-of-type {
       margin-bottom: 0;
     }
   }
-  ol,
-  ul {
-    padding: $list-space-base $list-space-24 0px;
-  }
-  &.maroon li:before {
-    color: $maroon;
-  }
-  // Dark mode.
-  &.darkmode {
-    margin-left: 0;
-    margin-bottom: 0;
-    background-color: $dark;
-    color: $list-darkmode-font-light;
-    // Default white list bullets (for dark mode)
-    li:before {
-      color: $list-darkmode-font-light;
-    }
-    // Gold list icon bullets (for dark mode)
-    &.gold li .fa-li {
-      color: $gold;
-    }
-    background-color: $dark;
-    color: $list-darkmode-font-light;
-    // Default white list bullets (for dark mode)
-    li:before {
-      color: $list-darkmode-font-light;
-    }
-    // Gold list bullets (for dark mode)
-    &.gold li:before {
-      color: $gold;
-    }
-    &.uds-steplist li:before {
-      background-color: $list-darkmode-font-light;
-      color: $dark;
-    }
-  }
-  // Smoke mode (gray background).
-  &.smokemode {
-    margin-left: 0;
-    margin-bottom: 0;
-    background-color: $list-smoke;
-  }
 }
 
-ul {
-  // Unordered list base styles
-  list-style: none;
-
+@mixin uds-ul-list-styles {
   li:before,
   ul ul li:before,
   ul ul ul ul li:before {
@@ -90,45 +45,118 @@ ul {
     padding-right: $list-space-20;
     margin-left: -$list-space-32;
   }
+
   ul li:before,
   ul ul ul li:before {
     content: '\25E6 ';
   }
 
-  // Icon bullets styles
-  &.fa-ul {
-    list-style-type: none;
-    margin-left: 0;
-    margin-bottom: 0;
-    padding: $list-space-48 $list-space-80;
-    li .fa-li {
-      left: -$list-space-40;
-    }
-    li:before {
-      content: none;
-      font-size: $list-font-xxl;
-      vertical-align: middle;
-      line-height: $list-line-height;
-      padding-right: $list-space-base;
-      margin-left: -$list-space-24;
-    }
-    // Maroon icon bullets
-    &.maroon li .fa-li {
-      color: $maroon;
-    }
+  ol,
+  ul {
+    padding: $list-space-base $list-space-24 0px;
+  }
+}
+
+// UL with no class or class=""
+ul:not([class]),
+ul[class=''],
+ul.maroon,
+ul.darkmode,
+ul.smokemode {
+  @include uds-list-spacing;
+  @include uds-ul-list-styles;
+}
+
+// Maroon lists
+ul.maroon,
+ol.maroon {
+  li:before {
+    color: $maroon;
+  }
+}
+
+// Dark Mode
+ul.darkmode,
+ol.darkmode {
+  @include uds-list-spacing;
+
+  margin-left: 0;
+  margin-bottom: 0;
+  background-color: $dark;
+  color: $list-darkmode-font-light;
+  // Default white list bullets (for dark mode)
+  li:before {
+    color: $list-darkmode-font-light;
+  }
+  // Gold list icon bullets (for dark mode)
+  &.gold li .fa-li {
+    color: $gold;
+  }
+  background-color: $dark;
+  color: $list-darkmode-font-light;
+  // Default white list bullets (for dark mode)
+  li:before {
+    color: $list-darkmode-font-light;
+  }
+  // Gold list bullets (for dark mode)
+  &.gold li:before {
+    color: $gold;
+  }
+  &.uds-steplist li:before {
+    background-color: $list-darkmode-font-light;
+    color: $dark;
+  }
+}
+
+// Smoke mode (gray background).
+ul.smokemode,
+ol.smokemode {
+  @include uds-list-spacing;
+
+  margin-left: 0;
+  margin-bottom: 0;
+  background-color: $list-smoke;
+}
+
+ul.fa-ul {
+  @include uds-list-spacing;
+
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: $list-space-48 $list-space-80;
+  li .fa-li {
+    left: -$list-space-40;
+  }
+  li:before {
+    content: none;
+    font-size: $list-font-xxl;
+    vertical-align: middle;
+    line-height: $list-line-height;
+    padding-right: $list-space-base;
+    margin-left: -$list-space-24;
+  }
+  // Maroon icon bullets
+  &.maroon li .fa-li {
+    color: $maroon;
   }
 }
 
 // Ordered list base styles.
 // We manually manage the counter since we need to remove the trailing periods.
 ol {
-  list-style-type: none;
+  @include uds-list-spacing;
   counter-reset: listcounter;
+
+  li ol {
+    padding: 1rem 1.5rem 0px;
+  }
+
   li:before {
     line-height: $list-line-height;
     padding-right: $list-space-base;
     margin-left: -$list-space-32;
   }
+
   li:before,
   ol ol li:before,
   ol ol ol ol li:before {
