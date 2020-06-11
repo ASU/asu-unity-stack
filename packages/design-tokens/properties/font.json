@@ -1,11 +1,31 @@
 {
   "font": {
     "family": {
-      "base": {
-        "value": "{asset.font.roboto.name.value}"
+      "stack": {
+        "value": "Arial, Helvetica, sans-serif"
       },
       "icons": {
         "value": "{asset.font.icon.name.value}"
+      }
+    },
+    "weight": {
+      "lighter": {
+        "value": "100"
+      },
+      "light": {
+        "value": "300"
+      },
+      "normal": {
+        "value": "400"
+      },
+      "bold": {
+        "value": "700"
+      },
+      "bolder": {
+        "value": "900"
+      },
+      "base": {
+        "value": "{font.weight.normal.value}"
       }
     }
   }

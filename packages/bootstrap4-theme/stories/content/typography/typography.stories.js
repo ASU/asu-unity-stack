@@ -34,6 +34,17 @@ storiesOf('Content/Typography', module)
   Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
 </p>`)
 
+  .add('ASU Paragraphs', () => `
+  <div class = "container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis semper enim. Fusce leo nisl,
+    malesuada sed mattis nec, viverra mollis erat. Cras vel euismod turpis.
+    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+    Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
+    Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
+    non luctus ante efficitur.</p>
+  </div>
+  `)
+
   .add('Inline text elements', () => `<p>You can use the mark tag to <mark>highlight</mark> text.</p>
   <p><del>This line of text is meant to be treated as deleted text.</del></p>
   <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
