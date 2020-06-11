@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Content/Code', module)
   .addParameters({
     happo: false,
@@ -18,3 +18,4 @@ storiesOf('Content/Code', module)
   To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>`)
 
   .add('Sample output', () => `<samp>This text is meant to be treated as sample output from a computer program.</samp>`);
+*/
