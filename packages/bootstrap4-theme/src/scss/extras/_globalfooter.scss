@@ -84,13 +84,14 @@
 }
 
 #social-media {
-  ul {
-    margin-bottom: $uds-size-spacing-3;
-    > li > a {
-      margin: 0 0 0 $uds-size-spacing-3;
-      font-size: $uds-size-icon-base;
-      color: $uds-color-base-gray-4;
-    }
+  .nav {
+    padding-bottom: $uds-size-spacing-3;
+  }
+  .nav-link {
+    font-size: $uds-size-icon-base;
+    color: $uds-color-base-gray-4;
+    line-height: 1;
+    padding-top: 7px; // Magic number and a hack. Reducing the padding by 1px to make the height = 48px.
   }
 }
 
@@ -106,10 +107,13 @@
     width: auto;
   }
 
-  #social-media ul {
+  #social-media .nav {
     padding: $uds-size-spacing-5 0;
-    margin-bottom: 0;
-    text-align: right;
+    justify-content: flex-end;
+
+    .nav-item:last-child .nav-link {
+      padding-right: 0;
+    }
   }
 }
 
@@ -178,8 +182,7 @@
 // ------------
 @include media-breakpoint-up(md) {
   #footer-columns {
-    padding-top: $uds-size-spacing-6;
-    padding-bottom: $uds-size-spacing-6;
+    padding: $uds-size-spacing-6 0;
 
     .flex-footer {
       h5.no-control {
@@ -192,38 +195,102 @@
 
       ul.collapse {
         display: block;
+        margin: 0;
       }
     }
   }
 }
 
-#wrapper-footer-innovation {
-  #footer-innovation .lockup {
+// ------------
+// #footer-innovtion, Desktop (Desktop first design)
+// ------------
+
+#footer-innovation {
+  .footer-innovation-links {
     justify-content: space-between;
     align-items: center;
-  }
 
-  .footer-innovation-links a {
-    font-weight: 700;
+    .img {
+      height: 100px;
+      width: auto;
+    }
+
+    .nav-link {
+      padding: 0;
+    }
   }
 }
+
+// ------------
+// #footer-innovtion, Mobile
+// ------------
+
+@mixin nav-to-grid {
+  .nav {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    justify-items: start;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .nav-item {
+    padding: 0.5rem 0;
+
+    &:nth-child(n + 4) {
+      justify-self: end;
+    }
+  }
+
+  .nav-link {
+    font-weight: 700;
+    margin-right: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  #footer-innovation {
+    padding: 0;
+
+    .footer-innovation-links {
+      flex-direction: column;
+      padding-bottom: $uds-size-spacing-3;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      @include nav-to-grid;
+    }
+  }
+}
+
+// ------------
+// #footer-colophon, Desktop (Desktop First Design)
+// ------------
 
 #wrapper-footer-colophon .colophon {
   margin: $uds-size-spacing-2 0;
 }
 
-/* Temporary Stuff */
-#wrapper-footer-innovation,
-#wrapper-footer-colophon {
-  display: none;
+#footer-colophon .nav-link {
+  padding: 0;
 }
 
-@include media-breakpoint-up(lg) {
-  #wrapper-footer-innovation {
-    display: block;
-  }
+// ------------
+// #footer-colophon, Mobile
+// ------------
 
-  #wrapper-footer-colophon {
-    display: block;
+@include media-breakpoint-down(md) {
+  #footer-colophon {
+    @include nav-to-grid;
+    .nav {
+      padding: 0;
+    }
+    .nav-link {
+      padding: 0 1rem;
+    }
   }
 }
