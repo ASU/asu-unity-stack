@@ -167,3 +167,16 @@ label {
 .bg-white a {
   color: $primary;
 }
+
+.sr-only {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  background-image: url('/sites/default/files/logo.png');
+  width: 110px;
+  height: 100px;
+  display: block; /* display:inline-block also works */
+}
