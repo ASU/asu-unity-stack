@@ -1,0 +1,46 @@
+// ASU Design System Hero styles without Bootstrap variables to override.
+
+// QUESTIONS
+// - which image asset from XD to use?
+// - should the image e specified in the CSS? or can we do in HTML to aid with resusability/use within a CMS?
+// - placement of image asset? Is what's here reasonable? 100% width?
+// - do we need to provide the container this would be in on the page (margins)?
+// - are columns calculations (to comply with xd) correct?
+// TODO
+// - review Q&A doc from the HUB re: heroes
+// - resizing (test)
+// - "must snap to medium size at 1400px viewport width"
+
+.uds-hero {
+  position: relative;
+  width: 100%;
+
+  background-color: #bfbfbf;
+  //background-image: url(https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png);
+  //background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%);
+  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
+    0% 0% no-repeat padding-box;
+  opacity: 1;
+  img.uds-hero-img {
+    width: 100%;
+  }
+  .container {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    p {
+      color: white;
+    }
+  }
+
+  &.uds-hero-sm {
+    height: 16rem; // 256px
+  }
+  &.uds-hero-md {
+    height: 32rem; // 512px
+  }
+  &.uds-hero-lg {
+    height: 42.75rem; // 684px
+  }
+}
