@@ -1,35 +1,15 @@
 // ASU Design System Lists without Bootstrap variables to override.
 
-$list-line-height: $uds-component-list-line-height;
-$list-space-8: $uds-size-spacing-1;
-$list-space-16: $uds-size-spacing-2;
-$list-space-base: $list-space-16;
-$list-space-20: $list-space-16 * 1.25;
-$list-space-24: $uds-size-spacing-3;
-$list-space-32: $uds-size-spacing-4;
-$list-space-40: $uds-size-spacing-5;
-$list-space-48: $uds-size-spacing-6;
-$list-space-64: $uds-size-spacing-8;
-$list-space-80: $uds-size-spacing-10;
-$list-font-xxl: $uds-size-font-xxl;
-$list-font-large: $uds-size-font-large;
-$list-smoke: $uds-color-background-gray;
-$list-font-light: $uds-color-font-light-base;
-$list-darkmode-font-light: $uds-color-base-gray-6;
-$list-brand-light: $uds-color-brand-light;
-$list-font-weight: $font-weight-normal;
-$list-font-weight-bold: $font-weight-bold;
-
 @mixin uds-list-spacing {
-  padding: $list-space-48 $list-space-80;
-  list-style: none;
+  padding: $uds-component-list-spacing-padding;
+  list-style: $uds-component-list-spacing-list-style;
 
   li {
-    max-width: 75ch; // TODO Revisit.
-    margin-bottom: $list-space-base;
+    max-width: $uds-component-list-spacing-li-max-width; // TODO Revisit.
+    margin-bottom: $uds-component-list-spacing-li-margin-bottom;
 
     &:last-of-type {
-      margin-bottom: 0;
+      margin-bottom: $uds-component-list-spacing-li-last-of-type-margin-bottom;
     }
   }
 }
@@ -38,22 +18,22 @@ $list-font-weight-bold: $font-weight-bold;
   li:before,
   ul ul li:before,
   ul ul ul ul li:before {
-    content: '\2022 ';
-    font-size: $list-font-xxl;
-    vertical-align: middle;
-    line-height: $list-line-height;
-    padding-right: $list-space-20;
-    margin-left: -$list-space-32;
+    content: '\2022 '; //$uds-component-list-ul-styles-content-bullet;
+    font-size: $uds-component-list-ul-styles-font-size;
+    vertical-align: $uds-component-list-ul-styles-vertical-align;
+    line-height: $uds-component-list-ul-styles-line-height;
+    padding-right: $uds-component-list-ul-styles-padding-right;
+    margin-left: $uds-component-list-ul-styles-margin-left;
   }
 
   ul li:before,
   ul ul ul li:before {
-    content: '\25E6 ';
+    content: '\25E6 '; //$uds-component-list-ul-styles-content-bullet-empty;
   }
 
   ol,
   ul {
-    padding: $list-space-base $list-space-24 0px;
+    padding: $uds-component-list-ul-styles-sub-list-padding;
   }
 }
 
@@ -71,7 +51,7 @@ ul.smokemode {
 ul.maroon,
 ol.maroon {
   li:before {
-    color: $maroon;
+    color: $uds-component-list-maroon-list-color;
   }
 }
 
@@ -80,31 +60,21 @@ ul.darkmode,
 ol.darkmode {
   @include uds-list-spacing;
 
-  margin-left: 0;
-  margin-bottom: 0;
-  background-color: $dark;
-  color: $list-darkmode-font-light;
+  margin-left: $uds-component-list-darkmode-margin-left;
+  margin-bottom: $uds-component-list-darkmode-margin-bottom;
+  background-color: $uds-component-list-darkmode-background-color;
+  color: $uds-component-list-darkmode-color;
   // Default white list bullets (for dark mode)
   li:before {
-    color: $list-darkmode-font-light;
+    color: $uds-component-list-darkmode-li-before-color;
   }
   // Gold list icon bullets (for dark mode)
   &.gold li .fa-li {
-    color: $gold;
-  }
-  background-color: $dark;
-  color: $list-darkmode-font-light;
-  // Default white list bullets (for dark mode)
-  li:before {
-    color: $list-darkmode-font-light;
-  }
-  // Gold list bullets (for dark mode)
-  &.gold li:before {
-    color: $gold;
+    color: $uds-component-list-darkmode-gold-color;
   }
   &.uds-steplist li:before {
-    background-color: $list-darkmode-font-light;
-    color: $dark;
+    background-color: $uds-component-list-darkmode-steplist-background-color;
+    color: $uds-component-list-darkmode-steplist-color;
   }
 }
 
@@ -113,31 +83,31 @@ ul.smokemode,
 ol.smokemode {
   @include uds-list-spacing;
 
-  margin-left: 0;
-  margin-bottom: 0;
-  background-color: $list-smoke;
+  margin-left: $uds-component-list-smokemode-margin-left;
+  margin-bottom: $uds-component-list-smokemode-margin-bottom;
+  background-color: $uds-component-list-smokemode-background-color;
 }
 
 ul.fa-ul {
   @include uds-list-spacing;
 
-  margin-left: 0;
-  margin-bottom: 0;
-  padding: $list-space-48 $list-space-80;
+  margin-left: $uds-component-list-icon-list-margin-left;
+  margin-bottom: $uds-component-list-icon-list-margin-bottom;
+  padding: $uds-component-list-icon-list-padding;
   li .fa-li {
-    left: -$list-space-40;
+    left: $uds-component-list-icon-list-icon-left;
   }
   li:before {
-    content: none;
-    font-size: $list-font-xxl;
-    vertical-align: middle;
-    line-height: $list-line-height;
-    padding-right: $list-space-base;
-    margin-left: -$list-space-24;
+    content: $uds-component-list-icon-list-li-before-content;
+    font-size: $uds-component-list-icon-list-li-before-font-size;
+    vertical-align: $uds-component-list-icon-list-li-before-vertical-align;
+    line-height: $uds-component-list-icon-list-li-before-line-height;
+    padding-right: $uds-component-list-icon-list-li-before-padding-right;
+    margin-left: $uds-component-list-icon-list-li-before-margin-left;
   }
   // Maroon icon bullets
   &.maroon li .fa-li {
-    color: $maroon;
+    color: $uds-component-list-icon-list-li-maroon-icon;
   }
 }
 
@@ -148,13 +118,13 @@ ol {
   counter-reset: listcounter;
 
   li ol {
-    padding: 1rem 1.5rem 0px;
+    padding: $uds-component-list-ol-styles-nested-ol-padding;
   }
 
   li:before {
-    line-height: $list-line-height;
-    padding-right: $list-space-base;
-    margin-left: -$list-space-32;
+    line-height: $uds-component-list-ol-styles-li-before-line-height;
+    padding-right: $uds-component-list-ol-styles-li-before-padding-right;
+    margin-left: $uds-component-list-ol-styles-li-before-margin-left;
   }
 
   li:before,
@@ -172,47 +142,47 @@ ol {
 
   // Adjust indent for double digits.
   li:nth-of-type(9) ~ li:before {
-    margin-left: -$list-space-40;
+    margin-left: $uds-component-list-ol-styles-li-nth-of-type-9-margin-left;
   }
   // Adjust indent for triple digits.
   li:nth-of-type(99) ~ li:before {
-    margin-left: -$list-space-48;
+    margin-left: $uds-component-list-ol-styles-li-nth-of-type-99-margin-left;
   }
 
   // Step List styles
   &.uds-steplist {
-    padding-left: $list-space-24;
+    padding-left: $uds-component-list-ol-styles-steplist-styles-padding-left;
     li {
-      padding-bottom: $list-space-32;
-      margin-bottom: $list-space-48;
-      border-bottom: 1px solid $list-brand-light;
-      font-weight: $list-font-weight-bold;
+      padding-bottom: $uds-component-list-ol-styles-steplist-styles-li-padding-bottom;
+      margin-bottom: $uds-component-list-ol-styles-steplist-styles-li-margin-bottom;
+      border-bottom: $uds-component-list-ol-styles-steplist-styles-li-border-bottom;
+      font-weight: $uds-component-list-ol-styles-steplist-styles-li-font-weight;
       span {
-        padding-left: 4.3rem; // Text alignment below headline, tweaky due to oblong fix below.
-        display: block;
-        margin-top: $list-space-16;
-        font-weight: $list-font-weight;
+        padding-left: $uds-component-list-ol-styles-steplist-styles-li-span-padding-left; // Text alignment below headline, tweaky due to oblong fix below.
+        display: $uds-component-list-ol-styles-steplist-styles-li-span-display;
+        margin-top: $uds-component-list-ol-styles-steplist-styles-li-span-margin-top;
+        font-weight: $uds-component-list-ol-styles-steplist-styles-li-span-font-weight;
       }
       &:before {
-        border-radius: 50%;
-        background-color: $black;
-        color: $list-font-light;
-        padding: $list-space-8 0.8rem; // Following is more true to XD step circle sizing, but looks less rounded: padding: 0.4rem 0.6rem;
-        margin-right: $list-space-32;
-        margin-left: 0;
-        font-size: $list-font-large;
-        font-weight: $list-font-weight-bold;
+        border-radius: $uds-component-list-ol-styles-steplist-styles-li-li-before-border-radius;
+        background-color: $uds-component-list-ol-styles-steplist-styles-li-li-before-background-color;
+        color: $uds-component-list-ol-styles-steplist-styles-li-li-before-color;
+        padding: $uds-component-list-ol-styles-steplist-styles-li-li-before-padding; // Following is more true to XD step circle sizing, but looks less rounded: padding: 0.4rem 0.6rem;
+        margin-right: $uds-component-list-ol-styles-steplist-styles-li-li-before-margin-right;
+        margin-left: $uds-component-list-ol-styles-steplist-styles-li-li-before-margin-left;
+        font-size: $uds-component-list-ol-styles-steplist-styles-li-li-before-font-size;
+        font-weight: $uds-component-list-ol-styles-steplist-styles-li-li-before-font-weight;
         content: counter(
           listcounter
         ); // Remove space as it messes with centering.
       }
     }
     &.uds-steplist-gold li:before {
-      background-color: $gold;
-      color: $black;
+      background-color: $uds-component-list-ol-styles-steplist-styles-gold-background-color;
+      color: $uds-component-list-ol-styles-steplist-styles-gold-color;
     }
     &.uds-steplist-maroon li:before {
-      background-color: $maroon;
+      background-color: $uds-component-list-ol-styles-steplist-styles-maroon-background-color;
     }
   }
 }
