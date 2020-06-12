@@ -82,6 +82,6 @@
   }
 }
 
-a:visited {
+a:visited:not(.btn) {
   color: $uds-color-base-darkmaroon;
 }
