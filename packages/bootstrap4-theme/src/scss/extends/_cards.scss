@@ -1,0 +1,126 @@
+//
+// Cards
+//
+.card {
+  height:$uds-component-card-basic-height-percent;
+  display: $uds-component-card-basic-display;
+  flex-direction: $uds-component-card-basic-flex-direction;
+}
+.card-hover:hover {
+  transform: $uds-component-card-basic-hover-transform;
+}
+.card-button {
+  align-self: $uds-component-card-basic-button-align-self;
+  margin-top: $uds-component-card-basic-button-margin-top;
+  padding: $uds-component-card-basic-button-padding;
+  width: $uds-component-card-basic-button-width-percent;
+}
+.card-icon-top {
+  width: $uds-component-card-basic-icon-top-width;
+  height: $uds-component-card-basic-icon-top-width;
+  margin: $uds-component-card-basic-icon-top-margin;
+}
+.card-img-top img,
+.card-img-top {
+  max-width: $uds-component-card-basic-image-top-width-percent;
+  height: $uds-component-card-basic-image-top-height;
+  object-fit: $uds-component-card-basic-image-top-object-fit;
+}
+
+.card-centered {
+  .card-icon-top {
+    margin: $uds-component-card-basic-icon-top-margin-centered;
+  }
+  .card-header {
+    text-align: $uds-component-card-basic-header-text-align-centered;
+  }
+}
+.card-header {
+  padding: $uds-component-card-basic-header-padding;
+}
+.card-body {
+  padding: $uds-component-card-basic-body-padding;
+}
+
+.card-sm {
+  .card-body {
+    padding: $uds-component-card-basic-body-padding-sm;
+  }
+  .card-header {
+    padding: $uds-component-card-basic-header-padding-sm;
+  }
+  .card-img-top img,
+  .card-img-top {
+    height: $uds-component-card-basic-image-top-height-sm;
+  }
+}
+.card-lg {
+  .card-img-top img,
+  .card-img-top {
+    height: $uds-component-card-basic-image-top-height-lg;
+  }
+}
+.card-header .card-title {
+  margin-bottom:0;
+}
+.card-title a {
+  color: $uds-component-card-basic-title-link-color;
+  text-decoration: $uds-component-card-basic-title-link-text-decoration;
+}
+.card-title a:hover {
+  text-decoration: $uds-component-card-basic-title-link-text-decoration-hover;
+}
+
+
+.card-degree .card-header .card-title:after {
+  content:"";
+  width:$uds-size-spacing-3;
+  height:$uds-size-spacing-half;
+  display:block;
+  background-color:$gold;
+  margin-top:$uds-size-spacing-2;
+}
+.card-degree .card-footer {
+  background-color:$white;
+}
+.card-degree .card-footer a {
+  color: $black;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-degree .card-footer a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-footer a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+.card-story .card-header,
+.card-story .card-body {
+  margin-right: 32px;
+  margin-left: 32px;
+  background-color:$white;
+  padding:24px;
+}
+.card-story .card-body {
+  padding-top:0;
+  padding-bottom:32px;
+}
+.card-story .card-img-top {
+  margin-bottom: -48px;
+}
+.card-story.card-sm {
+  .card-body {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+  .card-header {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}
+.card-event .card-header {
+  border-top: solid 4px $gold;
+}
