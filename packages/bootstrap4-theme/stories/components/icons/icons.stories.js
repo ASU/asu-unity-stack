@@ -107,3 +107,10 @@ storiesOf('Components/Icons', module)
     </div>
   </div>
 </div>`)
+
+.add('Contact Icons', () => `
+<div class="container-fluid">
+  <div class="row">
+
+  </div>
+</div>`)
