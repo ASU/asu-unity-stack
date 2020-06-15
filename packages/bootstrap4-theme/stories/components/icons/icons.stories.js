@@ -6,7 +6,7 @@ storiesOf('Components/Icons', module)
     happo: false,
   })
 
-  .add('Contact Icons', () => `
+  .add('Navigational Icons', () => `
 <div class="container-fluid">
   <div class="row">
     <div class="col col-sm-12 col-md-4 p-4">
