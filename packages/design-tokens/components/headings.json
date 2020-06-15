@@ -3,10 +3,10 @@
     "heading": {
       "font": {
         "family": {
-          "value": "{font.family.base.value}"
+          "value": "{font.family.stack.value}"
         },
         "weight": {
-          "value": "{weight.font.bold.value}"
+          "value": "{font.weight.bold.value}"
         }
       },
       "text-align": {
