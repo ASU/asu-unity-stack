@@ -2,18 +2,37 @@
 
 // QUESTIONS
 // - which image asset from XD to use?
-// - should the image e specified in the CSS? or can we do in HTML to aid with resusability/use within a CMS?
+// - should the image be specified in the CSS? or can we do in HTML to aid with resusability/use within a CMS?
 // - placement of image asset? Is what's here reasonable? 100% width?
-// - do we need to provide the container this would be in on the page (margins)?
-// - are columns calculations (to comply with xd) correct?
+// - X do we need to provide the container this would be in on the page
+//   (margins)? Q&A mentions the hero being limited to 2k screens. We set this
+//   on .uds-hero using max-width.
+// - are columns calculations (to comply with xd) correct? Went with the XD
+//   number of columns mentioned in notes (6,
+//   whereas output more closely matches the XD image at 7 or 8).
 // TODO
-// - review Q&A doc from the HUB re: heroes
-// - resizing (test)
-// - "must snap to medium size at 1400px viewport width"
+// X - review Q&A doc from the HUB re: heroes
+// X - resizing (test)
+// X - "must snap to medium size at 1400px viewport width" ? reduce lg to md based on viewport
+// X - "limit hero images to 2k screens" - max-width on .uds-hero
+// - update namespace to "heroes" to match other components?
+
+// Shared styling between md and lg heroes.
+@mixin container-md-and-lg {
+  position: absolute;
+  bottom: 3rem;
+  left: 2.5rem;
+  width: 100%;
+  .uds-hero-text {
+    margin-left: 2.25rem;
+    line-height: 2rem;
+  }
+}
 
 .uds-hero {
   position: relative;
   width: 100%;
+  max-width: 128rem; // 2048px, aka "a 2k screen"
 
   background-color: #bfbfbf;
   //background-image: url(https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png);
@@ -25,22 +44,36 @@
     width: 100%;
   }
   .container {
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
-    width: 100%;
     p {
       color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1.75rem;
     }
   }
 
   &.uds-hero-sm {
     height: 16rem; // 256px
+    .container {
+      position: absolute;
+      bottom: 1rem;
+      left: 2.5rem;
+      width: 100%;
+    }
   }
   &.uds-hero-md {
     height: 32rem; // 512px
+    .container {
+      @include container-md-and-lg();
+    }
   }
   &.uds-hero-lg {
     height: 42.75rem; // 684px
+    // Snap to md at 1400px.
+    @media screen and (max-width: 1400px) {
+      height: 32rem; // 512px
+    }
+    .container {
+      @include container-md-and-lg();
+    }
   }
 }
