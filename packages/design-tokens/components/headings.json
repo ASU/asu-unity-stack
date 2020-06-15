@@ -1,0 +1,184 @@
+{
+  "component": {
+    "heading": {
+      "font": {
+        "family": {
+          "value": "{font.family.base.value}"
+        },
+        "weight": {
+          "value": "{weight.font.bold.value}"
+        }
+      },
+      "text-align": {
+        "value": "left"
+      },
+      "opacity": {
+        "value": "1"
+      },
+      "margin": {
+        "value": "{size.spacing.4.value}"
+      },
+      "highlight": {
+        "box-shadow": {
+          "large": {
+            "first": {
+              "offset-x": {
+                "value": "-0.65rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
+            },
+            "second": {
+              "offset-x": {
+                "value": "0.65rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
+            }
+          },
+          "small": {
+            "first": {
+              "offset-x": {
+                "value": "-0.40rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
+            },
+            "second": {
+              "offset-x": {
+                "value": "0.40rem"
+              },
+              "offset-y": {
+                "value": "0"
+              },
+              "blur-radius": {
+                "value": "0"
+              }
+            }
+          }
+        },
+        "gold": {
+          "bg-color": {
+            "value": "{color.brand.gold.value}"
+          },
+          "text-color": {
+            "value": "{color.font.dark.base.value}"
+          }
+        },
+        "black": {
+          "bg-color": {
+            "value": "{color.brand.dark.value}"
+          },
+          "text-color": {
+            "value": "{color.font.light.base.value}"
+          }
+        },
+        "white": {
+          "bg-color": {
+            "value": "{color.base.white.value}"
+          },
+          "text-color": {
+            "value": "{color.font.dark.base.value}"
+          }
+        }
+      },
+      "one": {
+        "font-size": {
+          "value": "4rem"
+        },
+        "line-height": {
+          "value": "4.85rem"
+        },
+        "letter-spacing": {
+          "value": "-0.085rem"
+        },
+        "article": {
+          "font-size": {
+            "value": "3.5rem"
+          },
+          "line-height": {
+            "value": "4.15rem"
+          }
+        },
+        "mobile": {
+          "font-size": {
+            "value": "3rem"
+          },
+          "line-height": {
+            "value": "3.6rem"
+          },
+          "letter-spacing": {
+            "value": "-0.035rem"
+          }
+        }
+      },
+      "two": {
+        "font-size": {
+          "value": "2.5rem"
+        },
+        "line-height": {
+          "value": "3rem"
+        },
+        "letter-spacing": {
+          "value": "-0.085rem"
+        },
+        "mobile": {
+          "font-size": {
+            "value": "1.875rem"
+          },
+          "line-height": {
+            "value": "2.25rem"
+          },
+          "letter-spacing": {
+            "value": "-0.035rem"
+          }
+        }
+      },
+      "three": {
+        "font-size": {
+          "value": "1.5rem"
+        },
+        "line-height": {
+          "value": "1.8rem"
+        },
+        "letter-spacing": {
+          "value": "-0.085rem"
+        }
+      },
+      "four": {
+        "font-size": {
+          "value": "1.25rem"
+        },
+        "line-height": {
+          "value": "1.5rem"
+        },
+        "letter-spacing": {
+          "value": "-0.037rem"
+        }
+      },
+      "five": {
+        "font-size": {
+          "value": "1rem"
+        },
+        "line-height": {
+          "value": "1.2rem"
+        },
+        "letter-spacing": {
+          "value": "-0.037rem"
+        }
+      }
+    }
+  }
+}
