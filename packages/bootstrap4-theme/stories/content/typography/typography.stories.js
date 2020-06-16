@@ -38,18 +38,18 @@ storiesOf('Content/Typography', module)
   <h1 class="display-3">Display 3</h1>
   <h1 class="display-4">Display 4</h1>`)
 
-  .add('ASU Headings', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1 class="heading heading-one">Heading 1</h1>
-  <h1 class="heading heading-one article">Heading 1 - Long Headlines and Article Titles</h1>
-  <h2 class="heading heading-two">Heading 2</h2>
-  <h3 class="heading heading-three">Heading 3</h3>
-  <h4 class="heading heading-four">Heading 4</h4>
-  <h5 class="heading heading-five">Heading 5</h5></div></div>`)
+  .add('ASU Headings', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1>Heading 1</h1>
+  <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5></div></div>`)
 
-  .add('ASU Headings - Highlights', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1 class="heading heading-one"><span class="highlight highlight-gold highlight-heading-one">Lorem ipsum</span></h1>
-  <h1 class="heading heading-one article"><span class="highlight highlight-gold highlight-heading-one">Heading 1 - Long Headlines and Article Titles</span></h1>
-  <h2 class="heading heading-two"><span class="highlight highlight-black highlight-heading-two">Heading 2</span></h2>
-  <h3 class="heading heading-three"><span class="highlight highlight-white">Heading 3</span></h3>
-  <h4 class="heading heading-four"><span class="highlight highlight-black">Heading 4</span></h4></div></div>`)
+  .add('ASU Headings - Highlights', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1><span class="highlight-gold">Lorem ipsum</span></h1>
+  <h1 class="article"><span class="highlight-gold">Heading 1 - Long Headlines and Article Titles</span></h1>
+  <h2><span class="highlight-black">Heading 2</span></h2>
+  <h3><span class="highlight-white">Heading 3</span></h3>
+  <h4><span class="highlight-black">Heading 4</span></h4></div></div>`)
 
   .add('Lead', () => `<p class="lead">
   Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
