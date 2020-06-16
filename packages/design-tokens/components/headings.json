@@ -16,7 +16,7 @@
         "value": "1"
       },
       "margin": {
-        "value": "{size.spacing.4.value}"
+        "value": "{size.spacing.base.value}"
       },
       "highlight": {
         "box-shadow": {
