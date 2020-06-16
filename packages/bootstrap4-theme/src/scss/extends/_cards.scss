@@ -44,7 +44,7 @@
   padding: $uds-component-card-basic-body-padding;
 }
 .card-footer {
-  padding: $uds-component-card-basic-body-padding;
+  padding: $uds-component-card-basic-footer-link-padding;
 }
 .card-footer-link {
   padding: $uds-component-card-basic-footer-link-padding;
@@ -115,8 +115,7 @@
 .card-story .card-header,
 .card-story .card-body,
 .card-story .card-button,
-.card-story .card-footer,
-.card-story .card-footer-link {
+.card-story .card-footer {
   margin: $uds-component-card-story-body-margin;
   background-color:$white;
   padding:24px;
@@ -124,6 +123,11 @@
 }
 .card-story .card-header {
   padding-top:24px;
+}
+.card-story .card-footer {
+  padding: $uds-component-card-basic-footer-link-padding;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .card-story .card-img-top {
   margin-bottom: -48px;
@@ -134,6 +138,10 @@
     margin-left: 16px;
   }
   .card-header {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+  .card-button {
     margin-right: 16px;
     margin-left: 16px;
   }

@@ -9,15 +9,15 @@ storiesOf('Components/Cards - degree', module)
 
   .add('Degree card', () => `
   <div class="container-fluid">
-    <div class="row">
-      <div class="col col-sm-4 p-3">
+    <div class="row pt-2 pb-2">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
           <div class="card-footer-link">
@@ -25,7 +25,7 @@ storiesOf('Components/Cards - degree', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-8 p-3">
+      <div class="col col-sm-8">
         <div style="background-color:#e5e5e5;padding:16px;">
         <strong>Correct markup for card components<br/><br/></strong>
           <pre>
@@ -49,15 +49,15 @@ storiesOf('Components/Cards - degree', module)
   `)
   .add('Hover', () => `
   <div class="container-fluid">
-    <div class="row">
-      <div class="col col-sm-4 p-3">
+    <div class="row pt-2 pb-2">
+      <div class="col col-sm-4">
         <div class="card card-degree card-hover">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
         </div> <!-- .card -->
@@ -66,15 +66,15 @@ storiesOf('Components/Cards - degree', module)
   `)
   .add('Variations', () => `
   <div class="container-fluid">
-    <div class="row">
-      <div class="col col-sm-4 p-3">
+    <div class="row pt-2 pb-2">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
           <div class="card-footer-link">
@@ -82,25 +82,25 @@ storiesOf('Components/Cards - degree', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-4 p-3">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-4 p-3">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
           <div class="card-footer-link">
@@ -118,15 +118,15 @@ storiesOf('Components/Cards - degree', module)
 
   .add('4 column', () => `
   <div class="container-fluid">
-    <div class="row">
-      <div class="col col-sm-3 p-3">
+    <div class="row pt-2 pb-2">
+      <div class="col col-sm-3">
         <div class="card card-degree card-sm">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
           <div class="card-footer-link">
@@ -137,36 +137,36 @@ storiesOf('Components/Cards - degree', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-3 p-3">
+      <div class="col col-sm-3">
         <div class="card card-degree card-sm">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-3 p-3">
+      <div class="col col-sm-3">
         <div class="card card-degree card-sm">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-3 p-3">
+      <div class="col col-sm-3">
         <div class="card card-degree card-sm">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
           </div>
           <div class="card-footer-link">
@@ -181,15 +181,15 @@ storiesOf('Components/Cards - degree', module)
 
   .add('3 column', () => `
   <div class="container-fluid">
-    <div class="row">
-      <div class="col col-sm-4 p-3">
+    <div class="row pt-2 pb-2">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
           <div class="card-footer-link">
@@ -197,25 +197,25 @@ storiesOf('Components/Cards - degree', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-4 p-3">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-4 p-3">
+      <div class="col col-sm-4">
         <div class="card card-degree">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
             </p>
           </div>
           <div class="card-footer-link">
