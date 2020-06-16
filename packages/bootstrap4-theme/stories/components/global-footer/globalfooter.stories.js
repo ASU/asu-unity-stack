@@ -60,7 +60,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
@@ -120,7 +120,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
@@ -247,7 +247,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
@@ -337,7 +337,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
@@ -443,7 +443,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
@@ -565,7 +565,7 @@ storiesOf('Components/Global Footer', module)
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram"></span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
               <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
             </ul>
           </div>
