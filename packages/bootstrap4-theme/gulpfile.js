@@ -128,7 +128,7 @@ gulp.task('scripts', function() {
 gulp.task('copy-assets', function(done) {
   // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/assets/*`)
+    .src(`${paths.node}/@asu-design-system/design-tokens/assets/**/*`)
     .pipe(gulp.dest('./dist/img'));
 
   // Copy Bootstrap's Scripts
