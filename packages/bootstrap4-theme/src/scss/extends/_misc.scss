@@ -1,34 +1,3 @@
-// Headings
-h1 {
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 68px;
-  letter-spacing: -0.035em;
-}
-h2 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 44px;
-  letter-spacing: -0.03em;
-}
-h3 {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  letter-spacing: -0.025em;
-}
-h4 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: -0.02em;
-}
-h5 {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-}
 .img-background {
   background-size: cover;
   background-repeat: no-repeat;
@@ -197,4 +166,17 @@ label {
 .bg-secondary a,
 .bg-white a {
   color: $primary;
+}
+
+.sr-only {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  background-image: url('/sites/default/files/logo.png');
+  width: 110px;
+  height: 100px;
+  display: block; /* display:inline-block also works */
 }

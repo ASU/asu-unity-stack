@@ -26,5 +26,15 @@
         "value": "{size.font.medium.value}"
       }
     }
+  },
+  "weight": {
+    "font": {
+      "regular": {
+        "value": "400"
+      },
+      "bold": {
+        "value": "700"
+      }
+    }
   }
 }

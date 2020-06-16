@@ -33,7 +33,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Dark', () => `
+.add('Unordered list, Darkmode', () => `
 <ul class="darkmode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -100,7 +100,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered list, Dark', () => `
+.add('Ordered list, Darkmode', () => `
 <ol class="darkmode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -139,10 +139,9 @@ storiesOf('Components/List', module)
   <li><i class="fa-li fas fa-rocket" aria-hidden="true"></i>Lorem ipsum dolor sit amet</li>
   <li><i class="fa-li fas fa-bus" aria-hidden="true"></i>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li><i class="fa-li fas fa-car" aria-hidden="true"></i>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>We hide icons from aria in these examples, but whether to hide or not is to be evaluated by the developer. See https://fontawesome.com/v4.7.0/accessibility/ for guidelines.</li>
+  <li><i class="fa-li fas fa-bicycle" aria-hidden="true"></i>We hide icons from assistive technology in these examples, but whether to hide using aria-hidden="true" or not should be determined by the developer based on whether the icons are intended as decoration only or are intended to convey meaning. See <a href="https://fontawesome.com/v4.7.0/accessibility/">Font Awesome Accessibility</a> for guidelines.</li>
 </ul>
 `)
-
 
 .add('Icon list, maroon', () => `
 <ul class="fa-ul maroon">
