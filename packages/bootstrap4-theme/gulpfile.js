@@ -126,7 +126,12 @@ gulp.task('scripts', function() {
 
 // Copy all assets needed for ASU Web Standards
 gulp.task('copy-assets', function(done) {
-  // Copy Bootstrap's Script
+  // Copy the master ASU images from the design-token
+  gulp
+    .src(`${paths.node}/@asu-design-system/design-tokens/assets/*`)
+    .pipe(gulp.dest('./dist/img'));
+
+  // Copy Bootstrap's Scripts
   gulp
     .src(`${paths.node}/bootstrap/dist/js/*`)
     .pipe(gulp.dest('./dist/js'));
@@ -144,7 +149,7 @@ gulp.task('clean-dist', function() {
 // Compiles the styles, scripts, and assets into the dist folder
 gulp.task(
   'compile',
-  gulp.series('styles', 'imagemin', 'copy-assets')
+  gulp.series('clean-dist', 'styles', 'imagemin', 'copy-assets')
 );
 
 // Run
