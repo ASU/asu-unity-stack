@@ -25,7 +25,23 @@ storiesOf('Components/Cards - story', module)
       </div> <!-- .col -->
     </div>
   `)
-
+  .add('Hover', () => `
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col col-sm-4 p-3">
+        <div class="card card-story card-hover">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
+          </p>
+          </div>
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+    </div>
+  `)
   .add('Variations', () => `
   <div class="container-fluid">
     <div class="row">
@@ -83,7 +99,7 @@ storiesOf('Components/Cards - story', module)
           <div class="card-body">
             <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
           </p>
-            <a href="#" class="btn btn-dark">Button link here</a>
+            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
@@ -96,7 +112,7 @@ storiesOf('Components/Cards - story', module)
           <div class="card-body">
             <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
           </p>
-            <a href="#" class="btn btn-dark">Button link here</a>
+            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
@@ -109,7 +125,7 @@ storiesOf('Components/Cards - story', module)
           <div class="card-body">
             <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
           </p>
-            <a href="#" class="btn btn-dark">Button link here</a>
+            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
@@ -122,7 +138,7 @@ storiesOf('Components/Cards - story', module)
           <div class="card-body">
             <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.
           </p>
-            <a href="#" class="btn btn-dark">Button link here</a>
+            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
