@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
-    "clean": "rm -rf build",
+    "clean": "yarn shx rm -rf build",
     "prepublishOnly": "yarn run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
