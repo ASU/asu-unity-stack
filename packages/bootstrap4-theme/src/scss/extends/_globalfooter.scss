@@ -1,0 +1,279 @@
+// Global Footer Styles
+
+@mixin footer-links {
+  color: $uds-color-base-gray-6;
+  line-height: $uds-size-spacing-3;
+  text-decoration: none;
+
+  &:hover {
+    color: $uds-color-base-gold;
+    text-decoration: underline;
+  }
+}
+
+// ------------
+// Wrapper base colors. Won't change in a media query.
+// ------------
+#wrapper-endorsed-footer,
+#wrapper-footer-columns {
+  background: $uds-color-divider-darker;
+
+  h5 {
+    color: $uds-color-base-white;
+  }
+}
+
+#wrapper-endorsed-footer {
+  a {
+    color: $uds-color-base-gray-6;
+  }
+}
+
+#wrapper-endorsed-footer + #wrapper-footer-columns {
+  border-top: 2px solid $uds-color-divider-lighter;
+}
+
+#wrapper-footer-innovation {
+  background-color: $uds-color-base-gold;
+  a {
+    margin-right: $uds-size-spacing-3;
+    text-decoration: none;
+    color: $uds-color-base-black;
+  }
+}
+
+#wrapper-footer-colophon {
+  background-color: $uds-color-base-gray-6-alt;
+  a {
+    margin-right: $uds-size-spacing-3;
+    text-decoration: none;
+    color: $uds-color-base-black;
+  }
+}
+
+// ------------
+// #endorsed-footer, mobile
+// ------------
+#endorsed-logo img {
+  width: 100%;
+  height: auto;
+  padding: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
+}
+
+#social-media {
+  .nav {
+    padding-bottom: $uds-size-spacing-3;
+  }
+  .nav-link {
+    font-size: $uds-size-icon-base;
+    color: $uds-color-base-gray-4;
+    line-height: 1;
+    padding-top: 7px; // Magic number and a hack. Reducing the padding by 1px to make the height = 48px.
+  }
+}
+
+// ------------
+// #endorsed-footer, desktop
+// ------------
+@include media-breakpoint-up(md) {
+  #endorsed-logo img {
+    box-sizing: border-box;
+    padding: 0.5rem 0 0.5rem 0;
+    margin-left: -1.625rem; /* Magic number. Derived from internal padding of endorsed logo */
+    max-height: $uds-size-spacing-16;
+    width: auto;
+  }
+
+  #social-media .nav {
+    padding: $uds-size-spacing-5 0;
+    justify-content: flex-end;
+
+    .nav-item:last-child .nav-link {
+      padding-right: 0;
+    }
+  }
+}
+
+// ------------
+// #footer-columns, mobile
+// ------------
+#footer-columns {
+  padding: $uds-size-spacing-3 $uds-size-spacing-4;
+
+  #info-column {
+    .contact-link {
+      margin-bottom: $uds-size-spacing-4;
+
+      a {
+        @include footer-links;
+        text-decoration: underline;
+      }
+    }
+
+    .contribute-button {
+      margin-bottom: $uds-size-spacing-4;
+    }
+  }
+
+  .flex-footer {
+    h5 {
+      margin-bottom: 0;
+
+      &.no-control {
+        display: none;
+      }
+
+      &.control {
+        display: block;
+      }
+    }
+
+    h5 a {
+      padding: $uds-size-spacing-3 0;
+      margin: 0;
+      border-top: 1px solid $uds-color-divider-lighter;
+      text-decoration: none;
+      display: block;
+      color: $uds-color-base-white;
+
+      &:after {
+        color: $uds-color-base-white;
+      }
+    }
+
+    ul {
+      margin: 0 0 $uds-size-spacing-3 $uds-size-spacing-4;
+      padding: 0;
+
+      > li {
+        margin: 0 0 0.75rem 0;
+        padding: 0;
+        list-style-type: none;
+
+        > a {
+          @include footer-links;
+        }
+      }
+    }
+  }
+}
+
+// ------------
+// #footer-columns, desktop
+// ------------
+@include media-breakpoint-up(md) {
+  #footer-columns {
+    padding: $uds-size-spacing-6 0;
+
+    .flex-footer h5 {
+      margin-bottom: $uds-size-spacing-3;
+
+      &.no-control {
+        display: block;
+      }
+
+      &.control {
+        display: none;
+      }
+    }
+
+    ul.collapse {
+      display: block;
+      margin: 0;
+    }
+  }
+}
+
+// ------------
+// #footer-innovtion, Desktop (Desktop first design)
+// ------------
+
+#footer-innovation {
+  .footer-innovation-links {
+    justify-content: space-between;
+    align-items: center;
+
+    .img {
+      height: 100px;
+      width: auto;
+    }
+
+    .nav-link {
+      padding: 0;
+    }
+  }
+}
+
+// ------------
+// #footer-innovtion, Mobile
+// ------------
+
+@mixin nav-to-grid {
+  .nav {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    justify-items: start;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .nav-item {
+    padding: 0.5rem 0;
+
+    &:nth-child(n + 4) {
+      justify-self: end;
+    }
+  }
+
+  .nav-link {
+    font-weight: 700;
+    margin-right: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  #footer-innovation {
+    padding: 0;
+
+    .footer-innovation-links {
+      flex-direction: column;
+      padding-bottom: $uds-size-spacing-3;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      @include nav-to-grid;
+    }
+  }
+}
+
+// ------------
+// #footer-colophon, Desktop (Desktop First Design)
+// ------------
+
+#wrapper-footer-colophon .colophon {
+  margin: $uds-size-spacing-2 0;
+}
+
+#footer-colophon .nav-link {
+  padding: 0;
+}
+
+// ------------
+// #footer-colophon, Mobile
+// ------------
+
+@include media-breakpoint-down(md) {
+  #footer-colophon {
+    @include nav-to-grid;
+    .nav {
+      padding: 0;
+    }
+    .nav-link {
+      padding: 0 1rem;
+    }
+  }
+}
