@@ -56,13 +56,18 @@ storiesOf('Content/Typography', module)
 </p>`)
 
   .add('ASU Paragraphs', () => `
-  <div class = "container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis semper enim. Fusce leo nisl,
-    malesuada sed mattis nec, viverra mollis erat. Cras vel euismod turpis.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
-    Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
-    non luctus ante efficitur.</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 p-3">
+        <h1><span class="highlight-gold">Paragraphs</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis semper enim. Fusce leo nisl,
+        malesuada sed mattis nec, viverra mollis erat. Cras vel euismod turpis.
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
+        Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
+        non luctus ante efficitur.</p>
+      </div>
+    </div>
   </div>
   `)
 
