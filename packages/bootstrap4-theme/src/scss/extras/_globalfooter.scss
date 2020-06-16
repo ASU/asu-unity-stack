@@ -11,29 +11,6 @@
   }
 }
 
-// @mixin footer-horizontal-list {
-//   ul {
-//     padding: 0;
-//     margin: 0;
-//     text-align: left;
-
-//     > li {
-//       padding: 0;
-//       margin: 0;
-//       display: inline-block;
-//       list-style-type: none;
-
-//       &:before {
-//         content: '';
-//       }
-
-//       > a {
-//         margin-right: $uds-size-spacing-3;
-//       }
-//     }
-//   }
-// }
-
 // ------------
 // Wrapper base colors. Won't change in a media query.
 // ------------
@@ -139,12 +116,16 @@
   }
 
   .flex-footer {
-    h5.no-control {
-      display: none;
-    }
+    h5 {
+      margin-bottom: 0;
 
-    [role='button'] {
-      display: block;
+      &.no-control {
+        display: none;
+      }
+
+      &.control {
+        display: block;
+      }
     }
 
     h5 a {
@@ -184,19 +165,21 @@
   #footer-columns {
     padding: $uds-size-spacing-6 0;
 
-    .flex-footer {
-      h5.no-control {
+    .flex-footer h5 {
+      margin-bottom: $uds-size-spacing-3;
+
+      &.no-control {
         display: block;
       }
 
-      [role='button'] {
+      &.control {
         display: none;
       }
+    }
 
-      ul.collapse {
-        display: block;
-        margin: 0;
-      }
+    ul.collapse {
+      display: block;
+      margin: 0;
     }
   }
 }
