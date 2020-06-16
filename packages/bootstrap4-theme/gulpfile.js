@@ -126,10 +126,6 @@ gulp.task('scripts', function() {
 
 // Copy all assets needed for ASU Web Standards
 gulp.task('copy-assets', function(done) {
-  // Copy Font Awesome Fonts
-  gulp
-    .src(`${paths.node}font-awesome/fonts/**/*.{ttf,woff,woff2,eot,svg}`)
-    .pipe(gulp.dest('./dist/fonts'));
 
   done();
 });

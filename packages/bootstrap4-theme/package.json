@@ -18,6 +18,9 @@
     "build": "gulp",
     "prepare": "yarn run build"
   },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+  },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^0.0.1",
     "@fortawesome/fontawesome-free": "^5.9.0",
