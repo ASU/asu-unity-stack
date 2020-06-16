@@ -1,62 +1,64 @@
 // ASU Design System Hero styles without Bootstrap variables to override.
 
 // QUESTIONS
-// - which image asset from XD to use?
-// - should the image be specified in the CSS? or can we do in HTML to aid with resusability/use within a CMS?
-// - placement of image asset? Is what's here reasonable? 100% width?
-// - X do we need to provide the container this would be in on the page
-//   (margins)? Q&A mentions the hero being limited to 2k screens. We set this
+// - Which image asset from XD to use? Or use Unsplash random image?
+// - Q&A mentions the hero being limited to 2k screens. We set this
 //   on .uds-hero using max-width.
 // - are columns calculations (to comply with xd) correct? Went with the XD
-//   number of columns mentioned in notes (6,
-//   whereas output more closely matches the XD image at 7 or 8).
+//   number of columns mentioned in notes (6, whereas output more closely
+//   matches the XD image at 7 or 8).
 // TODO
 // - Complete styling of "bkg" image - sizing, image used, confinement hero display-port.
 //   - set min-height
 //   - max-height?
-// X - review Q&A doc from the HUB re: heroes
-// X - resizing (test)
-// X - "must snap to medium size at 1400px viewport width" ? reduce lg to md based on viewport
+// - resizing (test)
+// X - "must snap to medium size at 1400px viewport width"
 // X - "limit hero images to 2k screens" - max-width on .uds-hero
 // X - update namespace to "heroes" to match other components?
+// Pull media queries out into their own file and import.
 
 // Shared styling between md and lg heroes.
 @mixin container-md-and-lg {
-  ////position: absolute;
-  ////bottom: 3rem;
-  ////left: 2.5rem;
   width: 100%;
   .uds-hero-text {
-    margin-left: 2.25rem;
     line-height: 2rem;
   }
 }
 
 .uds-hero {
-  position: relative;
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  max-width: 128rem; // 2048px, aka "a 2k screen"
-  overflow: auto;
+  height: 42.75rem;
+  display: flex;
+  max-width: 120rem; // 1920px
+  max-height: 60%; // TODO Not sure this is effective.
 
-  //  background-color: #bfbfbf;
-  //background-image: url(https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png);
-  //background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%);
-  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
-    0% 0% no-repeat padding-box;
-  //  opacity: 1;
-
-  img.uds-hero-img {
-    margin: auto;
-    width: 100%;
-    // Position behind .uds-hero's gradient.
-    position: absolute;
-    display: block;
-    z-index: -1;
-  }
-  .container.uds-hero-container {
-    border: 1px solid red;
-
-    margin: 0 auto;
+  .container-center {
+    width: 800px;
+    // Mobile adjustments.
+    @media screen and (max-width: 576px) {
+      margin-bottom: -2rem;
+      h1 {
+        max-width: 100%;
+      }
+      p {
+        display: none;
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    h1 {
+      margin-left: 0;
+    }
+    .uds-hero-text {
+      margin-left: 0;
+    }
     p {
       color: white;
       font-size: 1.5rem;
@@ -67,9 +69,6 @@
   &.uds-hero-sm {
     height: 16rem; // 256px
     .container.uds-hero-container {
-      ////position: absolute;
-      ////bottom: 1rem;
-      ////left: 2.5rem;
       width: 100%;
     }
   }
