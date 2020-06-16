@@ -66,6 +66,18 @@ storiesOf('Content/Typography', module)
         Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
         Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
         non luctus ante efficitur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis semper enim. Fusce leo nisl,
+        malesuada sed mattis nec, viverra mollis erat. Cras vel euismod turpis.
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
+        Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
+        non luctus ante efficitur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis semper enim. Fusce leo nisl,
+        malesuada sed mattis nec, viverra mollis erat. Cras vel euismod turpis.
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        Aenean sagittis tincidunt pretium. Aliquam erat volutpat. Aenean eu luctus est. Aenean a elit est.
+        Donec in eleifend nulla, aliquam ultrices nisl. Nulla volutpat nisi eget libero tincidunt,
+        non luctus ante efficitur.</p>
       </div>
     </div>
   </div>
