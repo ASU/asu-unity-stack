@@ -126,6 +126,10 @@ gulp.task('scripts', function() {
 
 // Copy all assets needed for ASU Web Standards
 gulp.task('copy-assets', function(done) {
+  // Copy Bootstrap's Script
+  gulp
+    .src(`${paths.node}/bootstrap/dist/js/*`)
+    .pipe(gulp.dest('./dist/js'));
 
   done();
 });
