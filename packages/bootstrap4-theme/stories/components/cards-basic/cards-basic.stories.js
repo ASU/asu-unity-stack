@@ -191,7 +191,22 @@ storiesOf('Components/Cards - basic', module)
   .add('4 column', () => `
   <div class="container-fluid">
     <div class="row pt-2 pb-2">
-      <div class="col col-sm-3">
+      <div class="col col-md-3 col-sm-6 col-12">
+        <div class="card card-sm">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+            </p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+      </div> <!-- .col -->
+      <div class="col col-md-3 col-sm-6 col-12">
         <div class="card card-sm">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
@@ -206,22 +221,7 @@ storiesOf('Components/Cards - basic', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-3">
-        <div class="card card-sm">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
-          </p>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
-          </div>
-        </div> <!-- .card -->
-      </div> <!-- .col -->
-      <div class="col col-sm-3">
+      <div class="col col-md-3 col-sm-6 col-12">
         <div class="card card-sm">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
@@ -232,7 +232,7 @@ storiesOf('Components/Cards - basic', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-3">
+      <div class="col col-md-3 col-sm-6 col-12">
         <div class="card card-sm">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>

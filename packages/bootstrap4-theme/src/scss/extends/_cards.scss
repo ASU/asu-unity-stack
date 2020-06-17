@@ -78,7 +78,8 @@
 .card-header .card-title {
   margin:0;
 }
-.card-title a {
+.card-title a,
+.card-title a:visited {
   color: $uds-component-card-basic-title-link-color;
   text-decoration: $uds-component-card-basic-title-link-text-decoration;
 }
@@ -87,17 +88,18 @@
 }
 
 .card-degree .card-header .card-title:after {
-  content:"";
-  width:$uds-size-spacing-3;
-  height:$uds-size-spacing-half;
-  display:block;
-  background-color:$gold;
-  margin-top:$uds-size-spacing-2;
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  background-color: $uds-component-card-degree-title-underline-color;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
 }
 .card-degree .card-footer {
   background-color:$white;
 }
-.card-footer-link a {
+.card-footer-link a,
+.card-footer-link a:visited {
   color: $black;
   text-decoration: none;
   font-weight: bold;
@@ -134,16 +136,13 @@
 }
 .card-story.card-sm {
   .card-body {
-    margin-right: 16px;
-    margin-left: 16px;
+    margin: $uds-component-card-story-body-margin;
   }
   .card-header {
-    margin-right: 16px;
-    margin-left: 16px;
+    margin: $uds-component-card-story-body-margin;
   }
   .card-button {
-    margin-right: 16px;
-    margin-left: 16px;
+    margin: $uds-component-card-story-body-margin;
   }
 }
 .card-event .card-header {

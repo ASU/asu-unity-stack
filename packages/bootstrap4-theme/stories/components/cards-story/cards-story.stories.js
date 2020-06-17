@@ -217,7 +217,7 @@ storiesOf('Components/Cards - story', module)
         <div class="card card-story">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
+            <h3 class="card-title"><a href="">Card default title</a></h3>
           </div>
           <div class="card-body">
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
