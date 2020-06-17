@@ -75,7 +75,7 @@ storiesOf('Utilities/Colors', module)
     </div>
   </div>
   `)
-
+/*
   .add('Colors - text', () => `<p class="text-primary">.text-primary color</p>
   <p class="text-secondary">.text-secondary color</p>
   <p class="text-rfi">.text-request-for-info color</p>
@@ -116,4 +116,6 @@ storiesOf('Utilities/Colors', module)
   <div class="p-3 mb-2 bg-light text-dark">.bg-light color</div>
   <div class="p-3 mb-2 bg-dark text-white">.bg-dark color</div>
   <div class="p-3 mb-2 bg-white text-dark">.bg-white color</div>
-  <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent color</div>`);
+  <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent color</div>`)
+*/
+  ;
