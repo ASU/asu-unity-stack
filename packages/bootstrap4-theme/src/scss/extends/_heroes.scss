@@ -1,21 +1,7 @@
 // ASU Design System Hero styles without Bootstrap variables to override.
 
-// QUESTIONS
-// - Which image asset from XD to use? Or use Unsplash random image?
-// - Q&A mentions the hero being limited to 2k screens. We set this
-//   on .uds-hero using max-width.
-// - are columns calculations (to comply with xd) correct? Went with the XD
-//   number of columns mentioned in notes (6, whereas output more closely
-//   matches the XD image at 7 or 8).
-// TODO
-// - Complete styling of "bkg" image - sizing, image used, confinement hero display-port.
-//   - set min-height
-//   - max-height?
-// - resizing (test)
-// X - "must snap to medium size at 1400px viewport width"
-// X - "limit hero images to 2k screens" - max-width on .uds-hero
-// X - update namespace to "heroes" to match other components?
-// Pull media queries out into their own file and import.
+// TODO Tokenize.
+// TODO Cleanup, then done.
 
 // Shared styling between md and lg heroes.
 @mixin container-md-and-lg {
@@ -32,20 +18,9 @@
   height: 42.75rem;
   display: flex;
   max-width: 120rem; // 1920px
-  max-height: 60%; // TODO Not sure this is effective.
 
   .container-center {
     width: 800px;
-    // Mobile adjustments.
-    @media screen and (max-width: 576px) {
-      margin-bottom: -2rem;
-      h1 {
-        max-width: 100%;
-      }
-      p {
-        display: none;
-      }
-    }
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -80,12 +55,39 @@
   }
   &.uds-hero-lg {
     height: 42.75rem; // 684px
-    // Snap to md at 1400px.
-    @media screen and (max-width: 1400px) {
-      height: 32rem; // 512px
-    }
     .container.uds-hero-container {
       @include container-md-and-lg();
+    }
+  }
+}
+
+// Media Queries
+.uds-hero {
+  .container-center {
+    // Mobile adjustments.
+    @media screen and (max-width: 576px) {
+      margin-bottom: -2rem;
+      h1 {
+        max-width: 100%;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+
+  &.uds-hero-sm {
+    // Adjustment to sm hero spacing for mobile.
+    @media screen and (max-width: 576px) {
+      padding-left: 1.5rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &.uds-hero-lg {
+    // Snap lg hero to md at 1400px.
+    @media screen and (max-width: 1400px) {
+      height: 32rem; // 512px
     }
   }
 }
