@@ -5,17 +5,23 @@
 // ASU Brand Standard Fonts
 // Reference: https://brandguide.asu.edu/Elements-of-the-brand/Fonts
 
-$font-family-sans-serif: Arial, Helvetica, sans-serif;
+$font-family-sans-serif: $uds-font-family-base;
 $font-family-base: $font-family-sans-serif;
 
-$font-weight-lighter: 100;
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-bold: 700;
-$font-weight-bolder: 900;
+$font-weight-lighter: $uds-font-weight-lighter;
+$font-weight-light: $uds-font-weight-light;
+$font-weight-normal: $uds-font-weight-normal;
+$font-weight-bold: $uds-font-weight-bold;
+$font-weight-bolder: $uds-font-weight-bolder;
 
 // Body Font Color
-$body-color: $dark;
+$body-font-color: $dark;
+
+body {
+  font-family: $font-family-base;
+  font-weight: $font-weight-normal;
+  color: $body-font-color;
+}
 
 // Text formatting
 .text-white {
