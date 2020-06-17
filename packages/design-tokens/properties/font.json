@@ -2,10 +2,10 @@
   "font": {
     "family": {
       "base": {
-        "value": "Arial, Helvetica, sans-serif"
+        "value": "Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif"
       },
       "icons": {
-        "value": "{asset.font.icon.name.value}"
+        "value": "FontAwesome"
       }
     },
     "weight": {
