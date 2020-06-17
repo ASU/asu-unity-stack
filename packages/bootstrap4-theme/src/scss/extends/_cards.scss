@@ -33,7 +33,7 @@
   .card-icon-top {
     margin: $uds-component-card-basic-icon-top-margin-centered;
   }
-  .card-header {
+  .card-title {
     text-align: $uds-component-card-basic-header-text-align-centered;
   }
 }
@@ -136,13 +136,13 @@
 }
 .card-story.card-sm {
   .card-body {
-    margin: $uds-component-card-story-body-margin;
+    margin: $uds-component-card-story-body-margin-sm;
   }
   .card-header {
-    margin: $uds-component-card-story-body-margin;
+    margin: $uds-component-card-story-body-margin-sm;
   }
   .card-button {
-    margin: $uds-component-card-story-body-margin;
+    margin: $uds-component-card-story-body-margin-sm;
   }
 }
 .card-event .card-header {
