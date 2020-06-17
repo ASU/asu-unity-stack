@@ -2,10 +2,10 @@
   "font": {
     "family": {
       "base": {
-        "value": "{asset.font.roboto.name.value}"
+        "value": "Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif"
       },
       "icons": {
-        "value": "{asset.font.icon.name.value}"
+        "value": "FontAwesome"
       }
     }
   }
