@@ -7,6 +7,26 @@
       "icons": {
         "value": "FontAwesome"
       }
+    },
+    "weight": {
+      "lighter": {
+        "value": "100"
+      },
+      "light": {
+        "value": "300"
+      },
+      "normal": {
+        "value": "400"
+      },
+      "bold": {
+        "value": "700"
+      },
+      "bolder": {
+        "value": "900"
+      },
+      "base": {
+        "value": "{font.weight.normal.value}"
+      }
     }
   }
 }
