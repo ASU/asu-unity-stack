@@ -1,0 +1,20 @@
+nav {
+  ol.breadcrumb {
+    // Reset first item number from list component styles.
+    .breadcrumb-item:first-of-type:before {
+      content: '';
+    }
+
+    // Get spacing around the / dividers right.
+    .breadcrumb-item {
+      padding-left: 30px;
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+    .breadcrumb-item + .breadcrumb-item:before {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+}

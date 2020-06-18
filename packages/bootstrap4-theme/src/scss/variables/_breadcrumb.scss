@@ -1,0 +1,18 @@
+// Bootstrap breadcrumb variables to override.
+
+// Breadcrumbs
+
+$breadcrumb-font-size: 0.875rem;
+
+$breadcrumb-padding-y: 0.75rem !default;
+$breadcrumb-padding-x: 1rem !default;
+$breadcrumb-item-padding: 2rem !default;
+
+$breadcrumb-margin-bottom: 1rem !default;
+
+$breadcrumb-bg: transparent;
+$breadcrumb-divider-color: $uds-color-base-gray-4;
+$breadcrumb-active-color: $uds-color-base-gray-1;
+$breadcrumb-divider: quote('/');
+
+//$breadcrumb-border-radius: none;

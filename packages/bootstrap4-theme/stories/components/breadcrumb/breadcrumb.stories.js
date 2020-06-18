@@ -6,6 +6,15 @@ storiesOf('Components/Breadcrumbs', module)
     happo: false,
   })
 
+.add('Breadcrumbs', () => `
+<nav aria-label="breadcrumb0">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+</ol>
+</nav>`)
+
 .add('Accessible breadcrumbs', () => `
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
