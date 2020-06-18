@@ -9,19 +9,21 @@ storiesOf('Components/Global Footer', module)
   })
 
   .add('Global elements only', () => `
+  <footer role="contentinfo">
+
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -32,36 +34,39 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
+
+  </footer>
 
   `)
 
   .add('Zero columns', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -74,14 +79,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -92,36 +97,38 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
 
+  </footer>
   `)
 
   .add('One column', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -148,14 +155,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -166,21 +173,23 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
 
+  </footer>
   `)
 
   .add('One column. No logo / social', () => `
+  <footer role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-columns">
       <div class="container" id="footer-columns">
@@ -201,14 +210,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -219,36 +228,38 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
 
+  </footer>
   `)
 
   .add('Two columns', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -267,9 +278,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnTwoHeader" class="control">
-              <a data-toggle="collapse" href="#columnTwo" role="button" aria-expanded="false" aria-controls="#columnTwo">
+            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnTwo" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -291,14 +302,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -309,36 +320,37 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
+  </footer>
   `)
 
   .add('Three columns', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -357,9 +369,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnTwoHeader" class="control">
-              <a data-toggle="collapse" href="#columnTwo" role="button" aria-expanded="false" aria-controls="#columnTwo">
+            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnTwo" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -373,9 +385,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnThreeHeader" class="control">
-              <a data-toggle="collapse" href="#columnThree" role="button" aria-expanded="false" aria-controls="#columnThree">
+            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnThree" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -397,14 +409,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -415,36 +427,37 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
+  </footer>
   `)
 
   .add('Four columns', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -463,9 +476,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnTwoHeader" class="control">
-              <a data-toggle="collapse" href="#columnTwo" role="button" aria-expanded="false" aria-controls="#columnTwo">
+            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnTwo" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -479,9 +492,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnThreeHeader" class="control">
-              <a data-toggle="collapse" href="#columnThree" role="button" aria-expanded="false" aria-controls="#columnThree">
+            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnThree" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -495,9 +508,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnFourHeader" class="control">
-              <a data-toggle="collapse" href="#columnFour" role="button" aria-expanded="false" aria-controls="#columnFour">
+            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnFour" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -519,14 +532,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -537,36 +550,37 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
+  </footer>
   `)
 
-  .add('The Zen Master & The Hot Dog Vendor', () => `
+  .add('Five columns!', () => `
+  <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src=${endorsedLogo} title="Endorsed Logo, Arizona State University" alt="Endorsed Logo, Arizona State University"/>
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#" title="Title"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a></li>
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
             </ul>
           </div>
 
@@ -585,9 +599,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnTwoHeader" class="control">
-              <a data-toggle="collapse" href="#columnTwo" role="button" aria-expanded="false" aria-controls="#columnTwo">
+            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnTwo" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -601,9 +615,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnThreeHeader" class="control">
-              <a data-toggle="collapse" href="#columnThree" role="button" aria-expanded="false" aria-controls="#columnThree">
+            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnThree" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -617,9 +631,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnFourHeader" class="control">
-              <a data-toggle="collapse" href="#columnFour" role="button" aria-expanded="false" aria-controls="#columnFour">
+            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnFour" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -633,9 +647,148 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">Section Header Title</h5>
-            <h5 id="columnFiveHeader" class="control">
-              <a data-toggle="collapse" href="#columnFive" role="button" aria-expanded="false" aria-controls="#columnFive">
+            <h5 id="columnFiveHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnFive" role="button">
+                Section Header Control
+              </a>
+            </h5>
+            <ul id="columnFive" class="collapse" aria-labelledby="columnFiveHeader">
+              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
+              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
+              <li><a href="#" title="link">Computer and Energy Matter</a></li>
+              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
+              <li><a href="#" title="link">The Polytechnic School</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="wrapper-footer-innovation">
+      <div class="container" id="footer-innovation">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex footer-innovation-links">
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="wrapper-footer-colophon">
+      <div class="container" id="footer-colophon">
+        <div class="row">
+          <div class="col">
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  `)
+
+  .add('The Zen Master & The Hot Dog Vendor', () => `
+  <footer role="contentinfo">
+    <div class="wrapper" id="wrapper-endorsed-footer">
+      <div class="container" id="endorsed-footer">
+        <div class="row">
+
+          <div class="col-md" id="endorsed-logo">
+            <img src=${endorsedLogo} alt="ASU University Technology Office Arizona State University."/>
+          </div>
+
+          <div class="col-md" id="social-media">
+            <nav class="nav" aria-label="Social Media">
+              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
+              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
+              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
+              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
+              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="wrapper-footer-columns">
+      <div class="container" id="footer-columns">
+        <div class="row">
+
+          <div class="col-md" id="info-column">
+            <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
+            <p class="contact-link"><a href="#">Contact Us</a></p>
+            <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
+          </div>
+
+          <div class="col-md flex-footer">
+            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnTwo" role="button">
+                Section Header Control
+              </a>
+            </h5>
+            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
+              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
+              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
+              <li><a href="#" title="link">Computer and Energy Matter</a></li>
+              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
+              <li><a href="#" title="link">The Polytechnic School</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md flex-footer">
+            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnThree" role="button">
+                Section Header Control
+              </a>
+            </h5>
+            <ul id="columnThree" class="collapse" aria-labelledby="columnThreeHeader">
+              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
+              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
+              <li><a href="#" title="link">Computer and Energy Matter</a></li>
+              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
+              <li><a href="#" title="link">The Polytechnic School</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md flex-footer">
+            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnFour" role="button">
+                Section Header Control
+              </a>
+            </h5>
+            <ul id="columnFour" class="collapse" aria-labelledby="columnFourHeader">
+              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
+              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
+              <li><a href="#" title="link">Computer and Energy Matter</a></li>
+              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
+              <li><a href="#" title="link">The Polytechnic School</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md flex-footer">
+            <h5 id="columnFiveHeader" class="no-control">Section Header Title</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnFive" role="button">
                 Section Header Control
               </a>
             </h5>
@@ -649,9 +802,9 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 class="no-control">The Zen Master and the Hot Dog Vendor</h5>
-            <h5 id="columnSixHeader" class="control">
-              <a data-toggle="collapse" href="#columnSix" role="button" aria-expanded="false" aria-controls="#columnSix">
+            <h5 id="columnSixHeader" class="no-control">The Zen Master and the Hot Dog Vendor</h5>
+            <h5 class="control" aria-hidden="true">
+              <a data-toggle="collapse" href="#columnSix" role="button">
                 The Zen Master and the Hot Dog Vendor
               </a>
             </h5>
@@ -672,14 +825,14 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img class="order-md-2" src=${innovationLockup} title="Arizona State University Innovation Badge" alt="Arizona State University is Number 1 in innovation">
-              <ul class="nav order-md-1">
-                <li class="nav-item"><a class="nav-link" href="#">Maps and Locations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact ASU</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">My ASU</a></li>
-              </ul>
+              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <nav class="nav" aria-label="University Services">
+                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
+                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
+                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
+                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
+                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+              </nav>
             </div>
           </div>
         </div>
@@ -690,17 +843,17 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <ul class="nav colophon">
-              <li class="nav-item"><a class="nav-link" href="#">Copyright and Trademark</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Accessibility</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Emergency</a></li>
-            </ul>
+            <nav class="nav colophon" aria-label="University Legal and Compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
+  </footer>
   `)
 

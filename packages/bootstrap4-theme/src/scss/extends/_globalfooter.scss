@@ -11,6 +11,17 @@
   }
 }
 
+@mixin visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
 // ------------
 // Wrapper base colors. Won't change in a media query.
 // ------------
@@ -119,10 +130,6 @@
     h5 {
       margin-bottom: 0;
 
-      &.no-control {
-        display: none;
-      }
-
       &.control {
         display: block;
       }
@@ -146,7 +153,7 @@
       padding: 0;
 
       > li {
-        margin: 0 0 0.75rem 0;
+        margin: 0 0 0.75rem 0; /* Magic number */
         padding: 0;
         list-style-type: none;
 
@@ -155,6 +162,12 @@
         }
       }
     }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .flex-footer h5.no-control {
+    @include visually-hidden;
   }
 }
 
@@ -167,10 +180,6 @@
 
     .flex-footer h5 {
       margin-bottom: $uds-size-spacing-3;
-
-      &.no-control {
-        display: block;
-      }
 
       &.control {
         display: none;
@@ -193,9 +202,10 @@
     justify-content: space-between;
     align-items: center;
 
-    .img {
+    img {
       height: 100px;
       width: auto;
+      order: 2;
     }
 
     .nav-link {
@@ -205,7 +215,7 @@
 }
 
 // ------------
-// #footer-innovtion, Mobile
+// #footer-innovation, Mobile
 // ------------
 
 @mixin nav-to-grid {
@@ -218,17 +228,14 @@
     padding: 0 2rem;
   }
 
-  .nav-item {
+  .nav-link {
+    font-weight: 700;
+    margin-right: 0;
     padding: 0.5rem 0;
 
     &:nth-child(n + 4) {
       justify-self: end;
     }
-  }
-
-  .nav-link {
-    font-weight: 700;
-    margin-right: 0;
   }
 }
 
@@ -243,6 +250,7 @@
       img {
         width: 100%;
         height: auto;
+        order: -1;
       }
 
       @include nav-to-grid;
@@ -268,12 +276,7 @@
 
 @include media-breakpoint-down(md) {
   #footer-colophon {
+    padding: 0;
     @include nav-to-grid;
-    .nav {
-      padding: 0;
-    }
-    .nav-link {
-      padding: 0 1rem;
-    }
   }
 }
