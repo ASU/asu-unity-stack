@@ -2,9 +2,14 @@
   "name": "@asu-design-system/design-tokens",
   "version": "0.0.1",
   "description": "",
+  "repository": "git://github.com/ASU/asu-unity-stack.git",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
-    "clean": "rm -rf build",
+    "clean": "yarn shx rm -rf build",
     "prepublishOnly": "yarn run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

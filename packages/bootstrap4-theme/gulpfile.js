@@ -5,7 +5,7 @@ const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sassLint = require('gulp-sass-lint');
 const babel = require('gulp-babel');
-// const postcss = require('gulp-postcss');
+const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
@@ -13,7 +13,7 @@ const imagemin = require('gulp-imagemin');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
 const cleanCSS = require('gulp-clean-css');
-// const autoprefixer = require('autoprefixer');
+const autoprefixer = require('autoprefixer');
 
 // Configuration file to keep code DRY
 const cfg = require('./gulpconfig.json');
@@ -35,7 +35,7 @@ gulp.task('sass', function() {
     )
     // .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true }))
-    // .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([autoprefixer()]))
     // .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.css));
   return stream;
@@ -126,10 +126,15 @@ gulp.task('scripts', function() {
 
 // Copy all assets needed for ASU Web Standards
 gulp.task('copy-assets', function(done) {
-  // Copy Font Awesome Fonts
+  // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}font-awesome/fonts/**/*.{ttf,woff,woff2,eot,svg}`)
-    .pipe(gulp.dest('./dist/fonts'));
+    .src(`${paths.node}/@asu-design-system/design-tokens/assets/**/*`)
+    .pipe(gulp.dest('./dist/img'));
+
+  // Copy Bootstrap's Scripts
+  gulp
+    .src(`${paths.node}/bootstrap/dist/js/*`)
+    .pipe(gulp.dest('./dist/js'));
 
   done();
 });
@@ -144,7 +149,7 @@ gulp.task('clean-dist', function() {
 // Compiles the styles, scripts, and assets into the dist folder
 gulp.task(
   'compile',
-  gulp.series('styles', 'imagemin', 'copy-assets')
+  gulp.series('clean-dist', 'styles', 'imagemin', 'copy-assets')
 );
 
 // Run

@@ -136,3 +136,32 @@ storiesOf('Components/Icons', module)
     <span class="fas icon-xxl fa-map-marker-alt"><span class="sr-only">Address Icon</span></span>
   </div>
 </div>`)
+
+.add('Informational Icons', () => `
+<div class="container-fluid">
+  <div class="row">
+  <div class="col col-sm-12 col-md-4 p-4">
+    <h4><em>Info Icon</em></h4>
+    <span class="fas icon-small fa-info-circle"><span class="sr-only">Info Icon</span></span>
+    <span class="fas icon-base fa-info-circle"><span class="sr-only">Info Icon</span></span>
+    <span class="fas icon-large fa-info-circle"><span class="sr-only">Info Icon</span></span>
+    <span class="fas icon-xl fa-info-circle"><span class="sr-only">Info Icon</span></span>
+    <span class="fas icon-xxl fa-info-circle"><span class="sr-only">Info Icon</span></span>
+  </div>
+  <div class="col col-sm-12 col-md-4 p-4">
+    <h4><em>Security Icon</em></h4>
+    <span class="fas icon-small fa-lock"><span class="sr-only">Security Icon</span></span>
+    <span class="fas icon-base fa-lock"><span class="sr-only">Security Icon</span></span>
+    <span class="fas icon-large fa-lock"><span class="sr-only">Security Icon</span></span>
+    <span class="fas icon-xl fa-lock"><span class="sr-only">Security Icon</span></span>
+    <span class="fas icon-xxl fa-lock"><span class="sr-only">Security Icon</span></span>
+  </div>
+  <div class="col col-sm-12 col-md-4 p-4">
+    <h4><em>Download Icon</em></h4>
+    <span class="fas icon-small fa-file-download"><span class="sr-only">Download Icon</span></span>
+    <span class="fas icon-base fa-file-download"><span class="sr-only">Download Icon</span></span>
+    <span class="fas icon-large fa-file-download"><span class="sr-only">Download Icon</span></span>
+    <span class="fas icon-xl fa-file-download"><span class="sr-only">Download Icon</span></span>
+    <span class="fas icon-xxl fa-file-download"><span class="sr-only">Download Icon</span></span>
+  </div>
+</div>`)

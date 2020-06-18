@@ -1,5 +1,5 @@
-bootstrap
 components
+node_modules
 properties
 .editorconfig
 .prettierignore
