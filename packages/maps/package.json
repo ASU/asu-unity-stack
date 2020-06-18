@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/asu-maps",
+  "name": "@asu-design-system/maps",
   "version": "0.0.1",
   "description": "ASU implementation of GIS maps. Built with react-checkbox-tree and Reactstrap",
   "main": "src/index.js",
@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+    "url": "git+https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/maps"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
@@ -55,6 +56,10 @@
     "globals": {
       "__DEV__": true
     }
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

@@ -7,7 +7,7 @@
     "build": "yarn run clean && yarn run style-dictionary build",
     "clean": "yarn shx rm -rf build",
     "prepublishOnly": "yarn run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",

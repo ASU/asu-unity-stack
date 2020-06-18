@@ -5,10 +5,10 @@ const path = require("path");
 const packageInfo = require("../package.json");
 
 module.exports = {
+  context: path.join(__dirname, "..", "src"),
   entry: {
     [packageInfo.name]: "./index.js",
   },
-  context: path.join(__dirname, "..", "src"),
   module: {
     rules: [
       {

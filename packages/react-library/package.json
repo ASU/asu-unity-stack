@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/asu-brand",
+  "name": "@asu-design-system/react-library",
   "version": "0.0.1",
   "description": "ASU Brand React Components",
   "author": "Colton Testamarck (colt@asu.edu)",
@@ -7,12 +7,13 @@
   "main": "src/index.js",
   "license": "UNLICENSED",
   "publishConfig": {
-    "access": "restricted"
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/asu/asu-unity-stack.git",
-    "directory": "packages/asu-brand"
+    "directory": "packages/react-library"
   },
   "peerDependencies": {
     "react": "^16.9.0",

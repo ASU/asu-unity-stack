@@ -57,5 +57,9 @@
       "__DEV__": true
     }
   },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+  },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }
