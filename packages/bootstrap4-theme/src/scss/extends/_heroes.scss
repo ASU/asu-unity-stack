@@ -1,11 +1,8 @@
 // ASU Design System Hero styles without Bootstrap variables to override.
 
-// TODO Fix unit tokens (see TODOs)
-// TODO Cleanup, then done.
-
 // Shared styling between md and lg heroes.
 @mixin container-md-and-lg {
-  width: 100%; // TODO $uds-component-heroes-container-md-and-lg-width;
+  width: $uds-component-heroes-container-md-and-lg-width-percent;
   .uds-hero-text {
     line-height: $uds-component-heroes-container-md-and-lg-uds-hero-text-line-height;
   }
@@ -14,13 +11,13 @@
 .uds-hero {
   background-size: $uds-component-heroes-uds-hero-background-size;
   background-position: $uds-component-heroes-uds-hero-background-position;
-  width: 100%; // TODO $uds-component-heroes-uds-hero-width;
+  width: $uds-component-heroes-uds-hero-width-percent;
   height: $uds-component-heroes-uds-hero-height;
   display: $uds-component-heroes-uds-hero-display;
   max-width: $uds-component-heroes-uds-hero-max-width; // 1920px
 
   .uds-hero-container {
-    width: 800px; // TODO $uds-component-heroes-uds-hero-uds-hero-container-width
+    width: $uds-component-heroes-uds-hero-uds-hero-container-width-px;
     display: $uds-component-heroes-uds-hero-uds-hero-container-display;
     flex-direction: $uds-component-heroes-uds-hero-uds-hero-container-flex-direction;
     align-items: $uds-component-heroes-uds-hero-uds-hero-container-align-items;
@@ -41,7 +38,7 @@
   &.uds-hero-sm {
     height: $uds-component-heroes-uds-hero-uds-hero-sm-height; // 256px
     .container.uds-hero-container {
-      width: 100%; // TODO $uds-component-heroes-uds-hero-uds-hero-sm-container-uds-hero-container-width
+      width: $uds-component-heroes-uds-hero-uds-hero-sm-container-uds-hero-container-width-percent;
     }
   }
   &.uds-hero-md {
@@ -62,11 +59,10 @@
 .uds-hero {
   .uds-hero-container {
     // Mobile adjustments.
-    @media screen and (max-width: 576px) {
-      // TODO $uds-component-heroes-media-uds-hero-uds-hero-container-media-media-max-width
-      margin-bottom: $uds-component-heroes-media-uds-hero-uds-hero-container-media-margin-bottom
-        h1 {
-        max-width: 100%; // TODO $uds-component-heroes-media-uds-hero-uds-hero-container-media-h-1-max-width
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-container-media-breakpoint) {
+      margin-bottom: $uds-component-heroes-media-uds-hero-uds-hero-container-media-margin-bottom;
+      h1 {
+        max-width: $uds-component-heroes-media-uds-hero-uds-hero-container-media-h-1-max-width-percent;
       }
       p {
         display: $uds-component-heroes-media-uds-hero-uds-hero-container-media-p-display;
@@ -76,8 +72,7 @@
 
   &.uds-hero-sm {
     // Adjustment to sm hero spacing for mobile.
-    @media screen and (max-width: 576px) {
-      // TODO $uds-component-heroes-media-uds-hero-uds-hero-sm-media-max-widt
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-sm-breakpoint) {
       padding-left: $uds-component-heroes-media-uds-hero-uds-hero-sm-padding-left;
       padding-bottom: $uds-component-heroes-media-uds-hero-uds-hero-sm-padding-bottom;
     }
@@ -85,8 +80,7 @@
 
   &.uds-hero-lg {
     // Snap lg hero to md at 1400px.
-    @media screen and (max-width: 1400px) {
-      // TODO $uds-component-heroes-media-uds-hero-uds-hero-lg-media-max-width
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-lg-breakpoint) {
       height: $uds-component-heroes-media-uds-hero-uds-hero-lg-height; // 512px
     }
   }

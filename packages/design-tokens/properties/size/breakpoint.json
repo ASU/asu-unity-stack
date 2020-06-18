@@ -3,30 +3,30 @@
     "breakpoint": {
       "xs": {
         "value": "0",
-        "comment": "grid-breakpoints.xs value from node_modules/bootstrap/scss/_variables.scss"
+        "comment": "0 grid-breakpoints.xs value from node_modules/bootstrap/scss/_variables.scss"
       },
       "sm": {
-        "value": "576px",
-        "comment": "grid-breakpoints.sm value from node_modules/bootstrap/scss/_variables.scss"
+        "value": "36rem",
+        "comment": "576px grid-breakpoints.sm value from node_modules/bootstrap/scss/_variables.scss"
       },
       "md": {
-        "value": "768px",
-        "comment": "grid-breakpoints.md value from node_modules/bootstrap/scss/_variables.scss"
+        "value": "48rem",
+        "comment": "768px grid-breakpoints.md value from node_modules/bootstrap/scss/_variables.scss"
       },
       "lg": {
-        "value": "992px",
-        "comment": "grid-breakpoints.lg value from node_modules/bootstrap/scss/_variables.scss"
+        "value": "62rem",
+        "comment": "992px grid-breakpoints.lg value from node_modules/bootstrap/scss/_variables.scss"
       },
       "xl": {
-        "value": "1200px",
+        "value": "75rem",
         "comment": "1200px"
       },
       "xxl": {
-        "value": "1400px",
+        "value": "87.5rem",
         "comment": "1400px"
       },
       "xxxl": {
-        "value": "1920px",
+        "value": "120rem",
         "comment": "1920px"
       }
     }

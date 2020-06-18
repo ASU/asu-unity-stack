@@ -2,7 +2,7 @@
   "component": {
     "heroes": {
       "container-md-and-lg": {
-        "width": {
+        "width-percent": {
           "value": "100%"
         },
         "uds-hero-text": {
@@ -18,7 +18,7 @@
         "background-position": {
           "value": "center"
         },
-        "width": {
+        "width-percent": {
           "value": "100%"
         },
         "height": {
@@ -32,7 +32,7 @@
           "value": "{size.breakpoint.xxxl.value}"
         },
         "uds-hero-container": {
-          "width": {
+          "width-px": {
             "value": "800px",
             "comment": "Magic number."
           },
@@ -77,7 +77,7 @@
             "comment": "Computes to 256px"
           },
           "container-uds-hero-container": {
-            "width": {
+            "width-percent": {
               "value": "100%"
             }
           }
@@ -98,14 +98,15 @@
       "media-uds-hero": {
         "uds-hero-container": {
           "media": {
-            "media-max-width": {
-              "value": "{size.breakpoint.sm.value}"
+            "breakpoint": {
+              "value": "{size.breakpoint.sm.value}",
+              "comment": "Calculates to 576px"
             },
             "margin-bottom": {
               "value": "-{size.spacing.4.value}"
             },
             "h1": {
-              "max-width": {
+              "max-width-percent": {
                 "value": "100%"
               }
             },
@@ -117,8 +118,9 @@
           }
         },
         "uds-hero-sm": {
-          "media-max-width": {
-            "value": "{size.breakpoint.sm.value}"
+          "breakpoint": {
+            "value": "{size.breakpoint.sm.value}",
+            "comment": "Calculates to 576px"
           },
           "padding-left": {
             "value": "{size.spacing.3.value}"
@@ -128,8 +130,9 @@
           }
         },
         "uds-hero-lg": {
-          "media-max-width": {
-            "value": "{size.breakpoint.xxl.value}"
+          "breakpoint": {
+            "value": "{size.breakpoint.xxl.value}",
+            "comment": "Calculates to 1400px"
           },
           "height": {
             "value": "{size.spacing.64.value}",
