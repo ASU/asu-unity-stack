@@ -1,0 +1,26 @@
+{
+  "asset": {
+    "font": {
+      "icon": {
+        "name": {
+          "value": "FontAwesome"
+        },
+        "ttf": {
+          "value": "assets/fontawesome/webfonts/fa-regular-400.ttf"
+        },
+        "eot": {
+          "value": "assets/fontawesome/webfonts/fa-regular-400.eot"
+        },
+        "woff": {
+          "value": "assets/fontawesome/webfonts/fa-regular-400.woff"
+        },
+        "woff2": {
+          "value": "assets/fontawesome/webfonts/fa-regular-400.woff2"
+        },
+        "svg": {
+          "value": "assets/fontawesome/sprites/regular.svg"
+        }
+      }
+    }
+  }
+}
