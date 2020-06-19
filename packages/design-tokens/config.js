@@ -1,7 +1,7 @@
 const StyleDictionary = require("style-dictionary");
 const fs = require("fs-extra");
 const path = require("path");
-
+// test comment
 const buildPath = "build/";
 
 // Define a custom trasnform REM to PX
