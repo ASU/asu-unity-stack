@@ -30,15 +30,18 @@
   },
   "release": {
     "branches": [
-      "colton-dev",
-      "UDS-142"
+      "master",
+      {
+        "name": "UDS-142",
+        "prerelease": true
+      }
     ],
     "dryRun": true,
     "ci": false
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/ASU/asu-unity-stack.git"
+    "type": "git",
+    "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
