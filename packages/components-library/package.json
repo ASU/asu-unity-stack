@@ -8,7 +8,11 @@
     "registry": "https://npm.pkg.github.com/",
     "access": "restricted"
   },
-  "repository": "https://github.com/asu/asu-unity-stack",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/components-library"
+  },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
   "private": false,

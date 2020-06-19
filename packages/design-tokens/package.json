@@ -2,12 +2,20 @@
   "name": "@asu-design-system/design-tokens",
   "version": "0.0.1",
   "description": "",
-  "repository": "git://github.com/ASU/asu-unity-stack.git",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/design-tokens"
+  },
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
     "clean": "yarn shx rm -rf build",
     "prepublishOnly": "yarn run build",
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",

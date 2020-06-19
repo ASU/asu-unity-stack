@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/hero-carousel"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
