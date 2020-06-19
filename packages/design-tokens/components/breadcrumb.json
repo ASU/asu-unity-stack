@@ -37,10 +37,7 @@
       },
       "border-radius-none": {
         "value": "none"
-      }
-    },
-
-    "breadcrumb-nav": {
+      },
       "ol-breadcrumb": {
         "breadcrumb-item": {
           "padding-left-px": {
