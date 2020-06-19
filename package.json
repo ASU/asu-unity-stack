@@ -32,7 +32,7 @@
     "branches": [
       "master",
       {
-        "name": "UDS-142",
+        "name": "beta",
         "prerelease": true
       }
     ],
