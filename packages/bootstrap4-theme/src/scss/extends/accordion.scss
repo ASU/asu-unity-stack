@@ -1,0 +1,110 @@
+.card-foldable {
+  border-color: $uds-color-base-gray-5;
+  border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
+  height: auto;
+
+  .card-header {
+    padding: 0;
+
+    h4 {
+      margin: 0;
+
+      a {
+        display: block;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        color: $uds-color-base-black;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+          background-color: $uds-color-base-gray-7;
+        }
+
+        span {
+          margin-left: $uds-size-spacing-3;
+          transition-duration: $uds-time-transition-base;
+        }
+
+        &.collapsed span {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    + .card-body {
+      border-top: 1px solid $uds-color-base-gray-5;
+    }
+  }
+
+  .card-body {
+    background-color: $uds-color-base-gray-7;
+
+    > p:first-child {
+      margin-top: $uds-size-spacing-2;
+    }
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// [data-toggle='collapse']:after {
+//   display: inline-block;
+//   font-size: inherit;
+//   text-rendering: auto;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   font-family: 'Font Awesome\ 5 Free';
+//   font-weight: 900;
+//   content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>");
+//   transform: rotate(180deg);
+//   transition: all linear 0.25s;
+//   float: right;
+//   height: 20px;
+//   width: 20px;
+// }
+// [data-toggle='collapse'].collapsed:after {
+//   transform: rotate(0deg);
+// }
+
+// .accordion {
+//   > .card {
+//     overflow: hidden;
+//     border-left: solid 4px $gold;
+//     margin-bottom: $uds-size-spacing-2;
+
+//     &:not(:last-of-type) {
+//       border-bottom: solid $card-border-width $card-border-color;
+//       @include border-radius(0);
+//     }
+
+//     &:not(:first-of-type) {
+//       //@include border-top-radius(0);
+//       border-bottom: solid $card-border-width $card-border-color;
+//       @include border-radius(0);
+//     }
+
+//     > .card-header {
+//       @include border-radius(0);
+//       margin-bottom: 0;
+//       background-color: $white;
+//       padding: 0.25rem 0.25rem;
+//       border-bottom: solid $card-border-width $card-border-color;
+//     }
+//     > .card-header button {
+//       color: #000;
+//       font-weight: bold;
+//       width: 100%;
+//       text-align: left;
+//     }
+//     > .card-header button:focus {
+//       text-decoration: none;
+//     }
+//     > div > .card-body {
+//       background-color: $light;
+//     }
+//   }
+// }
