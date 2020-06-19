@@ -29,7 +29,7 @@
     "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "@asu-design-system/bootstrap4-theme": "1.0.0",
+    "@asu-design-system/bootstrap4-theme": "^1.0.0-beta",
     "reactstrap": "^8.2.0"
   },
   "devDependencies": {},
