@@ -18,7 +18,10 @@
         "failComment": false,
         "assets": [
           {
-            "path": "dist/**"
+            "path": [
+              "dist/**",
+              "build/**"
+            ]
           }
         ]
       }

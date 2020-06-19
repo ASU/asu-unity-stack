@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0",
   "description": "ASU Web Standards-compliant web components library",
   "main": "lib/index.js",
   "module": "esm/index.js",

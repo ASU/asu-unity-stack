@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/react-library",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "ASU Brand React Components",
   "author": "Colton Testamarck (colt@asu.edu)",
   "private": false,
