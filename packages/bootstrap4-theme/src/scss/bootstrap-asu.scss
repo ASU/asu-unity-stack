@@ -16,6 +16,7 @@
 @import 'variables/icons';
 @import 'variables/headings';
 @import 'variables/list';
+@import 'variables/paragraphs';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
@@ -95,9 +96,6 @@ $theme-colors: map-remove($theme-colors, 1, 3, 5);
 @import '../../node_modules/bootstrap/scss/spinners';
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../node_modules/bootstrap/scss/print';
-
-//== FontAwesome
-@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 // css Bootstrap doesn't have variables for
 @import 'bootstrap-asu-extends';

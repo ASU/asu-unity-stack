@@ -16,7 +16,7 @@
         "value": "1"
       },
       "margin": {
-        "value": "{size.spacing.4.value}"
+        "value": "{size.spacing.base.value}"
       },
       "highlight": {
         "box-shadow": {
@@ -109,7 +109,7 @@
             "value": "3.5rem"
           },
           "line-height": {
-            "value": "4.15rem"
+            "value": "4rem"
           }
         },
         "mobile": {
