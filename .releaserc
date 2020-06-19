@@ -2,7 +2,7 @@
   "branches": [
     "master",
     {
-      "name": "dev",
+      "name": "beta",
       "prerelease": true
     }
   ],
@@ -19,8 +19,8 @@
         "assets": [
           {
             "path": [
-              "dist",
-              "build"
+              "**/*.js",
+              "**/*.css"
             ]
           }
         ]
