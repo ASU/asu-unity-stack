@@ -5,15 +5,14 @@
   "main": "index.js",
   "repository": "git://github.com/ASU/asu-unity-stack.git",
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
+    "access": "restricted"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "storybook": "start-storybook -p 9009",
+    "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook",
     "build": "gulp",
     "prepare": "yarn run build"
