@@ -15,6 +15,7 @@ storiesOf('Components/Breadcrumbs', module)
 </ol>
 </nav>`)
 
+/*
 .add('Accessible breadcrumbs', () => `
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
@@ -36,4 +37,6 @@ storiesOf('Components/Breadcrumbs', module)
   <li class="breadcrumb-item active" aria-current="page">Data</li>
 </ol>
 </nav>`)
-;
+*/
+
+; // close
