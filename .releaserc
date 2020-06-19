@@ -15,15 +15,7 @@
       "@semantic-release/github",
       {
         "successComment": false,
-        "failComment": false,
-        "assets": [
-          {
-            "path": [
-              "dist/**",
-              "build/**"
-            ]
-          }
-        ]
+        "failComment": false
       }
     ]
   ]
