@@ -1,6 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
+// comment to test
 storiesOf('Components/Accordion', module)
   .addParameters({
     happo: false,
