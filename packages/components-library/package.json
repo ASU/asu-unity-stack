@@ -1,12 +1,12 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
   "description": "ASU Web Standards-compliant web components library",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
-    "access": "restricted"
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "repository": {
     "type": "git",

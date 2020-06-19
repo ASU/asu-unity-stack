@@ -1,12 +1,16 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/asu/asu-unity-stack",
     "directory": "packages/bootstrap4-theme"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
@@ -55,10 +59,6 @@
     "start-server-and-test": "^1.9.1",
     "storybook-readme": "^5.0.5",
     "webfontloader": "^1.6.28"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }
