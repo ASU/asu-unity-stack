@@ -7,7 +7,7 @@ storiesOf('Components/Breadcrumbs', module)
   })
 
 .add('Breadcrumbs', () => `
-<nav aria-label="breadcrumb0">
+<nav aria-label="breadcrumbs">
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="#">Home</a></li>
   <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
