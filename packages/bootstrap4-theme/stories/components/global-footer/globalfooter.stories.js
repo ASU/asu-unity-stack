@@ -278,19 +278,24 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnTwo" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-two">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-two" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-two">
+                  <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
+                  <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
+                  <a class="nav-link" href="#" title="link">Computer and Energy Matter</a>
+                  <a class="nav-link" href="#" title="link">Transport and Energy Sustainability and the Built Environment</a>
+                  <a class="nav-link" href="#" title="link">The Polytechnic School</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -369,35 +374,47 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnTwo" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-two">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-two" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-two">
+                  <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
+                  <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
+                  <a class="nav-link" href="#" title="link">Computer and Energy Matter</a>
+                  <a class="nav-link" href="#" title="link">Transport and Energy Sustainability and the Built Environment</a>
+                  <a class="nav-link" href="#" title="link">The Polytechnic School</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnThree" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnThree" class="collapse" aria-labelledby="columnThreeHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-three">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-three" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-three">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -476,51 +493,70 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnTwo" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-two">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-two" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-two">
+                  <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
+                  <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
+                  <a class="nav-link" href="#" title="link">Computer and Energy Matter</a>
+                  <a class="nav-link" href="#" title="link">Transport and Energy Sustainability and the Built Environment</a>
+                  <a class="nav-link" href="#" title="link">The Polytechnic School</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnThree" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnThree" class="collapse" aria-labelledby="columnThreeHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-three">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-three" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-three">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnFour" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnFour" class="collapse" aria-labelledby="columnFourHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-four">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-four" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-four">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -599,67 +635,93 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnTwo" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-two">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-two" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-two">
+                  <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
+                  <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
+                  <a class="nav-link" href="#" title="link">Computer and Energy Matter</a>
+                  <a class="nav-link" href="#" title="link">Transport and Energy Sustainability and the Built Environment</a>
+                  <a class="nav-link" href="#" title="link">The Polytechnic School</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnThree" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnThree" class="collapse" aria-labelledby="columnThreeHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-three">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-three" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-three">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnFour" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnFour" class="collapse" aria-labelledby="columnFourHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-four">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-four" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-four">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnFiveHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnFive" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnFive" class="collapse" aria-labelledby="columnFiveHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-five">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-five" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-five">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -738,82 +800,114 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnTwoHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnTwo" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnTwo" class="collapse" aria-labelledby="columnTwoHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-two">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-two" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-two">
+                  <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
+                  <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
+                  <a class="nav-link" href="#" title="link">Computer and Energy Matter</a>
+                  <a class="nav-link" href="#" title="link">Transport and Energy Sustainability and the Built Environment</a>
+                  <a class="nav-link" href="#" title="link">The Polytechnic School</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnThreeHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnThree" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnThree" class="collapse" aria-labelledby="columnThreeHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-three">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-three" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-three">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnFourHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnFour" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnFour" class="collapse" aria-labelledby="columnFourHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-four">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-four" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-four">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnFiveHeader" class="no-control">Section Header Title</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnFive" role="button">
-                Section Header Control
-              </a>
-            </h5>
-            <ul id="columnFive" class="collapse" aria-labelledby="columnFiveHeader">
-              <li><a href="#" title="link">Biological and Health Systems Computing</a></li>
-              <li><a href="#" title="link">Informatics and Decision Systems Electrical</a></li>
-              <li><a href="#" title="link">Computer and Energy Matter</a></li>
-              <li><a href="#" title="link">Transport and Energy Sustainability and the Built Environment</a></li>
-              <li><a href="#" title="link">The Polytechnic School</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-five">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-five" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-five">
+                  <a class="nav-link" href="#" title="link">Student Organization</a>
+                  <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
+                  <a class="nav-link" href="#" title="link">For Your Parents</a>
+                  <a class="nav-link" href="#" title="link">Visit Campus</a>
+                  <a class="nav-link" href="#" title="link">K-12 Outreach</a>
+                  <a class="nav-link" href="#" title="link">Hire Our Graduates</a>
+                  <a class="nav-link" href="#" title="link">Hire an Intern</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
           <div class="col-md flex-footer">
-            <h5 id="columnSixHeader" class="no-control">The Zen Master and the Hot Dog Vendor</h5>
-            <h5 class="control" aria-hidden="true">
-              <a data-toggle="collapse" href="#columnSix" role="button">
-                The Zen Master and the Hot Dog Vendor
-              </a>
-            </h5>
-            <ul id="columnSix" class="collapse" aria-labelledby="columnSixHeader">
-              <li><a href="#" title="link">A Zen master visiting</a></li>
-              <li><a href="#" title="link">New York City</a></li>
-              <li><a href="#" title="link">Goes up to a hot dog vendor and says</a></li>
-              <li><a href="#" title="link">Make me one with everything</a></li>
-            </ul>
+            <div class="card card-foldable">
+              <div class="card-header" id="footlink-header-six">
+                <h5>
+                  <a class="collapsed" data-toggle="collapse" href="#footlink-six" role="button" aria-expanded="false" aria-controls="footlink-six">The Zen Master and the Hot Dog Vendor
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
+                </h5>
+              </div>
+              <div id="footlink-six" class="collapse card-body">
+                <nav aria-labelledby="footlink-header-six">
+                  <a class="nav-link" href="#" title="link">A Zen master</a>
+                  <a class="nav-link" href="#" title="link">Visiting New York City</a>
+                  <a class="nav-link" href="#" title="link">Walks up to</a>
+                  <a class="nav-link" href="#" title="link">A hot dog vendor and says</a>
+                  <a class="nav-link" href="#" title="link">Make me one with everything</a>
+                </nav>
+              </div>
+            </div>
           </div>
 
         </div>

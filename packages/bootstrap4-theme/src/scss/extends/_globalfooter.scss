@@ -11,17 +11,6 @@
   }
 }
 
-@mixin visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-
 // ------------
 // Wrapper base colors. Won't change in a media query.
 // ------------
@@ -127,47 +116,36 @@
   }
 
   .flex-footer {
-    h5 {
-      margin-bottom: 0;
-
-      &.control {
-        display: block;
-      }
+    .card-foldable,
+    .card-header,
+    .card-body {
+      background: $uds-color-divider-darker;
+      color: #ffffff;
+      border: 0;
     }
 
-    h5 a {
-      padding: $uds-size-spacing-3 0;
-      margin: 0;
+    .card-header {
       border-top: 1px solid $uds-color-divider-lighter;
-      text-decoration: none;
-      display: block;
-      color: $uds-color-base-white;
 
-      &:after {
-        color: $uds-color-base-white;
-      }
-    }
+      a {
+        color: $uds-color-base-gray-6;
+        padding: $uds-size-spacing-3 0;
 
-    ul {
-      margin: 0 0 $uds-size-spacing-3 $uds-size-spacing-4;
-      padding: 0;
-
-      > li {
-        margin: 0 0 0.75rem 0; /* Magic number */
-        padding: 0;
-        list-style-type: none;
-
-        > a {
-          @include footer-links;
+        &:hover {
+          background: $uds-color-divider-darker;
         }
       }
     }
-  }
-}
 
-@include media-breakpoint-down(md) {
-  .flex-footer h5.no-control {
-    @include visually-hidden;
+    .card-body {
+      padding: 0 0 0 $uds-size-spacing-3;
+
+      .nav-link {
+        color: #ffffff;
+        padding: 0 0 $uds-size-spacing-2;
+        @include footer-links;
+      }
+    }
   }
 }
 
@@ -178,17 +156,33 @@
   #footer-columns {
     padding: $uds-size-spacing-6 0;
 
-    .flex-footer h5 {
-      margin-bottom: $uds-size-spacing-3;
+    .flex-footer {
+      .card-header {
+        border-top: 0;
 
-      &.control {
-        display: none;
+        h5 {
+          margin: $uds-size-spacing-2 0 $uds-size-spacing-3 0;
+
+          a {
+            padding: 0;
+            cursor: default;
+          }
+
+          span {
+            display: none;
+          }
+        }
       }
-    }
 
-    ul.collapse {
-      display: block;
-      margin: 0;
+      .card-body {
+        padding: 0;
+        transition-delay: 0;
+
+        &.collapse:not(.show) {
+          display: block;
+          min-height: auto;
+        }
+      }
     }
   }
 }
