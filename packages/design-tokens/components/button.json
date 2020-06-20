@@ -67,6 +67,11 @@
           "value": "50%"
         }
       },
+      "focus": {
+        "box-shadow": {
+          "value": "0p 0px 8px {color.base.bluefocus.value}"
+        }
+      },
       "badge": {
         "background-color": {
           "value": "{color.brand.light.value}"
