@@ -13,10 +13,6 @@
         "value": "{color.base.gray.4.value}",
         "comment": "Border - Dark"
       },
-      "focus": {
-        "value": "{color.base.bluefocus.value}",
-        "comment": "Border - Used for highlighting the page element with current focus"
-      },
       "error": {
         "value": "{color.alerts.error.value}",
         "comment": "Border - Error"
