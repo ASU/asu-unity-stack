@@ -87,7 +87,7 @@ module.exports = {
           format: "javascript/module",
         },
       ],
-      actions: ["copy_fonts"],
+      actions: ["copy_assets", "copy_fonts"],
     },
 
     es6: {
@@ -123,7 +123,6 @@ module.exports = {
           format: "scss/variables",
         },
       ],
-      actions: ["copy_assets"],
     },
 
     // "ios": {
