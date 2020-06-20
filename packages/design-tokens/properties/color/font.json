@@ -6,10 +6,6 @@
           "value": "{color.base.gray.1.value}",
           "comment": "Default text color on light background"
         },
-        "alternate": {
-          "value": "#2A2A2A",
-          "comment": "Alternate font color with lighter black level"
-        },
         "link": {
           "value": "{color.base.maroon.value}",
           "comment": "Link text on light background"
