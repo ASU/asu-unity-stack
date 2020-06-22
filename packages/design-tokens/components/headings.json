@@ -19,7 +19,7 @@
         "value": "{size.spacing.base.value}"
       },
       "line-height-formula": {
-        "value": "calc(100% + .13em)"
+        "value": "calc(100% + .12em)"
       },
       "highlight": {
         "box-shadow": {
@@ -107,9 +107,6 @@
         "article": {
           "font-size": {
             "value": "3rem"
-          },
-          "line-height-formula": {
-            "value": "calc(100% + .12em)"
           }
         },
         "mobile": {
