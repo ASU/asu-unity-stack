@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, hydrate, render} from "preact";
-
+// test comment
 
 const HydratePreact = (component, props, target, children) => {
 
