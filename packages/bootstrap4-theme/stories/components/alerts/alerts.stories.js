@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Alerts', module)
   .addParameters({
     happo: false,
@@ -74,3 +74,4 @@ storiesOf('Components/Alerts', module)
   <hr>
   <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </div>`);
+*/
