@@ -2,11 +2,12 @@
   "branches": [
     "master",
     {
-      "name": "beta",
-      "prerelease": true
+      "name": "dev",
+      "channel": "dev"
     }
   ],
   "ci": false,
+  "dryRun": true,
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -31,9 +32,6 @@
       {
         "assets": [
           "package.json"
-        ],
-        "branches": [
-          "master"
         ]
       }
     ]
