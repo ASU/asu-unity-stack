@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Media object', module)
   .addParameters({
     happo: false,
@@ -114,3 +114,4 @@ Internet Explorer 10-11 do not render inline elements like links or images (or :
 `)
 
 ; //close
+*/

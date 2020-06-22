@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Button Groups', module)
   .addParameters({
     happo: false,
@@ -156,3 +156,4 @@ storiesOf('Components/Button Groups', module)
     </div>
   </div>
 </div>`);
+*/
