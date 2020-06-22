@@ -2,8 +2,9 @@
   "branches": [
     "master",
     {
-      "name": "dev",
-      "channel": "dev"
+      "name": "UDS-142",
+      "channel": "dev",
+      "prerelease": "rc"
     }
   ],
   "ci": false,
