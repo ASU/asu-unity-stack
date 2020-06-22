@@ -51,60 +51,68 @@
   }
 }
 
-// [data-toggle='collapse']:after {
-//   display: inline-block;
-//   font-size: inherit;
-//   text-rendering: auto;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   font-family: 'Font Awesome\ 5 Free';
-//   font-weight: 900;
-//   content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>");
-//   transform: rotate(180deg);
-//   transition: all linear 0.25s;
-//   float: right;
-//   height: 20px;
-//   width: 20px;
-// }
-// [data-toggle='collapse'].collapsed:after {
-//   transform: rotate(0deg);
-// }
+@mixin like-an-h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.037rem;
+}
 
-// .accordion {
-//   > .card {
-//     overflow: hidden;
-//     border-left: solid 4px $gold;
-//     margin-bottom: $uds-size-spacing-2;
+.sidebar {
+  .nav-link {
+    &:hover {
+      text-decoration: underline;
+    }
 
-//     &:not(:last-of-type) {
-//       border-bottom: solid $card-border-width $card-border-color;
-//       @include border-radius(0);
-//     }
+    &.active {
+      text-decoration: none;
+    }
 
-//     &:not(:first-of-type) {
-//       //@include border-top-radius(0);
-//       border-bottom: solid $card-border-width $card-border-color;
-//       @include border-radius(0);
-//     }
+    &.active:after {
+      content: '';
+      position: relative;
+      display: block;
+      margin-top: $uds-size-spacing-1;
+      height: $uds-size-spacing-1;
+      width: 100%;
+      background-color: $uds-color-base-gold;
+      text-decoration: none;
+    }
+  }
 
-//     > .card-header {
-//       @include border-radius(0);
-//       margin-bottom: 0;
-//       background-color: $white;
-//       padding: 0.25rem 0.25rem;
-//       border-bottom: solid $card-border-width $card-border-color;
-//     }
-//     > .card-header button {
-//       color: #000;
-//       font-weight: bold;
-//       width: 100%;
-//       text-align: left;
-//     }
-//     > .card-header button:focus {
-//       text-decoration: none;
-//     }
-//     > div > .card-body {
-//       background-color: $light;
-//     }
-//   }
-// }
+  > .nav-link {
+    border: 1px solid $uds-color-base-gray-6;
+    padding: $uds-size-spacing-2 $uds-size-spacing-4;
+    overflow: hidden;
+    @include like-an-h4;
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+  }
+
+  .card-foldable {
+    border: 1px solid $uds-color-base-gray-6;
+
+    .card-header,
+    .card-body {
+      background-color: transparent;
+    }
+
+    .card-header ~ .card-body {
+      border-top: 0;
+    }
+
+    .card-body > .nav-link {
+      padding: 0 $uds-size-spacing-4 0 $uds-size-spacing-3;
+
+      + .nav-link {
+        padding-top: $uds-size-spacing-2;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+  }
+}

@@ -15,12 +15,12 @@ storiesOf('Components/Accordion', module)
         <div class="card card-foldable">
           <div class="card-header">
             <h4>
-              <a class="collapsed" data-toggle="collapse" href="#example-collapsed" role="button" aria-expanded="false" aria-controls="example-collapsed">This card unfolds.
+              <a id="example-header-1" class="collapsed" data-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">This card unfolds.
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-collapsed" class="collapse card-body">
+          <div id="example-content-1" class="collapse card-body" aria-labelledby="example-header-1">
             <h4>This is a quaternary headline</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
             <h5>This is a level five headline. There's a fancy word for that too.</h5>
@@ -38,12 +38,12 @@ storiesOf('Components/Accordion', module)
         <div class="card card-foldable">
           <div class="card-header">
             <h4>
-              <a class="collapsed" data-toggle="collapse" href="#example-collapsed-twoline" role="button" aria-expanded="false" aria-controls="example-collapsed">This starts off folded and has a really long title which wraps to a second line.
+              <a id="example-header-2" class="collapsed" data-toggle="collapse" href="#example-content-2" role="button" aria-expanded="false" aria-controls="example-content-2">This starts off folded and has a really long title which wraps to a second line.
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-collapsed-twoline" class="collapse card-body">
+          <div id="example-content-2" class="collapse card-body" aria-labelledby="example-header-2">
             <h4>This is a quaternary headline</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
             <h5>This is a level five headline. There's a fancy word for that too.</h5>
@@ -61,12 +61,12 @@ storiesOf('Components/Accordion', module)
         <div class="card card-foldable">
           <div class="card-header">
             <h4>
-              <a data-toggle="collapse" href="#example-expanded" role="button" aria-expanded="true" aria-controls="example-collapsed">This card starts off in an unfolded state.
+              <a id="example-header-3" data-toggle="collapse" href="#example-content-3" role="button" aria-expanded="true" aria-controls="example-content-3">This card starts off in an unfolded state.
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-expanded" class="collapse show card-body">
+          <div id="example-content-3" class="collapse show card-body" aria-labelledby="example-header-3">
             <h4>This is a quaternary headline</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
             <h5>This is a level five headline. There's a fancy word for that too.</h5>
