@@ -29,7 +29,8 @@
           "value": "flex"
         },
         "max-width": {
-          "value": "{size.breakpoint.xxxl.value}"
+          "value": "{breakpoint.xxxl.value}",
+          "comment": "1920px"
         },
         "uds-hero-container": {
           "width-px": {
@@ -99,8 +100,8 @@
         "uds-hero-container": {
           "media": {
             "breakpoint": {
-              "value": "{size.breakpoint.sm.value}",
-              "comment": "Calculates to 576px"
+              "value": "{breakpoint.sm.value}",
+              "comment": "576px"
             },
             "margin-bottom": {
               "value": "-{size.spacing.4.value}"
@@ -119,8 +120,8 @@
         },
         "uds-hero-sm": {
           "breakpoint": {
-            "value": "{size.breakpoint.sm.value}",
-            "comment": "Calculates to 576px"
+            "value": "{breakpoint.sm.value}",
+            "comment": "576px"
           },
           "padding-left": {
             "value": "{size.spacing.3.value}"
@@ -131,8 +132,8 @@
         },
         "uds-hero-lg": {
           "breakpoint": {
-            "value": "{size.breakpoint.xxl.value}",
-            "comment": "Calculates to 1400px"
+            "value": "{breakpoint.xxl.value}",
+            "comment": "1400px"
           },
           "height": {
             "value": "{size.spacing.64.value}",
