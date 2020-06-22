@@ -1,0 +1,279 @@
+<header>
+  <div id="universalNav">
+    <div class="inner">
+      <a href="#">ASU home</a>
+      <a href="#">My ASU</a>
+      <a href="#">Colleges and schools</a>
+      <a href="#">Sign in</a>
+      <a href="#">
+        <i class="fa fa-search"></i>
+      </a>
+    </div>
+  </div>
+
+  <div id="primaryNav">
+    <div class="inner">
+      <div id="hamburger">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div id="logo"><img src="https://i.imgur.com/5WtkgkV.png"></div>
+      <div class="title">
+        <span>Ira A. Fulton Schools of Engineering</span><br>
+        <h1>School of Computing, Informatics, and Decisions Systems Engineering</h1>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a>
+              <i class="fa fa-home"></i>
+            </a>
+            <div class="homeUnderline"></div>
+          </li>
+          <li>
+            <a>Degree programs <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a>Students <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a>People <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a>Research <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a>About us <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a>Contact us <i class="fa fa-chevron-down"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-size: 100%;
+  }
+
+  body,
+  div,
+  h1 {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+
+  @media (max-width: 1200px) {
+    .inner {
+      margin: 0 32px;
+    }
+
+    header #universalNav {
+      display: none;
+    }
+
+    header #primaryNav {
+      padding-bottom: 1rem;
+    }
+
+    header #primaryNav .inner #hamburger {
+      display: inline-block;
+    }
+
+    header #primaryNav #logo {
+      float: none;
+    }
+
+    #logo img {
+      float: none;
+      content: url("https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png");
+      height: 32px;
+    }
+
+    #primaryNav .title span {
+      display: none;
+    }
+
+    #primaryNav h1 {
+      font-size: 1rem;
+      display: inline;
+      line-height: -1rem;
+    }
+
+    #primaryNav nav {
+      display: none;
+    }
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  header #universalNav {
+    background-color: #e8e8e8;
+    text-align: right;
+  }
+
+  header #universalNav .inner a {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    color: #484848;
+  }
+
+  header #universalNav .inner a:hover {
+    color: #8c1d40;
+    text-decoration: underline;
+  }
+
+  header #primaryNav {
+    padding-top: 1rem;
+    background-color: #ffffff;
+  }
+
+  header #primaryNav .inner #hamburger {
+    float: right;
+    display: none;
+    font-size: 1.4rem;
+  }
+
+  header #primaryNav #logo {
+    float: left;
+    display: inline-block;
+    margin-right: 1.5rem;
+  }
+
+  #logo img {
+    height: 80px;
+  }
+
+  #primaryNav .title span {
+    font-weight: bold;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  #primaryNav h1 {
+    font-size: 1.5rem;
+  }
+
+  #primaryNav nav ul {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  #primaryNav nav ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 16px;
+  }
+
+  header #primaryNav .inner nav ul li a {
+    color: #191919;
+    display: block;
+    padding: 8px 8px 16px;
+    position: relative;
+  }
+
+  header #primaryNav .inner nav ul li .fa {
+    font-size: 0.8rem;
+    transform: translateY(-0.1rem);
+  }
+
+  #primaryNav nav ul li:first-child a {
+    padding: 8px 16px 16px;
+  }
+
+  #primarynav .homeUnderline {
+    transition: 1s cubic-bezier(0.22, 0.98, 0.25, 0.98);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8px;
+    background-image: linear-gradient(to left, transparent 50%, #ffc627 50%);
+    background-position: 100%;
+    background-size: 200%;
+  }
+
+  #primarynav .homeUnderline.active {
+    background-position: 0;
+  }
+
+  #primaryNav .homeUnderline a {
+    color: #191919;
+    display: block;
+    padding: 8px 8px 16px;
+    position: relative;
+    i {
+      font-size: 0.75rem;
+      transform: translateY(-0.1rem);
+    }
+  }
+
+  #primaryNav .homeUnderline a i {
+    font-size: 0.75rem;
+    transform: translateY(-0.1rem);
+  }
+
+  .primaryHero {
+    height: 480px;
+    background: black;
+    padding: 100px;
+  }
+
+  .primaryHero #animateButton {
+    font-size: 1em;
+    font-weight: 700;
+    padding: 16px 32px;
+    background: #ffc627;
+    border-radius: 24px;
+    transition: 0.2s ease-out;
+    display: inline-block;
+    margin-right: 24px;
+  }
+
+  .primaryHero #animateButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  .primaryHero #animateButton:active {
+    transform: scale(1);
+  }
+
+  .title h1 {
+    transition: 0.2s ease-out;
+    background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
+    background-position: 0;
+    background-size: 200%;
+    display: inline-block;
+    transition: 1s cubic-bezier(0.22, 0.98, 0.25, 0.98);
+    padding-right: 4px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .title.active span,
+  h1 {
+    background-position: -200%;
+  }
+</style>

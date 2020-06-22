@@ -1,10 +1,6 @@
-import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
 storiesOf('Utilities/Colors', module)
-  .addParameters({
-    happo: false,
-  })
 
   .add('Colors', () => `
   <div class="container-fluid mt-2">
@@ -76,12 +72,13 @@ storiesOf('Utilities/Colors', module)
   </div>
   `)
 /*
-  .add('Colors - text', () => `<p class="text-primary">.text-primary color</p>
+
+  .add('Colors - text', () => `<p class="text-black">.text-black</p>
   <p class="text-secondary">.text-secondary color</p>
-  <p class="text-rfi">.text-request-for-info color</p>
-  <p class="text-program">.text-program color</p>
-  <p class="text-success">.text-success color</p>
-  <p class="text-danger">.text-danger color</p>
+  <p class="text-maroon">.text-request-for-info color</p>
+  <p class="text-gold">.text-program color</p>
+  <p class="text-blue">.text-success color</p>
+  <p class="text-gray-1">.text-danger color</p>
   <p class="text-warning">.text-warning color</p>
   <p class="text-info">.text-info color</p>
   <p class="text-light bg-dark">.text-light color</p>

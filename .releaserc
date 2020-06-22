@@ -1,0 +1,32 @@
+{
+  "branches": [
+    "master",
+    {
+      "name": "dev",
+      "prerelease": true
+    }
+  ],
+  "ci": false,
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/npm",
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failComment": false,
+        "assets": [
+          {
+            "path": [
+              "dist/**/*.js",
+              "dist/**/*.css",
+              "build/**/*.js",
+              "build/**/*.css"
+            ]
+          }
+        ]
+      }
+    ]
+  ]
+}

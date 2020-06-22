@@ -1,0 +1,56 @@
+{
+  "name": "@asu-design-system/components-library",
+  "version": "1.0.0",
+  "description": "ASU Web Standards-compliant web components library",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/components-library"
+  },
+  "author": "Colton Testamarck",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "clean": "yarn shx rm -rf ./dist",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules && yarn prerender",
+    "serve": "sirv build --cors --single",
+    "dev": "yarn clean && cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
+    "test": "jest",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -s public -o export",
+    "prerender": "node scripts/prerender-templates.js"
+  },
+  "devDependencies": {
+    "@storybook/preact": "^5.3.19",
+    "emotion-server": "^10.0.27",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-preact-pure": "^2.0.0",
+    "global": "^4.3.2",
+    "preact": "^10.4.4",
+    "preact-cli": "^3.0.0-rc.6",
+    "preact-render-spy": "^1.2.1",
+    "preact-render-to-json": "^3.6.6",
+    "preact-render-to-string": "^5.1.4",
+    "sirv-cli": "^0.4.5",
+    "terser-webpack-plugin": "^3.0.3"
+  },
+  "dependencies": {
+    "@asu-design-system/design-tokens": "^1.0.0-beta",
+    "emotion": "^10.0.27",
+    "preact": "^10.4.4"
+  },
+  "jest": {
+    "preset": "jest-preset-preact",
+    "setupFiles": [
+      "<rootDir>/tests/__mocks__/browserMocks.js",
+      "<rootDir>/tests/__mocks__/setupTests.js"
+    ]
+  }
+}
