@@ -19,12 +19,18 @@
         "assets": [
           {
             "path": [
-              "dist/**/*.js",
-              "dist/**/*.css",
-              "build/**/*.js",
-              "build/**/*.css"
+              "dist/**/*.{js,css}",
+              "build/**/*.{js,css}"
             ]
           }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "package.json"
         ]
       }
     ]
