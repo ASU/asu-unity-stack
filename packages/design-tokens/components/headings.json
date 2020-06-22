@@ -18,12 +18,15 @@
       "margin": {
         "value": "{size.spacing.base.value}"
       },
+      "line-height-formula": {
+        "value": "calc(100% + .13em)"
+      },
       "highlight": {
         "box-shadow": {
           "large": {
             "first": {
               "offset-x": {
-                "value": "-0.65rem"
+                "value": "-0.15em"
               },
               "offset-y": {
                 "value": "0"
@@ -34,7 +37,7 @@
             },
             "second": {
               "offset-x": {
-                "value": "0.65rem"
+                "value": "0.15em"
               },
               "offset-y": {
                 "value": "0"
@@ -47,7 +50,7 @@
           "small": {
             "first": {
               "offset-x": {
-                "value": "-0.40rem"
+                "value": "-0.15em"
               },
               "offset-y": {
                 "value": "0"
@@ -58,7 +61,7 @@
             },
             "second": {
               "offset-x": {
-                "value": "0.40rem"
+                "value": "0.15em"
               },
               "offset-y": {
                 "value": "0"
@@ -98,29 +101,20 @@
         "font-size": {
           "value": "4rem"
         },
-        "line-height": {
-          "value": "4.85rem"
-        },
         "letter-spacing": {
-          "value": "-0.085rem"
+          "value": "-0.035em"
         },
         "article": {
           "font-size": {
-            "value": "3.5rem"
+            "value": "3rem"
           },
-          "line-height": {
-            "value": "4rem"
+          "line-height-formula": {
+            "value": "calc(100% + .12em)"
           }
         },
         "mobile": {
           "font-size": {
-            "value": "3rem"
-          },
-          "line-height": {
-            "value": "3.6rem"
-          },
-          "letter-spacing": {
-            "value": "-0.035rem"
+            "value": "2.25rem"
           }
         }
       },
@@ -128,21 +122,15 @@
         "font-size": {
           "value": "2.5rem"
         },
-        "line-height": {
-          "value": "3rem"
-        },
         "letter-spacing": {
-          "value": "-0.085rem"
+          "value": "-0.035em"
         },
         "mobile": {
           "font-size": {
-            "value": "1.875rem"
-          },
-          "line-height": {
-            "value": "2.25rem"
+            "value": "2rem"
           },
           "letter-spacing": {
-            "value": "-0.035rem"
+            "value": "-0.035em"
           }
         }
       },
@@ -150,33 +138,24 @@
         "font-size": {
           "value": "1.5rem"
         },
-        "line-height": {
-          "value": "1.8rem"
-        },
         "letter-spacing": {
-          "value": "-0.085rem"
+          "value": "-0.035em"
         }
       },
       "four": {
         "font-size": {
           "value": "1.25rem"
         },
-        "line-height": {
-          "value": "1.5rem"
-        },
         "letter-spacing": {
-          "value": "-0.037rem"
+          "value": "-0.025em"
         }
       },
       "five": {
         "font-size": {
           "value": "1rem"
         },
-        "line-height": {
-          "value": "1.2rem"
-        },
         "letter-spacing": {
-          "value": "-0.037rem"
+          "value": "-0.015em"
         }
       }
     }
