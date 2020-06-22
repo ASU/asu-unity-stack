@@ -62,9 +62,6 @@ pipeline {
                     args '-p 3000:3000'
                 }
             }
-            when {
-                branch 'master'
-            }
             steps {
                 withNPM(npmrcConfig:'jenkins-npmrc') {
                     echo 'Publishing packages to private NPM registry...'

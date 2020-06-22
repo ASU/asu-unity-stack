@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Progress', module)
   .addParameters({
     happo: false,
@@ -97,3 +97,4 @@ storiesOf('Components/Progress', module)
 `)
 
 ; //close
+*/

@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Badges', module)
   .addParameters({
     happo: false,
@@ -54,3 +54,4 @@ storiesOf('Components/Badges', module)
 <a href="#" class="badge badge-light">Light</a>
 <a href="#" class="badge badge-dark">Dark</a>`)
 ;
+*/

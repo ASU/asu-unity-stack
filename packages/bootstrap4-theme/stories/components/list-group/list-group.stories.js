@@ -8,7 +8,7 @@ import { storiesOf } from '@storybook/html';
 // gold bullets/#s/icons/steps
 // black bullets/#s/icons/steps
 // white bullets/#s/icons/steps
-
+/*
 storiesOf('Components/List group', module)
   .addParameters({
     happo: false,
@@ -197,3 +197,4 @@ storiesOf('Components/List group', module)
 </div>
 `)
 ; //close
+*/

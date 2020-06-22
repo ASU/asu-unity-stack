@@ -1,4 +1,5 @@
 import AsuCarousel from "./components/AsuCarousel";
-import { AsuHeroImage, AsuBgHeroImage } from "./components/AsuHeroImage";
+import { AsuHeroImage } from "./components/AsuHeroImage";
+import AsuBgHeroImage from "./components/AsuBgHeroImage";
 
 export { AsuCarousel, AsuHeroImage, AsuBgHeroImage };

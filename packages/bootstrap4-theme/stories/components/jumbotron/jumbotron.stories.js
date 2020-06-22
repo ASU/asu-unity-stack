@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-
+/*
 storiesOf('Components/Jumbotron', module)
   .addParameters({
     happo: false,
@@ -26,3 +26,4 @@ storiesOf('Components/Jumbotron', module)
 `)
 
 ; //close
+*/

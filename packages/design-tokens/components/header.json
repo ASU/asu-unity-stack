@@ -1,0 +1,14 @@
+{
+  "component": {
+    "header": {
+      "breakpoints": {
+        "mobile": {
+          "value": "{size.breakpoints.medium.value}"
+        }
+      },
+      "line-height": {
+        "value": "1.5"
+      }
+    }
+  }
+}
