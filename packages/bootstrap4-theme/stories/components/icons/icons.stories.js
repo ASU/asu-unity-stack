@@ -165,3 +165,28 @@ storiesOf('Components/Icons', module)
     <span class="fas icon-xxl fa-file-download"><span class="sr-only">Download Icon</span></span>
   </div>
 </div>`)
+
+
+.add('Social Media Icons', () => `
+  <div class="wrapper" id="wrapper-endorsed-footer">
+    <div class="container" id="endorsed-footer">
+      <div class="row">
+
+        <div class="col-md-6 pt-3" style="color:#ffffff;">
+          <h4>Boilerplate text goes here explaining the rules for social media icons.</h4>
+        </div>
+
+        <div class="col-md-6" id="social-media">
+          <nav class="nav" aria-label="Social Media">
+            <a class="nav-link" href="#"><span title="Facebook" class="fab fa-facebook-square"></span></a>
+            <a class="nav-link" href="#"><span title="Twitter" class="fab fa-twitter-square"></span></a>
+            <a class="nav-link" href="#"><span title="LinkedIn" class="fab fa-linkedin"></span></a>
+            <a class="nav-link" href="#"><span title="Instagram" class="fab fa-instagram-square"></span></a>
+            <a class="nav-link" href="#"><span title="YouTube" class="fab fa-youtube-square"></span></a>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>`)
+
