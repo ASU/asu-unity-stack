@@ -1,0 +1,55 @@
+/* =Alternate Element styles for 1) gray, 2) black, and 3) white --- IN PROGRESS
+-------------------------------------------------------------- */
+.ws2-element-alt { // Global shell for content-element only overrides
+  // Global alt styling
+  ////////////////////////////////
+  padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5;
+  border-style: solid;
+  border-width: 1px;
+  // Manage border padding/margins in container
+  & > *:first-child {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  & > *:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  /*
+   * Gray
+   */
+  &.ws2-element-alt-gray {
+    color: $text-color;
+    background-color: $ws2-gray-lighter;
+    border-color: $ws2-gray-lighter;
+    // Buttons
+    .ws2-element-style.btn-tag { // Tag button variation
+      background-color: $ws2-gray !important;
+    }
+  }
+
+  /*
+   * Black
+   */
+  &.ws2-element-alt-black {
+    color: $text-color-bg-dark;
+    background-color: $ws2-gray-darkest;
+    border-color: $ws2-gray-darkest;
+    // Lists
+    ul, ol {
+      li:before {
+        color: $text-color-bg-dark;
+      }
+      &.ws2-element-style.ws2-element-gold li:before { // only allow gold element in black background
+        color: $ws2-gold;
+      }
+    }
+    // Buttons
+    .ws2-element-style.btn-tag { // Tag button variation
+      background-color: $ws2-gray-dark;
+      border-color: $ws2-gray-dark;
+      color: #fff;
+    }
+  }
+}
