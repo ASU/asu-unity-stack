@@ -71,7 +71,7 @@ storiesOf('Components/Pagination', module)
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+      <a class="page-link page-link-icon" href="#">Prev</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">11</a></li>
     <li class="page-item active" aria-current="page">
