@@ -8,6 +8,7 @@ pipeline {
         TASK_FAMILY='UnityQATask'
         REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
         GH_TOKEN = credentials('GH_TOKEN')
+        NPM_TOKEN = credentials('NPM_TOKEN')
     }
     options {
       withAWS(credentials:'aws-jenkins')
