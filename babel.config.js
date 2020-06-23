@@ -15,10 +15,10 @@ module.exports = function (api) {
               "last 2 Safari versions",
               "IE 11",
             ],
-            node: "10"
+            node: "12",
           },
           modules: "auto",
-          useBuiltIns: "usage",  // really could go "entry" or"usage" here. I thought usage might be easier to work with...
+          useBuiltIns: "usage", // really could go "entry" or"usage" here. I thought usage might be easier to work with...
           corejs: {
             version: 3,
             shippedProposals: true,
@@ -28,8 +28,8 @@ module.exports = function (api) {
       "@babel/preset-react",
     ],
     plugins: [
-      // "@babel/plugin-transform-regenerator",
-      // "@babel/plugin-transform-runtime",
+      //"@babel/plugin-transform-regenerator",
+      "@babel/plugin-transform-runtime",
       // '@babel/plugin-transform-spread',
       // '@babel/plugin-syntax-dynamic-import',
       // [

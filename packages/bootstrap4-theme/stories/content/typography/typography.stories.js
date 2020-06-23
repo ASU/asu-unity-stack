@@ -49,7 +49,7 @@ storiesOf('Content/Typography', module)
   .add('ASU Headings - Highlights', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1><span class="highlight-gold">Lorem ipsum</span></h1>
   <h1 class="article"><span class="highlight-gold">Heading 1 - Long Headlines and Article Titles</span></h1>
   <h2><span class="highlight-black">Heading 2</span></h2>
-  <h3><span class="highlight-white">Heading 3</span></h3>
+  <h3><span class="highlight-gold">Heading 3</span></h3>
   <h4><span class="highlight-black">Heading 4</span></h4></div></div>`)
 
   .add('ASU Headings - Content Page', () => `

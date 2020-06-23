@@ -21,7 +21,8 @@ module.exports = {
               rootMode: "upward",
             },
           },
-          "eslint-loader"],
+          "eslint-loader",
+        ],
       },
       {
         test: /\.html$/,

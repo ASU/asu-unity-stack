@@ -22,20 +22,20 @@ const paths = cfg.paths;
 // Run:
 // gulp sass
 // Compiles SCSS files into CSS
-gulp.task('sass', function() {
+gulp.task('sass', function () {
   const stream = gulp
     .src(paths.sass + '/bootstrap-asu.scss')
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     // .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true }))
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([ autoprefixer() ]))
     // .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.css));
   return stream;
@@ -43,7 +43,7 @@ gulp.task('sass', function() {
 
 // Run:
 // gulp eslint
-gulp.task('eslint', function() {
+gulp.task('eslint', function () {
   return gulp
     .src(`${paths.js}/*.js`)
     .pipe(eslint())
@@ -54,15 +54,15 @@ gulp.task('eslint', function() {
 // Run:
 // gulp sasslint
 // Lint SCSS files
-gulp.task('sasslint', function() {
+gulp.task('sasslint', function () {
   const stream = gulp
     .src(paths.sass + '/**/*.scss')
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     .pipe(sassLint())
@@ -74,24 +74,24 @@ gulp.task('sasslint', function() {
 // Run:
 // gulp imagemin
 // Running image optimizing task
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
   return gulp
     .src(`${paths.imgsrc}/**`)
     .pipe(imagemin())
     .pipe(gulp.dest(paths.img));
 });
 
-gulp.task('minifycss', function() {
+gulp.task('minifycss', function () {
   return gulp
     .src(`${paths.css}/bootstrap-asu.css`)
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(cleanCSS({ compatibility: '*' }))
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     .pipe(rename({ suffix: '.min' }))
@@ -99,15 +99,15 @@ gulp.task('minifycss', function() {
     .pipe(gulp.dest(paths.css));
 });
 
-gulp.task('styles', function(callback) {
+gulp.task('styles', function (callback) {
   gulp.series('sass', 'minifycss')(callback);
 });
 
 // Run:
 // gulp scripts.
 // Uglifies and concat all JS files into one
-gulp.task('scripts', function() {
-  const scripts = ['src/js/_license.js'];
+gulp.task('scripts', function () {
+  const scripts = [ 'src/js/_license.js' ];
   gulp
     .src(scripts, { allowEmpty: true })
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -125,23 +125,25 @@ gulp.task('scripts', function() {
 });
 
 // Copy all assets needed for ASU Web Standards
-gulp.task('copy-assets', function(done) {
+gulp.task('copy-assets', function (done) {
   // Copy the master ASU images from the design-token
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/assets/**/*`)
     .pipe(gulp.dest('./dist/img'));
 
   // Copy Bootstrap's Scripts
+  gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
+
   gulp
-    .src(`${paths.node}/bootstrap/dist/js/*`)
-    .pipe(gulp.dest('./dist/js'));
+    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/**/*`)
+    .pipe(gulp.dest('./dist/assets'));
 
   done();
 });
 
 // Deleting any file inside the /dist folder
-gulp.task('clean-dist', function() {
-  return del([paths.dist + '/**']);
+gulp.task('clean-dist', function () {
+  return del([ paths.dist + '/**' ]);
 });
 
 // Run
