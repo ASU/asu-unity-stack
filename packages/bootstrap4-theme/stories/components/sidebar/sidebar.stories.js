@@ -6,7 +6,7 @@ storiesOf('Components/Sidebar', module)
     happo: false,
   })
 
-  .add('Story 1', () => `
+  .add('Sidebar Navigation', () => `
 
   <div class="container my-5">
 
@@ -19,9 +19,9 @@ storiesOf('Components/Sidebar', module)
           <a class="nav-link active" href="#">Active Link</a>
 
           <div class="card card-foldable">
-            <div class="card-header" id="cardOne">
+            <div class="card-header">
               <h4>
-                <a class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">Expandable link section
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">Expandable link section
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -34,9 +34,9 @@ storiesOf('Components/Sidebar', module)
           </div><!-- end .card -->
 
           <div class="card card-foldable">
-            <div class="card-header" id="cardTwo">
+            <div class="card-header">
               <h4>
-                <a class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
+                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -56,9 +56,9 @@ storiesOf('Components/Sidebar', module)
           <a class="nav-link" href="#">Link between cards</a>
 
           <div class="card card-foldable">
-            <div class="card-header" id="cardThree">
+            <div class="card-header">
               <h4>
-                <a class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
+                <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -81,8 +81,9 @@ storiesOf('Components/Sidebar', module)
 
       <div class="col-md-8">
 
-        <h1>Misplaced corks sway hat Nenya.</h1>
-        <p>It must be taken deep into Mordor and cast back into the fiery chasm from whence it came. Crack Chubbs brother plan our?</p>
+        <h1>The page title</h1>
+        <p>But this story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
+        <p>Foldable cards can be mixed in with static navigation links to create a section of content which behaves like an accordion and reveals navigation items which are nested two levels deep.</p>
         <h2>Launching Azog forsaken strike 890.</h2>
         <p>Seat accorded Longshanks. You cannot hide. I see you. There is no life in the void. Only death. Tough Narsil enchanted. Succumbed Rhosgobel raiding attached thirty-four tasty gangrel piece cutting athletic.</p>
         <h3>Approaching courteous Seeing-stones?</h3>
@@ -110,8 +111,6 @@ storiesOf('Components/Sidebar', module)
         </ol>
         <p>Content whyfors bled behaving weapons swept l lower attending Shirelings waybread. Do not take me for some conjurer of cheap tricks. Credit Frodo cheated.</p>
         <p>Eluded belong particularly firm hello oversized industry underestimate tale Council nights bet. Allies melt watched sleeping letter Arwen Evenstar days invented. You shall be the Fellowship of the Ring. Kingsfoil later guess diminish lament firm announce funeral. Withdraw forgave stepped age moment interesting rubbish tingle Fili. Bestowing band negotiations foes spent without liege authority mother Understand counted trouble-making. Fill Kingsfoil nobody's further. Dung Wilds wonderful armies craft heirlooms defeats?</p>
-        <p>Cousin's bow Arwen Evenstar darkness nightshade silverware. Vine silly bend blessed kingsfoil amount spring Boffins watch shake laughing. Earned Dory merely tomb moved dirty desire addled trading settlement. Isildur's grass wood medicine interest blockheaded join proud westward reflection patrol poison. Call Ecthelion dwelt town working couIdn't wizard malice joke. Today is my 111th birthday! Worn Beorn plenty named. Halt Lórien wet. Race tidings roast Entwives act?</p>
-        <p>Riders hurts maggot presumed avalanche farmer goats stink Orthanc. Hazel questions Gentlemen rippling group shouldn't his reveal we've! Breeding armed becoming blood liked rune ancestor winter Adamant gardeners. Wounded feet malt of Rivendell towards vanish stinky idly way familiar studies. Tart wizard's Took rolling fades cost wish you'll riches ignored culvert along. Handy moved 4 disease borne runs heathen deeds came Greyhame absurd measure. Reek antagonize plain people's Wraiths fooled easily told vines. Gandalf's death was not in vain. Nor would he have you give up hope.</p>¸
 
       </div><!-- end .col -->
     </div><!-- end .row -->

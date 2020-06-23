@@ -1,55 +1,9 @@
-.card-foldable {
-  border-color: $uds-color-base-gray-5;
-  border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
-  height: auto;
+/*------------------------------------------------------------------
+Sidebar Navigation
 
-  .card-header {
-    padding: 0;
-
-    h4 {
-      margin: 0;
-
-      a {
-        display: block;
-        padding: 1rem 2rem;
-        text-decoration: none;
-        color: $uds-color-base-black;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-
-        &:hover {
-          background-color: $uds-color-base-gray-7;
-        }
-
-        span {
-          margin-left: $uds-size-spacing-3;
-          transition-duration: $uds-time-transition-base;
-        }
-
-        &.collapsed span {
-          transform: rotate(180deg);
-        }
-      }
-    }
-    + .card-body {
-      border-top: 1px solid $uds-color-base-gray-5;
-    }
-  }
-
-  .card-body {
-    background-color: $uds-color-base-gray-7;
-
-    > p:first-child {
-      margin-top: $uds-size-spacing-2;
-    }
-
-    > p:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
+1. Component Mixins
+2. Sidebar
+-------------------------------------------------------------------*/
 
 @mixin like-an-h4 {
   font-size: 1.25rem;
@@ -57,6 +11,10 @@
   line-height: 1.5rem;
   letter-spacing: -0.037rem;
 }
+
+/*------------------------------------------------------------------
+2. Sidebar
+--------------------------------------------------------------------*/
 
 .sidebar {
   .nav-link {
@@ -84,6 +42,8 @@
     border: 1px solid $uds-color-base-gray-6;
     padding: $uds-size-spacing-2 $uds-size-spacing-4;
     overflow: hidden;
+    color: $uds-color-base-black;
+
     @include like-an-h4;
 
     &:not(:last-child) {
