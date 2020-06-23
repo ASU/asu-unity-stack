@@ -278,15 +278,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-two">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                  <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-two" class="collapse card-body">
+              <div id="footlink-two" class="collapse card-body" aria-labelledby="footlink-header-two">
                 <nav aria-labelledby="footlink-header-two">
                   <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
                   <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
@@ -374,15 +374,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-two">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                  <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-two" class="collapse card-body">
+              <div id="footlink-two" class="collapse card-body" aria-labelledby="footlink-header-two">
                 <nav aria-labelledby="footlink-header-two">
                   <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
                   <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
@@ -395,15 +395,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-three">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                  <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-three" class="collapse card-body">
+              <div id="footlink-three" class="collapse card-body" aria-labelledby="footlink-header-three">
                 <nav aria-labelledby="footlink-header-three">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -493,15 +493,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-two">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                  <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-two" class="collapse card-body">
+              <div id="footlink-two" class="collapse card-body" aria-labelledby="footlink-header-two">
                 <nav aria-labelledby="footlink-header-two">
                   <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
                   <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
@@ -514,15 +514,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-three">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                  <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-three" class="collapse card-body">
+              <div id="footlink-three" class="collapse card-body" aria-labelledby="footlink-header-three">
                 <nav aria-labelledby="footlink-header-three">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -537,15 +537,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-four">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                  <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-four" class="collapse card-body">
+              <div id="footlink-four" class="collapse card-body" aria-labelledby="footlink-header-four">
                 <nav aria-labelledby="footlink-header-four">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -635,15 +635,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-two">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                  <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-two" class="collapse card-body">
+              <div id="footlink-two" class="collapse card-body" aria-labelledby="footlink-header-two">
                 <nav aria-labelledby="footlink-header-two">
                   <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
                   <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
@@ -656,15 +656,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-three">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                  <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-three" class="collapse card-body">
+              <div id="footlink-three" class="collapse card-body" aria-labelledby="footlink-header-three">
                 <nav aria-labelledby="footlink-header-three">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -679,15 +679,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-four">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                  <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-four" class="collapse card-body">
+              <div id="footlink-four" class="collapse card-body" aria-labelledby="footlink-header-four">
                 <nav aria-labelledby="footlink-header-four">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -702,15 +702,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-five">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
+                  <a id="footlink-header-five" class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-five" class="collapse card-body">
+              <div id="footlink-five" class="collapse card-body" aria-labelledby="footlink-header-five">
                 <nav aria-labelledby="footlink-header-five">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -800,15 +800,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-two">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
+                  <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-two" class="collapse card-body">
+              <div id="footlink-two" class="collapse card-body" aria-labelledby="footlink-header-two">
                 <nav aria-labelledby="footlink-header-two">
                   <a class="nav-link" href="#" title="link">Biological and Health Systems Computing</a>
                   <a class="nav-link" href="#" title="link">Informatics and Decision Systems Electrical</a>
@@ -821,15 +821,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-three">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
+                  <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-three" class="collapse card-body">
+              <div id="footlink-three" class="collapse card-body" aria-labelledby="footlink-header-three">
                 <nav aria-labelledby="footlink-header-three">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -844,15 +844,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-four">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
+                  <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-four" class="collapse card-body">
+              <div id="footlink-four" class="collapse card-body" aria-labelledby="footlink-header-four">
                 <nav aria-labelledby="footlink-header-four">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -867,15 +867,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-five">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
+                  <a id="footlink-header-five" class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-five" class="collapse card-body">
+              <div id="footlink-five" class="collapse card-body" aria-labelledby="footlink-header-five">
                 <nav aria-labelledby="footlink-header-five">
                   <a class="nav-link" href="#" title="link">Student Organization</a>
                   <a class="nav-link" href="#" title="link">Inner Circle Newsletter</a>
@@ -890,15 +890,15 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-md flex-footer">
-            <div class="card card-foldable">
-              <div class="card-header" id="footlink-header-six">
+            <div class="card card-foldable desktop-disable">
+              <div class="card-header">
                 <h5>
-                  <a class="collapsed" data-toggle="collapse" href="#footlink-six" role="button" aria-expanded="false" aria-controls="footlink-six">The Zen Master and the Hot Dog Vendor
+                  <a id="footlink-header-six" class="collapsed" data-toggle="collapse" href="#footlink-six" role="button" aria-expanded="false" aria-controls="footlink-six">The Zen Master and the Hot Dog Vendor
                     <span class="fas fa-chevron-up"></span>
                   </a>
                 </h5>
               </div>
-              <div id="footlink-six" class="collapse card-body">
+              <div id="footlink-six" class="collapse card-body" aria-labelledby="footlink-header-six">
                 <nav aria-labelledby="footlink-header-six">
                   <a class="nav-link" href="#" title="link">A Zen master</a>
                   <a class="nav-link" href="#" title="link">Visiting New York City</a>
