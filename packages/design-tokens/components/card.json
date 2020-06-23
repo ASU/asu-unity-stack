@@ -17,6 +17,12 @@
         "hover": {
           "transform": {
             "value": "scale(1.05)"
+          },
+          "box-shadow": {
+            "value": "0px 8px 16px rgba(25,25,25,0.2)"
+          },
+          "cursor": {
+            "value": "pointer"
           }
         },
         "active": {
@@ -66,7 +72,7 @@
             "value": "left"
           },
           "text-align-centered": {
-            "value": "centered"
+            "value": "center"
           }
         },
         "title-link": {
@@ -109,31 +115,53 @@
           "align-self": {
             "value": "flex-end"
           }
+        },
+        "footer-link": {
+          "padding" : {
+            "value": "{size.spacing.2.value} {size.spacing.4.value} {size.spacing.2.value} {size.spacing.4.value}"
+          },
+          "padding-sm" : {
+            "value": "{size.spacing.2.value} {size.spacing.2.value} {size.spacing.2.value} {size.spacing.2.value}"
+          },
+          "border-top": {
+            "value": "1px solid rgba(0, 0, 0, 0.125)"
+          }
         }
       },
       "degree": {
-        "base": {
-          "color": "{color.brand.gold.value}"
-        },
-        "active": {
-          "color": "{color.brand.gold.value}"
-        },
-        "hover": {
-          "color": "{color.brand.gold.value}"
-        },
-        "visited": {
-          "color": "{color.base.darkgold.value}"
+        "title-underline": {
+          "width": {
+            "value": "{size.spacing.4.value}"
+          },
+          "height": {
+            "value": "{size.spacing.half.value}"
+          },
+          "content": {
+            "value": "''"
+          },
+          "display": {
+            "value": "block"
+          },
+          "color": {
+            "value": "{color.base.gold.value}"
+          },
+          "margin-top": {
+            "value": "{size.spacing.2.value}"
+          }
         }
       },
       "story": {
-        "base": {
-          "color": "{color.brand.maroon.value}"
+        "body-margin": {
+          "value": "0 {size.spacing.4.value} 0 {size.spacing.4.value}"
         },
-        "active": {
-          "color": "{color.brand.maroon.value}"
+        "body-margin-sm": {
+          "value": "0 {size.spacing.2.value} 0 {size.spacing.2.value}"
+        },
+        "background-color": {
+          "value": "{color.base.white.value}"
         },
         "hover": {
-          "color": "{color.brand.maroon.value}"
+          "color": "{color.base.maroon.value}"
         },
         "visited": {
           "color": "{color.base.darkmaroon.value}"
@@ -144,10 +172,10 @@
           "color": "{color.base.gray.6.value}"
         },
         "active": {
-          "color": "{color.brand.gold.value}"
+          "color": "{color.base.gold.value}"
         },
         "hover": {
-          "color": "{color.brand.gold.value}"
+          "color": "{color.base.gold.value}"
         },
         "visited": {
           "color": "{color.base.gray.6.value}"
