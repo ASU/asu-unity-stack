@@ -104,4 +104,8 @@ dist
 build
 stats.html
 
+.history
+.idea
 # End of https://www.gitignore.io/api/node
+
+tests/__image_snapshots__/__diff_output__

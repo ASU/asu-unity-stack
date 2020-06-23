@@ -1,0 +1,63 @@
+{
+  "name": "@asu-design-system/react-library",
+  "version": "1.0.0",
+  "description": "ASU Brand React Components",
+  "author": "Colton Testamarck (colt@asu.edu)",
+  "private": false,
+  "main": "src/index.js",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/react-library"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "prepare": "yarn run build",
+    "build": "webpack --config webpack/webpack.production.js && yarn prerender",
+    "build:watch": "webpack --watch --config=webpack/webpack.development.js",
+    "build:dev": "webpack --config=webpack/webpack.development.js",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o export",
+    "test": "jest",
+    "lint": "eslint ./src --ext .js --ext .jsx --fix --ignore-path ../../.eslintignore",
+    "prerender": "node scripts/prerender-templates.js"
+  },
+  "jest": {
+    "verbose": true,
+    "automock": false,
+    "testURL": "http://localhost/",
+    "setupFilesAfterEnv": [
+      "@testing-library/react/cleanup-after-each"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "roots": [
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "globals": {
+      "__DEV__": true
+    }
+  },
+  "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
+}

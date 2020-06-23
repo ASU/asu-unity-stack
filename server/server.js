@@ -1,16 +1,19 @@
 const express = require("express");
 const path = require("path");
 const nunjucks = require("nunjucks");
+const compression = require("compression");
 
 // import prerendering functions for ASU Brand header
 
 const app = express();
 
+app.use(compression());
+
 //configure nunjucks
 nunjucks.configure(["server/views", "packages"], {
   autoescape: false,
   express: app,
-  watch: true
+  watch: true,
 });
 
 // Serve the built monorepo static Storybook app as the root of our QA site.
@@ -24,12 +27,11 @@ app.use(express.static("packages"));
  * Kitchen sink page
  * Serve HTML page which tests bundled packages
  */
-app.get("/kitchen-sink", function(req, res) {
+app.get("/kitchen-sink", function (req, res) {
   // Important: This index.njs is a nunjucks template and resides in 'server/views'.
   // Not to be confused with the root index.html in the static Storybook 'build' directory.
-  res.render("index.njs");
+  res.render("index.njk");
 });
-
 
 // Listen for stop command with socket.io. Referenced from stackoverflow answer:
 // https://stackoverflow.com/questions/23258421/how-to-stop-app-that-node-js-express-npm-start/39128820
