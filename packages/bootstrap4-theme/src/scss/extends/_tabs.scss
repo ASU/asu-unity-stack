@@ -1,0 +1,12 @@
+.nav-tabs .nav-link {
+  color: $uds-component-tab-color;
+  padding: 0.25em 1em;
+  border-right: $uds-component-tab-border-width;
+  border-left: $uds-component-tab-border-width;
+  border-top: $uds-component-tab-border-width;
+  text-decoration: $uds-component-tab-text-decoration;
+  font-weight: $uds-component-tab-font-weight;
+}
+.nav-tabs .nav-link.active {
+  border-bottom: $uds-component-tab-active-border-bottom;
+}

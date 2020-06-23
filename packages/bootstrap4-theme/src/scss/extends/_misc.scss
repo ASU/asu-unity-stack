@@ -19,18 +19,7 @@
 .page-item:first-child .page-link {
   border-radius: 400px;
 }
-.nav-tabs .nav-link {
-  color: #000;
-  padding: 0.25em 1em;
-  border-right: 0;
-  border-left: 0;
-  border-top: 0;
-  text-decoration: none;
-  font-weight: bold;
-}
-.nav-tabs .nav-link.active {
-  border-bottom: solid 4px !important; /* Temp */
-}
+
 label {
   font-weight: bold;
   font-size: 0.85em;
