@@ -1,0 +1,106 @@
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
+const TerserPlugin = require('terser-webpack-plugin')
+
+module.exports = [];
+
+module.exports.push({
+  context: path.join(__dirname, "src"),
+  mode: "production",
+  entry: {
+    "asu-unity-web-components": "./index.js",
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].production.js",
+    libraryTarget: "umd",
+    library: "AsuWeb",
+    umdNamedDefine: true,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "initial",
+        },
+      },
+    },
+    minimizer: [new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
+    })],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            // options: {
+            //   rootMode: "upward",
+            // },
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      // Must be below test-utils
+    },
+  }
+});
+
+// SSR bundle config
+module.exports.push(
+  {
+    mode: "production",
+    context: path.join(__dirname, "src"),
+    target: 'node',
+    entry: {
+      "web-components": "./ssr.js",
+    },
+    output: {
+      path: path.join(__dirname, "dist"),
+      filename: "web-components.ssr.js",
+      libraryTarget: "umd",
+      globalObject: "this",
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(jsx|js)?$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: "babel-loader",
+              // options: {
+              //   rootMode: "upward",
+              // },
+            },
+          ],
+        },
+      ],
+    },
+    resolve: {
+      extensions: [".js", ".jsx"],
+      alias: {
+        react: "preact/compat",
+        //"react-dom/test-utils": "preact/test-utils",
+        "react-dom": "preact/compat",
+        // Must be below test-utils
+      },
+    },
+    externals: [nodeExternals()],
+  }
+);

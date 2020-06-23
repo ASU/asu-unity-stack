@@ -14,7 +14,7 @@ storiesOf('Content/Typography', module)
   .add('Font', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1>Arial bold</h1>
   <p><strong>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</strong></p><h1 style="font-weight:100!important;">Arial regular</h1>
   <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</p></div></div></div>`)
-
+/*
   .add('Headings', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1>h1. Heading 1</h1><hr/>
   <h1>h1. Heading 1<br/>articles and long headlines</h1><hr/>
   <h1>h1. Heading 1 mobile</h1><hr/>
@@ -30,13 +30,14 @@ storiesOf('Content/Typography', module)
   <p class="h4">h4. Bootstrap heading</p>
   <p class="h5">h5. Bootstrap heading</p>
   <p class="h6">h6. Bootstrap heading</p>`)
-
+*/
   .add('Body copy', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p></div></div></div>`)
-
+/*
   .add('Display headings', () => `<h1 class="display-1">Display 1</h1>
   <h1 class="display-2">Display 2</h1>
   <h1 class="display-3">Display 3</h1>
-  <h1 class="display-4">Display 4</h1>`)
+  <h1 class="display-4">Display 4</h1>`) 
+  */
 
   .add('ASU Headings', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1>Heading 1</h1>
   <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
@@ -124,7 +125,7 @@ storiesOf('Content/Typography', module)
   .add('Blockquotes', () => `<blockquote class="blockquote">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>`)
-
+/*
 .add('Naming a source', () => `<blockquote class="blockquote">
 <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
@@ -187,4 +188,6 @@ storiesOf('Content/Typography', module)
     <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
   </dl>
 </dd>
-</dl>`);
+</dl>`)
+*/
+;

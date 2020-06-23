@@ -74,7 +74,7 @@ storiesOf('Components/Pagination', module)
   </ul>
 </nav>
 `)
-
+/*
 .add('Sizing', () => `
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
@@ -102,7 +102,7 @@ storiesOf('Components/Pagination', module)
   </ul>
 </nav>
 `)
-
+*/
 .add('Alignment', () => `
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">

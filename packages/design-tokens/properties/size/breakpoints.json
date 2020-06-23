@@ -1,0 +1,15 @@
+{
+  "size": {
+    "breakpoints": {
+      "small": {
+        "value": "34"
+      },
+      "medium": {
+        "value": "60"
+      },
+      "large": {
+        "value": "75"
+      }
+    }
+  }
+}
