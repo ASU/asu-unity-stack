@@ -110,7 +110,7 @@ Footer - Table of Contents
   }
 }
 
-// #endorsed-footer, desktop
+// #endorsed-footer, up to desktop
 
 @include media-breakpoint-up(md) {
   #endorsed-logo img {
@@ -190,9 +190,9 @@ Footer - Table of Contents
   }
 }
 
-// #footer-columns, desktop
+// #footer-columns, up to desktop
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   #footer-columns {
     padding: $uds-size-spacing-6 0;
 

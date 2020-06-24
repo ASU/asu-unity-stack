@@ -21,7 +21,7 @@ storiesOf('Components/Sidebar', module)
           <div class="card card-foldable">
             <div class="card-header">
               <h4>
-                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">Expandable link section
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>

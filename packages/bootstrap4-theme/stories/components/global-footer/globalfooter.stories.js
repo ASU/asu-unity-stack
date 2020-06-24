@@ -628,13 +628,13 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md" id="info-column">
+          <div class="col-xl col-lg-4" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -655,7 +655,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -678,7 +678,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -701,7 +701,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -793,13 +793,13 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md" id="info-column">
+          <div class="col-xl col-lg-4" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
-            <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
+            <p class="contribute-button"><a href="#" class="btn btn-gold">Contribute</a></p>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -820,7 +820,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -843,7 +843,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -866,7 +866,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>
@@ -889,7 +889,7 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
+          <div class="col-xl col-lg-4 flex-footer">
             <div class="card card-foldable desktop-disable">
               <div class="card-header">
                 <h5>

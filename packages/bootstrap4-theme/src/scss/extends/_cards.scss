@@ -194,7 +194,7 @@ Cards - Table of Contents
         display: block;
         padding: $uds-size-spacing-2 $uds-size-spacing-4;
         text-decoration: none;
-        color: $uds-color-base-black;
+        color: $uds-color-base-gray-1;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
@@ -236,7 +236,7 @@ Cards - Table of Contents
 6. Foldable - Desktop Disable
 --------------------------------------------------------------------*/
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   .card-foldable.desktop-disable {
     border-left: 1px solid $uds-color-base-gray-5;
     .card-header {
