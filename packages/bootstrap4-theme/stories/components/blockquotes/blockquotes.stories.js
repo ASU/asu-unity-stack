@@ -2,6 +2,8 @@ import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 import blockquoteImage from './180x180.png';
 
+/* Blockquotes */
+
 storiesOf('Components/Blockquotes', module)
   .addParameters({
     happo: false,

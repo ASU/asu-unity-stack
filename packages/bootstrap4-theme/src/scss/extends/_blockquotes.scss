@@ -24,34 +24,6 @@
   background-image: url(#{$bg-quotes-image});
 }
 
-/*
- * Variables
- * @TODO - Replace with design tokens
- */
-$the-base:                    16px;
-
-$font-family-sans-serif:      Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
-$font-family-base:            $font-family-sans-serif;
-$font-size-base:              $the-base;
-
-$ws2-maroon:                  #8c1d40;
-$ws2-gold:                    #ffc627;
-$ws2-gray-darkest:            #191919; // Not using lighten() mixing
-$ws2-gray-darker:             #484848;
-$ws2-gray-dark:               #747474;
-$ws2-gray:                    #bfbfbf;
-$ws2-gray-light:              #d0d0d0;
-$ws2-gray-lighter:            #e8e8e8;
-$ws2-gray-lightest:           #fafafa;
-$text-color:                  $ws2-gray-darkest;
-$text-color-bg-dark:          $ws2-gray-lightest;
-
-$image-round-small:           180px;
-$blockquote-image-offset:     14.3625rem; // (180px + 48px offset)
-$block-indent:                4rem;
-$padding-base-vertical:       $the-base;
-$padding-base-horizontal:     $the-base;
-
 // Include alternate styling rules
 @import './alt_styling';
 
