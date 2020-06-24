@@ -69,9 +69,20 @@ const Nav = props => {
     }
   }, [focused, navList]);
 
+  const onBlurNav = useCallback(
+    e => {
+      // only change state if focus moves away from
+      // container element
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        setFocusCallBack([-1, -1, -1]);
+      }
+    },
+    [focused]
+  );
+
   return (
-    <S.Nav>
-      <ul aria-label="ASU" onKeyDown={handleKeyDown}>
+    <S.Nav className={props.mobileOpen ? "open-nav" : ""}>
+      <ul onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
         {navTree.map((item, index) => {
           const newRef = createRef();
           const subs = item.items;
@@ -139,6 +150,11 @@ const Nav = props => {
       </ul>
     </S.Nav>
   );
+};
+
+Nav.defaultProps = {
+  navTree: [],
+  mobileOpen: false,
 };
 
 const DropNav = props => {
@@ -218,10 +234,6 @@ const DropNav = props => {
       </S.DdMenu>
     </li>
   );
-};
-
-Nav.defaultProps = {
-  navTree: [],
 };
 
 DropNav.defaultProps = {

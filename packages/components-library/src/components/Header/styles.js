@@ -1,81 +1,85 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { css } from "emotion";
+import { css, injectGlobal } from "emotion";
 import Tokens from "../../theme";
 
-const mobileBreak = Tokens.ComponentHeaderBreakpointsMobile;
+const mobileBreak = Tokens.BreakpointLg;
+
+injectGlobal`
+.header-logo {
+  float: left;
+  display: inline-block;
+  margin-right: 1.5rem;
+
+  .logo-mobile {
+    display: none;
+  }
+
+  img {
+    height: 80px;
+  }
+
+  @media (max-width: ${mobileBreak}) {
+    float: none;
+
+    img {
+      float: none;
+      height: 32px;
+    }
+
+    .logo-full {
+      display: none;
+    }
+    .logo-mobile {
+      display: inline-block;
+      float: none;
+      height: 32px;
+    }
+  }
+}
+
+.header-title {
+  span {
+    font-weight: bold;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: ${mobileBreak}) {
+      display: none;
+    }
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    @media (max-width: ${mobileBreak}) {
+      font-size: 1rem;
+      display: inline;
+      line-height: -1rem;
+    }
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-size: 100%;
+} `;
 
 const Header = props => {
   return (
     <header
       className={css`
-        .header-logo {
-          float: left;
-          display: inline-block;
-          margin-right: 1.5rem;
-
-          .logo-mobile {
-            display: none;
-          }
-
-          img {
-            height: 80px;
-          }
-
-          @media (max-width: ${mobileBreak}) {
-            float: none;
-
-            img {
-              float: none;
-              height: 32px;
-            }
-
-            .logo-full {
-              display: none;
-            }
-            .logo-mobile {
-              display: inline-block;
-              float: none;
-              height: 32px;
-            }
-          }
-        }
-
-        .header-title {
-          span {
-            font-weight: bold;
-            font-size: 1rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-
-            @media (max-width: ${mobileBreak}) {
-              display: none;
-            }
-          }
-
-          h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-
-            @media (max-width: ${mobileBreak}) {
-              font-size: 1rem;
-              display: inline;
-              line-height: -1rem;
-            }
-          }
-        }
-
-        * {
-          list-style: none;
-          text-decoration: none;
-          box-sizing: border-box;
-          font-size: 100%;
-          margin: 0;
-        }
         padding: 0;
 
-        div, h1 {
+        div,
+        h1 {
           font-family: Arial, sans-serif;
         }
       `}
@@ -130,44 +134,6 @@ const PrimaryNav = props => {
             margin: 0px 32px;
           }
         }
-
-        nav.header-nav {
-          ul {
-            display: flex;
-
-            li {
-              display: inline-block;
-              position: relative;
-              margin-right: 16px;
-
-              a {
-                color: #191919;
-                display: block;
-                padding: 8px;
-                padding-bottom: 16px;
-                position: relative;
-
-                .fa {
-                  font-size: .8rem;
-                  transform: translateY(-0.1rem);
-                }
-              }
-
-              div {
-                display: none;
-              }
-
-              div.header-nav-open {
-                display: block;
-                position: absolute;
-              }
-            }
-          }
-
-          @media (max-width: ${mobileBreak}) {
-            display: none;
-          }
-        }
       `}
     >
       <div>{props.children}</div>
@@ -208,7 +174,9 @@ const IconHamburger = props => {
         }
       `}
     >
-      <span class="fa fa-bars"><span class="sr-only">Menu</span></span>
+      <span class="fa fa-bars">
+        <span class="sr-only">Menu</span>
+      </span>
     </div>
   );
 };

@@ -1,10 +1,69 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { css, cx } from "emotion";
+import { css, cx, injectGlobal } from "emotion";
+import Tokens from "../../theme";
+
+const mobileBreak = Tokens.BreakpointLg;
+
+/** Inject Global Styles */
+injectGlobal`
+  nav.header-nav {
+    ul {
+      display: flex;
+
+      li {
+        display: inline-block;
+        position: relative;
+        margin-right: 16px;
+
+        a {
+          color: #191919;
+          display: block;
+          padding: 8px;
+          padding-bottom: 16px;
+          position: relative;
+
+          .fa {
+            font-size: 0.8rem;
+            transform: translateY(-0.1rem);
+          }
+        }
+
+        div {
+          display: none;
+        }
+
+        div.header-nav-open {
+          display: block;
+          position: absolute;
+        }
+      }
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      display: none;
+
+      &.open-nav {
+        display: flex;
+
+        > ul {
+          display: flex;
+          flex-direction: column;
+
+          div.header-nav-open {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+`;
 
 const Nav = props => {
-  return <nav className={"header-nav"}>{props.children}</nav>;
+  return <nav className={cx("header-nav", props.className ? props.className : "")}>{props.children}</nav>;
 };
 
 const DdMenu = props => {
@@ -28,8 +87,10 @@ const DdMenu = props => {
 
 const IconChevronDown = props => {
   return (
-    <span class="fa fa-chevron-down"><span class="sr-only">{props.sr}</span></span>
+    <span class="fa fa-chevron-down">
+      <span class="sr-only">{props.sr}</span>
+    </span>
   );
-}
+};
 
-export { Nav, DdMenu, IconChevronDown };
+export { Nav, DdMenu, IconChevronDown};

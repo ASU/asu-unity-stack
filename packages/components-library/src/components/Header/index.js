@@ -13,7 +13,6 @@ const Header = props => {
   const [open, setOpen] = useState(false);
 
   const toggle = useCallback(() => {
-    console.log(open, 'OPEN IN CALLB ACK');
     setOpen(oldOpen => !oldOpen);
   }, [open]);
 
@@ -44,7 +43,8 @@ const Header = props => {
                 title: props.title,
                 subtitle: props.subtitle,
                 logo: props.logo,
-                width
+                width,
+                mobileOpen: open
               }}
             />
           </Fragment>
@@ -64,7 +64,7 @@ Header.defaultProps = {
   },
   title: "",
   subtitle: "",
-  mobileWidth: 990
+  loggedIn: false
 };
 
 export default Header;

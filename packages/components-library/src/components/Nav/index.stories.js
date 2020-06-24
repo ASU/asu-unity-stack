@@ -12,10 +12,10 @@ export default {
   decorators: [withA11y],
 };
 
-console.log(navTreeExample);
-
 export const base = () => (
   <Nav navTree={navTreeExample} />
 );
 
-
+export const mobileOpen = () => (
+  <Nav navTree={navTreeExample} mobileOpen={true} />
+);
