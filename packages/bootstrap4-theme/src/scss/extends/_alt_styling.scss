@@ -1,9 +1,43 @@
-/* =Alternate Element styles for 1) gray, 2) black, and 3) white --- IN PROGRESS
+
+/**
+ * element-margin-top - Set top and bottom margins for element
+ * @param (str) $type - Either inline element (in text body) or layout container (ws2-container). Defaults to inline ("").
+ * @param (int) $scale - Multiplier for the size. Defaults to 1 (for 3rem). Alt option == 2 (for 96px top and bottom spacing).
+ */
+
+/*
+ * element-margins - Generates top and bottom margins for containers
+ * @param (str) $type - Type of container. Options:
+ *   - default: Content/copy-level element (body content, inside WYSIWYG editors, etc.; Smaller margins.)
+ *   - ws2-container: Layout-level element (generally not for content body or WYSIWYG-generated content; (Larger margins)
+ * @param (int) $scale - multiples of the base px size (usually 16px). Defaults to 3 (for 3rem == 48px).
+ */
+@mixin element-margins-vertical($type: 'default', $scale: 3) {
+  @if $type == 'ws2-container' {
+    margin-top: $padding-base-vertical * $scale;
+    margin-bottom: $padding-base-vertical * $scale;
+  } @else {
+    margin-top: 0;
+    margin-bottom: $padding-base-vertical * $scale;
+  }
+}
+
+.ws2-element-spacing-entity { // 50/50 margin split - 48px
+  @include element-margins-vertical('ws2-container', 3);
+}
+
+.ws2-element-spacing-entity-full { // 50/50 margin split - 96px
+  @include element-margins-vertical('ws2-container', 6);
+}
+
+.ws2-element-spacing-inline { // all bottom - 0/96px
+  @include element-margins-vertical('', 6);
+}
+
+/* =Global alternative styling : Gray, Black backgrounds
 -------------------------------------------------------------- */
 .ws2-element-alt { // Global shell for content-element only overrides
-  // Global alt styling
-  ////////////////////////////////
-  padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5;
+  padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5; // 24px padding
   border-style: solid;
   border-width: 1px;
   // Manage border padding/margins in container
@@ -16,9 +50,11 @@
     margin-bottom: 0;
   }
 
+  ///////////////////////////////////////
   /*
    * Gray
    */
+  ///////////////////////////////////////
   &.ws2-element-alt-gray {
     color: $text-color;
     background-color: $ws2-gray-lighter;
@@ -29,9 +65,11 @@
     }
   }
 
+  //////////////////////////////////////
   /*
    * Black
    */
+  ///////////////////////////////////////
   &.ws2-element-alt-black {
     color: $text-color-bg-dark;
     background-color: $ws2-gray-darkest;
@@ -45,7 +83,7 @@
         color: $ws2-gold;
       }
     }
-    // Buttons
+    // BUTTONS
     .ws2-element-style.btn-tag { // Tag button variation
       background-color: $ws2-gray-dark;
       border-color: $ws2-gray-dark;

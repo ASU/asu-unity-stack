@@ -1,7 +1,10 @@
 /* Blockquotes */
-// Includes quotes/image styles, and testimonials
 
-@function blockquote-output($color) {
+/*
+ * blockquotes-output - Return base64-encoded string for rendering open quote.
+ * @param (str) $color - (optional) defaults to dark gray. Alt options (gold, maroon, white)
+ */
+@function blockquote-output($color: '') { // different base64-compressed colors
   @if $color == 'gold' {
     @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmYzYyNzt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
   } @else if $color == 'maroon' {
@@ -12,12 +15,19 @@
     @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzE5MTkxOTt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
   }
 }
-
+/*
+ * blockquotes-quotes - Returns background-image CSS rule
+ * @param (str) $color - desired colors (gold, maroon, white)
+ */
 @mixin blockquote-quotes($color) {
   $bg-quotes-image: blockquote-output($color);
   background-image: url(#{$bg-quotes-image});
 }
 
+/*
+ * Variables
+ * @TODO - Replace with design tokens
+ */
 $the-base:                    16px;
 
 $font-family-sans-serif:      Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
@@ -37,19 +47,22 @@ $text-color:                  $ws2-gray-darkest;
 $text-color-bg-dark:          $ws2-gray-lightest;
 
 $image-round-small:           180px;
-$blockquote-image-offset:     14.3625rem;
-$block-indent:                6rem;
+$blockquote-image-offset:     14.3625rem; // (180px + 48px offset)
+$block-indent:                4rem;
 $padding-base-vertical:       $the-base;
 $padding-base-horizontal:     $the-base;
 
-//////////////////////////////////////////
 // Include alternate styling rules
 @import './alt_styling';
+
+/* Blockquote SASS
+----------------------------------------------*/
 
 blockquote {
   border-left: none;
   font-weight: bold;
   padding-left: $block-indent;
+  max-width: 75ch;
   &.ws2-element-alt { // override alt default padding
     padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5 $padding-base-vertical*1.5 $block-indent;
   }
@@ -76,13 +89,15 @@ blockquote {
     @include  blockquote-quotes('white');
   }
   &.ws2-bq-image {
+    overflow: auto;
     img:first-of-type {
+      // Written to allow for CMSes to grab the first <img> element added into a Blockquote in a WYSIWYG.
       clip-path: circle($image-round-small/2);
       float: left;
       position: absolute;
-      margin-left: -14rem;
+      margin-left: -14.375rem; // img width + 3rem
     }
-    &:before { // quote
+    &:before { // Actual large quote
       font-family: $font-family-base;
       font-size: initial; //
       content: initial;
