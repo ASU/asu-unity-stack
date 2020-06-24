@@ -17,8 +17,8 @@ storiesOf('Components/Blockquotes', module)
       consequat</a>. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
       dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
       delenit augue duis dolore te feugait nulla facilisi.</p>
-      <p class="ws2-sig-title">Signature</p>
-      <p class="ws2-sig-byline">Sig byline</p>
+      <cite class="ws2-sig-title">Signature</cite>
+      <cite class="ws2-sig-byline">Sig byline</cite>
     </blockquote>
     <hr />
     <blockquote class="ws2-element-maroon ws2-element-style ws2-element-spacing-entity">
@@ -26,8 +26,8 @@ storiesOf('Components/Blockquotes', module)
       quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan lingues.
       It va esser tam simplic quam Occidental: in fact, it va esser Occidental. A un Angleso it va semblar un simplificat
       Angles, quam un skeptic Cambridge amico dit me que Occidental es. END TESTIMONIAL</p>
-      <p class="sig-title ws2-sig-title">Signature name</p>
-      <p class="sig-byline ws2-sig-byline">Signature byline</p>
+      <cite class="sig-title ws2-sig-title">Signature name</cite>
+      <cite class="sig-byline ws2-sig-byline">Signature byline</cite>
     </blockquote>
     <hr />
     <blockquote class="ws2-element-gold ws2-element-style ws2-element-spacing-entity">
@@ -45,8 +45,8 @@ storiesOf('Components/Blockquotes', module)
         quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan
         lingues. It va esser tam simplic quam Occidental: in fact, it va esser Occidental. A un Angleso it va semblar un
         simplificat Angles, quam un skeptic Cambridge amico dit me que Occidental es.</p>
-      <p class="ws2-sig-title">Signature name</p>
-      <p class="ws2-sig-byline">Signature byline</p>
+      <cite class="ws2-sig-title">Signature name</cite>
+      <cite class="ws2-sig-byline">Signature byline</cite>
     </blockquote>
   `)
 
@@ -58,8 +58,8 @@ storiesOf('Components/Blockquotes', module)
       consequat</a>. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
       dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
       delenit augue duis dolore te feugait nulla facilisi.</p>
-      <p class="ws2-sig-title">Signature</p>
-      <p class="ws2-sig-byline">Sig byline</p>
+      <cite class="ws2-sig-title">Signature</cite>
+      <cite class="ws2-sig-byline">Sig byline</cite>
     </blockquote>
     <hr />
     <blockquote class="ws2-element-maroon ws2-element-style ws2-element-alt ws2-element-alt-gray ws2-element-spacing-entity-full">
@@ -67,8 +67,8 @@ storiesOf('Components/Blockquotes', module)
       quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan lingues.
       It va esser tam simplic quam Occidental: in fact, it va esser Occidental. A un Angleso it va semblar un simplificat
       Angles, quam un skeptic Cambridge amico dit me que Occidental es. END TESTIMONIAL</p>
-      <p class="sig-title ws2-sig-title">Signature name</p>
-      <p class="sig-byline ws2-sig-byline">Signature byline</p>
+      <cite class="sig-title ws2-sig-title">Signature name</cite>
+      <cite class="sig-byline ws2-sig-byline">Signature byline</cite>
     </blockquote>
     <hr />
     <blockquote class="ws2-bq ws2-bq-image ws2-element-style ws2-element-gray ws2-element-alt ws2-element-alt-gray ws2-element-spacing-entity-full">
@@ -79,8 +79,8 @@ storiesOf('Components/Blockquotes', module)
         quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan
         lingues. It va esser tam simplic quam Occidental: in fact, it va esser Occidental. A un Angleso it va semblar un
         simplificat Angles, quam un skeptic Cambridge amico dit me que Occidental es.</p>
-      <p class="ws2-sig-title">Signature name</p>
-      <p class="ws2-sig-byline">Signature byline</p>
+      <cite class="ws2-sig-title">Signature name</cite>
+      <cite class="ws2-sig-byline">Signature byline</cite>
     </blockquote>
   `)
 
@@ -92,8 +92,8 @@ storiesOf('Components/Blockquotes', module)
       consequat</a>. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
       dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
       delenit augue duis dolore te feugait nulla facilisi.</p>
-      <p class="ws2-sig-title">Signature</p>
-      <p class="ws2-sig-byline">Sig byline</p>
+      <cite class="ws2-sig-title">Signature</cite>
+      <cite class="ws2-sig-byline">Sig byline</cite>
     </blockquote>
     <blockquote class="ws2-element-gold ws2-element-style ws2-element-alt ws2-element-alt-black ws2-element-spacing-inline">
       <p>Blockquote Gold.<br>Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam
@@ -109,8 +109,8 @@ storiesOf('Components/Blockquotes', module)
         quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan
         lingues. It va esser tam simplic quam Occidental: in fact, it va esser Occidental. A un Angleso it va semblar un
         simplificat Angles, quam un skeptic Cambridge amico dit me que Occidental es.</p>
-      <p class="ws2-sig-title">Signature name</p>
-      <p class="ws2-sig-byline">Signature byline</p>
+      <cite class="ws2-sig-title">Signature name</cite>
+      <cite class="ws2-sig-byline">Signature byline</cite>
     </blockquote>
   `)
 

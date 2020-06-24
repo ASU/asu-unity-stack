@@ -89,10 +89,9 @@ blockquote {
     }
   }
   .ws2-sig-byline {
+    clear: left;
+    display: block;
     font-weight: normal;
     padding-left: 1.5em;
-  }
-  .ws2-sig-title ~ .ws2-sig-byline { // offset sig-title bottom margin
-    margin-top: -1em;
   }
 }
