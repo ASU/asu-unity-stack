@@ -10,3 +10,32 @@
 .nav-tabs .nav-link.active {
   border-bottom: $uds-component-tab-active-border-bottom;
 }
+.mobile-tabs .nav-tabs {
+  flex-wrap: inherit;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  /*
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  */
+}
+.mobile-tabs .nav-tabs::-webkit-scrollbar {
+  /*display: none;*/
+}
+.mobile-tabs {
+  position:relative;
+}
+.mobile-tabs .scroll::-webkit-scrollbar {
+  display: none;
+}
+.mobile-tabs .nav-tabs::after {
+  content: "";
+  height:100%;
+  position:absolute;
+  width:10%;
+  right:0;
+  top:0;
+  background: rgba(0,0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+}
