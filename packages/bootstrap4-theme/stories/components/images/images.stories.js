@@ -1,0 +1,40 @@
+import { document, console } from 'global';
+import { storiesOf } from '@storybook/html';
+
+// Images in Bootstrap are made responsive with .img-fluid. max-width: 100%; and height: auto; are applied to the image so that it scales with the parent element.
+
+// Random photos sourced from Unsplash: https://source.unsplash.com
+
+// TODO Consider employing JS to enforce 255 character max for captions.
+
+storiesOf('Components/Images', module)
+  .addParameters({
+    happo: false,
+  })
+
+.add('Large image, no caption', () => `
+<img src="https://source.unsplash.com/random/800" class="uds-img img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
+`)
+
+.add('Large image, caption', () => `
+<figure class="figure uds-figure">
+  <img src="https://source.unsplash.com/random/800" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>
+  <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
+</figure>
+<p>Captions can be provided by delivering images inside a figure tag along with a figcaption tag. A figcaption should provide a summary or additional information related to the image. You must still provide alt text. Web Standards captions are limited to 255 chars.</p>
+`)
+
+.add('Large images, dropshadow', () => `
+<img src="https://source.unsplash.com/random/1920" class="uds-img uds-img-drop-shadow img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
+
+<br><br>
+
+<figure class="figure uds-img-drop-shadow">
+  <img src="https://source.unsplash.com/random/1920" class="uds-img figure-img img-fluid" alt="Random image with caption and dropshadow. REPLACE with appropriate alt text."></img>
+  <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</span></figcaption>
+</figure>
+
+<p>Don't forget <a href="https://webaccessibility.asu.edu/articles/images">image accessibility</a>.</p>
+`)
+
+; // close

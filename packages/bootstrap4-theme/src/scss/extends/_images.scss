@@ -1,0 +1,32 @@
+// ASU Design System Image styles without Bootstrap variables to override.
+
+// Standalone, large image, no caption
+.uds-img {
+  border: 1px solid $uds-color-base-gray-5;
+  opacity: 1;
+  margin-bottom: $uds-size-spacing-0;
+  max-width: $uds-breakpoint-xxxl; // 1920px
+}
+
+// Large image, with caption
+figure {
+  .uds-figure-caption {
+    border: 1px solid $uds-color-base-gray-5;
+    border-top: none;
+    opacity: 1;
+    background: $uds-color-background-white 0% 0% no-repeat padding-box;
+    padding: 0.75rem;
+    font-size: $uds-size-font-tiny;
+    max-width: $uds-breakpoint-xxxl; // 1920px
+  }
+  .uds-caption-text {
+    display: block;
+    max-width: 75ch;
+  }
+}
+
+// Drop shadow for with and without caption
+.uds-img-drop-shadow {
+  box-shadow: $uds-size-spacing-0 $uds-size-spacing-1 $uds-size-spacing-2
+    rgba(25, 25, 25, 0.2);
+}
