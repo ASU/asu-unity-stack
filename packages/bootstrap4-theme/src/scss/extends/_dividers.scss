@@ -1,9 +1,25 @@
-.content-divider {
+hr {
   border-top: 1px solid #d0d0d0;
+
+  &.copy-divider {
+    margin-left: 0;
+    max-width: 256px;
+    border-top: 8px solid #ffc627;
+  }
 }
 
-.copy-divider {
-  margin-left: 0;
-  max-width: 256px;
-  border-top: 8px solid #ffc627;
+.morse-code {
+  opacity: 1;
+
+  &-white {
+    background: transparent
+      url('../src/img/background-patterns/MorseCode-V02-White_V02.png') 0% 0%
+      repeat padding-box;
+  }
+
+  &-black {
+    background: transparent
+      url('../src/img/background-patterns/200506-MorseCode-V01-Black_V02.png')
+      0% 0% repeat padding-box;
+  }
 }
