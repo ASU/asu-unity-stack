@@ -1,52 +1,46 @@
-$morse-code-white: url(../src/img/background-patterns/MorseCodeWhite.png);
-$morse-code-black: url(../src/img/background-patterns/MorseCodeBlack.png);
-$network-black: url(../src/img/background-patterns/NetworkBlack.png);
-$network-white: url(../src/img/background-patterns/NetworkWhite.png);
-$topo-black: url(../src/img/background-patterns/TopoPatternBlack.png);
-$topo-white: url(../src/img/background-patterns/TopoPatternWhite.png);
-
 hr {
-  border-top: 1px solid #d0d0d0;
+  border-top: $horizonatal-rule-border;
 
   &.copy-divider {
-    margin-left: 0;
-    max-width: 256px;
-    border-top: 8px solid #ffc627;
+    margin-left: $copy-divider-margin;
+    max-width: $copy-divider-width;
+    border-top: $copy-divider-border;
   }
 }
 
-.morse-code {
-  opacity: 1;
+.bg {
+  background: $bg;
+  opacity: $bg-opacity;
 
-  &-white {
-    background: transparent $morse-code-white 0% 0% repeat padding-box;
+  &.morse-code {
+    &-white {
+      background-image: $morse-code-white;
+    }
+
+    &-black {
+      background-image: $morse-code-black;
+    }
   }
 
-  &-black {
-    background: transparent $morse-code-black 0% 0% repeat padding-box;
-  }
-}
+  &.network {
+    &-white {
+      background-image: $network-white;
+    }
 
-.network {
-  opacity: 1;
-
-  &-white {
-    background: transparent $network-white 0% 0% repeat padding-box;
+    &-black {
+      background-image: $network-black;
+    }
   }
 
-  &-black {
-    background: transparent $network-black 0% 0% repeat padding-box;
-  }
-}
+  &.topo {
+    opacity: 1;
 
-.topo {
-  opacity: 1;
+    &-white {
+      background-image: $topo-black;
+    }
 
-  &-white {
-    background: transparent $topo-white 0% 0% repeat padding-box;
-  }
-
-  &-black {
-    background: transparent $topo-black 0% 0% repeat padding-box;
+    &-black {
+      background-image: $topo-white;
+    }
   }
 }
