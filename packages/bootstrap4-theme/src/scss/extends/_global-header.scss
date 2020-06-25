@@ -1,0 +1,26 @@
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+
+nav.navbar {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 0;
+}
+
+.navbar-brand img {
+  height: 80px;
+}
+
+.navbar-nav .active {
+  border-bottom: 5px solid #ffc627;
+}
+
+.title span {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+}
