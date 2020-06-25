@@ -33,7 +33,7 @@
       },
       "light": {
         "base": {
-          "color": "{color.base.gray.6.value}"
+          "color": "{color.base.gray.2.value}"
         },
         "active": {
           "color": "{color.brand.gold.value}"
@@ -42,7 +42,7 @@
           "color": "{color.brand.gold.value}"
         },
         "visited": {
-          "color": "{color.base.gray.6.value}"
+          "color": "{color.base.gray.2.value}"
         }
       }
     }
