@@ -2,16 +2,16 @@
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
 
 $white: $uds-color-base-white;
-$gray-1: $uds-color-base-gray-1;
-$gray-2: $uds-color-base-gray-2;
-$gray-3: $uds-color-base-gray-3;
+$gray-1: $uds-color-base-gray-7;
+$gray-2: $uds-color-base-gray-6;
+$gray-3: $uds-color-base-gray-5;
 $gray-4: $uds-color-base-gray-4;
-$gray-5: $uds-color-base-gray-5;
-$gray-6: $uds-color-base-gray-6;
-$gray-7: $uds-color-base-gray-7;
+$gray-5: $uds-color-base-gray-3;
+$gray-6: $uds-color-base-gray-2;
+$gray-7: $uds-color-base-gray-1;
 $black: $uds-color-base-black;
 
-$body-color: $uds-color-base-gray-1;
+$body-color: $uds-color-base-gray-7;
 
 $grays: ();
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -31,8 +31,8 @@ $grays: map-merge(
 $gold: $uds-color-base-gold;
 $maroon: $uds-color-base-maroon;
 $maroon-alt-darker: $uds-color-base-darkmaroon;
-$dark: $uds-color-base-gray-1;
-$light: $uds-color-base-gray-6;
+$dark: $uds-color-base-gray-7;
+$light: $uds-color-base-gray-2;
 $blue: $uds-color-base-blue;
 $green: $uds-color-base-green;
 $orange: $uds-color-base-orange;
@@ -41,8 +41,8 @@ $bluefocus: $uds-color-base-bluefocus;
 $darkgold: $uds-color-base-darkgold;
 $darkmaroon: $uds-color-base-darkmaroon;
 
-$gray-3-alt-alpha: $uds-color-base-gray-3-alt-alpha;
-$gray-3-alt: $uds-color-base-gray-3-alt;
+$gray-3-alt-alpha: $uds-color-base-gray-5-alt-alpha;
+$gray-3-alt: $uds-color-base-gray-5-alt;
 
 $colors: () !default;
 

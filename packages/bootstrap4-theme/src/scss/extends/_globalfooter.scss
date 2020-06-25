@@ -14,7 +14,7 @@ Footer - Table of Contents
 --------------------------------------------------------------------*/
 
 @mixin footer-links {
-  color: $uds-color-base-gray-6;
+  color: $uds-color-base-gray-2;
   line-height: $uds-size-spacing-3;
   text-decoration: none;
 
@@ -60,7 +60,7 @@ Footer - Table of Contents
 
 #wrapper-endorsed-footer {
   a {
-    color: $uds-color-base-gray-6;
+    color: $uds-color-base-gray-2;
   }
 }
 
@@ -78,7 +78,7 @@ Footer - Table of Contents
 }
 
 #wrapper-footer-colophon {
-  background-color: $uds-color-base-gray-6-alt;
+  background-color: $uds-color-base-gray-2-alt;
   a {
     margin-right: $uds-size-spacing-3;
     text-decoration: none;
@@ -168,7 +168,7 @@ Footer - Table of Contents
       border-top: 1px solid $uds-color-divider-lighter;
 
       a {
-        color: $uds-color-base-gray-6;
+        color: $uds-color-base-gray-2;
         padding: $uds-size-spacing-3 0;
         text-decoration: none;
 
