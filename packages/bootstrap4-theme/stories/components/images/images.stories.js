@@ -13,28 +13,63 @@ storiesOf('Components/Images', module)
   })
 
 .add('Large image, no caption', () => `
-<img src="https://source.unsplash.com/random/800" class="uds-img img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
+<div class="uds-img">
+  <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
+</div>
 `)
 
 .add('Large image, caption', () => `
-<figure class="figure uds-figure">
-  <img src="https://source.unsplash.com/random/800" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>
-  <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
-</figure>
-<p>Captions can be provided by delivering images inside a figure tag along with a figcaption tag. A figcaption should provide a summary or additional information related to the image. You must still provide alt text. Web Standards captions are limited to 255 chars.</p>
+<div class="uds-img">
+  <figure class="figure uds-figure">
+    <img src="https://source.unsplash.com/random/800x600" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>
+    <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
+  </figure>
+</div>
+<p>Captions are provided by delivering images inside a figure tag along with a figcaption tag. A figcaption should provide a summary or additional information related to the image. You must still provide alt text. Web Standards captions are limited to 255 chars.</p>
 `)
 
 .add('Large images, dropshadow', () => `
-<img src="https://source.unsplash.com/random/1920" class="uds-img uds-img-drop-shadow img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
+
+<div class="uds-img uds-img-drop-shadow">
+  <img src="https://source.unsplash.com/random/800x600" class="uds-img XXuds-img-drop-shadow img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
+</div>
 
 <br><br>
 
-<figure class="figure uds-img-drop-shadow">
-  <img src="https://source.unsplash.com/random/1920" class="uds-img figure-img img-fluid" alt="Random image with caption and dropshadow. REPLACE with appropriate alt text."></img>
-  <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</span></figcaption>
-</figure>
+<div class="uds-img uds-img-drop-shadow">
+  <figure class="figure uds-figure XXuds-img-drop-shadow">
+    <img src="https://source.unsplash.com/random/800x600" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>
+    <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
+  </figure>
+</div>
 
 <p>Don't forget <a href="https://webaccessibility.asu.edu/articles/images">image accessibility</a>.</p>
 `)
 
+.add('Small images', () => `
+
+<p>The .uds-img element takes up 100% of its container. For small images, ensure
+the .uds-img element is contained by an appropriately sized container. These
+can also be employed for placement. Note: inline CSS in the examples here is
+used to serve as an example, not a recommendation. Please use the best practices
+of your environment, context and layout strategy.</p>
+
+<div style="width:25%;">
+  <div class="uds-img">
+    <img src="https://source.unsplash.com/random/800x600" class="uds-img img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
+  </div>
+</div>
+
+<br><br>
+
+<div style="width:25%;">
+  <div class="uds-img uds-img-drop-shadow">
+    <figure class="figure uds-figure">
+      <img src="https://source.unsplash.com/random/800x600" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>
+      <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+`)
 ; // close
