@@ -66,16 +66,16 @@
           "value": "{color.background.dark.value}"
         },
         "color": {
-          "value": "{color.base.gray.6.value}"
+          "value": "{color.base.gray.2.value}"
         },
         "li-before-color": {
-          "value": "{color.base.gray.6.value}"
+          "value": "{color.base.gray.2.value}"
         },
         "gold-color": {
           "value": "{color.brand.gold.value}"
         },
         "steplist-background-color": {
-          "value": "{color.base.gray.6.value}"
+          "value": "{color.base.gray.2.value}"
         },
         "steplist-color": {
           "value": "{color.background.dark.value}"
