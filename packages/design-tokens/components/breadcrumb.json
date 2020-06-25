@@ -30,7 +30,7 @@
         "value": "{color.base.gray.4.value}"
       },
       "active-color": {
-        "value": "{color.base.gray.1.value}"
+        "value": "{color.base.gray.7.value}"
       },
       "divider": {
         "value": "quote('/')"

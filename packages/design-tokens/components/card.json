@@ -35,16 +35,16 @@
             "value": "100%"
           },
           "height": {
-            "value" : "12.5rem"
+            "value": "12.5rem"
           },
           "height-sm": {
-            "value" : "10rem"
+            "value": "10rem"
           },
           "height-lg": {
-            "value" : "15rem"
+            "value": "15rem"
           },
           "object-fit": {
-            "value" : "cover"
+            "value": "cover"
           }
         },
         "icon-top": {
@@ -117,10 +117,10 @@
           }
         },
         "footer-link": {
-          "padding" : {
+          "padding": {
             "value": "{size.spacing.2.value} {size.spacing.4.value} {size.spacing.2.value} {size.spacing.4.value}"
           },
-          "padding-sm" : {
+          "padding-sm": {
             "value": "{size.spacing.2.value} {size.spacing.2.value} {size.spacing.2.value} {size.spacing.2.value}"
           },
           "border-top": {
@@ -169,7 +169,7 @@
       },
       "event": {
         "base": {
-          "color": "{color.base.gray.6.value}"
+          "color": "{color.base.gray.2.value}"
         },
         "active": {
           "color": "{color.base.gold.value}"
@@ -178,7 +178,7 @@
           "color": "{color.base.gold.value}"
         },
         "visited": {
-          "color": "{color.base.gray.6.value}"
+          "color": "{color.base.gray.2.value}"
         }
       }
     }

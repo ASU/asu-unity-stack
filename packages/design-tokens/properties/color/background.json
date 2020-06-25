@@ -6,11 +6,11 @@
         "comment": "Background - White"
       },
       "gray": {
-        "value": "{color.base.gray.6.value}",
+        "value": "{color.base.gray.2.value}",
         "comment": "Background - Gray"
       },
       "dark": {
-        "value": "{color.base.gray.1.value}",
+        "value": "{color.base.gray.7.value}",
         "comment": "Background - Dark"
       },
       "success": {

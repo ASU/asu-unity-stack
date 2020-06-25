@@ -179,7 +179,7 @@ Cards - Table of Contents
 --------------------------------------------------------------------*/
 
 .card-foldable {
-  border-color: $uds-color-base-gray-5;
+  border-color: $uds-color-base-gray-3;
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
@@ -194,14 +194,14 @@ Cards - Table of Contents
         display: block;
         padding: $uds-size-spacing-2 $uds-size-spacing-4;
         text-decoration: none;
-        color: $uds-color-base-gray-1;
+        color: $uds-color-base-gray-7;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
 
         &:hover {
-          background-color: $uds-color-base-gray-7;
+          background-color: $uds-color-base-gray-1;
         }
 
         svg.fa-chevron-up {
@@ -215,12 +215,12 @@ Cards - Table of Contents
       }
     }
     + .card-body {
-      border-top: 1px solid $uds-color-base-gray-5;
+      border-top: 1px solid $uds-color-base-gray-3;
     }
   }
 
   .card-body {
-    background-color: $uds-color-base-gray-7;
+    background-color: $uds-color-base-gray-1;
 
     > p:first-child {
       margin-top: $uds-size-spacing-2;
@@ -238,7 +238,7 @@ Cards - Table of Contents
 
 @include media-breakpoint-up(lg) {
   .card-foldable.desktop-disable {
-    border-left: 1px solid $uds-color-base-gray-5;
+    border-left: 1px solid $uds-color-base-gray-3;
     .card-header {
       h4 a {
         padding-top: $uds-size-spacing-4;

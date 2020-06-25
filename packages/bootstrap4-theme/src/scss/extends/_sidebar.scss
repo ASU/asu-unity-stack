@@ -39,10 +39,10 @@ Sidebar Navigation
   }
 
   > .nav-link {
-    border: 1px solid $uds-color-base-gray-6;
+    border: 1px solid $uds-color-base-gray-2;
     padding: $uds-size-spacing-2 $uds-size-spacing-4;
     overflow: hidden;
-    color: $uds-color-base-gray-1;
+    color: $uds-color-base-gray-7;
 
     @include like-an-h4;
 
@@ -52,7 +52,7 @@ Sidebar Navigation
   }
 
   .card-foldable {
-    border: 1px solid $uds-color-base-gray-6;
+    border: 1px solid $uds-color-base-gray-2;
 
     .card-header,
     .card-body {
