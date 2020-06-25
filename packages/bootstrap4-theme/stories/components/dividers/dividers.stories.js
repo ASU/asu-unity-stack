@@ -18,7 +18,11 @@ storiesOf('Components/Dividers', module)
 </div>`)
 
 .add('Pattern dividers and background patterns', () => `
-<div class="container"><h2><span class="highlight-gold">Pattern dividers and background patterns</span></h2></div>
+<div class="container p-5"><h2><span class="highlight-gold">Pattern dividers and background patterns</span></h2></div>
 <div style="height: 250px" class="container-fluid morse-code-white"></div>
 <div style="height: 250px" class="container-fluid morse-code-black"></div>
+<div style="height: 250px" class="container-fluid topo-white"></div>
+<div style="height: 250px" class="container-fluid topo-black"></div>
+<div style="height: 250px" class="container-fluid network-white"></div>
+<div style="height: 250px" class="container-fluid network-black"></div>
 `)
