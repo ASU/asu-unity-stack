@@ -1,30 +1,29 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
-  "repository": "git://github.com/ASU/asu-unity-stack.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/bootstrap4-theme"
+  },
   "publishConfig": {
     "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
+    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "storybook": "start-storybook -p 9009",
+    "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook",
     "build": "gulp",
     "prepare": "yarn run build"
   },
-  "peerDependencies": {
-    "@fortawesome/fontawesome-free": "^5.9.0",
-    "jquery": "1.9.1 - 3",
-    "popper.js": "^1.16.0"
-  },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^0.0.1",
+    "@asu-design-system/design-tokens": "^1.0.0-beta",
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@storybook/addon-google-analytics": "^5.1.9",
     "@storybook/addon-jest": "^5.1.9",

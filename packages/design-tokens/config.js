@@ -1,5 +1,7 @@
 const StyleDictionary = require("style-dictionary");
-
+const fs = require("fs-extra");
+const path = require("path");
+// one more test
 const buildPath = "build/";
 
 // Define a custom trasnform REM to PX
@@ -8,6 +10,23 @@ StyleDictionary.registerTransform({
   type: "value",
   matcher: prop => prop.attributes.category === "size",
   transformer: prop => `${parseInt(prop.value) * 16}px`,
+});
+
+StyleDictionary.registerAction({
+  name: "copy_fonts",
+  do: function (dictionary, config) {
+    console.log("Copying FontAwesome");
+    fs.copySync(
+      path.dirname(
+        require.resolve("@fortawesome/fontawesome-free/package.json")
+      ),
+      config.buildPath + "assets/fontawesome"
+    );
+  },
+  undo: function (dictionary, config) {
+    console.log("Cleaning assets directory");
+    fs.removeSync(config.buildPath + "assets/fontawesome");
+  },
 });
 
 const propertiesToCTI = {
@@ -59,7 +78,7 @@ module.exports = {
     "attribute/cti": CTITransform,
   },
   platforms: {
-    "js": {
+    js: {
       transformGroup: "js",
       buildPath: buildPath,
       files: [
@@ -68,20 +87,21 @@ module.exports = {
           format: "javascript/module",
         },
       ],
+      actions: ["copy_fonts"],
     },
 
-    "es6": {
+    es6: {
       transformGroup: "js",
       buildPath: buildPath,
       files: [
         {
           destination: "es6/tokens.js",
-          format: "javascript/es6"
-        }
-      ]
+          format: "javascript/es6",
+        },
+      ],
     },
 
-    "css": {
+    css: {
       transformGroup: "css",
       buildPath: buildPath,
       prefix: "uds",
@@ -93,7 +113,7 @@ module.exports = {
       ],
     },
 
-    "scss": {
+    scss: {
       transformGroup: "scss",
       buildPath: buildPath + "scss/",
       prefix: "uds",

@@ -1,0 +1,87 @@
+// ASU Design System Hero styles without Bootstrap variables to override.
+
+// Shared styling between md and lg heroes.
+@mixin container-md-and-lg {
+  width: $uds-component-heroes-container-md-and-lg-width-percent;
+  .uds-hero-text {
+    line-height: $uds-component-heroes-container-md-and-lg-uds-hero-text-line-height;
+  }
+}
+
+.uds-hero {
+  background-size: $uds-component-heroes-uds-hero-background-size;
+  background-position: $uds-component-heroes-uds-hero-background-position;
+  width: $uds-component-heroes-uds-hero-width-percent;
+  height: $uds-component-heroes-uds-hero-height;
+  display: $uds-component-heroes-uds-hero-display;
+  max-width: $uds-component-heroes-uds-hero-max-width; // 1920px
+
+  .uds-hero-container {
+    width: $uds-component-heroes-uds-hero-uds-hero-container-width-px;
+    display: $uds-component-heroes-uds-hero-uds-hero-container-display;
+    flex-direction: $uds-component-heroes-uds-hero-uds-hero-container-flex-direction;
+    align-items: $uds-component-heroes-uds-hero-uds-hero-container-align-items;
+    margin: $uds-component-heroes-uds-hero-uds-hero-container-margin;
+    h1 {
+      margin-left: $uds-component-heroes-uds-hero-uds-hero-container-h-1-margin-left;
+    }
+    .uds-hero-text {
+      margin-left: $uds-component-heroes-uds-hero-uds-hero-container-uds-hero-text-margin-left;
+    }
+    p {
+      color: $uds-component-heroes-uds-hero-uds-hero-container-p-color;
+      font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+      margin-bottom: $uds-component-heroes-uds-hero-uds-hero-container-p-margin-bottom;
+    }
+  }
+
+  &.uds-hero-sm {
+    height: $uds-component-heroes-uds-hero-uds-hero-sm-height; // 256px
+    .container.uds-hero-container {
+      width: $uds-component-heroes-uds-hero-uds-hero-sm-container-uds-hero-container-width-percent;
+    }
+  }
+  &.uds-hero-md {
+    height: $uds-component-heroes-uds-hero-uds-hero-md-height; // 512px
+    .container {
+      @include container-md-and-lg();
+    }
+  }
+  &.uds-hero-lg {
+    height: $uds-component-heroes-uds-hero-uds-hero-lg-height; // 684px
+    .container.uds-hero-container {
+      @include container-md-and-lg();
+    }
+  }
+}
+
+// Media Queries
+.uds-hero {
+  .uds-hero-container {
+    // Mobile adjustments.
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-container-media-breakpoint) {
+      margin-bottom: $uds-component-heroes-media-uds-hero-uds-hero-container-media-margin-bottom;
+      h1 {
+        max-width: $uds-component-heroes-media-uds-hero-uds-hero-container-media-h-1-max-width-percent;
+      }
+      p {
+        display: $uds-component-heroes-media-uds-hero-uds-hero-container-media-p-display;
+      }
+    }
+  }
+
+  &.uds-hero-sm {
+    // Adjustment to sm hero spacing for mobile.
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-sm-breakpoint) {
+      padding-left: $uds-component-heroes-media-uds-hero-uds-hero-sm-padding-left;
+      padding-bottom: $uds-component-heroes-media-uds-hero-uds-hero-sm-padding-bottom;
+    }
+  }
+
+  &.uds-hero-lg {
+    // Snap lg hero to md at 1400px.
+    @media screen and (max-width: $uds-component-heroes-media-uds-hero-uds-hero-lg-breakpoint) {
+      height: $uds-component-heroes-media-uds-hero-uds-hero-lg-height; // 512px
+    }
+  }
+}
