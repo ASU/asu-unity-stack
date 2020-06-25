@@ -1,0 +1,78 @@
+/*------------------------------------------------------------------
+Sidebar Navigation
+
+1. Component Mixins
+2. Sidebar
+-------------------------------------------------------------------*/
+
+@mixin like-an-h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.037rem;
+}
+
+/*------------------------------------------------------------------
+2. Sidebar
+--------------------------------------------------------------------*/
+
+.sidebar {
+  .nav-link {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.active {
+      text-decoration: none;
+    }
+
+    &.active:after {
+      content: '';
+      position: relative;
+      display: block;
+      margin-top: $uds-size-spacing-1;
+      height: $uds-size-spacing-1;
+      width: 100%;
+      background-color: $uds-color-base-gold;
+      text-decoration: none;
+    }
+  }
+
+  > .nav-link {
+    border: 1px solid $uds-color-base-gray-6;
+    padding: $uds-size-spacing-2 $uds-size-spacing-4;
+    overflow: hidden;
+    color: $uds-color-base-gray-1;
+
+    @include like-an-h4;
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+  }
+
+  .card-foldable {
+    border: 1px solid $uds-color-base-gray-6;
+
+    .card-header,
+    .card-body {
+      background-color: transparent;
+    }
+
+    .card-header ~ .card-body {
+      border-top: 0;
+    }
+
+    .card-body > .nav-link {
+      padding: 0 $uds-size-spacing-4 0 $uds-size-spacing-3;
+
+      + .nav-link {
+        padding-top: $uds-size-spacing-2;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+  }
+}
