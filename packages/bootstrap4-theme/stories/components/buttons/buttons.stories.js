@@ -15,8 +15,8 @@ storiesOf('Components/Buttons', module)
 <button type="button" class="btn btn-gold btn-md">Medium button</button> <button type="button" class="btn btn-maroon btn-md">Medium button</button><hr/><button type="button" class="btn btn-gold btn-sm">Small button</button> <button type="button" class="btn btn-maroon btn-sm">Small button</button><hr/>
 <button type="button" class="btn btn-gold btn-lg btn-block">Block level button</button> <button type="button" class="btn btn-maroon btn-lg btn-block">Block level button</button></div></div>`)
 
-.add('Button with icon', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><a href="#" class="btn btn-gold" role="button"><i class="fas fa-rocket"></i> Gold button</a>
-<a href="#" class="btn btn-maroon" role="button" ><i class="fas fa-rocket"></i> Maroon button</a></div></div></div>`)
+.add('Button with icon', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><a href="#" class="btn btn-gold" role="button"><span class="fas fa-rocket"></span> Gold button</a>
+<a href="#" class="btn btn-maroon" role="button" ><span class="fas fa-rocket"></span> Maroon button</a></div></div></div>`)
 
 /*.add('Active state', () => `<a href="#" class="btn btn-gold active" role="button" aria-pressed="true">Gold link</a>
 <a href="#" class="btn btn-maroon active" role="button" aria-pressed="true">Link</a>`)*/

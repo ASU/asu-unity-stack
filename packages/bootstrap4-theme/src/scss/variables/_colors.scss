@@ -105,6 +105,11 @@ $link-decoration: underline;
 $link-hover-color: $maroon;
 $link-hover-decoration: none;
 
+:focus {
+   outline: 0;
+   box-shadow: 0 0 8px #00BAFF !important;
+}
+
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage: 15%;
 
@@ -112,18 +117,6 @@ $link-hover-decoration: none;
 // $stretched-link-z-index: 1;
 
 $card-cap-bg:                       rgba($white, .03);
-
-$pagination-color:                  $dark;
-$pagination-border-width:           0;
-$pagination-border-color:           $white;
-$pagination-outline:                0;
-$pagination-line-height:            1;
-
-$pagination-focus-outline:          0;
-
-$pagination-active-color:           $white;
-$pagination-active-bg:              $maroon;
-$pagination-active-border-color:    $maroon;
 
 $nav-tabs-link-color:               $dark;
 $nav-tabs-border-width:             1px;
