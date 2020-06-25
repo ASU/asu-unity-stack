@@ -23,4 +23,36 @@ nav.navbar {
 
 .title h1 {
   font-size: 1.5rem;
+  margin-top: 0;
+}
+
+/* Breakpoint at which the mobile menu is triggered */
+@media (max-width: 991.98px) {
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar > .container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .navbar-brand img {
+    content: url('https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png');
+    height: 32px;
+  }
+
+  .title {
+    font-size: 1rem;
+    line-height: -1rem;
+  }
+
+  .title span {
+    display: none;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid #cccccc;
+  }
 }
