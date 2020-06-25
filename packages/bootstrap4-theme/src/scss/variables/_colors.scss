@@ -1,7 +1,7 @@
 // ASU Brand Standard Colors
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
 
-$black: $uds-color-base-black;
+$white: $uds-color-base-white;
 $gray-1: $uds-color-base-gray-1;
 $gray-2: $uds-color-base-gray-2;
 $gray-3: $uds-color-base-gray-3;
@@ -9,7 +9,7 @@ $gray-4: $uds-color-base-gray-4;
 $gray-5: $uds-color-base-gray-5;
 $gray-6: $uds-color-base-gray-6;
 $gray-7: $uds-color-base-gray-7;
-$white: $uds-color-base-white;
+$black: $uds-color-base-black;
 
 $body-color: $uds-color-base-gray-1;
 
@@ -80,7 +80,7 @@ $theme-colors: map-merge(
     'warning': $warning,
     'danger': $danger,
     'light': $light,
-    'gray' : $gray-4,
+    'gray': $gray-4,
     'dark': $dark,
     'gray-1': $gray-1,
     'gray-2': $gray-2,
@@ -106,8 +106,8 @@ $link-hover-color: $maroon;
 $link-hover-decoration: none;
 
 :focus {
-   outline: 0;
-   box-shadow: 0 0 8px #00BAFF !important;
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
 }
 
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
@@ -116,11 +116,11 @@ $link-hover-decoration: none;
 // $stretched-link-pseudo-element: after;
 // $stretched-link-z-index: 1;
 
-$card-cap-bg:                       rgba($white, .03);
+$card-cap-bg: rgba($white, 0.03);
 
-$nav-tabs-link-color:               $dark;
-$nav-tabs-border-width:             1px;
-$nav-tabs-border-color:             $gray-3;
-$nav-tabs-border-radius:            0;
-$nav-tabs-link-active-color:        $maroon;
+$nav-tabs-link-color: $dark;
+$nav-tabs-border-width: 1px;
+$nav-tabs-border-color: $gray-3;
+$nav-tabs-border-radius: 0;
+$nav-tabs-link-active-color: $maroon;
 $nav-tabs-link-active-border-color: $maroon;
