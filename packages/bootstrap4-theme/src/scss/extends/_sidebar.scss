@@ -18,8 +18,14 @@ Sidebar Navigation
 
 .sidebar {
   .nav-link {
+    color: $uds-color-base-gray-7;
+
     &:hover {
       text-decoration: underline;
+    }
+
+    &:visited {
+      color: $uds-color-base-gray-7;
     }
 
     &.active {
