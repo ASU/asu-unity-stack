@@ -196,21 +196,22 @@ Footer - Table of Contents
   #footer-columns {
     padding: $uds-size-spacing-6 0;
 
+    h5 {
+      margin: 0 0 $uds-size-spacing-3 0;
+    }
+
     .flex-footer {
       .card-header {
         border-top: 0;
+        padding: 0;
 
-        h5 {
-          margin: $uds-size-spacing-2 0 $uds-size-spacing-3 0;
+        a {
+          padding: 0;
+          cursor: default;
+        }
 
-          a {
-            padding: 0;
-            cursor: default;
-          }
-
-          span {
-            display: none;
-          }
+        span {
+          display: none;
         }
       }
 

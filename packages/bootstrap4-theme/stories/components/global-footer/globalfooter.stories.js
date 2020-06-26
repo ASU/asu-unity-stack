@@ -140,7 +140,7 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md-3" id="info-column">
+          <div class="col-lg-3" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
@@ -195,7 +195,7 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md-3" id="info-column">
+          <div class="col-lg-3" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
@@ -271,14 +271,14 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md-3" id="info-column">
+          <div class="col-lg-3" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
@@ -367,14 +367,14 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md" id="info-column">
+          <div class="col-lg" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
@@ -394,8 +394,8 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
@@ -486,14 +486,14 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-columns">
         <div class="row">
 
-          <div class="col-md" id="info-column">
+          <div class="col-lg" id="info-column">
             <h5>Complete Name of College, School or Unit Title Should Go Here</h5>
             <p class="contact-link"><a href="#">Contact Us</a></p>
             <p class="contribute-button"><a href="#" class="btn btn-small btn-gold">Contribute</a></p>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
@@ -513,8 +513,8 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
@@ -536,8 +536,8 @@ storiesOf('Components/Global Footer', module)
             </div>
           </div>
 
-          <div class="col-md flex-footer">
-            <div class="card card-foldable desktop-disable">
+          <div class="col-lg flex-footer">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
@@ -600,7 +600,7 @@ storiesOf('Components/Global Footer', module)
   </footer>
   `)
 
-  .add('Five columns!', () => `
+  .add('Five columns', () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -635,7 +635,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
@@ -656,7 +656,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
@@ -679,7 +679,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
@@ -702,7 +702,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-five" class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
@@ -765,7 +765,7 @@ storiesOf('Components/Global Footer', module)
   </footer>
   `)
 
-  .add('The Zen Master & The Hot Dog Vendor', () => `
+  .add('Six Columns', () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -800,7 +800,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-two" class="collapsed" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Second Column
@@ -821,7 +821,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-three" class="collapsed" data-toggle="collapse" href="#footlink-three" role="button" aria-expanded="false" aria-controls="footlink-three">Student Information
@@ -844,7 +844,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-four" class="collapsed" data-toggle="collapse" href="#footlink-four" role="button" aria-expanded="false" aria-controls="footlink-four">Column Number Four
@@ -867,7 +867,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-five" class="collapsed" data-toggle="collapse" href="#footlink-five" role="button" aria-expanded="false" aria-controls="footlink-five">Mambo Number Five
@@ -890,7 +890,7 @@ storiesOf('Components/Global Footer', module)
           </div>
 
           <div class="col-xl col-lg-4 flex-footer">
-            <div class="card card-foldable desktop-disable">
+            <div class="card card-foldable desktop-disable-lg">
               <div class="card-header">
                 <h5>
                   <a id="footlink-header-six" class="collapsed" data-toggle="collapse" href="#footlink-six" role="button" aria-expanded="false" aria-controls="footlink-six">The Zen Master and the Hot Dog Vendor
