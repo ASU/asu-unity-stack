@@ -1,0 +1,53 @@
+import { document, console } from 'global';
+import { storiesOf } from '@storybook/html';
+
+// Random photos sourced from Unsplash: https://source.unsplash.com
+
+storiesOf('Components/Testimonials', module)
+  .addParameters({
+    happo: false,
+  })
+
+// TODO Testimonials, Option 1
+.add('Testimonials, Option 1', () => `
+<div>
+Mom's love it! Kids will eat it!
+</div>
+`)
+
+.add('Testimonials, Option 2', () => `
+<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+  <div class="container uds-hero-container">
+    <blockquote class="ws2-element-spacing-entity">
+      <p>Having spent a lot of time learning on-the-job I thought I knew what
+      earning my degree would be like, but ASU Online has surpassed my
+      expectations in both the quality of coursework and in services offered.</p>
+      <cite class="ws2-sig-title">Dustin Hall</cite>
+      <cite class="ws2-sig-byline">ASU Online student, 2019</cite>
+    </blockquote>
+  </div>
+</div>
+
+<hr>
+
+<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+  <div class="container uds-hero-container">
+    <div class="uds-hero-text col-sm-12 col-md-7">
+      <p>Having spent a lot of time learning on-the-job I thought I knew what
+      earning my degree would be like, but ASU Online has surpassed my
+      expectations in both the quality of coursework and in services offered.</p>
+      <p>Dustin Hall</p>
+      <p>ASU Online student, 2019</p>
+    </div>
+  </div>
+</div>
+`)
+
+// TODO Testimonials, Option 3
+.add('Testimonials, Option 3', () => `
+<div>
+Super fruity!
+</div>
+`)
+
+; // close
