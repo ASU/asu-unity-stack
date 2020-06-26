@@ -1,5 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
+import tabs from './tabs.js'
 
 storiesOf('Components/Tabs', module)
   .addParameters({
@@ -7,6 +8,11 @@ storiesOf('Components/Tabs', module)
   })
 
   .add('Desktop', () => `
+  test
+  <script>
+  console.log("test");
+  let tabs = new tabs("nav-tabs");
+  </script>
 <div class="container-fluid">
 <div class="row">
 
