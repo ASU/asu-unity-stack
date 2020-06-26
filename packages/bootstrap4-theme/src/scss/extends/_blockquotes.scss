@@ -70,7 +70,7 @@ blockquote {
       margin-left: -14.375rem; // img width + 3rem
     }
     &:before { // Actual large quote
-      font-family: $font-family-base;
+      font-family: $uds-font-family-base;
       font-size: initial; //
       content: initial;
       margin-left: $blockquote-image-offset/(-1);
@@ -80,7 +80,8 @@ blockquote {
   }
   /* Signatures (beneath content) */
   .ws2-sig-title, .ws2-sig-byline {
-    font-size: $font-size-base;
+    font-size: $the-base;
+    font-style: inherit;
   }
   .ws2-sig-title {
     &:before {

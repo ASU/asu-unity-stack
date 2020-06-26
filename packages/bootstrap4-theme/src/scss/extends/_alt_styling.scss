@@ -2,29 +2,25 @@
  * Variables
  * @TODO - Replace with design tokens
  */
+@import '../../../../design-tokens/build/scss/_variables.scss';
+
+// Mapping for Design Tokens
+$ws2-gray-darkest: $uds-color-base-gray-7;
+$ws2-gray-darker: $uds-color-base-gray-6;
+$ws2-gray-dark: $uds-color-base-gray-5;
+$ws2-gray: $uds-color-base-gray-4;
+$ws2-gray-light: $uds-color-base-gray-3;
+$ws2-gray-lighter: $uds-color-base-gray-2;
+$ws2-gray-lightest: $uds-color-base-gray-1;
+
+// Custom variables (semantic renaming, mapping, etc.)
 $the-base:                    16px;
-
-$font-family-sans-serif:      Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
-$font-family-base:            $font-family-sans-serif;
-$font-size-base:              $the-base;
-
-$ws2-maroon:                  #8c1d40;
-$ws2-gold:                    #ffc627;
-$ws2-gray-darkest:            #191919; // Not using lighten() mixing
-$ws2-gray-darker:             #484848;
-$ws2-gray-dark:               #747474;
-$ws2-gray:                    #bfbfbf;
-$ws2-gray-light:              #d0d0d0;
-$ws2-gray-lighter:            #e8e8e8;
-$ws2-gray-lightest:           #fafafa;
-$text-color:                  $ws2-gray-darkest;
-$text-color-bg-dark:          $ws2-gray-lightest;
-
 $image-round-small:           180px;
-$blockquote-image-offset:     14.3625rem; // (180px + 48px offset)
-$block-indent:                4rem;
+
 $padding-base-vertical:       $the-base;
 $padding-base-horizontal:     $the-base;
+$text-color:                  $ws2-gray-darkest;
+$text-color-bg-dark:          $ws2-gray-lightest;
 
 /*
  * element-margins-vertical - Generates top and bottom margins for containers
@@ -80,10 +76,6 @@ $padding-base-horizontal:     $the-base;
     color: $text-color;
     background-color: $ws2-gray-lighter;
     border-color: $ws2-gray-lighter;
-    // Buttons
-    .ws2-element-style.btn-tag { // Tag button variation
-      background-color: $ws2-gray !important;
-    }
   }
 
   //////////////////////////////////////
@@ -95,20 +87,7 @@ $padding-base-horizontal:     $the-base;
     color: $text-color-bg-dark;
     background-color: $ws2-gray-darkest;
     border-color: $ws2-gray-darkest;
-    // Lists
-    ul, ol {
-      li:before {
-        color: $text-color-bg-dark;
-      }
-      &.ws2-element-style.ws2-element-gold li:before { // only allow gold element in black background
-        color: $ws2-gold;
-      }
-    }
-    // BUTTONS
-    .ws2-element-style.btn-tag { // Tag button variation
-      background-color: $ws2-gray-dark;
-      border-color: $ws2-gray-dark;
-      color: #fff;
-    }
+    // Lists - removed
+    // BUTTONS - removed
   }
 }
