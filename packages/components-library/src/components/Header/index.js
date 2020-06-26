@@ -1,7 +1,8 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import {useState, useCallback} from "preact/compat"
+import { useState } from "preact/compat";
+import PropTypes from "prop-types";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import * as S from "./styles";
 import Nav from "../Nav";
@@ -12,9 +13,7 @@ const Header = props => {
 
   const [open, setOpen] = useState(false);
 
-  const toggle = useCallback(() => {
-    setOpen(oldOpen => !oldOpen);
-  }, [open]);
+  const toggle = () => setOpen(oldOpen => !oldOpen);
 
   return (
     <S.Header>
@@ -44,7 +43,7 @@ const Header = props => {
                 subtitle: props.subtitle,
                 logo: props.logo,
                 width,
-                mobileOpen: open
+                mobileOpen: open,
               }}
             />
           </Fragment>
@@ -54,17 +53,30 @@ const Header = props => {
   );
 };
 
+Header.propTypes = {
+  navTree: PropTypes.arrayOf(PropTypes.object),
+  logo: PropTypes.shape({
+    alt: PropTypes.string,
+    src: PropTypes.string,
+    mobileSrc: PropTypes.string,
+  }),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  loggedIn: PropTypes.bool,
+};
+
 Header.defaultProps = {
   navTree: [],
   dangerouslyGenerateStub: false,
   logo: {
     alt: "Arizona State University Logo",
     src: "https://i.imgur.com/5WtkgkV.png",
-    mobileSrc: "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png"
+    mobileSrc:
+      "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
   },
   title: "",
   subtitle: "",
-  loggedIn: false
+  loggedIn: false,
 };
 
 export default Header;

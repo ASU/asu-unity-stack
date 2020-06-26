@@ -4,7 +4,7 @@ import { h } from "preact";
 import { css } from "emotion";
 import Tokens from "../../theme";
 
-const buttonStyles = (props) => css`
+const buttonStyles = props => css`
   background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
   background-position: ${Tokens.ComponentButtonBackgroundPosition};
   background-repeat: ${Tokens.ComponentButtonBackgroundRepeat};
@@ -12,65 +12,91 @@ const buttonStyles = (props) => css`
   display: ${Tokens.ComponentButtonDisplay};
   font-weight: ${Tokens.ComponentButtonFontWeight};
   line-height: ${Tokens.ComponentButtonLineHeight};
+  text-decoration: ${Tokens.ComponentButtonTextDecoration};
   max-width: ${Tokens.ComponentButtonMaxWidth};
-  padding: ${Tokens.ComponentButtonPadding};
+  padding: ${Tokens.ComponentButtonPaddingY} ${Tokens.ComponentButtonPaddingX};
   text-align: ${Tokens.ComponentButtonTextAlign};
+  border: 1px solid transparent;
 
-  ${props.disabled &&
+  :hover {
+    transform: ${Tokens.ComponentButtonHoverStateTransform};
+  }
+
+  :active {
+    transform: ${Tokens.ComponentButtonActiveStateTransform};
+  }
+
+  ${
+    props.disabled &&
     css`
       opacity: ${Tokens.ComponentButtonDisabledOpacity};
-    `};
+    `
+  };
 
-  ${props.small &&
+  ${
+    props.small &&
     css`
       font-size: ${Tokens.ComponentButtonSmallFontSize};
-      height: ${Tokens.ComponenButtonSmallHeight};
+      height: ${Tokens.ComponentButtonSmallHeight};
       min-width: ${Tokens.ComponentButtonSmallMinWidth};
-    `};
+      padding: ${Tokens.ComponentButtonPaddingYSmall} ${Tokens.ComponentButtonPaddingXSmall};
+    `
+  };
 
-  ${props.medium &&
+  ${
+    props.medium &&
     css`
       font-size: ${Tokens.ComponentButtonMediumFontSize};
       height: ${Tokens.ComponentButtonMediumHeight};
       min-width: ${Tokens.ComponentButtonMediumMinWidth};
-    `};
+      padding: ${Tokens.ComponentButtonPaddingYMedium} ${Tokens.ComponentButtonPaddingXMedium};
 
-  ${props.large &&
+    `
+  };
+
+  ${
+    props.large &&
     css`
       font-size: ${Tokens.ComponentButtonLargeFontSize};
       height: ${Tokens.ComponentButtonLargeHeight};
       min-width: ${Tokens.ComponentButtonLargeMinWidth};
-    `};
+    `
+  };
 
-  ${props.gold &&
+  ${
+    props.gold &&
     css`
       color: ${Tokens.ComponentButtonGoldColor};
       background-color: ${Tokens.ComponentButtonGoldBackgroundColor};
-    `};
+    `
+  };
 
-  ${props.maroon &&
+  ${
+    props.maroon &&
     css`
       color: ${Tokens.ComponentButtonMaroonColor};
-      background-color: ${Tokens.ComponentButtonDarkBackgroundColor};
-    `};
+      background-color: ${Tokens.ComponentButtonMaroonBackgroundColor};
+    `
+  };
 
-  ${props.dark &&
+  ${
+    props.dark &&
     css`
       color: ${Tokens.ComponentButtonDarkColor};
       background-color: ${Tokens.ComponentButtonDarkBackgroundColor};
-    `};
+    `
+  };
 
-  ${props.light &&
+  ${
+    props.light &&
     css`
       color: ${Tokens.ComponentButtonLightColor};
       background-color: ${Tokens.ComponentButtonLightBackgroundColor};
-    `};
+    `
+  };
 `;
 
-
-
 const Button = props => {
-
   return (
     <button
       className={css`

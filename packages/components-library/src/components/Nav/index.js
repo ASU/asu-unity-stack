@@ -1,22 +1,61 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useCallback } from "preact/compat";
+import { useEffect, useState, useCallback, useMemo } from "preact/compat";
+import PropTypes from "prop-types";
+import NavItem from "./NavItem";
 import * as S from "./styles";
 
+/**
+ * Render entire Nav. This includes
+ * @param {} props
+ */
 const Nav = props => {
   const [focused, setFocus] = useState([-1, -1, -1]);
   const width = props.width;
   const navTree = props.navTree;
 
-  const setFocusCallBack = useCallback(
-    loc => {
-      setFocus(loc);
-    },
-    [focused]
-  );
+  const setFocusCallback = newFocus => {
+    setFocus(newFocus);
+  };
 
-  let navList = [];
+  /***
+   * Compile a list of Refs to interact with the focus state of Nav menu
+   */
+  const navList = useMemo(() => {
+    return navTree.map(item => {
+      const newRef = createRef();
+
+      // copy the prop to a new object, to avoid mutating props on render
+      let menus = [];
+
+      // Destructure the items array of the nav item to items variable,
+      // temp is now the nav item without the 'items' array
+      let { items, ...temp } = item;
+
+      if (items && items[0].length > 0) {
+        // Create a ref for each submenu item, which will be
+        // passed down to the DropNav to manage focus
+        for (let i = 0; i < items.length; i++) {
+          for (let j = 0; j < items[i].length; j++) {
+            const childRef = createRef();
+
+            if (!menus[i]) {
+              menus[i] = [];
+            }
+            menus[i][j] = Object.assign({}, items[i][j]);
+            menus[i][j].ref = childRef;
+          }
+        }
+      }
+
+      return {
+        ref: newRef,
+        item: temp,
+        menus,
+      };
+    });
+  }, [navTree]);
 
   //event handler for side-to-side keyboard navigation (top level items)
   const handleKeyDown = e => {
@@ -31,19 +70,19 @@ const Nav = props => {
       switch (e.keyCode) {
         case Left:
           e.preventDefault();
-          setFocusCallBack(moveLeft(focused, derState, navList));
+          setFocusCallback(moveLeft(focused, derState, navList));
           break;
         case Right:
           e.preventDefault();
-          setFocusCallBack(moveRight(focused, derState, navList));
+          setFocusCallback(moveRight(focused, derState, navList));
           break;
         case Up:
           e.preventDefault();
-          setFocusCallBack(moveUp(focused, derState, navList));
+          setFocusCallback(moveUp(focused, derState, navList));
           break;
         case Down:
           e.preventDefault();
-          setFocusCallBack(moveDown(focused, derState, navList));
+          setFocusCallback(moveDown(focused, derState, navList));
           break;
         default:
           break;
@@ -64,87 +103,49 @@ const Nav = props => {
       if (derState.isTop) {
         navList[loc[0]].ref.current.focus();
       } else {
-        navList[loc[0]].menus[loc[1]][loc[2]].current.focus();
+        navList[loc[0]].menus[loc[1]][loc[2]].ref.current.focus();
       }
     }
   }, [focused, navList]);
 
-  const onBlurNav = useCallback(
-    e => {
-      // only change state if focus moves away from
-      // container element
-      if (!e.currentTarget.contains(e.relatedTarget)) {
-        setFocusCallBack([-1, -1, -1]);
-      }
-    },
-    [focused]
-  );
+  const onBlurNav = e => {
+    // only change state if focus moves away from
+    // container element
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setFocusCallback([-1, -1, -1]);
+    }
+  };
 
   return (
     <S.Nav className={props.mobileOpen ? "open-nav" : ""}>
       <ul onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
-        {navTree.map((item, index) => {
-          const newRef = createRef();
-          const subs = item.items;
+        {navList.map((item, index) => {
+          const navItem = item.item;
+          const subs = item.menus;
 
-          if (!navList[index]) {
-            navList[index] = {};
-          }
-
-          navList[index].ref = newRef;
-          navList[index].text = item.text;
-          navList[index].menus = [];
-
-          // Return a DropNav with submenus if they exist below parent
-          if (subs && subs[0].length > 0) {
-            // Create a ref for each submenu item, which will be
-            // passed down to the DropNav to manage focus
-            for (let i = 0; i < subs.length; i++) {
-              for (let j = 0; j < subs[i].length; j++) {
-                const childRef = createRef();
-
-                if (!navList[index].menus[i]) {
-                  navList[index].menus[i] = [];
-                }
-
-                navList[index].menus[i][j] = childRef;
-              }
-            }
-
+          if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
               <DropNav
                 width={width}
-                item={item}
-                itemRefs={navList[index]}
+                item={navItem}
+                submenus={subs}
                 pIndex={index}
-                setFocus={setFocusCallBack}
-                topRef={newRef}
+                setFocus={setFocusCallback}
+                topRef={item.ref}
               />
             );
           }
 
-          // Return a single menu item if there are no submenus
+          // Return a single nav item if there are no submenus
           return (
-            <li key={index}>
-              <a
-                href={item.href}
-                title={item.title ? item.title : item.text}
-                target={item.target}
-                onFocus={() => {
-                  setFocusCallBack([index, -1, -1]);
-                }}
-                ref={newRef}
-                tabIndex="0"
-              >
-                {item.type != "icon" ? (
-                  item.text
-                ) : (
-                  <span class={item.class}>
-                    <span class="sr-only">{item.text}</span>
-                  </span>
-                )}
-              </a>
-            </li>
+            <NavItem
+              item={navItem}
+              onFocus={() => {
+                setFocusCallback([index, -1, -1]);
+              }}
+              itemRef={item.ref}
+              tabIndex="0"
+            />
           );
         })}
       </ul>
@@ -152,17 +153,24 @@ const Nav = props => {
   );
 };
 
+Nav.propTypes = {
+  navTree: PropTypes.arrayOf(PropTypes.object),
+  mobileOpen: PropTypes.bool
+};
+
 Nav.defaultProps = {
   navTree: [],
-  mobileOpen: false,
+  mobileOpen: false
 };
+
+
 
 const DropNav = props => {
   const item = props.item;
   const width = props.width;
-  const itemRefs = props.itemRefs;
   const setFocus = props.setFocus;
   const pIndex = props.pIndex;
+  const submenus = props.submenus;
 
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -208,24 +216,19 @@ const DropNav = props => {
       </a>
 
       <S.DdMenu {...{ open }}>
-        {item.items.map((sub, index) => {
+        {submenus.map((sub, index) => {
           return (
             <ul>
               {sub.map((item, ind) => {
                 return (
-                  <li key={ind}>
-                    <a
-                      title={item.title}
-                      href={item.href}
-                      ref={itemRefs.menus[index][ind]}
-                      onFocus={() => {
-                        navOpen();
-                        setFocus([pIndex, index, ind]);
-                      }}
-                    >
-                      {item.text}
-                    </a>
-                  </li>
+                  <NavItem
+                    item={item}
+                    onFocus={() => {
+                      setFocus([pIndex, index, ind]);
+                      navOpen();
+                    }}
+                    itemRef={submenus[index][ind].ref}
+                  />
                 );
               })}
             </ul>
@@ -236,9 +239,27 @@ const DropNav = props => {
   );
 };
 
+DropNav.propTypes = {
+  setFocus: PropTypes.func,
+  location: PropTypes.array, // Array representation of the item's location in the Nav
+  item: PropTypes.object, // top level nav item
+  submenus: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)), // submenus
+  topRef: PropTypes.oneOfType([
+    // ref to actual DOM node of nav item
+    // https://stackoverflow.com/questions/48007326/what-is-the-correct-proptype-for-a-ref-in-react
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ])
+};
+
 DropNav.defaultProps = {
   menus: [],
+  top: false,
 };
+
+/*** Utility functions */
 
 /***
  * Helper function returns more info about current focus state
