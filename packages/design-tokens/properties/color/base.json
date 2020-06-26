@@ -43,38 +43,38 @@
       },
       "gray": {
         "1": {
-          "value": "#191919",
-          "comment": "Base font color and default black level"
+          "value": "#FAFAFA"
         },
         "2": {
-          "value": "#484848"
+          "value": "#E8E8E8"
         },
-        "3_alt_alpha": {
-          "value": "#70707080",
-          "comment": "Alt border for RFI form card"
-        },
-        "3_alt": {
-          "value": "#707070",
-          "comment": "Alt border for header search input border"
+        "2_alt": {
+          "value": "#E5E5E5",
+          "comment": "Used in footer and as a lighter card border"
         },
         "3": {
-          "value": "#747474"
+          "value": "#D0D0D0"
         },
         "4": {
           "value": "#BFBFBF"
         },
         "5": {
-          "value": "#D0D0D0"
+          "value": "#747474"
         },
-        "6_alt": {
-          "value": "#E5E5E5",
-          "comment": "Used in footer and as a lighter card border"
+        "5_alt": {
+          "value": "#707070",
+          "comment": "Alt border for header search input border"
+        },
+        "5_alt_alpha": {
+          "value": "#70707080",
+          "comment": "Alt border for RFI form card"
         },
         "6": {
-          "value": "#E8E8E8"
+          "value": "#484848"
         },
         "7": {
-          "value": "#FAFAFA"
+          "value": "#191919",
+          "comment": "Base font color and default black level"
         }
       }
     }
