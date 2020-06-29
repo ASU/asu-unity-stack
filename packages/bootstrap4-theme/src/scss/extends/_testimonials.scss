@@ -22,6 +22,9 @@
       margin-bottom: 1.75rem;
       color: $uds-color-base-white;
       font-size: $uds-size-font-xl;
+      &:after {
+        content: none;
+      }
     }
     cite {
       color: $uds-color-base-white;
