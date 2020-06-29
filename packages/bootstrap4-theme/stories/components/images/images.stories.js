@@ -25,7 +25,7 @@ storiesOf('Components/Images', module)
     <figcaption class="figure-caption uds-figure-caption"><span class="uds-caption-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium &hellip;</span></figcaption>
   </figure>
 </div>
-<p>Captions are provided by delivering images inside a figure tag along with a figcaption tag. A figcaption should provide a summary or additional information related to the image. You must still provide alt text. Web Standards captions are limited to 255 chars.</p>
+<p>Captions can be provided for content inside a figure tag along with a figcaption tag. Use a figcaption to provide a summary or additional information related to the image that may not be directly apparent from reviewing the figure or its alt text. You must still provide alt text, but the figcaption should not duplicate it. Web Standards captions are limited to 255 chars.</p>
 `)
 
 .add('Large images, dropshadow', () => `
