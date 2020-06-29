@@ -12,13 +12,16 @@
 @import 'variables/spacing';
 @import 'variables/typography';
 @import 'variables/buttons';
+@import 'variables/blockquotes';
 @import 'variables/cards';
 @import 'variables/icons';
 @import 'variables/headings';
 @import 'variables/list';
 @import 'variables/heroes';
 @import 'variables/paragraphs';
+@import 'variables/pager';
 @import 'variables/breadcrumb';
+@import 'variables/dividers';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
