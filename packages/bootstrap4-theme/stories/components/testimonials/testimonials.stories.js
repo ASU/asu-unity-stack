@@ -22,6 +22,7 @@ Mom's love it! Kids will eat it!
       <p>Having spent a lot of time learning on-the-job I thought I knew what
       earning my degree would be like, but ASU Online has surpassed my
       expectations in both the quality of coursework and in services offered.</p>
+      <hr class="copy-divider">
       <cite class="ws2-sig-title">Dustin Hall</cite>
       <cite class="ws2-sig-byline">ASU Online student, 2019</cite>
     </blockquote>
