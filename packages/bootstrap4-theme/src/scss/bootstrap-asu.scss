@@ -9,6 +9,7 @@
 
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';
+@import 'variables/alerts';
 @import 'variables/spacing';
 @import 'variables/typography';
 @import 'variables/buttons';

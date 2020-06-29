@@ -1,10 +1,42 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-/*
 storiesOf('Components/Alerts', module)
   .addParameters({
     happo: false,
   })
+
+.add('Alerts', () => `
+orange - alert
+<hr>
+green - success
+<hr>
+blue - information
+<hr>
+red - error
+
+  <div class="alert alert-block alert-warning">
+    <a href="#" class="close">x</a>
+    <h2 class="element-invisible">Warning message</h2>
+    <em>Notice</em>: Trying to get property 'nid' of non-object in <em>asu_rfi_form_data()</em> (line <em>70</em> of <em>/home/bryan/github.com/bjdevil21/webspark-drops-drupal7/profiles/openasu/modules/custom/asu_rfi/includes/asu_rfi.pages.inc</em>).
+  </div>
+  <div class="alert alert-block alert-success">
+    <a href="#" class="close">x</a>
+    <h2 class="element-invisible">Success message</h2>
+    <em>Notice</em>: Trying to get property 'nid' of non-object in <em>asu_rfi_form_data()</em> (line <em>70</em> of <em>/home/bryan/github.com/bjdevil21/webspark-drops-drupal7/profiles/openasu/modules/custom/asu_rfi/includes/asu_rfi.pages.inc</em>).
+  </div>
+  <div class="alert alert-block alert-info">
+    <a href="#" class="close">x</a>
+    <h2 class="element-invisible">Info message</h2>
+    <em>Notice</em>: Trying to get property 'nid' of non-object in <em>asu_rfi_form_data()</em> (line <em>70</em> of <em>/home/bryan/github.com/bjdevil21/webspark-drops-drupal7/profiles/openasu/modules/custom/asu_rfi/includes/asu_rfi.pages.inc</em>).
+  </div>
+  <div class="alert alert-block alert-danger">
+    <a href="#" class="close">x</a>
+    <h2 class="element-invisible">Error message</h2>
+    <em>Notice</em>: Trying to get property 'nid' of non-object in <em>asu_rfi_form_data()</em> (line <em>70</em> of <em>/home/bryan/github.com/bjdevil21/webspark-drops-drupal7/profiles/openasu/modules/custom/asu_rfi/includes/asu_rfi.pages.inc</em>).
+  </div>
+
+  <p class="alert alert-block alert-warning">P tag alert.</p>
+`)
 
   .add('Alerts example', () => `<div class="alert alert-primary" role="alert">
   This is a primary alert—check it out!
@@ -37,6 +69,11 @@ storiesOf('Components/Alerts', module)
   This is a dark alert—check it out!
 </div>`)
 
+  .add('Banners (TODO move to its own story)', () => `
+  TODO move to its own story
+  `)
+
+/*
   .add('Alerts with links', () => `<div class="alert alert-primary" role="alert">
   This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>
@@ -73,5 +110,7 @@ storiesOf('Components/Alerts', module)
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr>
   <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>`);
+</div>`)
 */
+
+; // close
