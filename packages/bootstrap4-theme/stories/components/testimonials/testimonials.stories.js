@@ -11,7 +11,7 @@ storiesOf('Components/Testimonials', module)
 // TODO Testimonials, Option 1
 .add('Testimonials, Option 1', () => `
 <div>
-Mom's love it! Kids will eat it!
+To come.
 </div>
 `)
 
@@ -33,7 +33,7 @@ Mom's love it! Kids will eat it!
 // TODO Testimonials, Option 3
 .add('Testimonials, Option 3', () => `
 <div>
-Super fruity!
+To come.
 </div>
 `)
 
