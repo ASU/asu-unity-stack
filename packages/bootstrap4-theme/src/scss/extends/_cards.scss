@@ -173,7 +173,33 @@ Cards - Table of Contents
 .card-event .card-header {
   border-top: solid 8px $gold;
 }
-
+.card-event-details {
+  display:flex;
+  padding: $uds-component-card-basic-body-padding;
+}
+.card-event-details > div:first-child {
+  margin-right:16px;
+}
+.card-event-icons {
+  display:flex;
+}
+.card-event-icons > div:first-child {
+  width:16px;
+  margin-right:8px;
+}
+.card-event-horizontal {
+  flex-direction: row;
+}
+.card-event-horizontal .card-img-top {
+  width:200px;
+  height:100%;
+}
+.card-event-horizontal .card-header {
+  border-top: 0;
+}
+.card-event-horizontal .card-content-wrapper {
+  border-left: solid 8px $gold;
+}
 /*------------------------------------------------------------------
 5. Foldable Cards
 --------------------------------------------------------------------*/
