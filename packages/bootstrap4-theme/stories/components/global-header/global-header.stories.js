@@ -134,40 +134,47 @@ storiesOf('Components/Global Header', module)
                       Mega Menu (4 col)
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-lg-3">
-                              <h3>Column One</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">will it go on forever?</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg-3">
-                              <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg-3">
-                              <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg-3">
-                              <h3>Column four</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <h3>Column One</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">will it go on forever?</a>
+                          </div>
+                          <div class="col-lg-3">
+                            <h3>Column Two</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Does this dropdown menu</a>
+                          </div>
+                          <div class="col-lg-3">
+                            <h3>Column Two</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                          </div>
+                          <div class="col-lg-3">
+                            <h3>Column four</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Does this dropdown menu</a>
+                            <a class="dropdown-item" href="#">Make my content shine</a>
                           </div>
                         </div>
-                      </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <a href="#" class="btn btn-sm btn-maroon">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-gold">CTA Action 2</a>
+                          </div>
+                        </div>
+
+                      </div><!-- end .container -->
+                    </div>
 
                   </li>
 

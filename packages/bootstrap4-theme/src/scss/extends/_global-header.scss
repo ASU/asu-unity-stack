@@ -12,6 +12,7 @@
 
 #wrapper-header-main {
   border-bottom: 1px solid $uds-color-base-gray-3;
+  background-color: #ffffff;
 }
 
 @mixin gold-underline {
@@ -21,8 +22,8 @@
   height: $uds-size-spacing-1;
   background-color: $uds-color-base-gold;
   bottom: 0;
-  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   width: 0;
+  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 }
 
 @mixin gold-underline-expand {
@@ -185,6 +186,11 @@
       padding: $uds-size-spacing-4 0;
     }
 
+    .row + .row {
+      border-top: 1px solid $uds-color-base-gray-4;
+      padding: $uds-size-spacing-2 0;
+    }
+
     div[class^='col-'] {
       border-right: 1px solid $uds-color-base-gray-4;
       padding: 0 $uds-size-spacing-3;
@@ -195,6 +201,10 @@
 
       .dropdown-item {
         white-space: normal;
+      }
+
+      .btn + .btn {
+        margin-left: $uds-size-spacing-3;
       }
     }
   }
