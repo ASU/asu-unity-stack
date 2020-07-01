@@ -2,12 +2,19 @@
 
 .alert {
   color: #191919;
-  font-weight: 400;
+  font-weight: 600;
   border-bottom-color: #191919;
   position: relative;
   margin: 16px 0;
-  padding: 16px * 1.5 16px * 1.5;
-  a {
+  padding: 1.5rem 1.5rem 1.5rem 6rem;
+  svg {
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-left: -4.5rem;
+    margin-top: -0.25rem;
+    float: left;
+  }
+  button {
     color: #191919;
     border-bottom-color: #191919;
     &.close {
@@ -17,7 +24,7 @@
       font-weight: bold;
       opacity: 0.6;
       border: 1px solid #d0d0d0;
-      padding: 0.25rem 0.5rem 0.25rem 0.58rem;
+      //padding: 0.25rem 0.5rem 0.25rem 0.58rem;
       margin: 0 0 16px 16px;
       border-radius: 1rem;
       height: 2rem;
@@ -45,45 +52,45 @@
 .alert-info,
 .alert-danger,
 .alert-warning {
-  padding-left: 6em;
-  &:before {
-    font-family: FontAwesome, sans-serif;
-    font-size: 2rem;
-    position: absolute;
-    left: 0;
-    top: 1.5rem; // 50% top : calc(50% - 1.5rem);f
-    padding: 0 1.5rem;
-  }
-}
-
-.alert-success {
-  background-color: #e9f5db;
-  border-color: #78be20;
-  &:before {
-    content: '\f058';
-  }
-}
-.alert-info {
-  background-color: #d6f0fa;
-  border-color: #00a3e0;
-  &:before {
-    content: '\f05a';
-  }
-}
-.alert-danger {
-  background-color: #f7dddd; /* 20% opacity of official maroon */
-  border-color: #8c1d40;
-  &:before {
-    content: '\f071';
-  }
+  //padding-left: 6em;
+  //&:before {
+  //  font-family: FontAwesome, sans-serif;
+  //  font-size: 2rem;
+  //  position: absolute;
+  //  left: 0;
+  //  top: 1.5rem; // 50% top : calc(50% - 1.5rem);f
+  //  padding: 0 1.5rem;
+  //}
 }
 
 .alert-warning {
   background-color: #ffeade; /* 33% opacity of official maroon */
   border-color: #ff7f32;
-  &:before {
-    content: '\f0f3';
-  }
+  //&:before {
+  //  content: '\f0f3';
+  //}
+}
+
+.alert-success {
+  background-color: #e9f5db;
+  border-color: #78be20;
+  //&:before {
+  //  content: '\f058';
+  //}
+}
+.alert-info {
+  background-color: #d6f0fa;
+  border-color: #00a3e0;
+  //&:before {
+  //  content: '\f05a';
+  //}
+}
+.alert-danger {
+  background-color: #f7dddd; /* 20% opacity of official maroon */
+  border-color: #8c1d40;
+  //&:before {
+  //  content: '\f071';
+  //}
 }
 
 .alert:not([class*='alert-']),
@@ -91,4 +98,16 @@ div[class='alert alert-block'] {
   /* Catch-all for default alert class */
   background-color: #fafafa;
   border-color: #d0d0d0;
+}
+
+// Media Queries
+.alert {
+  // Mobile tweaks.
+  @media screen and (max-width: 576px) {
+    // Adjust padding and margins.
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+    svg {
+      margin-left: -3rem;
+    }
+  }
 }
