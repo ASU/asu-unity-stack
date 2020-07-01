@@ -1,29 +1,203 @@
 /*--------------------------------------------------------------
 # Global Header
+
+1. Wrapper Definitions, Global Mixins
+2. Top Menu
+3. Main Menu
 --------------------------------------------------------------*/
 
-nav.navbar {
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 0;
+#wrapper-header-top {
+  background-color: $uds-color-base-gray-2;
 }
 
-.navbar-brand img {
-  height: 80px;
+#wrapper-header-main {
+  border-bottom: 1px solid $uds-color-base-gray-3;
 }
 
-.navbar-nav .active {
-  border-bottom: 5px solid #ffc627;
+@mixin gold-underline {
+  content: '';
+  position: relative;
+  display: block;
+  height: $uds-size-spacing-1;
+  background-color: $uds-color-base-gold;
+  bottom: 0;
+  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+  width: 0;
 }
 
-.title span {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+@mixin gold-underline-expand {
+  width: calc(100% - 8px);
 }
 
-.title h1 {
-  font-size: 1.5rem;
-  margin-top: 0;
+/*--------------------------------------------------------------
+2. Top Menu
+--------------------------------------------------------------*/
+
+#header-top {
+  background-color: $uds-color-base-gray-2;
+
+  .nav {
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: $uds-color-base-gray-6;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    padding: $uds-size-spacing-half 0 $uds-size-spacing-half $uds-size-spacing-3;
+  }
+}
+
+/*--------------------------------------------------------------
+3. Main Menu
+--------------------------------------------------------------*/
+
+#header-main .navbar {
+  padding: 0;
+
+  .navbar-brand {
+    padding: $uds-size-spacing-3 0;
+
+    img {
+      height: 72px;
+      width: auto;
+    }
+  }
+
+  .title {
+    line-height: 1;
+    margin: $uds-size-spacing-2 0;
+    font-weight: 700;
+
+    .unit-name {
+      font-size: $uds-size-font-medium;
+      margin-bottom: $uds-size-spacing-1;
+      display: block;
+    }
+
+    .subdomain-name {
+      font-size: $uds-size-font-xl;
+      margin-bottom: 0;
+    }
+
+    &.subdomain-name {
+      font-size: $uds-size-font-xxl;
+      margin: $uds-size-spacing-3 0;
+      font-weight: 700;
+    }
+  }
+  .navbar-nav {
+    // margin-bottom: 8px;
+  }
+
+  .nav-item {
+    position: relative;
+    &:after {
+      @include gold-underline;
+    }
+
+    &:hover:after {
+      @include gold-underline-expand;
+    }
+
+    &.active:after {
+      @include gold-underline-expand;
+    }
+
+    &.dropdown.show:after {
+      @include gold-underline-expand;
+    }
+
+    &.dropdown.megamenu.show:after {
+      @include gold-underline-expand;
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  .nav-item .nav-link {
+    font-size: $uds-size-font-medium;
+    line-height: 1;
+    color: $uds-color-base-gray-7;
+    padding: 0.5rem 0.75rem; /* Magic number */
+    margin-right: $uds-size-spacing-1;
+  }
+
+  .dropdown-menu {
+    margin: -1px 0 0 0;
+    border-top: 1px solid #ffffff;
+    padding: $uds-size-spacing-4;
+
+    .dropdown-item {
+      padding: $uds-size-spacing-1 0;
+      &:visited {
+        color: $uds-color-base-gray-7;
+      }
+      &:hover {
+        color: $uds-color-base-maroon;
+        text-decoration: underline;
+      }
+    }
+
+    .btn {
+      margin: $uds-size-spacing-1 0;
+    }
+  }
+
+  .dropdown-menu.dropdown-columns.show {
+    display: flex;
+  }
+
+  .dropdown-col {
+    width: 16rem;
+    padding-right: $uds-size-spacing-3;
+    border-right: 1px solid $uds-color-base-gray-4;
+    margin-right: $uds-size-spacing-3;
+
+    &:last-of-type {
+      margin-right: 0;
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    .dropdown-item {
+      white-space: normal;
+    }
+  }
+
+  .megamenu {
+    position: static;
+
+    .dropdown-menu {
+      background-color: #ffffff;
+      border-bottom: 1px solid $uds-color-base-gray-4;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-top: 0;
+      padding: 0;
+    }
+
+    .row {
+      width: 100%;
+      padding: $uds-size-spacing-4 0;
+    }
+
+    div[class^='col-'] {
+      border-right: 1px solid $uds-color-base-gray-4;
+      padding: 0 $uds-size-spacing-3;
+
+      &:last-of-type {
+        border-right: 0;
+      }
+
+      .dropdown-item {
+        white-space: normal;
+      }
+    }
+  }
 }
 
 /* Breakpoint at which the mobile menu is triggered */
