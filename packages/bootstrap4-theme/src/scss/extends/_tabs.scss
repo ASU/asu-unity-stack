@@ -6,19 +6,23 @@
   border-top: $uds-component-tab-border-width;
   text-decoration: $uds-component-tab-text-decoration;
   font-weight: $uds-component-tab-font-weight;
+  font-size: 24px;
 }
 .nav-tabs .nav-link.active {
   border-bottom: $uds-component-tab-active-border-bottom;
 }
-.mobile-tabs .nav-tabs {
+.mobile-tabs {
   flex-wrap: inherit;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-  /*
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  */
+}
+.mobile-tabs .nav-tabs {
+  flex-wrap: inherit;
+  position: relative;
+  white-space: nowrap;
+  display: inline-flex;
 }
 .mobile-tabs .nav-tabs::-webkit-scrollbar {
   /*display: none;*/
@@ -29,6 +33,7 @@
 .mobile-tabs .scroll::-webkit-scrollbar {
   display: none;
 }
+/*
 .mobile-tabs .nav-tabs::after {
   content: "";
   height:100%;
@@ -38,4 +43,43 @@
   top:0;
   background: rgba(0,0,0,0);
   background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+}
+*/
+
+/* TODO move this to a separate file */
+/* scrolling menu styles */
+
+.scroll-control-prev {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0);
+  background: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+}
+.scroll-control-next {
+  position: absolute;
+  height: 100%;
+  right:0;
+  top:0;
+  background: rgba(0,0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+}
+.scroll-control-prev span.carousel-control-prev-icon,
+.scroll-control-next span.carousel-control-next-icon {
+  background-size: 60% 60%;
+  display: block;
+  opacity:0;
+  padding: 12px 12px;
+  margin: 0 8px;
+  position: relative;
+  top: 50%;
+  transform: translate(0,-50%);
+  background-color:#e5e5e5;
+  border:solid 1px #d8d8d8;
+  border-radius:200px;
+}
+.scroll-control-prev:hover span.carousel-control-prev-icon,
+.scroll-control-next:hover span.carousel-control-next-icon {
+  opacity:1;
 }

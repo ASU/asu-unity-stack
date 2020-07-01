@@ -56,7 +56,7 @@
       },
       "active": {
         "border-bottom": {
-          "value": "4px solid {color.base.maroon.value}"
+          "value": "8px solid {color.base.maroon.value}"
         },
         "color": {
           "value": "{color.base.maroon.value}"
