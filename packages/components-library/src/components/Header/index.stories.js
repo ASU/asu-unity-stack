@@ -2,7 +2,7 @@
 
 import { h } from "preact";
 import { withA11y } from "@storybook/addon-a11y";
-import { BasicNavTree, NavTreeWithButtons } from "../Nav/NavTreeExample";
+import { BasicNavTree, NavTreeWithButtons, NavTreeMega } from "../Nav/NavTreeExample";
 
 import Header from ".";
 
@@ -25,6 +25,16 @@ export const base = () => (
 export const withButtons = () => (
   <Header
     navTree={NavTreeWithButtons}
+    title={"Ira A. Fulton Schools of Engineering"}
+    subtitle={
+      "School of Computing, Informatics, and Decisions Systems Engineering"
+    }
+  />
+);
+
+export const withMenuColumns = () => (
+  <Header
+    navTree={NavTreeMega}
     title={"Ira A. Fulton Schools of Engineering"}
     subtitle={
       "School of Computing, Informatics, and Decisions Systems Engineering"

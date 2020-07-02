@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
 import { useEffect, useState, useCallback, useMemo } from "preact/compat";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import * as S from "./styles";
@@ -12,8 +13,9 @@ import * as S from "./styles";
  */
 const Nav = props => {
   const [focused, setFocus] = useState([-1, -1, -1]);
-  const width = props.width;
   const navTree = props.navTree;
+  // get window dimensions
+  const { height, width } = useWindowDimensions();
 
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
@@ -38,13 +40,17 @@ const Nav = props => {
         // passed down to the DropNav to manage focus
         for (let i = 0; i < items.length; i++) {
           for (let j = 0; j < items[i].length; j++) {
-            const childRef = createRef();
-
             if (!menus[i]) {
               menus[i] = [];
             }
+
             menus[i][j] = Object.assign({}, items[i][j]);
-            menus[i][j].ref = childRef;
+
+            // Heading isn't focusable, so don't pass ref
+            if (items[i][j].type != "heading") {
+              const childRef = createRef();
+              menus[i][j].ref = childRef;
+            }
           }
         }
       }
@@ -101,8 +107,10 @@ const Nav = props => {
       }
 
       if (derState.isTop) {
-        navList[loc[0]].ref.current.focus();
-      } else {
+        if (navList[loc[0]].ref) {
+          navList[loc[0]].ref.current.focus();
+        }
+      } else if (navList[loc[0]].menus[loc[1]][loc[2]].ref) {
         navList[loc[0]].menus[loc[1]][loc[2]].ref.current.focus();
       }
     }
@@ -155,17 +163,15 @@ const Nav = props => {
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
-  mobileOpen: PropTypes.bool
+  mobileOpen: PropTypes.bool,
 };
 
 Nav.defaultProps = {
   navTree: [],
-  mobileOpen: false
+  mobileOpen: false,
 };
 
-
-
-const DropNav = ({item, submenus, mobileWidth, ...props}) => {
+const DropNav = ({ item, submenus, mobileWidth, ...props }) => {
   const width = props.width;
   const setFocus = props.setFocus;
   const pIndex = props.pIndex;
@@ -250,16 +256,16 @@ DropNav.propTypes = {
     // Either a function
     PropTypes.func,
     // Or the instance of a DOM native element (see the note about SSR)
-    PropTypes.shape({ current: PropTypes.instanceOf(Element)}),
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
   mobileWidth: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
 };
 
 DropNav.defaultProps = {
   menus: [],
   top: false,
-  mobileWidth: 992
+  mobileWidth: 992,
 };
 
 /***************** Utility functions **************/
@@ -384,7 +390,7 @@ const moveDown = (state, dstate, navList) => {
   } else if (dstate.isTop) {
     move = moveRight(state, dstate, navList);
 
-    // Move down the submenu if able
+  // Move down the submenu if able
   } else {
     const x = state[1];
     const y = state[2];
@@ -395,7 +401,29 @@ const moveDown = (state, dstate, navList) => {
         : moveRight(state, dstate, navList);
   }
 
+  if (checkFocus(move, navList) === false)  {
+    return moveDown(move, deriveState(move, navList), navList);
+  }
+
   return move;
+};
+
+const checkFocus = (move, navList) => {
+  const dstate = deriveState(move, navList);
+
+  if (!dstate.hasFocus) {
+    return false;
+  }
+
+  if (dstate.isTop) {
+    if (navList[move[0]].ref) {
+      return true;
+    }
+  } else if (navList[move[0]].menus[move[1]][move[2]].ref) {
+    return true;
+  }
+
+  return false;
 };
 
 export default Nav;

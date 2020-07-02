@@ -3,13 +3,11 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/compat";
 import PropTypes from "prop-types";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 import * as S from "./styles";
 import Nav from "../Nav";
 
-const Header = props => {
-  // get window dimensions
-  const { height, width } = useWindowDimensions();
+const Header = ({navTree, title, subtitle, logo, ...props}) => {
+
 
   const [open, setOpen] = useState(false);
 
@@ -34,15 +32,12 @@ const Header = props => {
           <div id="asu-generated-stub" />
         ) : (
           <Fragment>
-            <S.Logo {...props.logo} />
-            <S.Title {...{ title: props.title, subtitle: props.subtitle }} />
+            <S.Logo {...logo} />
+            <S.Title {...{ title, subtitle }} />
             <Nav
               {...{
-                navTree: props.navTree,
-                title: props.title,
-                subtitle: props.subtitle,
-                logo: props.logo,
-                width,
+                navTree,
+                logo,
                 mobileOpen: open,
               }}
             />

@@ -32,9 +32,20 @@ const NavItem = props => {
         </span>
       );
       break;
+
+    case "heading":
+      inner = (
+          <h4>{item.text}</h4>
+      );
+      break;
     default:
       inner = item.text;
       break;
+  }
+
+  // return the heading without a link if item type is heading
+  if (item.type == "heading") {
+    return inner;
   }
 
   return (

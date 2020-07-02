@@ -14,7 +14,7 @@ const Nav = props => {
       > ul {
         display: flex;
         flex-direction: row;
-        cursor: pointer;
+
 
         li {
           position: relative;
@@ -38,7 +38,8 @@ const Nav = props => {
           }
 
           div.header-nav-open {
-            display: block;
+            display: flex;
+            flex-direction: row;
             position: absolute;
           }
         }
@@ -53,24 +54,38 @@ const Nav = props => {
           > ul {
             flex-direction: column;
             div.header-nav-open {
-              display: flex;
               flex-direction: column;
               position: relative;
               top: 100%;
               left: 0;
             }
 
-            li {
+            > li {
               border-bottom: 1px solid #cccccc;
             }
           }
         }
       }
     }
+
+    * {
+      list-style: none;
+    }
 `;
 
   return (
-    <nav class={cx("header-nav", props.class ? props.class : "")}>
+    <nav
+      class={cx(
+        "header-nav",
+        props.class ? props.class : "",
+        css`
+          list-style: none;
+          a {
+            cursor: pointer;
+          }
+        `
+      )}
+    >
       {props.children}
     </nav>
   );
@@ -90,11 +105,35 @@ const DdMenu = props => {
           list-style: none;
           background-color: #ffffff;
           background-clip: padding-box;
-          border: 1px solid rgba(0, 0, 0, 0.15);
-          border-radius: 0.25rem;
+          min-width: 10rem;
+          color: #191919;
+          border: 1px solid #e8e8e8;
+          border-radius: 0;
+          margin: -1px 0 0 0;
+          border-top: 1px solid #ffffff;
+          padding: 2rem;
+
+          h4 {
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+          }
 
           > ul {
             flex-direction: column;
+            width: 16rem;
+            padding-right: 1.5rem;
+            border-right: 1px solid #bfbfbf;
+            margin-right: 1.5rem;
+
+            :last-of-type {
+              margin-right: 0;
+              padding-right: 0;
+              border-right: 0;
+            }
+
+            > li {
+              padding: 0.5rem 0;
+            }
           }
         `,
         props.open ? "header-nav-open" : ""
