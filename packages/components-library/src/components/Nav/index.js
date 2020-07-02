@@ -165,12 +165,10 @@ Nav.defaultProps = {
 
 
 
-const DropNav = props => {
-  const item = props.item;
+const DropNav = ({item, submenus, mobileWidth, ...props}) => {
   const width = props.width;
   const setFocus = props.setFocus;
   const pIndex = props.pIndex;
-  const submenus = props.submenus;
 
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -188,7 +186,9 @@ const DropNav = props => {
       // only change state if focus moves away from
       // container element
       if (!e.currentTarget.contains(e.relatedTarget)) {
-        setOpen(false);
+        if (width > mobileWidth) {
+          setOpen(false);
+        }
       }
     },
     [open]
@@ -242,24 +242,27 @@ const DropNav = props => {
 DropNav.propTypes = {
   setFocus: PropTypes.func,
   location: PropTypes.array, // Array representation of the item's location in the Nav
-  item: PropTypes.object, // top level nav item
-  submenus: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)), // submenus
+  item: PropTypes.object.isRequired, // top level nav item
+  submenus: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired, // submenus
   topRef: PropTypes.oneOfType([
     // ref to actual DOM node of nav item
     // https://stackoverflow.com/questions/48007326/what-is-the-correct-proptype-for-a-ref-in-react
     // Either a function
     PropTypes.func,
     // Or the instance of a DOM native element (see the note about SSR)
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ])
+    PropTypes.shape({ current: PropTypes.instanceOf(Element)}),
+  ]),
+  mobileWidth: PropTypes.number,
+  width: PropTypes.number
 };
 
 DropNav.defaultProps = {
   menus: [],
   top: false,
+  mobileWidth: 992
 };
 
-/*** Utility functions */
+/***************** Utility functions **************/
 
 /***
  * Helper function returns more info about current focus state

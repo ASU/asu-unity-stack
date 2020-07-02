@@ -18,7 +18,7 @@ const NavItem = props => {
     case "button":
       {
         const bprops = {
-          medium: true,
+          small: true,
           ...(item.color && { [item.color]: true }),
         };
 
