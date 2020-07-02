@@ -191,7 +191,7 @@ Footer - Table of Contents
 
 // #footer-columns, up to desktop
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   #footer-columns {
     padding: $uds-size-spacing-6 0;
 
