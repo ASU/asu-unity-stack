@@ -16,11 +16,14 @@ const NavItem = props => {
 
   switch (item.type) {
     case "button":
-      inner = (
-        <Button {...(item.color ? item.color : "")} medium>
-          {item.text}
-        </Button>
-      );
+      {
+        const bprops = {
+          medium: true,
+          ...(item.color && { [item.color]: true }),
+        };
+
+        inner = <Button {...bprops}>{item.text}</Button>;
+      }
       break;
     case "icon":
       inner = (

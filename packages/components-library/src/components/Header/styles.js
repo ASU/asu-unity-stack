@@ -6,73 +6,74 @@ import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-injectGlobal`
-.header-logo {
-  float: left;
-  display: inline-block;
-  margin-right: 1.5rem;
-
-  .logo-mobile {
-    display: none;
-  }
-
-  img {
-    height: 80px;
-  }
-
-  @media (max-width: ${mobileBreak}) {
-    float: none;
-
-    img {
-      float: none;
-      height: 32px;
-    }
-
-    .logo-full {
-      display: none;
-    }
-    .logo-mobile {
-      display: inline-block;
-      float: none;
-      height: 32px;
-    }
-  }
-}
-
-.header-title {
-  span {
-    font-weight: bold;
-    font-size: 1rem;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-
-    @media (max-width: ${mobileBreak}) {
-      display: none;
-    }
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-
-    @media (max-width: ${mobileBreak}) {
-      font-size: 1rem;
-      display: inline;
-      line-height: -1rem;
-    }
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-size: 100%;
-} `;
-
 const Header = props => {
+
+  injectGlobal`
+    .header-logo {
+      float: left;
+      display: inline-block;
+      margin-right: 1.5rem;
+
+      .logo-mobile {
+        display: none;
+      }
+
+      img {
+        height: 80px;
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        float: none;
+
+        img {
+          float: none;
+          height: 32px;
+        }
+
+        .logo-full {
+          display: none;
+        }
+        .logo-mobile {
+          display: inline-block;
+          float: none;
+          height: 32px;
+        }
+      }
+    }
+
+    .header-title {
+      span {
+        font-weight: bold;
+        font-size: 1rem;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+
+        @media (max-width: ${mobileBreak}) {
+          display: none;
+        }
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        @media (max-width: ${mobileBreak}) {
+          font-size: 1rem;
+          display: inline;
+          line-height: -1rem;
+        }
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+      font-size: 100%;
+    }`;
+
   return (
     <header
       className={css`
