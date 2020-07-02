@@ -1,30 +1,31 @@
 // ASU Design System Banner styles without Bootstrap variables to override.
 
 .banner {
+  position: relative;
   display: flex;
-  padding: 2rem;
+  padding: $uds-size-spacing-4;
 
   .banner-icon {
     flex: 1;
     text-align: right;
     svg {
-      font-size: 2rem;
-      margin: 0.25rem 1rem;
+      font-size: $uds-size-spacing-4;
+      margin: ($uds-size-spacing-1 / 2) $uds-size-spacing-4;
     }
   }
   .banner-content {
     flex: 5;
-    margin-right: 2rem;
+    margin-right: $uds-size-spacing-4;
     h3 {
-      margin: 0.5rem 0;
+      margin: $uds-size-spacing-1 $uds-size-spacing-0;
     }
   }
   .banner-buttons {
     flex: 3;
     a,
     button {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: $uds-size-spacing-1;
+      margin-bottom: $uds-size-spacing-1;
     }
     // Do buttons in their own flexbox, column-style, no stretching.
     display: flex;
@@ -33,69 +34,75 @@
   }
   .banner-close {
     flex: 2;
+    margin-top: -$uds-size-spacing-2;
+    margin-right: -$uds-size-spacing-2;
   }
 }
 
 .banner-green {
-  background: #78be20 0% 0% no-repeat padding-box;
+  background: $uds-color-base-green 0% 0% no-repeat padding-box;
   a:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
   a:visited:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
 }
 .banner-orange {
-  background: #ff7f32 0% 0% no-repeat padding-box;
+  background: $uds-color-base-orange 0% 0% no-repeat padding-box;
   a:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
   a:visited:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
 }
 .banner-blue {
-  background: #00a3e0 0% 0% no-repeat padding-box;
+  background: $uds-color-base-blue 0% 0% no-repeat padding-box;
   a:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
   a:visited:not(.btn) {
-    color: #191919;
+    color: $uds-color-font-dark-base;
   }
 }
 .banner-gray {
-  background: #e8e8e8 0% 0% no-repeat padding-box;
+  background: $uds-color-background-gray 0% 0% no-repeat padding-box;
 }
 .banner-black {
-  background: #191919 0% 0% no-repeat padding-box;
-  color: #ffffff;
+  background: $uds-color-background-dark 0% 0% no-repeat padding-box;
+  color: $uds-color-base-white;
   a:not(.btn) {
-    color: #ffc627;
+    color: $uds-color-font-light-link;
   }
   a:visited:not(.btn) {
-    color: #7f6227;
+    color: $uds-color-font-light-visited;
+    // May need the following instead for proper contrast.
+    //color: #ffc627;
   }
 }
 
 // Media Queries
 .banner {
-  // Mobile tweaks.
-  @media screen and (max-width: 576px) {
+  // Mobile tweaks. 576px
+  @media screen and (max-width: $uds-breakpoint-sm) {
     flex-direction: column;
     .banner-icon {
       text-align: left;
       svg {
-        font-size: 2.5rem;
-        margin: 0;
+        font-size: $uds-size-spacing-5;
+        margin: $uds-size-spacing-0;
       }
     }
     .banner-content {
-      margin-bottom: 1rem;
+      margin-bottom: $uds-size-spacing-2;
     }
     .banner-close {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: $uds-size-spacing-2;
+      right: $uds-size-spacing-2;
+      margin-top: initial;
+      margin-right: initial;
     }
   }
 }

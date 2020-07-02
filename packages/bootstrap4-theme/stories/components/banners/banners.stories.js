@@ -8,9 +8,7 @@ storiesOf('Components/Banners', module)
   // TODO FLEXBOX THIS SUCKER.
   // TODO Re-namespace the top level class and copy over rules.
 
-.add('Banners', () => `
-  <!--<div class="alert alert-warning" role="alert">-->
-
+.add('Banners, green', () => `
   <div class="banner banner-green" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
@@ -30,9 +28,9 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
     </div>
   </div>
+  `)
 
-  <br>
-
+  .add('Banners, orange', () => `
   <div class="banner banner-orange" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
@@ -52,9 +50,9 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
     </div>
   </div>
+  `)
 
-  <br>
-
+  .add('Banners, blue', () => `
   <div class="banner banner-blue" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
@@ -74,9 +72,9 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
     </div>
   </div>
+  `)
 
-  <br>
-
+  .add('Banners, gray', () => `
   <div class="banner banner-gray" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
@@ -96,9 +94,9 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
     </div>
   </div>
+  `)
 
-  <br>
-
+  .add('Banners, black', () => `
   <div class="banner banner-black" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
