@@ -6,17 +6,15 @@ import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-console.log(mobileBreak, 'THE mobile breakpoint');
-
 const Nav = props => {
   /** Inject Global Styles */
   injectGlobal`
     nav.header-nav {
-      border-bottom: 1px solid #cccccc;
-      padding-bottom: 0;
+
       > ul {
         display: flex;
         flex-direction: row;
+        cursor: pointer;
 
         li {
           position: relative;
@@ -61,6 +59,10 @@ const Nav = props => {
               top: 100%;
               left: 0;
             }
+
+            li {
+              border-bottom: 1px solid #cccccc;
+            }
           }
         }
       }
@@ -68,7 +70,7 @@ const Nav = props => {
 `;
 
   return (
-    <nav className={cx("header-nav", props.className ? props.className : "")}>
+    <nav class={cx("header-nav", props.class ? props.class : "")}>
       {props.children}
     </nav>
   );
@@ -77,7 +79,7 @@ const Nav = props => {
 const DdMenu = props => {
   return (
     <div
-      className={cx(
+      class={cx(
         css`
           background-color: white;
           z-index: 1000;

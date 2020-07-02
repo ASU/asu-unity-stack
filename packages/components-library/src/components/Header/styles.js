@@ -76,9 +76,9 @@ const Header = props => {
 
   return (
     <header
-      className={css`
+      class={css`
         padding: 0;
-
+        border-bottom: 1px solid #cccccc;
         div,
         h1 {
           font-family: Arial, sans-serif;
@@ -93,7 +93,7 @@ const Header = props => {
 const UniversalNav = props => {
   return (
     <div
-      className={css`
+      class={css`
         background-color: #e8e8e8;
         text-align: right;
 
@@ -123,7 +123,7 @@ const UniversalNav = props => {
 const PrimaryNav = props => {
   return (
     <div
-      className={css`
+      class={css`
         padding-top: 1rem;
         background-color: #ffffff;
 
@@ -165,7 +165,7 @@ const IconHamburger = props => {
   return (
     <div
       {...props}
-      className={css`
+      class={css`
         float: right;
         display: none;
         font-size: 1.4rem;
