@@ -16,6 +16,7 @@ storiesOf('Components/Sidebar', module)
 
         <nav id="sidebar-left" class="sidebar accordion" aria-label="Secondary">
 
+          <div class="nav-text">Continue to</div>
           <a class="nav-link" href="#">Default Link</a>
           <a class="nav-link active" href="#">Active Link</a>
 
@@ -29,7 +30,7 @@ storiesOf('Components/Sidebar', module)
             </div><!-- end .card-header -->
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent=".sidebar">
               <a href="#" class="nav-link">A Long Link Total that is two or more lines of text</a>
-              <a href="https://espn.com" class="nav-link">Another link here</a>
+              <a href="#" class="nav-link">Another link here</a>
               <a href="#" class="nav-link active">One more link</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
