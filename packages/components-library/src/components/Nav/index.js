@@ -100,18 +100,18 @@ const Nav = props => {
     const derState = deriveState(focused, navList);
 
     if (derState.hasFocus) {
-      const loc = focused;
+      const [x,y,z] = focused;
 
-      if (loc[0] === -1 && loc[1] === -1 && loc[2] === -1) {
+      if (x === -1 && y === -1 && z === -1) {
         return false;
       }
 
       if (derState.isTop) {
-        if (navList[loc[0]].ref) {
-          navList[loc[0]].ref.current.focus();
+        if (navList[x].ref) {
+          navList[x].ref.current.focus();
         }
-      } else if (navList[loc[0]].menus[loc[1]][loc[2]].ref) {
-        navList[loc[0]].menus[loc[1]][loc[2]].ref.current.focus();
+      } else if (navList[x].menus[y][z].ref) {1
+        navList[x].menus[y][z].ref.current.focus();
       }
     }
   }, [focused, navList]);
@@ -274,13 +274,13 @@ DropNav.defaultProps = {
  * Helper function returns more info about current focus state
  */
 const deriveState = (state, navList) => {
-  const loc = state;
+  const [x, y, z] = state;
   let hasFocus = false;
   let isTop = false;
   let hasSubs = false;
 
   // nothing has focus
-  if (loc[0] == -1 && loc[1] == -1 && loc[2] == -1) {
+  if (x == -1 && y == -1 && z == -1) {
     return {
       hasFocus,
     };
@@ -289,12 +289,12 @@ const deriveState = (state, navList) => {
   hasFocus = true;
 
   // Does current top level item have submenus
-  if (navList[loc[0]].menus.length > 0) {
+  if (navList[x].menus.length > 0) {
     hasSubs = true;
   }
 
   // Is top level item focused ?
-  isTop = loc[1] === -1 || loc[2] === -1;
+  isTop = y === -1 || z === -1;
 
   return {
     hasFocus,
@@ -306,16 +306,28 @@ const deriveState = (state, navList) => {
 /** Move focus left.
  * Calculate and return a state array containing the next position. */
 const moveLeft = (state, dstate, navList) => {
-  const topIndex = state[0];
+  const [x, y, z] = state;
   // initialize to current position
   let move = state;
 
+  // if we're on a submenu with sibling submenus, move to next menu
+  if (!dstate.isTop) {
+    if (typeof navList[x].menus[y - 1] !== "undefined") {
+
+      // if next submenu has heading, move to first item
+      //TODO: could a column have a heading with no items under?
+      return navList[x].menus[y-1][0].ref ? [x, y-1, 0] : [x, y-1, 1];
+    }
+  }
+
   move =
-    typeof navList[topIndex - 1] !== "undefined"
-      ? [topIndex - 1, -1, -1]
+    typeof navList[x - 1] !== "undefined"
+      ? [x - 1, -1, -1]
       : [0, -1, -1];
 
-  // TODO: handle mega menu case
+  if (checkFocus(move, navList) === false)  {
+    return moveLeft(move, deriveState(move, navList), navList);
+  }
 
   return move;
 };
@@ -323,17 +335,30 @@ const moveLeft = (state, dstate, navList) => {
 /** Move focus right.
  * Calculate and return a state array containing the next position. */
 const moveRight = (state, dstate, navList) => {
-  const topIndex = state[0];
+  const [x, y, z] = state;
 
   // initialize to current position
   let move = state;
 
+  // if we're on a submenu with sibling submenus, move to next menu
+  if (!dstate.isTop) {
+    if (typeof navList[x].menus[y + 1] !== "undefined") {
+
+      // if next submenu has heading, move to first item
+      //TODO: could a column have a heading with no items under?
+      return navList[x].menus[y+1][0].ref ? [x, y+1, 0] : [x, y+1, 1];
+    }
+  }
+
   move =
-    typeof navList[topIndex + 1] !== "undefined"
-      ? [topIndex + 1, -1, -1]
+    typeof navList[x + 1] !== "undefined"
+      ? [x + 1, -1, -1]
       : [navList.length - 1, -1, -1];
 
   // TODO: handle mega menu case
+  if (checkFocus(move, navList) === false)  {
+    return moveRight(move, deriveState(move, navList), navList);
+  }
 
   return move;
 };
@@ -341,13 +366,13 @@ const moveRight = (state, dstate, navList) => {
 /** Move focus up.
  * Calculate and return a state array containing the next position. */
 const moveUp = (state, dstate, navList) => {
-  const topIndex = state[0];
+  const [x, y, z] = state;
   let menus = [];
   // initialize to current position
   let move = state;
 
   if (dstate.hasSubs) {
-    menus = navList[topIndex].menus;
+    menus = navList[x].menus;
   }
 
   // handle moving focus from top parent
@@ -355,15 +380,17 @@ const moveUp = (state, dstate, navList) => {
     // stay on same node if at top of menu
     move = moveLeft(state, dstate, navList);
 
-    // handle moving focus up submenu
+  // handle moving focus up submenu
   } else {
-    const x = state[1];
-    const y = state[2];
 
     move =
       typeof menus[x][y - 1] !== "undefined"
-        ? [topIndex, x, y - 1]
-        : [topIndex, -1, -1];
+        ? [x, y, z - 1]
+        : [x, -1, -1];
+  }
+
+  if (checkFocus(move, navList) === false)  {
+    return moveUp(move, deriveState(move, navList), navList);
   }
 
   return move;
@@ -372,19 +399,19 @@ const moveUp = (state, dstate, navList) => {
 /** Move focus up.
  * Calculate and return a state array containing the next position. */
 const moveDown = (state, dstate, navList) => {
-  const topIndex = state[0];
+  const [x, y, z] = state;
   let menus = [];
   // initialize to current position
   let move = state;
 
   if (dstate.hasSubs) {
-    menus = navList[topIndex].menus;
+    menus = navList[x].menus;
   }
 
   // handle moving focus from top parent
   if (dstate.isTop && dstate.hasSubs) {
     // Move to first item of first submenu
-    move = [topIndex, 0, 0];
+    move = [x, 0, 0];
 
     // Move focus to the right if on top with no children
   } else if (dstate.isTop) {
@@ -392,12 +419,10 @@ const moveDown = (state, dstate, navList) => {
 
   // Move down the submenu if able
   } else {
-    const x = state[1];
-    const y = state[2];
 
     move =
-      typeof menus[x][y + 1] !== "undefined"
-        ? [topIndex, x, y + 1]
+      typeof menus[y][z + 1] !== "undefined"
+        ? [x, y, z + 1]
         : moveRight(state, dstate, navList);
   }
 

@@ -2,9 +2,14 @@
 
 import { h } from "preact";
 import { withA11y } from "@storybook/addon-a11y";
-import { BasicNavTree, NavTreeWithButtons, NavTreeMega } from "../Nav/NavTreeExample";
+import {
+  BasicNavTree,
+  NavTreeWithButtons,
+  NavTreeMega,
+} from "../Nav/NavTreeExample";
 
 import Header from ".";
+import { Fragment } from "react";
 
 export default {
   component: Header,
@@ -13,13 +18,16 @@ export default {
 };
 
 export const base = () => (
-  <Header
-    navTree={BasicNavTree}
-    title={"Ira A. Fulton Schools of Engineering"}
-    subtitle={
-      "School of Computing, Informatics, and Decisions Systems Engineering"
-    }
-  />
+  <Fragment>
+    <Header
+      navTree={BasicNavTree}
+      title={"Ira A. Fulton Schools of Engineering"}
+      subtitle={
+        "School of Computing, Informatics, and Decisions Systems Engineering"
+      }
+    />
+    <div style={"background-color:#8c1e40; width:100%; height:50vh;"} />
+  </Fragment>
 );
 
 export const withButtons = () => (

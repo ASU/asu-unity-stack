@@ -72,13 +72,21 @@ const Header = props => {
       text-decoration: none;
       list-style: none;
       font-size: 100%;
-    }`;
+    }
+
+    form {
+      display: inline-flex;
+    }
+
+    `;
 
   return (
     <header
       class={css`
         padding: 0;
         border-bottom: 1px solid #cccccc;
+        display: flex;
+        flex-direction: column;
         div,
         h1 {
           font-family: Arial, sans-serif;

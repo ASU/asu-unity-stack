@@ -6,12 +6,25 @@ import PropTypes from "prop-types";
 import * as S from "./styles";
 import Nav from "../Nav";
 
-const Header = ({navTree, title, subtitle, logo, ...props}) => {
-
-
+const Header = ({
+  navTree,
+  title,
+  subtitle,
+  logo,
+  loggedIn,
+  userName,
+  loginLink,
+  logoutLink,
+  ...props
+}) => {
   const [open, setOpen] = useState(false);
+  const [openSearch, setSearchOpen] = useState(false);
 
   const toggle = () => setOpen(oldOpen => !oldOpen);
+  const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
+
+  // TODO: handle custom searchh
+  const defaultSearchForm = (<form action={"https://search.asu.edu/search"} method={"get"} role={"search"}><input name={"q"} placeholder={"Search"} type={"text"} /></form>)
 
   return (
     <S.Header>
@@ -20,9 +33,17 @@ const Header = ({navTree, title, subtitle, logo, ...props}) => {
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          <a href="#">Sign in</a>
-          <a href="https://search.asu.edu">
-            <i className="fa fa-search" />
+          {loggedIn ? (
+            <span>
+              {userName}
+              <a href={logoutLink}>Sign Out</a>
+            </span>
+          ) : (
+            <a href={loginLink}>Sign in</a>
+          )}
+          {openSearch ? defaultSearchForm : ""}
+          <a>
+            <i class="fa fa-search" onMouseDown={toggleSearch} />
           </a>
         </div>
       </S.UniversalNav>
@@ -58,6 +79,9 @@ Header.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   loggedIn: PropTypes.bool,
+  userName: PropTypes.string,
+  loginLink: PropTypes.string,
+  logoutLink: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -72,6 +96,9 @@ Header.defaultProps = {
   title: "",
   subtitle: "",
   loggedIn: false,
+  userName: "",
+  loginLink: "https://weblogin.asu.edu/cas/login",
+  logoutLink: "https://weblogin.asu.edu/cas/logout",
 };
 
 export default Header;
