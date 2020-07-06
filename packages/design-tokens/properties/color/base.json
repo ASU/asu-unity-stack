@@ -43,26 +43,26 @@
       },
       "gray": {
         "1": {
-          "value": "#191919",
-          "comment": "Base font color and default black level"
+          "value": "#FAFAFA"
         },
         "2": {
-          "value": "#484848"
+          "value": "#E8E8E8"
         },
         "3": {
-          "value": "#747474"
+          "value": "#D0D0D0"
         },
         "4": {
           "value": "#BFBFBF"
         },
         "5": {
-          "value": "#D0D0D0"
+          "value": "#747474"
         },
         "6": {
-          "value": "#E8E8E8"
+          "value": "#484848"
         },
         "7": {
-          "value": "#FAFAFA"
+          "value": "#191919",
+          "comment": "Base font color and default black level"
         }
       }
     }

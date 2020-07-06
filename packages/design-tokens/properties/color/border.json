@@ -2,11 +2,11 @@
   "color": {
     "border": {
       "light": {
-        "value": "{color.base.gray.6.value}",
+        "value": "{color.base.gray.2.value}",
         "comment": "Border - Light"
       },
       "base": {
-        "value": "{color.base.gray.5.value}",
+        "value": "{color.base.gray.3.value}",
         "comment": "Border - Base"
       },
       "dark": {

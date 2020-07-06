@@ -1,8 +1,20 @@
-//
-// Cards
-//
+/*------------------------------------------------------------------
+Cards - Table of Contents
+
+1. Basic Cards
+2. Degree Cards
+3. Story Cards
+4. Event Cards
+5. Foldable Cards
+6. Foldable - Desktop Disable
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+1. Basic Cards
+--------------------------------------------------------------------*/
+
 .card {
-  height:$uds-component-card-basic-height-percent;
+  height: $uds-component-card-basic-height-percent;
   display: $uds-component-card-basic-display;
   flex-direction: $uds-component-card-basic-flex-direction;
 }
@@ -76,7 +88,7 @@
   }
 }
 .card-header .card-title {
-  margin:0;
+  margin: 0;
 }
 .card-title a,
 .card-title a:visited {
@@ -87,6 +99,10 @@
   text-decoration: $uds-component-card-basic-title-link-text-decoration-hover;
 }
 
+/*------------------------------------------------------------------
+2. Degree Cards
+--------------------------------------------------------------------*/
+
 .card-degree .card-header .card-title:after {
   content: $uds-component-card-degree-title-underline-content;
   width: $uds-component-card-degree-title-underline-width;
@@ -96,14 +112,14 @@
   margin-top: $uds-component-card-degree-title-underline-margin-top;
 }
 .card-degree .card-footer {
-  background-color:$white;
+  background-color: $white;
 }
 .card-footer-link a,
 .card-footer-link a:visited {
   color: $black;
   text-decoration: none;
   font-weight: bold;
-  display:block;
+  display: block;
 }
 .card-footer-link a:hover {
   text-decoration: underline;
@@ -114,17 +130,22 @@
   width: 20px;
   content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
 }
+
+/*------------------------------------------------------------------
+3. Story Cards
+--------------------------------------------------------------------*/
+
 .card-story .card-header,
 .card-story .card-body,
 .card-story .card-button,
 .card-story .card-footer {
   margin: $uds-component-card-story-body-margin;
-  background-color:$white;
-  padding:24px;
-  padding-top:0;
+  background-color: $white;
+  padding: 24px;
+  padding-top: 0;
 }
 .card-story .card-header {
-  padding-top:24px;
+  padding-top: 24px;
 }
 .card-story .card-footer {
   padding: $uds-component-card-basic-footer-link-padding;
@@ -145,6 +166,135 @@
     margin: $uds-component-card-story-body-margin-sm;
   }
 }
+
+/*------------------------------------------------------------------
+4. Event Cards
+--------------------------------------------------------------------*/
 .card-event .card-header {
   border-top: solid 4px $gold;
+}
+
+/*------------------------------------------------------------------
+5. Foldable Cards
+--------------------------------------------------------------------*/
+@mixin btn-transparent {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.card-foldable {
+  border-color: $uds-color-base-gray-3;
+  border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
+  height: auto;
+
+  .card-header {
+    padding: $uds-size-spacing-1;
+
+    &:hover {
+      background-color: $uds-color-base-gray-1;
+    }
+
+    h4,
+    h5 {
+      margin: 0;
+
+      a {
+        padding: $uds-size-spacing-1 $uds-size-spacing-3;
+        color: $uds-color-base-gray-7;
+        text-decoration: none;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        svg.fa-chevron-up {
+          margin-left: $uds-size-spacing-3;
+          transition-duration: $uds-time-transition-base;
+        }
+
+        &.collapsed svg.fa-chevron-up {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    + .card-body {
+      border-top: 1px solid $uds-color-base-gray-3;
+    }
+  }
+
+  .card-body {
+    background-color: $uds-color-base-gray-1;
+
+    > p:first-child {
+      margin-top: $uds-size-spacing-2;
+    }
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+6. Foldable - Desktop Disable
+--------------------------------------------------------------------*/
+@mixin desktop-disable {
+  border-left: 1px solid $uds-color-base-gray-3;
+  .card-header {
+    h4 a {
+      padding-top: $uds-size-spacing-4;
+      padding-bottom: $uds-size-spacing-4;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    svg {
+      display: none;
+    }
+    span {
+      display: none;
+    }
+  }
+  .card-header + .card-body {
+    border-top: 0;
+  }
+  .card-body {
+    background-color: transparent;
+
+    > p:first-child {
+      margin-top: 0;
+    }
+  }
+  .collapse {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+    &:not(.show) {
+      display: block;
+    }
+  }
+  .collapsing {
+    position: relative;
+    height: unset !important;
+    overflow: hidden;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .card-foldable.desktop-disable-xl {
+    @include desktop-disable;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .card-foldable.desktop-disable-lg {
+    @include desktop-disable;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .card-foldable.desktop-disable-md {
+    @include desktop-disable;
+  }
 }

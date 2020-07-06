@@ -164,6 +164,11 @@
           }
         }
       },
+      "default": {
+        "font-size": {
+          "value": "1"
+        }
+      },
       "small": {
         "font-size": {
           "value": "0.75"
