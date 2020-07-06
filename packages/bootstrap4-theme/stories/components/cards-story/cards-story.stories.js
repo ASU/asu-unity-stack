@@ -1,7 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 import exampleImage from '../cards-basic/example-image.jpg';
-
+/*
 storiesOf('Components/Cards - story', module)
   .addParameters({
     happo: false,
@@ -71,7 +71,7 @@ storiesOf('Components/Cards - story', module)
           <div class="card-body">
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
-          </div> 
+          </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
       <div class="col col-sm-4">
@@ -285,3 +285,4 @@ storiesOf('Components/Cards - story', module)
   </div>
   `)
 ;
+*/
