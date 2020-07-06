@@ -35,3 +35,17 @@ body {
 .text-capitalize {
   text-transform: capitalize !important;
 }
+
+// No underlines allowed.
+u,
+ins {
+  text-decoration-line: none;
+  font-style: italic;
+}
+
+// No underlines allowed.
+abbr {
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: initial !important;
+}

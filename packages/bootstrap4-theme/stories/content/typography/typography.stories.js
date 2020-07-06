@@ -36,7 +36,7 @@ storiesOf('Content/Typography', module)
   .add('Display headings', () => `<h1 class="display-1">Display 1</h1>
   <h1 class="display-2">Display 2</h1>
   <h1 class="display-3">Display 3</h1>
-  <h1 class="display-4">Display 4</h1>`) 
+  <h1 class="display-4">Display 4</h1>`)
   */
 
   .add('ASU Headings', () => `<div class="container-fluid"><div class="col col-sm-12 p-3"><h1>Heading 1</h1>
@@ -113,11 +113,12 @@ storiesOf('Content/Typography', module)
   .add('Inline text elements', () => `<p>You can use the mark tag to <mark>highlight</mark> text.</p>
   <p><del>This line of text is meant to be treated as deleted text.</del></p>
   <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
-  <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-  <p><u>This line of text will render as underlined</u></p>
   <p><small>This line of text is meant to be treated as fine print.</small></p>
   <p><strong>This line rendered as bold text.</strong></p>
-  <p><em>This line rendered as italicized text.</em></p>`)
+  <p><em>This line rendered as italicized text.</em></p>
+  <p><u>Text inside the u tag text will render as italicized. Underline is only for use by links. </u></p>
+  <p><ins>The ins tag is meant to indicate an addition to the document and renders as italicized.</ins></p>
+  `)
 
   .add('Abbreviations', () => `<p><abbr title="attribute">attr</abbr></p>
   <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>`)
