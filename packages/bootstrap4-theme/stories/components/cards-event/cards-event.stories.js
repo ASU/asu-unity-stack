@@ -1,7 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 import exampleImage from './example-image.jpg';
-
+/*
 storiesOf('Components/Cards - event', module)
   .addParameters({
     happo: false,
@@ -35,28 +35,7 @@ storiesOf('Components/Cards - event', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-sm-8">
-        <div style="background-color:#e5e5e5;padding:16px;">
-        <strong>Correct markup for card components<br/><br/></strong>
-          <pre>
-&lt;div class="card"&gt;
-  &lt;img class="card-img-top" /&gt; (optional)
-  &lt;div class="card-header"&gt;
-    Any brand aligned heading
-  &lt;/div&gt;
-  &lt;div class="card-body"&gt;
-    Any brand aligned body content (optional)
-  &lt;/div&gt;
-  &lt;div class="card-button"&gt;
-    One brand aligned button (optional)
-  &lt;/div&gt;
-  &lt;div class="card-footer"&gt;
-     Not used in basic card
-  &lt;/div&gt;
-&lt;/div&gt;
-          </pre>
-        </div>
-      </div>
+
     </div>
   `)
 
@@ -88,10 +67,10 @@ storiesOf('Components/Cards - event', module)
     </div>
   `)
 
-  .add('Variations', () => `
+  .add('Vertical cards', () => `
   <div class="container-fluid">
     <div class="row pt-2 pb-2">
-      <div class="col col-12 col-md-4">
+      <div class="col col-12 col-lg-4">
         <div class="card card-event">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
@@ -116,7 +95,7 @@ storiesOf('Components/Cards - event', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-12 col-md-4">
+      <div class="col col-12 col-lg-4">
         <div class="card card-event">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
@@ -138,7 +117,7 @@ storiesOf('Components/Cards - event', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-12 col-md-4">
+      <div class="col col-12 col-lg-4">
         <div class="card card-event">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
@@ -159,11 +138,13 @@ storiesOf('Components/Cards - event', module)
     </div>
   </div>
 
-<hr/>
+
+  `)
+  .add('Horizontal cards', () => `
 
   <div class="container-fluid">
     <div class="row pt-2 pb-2">
-      <div class="col col-12 col-md-6">
+      <div class="col col-12 col-md-12 col-lg-6">
         <div class="card card-event card-event-horizontal">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-content-wrapper">
@@ -186,7 +167,7 @@ storiesOf('Components/Cards - event', module)
           </div>
         </div> <!-- .card -->
       </div> <!-- .col -->
-      <div class="col col-12 col-md-6">
+      <div class="col col-12 col-md-12 col-lg-6">
         <div class="card card-event card-event-horizontal">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-content-wrapper">
@@ -212,7 +193,7 @@ storiesOf('Components/Cards - event', module)
 
     <div class="container-fluid">
       <div class="row pt-2 pb-2">
-        <div class="col col-12 col-md-6">
+        <div class="col col-12 col-md-12 col-lg-6">
           <div class="card card-event card-event-horizontal">
             <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
             <div class="card-content-wrapper">
@@ -225,7 +206,7 @@ storiesOf('Components/Cards - event', module)
             </div>
           </div> <!-- .card -->
         </div> <!-- .col -->
-        <div class="col col-12 col-md-6">
+        <div class="col col-12 col-md-12 col-lg-6">
           <div class="card card-event card-event-horizontal">
             <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
             <div class="card-content-wrapper">
@@ -377,3 +358,4 @@ storiesOf('Components/Cards - event', module)
   `)
 
 ;
+*/

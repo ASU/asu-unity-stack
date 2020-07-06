@@ -23,12 +23,7 @@ Cards - Table of Contents
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
-.card-button {
-  /*align-self: $uds-component-card-basic-button-align-self;*/
-  margin-top: $uds-component-card-basic-button-margin-top;
-  padding: $uds-component-card-basic-button-padding;
-  /*width: $uds-component-card-basic-button-width-percent;*/
-}
+
 .card-icon-top {
   width: $uds-component-card-basic-icon-top-width;
   height: $uds-component-card-basic-icon-top-width;
@@ -48,37 +43,80 @@ Cards - Table of Contents
   .card-title {
     text-align: $uds-component-card-basic-header-text-align-centered;
   }
+  .card-button {
+    text-align: center;
+  }
 }
 .card-header {
   padding: $uds-component-card-basic-header-padding;
+  padding: 32px 32px 16px 32px;
 }
 .card-body {
   padding: $uds-component-card-basic-body-padding;
+  padding: 0 32px 24px 32px;
+}
+.card-link {
+  padding: $uds-component-card-basic-body-padding;
+  padding: 0 32px 24px 32px;
 }
 .card-footer {
   padding: $uds-component-card-basic-footer-link-padding;
+  padding: 0 32px 24px 32px;
+  border-top:0;
+}
+.card-tags {
+  padding: $uds-component-card-basic-footer-link-padding;
+  padding: 0 32px 24px 32px;
+  border-top:0;
+}
+.card-button {
+  /*align-self: $uds-component-card-basic-button-align-self;*/
+  margin-top: $uds-component-card-basic-button-margin-top;
+  padding: $uds-component-card-basic-button-padding;
+  padding: 0 32px 24px 32px;
+  /*width: $uds-component-card-basic-button-width-percent;*/
 }
 .card-footer-link {
   padding: $uds-component-card-basic-footer-link-padding;
+  padding: 0 32px 24px 32px;
   border-top: $uds-component-card-basic-footer-link-border-top;
+}
+.card > div:last-child {
+  padding-bottom:32px;
 }
 
 .card-sm {
   .card-body {
-    padding: $uds-component-card-basic-body-padding-sm;
+    padding-right:24px;
+    padding-left:24px;
   }
   .card-header {
-    padding: $uds-component-card-basic-header-padding-sm;
+    padding-right:24px;
+    padding-left:24px;
   }
   .card-img-top img,
   .card-img-top {
     height: $uds-component-card-basic-image-top-height-sm;
   }
   .card-footer-link {
-    padding: $uds-component-card-basic-footer-link-padding-sm;
+    padding-right:24px;
+    padding-left:24px;
   }
   .card-button {
-    padding: $uds-component-card-basic-body-padding-sm;
+    padding-right:24px;
+    padding-left:24px;
+  }
+  .card-link {
+    padding-right:24px;
+    padding-left:24px;
+  }
+  .card-tags {
+    padding-right:24px;
+    padding-left:24px;
+  }
+  .card-event-details {
+    padding-right:24px;
+    padding-left:24px;
   }
 }
 .card-lg {
@@ -138,11 +176,15 @@ Cards - Table of Contents
 .card-story .card-header,
 .card-story .card-body,
 .card-story .card-button,
-.card-story .card-footer {
-  margin: $uds-component-card-story-body-margin;
+.card-story .card-footer,
+.card-story .card-tags,
+.card-story .card-footer,
+.card-story .card-link {
+  margin-left: 24px;
+  margin-right: 24px;
   background-color: $white;
-  padding: 24px;
-  padding-top: 0;
+  padding-left:16px;
+  padding-right:16px;
 }
 .card-story .card-header {
   padding-top: 24px;
@@ -166,6 +208,33 @@ Cards - Table of Contents
     margin: $uds-component-card-story-body-margin-sm;
   }
 }
+.card-story.card-horizontal .card-img-top {
+  margin-right: -32px;
+  position: relative;
+  z-index: 0;
+}
+.card-story.card-horizontal .card-content-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 100;
+  background-color: white;
+}
+.card-story.card-horizontal {
+  .card-header,
+  .card-body,
+  .card-button,
+  .card-footer,
+  .card-tags,
+  .card-footer,
+  .card-link {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: $white;
+    padding-left:24px;
+    padding-right:24px;
+  }
+}
 
 /*------------------------------------------------------------------
 4. Event Cards
@@ -176,6 +245,7 @@ Cards - Table of Contents
 .card-event-details {
   display:flex;
   padding: $uds-component-card-basic-body-padding;
+  padding: 0 32px 24px 32px;
 }
 .card-event-details > div:first-child {
   margin-right:16px;
@@ -187,17 +257,17 @@ Cards - Table of Contents
   width:16px;
   margin-right:8px;
 }
-.card-event-horizontal {
+.card-horizontal {
   flex-direction: row;
 }
-.card-event-horizontal .card-img-top {
-  width:200px;
+.card-horizontal .card-img-top {
   height:100%;
+  max-width:40%;
 }
-.card-event-horizontal .card-header {
+.card-event.card-horizontal .card-header {
   border-top: 0;
 }
-.card-event-horizontal .card-content-wrapper {
+.card-event.card-horizontal .card-content-wrapper {
   border-left: solid 8px $gold;
 }
 /*------------------------------------------------------------------

@@ -1,7 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 import exampleImage from './example-image.jpg';
-
+/*
 storiesOf('Components/Cards - basic', module)
   .addParameters({
     happo: false,
@@ -325,3 +325,4 @@ storiesOf('Components/Cards - basic', module)
   `)
 
 ;
+*/
