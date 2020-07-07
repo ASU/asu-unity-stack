@@ -120,8 +120,10 @@ storiesOf('Content/Typography', module)
   <p><ins>The ins tag is meant to indicate an addition to the document and renders as italicized.</ins></p>
   `)
 
+/*
   .add('Abbreviations', () => `<p><abbr title="attribute">attr</abbr></p>
   <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>`)
+*/
 
   .add('Blockquotes', () => `<blockquote class="blockquote">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
