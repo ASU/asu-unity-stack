@@ -28,23 +28,25 @@ storiesOf('Components/Global Header', module)
   </div>
 
   <div id="wrapper-header-main">
-    <div class="container">
+    <div class="container-lg">
       <div class="row">
         <div id="header-main" class="col-12">
-          <nav class="navbar navbar-expand-lg static-top" aria-label="Main">
+          <nav class="navbar navbar-expand-lg static-top" aria-label="Main" >
 
             <a class="navbar-brand" href="#">
-              <img src="${vertlogo}" alt="ASU Logo Vertical" />
+              <img class="vert" src="${vertlogo}" alt="ASU Logo Vertical" />
+              <img class="horiz" src="${horizlogo}" alt="ASU Logo Horizontal" />
             </a>
 
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="fa fa-bars"></span>
             </button>
 
-            <div class="d-flex flex-column align-items-start w-100">
+            <div class="navbar-container">
               <div class="title">
                 <span class="unit-name">Ira A. Fulton Schools of Engineering</span>
                 <span class="subdomain-name">School of Computing, Informatics, and Decisions Systems Engineering</span>
+                <!-- <span class="subdomain-name">Sub Domain Name</span> -->
               </div>
 
               <!-- markup for just a subdomain name
@@ -52,11 +54,13 @@ storiesOf('Components/Global Header', module)
                 School of Computing, Informatics, and Decisions Systems
               </div>
               -->
+
               <div class="collapse navbar-collapse w-100 justify-content-between" id="navbarResponsive">
                 <ul class="navbar-nav">
 
-                  <li class="nav-item active">
+                  <li class="nav-item nav-link-home active">
                     <a class="nav-link" href="#">
+                      <span class="d-lg-none">Home</span>
                       <span title="Home" class="fas fa-home"></span>
                     </a>
                   </li>
@@ -248,6 +252,6 @@ storiesOf('Components/Global Header', module)
   </div>
 
 </header>
-<div style="background-color:#8c1e40; width:100%; height:50vh;"></div>
+<!-- <div style="background-color:#8c1e40; width:100%; height:50vh;"></div> -->
 
   `)

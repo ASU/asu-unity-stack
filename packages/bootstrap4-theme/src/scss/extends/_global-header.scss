@@ -4,6 +4,8 @@
 1. Wrapper Definitions, Global Mixins
 2. Top Menu
 3. Main Menu
+4. Mobile
+5. Desktop
 --------------------------------------------------------------*/
 
 #wrapper-header-top {
@@ -51,192 +53,259 @@
 }
 
 /*--------------------------------------------------------------
-3. Main Menu
+3. Main Menu - Desktop
 --------------------------------------------------------------*/
 
-#header-main .navbar {
-  padding: 0;
+/*--------------------------------------------------------------
+4. Mobile
+--------------------------------------------------------------*/
+#wrapper-header-top {
+  display: none;
+}
+
+#header-main {
+  .navbar {
+    padding: $uds-size-spacing-3 0;
+    align-items: flex-start;
+  }
 
   .navbar-brand {
-    padding: $uds-size-spacing-3 0;
+    padding: 0;
+    margin: 0;
 
-    img {
-      height: 72px;
-      width: auto;
+    .vert {
+      display: none;
     }
+
+    .horiz {
+      display: block;
+      height: 32px;
+      width: auto;
+      margin-bottom: $uds-size-spacing-2;
+      margin-left: $uds-size-spacing-4;
+    }
+  }
+
+  .navbar-toggler {
+    color: $uds-color-base-gray-7;
+    border: 0;
+    margin-right: $uds-size-spacing-4;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .title {
     line-height: 1;
-    margin: $uds-size-spacing-2 0;
+    font-size: $uds-size-font-medium;
     font-weight: 700;
+    margin: 0 $uds-size-spacing-4;
 
     .unit-name {
-      font-size: $uds-size-font-medium;
-      margin-bottom: $uds-size-spacing-1;
-      display: block;
+      display: none;
     }
-
-    .subdomain-name {
-      font-size: $uds-size-font-xl;
-      margin-bottom: 0;
-    }
-
-    &.subdomain-name {
-      font-size: $uds-size-font-xxl;
-      margin: $uds-size-spacing-3 0;
-      font-weight: 700;
-    }
-  }
-  .navbar-nav {
-    // margin-bottom: 8px;
   }
 
   .nav-item {
-    position: relative;
-    &:after {
-      @include gold-underline;
-    }
-
-    &:hover:after {
-      @include gold-underline-expand;
-    }
-
-    &.active:after {
-      @include gold-underline-expand;
-    }
-
-    &.dropdown.show:after {
-      @include gold-underline-expand;
-    }
-
-    &.dropdown.megamenu.show:after {
-      @include gold-underline-expand;
-    }
-
     svg {
-      display: block;
+      display: none;
     }
   }
 
-  .nav-item .nav-link {
-    font-size: $uds-size-font-medium;
-    line-height: 1;
-    color: $uds-color-base-gray-7;
-    padding: 0.5rem 0.75rem; /* Magic number */
-    margin-right: $uds-size-spacing-1;
+  .nav-link {
+    &:visited {
+      color: $uds-color-base-gray-7;
+    }
+  }
+}
+/*--------------------------------------------------------------
+5. Mobile Only
+--------------------------------------------------------------*/
+@include media-breakpoint-down(lg) {
+  #wrapper-header-main .container-lg {
+    padding: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+5. Desktop Only
+--------------------------------------------------------------*/
+
+/* Breakpoint at which the mobile menu is triggered */
+@include media-breakpoint-up(lg) {
+  #wrapper-header-top {
+    display: block;
   }
 
-  .dropdown-menu {
-    margin: -1px 0 0 0;
-    border-top: 1px solid #ffffff;
-    padding: $uds-size-spacing-4;
+  #header-main {
+    .navbar {
+      padding: 0;
+      align-items: flex-start;
+    }
 
-    .dropdown-item {
-      padding: $uds-size-spacing-1 0;
-      &:visited {
-        color: $uds-color-base-gray-7;
+    .navbar-brand {
+      .vert {
+        display: block;
+        height: 72px;
+        width: auto;
+        margin: $uds-size-spacing-3 0;
       }
-      &:hover {
-        color: $uds-color-base-maroon;
-        text-decoration: underline;
+
+      .horiz {
+        display: none;
       }
     }
 
-    .btn {
-      margin: $uds-size-spacing-1 0;
+    .title {
+      line-height: 1;
+      margin: $uds-size-spacing-2 0;
+      font-weight: 700;
+
+      .unit-name {
+        font-size: $uds-size-font-medium;
+        margin-bottom: $uds-size-spacing-1;
+        display: block;
+      }
+
+      .subdomain-name {
+        font-size: $uds-size-font-xl;
+        margin-bottom: 0;
+      }
+
+      &.subdomain-name {
+        font-size: $uds-size-font-xxl;
+        margin: $uds-size-spacing-3 0;
+        font-weight: 700;
+      }
     }
-  }
 
-  .dropdown-menu.dropdown-columns.show {
-    display: flex;
-  }
-
-  .dropdown-col {
-    width: 16rem;
-    padding-right: $uds-size-spacing-3;
-    border-right: 1px solid $uds-color-base-gray-4;
-    margin-right: $uds-size-spacing-3;
-
-    &:last-of-type {
-      margin-right: 0;
-      padding-right: 0;
-      border-right: 0;
+    .navbar-nav {
+      // margin-bottom: 8px;
     }
 
-    .dropdown-item {
-      white-space: normal;
-    }
-  }
+    .nav-item {
+      position: relative;
+      &:after {
+        @include gold-underline;
+      }
 
-  .megamenu {
-    position: static;
+      &:hover:after {
+        @include gold-underline-expand;
+      }
+
+      &.active:after {
+        @include gold-underline-expand;
+      }
+
+      &.dropdown.show:after {
+        @include gold-underline-expand;
+      }
+
+      &.dropdown.megamenu.show:after {
+        @include gold-underline-expand;
+      }
+
+      svg {
+        display: inline-block;
+      }
+    }
+
+    .nav-item .nav-link {
+      font-size: $uds-size-font-medium;
+      line-height: 1;
+      color: $uds-color-base-gray-7;
+      padding: 0.5rem 0.75rem; /* Magic number */
+      margin-right: $uds-size-spacing-1;
+    }
 
     .dropdown-menu {
-      background-color: #ffffff;
-      border-bottom: 1px solid $uds-color-base-gray-4;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      margin-top: 0;
-      padding: 0;
+      margin: -1px 0 0 0;
+      border-top: 1px solid #ffffff;
+      padding: $uds-size-spacing-4;
+
+      .dropdown-item {
+        padding: $uds-size-spacing-1 0;
+        &:visited {
+          color: $uds-color-base-gray-7;
+        }
+        &:hover {
+          color: $uds-color-base-maroon;
+          text-decoration: underline;
+        }
+      }
+
+      .btn {
+        margin: $uds-size-spacing-1 0;
+      }
     }
 
-    .row {
-      width: 100%;
-      padding: $uds-size-spacing-4 0;
+    .dropdown-menu.dropdown-columns.show {
+      display: flex;
     }
 
-    .row + .row {
-      border-top: 1px solid $uds-color-base-gray-4;
-      padding: $uds-size-spacing-2 0;
-    }
-
-    div[class^='col-'] {
+    .dropdown-col {
+      width: 16rem;
+      padding-right: $uds-size-spacing-3;
       border-right: 1px solid $uds-color-base-gray-4;
-      padding: 0 $uds-size-spacing-3;
+      margin-right: $uds-size-spacing-3;
 
       &:last-of-type {
+        margin-right: 0;
+        padding-right: 0;
         border-right: 0;
       }
 
       .dropdown-item {
         white-space: normal;
       }
+    }
 
-      .btn + .btn {
-        margin-left: $uds-size-spacing-3;
+    .megamenu {
+      position: static;
+
+      .dropdown-menu {
+        background-color: #ffffff;
+        border-bottom: 1px solid $uds-color-base-gray-4;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .row {
+        width: 100%;
+        padding: $uds-size-spacing-4 0;
+      }
+
+      .row + .row {
+        border-top: 1px solid $uds-color-base-gray-4;
+        padding: $uds-size-spacing-2 0;
+      }
+
+      div[class^='col-'] {
+        border-right: 1px solid $uds-color-base-gray-4;
+        padding: 0 $uds-size-spacing-3;
+
+        &:last-of-type {
+          border-right: 0;
+        }
+
+        .dropdown-item {
+          white-space: normal;
+        }
+
+        .btn + .btn {
+          margin-left: $uds-size-spacing-3;
+        }
       }
     }
-  }
-}
-
-/* Breakpoint at which the mobile menu is triggered */
-@media (max-width: 991.98px) {
-  .navbar {
-    padding: 0;
-  }
-
-  .navbar > .container {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-
-  .navbar-brand img {
-    content: url('https://www.asu.edu/asuthemes/4.9/assets/arizona-state-university-logo.png');
-    height: 32px;
-  }
-
-  .title {
-    font-size: 1rem;
-    line-height: -1rem;
-  }
-
-  .title span {
-    display: none;
-  }
-
-  .nav-item {
-    border-bottom: 1px solid #cccccc;
   }
 }
