@@ -9,12 +9,19 @@ const mobileBreak = Tokens.BreakpointLg;
 const Nav = props => {
   /** Inject Global Styles */
   injectGlobal`
+    * {
+      list-style: none;
+
+      a {
+        cursor: pointer;
+      }
+    }
+
     nav.header-nav {
 
       > ul {
         display: flex;
         flex-direction: row;
-
 
         li {
           position: relative;
@@ -32,45 +39,41 @@ const Nav = props => {
               transform: translateY(-0.1rem);
             }
           }
-
-          div {
-            display: none;
-          }
-
-          div.header-nav-open {
-            display: flex;
-            flex-direction: row;
-            position: absolute;
-          }
         }
       }
 
       @media (max-width: ${mobileBreak}) {
         display: none;
+        border: none;
 
         &.open-nav,&:target {
           display: flex;
           flex-direction: column;
-          > ul {
-            flex-direction: column;
-            div.header-nav-open {
-              flex-direction: column;
-              position: relative;
-              top: 100%;
-              left: 0;
-            }
+        }
 
-            > li {
-              border-bottom: 1px solid #cccccc;
+        > ul {
+          flex-direction: column;
+          div.nav-dropdown-open {
+            flex-direction: column;
+            position: relative;
+            top: 100%;
+            left: 0;
+          }
+
+          > li {
+            margin-right: 0;
+            border-bottom: 1px solid #cccccc;
+            > a {
+              padding: 1rem;
+              justify-content: space-between;
+              display: flex;
             }
           }
         }
       }
     }
 
-    * {
-      list-style: none;
-    }
+
   `;
 
   return (
@@ -78,13 +81,7 @@ const Nav = props => {
       id="asu-header-nav"
       class={cx(
         "header-nav",
-        props.class ? props.class : "",
-        css`
-          list-style: none;
-          a {
-            cursor: pointer;
-          }
-        `
+        props.class ? props.class : ""
       )}
     >
       {props.children}
@@ -112,6 +109,7 @@ const DdMenu = props => {
       margin: -1px 0 0 0;
       border-top: 1px solid #ffffff;
       padding: 2rem;
+      display: none;
 
       h4 {
         font-size: 1.25rem;
@@ -135,12 +133,44 @@ const DdMenu = props => {
           padding: 0.5rem 0;
         }
       }
+
+      &.nav-dropdown-open {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        display: none;
+        border: none;
+
+        &.nav-dropdown-open {
+          flex-direction: column;
+          position: relative;
+          top: 100%;
+          left: 0;
+        }
+
+        > ul {
+          border-right: none;
+
+          > li {
+            border-bottom: 1px solid #cccccc;
+
+            :last-of-type {
+              border: none;
+            }
+          }
+        }
+
+
+      }
     }
   `;
   return (
     <div
       class={cx("asu-dropdown-menu",
-        props.open ? "header-nav-open" : ""
+        props.open ? "nav-dropdown-open" : ""
       )}
     >
       {props.children}
