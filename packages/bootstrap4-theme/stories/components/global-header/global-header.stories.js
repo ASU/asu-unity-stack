@@ -9,7 +9,7 @@ storiesOf('Components/Global Header', module)
   })
 
   .add('Global Header', () => `
-<header class="sticky-top">
+<header class="fixed-top">
 
   <div id="wrapper-header-top">
     <div class="container">
@@ -31,7 +31,7 @@ storiesOf('Components/Global Header', module)
     <div class="container-lg">
       <div class="row">
         <div id="header-main" class="col-12">
-          <nav class="navbar navbar-expand-lg static-top" aria-label="Main" >
+          <nav class="navbar navbar-expand-lg" aria-label="Main" >
 
             <a class="navbar-brand" href="#">
               <img class="vert" src="${vertlogo}" alt="ASU Logo Vertical" />
@@ -56,34 +56,34 @@ storiesOf('Components/Global Header', module)
               -->
 
               <div class="collapse navbar-collapse w-100 justify-content-between" id="navbarResponsive">
-                <ul class="navbar-nav">
+                <div class="navbar-nav">
 
-                  <li class="nav-item nav-link-home active">
-                    <a class="nav-link" href="#">
-                      <span class="d-lg-none">Home</span>
-                      <span title="Home" class="fas fa-home"></span>
-                    </a>
-                  </li>
+                  <a class="nav-link nav-link-home active" href="#">
+                    <span class="d-lg-none">Home</span>
+                    <span title="Home" class="fas fa-fw fa-home"></span>
+                  </a>
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                  </li>
+                  <a class="nav-link" href="#">Contact</a>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (1 Col)
+                      <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Navigation Link</a>
-                      <a class="dropdown-item" href="#">Another Link</a>
-                      <a class="dropdown-item" href="#">Does this dropdown menu have a maximum width or will it go on forever?</a>
-                      <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                    <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-col">
+                        <a class="dropdown-item" href="#">Navigation Link</a>
+                        <a class="dropdown-item" href="#">Another Link</a>
+                        <a class="dropdown-item" href="#">Does this dropdown menu have a maximum width or will it go on forever?</a>
+                        <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                      </div>
                     </div>
-                  </li>
+                  </div>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (2 col)
+                      <span class="fa fa-chevron-down"></span>
                     </a>
                     <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
                       <div class="dropdown-col">
@@ -101,11 +101,12 @@ storiesOf('Components/Global Header', module)
                         <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
                       </div>
                     </div>
-                  </li>
+                  </div>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (3 col)
+                      <span class="fa fa-chevron-down"></span>
                     </a>
                     <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
                       <div class="dropdown-col">
@@ -130,12 +131,13 @@ storiesOf('Components/Global Header', module)
                         <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
                       </div>
                     </div>
-                  </li>
+                  </div>
 
 
-                  <li class="nav-item dropdown megamenu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-item dropdown megamenu">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mega Menu (4 col)
+                      <span class="fa fa-chevron-down"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <div class="container">
@@ -180,63 +182,62 @@ storiesOf('Components/Global Header', module)
                       </div><!-- end .container -->
                     </div>
 
-                  </li>
+                  </div>
 
-                  <li class="nav-item dropdown megamenu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="nav-item dropdown megamenu">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mega Menu (5 col)
+                      <span class="fa fa-chevron-down"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-lg">
-                              <h3>Column One</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">will it go on forever?</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg">
-                              <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg">
-                              <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg">
-                              <h3>Column four</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link</a>
-                              <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                            </div>
-                            <div class="col-lg">
-                              <h3>Mambo #5</h3>
-                              <a class="dropdown-item" href="#">Jump up and down and</a>
-                              <a class="dropdown-item" href="#">Shake your head to the sound</a>
-                              <a class="dropdown-item" href="#">Put your hand on the ground</a>
-                              <a class="dropdown-item" href="#">Take one step left and one step right</a>
-                              <a class="dropdown-item" href="#">And one step right</a>
-                              <a class="dropdown-item" href="#">If it looks like this</a>
-                              <a class="dropdown-item" href="#">Then you doing it right</a>
-                            </div>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-lg">
+                            <h3>Column One</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">will it go on forever?</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                          <div class="col-lg">
+                            <h3>Column Two</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Does this dropdown menu</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                          <div class="col-lg">
+                            <h3>Column Two</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Does this dropdown menu</a>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                          <div class="col-lg">
+                            <h3>Column four</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">Does this dropdown menu</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                          <div class="col-lg">
+                            <h3>Mambo #5</h3>
+                            <a class="dropdown-item" href="#">Jump up and down and</a>
+                            <a class="dropdown-item" href="#">Shake your head to the sound</a>
+                            <a class="dropdown-item" href="#">Put your hand on the ground</a>
+                            <a class="dropdown-item" href="#">Take one step left and one step right</a>
+                            <a class="dropdown-item" href="#">If it looks like this</a>
+                            <a class="dropdown-item" href="#">Then you doing it right</a>
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
-                  </li>
-
-                </ul>
+                </div><!-- end .navbar-nav -->
 
                 <!-- <form class="form-inline">
                   <a href="#" class="btn btn-sm btn-gold">CTA Action 1</a>
@@ -252,6 +253,11 @@ storiesOf('Components/Global Header', module)
   </div>
 
 </header>
-<!-- <div style="background-color:#8c1e40; width:100%; height:50vh;"></div> -->
+<div class="bg-gray-4" style="width:100%; height:50vh;"></div>
+<div class="bg-gray-6" style="width:100%; height:50vh;"></div>
+<div class="bg-info" style="width:100%; height:50vh;"></div>
+<div class="bg-success" style="width:100%; height:50vh;"></div>
+<div class="bg-maroon" style="width:100%; height:50vh;"></div>
+<div class="bg-gold" style="width:100%; height:50vh;"></div>
 
   `)

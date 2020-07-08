@@ -29,7 +29,14 @@
 }
 
 @mixin gold-underline-expand {
-  width: calc(100% - 8px);
+  width: 100%;
+}
+
+@mixin like-an-h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1rem;
+  letter-spacing: -0.015em;
 }
 
 /*--------------------------------------------------------------
@@ -65,7 +72,7 @@
 
 #header-main {
   .navbar {
-    padding: $uds-size-spacing-3 0;
+    padding: $uds-size-spacing-3 0 0 0;
     align-items: flex-start;
   }
 
@@ -107,22 +114,65 @@
     line-height: 1;
     font-size: $uds-size-font-medium;
     font-weight: 700;
-    margin: 0 $uds-size-spacing-4;
+    margin: 0 $uds-size-spacing-4 $uds-size-spacing-3 $uds-size-spacing-4;
 
     .unit-name {
       display: none;
     }
   }
 
-  .nav-item {
-    svg {
-      display: none;
+  .navbar-nav {
+    .nav-link {
+      padding: $uds-size-spacing-2 $uds-size-spacing-4;
+      border-top: 1px solid $uds-color-base-gray-3;
+
+      svg.fa-home {
+        display: none;
+      }
+
+      &:visited {
+        color: $uds-color-base-gray-7;
+      }
     }
   }
 
-  .nav-link {
+  .dropdown {
+    border-top: 1px solid $uds-color-base-gray-3;
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+
+    .nav-link {
+      border-top: 0;
+    }
+  }
+
+  .dropdown-menu {
+    margin: 0;
+    padding: $uds-size-spacing-2;
+    border: 0; // Overrides BS Option;
+    border-top: 1px solid $uds-color-base-gray-3;
+
+    .btn {
+      margin: $uds-size-spacing-1 0;
+    }
+  }
+
+  .dropdown-col {
+    padding: 0 $uds-size-spacing-4;
+  }
+
+  .dropdown-item {
+    padding: $uds-size-spacing-2 $uds-size-spacing-1;
+    white-space: normal;
+
     &:visited {
       color: $uds-color-base-gray-7;
+    }
+
+    & + .dropdown-item {
+      border-top: 1px solid $uds-color-base-gray-4;
     }
   }
 }
@@ -188,11 +238,50 @@
     }
 
     .navbar-nav {
-      // margin-bottom: 8px;
+      > .nav-link {
+        border: 0;
+        font-size: $uds-size-font-medium;
+        color: $uds-color-base-gray-7;
+        padding: 0.5rem 0.75rem; /* Magic number */
+        margin-right: $uds-size-spacing-1;
+
+        &:after {
+          @include gold-underline;
+          bottom: -8px;
+          left: -8px;
+        }
+
+        &:hover:after {
+          @include gold-underline-expand;
+          width: calc(100% + 16px);
+        }
+
+        &.active:after {
+          @include gold-underline-expand;
+          width: calc(100% + 16px);
+        }
+      }
+
+      > .nav-link-home {
+        padding-bottom: 7px; /* Magic number */
+
+        svg.fa-home {
+          display: inline-block;
+          font-size: 16px;
+        }
+      }
+
+      .nav-item .nav-link {
+        padding: 0.5rem 0.75rem; /* Magic number */
+      }
     }
 
-    .nav-item {
+    .dropdown {
       position: relative;
+      padding: 0;
+      border: 0;
+      margin-right: $uds-size-spacing-1;
+
       &:after {
         @include gold-underline;
       }
@@ -213,17 +302,11 @@
         @include gold-underline-expand;
       }
 
-      svg {
+      svg.fa-chevron-down {
         display: inline-block;
+        font-size: $uds-size-font-tiny;
+        margin-left: $uds-size-spacing-1;
       }
-    }
-
-    .nav-item .nav-link {
-      font-size: $uds-size-font-medium;
-      line-height: 1;
-      color: $uds-color-base-gray-7;
-      padding: 0.5rem 0.75rem; /* Magic number */
-      margin-right: $uds-size-spacing-1;
     }
 
     .dropdown-menu {
@@ -240,10 +323,6 @@
           color: $uds-color-base-maroon;
           text-decoration: underline;
         }
-      }
-
-      .btn {
-        margin: $uds-size-spacing-1 0;
       }
     }
 
