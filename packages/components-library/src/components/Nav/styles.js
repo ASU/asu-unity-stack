@@ -48,7 +48,7 @@ const Nav = props => {
       @media (max-width: ${mobileBreak}) {
         display: none;
 
-        &.open-nav {
+        &.open-nav,&:target {
           display: flex;
           flex-direction: column;
           > ul {
@@ -71,10 +71,11 @@ const Nav = props => {
     * {
       list-style: none;
     }
-`;
+  `;
 
   return (
     <nav
+      id="asu-header-nav"
       class={cx(
         "header-nav",
         props.class ? props.class : "",
@@ -92,50 +93,53 @@ const Nav = props => {
 };
 
 const DdMenu = props => {
+  /** Inject Global Styles */
+  injectGlobal`
+    .asu-dropdown-menu {
+      background-color: white;
+      z-index: 1000;
+      display: none;
+      font-size: 1rem;
+      color: #191919;
+      text-align: left;
+      list-style: none;
+      background-color: #ffffff;
+      background-clip: padding-box;
+      min-width: 10rem;
+      color: #191919;
+      border: 1px solid #e8e8e8;
+      border-radius: 0;
+      margin: -1px 0 0 0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+
+      h4 {
+        font-size: 1.25rem;
+        letter-spacing: -0.025em;
+      }
+
+      > ul {
+        flex-direction: column;
+        width: 16rem;
+        padding-right: 1.5rem;
+        border-right: 1px solid #bfbfbf;
+        margin-right: 1.5rem;
+
+        :last-of-type {
+          margin-right: 0;
+          padding-right: 0;
+          border-right: 0;
+        }
+
+        > li {
+          padding: 0.5rem 0;
+        }
+      }
+    }
+  `;
   return (
     <div
-      class={cx(
-        css`
-          background-color: white;
-          z-index: 1000;
-          display: none;
-          font-size: 1rem;
-          color: #191919;
-          text-align: left;
-          list-style: none;
-          background-color: #ffffff;
-          background-clip: padding-box;
-          min-width: 10rem;
-          color: #191919;
-          border: 1px solid #e8e8e8;
-          border-radius: 0;
-          margin: -1px 0 0 0;
-          border-top: 1px solid #ffffff;
-          padding: 2rem;
-
-          h4 {
-            font-size: 1.25rem;
-            letter-spacing: -0.025em;
-          }
-
-          > ul {
-            flex-direction: column;
-            width: 16rem;
-            padding-right: 1.5rem;
-            border-right: 1px solid #bfbfbf;
-            margin-right: 1.5rem;
-
-            :last-of-type {
-              margin-right: 0;
-              padding-right: 0;
-              border-right: 0;
-            }
-
-            > li {
-              padding: 0.5rem 0;
-            }
-          }
-        `,
+      class={cx("asu-dropdown-menu",
         props.open ? "header-nav-open" : ""
       )}
     >

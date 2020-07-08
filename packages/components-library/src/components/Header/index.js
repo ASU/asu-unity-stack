@@ -24,7 +24,15 @@ const Header = ({
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
   // TODO: handle custom searchh
-  const defaultSearchForm = (<form action={"https://search.asu.edu/search"} method={"get"} role={"search"}><input name={"q"} placeholder={"Search"} type={"text"} /></form>)
+  const defaultSearchForm = (
+    <form
+      action={"https://search.asu.edu/search"}
+      method={"get"}
+      role={"search"}
+    >
+      <input name={"q"} placeholder={"Search"} type={"text"} />
+    </form>
+  );
 
   return (
     <S.Header>
@@ -48,7 +56,14 @@ const Header = ({
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
-        <S.IconHamburger onMouseDown={toggle} />
+        <S.IconHamburger
+          onClick={e => {
+            e.preventDefault();
+            toggle();
+          }}
+          // If javascript is disabled, the 
+          href="#asu-header-nav"
+        />
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (

@@ -1,10 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useCallback, useMemo } from "preact/compat";
+import { useEffect, useState, useMemo } from "preact/compat";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
+import DropNav from "./DropNav";
 import * as S from "./styles";
 
 /**
@@ -125,8 +126,8 @@ const Nav = props => {
   };
 
   return (
-    <S.Nav className={props.mobileOpen ? "open-nav" : ""}>
-      <ul onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
+    <S.Nav class={props.mobileOpen ? "open-nav" : ""}>
+      <ul  onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
         {navList.map((item, index) => {
           const navItem = item.item;
           const subs = item.menus;
@@ -171,104 +172,7 @@ Nav.defaultProps = {
   mobileOpen: false,
 };
 
-const DropNav = ({ item, submenus, mobileWidth, ...props }) => {
-  const width = props.width;
-  const setFocus = props.setFocus;
-  const pIndex = props.pIndex;
-
-  const [open, setOpen] = useState(false);
-  const toggle = () => {
-    setOpen(oldOpen => !oldOpen);
-  };
-
-  const navOpen = open => {
-    if (!open) {
-      setOpen(true);
-    }
-  };
-
-  const onBlur = useCallback(
-    e => {
-      // only change state if focus moves away from
-      // container element
-      if (!e.currentTarget.contains(e.relatedTarget)) {
-        if (width > mobileWidth) {
-          setOpen(false);
-        }
-      }
-    },
-    [open]
-  );
-
-  return (
-    <li onBlurCapture={onBlur}>
-      <a
-        target={item.target}
-        title={item.title ? item.title : item.text}
-        role="navigation"
-        onMouseDown={e => {
-          e.preventDefault();
-          toggle();
-          setFocus([pIndex, -1, -1]);
-        }}
-        onFocus={() => {
-          navOpen();
-          setFocus([pIndex, -1, -1]);
-        }}
-        tabIndex="0"
-        ref={props.topRef}
-      >
-        {item.text} <S.IconChevronDown sr={item.text} />
-      </a>
-
-      <S.DdMenu {...{ open }}>
-        {submenus.map((sub, index) => {
-          return (
-            <ul>
-              {sub.map((item, ind) => {
-                return (
-                  <NavItem
-                    item={item}
-                    onFocus={() => {
-                      setFocus([pIndex, index, ind]);
-                      navOpen();
-                    }}
-                    itemRef={submenus[index][ind].ref}
-                  />
-                );
-              })}
-            </ul>
-          );
-        })}
-      </S.DdMenu>
-    </li>
-  );
-};
-
-DropNav.propTypes = {
-  setFocus: PropTypes.func,
-  location: PropTypes.array, // Array representation of the item's location in the Nav
-  item: PropTypes.object.isRequired, // top level nav item
-  submenus: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired, // submenus
-  topRef: PropTypes.oneOfType([
-    // ref to actual DOM node of nav item
-    // https://stackoverflow.com/questions/48007326/what-is-the-correct-proptype-for-a-ref-in-react
-    // Either a function
-    PropTypes.func,
-    // Or the instance of a DOM native element (see the note about SSR)
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
-  mobileWidth: PropTypes.number,
-  width: PropTypes.number,
-};
-
-DropNav.defaultProps = {
-  menus: [],
-  top: false,
-  mobileWidth: 992,
-};
-
-/***************** Utility functions **************/
+/***************** Helper functions **************/
 
 /***
  * Helper function returns more info about current focus state
@@ -377,7 +281,7 @@ const moveUp = (state, dstate, navList) => {
 
   // handle moving focus from top parent
   if (dstate.isTop) {
-    // stay on same node if at top of menu
+    // move left if at top of menu
     move = moveLeft(state, dstate, navList);
 
   // handle moving focus up submenu
@@ -433,6 +337,11 @@ const moveDown = (state, dstate, navList) => {
   return move;
 };
 
+/**
+ * Check a move to see if the next node is focusable.
+ * @param {*} move
+ * @param {*} navList
+ */
 const checkFocus = (move, navList) => {
   const dstate = deriveState(move, navList);
 

@@ -7,8 +7,17 @@ import Tokens from "../../theme";
 const mobileBreak = Tokens.BreakpointLg;
 
 const Header = props => {
-
   injectGlobal`
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+      font-size: 100%;
+    }
+
     .header-logo {
       float: left;
       display: inline-block;
@@ -65,86 +74,80 @@ const Header = props => {
       }
     }
 
-    * {
-      margin: 0;
+    .asu-header-wrapper {
       padding: 0;
-      box-sizing: border-box;
+      border-bottom: 1px solid #cccccc;
+      display: flex;
+      flex-direction: column;
+      div,
+      h1 {
+        font-family: Arial, sans-serif;
+      }
+    }
+
+    .asu-universal-nav {
+      form {
+        display: inline-flex;
+      }
+
+      background-color: #e8e8e8;
+      text-align: right;
+
+      > div {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        > a {
+          display: inline-block;
+          font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+          color: #484848;
+        }
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        display: none;
+      }
+    }
+
+    .asu-primary-nav {
+      padding-top: 1rem;
+      background-color: #ffffff;
+
+      > div {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @media (max-width: ${mobileBreak}) {
+          margin: 0px 32px;
+        }
+      }
+    }
+
+    .asu-icon-hamburger {
+      float: right;
+      display: none;
+      font-size: 1.4rem;
+      color: black;
       text-decoration: none;
-      list-style: none;
-      font-size: 100%;
-    }
 
-    form {
-      display: inline-flex;
+      @media (max-width: ${mobileBreak}) {
+        display: inline-block;
+      }
     }
-
     `;
 
-  return (
-    <header
-      class={css`
-        padding: 0;
-        border-bottom: 1px solid #cccccc;
-        display: flex;
-        flex-direction: column;
-        div,
-        h1 {
-          font-family: Arial, sans-serif;
-        }
-      `}
-    >
-      {props.children}
-    </header>
-  );
+  return <header class="asu-header-wrapper">{props.children}</header>;
 };
 
 const UniversalNav = props => {
-  return (
-    <div
-      class={css`
-        background-color: #e8e8e8;
-        text-align: right;
-
-        > div {
-          max-width: 1200px;
-          margin: 0 auto;
-
-          > a {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            color: #484848;
-          }
-        }
-
-        @media (max-width: ${mobileBreak}) {
-          display: none;
-        }
-      `}
-    >
-      {props.children}
-    </div>
-  );
+  return <div class="asu-universal-nav">{props.children}</div>;
 };
 
 /** Class styles */
 const PrimaryNav = props => {
   return (
-    <div
-      class={css`
-        padding-top: 1rem;
-        background-color: #ffffff;
-
-        > div {
-          max-width: 1200px;
-          margin: 0 auto;
-
-          @media (max-width: ${mobileBreak}) {
-            margin: 0px 32px;
-          }
-        }
-      `}
-    >
+    <div class="asu-primary-nav">
       <div>{props.children}</div>
     </div>
   );
@@ -171,22 +174,11 @@ const Title = props => {
 
 const IconHamburger = props => {
   return (
-    <div
-      {...props}
-      class={css`
-        float: right;
-        display: none;
-        font-size: 1.4rem;
-
-        @media (max-width: ${mobileBreak}) {
-          display: inline-block;
-        }
-      `}
-    >
+    <a {...props} class="asu-icon-hamburger">
       <span class="fa fa-bars">
         <span class="sr-only">Menu</span>
       </span>
-    </div>
+    </a>
   );
 };
 
