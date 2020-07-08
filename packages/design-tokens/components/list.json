@@ -3,7 +3,7 @@
     "list": {
       "spacing": {
         "padding": {
-          "value": "{size.spacing.6.value} {size.spacing.10.value}"
+          "value": "{size.spacing.6.value} {size.spacing.10.value} {size.spacing.6.value} {size.spacing.4.value}"
         },
         "list-style": {
           "value": "none"
@@ -184,8 +184,8 @@
             },
             "span": {
               "padding-left": {
-                "value": "4.3rem",
-                "comment": "Magic number: Text alignment below headline, tweaky due to obling fix below."
+                "value": "0",
+                "comment": "Text alignment below headline."
               },
               "display": {
                 "value": "block"
@@ -215,7 +215,7 @@
                 "value": "{size.spacing.4.value}"
               },
               "margin-left": {
-                "value": "{size.spacing.0.value}"
+                "value": "-{size.spacing.9.value}"
               },
               "font-size": {
                 "value": "{size.font.large.value}"

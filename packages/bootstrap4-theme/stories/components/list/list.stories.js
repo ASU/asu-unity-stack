@@ -24,8 +24,17 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Smoke', () => `
+.add('Unordered list, Smokemode', () => `
 <ul class="smokemode">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ul>
+`)
+
+.add('Unordered list, Light Smokemode', () => `
+<ul class="light-smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -35,6 +44,15 @@ storiesOf('Components/List', module)
 
 .add('Unordered list, Darkmode', () => `
 <ul class="darkmode">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ul>
+`)
+
+.add('Unordered list, Gold Darkmode', () => `
+<ul class="darkmode gold">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -79,6 +97,199 @@ storiesOf('Components/List', module)
   <li>Lorem ipsum dolor sit amet</li>
   <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Dolor sit amet, consectetur adipiscing elit.</li>
+
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
 </ol>
 `)
 
@@ -91,8 +302,17 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered list, Smoke', () => `
+.add('Ordered list, Smokemode', () => `
 <ol class="smokemode">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ol>
+`)
+
+.add('Ordered list, Light Smokemode', () => `
+<ol class="light-smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -176,7 +396,7 @@ storiesOf('Components/List', module)
 .add('Step list', () => `
 <ol class="uds-steplist">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
@@ -184,7 +404,7 @@ storiesOf('Components/List', module)
 .add('Step list, gold', () => `
 <ol class="uds-steplist uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
@@ -192,7 +412,7 @@ storiesOf('Components/List', module)
 .add('Step list, maroon', () => `
 <ol class="uds-steplist uds-steplist-maroon">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
@@ -215,6 +435,30 @@ storiesOf('Components/List', module)
 
 .add('Step list, maroon smokemode', () => `
 <ol class="uds-steplist smokemode uds-steplist-maroon">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step list, light smokemode', () => `
+<ol class="uds-steplist light-smokemode">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step list, gold light smokemode', () => `
+<ol class="uds-steplist light-smokemode uds-steplist-gold">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step list, maroon light smokemode', () => `
+<ol class="uds-steplist light-smokemode uds-steplist-maroon">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>

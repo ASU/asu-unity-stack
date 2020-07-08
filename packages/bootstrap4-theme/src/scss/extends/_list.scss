@@ -42,7 +42,8 @@ ul:not([class]),
 ul[class=''],
 ul.maroon,
 ul.darkmode,
-ul.smokemode {
+ul.smokemode,
+ul.light-smokemode {
   @include uds-list-spacing;
   @include uds-ul-list-styles;
 }
@@ -68,6 +69,10 @@ ol.darkmode {
   li:before {
     color: $uds-component-list-darkmode-li-before-color;
   }
+  // Gold list bullets (for dark mode)
+  &.gold li:before {
+    color: $uds-component-list-darkmode-gold-color;
+  }
   // Gold list icon bullets (for dark mode)
   &.gold li .fa-li {
     color: $uds-component-list-darkmode-gold-color;
@@ -76,6 +81,11 @@ ol.darkmode {
     background-color: $uds-component-list-darkmode-steplist-background-color;
     color: $uds-component-list-darkmode-steplist-color;
   }
+}
+ol.darkmode {
+  // Tweak the mix-in's left padding due to OL's needing more space for double
+  // and triple digits. Not supported: > 3 digits.
+  padding-left: $uds-size-spacing-6;
 }
 
 // Smoke mode (gray background).
@@ -87,13 +97,35 @@ ol.smokemode {
   margin-bottom: $uds-component-list-smokemode-margin-bottom;
   background-color: $uds-component-list-smokemode-background-color;
 }
+ol.smokemode {
+  // Tweak the mix-in's left padding due to OL's needing more space for double
+  // and triple digits. Not supported: > 3 digits.
+  padding-left: $uds-size-spacing-6;
+}
 
+// Light smoke mode.
+ul.light-smokemode,
+ol.light-smokemode {
+  @include uds-list-spacing;
+
+  margin-left: $uds-component-list-smokemode-margin-left; // Reused token
+  margin-bottom: $uds-component-list-smokemode-margin-bottom; // Reused token
+  background-color: $uds-color-base-gray-1; // Magic background color.
+}
+ol.light-smokemode {
+  // Tweak the mix-in's left padding due to OL's needing more space for double
+  // and triple digits. Not supported: > 3 digits.
+  padding-left: $uds-size-spacing-6;
+}
+
+// Icon lists
 ul.fa-ul {
   @include uds-list-spacing;
 
   margin-left: $uds-component-list-icon-list-margin-left;
   margin-bottom: $uds-component-list-icon-list-margin-bottom;
   padding: $uds-component-list-icon-list-padding;
+  padding-left: 2.25rem; // Avoid icon clipping. Was $uds-size-spacing-4;
   li .fa-li {
     left: $uds-component-list-icon-list-icon-left;
   }
@@ -115,6 +147,10 @@ ul.fa-ul {
 // We manually manage the counter since we need to remove the trailing periods.
 ol {
   @include uds-list-spacing;
+  // Tweak the mix-in's left padding due to OL's needing more space for double
+  // and triple digits. Not supported: > 3 digits.
+  padding-left: $uds-size-spacing-6;
+
   counter-reset: listcounter;
 
   li ol {
@@ -152,8 +188,11 @@ ol {
   // Step List styles
   &.uds-steplist {
     padding-left: $uds-component-list-ol-styles-steplist-styles-padding-left;
+    max-width: 75ch;
+    padding-right: $uds-size-spacing-0;
     li {
       padding-bottom: $uds-component-list-ol-styles-steplist-styles-li-padding-bottom;
+      padding-left: $uds-size-spacing-6;
       margin-bottom: $uds-component-list-ol-styles-steplist-styles-li-margin-bottom;
       border-bottom: $uds-component-list-ol-styles-steplist-styles-li-border-bottom;
       font-weight: $uds-component-list-ol-styles-steplist-styles-li-font-weight;
