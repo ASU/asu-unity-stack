@@ -18,7 +18,7 @@
       $uds-component-button-padding-x-small;
     &.btn-tag-alt-white {
       background: $gray-6;
-      color: $body-color;
+      color: $gray-1;
     }
     &.btn-tag-alt-gray {
       background: $gray-4;
@@ -26,7 +26,7 @@
     }
     &.btn-tag-alt-black {
       background: $gray-3;
-      color: $gray-7;
+      color: $body-color;
     }
   }
   &.btn-circle {
@@ -35,7 +35,7 @@
     height: $uds-size-spacing-4;
     &.btn-circle-alt-white {
       background: $gray-6;
-      color: $body-color;
+      color: $gray-1;
     }
     &.btn-circle-alt-gray {
       background: $gray-4;
