@@ -122,7 +122,7 @@ storiesOf('Components/Sidebar', module)
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
 
-        <ul>
+        <ul class="uds-list">
           <li>Lorem ipsum dolor sit amet consectetuer.</li>
           <li>Aenean commodo ligula eget dolor.</li>
           <li>Aenean massa cum sociis natoque penatibus.</li>
