@@ -12,7 +12,7 @@ storiesOf('Components/Global Header', module)
 <header class="fixed-top">
 
   <div id="wrapper-header-top">
-    <div class="container">
+    <div class="container-lg" style="max-width:1240px;">
       <div class="row">
         <div id="header-top" class="col-12">
           <nav class="nav" aria-label="Top">
@@ -28,7 +28,7 @@ storiesOf('Components/Global Header', module)
   </div>
 
   <div id="wrapper-header-main">
-    <div class="container-lg">
+    <div class="container-lg" style="max-width:1240px;">
       <div class="row">
         <div id="header-main" class="col-12">
           <nav class="navbar navbar-expand-lg" aria-label="Main" >
@@ -38,8 +38,8 @@ storiesOf('Components/Global Header', module)
               <img class="horiz" src="${horizlogo}" alt="ASU Logo Horizontal" />
             </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="fa fa-bars"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+              <span title="Hamburger menu" class="fa fa-bars"></span>
             </button>
 
             <div class="navbar-container">
@@ -55,7 +55,7 @@ storiesOf('Components/Global Header', module)
               </div>
               -->
 
-              <div class="collapse navbar-collapse w-100 justify-content-between" id="navbarResponsive">
+              <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                 <div class="navbar-nav">
 
                   <a class="nav-link nav-link-home active" href="#">
@@ -66,11 +66,11 @@ storiesOf('Components/Global Header', module)
                   <a class="nav-link" href="#">Contact</a>
 
                   <div class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (1 Col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
                       <div class="dropdown-col">
                         <a class="dropdown-item" href="#">Navigation Link</a>
                         <a class="dropdown-item" href="#">Another Link</a>
@@ -81,11 +81,11 @@ storiesOf('Components/Global Header', module)
                   </div>
 
                   <div class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="dropdown-two-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (2 col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-two-col">
                       <div class="dropdown-col">
                         <h4>Brady Header</h4>
                         <a class="dropdown-item" href="#">Here's the story</a>
@@ -104,11 +104,11 @@ storiesOf('Components/Global Header', module)
                   </div>
 
                   <div class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="dropdown-three-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Drop (3 col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-columns" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-three-col">
                       <div class="dropdown-col">
                         <h4>Column Header</h4>
                         <a class="dropdown-item" href="#">Navigation Link</a>
@@ -135,11 +135,11 @@ storiesOf('Components/Global Header', module)
 
 
                   <div class="nav-item dropdown megamenu">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="megamenu-four-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mega Menu (4 col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="megamenu-four-col">
                       <div class="container">
                         <div class="row">
                           <div class="col-lg-3">
@@ -174,8 +174,8 @@ storiesOf('Components/Global Header', module)
 
                         <div class="row">
                           <div class="col-lg-12">
-                            <a href="#" class="btn btn-sm btn-maroon">CTA Action 2</a>
-                            <a href="#" class="btn btn-sm btn-gold">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-maroon">Mega Menu CTA 1</a>
+                            <a href="#" class="btn btn-sm btn-gold">Mega Menu CTA 2</a>
                           </div>
                         </div>
 
@@ -185,11 +185,11 @@ storiesOf('Components/Global Header', module)
                   </div>
 
                   <div class="nav-item dropdown megamenu">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="megamenu-five-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mega Menu (5 col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="megamenu-five-col">
 
                       <div class="container">
                         <div class="row">
@@ -198,14 +198,14 @@ storiesOf('Components/Global Header', module)
                             <a class="dropdown-item" href="#">Navigation Link</a>
                             <a class="dropdown-item" href="#">Another Link</a>
                             <a class="dropdown-item" href="#">will it go on forever?</a>
-                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                           </div>
                           <div class="col-lg">
                             <h3>Column Two</h3>
                             <a class="dropdown-item" href="#">Navigation Link</a>
                             <a class="dropdown-item" href="#">Another Link</a>
                             <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                           </div>
                           <div class="col-lg">
                             <h3>Column Two</h3>
@@ -214,14 +214,14 @@ storiesOf('Components/Global Header', module)
                             <a class="dropdown-item" href="#">Does this dropdown menu</a>
                             <a class="dropdown-item" href="#">Navigation Link</a>
                             <a class="dropdown-item" href="#">Another Link</a>
-                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                           </div>
                           <div class="col-lg">
                             <h3>Column four</h3>
                             <a class="dropdown-item" href="#">Navigation Link</a>
                             <a class="dropdown-item" href="#">Another Link</a>
                             <a class="dropdown-item" href="#">Does this dropdown menu</a>
-                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                           </div>
                           <div class="col-lg">
                             <h3>Mambo #5</h3>
@@ -239,9 +239,9 @@ storiesOf('Components/Global Header', module)
 
                 </div><!-- end .navbar-nav -->
 
-                <!-- <form class="form-inline">
-                  <a href="#" class="btn btn-sm btn-gold">CTA Action 1</a>
-                </form> -->
+                <form class="form-inline">
+                  <a href="#" class="btn btn-sm btn-gold">End Navbar CTA</a>
+                </form>
 
               </div>
             </div>
