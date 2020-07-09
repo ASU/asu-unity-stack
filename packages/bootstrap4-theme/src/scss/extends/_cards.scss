@@ -27,6 +27,22 @@ Cards - Table of Contents
   transform: scale(.95);
   cursor: $uds-component-card-basic-hover-cursor;
 }
+.card-hover:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+}
+.card-hover > button {
+  border: none;
+  background: transparent;
+  text-align: inherit;
+  margin: 0;
+  padding: 0;
+}
+.card-hover > button:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+  border:0;
+}
 
 .card-icon-top {
   width: $uds-component-card-basic-icon-top-width;

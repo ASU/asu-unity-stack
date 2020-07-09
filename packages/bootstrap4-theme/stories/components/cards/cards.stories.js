@@ -393,7 +393,7 @@ storiesOf('Components/Cards', module)
   <div class="container">
     <div class="row pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
-        <div class="card card-hover">
+        <div class="card card-hover"><button>
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
             <h3 class="card-title">Card default title</h3>
@@ -401,8 +401,9 @@ storiesOf('Components/Cards', module)
           <div class="card-body">
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
-          </div>
+          </div></button>
         </div> <!-- .card -->
+
       </div> <!-- .col -->
     </div>
   `)
