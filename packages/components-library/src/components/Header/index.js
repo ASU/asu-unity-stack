@@ -30,13 +30,13 @@ const Header = ({
       method={"get"}
       role={"search"}
     >
-      <input name={"q"} placeholder={"Search"} type={"text"} />
+      <input name="q" placeholder="Search" type="text" />
     </form>
   );
 
   return (
     <S.Header>
-      <S.UniversalNav>
+      <S.UniversalNav class={open ? "universal-mobile-open" : ""}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -56,20 +56,22 @@ const Header = ({
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
-        <S.IconHamburger
-          onClick={e => {
-            e.preventDefault();
-            toggle();
-          }}
-          // If javascript is disabled, the 
-          href="#asu-header-nav"
-        />
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
           <Fragment>
-            <S.Logo {...logo} />
-            <S.Title {...{ title, subtitle }} />
+            <div class="asu-header-fixed">
+              <S.Logo {...logo} />
+              <S.IconHamburger
+                onClick={e => {
+                  e.preventDefault();
+                  toggle();
+                }}
+                // If javascript is disabled, the
+                href="#asu-header-nav"
+              />
+              <S.Title {...{ title, subtitle }} />
+            </div>
             <Nav
               {...{
                 navTree,

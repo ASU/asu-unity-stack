@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { css, injectGlobal } from "emotion";
+import { injectGlobal, cx } from "emotion";
 import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
@@ -34,6 +34,7 @@ const Header = props => {
 };
 
 const UniversalNav = props => {
+
   injectGlobal`
     .asu-universal-nav {
       form {
@@ -57,11 +58,19 @@ const UniversalNav = props => {
 
       @media (max-width: ${mobileBreak}) {
         display: none;
+        &.universal-mobile-open {
+          display: flex;
+          height: 10rem;
+          position: fixed;
+          bottom: 0;
+          z-index: 1500;
+          width 100%;
+        }
       }
     }
   `;
 
-  return <div class="asu-universal-nav">{props.children}</div>;
+  return <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>;
 };
 
 /** Class styles */
@@ -74,9 +83,20 @@ const PrimaryNav = props => {
       > div {
         max-width: 1200px;
         margin: 0 auto;
+      }
 
-        @media (max-width: ${mobileBreak}) {
-
+      @media (max-width: ${mobileBreak}) {
+        .asu-header-fixed {
+          position: fixed;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          top: 0;
+          width: 100%;
+          height: auto;
+          background-color: #ffffff;
+          padding: 1rem;
+          z-index: 1600;
         }
       }
     }
@@ -85,7 +105,7 @@ const PrimaryNav = props => {
 
   return (
     <div class="asu-primary-nav">
-      <div>{props.children}</div>
+      {props.children}
     </div>
   );
 };
@@ -96,6 +116,7 @@ const Logo = props => {
       float: left;
       display: inline-block;
       margin-right: 1.5rem;
+      flex-grow: 1;
 
       .logo-mobile {
         display: none;
@@ -152,11 +173,17 @@ const Title = props => {
         font-size: 1.5rem;
         font-weight: bold;
 
-        @media (max-width: ${mobileBreak}) {
+
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        h1 {
           font-size: 1rem;
           display: inline;
           line-height: -1rem;
         }
+        width: 100%;
+        margin: 0px 32px;
       }
     }
   `;

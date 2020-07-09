@@ -18,7 +18,6 @@ const Nav = props => {
     }
 
     nav.header-nav {
-
       > ul {
         display: flex;
         flex-direction: row;
@@ -49,6 +48,7 @@ const Nav = props => {
         &.open-nav,&:target {
           display: flex;
           flex-direction: column;
+          margin-top: 100px;
         }
 
         > ul {
@@ -62,18 +62,22 @@ const Nav = props => {
 
           > li {
             margin-right: 0;
-            border-bottom: 1px solid #cccccc;
             > a {
               padding: 1rem;
               justify-content: space-between;
               display: flex;
+              border-bottom: 1px solid #cccccc;
+            }
+
+            :last-of-type {
+              > a {
+                border-bottom: none;
+              }
             }
           }
         }
       }
     }
-
-
   `;
 
   return (
@@ -106,7 +110,6 @@ const DdMenu = props => {
       color: #191919;
       border: 1px solid #e8e8e8;
       border-radius: 0;
-      margin: -1px 0 0 0;
       border-top: 1px solid #ffffff;
       padding: 2rem;
       display: none;
@@ -149,6 +152,10 @@ const DdMenu = props => {
           position: relative;
           top: 100%;
           left: 0;
+        }
+
+        h4 {
+          padding-bottom: .5rem;
         }
 
         > ul {

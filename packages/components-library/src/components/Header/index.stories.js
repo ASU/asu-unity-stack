@@ -26,28 +26,36 @@ export const base = () => (
         "School of Computing, Informatics, and Decisions Systems Engineering"
       }
     />
-    <div style={"background-color:#8c1e40; width:100%; height:50vh;"} />
+    <div style={"background-color:#8c1e40; width:100%; height:100vh;"} />
   </Fragment>
 );
 
 export const withButtons = () => (
-  <Header
-    navTree={NavTreeWithButtons}
-    title={"Ira A. Fulton Schools of Engineering"}
-    subtitle={
-      "School of Computing, Informatics, and Decisions Systems Engineering"
-    }
-  />
+  <Fragment>
+    <Header
+      navTree={NavTreeWithButtons}
+      title={"Ira A. Fulton Schools of Engineering"}
+      subtitle={
+        "School of Computing, Informatics, and Decisions Systems Engineering"
+      }
+    />
+    <div style={"background-color:#8c1e40; width:100%; height:100vh;"} />
+  </Fragment>
+
 );
 
 export const withMenuColumns = () => (
-  <Header
-    navTree={NavTreeMega}
-    title={"Ira A. Fulton Schools of Engineering"}
-    subtitle={
-      "School of Computing, Informatics, and Decisions Systems Engineering"
-    }
-  />
+  <Fragment>
+    <Header
+      navTree={NavTreeMega}
+      title={"Ira A. Fulton Schools of Engineering"}
+      subtitle={
+        "School of Computing, Informatics, and Decisions Systems Engineering"
+      }
+
+    />
+    <div style={"background-color:#8c1e40; width:100%; height:100vh;"} />
+  </Fragment>
 );
 
 export const withStub = () => <Header dangerouslyGenerateStub={true} />;
