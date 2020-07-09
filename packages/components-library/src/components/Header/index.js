@@ -23,17 +23,6 @@ const Header = ({
   const toggle = () => setOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
-  // TODO: handle custom searchh
-  const defaultSearchForm = (
-    <form
-      action={"https://search.asu.edu/search"}
-      method={"get"}
-      role={"search"}
-    >
-      <input name="q" placeholder="Search" type="text" />
-    </form>
-  );
-
   return (
     <S.Header>
       <S.UniversalNav class={open ? "universal-mobile-open" : ""}>
@@ -49,10 +38,9 @@ const Header = ({
           ) : (
             <a href={loginLink}>Sign in</a>
           )}
-          {openSearch ? defaultSearchForm : ""}
-          <a>
-            <i class="fa fa-search" onMouseDown={toggleSearch} />
-          </a>
+          <S.SearchForm open={openSearch}>
+            <S.IconSearch onMouseDown={toggleSearch} />
+          </S.SearchForm>
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
@@ -60,7 +48,7 @@ const Header = ({
           <div id="asu-generated-stub" />
         ) : (
           <Fragment>
-            <div class="asu-header-fixed">
+            <div>
               <S.Logo {...logo} />
               <S.IconHamburger
                 onClick={e => {

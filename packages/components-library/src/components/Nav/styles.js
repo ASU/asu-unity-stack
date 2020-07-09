@@ -48,7 +48,7 @@ const Nav = props => {
         &.open-nav,&:target {
           display: flex;
           flex-direction: column;
-          margin-top: 100px;
+          margin-top: 115px;
         }
 
         > ul {
@@ -62,17 +62,19 @@ const Nav = props => {
 
           > li {
             margin-right: 0;
+            border-bottom: 1px solid #cccccc;
             > a {
               padding: 1rem;
               justify-content: space-between;
               display: flex;
-              border-bottom: 1px solid #cccccc;
+            }
+
+            :first-of-type {
+                border-top: 1px solid #cccccc;
             }
 
             :last-of-type {
-              > a {
                 border-bottom: none;
-              }
             }
           }
         }
@@ -169,8 +171,6 @@ const DdMenu = props => {
             }
           }
         }
-
-
       }
     }
   `;

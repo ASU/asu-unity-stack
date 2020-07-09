@@ -286,9 +286,8 @@ const moveUp = (state, dstate, navList) => {
 
   // handle moving focus up submenu
   } else {
-
     move =
-      typeof menus[x][y - 1] !== "undefined"
+      typeof menus[y][z - 1] !== "undefined"
         ? [x, y, z - 1]
         : [x, -1, -1];
   }

@@ -37,16 +37,17 @@ const UniversalNav = props => {
 
   injectGlobal`
     .asu-universal-nav {
-      form {
-        display: inline-flex;
-      }
-
+      padding: 0 1rem;
       background-color: #e8e8e8;
       text-align: right;
 
       > div {
         max-width: 1200px;
         margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
 
         > a {
           display: inline-block;
@@ -58,13 +59,26 @@ const UniversalNav = props => {
 
       @media (max-width: ${mobileBreak}) {
         display: none;
+        padding: 0;
         &.universal-mobile-open {
-          display: flex;
-          height: 10rem;
+          height: auto;
           position: fixed;
           bottom: 0;
           z-index: 1500;
           width 100%;
+          display: flex;
+        }
+
+        > div {
+          max-width: 600px;
+
+          > a {
+            width: 50%;
+            line-height: 2rem;
+            text-align: center;
+            border: 1px solid #cccccc;
+            font-size: .9rem;
+          }
         }
       }
     }
@@ -77,16 +91,16 @@ const UniversalNav = props => {
 const PrimaryNav = props => {
   injectGlobal`
     .asu-primary-nav {
-      padding-top: 1rem;
       background-color: #ffffff;
 
       > div {
         max-width: 1200px;
         margin: 0 auto;
+        padding: 1rem 1rem 0 1rem;
       }
 
       @media (max-width: ${mobileBreak}) {
-        .asu-header-fixed {
+        > div {
           position: fixed;
           display: flex;
           flex-wrap: wrap;
@@ -127,9 +141,6 @@ const Logo = props => {
       }
 
       @media (max-width: ${mobileBreak}) {
-        float: none;
-        margin: 0px 32px;
-
         img {
           float: none;
           height: 32px;
@@ -183,7 +194,6 @@ const Title = props => {
           line-height: -1rem;
         }
         width: 100%;
-        margin: 0px 32px;
       }
     }
   `;
@@ -209,7 +219,6 @@ const IconHamburger = props => {
 
       @media (max-width: ${mobileBreak}) {
         display: inline-block;
-        margin-right: 32px;
       }
     }
   `;
@@ -224,4 +233,105 @@ const IconHamburger = props => {
   );
 };
 
-export { Header, UniversalNav, PrimaryNav, Title, Logo, IconHamburger };
+const SearchForm = props => {
+
+  injectGlobal`
+    .asu-search-form {
+
+      > form {
+        display: none;
+        padding: .2rem .5rem;
+
+        > input {
+          padding: .1rem 2rem;
+        }
+
+        &.show-search-input {
+          display: inline-flex;
+        }
+      }
+
+      > a {
+        display: inline-block;
+        font-size: 0.75rem;
+        color: #484848;
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        width: 100%;
+        display: inline-block;
+        order: -1;
+        border: 1px solid #cccccc;
+        padding: 1rem;
+
+        > form {
+          width: 100%;
+          display: inline-flex;
+
+          > input {
+            padding: .5rem 2rem;
+            display: inline-block;
+            width: 100%;
+          }
+
+          > button {
+            font-size: 1rem;
+            opacity: .75;
+          }
+        }
+
+        > a {
+          display: none;
+        }
+
+        button {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+
+      button {
+        font-size: .75rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        margin-right: -40px;
+        z-index: 20;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: .5rem 2rem;
+      }
+    }
+  `;
+
+   // TODO: handle custom search
+  return (
+    <div class="asu-search-form" >
+      <form
+        action="https://search.asu.edu/search"
+        method="get"
+        role="search"
+        class={props.open ? "show-search-input": ""}
+      >
+        <button type="submit" class="searchButton">
+          <IconSearch />
+        </button>
+        <input name="q" placeholder="Search asu.edu" type="text"  />
+      </form>
+      {props.children}
+    </div>
+  );
+};
+
+const IconSearch = props => {
+
+  return (
+    <a class="asu-search-icon">
+      <span class="fa fa-search" {...props}>
+        <span class="sr-only">Search</span>
+      </span>
+    </a>
+  );
+}
+
+export { Header, UniversalNav, PrimaryNav, Title, Logo, IconHamburger, SearchForm, IconSearch };
