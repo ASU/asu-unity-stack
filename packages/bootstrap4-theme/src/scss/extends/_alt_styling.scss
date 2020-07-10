@@ -39,22 +39,26 @@ $text-color-bg-dark:          $ws2-gray-lightest;
   }
 }
 
-.ws2-element-spacing-entity { // 50/50 margin split - 48px
+.uds-element-spacing-entity {
+  // 50/50 margin split - 48px
   @include element-margins-vertical('ws2-container', 3);
 }
 
-.ws2-element-spacing-entity-full { // 50/50 margin split - 96px
+.uds-element-spacing-entity-full {
+  // 50/50 margin split - 96px
   @include element-margins-vertical('ws2-container', 6);
 }
 
-.ws2-element-spacing-inline { // all bottom - 0/96px
+.uds-element-spacing-inline {
+  // all bottom - 0/96px
   @include element-margins-vertical('', 6);
 }
 
 /* =Global alternative styling : Gray, Black backgrounds
 -------------------------------------------------------------- */
-.ws2-element-alt { // Global shell for content-element only overrides
-  padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5; // 24px padding
+.uds-element-alt {
+  // Global shell for content-element only overrides
+  padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5; // 24px padding
   border-style: solid;
   border-width: 1px;
   // Manage border padding/margins in container
@@ -72,7 +76,7 @@ $text-color-bg-dark:          $ws2-gray-lightest;
    * Gray
    */
   ///////////////////////////////////////
-  &.ws2-element-alt-gray {
+  &.uds-element-alt-gray {
     color: $text-color;
     background-color: $ws2-gray-lighter;
     border-color: $ws2-gray-lighter;
@@ -83,7 +87,7 @@ $text-color-bg-dark:          $ws2-gray-lightest;
    * Black
    */
   ///////////////////////////////////////
-  &.ws2-element-alt-black {
+  &.uds-element-alt-black {
     color: $text-color-bg-dark;
     background-color: $ws2-gray-darkest;
     border-color: $ws2-gray-darkest;

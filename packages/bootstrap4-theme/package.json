@@ -25,9 +25,6 @@
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.0.0-beta",
     "@fortawesome/fontawesome-free": "^5.9.0",
-    "@storybook/addon-google-analytics": "^5.1.9",
-    "@storybook/addon-jest": "^5.1.9",
-    "@storybook/addon-viewport": "^5.1.9",
     "@storybook/html": "^5.1.9",
     "autoprefixer": "^9.5.1",
     "bootstrap": "^4.3.1",

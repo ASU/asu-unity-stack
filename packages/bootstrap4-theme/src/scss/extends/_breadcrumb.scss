@@ -1,9 +1,9 @@
 ol.breadcrumb {
   .breadcrumb-item {
     // Get spacing around the / dividers right.
-    padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-padding-left-px;
+    //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-padding-left-px;
     &:first-of-type {
-      padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-first-of-type-padding-left;
+      //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-first-of-type-padding-left;
       // Reset first item number from list component styles.
       &:before {
         content: '';
@@ -11,7 +11,7 @@ ol.breadcrumb {
     }
   }
   .breadcrumb-item + .breadcrumb-item:before {
-    padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-left;
-    padding-right: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-right;
+    //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-left;
+    //padding-right: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-right;
   }
 }
