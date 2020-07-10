@@ -62,8 +62,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: auto auto $uds-size-spacing-4 0;
-    padding: 0;
+    margin: auto auto $uds-size-spacing-4 $uds-size-spacing-0;
+    padding: $uds-size-spacing-0;
 
     img {
       clip-path: circle(120px);
@@ -77,17 +77,17 @@
         content: none;
       }
       cite.uds-sig-title {
-        font-size: 1.5rem;
+        font-size: $uds-size-font-xl;
         background-color: $uds-color-base-gold;
         color: $uds-color-base-gray-7;
-        padding: 0.25rem 0.5rem;
-        margin-left: -0.5rem;
+        padding: 0.25rem $uds-size-spacing-1;
+        margin-left: -$uds-size-spacing-1;
       }
       p::before {
         content: '“';
       }
       p {
-        margin-top: 1rem;
+        margin-top: $uds-size-spacing-2;
       }
     }
   }
@@ -98,7 +98,7 @@
   // Testimonial Option 2
   &.uds-testimonial-2 {
     // Mobile version adjustments.
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: $uds-breakpoint-sm) {
       padding-left: $uds-size-spacing-3;
       p {
         font-size: $uds-size-font-medium;
@@ -123,14 +123,14 @@
   // Testimonial Option 3
   &.uds-testimonial-3 {
     // Mobile version adjustments.
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: $uds-breakpoint-sm) {
       .uds-testimonial-container {
         display: flex;
         flex-direction: column;
         blockquote {
           text-align: center;
-          padding-left: 0;
-          margin-top: 2rem;
+          padding-left: $uds-size-spacing-0;
+          margin-top: $uds-size-spacing-4;
         }
       }
     }
