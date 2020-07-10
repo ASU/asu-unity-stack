@@ -1,13 +1,14 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { injectGlobal, cx, css } from "emotion";
+import { cx, css } from "emotion";
 import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-injectGlobal`
+const Header = props => {
 
+  return <header class={css`
     * {
       margin: 0;
       padding: 0;
@@ -17,24 +18,18 @@ injectGlobal`
       font-size: 100%;
     }
 
-    .asu-header-wrapper {
-      padding: 0;
-      border-bottom: 1px solid #cccccc;
-      display: flex;
-      flex-direction: column;
-      div,
-      h1 {
-        font-family: Arial, sans-serif;
-      }
+    padding: 0;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
+
+
+    div,
+    h1 {
+      font-family: Arial, sans-serif;
     }
-  `;
 
-const Header = props => {
 
-  return <header class="asu-header-wrapper">{props.children}</header>;
-};
-
-injectGlobal`
     .asu-universal-nav {
       padding: 0 1rem;
       background-color: #e8e8e8;
@@ -81,14 +76,7 @@ injectGlobal`
         }
       }
     }
-  `;
 
-const UniversalNav = props => {
-
-  return <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>;
-};
-
-injectGlobal`
     .asu-primary-nav {
       background-color: #ffffff;
 
@@ -113,63 +101,38 @@ injectGlobal`
         }
       }
     }
-    `;
 
-/** Class styles */
-const PrimaryNav = props => {
+    .header-logo {
+      float: left;
+      display: inline-block;
+      margin-right: 1.5rem;
+      flex-grow: 1;
 
-  return (
-    <div class="asu-primary-nav">
-      {props.children}
-    </div>
-  );
-};
-
-injectGlobal`
-  .header-logo {
-    float: left;
-    display: inline-block;
-    margin-right: 1.5rem;
-    flex-grow: 1;
-
-    .logo-mobile {
-      display: none;
-    }
-
-    img {
-      height: 80px;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      img {
-        float: none;
-        height: 32px;
-      }
-
-      .logo-full {
+      .logo-mobile {
         display: none;
       }
-      .logo-mobile {
-        display: inline-block;
-        float: none;
-        height: 32px;
+
+      img {
+        height: 80px;
+      }
+
+      @media (max-width: ${mobileBreak}) {
+        img {
+          float: none;
+          height: 32px;
+        }
+
+        .logo-full {
+          display: none;
+        }
+        .logo-mobile {
+          display: inline-block;
+          float: none;
+          height: 32px;
+        }
       }
     }
-  }
-`;
 
-const Logo = props => {
-
-
-  return (
-    <div class="header-logo">
-      <img class="logo-full" src={props.src} alt={props.alt} />
-      <img class="logo-mobile" src={props.mobileSrc} />
-    </div>
-  );
-};
-
-injectGlobal`
     .header-title {
       span {
         font-weight: bold;
@@ -198,21 +161,7 @@ injectGlobal`
         width: 100%;
       }
     }
-  `;
 
-const Title = props => {
-
-
-  return (
-    <div class="header-title">
-      <span>{props.title}</span>
-      <br />
-      <h1>{props.subtitle}</h1>
-    </div>
-  );
-};
-
-injectGlobal`
     .asu-icon-hamburger {
       float: right;
       display: none;
@@ -224,23 +173,8 @@ injectGlobal`
         display: inline-block;
       }
     }
-  `;
-
-const IconHamburger = props => {
 
 
-
-
-  return (
-    <a {...props} class="asu-icon-hamburger">
-      <span class="fa fa-bars">
-        <span class="sr-only">Menu</span>
-      </span>
-    </a>
-  );
-};
-
-injectGlobal`
     .asu-search-form {
 
       > form {
@@ -307,7 +241,55 @@ injectGlobal`
         padding: .5rem 2rem;
       }
     }
-  `;
+
+  `}>{props.children}</header>;
+};
+
+const UniversalNav = props => {
+  return <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>;
+};
+
+/** Class styles */
+const PrimaryNav = props => {
+
+  return (
+    <div class="asu-primary-nav">
+      {props.children}
+    </div>
+  );
+};
+
+const Logo = props => {
+
+  return (
+    <div class="header-logo">
+      <img class="logo-full" src={props.src} alt={props.alt} />
+      <img class="logo-mobile" src={props.mobileSrc} />
+    </div>
+  );
+};
+
+const Title = props => {
+
+  return (
+    <div class="header-title">
+      <span>{props.title}</span>
+      <br />
+      <h1>{props.subtitle}</h1>
+    </div>
+  );
+};
+
+const IconHamburger = props => {
+
+  return (
+    <a {...props} class="asu-icon-hamburger">
+      <span class="fa fa-bars">
+        <span class="sr-only">Menu</span>
+      </span>
+    </a>
+  );
+};
 
 const SearchForm = props => {
 
