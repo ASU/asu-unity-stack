@@ -1,13 +1,12 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { injectGlobal, cx } from "emotion";
+import { injectGlobal, cx, css } from "emotion";
 import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-const Header = props => {
-  injectGlobal`
+injectGlobal`
 
     * {
       margin: 0;
@@ -30,12 +29,12 @@ const Header = props => {
     }
   `;
 
+const Header = props => {
+
   return <header class="asu-header-wrapper">{props.children}</header>;
 };
 
-const UniversalNav = props => {
-
-  injectGlobal`
+injectGlobal`
     .asu-universal-nav {
       padding: 0 1rem;
       background-color: #e8e8e8;
@@ -84,12 +83,12 @@ const UniversalNav = props => {
     }
   `;
 
+const UniversalNav = props => {
+
   return <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>;
 };
 
-/** Class styles */
-const PrimaryNav = props => {
-  injectGlobal`
+injectGlobal`
     .asu-primary-nav {
       background-color: #ffffff;
 
@@ -116,6 +115,8 @@ const PrimaryNav = props => {
     }
     `;
 
+/** Class styles */
+const PrimaryNav = props => {
 
   return (
     <div class="asu-primary-nav">
@@ -124,39 +125,41 @@ const PrimaryNav = props => {
   );
 };
 
-const Logo = props => {
-  injectGlobal`
-    .header-logo {
-      float: left;
-      display: inline-block;
-      margin-right: 1.5rem;
-      flex-grow: 1;
+injectGlobal`
+  .header-logo {
+    float: left;
+    display: inline-block;
+    margin-right: 1.5rem;
+    flex-grow: 1;
 
-      .logo-mobile {
+    .logo-mobile {
+      display: none;
+    }
+
+    img {
+      height: 80px;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      img {
+        float: none;
+        height: 32px;
+      }
+
+      .logo-full {
         display: none;
       }
-
-      img {
-        height: 80px;
-      }
-
-      @media (max-width: ${mobileBreak}) {
-        img {
-          float: none;
-          height: 32px;
-        }
-
-        .logo-full {
-          display: none;
-        }
-        .logo-mobile {
-          display: inline-block;
-          float: none;
-          height: 32px;
-        }
+      .logo-mobile {
+        display: inline-block;
+        float: none;
+        height: 32px;
       }
     }
-  `;
+  }
+`;
+
+const Logo = props => {
+
 
   return (
     <div class="header-logo">
@@ -166,8 +169,7 @@ const Logo = props => {
   );
 };
 
-const Title = props => {
-  injectGlobal`
+injectGlobal`
     .header-title {
       span {
         font-weight: bold;
@@ -198,6 +200,9 @@ const Title = props => {
     }
   `;
 
+const Title = props => {
+
+
   return (
     <div class="header-title">
       <span>{props.title}</span>
@@ -207,9 +212,7 @@ const Title = props => {
   );
 };
 
-const IconHamburger = props => {
-
-  injectGlobal`
+injectGlobal`
     .asu-icon-hamburger {
       float: right;
       display: none;
@@ -223,6 +226,10 @@ const IconHamburger = props => {
     }
   `;
 
+const IconHamburger = props => {
+
+
+
 
   return (
     <a {...props} class="asu-icon-hamburger">
@@ -233,9 +240,7 @@ const IconHamburger = props => {
   );
 };
 
-const SearchForm = props => {
-
-  injectGlobal`
+injectGlobal`
     .asu-search-form {
 
       > form {
@@ -303,6 +308,8 @@ const SearchForm = props => {
       }
     }
   `;
+
+const SearchForm = props => {
 
    // TODO: handle custom search
   return (

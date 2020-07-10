@@ -9,6 +9,7 @@ crossorigin="anonymous"></script>
 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 crossorigin="anonymous"></script>
 
+
 <script src="/asu-web-standards-bootstrap4/dist/js/bootstrap-asu.min.js"></script>
 
 <!-- Include React from CDN
@@ -21,8 +22,7 @@ crossorigin="anonymous"></script>
 <!-- include bundled scripts from Preact packages (CSS is in the <head>) -->
 <script src="/components-library/dist/vendor.production.js"></script>
 <script src="/components-library/dist/asu-unity-web-components.production.js"></script>
-<!--<script src="/asu-maps/dist/asu-maps.production.js"></script>
-<script src="/asu-hero-carousel/dist/asu-hero-carousel.production.js"></script> -->
+<!--<script src="/asu-maps/dist/asu-maps.production.js"></script>-->
 
 <script>
 
@@ -33,19 +33,19 @@ crossorigin="anonymous"></script>
       {
         href: '/',
         title: 'Home',
+        text: 'Home',
         type: 'icon',
         class: 'fa fa-home'
       }, {
         title: "Degree programs",
         text: "Degree programs",
-        href: "https://asu.edu/degrees",
+        href: "/",
         items: [
           [
             {
               href: "https://www.asu.edu/?feature=newsevents",
-              target: "_top",
-              title: "News and Events",
-              text: "News/Events"
+              type: "heading",
+              text: "Column 1"
             }, {
               href: "https://www.asu.edu/?feature=academics",
               target: "_top",
@@ -53,6 +53,33 @@ crossorigin="anonymous"></script>
               text: "Academics"
             }, {
               href: "https://www.asu.edu/?feature=research",
+              target: "_top",
+              title: "Research",
+              text: "Research"
+            }, {
+              href: "https://www.asu.edu/?feature=academics",
+              target: "_top",
+              title: "Academics",
+              text: "Academics"
+            }, {
+              href: "https://www.asu.edu/?feature=athletics",
+              target: "_top",
+              type: "button",
+              title: "Athletics",
+              text: "CTA Action 2"
+            }
+          ],
+          [
+            {
+              type: "heading",
+              text: "Column 2"
+            }, {
+              href: "https://www.asu.edu/",
+              target: "_top",
+              title: "Academics",
+              text: "Academics"
+            }, {
+              href: "https://www.asu.edu/",
               target: "_top",
               title: "Research",
               text: "Research"
@@ -86,25 +113,9 @@ crossorigin="anonymous"></script>
         ]
       }, {
         title: "Students",
-        text: "Students",
+        text: "My ASU",
         href: "#",
-        target: "_top",
-        items: [
-          [
-            {
-              classes: "border first",
-              href: "https://www.asu.edu/map/",
-              target: "_top",
-              title: "Map",
-              text: "Map"
-            }, {
-              href: "https://campus.asu.edu/tempe/",
-              target: "_top",
-              title: "Tempe campus",
-              text: "Tempe"
-            }
-          ]
-        ]
+        target: "_top"
       }, {
         title: "People",
         text: "People",
@@ -135,14 +146,16 @@ crossorigin="anonymous"></script>
               text: "Polytechnic"
             }, {
               href: "https://campus.asu.edu/downtown/",
-              target: "_top",
+              type: "button",
               title: "Downtown Phoenix campus",
               text: "Downtown Phoenix"
-            }, {
+            }
+          ],
+          [
+            {
               href: "https://asuonline.asu.edu/",
-              target: "_top",
-              title: "Online and Extended campus",
-              text: "Online and Extended"
+              type: "heading",
+              text: "Column 2"
             }, {
               href: "https://havasu.asu.edu/",
               target: "_top",
@@ -181,77 +194,29 @@ crossorigin="anonymous"></script>
         title: "Research",
         text: "Research",
         href: "#",
-        target: "_top",
-        items: [
-          [
-            {
-              classes: "border first",
-              href: "https://www.asu.edu/map/",
-              target: "_top",
-              title: "Map",
-              text: "Map"
-            }, {
-              href: "https://campus.asu.edu/tempe/",
-              target: "_top",
-              title: "Tempe campus",
-              text: "Tempe"
-            }
-          ]
-        ]
+        target: "_top"
       }, {
-        title: "About us",
-        text: "About us",
-        href: "#",
-        target: "_top",
-        items: [
-          [
-            {
-              classes: "border first",
-              href: "https://www.asu.edu/map/",
-              target: "_top",
-              title: "Map",
-              text: "Map"
-            }, {
-              href: "https://campus.asu.edu/tempe/",
-              target: "_top",
-              title: "Tempe campus",
-              text: "Tempe"
-            }
-          ]
-        ]
+        title: "Apply Now",
+        text: "Apply Now",
+        type: "button",
+        color: "gold",
+        href: "https://admissions.asu.edu",
+        target: "_top"
       }, {
-        title: "Contact us",
-        text: "Contact us",
-        href: "#",
-        target: "_top",
-        items: [
-          [
-            {
-              classes: "border first",
-              href: "https://www.asu.edu/map/",
-              target: "_top",
-              title: "Map",
-              text: "Map"
-            }, {
-              href: "https://campus.asu.edu/tempe/",
-              target: "_top",
-              title: "Tempe campus",
-              text: "Tempe"
-            }
-          ]
-        ]
+        title: "CTA Button",
+        text: "CTA Button",
+        type: "button",
+        color: "maroon",
+        href: "https://asu.edu",
+        target: "_top"
       }
     ];
 
-    window.setTimeout(function () {
-      AsuWeb.HydratePreact(AsuWeb.Header, {
-        navTree: NavTree,
-        title: "Ira A. Fulton Schools of Engineering",
-        subtitle: "School of Computing, Informatics, and Decisions Systems Engineering"
-      }, document.getElementById("headerContainer"));
-
-      console.log(AsuWeb, 'RENDERED THE HEADER');
-    }, 5 * 1000);
+    AsuWeb.HydratePreact(AsuWeb.Header, {
+      navTree: NavTree,
+      title: "Ira A. Fulton Schools of Engineering",
+      subtitle: "School of Computing, Informatics, and Decisions Systems Engineering"
+    }, document.getElementById("headerContainer"));
 
     // Hydrate the header
     //ReactDOM.hydrate(React.createElement(AsuBrandHeader, {}), document.getElementById("headerContainer"));

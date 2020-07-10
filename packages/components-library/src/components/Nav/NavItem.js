@@ -19,7 +19,7 @@ const NavItem = props => {
       {
         const bprops = {
           small: true,
-          ...(item.color && { [item.color]: true }),
+          ...(item.color && { class: `btn-${item.color}`})
         };
 
         inner = <Button {...bprops}>{item.text}</Button>;
