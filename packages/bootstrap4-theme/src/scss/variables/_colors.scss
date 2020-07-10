@@ -9,7 +9,6 @@ $gray-4: $uds-color-base-gray-4;
 $gray-5: $uds-color-base-gray-5;
 $gray-6: $uds-color-base-gray-6;
 $gray-7: $uds-color-base-gray-7;
-$black: $uds-color-base-black;
 
 $body-color: $uds-color-base-gray-7;
 
@@ -50,7 +49,7 @@ $colors: map-merge(
     'blue': $blue,
     'green': $green,
     'orange': $orange,
-    'black': $black,
+    'black': $uds-color-base-gray-7,
     'white': $white,
     'bluefocus': $bluefocus,
     'darkgold': $darkgold,
