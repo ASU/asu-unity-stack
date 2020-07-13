@@ -12,15 +12,17 @@ storiesOf('Components/Global Header', module)
 <header class="fixed-top">
 
   <div id="wrapper-header-top">
-    <div class="container-lg" style="max-width:1240px;">
+    <div class="container-lg">
       <div class="row">
         <div id="header-top" class="col-12">
           <nav class="nav" aria-label="Top">
-            <a class="nav-link">ASU Home</a>
-            <a class="nav-link">My ASU</a>
-            <a class="nav-link">Colleges and Schools</a>
-            <a class="nav-link">Sign in</a>
-            <form class="form-inline"><span class="fa fa-search"></form>
+            <a class="nav-link" href="#" >ASU Home</a>
+            <a class="nav-link" href="#" >My ASU</a>
+            <a class="nav-link" href="#" >Colleges and Schools</a>
+            <a class="nav-link" href="#" >Sign in</a>
+            <form class="form-inline">
+              <input class="form-control" type="search" placeholder="Search ASU" aria-label="Search">
+            </form>
           </nav>
         </div>
       </div>
@@ -28,14 +30,14 @@ storiesOf('Components/Global Header', module)
   </div>
 
   <div id="wrapper-header-main">
-    <div class="container-lg" style="max-width:1240px;">
+    <div class="container-lg">
       <div class="row">
         <div id="header-main" class="col-12">
           <nav class="navbar navbar-expand-lg" aria-label="Main" >
 
             <a class="navbar-brand" href="#">
-              <img class="vert" src="${vertlogo}" alt="ASU Logo Vertical" />
-              <img class="horiz" src="${horizlogo}" alt="ASU Logo Horizontal" />
+              <img class="vert" src="${vertlogo}" alt="Arizona State University" />
+              <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +65,7 @@ storiesOf('Components/Global Header', module)
                     <span title="Home" class="fas fa-fw fa-home"></span>
                   </a>
 
-                  <a class="nav-link" href="#">Contact</a>
+                  <!-- <a class="nav-link" href="#">Contact</a> -->
 
                   <div class="nav-item dropdown">
                     <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,14 +89,14 @@ storiesOf('Components/Global Header', module)
                     </a>
                     <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-two-col">
                       <div class="dropdown-col">
-                        <h4>Brady Header</h4>
+                        <h3>Brady Header</h3>
                         <a class="dropdown-item" href="#">Here's the story</a>
                         <a class="dropdown-item" href="#">Of a man named Brady</a>
                         <a class="dropdown-item" href="#">Who was busy with three</a>
                         <a class="dropdown-item" href="#">Boys of his own</a>
                       </div>
                       <div class="dropdown-col">
-                        <h4>Last Call 'Em</h4>
+                        <h3>Last Call 'Em</h3>
                         <a class="dropdown-item" href="#">Navigation Link</a>
                         <a class="dropdown-item" href="#">Another Link as an example of when something wraps</a>
                         <a class="dropdown-item" href="#">You Win A Prize</a>
@@ -103,32 +105,36 @@ storiesOf('Components/Global Header', module)
                     </div>
                   </div>
 
-                  <div class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="dropdown-three-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Drop (3 col)
+                  <div class="nav-item dropdown megamenu">
+                    <a class="nav-link" href="#" id="megamenu-three-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Mega Menu (3 col)
                       <span class="fa fa-chevron-down"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-three-col">
-                      <div class="dropdown-col">
-                        <h4>Column Header</h4>
-                        <a class="dropdown-item" href="#">Navigation Link</a>
-                        <a class="dropdown-item" href="#">Another Link</a>
-                        <a class="dropdown-item" href="#">The Batman Link</a>
-                        <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
-                      </div>
-                      <div class="dropdown-col">
-                        <h4>Brady Header</h4>
-                        <a class="dropdown-item" href="#">Here's the story</a>
-                        <a class="dropdown-item" href="#">Of a man named Brady</a>
-                        <a class="dropdown-item" href="#">Who was busy with three</a>
-                        <a class="dropdown-item" href="#">Boys of his own</a>
-                      </div>
-                      <div class="dropdown-col">
-                        <h4>Last Call 'Em</h4>
-                        <a class="dropdown-item" href="#">Navigation Link</a>
-                        <a class="dropdown-item" href="#">Another Link as an example of when something wraps</a>
-                        <a class="dropdown-item" href="#">You Win A Prize</a>
-                        <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                    <div class="dropdown-menu" aria-labelledby="megamenu-three-col">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <h3>Column Header</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link</a>
+                            <a class="dropdown-item" href="#">The Batman Link</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                          <div class="col-lg-4">
+                            <h3>Brady Header</h3>
+                            <a class="dropdown-item" href="#">Here's the story</a>
+                            <a class="dropdown-item" href="#">Of a man named Brady</a>
+                            <a class="dropdown-item" href="#">Who was busy with three</a>
+                            <a class="dropdown-item" href="#">Boys of his own</a>
+                          </div>
+                          <div class="col-lg-4">
+                            <h3>Last Call 'Em</h3>
+                            <a class="dropdown-item" href="#">Navigation Link</a>
+                            <a class="dropdown-item" href="#">Another Link as an example of when something wraps</a>
+                            <a class="dropdown-item" href="#">You Win A Prize</a>
+                            <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -171,11 +177,10 @@ storiesOf('Components/Global Header', module)
                             <a class="dropdown-item" href="#">Make my content shine</a>
                           </div>
                         </div>
-
-                        <div class="row">
+                        <div class="row with-buttons">
                           <div class="col-lg-12">
                             <a href="#" class="btn btn-sm btn-maroon">Mega Menu CTA 1</a>
-                            <a href="#" class="btn btn-sm btn-gold">Mega Menu CTA 2</a>
+                            <a href="#" class="btn btn-sm btn-dark">Mega Menu CTA 2</a>
                           </div>
                         </div>
 
@@ -239,9 +244,22 @@ storiesOf('Components/Global Header', module)
 
                 </div><!-- end .navbar-nav -->
 
-                <form class="form-inline">
-                  <a href="#" class="btn btn-sm btn-gold">End Navbar CTA</a>
+                <form class="navbar-site-buttons form-inline">
+                  <a href="#" class="btn btn-sm btn-maroon">End Navbar CTA</a>
+                  <a href="#" class="btn btn-sm btn-dark">End Navbar CTA</a>
                 </form>
+
+                <div class="navbar-mobile-footer">
+                  <form class="navbar-mobile-search">
+                    <input class="form-control" type="search" placeholder="Search ASU" aria-label="Search">
+                  </form>
+                  <div class="nav-grid">
+                    <a class="nav-link" href="#">ASU Home</a>
+                    <a class="nav-link" href="#">My ASU</a>
+                    <a class="nav-link" href="#">Colleges and Schools</a>
+                    <a class="nav-link" href="#">Sign in</a>
+                  </div>
+                </div>
 
               </div>
             </div>
