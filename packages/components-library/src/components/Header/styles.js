@@ -18,6 +18,10 @@ const Header = props => {
       font-size: 100%;
     }
 
+    a {
+      cursor: pointer;
+    }
+
     padding: 0;
     border-bottom: 1px solid #cccccc;
     display: flex;
@@ -241,7 +245,6 @@ const Header = props => {
         padding: .5rem 2rem;
       }
     }
-
   `}>{props.children}</header>;
 };
 
