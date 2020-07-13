@@ -17,16 +17,16 @@
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
     &.btn-tag-alt-white {
-      background: $gray-6;
+      background: $gray-2;
       color: $body-color;
     }
     &.btn-tag-alt-gray {
-      background: $gray-4;
+      background: $gray-3;
       color: $body-color;
     }
     &.btn-tag-alt-black {
-      background: $gray-3;
-      color: $gray-7;
+      background: $gray-4;
+      color: $body-color;
     }
   }
   &.btn-circle {
@@ -34,15 +34,15 @@
     width: $uds-size-spacing-4;
     height: $uds-size-spacing-4;
     &.btn-circle-alt-white {
-      background: $gray-6;
+      background: $gray-2;
       color: $body-color;
     }
     &.btn-circle-alt-gray {
-      background: $gray-4;
+      background: $white;
       color: $body-color;
     }
     &.btn-circle-alt-black {
-      background: $gray-3;
+      background: $white;
       color: $gray-7;
     }
     &.btn-circle-large {
