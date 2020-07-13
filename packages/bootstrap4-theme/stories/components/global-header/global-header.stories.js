@@ -3,13 +3,15 @@ import { storiesOf } from '@storybook/html';
 import horizlogo from './arizona-state-university-logo.png';
 import vertlogo from './arizona-state-university-logo-vertical.png';
 
+import '../../../src/js/global-header.js';
+
 storiesOf('Components/Global Header', module)
   .addParameters({
     happo: false,
   })
 
   .add('Global Header', () => `
-<header class="fixed-top">
+<header id="asu-header" class="fixed-top">
 
   <div id="wrapper-header-top">
     <div class="container-lg">
