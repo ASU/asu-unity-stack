@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import { useState } from "preact/compat";
+import { useState, useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import Nav from "../Nav";
@@ -23,8 +23,22 @@ const Header = ({
   const toggle = () => setOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
+  const [scrollPosition, setSrollPosition] = useState(0);
+  const handleScroll = () => {
+      const position = window.pageYOffset;
+      setSrollPosition(position);
+  };
+
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
   return (
-    <S.Header>
+    <S.Header class={scrollPosition > 0 ? "scrolled": ""}>
       <S.UniversalNav class={open ? "universal-mobile-open" : ""}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
@@ -55,7 +69,8 @@ const Header = ({
                   e.preventDefault();
                   toggle();
                 }}
-                // If javascript is disabled, the
+                // If javascript is disabled, this should target and open the
+                // nav with CSS
                 href="#asu-header-nav"
               />
               <S.Title {...{ title, subtitle }} />

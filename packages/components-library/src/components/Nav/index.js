@@ -111,7 +111,7 @@ const Nav = props => {
         if (navList[x].ref) {
           navList[x].ref.current.focus();
         }
-      } else if (navList[x].menus[y][z].ref) {1
+      } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
     }

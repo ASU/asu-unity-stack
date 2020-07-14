@@ -7,8 +7,11 @@ import Tokens from "../../theme";
 const mobileBreak = Tokens.BreakpointLg;
 
 const Header = props => {
-
-  return <header class={css`
+  return (
+    <header
+      class={cx(
+        props.class,
+        css`
     * {
       margin: 0;
       padding: 0;
@@ -26,13 +29,49 @@ const Header = props => {
     border-bottom: 1px solid #cccccc;
     display: flex;
     flex-direction: column;
-
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    top: 0;
 
     div,
     h1 {
       font-family: Arial, sans-serif;
     }
 
+    &.scrolled {
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    }
+    &.scrolled .asu-universal-nav {
+      visibility: hidden;
+      height: 0px;
+      transition: translateY(-24px);
+    }
+    &.scrolled .asu-primary-nav .hamburger i {
+      font-size: 1rem;
+    }
+    &.scrolled .asu-primary-nav .header-logo img {
+      height: 64px;
+    }
+    @media (max-width: ${mobileBreak}) {
+      &.scrolled .asu-primary-nav .header-logo img {
+        height: 28px;
+      }
+    }
+    &.scrolled .asu-primary-nav .header-title h1 {
+      font-size: 1.25rem;
+    }
+    @media (max-width: ${mobileBreak}) {
+      max-height: 80vh;
+      overflow-y: scroll;
+
+      &.scrolled .asu-primary-nav .header-title h1 {
+        font-size: 1rem;
+      }
+    }
 
     .asu-universal-nav {
       padding: 0 1rem;
@@ -65,6 +104,8 @@ const Header = props => {
           z-index: 1500;
           width 100%;
           display: flex;
+          opacity: 1;
+          visibility: visible;
         }
 
         > div {
@@ -102,6 +143,7 @@ const Header = props => {
           background-color: #ffffff;
           padding: 1rem;
           z-index: 1600;
+          border-bottom: 1px solid #cccccc;
         }
       }
     }
@@ -150,10 +192,16 @@ const Header = props => {
       }
 
       h1 {
-        font-size: 1.5rem;
         font-weight: bold;
-
-
+        font-size: 1.5rem;
+        letter-spacing: -1px;
+        background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
+        background-position: 0%;
+        background-size: 200%;
+        display: inline-block;
+        padding-right: 4px;
+        transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+        transition-duration: 1s;
       }
 
       @media (max-width: ${mobileBreak}) {
@@ -245,25 +293,26 @@ const Header = props => {
         padding: .5rem 2rem;
       }
     }
-  `}>{props.children}</header>;
+  `
+      )}
+    >
+      {props.children}
+    </header>
+  );
 };
 
 const UniversalNav = props => {
-  return <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>;
+  return (
+    <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>
+  );
 };
 
 /** Class styles */
 const PrimaryNav = props => {
-
-  return (
-    <div class="asu-primary-nav">
-      {props.children}
-    </div>
-  );
+  return <div class="asu-primary-nav">{props.children}</div>;
 };
 
 const Logo = props => {
-
   return (
     <div class="header-logo">
       <img class="logo-full" src={props.src} alt={props.alt} />
@@ -273,7 +322,6 @@ const Logo = props => {
 };
 
 const Title = props => {
-
   return (
     <div class="header-title">
       <span>{props.title}</span>
@@ -284,7 +332,6 @@ const Title = props => {
 };
 
 const IconHamburger = props => {
-
   return (
     <a {...props} class="asu-icon-hamburger">
       <span class="fa fa-bars">
@@ -295,20 +342,19 @@ const IconHamburger = props => {
 };
 
 const SearchForm = props => {
-
-   // TODO: handle custom search
+  // TODO: handle custom search
   return (
-    <div class="asu-search-form" >
+    <div class="asu-search-form">
       <form
         action="https://search.asu.edu/search"
         method="get"
         role="search"
-        class={props.open ? "show-search-input": ""}
+        class={props.open ? "show-search-input" : ""}
       >
         <button type="submit" class="searchButton">
           <IconSearch />
         </button>
-        <input name="q" placeholder="Search asu.edu" type="text"  />
+        <input name="q" placeholder="Search asu.edu" type="text" />
       </form>
       {props.children}
     </div>
@@ -316,7 +362,6 @@ const SearchForm = props => {
 };
 
 const IconSearch = props => {
-
   return (
     <a class="asu-search-icon">
       <span class="fa fa-search" {...props}>
@@ -324,6 +369,15 @@ const IconSearch = props => {
       </span>
     </a>
   );
-}
+};
 
-export { Header, UniversalNav, PrimaryNav, Title, Logo, IconHamburger, SearchForm, IconSearch };
+export {
+  Header,
+  UniversalNav,
+  PrimaryNav,
+  Title,
+  Logo,
+  IconHamburger,
+  SearchForm,
+  IconSearch,
+};

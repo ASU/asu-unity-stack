@@ -35,11 +35,12 @@ injectGlobal`
     @media (max-width: ${mobileBreak}) {
       display: none;
       border: none;
+      margin-top: 120px;
 
       &.open-nav,&:target {
+        position: relative;
         display: flex;
         flex-direction: column;
-        margin-top: 140px;
       }
 
       > ul {
@@ -59,10 +60,6 @@ injectGlobal`
             padding: 1rem;
             justify-content: space-between;
             display: flex;
-          }
-
-          :first-of-type {
-              border-top: 1px solid #cccccc;
           }
 
           :last-of-type {
@@ -93,22 +90,20 @@ injectGlobal`
   /** Dropdown menu global styles */
   injectGlobal`
   .asu-dropdown-menu {
-    background-color: white;
+
     z-index: 1000;
+    position: absolute;
     display: none;
-    font-size: 1rem;
-    color: #191919;
-    text-align: left;
-    list-style: none;
-    background-color: #ffffff;
-    background-clip: padding-box;
-    min-width: 10rem;
-    color: #191919;
-    border: 1px solid #e8e8e8;
-    border-radius: 0;
-    border-top: 1px solid #ffffff;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    opacity: 0;
     padding: 2rem;
-    display: none;
+    padding-top: 2.5rem;
+    flex-wrap: nowrap;
+    margin-top: 8px;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
     h4 {
       font-size: 1.25rem;
@@ -119,8 +114,10 @@ injectGlobal`
       flex-direction: column;
       width: 16rem;
       padding-right: 1.5rem;
-      border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
+      flex: 1;
+      max-width: 282px;
+      border-right: 1px solid #d0d0d0;
 
       :last-of-type {
         margin-right: 0;
@@ -134,20 +131,17 @@ injectGlobal`
     }
 
     &.nav-dropdown-open {
+      opacity: 1;
       display: flex;
-      flex-direction: row;
-      position: absolute;
+      padding-top: 32px;
     }
 
     @media (max-width: ${mobileBreak}) {
-      display: none;
       border: none;
 
       &.nav-dropdown-open {
         flex-direction: column;
         position: relative;
-        top: 100%;
-        left: 0;
       }
 
       h4 {
@@ -158,7 +152,6 @@ injectGlobal`
         border-right: none;
         width: 100%;
         padding-left: 2rem;
-
         > li {
           border-bottom: 1px solid #cccccc;
 
