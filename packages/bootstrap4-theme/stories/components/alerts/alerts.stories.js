@@ -62,6 +62,17 @@ storiesOf('Components/Alerts', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
     </div>
   </div>
+
+  <p>Note: On the actual page, you will need to provide an empty ARIA live
+  region called an alert to accept any changes:
+  <code>&lt;div id="example" role="alert"&gt;&lt;/div&gt;</code>
+  See the example for <a href="https://www.w3.org/TR/wai-aria-practices/#alert">
+  https://www.w3.org/TR/wai-aria-practices/#alert</a></p>
+  <p>By the way, you can manipulate the way an alert is announced by screen
+  readers by explicitly declaring values for the alert’s
+  <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-live">aria-live</a> and
+  <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-atomic">aria-atomic</a>
+  properties.</p>
 `)
 
   /*
