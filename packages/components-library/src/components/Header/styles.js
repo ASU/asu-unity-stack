@@ -5,29 +5,9 @@ import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
+import { hiddenStyle, showReset } from "../../styles/common";
 
 const mobileBreak = Tokens.BreakpointLg;
-
-const hiddenStyle = css`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-`;
-
-const showReset = css`
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  border: none;
-  clip: auto;
-`;
-
 
 const Header = props => {
   return (
@@ -99,13 +79,12 @@ const Header = props => {
             background-color: #e8e8e8;
             text-align: right;
             display: flex;
+            justify-content: flex-end;
 
             > div {
               max-width: 1200px;
-              margin: 0 auto;
               display: flex;
               flex-wrap: wrap;
-              justify-content: flex-end;
               align-items: center;
 
               > a {
@@ -120,11 +99,12 @@ const Header = props => {
               ${hiddenStyle}
               padding: 0;
               &.universal-mobile-open {
-                ${showReset}
-                position: fixed;
+                ${showReset("fixed")}
                 bottom: 0;
                 z-index: 1500;
                 width 100%;
+                display: flex;
+                justify-content: center;
               }
 
               > div {
@@ -399,4 +379,5 @@ export {
   IconHamburger,
   SearchForm,
   IconSearch,
+  showReset,
 };

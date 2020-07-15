@@ -1,8 +1,10 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
+import { Fragment } from "preact/compat";
 import PropTypes from "prop-types";
 import Button from "../Button";
+import {cx} from "emotion";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
@@ -19,7 +21,7 @@ const NavItem = props => {
       {
         const bprops = {
           small: true,
-          ...(item.color && { class: `btn-${item.color}`})
+          ...(item.color && { class: `btn-${item.color}` }),
         };
 
         inner = <Button {...bprops}>{item.text}</Button>;
@@ -27,16 +29,17 @@ const NavItem = props => {
       break;
     case "icon":
       inner = (
-        <span class={item.class}>
-          <span class="sr-only">{item.text}</span>
-        </span>
+        <Fragment>
+          <span class={cx(item.class, "icon-nav-item")}>
+            <span class="sr-only">{item.text}</span>
+          </span>
+          <div class="mobile-only">{item.text}</div>
+        </Fragment>
       );
       break;
 
     case "heading":
-      inner = (
-          <h4>{item.text}</h4>
-      );
+      inner = <h4>{item.text}</h4>;
       break;
     default:
       inner = item.text;

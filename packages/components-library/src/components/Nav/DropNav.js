@@ -1,53 +1,35 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { useState, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import * as S from "./styles";
 
-const DropNav = ({ item, submenus, mobileWidth, ...props }) => {
-  const width = props.width;
-  const setFocus = props.setFocus;
-  const pIndex = props.pIndex;
-
-  const [open, setOpen] = useState(false);
-  const toggle = () => {
-    setOpen(oldOpen => !oldOpen);
-  };
-
-  const navOpen = open => {
-    if (!open) {
-      setOpen(true);
-    }
-  };
-
-  const onBlur = useCallback(
-    e => {
-      // only change state if focus moves away from
-      // container element
-      if (!e.currentTarget.contains(e.relatedTarget)) {
-        if (width > mobileWidth) {
-          setOpen(false);
-        }
-      }
-    },
-    [open]
-  );
-
+const DropNav = ({
+  item,
+  submenus,
+  mobileWidth,
+  width,
+  setFocus,
+  pIndex,
+  isOpen,
+  navOpen,
+  toggle,
+  ...props
+}) => {
   return (
-    <li onBlurCapture={onBlur}>
+    <li>
       <a
         target={item.target}
         title={item.title ? item.title : item.text}
         role="navigation"
         onMouseDown={e => {
           e.preventDefault();
-          toggle();
+          toggle(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
         onFocus={() => {
-          navOpen();
+          navOpen(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
         tabIndex="0"
@@ -56,7 +38,7 @@ const DropNav = ({ item, submenus, mobileWidth, ...props }) => {
         {item.text} <S.IconChevronDown sr={item.text} />
       </a>
 
-      <S.DdMenu {...{ open }}>
+      <S.DdMenu {...{ open: isOpen }}>
         {submenus.map((sub, index) => {
           return (
             <ul>
@@ -66,7 +48,7 @@ const DropNav = ({ item, submenus, mobileWidth, ...props }) => {
                     item={item}
                     onFocus={() => {
                       setFocus([pIndex, index, ind]);
-                      navOpen();
+                      navOpen(pIndex);
                     }}
                     itemRef={submenus[index][ind].ref}
                   />
@@ -95,12 +77,16 @@ DropNav.propTypes = {
   ]),
   mobileWidth: PropTypes.number,
   width: PropTypes.number,
+  pIndex: PropTypes.number.isRequired,
+  isOpen: PropTypes.bool,
+  setOpen: PropTypes.func,
 };
 
 DropNav.defaultProps = {
   menus: [],
   top: false,
   mobileWidth: 992,
+  isOpen: false,
 };
 
 export default DropNav;

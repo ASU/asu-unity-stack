@@ -13,14 +13,34 @@ import * as S from "./styles";
  * @param {} props
  */
 const Nav = props => {
+  /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
   const navTree = props.navTree;
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
+
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
   };
+
+  /** State for keeping track of open dropdown nav */
+  const [open, setOpen] = useState(-1);
+
+  const toggle = (index) => {
+    if (open == index) {
+      setOpen(-1);
+    } else {
+      setOpen(index);
+    }
+  };
+
+  const navOpen = (index) => {
+    if (open != index) {
+      setOpen(index);
+    }
+  };
+
 
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
@@ -97,15 +117,12 @@ const Nav = props => {
     }
   };
 
+  /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
     const derState = deriveState(focused, navList);
 
     if (derState.hasFocus) {
       const [x,y,z] = focused;
-
-      if (x === -1 && y === -1 && z === -1) {
-        return false;
-      }
 
       if (derState.isTop) {
         if (navList[x].ref) {
@@ -131,6 +148,11 @@ const Nav = props => {
         {navList.map((item, index) => {
           const navItem = item.item;
           const subs = item.menus;
+          let isOpen = false;
+
+          if (open == index) {
+            isOpen = true;
+          }
 
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
@@ -141,6 +163,9 @@ const Nav = props => {
                 pIndex={index}
                 setFocus={setFocusCallback}
                 topRef={item.ref}
+                isOpen={isOpen}
+                toggle={toggle}
+                navOpen={navOpen}
               />
             );
           }

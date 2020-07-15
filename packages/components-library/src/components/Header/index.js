@@ -69,8 +69,7 @@ const Header = ({
                   e.preventDefault();
                   toggle();
                 }}
-                // If javascript is disabled, this should target and open the
-                // nav with CSS
+                // If javascript is disabled, this should target and open the 
                 href="#asu-header-nav"
               />
               <S.Title {...{ title, subtitle }} />

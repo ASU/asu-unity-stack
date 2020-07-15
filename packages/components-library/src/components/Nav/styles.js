@@ -1,30 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { css, cx, injectGlobal } from "emotion";
+import { css, cx } from "emotion";
 import Tokens from "../../theme";
+import { hiddenStyle, showReset } from "../../styles/common";
 
 const mobileBreak = Tokens.BreakpointLg;
-
-const hiddenStyle = css`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-`;
-
-const showReset = css`
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  border: none;
-  clip: auto;
-`;
 
 /**
  * Styles for Nav. These are meant to be imported and injected inside of the header
@@ -55,17 +36,28 @@ const navStyles = css`
       }
     }
 
+    .mobile-only {
+      ${hiddenStyle}
+    }
+
     @media (max-width: ${mobileBreak}) {
       ${hiddenStyle}
       border: none;
-
       display: flex;
 
-      &.open-nav,&:target {
-        ${showReset}
-        position: relative;
+      &.open-nav,
+      &:target {
+        ${showReset()}
         margin-top: 120px;
         flex-direction: column;
+      }
+
+      .mobile-only {
+        ${showReset()}
+      }
+
+      .icon-nav-item {
+        ${hiddenStyle}
       }
 
       > ul {
@@ -89,11 +81,11 @@ const navStyles = css`
           }
 
           :first-of-type {
-              border-top: 1px solid #cccccc;
+            border-top: 1px solid #cccccc;
           }
 
           :last-of-type {
-              border-bottom: none;
+            border-bottom: none;
           }
         }
       }
@@ -101,7 +93,7 @@ const navStyles = css`
   }
 
   /** DdMenu CSS **/
-  .asu-dropdown-menu {
+  .dropdown {
     ${hiddenStyle}
     z-index: 1000;
     justify-content: space-between;
@@ -138,9 +130,8 @@ const navStyles = css`
     }
 
     &.nav-dropdown-open {
-      ${showReset}
+      ${showReset("absolute")}
       display: flex;
-      margin-top: 8px;
     }
 
     @media (max-width: ${mobileBreak}) {
@@ -153,7 +144,7 @@ const navStyles = css`
       }
 
       h4 {
-        padding-bottom: .5rem;
+        padding-bottom: 0.5rem;
       }
 
       > ul {
@@ -172,34 +163,20 @@ const navStyles = css`
   }
 `;
 
-  const Nav = props => {
-
-    return (
-      <nav
-        id="asu-header-nav"
-        class={cx(
-          "header-nav",
-          props.class ? props.class : ""
-        )}
-      >
-        {props.children}
-      </nav>
-    );
-  };
-
-  /** Dropdown menu global styles */
-  injectGlobal`
-
-`;
+const Nav = props => {
+  return (
+    <nav
+      id="asu-header-nav"
+      class={cx("header-nav", props.class ? props.class : "")}
+    >
+      {props.children}
+    </nav>
+  );
+};
 
 const DdMenu = props => {
-
   return (
-    <div
-      class={cx("asu-dropdown-menu",
-        props.open ? "nav-dropdown-open" : ""
-      )}
-    >
+    <div class={cx("dropdown", props.open ? "nav-dropdown-open" : "")}>
       {props.children}
     </div>
   );
