@@ -19,6 +19,16 @@ const hiddenStyle = css`
   border: 0;
 `;
 
+const showReset = css`
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  border: none;
+  clip: auto;
+`;
+
+
 const Header = props => {
   return (
     <header
@@ -88,6 +98,7 @@ const Header = props => {
             padding: 0 1rem;
             background-color: #e8e8e8;
             text-align: right;
+            display: flex;
 
             > div {
               max-width: 1200px;
@@ -106,17 +117,14 @@ const Header = props => {
             }
 
             @media (max-width: ${mobileBreak}) {
-              display: none;
+              ${hiddenStyle}
               padding: 0;
               &.universal-mobile-open {
-                height: auto;
+                ${showReset}
                 position: fixed;
                 bottom: 0;
                 z-index: 1500;
                 width 100%;
-                display: flex;
-                opacity: 1;
-                visibility: visible;
               }
 
               > div {
