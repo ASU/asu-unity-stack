@@ -6,8 +6,31 @@ import Tokens from "../../theme";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-/** Global Styles for Nav */
-injectGlobal`
+const hiddenStyle = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+`;
+
+const showReset = css`
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  border: none;
+  clip: auto;
+`;
+
+/**
+ * Styles for Nav. These are meant to be imported and injected inside of the header
+ * component
+ */
+const navStyles = css`
   nav.header-nav {
     > ul {
       display: flex;
@@ -33,13 +56,15 @@ injectGlobal`
     }
 
     @media (max-width: ${mobileBreak}) {
-      display: none;
+      ${hiddenStyle}
       border: none;
-      margin-top: 120px;
+
+      display: flex;
 
       &.open-nav,&:target {
+        ${showReset}
         position: relative;
-        display: flex;
+        margin-top: 120px;
         flex-direction: column;
       }
 
@@ -55,11 +80,16 @@ injectGlobal`
 
         > li {
           margin-right: 0;
-          border-bottom: 1px solid #cccccc;
+
           > a {
             padding: 1rem;
             justify-content: space-between;
             display: flex;
+            border-bottom: 1px solid #cccccc;
+          }
+
+          :first-of-type {
+              border-top: 1px solid #cccccc;
           }
 
           :last-of-type {
@@ -69,40 +99,17 @@ injectGlobal`
       }
     }
   }
-`;
 
-  const Nav = props => {
-
-
-    return (
-      <nav
-        id="asu-header-nav"
-        class={cx(
-          "header-nav",
-          props.class ? props.class : ""
-        )}
-      >
-        {props.children}
-      </nav>
-    );
-  };
-
-  /** Dropdown menu global styles */
-  injectGlobal`
+  /** DdMenu CSS **/
   .asu-dropdown-menu {
-
+    ${hiddenStyle}
     z-index: 1000;
-    position: absolute;
-    display: none;
     justify-content: space-between;
     background: #ffffff;
     border: 1px solid #d0d0d0;
     border-top: none;
-    opacity: 0;
     padding: 2rem;
-    padding-top: 2.5rem;
     flex-wrap: nowrap;
-    margin-top: 8px;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
     h4 {
@@ -131,13 +138,14 @@ injectGlobal`
     }
 
     &.nav-dropdown-open {
-      opacity: 1;
+      ${showReset}
       display: flex;
-      padding-top: 32px;
+      margin-top: 8px;
     }
 
     @media (max-width: ${mobileBreak}) {
       border: none;
+      padding-top: 0;
 
       &.nav-dropdown-open {
         flex-direction: column;
@@ -164,6 +172,26 @@ injectGlobal`
   }
 `;
 
+  const Nav = props => {
+
+    return (
+      <nav
+        id="asu-header-nav"
+        class={cx(
+          "header-nav",
+          props.class ? props.class : ""
+        )}
+      >
+        {props.children}
+      </nav>
+    );
+  };
+
+  /** Dropdown menu global styles */
+  injectGlobal`
+
+`;
+
 const DdMenu = props => {
 
   return (
@@ -185,4 +213,4 @@ const IconChevronDown = props => {
   );
 };
 
-export { Nav, DdMenu, IconChevronDown };
+export { Nav, DdMenu, IconChevronDown, navStyles };

@@ -1,10 +1,10 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { injectGlobal, cx } from "emotion";
+import { cx, css} from "emotion";
 import Tokens from "../../theme";
 
-injectGlobal`
+const buttonStyles = css`
   .btn {
     background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
     background-position: ${Tokens.ComponentButtonBackgroundPosition};
@@ -95,4 +95,4 @@ const ButtonLink = props => {
   );
 };
 
-export { Button, ButtonLink };
+export { Button, ButtonLink, buttonStyles };
