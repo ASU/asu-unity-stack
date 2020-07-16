@@ -9,6 +9,14 @@ Cards - Table of Contents
 6. Foldable - Desktop Disable
 -------------------------------------------------------------------*/
 
+.row-spaced {
+  margin-bottom:-32px;
+}
+.row-spaced > .col,
+.row-spaced > div {
+  margin-bottom:32px;
+}
+
 /*------------------------------------------------------------------
 1. Basic Cards
 --------------------------------------------------------------------*/
@@ -129,12 +137,6 @@ Cards - Table of Contents
   }
 }
 
-@include media-breakpoint-down(md) {
-  .card {
-    margin-bottom: 24px;
-    height: auto;
-  }
-}
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
     .card-img-top img,
