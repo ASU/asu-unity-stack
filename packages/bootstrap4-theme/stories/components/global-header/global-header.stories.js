@@ -246,10 +246,10 @@ storiesOf('Components/Global Header', module)
 
                 </div><!-- end .navbar-nav -->
 
-                <form class="navbar-site-buttons form-inline">
+                <!-- <form class="navbar-site-buttons form-inline">
                   <a href="#" class="btn btn-sm btn-maroon">End Navbar CTA</a>
                   <a href="#" class="btn btn-sm btn-dark">End Navbar CTA</a>
-                </form>
+                </form> -->
 
                 <div class="navbar-mobile-footer">
                   <form class="navbar-mobile-search">
@@ -273,11 +273,9 @@ storiesOf('Components/Global Header', module)
   </div>
 
 </header>
-<div class="bg-gray-4" style="width:100%; height:50vh;"></div>
-<div class="bg-gray-6" style="width:100%; height:50vh;"></div>
+<div class="bg-maroon" style="width:100%; height:70vh;"></div>
+<div class="bg-gold" style="width:100%; height:70vh;"></div>
 <div class="bg-info" style="width:100%; height:50vh;"></div>
 <div class="bg-success" style="width:100%; height:50vh;"></div>
-<div class="bg-maroon" style="width:100%; height:50vh;"></div>
-<div class="bg-gold" style="width:100%; height:50vh;"></div>
 
   `)
