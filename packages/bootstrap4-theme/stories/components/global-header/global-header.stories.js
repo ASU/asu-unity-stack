@@ -22,8 +22,15 @@ storiesOf('Components/Global Header', module)
             <a class="nav-link" href="#" >My ASU</a>
             <a class="nav-link" href="#" >Colleges and Schools</a>
             <a class="nav-link" href="#" >Sign in</a>
-            <form class="form-inline">
-              <input class="form-control" type="search" placeholder="Search ASU" aria-label="Search">
+            <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
+              <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+              <input name="site" value="default_collection" type="hidden">
+              <input name="sort" value="date:D:L:d1" type="hidden">
+              <input name="output" value="xml_no_dtd" type="hidden">
+              <input name="ie" value="UTF-8" type="hidden">
+              <input name="oe" value="UTF-8" type="hidden">
+              <input name="client" value="asu_frontend" type="hidden">
+              <input name="proxystylesheet" value="asu_frontend" type="hidden">
             </form>
           </nav>
         </div>
