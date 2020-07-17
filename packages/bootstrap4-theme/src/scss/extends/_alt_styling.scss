@@ -89,5 +89,9 @@ $text-color-bg-dark:          $ws2-gray-lightest;
     border-color: $ws2-gray-darkest;
     // Lists - removed
     // BUTTONS - removed
+    // Links
+    a {
+      color: $uds-color-brand-gold;
+    }
   }
 }

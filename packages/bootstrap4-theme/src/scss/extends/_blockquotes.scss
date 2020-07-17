@@ -95,4 +95,8 @@ blockquote {
     font-weight: normal;
     padding-left: 1.5em;
   }
+  /* Content customizations */
+  &.ws2-element-black a {
+    color: $uds-color-brand-gold; // Replace with design token
+  }
 }
