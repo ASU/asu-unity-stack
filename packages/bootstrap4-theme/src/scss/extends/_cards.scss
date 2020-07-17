@@ -9,6 +9,14 @@ Cards - Table of Contents
 6. Foldable - Desktop Disable
 -------------------------------------------------------------------*/
 
+.row-spaced {
+  margin-bottom:-32px;
+}
+.row-spaced > .col,
+.row-spaced > div {
+  margin-bottom:32px;
+}
+
 /*------------------------------------------------------------------
 1. Basic Cards
 --------------------------------------------------------------------*/
@@ -23,6 +31,26 @@ Cards - Table of Contents
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
+.card-hover:active {
+  transform: scale(.95);
+  cursor: $uds-component-card-basic-hover-cursor;
+}
+.card-hover:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+}
+.card-hover > button {
+  border: none;
+  background: transparent;
+  text-align: inherit;
+  margin: 0;
+  padding: 0;
+}
+.card-hover > button:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+  border:0;
+}
 
 .card-icon-top {
   width: $uds-component-card-basic-icon-top-width;
@@ -35,55 +63,94 @@ Cards - Table of Contents
   height: $uds-component-card-basic-image-top-height;
   object-fit: $uds-component-card-basic-image-top-object-fit;
 }
-
-.card-centered {
-  .card-icon-top {
-    margin: $uds-component-card-basic-icon-top-margin-centered;
-  }
-  .card-title {
-    text-align: $uds-component-card-basic-header-text-align-centered;
-  }
-  .card-button {
-    text-align: center;
-  }
-}
 .card-header {
-  padding: $uds-component-card-basic-header-padding;
   padding: 32px 32px 16px 32px;
+  flex-grow: 1;
 }
 .card-body {
-  padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
+  flex-grow: 100;
 }
 .card-link {
-  padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
 }
 .card-footer {
-  padding: $uds-component-card-basic-footer-link-padding;
   padding: 0 32px 24px 32px;
   border-top:0;
 }
 .card-tags {
-  padding: $uds-component-card-basic-footer-link-padding;
   padding: 0 32px 24px 32px;
   border-top:0;
+  margin-top: -8px;
+}
+.card-tags .btn-tag {
+  margin-top:8px;
 }
 .card-button {
-  /*align-self: $uds-component-card-basic-button-align-self;*/
   margin-top: $uds-component-card-basic-button-margin-top;
-  padding: $uds-component-card-basic-button-padding;
   padding: 0 32px 24px 32px;
-  /*width: $uds-component-card-basic-button-width-percent;*/
-}
-.card-footer-link {
-  padding: $uds-component-card-basic-footer-link-padding;
-  padding: 0 32px 24px 32px;
-  border-top: $uds-component-card-basic-footer-link-border-top;
 }
 .card > div:last-child {
   padding-bottom:32px;
 }
+
+
+@include media-breakpoint-down(md) {
+  .card-icon-top {
+    width: $uds-component-card-basic-icon-top-width;
+    height: $uds-component-card-basic-icon-top-width;
+    margin: $uds-component-card-basic-icon-top-margin;
+  }
+  .card-img-top img,
+  .card-img-top {
+    height: 160px;
+  }
+  .card-header {
+    padding: 24px 24px 16px 24px;
+  }
+  .card-body {
+    padding: 0 24px 24px 24px;
+  }
+  .card-link {
+    padding: 0 24px 24px 24px;
+  }
+  .card-footer {
+    padding: 0 24px 24px 24px;
+    border-top:0;
+  }
+  .card-tags {
+    padding: 0 24px 24px 24px;
+    border-top:0;
+  }
+  .card-button {
+    margin-top: $uds-component-card-basic-button-margin-top;
+    padding: 0 24px 24px 24px;
+  }
+  .card-button .btn {
+    font-size: $uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small
+      $uds-component-button-padding-x-small;
+    line-height: 1rem;
+  }
+  .card > div:last-child {
+    padding-bottom:24px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .col-lg-6 .card {
+    .card-img-top img,
+    .card-img-top {
+      height: 240px;
+    }
+
+  }
+  .col-lg-6 .card-horizontal .card-img-top {
+    height: auto;
+    max-width: 40%;
+  }
+}
+
 
 .card-sm {
   .card-body {
@@ -91,12 +158,11 @@ Cards - Table of Contents
     padding-left:24px;
   }
   .card-header {
-    padding-right:24px;
-    padding-left:24px;
+    padding: 24px 24px 16px 24px;
   }
   .card-img-top img,
   .card-img-top {
-    height: $uds-component-card-basic-image-top-height-sm;
+    height: 160px;
   }
   .card-footer-link {
     padding-right:24px;
@@ -260,8 +326,34 @@ Cards - Table of Contents
 .card-horizontal {
   flex-direction: row;
 }
+@include media-breakpoint-down(md) {
+  .card-horizontal {
+    flex-direction: column;
+  }
+  .card-horizontal .card-img-top {
+    height: 160px !important;
+    max-width:100% !important;
+    width: 100% !important;
+  }
+  .card-event.card-horizontal .card-content-wrapper {
+    border-top: solid 8px #ffc627;
+    border-left: 0 !important;
+  }
+  .card-story.card-horizontal .card-content-wrapper {
+    margin-right:16px;
+    margin-left:16px;
+    margin-top:-24px;
+    margin-bottom: 0;
+  }
+}
+.card-content-wrapper {
+  padding-bottom:0 !important;
+}
+.card-story.card-horizontal .card-img-top {
+    margin-bottom: 0;
+}
 .card-horizontal .card-img-top {
-  height:100%;
+  height: auto;
   max-width:40%;
 }
 .card-event.card-horizontal .card-header {
