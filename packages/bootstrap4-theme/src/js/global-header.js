@@ -13,7 +13,6 @@ jQuery(document).ready(function ($) {
 
   // Adjusts the height of the top container once the search bar receives and loses the focus.
   $('#header-top input[type="search"]').focusin(function () {
-    console.log('Event fired');
     $('#header-top').css({ height: 48 });
     $('#wrapper-header-top').css({ height: 48 });
   });

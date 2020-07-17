@@ -132,6 +132,12 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
     .unit-name {
       display: none;
     }
+
+    &.subdomain-name {
+      margin-top: $uds-size-spacing-1;
+      margin-bottom: $uds-size-spacing-1;
+      // font-size: $uds-size-font-xl;
+    }
   }
 }
 
@@ -154,6 +160,9 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
 @include media-breakpoint-up(lg) {
   #asu-header.scrolled {
+    .navbar-container.no-links {
+      margin-top: $uds-size-spacing-3;
+    }
     .navbar-nav {
       .nav-link,
       .dropdown .nav-link {
@@ -230,6 +239,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
     .nav-link {
       padding: $uds-size-spacing-2 $uds-size-spacing-4;
       border-top: 1px solid $uds-color-base-gray-3;
+      color: $uds-color-base-gray-7;
 
       svg.fa-home {
         display: none;
@@ -293,6 +303,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       width: 100%;
 
       .nav-link {
+        color: $uds-color-base-gray-7;
         margin-right: 0;
         padding: 0.5rem 0;
         text-align: center;
@@ -397,6 +408,22 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       }
     }
 
+    .navbar-container.no-links {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: $uds-size-spacing-5;
+
+      .title {
+        width: 100%;
+        margin: 0;
+      }
+
+      .navbar-collapse {
+        justify-content: flex-end !important;
+      }
+    }
+
     .title {
       line-height: 1;
       margin: $uds-size-spacing-2 0;
@@ -416,7 +443,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
       &.subdomain-name {
         font-size: $uds-size-font-xxl;
-        margin: $uds-size-spacing-3 0;
+        margin: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
         font-weight: 700;
       }
     }
