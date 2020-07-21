@@ -18,7 +18,6 @@ jQuery(document).ready(function ($) {
   });
 
   $('#header-top input[type="search"]').focusout(function () {
-    console.log('Event fired');
     $('#header-top').css({ height: '' });
     $('#wrapper-header-top').css({ height: '' });
   });
