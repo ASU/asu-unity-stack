@@ -27,14 +27,13 @@ jQuery(document).ready(function ($) {
     $('#asu-header').addClass('scrolled');
   });
 
+  /*  Calculate height of the mobile header.
+   *
+   *  topPadding = 16px. Scrolled class added upon dropdown initiation.
+   *  navbarBrand = 48px. Height of ASU Logo in mobile view, including padding. Static value.
+   *  navbarTitle = Either 16px (one line) or 32px (two lines) + 16px bottom padding
+   */
   function mobileHeaderHeight() {
-    /*  Calculate height of the mobile header.
-     *
-     *  topPadding = 16px. Scrolled class added upon dropdown initiation.
-     *  navbarBrand = 48px. Height of ASU Logo in mobile view, including padding. Static value.
-     *  navbarTitle = Either 16px (one line) or 32px (two lines) + 16px bottom padding
-     */
-
     var topPadding = 16;
     var navbarBrand = $('.navbar-brand').height();
     var navbarTitle = $('nav.navbar .title').height() + 16;
