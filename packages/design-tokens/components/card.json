@@ -77,7 +77,7 @@
         },
         "title-link": {
           "color": {
-            "value": "{color.base.black.value}"
+            "value": "{color.base.gray.7.value}"
           },
           "text-decoration": {
             "value": "none"
