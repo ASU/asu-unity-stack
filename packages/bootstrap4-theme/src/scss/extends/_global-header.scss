@@ -6,7 +6,8 @@
 3. Scrolled
 4. Main Menu - Mobile
 5. Main Menu - Mobile Only
-5. Main Menu - Desktop
+6. Main Menu - Desktop
+7. Page Content
 --------------------------------------------------------------*/
 
 $fa-search: url(../src/img/font-awesome-svg/search.svg);
@@ -65,10 +66,15 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   .nav-link {
     color: $uds-color-base-gray-6;
     font-size: 0.75rem;
+    font-family: $uds-font-family-base;
     line-height: 0.75rem;
     padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half
       $uds-size-spacing-1;
     margin-right: $uds-size-spacing-1;
+
+    &.sr-only {
+      justify-self: flex-start;
+    }
   }
 
   input[type='search'] {
@@ -638,27 +644,31 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 /*--------------------------------------------------------------
-6. Page Wrapper
+7. Page Wrapper
 --------------------------------------------------------------*/
-// Margins needed to prevent content from flowing under global header.
+// Margins are needed to prevent content from flowing under global header.
 
 // Mobile
-#asu-header + #page-wrapper {
+#asu-header + div,
+#asu-header + main {
   @include transition;
   margin-top: 113px;
 }
-#asu-header.scrolled + #page-wrapper {
+#asu-header.scrolled + div,
+#asu-header.scrolled + main {
   @include transition;
   margin-top: 97px;
 }
 
 // Desktop
 @include media-breakpoint-up(lg) {
-  #asu-header + #page-wrapper {
+  #asu-header + div,
+  #asu-header + main {
     @include transition;
     margin-top: 153px;
   }
-  #asu-header.scrolled + #page-wrapper {
+  #asu-header.scrolled + div,
+  #asu-header.scrolled + main {
     @include transition;
     margin-top: 89px;
   }

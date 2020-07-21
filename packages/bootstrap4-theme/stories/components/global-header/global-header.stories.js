@@ -20,6 +20,8 @@ storiesOf('Components/Global Header', module)
           <div class="row">
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="Top">
+                <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+                <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                 <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
@@ -129,6 +131,11 @@ storiesOf('Components/Global Header', module)
     </header>
   </div>
 
+  <div class="wrapper" id="page-wrapper">
+    <div id="skip-to-content" class="sr-only"></div>
+    <!-- Page content starts here -->
+  </div>
+
   `)
 
   .add('Dropdown menus', () => `
@@ -141,6 +148,8 @@ storiesOf('Components/Global Header', module)
           <div class="row">
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="Top">
+                <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+                <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                 <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
@@ -420,6 +429,11 @@ storiesOf('Components/Global Header', module)
     </header>
   </div>
 
+  <div class="wrapper" id="page-wrapper">
+    <div id="skip-to-content" class="sr-only"></div>
+    <!-- Page content starts here -->
+  </div>
+
   `)
 
   .add('No navigation', () => `
@@ -432,6 +446,8 @@ storiesOf('Components/Global Header', module)
           <div class="row">
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="Top">
+                <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+                <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                 <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
@@ -505,6 +521,12 @@ storiesOf('Components/Global Header', module)
 
     </header>
   </div>
+
+  <div class="wrapper" id="page-wrapper">
+    <div id="skip-to-content" class="sr-only"></div>
+    <!-- Page content starts here -->
+  </div>
+
   `)
 
   .add('No navigation w/buttons', () => `
@@ -517,6 +539,8 @@ storiesOf('Components/Global Header', module)
           <div class="row">
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="Top">
+                <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+                <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                 <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
@@ -596,6 +620,11 @@ storiesOf('Components/Global Header', module)
     </header>
   </div>
 
+  <div class="wrapper" id="page-wrapper">
+    <div id="skip-to-content" class="sr-only"></div>
+    <!-- Page content starts here -->
+  </div>
+
   `)
 
   .add('Scrolled state', () => `
@@ -606,6 +635,8 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
@@ -694,11 +725,12 @@ storiesOf('Components/Global Header', module)
 
   </header>
 
-  <div class="wrapper" id="page-wrapper">
+  <main>
+    <div id="skip-to-content" class="sr-only"></div>
     <div style="background: url('https://picsum.photos/id/1035/1900/500'); height:500px;"></div>
     <div class="bg-gray-6" style="height:70vh;"></div>
     <div class="bg-gray-5" style="height:70vh;"></div>
     <div class="bg-gray-4" style="height:70vh;"></div>
-  </div>
+  </main>
 
   `)
