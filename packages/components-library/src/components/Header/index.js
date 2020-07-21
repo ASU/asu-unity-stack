@@ -5,6 +5,7 @@ import { useState, useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import Nav from "../Nav";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
   navTree,
@@ -17,19 +18,28 @@ const Header = ({
   logoutLink,
   ...props
 }) => {
+  // Mobile menu open state and helper functions
   const [open, setOpen] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
 
   const toggle = () => setOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
+  // Scroll position state handling for adding 'scroll' class
   const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
       const position = window.pageYOffset;
       setSrollPosition(position);
   };
 
+  // get window dimensions
+  const { height, width } = useWindowDimensions();
+
+
+
+
   useEffect(() => {
+
       window.addEventListener('scroll', handleScroll, { passive: true });
 
       return () => {
@@ -38,8 +48,8 @@ const Header = ({
   }, []);
 
   return (
-    <S.Header class={scrollPosition > 0 ? "scrolled": ""}>
-      <S.UniversalNav class={open ? "universal-mobile-open" : ""}>
+    <S.Header scrollPosition={scrollPosition} >
+      <S.UniversalNav open={open}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -69,7 +79,7 @@ const Header = ({
                   e.preventDefault();
                   toggle();
                 }}
-                // If javascript is disabled, this should target and open the 
+                // If javascript is disabled, this should target and open the
                 href="#asu-header-nav"
               />
               <S.Title {...{ title, subtitle }} />
@@ -79,6 +89,8 @@ const Header = ({
                 navTree,
                 logo,
                 mobileOpen: open,
+                height,
+                width
               }}
             />
           </Fragment>

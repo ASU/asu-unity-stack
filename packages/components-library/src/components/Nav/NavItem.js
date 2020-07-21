@@ -39,7 +39,7 @@ const NavItem = props => {
       break;
 
     case "heading":
-      inner = <h4>{item.text}</h4>;
+      inner = <h3>{item.text}</h3>;
       break;
     default:
       inner = item.text;

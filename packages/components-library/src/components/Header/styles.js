@@ -9,11 +9,15 @@ import { hiddenStyle, showReset } from "../../styles/common";
 
 const mobileBreak = Tokens.BreakpointLg;
 
-const Header = props => {
+const Header = ({
+  scrollPosition,
+  children,
+  ...props
+}) => {
   return (
     <header
       class={cx(
-        props.class,
+        scrollPosition > 0 ? "scrolled": "",
         css`
           * {
             margin: 0;
@@ -47,34 +51,34 @@ const Header = props => {
           &.scrolled {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           }
-          &.scrolled .asu-universal-nav {
+          &.scrolled .universal-nav {
             ${hiddenStyle}
             transition: translateY(-24px);
           }
-          &.scrolled .asu-primary-nav .asu-icon-hamburger span {
+          &.scrolled .primary-nav .asu-icon-hamburger span {
             font-size: 1rem;
           }
-          &.scrolled .asu-primary-nav .header-logo img {
+          &.scrolled .primary-nav .header-logo img {
             height: 64px;
           }
           @media (max-width: ${mobileBreak}) {
-            &.scrolled .asu-primary-nav .header-logo img {
+            &.scrolled .primary-nav .header-logo img {
               height: 28px;
             }
           }
-          &.scrolled .asu-primary-nav .header-title h1 {
+          &.scrolled .primary-nav .header-title h1 {
             font-size: 1.25rem;
           }
           @media (max-width: ${mobileBreak}) {
-            max-height: 80vh;
+            max-height: 75vh;
             overflow-y: scroll;
 
-            &.scrolled .asu-primary-nav .header-title h1 {
+            &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
             }
           }
 
-          .asu-universal-nav {
+          .universal-nav {
             padding: 0 1rem;
             background-color: #e8e8e8;
             text-align: right;
@@ -98,7 +102,7 @@ const Header = props => {
             @media (max-width: ${mobileBreak}) {
               ${hiddenStyle}
               padding: 0;
-              &.universal-mobile-open {
+              &.mobile-open {
                 ${showReset("fixed")}
                 bottom: 0;
                 z-index: 1500;
@@ -121,7 +125,7 @@ const Header = props => {
             }
           }
 
-          .asu-primary-nav {
+          .primary-nav {
             background-color: #ffffff;
 
             > div {
@@ -294,21 +298,22 @@ const Header = props => {
         navStyles, // add the nav and button styles
         buttonStyles
       )}
+      {...props}
     >
-      {props.children}
+      {children}
     </header>
   );
 };
 
 const UniversalNav = props => {
   return (
-    <div class={cx("asu-universal-nav", props.class)}>{props.children}</div>
+    <div class={cx("universal-nav", props.open ? "mobile-open" : "")}>{props.children}</div>
   );
 };
 
 /** Class styles */
 const PrimaryNav = props => {
-  return <div class="asu-primary-nav">{props.children}</div>;
+  return <div class="primary-nav">{props.children}</div>;
 };
 
 const Logo = props => {

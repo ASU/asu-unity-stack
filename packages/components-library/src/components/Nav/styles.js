@@ -100,13 +100,18 @@ const navStyles = css`
     background: #ffffff;
     border: 1px solid #d0d0d0;
     border-top: none;
-    padding: 2rem;
+    padding: 1rem;
     flex-wrap: nowrap;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
-    h4 {
-      font-size: 1.25rem;
-      letter-spacing: -0.025em;
+    h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      text-align: left;
+      opacity: 1;
+      margin: 1rem 0;
+      line-height: calc(100% + .12em);
     }
 
     > ul {
@@ -136,15 +141,10 @@ const navStyles = css`
 
     @media (max-width: ${mobileBreak}) {
       border: none;
-      padding-top: 0;
 
       &.nav-dropdown-open {
         flex-direction: column;
         position: relative;
-      }
-
-      h4 {
-        padding-bottom: 0.5rem;
       }
 
       > ul {
@@ -163,13 +163,14 @@ const navStyles = css`
   }
 `;
 
-const Nav = props => {
+const Nav = ({open, children, ...props }) => {
   return (
     <nav
       id="asu-header-nav"
-      class={cx("header-nav", props.class ? props.class : "")}
+      class={cx("header-nav", open ? "open-nav" : "")}
+      {...props}
     >
-      {props.children}
+      {children}
     </nav>
   );
 };
