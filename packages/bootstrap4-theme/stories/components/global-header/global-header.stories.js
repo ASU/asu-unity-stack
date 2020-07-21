@@ -22,10 +22,10 @@ storiesOf('Components/Global Header', module)
               <nav class="nav" aria-label="Top">
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                 <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                 <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                  <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                  <input class="form-control" type="search" name="q" aria-label="Search">
                   <input name="site" value="default_collection" type="hidden">
                   <input name="sort" value="date:D:L:d1" type="hidden">
                   <input name="output" value="xml_no_dtd" type="hidden">
@@ -64,7 +64,7 @@ storiesOf('Components/Global Header', module)
                   <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                     <div class="navbar-nav">
 
-                      <a class="nav-link nav-link-home active" href="#">
+                      <a class="nav-link nav-link-home active" href="/">
                         <span class="d-lg-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
@@ -100,7 +100,7 @@ storiesOf('Components/Global Header', module)
 
                     <div class="navbar-mobile-footer">
                       <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                        <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                        <input class="form-control" type="search" name="q" aria-label="Search">
                         <input name="site" value="default_collection" type="hidden">
                         <input name="sort" value="date:D:L:d1" type="hidden">
                         <input name="output" value="xml_no_dtd" type="hidden">
@@ -112,7 +112,7 @@ storiesOf('Components/Global Header', module)
                       <div class="nav-grid">
                         <a class="nav-link" href="https://asu.edu">ASU Home</a>
                         <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                        <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                         <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                       </div>
                     </div>
@@ -143,10 +143,10 @@ storiesOf('Components/Global Header', module)
               <nav class="nav" aria-label="Top">
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                 <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                 <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                  <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                  <input class="form-control" type="search" name="q" aria-label="Search">
                   <input name="site" value="default_collection" type="hidden">
                   <input name="sort" value="date:D:L:d1" type="hidden">
                   <input name="output" value="xml_no_dtd" type="hidden">
@@ -186,7 +186,7 @@ storiesOf('Components/Global Header', module)
                   <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                     <div class="navbar-nav">
 
-                      <a class="nav-link nav-link-home active" href="#">
+                      <a class="nav-link nav-link-home active" href="/">
                         <span class="d-lg-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
@@ -391,7 +391,7 @@ storiesOf('Components/Global Header', module)
 
                     <div class="navbar-mobile-footer">
                       <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                        <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                        <input class="form-control" type="search" name="q" aria-label="Search">
                         <input name="site" value="default_collection" type="hidden">
                         <input name="sort" value="date:D:L:d1" type="hidden">
                         <input name="output" value="xml_no_dtd" type="hidden">
@@ -403,7 +403,7 @@ storiesOf('Components/Global Header', module)
                       <div class="nav-grid">
                         <a class="nav-link" href="https://asu.edu">ASU Home</a>
                         <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                        <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                         <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                       </div>
                     </div>
@@ -434,10 +434,10 @@ storiesOf('Components/Global Header', module)
               <nav class="nav" aria-label="Top">
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                 <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                 <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                  <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                  <input class="form-control" type="search" name="q" aria-label="Search">
                   <input name="site" value="default_collection" type="hidden">
                   <input name="sort" value="date:D:L:d1" type="hidden">
                   <input name="output" value="xml_no_dtd" type="hidden">
@@ -477,7 +477,7 @@ storiesOf('Components/Global Header', module)
 
                     <div class="navbar-mobile-footer">
                       <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                        <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                        <input class="form-control" type="search" name="q" aria-label="Search">
                         <input name="site" value="default_collection" type="hidden">
                         <input name="sort" value="date:D:L:d1" type="hidden">
                         <input name="output" value="xml_no_dtd" type="hidden">
@@ -489,7 +489,7 @@ storiesOf('Components/Global Header', module)
                       <div class="nav-grid">
                         <a class="nav-link" href="https://asu.edu">ASU Home</a>
                         <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                        <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                         <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                       </div>
                     </div>
@@ -519,10 +519,10 @@ storiesOf('Components/Global Header', module)
               <nav class="nav" aria-label="Top">
                 <a class="nav-link" href="https://asu.edu">ASU Home</a>
                 <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                 <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                 <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                  <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                  <input class="form-control" type="search" name="q" aria-label="Search">
                   <input name="site" value="default_collection" type="hidden">
                   <input name="sort" value="date:D:L:d1" type="hidden">
                   <input name="output" value="xml_no_dtd" type="hidden">
@@ -567,7 +567,7 @@ storiesOf('Components/Global Header', module)
 
                     <div class="navbar-mobile-footer">
                       <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                        <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                        <input class="form-control" type="search" name="q" aria-label="Search">
                         <input name="site" value="default_collection" type="hidden">
                         <input name="sort" value="date:D:L:d1" type="hidden">
                         <input name="output" value="xml_no_dtd" type="hidden">
@@ -579,7 +579,7 @@ storiesOf('Components/Global Header', module)
                       <div class="nav-grid">
                         <a class="nav-link" href="https://asu.edu">ASU Home</a>
                         <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                        <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                         <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                       </div>
                     </div>
@@ -608,10 +608,10 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-label="Search">
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -650,7 +650,7 @@ storiesOf('Components/Global Header', module)
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                   <div class="navbar-nav">
 
-                    <a class="nav-link nav-link-home active" href="#">
+                    <a class="nav-link nav-link-home active" href="/">
                       <span class="d-lg-none">Home</span>
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
@@ -666,7 +666,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" placeholder="Search ASU" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -678,7 +678,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://www.asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
@@ -693,8 +693,12 @@ storiesOf('Components/Global Header', module)
     </div>
 
   </header>
-  <div class="bg-gray-6" style="height:70vh;"></div>
-  <div class="bg-gray-5" style="height:70vh;"></div>
-  <div class="bg-gray-4" style="height:70vh;"></div>
+
+  <div class="wrapper" id="page-wrapper">
+    <div style="background: url('https://picsum.photos/id/1035/1900/500'); height:500px;"></div>
+    <div class="bg-gray-6" style="height:70vh;"></div>
+    <div class="bg-gray-5" style="height:70vh;"></div>
+    <div class="bg-gray-4" style="height:70vh;"></div>
+  </div>
 
   `)

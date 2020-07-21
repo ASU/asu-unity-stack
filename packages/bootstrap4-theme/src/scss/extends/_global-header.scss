@@ -636,3 +636,30 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
     }
   }
 }
+
+/*--------------------------------------------------------------
+6. Page Wrapper
+--------------------------------------------------------------*/
+// Margins needed to prevent content from flowing under global header.
+
+// Mobile
+#asu-header + #page-wrapper {
+  @include transition;
+  margin-top: 113px;
+}
+#asu-header.scrolled + #page-wrapper {
+  @include transition;
+  margin-top: 97px;
+}
+
+// Desktop
+@include media-breakpoint-up(lg) {
+  #asu-header + #page-wrapper {
+    @include transition;
+    margin-top: 153px;
+  }
+  #asu-header.scrolled + #page-wrapper {
+    @include transition;
+    margin-top: 89px;
+  }
+}
