@@ -9,7 +9,6 @@ $gray-4: $uds-color-base-gray-4;
 $gray-5: $uds-color-base-gray-5;
 $gray-6: $uds-color-base-gray-6;
 $gray-7: $uds-color-base-gray-7;
-$black: $uds-color-base-black;
 
 $body-color: $uds-color-base-gray-7;
 
@@ -30,7 +29,6 @@ $grays: map-merge(
 
 $gold: $uds-color-base-gold;
 $maroon: $uds-color-base-maroon;
-$maroon-alt-darker: $uds-color-base-darkmaroon;
 $dark: $uds-color-base-gray-7;
 $light: $uds-color-base-gray-2;
 $blue: $uds-color-base-blue;
@@ -41,10 +39,6 @@ $bluefocus: $uds-color-base-bluefocus;
 $darkgold: $uds-color-base-darkgold;
 $darkmaroon: $uds-color-base-darkmaroon;
 
-$gray-2-alt: $uds-color-base-gray-2-alt;
-$gray-5-alt: $uds-color-base-gray-5-alt;
-$gray-5-alt-alpha: $uds-color-base-gray-5-alt-alpha;
-
 $colors: () !default;
 
 $colors: map-merge(
@@ -54,7 +48,6 @@ $colors: map-merge(
     'blue': $blue,
     'green': $green,
     'orange': $orange,
-    'black': $black,
     'white': $white,
     'bluefocus': $bluefocus,
     'darkgold': $darkgold,

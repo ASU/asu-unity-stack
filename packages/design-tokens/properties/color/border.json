@@ -1,10 +1,6 @@
 {
   "color": {
     "border": {
-      "lighter": {
-        "value": "{color.base.gray.2_alt.value}",
-        "comment": "Border - Used for one card border variant"
-      },
       "light": {
         "value": "{color.base.gray.2.value}",
         "comment": "Border - Light"

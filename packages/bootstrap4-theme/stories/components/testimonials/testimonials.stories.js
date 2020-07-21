@@ -32,8 +32,16 @@ To come.
 
 // TODO Testimonials, Option 3
 .add('Testimonials, Option 3', () => `
-<div>
-To come.
+<div class="uds-testimonial uds-testimonial-3">
+  <div class="container uds-testimonial-container">
+    <img src="https://source.unsplash.com/random/240x240" alt="[Include high-quality alt text here]">
+    <blockquote class="uds-element-gold uds-element-spacing-entity">
+      <cite class="uds-sig-title">Dustin Hall</cite>
+      <p>I signed up for this class based on my previous volunteer experience
+      in recycling and to do my part in making this the best company in the
+      world.</p>
+    </blockquote>
+  </div>
 </div>
 `)
 
