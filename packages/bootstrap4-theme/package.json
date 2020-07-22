@@ -23,7 +23,7 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^1.0.0-beta",
+    "@asu-design-system/design-tokens": "^1.0.1",
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@storybook/html": "^5.1.9",
     "autoprefixer": "^9.5.1",
