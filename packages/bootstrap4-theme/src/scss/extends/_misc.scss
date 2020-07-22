@@ -56,7 +56,7 @@ label {
   margin-bottom: 0;
 }
 .card-title a {
-  color: $black;
+  color: $uds-color-base-gray-7;
   text-decoration: none;
 }
 .card-title a:hover {
@@ -74,7 +74,7 @@ label {
   background-color: $white;
 }
 .card-degree .card-footer a {
-  color: $black;
+  color: $uds-color-base-gray-7;
   text-decoration: none;
   font-weight: bold;
 }
@@ -110,15 +110,12 @@ label {
   color: $primary;
 }
 
-.sr-only {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-  text-decoration: none;
-  background-image: url('/sites/default/files/logo.png');
-  width: 110px;
-  height: 100px;
-  display: block; /* display:inline-block also works */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

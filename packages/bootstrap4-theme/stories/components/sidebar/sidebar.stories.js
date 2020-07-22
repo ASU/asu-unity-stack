@@ -11,24 +11,26 @@ storiesOf('Components/Sidebar', module)
   <div class="container my-5">
 
     <div class="row mt-4">
+      <div class="col-md-12 pb-4"><h1>Take a look at the sidebar</h1></div>
       <div class="col-md-4">
 
         <nav id="sidebar-left" class="sidebar accordion" aria-label="Secondary">
 
+          <div class="nav-text">Continue to</div>
           <a class="nav-link" href="#">Default Link</a>
           <a class="nav-link active" href="#">Active Link</a>
 
           <div class="card card-foldable">
             <div class="card-header">
               <h4>
-                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
             </div><!-- end .card-header -->
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent=".sidebar">
               <a href="#" class="nav-link">A Long Link Total that is two or more lines of text</a>
-              <a href="https://espn.com" class="nav-link">Another link here</a>
+              <a href="#" class="nav-link">Another link here</a>
               <a href="#" class="nav-link active">One more link</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
@@ -36,7 +38,7 @@ storiesOf('Components/Sidebar', module)
           <div class="card card-foldable">
             <div class="card-header">
               <h4>
-                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
+                  <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -58,7 +60,7 @@ storiesOf('Components/Sidebar', module)
           <div class="card card-foldable">
             <div class="card-header">
               <h4>
-                <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
+                  <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -81,36 +83,76 @@ storiesOf('Components/Sidebar', module)
 
       <div class="col-md-8">
 
-        <h1>The page title</h1>
-        <p>But this story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
+
+        <p>This story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
         <p>Foldable cards can be mixed in with static navigation links to create a section of content which behaves like an accordion and reveals navigation items which are nested two levels deep.</p>
-        <h2>Launching Azog forsaken strike 890.</h2>
-        <p>Seat accorded Longshanks. You cannot hide. I see you. There is no life in the void. Only death. Tough Narsil enchanted. Succumbed Rhosgobel raiding attached thirty-four tasty gangrel piece cutting athletic.</p>
-        <h3>Approaching courteous Seeing-stones?</h3>
-        <p>Backs hate advantage nine standing heirlooms Anduin stained appointed sunrise unleash. Elros within wall naked pointy you! Sam... I'm glad you are with me.</p>
-        <h4>Day's thereof Westfold!</h4>
-        <p>Safekeeping Andûril blue earned stole warmongering feast they'd. A wizard is never late, Frodo Baggins. Nor is he early. He arrives precisely when he means to. Thofin watch flatten ensnare saws marshland share. Hatched moves Gríma wealth watchful?</p>
-        <h5>Lake-men seriously?</h5>
-        <p>Problem Edge strengths hire. Fly, you fools! Haleth piety given dicky apothecary mood eating waged.</p>
-        <h6>Keys Goblinses misery tubers.</h6>
-        <p>Hear my voice. Come back to the light. Engage Balrog awoke brink nut commoners penalty.</p>
-        <ul>
-          <li>Garden Haradrim solid tact dignity fists reclaim.</li>
-          <li>Troop visitors Sauron the White tail wish creamy deliberate may.</li>
-          <li>Loves serious inferno begged changing Ligulas.</li>
-          <li>Isildur plate corks bright weapon sordid hasty!</li>
-          <li>Sires unhappy future holiday union approve Proudfeet.</li>
+
+        <h2>Ligula aenean leo porttitor eu conseq</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Aenean commodo ligula eget dolor. Aenean massa
+        <strong>strong</strong>. Cum sociis natoque penatibus
+        et magnis dis parturient montes, nascetur ridiculus
+        mus. Donec quam felis, ultricies nec, pellentesque
+        eu, pretium quis, sem. Nulla consequat massa quis
+        enim. Donec pede justo, fringilla vel, aliquet nec,
+        vulputate eget, arcu. In enim justo, rhoncus ut,
+        imperdiet a, venenatis vitae, justo. Nullam dictum
+        felis eu pede <a class="external ext" href="#">link</a>
+        mollis pretium. Integer tincidunt. Cras dapibus.
+        Vivamus elementum semper nisi. Aenean vulputate
+        eleifend tellus. Aenean leo ligula, porttitor eu,
+        consequat vitae, eleifend ac, enim. Aliquam lorem ante,
+        dapibus in, viverra quis, feugiat a, tellus. Phasellus
+        viverra nulla ut metus varius laoreet. Quisque rutrum.
+        Aenean imperdiet. Etiam ultricies nisi vel augue.
+        Curabitur ullamcorper ultricies nisi.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Aenean commodo ligula eget dolor. Aenean massa.
+        Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem.</p>
+
+        <h2>Aenean commodo ligula eget dolor aenean massa</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Aenean commodo ligula eget dolor. Aenean massa.
+        Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem.</p>
+
+        <ul class="uds-list">
+          <li>Lorem ipsum dolor sit amet consectetuer.</li>
+          <li>Aenean commodo ligula eget dolor.</li>
+          <li>Aenean massa cum sociis natoque penatibus.</li>
         </ul>
-        <p>Words overflowing break nearly deposit insult portents she World. Hear my voice. Come back to the light.</p>
-        <ol>
-          <li>Nameless yes worms Noldorin bird unite.</li>
-          <li>Niceties burns buy Tilda high pain.</li>
-          <li>Beheading senses sight sacks Meriadoc still?</li>
-          <li>Frodo hand swords worse scent ashamed.</li>
-          <li>Apple patrol poisonous ruin into odd Gríma?</li>
-        </ol>
-        <p>Content whyfors bled behaving weapons swept l lower attending Shirelings waybread. Do not take me for some conjurer of cheap tricks. Credit Frodo cheated.</p>
-        <p>Eluded belong particularly firm hello oversized industry underestimate tale Council nights bet. Allies melt watched sleeping letter Arwen Evenstar days invented. You shall be the Fellowship of the Ring. Kingsfoil later guess diminish lament firm announce funeral. Withdraw forgave stepped age moment interesting rubbish tingle Fili. Bestowing band negotiations foes spent without liege authority mother Understand counted trouble-making. Fill Kingsfoil nobody's further. Dung Wilds wonderful armies craft heirlooms defeats?</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Aenean commodo ligula eget dolor. Aenean massa.
+        Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem.</p>
+
+        <blockquote>
+        Lorem ipsum dolor sit amet, consectetuer
+        adipiscing elit. Aenean commodo ligula eget dolor.
+        Aenean massa <strong>strong</strong>. Cum sociis
+        natoque penatibus et magnis dis parturient montes,
+        nascetur ridiculus mus. Donec quam felis, ultricies
+        nec, pellentesque eu, pretium quis, sem. Nulla consequat
+        massa quis enim. Donec pede justo, fringilla vel,
+        aliquet nec, vulputate eget, arcu. In <em>em</em>
+        enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+        justo. Nullam <a class="external ext" href="#">link</a>
+        dictum felis eu pede mollis pretium.
+        </blockquote>
+
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Aenean commodo ligula eget dolor. Aenean massa.
+        Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem.</p>
 
       </div><!-- end .col -->
     </div><!-- end .row -->

@@ -35,7 +35,6 @@ Footer - Table of Contents
   }
 
   .nav-link {
-    font-weight: 700;
     margin-right: 0;
     padding: 0.5rem 0;
 
@@ -73,16 +72,16 @@ Footer - Table of Contents
   a {
     margin-right: $uds-size-spacing-3;
     text-decoration: none;
-    color: $uds-color-base-black;
+    color: $uds-color-base-gray-7;
   }
 }
 
 #wrapper-footer-colophon {
-  background-color: $uds-color-base-gray-2-alt;
+  background-color: $uds-color-base-gray-2;
   a {
     margin-right: $uds-size-spacing-3;
     text-decoration: none;
-    color: $uds-color-base-black;
+    color: $uds-color-base-gray-7;
   }
 }
 
@@ -192,25 +191,26 @@ Footer - Table of Contents
 
 // #footer-columns, up to desktop
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   #footer-columns {
     padding: $uds-size-spacing-6 0;
+
+    h5 {
+      margin: 0 0 $uds-size-spacing-3 0;
+    }
 
     .flex-footer {
       .card-header {
         border-top: 0;
+        padding: 0;
 
-        h5 {
-          margin: $uds-size-spacing-2 0 $uds-size-spacing-3 0;
+        a {
+          padding: 0;
+          cursor: default;
+        }
 
-          a {
-            padding: 0;
-            cursor: default;
-          }
-
-          span {
-            display: none;
-          }
+        span {
+          display: none;
         }
       }
 
@@ -237,6 +237,7 @@ Footer - Table of Contents
   .footer-innovation-links {
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
 
     img {
       height: 100px;

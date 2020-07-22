@@ -1,0 +1,138 @@
+// ASU Design System Testimonial styles without Bootstrap variables to override.
+
+// Testimonial Option 2
+.uds-testimonial-2 {
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: $uds-size-spacing-64;
+  display: flex;
+  max-width: $uds-breakpoint-xxxl;
+
+  .uds-testimonial-container {
+    width: 75ch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto auto $uds-size-spacing-4 auto;
+    .uds-testimonial-text {
+      margin-left: $uds-size-spacing-0;
+    }
+    p {
+      margin-bottom: 1.75rem;
+      color: $uds-color-base-white;
+      font-size: $uds-size-font-xl;
+      &:after {
+        content: none;
+      }
+    }
+    cite {
+      color: $uds-color-base-white;
+      font-size: $uds-size-font-medium;
+    }
+    blockquote {
+      margin-top: $uds-size-spacing-0;
+      margin-bottom: $uds-size-spacing-0;
+      position: relative;
+      // We inherit the leading svg quote from _blockquotes.scss's
+      // blockauote:before, but have to add the :after ourselves.
+      &:after {
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiAgIHZpZXdCb3g9IjAgMCAzMDIuOSAyNDUuOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzAyLjkgMjQ1Ljg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPiAgLnN0MHtmaWxsOiNmZmM2Mjc7fTwvc3R5bGU+PGcgaWQ9IkxheWVyXzJfMV8iPiAgPGcgaWQ9IkxheWVyXzEtMiI+ICAgIDxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xODkuMywwaDExMy42djgxLjNjMCwzMi45LTIuOSw1OC44LTguNyw3Ny44cy0xNi41LDM2LTMyLjEsNTEuMWMtMTUuNiwxNS4xLTM1LjYsMjYuOS01OS44LDM1LjZMMTgwLDE5OC45ICAgICAgYzIyLjctNy42LDM4LjktMTguMSw0OC43LTMxLjVjOS44LTEzLjUsMTUtMzEuNCwxNS42LTUzLjhoLTU1TDE4OS4zLDB6IE05LjMsMGgxMTMuNnY4MS4zYzAsMzMuMi0yLjksNTkuMi04LjcsNzggICAgICBjLTUuOCwxOC44LTE2LjYsMzUuOC0zMi4zLDUxYy0xNS44LDE1LjEtMzUuNiwyNi45LTU5LjYsMzUuNkwwLDE5OC45YzIyLjctNy42LDM4LjktMTguMSw0OC43LTMxLjVjOS44LTEzLjUsMTUtMzEuNCwxNS42LTUzLjggICAgICBoLTU1TDkuMywweiIvPiAgPC9nPjwvZz48L3N2Zz4K);
+        background-repeat: no-repeat;
+        content: '';
+        min-height: $uds-size-spacing-6;
+        min-width: 2.375rem;
+        margin-right: -$uds-size-spacing-8;
+        position: absolute;
+        top: $uds-size-spacing-0;
+        right: $uds-size-spacing-0;
+      }
+      // Gold hr divider tweaks.
+      .copy-divider {
+        width: $uds-size-spacing-9;
+        border-top: 4px solid $uds-color-base-gold;
+      }
+    }
+  }
+}
+
+// Testimonial Option 3
+.uds-testimonial-3 {
+  .uds-testimonial-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto auto $uds-size-spacing-4 $uds-size-spacing-0;
+    padding: $uds-size-spacing-0;
+
+    img {
+      clip-path: circle(120px);
+    }
+    blockquote {
+      max-width: 75ch;
+      &::before {
+        background-image: none;
+      }
+      cite.uds-sig-title::before {
+        content: none;
+      }
+      cite.uds-sig-title {
+        font-size: $uds-size-font-xl;
+        background-color: $uds-color-base-gold;
+        color: $uds-color-base-gray-7;
+        padding: 0.25rem $uds-size-spacing-1;
+        margin-left: -$uds-size-spacing-1;
+      }
+      p::before {
+        content: '“';
+      }
+      p {
+        margin-top: $uds-size-spacing-2;
+      }
+    }
+  }
+}
+
+// Media Queries
+.uds-testimonial {
+  // Testimonial Option 2
+  &.uds-testimonial-2 {
+    // Mobile version adjustments.
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      padding-left: $uds-size-spacing-3;
+      p {
+        font-size: $uds-size-font-medium;
+        margin-right: $uds-size-spacing-4;
+      }
+      // Hide closing quote image.
+      blockquote {
+        &:after {
+          background-image: initial;
+          background-repeat: initial;
+          content: initial;
+          min-height: initial;
+          min-width: initial;
+          margin-right: initial;
+          position: initial;
+          top: initial;
+          right: initial;
+        }
+      }
+    }
+  }
+  // Testimonial Option 3
+  &.uds-testimonial-3 {
+    // Mobile version adjustments.
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      .uds-testimonial-container {
+        display: flex;
+        flex-direction: column;
+        blockquote {
+          text-align: center;
+          padding-left: $uds-size-spacing-0;
+          margin-top: $uds-size-spacing-4;
+        }
+      }
+    }
+  }
+}

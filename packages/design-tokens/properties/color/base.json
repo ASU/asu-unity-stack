@@ -13,10 +13,6 @@
         "value": "#FFFFFF",
         "comment": "White"
       },
-      "black": {
-        "value": "#000000",
-        "comment": "Black"
-      },
       "green": {
         "value": "#78BE20",
         "comment": "ASU Green"
@@ -48,10 +44,6 @@
         "2": {
           "value": "#E8E8E8"
         },
-        "2_alt": {
-          "value": "#E5E5E5",
-          "comment": "Used in footer and as a lighter card border"
-        },
         "3": {
           "value": "#D0D0D0"
         },
@@ -60,14 +52,6 @@
         },
         "5": {
           "value": "#747474"
-        },
-        "5_alt": {
-          "value": "#707070",
-          "comment": "Alt border for header search input border"
-        },
-        "5_alt_alpha": {
-          "value": "#70707080",
-          "comment": "Alt border for RFI form card"
         },
         "6": {
           "value": "#484848"

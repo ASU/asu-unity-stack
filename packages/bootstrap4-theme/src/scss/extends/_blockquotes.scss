@@ -35,11 +35,14 @@ blockquote {
   font-weight: bold;
   padding-left: $block-indent;
   max-width: 75ch;
-  &.ws2-element-alt { // override alt default padding
-    padding: $padding-base-vertical*1.5 $padding-base-horizontal*1.5 $padding-base-vertical*1.5 $block-indent;
+  &.uds-element-alt {
+    // override alt default padding
+    padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5
+      $padding-base-vertical * 1.5 $block-indent;
   }
-  &:before { // quote
-    @include  blockquote-quotes('gray');
+  &:before {
+    // quote
+    @include blockquote-quotes('gray');
     background-repeat: no-repeat;
     content: '';
     min-height: 3rem;
@@ -51,16 +54,19 @@ blockquote {
   & > p:not([class*=sig-]):after { // quote
     content: '"';
   }
-  &.ws2-element-maroon:before { // quote
-    @include  blockquote-quotes('maroon');
+  &.uds-element-maroon:before {
+    // quote
+    @include blockquote-quotes('maroon');
   }
-  &.ws2-element-gold:before { // quote
-    @include  blockquote-quotes('gold');
+  &.uds-element-gold:before {
+    // quote
+    @include blockquote-quotes('gold');
   }
-  &.ws2-element-white:before { // quote
-    @include  blockquote-quotes('white');
+  &.uds-element-white:before {
+    // quote
+    @include blockquote-quotes('white');
   }
-  &.ws2-bq-image {
+  &.uds-bq-image {
     overflow: auto;
     img:first-of-type {
       // Written to allow for CMSes to grab the first <img> element added into a Blockquote in a WYSIWYG.
@@ -79,17 +85,18 @@ blockquote {
     padding-left: $blockquote-image-offset; // 230px
   }
   /* Signatures (beneath content) */
-  .ws2-sig-title, .ws2-sig-byline {
+  .uds-sig-title,
+  .uds-sig-byline {
     font-size: $the-base;
     font-style: inherit;
   }
-  .ws2-sig-title {
+  .uds-sig-title {
     &:before {
       padding-right: 0.5em;
       content: "\2014";
     }
   }
-  .ws2-sig-byline {
+  .uds-sig-byline {
     clear: left;
     display: block;
     font-weight: normal;

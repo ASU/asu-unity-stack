@@ -1,0 +1,675 @@
+/*--------------------------------------------------------------
+# Global Header
+
+1. Wrapper Definitions, Global Mixins, Variables
+2. Top Menu
+3. Scrolled
+4. Main Menu - Mobile
+5. Main Menu - Mobile Only
+6. Main Menu - Desktop
+7. Page Content
+--------------------------------------------------------------*/
+
+$fa-search: url(../src/img/font-awesome-svg/search.svg);
+
+@mixin gold-underline {
+  content: '';
+  position: relative;
+  display: block;
+  height: $uds-size-spacing-1;
+  background-color: $uds-color-base-gold;
+  bottom: 0;
+  width: 0;
+  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+}
+
+@mixin gold-underline-expand {
+  width: 100%;
+}
+
+@mixin like-an-h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1rem;
+  letter-spacing: -0.015em;
+}
+
+@mixin transition {
+  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+}
+
+/*--------------------------------------------------------------
+2. Top Menu
+--------------------------------------------------------------*/
+
+#wrapper-header-top {
+  background-color: $uds-color-base-gray-2;
+  height: 32px;
+  @include transition;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 32px;
+}
+
+#header-top {
+  background-color: $uds-color-base-gray-2;
+  height: 32px;
+  @include transition;
+
+  .nav {
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: $uds-color-base-gray-6;
+    font-size: 0.75rem;
+    font-family: $uds-font-family-base;
+    line-height: 0.75rem;
+    padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half
+      $uds-size-spacing-1;
+    margin-right: $uds-size-spacing-1;
+
+    &.sr-only {
+      justify-self: flex-start;
+    }
+  }
+
+  input[type='search'] {
+    background: url(../src/img/font-awesome-svg/search-gray-6.svg) no-repeat
+      10px 50%;
+    background-size: 16px;
+    width: 32px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    border: 0;
+    border-radius: 0;
+    padding: $uds-size-spacing-half;
+    transition: all 0.5s;
+  }
+
+  input[type='search']:focus {
+    background-image: url(../src/img/font-awesome-svg/search-gray-5.svg);
+    width: 200px;
+    color: $uds-color-base-gray-5;
+    background-color: #fff;
+    cursor: auto;
+    margin: $uds-size-spacing-1 0;
+    padding-left: 32px;
+  }
+  input:-moz-placeholder {
+    color: transparent;
+  }
+  input::-webkit-input-placeholder {
+    color: transparent;
+  }
+}
+
+/*--------------------------------------------------------------
+3. Scrolled
+--------------------------------------------------------------*/
+#asu-header .navbar,
+#asu-header .navbar-brand .horiz,
+#asu-header .title {
+  @include transition;
+}
+
+#asu-header.scrolled {
+  #wrapper-header-top {
+    height: 0;
+    overflow: hidden;
+  }
+
+  #header-top {
+    height: 0;
+    overflow: hidden;
+  }
+
+  #header-main .navbar-brand .vert {
+    margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-1 0;
+    padding: $uds-size-spacing-half 0;
+  }
+
+  .title {
+    margin-bottom: $uds-size-spacing-1;
+    .unit-name {
+      display: none;
+    }
+
+    &.subdomain-name {
+      margin-top: $uds-size-spacing-1;
+      margin-bottom: $uds-size-spacing-1;
+      // font-size: $uds-size-font-xl;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  #asu-header.scrolled #header-main {
+    .navbar {
+      padding-top: $uds-size-spacing-2;
+    }
+
+    .navbar-brand .horiz {
+      margin-bottom: $uds-size-spacing-1;
+    }
+
+    .title {
+      margin-bottom: 0;
+      padding-bottom: $uds-size-spacing-2;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #asu-header.scrolled {
+    .navbar-container.no-links {
+      margin-top: $uds-size-spacing-3;
+    }
+    .navbar-nav {
+      .nav-link,
+      .dropdown .nav-link {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+4. Main Menu - Mobile
+--------------------------------------------------------------*/
+#wrapper-header-top {
+  display: none;
+}
+
+#wrapper-header-main {
+  border-bottom: 1px solid $uds-color-base-gray-3;
+  background-color: #ffffff;
+}
+
+#header-main {
+  .navbar {
+    padding: $uds-size-spacing-3 0 0 0;
+    align-items: flex-start;
+  }
+
+  .navbar-brand {
+    padding: 0;
+    margin: 0;
+
+    .vert {
+      display: none;
+    }
+
+    .horiz {
+      display: block;
+      height: 32px;
+      width: auto;
+      margin-bottom: $uds-size-spacing-2;
+      margin-left: $uds-size-spacing-4;
+    }
+  }
+
+  .navbar-toggler {
+    color: $uds-color-base-gray-7;
+    border: 0;
+    margin-right: $uds-size-spacing-4;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .title {
+    line-height: 1;
+    font-size: $uds-size-font-medium;
+    font-weight: 700;
+    padding: 0 $uds-size-spacing-4 $uds-size-spacing-3 $uds-size-spacing-4;
+
+    .unit-name {
+      display: none;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      padding: $uds-size-spacing-2 $uds-size-spacing-4;
+      border-top: 1px solid $uds-color-base-gray-3;
+      color: $uds-color-base-gray-7;
+
+      svg.fa-home {
+        display: none;
+      }
+
+      &:visited {
+        color: $uds-color-base-gray-7;
+      }
+    }
+  }
+
+  .navbar-site-buttons {
+    padding: 1rem 2rem;
+    border-top: 1px solid #d0d0d0;
+    .btn + .btn {
+      margin-left: $uds-size-spacing-1;
+    }
+  }
+
+  #menubar {
+    overflow-y: scroll;
+
+    &.collapsing {
+      height: unset !important;
+    }
+
+    &.collapsing .navbar-mobile-footer.pinned,
+    &.show .navbar-mobile-footer.pinned {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  .navbar-mobile-footer {
+    background-color: $uds-color-base-gray-2;
+
+    .navbar-mobile-search {
+      padding: $uds-size-spacing-2 $uds-size-spacing-4;
+      width: 100%;
+      border-top: 1px solid $uds-color-base-gray-3;
+
+      input {
+        width: 100%;
+        background: url(../src/img/font-awesome-svg/search-gray-6.svg) no-repeat
+          10px 50%;
+        background-size: 16px;
+        background-color: $uds-color-base-white;
+        border: 0;
+        border-radius: 0;
+        padding-left: 32px;
+      }
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-flow: row;
+      justify-items: start;
+      width: 100%;
+
+      .nav-link {
+        color: $uds-color-base-gray-7;
+        margin-right: 0;
+        padding: 0.5rem 0;
+        text-align: center;
+        width: 100%;
+        font-size: $uds-size-font-small;
+        padding: $uds-size-spacing-2 $uds-size-spacing-4;
+        border-top: 1px solid $uds-color-base-gray-3;
+
+        &:nth-child(even) {
+          border-left: 1px solid $uds-color-base-gray-3;
+        }
+      }
+    }
+    &.shadow:before {
+      @include transition;
+      content: '';
+      height: $uds-size-spacing-7;
+      width: 100%;
+      background: transparent
+        linear-gradient(0deg, #19191914 0%, #19191900 100%) 0% 0% no-repeat
+        padding-box;
+      position: absolute;
+      top: -3.5rem;
+    }
+  }
+
+  .dropdown {
+    border-top: 1px solid $uds-color-base-gray-3;
+
+    &:not(:last-child) {
+      border-bottom: 0;
+    }
+
+    .nav-link {
+      border-top: 0;
+    }
+  }
+
+  .dropdown-menu {
+    margin: 0;
+    padding: $uds-size-spacing-2;
+    border: 0; // Overrides BS Option;
+    border-top: 1px solid $uds-color-base-gray-3;
+
+    .btn {
+      margin: $uds-size-spacing-1 0;
+    }
+  }
+
+  .dropdown-col {
+    padding: 0 $uds-size-spacing-4;
+  }
+
+  .dropdown-item {
+    padding: $uds-size-spacing-2 $uds-size-spacing-1;
+    white-space: normal;
+
+    &:visited {
+      color: $uds-color-base-gray-7;
+    }
+
+    & + .dropdown-item {
+      border-top: 1px solid $uds-color-base-gray-4;
+    }
+  }
+}
+/*--------------------------------------------------------------
+5. Main Menu - Mobile Only
+--------------------------------------------------------------*/
+@include media-breakpoint-down(lg) {
+  #wrapper-header-main .container-lg {
+    padding: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+6. Main Menu - Desktop
+--------------------------------------------------------------*/
+
+/* Breakpoint at which the mobile menu is triggered */
+@include media-breakpoint-up(lg) {
+  #wrapper-header-top {
+    display: block;
+  }
+
+  #header-main {
+    .navbar {
+      padding: 0;
+      align-items: flex-start;
+    }
+
+    .navbar-brand {
+      .vert {
+        display: block;
+        height: 72px;
+        width: auto;
+        margin: $uds-size-spacing-3 $uds-size-spacing-2 $uds-size-spacing-3 0;
+      }
+
+      .horiz {
+        display: none;
+      }
+    }
+
+    .navbar-container.no-links {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: $uds-size-spacing-5;
+
+      .title {
+        width: 100%;
+        margin: 0;
+      }
+
+      .navbar-collapse {
+        justify-content: flex-end !important;
+      }
+    }
+
+    .title {
+      line-height: 1;
+      margin: $uds-size-spacing-2 0;
+      font-weight: 700;
+      padding: 0;
+
+      .unit-name {
+        font-size: $uds-size-font-medium;
+        margin-bottom: $uds-size-spacing-1;
+        display: block;
+      }
+
+      .subdomain-name {
+        font-size: $uds-size-font-xl;
+        margin-bottom: 0;
+      }
+
+      &.subdomain-name {
+        font-size: $uds-size-font-xxl;
+        margin: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
+        font-weight: 700;
+      }
+    }
+
+    #menubar {
+      overflow: initial;
+    }
+
+    .navbar-nav {
+      > .nav-link {
+        border: 0;
+        font-size: $uds-size-font-medium;
+        color: $uds-color-base-gray-7;
+        padding: 0.5rem 0.75rem; /* Magic number */
+        margin-right: $uds-size-spacing-1;
+
+        &:after {
+          @include gold-underline;
+          bottom: -8px;
+          left: -8px;
+        }
+
+        &:hover:after {
+          @include gold-underline-expand;
+          width: calc(100% + 16px);
+        }
+
+        &.active:after {
+          @include gold-underline-expand;
+          width: calc(100% + 16px);
+        }
+      }
+
+      > .nav-link-home {
+        padding-bottom: 7px; /* Magic number */
+
+        svg.fa-home {
+          display: inline-block;
+          font-size: 16px;
+        }
+      }
+
+      .nav-item .nav-link {
+        padding: 0.5rem 0.75rem; /* Magic number */
+      }
+    }
+
+    .navbar-site-buttons {
+      padding: 0;
+      border: 0;
+    }
+
+    .dropdown {
+      position: relative;
+      padding: 0;
+      border: 0;
+      margin-right: $uds-size-spacing-1;
+
+      &:after {
+        @include gold-underline;
+      }
+
+      &:hover:after {
+        @include gold-underline-expand;
+      }
+
+      &.active:after {
+        @include gold-underline-expand;
+      }
+
+      &.dropdown.show:after {
+        @include gold-underline-expand;
+      }
+
+      &.dropdown.megamenu.show:after {
+        @include gold-underline-expand;
+      }
+
+      svg.fa-chevron-down {
+        display: inline-block;
+        font-size: $uds-size-font-tiny;
+        margin-left: $uds-size-spacing-1;
+      }
+    }
+
+    .dropdown-menu {
+      margin: -1px 0 0 0;
+      border-top: 1px solid #ffffff;
+      padding: $uds-size-spacing-4;
+    }
+
+    .dropdown-menu.dropdown-columns.show {
+      display: flex;
+    }
+
+    .dropdown-col {
+      width: 16rem;
+      padding: 0 $uds-size-spacing-3 0 0;
+      border-right: 1px solid $uds-color-base-gray-4;
+      margin-right: $uds-size-spacing-3;
+
+      &:last-of-type {
+        margin-right: 0;
+        padding-right: 0;
+        border-right: 0;
+      }
+
+      h3 {
+        margin-top: 0;
+      }
+    }
+
+    .dropdown-item {
+      padding: $uds-size-spacing-1 0;
+      white-space: normal;
+
+      &:visited {
+        color: $uds-color-base-gray-7;
+      }
+
+      &:hover {
+        color: $uds-color-base-maroon;
+        text-decoration: underline;
+      }
+
+      & + .dropdown-item {
+        border-top: 0;
+      }
+    }
+
+    .megamenu {
+      position: static;
+
+      .dropdown-menu {
+        background-color: #ffffff;
+        border-bottom: 1px solid $uds-color-base-gray-4;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .row {
+        width: 100%;
+        padding: $uds-size-spacing-4 0;
+      }
+
+      .row.with-buttons {
+        padding: $uds-size-spacing-2 0;
+
+        &:before {
+          content: '';
+          height: 1px;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          margin-right: calc(-50vw + 50%);
+          background-color: $uds-color-base-gray-4;
+          position: relative;
+          top: -1rem;
+        }
+      }
+
+      div[class^='col-'] {
+        border-right: 1px solid $uds-color-base-gray-4;
+        padding: 0 $uds-size-spacing-3;
+
+        &:last-of-type {
+          border-right: 0;
+        }
+
+        h3 {
+          margin-top: 0;
+        }
+
+        .dropdown-item {
+          white-space: normal;
+          & + .dropdown-item {
+            border-top: 0;
+          }
+        }
+
+        .btn + .btn {
+          margin-left: $uds-size-spacing-3;
+        }
+      }
+    }
+
+    .navbar-mobile-footer {
+      display: none;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+7. Page Wrapper
+--------------------------------------------------------------*/
+// Margins are needed to prevent content from flowing under global header.
+
+// Mobile
+#asu-header + div,
+#asu-header + main {
+  @include transition;
+  margin-top: 113px;
+}
+#asu-header.scrolled + div,
+#asu-header.scrolled + main {
+  @include transition;
+  margin-top: 97px;
+}
+
+// Desktop
+@include media-breakpoint-up(lg) {
+  #asu-header + div,
+  #asu-header + main {
+    @include transition;
+    margin-top: 153px;
+  }
+  #asu-header.scrolled + div,
+  #asu-header.scrolled + main {
+    @include transition;
+    margin-top: 89px;
+  }
+}

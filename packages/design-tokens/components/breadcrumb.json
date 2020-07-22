@@ -17,7 +17,7 @@
       },
       "item": {
         "padding": {
-          "value": "{size.spacing.4.value}"
+          "value": "{size.spacing.1.value}"
         }
       },
       "margin-bottom": {
