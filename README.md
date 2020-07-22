@@ -1,6 +1,8 @@
 # ASU Unity Stack
 Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
 
+Version DEV-1
+
 ## ❯ Packages in this repository
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
