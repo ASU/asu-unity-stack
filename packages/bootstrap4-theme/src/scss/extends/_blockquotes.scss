@@ -35,7 +35,7 @@ blockquote {
   font-weight: bold;
   padding-left: $block-indent;
   max-width: 75ch;
-  &.uds-element-alt {
+  &.ws2-element-alt {
     // override alt default padding
     padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5
       $padding-base-vertical * 1.5 $block-indent;
@@ -54,19 +54,19 @@ blockquote {
   & > p:not([class*=sig-]):after { // quote
     content: '"';
   }
-  &.uds-element-maroon:before {
+  &.ws2-element-maroon:before {
     // quote
     @include blockquote-quotes('maroon');
   }
-  &.uds-element-gold:before {
+  &.ws2-element-gold:before {
     // quote
     @include blockquote-quotes('gold');
   }
-  &.uds-element-white:before {
+  &.ws2-element-white:before {
     // quote
     @include blockquote-quotes('white');
   }
-  &.uds-bq-image {
+  &.ws2-bq-image {
     overflow: auto;
     img:first-of-type {
       // Written to allow for CMSes to grab the first <img> element added into a Blockquote in a WYSIWYG.
@@ -85,18 +85,18 @@ blockquote {
     padding-left: $blockquote-image-offset; // 230px
   }
   /* Signatures (beneath content) */
-  .uds-sig-title,
-  .uds-sig-byline {
+  .ws2-sig-title,
+  .ws2-sig-byline {
     font-size: $the-base;
     font-style: inherit;
   }
-  .uds-sig-title {
+  .ws2-sig-title {
     &:before {
       padding-right: 0.5em;
       content: "\2014";
     }
   }
-  .uds-sig-byline {
+  .ws2-sig-byline {
     clear: left;
     display: block;
     font-weight: normal;
@@ -104,6 +104,6 @@ blockquote {
   }
   /* Content customizations */
   &.ws2-element-black a {
-    color: $uds-color-brand-gold; // Replace with design token
+    color: $uds-color-brand-gold; // @TODO Replace with design token
   }
 }

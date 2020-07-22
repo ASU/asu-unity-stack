@@ -39,12 +39,12 @@ $text-color-bg-dark:          $ws2-gray-lightest;
   }
 }
 
-.uds-element-spacing-entity {
+.ws2-element-spacing-entityq {
   // 50/50 margin split - 48px
   @include element-margins-vertical('ws2-container', 3);
 }
 
-.uds-element-spacing-entity-full {
+.ws2-element-spacing-entityq-full {
   // 50/50 margin split - 96px
   @include element-margins-vertical('ws2-container', 6);
 }
@@ -56,7 +56,7 @@ $text-color-bg-dark:          $ws2-gray-lightest;
 
 /* =Global alternative styling : Gray, Black backgrounds
 -------------------------------------------------------------- */
-.uds-element-alt {
+.ws2-element-alt {
   // Global shell for content-element only overrides
   padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5; // 24px padding
   border-style: solid;
@@ -76,7 +76,7 @@ $text-color-bg-dark:          $ws2-gray-lightest;
    * Gray
    */
   ///////////////////////////////////////
-  &.uds-element-alt-gray {
+  &.ws2-element-alt-gray {
     color: $text-color;
     background-color: $ws2-gray-lighter;
     border-color: $ws2-gray-lighter;
@@ -87,7 +87,7 @@ $text-color-bg-dark:          $ws2-gray-lightest;
    * Black
    */
   ///////////////////////////////////////
-  &.uds-element-alt-black {
+  &.ws2-element-alt-black {
     color: $text-color-bg-dark;
     background-color: $ws2-gray-darkest;
     border-color: $ws2-gray-darkest;
