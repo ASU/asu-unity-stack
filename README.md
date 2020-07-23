@@ -126,4 +126,23 @@ yarn stop # stop the testing server
  - Puppeteer (https://pptr.dev/)
 
 
+## ❯ How to test the private package registry:
+
+1. Go here and follow directions to add yourself as a user: http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/
+
+2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
+
+```@asu-design-system:registry=http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+
+This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, try to login using:
+
+```npm login --registry http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+
+3. Test installing packages using yarn or npm inside of another NPM project:
+
+```yarn add @asu-design-system/design-tokens@dev```
+
+Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
+
+
 

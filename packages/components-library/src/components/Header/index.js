@@ -1,49 +1,92 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import {useState, useCallback} from "preact/compat"
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { useState, useEffect } from "preact/compat";
+import PropTypes from "prop-types";
 import * as S from "./styles";
 import Nav from "../Nav";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-const Header = props => {
+const Header = ({
+  navTree,
+  title,
+  subtitle,
+  logo,
+  loggedIn,
+  userName,
+  loginLink,
+  logoutLink,
+  ...props
+}) => {
+  // Mobile menu open state and helper functions
+  const [open, setOpen] = useState(false);
+  const [openSearch, setSearchOpen] = useState(false);
+
+  const toggle = () => setOpen(oldOpen => !oldOpen);
+  const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
+
+  // Scroll position state handling for adding 'scroll' class
+  const [scrollPosition, setSrollPosition] = useState(0);
+  const handleScroll = () => {
+      const position = window.pageYOffset;
+      setSrollPosition(position);
+  };
+
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
-  const [open, setOpen] = useState(false);
+  useEffect(() => {
 
-  const toggle = useCallback(() => {
-    console.log(open, 'OPEN IN CALLB ACK');
-    setOpen(oldOpen => !oldOpen);
-  }, [open]);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
 
   return (
-    <S.Header>
-      <S.UniversalNav>
+    <S.Header scrollPosition={scrollPosition} >
+      <S.UniversalNav open={open}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          <a href="#">Sign in</a>
-          <a href="https://search.asu.edu">
-            <i className="fa fa-search" />
-          </a>
+          {loggedIn ? (
+            <span>
+              {userName}
+              <a href={logoutLink}>Sign Out</a>
+            </span>
+          ) : (
+            <a href={loginLink}>Sign in</a>
+          )}
+          <S.SearchForm open={openSearch}>
+            <S.IconSearch onMouseDown={toggleSearch} />
+          </S.SearchForm>
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
-        <S.IconHamburger onMouseDown={toggle} />
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
           <Fragment>
-            <S.Logo {...props.logo} />
-            <S.Title {...{ title: props.title, subtitle: props.subtitle }} />
+            <div>
+              <S.Logo {...logo} />
+              <S.IconHamburger
+                onClick={e => {
+                  e.preventDefault();
+                  toggle();
+                }}
+                // If javascript is disabled, this should target and open the
+                href="#asu-header-nav"
+              />
+              <S.Title {...{ title, subtitle }} />
+            </div>
             <Nav
               {...{
-                navTree: props.navTree,
-                title: props.title,
-                subtitle: props.subtitle,
-                logo: props.logo,
+                navTree,
+                logo,
+                mobileOpen: open,
+                height,
                 width
               }}
             />
@@ -54,17 +97,36 @@ const Header = props => {
   );
 };
 
+Header.propTypes = {
+  navTree: PropTypes.arrayOf(PropTypes.object),
+  logo: PropTypes.shape({
+    alt: PropTypes.string,
+    src: PropTypes.string,
+    mobileSrc: PropTypes.string,
+  }),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  loggedIn: PropTypes.bool,
+  userName: PropTypes.string,
+  loginLink: PropTypes.string,
+  logoutLink: PropTypes.string,
+};
+
 Header.defaultProps = {
   navTree: [],
   dangerouslyGenerateStub: false,
   logo: {
     alt: "Arizona State University Logo",
     src: "https://i.imgur.com/5WtkgkV.png",
-    mobileSrc: "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png"
+    mobileSrc:
+      "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
   },
   title: "",
   subtitle: "",
-  mobileWidth: 990
+  loggedIn: false,
+  userName: "",
+  loginLink: "https://weblogin.asu.edu/cas/login",
+  logoutLink: "https://weblogin.asu.edu/cas/logout",
 };
 
 export default Header;
