@@ -5,7 +5,7 @@
  * ======================================================================== */
 
 // Import UDS Design Tokens
-@import '../../node_modules/@asu-design-system/design-tokens/build/scss/_variables.scss';
+@import '../design-tokens/_variables.scss';
 
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';
