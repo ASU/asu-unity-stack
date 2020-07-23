@@ -7,6 +7,10 @@
 // Import UDS Design Tokens
 @import '../design-tokens/_variables.scss';
 
+// default path for image assets (assuming the images are hosted from the web root)
+// Storybook and themes override this for their particular path needs
+$image-assets-path: '/img' !default;
+
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';
 @import 'variables/alerts';

@@ -10,7 +10,7 @@
 7. Page Content
 --------------------------------------------------------------*/
 
-$fa-search: url(../src/img/font-awesome-svg/search.svg);
+$fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
 @mixin gold-underline {
   content: '';
@@ -78,8 +78,8 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   }
 
   input[type='search'] {
-    background: url(../src/img/font-awesome-svg/search-gray-6.svg) no-repeat
-      10px 50%;
+    background: url($image-assets-path+'/font-awesome-svg/search-gray-6.svg')
+      no-repeat 10px 50%;
     background-size: 16px;
     width: 32px;
     cursor: pointer;
@@ -92,7 +92,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   }
 
   input[type='search']:focus {
-    background-image: url(../src/img/font-awesome-svg/search-gray-5.svg);
+    background-image: url($image-assets-path+'/font-awesome-svg/search-gray-5.svg');
     width: 200px;
     color: $uds-color-base-gray-5;
     background-color: #fff;
@@ -291,8 +291,8 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
       input {
         width: 100%;
-        background: url(../src/img/font-awesome-svg/search-gray-6.svg) no-repeat
-          10px 50%;
+        background: url($image-assets-path+'/font-awesome-svg/search-gray-6.svg')
+          no-repeat 10px 50%;
         background-size: 16px;
         background-color: $uds-color-base-white;
         border: 0;
