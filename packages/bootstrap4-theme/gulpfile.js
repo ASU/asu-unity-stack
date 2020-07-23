@@ -134,9 +134,15 @@ gulp.task('copy-assets', function (done) {
   // Copy Bootstrap's Scripts
   gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
 
+  // Copy the design-tokens assets into bootstrap dist/
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/**/*`)
     .pipe(gulp.dest('./dist/assets'));
+
+  // Copy the design-tokens SASS variables into bootstrap src/
+  gulp
+    .src(`${paths.node}/@asu-design-system/design-tokens/build/scss/**/*`)
+    .pipe(gulp.dest('./src/design-tokens'));
 
   done();
 });
