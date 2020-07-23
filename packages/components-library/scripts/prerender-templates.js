@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // import prerendering functions for ASU Brand header
-const Templates  = require("../dist/web-components.ssr");
+const Templates  = require("../dist/code.ssr");
 const outputDir = path.resolve("dist", "templates");
 
 fs.mkdirSync(outputDir, { recursive: true });

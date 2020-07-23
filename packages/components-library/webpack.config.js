@@ -8,23 +8,24 @@ module.exports.push({
   context: path.join(__dirname, "src"),
   mode: "production",
   entry: {
-    "asu-unity-web-components": "./index.js",
+    core: "./bundles/core.js",
+    forms: "./bundles/forms.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].production.js",
     libraryTarget: "umd",
-    library: "AsuWeb",
+    library: "AsuWeb[name]",
     umdNamedDefine: true,
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
-          chunks: "initial",
-        },
+          name: 'commons',
+          chunks: 'initial',
+          minChunks: 2
+        }
       },
     },
     minimizer: [new TerserPlugin({
@@ -68,11 +69,11 @@ module.exports.push(
     context: path.join(__dirname, "src"),
     target: 'node',
     entry: {
-      "web-components": "./ssr.js",
+      code: "./ssr.js",
     },
     output: {
       path: path.join(__dirname, "dist"),
-      filename: "web-components.ssr.js",
+      filename: "[name].ssr.js",
       libraryTarget: "umd",
       globalObject: "this",
     },

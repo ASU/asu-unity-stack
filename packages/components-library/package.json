@@ -2,7 +2,7 @@
   "name": "@asu-design-system/components-library",
   "version": "1.0.0",
   "description": "ASU Web Standards-compliant Preact components library",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "module": "esm/index.js",
   "publishConfig": {
     "access": "restricted",
@@ -21,7 +21,7 @@
     "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules && yarn prerender",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "start-storybook",
+    "storybook": "start-storybook -p 8089",
     "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },
