@@ -13,6 +13,21 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerAction({
+  name: "copy_assets",
+  do: function (dictionary, config) {
+    console.log("Copying assets");
+    fs.copySync(
+      path.dirname("assets/*"),
+      config.buildPath + "assets"
+    );
+  },
+  undo: function (dictionary, config) {
+    console.log("Cleaning assets directory");
+    fs.removeSync(config.buildPath + "assets");
+  },
+});
+
+StyleDictionary.registerAction({
   name: "copy_fonts",
   do: function (dictionary, config) {
     console.log("Copying FontAwesome");
@@ -87,7 +102,7 @@ module.exports = {
           format: "javascript/module",
         },
       ],
-      actions: ["copy_fonts"],
+      actions: ["copy_assets", "copy_fonts"],
     },
 
     es6: {
@@ -123,7 +138,6 @@ module.exports = {
           format: "scss/variables",
         },
       ],
-      actions: ["copy_assets"],
     },
 
     // "ios": {
