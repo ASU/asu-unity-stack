@@ -9,7 +9,7 @@ import {
 } from "../Nav/NavTreeExample";
 
 import Header from ".";
-import { Fragment } from "react";
+import { Fragment } from "preact/compat";
 
 export default {
   component: Header,
