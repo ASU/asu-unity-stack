@@ -30,6 +30,13 @@ export const base = () => (
   </Fragment>
 );
 
+export const mobile = () => (
+  <Fragment>
+    <Header />
+    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+  </Fragment>
+);
+
 export const withButtons = () => (
   <Fragment>
     <Header

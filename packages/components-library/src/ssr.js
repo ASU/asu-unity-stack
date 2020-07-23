@@ -22,6 +22,7 @@ let { html, css, ids } = extractCritical(renderToString(element))*/
 
 let HeaderTemplate;
 let FullExample;
+let MobileTemplate;
 
 try {
   HeaderTemplate = renderStylesToString(render(
@@ -51,4 +52,15 @@ try {
 
 }
 
-export { HeaderTemplate, FullExample };
+try {
+  MobileTemplate = renderStylesToString(render(
+    <Header />
+  ));
+} catch (error) {
+  // handle error
+  console.error(error);
+} finally {
+
+}
+
+export { HeaderTemplate, FullExample, MobileTemplate };

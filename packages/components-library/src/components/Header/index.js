@@ -35,9 +35,6 @@ const Header = ({
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
-
-
-
   useEffect(() => {
 
       window.addEventListener('scroll', handleScroll, { passive: true });
