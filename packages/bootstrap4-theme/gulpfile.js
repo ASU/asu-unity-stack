@@ -124,25 +124,35 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(paths.dist + '/js'));
 });
 
-// Copy all assets needed for ASU Web Standards
-gulp.task('copy-assets', function (done) {
+// Copy all master assets from the design-tokens library
+gulp.task('copy-assets', function(done) {
   // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/assets/**/*`)
-    .pipe(gulp.dest('./dist/img'));
+    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/img/**/*`)
+    .pipe(gulp.dest('./src/img'));
 
-  // Copy Bootstrap's Scripts
-  gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
-
-  // Copy the design-tokens assets into bootstrap dist/
+  // Copy font-awesome from design-token into src/
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/**/*`)
-    .pipe(gulp.dest('./dist/assets'));
+    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/**/*`)
+    .pipe(gulp.dest('./src/fontawesome'));
 
-  // Copy the design-tokens SASS variables into bootstrap src/
+  // Copy the design-tokens SASS variables into src/
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/build/scss/**/*`)
     .pipe(gulp.dest('./src/design-tokens'));
+
+  done();
+});
+
+// Copy assets into dist/
+gulp.task('copy-dist-assets', function(done) {
+  // Copy font-awesome to dist/
+  gulp
+    .src(`./src/fontawesome/**/*`)
+    .pipe(gulp.dest(paths.dist + '/fontawesome'));
+
+  // Copy Bootstrap's Scripts to dist/
+  gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
 
   done();
 });
