@@ -4,10 +4,10 @@
  * Copyright 2020 ASU
  * ======================================================================== */
 
-// Import UDS Design Tokens
-@import '../design-tokens/_variables.scss';
+// Load UDS Design Tokens
+@import 'design-tokens/variables';
 
-// default path for image assets (assuming the images are hosted from the web root)
+// default path for image assets (assuming the images will be hosted from the web root)
 // Storybook and themes override this for their particular path needs
 $image-assets-path: '/img' !default;
 

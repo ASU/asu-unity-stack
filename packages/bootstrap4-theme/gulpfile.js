@@ -139,7 +139,7 @@ gulp.task('copy-assets', function(done) {
   // Copy the design-tokens SASS variables into src/
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/build/scss/**/*`)
-    .pipe(gulp.dest('./src/design-tokens'));
+    .pipe(gulp.dest('./src/scss/design-tokens'));
 
   done();
 });
