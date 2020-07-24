@@ -21,7 +21,7 @@
     "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules && yarn prerender",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "start-storybook -p 8089",
+    "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },

@@ -6,29 +6,51 @@ import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Formik, Field, Form } from "formik";
 
-const FormPanel = ({ title, initialValues, onSubmit, fields, header, ...props }) => {
-
+const FormPanel = ({
+  title,
+  initialValues,
+  onSubmit,
+  fields,
+  description,
+  imgUrl,
+  ...props
+}) => {
   return (
-    <div>
+    <S.FormPanel>
+      <S.FormHeader
+        {...{
+          title,
+          description,
+          imgUrl,
+        }}
+      />
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           {fields.map((item, index) => {
-            return (
-              <Fragment>
-                <label htmlFor={item.name}>{item.label}</label>
-                <Field
-                  id={item.id}
-                  name={item.name}
-                  {...item.placeholder ? {placeholder: item.placeholder}: {}}
-                  type={item.type ? item.type : ""}
-                />
-              </Fragment>
-            );
+            if (item.type != "submit") {
+              const check = item.type == "checkbox";
+
+              return (
+                <S.FormPanelField icon={item.icon}>
+                  <S.FormField {...item}>
+                    <Field
+                      id={item.name}
+                      name={item.name}
+                      {...(item.placeholder
+                        ? { placeholder: item.placeholder }
+                        : {})}
+                      type={item.type ? item.type : ""}
+                    />
+                  </S.FormField>
+                </S.FormPanelField>
+              );
+            }
+
+            return <button type="submit">{item.label}</button>;
           })}
-          <button type="submit">Submit</button>
         </Form>
       </Formik>
-    </div>
+    </S.FormPanel>
   );
 };
 
@@ -37,13 +59,14 @@ FormPanel.propTypes = {
   initialValues: PropTypes.object,
   fields: PropTypes.arrayOf(PropTypes.object),
   onSubmit: PropTypes.func,
-  header: PropTypes.string
+  description: PropTypes.string,
+  imgUrl: PropTypes.string,
 };
 
 FormPanel.defaultProps = {
   initalValues: {},
   fields: [],
-  header: ""
+  header: "",
 };
 
 export default FormPanel;

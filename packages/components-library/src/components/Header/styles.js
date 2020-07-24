@@ -6,6 +6,7 @@ import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { hiddenStyle, showReset } from "../../styles/common";
+import {IconHamburger, IconSearch} from "../Icon/styles";
 
 const mobileBreak = Tokens.BreakpointLg;
 
@@ -335,15 +336,7 @@ const Title = props => {
   );
 };
 
-const IconHamburger = props => {
-  return (
-    <a {...props} class="asu-icon-hamburger">
-      <span class="fa fa-bars">
-        <span class="sr-only">Menu</span>
-      </span>
-    </a>
-  );
-};
+
 
 const SearchForm = props => {
   // TODO: handle custom search
@@ -362,16 +355,6 @@ const SearchForm = props => {
       </form>
       {props.children}
     </div>
-  );
-};
-
-const IconSearch = props => {
-  return (
-    <a class="asu-search-icon">
-      <span class="fa fa-search" {...props}>
-        <span class="sr-only">Search</span>
-      </span>
-    </a>
   );
 };
 
