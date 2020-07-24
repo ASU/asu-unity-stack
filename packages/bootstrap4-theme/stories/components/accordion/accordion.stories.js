@@ -7,7 +7,7 @@ storiesOf('Components/Accordion', module)
     happo: false,
   })
 
-.add('Foldable Card', () => `
+.add('Foldable card', () => `
   <div class="container my-5">
 
     <div class="row">
@@ -93,7 +93,7 @@ storiesOf('Components/Accordion', module)
   </div>
 `)
 
-.add('Foldable - Disable on Desktop', () => `
+.add('Disable folding on desktop', () => `
 <div class="container my-5">
 
     <div class="row">
