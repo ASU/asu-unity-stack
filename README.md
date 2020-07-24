@@ -1,6 +1,8 @@
 # ASU Unity Stack
 Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
 
+Version DEV-1
+
 ## ❯ Packages in this repository
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
@@ -122,6 +124,25 @@ yarn stop # stop the testing server
  - Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
  - Jest (https://jestjs.io/docs/en/getting-started)
  - Puppeteer (https://pptr.dev/)
+
+
+## ❯ How to test the private package registry:
+
+1. Go here and follow directions to add yourself as a user: http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/
+
+2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
+
+```@asu-design-system:registry=http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+
+This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, try to login using:
+
+```npm login --registry http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+
+3. Test installing packages using yarn or npm inside of another NPM project:
+
+```yarn add @asu-design-system/design-tokens@dev```
+
+Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
 
 
 

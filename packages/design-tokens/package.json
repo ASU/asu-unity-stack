@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/design-tokens",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "publishConfig": {
     "access": "restricted",

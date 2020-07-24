@@ -39,13 +39,69 @@ storiesOf('Components/Buttons', module)
 <div class="col col-12 col-lg-4 bg-light p-3"><button type="button" class="btn btn-tag btn-tag-alt-gray">Tag alt gray</button></div>
 <div class="col col-12 col-lg-4 bg-dark p-3"><button type="button" class="btn btn-tag btn-tag-alt-black">Tag alt black</button></div></div></div>`)
 
-.add('Close button', () => `<div class="container-fluid"><div class="row"><div class="col col-12 col-lg-4 bg-white p-3"><button type="button" class="btn btn-circle btn-circle-alt-white"><i class="fas fa-times"></i></button></div>
-<div class="col col-12 col-lg-4 bg-light p-3"><button type="button" class="btn btn-circle btn-circle-alt-gray"><i class="fas fa-times"></i></button></div>
-<div class="col col-12 col-lg-4 bg-dark p-3"><button type="button" class="btn btn-circle btn-circle-alt-black"><i class="fas fa-times"></i></button></div></div></div>`)
+.add('Close button', () => `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-12 col-lg-4 bg-white p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+    <div class="col col-12 col-lg-4 bg-light p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+    <div class="col col-12 col-lg-4 bg-dark p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-black">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+  </div>
+</div>
+`)
 
-.add('Prev/next buttons', () => `<div class="container-fluid"><div class="row"><div class="col col-12 col-lg-4 bg-white p-3"><button type="button" class="btn btn-circle btn-circle-alt-white btn-circle-large"><i class="fas fa-chevron-left"></i></button> <button type="button" class="btn btn-circle btn-circle-alt-white btn-circle-large"><i class="fas fa-chevron-right"></i></button></div>
-<div class="col col-12 col-lg-4 bg-light p-3"><button type="button" class="btn btn-circle btn-circle-alt-gray btn-circle-large"><i class="fas fa-chevron-left"></i></button> <button type="button" class="btn btn-circle btn-circle-alt-gray btn-circle-large"><i class="fas fa-chevron-right"></i></button></div>
-<div class="col col-12 col-lg-4 bg-dark p-3"><button type="button" class="btn btn-circle btn-circle-alt-black btn-circle-large"><i class="fas fa-chevron-left"></i></button> <button type="button" class="btn btn-circle btn-circle-alt-black btn-circle-large"><i class="fas fa-chevron-right"></i></button></div></div></div>`);
+.add('Prev/next buttons', () => `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-12 col-lg-4 bg-white p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-white btn-circle-large">
+        <i class="fas fa-chevron-left"></i>
+        <span class="sr-only" >Previous</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-white btn-circle-large">
+        <i class="fas fa-chevron-right"></i>
+        <span class="sr-only" >Next</span>
+      </button>
+      </div>
+    <div class="col col-12 col-lg-4 bg-light p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-gray btn-circle-large">
+        <i class="fas fa-chevron-left"></i>
+        <span class="sr-only" >Previous</span>
+      </button>
+      <button type="button"
+        class="btn btn-circle btn-circle-alt-gray btn-circle-large">
+        <i class="fas fa-chevron-right"></i>
+        <span class="sr-only" >Next</span>
+      </button>
+    </div>
+    <div class="col col-12 col-lg-4 bg-dark p-3">
+      <button type="button" class="btn btn-circle btn-circle-alt-black btn-circle-large">
+        <i class="fas fa-chevron-left"></i>
+        <span class="sr-only" >Previous</span>
+      </button>
+      <button type="button"
+        class="btn btn-circle btn-circle-alt-black btn-circle-large">
+        <i class="fas fa-chevron-right"></i>
+        <span class="sr-only" >Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+`);
 
 /* .add('Button color examples', () => `<div class="container-fluid"><div class="row"><div class="col col-sm-12 p-3">
 <button type="button" class="btn btn-gold">Gold</button>

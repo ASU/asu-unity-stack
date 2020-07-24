@@ -2,7 +2,7 @@
 
 import { h } from "preact";
 import { withA11y } from "@storybook/addon-a11y";
-import navTreeExample from "./NavTreeExample";
+import { BasicNavTree, NavTreeWithButtons, NavTreeMega } from "./NavTreeExample";
 
 import Nav from ".";
 
@@ -12,10 +12,17 @@ export default {
   decorators: [withA11y],
 };
 
-console.log(navTreeExample);
+export const base = () => <Nav navTree={BasicNavTree} />;
 
-export const base = () => (
-  <Nav navTree={navTreeExample} />
+export const mobileOpen = () => (
+  <Nav navTree={BasicNavTree} mobileOpen={true} />
 );
 
+export const withButtons = () => (
+  <Nav navTree={NavTreeWithButtons} mobileOpen={true} />
+);
+
+export const withMenuColumns = () => (
+  <Nav navTree={NavTreeMega} mobileOpen={true} />
+);
 

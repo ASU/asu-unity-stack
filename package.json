@@ -119,5 +119,6 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "version": "0.0.0"
 }
