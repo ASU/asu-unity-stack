@@ -29,9 +29,11 @@ function pageInit() {
 const Auth = (props) => {
 
   // TODO Do logic here based on props to return success, fail or nothing.
-  // TODO pass in serviceauth credentials via props?
-  // TODO How will this work with redirect and subsequent use after?
-  // TODO How to trigger check on page load?
+  // TODO HOLD for future improvment: pass in serviceauth credentials via props?
+
+  // TODO Warning: Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
+  //   Seems to be a Storybook issue related to https://github.com/storybookjs/storybook/issues/10204
+  //   caused by @storybook/addon-viewport
 
   //console.log('deeebug');
   //console.log(serviceauth.generateRandomString('abcdefghijklmnop', 10));
@@ -42,6 +44,7 @@ const Auth = (props) => {
   // ala: serviceauth.handleAuth(pageInit);
   // Is that elegant or hacky? I'm not sure. So keeping it simple for now.
 
+  // Moved back to serviceauth.js
   handleAuth(pageInit);
 
   console.log(`token = ${  sessionStorage.getItem(serviceauth.SS_JWT_TOKEN)}`);

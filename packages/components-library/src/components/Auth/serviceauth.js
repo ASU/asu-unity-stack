@@ -14,12 +14,14 @@ import $ from "jquery";
 // - https://whisper.apps.sdc.uto.asu.edu/whisper-auth.js
 // - https://whisper.apps.sdc.uto.asu.edu/whisper-ui.js
 
+// CONFIGS
+// TODO VERIFY lines 19 and 21 are the only configs to change between environs.
+let serviceauthId = "healthcheck-web-nonprod"; // healthcheck-web
+let serviceauthSecret = "serviceauth-public-agent";
+let serviceauthRedirectUri = "https://www-qa.asu.edu/healthcheck"; // https://www.asu.edu/healthcheck || LATER: https://healthcheck.asu.edu
 //var serviceauthId = "changemajor-app-nonprod";
 //var serviceauthSecret = "serviceauth-public-agent";
 //var serviceauthRedirectUri = "https://d22y8n16czt9qp.cloudfront.net";
-let serviceauthId = "healthcheck-web"; // healthcheck-web-nonprod
-let serviceauthSecret = "serviceauth-public-agent";
-let serviceauthRedirectUri = "https://www.asu.edu/healthcheck"; // https://www-qa.asu.edu/healthcheck || LATER: https://healthcheck.asu.edu
 // var serviceauthRedirectUri = "https://dpjycpin19sax.cloudfront.net";
 
 let serviceauthOauthUrl =
@@ -43,22 +45,24 @@ let HEALTHCHECK_API_BASE_URL = "https://app.m.asu.edu/healthcheck";
 let LOGOUT_URL = "https://weblogin.asu.edu/cas/logout";
 // var LOGOUT_URL = serviceauthRedirectUri;
 
+let SS_SA_CODE_VERIFIER = "healthcheck-web.serviceauth.codeVerifier";
 // var SS_SA_CODE_VERIFIER = "whisper.serviceauth.codeVerifier";
 //var SS_SA_CODE_VERIFIER = "changemajor.serviceauth.codeVerifier";
-let SS_SA_CODE_VERIFIER = "healthcheck-web.serviceauth.codeVerifier";
+let SS_SA_STATE = "healthcheck-web.serviceauth.state";
 // var SS_SA_STATE = "whisper.serviceauth.state";
 //var SS_SA_STATE = "changemajor.serviceauth.state";
-let SS_SA_STATE = "healthcheck-web.serviceauth.state";
 
+let SS_JWT_TOKEN = "healthcheck-web.jwt.token";
+let SS_NAME = "healthcheck-web.ss.name";
+let SS_ASURITE = "healthcheck-web.ss.asurite";
+let SS_VIEW_AS = "healthcheck-web.ss.viewas";
 //// var SS_JWT_TOKEN = "whisper.jwt.token";
 //var SS_JWT_TOKEN = "changemajor.jwt.token";
 //var SS_NAME = "changemajor.ss.name";
 //var SS_ASURITE = "changemajor.ss.asurite";
 //var SS_VIEW_AS = "changemajor.ss.viewas";
-let SS_JWT_TOKEN = "healthcheck-web.jwt.token";
-let SS_NAME = "healthcheck-web.ss.name";
-let SS_ASURITE = "healthcheck-web.ss.asurite";
-let SS_VIEW_AS = "healthcheck-web.ss.viewas";
+
+// CONFIGS END
 
 /*
 	TODO:
@@ -396,18 +400,18 @@ function getStudentGroupData() {
 }
 */
 
-/* Moving this chunk to Auth component
+/* Moved to Auth component.
 function pageInit() {
   console.log("auth done; page is initializing.......");
   $(document).ready(() => {
 
-    alert('Hoooahh!');
+    console.log('pageInit executed!');
 
+    /* Change Major use only
     // $("#logout-button").click(deauth);
 
     // $("#get-sg-button").click(getStudentGroupData);
     // console.log("dpl_url = " + DPL_BASE_URL + "/principal/me");
-    /* Change Major use only
     $.ajax({
       type: "GET",
       url: `${DPL_BASE_URL  }/principal/me`,
@@ -436,9 +440,10 @@ function pageInit() {
     *  /
   });
 }
-
-handleAuth(pageInit);
 */
+
+// Trigger this outright for any component that imports serviceauth.js.
+//handleAuth(pageInit);
 
 const serviceauth = {
   serviceauthRedirectUri,
