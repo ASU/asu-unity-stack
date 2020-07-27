@@ -144,5 +144,10 @@ This config tells NPM that all packages with the ‘@asu-design-system’ should
 
 Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
 
+## ❯ Build process:
 
+Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins which builds, tests, and then publishes packages to the 'dev' channel of our private npm registry.
 
+After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
+
+```http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000/```
