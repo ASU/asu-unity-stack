@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -43,7 +43,9 @@
     "@asu-design-system/design-tokens": "^1.0.0-beta",
     "emotion": "^10.0.27",
     "formik": "^2.1.5",
-    "preact": "^10.4.4"
+    "jquery": "^3.5.1",
+    "preact": "^10.4.4",
+    "sjcl": "^1.0.8"
   },
   "jest": {
     "preset": "jest-preset-preact",

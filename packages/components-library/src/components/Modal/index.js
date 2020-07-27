@@ -10,8 +10,6 @@ const Modal = ({ children, container, ...props }) => {
 
   useEffect(() => {
     document.getElementById(container).appendChild(el);
-
-
   }, []);
 
   const inner = <S.ModalWindow>{children}</S.ModalWindow>;
