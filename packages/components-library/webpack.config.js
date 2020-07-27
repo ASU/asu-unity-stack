@@ -9,7 +9,8 @@ module.exports.push({
   mode: "production",
   entry: {
     core: "./bundles/core.js",
-    forms: "./bundles/forms.js"
+    forms: "./bundles/forms.js",
+    auth: "./bundles/auth.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -105,3 +106,47 @@ module.exports.push(
     externals: [nodeExternals()],
   }
 );
+
+/*
+// Auth bundle config
+module.exports.push({
+  context: path.join(__dirname, "src"),
+  mode: "production",
+  entry: {
+    auth: "./bundles/auth.js"
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].production.js",
+    //filename: 'main.js',
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            // options: {
+            //   rootMode: "upward",
+            // },
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      react: "preact/compat",
+      //"react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      // Must be below test-utils
+    },
+  },
+});
+*/

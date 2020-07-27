@@ -30,7 +30,7 @@ Prod Props
 
 */
 
-export const base = () => (
+export const auth = () => (
   <Fragment>
     <Auth
       serviceauthId={"healthcheck-web"}
