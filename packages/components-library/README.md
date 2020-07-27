@@ -10,4 +10,7 @@ yarn storybook
 # build for production with minification
 yarn build
 
+# run tests
+yarn test
+
 ```
