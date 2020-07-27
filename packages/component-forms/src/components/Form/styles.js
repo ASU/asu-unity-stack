@@ -3,9 +3,7 @@
 import { h, Fragment } from "preact";
 import { cx, css } from "emotion";
 import Tokens from "../../theme";
-import { Panel } from "../Panel/styles";
-import { H4 } from "../Heading/styles";
-import { Icon } from "../Icon/styles";
+import { Panel, H4, Icon } from "@asu-design-system/components-library";
 
 const FormPanel = ({ children, ...props }) => {
   return <Panel>{children}</Panel>;

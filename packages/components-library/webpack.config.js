@@ -8,9 +8,7 @@ module.exports.push({
   context: path.join(__dirname, "src"),
   mode: "production",
   entry: {
-    core: "./bundles/core.js",
-    forms: "./bundles/forms.js",
-    auth: "./bundles/auth.js"
+    core: "./bundles/core.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),

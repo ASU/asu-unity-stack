@@ -1003,7 +1003,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/preset-react@^7.0.0", "@babel/preset-react@^7.7.0":
+"@babel/preset-react@^7.0.0", "@babel/preset-react@^7.10.4", "@babel/preset-react@^7.7.0":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.10.4.tgz#92e8a66d816f9911d11d4cc935be67adfc82dbcf"
   integrity sha512-BrHp4TgOIy4M19JAfO1LhycVXOPWdDbTRep7eVyatf174Hff+6Uk53sDyajqZPu8W1qXRBiYOfIamek6jA7YVw==
@@ -5435,6 +5435,13 @@ babel-preset-jest@^25.5.0:
     babel-plugin-transform-simplify-comparison-operators "^6.9.4"
     babel-plugin-transform-undefined-to-void "^6.9.4"
     lodash "^4.17.11"
+
+babel-preset-preact@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-preact/-/babel-preset-preact-2.0.0.tgz#3437b713a03b1d2031740b06b19c9115964ae619"
+  integrity sha512-gqJCALE4XXEienLkzgAQ351XyoVHTIiZRAKjEJupK7cTVhFyovEuSrVoNrTNrUu3R78vAarjxkrR6j0vr+Rg8Q==
+  dependencies:
+    "@babel/plugin-transform-react-jsx" "^7.3.0"
 
 babel-runtime@^6.26.0:
   version "6.26.0"
