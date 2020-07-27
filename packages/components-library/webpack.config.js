@@ -9,7 +9,7 @@ module.exports.push({
   mode: "production",
   entry: {
     core: "./bundles/core.js",
-    forms: "./bundles/forms.js"
+    forms: "./bundles/forms.js",
     auth: "./bundles/auth.js"
   },
   output: {
