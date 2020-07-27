@@ -20,9 +20,9 @@ module.exports.push({
     splitChunks: {
       cacheGroups: {
         commons: {
-          name: 'commons',
-          chunks: 'initial',
-          minChunks: 2
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
         }
       },
     },
@@ -48,6 +48,9 @@ module.exports.push({
         ],
       },
     ],
+  },
+  externals: {
+    preact: 'Preact'
   },
   resolve: {
     extensions: [".js", ".jsx"],
