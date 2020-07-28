@@ -99,11 +99,6 @@ $link-decoration: underline;
 $link-hover-color: $maroon;
 $link-hover-decoration: none;
 
-:focus {
-  outline: 0;
-  box-shadow: 0 0 8px #00baff !important;
-}
-
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage: 15%;
 

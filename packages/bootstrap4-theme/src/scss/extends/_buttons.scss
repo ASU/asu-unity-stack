@@ -54,8 +54,11 @@
       font-size: 1.5rem;
     }
   }
-  &:hover {
+  &:hover,
+  &:focus {
     transform: $uds-component-button-hover-state-transform;
+    outline: 0;
+    box-shadow: none !important;
   }
   &:active {
     transform: scale(.95);
@@ -92,4 +95,20 @@ a.text-gold:visited:not(.btn) {
 }
 a:visited:not(.btn) {
   color: $uds-color-base-darkmaroon;
+}
+a:focus,
+a:visited:focus {
+  color: $white;
+  background-color: $uds-color-base-maroon;
+  outline:0;
+  text-decoration: none;
+  box-shadow: -0.15em 0 0 $uds-color-base-maroon, 0.15em 0 0 $uds-color-base-maroon;
+}
+a.text-gold:focus,
+a.text-gold:visited:focus {
+  color: $black !important;
+  background-color: $uds-color-base-gold;
+  outline:0;
+  text-decoration: none;
+  box-shadow: -0.15em 0 0 $uds-color-base-gold, 0.15em 0 0 $uds-color-base-gold;
 }
