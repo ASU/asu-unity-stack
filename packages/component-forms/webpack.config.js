@@ -49,9 +49,6 @@ module.exports.push({
       },
     ],
   },
-  externals: {
-    preact: 'Preact'
-  },
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {

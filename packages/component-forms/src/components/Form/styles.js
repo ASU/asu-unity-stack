@@ -44,7 +44,6 @@ const FormField = ({ label, name, type, children, ...props }) => {
         display: flex;
         flex-direction: row;
         padding-left: 2rem;
-
         input,
         button,
         select,

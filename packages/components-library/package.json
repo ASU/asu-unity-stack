@@ -42,10 +42,7 @@
   "dependencies": {
     "@asu-design-system/design-tokens": "^1.0.0-beta",
     "emotion": "^10.0.27",
-    "formik": "^2.1.5",
-    "jquery": "^3.5.1",
-    "preact": "^10.4.4",
-    "sjcl": "^1.0.8"
+    "preact": "^10.4.4"
   },
   "jest": {
     "preset": "jest-preset-preact",
