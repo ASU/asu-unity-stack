@@ -144,5 +144,27 @@ This config tells NPM that all packages with the ‘@asu-design-system’ should
 
 Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
 
+## ❯ Build process:
 
+Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins which builds, tests, and then publishes packages to the 'dev' channel of our private npm registry.
 
+After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
+
+```http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000/```
+
+## ❯ Publishing packages:
+This repo uses semantic-release to automatically release new packages upon merging to the 'dev' branch.
+
+In order to trigger a release, commits must be structured properly in order for semantic release to read commits, generate changelogs and publish packages.
+
+Here are examples of a patch, minor, and major release:
+
+```
+fix(pencil): stop graphite breaking when too much pressure applied
+
+feat(pencil): add 'graphiteWidth' option
+
+perf(pencil): remove graphiteWidth option
+```
+
+More information can be found [here](https://semantic-release.gitbook.io/semantic-release/) under 'Commit Message Format' section

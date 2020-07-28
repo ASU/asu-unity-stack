@@ -4,6 +4,7 @@ import { h } from "preact";
 import { css, cx } from "emotion";
 import Tokens from "../../theme";
 import { hiddenStyle, showReset } from "../../styles/common";
+import {IconChevronDown} from "../Icons/styles";
 
 const mobileBreak = Tokens.BreakpointLg;
 
@@ -183,12 +184,6 @@ const DdMenu = props => {
   );
 };
 
-const IconChevronDown = props => {
-  return (
-    <span class="fa fa-chevron-down">
-      <span class="sr-only">{props.sr}</span>
-    </span>
-  );
-};
+
 
 export { Nav, DdMenu, IconChevronDown, navStyles };
