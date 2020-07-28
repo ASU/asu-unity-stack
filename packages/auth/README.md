@@ -1,4 +1,4 @@
-# ASU Unity Design System Preact Components Library
+# ASU Unity Design System Auth Library
 
 ## CLI Commands
 

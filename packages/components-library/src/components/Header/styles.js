@@ -6,7 +6,7 @@ import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { hiddenStyle, showReset } from "../../styles/common";
-import {IconHamburger, IconSearch} from "../Icon/styles";
+import {IconHamburger, IconSearch} from "../Icons/styles";
 
 const mobileBreak = Tokens.BreakpointLg;
 

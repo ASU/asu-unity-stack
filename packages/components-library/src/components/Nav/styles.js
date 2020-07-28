@@ -4,7 +4,7 @@ import { h } from "preact";
 import { css, cx } from "emotion";
 import Tokens from "../../theme";
 import { hiddenStyle, showReset } from "../../styles/common";
-import {IconChevronDown} from "../Icon/styles";
+import {IconChevronDown} from "../Icons/styles";
 
 const mobileBreak = Tokens.BreakpointLg;
 
