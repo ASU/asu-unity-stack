@@ -133,8 +133,6 @@ const FoldableCardHeader = props => {
     <div
       class={css`
         padding: 32px 32px 16px 32px;
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
         flex-grow: 1;
         padding-bottom: 0;
         border-bottom: 0;
@@ -142,24 +140,37 @@ const FoldableCardHeader = props => {
         margin-bottom: 0;
         background-color: rgba(255, 255, 255, 0.03);
         border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
 
-        h4 a {
-          padding: 0.5rem 1.5rem;
-          color: #191919;
-          text-decoration: none;
+        h4 {
           display: flex;
-          flex-direction: row
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          align-items: center;
+          flex-direction: row;
+          align-items: baseline;
+
+          a {
+            padding: 0.5rem 1.5rem;
+            color: #191919;
+            text-decoration: none;
+            display: flex;
+            flex-direction: row
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+
+        .fa-chevron-down {
+          transition-duration: 0.4s;
+          font-size: 1.25rem;
         }
 
         ${show &&
           css`
             .fa-chevron-down {
-              -webkit-transform: rotate(180deg);
-              -ms-transform: rotate(180deg);
-              transform: rotate(180deg);
+              transform: rotate(-180deg);
             }
           `
 
