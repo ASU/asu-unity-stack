@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Wed, 29 Jul 2020 19:11:18 GMT
+// Generated on Wed, 29 Jul 2020 19:18:04 GMT
 
 $uds-asset-font-icon-name: "FontAwesome";
 $uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
@@ -8,13 +8,13 @@ $uds-asset-font-icon-eot: "assets/fontawesome/webfonts/fa-regular-400.eot";
 $uds-asset-font-icon-woff: "assets/fontawesome/webfonts/fa-regular-400.woff";
 $uds-asset-font-icon-woff-2: "assets/fontawesome/webfonts/fa-regular-400.woff2";
 $uds-asset-font-icon-svg: "assets/fontawesome/sprites/regular.svg";
-$uds-breakpoint-xs: 0; // grid-breakpoints.xs value from node_modules/bootstrap/scss/_variables.scss
-$uds-breakpoint-sm: 576px; // grid-breakpoints.sm value from node_modules/bootstrap/scss/_variables.scss
-$uds-breakpoint-md: 768px; // grid-breakpoints.md value from node_modules/bootstrap/scss/_variables.scss
-$uds-breakpoint-lg: 992px; // grid-breakpoints.lg value from node_modules/bootstrap/scss/_variables.scss
-$uds-breakpoint-xl: 1200px;
-$uds-breakpoint-xxl: 1400px;
-$uds-breakpoint-xxxl: 1920px;
+$uds-breakpoint-xs: 0; // Mapped to BS4, grid-breakpoints.xs
+$uds-breakpoint-sm: 576px; // Mapped to BS4, grid-breakpoints.sm
+$uds-breakpoint-md: 768px; // Mapped to BS4, grid-breakpoints.md
+$uds-breakpoint-lg: 992px; // Mapped to BS4, grid-breakpoints.lg
+$uds-breakpoint-xl: 1260px; // Mapped to BS4, grid-breakpoints.xl
+$uds-breakpoint-xxl: 1400px; // Not in use within ASU BS4
+$uds-breakpoint-xxxl: 1920px; // Not in use within ASU BS4
 $uds-color-alerts-error: #cc2f2f; // Error
 $uds-color-alerts-warning: #ff7f32; // Warning
 $uds-color-alerts-info: #00a3e0; // Information
@@ -83,6 +83,12 @@ $uds-font-weight-normal: 400;
 $uds-font-weight-bold: 700;
 $uds-font-weight-bolder: 900;
 $uds-font-weight-base: 400;
+$uds-grid-container-max-width-sm: 540px; // BS4 default value
+$uds-grid-container-max-width-md: 768px; // BS4 default value
+$uds-grid-container-max-width-lg: 992px; // BS4 default value
+$uds-grid-container-max-width-xl: 1224px; // 1200px max + 12px gutter on either side.
+$uds-grid-column-count: 12; // BS4 default value
+$uds-grid-gutter-width: 24px; // Decreased from default BS4 value of 30px
 $uds-size-breakpoints-small: 34rem;
 $uds-size-breakpoints-medium: 60rem;
 $uds-size-breakpoints-large: 75rem;
