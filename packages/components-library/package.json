@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -21,7 +21,7 @@
     "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules && yarn prerender",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "start-storybook -p 8089",
+    "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },
@@ -42,7 +42,10 @@
   "dependencies": {
     "@asu-design-system/design-tokens": "^1.0.0-beta",
     "emotion": "^10.0.27",
-    "preact": "^10.4.4"
+    "formik": "^2.1.5",
+    "jquery": "^3.5.1",
+    "preact": "^10.4.4",
+    "sjcl": "^1.0.8"
   },
   "jest": {
     "preset": "jest-preset-preact",

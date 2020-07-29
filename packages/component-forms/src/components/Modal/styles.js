@@ -4,14 +4,14 @@ import { h } from "preact";
 import { cx, css } from "emotion";
 import Tokens from "../../theme";
 
-const Form = props => {
+const ModalWindow = props => {
   return (
-    <form>
+    <div>
       {props.children}
-    </form>
+    </div>
   );
 };
 
 export {
-  Form,
+  ModalWindow,
 };

@@ -2,28 +2,31 @@
   "breakpoint": {
     "xs": {
       "value": "0",
-      "comment": "grid-breakpoints.xs value from node_modules/bootstrap/scss/_variables.scss"
+      "comment": "Mapped to BS4, grid-breakpoints.xs"
     },
     "sm": {
       "value": "576px",
-      "comment": "grid-breakpoints.sm value from node_modules/bootstrap/scss/_variables.scss"
+      "comment": "Mapped to BS4, grid-breakpoints.sm"
     },
     "md": {
       "value": "768px",
-      "comment": "grid-breakpoints.md value from node_modules/bootstrap/scss/_variables.scss"
+      "comment": "Mapped to BS4, grid-breakpoints.md"
     },
     "lg": {
       "value": "992px",
-      "comment": "grid-breakpoints.lg value from node_modules/bootstrap/scss/_variables.scss"
+      "comment": "Mapped to BS4, grid-breakpoints.lg"
     },
     "xl": {
-      "value": "1200px"
+      "value": "1260px",
+      "comment": "Mapped to BS4, grid-breakpoints.xl"
     },
     "xxl": {
-      "value": "1400px"
+      "value": "1400px",
+      "comment": "Not in use within ASU BS4"
     },
     "xxxl": {
-      "value": "1920px"
+      "value": "1920px",
+      "comment": "Not in use within ASU BS4"
     }
   }
 }
