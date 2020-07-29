@@ -1,4 +1,4 @@
-import FormPanel from "./components/Form";
+import {Form, FormPanel} from "./components/Form";
 import {HydratePreact, RenderPreact} from "./helpers";
 
-export {FormPanel, HydratePreact, RenderPreact};
+export {Form, FormPanel, HydratePreact, RenderPreact};

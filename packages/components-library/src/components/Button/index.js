@@ -7,12 +7,12 @@ import * as S from "./styles";
  * The button component will render a clickable button
  */
 const Button = ({ children, href, ...props }) => {
-  const TagName = href ? S.ButtonLink : S.Button;
+  const type = href ? "link" : "button";
 
   return (
-    <TagName class="button" href={href} {...props}>
+    <S.Button href={href} type={type} {...props}>
       {children}
-    </TagName>
+    </S.Button>
   );
 };
 

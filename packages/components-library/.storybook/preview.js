@@ -1,5 +1,9 @@
 /** @jsx h */
-import { addDecorator } from '@storybook/preact';
-import { withA11y } from '@storybook/addon-a11y';
+import { addParameters } from '@storybook/preact';
 
-addDecorator(withA11y);
+addParameters({
+  a11y: {
+    config: {},
+    options: {}
+  }
+});

@@ -1,6 +1,3 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
 import Header from "./components/Header";
 import Button from "./components/Button";
 import {Icon} from "./components/Icons/styles";

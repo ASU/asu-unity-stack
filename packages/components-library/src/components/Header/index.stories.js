@@ -1,7 +1,6 @@
 /** @jsx h */
 
 import { h } from "preact";
-import { withA11y } from "@storybook/addon-a11y";
 import {
   BasicNavTree,
   NavTreeWithButtons,
@@ -14,7 +13,6 @@ import { Fragment } from "preact/compat";
 export default {
   component: Header,
   title: "Header",
-  decorators: [withA11y],
 };
 
 export const base = () => (

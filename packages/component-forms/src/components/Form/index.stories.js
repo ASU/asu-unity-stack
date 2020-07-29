@@ -1,14 +1,12 @@
 /** @jsx h */
 
 import { h } from "preact";
-import { withA11y } from "@storybook/addon-a11y";
-import FormPanel from ".";
+import {FormPanel} from ".";
 import { Fragment } from "preact/compat";
 
 export default {
   component: FormPanel,
-  title: "FormPanel",
-  decorators: [withA11y],
+  title: "FormPanel"
 };
 
 const testProps = {
