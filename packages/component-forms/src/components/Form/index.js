@@ -4,7 +4,40 @@ import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form as FormikForm } from "formik";
+import { PanelInput } from "../Input";
+
+const Form = ({
+  title,
+  initialValues,
+  onSubmit,
+  fields,
+  description,
+  imgUrl,
+  children,
+  ...props
+}) => {
+  return (
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <FormikForm>{children}</FormikForm>
+    </Formik>
+  );
+};
+
+Form.propTypes = {
+  title: PropTypes.string,
+  initialValues: PropTypes.object,
+  fields: PropTypes.arrayOf(PropTypes.object),
+  onSubmit: PropTypes.func,
+  description: PropTypes.string,
+  imgUrl: PropTypes.string,
+};
+
+Form.defaultProps = {
+  initalValues: {},
+  fields: [],
+  header: "",
+};
 
 const FormPanel = ({
   title,
@@ -24,49 +57,37 @@ const FormPanel = ({
           imgUrl,
         }}
       />
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form>
-          {fields.map((item, index) => {
-            if (item.type != "submit") {
-              const check = item.type == "checkbox";
+      <Form>
+        {fields.map((item, index) => {
+          if (item.type != "submit") {
+            return (
+              <PanelInput {...item}>
+                <Field
+                  id={item.name}
+                  name={item.name}
+                  {...(item.placeholder
+                    ? { placeholder: item.placeholder }
+                    : {})}
+                  type={item.type ? item.type : ""}
+                />
+              </PanelInput>
+            );
+          }
 
-              return (
-                <S.FormPanelField icon={item.icon}>
-                  <S.FormField {...item}>
-                    <Field
-                      id={item.name}
-                      name={item.name}
-                      {...(item.placeholder
-                        ? { placeholder: item.placeholder }
-                        : {})}
-                      type={item.type ? item.type : ""}
-                    />
-                  </S.FormField>
-                </S.FormPanelField>
-              );
-            }
-
-            return <button type="submit">{item.label}</button>;
-          })}
-        </Form>
-      </Formik>
+          return <button type="submit">{item.label}</button>;
+        })}
+      </Form>
     </S.FormPanel>
   );
 };
 
 FormPanel.propTypes = {
   title: PropTypes.string,
-  initialValues: PropTypes.object,
-  fields: PropTypes.arrayOf(PropTypes.object),
-  onSubmit: PropTypes.func,
   description: PropTypes.string,
   imgUrl: PropTypes.string,
+  children: PropTypes.element,
 };
 
-FormPanel.defaultProps = {
-  initalValues: {},
-  fields: [],
-  header: "",
-};
+FormPanel.defaultProps = {};
 
-export default FormPanel;
+export { Form, FormPanel };

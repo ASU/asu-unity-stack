@@ -178,6 +178,8 @@ const Button = props => {
           `
         }
       `}
+
+      onClick={props.onClick}
     >
       {props.children}
     </Element>
