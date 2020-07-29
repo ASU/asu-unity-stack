@@ -1,16 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import { Field } from "formik";
 
 const Input = props => {
-  return (
-    <S.Input {...props}>
-      {props.children}
-    </S.Input>
-  );
+  return <S.Input {...props}>{props.children}</S.Input>;
 };
 
 Input.propTypes = {
@@ -22,13 +17,12 @@ Input.propTypes = {
 Input.defaultProps = {};
 
 /** PanelInput Variant */
-const PanelInput = ({ icon, name, type, label, children }) => {
+const PanelInput = ({ icon, name, type, label, description, children }) => {
   return (
-    <S.PanelInput icon={icon}>
-      <S.Input {...{ label, name, type }}>
-        {children}
-      </S.Input>
-    </S.PanelInput>
+    <S.PanelInputWrapper>
+      <S.PanelInputCard {...{ icon, label }}>{description}</S.PanelInputCard>
+      <S.Input {...{ label, name, type }}>{children}</S.Input>
+    </S.PanelInputWrapper>
   );
 };
 
