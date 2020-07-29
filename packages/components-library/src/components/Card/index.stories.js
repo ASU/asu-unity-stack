@@ -1,14 +1,35 @@
 /** @jsx h */
 
-import { h } from 'preact';
-import { withA11y } from "@storybook/addon-a11y";
+import { h } from "preact";
 
-import { FoldableCard } from '.';
+import { FoldableCard } from ".";
+import {H4} from "../Heading/styles";
 
 export default {
   component: FoldableCard,
   title: "FoldableCard",
-  decorators: [withA11y],
 };
 
-export const base = () => <FoldableCard head={<h1>Header</h1>}> Some content here.</FoldableCard>;
+export const base = () => (
+  <FoldableCard
+    head={
+      <H4>
+        <span class="fa fa-mobile" />
+        <a
+          id="mobile-app-header"
+          class=""
+          onClick={(e) => {e.preventDefault();}}
+          href="#mobile-app-content"
+          role="button"
+          aria-expanded="true"
+          aria-controls="mobile-app-content"
+        >
+          ASU Mobile App (push notifications)
+        </a>
+      </H4>
+    }
+  >
+    {" "}
+    Some content here.
+  </FoldableCard>
+);

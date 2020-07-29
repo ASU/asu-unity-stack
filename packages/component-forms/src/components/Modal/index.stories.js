@@ -1,15 +1,12 @@
 /** @jsx h */
 
 import { h, Fragment} from "preact";
-import { useState } from "preact/compat";
-import { withA11y } from "@storybook/addon-a11y";
 import Modal from ".";
 import TestModal from "./TestModal";
 
 export default {
   component: Modal,
   title: "Modal",
-  decorators: [withA11y],
 };
 
 export const base = () => {

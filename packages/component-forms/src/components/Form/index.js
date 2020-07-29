@@ -8,12 +8,8 @@ import { Formik, Field, Form as FormikForm } from "formik";
 import { PanelInput } from "../Input";
 
 const Form = ({
-  title,
   initialValues,
   onSubmit,
-  fields,
-  description,
-  imgUrl,
   children,
   ...props
 }) => {
@@ -25,18 +21,12 @@ const Form = ({
 };
 
 Form.propTypes = {
-  title: PropTypes.string,
   initialValues: PropTypes.object,
-  fields: PropTypes.arrayOf(PropTypes.object),
   onSubmit: PropTypes.func,
-  description: PropTypes.string,
-  imgUrl: PropTypes.string,
 };
 
 Form.defaultProps = {
   initalValues: {},
-  fields: [],
-  header: "",
 };
 
 const FormPanel = ({
@@ -57,7 +47,7 @@ const FormPanel = ({
           imgUrl,
         }}
       />
-      <Form>
+      <Form {...{initialValues, onSubmit}}>
         {fields.map((item, index) => {
           if (item.type != "submit") {
             return (
