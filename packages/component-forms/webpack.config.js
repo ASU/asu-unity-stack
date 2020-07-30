@@ -4,6 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = [];
 
 const shared = {
+  context: path.join(__dirname, "src"),
   entry: {
     forms: "./index.js"
   },
@@ -35,7 +36,7 @@ const shared = {
 }
 
 module.exports.push({
-  context: path.join(__dirname, "src"),
+  context: shared.context,
   mode: "development",
   entry: shared.entry,
   output: {
@@ -51,7 +52,7 @@ module.exports.push({
 
 
 module.exports.push({
-  context: path.join(__dirname, "src"),
+  context: shared.context,
   mode: "production",
   entry: shared.entry,
   output: {
