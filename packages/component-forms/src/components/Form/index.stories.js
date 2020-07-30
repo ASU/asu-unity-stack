@@ -23,19 +23,31 @@ const testProps = {
       icon: "mobile",
       label: "ASU Mobile App (push notifications)",
       id: "mobile-opt-in",
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud`
     },
     {
       name: "webOptin",
       type: "checkbox",
       label: "Web (email reminders)",
       id: "web-opt-in",
-      icon: "desktop"
+      icon: "desktop",
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud`
     },
   ],
   initialValues: {
     mobileOptin: false,
     webOptin: false
-  }
+  },
+  onSubmit: (values, actions) => {
+
+      console.log(values, 'THE VALUES');
+      console.log(actions, 'THE ACTIONS');
+  },
+  autoSubmit: true
 };
 
 export const base = () => (

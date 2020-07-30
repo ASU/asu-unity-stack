@@ -30,8 +30,6 @@ const Card = props => {
 };
 
 const CardHeader = props => {
-
-
   return (
     <div
       class={css`
@@ -70,28 +68,25 @@ const CardHeader = props => {
   );
 };
 
-
-
 const CardBody = props => {
   const show = props.hasOwnProperty("show") ? props.show : true;
 
   return (
     <div
-      class={css`
-        padding: 0 32px 24px 32px;
-        -webkit-box-flex: 100;
-        -ms-flex-positive: 100;
-        flex-grow: 100;
-        -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        min-height: 1px;
-        padding: 1.25rem;
-        ${!show &&
+      class={cx(
         css`
-          display: none;
-        `}
-      `}
+          padding: 0 32px 24px 32px;
+          flex-grow: 100;
+          flex: 1 1 auto;
+          min-height: 1px;
+          padding: 1.25rem;
+          ${!show &&
+          css`
+            display: none;
+          `}
+        `,
+        props.class
+      )}
     >
       {props.children}
     </div>
@@ -101,28 +96,49 @@ const CardBody = props => {
 const FoldableCard = props => {
   return (
     <div
-      class={css`
-        position: relative;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #ffffff;
-        background-clip: border-box;
-        border: 1px solid rgba(0, 0, 0, 0.125);
-        border-radius: 0;
-        border-color: #d0d0d0;
-        border-left: 0.5rem solid #ffc627;
-        height: auto;
-      `}
+      class={cx(
+        css`
+          position: relative;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          word-wrap: break-word;
+          background-color: #ffffff;
+          background-clip: border-box;
+          border: 1px solid rgba(0, 0, 0, 0.125);
+          border-radius: 0;
+          border-color: #d0d0d0;
+          border-left: 0.5rem solid #ffc627;
+          height: auto;
+        `,
+        props.class
+      )}
     >
       {props.children}
     </div>
+  );
+};
+
+const FoldableCardBody = props => {
+  const show = props.hasOwnProperty("show") ? props.show : true;
+
+  return (
+    <CardBody
+      show={show}
+      class={cx(
+        css`
+          ${show &&
+          css`
+            border-top: 1px solid #d0d0d0;
+          `}
+        `,
+        props.class
+      )}
+    >
+      {props.children}
+    </CardBody>
   );
 };
 
@@ -135,15 +151,14 @@ const FoldableCardHeader = props => {
         padding: 32px 32px 16px 32px;
         flex-grow: 1;
         padding-bottom: 0;
-        border-bottom: 0;
         padding: 0.75rem 1.25rem;
         margin-bottom: 0;
         background-color: rgba(255, 255, 255, 0.03);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         display: flex;
         flex-direction: row;
         align-items: baseline;
         justify-content: space-between;
+        cursor: pointer;
 
         h4 {
           display: flex;
@@ -167,13 +182,13 @@ const FoldableCardHeader = props => {
           font-size: 1.25rem;
         }
 
-        ${show &&
+        ${
+          show &&
           css`
             .fa-chevron-down {
               transform: rotate(-180deg);
             }
           `
-
         }
 
       `}
@@ -185,4 +200,11 @@ const FoldableCardHeader = props => {
   );
 };
 
-export { Card, CardHeader, CardBody, FoldableCard, FoldableCardHeader};
+export {
+  Card,
+  CardHeader,
+  CardBody,
+  FoldableCard,
+  FoldableCardHeader,
+  FoldableCardBody,
+};

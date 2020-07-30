@@ -27,7 +27,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.0.0-beta",
+    "@asu-design-system/design-tokens": "^1.0.0",
     "emotion": "^10.0.27",
     "preact": "^10.4.4"
   },

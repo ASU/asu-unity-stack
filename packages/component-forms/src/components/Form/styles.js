@@ -37,4 +37,19 @@ const FormHeader = ({ title, description, imgUrl }) => {
   );
 };
 
-export { FormPanel, FormHeader};
+const FormWrapper = ({ children, ...props }) => {
+  return (
+    <div
+      class={css`
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+
+export { FormPanel, FormHeader, FormWrapper };
