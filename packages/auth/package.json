@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ASU Auth components",
   "main": "src/index.js",
   "module": "esm/index.js",

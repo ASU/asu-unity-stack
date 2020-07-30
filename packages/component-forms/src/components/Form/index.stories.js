@@ -41,7 +41,13 @@ const testProps = {
   initialValues: {
     mobileOptin: false,
     webOptin: false
-  }
+  },
+  onSubmit: (values, actions) => {
+
+      console.log(values, 'THE VALUES');
+      console.log(actions, 'THE ACTIONS');
+  },
+  autoSubmit: true
 };
 
 export const base = () => (

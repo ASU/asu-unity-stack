@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -25,11 +25,9 @@
     "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },
-  "devDependencies": {
-   
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.0.0-beta",
+    "@asu-design-system/design-tokens": "^1.0.0",
     "emotion": "^10.0.27",
     "preact": "^10.4.4"
   },

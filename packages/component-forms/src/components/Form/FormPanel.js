@@ -3,20 +3,11 @@
 import { h } from "preact";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import { Field} from "formik";
+import { Field } from "formik";
 import { PanelInput } from "../Input";
-import {Form} from "./";
+import { Form } from "./";
 
-
-const FormPanel = ({
-  title,
-  initialValues,
-  onSubmit,
-  fields,
-  description,
-  imgUrl,
-  ...props
-}) => {
+const FormPanel = ({ title, fields, description, imgUrl, ...props }) => {
   return (
     <S.FormPanel>
       <S.FormHeader
@@ -26,7 +17,7 @@ const FormPanel = ({
           imgUrl,
         }}
       />
-      <Form {...{initialValues, onSubmit}}>
+      <Form {...props}>
         {fields.map((item, index) => {
           if (item.type != "submit") {
             return (
@@ -51,12 +42,18 @@ const FormPanel = ({
 };
 
 FormPanel.propTypes = {
+  initialValues: PropTypes.object,
+  onSubmit: PropTypes.func,
+  validate: PropTypes.func,
   title: PropTypes.string,
   description: PropTypes.string,
   imgUrl: PropTypes.string,
   children: PropTypes.element,
+  autoSubmit: PropTypes.bool
 };
 
-FormPanel.defaultProps = {};
+FormPanel.defaultProps = {
+  autoSubmit: false
+};
 
 export { FormPanel };
