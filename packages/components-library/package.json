@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
