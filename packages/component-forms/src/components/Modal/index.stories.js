@@ -1,7 +1,7 @@
 /** @jsx h */
 
 import { h, Fragment} from "preact";
-import Modal from ".";
+import {Modal} from ".";
 import TestModal from "./TestModal";
 
 export default {

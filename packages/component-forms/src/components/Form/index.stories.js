@@ -39,7 +39,7 @@ const testProps = {
     },
   ],
   initialValues: {
-    mobileOptin: false,
+    mobileOptin: true,
     webOptin: false
   },
   onSubmit: (values, actions) => {
@@ -79,7 +79,7 @@ const ExposureProps = {
     },
   ],
   initialValues: {
-    share_location: false,
+    share_location: true,
     share_health_records: false,
   },
   onSubmit: (values, actions) => {

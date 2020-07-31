@@ -5,7 +5,7 @@ import {
   useState
 } from "preact/compat";
 import PropTypes from "prop-types";
-import Modal from "./";
+import {Modal} from "./";
 
 const TestModal = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);

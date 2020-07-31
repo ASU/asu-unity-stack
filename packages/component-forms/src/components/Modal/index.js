@@ -98,4 +98,4 @@ Modal.propTypes = {
 
 Modal.defaultProps = {};
 
-export default Modal;
+export {Modal};
