@@ -50,9 +50,55 @@ const testProps = {
   autoSubmit: true
 };
 
+const ExposureProps = {
+  title: "Exposure Management Permissions",
+  description: `Contact tracing can help ASU understand if you have crossed paths
+  with someone (while on campus only) that has been diagnosed with COVID-19. By giving your
+  consent, you permit ASU to send you a discreet notificatioon if you've been exposed.`,
+  imgUrl: "img/icon-well-check.png",
+  fields: [
+    {
+      name: "share_health_records",
+      type: "checkbox",
+      icon: "clipboard",
+      label: "Share COVID test related health records",
+      id: "mobile-opt-in",
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud`,
+    },
+    {
+      name: "share_location",
+      type: "checkbox",
+      label: "Share location",
+      id: "web-opt-in",
+      icon: "map-pin",
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+    minim veniam, quis nostrud`,
+    },
+  ],
+  initialValues: {
+    share_location: false,
+    share_health_records: false,
+  },
+  onSubmit: (values, actions) => {
+    console.log(values, "THE VALUES");
+    console.log(actions, "THE ACTIONS");
+  },
+  autoSubmit: true,
+};
+
 export const base = () => (
   <Fragment>
     <FormPanel {...testProps} />
+    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+  </Fragment>
+);
+
+export const exposureForm = () => (
+  <Fragment>
+    <FormPanel {...ExposureProps} />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
 );

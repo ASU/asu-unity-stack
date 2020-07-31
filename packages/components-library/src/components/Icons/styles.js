@@ -3,7 +3,7 @@
 import { h } from "preact";
 import { cx, css } from "emotion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faDesktop, faMobile, faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faDesktop, faMobile, faSearch, faBars, faClipboard, faMapPin } from '@fortawesome/free-solid-svg-icons';
 import Tokens from "../../theme";
 
 const IconHamburger = props => {
@@ -38,6 +38,18 @@ const IconDesktop = props => {
   );
 };
 
+const IconClipboard = props => {
+  return (
+    <FontAwesomeIcon icon={faClipboard} {...props} />
+  );
+};
+
+const IconMapPin= props => {
+  return (
+    <FontAwesomeIcon icon={faMapPin} {...props} />
+  );
+};
+
 const Icon = ({ type, ...props }) => {
   switch (type) {
     case "mobile":
@@ -48,6 +60,10 @@ const Icon = ({ type, ...props }) => {
       return <IconSearch {...props} />;
     case "desktop":
       return <IconDesktop {...props} />;
+    case "clipboard":
+      return <IconClipboard {...props} />;
+    case "map-pin":
+      return <IconMapPin {...props} />;
     default:
       return "";
   }
