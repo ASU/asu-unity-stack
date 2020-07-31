@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'buildkite/puppeteer:latest'
+                    image 'buildkite/puppeteer:5.2.1'
                     args '-p 3000:3000'
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'buildkite/puppeteer:latest'
+                    image 'buildkite/puppeteer:5.2.1'
                     args '-p 3000:3000'
                 }
             }

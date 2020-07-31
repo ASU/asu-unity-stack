@@ -13,8 +13,8 @@ const ModalWindow = props => {
         position: absolute;
         top: 0;
         left: 0;
-        width: auto;
-        height: auto;
+        width: 100vw;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,7 +26,7 @@ const ModalWindow = props => {
       <div
         class={css`
           width: auto;
-          height: 90%;
+          height: auto;
           border: 1px solid #d8dce3;
           border-radius: 3px;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
