@@ -163,4 +163,26 @@ const Input = ({ label, name, type, children, ...props }) => {
   );
 };
 
-export { PanelInput, Input, PanelInputCard, PanelInputWrapper };
+const InputError = props => {
+
+  return (
+    <div
+      class={css`
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+        font-weight: bold;
+
+        svg {
+          color: ${Tokens.ColorAlertsError};
+          margin-right: 1rem;
+        }
+      `}
+    >
+      {<Icon type="exclamation-triangle" />}
+      {props.children}
+    </div>
+  );
+};
+
+export { PanelInput, Input, PanelInputCard, PanelInputWrapper, InputError };

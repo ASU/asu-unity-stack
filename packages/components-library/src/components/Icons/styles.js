@@ -2,49 +2,57 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faDesktop, faMobile, faSearch, faBars, faClipboard, faMapPin, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import Tokens from "../../theme";
 
 const IconHamburger = props => {
   return (
     <a {...props} class="asu-icon-hamburger">
-      <span class="fa fa-bars">
-        <span class="sr-only">Menu</span>
-      </span>
+      <FontAwesomeIcon icon={faBars} {...props} />
     </a>
   );
 };
 
 const IconSearch = props => {
   return (
-    <a class="asu-search-icon">
-      <span class="fa fa-search" {...props}>
-        <span class="sr-only">Search</span>
-      </span>
-    </a>
+    <FontAwesomeIcon icon={faSearch} {...props} />
   );
 };
 
 const IconChevronDown = props => {
   return (
-    <span class="fa fa-chevron-down">
-      <span class="sr-only">{props.sr}</span>
-    </span>
+    <FontAwesomeIcon icon={faChevronDown} {...props} />
   );
 };
 
 const IconMobile = props => {
   return (
-    <span class="fas fa-mobile">
-      <span class="sr-only">{props.sr}</span>
-    </span>
+    <FontAwesomeIcon icon={faMobile} {...props} />
   );
 };
 
 const IconDesktop = props => {
   return (
-    <span class="fas fa-desktop">
-      <span class="sr-only">{props.sr}</span>
-    </span>
+    <FontAwesomeIcon icon={faDesktop} {...props} />
+  );
+};
+
+const IconClipboard = props => {
+  return (
+    <FontAwesomeIcon icon={faClipboard} {...props} />
+  );
+};
+
+const IconMapPin= props => {
+  return (
+    <FontAwesomeIcon icon={faMapPin} {...props} />
+  );
+};
+
+const IconExclTriangle = props => {
+  return (
+    <FontAwesomeIcon icon={faExclamationTriangle} {...props} />
   );
 };
 
@@ -58,6 +66,12 @@ const Icon = ({ type, ...props }) => {
       return <IconSearch {...props} />;
     case "desktop":
       return <IconDesktop {...props} />;
+    case "clipboard":
+      return <IconClipboard {...props} />;
+    case "map-pin":
+      return <IconMapPin {...props} />;
+    case "exclamation-triangle":
+      return <IconExclTriangle {...props} />;
     default:
       return "";
   }

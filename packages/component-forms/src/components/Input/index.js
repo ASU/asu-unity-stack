@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
+import {ErrorMessage} from "formik";
 import * as S from "./styles";
 
 const Input = props => {

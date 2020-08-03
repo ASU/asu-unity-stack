@@ -32,7 +32,7 @@ const Form = ({ initialValues, onSubmit, validate, autoSubmit, children }) => {
   return (
     <S.FormWrapper>
       <Formik {...{ initialValues, onSubmit, validate }}>
-        {({ isSubmitting, values, submitForm }) => {
+        {({ isSubmitting, values, submitForm, errors, touched }) => {
           return (
             <>
               <FormikForm>{children}</FormikForm>

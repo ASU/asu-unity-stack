@@ -4,6 +4,7 @@ import { h, Fragment } from "preact";
 import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { Panel, H4, Icon } from "@asu-design-system/components-library";
+import {InputError} from "../Input/styles";
 
 const FormPanel = ({ children, ...props }) => {
   return <Panel>{children}</Panel>;
@@ -52,4 +53,4 @@ const FormWrapper = ({ children, ...props }) => {
   );
 };
 
-export { FormPanel, FormHeader, FormWrapper };
+export { FormPanel, FormHeader, FormWrapper, InputError};

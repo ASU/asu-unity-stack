@@ -16,7 +16,7 @@ const modalContext = createContext();
  *
  * @param {*} param0
  */
-const Modal = ({ children, containerId, onModalClose }) => {
+const Modal = ({ children, containerId, onModalClose, ...props }) => {
   const custom = document.getElementById(containerId);
   const domNode = custom || document.body;
   const modalRef = createRef();
@@ -53,7 +53,7 @@ const Modal = ({ children, containerId, onModalClose }) => {
   }, []);
 
   return createPortal(
-    <S.ModalWindow domRef={modalRef} >
+    <S.ModalWindow domRef={modalRef} class={props.class ? props.class: ""}>
       <modalContext.Provider value={{ onModalClose }}>
         {children}
       </modalContext.Provider>
@@ -93,9 +93,10 @@ Modal.Footer.CloseBtn = function CloseBtn(props) {
 
 Modal.propTypes = {
   containerId: PropTypes.string,
-  onModalClose: PropTypes.func.isRequired
+  onModalClose: PropTypes.func.isRequired,
+  class: PropTypes.string
 };
 
 Modal.defaultProps = {};
 
-export default Modal;
+export {Modal};
