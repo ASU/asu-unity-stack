@@ -7,10 +7,21 @@ storiesOf('Components/Accordion', module)
     happo: false,
   })
 
-.add('Card - Foldable', () => `
+.add('Foldable card', () => `
   <div class="container my-5">
 
     <div class="row">
+      <div class="col-md-12">
+        <h4>Foldable Card</h4>
+        <p>The <code>.card-foldable</code> class is a wrapper for a generic card which creates a single section that expands and contracts independently of other surrounding foldable cards.</p>
+        <ul>
+          <li>The cards will conform to the width of the surrounding container.</li>
+          <li>There is a recommended character limit of 75 characters for the text within the header of a foldable card.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row mt-4">
       <div class="col-md-4">
 
         <div class="card card-foldable">
@@ -82,25 +93,30 @@ storiesOf('Components/Accordion', module)
   </div>
 `)
 
-.add('Card - Foldable, Mobile Only', () => `
-  <div class="container">
-    <div class="row my-4">
+.add('Disable folding on desktop', () => `
+<div class="container my-5">
+
+    <div class="row">
       <div class="col">
 
-        <h3>Foldable at various breakpoints</h3>
+        <h4>Foldable cards, disabled at breakpoints</h4>
         <p>Several utility class were created to allow an foldable card to display as a fully expanded normal card upon reaching a screen size of a specific breakpoint.</p>
 
         <p>Use a variant of the <code>.desktop-disable</code> along with a <code>.card-foldable</code> class to enable the functionality.</p>
+      </div>
+    </div>
 
+    <div class="row mt-4">
+      <div class="col-md-7 mb-4">
         <div class="card card-foldable desktop-disable-md">
           <div class="card-header">
             <h4>
-              <a id="example-header-4" data-toggle="collapse" href="#example-content-4" role="button" aria-expanded="false" aria-controls="example-content-4">This should look like a normal card until the md breakpoint
+              <a id="example-header-1" data-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">This should look like a normal card until the md breakpoint
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-content-4" class="collapse card-body" aria-labelledby="example-header-4">
+          <div id="example-content-1" class="collapse card-body" aria-labelledby="example-header-1">
           <p>This uses the <code>.desktop-disable-md</code> class.</p>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
             elit. Aenean commodo ligula eget dolor. Aenean massa.
@@ -110,19 +126,17 @@ storiesOf('Components/Accordion', module)
           </div>
         </div>
       </div><!-- end .col -->
-    </div><!-- end .row -->
 
-    <div class="row my-4">
-      <div class="col">
+      <div class="col-md-7 mb-4">
         <div class="card card-foldable desktop-disable-lg">
           <div class="card-header">
             <h4>
-              <a id="example-header-4" data-toggle="collapse" href="#example-content-4" role="button" aria-expanded="false" aria-controls="example-content-4">This will become an accordion at the lg breakpoint.
+              <a id="example-header-2" data-toggle="collapse" href="#example-content-2" role="button" aria-expanded="false" aria-controls="example-content-2">This will become an accordion at the lg breakpoint.
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-content-4" class="collapse card-body" aria-labelledby="example-header-4">
+          <div id="example-content-2" class="collapse card-body" aria-labelledby="example-header-2">
             <p>This uses the <code>.desktop-disable-lg</code> class.</p>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
             elit. Aenean commodo ligula eget dolor. Aenean massa.
@@ -132,20 +146,17 @@ storiesOf('Components/Accordion', module)
           </div>
         </div>
       </div><!-- end .col -->
-    </div><!-- end .row -->
 
-    <div class="row my-4">
-      <div class="col">
-
+      <div class="col-md-7 mb-4">
         <div class="card card-foldable desktop-disable-xl">
           <div class="card-header">
             <h4>
-              <a id="example-header-4" data-toggle="collapse" href="#example-content-4" role="button" aria-expanded="false" aria-controls="example-content-4">Collapses to an accordion at the xl breakpoint
+              <a id="example-header-3" data-toggle="collapse" href="#example-content-3" role="button" aria-expanded="false" aria-controls="example-content-3">Collapses to an accordion at the xl breakpoint
                 <span class="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
-          <div id="example-content-4" class="collapse card-body" aria-labelledby="example-header-4">
+          <div id="example-content-3" class="collapse card-body" aria-labelledby="example-header-3">
           <p>This uses the <code>.desktop-disable-xl</code> class.</p>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
             elit. Aenean commodo ligula eget dolor. Aenean massa.

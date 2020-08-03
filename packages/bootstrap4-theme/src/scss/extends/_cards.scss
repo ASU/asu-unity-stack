@@ -10,11 +10,11 @@ Cards - Table of Contents
 -------------------------------------------------------------------*/
 
 .row-spaced {
-  margin-bottom:-32px;
+  margin-bottom: -32px;
 }
 .row-spaced > .col,
 .row-spaced > div {
-  margin-bottom:32px;
+  margin-bottom: 32px;
 }
 
 /*------------------------------------------------------------------
@@ -32,7 +32,7 @@ Cards - Table of Contents
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
 .card-hover:active {
-  transform: scale(.95);
+  transform: scale(0.95);
   cursor: $uds-component-card-basic-hover-cursor;
 }
 .card-hover:focus {
@@ -49,7 +49,7 @@ Cards - Table of Contents
 .card-hover > button:focus {
   outline: 0;
   box-shadow: 0 0 8px #00baff !important;
-  border:0;
+  border: 0;
 }
 
 .card-icon-top {
@@ -76,24 +76,23 @@ Cards - Table of Contents
 }
 .card-footer {
   padding: 0 32px 24px 32px;
-  border-top:0;
+  border-top: 0;
 }
 .card-tags {
   padding: 0 32px 24px 32px;
-  border-top:0;
+  border-top: 0;
   margin-top: -8px;
 }
 .card-tags .btn-tag {
-  margin-top:8px;
+  margin-top: 8px;
 }
 .card-button {
   margin-top: $uds-component-card-basic-button-margin-top;
   padding: 0 32px 24px 32px;
 }
 .card > div:last-child {
-  padding-bottom:32px;
+  padding-bottom: 32px;
 }
-
 
 @include media-breakpoint-down(md) {
   .card-icon-top {
@@ -116,11 +115,11 @@ Cards - Table of Contents
   }
   .card-footer {
     padding: 0 24px 24px 24px;
-    border-top:0;
+    border-top: 0;
   }
   .card-tags {
     padding: 0 24px 24px 24px;
-    border-top:0;
+    border-top: 0;
   }
   .card-button {
     margin-top: $uds-component-card-basic-button-margin-top;
@@ -133,7 +132,7 @@ Cards - Table of Contents
     line-height: 1rem;
   }
   .card > div:last-child {
-    padding-bottom:24px;
+    padding-bottom: 24px;
   }
 }
 
@@ -143,7 +142,6 @@ Cards - Table of Contents
     .card-img-top {
       height: 240px;
     }
-
   }
   .col-lg-6 .card-horizontal .card-img-top {
     height: auto;
@@ -151,11 +149,10 @@ Cards - Table of Contents
   }
 }
 
-
 .card-sm {
   .card-body {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-header {
     padding: 24px 24px 16px 24px;
@@ -165,24 +162,24 @@ Cards - Table of Contents
     height: 160px;
   }
   .card-footer-link {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-button {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-link {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-tags {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-event-details {
-    padding-right:24px;
-    padding-left:24px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
 }
 .card-lg {
@@ -249,8 +246,8 @@ Cards - Table of Contents
   margin-left: 24px;
   margin-right: 24px;
   background-color: $white;
-  padding-left:16px;
-  padding-right:16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .card-story .card-header {
   padding-top: 24px;
@@ -297,8 +294,8 @@ Cards - Table of Contents
     margin-left: 0;
     margin-right: 0;
     background-color: $white;
-    padding-left:24px;
-    padding-right:24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
@@ -309,19 +306,19 @@ Cards - Table of Contents
   border-top: solid 8px $gold;
 }
 .card-event-details {
-  display:flex;
+  display: flex;
   padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
 }
 .card-event-details > div:first-child {
-  margin-right:16px;
+  margin-right: 16px;
 }
 .card-event-icons {
-  display:flex;
+  display: flex;
 }
 .card-event-icons > div:first-child {
-  width:16px;
-  margin-right:8px;
+  width: 16px;
+  margin-right: 8px;
 }
 .card-horizontal {
   flex-direction: row;
@@ -332,7 +329,7 @@ Cards - Table of Contents
   }
   .card-horizontal .card-img-top {
     height: 160px !important;
-    max-width:100% !important;
+    max-width: 100% !important;
     width: 100% !important;
   }
   .card-event.card-horizontal .card-content-wrapper {
@@ -340,21 +337,21 @@ Cards - Table of Contents
     border-left: 0 !important;
   }
   .card-story.card-horizontal .card-content-wrapper {
-    margin-right:16px;
-    margin-left:16px;
-    margin-top:-24px;
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-top: -24px;
     margin-bottom: 0;
   }
 }
 .card-content-wrapper {
-  padding-bottom:0 !important;
+  padding-bottom: 0 !important;
 }
 .card-story.card-horizontal .card-img-top {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .card-horizontal .card-img-top {
   height: auto;
-  max-width:40%;
+  max-width: 40%;
 }
 .card-event.card-horizontal .card-header {
   border-top: 0;
@@ -362,6 +359,7 @@ Cards - Table of Contents
 .card-event.card-horizontal .card-content-wrapper {
   border-left: solid 8px $gold;
 }
+
 /*------------------------------------------------------------------
 5. Foldable Cards
 --------------------------------------------------------------------*/
@@ -484,5 +482,18 @@ Cards - Table of Contents
 @include media-breakpoint-up(md) {
   .card-foldable.desktop-disable-md {
     @include desktop-disable;
+  }
+}
+
+/*------------------------------------------------------------------
+7. Accordion
+--------------------------------------------------------------------*/
+.accordion {
+  .card.card-foldable {
+    border-bottom: 1px solid $uds-color-base-gray-3;
+
+    & + .card-foldable {
+      margin-top: $uds-size-spacing-3;
+    }
   }
 }
