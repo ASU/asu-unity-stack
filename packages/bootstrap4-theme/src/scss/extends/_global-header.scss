@@ -12,19 +12,43 @@
 
 $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
-@mixin gold-underline {
-  content: '';
-  position: relative;
-  display: block;
-  height: $uds-size-spacing-1;
-  background-color: $uds-color-base-gold;
-  bottom: 0;
-  width: 0;
+@mixin transition {
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 }
 
-@mixin gold-underline-expand {
+@mixin gold-underline {
+  @include transition;
+  content: '';
+  display: block;
+  height: $uds-size-spacing-1;
+  background-color: $uds-color-base-gold;
+}
+
+@mixin gold-underline-mobile {
+  @include gold-underline;
+  position: absolute;
+  top: $uds-size-spacing-6;
+  bottom: inherit;
+  width: 0;
+  margin-left: $uds-size-spacing-4;
+}
+
+@mixin gold-underline-expand-mobile {
+  width: 40%; /* arbitrary number */
+  margin-left: $uds-size-spacing-4;
+}
+
+@mixin gold-underline-desktop {
+  @include gold-underline;
+  position: relative;
+  top: inherit;
+  bottom: 0;
+  width: 0;
+}
+
+@mixin gold-underline-expand-desktop {
   width: 100%;
+  margin-left: 0;
 }
 
 @mixin like-an-h5 {
@@ -32,10 +56,6 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   font-weight: 700;
   line-height: 1rem;
   letter-spacing: -0.015em;
-}
-
-@mixin transition {
-  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 }
 
 /*--------------------------------------------------------------
@@ -191,6 +211,8 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 #header-main {
+  padding: 0;
+
   .navbar {
     padding: $uds-size-spacing-3 0 0 0;
     align-items: flex-start;
@@ -243,7 +265,8 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
   .navbar-nav {
     .nav-link {
-      padding: $uds-size-spacing-2 $uds-size-spacing-4;
+      padding: $uds-size-spacing-2 $uds-size-spacing-4 $uds-size-spacing-1
+        $uds-size-spacing-4;
       border-top: 1px solid $uds-color-base-gray-3;
       color: $uds-color-base-gray-7;
 
@@ -253,6 +276,17 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
       &:visited {
         color: $uds-color-base-gray-7;
+      }
+
+      &:after {
+        @include gold-underline-mobile;
+        position: relative;
+        top: $uds-size-spacing-1;
+      }
+
+      &.active:after {
+        width: calc(40% + 1.5rem); // Magic number.
+        margin-left: 0;
       }
     }
   }
@@ -346,6 +380,27 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
     .nav-link {
       border-top: 0;
     }
+
+    svg.fa-chevron-down {
+      float: right;
+      font-size: $uds-size-font-large;
+    }
+
+    &:after {
+      @include gold-underline-mobile;
+    }
+
+    &.active:after {
+      @include gold-underline-expand-mobile;
+    }
+
+    &.show:after {
+      @include gold-underline-expand-mobile;
+    }
+
+    &.megamenu.show:after {
+      @include gold-underline-expand-mobile;
+    }
   }
 
   .dropdown-menu {
@@ -356,6 +411,14 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
     .btn {
       margin: $uds-size-spacing-1 0;
+    }
+
+    div[class^='col-'] {
+      margin-bottom: $uds-size-spacing-6;
+    }
+
+    div[class^='col-']:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -379,7 +442,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 /*--------------------------------------------------------------
 5. Main Menu - Mobile Only
 --------------------------------------------------------------*/
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(xl) {
   #wrapper-header-main .container-lg {
     padding: 0;
   }
@@ -390,7 +453,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 --------------------------------------------------------------*/
 
 /* Breakpoint at which the mobile menu is triggered */
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   #wrapper-header-top {
     display: block;
   }
@@ -467,18 +530,18 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
         margin-right: $uds-size-spacing-1;
 
         &:after {
-          @include gold-underline;
+          @include gold-underline-desktop;
           bottom: -8px;
           left: -8px;
         }
 
         &:hover:after {
-          @include gold-underline-expand;
+          @include gold-underline-expand-desktop;
           width: calc(100% + 16px);
         }
 
         &.active:after {
-          @include gold-underline-expand;
+          @include gold-underline-expand-desktop;
           width: calc(100% + 16px);
         }
       }
@@ -493,7 +556,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       }
 
       .nav-item .nav-link {
-        padding: 0.5rem 0.75rem; /* Magic number */
+        padding: $uds-size-spacing-1 0.75rem 0 0.75rem; /* Magic number */
       }
     }
 
@@ -509,26 +572,27 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       margin-right: $uds-size-spacing-1;
 
       &:after {
-        @include gold-underline;
+        @include gold-underline-desktop;
       }
 
       &:hover:after {
-        @include gold-underline-expand;
+        @include gold-underline-expand-desktop;
       }
 
       &.active:after {
-        @include gold-underline-expand;
+        @include gold-underline-expand-desktop;
       }
 
       &.dropdown.show:after {
-        @include gold-underline-expand;
+        @include gold-underline-expand-desktop;
       }
 
       &.dropdown.megamenu.show:after {
-        @include gold-underline-expand;
+        @include gold-underline-expand-desktop;
       }
 
       svg.fa-chevron-down {
+        float: none;
         display: inline-block;
         font-size: $uds-size-font-tiny;
         margin-left: $uds-size-spacing-1;
@@ -537,7 +601,8 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
     .dropdown-menu {
       margin: -1px 0 0 0;
-      border-top: 1px solid #ffffff;
+      border: 1px solid $uds-color-base-gray-3;
+      border-top: 1px solid $uds-color-base-white;
       padding: $uds-size-spacing-4;
     }
 
@@ -610,11 +675,16 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
           position: relative;
           top: -1rem;
         }
+
+        div[class^='col-'] {
+          padding-bottom: 0;
+        }
       }
 
       div[class^='col-'] {
         border-right: 1px solid $uds-color-base-gray-4;
-        padding: 0 $uds-size-spacing-3;
+        padding: 0 $uds-size-spacing-3 $uds-size-spacing-5 $uds-size-spacing-3;
+        position: relative;
 
         &:last-of-type {
           border-right: 0;
@@ -626,9 +696,16 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
         .dropdown-item {
           white-space: normal;
+
           & + .dropdown-item {
             border-top: 0;
           }
+        }
+
+        .dropdown-item + .btn {
+          position: absolute;
+          bottom: 0;
+          margin: 0;
         }
 
         .btn + .btn {

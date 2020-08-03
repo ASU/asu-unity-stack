@@ -14,7 +14,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -41,10 +41,10 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-lg" aria-label="Main" >
+            <nav class="navbar navbar-expand-xl" aria-label="Main" >
 
               <a class="navbar-brand" href="#">
                 <img class="vert" src="${vertlogo}" alt="Arizona State University" />
@@ -139,7 +139,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container-lg">
+      <div class="container>
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -166,10 +166,10 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-lg" aria-label="Main" >
+            <nav class="navbar navbar-expand-xl" aria-label="Main" >
 
               <a class="navbar-brand" href="#">
                 <img class="vert" src="${vertlogo}" alt="Arizona State University" />
@@ -236,7 +236,7 @@ storiesOf('Components/Global Header', module)
                       </div>
                     </div>
 
-                    <div class="nav-item dropdown megamenu">
+                    <div class="nav-item dropdown megamenu active">
                       <a class="nav-link" href="#" id="megamenu-three-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mega Menu (3 col)
                         <span class="fa fa-chevron-down"></span>
@@ -252,9 +252,6 @@ storiesOf('Components/Global Header', module)
                               <a class="dropdown-item" href="#">Here is link number three</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
                               <a class="dropdown-item" href="#">Ultricies tellus eu</a>
-                              <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a class="dropdown-item" href="#">Ultricies tellus eu</a>
-                              <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
                             </div>
                             <div class="col-lg">
@@ -268,7 +265,6 @@ storiesOf('Components/Global Header', module)
                               <a class="dropdown-item" href="#">Navigation Link</a>
                               <a class="dropdown-item" href="#">Another Link as an example of when something wraps</a>
                               <a class="dropdown-item" href="#">You Win A Prize</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
                             </div>
                           </div>
                         </div>
@@ -341,37 +337,32 @@ storiesOf('Components/Global Header', module)
                         <div class="container">
                           <div class="row">
                             <div class="col-lg">
-                              <h3>Column One</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Second link in the list</a>
-                              <a class="dropdown-item" href="#">Here is link number three</a>
-                              <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a class="dropdown-item" href="#">Ultricies tellus eu</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
+                                <h3>Column One</h3>
+                                <a class="dropdown-item" href="#">Navigation Link</a>
+                                <a class="dropdown-item" href="#">Second link in the list</a>
+                                <a class="dropdown-item" href="#">Here is link number three</a>
+                                <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                             </div>
                             <div class="col-lg">
                               <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
-                              <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
-                              <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
-                              <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a class="dropdown-item" href="#">Ultricies tellus eu</a>
                               <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
+                              <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
+                              <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
+                              <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                             </div>
                             <div class="col-lg">
-                              <h3>Column Two</h3>
-                              <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
-                              <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
-                              <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
-                              <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a class="dropdown-item" href="#">Ultricies tellus eu</a>
+                              <h3>Column Three</h3>
                               <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
+                              <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
+                              <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
+                              <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
+                              <a class="dropdown-item" href="#">Dapibus lorem</a>
                               <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
                             </div>
                             <div class="col-lg">
-                              <h3>Column four</h3>
+                              <h3>Column Four</h3>
                               <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                               <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
