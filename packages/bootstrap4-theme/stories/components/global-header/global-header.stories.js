@@ -25,7 +25,8 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
+                <label id="header-top-search">Search ASU</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -51,15 +52,17 @@ storiesOf('Components/Global Header', module)
                 <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Hamburger menu" class="fa fa-bars"></span>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                <span title="Open mobile menu" class="fa fa-bars"></span>
+                <span title="Close mobile menu" class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-times fa-stack-1x"></i>
+                </span>
               </button>
 
               <div class="navbar-container">
 
-                <div class="title subdomain-name">
-                  University Technology Office
-                </div>
+                <div class="title subdomain-name">University Technology Office</div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                   <div class="navbar-nav">
@@ -139,7 +142,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container>
+      <div class="container">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -150,7 +153,8 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
+                <label id="header-top-search">Search ASU</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -176,21 +180,24 @@ storiesOf('Components/Global Header', module)
                 <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Hamburger menu" class="fa fa-bars"></span>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                <span title="Open mobile menu" class="fa fa-bars"></span>
+                <span title="Close mobile menu" class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-times fa-stack-1x"></i>
+                </span>
               </button>
 
               <div class="navbar-container">
                 <div class="title">
-                  <span class="unit-name">Ira A. Fulton Schools of Engineering</span>
+                  <a href="#" class="unit-name">Ira A. Fulton Schools of Engineering</a>
                   <span class="subdomain-name">School of Computing, Informatics, and Decisions Systems Engineering</span>
-                  <!-- <span class="subdomain-name">Sub Domain Name</span> -->
                 </div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
                   <div class="navbar-nav">
 
-                    <a class="nav-link nav-link-home active" href="/">
+                    <a class="nav-link nav-link-home" href="/">
                       <span class="d-lg-none">Home</span>
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
@@ -386,7 +393,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search ASU" placeholder="Search ASU">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -436,7 +443,8 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
+                <label id="header-top-search">Search ASU</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -462,15 +470,17 @@ storiesOf('Components/Global Header', module)
                 <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Hamburger menu" class="fa fa-bars"></span>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                <span title="Open mobile menu" class="fa fa-bars"></span>
+                <span title="Close mobile menu" class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-times fa-stack-1x"></i>
+                </span>
               </button>
 
               <div class="navbar-container no-links">
 
-                <div class="title subdomain-name">
-                  Landing Page Title
-                </div>
+                <div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
 
@@ -526,7 +536,8 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
+                <label id="header-top-search">Search ASU</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -552,15 +563,17 @@ storiesOf('Components/Global Header', module)
                 <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Hamburger menu" class="fa fa-bars"></span>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                <span title="Open mobile menu" class="fa fa-bars"></span>
+                <span title="Close mobile menu" class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-times fa-stack-1x"></i>
+                </span>
               </button>
 
               <div class="navbar-container no-links">
 
-                <div class="title subdomain-name">
-                  Landing Page Title
-                </div>
+                <div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
 
@@ -621,7 +634,8 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
-                <input class="form-control" type="search" name="q" aria-label="Search">
+                <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
+                <label id="header-top-search">Search ASU</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -647,8 +661,12 @@ storiesOf('Components/Global Header', module)
                 <img class="horiz" src="${horizlogo}" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Hamburger menu" class="fa fa-bars"></span>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                <span title="Open mobile menu" class="fa fa-bars"></span>
+                <span title="Close mobile menu" class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-times fa-stack-1x"></i>
+                </span>
               </button>
 
               <div class="navbar-container">
