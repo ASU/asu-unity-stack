@@ -432,7 +432,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -463,7 +463,7 @@ storiesOf('Components/Global Header', module)
       <div class="container-lg">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-lg" aria-label="Main" >
+            <nav class="navbar navbar-expand-xl" aria-label="Main" >
 
               <a class="navbar-brand" href="#">
                 <img class="vert" src="${vertlogo}" alt="Arizona State University" />
@@ -525,7 +525,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -553,10 +553,10 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-lg" aria-label="Main" >
+            <nav class="navbar navbar-expand-xl" aria-label="Main">
 
               <a class="navbar-brand" href="#">
                 <img class="vert" src="${vertlogo}" alt="Arizona State University" />
@@ -623,7 +623,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -651,10 +651,10 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-lg" aria-label="Main" >
+            <nav class="navbar navbar-expand-xl" aria-label="Main" >
 
               <a class="navbar-brand" href="#">
                 <img class="vert" src="${vertlogo}" alt="Arizona State University" />
