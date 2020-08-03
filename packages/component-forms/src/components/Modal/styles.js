@@ -3,23 +3,26 @@
 import { h } from "preact";
 import { cx, css } from "emotion";
 import Tokens from "../../theme";
-import {Button} from "@asu-design-system/components-library";
+import { Button } from "@asu-design-system/components-library";
 
 const ModalWindow = props => {
   return (
     <div
-      class={css`
-        z-index: 2000;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color:rgba(0, 0, 0, 0.7);
-      `}
+      class={cx(
+        css`
+          z-index: 2000;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.7);
+        `,
+        props.class
+      )}
       role="dialog"
       aria-modal="true"
     >

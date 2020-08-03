@@ -9,6 +9,21 @@ export default {
   title: "FormPanel"
 };
 
+// A custom validation function. This must return an object
+// which keys are symmetrical to our values/initialValues
+const validate = (values, props) => {
+
+  console.log(props, 'THE PROPS IN VALIDATE');
+
+  const errors = {};
+  if (!values.push_notifications && !values.email_notifications) {
+    errors.push_notifications = "Error: Cannot disable both notification options";
+    errors.email_notifications = "Error: Cannot disable both notification options";
+  }
+
+  return errors;
+};
+
 const testProps = {
   title: "Daily Health Check Reminders",
   description: `How would you like to be reminded to take your daily health check? <br />
@@ -18,7 +33,7 @@ const testProps = {
   imgUrl: "/dev/img/icon-well-check.png",
   fields: [
     {
-      name: "mobileOptin",
+      name: "push_notifications",
       type: "checkbox",
       icon: "mobile",
       label: "ASU Mobile App (push notifications)",
@@ -28,7 +43,7 @@ const testProps = {
       Ut enim ad minim veniam, quis nostrud`
     },
     {
-      name: "webOptin",
+      name: "email_notifications",
       type: "checkbox",
       label: "Web (email reminders)",
       id: "web-opt-in",
@@ -39,11 +54,17 @@ const testProps = {
     },
   ],
   initialValues: {
-    mobileOptin: true,
-    webOptin: false
+    push_notifications: true,
+    email_notifications: false
   },
+  validate,
   onSubmit: (values, actions) => {
-
+    if (!values.push_notifications && !values.email_notifications) {
+      console.log("reset the form");
+      //actions.resetForm();
+      //actions.setErrors({push_notifications: "Error: Cannot disable both notification options"});
+      //
+    }
       console.log(values, 'THE VALUES');
       console.log(actions, 'THE ACTIONS');
   },
