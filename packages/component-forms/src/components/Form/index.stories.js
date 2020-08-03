@@ -11,14 +11,12 @@ export default {
 
 // A custom validation function. This must return an object
 // which keys are symmetrical to our values/initialValues
-const validate = (values, props) => {
-
-  console.log(props, 'THE PROPS IN VALIDATE');
+const validate = (values) => {
 
   const errors = {};
   if (!values.push_notifications && !values.email_notifications) {
-    errors.push_notifications = "Error: Cannot disable both notification options";
-    errors.email_notifications = "Error: Cannot disable both notification options";
+    errors.push_notifications = "Error: Please enable either mobile or web notifications.";
+    errors.email_notifications = "Error: Please enable either mobile or web notifications";
   }
 
   return errors;
