@@ -53,6 +53,7 @@ const PanelInputCard = ({ icon, label, children }) => {
               justify-content: space-between;
               align-items: center;
             `}
+            
           >
             {label}
           </div>
