@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-forms",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "ASU Web Standards-compliant Preact forms",
   "main": "src/index.js",
   "module": "esm/index.js",
