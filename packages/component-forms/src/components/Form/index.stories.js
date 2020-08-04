@@ -55,12 +55,13 @@ const testProps = {
     push_notifications: true,
     email_notifications: false
   },
-  validate,
   onSubmit: (values, actions) => {
     if (!values.push_notifications && !values.email_notifications) {
       console.log("reset the form");
-      //actions.resetForm();
-      //actions.setErrors({push_notifications: "Error: Cannot disable both notification options"});
+      actions.resetForm();
+
+      //actions.setValues({push_notifications: true});
+      actions.setStatus("Warning: Update not submitted. Please enable either mobile or web notifications.");
       //
     }
       console.log(values, 'THE VALUES');

@@ -70,7 +70,7 @@ const PanelInputWrapper = props => {
       class={css`
         display: flex;
         flex-direction: row;
-        align-items: baseline;
+        align-items: center;
         border-bottom: 1px solid rgba(0,0,0,0.125);
 
         :first-child {
@@ -90,7 +90,7 @@ const Input = ({ label, name, type, children, ...props }) => {
     <div
       class={css`
         display: flex;
-        align-items: baseline;
+        align-items: center;
         width: auto;
         height: 100%;
       `}

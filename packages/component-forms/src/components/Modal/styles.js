@@ -11,7 +11,7 @@ const ModalWindow = props => {
       class={cx(
         css`
           z-index: 2000;
-          position: absolute;
+          position: fixed;
           top: 0;
           left: 0;
           width: 100vw;
