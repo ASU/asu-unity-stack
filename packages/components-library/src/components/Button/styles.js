@@ -85,7 +85,7 @@ const Button = props => {
 
   return (
     <Element
-      class={css`
+      class={cx(css`
         background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
         background-position: ${Tokens.ComponentButtonBackgroundPosition};
         background-repeat: ${Tokens.ComponentButtonBackgroundRepeat};
@@ -177,7 +177,7 @@ const Button = props => {
             background-color: ${Tokens.ComponentButtonLightBackgroundColor};
           `
         }
-      `}
+      `, props.class)}
 
       onClick={props.onClick}
     >
