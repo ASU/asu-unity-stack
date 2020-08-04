@@ -87,9 +87,8 @@ const CardBody = props => {
         `,
         props.class
       )}
-    >
-      {props.children}
-    </div>
+      dangerouslySetInnerHTML={{ __html: props.children }}
+    />
   );
 };
 
