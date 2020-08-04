@@ -14,13 +14,12 @@ import * as S from "./styles";
 const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
+  /** State for keeping track of open dropdown nav */
+  const [open, setOpen] = useState(-1);
 
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
   };
-
-  /** State for keeping track of open dropdown nav */
-  const [open, setOpen] = useState(-1);
 
   const toggle = index => {
     if (open == index) {
@@ -141,11 +140,7 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
 
   return (
     <S.Nav open={mobileOpen}>
-      <ul
-        onBlurCapture={onBlurNav}
-        aria-label="ASU"
-        onKeyDown={handleKeyDown}
-      >
+      <ul onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
         {navList.map((item, index) => {
           const navItem = item.item;
           const subs = item.menus;
