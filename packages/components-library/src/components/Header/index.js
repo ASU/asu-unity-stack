@@ -19,34 +19,33 @@ const Header = ({
   ...props
 }) => {
   // Mobile menu open state and helper functions
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
 
-  const toggle = () => setOpen(oldOpen => !oldOpen);
+  const toggle = () => setMobileOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
   // Scroll position state handling for adding 'scroll' class
   const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
-      const position = window.pageYOffset;
-      setSrollPosition(position);
+    const position = window.pageYOffset;
+    setSrollPosition(position);
   };
 
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
-
-      return () => {
-          window.removeEventListener('scroll', handleScroll);
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <S.Header scrollPosition={scrollPosition} >
-      <S.UniversalNav open={open}>
+    <S.Header scrollPosition={scrollPosition}>
+      <S.UniversalNav open={mobileOpen}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -71,23 +70,27 @@ const Header = ({
           <Fragment>
             <div>
               <S.Logo {...logo} />
-              <S.IconHamburger
+              <span
                 onClick={e => {
                   e.preventDefault();
                   toggle();
                 }}
-                // If javascript is disabled, this should target and open the
-                href="#asu-header-nav"
-              />
+              >
+                <S.IconHamburger
+                  // If javascript is disabled, this should target and open the
+                  href="#asu-header-nav"
+                />
+              </span>
+
               <S.Title {...{ title, subtitle }} />
             </div>
             <Nav
               {...{
                 navTree,
                 logo,
-                mobileOpen: open,
+                mobileOpen,
                 height,
-                width
+                width,
               }}
             />
           </Fragment>
