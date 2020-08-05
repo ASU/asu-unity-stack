@@ -70,17 +70,18 @@ const Header = ({
           <Fragment>
             <div>
               <S.Logo {...logo} />
-              <span
+              <button
                 onClick={e => {
                   e.preventDefault();
                   toggle();
                 }}
+                class="asu-icon-hamburger"
               >
                 <S.IconHamburger
                   // If javascript is disabled, this should target and open the
                   href="#asu-header-nav"
                 />
-              </span>
+              </button>
 
               <S.Title {...{ title, subtitle }} />
             </div>
@@ -106,6 +107,7 @@ Header.propTypes = {
     alt: PropTypes.string,
     src: PropTypes.string,
     mobileSrc: PropTypes.string,
+    brandLink: PropTypes.string
   }),
   title: PropTypes.string,
   subtitle: PropTypes.string,

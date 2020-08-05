@@ -87,6 +87,7 @@ const Header = ({
             justify-content: flex-end;
 
             > div {
+              width: 100%;
               max-width: 1200px;
               display: flex;
               flex-wrap: wrap;
@@ -113,8 +114,6 @@ const Header = ({
               }
 
               > div {
-                max-width: 600px;
-
                 > a {
                   width: 50%;
                   line-height: 2rem;
@@ -223,6 +222,10 @@ const Header = ({
             font-size: 1.4rem;
             color: black;
             text-decoration: none;
+            margin-right: 2rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
 
             @media (max-width: ${mobileBreak}) {
               display: inline-block;
@@ -249,6 +252,8 @@ const Header = ({
               font-size: 0.75rem;
               color: #484848;
             }
+
+
 
             @media (max-width: ${mobileBreak}) {
               width: 100%;
@@ -280,6 +285,10 @@ const Header = ({
               button {
                 width: 2.5rem;
                 height: 2.5rem;
+              }
+
+              > svg {
+                ${hiddenStyle}
               }
             }
 
@@ -318,11 +327,14 @@ const PrimaryNav = props => {
 };
 
 const Logo = props => {
+
+  const brandLink = props.brandLink ? props.brandLink :  'https://asu.edu';
+
   return (
-    <div class="header-logo">
+    <a href={brandLink} class="header-logo">
       <img class="logo-full" src={props.src} alt={props.alt} />
       <img class="logo-mobile" src={props.mobileSrc} />
-    </div>
+    </a>
   );
 };
 
