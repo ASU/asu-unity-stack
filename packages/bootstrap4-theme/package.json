@@ -22,8 +22,6 @@
     "build": "gulp",
     "prepare": "yarn run build"
   },
-  "devDependencies": {
-   
-  },
+  "devDependencies": {},
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }
