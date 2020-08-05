@@ -53,7 +53,7 @@ const PanelInputCard = ({ icon, label, children }) => {
               justify-content: space-between;
               align-items: center;
             `}
-            
+
           >
             {label}
           </div>
@@ -74,8 +74,9 @@ const PanelInputWrapper = props => {
         align-items: center;
         border-bottom: 1px solid rgba(0,0,0,0.125);
 
-        :first-child {
-          flex-grow: 1;
+        > div:last-child {
+          align-self: flex-start;
+          margin-top: 2rem;
         }
       `}
     >
