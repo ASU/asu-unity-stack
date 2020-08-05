@@ -13,16 +13,12 @@ import {
   faMapPin,
   faExclamationTriangle,
   faBell,
-  faInfoCircle
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Tokens from "../../theme";
 
 const IconHamburger = props => {
-  return (
-    <a {...props} class="asu-icon-hamburger">
-      <FontAwesomeIcon icon={faBars} {...props} />
-    </a>
-  );
+  return <FontAwesomeIcon icon={faBars} {...props} />;
 };
 
 const IconSearch = props => {
