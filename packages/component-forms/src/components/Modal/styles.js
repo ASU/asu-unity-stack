@@ -11,7 +11,7 @@ const ModalWindow = props => {
       class={cx(
         css`
           z-index: 2000;
-          position: absolute;
+          position: fixed;
           top: 0;
           left: 0;
           width: 100vw;
@@ -20,6 +20,7 @@ const ModalWindow = props => {
           justify-content: center;
           align-items: center;
           background-color: rgba(0, 0, 0, 0.7);
+          overflow: scroll;
         `,
         props.class
       )}
@@ -35,6 +36,12 @@ const ModalWindow = props => {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
           background-color: #fdfdfe;
           opacity: 1;
+
+
+          iframe {
+            max-width: 100%;
+            min-height: 300px;
+          }
         `}
         ref={props.domRef}
       >
@@ -81,7 +88,6 @@ const ModalBody = props => {
     <div
       class={css`
         flex-grow: 1;
-        border-top: solid 1px #d8dce3;
         padding: 14px 29px 14px 19px;
       `}
     >
@@ -94,7 +100,6 @@ const ModalFooter = props => {
   return (
     <div
       class={css`
-        border-top: solid 1px #d8dce3;
         padding: 10px 20px;
         display: flex;
         justify-content: flex-end;
@@ -109,7 +114,26 @@ const ModalCloseBtn = ({ children, ...props }) => {
   return (
     <Button
       class={css`
-        cursor: pointer;
+        display: flex;
+        border-radius: 1000px;
+        padding: 0.25rem 3rem;
+        background-color: rgb(217, 217, 217);
+        width: 18rem;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 0.875rem;
+        min-width: 64px;
+        box-sizing: border-box;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+          box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+          border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        line-height: 1.75;
+        letter-spacing: 0.02857em;
+        text-transform: uppercase;
+        margin: 0 auto;
       `}
       {...props}
     >

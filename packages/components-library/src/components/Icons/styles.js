@@ -2,8 +2,19 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faDesktop, faMobile, faSearch, faBars, faClipboard, faMapPin, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faDesktop,
+  faMobile,
+  faSearch,
+  faBars,
+  faClipboard,
+  faMapPin,
+  faExclamationTriangle,
+  faBell,
+  faInfoCircle
+} from "@fortawesome/free-solid-svg-icons";
 import Tokens from "../../theme";
 
 const IconHamburger = props => {
@@ -15,45 +26,39 @@ const IconHamburger = props => {
 };
 
 const IconSearch = props => {
-  return (
-    <FontAwesomeIcon icon={faSearch} {...props} />
-  );
+  return <FontAwesomeIcon icon={faSearch} {...props} />;
 };
 
 const IconChevronDown = props => {
-  return (
-    <FontAwesomeIcon icon={faChevronDown} {...props} />
-  );
+  return <FontAwesomeIcon icon={faChevronDown} {...props} />;
 };
 
 const IconMobile = props => {
-  return (
-    <FontAwesomeIcon icon={faMobile} {...props} />
-  );
+  return <FontAwesomeIcon icon={faMobile} {...props} />;
 };
 
 const IconDesktop = props => {
-  return (
-    <FontAwesomeIcon icon={faDesktop} {...props} />
-  );
+  return <FontAwesomeIcon icon={faDesktop} {...props} />;
 };
 
 const IconClipboard = props => {
-  return (
-    <FontAwesomeIcon icon={faClipboard} {...props} />
-  );
+  return <FontAwesomeIcon icon={faClipboard} {...props} />;
 };
 
-const IconMapPin= props => {
-  return (
-    <FontAwesomeIcon icon={faMapPin} {...props} />
-  );
+const IconMapPin = props => {
+  return <FontAwesomeIcon icon={faMapPin} {...props} />;
 };
 
 const IconExclTriangle = props => {
-  return (
-    <FontAwesomeIcon icon={faExclamationTriangle} {...props} />
-  );
+  return <FontAwesomeIcon icon={faExclamationTriangle} {...props} />;
+};
+
+const IconBell = props => {
+  return <FontAwesomeIcon icon={faBell} {...props} />;
+};
+
+const IconInfoCircle = props => {
+  return <FontAwesomeIcon icon={faInfoCircle} {...props} />;
 };
 
 const Icon = ({ type, ...props }) => {
@@ -72,6 +77,10 @@ const Icon = ({ type, ...props }) => {
       return <IconMapPin {...props} />;
     case "exclamation-triangle":
       return <IconExclTriangle {...props} />;
+    case "bell":
+      return <IconBell {...props} />;
+    case "info-circle":
+      return <IconInfoCircle {...props} />;
     default:
       return "";
   }
