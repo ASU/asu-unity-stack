@@ -14,7 +14,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -23,7 +23,10 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-              <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+              <div class="nav-link login-status">
+                <a class="name" href="#">Sparky</a>
+                <a class="signout" href="#">Sign Out</a>
+              </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
                 <label id="header-top-search">Search ASU</label>
@@ -42,7 +45,7 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
             <nav class="navbar navbar-expand-xl" aria-label="Main" >
@@ -72,10 +75,6 @@ storiesOf('Components/Global Header', module)
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
 
-                    <a class="nav-link" href="#">Admission</a>
-                    <a class="nav-link" href="#">Alumni</a>
-                    <a class="nav-link" href="#">Giving</a>
-                    <a class="nav-link" href="#">Contact</a>
                     <a class="nav-link" href="#">Tour</a>
                     <a class="nav-link" href="#">Research</a>
 
@@ -89,7 +88,6 @@ storiesOf('Components/Global Header', module)
                           <a class="dropdown-item" href="#">Navigation Link</a>
                           <a class="dropdown-item" href="#">Another Link</a>
                           <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
-                          <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
                         </div>
                       </div>
                     </div>
@@ -97,13 +95,12 @@ storiesOf('Components/Global Header', module)
                   </div><!-- end .navbar-nav -->
 
                   <form class="navbar-site-buttons form-inline">
-                    <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
-                    <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
+                    <a href="#" class="btn btn-md btn-maroon">Call to Action</a>
                   </form>
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -116,7 +113,9 @@ storiesOf('Components/Global Header', module)
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      <div class="nav-link login-status">
+                        Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
+                      </div>
                     </div>
                   </div>
 
@@ -135,14 +134,13 @@ storiesOf('Components/Global Header', module)
     <div id="skip-to-content" class="sr-only"></div>
     <!-- Page content starts here -->
   </div>
-
   `)
 
   .add('Dropdown menus', () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -151,7 +149,9 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-              <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+              <div class="nav-link login-status">
+                <a class="signin" href="#">Sign In</a>
+              </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
                 <label id="header-top-search">Search ASU</label>
@@ -170,7 +170,7 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
             <nav class="navbar navbar-expand-xl" aria-label="Main" >
@@ -209,9 +209,10 @@ storiesOf('Components/Global Header', module)
                       </a>
                       <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
                         <div class="dropdown-col">
-                          <a class="dropdown-item" href="#">Navigation Link</a>
-                          <a class="dropdown-item" href="#">Another Link</a>
-                          <a class="dropdown-item" href="#">Does this dropdown menu have a maximum width or will it go on forever?</a>
+                          <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
+                          <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
+                          <a class="dropdown-item" href="#">Dapibus lorem</a>
+                          <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                           <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
                         </div>
                       </div>
@@ -252,9 +253,8 @@ storiesOf('Components/Global Header', module)
                         <div class="container">
                           <div class="row">
                             <div class="col-lg">
-                              <h3>Column One</h3>
+                              <h3>Column one</h3>
                               <a class="dropdown-item" href="#">Recommended max of ten links</a>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
                               <a class="dropdown-item" href="#">Second link in the list</a>
                               <a class="dropdown-item" href="#">Here is link number three</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
@@ -262,16 +262,17 @@ storiesOf('Components/Global Header', module)
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
                             </div>
                             <div class="col-lg">
-                              <h3>Column Two</h3>
+                              <h3>Column two</h3>
                               <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                               <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                               <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
                             </div>
                             <div class="col-lg-4">
-                              <h3>Last Call 'Em</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
-                              <a class="dropdown-item" href="#">Another Link as an example of when something wraps</a>
-                              <a class="dropdown-item" href="#">You Win A Prize</a>
+                              <h3>Last call 'em</h3>
+                              <a class="dropdown-item" href="#">Navigation link</a>
+                              <a class="dropdown-item" href="#">Another link as an example of when something wraps</a>
+                              <a class="dropdown-item" href="#">Culture of inclusion</a>
+                              <a class="dropdown-item" href="#">Public research university</a>
                             </div>
                           </div>
                         </div>
@@ -288,32 +289,32 @@ storiesOf('Components/Global Header', module)
                         <div class="container">
                           <div class="row">
                             <div class="col-lg">
-                              <h3>Column One</h3>
-                              <a class="dropdown-item" href="#">Navigation Link</a>
+                              <h3>Column one</h3>
+                              <a class="dropdown-item" href="#">Navigation link</a>
                               <a class="dropdown-item" href="#">Second link in the list</a>
                               <a class="dropdown-item" href="#">Here is link number three</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
                               <a class="dropdown-item" href="#">Ultricies tellus eu</a>
                             </div>
                             <div class="col-lg">
-                              <h3>Column Two</h3>
+                              <h3>Column two</h3>
+                              <a class="dropdown-item" href="#">Nisi eget orci</a>
                               <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
-                              <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
-                              <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
+                              <a class="dropdown-item" href="#">Massa nunc venenatis</a>
+                              <a class="dropdown-item" href="#">Pede quisque nulla ultricies sit</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
                               <a class="dropdown-item" href="#">Ultricies tellus eu</a>
-                              <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
                             </div>
                             <div class="col-lg">
-                              <h3>Column Two</h3>
+                              <h3>Column three</h3>
                               <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                               <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                               <a class="dropdown-item" href="#">Massa nunc dictum nam venenatis</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
                               <a class="dropdown-item" href="#">Ultricies tellus eu</a>
                               <a class="dropdown-item" href="#">Pretium massa quis vitae pede quisque nulla ultricies sit</a>
-                              <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
+                              <a class="dropdown-item" href="#">Semper imperdiet</a>
                             </div>
                             <div class="col-lg">
                               <h3>Column four</h3>
@@ -432,7 +433,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -441,7 +442,10 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-              <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+              <div class="nav-link login-status">
+                <a class="name" href="#">Sparky</a>
+                <a class="signout" href="#">Sign Out</a>
+              </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
                 <label id="header-top-search">Search ASU</label>
@@ -460,7 +464,7 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container-lg">
+      <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
             <nav class="navbar navbar-expand-xl" aria-label="Main" >
@@ -486,7 +490,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -525,7 +529,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -534,7 +538,9 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-              <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+              <div class="nav-link login-status">
+                <a class="signin" href="#">Sign in</a>
+              </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
                 <label id="header-top-search">Search ASU</label>
@@ -553,7 +559,7 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
             <nav class="navbar navbar-expand-xl" aria-label="Main">
@@ -584,7 +590,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -623,7 +629,7 @@ storiesOf('Components/Global Header', module)
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
@@ -632,7 +638,10 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
-              <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+              <div class="nav-link login-status">
+                <a class="name" href="#">Sparky</a>
+                <a class="signout" href="#">Sign Out</a>
+              </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
                 <label id="header-top-search">Search ASU</label>
@@ -651,7 +660,7 @@ storiesOf('Components/Global Header', module)
     </div>
 
     <div id="wrapper-header-main">
-      <div class="container">
+      <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
             <nav class="navbar navbar-expand-xl" aria-label="Main" >
@@ -688,13 +697,26 @@ storiesOf('Components/Global Header', module)
                     <a class="nav-link" href="#">Giving</a>
                     <a class="nav-link" href="#">Contact</a>
                     <a class="nav-link" href="#">Tour</a>
-                    <a class="nav-link" href="#">Research</a>
+
+                    <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                      <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+                      <div class="dropdown-col">
+                        <a class="dropdown-item" href="#">Navigation Link</a>
+                        <a class="dropdown-item" href="#">Another Link</a>
+                        <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
+                      </div>
+                    </div>
+                  </div>
 
                   </div><!-- end .navbar-nav -->
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">

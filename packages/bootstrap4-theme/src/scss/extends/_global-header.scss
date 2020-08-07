@@ -3,11 +3,12 @@
 
 1. Wrapper Definitions, Global Mixins, Variables
 2. Top Menu
-3. Scrolled
-4. Main Menu - Mobile
-5. Main Menu - Mobile Only
-6. Main Menu - Desktop
-7. Page Content
+3. Scrolled, Mobile
+4. Scrolled, Desktop
+5. Main Menu, Mobile
+6. Main Menu, Mobile Only
+7. Main Menu, Desktop
+8. Page Content
 --------------------------------------------------------------*/
 
 $fa-search: url(../src/img/font-awesome-svg/search.svg);
@@ -34,7 +35,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 @mixin gold-underline-expand-mobile {
-  width: 40%; /* arbitrary number */
+  width: calc(100% - 4rem); /* arbitrary number */
   margin-left: $uds-size-spacing-4;
 }
 
@@ -57,6 +58,11 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   font-weight: 700;
   line-height: 1rem;
   letter-spacing: -0.015em;
+}
+
+.dropdown-pinned {
+  overflow: hidden;
+  position: fixed;
 }
 
 /*--------------------------------------------------------------
@@ -95,6 +101,31 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
     &.sr-only {
       justify-self: flex-start;
+    }
+  }
+
+  .login-status {
+    display: flex;
+    align-items: center;
+    margin-right: $uds-size-spacing-1;
+
+    > a {
+      padding: 0;
+      margin: 0;
+      color: $uds-color-base-gray-6;
+      text-decoration: none;
+    }
+
+    > a.name {
+      font-weight: 700;
+    }
+
+    > a.signout:before {
+      content: '(';
+      margin-left: 4px;
+    }
+    > a.signout:after {
+      content: ') ';
     }
   }
 
@@ -151,7 +182,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 /*--------------------------------------------------------------
-3. Scrolled
+3. Scrolled, Mobile
 --------------------------------------------------------------*/
 #asu-header .navbar,
 #asu-header .navbar-brand .horiz,
@@ -170,58 +201,54 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
     overflow: hidden;
   }
 
-  #header-main .navbar-brand .vert {
-    margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-1 0;
-    padding: $uds-size-spacing-half 0;
-  }
-
-  .title {
-    margin-bottom: $uds-size-spacing-1;
-    .unit-name {
-      display: none;
-    }
-
-    &.subdomain-name {
-      margin-top: $uds-size-spacing-1;
-      margin-bottom: $uds-size-spacing-1;
-      // font-size: $uds-size-font-xl;
-    }
-  }
-}
-
-@include media-breakpoint-down(lg) {
-  #asu-header.scrolled #header-main {
-    .navbar {
-      padding-top: $uds-size-spacing-2;
-    }
-
+  #header-main {
     .navbar-brand .horiz {
       margin-bottom: $uds-size-spacing-1;
     }
 
-    .title {
-      margin-bottom: 0;
-      padding-bottom: $uds-size-spacing-2;
+    .navbar-brand .vert {
+      margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-1 0;
+      padding: $uds-size-spacing-half 0;
     }
-  }
-}
 
-@include media-breakpoint-up(lg) {
-  #asu-header.scrolled {
-    .navbar-container.no-links {
-      margin-top: $uds-size-spacing-3;
-    }
-    .navbar-nav {
-      .nav-link,
-      .dropdown .nav-link {
-        padding-top: 0;
+    .title {
+      padding-bottom: $uds-size-spacing-2;
+      .unit-name {
+        display: none;
       }
     }
   }
 }
 
 /*--------------------------------------------------------------
-4. Main Menu - Mobile
+4. Scrolled, Desktop
+--------------------------------------------------------------*/
+
+@include media-breakpoint-up(xl) {
+  #asu-header.scrolled {
+    .navbar-container.no-links {
+      margin-top: $uds-size-spacing-4;
+    }
+
+    .navbar-nav {
+      .nav-link,
+      .dropdown .nav-link {
+        padding-top: 0;
+      }
+    }
+
+    #header-main .title {
+      padding-bottom: 0;
+    }
+
+    #header-main .title.subdomain-name {
+      font-size: $uds-size-font-xl;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+5. Main Menu, Mobile
 --------------------------------------------------------------*/
 #wrapper-header-top {
   display: none;
@@ -355,7 +382,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       }
 
       &.active:after {
-        width: calc(40% + 1.5rem); // Magic number.
+        width: 100%; // Magic number.
         margin-left: 0;
       }
     }
@@ -364,8 +391,13 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   .navbar-site-buttons {
     padding: 1rem 2rem;
     border-top: 1px solid #d0d0d0;
-    .btn + .btn {
-      margin-left: $uds-size-spacing-1;
+
+    .btn {
+      margin-bottom: $uds-size-spacing-2;
+    }
+
+    .btn:last-of-type {
+      margin-bottom: 0;
     }
   }
 
@@ -415,18 +447,43 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       .nav-link {
         color: $uds-color-base-gray-7;
         margin-right: 0;
-        padding: 0.5rem 0;
         text-align: center;
         width: 100%;
         font-size: $uds-size-font-small;
-        padding: $uds-size-spacing-2 $uds-size-spacing-4;
+        padding: $uds-size-spacing-2 $uds-size-spacing-3;
         border-top: 1px solid $uds-color-base-gray-3;
 
         &:nth-child(even) {
           border-left: 1px solid $uds-color-base-gray-3;
         }
       }
+
+      .login-status {
+        display: block;
+        width: 100%;
+
+        > a {
+          border: 0;
+          padding: 0;
+          margin: 0;
+          color: $uds-color-base-gray-7;
+          text-decoration: none;
+        }
+
+        > a.name {
+          font-weight: 700;
+        }
+
+        > a.signout:before {
+          content: '(';
+          margin-left: 4px;
+        }
+        > a.signout:after {
+          content: ') ';
+        }
+      }
     }
+
     &.shadow:before {
       @include transition;
       content: '';
@@ -485,7 +542,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 
     div[class^='col-'] {
       margin-bottom: $uds-size-spacing-6;
-      padding: none $uds-size-spacing-4;
+      padding: 0 $uds-size-spacing-4;
     }
 
     div[class^='col-']:last-child {
@@ -516,7 +573,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
   }
 }
 /*--------------------------------------------------------------
-5. Main Menu - Mobile Only
+6. Main Menu, Mobile Only
 --------------------------------------------------------------*/
 @include media-breakpoint-down(xl) {
   #wrapper-header-main .container-lg {
@@ -525,7 +582,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 /*--------------------------------------------------------------
-6. Main Menu - Desktop
+7. Main Menu, Desktop
 --------------------------------------------------------------*/
 
 /* Breakpoint at which the mobile menu is triggered */
@@ -593,6 +650,19 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       }
     }
 
+    .navbar-site-buttons {
+      padding: 0;
+      border: 0;
+
+      .btn {
+        margin-bottom: 0;
+      }
+
+      .btn + .btn {
+        margin-left: $uds-size-spacing-2;
+      }
+    }
+
     #menubar {
       overflow: initial;
     }
@@ -634,11 +704,6 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
       .nav-item .nav-link {
         padding: $uds-size-spacing-1 0.75rem 0 0.75rem; /* Magic number */
       }
-    }
-
-    .navbar-site-buttons {
-      padding: 0;
-      border: 0;
     }
 
     .dropdown {
@@ -801,7 +866,7 @@ $fa-search: url(../src/img/font-awesome-svg/search.svg);
 }
 
 /*--------------------------------------------------------------
-7. Page Wrapper
+8. Page Wrapper
 --------------------------------------------------------------*/
 // Margins are needed to prevent content from flowing under global header.
 

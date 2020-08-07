@@ -33,14 +33,14 @@ jQuery(document).ready(function ($) {
    *  navbarBrand = 48px. Height of ASU Logo in mobile view, including padding. Static value.
    *  navbarTitle = Either 16px (one line) or 32px (two lines) + 16px bottom padding
    */
-  function mobileHeaderHeight() {
+  function mobileHeaderHeight () {
     var topPadding = 16;
     var navbarBrand = $('.navbar-brand').height();
     var navbarTitle = $('nav.navbar .title').height() + 16;
     return topPadding + navbarBrand + navbarTitle;
   }
 
-  function pinBottomMenu() {
+  function pinBottomMenu () {
     var viewport = $(window).height();
     var menuTall = $('#menubar.show').height();
     var headerTall = mobileHeaderHeight();
@@ -48,12 +48,27 @@ jQuery(document).ready(function ($) {
     var maxTall = viewport - headerTall - pinnedTall;
 
     // Does the height of the dropdown require the form to be pinned to the bottom of the window?
+    console.log(
+      'VP: ' +
+        viewport +
+        '   Menu: ' +
+        menuTall +
+        '   Header: ' +
+        headerTall +
+        '   Pin: ' +
+        pinnedTall +
+        '   Max: ' +
+        maxTall
+    );
+
     if (viewport >= menuTall + headerTall) {
+      console.log('True. No pin needed');
       $('#menubar').css({ maxHeight: '' });
       $('.navbar-mobile-footer').removeClass('pinned');
       $('.navbar-mobile-footer').removeClass('shadow');
       restoreTopValue();
     } else {
+      console.log('False. Pin it.');
       $('#menubar').css({ maxHeight: maxTall });
       $('.navbar-mobile-footer').addClass('pinned');
       $('.navbar-mobile-footer').addClass('shadow');
@@ -61,7 +76,7 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  function resetCalcValues() {
+  function resetCalcValues () {
     $('#menubar').css({ maxHeight: '' });
     $('.navbar-mobile-footer').removeClass('pinned');
     $('.navbar-mobile-footer').removeClass('shadow');
@@ -69,12 +84,14 @@ jQuery(document).ready(function ($) {
 
   var topValue = $(document).scrollTop();
 
-  function recordTopValue () {
+  function recordTopValue() {
     topValue = $(document).scrollTop();
+    console.log('Record TopValue: ' + topValue);
     $('body').addClass('dropdown-pinned');
   }
 
-  function restoreTopValue () {
+  function restoreTopValue() {
+    console.log('Restore TopValue: ' + topValue);
     $('body').removeClass('dropdown-pinned');
     topValue = $(document).scrollTop(topValue);
   }
@@ -93,20 +110,28 @@ jQuery(document).ready(function ($) {
   // Does an internal menu dropdown expansion require the bottom menu to be pinned?
   // Only trigger the recalculation if the bottom menu is NOT already pinned.
   $('#menubar .dropdown').on('shown.bs.dropdown', function () {
+    console.log('Expanded dropdown');
     if ($('.navbar-mobile-footer').hasClass('pinned') == false) {
       resetCalcValues();
       pinBottomMenu();
+    } else {
+      console.log('Calc skipped.');
     }
   });
 
   // Does any internal menu dropdown contraction require the bottom menu to be pinned?
   $('#menubar .dropdown').on('hidden.bs.dropdown', function () {
+    console.log('Collapse dropdown');
     resetCalcValues();
     pinBottomMenu();
   });
 
   // Has the menubar scroll reached the bottom of the container? Remove the shadow if so.
   $('#menubar').on('scroll', function () {
+    console.log('Menubar scroll');
+    console.log('Offset: ' + $('#menubar.show').prop('offsetHeight'));
+    console.log('ScrollTop: ' + $('#menubar.show').prop('scrollTop'));
+    console.log('ScrollHeight: ' + $('#menubar.show').prop('scrollHeight'));
     if (
       $('#menubar.show').prop('offsetHeight') +
         $('#menubar.show').prop('scrollTop') ===
@@ -121,10 +146,13 @@ jQuery(document).ready(function ($) {
 
   // Figure stuff out again if the window resizes.
   $(window).resize(function () {
+    console.log('Window resized');
+
     // Only calculate new values if the menubar is open.
     if ($('.navbar-toggler').hasClass('collapsed')) {
-      // Menu is closed. No need for further action.
+      // The hamburger menu is closed.
     } else {
+      console.log('Dealing with window resize. Scolltop: ' + topValue);
       topValue = $(document).scrollTop();
       $('body').removeClass('dropdown-pinned');
       resetCalcValues();
