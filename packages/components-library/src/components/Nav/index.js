@@ -29,20 +29,6 @@ const Nav = ({
     setFocus(newFocus);
   };
 
-  const toggle = index => {
-    if (open == index) {
-      setOpen(-1);
-    } else {
-      setOpen(index);
-    }
-  };
-
-  const navOpen = index => {
-    if (open != index) {
-      setOpen(index);
-    }
-  };
-
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
    */
@@ -118,16 +104,6 @@ const Nav = ({
     }
   };
 
-  // handle focus moving out of Nav
-  const onBlurNav = e => {
-    // only change state if focus moves away from
-    // container element
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // remove focus and close any open navs
-      setFocusCallback([-1, -1, -1]);
-      setOpen(-1);
-    }
-  };
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
@@ -146,10 +122,24 @@ const Nav = ({
     }
   }, [focused, navList]);
 
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
+
+  // handle focus moving out of Nav
+  const onBlurNav = e => {
+    // only change state if focus moves away from
+    // container element
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      // remove focus
+      setFocusCallback([-1, -1, -1]);
+    }
+  };
+
   return (
     <S.Nav open={mobileOpen}>
       <ul
-        {...(width > S.mobileBreak ? { onBlurCapture: onBlurNav } : {})}
+        {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
       >
@@ -172,8 +162,8 @@ const Nav = ({
                 setFocus={setFocusCallback}
                 topRef={item.ref}
                 isOpen={isOpen}
-                toggle={toggle}
-                navOpen={navOpen}
+                setOpen={setOpen}
+                mobileWidth={bpoint}
               />
             );
           }

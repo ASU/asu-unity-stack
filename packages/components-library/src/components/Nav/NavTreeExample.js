@@ -63,12 +63,7 @@ const BasicNavTree = [
       ],
     ],
   },
-  {
-    title: "Students",
-    text: "My ASU",
-    href: "#",
-    target: "_top",
-  },
+
   {
     title: "People",
     text: "People",
@@ -153,6 +148,12 @@ const BasicNavTree = [
         },
       ],
     ],
+  },
+  {
+    title: "Students",
+    text: "My ASU",
+    href: "#",
+    target: "_top",
   },
   {
     title: "Research",
