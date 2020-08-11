@@ -67,34 +67,33 @@ const Header = ({
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
-          <Fragment>
-            <div>
-              <S.Logo {...logo} />
-              <button
-                onClick={e => {
-                  e.preventDefault();
-                  toggle();
-                }}
-                class="asu-icon-hamburger"
-              >
-                <S.IconHamburger
-                  // If javascript is disabled, this should target and open the
-                  href="#asu-header-nav"
-                />
-              </button>
-
-              <S.Title {...{ title, subtitle }} />
-            </div>
-            <Nav
-              {...{
-                navTree,
-                logo,
-                mobileOpen,
-                height,
-                width,
+          <div>
+            <S.Logo {...logo} />
+            <button
+              onClick={e => {
+                e.preventDefault();
+                toggle();
               }}
-            />
-          </Fragment>
+              class="asu-icon-hamburger"
+            >
+              <S.IconHamburger
+                // If javascript is disabled, this should target and open the
+                href="#asu-header-nav"
+              />
+            </button>
+            <S.NavBarContainer>
+              <S.Title {...{ title, subtitle }} />
+              <Nav
+                {...{
+                  navTree,
+                  logo,
+                  mobileOpen,
+                  height,
+                  width,
+                }}
+              />
+            </S.NavBarContainer>
+          </div>
         )}
       </S.PrimaryNav>
     </S.Header>
@@ -107,7 +106,7 @@ Header.propTypes = {
     alt: PropTypes.string,
     src: PropTypes.string,
     mobileSrc: PropTypes.string,
-    brandLink: PropTypes.string
+    brandLink: PropTypes.string,
   }),
   title: PropTypes.string,
   subtitle: PropTypes.string,

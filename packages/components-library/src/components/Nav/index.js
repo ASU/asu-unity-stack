@@ -11,7 +11,15 @@ import * as S from "./styles";
  * Render entire Nav. This includes
  * @param {} props
  */
-const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
+const Nav = ({
+  navTree,
+  width,
+  height,
+  mobileOpen,
+  maxHeight,
+  buttons,
+  ...props
+}) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
   /** State for keeping track of open dropdown nav */
@@ -140,7 +148,11 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
 
   return (
     <S.Nav open={mobileOpen}>
-      <ul onBlurCapture={onBlurNav} aria-label="ASU" onKeyDown={handleKeyDown}>
+      <ul
+        {...(width > S.mobileBreak ? { onBlurCapture: onBlurNav } : {})}
+        aria-label="ASU"
+        onKeyDown={handleKeyDown}
+      >
         {navList.map((item, index) => {
           const navItem = item.item;
           const subs = item.menus;
@@ -179,12 +191,15 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
           );
         })}
       </ul>
+
+      {}
     </S.Nav>
   );
 };
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
+  buttons: PropTypes.arrayOf(PropTypes.object),
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
@@ -197,6 +212,7 @@ Nav.defaultProps = {
   width: 1920,
   height: 1080,
   maxHeight: "75vh",
+  buttons: [],
 };
 
 /***************** Helper functions **************/

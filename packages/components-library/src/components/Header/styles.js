@@ -6,19 +6,16 @@ import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { hiddenStyle, showReset } from "../../styles/common";
-import {IconHamburger, IconSearch} from "../Icons/styles";
+import { IconHamburger, IconSearch } from "../Icons/styles";
 
 const mobileBreak = Tokens.BreakpointLg;
+const containerSize = "1224px";
 
-const Header = ({
-  scrollPosition,
-  children,
-  ...props
-}) => {
+const Header = ({ scrollPosition, children, ...props }) => {
   return (
     <header
       class={cx(
-        scrollPosition > 0 ? "scrolled": "",
+        scrollPosition > 0 ? "scrolled" : "",
         css`
           * {
             margin: 0;
@@ -59,11 +56,11 @@ const Header = ({
           &.scrolled .primary-nav .asu-icon-hamburger span {
             font-size: 1rem;
           }
-          &.scrolled .primary-nav .header-logo img {
+          &.scrolled .primary-nav .navbar-brand d img {
             height: 64px;
           }
           @media (max-width: ${mobileBreak}) {
-            &.scrolled .primary-nav .header-logo img {
+            &.scrolled .primary-nav .navbar-brand d img {
               height: 28px;
             }
           }
@@ -72,147 +69,9 @@ const Header = ({
           }
           @media (max-width: ${mobileBreak}) {
             max-height: 75vh;
-            overflow-y: scroll;
 
             &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
-            }
-          }
-
-          .universal-nav {
-            padding: 0 1rem;
-            background-color: #e8e8e8;
-            text-align: right;
-            display: flex;
-            justify-content: flex-end;
-
-            > div {
-              width: 100%;
-              max-width: 1200px;
-              display: flex;
-              flex-wrap: wrap;
-              align-items: center;
-
-              > a {
-                display: inline-block;
-                font-size: 0.75rem;
-                padding: 0.25rem 0.5rem;
-                color: #484848;
-              }
-            }
-
-            @media (max-width: ${mobileBreak}) {
-              ${hiddenStyle}
-              padding: 0;
-              &.mobile-open {
-                ${showReset("fixed")}
-                bottom: 0;
-                z-index: 1500;
-                width 100%;
-                display: flex;
-                justify-content: center;
-              }
-
-              > div {
-                > a {
-                  width: 50%;
-                  line-height: 2rem;
-                  text-align: center;
-                  border: 1px solid #cccccc;
-                  font-size: .9rem;
-                }
-              }
-            }
-          }
-
-          .primary-nav {
-            background-color: #ffffff;
-
-            > div {
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 1rem 1rem 0 1rem;
-            }
-
-            @media (max-width: ${mobileBreak}) {
-              > div {
-                position: fixed;
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                top: 0;
-                width: 100%;
-                height: auto;
-                background-color: #ffffff;
-                padding: 1rem;
-                z-index: 1600;
-              }
-            }
-          }
-
-          .header-logo {
-            float: left;
-            display: inline-block;
-            margin-right: 1.5rem;
-            flex-grow: 1;
-
-            .logo-mobile {
-              display: none;
-            }
-
-            img {
-              height: 80px;
-            }
-
-            @media (max-width: ${mobileBreak}) {
-              img {
-                float: none;
-                height: 32px;
-              }
-
-              .logo-full {
-                display: none;
-              }
-              .logo-mobile {
-                display: inline-block;
-                float: none;
-                height: 32px;
-              }
-            }
-          }
-
-          .header-title {
-            span {
-              font-weight: bold;
-              font-size: 1rem;
-              display: inline-block;
-              margin-bottom: 0.5rem;
-
-              @media (max-width: ${mobileBreak}) {
-                display: none;
-              }
-            }
-
-            h1 {
-              font-weight: bold;
-              font-size: 1.5rem;
-              letter-spacing: -1px;
-              background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
-              background-position: 0%;
-              background-size: 200%;
-              display: inline-block;
-              padding-right: 4px;
-              transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-              transition-duration: 1s;
-            }
-
-            @media (max-width: ${mobileBreak}) {
-              h1 {
-                font-size: 1rem;
-                display: inline;
-                line-height: -1rem;
-              }
-              width: 100%;
             }
           }
 
@@ -231,82 +90,15 @@ const Header = ({
               display: inline-block;
             }
           }
-
-          .asu-search-form {
-
-            > form {
-              display: none;
-              padding: .2rem .5rem;
-
-              > input {
-                padding: .1rem 2rem;
-              }
-
-              &.show-search-input {
-                display: inline-flex;
-              }
-            }
-
-            > a {
-              display: inline-block;
-              font-size: 0.75rem;
-              color: #484848;
-            }
-
-
-
-            @media (max-width: ${mobileBreak}) {
-              width: 100%;
-              display: inline-block;
-              order: -1;
-              border: 1px solid #cccccc;
-              padding: 1rem;
-
-              > form {
-                width: 100%;
-                display: inline-flex;
-
-                > input {
-                  padding: .5rem 2rem;
-                  display: inline-block;
-                  width: 100%;
-                }
-
-                > button {
-                  font-size: 1rem;
-                  opacity: .75;
-                }
-              }
-
-              > a {
-                display: none;
-              }
-
-              button {
-                width: 2.5rem;
-                height: 2.5rem;
-              }
-
-              > svg {
-                ${hiddenStyle}
-              }
-            }
-
-            button {
-              font-size: .75rem;
-              border: none;
-              background: transparent;
-              cursor: pointer;
-              margin-right: -40px;
-              z-index: 20;
-              width: 1.5rem;
-              height: 1.5rem;
-              padding: .5rem 2rem;
-            }
-          }
         `,
+        primaryStyles,
         navStyles, // add the nav and button styles
-        buttonStyles
+        buttonStyles,
+        navBarContainerStyles,
+        logoStyles,
+        universalStyles,
+        searchStyles,
+        titleStyles
       )}
       {...props}
     >
@@ -315,28 +107,238 @@ const Header = ({
   );
 };
 
+const universalStyles = css`
+  .universal-nav {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: #e8e8e8;
+    height: 32px;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+
+    > div {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+
+      > a {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        color: #484848;
+      }
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      ${hiddenStyle}
+      padding: 0;
+      transition: none;
+      &.mobile-open {
+        ${showReset("fixed")}
+        bottom: 0;
+        z-index: 1500;
+        width 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      > div {
+        > a {
+          width: 50%;
+          line-height: 2rem;
+          text-align: center;
+          border: 1px solid #cccccc;
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+`;
+
 const UniversalNav = props => {
   return (
-    <div class={cx("universal-nav", props.open ? "mobile-open" : "")}>{props.children}</div>
+    <div class={cx("universal-nav", props.open ? "mobile-open" : "")}>
+      {props.children}
+    </div>
   );
 };
 
-/** Class styles */
+/** Primary Nav */
+const primaryStyles = css`
+  .primary-nav {
+    background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: ${containerSize};
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 1.5rem 0 0 0;
+      align-items: flex-start;
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+      position: relative;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      position: fixed;
+      display: flex;
+      top: 0;
+      width: 100%;
+      height: auto;
+      background-color: #ffffff;
+      padding: 0;
+      z-index: 1600;
+      padding: 1.5rem 0 0 0;
+
+      > div {
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+  }
+`;
 const PrimaryNav = props => {
   return <div class="primary-nav">{props.children}</div>;
 };
 
-const Logo = props => {
+const navBarContainerStyles = css`
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-  const brandLink = props.brandLink ? props.brandLink :  'https://asu.edu';
+    @media (max-width: ${mobileBreak}) {
+      width: 100%;
+    }
+  }
+`;
+
+const NavBarContainer = props => {
+  return (
+    <div class={cx("navbar-container", props.class)}>{props.children}</div>
+  );
+};
+
+const logoStyles = css`
+  .navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+
+    .horiz {
+      display: none;
+    }
+
+    .vert {
+      @media (min-width: 992px) {
+        display: block;
+        height: 72px;
+        width: auto;
+        margin: 1.5rem 1rem 1.5rem 0;
+      }
+    }
+
+    img {
+      height: 80px;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      img {
+        float: none;
+        height: 32px;
+      }
+
+      .vert {
+        display: none;
+      }
+      .horiz {
+        display: block;
+        height: 32px;
+        width: auto;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+      }
+    }
+  }
+`;
+
+const Logo = props => {
+  const brandLink = props.brandLink ? props.brandLink : "https://asu.edu";
 
   return (
-    <a href={brandLink} class="header-logo">
-      <img class="logo-full" src={props.src} alt={props.alt} />
-      <img class="logo-mobile" src={props.mobileSrc} />
+    <a href={brandLink} class="navbar-brand">
+      <img class="vert" src={props.src} alt={props.alt} />
+      <img class="horiz" src={props.mobileSrc} />
     </a>
   );
 };
+
+const titleStyles = css`
+  .header-title {
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0;
+
+    span {
+      font-weight: bold;
+      display: inline-block;
+
+      @media (max-width: ${mobileBreak}) {
+        display: none;
+      }
+    }
+
+    h1 {
+      font-weight: bold;
+      font-size: 2rem;
+      letter-spacing: -1px;
+      background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
+      background-position: 0%;
+      background-size: 200%;
+      display: inline-block;
+      padding-right: 4px;
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+      transition-duration: 1s;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      padding: 0 2rem 1.5rem 2rem;
+      margin: 0;
+
+      h1 {
+        font-size: 1rem;
+        display: inline;
+        line-height: -1rem;
+      }
+      width: 100%;
+    }
+  }
+`;
 
 const Title = props => {
   return (
@@ -348,7 +350,77 @@ const Title = props => {
   );
 };
 
+const searchStyles = css`
+  .asu-search-form {
+    > form {
+      display: none;
 
+      > input {
+        padding: 0.1rem 2rem;
+      }
+
+      &.show-search-input {
+        display: inline-flex;
+      }
+    }
+
+    > a {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #484848;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      width: 100%;
+      display: inline-block;
+      order: -1;
+
+      > form {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        padding: 1rem 2rem;
+
+        > input {
+          padding: 0.5rem 2rem;
+          display: inline-block;
+          width: 100%;
+          border: 0;
+        }
+
+        > button {
+          font-size: 1rem;
+          opacity: 0.75;
+        }
+      }
+
+      > a {
+        display: none;
+      }
+
+      button {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      > svg {
+        ${hiddenStyle}
+      }
+    }
+
+    button {
+      font-size: 0.75rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      margin-right: -30px;
+      z-index: 20;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0;
+    }
+  }
+`;
 
 const SearchForm = props => {
   // TODO: handle custom search
@@ -360,10 +432,7 @@ const SearchForm = props => {
         role="search"
         class={props.open ? "show-search-input" : ""}
       >
-        <button type="submit" class="searchButton">
-          <IconSearch />
-        </button>
-        <input name="q" placeholder="Search asu.edu" type="text" />
+        <input name="q" type="text" />
       </form>
       {props.children}
     </div>
@@ -380,4 +449,5 @@ export {
   SearchForm,
   IconSearch,
   showReset,
+  NavBarContainer,
 };

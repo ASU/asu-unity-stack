@@ -14,6 +14,8 @@ const mobileBreak = Tokens.BreakpointLg;
  */
 const navStyles = css`
   nav.header-nav {
+
+
     > ul {
       display: flex;
       flex-direction: row;
@@ -49,8 +51,12 @@ const navStyles = css`
       &.open-nav,
       &:target {
         ${showReset()}
-        margin-top: 120px;
         flex-direction: column;
+        width: 100%;
+        overflow-y: scroll;
+        height: 60vh;
+        display: flex;
+
       }
 
       .mobile-only {
@@ -67,8 +73,6 @@ const navStyles = css`
         div.nav-dropdown-open {
           flex-direction: column;
           position: relative;
-          top: 100%;
-          left: 0;
         }
 
         > li {
@@ -79,6 +83,12 @@ const navStyles = css`
             justify-content: space-between;
             display: flex;
             border-bottom: 1px solid #cccccc;
+            align-items: center;
+
+            > svg {
+              margin-right: 2rem;
+            }
+
           }
 
           :first-of-type {
@@ -187,4 +197,4 @@ const DdMenu = props => {
 
 
 
-export { Nav, DdMenu, IconChevronDown, navStyles };
+export { Nav, DdMenu, IconChevronDown, navStyles, mobileBreak };
