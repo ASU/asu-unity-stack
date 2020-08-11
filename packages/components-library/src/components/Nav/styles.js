@@ -14,8 +14,6 @@ const mobileBreak = Tokens.BreakpointLg;
  */
 const navStyles = css`
   nav.header-nav {
-
-
     > ul {
       display: flex;
       flex-direction: row;
