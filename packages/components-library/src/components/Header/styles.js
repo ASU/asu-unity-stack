@@ -5,11 +5,13 @@ import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import { hiddenStyle, showReset, mobileBreak, containerSize } from "../../styles/common";
+import {
+  hiddenStyle,
+  showReset,
+  mobileBreak,
+  containerSize,
+} from "../../styles/common";
 import { Icon } from "../Icons/styles";
-
-
-
 
 const Header = ({ scrollPosition, children, ...props }) => {
   return (
@@ -60,9 +62,6 @@ const Header = ({ scrollPosition, children, ...props }) => {
             &.scrolled .primary-nav .navbar-brand d img {
               height: 28px;
             }
-          }
-          &.scrolled .primary-nav .header-title h1 {
-            font-size: 1.25rem;
           }
 
           @media (max-width: ${mobileBreak}) {
@@ -327,58 +326,41 @@ const Logo = props => {
   );
 };
 
+/** Title */
 const titleStyles = css`
-  .header-title {
-    line-height: 1;
-    display: flex;
-    flex-direction: column;
+  &.scrolled .title {
+    padding-bottom: 1rem;
+  }
 
-    margin: 1.5rem 0 1rem 0;
+  .title {
+    line-height: 1;
+    font-size: 1rem;
     font-weight: 700;
-    line-height: 1;
-    padding: 0;
+    padding: 0 2rem 1.5rem 2rem;
 
-    span {
-      font-weight: bold;
-      display: inline-block;
-
-      @media (max-width: ${mobileBreak}) {
-        display: none;
-      }
+    > a {
+      display: none;
     }
 
-    h1 {
-      font-weight: bold;
-      font-size: 1rem;
-      letter-spacing: -1px;
-      background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
-      background-position: 0%;
-      background-size: 200%;
-      display: inline-block;
-      padding-right: 4px;
-      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-      transition-duration: 1s;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      padding: 0 2rem 1.5rem 2rem;
-      margin: 0;
-
-      h1 {
-        font-size: 1rem;
-        display: inline;
-        line-height: -1rem;
-      }
-      width: 100%;
-    }
-
-    @media (min-width: 1260px) {
+    @media (min-width: ${mobileBreak}) {
       line-height: 1;
       margin: 1rem 0;
       font-weight: 700;
       padding: 0;
 
-      h1 {
+      > a {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      &.subdomain-name {
+        font-size: 2rem;
+        margin: 1.5rem 0 1rem 0;
+        font-weight: 700;
+      }
+
+      .subdomain-name {
         font-size: 1.5rem;
         margin-bottom: 0;
       }
@@ -386,16 +368,21 @@ const titleStyles = css`
   }
 `;
 
-const Title = props => {
-  return (
-    <div class="header-title">
-      <span>{props.title}</span>
-      <br />
-      <h1>{props.subtitle}</h1>
-    </div>
-  );
+const Title = ({ title, unit, ...props }) => {
+  console.log(unit, "THE UNIT");
+
+  if (unit) {
+    return (
+      <div class="title">
+        <a class="unit-name">{unit}</a>
+        <span class="subdomain-name">{title}</span>
+      </div>
+    );
+  }
+  return <div class="title subdomain-name">{title}</div>;
 };
 
+/** Search */
 const searchStyles = css`
   .asu-search-form {
     > form {

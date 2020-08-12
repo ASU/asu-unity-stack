@@ -10,7 +10,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 const Header = ({
   navTree,
   title,
-  subtitle,
+  unit,
   logo,
   loggedIn,
   userName,
@@ -77,7 +77,7 @@ const Header = ({
               mobileOpen={mobileOpen}
             />
             <S.NavbarContainer>
-              <S.Title {...{ title, subtitle }} />
+              <S.Title {...{ title, unit }} />
               <Nav
                 {...{
                   navTree,
@@ -104,7 +104,7 @@ Header.propTypes = {
     brandLink: PropTypes.string,
   }),
   title: PropTypes.string,
-  subtitle: PropTypes.string,
+  unit: PropTypes.string,
   loggedIn: PropTypes.bool,
   userName: PropTypes.string,
   loginLink: PropTypes.string,
@@ -121,7 +121,7 @@ Header.defaultProps = {
       "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
   },
   title: "",
-  subtitle: "",
+  unit: "",
   loggedIn: false,
   userName: "",
   loginLink: "https://weblogin.asu.edu/cas/login",
