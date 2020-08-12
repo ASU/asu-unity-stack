@@ -157,7 +157,7 @@ This repo uses semantic-release to automatically release new packages upon mergi
 
 In order to trigger a release, commits must be structured properly in order for semantic release to read commits, generate changelogs and publish packages.
 
-Here are examples of a patch, minor, and major release:
+Here are examples of a patch, minor and major release:
 
 ```
 fix(pencil): stop graphite breaking when too much pressure applied
