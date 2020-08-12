@@ -52,25 +52,56 @@ jQuery(document).ready(function ($) {
       $('#menubar').css({ maxHeight: '' });
       $('.navbar-mobile-footer').removeClass('pinned');
       $('.navbar-mobile-footer').removeClass('shadow');
+      restoreTopValue();
     } else {
       $('#menubar').css({ maxHeight: maxTall });
       $('.navbar-mobile-footer').addClass('pinned');
       $('.navbar-mobile-footer').addClass('shadow');
+      recordTopValue();
     }
   }
 
-  // Does the initial menubar expansion require the bottom menu to be pinned?
+  function resetCalcValues() {
+    $('#menubar').css({ maxHeight: '' });
+    $('.navbar-mobile-footer').removeClass('pinned');
+    $('.navbar-mobile-footer').removeClass('shadow');
+  }
+
+  var topValue = $(document).scrollTop();
+
+  function recordTopValue () {
+    topValue = $(document).scrollTop();
+    $('body').addClass('dropdown-pinned');
+  }
+
+  function restoreTopValue () {
+    $('body').removeClass('dropdown-pinned');
+    topValue = $(document).scrollTop(topValue);
+  }
+
+  // Does the initial menu expansion require the bottom menu to be pinned?
   $('#menubar').on('shown.bs.collapse', function () {
     pinBottomMenu();
   });
 
-  // Does any internal menu dropdown expansion require the bottom menu to be pinned?
+  // Once the menu contracts, kill off the max height for the menubar.
+  $('#menubar').on('hidden.bs.collapse', function () {
+    resetCalcValues();
+    restoreTopValue();
+  });
+
+  // Does an internal menu dropdown expansion require the bottom menu to be pinned?
+  // Only trigger the recalculation if the bottom menu is NOT already pinned.
   $('#menubar .dropdown').on('shown.bs.dropdown', function () {
-    pinBottomMenu();
+    if ($('.navbar-mobile-footer').hasClass('pinned') == false) {
+      resetCalcValues();
+      pinBottomMenu();
+    }
   });
 
   // Does any internal menu dropdown contraction require the bottom menu to be pinned?
   $('#menubar .dropdown').on('hidden.bs.dropdown', function () {
+    resetCalcValues();
     pinBottomMenu();
   });
 
@@ -85,6 +116,19 @@ jQuery(document).ready(function ($) {
       $('.navbar-mobile-footer').removeClass('shadow');
     } else {
       $('.navbar-mobile-footer').addClass('shadow');
+    }
+  });
+
+  // Figure stuff out again if the window resizes.
+  $(window).resize(function () {
+    // Only calculate new values if the menubar is open.
+    if ($('.navbar-toggler').hasClass('collapsed')) {
+      // Menu is closed. No need for further action.
+    } else {
+      topValue = $(document).scrollTop();
+      $('body').removeClass('dropdown-pinned');
+      resetCalcValues();
+      pinBottomMenu();
     }
   });
 });
