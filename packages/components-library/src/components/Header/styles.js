@@ -5,11 +5,11 @@ import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import { hiddenStyle, showReset } from "../../styles/common";
-import { IconHamburger, IconSearch } from "../Icons/styles";
+import { hiddenStyle, showReset, mobileBreak, containerSize } from "../../styles/common";
+import { Icon } from "../Icons/styles";
 
-const mobileBreak = Tokens.BreakpointLg;
-const containerSize = "1224px";
+
+
 
 const Header = ({ scrollPosition, children, ...props }) => {
   return (
@@ -23,7 +23,6 @@ const Header = ({ scrollPosition, children, ...props }) => {
             box-sizing: border-box;
             text-decoration: none;
             list-style: none;
-            font-size: 100%;
           }
 
           a {
@@ -35,9 +34,9 @@ const Header = ({ scrollPosition, children, ...props }) => {
           flex-direction: column;
           position: fixed;
           width: 100%;
-          z-index: 9999;
+          z-index: 999;
           background: #ffffff;
-          border-bottom: 1px solid #e8e8e8;
+          border-bottom: 1px solid #d0d0d0;
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           top: 0;
 
@@ -53,9 +52,7 @@ const Header = ({ scrollPosition, children, ...props }) => {
             ${hiddenStyle}
             transition: translateY(-24px);
           }
-          &.scrolled .primary-nav .asu-icon-hamburger span {
-            font-size: 1rem;
-          }
+
           &.scrolled .primary-nav .navbar-brand d img {
             height: 64px;
           }
@@ -67,6 +64,7 @@ const Header = ({ scrollPosition, children, ...props }) => {
           &.scrolled .primary-nav .header-title h1 {
             font-size: 1.25rem;
           }
+
           @media (max-width: ${mobileBreak}) {
             max-height: 75vh;
 
@@ -74,36 +72,76 @@ const Header = ({ scrollPosition, children, ...props }) => {
               font-size: 1rem;
             }
           }
-
-          .asu-icon-hamburger {
-            float: right;
-            display: none;
-            font-size: 1.4rem;
-            color: black;
-            text-decoration: none;
-            margin-right: 2rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-
-            @media (max-width: ${mobileBreak}) {
-              display: inline-block;
-            }
-          }
         `,
         primaryStyles,
         navStyles, // add the nav and button styles
         buttonStyles,
-        navBarContainerStyles,
+        NavbarContainerStyles,
         logoStyles,
         universalStyles,
         searchStyles,
-        titleStyles
+        titleStyles,
+        navbarTogglerStyles
       )}
       {...props}
     >
       {children}
     </header>
+  );
+};
+
+const navbarTogglerStyles = css`
+  .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border-radius: 400rem;
+    outline: 0;
+    color: #191919;
+    border: 0;
+    margin-right: 2rem;
+    cursor: pointer;
+
+    @media (min-width: ${mobileBreak}) {
+      display: none;
+    }
+  }
+`;
+
+const NavbarToggler = ({ mobileOpen, ...props }) => {
+  return (
+    <button
+      {...props}
+      class={cx(
+        css`
+          .fa-circle {
+            color: #e8e8e8;
+            font-size: 1rem;
+            margin-left: -12px;
+            height: 2em;
+            width: 2.5em;
+          }
+
+          svg.svg-inline--fa.fa-times {
+            height: 1em;
+            width: 1.25em;
+            margin-left: 7px;
+          }
+        `,
+        "navbar-toggler"
+      )}
+    >
+      {mobileOpen ? (
+        <Icon type="circle-close" />
+      ) : (
+        <Icon
+          type="bars"
+          // If javascript is disabled, this should target and open the
+          href="#asu-header-nav"
+        />
+      )}
+    </button>
   );
 };
 
@@ -139,7 +177,7 @@ const universalStyles = css`
       &.mobile-open {
         ${showReset("fixed")}
         bottom: 0;
-        z-index: 1500;
+        z-index: 998;
         width 100%;
         display: flex;
         justify-content: center;
@@ -181,15 +219,11 @@ const primaryStyles = css`
     > div {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
-      justify-content: flex-start;
       width: 100%;
-      padding: 1.5rem 0 0 0;
       align-items: flex-start;
       transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       position: relative;
       align-items: center;
-      padding: 0.5rem 1rem;
     }
 
     @media (max-width: ${mobileBreak}) {
@@ -215,7 +249,7 @@ const PrimaryNav = props => {
   return <div class="primary-nav">{props.children}</div>;
 };
 
-const navBarContainerStyles = css`
+const NavbarContainerStyles = css`
   .navbar-container {
     display: flex;
     flex-direction: column;
@@ -227,7 +261,7 @@ const navBarContainerStyles = css`
   }
 `;
 
-const NavBarContainer = props => {
+const NavbarContainer = props => {
   return (
     <div class={cx("navbar-container", props.class)}>{props.children}</div>
   );
@@ -315,7 +349,7 @@ const titleStyles = css`
 
     h1 {
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 1rem;
       letter-spacing: -1px;
       background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
       background-position: 0%;
@@ -336,6 +370,18 @@ const titleStyles = css`
         line-height: -1rem;
       }
       width: 100%;
+    }
+
+    @media (min-width: 1260px) {
+      line-height: 1;
+      margin: 1rem 0;
+      font-weight: 700;
+      padding: 0;
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+      }
     }
   }
 `;
@@ -445,9 +491,9 @@ export {
   PrimaryNav,
   Title,
   Logo,
-  IconHamburger,
   SearchForm,
-  IconSearch,
   showReset,
-  NavBarContainer,
+  NavbarContainer,
+  Icon,
+  NavbarToggler,
 };

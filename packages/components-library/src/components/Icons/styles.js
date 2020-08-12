@@ -14,10 +14,12 @@ import {
   faExclamationTriangle,
   faBell,
   faInfoCircle,
+  faCircle,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import Tokens from "../../theme";
 
-const IconHamburger = props => {
+const IconBars = props => {
   return <FontAwesomeIcon icon={faBars} {...props} />;
 };
 
@@ -57,6 +59,15 @@ const IconInfoCircle = props => {
   return <FontAwesomeIcon icon={faInfoCircle} {...props} />;
 };
 
+const IconCircleClose = props => {
+  return (
+    <span class={cx("fa-layers fa-fw", props.class)}>
+      <FontAwesomeIcon icon={faCircle} size="2x" />
+      <FontAwesomeIcon icon={faTimes} size="1x" />
+    </span>
+  );
+};
+
 const Icon = ({ type, ...props }) => {
   switch (type) {
     case "mobile":
@@ -77,9 +88,20 @@ const Icon = ({ type, ...props }) => {
       return <IconBell {...props} />;
     case "info-circle":
       return <IconInfoCircle {...props} />;
+    case "circle-close":
+      return <IconCircleClose {...props} />;
+    case "bars":
+      return <IconBars {...props} />;
     default:
       return "";
   }
 };
 
-export { Icon, IconHamburger, IconSearch, IconChevronDown, IconMobile };
+export {
+  Icon,
+  IconBars,
+  IconSearch,
+  IconChevronDown,
+  IconMobile,
+  IconCircleClose,
+};

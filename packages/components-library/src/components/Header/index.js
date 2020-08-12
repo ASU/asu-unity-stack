@@ -59,7 +59,7 @@ const Header = ({
             <a href={loginLink}>Sign in</a>
           )}
           <S.SearchForm open={openSearch}>
-            <S.IconSearch onMouseDown={toggleSearch} />
+            <S.Icon type="search" onMouseDown={toggleSearch} />
           </S.SearchForm>
         </div>
       </S.UniversalNav>
@@ -69,19 +69,14 @@ const Header = ({
         ) : (
           <div>
             <S.Logo {...logo} />
-            <button
+            <S.NavbarToggler
               onClick={e => {
                 e.preventDefault();
                 toggle();
               }}
-              class="asu-icon-hamburger"
-            >
-              <S.IconHamburger
-                // If javascript is disabled, this should target and open the
-                href="#asu-header-nav"
-              />
-            </button>
-            <S.NavBarContainer>
+              mobileOpen={mobileOpen}
+            />
+            <S.NavbarContainer>
               <S.Title {...{ title, subtitle }} />
               <Nav
                 {...{
@@ -92,7 +87,7 @@ const Header = ({
                   width,
                 }}
               />
-            </S.NavBarContainer>
+            </S.NavbarContainer>
           </div>
         )}
       </S.PrimaryNav>

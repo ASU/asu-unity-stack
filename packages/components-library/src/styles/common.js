@@ -27,4 +27,8 @@ const showReset = position => {
   `;
 };
 
-export { hiddenStyle, showReset };
+const mobileBreak = "1260px";
+
+const containerSize = "1224px";
+
+export { hiddenStyle, showReset, mobileBreak, containerSize };
