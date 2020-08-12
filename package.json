@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "clean": "lerna run clean --stream --parallel",
-    "lint": "lerna run lint --stream --parallel",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
     "build": "lerna run build",
     "prebuild": "yarn lint",
     "test": "lerna run test --stream --parallel",
