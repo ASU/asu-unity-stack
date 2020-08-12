@@ -69,12 +69,12 @@ jQuery(document).ready(function ($) {
 
   var topValue = $(document).scrollTop();
 
-  function recordTopValue () {
+  function recordTopValue() {
     topValue = $(document).scrollTop();
     $('body').addClass('dropdown-pinned');
   }
 
-  function restoreTopValue () {
+  function restoreTopValue() {
     $('body').removeClass('dropdown-pinned');
     topValue = $(document).scrollTop(topValue);
   }
