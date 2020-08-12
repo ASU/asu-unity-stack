@@ -96,16 +96,16 @@ a.text-gold:visited:not(.btn) {
 a:visited:not(.btn) {
   color: $uds-color-base-darkmaroon;
 }
-a:focus,
-a:visited:focus {
+a:focus:not(.btn),
+a:visited:focus:not(.btn) {
   color: $white;
   background-color: $uds-color-base-maroon;
   outline:0;
   text-decoration: none;
   box-shadow: -0.15em 0 0 $uds-color-base-maroon, 0.15em 0 0 $uds-color-base-maroon;
 }
-a.text-gold:focus,
-a.text-gold:visited:focus {
+a.text-gold:focus:not(.btn),
+a.text-gold:visited:focus:not(.btn) {
   color: $black !important;
   background-color: $uds-color-base-gold;
   outline:0;

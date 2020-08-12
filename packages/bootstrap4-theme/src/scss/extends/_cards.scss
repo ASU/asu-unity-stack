@@ -31,24 +31,23 @@ Cards - Table of Contents
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
-.card-hover:active {
+button.card-hover:active {
   transform: scale(.95);
   cursor: $uds-component-card-basic-hover-cursor;
 }
-.card-hover:focus {
-  outline: 0;
-  box-shadow: 0 0 8px #00baff !important;
-}
-.card-hover > button {
+button.card-hover {
   border: none;
   background: transparent;
   text-align: inherit;
   margin: 0;
   padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
-.card-hover > button:focus {
+.card-hover:focus {
+  transform: $uds-component-card-basic-hover-transform;
+  cursor: $uds-component-card-basic-hover-cursor;
+  box-shadow: $uds-component-card-basic-hover-box-shadow;
   outline: 0;
-  box-shadow: 0 0 8px #00baff !important;
   border:0;
 }
 
@@ -376,7 +375,7 @@ Cards - Table of Contents
   height: auto;
 
   .card-header {
-    padding: $uds-size-spacing-1;
+    padding: 0;
 
     &:hover {
       background-color: $uds-color-base-gray-1;
@@ -387,7 +386,7 @@ Cards - Table of Contents
       margin: 0;
 
       a {
-        padding: $uds-size-spacing-1 $uds-size-spacing-3;
+        padding: $uds-size-spacing-3 $uds-size-spacing-3;
         color: $uds-color-base-gray-7;
         text-decoration: none;
         display: flex;
@@ -403,6 +402,13 @@ Cards - Table of Contents
         &.collapsed svg.fa-chevron-up {
           transform: rotate(180deg);
         }
+      }
+      a:focus:not(.btn),
+      a:visited:focus:not(.btn) {
+        background-color: $uds-color-base-gray-1;
+        color: $uds-color-base-gray-7 !important;
+        outline:0;
+        box-shadow: none;
       }
     }
     + .card-body {

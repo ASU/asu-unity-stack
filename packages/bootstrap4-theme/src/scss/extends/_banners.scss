@@ -47,6 +47,14 @@
   a:visited:not(.btn) {
     color: $uds-color-font-dark-base;
   }
+  a:focus:not(.btn),
+  a:visited:focus:not(.btn) {
+    color: $white;
+    background-color: $black;
+    outline:0;
+    text-decoration: none;
+    box-shadow: -0.15em 0 0 $black, 0.15em 0 0 $black;
+  }
 }
 .banner-orange {
   background: $uds-color-base-orange 0% 0% no-repeat padding-box;
@@ -56,6 +64,14 @@
   a:visited:not(.btn) {
     color: $uds-color-font-dark-base;
   }
+  a:focus:not(.btn),
+  a:visited:focus:not(.btn) {
+    color: $white;
+    background-color: $black;
+    outline:0;
+    text-decoration: none;
+    box-shadow: -0.15em 0 0 $black, 0.15em 0 0 $black;
+  }
 }
 .banner-blue {
   background: $uds-color-base-blue 0% 0% no-repeat padding-box;
@@ -64,6 +80,14 @@
   }
   a:visited:not(.btn) {
     color: $uds-color-font-dark-base;
+  }
+  a:focus:not(.btn),
+  a:visited:focus:not(.btn) {
+    color: $white;
+    background-color: $black;
+    outline:0;
+    text-decoration: none;
+    box-shadow: -0.15em 0 0 $black, 0.15em 0 0 $black;
   }
 }
 .banner-gray {
@@ -79,6 +103,14 @@
     color: $uds-color-font-light-visited;
     // May need the following instead for proper contrast.
     //color: #ffc627;
+  }
+  a:focus:not(.btn),
+  a:visited:focus:not(.btn) {
+    color: $black;
+    background-color: $white;
+    outline:0;
+    text-decoration: none;
+    box-shadow: -0.15em 0 0 $white, 0.15em 0 0 $white;
   }
 }
 
