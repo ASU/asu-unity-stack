@@ -4,7 +4,7 @@ import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Field, ErrorMessage } from "formik";
-import { PanelInput } from "../Input";
+import { PanelInput, Input } from "../Input";
 import { Form } from "./";
 
 const FormPanel = ({ title, fields, description, imgUrl, ...props }) => {
@@ -22,17 +22,41 @@ const FormPanel = ({ title, fields, description, imgUrl, ...props }) => {
           if (item.type != "submit") {
             return (
               <>
-                <PanelInput {...item}>
-                  <Field
-                    id={item.name}
-                    name={item.name}
-                    {...(item.placeholder
-                      ? { placeholder: item.placeholder }
-                      : {})}
-                    type={item.type ? item.type : ""}
-                  />
-                </PanelInput>
-                <ErrorMessage {...{ name: item.name }} render={(msg) => <S.InputError>{msg}</S.InputError>} />
+                <Field
+                  id={item.name}
+                  name={item.name}
+                  {...(item.placeholder
+                    ? { placeholder: item.placeholder }
+                    : {})}
+                  type={item.type ? item.type : ""}
+                >
+                  {({
+                    field, // { name, value, onChange, onBlur }
+                    form: { touched, errors, setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+                    meta,
+                  }) => (
+                    <PanelInput {...item}>
+                      <Input
+                        {...{
+                          field,
+                          label: item.label,
+                          id: item.name,
+                          name: item.name,
+                          ...(item.placeholder
+                            ? { placeholder: item.placeholder }
+                            : {}),
+                          type: item.type ? item.type : "",
+                          setFieldValue,
+                        }}
+                      />
+                    </PanelInput>
+                  )}
+                </Field>
+
+                <ErrorMessage
+                  {...{ name: item.name }}
+                  render={msg => <S.InputError>{msg}</S.InputError>}
+                />
               </>
             );
           }

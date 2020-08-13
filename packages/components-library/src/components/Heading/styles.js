@@ -7,6 +7,7 @@ import Tokens from "../../theme";
 const H4 = ({ children, ...props }) => {
   return (
     <h4
+      {...props}
       class={cx(
         css`
           font-size: 1.25rem;
