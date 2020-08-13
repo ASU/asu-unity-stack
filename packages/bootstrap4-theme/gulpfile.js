@@ -134,7 +134,7 @@ gulp.task('copy-assets', function(done) {
   // Copy font-awesome from design-token into src/
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/**/*`)
-    .pipe(gulp.dest('./src/fontawesome'));
+    .pipe(gulp.dest('./src/assets/fontawesome'));
 
   // Copy the design-tokens SASS variables into src/
   gulp
