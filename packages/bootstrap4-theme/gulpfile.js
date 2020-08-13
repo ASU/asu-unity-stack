@@ -148,8 +148,8 @@ gulp.task('copy-assets', function(done) {
 gulp.task('copy-dist-assets', function(done) {
   // Copy font-awesome to dist/
   gulp
-    .src(`./src/fontawesome/**/*`)
-    .pipe(gulp.dest(paths.dist + '/fontawesome'));
+    .src(`./src/assets/fontawesome/**/*`)
+    .pipe(gulp.dest(paths.dist + '/assets/fontawesome'));
 
   // Copy Bootstrap's Scripts to dist/
   gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
