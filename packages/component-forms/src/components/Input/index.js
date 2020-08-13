@@ -2,11 +2,16 @@
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
-import {ErrorMessage} from "formik";
+import { Checkbox } from "./Checkbox";
 import * as S from "./styles";
 
-const Input = props => {
-  return <S.Input {...props}>{props.children}</S.Input>;
+const Input = ({ type, ...props }) => {
+  switch (type) {
+    case "checkbox":
+      return <Checkbox {...props} />;
+    default:
+      return <S.Input {...props}>{props.children}</S.Input>;
+  }
 };
 
 Input.propTypes = {
@@ -22,7 +27,7 @@ const PanelInput = ({ icon, name, type, label, description, children }) => {
   return (
     <S.PanelInputWrapper>
       <S.PanelInputCard {...{ icon, label }}>{description}</S.PanelInputCard>
-      <S.Input {...{ label, name, type }}>{children}</S.Input>
+      {children}
     </S.PanelInputWrapper>
   );
 };

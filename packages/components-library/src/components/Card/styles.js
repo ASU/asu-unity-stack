@@ -146,6 +146,7 @@ const FoldableCardHeader = props => {
 
   return (
     <div
+      tabIndex="0"
       class={css`
         padding: 32px 32px 16px 32px;
         flex-grow: 1;

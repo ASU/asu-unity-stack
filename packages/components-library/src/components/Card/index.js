@@ -18,6 +18,12 @@ const FoldableCard = ({ head, children, ...props }) => {
         onClick={e => {
           toggle();
         }}
+        onKeyDown={e => {
+          if (e.which == 13) {
+            toggle();
+          }
+
+        }}
       >
         {head}
       </S.FoldableCardHeader>
