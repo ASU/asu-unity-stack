@@ -10,7 +10,7 @@ const FormPanel = ({ children, ...props }) => {
   return <Panel>{children}</Panel>;
 };
 
-const FormHeader = ({ title, description, imgUrl }) => {
+const FormHeader = ({ title, description, img }) => {
   return (
     <div
       class={css`
@@ -31,9 +31,11 @@ const FormHeader = ({ title, description, imgUrl }) => {
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
-      <div>
-        <img src={imgUrl} class={css``} />
-      </div>
+      {img && img.src && (
+        <div>
+          <img src={img.src} alt={img.alt ? " " : img.alt} />
+        </div>
+      )}
     </div>
   );
 };
@@ -68,7 +70,6 @@ const FormStatus = ({ children, setStatus, ...props }) => {
         margin-bottom: 1rem;
         border: 1px solid transparent;
         border-radius: 0.25rem;
-
       `}
       role="alert"
     >

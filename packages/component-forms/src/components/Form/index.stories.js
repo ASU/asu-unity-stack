@@ -28,7 +28,7 @@ const testProps = {
       (Note: You can submit a daily health check anytime, via any tool. We just thought
         a friendly reminder might help.)
     `,
-  imgUrl: "/dev/img/icon-well-check.png",
+
   fields: [
     {
       name: "push_notifications",
@@ -75,7 +75,10 @@ const ExposureProps = {
   description: `Contact tracing can help ASU understand if you have crossed paths
   with someone (while on campus only) that has been diagnosed with COVID-19. By giving your
   consent, you permit ASU to send you a discreet notificatioon if you've been exposed.`,
-  imgUrl: "img/icon-well-check.png",
+  img: {
+    src: "/dev/img/icon-well-check.png",
+    alt: " "
+  },
   fields: [
     {
       name: "share_health_records",

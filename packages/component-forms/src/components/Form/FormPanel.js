@@ -7,14 +7,14 @@ import { Field, ErrorMessage } from "formik";
 import { PanelInput, Input } from "../Input";
 import { Form } from "./";
 
-const FormPanel = ({ title, fields, description, imgUrl, ...props }) => {
+const FormPanel = ({ title, fields, description, img, ...props }) => {
   return (
     <S.FormPanel>
       <S.FormHeader
         {...{
           title,
           description,
-          imgUrl,
+          img,
         }}
       />
       <Form {...props}>
@@ -74,7 +74,10 @@ FormPanel.propTypes = {
   validate: PropTypes.func,
   title: PropTypes.string,
   description: PropTypes.string,
-  imgUrl: PropTypes.string,
+  img: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string,
+  }),
   children: PropTypes.element,
   autoSubmit: PropTypes.bool,
 };
