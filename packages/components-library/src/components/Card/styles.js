@@ -142,8 +142,8 @@ const FoldableCardBody = ({ show, id, ...props }) => {
 const FoldableCardHeader = ({ show, id, ...props }) => {
   return (
     <button
-      ariaExpanded={show}
-      {...(id ? { ariaControls: id } : {})}
+      aria-expanded={show}
+      {...(id ? { "aria-controls": id } : {})}
       role="button"
       class={css`
         padding: 32px 32px 16px 32px;
