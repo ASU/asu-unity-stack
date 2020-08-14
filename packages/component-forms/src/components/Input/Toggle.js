@@ -4,39 +4,47 @@ import { h } from "preact";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
-const Checkbox = ({ field, name, placeholder, label, setFieldValue, ...props }) => {
-
+const Toggle = ({
+  field,
+  name,
+  placeholder,
+  label,
+  setFieldValue,
+  ...props
+}) => {
   return (
-    <S.Checkbox
+    <S.Toggle
       {...{
         label,
         name,
-        onKeyDown: e => {
-          if (e.which == 13) {
-            setFieldValue(name, !field.value);
-          }
-        },
       }}
     >
-      <input
-        type="checkbox"
-        id={name}
+      <button
+        role="switch"
+        aria-checked={field.value}
+        class={field.value ? "checked" : ""}
+        type="button"
         name={name}
+        onClick={e => {
+          setFieldValue(name, !field.value);
+        }}
         {...(placeholder ? { placeholder } : {})}
         {...props}
         {...field}
-      />
-    </S.Checkbox>
+      >
+        <span>{label}</span>
+      </button>
+    </S.Toggle>
   );
 };
 
-Checkbox.propTypes = {
+Toggle.propTypes = {
   field: PropTypes.object.isRequired, // the field object passed from Formik
   setFieldValue: PropTypes.func.isRequired, // setFieldValue from Formik
   name: PropTypes.string.isRequired, // the name of the field, also used as value key by Formik and the ID of the field
   label: PropTypes.string.isRequired, // the label text for the field, required for accessiblity
 };
 
-Checkbox.defaultProps = {};
+Toggle.defaultProps = {};
 
-export { Checkbox };
+export { Toggle };

@@ -3,12 +3,16 @@
 import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
 import { Checkbox } from "./Checkbox";
+import { Toggle } from "./Toggle";
+
 import * as S from "./styles";
 
 const Input = ({ type, ...props }) => {
   switch (type) {
     case "checkbox":
       return <Checkbox {...props} />;
+    case "toggle":
+      return <Toggle {...props} />;
     default:
       return <S.Input {...props}>{props.children}</S.Input>;
   }
@@ -23,17 +27,26 @@ Input.propTypes = {
 Input.defaultProps = {};
 
 /** PanelInput Variant */
-const PanelInput = ({ icon, name, type, label, description, children }) => {
+const PanelInput = ({ icon, label, description, children, id, ...props }) => {
   return (
     <S.PanelInputWrapper>
-      <S.PanelInputCard {...{ icon, label }}>{description}</S.PanelInputCard>
+      {description ? (
+        <S.PanelInputCard {...{ icon, label, id }}>
+          {description}
+        </S.PanelInputCard>
+      ) : (
+        <div class="title-only"><S.PanelInputInfo {...{ icon }}>{label}</S.PanelInputInfo></div>
+      )}
       {children}
     </S.PanelInputWrapper>
   );
 };
 
 PanelInput.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.string, // icon to be displayed at beginning of field info card
+  label: PropTypes.string, // used for field label
+  description: PropTypes.string, // desciption to expand when field info card is expanded
+  id: PropTypes.string, // id to use on field info card
   children: PropTypes.node,
 };
 

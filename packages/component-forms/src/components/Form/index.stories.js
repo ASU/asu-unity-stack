@@ -32,23 +32,17 @@ const testProps = {
   fields: [
     {
       name: "push_notifications",
-      type: "checkbox",
+      type: "toggle",
       icon: "mobile",
       label: "ASU Mobile App (push notifications)",
-      id: "mobile-opt-in",
-      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud`
+      id: "mobile-opt-in"
     },
     {
       name: "email_notifications",
-      type: "checkbox",
+      type: "toggle",
       label: "Web (email reminders)",
       id: "web-opt-in",
-      icon: "desktop",
-      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-      do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud`
+      icon: "desktop"
     },
   ],
   initialValues: {
@@ -82,7 +76,7 @@ const ExposureProps = {
   fields: [
     {
       name: "share_health_records",
-      type: "checkbox",
+      type: "toggle",
       icon: "clipboard",
       label: "Share COVID test related health records",
       id: "mobile-opt-in",
@@ -92,7 +86,7 @@ const ExposureProps = {
     },
     {
       name: "share_location",
-      type: "checkbox",
+      type: "toggle",
       label: "Share location",
       id: "web-opt-in",
       icon: "map-pin",
