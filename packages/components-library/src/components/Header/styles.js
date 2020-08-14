@@ -369,8 +369,6 @@ const titleStyles = css`
 `;
 
 const Title = ({ title, unit, ...props }) => {
-  console.log(unit, "THE UNIT");
-
   if (unit) {
     return (
       <div class="title">

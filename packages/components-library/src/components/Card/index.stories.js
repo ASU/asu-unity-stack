@@ -12,6 +12,7 @@ export default {
 
 export const base = () => (
   <FoldableCard
+    id="foldable-card-1"
     head={
       <H4>
         <span class="fa fa-mobile" />
