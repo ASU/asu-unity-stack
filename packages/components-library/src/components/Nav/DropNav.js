@@ -13,12 +13,39 @@ const DropNav = ({
   setFocus,
   pIndex,
   isOpen,
-  navOpen,
-  toggle,
+  setOpen,
+  topRef,
+  hasFocus,
   ...props
 }) => {
+
+  const toggle = index => {
+    if (isOpen) {
+      setOpen(-1);
+    } else {
+      setOpen(index);
+    }
+  };
+
+  const navOpen = index => {
+    setOpen(index);
+  };
+
+   // handle focus moving out of Nav
+  const onBlurNav = e => {
+    // only change state if focus moves away from
+    // container element
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      // close any open navs
+      setOpen(-1);
+    }
+  };
+
+
   return (
-    <li>
+    <li
+    {...(width > mobileWidth ? { onBlurCapture: onBlurNav } : {})}
+    >
       <a
         target={item.target}
         title={item.title ? item.title : item.text}
@@ -27,13 +54,14 @@ const DropNav = ({
           e.preventDefault();
           toggle(pIndex);
           setFocus([pIndex, -1, -1]);
+
         }}
-        onFocus={() => {
+        onFocus={(e) => {
           navOpen(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
         tabIndex="0"
-        ref={props.topRef}
+        ref={topRef}
       >
         {item.text} <S.IconChevronDown sr={item.text} />
       </a>
@@ -80,6 +108,7 @@ DropNav.propTypes = {
   pIndex: PropTypes.number.isRequired,
   isOpen: PropTypes.bool,
   setOpen: PropTypes.func,
+  hasFocus: PropTypes.bool
 };
 
 DropNav.defaultProps = {

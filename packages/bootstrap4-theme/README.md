@@ -263,7 +263,7 @@ View our [Contributing Guidelines](./CONTRIBUTING.md)
 
 ## ❯ Related Projects
 
-### TODO: List related projects, such as Unity, WebSpark, WordSpark, etc.
+### TODO: List related projects such as Unity, WebSpark, WordSpark, etc.
 
 ![divider](./divider.png)
 

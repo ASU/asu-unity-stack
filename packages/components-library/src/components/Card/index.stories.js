@@ -12,17 +12,12 @@ export default {
 
 export const base = () => (
   <FoldableCard
+    id="foldable-card-1"
     head={
       <H4>
         <span class="fa fa-mobile" />
         <a
-          id="mobile-app-header"
-          class=""
-          onClick={(e) => {e.preventDefault();}}
-          href="#mobile-app-content"
-          role="button"
-          aria-expanded="true"
-          aria-controls="mobile-app-content"
+
         >
           ASU Mobile App (push notifications)
         </a>

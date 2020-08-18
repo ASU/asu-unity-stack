@@ -8,17 +8,58 @@ export default {
   title: "Input",
 };
 
-export const base = () => <Input type="checkbox" />;
+const fieldProps = {
+  field: {
+    value: false,
+  },
+  setFieldValue: () => {
+    console.log("set the value");
+  },
+  name: "test_field",
+};
 
-export const panelInput = () => (
+export const checkbox = () => <Input type="checkbox" {...fieldProps} />;
+
+export const toggle = () => <Input type="toggle" {...fieldProps} />;
+
+export const panelCheckboxInput = () => (
   <PanelInput
     {...{
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
       enim ad minim veniam, quis nostrud`,
       type: "checkbox",
+      field: {
+        value: false,
+      },
+      setFieldValue: () => {
+        console.log("set the value");
+      },
       label: "ASU Mobile App (push notifications)",
       icon: "mobile",
     }}
-  />
+  >
+    <Input type="checkbox" {...fieldProps} />
+  </PanelInput>
+);
+
+export const panelToggleInput = () => (
+  <PanelInput
+    {...{
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud`,
+      type: "toggle",
+      field: {
+        value: false,
+      },
+      setFieldValue: () => {
+        console.log("set the value");
+      },
+      label: "ASU Mobile App (push notifications)",
+      icon: "mobile",
+    }}
+  >
+    <Input type="toggle" {...fieldProps} />
+  </PanelInput>
 );

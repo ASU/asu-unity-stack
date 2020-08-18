@@ -2,11 +2,8 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { css, cx } from "emotion";
-import Tokens from "../../theme";
-import { hiddenStyle, showReset } from "../../styles/common";
-import {IconChevronDown} from "../Icons/styles";
-
-const mobileBreak = Tokens.BreakpointLg;
+import { hiddenStyle, showReset, mobileBreak } from "../../styles/common";
+import { IconChevronDown } from "../Icons/styles";
 
 /**
  * Styles for Nav. These are meant to be imported and injected inside of the header
@@ -18,6 +15,30 @@ const navStyles = css`
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      > li {
+        > a {
+          @media (min-width: ${mobileBreak}) {
+            :after {
+              content: "";
+              position: relative;
+              display: block;
+              height: 0.5rem;
+              background-color: #ffc627;
+              bottom: 0;
+              width: 0;
+              transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+              bottom: -8px;
+              left: -8px;
+            }
+
+            :hover:after {
+              width: 100%;
+              width: calc(100% + 16px);
+            }
+          }
+        }
+      }
 
       li {
         position: relative;
@@ -49,8 +70,11 @@ const navStyles = css`
       &.open-nav,
       &:target {
         ${showReset()}
-        margin-top: 120px;
         flex-direction: column;
+        width: 100%;
+        overflow-y: scroll;
+        height: 60vh;
+        display: flex;
       }
 
       .mobile-only {
@@ -67,8 +91,6 @@ const navStyles = css`
         div.nav-dropdown-open {
           flex-direction: column;
           position: relative;
-          top: 100%;
-          left: 0;
         }
 
         > li {
@@ -79,6 +101,11 @@ const navStyles = css`
             justify-content: space-between;
             display: flex;
             border-bottom: 1px solid #cccccc;
+            align-items: center;
+
+            > svg {
+              margin-right: 2rem;
+            }
           }
 
           :first-of-type {
@@ -96,14 +123,23 @@ const navStyles = css`
   /** DdMenu CSS **/
   .dropdown {
     ${hiddenStyle}
-    z-index: 1000;
+    z-index: 999;
     justify-content: space-between;
     background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-top: none;
-    padding: 1rem;
     flex-wrap: nowrap;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    margin: 0;
+    padding: 1rem;
+    border: 0;
+    border-top: 1px solid #d0d0d0;
+
+    @media (min-width: ${mobileBreak}) {
+      display: flex;
+      margin: -1px 0 0 0;
+      border: 1px solid #d0d0d0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+    }
 
     h3 {
       font-size: 1.5rem;
@@ -112,23 +148,34 @@ const navStyles = css`
       text-align: left;
       opacity: 1;
       margin: 1rem 0;
-      line-height: calc(100% + .12em);
+      line-height: calc(100% + 0.12em);
     }
 
     > ul {
+      display: flex;
       flex-direction: column;
-      width: 16rem;
-      padding-right: 1.5rem;
-      margin-right: 1.5rem;
-      flex: 1;
-      max-width: 282px;
       border-right: 1px solid #d0d0d0;
+      padding: 0 2rem;
+      margin-bottom: 3rem;
 
-      :last-of-type {
-        margin-right: 0;
-        padding-right: 0;
-        border-right: 0;
+      :last-child {
+        margin-bottom: 0;
+        border-right: none;
       }
+
+      @media (min-width: ${mobileBreak}) {
+        width: 16rem;
+        padding: 0 1.5rem 0 0;
+        border-right: 1px solid #bfbfbf;
+        margin-right: 1.5rem;
+
+        :last-of-type {
+          margin-right: 0;
+          padding-right: 0;
+          border-right: 0;
+        }
+      }
+
 
       > li {
         padding: 0.5rem 0;
@@ -164,7 +211,7 @@ const navStyles = css`
   }
 `;
 
-const Nav = ({open, children, ...props }) => {
+const Nav = ({ open, children, ...props }) => {
   return (
     <nav
       id="asu-header-nav"
@@ -184,6 +231,4 @@ const DdMenu = props => {
   );
 };
 
-
-
-export { Nav, DdMenu, IconChevronDown, navStyles };
+export { Nav, DdMenu, IconChevronDown, navStyles, mobileBreak };

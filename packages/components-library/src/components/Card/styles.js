@@ -68,11 +68,10 @@ const CardHeader = props => {
   );
 };
 
-const CardBody = props => {
-  const show = props.hasOwnProperty("show") ? props.show : true;
-
+const CardBody = ({ show, id, ...props }) => {
   return (
     <div
+      {...(id ? { id } : {})}
       class={cx(
         css`
           padding: 0 32px 24px 32px;
@@ -87,9 +86,8 @@ const CardBody = props => {
         `,
         props.class
       )}
-    >
-      {props.children}
-    </div>
+      dangerouslySetInnerHTML={{ __html: props.children }}
+    />
   );
 };
 
@@ -121,11 +119,10 @@ const FoldableCard = props => {
   );
 };
 
-const FoldableCardBody = props => {
-  const show = props.hasOwnProperty("show") ? props.show : true;
-
+const FoldableCardBody = ({ show, id, ...props }) => {
   return (
     <CardBody
+      {...(id ? { id } : {})}
       show={show}
       class={cx(
         css`
@@ -142,11 +139,12 @@ const FoldableCardBody = props => {
   );
 };
 
-const FoldableCardHeader = props => {
-  const show = props.hasOwnProperty("show") ? props.show : true;
-
+const FoldableCardHeader = ({ show, id, ...props }) => {
   return (
-    <div
+    <button
+      aria-expanded={show}
+      {...(id ? { "aria-controls": id } : {})}
+      role="button"
       class={css`
         padding: 32px 32px 16px 32px;
         flex-grow: 1;
@@ -159,6 +157,7 @@ const FoldableCardHeader = props => {
         align-items: baseline;
         justify-content: space-between;
         cursor: pointer;
+        border: 0;
 
         h4 {
           display: flex;
@@ -183,12 +182,13 @@ const FoldableCardHeader = props => {
         }
 
         ${
-          show &&
-          css`
-            .fa-chevron-down {
-              transform: rotate(-180deg);
-            }
-          `
+          show
+            ? css`
+                .fa-chevron-down {
+                  transform: rotate(-180deg);
+                }
+              `
+            : ""
         }
 
       `}
@@ -196,7 +196,7 @@ const FoldableCardHeader = props => {
     >
       {props.children}
       <IconChevronDown />
-    </div>
+    </button>
   );
 };
 
