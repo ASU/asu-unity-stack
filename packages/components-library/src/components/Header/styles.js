@@ -19,16 +19,9 @@ const Header = ({ scrollPosition, children, ...props }) => {
       class={cx(
         scrollPosition > 0 ? "scrolled" : "",
         css`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            list-style: none;
-          }
-
           a {
             cursor: pointer;
+            text-decoration: none;
           }
 
           padding: 0;
@@ -50,10 +43,6 @@ const Header = ({ scrollPosition, children, ...props }) => {
           &.scrolled {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           }
-          &.scrolled .universal-nav {
-            ${hiddenStyle}
-            transition: translateY(-24px);
-          }
 
           &.scrolled .primary-nav .navbar-brand d img {
             height: 64px;
@@ -65,12 +54,12 @@ const Header = ({ scrollPosition, children, ...props }) => {
           }
 
           @media (max-width: ${mobileBreak}) {
-            max-height: 75vh;
-
             &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
             }
           }
+
+
         `,
         primaryStyles,
         navStyles, // add the nav and button styles
@@ -155,7 +144,7 @@ const universalStyles = css`
 
     > div {
       width: 100%;
-      max-width: 1200px;
+      max-width: ${containerSize};
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -170,12 +159,12 @@ const universalStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
-      ${hiddenStyle}
+      display: none;
       padding: 0;
       transition: none;
+      height: auto;
+
       &.mobile-open {
-        ${showReset("fixed")}
-        bottom: 0;
         z-index: 998;
         width 100%;
         display: flex;
@@ -191,6 +180,13 @@ const universalStyles = css`
           font-size: .9rem;
         }
       }
+    }
+  }
+
+  @media (min-width: ${mobileBreak}) {
+    &.scrolled .universal-nav {
+      display: none;
+      transition: translateY(-24px);
     }
   }
 `;
@@ -226,7 +222,7 @@ const primaryStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
-      position: fixed;
+      order: -1;
       display: flex;
       top: 0;
       width: 100%;
@@ -251,6 +247,7 @@ const PrimaryNav = props => {
 const NavbarContainerStyles = css`
   .navbar-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
 

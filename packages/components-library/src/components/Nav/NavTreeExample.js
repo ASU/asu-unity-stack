@@ -336,23 +336,7 @@ const NavTreeWithButtons = [
     text: "Research",
     href: "#",
     target: "_top",
-  },
-  {
-    title: "Apply Now",
-    text: "Apply Now",
-    type: "button",
-    color: "gold",
-    href: "https://admissions.asu.edu",
-    target: "_top",
-  },
-  {
-    title: "CTA Button",
-    text: "CTA Button",
-    type: "button",
-    color: "maroon",
-    href: "https://asu.edu",
-    target: "_top",
-  },
+  }
 ];
 
 

@@ -4,7 +4,7 @@ import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import Nav from "../Nav";
+import { Nav } from "../Nav";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
@@ -16,6 +16,7 @@ const Header = ({
   userName,
   loginLink,
   logoutLink,
+  buttons,
   ...props
 }) => {
   // Mobile menu open state and helper functions
@@ -85,6 +86,7 @@ const Header = ({
                   mobileOpen,
                   height,
                   width,
+                  buttons,
                 }}
               />
             </S.NavbarContainer>
@@ -109,6 +111,7 @@ Header.propTypes = {
   userName: PropTypes.string,
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
+  buttons: PropTypes.arrayOf(PropTypes.object),
 };
 
 Header.defaultProps = {
@@ -126,6 +129,7 @@ Header.defaultProps = {
   userName: "",
   loginLink: "https://weblogin.asu.edu/cas/login",
   logoutLink: "https://weblogin.asu.edu/cas/logout",
+  buttons: [],
 };
 
-export default Header;
+export { Header };

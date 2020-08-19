@@ -1,6 +1,6 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from 'preact';
+import { h } from "preact";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
@@ -18,10 +18,17 @@ const Button = ({ children, href, ...props }) => {
 };
 
 Button.propTypes = {
-  href: PropTypes.string
+  href: PropTypes.string,
+  gold: PropTypes.bool,
+  maroon: PropTypes.bool,
+  disabled: PropTypes.bool,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+  large: PropTypes.bool,
 };
 
 Button.defaultProps = {
+  disabled: false,
 };
 
-export default Button;
+export { Button };

@@ -11,7 +11,16 @@ import { IconChevronDown } from "../Icons/styles";
  */
 const navStyles = css`
   nav.header-nav {
+    ul {
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+    }
+
     > ul {
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -50,10 +59,7 @@ const navStyles = css`
           padding: 8px;
           position: relative;
 
-          .fa {
-            font-size: 0.8rem;
-            transform: translateY(-0.1rem);
-          }
+
         }
       }
     }
@@ -62,18 +68,24 @@ const navStyles = css`
       ${hiddenStyle}
     }
 
-    @media (max-width: ${mobileBreak}) {
-      ${hiddenStyle}
-      border: none;
+    @media (min-width: ${mobileBreak}) {
+      width: 100%;
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      border: none;
+      display: none;
 
       &.open-nav,
       &:target {
-        ${showReset()}
         flex-direction: column;
         width: 100%;
         overflow-y: scroll;
-        height: 60vh;
         display: flex;
       }
 
@@ -175,7 +187,6 @@ const navStyles = css`
           border-right: 0;
         }
       }
-
 
       > li {
         padding: 0.5rem 0;

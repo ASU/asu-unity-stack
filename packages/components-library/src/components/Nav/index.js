@@ -5,6 +5,8 @@ import { useEffect, useState, useMemo } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
+import { Button } from "../Button";
+
 import * as S from "./styles";
 
 /**
@@ -104,7 +106,6 @@ const Nav = ({
     }
   };
 
-
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
     const derState = deriveState(focused, navList);
@@ -121,7 +122,6 @@ const Nav = ({
       }
     }
   }, [focused, navList]);
-
 
   // Get breakpoint from design token
   const bpoint = parseInt(S.mobileBreak, 10);
@@ -182,7 +182,19 @@ const Nav = ({
         })}
       </ul>
 
-      {}
+      {buttons && (
+        <form class="navbar-site-buttons form-inline">
+          {buttons.map((item, index) => {
+
+            let color = item.color ? item.color : "maroon";
+
+
+
+            // Return a single nav item if there are no submenus
+            return <Button href={item.href} {...{[color]: true}} medium>{item.title}</Button>;
+          })}
+        </form>
+      )}
     </S.Nav>
   );
 };
@@ -383,4 +395,4 @@ const checkFocus = (move, navList) => {
   return false;
 };
 
-export default Nav;
+export { Nav };
