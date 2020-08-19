@@ -1,10 +1,10 @@
 const BasicNavTree = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -177,11 +177,11 @@ const BasicNavTree = [
 
 const NavTreeWithButtons = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -336,17 +336,16 @@ const NavTreeWithButtons = [
     text: "Research",
     href: "#",
     target: "_top",
-  }
+  },
 ];
-
 
 const NavTreeMega = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -382,8 +381,8 @@ const NavTreeMega = [
           target: "_top",
           type: "button",
           title: "Athletics",
-          text: "CTA Action 2"
-        }
+          text: "CTA Action 2",
+        },
       ],
       [
         {
@@ -524,7 +523,7 @@ const NavTreeMega = [
           title: "",
           text: "China",
         },
-      ]
+      ],
     ],
   },
   {
@@ -551,4 +550,4 @@ const NavTreeMega = [
   },
 ];
 
-export {BasicNavTree, NavTreeWithButtons, NavTreeMega}
+export { BasicNavTree, NavTreeWithButtons, NavTreeMega };

@@ -58,8 +58,6 @@ const navStyles = css`
           display: block;
           padding: 8px;
           position: relative;
-
-
         }
       }
     }
@@ -109,14 +107,14 @@ const navStyles = css`
           margin-right: 0;
 
           > a {
-            padding: 1rem;
+            padding: 1rem 2rem;
             justify-content: space-between;
             display: flex;
             border-bottom: 1px solid #cccccc;
             align-items: center;
 
             > svg {
-              margin-right: 2rem;
+              font-size: 1.25rem;
             }
           }
 
@@ -199,17 +197,17 @@ const navStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
-      border: none;
 
       &.nav-dropdown-open {
         flex-direction: column;
         position: relative;
+        padding-left: 3rem;
       }
 
       > ul {
         border-right: none;
         width: 100%;
-        padding-left: 2rem;
+        padding: 0;
         > li {
           border-bottom: 1px solid #cccccc;
 
@@ -220,13 +218,40 @@ const navStyles = css`
       }
     }
   }
+
+  .navbar-site-buttons {
+    a + a {
+      margin-left: 1rem;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      padding: 1rem 2rem;
+    }
+  }
 `;
 
-const Nav = ({ open, children, ...props }) => {
+const Nav = ({ open, maxMobileHeight, children, ...props }) => {
+  const maxHeight = maxMobileHeight == -1 ? "75vh" : `${maxMobileHeight}px`;
+
   return (
     <nav
       id="asu-header-nav"
-      class={cx("header-nav", open ? "open-nav" : "")}
+      class={cx(
+        "header-nav",
+        open ? "open-nav" : "",
+        css`
+          @media (max-width: ${mobileBreak}) {
+            &.open-nav,
+            &:target {
+              flex-direction: column;
+              width: 100%;
+
+              max-height: ${maxHeight};
+              display: flex;
+            }
+          }
+        `
+      )}
       {...props}
     >
       {children}
@@ -242,4 +267,8 @@ const DdMenu = props => {
   );
 };
 
-export { Nav, DdMenu, IconChevronDown, navStyles, mobileBreak };
+const ButtonForm = props => {
+  return <form class="navbar-site-buttons">{props.children}</form>;
+};
+
+export { Nav, DdMenu, IconChevronDown, ButtonForm, navStyles, mobileBreak };

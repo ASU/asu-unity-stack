@@ -6,11 +6,10 @@ import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
-
 import * as S from "./styles";
 
 /**
- * Render entire Nav. This includes
+ * Render entire Nav.
  * @param {} props
  */
 const Nav = ({
@@ -18,7 +17,7 @@ const Nav = ({
   width,
   height,
   mobileOpen,
-  maxHeight,
+  maxMobileHeight,
   buttons,
   ...props
 }) => {
@@ -30,6 +29,9 @@ const Nav = ({
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
   };
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
 
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
@@ -123,9 +125,6 @@ const Nav = ({
     }
   }, [focused, navList]);
 
-  // Get breakpoint from design token
-  const bpoint = parseInt(S.mobileBreak, 10);
-
   // handle focus moving out of Nav
   const onBlurNav = e => {
     // only change state if focus moves away from
@@ -137,7 +136,7 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen}>
+    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight}>
       <ul
         {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
         aria-label="ASU"
@@ -182,18 +181,19 @@ const Nav = ({
         })}
       </ul>
 
-      {buttons && (
-        <form class="navbar-site-buttons form-inline">
+      {buttons.length > 0 && (
+        <S.ButtonForm>
           {buttons.map((item, index) => {
-
             let color = item.color ? item.color : "maroon";
 
-
-
             // Return a single nav item if there are no submenus
-            return <Button href={item.href} {...{[color]: true}} medium>{item.title}</Button>;
+            return (
+              <Button href={item.href} {...{ [color]: true }} medium>
+                {item.title}
+              </Button>
+            );
           })}
-        </form>
+        </S.ButtonForm>
       )}
     </S.Nav>
   );
@@ -205,7 +205,7 @@ Nav.propTypes = {
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  maxHeight: PropTypes.number,
+  maxMobileHeight: PropTypes.number,
 };
 
 Nav.defaultProps = {
@@ -213,7 +213,7 @@ Nav.defaultProps = {
   mobileOpen: false,
   width: 1920,
   height: 1080,
-  maxHeight: "75vh",
+  maxMobileHeight: -1,
   buttons: [],
 };
 

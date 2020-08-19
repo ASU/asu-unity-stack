@@ -88,8 +88,6 @@ const buttonStyles = css`
 const Button = props => {
   const Element = props.type == "link" ? "a" : "button";
 
-  console.log(props, "THE PROPS IN EMOTION COMPONENT");
-
   return (
     <Element
       class={cx(

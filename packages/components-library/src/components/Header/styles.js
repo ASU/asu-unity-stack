@@ -11,13 +11,14 @@ import {
   mobileBreak,
   containerSize,
 } from "../../styles/common";
-import { Icon } from "../Icons/styles";
+import { Icon } from "../Icons";
 
-const Header = ({ scrollPosition, children, ...props }) => {
+const Header = ({ children, ...props }) => {
   return (
     <header
+      {...props}
       class={cx(
-        scrollPosition > 0 ? "scrolled" : "",
+        props.class,
         css`
           a {
             cursor: pointer;
@@ -34,6 +35,7 @@ const Header = ({ scrollPosition, children, ...props }) => {
           border-bottom: 1px solid #d0d0d0;
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           top: 0;
+          left: 0;
 
           div,
           h1 {
@@ -44,22 +46,11 @@ const Header = ({ scrollPosition, children, ...props }) => {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           }
 
-          &.scrolled .primary-nav .navbar-brand d img {
-            height: 64px;
-          }
-          @media (max-width: ${mobileBreak}) {
-            &.scrolled .primary-nav .navbar-brand d img {
-              height: 28px;
-            }
-          }
-
           @media (max-width: ${mobileBreak}) {
             &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
             }
           }
-
-
         `,
         primaryStyles,
         navStyles, // add the nav and button styles
@@ -71,7 +62,6 @@ const Header = ({ scrollPosition, children, ...props }) => {
         titleStyles,
         navbarTogglerStyles
       )}
-      {...props}
     >
       {children}
     </header>
@@ -150,11 +140,12 @@ const universalStyles = css`
       align-items: center;
       justify-content: flex-end;
 
-      > a {
-        display: inline-block;
+      a {
+        display: inline-flex;
         font-size: 0.75rem;
         padding: 0.25rem 0.5rem;
         color: #484848;
+        margin: 0;
       }
     }
 
@@ -171,15 +162,32 @@ const universalStyles = css`
         justify-content: center;
       }
 
-      > div {
-        > a {
-          width: 50%;
-          line-height: 2rem;
+
+
+
+      .nav-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: row;
+        justify-items: start;
+        width: 100%;
+
+        a {
+          color: #191919;
+          margin-right: 0;
           text-align: center;
-          border: 1px solid #cccccc;
-          font-size: .9rem;
+          width: 100%;
+          font-size: 0.875rem;
+          padding: 1rem 1.5rem;
+          border-top: 1px solid #d0d0d0;
+          display:block;
+
+          :nth-child(even) {
+            border-left: 1px solid #d0d0d0;
+          }
         }
       }
+
     }
   }
 
@@ -277,6 +285,7 @@ const logoStyles = css`
 
     .horiz {
       display: none;
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     }
 
     .vert {
@@ -310,6 +319,20 @@ const logoStyles = css`
       }
     }
   }
+
+  &.scrolled .primary-nav .navbar-brand d img {
+    height: 64px;
+  }
+
+  @media (max-width: ${mobileBreak}) {
+    &.scrolled .primary-nav .navbar-brand d img {
+      height: 28px;
+    }
+
+    &.scrolled .navbar-brand .horiz {
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 const Logo = props => {
@@ -334,6 +357,7 @@ const titleStyles = css`
     font-size: 1rem;
     font-weight: 700;
     padding: 0 2rem 1.5rem 2rem;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
     > a {
       display: none;
@@ -400,18 +424,18 @@ const searchStyles = css`
 
     @media (max-width: ${mobileBreak}) {
       width: 100%;
-      display: inline-block;
+      display: flex;
       order: -1;
 
       > form {
         width: 100%;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         padding: 1rem 2rem;
 
         > input {
           padding: 0.5rem 2rem;
-          display: inline-block;
+          display: flex;
           width: 100%;
           border: 0;
         }
@@ -478,4 +502,5 @@ export {
   NavbarContainer,
   Icon,
   NavbarToggler,
+  mobileBreak,
 };

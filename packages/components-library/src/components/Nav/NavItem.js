@@ -1,9 +1,9 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { Fragment } from "preact/compat";
+import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
-import {cx} from "emotion";
+import { Icon } from "../Icons";
+import { Button } from "../Button";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
@@ -18,21 +18,18 @@ const NavItem = props => {
   switch (item.type) {
     case "button":
       {
-        const bcolor = item.color ? `btn-${item.color}` : '';
-        inner = <button class={`btn btn-medium ${bcolor}`}>{item.text}</button>;
+        const bcolor = item.color ? { [item.color]: true } : {};
+        inner = (
+          <Button medium {...bcolor}>
+            {item.text}
+          </Button>
+        );
       }
       break;
     case "icon":
-      inner = (
-        <Fragment>
-          <span class={cx(item.class, "icon-nav-item")}>
-            <span class="sr-only">{item.text}</span>
-          </span>
-          <div class="mobile-only">{item.text}</div>
-        </Fragment>
-      );
+      // Have to use className here because FontAwesome React component expects it
+      inner = (<><Icon type={item.class} className="icon-nav-item" /><span class="mobile-only">{item.title}</span></>);
       break;
-
     case "heading":
       inner = <h3>{item.text}</h3>;
       break;

@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/compat";
+import { h } from "preact";
+import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Nav } from "../Nav";
@@ -23,6 +23,15 @@ const Header = ({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
 
+  // State to set mobile nav max height. Needed for fixed positioning elements
+  const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
+
+  // get window dimensions
+  const { height, width } = useWindowDimensions();
+
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
@@ -33,9 +42,6 @@ const Header = ({
     setSrollPosition(position);
   };
 
-  // get window dimensions
-  const { height, width } = useWindowDimensions();
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -44,21 +50,38 @@ const Header = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (width < bpoint && mobileOpen) {
+      const uHeight = universalRef.current.base.clientHeight;
+      // TODO: measure this dynamically
+      const pHeight = 96;
+      const newHeight = height - uHeight - pHeight;
+
+      console.log(newHeight, 'THE NEW MAX MOBILE NAV HEIGHT');
+
+      setMaxMobileNavHeight(newHeight);
+    }
+  }, [height, width, mobileOpen]);
+
+  const universalRef = useRef(null);
+
   return (
-    <S.Header scrollPosition={scrollPosition}>
-      <S.UniversalNav open={mobileOpen}>
+    <S.Header class={scrollPosition > 0 || mobileOpen ? "scrolled" : ""}>
+      <S.UniversalNav open={mobileOpen} ref={universalRef}>
         <div>
-          <a href="https://www.asu.edu/">ASU home</a>
-          <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          {loggedIn ? (
-            <span>
-              {userName}
-              <a href={logoutLink}>Sign Out</a>
-            </span>
-          ) : (
-            <a href={loginLink}>Sign in</a>
-          )}
+          <div class="nav-grid">
+            <a href="https://www.asu.edu/">ASU home</a>
+            <a href="https://my.asu.edu/">My ASU</a>
+            <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+            {loggedIn ? (
+              <span>
+                {userName}
+                <a href={logoutLink}>Sign Out</a>
+              </span>
+            ) : (
+              <a href={loginLink}>Sign in</a>
+            )}
+          </div>
           <S.SearchForm open={openSearch}>
             <S.Icon type="search" onMouseDown={toggleSearch} />
           </S.SearchForm>
@@ -87,6 +110,7 @@ const Header = ({
                   height,
                   width,
                   buttons,
+                  maxMobileHeight: maxMobileNavHeight
                 }}
               />
             </S.NavbarContainer>
