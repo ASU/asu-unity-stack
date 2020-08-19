@@ -191,6 +191,7 @@ const Button = props => {
         props.class
       )}
       onClick={props.onClick}
+      href={props.href}
     >
       {props.children}
     </Element>

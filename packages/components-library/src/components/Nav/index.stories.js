@@ -17,11 +17,11 @@ export default {
 const buttons = [
   {
     href: "/",
-    title: "CTA Button 1",
+    text: "CTA Button 1",
     color: "gold"
   },
   {
-    title: "CTA Button 2",
+    text: "CTA Button 2",
     href: "#",
     color: "light"
   },

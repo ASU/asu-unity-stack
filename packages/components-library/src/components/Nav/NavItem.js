@@ -11,30 +11,31 @@ import { Button } from "../Button";
  * require this to be safe: https://www.npmjs.com/package/preact-html-converter
  * @param {} props
  */
-const NavItem = props => {
+const NavItem = ({onFocus, itemRef, ...props}) => {
   let inner = "";
-  const item = props.item;
 
-  switch (item.type) {
+  const {type, text, color, ...item} = props.item;
+
+  switch (type) {
     case "button":
       {
-        const bcolor = item.color ? { [item.color]: true } : {};
+        const bcolor = color ? { [color]: true } : {};
         inner = (
           <Button medium {...bcolor}>
-            {item.text}
+            {text}
           </Button>
         );
       }
       break;
     case "icon":
       // Have to use className here because FontAwesome React component expects it
-      inner = (<><Icon type={item.class} className="icon-nav-item" /><span class="mobile-only">{item.title}</span></>);
+      inner = (<><Icon type={item.class} className="icon-nav-item" /><span class="mobile-only">{text}</span></>);
       break;
     case "heading":
-      inner = <h3>{item.text}</h3>;
+      inner = <h3>{text}</h3>;
       break;
     default:
-      inner = item.text;
+      inner = text;
       break;
   }
 
@@ -46,12 +47,9 @@ const NavItem = props => {
   return (
     <li>
       <a
-        href={item.href}
-        title={item.title ? item.title : item.text}
-        target={item.target}
-        {...(props.onFocus ? { onFocus: props.onFocus } : "")}
-        ref={props.itemRef}
-        tabIndex="0"
+        {...item}
+        {...(onFocus ? { onFocus } : "")}
+        ref={itemRef}
       >
         {inner}
       </a>
@@ -71,6 +69,7 @@ NavItem.propTypes = {
   top: PropTypes.bool, // Is this a top-level nav item?
   location: PropTypes.array, // Array representation of the item's location in the Nav
   onFocus: PropTypes.func,
+  type: PropTypes.string,
 };
 
 NavItem.defaultProps = {};

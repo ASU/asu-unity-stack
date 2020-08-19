@@ -18,11 +18,11 @@ export default {
 const buttons = [
   {
     href: "/",
-    title: "CTA Button 1",
+    text: "CTA Button 1",
     color: "gold",
   },
   {
-    title: "CTA Button 2",
+    text: "CTA Button 2",
     href: "#",
     color: "light",
   },
@@ -59,6 +59,19 @@ export const withButtons = () => (
   </Fragment>
 );
 
+const megaButtons = [
+  {
+    text: "Apply Now",
+    color: "gold",
+    href: "https://admissions.asu.edu",
+  },
+  {
+    text: "CTA Button",
+    color: "maroon",
+    href: "https://asu.edu",
+  },
+];
+
 export const withMenuColumns = () => (
   <Fragment>
     <Header
@@ -67,6 +80,7 @@ export const withMenuColumns = () => (
       unit={
         "School of Computing, Informatics, and Decisions Systems Engineering"
       }
+      buttons={megaButtons}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>

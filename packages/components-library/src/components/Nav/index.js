@@ -189,7 +189,7 @@ const Nav = ({
             // Return a single nav item if there are no submenus
             return (
               <Button href={item.href} {...{ [color]: true }} medium>
-                {item.title}
+                {item.text}
               </Button>
             );
           })}
