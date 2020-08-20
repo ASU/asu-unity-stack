@@ -4,14 +4,21 @@ import { h } from "preact";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
-const H4 = props => {
-  return <S.H4 class={props.class}>{props.children}</S.H4>;
+const Heading = ({ type, ...props }) => {
+  switch (type) {
+    case "h4":
+      return <S.H4 class={props.class}>{props.children}</S.H4>;
+    case "h3":
+      return <S.H3 class={props.class}>{props.children}</S.H3>;
+    default:
+      return "";
+  }
 };
 
-H4.propTypes = {
-  class: PropTypes.string,
+Heading.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
-H4.defaultProps = {};
+Heading.defaultProps = {};
 
-export { H4 };
+export { Heading };

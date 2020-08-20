@@ -63,7 +63,7 @@ const navStyles = css`
     }
 
     .mobile-only {
-      ${hiddenStyle}
+      display: none;
     }
 
     @media (min-width: ${mobileBreak}) {
@@ -88,7 +88,7 @@ const navStyles = css`
       }
 
       .mobile-only {
-        ${showReset()}
+        display: flex;
       }
 
       .icon-nav-item {
@@ -131,8 +131,8 @@ const navStyles = css`
   }
 
   /** DdMenu CSS **/
-  .dropdown {
-    ${hiddenStyle}
+  div.dropdown {
+    display: none;
     z-index: 999;
     justify-content: space-between;
     background: #ffffff;
@@ -143,12 +143,8 @@ const navStyles = css`
     border: 0;
     border-top: 1px solid #d0d0d0;
 
-    @media (min-width: ${mobileBreak}) {
+    &.nav-dropdown-open {
       display: flex;
-      margin: -1px 0 0 0;
-      border: 1px solid #d0d0d0;
-      border-top: 1px solid #ffffff;
-      padding: 2rem;
     }
 
     h3 {
@@ -191,13 +187,7 @@ const navStyles = css`
       }
     }
 
-    &.nav-dropdown-open {
-      ${showReset("absolute")}
-      display: flex;
-    }
-
     @media (max-width: ${mobileBreak}) {
-
       &.nav-dropdown-open {
         flex-direction: column;
         position: relative;
@@ -213,6 +203,52 @@ const navStyles = css`
 
           :last-of-type {
             border: none;
+          }
+        }
+      }
+    }
+
+    @media (min-width: ${mobileBreak}) {
+      margin: -1px 0 0 0;
+      border: 1px solid #d0d0d0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+      position: absolute;
+    }
+
+    @media (min-width: ${mobileBreak}) {
+      margin: -1px 0 0 0;
+      border: 1px solid #d0d0d0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      > ul {
+        width: 16rem;
+        padding: 0 1.5rem 0 0;
+        border-right: 1px solid #bfbfbf;
+        margin-right: 1.5rem;
+
+        > li {
+          padding: 0;
+          margin: 0;
+
+          > a {
+            padding: 0;
+            padding: 0.5rem 0;
+            white-space: normal;
+
+            :visited {
+              color: #191919;
+            }
+
+            :hover {
+              color: #8c1d40;
+              text-decoration: underline;
+            }
           }
         }
       }

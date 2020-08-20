@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useMemo } from "preact/compat";
+import { useEffect, useState, useMemo, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
@@ -119,11 +119,38 @@ const Nav = ({
         if (navList[x].ref) {
           navList[x].ref.current.focus();
         }
+
+        // if setting focus on nav item without children, close any
+        // open dropdown navs
+        if (!derState.hasSubs) {
+          setOpen(-1);
+        }
+
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
     }
   }, [focused, navList]);
+
+  /*** Detecting click outside of container */
+  const navRef = useRef(null);
+
+  useEffect(() => {
+
+    // close nav if clicked outside nav
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpen(-1);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navRef]);
 
   // handle focus moving out of Nav
   const onBlurNav = e => {
@@ -136,11 +163,12 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight}>
+    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight} >
       <ul
         {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
+        ref={navRef}
       >
         {navList.map((item, index) => {
           const navItem = item.item;

@@ -31,21 +31,9 @@ const DropNav = ({
     setOpen(index);
   };
 
-   // handle focus moving out of Nav
-  const onBlurNav = e => {
-    // only change state if focus moves away from
-    // container element
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // close any open navs
-      setOpen(-1);
-    }
-  };
-
 
   return (
-    <li
-    {...(width > mobileWidth ? { onBlurCapture: onBlurNav } : {})}
-    >
+    <li>
       <a
         target={item.target}
         title={item.title ? item.title : item.text}

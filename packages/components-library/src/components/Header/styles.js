@@ -193,8 +193,8 @@ const universalStyles = css`
 
   @media (min-width: ${mobileBreak}) {
     &.scrolled .universal-nav {
-      display: none;
-      transition: translateY(-24px);
+      height: 0;
+      overflow: hidden;
     }
   }
 `;
@@ -348,10 +348,6 @@ const Logo = props => {
 
 /** Title */
 const titleStyles = css`
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
   .title {
     line-height: 1;
     font-size: 1rem;
@@ -385,6 +381,20 @@ const titleStyles = css`
         font-size: 1.5rem;
         margin-bottom: 0;
       }
+    }
+  }
+
+  &.scrolled .title {
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: ${mobileBreak}) {
+    &.scrolled .title.subdomain-name {
+      font-size: 1.5rem;
+    }
+
+    &.scrolled .title {
+      padding-bottom: 0;
     }
   }
 `;

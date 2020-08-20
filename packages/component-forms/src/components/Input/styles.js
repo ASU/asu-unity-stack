@@ -3,7 +3,11 @@
 import { h } from "preact";
 import { css } from "emotion";
 import Tokens from "../../theme";
-import { H4, Icon, FoldableCard } from "@asu-design-system/components-library";
+import {
+  Heading,
+  Icon,
+  FoldableCard,
+} from "@asu-design-system/components-library";
 
 const Checkbox = ({ label, name, children, ...props }) => {
   return (
@@ -93,7 +97,8 @@ const PanelInputInfo = ({ children, icon, ...props }) => {
   const fieldIcon = icon ? <Icon type={icon} /> : "";
 
   return (
-    <H4
+    <Heading
+      type="h4"
       class={css`
         display: flex;
         flex-direction: row;
@@ -114,7 +119,7 @@ const PanelInputInfo = ({ children, icon, ...props }) => {
       >
         {children}
       </div>
-    </H4>
+    </Heading>
   );
 };
 

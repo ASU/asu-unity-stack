@@ -4,6 +4,7 @@ import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
 import { Icon } from "../Icons";
 import { Button } from "../Button";
+import { Heading } from "../Heading";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
@@ -11,10 +12,10 @@ import { Button } from "../Button";
  * require this to be safe: https://www.npmjs.com/package/preact-html-converter
  * @param {} props
  */
-const NavItem = ({onFocus, itemRef, ...props}) => {
+const NavItem = ({ onFocus, itemRef, ...props }) => {
   let inner = "";
 
-  const {type, text, color, ...item} = props.item;
+  const { type, text, color, ...item } = props.item;
 
   switch (type) {
     case "button":
@@ -29,10 +30,15 @@ const NavItem = ({onFocus, itemRef, ...props}) => {
       break;
     case "icon":
       // Have to use className here because FontAwesome React component expects it
-      inner = (<><Icon type={item.class} className="icon-nav-item" /><span class="mobile-only">{text}</span></>);
+      inner = (
+        <>
+          <Icon type={item.class} className="icon-nav-item" />
+          <span class="mobile-only">{text}</span>
+        </>
+      );
       break;
     case "heading":
-      inner = <h3>{text}</h3>;
+      inner = <Heading type="h3">{text}</Heading>;
       break;
     default:
       inner = text;
@@ -40,17 +46,13 @@ const NavItem = ({onFocus, itemRef, ...props}) => {
   }
 
   // return the heading without a link if item type is heading
-  if (item.type == "heading") {
+  if (type == "heading") {
     return inner;
   }
 
   return (
     <li>
-      <a
-        {...item}
-        {...(onFocus ? { onFocus } : "")}
-        ref={itemRef}
-      >
+      <a {...item} {...(onFocus ? { onFocus } : "")} ref={itemRef}>
         {inner}
       </a>
     </li>
