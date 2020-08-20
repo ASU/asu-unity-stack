@@ -28,7 +28,6 @@ const Modal = ({ children, containerId, onModalClose, ...props }) => {
     const firstElement = focusable[0];
     const lastElement = focusable[focusable.length - 1];
 
-
     // If any element in-between the first and last focusable elements is active,
     // allow focus to transition normally
     let found = false;
