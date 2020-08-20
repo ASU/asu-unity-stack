@@ -118,7 +118,7 @@ const PanelInputInfo = ({ children, icon, ...props }) => {
   );
 };
 
-const PanelInputCard = ({ icon, label, id, children }) => {
+const PanelInputCard = ({ icon, title, id, children }) => {
   return (
     <FoldableCard
       id={id}
@@ -126,7 +126,7 @@ const PanelInputCard = ({ icon, label, id, children }) => {
         border: 0;
         flex-grow: 1;
       `}
-      head={<PanelInputInfo {...{ icon }}>{label}</PanelInputInfo>}
+      head={<PanelInputInfo {...{ icon }}>{title}</PanelInputInfo>}
     >
       {children}
     </FoldableCard>

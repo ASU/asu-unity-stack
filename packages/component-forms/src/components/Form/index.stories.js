@@ -34,13 +34,15 @@ const testProps = {
       name: "push_notifications",
       type: "toggle",
       icon: "mobile",
-      label: "ASU Mobile App (push notifications)",
+      title: "ASU Mobile App (push notifications)",
+      label: "ASU Mobile App (push notifications) use enter or space to edit",
       id: "mobile-opt-in"
     },
     {
       name: "email_notifications",
       type: "toggle",
-      label: "Web (email reminders)",
+      label: "Web (email reminders) use enter or space to edit",
+      title: "Web (email reminders)",
       id: "web-opt-in",
       icon: "desktop"
     },
@@ -78,7 +80,8 @@ const ExposureProps = {
       name: "share_health_records",
       type: "toggle",
       icon: "clipboard",
-      label: "Share COVID test related health records",
+      label: "Share COVID test related health records - use enter or space to edit",
+      title: "Share COVID test related health records",
       id: "mobile-opt-in",
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -87,7 +90,8 @@ const ExposureProps = {
     {
       name: "share_location",
       type: "toggle",
-      label: "Share location",
+      label: "Share location - use enter or space to edit",
+      title: "Share location",
       id: "web-opt-in",
       icon: "map-pin",
       description: `Proximity Notification Consent:<br><br>

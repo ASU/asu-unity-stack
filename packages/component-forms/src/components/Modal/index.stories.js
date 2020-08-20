@@ -1,8 +1,8 @@
 /** @jsx h */
 
-import { h, Fragment} from "preact";
-import {Modal} from ".";
-import TestModal from "./TestModal";
+import { h, Fragment } from "preact";
+import { Modal } from ".";
+import { TestModal, TestModalIframe } from "./TestModal";
 
 export default {
   component: Modal,
@@ -11,12 +11,12 @@ export default {
 
 export const base = () => {
   return (
-      <Modal>
-        <div>
-          <h2>Test content</h2>
-          <p>Some extra content</p>
-        </div>
-      </Modal>
+    <Modal>
+      <div>
+        <h2>Test content</h2>
+        <p>Some extra content</p>
+      </div>
+    </Modal>
   );
 };
 
@@ -35,9 +35,9 @@ export const customContainer = () => {
 };
 
 export const insideApp = () => {
-
-  return (
-    <TestModal />
-  );
+  return <TestModal />;
 };
 
+export const iframeExample = () => {
+  return <TestModalIframe />;
+};
