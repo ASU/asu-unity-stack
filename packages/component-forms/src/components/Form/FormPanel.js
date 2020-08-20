@@ -80,6 +80,7 @@ FormPanel.propTypes = {
   }),
   children: PropTypes.element,
   autoSubmit: PropTypes.bool,
+  fields: PropTypes.arrayOf(PropTypes.object)
 };
 
 FormPanel.defaultProps = {

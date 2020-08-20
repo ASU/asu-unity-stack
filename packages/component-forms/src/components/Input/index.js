@@ -27,15 +27,15 @@ Input.propTypes = {
 Input.defaultProps = {};
 
 /** PanelInput Variant */
-const PanelInput = ({ icon, label, description, children, id, ...props }) => {
+const PanelInput = ({ icon, label, description, children, id, title, ...props }) => {
   return (
     <S.PanelInputWrapper>
       {description ? (
-        <S.PanelInputCard {...{ icon, label, id }}>
+        <S.PanelInputCard {...{ icon, label, id, title }}>
           {description}
         </S.PanelInputCard>
       ) : (
-        <div class="title-only"><S.PanelInputInfo {...{ icon }}>{label}</S.PanelInputInfo></div>
+        <div class="title-only"><S.PanelInputInfo {...{ icon }}>{title}</S.PanelInputInfo></div>
       )}
       {children}
     </S.PanelInputWrapper>
@@ -44,7 +44,8 @@ const PanelInput = ({ icon, label, description, children, id, ...props }) => {
 
 PanelInput.propTypes = {
   icon: PropTypes.string, // icon to be displayed at beginning of field info card
-  label: PropTypes.string, // used for field label
+  label: PropTypes.string, // label for screenreaders only (not displayed)
+  title: PropTypes.string, // displayed alongside field
   description: PropTypes.string, // desciption to expand when field info card is expanded
   id: PropTypes.string, // id to use on field info card
   children: PropTypes.node,

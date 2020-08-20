@@ -34,7 +34,7 @@ Checkbox.propTypes = {
   field: PropTypes.object.isRequired, // the field object passed from Formik
   setFieldValue: PropTypes.func.isRequired, // setFieldValue from Formik
   name: PropTypes.string.isRequired, // the name of the field, also used as value key by Formik and the ID of the field
-  label: PropTypes.string.isRequired, // the label text for the field, required for accessiblity
+  label: PropTypes.string.isRequired, // the label text for the field, required for accessiblity (not visible)
 };
 
 Checkbox.defaultProps = {};

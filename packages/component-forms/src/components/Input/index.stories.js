@@ -16,6 +16,7 @@ const fieldProps = {
     console.log("set the value");
   },
   name: "test_field",
+  label: "ASU Mobile App (push notifications) use enter or space to edit",
 };
 
 export const checkbox = () => <Input type="checkbox" {...fieldProps} />;
@@ -35,7 +36,8 @@ export const panelCheckboxInput = () => (
       setFieldValue: () => {
         console.log("set the value");
       },
-      label: "ASU Mobile App (push notifications)",
+      label: "ASU Mobile App (push notifications) use enter or space to edit",
+      title: "ASU Mobile App (push notifications)",
       icon: "mobile",
     }}
   >
@@ -56,10 +58,13 @@ export const panelToggleInput = () => (
       setFieldValue: () => {
         console.log("set the value");
       },
-      label: "ASU Mobile App (push notifications)",
+      label: "ASU Mobile App (push notifications) use enter or space to edit",
+      title: "ASU Mobile App (push notifications)",
       icon: "mobile",
     }}
   >
-    <Input type="toggle" {...fieldProps} />
+    <Input
+    type="toggle"
+    {...fieldProps} />
   </PanelInput>
 );
