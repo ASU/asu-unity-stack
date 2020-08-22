@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Nav } from "../Nav";
+import { UniversalSearch } from "../Search";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
@@ -21,7 +22,7 @@ const Header = ({
 }) => {
   // Mobile menu open state and helper functions
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSearch, setSearchOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   // State to set mobile nav max height. Needed for fixed positioning elements
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
@@ -33,7 +34,6 @@ const Header = ({
   const { height, width } = useWindowDimensions();
 
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
-  const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
   // Scroll position state handling for adding 'scroll' class
   const [scrollPosition, setSrollPosition] = useState(0);
@@ -57,8 +57,6 @@ const Header = ({
       const pHeight = 96;
       const newHeight = height - uHeight - pHeight;
 
-      console.log(newHeight, 'THE NEW MAX MOBILE NAV HEIGHT');
-
       setMaxMobileNavHeight(newHeight);
     }
   }, [height, width, mobileOpen]);
@@ -67,7 +65,7 @@ const Header = ({
 
   return (
     <S.Header class={scrollPosition > 0 || mobileOpen ? "scrolled" : ""}>
-      <S.UniversalNav open={mobileOpen} ref={universalRef}>
+      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <div>
           <div class="nav-grid">
             <a href="https://www.asu.edu/">ASU home</a>
@@ -82,9 +80,7 @@ const Header = ({
               <a href={loginLink}>Sign in</a>
             )}
           </div>
-          <S.SearchForm open={openSearch}>
-            <S.Icon type="search" onMouseDown={toggleSearch} />
-          </S.SearchForm>
+          <UniversalSearch open={searchOpen} setOpen={setSearchOpen} />
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
@@ -110,7 +106,7 @@ const Header = ({
                   height,
                   width,
                   buttons,
-                  maxMobileHeight: maxMobileNavHeight
+                  maxMobileHeight: maxMobileNavHeight,
                 }}
               />
             </S.NavbarContainer>

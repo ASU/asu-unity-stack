@@ -5,12 +5,9 @@ import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import {
-  hiddenStyle,
-  showReset,
-  mobileBreak,
-  containerSize,
-} from "../../styles/common";
+import { searchStyles } from "../Search/styles";
+import { mobileBreak, containerSize } from "../../styles/common";
+
 import { Icon } from "../Icons";
 
 const Header = ({ children, ...props }) => {
@@ -20,6 +17,17 @@ const Header = ({ children, ...props }) => {
       class={cx(
         props.class,
         css`
+          *,
+          *:before,
+          *:after {
+            box-sizing: border-box;
+          }
+
+          :focus {
+            outline: 0;
+            box-shadow: 0 0 8px #00baff !important;
+          }
+
           a {
             cursor: pointer;
             text-decoration: none;
@@ -132,6 +140,10 @@ const universalStyles = css`
     height: 32px;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
+    &.search-open {
+      height: 48px;
+    }
+
     > div {
       width: 100%;
       max-width: ${containerSize};
@@ -201,7 +213,13 @@ const universalStyles = css`
 
 const UniversalNav = props => {
   return (
-    <div class={cx("universal-nav", props.open ? "mobile-open" : "")}>
+    <div
+      class={cx(
+        "universal-nav",
+        props.open ? "mobile-open" : "",
+        props.searchOpen ? "search-open" : ""
+      )}
+    >
       {props.children}
     </div>
   );
@@ -411,104 +429,12 @@ const Title = ({ title, unit, ...props }) => {
   return <div class="title subdomain-name">{title}</div>;
 };
 
-/** Search */
-const searchStyles = css`
-  .asu-search-form {
-    > form {
-      display: none;
-
-      > input {
-        padding: 0.1rem 2rem;
-      }
-
-      &.show-search-input {
-        display: inline-flex;
-      }
-    }
-
-    > a {
-      display: inline-block;
-      font-size: 0.75rem;
-      color: #484848;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      width: 100%;
-      display: flex;
-      order: -1;
-
-      > form {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 1rem 2rem;
-
-        > input {
-          padding: 0.5rem 2rem;
-          display: flex;
-          width: 100%;
-          border: 0;
-        }
-
-        > button {
-          font-size: 1rem;
-          opacity: 0.75;
-        }
-      }
-
-      > a {
-        display: none;
-      }
-
-      button {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-
-      > svg {
-        ${hiddenStyle}
-      }
-    }
-
-    button {
-      font-size: 0.75rem;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      margin-right: -30px;
-      z-index: 20;
-      width: 1.5rem;
-      height: 1.5rem;
-      padding: 0;
-    }
-  }
-`;
-
-const SearchForm = props => {
-  // TODO: handle custom search
-  return (
-    <div class="asu-search-form">
-      <form
-        action="https://search.asu.edu/search"
-        method="get"
-        role="search"
-        class={props.open ? "show-search-input" : ""}
-      >
-        <input name="q" type="text" />
-      </form>
-      {props.children}
-    </div>
-  );
-};
-
 export {
   Header,
   UniversalNav,
   PrimaryNav,
   Title,
   Logo,
-  SearchForm,
-  showReset,
   NavbarContainer,
   Icon,
   NavbarToggler,

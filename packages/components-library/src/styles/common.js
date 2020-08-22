@@ -13,7 +13,6 @@ const hiddenStyle = css`
 `;
 
 const showReset = position => {
-
   const pos = position || "relative";
 
   return css`
@@ -27,8 +26,20 @@ const showReset = position => {
   `;
 };
 
+const srOnly = css`
+  :not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+`;
+
 const mobileBreak = "1260px";
 
 const containerSize = "1224px";
 
-export { hiddenStyle, showReset, mobileBreak, containerSize };
+export { hiddenStyle, showReset, mobileBreak, containerSize, srOnly};

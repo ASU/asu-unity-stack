@@ -1,4 +1,4 @@
-/** @jsx h */
+ /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { css, cx } from "emotion";

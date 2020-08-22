@@ -154,6 +154,7 @@ const Nav = ({
 
   // handle focus moving out of Nav
   const onBlurNav = e => {
+    console.log(E, "THE VENT");
     // only change state if focus moves away from
     // container element
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -165,7 +166,7 @@ const Nav = ({
   return (
     <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight} >
       <ul
-        {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
+        {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
         ref={navRef}
