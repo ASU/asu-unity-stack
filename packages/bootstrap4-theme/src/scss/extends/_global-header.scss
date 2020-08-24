@@ -605,9 +605,9 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     .navbar-brand {
       .vert {
         display: block;
-        height: 72px;
+        height: 80px;
         width: auto;
-        margin: $uds-size-spacing-3 $uds-size-spacing-2 $uds-size-spacing-3 0;
+        margin: $uds-size-spacing-2 $uds-size-spacing-2 $uds-size-spacing-2 0;
       }
 
       .horiz {
@@ -650,7 +650,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
       &.subdomain-name {
         font-size: $uds-size-font-xxl;
-        margin: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
+        margin: $uds-size-spacing-3 0 $uds-size-spacing-1 0;
         font-weight: 700;
       }
     }
@@ -897,7 +897,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
   #asu-header+div,
   #asu-header+main {
     @include transition;
-    margin-top: 145px;
+    margin-top: 137px;
   }
 
   #asu-header.scrolled+div,
