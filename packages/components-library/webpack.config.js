@@ -4,35 +4,10 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = [];
 
-module.exports.push({
-  context: path.join(__dirname, "src"),
-  mode: "production",
+
+const shared = {
   entry: {
-    core: "./bundles/core.js"
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "AsuWeb[name]",
-    umdNamedDefine: true,
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: 'commons',
-          chunks: 'initial',
-          minChunks: 2
-        }
-      },
-    },
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      terserOptions: {
-        ecma: 6,
-      },
-    })],
+    core: "./index.js"
   },
   module: {
     rules: [
@@ -42,9 +17,9 @@ module.exports.push({
         use: [
           {
             loader: "babel-loader",
-            // options: {
-            //   rootMode: "upward",
-            // },
+            options: {
+              presets: ['preact'],
+            }
           },
         ],
       },
@@ -59,9 +34,59 @@ module.exports.push({
       // Must be below test-utils
     },
   }
+}
+
+// development bundle config
+module.exports.push({
+  context: path.join(__dirname, "src"),
+  mode: "development",
+  entry: shared.entry,
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].development.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  module: shared.module,
+  resolve: shared.resolve
+
 });
 
-// SSR bundle config
+// production bundle
+module.exports.push({
+  context: path.join(__dirname, "src"),
+  mode: "production",
+  entry: shared.entry,
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].production.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      },
+    },
+    minimizer: [new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
+    })],
+  },
+  module: shared.module,
+  resolve: shared.resolve
+});
+
+// SSR bundle config - should be used server-side only
 module.exports.push(
   {
     mode: "production",
@@ -104,47 +129,3 @@ module.exports.push(
     externals: [nodeExternals()],
   }
 );
-
-/*
-// Auth bundle config
-module.exports.push({
-  context: path.join(__dirname, "src"),
-  mode: "production",
-  entry: {
-    auth: "./bundles/auth.js"
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: "[name].production.js",
-    //filename: 'main.js',
-    libraryTarget: "umd",
-    library: "AsuWeb[name]",
-    umdNamedDefine: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            // options: {
-            //   rootMode: "upward",
-            // },
-          },
-        ],
-      },
-    ],
-  },
-  resolve: {
-    extensions: [".js", ".jsx"],
-    alias: {
-      react: "preact/compat",
-      //"react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-      // Must be below test-utils
-    },
-  },
-});
-*/

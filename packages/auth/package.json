@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/auth",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ASU Auth components",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -24,20 +24,7 @@
     "storybook": "start-storybook -p 8089",
     "build-storybook": "build-storybook -c .storybook -s public -o export"
   },
-  "devDependencies": {
-    "@storybook/preact": "^5.3.19",
-    "emotion-server": "^10.0.27",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-preact-pure": "^2.0.0",
-    "global": "^4.3.2",
-    "preact": "^10.4.4",
-    "preact-cli": "^3.0.0-rc.6",
-    "preact-render-spy": "^1.2.1",
-    "preact-render-to-json": "^3.6.6",
-    "preact-render-to-string": "^5.1.4",
-    "sirv-cli": "^0.4.5",
-    "terser-webpack-plugin": "^3.0.3"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@asu-design-system/design-tokens": "^1.0.0-beta",
     "emotion": "^10.0.27",

@@ -3,7 +3,6 @@
 import { h } from "preact";
 import { Fragment } from "preact/compat";
 import PropTypes from "prop-types";
-import Button from "../Button";
 import {cx} from "emotion";
 
 /**
@@ -19,12 +18,8 @@ const NavItem = props => {
   switch (item.type) {
     case "button":
       {
-        const bprops = {
-          small: true,
-          ...(item.color && { class: `btn-${item.color}` }),
-        };
-
-        inner = <Button {...bprops}>{item.text}</Button>;
+        const bcolor = item.color ? `btn-${item.color}` : '';
+        inner = <button class={`btn btn-medium ${bcolor}`}>{item.text}</button>;
       }
       break;
     case "icon":

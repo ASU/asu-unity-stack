@@ -4,8 +4,12 @@
  * Copyright 2020 ASU
  * ======================================================================== */
 
-// Import UDS Design Tokens
-@import '../../node_modules/@asu-design-system/design-tokens/build/scss/_variables.scss';
+// Load UDS Design Tokens
+@import 'design-tokens/variables';
+
+// default path for image assets (assuming the images will be hosted from the web root)
+// Storybook and themes override this for their particular path needs
+$image-assets-path: '/img' !default;
 
 // Apply variable overrides before importing Bootstrap’s Sass files
 @import 'variables/colors';

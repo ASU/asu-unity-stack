@@ -1,7 +1,6 @@
 /** @jsx h */
 
 import { h } from "preact";
-import { withA11y } from "@storybook/addon-a11y";
 import {
   BasicNavTree,
   NavTreeWithButtons,
@@ -14,17 +13,16 @@ import { Fragment } from "preact/compat";
 export default {
   component: Header,
   title: "Header",
-  decorators: [withA11y],
 };
 
 export const base = () => (
   <Fragment>
     <Header
       navTree={BasicNavTree}
-      title={"Ira A. Fulton Schools of Engineering"}
-      subtitle={
+      title={
         "School of Computing, Informatics, and Decisions Systems Engineering"
       }
+      unit={"Ira A. Fulton Schools of Engineering"}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
@@ -41,14 +39,10 @@ export const withButtons = () => (
   <Fragment>
     <Header
       navTree={NavTreeWithButtons}
-      title={"Ira A. Fulton Schools of Engineering"}
-      subtitle={
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      }
+      title={"University Technology Office"}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
-
 );
 
 export const withMenuColumns = () => (
@@ -56,10 +50,9 @@ export const withMenuColumns = () => (
     <Header
       navTree={NavTreeMega}
       title={"Ira A. Fulton Schools of Engineering"}
-      subtitle={
+      unit={
         "School of Computing, Informatics, and Decisions Systems Engineering"
       }
-
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>

@@ -1,2 +1,4 @@
+// Override image assets path for Storybook (relative path from /.storybook/preview.js)
+$image-assets-path: '../src/img';
 
 @import '../src/scss/bootstrap-asu.scss';

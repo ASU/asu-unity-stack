@@ -20,9 +20,10 @@ crossorigin="anonymous"></script>
 <script crossorigin src="https://unpkg.com/preact@10.4.4/dist/preact.umd.js"></script>-->
 
 <!-- include bundled scripts from Preact packages (CSS is in the <head>) -->
-<script src="/components-library/dist/commons.production.js"></script>
+<script src="/components-library/dist/vendor.production.js"></script>
 <script src="/components-library/dist/core.production.js"></script>
-<script src="/components-library/dist/forms.production.js"></script>
+<script src="/component-forms/dist/vendor.production.js"></script>
+<script src="/component-forms/dist/forms.production.js"></script>
 <!--<script src="/asu-maps/dist/asu-maps.production.js"></script>-->
 
 <script>
@@ -212,8 +213,6 @@ crossorigin="anonymous"></script>
         target: "_top"
       }
     ];
-    
-    console.log(AsuWebcore, 'THE ASUWEB core OBJECT');
 
     AsuWebcore.HydratePreact(AsuWebcore.Header, {
       navTree: NavTree,
@@ -221,7 +220,7 @@ crossorigin="anonymous"></script>
       subtitle: "School of Computing, Informatics, and Decisions Systems Engineering"
     }, document.getElementById("headerContainer"));
 
-    AsuWebforms.RenderPreact(AsuWebforms.Form, {
+    AsuWebforms.RenderPreact(AsuWebforms.FormPanel, {
       title: `Form Title`
     }, document.getElementById("formContainer"));
   });

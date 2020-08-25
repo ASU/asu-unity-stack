@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useMemo, useRef } from "preact/compat";
+import { useEffect, useState, useMemo } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
@@ -11,29 +11,22 @@ import * as S from "./styles";
  * Render entire Nav. This includes
  * @param {} props
  */
-const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
+const Nav = ({
+  navTree,
+  width,
+  height,
+  mobileOpen,
+  maxHeight,
+  buttons,
+  ...props
+}) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
-
-  const setFocusCallback = newFocus => {
-    setFocus(newFocus);
-  };
-
   /** State for keeping track of open dropdown nav */
   const [open, setOpen] = useState(-1);
 
-  const toggle = index => {
-    if (open == index) {
-      setOpen(-1);
-    } else {
-      setOpen(index);
-    }
-  };
-
-  const navOpen = index => {
-    if (open != index) {
-      setOpen(index);
-    }
+  const setFocusCallback = newFocus => {
+    setFocus(newFocus);
   };
 
   /***
@@ -111,16 +104,6 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
     }
   };
 
-  // handle focus moving out of Nav
-  const onBlurNav = e => {
-    // only change state if focus moves away from
-    // container element
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // remove focus and close any open navs
-      setFocusCallback([-1, -1, -1]);
-      setOpen(-1);
-    }
-  };
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
@@ -139,10 +122,24 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
     }
   }, [focused, navList]);
 
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
+
+  // handle focus moving out of Nav
+  const onBlurNav = e => {
+    // only change state if focus moves away from
+    // container element
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      // remove focus
+      setFocusCallback([-1, -1, -1]);
+    }
+  };
+
   return (
     <S.Nav open={mobileOpen}>
       <ul
-        onBlurCapture={onBlurNav}
+        {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
       >
@@ -165,8 +162,8 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
                 setFocus={setFocusCallback}
                 topRef={item.ref}
                 isOpen={isOpen}
-                toggle={toggle}
-                navOpen={navOpen}
+                setOpen={setOpen}
+                mobileWidth={bpoint}
               />
             );
           }
@@ -184,12 +181,15 @@ const Nav = ({ navTree, width, height, mobileOpen, maxHeight, ...props }) => {
           );
         })}
       </ul>
+
+      {}
     </S.Nav>
   );
 };
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
+  buttons: PropTypes.arrayOf(PropTypes.object),
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
@@ -202,6 +202,7 @@ Nav.defaultProps = {
   width: 1920,
   height: 1080,
   maxHeight: "75vh",
+  buttons: [],
 };
 
 /***************** Helper functions **************/

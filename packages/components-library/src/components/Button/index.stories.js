@@ -1,7 +1,6 @@
 /** @jsx h */
 
 import { h } from 'preact';
-import { withA11y } from "@storybook/addon-a11y";
 import { action } from '@storybook/addon-actions';
 
 import Button from '.';
@@ -9,7 +8,6 @@ import Button from '.';
 export default {
   component: Button,
   title: "Button",
-  decorators: [withA11y],
 };
 
 export const base = () => <Button onclick={action('clicked')}>Base button</Button>;

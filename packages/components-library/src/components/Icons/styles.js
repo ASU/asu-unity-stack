@@ -2,48 +2,68 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faDesktop,
+  faMobile,
+  faSearch,
+  faBars,
+  faClipboard,
+  faMapPin,
+  faExclamationTriangle,
+  faBell,
+  faInfoCircle,
+  faCircle,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import Tokens from "../../theme";
 
-const IconHamburger = props => {
-  return (
-    <a {...props} class="asu-icon-hamburger">
-      <span class="fa fa-bars">
-        <span class="sr-only">Menu</span>
-      </span>
-    </a>
-  );
+const IconBars = props => {
+  return <FontAwesomeIcon icon={faBars} {...props} />;
 };
 
 const IconSearch = props => {
-  return (
-    <a class="asu-search-icon">
-      <span class="fa fa-search" {...props}>
-        <span class="sr-only">Search</span>
-      </span>
-    </a>
-  );
+  return <FontAwesomeIcon icon={faSearch} {...props} />;
 };
 
 const IconChevronDown = props => {
-  return (
-    <span class="fa fa-chevron-down">
-      <span class="sr-only">{props.sr}</span>
-    </span>
-  );
+  return <FontAwesomeIcon icon={faChevronDown} {...props} />;
 };
 
 const IconMobile = props => {
-  return (
-    <span class="fas fa-mobile">
-      <span class="sr-only">{props.sr}</span>
-    </span>
-  );
+  return <FontAwesomeIcon icon={faMobile} {...props} />;
 };
 
 const IconDesktop = props => {
+  return <FontAwesomeIcon icon={faDesktop} {...props} />;
+};
+
+const IconClipboard = props => {
+  return <FontAwesomeIcon icon={faClipboard} {...props} />;
+};
+
+const IconMapPin = props => {
+  return <FontAwesomeIcon icon={faMapPin} {...props} />;
+};
+
+const IconExclTriangle = props => {
+  return <FontAwesomeIcon icon={faExclamationTriangle} {...props} />;
+};
+
+const IconBell = props => {
+  return <FontAwesomeIcon icon={faBell} {...props} />;
+};
+
+const IconInfoCircle = props => {
+  return <FontAwesomeIcon icon={faInfoCircle} {...props} />;
+};
+
+const IconCircleClose = props => {
   return (
-    <span class="fas fa-desktop">
-      <span class="sr-only">{props.sr}</span>
+    <span class={cx("fa-layers fa-fw", props.class)}>
+      <FontAwesomeIcon icon={faCircle} size="2x" />
+      <FontAwesomeIcon icon={faTimes} size="1x" />
     </span>
   );
 };
@@ -58,9 +78,30 @@ const Icon = ({ type, ...props }) => {
       return <IconSearch {...props} />;
     case "desktop":
       return <IconDesktop {...props} />;
+    case "clipboard":
+      return <IconClipboard {...props} />;
+    case "map-pin":
+      return <IconMapPin {...props} />;
+    case "exclamation-triangle":
+      return <IconExclTriangle {...props} />;
+    case "bell":
+      return <IconBell {...props} />;
+    case "info-circle":
+      return <IconInfoCircle {...props} />;
+    case "circle-close":
+      return <IconCircleClose {...props} />;
+    case "bars":
+      return <IconBars {...props} />;
     default:
       return "";
   }
 };
 
-export { Icon, IconHamburger, IconSearch, IconChevronDown, IconMobile };
+export {
+  Icon,
+  IconBars,
+  IconSearch,
+  IconChevronDown,
+  IconMobile,
+  IconCircleClose,
+};

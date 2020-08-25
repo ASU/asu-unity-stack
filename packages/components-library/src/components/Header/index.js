@@ -10,7 +10,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 const Header = ({
   navTree,
   title,
-  subtitle,
+  unit,
   logo,
   loggedIn,
   userName,
@@ -19,34 +19,33 @@ const Header = ({
   ...props
 }) => {
   // Mobile menu open state and helper functions
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
 
-  const toggle = () => setOpen(oldOpen => !oldOpen);
+  const toggle = () => setMobileOpen(oldOpen => !oldOpen);
   const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
   // Scroll position state handling for adding 'scroll' class
   const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
-      const position = window.pageYOffset;
-      setSrollPosition(position);
+    const position = window.pageYOffset;
+    setSrollPosition(position);
   };
 
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
-
-      return () => {
-          window.removeEventListener('scroll', handleScroll);
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <S.Header scrollPosition={scrollPosition} >
-      <S.UniversalNav open={open}>
+    <S.Header scrollPosition={scrollPosition}>
+      <S.UniversalNav open={mobileOpen}>
         <div>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -60,7 +59,7 @@ const Header = ({
             <a href={loginLink}>Sign in</a>
           )}
           <S.SearchForm open={openSearch}>
-            <S.IconSearch onMouseDown={toggleSearch} />
+            <S.Icon type="search" onMouseDown={toggleSearch} />
           </S.SearchForm>
         </div>
       </S.UniversalNav>
@@ -68,29 +67,28 @@ const Header = ({
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
-          <Fragment>
-            <div>
-              <S.Logo {...logo} />
-              <S.IconHamburger
-                onClick={e => {
-                  e.preventDefault();
-                  toggle();
-                }}
-                // If javascript is disabled, this should target and open the
-                href="#asu-header-nav"
-              />
-              <S.Title {...{ title, subtitle }} />
-            </div>
-            <Nav
-              {...{
-                navTree,
-                logo,
-                mobileOpen: open,
-                height,
-                width
+          <div>
+            <S.Logo {...logo} />
+            <S.NavbarToggler
+              onClick={e => {
+                e.preventDefault();
+                toggle();
               }}
+              mobileOpen={mobileOpen}
             />
-          </Fragment>
+            <S.NavbarContainer>
+              <S.Title {...{ title, unit }} />
+              <Nav
+                {...{
+                  navTree,
+                  logo,
+                  mobileOpen,
+                  height,
+                  width,
+                }}
+              />
+            </S.NavbarContainer>
+          </div>
         )}
       </S.PrimaryNav>
     </S.Header>
@@ -103,9 +101,10 @@ Header.propTypes = {
     alt: PropTypes.string,
     src: PropTypes.string,
     mobileSrc: PropTypes.string,
+    brandLink: PropTypes.string,
   }),
   title: PropTypes.string,
-  subtitle: PropTypes.string,
+  unit: PropTypes.string,
   loggedIn: PropTypes.bool,
   userName: PropTypes.string,
   loginLink: PropTypes.string,
@@ -122,7 +121,7 @@ Header.defaultProps = {
       "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
   },
   title: "",
-  subtitle: "",
+  unit: "",
   loggedIn: false,
   userName: "",
   loginLink: "https://weblogin.asu.edu/cas/login",

@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "1.0.5",
+  "version": "1.1.4",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -23,39 +23,7 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^1.0.1",
-    "@fortawesome/fontawesome-free": "^5.9.0",
-    "@storybook/html": "^5.1.9",
-    "autoprefixer": "^9.5.1",
-    "bootstrap": "^4.3.1",
-    "del": "^4.1.0",
-    "dotenv": "^8.0.0",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^5.0.0",
-    "gulp-imagemin": "^5.0.3",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-sass-lint": "^1.4.0",
-    "gulp-sequence": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
-    "jquery": "^3.4.1",
-    "node-sass": "^4.14.1",
-    "popper.js": "^1.15.0",
-    "prettier": "^1.17.0",
-    "sass-lint": "^1.13.1",
-    "sass-lint-auto-fix": "^0.17.0",
-    "sass-loader": "^7.1.0",
-    "start-server-and-test": "^1.9.1",
-    "storybook-readme": "^5.0.5",
-    "webfontloader": "^1.6.28"
+    "@asu-design-system/design-tokens": "^1.1.0"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

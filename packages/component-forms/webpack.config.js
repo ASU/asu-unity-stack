@@ -3,35 +3,10 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = [];
 
-module.exports.push({
+const shared = {
   context: path.join(__dirname, "src"),
-  mode: "production",
   entry: {
     forms: "./index.js"
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "AsuWeb[name]",
-    umdNamedDefine: true,
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: 'commons',
-          chunks: 'initial',
-          minChunks: 2
-        }
-      },
-    },
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      terserOptions: {
-        ecma: 6,
-      },
-    })],
   },
   module: {
     rules: [
@@ -58,4 +33,52 @@ module.exports.push({
       // Must be below test-utils
     },
   }
+}
+
+module.exports.push({
+  context: shared.context,
+  mode: "development",
+  entry: shared.entry,
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].development.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  module: shared.module,
+  resolve: shared.resolve
+});
+
+
+module.exports.push({
+  context: shared.context,
+  mode: "production",
+  entry: shared.entry,
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].production.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      },
+    },
+    minimizer: [new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
+    })],
+  },
+  module: shared.module,
+  resolve: shared.resolve
 });
