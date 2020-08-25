@@ -75,7 +75,7 @@ const UniversalSearch = ({ type, open, setOpen }) => {
       onfocusout={onBlur}
       onClick={e => {
         console.log(e, "THE EVNT");
-        e.preventDefault();
+        e.stopPropagation();
         setOpen(true);
         inputRef.current.focus();
       }}

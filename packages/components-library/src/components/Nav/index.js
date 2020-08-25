@@ -154,7 +154,7 @@ const Nav = ({
 
   // handle focus moving out of Nav
   const onBlurNav = e => {
-    console.log(E, "THE VENT");
+    console.log(e, "THE VENT");
     // only change state if focus moves away from
     // container element
     if (!e.currentTarget.contains(e.relatedTarget)) {
