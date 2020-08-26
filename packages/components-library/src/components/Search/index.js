@@ -4,7 +4,6 @@ import { h } from "preact";
 import { useRef } from "preact/compat";
 import * as S from "./styles";
 import PropTypes from "prop-types";
-import { Icon } from "../Icons";
 
 const Search = ({ type, open, inputRef, ...props }) => {
   switch (type) {
@@ -21,11 +20,14 @@ const Search = ({ type, open, inputRef, ...props }) => {
         >
           <input
             name="q"
-            type="text"
+            type="search"
             {...(inputRef ? { ref: inputRef } : {})}
+            aria-labelledby="asu-search-label"
             required
           />
-          {props.children}
+          <label class="univeral-search" id="asu-search-label">
+            Search ASU
+          </label>
         </form>
       );
   }
@@ -46,7 +48,7 @@ Search.propTypes = {
 
 Search.defaultProps = {};
 
-const UniversalSearch = ({ type, open, setOpen }) => {
+const UniversalSearch = ({ type, open, setOpen, placeHolder }) => {
   //const toggle = () => setOpen(oldOpen => !oldOpen);
 
   // ref to input dom node
@@ -56,8 +58,6 @@ const UniversalSearch = ({ type, open, setOpen }) => {
     if (inputRef.current.value) {
       return;
     }
-
-    console.log(e, "THE VENT");
 
     // only change state if focus moves away from
     // container element
@@ -70,20 +70,15 @@ const UniversalSearch = ({ type, open, setOpen }) => {
   return (
     <S.UniversalSearch
       // onBlur and onFocus don't bubble up the DOM in Preact, like they do
-      // in React, so we have to use native DOM event handlers here
+      // in React. So we have to use native DOM event handlers here
       onfocusin={() => setOpen(true)}
       onfocusout={onBlur}
       onClick={e => {
-        console.log(e, "THE EVNT");
-        e.stopPropagation();
         setOpen(true);
         inputRef.current.focus();
       }}
     >
-      <Search {...{ open, type, inputRef }}>
-        <Icon type="search" />
-        <label class="univeral-search">Search ASU</label>
-      </Search>
+      <Search {...{ open, type, inputRef }} />
     </S.UniversalSearch>
   );
 };
@@ -92,6 +87,7 @@ UniversalSearch.propTypes = {
   type: PropTypes.string,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
+  placeHolder: PropTypes.string,
 };
 
 UniversalSearch.defaultProps = {

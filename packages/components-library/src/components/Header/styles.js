@@ -140,10 +140,6 @@ const universalStyles = css`
     height: 32px;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
-    &.search-open {
-      height: 48px;
-    }
-
     > div {
       width: 100%;
       max-width: ${containerSize};
@@ -173,9 +169,6 @@ const universalStyles = css`
         display: flex;
         justify-content: center;
       }
-
-
-
 
       .nav-grid {
         display: grid;
@@ -207,6 +200,12 @@ const universalStyles = css`
     &.scrolled .universal-nav {
       height: 0;
       overflow: hidden;
+    }
+
+    .universal-nav {
+      &.search-open {
+        height: 48px;
+      }
     }
   }
 `;

@@ -64,7 +64,11 @@ const Header = ({
   const universalRef = useRef(null);
 
   return (
-    <S.Header class={scrollPosition > 0 || mobileOpen ? "scrolled" : ""}>
+    <S.Header
+      class={
+        scrollPosition > 0 || (mobileOpen && width < bpoint) ? "scrolled" : ""
+      }
+    >
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <div>
           <div class="nav-grid">
