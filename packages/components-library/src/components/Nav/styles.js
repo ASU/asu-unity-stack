@@ -1,4 +1,4 @@
-/** @jsx h */
+ /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { css, cx } from "emotion";
@@ -11,7 +11,16 @@ import { IconChevronDown } from "../Icons/styles";
  */
 const navStyles = css`
   nav.header-nav {
+    ul {
+      list-style: none;
+      a {
+        text-decoration: none;
+      }
+    }
+
     > ul {
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -49,36 +58,37 @@ const navStyles = css`
           display: block;
           padding: 8px;
           position: relative;
-
-          .fa {
-            font-size: 0.8rem;
-            transform: translateY(-0.1rem);
-          }
         }
       }
     }
 
     .mobile-only {
-      ${hiddenStyle}
+      display: none;
+    }
+
+    @media (min-width: ${mobileBreak}) {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
     }
 
     @media (max-width: ${mobileBreak}) {
-      ${hiddenStyle}
       border: none;
-      display: flex;
+      display: none;
 
       &.open-nav,
       &:target {
-        ${showReset()}
         flex-direction: column;
         width: 100%;
         overflow-y: scroll;
-        height: 60vh;
         display: flex;
       }
 
       .mobile-only {
-        ${showReset()}
+        display: flex;
       }
 
       .icon-nav-item {
@@ -97,14 +107,14 @@ const navStyles = css`
           margin-right: 0;
 
           > a {
-            padding: 1rem;
+            padding: 1rem 2rem;
             justify-content: space-between;
             display: flex;
             border-bottom: 1px solid #cccccc;
             align-items: center;
 
             > svg {
-              margin-right: 2rem;
+              font-size: 1.25rem;
             }
           }
 
@@ -121,8 +131,8 @@ const navStyles = css`
   }
 
   /** DdMenu CSS **/
-  .dropdown {
-    ${hiddenStyle}
+  div.dropdown {
+    display: none;
     z-index: 999;
     justify-content: space-between;
     background: #ffffff;
@@ -133,12 +143,8 @@ const navStyles = css`
     border: 0;
     border-top: 1px solid #d0d0d0;
 
-    @media (min-width: ${mobileBreak}) {
+    &.nav-dropdown-open {
       display: flex;
-      margin: -1px 0 0 0;
-      border: 1px solid #d0d0d0;
-      border-top: 1px solid #ffffff;
-      padding: 2rem;
     }
 
     h3 {
@@ -176,29 +182,22 @@ const navStyles = css`
         }
       }
 
-
       > li {
         padding: 0.5rem 0;
       }
     }
 
-    &.nav-dropdown-open {
-      ${showReset("absolute")}
-      display: flex;
-    }
-
     @media (max-width: ${mobileBreak}) {
-      border: none;
-
       &.nav-dropdown-open {
         flex-direction: column;
         position: relative;
+        padding-left: 3rem;
       }
 
       > ul {
         border-right: none;
         width: 100%;
-        padding-left: 2rem;
+        padding: 0;
         > li {
           border-bottom: 1px solid #cccccc;
 
@@ -208,14 +207,87 @@ const navStyles = css`
         }
       }
     }
+
+    @media (min-width: ${mobileBreak}) {
+      margin: -1px 0 0 0;
+      border: 1px solid #d0d0d0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+      position: absolute;
+    }
+
+    @media (min-width: ${mobileBreak}) {
+      margin: -1px 0 0 0;
+      border: 1px solid #d0d0d0;
+      border-top: 1px solid #ffffff;
+      padding: 2rem;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      > ul {
+        width: 16rem;
+        padding: 0 1.5rem 0 0;
+        border-right: 1px solid #bfbfbf;
+        margin-right: 1.5rem;
+
+        > li {
+          padding: 0;
+          margin: 0;
+
+          > a {
+            padding: 0;
+            padding: 0.5rem 0;
+            white-space: normal;
+
+            :visited {
+              color: #191919;
+            }
+
+            :hover {
+              color: #8c1d40;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-site-buttons {
+    a + a {
+      margin-left: 1rem;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      padding: 1rem 2rem;
+    }
   }
 `;
 
-const Nav = ({ open, children, ...props }) => {
+const Nav = ({ open, maxMobileHeight, children, ...props }) => {
+  const maxHeight = maxMobileHeight == -1 ? "75vh" : `${maxMobileHeight}px`;
+
   return (
     <nav
       id="asu-header-nav"
-      class={cx("header-nav", open ? "open-nav" : "")}
+      class={cx(
+        "header-nav",
+        open ? "open-nav" : "",
+        css`
+          @media (max-width: ${mobileBreak}) {
+            &.open-nav,
+            &:target {
+              flex-direction: column;
+              width: 100%;
+
+              max-height: ${maxHeight};
+              display: flex;
+            }
+          }
+        `
+      )}
       {...props}
     >
       {children}
@@ -231,4 +303,8 @@ const DdMenu = props => {
   );
 };
 
-export { Nav, DdMenu, IconChevronDown, navStyles, mobileBreak };
+const ButtonForm = props => {
+  return <form class="navbar-site-buttons">{props.children}</form>;
+};
+
+export { Nav, DdMenu, IconChevronDown, ButtonForm, navStyles, mobileBreak };

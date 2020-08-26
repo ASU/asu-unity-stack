@@ -7,13 +7,26 @@ import {
   NavTreeMega,
 } from "../Nav/NavTreeExample";
 
-import Header from ".";
+import { Header } from ".";
 import { Fragment } from "preact/compat";
 
 export default {
   component: Header,
   title: "Header",
 };
+
+const buttons = [
+  {
+    href: "/",
+    text: "CTA Button 1",
+    color: "gold",
+  },
+  {
+    text: "CTA Button 2",
+    href: "#",
+    color: "light",
+  },
+];
 
 export const base = () => (
   <Fragment>
@@ -40,10 +53,24 @@ export const withButtons = () => (
     <Header
       navTree={NavTreeWithButtons}
       title={"University Technology Office"}
+      buttons={buttons}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
 );
+
+const megaButtons = [
+  {
+    text: "Apply Now",
+    color: "gold",
+    href: "https://admissions.asu.edu",
+  },
+  {
+    text: "CTA Button",
+    color: "maroon",
+    href: "https://asu.edu",
+  },
+];
 
 export const withMenuColumns = () => (
   <Fragment>
@@ -53,6 +80,7 @@ export const withMenuColumns = () => (
       unit={
         "School of Computing, Informatics, and Decisions Systems Engineering"
       }
+      buttons={megaButtons}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>

@@ -1,9 +1,10 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { Fragment } from "preact/compat";
+import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
-import {cx} from "emotion";
+import { Icon } from "../Icons";
+import { Button } from "../Button";
+import { Heading } from "../Heading";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
@@ -11,51 +12,47 @@ import {cx} from "emotion";
  * require this to be safe: https://www.npmjs.com/package/preact-html-converter
  * @param {} props
  */
-const NavItem = props => {
+const NavItem = ({ onFocus, itemRef, ...props }) => {
   let inner = "";
-  const item = props.item;
 
-  switch (item.type) {
+  const { type, text, color, ...item } = props.item;
+
+  switch (type) {
     case "button":
       {
-        const bcolor = item.color ? `btn-${item.color}` : '';
-        inner = <button class={`btn btn-medium ${bcolor}`}>{item.text}</button>;
+        const bcolor = color ? { [color]: true } : {};
+        inner = (
+          <Button medium {...bcolor}>
+            {text}
+          </Button>
+        );
       }
       break;
     case "icon":
+      // Have to use className here because FontAwesome React component expects it
       inner = (
-        <Fragment>
-          <span class={cx(item.class, "icon-nav-item")}>
-            <span class="sr-only">{item.text}</span>
-          </span>
-          <div class="mobile-only">{item.text}</div>
-        </Fragment>
+        <>
+          <Icon type={item.class} className="icon-nav-item" />
+          <span class="mobile-only">{text}</span>
+        </>
       );
       break;
-
     case "heading":
-      inner = <h3>{item.text}</h3>;
+      inner = <Heading type="h3">{text}</Heading>;
       break;
     default:
-      inner = item.text;
+      inner = text;
       break;
   }
 
   // return the heading without a link if item type is heading
-  if (item.type == "heading") {
+  if (type == "heading") {
     return inner;
   }
 
   return (
     <li>
-      <a
-        href={item.href}
-        title={item.title ? item.title : item.text}
-        target={item.target}
-        {...(props.onFocus ? { onFocus: props.onFocus } : "")}
-        ref={props.itemRef}
-        tabIndex="0"
-      >
+      <a {...item} {...(onFocus ? { onFocus } : "")} ref={itemRef}>
         {inner}
       </a>
     </li>
@@ -74,6 +71,7 @@ NavItem.propTypes = {
   top: PropTypes.bool, // Is this a top-level nav item?
   location: PropTypes.array, // Array representation of the item's location in the Nav
   onFocus: PropTypes.func,
+  type: PropTypes.string,
 };
 
 NavItem.defaultProps = {};

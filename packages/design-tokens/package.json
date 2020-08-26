@@ -4,7 +4,7 @@
   "description": "",
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+    "registry": "http://registry.web.asu.edu/"
   },
   "repository": {
     "type": "git",

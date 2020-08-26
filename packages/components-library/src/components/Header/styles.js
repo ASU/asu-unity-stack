@@ -5,30 +5,32 @@ import { cx, css } from "emotion";
 import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import {
-  hiddenStyle,
-  showReset,
-  mobileBreak,
-  containerSize,
-} from "../../styles/common";
-import { Icon } from "../Icons/styles";
+import { searchStyles } from "../Search/styles";
+import { mobileBreak, containerSize } from "../../styles/common";
 
-const Header = ({ scrollPosition, children, ...props }) => {
+import { Icon } from "../Icons";
+
+const Header = ({ children, ...props }) => {
   return (
     <header
+      {...props}
       class={cx(
-        scrollPosition > 0 ? "scrolled" : "",
+        props.class,
         css`
-          * {
-            margin: 0;
-            padding: 0;
+          *,
+          *:before,
+          *:after {
             box-sizing: border-box;
-            text-decoration: none;
-            list-style: none;
+          }
+
+          :focus {
+            outline: 0;
+            box-shadow: 0 0 8px #00baff !important;
           }
 
           a {
             cursor: pointer;
+            text-decoration: none;
           }
 
           padding: 0;
@@ -41,6 +43,7 @@ const Header = ({ scrollPosition, children, ...props }) => {
           border-bottom: 1px solid #d0d0d0;
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           top: 0;
+          left: 0;
 
           div,
           h1 {
@@ -50,23 +53,8 @@ const Header = ({ scrollPosition, children, ...props }) => {
           &.scrolled {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           }
-          &.scrolled .universal-nav {
-            ${hiddenStyle}
-            transition: translateY(-24px);
-          }
-
-          &.scrolled .primary-nav .navbar-brand d img {
-            height: 64px;
-          }
-          @media (max-width: ${mobileBreak}) {
-            &.scrolled .primary-nav .navbar-brand d img {
-              height: 28px;
-            }
-          }
 
           @media (max-width: ${mobileBreak}) {
-            max-height: 75vh;
-
             &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
             }
@@ -82,7 +70,6 @@ const Header = ({ scrollPosition, children, ...props }) => {
         titleStyles,
         navbarTogglerStyles
       )}
-      {...props}
     >
       {children}
     </header>
@@ -153,51 +140,86 @@ const universalStyles = css`
     height: 32px;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
+    &.search-open {
+      height: 48px;
+    }
+
     > div {
       width: 100%;
-      max-width: 1200px;
+      max-width: ${containerSize};
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
 
-      > a {
-        display: inline-block;
+      a {
+        display: inline-flex;
         font-size: 0.75rem;
         padding: 0.25rem 0.5rem;
         color: #484848;
+        margin: 0;
       }
     }
 
     @media (max-width: ${mobileBreak}) {
-      ${hiddenStyle}
+      display: none;
       padding: 0;
       transition: none;
+      height: auto;
+
       &.mobile-open {
-        ${showReset("fixed")}
-        bottom: 0;
         z-index: 998;
         width 100%;
         display: flex;
         justify-content: center;
       }
 
-      > div {
-        > a {
-          width: 50%;
-          line-height: 2rem;
+
+
+
+      .nav-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: row;
+        justify-items: start;
+        width: 100%;
+
+        a {
+          color: #191919;
+          margin-right: 0;
           text-align: center;
-          border: 1px solid #cccccc;
-          font-size: .9rem;
+          width: 100%;
+          font-size: 0.875rem;
+          padding: 1rem 1.5rem;
+          border-top: 1px solid #d0d0d0;
+          display:block;
+
+          :nth-child(even) {
+            border-left: 1px solid #d0d0d0;
+          }
         }
       }
+
+    }
+  }
+
+  @media (min-width: ${mobileBreak}) {
+    &.scrolled .universal-nav {
+      height: 0;
+      overflow: hidden;
     }
   }
 `;
 
 const UniversalNav = props => {
   return (
-    <div class={cx("universal-nav", props.open ? "mobile-open" : "")}>
+    <div
+      class={cx(
+        "universal-nav",
+        props.open ? "mobile-open" : "",
+        props.searchOpen ? "search-open" : ""
+      )}
+    >
       {props.children}
     </div>
   );
@@ -226,7 +248,7 @@ const primaryStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
-      position: fixed;
+      order: -1;
       display: flex;
       top: 0;
       width: 100%;
@@ -251,6 +273,7 @@ const PrimaryNav = props => {
 const NavbarContainerStyles = css`
   .navbar-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
 
@@ -280,6 +303,7 @@ const logoStyles = css`
 
     .horiz {
       display: none;
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     }
 
     .vert {
@@ -313,6 +337,20 @@ const logoStyles = css`
       }
     }
   }
+
+  &.scrolled .primary-nav .navbar-brand d img {
+    height: 64px;
+  }
+
+  @media (max-width: ${mobileBreak}) {
+    &.scrolled .primary-nav .navbar-brand d img {
+      height: 28px;
+    }
+
+    &.scrolled .navbar-brand .horiz {
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 const Logo = props => {
@@ -328,15 +366,12 @@ const Logo = props => {
 
 /** Title */
 const titleStyles = css`
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
   .title {
     line-height: 1;
     font-size: 1rem;
     font-weight: 700;
     padding: 0 2rem 1.5rem 2rem;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
     > a {
       display: none;
@@ -366,6 +401,20 @@ const titleStyles = css`
       }
     }
   }
+
+  &.scrolled .title {
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: ${mobileBreak}) {
+    &.scrolled .title.subdomain-name {
+      font-size: 1.5rem;
+    }
+
+    &.scrolled .title {
+      padding-bottom: 0;
+    }
+  }
 `;
 
 const Title = ({ title, unit, ...props }) => {
@@ -380,105 +429,14 @@ const Title = ({ title, unit, ...props }) => {
   return <div class="title subdomain-name">{title}</div>;
 };
 
-/** Search */
-const searchStyles = css`
-  .asu-search-form {
-    > form {
-      display: none;
-
-      > input {
-        padding: 0.1rem 2rem;
-      }
-
-      &.show-search-input {
-        display: inline-flex;
-      }
-    }
-
-    > a {
-      display: inline-block;
-      font-size: 0.75rem;
-      color: #484848;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      width: 100%;
-      display: inline-block;
-      order: -1;
-
-      > form {
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
-        padding: 1rem 2rem;
-
-        > input {
-          padding: 0.5rem 2rem;
-          display: inline-block;
-          width: 100%;
-          border: 0;
-        }
-
-        > button {
-          font-size: 1rem;
-          opacity: 0.75;
-        }
-      }
-
-      > a {
-        display: none;
-      }
-
-      button {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-
-      > svg {
-        ${hiddenStyle}
-      }
-    }
-
-    button {
-      font-size: 0.75rem;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      margin-right: -30px;
-      z-index: 20;
-      width: 1.5rem;
-      height: 1.5rem;
-      padding: 0;
-    }
-  }
-`;
-
-const SearchForm = props => {
-  // TODO: handle custom search
-  return (
-    <div class="asu-search-form">
-      <form
-        action="https://search.asu.edu/search"
-        method="get"
-        role="search"
-        class={props.open ? "show-search-input" : ""}
-      >
-        <input name="q" type="text" />
-      </form>
-      {props.children}
-    </div>
-  );
-};
-
 export {
   Header,
   UniversalNav,
   PrimaryNav,
   Title,
   Logo,
-  SearchForm,
-  showReset,
   NavbarContainer,
   Icon,
   NavbarToggler,
+  mobileBreak,
 };

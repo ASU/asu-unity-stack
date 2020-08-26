@@ -1,14 +1,15 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useMemo } from "preact/compat";
+import { useEffect, useState, useMemo, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
+import { Button } from "../Button";
 import * as S from "./styles";
 
 /**
- * Render entire Nav. This includes
+ * Render entire Nav.
  * @param {} props
  */
 const Nav = ({
@@ -16,7 +17,7 @@ const Nav = ({
   width,
   height,
   mobileOpen,
-  maxHeight,
+  maxMobileHeight,
   buttons,
   ...props
 }) => {
@@ -28,6 +29,9 @@ const Nav = ({
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
   };
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
 
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
@@ -104,7 +108,6 @@ const Nav = ({
     }
   };
 
-
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
     const derState = deriveState(focused, navList);
@@ -116,18 +119,42 @@ const Nav = ({
         if (navList[x].ref) {
           navList[x].ref.current.focus();
         }
+
+        // if setting focus on nav item without children, close any
+        // open dropdown navs
+        if (!derState.hasSubs) {
+          setOpen(-1);
+        }
+
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
     }
   }, [focused, navList]);
 
+  /*** Detecting click outside of container */
+  const navRef = useRef(null);
 
-  // Get breakpoint from design token
-  const bpoint = parseInt(S.mobileBreak, 10);
+  useEffect(() => {
+
+    // close nav if clicked outside nav
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpen(-1);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navRef]);
 
   // handle focus moving out of Nav
   const onBlurNav = e => {
+    console.log(e, "THE VENT");
     // only change state if focus moves away from
     // container element
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -137,11 +164,12 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen}>
+    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight} >
       <ul
-        {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
+        {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
+        ref={navRef}
       >
         {navList.map((item, index) => {
           const navItem = item.item;
@@ -182,7 +210,20 @@ const Nav = ({
         })}
       </ul>
 
-      {}
+      {buttons.length > 0 && (
+        <S.ButtonForm>
+          {buttons.map((item, index) => {
+            let color = item.color ? item.color : "maroon";
+
+            // Return a single nav item if there are no submenus
+            return (
+              <Button href={item.href} {...{ [color]: true }} medium>
+                {item.text}
+              </Button>
+            );
+          })}
+        </S.ButtonForm>
+      )}
     </S.Nav>
   );
 };
@@ -193,7 +234,7 @@ Nav.propTypes = {
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  maxHeight: PropTypes.number,
+  maxMobileHeight: PropTypes.number,
 };
 
 Nav.defaultProps = {
@@ -201,7 +242,7 @@ Nav.defaultProps = {
   mobileOpen: false,
   width: 1920,
   height: 1080,
-  maxHeight: "75vh",
+  maxMobileHeight: -1,
   buttons: [],
 };
 
@@ -383,4 +424,4 @@ const checkFocus = (move, navList) => {
   return false;
 };
 
-export default Nav;
+export { Nav };

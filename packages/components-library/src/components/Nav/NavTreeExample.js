@@ -1,10 +1,10 @@
 const BasicNavTree = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -177,11 +177,11 @@ const BasicNavTree = [
 
 const NavTreeWithButtons = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -337,32 +337,15 @@ const NavTreeWithButtons = [
     href: "#",
     target: "_top",
   },
-  {
-    title: "Apply Now",
-    text: "Apply Now",
-    type: "button",
-    color: "gold",
-    href: "https://admissions.asu.edu",
-    target: "_top",
-  },
-  {
-    title: "CTA Button",
-    text: "CTA Button",
-    type: "button",
-    color: "maroon",
-    href: "https://asu.edu",
-    target: "_top",
-  },
 ];
-
 
 const NavTreeMega = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    title: "Home",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
     title: "Degree programs",
@@ -395,11 +378,10 @@ const NavTreeMega = [
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
-          target: "_top",
           type: "button",
-          title: "Athletics",
-          text: "CTA Action 2"
-        }
+          text: "CTA Action 2",
+          color: "maroon"
+        },
       ],
       [
         {
@@ -492,8 +474,8 @@ const NavTreeMega = [
         {
           href: "https://campus.asu.edu/downtown/",
           type: "button",
-          title: "Downtown Phoenix campus",
           text: "Downtown Phoenix",
+          color: "light"
         },
       ],
       [
@@ -540,7 +522,7 @@ const NavTreeMega = [
           title: "",
           text: "China",
         },
-      ]
+      ],
     ],
   },
   {
@@ -548,23 +530,7 @@ const NavTreeMega = [
     text: "Research",
     href: "#",
     target: "_top",
-  },
-  {
-    title: "Apply Now",
-    text: "Apply Now",
-    type: "button",
-    color: "gold",
-    href: "https://admissions.asu.edu",
-    target: "_top",
-  },
-  {
-    title: "CTA Button",
-    text: "CTA Button",
-    type: "button",
-    color: "maroon",
-    href: "https://asu.edu",
-    target: "_top",
-  },
+  }
 ];
 
-export {BasicNavTree, NavTreeWithButtons, NavTreeMega}
+export { BasicNavTree, NavTreeWithButtons, NavTreeMega };

@@ -1,12 +1,12 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.0.19",
+  "version": "1.1.0",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+    "registry": "http://registry.web.asu.edu/"
   },
   "repository": {
     "type": "git",

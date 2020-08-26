@@ -1,10 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/compat";
+import { h } from "preact";
+import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import Nav from "../Nav";
+import { Nav } from "../Nav";
+import { UniversalSearch } from "../Search";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
@@ -16,14 +17,23 @@ const Header = ({
   userName,
   loginLink,
   logoutLink,
+  buttons,
   ...props
 }) => {
   // Mobile menu open state and helper functions
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSearch, setSearchOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // State to set mobile nav max height. Needed for fixed positioning elements
+  const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
+
+  // get window dimensions
+  const { height, width } = useWindowDimensions();
 
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
-  const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
   // Scroll position state handling for adding 'scroll' class
   const [scrollPosition, setSrollPosition] = useState(0);
@@ -31,9 +41,6 @@ const Header = ({
     const position = window.pageYOffset;
     setSrollPosition(position);
   };
-
-  // get window dimensions
-  const { height, width } = useWindowDimensions();
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -43,24 +50,37 @@ const Header = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (width < bpoint && mobileOpen) {
+      const uHeight = universalRef.current.base.clientHeight;
+      // TODO: measure this dynamically
+      const pHeight = 96;
+      const newHeight = height - uHeight - pHeight;
+
+      setMaxMobileNavHeight(newHeight);
+    }
+  }, [height, width, mobileOpen]);
+
+  const universalRef = useRef(null);
+
   return (
-    <S.Header scrollPosition={scrollPosition}>
-      <S.UniversalNav open={mobileOpen}>
+    <S.Header class={scrollPosition > 0 || mobileOpen ? "scrolled" : ""}>
+      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <div>
-          <a href="https://www.asu.edu/">ASU home</a>
-          <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          {loggedIn ? (
-            <span>
-              {userName}
-              <a href={logoutLink}>Sign Out</a>
-            </span>
-          ) : (
-            <a href={loginLink}>Sign in</a>
-          )}
-          <S.SearchForm open={openSearch}>
-            <S.Icon type="search" onMouseDown={toggleSearch} />
-          </S.SearchForm>
+          <div class="nav-grid">
+            <a href="https://www.asu.edu/">ASU home</a>
+            <a href="https://my.asu.edu/">My ASU</a>
+            <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+            {loggedIn ? (
+              <span>
+                {userName}
+                <a href={logoutLink}>Sign Out</a>
+              </span>
+            ) : (
+              <a href={loginLink}>Sign in</a>
+            )}
+          </div>
+          <UniversalSearch open={searchOpen} setOpen={setSearchOpen} />
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
@@ -85,6 +105,8 @@ const Header = ({
                   mobileOpen,
                   height,
                   width,
+                  buttons,
+                  maxMobileHeight: maxMobileNavHeight,
                 }}
               />
             </S.NavbarContainer>
@@ -109,6 +131,7 @@ Header.propTypes = {
   userName: PropTypes.string,
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
+  buttons: PropTypes.arrayOf(PropTypes.object),
 };
 
 Header.defaultProps = {
@@ -126,6 +149,7 @@ Header.defaultProps = {
   userName: "",
   loginLink: "https://weblogin.asu.edu/cas/login",
   logoutLink: "https://weblogin.asu.edu/cas/logout",
+  buttons: [],
 };
 
-export default Header;
+export { Header };

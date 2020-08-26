@@ -9,19 +9,25 @@ import Tokens from "../../theme";
  */
 const buttonStyles = css`
   .btn {
-    background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
-    background-position: ${Tokens.ComponentButtonBackgroundPosition};
-    background-repeat: ${Tokens.ComponentButtonBackgroundRepeat};
-    border-radius: ${Tokens.ComponentButtonBorderRadius};
-    display: ${Tokens.ComponentButtonDisplay};
-    font-weight: ${Tokens.ComponentButtonFontWeight};
-    line-height: ${Tokens.ComponentButtonLineHeight};
-    text-decoration: ${Tokens.ComponentButtonTextDecoration};
-    max-width: ${Tokens.ComponentButtonMaxWidth};
-    padding: ${Tokens.ComponentButtonPaddingY} ${Tokens.ComponentButtonPaddingX};
-    text-align: ${Tokens.ComponentButtonTextAlign};
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    color: #191919;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
     border: 1px solid transparent;
-    cursor: pointer;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    border-radius: 400rem;
+    transition: 0.03s ease-in-out;
+
+    :not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
 
     :hover {
       transform: ${Tokens.ComponentButtonHoverStateTransform};
@@ -80,25 +86,31 @@ const buttonStyles = css`
 `;
 
 const Button = props => {
-
-  const Element = props.type == "link" ? 'a' : 'button';
+  const Element = props.type == "link" ? "a" : "button";
 
   return (
     <Element
-      class={cx(css`
-        background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
-        background-position: ${Tokens.ComponentButtonBackgroundPosition};
-        background-repeat: ${Tokens.ComponentButtonBackgroundRepeat};
-        border-radius: ${Tokens.ComponentButtonBorderRadius};
-        display: ${Tokens.ComponentButtonDisplay};
-        font-weight: ${Tokens.ComponentButtonFontWeight};
-        line-height: ${Tokens.ComponentButtonLineHeight};
-        text-decoration: ${Tokens.ComponentButtonTextDecoration};
-        max-width: ${Tokens.ComponentButtonMaxWidth};
-        padding: ${Tokens.ComponentButtonPaddingY} ${Tokens.ComponentButtonPaddingX};
-        text-align: ${Tokens.ComponentButtonTextAlign};
-        border: 1px solid transparent;
-        cursor: pointer;
+      class={cx(
+        css`
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          color: #191919;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          user-select: none;
+          background-color: transparent;
+          border: 1px solid transparent;
+          padding: 1rem 2rem;
+          font-size: 1rem;
+          line-height: 1rem;
+          border-radius: 400rem;
+          transition: 0.03s ease-in-out;
+
+          :not(:disabled):not(.disabled) {
+            cursor: pointer;
+          }
 
         :hover {
           transform: ${Tokens.ComponentButtonHoverStateTransform};
@@ -129,11 +141,8 @@ const Button = props => {
         ${
           props.medium &&
           css`
-            font-size: ${Tokens.ComponentButtonMediumFontSize};
-            height: ${Tokens.ComponentButtonMediumHeight};
-            min-width: ${Tokens.ComponentButtonMediumMinWidth};
-            padding: ${Tokens.ComponentButtonPaddingYMedium}
-              ${Tokens.ComponentButtonPaddingXMedium};
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
           `
         }
 
@@ -157,8 +166,9 @@ const Button = props => {
         ${
           props.maroon &&
           css`
-            color: ${Tokens.ComponentButtonMaroonColor};
-            background-color: ${Tokens.ComponentButtonMaroonBackgroundColor};
+            color: #ffffff;
+            background-color: #8c1d40;
+            border-color: #8c1d40;
           `
         }
 
@@ -177,9 +187,11 @@ const Button = props => {
             background-color: ${Tokens.ComponentButtonLightBackgroundColor};
           `
         }
-      `, props.class)}
-
+      `,
+        props.class
+      )}
       onClick={props.onClick}
+      href={props.href}
     >
       {props.children}
     </Element>
