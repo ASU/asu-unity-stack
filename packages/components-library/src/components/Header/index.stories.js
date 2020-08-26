@@ -7,12 +7,15 @@ import {
   NavTreeMega,
 } from "../Nav/NavTreeExample";
 
+import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
+
 import { Header } from ".";
 import { Fragment } from "preact/compat";
 
 export default {
   component: Header,
   title: "Header",
+  decorators: [withKnobs],
 };
 
 const buttons = [
@@ -31,11 +34,16 @@ const buttons = [
 export const base = () => (
   <Fragment>
     <Header
-      navTree={BasicNavTree}
-      title={
+      loggedIn={boolean("loggedIn", false)}
+      userName={text("userName", "")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
+      navTree={object("navTree", BasicNavTree)}
+      title={text(
+        "title",
         "School of Computing, Informatics, and Decisions Systems Engineering"
-      }
-      unit={"Ira A. Fulton Schools of Engineering"}
+      )}
+      unit={text("unit", "Ira A. Fulton Schools of Engineering")}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
@@ -51,9 +59,13 @@ export const mobile = () => (
 export const withButtons = () => (
   <Fragment>
     <Header
-      navTree={NavTreeWithButtons}
-      title={"University Technology Office"}
-      buttons={buttons}
+      navTree={object("navTree", NavTreeWithButtons)}
+      title={text("title", "University Technology Office")}
+      buttons={object("buttons", buttons)}
+      loggedIn={boolean("loggedIn", true)}
+      userName={text("userName", "Colton")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
@@ -75,12 +87,17 @@ const megaButtons = [
 export const withMenuColumns = () => (
   <Fragment>
     <Header
-      navTree={NavTreeMega}
-      title={"Ira A. Fulton Schools of Engineering"}
-      unit={
+      navTree={object("navTree", NavTreeMega)}
+      title={text("title", "Ira A. Fulton Schools of Engineering")}
+      unit={text(
+        "unit",
         "School of Computing, Informatics, and Decisions Systems Engineering"
-      }
-      buttons={megaButtons}
+      )}
+      buttons={object("buttons", megaButtons)}
+      loggedIn={boolean("loggedIn", true)}
+      userName={text("userName", "Colton")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
     />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>

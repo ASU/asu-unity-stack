@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Nav } from "../Nav";
 import { UniversalSearch } from "../Search";
+import { Login } from "../Login";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
@@ -75,14 +76,7 @@ const Header = ({
             <a href="https://www.asu.edu/">ASU home</a>
             <a href="https://my.asu.edu/">My ASU</a>
             <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-            {loggedIn ? (
-              <span>
-                {userName}
-                <a href={logoutLink}>Sign Out</a>
-              </span>
-            ) : (
-              <a href={loginLink}>Sign in</a>
-            )}
+            <Login {...{loggedIn, loginLink, logoutLink, userName}} />
           </div>
           <UniversalSearch open={searchOpen} setOpen={setSearchOpen} />
         </div>
@@ -149,10 +143,9 @@ Header.defaultProps = {
   },
   title: "",
   unit: "",
-  loggedIn: false,
-  userName: "",
-  loginLink: "https://weblogin.asu.edu/cas/login",
-  logoutLink: "https://weblogin.asu.edu/cas/logout",
+  loggedIn: Login.defaultProps.loggedIn,
+  loginLink: Login.defaultProps.loginLink,
+  logoutLink: Login.defaultProps.logoutLink,
   buttons: [],
 };
 

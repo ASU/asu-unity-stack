@@ -6,6 +6,7 @@ import Tokens from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
+import { loginStyles } from "../Login/styles";
 import { mobileBreak, containerSize } from "../../styles/common";
 
 import { Icon } from "../Icons";
@@ -68,6 +69,7 @@ const Header = ({ children, ...props }) => {
         universalStyles,
         searchStyles,
         titleStyles,
+        loginStyles,
         navbarTogglerStyles
       )}
     >
@@ -148,12 +150,14 @@ const universalStyles = css`
       align-items: center;
       justify-content: flex-end;
 
-      a {
-        display: inline-flex;
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-        color: #484848;
-        margin: 0;
+      > div {
+        > a {
+          display: inline-flex;
+          font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+          color: #484848;
+          margin: 0;
+        }
       }
     }
 
@@ -177,7 +181,7 @@ const universalStyles = css`
         justify-items: start;
         width: 100%;
 
-        a {
+        > a, div {
           color: #191919;
           margin-right: 0;
           text-align: center;
@@ -205,6 +209,10 @@ const universalStyles = css`
     .universal-nav {
       &.search-open {
         height: 48px;
+      }
+
+      .nav-grid {
+        display: flex;
       }
     }
   }
