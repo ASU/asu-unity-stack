@@ -189,6 +189,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 --------------------------------------------------------------*/
 #asu-header .navbar,
 #asu-header .navbar-brand .horiz,
+#asu-header .navbar-brand .vert,
 #asu-header .title {
   @include transition;
 }
@@ -210,8 +211,9 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     }
 
     .navbar-brand .vert {
-      margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-1 0;
+      margin: 12px $uds-size-spacing-2 12px 0;
       padding: $uds-size-spacing-half 0;
+      height: 64px;
     }
 
     .title {
@@ -242,8 +244,13 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
       }
     }
 
+    #header-main .navbar-brand .vert {
+      padding: 0;
+    }
+
     #header-main .title {
       padding-bottom: 0;
+      margin: 16px 0;
     }
 
     #header-main .title.subdomain-name {
@@ -515,6 +522,11 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     svg.fa-chevron-down {
       float: right;
       font-size: $uds-size-font-large;
+      @include transition;
+    }
+
+    &.show svg.fa-chevron-down {
+      transform: rotate(180deg);
     }
 
     &:after {
@@ -605,9 +617,9 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     .navbar-brand {
       .vert {
         display: block;
-        height: 80px;
+        height: 72px;
         width: auto;
-        margin: $uds-size-spacing-2 $uds-size-spacing-2 $uds-size-spacing-2 0;
+        margin: 20px $uds-size-spacing-2 20px 0; // Magic numbers for vertical centering.
       }
 
       .horiz {
@@ -633,7 +645,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
     .title {
       line-height: 1;
-      margin: $uds-size-spacing-2 0;
+      margin: $uds-size-spacing-2 0 $uds-size-spacing-1 0;
       font-weight: 700;
       padding: 0;
 
@@ -650,7 +662,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
       &.subdomain-name {
         font-size: $uds-size-font-xxl;
-        margin: $uds-size-spacing-3 0 $uds-size-spacing-1 0;
+        margin: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
         font-weight: 700;
       }
     }
@@ -673,6 +685,8 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     }
 
     .navbar-nav {
+      line-height: $uds-size-spacing-2;
+
       >.nav-link {
         border: 0;
         font-size: $uds-size-font-medium;
