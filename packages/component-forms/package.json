@@ -27,7 +27,7 @@
   "devDependencies": {},
   "dependencies": {
     "@asu-design-system/components-library": "^1.0.19",
-    "@asu-design-system/design-tokens": "^1.0.1",
+    "@asu-design-system/design-tokens": "^1.1.0",
     "emotion": "^10.0.27",
     "formik": "^2.1.5",
     "preact": "^10.4.4",
