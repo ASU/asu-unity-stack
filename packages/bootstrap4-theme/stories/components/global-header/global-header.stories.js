@@ -71,7 +71,7 @@ storiesOf('Components/Global Header', module)
                   <div class="navbar-nav">
 
                     <a class="nav-link nav-link-home active" href="/">
-                      <span class="d-lg-none">Home</span>
+                      <span class="d-xl-none">Home</span>
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
 
@@ -198,7 +198,7 @@ storiesOf('Components/Global Header', module)
                   <div class="navbar-nav">
 
                     <a class="nav-link nav-link-home" href="/">
-                      <span class="d-lg-none">Home</span>
+                      <span class="d-xl-none">Home</span>
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
 
@@ -688,7 +688,7 @@ storiesOf('Components/Global Header', module)
                   <div class="navbar-nav">
 
                     <a class="nav-link nav-link-home active" href="/">
-                      <span class="d-lg-none">Home</span>
+                      <span class="d-xl-none">Home</span>
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
 
