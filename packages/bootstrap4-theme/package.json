@@ -10,7 +10,7 @@
   },
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://registry.web.asu.edu/"
+    "registry": "https://registry.web.asu.edu/"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",

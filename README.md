@@ -133,11 +133,11 @@ yarn stop # stop the testing server
 
 2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
 
-```@asu-design-system:registry=http://registry.web.asu.edu/```
+```@asu-design-system:registry=https://registry.web.asu.edu/```
 
 This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, try to login using:
 
-```npm login --registry http://registry.web.asu.edu/```
+```npm login --registry https://registry.web.asu.edu/```
 
 3. Test installing packages using yarn or npm inside of another NPM project:
 
