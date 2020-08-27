@@ -38,9 +38,10 @@ const shared = {
 
 // development bundle config
 module.exports.push({
+  ...shared,
   context: path.join(__dirname, "src"),
   mode: "development",
-  entry: shared.entry,
+
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].development.js",
@@ -48,16 +49,14 @@ module.exports.push({
     library: "AsuWeb[name]",
     umdNamedDefine: true,
   },
-  module: shared.module,
-  resolve: shared.resolve
 
 });
 
 // production bundle
 module.exports.push({
+  ...shared,
   context: path.join(__dirname, "src"),
   mode: "production",
-  entry: shared.entry,
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].production.js",
@@ -82,8 +81,6 @@ module.exports.push({
       },
     })],
   },
-  module: shared.module,
-  resolve: shared.resolve
 });
 
 // SSR bundle config - should be used server-side only
