@@ -18,7 +18,6 @@ const DropNav = ({
   hasFocus,
   ...props
 }) => {
-
   const toggle = index => {
     if (isOpen) {
       setOpen(-1);
@@ -31,7 +30,6 @@ const DropNav = ({
     setOpen(index);
   };
 
-
   return (
     <li>
       <a
@@ -42,9 +40,8 @@ const DropNav = ({
           e.preventDefault();
           toggle(pIndex);
           setFocus([pIndex, -1, -1]);
-
         }}
-        onFocus={(e) => {
+        onFocus={e => {
           navOpen(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
@@ -61,12 +58,20 @@ const DropNav = ({
               {sub.map((item, ind) => {
                 return (
                   <NavItem
-                    item={item}
                     onFocus={() => {
                       setFocus([pIndex, index, ind]);
                       navOpen(pIndex);
                     }}
                     itemRef={submenus[index][ind].ref}
+                    type={item.hasOwnProperty("type") ? item.type : undefined}
+                    color={
+                      item.hasOwnProperty("color") ? item.color : undefined
+                    }
+                    class={
+                      item.hasOwnProperty("class") ? item.class : undefined
+                    }
+                    href={item.hasOwnProperty("href") ? item.href : undefined}
+                    text={item.text}
                   />
                 );
               })}
@@ -96,7 +101,7 @@ DropNav.propTypes = {
   pIndex: PropTypes.number.isRequired,
   isOpen: PropTypes.bool,
   setOpen: PropTypes.func,
-  hasFocus: PropTypes.bool
+  hasFocus: PropTypes.bool,
 };
 
 DropNav.defaultProps = {
