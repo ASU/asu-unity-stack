@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { css, cx } from "emotion";
-import { hiddenStyle, showReset, mobileBreak } from "../../styles/common";
+import { hiddenStyle, showReset, mobileBreak, srOnly} from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
 /**
@@ -63,7 +63,7 @@ const navStyles = css`
     }
 
     .mobile-only {
-      display: none;
+      ${hiddenStyle}
     }
 
     @media (min-width: ${mobileBreak}) {
@@ -88,7 +88,7 @@ const navStyles = css`
       }
 
       .mobile-only {
-        display: flex;
+        ${showReset()}
       }
 
       .icon-nav-item {

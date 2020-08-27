@@ -12,10 +12,8 @@ import { Heading } from "../Heading";
  * require this to be safe: https://www.npmjs.com/package/preact-html-converter
  * @param {} props
  */
-const NavItem = ({ onFocus, itemRef, ...props }) => {
+const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
   let inner = "";
-
-  const { type, text, color, ...item } = props.item;
 
   switch (type) {
     case "button":
@@ -32,8 +30,8 @@ const NavItem = ({ onFocus, itemRef, ...props }) => {
       // Have to use className here because FontAwesome React component expects it
       inner = (
         <>
-          <Icon type={item.class} className="icon-nav-item" />
-          <span class="sr-only">{text}</span>
+          <Icon type={props.class} className="icon-nav-item" />
+          <span class="mobile-only">{text}</span>
         </>
       );
       break;
@@ -52,7 +50,7 @@ const NavItem = ({ onFocus, itemRef, ...props }) => {
 
   return (
     <li>
-      <a {...item} {...(onFocus ? { onFocus } : "")} ref={itemRef}>
+      <a href={href} {...(onFocus ? { onFocus } : "")} ref={itemRef}>
         {inner}
       </a>
     </li>
@@ -68,10 +66,12 @@ NavItem.propTypes = {
     // Or the instance of a DOM native element (see the note about SSR)
     PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
   ]),
-  top: PropTypes.bool, // Is this a top-level nav item?
   location: PropTypes.array, // Array representation of the item's location in the Nav
   onFocus: PropTypes.func,
   type: PropTypes.string,
+  href: PropTypes.string,
+  text: PropTypes.string.isRequired, // text always required (accessiblity and mobile)
+  color: PropTypes.string,
 };
 
 NavItem.defaultProps = {};

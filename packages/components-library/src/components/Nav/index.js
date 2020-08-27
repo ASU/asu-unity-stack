@@ -125,7 +125,6 @@ const Nav = ({
         if (!derState.hasSubs) {
           setOpen(-1);
         }
-
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
@@ -136,13 +135,12 @@ const Nav = ({
   const navRef = useRef(null);
 
   useEffect(() => {
-
     // close nav if clicked outside nav
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (navRef.current && !navRef.current.contains(event.target)) {
         setOpen(-1);
       }
-    }
+    };
 
     // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
@@ -163,7 +161,7 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight} >
+    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight}>
       <ul
         {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
@@ -198,12 +196,15 @@ const Nav = ({
           // Return a single nav item if there are no submenus
           return (
             <NavItem
-              item={navItem}
               onFocus={() => {
                 setFocusCallback([index, -1, -1]);
               }}
               itemRef={item.ref}
-              tabIndex="0"
+              type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
+              color={navItem.hasOwnProperty("color") ? navItem.color : undefined}
+              class={navItem.hasOwnProperty("class") ? navItem.class : undefined}
+              href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
+              text={navItem.text}
             />
           );
         })}

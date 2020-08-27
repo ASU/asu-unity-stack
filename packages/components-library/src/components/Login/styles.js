@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import { mobileBreak, containerSize } from "../../styles/common";
+import { mobileBreak, containerSize } from "../../theme";
 
 const loginStyles = css`
   .login-status {
