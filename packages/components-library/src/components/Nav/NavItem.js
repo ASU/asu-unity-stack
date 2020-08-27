@@ -31,7 +31,7 @@ const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
       inner = (
         <>
           <Icon type={props.class} className="icon-nav-item" />
-          <span class="sr-only">{text}</span>
+          <span class="mobile-only">{text}</span>
         </>
       );
       break;

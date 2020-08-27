@@ -6,7 +6,7 @@
   "module": "esm/index.js",
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://registry.web.asu.edu/"
+    "registry": "https://registry.web.asu.edu/"
   },
   "repository": {
     "type": "git",

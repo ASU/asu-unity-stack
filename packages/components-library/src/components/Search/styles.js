@@ -2,12 +2,11 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import Tokens from "../../theme";
-import {
+import Tokens, {
   mobileBreak,
   containerSize,
   srOnly,
-} from "../../styles/common";
+} from "../../theme";
 
 /** Search */
 const searchStyles = css`

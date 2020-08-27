@@ -2,13 +2,11 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import Tokens from "../../theme";
+import Tokens, { mobileBreak, containerSize } from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
-import { mobileBreak, containerSize } from "../../styles/common";
-
 import { Icon } from "../Icons";
 
 const Header = ({ children, ...props }) => {
