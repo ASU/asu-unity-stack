@@ -1,5 +1,5 @@
 
-import {HydratePreact, RenderPreact} from "./helpers";
+import {HydratePreact, RenderPreact, initHeader} from "./helpers";
 
 export * from "./components";
-export {HydratePreact, RenderPreact};
+export {HydratePreact, RenderPreact, initHeader};

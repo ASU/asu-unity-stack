@@ -8,8 +8,7 @@ import { Heading } from "../Heading";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
- * TODO: test ability to render arbitrary html string as nav Item. Perhaps would
- * require this to be safe: https://www.npmjs.com/package/preact-html-converter
+ * TODO: test ability to render arbitrary html string as nav Item.
  * @param {} props
  */
 const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
@@ -19,6 +18,7 @@ const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
     case "button":
       {
         const bcolor = color ? { [color]: true } : {};
+
         inner = (
           <Button medium {...bcolor}>
             {text}
