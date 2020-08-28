@@ -11,6 +11,9 @@ const RenderPreact = (component, props, target) => {
   return render(h(component, props), target);
 };
 
+/**
+ * Checks the SSO cookie from CAS for login data, if it exists.
+ */
 const checkSSOCookie = () => {
   let loginStatus = {
     userName: "",
@@ -33,9 +36,20 @@ const checkSSOCookie = () => {
   return loginStatus;
 };
 
-const initHeader = ( props, target = "headerContainer", hydrate = false) => {
+/**
+ * Initialize the header.
+ *
+ * @param {*} props - Properties to initialize the header with. See the component definiton
+ * in src/components/Header/index.js for more details.
+ * @param {*} hydrate - If true, will run Preact's hydrate function instead of render.
+ * Should only be set to true if the header has been completely rendered server-side.
+ * @param {*} target - The ID of the containing <div> where the header should
+ * be either hydrated or rendered.
+ */
+const initHeader = ( props, hydrate = false, target = "headerContainer") => {
   const { loggedIn, userName, ...theRest } = props;
 
+  // If login data is incomplete, check the SSO cookie for data.
   const loginStatus =
     !props.loggedIn || !props.userName
       ? checkSSOCookie()
@@ -49,10 +63,12 @@ const initHeader = ( props, target = "headerContainer", hydrate = false) => {
     ...theRest,
   };
 
+  console.log(headerProps, 'the props');
+
   if (hydrate) {
-    HydratePreact(Header, headerProps, target);
+    HydratePreact(Header, headerProps, document.getElementById(target));
   } else {
-    RenderPreact(Header, headerProps, target);
+    RenderPreact(Header, headerProps, document.getElementById(target));
   }
 };
 
