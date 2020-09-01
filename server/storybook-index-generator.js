@@ -1,4 +1,3 @@
-
 const path = require("path");
 
 const colors = ["purple", "pink", "orange", "green", "blue", "red"];
@@ -20,9 +19,9 @@ module.exports = generateHTML = packages => `
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ASU Unity QA Site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="monorepo-index.css">
+
   <!-- include ASU Bootstrap 4 global styles-->
-  <link href="/asu-web-standards-bootstrap4/dist/css/bootstrap-asu.min.css" rel="stylesheet" type="text/css"
+  <link href="/bootstrap4-theme/dist/css/bootstrap-asu.css" rel="stylesheet" type="text/css"
   media="all">
 </head>
 <body>

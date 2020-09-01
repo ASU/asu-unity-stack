@@ -78,7 +78,7 @@ const Header = ({
             <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
             <Login {...{loggedIn, loginLink, logoutLink, userName}} />
           </div>
-          <UniversalSearch open={searchOpen} setOpen={setSearchOpen} />
+          <UniversalSearch open={searchOpen} setOpen={setSearchOpen} mobile={width < bpoint} />
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>

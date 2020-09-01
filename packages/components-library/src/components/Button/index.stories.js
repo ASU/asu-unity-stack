@@ -9,10 +9,10 @@ export default {
   component: Button,
   title: "Button",
 };
-
+/*
 export const base = () => (
   <Button onclick={action("clicked")}>Base button</Button>
-);
+);*/
 
 export const gold = () => (
   <Button gold medium onclick={action("clicked")}>

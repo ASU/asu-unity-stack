@@ -7,6 +7,7 @@ import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
 import * as S from "./styles";
+import { injectGlobal } from "emotion";
 
 /**
  * Render entire Nav.
@@ -19,6 +20,7 @@ const Nav = ({
   mobileOpen,
   maxMobileHeight,
   buttons,
+  injectStyles,
   ...props
 }) => {
   /** State to keep track of currently focused Nav Item */
@@ -161,7 +163,11 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen} maxMobileHeight={maxMobileHeight}>
+    <S.Nav
+      open={mobileOpen}
+      maxMobileHeight={maxMobileHeight}
+      injectStyles={injectStyles}
+    >
       <ul
         {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
@@ -201,8 +207,12 @@ const Nav = ({
               }}
               itemRef={item.ref}
               type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
-              color={navItem.hasOwnProperty("color") ? navItem.color : undefined}
-              class={navItem.hasOwnProperty("class") ? navItem.class : undefined}
+              color={
+                navItem.hasOwnProperty("color") ? navItem.color : undefined
+              }
+              class={
+                navItem.hasOwnProperty("class") ? navItem.class : undefined
+              }
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
               text={navItem.text}
             />
@@ -235,6 +245,7 @@ Nav.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   maxMobileHeight: PropTypes.number,
+  injectStyles: PropTypes.bool,
 };
 
 Nav.defaultProps = {
@@ -244,6 +255,7 @@ Nav.defaultProps = {
   height: 1080,
   maxMobileHeight: -1,
   buttons: [],
+  injectStyles: false,
 };
 
 /***************** Helper functions **************/
