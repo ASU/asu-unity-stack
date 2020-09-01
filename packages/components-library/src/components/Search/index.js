@@ -7,9 +7,6 @@ import PropTypes from "prop-types";
 
 const Search = ({ type, open, inputRef, mobile, ...props }) => {
 
-
-  console.log(mobile, 'mobile');
-
   switch (type) {
     case "d7":
       return <div>Drupal 7</div>;
@@ -21,7 +18,6 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
           method="get"
           role="search"
           class={open ? "show-search-input" : ""}
-
         >
           <input
             name="q"

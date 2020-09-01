@@ -73,7 +73,7 @@ export const withButtons = () => (
 
 const megaButtons = [
   {
-    text: "Apply Now",
+    text: "CTA Button Number One",
     color: "gold",
     href: "https://admissions.asu.edu",
   },
