@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.0.0",
+    "@asu-design-system/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",

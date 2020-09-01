@@ -35,7 +35,8 @@ const DropNav = ({
       <a
         target={item.target}
         title={item.title ? item.title : item.text}
-        role="navigation"
+        role="button"
+        aria-expanded={isOpen}
         onMouseDown={e => {
           e.preventDefault();
           toggle(pIndex);
@@ -56,7 +57,7 @@ const DropNav = ({
         tabIndex="0"
         ref={topRef}
       >
-        {item.text} <S.IconChevronDown sr={item.text} />
+        {item.text} <S.IconChevronDown sr={item.text} className={isOpen ? "open" : ""} />
       </a>
 
       <S.DdMenu {...{ open: isOpen }}>

@@ -1,135 +1,11 @@
- /** @jsx h */
+/** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { css, cx } from "emotion";
-import { hiddenStyle, showReset, mobileBreak, srOnly} from "../../theme";
+import { hiddenStyle, showReset, mobileBreak, srOnly } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
-/**
- * Styles for Nav. These are meant to be imported and injected inside of the header
- * component
- */
-const navStyles = css`
-  nav.header-nav {
-    ul {
-      list-style: none;
-      a {
-        text-decoration: none;
-      }
-    }
-
-    > ul {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      > li {
-        > a {
-          @media (min-width: ${mobileBreak}) {
-            :after {
-              content: "";
-              position: relative;
-              display: block;
-              height: 0.5rem;
-              background-color: #ffc627;
-              bottom: 0;
-              width: 0;
-              transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-              bottom: -8px;
-              left: -8px;
-            }
-
-            :hover:after {
-              width: 100%;
-              width: calc(100% + 16px);
-            }
-          }
-        }
-      }
-
-      li {
-        position: relative;
-        margin-right: 16px;
-
-        a {
-          color: #191919;
-          display: block;
-          padding: 8px;
-          position: relative;
-        }
-      }
-    }
-
-    .mobile-only {
-      ${hiddenStyle}
-    }
-
-    @media (min-width: ${mobileBreak}) {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0;
-      margin: 0;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      border: none;
-      display: none;
-
-      &.open-nav,
-      &:target {
-        flex-direction: column;
-        width: 100%;
-        overflow-y: scroll;
-        display: flex;
-      }
-
-      .mobile-only {
-        ${showReset()}
-      }
-
-      .icon-nav-item {
-        ${hiddenStyle}
-      }
-
-      > ul {
-        flex-direction: column;
-        align-items: stretch;
-        div.nav-dropdown-open {
-          flex-direction: column;
-          position: relative;
-        }
-
-        > li {
-          margin-right: 0;
-
-          > a {
-            padding: 1rem 2rem;
-            justify-content: space-between;
-            display: flex;
-            border-bottom: 1px solid #cccccc;
-            align-items: center;
-
-            > svg {
-              font-size: 1.25rem;
-            }
-          }
-
-          :first-of-type {
-            border-top: 1px solid #cccccc;
-          }
-
-          :last-of-type {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-  }
-
+const dropdownStyles = css`
   /** DdMenu CSS **/
   div.dropdown {
     display: none;
@@ -214,13 +90,6 @@ const navStyles = css`
       border-top: 1px solid #ffffff;
       padding: 2rem;
       position: absolute;
-    }
-
-    @media (min-width: ${mobileBreak}) {
-      margin: -1px 0 0 0;
-      border: 1px solid #d0d0d0;
-      border-top: 1px solid #ffffff;
-      padding: 2rem;
 
       h3 {
         margin-top: 0;
@@ -254,8 +123,151 @@ const navStyles = css`
       }
     }
   }
+`;
 
-  .navbar-site-buttons {
+const componentStyles = css`
+
+  ul {
+    list-style: none;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > li {
+      > a {
+
+        svg.fa-chevron-down{
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+
+          &.open {
+            transform: rotate(180deg);
+          }
+        }
+
+        @media (min-width: ${mobileBreak}) {
+          :after {
+            content: "";
+            position: relative;
+            display: block;
+            height: 0.5rem;
+            background-color: #ffc627;
+            bottom: 0;
+            width: 0;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+            bottom: -8px;
+            left: -8px;
+          }
+
+          :hover:after {
+            width: 100%;
+            width: calc(100% + 16px);
+          }
+
+
+        }
+      }
+    }
+
+    li {
+      position: relative;
+      margin-right: 16px;
+
+      a {
+        color: #191919;
+        display: block;
+        padding: 8px;
+        position: relative;
+      }
+    }
+  }
+
+  .mobile-only {
+    ${hiddenStyle}
+  }
+
+  @media (min-width: ${mobileBreak}) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+
+    svg.fa-chevron-down {
+      float: none;
+      display: inline-block;
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+  @media (max-width: ${mobileBreak}) {
+    border: none;
+    display: none;
+
+    &.open-nav,
+    &:target {
+      flex-direction: column;
+      width: 100%;
+      overflow-y: scroll;
+      display: flex;
+    }
+
+    .mobile-only {
+      ${showReset()}
+    }
+
+    .icon-nav-item {
+      ${hiddenStyle}
+    }
+
+    > ul {
+      flex-direction: column;
+      align-items: stretch;
+      div.nav-dropdown-open {
+        flex-direction: column;
+        position: relative;
+      }
+
+      > li {
+        margin-right: 0;
+
+        > a {
+          padding: 1rem 2rem;
+          justify-content: space-between;
+          display: flex;
+          border-bottom: 1px solid #cccccc;
+          align-items: center;
+
+          > svg {
+            font-size: 1.25rem;
+          }
+        }
+
+        :first-of-type {
+          border-top: 1px solid #cccccc;
+        }
+
+        :last-of-type {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  }
+
+
+  ${dropdownStyles}
+
+  form.navbar-site-buttons {
     a + a {
       margin-left: 1rem;
     }
@@ -266,7 +278,17 @@ const navStyles = css`
   }
 `;
 
-const Nav = ({ open, maxMobileHeight, children, ...props }) => {
+/**
+ * Styles for Nav. These are meant to be imported and injected inside of the header
+ * component
+ */
+const navStyles = css`
+  nav.header-nav {
+    ${componentStyles}
+  }
+`;
+
+const Nav = ({ open, maxMobileHeight, injectStyles, children, ...props }) => {
   const maxHeight = maxMobileHeight == -1 ? "75vh" : `${maxMobileHeight}px`;
 
   return (
@@ -286,7 +308,8 @@ const Nav = ({ open, maxMobileHeight, children, ...props }) => {
               display: flex;
             }
           }
-        `
+        `,
+        injectStyles ? componentStyles : ""
       )}
       {...props}
     >

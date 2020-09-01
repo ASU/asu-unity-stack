@@ -48,13 +48,13 @@ export const base = () => (
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
 );
-
+/*
 export const mobile = () => (
   <Fragment>
     <Header />
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
-);
+);*/
 
 export const withButtons = () => (
   <Fragment>
@@ -73,7 +73,7 @@ export const withButtons = () => (
 
 const megaButtons = [
   {
-    text: "Apply Now",
+    text: "CTA Button Number One",
     color: "gold",
     href: "https://admissions.asu.edu",
   },
@@ -102,5 +102,5 @@ export const withMenuColumns = () => (
     <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
   </Fragment>
 );
-
-export const withStub = () => <Header dangerouslyGenerateStub={true} />;
+/*
+export const withStub = () => <Header dangerouslyGenerateStub={true} />;*/

@@ -292,36 +292,8 @@ const NavTreeMega = [
     items: [
       [
         {
-          href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
           text: "Column 1",
-        },
-        {
-          href: "https://www.asu.edu/?feature=academics",
-
-          text: "Academics",
-        },
-        {
-          href: "https://www.asu.edu/?feature=research",
-
-          text: "Research",
-        },
-        {
-          href: "https://www.asu.edu/?feature=academics",
-
-          text: "Academics",
-        },
-        {
-          href: "https://www.asu.edu/?feature=athletics",
-          type: "button",
-          text: "CTA Action 2",
-          color: "maroon",
-        },
-      ],
-      [
-        {
-          type: "heading",
-          text: "Column 2",
         },
         {
           href: "https://www.asu.edu/",
@@ -359,6 +331,34 @@ const NavTreeMega = [
           text: "About ASU",
         },
       ],
+      [
+        {
+          href: "https://www.asu.edu/?feature=newsevents",
+          type: "heading",
+          text: "Column 2",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+
+          text: "Academics",
+        },
+        {
+          href: "https://www.asu.edu/?feature=research",
+
+          text: "Research",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+
+          text: "Academics",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          type: "button",
+          text: "CTA Action 2",
+          color: "maroon",
+        },
+      ],
     ],
   },
   {
@@ -371,38 +371,9 @@ const NavTreeMega = [
     items: [
       [
         {
-          classes: "border first",
-          href: "https://www.asu.edu/map/",
-
-          text: "Map",
-        },
-        {
-          href: "https://campus.asu.edu/tempe/",
-
-          text: "Tempe",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-
-          text: "West",
-        },
-        {
-          href: "https://campus.asu.edu/polytechnic/",
-
-          text: "Polytechnic",
-        },
-        {
-          href: "https://campus.asu.edu/downtown/",
-          type: "button",
-          text: "Downtown Phoenix",
-          color: "light",
-        },
-      ],
-      [
-        {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 2",
+          text: "Column 1",
         },
         {
           href: "https://havasu.asu.edu/",
@@ -436,6 +407,35 @@ const NavTreeMega = [
           href: "https://wpcarey.asu.edu/mba/china-program/english/",
 
           text: "China",
+        },
+      ],
+      [
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Map",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Tempe",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "West",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Polytechnic",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix",
+          color: "light",
         },
       ],
     ],

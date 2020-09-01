@@ -160,6 +160,10 @@ const Button = props => {
           css`
             color: ${Tokens.ComponentButtonGoldColor};
             background-color: ${Tokens.ComponentButtonGoldBackgroundColor};
+
+            :hover {
+              color: ${Tokens.ComponentButtonGoldColor};
+            }
           `
         }
 
@@ -169,6 +173,10 @@ const Button = props => {
             color: #ffffff;
             background-color: #8c1d40;
             border-color: #8c1d40;
+
+            :visited:not(.btn) {
+              color: #ffffff;
+            }
           `
         }
 
