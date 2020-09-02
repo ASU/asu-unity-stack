@@ -36,6 +36,24 @@ const checkSSOCookie = () => {
   return loginStatus;
 };
 
+const alterLoginUrl = (url) => {
+  if (url) {
+    return url;
+  }
+
+  const callbackUrl = window.location.toString();
+
+  url = decodeURI(url); // Decode the URL just in case
+  url = url.replace(
+    `/login`,
+    `/login?callapp=${callbackUrl}`
+  ); // set the callapp into the url
+
+  return url;
+};
+
+
+
 /**
  * Initialize the header.
  *
@@ -47,11 +65,14 @@ const checkSSOCookie = () => {
  * be either hydrated or rendered.
  */
 const initHeader = ( props, hydrate = false, target = "headerContainer") => {
-  const { loggedIn, userName, ...theRest } = props;
+  const { loggedIn, userName, loginUrl, logoutUrl, ...theRest } = props;
+
+  const fullLoginUrl = alterLoginUrl(loginUrl);
+
 
   // If login data is incomplete, check the SSO cookie for data.
   const loginStatus =
-    !props.loggedIn || !props.userName
+    !loggedIn || !userName
       ? checkSSOCookie()
       : {
           loggedIn,

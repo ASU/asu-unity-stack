@@ -123,10 +123,10 @@ const Nav = ({
         }
 
         // if setting focus on nav item without children, close any
-        // open dropdown navs
-        if (!derState.hasSubs) {
+        // open dropdown navs TODO: do we need this
+        /*if (!derState.hasSubs) {
           setOpen(-1);
-        }
+        }*/
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }

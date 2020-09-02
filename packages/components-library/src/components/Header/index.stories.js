@@ -45,14 +45,14 @@ export const base = () => (
       )}
       unit={text("unit", "Ira A. Fulton Schools of Engineering")}
     />
-    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+    <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
 /*
 export const mobile = () => (
   <Fragment>
     <Header />
-    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+    <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );*/
 
@@ -67,7 +67,7 @@ export const withButtons = () => (
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
     />
-    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+    <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
 
@@ -99,7 +99,7 @@ export const withMenuColumns = () => (
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
     />
-    <div style={"background-color:#8c1e40; width:100%; height:200vh;"} />
+    <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
 /*

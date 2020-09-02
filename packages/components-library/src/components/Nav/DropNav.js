@@ -49,6 +49,10 @@ const DropNav = ({
           if (code == 32 || code == 13) {
             toggle(pIndex);
           }
+
+          if (code == 9) {
+            e.preventDefault();
+          }
         }}
         onFocus={e => {
           //navOpen(pIndex);

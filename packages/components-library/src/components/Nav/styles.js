@@ -19,7 +19,7 @@ const dropdownStyles = css`
     border: 0;
     border-top: 1px solid #d0d0d0;
 
-    &.nav-dropdown-open {
+    &.open {
       display: flex;
     }
 
@@ -64,7 +64,7 @@ const dropdownStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
-      &.nav-dropdown-open {
+      &.open {
         flex-direction: column;
         position: relative;
         padding-left: 3rem;
@@ -232,7 +232,7 @@ const componentStyles = css`
     > ul {
       flex-direction: column;
       align-items: stretch;
-      div.nav-dropdown-open {
+      div.open {
         flex-direction: column;
         position: relative;
       }
@@ -320,7 +320,7 @@ const Nav = ({ open, maxMobileHeight, injectStyles, children, ...props }) => {
 
 const DdMenu = props => {
   return (
-    <div class={cx("dropdown", props.open ? "nav-dropdown-open" : "")}>
+    <div class={cx("dropdown", props.open ? "open" : "")}>
       {props.children}
     </div>
   );
