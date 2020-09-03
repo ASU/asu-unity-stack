@@ -129,7 +129,7 @@ yarn stop # stop the testing server
 
 ## ❯ How to test the private package registry:
 
-1. Go here and follow directions to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/)
+1. Go here and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
 
 2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
 
