@@ -67,10 +67,6 @@ const Header = ({
   // or the viewport changes size
   useEffect(() => {
     if (width < bpoint && mobileOpen) {
-
-      console.log(universalRef, 'TH UREF');
-      console.log(logoRef, 'THE LOGO REF');
-      console.log(titleRef, 'the titleref');
       window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
