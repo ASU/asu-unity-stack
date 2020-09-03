@@ -21,28 +21,32 @@ const Header = ({
   buttons,
   ...props
 }) => {
-  // Mobile menu open state and helper functions
+  // State hooks to track and set opening/closing mobile nav
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Function to toggle the mobile nav
+  const toggle = () => setMobileOpen(oldOpen => !oldOpen);
+
+  //State hooks for tracking and setting open/close search in universal nav
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // State to set mobile nav max height. Needed for fixed positioning elements
+  // State hooks for tracking and setting the max mobile nav menu height
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
 
-  // Get breakpoint from design token
+  // Get breakpoint from theme
   const bpoint = parseInt(S.mobileBreak, 10);
 
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
-  const toggle = () => setMobileOpen(oldOpen => !oldOpen);
-
-  // Scroll position state handling for adding 'scroll' class
+  // Hooks to track scroll position state
   const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setSrollPosition(position);
   };
 
+  // Attach scroll event lister which will update the scrollPosition state
+  // when window scrolled
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -51,18 +55,37 @@ const Header = ({
     };
   }, []);
 
+  // Get primary nav top padding value from theme
+  const tpadding = parseInt(S.primaryNavTopPadding, 10);
+
+  // Use refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
+  // Calculate the mobile nav menu max-height every time the mobile nav is opened
+  // or the viewport changes size
   useEffect(() => {
     if (width < bpoint && mobileOpen) {
-      const uHeight = universalRef.current.base.clientHeight;
-      // TODO: measure this dynamically
-      const pHeight = 96;
-      const newHeight = height - uHeight - pHeight;
 
-      setMaxMobileNavHeight(newHeight);
+      console.log(universalRef, 'TH UREF');
+      console.log(logoRef, 'THE LOGO REF');
+      console.log(titleRef, 'the titleref');
+      window.setTimeout(() => {
+        const uHeight = universalRef.current.clientHeight;
+        const lHeight = logoRef.current.clientHeight;
+        const tHeight = titleRef.current.clientHeight;
+
+        const pHeight = lHeight + tHeight + tpadding;
+
+        const newHeight = height - uHeight - pHeight;
+
+        setMaxMobileNavHeight(newHeight);
+      }, 500);
     }
   }, [height, width, mobileOpen]);
 
-  const universalRef = useRef(null);
+
 
   return (
     <S.Header
@@ -70,15 +93,23 @@ const Header = ({
         scrollPosition > 0 || (mobileOpen && width < bpoint) ? "scrolled" : ""
       }
     >
-      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
+      <S.UniversalNav
+        open={mobileOpen}
+        domRef={universalRef}
+        {...{ searchOpen }}
+      >
         <div>
           <div class="nav-grid">
             <a href="https://www.asu.edu/">ASU home</a>
             <a href="https://my.asu.edu/">My ASU</a>
             <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-            <Login {...{loggedIn, loginLink, logoutLink, userName}} />
+            <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
           </div>
-          <UniversalSearch open={searchOpen} setOpen={setSearchOpen} mobile={width < bpoint} />
+          <UniversalSearch
+            open={searchOpen}
+            setOpen={setSearchOpen}
+            mobile={width < bpoint}
+          />
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
@@ -86,7 +117,7 @@ const Header = ({
           <div id="asu-generated-stub" />
         ) : (
           <div>
-            <S.Logo {...logo} />
+            <S.Logo {...logo} domRef={logoRef} />
             <S.NavbarToggler
               onClick={e => {
                 e.preventDefault();
@@ -95,7 +126,7 @@ const Header = ({
               mobileOpen={mobileOpen}
             />
             <S.NavbarContainer>
-              <S.Title {...{ title, unit }} />
+              <S.Title {...{ title, unit }} ref={titleRef} />
               <Nav
                 {...{
                   navTree,

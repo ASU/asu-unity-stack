@@ -8,19 +8,27 @@ import { Heading } from "../Heading";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
- * TODO: test ability to render arbitrary html string as nav Item.
  * @param {} props
  */
 const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
   let inner = "";
 
+
+  console.log(type, 'THE TYPE');
+
   switch (type) {
     case "button":
       {
-        const bcolor = color ? { [color]: true } : {};
-
+        // standards only allow dark buttons in nav dropdowns
         inner = (
-          <Button medium {...bcolor}>
+          <Button
+            class="nav-button"
+            ref={itemRef}
+            href={href}
+            {...(onFocus ? { onFocus } : "")}
+            medium
+            dark
+          >
             {text}
           </Button>
         );
@@ -29,32 +37,34 @@ const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
     case "icon":
       // Have to use className here because FontAwesome React component expects it
       inner = (
-        <>
+        <a
+          class="nav-icon"
+          href={href}
+          {...(onFocus ? { onFocus } : "")}
+          ref={itemRef}
+        >
           <Icon type={props.class} className="icon-nav-item" />
           <span class="mobile-only">{text}</span>
-        </>
+        </a>
       );
       break;
     case "heading":
-      inner = <Heading type="h3">{text}</Heading>;
-      break;
+      return <Heading type="h3">{text}</Heading>;
     default:
-      inner = text;
+      inner = (
+        <a
+          class="nav-item"
+          href={href}
+          {...(onFocus ? { onFocus } : "")}
+          ref={itemRef}
+        >
+          {text}
+        </a>
+      );
       break;
   }
 
-  // return the heading without a link if item type is heading
-  if (type == "heading") {
-    return inner;
-  }
-
-  return (
-    <li>
-      <a href={href} {...(onFocus ? { onFocus } : "")} ref={itemRef}>
-        {inner}
-      </a>
-    </li>
-  );
+  return <li>{inner}</li>;
 };
 
 NavItem.propTypes = {
@@ -72,6 +82,7 @@ NavItem.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string.isRequired, // text always required (accessiblity and mobile)
   color: PropTypes.string,
+  icon: PropTypes.string
 };
 
 NavItem.defaultProps = {};
