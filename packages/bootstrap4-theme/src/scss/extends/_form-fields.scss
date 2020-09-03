@@ -1,0 +1,108 @@
+// ASU Design System Form Field styles without Bootstrap variables to override.
+
+form {
+  /* Labels */
+  // Already is color #191919
+  label {
+    font-size: 1rem;
+  }
+
+  /* Helper text */
+  // color set in component's Bootstrap variable overrides.
+
+  /* Input text */
+  .form-control {
+    color: #191919;
+
+    /* Disabled input */
+    &:disabled,
+    &[readonly] {
+      color: #bfbfbf;
+      background: #e8e8e8;
+      border: 1px solid #d0d0d0;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    // border-radius set in component's Bootstrap variable overrides.
+    // height set in component's Bootstrap variable overrides.
+    // padding set in component's Bootstrap variable overrides.
+    padding-left: 1rem !important;
+  }
+
+  /* Input focus */
+  input:focus,
+  textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 2px solid #191919 !important;
+    border-radius: none;
+  }
+
+  /* Error input */
+  .is-invalid {
+    border-style: solid;
+    border: 1px solid #b72a2a !important;
+    border-bottom: 8px solid #b72a2a !important;
+    // BS4 input height led to border eating padding. Resolved in variable
+    // overrides by setting input heights to auto.
+  }
+  .invalid-feedback {
+    font-weight: bold;
+    color: #191919;
+    svg {
+      // We don't implement svg icons as bkg images due to need for color
+      // manipulation.
+      color: #b72a2a;
+      margin-right: 0.5rem;
+    }
+  }
+
+  /* Success input */
+  // border and icon #446D12
+  .is-valid {
+    border-style: solid;
+    border: 1px solid #446d12 !important;
+    border-bottom: 8px solid #446d12 !important;
+    // BS4 input height led to border eating padding. Resolved in variable
+    // overrides by setting input heights to auto.
+  }
+  .valid-feedback {
+    font-weight: bold;
+    color: #191919;
+    svg {
+      // We don't implement svg icons as bkg images due to need for color
+      // manipulation.
+      color: #446d12;
+      margin-right: 0.5rem;
+    }
+  }
+
+  /* Trailing icon input */
+  // icon color #bfbfbf
+  // See how BS4 does .is-valid icon
+  .input-group-trailing-icon {
+    svg {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.75rem;
+      color: #bfbfbf;
+    }
+  }
+
+  /* Various backgrounds */
+  &.uds-form-white {
+    background-color: white;
+  }
+  &.uds-form-gray1 {
+    background-color: $uds-color-base-gray-1;
+  }
+  &.uds-form-gray2 {
+    background-color: $uds-color-base-gray-2;
+  }
+  &.uds-form-gray7 {
+    background-color: $uds-color-base-gray-7;
+  }
+}
