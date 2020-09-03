@@ -13,9 +13,6 @@ import { Heading } from "../Heading";
 const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
   let inner = "";
 
-
-  console.log(type, 'THE TYPE');
-
   switch (type) {
     case "button":
       {
