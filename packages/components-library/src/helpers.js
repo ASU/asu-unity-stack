@@ -82,8 +82,6 @@ const initHeader = ( props, hydrate = false, target = "headerContainer") => {
     loginLink: fullLoginUrl
   };
 
-  console.log(headerProps, 'the props');
-
   if (hydrate) {
     HydratePreact(Header, headerProps, document.getElementById(target));
   } else {
