@@ -1,4 +1,3 @@
-
 import {HydratePreact, RenderPreact, initHeader} from "./helpers";
 
 export * from "./components";
