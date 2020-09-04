@@ -5,6 +5,35 @@ import { css, cx } from "emotion";
 import { hiddenStyle, showReset, mobileBreak, srOnly } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
+/**
+ * Button form which contains call to action buttons and displayed
+ * on right side of header nav
+ */
+const buttonFormStyles = css`
+  form.navbar-site-buttons {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 3px;
+
+
+    a + a {
+      margin-left: 1rem;
+    }
+
+    @media (max-width: ${mobileBreak}) {
+      padding: 1rem 2rem;
+    }
+  }
+`;
+
+const ButtonForm = props => {
+  return <form class="navbar-site-buttons">{props.children}</form>;
+};
+
+
+/**
+ * Styles the dropdown menu container
+ */
 const dropdownStyles = css`
   /** DdMenu CSS **/
   div.dropdown {
@@ -105,7 +134,7 @@ const dropdownStyles = css`
           padding: 0;
           margin: 0;
 
-          > a {
+          > .nav-item {
             padding: 0;
             padding: 0.5rem 0;
             white-space: normal;
@@ -125,6 +154,21 @@ const dropdownStyles = css`
   }
 `;
 
+const DdMenu = props => {
+  return (
+    <div class={cx("dropdown", props.open ? "open" : "")}>{props.children}</div>
+  );
+};
+
+const navItemStyles = css`
+  .nav-icon {
+    color: #191919;
+  }
+`
+
+/**
+ * Styles the top-level 'nav' component
+ */
 const componentStyles = css`
 
   ul {
@@ -143,6 +187,7 @@ const componentStyles = css`
 
     > li {
       > a {
+        display: block;
 
         svg.fa-chevron-down{
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -181,10 +226,14 @@ const componentStyles = css`
       margin-right: 16px;
 
       a {
-        color: #191919;
-        display: block;
+
         padding: 8px;
         position: relative;
+
+        &.nav-item {
+          color: #191919;
+          display: block;
+        }
       }
     }
   }
@@ -264,18 +313,9 @@ const componentStyles = css`
   }
   }
 
-
   ${dropdownStyles}
-
-  form.navbar-site-buttons {
-    a + a {
-      margin-left: 1rem;
-    }
-
-    @media (max-width: ${mobileBreak}) {
-      padding: 1rem 2rem;
-    }
-  }
+  ${buttonFormStyles}
+  ${navItemStyles};
 `;
 
 /**
@@ -288,6 +328,10 @@ const navStyles = css`
   }
 `;
 
+/**
+ * Nav style component
+ * If injectStyles set to true, injects component styles directly via Emotion css
+ */
 const Nav = ({ open, maxMobileHeight, injectStyles, children, ...props }) => {
   const maxHeight = maxMobileHeight == -1 ? "75vh" : `${maxMobileHeight}px`;
 
@@ -316,18 +360,6 @@ const Nav = ({ open, maxMobileHeight, injectStyles, children, ...props }) => {
       {children}
     </nav>
   );
-};
-
-const DdMenu = props => {
-  return (
-    <div class={cx("dropdown", props.open ? "open" : "")}>
-      {props.children}
-    </div>
-  );
-};
-
-const ButtonForm = props => {
-  return <form class="navbar-site-buttons">{props.children}</form>;
 };
 
 export { Nav, DdMenu, IconChevronDown, ButtonForm, navStyles, mobileBreak };

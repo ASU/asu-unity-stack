@@ -123,6 +123,8 @@ const searchStyles = css`
 
         label {
           display: block;
+          margin-bottom: 0;
+          font-size: inherit;
         }
       }
     }

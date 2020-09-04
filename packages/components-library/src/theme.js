@@ -42,6 +42,9 @@ const mobileBreak = "1260px";
 
 const containerSize = "1224px";
 
-export { hiddenStyle, showReset, mobileBreak, containerSize, srOnly};
+// in px for consistent measurment for mobile nav
+const primaryNavTopPadding = "24px";
+
+export { hiddenStyle, showReset, mobileBreak, containerSize, srOnly, primaryNavTopPadding};
 
 export default Tokens;

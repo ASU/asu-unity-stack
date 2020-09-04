@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
+import { cx } from "emotion";
 import * as S from "./styles";
-import { injectGlobal } from "emotion";
 
 /**
  * Render entire Nav.
@@ -210,9 +210,7 @@ const Nav = ({
               color={
                 navItem.hasOwnProperty("color") ? navItem.color : undefined
               }
-              class={
-                navItem.hasOwnProperty("class") ? navItem.class : undefined
-              }
+              class={navItem.hasOwnProperty("class") ? navItem.class : ""}
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
               text={navItem.text}
             />
