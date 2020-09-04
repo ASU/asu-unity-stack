@@ -43,15 +43,10 @@ const DropNav = ({
           //setFocus([pIndex, -1, -1]);
         }}
         onKeyDown={e => {
-
           const code = e.keyCode;
 
           if (code == 32 || code == 13) {
             toggle(pIndex);
-          }
-
-          if (code == 9) {
-            e.preventDefault();
           }
         }}
         onFocus={e => {
