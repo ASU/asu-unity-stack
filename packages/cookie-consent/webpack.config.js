@@ -1,6 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = [];
 const shared = {
@@ -72,6 +73,7 @@ module.exports.push({
           ecma: 6,
         },
       }),
+      new OptimizeCSSAssetsPlugin({}),
     ],
   },
   module: {
