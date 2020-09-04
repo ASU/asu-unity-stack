@@ -8,7 +8,6 @@ const shared = {
   entry: {
     "cookie-consent": "./index.js",
   },
-
   resolve: {
     extensions: [".js", ".jsx"],
   },
