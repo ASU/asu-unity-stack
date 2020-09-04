@@ -104,5 +104,74 @@ form {
   }
   &.uds-form-gray7 {
     background-color: $uds-color-base-gray-7;
+
+    .form-control {
+      /* Disabled input */
+      &:disabled,
+      &[readonly] {
+        color: #bfbfbf;
+        background: $uds-color-base-gray-6;
+        border: 1px solid #d0d0d0;
+      }
+    }
+
+    /* Labels */
+    // Already is color #191919
+    label {
+      color: $uds-color-base-gray-1;
+    }
+
+    input,
+    textarea,
+    select {
+      background-color: $uds-color-base-gray-7;
+      color: $uds-color-base-gray-1;
+    }
+    /* Input focus */
+    input:focus,
+    textarea:focus {
+      background-color: $uds-color-base-gray-7;
+      border: 2px solid $uds-color-base-gray-1 !important;
+      color: $uds-color-base-gray-1;
+    }
+
+    /* Error input */
+    .is-invalid {
+      border-style: solid;
+      border: 1px solid #cc2f2f !important;
+      border-bottom: 8px solid #cc2f2f !important;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    .invalid-feedback {
+      font-weight: bold;
+      color: $uds-color-base-gray-1;
+      svg {
+        // We don't implement svg icons as bkg images due to need for color
+        // manipulation.
+        color: #cc2f2f;
+        margin-right: 0.5rem;
+      }
+    }
+
+    /* Success input */
+    // border and icon #446D12
+    .is-valid {
+      border-style: solid;
+      border: 1px solid #78be20 !important;
+      border-bottom: 8px solid #78be20 !important;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    .valid-feedback {
+      font-weight: bold;
+      color: $uds-color-base-gray-1;
+      svg {
+        // We don't implement svg icons as bkg images due to need for color
+        // manipulation.
+        color: #78be20;
+        margin-right: 0.5rem;
+      }
+    }
   }
 }
