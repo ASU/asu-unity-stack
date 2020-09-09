@@ -219,7 +219,7 @@ form {
       }
     }
 
-    /* Labels */
+    /* Dark Labels */
     // Already is color #191919
     label {
       color: $uds-color-base-gray-1;
@@ -231,7 +231,7 @@ form {
       background-color: $uds-color-base-gray-7;
       color: $uds-color-base-gray-1;
     }
-    /* Input focus */
+    /* Dark Input focus */
     input:focus,
     textarea:focus {
       background-color: $uds-color-base-gray-7;
@@ -243,7 +243,7 @@ form {
       color: $uds-color-base-gray-1;
     }
 
-    /* Radios and Checkboxes */
+    /* Dark Radios and Checkboxes */
     .form-check {
       input[type='radio'],
       input[type='checkbox'] {
@@ -280,7 +280,7 @@ form {
         }
       }
 
-      // Checkboxes only: check 'em.
+      // Dark checkboxes only: check 'em.
       input[type='checkbox'] {
         // Checkbox check for dark bkg.
         &:checked {
@@ -296,7 +296,7 @@ form {
       }
     }
 
-    /* Error input */
+    /* Dark error input */
     .is-invalid {
       border-style: solid;
       border: 1px solid #cc2f2f !important;
@@ -315,8 +315,7 @@ form {
       }
     }
 
-    /* Success input */
-    // border and icon #446D12
+    /* Dark success input */
     .is-valid {
       border-style: solid;
       border: 1px solid #78be20 !important;
