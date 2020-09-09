@@ -273,6 +273,7 @@ const primaryStyles = css`
     }
   }
 `;
+
 const PrimaryNav = props => {
   return <div class="primary-nav">{props.children}</div>;
 };
@@ -424,7 +425,7 @@ const titleStyles = css`
   }
 `;
 
-const Title = forwardRef(({ title, unit, domRef, ...props }, ref) => {
+const Title = forwardRef(({ title, unit, ...props }, ref) => {
   if (unit) {
     return (
       <div class="title" ref={ref}>
