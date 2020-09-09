@@ -67,9 +67,6 @@ const Header = ({
   // or the viewport changes size
   useEffect(() => {
     if (width < bpoint && mobileOpen) {
-
-      // Since the CSS transitions takes .5 second, introduce a delay here to
-      // get proper measurement of DOM elements
       window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
