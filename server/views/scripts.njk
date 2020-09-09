@@ -16,6 +16,11 @@ crossorigin="anonymous"></script>
 <!-- include bundled scripts from Preact packages (CSS is in the <head>) -->
 <script src="/components-library/dist/vendor.production.js"></script>
 <script src="/components-library/dist/core.production.js"></script>
+
+<!-- include Cookie Consent script and styles -->
+<link href="/cookie-consent/dist/cookie-consent.css" rel="stylesheet" type="text/css"
+media="all">
+<script src="/cookie-consent/dist/cookie-consent.js"></script>
 <!--<script src="/component-forms/dist/vendor.production.js"></script>
 <script src="/component-forms/dist/forms.production.js"></script>-->
 <!--<script src="/asu-maps/dist/asu-maps.production.js"></script>-->
@@ -185,11 +190,14 @@ crossorigin="anonymous"></script>
     navTree: NavTree,
     buttons: buttons,
     title: "Ira A. Fulton Schools of Engineering",
-    logoutLink: "https://webapp4.asu.edu/myasu/Signout",
-    loginLink: "https://weblogin.asu.edu/cgi-bin/login"
+    //logoutLink: "/caslogout",  Drupal CAS logout path
+    //loginLink: '/cas?destination=home'  example of Drupal login path
   };
 
   AsuWebcore.initHeader(props);
+
+  // Initialize cookie consent banner
+  AsuCookieConsent.init();
 
   /*
     AsuWebforms.RenderPreact(AsuWebforms.FormPanel, {

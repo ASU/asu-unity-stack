@@ -36,14 +36,15 @@ const checkSSOCookie = () => {
   return loginStatus;
 };
 
+/**
+ * Alters the default login Url to add the '?callapp=' query string
+ */
 const alterLoginUrl = (url) => {
-  if (url) {
-    return url;
-  }
 
   const callbackUrl = window.location.toString();
 
   url = decodeURI(url); // Decode the URL just in case
+
   url = url.replace(
     `/login`,
     `/login?callapp=${callbackUrl}`
@@ -51,8 +52,6 @@ const alterLoginUrl = (url) => {
 
   return url;
 };
-
-
 
 /**
  * Initialize the header.
@@ -65,10 +64,8 @@ const alterLoginUrl = (url) => {
  * be either hydrated or rendered.
  */
 const initHeader = ( props, hydrate = false, target = "headerContainer") => {
-  const { loggedIn, userName, loginUrl, logoutUrl, ...theRest } = props;
-
-  const fullLoginUrl = alterLoginUrl(loginUrl);
-
+  const { loggedIn, userName, loginLink, ...theRest } = props;
+  const fullLoginUrl = loginLink ? loginLink : alterLoginUrl(Header.defaultProps.loginLink);
 
   // If login data is incomplete, check the SSO cookie for data.
   const loginStatus =
@@ -82,9 +79,8 @@ const initHeader = ( props, hydrate = false, target = "headerContainer") => {
   const headerProps = {
     ...loginStatus,
     ...theRest,
+    loginLink: fullLoginUrl
   };
-
-  console.log(headerProps, 'the props');
 
   if (hydrate) {
     HydratePreact(Header, headerProps, document.getElementById(target));
