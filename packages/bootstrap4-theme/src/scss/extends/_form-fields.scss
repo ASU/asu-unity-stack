@@ -41,6 +41,109 @@ form {
     border-radius: none;
   }
 
+  /* Radios and Checkboxes */
+  .form-check {
+    margin: 1rem 0;
+
+    input[type='radio'],
+    input[type='checkbox'] {
+      opacity: 0;
+    }
+
+    // Shared styling.
+    input[type='radio'],
+    input[type='checkbox'] {
+      + label {
+        font-weight: normal;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 1rem;
+
+        // Outer border.
+        &::before {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          left: -2.25rem;
+          border: 1px solid $uds-color-base-gray-3;
+          width: 1.5rem;
+          height: 1.5rem;
+          background: white;
+        }
+        // Inner positioning for checked.
+        &::after {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          left: -1.875rem;
+          top: 0.375rem;
+          width: 0.75rem;
+          height: 0.75rem;
+        }
+      }
+      &:checked {
+        + label::after {
+          background: black;
+        }
+      }
+      &:focus {
+        + label::before {
+          border: 2px solid $uds-color-base-gray-7;
+        }
+      }
+      &:disabled {
+        + label::before {
+          background: $uds-color-base-gray-2;
+        }
+      }
+      // We can use this little trick because the label follows the disabled
+      // input.
+      &:disabled + label {
+        color: $uds-color-base-gray-4;
+      }
+    }
+
+    // Radios only: make 'em round.
+    input[type='radio'] {
+      + label {
+        // Radio outer circle.
+        &::before {
+          border-radius: 50%;
+        }
+        // Radio bullseye - selected
+        &::after {
+          border-radius: 50%;
+        }
+      }
+    }
+
+    // Checkboxes only: check 'em.
+    input[type='checkbox'] {
+      + label {
+        // Adjust label ::before and ::after to get background-image svg
+        // check centered right.
+        &::before {
+          left: -2.25rem;
+          bottom: -0.1rem;
+        }
+        &::after {
+          left: -2rem;
+        }
+      }
+      // Checkbox check.
+      &:checked {
+        + label::after {
+          background: transparent;
+          // SVG of fa-check
+          background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='check' class='svg-inline--fa fa-check fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+          height: 1rem;
+          width: 1rem;
+        }
+      }
+    }
+  }
+
   /* Error input */
   .is-invalid {
     border-style: solid;
@@ -92,7 +195,8 @@ form {
     }
   }
 
-  /* Various backgrounds */
+  /* VARIOUS BACKGROUNDS */
+
   &.uds-form-white {
     background-color: white;
   }
@@ -109,9 +213,9 @@ form {
       /* Disabled input */
       &:disabled,
       &[readonly] {
-        color: #bfbfbf;
+        color: $uds-color-base-gray-5;
         background: $uds-color-base-gray-6;
-        border: 1px solid #d0d0d0;
+        border: 1px solid $uds-color-base-gray-5;
       }
     }
 
@@ -133,6 +237,63 @@ form {
       background-color: $uds-color-base-gray-7;
       border: 2px solid $uds-color-base-gray-1 !important;
       color: $uds-color-base-gray-1;
+    }
+
+    legend {
+      color: $uds-color-base-gray-1;
+    }
+
+    /* Radios and Checkboxes */
+    .form-check {
+      input[type='radio'],
+      input[type='checkbox'] {
+        + label {
+          // Outer border.
+          &::before {
+            border: 1px solid #707070;
+            background: $uds-color-base-gray-7;
+          }
+          // Inner positioning for checked.
+          &::after {
+          }
+        }
+        &:checked {
+          + label::after {
+            background: $uds-color-base-gray-1;
+          }
+        }
+        &:focus {
+          + label::before {
+            border: 2px solid $uds-color-base-gray-1;
+          }
+        }
+        &:disabled {
+          + label::before {
+            background: $uds-color-base-gray-6;
+            border-color: $uds-color-base-gray-5;
+          }
+        }
+        // We can use this little trick because the label follows the disabled
+        // input.
+        &:disabled + label {
+          color: $uds-color-base-gray-4;
+        }
+      }
+
+      // Checkboxes only: check 'em.
+      input[type='checkbox'] {
+        // Checkbox check for dark bkg.
+        &:checked {
+          + label::after {
+            // SVG of fa-check
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='check' class='svg-inline--fa fa-check fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+            // Alter SVG bkg img color via filter. Filter calculation tool:
+            // https://codepen.io/sosuke/pen/Pjoqqp
+            filter: invert(100%) sepia(28%) saturate(2502%) hue-rotate(222deg)
+              brightness(144%) contrast(94%);
+          }
+        }
+      }
     }
 
     /* Error input */
