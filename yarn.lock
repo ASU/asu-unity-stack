@@ -3450,7 +3450,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/preact@^v6.0.7":
+"@storybook/preact@^6.0.7", "@storybook/preact@^v6.0.7":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@storybook/preact/-/preact-6.0.21.tgz#d8de22affbd4fb252321404905d3e1e293c2a187"
   integrity sha512-ni+hj4A7i9ShhiiBnoGUQmpwYFl+WgOfLc3nsUDEIiGGj2SZCIYkrfuG96P4GTEfm5lci8teeTUzR8/bfB6Vwg==
