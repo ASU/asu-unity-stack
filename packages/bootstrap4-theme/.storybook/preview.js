@@ -8,8 +8,8 @@ addParameters({
   },
 });
 
-import '!style-loader!css-loader!sass-loader!./scss-loader.scss';
-import '!style-loader!css-loader!sass-loader!../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+import './scss-loader.scss';
+import '../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 import jquery from 'jquery';
 global.$ = jquery;
