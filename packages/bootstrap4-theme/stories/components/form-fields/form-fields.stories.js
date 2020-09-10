@@ -39,7 +39,7 @@ storiesOf('Components/Form Fields', module)
   <div class="form-group">
     <label for="exampleTrailingIconInput">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
-      <input type="text" class="form-control" id="exampleTrailingIconInput" aria-describedby="trailingIconHelp" placeholder="Helper text">
+      <input type="text" class="form-control" id="exampleTrailingIconInput" placeholder="Helper text">
       <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
@@ -58,36 +58,36 @@ Should only run and be packaged for storybook preview.
 <div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form-white">
   <div class="form-group">
-    <label for="exampleDefaultInput">Default text input label</label>
-    <input type="text" class="form-control" id="exampleDefaultInput" placeholder="Helper text">
+    <label for="exampleDefaultInputWhite">Default text input label</label>
+    <input type="text" class="form-control" id="exampleDefaultInputWhite" placeholder="Helper text">
   </div>
 
   <div class="form-group">
-    <label for="exampleFocusInput">Focus text input label</label>
-    <input type="text" class="form-control" id="exampleFocusInput" placeholder="Helper text" value="Focus me to see focus style">
+    <label for="exampleFocusInputWhite">Focus text input label</label>
+    <input type="text" class="form-control" id="exampleFocusInputWhite" placeholder="Helper text" value="Focus me to see focus style">
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInput">Disabled text input label</label>
-    <input type="text" class="form-control" id="exampleDisabledInput" placeholder="Helper text" disabled>
+    <label for="exampleDisabledInputWhite">Disabled text input label</label>
+    <input type="text" class="form-control" id="exampleDisabledInputWhite" placeholder="Helper text" disabled>
   </div>
 
   <div class="form-group">
-    <label for="exampleErrorInput">Error text input label</label>
-    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text">
+    <label for="exampleErrorInputWhite">Error text input label</label>
+    <input type="text" class="form-control is-invalid" id="exampleErrorInputWhite" aria-describedby="errorHelp" placeholder="Helper text">
     <small id="errorHelp" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleSuccessInput">Success text input label</label>
-    <input type="text" class="form-control is-valid" id="exampleSuccessInput" aria-describedby="successHelp" placeholder="Helper text" value="Input text">
+    <label for="exampleSuccessInputWhite">Success text input label</label>
+    <input type="text" class="form-control is-valid" id="exampleSuccessInputWhite" aria-describedby="successHelp" placeholder="Helper text" value="Input text">
     <small id="successHelp" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleTrailingIconInput">Trailing icon text input label</label>
+    <label for="exampleTrailingIconInputWhite">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
-      <input type="text" class="form-control" id="exampleTrailingIconInput" aria-describedby="trailingIconHelp" placeholder="Helper text">
+      <input type="text" class="form-control" id="exampleTrailingIconInputWhite" placeholder="Helper text">
       <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
@@ -97,36 +97,36 @@ Should only run and be packaged for storybook preview.
 <div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray1">
   <div class="form-group">
-    <label for="exampleDefaultInput">Default text input label</label>
-    <input type="text" class="form-control" id="exampleDefaultInput" placeholder="Helper text">
+    <label for="exampleDefaultInputGray1">Default text input label</label>
+    <input type="text" class="form-control" id="exampleDefaultInputGray1" placeholder="Helper text">
   </div>
 
   <div class="form-group">
-    <label for="exampleFocusInput">Focus text input label</label>
-    <input type="text" class="form-control" id="exampleFocusInput" placeholder="Helper text" value="Focus me to see focus style">
+    <label for="exampleFocusInputGray1">Focus text input label</label>
+    <input type="text" class="form-control" id="exampleFocusInputGray1" placeholder="Helper text" value="Focus me to see focus style">
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInput">Disabled text input label</label>
-    <input type="text" class="form-control" id="exampleDisabledInput" placeholder="Helper text" disabled>
+    <label for="exampleDisabledInputGray1">Disabled text input label</label>
+    <input type="text" class="form-control" id="exampleDisabledInputGray1" placeholder="Helper text" disabled>
   </div>
 
   <div class="form-group">
-    <label for="exampleErrorInput">Error text input label</label>
-    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text">
-    <small id="errorHelp" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleErrorInputGray1">Error text input label</label>
+    <input type="text" class="form-control is-invalid" id="exampleErrorInputGray1" aria-describedby="errorHelpGray1" placeholder="Helper text">
+    <small id="errorHelpGray1" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleSuccessInput">Success text input label</label>
-    <input type="text" class="form-control is-valid" id="exampleSuccessInput" aria-describedby="successHelp" placeholder="Helper text" value="Input text">
-    <small id="successHelp" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleSuccessInputGray1">Success text input label</label>
+    <input type="text" class="form-control is-valid" id="exampleSuccessInputGray1" aria-describedby="successHelpGray1" placeholder="Helper text" value="Input text">
+    <small id="successHelpGray1" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleTrailingIconInput">Trailing icon text input label</label>
+    <label for="exampleTrailingIconInputGray1">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
-      <input type="text" class="form-control" id="exampleTrailingIconInput" aria-describedby="trailingIconHelp" placeholder="Helper text">
+      <input type="text" class="form-control" id="exampleTrailingIconInputGray1" placeholder="Helper text">
       <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
@@ -136,36 +136,36 @@ Should only run and be packaged for storybook preview.
 <div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray2">
   <div class="form-group">
-    <label for="exampleDefaultInput">Default text input label</label>
-    <input type="text" class="form-control" id="exampleDefaultInput" placeholder="Helper text">
+    <label for="exampleDefaultInputGray2">Default text input label</label>
+    <input type="text" class="form-control" id="exampleDefaultInputGray2" placeholder="Helper text">
   </div>
 
   <div class="form-group">
-    <label for="exampleFocusInput">Focus text input label</label>
-    <input type="text" class="form-control" id="exampleFocusInput" placeholder="Helper text" value="Focus me to see focus style">
+    <label for="exampleFocusInputGray2">Focus text input label</label>
+    <input type="text" class="form-control" id="exampleFocusInputGray2" placeholder="Helper text" value="Focus me to see focus style">
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInput">Disabled text input label</label>
-    <input type="text" class="form-control" id="exampleDisabledInput" placeholder="Helper text" disabled>
+    <label for="exampleDisabledInputGray2">Disabled text input label</label>
+    <input type="text" class="form-control" id="exampleDisabledInputGray2" placeholder="Helper text" disabled>
   </div>
 
   <div class="form-group">
-    <label for="exampleErrorInput">Error text input label</label>
-    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text">
-    <small id="errorHelp" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleErrorInputGray2">Error text input label</label>
+    <input type="text" class="form-control is-invalid" id="exampleErrorInputGray2" aria-describedby="errorHelpGray2" placeholder="Helper text">
+    <small id="errorHelpGray2" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleSuccessInput">Success text input label</label>
-    <input type="text" class="form-control is-valid" id="exampleSuccessInput" aria-describedby="successHelp" placeholder="Helper text" value="Input text">
-    <small id="successHelp" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleSuccessInputGray2">Success text input label</label>
+    <input type="text" class="form-control is-valid" id="exampleSuccessInputGray2" aria-describedby="successHelpGray2" placeholder="Helper text" value="Input text">
+    <small id="successHelpGray2" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleTrailingIconInput">Trailing icon text input label</label>
+    <label for="exampleTrailingIconInputGray2">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
-      <input type="text" class="form-control" id="exampleTrailingIconInput" aria-describedby="trailingIconHelp" placeholder="Helper text">
+      <input type="text" class="form-control" id="exampleTrailingIconInputGray2" placeholder="Helper text">
       <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
@@ -175,36 +175,36 @@ Should only run and be packaged for storybook preview.
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray7">
   <div class="form-group">
-    <label for="exampleDefaultInput">Default text input label</label>
-    <input type="text" class="form-control" id="exampleDefaultInput" placeholder="Helper text">
+    <label for="exampleDefaultInputGray7">Default text input label</label>
+    <input type="text" class="form-control" id="exampleDefaultInputGray7" placeholder="Helper text">
   </div>
 
   <div class="form-group">
-    <label for="exampleFocusInput">Focus text input label</label>
-    <input type="text" class="form-control" id="exampleFocusInput" placeholder="Helper text" value="Focus me to see focus style">
+    <label for="exampleFocusInputGray7">Focus text input label</label>
+    <input type="text" class="form-control" id="exampleFocusInputGray7" placeholder="Helper text" value="Focus me to see focus style">
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInput">Disabled text input label</label>
-    <input type="text" class="form-control" id="exampleDisabledInput" placeholder="Helper text" disabled>
+    <label for="exampleDisabledInputGray7">Disabled text input label</label>
+    <input type="text" class="form-control" id="exampleDisabledInputGray7" placeholder="Helper text" disabled>
   </div>
 
   <div class="form-group">
-    <label for="exampleErrorInput">Error text input label</label>
-    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text">
-    <small id="errorHelp" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleErrorInputGray7">Error text input label</label>
+    <input type="text" class="form-control is-invalid" id="exampleErrorInputGray7" aria-describedby="errorHelpGray7" placeholder="Helper text">
+    <small id="errorHelpGray7" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleSuccessInput">Success text input label</label>
-    <input type="text" class="form-control is-valid" id="exampleSuccessInput" aria-describedby="successHelp" placeholder="Helper text" value="Input text">
-    <small id="successHelp" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleSuccessInputGray7">Success text input label</label>
+    <input type="text" class="form-control is-valid" id="exampleSuccessInputGray7" aria-describedby="successHelpGray7" placeholder="Helper text" value="Input text">
+    <small id="successHelpGray7" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleTrailingIconInput">Trailing icon text input label</label>
+    <label for="exampleTrailingIconInputGray7">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
-      <input type="text" class="form-control" id="exampleTrailingIconInput" aria-describedby="trailingIconHelp" placeholder="Helper text">
+      <input type="text" class="form-control" id="exampleTrailingIconInputGray7" placeholder="Helper text">
       <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
@@ -251,30 +251,30 @@ Should only run and be packaged for storybook preview.
 <form class="uds-form-white">
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDefault">Default textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDefault" rows="3" placeholder="Enter your textarea content..."></textarea>
+    <label for="exampleFormControlTextareaDefaultWhite">Default textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDefaultWhite" rows="3" placeholder="Enter your textarea content..."></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaFocus">Focus textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaFocus" rows="3">Focus here to see the focus state.</textarea>
+    <label for="exampleFormControlTextareaFocusWhite">Focus textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaFocusWhite" rows="3">Focus here to see the focus state.</textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+    <label for="exampleFormControlTextareaDisabledWhite">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabledWhite" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaError">Error textarea</label>
-    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3"></textarea>
-    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleFormControlTextareaErrorWhite">Error textarea</label>
+    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelpWhite" id="exampleFormControlTextareaErrorWhite" rows="3"></textarea>
+    <small id="errorTextareaHelpWhite" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
-    <textarea class="form-control is-valid" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
-    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleFormControlTextareaSuccessWhite">Success textarea</label>
+    <textarea class="form-control is-valid" aria-describedby="successTextareaHelpWhite" id="exampleFormControlTextareaSuccessWhite" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelpWhite" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
 </form>
@@ -284,30 +284,30 @@ Should only run and be packaged for storybook preview.
 <form class="uds-form-gray1">
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDefault">Default textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDefault" rows="3" placeholder="Enter your textarea content..."></textarea>
+    <label for="exampleFormControlTextareaDefaultGray1">Default textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDefaultGray1" rows="3" placeholder="Enter your textarea content..."></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaFocus">Focus textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaFocus" rows="3">Focus here to see the focus state.</textarea>
+    <label for="exampleFormControlTextareaFocusGray1">Focus textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaFocusGray1" rows="3">Focus here to see the focus state.</textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+    <label for="exampleFormControlTextareaDisabledGray1">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabledGray1" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaError">Error textarea</label>
-    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3"></textarea>
-    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleFormControlTextareaErrorGray1">Error textarea</label>
+    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelpGray1" id="exampleFormControlTextareaErrorGray1" rows="3"></textarea>
+    <small id="errorTextareaHelpGray1" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
-    <textarea class="form-control is-valid" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
-    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleFormControlTextareaSuccessGray1">Success textarea</label>
+    <textarea class="form-control is-valid" aria-describedby="successTextareaHelpGray1" id="exampleFormControlTextareaSuccessGray1" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelpGray1" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
 </form>
@@ -317,30 +317,30 @@ Should only run and be packaged for storybook preview.
 <form class="uds-form-gray2">
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDefault">Default textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDefault" rows="3" placeholder="Enter your textarea content..."></textarea>
+    <label for="exampleFormControlTextareaDefaultGray2">Default textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDefaultGray2" rows="3" placeholder="Enter your textarea content..."></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaFocus">Focus textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaFocus" rows="3">Focus here to see the focus state.</textarea>
+    <label for="exampleFormControlTextareaFocusGray2">Focus textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaFocusGray2" rows="3">Focus here to see the focus state.</textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+    <label for="exampleFormControlTextareaDisabledGray2">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabledGray2" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaError">Error textarea</label>
-    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3"></textarea>
-    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleFormControlTextareaErrorGray2">Error textarea</label>
+    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelpGray2" id="exampleFormControlTextareaErrorGray2" rows="3"></textarea>
+    <small id="errorTextareaHelpGray2" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
-    <textarea class="form-control is-valid" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
-    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleFormControlTextareaSuccessGray2">Success textarea</label>
+    <textarea class="form-control is-valid" aria-describedby="successTextareaHelpGray2" id="exampleFormControlTextareaSuccessGray2" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelpGray2" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
 </form>
@@ -350,30 +350,30 @@ Should only run and be packaged for storybook preview.
 <form class="uds-form-gray7">
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDefault">Default textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDefault" rows="3" placeholder="Enter your textarea content..."></textarea>
+    <label for="exampleFormControlTextareaDefaultGray7">Default textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDefaultGray7" rows="3" placeholder="Enter your textarea content..."></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaFocus">Focus textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaFocus" rows="3">Focus here to see the focus state.</textarea>
+    <label for="exampleFormControlTextareaFocusGray7">Focus textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaFocusGray7" rows="3">Focus here to see the focus state.</textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+    <label for="exampleFormControlTextareaDisabledGray7">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabledGray7" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaError">Error textarea</label>
-    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3"></textarea>
-    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <label for="exampleFormControlTextareaErrorGray7">Error textarea</label>
+    <textarea class="form-control is-invalid" aria-describedby="errorTextareaHelpGray7" id="exampleFormControlTextareaErrorGray7" rows="3"></textarea>
+    <small id="errorTextareaHelpGray7" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
-    <textarea class="form-control is-valid" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
-    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <label for="exampleFormControlTextareaSuccessGray7">Success textarea</label>
+    <textarea class="form-control is-valid" aria-describedby="successTextareaHelpGray7" id="exampleFormControlTextareaSuccessGray7" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelpGray7" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
 
 </form>
@@ -423,13 +423,13 @@ Should only run and be packaged for storybook preview.
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option3">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
       <label class="form-check-label" for="exampleRadios3">
         Third default radio
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option4" disabled>
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" disabled>
       <label class="form-check-label" for="exampleRadios4">
         Disabled radio
       </label>
@@ -462,7 +462,7 @@ Should only run and be packaged for storybook preview.
     <legend>A Group of Radios</legend>
     <div class="form-check">
       <input class="form-check-input" type="radio" name="whiteExampleRadios" id="whiteExampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="WhiteExampleRadios1">
+      <label class="form-check-label" for="whiteExampleRadios1">
         Default radio
       </label>
     </div>
@@ -527,7 +527,7 @@ Should only run and be packaged for storybook preview.
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="greay1ExampleRadios4" value="option4" disabled>
+      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="gray1ExampleRadios4" value="option4" disabled>
       <label class="form-check-label" for="gray1ExampleRadios4">
         Disabled radio
       </label>
