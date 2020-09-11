@@ -12,16 +12,15 @@ crossorigin="anonymous"></script>
 
 <script src="/asu-web-standards-bootstrap4/dist/js/bootstrap-asu.min.js"></script>
 
-<!-- Include React from CDN
-<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-
-<!-- Preact from CDN
-<script crossorigin src="https://unpkg.com/preact@10.4.4/dist/preact.umd.js"></script>-->
 
 <!-- include bundled scripts from Preact packages (CSS is in the <head>) -->
 <script src="/components-library/dist/vendor.production.js"></script>
 <script src="/components-library/dist/core.production.js"></script>
+
+<!-- include Cookie Consent script and styles -->
+<link href="/cookie-consent/dist/cookie-consent.css" rel="stylesheet" type="text/css"
+media="all">
+<script src="/cookie-consent/dist/cookie-consent.js"></script>
 <!--<script src="/component-forms/dist/vendor.production.js"></script>
 <script src="/component-forms/dist/forms.production.js"></script>-->
 <!--<script src="/asu-maps/dist/asu-maps.production.js"></script>-->
@@ -191,11 +190,14 @@ crossorigin="anonymous"></script>
     navTree: NavTree,
     buttons: buttons,
     title: "Ira A. Fulton Schools of Engineering",
-    logoutUrl: "https://webapp4.asu.edu/myasu/Signout",
-    loginUrl: ""
+    //logoutLink: "/caslogout",  Drupal CAS logout path
+    //loginLink: '/cas?destination=home'  example of Drupal login path
   };
 
   AsuWebcore.initHeader(props);
+
+  // Initialize cookie consent banner
+  AsuCookieConsent.init();
 
   /*
     AsuWebforms.RenderPreact(AsuWebforms.FormPanel, {

@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
+import { cx } from "emotion";
 import * as S from "./styles";
-import { injectGlobal } from "emotion";
 
 /**
  * Render entire Nav.
@@ -83,8 +83,9 @@ const Nav = ({
     const Up = 38;
     const Right = 39;
     const Down = 40;
+    const Tab = 9;
 
-    const derState = deriveState(focused, navList);
+    const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
       switch (e.keyCode) {
@@ -104,6 +105,24 @@ const Nav = ({
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
+        case Tab:
+          // handle regular tab key
+          if (!e.shiftKey) {
+            if (derState.isLast) return false;
+
+              e.preventDefault();
+              setFocusCallback(moveRight(focused, derState, navList));
+
+
+            // handle shift+tab
+          } else {
+            if (derState.isFirst) return false;
+
+            e.preventDefault();
+            setFocusCallback(moveLeft(focused, derState, navList));
+          }
+
+          break;
         default:
           break;
       }
@@ -112,7 +131,7 @@ const Nav = ({
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
-    const derState = deriveState(focused, navList);
+    const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
       const [x, y, z] = focused;
@@ -123,10 +142,10 @@ const Nav = ({
         }
 
         // if setting focus on nav item without children, close any
-        // open dropdown navs
-        if (!derState.hasSubs) {
+        // open dropdown navs TODO: do we need this
+        /*if (!derState.hasSubs) {
           setOpen(-1);
-        }
+        }*/
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
@@ -210,9 +229,7 @@ const Nav = ({
               color={
                 navItem.hasOwnProperty("color") ? navItem.color : undefined
               }
-              class={
-                navItem.hasOwnProperty("class") ? navItem.class : undefined
-              }
+              class={navItem.hasOwnProperty("class") ? navItem.class : ""}
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
               text={navItem.text}
             />
@@ -263,11 +280,13 @@ Nav.defaultProps = {
 /***
  * Helper function returns more info about current focus state
  */
-const deriveState = (state, navList) => {
+const deriveFocusState = (state, navList) => {
   const [x, y, z] = state;
   let hasFocus = false;
   let isTop = false;
   let hasSubs = false;
+  let isLast = false;
+  let isFirst = false;
 
   // nothing has focus
   if (x == -1 && y == -1 && z == -1) {
@@ -286,10 +305,22 @@ const deriveState = (state, navList) => {
   // Is top level item focused ?
   isTop = y === -1 || z === -1;
 
+  // Is this the last focusable item in nav menu
+  if (isTop && x === navList.length - 1) {
+    isLast = true;
+  }
+
+  // Is this the first focusable item
+  if (isTop && x === 0) {
+    isFirst = true;
+  }
+
   return {
     hasFocus,
     isTop,
     hasSubs,
+    isLast,
+    isFirst,
   };
 };
 
@@ -307,12 +338,15 @@ const moveLeft = (state, dstate, navList) => {
       //TODO: could a column have a heading with no items under?
       return navList[x].menus[y - 1][0].ref ? [x, y - 1, 0] : [x, y - 1, 1];
     }
+    // navigate back to dropdown toggle if moving left from leftmost submenu
+    return [x, -1, -1];
   }
 
+  // if at the top move leftward
   move = typeof navList[x - 1] !== "undefined" ? [x - 1, -1, -1] : [0, -1, -1];
 
   if (checkFocus(move, navList) === false) {
-    return moveLeft(move, deriveState(move, navList), navList);
+    return moveLeft(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -333,6 +367,9 @@ const moveRight = (state, dstate, navList) => {
       //TODO: could a column have a heading with no items under?
       return navList[x].menus[y + 1][0].ref ? [x, y + 1, 0] : [x, y + 1, 1];
     }
+
+    // navigate back to dropdown toggle if moving righward from rightmost submenu
+    return [x, -1, -1];
   }
 
   move =
@@ -342,7 +379,7 @@ const moveRight = (state, dstate, navList) => {
 
   // TODO: handle mega menu case
   if (checkFocus(move, navList) === false) {
-    return moveRight(move, deriveState(move, navList), navList);
+    return moveRight(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -371,7 +408,7 @@ const moveUp = (state, dstate, navList) => {
   }
 
   if (checkFocus(move, navList) === false) {
-    return moveUp(move, deriveState(move, navList), navList);
+    return moveUp(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -407,7 +444,7 @@ const moveDown = (state, dstate, navList) => {
   }
 
   if (checkFocus(move, navList) === false) {
-    return moveDown(move, deriveState(move, navList), navList);
+    return moveDown(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -419,7 +456,7 @@ const moveDown = (state, dstate, navList) => {
  * @param {*} navList
  */
 const checkFocus = (move, navList) => {
-  const dstate = deriveState(move, navList);
+  const dstate = deriveFocusState(move, navList);
 
   if (!dstate.hasFocus) {
     return false;

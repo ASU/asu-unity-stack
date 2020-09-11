@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-forms",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "ASU Web Standards-compliant Preact forms",
   "main": "src/index.js",
   "module": "esm/index.js",
@@ -24,7 +24,9 @@
     "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@storybook/preact": "^6.0.7"
+  },
   "dependencies": {
     "@asu-design-system/components-library": "^1.0.19",
     "@asu-design-system/design-tokens": "^1.1.0",

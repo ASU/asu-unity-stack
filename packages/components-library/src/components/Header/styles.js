@@ -1,8 +1,9 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
+import {forwardRef} from "preact/compat";
 import { cx, css } from "emotion";
-import Tokens, { mobileBreak, containerSize } from "../../theme";
+import { mobileBreak, containerSize, primaryNavTopPadding } from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
@@ -224,6 +225,7 @@ const UniversalNav = props => {
         props.open ? "mobile-open" : "",
         props.searchOpen ? "search-open" : ""
       )}
+      ref={props.domRef}
     >
       {props.children}
     </div>
@@ -261,7 +263,7 @@ const primaryStyles = css`
       background-color: #ffffff;
       padding: 0;
       z-index: 1600;
-      padding: 1.5rem 0 0 0;
+      padding: ${primaryNavTopPadding} 0 0 0;
 
       > div {
         padding: 0;
@@ -271,6 +273,7 @@ const primaryStyles = css`
     }
   }
 `;
+
 const PrimaryNav = props => {
   return <div class="primary-nav">{props.children}</div>;
 };
@@ -362,7 +365,7 @@ const Logo = props => {
   const brandLink = props.brandLink ? props.brandLink : "https://asu.edu";
 
   return (
-    <a href={brandLink} class="navbar-brand">
+    <a href={brandLink} class="navbar-brand" ref={props.domRef}>
       <img class="vert" src={props.src} alt={props.alt} />
       <img class="horiz" src={props.mobileSrc} />
     </a>
@@ -422,17 +425,17 @@ const titleStyles = css`
   }
 `;
 
-const Title = ({ title, unit, ...props }) => {
+const Title = forwardRef(({ title, unit, ...props }, ref) => {
   if (unit) {
     return (
-      <div class="title">
+      <div class="title" ref={ref}>
         <a class="unit-name">{unit}</a>
         <span class="subdomain-name">{title}</span>
       </div>
     );
   }
-  return <div class="title subdomain-name">{title}</div>;
-};
+  return <div class="title subdomain-name" ref={ref}>{title}</div>;
+});
 
 export {
   Header,
@@ -444,4 +447,5 @@ export {
   Icon,
   NavbarToggler,
   mobileBreak,
+  primaryNavTopPadding
 };

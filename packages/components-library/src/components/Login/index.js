@@ -30,9 +30,9 @@ Login.propTypes = {
 };
 
 Login.defaultProps = {
-  loginLink: "/cas", // default paths are Drupal
-  logoutLink: "/caslogout",
-  loggedIn: false,
+  logoutLink: "https://webapp4.asu.edu/myasu/Signout",
+  loginLink: "https://weblogin.asu.edu/cgi-bin/login",
+  loggedIn: false
 };
 
 export { Login };

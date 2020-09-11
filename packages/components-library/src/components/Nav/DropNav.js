@@ -40,10 +40,17 @@ const DropNav = ({
         onMouseDown={e => {
           e.preventDefault();
           toggle(pIndex);
-          setFocus([pIndex, -1, -1]);
+          //setFocus([pIndex, -1, -1]);
+        }}
+        onKeyDown={e => {
+          const code = e.keyCode;
+
+          if (code == 32 || code == 13) {
+            toggle(pIndex);
+          }
         }}
         onFocus={e => {
-          navOpen(pIndex);
+          //navOpen(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
         tabIndex="0"
