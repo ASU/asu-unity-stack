@@ -36,6 +36,7 @@ const DropNav = ({
         target={item.target}
         title={item.title ? item.title : item.text}
         role="button"
+        class={isOpen ? "dropdown-open" : ""}
         aria-expanded={isOpen}
         onMouseDown={e => {
           e.preventDefault();

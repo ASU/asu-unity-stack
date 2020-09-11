@@ -37,19 +37,25 @@ const ButtonForm = props => {
 const dropdownStyles = css`
   /** DdMenu CSS **/
   div.dropdown {
-    display: none;
+    max-height: 0;
+    display: flex;
     z-index: 999;
     justify-content: space-between;
     background: #ffffff;
     flex-wrap: nowrap;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    transition: all .5s cubic-bezier(.19,1,.19,1);
     margin: 0;
-    padding: 1rem;
+    padding: 0 1rem;
     border: 0;
-    border-top: 1px solid #d0d0d0;
+
+    overflow: hidden;
 
     &.open {
-      display: flex;
+
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      max-height: 1200px;
+      transform: translateY(0);
     }
 
     h3 {
@@ -93,10 +99,11 @@ const dropdownStyles = css`
     }
 
     @media (max-width: ${mobileBreak}) {
+      padding-left: 3rem;
+      flex-direction: column;
+
       &.open {
-        flex-direction: column;
         position: relative;
-        padding-left: 3rem;
       }
 
       > ul {
@@ -115,10 +122,15 @@ const dropdownStyles = css`
 
     @media (min-width: ${mobileBreak}) {
       margin: -1px 0 0 0;
-      border: 1px solid #d0d0d0;
-      border-top: 1px solid #ffffff;
-      padding: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
       position: absolute;
+
+      &.open {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        border: 1px solid #d0d0d0;
+      }
 
       h3 {
         margin-top: 0;
@@ -211,7 +223,7 @@ const componentStyles = css`
             left: -8px;
           }
 
-          :hover:after {
+          :hover:after, &.dropdown-open:after {
             width: 100%;
             width: calc(100% + 16px);
           }
@@ -261,11 +273,11 @@ const componentStyles = css`
   @media (max-width: ${mobileBreak}) {
     border: none;
     display: none;
+    flex-direction: column;
+    width: 100%;
 
     &.open-nav,
     &:target {
-      flex-direction: column;
-      width: 100%;
       overflow-y: scroll;
       display: flex;
     }
@@ -281,10 +293,6 @@ const componentStyles = css`
     > ul {
       flex-direction: column;
       align-items: stretch;
-      div.open {
-        flex-direction: column;
-        position: relative;
-      }
 
       > li {
         margin-right: 0;
