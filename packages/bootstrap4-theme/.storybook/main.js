@@ -8,7 +8,6 @@ module.exports = {
     '../stories/**/*.stories.[tj]s',
   ],
   addons: [
-
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-viewport',
@@ -30,15 +29,15 @@ module.exports = {
     // Make whatever fine-grained changes you need
     config.module.rules.push({
       test: /\.scss$/,
-      use: ['style-loader', {
-        loader: 'css-loader',
-        options: {
+      use: [
+        'style-loader',
+        { loader: 'css-loader', options: { importLoaders: 1} },
+        {
+          loader: 'sass-loader',
+          options: {
+          },
         },
-      }, {
-        loader: 'sass-loader',
-        options: {
-        },
-      }]
+      ],
     });
 
     // Return the altered config
