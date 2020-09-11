@@ -1,13 +1,6 @@
-import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+export default { title: 'Components/Accordions' };
 
-// comment to test
-storiesOf('Components/Accordion', module)
-  .addParameters({
-    happo: false,
-  })
-
-.add('Foldable card', () => `
+export const foldableCard = () => `
   <div class="container my-5">
 
     <div class="row">
@@ -91,10 +84,81 @@ storiesOf('Components/Accordion', module)
     </div>
 
   </div>
-`)
+`;
 
-.add('Disable folding on desktop', () => `
-<div class="container my-5">
+export const accordion = () => `
+  <div class="container my-5">
+
+    <div class="row mt-4">
+      <div class="col-md-10">
+
+        <h4>Accordion</h4>
+        <p>With some small modifications of the <strong>foldable card</strong> code, a series of foldable cards can be connected together to form an accordion.</p>
+        <ul style="padding:1rem 3rem;">
+          <li>Wrap the collection of foldable cards with an element containing the class of <code>.accordion</code> and a unique ID.</li>
+          <li>Include the <code>data-parent</code> attribute within the card body elemment to properly toggle the folded/expanded state.</li>
+        </ul>
+
+        <div class="accordion" id="accordionExample">
+
+          <div class="card card-foldable">
+            <div class="card-header">
+              <h4>
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">These are sections within an accordion.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div><!-- end .card-header -->
+            <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
+              <h4>Quatrenary Headline</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable">
+            <div class="card-header">
+              <h4>
+                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent="#accordionExample">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable">
+            <div class="card-header">
+              <h4>
+                <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">The inactive panels should collapse while the active one expands.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cardBodyThree" class="collapse card-body" aria-labelledby="cardThree" data-parent="#accordionExample">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+        </div><!-- end .accordion -->
+
+      </div>
+    </div>
+
+  </div>
+`;
+
+
+export const disableFoldAtBreakpoint = () => `
+  <div class="container my-5">
 
     <div class="row">
       <div class="col">
@@ -169,75 +233,4 @@ storiesOf('Components/Accordion', module)
       </div>
     </div>
   </div>
-`)
-
-.add('Accordion', () => `
-  <div class="container my-5">
-
-    <div class="row mt-4">
-      <div class="col-md-10">
-
-        <h4>Accordion</h4>
-        <p>With some small modifications of the <strong>foldable card</strong> code, a series of foldable cards can be connected together to form an accordion.</p>
-        <ul style="padding:1rem 3rem;">
-          <li>Wrap the collection of foldable cards with an element containing the class of <code>.accordion</code> and a unique ID.</li>
-          <li>Include the <code>data-parent</code> attribute within the card body elemment to properly toggle the folded/expanded state.</li>
-        </ul>
-
-        <div class="accordion" id="accordionExample">
-
-          <div class="card card-foldable">
-            <div class="card-header">
-              <h4>
-                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">These are sections within an accordion.
-                  <span class="fas fa-chevron-up"></span>
-                </a>
-              </h4>
-            </div><!-- end .card-header -->
-            <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
-              <h4>Quatrenary Headline</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-              <h5>This is a level five headline. There's a fancy word for that too.</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
-
-          <div class="card card-foldable">
-            <div class="card-header">
-              <h4>
-                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
-                  <span class="fas fa-chevron-up"></span>
-                </a>
-              </h4>
-            </div>
-            <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent="#accordionExample">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-              <h5>This is a level five headline. There's a fancy word for that too.</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
-
-          <div class="card card-foldable">
-            <div class="card-header">
-              <h4>
-                <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">The inactive panels should collapse while the active one expands.
-                  <span class="fas fa-chevron-up"></span>
-                </a>
-              </h4>
-            </div>
-            <div id="cardBodyThree" class="collapse card-body" aria-labelledby="cardThree" data-parent="#accordionExample">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-              <h5>This is a level five headline. There's a fancy word for that too.</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
-
-        </div><!-- end .accordion -->
-
-      </div>
-    </div>
-
-  </div>
-`)
-
+`;
