@@ -1,0 +1,15 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Global Header/Header top" />
+
+# Header Top (Universal Navigation)
+
+The grey bar at the top of the page is referred to as the **universal navigation** and exists within the `#header-top` element.
+
+- The links in this area are not intended to be altered and should provide a top-level consistent experience for people looking to navigate the entire ASU domain.
+- The first two links on the page are visually hidden but become visible when navigating with a keyboard. Those links are the **Skip to Content** link and the **Report an Accessibility Problem** link.
+
+The markup contains a landmark for developers to target with any relevant JS for the process of logging in / logging out of their specific application. Inject your results into `div.login-status` and utilize some additional utility classes for consistent formatting:
+
+- `.login-status > a.name` should render with a font weight of 700;
+- `.login-status > a.signout` should surround the result with an open and close parenthesis. (Done via pseudo-elements and CSS.)
