@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import { IconChevronDown } from "../Icons/styles";
+import { Icon } from "../Icons";
 
 const Card = props => {
   return (
@@ -195,7 +195,7 @@ const FoldableCardHeader = ({ show, id, ...props }) => {
       {...props}
     >
       {props.children}
-      <IconChevronDown />
+      <Icon type="chevron-down" />
     </button>
   );
 };

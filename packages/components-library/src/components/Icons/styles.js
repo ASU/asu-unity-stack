@@ -16,8 +16,8 @@ import {
   faInfoCircle,
   faCircle,
   faTimes,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
-import Tokens from "../../theme";
 
 const IconBars = props => {
   return <FontAwesomeIcon icon={faBars} {...props} />;
@@ -68,40 +68,21 @@ const IconCircleClose = props => {
   );
 };
 
-const Icon = ({ type, ...props }) => {
-  switch (type) {
-    case "mobile":
-      return <IconMobile />;
-    case "chevron-down":
-      return <IconChevronDown {...props} />;
-    case "search":
-      return <IconSearch {...props} />;
-    case "desktop":
-      return <IconDesktop {...props} />;
-    case "clipboard":
-      return <IconClipboard {...props} />;
-    case "map-pin":
-      return <IconMapPin {...props} />;
-    case "exclamation-triangle":
-      return <IconExclTriangle {...props} />;
-    case "bell":
-      return <IconBell {...props} />;
-    case "info-circle":
-      return <IconInfoCircle {...props} />;
-    case "circle-close":
-      return <IconCircleClose {...props} />;
-    case "bars":
-      return <IconBars {...props} />;
-    default:
-      return "";
-  }
+const IconHome = props => {
+  return <FontAwesomeIcon icon={faHome} {...props} />;
 };
 
 export {
-  Icon,
   IconBars,
   IconSearch,
   IconChevronDown,
   IconMobile,
   IconCircleClose,
+  IconHome,
+  IconClipboard,
+  IconDesktop,
+  IconMapPin,
+  IconInfoCircle,
+  IconBell,
+  IconExclTriangle,
 };

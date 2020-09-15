@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "1.1.4",
+  "version": "1.2.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -10,7 +10,7 @@
   },
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+    "registry": "https://registry.web.asu.edu/"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
@@ -23,7 +23,8 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0"
+    "@asu-design-system/design-tokens": "^1.1.0",
+    "@storybook/html": "^6.0.7"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

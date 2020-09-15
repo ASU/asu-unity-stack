@@ -1,10 +1,13 @@
 hr {
-  border-top: $horizonatal-rule-border;
+  border-top: 0;
+  height: 1px;
+  margin: $uds-size-spacing-6 0;
+  background-color: $uds-color-base-gray-3;
 
   &.copy-divider {
-    margin-left: $copy-divider-margin;
-    max-width: $copy-divider-width;
-    border-top: $copy-divider-border;
+    height: $uds-size-spacing-1;
+    background-color: $uds-color-base-gold;
+    max-width: $uds-size-spacing-32;
   }
 }
 

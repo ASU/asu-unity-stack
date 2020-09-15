@@ -1,10 +1,12 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/compat";
+import { h } from "preact";
+import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
-import Nav from "../Nav";
+import { Nav } from "../Nav";
+import { UniversalSearch } from "../Search";
+import { Login } from "../Login";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
@@ -16,25 +18,35 @@ const Header = ({
   userName,
   loginLink,
   logoutLink,
+  buttons,
   ...props
 }) => {
-  // Mobile menu open state and helper functions
+  // State hooks to track and set opening/closing mobile nav
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSearch, setSearchOpen] = useState(false);
-
+  // Function to toggle the mobile nav
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
-  const toggleSearch = () => setSearchOpen(oldOpen => !oldOpen);
 
-  // Scroll position state handling for adding 'scroll' class
+  //State hooks for tracking and setting open/close search in universal nav
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // State hooks for tracking and setting the max mobile nav menu height
+  const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
+
+  // Get breakpoint from theme
+  const bpoint = parseInt(S.mobileBreak, 10);
+
+  // get window dimensions
+  const { height, width } = useWindowDimensions();
+
+  // Hooks to track scroll position state
   const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setSrollPosition(position);
   };
 
-  // get window dimensions
-  const { height, width } = useWindowDimensions();
-
+  // Attach scroll event lister which will update the scrollPosition state
+  // when window scrolled
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -43,24 +55,57 @@ const Header = ({
     };
   }, []);
 
+  // Get primary nav top padding value from theme
+  const tpadding = parseInt(S.primaryNavTopPadding, 10);
+
+  // Use refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
+  // Calculate the mobile nav menu max-height every time the mobile nav is opened
+  // or the viewport changes size
+  useEffect(() => {
+    if (width < bpoint && mobileOpen) {
+      window.setTimeout(() => {
+        const uHeight = universalRef.current.clientHeight;
+        const lHeight = logoRef.current.clientHeight;
+        const tHeight = titleRef.current.clientHeight;
+
+        const pHeight = lHeight + tHeight + tpadding;
+
+        const newHeight = height - uHeight - pHeight;
+
+        setMaxMobileNavHeight(newHeight);
+      }, 500);
+    }
+  }, [height, width, mobileOpen]);
+
+
+
   return (
-    <S.Header scrollPosition={scrollPosition}>
-      <S.UniversalNav open={mobileOpen}>
+    <S.Header
+      class={
+        scrollPosition > 0 || (mobileOpen && width < bpoint) ? "scrolled" : ""
+      }
+    >
+      <S.UniversalNav
+        open={mobileOpen}
+        domRef={universalRef}
+        {...{ searchOpen }}
+      >
         <div>
-          <a href="https://www.asu.edu/">ASU home</a>
-          <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          {loggedIn ? (
-            <span>
-              {userName}
-              <a href={logoutLink}>Sign Out</a>
-            </span>
-          ) : (
-            <a href={loginLink}>Sign in</a>
-          )}
-          <S.SearchForm open={openSearch}>
-            <S.Icon type="search" onMouseDown={toggleSearch} />
-          </S.SearchForm>
+          <div class="nav-grid">
+            <a href="https://www.asu.edu/">ASU home</a>
+            <a href="https://my.asu.edu/">My ASU</a>
+            <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+            <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
+          </div>
+          <UniversalSearch
+            open={searchOpen}
+            setOpen={setSearchOpen}
+            mobile={width < bpoint}
+          />
         </div>
       </S.UniversalNav>
       <S.PrimaryNav>
@@ -68,7 +113,7 @@ const Header = ({
           <div id="asu-generated-stub" />
         ) : (
           <div>
-            <S.Logo {...logo} />
+            <S.Logo {...logo} domRef={logoRef} />
             <S.NavbarToggler
               onClick={e => {
                 e.preventDefault();
@@ -77,7 +122,7 @@ const Header = ({
               mobileOpen={mobileOpen}
             />
             <S.NavbarContainer>
-              <S.Title {...{ title, unit }} />
+              <S.Title {...{ title, unit }} ref={titleRef} />
               <Nav
                 {...{
                   navTree,
@@ -85,6 +130,8 @@ const Header = ({
                   mobileOpen,
                   height,
                   width,
+                  buttons,
+                  maxMobileHeight: maxMobileNavHeight,
                 }}
               />
             </S.NavbarContainer>
@@ -109,6 +156,7 @@ Header.propTypes = {
   userName: PropTypes.string,
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
+  buttons: PropTypes.arrayOf(PropTypes.object),
 };
 
 Header.defaultProps = {
@@ -122,10 +170,10 @@ Header.defaultProps = {
   },
   title: "",
   unit: "",
-  loggedIn: false,
-  userName: "",
-  loginLink: "https://weblogin.asu.edu/cas/login",
-  logoutLink: "https://weblogin.asu.edu/cas/logout",
+  loggedIn: Login.defaultProps.loggedIn,
+  loginLink: Login.defaultProps.loginLink,
+  logoutLink: Login.defaultProps.logoutLink,
+  buttons: [],
 };
 
-export default Header;
+export { Header };

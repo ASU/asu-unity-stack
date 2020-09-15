@@ -1,14 +1,16 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, createRef } from "preact";
-import { useEffect, useState, useMemo } from "preact/compat";
+import { useEffect, useState, useMemo, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
+import { Button } from "../Button";
+import { cx } from "emotion";
 import * as S from "./styles";
 
 /**
- * Render entire Nav. This includes
+ * Render entire Nav.
  * @param {} props
  */
 const Nav = ({
@@ -16,8 +18,9 @@ const Nav = ({
   width,
   height,
   mobileOpen,
-  maxHeight,
+  maxMobileHeight,
   buttons,
+  injectStyles,
   ...props
 }) => {
   /** State to keep track of currently focused Nav Item */
@@ -28,6 +31,9 @@ const Nav = ({
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
   };
+
+  // Get breakpoint from design token
+  const bpoint = parseInt(S.mobileBreak, 10);
 
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
@@ -77,8 +83,9 @@ const Nav = ({
     const Up = 38;
     const Right = 39;
     const Down = 40;
+    const Tab = 9;
 
-    const derState = deriveState(focused, navList);
+    const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
       switch (e.keyCode) {
@@ -98,16 +105,33 @@ const Nav = ({
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
+        case Tab:
+          // handle regular tab key
+          if (!e.shiftKey) {
+            if (derState.isLast) return false;
+
+              e.preventDefault();
+              setFocusCallback(moveRight(focused, derState, navList));
+
+
+            // handle shift+tab
+          } else {
+            if (derState.isFirst) return false;
+
+            e.preventDefault();
+            setFocusCallback(moveLeft(focused, derState, navList));
+          }
+
+          break;
         default:
           break;
       }
     }
   };
 
-
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
-    const derState = deriveState(focused, navList);
+    const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
       const [x, y, z] = focused;
@@ -116,15 +140,36 @@ const Nav = ({
         if (navList[x].ref) {
           navList[x].ref.current.focus();
         }
+
+        // if setting focus on nav item without children, close any
+        // open dropdown navs TODO: do we need this
+        /*if (!derState.hasSubs) {
+          setOpen(-1);
+        }*/
       } else if (navList[x].menus[y][z].ref) {
         navList[x].menus[y][z].ref.current.focus();
       }
     }
   }, [focused, navList]);
 
+  /*** Detecting click outside of container */
+  const navRef = useRef(null);
 
-  // Get breakpoint from design token
-  const bpoint = parseInt(S.mobileBreak, 10);
+  useEffect(() => {
+    // close nav if clicked outside nav
+    const handleClickOutside = event => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpen(-1);
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navRef]);
 
   // handle focus moving out of Nav
   const onBlurNav = e => {
@@ -137,11 +182,16 @@ const Nav = ({
   };
 
   return (
-    <S.Nav open={mobileOpen}>
+    <S.Nav
+      open={mobileOpen}
+      maxMobileHeight={maxMobileHeight}
+      injectStyles={injectStyles}
+    >
       <ul
-        {...(width > bpoint ? { onBlurCapture: onBlurNav } : {})}
+        {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
+        ref={navRef}
       >
         {navList.map((item, index) => {
           const navItem = item.item;
@@ -171,18 +221,36 @@ const Nav = ({
           // Return a single nav item if there are no submenus
           return (
             <NavItem
-              item={navItem}
               onFocus={() => {
                 setFocusCallback([index, -1, -1]);
               }}
               itemRef={item.ref}
-              tabIndex="0"
+              type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
+              color={
+                navItem.hasOwnProperty("color") ? navItem.color : undefined
+              }
+              class={navItem.hasOwnProperty("class") ? navItem.class : ""}
+              href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
+              text={navItem.text}
             />
           );
         })}
       </ul>
 
-      {}
+      {buttons.length > 0 && (
+        <S.ButtonForm>
+          {buttons.map((item, index) => {
+            let color = item.color ? item.color : "maroon";
+
+            // Return a single nav item if there are no submenus
+            return (
+              <Button href={item.href} {...{ [color]: true }} medium>
+                {item.text}
+              </Button>
+            );
+          })}
+        </S.ButtonForm>
+      )}
     </S.Nav>
   );
 };
@@ -193,7 +261,8 @@ Nav.propTypes = {
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  maxHeight: PropTypes.number,
+  maxMobileHeight: PropTypes.number,
+  injectStyles: PropTypes.bool,
 };
 
 Nav.defaultProps = {
@@ -201,8 +270,9 @@ Nav.defaultProps = {
   mobileOpen: false,
   width: 1920,
   height: 1080,
-  maxHeight: "75vh",
+  maxMobileHeight: -1,
   buttons: [],
+  injectStyles: false,
 };
 
 /***************** Helper functions **************/
@@ -210,11 +280,13 @@ Nav.defaultProps = {
 /***
  * Helper function returns more info about current focus state
  */
-const deriveState = (state, navList) => {
+const deriveFocusState = (state, navList) => {
   const [x, y, z] = state;
   let hasFocus = false;
   let isTop = false;
   let hasSubs = false;
+  let isLast = false;
+  let isFirst = false;
 
   // nothing has focus
   if (x == -1 && y == -1 && z == -1) {
@@ -233,10 +305,22 @@ const deriveState = (state, navList) => {
   // Is top level item focused ?
   isTop = y === -1 || z === -1;
 
+  // Is this the last focusable item in nav menu
+  if (isTop && x === navList.length - 1) {
+    isLast = true;
+  }
+
+  // Is this the first focusable item
+  if (isTop && x === 0) {
+    isFirst = true;
+  }
+
   return {
     hasFocus,
     isTop,
     hasSubs,
+    isLast,
+    isFirst,
   };
 };
 
@@ -254,12 +338,15 @@ const moveLeft = (state, dstate, navList) => {
       //TODO: could a column have a heading with no items under?
       return navList[x].menus[y - 1][0].ref ? [x, y - 1, 0] : [x, y - 1, 1];
     }
+    // navigate back to dropdown toggle if moving left from leftmost submenu
+    return [x, -1, -1];
   }
 
+  // if at the top move leftward
   move = typeof navList[x - 1] !== "undefined" ? [x - 1, -1, -1] : [0, -1, -1];
 
   if (checkFocus(move, navList) === false) {
-    return moveLeft(move, deriveState(move, navList), navList);
+    return moveLeft(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -280,6 +367,9 @@ const moveRight = (state, dstate, navList) => {
       //TODO: could a column have a heading with no items under?
       return navList[x].menus[y + 1][0].ref ? [x, y + 1, 0] : [x, y + 1, 1];
     }
+
+    // navigate back to dropdown toggle if moving righward from rightmost submenu
+    return [x, -1, -1];
   }
 
   move =
@@ -289,7 +379,7 @@ const moveRight = (state, dstate, navList) => {
 
   // TODO: handle mega menu case
   if (checkFocus(move, navList) === false) {
-    return moveRight(move, deriveState(move, navList), navList);
+    return moveRight(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -318,7 +408,7 @@ const moveUp = (state, dstate, navList) => {
   }
 
   if (checkFocus(move, navList) === false) {
-    return moveUp(move, deriveState(move, navList), navList);
+    return moveUp(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -354,7 +444,7 @@ const moveDown = (state, dstate, navList) => {
   }
 
   if (checkFocus(move, navList) === false) {
-    return moveDown(move, deriveState(move, navList), navList);
+    return moveDown(move, deriveFocusState(move, navList), navList);
   }
 
   return move;
@@ -366,7 +456,7 @@ const moveDown = (state, dstate, navList) => {
  * @param {*} navList
  */
 const checkFocus = (move, navList) => {
-  const dstate = deriveState(move, navList);
+  const dstate = deriveFocusState(move, navList);
 
   if (!dstate.hasFocus) {
     return false;
@@ -383,4 +473,4 @@ const checkFocus = (move, navList) => {
   return false;
 };
 
-export default Nav;
+export { Nav };

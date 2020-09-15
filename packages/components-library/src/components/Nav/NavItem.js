@@ -1,65 +1,67 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { Fragment } from "preact/compat";
+import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
-import {cx} from "emotion";
+import { Icon } from "../Icons";
+import { Button } from "../Button";
+import { Heading } from "../Heading";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
- * TODO: test ability to render arbitrary html string as nav Item. Perhaps would
- * require this to be safe: https://www.npmjs.com/package/preact-html-converter
  * @param {} props
  */
-const NavItem = props => {
+const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
   let inner = "";
-  const item = props.item;
 
-  switch (item.type) {
+  switch (type) {
     case "button":
       {
-        const bcolor = item.color ? `btn-${item.color}` : '';
-        inner = <button class={`btn btn-medium ${bcolor}`}>{item.text}</button>;
+        // standards only allow dark buttons in nav dropdowns
+        inner = (
+          <Button
+            class="nav-button"
+            ref={itemRef}
+            href={href}
+            {...(onFocus ? { onFocus } : "")}
+            medium
+            dark
+          >
+            {text}
+          </Button>
+        );
       }
       break;
     case "icon":
+      // Have to use className here because FontAwesome React component expects it
       inner = (
-        <Fragment>
-          <span class={cx(item.class, "icon-nav-item")}>
-            <span class="sr-only">{item.text}</span>
-          </span>
-          <div class="mobile-only">{item.text}</div>
-        </Fragment>
+        <a
+          class="nav-icon"
+          href={href}
+          {...(onFocus ? { onFocus } : "")}
+          ref={itemRef}
+        >
+          <Icon type={props.class} className="icon-nav-item" />
+          <span class="mobile-only">{text}</span>
+        </a>
       );
       break;
-
     case "heading":
-      inner = <h3>{item.text}</h3>;
-      break;
+      return <Heading type="h3">{text}</Heading>;
     default:
-      inner = item.text;
+      inner = (
+        <a
+          class="nav-item"
+          href={href}
+          {...(onFocus ? { onFocus } : "")}
+          ref={itemRef}
+        >
+          {text}
+        </a>
+      );
       break;
   }
 
-  // return the heading without a link if item type is heading
-  if (item.type == "heading") {
-    return inner;
-  }
-
-  return (
-    <li>
-      <a
-        href={item.href}
-        title={item.title ? item.title : item.text}
-        target={item.target}
-        {...(props.onFocus ? { onFocus: props.onFocus } : "")}
-        ref={props.itemRef}
-        tabIndex="0"
-      >
-        {inner}
-      </a>
-    </li>
-  );
+  return <li>{inner}</li>;
 };
 
 NavItem.propTypes = {
@@ -71,9 +73,13 @@ NavItem.propTypes = {
     // Or the instance of a DOM native element (see the note about SSR)
     PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
   ]),
-  top: PropTypes.bool, // Is this a top-level nav item?
   location: PropTypes.array, // Array representation of the item's location in the Nav
   onFocus: PropTypes.func,
+  type: PropTypes.string,
+  href: PropTypes.string,
+  text: PropTypes.string.isRequired, // text always required (accessiblity and mobile)
+  color: PropTypes.string,
+  icon: PropTypes.string
 };
 
 NavItem.defaultProps = {};

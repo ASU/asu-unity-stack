@@ -18,7 +18,6 @@ const DropNav = ({
   hasFocus,
   ...props
 }) => {
-
   const toggle = index => {
     if (isOpen) {
       setOpen(-1);
@@ -31,39 +30,33 @@ const DropNav = ({
     setOpen(index);
   };
 
-   // handle focus moving out of Nav
-  const onBlurNav = e => {
-    // only change state if focus moves away from
-    // container element
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // close any open navs
-      setOpen(-1);
-    }
-  };
-
-
   return (
-    <li
-    {...(width > mobileWidth ? { onBlurCapture: onBlurNav } : {})}
-    >
+    <li>
       <a
         target={item.target}
         title={item.title ? item.title : item.text}
-        role="navigation"
+        role="button"
+        aria-expanded={isOpen}
         onMouseDown={e => {
           e.preventDefault();
           toggle(pIndex);
-          setFocus([pIndex, -1, -1]);
-
+          //setFocus([pIndex, -1, -1]);
         }}
-        onFocus={(e) => {
-          navOpen(pIndex);
+        onKeyDown={e => {
+          const code = e.keyCode;
+
+          if (code == 32 || code == 13) {
+            toggle(pIndex);
+          }
+        }}
+        onFocus={e => {
+          //navOpen(pIndex);
           setFocus([pIndex, -1, -1]);
         }}
         tabIndex="0"
         ref={topRef}
       >
-        {item.text} <S.IconChevronDown sr={item.text} />
+        {item.text} <S.IconChevronDown sr={item.text} className={isOpen ? "open" : ""} />
       </a>
 
       <S.DdMenu {...{ open: isOpen }}>
@@ -73,12 +66,20 @@ const DropNav = ({
               {sub.map((item, ind) => {
                 return (
                   <NavItem
-                    item={item}
                     onFocus={() => {
                       setFocus([pIndex, index, ind]);
                       navOpen(pIndex);
                     }}
                     itemRef={submenus[index][ind].ref}
+                    type={item.hasOwnProperty("type") ? item.type : undefined}
+                    color={
+                      item.hasOwnProperty("color") ? item.color : undefined
+                    }
+                    class={
+                      item.hasOwnProperty("class") ? item.class : undefined
+                    }
+                    href={item.hasOwnProperty("href") ? item.href : undefined}
+                    text={item.text}
                   />
                 );
               })}
@@ -108,7 +109,7 @@ DropNav.propTypes = {
   pIndex: PropTypes.number.isRequired,
   isOpen: PropTypes.bool,
   setOpen: PropTypes.func,
-  hasFocus: PropTypes.bool
+  hasFocus: PropTypes.bool,
 };
 
 DropNav.defaultProps = {

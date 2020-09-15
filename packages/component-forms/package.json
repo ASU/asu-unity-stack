@@ -1,12 +1,12 @@
 {
   "name": "@asu-design-system/component-forms",
-  "version": "1.0.23",
+  "version": "1.0.25",
   "description": "ASU Web Standards-compliant Preact forms",
   "main": "src/index.js",
   "module": "esm/index.js",
   "publishConfig": {
     "access": "restricted",
-    "registry": "http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/"
+    "registry": "https://registry.web.asu.edu/"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,12 @@
     "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@storybook/preact": "^6.0.7"
+  },
   "dependencies": {
     "@asu-design-system/components-library": "^1.0.19",
-    "@asu-design-system/design-tokens": "^1.0.1",
+    "@asu-design-system/design-tokens": "^1.1.0",
     "emotion": "^10.0.27",
     "formik": "^2.1.5",
     "preact": "^10.4.4",

@@ -7,10 +7,11 @@ Version DEV-1
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
-1. [asu-web-standards-bootstrap-4](./packages/asu-web-standards-bootstrap-4/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages. See the [AsuHeroImage component](./packages/asu-rs-carousel/src/components/AsuHeroImage/AsuHeroImage.jsx) for an example of integrating this package into a Reactstrap component.
-2. [asu-brand](./packages/asu-brand/README.md) - Contains ASU-branded global header and footer React components.
-4. [asu-maps](./packages/asu-maps/README.md) - React components for configuring and displaying ASU GIS maps, built with react-checkbox-tree.
-5. [asu-rs-carousel](./packages/asu-rs-carousel/README.md) - ASU hero images and carousel built with Reactstrap and asu-web-standards-bootstrap-4.
+1. [bootstrap4-theme](./packages/bootstrap4-theme/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages.
+2. [components-library](./packages/components-library/README.md) - Preact component library. Contains ASU-branded global header.
+3. [component-forms](./packages/component-forms/README.md) - Preact form components.
+4. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
+5. [maps](./packages/maps/README.md) - React map components. TODO: convert this package to Preact
 
 ## ❯ Dependencies
 
@@ -128,15 +129,15 @@ yarn stop # stop the testing server
 
 ## ❯ How to test the private package registry:
 
-1. Go here and follow directions to add yourself as a user: http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com/
+1. Go here and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
 
 2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
 
-```@asu-design-system:registry=http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+```@asu-design-system:registry=https://registry.web.asu.edu/```
 
 This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, try to login using:
 
-```npm login --registry http://ec2-54-201-88-203.us-west-2.compute.amazonaws.com```
+```npm login --registry https://registry.web.asu.edu/```
 
 3. Test installing packages using yarn or npm inside of another NPM project:
 
@@ -168,3 +169,9 @@ perf(pencil): remove graphiteWidth option
 ```
 
 More information can be found [here](https://semantic-release.gitbook.io/semantic-release/) under 'Commit Message Format' section
+
+
+## ❯ Contributing:
+
+Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
+

@@ -3,7 +3,7 @@
 import { h, Fragment } from "preact";
 import { cx, css } from "emotion";
 import Tokens from "../../theme";
-import { Panel, H4, Icon } from "@asu-design-system/components-library";
+import { Panel, Heading, Icon } from "@asu-design-system/components-library";
 import { InputError } from "../Input/styles";
 
 const FormPanel = ({ children, ...props }) => {
@@ -20,7 +20,7 @@ const FormHeader = ({ title, description, img }) => {
       `}
     >
       <div>
-        <H4>{title}</H4>
+        <Heading type="h4">{title}</Heading>
         <p
           class={css`
             color: #747474;
