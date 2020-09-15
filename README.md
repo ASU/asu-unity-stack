@@ -151,7 +151,7 @@ Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins wh
 
 After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
 
-```http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000/```
+[https://unity.web.asu.edu](https://unity.web.asu.edu)
 
 ## ❯ Publishing packages:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' branch.
