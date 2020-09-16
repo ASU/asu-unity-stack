@@ -41,7 +41,10 @@ form {
     border-radius: none;
   }
 
-  /* Radios and Checkboxes */
+  /* Radios and Checkboxes - For more flexible control, this is a departure
+    from Bootstrap 4 custom Checkboxes and Radios as described in:
+    https://getbootstrap.com/docs/4.0/components/forms/#checkboxes-and-radios-1
+    and has us instead managing these ourselves. */
   .form-check {
     margin: 1rem 0;
 
@@ -144,15 +147,31 @@ form {
     }
   }
 
-  /* Error input */
-  .is-invalid {
+  /* Error input
+  TODO Some improvement to valid/invalid states may be possible by overriding
+    or playing along with Bootstrap 4's client side and server side validation
+    more thoroughly. */
+  input.is-invalid {
     border-style: solid;
     border: 1px solid #b72a2a !important;
     border-bottom: 8px solid #b72a2a !important;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
+  /* checks and radios */
+  small.is-invalid,
+  div.is-invalid {
+    margin-left: -1rem;
+    margin-top: 1rem;
+  }
+  /* Error for group follows legend and doesn't need margin adjustment. */
+  legend ~ small.is-invalid,
+  legend ~ div.is-invalid {
+    margin-left: inherit;
+    margin-top: inherit;
+  }
   .invalid-feedback {
+    display: inline-block;
     font-weight: bold;
     color: #191919;
     svg {
@@ -165,14 +184,27 @@ form {
 
   /* Success input */
   // border and icon #446D12
-  .is-valid {
+  input.is-valid {
     border-style: solid;
     border: 1px solid #446d12 !important;
     border-bottom: 8px solid #446d12 !important;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
+  /* checks and radios */
+  small.is-valid,
+  div.is-valid {
+    margin-left: -1rem;
+    margin-top: 1rem;
+  }
+  /* Success for group follows legend and doesn't need margin adjustment. */
+  legend ~ small.is-valid,
+  legend ~ div.is-valid {
+    margin-left: inherit;
+    margin-top: inherit;
+  }
   .valid-feedback {
+    display: inline-block;
     font-weight: bold;
     color: #191919;
     svg {
@@ -189,7 +221,7 @@ form {
   .input-group-trailing-icon {
     svg {
       position: absolute;
-      right: 0.5rem;
+      right: 0.75rem;
       top: 0.75rem;
       color: #bfbfbf;
     }
@@ -297,7 +329,7 @@ form {
     }
 
     /* Dark error input */
-    .is-invalid {
+    input.is-invalid {
       border-style: solid;
       border: 1px solid #cc2f2f !important;
       border-bottom: 8px solid #cc2f2f !important;
@@ -316,7 +348,7 @@ form {
     }
 
     /* Dark success input */
-    .is-valid {
+    input.is-valid {
       border-style: solid;
       border: 1px solid #78be20 !important;
       border-bottom: 8px solid #78be20 !important;

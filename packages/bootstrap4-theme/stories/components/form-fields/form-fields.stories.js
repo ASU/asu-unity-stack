@@ -382,10 +382,29 @@ Should only run and be packaged for storybook preview.
   `)
 
 .add('Checkboxes', () => `
+<!-- <form class="was-validated">
+TODO support .was-validated (front end style) or not?
+- See https://stackoverflow.com/questions/56075450/how-to-disable-bootstrap-4-validation-style-from-valid-controls
+  for some ideas.
+- More details on validation ala Bootstrap 4:
+  https://getbootstrap.com/docs/4.0/components/forms/#validation -->
+
 <form>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
     <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
   <fieldset>
@@ -403,6 +422,41 @@ Should only run and be packaged for storybook preview.
       <label class="form-check-label" for="checkbox3">3 (disabled)</label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1">
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
 </form>
 `)
 
@@ -435,202 +489,710 @@ Should only run and be packaged for storybook preview.
       </label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" checked>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
 </form>
 `)
 
-.add('Checkboxes and Radios, multiple backgrounds', () => `
+.add('Checkboxes and Radios, white background', () => `
 
 <div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form-white">
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
+    <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
   <fieldset>
     <legend>A Group of Checkboxes</legend>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="whiteCheckbox1" value="option1">
-      <label class="form-check-label" for="whiteCheckbox1">1</label>
+      <input class="form-check-input" type="checkbox" id="checkbox1" value="option1">
+      <label class="form-check-label" for="checkbox1">1</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="whiteCheckbox2" value="option2" checked>
-      <label class="form-check-label" for="whiteCheckbox2">2</label>
+      <input class="form-check-input" type="checkbox" id="checkbox2" value="option2" checked>
+      <label class="form-check-label" for="checkbox2">2</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="whiteCheckbox3" value="option3" disabled>
-      <label class="form-check-label" for="whiteCheckbox3">3 (disabled)</label>
+      <input class="form-check-input" type="checkbox" id="checkbox3" value="option3" disabled>
+      <label class="form-check-label" for="checkbox3">3 (disabled)</label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1">
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
   <fieldset>
     <legend>A Group of Radios</legend>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="whiteExampleRadios" id="whiteExampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="whiteExampleRadios1">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
         Default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="whiteExampleRadios" id="whiteExampleRadios2" value="option2">
-      <label class="form-check-label" for="whiteExampleRadios2">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
         Second default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="whiteExampleRadios" id="whiteExampleRadios3" value="option3">
-      <label class="form-check-label" for="whiteExampleRadios3">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+      <label class="form-check-label" for="exampleRadios3">
         Third default radio
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="whiteExampleRadios" id="whiteExampleRadios4" value="option4" disabled>
-      <label class="form-check-label" for="whiteExampleRadios4">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" disabled>
+      <label class="form-check-label" for="exampleRadios4">
         Disabled radio
       </label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" checked>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
 </form>
 </div>
+`)
 
+.add('Checkboxes and Radios, gray1 background', () => `
 <div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray1">
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
+    <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
   <fieldset>
     <legend>A Group of Checkboxes</legend>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray1Checkbox1" value="option1">
-      <label class="form-check-label" for="gray1Checkbox1">1</label>
+      <input class="form-check-input" type="checkbox" id="checkbox1" value="option1">
+      <label class="form-check-label" for="checkbox1">1</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray1Checkbox2" value="option2" checked>
-      <label class="form-check-label" for="gray1Checkbox2">2</label>
+      <input class="form-check-input" type="checkbox" id="checkbox2" value="option2" checked>
+      <label class="form-check-label" for="checkbox2">2</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray1Checkbox3" value="option3" disabled>
-      <label class="form-check-label" for="gray1Checkbox3">3 (disabled)</label>
+      <input class="form-check-input" type="checkbox" id="checkbox3" value="option3" disabled>
+      <label class="form-check-label" for="checkbox3">3 (disabled)</label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1">
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
   <fieldset>
     <legend>A Group of Radios</legend>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="gray1ExampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="gray1ExampleRadios1">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
         Default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="gray1ExampleRadios2" value="option2">
-      <label class="form-check-label" for="gray1ExampleRadios2">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
         Second default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="gray1ExampleRadios3" value="option3">
-      <label class="form-check-label" for="gray1ExampleRadios3">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+      <label class="form-check-label" for="exampleRadios3">
         Third default radio
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="gray1ExampleRadios" id="gray1ExampleRadios4" value="option4" disabled>
-      <label class="form-check-label" for="gray1ExampleRadios4">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" disabled>
+      <label class="form-check-label" for="exampleRadios4">
         Disabled radio
       </label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" checked>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
 </form>
 </div>
+`)
 
+.add('Checkboxes and Radios, gray2 background', () => `
 <div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray2">
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
+    <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
   <fieldset>
     <legend>A Group of Checkboxes</legend>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray2Checkbox1" value="option1">
-      <label class="form-check-label" for="gray2Checkbox1">1</label>
+      <input class="form-check-input" type="checkbox" id="checkbox1" value="option1">
+      <label class="form-check-label" for="checkbox1">1</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray2Checkbox2" value="option2" checked>
-      <label class="form-check-label" for="gray2Checkbox2">2</label>
+      <input class="form-check-input" type="checkbox" id="checkbox2" value="option2" checked>
+      <label class="form-check-label" for="checkbox2">2</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray2Checkbox3" value="option3" disabled>
-      <label class="form-check-label" for="gray2Checkbox3">3 (disabled)</label>
+      <input class="form-check-input" type="checkbox" id="checkbox3" value="option3" disabled>
+      <label class="form-check-label" for="checkbox3">3 (disabled)</label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1">
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
   <fieldset>
     <legend>A Group of Radios</legend>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray2ExampleRadios" id="gray2ExampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="gray2ExampleRadios1">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
         Default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray2ExampleRadios" id="gray2ExampleRadios2" value="option2">
-      <label class="form-check-label" for="gray2ExampleRadios2">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
         Second default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray2ExampleRadios" id="gray2ExampleRadios3" value="option3">
-      <label class="form-check-label" for="gray2ExampleRadios3">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+      <label class="form-check-label" for="exampleRadios3">
         Third default radio
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="gray2ExampleRadios" id="gray2ExampleRadios4" value="option4" disabled>
-      <label class="form-check-label" for="gray2ExampleRadios4">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" disabled>
+      <label class="form-check-label" for="exampleRadios4">
         Disabled radio
       </label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" checked>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
 </form>
 </div>
+`)
 
+.add('Checkboxes and Radios, gray7 (black) background', () => `
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form-gray7">
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
+    <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
   <fieldset>
     <legend>A Group of Checkboxes</legend>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray7Checkbox1" value="option1">
-      <label class="form-check-label" for="gray7Checkbox1">1</label>
+      <input class="form-check-input" type="checkbox" id="checkbox1" value="option1">
+      <label class="form-check-label" for="checkbox1">1</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray7Checkbox2" value="option2" checked>
-      <label class="form-check-label" for="gray7Checkbox2">2</label>
+      <input class="form-check-input" type="checkbox" id="checkbox2" value="option2" checked>
+      <label class="form-check-label" for="checkbox2">2</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gray7Checkbox3" value="option3" disabled>
-      <label class="form-check-label" for="gray7Checkbox3">3 (disabled)</label>
+      <input class="form-check-input" type="checkbox" id="checkbox3" value="option3" disabled>
+      <label class="form-check-label" for="checkbox3">3 (disabled)</label>
     </div>
   </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1">
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
   <fieldset>
     <legend>A Group of Radios</legend>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray7ExampleRadios" id="gray7ExampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="gray7ExampleRadios1">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
         Default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray7ExampleRadios" id="gray7ExampleRadios2" value="option2">
-      <label class="form-check-label" for="gray7ExampleRadios2">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
         Second default radio
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gray7ExampleRadios" id="gray7ExampleRadios3" value="option3">
-      <label class="form-check-label" for="gray7ExampleRadios3">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+      <label class="form-check-label" for="exampleRadios3">
         Third default radio
       </label>
     </div>
     <div class="form-check disabled">
-      <input class="form-check-input" type="radio" name="gray7ExampleRadios" id="gray7ExampleRadios4" value="option4" disabled>
-      <label class="form-check-label" for="gray7ExampleRadios4">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" disabled>
+      <label class="form-check-label" for="exampleRadios4">
         Disabled radio
       </label>
     </div>
   </fieldset>
-</form>
 
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" checked>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+</form>
 </div>
 `)
 
