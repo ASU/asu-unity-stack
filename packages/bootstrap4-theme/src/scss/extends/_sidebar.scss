@@ -28,7 +28,7 @@ Sidebar Navigation
     @include like-an-h4;
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-2;
-    border: 1px solid $uds-color-base-gray-2;
+    // border: 1px solid $uds-color-base-gray-2;
 
     &:not(:last-child) {
       border-bottom: 0;
