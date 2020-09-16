@@ -25,7 +25,7 @@ Sidebar Navigation
 
 .sidebar {
   .nav-text {
-    @include like-an-h5;
+    @include like-an-h4;
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-2;
     border: 1px solid $uds-color-base-gray-2;
@@ -50,6 +50,11 @@ Sidebar Navigation
       text-decoration: none;
       padding-bottom: 0;
     }
+    &:focus {
+      background-color: $uds-color-base-gray-2 !important;
+      box-shadow:none !important;
+      color: $uds-color-base-gray-7 !important;
+    }
 
     &.active:after {
       content: '';
@@ -69,7 +74,7 @@ Sidebar Navigation
     overflow: hidden;
     color: $uds-color-base-gray-7;
 
-    @include like-an-h4;
+    // @include like-an-h4;
 
     &:not(:last-child) {
       border-bottom: 0;
@@ -80,7 +85,10 @@ Sidebar Navigation
     border: 1px solid $uds-color-base-gray-2;
 
     .card-header a {
-      padding: $uds-size-spacing-2 $uds-size-spacing-1;
+      padding: $uds-size-spacing-3 $uds-size-spacing-2;
+      font-size: 1rem !important;
+      line-height: 1rem !important;
+      font-weight: normal;
     }
 
     .card-header,

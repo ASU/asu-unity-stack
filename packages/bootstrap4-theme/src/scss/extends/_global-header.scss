@@ -69,6 +69,20 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 /*--------------------------------------------------------------
 2. Top Menu
 --------------------------------------------------------------*/
+a.navbar-brand:focus {
+  background-color: transparent;
+  box-shadow: none;
+  outline: solid 2px black;
+}
+a.navbar-brand:focus img {
+  border: solid 2px black;
+}
+#header-top .nav-link:focus,
+#header-top .nav-link a:focus {
+  background-color:$uds-color-base-gray-7;
+  color:$uds-color-base-gray-2;
+  box-shadow: none;
+}
 
 #wrapper-header-top {
   background-color: $uds-color-base-gray-2;
@@ -686,7 +700,20 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
     .navbar-nav {
       line-height: $uds-size-spacing-2;
-
+      >.nav-item .nav-link {
+        &:hover:after {
+          @include gold-underline-expand-desktop;
+          width: calc(100% + 16px);
+        }
+        &:focus {
+          background-color: transparent;
+          box-shadow: none;
+        }
+        &:focus:after {
+          @include gold-underline-expand-desktop;
+          width: calc(100% + 16px);
+        }
+      }
       >.nav-link {
         border: 0;
         font-size: $uds-size-font-medium;
@@ -702,6 +729,14 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
         }
 
         &:hover:after {
+          @include gold-underline-expand-desktop;
+          width: calc(100% + 16px);
+        }
+        &:focus {
+          background-color: transparent;
+          box-shadow: none;
+        }
+        &:focus:after {
           @include gold-underline-expand-desktop;
           width: calc(100% + 16px);
         }
