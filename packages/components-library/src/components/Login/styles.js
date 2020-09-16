@@ -4,7 +4,7 @@ import { h } from "preact";
 import { cx, css } from "emotion";
 import { mobileBreak, containerSize } from "../../theme";
 
-const loginStyles = css`
+const loginStyles = breakpoint => css`
   .login-status {
     font-size: 0.75rem;
     display: flex;
@@ -33,7 +33,7 @@ const loginStyles = css`
     }
 
 
-    @media (min-width: ${mobileBreak}) {
+    @media (min-width: ${breakpoint}) {
       margin-left: .5rem;
     }
   }

@@ -1,12 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, createRef } from "preact";
-import { useEffect, useState, useMemo, useRef } from "preact/compat";
+import { h } from "preact";
+import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
-import { cx } from "emotion";
 import * as S from "./styles";
 
 /**
@@ -21,6 +20,7 @@ const Nav = ({
   maxMobileHeight,
   buttons,
   injectStyles,
+  breakpoint,
   ...props
 }) => {
   /** State to keep track of currently focused Nav Item */
@@ -32,8 +32,9 @@ const Nav = ({
     setFocus(newFocus);
   };
 
-  // Get breakpoint from design token
-  const bpoint = parseInt(S.mobileBreak, 10);
+  // Get breakpoint from theme and props
+  const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
+  const bpointInt = parseInt(bpoint, 10);
 
   /***
    * Compile a list of Refs to interact with the focus state of Nav menu
@@ -77,7 +78,7 @@ const Nav = ({
     });
   }, [navTree]);
 
-  //event handler for side-to-side keyboard navigation (top level items)
+  //event handler keyboard navigation
   const handleKeyDown = e => {
     const Left = 37;
     const Up = 38;
@@ -110,9 +111,8 @@ const Nav = ({
           if (!e.shiftKey) {
             if (derState.isLast) return false;
 
-              e.preventDefault();
-              setFocusCallback(moveRight(focused, derState, navList));
-
+            e.preventDefault();
+            setFocusCallback(moveRight(focused, derState, navList));
 
             // handle shift+tab
           } else {
@@ -137,18 +137,28 @@ const Nav = ({
       const [x, y, z] = focused;
 
       if (derState.isTop) {
-        if (navList[x].ref) {
+        // only focus the node if it's not already focused
+        if (
+          navList[x].ref &&
+          navList[x].ref.current !== document.activeElement
+        ) {
           navList[x].ref.current.focus();
         }
 
-        // if setting focus on nav item without children, close any
-        // open dropdown navs TODO: do we need this
-        /*if (!derState.hasSubs) {
+        // if currently focused item is not in open menu, close menu
+        if (open !== x) {
           setOpen(-1);
-        }*/
-      } else if (navList[x].menus[y][z].ref) {
+        }
+      } else if (
+        navList[x].menus[y][z].ref &&
+        navList[x].menus[y][z].ref.current !== document.activeElement
+      ) {
         navList[x].menus[y][z].ref.current.focus();
       }
+
+    // if keypress causes focus to leave open menu, close menu
+    } else if (open !== -1) {
+      setOpen(-1);
     }
   }, [focused, navList]);
 
@@ -186,9 +196,10 @@ const Nav = ({
       open={mobileOpen}
       maxMobileHeight={maxMobileHeight}
       injectStyles={injectStyles}
+      breakpoint={breakpoint}
     >
       <ul
-        {...(width > bpoint ? { onfocusout: onBlurNav } : {})}
+        {...(width > bpointInt ? { onfocusout: onBlurNav } : {})}
         aria-label="ASU"
         onKeyDown={handleKeyDown}
         ref={navRef}
@@ -196,11 +207,6 @@ const Nav = ({
         {navList.map((item, index) => {
           const navItem = item.item;
           const subs = item.menus;
-          let isOpen = false;
-
-          if (open == index) {
-            isOpen = true;
-          }
 
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
@@ -211,9 +217,9 @@ const Nav = ({
                 pIndex={index}
                 setFocus={setFocusCallback}
                 topRef={item.ref}
-                isOpen={isOpen}
+                isOpen={open == index}
                 setOpen={setOpen}
-                mobileWidth={bpoint}
+                mobileWidth={bpointInt}
               />
             );
           }
@@ -263,6 +269,7 @@ Nav.propTypes = {
   height: PropTypes.number,
   maxMobileHeight: PropTypes.number,
   injectStyles: PropTypes.bool,
+  breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
 };
 
 Nav.defaultProps = {

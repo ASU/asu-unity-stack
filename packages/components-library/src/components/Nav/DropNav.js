@@ -60,10 +60,10 @@ const DropNav = ({
         {item.text} <S.IconChevronDown sr={item.text} className={isOpen ? "open" : ""} />
       </a>
 
-      <S.DdMenu {...{ open: isOpen }}>
+      <S.DropdownContainer {...{ open: isOpen }}>
         {submenus.map((sub, index) => {
           return (
-            <ul>
+            <S.MenuColumn>
               {sub.map((item, ind) => {
                 return (
                   <NavItem
@@ -84,10 +84,10 @@ const DropNav = ({
                   />
                 );
               })}
-            </ul>
+            </S.MenuColumn>
           );
         })}
-      </S.DdMenu>
+      </S.DropdownContainer>
     </li>
   );
 };

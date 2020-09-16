@@ -19,6 +19,7 @@ const Header = ({
   loginLink,
   logoutLink,
   buttons,
+  breakpoint,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -32,8 +33,9 @@ const Header = ({
   // State hooks for tracking and setting the max mobile nav menu height
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
 
-  // Get breakpoint from theme
-  const bpoint = parseInt(S.mobileBreak, 10);
+  // Get breakpoint from theme and props
+  const bpoint = (breakpoint === "Xl") ? S.BreakpointXl : S.BreakpointLg;
+  const bpointInt = parseInt(bpoint, 10);
 
   // get window dimensions
   const { height, width } = useWindowDimensions();
@@ -66,7 +68,7 @@ const Header = ({
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
   useEffect(() => {
-    if (width < bpoint && mobileOpen) {
+    if (width < bpointInt && mobileOpen) {
       window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
@@ -85,8 +87,9 @@ const Header = ({
 
   return (
     <S.Header
+      breakpoint={bpoint}
       class={
-        scrollPosition > 0 || (mobileOpen && width < bpoint) ? "scrolled" : ""
+        scrollPosition > 0 || (mobileOpen && width < bpointInt) ? "scrolled" : ""
       }
     >
       <S.UniversalNav
@@ -104,7 +107,7 @@ const Header = ({
           <UniversalSearch
             open={searchOpen}
             setOpen={setSearchOpen}
-            mobile={width < bpoint}
+            mobile={width < bpointInt}
           />
         </div>
       </S.UniversalNav>
@@ -132,6 +135,7 @@ const Header = ({
                   width,
                   buttons,
                   maxMobileHeight: maxMobileNavHeight,
+                  breakpoint
                 }}
               />
             </S.NavbarContainer>
@@ -157,6 +161,7 @@ Header.propTypes = {
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
   buttons: PropTypes.arrayOf(PropTypes.object),
+  breakpoint: PropTypes.oneOf(['Lg', 'Xl'])
 };
 
 Header.defaultProps = {
@@ -174,6 +179,7 @@ Header.defaultProps = {
   loginLink: Login.defaultProps.loginLink,
   logoutLink: Login.defaultProps.logoutLink,
   buttons: [],
+  breakpoint: 'Lg'
 };
 
 export { Header };

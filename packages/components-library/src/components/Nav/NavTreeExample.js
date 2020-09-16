@@ -411,6 +411,11 @@ const NavTreeMega = [
       ],
       [
         {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 2",
+        },
+        {
           classes: "border first",
           href: "https://www.asu.edu/map/",
 
