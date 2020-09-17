@@ -1,6 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
+import { forwardRef } from "preact/compat";
 import { css, cx } from "emotion";
 import {
   hiddenStyle,
@@ -8,8 +9,148 @@ import {
   srOnly,
   BreakpointLg,
   BreakpointXl,
+  containerSize,
 } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
+
+/**
+ * NavList styles
+ * @param {} breakpoint
+ */
+
+const navListStyles = breakpoint => css`
+  .navlist {
+    list-style: none;
+    display: flex;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    > li {
+      > a {
+        display: block;
+
+        svg.fa-chevron-down {
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+
+          &.open {
+            transform: rotate(180deg);
+          }
+        }
+
+        :after {
+          content: "";
+          position: relative;
+          display: block;
+          height: 0.5rem;
+          background-color: #ffc627;
+          bottom: 0;
+          width: 0;
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+          bottom: -8px;
+          left: -8px;
+        }
+
+        &.dropdown-open:after {
+          width: 100%;
+          width: calc(100% + 16px);
+        }
+
+        @media (min-width: ${breakpoint}) {
+          :hover:after {
+            width: 100%;
+            width: calc(100% + 16px);
+          }
+        }
+      }
+    }
+
+    li {
+      position: relative;
+      margin-right: 16px;
+
+      a {
+        padding: 8px;
+        position: relative;
+
+        &.nav-item {
+          color: #191919;
+          display: block;
+        }
+      }
+    }
+
+    .mobile-only {
+      ${hiddenStyle}
+    }
+
+    @media (min-width: ${breakpoint}) {
+      svg.fa-chevron-down {
+        float: none;
+        display: inline-block;
+        font-size: 0.75rem;
+        margin-left: 0.5rem;
+      }
+    }
+
+    @media (max-width: ${breakpoint}) {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+
+      > li {
+        margin-right: 0;
+
+        > a {
+          padding: 1rem 2rem 0.3rem 2rem;
+          justify-content: space-between;
+          display: block;
+          border-bottom: 1px solid #cccccc;
+          align-items: center;
+
+          > svg {
+            float: right;
+            font-size: 1.25rem;
+          }
+        }
+
+        :first-of-type {
+          border-top: 1px solid #cccccc;
+        }
+
+        :last-of-type {
+          border-bottom: none;
+        }
+      }
+
+      .icon-nav-item {
+        ${hiddenStyle}
+      }
+
+      .mobile-only {
+        ${showReset()}
+      }
+    }
+  }
+`;
+
+/**
+ * NavList styled component
+ */
+const NavList = forwardRef(({ children, ...props }, ref) => {
+  return (
+    <ul
+      ref={ref}
+      aria-label="ASU"
+      {...props}
+      class={cx(props.class, "navlist")}
+    >
+      {children}
+    </ul>
+  );
+});
 
 /**
  * Button form which contains call to action buttons and displayed
@@ -51,12 +192,19 @@ const dropdownContainerStyles = breakpoint => css`
     margin: 0;
     padding: 0 1rem;
     border: 0;
-    clip: rect(0, 0, 0, 0);
     overflow: hidden;
 
+    &.mega {
+      width: 100%;
+      left: 0;
+
+      > div {
+        max-width: ${containerSize};
+      }
+    }
+
     &.open {
-      max-height: 1200px;
-      clip: auto;
+      max-height: 10000px;
     }
 
     h3 {
@@ -80,8 +228,14 @@ const dropdownContainerStyles = breakpoint => css`
 
     @media (min-width: ${breakpoint}) {
       margin: -1px 0 0 0;
-      padding: 2rem;
-      position: absolute;
+      position: fixed;
+
+      > div {
+        padding: 2rem;
+        display: flex;
+        margin: 0 auto;
+      }
+
       border: 1px solid #d0d0d0;
 
       h3 {
@@ -91,11 +245,11 @@ const dropdownContainerStyles = breakpoint => css`
   }
 `;
 
-
-
 const DropdownContainer = props => {
   return (
-    <div class={cx("dropdown", props.open ? "open" : "")}>{props.children}</div>
+    <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
+      <div>{props.children}</div>
+    </div>
   );
 };
 
@@ -134,7 +288,6 @@ const menuColumnStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-
       border-right: none;
       width: 100%;
       padding: 0;
@@ -178,7 +331,9 @@ const menuColumnStyles = breakpoint => css`
 
 const MenuColumn = props => {
   return (
-    <ul class={cx("menu-column", props.open ? "open" : "")}>{props.children}</ul>
+    <ul class={cx("menu-column", props.open ? "open" : "")}>
+      {props.children}
+    </ul>
   );
 };
 
@@ -192,76 +347,10 @@ const navItemStyles = css`
  * Styles the top-level 'nav' component
  */
 const componentStyles = breakpoint => css`
-
   ul {
     list-style: none;
     a {
       text-decoration: none;
-    }
-  }
-
-  > ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    > li {
-      > a {
-        display: block;
-
-        svg.fa-chevron-down{
-          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-
-          &.open {
-            transform: rotate(180deg);
-          }
-        }
-
-        :after {
-          content: "";
-          position: relative;
-          display: block;
-          height: 0.5rem;
-          background-color: #ffc627;
-          bottom: 0;
-          width: 0;
-          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-          bottom: -8px;
-          left: -8px;
-        }
-
-        &.dropdown-open:after {
-          width: 100%;
-          width: calc(100% + 16px);
-        }
-
-        @media (min-width: ${breakpoint}) {
-
-
-          :hover:after {
-            width: 100%;
-            width: calc(100% + 16px);
-          }
-        }
-      }
-    }
-
-    li {
-      position: relative;
-      margin-right: 16px;
-
-      a {
-
-        padding: 8px;
-        position: relative;
-
-        &.nav-item {
-          color: #191919;
-          display: block;
-        }
-      }
     }
   }
 
@@ -296,52 +385,15 @@ const componentStyles = breakpoint => css`
       overflow-y: scroll;
       display: flex;
     }
-
-    .mobile-only {
-      ${showReset()}
-    }
-
-    .icon-nav-item {
-      ${hiddenStyle}
-    }
-
-    > ul {
-      flex-direction: column;
-      align-items: stretch;
-
-      > li {
-        margin-right: 0;
-
-        > a {
-          padding: 1rem 2rem .3rem 2rem;
-          justify-content: space-between;
-          display: block;
-          border-bottom: 1px solid #cccccc;
-          align-items: center;
-
-          > svg {
-            float: right;
-            font-size: 1.25rem;
-          }
-        }
-
-        :first-of-type {
-          border-top: 1px solid #cccccc;
-        }
-
-        :last-of-type {
-          border-bottom: none;
-        }
-      }
-    }
-  }
   }
 
   ${dropdownContainerStyles(breakpoint)}
   ${menuColumnStyles(breakpoint)}
-  ${buttonFormStyles(breakpoint)}
+  ${buttonFormStyles(
+    breakpoint
+  )}
+  ${navListStyles(breakpoint)}
   ${navItemStyles}
-
 `;
 
 /**
@@ -363,6 +415,7 @@ const Nav = ({
   maxMobileHeight,
   injectStyles,
   breakpoint,
+  handleKeyDown,
   children,
   ...props
 }) => {
@@ -405,4 +458,5 @@ export {
   MenuColumn,
   BreakpointXl,
   BreakpointLg,
+  NavList,
 };

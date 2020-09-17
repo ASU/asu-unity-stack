@@ -44,6 +44,26 @@ export const base = () => (
         "School of Computing, Informatics, and Decisions Systems Engineering"
       )}
       unit={text("unit", "Ira A. Fulton Schools of Engineering")}
+      breakpoint={text("breakpoint", "Lg")}
+    />
+    <div style={"width:100%; height:200vh;"} />
+  </Fragment>
+);
+
+export const breakpointXL = () => (
+  <Fragment>
+    <Header
+      loggedIn={boolean("loggedIn", false)}
+      userName={text("userName", "")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
+      navTree={object("navTree", BasicNavTree)}
+      title={text(
+        "title",
+        "School of Computing, Informatics, and Decisions Systems Engineering"
+      )}
+      unit={text("unit", "Ira A. Fulton Schools of Engineering")}
+      breakpoint={text("breakpoint", "Xl")}
     />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
@@ -93,7 +113,6 @@ export const withMenuColumns = () => (
         "unit",
         "School of Computing, Informatics, and Decisions Systems Engineering"
       )}
-      buttons={object("buttons", megaButtons)}
       loggedIn={boolean("loggedIn", true)}
       userName={text("userName", "Colton")}
       logoutLink={text("logoutLink", "/caslogout")}

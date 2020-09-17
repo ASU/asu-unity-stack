@@ -46,6 +46,7 @@ const DropNav = ({
         onKeyDown={e => {
           const code = e.keyCode;
 
+          // open menu upon 'enter' or 'space' keypress
           if (code == 32 || code == 13) {
             toggle(pIndex);
           }
@@ -57,10 +58,14 @@ const DropNav = ({
         tabIndex="0"
         ref={topRef}
       >
-        {item.text} <S.IconChevronDown sr={item.text} className={isOpen ? "open" : ""} />
+        {item.text}{" "}
+        <S.IconChevronDown sr={item.text} className={isOpen ? "open" : ""} />
       </a>
 
-      <S.DropdownContainer {...{ open: isOpen }}>
+      <S.DropdownContainer
+        {...{ open: isOpen }}
+        class={submenus.length > 2 ? "mega" : ""} // add mega class if dropdown contains 3 or more menus
+      >
         {submenus.map((sub, index) => {
           return (
             <S.MenuColumn>

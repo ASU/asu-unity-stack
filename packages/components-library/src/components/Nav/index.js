@@ -7,6 +7,7 @@ import NavItem from "./NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
 import * as S from "./styles";
+import { cx } from "emotion";
 
 /**
  * Render entire Nav.
@@ -107,7 +108,7 @@ const Nav = ({
           setFocusCallback(moveDown(focused, derState, navList));
           break;
         case Tab:
-          // handle regular tab key
+          // handle tab key
           if (!e.shiftKey) {
             if (derState.isLast) return false;
 
@@ -156,7 +157,7 @@ const Nav = ({
         navList[x].menus[y][z].ref.current.focus();
       }
 
-    // if keypress causes focus to leave open menu, close menu
+      // if keypress causes focus to leave open menu, close menu
     } else if (open !== -1) {
       setOpen(-1);
     }
@@ -198,9 +199,8 @@ const Nav = ({
       injectStyles={injectStyles}
       breakpoint={breakpoint}
     >
-      <ul
+      <S.NavList
         {...(width > bpointInt ? { onfocusout: onBlurNav } : {})}
-        aria-label="ASU"
         onKeyDown={handleKeyDown}
         ref={navRef}
       >
@@ -241,7 +241,7 @@ const Nav = ({
             />
           );
         })}
-      </ul>
+      </S.NavList>
 
       {buttons.length > 0 && (
         <S.ButtonForm>
