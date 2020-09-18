@@ -1,6 +1,6 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
@@ -19,6 +19,7 @@ const Header = ({
   loginLink,
   logoutLink,
   buttons,
+  breakpoint,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -32,8 +33,9 @@ const Header = ({
   // State hooks for tracking and setting the max mobile nav menu height
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
 
-  // Get breakpoint from theme
-  const bpoint = parseInt(S.mobileBreak, 10);
+  // Get breakpoint from theme and props
+  const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
+  const bpointInt = parseInt(bpoint, 10);
 
   // get window dimensions
   const { height, width } = useWindowDimensions();
@@ -45,6 +47,14 @@ const Header = ({
     setSrollPosition(position);
   };
 
+  // Get primary nav top padding value from theme
+  const tpadding = parseInt(S.primaryNavTopPadding, 10);
+
+  // Use refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
   // Attach scroll event lister which will update the scrollPosition state
   // when window scrolled
   useEffect(() => {
@@ -55,18 +65,10 @@ const Header = ({
     };
   }, []);
 
-  // Get primary nav top padding value from theme
-  const tpadding = parseInt(S.primaryNavTopPadding, 10);
-
-  // Use refs to track height of header dom elements
-  const universalRef = useRef(null);
-  const logoRef = useRef(null);
-  const titleRef = useRef(null);
-
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
   useEffect(() => {
-    if (width < bpoint && mobileOpen) {
+    if (width < bpointInt && mobileOpen) {
       window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
@@ -81,12 +83,13 @@ const Header = ({
     }
   }, [height, width, mobileOpen]);
 
-
-
   return (
     <S.Header
+      breakpoint={bpoint}
       class={
-        scrollPosition > 0 || (mobileOpen && width < bpoint) ? "scrolled" : ""
+        scrollPosition > 0 || (mobileOpen && width < bpointInt)
+          ? "scrolled"
+          : ""
       }
     >
       <S.UniversalNav
@@ -94,25 +97,23 @@ const Header = ({
         domRef={universalRef}
         {...{ searchOpen }}
       >
-        <div>
-          <div class="nav-grid">
-            <a href="https://www.asu.edu/">ASU home</a>
-            <a href="https://my.asu.edu/">My ASU</a>
-            <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-            <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
-          </div>
-          <UniversalSearch
-            open={searchOpen}
-            setOpen={setSearchOpen}
-            mobile={width < bpoint}
-          />
-        </div>
+        <S.UniversalNavLinks>
+          <a href="https://www.asu.edu/">ASU home</a>
+          <a href="https://my.asu.edu/">My ASU</a>
+          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+          <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
+        </S.UniversalNavLinks>
+        <UniversalSearch
+          open={searchOpen}
+          setOpen={setSearchOpen}
+          mobile={width < bpointInt}
+        />
       </S.UniversalNav>
       <S.PrimaryNav>
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
-          <div>
+          <>
             <S.Logo {...logo} domRef={logoRef} />
             <S.NavbarToggler
               onClick={e => {
@@ -132,10 +133,11 @@ const Header = ({
                   width,
                   buttons,
                   maxMobileHeight: maxMobileNavHeight,
+                  breakpoint,
                 }}
               />
             </S.NavbarContainer>
-          </div>
+          </>
         )}
       </S.PrimaryNav>
     </S.Header>
@@ -157,13 +159,14 @@ Header.propTypes = {
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
   buttons: PropTypes.arrayOf(PropTypes.object),
+  breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
 };
 
 Header.defaultProps = {
   navTree: [],
   dangerouslyGenerateStub: false,
   logo: {
-    alt: "Arizona State University Logo",
+    alt: "Arizona State University",
     src: "https://i.imgur.com/5WtkgkV.png",
     mobileSrc:
       "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
@@ -174,6 +177,7 @@ Header.defaultProps = {
   loginLink: Login.defaultProps.loginLink,
   logoutLink: Login.defaultProps.logoutLink,
   buttons: [],
+  breakpoint: "Lg",
 };
 
 export { Header };

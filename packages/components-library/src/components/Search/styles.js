@@ -9,7 +9,7 @@ import Tokens, {
 } from "../../theme";
 
 /** Search */
-const searchStyles = css`
+const searchStyles = breakpoint => css`
   .asu-search-form {
     > form {
       display: flex;
@@ -38,7 +38,7 @@ const searchStyles = css`
       color: #484848;
     }
 
-    @media (max-width: ${mobileBreak}) {
+    @media (max-width: ${breakpoint}) {
       width: 100%;
       display: flex;
       order: -1;
@@ -87,7 +87,7 @@ const searchStyles = css`
       padding: 0;
     }
 
-    @media (min-width: ${mobileBreak}) {
+    @media (min-width: ${breakpoint}) {
       > form {
         justify-content: flex-end;
       }

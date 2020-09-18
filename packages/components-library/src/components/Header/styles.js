@@ -1,16 +1,21 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import {forwardRef} from "preact/compat";
+import { forwardRef } from "preact/compat";
 import { cx, css } from "emotion";
-import { mobileBreak, containerSize, primaryNavTopPadding } from "../../theme";
+import {
+  containerSize,
+  primaryNavTopPadding,
+  BreakpointXl,
+  BreakpointLg,
+} from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
 import { Icon } from "../Icons";
 
-const Header = ({ children, ...props }) => {
+const Header = ({ children, breakpoint, ...props }) => {
   return (
     <header
       {...props}
@@ -54,22 +59,22 @@ const Header = ({ children, ...props }) => {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           }
 
-          @media (max-width: ${mobileBreak}) {
+          @media (max-width: ${breakpoint}) {
             &.scrolled .primary-nav .header-title h1 {
               font-size: 1rem;
             }
           }
         `,
-        primaryStyles,
-        navStyles, // add the nav and button styles
+        primaryStyles(breakpoint),
+        navStyles(breakpoint), // add the nav and button styles
         buttonStyles,
-        NavbarContainerStyles,
-        logoStyles,
-        universalStyles,
-        searchStyles,
-        titleStyles,
-        loginStyles,
-        navbarTogglerStyles
+        NavbarContainerStyles(breakpoint),
+        logoStyles(breakpoint),
+        universalStyles(breakpoint),
+        searchStyles(breakpoint),
+        titleStyles(breakpoint),
+        loginStyles(breakpoint),
+        navbarTogglerStyles(breakpoint)
       )}
     >
       {children}
@@ -77,7 +82,10 @@ const Header = ({ children, ...props }) => {
   );
 };
 
-const navbarTogglerStyles = css`
+/**
+ * Mobile hamburger menu styles and component
+ */
+const navbarTogglerStyles = breakpoint => css`
   .navbar-toggler {
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
@@ -90,7 +98,7 @@ const navbarTogglerStyles = css`
     margin-right: 2rem;
     cursor: pointer;
 
-    @media (min-width: ${mobileBreak}) {
+    @media (min-width: ${breakpoint}) {
       display: none;
     }
   }
@@ -132,7 +140,10 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
   );
 };
 
-const universalStyles = css`
+/**
+ * Universal Nav styles and component
+ */
+const universalStyles = breakpoint => css`
   .universal-nav {
     padding: 0 2rem;
     display: flex;
@@ -160,7 +171,7 @@ const universalStyles = css`
       }
     }
 
-    @media (max-width: ${mobileBreak}) {
+    @media (max-width: ${breakpoint}) {
       display: none;
       padding: 0;
       transition: none;
@@ -199,7 +210,7 @@ const universalStyles = css`
     }
   }
 
-  @media (min-width: ${mobileBreak}) {
+  @media (min-width: ${breakpoint}) {
     &.scrolled .universal-nav {
       height: 0;
       overflow: hidden;
@@ -227,13 +238,17 @@ const UniversalNav = props => {
       )}
       ref={props.domRef}
     >
-      {props.children}
+      <div>{props.children}</div>
     </div>
   );
 };
 
-/** Primary Nav */
-const primaryStyles = css`
+const UniversalNavLinks = ({ children, ...props }) => {
+  return <div class={cx("nav-grid", props.class)}>{children}</div>;
+};
+
+/** Primary Nav styles and component */
+const primaryStyles = breakpoint => css`
   .primary-nav {
     background-color: #ffffff;
     display: flex;
@@ -254,7 +269,7 @@ const primaryStyles = css`
       align-items: center;
     }
 
-    @media (max-width: ${mobileBreak}) {
+    @media (max-width: ${breakpoint}) {
       order: -1;
       display: flex;
       top: 0;
@@ -275,17 +290,24 @@ const primaryStyles = css`
 `;
 
 const PrimaryNav = props => {
-  return <div class="primary-nav">{props.children}</div>;
+  return (
+    <div class="primary-nav">
+      <div>{props.children}</div>
+    </div>
+  );
 };
 
-const NavbarContainerStyles = css`
+/**
+ * Navbar Container
+ **/
+const NavbarContainerStyles = breakpoint => css`
   .navbar-container {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
 
-    @media (max-width: ${mobileBreak}) {
+    @media (max-width: ${breakpoint}) {
       width: 100%;
     }
   }
@@ -297,7 +319,10 @@ const NavbarContainer = props => {
   );
 };
 
-const logoStyles = css`
+/**
+ * Logo
+ */
+const logoStyles = breakpoint => css`
   .navbar-brand {
     display: inline-block;
     padding-top: 0.3125rem;
@@ -327,7 +352,7 @@ const logoStyles = css`
       height: 80px;
     }
 
-    @media (max-width: ${mobileBreak}) {
+    @media (max-width: ${breakpoint}) {
       img {
         float: none;
         height: 32px;
@@ -350,7 +375,7 @@ const logoStyles = css`
     height: 64px;
   }
 
-  @media (max-width: ${mobileBreak}) {
+  @media (max-width: ${breakpoint}) {
     &.scrolled .primary-nav .navbar-brand d img {
       height: 28px;
     }
@@ -372,8 +397,10 @@ const Logo = props => {
   );
 };
 
-/** Title */
-const titleStyles = css`
+/**
+ * Title
+ **/
+const titleStyles = breakpoint => css`
   .title {
     line-height: 1;
     font-size: 1rem;
@@ -385,7 +412,7 @@ const titleStyles = css`
       display: none;
     }
 
-    @media (min-width: ${mobileBreak}) {
+    @media (min-width: ${breakpoint}) {
       line-height: 1;
       margin: 1rem 0;
       font-weight: 700;
@@ -414,7 +441,7 @@ const titleStyles = css`
     padding-bottom: 1rem;
   }
 
-  @media (min-width: ${mobileBreak}) {
+  @media (min-width: ${breakpoint}) {
     &.scrolled .title.subdomain-name {
       font-size: 1.5rem;
     }
@@ -434,18 +461,24 @@ const Title = forwardRef(({ title, unit, ...props }, ref) => {
       </div>
     );
   }
-  return <div class="title subdomain-name" ref={ref}>{title}</div>;
+  return (
+    <div class="title subdomain-name" ref={ref}>
+      {title}
+    </div>
+  );
 });
 
 export {
   Header,
   UniversalNav,
+  UniversalNavLinks,
   PrimaryNav,
   Title,
   Logo,
   NavbarContainer,
   Icon,
   NavbarToggler,
-  mobileBreak,
-  primaryNavTopPadding
+  primaryNavTopPadding,
+  BreakpointLg,
+  BreakpointXl,
 };
