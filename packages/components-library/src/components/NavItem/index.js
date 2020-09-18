@@ -5,12 +5,13 @@ import PropTypes from "prop-types";
 import { Icon } from "../Icons";
 import { Button } from "../Button";
 import { Heading } from "../Heading";
+import * as S from "./styles";
 
 /**
  * Render a single Nav Item. This could be either a 'button' link, 'icon' link
  * @param {} props
  */
-const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
+const NavItem = ({ onFocus, itemRef, type, text, href, ...props }) => {
   let inner = "";
 
   switch (type) {
@@ -19,6 +20,7 @@ const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
         // standards only allow dark buttons in nav dropdowns
         inner = (
           <Button
+            {...props}
             class="nav-button"
             ref={itemRef}
             href={href}
@@ -34,29 +36,29 @@ const NavItem = ({ onFocus, itemRef, type, text, color, href, ...props }) => {
     case "icon":
       // Have to use className here because FontAwesome React component expects it
       inner = (
-        <a
-          class="nav-icon"
+        <S.NavIcon
+          {...props}
           href={href}
           {...(onFocus ? { onFocus } : "")}
           ref={itemRef}
+          type={props.class}
         >
-          <Icon type={props.class} className="icon-nav-item" />
-          <span class="mobile-only">{text}</span>
-        </a>
+          {text}
+        </S.NavIcon>
       );
       break;
     case "heading":
       return <Heading type="h3">{text}</Heading>;
     default:
       inner = (
-        <a
-          class="nav-item"
+        <S.NavLink
           href={href}
           {...(onFocus ? { onFocus } : "")}
           ref={itemRef}
+          {...props}
         >
           {text}
-        </a>
+        </S.NavLink>
       );
       break;
   }
@@ -78,8 +80,7 @@ NavItem.propTypes = {
   type: PropTypes.string,
   href: PropTypes.string,
   text: PropTypes.string.isRequired, // text always required (accessiblity and mobile)
-  color: PropTypes.string,
-  icon: PropTypes.string
+  icon: PropTypes.string,
 };
 
 NavItem.defaultProps = {};

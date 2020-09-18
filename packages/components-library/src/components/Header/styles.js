@@ -1,9 +1,14 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import {forwardRef} from "preact/compat";
+import { forwardRef } from "preact/compat";
 import { cx, css } from "emotion";
-import { containerSize, primaryNavTopPadding, BreakpointXl, BreakpointLg } from "../../theme";
+import {
+  containerSize,
+  primaryNavTopPadding,
+  BreakpointXl,
+  BreakpointLg,
+} from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
@@ -11,7 +16,6 @@ import { loginStyles } from "../Login/styles";
 import { Icon } from "../Icons";
 
 const Header = ({ children, breakpoint, ...props }) => {
-
   return (
     <header
       {...props}
@@ -81,7 +85,7 @@ const Header = ({ children, breakpoint, ...props }) => {
 /**
  * Mobile hamburger menu styles and component
  */
-const navbarTogglerStyles = (breakpoint) => css`
+const navbarTogglerStyles = breakpoint => css`
   .navbar-toggler {
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
@@ -139,7 +143,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
 /**
  * Universal Nav styles and component
  */
-const universalStyles = (breakpoint) => css`
+const universalStyles = breakpoint => css`
   .universal-nav {
     padding: 0 2rem;
     display: flex;
@@ -234,13 +238,17 @@ const UniversalNav = props => {
       )}
       ref={props.domRef}
     >
-      {props.children}
+      <div>{props.children}</div>
     </div>
   );
 };
 
+const UniversalNavLinks = ({ children, ...props }) => {
+  return <div class={cx("nav-grid", props.class)}>{children}</div>;
+};
+
 /** Primary Nav styles and component */
-const primaryStyles = (breakpoint) => css`
+const primaryStyles = breakpoint => css`
   .primary-nav {
     background-color: #ffffff;
     display: flex;
@@ -282,13 +290,17 @@ const primaryStyles = (breakpoint) => css`
 `;
 
 const PrimaryNav = props => {
-  return <div class="primary-nav">{props.children}</div>;
+  return (
+    <div class="primary-nav">
+      <div>{props.children}</div>
+    </div>
+  );
 };
 
 /**
  * Navbar Container
  **/
-const NavbarContainerStyles = (breakpoint) => css`
+const NavbarContainerStyles = breakpoint => css`
   .navbar-container {
     display: flex;
     width: 100%;
@@ -310,7 +322,7 @@ const NavbarContainer = props => {
 /**
  * Logo
  */
-const logoStyles = (breakpoint) => css`
+const logoStyles = breakpoint => css`
   .navbar-brand {
     display: inline-block;
     padding-top: 0.3125rem;
@@ -449,12 +461,17 @@ const Title = forwardRef(({ title, unit, ...props }, ref) => {
       </div>
     );
   }
-  return <div class="title subdomain-name" ref={ref}>{title}</div>;
+  return (
+    <div class="title subdomain-name" ref={ref}>
+      {title}
+    </div>
+  );
 });
 
 export {
   Header,
   UniversalNav,
+  UniversalNavLinks,
   PrimaryNav,
   Title,
   Logo,
@@ -463,5 +480,5 @@ export {
   NavbarToggler,
   primaryNavTopPadding,
   BreakpointLg,
-  BreakpointXl
+  BreakpointXl,
 };

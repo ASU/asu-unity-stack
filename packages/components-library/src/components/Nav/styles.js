@@ -17,12 +17,12 @@ import { IconChevronDown } from "../Icons/styles";
  * NavList styles
  * @param {} breakpoint
  */
-
 const navListStyles = breakpoint => css`
   .navlist {
     list-style: none;
     display: flex;
     margin: 0;
+    padding: 0;
 
     a {
       text-decoration: none;
@@ -227,7 +227,6 @@ const dropdownContainerStyles = breakpoint => css`
     }
 
     @media (min-width: ${breakpoint}) {
-      margin: -1px 0 0 0;
       position: fixed;
 
       > div {
@@ -236,7 +235,13 @@ const dropdownContainerStyles = breakpoint => css`
         margin: 0 auto;
       }
 
-      border: 1px solid #d0d0d0;
+      &.open {
+        border-bottom: 1px solid #d0d0d0;
+      }
+
+      margin-top: 1px;
+      border-left: 1px solid #d0d0d0;
+      border-right: 1px solid #d0d0d0;
 
       h3 {
         margin-top: 0;

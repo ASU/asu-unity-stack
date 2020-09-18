@@ -1,6 +1,6 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
@@ -34,7 +34,7 @@ const Header = ({
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
 
   // Get breakpoint from theme and props
-  const bpoint = (breakpoint === "Xl") ? S.BreakpointXl : S.BreakpointLg;
+  const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
   const bpointInt = parseInt(bpoint, 10);
 
   // get window dimensions
@@ -47,6 +47,14 @@ const Header = ({
     setSrollPosition(position);
   };
 
+  // Get primary nav top padding value from theme
+  const tpadding = parseInt(S.primaryNavTopPadding, 10);
+
+  // Use refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
   // Attach scroll event lister which will update the scrollPosition state
   // when window scrolled
   useEffect(() => {
@@ -56,14 +64,6 @@ const Header = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Get primary nav top padding value from theme
-  const tpadding = parseInt(S.primaryNavTopPadding, 10);
-
-  // Use refs to track height of header dom elements
-  const universalRef = useRef(null);
-  const logoRef = useRef(null);
-  const titleRef = useRef(null);
 
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
@@ -83,13 +83,13 @@ const Header = ({
     }
   }, [height, width, mobileOpen]);
 
-
-
   return (
     <S.Header
       breakpoint={bpoint}
       class={
-        scrollPosition > 0 || (mobileOpen && width < bpointInt) ? "scrolled" : ""
+        scrollPosition > 0 || (mobileOpen && width < bpointInt)
+          ? "scrolled"
+          : ""
       }
     >
       <S.UniversalNav
@@ -97,25 +97,23 @@ const Header = ({
         domRef={universalRef}
         {...{ searchOpen }}
       >
-        <div>
-          <div class="nav-grid">
-            <a href="https://www.asu.edu/">ASU home</a>
-            <a href="https://my.asu.edu/">My ASU</a>
-            <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-            <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
-          </div>
-          <UniversalSearch
-            open={searchOpen}
-            setOpen={setSearchOpen}
-            mobile={width < bpointInt}
-          />
-        </div>
+        <S.UniversalNavLinks>
+          <a href="https://www.asu.edu/">ASU home</a>
+          <a href="https://my.asu.edu/">My ASU</a>
+          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+          <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
+        </S.UniversalNavLinks>
+        <UniversalSearch
+          open={searchOpen}
+          setOpen={setSearchOpen}
+          mobile={width < bpointInt}
+        />
       </S.UniversalNav>
       <S.PrimaryNav>
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
-          <div>
+          <>
             <S.Logo {...logo} domRef={logoRef} />
             <S.NavbarToggler
               onClick={e => {
@@ -135,11 +133,11 @@ const Header = ({
                   width,
                   buttons,
                   maxMobileHeight: maxMobileNavHeight,
-                  breakpoint
+                  breakpoint,
                 }}
               />
             </S.NavbarContainer>
-          </div>
+          </>
         )}
       </S.PrimaryNav>
     </S.Header>
@@ -161,7 +159,7 @@ Header.propTypes = {
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
   buttons: PropTypes.arrayOf(PropTypes.object),
-  breakpoint: PropTypes.oneOf(['Lg', 'Xl'])
+  breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
 };
 
 Header.defaultProps = {
@@ -179,7 +177,7 @@ Header.defaultProps = {
   loginLink: Login.defaultProps.loginLink,
   logoutLink: Login.defaultProps.logoutLink,
   buttons: [],
-  breakpoint: 'Lg'
+  breakpoint: "Lg",
 };
 
 export { Header };

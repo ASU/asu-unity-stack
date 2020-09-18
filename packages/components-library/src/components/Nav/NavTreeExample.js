@@ -392,7 +392,6 @@ const NavTreeMega = [
           href: "https://www.asu.edu/?feature=athletics",
           type: "button",
           text: "CTA Action 2",
-          color: "maroon",
         },
       ],
     ],
@@ -471,8 +470,7 @@ const NavTreeMega = [
         {
           href: "https://campus.asu.edu/downtown/",
           type: "button",
-          text: "Downtown Phoenix",
-          color: "light",
+          text: "Downtown Phoenix"
         },
       ],
       [
@@ -505,8 +503,7 @@ const NavTreeMega = [
         {
           href: "https://campus.asu.edu/downtown/",
           type: "button",
-          text: "Downtown Phoenix",
-          color: "light",
+          text: "Downtown Phoenix"
         },
       ],
     ],
@@ -586,7 +583,6 @@ const NavTreeMega = [
           href: "https://campus.asu.edu/downtown/",
           type: "button",
           text: "Action",
-          color: "light",
         },
       ],
       [
@@ -731,8 +727,7 @@ const NavTreeMega = [
         {
           href: "https://campus.asu.edu/downtown/",
           type: "button",
-          text: "Action Button",
-          color: "light",
+          text: "Action Button"
         },
       ],
       [

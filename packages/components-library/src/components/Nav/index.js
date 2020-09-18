@@ -3,11 +3,10 @@
 import { h } from "preact";
 import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
-import NavItem from "./NavItem";
+import NavItem from "../NavItem";
 import DropNav from "./DropNav";
 import { Button } from "../Button";
 import * as S from "./styles";
-import { cx } from "emotion";
 
 /**
  * Render entire Nav.
@@ -104,14 +103,21 @@ const Nav = ({
           setFocusCallback(moveUp(focused, derState, navList));
           break;
         case Down:
+
+          // Open the menu if moving down to a submenu
+          if (derState.isTop && derState.hasSubs) {
+            setOpen(focused[0]);
+          }
+
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
         case Tab:
           // handle tab key
           if (!e.shiftKey) {
-            if (derState.isLast) return false;
-
+            if (derState.isLast) {
+              return false;
+            }
             e.preventDefault();
             setFocusCallback(moveRight(focused, derState, navList));
 
@@ -204,7 +210,7 @@ const Nav = ({
         onKeyDown={handleKeyDown}
         ref={navRef}
       >
-        {navList.map((item, index) => {
+        {navList.map((item, pindex) => {
           const navItem = item.item;
           const subs = item.menus;
 
@@ -212,15 +218,56 @@ const Nav = ({
             return (
               <DropNav
                 width={width}
-                item={navItem}
-                submenus={subs}
-                pIndex={index}
+                text={navItem.text}
+                target={navItem.target}
+                pIndex={pindex}
                 setFocus={setFocusCallback}
-                topRef={item.ref}
-                isOpen={open == index}
+                ref={item.ref}
+                isOpen={open == pindex}
                 setOpen={setOpen}
                 mobileWidth={bpointInt}
-              />
+                mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
+              >
+                {subs.map((sub, index) => {
+                  return (
+                    <S.MenuColumn>
+                      {sub.map((item, ind) => {
+                        return (
+                          <NavItem
+                            onFocus={() => {
+                              setFocus([pindex, index, ind]);
+                              setOpen(pindex);
+                            }}
+                            itemRef={subs[index][ind].ref}
+                            type={
+                              item.hasOwnProperty("type")
+                                ? item.type
+                                : undefined
+                            }
+                            color={
+                              item.hasOwnProperty("color")
+                                ? item.color
+                                : undefined
+                            }
+                            class={
+                              item.hasOwnProperty("class")
+                                ? item.class
+                                : undefined
+                            }
+                            href={
+                              item.hasOwnProperty("href")
+                                ? item.href
+                                : undefined
+                            }
+                            text={item.text}
+                            tabIndex="-1" // Take dropdown nav items out of browser tab order
+                          />
+                        );
+                      })}
+                    </S.MenuColumn>
+                  );
+                })}
+              </DropNav>
             );
           }
 
@@ -228,7 +275,7 @@ const Nav = ({
           return (
             <NavItem
               onFocus={() => {
-                setFocusCallback([index, -1, -1]);
+                setFocusCallback([pindex, -1, -1]);
               }}
               itemRef={item.ref}
               type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
@@ -435,6 +482,7 @@ const moveDown = (state, dstate, navList) => {
 
   // handle moving focus from top parent
   if (dstate.isTop && dstate.hasSubs) {
+
     // Move to first item of first submenu
     move = [x, 0, 0];
 
