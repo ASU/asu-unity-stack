@@ -1276,5 +1276,356 @@ TODO support .was-validated (front end style) or not?
 </form>
   `)
 
+.add('Kitchen Sink Form, client side validation with :invalid and :valid - not yet validated', () => `
+<p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
+
+<p>When the form is marked with class "was-validated", browser-based validation
+styles based on input element type attribute is triggered.
+
+<form class="needs-validation">
+
+  <div class="form-group">
+    <label for="myTextInput">Text input REQUIRED</label>
+    <input type="text" class="form-control" id="myTextInput" aria-describedby="errorHelp1" placeholder="Helper text" required>
+    <small id="errorHelp1" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="myEmailInput">Email input</label>
+    <input type="email" class="form-control" id="myEmailInput" aria-describedby="errorHelp2" placeholder="Helper text" value="notAnEmail">
+    <small id="errorHelp2" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="myLgInput">Large input</label>
+    <input type="text" class="form-control form-control-lg" id="myLgInput" aria-describedby="successHelp1" placeholder="Helper text" value="Input text">
+    <small id="successHelp1" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="mySmInput">Small input</label>
+    <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaError">Error textarea REQUIRED</label>
+    <textarea class="form-control" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3" required></textarea>
+    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
+    <textarea class="form-control" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked required>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" required>
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1" required>
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" required>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" required>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+
+</form>
+  `)
+
+.add('Kitchen Sink Form, client side validation with :invalid and :valid - was validated', () => `
+<p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
+
+<p>When the form is marked with class "was-validated", browser-based validation
+styles based on input element type attribute is triggered.
+
+<form class="was-validated">
+
+  <div class="form-group">
+    <label for="myTextInput">Text input REQUIRED</label>
+    <input type="text" class="form-control" id="myTextInput" aria-describedby="errorHelp1" placeholder="Helper text" required>
+    <small id="errorHelp1" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="myEmailInput">Email input</label>
+    <input type="email" class="form-control" id="myEmailInput" aria-describedby="errorHelp2" placeholder="Helper text" value="notAnEmail">
+    <small id="errorHelp2" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="myLgInput">Large input</label>
+    <input type="text" class="form-control form-control-lg" id="myLgInput" aria-describedby="successHelp1" placeholder="Helper text" value="Input text">
+    <small id="successHelp1" class="form-text valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="mySmInput">Small input</label>
+    <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaError">Error textarea REQUIRED</label>
+    <textarea class="form-control" aria-describedby="errorTextareaHelp" id="exampleFormControlTextareaError" rows="3" required></textarea>
+    <small id="errorTextareaHelp" class="form-textarea invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaSuccess">Success textarea</label>
+    <textarea class="form-control" aria-describedby="successTextareaHelp" id="exampleFormControlTextareaSuccess" rows="3">Agreeable content was entered.</textarea>
+    <small id="successTextareaHelp" class="form-textarea valid-feedback"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckMsg" id="validLoneCheckbox" value="option1" checked required>
+    <label class="form-check-label" for="validLoneCheckbox">I accept</label>
+    <small id="myValidCheckMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" required>
+    <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
+    <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+  </div
+
+  <fieldset>
+    <legend>A Group of Valid Checkboxes</legend>
+    <small id="myValidCheckboxMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox1" value="option1">
+      <label class="form-check-label" for="validCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox2" value="option2" checked>
+      <label class="form-check-label" for="validCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myValidCheckboxMsg" id="validCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="validCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Checkboxes</legend>
+    <small id="myInvalidCheckboxMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox1" value="option1" required>
+      <label class="form-check-label" for="invalidCheckbox1">1</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox2" value="option2" required>
+      <label class="form-check-label" for="invalidCheckbox2">2</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckboxMsg" id="invalidCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="invalidCheckbox3">3 (disabled)</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Invalid Radios</legend>
+    <small id="myInvalidRadiosMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios1" value="option1" required>
+      <label class="form-check-label" for="invalidRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios2" value="option2">
+      <label class="form-check-label" for="invalidRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios3" value="option3">
+      <label class="form-check-label" for="invalidRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="invalidRadios" aria-describedby="myInvalidRadiosMsg" id="invalidRadios4" value="option4" disabled>
+      <label class="form-check-label" for="invalidRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>A Group of Valid Radios</legend>
+    <small id="myValidRadiosMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios1" value="option1" checked>
+      <label class="form-check-label" for="validRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios2" value="option2">
+      <label class="form-check-label" for="validRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios3" value="option3">
+      <label class="form-check-label" for="validRadios3">
+        Third default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="validRadios" aria-describedby="myValidRadiosMsg" id="validRadios4" value="option4" disabled>
+      <label class="form-check-label" for="validRadios4">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+
+</form>
+  `)
 ; // close
 
