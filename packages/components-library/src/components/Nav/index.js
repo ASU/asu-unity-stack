@@ -217,7 +217,6 @@ const Nav = ({
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
               <DropNav
-                width={width}
                 text={navItem.text}
                 target={navItem.target}
                 pIndex={pindex}
@@ -225,7 +224,6 @@ const Nav = ({
                 ref={item.ref}
                 isOpen={open == pindex}
                 setOpen={setOpen}
-                mobileWidth={bpointInt}
                 mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
               >
                 {subs.map((sub, index) => {
@@ -289,8 +287,8 @@ const Nav = ({
           );
         })}
       </S.NavList>
-
-      {buttons.length > 0 && (
+      {// render buttons if props is passed
+      buttons.length > 0 && (
         <S.ButtonForm>
           {buttons.map((item, index) => {
             let color = item.color ? item.color : "maroon";
@@ -506,7 +504,7 @@ const moveDown = (state, dstate, navList) => {
 };
 
 /**
- * Check a move to see if the next node is focusable.
+ * Check a move to see if the next focused item is focusable.
  * @param {*} move
  * @param {*} navList
  */

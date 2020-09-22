@@ -5,7 +5,9 @@ import { Header } from "./components/Header";
 import { renderStylesToString } from "emotion-server";
 import { NavTreeMega } from "./components/Nav/NavTreeExample";
 
-/* TODO: see if we can generate completelys static example
+import { dom } from "@fortawesome/fontawesome-svg-core";
+
+/*
 import createEmotionServer from 'create-emotion-server'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/core'
@@ -25,9 +27,9 @@ let FullExample;
 let MobileTemplate;
 
 try {
-  HeaderTemplate = renderStylesToString(
+  HeaderTemplate = `<style type="text/css">${dom.css()}</style>${renderStylesToString(
     render(<Header dangerouslyGenerateStub={true} />)
-  );
+  )}`;
 } catch (error) {
   // handle error
   console.error(error);
@@ -35,7 +37,7 @@ try {
 }
 
 try {
-  FullExample = renderStylesToString(
+  FullExample = `<style type="text/css">${dom.css()}</style>${renderStylesToString(
     render(
       <Header
         navTree={NavTreeMega}
@@ -45,7 +47,7 @@ try {
         }
       />
     )
-  );
+  )}`;
 } catch (error) {
   // handle error
   console.error(error);
@@ -53,7 +55,9 @@ try {
 }
 
 try {
-  MobileTemplate = renderStylesToString(render(<Header />));
+  MobileTemplate = `<style type="text/css">${dom.css()}</style>${renderStylesToString(
+    render(<Header />)
+  )}`;
 } catch (error) {
   // handle error
   console.error(error);

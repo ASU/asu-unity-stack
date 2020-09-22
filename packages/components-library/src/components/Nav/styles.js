@@ -6,7 +6,6 @@ import { css, cx } from "emotion";
 import {
   hiddenStyle,
   showReset,
-  srOnly,
   BreakpointLg,
   BreakpointXl,
   containerSize,
@@ -182,29 +181,41 @@ const ButtonForm = props => {
 const dropdownContainerStyles = breakpoint => css`
   /** DdMenu CSS **/
   div.dropdown {
-    max-height: 0;
+    position: absolute;
     display: flex;
-    z-index: 999;
     justify-content: space-between;
     background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
     flex-wrap: nowrap;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     margin: 0;
     padding: 0 1rem;
     border: 0;
     overflow: hidden;
 
+    > div {
+      width: 100%;
+    }
+
     &.mega {
       width: 100%;
       left: 0;
+      border-right: none;
+      border-left: none;
 
       > div {
         max-width: ${containerSize};
+
       }
     }
 
     &.open {
-      max-height: 10000px;
+      visibility: visible;
+      opacity: 1;
     }
 
     h3 {
@@ -220,19 +231,27 @@ const dropdownContainerStyles = breakpoint => css`
     @media (max-width: ${breakpoint}) {
       padding-left: 3rem;
       flex-direction: column;
+      max-height: 0;
 
       &.open {
         position: relative;
+        display: flex;
+        max-height: 10000px;
       }
     }
 
     @media (min-width: ${breakpoint}) {
       position: fixed;
 
+      &:not(.mega) .menu-column {
+        min-width: 12rem;
+      }
+
       > div {
         padding: 2rem;
         display: flex;
         margin: 0 auto;
+        justify-content: center;
       }
 
       &.open {
@@ -270,6 +289,7 @@ const menuColumnStyles = breakpoint => css`
     padding: 0 2rem;
     margin-bottom: 3rem;
 
+
     :last-child {
       margin-bottom: 0;
       border-right: none;
@@ -280,6 +300,7 @@ const menuColumnStyles = breakpoint => css`
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
+      max-width: 282px;
 
       :last-of-type {
         margin-right: 0;
@@ -306,10 +327,12 @@ const menuColumnStyles = breakpoint => css`
     }
 
     @media (min-width: ${breakpoint}) {
-      width: 16rem;
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
+
+      flex: 1;
+      max-width: 282px;
 
       > li {
         padding: 0;

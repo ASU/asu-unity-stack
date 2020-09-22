@@ -1,6 +1,6 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { forwardRef } from "preact/compat";
 import { cx, css } from "emotion";
 import {
@@ -8,135 +8,99 @@ import {
   primaryNavTopPadding,
   BreakpointXl,
   BreakpointLg,
+  srOnly,
 } from "../../theme";
 import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
 import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
+import { logoStyles } from "../Logo/styles";
+import { titleStyles } from "../Title/styles";
+import {
+  navbarStyles,
+  navbarContainerStyles,
+  NavbarContainer,
+  NavbarToggler,
+  navbarTogglerStyles,
+} from "../Navbar/styles";
 import { Icon } from "../Icons";
 
 const Header = ({ children, breakpoint, ...props }) => {
   return (
-    <header
-      {...props}
-      class={cx(
-        props.class,
-        css`
-          *,
-          *:before,
-          *:after {
-            box-sizing: border-box;
-          }
-
-          :focus {
-            outline: 0;
-            box-shadow: 0 0 8px #00baff !important;
-          }
-
-          a {
-            cursor: pointer;
-            text-decoration: none;
-          }
-
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          position: fixed;
-          width: 100%;
-          z-index: 999;
-          background: #ffffff;
-          border-bottom: 1px solid #d0d0d0;
-          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-          top: 0;
-          left: 0;
-
-          div,
-          h1 {
-            font-family: Arial, sans-serif;
-          }
-
-          &.scrolled {
-            transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-          }
-
-          @media (max-width: ${breakpoint}) {
-            &.scrolled .primary-nav .header-title h1 {
-              font-size: 1rem;
+    <>
+      <div id="asu-report-accessiblity">
+        <a
+          href="https://www.asu.edu/accessibility/"
+          class={css`
+            ${srOnly}
+          `}
+        >
+          Report an accessibility problem
+        </a>
+      </div>
+      <header
+        {...props}
+        class={cx(
+          props.class,
+          css`
+            *,
+            *:before,
+            *:after {
+              box-sizing: border-box;
             }
-          }
-        `,
-        primaryStyles(breakpoint),
-        navStyles(breakpoint), // add the nav and button styles
-        buttonStyles,
-        NavbarContainerStyles(breakpoint),
-        logoStyles(breakpoint),
-        universalStyles(breakpoint),
-        searchStyles(breakpoint),
-        titleStyles(breakpoint),
-        loginStyles(breakpoint),
-        navbarTogglerStyles(breakpoint)
-      )}
-    >
-      {children}
-    </header>
-  );
-};
 
-/**
- * Mobile hamburger menu styles and component
- */
-const navbarTogglerStyles = breakpoint => css`
-  .navbar-toggler {
-    padding: 0.25rem 0.75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    background-color: transparent;
-    border-radius: 400rem;
-    outline: 0;
-    color: #191919;
-    border: 0;
-    margin-right: 2rem;
-    cursor: pointer;
+            :focus {
+              outline: 0;
+              box-shadow: 0 0 8px #00baff !important;
+            }
 
-    @media (min-width: ${breakpoint}) {
-      display: none;
-    }
-  }
-`;
+            a {
+              cursor: pointer;
+              text-decoration: none;
+            }
 
-const NavbarToggler = ({ mobileOpen, ...props }) => {
-  return (
-    <button
-      {...props}
-      class={cx(
-        css`
-          .fa-circle {
-            color: #e8e8e8;
-            font-size: 1rem;
-            margin-left: -12px;
-            height: 2em;
-            width: 2.5em;
-          }
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            background: #ffffff;
+            border-bottom: 1px solid #d0d0d0;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+            top: 0;
+            left: 0;
 
-          svg.svg-inline--fa.fa-times {
-            height: 1em;
-            width: 1.25em;
-            margin-left: 7px;
-          }
-        `,
-        "navbar-toggler"
-      )}
-    >
-      {mobileOpen ? (
-        <Icon type="circle-close" />
-      ) : (
-        <Icon
-          type="bars"
-          // If javascript is disabled, this should target and open the
-          href="#asu-header-nav"
-        />
-      )}
-    </button>
+            div,
+            h1 {
+              font-family: Arial, sans-serif;
+            }
+
+            &.scrolled {
+              transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+            }
+
+            @media (max-width: ${breakpoint}) {
+              &.scrolled .primary-nav .header-title h1 {
+                font-size: 1rem;
+              }
+            }
+          `,
+          navbarStyles(breakpoint),
+          navStyles(breakpoint), // add the nav and button styles
+          buttonStyles,
+          navbarContainerStyles(breakpoint),
+          logoStyles(breakpoint),
+          universalStyles(breakpoint),
+          searchStyles(breakpoint),
+          titleStyles(breakpoint),
+          loginStyles(breakpoint),
+          navbarTogglerStyles(breakpoint)
+        )}
+      >
+        {children}
+      </header>
+    </>
   );
 };
 
@@ -228,7 +192,7 @@ const universalStyles = breakpoint => css`
   }
 `;
 
-const UniversalNav = props => {
+const UniversalNav = forwardRef((props, ref) => {
   return (
     <div
       class={cx(
@@ -236,247 +200,22 @@ const UniversalNav = props => {
         props.open ? "mobile-open" : "",
         props.searchOpen ? "search-open" : ""
       )}
-      ref={props.domRef}
+      ref={ref}
     >
       <div>{props.children}</div>
     </div>
   );
-};
+});
 
 const UniversalNavLinks = ({ children, ...props }) => {
   return <div class={cx("nav-grid", props.class)}>{children}</div>;
 };
 
-/** Primary Nav styles and component */
-const primaryStyles = breakpoint => css`
-  .primary-nav {
-    background-color: #ffffff;
-    display: flex;
-    width: 100%;
-    padding-right: 12px;
-    padding-left: 12px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: ${containerSize};
-
-    > div {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      align-items: flex-start;
-      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-      position: relative;
-      align-items: center;
-    }
-
-    @media (max-width: ${breakpoint}) {
-      order: -1;
-      display: flex;
-      top: 0;
-      width: 100%;
-      height: auto;
-      background-color: #ffffff;
-      padding: 0;
-      z-index: 1600;
-      padding: ${primaryNavTopPadding} 0 0 0;
-
-      > div {
-        padding: 0;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-    }
-  }
-`;
-
-const PrimaryNav = props => {
-  return (
-    <div class="primary-nav">
-      <div>{props.children}</div>
-    </div>
-  );
-};
-
-/**
- * Navbar Container
- **/
-const NavbarContainerStyles = breakpoint => css`
-  .navbar-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-
-    @media (max-width: ${breakpoint}) {
-      width: 100%;
-    }
-  }
-`;
-
-const NavbarContainer = props => {
-  return (
-    <div class={cx("navbar-container", props.class)}>{props.children}</div>
-  );
-};
-
-/**
- * Logo
- */
-const logoStyles = breakpoint => css`
-  .navbar-brand {
-    display: inline-block;
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    line-height: inherit;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
-
-    .horiz {
-      display: none;
-      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-    }
-
-    .vert {
-      @media (min-width: 992px) {
-        display: block;
-        height: 72px;
-        width: auto;
-        margin: 1.5rem 1rem 1.5rem 0;
-      }
-    }
-
-    img {
-      height: 80px;
-    }
-
-    @media (max-width: ${breakpoint}) {
-      img {
-        float: none;
-        height: 32px;
-      }
-
-      .vert {
-        display: none;
-      }
-      .horiz {
-        display: block;
-        height: 32px;
-        width: auto;
-        margin-bottom: 1rem;
-        margin-left: 2rem;
-      }
-    }
-  }
-
-  &.scrolled .primary-nav .navbar-brand d img {
-    height: 64px;
-  }
-
-  @media (max-width: ${breakpoint}) {
-    &.scrolled .primary-nav .navbar-brand d img {
-      height: 28px;
-    }
-
-    &.scrolled .navbar-brand .horiz {
-      margin-bottom: 0.5rem;
-    }
-  }
-`;
-
-const Logo = props => {
-  const brandLink = props.brandLink ? props.brandLink : "https://asu.edu";
-
-  return (
-    <a href={brandLink} class="navbar-brand" ref={props.domRef}>
-      <img class="vert" src={props.src} alt={props.alt} />
-      <img class="horiz" src={props.mobileSrc} />
-    </a>
-  );
-};
-
-/**
- * Title
- **/
-const titleStyles = breakpoint => css`
-  .title {
-    line-height: 1;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0 2rem 1.5rem 2rem;
-    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-
-    > a {
-      display: none;
-    }
-
-    @media (min-width: ${breakpoint}) {
-      line-height: 1;
-      margin: 1rem 0;
-      font-weight: 700;
-      padding: 0;
-
-      > a {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-        display: block;
-      }
-
-      &.subdomain-name {
-        font-size: 2rem;
-        margin: 1.5rem 0 1rem 0;
-        font-weight: 700;
-      }
-
-      .subdomain-name {
-        font-size: 1.5rem;
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
-  @media (min-width: ${breakpoint}) {
-    &.scrolled .title.subdomain-name {
-      font-size: 1.5rem;
-    }
-
-    &.scrolled .title {
-      padding-bottom: 0;
-    }
-  }
-`;
-
-const Title = forwardRef(({ title, unit, ...props }, ref) => {
-  if (unit) {
-    return (
-      <div class="title" ref={ref}>
-        <a class="unit-name">{unit}</a>
-        <span class="subdomain-name">{title}</span>
-      </div>
-    );
-  }
-  return (
-    <div class="title subdomain-name" ref={ref}>
-      {title}
-    </div>
-  );
-});
-
 export {
   Header,
   UniversalNav,
   UniversalNavLinks,
-  PrimaryNav,
-  Title,
-  Logo,
   NavbarContainer,
-  Icon,
   NavbarToggler,
   primaryNavTopPadding,
   BreakpointLg,

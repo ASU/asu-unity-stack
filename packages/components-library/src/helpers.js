@@ -1,7 +1,7 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, hydrate, render } from "preact";
-import { Header } from "./";
+import { Header, Login } from "./";
 
 const HydratePreact = (component, props, target) => {
   return hydrate(h(component, props), target);
@@ -39,18 +39,18 @@ const checkSSOCookie = () => {
 /**
  * Alters the default login Url to add the '?callapp=' query string
  */
-const alterLoginUrl = (url) => {
+const alterLoginUrl = url => {
+  let newUrl;
 
   const callbackUrl = window.location.toString();
 
-  url = decodeURI(url); // Decode the URL just in case
+  newUrl = decodeURI(url); // Decode the URL just in case
 
-  url = url.replace(
-    `/login`,
-    `/login?callapp=${callbackUrl}`
-  ); // set the callapp into the url
+  newUrl = newUrl.replace(`/login`, `/login?callapp=${callbackUrl}`); // set the callapp into the url
 
-  return url;
+  console.log(newUrl, "THE URL");
+
+  return newUrl;
 };
 
 /**
@@ -63,9 +63,11 @@ const alterLoginUrl = (url) => {
  * @param {*} target - The ID of the containing <div> where the header should
  * be either hydrated or rendered.
  */
-const initHeader = ( props, hydrate = false, target = "headerContainer") => {
+const initHeader = (props, hydrate = false, target = "headerContainer") => {
   const { loggedIn, userName, loginLink, ...theRest } = props;
-  const fullLoginUrl = loginLink ? loginLink : alterLoginUrl(Header.defaultProps.loginLink);
+  const fullLoginUrl = loginLink
+    ? loginLink
+    : alterLoginUrl(Login.defaultProps.loginLink);
 
   // If login data is incomplete, check the SSO cookie for data.
   const loginStatus =
@@ -79,7 +81,7 @@ const initHeader = ( props, hydrate = false, target = "headerContainer") => {
   const headerProps = {
     ...loginStatus,
     ...theRest,
-    loginLink: fullLoginUrl
+    loginLink: fullLoginUrl,
   };
 
   if (hydrate) {
