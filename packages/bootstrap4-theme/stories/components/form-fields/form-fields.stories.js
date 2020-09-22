@@ -25,8 +25,8 @@ storiesOf('Components/Form Fields', module)
   </div>
 
   <div class="form-group">
-    <label for="exampleErrorInput">Error text input label</label>
-    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text">
+    <label for="exampleErrorInput"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Error text input label on a required field</label>
+    <input type="text" class="form-control is-invalid" id="exampleErrorInput" aria-describedby="errorHelp" placeholder="Helper text" aria-required="true" required>
     <small id="errorHelp" class="form-text invalid-feedback"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
@@ -1280,7 +1280,7 @@ TODO support .was-validated (front end style) or not?
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
-styles based on input element type attribute is triggered.
+styles based on input element type attribute are triggered.
 
 <form class="needs-validation">
 
@@ -1456,7 +1456,7 @@ styles based on input element type attribute is triggered.
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
-styles based on input element type attribute is triggered.
+styles based on input element type attribute are triggered.
 
 <form class="was-validated">
 
@@ -1606,23 +1606,25 @@ styles based on input element type attribute is triggered.
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select class="form-control" id="exampleFormControlSelect1" aria-describedby="myValidSelectMsg">
       <option>1</option>
       <option>2</option>
       <option>3</option>
       <option>4</option>
       <option>5</option>
     </select>
+    <small id="myValidSelectMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
+    <select multiple class="form-control" id="exampleFormControlSelect2" aria-describedby="myInvalidSelectMsg" required>
       <option>1</option>
       <option>2</option>
       <option>3</option>
       <option>4</option>
       <option>5</option>
     </select>
+    <small id="myInvalidSelectMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
   </div>
 
 </form>

@@ -5,6 +5,13 @@ form {
   // Already is color #191919
   label {
     font-size: 1rem;
+    // Labels for required fields.
+    svg.uds-field-required {
+      font-size: 0.5rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.125rem;
+      color: #b72a2a;
+    }
   }
 
   /* Helper text */
@@ -34,7 +41,8 @@ form {
 
   /* Input focus */
   input:focus,
-  textarea:focus {
+  textarea:focus,
+  select:focus {
     outline: none !important;
     box-shadow: none !important;
     border: 2px solid #191919 !important;
@@ -53,7 +61,7 @@ form {
       opacity: 0;
     }
 
-    // Shared styling.
+    // Shared styling for Radios and Checkboxes.
     input[type='radio'],
     input[type='checkbox'] {
       + label {
@@ -62,7 +70,6 @@ form {
         display: inline-block;
         cursor: pointer;
         margin-left: 1rem;
-        //        color: #191919;
 
         // Outer border.
         &::before {
@@ -101,8 +108,8 @@ form {
           background: $uds-color-base-gray-2;
         }
       }
-      // We can use this little trick because the label follows the disabled
-      // input.
+      // We can use this little trick here because the label follows the
+      // disabled input.
       &:disabled + label {
         color: $uds-color-base-gray-4;
       }
@@ -148,29 +155,42 @@ form {
     }
   }
 
-  /* Error input - Client-side, using :valid and :invalid pseudo classes.
-     ala Bootstrap 4: https://getbootstrap.com/docs/4.0/components/forms/#validation */
+  /* ERROR/SUCCESS VALIDATION - Client-side, using :valid and :invalid pseudo
+    classes ala Bootstrap 4:
+    https://getbootstrap.com/docs/4.0/components/forms/#validation */
   &.was-validated {
     .form-control:invalid {
       border-style: solid;
-      border: 1px solid #b72a2a !important;
-      border-bottom: 8px solid #b72a2a !important;
+      border: 1px solid #b72a2a;
+      border-bottom: 8px solid #b72a2a;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
+    // Radios and checks individual labels shouldn't be colored.
     .form-check-input:invalid ~ .form-check-label {
+      color: #191919;
+    }
+    // Select invalid feedback messages shouldn't have colored text.
+    select ~ small.is-invalid,
+    select ~ div.is-invalid {
       color: #191919;
     }
 
     //&.was-validated .form-control:valid {
     .form-control:valid {
       border-style: solid;
-      border: 1px solid #446d12 !important;
-      border-bottom: 8px solid #446d12 !important;
+      border: 1px solid #446d12;
+      border-bottom: 8px solid #446d12;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
+    // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
+      color: #191919;
+    }
+    // Select valid feedback messages shouldn't have colored text.
+    select ~ small.is-valid,
+    select ~ div.is-valid {
       color: #191919;
     }
   }
@@ -184,12 +204,14 @@ form {
     }
   }
 
-  /* Error input - Server-side. */
+  /* ERROR/SUCCESS VALIDATION - SERVER-SIDE
+    using Bootstrap 4 .is-valid and .is-invalid classes. */
   input.is-invalid,
-  textarea.is-invalid {
+  textarea.is-invalid,
+  select.is-invalid {
     border-style: solid;
-    border: 1px solid #b72a2a !important;
-    border-bottom: 8px solid #b72a2a !important;
+    border: 1px solid #b72a2a;
+    border-bottom: 8px solid #b72a2a;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
@@ -201,14 +223,17 @@ form {
   }
   /* Error for group follows legend and doesn't need margin adjustment. */
   legend ~ small.is-invalid,
-  legend ~ div.is-invalid {
+  legend ~ div.is-invalid,
+  select ~ small.is-invalid,
+  select ~ div.is-invalid {
     margin-left: inherit;
     margin-top: inherit;
+    color: #b72a2a;
   }
   .invalid-feedback {
     display: inline-block;
     font-weight: bold;
-    //color: #191919;
+    color: #191919;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
@@ -220,10 +245,11 @@ form {
   /* Success input */
   // border and icon #446D12
   input.is-valid,
-  textarea.is-valid {
+  textarea.is-valid,
+  select.is-valid {
     border-style: solid;
-    border: 1px solid #446d12 !important;
-    border-bottom: 8px solid #446d12 !important;
+    border: 1px solid #446d12;
+    border-bottom: 8px solid #446d12;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
@@ -235,14 +261,17 @@ form {
   }
   /* Success for group follows legend and doesn't need margin adjustment. */
   legend ~ small.is-valid,
-  legend ~ div.is-valid {
+  legend ~ div.is-valid,
+  select ~ small.is-valid,
+  select ~ div.is-valid {
     margin-left: inherit;
     margin-top: inherit;
+    color: #446d12;
   }
   .valid-feedback {
     display: inline-block;
     font-weight: bold;
-    //color: #191919;
+    color: #191919;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
@@ -301,7 +330,8 @@ form {
     }
     /* Dark Input focus */
     input:focus,
-    textarea:focus {
+    textarea:focus,
+    select:focus {
       background-color: $uds-color-base-gray-7;
       border: 2px solid $uds-color-base-gray-1 !important;
       color: $uds-color-base-gray-1;
@@ -365,10 +395,12 @@ form {
     }
 
     /* Dark error input */
-    input.is-invalid {
+    input.is-invalid,
+    textarea.is-invalid,
+    select.is-invalid {
       border-style: solid;
-      border: 1px solid #cc2f2f !important;
-      border-bottom: 8px solid #cc2f2f !important;
+      border: 1px solid #cc2f2f;
+      border-bottom: 8px solid #cc2f2f;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
@@ -384,10 +416,12 @@ form {
     }
 
     /* Dark success input */
-    input.is-valid {
+    input.is-valid,
+    textarea.is-valid,
+    select.is-valid {
       border-style: solid;
-      border: 1px solid #78be20 !important;
-      border-bottom: 8px solid #78be20 !important;
+      border: 1px solid #78be20;
+      border-bottom: 8px solid #78be20;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
