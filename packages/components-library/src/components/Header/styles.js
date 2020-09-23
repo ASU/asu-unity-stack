@@ -16,6 +16,7 @@ import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
 import { logoStyles } from "../Logo/styles";
 import { titleStyles } from "../Title/styles";
+import { navItemStyles } from "../NavItem/styles";
 import {
   navbarStyles,
   navbarContainerStyles,
@@ -95,7 +96,8 @@ const Header = ({ children, breakpoint, ...props }) => {
           searchStyles(breakpoint),
           titleStyles(breakpoint),
           loginStyles(breakpoint),
-          navbarTogglerStyles(breakpoint)
+          navbarTogglerStyles(breakpoint),
+          navItemStyles(breakpoint)
         )}
       >
         {children}

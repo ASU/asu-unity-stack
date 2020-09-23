@@ -103,10 +103,10 @@ const Nav = ({
           setFocusCallback(moveUp(focused, derState, navList));
           break;
         case Down:
-
-          // Open the menu if moving down to a submenu
-          if (derState.isTop && derState.hasSubs) {
+          // Open the menu before moving down to submenu item
+          if (derState.isTop && derState.hasSubs && open != focused[0]) {
             setOpen(focused[0]);
+            return;
           }
 
           e.preventDefault();
@@ -236,7 +236,7 @@ const Nav = ({
                               setFocus([pindex, index, ind]);
                               setOpen(pindex);
                             }}
-                            itemRef={subs[index][ind].ref}
+                            ref={subs[index][ind].ref}
                             type={
                               item.hasOwnProperty("type")
                                 ? item.type
@@ -257,9 +257,10 @@ const Nav = ({
                                 ? item.href
                                 : undefined
                             }
-                            text={item.text}
                             tabIndex="-1" // Take dropdown nav items out of browser tab order
-                          />
+                          >
+                            {item.text}
+                          </NavItem>
                         );
                       })}
                     </S.MenuColumn>
@@ -275,33 +276,36 @@ const Nav = ({
               onFocus={() => {
                 setFocusCallback([pindex, -1, -1]);
               }}
-              itemRef={item.ref}
+              ref={item.ref}
               type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
               color={
                 navItem.hasOwnProperty("color") ? navItem.color : undefined
               }
               class={navItem.hasOwnProperty("class") ? navItem.class : ""}
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
-              text={navItem.text}
-            />
+            >
+              {navItem.text}
+            </NavItem>
           );
         })}
       </S.NavList>
-      {// render buttons if props is passed
-      buttons.length > 0 && (
-        <S.ButtonForm>
-          {buttons.map((item, index) => {
-            let color = item.color ? item.color : "maroon";
+      {
+        // render buttons if props is passed
+        buttons.length > 0 && (
+          <S.ButtonForm>
+            {buttons.map((item, index) => {
+              let color = item.color ? item.color : "maroon";
 
-            // Return a single nav item if there are no submenus
-            return (
-              <Button href={item.href} {...{ [color]: true }} medium>
-                {item.text}
-              </Button>
-            );
-          })}
-        </S.ButtonForm>
-      )}
+              // Return a single nav item if there are no submenus
+              return (
+                <Button href={item.href} {...{ [color]: true }} medium>
+                  {item.text}
+                </Button>
+              );
+            })}
+          </S.ButtonForm>
+        )
+      }
     </S.Nav>
   );
 };
@@ -480,7 +484,6 @@ const moveDown = (state, dstate, navList) => {
 
   // handle moving focus from top parent
   if (dstate.isTop && dstate.hasSubs) {
-
     // Move to first item of first submenu
     move = [x, 0, 0];
 

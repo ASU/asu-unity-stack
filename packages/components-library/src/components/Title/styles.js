@@ -22,7 +22,7 @@ const titleStyles = breakpoint => css`
     padding: 0 2rem 1.5rem 2rem;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
-    > a {
+    > .unit-name {
       display: none;
     }
 
@@ -33,11 +33,11 @@ const titleStyles = breakpoint => css`
 
     @media (min-width: ${breakpoint}) {
       line-height: 1;
-      margin: 1rem 0;
       font-weight: 700;
       padding: 0;
+      margin: 1rem 0 .5rem 0;
 
-      > a {
+      > .unit-name {
         font-size: 1rem;
         margin-bottom: 0.5rem;
         display: block;

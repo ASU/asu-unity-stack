@@ -28,11 +28,10 @@ const DropNav = forwardRef(
     };
 
     return (
-      <li>
+      <li class={isOpen ? "dropdown-open" : ""}>
         <a
           {...props}
           role="button"
-          class={isOpen ? "dropdown-open" : ""}
           aria-expanded={isOpen}
           onMouseDown={e => {
             e.preventDefault();

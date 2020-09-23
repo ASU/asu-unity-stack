@@ -21,6 +21,7 @@ const navbarTogglerStyles = breakpoint => css`
     border: 0;
     margin-right: 2rem;
     cursor: pointer;
+    align-self-center;
 
     @media (min-width: ${breakpoint}) {
       display: none;
@@ -66,7 +67,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
 
 /** Primary Nav styles and component */
 const navbarStyles = breakpoint => css`
-  .primary-nav {
+  .navbar {
     background-color: #ffffff;
     display: flex;
     width: 100%;
@@ -83,7 +84,7 @@ const navbarStyles = breakpoint => css`
       align-items: flex-start;
       transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       position: relative;
-      align-items: center;
+      align-items: flex-end;
     }
 
     @media (max-width: ${breakpoint}) {
@@ -108,9 +109,9 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class="primary-nav">
+    <div class="navbar">
       <div>{children}</div>
-      
+
     </div>
   );
 };
