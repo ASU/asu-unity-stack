@@ -382,12 +382,6 @@ Should only run and be packaged for storybook preview.
   `)
 
 .add('Checkboxes', () => `
-<!-- <form class="was-validated">
-TODO support .was-validated (front end style) or not?
-- See https://stackoverflow.com/questions/56075450/how-to-disable-bootstrap-4-validation-style-from-valid-controls
-  for some ideas.
-- More details on validation ala Bootstrap 4:
-  https://getbootstrap.com/docs/4.0/components/forms/#validation -->
 
 <form>
   <div class="form-check">
@@ -1808,7 +1802,7 @@ styles based on input element type attribute are triggered and displayed.
 </div>
   `)
 
-.add('Kitchen Sink Form, dark background, client side validation with :invalid and :valid - Validated, form in was-validated state', () => `
+.add('Kitchen Sink Form, dark background, client side validation with :invalid and :valid - Validated, form in "was-validated" state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
