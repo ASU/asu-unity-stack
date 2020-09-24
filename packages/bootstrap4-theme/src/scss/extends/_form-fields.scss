@@ -2,7 +2,7 @@
 
 form {
   /* Labels */
-  // Already is color #191919
+  // Already is color $uds-color-base-gray-7
   label,
   legend {
     font-size: 1rem;
@@ -11,7 +11,7 @@ form {
       font-size: 0.5rem;
       margin-right: 0.25rem;
       margin-bottom: 0.125rem;
-      color: #b72a2a;
+      color: $uds-color-font-dark-error;
     }
   }
 
@@ -20,14 +20,14 @@ form {
 
   /* Input text */
   .form-control {
-    color: #191919;
+    color: $uds-color-base-gray-7;
 
     /* Disabled input */
     &:disabled,
     &[readonly] {
-      color: #bfbfbf;
-      background: #e8e8e8;
-      border: 1px solid #d0d0d0;
+      color: $uds-color-base-gray-4;
+      background: $uds-color-base-gray-2;
+      border: 1px solid $uds-color-base-gray-3;
     }
   }
 
@@ -46,7 +46,7 @@ form {
   select:focus {
     outline: none !important;
     box-shadow: none !important;
-    border: 2px solid #191919 !important;
+    border: 2px solid $uds-color-base-gray-7 !important;
     border-radius: none;
   }
 
@@ -162,37 +162,37 @@ form {
   &.was-validated {
     .form-control:invalid {
       border-style: solid;
-      border: 1px solid #b72a2a;
-      border-bottom: 8px solid #b72a2a;
+      border: 1px solid $uds-color-font-dark-error;
+      border-bottom: 8px solid $uds-color-font-dark-error;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:invalid ~ .form-check-label {
-      color: #191919;
+      color: $uds-color-base-gray-7;
     }
     // Select invalid feedback messages shouldn't have colored text.
     select ~ small.is-invalid,
     select ~ div.is-invalid {
-      color: #191919;
+      color: $uds-color-base-gray-7;
     }
 
     //&.was-validated .form-control:valid {
     .form-control:valid {
       border-style: solid;
-      border: 1px solid #446d12;
-      border-bottom: 8px solid #446d12;
+      border: 1px solid $uds-color-font-dark-success;
+      border-bottom: 8px solid $uds-color-font-dark-success;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
-      color: #191919;
+      color: $uds-color-base-gray-7;
     }
     // Select valid feedback messages shouldn't have colored text.
     select ~ small.is-valid,
     select ~ div.is-valid {
-      color: #191919;
+      color: $uds-color-base-gray-7;
     }
   }
   &.needs-validation {
@@ -213,8 +213,8 @@ form {
   textarea.is-invalid,
   select.is-invalid {
     border-style: solid;
-    border: 1px solid #b72a2a;
-    border-bottom: 8px solid #b72a2a;
+    border: 1px solid $uds-color-font-dark-error;
+    border-bottom: 8px solid $uds-color-font-dark-error;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
@@ -231,16 +231,16 @@ form {
   select ~ div.is-invalid {
     margin-left: inherit;
     margin-top: inherit;
-    color: #b72a2a;
+    color: $uds-color-font-dark-error;
   }
   .invalid-feedback {
     display: inline-block;
     font-weight: bold;
-    color: #191919;
+    color: $uds-color-base-gray-7;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
-      color: #b72a2a;
+      color: $uds-color-font-dark-error;
       margin-right: 0.5rem;
     }
   }
@@ -250,8 +250,8 @@ form {
   textarea.is-valid,
   select.is-valid {
     border-style: solid;
-    border: 1px solid #446d12;
-    border-bottom: 8px solid #446d12;
+    border: 1px solid $uds-color-font-dark-success;
+    border-bottom: 8px solid $uds-color-font-dark-success;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
   }
@@ -268,16 +268,16 @@ form {
   select ~ div.is-valid {
     margin-left: inherit;
     margin-top: inherit;
-    color: #446d12;
+    color: $uds-color-font-dark-success;
   }
   .valid-feedback {
     display: inline-block;
     font-weight: bold;
-    color: #191919;
+    color: $uds-color-base-gray-7;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
-      color: #446d12;
+      color: $uds-color-font-dark-success;
       margin-right: 0.5rem;
     }
   }
@@ -288,7 +288,7 @@ form {
       position: absolute;
       right: 0.75rem;
       top: 0.75rem;
-      color: #bfbfbf;
+      color: $uds-color-base-gray-4;
     }
   }
 
@@ -417,8 +417,8 @@ form {
     textarea.is-invalid,
     select.is-invalid {
       border-style: solid;
-      border: 1px solid #cc2f2f;
-      border-bottom: 8px solid #cc2f2f;
+      border: 1px solid $uds-color-alerts-error;
+      border-bottom: 8px solid $uds-color-alerts-error;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
@@ -428,7 +428,7 @@ form {
       svg {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
-        color: #cc2f2f;
+        color: $uds-color-alerts-error;
         margin-right: 0.5rem;
       }
     }
@@ -438,8 +438,8 @@ form {
     textarea.is-valid,
     select.is-valid {
       border-style: solid;
-      border: 1px solid #78be20;
-      border-bottom: 8px solid #78be20;
+      border: 1px solid $uds-color-base-green;
+      border-bottom: 8px solid $uds-color-base-green;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
     }
@@ -449,7 +449,7 @@ form {
       svg {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
-        color: #78be20;
+        color: $uds-color-base-green;
         margin-right: 0.5rem;
       }
     }
