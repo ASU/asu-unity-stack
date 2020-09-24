@@ -2,13 +2,12 @@
 
 form {
   /* Labels */
-  // Already is color $uds-color-base-gray-7
   label,
   legend {
-    font-size: 1rem;
+    font-size: $uds-size-spacing-2;
     // Labels for required fields.
     svg.uds-field-required {
-      font-size: 0.5rem;
+      font-size: $uds-size-spacing-1;
       margin-right: 0.25rem;
       margin-bottom: 0.125rem;
       color: $uds-color-font-dark-error;
@@ -37,7 +36,7 @@ form {
     // border-radius set in component's Bootstrap variable overrides.
     // height set in component's Bootstrap variable overrides.
     // padding set in component's Bootstrap variable overrides.
-    padding-left: 1rem !important;
+    padding-left: $uds-size-spacing-2 !important;
   }
 
   /* Input focus */
@@ -55,7 +54,7 @@ form {
     https://getbootstrap.com/docs/4.0/components/forms/#checkboxes-and-radios-1
     and has us instead managing these ourselves. */
   .form-check {
-    margin: 1rem 0;
+    margin: $uds-size-spacing-2 0;
 
     input[type='radio'],
     input[type='checkbox'] {
@@ -70,7 +69,7 @@ form {
         position: relative;
         display: inline-block;
         cursor: pointer;
-        margin-left: 1rem;
+        margin-left: $uds-size-spacing-2;
 
         // Outer border.
         &::before {
@@ -79,8 +78,8 @@ form {
           display: inline-block;
           left: -2.25rem;
           border: 1px solid $uds-color-base-gray-3;
-          width: 1.5rem;
-          height: 1.5rem;
+          width: $uds-size-spacing-3;
+          height: $uds-size-spacing-3;
           background: white;
         }
         // Inner positioning for checked.
@@ -140,7 +139,7 @@ form {
           bottom: -0.1rem;
         }
         &::after {
-          left: -2rem;
+          left: -$uds-size-spacing-4;
         }
       }
       // Checkbox check.
@@ -149,8 +148,8 @@ form {
           background: transparent;
           // SVG of fa-check
           background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='check' class='svg-inline--fa fa-check fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
-          height: 1rem;
-          width: 1rem;
+          height: $uds-size-spacing-2;
+          width: $uds-size-spacing-2;
         }
       }
     }
@@ -221,8 +220,8 @@ form {
   /* checks and radios */
   small.is-invalid,
   div.is-invalid {
-    margin-left: -1rem;
-    margin-top: 1rem;
+    margin-left: -$uds-size-spacing-2;
+    margin-top: $uds-size-spacing-2;
   }
   /* Error for group follows legend and doesn't need margin adjustment. */
   legend ~ small.is-invalid,
@@ -241,7 +240,7 @@ form {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: $uds-color-font-dark-error;
-      margin-right: 0.5rem;
+      margin-right: $uds-size-spacing-1;
     }
   }
 
@@ -258,8 +257,8 @@ form {
   /* checks and radios */
   small.is-valid,
   div.is-valid {
-    margin-left: -1rem;
-    margin-top: 1rem;
+    margin-left: -$uds-size-spacing-2;
+    margin-top: $uds-size-spacing-2;
   }
   /* Success for group follows legend and doesn't need margin adjustment. */
   legend ~ small.is-valid,
@@ -278,7 +277,7 @@ form {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: $uds-color-font-dark-success;
-      margin-right: 0.5rem;
+      margin-right: $uds-size-spacing-1;
     }
   }
 
@@ -429,7 +428,7 @@ form {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
         color: $uds-color-alerts-error;
-        margin-right: 0.5rem;
+        margin-right: $uds-size-spacing-1;
       }
     }
 
@@ -450,7 +449,7 @@ form {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
         color: $uds-color-base-green;
-        margin-right: 0.5rem;
+        margin-right: $uds-size-spacing-1;
       }
     }
   }
