@@ -90,6 +90,7 @@ const NavIcon = forwardRef(({ children, onFocus, type, ...props }, ref) => {
         {...(onFocus ? { onFocus } : "")}
         ref={ref}
       >
+        {/* Use className here instead of class because FontAwesome React component expects it*/}
         <Icon type={type} className="icon-nav-item" />
         <span class="mobile-only">{children}</span>
       </a>

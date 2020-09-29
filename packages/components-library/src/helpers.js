@@ -48,8 +48,6 @@ const alterLoginUrl = url => {
 
   newUrl = newUrl.replace(`/login`, `/login?callapp=${callbackUrl}`); // set the callapp into the url
 
-  console.log(newUrl, "THE URL");
-
   return newUrl;
 };
 

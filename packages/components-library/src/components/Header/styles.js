@@ -20,8 +20,6 @@ import { navItemStyles } from "../NavItem/styles";
 import {
   navbarStyles,
   navbarContainerStyles,
-  NavbarContainer,
-  NavbarToggler,
   navbarTogglerStyles,
 } from "../Navbar/styles";
 import { Icon } from "../Icons";
@@ -217,8 +215,6 @@ export {
   Header,
   UniversalNav,
   UniversalNavLinks,
-  NavbarContainer,
-  NavbarToggler,
   primaryNavTopPadding,
   BreakpointLg,
   BreakpointXl,

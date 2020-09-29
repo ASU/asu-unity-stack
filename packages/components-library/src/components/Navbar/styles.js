@@ -111,7 +111,6 @@ const Navbar = ({ children, ...props }) => {
   return (
     <div class="navbar">
       <div>{children}</div>
-
     </div>
   );
 };

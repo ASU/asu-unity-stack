@@ -20,14 +20,26 @@ const titleStyles = breakpoint => css`
     font-size: 1rem;
     font-weight: 700;
     padding: 0 2rem 1.5rem 2rem;
+    letter-spacing: -1px;
+    background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
+    background-position: 0%;
+    background-size: 200%;
+    display: inline-block;
+    padding-right: 4px;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    transition-duration: 1s;
+
+    &.active {
+      background-position: -200%;
+    }
 
     > .unit-name {
       display: none;
     }
 
     .unit-name,
-    .subunit-name, &.subunit-name  {
+    .subunit-name,
+    &.subunit-name {
       color: #191919;
     }
 
@@ -35,7 +47,7 @@ const titleStyles = breakpoint => css`
       line-height: 1;
       font-weight: 700;
       padding: 0;
-      margin: 1rem 0 .5rem 0;
+      margin: 1rem 0 0.5rem 0;
 
       > .unit-name {
         font-size: 1rem;
@@ -75,7 +87,7 @@ const Title = forwardRef(
   ({ children, parentOrg, baseUrl, parentOrgUrl, ...props }, ref) => {
     if (parentOrg) {
       return (
-        <div class="title" ref={ref}>
+        <div class={cx("title", props.class)} ref={ref}>
           <a class="unit-name" href={parentOrgUrl}>
             {parentOrg}
           </a>
@@ -86,7 +98,11 @@ const Title = forwardRef(
       );
     }
     return (
-      <a class="title subunit-name" href={baseUrl} ref={ref}>
+      <a
+        class={cx("title", "subunit-name", props.class)}
+        href={baseUrl}
+        ref={ref}
+      >
         {children}
       </a>
     );

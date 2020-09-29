@@ -3,8 +3,6 @@
 import { h, Fragment } from "preact";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
-import { Icon } from "../Icons";
-import { Button } from "../Button";
 import { Heading } from "../Heading";
 import * as S from "./styles";
 
@@ -33,7 +31,6 @@ const NavItem = forwardRef(
           );
 
       case "icon":
-        // Have to use className here because FontAwesome React component expects it
         return (
           <S.NavIcon
             {...props}
