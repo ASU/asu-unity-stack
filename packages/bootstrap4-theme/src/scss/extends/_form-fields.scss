@@ -235,7 +235,7 @@ form {
   .invalid-feedback {
     display: inline-block;
     font-weight: bold;
-    color: $uds-color-base-gray-7;
+    //color: $uds-color-base-gray-7;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
@@ -272,7 +272,7 @@ form {
   .valid-feedback {
     display: inline-block;
     font-weight: bold;
-    color: $uds-color-base-gray-7;
+    //color: $uds-color-base-gray-7;
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
@@ -423,7 +423,7 @@ form {
     }
     .invalid-feedback {
       font-weight: bold;
-      color: $uds-color-base-gray-1;
+      color: $uds-color-alerts-error;
       svg {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
@@ -444,7 +444,7 @@ form {
     }
     .valid-feedback {
       font-weight: bold;
-      color: $uds-color-base-gray-1;
+      color: $uds-color-base-green;
       svg {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
