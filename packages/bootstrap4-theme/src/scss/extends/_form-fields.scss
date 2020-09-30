@@ -170,11 +170,6 @@ form {
     .form-check-input:invalid ~ .form-check-label {
       color: $uds-color-base-gray-7;
     }
-    // Select invalid feedback messages shouldn't have colored text.
-    select ~ small.is-invalid,
-    select ~ div.is-invalid {
-      color: $uds-color-base-gray-7;
-    }
 
     //&.was-validated .form-control:valid {
     .form-control:valid {
@@ -186,11 +181,6 @@ form {
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
-      color: $uds-color-base-gray-7;
-    }
-    // Select valid feedback messages shouldn't have colored text.
-    select ~ small.is-valid,
-    select ~ div.is-valid {
       color: $uds-color-base-gray-7;
     }
   }
@@ -325,14 +315,14 @@ form {
     }
     &.was-validated select ~ small.is-valid,
     &.was-validated select ~ div.is-valid {
-      color: $uds-color-base-gray-1;
+      color: $uds-color-base-green;
     }
     &.was-validated .form-check-input:invalid ~ .form-check-label {
       color: $uds-color-base-gray-1;
     }
     &.was-validated select ~ small.is-invalid,
     &.was-validated select ~ div.is-invalid {
-      color: $uds-color-base-gray-1;
+      color: $uds-color-alerts-error;
     }
     /* TODO Likely we'll find more work to do with client side validation rules
       in order to take advantage of having both valid/invalid markup present.
