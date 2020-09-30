@@ -3,55 +3,52 @@
 import { h } from "preact";
 import * as S from "./styles";
 import { forwardRef, useEffect, useState } from "preact/compat";
+import { checkFirstLoad } from "../../helpers";
 import PropTypes from "prop-types";
 
 /**
  * Title component
  */
-const Title = forwardRef(({children, root, ...props}, ref) => {
-
+const Title = forwardRef(({ children, ...props }, ref) => {
   // state to control animating the title upon first site page load
   const [active, setActive] = useState(false);
+  const baseUrl = props.baseUrl;
 
   /**
    * Upon mounting, check if this is the first page loaded by the user for this site. If it is
    * the first page load, then we set the 'active' state to animate the header with gold highlight.
    */
   useEffect(() => {
+    // If a custom baseUrl is passed in, it will be used to check for first page load
+    let root = baseUrl == "/" ? window.location.hostname : baseUrl;
 
-    const siteRoot = root ? root : window.location.hostname;
+    // If relative baseURL given, append to the hostname for checking first page load
+    if (!root.includes(window.location.hostname) && root.indexOf("/") === 0) {
+      root = window.location.hostname + root;
+    }
 
-    const cookieValue = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('title_loaded'));
-
-    // If the referrer URL does not contain the current site root, then this page
-    // was either loaded after linking from another site, or navigated to directly.
-    // Note: This logic will not work if displaying the
-    // component inside of an iframe, such as in Storybook
-    if (!document.referrer.includes(siteRoot) && !cookieValue) {
+    if (checkFirstLoad({ root })) {
       setActive(true);
-
-      // set 'title_loaded' cookie so that if the inital page load is reloaded, avoids
-      // animating the title a 2nd time.
-      document.cookie = "title_loaded=true;max-age=60*10";
     }
 
   }, []);
 
-  return <S.Title ref={ref} {...props} class={active ? "active" : ""}>{children}</S.Title>;
+  return (
+    <S.Title ref={ref} {...props} class={active ? "active" : ""}>
+      {children}
+    </S.Title>
+  );
 });
 
 Title.propTypes = {
   baseUrl: PropTypes.string,
   parentOrg: PropTypes.string,
   parentOrgUrl: PropTypes.string,
-  root: PropTypes.string // Override the site root for checking first page load. Hostname is used by default.
 };
 
 Title.defaultProps = {
   baseUrl: "/",
-  parentOrgUrl: "/"
+  parentOrgUrl: "/",
 };
 
 export { Title };

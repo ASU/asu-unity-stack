@@ -67,7 +67,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
 
 /** Primary Nav styles and component */
 const navbarStyles = breakpoint => css`
-  .navbar {
+  .navbar-component {
     background-color: #ffffff;
     display: flex;
     width: 100%;
@@ -109,7 +109,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class="navbar">
+    <div class="navbar-component">
       <div>{children}</div>
     </div>
   );

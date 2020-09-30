@@ -22,7 +22,6 @@ import {
   navbarContainerStyles,
   navbarTogglerStyles,
 } from "../Navbar/styles";
-import { Icon } from "../Icons";
 
 const Header = ({ children, breakpoint, ...props }) => {
   return (

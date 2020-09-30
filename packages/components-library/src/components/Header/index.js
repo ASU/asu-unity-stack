@@ -97,11 +97,7 @@ const Header = ({
           : ""
       }
     >
-      <S.UniversalNav
-        open={mobileOpen}
-        ref={universalRef}
-        {...{ searchOpen }}
-      >
+      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -126,7 +122,9 @@ const Header = ({
           <div id="asu-generated-stub" />
         ) : (
           <>
-            <Title {...{ parentOrg, parentOrgUrl, baseUrl}} ref={titleRef}>{title}</Title>
+            <Title {...{ parentOrg, parentOrgUrl, baseUrl }} ref={titleRef}>
+              {title}
+            </Title>
             <Nav
               {...{
                 navTree,
