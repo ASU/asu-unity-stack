@@ -7,12 +7,17 @@ import * as S from "./styles";
 import { Nav } from "../Nav";
 import { UniversalSearch } from "../Search";
 import { Login } from "../Login";
+import { Navbar } from "../Navbar";
+import { Logo } from "../Logo";
+import { Title } from "../Title";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const Header = ({
   navTree,
   title,
-  unit,
+  baseUrl,
+  parentOrg,
+  parentOrgUrl,
   logo,
   loggedIn,
   userName,
@@ -92,11 +97,7 @@ const Header = ({
           : ""
       }
     >
-      <S.UniversalNav
-        open={mobileOpen}
-        domRef={universalRef}
-        {...{ searchOpen }}
-      >
+      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
@@ -109,55 +110,50 @@ const Header = ({
           mobile={width < bpointInt}
         />
       </S.UniversalNav>
-      <S.PrimaryNav>
+      <Navbar
+        onClick={e => {
+          e.preventDefault();
+          toggle();
+        }}
+        mobileOpen={mobileOpen}
+        logo={<Logo {...logo} ref={logoRef} />}
+      >
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
           <>
-            <S.Logo {...logo} domRef={logoRef} />
-            <S.NavbarToggler
-              onClick={e => {
-                e.preventDefault();
-                toggle();
+            <Title {...{ parentOrg, parentOrgUrl, baseUrl }} ref={titleRef}>
+              {title}
+            </Title>
+            <Nav
+              {...{
+                navTree,
+                mobileOpen,
+                height,
+                width,
+                buttons,
+                maxMobileHeight: maxMobileNavHeight,
+                breakpoint,
               }}
-              mobileOpen={mobileOpen}
             />
-            <S.NavbarContainer>
-              <S.Title {...{ title, unit }} ref={titleRef} />
-              <Nav
-                {...{
-                  navTree,
-                  logo,
-                  mobileOpen,
-                  height,
-                  width,
-                  buttons,
-                  maxMobileHeight: maxMobileNavHeight,
-                  breakpoint,
-                }}
-              />
-            </S.NavbarContainer>
           </>
         )}
-      </S.PrimaryNav>
+      </Navbar>
     </S.Header>
   );
 };
 
 Header.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
-  logo: PropTypes.shape({
-    alt: PropTypes.string,
-    src: PropTypes.string,
-    mobileSrc: PropTypes.string,
-    brandLink: PropTypes.string,
-  }),
-  title: PropTypes.string,
-  unit: PropTypes.string,
-  loggedIn: PropTypes.bool,
-  userName: PropTypes.string,
-  loginLink: PropTypes.string,
-  logoutLink: PropTypes.string,
+  logo: PropTypes.shape(Logo.propTypes),
+  title: Title.propTypes.title,
+  parentOrg: Title.propTypes.parentOrg,
+  parentOrgUrl: Title.propTypes.parentOrgUrl,
+  baseUrl: Title.propTypes.baseUrl,
+  loggedIn: Login.propTypes.loggedIn,
+  userName: Login.propTypes.userName,
+  loginLink: Login.propTypes.loginLink,
+  logoutLink: Login.propTypes.logoutLink,
   buttons: PropTypes.arrayOf(PropTypes.object),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
 };
@@ -165,17 +161,7 @@ Header.propTypes = {
 Header.defaultProps = {
   navTree: [],
   dangerouslyGenerateStub: false,
-  logo: {
-    alt: "Arizona State University",
-    src: "https://i.imgur.com/5WtkgkV.png",
-    mobileSrc:
-      "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png",
-  },
   title: "",
-  unit: "",
-  loggedIn: Login.defaultProps.loggedIn,
-  loginLink: Login.defaultProps.loginLink,
-  logoutLink: Login.defaultProps.logoutLink,
   buttons: [],
   breakpoint: "Lg",
 };

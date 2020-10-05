@@ -134,6 +134,10 @@ const Button = forwardRef(
             css`
               color: ${ComponentButtonDarkColor};
               background-color: ${ComponentButtonDarkBackgroundColor};
+
+              :visited:not(.btn) {
+                color: ${ComponentButtonDarkColor};
+              }
             `}
 
         ${light &&
