@@ -1,6 +1,10 @@
 // ASU Design System Form Field styles without Bootstrap variables to override.
 
 form {
+  .form-group {
+    margin: 0 0 $uds-size-spacing-4 0;
+  }
+
   /* Labels */
   label,
   legend {
@@ -53,8 +57,17 @@ form {
     from Bootstrap 4 custom Checkboxes and Radios as described in:
     https://getbootstrap.com/docs/4.0/components/forms/#checkboxes-and-radios-1
     and has us instead managing these ourselves. */
+  // Fieldset has group's margin attached like .field-group, instead of
+  // it being on .form-check.
+  fieldset {
+    margin: 0 0 $uds-size-spacing-4 0;
+
+    .form-check {
+      margin: $uds-size-spacing-2 0;
+    }
+  }
   .form-check {
-    margin: $uds-size-spacing-2 0;
+    margin: 0 0 $uds-size-spacing-4 0;
 
     input[type='radio'],
     input[type='checkbox'] {

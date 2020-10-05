@@ -565,7 +565,7 @@ Should only run and be packaged for storybook preview.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
     <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Checkboxes</legend>
@@ -726,7 +726,7 @@ Should only run and be packaged for storybook preview.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
     <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Checkboxes</legend>
@@ -887,7 +887,7 @@ Should only run and be packaged for storybook preview.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
     <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Checkboxes</legend>
@@ -1048,7 +1048,7 @@ Should only run and be packaged for storybook preview.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1">
     <label class="form-check-label" for="invalidLoneCheckbox">I also accept</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Checkboxes</legend>
@@ -1214,24 +1214,27 @@ Should only run and be packaged for storybook preview.
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    <label class="form-check-label" for="exampleRadios1">
-      Default radio
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-    <label class="form-check-label" for="exampleRadios2">
-      Second default radio
-    </label>
-  </div>
-  <div class="form-check disabled">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-    <label class="form-check-label" for="exampleRadios3">
-      Disabled radio
-    </label>
-  </div>
+  <fieldset>
+    <legend>A Group of Radios</legend>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check disabled">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+      <label class="form-check-label" for="exampleRadios3">
+        Disabled radio
+      </label>
+    </div>
+  </fieldset>
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
@@ -1328,7 +1331,7 @@ styles based on input element type attribute are triggered and displayed.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" aria-required="true" required>
     <label class="form-check-label" for="invalidLoneCheckbox"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>I also accept (required field)</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Valid Checkboxes</legend>
@@ -1504,7 +1507,7 @@ styles based on input element type attribute are triggered and displayed.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" aria-required="true" required>
     <label class="form-check-label" for="invalidLoneCheckbox"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>I also accept (required)</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Valid Checkboxes</legend>
@@ -1683,7 +1686,7 @@ styles based on input element type attribute are triggered and displayed.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" aria-required="true" required>
     <label class="form-check-label" for="invalidLoneCheckbox"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>I also accept (required field)</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Valid Checkboxes</legend>
@@ -1861,7 +1864,7 @@ styles based on input element type attribute are triggered and displayed.
     <input class="form-check-input" type="checkbox" aria-describedby="myInvalidCheckMsg" id="invalidLoneCheckbox" value="option1" aria-required="true" required>
     <label class="form-check-label" for="invalidLoneCheckbox"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>I also accept (required)</label>
     <small id="myInvalidCheckMsg" class="invalid-feedback is-invalid"><span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>Form error message</small>
-  </div
+  </div>
 
   <fieldset>
     <legend>A Group of Valid Checkboxes</legend>
