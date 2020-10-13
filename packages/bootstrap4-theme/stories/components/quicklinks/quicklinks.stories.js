@@ -1,6 +1,7 @@
 export default { title: 'Components/Quick Links' };
 
 export const quickLinks = () => `
+  <style>.dropdown-pinned {position:inherit;}</style>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
