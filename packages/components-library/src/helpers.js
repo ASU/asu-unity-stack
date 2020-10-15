@@ -55,7 +55,7 @@ const alterLoginUrl = url => {
  * Check whether this is the first page load of the site.
  * @param {*} root - The full URL of the site root, used to check against document.referrer
  */
-const checkFirstLoad = ({root}) => {
+const checkFirstLoad = (root) => {
   const siteRoot = root ? root : window.location.hostname;
     // Check if title_loaded cookie is set
     const cookieValue = document.cookie

@@ -217,8 +217,7 @@ const Nav = ({
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
               <DropNav
-                text={navItem.text}
-                target={navItem.target}
+                {...navItem}
                 pIndex={pindex}
                 setFocus={setFocusCallback}
                 ref={item.ref}

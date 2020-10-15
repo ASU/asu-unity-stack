@@ -11,6 +11,7 @@ import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
 
 import { Header } from ".";
 import { Fragment } from "preact/compat";
+import { AnimatedHeaderTitleExample } from "./examples";
 
 export default {
   component: Header,
@@ -115,12 +116,12 @@ export const withMenuColumns = () => (
       )}
       parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       loggedIn={boolean("loggedIn", true)}
-      userName={text("userName", "Colton")}
+      userName={text("userName", "Sparky")}
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
     />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
-/*
-export const withStub = () => <Header dangerouslyGenerateStub={true} />;*/
+
+export const animatedTitle = () => <AnimatedHeaderTitleExample />;
