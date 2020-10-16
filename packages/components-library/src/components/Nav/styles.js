@@ -33,55 +33,79 @@ const navListStyles = breakpoint => css`
       border: 0;
       margin-right: 0.5rem;
 
-      :after {
-        transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-        content: "";
-        display: block;
-        height: 0.5rem;
-        background-color: #ffc627;
-        position: relative;
-        top: inherit;
-        bottom: 0;
-        width: 0;
-        margin-left: 0;
-      }
-
-      &.dropdown-open:after,
-      &.active:after,
-      &.dropdown-open:after {
-        width: 100%;
-        width: calc(100% + 16px);
-      }
-
-      @media (min-width: ${breakpoint}) {
-        position: static;
-
-        :hover:after,
-        &.dropdown-open:after,
-        &.active:after {
+      &.active,
+      &.dropdown-open, :hover {
+        > a:after {
           width: 100%;
-          margin-left: 0;
         }
       }
 
-      @media (max-width: ${breakpoint}) {
+      > a {
         :after {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           content: "";
           display: block;
           height: 0.5rem;
           background-color: #ffc627;
-          position: absolute;
-          top: 3rem;
-          bottom: inherit;
+          position: relative;
+          bottom: 0;
           width: 0;
-          margin-left: 2rem;
+          margin-left: 0;
+          top: .5rem;
+        }
+      }
+
+      @media (min-width: ${breakpoint}) {
+        position: static;
+
+        &.dropdown-open,
+        &.active {
+          > a:after {
+            width: calc(100% + 24px);
+            margin-left: 0;
+          }
+        }
+
+        > a {
+
+          box-sizing: content-box;
+          :hover {
+            :after {
+              width: calc(100% + 24px);
+              margin-left: 0;
+            }
+          }
+
+          :after {
+            transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+            content: '';
+            display: block;
+            height: .5rem;
+            background-color: #ffc627;
+            position: relative;
+            top: .5rem;
+            bottom: 0;
+            width: 0;
+            left: -.75rem;
+            margin-left: 0;
+          }
+        }
+      }
+
+      @media (max-width: ${breakpoint}) {
+
+        > a:after {
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+          content: "";
+          display: block;
+          height: 0.5rem;
+          background-color: #ffc627;
         }
       }
 
       > a {
         display: block;
-        padding: 0.5rem 0.75rem 0.25rem 0.75rem;
+        padding: 0.5rem 0.75rem;
         color: #191919;
 
         svg.fa-chevron-down {
@@ -116,7 +140,7 @@ const navListStyles = breakpoint => css`
         margin-right: 0;
 
         > a {
-          padding: 1rem 2rem;
+          padding: 1rem 1rem .5rem 1rem;
           justify-content: space-between;
           display: block;
           border-bottom: 1px solid #cccccc;
@@ -250,7 +274,6 @@ const dropdownContainerStyles = breakpoint => css`
 
     @media (min-width: ${breakpoint}) {
       position: fixed;
-      margin-top: 0.5rem;
 
       &:not(.mega) .menu-column {
         min-width: 16rem;

@@ -127,7 +127,7 @@ yarn stop # stop the testing server
  - Puppeteer (https://pptr.dev/)
 
 
-## ❯ How to test the private package registry:
+## ❯ How to use the private package registry:
 
 1. Go here and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
 
@@ -151,10 +151,10 @@ Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins wh
 
 After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
 
-```http://unity-balance-f2e2852aae9ea285.elb.us-west-2.amazonaws.com:3000/```
+```https://unity.web.asu.edu/kitchen-sink/```
 
 ## ❯ Publishing packages:
-This repo uses semantic-release to automatically release new packages upon merging to the 'dev' branch.
+This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
 
 In order to trigger a release, commits must be structured properly in order for semantic release to read commits, generate changelogs and publish packages.
 
