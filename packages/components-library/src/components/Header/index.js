@@ -25,6 +25,7 @@ const Header = ({
   logoutLink,
   buttons,
   breakpoint,
+  animateTitle,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -88,6 +89,8 @@ const Header = ({
     }
   }, [height, width, mobileOpen]);
 
+  const animate = animateTitle === true;
+
   return (
     <S.Header
       breakpoint={bpoint}
@@ -122,7 +125,10 @@ const Header = ({
           <div id="asu-generated-stub" />
         ) : (
           <>
-            <Title {...{ parentOrg, parentOrgUrl, baseUrl }} ref={titleRef}>
+            <Title
+              {...{ parentOrg, parentOrgUrl, baseUrl, animate }}
+              ref={titleRef}
+            >
               {title}
             </Title>
             <Nav
@@ -156,6 +162,7 @@ Header.propTypes = {
   logoutLink: Login.propTypes.logoutLink,
   buttons: PropTypes.arrayOf(PropTypes.object),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
+  animateTitle: PropTypes.bool,
 };
 
 Header.defaultProps = {

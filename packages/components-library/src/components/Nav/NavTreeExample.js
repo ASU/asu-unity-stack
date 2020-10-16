@@ -62,32 +62,26 @@ const BasicNavTree = [
         {
           classes: "border first",
           href: "https://www.asu.edu/map/",
-
           text: "Map",
         },
         {
           href: "https://campus.asu.edu/tempe/",
-
           text: "Tempe",
         },
         {
           href: "https://campus.asu.edu/west/",
-
           text: "West",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
-
           text: "Polytechnic",
         },
         {
           href: "https://asuonline.asu.edu/",
-
           text: "Online and Extended",
         },
         {
           href: "https://havasu.asu.edu/",
-
           text: "Mauris viverra, sem nec",
         }
       ],
@@ -597,6 +591,16 @@ const NavTreeMega = [
   {
     text: "Mega Menu (5 Col)",
     href: "#",
+    buttons: [
+      {
+        text: "CTA One",
+        href: "https://asu.edu"
+      },
+      {
+        text: "CTA Two",
+        href: "https://asu.edu"
+      }
+    ],
     items: [
       [
         {

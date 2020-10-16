@@ -203,6 +203,7 @@ const dropdownContainerStyles = breakpoint => css`
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     overflow: hidden;
     margin: -1px 0 0 0;
+    flex-direction: column;
 
     > div {
       width: 100%;
@@ -277,6 +278,7 @@ const DropdownContainer = props => {
   return (
     <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
       <div>{props.children}</div>
+      {props.buttons ? <div>{props.buttons}</div> : ""}
     </div>
   );
 };

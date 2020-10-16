@@ -19,13 +19,13 @@ const titleStyles = breakpoint => css`
     line-height: 1;
     font-size: 1rem;
     font-weight: 700;
-    padding: 0 2rem 1.5rem 2rem;
+    margin: 0 2rem 1.5rem 2rem;
     letter-spacing: -1px;
     background-image: linear-gradient(to right, transparent 50%, #ffc627 50%);
-    background-position: 0%;
+    background-position: 0 0;
     background-size: 200%;
     display: inline-block;
-    padding-right: 4px;
+    /*padding-right: 4px;*/
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     transition-duration: 1s;
 
@@ -109,4 +109,24 @@ const Title = forwardRef(
   }
 );
 
-export { titleStyles, Title };
+const TitleStyled = props => {
+  const breakpoint = props.breakpoint ? props.breakpoint : BreakpointLg;
+
+  return (
+    <div
+      class={css`
+        ${titleStyles(breakpoint)}
+        display: flex;
+        flex-direction: column;
+
+        button {
+          max-width: 200px;
+        }
+      `}
+    >
+      {props.children}
+    </div>
+  );
+};
+
+export { titleStyles, Title, TitleStyled, BreakpointLg };
