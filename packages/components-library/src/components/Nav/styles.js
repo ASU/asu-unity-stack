@@ -22,6 +22,7 @@ const navListStyles = breakpoint => css`
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: flex-end;
 
     a {
       text-decoration: none;
@@ -67,6 +68,9 @@ const navListStyles = breakpoint => css`
         }
 
         > a {
+
+          line-height: 1rem;
+
 
           box-sizing: content-box;
           :hover {

@@ -21,7 +21,7 @@ const navbarTogglerStyles = breakpoint => css`
     border: 0;
     margin-right: 2rem;
     cursor: pointer;
-    align-self-center;
+    align-self: flex-start;
 
     @media (min-width: ${breakpoint}) {
       display: none;
