@@ -4,6 +4,15 @@ a.page-link:visited {
   text-decoration: $uds-component-pager-text-decoration;
   font-weight: $uds-component-pager-font-weight;
   color: $uds-component-pager-color;
+  transition: .1s ease-out;
+  font-size:14px;
+}
+@include media-breakpoint-up(md) {
+
+  a.page-link {
+    font-size:16px;
+  }
+
 }
 a.page-link:hover {
   color: $uds-component-pager-color;

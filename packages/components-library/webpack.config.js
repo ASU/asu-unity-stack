@@ -1,38 +1,13 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
-const TerserPlugin = require('terser-webpack-plugin')
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = [];
 
-module.exports.push({
-  context: path.join(__dirname, "src"),
-  mode: "production",
+
+const shared = {
   entry: {
-    "asu-unity-web-components": "./index.js",
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "AsuWeb",
-    umdNamedDefine: true,
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
-          chunks: "initial",
-        },
-      },
-    },
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      terserOptions: {
-        ecma: 6,
-      },
-    })],
+    core: "./index.js"
   },
   module: {
     rules: [
@@ -42,9 +17,9 @@ module.exports.push({
         use: [
           {
             loader: "babel-loader",
-            // options: {
-            //   rootMode: "upward",
-            // },
+            options: {
+              presets: ['preact'],
+            }
           },
         ],
       },
@@ -59,20 +34,66 @@ module.exports.push({
       // Must be below test-utils
     },
   }
+}
+
+// development bundle config
+module.exports.push({
+  ...shared,
+  context: path.join(__dirname, "src"),
+  mode: "development",
+
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].development.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
 });
 
-// SSR bundle config
+// production bundle
+module.exports.push({
+  ...shared,
+  context: path.join(__dirname, "src"),
+  mode: "production",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].production.js",
+    libraryTarget: "umd",
+    library: "AsuWeb[name]",
+    umdNamedDefine: true,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      },
+    },
+    minimizer: [new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
+    })],
+  },
+});
+
+// SSR bundle config - should be used server-side only
 module.exports.push(
   {
     mode: "production",
     context: path.join(__dirname, "src"),
     target: 'node',
     entry: {
-      "web-components": "./ssr.js",
+      code: "./ssr.js",
     },
     output: {
       path: path.join(__dirname, "dist"),
-      filename: "web-components.ssr.js",
+      filename: "[name].ssr.js",
       libraryTarget: "umd",
       globalObject: "this",
     },

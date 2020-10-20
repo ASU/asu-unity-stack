@@ -2,7 +2,7 @@
   "component": {
     "pager": {
       "color": {
-        "value": "{color.base.black.value}"
+        "value": "{color.base.gray.7.value}"
       },
       "border-width": {
         "value": "0"

@@ -1,0 +1,409 @@
+
+// Do not edit directly
+// Generated on Thu, 10 Sep 2020 21:41:59 GMT
+
+$uds-asset-font-icon-name: "FontAwesome";
+$uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
+$uds-asset-font-icon-eot: "assets/fontawesome/webfonts/fa-regular-400.eot";
+$uds-asset-font-icon-woff: "assets/fontawesome/webfonts/fa-regular-400.woff";
+$uds-asset-font-icon-woff-2: "assets/fontawesome/webfonts/fa-regular-400.woff2";
+$uds-asset-font-icon-svg: "assets/fontawesome/sprites/regular.svg";
+$uds-breakpoint-xs: 0; // Mapped to BS4, grid-breakpoints.xs
+$uds-breakpoint-sm: 576px; // Mapped to BS4, grid-breakpoints.sm
+$uds-breakpoint-md: 768px; // Mapped to BS4, grid-breakpoints.md
+$uds-breakpoint-lg: 992px; // Mapped to BS4, grid-breakpoints.lg
+$uds-breakpoint-xl: 1260px; // Mapped to BS4, grid-breakpoints.xl
+$uds-breakpoint-xxl: 1400px; // Not in use within ASU BS4
+$uds-breakpoint-xxxl: 1920px; // Not in use within ASU BS4
+$uds-color-alerts-error: #cc2f2f; // Error
+$uds-color-alerts-warning: #ff7f32; // Warning
+$uds-color-alerts-info: #00a3e0; // Information
+$uds-color-alerts-success: #78be20; // Success
+$uds-color-background-white: #ffffff; // Background - White
+$uds-color-background-gray: #e8e8e8; // Background - Gray
+$uds-color-background-dark: #191919; // Background - Dark
+$uds-color-background-success: #e9f5db; // Background - Success
+$uds-color-background-error: #f7dddd; // Background - Error
+$uds-color-background-warning: #ffeade; // Background - Warning
+$uds-color-background-info: #d6f0fa; // Background - Information
+$uds-color-background-overlay: rgba(25, 25, 25, 0); // Background - Modal overlay
+$uds-color-base-gold: #ffc627; // ASU Gold
+$uds-color-base-maroon: #8c1d40; // ASU Maroon
+$uds-color-base-white: #ffffff; // White
+$uds-color-base-green: #78be20; // ASU Green
+$uds-color-base-orange: #ff7f32; // ASU Orange
+$uds-color-base-blue: #00a3e0; // ASU Blue
+$uds-color-base-bluefocus: #00baff; // A11y Focus Blue - used for highlighting the page element with current focus
+$uds-color-base-darkgold: #7f6227; // Visited state of ASU Gold
+$uds-color-base-darkmaroon: #440e22; // Visited state of ASU Maroon
+$uds-color-base-gray-1: #fafafa;
+$uds-color-base-gray-2: #e8e8e8;
+$uds-color-base-gray-3: #d0d0d0;
+$uds-color-base-gray-4: #bfbfbf;
+$uds-color-base-gray-5: #747474;
+$uds-color-base-gray-6: #484848;
+$uds-color-base-gray-7: #191919; // Base font color and default black level
+$uds-color-border-light: #e8e8e8; // Border - Light
+$uds-color-border-base: #d0d0d0; // Border - Base
+$uds-color-border-dark: #bfbfbf; // Border - Dark
+$uds-color-border-focus: #00baff; // Border - Used for highlighting the page element with current focus
+$uds-color-border-error: #cc2f2f; // Border - Error
+$uds-color-border-warning: #ff7f32; // Border - Warning
+$uds-color-border-success: #78be20; // Border - Success
+$uds-color-border-info: #00a3e0; // Border - Information
+$uds-color-brand-gold: #ffc627; // ASU Gold brand color
+$uds-color-brand-maroon: #8c1d40; // ASU Maroon brand color
+$uds-color-brand-dark: #191919; // ASU Dark brand color - Near Black
+$uds-color-brand-light: #bfbfbf; // ASU Light brand color - Gray
+$uds-color-font-dark-base: #191919; // Default text color on light background
+$uds-color-font-dark-link: #8c1d40; // Link text on light background
+$uds-color-font-dark-hover: #8c1d40; // Hover link text on light background
+$uds-color-font-dark-active: #8c1d40; // Active link text on light background
+$uds-color-font-dark-visited: #440e22; // Visited link text on light background
+$uds-color-font-dark-error: #b72a2a; // Error text on light background
+$uds-color-font-dark-warning: #bd4800; // Warning text on light background
+$uds-color-font-dark-success: #446d12; // Success text on light background
+$uds-color-font-dark-info: #126877; // Information - text on light background
+$uds-color-font-light-base: #fafafa; // Default text on dark background
+$uds-color-font-light-link: #ffc627; // Link text on dark background
+$uds-color-font-light-hover: #ffc627; // Hover link text on dark background
+$uds-color-font-light-active: #ffc627; // Active link text on dark background
+$uds-color-font-light-visited: #7f6227; // Visited link text on dark background
+$uds-color-font-light-error: #ff7b7d; // Error text on dark background
+$uds-color-font-light-warning: #ff8034; // Warning text on dark background
+$uds-color-font-light-success: #78be20; // Success text on dark background
+$uds-color-font-light-info: #00b0f3; // Information text on dark background
+$uds-color-divider-darker: #1e1e1e; // Footer accent - darker
+$uds-color-divider-lighter: #393939; // Footer accent - lighter
+$uds-font-family-base: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+$uds-font-family-icons: FontAwesome;
+$uds-font-weight-lighter: 100;
+$uds-font-weight-light: 300;
+$uds-font-weight-normal: 400;
+$uds-font-weight-bold: 700;
+$uds-font-weight-bolder: 900;
+$uds-font-weight-base: 400;
+$uds-grid-container-max-width-sm: 540px; // BS4 default value
+$uds-grid-container-max-width-md: 768px; // BS4 default value
+$uds-grid-container-max-width-lg: 992px; // BS4 default value
+$uds-grid-container-max-width-xl: 1224px; // 1200px max + 12px gutter on either side.
+$uds-grid-column-count: 12; // BS4 default value
+$uds-grid-gutter-width: 24px; // Decreased from default BS4 value of 30px
+$uds-size-breakpoints-small: 34rem;
+$uds-size-breakpoints-medium: 60rem;
+$uds-size-breakpoints-large: 75rem;
+$uds-size-font-tiny: 0.75rem;
+$uds-size-font-small: 0.875rem;
+$uds-size-font-medium: 1rem;
+$uds-size-font-large: 1.25rem;
+$uds-size-font-xl: 1.5rem;
+$uds-size-font-xxl: 2rem;
+$uds-size-font-xxxl: 3rem;
+$uds-size-font-base: 1rem;
+$uds-size-icon-small: 1.5rem;
+$uds-size-icon-base: 2rem;
+$uds-size-icon-large: 2.5rem;
+$uds-size-icon-xl: 3rem;
+$uds-size-icon-xxl: 5rem;
+$uds-size-spacing-0: 0rem;
+$uds-size-spacing-1: 0.5rem;
+$uds-size-spacing-2: 1rem;
+$uds-size-spacing-3: 1.5rem;
+$uds-size-spacing-4: 2rem;
+$uds-size-spacing-5: 2.5rem;
+$uds-size-spacing-6: 3rem;
+$uds-size-spacing-7: 3.5rem;
+$uds-size-spacing-8: 4rem;
+$uds-size-spacing-9: 4.5rem;
+$uds-size-spacing-10: 5rem;
+$uds-size-spacing-12: 6rem;
+$uds-size-spacing-14: 7rem;
+$uds-size-spacing-16: 8rem;
+$uds-size-spacing-32: 16rem;
+$uds-size-spacing-64: 32rem;
+$uds-size-spacing-half: 0.25rem;
+$uds-size-spacing-base: 1rem;
+$uds-weight-font-regular: 400;
+$uds-weight-font-bold: 700;
+$uds-time-transition-short: 0.20s;
+$uds-time-transition-base: 0.40s;
+$uds-time-transition-long: 0.60s;
+$uds-time-transition-xl: 1.00s;
+$uds-time-delay-short: 0.05s;
+$uds-time-delay-base: 0.10s;
+$uds-time-delay-long: 0.20s;
+$uds-time-duration-short: 2.00s;
+$uds-time-duration-base: 4.00s;
+$uds-time-duration-long: 6.00s;
+$uds-component-breadcrumb-font-size: 0.875rem;
+$uds-component-breadcrumb-padding-y: .75rem; // Magic number
+$uds-component-breadcrumb-padding-x: 1rem;
+$uds-component-breadcrumb-item-padding: 0.5rem;
+$uds-component-breadcrumb-margin-bottom: 1rem;
+$uds-component-breadcrumb-bg: transparent;
+$uds-component-breadcrumb-divider-color: #bfbfbf;
+$uds-component-breadcrumb-active-color: #191919;
+$uds-component-breadcrumb-divider: quote('/');
+$uds-component-breadcrumb-border-radius-none: none;
+$uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-padding-left-px: 30px; // Magic number.
+$uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-first-of-type-padding-left: 0rem;
+$uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-left: 0.5rem;
+$uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-right: 0.5rem;
+$uds-component-button-background-origin: padding-box;
+$uds-component-button-background-position: 0 0;
+$uds-component-button-background-repeat: no-repeat;
+$uds-component-button-border-radius: 400rem;
+$uds-component-button-display: block;
+$uds-component-button-font-weight: bold;
+$uds-component-button-text-decoration: none;
+$uds-component-button-line-height: 1rem;
+$uds-component-button-max-width: 17.5rem;
+$uds-component-button-hover-state-transform: scale(1.1);
+$uds-component-button-active-state-transform: scale(1);
+$uds-component-button-padding: 1rem 2rem;
+$uds-component-button-padding-y: 1rem;
+$uds-component-button-padding-x: 2rem;
+$uds-component-button-padding-y-medium: 0.5rem;
+$uds-component-button-padding-x-medium: 1rem;
+$uds-component-button-padding-x-small: .75rem; // Magic number: 12px not a multiple of 8.
+$uds-component-button-padding-y-small: 0.25rem;
+$uds-component-button-text-align: center;
+$uds-component-button-transition: .03s ease-in-out;
+$uds-component-button-disabled-opacity: 50%;
+$uds-component-button-badge-background-color: #bfbfbf;
+$uds-component-button-badge-border-radius: 400rem;
+$uds-component-button-badge-font-weight: normal;
+$uds-component-button-badge-height: 1.375rem; // Magic number: 22px not a multiple of 8
+$uds-component-button-close-height: 2rem;
+$uds-component-button-close-opacity: 50%;
+$uds-component-button-close-width: 2rem;
+$uds-component-button-close-disabled-opacity: 100%;
+$uds-component-button-close-white-background-color: #ffffff;
+$uds-component-button-close-gray-background-color: #bfbfbf;
+$uds-component-button-carousel-position-height: 1rem;
+$uds-component-button-carousel-position-width: 1rem;
+$uds-component-button-carousel-position-inactive-background-color: #bfbfbf;
+$uds-component-button-carousel-position-inactive-opacity: 25%;
+$uds-component-button-carousel-position-black-background-color: #191919;
+$uds-component-button-carousel-position-white-background-color: #ffffff;
+$uds-component-button-carousel-slider-disabled-opacity: 50%;
+$uds-component-button-carousel-slider-light-background-color: #bfbfbf;
+$uds-component-button-carousel-slider-white-background-color: #ffffff;
+$uds-component-button-default-font-size: 1rem;
+$uds-component-button-small-font-size: 0.75rem;
+$uds-component-button-small-height: 1.375rem; // Magic number: 22px not factor of 8
+$uds-component-button-small-min-width: 4rem;
+$uds-component-button-medium-font-size: 0.875rem;
+$uds-component-button-medium-height: 2rem;
+$uds-component-button-medium-min-width: 5rem;
+$uds-component-button-large-font-size: 2rem;
+$uds-component-button-large-height: 3rem; // XD contained a magic number. 49px not factor of 8, not an even ratio for REMs
+$uds-component-button-large-min-width: 8rem;
+$uds-component-button-gold-background-color: #ffc627;
+$uds-component-button-gold-color: #191919;
+$uds-component-button-maroon-background-color: #8c1d40;
+$uds-component-button-maroon-color: #fafafa;
+$uds-component-button-dark-background-color: #191919;
+$uds-component-button-dark-color: #fafafa;
+$uds-component-button-light-background-color: #bfbfbf;
+$uds-component-button-light-color: #191919;
+$uds-component-card-basic-font-weight: normal;
+$uds-component-card-basic-height-percent: 100%;
+$uds-component-card-basic-display: flex;
+$uds-component-card-basic-flex-direction: column;
+$uds-component-card-basic-hover-transform: scale(1.05);
+$uds-component-card-basic-hover-box-shadow: 0px 8px 16px rgba(25,25,25,0.2);
+$uds-component-card-basic-hover-cursor: pointer;
+$uds-component-card-basic-active-transform: scale(1);
+$uds-component-card-basic-image-top-width-percent: 100%;
+$uds-component-card-basic-image-top-height: 12.5rem;
+$uds-component-card-basic-image-top-height-sm: 10rem;
+$uds-component-card-basic-image-top-height-lg: 15rem;
+$uds-component-card-basic-image-top-object-fit: cover;
+$uds-component-card-basic-icon-top-width: 2rem;
+$uds-component-card-basic-icon-top-height: 2rem;
+$uds-component-card-basic-icon-top-margin: 2rem 2rem 0 2rem;
+$uds-component-card-basic-icon-top-margin-centered: 2rem auto 0 auto;
+$uds-component-card-basic-header-padding: 2rem;
+$uds-component-card-basic-header-padding-sm: 1.5rem;
+$uds-component-card-basic-header-text-align: left;
+$uds-component-card-basic-header-text-align-centered: center;
+$uds-component-card-basic-title-link-color: #191919;
+$uds-component-card-basic-title-link-text-decoration: none;
+$uds-component-card-basic-title-link-text-decoration-hover: underline;
+$uds-component-card-basic-body-padding: 0 2rem 2rem 2rem;
+$uds-component-card-basic-body-padding-sm: 0 1.5rem 1.5rem 1.5rem;
+$uds-component-card-basic-button-padding: 0 2rem 2rem 2rem;
+$uds-component-card-basic-button-padding-sm: 0 1.5rem 1.5rem 1.5rem;
+$uds-component-card-basic-button-width-percent: 100%;
+$uds-component-card-basic-button-margin-top: auto;
+$uds-component-card-basic-button-align-self: flex-end;
+$uds-component-card-basic-footer-align-self: flex-end;
+$uds-component-card-basic-footer-link-padding: 1rem 2rem 1rem 2rem;
+$uds-component-card-basic-footer-link-padding-sm: 1rem 1rem 1rem 1rem;
+$uds-component-card-basic-footer-link-border-top: 1px solid rgba(0, 0, 0, 0.125);
+$uds-component-card-degree-title-underline-width: 2rem;
+$uds-component-card-degree-title-underline-height: 0.25rem;
+$uds-component-card-degree-title-underline-content: '';
+$uds-component-card-degree-title-underline-display: block;
+$uds-component-card-degree-title-underline-color: #ffc627;
+$uds-component-card-degree-title-underline-margin-top: 1rem;
+$uds-component-card-story-body-margin: 0 2rem 0 2rem;
+$uds-component-card-story-body-margin-sm: 0 1rem 0 1rem;
+$uds-component-card-story-background-color: #ffffff;
+$uds-component-header-breakpoints-mobile: 60rem;
+$uds-component-header-line-height: 1.5rem;
+$uds-component-heading-font-family: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+$uds-component-heading-font-weight: 700;
+$uds-component-heading-text-align: left;
+$uds-component-heading-opacity: 1;
+$uds-component-heading-margin: 1rem;
+$uds-component-heading-line-height-formula: calc(100% + .12em);
+$uds-component-heading-highlight-box-shadow-large-first-offset-x: -0.15em;
+$uds-component-heading-highlight-box-shadow-large-first-offset-y: 0;
+$uds-component-heading-highlight-box-shadow-large-first-blur-radius: 0;
+$uds-component-heading-highlight-box-shadow-large-second-offset-x: 0.15em;
+$uds-component-heading-highlight-box-shadow-large-second-offset-y: 0;
+$uds-component-heading-highlight-box-shadow-large-second-blur-radius: 0;
+$uds-component-heading-highlight-box-shadow-small-first-offset-x: -0.15em;
+$uds-component-heading-highlight-box-shadow-small-first-offset-y: 0;
+$uds-component-heading-highlight-box-shadow-small-first-blur-radius: 0;
+$uds-component-heading-highlight-box-shadow-small-second-offset-x: 0.15em;
+$uds-component-heading-highlight-box-shadow-small-second-offset-y: 0;
+$uds-component-heading-highlight-box-shadow-small-second-blur-radius: 0;
+$uds-component-heading-highlight-gold-bg-color: #ffc627;
+$uds-component-heading-highlight-gold-text-color: #191919;
+$uds-component-heading-highlight-black-bg-color: #191919;
+$uds-component-heading-highlight-black-text-color: #fafafa;
+$uds-component-heading-highlight-white-bg-color: #ffffff;
+$uds-component-heading-highlight-white-text-color: #191919;
+$uds-component-heading-one-font-size: 4rem;
+$uds-component-heading-one-letter-spacing: -0.035em;
+$uds-component-heading-one-article-font-size: 3rem;
+$uds-component-heading-one-mobile-font-size: 2.25rem;
+$uds-component-heading-two-font-size: 2.5rem;
+$uds-component-heading-two-letter-spacing: -0.035em;
+$uds-component-heading-two-mobile-font-size: 2rem;
+$uds-component-heading-two-mobile-letter-spacing: -0.035em;
+$uds-component-heading-three-font-size: 1.5rem;
+$uds-component-heading-three-letter-spacing: -0.035em;
+$uds-component-heading-four-font-size: 1.25rem;
+$uds-component-heading-four-letter-spacing: -0.025em;
+$uds-component-heading-five-font-size: 1rem;
+$uds-component-heading-five-letter-spacing: -0.015em;
+$uds-component-heroes-container-md-and-lg-width-percent: 100%;
+$uds-component-heroes-container-md-and-lg-uds-hero-text-line-height: 2rem;
+$uds-component-heroes-uds-hero-background-size: cover;
+$uds-component-heroes-uds-hero-background-position: top;
+$uds-component-heroes-uds-hero-width-percent: 100%;
+$uds-component-heroes-uds-hero-height: 42.75rem; // Calculates to 684px
+$uds-component-heroes-uds-hero-display: flex;
+$uds-component-heroes-uds-hero-max-width: 1920px; // 1920px
+$uds-component-heroes-uds-hero-uds-hero-container-width-px: 800px; // Magic number.
+$uds-component-heroes-uds-hero-uds-hero-container-display: flex;
+$uds-component-heroes-uds-hero-uds-hero-container-flex-direction: column;
+$uds-component-heroes-uds-hero-uds-hero-container-align-items: flex-start;
+$uds-component-heroes-uds-hero-uds-hero-container-margin: auto auto 2rem auto;
+$uds-component-heroes-uds-hero-uds-hero-container-h-1-margin-left: 0rem;
+$uds-component-heroes-uds-hero-uds-hero-container-uds-hero-text-margin-left: 0rem;
+$uds-component-heroes-uds-hero-uds-hero-container-p-color: #ffffff;
+$uds-component-heroes-uds-hero-uds-hero-container-p-font-size: 1.5rem;
+$uds-component-heroes-uds-hero-uds-hero-container-p-margin-bottom: 1.75rem; // Magic number.
+$uds-component-heroes-uds-hero-uds-hero-sm-height: 16rem; // Computes to 256px
+$uds-component-heroes-uds-hero-uds-hero-sm-container-uds-hero-container-width-percent: 100%;
+$uds-component-heroes-uds-hero-uds-hero-md-height: 32rem; // Computes to 512px
+$uds-component-heroes-uds-hero-uds-hero-lg-height: 42.75rem; // Magic number. Computes to 684px
+$uds-component-heroes-media-uds-hero-uds-hero-container-media-breakpoint: 576px; // 576px
+$uds-component-heroes-media-uds-hero-uds-hero-container-media-margin-bottom: -2rem;
+$uds-component-heroes-media-uds-hero-uds-hero-container-media-h-1-max-width-percent: 100%;
+$uds-component-heroes-media-uds-hero-uds-hero-container-media-p-display: none;
+$uds-component-heroes-media-uds-hero-uds-hero-sm-breakpoint: 576px; // 576px
+$uds-component-heroes-media-uds-hero-uds-hero-sm-padding-left: 1.5rem;
+$uds-component-heroes-media-uds-hero-uds-hero-sm-padding-bottom: 2rem;
+$uds-component-heroes-media-uds-hero-uds-hero-lg-breakpoint: 1400px; // 1400px
+$uds-component-heroes-media-uds-hero-uds-hero-lg-height: 32rem; // Calculates to 512px
+$uds-component-list-spacing-padding: 3rem 5rem 3rem 2rem;
+$uds-component-list-spacing-list-style: none;
+$uds-component-list-spacing-li-max-width: 75rem;
+$uds-component-list-spacing-li-margin-bottom: 1rem;
+$uds-component-list-spacing-li-last-of-type-margin-bottom: 0rem;
+$uds-component-list-ul-styles-content-bullet: \2022 ;
+$uds-component-list-ul-styles-content-bullet-empty: \25E6 ;
+$uds-component-list-ul-styles-font-size: 2rem;
+$uds-component-list-ul-styles-vertical-align: middle;
+$uds-component-list-ul-styles-line-height: 1.5rem;
+$uds-component-list-ul-styles-padding-right: 1.25rem; // Magic number.
+$uds-component-list-ul-styles-margin-left: -2rem;
+$uds-component-list-ul-styles-sub-list-padding: 1rem 1.5rem 0rem;
+$uds-component-list-maroon-list-color: #8c1d40;
+$uds-component-list-darkmode-margin-left: 0rem;
+$uds-component-list-darkmode-margin-bottom: 0rem;
+$uds-component-list-darkmode-background-color: #191919;
+$uds-component-list-darkmode-color: #e8e8e8;
+$uds-component-list-darkmode-li-before-color: #e8e8e8;
+$uds-component-list-darkmode-gold-color: #ffc627;
+$uds-component-list-darkmode-steplist-background-color: #e8e8e8;
+$uds-component-list-darkmode-steplist-color: #191919;
+$uds-component-list-smokemode-margin-left: 0rem;
+$uds-component-list-smokemode-margin-bottom: 0rem;
+$uds-component-list-smokemode-background-color: #e8e8e8;
+$uds-component-list-icon-list-margin-left: 0rem;
+$uds-component-list-icon-list-margin-bottom: 0rem;
+$uds-component-list-icon-list-padding: 3rem 5rem;
+$uds-component-list-icon-list-icon-left: -2.5rem;
+$uds-component-list-icon-list-li-before-content: none;
+$uds-component-list-icon-list-li-before-font-size: 2rem;
+$uds-component-list-icon-list-li-before-vertical-align: middle;
+$uds-component-list-icon-list-li-before-line-height: 1.5rem;
+$uds-component-list-icon-list-li-before-padding-right: 1rem;
+$uds-component-list-icon-list-li-before-margin-left: -1.5rem;
+$uds-component-list-icon-list-li-maroon-icon: #8c1d40;
+$uds-component-list-ol-styles-nested-ol-padding: 1rem 1.5rem 0rem;
+$uds-component-list-ol-styles-li-before-line-height: 1.5rem;
+$uds-component-list-ol-styles-li-before-padding-right: 1rem;
+$uds-component-list-ol-styles-li-before-margin-left: -1.9rem; // Magic number: Required to get ol margins with text wrap correct.
+$uds-component-list-ol-styles-li-nth-of-type-9-margin-left: -2.4rem; // Magic number: Required to get ol margins with text wrap correct.
+$uds-component-list-ol-styles-li-nth-of-type-99-margin-left: -2.9rem; // Magic number: Required to get ol margins with text wrap correct.
+$uds-component-list-ol-styles-steplist-styles-padding-left: 1.5rem;
+$uds-component-list-ol-styles-steplist-styles-li-padding-bottom: 2rem;
+$uds-component-list-ol-styles-steplist-styles-li-margin-bottom: 3rem;
+$uds-component-list-ol-styles-steplist-styles-li-border-bottom: 1px solid #bfbfbf;
+$uds-component-list-ol-styles-steplist-styles-li-font-weight: bold;
+$uds-component-list-ol-styles-steplist-styles-li-span-padding-left: 0; // Text alignment below headline.
+$uds-component-list-ol-styles-steplist-styles-li-span-display: block;
+$uds-component-list-ol-styles-steplist-styles-li-span-margin-top: 1rem;
+$uds-component-list-ol-styles-steplist-styles-li-span-font-weight: normal;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-border-radius: 50rem;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-background-color: #191919;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-color: #fafafa;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-padding: 0.5rem 0.8rem; // Magic number: Following is more true to XD steplist circle sizing but look less rounded: padding: 0.4rem 0.6rem
+$uds-component-list-ol-styles-steplist-styles-li-li-before-margin-right: 2rem;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-margin-left: -4.5rem;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-font-size: 1.25rem;
+$uds-component-list-ol-styles-steplist-styles-li-li-before-font-weight: bold;
+$uds-component-list-ol-styles-steplist-styles-gold-background-color: #ffc627;
+$uds-component-list-ol-styles-steplist-styles-gold-color: #191919;
+$uds-component-list-ol-styles-steplist-styles-maroon-background-color: #8c1d40;
+$uds-component-pager-color: #191919;
+$uds-component-pager-border-width: 0rem;
+$uds-component-pager-border-color: rgba(0, 0, 0, 0);
+$uds-component-pager-border: none;
+$uds-component-pager-outline: 0;
+$uds-component-pager-background-color: #000000;
+$uds-component-pager-border-radius: 400rem;
+$uds-component-pager-display: block;
+$uds-component-pager-font-weight: bold;
+$uds-component-pager-text-decoration: none;
+$uds-component-pager-line-height: 1rem;
+$uds-component-pager-max-width: 17.5rem;
+$uds-component-pager-hover-state-transform: scale(1.1);
+$uds-component-pager-active-state-transform: scale(1);
+$uds-component-pager-padding: 1rem 2rem;
+$uds-component-pager-hover-text-decoration: underline;
+$uds-component-pager-hover-color: #ffffff;
+$uds-component-pager-active-background-color: #8c1d40;
+$uds-component-pager-active-color: #ffffff;
+$uds-component-pager-disabled-opacity: 50%;
+$uds-component-pager-icon-height: 1rem;
+$uds-component-pager-icon-width: 1rem;
+$uds-component-pager-icon-margin: 0.25rem;

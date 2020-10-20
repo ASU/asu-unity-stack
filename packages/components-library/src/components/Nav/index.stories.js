@@ -1,21 +1,47 @@
 /** @jsx h */
 
 import { h } from "preact";
-import { withA11y } from "@storybook/addon-a11y";
-import navTreeExample from "./NavTreeExample";
+import {
+  BasicNavTree,
+  NavTreeWithButtons,
+  NavTreeMega,
+} from "./NavTreeExample";
 
-import Nav from ".";
+import { Nav } from ".";
 
 export default {
   component: Nav,
   title: "Nav",
-  decorators: [withA11y],
 };
 
-console.log(navTreeExample);
+const buttons = [
+  {
+    href: "/",
+    text: "CTA Button 1",
+    color: "gold",
+  },
+  {
+    text: "CTA Button 2",
+    href: "#",
+    color: "light",
+  },
+];
 
-export const base = () => (
-  <Nav navTree={navTreeExample} />
+export const base = () => <Nav navTree={BasicNavTree} injectStyles={true} />;
+
+export const mobileOpen = () => (
+  <Nav navTree={BasicNavTree} mobileOpen={true} injectStyles={true} />
 );
 
+export const withButtons = () => (
+  <Nav
+    navTree={NavTreeWithButtons}
+    mobileOpen={true}
+    buttons={buttons}
+    injectStyles={true}
+  />
+);
 
+export const withMenuColumns = () => (
+  <Nav navTree={NavTreeMega} mobileOpen={true} injectStyles={true} />
+);

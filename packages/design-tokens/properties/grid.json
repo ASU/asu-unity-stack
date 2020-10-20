@@ -1,0 +1,30 @@
+{
+  "grid": {
+    "container-max-width": {
+      "sm": {
+        "value": "540px",
+        "comment": "BS4 default value"
+      },
+      "md": {
+        "value": "768px",
+        "comment": "BS4 default value"
+      },
+      "lg": {
+        "value": "992px",
+        "comment": "BS4 default value"
+      },
+      "xl": {
+        "value": "1224px",
+        "comment": "1200px max + 12px gutter on either side."
+      }
+    },
+    "column-count": {
+      "value": "12",
+      "comment": "BS4 default value"
+    },
+    "gutter-width": {
+      "value": "24px",
+      "comment": "Decreased from default BS4 value of 30px"
+    }
+  }
+}

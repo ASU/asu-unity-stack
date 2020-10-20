@@ -1,0 +1,42 @@
+{
+  "name": "@asu-design-system/auth",
+  "version": "1.0.2",
+  "description": "ASU Auth components",
+  "main": "src/index.js",
+  "module": "esm/index.js",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/auth"
+  },
+  "author": "Colton Testamarck",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "clean": "yarn shx rm -rf ./dist",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
+    "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
+    "test": "echo \"Error: no test specified\"",
+    "storybook": "start-storybook -p 8089",
+    "build-storybook": "build-storybook -c .storybook -s public -o export"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@asu-design-system/design-tokens": "^1.0.0-beta",
+    "emotion": "^10.0.27",
+    "jquery": "^3.5.1",
+    "preact": "^10.4.4",
+    "sjcl": "^1.0.8"
+  },
+  "jest": {
+    "preset": "jest-preset-preact",
+    "setupFiles": [
+      "<rootDir>/tests/__mocks__/browserMocks.js",
+      "<rootDir>/tests/__mocks__/setupTests.js"
+    ]
+  }
+}

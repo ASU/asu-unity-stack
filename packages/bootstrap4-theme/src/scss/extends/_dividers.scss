@@ -1,0 +1,49 @@
+hr {
+  border-top: 0;
+  height: 1px;
+  margin: $uds-size-spacing-6 0;
+  background-color: $uds-color-base-gray-3;
+
+  &.copy-divider {
+    height: $uds-size-spacing-1;
+    background-color: $uds-color-base-gold;
+    max-width: $uds-size-spacing-32;
+  }
+}
+
+.bg {
+  background: $bg;
+  opacity: $bg-opacity;
+
+  &.morse-code {
+    &-white {
+      background-image: $morse-code-white;
+    }
+
+    &-black {
+      background-image: $morse-code-black;
+    }
+  }
+
+  &.network {
+    &-white {
+      background-image: $network-white;
+    }
+
+    &-black {
+      background-image: $network-black;
+    }
+  }
+
+  &.topo {
+    opacity: 1;
+
+    &-white {
+      background-image: $topo-black;
+    }
+
+    &-black {
+      background-image: $topo-white;
+    }
+  }
+}

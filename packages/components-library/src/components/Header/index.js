@@ -1,70 +1,176 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import {useState, useCallback} from "preact/compat"
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { useState, useEffect, useRef } from "preact/compat";
+import PropTypes from "prop-types";
 import * as S from "./styles";
-import Nav from "../Nav";
+import { Nav } from "../Nav";
+import { UniversalSearch } from "../Search";
+import { Login } from "../Login";
+import { Navbar } from "../Navbar";
+import { Logo } from "../Logo";
+import { Title } from "../Title";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-const Header = props => {
+const Header = ({
+  navTree,
+  title,
+  baseUrl,
+  parentOrg,
+  parentOrgUrl,
+  logo,
+  loggedIn,
+  userName,
+  loginLink,
+  logoutLink,
+  buttons,
+  breakpoint,
+  animateTitle,
+  ...props
+}) => {
+  // State hooks to track and set opening/closing mobile nav
+  const [mobileOpen, setMobileOpen] = useState(false);
+  // Function to toggle the mobile nav
+  const toggle = () => setMobileOpen(oldOpen => !oldOpen);
+
+  //State hooks for tracking and setting open/close search in universal nav
+  const [searchOpen, setSearchOpen] = useState(false); 
+
+  // State hooks for tracking and setting the max mobile nav menu height
+  const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
+
+  // Get breakpoint from theme and props
+  const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
+  const bpointInt = parseInt(bpoint, 10);
+
   // get window dimensions
   const { height, width } = useWindowDimensions();
 
-  const [open, setOpen] = useState(false);
+  // Hooks to track scroll position state
+  const [scrollPosition, setSrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setSrollPosition(position);
+  };
 
-  const toggle = useCallback(() => {
-    console.log(open, 'OPEN IN CALLB ACK');
-    setOpen(oldOpen => !oldOpen);
-  }, [open]);
+  // Get primary nav top padding value from theme
+  const tpadding = parseInt(S.primaryNavTopPadding, 10);
+
+  // Use refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
+  // Attach scroll event lister which will update the scrollPosition state
+  // when window scrolled
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Calculate the mobile nav menu max-height every time the mobile nav is opened
+  // or the viewport changes size
+  useEffect(() => {
+    if (width < bpointInt && mobileOpen) {
+      window.setTimeout(() => {
+        const uHeight = universalRef.current.clientHeight;
+        const lHeight = logoRef.current.clientHeight;
+        const tHeight = titleRef.current.clientHeight;
+
+        const pHeight = lHeight + tHeight + tpadding;
+
+        const newHeight = height - uHeight - pHeight;
+
+        setMaxMobileNavHeight(newHeight);
+      }, 500);
+    }
+  }, [height, width, mobileOpen]);
+
+  const animate = animateTitle === true;
 
   return (
-    <S.Header>
-      <S.UniversalNav>
-        <div>
+    <S.Header
+      breakpoint={bpoint}
+      class={
+        scrollPosition > 0 || (mobileOpen && width < bpointInt)
+          ? "scrolled"
+          : ""
+      }
+    >
+      <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
+        <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
-          <a href="#">Sign in</a>
-          <a href="https://search.asu.edu">
-            <i className="fa fa-search" />
-          </a>
-        </div>
+          <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
+        </S.UniversalNavLinks>
+        <UniversalSearch
+          open={searchOpen}
+          setOpen={setSearchOpen}
+          mobile={width < bpointInt}
+        />
       </S.UniversalNav>
-      <S.PrimaryNav>
-        <S.IconHamburger onMouseDown={toggle} />
+      <Navbar
+        onClick={e => {
+          e.preventDefault();
+          toggle();
+        }}
+        mobileOpen={mobileOpen}
+        logo={<Logo {...logo} ref={logoRef} />}
+      >
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
         ) : (
-          <Fragment>
-            <S.Logo {...props.logo} />
-            <S.Title {...{ title: props.title, subtitle: props.subtitle }} />
+          <>
+            <Title
+              {...{ parentOrg, parentOrgUrl, baseUrl, animate }}
+              ref={titleRef}
+            >
+              {title}
+            </Title>
             <Nav
               {...{
-                navTree: props.navTree,
-                title: props.title,
-                subtitle: props.subtitle,
-                logo: props.logo,
-                width
+                navTree,
+                mobileOpen,
+                height,
+                width,
+                buttons,
+                maxMobileHeight: maxMobileNavHeight,
+                breakpoint,
               }}
             />
-          </Fragment>
+          </>
         )}
-      </S.PrimaryNav>
+      </Navbar>
     </S.Header>
   );
+};
+
+Header.propTypes = {
+  navTree: PropTypes.arrayOf(PropTypes.object),
+  logo: PropTypes.shape(Logo.propTypes),
+  title: Title.propTypes.title,
+  parentOrg: Title.propTypes.parentOrg,
+  parentOrgUrl: Title.propTypes.parentOrgUrl,
+  baseUrl: Title.propTypes.baseUrl,
+  loggedIn: Login.propTypes.loggedIn,
+  userName: Login.propTypes.userName,
+  loginLink: Login.propTypes.loginLink,
+  logoutLink: Login.propTypes.logoutLink,
+  buttons: PropTypes.arrayOf(PropTypes.object),
+  breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
+  animateTitle: PropTypes.bool,
 };
 
 Header.defaultProps = {
   navTree: [],
   dangerouslyGenerateStub: false,
-  logo: {
-    alt: "Arizona State University Logo",
-    src: "https://i.imgur.com/5WtkgkV.png",
-    mobileSrc: "https://www.asu.edu/asuthemes/4.10/assets/arizona-state-university-logo.png"
-  },
   title: "",
-  subtitle: "",
-  mobileWidth: 990
+  buttons: [],
+  breakpoint: "Lg",
 };
 
-export default Header;
+export { Header };

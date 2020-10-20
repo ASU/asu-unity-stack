@@ -1,97 +1,254 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { css } from "emotion";
-import Tokens from "../../theme";
+import { cx, css } from "emotion";
+import PropTypes from "prop-types";
+import {
+  ComponentButtonHoverStateTransform,
+  ComponentButtonActiveStateTransform,
+  ComponentButtonDisabledOpacity,
+  ComponentButtonSmallFontSize,
+  ComponentButtonSmallHeight,
+  ComponentButtonSmallMinWidth,
+  ComponentButtonPaddingYSmall,
+  ComponentButtonPaddingXSmall,
+  ComponentButtonLargeFontSize,
+  ComponentButtonLargeHeight,
+  ComponentButtonLargeMinWidth,
+  ComponentButtonGoldColor,
+  ComponentButtonGoldBackgroundColor,
+  ComponentButtonDarkColor,
+  ComponentButtonDarkBackgroundColor,
+  ComponentButtonLightColor,
+  ComponentButtonLightBackgroundColor,
+  ComponentButtonMediumFontSize,
+  ComponentButtonMediumHeight,
+  ComponentButtonMediumMinWidth,
+  ComponentButtonPaddingYMedium,
+  ComponentButtonPaddingXMedium,
+  ComponentButtonMaroonColor,
+  ComponentButtonMaroonBackgroundColor,
+} from "../../theme";
+import { forwardRef } from "preact/compat";
 
-const buttonStyles = (props) => css`
-  background-origin: ${Tokens.ComponentButtonBackgroundOrigin};
-  background-position: ${Tokens.ComponentButtonBackgroundPosition};
-  background-repeat: ${Tokens.ComponentButtonBackgroundRepeat};
-  border-radius: ${Tokens.ComponentButtonBorderRadius};
-  display: ${Tokens.ComponentButtonDisplay};
-  font-weight: ${Tokens.ComponentButtonFontWeight};
-  line-height: ${Tokens.ComponentButtonLineHeight};
-  max-width: ${Tokens.ComponentButtonMaxWidth};
-  padding: ${Tokens.ComponentButtonPadding};
-  text-align: ${Tokens.ComponentButtonTextAlign};
+const Button = forwardRef(
+  (
+    { disabled, small, medium, large, gold, maroon, dark, type, ...props },
+    ref
+  ) => {
+    const Element = type == "link" ? "a" : "button";
 
-  ${props.disabled &&
-    css`
-      opacity: ${Tokens.ComponentButtonDisabledOpacity};
-    `};
+    // If no other color set, default to light gray
+    const light = props.light
+      ? props.light
+      : () => {
+          if (!gold && !dark && !maroon) {
+            return true;
+          }
+          return false;
+        };
+    return (
+      <Element
+        {...props}
+        class={cx(
+          css`
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            color: #191919;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            line-height: 1rem;
+            border-radius: 400rem;
+            transition: 0.03s ease-in-out;
 
-  ${props.small &&
-    css`
-      font-size: ${Tokens.ComponentButtonSmallFontSize};
-      height: ${Tokens.ComponenButtonSmallHeight};
-      min-width: ${Tokens.ComponentButtonSmallMinWidth};
-    `};
+            :not(:disabled):not(.disabled) {
+              cursor: pointer;
+            }
 
-  ${props.medium &&
-    css`
-      font-size: ${Tokens.ComponentButtonMediumFontSize};
-      height: ${Tokens.ComponentButtonMediumHeight};
-      min-width: ${Tokens.ComponentButtonMediumMinWidth};
-    `};
+            :hover {
+              transform: ${ComponentButtonHoverStateTransform};
+            }
 
-  ${props.large &&
-    css`
-      font-size: ${Tokens.ComponentButtonLargeFontSize};
-      height: ${Tokens.ComponentButtonLargeHeight};
-      min-width: ${Tokens.ComponentButtonLargeMinWidth};
-    `};
+            :active {
+              transform: ${ComponentButtonActiveStateTransform};
+            }
 
-  ${props.gold &&
-    css`
-      color: ${Tokens.ComponentButtonGoldColor};
-      background-color: ${Tokens.ComponentButtonGoldBackgroundColor};
-    `};
+            ${disabled &&
+            css`
+              opacity: ${ComponentButtonDisabledOpacity};
+            `}
 
-  ${props.maroon &&
-    css`
-      color: ${Tokens.ComponentButtonMaroonColor};
-      background-color: ${Tokens.ComponentButtonDarkBackgroundColor};
-    `};
+            ${small &&
+            css`
+              font-size: ${ComponentButtonSmallFontSize};
+              height: ${ComponentButtonSmallHeight};
+              min-width: ${ComponentButtonSmallMinWidth};
+              padding: ${ComponentButtonPaddingYSmall}
+                ${ComponentButtonPaddingXSmall};
+            `}
 
-  ${props.dark &&
-    css`
-      color: ${Tokens.ComponentButtonDarkColor};
-      background-color: ${Tokens.ComponentButtonDarkBackgroundColor};
-    `};
+        ${medium &&
+            css`
+              font-size: 0.875rem;
+              padding: 0.5rem 1rem;
+            `}
 
-  ${props.light &&
-    css`
-      color: ${Tokens.ComponentButtonLightColor};
-      background-color: ${Tokens.ComponentButtonLightBackgroundColor};
-    `};
+        ${large &&
+            css`
+              font-size: ${ComponentButtonLargeFontSize};
+              height: ${ComponentButtonLargeHeight};
+              min-width: ${ComponentButtonLargeMinWidth};
+            `}
+
+        ${gold &&
+            css`
+              color: ${ComponentButtonGoldColor};
+              background-color: ${ComponentButtonGoldBackgroundColor};
+
+              :hover {
+                color: ${ComponentButtonGoldColor};
+              }
+            `}
+
+        ${maroon &&
+            css`
+              color: #ffffff;
+              background-color: #8c1d40;
+              border-color: #8c1d40;
+
+              :visited:not(.btn) {
+                color: #ffffff;
+              }
+            `}
+
+        ${dark &&
+            css`
+              color: ${ComponentButtonDarkColor};
+              background-color: ${ComponentButtonDarkBackgroundColor};
+
+              :visited:not(.btn) {
+                color: ${ComponentButtonDarkColor};
+              }
+            `}
+
+        ${light &&
+            css`
+              color: ${ComponentButtonLightColor};
+              background-color: ${ComponentButtonLightBackgroundColor};
+            `}
+          `,
+          props.class
+        )}
+        ref={ref}
+      >
+        {props.children}
+      </Element>
+    );
+  }
+);
+
+Button.propTypes = {
+  type: PropTypes.string,
+  href: PropTypes.string,
+  dark: PropTypes.bool,
+  light: PropTypes.bool,
+  gold: PropTypes.bool,
+  maroon: PropTypes.bool,
+  disabled: PropTypes.bool,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+  large: PropTypes.bool,
+  onFocus: PropTypes.func,
+};
+
+Button.defaultProps = {
+  disabled: false,
+};
+
+/**
+ * Static class-based CSS for buttons, used in Header component.
+ */
+const buttonStyles = css`
+  .btn {
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    color: #191919;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    border-radius: 400rem;
+    transition: 0.03s ease-in-out;
+
+    :not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
+
+    :hover {
+      transform: ${ComponentButtonHoverStateTransform};
+    }
+
+    :active {
+      transform: ${ComponentButtonActiveStateTransform};
+    }
+
+    &.btn-disabled {
+      opacity: ${ComponentButtonDisabledOpacity};
+    }
+
+    &.btn-small {
+      font-size: ${ComponentButtonSmallFontSize};
+      height: ${ComponentButtonSmallHeight};
+      min-width: ${ComponentButtonSmallMinWidth};
+      padding: ${ComponentButtonPaddingYSmall} ${ComponentButtonPaddingXSmall};
+    }
+
+    &.btn-medium {
+      font-size: ${ComponentButtonMediumFontSize};
+      height: ${ComponentButtonMediumHeight};
+      min-width: ${ComponentButtonMediumMinWidth};
+      padding: ${ComponentButtonPaddingYMedium} ${ComponentButtonPaddingXMedium};
+    }
+
+    &.btn-large {
+      font-size: ${ComponentButtonLargeFontSize};
+      height: ${ComponentButtonLargeHeight};
+      min-width: ${ComponentButtonLargeMinWidth};
+    }
+
+    &.btn-gold {
+      color: ${ComponentButtonGoldColor};
+      background-color: ${ComponentButtonGoldBackgroundColor};
+    }
+
+    &.btn-maroon {
+      color: ${ComponentButtonMaroonColor};
+      background-color: ${ComponentButtonMaroonBackgroundColor};
+    }
+
+    &.btn-dark {
+      color: ${ComponentButtonDarkColor};
+      background-color: ${ComponentButtonDarkBackgroundColor};
+    }
+
+    &.btn-light {
+      color: ${ComponentButtonLightColor};
+      background-color: ${ComponentButtonLightBackgroundColor};
+    }
+  }
 `;
 
-
-
-const Button = props => {
-
-  return (
-    <button
-      className={css`
-        ${buttonStyles(props)};
-      `}
-    >
-      {props.children}
-    </button>
-  );
-};
-
-const ButtonLink = props => {
-  return (
-    <a
-      className={css`
-        ${buttonStyles(props)};
-      `}
-    >
-      {props.children}
-    </a>
-  );
-};
-
-export { Button, ButtonLink };
+export { Button, buttonStyles };

@@ -1,177 +1,771 @@
-const NavTreeExample = [
+const BasicNavTree = [
   {
-    href: '/',
-    title: 'Home',
-    text: 'Home',
-    type: 'icon',
-    class: 'fa fa-home'
+    href: "/",
+    text: "Home",
+    type: "icon",
+    class: "home",
   },
   {
-    title: "Degree programs",
     text: "Degree programs",
     href: "#",
     items: [
       [
         {
           href: "https://www.asu.edu/?feature=newsevents",
-          target: "_top",
-          title: "News and Events",
-          text: "News/Events",
+
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
-          target: "_top",
-          title: "Academics",
+
           text: "Academics",
         },
         {
           href: "https://www.asu.edu/?feature=research",
-          target: "_top",
-          title: "Research",
+
           text: "Research",
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
-          target: "_top",
-          title: "Athletics",
+
           text: "Athletics",
         },
         {
           href: "https://www.asu.edu/?feature=alumni",
-          target: "_top",
-          title: "Alumni",
+
           text: "Alumni",
         },
         {
           href: "https://www.asu.edu/?feature=giving",
-          target: "_top",
-          title: "Giving",
+
           text: "Giving",
         },
         {
           href: "https://www.asu.edu/?feature=president",
-          target: "_top",
-          title: "President",
+
           text: "President",
         },
         {
           href: "https://www.asu.edu/about",
-          target: "_top",
-          title: "About ASU",
+
+          text: "About ASU",
+        },
+      ],
+    ],
+  },
+
+  {
+    text: "People",
+    href: "#",
+    items: [
+      [
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+          text: "Map",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+          text: "Tempe",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+          text: "West",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+          text: "Polytechnic",
+        },
+        {
+          href: "https://asuonline.asu.edu/",
+          text: "Online and Extended",
+        },
+        {
+          href: "https://havasu.asu.edu/",
+          text: "Mauris viverra, sem nec",
+        }
+      ],
+    ],
+  },
+  {
+    text: "My ASU",
+    href: "#",
+  },
+  {
+    text: "Research",
+    href: "#",
+  },
+  {
+    text: "About us",
+    href: "#",
+  },
+  {
+    text: "Contact us",
+    href: "#",
+  },
+];
+
+const NavTreeWithButtons = [
+  {
+    href: "/",
+    text: "Home",
+    type: "icon",
+    class: "home",
+  },
+  {
+    text: "Degree programs",
+    href: "#",
+    items: [
+      [
+        {
+          href: "https://www.asu.edu/?feature=newsevents",
+
+          text: "Mauris viverra, sem nec",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+
+          text: "Academics",
+        },
+        {
+          href: "https://www.asu.edu/?feature=research",
+
+          text: "Research",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+
+          text: "Athletics",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+
+          text: "Alumni",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+
+          text: "Giving",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+
+          text: "President",
+        },
+        {
+          href: "https://www.asu.edu/about",
+
           text: "About ASU",
         },
       ],
     ],
   },
   {
-    title: "Students",
     text: "My ASU",
     href: "#",
-    target: "_top",
   },
   {
-    title: "People",
     text: "People",
     href: "#",
-    target: "_top",
     items: [
       [
         {
           classes: "border first",
           href: "https://www.asu.edu/map/",
-          target: "_top",
-          title: "Map",
-          text: "Map",
+
+          text: "Duis molestie commodo",
         },
         {
           href: "https://campus.asu.edu/tempe/",
-          target: "_top",
-          title: "Tempe campus",
-          text: "Tempe",
+
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://campus.asu.edu/west/",
-          target: "_top",
-          title: "West campus",
-          text: "West",
+
+          text: "Massa nunc dictum nam venenatis",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
-          target: "_top",
-          title: "Polytechnic campus",
+
           text: "Polytechnic",
         },
         {
           href: "https://campus.asu.edu/downtown/",
-          target: "_top",
-          title: "Downtown Phoenix campus",
+
           text: "Downtown Phoenix",
         },
         {
           href: "https://asuonline.asu.edu/",
-          target: "_top",
-          title: "Online and Extended campus",
+
           text: "Online and Extended",
-        },
-        {
-          href: "https://havasu.asu.edu/",
-          target: "_top",
-          title: "",
-          text: "Lake Havasu",
-        },
-        {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
-          target: "_top",
-          classes: "border",
-          title: "",
-          text: "Thunderbird",
-        },
-        {
-          href: "https://skysong.asu.edu/",
-          target: "_top",
-          title: "",
-          text: "Skysong",
-        },
-        {
-          href: "https://asuresearchpark.com/",
-          target: "_top",
-          title: "",
-          text: "Research Park",
-        },
-        {
-          href: "https://washingtoncenter.asu.edu/",
-          target: "_top",
-          title: "",
-          text: "Washington D.C.",
-        },
-        {
-          href: "https://wpcarey.asu.edu/mba/china-program/english/",
-          target: "_top",
-          title: "",
-          text: "China",
         },
       ],
     ],
   },
   {
-    title: "Research",
     text: "Research",
     href: "#",
-    target: "_top",
-  },
-  {
-    title: "About us",
-    text: "About us",
-    href: "#",
-    target: "_top",
-  },
-  {
-    title: "Contact us",
-    text: "Contact us",
-    href: "#",
-    target: "_top",
   },
 ];
 
-export default NavTreeExample;
+const NavTreeMega = [
+  {
+    href: "/",
+    text: "Home",
+    type: "icon",
+    class: "home",
+  },
+  {
+    text: "One Column",
+    href: "/",
+    items: [
+      [
+        {
+          href: "https://www.asu.edu/",
+          text: "A test navigation item",
+        },
+        {
+          href: "https://www.asu.edu/",
+
+          text: "Mauris viverra, sem nec",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+
+          text: "Massa nunc dictum nam venenatis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+
+          text: "Alumni",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+
+          text: "Giving",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+
+          text: "President",
+        },
+        {
+          href: "https://www.asu.edu/about",
+
+          text: "About ASU",
+        },
+      ]
+    ],
+  },
+  {
+    text: "Two Column",
+    href: "/",
+    items: [
+      [
+        {
+          type: "heading",
+          text: "Column 1",
+        },
+        {
+          href: "https://www.asu.edu/",
+
+          text: "Pellentesque ornare",
+        },
+        {
+          href: "https://www.asu.edu/",
+
+          text: "Curabitur viverra arcu nisl",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+
+          text: "Aenean pharetra",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+
+          text: "Pellentesque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+
+          text: "Donec sagittis nulla",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+
+          text: "Quisque fringilla",
+        },
+        {
+          href: "https://www.asu.edu/about",
+
+          text: "Integer vel gravida lectus",
+        },
+      ],
+      [
+        {
+          href: "https://www.asu.edu/?feature=newsevents",
+          type: "heading",
+          text: "Ut quis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+          text: "Nunc in libero odio",
+        },
+        {
+          href: "https://www.asu.edu/?feature=research",
+
+          text: "Maecenas quam elit",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+
+          text: "Ut at vehicula neque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          type: "button",
+          text: "Sed molestie",
+        },
+      ],
+    ],
+  },
+  {
+    text: "Mega Menu (3 Col)",
+    href: "#",
+    items: [
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Maecenas lacinia",
+        },
+        {
+          href: "https://havasu.asu.edu/",
+
+          text: "Curabitur viverra arcu nisl",
+        },
+        {
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+
+          classes: "border",
+
+          text: "Thunderbird",
+        },
+        {
+          href: "https://skysong.asu.edu/",
+
+          text: "Skysong",
+        },
+        {
+          href: "https://asuresearchpark.com/",
+
+          text: "Research Park",
+        },
+        {
+          href: "https://washingtoncenter.asu.edu/",
+
+          text: "Washington D.C.",
+        },
+        {
+          href: "https://wpcarey.asu.edu/mba/china-program/english/",
+
+          text: "China",
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 2",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Phasellus egestas nec est ",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Pellentesque et mollis",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Cras congue",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Cras ut malesuada nisl",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix"
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 3 Heading",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Map",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Tempe",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "West",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Polytechnic",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix"
+        },
+      ],
+    ],
+  },
+  {
+    text: "Mega Menu (4 Col)",
+    href: "#",
+    items: [
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Header Column 1",
+        },
+        {
+          href: "https://havasu.asu.edu/",
+
+          text: "Lake Havasu",
+        },
+        {
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+
+          classes: "border",
+
+          text: "Thunderbird",
+        },
+        {
+          href: "https://skysong.asu.edu/",
+
+          text: "Skysong",
+        },
+        {
+          href: "https://asuresearchpark.com/",
+
+          text: "Research Park",
+        },
+        {
+          href: "https://washingtoncenter.asu.edu/",
+
+          text: "Washington D.C.",
+        },
+        {
+          href: "https://wpcarey.asu.edu/mba/china-program/english/",
+
+          text: "China",
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 2",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Faculty and Staff Directory",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "The Tempe Campus",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Sun Devils and Things",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Another nav link",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Action",
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 3",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "University Technology Office",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Sun Devil Football",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "The School of Something",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Polytechnic",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Another Button"
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 4",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Maps and Directions",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Office of the technology",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Office of the business",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Some longer text office of longtext",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix"
+        },
+      ],
+    ],
+  },
+  {
+    text: "Mega Menu (5 Col)",
+    href: "#",
+    buttons: [
+      {
+        text: "CTA One",
+        href: "https://asu.edu"
+      },
+      {
+        text: "CTA Two",
+        href: "https://asu.edu"
+      }
+    ],
+    items: [
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column One Heading Text",
+        },
+        {
+          href: "https://havasu.asu.edu/",
+
+          text: "The Lake Havasu Campus",
+        },
+        {
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+
+          classes: "border",
+
+          text: "Thunderbird",
+        },
+        {
+          href: "https://skysong.asu.edu/",
+
+          text: "Skysong",
+        },
+        {
+          href: "https://asuresearchpark.com/",
+
+          text: "Research Park",
+        },
+        {
+          href: "https://washingtoncenter.asu.edu/",
+
+          text: "Washington D.C.",
+        },
+        {
+          href: "https://wpcarey.asu.edu/mba/china-program/english/",
+
+          text: "China",
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 2",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Faculty and Staff Directory",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "The Tempe Campus",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Sun Devils and Things",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Another nav link",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Action Button"
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 3",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "University Technology Office",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Sun Devil Football",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "The School of Something",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Polytechnic",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Another Button"
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column 4",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Maps and Directions",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Office of the technology",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Office of the business",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+
+          text: "Some longer text office of longtext",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix"
+        },
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column Five",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+
+          text: "Buildings and directory",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+
+          text: "Some good news",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+
+          text: "Directory Admin Tools",
+        }
+      ],
+    ],
+  },
+];
+
+export { BasicNavTree, NavTreeWithButtons, NavTreeMega };

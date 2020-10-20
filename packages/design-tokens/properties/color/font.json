@@ -3,12 +3,8 @@
     "font": {
       "dark": {
         "base": {
-          "value": "{color.base.gray.1.value}",
+          "value": "{color.base.gray.7.value}",
           "comment": "Default text color on light background"
-        },
-        "alternate": {
-          "value": "#2A2A2A",
-          "comment": "Alternate font color with lighter black level"
         },
         "link": {
           "value": "{color.base.maroon.value}",
@@ -45,7 +41,7 @@
       },
       "light": {
         "base": {
-          "value": "{color.base.gray.7.value}",
+          "value": "{color.base.gray.1.value}",
           "comment": "Default text on dark background"
         },
         "link": {

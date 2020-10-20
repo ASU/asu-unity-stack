@@ -10,7 +10,7 @@
         "comment": "ASU Maroon brand color"
       },
       "dark": {
-        "value": "{color.base.gray.1.value}",
+        "value": "{color.base.gray.7.value}",
         "comment": "ASU Dark brand color - Near Black"
       },
       "light": {

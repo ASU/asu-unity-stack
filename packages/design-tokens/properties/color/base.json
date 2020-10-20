@@ -13,10 +13,6 @@
         "value": "#FFFFFF",
         "comment": "White"
       },
-      "black": {
-        "value": "#000000",
-        "comment": "Black"
-      },
       "green": {
         "value": "#78BE20",
         "comment": "ASU Green"
@@ -43,38 +39,26 @@
       },
       "gray": {
         "1": {
-          "value": "#191919",
-          "comment": "Base font color and default black level"
+          "value": "#FAFAFA"
         },
         "2": {
-          "value": "#484848"
-        },
-        "3_alt_alpha": {
-          "value": "#70707080",
-          "comment": "Alt border for RFI form card"
-        },
-        "3_alt": {
-          "value": "#707070",
-          "comment": "Alt border for header search input border"
+          "value": "#E8E8E8"
         },
         "3": {
-          "value": "#747474"
+          "value": "#D0D0D0"
         },
         "4": {
           "value": "#BFBFBF"
         },
         "5": {
-          "value": "#D0D0D0"
-        },
-        "6_alt": {
-          "value": "#E5E5E5",
-          "comment": "Used in footer and as a lighter card border"
+          "value": "#747474"
         },
         "6": {
-          "value": "#E8E8E8"
+          "value": "#484848"
         },
         "7": {
-          "value": "#FAFAFA"
+          "value": "#191919",
+          "comment": "Base font color and default black level"
         }
       }
     }

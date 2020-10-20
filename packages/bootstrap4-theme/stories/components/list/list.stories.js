@@ -6,8 +6,8 @@ storiesOf('Components/List', module)
     happo: false,
   })
 
-.add('Unordered list', () => `
-<ul>
+.add('Unordered List', () => `
+<ul class="uds-list">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -15,8 +15,8 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Maroon', () => `
-<ul class="maroon">
+.add('Unordered List, Maroon Bullet', () => `
+<ul class="uds-list maroon">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -24,8 +24,8 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Smoke', () => `
-<ul class="smokemode">
+.add('Unordered List, Smokemode', () => `
+<ul class="uds-list smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -33,8 +33,8 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Darkmode', () => `
-<ul class="darkmode">
+.add('Unordered List, Light Smokemode', () => `
+<ul class="uds-list light-smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -42,16 +42,34 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered list, Multi-level', () => `
-<ul>
+.add('Unordered List, Darkmode', () => `
+<ul class="uds-list darkmode">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ul>
+`)
+
+.add('Unordered List, Gold Bullet, Darkmode', () => `
+<ul class="uds-list darkmode gold">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ul>
+`)
+
+.add('Unordered List, Multi-level', () => `
+<ul class="uds-list">
   <li>Lorem ipsum dolor sit amet
-    <ul>
+    <ul class="uds-list">
       <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        <ul>
+        <ul class="uds-list">
           <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            <ul>
+            <ul class="uds-list">
               <li>Lorem ipsum dolor sit amet
-              <ul>
+              <ul class="uds-list">
                 <li>Lorem ipsum dolor sit amet</li>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </ul>
@@ -65,8 +83,200 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Ordered list', () => `
-<ol>
+.add('Ordered List', () => `
+<ol class="uds-list">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Eiusmod tempor lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Ipsum dolor sit amet</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Dolor sit amet, consectetur adipiscing elit.</li>
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -82,8 +292,8 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered list, Maroon', () => `
-<ol class="maroon">
+.add('Ordered List, Maroon Counter', () => `
+<ol class="uds-list maroon">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -91,8 +301,8 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered list, Smoke', () => `
-<ol class="smokemode">
+.add('Ordered List, Smokemode', () => `
+<ol class="uds-list smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -100,8 +310,17 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered list, Darkmode', () => `
-<ol class="darkmode">
+.add('Ordered List, Light Smokemode', () => `
+<ol class="uds-list light-smokemode">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+  <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+  <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
+</ol>
+`)
+
+.add('Ordered List, Darkmode', () => `
+<ol class="uds-list darkmode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -110,15 +329,15 @@ storiesOf('Components/List', module)
 `)
 
 .add('Ordered List, Multi-Level', () => `
-<ol>
+<ol class="uds-list">
   <li>Lorem ipsum dolor sit amet
-      <ol>
+      <ol class="uds-list">
           <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              <ol>
+              <ol class="uds-list">
                   <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      <ol>
+                      <ol class="uds-list">
                           <li>Lorem ipsum dolor sit amet
-                              <ol>
+                              <ol class="uds-list">
                                   <li>Lorem ipsum dolor sit amet</li>
                                   <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                               </ol>
@@ -134,8 +353,8 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Icon list', () => `
-<ul class="fa-ul">
+.add('Icon List', () => `
+<ul class="uds-list fa-ul">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li><span class="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -143,8 +362,8 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Icon list, maroon', () => `
-<ul class="fa-ul maroon">
+.add('Icon List, Maroon Icon', () => `
+<ul class="uds-list fa-ul maroon">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li><span class="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -152,8 +371,8 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Icon list, darkmode', () => `
-<ul class="fa-ul darkmode">
+.add('Icon List, Darkmode', () => `
+<ul class="uds-list fa-ul darkmode">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li><span class="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -161,76 +380,98 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Icon list, gold darkmode', () => `
-<ul class="fa-ul darkmode gold">
+.add('Icon List, Gold Icon, Darkmode', () => `
+<ul class="uds-list fa-ul darkmode gold">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
   <li><span class="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
   <li><span class="fa-li fas fa-bicycle"></span>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
 </ul>
 `)
-
-
 
 // Should this be implemented as a list-group?
-.add('Step list', () => `
-<ol class="uds-steplist">
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-</ol>
-`)
-
-.add('Step list, gold', () => `
-<ol class="uds-steplist uds-steplist-gold">
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-</ol>
-`)
-
-.add('Step list, maroon', () => `
-<ol class="uds-steplist uds-steplist-maroon">
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
-  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
-</ol>
-`)
-
-.add('Step list, smokemode', () => `
-<ol class="uds-steplist smokemode">
+.add('Step List', () => `
+<ol class="uds-list uds-steplist">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
 
-.add('Step list, gold smokemode', () => `
-<ol class="uds-steplist smokemode uds-steplist-gold">
+.add('Step List, Gold Counter', () => `
+<ol class="uds-list uds-steplist uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
 
-.add('Step list, maroon smokemode', () => `
-<ol class="uds-steplist smokemode uds-steplist-maroon">
+.add('Step List, Maroon Counter', () => `
+<ol class="uds-list uds-steplist uds-steplist-maroon">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
 
-.add('Step list, darkmode', () => `
-<ol class="uds-steplist darkmode">
+.add('Step List, Smokemode', () => `
+<ol class="uds-list uds-steplist smokemode">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
 </ol>
 `)
 
-.add('Step list, gold darkmode', () => `
-<ol class="uds-steplist darkmode uds-steplist-gold">
+.add('Step List, Gold Counter, Smokemode', () => `
+<ol class="uds-list uds-steplist smokemode uds-steplist-gold">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Maroon Counter, Smokemode', () => `
+<ol class="uds-list uds-steplist smokemode uds-steplist-maroon">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Light Smokemode', () => `
+<ol class="uds-list uds-steplist light-smokemode">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Gold Counter, Light Smokemode', () => `
+<ol class="uds-list uds-steplist light-smokemode uds-steplist-gold">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Maroon Counter, Light Smokemode', () => `
+<ol class="uds-list uds-steplist light-smokemode uds-steplist-maroon">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Darkmode', () => `
+<ol class="uds-list uds-steplist darkmode">
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+  <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
+  <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+</ol>
+`)
+
+.add('Step List, Gold Counter, Darkmode', () => `
+<ol class="uds-list uds-steplist darkmode uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>

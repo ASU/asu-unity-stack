@@ -1,23 +1,45 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from 'preact';
+import { h } from "preact";
+import {forwardRef} from "preact/compat";
 import * as S from "./styles";
+import PropTypes from "prop-types";
 
 /**
  * The button component will render a clickable button
  */
-const Button = ({ children, href, ...props }) => {
-  const TagName = href ? S.ButtonLink : S.Button;
+const Button = forwardRef(({href, children, ...props}, ref) => {
+  const type = href ? "link" : "button";
 
   return (
-    <TagName class="button" href={href} {...props}>
+    <S.Button type={type} ref={ref} {...href ? {href}: {}} {...props}>
       {children}
-    </TagName>
+    </S.Button>
   );
+});
+
+Button.propTypes = {
+  type: PropTypes.string,
+  href: PropTypes.string,
+  gold: PropTypes.bool,
+  maroon: PropTypes.bool,
+  disabled: PropTypes.bool,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+  large: PropTypes.bool,
+  itemRef: PropTypes.oneOfType([
+    // ref to actual DOM node of nav item
+    // https://stackoverflow.com/questions/48007326/what-is-the-correct-proptype-for-a-ref-in-react
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
+  ]),
+  onFocus: PropTypes.func
 };
 
 Button.defaultProps = {
-  href: undefined,
+  disabled: false,
 };
 
-export default Button;
+export { Button };

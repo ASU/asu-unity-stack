@@ -1,5 +1,4 @@
-import Header from "./components/Header";
-import Button from "./components/Button";
-import {HydratePreact, RenderPreact} from "./helpers";
+import { HydratePreact, RenderPreact, initHeader } from "./helpers";
 
-export {Header, Button, HydratePreact, RenderPreact};
+export * from "./components";
+export { HydratePreact, RenderPreact, initHeader };

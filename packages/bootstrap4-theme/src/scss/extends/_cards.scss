@@ -9,6 +9,14 @@ Cards - Table of Contents
 6. Foldable - Desktop Disable
 -------------------------------------------------------------------*/
 
+.row-spaced {
+  margin-bottom: -32px;
+}
+.row-spaced > .col,
+.row-spaced > div {
+  margin-bottom: 32px;
+}
+
 /*------------------------------------------------------------------
 1. Basic Cards
 --------------------------------------------------------------------*/
@@ -23,12 +31,27 @@ Cards - Table of Contents
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
-.card-button {
-  /*align-self: $uds-component-card-basic-button-align-self;*/
-  margin-top: $uds-component-card-basic-button-margin-top;
-  padding: $uds-component-card-basic-button-padding;
-  /*width: $uds-component-card-basic-button-width-percent;*/
+.card-hover:active {
+  transform: scale(0.95);
+  cursor: $uds-component-card-basic-hover-cursor;
 }
+.card-hover:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+}
+.card-hover > button {
+  border: none;
+  background: transparent;
+  text-align: inherit;
+  margin: 0;
+  padding: 0;
+}
+.card-hover > button:focus {
+  outline: 0;
+  box-shadow: 0 0 8px #00baff !important;
+  border: 0;
+}
+
 .card-icon-top {
   width: $uds-component-card-basic-icon-top-width;
   height: $uds-component-card-basic-icon-top-width;
@@ -40,45 +63,123 @@ Cards - Table of Contents
   height: $uds-component-card-basic-image-top-height;
   object-fit: $uds-component-card-basic-image-top-object-fit;
 }
-
-.card-centered {
-  .card-icon-top {
-    margin: $uds-component-card-basic-icon-top-margin-centered;
-  }
-  .card-title {
-    text-align: $uds-component-card-basic-header-text-align-centered;
-  }
-}
 .card-header {
-  padding: $uds-component-card-basic-header-padding;
+  padding: 32px 32px 16px 32px;
+  flex-grow: 1;
 }
 .card-body {
-  padding: $uds-component-card-basic-body-padding;
+  padding: 0 32px 24px 32px;
+  flex-grow: 100;
+}
+.card-link {
+  padding: 0 32px 24px 32px;
 }
 .card-footer {
-  padding: $uds-component-card-basic-footer-link-padding;
+  padding: 0 32px 24px 32px;
+  border-top: 0;
 }
-.card-footer-link {
-  padding: $uds-component-card-basic-footer-link-padding;
-  border-top: $uds-component-card-basic-footer-link-border-top;
+.card-tags {
+  padding: 0 32px 24px 32px;
+  border-top: 0;
+  margin-top: -8px;
+}
+.card-tags .btn-tag {
+  margin-top: 8px;
+}
+.card-button {
+  margin-top: $uds-component-card-basic-button-margin-top;
+  padding: 0 32px 24px 32px;
+}
+.card > div:last-child {
+  padding-bottom: 32px;
+}
+
+@include media-breakpoint-down(md) {
+  .card-icon-top {
+    width: $uds-component-card-basic-icon-top-width;
+    height: $uds-component-card-basic-icon-top-width;
+    margin: $uds-component-card-basic-icon-top-margin;
+  }
+  .card-img-top img,
+  .card-img-top {
+    height: 160px;
+  }
+  .card-header {
+    padding: 24px 24px 16px 24px;
+  }
+  .card-body {
+    padding: 0 24px 24px 24px;
+  }
+  .card-link {
+    padding: 0 24px 24px 24px;
+  }
+  .card-footer {
+    padding: 0 24px 24px 24px;
+    border-top: 0;
+  }
+  .card-tags {
+    padding: 0 24px 24px 24px;
+    border-top: 0;
+  }
+  .card-button {
+    margin-top: $uds-component-card-basic-button-margin-top;
+    padding: 0 24px 24px 24px;
+  }
+  .card-button .btn {
+    font-size: $uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small
+      $uds-component-button-padding-x-small;
+    line-height: 1rem;
+  }
+  .card > div:last-child {
+    padding-bottom: 24px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .col-lg-6 .card {
+    .card-img-top img,
+    .card-img-top {
+      height: 240px;
+    }
+  }
+  .col-lg-6 .card-horizontal .card-img-top {
+    height: auto;
+    max-width: 40%;
+  }
 }
 
 .card-sm {
   .card-body {
-    padding: $uds-component-card-basic-body-padding-sm;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-header {
-    padding: $uds-component-card-basic-header-padding-sm;
+    padding: 24px 24px 16px 24px;
   }
   .card-img-top img,
   .card-img-top {
-    height: $uds-component-card-basic-image-top-height-sm;
+    height: 160px;
   }
   .card-footer-link {
-    padding: $uds-component-card-basic-footer-link-padding-sm;
+    padding-right: 24px;
+    padding-left: 24px;
   }
   .card-button {
-    padding: $uds-component-card-basic-body-padding-sm;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  .card-link {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  .card-tags {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  .card-event-details {
+    padding-right: 24px;
+    padding-left: 24px;
   }
 }
 .card-lg {
@@ -116,7 +217,7 @@ Cards - Table of Contents
 }
 .card-footer-link a,
 .card-footer-link a:visited {
-  color: $black;
+  color: $uds-color-base-gray-7;
   text-decoration: none;
   font-weight: bold;
   display: block;
@@ -138,11 +239,15 @@ Cards - Table of Contents
 .card-story .card-header,
 .card-story .card-body,
 .card-story .card-button,
-.card-story .card-footer {
-  margin: $uds-component-card-story-body-margin;
+.card-story .card-footer,
+.card-story .card-tags,
+.card-story .card-footer,
+.card-story .card-link {
+  margin-left: 24px;
+  margin-right: 24px;
   background-color: $white;
-  padding: 24px;
-  padding-top: 0;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .card-story .card-header {
   padding-top: 24px;
@@ -166,43 +271,127 @@ Cards - Table of Contents
     margin: $uds-component-card-story-body-margin-sm;
   }
 }
+.card-story.card-horizontal .card-img-top {
+  margin-right: -32px;
+  position: relative;
+  z-index: 0;
+}
+.card-story.card-horizontal .card-content-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 100;
+  background-color: white;
+}
+.card-story.card-horizontal {
+  .card-header,
+  .card-body,
+  .card-button,
+  .card-footer,
+  .card-tags,
+  .card-footer,
+  .card-link {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: $white;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
 /*------------------------------------------------------------------
 4. Event Cards
 --------------------------------------------------------------------*/
 .card-event .card-header {
-  border-top: solid 4px $gold;
+  border-top: solid 8px $gold;
+}
+.card-event-details {
+  display: flex;
+  padding: $uds-component-card-basic-body-padding;
+  padding: 0 32px 24px 32px;
+}
+.card-event-details > div:first-child {
+  margin-right: 16px;
+}
+.card-event-icons {
+  display: flex;
+}
+.card-event-icons > div:first-child {
+  width: 16px;
+  margin-right: 8px;
+}
+.card-horizontal {
+  flex-direction: row;
+}
+@include media-breakpoint-down(md) {
+  .card-horizontal {
+    flex-direction: column;
+  }
+  .card-horizontal .card-img-top {
+    height: 160px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .card-event.card-horizontal .card-content-wrapper {
+    border-top: solid 8px #ffc627;
+    border-left: 0 !important;
+  }
+  .card-story.card-horizontal .card-content-wrapper {
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-top: -24px;
+    margin-bottom: 0;
+  }
+}
+.card-content-wrapper {
+  padding-bottom: 0 !important;
+}
+.card-story.card-horizontal .card-img-top {
+  margin-bottom: 0;
+}
+.card-horizontal .card-img-top {
+  height: auto;
+  max-width: 40%;
+}
+.card-event.card-horizontal .card-header {
+  border-top: 0;
+}
+.card-event.card-horizontal .card-content-wrapper {
+  border-left: solid 8px $gold;
 }
 
 /*------------------------------------------------------------------
 5. Foldable Cards
 --------------------------------------------------------------------*/
+@mixin btn-transparent {
+  border-color: transparent;
+  background-color: transparent;
+}
 
 .card-foldable {
-  border-color: $uds-color-base-gray-5;
+  border-color: $uds-color-base-gray-3;
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
   .card-header {
-    padding: 0;
+    padding: $uds-size-spacing-1;
+
+    &:hover {
+      background-color: $uds-color-base-gray-1;
+    }
 
     h4,
     h5 {
       margin: 0;
 
       a {
-        display: block;
-        padding: $uds-size-spacing-2 $uds-size-spacing-4;
+        padding: $uds-size-spacing-1 $uds-size-spacing-3;
+        color: $uds-color-base-gray-7;
         text-decoration: none;
-        color: $uds-color-base-gray-1;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
-
-        &:hover {
-          background-color: $uds-color-base-gray-7;
-        }
 
         svg.fa-chevron-up {
           margin-left: $uds-size-spacing-3;
@@ -215,12 +404,12 @@ Cards - Table of Contents
       }
     }
     + .card-body {
-      border-top: 1px solid $uds-color-base-gray-5;
+      border-top: 1px solid $uds-color-base-gray-3;
     }
   }
 
   .card-body {
-    background-color: $uds-color-base-gray-7;
+    background-color: $uds-color-base-gray-1;
 
     > p:first-child {
       margin-top: $uds-size-spacing-2;
@@ -235,48 +424,76 @@ Cards - Table of Contents
 /*------------------------------------------------------------------
 6. Foldable - Desktop Disable
 --------------------------------------------------------------------*/
+@mixin desktop-disable {
+  border-left: 1px solid $uds-color-base-gray-3;
+  .card-header {
+    h4 a {
+      padding-top: $uds-size-spacing-4;
+      padding-bottom: $uds-size-spacing-4;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    svg {
+      display: none;
+    }
+    span {
+      display: none;
+    }
+  }
+  .card-header + .card-body {
+    border-top: 0;
+  }
+  .card-body {
+    background-color: transparent;
+
+    > p:first-child {
+      margin-top: 0;
+    }
+  }
+  .collapse {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+    &:not(.show) {
+      display: block;
+    }
+  }
+  .collapsing {
+    position: relative;
+    height: unset !important;
+    overflow: hidden;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .card-foldable.desktop-disable-xl {
+    @include desktop-disable;
+  }
+}
 
 @include media-breakpoint-up(lg) {
-  .card-foldable.desktop-disable {
-    border-left: 1px solid $uds-color-base-gray-5;
-    .card-header {
-      h4 a {
-        padding-top: $uds-size-spacing-4;
-        padding-bottom: $uds-size-spacing-4;
+  .card-foldable.desktop-disable-lg {
+    @include desktop-disable;
+  }
+}
 
-        &:hover {
-          background-color: transparent;
-        }
-      }
-      svg {
-        display: none;
-      }
-      span {
-        display: none;
-      }
-    }
-    .card-header + .card-body {
-      border-top: 0;
-    }
-    .card-body {
-      background-color: transparent;
+@include media-breakpoint-up(md) {
+  .card-foldable.desktop-disable-md {
+    @include desktop-disable;
+  }
+}
 
-      > p:first-child {
-        margin-top: 0;
-      }
-    }
-    .collapse {
-      display: block;
-      height: auto !important;
-      visibility: visible;
-      &:not(.show) {
-        display: block;
-      }
-    }
-    .collapsing {
-      position: relative;
-      height: unset !important;
-      overflow: hidden;
+/*------------------------------------------------------------------
+7. Accordion
+--------------------------------------------------------------------*/
+.accordion {
+  .card.card-foldable {
+    border-bottom: 1px solid $uds-color-base-gray-3;
+
+    & + .card-foldable {
+      margin-top: $uds-size-spacing-3;
     }
   }
 }

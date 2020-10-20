@@ -1,13 +1,20 @@
 // css Bootstrap doesn't have variables for
 @import 'extends/misc';
+@import 'extends/alerts';
+@import 'extends/banners';
 @import 'extends/buttons';
 @import 'extends/icons';
+@import 'extends/images';
 @import 'extends/cards';
 @import 'extends/list';
 @import 'extends/headings';
+@import 'extends/dividers';
 @import 'extends/pager';
 @import 'extends/tabs';
 @import 'extends/heroes';
+@import 'extends/testimonials';
 @import 'extends/breadcrumb';
 @import 'extends/sidebar';
 @import 'extends/globalfooter';
+@import 'extends/blockquotes';
+@import 'extends/global-header';

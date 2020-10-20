@@ -16,9 +16,9 @@
       <div id="headerContainer">{% include "components-library/dist/templates/header.njk" %}</div>
       <h1 class="display-1">Unity Kitchen Sink Page</h1>
 
-      <!-- Bootstrap 4 HTML Components -->
+      <!-- Bootstrap 4 HTML Component©çs -->
       <section id="bootstrap-components">
-        <div class="jumbotron jumbotron-fluid">
+        <div>
           <div class="container">
             <h2 class="display-3">ASU Unity Bootstrap 4 Components</h2>
             <p class="lead">This section contains HTML elements styled and controlled by Bootstrap CSS and JS.</p>
@@ -27,7 +27,24 @@
         {% include "asu-web-standards-bootstrap4.njk" %}
       </section>
 
-      <!-- React Components-->
+      <!-- Preact Components -->
+      <section id="preact-components">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h2 class="display-3">ASU Unity Preact Components</h2>
+            <p class="lead">This section contains components rendered by PreactJS.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h3 class="display-4">Forms</h3>
+            <div id="formContainer"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- React Components
       <section id="react-components">
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
@@ -42,14 +59,7 @@
             <div id="gisFPContainer"></div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-12">
-            <h3 class="display-4">ASU Hero Image Carousel</h3>
-            <div id="heroContainer"></div>
-          </div>
-        </div>
-      </section>
+      </section>-->
     </div>
     <footer>
       {% include "scripts.njk" %}
