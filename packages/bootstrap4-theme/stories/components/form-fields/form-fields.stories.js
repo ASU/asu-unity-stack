@@ -1202,16 +1202,6 @@ Should only run and be packaged for storybook preview.
   <option>5</option>
 </select>
 </div>
-<div class="form-group">
-<label for="exampleFormControlSelect2">Example multiple select</label>
-<select multiple class="form-control" id="exampleFormControlSelect2">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
-</div>
 
 <div class="form-group">
 <label for="exampleFormControlSelect3">Example select with server-side validation</label>
@@ -1224,6 +1214,34 @@ Should only run and be packaged for storybook preview.
 </select>
 <small id="myValidSelectMsg" class="valid-feedback is-valid"><span title="Alert" class="fa fa-icon fa-check-circle"></span>Success message</small>
 </div>
+
+<div class="alert alert-info" role="alert">
+<div class="alert-icon">
+  <span title="Information" class="fa fa-icon fa-info-circle"></span>
+</div>
+<div class="alert-content">
+  Wherever possible, use checkboxes instead of multi-selects because of the
+  difficulty they present to people using assistive technologies and keyboard
+  only. For a deep dive into the issues with multi-selects as well as
+  recommendations, see <a href="https://www.24a11y.com/2019/select-your-poison/">
+  https://www.24a11y.com/2019/select-your-poison/<a>.
+</div>
+<div class="alert-close">
+  <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+</div>
+</div>
+
+<div class="form-group">
+<label for="exampleFormControlSelect2">Example multiple select</label>
+<select multiple class="form-control" id="exampleFormControlSelect2">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+</div>
+
 <div class="form-group">
 <label for="exampleFormControlSelect4"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Example multiple select - required with server-side invalidation</label>
 <select multiple class="form-control is-invalid" id="exampleFormControlSelect4" aria-describedby="myInvalidSelectMsg" aria-required="true" required>
