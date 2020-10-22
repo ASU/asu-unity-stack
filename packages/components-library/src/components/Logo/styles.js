@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { forwardRef } from "preact/compat";
@@ -82,7 +83,7 @@ const Logo = forwardRef(({brandLink, src, mobileSrc, alt, ...props}, ref) => {
   return (
     <a href={brandLink} class="navbar-brand" ref={ref} {...props} >
       <img class="vert" src={src} alt={alt} />
-      <img class="horiz" src={mobileSrc} />
+      <img class="horiz" src={mobileSrc} alt={alt} />
     </a>
   );
 });

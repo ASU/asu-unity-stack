@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
@@ -34,7 +35,7 @@ const Header = ({
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
 
   //State hooks for tracking and setting open/close search in universal nav
-  const [searchOpen, setSearchOpen] = useState(false); 
+  const [searchOpen, setSearchOpen] = useState(false);
 
   // State hooks for tracking and setting the max mobile nav menu height
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);

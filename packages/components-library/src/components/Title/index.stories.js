@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 
 import { h } from "preact";
 import { useState } from "preact/compat";
