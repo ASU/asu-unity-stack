@@ -118,4 +118,4 @@ const initHeader = (props, hydrate = false, target = "headerContainer") => {
   }
 };
 
-export { HydratePreact, RenderPreact, checkSSOCookie, initHeader, checkFirstLoad};
+export { HydratePreact, RenderPreact, checkSSOCookie, initHeader, checkFirstLoad, alterLoginUrl};
