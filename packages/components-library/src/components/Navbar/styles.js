@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { forwardRef } from "preact/compat";
@@ -21,7 +22,7 @@ const navbarTogglerStyles = breakpoint => css`
     border: 0;
     margin-right: 2rem;
     cursor: pointer;
-    align-self-center;
+    align-self: flex-start;
 
     @media (min-width: ${breakpoint}) {
       display: none;
