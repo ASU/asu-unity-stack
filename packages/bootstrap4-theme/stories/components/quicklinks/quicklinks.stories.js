@@ -12,7 +12,7 @@ export const quickLinks = () => `
           </button>
           <div class="separator"></div>
           <div id="collapseExample" class="card card-body collapse">
-            <nav class="nav" aria-label="Secondary">
+            <nav class="nav" aria-label="Same Page">
               <a class="nav-link" href="#"></span>Live long</a>
               <a class="nav-link" href="#"><span class="fas fa-hand-spock"></span>Prosper</a>
               <a class="nav-link" href="#"><span class="fa fa-lightbulb"></span>To boldly go</a>
