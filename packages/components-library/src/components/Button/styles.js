@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
@@ -33,22 +34,20 @@ import { forwardRef } from "preact/compat";
 
 const Button = forwardRef(
   (
-    {
-      disabled,
-      small,
-      medium,
-      large,
-      gold,
-      maroon,
-      dark,
-      light,
-      type,
-      ...props
-    },
+    { disabled, small, medium, large, gold, maroon, dark, type, ...props },
     ref
   ) => {
     const Element = type == "link" ? "a" : "button";
 
+    // If no other color set, default to light gray
+    const light = props.light
+      ? props.light
+      : () => {
+          if (!gold && !dark && !maroon) {
+            return true;
+          }
+          return false;
+        };
     return (
       <Element
         {...props}
@@ -134,6 +133,10 @@ const Button = forwardRef(
             css`
               color: ${ComponentButtonDarkColor};
               background-color: ${ComponentButtonDarkBackgroundColor};
+
+              :visited:not(.btn) {
+                color: ${ComponentButtonDarkColor};
+              }
             `}
 
         ${light &&
@@ -155,6 +158,8 @@ const Button = forwardRef(
 Button.propTypes = {
   type: PropTypes.string,
   href: PropTypes.string,
+  dark: PropTypes.bool,
+  light: PropTypes.bool,
   gold: PropTypes.bool,
   maroon: PropTypes.bool,
   disabled: PropTypes.bool,

@@ -49,7 +49,6 @@ module.exports.push({
     library: "AsuWeb[name]",
     umdNamedDefine: true,
   },
-
 });
 
 // production bundle

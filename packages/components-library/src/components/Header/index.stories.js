@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 
 import { h } from "preact";
 import {
@@ -11,6 +12,7 @@ import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
 
 import { Header } from ".";
 import { Fragment } from "preact/compat";
+import { AnimatedHeaderTitleExample } from "./examples";
 
 export default {
   component: Header,
@@ -36,14 +38,13 @@ export const base = () => (
     <Header
       loggedIn={boolean("loggedIn", false)}
       userName={text("userName", "")}
-      logoutLink={text("logoutLink", "/caslogout")}
-      loginLink={text("loginLink", "/cas")}
       navTree={object("navTree", BasicNavTree)}
       title={text(
         "title",
         "School of Computing, Informatics, and Decisions Systems Engineering"
       )}
-      unit={text("unit", "Ira A. Fulton Schools of Engineering")}
+      parentOrg={text("parentOrg", "Ira A. Fulton Schools of Engineering")}
+      parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       breakpoint={text("breakpoint", "Lg")}
     />
     <div style={"width:100%; height:200vh;"} />
@@ -62,7 +63,8 @@ export const breakpointXL = () => (
         "title",
         "School of Computing, Informatics, and Decisions Systems Engineering"
       )}
-      unit={text("unit", "Ira A. Fulton Schools of Engineering")}
+      parentOrg={text("parentOrg", "Ira A. Fulton Schools of Engineering")}
+      parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       breakpoint={text("breakpoint", "Xl")}
     />
     <div style={"width:100%; height:200vh;"} />
@@ -109,17 +111,18 @@ export const withMenuColumns = () => (
     <Header
       navTree={object("navTree", NavTreeMega)}
       title={text("title", "Ira A. Fulton Schools of Engineering")}
-      unit={text(
-        "unit",
+      parentOrg={text(
+        "parentOrg",
         "School of Computing, Informatics, and Decisions Systems Engineering"
       )}
+      parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       loggedIn={boolean("loggedIn", true)}
-      userName={text("userName", "Colton")}
+      userName={text("userName", "Sparky")}
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
     />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
-/*
-export const withStub = () => <Header dangerouslyGenerateStub={true} />;*/
+
+export const animatedTitle = () => <AnimatedHeaderTitleExample />;

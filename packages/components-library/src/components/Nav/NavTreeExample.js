@@ -13,7 +13,7 @@ const BasicNavTree = [
         {
           href: "https://www.asu.edu/?feature=newsevents",
 
-          text: "News/Events",
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -62,66 +62,28 @@ const BasicNavTree = [
         {
           classes: "border first",
           href: "https://www.asu.edu/map/",
-
           text: "Map",
         },
         {
           href: "https://campus.asu.edu/tempe/",
-
           text: "Tempe",
         },
         {
           href: "https://campus.asu.edu/west/",
-
           text: "West",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
-
           text: "Polytechnic",
         },
         {
-          href: "https://campus.asu.edu/downtown/",
-
-          text: "Downtown Phoenix",
-        },
-        {
           href: "https://asuonline.asu.edu/",
-
           text: "Online and Extended",
         },
         {
           href: "https://havasu.asu.edu/",
-
-          text: "Lake Havasu",
-        },
-        {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
-
-          classes: "border",
-          text: "Thunderbird",
-        },
-        {
-          href: "https://skysong.asu.edu/",
-
-          text: "Skysong",
-        },
-        {
-          href: "https://asuresearchpark.com/",
-
-          text: "Research Park",
-        },
-        {
-          href: "https://washingtoncenter.asu.edu/",
-
-          text: "Washington D.C.",
-        },
-        {
-          href: "https://wpcarey.asu.edu/mba/china-program/english/",
-
-          text: "China",
-        },
+          text: "Mauris viverra, sem nec",
+        }
       ],
     ],
   },
@@ -158,7 +120,7 @@ const NavTreeWithButtons = [
         {
           href: "https://www.asu.edu/?feature=newsevents",
 
-          text: "News/Events",
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -211,17 +173,17 @@ const NavTreeWithButtons = [
           classes: "border first",
           href: "https://www.asu.edu/map/",
 
-          text: "Map",
+          text: "Duis molestie commodo",
         },
         {
           href: "https://campus.asu.edu/tempe/",
 
-          text: "Tempe",
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://campus.asu.edu/west/",
 
-          text: "West",
+          text: "Massa nunc dictum nam venenatis",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
@@ -238,38 +200,6 @@ const NavTreeWithButtons = [
 
           text: "Online and Extended",
         },
-        {
-          href: "https://havasu.asu.edu/",
-
-          text: "Lake Havasu",
-        },
-        {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
-
-          classes: "border",
-          text: "Thunderbird",
-        },
-        {
-          href: "https://skysong.asu.edu/",
-
-          text: "Skysong",
-        },
-        {
-          href: "https://asuresearchpark.com/",
-
-          text: "Research Park",
-        },
-        {
-          href: "https://washingtoncenter.asu.edu/",
-
-          text: "Washington D.C.",
-        },
-        {
-          href: "https://wpcarey.asu.edu/mba/china-program/english/",
-
-          text: "China",
-        },
       ],
     ],
   },
@@ -280,6 +210,12 @@ const NavTreeWithButtons = [
 ];
 
 const NavTreeMega = [
+  {
+    href: "/",
+    text: "Home",
+    type: "icon",
+    class: "home",
+  },
   {
     text: "One Column",
     href: "/",
@@ -292,12 +228,12 @@ const NavTreeMega = [
         {
           href: "https://www.asu.edu/",
 
-          text: "Research",
+          text: "Mauris viverra, sem nec",
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
 
-          text: "Athletics",
+          text: "Massa nunc dictum nam venenatis",
         },
         {
           href: "https://www.asu.edu/?feature=alumni",
@@ -334,64 +270,63 @@ const NavTreeMega = [
         {
           href: "https://www.asu.edu/",
 
-          text: "Academics",
+          text: "Pellentesque ornare",
         },
         {
           href: "https://www.asu.edu/",
 
-          text: "Research",
+          text: "Curabitur viverra arcu nisl",
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
 
-          text: "Athletics",
+          text: "Aenean pharetra",
         },
         {
           href: "https://www.asu.edu/?feature=alumni",
 
-          text: "Alumni",
+          text: "Pellentesque",
         },
         {
           href: "https://www.asu.edu/?feature=giving",
 
-          text: "Giving",
+          text: "Donec sagittis nulla",
         },
         {
           href: "https://www.asu.edu/?feature=president",
 
-          text: "President",
+          text: "Quisque fringilla",
         },
         {
           href: "https://www.asu.edu/about",
 
-          text: "About ASU",
+          text: "Integer vel gravida lectus",
         },
       ],
       [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
-          text: "Column 2",
+          text: "Ut quis",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
-
-          text: "Academics",
+          text: "Nunc in libero odio",
         },
         {
           href: "https://www.asu.edu/?feature=research",
 
-          text: "Research",
+          text: "Maecenas quam elit",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
 
-          text: "Academics",
+          text: "Ut at vehicula neque",
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
           type: "button",
-          text: "CTA Action 2",
+          text: "Sed molestie",
         },
       ],
     ],
@@ -404,12 +339,12 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 1",
+          text: "Maecenas lacinia",
         },
         {
           href: "https://havasu.asu.edu/",
 
-          text: "Lake Havasu",
+          text: "Curabitur viverra arcu nisl",
         },
         {
           href:
@@ -450,22 +385,22 @@ const NavTreeMega = [
           classes: "border first",
           href: "https://www.asu.edu/map/",
 
-          text: "Map",
+          text: "Phasellus egestas nec est ",
         },
         {
           href: "https://campus.asu.edu/tempe/",
 
-          text: "Tempe",
+          text: "Pellentesque et mollis",
         },
         {
           href: "https://campus.asu.edu/west/",
 
-          text: "West",
+          text: "Cras congue",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
 
-          text: "Polytechnic",
+          text: "Cras ut malesuada nisl",
         },
         {
           href: "https://campus.asu.edu/downtown/",
@@ -656,6 +591,16 @@ const NavTreeMega = [
   {
     text: "Mega Menu (5 Col)",
     href: "#",
+    buttons: [
+      {
+        text: "CTA One",
+        href: "https://asu.edu"
+      },
+      {
+        text: "CTA Two",
+        href: "https://asu.edu"
+      }
+    ],
     items: [
       [
         {

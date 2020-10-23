@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { forwardRef } from "preact/compat";
@@ -6,7 +7,6 @@ import { css, cx } from "emotion";
 import {
   hiddenStyle,
   showReset,
-  srOnly,
   BreakpointLg,
   BreakpointXl,
   containerSize,
@@ -23,14 +23,95 @@ const navListStyles = breakpoint => css`
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: flex-end;
 
     a {
       text-decoration: none;
     }
 
     > li {
+      position: relative;
+      padding: 0;
+      border: 0;
+      margin-right: 0.5rem;
+
+      &.active,
+      &.dropdown-open, :hover {
+        > a:after {
+          width: 100%;
+        }
+      }
+
+      > a {
+        :after {
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+          content: "";
+          display: block;
+          height: 0.5rem;
+          background-color: #ffc627;
+          position: relative;
+          bottom: 0;
+          width: 0;
+          margin-left: 0;
+          top: .5rem;
+        }
+      }
+
+      @media (min-width: ${breakpoint}) {
+        position: static;
+
+        &.dropdown-open,
+        &.active {
+          > a:after {
+            width: calc(100% + 24px);
+            margin-left: 0;
+          }
+        }
+
+        > a {
+
+          line-height: 1rem;
+
+
+          box-sizing: content-box;
+          :hover {
+            :after {
+              width: calc(100% + 24px);
+              margin-left: 0;
+            }
+          }
+
+          :after {
+            transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+            content: '';
+            display: block;
+            height: .5rem;
+            background-color: #ffc627;
+            position: relative;
+            top: .5rem;
+            bottom: 0;
+            width: 0;
+            left: -.75rem;
+            margin-left: 0;
+          }
+        }
+      }
+
+      @media (max-width: ${breakpoint}) {
+
+        > a:after {
+          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+          content: "";
+          display: block;
+          height: 0.5rem;
+          background-color: #ffc627;
+        }
+      }
+
       > a {
         display: block;
+        padding: 0.5rem 0.75rem;
+        color: #191919;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -38,46 +119,6 @@ const navListStyles = breakpoint => css`
           &.open {
             transform: rotate(180deg);
           }
-        }
-
-        :after {
-          content: "";
-          position: relative;
-          display: block;
-          height: 0.5rem;
-          background-color: #ffc627;
-          bottom: 0;
-          width: 0;
-          transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-          bottom: -8px;
-          left: -8px;
-        }
-
-        &.dropdown-open:after {
-          width: 100%;
-          width: calc(100% + 16px);
-        }
-
-        @media (min-width: ${breakpoint}) {
-          :hover:after {
-            width: 100%;
-            width: calc(100% + 16px);
-          }
-        }
-      }
-    }
-
-    li {
-      position: relative;
-      margin-right: 16px;
-
-      a {
-        padding: 8px;
-        position: relative;
-
-        &.nav-item {
-          color: #191919;
-          display: block;
         }
       }
     }
@@ -104,7 +145,7 @@ const navListStyles = breakpoint => css`
         margin-right: 0;
 
         > a {
-          padding: 1rem 2rem 0.3rem 2rem;
+          padding: 1rem 1rem .5rem 1rem;
           justify-content: space-between;
           display: block;
           border-bottom: 1px solid #cccccc;
@@ -123,10 +164,6 @@ const navListStyles = breakpoint => css`
         :last-of-type {
           border-bottom: none;
         }
-      }
-
-      .icon-nav-item {
-        ${hiddenStyle}
       }
 
       .mobile-only {
@@ -182,21 +219,30 @@ const ButtonForm = props => {
 const dropdownContainerStyles = breakpoint => css`
   /** DdMenu CSS **/
   div.dropdown {
-    max-height: 0;
+    position: absolute;
     display: flex;
-    z-index: 999;
     justify-content: space-between;
     background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
     flex-wrap: nowrap;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-    margin: 0;
-    padding: 0 1rem;
-    border: 0;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     overflow: hidden;
+    margin: -1px 0 0 0;
+    flex-direction: column;
+
+    > div {
+      width: 100%;
+    }
 
     &.mega {
       width: 100%;
       left: 0;
+      border-right: none;
+      border-left: none;
 
       > div {
         max-width: ${containerSize};
@@ -204,7 +250,8 @@ const dropdownContainerStyles = breakpoint => css`
     }
 
     &.open {
-      max-height: 10000px;
+      visibility: visible;
+      opacity: 1;
     }
 
     h3 {
@@ -220,28 +267,33 @@ const dropdownContainerStyles = breakpoint => css`
     @media (max-width: ${breakpoint}) {
       padding-left: 3rem;
       flex-direction: column;
+      max-height: 0;
+      border: none;
 
       &.open {
         position: relative;
+        display: flex;
+        max-height: 10000px;
       }
     }
 
     @media (min-width: ${breakpoint}) {
       position: fixed;
 
+      &:not(.mega) .menu-column {
+        min-width: 16rem;
+      }
+
       > div {
         padding: 2rem;
         display: flex;
         margin: 0 auto;
+        justify-content: center;
       }
 
       &.open {
         border-bottom: 1px solid #d0d0d0;
       }
-
-      margin-top: 1px;
-      border-left: 1px solid #d0d0d0;
-      border-right: 1px solid #d0d0d0;
 
       h3 {
         margin-top: 0;
@@ -254,6 +306,7 @@ const DropdownContainer = props => {
   return (
     <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
       <div>{props.children}</div>
+      {props.buttons ? <div>{props.buttons}</div> : ""}
     </div>
   );
 };
@@ -268,10 +321,9 @@ const menuColumnStyles = breakpoint => css`
     flex-direction: column;
     border-right: 1px solid #d0d0d0;
     padding: 0 2rem;
-    margin-bottom: 3rem;
+    position: relative;
 
     :last-child {
-      margin-bottom: 0;
       border-right: none;
     }
 
@@ -280,6 +332,7 @@ const menuColumnStyles = breakpoint => css`
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
+      max-width: 282px;
 
       :last-of-type {
         margin-right: 0;
@@ -288,17 +341,11 @@ const menuColumnStyles = breakpoint => css`
       }
     }
 
-    > li {
-      padding: 0.5rem 0;
-    }
-
     @media (max-width: ${breakpoint}) {
       border-right: none;
       width: 100%;
       padding: 0;
       > li {
-        border-bottom: 1px solid #cccccc;
-
         :last-of-type {
           border: none;
         }
@@ -306,29 +353,16 @@ const menuColumnStyles = breakpoint => css`
     }
 
     @media (min-width: ${breakpoint}) {
-      width: 16rem;
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
 
+      flex: 1;
+      max-width: 282px;
+
       > li {
         padding: 0;
         margin: 0;
-
-        > .nav-item {
-          padding: 0;
-          padding: 0.5rem 0;
-          white-space: normal;
-
-          :visited {
-            color: #191919;
-          }
-
-          :hover {
-            color: #8c1d40;
-            text-decoration: underline;
-          }
-        }
       }
     }
   }
@@ -341,12 +375,6 @@ const MenuColumn = props => {
     </ul>
   );
 };
-
-const navItemStyles = css`
-  .nav-icon {
-    color: #191919;
-  }
-`;
 
 /**
  * Styles the top-level 'nav' component
@@ -398,7 +426,6 @@ const componentStyles = breakpoint => css`
     breakpoint
   )}
   ${navListStyles(breakpoint)}
-  ${navItemStyles}
 `;
 
 /**
