@@ -1,12 +1,6 @@
 jQuery(document).ready(function ($) {
   'use strict';
 
-  // Is the global header component indeed on this page?
-  // If not, stop executing.
-  if ($('#asu-header').length == 0) {
-    return;
-  }
-
   $(window).scroll(function () {
     if ($(this).scrollTop() > 0) {
       $('#asu-header').addClass('scrolled');
@@ -85,11 +79,11 @@ jQuery(document).ready(function ($) {
 
   function recordTopValue () {
     topValue = $(document).scrollTop();
-    $('body').addClass('dropdown-pinned');
+    $('#asu-header').closest('body').addClass('dropdown-pinned');
   }
 
   function restoreTopValue () {
-    $('body').removeClass('dropdown-pinned');
+    $('#asu-header').closest('body').removeClass('dropdown-pinned');
     topValue = $(document).scrollTop(topValue);
   }
 
