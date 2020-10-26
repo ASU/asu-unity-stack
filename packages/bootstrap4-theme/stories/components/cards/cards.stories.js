@@ -273,6 +273,21 @@ storiesOf('Components/Cards', module)
         </div> <!-- .card -->
 
       </div> <!-- .col -->
+
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <!-- No anchor tags -->
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body">Need a card tag that does not behave like an anchor? Try the <code>.badge</code> class. Be sure to include the modifier background class too.</div>
+          <div class="card-tags">
+            <span class="badge badge-gray-2">No button class</span>
+            <span class="badge badge-gray-2">No hover effects</span>
+            <span class="badge badge-gray-7 text-gray-1">Dark mode</span>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
     </div>
   </div>
   `)
