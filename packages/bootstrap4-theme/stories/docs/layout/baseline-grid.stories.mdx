@@ -1,0 +1,68 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Page Layout/Baseline Grid" />
+
+# Baseline Grid
+
+The UDS Boostrap 4 project ships with a recommended solution for limiting all content to a maximum width of 1920px. This max width restriction will help to prevent background textures and background images from bleeding out to the edge of large-format display monitors.
+
+Our basline grid is applied to the `body` element on the page and establishes a flexible 3 x 3 cell layout.
+
+```
+body {
+  display: grid;
+  grid-template-columns: 1fr fit-content(1920px) 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    "ASU-Header ASU-Header ASU-Header"
+    ". content ."
+    "ASU-Footer ASU-Footer ASU-Footer";
+}
+```
+
+- The entire top row is taken up by the global header element.
+- The middle cell of the middle row is the `content` grid area. It will behave like a `margin:auto` statement until the max width is reached.
+- The entire bottom row is taken up by the global footer element.
+- All rows are set to `height:auto` allowing them to expand and contract normally.
+
+Landmarks within the UDS-Boostrap codebase are assigned to specific areas within this grid.
+
+```
+#asu-header { grid-area: ASU-Header; }
+
+#asu-header + main { grid-area: content; }
+#asu-header + div { grid-area: content; }
+
+#asu-footer { grid-area: ASU-Footer; };
+body > footer { grid-area: ASU-Footer; }
+```
+
+## Recommended markup
+
+The global header markup requires the use of a wrapper element as a container for the remainder of the content on the page. This wrapper prevents the content from flowing under the global header. (The header is `position:fixed` to the top and is otherwise removed from the content flow.) This wrapper element is also the target for the middle row of our CSS grid and is constrained to a maximum width of 1920px.
+
+The recommended bare bones page markup should look like this:
+
+```
+<body>
+  <header id="asu-header" class="fixed-top">...</header>
+  <main>...</main>
+  <footer id="asu-footer">...</footer>
+</body>
+```
+
+We have added a few additional rules for legacy projects using this codebase.
+
+- Instead of using the `<main>` HTML tag, the given CSS will also target any generic `<div>` that is ajacent to `#asu-header.`
+- Early versions of the global footer failed to include the `#asu-footer` landmark. As a fall back, the given CSS will target any `<footer>` element that is an immediate child of the main `<body>` tag.
+
+## Project specific overrides
+
+Utilization of a baseline CSS grid is one of many solutions for this type of problem. Should you choose to impliment a different solution within your project, you may override the CSS grid declarations here by including a statement like the following after the initial CSS from this package has been loaded.
+
+```
+body { display:initial; }
+```
+
+If you are compiling the SASS directly into your project, you may also comment out or omit the first section of `/scss/extends/_layout.scss`.

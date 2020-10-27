@@ -1,0 +1,61 @@
+/*--------------------------------------------------------------
+# Basic Page Layout
+
+1. Baseline grid
+2. Page wrapper margins
+--------------------------------------------------------------*/
+
+body {
+  display: grid;
+  grid-template-columns: 1fr fit-content(1920px) 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    "ASU-Header ASU-Header ASU-Header"
+    ". content ."
+    "ASU-Footer ASU-Footer ASU-Footer";
+}
+
+#asu-header { grid-area: ASU-Header; }
+
+#asu-header + main { grid-area: content; }
+#asu-header + div { grid-area: content; }
+
+#asu-footer { grid-area: ASU-Footer; };
+body > footer { grid-area: ASU-Footer; }
+
+
+/*--------------------------------------------------------------
+2. Page wrapper margins
+--------------------------------------------------------------*/
+// Margins are needed to prevent content from flowing under the pinned global header.
+
+// Mobile
+#asu-header+div,
+#asu-header+main {
+  @include transition;
+  margin-top: 113px;
+}
+
+#asu-header.scrolled+div,
+#asu-header.scrolled+main {
+  @include transition;
+  margin-top: 97px;
+}
+
+// Desktop
+@include media-breakpoint-up(lg) {
+
+  #asu-header+div,
+  #asu-header+main {
+    @include transition;
+    margin-top: 137px;
+  }
+
+  #asu-header.scrolled+div,
+  #asu-header.scrolled+main {
+    @include transition;
+    margin-top: 81x;
+  }
+}
+

@@ -9,7 +9,7 @@ storiesOf('Components/Global Footer', module)
   })
 
   .add('Global elements only', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
@@ -51,7 +51,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Zero columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -113,7 +113,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('One column', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -189,7 +189,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('One column, no logo or social', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-columns">
       <div class="container" id="footer-columns">
@@ -244,7 +244,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Two columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -340,7 +340,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Three columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -457,7 +457,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Four columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -595,7 +595,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Five columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -754,7 +754,7 @@ storiesOf('Components/Global Footer', module)
   `)
 
   .add('Six columns', () => `
-  <footer role="contentinfo">
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">

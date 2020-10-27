@@ -8,7 +8,6 @@
 5. Main Menu, Mobile
 6. Main Menu, Mobile Only
 7. Main Menu, Desktop
-8. Page Content
 --------------------------------------------------------------*/
 
 $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
@@ -884,39 +883,5 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
     .navbar-mobile-footer {
       display: none;
     }
-  }
-}
-
-/*--------------------------------------------------------------
-8. Page Wrapper
---------------------------------------------------------------*/
-// Margins are needed to prevent content from flowing under global header.
-
-// Mobile
-#asu-header+div,
-#asu-header+main {
-  @include transition;
-  margin-top: 113px;
-}
-
-#asu-header.scrolled+div,
-#asu-header.scrolled+main {
-  @include transition;
-  margin-top: 97px;
-}
-
-// Desktop
-@include media-breakpoint-up(lg) {
-
-  #asu-header+div,
-  #asu-header+main {
-    @include transition;
-    margin-top: 137px;
-  }
-
-  #asu-header.scrolled+div,
-  #asu-header.scrolled+main {
-    @include transition;
-    margin-top: 81x;
   }
 }
