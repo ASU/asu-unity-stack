@@ -32,10 +32,10 @@ storiesOf('Components/Tabs', module)
   `)
 
   .add('Mobile', () => `
-<div class="container-fluid">
+<div class="container">
 <div class="row">
 
-<div class="col-6">
+<div class="col-12 col-md-8 col-lg-10 col-xl-12">
 
 <nav class="mobile-tabs">
 <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">

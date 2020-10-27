@@ -8,7 +8,7 @@
     $('.scroll-control-prev').click(function(e) {
       slideNav(this, e, 1);
     });
-
+    $(".mobile-tabs .scroll-control-prev").hide();
   });
   function setControlVisibility(clicked) {
     var parentContainer = $(clicked).closest(".mobile-tabs");

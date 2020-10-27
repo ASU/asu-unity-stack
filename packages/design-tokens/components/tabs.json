@@ -2,7 +2,7 @@
   "component": {
     "tab": {
       "color": {
-        "value": "{color.base.black.value}"
+        "value": "rgba(0,0,0,0)"
       },
       "border-width": {
         "value": "0"
