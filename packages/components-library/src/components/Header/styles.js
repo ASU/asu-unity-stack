@@ -141,6 +141,7 @@ const universalStyles = breakpoint => css`
       transition: none;
       height: auto;
 
+
       &.mobile-open {
         z-index: 998;
         width 100%;

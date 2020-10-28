@@ -54,13 +54,7 @@ const Header = ({
     setSrollPosition(position);
   };
 
-  // Get primary nav top padding value from theme
-  const tpadding = parseInt(S.primaryNavTopPadding, 10);
 
-  // Use refs to track height of header dom elements
-  const universalRef = useRef(null);
-  const logoRef = useRef(null);
-  const titleRef = useRef(null);
 
   // Attach scroll event lister which will update the scrollPosition state
   // when window scrolled
@@ -72,21 +66,27 @@ const Header = ({
     };
   }, []);
 
+  // Refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
   useEffect(() => {
     if (width < bpointInt && mobileOpen) {
-      window.setTimeout(() => {
+      //window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
         const tHeight = titleRef.current.clientHeight;
+        // Get primary nav top padding value from theme
+        const tpadding = parseInt(S.primaryNavTopPadding, 10);
 
-        const pHeight = lHeight + tHeight + tpadding;
-
+        // top padding x2 - 24px margin under title and 24px padding above title
+        const pHeight = lHeight + tHeight + tpadding * 2;
         const newHeight = height - uHeight - pHeight;
-
         setMaxMobileNavHeight(newHeight);
-      }, 500);
+      //}, 100);
     }
   }, [height, width, mobileOpen]);
 
