@@ -90,8 +90,6 @@ const Header = ({
     }
   }, [height, width, mobileOpen]);
 
-  const animate = animateTitle === true;
-
   return (
     <S.Header
       breakpoint={bpoint}
@@ -127,7 +125,7 @@ const Header = ({
         ) : (
           <>
             <Title
-              {...{ parentOrg, parentOrgUrl, baseUrl, animate }}
+              {...{ parentOrg, parentOrgUrl, baseUrl, animate: animateTitle }}
               ref={titleRef}
             >
               {title}

@@ -449,17 +449,15 @@ crossorigin="anonymous"></script>
 
   console.log(componentsLibrary, 'Web object');
 
+  //window.setTimeout(function () {
   componentsLibrary.initHeader(props);
-
-  /*window.setTimeout(function () {
-
-  }, 10 * 1000);*/
+  // }, 10 * 1000);
 
   // Initialize cookie consent banner
   AsuCookieConsent.init();
 
   console.log(componentForms, 'componentForms');
-
+  /** Form Component testProps **/
   const testProps = {
     title: "Daily Health Check Reminders",
     description: `How would you like to be reminded to take your daily health check? <br />
