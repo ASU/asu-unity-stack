@@ -45,7 +45,7 @@ const shared = {
     "prop-types": {
       commonjs: 'prop-types',
       commonjs2: 'prop-types',
-      amd: 'prop-types',
+      amd: 'propTypes',
       root: 'propTypes'
     }
   }
@@ -75,15 +75,6 @@ module.exports.push({
     umdNamedDefine: true
   },
   optimization: {
-    /*splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all'
-        }
-      },
-    },*/
     minimizer: [new TerserPlugin({
       parallel: true,
       terserOptions: {
