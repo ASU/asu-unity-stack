@@ -6,13 +6,11 @@ import { useEffect, useState } from "preact/compat";
 import Glide from "@glidejs/glide";
 import { clearDecorators } from "@storybook/html/dist/client/preview";
 
-// Example from components-library Button:
-//import { h } from "preact";
-//import {forwardRef} from "preact/compat";
-//import * as S from "./styles";
-//import PropTypes from "prop-types"
+// Include styles for @glidejs/glide
+import "./styles.scss";
 
-// Based on this approach: https://stackoverflow.com/questions/61596516/glide-js-with-react
+// Initially based on this approach:
+// https://stackoverflow.com/questions/61596516/glide-js-with-react
 
 // SCSS files for @glidejs/glide are included via .storybook/preview.js
 // TODO Confirm ^ is best approach (and fully functional).
@@ -25,26 +23,36 @@ const sliderConfiguration = {
 };
 
 // TODO Bring over Bs4-theme components (package.json dependency + import statment ?), and then add...
+// OR peerDependencies in package.json?
 //   Props for array of Card items...
 
 const AsuCarousel = () => {
   console.log("hit AsuCarousel");
 
-  // TODO doesn't seem to be triggered with useEffect... but kinda works with current code but doesn't refresh successfully.
-  // Imported from preact/hooks
-  //  useEffect(() => {
-  //    console.log("hit AsuCarousel useEffect");
-  //    return () => {
+  // TODO doesn't seem to be triggered with useEffect...
+  // Works on first load with current code but doesn't refresh successfully.
+  //   Better approach using window ? Learn about that.
+  //   Or https://www.npmjs.com/package/preact-hot-loader ?
   document.addEventListener("DOMContentLoaded", function () {
-    /*Your chartist initialization code here*/
     console.log("sliiiiiider");
     const slider = new Glide(".glide", sliderConfiguration);
     slider.mount();
     console.log(slider);
   });
-  //    };
-  //  });
+
+  // Imported from preact/hooks
+  /*
+  useEffect(() => {
+    console.log("hit AsuCarousel useEffect");
+    return () => {
+      console.log("sliiiiiider");
+      const slider = new Glide(".glide", sliderConfiguration);
+      slider.mount();
+      console.log(slider);
+    };
+  }, []);
   //}, [slider]);
+  */
 
   // TODO should be able to use empty tags instead of fragments
   return (

@@ -1,2 +1,9 @@
-// Required Core Stylesheet
-@import "../../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss";
+// Required Core Stylesheet for @glidejs/glide - Import with loader inline.
+import "!style-loader!css-loader!sass-loader!../../../../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss";
+
+// Optional styles can be included ala...
+//import "!style-loader!css-loader!sass-loader!../../../../../node_modules/@glidejs/glide/src/assets/sass/glide.theme.scss";
+// TODO Copy that and drop into this directory and adapt for our needs.
+
+// Alternatively, Core scss for @glidejs/glide can be included from preview.js with
+//import "!style-loader!css-loader!sass-loader!../../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss";
