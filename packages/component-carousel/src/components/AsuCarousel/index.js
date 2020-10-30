@@ -4,7 +4,6 @@ import { h, Fragment, render, Component } from "preact";
 import { useEffect, useState } from "preact/compat";
 
 import Glide from "@glidejs/glide";
-import { clearDecorators } from "@storybook/html/dist/client/preview";
 
 // Include styles for @glidejs/glide
 import "./styles.scss";

@@ -3,7 +3,6 @@
 import { h } from "preact";
 
 import { AsuCarousel } from ".";
-import Glide from "@glidejs/glide";
 
 export default {
   component: AsuCarousel,
