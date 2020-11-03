@@ -1,16 +1,9 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
 import { h } from "preact";
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
-import {
-  containerSize,
-  primaryNavTopPadding,
-  BreakpointXl,
-  BreakpointLg,
-  srOnly,
-} from "../../theme";
+import { css } from "emotion";
+
 
 /**
  * Logo

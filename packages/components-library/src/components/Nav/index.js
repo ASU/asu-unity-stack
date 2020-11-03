@@ -1,6 +1,5 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
 import { h } from "preact";
 import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
@@ -16,13 +15,11 @@ import * as S from "./styles";
 const Nav = ({
   navTree,
   width,
-  height,
   mobileOpen,
   maxMobileHeight,
   buttons,
   injectStyles,
-  breakpoint,
-  ...props
+  breakpoint
 }) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
@@ -139,6 +136,7 @@ const Nav = ({
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
+
     const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
@@ -293,7 +291,7 @@ const Nav = ({
         // render buttons if props is passed
         buttons.length > 0 && (
           <S.ButtonForm>
-            {buttons.map((item, index) => {
+            {buttons.map((item) => {
               let color = item.color ? item.color : "maroon";
 
               // Return a single nav item if there are no submenus

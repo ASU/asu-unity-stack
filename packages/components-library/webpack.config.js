@@ -51,7 +51,7 @@ const shared = {
     "prop-types": {
       commonjs: 'prop-types',
       commonjs2: 'prop-types',
-      amd: 'prop-types',
+      amd: 'propTypes',
       root: 'propTypes'
     }
   }

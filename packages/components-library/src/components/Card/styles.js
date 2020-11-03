@@ -1,6 +1,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
+/* eslint-disable react/no-danger */
 import { h } from "preact";
 import { cx, css } from "emotion";
 import { Icon } from "../Icons";

@@ -6,10 +6,7 @@ import { forwardRef } from "preact/compat";
 import { cx, css } from "emotion";
 import {
   containerSize,
-  primaryNavTopPadding,
-  BreakpointXl,
   BreakpointLg,
-  srOnly,
 } from "../../theme";
 
 /**

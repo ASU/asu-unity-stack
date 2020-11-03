@@ -17,7 +17,7 @@ const FoldableCard = ({ head, children, id, ...props }) => {
       <S.FoldableCardHeader
         show={open}
         id={id}
-        onClick={e => {
+        onClick={() => {
           toggle();
         }}
       >

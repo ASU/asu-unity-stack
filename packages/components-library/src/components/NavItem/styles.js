@@ -8,10 +8,6 @@ import { css, cx } from "emotion";
 import { Button } from "../";
 import {
   hiddenStyle,
-  showReset,
-  srOnly,
-  BreakpointLg,
-  BreakpointXl,
 } from "../../theme";
 
 const navItemStyles = breakpoint => css`

@@ -1,6 +1,5 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
@@ -88,7 +87,7 @@ const Header = ({
         setMaxMobileNavHeight(newHeight);
       //}, 100);
     }
-  }, [height, width, mobileOpen]);
+  }, [height, width, mobileOpen, bpointInt]);
 
   return (
     <S.Header

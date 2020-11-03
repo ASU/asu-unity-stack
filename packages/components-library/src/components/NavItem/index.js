@@ -13,7 +13,6 @@ import * as S from "./styles";
  */
 const NavItem = forwardRef(
   ({ onFocus, type, children, href, ...props }, ref) => {
-    let inner = "";
 
     switch (type) {
       case "button":

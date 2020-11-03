@@ -1,8 +1,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
 import { h } from "preact";
-import { forwardRef } from "preact/compat";
 import { css, cx } from "emotion";
 import { containerSize, primaryNavTopPadding } from "../../theme";
 import { Icon } from "../Icons";
@@ -110,7 +108,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class="navbar-component">
+    <div class={cx("navbar-component", props.class)} >
       <div>{children}</div>
     </div>
   );

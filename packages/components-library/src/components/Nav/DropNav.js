@@ -1,6 +1,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { h } from "preact";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
@@ -65,7 +65,7 @@ const DropNav = forwardRef(
           {...{ open: isOpen }}
           class={mega ? "mega" : ""}
           {...(buttons ? { buttons: buttons.map((item, index) => {
-            return <Button href={item.href} color={item.color}>{item.text}</Button>
+            return <Button href={item.href} {...item.color ? {[item.color]: true} : {}} medium>{item.text}</Button>
           }) } : {})}
         >
           {children}

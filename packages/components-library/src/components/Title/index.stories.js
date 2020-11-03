@@ -2,9 +2,7 @@
 /** @jsxFrag Fragment */
 
 import { h } from "preact";
-import { useState } from "preact/compat";
 import { Title } from ".";
-import { css } from "emotion";
 import { TitleStyled } from "./styles";
 import { AnimatedTitleExample } from "./examples";
 

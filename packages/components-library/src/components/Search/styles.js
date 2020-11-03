@@ -3,11 +3,6 @@
 /* eslint-disable react/prop-types */
 import { h } from "preact";
 import { cx, css } from "emotion";
-import Tokens, {
-  mobileBreak,
-  containerSize,
-  srOnly,
-} from "../../theme";
 
 /** Search */
 const searchStyles = breakpoint => css`
