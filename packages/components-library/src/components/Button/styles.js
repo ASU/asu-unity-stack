@@ -39,11 +39,6 @@ const Button = forwardRef(
   ) => {
     const Element = type == "link" ? "a" : "button";
 
-
-    console.log(gold,  'GOLD');
-    console.log(maroon, 'maroon');
-    console.log(props, 'the props');
-
     let light = props.light ? props.light : false;
 
     if (gold === undefined && dark === undefined && maroon === undefined) {
