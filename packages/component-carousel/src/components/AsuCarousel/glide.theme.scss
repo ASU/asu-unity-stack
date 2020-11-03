@@ -1,0 +1,127 @@
+//@import 'variables';
+// Copied variables.scss content here locally.
+$glide-class: "glide" !default;
+$glide-element-separator: "__" !default;
+$glide-modifier-separator: "--" !default;
+
+.#{$glide-class} {
+  $this: &;
+
+  $se: $glide-element-separator;
+  $sm: $glide-modifier-separator;
+
+  // Arrows.
+  &#{$se}arrows {
+    position: absolute;
+    display: inline;
+    left: 50%;
+    bottom: -10rem; // Place below.
+    z-index: 2;
+    margin-left: -5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
+
+    //&#{$se}arrow {
+    .glide__arrow {
+      color: red; //white;
+      text-transform: uppercase;
+      //padding: 9px 12px;
+      width: 4rem;
+      height: 4rem;
+      margin: 0 0.5rem;
+      background-color: transparent;
+      border: 2px solid red; // rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      font-size: 2rem;
+      box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+      text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+      opacity: 1;
+      cursor: pointer;
+      transition: opacity 150ms ease, border 300ms ease-in-out;
+      transform: translateY(-50%);
+      line-height: 1;
+
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        border-color: white;
+      }
+
+      &#{$sm}left {
+        left: 2em;
+      }
+
+      &#{$sm}right {
+        right: 2em;
+      }
+
+      &#{$sm}disabled {
+        opacity: 0.33;
+      }
+    }
+  }
+
+  // Bullets
+  &#{$se}bullets {
+    position: absolute;
+    z-index: 2;
+    bottom: -2rem;
+    left: 50%;
+    display: inline-flex;
+    list-style: none;
+    transform: translateX(-50%);
+  }
+
+  &#{$se}bullet {
+    background-color: red; // rgba(255, 255, 255, 0.5);
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    line-height: 0;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+    margin: 0 0.25em;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover,
+    &:focus {
+      border: 2px solid white;
+      background-color: maroon; // rgba(255, 255, 255, 0.5);
+    }
+
+    &#{$sm}active {
+      background-color: maroon; //white;
+    }
+  }
+
+  &#{$sm}swipeable {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+
+  &#{$sm}dragging {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
+
+/* TODO
+- Patch in "CDN" style link of bootstrap4-theme CSS into preview-head.js
+- Do the same for fontawesome?
+  - button content
+- Work out props system for
+  - GlideJS options
+  - Items to include into carousel. Just do an array of blobs, how about.
+- Partial slide styles
+- Mobile slide styling (test with default resizing)
+
+
+
+*/

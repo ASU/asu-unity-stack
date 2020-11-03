@@ -8,33 +8,74 @@ import Glide from "@glidejs/glide";
 // Include styles for @glidejs/glide
 import "./styles.scss";
 
+// TODO import bs4-theme css from QA site like a CDN?
+
 // Initially based on this approach:
 // https://stackoverflow.com/questions/61596516/glide-js-with-react
-
-// SCSS files for @glidejs/glide are included via .storybook/preview.js
-// TODO Confirm ^ is best approach (and fully functional).
-
-const sliderConfiguration = {
-  gap: 20,
-  perView: 3,
-  startAt: 0,
-  type: "slider",
-};
 
 // TODO Bring over Bs4-theme components (package.json dependency + import statment ?), and then add...
 // OR peerDependencies in package.json?
 //   Props for array of Card items...
 
-const AsuCarousel = () => {
-  console.log("hit AsuCarousel");
+const AsuCarousel = props => {
+  console.log("props", props);
 
-  // TODO doesn't seem to be triggered with useEffect...
+  // TODO Only prop for the slider configs we expose is perView.
+
+  const sliderConfig = {
+    type: "carousel",
+    focusAt: "center",
+    gap: 24, // Space between slides... may be impacted by viewport size.
+    keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
+    startAt: 0,
+    swipeThreshold: 80, // Distance required for swipe to change slide.
+    dragThreshold: 120, // Distance for mouse drag to change slide.
+    perTouch: 1, // Number of slides that can be moved per each swipe/drag.
+    //perView: props.perView, // See breakpoints
+    //peek: { before: 124, after: 124 }, // See breakpoints
+    breakpoints: {
+      576: {
+        // BS4 sm
+        perView: 1,
+        peek: { after: 62 },
+      },
+      768: {
+        // BS4 md
+        perView: props.perView > 1 ? 2 : 1,
+        peek: { before: 124, after: 124 },
+      },
+      992: {
+        // BS4 xl
+        perView: props.perView > 1 ? props.perView : 1,
+        peek: { before: 124, after: 124 },
+      },
+      1260: {
+        // BS4 xl
+        perView: props.perView > 1 ? props.perView : 1,
+        peek: { before: 124, after: 124 },
+      },
+      1400: {
+        perView: props.perView > 1 ? props.perView : 1,
+        peek: { before: 124, after: 124 },
+      },
+      1920: {
+        perView: props.perView > 1 ? props.perView : 1,
+        peek: { before: 124, after: 124 },
+      },
+    },
+  };
+
+  //const sliderConfig = props.configs ? props.configs : sliderConfiguration; // If not provided, fallback.
+
+  // TODO Isn't triggered with useEffect...
+
   // Works on first load with current code but doesn't refresh successfully.
   //   Better approach using window ? Learn about that.
   //   Or https://www.npmjs.com/package/preact-hot-loader ?
   document.addEventListener("DOMContentLoaded", function () {
     console.log("sliiiiiider");
-    const slider = new Glide(".glide", sliderConfiguration);
+    const slider = new Glide(".glide", sliderConfig);
+    //const slider = new Glide(".glide", sliderConfiguration);
     slider.mount();
     console.log(slider);
   });
@@ -53,224 +94,17 @@ const AsuCarousel = () => {
   //}, [slider]);
   */
 
+  const listItems = props.carouselItems.map(sliderItem => (
+    <li key={sliderItem.id.toString()} className="glide__slide slider">
+      {sliderItem.item}
+    </li>
+  ));
+
   // TODO should be able to use empty tags instead of fragments
   return (
     <div className="glide">
       <div className="glide__track" data-glide-el="track">
-        <ul className="glide__slides">
-          <li className="glide__slide slider">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://source.unsplash.com/random/400x400"
-                alt="Card image cap"
-              ></img>
-              <div className="card-header">
-                <h3 className="card-title">Card One default title</h3>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua eiusmod tempo.{" "}
-                </p>
-              </div>
-              <div className="card-event-details">
-                <div className="card-event-icons">
-                  <div>
-                    <i className="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div>Downtown Phoenix campus</div>
-                </div>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-sm btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-link">
-                <a href="#" className="">
-                  Regular text link here
-                </a>
-              </div>
-              <div className="card-tags">
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 2
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 3
-                </a>
-              </div>
-            </div>
-          </li>
-          <li className="glide__slide slider">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://source.unsplash.com/random/400x400"
-                alt="Card image cap"
-              ></img>
-              <div className="card-header">
-                <h3 className="card-title">Card Two default title</h3>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua eiusmod tempo.
-                </p>
-              </div>
-              <div className="card-event-details">
-                <div className="card-event-icons">
-                  <div>
-                    <i className="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div>Downtown Phoenix campus</div>
-                </div>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-sm btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-link">
-                <a href="#" className="">
-                  Regular text link here
-                </a>
-              </div>
-              <div className="card-tags">
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 2
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 3
-                </a>
-              </div>
-            </div>
-          </li>
-          <li className="glide__slide slider">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://source.unsplash.com/random/400x400"
-                alt="Card image cap"
-              ></img>
-              <div className="card-header">
-                <h3 className="card-title">Card Three default title</h3>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua eiusmod tempo.
-                </p>
-              </div>
-              <div className="card-event-details">
-                <div className="card-event-icons">
-                  <div>
-                    <i className="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div>Downtown Phoenix campus</div>
-                </div>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-sm btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-link">
-                <a href="#" className="">
-                  Regular text link here
-                </a>
-              </div>
-              <div className="card-tags">
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 2
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 3
-                </a>
-              </div>
-            </div>
-          </li>
-          <li className="glide__slide slider">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src="https://source.unsplash.com/random/400x400"
-                alt="Card image cap"
-              ></img>
-              <div className="card-header">
-                <h3 className="card-title">Card Four default title</h3>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua eiusmod tempo.
-                </p>
-              </div>
-              <div className="card-event-details">
-                <div className="card-event-icons">
-                  <div>
-                    <i className="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div>Downtown Phoenix campus</div>
-                </div>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-button">
-                <a href="#" className="btn btn-sm btn-dark">
-                  Button link here
-                </a>
-              </div>
-              <div className="card-link">
-                <a href="#" className="">
-                  Regular text link here
-                </a>
-              </div>
-              <div className="card-tags">
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 2
-                </a>{" "}
-                <a className="btn btn-tag btn-tag-alt-white" href="#">
-                  test tag 3
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul className="glide__slides">{listItems}</ul>
       </div>
       <div className="glide__bullets" data-glide-el="controls[nav]">
         <button className="glide__bullet" data-glide-dir="=0"></button>
@@ -280,10 +114,10 @@ const AsuCarousel = () => {
       </div>
       <div className="glide__arrows" data-glide-el="controls">
         <button className="glide__arrow glide__arrow--prev" data-glide-dir="<">
-          prev
+          &lt;
         </button>
         <button className="glide__arrow glide__arrow--next" data-glide-dir=">">
-          next
+          &gt;
         </button>
       </div>
     </div>

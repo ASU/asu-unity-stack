@@ -4,87 +4,247 @@ import { h } from "preact";
 
 import { AsuCarousel } from ".";
 
+const myCarouselItems = [
+  {
+    id: 1,
+    item: (
+      <div className="card">
+        <img
+          className="card-img-top"
+          src="https://source.unsplash.com/random/384x200"
+          alt="Card image cap"
+        ></img>
+        <div className="card-header">
+          <h3 className="card-title">Card One default title</h3>
+        </div>
+        <div className="card-body">
+          <p className="card-text">
+            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua eiusmod tempo.{" "}
+          </p>
+        </div>
+        <div className="card-event-details">
+          <div className="card-event-icons">
+            <div>
+              <i className="fas fa-map-marker-alt"></i>
+            </div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-sm btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-link">
+          <a href="#" className="">
+            Regular text link here
+          </a>
+        </div>
+        <div className="card-tags">
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 2
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 3
+          </a>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 2,
+    item: (
+      <div className="card">
+        <img
+          className="card-img-top"
+          src="https://source.unsplash.com/random/384x200"
+          alt="Card image cap"
+        ></img>
+        <div className="card-header">
+          <h3 className="card-title">Card Two default title</h3>
+        </div>
+        <div className="card-body">
+          <p className="card-text">
+            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua eiusmod tempo.{" "}
+          </p>
+        </div>
+        <div className="card-event-details">
+          <div className="card-event-icons">
+            <div>
+              <i className="fas fa-map-marker-alt"></i>
+            </div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-sm btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-link">
+          <a href="#" className="">
+            Regular text link here
+          </a>
+        </div>
+        <div className="card-tags">
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 2
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 3
+          </a>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 3,
+    item: (
+      <div className="card">
+        <img
+          className="card-img-top"
+          src="https://source.unsplash.com/random/384x200"
+          alt="Card image cap"
+        ></img>
+        <div className="card-header">
+          <h3 className="card-title">Card Three default title</h3>
+        </div>
+        <div className="card-body">
+          <p className="card-text">
+            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua eiusmod tempo.{" "}
+          </p>
+        </div>
+        <div className="card-event-details">
+          <div className="card-event-icons">
+            <div>
+              <i className="fas fa-map-marker-alt"></i>
+            </div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-sm btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-link">
+          <a href="#" className="">
+            Regular text link here
+          </a>
+        </div>
+        <div className="card-tags">
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 2
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 3
+          </a>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 4,
+    item: (
+      <div className="card">
+        <img
+          className="card-img-top"
+          src="https://source.unsplash.com/random/384x200"
+          alt="Card image cap"
+        ></img>
+        <div className="card-header">
+          <h3 className="card-title">Card Four default title</h3>
+        </div>
+        <div className="card-body">
+          <p className="card-text">
+            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua eiusmod tempo.{" "}
+          </p>
+        </div>
+        <div className="card-event-details">
+          <div className="card-event-icons">
+            <div>
+              <i className="fas fa-map-marker-alt"></i>
+            </div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-button">
+          <a href="#" className="btn btn-sm btn-dark">
+            Button link here
+          </a>
+        </div>
+        <div className="card-link">
+          <a href="#" className="">
+            Regular text link here
+          </a>
+        </div>
+        <div className="card-tags">
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 2
+          </a>{" "}
+          <a className="btn btn-tag btn-tag-alt-white" href="#">
+            test tag 3
+          </a>
+        </div>
+      </div>
+    ),
+  },
+];
+
 export default {
   component: AsuCarousel,
   title: "Carousel",
 };
 
-export const base = () => <AsuCarousel></AsuCarousel>;
-/*
-export const base = () => (
-  <FoldableCard
-    id="foldable-card-1"
-    head={
-      <H4>
-        <span class="fa fa-mobile" />
-        <a
-
-        >
-          ASU Mobile App (push notifications)
-        </a>
-      </H4>
-    }
-  >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud
-  </FoldableCard>
+export const ThreeItemCarousel = () => (
+  <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
 );
-*/
-
-/*
-import { AsuCarousel, window } from "global";
-import { AsuCarousel } from "."; // <-- path wrong now - co-locate story with component.
-import Glide from "@glidejs/glide";
-
-// TODO throws errors - scss import failing.
-//import "../src/styles.scss";
-
-export default {
-  title: "Carousel",
-};
-
-export const BaseCarousel = () => {
-  window.addEventListener("DOMContentLoaded", event => {
-    // TODO this is done in the component now - see src/index.js
-    //new Glide(".glide").mount();
-  });
-
-  // TODO IS the issue that the mount needs to be on the inner component?
-  return `
-<div>hey
-  <AsuCarousel></AsuCarousel>
-</div>`;
-*/
-
-/*
-  return `
-  <!-- Carousel structure -->
-  <div class="glide">
-
-    <!-- Main carousel -->
-    <div class="glide__track" data-glide-el="track">
-      <ul class="glide__slides">
-        <li class="glide__slide">0</li>
-        <li class="glide__slide">1</li>
-        <li class="glide__slide">2</li>
-      </ul>
-    </div>
-
-    <!-- Arrow Controls -->
-    <div class="glide__arrows" data-glide-el="controls">
-      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-      <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-    </div>
-
-    <!-- Bullet Controls -->
-    <div class="glide__bullets" data-glide-el="controls[nav]">
-      <button class="glide__bullet" data-glide-dir="=0"></button>
-      <button class="glide__bullet" data-glide-dir="=1"></button>
-      <button class="glide__bullet" data-glide-dir="=2"></button>
-    </div>
-
-  </div>
-`;
-};
-*/
+export const TwoItemCarousel = () => (
+  <AsuCarousel perView="2" carouselItems={myCarouselItems}></AsuCarousel>
+);
+export const OneItemCarousel = () => (
+  <AsuCarousel perView="1" carouselItems={myCarouselItems}></AsuCarousel>
+);
+export const BaseCarousel = () => (
+  <AsuCarousel carouselItems={myCarouselItems}></AsuCarousel>
+);
