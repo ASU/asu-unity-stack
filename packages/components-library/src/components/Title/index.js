@@ -19,7 +19,6 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
    * the first page load, then we set the 'active' state to animate the header with gold highlight.
    */
   useEffect(() => {
-
     if (animate === true || animate === false) {
       setActive(animate);
       return;
@@ -38,7 +37,7 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
         setActive(true);
       }
     }
-  }, [active, animate]);
+  }, [active, animate, baseUrl]);
 
   return (
     <S.Title ref={ref} {...props} class={active ? "active" : ""}>

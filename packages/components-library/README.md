@@ -51,8 +51,8 @@ yarn test
 <div id="headerContainer></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/components-library/dist/vendor.production.js"></script>
-<script src="/node_modules/@asu-design-system/components-library/dist/core.production.js"></script>
+<script src="/node_modules/@asu-design-system/components-library/dist/vendor.js"></script>
+<script src="/node_modules/@asu-design-system/components-library/dist/components-library.js"></script>
 
 <script>
 
@@ -62,7 +62,7 @@ yarn test
     baseUrl: "/kitchen-sink"
   };
 
-  AsuWebcore.initHeader(props);
+  componentsLibrary.initHeader(props);
 </script>
 
 ```

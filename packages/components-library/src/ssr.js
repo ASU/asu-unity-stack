@@ -1,10 +1,8 @@
 import render from "preact-render-to-string";
-
 import { h } from "preact";
 import { Header } from "./components/Header";
 import { renderStylesToString } from "emotion-server";
 import { NavTreeMega } from "./components/Nav/NavTreeExample";
-
 import { dom } from "@fortawesome/fontawesome-svg-core";
 
 /*

@@ -594,11 +594,13 @@ const NavTreeMega = [
     buttons: [
       {
         text: "CTA One",
-        href: "https://asu.edu"
+        href: "https://asu.edu",
+        color: "maroon"
       },
       {
         text: "CTA Two",
-        href: "https://asu.edu"
+        href: "https://asu.edu",
+        color: "gold"
       }
     ],
     items: [
@@ -640,6 +642,11 @@ const NavTreeMega = [
           href: "https://wpcarey.asu.edu/mba/china-program/english/",
 
           text: "China",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Call to Action"
         },
       ],
       [

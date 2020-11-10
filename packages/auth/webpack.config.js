@@ -8,7 +8,7 @@ module.exports.push({
   context: path.join(__dirname, "src"),
   mode: "production",
   entry: {
-    auth: "./index.js"
+    auth: "./index.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -21,18 +21,20 @@ module.exports.push({
     splitChunks: {
       cacheGroups: {
         commons: {
-          name: 'commons',
-          chunks: 'initial',
-          minChunks: 2
-        }
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2,
+        },
       },
     },
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      terserOptions: {
-        ecma: 6,
-      },
-    })],
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          ecma: 6,
+        },
+      }),
+    ],
   },
   module: {
     rules: [
@@ -51,6 +53,10 @@ module.exports.push({
     ],
   },
   resolve: {
+    fallback: {
+      crypto: require.resolve("crypto-browserify"),
+      stream: require.resolve("stream-browserify"),
+    },
     extensions: [".js", ".jsx"],
     alias: {
       react: "preact/compat",
@@ -58,5 +64,5 @@ module.exports.push({
       "react-dom": "preact/compat",
       // Must be below test-utils
     },
-  }
+  },
 });

@@ -93,19 +93,6 @@ export const withButtons = () => (
   </Fragment>
 );
 
-const megaButtons = [
-  {
-    text: "CTA Button Number One",
-    color: "gold",
-    href: "https://admissions.asu.edu",
-  },
-  {
-    text: "CTA Button",
-    color: "maroon",
-    href: "https://asu.edu",
-  },
-];
-
 export const withMenuColumns = () => (
   <Fragment>
     <Header

@@ -2,7 +2,7 @@
 /** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { cx, css } from "emotion";
+import { cx } from "emotion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,

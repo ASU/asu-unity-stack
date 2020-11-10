@@ -1,24 +1,24 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { useState } from "preact/compat";
 import { Header } from "./";
 import { Button } from "../Button";
 import { BasicNavTree } from "../Nav/NavTreeExample";
 
-const AnimatedHeaderTitleExample = props => {
+const AnimatedHeaderTitleExample = (props) => {
   const [animate, setAnimate] = useState(false);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div {...props} style={{ display: "flex", flexDirection: "column" }}>
       <Header
         animateTitle={animate}
         navTree={BasicNavTree}
         title="University Technology Office"
       />
       <Button
-        onClick={e => {
+        onClick={() => {
           setAnimate(oldAnimate => !oldAnimate);
         }}
         style={{ marginTop: "300px" }}

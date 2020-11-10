@@ -68,7 +68,6 @@ const checkFirstLoad = (root) => {
     // Note: This logic will not work if displaying the
     // component inside of an iframe, such as in Storybook
     if (!document.referrer.includes(siteRoot) && !cookieValue) {
-
       // set 'title_loaded' cookie so that if the page load is reloaded, avoids
       // animating the title a 2nd time.
       document.cookie = "title_loaded=true;max-age=600";
@@ -118,4 +117,4 @@ const initHeader = (props, hydrate = false, target = "headerContainer") => {
   }
 };
 
-export { HydratePreact, RenderPreact, checkSSOCookie, initHeader, checkFirstLoad};
+export { HydratePreact, RenderPreact, checkSSOCookie, initHeader, checkFirstLoad, alterLoginUrl};

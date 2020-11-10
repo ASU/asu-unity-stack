@@ -39,15 +39,14 @@ const Button = forwardRef(
   ) => {
     const Element = type == "link" ? "a" : "button";
 
-    // If no other color set, default to light gray
-    const light = props.light
-      ? props.light
-      : () => {
-          if (!gold && !dark && !maroon) {
-            return true;
-          }
-          return false;
-        };
+    // If no color set, then default to 'light'
+    let light = props.light ? props.light : false;
+
+    if (gold === undefined && dark === undefined && maroon === undefined) {
+      light = true;
+    }
+
+
     return (
       <Element
         {...props}

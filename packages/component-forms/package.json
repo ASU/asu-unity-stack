@@ -2,8 +2,8 @@
   "name": "@asu-design-system/component-forms",
   "version": "1.0.25",
   "description": "ASU Web Standards-compliant Preact forms",
-  "main": "src/index.js",
-  "module": "esm/index.js",
+  "main": "dist/component-forms.js",
+  "module": "src/index.js",
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
@@ -18,7 +18,7 @@
   "private": false,
   "scripts": {
     "clean": "yarn shx rm -rf ./dist",
-    "build": "webpack --mode=production --progress",
+    "build": "webpack --progress",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
     "storybook": "start-storybook -p 8089 -s ./public",

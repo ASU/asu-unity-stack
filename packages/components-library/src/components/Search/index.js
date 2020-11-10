@@ -19,6 +19,7 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
           method="get"
           role="search"
           class={open ? "show-search-input" : ""}
+          {...props}
         >
           <input
             name="q"
@@ -77,7 +78,7 @@ const UniversalSearch = ({ type, open, setOpen, mobile}) => {
       // in React. So we have to use native DOM event handlers here
       onfocusin={() => setOpen(true)}
       onfocusout={onBlur}
-      onClick={e => {
+      onClick={() => {
         setOpen(true);
         inputRef.current.focus();
       }}
