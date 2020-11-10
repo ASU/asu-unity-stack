@@ -110,7 +110,7 @@ const Nav = ({
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
-        case Tab:
+        /*case Tab:
           // handle tab key
           if (!e.shiftKey) {
             if (derState.isLast) {
@@ -127,7 +127,7 @@ const Nav = ({
             setFocusCallback(moveLeft(focused, derState, navList));
           }
 
-          break;
+          break;*/
         default:
           break;
       }
@@ -255,7 +255,6 @@ const Nav = ({
                                 ? item.href
                                 : undefined
                             }
-                            tabIndex="-1" // Take dropdown nav items out of browser tab order
                           >
                             {item.text}
                           </NavItem>

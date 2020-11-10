@@ -12,8 +12,10 @@ import {
 
 const navItemStyles = breakpoint => css`
   .navlink,
-  .navicon {
-    padding: 0.5rem 0;
+  .navicon,
+  .navbutton {
+    padding: 0;
+    margin: 0;
 
     > a {
       padding: 8px;
@@ -53,12 +55,14 @@ const navItemStyles = breakpoint => css`
   }
 
   .navbutton {
-    margin-top: 1rem;
+    margin-top: auto;
 
     @media (min-width: ${breakpoint}) {
-      position: absolute;
-      bottom: 0;
-      margin: 0;
+      order: 1;
+    }
+
+    @media (max-width: ${breakpoint}) {
+      margin-top: auto;
     }
   }
 `;

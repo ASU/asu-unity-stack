@@ -48,7 +48,7 @@ const navListStyles = breakpoint => css`
           content: "";
           display: block;
           height: 0.5rem;
-          background-color: #ffc627;
+          background-image: linear-gradient(to right,transparent .5%,#ffc627 .5%);
           position: relative;
           bottom: 0;
           width: 0;
@@ -69,10 +69,7 @@ const navListStyles = breakpoint => css`
         }
 
         > a {
-
           line-height: 1rem;
-
-
           box-sizing: content-box;
           :hover {
             :after {
@@ -86,7 +83,6 @@ const navListStyles = breakpoint => css`
             content: '';
             display: block;
             height: .5rem;
-            background-color: #ffc627;
             position: relative;
             top: .5rem;
             bottom: 0;
@@ -244,7 +240,7 @@ const dropdownContainerStyles = breakpoint => css`
       border-right: none;
       border-left: none;
 
-      > div {
+      div:not(.button-row) {
         max-width: ${containerSize};
       }
     }
@@ -262,6 +258,25 @@ const dropdownContainerStyles = breakpoint => css`
       opacity: 1;
       margin: 1rem 0;
       line-height: calc(100% + 0.12em);
+    }
+
+    .button-row {
+      border-top: 1px solid #cccccc;
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 2rem;
+        display: flex;
+        margin: 0 auto;
+        justify-content: flex-start;
+        margin: 0 auto;
+
+        a + a {
+          margin-left: 1rem;
+        }
+      }
     }
 
     @media (max-width: ${breakpoint}) {
@@ -284,7 +299,7 @@ const dropdownContainerStyles = breakpoint => css`
         min-width: 16rem;
       }
 
-      > div {
+      > div:not(.button-row) {
         padding: 2rem;
         display: flex;
         margin: 0 auto;
@@ -306,7 +321,7 @@ const DropdownContainer = props => {
   return (
     <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
       <div>{props.children}</div>
-      {props.buttons ? <div>{props.buttons}</div> : ""}
+      {props.buttons ? <div class="button-row"><div>{props.buttons}</div></div> : ""}
     </div>
   );
 };
@@ -359,11 +374,6 @@ const menuColumnStyles = breakpoint => css`
 
       flex: 1;
       max-width: 282px;
-
-      > li {
-        padding: 0;
-        margin: 0;
-      }
     }
   }
 `;
