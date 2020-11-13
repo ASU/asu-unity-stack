@@ -7,6 +7,7 @@ import { css, cx } from "emotion";
 import {
   hiddenStyle,
   showReset,
+  BreakpointSm,
   BreakpointLg,
   BreakpointXl,
   containerSize,
@@ -201,6 +202,16 @@ const buttonFormStyles = breakpoint => css`
 
     @media (max-width: ${breakpoint}) {
       padding: 1rem 2rem;
+    }
+
+    @media (max-width: ${BreakpointSm}) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      a + a {
+        margin-top: 1rem;
+        margin-left: 0;
+      }
     }
   }
 `;
