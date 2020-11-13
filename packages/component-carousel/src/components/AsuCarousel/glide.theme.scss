@@ -7,28 +7,96 @@ $glide-modifier-separator: "--" !default;
 .#{$glide-class} {
   $this: &;
 
+  // TODO Variations
+  // create .glide.slider-start::after rule w/o "to right"
+  // create .glide.slider-mid::after rule w/ both
+  // create .glide.slider-end::after rule w/o "to left"
+  // Wire up js for event based on location of
+  // .glide__slides .glide__slide--active
+
+  // Linear-gradients.
+  position: relative;
+  margin-bottom: 11rem;
+  // At start, no "to right" in ::after rule
+  &.slider-start::after {
+    // .glide::after
+    background: linear-gradient(
+      to left,
+      rgba(25, 25, 25, 0.2),
+      48px,
+      rgba(255, 255, 255, 0) 96px
+    );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+  // In the middle, show both gradients.
+  &.slider-mid::after {
+    // .glide::after
+    background: linear-gradient(
+        to right,
+        rgba(25, 25, 25, 0.2),
+        48px,
+        rgba(255, 255, 255, 0) 96px
+      ),
+      // Use gradient stacking for right edge.
+      linear-gradient(
+          to left,
+          rgba(25, 25, 25, 0.2),
+          48px,
+          rgba(255, 255, 255, 0) 96px
+        );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+  // At end, no "to left" in ::after rule
+  &.slider-end::after {
+    // .glide::after
+    background: linear-gradient(
+      to right,
+      rgba(25, 25, 25, 0.2),
+      48px,
+      rgba(255, 255, 255, 0) 96px
+    );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+
   $se: $glide-element-separator;
   $sm: $glide-modifier-separator;
+
+  &#{$se}slides {
+    margin-bottom: 0; // Avoid gap, for gradient,
+  }
 
   // Arrows.
   &#{$se}arrows {
     position: absolute;
     display: inline;
     left: 50%;
-    bottom: -10rem; // Place below.
+    bottom: -11rem; // Place below.
     z-index: 2;
-    margin-left: -5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
+    margin-left: -5.5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
 
     //&#{$se}arrow {
     .glide__arrow {
-      color: red; //white;
-      text-transform: uppercase;
-      //padding: 9px 12px;
+      color: #191919;
       width: 4rem;
       height: 4rem;
-      margin: 0 0.5rem;
-      background-color: transparent;
-      border: 2px solid red; // rgba(255, 255, 255, 0.5);
+      margin: 0 0.75rem;
+      background-color: #e8e8e8;
+      border: 1px solid #d0d0d0; // rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       font-size: 2rem;
       box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
@@ -38,6 +106,19 @@ $glide-modifier-separator: "--" !default;
       transition: opacity 150ms ease, border 300ms ease-in-out;
       transform: translateY(-50%);
       line-height: 1;
+
+      &.glide__arrow--disabled {
+        color: #d0d0d0;
+        background-color: #fafafa;
+        border: 1px solid #e8e8e8;
+        opacity: 1;
+      }
+
+      svg {
+        height: 1.25rem;
+        position: relative;
+        bottom: 0.125rem;
+      }
 
       &:focus {
         outline: none;
@@ -64,7 +145,7 @@ $glide-modifier-separator: "--" !default;
   &#{$se}bullets {
     position: absolute;
     z-index: 2;
-    bottom: -2rem;
+    bottom: -3rem;
     left: 50%;
     display: inline-flex;
     list-style: none;
@@ -72,7 +153,7 @@ $glide-modifier-separator: "--" !default;
   }
 
   &#{$se}bullet {
-    background-color: red; // rgba(255, 255, 255, 0.5);
+    background-color: #d0d0d0; // rgba(255, 255, 255, 0.5);
     width: 1rem;
     height: 1rem;
     padding: 0;
@@ -90,12 +171,12 @@ $glide-modifier-separator: "--" !default;
 
     &:hover,
     &:focus {
-      border: 2px solid white;
-      background-color: maroon; // rgba(255, 255, 255, 0.5);
+      border: 1px solid #d0d0d0;
+      background-color: #191919; // rgba(255, 255, 255, 0.5);
     }
 
     &#{$sm}active {
-      background-color: maroon; //white;
+      background-color: #191919; //white;
     }
   }
 
@@ -113,15 +194,17 @@ $glide-modifier-separator: "--" !default;
 }
 
 /* TODO
-- Patch in "CDN" style link of bootstrap4-theme CSS into preview-head.js
-- Do the same for fontawesome?
-  - button content
+- X Patch in "CDN" style link of bootstrap4-theme CSS into preview-head.js
+- X Do the same for fontawesome? Or just see notes about bringing in SVG
+  - X button content
 - Work out props system for
-  - GlideJS options
-  - Items to include into carousel. Just do an array of blobs, how about.
-- Partial slide styles
+  - X GlideJS options
+  - X Items to include into carousel. Just do an array of blobs, how about.
+- X Partial slide styles
 - Mobile slide styling (test with default resizing)
-
-
+- X Gradient at edges
+- X Swipe broken? After ^? -- fixed with pointer-events: none. A z-index thing.
+- Disable prev/next button at endpoints.
+- Slides and breakpoints...
 
 */
