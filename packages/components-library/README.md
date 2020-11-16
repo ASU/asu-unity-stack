@@ -48,6 +48,7 @@ yarn test
 ## Use on static HTML page
 
 ```
+<!-- Header  will  be initialized in this container. If a different  ID needs to be targeted,  pass as 2nd argument to 'initHeader()' function -->
 <div id="headerContainer></div>
 
 <!-- include bundled scripts from Preact packages -->

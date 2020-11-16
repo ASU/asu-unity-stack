@@ -13,7 +13,7 @@
     "clean": "yarn shx rm -rf ./dist",
     "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook -s ./dist"
+    "build-storybook": "build-storybook"
   },
   "publishConfig": {
     "access": "restricted",
