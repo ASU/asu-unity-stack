@@ -7,12 +7,10 @@ $glide-modifier-separator: "--" !default;
 .#{$glide-class} {
   $this: &;
 
-  // TODO Variations
-  // create .glide.slider-start::after rule w/o "to right"
-  // create .glide.slider-mid::after rule w/ both
-  // create .glide.slider-end::after rule w/o "to left"
-  // Wire up js for event based on location of
-  // .glide__slides .glide__slide--active
+  // Gradient variations wired up to js in component.
+  // .glide.slider-start::after rule w/o "to right"
+  // .glide.slider-mid::after rule w/ both
+  // .glide.slider-end::after rule w/o "to left"
 
   // Linear-gradients.
   position: relative;
@@ -192,19 +190,3 @@ $glide-modifier-separator: "--" !default;
     cursor: -webkit-grabbing;
   }
 }
-
-/* TODO
-- X Patch in "CDN" style link of bootstrap4-theme CSS into preview-head.js
-- X Do the same for fontawesome? Or just see notes about bringing in SVG
-  - X button content
-- Work out props system for
-  - X GlideJS options
-  - X Items to include into carousel. Just do an array of blobs, how about.
-- X Partial slide styles
-- Mobile slide styling (test with default resizing)
-- X Gradient at edges
-- X Swipe broken? After ^? -- fixed with pointer-events: none. A z-index thing.
-- Disable prev/next button at endpoints.
-- Slides and breakpoints...
-
-*/

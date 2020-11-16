@@ -1,11 +1,11 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, Fragment, render, Component } from "preact";
-import { useEffect, useState } from "preact/compat";
+import { h } from "preact";
+//import { useEffect, useState } from "preact/compat";
 
 import Glide from "@glidejs/glide";
 
-// Include styles for @glidejs/glide
+// Include required and our custom styles for @glidejs/glide
 import "./styles.scss";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
@@ -14,12 +14,13 @@ import "./styles.scss";
 // https://stackoverflow.com/questions/61596516/glide-js-with-react
 
 const AsuCarousel = props => {
-  console.log("props", props);
+  //console.log("props", props);
 
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
   // We implement "slider" approach per Web Standards 2:
-  // - Dead-end advance end is reached. No wrap around. First card is focused.
+  // - Dead-end advance when end is reached. No wrap around.
+  // - First card is focused.
   // - No advance allowed to create whitespace at the end of slide. Stops with
   //   all visible.
   // - Shadow (at either left or right) should disappear when there is no next
@@ -32,77 +33,37 @@ const AsuCarousel = props => {
   // Get glide instance class name.
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
-  let instanceName = `glide-${Math.ceil(Math.random() * 1000)}`;
-  //let instanceName = props.instanceName ? props.instanceName : "glide";
+  let instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
 
-  // Get perView from props.
-  let perView = props.perView ? props.perView : 1; // Default to 1 like GlideJS.
   let perViewSm, perViewMd, perViewLg;
 
   // Calculate number of buttons to show so we don't advance past perView.
-  // At full width, would be...
-  // If perView is 1, bullets == countItems // (default if no perView)
-  // If perView is 2, bullets == countItems - 1
-  // If perView is 3, bullets == countItems - 2
-
-  // But we also need to adjust based on viewport size...
-  // TODO Limtation: this does not recalc if the screen is resized. Prev/next
-  // buttons may need to be used in that case to see all slides.
-  // Leverage GlideJS resize event? See docs: https://glidejs.com/docs/events/
-  // and events implemented before mount, below.
+  // TODO Limtation: this does not recalc if the screen is resized and the
+  // perView adapts. In that case Prev/next buttons may need to be used to see
+  // all slides. Leverage GlideJS resize event?
+  // See docs: https://glidejs.com/docs/events/
+  // The resize event is implemented below and commented out until a solid
+  // strategy for updating the buttons is in place.
   let itemCount = props.carouselItems.length;
   let buttonCount;
-  // Get Original viewport width
-  let vw = Math.max(
-    document.documentElement.clientWidth || 0,
-    window.innerWidth || 0
-  );
-  //console.log("VW", vw);
-  let adjustmentValue;
-  if (vw < 768) {
-    // Value for sm breakpoint
-    adjustmentValue = 0;
-  } else if (vw < 992) {
-    // Value for md breakpoint
-    adjustmentValue = 1;
-  } else {
-    // Value for lg breakpoint
-    adjustmentValue = 2;
-  }
-  // Calculate buttonCount adjusted for viewport size. Note: buttonCount is
-  // also used in logic determing show/hide of gradient at edge of slider.
-  buttonCount = itemCount - adjustmentValue; // Max: - 2 if at full width w/ perView of 3
 
-  // Build out bullets code based on buttonCount.
-  let buttonElements = [];
-  for (var i = 0; i < buttonCount; i++) {
-    buttonElements.push(
-      <button className="glide__bullet" data-glide-dir={"=" + i}></button>
-    );
-  }
-
-  // Update viewport width with onresize event.
-  //window.onresize = function (event) {
-  //  vw = Math.max(
-  //    document.documentElement.clientWidth || 0,
-  //    window.innerWidth || 0
-  //  );
-  //  console.log("resize VW", vw);
-  //};
-
-  // Set perView value per breakpoint size.
+  // Set a perView value for each breakpoint so we adapt down appropriately.
+  // Also set buttonCount to match. Note: buttonCount is not adaptive in this
+  // scenario, per comment above.
   switch (props.perView ? props.perView : "1") {
     case "3":
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 3;
+      buttonCount = itemCount - 2; // -2 w/ perView of 3
       break;
     case "2":
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 2;
+      buttonCount = itemCount - 1; // -1 w/ perView of 2
       break;
     case "1":
     default:
@@ -110,6 +71,16 @@ const AsuCarousel = props => {
       perViewSm = 1;
       perViewMd = 1;
       perViewLg = 1;
+      buttonCount = itemCount - 0; // -0 w/ perView of 1
+  }
+
+  // Build out bullets code based on buttonCount.
+  // TODO Move this into the component code to better support resize?
+  let buttonElements = [];
+  for (var i = 0; i < buttonCount; i++) {
+    buttonElements.push(
+      <button className="glide__bullet" data-glide-dir={"=" + i}></button>
+    );
   }
 
   // Set GlideJS config options, per https://glidejs.com/docs/options/
@@ -137,7 +108,7 @@ const AsuCarousel = props => {
         peek: { before: 124, after: 124 },
       },
       992: {
-        // BS4 xl
+        // BS4 lg
         //perView: props.perView > 1 ? props.perView : 1,
         perView: perViewMd,
         peek: { before: 124, after: 124 },
@@ -161,8 +132,8 @@ const AsuCarousel = props => {
     },
   };
 
-  // Following wan't triggered with useEffect... so we just ensure the dom is
-  // loaded.
+  // Following wasn't triggered with useEffect approach... so we just ensure
+  // the DOM is loaded.
 
   // Works on first load with current code but doesn't refresh successfully in
   // Storybook when code is updated - have to reload page.
@@ -177,36 +148,25 @@ const AsuCarousel = props => {
 
     // Implement glidejs event listeners.
 
-    // We're currently only using the even listeners to clear and set class
-    // names to show/hide gradients when at the start, middle or end of a
-    // slider.
+    // We use event listeners to clear and set class names to show/hide
+    // gradients when at the start, middle or end of a slider.
 
     // On build.before event...
     slider.on("build.before", function () {
-      // TODO Note: may need to better handle IDs/Classes for multiple instances.
       // Set .slider-start for starting gradient styles.
       let gliderElement = document.getElementById(`${instanceName}`);
       gliderElement.classList.add("slider-start");
-      //let gliderElements = document.getElementsByClassName("glide");
-      //let i;
-      //for (i = 0; i < gliderElements.length; i++) {
-      //  gliderElements[i].classList.add("slider-start");
-      //}
     });
 
     // On Move event...
     slider.on("move", function (e) {
-      //console.log("MOVEMENT Event", e);
-      //console.log("INDEX", slider.index);
-
-      // Get all .glider elements. This represents the top level.
+      // Get glider top level element.
       let gliderElement = document.getElementById(`${instanceName}`);
-      //let gliderElements = document.getElementsByClassName("glide");
 
-      //let i;
-      //for (i = 0; i < gliderElements.length; i++) {
+      // Gradient-triggering classes.
       var gradientClasses = ["slider-start", "slider-mid", "slider-end"];
-      // Set/clear proper classes for gradient.
+
+      // Set/clear classes for gradients.
       if (slider.index == 0) {
         // START SLIDE.
         // Gradient for start.
@@ -244,11 +204,33 @@ const AsuCarousel = props => {
           .querySelector(`#${instanceName} .glide__arrow--next`)
           .classList.remove("glide__arrow--disabled");
       }
-      //}
     });
 
+    // On Resize event...
+    /* TODO Leverage this event to recalculate and updating number of bullets.
+     * See notes about this above.
+    slider.on("resize", function () {
+      // Get Original viewport width
+      let vw = Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+      );
+      console.log("VW on resize", vw);
+      if (vw < 768) {
+        // Value for sm breakpoint
+        console.log("VW sm", vw);
+      } else if (vw < 992) {
+        // Value for md breakpoint
+        console.log("VW md", vw);
+      } else {
+        // Value for lg breakpoint
+        console.log("VW lg", vw);
+      }
+    });
+    */
+
     slider.mount();
-    console.log(slider);
+    //console.log(slider);
   });
 
   // Imported from preact/hooks
@@ -265,6 +247,7 @@ const AsuCarousel = props => {
   //}, [slider]);
   */
 
+  // Setup carousel items from the carouselItems prop.
   const listItems = props.carouselItems.map(sliderItem => (
     <li key={sliderItem.id.toString()} className="glide__slide slider">
       {sliderItem.item}
@@ -274,8 +257,7 @@ const AsuCarousel = props => {
   // For prev and next button icons we use the Creative Commons licensed
   // FontAweseome chevron-left and chevron-right SVG without alterations.
   // This serves as the required link to the license as per attribution
-  // guidelines provided at time of use:
-  // https://fontawesome.com/license
+  // guidelines provided at time of use: https://fontawesome.com/license
 
   return (
     <div className="glide" id={instanceName}>

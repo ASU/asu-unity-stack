@@ -11,11 +11,11 @@ const myCarouselItems = [
       <div className="card">
         <img
           className="card-img-top"
-          src="https://source.unsplash.com/random/384x200?a=1"
+          src="https://source.unsplash.com/random/800x400?a=1"
           alt="Card image cap"
         ></img>
         <div className="card-header">
-          <h3 className="card-title">Card One default title</h3>
+          <h3 className="card-title">Card One</h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -38,11 +38,11 @@ const myCarouselItems = [
       <div className="card">
         <img
           className="card-img-top"
-          src="https://source.unsplash.com/random/384x200?a=2"
+          src="https://source.unsplash.com/random/800x400?a=2"
           alt="Card image cap"
         ></img>
         <div className="card-header">
-          <h3 className="card-title">Card Two default title</h3>
+          <h3 className="card-title">Card Two</h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -65,11 +65,11 @@ const myCarouselItems = [
       <div className="card">
         <img
           className="card-img-top"
-          src="https://source.unsplash.com/random/384x200?a=3"
+          src="https://source.unsplash.com/random/800x400?a=3"
           alt="Card image cap"
         ></img>
         <div className="card-header">
-          <h3 className="card-title">Card Three default title</h3>
+          <h3 className="card-title">Card Three</h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -92,11 +92,11 @@ const myCarouselItems = [
       <div className="card">
         <img
           className="card-img-top"
-          src="https://source.unsplash.com/random/384x200?a=4"
+          src="https://source.unsplash.com/random/800x400?a=4"
           alt="Card image cap"
         ></img>
         <div className="card-header">
-          <h3 className="card-title">Card Four default title</h3>
+          <h3 className="card-title">Card Four</h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -119,11 +119,11 @@ const myCarouselItems = [
       <div className="card">
         <img
           className="card-img-top"
-          src="https://source.unsplash.com/random/384x200?a=5"
+          src="https://source.unsplash.com/random/800x400?a=5"
           alt="Card image cap"
         ></img>
         <div className="card-header">
-          <h3 className="card-title">Card Five default title</h3>
+          <h3 className="card-title">Card Five</h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -147,8 +147,6 @@ export default {
   title: "Carousel",
 };
 
-// TODO add story for adding multiple carousels on one page... may require updates
-
 export const ThreeItemCarousel = () => (
   <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
 );
@@ -161,15 +159,8 @@ export const OneItemCarousel = () => (
 export const MultipleCarousels = () => (
   <>
     <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
-    <p>
-      Note: If implementing more than one carousel on a page, all subsequent
-      carousels must provide a unique instanceName.
-    </p>
-    <AsuCarousel
-      instanceName="another-carousel"
-      perView="2"
-      carouselItems={myCarouselItems}
-    ></AsuCarousel>
+    <AsuCarousel perView="1" carouselItems={myCarouselItems}></AsuCarousel>
+    <AsuCarousel perView="2" carouselItems={myCarouselItems}></AsuCarousel>
   </>
 );
 export const BaseCarousel = () => (
