@@ -5,7 +5,7 @@ import { h } from "preact";
 
 import Glide from "@glidejs/glide";
 
-// Include required and our custom styles for @glidejs/glide
+// Include required and custom styles for @glidejs/glide
 import "./styles.scss";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
@@ -35,35 +35,67 @@ const AsuCarousel = props => {
   // an unique instance name for all but one instance.
   let instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
 
-  let perViewSm, perViewMd, perViewLg;
-
   // Calculate number of buttons to show so we don't advance past perView.
   // TODO Limtation: this does not recalc if the screen is resized and the
-  // perView adapts. In that case Prev/next buttons may need to be used to see
-  // all slides. Leverage GlideJS resize event?
+  // perView adapts. In that case Prev/next buttons or swipe may need to be
+  // used to see all slides. Leverage GlideJS resize event?
   // See docs: https://glidejs.com/docs/events/
-  // The resize event is implemented below and commented out until a solid
-  // strategy for updating the buttons is in place.
+  // The resize event is implemented further down and commented out until a
+  // solid strategy for updating the buttons is in place.
   let itemCount = props.carouselItems.length;
   let buttonCount;
 
+  // Get Original viewport width so we can set buttonCount.
+  // Note: buttonCount is not adaptive at this time, per comment above.
+  let vw = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
+  );
+  //console.log("VW", vw);
+  buttonCount = itemCount;
+  if (vw < 768) {
+    // Value for sm breakpoint
+    //console.log("VW sm", vw);
+    // No adjusting buttonCount. Always max, one at a time for sm.
+  } else if (vw < 992) {
+    // Value for md breakpoint
+    //console.log("VW md", vw);
+    if (props.perView >= 2) {
+      buttonCount = itemCount - 1;
+    }
+  } else {
+    // Value for lg breakpoint
+    //console.log("VW lg", vw);
+    if (props.perView >= 2) {
+      buttonCount = itemCount - 1;
+    }
+    if (props.perView >= 3) {
+      buttonCount = itemCount - 2;
+    }
+  }
+
+  // Build out bullets markup based on buttonCount.
+  let buttonElements = [];
+  for (var i = 0; i < buttonCount; i++) {
+    buttonElements.push(
+      <button className="glide__bullet" data-glide-dir={"=" + i}></button>
+    );
+  }
+
   // Set a perView value for each breakpoint so we adapt down appropriately.
-  // Also set buttonCount to match. Note: buttonCount is not adaptive in this
-  // scenario, per comment above.
+  let perViewSm, perViewMd, perViewLg;
   switch (props.perView ? props.perView : "1") {
     case "3":
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 3;
-      buttonCount = itemCount - 2; // -2 w/ perView of 3
       break;
     case "2":
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 2;
-      buttonCount = itemCount - 1; // -1 w/ perView of 2
       break;
     case "1":
     default:
@@ -71,16 +103,6 @@ const AsuCarousel = props => {
       perViewSm = 1;
       perViewMd = 1;
       perViewLg = 1;
-      buttonCount = itemCount - 0; // -0 w/ perView of 1
-  }
-
-  // Build out bullets code based on buttonCount.
-  // TODO Move this into the component code to better support resize?
-  let buttonElements = [];
-  for (var i = 0; i < buttonCount; i++) {
-    buttonElements.push(
-      <button className="glide__bullet" data-glide-dir={"=" + i}></button>
-    );
   }
 
   // Set GlideJS config options, per https://glidejs.com/docs/options/

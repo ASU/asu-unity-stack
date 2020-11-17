@@ -1,4 +1,4 @@
-import { HydratePreact, RenderPreact } from "./helpers";
+import { HydratePreact, RenderPreact, initCarousel } from "./helpers";
 
 export * from "./components";
-export { HydratePreact, RenderPreact };
+export { HydratePreact, RenderPreact, initCarousel };
