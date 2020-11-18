@@ -22,7 +22,7 @@ const RenderPreact = (component, props, target) => {
  * @param {*} target - The ID of the containing <div> where the header should
  * be either hydrated or rendered.
  */
-const initCarousel = (props, hydrate = false, target = "carouselContainer") => {
+const initCarousel = (props, target = "carouselContainer", hydrate = false) => {
   if (hydrate) {
     HydratePreact(AsuCarousel, props, document.getElementById(target));
   } else {

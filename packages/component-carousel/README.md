@@ -6,6 +6,11 @@ ASU Web Standards-based implementation of @glidejs/glide npm library carousel.
 1. [Preact](https://preactjs.com/)
 2. [GlideJS](https://glidejs.com/)
 
+In order to use Web Standards 2.0 cards in your Carousel, you must install the
+ASU Design System Bootstrap 4 theme
+```yarn add @asu-design-system/bootstrap4-theme```
+or in some other manner provide the styles required.
+
 ## CLI Commands
 
 ``` bash
