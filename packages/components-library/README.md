@@ -48,7 +48,7 @@ yarn test
 ## Use on static HTML page
 
 ```
-<div id="headerContainer></div>
+<div id="headerContainer"></div>
 
 <!-- include bundled scripts from Preact packages -->
 <script src="/node_modules/@asu-design-system/components-library/dist/vendor.js"></script>
