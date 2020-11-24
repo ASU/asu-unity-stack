@@ -1,13 +1,7 @@
-import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+export default { title: 'Components/Cards' };
 import exampleImage from './example-image.jpg';
 
-storiesOf('Components/Cards', module)
-  .addParameters({
-    happo: false,
-  })
-
-  .add('Default card', () => `
+export const defaultCard = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -44,9 +38,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Card images', () => `
+export const cardImages = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -102,9 +96,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Card titles', () => `
+export const cardTitles = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -119,23 +113,23 @@ storiesOf('Components/Cards', module)
     </div>
   </div>
 
-    <hr/>
+  <hr/>
 
-    <div class="container">
-      <div class="row row-spaced pt-2 pb-2">
-        <div class="col col-12 col-md-6 col-lg-4">
-          <div class="card card-degree">
-            <div class="card-header">
-              <h3 class="card-title">Card default title</h3>
-            </div>
-          </div> <!-- .card -->
-        </div> <!-- .col -->
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+        <div class="card card-degree">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+        </div> <!-- .card -->
+      </div> <!-- .col -->
 
-      </div>
     </div>
-  `)
+  </div>
+`;
 
-  .add('Card body', () => `
+export const cardBody = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -151,9 +145,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Card dates, times, locations', () => `
+export const cardEventInfo = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -175,31 +169,35 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
+
   <hr/>
+
   <div class="container">
-  <div class="row row-spaced pt-2 pb-2">
-    <div class="col col-12 col-md-6 col-lg-4">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
 
-      <div class="card">
-        <div class="card-header"></div>
-        <div class="card-event-details">
-          <div class="card-event-icons">
-            <div><i class="far fa-calendar"></i></div>
-            <div>Wednesday, November 21st, 2021 11:30 a.m. - 12:30 p.m.</div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-event-details">
+            <div class="card-event-icons">
+              <div><i class="far fa-calendar"></i></div>
+              <div>Wednesday, November 21st, 2021 11:30 a.m. - 12:30 p.m.</div>
+            </div>
           </div>
-        </div>
-        <div class="card-event-details">
-          <div class="card-event-icons">
-            <div><i class="fas fa-map-marker-alt"></i></div>
-            <div>Downtown Phoenix campus</div>
+          <div class="card-event-details">
+            <div class="card-event-icons">
+              <div><i class="fas fa-map-marker-alt"></i></div>
+              <div>Downtown Phoenix campus</div>
+            </div>
           </div>
-        </div>
-      </div> <!-- .card -->
+        </div> <!-- .card -->
 
-    </div> <!-- .col -->
+      </div> <!-- .col -->
+    </div>
   </div>
-</div>
-<hr/>
+
+  <hr/>
+
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -217,27 +215,29 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
+
   <hr/>
-    <div class="container">
-      <div class="row row-spaced pt-2 pb-2">
-        <div class="col col-12 col-md-6 col-lg-4">
 
-          <div class="card">
-            <div class="card-header"></div>
-            <div class="card-event-details">
-              <div class="card-event-icons">
-                <div><i class="fas fa-map-marker-alt"></i></div>
-                <div>Downtown Phoenix campus</div>
-              </div>
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-event-details">
+            <div class="card-event-icons">
+              <div><i class="fas fa-map-marker-alt"></i></div>
+              <div>Downtown Phoenix campus</div>
             </div>
-          </div> <!-- .card -->
+          </div>
+        </div> <!-- .card -->
 
-        </div> <!-- .col -->
-      </div>
+      </div> <!-- .col -->
     </div>
-  `)
+  </div>
+`;
 
-  .add('Card call to actions', () => `
+export const cardCallToActions = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -258,9 +258,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Card tags', () => `
+export const cardTags = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -273,11 +273,26 @@ storiesOf('Components/Cards', module)
         </div> <!-- .card -->
 
       </div> <!-- .col -->
+
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <!-- No anchor tags -->
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body">Need a card tag that does not behave like an anchor? Try the <code>.badge</code> class. Be sure to include the modifier background class too.</div>
+          <div class="card-tags">
+            <span class="badge badge-gray-2">No button class</span>
+            <span class="badge badge-gray-2">No hover effects</span>
+            <span class="badge badge-gray-7 text-gray-1">Dark mode</span>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Degree card', () => `
+export const degreeCard = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -304,9 +319,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Story card', () => `
+export const storyCard = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -333,9 +348,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Event card', () => `
+export const eventCard = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -372,9 +387,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Hover', () => `
+export const hoverable = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -394,41 +409,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('Mobile card', () => `
-  <div class="container">
-    <div class="row row-spaced pt-2 pb-2">
-      <div class="col col-12 col-md-6 col-lg-4">
-
-        <div class="card card-sm">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-event-details">
-            <div class="card-event-icons">
-              <div><i class="fas fa-map-marker-alt"></i></div>
-              <div>Downtown Phoenix campus</div>
-            </div>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">Regular text link here</a>
-          </div>
-        </div> <!-- .card -->
-
-      </div> <!-- .col -->
-    </div>
-  </div>
-  `)
-
-  .add('Variations', () => `
+export const variations = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-lg-4">
@@ -635,9 +618,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('4 column', () => `
+export const fourColumn = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-md-6 col-lg-3 col-12">
@@ -762,9 +745,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('3 column', () => `
+export const threeColumn = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-lg-4">
@@ -816,9 +799,9 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-  .add('2 column', () => `
+export const twoColumn = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-12 col-lg-6">
@@ -857,223 +840,220 @@ storiesOf('Components/Cards', module)
       </div> <!-- .col -->
     </div>
   </div>
-  `)
+`;
 
-.add('Horizontal cards', () => `
+export const horizontal = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-12 col-lg-6">
 
-<div class="container">
-  <div class="row row-spaced pt-2 pb-2">
-    <div class="col col-12 col-md-12 col-lg-6">
-
-      <div class="card card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">Regular text link here</a>
-          </div>
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
-
-    </div> <!-- .col -->
-    <div class="col col-12 col-md-12 col-lg-6">
-
-      <div class="card card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark">Button link here</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
-
-    </div> <!-- .col -->
-  </div>
-</div>
-<hr/>
-<div class="container">
-  <div class="row row-spaced pt-2 pb-2">
-    <div class="col col-12 col-md-12 col-lg-6">
-
-      <div class="card card-degree card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">Regular text link here</a>
-          </div>
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
-
-    </div> <!-- .col -->
-    <div class="col col-12 col-md-12 col-lg-6">
-
-      <div class="card card-degree card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark">Button link here</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
-
-    </div> <!-- .col -->
-  </div>
-</div>
-<hr/>
-<div class="container">
-  <div class="row row-spaced pt-2 pb-2">
-    <div class="col col-12 col-md-12 col-lg-6">
-
-      <div class="card card-event card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-event-details">
-            <div class="card-event-icons">
-              <div><i class="far fa-calendar"></i></div>
-              <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+        <div class="card card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
             </div>
-            <div class="card-event-icons">
-              <div><i class="fas fa-map-marker-alt"></i></div>
-              <div>Downtown Phoenix campus</div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-link">
+              <a href="#" class="">Regular text link here</a>
+            </div>
+            <div class="card-tags">
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
             </div>
           </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark">Button link here</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
+        </div> <!-- .card -->
 
-    </div> <!-- .col -->
-    <div class="col col-12 col-md-12 col-lg-6">
+      </div> <!-- .col -->
+      <div class="col col-12 col-md-12 col-lg-6">
 
-      <div class="card card-event card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-event-details">
-            <div class="card-event-icons">
-              <div><i class="far fa-calendar"></i></div>
-              <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+        <div class="card card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
             </div>
-            <div class="card-event-icons">
-              <div><i class="fas fa-map-marker-alt"></i></div>
-              <div>Downtown Phoenix campus</div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-button">
+              <a href="#" class="btn btn-dark">Button link here</a>
             </div>
           </div>
-        </div>
-      </div> <!-- .card -->
+        </div> <!-- .card -->
 
-    </div> <!-- .col -->
+      </div> <!-- .col -->
+    </div>
   </div>
-</div>
-<hr/>
-<div class="container">
-  <div class="row row-spaced pt-2 pb-2">
-    <div class="col col-12 col-md-12 col-lg-6">
+  <hr/>
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-12 col-lg-6">
 
-      <div class="card card-story card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
+        <div class="card card-degree card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-link">
+              <a href="#" class="">Regular text link here</a>
+            </div>
+            <div class="card-tags">
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">Regular text link here</a>
-          </div>
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
-          </div>
-        </div>
-      </div> <!-- .card -->
+        </div> <!-- .card -->
 
-    </div> <!-- .col -->
-    <div class="col col-12 col-md-12 col-lg-6">
-      <div class="card card-story card-horizontal">
-        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-        <div class="card-content-wrapper">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
+      </div> <!-- .col -->
+      <div class="col col-12 col-md-12 col-lg-6">
+
+        <div class="card card-degree card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-button">
+              <a href="#" class="btn btn-dark">Button link here</a>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+  <hr/>
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-12 col-lg-6">
+
+        <div class="card card-event card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-event-details">
+              <div class="card-event-icons">
+                <div><i class="far fa-calendar"></i></div>
+                <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+              </div>
+              <div class="card-event-icons">
+                <div><i class="fas fa-map-marker-alt"></i></div>
+                <div>Downtown Phoenix campus</div>
+              </div>
+            </div>
+            <div class="card-button">
+              <a href="#" class="btn btn-dark">Button link here</a>
+            </div>
           </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark">Button link here</a>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-12 col-md-12 col-lg-6">
+
+        <div class="card card-event card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-event-details">
+              <div class="card-event-icons">
+                <div><i class="far fa-calendar"></i></div>
+                <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+              </div>
+              <div class="card-event-icons">
+                <div><i class="fas fa-map-marker-alt"></i></div>
+                <div>Downtown Phoenix campus</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div> <!-- .card -->
+        </div> <!-- .card -->
 
-    </div> <!-- .col -->
+      </div> <!-- .col -->
+    </div>
   </div>
-</div>
-<hr/>
-`)
+  <hr/>
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-12 col-lg-6">
 
-.add('Sizing using utilities', () => `
-<div class="card w-75">
-  <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-  <div class="card-header">
-    <h3 class="card-title">Card default title</h3>
-  </div>
-  <div class="card-body">
-    <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-  </div>
-  <div class="card-button">
-    <a href="#" class="btn btn-dark">Button link here</a>
-  </div>
-</div>
+        <div class="card card-story card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-link">
+              <a href="#" class="">Regular text link here</a>
+            </div>
+            <div class="card-tags">
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            </div>
+          </div>
+        </div> <!-- .card -->
 
-<hr />
+      </div> <!-- .col -->
+      <div class="col col-12 col-md-12 col-lg-6">
+        <div class="card card-story card-horizontal">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-content-wrapper">
+            <div class="card-header">
+              <h3 class="card-title">Card default title</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+            </div>
+            <div class="card-button">
+              <a href="#" class="btn btn-dark">Button link here</a>
+            </div>
+          </div>
+        </div> <!-- .card -->
 
-<div class="card w-50">
-  <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-  <div class="card-header">
-    <h3 class="card-title">Card default title</h3>
+      </div> <!-- .col -->
+    </div>
   </div>
-  <div class="card-body">
-    <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-  </div>
-  <div class="card-button">
-    <a href="#" class="btn btn-dark">Button link here</a>
-  </div>
-</div>
-`)
+  <hr/>
+`;
 
-;
+export const sizingUsingUtilities = () => `
+  <div class="card w-75">
+    <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+    <div class="card-header">
+      <h3 class="card-title">Card default title</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+    </div>
+    <div class="card-button">
+      <a href="#" class="btn btn-dark">Button link here</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="card w-50">
+    <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+    <div class="card-header">
+      <h3 class="card-title">Card default title</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+    </div>
+    <div class="card-button">
+      <a href="#" class="btn btn-dark">Button link here</a>
+    </div>
+  </div>
+`;
