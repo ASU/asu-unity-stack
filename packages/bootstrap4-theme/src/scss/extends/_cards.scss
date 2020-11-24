@@ -7,13 +7,16 @@ Cards - Table of Contents
 4. Event Cards
 5. Foldable Cards
 6. Foldable - Desktop Disable
+7. Accordion
+8. Quick Links
 -------------------------------------------------------------------*/
 
 .row-spaced {
   margin-bottom: -32px;
 }
-.row-spaced > .col,
-.row-spaced > div {
+
+.row-spaced>.col,
+.row-spaced>div {
   margin-bottom: 32px;
 }
 
@@ -26,27 +29,32 @@ Cards - Table of Contents
   display: $uds-component-card-basic-display;
   flex-direction: $uds-component-card-basic-flex-direction;
 }
+
 .card-hover:hover {
   transform: $uds-component-card-basic-hover-transform;
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
+
 .card-hover:active {
   transform: scale(0.95);
   cursor: $uds-component-card-basic-hover-cursor;
 }
+
 .card-hover:focus {
   outline: 0;
   box-shadow: 0 0 8px #00baff !important;
 }
-.card-hover > button {
+
+.card-hover>button {
   border: none;
   background: transparent;
   text-align: inherit;
   margin: 0;
   padding: 0;
 }
-.card-hover > button:focus {
+
+.card-hover>button:focus {
   outline: 0;
   box-shadow: 0 0 8px #00baff !important;
   border: 0;
@@ -57,40 +65,49 @@ Cards - Table of Contents
   height: $uds-component-card-basic-icon-top-width;
   margin: $uds-component-card-basic-icon-top-margin;
 }
+
 .card-img-top img,
 .card-img-top {
   max-width: $uds-component-card-basic-image-top-width-percent;
   height: $uds-component-card-basic-image-top-height;
   object-fit: $uds-component-card-basic-image-top-object-fit;
 }
+
 .card-header {
   padding: 32px 32px 16px 32px;
   flex-grow: 1;
 }
+
 .card-body {
   padding: 0 32px 24px 32px;
   flex-grow: 100;
 }
+
 .card-link {
   padding: 0 32px 24px 32px;
 }
+
 .card-footer {
   padding: 0 32px 24px 32px;
   border-top: 0;
 }
+
 .card-tags {
   padding: 0 32px 24px 32px;
   border-top: 0;
   margin-top: -8px;
 }
+
 .card-tags .btn-tag {
   margin-top: 8px;
 }
+
 .card-button {
   margin-top: $uds-component-card-basic-button-margin-top;
   padding: 0 32px 24px 32px;
 }
-.card > div:last-child {
+
+.card>div:last-child {
   padding-bottom: 32px;
 }
 
@@ -100,49 +117,59 @@ Cards - Table of Contents
     height: $uds-component-card-basic-icon-top-width;
     margin: $uds-component-card-basic-icon-top-margin;
   }
+
   .card-img-top img,
   .card-img-top {
     height: 160px;
   }
+
   .card-header {
     padding: 24px 24px 16px 24px;
   }
+
   .card-body {
     padding: 0 24px 24px 24px;
   }
+
   .card-link {
     padding: 0 24px 24px 24px;
   }
+
   .card-footer {
     padding: 0 24px 24px 24px;
     border-top: 0;
   }
+
   .card-tags {
     padding: 0 24px 24px 24px;
     border-top: 0;
   }
+
   .card-button {
     margin-top: $uds-component-card-basic-button-margin-top;
     padding: 0 24px 24px 24px;
   }
+
   .card-button .btn {
     font-size: $uds-component-button-small-font-size;
-    padding: $uds-component-button-padding-y-small
-      $uds-component-button-padding-x-small;
+    padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small;
     line-height: 1rem;
   }
-  .card > div:last-child {
+
+  .card>div:last-child {
     padding-bottom: 24px;
   }
 }
 
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
+
     .card-img-top img,
     .card-img-top {
       height: 240px;
     }
   }
+
   .col-lg-6 .card-horizontal .card-img-top {
     height: auto;
     max-width: 40%;
@@ -154,48 +181,60 @@ Cards - Table of Contents
     padding-right: 24px;
     padding-left: 24px;
   }
+
   .card-header {
     padding: 24px 24px 16px 24px;
   }
+
   .card-img-top img,
   .card-img-top {
     height: 160px;
   }
+
   .card-footer-link {
     padding-right: 24px;
     padding-left: 24px;
   }
+
   .card-button {
     padding-right: 24px;
     padding-left: 24px;
   }
+
   .card-link {
     padding-right: 24px;
     padding-left: 24px;
   }
+
   .card-tags {
     padding-right: 24px;
     padding-left: 24px;
   }
+
   .card-event-details {
     padding-right: 24px;
     padding-left: 24px;
   }
 }
+
 .card-lg {
+
   .card-img-top img,
   .card-img-top {
     height: $uds-component-card-basic-image-top-height-lg;
   }
 }
+
 .card-header .card-title {
   margin: 0;
 }
+
 .card-title a,
 .card-title a:visited {
   color: $uds-component-card-basic-title-link-color;
   text-decoration: $uds-component-card-basic-title-link-text-decoration;
 }
+
 .card-title a:hover {
   text-decoration: $uds-component-card-basic-title-link-text-decoration-hover;
 }
@@ -212,9 +251,11 @@ Cards - Table of Contents
   background-color: $uds-component-card-degree-title-underline-color;
   margin-top: $uds-component-card-degree-title-underline-margin-top;
 }
+
 .card-degree .card-footer {
   background-color: $white;
 }
+
 .card-footer-link a,
 .card-footer-link a:visited {
   color: $uds-color-base-gray-7;
@@ -222,9 +263,11 @@ Cards - Table of Contents
   font-weight: bold;
   display: block;
 }
+
 .card-footer-link a:hover {
   text-decoration: underline;
 }
+
 .card-footer-link a:after {
   float: right;
   height: 20px;
@@ -249,33 +292,41 @@ Cards - Table of Contents
   padding-left: 16px;
   padding-right: 16px;
 }
+
 .card-story .card-header {
   padding-top: 24px;
 }
+
 .card-story .card-footer {
   padding: $uds-component-card-basic-footer-link-padding;
   padding-left: 24px;
   padding-right: 24px;
 }
+
 .card-story .card-img-top {
   margin-bottom: -48px;
 }
+
 .card-story.card-sm {
   .card-body {
     margin: $uds-component-card-story-body-margin-sm;
   }
+
   .card-header {
     margin: $uds-component-card-story-body-margin-sm;
   }
+
   .card-button {
     margin: $uds-component-card-story-body-margin-sm;
   }
 }
+
 .card-story.card-horizontal .card-img-top {
   margin-right: -32px;
   position: relative;
   z-index: 0;
 }
+
 .card-story.card-horizontal .card-content-wrapper {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -283,7 +334,9 @@ Cards - Table of Contents
   z-index: 100;
   background-color: white;
 }
+
 .card-story.card-horizontal {
+
   .card-header,
   .card-body,
   .card-button,
@@ -305,37 +358,46 @@ Cards - Table of Contents
 .card-event .card-header {
   border-top: solid 8px $gold;
 }
+
 .card-event-details {
   display: flex;
   padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
 }
-.card-event-details > div:first-child {
+
+.card-event-details>div:first-child {
   margin-right: 16px;
 }
+
 .card-event-icons {
   display: flex;
 }
-.card-event-icons > div:first-child {
+
+.card-event-icons>div:first-child {
   width: 16px;
   margin-right: 8px;
 }
+
 .card-horizontal {
   flex-direction: row;
 }
+
 @include media-breakpoint-down(md) {
   .card-horizontal {
     flex-direction: column;
   }
+
   .card-horizontal .card-img-top {
     height: 160px !important;
     max-width: 100% !important;
     width: 100% !important;
   }
+
   .card-event.card-horizontal .card-content-wrapper {
     border-top: solid 8px #ffc627;
     border-left: 0 !important;
   }
+
   .card-story.card-horizontal .card-content-wrapper {
     margin-right: 16px;
     margin-left: 16px;
@@ -343,19 +405,24 @@ Cards - Table of Contents
     margin-bottom: 0;
   }
 }
+
 .card-content-wrapper {
   padding-bottom: 0 !important;
 }
+
 .card-story.card-horizontal .card-img-top {
   margin-bottom: 0;
 }
+
 .card-horizontal .card-img-top {
   height: auto;
   max-width: 40%;
 }
+
 .card-event.card-horizontal .card-header {
   border-top: 0;
 }
+
 .card-event.card-horizontal .card-content-wrapper {
   border-left: solid 8px $gold;
 }
@@ -403,7 +470,8 @@ Cards - Table of Contents
         }
       }
     }
-    + .card-body {
+
+    +.card-body {
       border-top: 1px solid $uds-color-base-gray-3;
     }
   }
@@ -411,11 +479,11 @@ Cards - Table of Contents
   .card-body {
     background-color: $uds-color-base-gray-1;
 
-    > p:first-child {
+    >p:first-child {
       margin-top: $uds-size-spacing-2;
     }
 
-    > p:last-child {
+    >p:last-child {
       margin-bottom: 0;
     }
   }
@@ -426,6 +494,7 @@ Cards - Table of Contents
 --------------------------------------------------------------------*/
 @mixin desktop-disable {
   border-left: 1px solid $uds-color-base-gray-3;
+
   .card-header {
     h4 a {
       padding-top: $uds-size-spacing-4;
@@ -435,31 +504,38 @@ Cards - Table of Contents
         background-color: transparent;
       }
     }
+
     svg {
       display: none;
     }
+
     span {
       display: none;
     }
   }
-  .card-header + .card-body {
+
+  .card-header+.card-body {
     border-top: 0;
   }
+
   .card-body {
     background-color: transparent;
 
-    > p:first-child {
+    >p:first-child {
       margin-top: 0;
     }
   }
+
   .collapse {
     display: block;
     height: auto !important;
     visibility: visible;
+
     &:not(.show) {
       display: block;
     }
   }
+
   .collapsing {
     position: relative;
     height: unset !important;
@@ -492,8 +568,176 @@ Cards - Table of Contents
   .card.card-foldable {
     border-bottom: 1px solid $uds-color-base-gray-3;
 
-    & + .card-foldable {
+    &+.card-foldable {
       margin-top: $uds-size-spacing-3;
     }
+  }
+}
+
+/*------------------------------------------------------------------
+8. Quick Links
+--------------------------------------------------------------------*/
+
+.quicklinks {
+
+  display: flex;
+  flex-direction: column;
+
+  button {
+    border-radius: 0;
+    border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
+    display: block;
+    margin: 0 auto;
+
+    &:hover {
+      transform: none;
+    }
+
+    svg {
+      margin-left: $uds-size-spacing-1;
+      transform: rotate(0deg);
+    }
+
+    svg {
+      margin-left: $uds-size-spacing-1;
+    }
+  }
+
+  div.separator {
+    display: block;
+    background-color: $uds-color-base-gray-3;
+    height: 1px;
+    width: 100%;
+  }
+
+  button[aria-expanded='true'] {
+
+    svg {
+      transform: rotate(180deg);
+    }
+
+    +.separator {
+      display: none;
+    }
+  }
+
+  .card-body {
+    padding-top: $uds-size-spacing-3;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  .nav-link {
+    color: $uds-color-base-gray-7;
+    padding: $uds-size-spacing-3 0;
+    border-bottom: 1px solid $uds-color-base-gray-3;
+    text-align: center;
+    font-weight: 700;
+
+    &:visited {
+      color: $uds-color-base-gray-7;
+    }
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    svg {
+      margin-right: $uds-size-spacing-1;
+    }
+  }
+}
+
+@mixin quicklinks-expanded {
+
+  button {
+    border-bottom: 0;
+    font-size: 30px;
+
+    svg {
+      display: none;
+    }
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .nav-link {
+    border-bottom: 0;
+    margin-bottom: $uds-size-spacing-1;
+    padding: $uds-size-spacing-3 $uds-size-spacing-1;
+
+    &:first-of-type {
+      padding-top: $uds-size-spacing-3;
+    }
+
+    &:last-of-type {
+      padding-bottom: $uds-size-spacing-3;
+    }
+
+    &:hover,
+    &.active {
+      margin-bottom: 0;
+      border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
+    }
+
+  }
+
+  .card {
+    border: 0;
+    padding: 0;
+  }
+
+  .separator {
+    order: 3;
+  }
+
+  .collapse {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+
+    &:not(.show) {
+      display: block;
+    }
+  }
+
+  .collapsing {
+    position: relative;
+    height: unset !important;
+    overflow: hidden;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .quicklinks.quicklinks-expanded-sm {
+    @include quicklinks-expanded;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .quicklinks.quicklinks-expanded-md {
+    @include quicklinks-expanded;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .quicklinks.quicklinks-expanded-lg {
+    @include quicklinks-expanded;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .quicklinks.quicklinks-expanded-xl {
+    @include quicklinks-expanded;
   }
 }
