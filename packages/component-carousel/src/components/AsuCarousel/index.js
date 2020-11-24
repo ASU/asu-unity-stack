@@ -78,7 +78,11 @@ const AsuCarousel = props => {
   let buttonElements = [];
   for (var i = 0; i < buttonCount; i++) {
     buttonElements.push(
-      <button className="glide__bullet" data-glide-dir={"=" + i}></button>
+      <button
+        className="glide__bullet"
+        data-glide-dir={"=" + i}
+        aria-label={"Slide view " + (i + 1)}
+      ></button>
     );
   }
 
@@ -290,7 +294,11 @@ const AsuCarousel = props => {
         {buttonElements}
       </div>
       <div className="glide__arrows" data-glide-el="controls">
-        <button className="glide__arrow glide__arrow--prev" data-glide-dir="<">
+        <button
+          className="glide__arrow glide__arrow--prev"
+          data-glide-dir="<"
+          aria-label="Previous slide"
+        >
           <svg
             aria-hidden="true"
             focusable="false"
@@ -307,7 +315,11 @@ const AsuCarousel = props => {
             ></path>
           </svg>
         </button>
-        <button className="glide__arrow glide__arrow--next" data-glide-dir=">">
+        <button
+          className="glide__arrow glide__arrow--next"
+          data-glide-dir=">"
+          aria-label="Next slide"
+        >
           <svg
             aria-hidden="true"
             focusable="false"
