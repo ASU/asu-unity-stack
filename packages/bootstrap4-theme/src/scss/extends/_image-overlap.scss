@@ -1,0 +1,70 @@
+/*--------------------------------------------------------------
+# Content Image Overlap
+
+1. CSS Grid definitions
+2. Utility classes
+--------------------------------------------------------------*/
+
+.image-overlap {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 10rem 1fr 10rem 1fr 1.5rem;
+  grid-template-rows: minmax(0, auto) minmax(0, 4.5rem) 1fr minmax(0, 4.5rem) minmax(0, auto);
+  gap: 0px 0px;
+
+  img {
+    width:100%;
+    height:auto;
+    grid-column: 2 / span 4;
+    grid-row: 2 / 5;
+  }
+
+  .content-wrapper {
+    grid-column: 5 / span 3;
+    grid-row: 3 / 4;
+    background-color: $uds-color-base-white;
+    padding:3rem;
+  }
+
+  &:after {
+    content:'';
+    width:1.5rem;
+    background-color: $uds-color-base-gold;
+    grid-column: 1 / 2;
+    grid-row: 3 / span 1;
+  }
+
+}
+
+.image-overlap.content-left {
+  img {
+    grid-column: 3 / span 4;
+    grid-row: 2 / 5;
+  }
+
+  .content-wrapper {
+    grid-column: 1 / span 3;
+    grid-row: 3 / 4;
+  }
+
+  &:after {
+    grid-column: 7 / 8;
+    grid-row: 3 / span 1;
+  }
+}
+
+.image-overlap.content-bottom {
+  img {
+    grid-column: 1 / span 4;
+    grid-row: 2 / 5;
+  }
+
+  .content-wrapper {
+    grid-column: 1 / span 3;
+    grid-row: 3 / 4;
+  }
+
+  &:after {
+    grid-column: 7 / 8;
+    grid-row: 3 / span 1;
+  }
+}
