@@ -41,14 +41,14 @@ jQuery(document).ready(function ($) {
    *  navbarBrand = 48px. Height of ASU Logo in mobile view, including padding. Static value.
    *  navbarTitle = Either 16px (one line) or 32px (two lines) + 16px bottom padding
    */
-  function mobileHeaderHeight () {
+  function mobileHeaderHeight() {
     var topPadding = 16;
     var navbarBrand = $('.navbar-brand').height();
     var navbarTitle = $('nav.navbar .title').height() + 16;
     return topPadding + navbarBrand + navbarTitle;
   }
 
-  function pinBottomMenu () {
+  function pinBottomMenu() {
     var viewport = $(window).height();
     var menuTall = $('#menubar.show').height();
     var headerTall = mobileHeaderHeight();
@@ -69,7 +69,7 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  function resetCalcValues () {
+  function resetCalcValues() {
     $('#menubar').css({ maxHeight: '' });
     $('.navbar-mobile-footer').removeClass('pinned');
     $('.navbar-mobile-footer').removeClass('shadow');
@@ -77,12 +77,12 @@ jQuery(document).ready(function ($) {
 
   var topValue = $(document).scrollTop();
 
-  function recordTopValue () {
+  function recordTopValue() {
     topValue = $(document).scrollTop();
     $('#asu-header').closest('body').addClass('dropdown-pinned');
   }
 
-  function restoreTopValue () {
+  function restoreTopValue() {
     $('#asu-header').closest('body').removeClass('dropdown-pinned');
     topValue = $(document).scrollTop(topValue);
   }
