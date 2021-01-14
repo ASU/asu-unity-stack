@@ -40,7 +40,12 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
   }, [active, animate, baseUrl]);
 
   return (
-    <S.Title ref={ref} {...props} class={active ? "active" : ""}>
+    <S.Title
+      ref={ref}
+      {...props}
+      class={active ? "active" : ""}
+      baseUrl={baseUrl}
+    >
       {children}
     </S.Title>
   );

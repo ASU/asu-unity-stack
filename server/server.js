@@ -3,10 +3,9 @@ const path = require("path");
 const nunjucks = require("nunjucks");
 const compression = require("compression");
 
-// import prerendering functions for ASU Brand header
-
 const app = express();
 
+// enable gzip compression
 app.use(compression());
 
 //configure nunjucks

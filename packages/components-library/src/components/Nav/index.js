@@ -38,6 +38,12 @@ const Nav = ({
    * Compile a list of Refs to interact with the focus state of Nav menu
    */
   const navList = useMemo(() => {
+
+    // return empty array if navtree not defined
+    if (!Array.isArray(navTree) ||  navTree.length == 0) {
+      return [];
+    }
+
     return navTree.map(item => {
       const newRef = createRef();
 
@@ -82,7 +88,7 @@ const Nav = ({
     const Up = 38;
     const Right = 39;
     const Down = 40;
-    const Tab = 9;
+    const Escape = 27;
 
     const derState = deriveFocusState(focused, navList);
 
@@ -110,24 +116,12 @@ const Nav = ({
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
-        /*case Tab:
+        case Escape:
           // handle tab key
-          if (!e.shiftKey) {
-            if (derState.isLast) {
-              return false;
-            }
-            e.preventDefault();
-            setFocusCallback(moveRight(focused, derState, navList));
-
-            // handle shift+tab
-          } else {
-            if (derState.isFirst) return false;
-
-            e.preventDefault();
-            setFocusCallback(moveLeft(focused, derState, navList));
+          if (!derState.isTop) {
+            setFocusCallback([focused[0], -1, -1]);
           }
-
-          break;*/
+          break;
         default:
           break;
       }

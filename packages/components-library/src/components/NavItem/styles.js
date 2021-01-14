@@ -18,7 +18,7 @@ const navItemStyles = breakpoint => css`
     margin: 0;
 
     > a {
-      padding: 8px;
+      padding: .5rem;
       position: relative;
       color: #191919;
 
@@ -62,7 +62,7 @@ const navItemStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      margin-top: auto;
+      margin-top: .5rem;
     }
   }
 `;
