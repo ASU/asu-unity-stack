@@ -70,13 +70,13 @@ export const breakpointXL = () => (
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
-/*
-export const mobile = () => (
+
+export const empty = () => (
   <Fragment>
     <Header />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
-);*/
+);
 
 export const withButtons = () => (
   <Fragment>
