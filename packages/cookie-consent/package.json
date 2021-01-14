@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/cookie-consent",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ASU implementation of cookieconsent npm library",
   "main": "src/index.js",
   "author": "Colton Testamarck",
