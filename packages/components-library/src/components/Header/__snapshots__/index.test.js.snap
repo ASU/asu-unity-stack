@@ -1202,7 +1202,6 @@ exports[`Header Snapshot test 1`] = `
 .emotion-1 .navbutton>a {
   padding: .5rem;
   position: relative;
-  color: #191919;
 }
 
 .emotion-1 .navlink>a.nav-item,
@@ -1231,6 +1230,10 @@ exports[`Header Snapshot test 1`] = `
     clip: rect(0,0,0,0);
     border: 0;
   }
+}
+
+.emotion-1 .navlink>a {
+  color: #191919;
 }
 
 @media (min-width:992px) {
@@ -1315,7 +1318,6 @@ exports[`Header Snapshot test 1`] = `
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
-  color: #191919;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1363,7 +1365,6 @@ exports[`Header Snapshot test 1`] = `
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
-  color: #191919;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1412,7 +1413,6 @@ exports[`Header Snapshot test 1`] = `
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
-  color: #191919;
   text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
