@@ -2,7 +2,7 @@
 /** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-import { useRef } from "preact/compat";
+import { useRef, useEffect } from "preact/compat";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
@@ -58,6 +58,14 @@ const UniversalSearch = ({ type, open, setOpen, mobile}) => {
 
   // ref to input dom node
   const inputRef = useRef(null);
+
+
+  useEffect(() => {
+
+    if (inputRef.current.value) {
+      setOpen(true);
+    }
+  }, []);
 
   const onBlur = e => {
     if (inputRef.current.value) {
