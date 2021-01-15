@@ -55,7 +55,6 @@ const Button = forwardRef(
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            color: #191919;
             text-align: center;
             text-decoration: none;
             vertical-align: middle;

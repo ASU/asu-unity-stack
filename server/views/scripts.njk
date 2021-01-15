@@ -450,7 +450,7 @@ crossorigin="anonymous"></script>
   console.log(componentsLibrary, 'componentsLibrary');
 
   //window.setTimeout(function () {
-  //componentsLibrary.initHeader(props);
+  componentsLibrary.initHeader(props, "headerContainer");
   // }, 10 * 1000);
 
   // Initialize cookie consent banner
@@ -473,15 +473,14 @@ crossorigin="anonymous"></script>
         title: "ASU Mobile App (push notifications)",
         label: "ASU Mobile App (push notifications) use enter or space to edit",
         id: "mobile-opt-in"
-      },
-      {
+      }, {
         name: "email_notifications",
         type: "toggle",
         label: "Web (email reminders) use enter or space to edit",
         title: "Web (email reminders)",
         id: "web-opt-in",
         icon: "desktop"
-      },
+      }
     ],
     initialValues: {
       push_notifications: true,

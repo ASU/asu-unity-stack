@@ -20,7 +20,6 @@ const navItemStyles = breakpoint => css`
     > a {
       padding: .5rem;
       position: relative;
-      color: #191919;
 
       &.nav-item {
         display: block;
@@ -37,6 +36,12 @@ const navItemStyles = breakpoint => css`
   }
 
   .navlink {
+
+    > a {
+      color: #191919;
+    }
+
+
     @media (min-width: ${breakpoint}) {
       > a {
         padding: 0.5rem 0;
