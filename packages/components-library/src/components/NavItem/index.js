@@ -10,22 +10,21 @@ import * as S from "./styles";
  */
 const NavItem = forwardRef(
   ({ onFocus, type, children, href, ...props }, ref) => {
-
     switch (type) {
       case "button":
-          // standards only allow dark buttons in nav dropdowns
-          return (
-            <S.NavButton
-              {...props}
-              ref={ref}
-              href={href}
-              {...(onFocus ? { onFocus } : "")}
-              medium
-              dark
-            >
-              {children}
-            </S.NavButton>
-          );
+        // standards only allow dark buttons in nav dropdowns
+        return (
+          <S.NavButton
+            {...props}
+            ref={ref}
+            href={href}
+            {...(onFocus ? { onFocus } : "")}
+            medium
+            dark
+          >
+            {children}
+          </S.NavButton>
+        );
 
       case "icon":
         return (
@@ -35,7 +34,7 @@ const NavItem = forwardRef(
             {...(onFocus ? { onFocus } : "")}
             ref={ref}
             type={props.class}
-            alt={children}
+            alt={`${children} icon`}
           >
             {children}
           </S.NavIcon>
