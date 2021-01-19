@@ -1,6 +1,4 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
+
 import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";

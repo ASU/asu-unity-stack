@@ -1,7 +1,4 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Heading } from "../Heading";
@@ -38,6 +35,7 @@ const NavItem = forwardRef(
             {...(onFocus ? { onFocus } : "")}
             ref={ref}
             type={props.class}
+            alt={children}
           >
             {children}
           </S.NavIcon>

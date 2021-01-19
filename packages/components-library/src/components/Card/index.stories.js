@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 
-import { h } from "preact";
+
+
 
 import { FoldableCard } from ".";
 import {H4} from "../Heading/styles";

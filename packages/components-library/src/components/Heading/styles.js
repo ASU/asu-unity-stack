@@ -1,6 +1,3 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
 import { cx, css } from "emotion";
 
 const sharedStyle = css`

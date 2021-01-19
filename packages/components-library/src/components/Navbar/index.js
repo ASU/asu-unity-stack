@@ -1,6 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
+
+
 import PropTypes from "prop-types";
 import * as S from "./styles";
 

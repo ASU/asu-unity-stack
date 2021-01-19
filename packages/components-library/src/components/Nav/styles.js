@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import { forwardRef } from "preact/compat";
 import { css, cx } from "emotion";
 import {

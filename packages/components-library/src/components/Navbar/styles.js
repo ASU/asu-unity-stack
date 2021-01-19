@@ -1,6 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
+
+
 import { css, cx } from "emotion";
 import { containerSize, primaryNavTopPadding } from "../../theme";
 import { Icon } from "../Icons";

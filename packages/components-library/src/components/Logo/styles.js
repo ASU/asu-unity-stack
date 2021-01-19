@@ -1,6 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
+
+
 import { forwardRef } from "preact/compat";
 import { css } from "emotion";
 

@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable no-unused-vars */
-import { h } from "preact";
+
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Button } from "../Button";
