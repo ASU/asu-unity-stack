@@ -20,7 +20,7 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
           class={open ? "show-search-input" : ""}
           {...props}
         >
-          <button type="submit" />
+          <button type="submit" aria-label="Submit ASU Search" />
           <input
             name="q"
             type="search"
