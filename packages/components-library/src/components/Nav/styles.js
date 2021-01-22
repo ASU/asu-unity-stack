@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "preact/compat";
@@ -36,7 +35,8 @@ const navListStyles = breakpoint => css`
       margin-right: 0.5rem;
 
       &.active,
-      &.dropdown-open, :hover {
+      &.dropdown-open,
+      :hover {
         > a:after {
           width: 100%;
         }
@@ -48,12 +48,16 @@ const navListStyles = breakpoint => css`
           content: "";
           display: block;
           height: 0.5rem;
-          background-image: linear-gradient(to right,transparent .5%,#ffc627 .5%);
+          background-image: linear-gradient(
+            to right,
+            transparent 0.5%,
+            #ffc627 0.5%
+          );
           position: relative;
           bottom: 0;
           width: 0;
           margin-left: 0;
-          top: .5rem;
+          top: 0.5rem;
         }
       }
 
@@ -80,21 +84,20 @@ const navListStyles = breakpoint => css`
 
           :after {
             transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-            content: '';
+            content: "";
             display: block;
-            height: .5rem;
+            height: 0.5rem;
             position: relative;
-            top: .5rem;
+            top: 0.5rem;
             bottom: 0;
             width: 0;
-            left: -.75rem;
+            left: -0.75rem;
             margin-left: 0;
           }
         }
       }
 
       @media (max-width: ${breakpoint}) {
-
         > a:after {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
           content: "";
@@ -141,7 +144,7 @@ const navListStyles = breakpoint => css`
         margin-right: 0;
 
         > a {
-          padding: 1rem 1rem .5rem 1rem;
+          padding: 1rem 1rem 0.5rem 1rem;
           justify-content: space-between;
           display: block;
           border-bottom: 1px solid #cccccc;
@@ -331,9 +334,103 @@ const DropdownContainer = props => {
   return (
     <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
       <div>{props.children}</div>
-      {props.buttons ? <div class="button-row"><div>{props.buttons}</div></div> : ""}
+      {props.buttons ? (
+        <div class="button-row">
+          <div>{props.buttons}</div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
+};
+
+/**
+ * Styles the dropdown menu container
+ */
+const dropControlsStyles = breakpoint => css`
+  /** Dropcontrols CSS **/
+  div.drop-controls {
+    display: block;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    color: #191919;
+
+    :after {
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+      content: "";
+      display: block;
+      height: 0.5rem;
+      background-image: linear-gradient(
+        to right,
+        transparent 0.5%,
+        #ffc627 0.5%
+      );
+      position: relative;
+      bottom: 0;
+      width: 0;
+      margin-left: 0;
+      top: 0.5rem;
+    }
+
+    > a {
+      color: #191919;
+    }
+
+    > svg {
+      transition: 0.5s cubic-bezier(0.19,1,0.19,1);
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+
+    @media (min-width: ${breakpoint}) {
+      line-height: 1rem;
+      box-sizing: content-box;
+      :hover {
+        :after {
+          width: calc(100% + 24px);
+          margin-left: 0;
+        }
+      }
+
+      :after {
+        transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+        content: "";
+        display: block;
+        height: 0.5rem;
+        position: relative;
+        top: 0.5rem;
+        bottom: 0;
+        width: 0;
+        left: -0.75rem;
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: ${breakpoint}) {
+      display: flex;
+      color: black;
+      padding: 1rem 1rem 0.5rem 1rem;
+      border-bottom: 1px solid #cccccc;
+      align-items: center;
+      > a {
+        flex-grow: 1;
+      }
+
+      > svg {
+        cursor: pointer;
+        font-size: 1.25rem;
+        min-width: 3rem;
+      }
+
+    }
+  }
+`;
+
+const DropControls = props => {
+  return <div class={cx("drop-controls")}>{props.children}</div>;
 };
 
 /**
@@ -442,10 +539,9 @@ const componentStyles = breakpoint => css`
 
   ${dropdownContainerStyles(breakpoint)}
   ${menuColumnStyles(breakpoint)}
-  ${buttonFormStyles(
-    breakpoint
-  )}
+  ${buttonFormStyles(breakpoint)}
   ${navListStyles(breakpoint)}
+  ${dropControlsStyles(breakpoint)}
 `;
 
 /**
@@ -511,4 +607,5 @@ export {
   BreakpointXl,
   BreakpointLg,
   NavList,
+  DropControls,
 };

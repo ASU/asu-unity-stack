@@ -21,6 +21,7 @@ const checkSSOCookie = () => {
   };
 
   const cookies = document.cookie.split(";"); // try to parse out the username from SSONAME cookie
+
   for (let i = 0; i < cookies.length; i++) {
     if (cookies[i].indexOf("SSONAME") > 0) {
       if (cookies[i].substring(9) == "") {
