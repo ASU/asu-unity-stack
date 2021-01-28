@@ -45,3 +45,7 @@ export const withButtons = () => (
 export const withMenuColumns = () => (
   <Nav navTree={NavTreeMega} mobileOpen={true} injectStyles={true} />
 );
+
+export const expandOnHover = () => (
+  <Nav navTree={NavTreeMega} mobileOpen={true} injectStyles={true} expandOnHover={true} />
+);
