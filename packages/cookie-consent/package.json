@@ -6,9 +6,6 @@
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
   "private": false,
-  "dependencies": {
-    "cookieconsent": "^3.1.1"
-  },
   "scripts": {
     "clean": "yarn shx rm -rf ./dist",
     "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
@@ -25,6 +22,9 @@
     "directory": "packages/cookie-consent"
   },
   "devDependencies": {
-    "@storybook/html": "^6.0.7"
+    "@storybook/html": "^6.1.15"
+  },
+  "dependencies": {
+    "cookieconsent": "^3.1.1"
   }
 }

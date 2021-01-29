@@ -81,6 +81,7 @@
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
+    "css-minimizer-webpack-plugin": "^1.2.0",
     "del": "^4.1.0",
     "dotenv": "^8.0.0",
     "emotion-server": "^10.0.27",
