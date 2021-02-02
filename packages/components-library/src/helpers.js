@@ -93,14 +93,27 @@ const initHeader = (props, target = "headerContainer", hydrate = false) => {
     ? loginLink
     : alterLoginUrl(Login.defaultProps.loginLink);
 
-  // If login data is incomplete, check the SSO cookie for data.
-  const loginStatus =
-    !loggedIn || !userName
-      ? checkSSOCookie()
-      : {
-          loggedIn,
-          userName,
-        };
+    let loginStatus;
+    // If loggedIn is DEFINED and FALSE... honor logged out state
+    // and assume host site has checked for us (solves for
+    // quirks from Drupal not checking for CAS sessions).
+    // But if login data is otherwise incomplete, check the SSO cookie for data.
+    if (typeof loggedIn === 'boolean' && loggedIn === false) {
+      loginStatus = {
+        loggedIn: false,
+        userName: '',
+      };
+    }
+    else if (!loggedIn || !userName) {
+      loginStatus = checkSSOCookie();
+    }
+    else {
+      // Use provided values.
+      loginStatus = {
+        loggedIn,
+        userName,
+      };
+    }
 
   const headerProps = {
     ...loginStatus,
