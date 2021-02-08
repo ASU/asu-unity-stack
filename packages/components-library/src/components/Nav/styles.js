@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "preact/compat";
-import { css, cx } from "emotion";
+import { css, cx } from "@emotion/css";
 import {
   hiddenStyle,
   showReset,

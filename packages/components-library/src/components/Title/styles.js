@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import {
   containerSize,
   BreakpointLg,

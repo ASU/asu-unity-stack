@@ -33,7 +33,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "emotion": "^10.0.27",
+    "@emotion/css": "^11.0.0",
     "preact": "^10.5.10",
     "prop-types": "^15.7.2"
   }

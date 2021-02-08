@@ -1,7 +1,7 @@
 
 
 import { forwardRef } from "preact/compat";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 
 /**
