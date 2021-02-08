@@ -13,6 +13,7 @@ pipeline {
     options {
       withAWS(credentials:'aws-jenkins')
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+      disableConcurrentBuilds()
     }
     stages {
         stage('Build') {

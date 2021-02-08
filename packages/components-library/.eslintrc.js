@@ -12,6 +12,7 @@ module.exports = {
     "no-console": ["warn", { allow: ["warn", "error"] }],
     "no-undef": "warn",
     "no-useless-escape": "off",
+    "no-prototype-builtins": "off",
     // "prettier/prettier": "error",
   },
   settings: {

@@ -1,7 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import * as S from "./styles";
 import PropTypes from "prop-types";
 

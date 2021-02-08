@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import { useState } from "preact/compat";
 import { Header } from "./";
 import { Button } from "../Button";

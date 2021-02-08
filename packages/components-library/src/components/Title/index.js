@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import * as S from "./styles";
 import { forwardRef, useEffect, useState } from "preact/compat";
 import { checkFirstLoad } from "../../helpers";
@@ -40,7 +39,12 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
   }, [active, animate, baseUrl]);
 
   return (
-    <S.Title ref={ref} {...props} class={active ? "active" : ""}>
+    <S.Title
+      ref={ref}
+      {...props}
+      class={active ? "active" : ""}
+      baseUrl={baseUrl}
+    >
       {children}
     </S.Title>
   );

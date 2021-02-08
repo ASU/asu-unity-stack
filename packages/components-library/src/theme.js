@@ -1,5 +1,6 @@
 import { css } from "emotion";
 import {
+  BreakpointSm,
   BreakpointLg,
   BreakpointXl,
   ComponentButtonHoverStateTransform,
@@ -79,6 +80,7 @@ export {
   containerSize,
   srOnly,
   primaryNavTopPadding,
+  BreakpointSm,
   BreakpointLg,
   BreakpointXl,
   ComponentButtonHoverStateTransform,

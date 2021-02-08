@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 
-import { h } from "preact";
+
+
 import { Title } from ".";
 import { TitleStyled } from "./styles";
 import { AnimatedTitleExample } from "./examples";

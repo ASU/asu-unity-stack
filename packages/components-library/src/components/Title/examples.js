@@ -1,6 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from "preact";
+
+
 import { useState } from "preact/compat";
 import { Button } from "../Button";
 import { Title } from "../Title";

@@ -1,7 +1,4 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
 import { forwardRef } from "preact/compat";
 import { Icon } from "../Icons";
 import { css, cx } from "emotion";
@@ -18,9 +15,8 @@ const navItemStyles = breakpoint => css`
     margin: 0;
 
     > a {
-      padding: 8px;
+      padding: .5rem;
       position: relative;
-      color: #191919;
 
       &.nav-item {
         display: block;
@@ -37,6 +33,12 @@ const navItemStyles = breakpoint => css`
   }
 
   .navlink {
+
+    > a {
+      color: #191919;
+    }
+
+
     @media (min-width: ${breakpoint}) {
       > a {
         padding: 0.5rem 0;
@@ -62,12 +64,12 @@ const navItemStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      margin-top: auto;
+      margin-top: .5rem;
     }
   }
 `;
 
-const NavLink = forwardRef(({ onFocus, text, ...props }, ref) => {
+const NavLink = forwardRef(({ onFocus, children, ...props }, ref) => {
   return (
     <li class="navlink">
       <a
@@ -76,13 +78,14 @@ const NavLink = forwardRef(({ onFocus, text, ...props }, ref) => {
         {...(onFocus ? { onFocus } : "")}
         ref={ref}
       >
-        {text}
+        {children}
       </a>
     </li>
   );
 });
 
-const NavIcon = forwardRef(({ children, onFocus, type, ...props }, ref) => {
+const NavIcon = forwardRef(({ children, onFocus, type, alt, ...props }, ref) => {
+
   return (
     <li class="navicon">
       <a
@@ -92,7 +95,7 @@ const NavIcon = forwardRef(({ children, onFocus, type, ...props }, ref) => {
         ref={ref}
       >
         {/* Use className here instead of class because FontAwesome React component expects it*/}
-        <Icon type={type} className="icon-nav-item" />
+        <Icon type={type} className="icon-nav-item" alt={alt} />
         <span class="mobile-only">{children}</span>
       </a>
     </li>

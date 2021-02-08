@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import { cx, css } from "emotion";
 import PropTypes from "prop-types";
 import {
@@ -55,7 +54,6 @@ const Button = forwardRef(
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            color: #191919;
             text-align: center;
             text-decoration: none;
             vertical-align: middle;

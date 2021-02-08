@@ -1,7 +1,5 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import {
   IconMobile,
   IconChevronDown,

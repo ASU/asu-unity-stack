@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
+
 /* eslint-disable no-unused-vars */
-import { h } from "preact";
+
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Button } from "../Button";
@@ -19,6 +18,7 @@ const DropNav = forwardRef(
       mega,
       buttons,
       href, // destructure, but don't use because top level nav toggle shouldn't have href prop
+      mobile,
       ...props
     },
     ref
@@ -83,6 +83,7 @@ DropNav.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object), // CTA buttons which will be shown at bottom of dropdown nav
   mega: PropTypes.bool,
   text: PropTypes.string,
+  mobile: PropTypes.bool
 };
 
 DropNav.defaultProps = {

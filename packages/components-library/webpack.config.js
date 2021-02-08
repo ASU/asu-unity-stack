@@ -35,26 +35,7 @@ const shared = {
       // Must be below test-utils
     },
   },
-  externals: {
-    preact : {
-      commonjs: 'preact',
-      commonjs2: 'preact',
-      amd: 'preact',
-      root: 'preact'
-    },
-    emotion: {
-      commonjs: 'emotion',
-      commonjs2: 'emotion',
-      amd: 'emotion',
-      root: 'emotion'
-    },
-    "prop-types": {
-      commonjs: 'prop-types',
-      commonjs2: 'prop-types',
-      amd: 'propTypes',
-      root: 'propTypes'
-    }
-  }
+
 };
 
 
@@ -95,6 +76,26 @@ module.exports.push({
       }),
     ],
   },
+  externals: {
+    preact : {
+      commonjs: 'preact',
+      commonjs2: 'preact',
+      amd: 'preact',
+      root: 'preact'
+    },
+    emotion: {
+      commonjs: 'emotion',
+      commonjs2: 'emotion',
+      amd: 'emotion',
+      root: 'emotion'
+    },
+    "prop-types": {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'propTypes',
+      root: 'propTypes'
+    }
+  }
 });
 
 /** Vendor bundle config */

@@ -1,6 +1,3 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
@@ -26,6 +23,7 @@ const Header = ({
   buttons,
   breakpoint,
   animateTitle,
+  expandOnHover,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -138,6 +136,7 @@ const Header = ({
                 buttons,
                 maxMobileHeight: maxMobileNavHeight,
                 breakpoint,
+                expandOnHover
               }}
             />
           </>
@@ -161,6 +160,7 @@ Header.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
+  expandOnHover: PropTypes.bool
 };
 
 Header.defaultProps = {
@@ -169,6 +169,7 @@ Header.defaultProps = {
   title: "",
   buttons: [],
   breakpoint: "Lg",
+  expandOnHover: false
 };
 
 export { Header };

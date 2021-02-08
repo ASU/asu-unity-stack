@@ -33,22 +33,7 @@ const shared = {
       // Must be below test-utils
     },
   },
-  externals: {
-    '@asu-design-system/components-library' : {
-      commonjs: '@asu-design-system/components-library',
-      commonjs2: '@asu-design-system/components-library',
-      amd: 'componentsLibrary',
-      root: 'componentsLibrary'
-    },
-    preact: 'preact',
-    emotion: 'emotion',
-    "prop-types": {
-      commonjs: 'prop-types',
-      commonjs2: 'prop-types',
-      amd: 'propTypes',
-      root: 'propTypes'
-    }
-  }
+
 }
 
 module.exports.push({
@@ -82,4 +67,20 @@ module.exports.push({
       },
     })],
   },
+  externals: {
+    '@asu-design-system/components-library' : {
+      commonjs: '@asu-design-system/components-library',
+      commonjs2: '@asu-design-system/components-library',
+      amd: 'componentsLibrary',
+      root: 'componentsLibrary'
+    },
+    preact: 'preact',
+    emotion: 'emotion',
+    "prop-types": {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'propTypes',
+      root: 'propTypes'
+    }
+  }
 });

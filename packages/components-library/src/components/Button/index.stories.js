@@ -1,7 +1,6 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 
-import { h } from "preact";
+
+
 import { action } from "@storybook/addon-actions";
 
 import { Button } from ".";
