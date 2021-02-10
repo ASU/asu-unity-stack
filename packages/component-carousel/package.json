@@ -1,0 +1,34 @@
+{
+  "name": "@asu-design-system/component-carousel",
+  "version": "0.0.0",
+  "description": "ASU implementation of @glidejs/glide npm library for carousels",
+  "main": "src/index.js",
+  "author": "Michael Samuelson",
+  "license": "UNLICENSED",
+  "private": false,
+  "dependencies": {
+    "@asu-design-system/design-tokens": "^1.1.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@glidejs/glide": "^3.4.1",
+    "preact": "^10.4.8",
+    "prop-types": "^15.7.2"
+  },
+  "scripts": {
+    "clean": "yarn shx rm -rf ./dist",
+    "build": "cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
+    "storybook": "start-storybook -s ./dist -p 9009",
+    "build-storybook": "build-storybook -s ./dist"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/component-carousel"
+  },
+  "devDependencies": {
+    "@storybook/preact": "^6.0.7"
+  }
+}
