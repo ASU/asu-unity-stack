@@ -11,7 +11,7 @@
 8. Page Content
 --------------------------------------------------------------*/
 
-$fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
+$fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
 @mixin transition {
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -22,7 +22,8 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
   content: '';
   display: block;
   height: $uds-size-spacing-1;
-  background-color: $uds-color-base-gold;
+  /* Use linear gradient so we can offset and avoid little gold slivers */
+  background-image: linear-gradient(to right, transparent 0.5%, $uds-color-base-gold 0.5%);
 }
 
 @mixin gold-underline-mobile {
@@ -139,11 +140,11 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
   }
 
   input[type='search'] {
-    background: url($image-assets-path+'/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
+    background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
     background-size: 12px;
     width: 32px;
     cursor: pointer;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 0.75rem;
     border: 0;
     border-radius: 0;
@@ -158,12 +159,12 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
   }
 
   input[type='search']:focus {
-    background-image: url($image-assets-path+'/font-awesome-svg/search-gray-5.svg');
+    background-image: url($image-assets-path + '/font-awesome-svg/search-gray-5.svg');
     width: 200px;
     color: $uds-color-base-gray-5;
     background-color: #fff;
     cursor: auto;
-    margin: .75rem 0;
+    margin: 0.75rem 0;
     padding-left: $uds-size-spacing-4;
 
     +label {
@@ -440,7 +441,7 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
 
       input {
         width: 100%;
-        background: url($image-assets-path+'/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
+        background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
         background-size: 16px;
         background-color: $uds-color-base-white;
         border: 0;
@@ -699,6 +700,11 @@ $fa-search: url($image-assets-path+'/font-awesome-svg/search.svg');
           @include gold-underline-desktop;
           bottom: -8px;
           left: -8px;
+        }
+
+        &.nav-link-home:after {
+          bottom: -7px;
+          /* Home needs to be tweaked to not overlap border */
         }
 
         &:hover:after {
