@@ -21,7 +21,8 @@ addDecorator(withA11y)
 export const parameters = {
   options: {
     storySort: {
-      order: ['Design', ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Content Sections', 'Docs', ['Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation']]],
+      order: ['Design',
+        ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Docs', ['Content Sections', 'Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation']]],
     },
   },
 };
