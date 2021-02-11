@@ -87,7 +87,7 @@ const checkFirstLoad = root => {
  * @param {*} target - The ID of the containing <div> where the header should
  * be either hydrated or rendered.
  */
-const initHeader = (props, target = "headerContainer", hydrate = false) => {
+const initHeader = (props, target = "headerContainer", hydrate = false, rootOfDOM = document) => {
   const { loggedIn, userName, loginLink, ...theRest } = props;
   const fullLoginUrl = loginLink
     ? loginLink
@@ -122,9 +122,9 @@ const initHeader = (props, target = "headerContainer", hydrate = false) => {
   };
 
   if (hydrate) {
-    HydratePreact(Header, headerProps, document.getElementById(target));
+    HydratePreact(Header, headerProps, rootOfDOM.querySelector('#' + target));
   } else {
-    RenderPreact(Header, headerProps, document.getElementById(target));
+    RenderPreact(Header, headerProps, rootOfDOM.querySelector('#' + target));
   }
 };
 
