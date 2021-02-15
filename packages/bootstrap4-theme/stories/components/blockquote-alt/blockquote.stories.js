@@ -25,7 +25,7 @@ export const blockquoteNoImage = () => `
     <div class="row pt-6">
       <div class="col-md-8">
 
-        <div class="wrapper p-6 bg-gray-7">
+        <div class="wrapper p-4 bg-gray-7">
 
           <figure class="uds-blockquote accent-gold text-white">
             <svg title="Open quote" role="img" aria-labelledby="open-quote-title" viewBox="0 0 302.87 245.82">
