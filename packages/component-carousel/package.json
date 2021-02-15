@@ -29,6 +29,6 @@
     "directory": "packages/component-carousel"
   },
   "devDependencies": {
-    "@storybook/preact": "^6.0.7"
+    "@storybook/preact": "^6.1.15"
   }
 }
