@@ -1,6 +1,6 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import * as S from "./styles";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";

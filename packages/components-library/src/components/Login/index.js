@@ -1,4 +1,4 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import * as S from "./styles";

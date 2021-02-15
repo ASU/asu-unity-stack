@@ -1,7 +1,7 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
+
+import { cx } from "@emotion/css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,

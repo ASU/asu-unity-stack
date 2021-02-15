@@ -1,6 +1,6 @@
-/** @jsx h */
 
-import { h } from "preact";
+
+
 import {
   BasicNavTree,
   NavTreeWithButtons,
@@ -69,13 +69,13 @@ export const breakpointXL = () => (
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
 );
-/*
-export const mobile = () => (
+
+export const empty = () => (
   <Fragment>
     <Header />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>
-);*/
+);
 
 export const withButtons = () => (
   <Fragment>
@@ -92,19 +92,6 @@ export const withButtons = () => (
   </Fragment>
 );
 
-const megaButtons = [
-  {
-    text: "CTA Button Number One",
-    color: "gold",
-    href: "https://admissions.asu.edu",
-  },
-  {
-    text: "CTA Button",
-    color: "maroon",
-    href: "https://asu.edu",
-  },
-];
-
 export const withMenuColumns = () => (
   <Fragment>
     <Header
@@ -119,6 +106,26 @@ export const withMenuColumns = () => (
       userName={text("userName", "Sparky")}
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
+    />
+    <div style={"width:100%; height:200vh;"} />
+  </Fragment>
+);
+
+export const expandOnHover = () => (
+  <Fragment>
+    <Header
+      navTree={object("navTree", NavTreeMega)}
+      title={text("title", "Ira A. Fulton Schools of Engineering")}
+      parentOrg={text(
+        "parentOrg",
+        "School of Computing, Informatics, and Decisions Systems Engineering"
+      )}
+      parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
+      loggedIn={boolean("loggedIn", true)}
+      userName={text("userName", "Sparky")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
+      expandOnHover={boolean("expandOnHover", true)}
     />
     <div style={"width:100%; height:200vh;"} />
   </Fragment>

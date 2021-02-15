@@ -1,27 +1,22 @@
-/** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
 import { forwardRef } from "preact/compat";
 import { Icon } from "../Icons";
-import { css, cx } from "emotion";
+import { css, cx } from "@emotion/css";
 import { Button } from "../";
 import {
   hiddenStyle,
-  showReset,
-  srOnly,
-  BreakpointLg,
-  BreakpointXl,
 } from "../../theme";
 
 const navItemStyles = breakpoint => css`
   .navlink,
-  .navicon {
-    padding: 0.5rem 0;
+  .navicon,
+  .navbutton {
+    padding: 0;
+    margin: 0;
 
     > a {
-      padding: 8px;
+      padding: .5rem;
       position: relative;
-      color: #191919;
 
       &.nav-item {
         display: block;
@@ -38,6 +33,12 @@ const navItemStyles = breakpoint => css`
   }
 
   .navlink {
+
+    > a {
+      color: #191919;
+    }
+
+
     @media (min-width: ${breakpoint}) {
       > a {
         padding: 0.5rem 0;
@@ -56,17 +57,19 @@ const navItemStyles = breakpoint => css`
   }
 
   .navbutton {
-    margin-top: 1rem;
+    margin-top: auto;
 
     @media (min-width: ${breakpoint}) {
-      position: absolute;
-      bottom: 0;
-      margin: 0;
+      order: 1;
+    }
+
+    @media (max-width: ${breakpoint}) {
+      margin-top: .5rem;
     }
   }
 `;
 
-const NavLink = forwardRef(({ onFocus, text, ...props }, ref) => {
+const NavLink = forwardRef(({ onFocus, children, ...props }, ref) => {
   return (
     <li class="navlink">
       <a
@@ -75,13 +78,14 @@ const NavLink = forwardRef(({ onFocus, text, ...props }, ref) => {
         {...(onFocus ? { onFocus } : "")}
         ref={ref}
       >
-        {text}
+        {children}
       </a>
     </li>
   );
 });
 
-const NavIcon = forwardRef(({ children, onFocus, type, ...props }, ref) => {
+const NavIcon = forwardRef(({ children, onFocus, type, alt, ...props }, ref) => {
+
   return (
     <li class="navicon">
       <a
@@ -91,7 +95,7 @@ const NavIcon = forwardRef(({ children, onFocus, type, ...props }, ref) => {
         ref={ref}
       >
         {/* Use className here instead of class because FontAwesome React component expects it*/}
-        <Icon type={type} className="icon-nav-item" />
+        <Icon type={type} className="icon-nav-item" alt={alt} />
         <span class="mobile-only">{children}</span>
       </a>
     </li>

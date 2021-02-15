@@ -1,8 +1,6 @@
-/** @jsx h */
 /* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import {
   containerSize,
   primaryNavTopPadding,
@@ -122,16 +120,6 @@ const universalStyles = breakpoint => css`
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
-
-      > div {
-        > a {
-          display: inline-flex;
-          font-size: 0.75rem;
-          padding: 0.25rem 0.5rem;
-          color: #484848;
-          margin: 0;
-        }
-      }
     }
 
     @media (max-width: ${breakpoint}) {
@@ -139,6 +127,7 @@ const universalStyles = breakpoint => css`
       padding: 0;
       transition: none;
       height: auto;
+
 
       &.mobile-open {
         z-index: 998;
@@ -207,7 +196,25 @@ const UniversalNav = forwardRef((props, ref) => {
 });
 
 const UniversalNavLinks = ({ children, ...props }) => {
-  return <div class={cx("nav-grid", props.class)}>{children}</div>;
+  return (
+    <div
+      class={cx(
+        "nav-grid",
+        props.class,
+        css`
+          > a {
+            display: inline-flex;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            color: #484848;
+            margin: 0;
+          }
+        `
+      )}
+    >
+      {children}
+    </div>
+  );
 };
 
 export {

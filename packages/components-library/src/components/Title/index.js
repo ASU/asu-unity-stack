@@ -1,6 +1,6 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import * as S from "./styles";
 import { forwardRef, useEffect, useState } from "preact/compat";
 import { checkFirstLoad } from "../../helpers";
@@ -18,7 +18,6 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
    * the first page load, then we set the 'active' state to animate the header with gold highlight.
    */
   useEffect(() => {
-
     if (animate === true || animate === false) {
       setActive(animate);
       return;
@@ -37,10 +36,15 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
         setActive(true);
       }
     }
-  }, [active, animate]);
+  }, [active, animate, baseUrl]);
 
   return (
-    <S.Title ref={ref} {...props} class={active ? "active" : ""}>
+    <S.Title
+      ref={ref}
+      {...props}
+      class={active ? "active" : ""}
+      baseUrl={baseUrl}
+    >
       {children}
     </S.Title>
   );

@@ -1,15 +1,8 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
+
+
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
-import {
-  containerSize,
-  primaryNavTopPadding,
-  BreakpointXl,
-  BreakpointLg,
-  srOnly,
-} from "../../theme";
+import { css } from "@emotion/css";
+
 
 /**
  * Logo
@@ -82,7 +75,7 @@ const Logo = forwardRef(({brandLink, src, mobileSrc, alt, ...props}, ref) => {
   return (
     <a href={brandLink} class="navbar-brand" ref={ref} {...props} >
       <img class="vert" src={src} alt={alt} />
-      <img class="horiz" src={mobileSrc} />
+      <img class="horiz" src={mobileSrc} alt={alt} />
     </a>
   );
 });

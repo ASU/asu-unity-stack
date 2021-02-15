@@ -1,7 +1,7 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
+
+import { css, cx } from "@emotion/css";
 import PropTypes from "prop-types";
 import {
   ComponentButtonHoverStateTransform,
@@ -38,15 +38,14 @@ const Button = forwardRef(
   ) => {
     const Element = type == "link" ? "a" : "button";
 
-    // If no other color set, default to light gray
-    const light = props.light
-      ? props.light
-      : () => {
-          if (!gold && !dark && !maroon) {
-            return true;
-          }
-          return false;
-        };
+    // If no color set, then default to 'light'
+    let light = props.light ? props.light : false;
+
+    if (gold === undefined && dark === undefined && maroon === undefined) {
+      light = true;
+    }
+
+
     return (
       <Element
         {...props}
@@ -55,7 +54,6 @@ const Button = forwardRef(
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            color: #191919;
             text-align: center;
             text-decoration: none;
             vertical-align: middle;

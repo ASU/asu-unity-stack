@@ -1,7 +1,6 @@
-/** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
+
+import { cx, css } from "@emotion/css";
 
 const Panel = props => {
   return (

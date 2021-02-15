@@ -1,6 +1,14 @@
 jQuery(document).ready(function ($) {
   'use strict';
 
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 0) {
+      $('#asu-header').addClass('scrolled');
+    } else {
+      $('#asu-header').removeClass('scrolled');
+    }
+  });
+
   // Add a class of .scrolled as the window moves beyond the top of the screen.
   // Retrigger the dropdown max-height calculation when this occurs.
   $(window).scroll(function () {
@@ -71,11 +79,11 @@ jQuery(document).ready(function ($) {
 
   function recordTopValue() {
     topValue = $(document).scrollTop();
-    $('body').addClass('dropdown-pinned');
+    $('#asu-header').closest('body').addClass('dropdown-pinned');
   }
 
   function restoreTopValue() {
-    $('body').removeClass('dropdown-pinned');
+    $('#asu-header').closest('body').removeClass('dropdown-pinned');
     topValue = $(document).scrollTop(topValue);
   }
 

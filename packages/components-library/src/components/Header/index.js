@@ -1,6 +1,3 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
@@ -26,6 +23,7 @@ const Header = ({
   buttons,
   breakpoint,
   animateTitle,
+  expandOnHover,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -34,7 +32,7 @@ const Header = ({
   const toggle = () => setMobileOpen(oldOpen => !oldOpen);
 
   //State hooks for tracking and setting open/close search in universal nav
-  const [searchOpen, setSearchOpen] = useState(false); 
+  const [searchOpen, setSearchOpen] = useState(false);
 
   // State hooks for tracking and setting the max mobile nav menu height
   const [maxMobileNavHeight, setMaxMobileNavHeight] = useState(-1);
@@ -53,13 +51,7 @@ const Header = ({
     setSrollPosition(position);
   };
 
-  // Get primary nav top padding value from theme
-  const tpadding = parseInt(S.primaryNavTopPadding, 10);
 
-  // Use refs to track height of header dom elements
-  const universalRef = useRef(null);
-  const logoRef = useRef(null);
-  const titleRef = useRef(null);
 
   // Attach scroll event lister which will update the scrollPosition state
   // when window scrolled
@@ -71,25 +63,29 @@ const Header = ({
     };
   }, []);
 
+  // Refs to track height of header dom elements
+  const universalRef = useRef(null);
+  const logoRef = useRef(null);
+  const titleRef = useRef(null);
+
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
   useEffect(() => {
     if (width < bpointInt && mobileOpen) {
-      window.setTimeout(() => {
+      //window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
         const tHeight = titleRef.current.clientHeight;
+        // Get primary nav top padding value from theme
+        const tpadding = parseInt(S.primaryNavTopPadding, 10);
 
-        const pHeight = lHeight + tHeight + tpadding;
-
+        // top padding x2 - 24px margin under title and 24px padding above title
+        const pHeight = lHeight + tHeight + tpadding * 2;
         const newHeight = height - uHeight - pHeight;
-
         setMaxMobileNavHeight(newHeight);
-      }, 500);
+      //}, 100);
     }
-  }, [height, width, mobileOpen]);
-
-  const animate = animateTitle === true;
+  }, [height, width, mobileOpen, bpointInt]);
 
   return (
     <S.Header
@@ -126,7 +122,7 @@ const Header = ({
         ) : (
           <>
             <Title
-              {...{ parentOrg, parentOrgUrl, baseUrl, animate }}
+              {...{ parentOrg, parentOrgUrl, baseUrl, animate: animateTitle }}
               ref={titleRef}
             >
               {title}
@@ -140,6 +136,7 @@ const Header = ({
                 buttons,
                 maxMobileHeight: maxMobileNavHeight,
                 breakpoint,
+                expandOnHover
               }}
             />
           </>
@@ -163,6 +160,7 @@ Header.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
+  expandOnHover: PropTypes.bool
 };
 
 Header.defaultProps = {
@@ -171,6 +169,7 @@ Header.defaultProps = {
   title: "",
   buttons: [],
   breakpoint: "Lg",
+  expandOnHover: false
 };
 
 export { Header };

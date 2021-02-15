@@ -1,6 +1,6 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
+
+/* eslint-disable no-unused-vars */
+
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Button } from "../Button";
@@ -18,6 +18,7 @@ const DropNav = forwardRef(
       mega,
       buttons,
       href, // destructure, but don't use because top level nav toggle shouldn't have href prop
+      mobile,
       ...props
     },
     ref
@@ -64,7 +65,7 @@ const DropNav = forwardRef(
           {...{ open: isOpen }}
           class={mega ? "mega" : ""}
           {...(buttons ? { buttons: buttons.map((item, index) => {
-            return <Button href={item.href} color={item.color}>{item.text}</Button>
+            return <Button href={item.href} {...item.color ? {[item.color]: true} : {}} medium>{item.text}</Button>
           }) } : {})}
         >
           {children}
@@ -82,6 +83,7 @@ DropNav.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object), // CTA buttons which will be shown at bottom of dropdown nav
   mega: PropTypes.bool,
   text: PropTypes.string,
+  mobile: PropTypes.bool
 };
 
 DropNav.defaultProps = {

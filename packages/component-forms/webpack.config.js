@@ -6,7 +6,7 @@ module.exports = [];
 const shared = {
   context: path.join(__dirname, "src"),
   entry: {
-    forms: "./index.js"
+    "component-forms": "./index.js"
   },
   module: {
     rules: [
@@ -32,46 +32,34 @@ const shared = {
       "react-dom": "preact/compat",
       // Must be below test-utils
     },
-  }
+  },
+
 }
 
 module.exports.push({
-  context: shared.context,
+  ...shared,
   mode: "development",
-  entry: shared.entry,
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].development.js",
+    filename: "[name].dev.js",
     libraryTarget: "umd",
     library: "AsuWeb[name]",
     umdNamedDefine: true,
   },
-  module: shared.module,
-  resolve: shared.resolve
 });
 
 
 module.exports.push({
-  context: shared.context,
+  ...shared,
   mode: "production",
-  entry: shared.entry,
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].production.js",
+    filename: "[name].js",
     libraryTarget: "umd",
-    library: "AsuWeb[name]",
-    umdNamedDefine: true,
+    library: "componentForms",
+    umdNamedDefine: true
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all'
-        }
-      },
-    },
     minimizer: [new TerserPlugin({
       parallel: true,
       terserOptions: {
@@ -79,6 +67,20 @@ module.exports.push({
       },
     })],
   },
-  module: shared.module,
-  resolve: shared.resolve
+  externals: {
+    '@asu-design-system/components-library' : {
+      commonjs: '@asu-design-system/components-library',
+      commonjs2: '@asu-design-system/components-library',
+      amd: 'componentsLibrary',
+      root: 'componentsLibrary'
+    },
+    preact: 'preact',
+    emotion: 'emotion',
+    "prop-types": {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'propTypes',
+      root: 'propTypes'
+    }
+  }
 });

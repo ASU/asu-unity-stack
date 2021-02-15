@@ -1,8 +1,6 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
-import { forwardRef } from "preact/compat";
-import { css, cx } from "emotion";
+
+
+import { css, cx } from "@emotion/css";
 import { containerSize, primaryNavTopPadding } from "../../theme";
 import { Icon } from "../Icons";
 
@@ -21,7 +19,7 @@ const navbarTogglerStyles = breakpoint => css`
     border: 0;
     margin-right: 2rem;
     cursor: pointer;
-    align-self-center;
+    align-self: flex-start;
 
     @media (min-width: ${breakpoint}) {
       display: none;
@@ -109,7 +107,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class="navbar-component">
+    <div class={cx("navbar-component", props.class)} >
       <div>{children}</div>
     </div>
   );

@@ -18,7 +18,6 @@ export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
-  const canUseDOM = typeof window !== "undefined";
 
   useEffect(() => {
     function handleResize() {

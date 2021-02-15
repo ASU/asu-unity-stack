@@ -30,3 +30,10 @@ Then initialize the banner:
 </script>
 
 ```
+
+By default cookie consent will set the cookie domain to the current hostname. If this needs to be changed, it can be done by passing the domain to the init function, like so:
+
+```<script>
+  // Initialize cookie consent banner
+  AsuCookieConsent.init(‘example.com’);
+</script>```

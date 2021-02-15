@@ -1,4 +1,5 @@
 # ASU Unity Design System Preact Components Library
+
 ASU-branded Preact components. Built on the same API as React components with the benefit a much smaller build size.
 
 ## Dependencies
@@ -48,11 +49,12 @@ yarn test
 ## Use on static HTML page
 
 ```
+<!-- Header  will  be initialized in this container. If a different  ID needs to be targeted,  pass as 2nd argument to 'initHeader()' function -->
 <div id="headerContainer></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/components-library/dist/vendor.production.js"></script>
-<script src="/node_modules/@asu-design-system/components-library/dist/core.production.js"></script>
+<script src="/node_modules/@asu-design-system/components-library/dist/vendor.js"></script>
+<script src="/node_modules/@asu-design-system/components-library/dist/components-library.js"></script>
 
 <script>
 
@@ -62,7 +64,7 @@ yarn test
     baseUrl: "/kitchen-sink"
   };
 
-  AsuWebcore.initHeader(props);
+  componentsLibrary.initHeader(props);
 </script>
 
 ```

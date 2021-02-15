@@ -1,10 +1,9 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
+import HoverDropNav from "./HoverDropNav";
 import { Button } from "../Button";
 import * as S from "./styles";
 
@@ -15,13 +14,12 @@ import * as S from "./styles";
 const Nav = ({
   navTree,
   width,
-  height,
   mobileOpen,
   maxMobileHeight,
   buttons,
   injectStyles,
   breakpoint,
-  ...props
+  expandOnHover
 }) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
@@ -40,6 +38,12 @@ const Nav = ({
    * Compile a list of Refs to interact with the focus state of Nav menu
    */
   const navList = useMemo(() => {
+
+    // return empty array if navtree not defined
+    if (!Array.isArray(navTree) ||  navTree.length == 0) {
+      return [];
+    }
+
     return navTree.map(item => {
       const newRef = createRef();
 
@@ -84,7 +88,7 @@ const Nav = ({
     const Up = 38;
     const Right = 39;
     const Down = 40;
-    const Tab = 9;
+    const Escape = 27;
 
     const derState = deriveFocusState(focused, navList);
 
@@ -112,23 +116,11 @@ const Nav = ({
           e.preventDefault();
           setFocusCallback(moveDown(focused, derState, navList));
           break;
-        case Tab:
+        case Escape:
           // handle tab key
-          if (!e.shiftKey) {
-            if (derState.isLast) {
-              return false;
-            }
-            e.preventDefault();
-            setFocusCallback(moveRight(focused, derState, navList));
-
-            // handle shift+tab
-          } else {
-            if (derState.isFirst) return false;
-
-            e.preventDefault();
-            setFocusCallback(moveLeft(focused, derState, navList));
+          if (!derState.isTop) {
+            setFocusCallback([focused[0], -1, -1]);
           }
-
           break;
         default:
           break;
@@ -138,6 +130,7 @@ const Nav = ({
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
+
     const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
@@ -198,6 +191,9 @@ const Nav = ({
     }
   };
 
+  const DropComponent = expandOnHover ? HoverDropNav : DropNav;
+  const mobile = width <= bpointInt;
+
   return (
     <S.Nav
       open={mobileOpen}
@@ -206,7 +202,7 @@ const Nav = ({
       breakpoint={breakpoint}
     >
       <S.NavList
-        {...(width > bpointInt ? { onfocusout: onBlurNav } : {})}
+        {...(!mobile ? { onfocusout: onBlurNav } : {})}
         onKeyDown={handleKeyDown}
         ref={navRef}
       >
@@ -216,7 +212,7 @@ const Nav = ({
 
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
-              <DropNav
+              <DropComponent
                 {...navItem}
                 pIndex={pindex}
                 setFocus={setFocusCallback}
@@ -224,6 +220,7 @@ const Nav = ({
                 isOpen={open == pindex}
                 setOpen={setOpen}
                 mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
+                mobile={mobile}
               >
                 {subs.map((sub, index) => {
                   return (
@@ -256,7 +253,6 @@ const Nav = ({
                                 ? item.href
                                 : undefined
                             }
-                            tabIndex="-1" // Take dropdown nav items out of browser tab order
                           >
                             {item.text}
                           </NavItem>
@@ -265,7 +261,7 @@ const Nav = ({
                     </S.MenuColumn>
                   );
                 })}
-              </DropNav>
+              </DropComponent>
             );
           }
 
@@ -292,7 +288,7 @@ const Nav = ({
         // render buttons if props is passed
         buttons.length > 0 && (
           <S.ButtonForm>
-            {buttons.map((item, index) => {
+            {buttons.map((item) => {
               let color = item.color ? item.color : "maroon";
 
               // Return a single nav item if there are no submenus
@@ -312,6 +308,7 @@ const Nav = ({
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
   buttons: PropTypes.arrayOf(PropTypes.object),
+  expandOnHover: PropTypes.bool,
   mobileOpen: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
@@ -323,6 +320,7 @@ Nav.propTypes = {
 Nav.defaultProps = {
   navTree: [],
   mobileOpen: false,
+  expandOnHover: false,
   width: 1920,
   height: 1080,
   maxMobileHeight: -1,

@@ -1,8 +1,4 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
-import Tokens from "../../theme";
+import { cx, css } from "@emotion/css";
 
 const sharedStyle = css`
   font-weight: 700;

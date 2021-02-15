@@ -1,8 +1,6 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
-import { mobileBreak, containerSize } from "../../theme";
+
+
+import { cx, css } from "@emotion/css";
 
 const loginStyles = breakpoint => css`
   .login-status {

@@ -1,7 +1,7 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
-import { useRef } from "preact/compat";
+
+import { useRef, useEffect, useCallback } from "preact/compat";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
@@ -18,7 +18,9 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
           method="get"
           role="search"
           class={open ? "show-search-input" : ""}
+          {...props}
         >
+          <button type="submit" aria-label="Submit ASU Search" />
           <input
             name="q"
             type="search"
@@ -27,9 +29,11 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
             {...mobile ? {placeHolder: "Search ASU"} : {}}
             required
           />
-          <label class="univeral-search" id="asu-search-label">
+
+          <label class="univeral-search" id="asu-search-label" onmousedown={() => event.preventDefault() /** prevent label click from removing input focus */ }>
             Search ASU
           </label>
+
         </form>
       );
   }
@@ -57,7 +61,16 @@ const UniversalSearch = ({ type, open, setOpen, mobile}) => {
   // ref to input dom node
   const inputRef = useRef(null);
 
-  const onBlur = e => {
+
+  useEffect(() => {
+
+    if (inputRef.current.value) {
+      setOpen(true);
+    }
+  }, []);
+
+  const onBlurCallBack = useCallback( e => {
+
     if (inputRef.current.value) {
       return;
     }
@@ -68,18 +81,28 @@ const UniversalSearch = ({ type, open, setOpen, mobile}) => {
       // remove focus
       setOpen(false);
     }
-  };
+  }, [open]);
+
+
+  const onClickCallback = useCallback((e) => {
+    //if (open !== true) {
+      setOpen(true);
+      inputRef.current.focus();
+    //}
+  }, [open]);
+
+
+  const onFocusCallback = useCallback(() => {
+    setOpen(true);
+  }, [open]);
 
   return (
     <S.UniversalSearch
       // onBlur and onFocus don't bubble up the DOM in Preact, like they do
       // in React. So we have to use native DOM event handlers here
-      onfocusin={() => setOpen(true)}
-      onfocusout={onBlur}
-      onClick={e => {
-        setOpen(true);
-        inputRef.current.focus();
-      }}
+      onfocusin={onFocusCallback}
+      onfocusout={onBlurCallBack}
+      onClick={onClickCallback}
     >
       <Search {...{ open, type, inputRef, mobile }} />
     </S.UniversalSearch>

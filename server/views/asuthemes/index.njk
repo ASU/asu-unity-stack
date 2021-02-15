@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>ASU Unity Components</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
+    {% include "asuthemes/component-head.html" %}
+  </head>
+
+  <body>
+    {% include "components-library/dist/templates/component.html" %}
+    <div class="container">
+      <!-- Include pre-rendered AsuBrandHeader React component -->
+      {# <div id="headerContainer">{% include "static-header.njk" %}</div> #}
+
+      <h1 class="display-1">Unity Kitchen Sink Page</h1>
+
+      <!-- Preact Components -->
+      <section id="test-content" style="margin-top:200px;">
+
+        <div class="row">
+          <div class="col-12">
+            <h3 class="display-4">ASU Themes Universal Preact Header</h3>
+            <p>
+              The ASU Web Standards 2.0 Header is now available through ASU Themes for ease of use in enterprise apps.
+            </p>
+            <p>
+              To use the component header, first include the two HTML templates from asuthemes. This is a PHP example:
+              <pre>
+                <code>
+                    // include before initializing header
+                    &lt;?php echo file_get_contents('https://www.asu.edu/asuthemes/5.0/heads/component-head.html'); ?>
+                    // include after the opening &lt;body> target
+                    &lt;?php echo file_get_contents('https://www.asu.edu/asuthemes/5.0/headers/component.html'); ?>
+                </code>
+              </pre>
+
+              Then initialize the header template using Javascript:
+
+              <pre>
+                <code>
+                      var props = {
+
+                        // navTree is an array with menu items (similar to the ASUHeader.json array in 4.x header)
+                        navTree: [
+                          {
+                            href: "/",
+                            text: "Home",
+                            type: "icon",
+                            class: "home"
+
+                          }, {
+                            text: "My ASU",
+                            href: "https://webapp4.asu.edu/myasu/"
+                          },
+                          {
+                            text: "Two Column Submenu",
+                            href: "/",
+                            items: [
+                              [
+                                {
+                                  type: "heading",
+                                  text: "Column One Heading"
+                                }, {
+                                  href: "https://www.asu.edu/",
+                                  text: "Pellentesque ornare"
+                                }, {
+                                  href: "https://www.asu.edu/",
+                                  text: "Curabitur viverra arcu nisl"
+                                }
+                              ],
+                              [
+                                {
+                                  href: "https://www.asu.edu/?feature=newsevents",
+                                  type: "heading",
+                                  text: "Column Two Heading"
+                                }, {
+                                  href: "https://www.asu.edu/?feature=academics",
+                                  text: "Nunc in libero odio"
+                                }
+                              ]
+                            ]
+                          }
+                        ],
+                        title: "ASU Themes Global Header Example",
+                      };
+
+                      componentsLibrary.initHeader(props);
+
+                      // Initialize cookie consent banner if needed
+                      AsuCookieConsent.init();
+                </code>
+              </pre>
+            </p>
+
+            <h4>Full Example (with virtual includes)</h4>
+            <p>
+              *Note*: For usage of the AFS virtual includes you must have the path /afs/asu.edu/www/asuthemes
+              mounted in Apache as /asuthemes in your document root. For this,
+              the server must be able to access AFS. Sites already in AFS
+              (e.g., www.asu.edu/my-site) and accounts on the legacy ASU Web
+              Hosting Service (i.e., DirectAdmin) already have this access.
+            </p>
+            <pre>
+            <code>
+              &lt;html>
+                &lt;head>
+                  &lt;!--#include virtual="/asuthemes/5.0/heads/component-head.html"-->
+                &lt;/head>
+
+                &lt;body style="top-margin: 120px;">
+                  &lt;!--#include virtual="/asuthemes/5.0/headers/component.html"-->
+
+                  &lt;footer>
+                    &lt;script>
+
+                      var props = {
+                        navTree: [
+                          {
+                            href: "/",
+                            text: "Home",
+                            type: "icon",
+                            class: "home"
+
+                          }, {
+                            text: "My ASU",
+                            href: "https://webapp4.asu.edu/myasu/"
+                          },
+                          {
+                            text: "Two Column Submenu",
+                            href: "/",
+                            items: [
+                              [
+                                {
+                                  type: "heading",
+                                  text: "Column One Heading"
+                                }, {
+                                  href: "https://www.asu.edu/",
+                                  text: "Pellentesque ornare"
+                                }, {
+                                  href: "https://www.asu.edu/",
+                                  text: "Curabitur viverra arcu nisl"
+                                }
+                              ],
+                              [
+                                {
+                                  href: "https://www.asu.edu/?feature=newsevents",
+                                  type: "heading",
+                                  text: "Column Two Heading"
+                                }, {
+                                  href: "https://www.asu.edu/?feature=academics",
+                                  text: "Nunc in libero odio"
+                                }
+                              ]
+                            ]
+                          }
+                        ],
+                        title: "ASU Themes Global Header Example",
+                        baseUrl: "/asuthemes"
+                      };
+
+                      componentsLibrary.initHeader(props);
+
+                      // Initialize cookie consent banner
+                      AsuCookieConsent.init();
+                    &lt;/script>
+                  &lt;/footer>
+                &lt;/body>
+
+
+
+              &lt;/html>
+            </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- React Components
+      <section id="react-components">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h2 class="display-3">ASU Unity React Components</h2>
+            <p class="lead">This section contains components rendered by ReactJS.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h3 class="display-4">ASU GIS Feature Picker</h3>
+            <div id="gisFPContainer"></div>
+          </div>
+        </div>
+      </section>-->
+    </div>
+    <footer>
+      <script>
+
+        var props = {
+          navTree: [
+            {
+              href: "/",
+              text: "Home",
+              type: "icon",
+              class: "home"
+
+            }, {
+              text: "My ASU",
+              href: "https://webapp4.asu.edu/myasu/"
+            },
+            {
+              text: "Two Column Submenu",
+              href: "/",
+              items: [
+                [
+                  {
+                    type: "heading",
+                    text: "Column One Heading"
+                  }, {
+                    href: "https://www.asu.edu/",
+                    text: "Pellentesque ornare"
+                  }, {
+                    href: "https://www.asu.edu/",
+                    text: "Curabitur viverra arcu nisl"
+                  }
+                ],
+                [
+                  {
+                    href: "https://www.asu.edu/?feature=newsevents",
+                    type: "heading",
+                    text: "Column Two Heading"
+                  }, {
+                    href: "https://www.asu.edu/?feature=academics",
+                    text: "Nunc in libero odio"
+                  }
+                ]
+              ]
+            }
+          ],
+          title: "ASU Themes Global Header Example",
+          baseUrl: "/asuthemes"
+        };
+
+        componentsLibrary.initHeader(props);
+
+        // Initialize cookie consent banner
+        AsuCookieConsent.init();
+      </script>
+    </footer>
+  </body>
+</html>

@@ -1,14 +1,11 @@
-/** @jsx h */
+
 /* eslint-disable react/prop-types */
-import { h } from "preact";
+
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import {
   containerSize,
-  primaryNavTopPadding,
-  BreakpointXl,
   BreakpointLg,
-  srOnly,
 } from "../../theme";
 
 /**
@@ -28,6 +25,8 @@ const titleStyles = breakpoint => css`
     /*padding-right: 4px;*/
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     transition-duration: 1s;
+
+
 
     &.active {
       background-position: -200%;
@@ -53,17 +52,29 @@ const titleStyles = breakpoint => css`
         font-size: 1rem;
         margin-bottom: 0.5rem;
         display: block;
+
+        :hover {
+          text-decoration: underline;
+        }
       }
 
       &.subunit-name {
         font-size: 2rem;
         margin: 1.5rem 0 1rem 0;
         font-weight: 700;
+
+        :hover {
+          text-decoration: underline;
+        }
       }
 
       .subunit-name {
         font-size: 1.5rem;
         margin-bottom: 0;
+
+        :hover {
+          text-decoration: underline;
+        }
       }
     }
   }

@@ -170,7 +170,6 @@ perf(pencil): remove graphiteWidth option
 
 More information can be found [here](https://semantic-release.gitbook.io/semantic-release/) under 'Commit Message Format' section
 
-
 ## ❯ Contributing:
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
