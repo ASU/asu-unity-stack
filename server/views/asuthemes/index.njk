@@ -41,6 +41,8 @@
 
               <pre>
                 <code>
+                      // for more details on props which can be used with the header, see the Storybook example here:
+                      // https://unity.web.asu.edu/@asu-design-system/components-library/index.html?path=/story/header--with-menu-columns
                       var props = {
 
                         // navTree is an array with menu items (similar to the ASUHeader.json array in 4.x header)
@@ -94,6 +96,23 @@
                 </code>
               </pre>
             </p>
+            <h4>Important notes</h4>
+            <ul>
+              <li>This header uses fixed positioning. It is necessary in most
+              apps to push the main page content down using a 'margin-top' CSS property.
+              For example, on isearch.asu.edu this CSS rule is used:
+
+              <pre>
+                <code>
+                  body {
+                    margin-top: 158px !important;
+                  }
+                </code>
+              </pre>
+
+              </li>
+
+            </ul>
 
             <h4>Full Example (with virtual includes)</h4>
             <p>

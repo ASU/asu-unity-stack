@@ -10,12 +10,12 @@
     "@asu-design-system/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@glidejs/glide": "^3.4.1",
-    "preact": "^10.4.8",
+    "preact": "^10.5.10",
     "prop-types": "^15.7.2"
   },
   "scripts": {
     "clean": "yarn shx rm -rf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
