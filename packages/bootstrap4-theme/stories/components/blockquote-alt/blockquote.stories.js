@@ -6,7 +6,7 @@ export const blockquoteNoImage = () => `
       <div class="col-md-8">
 
         <figure class="uds-blockquote accent-maroon">
-          <svg class="fill-gold" title="Open quote" role="img" aria-labelledby="open-quote-title" viewBox="0 0 302.87 245.82">
+          <svg title="Open quote" role="img" aria-labelledby="open-quote-title" viewBox="0 0 302.87 245.82">
             <title id="open-quote-title">Open quote</title>
             <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z"/>
           </svg>
@@ -28,7 +28,7 @@ export const blockquoteNoImage = () => `
         <div class="wrapper p-6 bg-gray-7">
 
           <figure class="uds-blockquote accent-gold text-white">
-            <svg class="fill-gold" title="Open quote" role="img" aria-labelledby="open-quote-title" viewBox="0 0 302.87 245.82">
+            <svg title="Open quote" role="img" aria-labelledby="open-quote-title" viewBox="0 0 302.87 245.82">
               <title id="open-quote-title">Open quote</title>
               <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z"/>
             </svg>
