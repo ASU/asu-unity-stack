@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
@@ -19,7 +18,7 @@ const Nav = ({
   buttons,
   injectStyles,
   breakpoint,
-  expandOnHover
+  expandOnHover,
 }) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
@@ -38,9 +37,8 @@ const Nav = ({
    * Compile a list of Refs to interact with the focus state of Nav menu
    */
   const navList = useMemo(() => {
-
     // return empty array if navtree not defined
-    if (!Array.isArray(navTree) ||  navTree.length == 0) {
+    if (!Array.isArray(navTree) || navTree.length == 0) {
       return [];
     }
 
@@ -130,7 +128,6 @@ const Nav = ({
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
-
     const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
@@ -253,6 +250,7 @@ const Nav = ({
                                 ? item.href
                                 : undefined
                             }
+
                           >
                             {item.text}
                           </NavItem>
@@ -278,6 +276,9 @@ const Nav = ({
               }
               class={navItem.hasOwnProperty("class") ? navItem.class : ""}
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
+              selected={
+                navItem.hasOwnProperty("selected") ? navItem.selected : false
+              }
             >
               {navItem.text}
             </NavItem>
@@ -288,7 +289,7 @@ const Nav = ({
         // render buttons if props is passed
         buttons.length > 0 && (
           <S.ButtonForm>
-            {buttons.map((item) => {
+            {buttons.map(item => {
               let color = item.color ? item.color : "maroon";
 
               // Return a single nav item if there are no submenus

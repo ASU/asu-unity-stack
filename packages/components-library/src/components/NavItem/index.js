@@ -10,6 +10,7 @@ import * as S from "./styles";
  */
 const NavItem = forwardRef(
   ({ onFocus, type, children, href, ...props }, ref) => {
+
     switch (type) {
       case "button":
         // standards only allow dark buttons in nav dropdowns
@@ -39,6 +40,20 @@ const NavItem = forwardRef(
             {children}
           </S.NavIcon>
         );
+
+      case "icon-home":
+        return (
+          <S.NavIcon
+            {...props}
+            href={href}
+            {...(onFocus ? { onFocus } : "")}
+            ref={ref}
+            type="home"
+            alt={`${children} icon`}
+          >
+            {children}
+          </S.NavIcon>
+        );
       case "heading":
         return <Heading type="h3">{children}</Heading>;
       default:
@@ -63,8 +78,11 @@ NavItem.propTypes = {
   href: PropTypes.string,
   children: PropTypes.string.isRequired, // children always required (accessiblity and mobile)
   icon: PropTypes.string,
+  selected: PropTypes.bool
 };
 
-NavItem.defaultProps = {};
+NavItem.defaultProps = {
+  selected: false
+};
 
 export default NavItem;

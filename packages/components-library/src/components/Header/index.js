@@ -24,6 +24,7 @@ const Header = ({
   breakpoint,
   animateTitle,
   expandOnHover,
+  mobileNavTree,
   ...props
 }) => {
   // State hooks to track and set opening/closing mobile nav
@@ -72,7 +73,6 @@ const Header = ({
   // or the viewport changes size
   useEffect(() => {
     if (width < bpointInt && mobileOpen) {
-      //window.setTimeout(() => {
         const uHeight = universalRef.current.clientHeight;
         const lHeight = logoRef.current.clientHeight;
         const tHeight = titleRef.current.clientHeight;
@@ -83,7 +83,6 @@ const Header = ({
         const pHeight = lHeight + tHeight + tpadding * 2;
         const newHeight = height - uHeight - pHeight;
         setMaxMobileNavHeight(newHeight);
-      //}, 100);
     }
   }, [height, width, mobileOpen, bpointInt]);
 
@@ -91,7 +90,7 @@ const Header = ({
     <S.Header
       breakpoint={bpoint}
       class={
-        scrollPosition > 0 || (mobileOpen && width < bpointInt)
+        scrollPosition > 0
           ? "scrolled"
           : ""
       }
@@ -129,7 +128,7 @@ const Header = ({
             </Title>
             <Nav
               {...{
-                navTree,
+                navTree: (width < bpointInt && mobileNavTree ? mobileNavTree : navTree),
                 mobileOpen,
                 height,
                 width,
@@ -160,7 +159,8 @@ Header.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
-  expandOnHover: PropTypes.bool
+  expandOnHover: PropTypes.bool,
+  mobileNavTree: PropTypes.arrayOf(PropTypes.object)
 };
 
 Header.defaultProps = {
