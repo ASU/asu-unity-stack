@@ -75,8 +75,6 @@ const Header = ({ children, breakpoint, ...props }) => {
             &.scrolled {
               transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
             }
-
-
           `,
           navbarStyles(breakpoint),
           navStyles(breakpoint), // add the nav and button styles

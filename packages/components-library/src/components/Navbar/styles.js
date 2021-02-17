@@ -46,6 +46,11 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
             width: 1.25em;
             margin-left: 7px;
           }
+
+          /** override hamburger circle icon  to fix bug in bundled react-fontawesome code **/
+          .svg-inline--fa.fa-w-16.fa-circle {
+            width: 2.5em;
+          }
         `,
         "navbar-toggler"
       )}
