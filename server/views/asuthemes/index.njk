@@ -50,9 +50,8 @@
                           {
                             href: "/",
                             text: "Home",
-                            type: "icon",
-                            class: "home"
-
+                            type: "icon-home",
+                            class: "home
                           }, {
                             text: "My ASU",
                             href: "https://webapp4.asu.edu/myasu/"
@@ -102,16 +101,14 @@
               apps to push the main page content down using a 'margin-top' CSS property.
               For example, on isearch.asu.edu this CSS rule is used:
 
-              <pre>
-                <code>
-                  body {
-                    margin-top: 158px !important;
-                  }
-                </code>
-              </pre>
-
+                <pre>
+                  <code>
+                    body {
+                      margin-top: 158px !important;
+                    }
+                  </code>
+                </pre>
               </li>
-
             </ul>
 
             <h4>Full Example (with virtual includes)</h4>
@@ -138,11 +135,10 @@
                       var props = {
                         navTree: [
                           {
-                            href: "/",
                             text: "Home",
-                            type: "icon",
-                            class: "home"
-
+                            type: "icon-home", // Home icon
+                            class: "data-class", // classes passed to <a> tag
+                            selected: true  // set to true to  highlight menu item
                           }, {
                             text: "My ASU",
                             href: "https://webapp4.asu.edu/myasu/"
@@ -177,7 +173,15 @@
                           }
                         ],
                         title: "ASU Themes Global Header Example",
-                        baseUrl: "/asuthemes"
+                        baseUrl: "/asuthemes" // base URL used for href on logo
+                        // optional mobileNavTree prop will be displayed in mobile
+                        // instead of navTree
+                        mobileNavTree: [
+                          {
+                            text: 'Mobile Nav Item',
+                            href: '/mobile'
+                          }
+                        ]
                       };
 
                       componentsLibrary.initHeader(props);
@@ -222,9 +226,9 @@
             {
               href: "/",
               text: "Home",
-              type: "icon",
-              class: "home",
-              selected: true
+              type: "icon-home", // Home icon
+              class: "test-class", // classes passed to <a> tag
+              selected: true  // set to true to  highlight menu item
 
             }, {
               text: "My ASU",
@@ -232,6 +236,45 @@
             },
             {
               text: "Two Column Submenu",
+              href: "/",
+              items: [
+                [
+                  {
+                    type: "heading",
+                    text: "Column One Heading"
+                  }, {
+                    href: "https://www.asu.edu/",
+                    text: "Pellentesque ornare"
+                  }, {
+                    href: "https://www.asu.edu/",
+                    text: "Curabitur viverra arcu nisl"
+                  }
+                ],
+                [
+                  {
+                    href: "https://www.asu.edu/?feature=newsevents",
+                    type: "heading",
+                    text: "Column Two Heading"
+                  }, {
+                    href: "https://www.asu.edu/?feature=academics",
+                    text: "Nunc in libero odio"
+                  }
+                ]
+              ]
+            }
+          ],
+          mobileNavTree: [
+            {
+              href: "/",
+              text: "This",
+
+
+            }, {
+              text: "Is A",
+              href: "https://webapp4.asu.edu/myasu/"
+            },
+            {
+              text: "Mobile Nav Tree",
               href: "/",
               items: [
                 [
