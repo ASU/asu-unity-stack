@@ -2,11 +2,44 @@
 <html lang="en">
 
   <head>
-    <title>ASU Unity Components</title>
+    <title>ASU Themes Header and Footer Example </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
     {% include "asuthemes/component-head.html" %}
+
+    <style>
+    /** Basic resets **/
+      html {
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+      }
+
+      ol, ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      h1, h2, h3, h4, h5, h6, p, ol, ul {
+        margin: 1rem 2rem;
+
+      }
+
+    </style>
   </head>
 
   <body>
@@ -15,30 +48,34 @@
       <!-- Include pre-rendered AsuBrandHeader React component -->
       {# <div id="headerContainer">{% include "static-header.njk" %}</div> #}
 
-      <h1 class="display-1">Unity Kitchen Sink Page</h1>
-
       <!-- Preact Components -->
       <section id="test-content" style="margin-top:200px;">
 
         <div class="row">
           <div class="col-12">
-            <h3 class="display-4">ASU Themes Universal Preact Header</h3>
+            <h3 class="display-4">ASU Themes Universal Preact Header and Footer</h3>
             <p>
               The ASU Web Standards 2.0 Header is now available through ASU Themes for ease of use in enterprise apps.
             </p>
             <p>
-              To use the component header, first include the two HTML templates from asuthemes. This is a PHP example:
+              To use the component header, first include the HTML templates from asuthemes. This is a PHP example:
               <pre>
                 <code>
                     // include before initializing header
                     &lt;?php echo file_get_contents('https://www.asu.edu/asuthemes/5.0/heads/component-head.html'); ?>
                     // include after the opening &lt;body> target
                     &lt;?php echo file_get_contents('https://www.asu.edu/asuthemes/5.0/headers/component.html'); ?>
+
+                    // include in the &lt;footer>
+                    &lt;?php echo file_get_contents('https://www.asu.edu/asuthemes/5.0/footers/component-footer.html'); ?>
                 </code>
               </pre>
+              </p>
 
+              <p>
               Then initialize the header template using Javascript:
-
+              </p>
+              <p>
               <pre>
                 <code>
                       // for more details on props which can be used with the header, see the Storybook example here:
@@ -49,9 +86,9 @@
                         navTree: [
                           {
                             href: "/",
-                            text: "Home",
-                            type: "icon-home",
-                            class: "home
+                            type: "icon-home", // Home icon
+                            class: "data-class", // classes passed to <a> tag
+                            selected: true  // set to true to  highlight menu item
                           }, {
                             text: "My ASU",
                             href: "https://webapp4.asu.edu/myasu/"
@@ -130,6 +167,7 @@
                   &lt;!--#include virtual="/asuthemes/5.0/headers/component.html"-->
 
                   &lt;footer>
+                  &lt;!--#include virtual="/asuthemes/5.0/includes/component-footer.html"-->
                     &lt;script>
 
                       var props = {
@@ -219,6 +257,8 @@
       </section>-->
     </div>
     <footer>
+      {% include "components-library/dist/templates/component-footer.html" %}
+
       <script>
 
         var props = {
@@ -302,7 +342,7 @@
               ]
             }
           ],
-          title: "ASU Themes Global Header Example",
+          title: "ASU Themes Global Header and Footer Example",
           baseUrl: "/asuthemes"
         };
 
