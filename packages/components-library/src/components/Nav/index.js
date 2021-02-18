@@ -1,5 +1,5 @@
 
-import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
+import { useEffect, useState, useMemo, useRef, createRef, forwardRef, useImperativeHandle } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
@@ -11,7 +11,7 @@ import * as S from "./styles";
  * Render entire Nav.
  * @param {} props
  */
-const Nav = ({
+const Nav = forwardRef (({
   navTree,
   width,
   mobileOpen,
@@ -20,11 +20,49 @@ const Nav = ({
   injectStyles,
   breakpoint,
   expandOnHover
-}) => {
+}, ref) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
   /** State for keeping track of open dropdown nav */
   const [open, setOpen] = useState(-1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      forceToggle(whatWasClicked) {
+        let isAriaOpen = false;
+
+        // Check if already open
+        for (let i=0; i<whatWasClicked.attributes.length; i++) {
+          let attribute = whatWasClicked.attributes[i];
+          if (attribute.name === 'aria-expanded') {
+            if (attribute.value === 'true') {
+              isAriaOpen = true;
+            }
+          }
+        }
+
+        const id = whatWasClicked.dataset.salesforceIdentifier;
+        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.salesforceDropdownOpen === 'true'))) {
+          setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+          whatWasClicked.dataset.salesforceDropdownOpen = 'true';
+        } else {
+          setOpen(-1);
+          whatWasClicked.dataset.salesforceDropdownOpen = 'false';
+        }
+      },
+
+      forceOpen(whatWasClicked) {
+        const id = whatWasClicked.dataset.salesforceIdentifier;
+
+        console.log(id);
+        console.log(parseInt(id.substring(id.indexOf(".")+1)));
+
+        setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+        whatWasClicked.dataset.salesforceDropdownOpen = 'true';
+      }
+    }),
+  )
 
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
@@ -303,7 +341,7 @@ const Nav = ({
       }
     </S.Nav>
   );
-};
+});
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
