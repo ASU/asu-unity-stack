@@ -54,10 +54,6 @@ const Nav = forwardRef (({
 
       forceOpen(whatWasClicked) {
         const id = whatWasClicked.dataset.salesforceIdentifier;
-
-        console.log(id);
-        console.log(parseInt(id.substring(id.indexOf(".")+1)));
-
         setOpen(parseInt(id.substring(id.indexOf(".")+1)));
         whatWasClicked.dataset.salesforceDropdownOpen = 'true';
       }

@@ -69,7 +69,6 @@ const Header = ({
 
     // Action depends on what was clicked
     const identifier = whatWasClicked.dataset.salesforceIdentifier;
-    console.log(identifier);
     if (identifier === "universal-search-bar") {
       setSearchOpen(true);
     } else if (identifier === "mobile-dropdown") {
