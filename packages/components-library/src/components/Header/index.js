@@ -92,7 +92,9 @@ const Header = ({
       limit--;
       searchUp = searchUp.parentNode
     }
-    searchUp.querySelector('[data-salesforce-identifier = "universal-search-bar"]').querySelector("input").value = "";
+    if (searchUp.querySelector('[data-salesforce-identifier = "universal-search-bar"]').querySelector("input").value.length > 0){
+      searchUp.querySelector('[data-salesforce-identifier = "universal-search-bar"]').querySelector("input").value = "";
+    }
   }
 
   // Attach scroll event lister which will update the scrollPosition state
