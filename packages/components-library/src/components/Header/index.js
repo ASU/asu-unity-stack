@@ -172,7 +172,7 @@ const Header = ({
               {...{ parentOrg, parentOrgUrl, baseUrl, animate: animateTitle }}
               ref={titleRef}
             >
-              {title} and more v28
+              {title}
             </Title>
             <Nav
               {...{
