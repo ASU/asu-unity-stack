@@ -55,20 +55,53 @@ const Nav = ({
       let { items, ...temp } = item;
 
       if (items && items[0].length > 0) {
+        // Higher level iterator value that syncs with third level iterator
+        // value in jj variable. Determines array key for flattened menu
+        // items. TODO Remove when WS2L goes away.
+        // Reference: Webspark-1906
+        let jankey;
+
         // Create a ref for each submenu item, which will be
         // passed down to the DropNav to manage focus
         for (let i = 0; i < items.length; i++) {
+
+          // Master iterator for flattened menus with 3rd level items.
+          let jj = 0;
+
           for (let j = 0; j < items[i].length; j++) {
+            // Conditionally sync jankey with jj if there were 3rd level menu
+            // items used previously.
+            jankey = (jj > 0) ? jj : j;
+
             if (!menus[i]) {
               menus[i] = [];
             }
 
-            menus[i][j] = Object.assign({}, items[i][j]);
+            menus[i][jankey] = Object.assign({}, items[i][j]);
+
+            if (items[i][j].items && items[i][j].items.length > 0) {
+              for (let k = 0; k <= items[i][j].items.length; k++) {
+                if (items[i][j].items[k] && items[i][j].items[k].length > 0) {
+                  for (let l = 0; l <= items[i][j].items[k].length; l++) {
+                    // Iterate master iterator for menu.
+                    jj++;
+                    // Resync jankey at this lower level.
+                    jankey = jj;
+
+                    // Patch in flattened 3rd level item.
+                    menus[i][jankey] = Object.assign({}, items[i][j].items[k][l]);
+                    // Add class for CSS targeting of 3rd level items.
+                    menus[i][jankey].class = (menus[i][jankey].class)
+                      ? menus[i][jankey].class + ' uds-menu-lvl3' : 'uds-menu-lvl3';
+                  }
+                }
+              }
+            }
 
             // Heading isn't focusable, so don't pass ref
             if (items[i][j].type != "heading") {
               const childRef = createRef();
-              menus[i][j].ref = childRef;
+              menus[i][jankey].ref = childRef;
             }
           }
         }
@@ -210,6 +243,7 @@ const Nav = ({
           const navItem = item.item;
           const subs = item.menus;
 
+          // Sub menu iterator - at 2nd level - write dropdowns
           if (subs && subs.length > 0 && subs[0].length > 0) {
             return (
               <DropComponent
@@ -222,7 +256,7 @@ const Nav = ({
                 mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
                 mobile={mobile}
               >
-                {subs.map((sub, index) => {
+                {subs.map((sub, index) => { // Sub menu item iterator - at 2nd level
                   return (
                     <S.MenuColumn>
                       {sub.map((item, ind) => {
