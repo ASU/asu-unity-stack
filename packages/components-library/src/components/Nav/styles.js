@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "preact/compat";
-import { css, cx } from "emotion";
+import { css, cx } from "@emotion/css";
 import {
   hiddenStyle,
   showReset,
@@ -75,7 +75,8 @@ const navListStyles = breakpoint => css`
         > a {
           line-height: 1rem;
           box-sizing: content-box;
-          :hover {
+          :hover,
+          &.nav-item-selected {
             :after {
               width: calc(100% + 24px);
               margin-left: 0;
@@ -378,7 +379,7 @@ const dropControlsStyles = breakpoint => css`
     }
 
     > svg {
-      transition: 0.5s cubic-bezier(0.19,1,0.19,1);
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
       &.open {
         transform: rotate(180deg);
@@ -388,7 +389,8 @@ const dropControlsStyles = breakpoint => css`
     @media (min-width: ${breakpoint}) {
       line-height: 1rem;
       box-sizing: content-box;
-      :hover {
+      :hover,
+      &.nav-item-selected {
         :after {
           width: calc(100% + 24px);
           margin-left: 0;
@@ -424,13 +426,16 @@ const dropControlsStyles = breakpoint => css`
         font-size: 1.25rem;
         min-width: 3rem;
       }
-
     }
   }
 `;
 
-const DropControls = props => {
-  return <div class={cx("drop-controls")}>{props.children}</div>;
+const DropControls = ({ selected, ...props }) => {
+  return (
+    <div class={cx("drop-controls", selected ? "nav-item-selected" : "")}>
+      {props.children}
+    </div>
+  );
 };
 
 /**

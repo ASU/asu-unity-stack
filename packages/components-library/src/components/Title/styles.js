@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import {
   containerSize,
   BreakpointLg,
@@ -76,20 +76,6 @@ const titleStyles = breakpoint => css`
           text-decoration: underline;
         }
       }
-    }
-  }
-
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
-  @media (min-width: ${breakpoint}) {
-    &.scrolled .title.subunit-name {
-      font-size: 1.5rem;
-    }
-
-    &.scrolled .title {
-      padding-bottom: 0;
     }
   }
 `;

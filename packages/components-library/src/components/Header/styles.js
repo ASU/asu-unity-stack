@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { forwardRef } from "preact/compat";
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import {
   containerSize,
   primaryNavTopPadding,
@@ -75,12 +75,6 @@ const Header = ({ children, breakpoint, ...props }) => {
             &.scrolled {
               transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
             }
-
-            @media (max-width: ${breakpoint}) {
-              &.scrolled .primary-nav .header-title h1 {
-                font-size: 1rem;
-              }
-            }
           `,
           navbarStyles(breakpoint),
           navStyles(breakpoint), // add the nav and button styles
@@ -120,16 +114,6 @@ const universalStyles = breakpoint => css`
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
-
-      > div {
-        > a {
-          display: inline-flex;
-          font-size: 0.75rem;
-          padding: 0.25rem 0.5rem;
-          color: #484848;
-          margin: 0;
-        }
-      }
     }
 
     @media (max-width: ${breakpoint}) {
@@ -206,7 +190,25 @@ const UniversalNav = forwardRef((props, ref) => {
 });
 
 const UniversalNavLinks = ({ children, ...props }) => {
-  return <div class={cx("nav-grid", props.class)}>{children}</div>;
+  return (
+    <div
+      class={cx(
+        "nav-grid",
+        props.class,
+        css`
+          > a {
+            display: inline-flex;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            color: #484848;
+            margin: 0;
+          }
+        `
+      )}
+    >
+      {children}
+    </div>
+  );
 };
 
 export {

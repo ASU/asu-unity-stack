@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-forms",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "ASU Web Standards-compliant Preact forms",
   "main": "dist/component-forms.js",
   "module": "src/index.js",
@@ -30,7 +30,7 @@
   "dependencies": {
     "@asu-design-system/components-library": "^1.0.19",
     "@asu-design-system/design-tokens": "^1.1.0",
-    "emotion": "^10.0.27",
+    "emotion": "^11.0.0",
     "formik": "^2.1.5",
     "preact": "^10.5.10",
     "prop-types": "^15.7.2"

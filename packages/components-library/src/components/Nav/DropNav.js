@@ -1,6 +1,5 @@
-
 /* eslint-disable no-unused-vars */
-
+import { cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Button } from "../Button";
@@ -17,8 +16,10 @@ const DropNav = forwardRef(
       children,
       mega,
       buttons,
-      href, // destructure, but don't use because top level nav toggle shouldn't have href prop
+      href, // destructure, but not used because dropdown onclick toggle shouldn't have href prop
+      // If top level item should be a link, use the HoverDropNav
       mobile,
+      selected,
       ...props
     },
     ref
@@ -35,6 +36,10 @@ const DropNav = forwardRef(
       <li class={isOpen ? "dropdown-open" : ""}>
         <a
           {...props}
+          class={cx(
+            selected ? "nav-item-selected" : "",
+            props.class ? props.class : ""
+          )}
           role="button"
           aria-expanded={isOpen}
           onMouseDown={e => {
@@ -67,9 +72,21 @@ const DropNav = forwardRef(
         <S.DropdownContainer
           {...{ open: isOpen }}
           class={mega ? "mega" : ""}
-          {...(buttons ? { buttons: buttons.map((item, index) => {
-            return <Button href={item.href} {...item.color ? {[item.color]: true} : {}} medium>{item.text}</Button>
-          }) } : {})}
+          {...(buttons
+            ? {
+                buttons: buttons.map((item, index) => {
+                  return (
+                    <Button
+                      href={item.href}
+                      {...(item.color ? { [item.color]: true } : {})}
+                      medium
+                    >
+                      {item.text}
+                    </Button>
+                  );
+                }),
+              }
+            : {})}
         >
           {children}
         </S.DropdownContainer>
@@ -86,7 +103,8 @@ DropNav.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.object), // CTA buttons which will be shown at bottom of dropdown nav
   mega: PropTypes.bool,
   text: PropTypes.string,
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 DropNav.defaultProps = {

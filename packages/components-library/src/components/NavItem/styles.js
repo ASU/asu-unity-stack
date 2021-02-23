@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { forwardRef } from "preact/compat";
 import { Icon } from "../Icons";
-import { css, cx } from "emotion";
+import { css, cx } from "@emotion/css";
 import { Button } from "../";
-import {
-  hiddenStyle,
-} from "../../theme";
+import { hiddenStyle } from "../../theme";
 
 const navItemStyles = breakpoint => css`
   .navlink,
@@ -15,8 +13,13 @@ const navItemStyles = breakpoint => css`
     margin: 0;
 
     > a {
-      padding: .5rem;
+      padding: 0.5rem;
       position: relative;
+
+      &.nav-item-selected {
+        color: #8c1d40;
+        text-decoration: underline;
+      }
 
       &.nav-item {
         display: block;
@@ -33,11 +36,9 @@ const navItemStyles = breakpoint => css`
   }
 
   .navlink {
-
     > a {
       color: #191919;
     }
-
 
     @media (min-width: ${breakpoint}) {
       > a {
@@ -64,17 +65,17 @@ const navItemStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
   }
 `;
 
-const NavLink = forwardRef(({ onFocus, children, ...props }, ref) => {
+const NavLink = forwardRef(({ onFocus, children, selected, ...props }, ref) => {
   return (
     <li class="navlink">
       <a
         {...props}
-        class={cx("nav-item", props.class)}
+        class={cx("nav-item", props.class, selected ? "nav-item-selected" : "")}
         {...(onFocus ? { onFocus } : "")}
         ref={ref}
       >
@@ -84,25 +85,30 @@ const NavLink = forwardRef(({ onFocus, children, ...props }, ref) => {
   );
 });
 
-const NavIcon = forwardRef(({ children, onFocus, type, alt, ...props }, ref) => {
+const NavIcon = forwardRef(
+  ({ children, onFocus, type, alt, selected, ...props }, ref) => {
 
-  return (
-    <li class="navicon">
-      <a
-        {...props}
-        class={props.class ? props.class : ""}
-        {...(onFocus ? { onFocus } : "")}
-        ref={ref}
-      >
-        {/* Use className here instead of class because FontAwesome React component expects it*/}
-        <Icon type={type} className="icon-nav-item" alt={alt} />
-        <span class="mobile-only">{children}</span>
-      </a>
-    </li>
-  );
-});
+    return (
+      <li class="navicon">
+        <a
+          {...props}
+          class={cx(
+            props.class ? props.class : "",
+            selected ? "nav-item-selected" : ""
+          )}
+          {...(onFocus ? { onFocus } : "")}
+          ref={ref}
+        >
+          {/* Use className here instead of class because FontAwesome React component expects it*/}
+          <Icon type={type} className="icon-nav-item" alt={alt} />
+          <span class="mobile-only">{children}</span>
+        </a>
+      </li>
+    );
+  }
+);
 
-const NavButton = forwardRef(({ children, ...props }, ref) => {
+const NavButton = forwardRef(({ children, selected, ...props }, ref) => {
   return (
     <li class={cx("navbutton", props.class)}>
       <Button {...props} ref={ref} medium dark>

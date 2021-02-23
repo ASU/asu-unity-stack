@@ -1,7 +1,7 @@
 
 /* eslint-disable react/prop-types */
 
-import { cx, css } from "emotion";
+import { css, cx } from "@emotion/css";
 import PropTypes from "prop-types";
 import {
   ComponentButtonHoverStateTransform,

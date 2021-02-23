@@ -29,7 +29,16 @@ app.use(express.static("packages"));
 app.get("/kitchen-sink", function (req, res) {
   // Important: This index.njs is a nunjucks template and resides in 'server/views'.
   // Not to be confused with the root index.html in the static Storybook 'build' directory.
-  res.render("index.njk");
+  res.render("kitchen-sink/index.njk");
+});
+
+/***
+ * Asuthemes header includes example
+ */
+app.get("/asuthemes", function (req, res) {
+  // Important: This index.njs is a nunjucks template and resides in 'server/views'.
+  // Not to be confused with the root index.html in the static Storybook 'build' directory.
+  res.render("asuthemes/index.njk");
 });
 
 // Listen for stop command with socket.io. Referenced from stackoverflow answer:

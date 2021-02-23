@@ -1,6 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = [];
 
@@ -18,7 +19,7 @@ const shared = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["preact"],
+              presets: ["preact"]
             },
           },
         ],
@@ -35,10 +36,7 @@ const shared = {
       // Must be below test-utils
     },
   },
-
 };
-
-
 
 // development bundle config
 module.exports.push({
@@ -64,8 +62,7 @@ module.exports.push({
     library: "componentsLibrary",
     umdNamedDefine: true,
   },
-  plugins: [
-  ],
+  plugins: [],
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -74,42 +71,43 @@ module.exports.push({
           ecma: 6,
         },
       }),
+      new CssMinimizerPlugin()
     ],
   },
   externals: {
-    preact : {
-      commonjs: 'preact',
-      commonjs2: 'preact',
-      amd: 'preact',
-      root: 'preact'
+    preact: {
+      commonjs: "preact",
+      commonjs2: "preact",
+      amd: "preact",
+      root: "preact",
     },
     emotion: {
-      commonjs: 'emotion',
-      commonjs2: 'emotion',
-      amd: 'emotion',
-      root: 'emotion'
+      commonjs: "@emotion/css",
+      commonjs2: "@emotion/css",
+      amd: "@emotion/css",
+      root: "@emotion/css",
     },
     "prop-types": {
-      commonjs: 'prop-types',
-      commonjs2: 'prop-types',
-      amd: 'propTypes',
-      root: 'propTypes'
-    }
-  }
+      commonjs: "prop-types",
+      commonjs2: "prop-types",
+      amd: "propTypes",
+      root: "propTypes",
+    },
+  },
 });
 
 /** Vendor bundle config */
 module.exports.push({
   context: shared.context,
   entry: {
-    vendor: ["./src/vendor.js"]
+    vendor: ["./src/vendor.js"],
   },
   mode: "production",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     libraryTarget: "umd",
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -119,7 +117,7 @@ module.exports.push({
       "react-dom": "preact/compat",
       // Must be below test-utils
     },
-  }
+  },
 });
 
 // SSR bundle config - should be used server-side only

@@ -1,23 +1,21 @@
 
 
 import { forwardRef } from "preact/compat";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 
 /**
  * Logo
  */
 const logoStyles = breakpoint => css`
-  .navbar-brand {
-    display: inline-block;
+  .navbar-logo {
+    display: inline-flex;
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem;
-    margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
     padding: 0;
-    margin: 0;
 
     .horiz {
       display: none;
@@ -56,16 +54,16 @@ const logoStyles = breakpoint => css`
     }
   }
 
-  &.scrolled .primary-nav .navbar-brand d img {
+  &.scrolled .primary-nav .navbar-logo d img {
     height: 64px;
   }
 
   @media (max-width: ${breakpoint}) {
-    &.scrolled .primary-nav .navbar-brand d img {
+    &.scrolled .primary-nav .navbar-logo d img {
       height: 28px;
     }
 
-    &.scrolled .navbar-brand .horiz {
+    &.scrolled .navbar-logo .horiz {
       margin-bottom: 0.5rem;
     }
   }
@@ -73,7 +71,7 @@ const logoStyles = breakpoint => css`
 
 const Logo = forwardRef(({brandLink, src, mobileSrc, alt, ...props}, ref) => {
   return (
-    <a href={brandLink} class="navbar-brand" ref={ref} {...props} >
+    <a href={brandLink} class="navbar-logo" ref={ref} {...props} >
       <img class="vert" src={src} alt={alt} />
       <img class="horiz" src={mobileSrc} alt={alt} />
     </a>

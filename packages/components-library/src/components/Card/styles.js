@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import { cx, css } from "emotion";
+import { cx, css } from "@emotion/css";
 import { Icon } from "../Icons";
 
 const Card = props => {
