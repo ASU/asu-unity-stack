@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-
+import { cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 import { Button } from "../Button";
@@ -17,6 +17,7 @@ const HoverDropNav = forwardRef(
       mega,
       buttons,
       mobile,
+      selected,
       ...props
     },
     ref
@@ -45,9 +46,10 @@ const HoverDropNav = forwardRef(
             }
           : {})}
       >
-        <S.DropControls>
+        <S.DropControls {...{ selected }}>
           <a
             {...props}
+            class={cx(props.class ? props.class : "")}
             role="button"
             aria-expanded={isOpen}
             onFocus={e => {
@@ -113,10 +115,12 @@ HoverDropNav.propTypes = {
   mega: PropTypes.bool,
   text: PropTypes.string,
   mobile: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 HoverDropNav.defaultProps = {
   isOpen: false,
+  selected: false,
 };
 
 export default HoverDropNav;

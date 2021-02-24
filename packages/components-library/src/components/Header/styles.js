@@ -75,12 +75,6 @@ const Header = ({ children, breakpoint, ...props }) => {
             &.scrolled {
               transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
             }
-
-            @media (max-width: ${breakpoint}) {
-              &.scrolled .primary-nav .header-title h1 {
-                font-size: 1rem;
-              }
-            }
           `,
           navbarStyles(breakpoint),
           navStyles(breakpoint), // add the nav and button styles

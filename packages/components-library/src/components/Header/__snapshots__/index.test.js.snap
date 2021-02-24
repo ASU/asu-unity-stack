@@ -731,7 +731,7 @@ exports[`Header Snapshot test 1`] = `
   }
 }
 
-.emotion-1 .navbar-brand {
+.emotion-1 .navbar-logo {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -743,14 +743,14 @@ exports[`Header Snapshot test 1`] = `
   margin: 0;
 }
 
-.emotion-1 .navbar-brand .horiz {
+.emotion-1 .navbar-logo .horiz {
   display: none;
   -webkit-transition: 0.5s cubic-bezier(0.19,1,0.19,1);
   transition: 0.5s cubic-bezier(0.19,1,0.19,1);
 }
 
 @media (min-width:992px) {
-  .emotion-1 .navbar-brand .vert {
+  .emotion-1 .navbar-logo .vert {
     display: block;
     height: 72px;
     width: auto;
@@ -758,21 +758,21 @@ exports[`Header Snapshot test 1`] = `
   }
 }
 
-.emotion-1 .navbar-brand img {
+.emotion-1 .navbar-logo img {
   height: 80px;
 }
 
 @media (max-width:992px) {
-  .emotion-1 .navbar-brand img {
+  .emotion-1 .navbar-logo img {
     float: none;
     height: 32px;
   }
 
-  .emotion-1 .navbar-brand .vert {
+  .emotion-1 .navbar-logo .vert {
     display: none;
   }
 
-  .emotion-1 .navbar-brand .horiz {
+  .emotion-1 .navbar-logo .horiz {
     display: block;
     height: 32px;
     width: auto;
@@ -781,16 +781,16 @@ exports[`Header Snapshot test 1`] = `
   }
 }
 
-.emotion-1.scrolled .primary-nav .navbar-brand d img {
+.emotion-1.scrolled .primary-nav .navbar-logo d img {
   height: 64px;
 }
 
 @media (max-width:992px) {
-  .emotion-1.scrolled .primary-nav .navbar-brand d img {
+  .emotion-1.scrolled .primary-nav .navbar-logo d img {
     height: 28px;
   }
 
-  .emotion-1.scrolled .navbar-brand .horiz {
+  .emotion-1.scrolled .navbar-logo .horiz {
     margin-bottom: 0.5rem;
   }
 }
@@ -1531,7 +1531,7 @@ exports[`Header Snapshot test 1`] = `
     >
       <div>
         <a
-          class="navbar-brand"
+          class="navbar-logo"
           href="https://asu.edu"
         >
           <img
@@ -1620,7 +1620,7 @@ exports[`Header Snapshot test 1`] = `
                   tabindex="0"
                 >
                   One Column
-                   
+
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-chevron-down fa-w-14 "
@@ -1717,7 +1717,7 @@ exports[`Header Snapshot test 1`] = `
                       </li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </li>
               <li
@@ -1729,7 +1729,7 @@ exports[`Header Snapshot test 1`] = `
                   tabindex="0"
                 >
                   Two Column
-                   
+
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-chevron-down fa-w-14 "
@@ -1880,7 +1880,7 @@ exports[`Header Snapshot test 1`] = `
                       </li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </li>
               <li
@@ -1892,7 +1892,7 @@ exports[`Header Snapshot test 1`] = `
                   tabindex="0"
                 >
                   Mega Menu (3 Col)
-                   
+
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-chevron-down fa-w-14 "
@@ -1998,7 +1998,7 @@ exports[`Header Snapshot test 1`] = `
                           class="nav-item"
                           href="https://www.asu.edu/map/"
                         >
-                          Phasellus egestas nec est 
+                          Phasellus egestas nec est
                         </a>
                       </li>
                       <li
@@ -2102,7 +2102,7 @@ exports[`Header Snapshot test 1`] = `
                       </li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </li>
               <li
@@ -2114,7 +2114,7 @@ exports[`Header Snapshot test 1`] = `
                   tabindex="0"
                 >
                   Mega Menu (4 Col)
-                   
+
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-chevron-down fa-w-14 "
@@ -2383,7 +2383,7 @@ exports[`Header Snapshot test 1`] = `
                       </li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </li>
               <li
@@ -2395,7 +2395,7 @@ exports[`Header Snapshot test 1`] = `
                   tabindex="0"
                 >
                   Mega Menu (5 Col)
-                   
+
                   <svg
                     aria-hidden="true"
                     class="svg-inline--fa fa-chevron-down fa-w-14 "

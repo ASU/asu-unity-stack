@@ -78,20 +78,6 @@ const titleStyles = breakpoint => css`
       }
     }
   }
-
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
-  @media (min-width: ${breakpoint}) {
-    &.scrolled .title.subunit-name {
-      font-size: 1.5rem;
-    }
-
-    &.scrolled .title {
-      padding-bottom: 0;
-    }
-  }
 `;
 
 const Title = forwardRef(
