@@ -54,6 +54,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
         `,
         "navbar-toggler"
       )}
+      aria-label="main menu"
     >
       {mobileOpen ? (
         <Icon type="circle-close" />
