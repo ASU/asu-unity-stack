@@ -3,7 +3,7 @@ import { forwardRef } from "preact/compat";
 import { Icon } from "../Icons";
 import { css, cx } from "@emotion/css";
 import { Button } from "../";
-import { hiddenStyle } from "../../theme";
+import { hiddenStyle, breakpointForMin } from "../../theme";
 
 const navItemStyles = breakpoint => css`
   .navlink,
@@ -40,7 +40,7 @@ const navItemStyles = breakpoint => css`
       color: #191919;
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       > a {
         padding: 0.5rem 0;
         white-space: normal;
@@ -60,7 +60,7 @@ const navItemStyles = breakpoint => css`
   .navbutton {
     margin-top: auto;
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       order: 1;
     }
 
