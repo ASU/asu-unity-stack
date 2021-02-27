@@ -31,6 +31,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
   return (
     <button
       {...props}
+      aria-label="main menu"
       class={cx(
         css`
           .fa-circle {
