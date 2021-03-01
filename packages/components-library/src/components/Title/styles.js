@@ -6,6 +6,7 @@ import { cx, css } from "@emotion/css";
 import {
   containerSize,
   BreakpointLg,
+  breakpointForMin
 } from "../../theme";
 
 /**
@@ -42,7 +43,7 @@ const titleStyles = breakpoint => css`
       color: #191919;
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       line-height: 1;
       font-weight: 700;
       padding: 0;

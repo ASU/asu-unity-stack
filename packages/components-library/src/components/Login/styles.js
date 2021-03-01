@@ -1,6 +1,7 @@
 
 
 import { cx, css } from "@emotion/css";
+import { breakpointForMin } from "../../theme";
 
 const loginStyles = breakpoint => css`
   .login-status {
@@ -31,7 +32,7 @@ const loginStyles = breakpoint => css`
     }
 
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       margin-left: .5rem;
     }
   }
