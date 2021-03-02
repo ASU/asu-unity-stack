@@ -333,7 +333,7 @@ const dropdownContainerStyles = breakpoint => css`
 
 const DropdownContainer = props => {
   return (
-    <div class={cx("dropdown", props.open ? "open" : "", props.class)} data-salesforce-identifier = {"leave-open"} onMouseDown={e => {}} onClick={e => {}}>
+    <div class={cx("dropdown", props.open ? "open" : "", props.class)} data-onclick-identifier = {"leave-open"} onMouseDown={e => {}} onClick={e => {}}>
       <div>{props.children}</div>
       {props.buttons ? (
         <div class="button-row">

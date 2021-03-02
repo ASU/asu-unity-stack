@@ -41,20 +41,20 @@ const Nav = forwardRef (({
           }
         }
 
-        const id = whatWasClicked.dataset.salesforceIdentifier;
-        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.salesforceDropdownOpen === 'true'))) {
+        const id = whatWasClicked.dataset.onclickIdentifier;
+        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === 'true'))) {
           setOpen(parseInt(id.substring(id.indexOf(".")+1)));
-          whatWasClicked.dataset.salesforceDropdownOpen = 'true';
+          whatWasClicked.dataset.onclickDropdownOpen = 'true';
         } else {
           setOpen(-1);
-          whatWasClicked.dataset.salesforceDropdownOpen = 'false';
+          whatWasClicked.dataset.onclickDropdownOpen = 'false';
         }
       },
 
       forceOpen(whatWasClicked) {
-        const id = whatWasClicked.dataset.salesforceIdentifier;
+        const id = whatWasClicked.dataset.onclickIdentifier;
         setOpen(parseInt(id.substring(id.indexOf(".")+1)));
-        whatWasClicked.dataset.salesforceDropdownOpen = 'true';
+        whatWasClicked.dataset.onclickDropdownOpen = 'true';
       }
     }),
   )
