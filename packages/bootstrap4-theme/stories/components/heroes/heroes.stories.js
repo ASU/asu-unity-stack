@@ -22,7 +22,7 @@ storiesOf('Components/Heroes', module)
     <h1 class="heading heading-one col-md-8"><span class="highlight highlight-gold highlight-heading-one">Heading 1</span></h1>
     <div class="uds-hero-text col-sm-12 col-md-7">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <button class="btn btn-gold" type="submit">Call to action button</button>
+      <button class="btn btn-gold" onclick="location.href='http://www.example.com'" type="submit">Call to action button</button>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@ storiesOf('Components/Heroes', module)
     <h1 class="heading heading-one col-md-8"><span class="highlight highlight-gold highlight-heading-one">Heading 1</span></h1>
     <div class="uds-hero-text col-sm-12 col-md-7">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <button class="btn btn-gold" type="submit">Call to action button</button>
+      <button class="btn btn-gold"  onclick="location.href='http://www.example.com'" type="submit">Call to action button</button>
     </div>
   </div>
 </div>
