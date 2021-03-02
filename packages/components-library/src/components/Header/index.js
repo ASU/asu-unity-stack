@@ -58,18 +58,30 @@ const Header = ({
     e.stopImmediatePropagation();
   }, []);
 
-  const onClickCallbackRTN = useCallback((e) => {
+  /**
+   * This function solves a bug where all onclick functions are overwritten
+   * with the first declared onclick function.  This is known to occur
+   * when inserting the header component in a Lightning Web Component on
+   * Salesforce and may occur in other scenarios as well.
+   *
+   * When this function overwrites all other onclick functions, it then
+   * checks the event's target's data-onclick-identifier attribute to determine
+   * what was clicked on and intiates the correct process.
+   *
+   * When the bug does not occur, this function should never be called.
+   */
+  const onClickCallbackOverride = useCallback((e) => {
     let whatWasClicked = e.target;
     let limit = 100; // prevent infinite loop
 
     // Climb DOM tree until someone has an identifier
-    while (limit > 0 && whatWasClicked.dataset.salesforceIdentifier === undefined) {
+    while (limit > 0 && whatWasClicked.dataset.onclickIdentifier === undefined) {
       whatWasClicked = whatWasClicked.parentNode;
       limit--;
     }
 
     // Action depends on what was clicked
-    const identifier = whatWasClicked.dataset.salesforceIdentifier;
+    const identifier = whatWasClicked.dataset.onclickIdentifier;
     if (identifier === "universal-search-bar") {
       setSearchOpen(true);
     } else if (identifier === "mobile-dropdown") {
@@ -88,12 +100,12 @@ const Header = ({
   const clearSearchBar = (domElement) => {
     let searchUp = domElement;
     let limit = 100; // prevent infinite loop
-    while (limit > 0 && searchUp.dataset.salesforceIdentifier !== 'top-of-header') {
+    while (limit > 0 && searchUp.dataset.onclickIdentifier !== 'top-of-header') {
       limit--;
       searchUp = searchUp.parentNode
     }
-    if (searchUp.querySelector('[data-salesforce-identifier = "universal-search-bar"]').querySelector("input").value.length > 0){
-      searchUp.querySelector('[data-salesforce-identifier = "universal-search-bar"]').querySelector("input").value = "";
+    if (searchUp.querySelector('[data-onclick-identifier = "universal-search-bar"]').querySelector("input").value.length > 0){
+      searchUp.querySelector('[data-onclick-identifier = "universal-search-bar"]').querySelector("input").value = "";
     }
   }
 
@@ -138,9 +150,9 @@ const Header = ({
           ? "scrolled"
           : ""
       }
-      data-salesforce-identifier = "top-of-header"
+      data-onclick-identifier = "top-of-header"
     >
-      <div onmousedown={killEvent} onclick={onClickCallbackRTN} data-salesforce-identifier="no-action"></div>
+      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action"></div>
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU home</a>
@@ -161,7 +173,7 @@ const Header = ({
         }}
         mobileOpen={mobileOpen}
         logo={<Logo {...logo} ref={logoRef} />}
-        data-salesforce-identifier = "mobile-dropdown"
+        data-onclick-identifier = "mobile-dropdown"
       >
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />

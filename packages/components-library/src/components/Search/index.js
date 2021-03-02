@@ -103,7 +103,7 @@ const UniversalSearch = ({ type, open, setOpen, mobile}) => {
       onfocusin={onFocusCallback}
       onfocusout={onBlurCallBack}
       onClick={onClickCallback}
-      data-salesforce-identifier="universal-search-bar"
+      data-onclick-identifier="universal-search-bar"
     >
       <Search {...{ open, type, inputRef, mobile }} />
     </S.UniversalSearch>
