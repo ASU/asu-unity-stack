@@ -1,7 +1,7 @@
 
 
 import { css, cx } from "@emotion/css";
-import { containerSize, primaryNavTopPadding } from "../../theme";
+import { containerSize, primaryNavTopPadding, breakpointForMin } from "../../theme";
 import { Icon } from "../Icons";
 
 /**
@@ -21,7 +21,7 @@ const navbarTogglerStyles = breakpoint => css`
     cursor: pointer;
     align-self: flex-start;
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       display: none;
     }
   }
@@ -31,6 +31,7 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
   return (
     <button
       {...props}
+      aria-label="main menu"
       class={cx(
         css`
           .fa-circle {
