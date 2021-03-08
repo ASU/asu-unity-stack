@@ -738,3 +738,93 @@ Cards - Table of Contents
     @include uds-quicklinks-expanded;
   }
 }
+
+/*------------------------------------------------------------------
+11. Checkbox Stacked Cards
+--------------------------------------------------------------------*/
+
+.card-story-checkbox-stacked .card-header .card-title:after {
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
+}
+
+.card-story-checkbox-stacked .card-header {
+  position: relative;
+}
+
+.card-story-checkbox-stacked .card-form {
+  position: absolute;
+  bottom: $uds-component-card-checkbox-stacked-bottom;
+}
+
+.card-story-checkbox-stacked .card-footer {
+  background-color: $white;
+}
+
+.card-footer-link a,
+.card-footer-link a:visited {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.card-footer-link a:hover {
+  text-decoration: underline;
+}
+
+.card-footer-link a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+
+/*------------------------------------------------------------------
+12. Checkbox Inline Cards
+--------------------------------------------------------------------*/
+
+.card-story-checkbox-stacked .card-header .card-title:after {
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
+}
+
+.card-story-checkbox-inline .card-header {
+  position: relative;
+}
+
+.card-story-checkbox-inline .card-form {
+  position: absolute;
+  bottom: $uds-component-card-checkbox-inline-bottom;
+}
+
+.card-story-checkbox-inline .card-footer {
+  background-color: $white;
+}
+
+.card-footer-link a,
+.card-footer-link a:visited {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.card-footer-link a:hover {
+  text-decoration: underline;
+}
+
+.card-footer-link a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+
+
