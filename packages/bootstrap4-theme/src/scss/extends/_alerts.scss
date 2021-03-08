@@ -24,6 +24,12 @@
     {
       padding-top: $btn-close-padding-top;
       padding-bottom: $btn-close-padding-bottom;
+      opacity: $uds-component-button-close-opacity;
+
+      &:hover
+      {
+        opacity: $uds-component-button-close-opacity;
+      }
     }
   }
 }
