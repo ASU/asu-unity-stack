@@ -295,6 +295,16 @@ Cards - Table of Contents
 
 .card-story .card-header {
   padding-top: 24px;
+  position: relative;
+}
+
+.card-story .media-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: red;
+  position: absolute;
+  top: $uds-component-card-media-icon-margin-bottom;
 }
 
 .card-story .card-footer {
@@ -313,6 +323,7 @@ Cards - Table of Contents
   }
 
   .card-header {
+    //position: relative;
     margin: $uds-component-card-story-body-margin-sm;
   }
 
@@ -739,5 +750,141 @@ Cards - Table of Contents
 @include media-breakpoint-up(xl) {
   .quicklinks.quicklinks-expanded-xl {
     @include quicklinks-expanded;
+  }
+}
+
+/*------------------------------------------------------------------
+9. Media Degree Cards
+--------------------------------------------------------------------*/
+
+.card-degree-media .card-header .card-title:after {
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
+}
+
+.card-degree-media .card-header {
+  position: relative;
+}
+
+.card-degree-media .media-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: red;
+  position: absolute;
+  top: $uds-component-card-media-degree-icon-margin-bottom;
+}
+
+.card-degree-media .card-footer {
+  background-color: $white;
+}
+
+.card-footer-link a,
+.card-footer-link a:visited {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.card-footer-link a:hover {
+  text-decoration: underline;
+}
+
+.card-footer-link a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+
+/*------------------------------------------------------------------
+10. Media Story Cards
+--------------------------------------------------------------------*/
+
+.card-story-media .card-header,
+.card-story-media .card-body,
+.card-story-media .card-button,
+.card-story-media .card-footer,
+.card-story-media .card-tags,
+.card-story-media .card-footer,
+.card-story-media .card-link {
+  margin-left: 24px;
+  margin-right: 24px;
+  background-color: $white;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.card-story-media .card-header {
+  padding-top: 24px;
+  position: relative;
+}
+
+.card-story-media .media-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: red;
+  position: absolute;
+  top: $uds-component-card-media-icon-margin-bottom;
+}
+
+.card-story-media .card-footer {
+  padding: $uds-component-card-basic-footer-link-padding;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.card-story-media .card-img-top {
+  margin-bottom: -48px;
+}
+
+.card-story-media.card-sm {
+  .card-body {
+    margin: $uds-component-card-story-body-margin-sm;
+  }
+
+  .card-header {
+    //position: relative;
+    margin: $uds-component-card-story-body-margin-sm;
+  }
+
+  .card-button {
+    margin: $uds-component-card-story-body-margin-sm;
+  }
+}
+
+.card-story-media.card-horizontal .card-img-top {
+  margin-right: -32px;
+  position: relative;
+  z-index: 0;
+}
+
+.card-story-media.card-horizontal .card-content-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 100;
+  background-color: white;
+}
+
+.card-story-media.card-horizontal {
+
+  .card-header,
+  .card-body,
+  .card-button,
+  .card-footer,
+  .card-tags,
+  .card-footer,
+  .card-link {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: $white;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }

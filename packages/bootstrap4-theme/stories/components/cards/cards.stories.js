@@ -88,7 +88,7 @@ export const cardImages = () => `
       <div class="col col-12 col-md-6 col-lg-4">
 
         <div class="card">
-          <i class="fas fa-rocket fa-2x card-icon-top"></i>
+          <i class="svg-inline--fa fas fa-rocket fa-2x "></i>
           <div class="card-header">
           </div>
         </div> <!-- .card -->
@@ -336,6 +336,65 @@ export const storyCard = () => `
           </div>
           <div class="card-button">
             <a href="#" class="btn btn-gold">Button link here</a>
+          </div>
+          <div class="card-link">
+            <a href="#" class="">Regular text link here</a>
+          </div>
+          <div class="card-tags">
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+`;
+
+export const mediaCard = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+        <div class="card card-story-media">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <span class="media-icon">TEST</span>
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-gold">Watch the video</a>
+          </div>
+          <div class="card-link">
+            <a href="#" class="">Regular text link here</a>
+          </div>
+          <div class="card-tags">
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+`;
+
+export const mediaDegreeCard = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <div class="card card-degree-media">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <span class="media-icon">TEST</span>
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-maroon">Button link here</a>
           </div>
           <div class="card-link">
             <a href="#" class="">Regular text link here</a>
