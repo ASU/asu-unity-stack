@@ -394,7 +394,7 @@ export const mediaDegreeCard = () => `
             <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-maroon">Button link here</a>
+            <a href="#" class="btn btn-maroon">Default button</a>
           </div>
           <div class="card-link">
             <a href="#" class="">Regular text link here</a>
