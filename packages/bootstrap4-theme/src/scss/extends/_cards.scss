@@ -824,13 +824,18 @@ Cards - Table of Contents
   position: relative;
 }
 
-.card-story-media .media-icon {
+.card-story-media .card-story-media-icon {
   display: block;
-  width: 60px;
-  height: 60px;
-  background: red;
+  background: transparent;
   position: absolute;
   top: $uds-component-card-media-icon-margin-bottom;
+  .fa-circle {
+    color: $white;
+    font-size: inherit;
+  }
+  .fa-video {
+    color: $black;
+  }
 }
 
 .card-story-media .card-footer {
