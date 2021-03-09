@@ -769,13 +769,17 @@ Cards - Table of Contents
   position: relative;
 }
 
-.card-degree-media .media-icon {
+.card-degree-media .card-degree-media-icon {
   display: block;
-  width: 60px;
-  height: 60px;
-  background: red;
   position: absolute;
   top: $uds-component-card-media-degree-icon-margin-bottom;
+  .fa-circle {
+    color: $white;
+    font-size: inherit;
+  }
+  .fa-video {
+    color: $black;
+  }
 }
 
 .card-degree-media .card-footer {

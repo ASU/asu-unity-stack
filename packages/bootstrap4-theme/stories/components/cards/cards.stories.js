@@ -392,7 +392,12 @@ export const mediaDegreeCard = () => `
         <div class="card card-degree-media">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           <div class="card-header">
-            <span class="media-icon">TEST</span>
+            <div class="card-degree-media-icon">
+              <span class="fa-stack fa-2x">
+                <i class="fas fa-circle fa-stack-2x"  aria-hidden="true"></i>
+                <i class="fas fa-video fa-stack-1x"  aria-hidden="true"></i>
+              </span>
+          </div>
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
