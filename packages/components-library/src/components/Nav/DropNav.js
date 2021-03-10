@@ -59,8 +59,11 @@ const DropNav = forwardRef(
             //navOpen(pIndex);
             setFocus([pIndex, -1, -1]);
           }}
+          onClick={e => {}}
           tabIndex="0"
           ref={ref}
+          data-onclick-identifier = {"toggle-dropdown." + pIndex}
+          data-onclick-dropdown-open = "false"
         >
           {text}{" "}
           <S.IconChevronDown sr={text} className={isOpen ? "open" : ""} />
