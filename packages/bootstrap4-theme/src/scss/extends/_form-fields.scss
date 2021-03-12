@@ -24,13 +24,13 @@ form {
   /* Input text */
   .form-control {
     color: $uds-color-base-gray-7;
+    border: 1px solid $uds-color-base-gray-5;
 
     /* Disabled input */
     &:disabled,
     &[readonly] {
       color: $uds-color-base-gray-4;
       background: $uds-color-base-gray-2;
-      border: 1px solid $uds-color-base-gray-3;
     }
   }
 
@@ -90,7 +90,7 @@ form {
           position: absolute;
           display: inline-block;
           left: -2.25rem;
-          border: 1px solid $uds-color-base-gray-3;
+          border: 1px solid $uds-color-base-gray-5;
           width: $uds-size-spacing-3;
           height: $uds-size-spacing-3;
           background: white;
@@ -347,6 +347,9 @@ form {
     select {
       background-color: $uds-color-base-gray-7;
       color: $uds-color-base-gray-1;
+    }
+    input::placeholder {
+      color: $uds-color-base-gray-4;
     }
     /* Dark Input focus */
     input:focus,
