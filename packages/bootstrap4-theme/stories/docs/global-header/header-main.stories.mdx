@@ -1,0 +1,134 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Global Header/Header main" />
+
+# Header Main
+
+The design of the main header component utilizes a mobile-first design and does not require a separate set of code for both the desktop and the mobile view. This component is a heavily modified version of the default `navbar` component within Bootstrap 4.
+
+The component should toggle between the mobile view and the desktop view at any resolution less than 1260px. This rather high breakpoint was an intensional design decision to prevent menus with a lot of links in the navigation from displaying incorrectly at resolutions between 991px and 1260px.
+
+If this does not apply to your site, the [default code can be modified](?path=/docs/docs-global-header-mobile-beakpoint--page) to display the desktop view at resolutions greater than 991px.
+
+The basic markup should resemble the following:
+
+```
+<nav class="navbar navbar-expand-xl">
+    <a class="navbar-brand" href="#">...</a>
+    <button class="navbar-toggler collapsed" type="button">...</button>
+    <div class="navbar-container">
+        <div class="title subdomain-name">University Technology Office</div>
+        <div class="collapse" id="menubar">
+            <div class="navbar-nav">
+                <a class="nav-link nav-link-home active" href="/">
+                    <span class="d-xl-none">Home</span>
+                    <span title="Home" class="fas fa-fw fa-home"></span>
+                </a>
+                ...
+            </div><!-- end .navbar-nav -->
+            <form class="navbar-site-buttons form-inline">
+                ...
+            </form>
+            <div class="navbar-mobile-footer">...</div>
+        </div>
+    </div>
+</div>
+```
+
+## .navbar-brand
+
+This contains both the horizontal and vertical logos used in the component.
+
+If you are copy/pasting directly from Storybook, you'll want to change the image `src` attribute to load the files correctly. The relative path to these files will change depending on your configuration, but within the `@asu-design-system` NPM package you can find them at `node_modules/@asu-design-system/bootstrap4-theme/src/img/asu-logo` Those will wind up looking something like this:
+
+- `<img class="vert" src="{path}/arizona-state-university-logo-vertical.png" alt="Arizona State University" />`
+- `<img class="horiz" src="{path}/arizona-state-university-logo.png" alt="Arizona State University" />`
+
+## .navbar-toggler
+
+Contains the SVG icons needed for opened and closed state of the mobile menu. No need to alter anything here.
+
+## .navbar-container .title
+
+The site name and "parent" site name are represented by altering the contents of the `.title` div in this area. There are two supported configurations of this information. Both the parent titles and the main site titles can be either linked or unlinked in either configuration.
+
+**Title, with parent**
+
+```
+<!-- Recommended approach is to provide a link to the parent site only. -->
+<div class="title">
+  <a href="#" class="unit-name">Ira A. Fulton Schools of Engineering</a>
+  <span class="subdomain-name">School of Computing, Informatics, and Decisions Systems Engineering</span>
+</div>
+```
+
+**Title, no parent**
+
+```
+<!-- Linked -->
+<div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
+
+<!-- Unlinked -->
+<div class="title subdomain-name">University Technology Office</div>
+```
+
+## .navbar-nav
+
+The contents of this section are the actual navigation links and buttons for your site. Please see the next section for more information about how to build all of the specific features of the menu including the dropdown, mega menus and CTA buttons.
+
+Immediately following `.navbar-nav` should be a link for the home page of the site. In almost every case, this link should look exactly like the following:
+
+```
+<a class="nav-link nav-link-home active" href="/">
+    <span class="d-xl-none">Home</span>
+    <span title="Home" class="fas fa-fw fa-home"></span>
+</a>
+```
+
+This link provides the markup for the home icon in the desktop view as well as the "home" text and link in the mobile view.
+
+## form.navbar-site-buttons
+
+The form element immediately following `.navbar-nav` is the intended container element for the top-level call-to-action buttons that can be found as a part of the menu system. When present, they will always be aligned to the right side of the component and vertically aligned with either the `navbar-nav` element or the site title if the navbar is not present.
+
+Use the medium sized buttons for this application. A maximum of two buttons are allowed.
+
+```
+<form class="navbar-site-buttons form-inline">
+  <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
+  <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
+  <!-- <a href="#" class="btn btn-md btn-gold">Gold button is OK</a> -->
+</form>
+```
+
+## .navbar-mobile-footer
+
+This section of the header markup houses the footer at the bottom of the mobile menu. The links in this section are generally the same set of links found in the `#top-header` section. But the links are duplicated in the markup for simplicity and accessibility purposes.
+
+The structure of this element looks like this:
+
+```
+<div class="navbar-mobile-footer">
+  <form class="navbar-mobile-search" action="https://search.asu.edu/search">
+    ...
+  </form>
+  <div class="nav-grid">
+    ...
+    <div class="nav-link login-status">
+      ...
+    </div>
+  </div>
+</div>
+```
+
+Just like the `#top-header` element, the mobile footer contains a targetable landmark for various applications to return a logged in / logged out status. Inject your results into `.navbar-mobile-footer .login-status`.
+
+```
+<!-- Logged in -->
+Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
+
+<!-- Logged out. (This is the normal format of links in this area.) -->
+<a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+```
+
+`.navbar-mobile-footer .login-status .signout` will wrap the result in parenthesis (via CSS psudo-elements) and provide a small left margin as a spacer for any leading text.

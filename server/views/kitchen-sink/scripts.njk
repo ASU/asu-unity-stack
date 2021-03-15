@@ -1,0 +1,505 @@
+<!-- jQuery, Bootstrap JS, PopperJS
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+
+
+<script src="/asu-web-standards-bootstrap4/dist/js/bootstrap-asu.min.js"></script>
+
+
+<!-- include bundled scripts from Preact packages (CSS is in the <head>) -->
+<script src="/components-library/dist/vendor.js"></script>
+<script src="/components-library/dist/components-library.js"></script>
+
+<!-- include Cookie Consent script and styles -->
+<link href="/cookie-consent/dist/cookie-consent.css" rel="stylesheet" type="text/css" media="all">
+<script src="/cookie-consent/dist/cookie-consent.js"></script>
+<!--<script src="/component-forms/dist/vendor.production.js"></script>-->
+<script src="/component-forms/dist/component-forms.js"></script>
+<!--<script src="/asu-maps/dist/asu-maps.production.js"></script>-->
+
+<script>
+
+  var NavTree = [
+    {
+      href: "/",
+      text: "Home",
+      type: "icon",
+      class: "home"
+
+    }, {
+      text: "One Column",
+      href: "/",
+      items: [
+        [
+          {
+            href: "https://www.asu.edu/",
+            text: "A test navigation item"
+          }, {
+            href: "https://www.asu.edu/",
+            text: "Mauris viverra, sem nec"
+          }, {
+            href: "https://www.asu.edu/?feature=athletics",
+            text: "Massa nunc dictum nam venenatis"
+          }, {
+            href: "https://www.asu.edu/?feature=alumni",
+            text: "Alumni"
+          }, {
+            href: "https://www.asu.edu/?feature=giving",
+            text: "Giving"
+          }, {
+            href: "https://www.asu.edu/?feature=president",
+            text: "President"
+          }, {
+            href: "https://www.asu.edu/about",
+            text: "About ASU"
+          }
+        ]
+      ]
+    }, {
+      text: "Two Column",
+      href: "/",
+      items: [
+        [
+          {
+            type: "heading",
+            text: "Column 1"
+          }, {
+            href: "https://www.asu.edu/",
+            text: "Pellentesque ornare"
+          }, {
+            href: "https://www.asu.edu/",
+            text: "Curabitur viverra arcu nisl"
+          }, {
+            href: "https://www.asu.edu/?feature=athletics",
+            text: "Aenean pharetra"
+          }, {
+            href: "https://www.asu.edu/?feature=alumni",
+            text: "Pellentesque"
+          }, {
+            href: "https://www.asu.edu/?feature=giving",
+            text: "Donec sagittis nulla"
+          }, {
+            href: "https://www.asu.edu/?feature=president",
+            text: "Quisque fringilla"
+          }, {
+            href: "https://www.asu.edu/about",
+            text: "Integer vel gravida lectus"
+          }
+        ],
+        [
+          {
+            href: "https://www.asu.edu/?feature=newsevents",
+            type: "heading",
+            text: "Ut quis"
+          }, {
+            href: "https://www.asu.edu/?feature=academics",
+            text: "Nunc in libero odio"
+          }, {
+            href: "https://www.asu.edu/?feature=research",
+            text: "Maecenas quam elit"
+          }, {
+            href: "https://www.asu.edu/?feature=academics",
+            text: "Ut at vehicula neque"
+          }, {
+            href: "https://www.asu.edu/?feature=athletics",
+            type: "button",
+            text: "Sed molestie"
+          }
+        ]
+      ]
+    }, {
+      text: "Mega Menu (3 Col)",
+      href: "#",
+      items: [
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Maecenas lacinia"
+          }, {
+            href: "https://havasu.asu.edu/",
+            text: "Curabitur viverra arcu nisl"
+          }, {
+            href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+            classes: "border",
+
+            text: "Thunderbird"
+          }, {
+            href: "https://skysong.asu.edu/",
+            text: "Skysong"
+          }, {
+            href: "https://asuresearchpark.com/",
+            text: "Research Park"
+          }, {
+            href: "https://washingtoncenter.asu.edu/",
+            text: "Washington D.C."
+          }, {
+            href: "https://wpcarey.asu.edu/mba/china-program/english/",
+            text: "China"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 2"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Phasellus egestas nec est "
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Pellentesque et mollis"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Cras congue"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Cras ut malesuada nisl"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Downtown Phoenix"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 3 Heading"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Map"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Tempe"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "West"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Polytechnic"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Downtown Phoenix"
+          }
+        ]
+      ]
+    }, {
+      text: "Mega Menu (4 Col)",
+      href: "#",
+      items: [
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Header Column 1"
+          }, {
+            href: "https://havasu.asu.edu/",
+            text: "Lake Havasu"
+          }, {
+            href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+            classes: "border",
+            text: "Thunderbird"
+          }, {
+            href: "https://skysong.asu.edu/",
+            text: "Skysong"
+          }, {
+            href: "https://asuresearchpark.com/",
+            text: "Research Park"
+          }, {
+            href: "https://washingtoncenter.asu.edu/",
+            text: "Washington D.C."
+          }, {
+            href: "https://wpcarey.asu.edu/mba/china-program/english/",
+            text: "China"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 2"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Faculty and Staff Directory"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "The Tempe Campus"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Sun Devils and Things"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Another nav link"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Action"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 3"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "University Technology Office"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Sun Devil Football"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "The School of Something"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Polytechnic"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Another Button"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 4"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Maps and Directions"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Office of the technology"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Office of the business"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Some longer text office of longtext"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Downtown Phoenix"
+          }
+        ]
+      ]
+    }, {
+      text: "Mega Menu (5 Col)",
+      href: "#",
+      items: [
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column One Heading Text"
+          }, {
+            href: "https://havasu.asu.edu/",
+            text: "The Lake Havasu Campus"
+          }, {
+            href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+            classes: "border",
+
+            text: "Thunderbird"
+          }, {
+            href: "https://skysong.asu.edu/",
+            text: "Skysong"
+          }, {
+            href: "https://asuresearchpark.com/",
+            text: "Research Park"
+          }, {
+            href: "https://washingtoncenter.asu.edu/",
+            text: "Washington D.C."
+          }, {
+            href: "https://wpcarey.asu.edu/mba/china-program/english/",
+            text: "China"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 2"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Faculty and Staff Directory"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "The Tempe Campus"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Sun Devils and Things"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Another nav link"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Action Button"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 3"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+
+            text: "University Technology Office"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+
+            text: "Sun Devil Football"
+          }, {
+            href: "https://campus.asu.edu/west/",
+
+            text: "The School of Something"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+
+            text: "Polytechnic"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Another Button"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column 4"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Maps and Directions"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Office of the technology"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Office of the business"
+          }, {
+            href: "https://campus.asu.edu/polytechnic/",
+            text: "Some longer text office of longtext"
+          }, {
+            href: "https://campus.asu.edu/downtown/",
+            type: "button",
+            text: "Downtown Phoenix"
+          }
+        ],
+        [
+          {
+            href: "https://asuonline.asu.edu/",
+            type: "heading",
+            text: "Column Five"
+          }, {
+            classes: "border first",
+            href: "https://www.asu.edu/map/",
+            text: "Buildings and directory"
+          }, {
+            href: "https://campus.asu.edu/tempe/",
+            text: "Some good news"
+          }, {
+            href: "https://campus.asu.edu/west/",
+            text: "Directory Admin Tools"
+          }
+        ]
+      ]
+    }
+  ];
+
+  var buttons = [
+    {
+      text: "Apply Now",
+      type: "button",
+      color: "gold",
+      href: "https://admissions.asu.edu",
+      target: "_top"
+    }, {
+      text: "CTA Button",
+      type: "button",
+      color: "maroon",
+      href: "https://asu.edu",
+      target: "_top"
+    }
+  ];
+
+  var props = {
+    navTree: NavTree,
+    title: "Ira A. Fulton Schools of Engineering",
+    baseUrl: "/kitchen-sink"
+  };
+
+  console.log(componentsLibrary, 'componentsLibrary');
+
+  //window.setTimeout(function () {
+  componentsLibrary.initHeader(props, "headerContainer");
+  // }, 10 * 1000);
+
+  // Initialize cookie consent banner
+  AsuCookieConsent.init();
+
+  console.log(componentForms, 'componentForms');
+  /** Form Component testProps **/
+  const testProps = {
+    title: "Daily Health Check Reminders",
+    description: `How would you like to be reminded to take your daily health check? <br />
+      (Note: You can submit a daily health check anytime, via any tool. We just thought
+        a friendly reminder might help.)
+    `,
+
+    fields: [
+      {
+        name: "push_notifications",
+        type: "toggle",
+        icon: "mobile",
+        title: "ASU Mobile App (push notifications)",
+        label: "ASU Mobile App (push notifications) use enter or space to edit",
+        id: "mobile-opt-in"
+      }, {
+        name: "email_notifications",
+        type: "toggle",
+        label: "Web (email reminders) use enter or space to edit",
+        title: "Web (email reminders)",
+        id: "web-opt-in",
+        icon: "desktop"
+      }
+    ],
+    initialValues: {
+      push_notifications: true,
+      email_notifications: false
+    },
+    onSubmit: (values, actions) => {
+      if (!values.push_notifications && !values.email_notifications) {
+        console.log("reset the form");
+        actions.resetForm();
+
+        //actions.setValues({push_notifications: true});
+        actions.setStatus("Warning: Update not submitted. Please enable either mobile or web notifications.");
+        //
+      }
+      console.log(values, 'THE VALUES');
+      console.log(actions, 'THE ACTIONS');
+    },
+    autoSubmit: true
+  };
+
+  componentForms.RenderPreact(componentForms.FormPanel, testProps, document.getElementById("formContainer"));
+</script>

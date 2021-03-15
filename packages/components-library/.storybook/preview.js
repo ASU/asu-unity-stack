@@ -1,4 +1,3 @@
-/** @jsx h */
 import { addParameters } from '@storybook/preact';
 
 addParameters({

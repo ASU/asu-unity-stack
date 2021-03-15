@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Wed, 02 Sep 2020 15:40:28 GMT
+// Generated on Tue, 02 Mar 2021 19:26:48 GMT
 
 $uds-asset-font-icon-name: "FontAwesome";
 $uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
@@ -177,6 +177,8 @@ $uds-component-button-badge-height: 1.375rem; // Magic number: 22px not a multip
 $uds-component-button-close-height: 2rem;
 $uds-component-button-close-opacity: 50%;
 $uds-component-button-close-width: 2rem;
+$uds-component-button-close-padding-top: 0;
+$uds-component-button-close-padding-bottom: 0.125rem;
 $uds-component-button-close-disabled-opacity: 100%;
 $uds-component-button-close-white-background-color: #ffffff;
 $uds-component-button-close-gray-background-color: #bfbfbf;
@@ -407,3 +409,23 @@ $uds-component-pager-disabled-opacity: 50%;
 $uds-component-pager-icon-height: 1rem;
 $uds-component-pager-icon-width: 1rem;
 $uds-component-pager-icon-margin: 0.25rem;
+$uds-component-tab-color: rgba(0, 0, 0, 0);
+$uds-component-tab-border-width: 0rem;
+$uds-component-tab-border-color: rgba(0, 0, 0, 0);
+$uds-component-tab-border: none;
+$uds-component-tab-outline: 0;
+$uds-component-tab-background-color: #000000;
+$uds-component-tab-border-radius: 0rem;
+$uds-component-tab-display: block;
+$uds-component-tab-font-weight: bold;
+$uds-component-tab-text-decoration: none;
+$uds-component-tab-line-height: 1rem;
+$uds-component-tab-hover-state-transform: scale(1.1);
+$uds-component-tab-active-state-transform: scale(1);
+$uds-component-tab-padding: 1rem 2rem;
+$uds-component-tab-container-border-bottom: 1px solid #747474;
+$uds-component-tab-container-border-color: #747474;
+$uds-component-tab-container-border-width-px: 1px;
+$uds-component-tab-active-border-bottom: 8px solid #8c1d40;
+$uds-component-tab-active-color: #8c1d40;
+$uds-component-tab-disabled-opacity: 50%;

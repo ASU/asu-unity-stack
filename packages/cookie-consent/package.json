@@ -1,0 +1,30 @@
+{
+  "name": "@asu-design-system/cookie-consent",
+  "version": "1.0.4",
+  "description": "ASU implementation of cookieconsent npm library",
+  "main": "src/index.js",
+  "author": "Colton Testamarck",
+  "license": "UNLICENSED",
+  "private": false,
+  "scripts": {
+    "clean": "yarn shx rm -rf ./dist",
+    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "storybook": "start-storybook -s ./dist -p 9009",
+    "build-storybook": "build-storybook"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/cookie-consent"
+  },
+  "devDependencies": {
+    "@storybook/html": "^6.1.15"
+  },
+  "dependencies": {
+    "cookieconsent": "^3.1.1"
+  }
+}

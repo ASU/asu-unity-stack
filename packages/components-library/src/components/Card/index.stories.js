@@ -1,6 +1,6 @@
-/** @jsx h */
 
-import { h } from "preact";
+
+
 
 import { FoldableCard } from ".";
 import {H4} from "../Heading/styles";

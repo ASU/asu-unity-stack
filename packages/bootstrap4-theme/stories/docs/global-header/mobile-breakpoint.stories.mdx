@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Global Header/Mobile Beakpoint" />
+
+# Altering the default mobile breakpoint
+
+By default, the Boostrap 4 version of the ASU header uses the XL breakpoint to trigger the mobile vs desktop view of the component. This means that users with resolutions of 1260px and below will experience the mobile menu.
+
+If you have a limited number of top level items in the navigation of your menu, you can change this behavior by altering the markup for the header as well as the media queries in the SASS files to use the `lg` or `md` breakpoints instead.
+
+## Markup changes
+
+There are four changes in the markup needed to alter the default behavior.
+
+First, look for for two instances of Bootstrap containers that have been set to the xl breakpoint.
+
+- The first is at `#wrapper-header-top div.container-xl`
+- The other is at `#wrapper-header-main div.container-xl`.
+- Change both containers to `container-lg` or your breakpoint of choice.
+
+Second, if your header contains a navigation bar, it also needs to be set to display the mobile view at the correct breakpoint.
+
+- Locate `.navbar-expand-xl` and change it to `.navbar-expand-lg` or your breakpoint of choice.
+
+Last, the text for the home icon also toggles on and off based on the breakpoint.
+
+- Find `<span class="d-xl-none">Home</span>` and change the class for the `<span>` element to be `d-lg-none` instead.
+
+## SASS Changes
+
+The SASS partial file called `_global-header.scss` contains the markup needed to render both the desktop and mobile view of the header components. Sections 4 and 7 contain the collection of rules that render the desktop view at a particular breakpoint. Those media queries need to be altered to reference the new breakpoint.
+
+Locate any instance of `@include media-breakpoint-up(xl)` in the SASS partial and replace the `(xl)` with the breakpoint of your choice.

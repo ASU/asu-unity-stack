@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "1.2.0",
+  "version": "1.2.7",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
-    "@storybook/html": "^6.0.7"
+    "@storybook/html": "^6.1.15"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
 }

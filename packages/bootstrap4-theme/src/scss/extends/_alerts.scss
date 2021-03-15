@@ -18,6 +18,13 @@
   }
   .alert-close {
     flex: 1;
+
+    // Edits close button content (i.e. "X" inside bubble)
+    .close
+    {
+      padding-top: $btn-close-padding-top;
+      padding-bottom: $btn-close-padding-bottom;
+    }
   }
 }
 

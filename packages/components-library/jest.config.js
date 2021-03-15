@@ -1,6 +1,8 @@
-const config = require('../../jest.config');
-// comment
+// jest.config.js
 module.exports = {
-  ...config,
-  roots: [__dirname],
-};
+  verbose: true,
+  preset: "jest-preset-preact",
+  snapshotSerializers: [
+    '@emotion/jest/serializer' /* if needed other snapshotSerializers should go here */
+  ]
+}

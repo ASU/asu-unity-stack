@@ -1,10 +1,9 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
-import { cx, css } from "emotion";
-import { mobileBreak, containerSize } from "../../theme";
 
-const loginStyles = css`
+
+import { cx, css } from "@emotion/css";
+import { breakpointForMin } from "../../theme";
+
+const loginStyles = breakpoint => css`
   .login-status {
     font-size: 0.75rem;
     display: flex;
@@ -33,7 +32,7 @@ const loginStyles = css`
     }
 
 
-    @media (min-width: ${mobileBreak}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       margin-left: .5rem;
     }
   }
