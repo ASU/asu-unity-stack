@@ -7,7 +7,7 @@ storiesOf('Components/Form Fields', module)
   })
 
   .add('Text Inputs', () => `
-<form>
+<form class="uds-form">
 
   <div class="form-group">
     <label for="exampleDefaultInput">Default text input label</label>
@@ -20,7 +20,7 @@ storiesOf('Components/Form Fields', module)
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInput">Disabled text input label</label>
+    <label for="exampleDisabledInput" class="uds-form-label-disabled">Disabled text input label</label>
     <input type="text" class="form-control" id="exampleDisabledInput" placeholder="Helper text" disabled>
   </div>
 
@@ -56,7 +56,7 @@ Should only run and be packaged for storybook preview.
 
   .add('Text inputs, various backgrounds', () => `
 <div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
-<form class="uds-form-white">
+<form class="uds-form uds-form-white">
   <div class="form-group">
     <label for="exampleDefaultInputWhite">Default text input label</label>
     <input type="text" class="form-control" id="exampleDefaultInputWhite" placeholder="Helper text">
@@ -68,7 +68,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInputWhite">Disabled text input label</label>
+    <label for="exampleDisabledInputWhite" class="uds-form-label-disabled">Disabled text input label</label>
     <input type="text" class="form-control" id="exampleDisabledInputWhite" placeholder="Helper text" disabled>
   </div>
 
@@ -95,7 +95,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray1">
+<form class="uds-form uds-form-gray1">
   <div class="form-group">
     <label for="exampleDefaultInputGray1">Default text input label</label>
     <input type="text" class="form-control" id="exampleDefaultInputGray1" placeholder="Helper text">
@@ -107,7 +107,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInputGray1">Disabled text input label</label>
+    <label for="exampleDisabledInputGray1" class="uds-form-label-disabled">Disabled text input label</label>
     <input type="text" class="form-control" id="exampleDisabledInputGray1" placeholder="Helper text" disabled>
   </div>
 
@@ -134,7 +134,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray2">
+<form class="uds-form uds-form-gray2">
   <div class="form-group">
     <label for="exampleDefaultInputGray2">Default text input label</label>
     <input type="text" class="form-control" id="exampleDefaultInputGray2" placeholder="Helper text">
@@ -146,7 +146,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInputGray2">Disabled text input label</label>
+    <label for="exampleDisabledInputGray2" class="uds-form-label-disabled">Disabled text input label</label>
     <input type="text" class="form-control" id="exampleDisabledInputGray2" placeholder="Helper text" disabled>
   </div>
 
@@ -173,7 +173,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray7">
+<form class="uds-form uds-form-gray7">
   <div class="form-group">
     <label for="exampleDefaultInputGray7">Default text input label</label>
     <input type="text" class="form-control" id="exampleDefaultInputGray7" placeholder="Helper text">
@@ -185,7 +185,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleDisabledInputGray7">Disabled text input label</label>
+    <label for="exampleDisabledInputGray7" class="uds-form-label-disabled">Disabled text input label</label>
     <input type="text" class="form-control" id="exampleDisabledInputGray7" placeholder="Helper text" disabled>
   </div>
 
@@ -213,7 +213,7 @@ Should only run and be packaged for storybook preview.
   `)
 
   .add('Textareas', () => `
-<form>
+<form class="uds-form">
 
   <div class="form-group">
     <label for="exampleFormControlTextareaDefault">Default textarea</label>
@@ -226,7 +226,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabled" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -248,7 +248,7 @@ Should only run and be packaged for storybook preview.
   .add('Textareas, multiple backgrounds', () => `
 
 <div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
-<form class="uds-form-white">
+<form class="uds-form uds-form-white">
 
   <div class="form-group">
     <label for="exampleFormControlTextareaDefaultWhite">Default textarea</label>
@@ -261,7 +261,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabledWhite">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabledWhite" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabledWhite" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -281,7 +281,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray1">
+<form class="uds-form uds-form-gray1">
 
   <div class="form-group">
     <label for="exampleFormControlTextareaDefaultGray1">Default textarea</label>
@@ -294,7 +294,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabledGray1">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabledGray1" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabledGray1" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -314,7 +314,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray2">
+<form class="uds-form uds-form-gray2">
 
   <div class="form-group">
     <label for="exampleFormControlTextareaDefaultGray2">Default textarea</label>
@@ -327,7 +327,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabledGray2">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabledGray2" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabledGray2" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -347,7 +347,7 @@ Should only run and be packaged for storybook preview.
 </div>
 
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray7">
+<form class="uds-form uds-form-gray7">
 
   <div class="form-group">
     <label for="exampleFormControlTextareaDefaultGray7">Default textarea</label>
@@ -360,7 +360,7 @@ Should only run and be packaged for storybook preview.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabledGray7">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabledGray7" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabledGray7" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -383,7 +383,7 @@ Should only run and be packaged for storybook preview.
 
 .add('Checkboxes', () => `
 
-<form>
+<form class="uds-form">
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
     <label class="form-check-label" for="loneCheckbox1">I like checkboxes</label>
@@ -455,7 +455,7 @@ Should only run and be packaged for storybook preview.
 `)
 
 .add('Radios', () => `
-<form>
+<form class="uds-form">
   <fieldset>
     <legend>A Group of Radios</legend>
     <div class="form-check">
@@ -548,7 +548,7 @@ Should only run and be packaged for storybook preview.
 .add('Checkboxes and Radios, white background', () => `
 
 <div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
-<form class="uds-form-white">
+<form class="uds-form uds-form-white">
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
@@ -709,7 +709,7 @@ Should only run and be packaged for storybook preview.
 
 .add('Checkboxes and Radios, gray1 background', () => `
 <div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray1">
+<form class="uds-form uds-form-gray1">
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
@@ -870,7 +870,7 @@ Should only run and be packaged for storybook preview.
 
 .add('Checkboxes and Radios, gray2 background', () => `
 <div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray2">
+<form class="uds-form uds-form-gray2">
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
@@ -1031,7 +1031,7 @@ Should only run and be packaged for storybook preview.
 
 .add('Checkboxes and Radios, gray7 (black) background', () => `
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
-<form class="uds-form-gray7">
+<form class="uds-form uds-form-gray7">
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" id="loneCheckbox1" value="option1">
@@ -1191,7 +1191,7 @@ Should only run and be packaged for storybook preview.
 `)
 
 .add('Selects', () => `
-<form>
+<form class="uds-form">
 <div class="form-group">
 <label for="exampleFormControlSelect1">Example select</label>
 <select class="form-control" id="exampleFormControlSelect1">
@@ -1227,7 +1227,7 @@ Should only run and be packaged for storybook preview.
   https://www.24a11y.com/2019/select-your-poison/<a>.
 </div>
 <div class="alert-close">
-  <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+  <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fa fa-times"></i></button>
 </div>
 </div>
 
@@ -1260,7 +1260,7 @@ Should only run and be packaged for storybook preview.
 .add('Kitchen Sink Form', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/">Bootstrap 4 form docs</a></p>
 
-<form>
+<form class="uds-form">
 
   <div class="form-group">
     <label for="myTextInput">Text input</label>
@@ -1272,7 +1272,7 @@ Should only run and be packaged for storybook preview.
     <input type="text" class="form-control form-control-lg" id="myLgInput" placeholder="Helper text" value="Input text">
   </div>
   <div class="form-group">
-    <label for="mySmInput">Small input</label>
+    <label for="mySmInput" class="uds-form-label-disabled">Small input</label>
     <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
   </div>
 
@@ -1346,7 +1346,7 @@ Should only run and be packaged for storybook preview.
 <p>When the form is marked with class "was-validated", browser-based validation
 styles based on input element type attribute are triggered and displayed.
 
-<form class="needs-validation">
+<form class="uds-form needs-validation">
 
   <div class="form-group">
     <label for="myTextInput"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Text input required field</label>
@@ -1367,7 +1367,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="mySmInput">Small input</label>
+    <label for="mySmInput" class="uds-form-label-disabled">Small input</label>
     <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
   </div>
 
@@ -1384,7 +1384,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabled" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -1522,7 +1522,7 @@ styles based on input element type attribute are triggered and displayed.
 <p>When the form is marked with class "was-validated", browser-based validation
 styles based on input element type attribute are triggered and displayed.
 
-<form class="was-validated">
+<form class="uds-form was-validated">
 
   <div class="form-group">
     <label for="myTextInput"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Text input required field</label>
@@ -1543,7 +1543,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="mySmInput">Small input</label>
+    <label for="mySmInput" class="uds-form-label-disabled">Small input</label>
     <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
   </div>
 
@@ -1560,7 +1560,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabled" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -1701,7 +1701,7 @@ styles based on input element type attribute are triggered and displayed.
 styles based on input element type attribute are triggered and displayed.
 
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
-<form class="needs-validation uds-form-gray7">
+<form class="uds-form needs-validation uds-form-gray7">
 
   <div class="form-group">
     <label for="myTextInput"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Text input required field</label>
@@ -1722,7 +1722,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="mySmInput">Small input</label>
+    <label for="mySmInput" class="uds-form-label-disabled">Small input</label>
     <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
   </div>
 
@@ -1739,7 +1739,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabled" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 
@@ -1879,7 +1879,7 @@ styles based on input element type attribute are triggered and displayed.
 styles based on input element type attribute are triggered and displayed.
 
 <div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
-<form class="was-validated uds-form-gray7">
+<form class="uds-form was-validated uds-form-gray7">
 
   <div class="form-group">
     <label for="myTextInput"><span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>Text input required field</label>
@@ -1900,7 +1900,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="mySmInput">Small input</label>
+    <label for="mySmInput" class="uds-form-label-disabled">Small input</label>
     <input type="text" class="form-control form-control-sm" id="mySmInput" placeholder="Helper text" disabled>
   </div>
 
@@ -1917,7 +1917,7 @@ styles based on input element type attribute are triggered and displayed.
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextareaDisabled">Disabled textarea</label>
+    <label for="exampleFormControlTextareaDisabled" class="uds-form-label-disabled">Disabled textarea</label>
     <textarea class="form-control" id="exampleFormControlTextareaDisabled" rows="3" placeholder="I got some content." disabled></textarea>
   </div>
 

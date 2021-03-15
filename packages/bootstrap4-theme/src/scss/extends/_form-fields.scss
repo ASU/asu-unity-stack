@@ -1,6 +1,6 @@
 // ASU Design System Form Field styles without Bootstrap variables to override.
 
-form {
+form.uds-form {
   .form-group {
     margin: 0 0 $uds-size-spacing-4 0;
   }
@@ -15,6 +15,10 @@ form {
       margin-right: 0.25rem;
       margin-bottom: 0.125rem;
       color: $uds-color-font-dark-error;
+    }
+
+    &.uds-form-label-disabled {
+      color: $uds-color-base-gray-5;
     }
   }
 
@@ -31,6 +35,9 @@ form {
     &[readonly] {
       color: $uds-color-base-gray-4;
       background: $uds-color-base-gray-2;
+      &::placeholder {
+        color: $uds-color-base-gray-6;
+      }
     }
   }
 
@@ -124,7 +131,7 @@ form {
       // We can use this little trick here because the label follows the
       // disabled input.
       &:disabled + label {
-        color: $uds-color-base-gray-4;
+        color: $uds-color-base-gray-5;
       }
     }
 
@@ -304,6 +311,23 @@ form {
   }
   &.uds-form-gray2 {
     background-color: $uds-color-base-gray-2;
+    /* Dark Radios and Checkboxes */
+    .form-check {
+      input[type='radio'],
+      input[type='checkbox'] {
+        &:disabled {
+          + label::before {
+            background: $uds-color-base-gray-4;
+            border-color: $uds-color-base-gray-5;
+          }
+        }
+        // We can use this little trick because the label follows the disabled
+        // input.
+        &:disabled + label {
+          color: $uds-color-base-gray-6;
+        }
+      }
+    }
   }
   &.uds-form-gray7 {
     background-color: $uds-color-base-gray-7;
@@ -315,12 +339,19 @@ form {
         color: $uds-color-base-gray-5;
         background: $uds-color-base-gray-6;
         border: 1px solid $uds-color-base-gray-5;
+        &::placeholder {
+          color: $uds-color-base-gray-4;
+        }
       }
     }
 
     /* Dark Labels */
-    label {
+    label,
+    legend {
       color: $uds-color-base-gray-1;
+      &.uds-form-label-disabled {
+        color: $uds-color-base-gray-4;
+      }
     }
     /* Dark Labels, checks, radios and selects, client side, tweaks */
     &.was-validated .form-check-input:valid ~ .form-check-label {
@@ -357,10 +388,6 @@ form {
     select:focus {
       background-color: $uds-color-base-gray-7;
       border: 2px solid $uds-color-base-gray-1 !important;
-      color: $uds-color-base-gray-1;
-    }
-
-    legend {
       color: $uds-color-base-gray-1;
     }
 
