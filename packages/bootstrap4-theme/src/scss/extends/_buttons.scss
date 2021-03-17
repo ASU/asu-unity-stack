@@ -58,7 +58,7 @@
     transform: $uds-component-button-hover-state-transform;
   }
   &:active {
-    transform: scale(.95);
+    transform: $uds-component-button-active-state-transform;
   }
 }
 
