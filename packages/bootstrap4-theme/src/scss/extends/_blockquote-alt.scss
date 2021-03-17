@@ -20,7 +20,7 @@ blockquote:before {
 /*------------------------------------------------------------------
 2. New Blockquote, mobile
 ------------------------------------------------------------------- */
-figure.uds-blockquote {
+.uds-blockquote {
 
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ figure.uds-blockquote {
     }
   }
 
-  figcaption {
+  .citation {
 
     &:before {
       content: '';
@@ -97,7 +97,7 @@ figure.uds-blockquote {
       fill: $uds-color-base-gold;
     }
 
-    figcaption:before {
+    .citation:before {
       background-color: $uds-color-base-gold;
     }
   }
@@ -107,7 +107,7 @@ figure.uds-blockquote {
       fill: $uds-color-base-maroon;
     }
 
-    figcaption:before {
+    .citation:before {
       background-color: $uds-color-base-maroon;
     }
   }
@@ -117,7 +117,7 @@ figure.uds-blockquote {
       fill: $uds-color-base-white;
     }
 
-    figcaption:before {
+    .citation:before {
       background-color: $uds-color-base-white;
     }
   }
@@ -127,7 +127,7 @@ figure.uds-blockquote {
       fill: $uds-color-base-gray-5;
     }
 
-    figcaption:before {
+    .citation:before {
       background-color: $uds-color-base-gray-5;
     }
   }
@@ -140,21 +140,18 @@ figure.uds-blockquote {
 ------------------------------------------------------------------- */
 @include media-breakpoint-up(md) {
 
-  figure.uds-blockquote {
+  .uds-blockquote {
 
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr auto;
-    gap: $uds-size-spacing-4 $uds-size-spacing-3;
+    gap: $uds-size-spacing-3;
 
     svg {
-      grid-column: 1 / span 1;
+      grid-column: 1;
     }
 
     blockquote {
-      grid-column: 2 / span 1;
-      grid-row: 1 / span 1;
-
+      grid-column: 2;
       margin-top: 0;
 
       p:last-child {
@@ -166,13 +163,8 @@ figure.uds-blockquote {
       }
     }
 
-    figcaption {
-      grid-column: 2 / span 1;
-      grid-row: 2 / span 1;
-
-      &:before {
-        display: none;
-      }
+    .citation:before {
+      display: none;
     }
 
     &.with-image {
@@ -186,17 +178,11 @@ figure.uds-blockquote {
     &.with-image.reversed {
 
       img {
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 2;
+        grid-column: 2;
       }
 
       blockquote {
-        grid-column: 1 / span 1;
-      }
-
-      figcaption {
-        grid-column: 1 / span 1;
-        grid-row: 2 / span 1;
+        grid-column: 1;
       }
     }
   }
