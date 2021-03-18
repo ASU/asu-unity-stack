@@ -22,8 +22,13 @@
     // Edits close button content (i.e. "X" inside bubble)
     .close
     {
-      padding-top: $btn-close-padding-top;
-      padding-bottom: $btn-close-padding-bottom;
+      opacity: $uds-component-button-close-opacity;
+      font-size: 1rem;
+
+      &:hover
+      {
+        opacity: $uds-component-button-close-opacity;
+      }
     }
   }
 }

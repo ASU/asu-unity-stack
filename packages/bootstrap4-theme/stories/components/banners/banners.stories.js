@@ -25,7 +25,7 @@ storiesOf('Components/Banners', module)
       <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
   `)
@@ -47,7 +47,7 @@ storiesOf('Components/Banners', module)
       <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
   `)
@@ -69,7 +69,7 @@ storiesOf('Components/Banners', module)
       <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
   `)
@@ -91,7 +91,7 @@ storiesOf('Components/Banners', module)
       <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
   `)
@@ -113,7 +113,7 @@ storiesOf('Components/Banners', module)
       <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-gold">FAQ Page</a>
     </div>
     <div class="banner-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
 `)

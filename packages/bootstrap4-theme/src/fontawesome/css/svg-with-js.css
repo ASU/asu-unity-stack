@@ -9,8 +9,7 @@ svg:not(:root).svg-inline--fa {
   display: inline-block;
   font-size: inherit;
   height: 1em;
-  overflow: visible;
-  vertical-align: -.125em; }
+  overflow: visible; }
   .svg-inline--fa.fa-lg {
     vertical-align: -.225em; }
   .svg-inline--fa.fa-w-1 {
