@@ -7,8 +7,3 @@ addParameters({
   },
   ally: {},
 });
-
-import { init } from "../src/";
-global.AsuCookieConsent = {
-  init,
-};

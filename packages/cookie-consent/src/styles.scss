@@ -1,0 +1,134 @@
+// react-cookie-consent package provides for its own style overrides. In this
+// file we've got those bits that can't be applied using that method as well as
+// bits for which we have uds design tokens.
+
+// Import design tokens.
+@import "../../design-tokens/build/scss/_variables.scss";
+
+.uds-cookie-consent-component {
+  position: fixed;
+  bottom: $uds-size-spacing-4;
+  max-width: 1200px;
+  margin-right: $uds-size-spacing-2;
+  // 676 + 46 for additional spacing to adjust margins at just the right time.
+  @media (max-width: 722px) {
+    margin-left: $uds-size-spacing-2;
+    margin-right: $uds-size-spacing-4;
+  }
+  // Hide when closed using ease-out transition.
+  &.ease-closed {
+    transition-timing-function: ease-out;
+    transition: 0.2s;
+    /* Hide thing by pushing it outside window .*/
+    transform: translateY(130%);
+  }
+  &.ease-closed-hidden {
+    display: none;
+    visibility: hidden;
+  }
+  .uds-cookie-consent-container {
+    background: $uds-color-base-gray-2;
+    border: 1px solid $uds-color-base-gray-3;
+    padding: $uds-size-spacing-2 $uds-size-spacing-3 $uds-size-spacing-3
+      $uds-size-spacing-3;
+    .uds-cookie-consent-btn {
+      color: $uds-color-base-white;
+      background: $uds-color-base-maroon;
+      font-family: $uds-font-family-base;
+      text-decoration: none;
+      font-weight: $uds-font-weight-bold;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      user-select: none;
+      margin: $uds-size-spacing-2 $uds-size-spacing-0 $uds-size-spacing-0
+        $uds-size-spacing-0;
+      line-height: $uds-size-spacing-2;
+      transition: 0.03s ease-in-out;
+      &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
+      &:hover {
+        transform: $uds-component-button-hover-state-transform;
+      }
+      &:active {
+        transform: $uds-component-button-active-state-transform;
+      }
+    }
+
+    .uds-cookie-consent-content {
+      font-family: $uds-font-family-base;
+      color: $uds-color-font-dark-base;
+      font-weight: $uds-font-weight-light;
+    }
+    .uds-cookie-consent-faux-close-btn {
+      position: relative;
+      top: -0.25rem;
+      right: -0.75rem;
+      // Design token values copied from bootstrap4-theme extends/_buttons.scss.
+      // Didn't need all the rules since we're working without BS4 classes.
+      border-radius: $uds-component-button-border-radius;
+      line-height: $uds-component-button-line-height;
+      transition: $uds-component-button-transition;
+      padding: $uds-size-spacing-half $uds-size-spacing-half;
+      width: $uds-size-spacing-4;
+      height: $uds-size-spacing-4;
+      border: solid 1px $uds-color-base-gray-3;
+      background: $uds-color-background-white;
+      color: $uds-color-base-gray-7;
+      font-size: $uds-size-spacing-2;
+      &:hover {
+        transform: $uds-component-button-hover-state-transform;
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+      &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
+    }
+
+    // Fade in
+    -webkit-animation: fadein 1s; // Safari, Chrome and Opera > 12.1
+    -moz-animation: fadein 1s; // Firefox < 16
+    -ms-animation: fadein 1s; // Internet Explorer
+    -o-animation: fadein 1s; // Opera < 12.1
+    animation: fadein 1s;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    // Firefox < 16
+    @-moz-keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    // Safari, Chrome and Opera > 12.1
+    @-webkit-keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    // Internet Explorer
+    @-ms-keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}

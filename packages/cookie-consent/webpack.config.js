@@ -1,17 +1,51 @@
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const TerserPlugin = require("terser-webpack-plugin");
-//const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = [];
+
 const shared = {
+  context: __dirname,
   entry: {
-    "cookie-consent": "./index.js",
+    "cookie-consent": "./src/index.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["preact"],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
+    ],
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "react": "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      // Must be below test-utils
+    },
   },
-  context: path.join(__dirname, "src"),
 };
 
 // development bundle config
@@ -24,32 +58,6 @@ module.exports.push({
     libraryTarget: "umd",
     library: "AsuCookieConsent",
     umdNamedDefine: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {},
-          },
-        ],
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              import: true,
-            },
-          },
-        ],
-      },
-    ],
   },
 });
 
@@ -75,36 +83,48 @@ module.exports.push({
       new CssMinimizerPlugin(),
     ],
   },
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {},
-          },
-        ],
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "cookie-consent.css",
-            },
-          },
-          "extract-loader",
-          {
-            loader: "css-loader",
-            options: {
-              import: true,
-            },
-          },
-        ],
-      },
-    ],
+  externals: {
+    "preact": {
+      commonjs: "preact",
+      commonjs2: "preact",
+      amd: "preact",
+      root: "preact",
+    },
+    "emotion": {
+      commonjs: "@emotion/css",
+      commonjs2: "@emotion/css",
+      amd: "@emotion/css",
+      root: "@emotion/css",
+    },
+    "prop-types": {
+      commonjs: "prop-types",
+      commonjs2: "prop-types",
+      amd: "propTypes",
+      root: "propTypes",
+    },
+  },
+});
+
+/** Vendor bundle config */
+module.exports.push({
+  context: shared.context,
+  entry: {
+    vendor: ["./src/vendor.js"],
+  },
+  mode: "production",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    libraryTarget: "umd",
+    umdNamedDefine: true,
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      "react": "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      // Must be below test-utils
+    },
   },
 });
