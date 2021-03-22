@@ -18,14 +18,14 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign Out</a>
+                <a class="signout" href="#">Sign out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
@@ -85,8 +85,8 @@ storiesOf('Components/Global Header', module)
                       </a>
                       <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
                         <div class="dropdown-col">
-                          <a class="dropdown-item" href="#">Navigation Link</a>
-                          <a class="dropdown-item" href="#">Another Link</a>
+                          <a class="dropdown-item" href="#">Navigation link</a>
+                          <a class="dropdown-item" href="#">Another link</a>
                           <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
                         </div>
                       </div>
@@ -95,7 +95,7 @@ storiesOf('Components/Global Header', module)
                   </div><!-- end .navbar-nav -->
 
                   <form class="navbar-site-buttons form-inline">
-                    <a href="#" class="btn btn-md btn-maroon">Call to Action</a>
+                    <a href="#" class="btn btn-md btn-maroon">Call to action</a>
                   </form>
 
                   <div class="navbar-mobile-footer">
@@ -110,11 +110,11 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <div class="nav-link login-status">
-                        Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
+                        Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign out</a>
                       </div>
                     </div>
                   </div>
@@ -144,13 +144,13 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <div class="nav-link login-status">
-                <a class="signin" href="#">Sign In</a>
+                <a class="signin" href="#">Sign in</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
@@ -213,7 +213,7 @@ storiesOf('Components/Global Header', module)
                           <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                           <a class="dropdown-item" href="#">Dapibus lorem</a>
                           <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
-                          <a href="#" class="btn btn-sm btn-dark">CTA Action 2</a>
+                          <a href="#" class="btn btn-sm btn-dark">CTA action 2</a>
                         </div>
                       </div>
                     </div>
@@ -325,8 +325,8 @@ storiesOf('Components/Global Header', module)
                           </div>
                           <div class="row with-buttons">
                             <div class="col-lg-12">
-                              <a href="#" class="btn btn-sm btn-gold">Mega Menu CTA 1</a>
-                              <a href="#" class="btn btn-sm btn-maroon">Mega Menu CTA 2</a>
+                              <a href="#" class="btn btn-sm btn-gold">Mega menu CTA 1</a>
+                              <a href="#" class="btn btn-sm btn-maroon">Mega menu CTA 2</a>
                             </div>
                           </div>
 
@@ -346,10 +346,10 @@ storiesOf('Components/Global Header', module)
                           <div class="row">
                             <div class="col-lg">
                                 <h3>Column One</h3>
-                                <a class="dropdown-item" href="#">Navigation Link</a>
+                                <a class="dropdown-item" href="#">Navigation link</a>
                                 <a class="dropdown-item" href="#">Second link in the list</a>
                                 <a class="dropdown-item" href="#">Here is link number three</a>
-                                <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
+                                <a href="#" class="btn btn-sm btn-dark">CTA in column</a>
                             </div>
                             <div class="col-lg">
                               <h3>Column Two</h3>
@@ -404,9 +404,9 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
@@ -437,14 +437,14 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign Out</a>
+                <a class="signout" href="#">Sign out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
@@ -484,7 +484,7 @@ storiesOf('Components/Global Header', module)
 
               <div class="navbar-container no-links">
 
-                <div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
+                <div class="title subdomain-name"><a href="#">Landing page title</a></div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
 
@@ -500,9 +500,9 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
@@ -533,11 +533,11 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <div class="nav-link login-status">
                 <a class="signin" href="#">Sign in</a>
               </div>
@@ -579,13 +579,13 @@ storiesOf('Components/Global Header', module)
 
               <div class="navbar-container no-links">
 
-                <div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
+                <div class="title subdomain-name"><a href="#">Landing page title</a></div>
 
                 <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
 
                   <form class="navbar-site-buttons form-inline">
-                    <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
-                    <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
+                    <a href="#" class="btn btn-md btn-maroon">CTA button 1</a>
+                    <a href="#" class="btn btn-md btn-dark">CTA button 2</a>
                   </form>
 
                   <div class="navbar-mobile-footer">
@@ -600,9 +600,9 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
@@ -633,14 +633,14 @@ storiesOf('Components/Global Header', module)
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="Top">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign Out</a>
+                <a class="signout" href="#">Sign out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
@@ -705,8 +705,8 @@ storiesOf('Components/Global Header', module)
                     </a>
                     <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
                       <div class="dropdown-col">
-                        <a class="dropdown-item" href="#">Navigation Link</a>
-                        <a class="dropdown-item" href="#">Another Link</a>
+                        <a class="dropdown-item" href="#">Navigation link</a>
+                        <a class="dropdown-item" href="#">Another link</a>
                         <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
                       </div>
                     </div>
@@ -726,9 +726,9 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
