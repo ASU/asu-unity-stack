@@ -3,8 +3,10 @@ ASU-branded implementation of react-cookie-consent npm library.
 
 ## Quickstart Guide
 
-IMPORTANT: Installation instructions have been updated since the 1.0.4 release.
-Please review if you are updating from version 1.0.4 or earlier.
+BREAKING CHANGE: Installation instructions have been updated since the 1.0.4
+release. Please review install steps if you are updating from version 1.0.4 or
+earlier. Note the inclusion of the vendor.js bundle and that the component now
+requires a container tag in the HTML.
 
 #### Install
 
