@@ -168,6 +168,12 @@ module.exports = generateHTML = packages => `
           <p><a class="btn btn-maroon btn-medium" href="https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/">View the document</a></p>
         </div>
 
+        <div class="col-md-6 pb-8">
+          <h2>ASU Header</h2>
+          <p>Guidelines, requirements and best practices for using the ASU Branded Header in your site.</p>
+          <p><a class="btn btn-maroon btn-medium" href="asuheader">View the guide</a></p>
+        </div>
+
         ${packages.map(generateRow).join("")}
 
       </div>
