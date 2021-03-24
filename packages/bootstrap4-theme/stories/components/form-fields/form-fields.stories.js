@@ -40,7 +40,7 @@ storiesOf('Components/Form Fields', module)
     <label for="exampleTrailingIconInput">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
       <input type="text" class="form-control" id="exampleTrailingIconInput" placeholder="Helper text">
-      <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
+      <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
 
@@ -88,7 +88,7 @@ Should only run and be packaged for storybook preview.
     <label for="exampleTrailingIconInputWhite">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
       <input type="text" class="form-control" id="exampleTrailingIconInputWhite" placeholder="Helper text">
-      <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
+      <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
 </form>
@@ -127,7 +127,7 @@ Should only run and be packaged for storybook preview.
     <label for="exampleTrailingIconInputGray1">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
       <input type="text" class="form-control" id="exampleTrailingIconInputGray1" placeholder="Helper text">
-      <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
+      <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
 </form>
@@ -166,7 +166,7 @@ Should only run and be packaged for storybook preview.
     <label for="exampleTrailingIconInputGray2">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
       <input type="text" class="form-control" id="exampleTrailingIconInputGray2" placeholder="Helper text">
-      <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
+      <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
 </form>
@@ -205,7 +205,7 @@ Should only run and be packaged for storybook preview.
     <label for="exampleTrailingIconInputGray7">Trailing icon text input label</label>
     <div class="input-group input-group-trailing-icon">
       <input type="text" class="form-control" id="exampleTrailingIconInputGray7" placeholder="Helper text">
-      <span class="fa fa-icon fa-calendar" aria-hidden="true"></span>
+      <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
     </div>
   </div>
 </form>

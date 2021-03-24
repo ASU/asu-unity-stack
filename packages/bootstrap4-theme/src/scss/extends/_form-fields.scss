@@ -18,7 +18,7 @@ form.uds-form {
     }
 
     &.uds-form-label-disabled {
-      color: $uds-color-base-gray-5;
+      color: $uds-color-base-gray-6;
     }
   }
 
@@ -29,6 +29,10 @@ form.uds-form {
   .form-control {
     color: $uds-color-base-gray-7;
     border: 1px solid $uds-color-base-gray-5;
+
+    &.is-invalid::placeholder {
+      color: $uds-color-base-gray-7;
+    }
 
     /* Disabled input */
     &:disabled,
@@ -297,7 +301,7 @@ form.uds-form {
       position: absolute;
       right: 0.75rem;
       top: 0.75rem;
-      color: $uds-color-base-gray-4;
+      color: $uds-color-base-gray-7;
     }
   }
 
@@ -333,6 +337,13 @@ form.uds-form {
     background-color: $uds-color-base-gray-7;
 
     .form-control {
+      &::placeholder {
+        color: $uds-color-base-gray-5;
+      }
+      &.is-invalid::placeholder {
+        color: $uds-color-base-gray-1;
+      }
+
       /* Disabled input */
       &:disabled,
       &[readonly] {
@@ -483,6 +494,12 @@ form.uds-form {
         // manipulation.
         color: $uds-color-base-green;
         margin-right: $uds-size-spacing-1;
+      }
+    }
+
+    .input-group-trailing-icon {
+      svg {
+        color: $uds-color-base-gray-1;
       }
     }
   }
