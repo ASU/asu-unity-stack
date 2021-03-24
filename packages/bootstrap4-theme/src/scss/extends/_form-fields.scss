@@ -338,7 +338,7 @@ form.uds-form {
 
     .form-control {
       &::placeholder {
-        color: $uds-color-base-gray-5;
+        color: $uds-color-base-gray-4;
       }
       &.is-invalid::placeholder {
         color: $uds-color-base-gray-1;
