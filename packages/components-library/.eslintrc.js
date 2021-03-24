@@ -8,10 +8,11 @@ module.exports = {
   rules: {
     // "react/jsx-uses-react": "error",
     // "react/jsx-uses-vars": "error",
-    "no-unused-vars": "warn",
-    "no-console": "warn",
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "(Fragment|z)", "ignoreRestSiblings": true, "vars": "local"}],
+    "no-console": ["warn", { allow: ["warn", "error"] }],
     "no-undef": "warn",
     "no-useless-escape": "off",
+    "no-prototype-builtins": "off",
     // "prettier/prettier": "error",
   },
   settings: {

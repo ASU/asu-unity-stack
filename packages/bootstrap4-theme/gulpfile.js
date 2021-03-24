@@ -22,20 +22,20 @@ const paths = cfg.paths;
 // Run:
 // gulp sass
 // Compiles SCSS files into CSS
-gulp.task('sass', function() {
+gulp.task('sass', function () {
   const stream = gulp
     .src(paths.sass + '/bootstrap-asu.scss')
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     // .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true }))
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([ autoprefixer() ]))
     // .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.css));
   return stream;
@@ -43,7 +43,7 @@ gulp.task('sass', function() {
 
 // Run:
 // gulp eslint
-gulp.task('eslint', function() {
+gulp.task('eslint', function () {
   return gulp
     .src(`${paths.js}/*.js`)
     .pipe(eslint())
@@ -54,15 +54,15 @@ gulp.task('eslint', function() {
 // Run:
 // gulp sasslint
 // Lint SCSS files
-gulp.task('sasslint', function() {
+gulp.task('sasslint', function () {
   const stream = gulp
     .src(paths.sass + '/**/*.scss')
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     .pipe(sassLint())
@@ -74,24 +74,24 @@ gulp.task('sasslint', function() {
 // Run:
 // gulp imagemin
 // Running image optimizing task
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
   return gulp
     .src(`${paths.imgsrc}/**`)
     .pipe(imagemin())
     .pipe(gulp.dest(paths.img));
 });
 
-gulp.task('minifycss', function() {
+gulp.task('minifycss', function () {
   return gulp
     .src(`${paths.css}/bootstrap-asu.css`)
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(cleanCSS({ compatibility: '*' }))
     .pipe(
       plumber({
-        errorHandler: function(err) {
+        errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        },
+        }
       })
     )
     .pipe(rename({ suffix: '.min' }))
@@ -99,15 +99,15 @@ gulp.task('minifycss', function() {
     .pipe(gulp.dest(paths.css));
 });
 
-gulp.task('styles', function(callback) {
+gulp.task('styles', function (callback) {
   gulp.series('sass', 'minifycss')(callback);
 });
 
 // Run:
 // gulp scripts.
 // Uglifies and concat all JS files into one
-gulp.task('scripts', function() {
-  const scripts = ['src/js/_license.js'];
+gulp.task('scripts', function () {
+  const scripts = [ 'src/js/_license.js' ];
   gulp
     .src(scripts, { allowEmpty: true })
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -125,16 +125,16 @@ gulp.task('scripts', function() {
 });
 
 // Copy all master assets from the design-tokens library
-gulp.task('copy-assets', function(done) {
+gulp.task('copy-assets', function (done) {
   // Copy the master ASU images from the design-token
   gulp
     .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/img/**/*`)
     .pipe(gulp.dest('./src/img'));
 
   // Copy font-awesome from design-token into src/
-  gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/**/*`)
-    .pipe(gulp.dest('./src/assets/fontawesome'));
+  /* gulp
+    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/
+    .pipe(gulp.dest('./src/assets/fontawesome'));**/
 
   // Copy the design-tokens SASS variables into src/
   gulp
@@ -145,10 +145,10 @@ gulp.task('copy-assets', function(done) {
 });
 
 // Copy assets into dist/
-gulp.task('copy-dist-assets', function(done) {
+gulp.task('copy-dist-assets', function (done) {
   // Copy font-awesome to dist/
   gulp
-    .src(`./src/assets/fontawesome/**/*`)
+    .src('./src/assets/fontawesome/**/*')
     .pipe(gulp.dest(paths.dist + '/assets/fontawesome'));
 
   // Copy Bootstrap's Scripts to dist/
@@ -158,8 +158,8 @@ gulp.task('copy-dist-assets', function(done) {
 });
 
 // Deleting any file inside the /dist folder
-gulp.task('clean-dist', function() {
-  return del([paths.dist + '/**']);
+gulp.task('clean-dist', function () {
+  return del([ paths.dist + '/**' ]);
 });
 
 // Run
@@ -167,7 +167,13 @@ gulp.task('clean-dist', function() {
 // Compiles the styles, scripts, and assets into the dist folder
 gulp.task(
   'compile',
-  gulp.series('clean-dist', 'copy-assets', 'styles', 'imagemin', 'copy-dist-assets')
+  gulp.series(
+    'clean-dist',
+    'copy-assets',
+    'styles',
+    'imagemin',
+    'copy-dist-assets'
+  )
 );
 
 // Run

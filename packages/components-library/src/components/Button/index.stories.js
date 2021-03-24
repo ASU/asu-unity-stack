@@ -1,6 +1,6 @@
-/** @jsx h */
 
-import { h } from "preact";
+
+
 import { action } from "@storybook/addon-actions";
 
 import { Button } from ".";
@@ -9,10 +9,10 @@ export default {
   component: Button,
   title: "Button",
 };
-
+/*
 export const base = () => (
   <Button onclick={action("clicked")}>Base button</Button>
-);
+);*/
 
 export const gold = () => (
   <Button gold medium onclick={action("clicked")}>

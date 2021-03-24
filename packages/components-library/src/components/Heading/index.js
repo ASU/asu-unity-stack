@@ -1,6 +1,4 @@
-/** @jsx h */
 /* eslint-disable react/prop-types */
-import { h } from "preact";
 import * as S from "./styles";
 import PropTypes from "prop-types";
 
@@ -17,6 +15,7 @@ const Heading = ({ type, ...props }) => {
 
 Heading.propTypes = {
   type: PropTypes.string.isRequired,
+  children: PropTypes.string
 };
 
 Heading.defaultProps = {};

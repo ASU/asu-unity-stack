@@ -1,9 +1,9 @@
 {
   "name": "@asu-design-system/component-forms",
-  "version": "1.0.24",
+  "version": "1.0.28",
   "description": "ASU Web Standards-compliant Preact forms",
-  "main": "src/index.js",
-  "module": "esm/index.js",
+  "main": "dist/component-forms.js",
+  "module": "src/index.js",
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
@@ -18,19 +18,21 @@
   "private": false,
   "scripts": {
     "clean": "yarn shx rm -rf ./dist",
-    "build": "webpack --mode=production --progress",
+    "build": "webpack --progress",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
     "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@storybook/preact": "^6.1.15"
+  },
   "dependencies": {
     "@asu-design-system/components-library": "^1.0.19",
     "@asu-design-system/design-tokens": "^1.1.0",
-    "emotion": "^10.0.27",
+    "emotion": "^11.0.0",
     "formik": "^2.1.5",
-    "preact": "^10.4.4",
+    "preact": "^10.5.10",
     "prop-types": "^15.7.2"
   },
   "jest": {

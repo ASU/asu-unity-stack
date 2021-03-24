@@ -1,113 +1,113 @@
-/** @jsx h */
-/* eslint-disable react/prop-types */
-import { h } from "preact";
+/* eslint-disable no-unused-vars */
+import { cx } from "@emotion/css";
+import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
-import NavItem from "./NavItem";
+import { Button } from "../Button";
 import * as S from "./styles";
 
-const DropNav = ({
-  item,
-  submenus,
-  mobileWidth,
-  width,
-  setFocus,
-  pIndex,
-  isOpen,
-  setOpen,
-  topRef,
-  hasFocus,
-  ...props
-}) => {
-  const toggle = index => {
-    if (isOpen) {
-      setOpen(-1);
-    } else {
-      setOpen(index);
-    }
-  };
+const DropNav = forwardRef(
+  (
+    {
+      text,
+      setFocus,
+      pIndex,
+      isOpen,
+      setOpen,
+      children,
+      mega,
+      buttons,
+      href, // destructure, but not used because dropdown onclick toggle shouldn't have href prop
+      // If top level item should be a link, use the HoverDropNav
+      mobile,
+      selected,
+      ...props
+    },
+    ref
+  ) => {
+    const toggle = index => {
+      if (isOpen) {
+        setOpen(-1);
+      } else {
+        setOpen(index);
+      }
+    };
 
-  const navOpen = index => {
-    setOpen(index);
-  };
+    return (
+      <li class={isOpen ? "dropdown-open" : ""}>
+        <a
+          {...props}
+          class={cx(
+            selected ? "nav-item-selected" : "",
+            props.class ? props.class : ""
+          )}
+          role="button"
+          aria-expanded={isOpen}
+          onMouseDown={e => {
+            e.preventDefault();
+            toggle(pIndex);
+            //setFocus([pIndex, -1, -1]);
+          }}
+          onKeyDown={e => {
+            const code = e.keyCode;
 
-  return (
-    <li>
-      <a
-        target={item.target}
-        title={item.title ? item.title : item.text}
-        role="navigation"
-        onMouseDown={e => {
-          e.preventDefault();
-          toggle(pIndex);
-          setFocus([pIndex, -1, -1]);
-        }}
-        onFocus={e => {
-          navOpen(pIndex);
-          setFocus([pIndex, -1, -1]);
-        }}
-        tabIndex="0"
-        ref={topRef}
-      >
-        {item.text} <S.IconChevronDown sr={item.text} />
-      </a>
+            // open menu upon 'enter' or 'space' keypress
+            if (code == 32 || code == 13) {
+              toggle(pIndex);
+            }
+          }}
+          onFocus={e => {
+            //navOpen(pIndex);
+            setFocus([pIndex, -1, -1]);
+          }}
+          onClick={e => {}}
+          tabIndex="0"
+          ref={ref}
+          data-onclick-identifier = {"toggle-dropdown." + pIndex}
+          data-onclick-dropdown-open = "false"
+        >
+          {text}{" "}
+          <S.IconChevronDown sr={text} className={isOpen ? "open" : ""} />
+        </a>
 
-      <S.DdMenu {...{ open: isOpen }}>
-        {submenus.map((sub, index) => {
-          return (
-            <ul>
-              {sub.map((item, ind) => {
-                return (
-                  <NavItem
-                    onFocus={() => {
-                      setFocus([pIndex, index, ind]);
-                      navOpen(pIndex);
-                    }}
-                    itemRef={submenus[index][ind].ref}
-                    type={item.hasOwnProperty("type") ? item.type : undefined}
-                    color={
-                      item.hasOwnProperty("color") ? item.color : undefined
-                    }
-                    class={
-                      item.hasOwnProperty("class") ? item.class : undefined
-                    }
-                    href={item.hasOwnProperty("href") ? item.href : undefined}
-                    text={item.text}
-                  />
-                );
-              })}
-            </ul>
-          );
-        })}
-      </S.DdMenu>
-    </li>
-  );
-};
+        <S.DropdownContainer
+          {...{ open: isOpen }}
+          class={mega ? "mega" : ""}
+          {...(buttons
+            ? {
+                buttons: buttons.map((item, index) => {
+                  return (
+                    <Button
+                      href={item.href}
+                      {...(item.color ? { [item.color]: true } : {})}
+                      medium
+                    >
+                      {item.text}
+                    </Button>
+                  );
+                }),
+              }
+            : {})}
+        >
+          {children}
+        </S.DropdownContainer>
+      </li>
+    );
+  }
+);
 
 DropNav.propTypes = {
-  setFocus: PropTypes.func,
-  location: PropTypes.array, // Array representation of the item's location in the Nav
-  item: PropTypes.object.isRequired, // top level nav item
-  submenus: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired, // submenus
-  topRef: PropTypes.oneOfType([
-    // ref to actual DOM node of nav item
-    // https://stackoverflow.com/questions/48007326/what-is-the-correct-proptype-for-a-ref-in-react
-    // Either a function
-    PropTypes.func,
-    // Or the instance of a DOM native element (see the note about SSR)
-    PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
-  ]),
-  mobileWidth: PropTypes.number,
-  width: PropTypes.number,
-  pIndex: PropTypes.number.isRequired,
+  setFocus: PropTypes.func.isRequired, // state hook for setting focus
+  pIndex: PropTypes.number.isRequired, // top level parent index
   isOpen: PropTypes.bool,
-  setOpen: PropTypes.func,
-  hasFocus: PropTypes.bool,
+  setOpen: PropTypes.func.isRequired,
+  buttons: PropTypes.arrayOf(PropTypes.object), // CTA buttons which will be shown at bottom of dropdown nav
+  mega: PropTypes.bool,
+  text: PropTypes.string,
+  mobile: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 DropNav.defaultProps = {
-  menus: [],
-  top: false,
-  mobileWidth: 992,
   isOpen: false,
 };
 

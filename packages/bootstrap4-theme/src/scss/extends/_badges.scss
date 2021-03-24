@@ -1,0 +1,20 @@
+/*------------------------------------------------------------------
+Cards - Table of Contents
+
+1. Basic badge styles
+2. Badges within cards
+-------------------------------------------------------------------*/
+
+.badge {}
+
+
+/*------------------------------------------------------------------
+1. Basic Cards
+--------------------------------------------------------------------*/
+
+.card .badge {
+  font-size: $uds-component-button-small-font-size;
+  padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small;
+  margin-top: 8px;
+  line-height: 1.5;
+}

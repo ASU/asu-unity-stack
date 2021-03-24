@@ -1,10 +1,11 @@
 {
   "plugins": [
+    "@emotion",
     [
       "@babel/plugin-transform-react-jsx",
       {
-        "pragma": "h",
-        "pragmaFrag": "Fragment"
+        "runtime": "automatic", // defaults to classic (classic == createElement calls)
+        "importSource": "preact" // NOT preact/jsx-runtime
       }
     ]
   ]
