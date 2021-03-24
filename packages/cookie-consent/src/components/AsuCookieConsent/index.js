@@ -95,7 +95,7 @@ const AsuCookieConsent = ({
         >
           <button
             className="uds-cookie-consent-faux-close-btn"
-            aria-label="Close cookie consent"
+            aria-label="Close"
             style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
             onClick={distantClick}
           >
@@ -106,8 +106,6 @@ const AsuCookieConsent = ({
           this site, you are giving us your consent to do this. Learn more about
           cookies on ASU websites in our{" "}
           <a
-            aria-label="learn more about cookies"
-            tabIndex="0"
             target="_blank"
             rel="noreferrer"
             href="https://www.asu.edu/privacy#cookies"
