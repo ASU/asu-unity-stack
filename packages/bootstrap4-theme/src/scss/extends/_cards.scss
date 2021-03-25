@@ -567,10 +567,6 @@ Cards - Table of Contents
 .accordion {
   .card.card-foldable {
     border-bottom: 1px solid $uds-color-base-gray-3;
-
-    &+.card-foldable {
-      margin-top: $uds-size-spacing-3;
-    }
   }
 }
 
