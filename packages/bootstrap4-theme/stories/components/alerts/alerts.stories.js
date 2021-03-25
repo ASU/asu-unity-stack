@@ -17,7 +17,7 @@ storiesOf('Components/Alerts', module)
       Bootstrap 4 .alert-warning class</a>.
     </div>
     <div class="alert-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
 
@@ -31,7 +31,7 @@ storiesOf('Components/Alerts', module)
       Bootstrap 4 .alert-success class</a>.
     </div>
     <div class="alert-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
 
@@ -45,7 +45,7 @@ storiesOf('Components/Alerts', module)
       Bootstrap 4 .alert-info class</a>.
     </div>
     <div class="alert-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
 
@@ -59,7 +59,7 @@ storiesOf('Components/Alerts', module)
       Bootstrap 4 .alert-danger class</a>.
     </div>
     <div class="alert-close">
-      <button type="button" class="btn btn-circle btn-circle-alt-white close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';">x</button>
+      <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
 

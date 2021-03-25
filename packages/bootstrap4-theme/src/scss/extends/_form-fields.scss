@@ -1,0 +1,506 @@
+// ASU Design System Form Field styles without Bootstrap variables to override.
+
+form.uds-form {
+  .form-group {
+    margin: 0 0 $uds-size-spacing-4 0;
+  }
+
+  /* Labels */
+  label,
+  legend {
+    font-size: $uds-size-spacing-2;
+    // Labels for required fields.
+    svg.uds-field-required {
+      font-size: $uds-size-spacing-1;
+      margin-right: 0.25rem;
+      margin-bottom: 0.125rem;
+      color: $uds-color-font-dark-error;
+    }
+
+    &.uds-form-label-disabled {
+      color: $uds-color-base-gray-6;
+    }
+  }
+
+  /* Helper text */
+  // color set in component's Bootstrap variable overrides.
+
+  /* Input text */
+  .form-control {
+    color: $uds-color-base-gray-7;
+    border: 1px solid $uds-color-base-gray-5;
+
+    &.is-invalid::placeholder {
+      color: $uds-color-base-gray-7;
+    }
+
+    /* Disabled input */
+    &:disabled,
+    &[readonly] {
+      color: $uds-color-base-gray-4;
+      background: $uds-color-base-gray-2;
+      &::placeholder {
+        color: $uds-color-base-gray-6;
+      }
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    // border-radius set in component's Bootstrap variable overrides.
+    // height set in component's Bootstrap variable overrides.
+    // padding set in component's Bootstrap variable overrides.
+    padding-left: $uds-size-spacing-2 !important;
+  }
+
+  /* Input focus */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 2px solid $uds-color-base-gray-7 !important;
+    border-radius: none;
+  }
+
+  /* Radios and Checkboxes - For more flexible control, this is a departure
+    from Bootstrap 4 custom Checkboxes and Radios as described in:
+    https://getbootstrap.com/docs/4.0/components/forms/#checkboxes-and-radios-1
+    and has us instead managing these ourselves. */
+  // Fieldset has group's margin attached like .field-group, instead of
+  // it being on .form-check.
+  fieldset {
+    margin: 0 0 $uds-size-spacing-4 0;
+
+    .form-check {
+      margin: $uds-size-spacing-2 0;
+    }
+  }
+  .form-check {
+    margin: 0 0 $uds-size-spacing-4 0;
+
+    input[type='radio'],
+    input[type='checkbox'] {
+      opacity: 0;
+    }
+
+    // Shared styling for Radios and Checkboxes.
+    input[type='radio'],
+    input[type='checkbox'] {
+      + label {
+        font-weight: normal;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: $uds-size-spacing-2;
+
+        // Outer border.
+        &::before {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          left: -2.25rem;
+          border: 1px solid $uds-color-base-gray-5;
+          width: $uds-size-spacing-3;
+          height: $uds-size-spacing-3;
+          background: white;
+        }
+        // Inner positioning for checked.
+        &::after {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          left: -1.875rem;
+          top: 0.375rem;
+          width: 0.75rem;
+          height: 0.75rem;
+        }
+      }
+      &:checked {
+        + label::after {
+          background: black;
+        }
+      }
+      &:focus {
+        + label::before {
+          border: 2px solid $uds-color-base-gray-7;
+        }
+      }
+      &:disabled {
+        + label::before {
+          background: $uds-color-base-gray-2;
+        }
+      }
+      // We can use this little trick here because the label follows the
+      // disabled input.
+      &:disabled + label {
+        color: $uds-color-base-gray-5;
+      }
+    }
+
+    // Radios only: make 'em round.
+    input[type='radio'] {
+      + label {
+        // Radio outer circle.
+        &::before {
+          border-radius: 50%;
+        }
+        // Radio bullseye - selected
+        &::after {
+          border-radius: 50%;
+        }
+      }
+    }
+
+    // Checkboxes only: check 'em.
+    input[type='checkbox'] {
+      + label {
+        // Adjust label ::before and ::after to get background-image svg
+        // check centered right.
+        &::before {
+          left: -2.25rem;
+          bottom: -0.1rem;
+        }
+        &::after {
+          left: -$uds-size-spacing-4;
+        }
+      }
+      // Checkbox check.
+      &:checked {
+        + label::after {
+          background: transparent;
+          // SVG of fa-check
+          background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='check' class='svg-inline--fa fa-check fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+          height: $uds-size-spacing-2;
+          width: $uds-size-spacing-2;
+        }
+      }
+    }
+  }
+
+  /* ERROR/SUCCESS VALIDATION - Client-side, using :valid and :invalid pseudo
+    classes ala Bootstrap 4:
+    https://getbootstrap.com/docs/4.0/components/forms/#validation */
+  &.was-validated {
+    .form-control:invalid {
+      border-style: solid;
+      border: 1px solid $uds-color-font-dark-error;
+      border-bottom: 8px solid $uds-color-font-dark-error;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    // Radios and checks individual labels shouldn't be colored.
+    .form-check-input:invalid ~ .form-check-label {
+      color: $uds-color-base-gray-7;
+    }
+
+    //&.was-validated .form-control:valid {
+    .form-control:valid {
+      border-style: solid;
+      border: 1px solid $uds-color-font-dark-success;
+      border-bottom: 8px solid $uds-color-font-dark-success;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    // Radios and checks individual labels shouldn't be colored.
+    .form-check-input:valid ~ .form-check-label {
+      color: $uds-color-base-gray-7;
+    }
+  }
+  &.needs-validation {
+    .invalid-feedback {
+      display: none;
+    }
+
+    .valid-feedback {
+      display: none;
+    }
+  }
+
+  /* ERROR/SUCCESS VALIDATION - SERVER-SIDE
+    using Bootstrap 4 .is-valid and .is-invalid classes. */
+
+  /* Errors */
+  input.is-invalid,
+  textarea.is-invalid,
+  select.is-invalid {
+    border-style: solid;
+    border: 1px solid $uds-color-font-dark-error;
+    border-bottom: 8px solid $uds-color-font-dark-error;
+    // BS4 input height led to border eating padding. Resolved in variable
+    // overrides by setting input heights to auto.
+  }
+  /* checks and radios */
+  small.is-invalid,
+  div.is-invalid {
+    margin-left: -$uds-size-spacing-2;
+    margin-top: $uds-size-spacing-2;
+  }
+  /* Error for group follows legend and doesn't need margin adjustment. */
+  legend ~ small.is-invalid,
+  legend ~ div.is-invalid,
+  select ~ small.is-invalid,
+  select ~ div.is-invalid {
+    margin-left: inherit;
+    margin-top: inherit;
+    color: $uds-color-font-dark-error;
+  }
+  .invalid-feedback {
+    display: inline-block;
+    font-weight: bold;
+    //color: $uds-color-base-gray-7;
+    svg {
+      // We don't implement svg icons as bkg images due to need for color
+      // manipulation.
+      color: $uds-color-font-dark-error;
+      margin-right: $uds-size-spacing-1;
+    }
+  }
+
+  /* Successes */
+  input.is-valid,
+  textarea.is-valid,
+  select.is-valid {
+    border-style: solid;
+    border: 1px solid $uds-color-font-dark-success;
+    border-bottom: 8px solid $uds-color-font-dark-success;
+    // BS4 input height led to border eating padding. Resolved in variable
+    // overrides by setting input heights to auto.
+  }
+  /* checks and radios */
+  small.is-valid,
+  div.is-valid {
+    margin-left: -$uds-size-spacing-2;
+    margin-top: $uds-size-spacing-2;
+  }
+  /* Success for group follows legend and doesn't need margin adjustment. */
+  legend ~ small.is-valid,
+  legend ~ div.is-valid,
+  select ~ small.is-valid,
+  select ~ div.is-valid {
+    margin-left: inherit;
+    margin-top: inherit;
+    color: $uds-color-font-dark-success;
+  }
+  .valid-feedback {
+    display: inline-block;
+    font-weight: bold;
+    //color: $uds-color-base-gray-7;
+    svg {
+      // We don't implement svg icons as bkg images due to need for color
+      // manipulation.
+      color: $uds-color-font-dark-success;
+      margin-right: $uds-size-spacing-1;
+    }
+  }
+
+  /* TRAILING ICON INPUT */
+  .input-group-trailing-icon {
+    svg {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.75rem;
+      color: $uds-color-base-gray-7;
+    }
+  }
+
+  /* VARIOUS BACKGROUNDS, OVERRIDES */
+
+  &.uds-form-white {
+    background-color: white;
+  }
+  &.uds-form-gray1 {
+    background-color: $uds-color-base-gray-1;
+  }
+  &.uds-form-gray2 {
+    background-color: $uds-color-base-gray-2;
+    /* Dark Radios and Checkboxes */
+    .form-check {
+      input[type='radio'],
+      input[type='checkbox'] {
+        &:disabled {
+          + label::before {
+            background: $uds-color-base-gray-4;
+            border-color: $uds-color-base-gray-5;
+          }
+        }
+        // We can use this little trick because the label follows the disabled
+        // input.
+        &:disabled + label {
+          color: $uds-color-base-gray-6;
+        }
+      }
+    }
+  }
+  &.uds-form-gray7 {
+    background-color: $uds-color-base-gray-7;
+
+    .form-control {
+      &::placeholder {
+        color: $uds-color-base-gray-4;
+      }
+      &.is-invalid::placeholder {
+        color: $uds-color-base-gray-1;
+      }
+
+      /* Disabled input */
+      &:disabled,
+      &[readonly] {
+        color: $uds-color-base-gray-5;
+        background: $uds-color-base-gray-6;
+        border: 1px solid $uds-color-base-gray-5;
+        &::placeholder {
+          color: $uds-color-base-gray-4;
+        }
+      }
+    }
+
+    /* Dark Labels */
+    label,
+    legend {
+      color: $uds-color-base-gray-1;
+      &.uds-form-label-disabled {
+        color: $uds-color-base-gray-4;
+      }
+    }
+    /* Dark Labels, checks, radios and selects, client side, tweaks */
+    &.was-validated .form-check-input:valid ~ .form-check-label {
+      color: $uds-color-base-gray-1;
+    }
+    &.was-validated select ~ small.is-valid,
+    &.was-validated select ~ div.is-valid {
+      color: $uds-color-base-green;
+    }
+    &.was-validated .form-check-input:invalid ~ .form-check-label {
+      color: $uds-color-base-gray-1;
+    }
+    &.was-validated select ~ small.is-invalid,
+    &.was-validated select ~ div.is-invalid {
+      color: $uds-color-alerts-error;
+    }
+    /* TODO Likely we'll find more work to do with client side validation rules
+      in order to take advantage of having both valid/invalid markup present.
+      Just hastn't been implemented in stories yet for the sake of drawing a
+      line somewhere. */
+
+    input,
+    textarea,
+    select {
+      background-color: $uds-color-base-gray-7;
+      color: $uds-color-base-gray-1;
+    }
+    input::placeholder {
+      color: $uds-color-base-gray-4;
+    }
+    /* Dark Input focus */
+    input:focus,
+    textarea:focus,
+    select:focus {
+      background-color: $uds-color-base-gray-7;
+      border: 2px solid $uds-color-base-gray-1 !important;
+      color: $uds-color-base-gray-1;
+    }
+
+    /* Dark Radios and Checkboxes */
+    .form-check {
+      input[type='radio'],
+      input[type='checkbox'] {
+        + label {
+          // Outer border.
+          &::before {
+            border: 1px solid #707070;
+            background: $uds-color-base-gray-7;
+          }
+          // Inner positioning for checked.
+          &::after {
+          }
+        }
+        &:checked {
+          + label::after {
+            background: $uds-color-base-gray-1;
+          }
+        }
+        &:focus {
+          + label::before {
+            border: 2px solid $uds-color-base-gray-1;
+          }
+        }
+        &:disabled {
+          + label::before {
+            background: $uds-color-base-gray-6;
+            border-color: $uds-color-base-gray-5;
+          }
+        }
+        // We can use this little trick because the label follows the disabled
+        // input.
+        &:disabled + label {
+          color: $uds-color-base-gray-4;
+        }
+      }
+
+      // Dark checkboxes only: check 'em.
+      input[type='checkbox'] {
+        // Checkbox check for dark bkg.
+        &:checked {
+          + label::after {
+            // SVG of fa-check
+            background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='check' class='svg-inline--fa fa-check fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+            // Alter SVG bkg img color via filter. Filter calculation tool:
+            // https://codepen.io/sosuke/pen/Pjoqqp
+            filter: invert(100%) sepia(28%) saturate(2502%) hue-rotate(222deg)
+              brightness(144%) contrast(94%);
+          }
+        }
+      }
+    }
+
+    /* Dark error input */
+    input.is-invalid,
+    textarea.is-invalid,
+    select.is-invalid {
+      border-style: solid;
+      border: 1px solid $uds-color-alerts-error;
+      border-bottom: 8px solid $uds-color-alerts-error;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    .invalid-feedback {
+      font-weight: bold;
+      color: $uds-color-alerts-error;
+      svg {
+        // We don't implement svg icons as bkg images due to need for color
+        // manipulation.
+        color: $uds-color-alerts-error;
+        margin-right: $uds-size-spacing-1;
+      }
+    }
+
+    /* Dark success input */
+    input.is-valid,
+    textarea.is-valid,
+    select.is-valid {
+      border-style: solid;
+      border: 1px solid $uds-color-base-green;
+      border-bottom: 8px solid $uds-color-base-green;
+      // BS4 input height led to border eating padding. Resolved in variable
+      // overrides by setting input heights to auto.
+    }
+    .valid-feedback {
+      font-weight: bold;
+      color: $uds-color-base-green;
+      svg {
+        // We don't implement svg icons as bkg images due to need for color
+        // manipulation.
+        color: $uds-color-base-green;
+        margin-right: $uds-size-spacing-1;
+      }
+    }
+
+    .input-group-trailing-icon {
+      svg {
+        color: $uds-color-base-gray-1;
+      }
+    }
+  }
+}

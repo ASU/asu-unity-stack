@@ -407,11 +407,11 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     border-top: 1px solid #d0d0d0;
 
     .btn {
-      margin-bottom: $uds-size-spacing-2;
+      margin-bottom: $uds-size-spacing-1;
     }
 
     .btn:last-of-type {
-      margin-bottom: 0;
+      margin-left: 0.5rem;
     }
   }
 

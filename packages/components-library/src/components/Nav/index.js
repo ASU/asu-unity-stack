@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
+import { useEffect, useState, useMemo, useRef, createRef, forwardRef, useImperativeHandle } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
@@ -10,7 +10,7 @@ import * as S from "./styles";
  * Render entire Nav.
  * @param {} props
  */
-const Nav = ({
+const Nav = forwardRef (({
   navTree,
   width,
   mobileOpen,
@@ -18,12 +18,46 @@ const Nav = ({
   buttons,
   injectStyles,
   breakpoint,
-  expandOnHover,
-}) => {
+  expandOnHover
+}, ref) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
   /** State for keeping track of open dropdown nav */
   const [open, setOpen] = useState(-1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      forceToggle(whatWasClicked) {
+        let isAriaOpen = false;
+
+        // Check if already open
+        for (let i=0; i<whatWasClicked.attributes.length; i++) {
+          let attribute = whatWasClicked.attributes[i];
+          if (attribute.name === 'aria-expanded') {
+            if (attribute.value === 'true') {
+              isAriaOpen = true;
+            }
+          }
+        }
+
+        const id = whatWasClicked.dataset.onclickIdentifier;
+        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === 'true'))) {
+          setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+          whatWasClicked.dataset.onclickDropdownOpen = 'true';
+        } else {
+          setOpen(-1);
+          whatWasClicked.dataset.onclickDropdownOpen = 'false';
+        }
+      },
+
+      forceOpen(whatWasClicked) {
+        const id = whatWasClicked.dataset.onclickIdentifier;
+        setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+        whatWasClicked.dataset.onclickDropdownOpen = 'true';
+      }
+    }),
+  )
 
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
@@ -304,7 +338,7 @@ const Nav = ({
       }
     </S.Nav>
   );
-};
+});
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
