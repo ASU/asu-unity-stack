@@ -21,8 +21,8 @@ export const quickLinks = () => `
           </div>
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
 
 `;
