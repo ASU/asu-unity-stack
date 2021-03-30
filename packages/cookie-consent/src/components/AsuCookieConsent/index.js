@@ -49,71 +49,73 @@ const AsuCookieConsent = ({
   // Return the component.
   if (enableCookieConsent) {
     return (
-      <div className={`uds-cookie-consent-component${easeOut}`}>
-        <CookieConsent
-          extraCookieOptions={{ domain: asuCookieDomain }}
-          location="bottom"
-          buttonText="Ok, I agree"
-          cookieName="asuCookieConsent"
-          hideOnAccept={false} // Let us handle hiding on accept with "ease."
-          onAccept={easeOutTrigger} // Wire up ease-out class.
-          disableStyles="true"
-          contentClasses="uds-cookie-consent-content"
-          buttonClasses="uds-cookie-consent-btn"
-          containerClasses="uds-cookie-consent-container"
-          style={{
-            //background: in styles.scss for tokenizing
-            //border: in styles.scss for tokenizing
-            //padding: in styles.scss for tokenizing
-            maxWidth: "676px",
-            width: "100%",
-            margin: "0 auto",
-            zIndex: "999",
-            boxSizing: "border-box",
-            float: "left",
-          }}
-          contentStyle={{
-            fontSize: "14px",
-            //fontFamily: in styles.scss for tokenizing
-            //color: in styles.scss for tokenizing
-            //fontWeight: in styles.scss for tokenizing
-            lineHeight: "1.5",
-            margin: "0",
-          }}
-          buttonStyle={{
-            //color: in styles.scss for tokenizing
-            //background: in styles.scss for tokenizing
-            //fontFamily: in styles.scss for tokenizing
-            //fontWeight: in styles.scss for tokenizing
-            //margin: in styles.scss for tokenizing
-            fontSize: "14px",
-            borderRadius: "25px",
-            border: "none",
-            padding: ".6em 1.2rem",
-          }}
-          expires={90}
-        >
-          <button
-            className="uds-cookie-consent-faux-close-btn"
-            aria-label="Close"
-            style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
-            onClick={distantClick}
+      <div className={`uds-cookie-consent-component-wrapper`}>
+        <div className={`uds-cookie-consent-component${easeOut}`}>
+          <CookieConsent
+            extraCookieOptions={{ domain: asuCookieDomain }}
+            location="bottom"
+            buttonText="Ok, I agree"
+            cookieName="asuCookieConsent"
+            hideOnAccept={false} // Let us handle hiding on accept with "ease."
+            onAccept={easeOutTrigger} // Wire up ease-out class.
+            disableStyles="true"
+            contentClasses="uds-cookie-consent-content"
+            buttonClasses="uds-cookie-consent-btn"
+            containerClasses="uds-cookie-consent-container"
+            style={{
+              //background: in styles.scss for tokenizing
+              //border: in styles.scss for tokenizing
+              //padding: in styles.scss for tokenizing
+              maxWidth: "676px",
+              width: "100%",
+              margin: "0 auto",
+              zIndex: "999",
+              boxSizing: "border-box",
+              float: "left",
+            }}
+            contentStyle={{
+              fontSize: "14px",
+              //fontFamily: in styles.scss for tokenizing
+              //color: in styles.scss for tokenizing
+              //fontWeight: in styles.scss for tokenizing
+              lineHeight: "1.5",
+              margin: "0",
+            }}
+            buttonStyle={{
+              //color: in styles.scss for tokenizing
+              //background: in styles.scss for tokenizing
+              //fontFamily: in styles.scss for tokenizing
+              //fontWeight: in styles.scss for tokenizing
+              //margin: in styles.scss for tokenizing
+              fontSize: "14px",
+              borderRadius: "25px",
+              border: "none",
+              padding: ".6em 1.2rem",
+            }}
+            expires={90}
           >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
-          ASU websites use cookies to enhance user experience, analyze site
-          usage, and assist with outreach and enrollment. By continuing to use
-          this site, you are giving us your consent to do this. Learn more about
-          cookies on ASU websites in our{" "}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.asu.edu/privacy#cookies"
-          >
-            Privacy Statement
-          </a>
-          .
-        </CookieConsent>
+            <button
+              className="uds-cookie-consent-faux-close-btn"
+              aria-label="Close"
+              style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
+              onClick={distantClick}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            ASU websites use cookies to enhance user experience, analyze site
+            usage, and assist with outreach and enrollment. By continuing to use
+            this site, you are giving us your consent to do this. Learn more
+            about cookies on ASU websites in our{" "}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.asu.edu/privacy#cookies"
+            >
+              Privacy Statement
+            </a>
+            .
+          </CookieConsent>
+        </div>
       </div>
     );
   } else {
