@@ -65,7 +65,7 @@ storiesOf('Components/Tabs', module)
   <span class="sr-only">Next</span>
 </a>
 </nav>
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content text-light" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home tab content...</div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile tab content...</div>
                   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact tab content...</div>
