@@ -9,6 +9,7 @@ Sidebar Navigation
   font-size: 1.25rem;
   line-height: 1.5rem;
   letter-spacing: -0.037rem;
+  color: $uds-color-base-gray-7;
 }
 
 @mixin like-an-h5 {
@@ -90,6 +91,16 @@ Sidebar Navigation
 
       a {
         padding: $uds-size-spacing-2 $uds-size-spacing-1;
+      }
+
+      p
+      {
+        display: block;
+        > a
+        {
+          @include like-an-h4();
+          text-decoration: none;
+        }
       }
 
       ~ .card-body {
