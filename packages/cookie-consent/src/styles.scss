@@ -10,6 +10,23 @@
   bottom: $uds-size-spacing-4;
   max-width: 1200px;
   margin-right: $uds-size-spacing-2;
+  a {
+    color: $uds-color-font-dark-link;
+    text-decoration: underline;
+    &:visited {
+      color: $uds-color-font-dark-visited;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:focus {
+      background-color: $uds-color-base-maroon;
+      color: $uds-color-base-white;
+      text-decoration: none;
+      outline: 0;
+      padding: 1px 3px;
+    }
+  }
   // 676 + 46 for additional spacing to adjust margins at just the right time.
   @media (max-width: 722px) {
     margin-left: $uds-size-spacing-2;
