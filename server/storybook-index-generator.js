@@ -57,9 +57,9 @@ module.exports = generateHTML = packages => `
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
               <!-- <div class="nav-link login-status">
                 <a class="signin" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
               </div> -->
@@ -124,9 +124,9 @@ module.exports = generateHTML = packages => `
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
                     </div>
                   </div>
@@ -166,6 +166,12 @@ module.exports = generateHTML = packages => `
           <h2>Unity Design Kit</h2>
           <p>A community-built design system built with Adobe XD.</p>
           <p><a class="btn btn-maroon btn-medium" href="https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/">View the document</a></p>
+        </div>
+
+        <div class="col-md-6 pb-8">
+          <h2>ASU Header</h2>
+          <p>Guidelines, requirements and best practices for using the ASU Branded Header in your site.</p>
+          <p><a class="btn btn-maroon btn-medium" href="asuheader">View the guide</a></p>
         </div>
 
         ${packages.map(generateRow).join("")}
@@ -221,11 +227,11 @@ module.exports = generateHTML = packages => `
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <nav class="nav colophon" aria-label="University Legal and Compliance">
-              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+            <nav class="nav colophon" aria-label="University legal and compliance">
+              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and trademark</a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
               <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of use</a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
             </nav>
           </div>

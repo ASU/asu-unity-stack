@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "preact/compat";
+import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
 import * as S from "./styles";
 import { Nav } from "../Nav";
@@ -52,7 +52,62 @@ const Header = ({
     setSrollPosition(position);
   };
 
+  const killEvent = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }, []);
 
+  /**
+   * This function solves a bug where all onclick functions are overwritten
+   * with the first declared onclick function.  This is known to occur
+   * when inserting the header component in a Lightning Web Component on
+   * Salesforce and may occur in other scenarios as well.
+   *
+   * When this function overwrites all other onclick functions, it then
+   * checks the event's target's data-onclick-identifier attribute to determine
+   * what was clicked on and intiates the correct process.
+   *
+   * When the bug does not occur, this function should never be called.
+   */
+  const onClickCallbackOverride = useCallback((e) => {
+    let whatWasClicked = e.target;
+    let limit = 100; // prevent infinite loop
+
+    // Climb DOM tree until someone has an identifier
+    while (limit > 0 && whatWasClicked.dataset.onclickIdentifier === undefined) {
+      whatWasClicked = whatWasClicked.parentNode;
+      limit--;
+    }
+
+    // Action depends on what was clicked
+    const identifier = whatWasClicked.dataset.onclickIdentifier;
+    if (identifier === "universal-search-bar") {
+      setSearchOpen(true);
+    } else if (identifier === "mobile-dropdown") {
+      toggle();
+    } else if (identifier.includes("toggle-dropdown.")) {
+      setSearchOpen(false);
+      clearSearchBar(whatWasClicked);
+      toggleNavDropdown(whatWasClicked)
+    } else if (identifier === "leave-open") {
+      killEvent();
+    }
+  }, []);
+  const toggleNavDropdown = (clickedDOM) => {
+    navRef.current.forceToggle(clickedDOM);
+  }
+  const clearSearchBar = (domElement) => {
+    let searchUp = domElement;
+    let limit = 100; // prevent infinite loop
+    while (limit > 0 && searchUp.dataset.onclickIdentifier !== 'top-of-header') {
+      limit--;
+      searchUp = searchUp.parentNode
+    }
+    if (searchUp.querySelector('[data-onclick-identifier = "universal-search-bar"]').querySelector("input").value.length > 0){
+      searchUp.querySelector('[data-onclick-identifier = "universal-search-bar"]').querySelector("input").value = "";
+    }
+  }
 
   // Attach scroll event lister which will update the scrollPosition state
   // when window scrolled
@@ -68,6 +123,7 @@ const Header = ({
   const universalRef = useRef(null);
   const logoRef = useRef(null);
   const titleRef = useRef(null);
+  const navRef = useRef(null);
 
   // Calculate the mobile nav menu max-height every time the mobile nav is opened
   // or the viewport changes size
@@ -94,7 +150,9 @@ const Header = ({
           ? "scrolled"
           : ""
       }
+      data-onclick-identifier = "top-of-header"
     >
+      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action"></div>
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU home</a>
@@ -115,6 +173,7 @@ const Header = ({
         }}
         mobileOpen={mobileOpen}
         logo={<Logo {...logo} ref={logoRef} />}
+        data-onclick-identifier = "mobile-dropdown"
       >
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />
@@ -137,6 +196,7 @@ const Header = ({
                 breakpoint,
                 expandOnHover
               }}
+              ref={navRef}
             />
           </>
         )}

@@ -32,6 +32,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/breadcrumb';
 @import 'variables/dividers';
 @import 'variables/dropdown';
+@import 'variables/form-fields';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
