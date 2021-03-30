@@ -107,4 +107,3 @@ yarn test
 
 ## Use on static HTML page
 
-

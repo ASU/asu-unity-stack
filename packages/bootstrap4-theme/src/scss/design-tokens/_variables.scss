@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Fri, 29 Jan 2021 16:27:51 GMT
+// Generated on Mon, 08 Mar 2021 04:37:46 GMT
 
 $uds-asset-font-icon-name: "FontAwesome";
 $uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
@@ -175,8 +175,10 @@ $uds-component-button-badge-border-radius: 400rem;
 $uds-component-button-badge-font-weight: normal;
 $uds-component-button-badge-height: 1.375rem; // Magic number: 22px not a multiple of 8
 $uds-component-button-close-height: 2rem;
-$uds-component-button-close-opacity: 50%;
+$uds-component-button-close-opacity: 100%;
 $uds-component-button-close-width: 2rem;
+$uds-component-button-close-padding-top: 0;
+$uds-component-button-close-padding-bottom: 0.125rem;
 $uds-component-button-close-disabled-opacity: 100%;
 $uds-component-button-close-white-background-color: #ffffff;
 $uds-component-button-close-gray-background-color: #bfbfbf;

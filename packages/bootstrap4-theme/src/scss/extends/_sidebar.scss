@@ -7,14 +7,12 @@ Sidebar Navigation
 
 @mixin like-an-h4 {
   font-size: 1.25rem;
-  font-weight: 700;
   line-height: 1.5rem;
   letter-spacing: -0.037rem;
 }
 
 @mixin like-an-h5 {
   font-size: 1rem;
-  font-weight: 700;
   line-height: 1rem;
   letter-spacing: -0.015em;
 }
@@ -79,17 +77,24 @@ Sidebar Navigation
   .card-foldable {
     border: 1px solid $uds-color-base-gray-2;
 
-    .card-header a {
-      padding: $uds-size-spacing-2 $uds-size-spacing-1;
-    }
-
     .card-header,
     .card-body {
       background-color: transparent;
     }
 
-    .card-header ~ .card-body {
-      border-top: 0;
+    .card-header {
+      h1, h2, h3, h4, h5
+      {
+        font-weight: 400;
+      }
+
+      a {
+        padding: $uds-size-spacing-2 $uds-size-spacing-1;
+      }
+
+      ~ .card-body {
+        border-top: 0;
+      }
     }
 
     .card-body {

@@ -93,10 +93,16 @@
           "value": "2"
         },
         "opacity": {
-          "value": "50%"
+          "value": "100%"
         },
         "width": {
           "value": "2"
+        },
+        "padding-top": {
+          "value": "0"
+        },
+        "padding-bottom": {
+          "value": "0.125rem"
         },
         "disabled": {
           "opacity": {

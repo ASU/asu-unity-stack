@@ -567,10 +567,6 @@ Cards - Table of Contents
 .accordion {
   .card.card-foldable {
     border-bottom: 1px solid $uds-color-base-gray-3;
-
-    &+.card-foldable {
-      margin-top: $uds-size-spacing-3;
-    }
   }
 }
 
@@ -578,7 +574,7 @@ Cards - Table of Contents
 8. Quick Links
 --------------------------------------------------------------------*/
 
-.quicklinks {
+.uds-quicklinks {
 
   display: flex;
   flex-direction: column;
@@ -655,7 +651,7 @@ Cards - Table of Contents
   }
 }
 
-@mixin quicklinks-expanded {
+@mixin uds-quicklinks-expanded {
 
   button {
     border-bottom: 0;
@@ -719,25 +715,25 @@ Cards - Table of Contents
 }
 
 @include media-breakpoint-up(sm) {
-  .quicklinks.quicklinks-expanded-sm {
-    @include quicklinks-expanded;
+  .uds-quicklinks.uds-quicklinks-expanded-sm {
+    @include uds-quicklinks-expanded;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .quicklinks.quicklinks-expanded-md {
-    @include quicklinks-expanded;
+  .uds-quicklinks.uds-quicklinks-expanded-md {
+    @include uds-quicklinks-expanded;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .quicklinks.quicklinks-expanded-lg {
-    @include quicklinks-expanded;
+  .uds-quicklinks.uds-quicklinks-expanded-lg {
+    @include uds-quicklinks-expanded;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .quicklinks.quicklinks-expanded-xl {
-    @include quicklinks-expanded;
+  .uds-quicklinks.uds-quicklinks-expanded-xl {
+    @include uds-quicklinks-expanded;
   }
 }

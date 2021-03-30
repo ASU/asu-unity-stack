@@ -54,6 +54,17 @@ const showReset = position => {
   `;
 };
 
+/* When using max-width and min-width in media queries use <= and >= logic
+ * and that means when they are both used in media queries with the same
+ * breakpoint, there's a deadspace. For min-width we provide this function to
+ * bump the value by +1. We are working with a string, so it's regex time.
+ */
+const breakpointForMin = breakpoint => {
+  var breakpointMatch = breakpoint.match(/[a-z]+|[^a-z]+/gi);
+  // Add 1 and string it back together.
+  return (parseInt(breakpointMatch[0]) + 1).toString() + breakpointMatch[1];
+};
+
 const srOnly = css`
   :not(:focus):not(:active) {
     clip: rect(0 0 0 0);
@@ -76,6 +87,7 @@ const primaryNavTopPadding = "24px";
 export {
   hiddenStyle,
   showReset,
+  breakpointForMin,
   mobileBreak,
   containerSize,
   srOnly,
