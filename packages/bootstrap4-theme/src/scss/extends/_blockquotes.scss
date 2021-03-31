@@ -42,6 +42,7 @@ blockquote:before {
   }
 
   blockquote {
+
     grid-column: 2;
     margin-top: 0;
     margin-bottom: 0;
@@ -51,7 +52,7 @@ blockquote:before {
     }
 
     p:last-of-type:after {
-      content: '"';
+      content: "\201D";
     }
   }
 
@@ -87,18 +88,29 @@ blockquote:before {
     }
 
     blockquote p:first-of-type:before {
-      content: '"';
+      content: "\201C";
     }
 
   }
 
-  &.no-cite {
-    blockquote p:first-of-type:before {
-      content: '"';
-    }
+  &.no-citation {
+    blockquote {
 
-    h3+p {
-      margin-top: $uds-size-spacing-3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p:first-of-type:before {
+        content: "\201C";
+      }
+
+      h3 {
+        margin-bottom: 0;
+      }
+
+      h3+p {
+        margin-top: $uds-size-spacing-3;
+      }
     }
   }
 
@@ -178,11 +190,8 @@ blockquote:before {
 5. Alt Citation.
 -  Produces a gold bar above the cite elements.
 ------------------------------------------------------------------- */
-.alt-citation {
-
-  svg:last-child {
-    display: none;
-  }
+.alt-citation,
+.uds-testimonial {
 
   .citation {
 
@@ -214,25 +223,6 @@ blockquote:before {
   }
 }
 
-@include media-breakpoint-up(sm) {
-  .uds-blockquote.alt-citation {
-    grid-template-columns: auto 1fr auto;
-
-    blockquote p:first-of-type:before {
-      content: none;
-    }
-
-    blockquote p:last-of-type:after {
-      content: none;
-    }
-
-    svg:last-child {
-      display: block;
-      grid-column: 3;
-    }
-  }
-}
-
 /*------------------------------------------------------------------
 5. Testimonial
 -  Vertically centered alignment of a standard blockquote.
@@ -245,8 +235,12 @@ blockquote:before {
   blockquote {
     text-align: center;
 
+    p:first-of-type:before {
+      content: "\201C";
+    }
+
     p:last-of-type:after {
-      content: '"';
+      content: "\201D";
     }
 
     p:last-of-type {
@@ -256,5 +250,9 @@ blockquote:before {
 
   .citation:before {
     display: inline-flex
+  }
+
+  &.with-image img {
+    max-width: 180px;
   }
 }
