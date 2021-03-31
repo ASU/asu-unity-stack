@@ -5,17 +5,11 @@ Sidebar Navigation
 2. Sidebar
 -------------------------------------------------------------------*/
 
-@mixin like-an-h4 {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  letter-spacing: -0.037rem;
-  color: $uds-color-base-gray-7;
-}
-
 @mixin like-an-h5 {
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: 16px;
+  line-height: 0.75rem;
   letter-spacing: -0.015em;
+  color: $uds-color-base-gray-7;
 }
 
 /*------------------------------------------------------------------
@@ -64,11 +58,11 @@ Sidebar Navigation
 
   > .nav-link {
     border: 1px solid $uds-color-base-gray-2;
-    padding: $uds-size-spacing-3 $uds-size-spacing-2;
+    padding: $uds-size-spacing-2;
     overflow: hidden;
     color: $uds-color-base-gray-7;
 
-    @include like-an-h4;
+    @include like-an-h5;
 
     &:not(:last-child) {
       border-bottom: 0;
@@ -98,7 +92,7 @@ Sidebar Navigation
         display: block;
         > a
         {
-          @include like-an-h4();
+          @include like-an-h5();
           text-decoration: none;
         }
       }
@@ -113,6 +107,7 @@ Sidebar Navigation
     }
 
     .card-body > .nav-link {
+      @include like-an-h5();
       padding: 0 $uds-size-spacing-5 0 $uds-size-spacing-3;
 
       &:after {
