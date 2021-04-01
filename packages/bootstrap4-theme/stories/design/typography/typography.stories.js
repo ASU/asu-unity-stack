@@ -138,29 +138,3 @@ export const inlineTextElements = () => `
     </div>
   </div>
 `;
-
-export const blockquotes = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 p-3">
-      <blockquote class="blockquote">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      </blockquote>
-    </div>
-  </div>
-</div>
-`;
-
-// export const internalNotes = () => `
-// <div class="container">
-//   <div class="row">
-//     <div class="col-sm-12 p-3">
-//       <p>Just some notes about elements that we need to style or think through.</p>
-//       <ul>
-//         <li>Display classes - prominent in BS, will produce the wrong results currently.</li>
-//         <li>Description lists</li>
-//         <li>Compare/Contrast elements on https://getbootstrap.com/docs/4.5/content/typography</li>
-//     </div>
-//   </div>
-// </div>
-// `;
