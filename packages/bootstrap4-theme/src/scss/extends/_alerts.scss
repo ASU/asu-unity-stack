@@ -18,6 +18,18 @@
   }
   .alert-close {
     flex: 1;
+
+    // Edits close button content (i.e. "X" inside bubble)
+    .close
+    {
+      opacity: $uds-component-button-close-opacity;
+      font-size: 1rem;
+
+      &:hover
+      {
+        opacity: $uds-component-button-close-opacity;
+      }
+    }
   }
 }
 

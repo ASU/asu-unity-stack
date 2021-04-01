@@ -59,7 +59,43 @@ yarn test
 <script>
 
   var props = {
-    navTree: NavTree,
+    navTree: [{
+      text: "Home",
+      type: "icon-home", // Home icon
+      class: "data-class", // classes passed to <a> tag
+      selected: true  // set to true to  highlight menu item
+    }, {
+      text: "My ASU",
+      href: "https://webapp4.asu.edu/myasu/"
+    },
+    {
+      text: "Two Column Submenu",
+      href: "/",
+      items: [
+        [
+          {
+            type: "heading",
+            text: "Column One Heading"
+          }, {
+            href: "https://www.asu.edu/",
+            text: "Pellentesque ornare"
+          }, {
+            href: "https://www.asu.edu/",
+            text: "Curabitur viverra arcu nisl"
+          }
+        ],
+        [
+          {
+            href: "https://www.asu.edu/?feature=newsevents",
+            type: "heading",
+            text: "Column Two Heading"
+          }, {
+            href: "https://www.asu.edu/?feature=academics",
+            text: "Nunc in libero odio"
+          }
+        ]
+      ]
+    }],
     title: "Ira A. Fulton Schools of Engineering",
     baseUrl: "/kitchen-sink"
   };
@@ -69,5 +105,5 @@ yarn test
 
 ```
 
-
+## Use on static HTML page
 

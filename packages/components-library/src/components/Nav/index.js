@@ -1,5 +1,4 @@
-
-import { useEffect, useState, useMemo, useRef, createRef } from "preact/compat";
+import { useEffect, useState, useMemo, useRef, createRef, forwardRef, useImperativeHandle } from "preact/compat";
 import PropTypes from "prop-types";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
@@ -11,7 +10,7 @@ import * as S from "./styles";
  * Render entire Nav.
  * @param {} props
  */
-const Nav = ({
+const Nav = forwardRef (({
   navTree,
   width,
   mobileOpen,
@@ -20,11 +19,45 @@ const Nav = ({
   injectStyles,
   breakpoint,
   expandOnHover
-}) => {
+}, ref) => {
   /** State to keep track of currently focused Nav Item */
   const [focused, setFocus] = useState([-1, -1, -1]);
   /** State for keeping track of open dropdown nav */
   const [open, setOpen] = useState(-1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      forceToggle(whatWasClicked) {
+        let isAriaOpen = false;
+
+        // Check if already open
+        for (let i=0; i<whatWasClicked.attributes.length; i++) {
+          let attribute = whatWasClicked.attributes[i];
+          if (attribute.name === 'aria-expanded') {
+            if (attribute.value === 'true') {
+              isAriaOpen = true;
+            }
+          }
+        }
+
+        const id = whatWasClicked.dataset.onclickIdentifier;
+        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === 'true'))) {
+          setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+          whatWasClicked.dataset.onclickDropdownOpen = 'true';
+        } else {
+          setOpen(-1);
+          whatWasClicked.dataset.onclickDropdownOpen = 'false';
+        }
+      },
+
+      forceOpen(whatWasClicked) {
+        const id = whatWasClicked.dataset.onclickIdentifier;
+        setOpen(parseInt(id.substring(id.indexOf(".")+1)));
+        whatWasClicked.dataset.onclickDropdownOpen = 'true';
+      }
+    }),
+  )
 
   const setFocusCallback = newFocus => {
     setFocus(newFocus);
@@ -38,9 +71,8 @@ const Nav = ({
    * Compile a list of Refs to interact with the focus state of Nav menu
    */
   const navList = useMemo(() => {
-
     // return empty array if navtree not defined
-    if (!Array.isArray(navTree) ||  navTree.length == 0) {
+    if (!Array.isArray(navTree) || navTree.length == 0) {
       return [];
     }
 
@@ -130,7 +162,6 @@ const Nav = ({
 
   /** When focus state changes, call .focus() on actual DOM node */
   useEffect(() => {
-
     const derState = deriveFocusState(focused, navList);
 
     if (derState.hasFocus) {
@@ -253,6 +284,7 @@ const Nav = ({
                                 ? item.href
                                 : undefined
                             }
+
                           >
                             {item.text}
                           </NavItem>
@@ -278,6 +310,9 @@ const Nav = ({
               }
               class={navItem.hasOwnProperty("class") ? navItem.class : ""}
               href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
+              selected={
+                navItem.hasOwnProperty("selected") ? navItem.selected : false
+              }
             >
               {navItem.text}
             </NavItem>
@@ -288,7 +323,7 @@ const Nav = ({
         // render buttons if props is passed
         buttons.length > 0 && (
           <S.ButtonForm>
-            {buttons.map((item) => {
+            {buttons.map(item => {
               let color = item.color ? item.color : "maroon";
 
               // Return a single nav item if there are no submenus
@@ -303,7 +338,7 @@ const Nav = ({
       }
     </S.Nav>
   );
-};
+});
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),

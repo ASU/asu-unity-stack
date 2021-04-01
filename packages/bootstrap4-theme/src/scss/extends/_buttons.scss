@@ -55,10 +55,10 @@
     }
   }
   &:hover {
-    transform: $uds-component-button-hover-state-transform;
+    transform: none;
   }
   &:active {
-    transform: scale(.95);
+    transform: scale(0.95);
   }
 }
 
@@ -84,4 +84,15 @@ a.text-gold:visited:not(.btn) {
 }
 a:visited:not(.btn) {
   color: $uds-color-base-darkmaroon;
+}
+
+@include media-breakpoint-up(lg) {
+  .btn {
+    &:hover {
+      transform: $uds-component-button-hover-state-transform;
+    }
+    &:active {
+      transform: $uds-component-button-active-state-transform;
+    }
+  }
 }

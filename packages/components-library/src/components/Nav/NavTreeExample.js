@@ -2,8 +2,9 @@ const BasicNavTree = [
   {
     href: "/",
     text: "Home",
-    type: "icon",
-    class: "home",
+    type: "icon-home",
+    selected: true,
+    class: "test-class",
   },
   {
     text: "Degree programs",
@@ -147,6 +148,7 @@ const NavTreeWithButtons = [
   {
     text: "My ASU",
     href: "#",
+    selected: true
   },
   {
     text: "People",
@@ -197,6 +199,7 @@ const NavTreeMega = [
   {
     text: "One Column",
     href: "/",
+    selected: true,
     items: [
       [
         {

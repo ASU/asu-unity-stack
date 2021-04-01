@@ -36,6 +36,18 @@
     flex: 2;
     margin-top: -$uds-size-spacing-2;
     margin-right: -$uds-size-spacing-2;
+
+    // Edits close button content (i.e. "X" inside bubble)
+    .close
+    {
+      opacity: $uds-component-button-close-opacity;
+      font-size: 1rem;
+
+      &:hover
+      {
+        opacity: $uds-component-button-close-opacity;
+      }
+    }
   }
 }
 
@@ -89,6 +101,8 @@
     flex-direction: column;
     .banner-icon {
       text-align: left;
+      margin-bottom: $uds-size-spacing-1;
+
       svg {
         font-size: $uds-size-spacing-5;
         margin: $uds-size-spacing-0;
@@ -96,6 +110,10 @@
     }
     .banner-content {
       margin-bottom: $uds-size-spacing-2;
+
+      h3 {
+        margin-bottom: $uds-size-spacing-2;
+      }
     }
     .banner-close {
       position: absolute;

@@ -9,6 +9,7 @@ import {
   BreakpointLg,
   BreakpointXl,
   containerSize,
+  breakpointForMin
 } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
@@ -61,7 +62,7 @@ const navListStyles = breakpoint => css`
         }
       }
 
-      @media (min-width: ${breakpoint}) {
+      @media (min-width: ${breakpointForMin(breakpoint)}) {
         position: static;
 
         &.dropdown-open,
@@ -75,7 +76,8 @@ const navListStyles = breakpoint => css`
         > a {
           line-height: 1rem;
           box-sizing: content-box;
-          :hover {
+          :hover,
+          &.nav-item-selected {
             :after {
               width: calc(100% + 24px);
               margin-left: 0;
@@ -126,7 +128,7 @@ const navListStyles = breakpoint => css`
       ${hiddenStyle}
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       svg.fa-chevron-down {
         float: none;
         display: inline-block;
@@ -305,7 +307,7 @@ const dropdownContainerStyles = breakpoint => css`
       }
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       position: fixed;
 
       &:not(.mega) .menu-column {
@@ -332,7 +334,7 @@ const dropdownContainerStyles = breakpoint => css`
 
 const DropdownContainer = props => {
   return (
-    <div class={cx("dropdown", props.open ? "open" : "", props.class)}>
+    <div class={cx("dropdown", props.open ? "open" : "", props.class)} data-onclick-identifier = {"leave-open"} onMouseDown={e => {}} onClick={e => {}}>
       <div>{props.children}</div>
       {props.buttons ? (
         <div class="button-row">
@@ -378,17 +380,18 @@ const dropControlsStyles = breakpoint => css`
     }
 
     > svg {
-      transition: 0.5s cubic-bezier(0.19,1,0.19,1);
+      transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 
       &.open {
         transform: rotate(180deg);
       }
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       line-height: 1rem;
       box-sizing: content-box;
-      :hover {
+      :hover,
+      &.nav-item-selected {
         :after {
           width: calc(100% + 24px);
           margin-left: 0;
@@ -424,13 +427,16 @@ const dropControlsStyles = breakpoint => css`
         font-size: 1.25rem;
         min-width: 3rem;
       }
-
     }
   }
 `;
 
-const DropControls = props => {
-  return <div class={cx("drop-controls")}>{props.children}</div>;
+const DropControls = ({ selected, ...props }) => {
+  return (
+    <div class={cx("drop-controls", selected ? "nav-item-selected" : "")}>
+      {props.children}
+    </div>
+  );
 };
 
 /**
@@ -449,7 +455,7 @@ const menuColumnStyles = breakpoint => css`
       border-right: none;
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       width: 16rem;
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
@@ -474,7 +480,7 @@ const menuColumnStyles = breakpoint => css`
       }
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       padding: 0 1.5rem 0 0;
       border-right: 1px solid #bfbfbf;
       margin-right: 1.5rem;
@@ -508,7 +514,7 @@ const componentStyles = breakpoint => css`
     ${hiddenStyle}
   }
 
-  @media (min-width: ${breakpoint}) {
+  @media (min-width: ${breakpointForMin(breakpoint)}) {
     width: 100%;
     display: flex;
     flex-direction: row;

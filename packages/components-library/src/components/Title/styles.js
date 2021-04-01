@@ -6,6 +6,7 @@ import { cx, css } from "@emotion/css";
 import {
   containerSize,
   BreakpointLg,
+  breakpointForMin
 } from "../../theme";
 
 /**
@@ -42,7 +43,7 @@ const titleStyles = breakpoint => css`
       color: #191919;
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       line-height: 1;
       font-weight: 700;
       padding: 0;
@@ -76,20 +77,6 @@ const titleStyles = breakpoint => css`
           text-decoration: underline;
         }
       }
-    }
-  }
-
-  &.scrolled .title {
-    padding-bottom: 1rem;
-  }
-
-  @media (min-width: ${breakpoint}) {
-    &.scrolled .title.subunit-name {
-      font-size: 1.5rem;
-    }
-
-    &.scrolled .title {
-      padding-bottom: 0;
     }
   }
 `;

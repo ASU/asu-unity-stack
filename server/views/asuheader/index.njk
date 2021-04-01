@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>ASU Header Guide</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
+  {% include "asuthemes/component-head.html" %}
+
+  <style>
+    /** Basic resets **/
+    html {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ol,
+    ul {
+      margin: 1rem 2rem;
+
+    }
+  </style>
+</head>
+
+<body>
+  {% include "components-library/dist/templates/component.html" %}
+  <div class="container">
+    <!-- Include pre-rendered AsuBrandHeader React component -->
+    {# <div id="headerContainer">{% include "static-header.njk" %}</div> #}
+
+    <!-- AsuCookieConsent container TODO Build as include like others? -->
+    <div id="cookieConsentContainer" class="cookieConsentContainer"></div>
+    <!-- end AsuCookieConsent container -->
+
+    <section id="test-content" style="margin-top:200px;">
+
+      <div class="row">
+        <div class="col-12">
+          <h3 class="display-4">ASU Header Guide</h3>
+
+          <p>Testing data shows that users see asu.edu as one website. The ASU global header
+            should appear on every subdomain and page of asu.edu to ensure and optimal
+            user experience as they navigate across asu.edu.</p>
+
+          <h3>The ASU Header is delivered in four ways</h3>
+
+          <h4>Components Library header</h4>
+          <p>Intended for use within platforms and applications, this
+            header variant is built using Preact and can be implemented
+            using the <a href="/@asu-design-system/components-library/index.html">
+              @asu-design-system/components-library</a> package. This version of
+            the header does not bundle Cookie Consent or Google Tag Manager.
+            Site developers using this header must implement Cookie Consent
+            using the @asu-design-system/cookie-consent package themselves for
+            public-facing sites. Similarly, site developers should add Google
+            Tag Manager code snippets to their sites. See below for guidance in
+            both cases and instructions for installing packages.</p>
+
+          <h4>ASUThemes component header</h4>
+          <p>The ASU Web Standards 2.0 header is made available through
+            ASUThemes for ease of use in ASU enterprise apps. It is an
+            altentative packaging of the Components Library header. See
+            <a href="https://unity.web.asu.edu/asuthemes">
+              https://unity.web.asu.edu/asuthemes</a>. Note: this version of the
+            header bundles the ASU Cookie Consent but does not provide Google
+            Tag Manager code. Read below about how to implement GTM on
+            enterprise sites.
+          </p>
+
+          <h4>Integrated CMS header modules and plugins</h4>
+          <p>CMS modules and plugins providing the ASU header should implement
+            it using the <a href="/@asu-design-system/components-library/index.html">
+              @asu-design-system/components-library</a> package and should also
+            bundle the Cookie Consent component, and Google Tag Manager code.
+            Modules and plugins should provide configurability so that Cookie
+            Consent can be disabled for sites that are not public-facing, and
+            configurability so GTM can be disabled and so multiple Google Tag
+            Manager IDs may be used. Additional GTM IDs should be additive and
+            not overwrite the ASU Universal GTM ID. Header modules and plugins
+            are to be shipped with their respective CMS platform distributions.</p>
+
+          <h4>Bootstrap 4 theme header</h4>
+          <p>Primarily used as a reference point, the Bootstrap 4 header
+            provided via the <a href="/@asu-design-system/bootstrap4-theme/index.html">
+              @asu-design-system/bootstrap4-theme</a> package is a plain HTML and
+            CSS Web Standards 2 header implementation built without embedded
+            components for Cookie Consent and Google Tag Manager. Site
+            developers using this header must implement Cookie Consent using
+            the @asu-design-system/cookie-consent package themselves for
+            public-facing sites. Similarly, site developers should add Google
+            Tag Manager code snippets to their sites. See below for guidance
+            in both cases.</p>
+
+          <h3>Notes on additional requirements for sites using the header</h3>
+
+          <p>In addition to the header, ASU sites must, as a general rule
+            implement the Web Standards 2 Cookie Consent component for GDPR
+            compliance and include appropriate Google Tag Manager code. Read
+            further for options and guidance on how to implement these in your
+            application or site.</p>
+
+          <h3>Cookie Consent (GDPR compliance)</h3>
+          <p>Before implementing Cookie Consent yourself, please review the
+            options for obtaining the ASU Header. Some options provide the
+            Cookie Consent component automatically bundled.</p>
+
+          <p>If you need to install the Cookie Consent component yourself,
+            please see the section "Installing Unity components from
+            the Unity package registry."</p>
+
+          <h3>Google Tag Manager (GTM)</h3>
+          <p>Before implementing Google Tag Manager yourself, please review
+            the options for obtaining the ASU Header. Some options provide the
+            ASU Google Tag Manager code automatically bundled.</p>
+
+          <p>To implement Google Tag Manager, insert the appropriate snippets
+            found below within the body tag of your HTML as close to the top of
+            the page as possible. Further details can be found in the
+            <a href="https://developers.google.com/tag-manager/quickstart">
+              Google Tag Manager Quickstart Guide</a>.
+          </p>
+
+          <p>Most ASU sites should implement the ASU Universal GTM.</p>
+
+          <p>Enterprise sites should implement the ASU Enterprise QA or
+            Production GTM matching the environment. This may be configured
+            using environmental variables. Each environment has its own 
+            GTM ID associated with it and care must be taken to use the 
+            appropriate GTM ID for each application environment.
+          </p>
+
+          <p>Some units have their own GTM IDs. When multiple GTM IDs need to
+            be used in a single site or application, follow the guidance on
+            <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
+              Multiple Containers on a Page</a>.
+          </p>
+
+          <h4>ASU universal GTM code</h4>
+          <pre><code>
+              &lt;!-- Google Tag Manager ASU Universal--&gt;
+              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
+              new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
+              &apos;//www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-KDWN8Z&apos;);&lt;/script&gt;
+
+              &lt;!-- Google Tag Manager (noscript) --&gt;
+              &lt;noscript&gt;&lt;iframe src=&quot;//www.googletagmanager.com/ns.html?id=GTM-KDWN8Z&quot;
+              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+              &lt;!-- End Google Tag Manager ASU Universal --&gt;
+            </code></pre>
+
+          <h4>ASU enterprise QA GTM</h4>
+          <pre><code>
+              &lt;!-- Google Tag Manager --&gt;
+              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-W3FGR6T');&lt;/script&gt;
+              &lt;!-- End Google Tag Manager --&gt;
+
+              &lt;!-- Google Tag Manager (noscript) --&gt;
+              &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-W3FGR6T&quot;
+              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+              &lt;!-- End Google Tag Manager (noscript) --&gt;
+            </code></pre>
+
+          <h4>ASU enterprise production GTM</h4>
+          <pre><code>
+              &lt;!-- Google Tag Manager --&gt;
+              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
+              new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
+              &apos;https://www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-WPVTBHL&apos;);&lt;/script&gt;
+              &lt;!-- End Google Tag Manager --&gt;
+
+              &lt;!-- Google Tag Manager (noscript) --&gt;
+              &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-WPVTBHL&quot;
+              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+              &lt;!-- End Google Tag Manager (noscript) --&gt;
+            </code></pre>
+
+          <h3>Installing Unity components from the Unity package registry</h3>
+          <p><a href="https://www.npmjs.com/get-npm">Install NPM</a> if you don't
+            already have it on your system.</p>
+
+          <p>Once NPM is installed, run the following command:
+          <pre><code>
+            npm adduser --registry https://registry.web.asu.edu
+          </code></pre>
+          <p>This will run you through a process to register a user on
+          <a href="https://registry.web.asu.edu">https://registry.web.asu.edu</a></p>
+          </p>
+
+          <p>Now visit
+            <a href="https://registry.web.asu.edu">https://registry.web.asu.edu</a> and
+            login.
+          </p>
+
+          <p>Visit the page for the @asu-design-system package you wish to
+            install. There you will find further instructions on how to
+            install and implement the package for your site or
+            application.</p>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <footer>
+    {% include "components-library/dist/templates/component-footer.html" %}
+
+    <script>
+
+      var props = {
+        navTree: [
+          {
+            href: "/",
+            text: "Home",
+            type: "icon-home", // Home icon
+            class: "test-class", // classes passed to <a> tag
+            selected: true  // set to true to  highlight menu item
+
+          }, {
+            text: "My ASU",
+            href: "https://webapp4.asu.edu/myasu/"
+          },
+          {
+            text: "Two Column Submenu",
+            href: "/",
+            items: [
+              [
+                {
+                  type: "heading",
+                  text: "Column One Heading"
+                }, {
+                  href: "https://www.asu.edu/",
+                  text: "Pellentesque ornare"
+                }, {
+                  href: "https://www.asu.edu/",
+                  text: "Curabitur viverra arcu nisl"
+                }
+              ],
+              [
+                {
+                  href: "https://www.asu.edu/?feature=newsevents",
+                  type: "heading",
+                  text: "Column Two Heading"
+                }, {
+                  href: "https://www.asu.edu/?feature=academics",
+                  text: "Nunc in libero odio"
+                }
+              ]
+            ]
+          }
+        ],
+        mobileNavTree: [
+          {
+            href: "/",
+            text: "This",
+
+
+          }, {
+            text: "Is A",
+            href: "https://webapp4.asu.edu/myasu/"
+          },
+          {
+            text: "Mobile Nav Tree",
+            href: "/",
+            items: [
+              [
+                {
+                  type: "heading",
+                  text: "Column One Heading"
+                }, {
+                  href: "https://www.asu.edu/",
+                  text: "Pellentesque ornare"
+                }, {
+                  href: "https://www.asu.edu/",
+                  text: "Curabitur viverra arcu nisl"
+                }
+              ],
+              [
+                {
+                  href: "https://www.asu.edu/?feature=newsevents",
+                  type: "heading",
+                  text: "Column Two Heading"
+                }, {
+                  href: "https://www.asu.edu/?feature=academics",
+                  text: "Nunc in libero odio"
+                }
+              ]
+            ]
+          }
+        ],
+        title: "ASU Themes Global Header and Footer Example",
+        baseUrl: "/asuthemes"
+      };
+
+      componentsLibrary.initHeader(props);
+
+      // Initialize cookie consent banner
+      AsuCookieConsent.init();
+    </script>
+  </footer>
+</body>
+
+</html>

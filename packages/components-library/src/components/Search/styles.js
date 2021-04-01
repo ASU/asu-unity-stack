@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { cx, css } from "@emotion/css";
+import { breakpointForMin } from "../../theme";
 
 /** Search */
 const searchStyles = breakpoint => css`
@@ -81,7 +82,7 @@ const searchStyles = breakpoint => css`
       padding: 0;
     }
 
-    @media (min-width: ${breakpoint}) {
+    @media (min-width: ${breakpointForMin(breakpoint)}) {
       > form {
         justify-content: flex-end;
       }
