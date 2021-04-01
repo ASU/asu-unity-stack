@@ -209,7 +209,7 @@ Two build tools have been added to this project to contributors in writing prope
 
 To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
 
-<img src="https://github.com/ASU/asu-unity-stack/raw/nrollins-commitlint/doc/assets/commitizen-prompts.png" alt="Example 'git commit'" width="800" />
+![GitHub Logo](/doc/assets/commitizen-prompts.png)
 
 ## ❯ Contributing:
 
