@@ -43,7 +43,7 @@ export const blockquoteNoImage = () => `
 
       </div><!-- end .col -->
     </div><!-- end .row -->
-  </div><!-- end .container -->
+  </div><!-- end .container  -->
 
 `;
 
