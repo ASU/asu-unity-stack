@@ -203,7 +203,7 @@ More information can be found [here](https://semantic-release.gitbook.io/semanti
 
 ### Project Update!
 
-Two build tools have been added to this project to assist contributors to write properly formmated commit messages: commitizen and commitlint.
+Two build tools have been added to this project to assist contributors to write properly formatted commit messages: commitizen and commitlint.
 
 `commitlint` now evaluates *all* commits for format compliance **BEFORE** your commit is saved into the repository. All `git commit` commands are reviewed and accepted or rejected based on the message meeting our the Conventional Commit standard. If your commit message is formatted incorrectly, `commitlint` will reject your commit and require you to resubmit with the correct syntax.
 
