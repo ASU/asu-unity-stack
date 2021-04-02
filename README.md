@@ -203,9 +203,9 @@ More information can be found [here](https://semantic-release.gitbook.io/semanti
 
 ### Project Update!
 
-Two build tools have been added to this project to contributors in writing properly formated commit messages: commitizen and commitlint.
+Two build tools have been added to this project to assist contributors to write properly formmated commit messages: commitizen and commitlint.
 
-`commitlint` now evaluates *all* commits for format compliance **BEFORE** your commit is saved into the repository. All `git commit` commands are reviewed and accepted or rejected based on the message meeting our the Conventional Commit standard. If your commit message is formatted incorreclty, `commitlint` will reject your commit and require you resubmit with the correct syntax.
+`commitlint` now evaluates *all* commits for format compliance **BEFORE** your commit is saved into the repository. All `git commit` commands are reviewed and accepted or rejected based on the message meeting our the Conventional Commit standard. If your commit message is formatted incorrectly, `commitlint` will reject your commit and require you to resubmit with the correct syntax.
 
 To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
 
