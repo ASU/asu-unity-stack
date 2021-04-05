@@ -1,8 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { h } from "preact";
 import { useState } from "preact/compat";
-//import { useState, useEffect, useRef } from "preact/compat";
-//import * as S from "./styles";
 import propTypes from "prop-types";
 import CookieConsent from "react-cookie-consent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
