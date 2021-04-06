@@ -22,18 +22,20 @@
     "directory": "packages/cookie-consent"
   },
   "devDependencies": {
-    "@storybook/preact": "^6.1.15",
-    "sass": "^1.32.8",
-    "sass-loader": "^10.0.1",
-    "webpack": "^5.24.4"
-  },
-  "dependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.14.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@storybook/preact": "^6.1.15",
     "preact": "^10.5.12",
     "prop-types": "^15.7.2",
-    "react-cookie-consent": "^6.2.3"
-  }
+    "react-cookie-consent": "^6.2.3",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.0.1",
+    "webpack": "^5.24.4"
+  },
+  "peerDependencies": {
+    "preact": "^10.5.12"
+  },
+  "dependencies": {}
 }
