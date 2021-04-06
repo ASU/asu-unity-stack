@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { h } from "preact";
 import { useState } from "preact/compat";
 import propTypes from "prop-types";
 import CookieConsent from "react-cookie-consent";
