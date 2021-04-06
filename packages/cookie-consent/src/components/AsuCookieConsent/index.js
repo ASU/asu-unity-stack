@@ -7,10 +7,7 @@ import CookieConsent from "react-cookie-consent";
 
 import "./index.scss";
 
-const AsuCookieConsent = ({
-  enableCookieConsent,
-  asuCookieDomain,
-}) => {
+const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
   const [easeOut, setEaseOut] = useState("");
 
   /*
@@ -62,9 +59,9 @@ const AsuCookieConsent = ({
           buttonClasses="uds-cookie-consent-btn"
           containerClasses="uds-cookie-consent-container"
           style={{
-            //background: in styles.scss for tokenizing
-            //border: in styles.scss for tokenizing
-            //padding: in styles.scss for tokenizing
+            //background: in index.scss for tokenizing
+            //border: in index.scss for tokenizing
+            //padding: in index.scss for tokenizing
             maxWidth: "676px",
             width: "100%",
             margin: "0 auto",
@@ -74,18 +71,18 @@ const AsuCookieConsent = ({
           }}
           contentStyle={{
             fontSize: "14px",
-            //fontFamily: in styles.scss for tokenizing
-            //color: in styles.scss for tokenizing
-            //fontWeight: in styles.scss for tokenizing
+            //fontFamily: in index.scss for tokenizing
+            //color: in index.scss for tokenizing
+            //fontWeight: in index.scss for tokenizing
             lineHeight: "1.5",
             margin: "0",
           }}
           buttonStyle={{
-            //color: in styles.scss for tokenizing
-            //background: in styles.scss for tokenizing
-            //fontFamily: in styles.scss for tokenizing
-            //fontWeight: in styles.scss for tokenizing
-            //margin: in styles.scss for tokenizing
+            //color: in index.scss for tokenizing
+            //background: in index.scss for tokenizing
+            //fontFamily: in index.scss for tokenizing
+            //fontWeight: in index.scss for tokenizing
+            //margin: in index.scss for tokenizing
             fontSize: "14px",
             borderRadius: "25px",
             border: "none",
