@@ -15,7 +15,8 @@
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run"
+    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
+    "prepare": "husky install"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -42,6 +43,9 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/config-lerna-scopes": "^12.0.1",
     "@emotion/babel-plugin": "^11.1.2",
     "@emotion/jest": "^11.1.0",
     "@emotion/server": "^11.0.0",
@@ -79,11 +83,13 @@
     "babel-plugin-styled-components": "^1.10.7",
     "babel-preset-preact": "^2.0.0",
     "bootstrap": "^4.3.1",
+    "commitizen": "^4.2.3",
     "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
     "css-minimizer-webpack-plugin": "^1.2.0",
+    "cz-conventional-changelog": "3.3.0",
     "del": "^4.1.0",
     "dotenv": "^8.0.0",
     "emotion-server": "^10.0.27",
@@ -119,6 +125,7 @@
     "gulp-uglify": "^3.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
@@ -161,5 +168,10 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {},
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
