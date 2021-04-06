@@ -3,7 +3,7 @@
 // bits for which we have uds design tokens.
 
 // Import design tokens.
-@import "../../design-tokens/build/scss/_variables.scss";
+@import "~@asu-design-system/design-tokens/build/scss/_variables.scss";
 
 .uds-cookie-consent-component-wrapper {
   margin: 0 auto;
