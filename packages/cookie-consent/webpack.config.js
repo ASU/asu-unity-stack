@@ -42,8 +42,8 @@ const shared = {
     alias: {
       "react": "preact/compat",
       "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
       // Must be below test-utils
+      "react-dom": "preact/compat",
     },
   },
 };
@@ -89,18 +89,6 @@ module.exports.push({
       commonjs2: "preact",
       amd: "preact",
       root: "preact",
-    },
-    "emotion": {
-      commonjs: "@emotion/css",
-      commonjs2: "@emotion/css",
-      amd: "@emotion/css",
-      root: "@emotion/css",
-    },
-    "prop-types": {
-      commonjs: "prop-types",
-      commonjs2: "prop-types",
-      amd: "propTypes",
-      root: "propTypes",
     },
   },
 });
