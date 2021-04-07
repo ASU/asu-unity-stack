@@ -1,5 +1,4 @@
 import { h } from "preact";
-import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import { Button } from "../Button";
@@ -10,7 +9,7 @@ export const CardTags = ({ tags }) => {
   return (
     <div className={UdsStyles["card-tags"]}>
       {tags.map(value => (
-        <Button label={value} btnSize="tag" />
+        <Button key={value} label={value} btnSize="tag" />
       ))}
     </div>
   );

@@ -1,13 +1,13 @@
 import { h } from "preact";
 import classNames from "classnames";
 
-import { CardInfo } from ".";
+import { EventDate } from ".";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 export default {
-  title: "UDS/CardInfo",
-  component: CardInfo,
+  title: "UDS/EventDate",
+  component: EventDate,
 };
 
 const Template = args => (
@@ -29,7 +29,10 @@ const Template = args => (
         )}
       >
         <div className={UdsStyles["card"]}>
-          <CardInfo {...args} />
+          <div className={UdsStyles["card-header"]}></div>
+          <div className={UdsStyles["card-event-details"]}>
+            <EventDate {...args} />
+          </div>
         </div>
       </div>
     </div>
@@ -38,6 +41,6 @@ const Template = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  dateTime: "Wednesday, November 21st, 2021 11:30 a.m. - 12:30 p.m.",
-  locationDisplay: "Downtown Phoenix Campus",
+  startTime: "Wednesday, November 21st, 2021 11:30 a.m",
+  stopTime: "12:30 p.m.",
 };

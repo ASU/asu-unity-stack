@@ -7,7 +7,7 @@ import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 export const CardButtons = ({ buttons }) => {
   return buttons.map(value => (
-    <div className={UdsStyles["card-button"]}>
+    <div key={value} className={UdsStyles["card-button"]}>
       <Button label={value} />
     </div>
   ));

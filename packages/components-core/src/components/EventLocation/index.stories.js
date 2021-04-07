@@ -1,13 +1,13 @@
 import { h } from "preact";
 import classNames from "classnames";
 
-import { CardTitle } from ".";
+import { EventLocation } from ".";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 export default {
-  title: "UDS/CardTitle",
-  component: CardTitle,
+  title: "UDS/EventLocation",
+  component: EventLocation,
 };
 
 const Template = args => (
@@ -29,7 +29,12 @@ const Template = args => (
         )}
       >
         <div className={UdsStyles["card"]}>
-          <CardTitle {...args} />
+          <div className={UdsStyles["card-header"]}></div>
+          <div className={UdsStyles["card-event-details"]}>
+            <div>
+              <EventLocation {...args} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,5 +43,11 @@ const Template = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Card default title",
+  title: "Vault Gallery, Downtown Phoenix campus Library",
+  address1: "411 N Central Ave",
+  address2: "PO Box 910298",
+  city: "Phoenix",
+  state: "AZ",
+  zip: "85004",
+  link: "https://google.com",
 };

@@ -6,7 +6,7 @@ import { CardImage } from "../CardImage";
 import { CardIcon } from "../CardIcon";
 import { CardTitle } from "../CardTitle";
 import { CardBody } from "../CardBody";
-import { CardInfo } from "../CardInfo";
+import { CardEventInfo } from "../CardEventInfo";
 import { CardButtons } from "../CardButtons";
 import { CardTags } from "../CardTags";
 
@@ -22,9 +22,10 @@ export const Card = ({
   icon,
   title,
   body,
-  displaySetting,
-  dateTime,
-  locationDisplay,
+  eventDisplay,
+  startTime,
+  stopTime,
+  location,
   buttons,
   tags,
 }) => {
@@ -35,36 +36,33 @@ export const Card = ({
     [UdsStyles[`card-hover`]]: true === hover,
   });
 
+  const CardContent = (
+    <>
+      <CardTitle title={title} />
+      <CardBody content={body} />
+      <CardEventInfo
+        display={eventDisplay}
+        startTime={startTime}
+        stopTime={stopTime}
+        location={location}
+      />
+      <CardButtons buttons={buttons} />
+      <CardTags tags={tags} />
+    </>
+  );
+
   return (
-    <div className={cardClass}>
-      {image && <CardImage image={image} imageAltText={imageAltText} />}
-      {icon && !image && <CardIcon icon={icon} />}
-      {!horizontal ? (
-        <>
-          <CardTitle title={title} />
-          <CardBody content={body} />
-          <CardInfo
-            displaySetting={displaySetting}
-            dateTime={dateTime}
-            locationDisplay={locationDisplay}
-          />
-          <CardButtons buttons={buttons} />
-          <CardTags tags={tags} />
-        </>
-      ) : (
-        <div className={UdsStyles["card-content-wrapper"]}>
-          <CardTitle title={title} />
-          <CardBody content={body} />
-          <CardInfo
-            displaySetting={displaySetting}
-            dateTime={dateTime}
-            locationDisplay={locationDisplay}
-          />
-          <CardButtons buttons={buttons} />
-          <CardTags tags={tags} />
-        </div>
-      )}
-    </div>
+    <>
+      <div className={cardClass}>
+        {image && <CardImage image={image} imageAltText={imageAltText} />}
+        {icon && !image && <CardIcon icon={icon} />}
+        {!horizontal ? (
+          CardContent
+        ) : (
+          <div className={UdsStyles["card-content-wrapper"]}>{CardContent}</div>
+        )}
+      </div>
+    </>
   );
 };
 
@@ -86,7 +84,7 @@ Card.propTypes = {
    */
   hover: PropTypes.bool,
   /**
-   * Card header image (optional)
+   * Card header image
    */
   image: PropTypes.string,
   /**
@@ -106,17 +104,21 @@ Card.propTypes = {
    */
   body: PropTypes.string,
   /**
-   * Card info display setting
+   * Event display setting
    */
-  displaySetting: PropTypes.oneOf(["Stack", "Inline"]),
+  eventDisplay: PropTypes.oneOf(["Stack", "Inline"]),
   /**
-   * Date/time
+   * Event start time
    */
-  dateTime: PropTypes.string,
+  startTime: PropTypes.string,
   /**
-   * Location display
+   * Event stop time
    */
-  locationDisplay: PropTypes.string,
+  stopTime: PropTypes.string,
+  /**
+   * Location
+   */
+  location: PropTypes.string,
   /**
    * Buttons
    */
@@ -132,14 +134,14 @@ Card.defaultProps = {
   width: "100%",
   horizontal: false,
   hover: false,
-  image: "https://picsum.photos/300/200",
-  icon: "",
-  title: "Default title",
-  body:
-    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  displaySetting: "Inline",
-  dateTime: "Wednesday, November 21st, 2021 11:30 a.m. - 12:30 p.m.",
-  locationDisplay: "Downtown Phoenix Campus",
-  buttons: ["Google label", "Microsoft label"],
-  tags: ["tag one", "tag two", "tag three", "tag four"],
+  image: null,
+  imageAltText: null,
+  icon: null,
+  body: null,
+  eventDisplay: "Stack",
+  startTime: null,
+  stopTime: null,
+  location: null,
+  buttons: [],
+  tags: [],
 };

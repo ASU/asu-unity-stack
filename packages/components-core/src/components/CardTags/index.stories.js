@@ -28,7 +28,10 @@ const Template = args => (
           UdsStyles["col-lg-4"]
         )}
       >
-        <CardTags {...args} />
+        <div className={UdsStyles["card"]}>
+          <div className={UdsStyles["card-header"]}></div>
+          <CardTags {...args} />
+        </div>
       </div>
     </div>
   </div>
