@@ -27,7 +27,7 @@ const locationSection = location => (
 );
 
 export const CardEventInfo = ({ display, startTime, stopTime, location }) => {
-  if ("Inline" === display) {
+  if ("inline" === display) {
     return (
       <div className={UdsStyles["card-event-details"]}>
         <div className={UdsStyles["card-event-icons"]}>

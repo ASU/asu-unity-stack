@@ -106,7 +106,7 @@ Card.propTypes = {
   /**
    * Event display setting
    */
-  eventDisplay: PropTypes.oneOf(["Stack", "Inline"]),
+  eventDisplay: PropTypes.oneOf(["stack", "inline"]),
   /**
    * Event start time
    */
@@ -138,7 +138,7 @@ Card.defaultProps = {
   imageAltText: "",
   icon: "",
   body: "",
-  eventDisplay: "Stack",
+  eventDisplay: "stack",
   startTime: "",
   stopTime: "",
   location: "",

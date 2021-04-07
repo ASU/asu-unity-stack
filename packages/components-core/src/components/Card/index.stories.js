@@ -67,7 +67,7 @@ Event.args = {
   title: "Event title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  eventDisplay: "Inline",
+  eventDisplay: "inline",
   startTime: "Wednesday, November 21st, 2021 11:30 a.m",
   stopTime: "12:30 p.m.",
   location: "Downtown Phoenix campus",
