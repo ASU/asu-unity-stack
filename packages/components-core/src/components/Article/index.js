@@ -24,7 +24,7 @@ import { EventDate } from "../EventDate";
 import { EventLocation } from "../EventLocation";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
-import "./article.css";
+import "./index.css";
 
 const sanitizeDangerousMarkup = (content) => {
   const sanitizer = dompurify.sanitize;
