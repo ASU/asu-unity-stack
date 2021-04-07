@@ -1,5 +1,6 @@
 import { h } from "preact";
 import classNames from "classnames";
+import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,6 +26,12 @@ import { EventLocation } from "../EventLocation";
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 import "./article.css";
 
+const sanitizeDangerousMarkup = (content) => {
+  const sanitizer = dompurify.sanitize;
+
+  return { __html: sanitizer(content) };
+}
+
 export const Article = ({
   articleUrl,
   authorName,
@@ -46,10 +53,6 @@ export const Article = ({
   zip,
   locationLink,
 }) => {
-  function createMarkup() {
-    return { __html: body };
-  }
-
   const hClasses = classNames(UdsStyles["col"], {
     [UdsStyles["col-12"]]: "event" !== type,
     [UdsStyles["col-7"]]: "event" === type,
@@ -197,7 +200,7 @@ export const Article = ({
           )}
         >
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
-            <p dangerouslySetInnerHTML={createMarkup()}></p>
+            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}></p>
             <div>{authorName}</div>
             {authorTitle && <div>{authorTitle}</div>}
             {authorEmail && (
