@@ -1,0 +1,23 @@
+.wrapper-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.news-container {
+  margin-top: -100px;
+  background: #fff;
+}
+
+ol.breadcrumb {
+  padding: 0;
+  margin: 0;
+}
+
+ol.breadcrumb > li {
+  margin-bottom: 0;
+}
+
+.article-social-media {
+  margin-bottom: 20px;
+}
