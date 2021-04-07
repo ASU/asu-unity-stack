@@ -224,9 +224,9 @@ export const Article = ({
 
 Article.propTypes = {
   /**
-   * Type of article (optional)
+   * Type of article
    */
-  type: PropTypes.oneOf(["default", "degree", "event", "news"]),
+  type: PropTypes.oneOf(["event", "news"]),
   /**
    * This is the relative or absolute url to the full-page article
    */
@@ -302,18 +302,18 @@ Article.propTypes = {
 };
 
 Article.defaultProps = {
-  type: "default",
-  image: null,
-  authorTitle: null,
-  authorEmail: null,
-  authorPhone: null,
-  startTime: null,
-  stopTime: null,
-  locationTitle: null,
-  address1: null,
-  address2: null,
-  city: null,
-  state: null,
-  zip: null,
-  locationLink: null,
+  type: "news",
+  image: "",
+  authorTitle: "",
+  authorEmail: "",
+  authorPhone: "",
+  startTime: "",
+  stopTime: "",
+  locationTitle: "",
+  address1: "",
+  address2: "",
+  city: "",
+  state: "",
+  zip: "",
+  locationLink: "",
 };
