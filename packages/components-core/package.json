@@ -1,0 +1,39 @@
+{
+  "name": "components-core",
+  "version": "1.4.0",
+  "description": "Core UDS Preact UI components required by other higher-order Preact packages",
+  "author": "Nathan Rollins <nathan.rollins@asu.edu>",
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ASU/asu-unity-stack/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@storybook/addon-actions": "^6.2.3",
+    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-links": "^6.2.3",
+    "@storybook/preact": "^6.2.3",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^5.0.3",
+    "core-js": "^3.10.0",
+    "html-webpack-plugin": "^3.2.0",
+    "preact": "^10.5.13",
+    "prop-types": "^15.7.2",
+    "reactstrap": "^8.9.0",
+    "webpack": "^4.30.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1",
+    "webpackbar": "^3.1.5"
+  }
+}
