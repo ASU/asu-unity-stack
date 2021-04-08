@@ -8,6 +8,20 @@ import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 export default {
   title: "UDS/Card",
   component: Card,
+  argTypes: {
+    type: {
+      type: "select",
+      options: ["default", "degree", "event", "news", "story"],
+    },
+    width: {
+      type: "select",
+      options: ["25%", "50%", "75%", "100%"],
+    },
+    eventDisplay: {
+      type: "select",
+      options: ["stack", "inline"],
+    },
+  },
 };
 
 const Template = args => (

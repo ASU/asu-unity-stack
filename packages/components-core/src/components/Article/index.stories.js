@@ -5,6 +5,12 @@ import { Article } from ".";
 export default {
   title: "UDS/Article",
   component: Article,
+  argTypes: {
+    type: {
+      type: "inline-radio",
+      options: ["event", "news"],
+    },
+  },
 };
 
 const Template = args => <Article {...args} />;
