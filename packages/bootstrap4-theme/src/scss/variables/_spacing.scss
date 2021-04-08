@@ -26,6 +26,8 @@
 // $uds-size-spacing-12: 6rem;
 // $uds-size-spacing-14: 7rem;
 // $uds-size-spacing-16: 8rem;
+// $uds-size-spacing-24: 12rem;
+// $uds-size-spacing-32: 16rem;
 
 // Spacing
 //
@@ -45,6 +47,8 @@ $spacers: (
   '12': $uds-size-spacing-12,
   '14': $uds-size-spacing-14,
   '16': $uds-size-spacing-16,
+  '24': $uds-size-spacing-24,
+  '32': $uds-size-spacing-32,
 );
 
 // Grid breakpoints.
