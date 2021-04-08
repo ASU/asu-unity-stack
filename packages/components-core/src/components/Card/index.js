@@ -70,7 +70,7 @@ Card.propTypes = {
   /**
    * Type of card
    */
-  type: PropTypes.oneOf(["default", "event", "story", "degree"]),
+  type: PropTypes.oneOf(["default", "degree", "event", "story"]),
   /**
    * Width of card
    */

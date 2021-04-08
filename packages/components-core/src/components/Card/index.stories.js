@@ -47,7 +47,6 @@ Default.args = {
   hover: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
-  icon: "",
   title: "Default title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -63,7 +62,6 @@ Degree.args = {
   hover: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
-  icon: "",
   title: "Default title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -77,7 +75,6 @@ Event.args = {
   hover: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
-  icon: "",
   title: "Event title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -95,7 +92,6 @@ Story.args = {
   hover: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
-  icon: "",
   title: "Story title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -110,7 +106,6 @@ StoryButtonCard.args = {
   hover: true,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
-  icon: "",
   title: "Story title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
