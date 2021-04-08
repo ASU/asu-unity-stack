@@ -16,6 +16,7 @@
       "12": { "value": "6" },
       "14": { "value": "7" },
       "16": { "value": "8" },
+      "24": { "value": "12" },
       "32": { "value": "16" },
       "64": { "value": "32" },
       "base": { "value": "{size.spacing.2.value}" }
