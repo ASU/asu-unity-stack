@@ -439,12 +439,13 @@ Cards - Table of Contents
   border-color: $uds-color-base-gray-3;
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
+  margin-top: $uds-grid-gutter-width;
 
   .card-header {
     padding: $uds-size-spacing-1;
 
     &:hover {
-      background-color: $uds-color-base-gray-1;
+      background-color: $uds-color-base-gray-2;
     }
 
     h4,
