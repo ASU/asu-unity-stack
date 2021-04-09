@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCalendar,
-  faEnvelope,
-  faPhone,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
+  farCalendar,
+  farEnvelope,
+  farPhone,
+  farMapMarkerAlt,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -19,7 +19,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-import { Button } from "../Button";
+import { UdsButton } from "../UdsButton";
 import { EventDate } from "../EventDate";
 import { EventLocation } from "../EventLocation";
 
@@ -116,10 +116,10 @@ export const Article = ({
           {"event" === type && (
             <div className={classNames(UdsStyles["col"], UdsStyles["col-5"])}>
               <div className={UdsStyles["card-button"]}>
-                <Button btnColor="maroon" label="Attend on Zoom" />
+                <UdsButton btnColor="maroon" label="Attend on Zoom" />
               </div>
               <div className={UdsStyles["card-button"]}>
-                <Button label="Add to calendar" />
+                <UdsButton label="Add to calendar" />
               </div>
             </div>
           )}
@@ -135,11 +135,11 @@ export const Article = ({
             )}
           >
             <div className={classNames(UdsStyles["col"], UdsStyles["col-6"])}>
-              <FontAwesomeIcon icon={faCalendar} />
+              <FontAwesomeIcon icon={farCalendar} />
               <EventDate startTime={startTime} stopTime={stopTime} />
             </div>
             <div className={classNames(UdsStyles["col"], UdsStyles["col-6"])}>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              <FontAwesomeIcon icon={farMapMarkerAlt} />
               <EventLocation
                 title={locationTitle}
                 address1={address1}
@@ -205,13 +205,13 @@ export const Article = ({
             {authorTitle && <div>{authorTitle}</div>}
             {authorEmail && (
               <div>
-                <FontAwesomeIcon icon={faEnvelope} />
+                <FontAwesomeIcon icon={farEnvelope} />
                 {authorEmail}
               </div>
             )}
             {authorPhone && (
               <div>
-                <FontAwesomeIcon icon={faPhone} />
+                <FontAwesomeIcon icon={farPhone} />
                 {authorPhone}
               </div>
             )}
