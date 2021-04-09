@@ -1,5 +1,6 @@
 import { h } from "preact";
 import classNames from "classnames";
+import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
@@ -11,6 +12,12 @@ import { EventLocation } from "../EventLocation";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
+const sanitizeDangerousMarkup = content => {
+  const sanitizer = dompurify.sanitize;
+
+  return { __html: sanitizer(content) };
+};
+
 const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   if ("inline" === eventFormat) {
     return (
@@ -19,7 +26,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
           <div>
             <FontAwesomeIcon icon={faCalendar} />
           </div>
-          <div>{eventTime}</div>
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
         </div>
         <div className={UdsStyles["card-event-icons"]}>
           <div>
@@ -40,7 +47,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
           <div>
             <FontAwesomeIcon icon={faCalendar} />
           </div>
-          <div>{eventTime}</div>
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
         </div>
       </div>
       <div className={UdsStyles["card-event-details"]}>
