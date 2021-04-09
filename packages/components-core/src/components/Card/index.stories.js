@@ -133,3 +133,21 @@ ClickableStoryCard.args = {
     { color: "gray", label: "tag3", clickTarget: "#" },
   ],
 };
+
+export const HorizontalStoryCard = Template.bind({});
+HorizontalStoryCard.args = {
+  type: "story",
+  width: "75%",
+  horizontal: true,
+  clickable: false,
+  image: "https://picsum.photos/300/200",
+  imageAltText: "An example image",
+  title: "Horizontal story",
+  body:
+    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  tags: [
+    { color: "gray", label: "tag1", clickTarget: "#" },
+    { color: "gray", label: "tag2", clickTarget: "#" },
+    { color: "gray", label: "tag3", clickTarget: "#" },
+  ],
+};
