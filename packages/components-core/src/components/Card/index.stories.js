@@ -116,8 +116,8 @@ Story.args = {
   ],
 };
 
-export const StoryButtonCard = Template.bind({});
-StoryButtonCard.args = {
+export const ClickableStoryCard = Template.bind({});
+ClickableStoryCard.args = {
   type: "story",
   width: "25%",
   horizontal: false,
