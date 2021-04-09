@@ -76,7 +76,7 @@ Degree.args = {
 
 export const Event = Template.bind({});
 Event.args = {
-  type: "default",
+  type: "event",
   width: "25%",
   horizontal: false,
   clickable: false,
@@ -88,7 +88,6 @@ Event.args = {
   eventFormat: "inline",
   eventTime: "Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
   eventLocation: "Downtown Phoenix campus",
-  eventLocationLink: "#",
   buttons: [
     { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
   ],
