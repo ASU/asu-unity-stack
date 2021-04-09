@@ -17,7 +17,7 @@ export const foldableCard = () => `
     <div class="row mt-4">
       <div class="col-md-4">
 
-        <div class="card card-foldable">
+        <div class="card card-foldable mt-3">
           <div class="card-header">
             <h4>
               <a id="example-header-1" class="collapsed" data-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">This card unfolds.
@@ -40,7 +40,7 @@ export const foldableCard = () => `
     <div class="row mt-4">
       <div class="col-md-6">
 
-        <div class="card card-foldable">
+        <div class="card card-foldable mt-3">
           <div class="card-header">
             <h4>
               <a id="example-header-2" class="collapsed" data-toggle="collapse" href="#example-content-2" role="button" aria-expanded="false" aria-controls="example-content-2">This starts off folded and has a really long title which wraps to a second line.
@@ -63,7 +63,7 @@ export const foldableCard = () => `
     <div class="row mt-4">
       <div class="col-md-9">
 
-        <div class="card card-foldable">
+        <div class="card card-foldable mt-3">
           <div class="card-header">
             <h4>
               <a id="example-header-3" data-toggle="collapse" href="#example-content-3" role="button" aria-expanded="true" aria-controls="example-content-3">This card starts off in an unfolded state.
@@ -101,7 +101,7 @@ export const accordion = () => `
 
         <div class="accordion" id="accordionExample">
 
-          <div class="card card-foldable">
+          <div class="card card-foldable mt-3">
             <div class="card-header">
               <h4>
                 <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">These are sections within an accordion.
@@ -117,7 +117,7 @@ export const accordion = () => `
             </div><!-- end .card-body -->
           </div><!-- end .card -->
 
-          <div class="card card-foldable">
+          <div class="card card-foldable mt-3">
             <div class="card-header">
               <h4>
                 <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
@@ -133,7 +133,7 @@ export const accordion = () => `
             </div><!-- end .card-body -->
           </div><!-- end .card -->
 
-          <div class="card card-foldable">
+          <div class="card card-foldable mt-3">
             <div class="card-header">
               <h4>
                 <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">The inactive panels should collapse while the active one expands.
