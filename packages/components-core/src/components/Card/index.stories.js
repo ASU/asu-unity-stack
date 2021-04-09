@@ -17,7 +17,7 @@ export default {
       type: "select",
       options: ["25%", "50%", "75%", "100%"],
     },
-    eventDisplay: {
+    eventFormat: {
       type: "select",
       options: ["stack", "inline"],
     },
@@ -44,14 +44,21 @@ Default.args = {
   type: "default",
   width: "25%",
   horizontal: false,
-  hover: false,
+  clickable: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Default title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  buttons: ["CTA button", "CTA button"],
-  tags: ["tag one", "tag two", "tag three", "tag four"],
+  buttons: [
+    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
+    { color: "gold", size: "small", label: "CTA button", clickTarget: "#" },
+  ],
+  tags: [
+    { color: "gray", label: "tag1", clickTarget: "#" },
+    { color: "gray", label: "tag2", clickTarget: "#" },
+    { color: "gray", label: "tag3", clickTarget: "#" },
+  ],
 };
 
 export const Degree = Template.bind({});
@@ -59,7 +66,7 @@ Degree.args = {
   type: "degree",
   width: "25%",
   horizontal: false,
-  hover: false,
+  clickable: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Default title",
@@ -72,16 +79,19 @@ Event.args = {
   type: "default",
   width: "25%",
   horizontal: false,
-  hover: false,
+  clickable: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Event title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  eventDisplay: "inline",
-  startTime: "Wednesday, November 21st, 2021 11:30 a.m",
-  stopTime: "12:30 p.m.",
-  location: "Downtown Phoenix campus",
+  eventFormat: "inline",
+  eventTime: "Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
+  eventLocation: "Downtown Phoenix campus",
+  eventLocationLink: "#",
+  buttons: [
+    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
+  ],
 };
 
 export const Story = Template.bind({});
@@ -89,13 +99,21 @@ Story.args = {
   type: "story",
   width: "25%",
   horizontal: false,
-  hover: false,
+  clickable: false,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Story title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  tags: ["tag one", "tag two", "tag three"],
+  buttons: [
+    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
+    { color: "gold", size: "small", label: "CTA button", clickTarget: "#" },
+  ],
+  tags: [
+    { color: "gray", label: "tag1", clickTarget: "#" },
+    { color: "gray", label: "tag2", clickTarget: "#" },
+    { color: "gray", label: "tag3", clickTarget: "#" },
+  ],
 };
 
 export const StoryButtonCard = Template.bind({});
@@ -103,11 +121,15 @@ StoryButtonCard.args = {
   type: "story",
   width: "25%",
   horizontal: false,
-  hover: true,
+  clickable: true,
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Story title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  tags: ["tag one", "tag two", "tag three"],
+  tags: [
+    { color: "gray", label: "tag1", clickTarget: "#" },
+    { color: "gray", label: "tag2", clickTarget: "#" },
+    { color: "gray", label: "tag3", clickTarget: "#" },
+  ],
 };
