@@ -116,10 +116,10 @@ export const Article = ({
           {"event" === type && (
             <div className={classNames(UdsStyles["col"], UdsStyles["col-5"])}>
               <div className={UdsStyles["card-button"]}>
-                <UdsButton btnColor="maroon" label="Attend on Zoom" />
+                <UdsButton color="maroon">Attend on Zoom</UdsButton>
               </div>
               <div className={UdsStyles["card-button"]}>
-                <UdsButton label="Add to calendar" />
+                <UdsButton>Add to calendar</UdsButton>
               </div>
             </div>
           )}
