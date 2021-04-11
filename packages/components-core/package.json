@@ -12,6 +12,8 @@
   "scripts": {
     "format": "prettier --write ./src",
     "test": "echo \"Error: run tests from root\" && exit 1",
+    "start:dev": "webpack serve -c webpack/webpack.dev.js",
+    "build": "webpack -c webpack/webpack.prod.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -19,6 +21,7 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
+    "@americanexpress/purgecss-loader": "^2.0.0",
     "@asu-design-system/bootstrap4-theme": "^1.1.2",
     "@babel/core": "^7.13.14",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -31,25 +34,31 @@
     "@storybook/addon-links": "^6.2.3",
     "@storybook/preact": "^6.2.3",
     "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
     "classnames": "^2.2.6",
-    "clean-webpack-plugin": "^2.0.1",
-    "copy-webpack-plugin": "^5.0.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.1.1",
     "core-js": "^3.10.0",
     "date-fns": "^2.19.0",
     "dompurify": "^2.2.7",
-    "html-webpack-plugin": "^3.2.0",
+    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.4.1",
     "phone-fns": "^3.2.3",
     "preact": "^10.5.13",
     "prop-types": "^15.7.2",
+    "purgecss-webpack-plugin": "^4.0.3",
     "react-reveal": "^1.2.2",
     "react-share": "^4.4.0",
     "reactstrap": "^8.9.0",
     "storybook-css-modules-preset": "^1.0.7",
-    "webpack": "^4.46.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.31.0",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^4.2.1",
-    "webpackbar": "^3.1.5"
+    "webpack-merge": "^5.7.3",
+    "webpackbar": "^5.0.0-3"
   }
 }
