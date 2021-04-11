@@ -1,5 +1,5 @@
 import "cookieconsent";
-import "./styles.css";
+import "./index.css";
 
 /***
  * Initializes cookie consent and sets cookie consent domain to cookieDomain
