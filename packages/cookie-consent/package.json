@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "start:dev": "webpack serve -c webpack/webpack.dev.js",
+    "build": "webpack -c webpack/webpack.prod.js",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook"
   },
@@ -22,9 +22,19 @@
     "directory": "packages/cookie-consent"
   },
   "devDependencies": {
-    "@storybook/html": "^6.1.15"
+    "@storybook/html": "^6.1.15",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cookieconsent": "^3.1.1",
+    "file-loader": "^6.2.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.31.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3",
+    "webpackbar": "^5.0.0-3"
   },
-  "dependencies": {
-    "cookieconsent": "^3.1.1"
-  }
+  "dependencies": {}
 }
