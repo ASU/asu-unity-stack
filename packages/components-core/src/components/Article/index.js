@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  farCalendar,
-  farEnvelope,
-  farPhone,
-  farMapMarkerAlt,
+  faCalendar,
+  faEnvelope,
+  faPhone,
+  faMapMarkerAlt,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   FacebookIcon,
