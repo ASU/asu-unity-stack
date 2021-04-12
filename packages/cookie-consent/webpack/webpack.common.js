@@ -7,7 +7,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
-    filename: "cookie-consent.js",
+    filename: "cookie-consent.min.js",
     publicPath: "/",
   },
   module: {
@@ -49,16 +49,4 @@ module.exports = {
     "react": "React",
     "react-dom": "ReactDOM",
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       styles: {
-  //         name: "styles",
-  //         test: /\.css$/,
-  //         chunks: "all",
-  //         enforce: true,
-  //       },
-  //     },
-  //   },
-  // },
 };
