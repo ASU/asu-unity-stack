@@ -7,7 +7,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
-    filename: "[name].js",
+    filename: "cookie-consent.js",
     publicPath: "/",
   },
   module: {
