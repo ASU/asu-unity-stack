@@ -1,4 +1,6 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 const path = require("path");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
@@ -20,6 +22,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -44,9 +50,18 @@ module.exports = {
      * See `Options and Defaults` for information
      */
     new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
+  resolve: {
+    alias: {
+      "react": "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+      // Must be below test-utils
+    },
   },
+  // externals: {
+  //   "react": "React",
+  //   "react-dom": "ReactDOM",
+  // },
 };
