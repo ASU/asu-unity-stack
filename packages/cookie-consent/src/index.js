@@ -39,4 +39,6 @@ const init = cookieDomain => {
   });
 };
 
-export { init };
+window.addEventListener("DOMContentLoaded", event => {
+  init();
+});
