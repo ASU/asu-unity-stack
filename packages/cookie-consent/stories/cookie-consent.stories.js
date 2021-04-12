@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h, Fragment } from "preact";
+import { h } from "preact";
 
 import { AsuCookieConsent } from "../src/components/AsuCookieConsent";
 import { init } from "../src/helpers";
