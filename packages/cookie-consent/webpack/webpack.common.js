@@ -1,31 +1,43 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const path = require("path");
+// const path = require("path");
 
-const PROJECT_DIR = path.resolve(__dirname, "../");
+// const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
-  entry: "./src/index.js",
-  output: {
-    path: path.resolve(PROJECT_DIR, "dist"),
-    filename: "cookie-consent.min.js",
-    publicPath: "/",
+  entry: {
+    "cookie-consent": "./src/index.js",
   },
+  // output: {
+  //   path: path.resolve(PROJECT_DIR, "dist"),
+  //   filename: "cookie-consent.min.js",
+  //   publicPath: "/",
+  // },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: [
+          {
+            loader: "babel-loader",
+            // options: {
+            //   presets: ["preact"],
+            // },
+          },
+        ],
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -53,6 +65,7 @@ module.exports = {
     new BundleAnalyzerPlugin(),
   ],
   resolve: {
+    extensions: [".js", ".jsx"],
     alias: {
       "react": "preact/compat",
       "react-dom/test-utils": "preact/test-utils",
@@ -60,8 +73,12 @@ module.exports = {
       // Must be below test-utils
     },
   },
-  // externals: {
-  //   "react": "React",
-  //   "react-dom": "ReactDOM",
-  // },
+  externals: {
+    preact: {
+      commonjs: "preact",
+      commonjs2: "preact",
+      amd: "preact",
+      root: "preact",
+    },
+  },
 };
