@@ -1,5 +1,8 @@
 ol.breadcrumb {
   .breadcrumb-item {
+    a {
+      text-decoration: none;
+    }
     // Get spacing around the / dividers right.
     //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-padding-left-px;
     &:first-of-type {
