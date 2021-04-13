@@ -1,11 +1,11 @@
 .wrapper-container {
-  max-width: 1080px;
+  max-width: 1210px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 9%;
 }
 
 .news-container {
-  margin-top: -100px;
+  margin-top: -120px;
   background: #fff;
 }
 
@@ -20,4 +20,25 @@ ol.breadcrumb > li {
 
 .article-social-media {
   margin-bottom: 20px;
+}
+
+.react-share__ShareButton {
+  margin-right: 12px;
+}
+
+.highlight-gold {
+  box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
+  background: #ffc627;
+}
+
+.icon-bg {
+  background-color: maroon;
+  padding: 3px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+.icon-bg svg {
+  vertical-align: top;
 }

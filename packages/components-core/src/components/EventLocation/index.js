@@ -1,6 +1,5 @@
 import { h } from "preact";
 import PropTypes from "prop-types";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 

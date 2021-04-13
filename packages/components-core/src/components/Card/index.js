@@ -125,7 +125,9 @@ export const Card = ({
   tags,
 }) => {
   const cardClass = classNames(UdsStyles["card"], {
-    [UdsStyles[`card-${type}`]]: type !== "default",
+    [UdsStyles[`card-degree`]]: type === "degree",
+    [UdsStyles[`card-event`]]: type === "event",
+    [UdsStyles[`card-story`]]: type === "story",
     [UdsStyles[`w-${width.replace("%", "")}`]]: width !== "100%",
     [UdsStyles[`card-horizontal`]]: horizontal,
     [UdsStyles[`card-hover`]]: clickable,
@@ -181,7 +183,7 @@ Card.propTypes = {
   /**
    * Type of card
    */
-  type: PropTypes.oneOf(["default", "degree", "event", "story"]),
+  type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
   /**
    * Width of card
    */

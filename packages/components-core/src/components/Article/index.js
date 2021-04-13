@@ -2,21 +2,20 @@ import { h } from "preact";
 import classNames from "classnames";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  farCalendar,
-  farEnvelope,
-  farPhone,
-  farMapMarkerAlt,
+  faCalendar,
+  faMapMarkerAlt
 } from "@fortawesome/free-regular-svg-icons";
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   FacebookIcon,
   FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
-  TwitterShareButton,
+  TwitterShareButton
 } from "react-share";
 
 import { UdsButton } from "../UdsButton";
@@ -82,8 +81,8 @@ export const Article = ({
         <div
           className={classNames(
             UdsStyles["row"],
-            UdsStyles["pt-2"],
-            UdsStyles["pb-4"]
+            UdsStyles["pt-3"],
+            UdsStyles["pb-3"]
           )}
         >
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
@@ -158,29 +157,28 @@ export const Article = ({
             className={classNames(
               UdsStyles["row"],
               UdsStyles["row-spaced"],
-              UdsStyles["pt-2"],
-              UdsStyles["pb-2"]
+              UdsStyles["pt-2"]
             )}
           >
             <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
               <div className="article-social-media">
-                <TwitterShareButton url={articleUrl} quote={title}>
-                  <TwitterIcon
-                    size={24}
-                    borderRadius={4}
-                    bgStyle={{ fill: "maroon" }}
-                  />
-                </TwitterShareButton>
                 <FacebookShareButton url={articleUrl} quote={title}>
                   <FacebookIcon
-                    size={24}
+                    size={26}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
                   />
                 </FacebookShareButton>
+                <TwitterShareButton url={articleUrl} quote={title}>
+                  <TwitterIcon
+                    size={26}
+                    borderRadius={4}
+                    bgStyle={{ fill: "maroon" }}
+                  />
+                </TwitterShareButton>
                 <LinkedinShareButton url={articleUrl} quote={title}>
                   <LinkedinIcon
-                    size={24}
+                    size={26}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
                   />
@@ -191,28 +189,27 @@ export const Article = ({
           </div>
         )}
 
-        <div
-          className={classNames(
-            UdsStyles["row"],
-            UdsStyles["row-spaced"],
-            UdsStyles["pt-2"],
-            UdsStyles["pb-2"]
-          )}
-        >
+        <div className={classNames(UdsStyles["row"], UdsStyles["pb-2"])}>
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}></p>
-            <div>{authorName}</div>
+            <div>
+              <span className="highlight-gold">{authorName}</span>
+            </div>
             {authorTitle && <div>{authorTitle}</div>}
             {authorEmail && (
               <div>
-                <FontAwesomeIcon icon={farEnvelope} />
-                {authorEmail}
+                <span className="icon-bg">
+                  <FontAwesomeIcon icon={faEnvelope} color="white" size="xs" />
+                </span>
+                <Button href={`mailto: ${authorEmail}`}>{authorEmail}</Button>
               </div>
             )}
             {authorPhone && (
               <div>
-                <FontAwesomeIcon icon={farPhone} />
-                {authorPhone}
+                <span className="icon-bg">
+                  <FontAwesomeIcon icon={faPhone} color="white" size="xs" />
+                </span>
+                <Button href={`tel: ${authorPhone}`}>{authorPhone}</Button>
               </div>
             )}
           </div>

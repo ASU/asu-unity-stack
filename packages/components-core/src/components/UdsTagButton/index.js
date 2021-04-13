@@ -13,7 +13,7 @@ export const UdsTagButton = ({ color, children, ...props }) => {
   });
 
   return (
-    <Button className={btnClasses} {...props}>
+    <Button className={btnClasses} tag="a" {...props}>
       {children}
     </Button>
   );
