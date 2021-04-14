@@ -65,12 +65,12 @@ module.exports = {
       // Must be below test-utils
     },
   },
-  externals: {
-    preact: {
-      commonjs: "preact",
-      commonjs2: "preact",
-      amd: "preact",
-      root: "preact",
-    },
-  },
+  // externals: {
+  //   "preact": {
+  //     commonjs: "preact",
+  //     commonjs2: "preact",
+  //     amd: "preact",
+  //     root: "preact",
+  //   },
+  // },
 };
