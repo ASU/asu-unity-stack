@@ -1,8 +1,7 @@
-import { h } from "preact";
 import classNames from "classnames";
+import { h } from "preact";
 
 import { Card } from ".";
-
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 export default {

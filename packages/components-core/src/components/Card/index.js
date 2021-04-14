@@ -1,16 +1,15 @@
-import { h } from "preact";
-import classNames from "classnames";
-import dompurify from "dompurify";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-
-import { UdsButton } from "../UdsButton";
-import { UdsTagButton } from "../UdsTagButton";
-import { EventLocation } from "../EventLocation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import dompurify from "dompurify";
+import { h } from "preact";
+import PropTypes from "prop-types";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import { EventLocation } from "../EventLocation";
+import { UdsButton } from "../UdsButton";
+import { UdsTagButton } from "../UdsTagButton";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -71,7 +70,6 @@ const CardContent = ({
   eventLocation,
   eventTime,
   title,
-  link,
   buttons,
   tags,
 }) => (
@@ -114,7 +112,6 @@ export const Card = ({
   clickable,
   image,
   imageAltText,
-  icon,
   title,
   link,
   body,

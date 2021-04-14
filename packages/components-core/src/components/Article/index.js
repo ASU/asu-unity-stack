@@ -1,13 +1,12 @@
-import { h } from "preact";
-import classNames from "classnames";
-import dompurify from "dompurify";
-import PropTypes from "prop-types";
-import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar
 } from "@fortawesome/free-regular-svg-icons";
 import { faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import dompurify from "dompurify";
+import { h } from "preact";
+import PropTypes from "prop-types";
 import {
   EmailShareButton,
   EmailIcon,
@@ -18,12 +17,12 @@ import {
   TwitterIcon,
   TwitterShareButton
 } from "react-share";
-
-import { UdsButton } from "../UdsButton";
-import { EventDate } from "../EventDate";
-import { EventLocation } from "../EventLocation";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import { EventDate } from "../EventDate";
+import { EventLocation } from "../EventLocation";
+import { UdsButton } from "../UdsButton";
 import "./index.css";
 
 const sanitizeDangerousMarkup = (content) => {
@@ -183,7 +182,7 @@ export const Article = ({
           style={{
             backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${image})`,
           }}
-        ></div>
+        />
       )}
 
       <div
@@ -342,7 +341,7 @@ export const Article = ({
 
         <div className={classNames(UdsStyles["row"])}>
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
-            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}></p>
+            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           </div>
         </div>
 
