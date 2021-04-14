@@ -13,6 +13,11 @@ module.exports = merge(common, {
     library: "AsuCookieConsent",
     umdNamedDefine: true,
   },
+  performance: {
+    hints: "warning", // "error" or false are valid too
+    maxEntrypointSize: 100000, // in bytes, default 250k
+    maxAssetSize: 100000, // in bytes
+  },
   // optimization: {
   //   minimizer: [
   //     new TerserPlugin({
