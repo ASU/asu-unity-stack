@@ -1,0 +1,39 @@
+.background-panel {
+  height: 322px;
+}
+
+.gray-7-bg {
+  background: $uds-color-base-gray-7;
+}
+
+.gray-2-bg {
+  background: $uds-color-base-gray-2;
+}
+
+.gray-1-bg {
+  background: $uds-color-base-gray-1;
+}
+
+.white-bg {
+  background: $uds-color-base-white;
+  border: 1px solid $uds-color-base-gray-3;
+}
+
+.morse-code-bg-white {
+  background: transparent $morse-code-white 0% 0% repeat padding-box;
+}
+.morse-code-bg-black {
+  background: transparent $morse-code-black 0% 0% repeat padding-box;
+}
+.network-bg-white {
+  background: transparent $network-white 0% 0% repeat padding-box;
+}
+.network-bg-black {
+  background: transparent $network-black 0% 0% repeat padding-box;
+}
+.topo-pattern-bg-white {
+  background: transparent $topo-white 0% 0% repeat padding-box;
+}
+.topo-pattern-bg-black {
+  background: transparent $topo-black 0% 0% repeat padding-box;
+}
