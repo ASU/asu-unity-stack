@@ -15,8 +15,8 @@ Cards - Table of Contents
   margin-bottom: -32px;
 }
 
-.row-spaced>.col,
-.row-spaced>div {
+.row-spaced > .col,
+.row-spaced > div {
   margin-bottom: 32px;
 }
 
@@ -46,7 +46,7 @@ Cards - Table of Contents
   box-shadow: 0 0 8px #00baff !important;
 }
 
-.card-hover>button {
+.card-hover > button {
   border: none;
   background: transparent;
   text-align: inherit;
@@ -54,7 +54,7 @@ Cards - Table of Contents
   padding: 0;
 }
 
-.card-hover>button:focus {
+.card-hover > button:focus {
   outline: 0;
   box-shadow: 0 0 8px #00baff !important;
   border: 0;
@@ -107,7 +107,7 @@ Cards - Table of Contents
   padding: 0 32px 24px 32px;
 }
 
-.card>div:last-child {
+.card > div:last-child {
   padding-bottom: 32px;
 }
 
@@ -152,18 +152,18 @@ Cards - Table of Contents
 
   .card-button .btn {
     font-size: $uds-component-button-small-font-size;
-    padding: $uds-component-button-padding-y-small $uds-component-button-padding-x-small;
+    padding: $uds-component-button-padding-y-small
+      $uds-component-button-padding-x-small;
     line-height: 1rem;
   }
 
-  .card>div:last-child {
+  .card > div:last-child {
     padding-bottom: 24px;
   }
 }
 
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
-
     .card-img-top img,
     .card-img-top {
       height: 240px;
@@ -218,7 +218,6 @@ Cards - Table of Contents
 }
 
 .card-lg {
-
   .card-img-top img,
   .card-img-top {
     height: $uds-component-card-basic-image-top-height-lg;
@@ -336,7 +335,6 @@ Cards - Table of Contents
 }
 
 .card-story.card-horizontal {
-
   .card-header,
   .card-body,
   .card-button,
@@ -366,7 +364,7 @@ Cards - Table of Contents
   font-size: 14px;
 }
 
-.card-event-details>div:first-child {
+.card-event-details > div:first-child {
   margin-right: 16px;
 }
 
@@ -374,7 +372,7 @@ Cards - Table of Contents
   display: flex;
 }
 
-.card-event-icons>div:first-child {
+.card-event-icons > div:first-child {
   width: 16px;
   margin-right: 8px;
 }
@@ -441,8 +439,24 @@ Cards - Table of Contents
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
+  &.card-maroon {
+    border-left-color: $uds-color-base-maroon;
+  }
+
+  &.card-gray {
+    border-left-color: $uds-color-base-gray-4;
+  }
+
+  &.card-dark {
+    border-left-color: $uds-color-base-gray-7;
+  }
+
   .card-header {
     padding: $uds-size-spacing-1;
+
+    & .card-icon {
+      margin-left: -($uds-size-spacing-3 / 2);
+    }
 
     &:hover {
       background-color: $uds-color-base-gray-2;
@@ -472,7 +486,7 @@ Cards - Table of Contents
       }
     }
 
-    +.card-body {
+    + .card-body {
       border-top: 1px solid $uds-color-base-gray-3;
     }
   }
@@ -480,11 +494,11 @@ Cards - Table of Contents
   .card-body {
     background-color: $uds-color-base-gray-1;
 
-    >p:first-child {
+    > p:first-child {
       margin-top: $uds-size-spacing-2;
     }
 
-    >p:last-child {
+    > p:last-child {
       margin-bottom: 0;
     }
   }
@@ -515,14 +529,14 @@ Cards - Table of Contents
     }
   }
 
-  .card-header+.card-body {
+  .card-header + .card-body {
     border-top: 0;
   }
 
   .card-body {
     background-color: transparent;
 
-    >p:first-child {
+    > p:first-child {
       margin-top: 0;
     }
   }
@@ -576,7 +590,6 @@ Cards - Table of Contents
 --------------------------------------------------------------------*/
 
 .uds-quicklinks {
-
   display: flex;
   flex-direction: column;
 
@@ -608,12 +621,11 @@ Cards - Table of Contents
   }
 
   button[aria-expanded='true'] {
-
     svg {
       transform: rotate(180deg);
     }
 
-    +.separator {
+    + .separator {
       display: none;
     }
   }
@@ -653,7 +665,6 @@ Cards - Table of Contents
 }
 
 @mixin uds-quicklinks-expanded {
-
   button {
     border-bottom: 0;
     font-size: 30px;
@@ -686,7 +697,6 @@ Cards - Table of Contents
       margin-bottom: 0;
       border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
     }
-
   }
 
   .card {
