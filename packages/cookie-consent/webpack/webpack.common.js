@@ -1,19 +1,11 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-// const path = require("path");
-
-// const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
   entry: {
     "cookie-consent": "./src/index.js",
   },
-  // output: {
-  //   path: path.resolve(PROJECT_DIR, "dist"),
-  //   filename: "cookie-consent.min.js",
-  //   publicPath: "/",
-  // },
   module: {
     rules: [
       {
