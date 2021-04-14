@@ -66,6 +66,10 @@ Cards - Table of Contents
   margin: $uds-component-card-basic-icon-top-margin;
 }
 
+.card-image-content {
+  position: relative;
+}
+
 .card-img-top img,
 .card-img-top {
   max-width: $uds-component-card-basic-image-top-width-percent;
@@ -737,4 +741,56 @@ Cards - Table of Contents
   .uds-quicklinks.uds-quicklinks-expanded-xl {
     @include uds-quicklinks-expanded;
   }
+}
+
+/*------------------------------------------------------------------
+11. Checkbox Stacked Cards
+--------------------------------------------------------------------*/
+
+.card-story-checkbox-stacked .card-header .card-title:after {
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
+}
+
+.card-story-checkbox-stacked .card-header {
+  position: relative;
+}
+
+.card-story-checkbox-stacked .card-form {
+  position: absolute;
+  bottom: $uds-component-card-checkbox-stacked-bottom;
+  color: $white;
+}
+
+.card-story-checkbox-stacked .card-footer {
+  background-color: $white;
+}
+
+/*------------------------------------------------------------------
+12. Checkbox Inline Cards
+--------------------------------------------------------------------*/
+
+.card-story-checkbox-stacked .card-header .card-title:after {
+  content: $uds-component-card-degree-title-underline-content;
+  width: $uds-component-card-degree-title-underline-width;
+  height: $uds-component-card-degree-title-underline-height;
+  display: $uds-component-card-degree-title-underline-display;
+  margin-top: $uds-component-card-degree-title-underline-margin-top;
+}
+
+.card-story-checkbox-inline .card-header {
+  position: relative;
+}
+
+.card-story-checkbox-inline .card-form {
+  position: absolute;
+  bottom: $uds-component-card-checkbox-inline-bottom;
+  color: $white;
+}
+
+.card-story-checkbox-inline .card-footer {
+  background-color: $white;
 }
