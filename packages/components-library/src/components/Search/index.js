@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 
 import { useRef, useEffect, useCallback } from "preact/compat";
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Search = ({ type, open, inputRef, mobile, ...props }) => {
 

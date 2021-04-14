@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Panel = props => {
   return <S.Panel class={props.class}>{props.children}</S.Panel>;

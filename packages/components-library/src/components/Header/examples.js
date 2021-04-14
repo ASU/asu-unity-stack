@@ -2,9 +2,10 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "preact/compat";
-import { Header } from "./";
+
 import { Button } from "../Button";
 import { BasicNavTree } from "../Nav/NavTreeExample";
+import { Header } from "./";
 
 const AnimatedHeaderTitleExample = (props) => {
   const [animate, setAnimate] = useState(false);
