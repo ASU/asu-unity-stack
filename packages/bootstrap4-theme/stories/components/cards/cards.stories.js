@@ -1064,24 +1064,22 @@ export const checkboxStackedCard = () => `
       <div class="col col-12 col-md-6 col-lg-4">
 
         <div class="card card-story-checkbox-stacked">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <div class="card-header">
-
-          <div class="card-form">
-            <form action="/action.php">
-              <div class="form-check">
-                <label class="form-check-label" for="value_1">
-                    <input type="checkbox" class="form-check-input" id="value_1" name="value_1" value="">Value 1
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="checkbox-inline" for="value_2">
-                <input type="checkbox" class="form-check-input" id="value_2" name="value_2" value="">Value 2
-                </label>
-              </div>
+          <div class="card-image-content">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+            <form class="uds-form card-form ml-4">
+              <fieldset class="card-image-fieldset">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
+                  <label class="form-check-label" for="checkbox2">Option 2</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="checkbox1" value="option1" checked>
+                  <label class="form-check-label" for="checkbox1">Option 1</label>
+                </div>
+              </fieldset>
             </form>
           </div>
-
+          <div class="card-header">
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-body">
@@ -1104,46 +1102,44 @@ export const checkboxStackedCard = () => `
 `;
 
 export const checkboxInlineCard = () => `
-  <div class="container">
-    <div class="row row-spaced pt-2 pb-2">
-      <div class="col col-12 col-md-6 col-lg-4">
+<div class="container">
+  <div class="row row-spaced pt-2 pb-2">
+    <div class="col col-12 col-md-6 col-lg-4">
 
-        <div class="card card-story-checkbox-inline">
+      <div class="card card-story-checkbox-inline">
+        <div class="card-image-content">
           <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <div class="card-header">
-
-          <div class="card-form">
-            <form action="/action.php">
-              <div class="form-check-inline">
-                <label class="form-check-label" for="value_1">
-                    <input type="checkbox" class="form-check-input" id="value_1" name="value_1" value="">Value 1
-                </label>
+          <form class="uds-form card-form ml-4">
+            <fieldset class="card-image-fieldset inline">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
+                <label class="form-check-label" for="checkbox2">Option 2</label>
               </div>
-              <div class="form-check-inline">
-                <label class="form-check-label" for="value_2">
-                    <input type="checkbox" class="form-check-input" id="value_2" name="value_2" value="">Value 2
-                </label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkbox1" value="option1" checked>
+                <label class="form-check-label" for="checkbox1">Option 1</label>
               </div>
-            </form>
-          </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-maroon">Default button</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div> <!-- .card -->
 
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-maroon">Default button</a>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">Regular text link here</a>
-          </div>
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
-          </div>
-        </div> <!-- .card -->
-
-      </div> <!-- .col -->
-    </div>
+    </div> <!-- .col -->
   </div>
+</div>
 `;

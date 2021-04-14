@@ -66,6 +66,10 @@ Cards - Table of Contents
   margin: $uds-component-card-basic-icon-top-margin;
 }
 
+.card-image-content {
+  position: relative;
+}
+
 .card-img-top img,
 .card-img-top {
   max-width: $uds-component-card-basic-image-top-width-percent;
