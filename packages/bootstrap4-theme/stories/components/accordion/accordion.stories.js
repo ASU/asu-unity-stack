@@ -156,6 +156,161 @@ export const accordion = () => `
   </div>
 `;
 
+export const accordionWithColorCombinations = () => `
+  <div class="container my-5">
+    <div class="row mt-4">
+      <div class="col-md-10">
+        <h4>Accordion with color combinations</h4>
+        <p>With some small modifications of the <strong>foldable card</strong> code, different color styles can be applied.</p>
+
+        <p>
+          Identify the element wich has the class <code>.card-foldable</code>
+        </p>
+        <ul style="padding:0 3rem;">
+          <li>Gold is the default style no change needed</li>
+          <li>To set the marron color add the class <code>.card-maroon</code></li>
+          <li>To set the gray color add the class <code>.card-gray</code></li>
+          <li>To set the dark color add the class <code>.card-dark</code></li>
+        </ul>
+
+        <div class="accordion" id="accordionExample">
+
+          <div class="card card-foldable mt-3">
+            <div class="card-header">
+              <h4>
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+                  Accordion gold color (default).
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div><!-- end .card-header -->
+            <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
+              <h4>Quatrenary Headline</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable mt-3 card-maroon">
+            <div class="card-header">
+              <h4>
+                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">
+                  Accordion maroon color.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent="#accordionExample">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable mt-3 card-gray">
+            <div class="card-header">
+              <h4>
+                <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">
+                  Accordion gray color.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cardBodyThree" class="collapse card-body" aria-labelledby="cardThree" data-parent="#accordionExample">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable mt-3 card-dark">
+            <div class="card-header">
+              <h4>
+                <a id="cardFour" class="collapsed" href="#cardBodyFour" data-toggle="collapse" data-target="#cardBodyFour" role="button" aria-expanded="false" aria-controls="cardBodyFour">
+                  Accordion dark color.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div><!-- end .card-header -->
+            <div id="cardBodyFour" class="collapse card-body" aria-labelledby="cardFour" data-parent="#accordionExample">
+              <h4>Quatrenary Headline</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+        </div><!-- end .accordion -->
+      </div>
+    </div>
+  </div>
+`;
+
+export const accordionWithIcons = () => `
+  <div class="container my-5">
+    <div class="row mt-4">
+      <div class="col-md-10">
+        <h4>Accordion with icons</h4>
+        <p>With some small modifications of the <strong>foldable card</strong> code, different icons can be inserted.</p>
+
+        <ul style="padding:0 3rem;">
+          <li>Identify the ard which you want to add an icon</li>
+          <li>
+            Add a tag &lt;i/&gt; with classes <code>.card-icon</code></li>
+            <li>Add dd one of the <code>fav-incon</code> classes provided </li>
+        </ul>
+
+        <p>
+          <br> Example:
+          &lt;i class=&quot;card-icon fas fa-dog mr-2&quot; role=&quot;img&quot; aria-label=&quot;...&quot;&gt;&lt;/i&gt;
+
+        </p>
+
+        <div class="accordion" id="accordionExample">
+
+          <div class="card card-foldable mt-3">
+            <div class="card-header">
+              <h4>
+                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+                  <i class="card-icon fas fa-dog mr-2" role="img" aria-label="..."></i>
+                  Accordion with icon and gold color.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div><!-- end .card-header -->
+            <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
+              <h4>Quatrenary Headline</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+          <div class="card card-foldable mt-3 card-maroon">
+            <div class="card-header">
+              <h4>
+                <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">
+                  <i class="card-icon fas fa-cat mr-2" role="img" aria-label="..."></i>
+                  Accordion with icon and maroon color.
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent="#accordionExample">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <h5>This is a level five headline. There's a fancy word for that too.</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            </div><!-- end .card-body -->
+          </div><!-- end .card -->
+
+        </div><!-- end .accordion -->
+      </div>
+    </div>
+  </div>
+`;
 
 export const disableFoldAtBreakpoint = () => `
   <div class="container my-5">
