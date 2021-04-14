@@ -1,8 +1,7 @@
-import { h } from "preact";
 import classNames from "classnames";
+import { h } from "preact";
 
 import { EventDate } from ".";
-
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 export default {
@@ -29,7 +28,7 @@ const Template = args => (
         )}
       >
         <div className={UdsStyles["card"]}>
-          <div className={UdsStyles["card-header"]}></div>
+          <div className={UdsStyles["card-header"]} />
           <div className={UdsStyles["card-event-details"]}>
             <EventDate {...args} />
           </div>

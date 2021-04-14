@@ -1,8 +1,5 @@
 import { h } from "preact";
 import PropTypes from "prop-types";
-import { icon } from "@fortawesome/fontawesome-svg-core";
-
-import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
 const addressFormat = (address1, address2, city, state, zip) => (
   <address>
@@ -27,7 +24,7 @@ export const EventLocation = ({
     return (
       <>
         {title && <span>{title}</span>}
-        <br></br>
+        <br />
         <i>Link start</i>
         {addressFormat(address1, address2, city, state, zip)}
         <i>Link end</i>

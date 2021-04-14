@@ -1,29 +1,28 @@
-import { h } from "preact";
+import {
+  faCalendar
+} from "@fortawesome/free-regular-svg-icons";
+import { faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
+import { h } from "preact";
 import PropTypes from "prop-types";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCalendar,
-  faEnvelope,
-  faPhone,
-  faMapMarkerAlt,
-} from "@fortawesome/free-regular-svg-icons";
-import {
+  EmailShareButton,
+  EmailIcon,
   FacebookIcon,
   FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
-  TwitterShareButton,
+  TwitterShareButton
 } from "react-share";
-
-import { UdsButton } from "../UdsButton";
-import { EventDate } from "../EventDate";
-import { EventLocation } from "../EventLocation";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import { EventDate } from "../EventDate";
+import { EventLocation } from "../EventLocation";
+import { UdsButton } from "../UdsButton";
 import "./index.css";
 
 const sanitizeDangerousMarkup = (content) => {
@@ -53,10 +52,124 @@ export const Article = ({
   zip,
   locationLink,
 }) => {
-  const hClasses = classNames(UdsStyles["col"], {
-    [UdsStyles["col-12"]]: "event" !== type,
-    [UdsStyles["col-7"]]: "event" === type,
-  });
+  const hClasses = classNames(
+    UdsStyles["col"],
+    UdsStyles["col-12"],
+    {
+      [UdsStyles["col-lg-12"]]: "event" !== type,
+      [UdsStyles["col-lg-8"]]: "event" === type,
+    }
+  );
+
+  const AuthorInfo = () => {
+    return (
+      <div className={classNames(UdsStyles["row"], UdsStyles["pb-2"])}>
+        <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
+          <div className={classNames("author", "highlight-gold")}>
+            {authorName}
+          </div>
+          {authorTitle && <div className="author-title">{authorTitle}</div>}
+          {authorEmail && (
+            <div className="author-contact">
+              <span className="icon-bg">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  color="white"
+                  size="xs"
+                  transform="shrink-2"
+                />
+              </span>
+              <Button href={`mailto: ${authorEmail}`}>{authorEmail}</Button>
+            </div>
+          )}
+          {authorPhone && (
+            <div className="author-contact">
+              <span className="icon-bg">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  color="white"
+                  size="xs"
+                  transform="shrink-2"
+                />
+              </span>
+              <Button href={`tel: ${authorPhone}`}>{authorPhone}</Button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  const EventInfo = () => {
+    return (
+      <div
+        className={classNames(
+          UdsStyles["row"],
+          UdsStyles["row-spaced"],
+          UdsStyles["mt-3"],
+          UdsStyles["pt-6"],
+          UdsStyles["pb-2"],
+          "event-info"
+        )}
+      >
+        <div
+          className={classNames(
+            UdsStyles["col"],
+            UdsStyles["col-lg-4"],
+            UdsStyles["col-md-6"],
+            UdsStyles["col-12"]
+          )}
+        >
+          <h4>For more information contact:</h4>
+          <div className="event-author">{authorName}</div>
+          <div className="event-author-title">{authorTitle}</div>
+          <div className="event-author-email">
+            <Button href={`mailto: ${authorEmail}`}>{authorEmail}</Button>
+          </div>
+        </div>
+        <div
+          className={classNames(
+            UdsStyles["col"],
+            UdsStyles["col-lg-4"],
+            UdsStyles["col-md-6"],
+            UdsStyles["col-12"]
+          )}
+        >
+          <h4>Share this event:</h4>
+          <div className="article-social-media">
+            <FacebookShareButton url={articleUrl} quote={title}>
+              <FacebookIcon
+                size={28}
+                borderRadius={4}
+                bgStyle={{ fill: "maroon" }}
+              />
+            </FacebookShareButton>
+            <TwitterShareButton url={articleUrl} quote={title}>
+              <TwitterIcon
+                size={28}
+                borderRadius={4}
+                bgStyle={{ fill: "maroon" }}
+              />
+            </TwitterShareButton>
+            <EmailShareButton url={authorEmail} quote={title}>
+              <EmailIcon
+                size={28}
+                borderRadius={4}
+                bgStyle={{ fill: "maroon" }}
+              />
+            </EmailShareButton>
+            <LinkedinShareButton url={articleUrl} quote={title}>
+              <LinkedinIcon
+                size={28}
+                borderRadius={4}
+                bgStyle={{ fill: "maroon" }}
+              />
+            </LinkedinShareButton>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -69,7 +182,7 @@ export const Article = ({
           style={{
             backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${image})`,
           }}
-        ></div>
+        />
       )}
 
       <div
@@ -82,8 +195,8 @@ export const Article = ({
         <div
           className={classNames(
             UdsStyles["row"],
-            UdsStyles["pt-2"],
-            UdsStyles["pb-4"]
+            UdsStyles["pt-4"],
+            UdsStyles["pb-3"]
           )}
         >
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
@@ -114,12 +227,24 @@ export const Article = ({
             <h2>{title}</h2>
           </div>
           {"event" === type && (
-            <div className={classNames(UdsStyles["col"], UdsStyles["col-5"])}>
-              <div className={UdsStyles["card-button"]}>
+            <div
+              className={classNames(
+                UdsStyles["col"],
+                UdsStyles["col-lg-4"],
+                UdsStyles["col-xs-12"]
+              )}
+            >
+              <div
+                className={classNames(UdsStyles["card-button"], "uds-button")}
+              >
                 <UdsButton color="maroon">Attend on Zoom</UdsButton>
               </div>
-              <div className={UdsStyles["card-button"]}>
-                <UdsButton>Add to calendar</UdsButton>
+              <div
+                className={classNames(UdsStyles["card-button"], "uds-button")}
+              >
+                <UdsButton color="gray" size="small">
+                  Add to calendar
+                </UdsButton>
               </div>
             </div>
           )}
@@ -130,16 +255,40 @@ export const Article = ({
             className={classNames(
               UdsStyles["row"],
               UdsStyles["row-spaced"],
-              UdsStyles["pt-2"],
+              UdsStyles["pt-3"],
               UdsStyles["pb-2"]
             )}
           >
-            <div className={classNames(UdsStyles["col"], UdsStyles["col-6"])}>
-              <FontAwesomeIcon icon={farCalendar} />
+            <div
+              className={classNames(
+                UdsStyles["col"],
+                UdsStyles["col-lg-4"],
+                UdsStyles["col-md-6"],
+                UdsStyles["col-sm-12"]
+              )}
+            >
+              <FontAwesomeIcon
+                icon={faCalendar}
+                size="lg"
+                transform="shrink-2"
+              />
+              <h4>Date and time:</h4>
               <EventDate startTime={startTime} stopTime={stopTime} />
             </div>
-            <div className={classNames(UdsStyles["col"], UdsStyles["col-6"])}>
-              <FontAwesomeIcon icon={farMapMarkerAlt} />
+            <div
+              className={classNames(
+                UdsStyles["col"],
+                UdsStyles["col-lg-4"],
+                UdsStyles["col-md-6"],
+                UdsStyles["col-sm-12"]
+              )}
+            >
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                size="lg"
+                transform="shrink-2"
+              />
+              <h4>Location:</h4>
               <EventLocation
                 title={locationTitle}
                 address1={address1}
@@ -158,29 +307,28 @@ export const Article = ({
             className={classNames(
               UdsStyles["row"],
               UdsStyles["row-spaced"],
-              UdsStyles["pt-2"],
-              UdsStyles["pb-2"]
+              UdsStyles["pt-2"]
             )}
           >
             <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
               <div className="article-social-media">
-                <TwitterShareButton url={articleUrl} quote={title}>
-                  <TwitterIcon
-                    size={24}
-                    borderRadius={4}
-                    bgStyle={{ fill: "maroon" }}
-                  />
-                </TwitterShareButton>
                 <FacebookShareButton url={articleUrl} quote={title}>
                   <FacebookIcon
-                    size={24}
+                    size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
                   />
                 </FacebookShareButton>
+                <TwitterShareButton url={articleUrl} quote={title}>
+                  <TwitterIcon
+                    size={28}
+                    borderRadius={4}
+                    bgStyle={{ fill: "maroon" }}
+                  />
+                </TwitterShareButton>
                 <LinkedinShareButton url={articleUrl} quote={title}>
                   <LinkedinIcon
-                    size={24}
+                    size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
                   />
@@ -191,32 +339,14 @@ export const Article = ({
           </div>
         )}
 
-        <div
-          className={classNames(
-            UdsStyles["row"],
-            UdsStyles["row-spaced"],
-            UdsStyles["pt-2"],
-            UdsStyles["pb-2"]
-          )}
-        >
+        <div className={classNames(UdsStyles["row"])}>
           <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
-            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}></p>
-            <div>{authorName}</div>
-            {authorTitle && <div>{authorTitle}</div>}
-            {authorEmail && (
-              <div>
-                <FontAwesomeIcon icon={farEnvelope} />
-                {authorEmail}
-              </div>
-            )}
-            {authorPhone && (
-              <div>
-                <FontAwesomeIcon icon={farPhone} />
-                {authorPhone}
-              </div>
-            )}
+            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           </div>
         </div>
+
+        {"news" === type && AuthorInfo()}
+        {"event" === type && EventInfo()}
       </div>
     </>
   );

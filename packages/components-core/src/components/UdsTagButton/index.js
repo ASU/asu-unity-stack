@@ -1,5 +1,5 @@
-import { h } from "preact";
 import classNames from "classnames";
+import { h } from "preact";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 
@@ -13,7 +13,7 @@ export const UdsTagButton = ({ color, children, ...props }) => {
   });
 
   return (
-    <Button className={btnClasses} {...props}>
+    <Button className={btnClasses} tag="a" {...props}>
       {children}
     </Button>
   );

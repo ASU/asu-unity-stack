@@ -1,9 +1,9 @@
-import { h } from "preact";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import { h } from "preact";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
 
