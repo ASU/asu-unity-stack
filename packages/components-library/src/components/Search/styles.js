@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { cx, css } from "@emotion/css";
+
 import { breakpointForMin } from "../../theme";
 
 /** Search */

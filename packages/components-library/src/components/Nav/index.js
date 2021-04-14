@@ -1,16 +1,17 @@
 import { useEffect, useState, useMemo, useRef, createRef, forwardRef, useImperativeHandle } from "preact/compat";
 import PropTypes from "prop-types";
+
+import { Button } from "../Button";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
 import HoverDropNav from "./HoverDropNav";
-import { Button } from "../Button";
 import * as S from "./styles";
 
 /**
  * Render entire Nav.
  * @param {} props
  */
-const Nav = forwardRef (({
+const Nav = forwardRef(({
   navTree,
   width,
   mobileOpen,

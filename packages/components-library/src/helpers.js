@@ -1,6 +1,7 @@
 
 /* eslint-disable react/prop-types */
 import { h, hydrate, render } from "preact";
+
 import { Header, Login } from "./";
 
 const HydratePreact = (component, props, target) => {
@@ -123,9 +124,9 @@ const initHeader = (props, target = "headerContainer", hydrate = false, rootOfDO
   };
 
   if (hydrate) {
-    HydratePreact(Header, headerProps, rootOfDOM.querySelector('#' + target));
+    HydratePreact(Header, headerProps, rootOfDOM.querySelector(`#${  target}`));
   } else {
-    RenderPreact(Header, headerProps, rootOfDOM.querySelector('#' + target));
+    RenderPreact(Header, headerProps, rootOfDOM.querySelector(`#${  target}`));
   }
 };
 

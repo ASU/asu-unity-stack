@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Heading = ({ type, ...props }) => {
   switch (type) {

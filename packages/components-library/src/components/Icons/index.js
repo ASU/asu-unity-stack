@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import PropTypes from "prop-types";
+
 import {
   IconMobile,
   IconChevronDown,
@@ -14,7 +16,6 @@ import {
   IconBars,
   IconHome,
 } from "./styles";
-import PropTypes from "prop-types";
 
 const Icon = ({ type, ...props }) => {
   switch (type) {

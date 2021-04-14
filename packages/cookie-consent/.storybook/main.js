@@ -1,12 +1,17 @@
-const path = require("path");
-
 module.exports = {
-  stories: [
-    '../stories/*.stories.js',
-  ],
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    '@storybook/addon-knobs',
-    '@storybook/addon-viewport',
-    '@storybook/addon-a11y',
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "storybook-css-modules-preset",
+    "@storybook/preset-scss",
   ],
+  webpackFinal: config => {
+    config.resolve.alias = {
+      "react": "preact/compat",
+      "react-dom": "preact/compat",
+    };
+
+    return config;
+  },
 };

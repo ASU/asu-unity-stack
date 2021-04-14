@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "license": "UNLICENSED",
+  "volta": {
+    "node": "12.22.1",
+    "yarn": "1.22.10"
+  },
   "workspaces": [
     "packages/*"
   ],
@@ -35,24 +39,35 @@
     "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "devDependencies": {
+    "@americanexpress/purgecss-loader": "^2.0.0",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/config-lerna-scopes": "^12.0.1",
     "@semantic-release/git": "^9.0.0",
+    "clean-webpack-plugin": "^3.0.0",
     "commitizen": "^4.2.3",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-minimizer-webpack-plugin": "^2.0.0",
     "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-import-helpers": "^1.1.0",
     "husky": "^6.0.0",
     "lerna": "^3.22.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "purgecss-webpack-plugin": "^4.0.3",
     "rimraf": "^3.0.2",
     "semantic-release": "^17.0.8",
     "semantic-release-monorepo": "^7.0.2",
     "start-server-and-test": "^1.9.1",
-    "webpack": "^5.3.0",
-    "webpack-cli": "^4.1.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack": "^5.32.0",
+    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dashboard": "^3.3.1",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3",
+    "webpack-node-externals": "^2.5.0"
   },
   "dependencies": {},
-  "version": "0.0.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
