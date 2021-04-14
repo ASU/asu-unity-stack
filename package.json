@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "license": "UNLICENSED",
+  "volta": {
+    "node": "12.22.1",
+    "yarn": "1.22.10"
+  },
   "workspaces": [
     "packages/*"
   ],
