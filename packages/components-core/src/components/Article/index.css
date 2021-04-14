@@ -6,6 +6,12 @@
   font-size: 40px;
 }
 
+.news-container img,
+.event-container img {
+  width: 100%;
+  max-width: fit-content;
+}
+
 h4 {
   margin-top: 0;
 }
