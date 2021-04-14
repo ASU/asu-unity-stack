@@ -82,9 +82,6 @@ a.text-gold:hover, a.text-gold:focus {
 a.text-gold:visited:not(.btn) {
   color: #daa000 !important;
 }
-a:visited:not(.btn) {
-  color: $uds-color-base-darkmaroon;
-}
 
 @include media-breakpoint-up(lg) {
   .btn {
