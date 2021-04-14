@@ -62,7 +62,6 @@
     "webpack-node-externals": "^2.5.0"
   },
   "dependencies": {},
-  "version": "0.0.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
