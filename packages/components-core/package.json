@@ -10,6 +10,7 @@
     "url": "git+https://github.com/ASU/asu-unity-stack.git"
   },
   "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "format": "prettier --write ./src",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
@@ -34,11 +35,12 @@
     "@storybook/addon-links": "^6.2.3",
     "@storybook/preact": "^6.2.3",
     "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.0",
     "classnames": "^2.2.6",
     "core-js": "^3.10.0",
+    "css-loader": "^5.2.0",
     "date-fns": "^2.19.0",
     "dompurify": "^2.2.7",
+    "eslint-config-preact": "^1.1.3",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
     "phone-fns": "^3.2.3",

@@ -45,6 +45,8 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-minimizer-webpack-plugin": "^2.0.0",
     "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-import-helpers": "^1.1.0",
     "husky": "^6.0.0",
     "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^1.4.1",
