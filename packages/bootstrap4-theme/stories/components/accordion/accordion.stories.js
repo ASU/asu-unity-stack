@@ -256,26 +256,57 @@ export const accordionWithIcons = () => `
         <p>With some small modifications of the <strong>foldable card</strong> code, different icons can be inserted.</p>
 
         <ul style="padding:0 3rem;">
-          <li>Identify the ard which you want to add an icon</li>
+          <li>Identify the card which you want to add the icon</li>
+          <li>Identify element header with class <code>.card-header</code>
+            and add the class <code>.card-header-icon</code>
+          </li>
           <li>
-            Add a tag &lt;i/&gt; with classes <code>.card-icon</code></li>
-            <li>Add dd one of the <code>fav-incon</code> classes provided </li>
+            Wrap the cart title content into a new
+            <code>
+              &lt;span class=&quot;card-icon&quot;&gt; ...content  &lt;/span&gt;
+            </code> tag
+            <br/> Example:
+            <br/>
+
+            <code style="background: #e3e1e1; display: block; padding: 5px; border: 1px solid gray;">
+            <pre style="margin-left: -100px;">
+              &lt;div class=&quot;card card-foldable mt-3&quot;&gt;
+                &lt;div class=&quot;card-header card-header-icon&quot;&gt;
+                  &lt;h4&gt;
+                    &lt;a
+                      id=&quot;cardOne&quot;
+                      class=&quot;collapsed&quot;
+                      href=&quot;#cardBodyOne&quot;
+                      data-toggle=&quot;collapse&quot;
+                      data-target=&quot;#cardBodyOne&quot;
+                      role=&quot;button&quot;
+                      aria-expanded=&quot;false&quot;
+                      aria-controls=&quot;cardBodyOne&quot;&gt;
+
+                      &lt;span class=&quot;card-icon&quot;&gt;
+                          &lt;i class=&quot;fas fa-dog mr-2&quot; role=&quot;img&quot; aria-label=&quot;...&quot;&gt;&lt;/i&gt;
+                          Accordion with icon and gold color.
+                      &lt;/span&gt;
+
+                      &lt;span class=&quot;fas fa-chevron-up&quot;&gt;&lt;/span&gt;
+
+                    &lt;/a&gt;
+                  &lt;/h4&gt;
+                &lt;/div&gt;
+                </pre>
+                </code>
         </ul>
-
-        <p>
-          <br> Example:
-          &lt;i class=&quot;card-icon fas fa-dog mr-2&quot; role=&quot;img&quot; aria-label=&quot;...&quot;&gt;&lt;/i&gt;
-
-        </p>
 
         <div class="accordion" id="accordionExample">
 
           <div class="card card-foldable mt-3">
-            <div class="card-header">
+            <div class="card-header card-header-icon">
               <h4>
                 <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
-                  <i class="card-icon fas fa-dog mr-2" role="img" aria-label="..."></i>
-                  Accordion with icon and gold color.
+                  <span class="card-icon">
+                      <i class="fas fa-dog mr-2" role="img" aria-label="..."></i>
+                      Accordion with icon and gold color.
+                  </span>
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
@@ -289,11 +320,13 @@ export const accordionWithIcons = () => `
           </div><!-- end .card -->
 
           <div class="card card-foldable mt-3 card-maroon">
-            <div class="card-header">
+            <div class="card-header card-header-icon">
               <h4>
                 <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">
-                  <i class="card-icon fas fa-cat mr-2" role="img" aria-label="..."></i>
-                  Accordion with icon and maroon color.
+                  <span class="card-icon">
+                      <i class="fas fa-cat mr-2" role="img" aria-label="..."></i>
+                      Accordion with icon and maroon color.
+                  </span>
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>

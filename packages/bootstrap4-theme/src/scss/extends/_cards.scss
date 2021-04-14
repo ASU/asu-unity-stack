@@ -454,8 +454,11 @@ Cards - Table of Contents
   .card-header {
     padding: $uds-size-spacing-1;
 
-    & .card-icon {
-      margin-left: -($uds-size-spacing-3 / 2);
+    &.card-header-icon {
+      & .card-icon {
+        display: flex;
+        margin-left: -($uds-size-spacing-3 / 2);
+      }
     }
 
     &:hover {
@@ -478,6 +481,7 @@ Cards - Table of Contents
         svg.fa-chevron-up {
           margin-left: $uds-size-spacing-3;
           transition-duration: $uds-time-transition-base;
+          align-self: flex-start;
         }
 
         &.collapsed svg.fa-chevron-up {
