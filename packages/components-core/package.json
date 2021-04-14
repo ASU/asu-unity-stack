@@ -12,8 +12,9 @@
   "scripts": {
     "format": "prettier --write ./src",
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "start:dev": "webpack serve -c webpack/webpack.dev.js",
+    "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
+    "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
