@@ -202,6 +202,7 @@ const UniversalNavLinks = ({ children, ...props }) => {
             padding: 0.25rem 0.5rem;
             color: #484848;
             margin: 0;
+            text-transform: capitalize;
 
             &:hover{
               text-decoration: underline;
