@@ -97,7 +97,6 @@ $glide-modifier-separator: "--" !default;
       border: 1px solid #d0d0d0; // rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       font-size: 2rem;
-      box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
       text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
       opacity: 1;
       cursor: pointer;
@@ -106,7 +105,7 @@ $glide-modifier-separator: "--" !default;
       line-height: 1;
 
       &.glide__arrow--disabled {
-        color: #d0d0d0;
+        color: #e8e8e8;
         background-color: #fafafa;
         border: 1px solid #e8e8e8;
         opacity: 1;
@@ -160,8 +159,7 @@ $glide-modifier-separator: "--" !default;
     transition: all 300ms ease-in-out;
     cursor: pointer;
     line-height: 0;
-    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
-    margin: 0 0.25em;
+    margin: 0 0.5em;
 
     &:focus {
       outline: none;
