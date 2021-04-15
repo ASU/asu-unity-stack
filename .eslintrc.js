@@ -1,5 +1,7 @@
 module.exports = {
+  root: true,
   env: {
+    browser: true,
     es2021: true,
   },
   parserOptions: {
@@ -15,14 +17,18 @@ module.exports = {
     "import/ignore": "node_modules",
   },
   rules: {
-    "no-unused-vars": "warn",
-    "no-console": "warn",
-    "no-undef": "error",
+    // "no-unused-vars": "warn",
+    // "no-console": "warn",
+    // "no-undef": "error",
     "import-helpers/order-imports": [
       "warn",
       {
         newlinesBetween: "always", // new line between groups
-        groups: ["module", ["parent", "sibling", "index"]],
+        groups: [
+          "module",
+          ["/^Components/", "/^Vendor/"],
+          [("parent", "sibling", "index")],
+        ],
         alphabetize: { order: "asc", ignoreCase: true },
       },
     ],

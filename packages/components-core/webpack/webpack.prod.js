@@ -18,15 +18,4 @@ module.exports = merge(common, {
     maxEntrypointSize: 100000, // in bytes, default 250k
     maxAssetSize: 100000, // in bytes
   },
-  // optimization: {
-  //   minimizer: [
-  //     new TerserPlugin({
-  //       parallel: true,
-  //       terserOptions: {
-  //         ecma: 6,
-  //       },
-  //     }),
-  //     new CssMinimizerPlugin(),
-  //   ],
-  // },
 });

@@ -6,6 +6,7 @@ import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
 import { Fragment } from "preact/compat";
 
 import { Header } from ".";
+
 import {
   BasicNavTree,
   NavTreeWithButtons,

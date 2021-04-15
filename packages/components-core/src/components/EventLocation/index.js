@@ -1,4 +1,4 @@
-import { h } from "preact";
+import React from "react";
 import PropTypes from "prop-types";
 
 const addressFormat = (address1, address2, city, state, zip) => (

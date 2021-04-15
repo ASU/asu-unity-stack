@@ -1,6 +1,6 @@
 import { cx, css } from "@emotion/css";
 
-const sharedStyle = css`
+const sharedStyle = `
   font-weight: 700;
   text-align: left;
   opacity: 1;

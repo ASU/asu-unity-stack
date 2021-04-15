@@ -79,7 +79,7 @@ const CardBody = ({ show, id, ...props }) => {
           min-height: 1px;
           padding: 1.25rem;
           ${!show &&
-          css`
+          `
             display: none;
           `}
         `,
@@ -126,7 +126,7 @@ const FoldableCardBody = ({ show, id, ...props }) => {
       class={cx(
         css`
           ${show &&
-          css`
+          `
             border-top: 1px solid #d0d0d0;
           `}
         `,
@@ -182,7 +182,7 @@ const FoldableCardHeader = ({ show, id, ...props }) => {
 
         ${
           show
-            ? css`
+            ? `
                 .fa-chevron-down {
                   transform: rotate(-180deg);
                 }

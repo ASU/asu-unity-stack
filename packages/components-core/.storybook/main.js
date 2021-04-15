@@ -1,3 +1,6 @@
+const path = require("path");
+const PROJECT_DIR = path.resolve(__dirname, "../");
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -6,11 +9,15 @@ module.exports = {
     "storybook-css-modules-preset",
   ],
   webpackFinal: config => {
-    config.resolve.alias = {
-      "react": "preact/compat",
-      "react-dom": "preact/compat",
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          Components: path.resolve(PROJECT_DIR, "src/components/"),
+          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
+        },
+      },
     };
-
-    return config;
   },
 };

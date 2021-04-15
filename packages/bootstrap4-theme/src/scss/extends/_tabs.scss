@@ -8,8 +8,31 @@
   font-weight: bold;
   font-size: 24px;
 }
+.darkmode .nav-tabs .nav-link {
+  color: #fafafa;
+  background-color: transparent;
+}
+.darkmode .nav-tabs .nav-link.active {
+  color: #ffc627;
+  background-color: transparent;
+}
+.smokemode .nav-tabs .nav-link {
+  background-color: transparent;
+}
+.smokemode .nav-tabs .nav-link.active {
+  background-color: transparent;
+}
+.background-darkmode {
+  background-color: #191919;
+}
+.background-smokemode {
+  background-color: #E8E8E8;
+}
 .nav-tabs .nav-link.active {
   border-bottom: 8px solid $uds-color-base-maroon;
+}/* hover - maroon text */
+.darkmode .nav-tabs .nav-link.active {
+  border-bottom: 8px solid #ffc627;
 }/* hover - maroon text */
 .mobile-tabs {
   flex-wrap: inherit;
@@ -30,6 +53,10 @@
 .mobile-tabs .nav-tabs .nav-link:hover,
 .mobile-tabs .nav-tabs .nav-link:focus, {
   color: $uds-color-base-maroon;
+}
+.darkmode.mobile-tabs .nav-tabs .nav-link:hover,
+.darkmode.mobile-tabs .nav-tabs .nav-link:focus, {
+  color: #ffc627;
 }
 .mobile-tabs .nav-tabs::-webkit-scrollbar {
   /*display: none;*/
@@ -56,13 +83,6 @@
 }
 */
 
-/* TODO move this to a separate file */
-/* scrolling menu styles */
-
-
-/* TODO hover style */
-
-
 .scroll-control-prev {
   position: absolute;
   height: 100%;
@@ -79,6 +99,7 @@
   background: rgba(0,0,0,0);
   background: linear-gradient(90deg, rgba(25,25,25,0) 0%, rgba(25,25,25,0.25) 100%);
 }
+
 .scroll-control-prev span.carousel-control-prev-icon,
 .scroll-control-next span.carousel-control-next-icon {
   background-size: 60% 60%;

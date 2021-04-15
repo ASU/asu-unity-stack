@@ -8,8 +8,9 @@ import expect  from "expect";
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent, screen, waitFor } from "@testing-library/preact";
 
-import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
 import { Header } from "./";
+
+import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
 
 import { matchers } from "@emotion/jest";
 

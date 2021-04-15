@@ -1,5 +1,7 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const CopyPlugin = require("copy-webpack-plugin");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const PurgecssPlugin = require("purgecss-webpack-plugin");
@@ -11,7 +13,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
   entry: {
-    lib: "./src/index.js",
+    libCore: "./src/index.js",
   },
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
@@ -76,37 +78,30 @@ module.exports = {
     //   paths: glob.sync(`${PROJECT_DIR}src/**/*`, { nodir: true }),
     // }),
     // new BundleAnalyzerPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(
+            PROJECT_DIR,
+            "node_modules/@asu-design-system/bootstrap4-theme/dist/css/bootstrap-asu.min.css"
+          ),
+          to: path.resolve(
+            PROJECT_DIR,
+            "vendor/css/bootstrap-asu.min.module.css"
+          ),
+          force: true,
+        },
+      ],
+    }),
   ],
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     new CssMinimizerPlugin({
-  //       minimizerOptions: {
-  //         preset: [
-  //           "default",
-  //           {
-  //             discardComments: { removeAll: true },
-  //           },
-  //         ],
-  //       },
-  //     }),
-  //   ],
-  // },
   resolve: {
-    extensions: [".js", ".jsx"],
     alias: {
-      "react": "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-      // Must be below test-utils
+      Components: path.resolve(PROJECT_DIR, "src/components/"),
+      Vendor: path.resolve(PROJECT_DIR, "vendor/"),
     },
   },
   externals: {
-    preact: {
-      commonjs: "preact",
-      commonjs2: "preact",
-      amd: "preact",
-      root: "preact",
-    },
+    "react": "React",
+    "react-dom": "ReactDOM",
   },
 };

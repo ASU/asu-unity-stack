@@ -1,11 +1,11 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { h } from "preact";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 
-import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 export const UdsCloseButton = ({ color, ...rest }) => {
   const btnClasses = classNames(
