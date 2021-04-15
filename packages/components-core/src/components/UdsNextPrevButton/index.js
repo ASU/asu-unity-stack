@@ -4,11 +4,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { Button } from "reactstrap";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
+import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
 
 export const UdsNextPrevButton = ({ color, direction, ...rest }) => {
   const btnClasses = classNames(
@@ -22,7 +22,7 @@ export const UdsNextPrevButton = ({ color, direction, ...rest }) => {
     return (
       <Button className={btnClasses} {...rest}>
         <FontAwesomeIcon icon={faChevronRight} />
-        <span class="sr-only">Next</span>
+        <span className="sr-only">Next</span>
       </Button>
     );
   }
@@ -30,7 +30,7 @@ export const UdsNextPrevButton = ({ color, direction, ...rest }) => {
   return (
     <Button className={btnClasses} {...rest}>
       <FontAwesomeIcon icon={faChevronLeft} />
-      <span class="sr-only">Previous</span>
+      <span className="sr-only">Previous</span>
     </Button>
   );
 };

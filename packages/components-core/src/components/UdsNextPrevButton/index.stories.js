@@ -18,8 +18,8 @@ export default {
 };
 
 const Template = args => (
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
+  <div className="container-fluid">
+    <div className="col col-sm-12 p-3">
       <UdsNextPrevButton {...args} />
     </div>
   </div>

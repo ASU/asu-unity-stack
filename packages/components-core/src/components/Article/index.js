@@ -1,12 +1,14 @@
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import {
-  faCalendar
-} from "@fortawesome/free-regular-svg-icons";
-import { faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+  faPhone,
+  faEnvelope,
+  faMapMarkerAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import {
   EmailShareButton,
   EmailIcon,
@@ -15,21 +17,21 @@ import {
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
-  TwitterShareButton
+  TwitterShareButton,
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-import { EventDate } from "../EventDate";
-import { EventLocation } from "../EventLocation";
-import { UdsButton } from "../UdsButton";
+import { EventDate } from "Components/EventDate";
+import { EventLocation } from "Components/EventLocation";
+import { UdsButton } from "Components/UdsButton";
+import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
 import "./index.css";
 
-const sanitizeDangerousMarkup = (content) => {
+const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
 
   return { __html: sanitizer(content) };
-}
+};
 
 export const Article = ({
   articleUrl,
@@ -52,14 +54,10 @@ export const Article = ({
   zip,
   locationLink,
 }) => {
-  const hClasses = classNames(
-    UdsStyles["col"],
-    UdsStyles["col-12"],
-    {
-      [UdsStyles["col-lg-12"]]: "event" !== type,
-      [UdsStyles["col-lg-8"]]: "event" === type,
-    }
-  );
+  const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
+    [UdsStyles["col-lg-12"]]: type !== "event",
+    [UdsStyles["col-lg-8"]]: type === "event",
+  });
 
   const AuthorInfo = () => {
     return (
@@ -98,7 +96,7 @@ export const Article = ({
         </div>
       </div>
     );
-  }
+  };
 
   const EventInfo = () => {
     return (
@@ -169,11 +167,11 @@ export const Article = ({
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <>
-      {image && "event" !== type && (
+      {image && type !== "event" && (
         <div
           className={classNames(
             UdsStyles["uds-hero"],
@@ -226,7 +224,7 @@ export const Article = ({
           <div className={hClasses}>
             <h2>{title}</h2>
           </div>
-          {"event" === type && (
+          {type === "event" && (
             <div
               className={classNames(
                 UdsStyles["col"],
@@ -250,7 +248,7 @@ export const Article = ({
           )}
         </div>
 
-        {"event" === type && (
+        {type === "event" && (
           <div
             className={classNames(
               UdsStyles["row"],
@@ -302,7 +300,7 @@ export const Article = ({
           </div>
         )}
 
-        {"event" !== type && (
+        {type !== "event" && (
           <div
             className={classNames(
               UdsStyles["row"],
@@ -345,8 +343,8 @@ export const Article = ({
           </div>
         </div>
 
-        {"news" === type && AuthorInfo()}
-        {"event" === type && EventInfo()}
+        {type === "news" && AuthorInfo()}
+        {type === "event" && EventInfo()}
       </div>
     </>
   );

@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { Button } from "reactstrap";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
+import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
 
 export const UdsTagButton = ({ color, children, ...props }) => {
   const btnClasses = classNames(UdsStyles["btn"], UdsStyles[`btn-tag`], {

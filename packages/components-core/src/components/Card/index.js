@@ -3,13 +3,13 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-import { EventLocation } from "../EventLocation";
-import { UdsButton } from "../UdsButton";
-import { UdsTagButton } from "../UdsTagButton";
+import { EventLocation } from "Components/EventLocation";
+import { UdsButton } from "Components/UdsButton";
+import { UdsTagButton } from "Components/UdsTagButton";
+import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -18,7 +18,7 @@ const sanitizeDangerousMarkup = content => {
 };
 
 const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
-  if ("inline" === eventFormat) {
+  if (eventFormat === "inline") {
     return (
       <div className={UdsStyles["card-event-details"]}>
         <div className={UdsStyles["card-event-icons"]}>
@@ -144,19 +144,17 @@ export const Card = ({
           {!image && icon} */}
         {horizontal ? (
           <div className={UdsStyles["card-content-wrapper"]}>
-            {
-              <CardContent
-                type={type}
-                body={body}
-                eventFormat={eventFormat}
-                eventLocation={eventLocation}
-                eventTime={eventTime}
-                title={title}
-                link={link}
-                buttons={buttons}
-                tags={tags}
-              />
-            }
+            <CardContent
+              type={type}
+              body={body}
+              eventFormat={eventFormat}
+              eventLocation={eventLocation}
+              eventTime={eventTime}
+              title={title}
+              link={link}
+              buttons={buttons}
+              tags={tags}
+            />
           </div>
         ) : (
           <CardContent

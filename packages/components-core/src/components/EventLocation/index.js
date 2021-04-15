@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 const addressFormat = (address1, address2, city, state, zip) => (
   <address>

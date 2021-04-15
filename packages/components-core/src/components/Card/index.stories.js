@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import React from "react";
 
+import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
+
 import { Card } from ".";
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 export default {
   title: "UDS/Card",
@@ -105,7 +106,6 @@ Story.args = {
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
     { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
-    { color: "gold", size: "small", label: "CTA button", clickTarget: "#" },
   ],
   tags: [
     { color: "gray", label: "tag1", clickTarget: "#" },
@@ -147,5 +147,42 @@ HorizontalStoryCard.args = {
     { color: "gray", label: "tag1", clickTarget: "#" },
     { color: "gray", label: "tag2", clickTarget: "#" },
     { color: "gray", label: "tag3", clickTarget: "#" },
+  ],
+};
+
+export const AsuNewsStory = Template.bind({});
+AsuNewsStory.args = {
+  type: "story",
+  width: "25%",
+  horizontal: false,
+  clickable: false,
+  image: "https://picsum.photos/300/200",
+  imageAltText: "An example image",
+  title: "ASU News Story title",
+  body:
+    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  buttons: [
+    {
+      color: "maroon",
+      size: "default",
+      label: "Read at ASU News",
+      clickTarget: "#",
+    },
+  ],
+};
+
+export const GlobalFuturesStory = Template.bind({});
+GlobalFuturesStory.args = {
+  type: "story",
+  width: "25%",
+  horizontal: false,
+  clickable: false,
+  image: "https://picsum.photos/300/200",
+  imageAltText: "An example image",
+  title: "GFL News Story title",
+  body:
+    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  buttons: [
+    { color: "maroon", size: "default", label: "Read more", clickTarget: "#" },
   ],
 };
