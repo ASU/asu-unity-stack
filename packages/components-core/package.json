@@ -10,7 +10,7 @@
     "url": "git+https://github.com/ASU/asu-unity-stack.git"
   },
   "scripts": {
-    "lint:disabled": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
