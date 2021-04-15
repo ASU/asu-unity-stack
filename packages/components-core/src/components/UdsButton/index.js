@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 
-import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 export const UdsButton = ({color, size, children, ...rest}) => {
   const btnClasses = classNames(UdsStyles["btn"], {

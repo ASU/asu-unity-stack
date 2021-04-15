@@ -19,7 +19,7 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 
-import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { EventDate } from "../EventDate";
 import { EventLocation } from "../EventLocation";
 import { UdsButton } from "../UdsButton";
