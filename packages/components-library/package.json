@@ -17,7 +17,6 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
     "build": "webpack --progress && yarn prerender",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
