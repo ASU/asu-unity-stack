@@ -36,30 +36,30 @@ export const approvedBackgroundPatterns = () => `
         <h3>Learn to thrive morse code</h3>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel morse-code-bg-white m-3"></div>
+        <div class="background-panel bg morse-code-white m-3"></div>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel morse-code-bg-black m-3"></div>
+        <div class="background-panel bg morse-code-black m-3"></div>
       </div>
 
       <div class="col-12 pb-3">
         <h3>Network</h3>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel network-bg-white m-3"></div>
+        <div class="background-panel bg network-white m-3"></div>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel network-bg-black m-3"></div>
+        <div class="background-panel bg network-black m-3"></div>
       </div>
 
       <div class="col-12 pb-3">
         <h3>A Mountain topographical map</h3>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel topo-pattern-bg-white m-3"></div>
+        <div class="background-panel bg topo-white m-3"></div>
       </div>
       <div class="col-sm-6">
-        <div class="background-panel topo-pattern-bg-black m-3"></div>
+        <div class="background-panel bg topo-black m-3"></div>
       </div>
     </div>
   </div>
