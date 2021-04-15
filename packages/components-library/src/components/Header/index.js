@@ -152,12 +152,12 @@ const Header = ({
       }
       data-onclick-identifier = "top-of-header"
     >
-      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action"></div>
+      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action" />
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
-          <a href="https://www.asu.edu/">ASU home</a>
+          <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
+          <a href="https://www.asu.edu/colleges/">Colleges and Schools</a>
           <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
         </S.UniversalNavLinks>
         <UniversalSearch

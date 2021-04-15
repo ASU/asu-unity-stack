@@ -1479,7 +1479,7 @@ exports[`Header Snapshot test 1`] = `
           <a
             href="https://www.asu.edu/"
           >
-            ASU home
+            ASU Home
           </a>
           <a
             href="https://my.asu.edu/"
@@ -1489,7 +1489,7 @@ exports[`Header Snapshot test 1`] = `
           <a
             href="https://www.asu.edu/colleges/"
           >
-            Colleges and schools
+            Colleges and Schools
           </a>
           <div
             class="login-status"

@@ -104,7 +104,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half
       $uds-size-spacing-1;
     margin-right: $uds-size-spacing-1;
-    text-transform: capitalize;
 
     &:hover {
       text-decoration: underline;
