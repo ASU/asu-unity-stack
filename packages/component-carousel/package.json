@@ -14,8 +14,7 @@
     "prop-types": "^15.7.2"
   },
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "build": "webpack --mode=production --progress",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
