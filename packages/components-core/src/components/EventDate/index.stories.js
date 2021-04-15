@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { h } from "preact";
+import React from "react";
 
 import { EventDate } from ".";
 import UdsStyles from "../../../assets/css/bootstrap-asu.min.module.css";

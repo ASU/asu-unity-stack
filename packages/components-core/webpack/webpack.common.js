@@ -1,5 +1,5 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const PurgecssPlugin = require("purgecss-webpack-plugin");
@@ -11,7 +11,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
   entry: {
-    lib: "./src/index.js",
+    libCore: "./src/index.js",
   },
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
@@ -75,7 +75,7 @@ module.exports = {
     // new PurgecssPlugin({
     //   paths: glob.sync(`${PROJECT_DIR}src/**/*`, { nodir: true }),
     // }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
   // optimization: {
   //   minimize: true,
@@ -92,21 +92,17 @@ module.exports = {
   //     }),
   //   ],
   // },
-  resolve: {
-    extensions: [".js", ".jsx"],
-    alias: {
-      "react": "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-      // Must be below test-utils
-    },
-  },
+  // resolve: {
+  //   extensions: [".js", ".jsx"],
+  //   alias: {
+  //     "react": "preact/compat",
+  //     "react-dom/test-utils": "preact/test-utils",
+  //     "react-dom": "preact/compat",
+  //     // Must be below test-utils
+  //   },
+  // },
   externals: {
-    preact: {
-      commonjs: "preact",
-      commonjs2: "preact",
-      amd: "preact",
-      root: "preact",
-    },
+    "react": "React",
+    "react-dom": "ReactDOM",
   },
 };

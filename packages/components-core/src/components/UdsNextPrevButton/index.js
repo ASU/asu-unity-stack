@@ -4,7 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { h } from "preact";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 

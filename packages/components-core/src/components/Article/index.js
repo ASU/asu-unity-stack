@@ -5,7 +5,7 @@ import { faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
-import { h } from "preact";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   EmailShareButton,
