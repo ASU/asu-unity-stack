@@ -2,6 +2,7 @@
 
 
 import { Title } from ".";
+
 import { AnimatedTitleExample } from "./examples";
 import { TitleStyled } from "./styles";
 
