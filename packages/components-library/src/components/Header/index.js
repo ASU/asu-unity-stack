@@ -157,7 +157,7 @@ const Header = ({
         <S.UniversalNavLinks>
           <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/colleges/">Colleges and Schools</a>
+          <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
           <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
         </S.UniversalNavLinks>
         <UniversalSearch
