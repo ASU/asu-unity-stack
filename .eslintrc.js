@@ -24,7 +24,11 @@ module.exports = {
       "warn",
       {
         newlinesBetween: "always", // new line between groups
-        groups: ["module", ["parent", "sibling", "index"]],
+        groups: [
+          "module",
+          ["/^Components/", "/^Vendor/"],
+          [("parent", "sibling", "index")],
+        ],
         alphabetize: { order: "asc", ignoreCase: true },
       },
     ],
