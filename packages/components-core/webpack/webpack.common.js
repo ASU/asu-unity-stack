@@ -77,30 +77,6 @@ module.exports = {
     // }),
     new BundleAnalyzerPlugin(),
   ],
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     new CssMinimizerPlugin({
-  //       minimizerOptions: {
-  //         preset: [
-  //           "default",
-  //           {
-  //             discardComments: { removeAll: true },
-  //           },
-  //         ],
-  //       },
-  //     }),
-  //   ],
-  // },
-  // resolve: {
-  //   extensions: [".js", ".jsx"],
-  //   alias: {
-  //     "react": "preact/compat",
-  //     "react-dom/test-utils": "preact/test-utils",
-  //     "react-dom": "preact/compat",
-  //     // Must be below test-utils
-  //   },
-  // },
   externals: {
     "react": "React",
     "react-dom": "ReactDOM",
