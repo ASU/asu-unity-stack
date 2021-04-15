@@ -1,0 +1,133 @@
+/* Blockquotes */
+
+/*
+ * blockquotes-output - Return base64-encoded string for rendering open quote.
+ * @param (str) $color - (optional) defaults to dark gray. Alt options (gold, maroon, white)
+ */
+@function blockquote-output($color: '') {
+
+  // different base64-compressed colors
+  @if $color=='gold' {
+    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmYzYyNzt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
+  }
+
+  @else if $color=='maroon' {
+    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzhjMWQ0MDt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
+  }
+
+  @else if $color=='white' {
+    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZmZmZjt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
+  }
+
+  @else {
+    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzE5MTkxOTt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
+  }
+}
+
+/*
+ * blockquotes-quotes - Returns background-image CSS rule
+ * @param (str) $color - desired colors (gold, maroon, white)
+ */
+@mixin blockquote-quotes($color) {
+  $bg-quotes-image: blockquote-output($color);
+  background-image: url(#{$bg-quotes-image});
+}
+
+// Include alternate styling rules
+@import './alt_styling';
+
+/* Blockquote SASS
+----------------------------------------------*/
+
+blockquote {
+  border-left: none;
+  font-weight: bold;
+  padding-left: $block-indent;
+  max-width: 75ch;
+
+  &.ws2-element-alt {
+    // override alt default padding
+    padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5 $padding-base-vertical * 1.5 $block-indent;
+  }
+
+  &:before {
+    // quote
+    @include blockquote-quotes('gray');
+    background-repeat: no-repeat;
+    content: '';
+    min-height: 3rem;
+    min-width: 2.375rem;
+    float: left;
+    margin-left: -4rem;
+    color: $ws2-gray-light; // Default color
+  }
+
+  &>p:not([class*=sig-]):after {
+    // quote
+    content: '"';
+  }
+
+  &.ws2-element-maroon:before {
+    // quote
+    @include blockquote-quotes('maroon');
+  }
+
+  &.ws2-element-gold:before {
+    // quote
+    @include blockquote-quotes('gold');
+  }
+
+  &.ws2-element-white:before {
+    // quote
+    @include blockquote-quotes('white');
+  }
+
+  &.ws2-bq-image {
+    overflow: auto;
+
+    img:first-of-type {
+      // Written to allow for CMSes to grab the first <img> element added into a Blockquote in a WYSIWYG.
+      clip-path: circle($image-round-small/2);
+      float: left;
+      position: absolute;
+      margin-left: -14.375rem; // img width + 3rem
+    }
+
+    &:before {
+      // Actual large quote
+      font-family: $uds-font-family-base;
+      font-size: initial; //
+      content: initial;
+      margin-left: $blockquote-image-offset/(-1);
+      color: $ws2-gray-light; // Default color
+    }
+
+    padding-left: $blockquote-image-offset; // 230px
+  }
+
+  /* Signatures (beneath content) */
+  .ws2-sig-title,
+  .ws2-sig-byline {
+    font-size: $the-base;
+    font-style: inherit;
+  }
+
+  .ws2-sig-title {
+    &:before {
+      padding-right: 0.5em;
+      content: "\2014";
+    }
+  }
+
+  .ws2-sig-byline {
+    clear: left;
+    display: block;
+    font-weight: normal;
+    padding-left: 1.5em;
+  }
+
+  /* Content customizations */
+  &.ws2-element-black a {
+    color: $uds-color-brand-gold; // @TODO Replace with design token
+  }
+}

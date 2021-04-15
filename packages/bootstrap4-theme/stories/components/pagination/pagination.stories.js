@@ -71,6 +71,75 @@ storiesOf('Components/Pagination', module)
   </ul>
 </nav>
 `)
+
+.add('Borders', () => `
+<nav aria-label="...">
+  <ul class="pagination justify-content-center border p-2">
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Prev</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">12
+      <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">44</a></li>
+    <li class="page-item"><a class="page-link" href="#">45</a></li>
+    <li class="page-item"><a class="page-link" href="#">46</a></li>
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+`)
+
+.add('Background Gray', () => `
+<nav aria-label="...">
+  <ul class="pagination justify-content-center uds-bg-gray p-2">
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Prev</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">12
+      <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">44</a></li>
+    <li class="page-item"><a class="page-link" href="#">45</a></li>
+    <li class="page-item"><a class="page-link" href="#">46</a></li>
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+`)
+
+.add('Background Dark', () => `
+<nav aria-label="...">
+  <ul class="pagination justify-content-center uds-bg-dark p-2">
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Prev</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">12
+      <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">44</a></li>
+    <li class="page-item"><a class="page-link" href="#">45</a></li>
+    <li class="page-item"><a class="page-link" href="#">46</a></li>
+    <li class="page-item">
+      <a class="page-link page-link-icon" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+`)
 /*
 .add('Sizing', () => `
 <nav aria-label="...">

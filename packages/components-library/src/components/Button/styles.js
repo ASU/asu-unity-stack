@@ -80,12 +80,10 @@ const Button = forwardRef(
             }
 
             ${disabled &&
-            css`
-              opacity: ${ComponentButtonDisabledOpacity};
-            `}
+            `opacity: ${ComponentButtonDisabledOpacity};`}
 
             ${small &&
-            css`
+            `
               font-size: ${ComponentButtonSmallFontSize};
               height: ${ComponentButtonSmallHeight};
               min-width: ${ComponentButtonSmallMinWidth};
@@ -94,20 +92,20 @@ const Button = forwardRef(
             `}
 
         ${medium &&
-            css`
+            `
               font-size: 0.875rem;
               padding: 0.5rem 1rem;
             `}
 
         ${large &&
-            css`
+            `
               font-size: ${ComponentButtonLargeFontSize};
               height: ${ComponentButtonLargeHeight};
               min-width: ${ComponentButtonLargeMinWidth};
             `}
 
         ${gold &&
-            css`
+            `
               color: ${ComponentButtonGoldColor};
               background-color: ${ComponentButtonGoldBackgroundColor};
 
@@ -117,7 +115,7 @@ const Button = forwardRef(
             `}
 
         ${maroon &&
-            css`
+            `
               color: #ffffff;
               background-color: #8c1d40;
               border-color: #8c1d40;
@@ -128,7 +126,7 @@ const Button = forwardRef(
             `}
 
         ${dark &&
-            css`
+            `
               color: ${ComponentButtonDarkColor};
               background-color: ${ComponentButtonDarkBackgroundColor};
 
@@ -138,7 +136,7 @@ const Button = forwardRef(
             `}
 
         ${light &&
-            css`
+            `
               color: ${ComponentButtonLightColor};
               background-color: ${ComponentButtonLightBackgroundColor};
             `}

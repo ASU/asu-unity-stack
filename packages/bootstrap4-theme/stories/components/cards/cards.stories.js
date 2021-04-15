@@ -1057,3 +1057,90 @@ export const sizingUsingUtilities = () => `
     </div>
   </div>
 `;
+
+export const checkboxStackedCard = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <div class="card card-story-checkbox-stacked">
+          <div class="card-image-content">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+            <form class="uds-form card-form ml-4">
+              <fieldset class="card-image-fieldset">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
+                  <label class="form-check-label" for="checkbox2">Option 2</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="checkbox1" value="option1" checked>
+                  <label class="form-check-label" for="checkbox1">Option 1</label>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-maroon">Default button</a>
+          </div>
+          <div class="card-link">
+            <a href="#" class="">Regular text link here</a>
+          </div>
+          <div class="card-tags">
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+`;
+
+export const checkboxInlineCard = () => `
+<div class="container">
+  <div class="row row-spaced pt-2 pb-2">
+    <div class="col col-12 col-md-6 col-lg-4">
+
+      <div class="card card-story-checkbox-inline">
+        <div class="card-image-content">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <form class="uds-form card-form ml-4">
+            <fieldset class="card-image-fieldset inline">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
+                <label class="form-check-label" for="checkbox2">Option 2</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkbox1" value="option1" checked>
+                <label class="form-check-label" for="checkbox1">Option 1</label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-maroon">Default button</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div> <!-- .card -->
+
+    </div> <!-- .col -->
+  </div>
+</div>
+`;
+

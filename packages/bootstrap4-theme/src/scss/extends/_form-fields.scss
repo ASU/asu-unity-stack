@@ -77,6 +77,19 @@ form.uds-form {
       margin: $uds-size-spacing-2 0;
     }
   }
+
+  .card-image-fieldset {
+    margin-bottom: $uds-size-spacing-2;
+
+    &.inline {
+      display: flex;
+
+      .form-check:not(:first-child) {
+        margin-left: $uds-size-spacing-4;
+      }
+    }
+  }
+
   .form-check {
     margin: 0 0 $uds-size-spacing-4 0;
 
