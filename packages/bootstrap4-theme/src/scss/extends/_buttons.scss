@@ -53,6 +53,11 @@
       height: $uds-size-spacing-8;
       font-size: 1.5rem;
     }
+    &.btn-circle-x-large {
+      width: $uds-size-spacing-13;
+      height: $uds-size-spacing-13;
+      font-size: 3rem;
+    }
   }
   &:hover {
     transform: none;
@@ -60,6 +65,10 @@
   &:active {
     transform: scale(0.95);
   }
+}
+
+.bg-light-gray {
+  background-color: $gray-1;
 }
 
 // Remove background changing hover effects from all buttons
