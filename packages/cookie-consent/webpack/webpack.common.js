@@ -54,7 +54,7 @@ module.exports = {
      * See `Options and Defaults` for information
      */
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   resolve: {
     extensions: [".js", ".jsx"],
