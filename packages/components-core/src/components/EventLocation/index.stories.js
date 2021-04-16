@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import React from "react";
 
-import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
-
 import { EventLocation } from ".";
+
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 export default {
   title: "UDS/EventLocation",

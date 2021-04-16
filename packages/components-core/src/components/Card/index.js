@@ -6,10 +6,10 @@ import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { EventLocation } from "Components/EventLocation";
-import { UdsButton } from "Components/UdsButton";
-import { UdsTagButton } from "Components/UdsTagButton";
-import UdsStyles from "Vendor/css/bootstrap-asu.min.module.css";
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
+import { EventLocation } from "../EventLocation";
+import { UdsButton } from "../UdsButton";
+import { UdsTagButton } from "../UdsTagButton";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
