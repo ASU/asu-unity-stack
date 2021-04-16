@@ -1517,7 +1517,7 @@ exports[`Header Snapshot test 1`] = `
               type="search"
             />
             <label
-              class="univeral-search"
+              class="universal-search"
               id="asu-search-label"
             >
               Search ASU
