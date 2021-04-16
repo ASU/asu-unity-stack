@@ -1,16 +1,17 @@
 
 
 
+
+import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
+import { Fragment } from "preact/compat";
+
+import { Header } from ".";
+
 import {
   BasicNavTree,
   NavTreeWithButtons,
   NavTreeMega,
 } from "../Nav/NavTreeExample";
-
-import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
-
-import { Header } from ".";
-import { Fragment } from "preact/compat";
 import { AnimatedHeaderTitleExample } from "./examples";
 
 export default {

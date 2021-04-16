@@ -13,13 +13,13 @@
   },
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
-    "clean": "yarn shx rm -rf build",
+    "clean": "yarn rimraf build",
     "prepublishOnly": "yarn run build",
     "test": "echo \"Error: no test specified\""
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "fs-extra": "^9.0.1",
-    "prettier": "^1.18.2",
     "style-dictionary": "^2.9.0"
   }
 }

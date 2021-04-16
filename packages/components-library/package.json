@@ -17,24 +17,29 @@
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
     "build": "webpack --progress && yarn prerender",
-    "lint": "eslint 'src/**/*.{js,jsx}' --fix --ignore-path ../../.eslintignore",
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
     "storybook": "start-storybook -p 8089 -s ./public",
     "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.1.15",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-knobs": "^6.1.15",
     "@storybook/preact": "^6.1.15"
   },
   "dependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
+    "@emotion/css": "^11.0.0",
+    "@emotion/server": "^11.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.14.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@emotion/css": "^11.0.0",
+    "babel-preset-preact": "^2.0.0",
     "preact": "^10.5.10",
+    "preact-render-to-string": "^5.1.19",
     "prop-types": "^15.7.2"
   }
 }

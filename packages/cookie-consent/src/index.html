@@ -1,0 +1,33 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html lang="en" dir="ltr"
+  prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Test page</title>
+  <!-- Cookie Consent requires Preact as a peer dependency, meaning you
+    will need to install it yourself. If you use the ASU Header component, it
+    will load Preact for you. Example below pulls Preact in from unpkg.com.
+    Please don't use that approach in production.
+    To get Preact: $ yarn add preact -->
+  <script src="https://unpkg.com/preact@10.5.13/dist/preact.min.js"></script>
+  <!-- include Cookie Consent script -->
+  <script src="../dist/cookie-consent.min.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", event => {
+      // Initialize cookie consent banner
+      AsuCookieConsent.init();
+    });
+  </script>
+</head>
+</head>
+
+<body>
+  ASU Cookie Consent test page body
+  <div id="cookieConsentContainer"></div>
+</body>
+
+</html>

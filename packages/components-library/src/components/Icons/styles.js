@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 
 import { cx } from "@emotion/css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faDesktop,
@@ -18,6 +17,7 @@ import {
   faTimes,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const IconBars = props => {
   return <FontAwesomeIcon icon={faBars} {...props} />;

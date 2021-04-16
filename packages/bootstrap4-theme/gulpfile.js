@@ -179,7 +179,7 @@ gulp.task(
 // Run
 // gulp validate
 // Lint and validate the styles and scripts
-gulp.task('validate', gulp.series('eslint', 'sasslint'));
+gulp.task('validate', gulp.series('sasslint'));
 
 // Run:
 // gulp

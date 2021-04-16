@@ -2,7 +2,9 @@
 /* eslint-disable react/prop-types */
 
 import { css, cx } from "@emotion/css";
+import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
+
 import {
   ComponentButtonHoverStateTransform,
   ComponentButtonActiveStateTransform,
@@ -29,7 +31,6 @@ import {
   ComponentButtonMaroonColor,
   ComponentButtonMaroonBackgroundColor,
 } from "../../theme";
-import { forwardRef } from "preact/compat";
 
 const Button = forwardRef(
   (

@@ -1,8 +1,9 @@
 
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Login = ({ loggedIn, loginLink, logoutLink, userName, ...props }) => {
   return (
