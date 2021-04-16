@@ -28,6 +28,9 @@
     "directory": "packages/component-carousel"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.1.15",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-knobs": "^6.1.15",
     "@storybook/preact": "^6.1.15"
   }
 }
