@@ -17,94 +17,6 @@ const sanitizeDangerousMarkup = content => {
   return { __html: sanitizer(content) };
 };
 
-const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
-  if (eventFormat === "inline") {
-    return (
-      <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faCalendar} />
-          </div>
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
-        </div>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-          </div>
-          <span>
-            <EventLocation title={eventLocation} />
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faCalendar} />
-          </div>
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
-        </div>
-      </div>
-      <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-          </div>
-          <span>
-            <EventLocation title={eventLocation} />
-          </span>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const CardContent = ({
-  type,
-  body,
-  eventFormat,
-  eventLocation,
-  eventTime,
-  title,
-  buttons,
-  tags,
-}) => (
-  <>
-    <div className={UdsStyles["card-header"]}>
-      <h3 className={UdsStyles["card-title"]}>{title}</h3>
-    </div>
-    <div className={UdsStyles["card-body"]}>
-      <p className={UdsStyles["card-text"]}>{body}</p>
-    </div>
-    {type === "event" && (
-      <EventInfo
-        eventFormat={eventFormat}
-        eventTime={eventTime}
-        eventLocation={eventLocation}
-      />
-    )}
-    {buttons &&
-      buttons.map((button, index) => (
-        <div key={index} className={UdsStyles["card-button"]}>
-          <UdsButton color={button.color}>{button.label}</UdsButton>
-        </div>
-      ))}
-    {tags && (
-      <div className={UdsStyles["card-tags"]}>
-        {tags.map((tag, index) => (
-          <UdsTagButton key={index} color={tag.color}>
-            {tag.label}
-          </UdsTagButton>
-        ))}
-      </div>
-    )}
-  </>
-);
-
 export const Card = ({
   type,
   width,
@@ -175,79 +87,19 @@ export const Card = ({
 };
 
 Card.propTypes = {
-  /**
-   * Type of card
-   */
   type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
-  /**
-   * Width of card
-   */
   width: PropTypes.oneOf(["25%", "50%", "75%", "100%"]),
-  /**
-   * Enable horizontal mode
-   */
   horizontal: PropTypes.bool,
-  /**
-   * Enable clickable card
-   */
   clickable: PropTypes.bool,
-  /**
-   * Card title
-   */
   title: PropTypes.string.isRequired,
-  /**
-   * Card target (either the card title or the clickable card links to this url)
-   */
-  link: PropTypes.string.isRequired,
-  /**
-   * Card body text
-   */
+  link: PropTypes.string, //TODO: should this be required?
   body: PropTypes.string,
-  /**
-   * Event info format
-   */
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
-  /**
-   * Location
-   */
   eventLocation: PropTypes.string,
-  /**
-   * Event start time
-   */
   eventTime: PropTypes.string,
-  /**
-   * FontAwesome React icon alternative to image (optional -- only valid for default cards)
-   */
   icon: PropTypes.elementType, // React Component
-  /**
-   * Card header image
-   */
   image: PropTypes.string,
-  /**
-   * Card header image alt text
-   */
   imageAltText: PropTypes.string,
-  /**
-   * Buttons
-   */
-  // buttons: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
-  //     size: PropTypes.oneOf(["default", "small", "xsmall"]),
-  //     label: PropTypes.string.isRequired(),
-  //     clickTarget: PropTypes.string,
-  //   })
-  // ),
-  /**
-   * Tags
-   */
-  // tags: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     color: PropTypes.oneOf(["white", "gray", "dark"]),
-  //     label: PropTypes.string.isRequired(),
-  //     clickTarget: PropTypes.string,
-  //   })
-  // ),
 };
 
 Card.defaultProps = {
@@ -262,6 +114,96 @@ Card.defaultProps = {
   icon: "",
   image: "",
   imageAltText: "",
-  // buttons: [],
-  // tags: [],
+};
+
+/*
+ * Sub-components defined after this
+ */
+
+const CardContent = ({
+  type,
+  body,
+  eventFormat,
+  eventLocation,
+  eventTime,
+  title,
+  buttons,
+  tags,
+}) => (
+  <>
+    <div className={UdsStyles["card-header"]}>
+      <h3 className={UdsStyles["card-title"]}>{title}</h3>
+    </div>
+    <div className={UdsStyles["card-body"]}>
+      <p className={UdsStyles["card-text"]}>{body}</p>
+    </div>
+    {type === "event" && (
+      <EventInfo
+        eventFormat={eventFormat}
+        eventTime={eventTime}
+        eventLocation={eventLocation}
+      />
+    )}
+    {buttons &&
+      buttons.map((button, index) => (
+        <div key={index} className={UdsStyles["card-button"]}>
+          <UdsButton color={button.color}>{button.label}</UdsButton>
+        </div>
+      ))}
+    {tags && (
+      <div className={UdsStyles["card-tags"]}>
+        {tags.map((tag, index) => (
+          <UdsTagButton key={index} color={tag.color}>
+            {tag.label}
+          </UdsTagButton>
+        ))}
+      </div>
+    )}
+  </>
+);
+
+const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
+  if (eventFormat === "inline") {
+    return (
+      <div className={UdsStyles["card-event-details"]}>
+        <div className={UdsStyles["card-event-icons"]}>
+          <div>
+            <FontAwesomeIcon icon={faCalendar} />
+          </div>
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
+        </div>
+        <div className={UdsStyles["card-event-icons"]}>
+          <div>
+            <FontAwesomeIcon icon={faMapMarkerAlt} />
+          </div>
+          <span>
+            <EventLocation title={eventLocation} />
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className={UdsStyles["card-event-details"]}>
+        <div className={UdsStyles["card-event-icons"]}>
+          <div>
+            <FontAwesomeIcon icon={faCalendar} />
+          </div>
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
+        </div>
+      </div>
+      <div className={UdsStyles["card-event-details"]}>
+        <div className={UdsStyles["card-event-icons"]}>
+          <div>
+            <FontAwesomeIcon icon={faMapMarkerAlt} />
+          </div>
+          <span>
+            <EventLocation title={eventLocation} />
+          </span>
+        </div>
+      </div>
+    </>
+  );
 };
