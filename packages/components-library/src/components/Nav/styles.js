@@ -3,6 +3,7 @@
 import { forwardRef } from "preact/compat";
 import { css, cx } from "@emotion/css";
 import {
+  focusStyle,
   hiddenStyle,
   showReset,
   BreakpointSm,
@@ -27,6 +28,7 @@ const navListStyles = breakpoint => css`
 
     a {
       text-decoration: none;
+      ${focusStyle}
     }
 
     > li {

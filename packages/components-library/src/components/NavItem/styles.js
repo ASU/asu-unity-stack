@@ -3,9 +3,13 @@ import { forwardRef } from "preact/compat";
 import { Icon } from "../Icons";
 import { css, cx } from "@emotion/css";
 import { Button } from "../";
-import { hiddenStyle, breakpointForMin } from "../../theme";
+import { focusStyle, hiddenStyle, breakpointForMin } from "../../theme";
 
 const navItemStyles = breakpoint => css`
+  a{
+    ${focusStyle}
+  }
+
   .navlink,
   .navicon,
   .navbutton {
