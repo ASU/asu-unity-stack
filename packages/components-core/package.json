@@ -22,7 +22,7 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
-    "@asu-design-system/bootstrap4-theme": "^1.1.2",
+    "@asu-design-system/bootstrap4-theme": "latest",
     "@babel/core": "^7.13.14",
     "@storybook/addon-actions": "^6.2.3",
     "@storybook/addon-essentials": "^6.2.3",
