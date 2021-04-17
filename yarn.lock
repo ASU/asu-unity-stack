@@ -10,7 +10,7 @@
     loader-utils "^1.1.0"
     purgecss "^2.1.2"
 
-"@asu-design-system/bootstrap4-theme@^1.1.2":
+"@asu-design-system/bootstrap4-theme@latest":
   version "1.1.2"
   resolved "https://registry.web.asu.edu/@asu-design-system%2fbootstrap4-theme/-/bootstrap4-theme-1.1.2.tgz#740f00e5092839beda9a86f11dbd17dffe7b64e6"
   integrity sha512-lF4BLzf31B8enYeBdIf7JbhDLm7JXVKRS+VLTPQShsHd4SRExonOJR/RVewQj7F0iL6YLlHVoM/pg7q536HL8w==
