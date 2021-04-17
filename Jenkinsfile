@@ -39,7 +39,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'yarn test'
+                //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified for multiple packages"
                 //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
             }
         }
