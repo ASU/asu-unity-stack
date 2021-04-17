@@ -25,8 +25,8 @@ pipeline {
             }
             steps {
                 sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check'
                 sh 'yarn install'
+                sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check'
                 sh 'yarn build'
                 sh 'yarn build-storybook'
             }
