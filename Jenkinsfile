@@ -24,6 +24,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                 sh 'yarn install'
                 sh 'yarn build'
                 sh 'yarn build-storybook'
