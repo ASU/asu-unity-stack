@@ -43,6 +43,8 @@
     "react-cookie-consent": "^6.2.3",
     "sass": "^1.32.8",
     "sass-loader": "^10.0.1",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0"
   },
   "peerDependencies": {

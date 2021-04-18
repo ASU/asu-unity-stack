@@ -32,6 +32,8 @@
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
     "style-loader": "^2.0.0"
   },

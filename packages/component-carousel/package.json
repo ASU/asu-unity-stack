@@ -31,6 +31,8 @@
     "@storybook/addon-a11y": "^6.1.15",
     "@storybook/addon-actions": "^6.1.15",
     "@storybook/addon-knobs": "^6.1.15",
-    "@storybook/preact": "^6.1.15"
+    "@storybook/preact": "^6.1.15",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4"
   }
 }

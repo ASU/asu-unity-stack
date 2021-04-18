@@ -20,6 +20,8 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "fs-extra": "^9.0.1",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
     "style-dictionary": "^2.9.0"
   }
 }
