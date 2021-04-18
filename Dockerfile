@@ -1,5 +1,8 @@
 FROM node:12
 
+# Obtain credential from Jenkins environ.
+ARG NPM_TOKEN
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -8,6 +11,9 @@ WORKDIR /usr/src/app
 
 # Copy app
 COPY . .
+
+# Copy private NPM auth token into place.
+RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 
 RUN yarn install
 RUN yarn build
