@@ -23,15 +23,16 @@ const loginStyles = breakpoint => css`
       font-weight: 700;
     }
 
-    .signout:before {
-      content: "(";
-      margin-left: 4px;
-    }
+    .signout {
+      margin-left: 6px;
+      &:before {
+        content: "(";
+      }
 
-    .signout:after {
-      content: ") ";
+      &:after {
+        content: ") ";
+      }
     }
-
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       margin-left: .5rem;
