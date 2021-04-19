@@ -153,7 +153,7 @@ const navListStyles = breakpoint => css`
           display: block;
           border-bottom: 1px solid #cccccc;
           align-items: center;
-
+          margin: 4px 4px;
           > svg {
             float: right;
             font-size: 1.25rem;

@@ -11,12 +11,12 @@ const loginStyles = breakpoint => css`
     margin-right: 0.5rem;
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 
-
     > a, span {
       padding: 0;
       margin: 0;
       color: #484848;
       text-decoration: none;
+      position: relative;
     }
     .name {
       font-weight: 700;

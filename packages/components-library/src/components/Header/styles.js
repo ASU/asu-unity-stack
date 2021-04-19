@@ -2,6 +2,7 @@
 import { forwardRef } from "preact/compat";
 import { cx, css } from "@emotion/css";
 import {
+  focusStyle,
   containerSize,
   primaryNavTopPadding,
   BreakpointXl,
@@ -116,6 +117,10 @@ const universalStyles = breakpoint => css`
       justify-content: flex-end;
     }
 
+    .nav-grid {
+      align-items: center;
+    }
+
     @media (max-width: ${breakpoint}) {
       display: none;
       padding: 0;
@@ -202,6 +207,10 @@ const UniversalNavLinks = ({ children, ...props }) => {
             padding: 0.25rem 0.5rem;
             color: #484848;
             margin: 0;
+            position: relative;
+            padding-top: 0;
+            padding-bottom: 0;
+            ${focusStyle}
 
             &:hover{
               text-decoration: underline;
