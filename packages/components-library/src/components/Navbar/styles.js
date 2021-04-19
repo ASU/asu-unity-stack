@@ -1,7 +1,8 @@
 
 
 import { css, cx } from "@emotion/css";
-import { focusStyle, containerSize, primaryNavTopPadding, breakpointForMin } from "../../theme";
+
+import { containerSize, primaryNavTopPadding, breakpointForMin } from "../../theme";
 import { Icon } from "../Icons";
 
 /**

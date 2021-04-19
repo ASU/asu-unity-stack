@@ -1,9 +1,10 @@
 
 /* eslint-disable react/prop-types */
 
-import * as S from "./styles";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Logo = forwardRef((props, ref) => {
   return <S.Logo ref={ref} {...props} />;

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { forwardRef } from "preact/compat";
 import { cx, css } from "@emotion/css";
+import { forwardRef } from "preact/compat";
+
 import {
   focusStyle,
   containerSize,
@@ -9,18 +10,18 @@ import {
   BreakpointLg,
   srOnly,
 } from "../../theme";
-import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
 import { logoStyles } from "../Logo/styles";
-import { titleStyles } from "../Title/styles";
-import { navItemStyles } from "../NavItem/styles";
+import { navStyles } from "../Nav/styles";
 import {
   navbarStyles,
   navbarContainerStyles,
   navbarTogglerStyles,
 } from "../Navbar/styles";
+import { navItemStyles } from "../NavItem/styles";
+import { searchStyles } from "../Search/styles";
+import { titleStyles } from "../Title/styles";
 
 const Header = ({ children, breakpoint, ...props }) => {
   return (

@@ -14,8 +14,7 @@
     "prop-types": "^15.7.2"
   },
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "build": "webpack --mode=production --progress",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
@@ -29,6 +28,11 @@
     "directory": "packages/component-carousel"
   },
   "devDependencies": {
-    "@storybook/preact": "^6.1.15"
+    "@storybook/addon-a11y": "^6.1.15",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-knobs": "^6.1.15",
+    "@storybook/preact": "^6.1.15",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4"
   }
 }

@@ -1,4 +1,3 @@
-import { css } from "@emotion/css";
 import {
   BreakpointSm,
   BreakpointLg,
@@ -28,6 +27,7 @@ import {
   ComponentButtonMaroonColor,
   ComponentButtonMaroonBackgroundColor
 } from "@asu-design-system/design-tokens/build/es6/tokens";
+import { css } from "@emotion/css";
 
 const hiddenStyle = css`
   position: absolute;

@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
-import * as S from "./styles";
-import { Nav } from "../Nav";
-import { UniversalSearch } from "../Search";
-import { Login } from "../Login";
-import { Navbar } from "../Navbar";
-import { Logo } from "../Logo";
-import { Title } from "../Title";
+
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { Login } from "../Login";
+import { Logo } from "../Logo";
+import { Nav } from "../Nav";
+import { Navbar } from "../Navbar";
+import { UniversalSearch } from "../Search";
+import { Title } from "../Title";
+import * as S from "./styles";
 
 const Header = ({
   navTree,

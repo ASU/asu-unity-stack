@@ -2,6 +2,7 @@
 import { cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
+
 import { Button } from "../Button";
 import * as S from "./styles";
 
@@ -62,7 +63,7 @@ const DropNav = forwardRef(
           onClick={e => {}}
           tabIndex="0"
           ref={ref}
-          data-onclick-identifier = {"toggle-dropdown." + pIndex}
+          data-onclick-identifier = {`toggle-dropdown.${  pIndex}`}
           data-onclick-dropdown-open = "false"
         >
           {text}{" "}

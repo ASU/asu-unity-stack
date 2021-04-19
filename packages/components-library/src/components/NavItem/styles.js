@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { forwardRef } from "preact/compat";
-import { Icon } from "../Icons";
 import { css, cx } from "@emotion/css";
+import { forwardRef } from "preact/compat";
+
 import { Button } from "../";
 import { focusStyle, hiddenStyle, breakpointForMin } from "../../theme";
+import { Icon } from "../Icons";
 
 const navItemStyles = breakpoint => css`
   a{

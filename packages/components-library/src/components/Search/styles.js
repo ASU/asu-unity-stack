@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { cx, css } from "@emotion/css";
-import { focusStyle, breakpointForMin } from "../../theme";
+import { breakpointForMin } from "../../theme";
 
 /** Search */
 const searchStyles = breakpoint => css`
