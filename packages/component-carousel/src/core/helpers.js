@@ -2,7 +2,7 @@
 /** @jsxFrag Fragment */
 /* eslint-disable react/prop-types */
 import { h, hydrate, render } from "preact";
-import { AsuCarousel } from ".";
+import { AsuCarousel } from "..";
 
 const HydratePreact = (component, props, target) => {
   return hydrate(h(component, props), target);
