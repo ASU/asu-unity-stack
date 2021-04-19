@@ -1,8 +1,5 @@
-
-
-
 import { action } from "@storybook/addon-actions";
-
+import { css } from "@emotion/css";
 import { Button } from ".";
 
 export default {
@@ -74,3 +71,57 @@ export const link = () => (
     Gold Link button
   </Button>
 );
+
+export const FocusButtonsAndLinks = () => {
+  const testButtons = () => (
+    <>
+      <div> {link()} </div>
+      <div> {maroon()} </div>
+      <div> {light()} </div>
+      <div> {dark()} </div>
+      <div> {gold()} </div>
+      <div> {small()} </div>
+      <div> {medium()} </div>
+      <div> {large()} </div>
+      <div> {withIcon()} </div>
+      <div> {disabled()} </div>
+      <div> {hover()} </div>
+      <div> {hover()} </div>
+    </>
+  );
+
+  return (
+    <div
+      className={css`
+        display: flex;
+        justify-content: space-evenly;
+        .col {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          border: 1px solid;
+          padding: 10px;
+
+          &.col-left {
+            background-color: #191919 ;
+          }
+
+          &.col-center {
+            background: linear-gradient(rgba(25, 25, 25, 0), rgba(25, 25, 25, 0.75));
+          }
+
+          &.col-right {
+            background-color: #fffff ;
+          }
+          & div {
+            padding-top: 10px;
+          }
+        }
+      }`}
+    >
+      <div className="col col-left">{testButtons()}</div>
+      <div className="col col-center">{testButtons()}</div>
+      <div className="col col-right">{testButtons()}</div>
+    </div>
+  );
+};

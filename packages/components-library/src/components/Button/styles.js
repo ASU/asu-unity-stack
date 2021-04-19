@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 
 import { css, cx } from "@emotion/css";
@@ -6,6 +5,7 @@ import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 
 import {
+  focusStyle,
   ComponentButtonHoverStateTransform,
   ComponentButtonActiveStateTransform,
   ComponentButtonDisabledOpacity,
@@ -46,7 +46,6 @@ const Button = forwardRef(
       light = true;
     }
 
-
     return (
       <Element
         {...props}
@@ -79,8 +78,9 @@ const Button = forwardRef(
               transform: ${ComponentButtonActiveStateTransform};
             }
 
-            ${disabled &&
-            `opacity: ${ComponentButtonDisabledOpacity};`}
+            ${focusStyle}
+
+            ${disabled && `opacity: ${ComponentButtonDisabledOpacity};`}
 
             ${small &&
             `
