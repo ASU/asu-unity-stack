@@ -87,6 +87,9 @@ $glide-modifier-separator: "--" !default;
     z-index: 2;
     margin-left: -5.5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
 
+    @media only screen and (max-width: 600px) {
+      bottom: -8rem; // Place below.
+    }
     //&#{$se}arrow {
     .glide__arrow {
       color: #191919;
@@ -147,6 +150,10 @@ $glide-modifier-separator: "--" !default;
     display: inline-flex;
     list-style: none;
     transform: translateX(-50%);
+
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
   }
 
   &#{$se}bullet {
@@ -186,5 +193,14 @@ $glide-modifier-separator: "--" !default;
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+  }
+
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
   }
 }

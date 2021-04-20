@@ -1,9 +1,9 @@
+// @ts-check
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h } from "preact";
-//import { useEffect, useState } from "preact/compat";
-
-import Glide from "@glidejs/glide";
+import { setupCaroarousel } from "./glide.setup";
+import { useEffect } from "preact/compat";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
@@ -13,9 +13,22 @@ import "./styles.scss";
 // Initially based on this approach:
 // https://stackoverflow.com/questions/61596516/glide-js-with-react
 
-const BaseCarousel = props => {
-  //console.log("props", props);
-
+/**
+ *
+ * @param {{
+ *            perView?: number | string
+ *            width?: string
+ *            maxWidth?: string
+ *            carouselItems: {id: string | number, item: h.JSX.Element}[],
+ *          }} props
+ * @returns
+ */
+const BaseCarousel = ({
+  perView = "1",
+  width = "inherit",
+  maxWidth = "inherit",
+  carouselItems,
+}) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
   // We implement "slider" approach per Web Standards 2:
@@ -42,7 +55,7 @@ const BaseCarousel = props => {
   // See docs: https://glidejs.com/docs/events/
   // The resize event is implemented further down and commented out until a
   // solid strategy for updating the buttons is in place.
-  let itemCount = props.carouselItems.length;
+  let itemCount = carouselItems.length;
   let buttonCount;
 
   // Get Original viewport width so we can set buttonCount.
@@ -60,23 +73,23 @@ const BaseCarousel = props => {
   } else if (vw < 992) {
     // Value for md breakpoint
     //console.log("VW md", vw);
-    if (props.perView >= 2) {
+    if (perView >= 2) {
       buttonCount = itemCount - 1;
     }
   } else {
     // Value for lg breakpoint
     //console.log("VW lg", vw);
-    if (props.perView >= 2) {
+    if (perView >= 2) {
       buttonCount = itemCount - 1;
     }
-    if (props.perView >= 3) {
+    if (perView >= 3) {
       buttonCount = itemCount - 2;
     }
   }
 
   // Build out bullets markup based on buttonCount.
   let buttonElements = [];
-  for (var i = 0; i < buttonCount; i++) {
+  for (let i = 0; i < buttonCount; i++) {
     buttonElements.push(
       <button
         className="glide__bullet"
@@ -86,78 +99,7 @@ const BaseCarousel = props => {
     );
   }
 
-  // Set a perView value for each breakpoint so we adapt down appropriately.
-  let perViewSm, perViewMd, perViewLg;
-  switch (props.perView ? props.perView : "1") {
-    case "3":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 3;
-      break;
-    case "2":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 2;
-      break;
-    case "1":
-    default:
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 1;
-      perViewLg = 1;
-  }
-
-  // Set GlideJS config options, per https://glidejs.com/docs/options/
-  const sliderConfig = {
-    type: "slider", // No wrap-around.
-    focusAt: 0,
-    bound: true, // Only if type slider with focusAt 0
-    rewind: false, // Only if type slider
-    gap: 24, // Space between slides... may be impacted by viewport size.
-    keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
-    startAt: 0,
-    swipeThreshold: 80, // Distance required for swipe to change slide.
-    dragThreshold: 120, // Distance for mouse drag to change slide.
-    perTouch: 1, // Number of slides that can be moved per each swipe/drag.
-    breakpoints: {
-      576: {
-        // BS4 sm
-        perView: perViewSm,
-        peek: { before: 0, after: 62 },
-      },
-      768: {
-        // BS4 md
-        //perView: props.perView > 1 ? 2 : 1,
-        perView: perViewSm,
-        peek: { before: 124, after: 124 },
-      },
-      992: {
-        // BS4 lg
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewMd,
-        peek: { before: 124, after: 124 },
-      },
-      1260: {
-        // BS4 xl
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-      1400: {
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-      1920: {
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-    },
-  };
-
+  // TODO: investigate if useEffect() causes any side effect which would justify to use DOMContentLoaded approach
   // Following wasn't triggered with useEffect approach... so we just ensure
   // the DOM is loaded.
 
@@ -165,120 +107,55 @@ const BaseCarousel = props => {
   // Storybook when code is updated - have to reload page.
   // Better approach using window ? Learn about that.
   // Or https://www.npmjs.com/package/preact-hot-loader ?
-  document.addEventListener("DOMContentLoaded", function () {
-    // Load up a new glideJS slider, but don't mount until we have event
-    // listener (https://glidejs.com/docs/events/) handlers defined and configs
-    // all mustered.
-    const slider = new Glide(`#${instanceName}`, sliderConfig);
-    //const slider = new Glide(".glide", sliderConfig);
-
-    // Implement glidejs event listeners.
-
-    // We use event listeners to clear and set class names to show/hide
-    // gradients when at the start, middle or end of a slider.
-
-    // On build.before event...
-    slider.on("build.before", function () {
-      // Set .slider-start for starting gradient styles.
-      let gliderElement = document.getElementById(`${instanceName}`);
-      gliderElement.classList.add("slider-start");
-    });
-
-    // On Move event...
-    slider.on("move", function (e) {
-      // Get glider top level element.
-      let gliderElement = document.getElementById(`${instanceName}`);
-
-      // Gradient-triggering classes.
-      var gradientClasses = ["slider-start", "slider-mid", "slider-end"];
-
-      // Set/clear classes for gradients.
-      if (slider.index == 0) {
-        // START SLIDE.
-        // Gradient for start.
-        gliderElement.classList.remove(...gradientClasses);
-        gliderElement.classList.add("slider-start");
-        // Enable/disable prev/next styles. Glide takes care of actual disable.
-        document
-          .querySelector(`#${instanceName} .glide__arrow--prev`)
-          .classList.add("glide__arrow--disabled");
-        document
-          .querySelector(`#${instanceName} .glide__arrow--next`)
-          .classList.remove("glide__arrow--disabled");
-      } else if (slider.index >= buttonCount - 1) {
-        // MIDDLE SLIDES.
-        // Gradient for end.
-        gliderElement.classList.remove(...gradientClasses);
-        gliderElement.classList.add("slider-end");
-        // Enable/disable prev/next styles. Glide takes care of actual disable.
-        document
-          .querySelector(`#${instanceName} .glide__arrow--prev`)
-          .classList.remove("glide__arrow--disabled");
-        document
-          .querySelector(`#${instanceName} .glide__arrow--next`)
-          .classList.add("glide__arrow--disabled");
-      } else {
-        // LAST SLIDE.
-        // Gradient for middle.
-        gliderElement.classList.remove(...gradientClasses);
-        gliderElement.classList.add("slider-mid");
-        // Enable/disable prev/next styles. Glide takes care of actual disable.
-        document
-          .querySelector(`#${instanceName} .glide__arrow--prev`)
-          .classList.remove("glide__arrow--disabled");
-        document
-          .querySelector(`#${instanceName} .glide__arrow--next`)
-          .classList.remove("glide__arrow--disabled");
-      }
-    });
-
-    // On Resize event...
-    /* TODO Leverage this event to recalculate and updating number of bullets.
-     * See notes about this above.
-    slider.on("resize", function () {
-      // Get Original viewport width
-      let vw = Math.max(
-        document.documentElement.clientWidth || 0,
-        window.innerWidth || 0
-      );
-      console.log("VW on resize", vw);
-      if (vw < 768) {
-        // Value for sm breakpoint
-        console.log("VW sm", vw);
-      } else if (vw < 992) {
-        // Value for md breakpoint
-        console.log("VW md", vw);
-      } else {
-        // Value for lg breakpoint
-        console.log("VW lg", vw);
-      }
-    });
-    */
-
-    slider.mount();
-    //console.log(slider);
-  });
-
-  // Imported from preact/hooks
-  /*
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   setupCaroarousel(instanceName, perView, +buttonCount);
+  // });
   useEffect(() => {
-    console.log("hit AsuCarousel useEffect");
-    return () => {
-      console.log("sliiiiiider");
-      const slider = new Glide(".glide", sliderConfiguration);
-      slider.mount();
-      console.log(slider);
-    };
+    setupCaroarousel(instanceName, perView, +buttonCount);
   }, []);
-  //}, [slider]);
-  */
 
   // Setup carousel items from the carouselItems prop.
-  const listItems = props.carouselItems.map(sliderItem => (
+  const listItems = carouselItems.map(sliderItem => (
     <li key={sliderItem.id.toString()} className="glide__slide slider">
       {sliderItem.item}
     </li>
   ));
+
+  const PrevIcon = () => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fas"
+      data-icon="chevron-left"
+      className="svg-inline--fa fa-chevron-left fa-w-10"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 320 512"
+    >
+      <path
+        fill="currentColor"
+        d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
+      ></path>
+    </svg>
+  );
+
+  const NextIcon = () => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fas"
+      data-icon="chevron-right"
+      className="svg-inline--fa fa-chevron-right fa-w-10"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 320 512"
+    >
+      <path
+        fill="currentColor"
+        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+      ></path>
+    </svg>
+  );
 
   // For prev and next button icons we use the Creative Commons licensed
   // FontAweseome chevron-left and chevron-right SVG without alterations.
@@ -286,7 +163,7 @@ const BaseCarousel = props => {
   // guidelines provided at time of use: https://fontawesome.com/license
 
   return (
-    <div className="glide" id={instanceName}>
+    <div className="glide" id={instanceName} style={{ width, maxWidth }}>
       <div className="glide__track" data-glide-el="track">
         <ul className="glide__slides">{listItems}</ul>
       </div>
@@ -299,42 +176,14 @@ const BaseCarousel = props => {
           data-glide-dir="<"
           aria-label="Previous slide"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="chevron-left"
-            className="svg-inline--fa fa-chevron-left fa-w-10"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 320 512"
-          >
-            <path
-              fill="currentColor"
-              d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-            ></path>
-          </svg>
+          <PrevIcon />
         </button>
         <button
           className="glide__arrow glide__arrow--next"
           data-glide-dir=">"
           aria-label="Next slide"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="chevron-right"
-            className="svg-inline--fa fa-chevron-right fa-w-10"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 320 512"
-          >
-            <path
-              fill="currentColor"
-              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-            ></path>
-          </svg>
+          <NextIcon />
         </button>
       </div>
     </div>

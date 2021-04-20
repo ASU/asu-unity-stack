@@ -1,2 +1,3 @@
-export * from "./AsuCarousel";
+// @ts-check
+export * from "./CardCarousel";
 export * from "./ImageCarousel";

@@ -1,9 +1,8 @@
+// @ts-check
 /** @jsx h */
 
-import { h, Fragment} from "preact";
-
+import { h, Fragment } from "preact";
 import { AsuCarousel } from ".";
-import { dispatchDOMContentLoaded } from "../../core/story-helper";
 
 const myCarouselItems = [
   {
@@ -149,19 +148,15 @@ export default {
 };
 
 export const ThreeItemCarousel = () => (
-  dispatchDOMContentLoaded(),
-  (<AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>)
+  <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
 );
 export const TwoItemCarousel = () => (
-  dispatchDOMContentLoaded(),
   <AsuCarousel perView="2" carouselItems={myCarouselItems}></AsuCarousel>
 );
 export const OneItemCarousel = () => (
-  dispatchDOMContentLoaded(),
   <AsuCarousel perView="1" carouselItems={myCarouselItems}></AsuCarousel>
 );
 export const MultipleCarousels = () => (
-  dispatchDOMContentLoaded(),
   <>
     <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
     <AsuCarousel perView="1" carouselItems={myCarouselItems}></AsuCarousel>
@@ -169,6 +164,5 @@ export const MultipleCarousels = () => (
   </>
 );
 export const BaseCarousel = () => (
-  dispatchDOMContentLoaded(),
   <AsuCarousel carouselItems={myCarouselItems}></AsuCarousel>
 );
