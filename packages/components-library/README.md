@@ -104,6 +104,3 @@ yarn test
 </script>
 
 ```
-
-## Use on static HTML page
-
