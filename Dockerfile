@@ -1,5 +1,7 @@
 FROM node:12
 
+ARG NPM_TOKEN
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -10,6 +12,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN yarn install
+RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn build
 RUN yarn build-storybook
 

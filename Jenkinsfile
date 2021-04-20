@@ -66,7 +66,7 @@ pipeline {
                 sh 'aws --version'
                 sh '$(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)'
                 echo 'Building the Docker image...'
-                sh 'docker build -t $REPOSITORY_URI:latest .'
+                sh 'docker build --build-arg NPM_TOKEN="$NPM_TOKEN" -t $REPOSITORY_URI:latest .'
                 sh 'docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:v_$BUILD_NUMBER'
                 echo 'Pushing the Docker images...'
                 sh 'docker push $REPOSITORY_URI:latest'
