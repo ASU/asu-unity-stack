@@ -117,9 +117,11 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
     // Gradient-triggering classes.
     const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
 
-    // Set/clear classes for gradients.
     // @ts-ignore
-    if (slider.index == 0) {
+    const currentIndendx = slider.index;
+
+    // Set/clear classes for gradients.
+    if (currentIndendx == 0) {
       // START SLIDE.
       // Gradient for start.
       gliderElement.classList.remove(...gradientClasses);
@@ -127,8 +129,7 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
       // Enable/disable prev/next styles. Glide takes care of actual disable.
       arrowPrev.classList.add("glide__arrow--disabled");
       arrowNext.classList.remove("glide__arrow--disabled");
-      // @ts-ignore
-    } else if (slider.index >= buttonCount - 1) {
+    } else if (currentIndendx >= buttonCount - 1) {
       // MIDDLE SLIDES.
       // Gradient for end.
       gliderElement.classList.remove(...gradientClasses);

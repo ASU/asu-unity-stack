@@ -5,7 +5,12 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
  * This function creates a html template which render an image
- * @param {{ id: number, imageSource: string, altText:string, content?: string | h.JSX.Element }} param0
+ * @param {{
+ *          id: number
+ *          imageSource: string
+ *          altText:string
+ *          content?: string | h.JSX.Element
+ *        }} param0
  * @returns
  */
 const imageTemplate = ({ id, imageSource, altText, content }) => ({
@@ -32,15 +37,14 @@ const imageTemplate = ({ id, imageSource, altText, content }) => ({
   ),
 });
 
-// {/* <img className="" src={imageSource} alt="Card image cap"></img> */}
 /**
  *
  * @param {{
- * perView: string | number
- * maxWidth?: string
- * width?: string
- * imageItems: {id: number, imageSource: string, altText:string}[]
- * }} props
+ *            perView: string | number
+ *            maxWidth?: string
+ *            width?: string
+ *            imageItems: { id: number, imageSource: string, altText:string }[]
+ *        }} props
  * @returns
  */
 const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
