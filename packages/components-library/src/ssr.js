@@ -1,10 +1,11 @@
+import { renderStylesToString } from "@emotion/server";
+import { dom } from "@fortawesome/fontawesome-svg-core";
 import render from "preact-render-to-string";
 
-import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { renderStylesToString } from "@emotion/server";
+import { Header } from "./components/Header";
 import { NavTreeMega } from "./components/Nav/NavTreeExample";
-import { dom } from "@fortawesome/fontawesome-svg-core";
+
 
 let HeaderTemplate;
 let FullExample;

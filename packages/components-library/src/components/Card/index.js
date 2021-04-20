@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "preact/compat";
 import PropTypes from "prop-types";
+
 import * as S from "./styles";
 
 const FoldableCard = ({ head, children, id, ...props }) => {

@@ -23,7 +23,11 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   display: block;
   height: $uds-size-spacing-1;
   /* Use linear gradient so we can offset and avoid little gold slivers */
-  background-image: linear-gradient(to right, transparent 0.5%, $uds-color-base-gold 0.5%);
+  background-image: linear-gradient(
+    to right,
+    transparent 0.5%,
+    $uds-color-base-gold 0.5%
+  );
 }
 
 @mixin gold-underline-mobile {
@@ -97,8 +101,13 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     font-size: 0.75rem;
     font-family: $uds-font-family-base;
     line-height: 0.75rem;
-    padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half $uds-size-spacing-1;
+    padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half
+      $uds-size-spacing-1;
     margin-right: $uds-size-spacing-1;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     &.sr-only {
       justify-self: flex-start;
@@ -110,23 +119,23 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     align-items: center;
     margin-right: $uds-size-spacing-1;
 
-    >a {
+    > a {
       padding: 0;
       margin: 0;
       color: $uds-color-base-gray-6;
       text-decoration: none;
     }
 
-    >a.name {
+    > a.name {
       font-weight: 700;
     }
 
-    >a.signout:before {
+    > a.signout:before {
       content: '(';
       margin-left: 4px;
     }
 
-    >a.signout:after {
+    > a.signout:after {
       content: ') ';
     }
   }
@@ -140,7 +149,8 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   }
 
   input[type='search'] {
-    background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
+    background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg')
+      no-repeat 10px 50%;
     background-size: 12px;
     width: 32px;
     cursor: pointer;
@@ -153,7 +163,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     height: $uds-size-spacing-3;
     margin: 0;
 
-    +label {
+    + label {
       display: none;
     }
   }
@@ -167,11 +177,11 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     margin: 0.75rem 0;
     padding-left: $uds-size-spacing-4;
 
-    +label {
+    + label {
       display: block;
     }
 
-    &:valid+label {
+    &:valid + label {
       display: none;
     }
   }
@@ -238,7 +248,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     }
 
     .navbar-nav {
-
       .nav-link,
       .dropdown .nav-link {
         padding-top: 0;
@@ -357,16 +366,16 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     font-weight: 700;
     padding: 0 $uds-size-spacing-4 $uds-size-spacing-3 $uds-size-spacing-4;
 
-    >a {
+    > a {
       color: $uds-color-base-gray-7;
       text-decoration: none;
     }
 
-    >a:visited {
+    > a:visited {
       color: $uds-color-base-gray-7;
     }
 
-    >a:hover {
+    > a:hover {
       text-decoration: underline;
     }
 
@@ -377,7 +386,8 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
   .navbar-nav {
     .nav-link {
-      padding: $uds-size-spacing-2 $uds-size-spacing-4 $uds-size-spacing-1 $uds-size-spacing-4;
+      padding: $uds-size-spacing-2 $uds-size-spacing-4 $uds-size-spacing-1
+        $uds-size-spacing-4;
       border-top: 1px solid $uds-color-base-gray-3;
       color: $uds-color-base-gray-7;
 
@@ -441,7 +451,8 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
       input {
         width: 100%;
-        background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg') no-repeat 10px 50%;
+        background: url($image-assets-path + '/font-awesome-svg/search-gray-6.svg')
+          no-repeat 10px 50%;
         background-size: 16px;
         background-color: $uds-color-base-white;
         border: 0;
@@ -475,7 +486,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         display: block;
         width: 100%;
 
-        >a {
+        > a {
           border: 0;
           padding: 0;
           margin: 0;
@@ -483,16 +494,16 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
           text-decoration: none;
         }
 
-        >a.name {
+        > a.name {
           font-weight: 700;
         }
 
-        >a.signout:before {
+        > a.signout:before {
           content: '(';
           margin-left: 4px;
         }
 
-        >a.signout:after {
+        > a.signout:after {
           content: ') ';
         }
       }
@@ -503,7 +514,9 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       content: '';
       height: $uds-size-spacing-7;
       width: 100%;
-      background: transparent linear-gradient(0deg, #19191914 0%, #19191900 100%) 0% 0% no-repeat padding-box;
+      background: transparent
+        linear-gradient(0deg, #19191914 0%, #19191900 100%) 0% 0% no-repeat
+        padding-box;
       position: absolute;
       top: -3.5rem;
     }
@@ -584,7 +597,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       color: $uds-color-base-gray-7;
     }
 
-    &+.dropdown-item {
+    & + .dropdown-item {
       border-top: 1px solid $uds-color-base-gray-4;
     }
   }
@@ -676,7 +689,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         margin-bottom: 0;
       }
 
-      .btn+.btn {
+      .btn + .btn {
         margin-left: $uds-size-spacing-2;
       }
     }
@@ -688,7 +701,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     .navbar-nav {
       line-height: $uds-size-spacing-2;
 
-      >.nav-link {
+      > .nav-link {
         border: 0;
         font-size: $uds-size-font-medium;
         color: $uds-color-base-gray-7;
@@ -718,7 +731,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         }
       }
 
-      >.nav-link-home {
+      > .nav-link-home {
         padding-bottom: 7px;
         /* Magic number */
 
@@ -813,7 +826,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         text-decoration: underline;
       }
 
-      &+.dropdown-item {
+      & + .dropdown-item {
         border-top: 0;
       }
     }
@@ -870,18 +883,18 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         .dropdown-item {
           white-space: normal;
 
-          &+.dropdown-item {
+          & + .dropdown-item {
             border-top: 0;
           }
         }
 
-        .dropdown-item+.btn {
+        .dropdown-item + .btn {
           position: absolute;
           bottom: 0;
           margin: 0;
         }
 
-        .btn+.btn {
+        .btn + .btn {
           margin-left: $uds-size-spacing-3;
         }
       }
@@ -899,29 +912,28 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 // Margins are needed to prevent content from flowing under global header.
 
 // Mobile
-#asu-header+div,
-#asu-header+main {
+#asu-header + div,
+#asu-header + main {
   @include transition;
   margin-top: 113px;
 }
 
-#asu-header.scrolled+div,
-#asu-header.scrolled+main {
+#asu-header.scrolled + div,
+#asu-header.scrolled + main {
   @include transition;
   margin-top: 97px;
 }
 
 // Desktop
 @include media-breakpoint-up(lg) {
-
-  #asu-header+div,
-  #asu-header+main {
+  #asu-header + div,
+  #asu-header + main {
     @include transition;
     margin-top: 137px;
   }
 
-  #asu-header.scrolled+div,
-  #asu-header.scrolled+main {
+  #asu-header.scrolled + div,
+  #asu-header.scrolled + main {
     @include transition;
     margin-top: 81x;
   }

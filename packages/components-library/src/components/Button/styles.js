@@ -1,9 +1,11 @@
-
 /* eslint-disable react/prop-types */
 
 import { css, cx } from "@emotion/css";
+import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
+
 import {
+  focusStyle,
   ComponentButtonHoverStateTransform,
   ComponentButtonActiveStateTransform,
   ComponentButtonDisabledOpacity,
@@ -29,7 +31,6 @@ import {
   ComponentButtonMaroonColor,
   ComponentButtonMaroonBackgroundColor,
 } from "../../theme";
-import { forwardRef } from "preact/compat";
 
 const Button = forwardRef(
   (
@@ -44,7 +45,6 @@ const Button = forwardRef(
     if (gold === undefined && dark === undefined && maroon === undefined) {
       light = true;
     }
-
 
     return (
       <Element
@@ -78,8 +78,9 @@ const Button = forwardRef(
               transform: ${ComponentButtonActiveStateTransform};
             }
 
-            ${disabled &&
-            `opacity: ${ComponentButtonDisabledOpacity};`}
+            ${focusStyle}
+
+            ${disabled && `opacity: ${ComponentButtonDisabledOpacity};`}
 
             ${small &&
             `

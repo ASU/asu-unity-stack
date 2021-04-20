@@ -2,8 +2,9 @@
 
 
 import { Title } from ".";
-import { TitleStyled } from "./styles";
+
 import { AnimatedTitleExample } from "./examples";
+import { TitleStyled } from "./styles";
 
 export default {
   component: Title,

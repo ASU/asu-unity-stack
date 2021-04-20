@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
+
 import { Heading } from "../Heading";
 import * as S from "./styles";
 

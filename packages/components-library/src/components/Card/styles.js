@@ -1,6 +1,8 @@
 /* eslint-disable react/no-danger */
 import { cx, css } from "@emotion/css";
+
 import { Icon } from "../Icons";
+import { focusStyle } from "../../theme"
 
 const Card = props => {
   return (
@@ -156,6 +158,8 @@ const FoldableCardHeader = ({ show, id, ...props }) => {
         justify-content: space-between;
         cursor: pointer;
         border: 0;
+
+        ${focusStyle}
 
         h4 {
           display: flex;

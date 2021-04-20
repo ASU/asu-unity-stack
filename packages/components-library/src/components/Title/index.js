@@ -1,10 +1,11 @@
 
 /* eslint-disable react/prop-types */
 
-import * as S from "./styles";
 import { forwardRef, useEffect, useState } from "preact/compat";
-import { checkFirstLoad } from "../../helpers";
 import PropTypes from "prop-types";
+
+import { checkFirstLoad } from "../../helpers";
+import * as S from "./styles";
 
 /**
  * Title component

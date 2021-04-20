@@ -1,4 +1,3 @@
-import { css } from "@emotion/css";
 import {
   BreakpointSm,
   BreakpointLg,
@@ -28,6 +27,7 @@ import {
   ComponentButtonMaroonColor,
   ComponentButtonMaroonBackgroundColor
 } from "@asu-design-system/design-tokens/build/es6/tokens";
+import { css } from "@emotion/css";
 
 const hiddenStyle = css`
   position: absolute;
@@ -60,7 +60,7 @@ const showReset = position => {
  * bump the value by +1. We are working with a string, so it's regex time.
  */
 const breakpointForMin = breakpoint => {
-  var breakpointMatch = breakpoint.match(/[a-z]+|[^a-z]+/gi);
+  let breakpointMatch = breakpoint.match(/[a-z]+|[^a-z]+/gi);
   // Add 1 and string it back together.
   return (parseInt(breakpointMatch[0]) + 1).toString() + breakpointMatch[1];
 };
@@ -77,6 +77,12 @@ const srOnly = css`
   }
 `;
 
+const focusStyle = `
+  &:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+`
 const mobileBreak = "1260px";
 
 const containerSize = "1224px";
@@ -85,6 +91,7 @@ const containerSize = "1224px";
 const primaryNavTopPadding = "24px";
 
 export {
+  focusStyle,
   hiddenStyle,
   showReset,
   breakpointForMin,

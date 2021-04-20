@@ -1,0 +1,64 @@
+.background-panel {
+  height: 322px;
+}
+
+.gray-7-bg {
+  background: $uds-color-base-gray-7;
+}
+
+.gray-2-bg {
+  background: $uds-color-base-gray-2;
+}
+
+.gray-1-bg {
+  background: $uds-color-base-gray-1;
+}
+
+.white-bg {
+  background: $uds-color-base-white;
+  border: 1px solid $uds-color-base-gray-3;
+}
+
+.image-bg {
+  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
+    0% 0% no-repeat padding-box;
+}
+
+.section-line {
+  border-bottom: 1px solid #707070;
+  width: 100%;
+}
+
+.scaling-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-description {
+  padding: 16px 0;
+  font-weight: bold;
+}
+
+.max-size-container {
+  max-width: 1920px;
+}
+
+.content-description-container {
+  background-color: $uds-color-base-gray-1;
+  width: 100%;
+  border: 1px solid $uds-color-base-gray-3;
+  margin-top: 16px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed $uds-color-base-gray-5;
+  height: 251px;
+  margin: 20px 0 100px 0;
+  font-size: 50px;
+  color: $uds-color-base-gray-3;
+}

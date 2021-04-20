@@ -1,14 +1,14 @@
 {
   "name": "@asu-design-system/cookie-consent",
   "version": "1.0.4",
-  "description": "ASU implementation of cookieconsent npm library",
+  "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
-  "author": "Colton Testamarck",
+  "author": "Michael Samuelson",
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "clean": "yarn shx rm -rf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "start:dev": "webpack serve -c webpack/webpack.dev.js",
+    "build": "webpack -c webpack/webpack.prod.js",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook"
   },
@@ -22,9 +22,33 @@
     "directory": "packages/cookie-consent"
   },
   "devDependencies": {
-    "@storybook/html": "^6.1.15"
+    "@asu-design-system/design-tokens": "^1.1.0",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-react": "^7.3.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@storybook/addon-actions": "^6.2.3",
+    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-links": "^6.2.3",
+    "@storybook/preact": "^6.2.3",
+    "@storybook/preset-scss": "^1.0.3",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "file-loader": "^6.2.0",
+    "preact": "^10.5.13",
+    "prop-types": "^15.7.2",
+    "react-cookie-consent": "^6.2.3",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.0.1",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
+    "style-loader": "^2.0.0"
   },
-  "dependencies": {
-    "cookieconsent": "^3.1.1"
-  }
+  "peerDependencies": {
+    "preact": "^10.5.12"
+  },
+  "dependencies": {}
 }

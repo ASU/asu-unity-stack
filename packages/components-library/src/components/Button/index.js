@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import {forwardRef} from "preact/compat";
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 /**
  * The button component will render a clickable button

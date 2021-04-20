@@ -1,109 +1,258 @@
-/* Blockquotes */
+/*--------------------------------------------------------------
+# Blockquotes Alt
 
-/*
- * blockquotes-output - Return base64-encoded string for rendering open quote.
- * @param (str) $color - (optional) defaults to dark gray. Alt options (gold, maroon, white)
- */
-@function blockquote-output($color: '') { // different base64-compressed colors
-  @if $color == 'gold' {
-    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmYzYyNzt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
-  } @else if $color == 'maroon' {
-    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzhjMWQ0MDt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
-  } @else if $color == 'white' {
-    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZmZmZjt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
-  } @else {
-    @return "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDIuODcgMjQ1LjgyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzE5MTkxOTt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTMuNjEsMjQ1LjgySDBWMTY0LjU2cTAtNDkuMzQsOC42OS03Ny44M1Q0MC44NCwzNS41OFE2NC4yOSwxMi45NSwxMDAuNjcsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NFQ1OC42MywxMzIuMjFoNTVabTE4MCwwSDE4MFYxNjQuNTZxMC00OS43NCw4LjctNzhUMjIxLDM1LjU4UTI0NC42NSwxMi45NSwyODAuNjMsMGwyMi4yNCw0Ni45cS0zNCwxMS4zMy00OC43MiwzMS41NHQtMTUuNTcsNTMuNzdoNTVaIi8+PC9nPjwvZz48L3N2Zz4K";
-  }
-}
-/*
- * blockquotes-quotes - Returns background-image CSS rule
- * @param (str) $color - desired colors (gold, maroon, white)
- */
-@mixin blockquote-quotes($color) {
-  $bg-quotes-image: blockquote-output($color);
-  background-image: url(#{$bg-quotes-image});
-}
+1. Reset of various elements.
+2. New Blockquote, mobile
+3. New Blockquote, desktop
+--------------------------------------------------------------*/
 
-// Include alternate styling rules
-@import './alt_styling';
-
-/* Blockquote SASS
-----------------------------------------------*/
-
+// Resets styles possibly applied by Bootstrap by default.
 blockquote {
   border-left: none;
-  font-weight: bold;
-  padding-left: $block-indent;
-  max-width: 75ch;
-  &.ws2-element-alt {
-    // override alt default padding
-    padding: $padding-base-vertical * 1.5 $padding-base-horizontal * 1.5
-      $padding-base-vertical * 1.5 $block-indent;
+  font-weight: inherit;
+  padding-left: 0;
+  max-width: none;
+}
+
+// In an older version of this element, the quote glyph was applied as a
+// CSS:before declaration. This prevents the accidental duplication of
+// quotes in the new format to follow.
+
+blockquote:before {
+  display: none;
+}
+
+/*------------------------------------------------------------------
+2. Blockquote, mobile
+------------------------------------------------------------------- */
+.uds-blockquote {
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $uds-size-spacing-3;
+
+  font-size: $uds-size-font-large;
+  font-weight: 700;
+
+  svg {
+    grid-column: 1;
+    fill: $uds-color-base-gray-7;
+    width: $uds-size-spacing-5;
+    height: auto;
   }
-  &:before {
-    // quote
-    @include blockquote-quotes('gray');
-    background-repeat: no-repeat;
-    content: '';
-    min-height: 3rem;
-    min-width: 2.375rem;
-    float: left;
-    margin-left: -4rem;
-    color: $ws2-gray-light; // Default color
-  }
-  & > p:not([class*=sig-]):after { // quote
-    content: '"';
-  }
-  &.ws2-element-maroon:before {
-    // quote
-    @include blockquote-quotes('maroon');
-  }
-  &.ws2-element-gold:before {
-    // quote
-    @include blockquote-quotes('gold');
-  }
-  &.ws2-element-white:before {
-    // quote
-    @include blockquote-quotes('white');
-  }
-  &.ws2-bq-image {
-    overflow: auto;
-    img:first-of-type {
-      // Written to allow for CMSes to grab the first <img> element added into a Blockquote in a WYSIWYG.
-      clip-path: circle($image-round-small/2);
-      float: left;
-      position: absolute;
-      margin-left: -14.375rem; // img width + 3rem
+
+  blockquote {
+
+    grid-column: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    p:last-child {
+      margin-bottom: 0;
     }
-    &:before { // Actual large quote
-      font-family: $uds-font-family-base;
-      font-size: initial; //
-      content: initial;
-      margin-left: $blockquote-image-offset/(-1);
-      color: $ws2-gray-light; // Default color
+
+    p:last-of-type:after {
+      content: "\201D";
     }
-    padding-left: $blockquote-image-offset; // 230px
   }
-  /* Signatures (beneath content) */
-  .ws2-sig-title,
-  .ws2-sig-byline {
-    font-size: $the-base;
-    font-style: inherit;
+
+  .citation {
+
+    cite {
+      display: block;
+      font-size: $uds-size-font-medium;
+      font-style: normal;
+
+      &.name {
+        font-weight: 700;
+      }
+
+      &.name:before {
+        padding-right: 0.5em;
+        content: "\2014";
+      }
+
+      &.description {
+        font-weight: 400;
+        padding-left: 1.5rem;
+      }
+    }
   }
-  .ws2-sig-title {
+
+  &.with-image {
+
+    img {
+      max-width: 40px;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    blockquote p:first-of-type:before {
+      content: "\201C";
+    }
+
+  }
+
+  &.no-citation {
+    blockquote {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p:first-of-type:before {
+        content: "\201C";
+      }
+
+      h3 {
+        margin-bottom: 0;
+      }
+
+      h3+p {
+        margin-top: $uds-size-spacing-3;
+      }
+    }
+  }
+
+  &.accent-gold {
+    svg {
+      fill: $uds-color-base-gold;
+    }
+  }
+
+  &.accent-maroon {
+    svg {
+      fill: $uds-color-base-maroon;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+3. Blockquote, mobile only
+------------------------------------------------------------------- */
+
+@include media-breakpoint-down(sm) {
+  .uds-blockquote.no-cite.with-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    blockquote,
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      max-width: 180px;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+4. Blockquote, desktop
+------------------------------------------------------------------- */
+@include media-breakpoint-up(sm) {
+
+  .uds-blockquote {
+
+    &.no-cite {
+      align-items: center;
+    }
+
+    &.with-image {
+      gap: $uds-size-spacing-4;
+
+      img {
+        max-width: 180px;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+
+    &.with-image.reversed {
+
+      img {
+        grid-column: 2;
+      }
+
+      blockquote {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+
+}
+
+/*------------------------------------------------------------------
+5. Alt Citation.
+-  Produces a gold bar above the cite elements.
+------------------------------------------------------------------- */
+.alt-citation,
+.uds-testimonial {
+
+  .citation {
+
     &:before {
-      padding-right: 0.5em;
-      content: "\2014";
+      content: '';
+      display: block;
+      background-color: $uds-color-base-gray-7;
+      height: $uds-size-spacing-half;
+      width: $uds-size-spacing-9;
+      margin: $uds-size-spacing-2 0;
+    }
+
+    cite.name:before {
+      content: none;
+    }
+
+    cite.description {
+      font-weight: 400;
+      padding-left: 0;
     }
   }
-  .ws2-sig-byline {
-    clear: left;
-    display: block;
-    font-weight: normal;
-    padding-left: 1.5em;
+
+  &.accent-gold .citation:before {
+    background-color: $uds-color-base-gold;
   }
-  /* Content customizations */
-  &.ws2-element-black a {
-    color: $uds-color-brand-gold; // @TODO Replace with design token
+
+  &.accent-maroon .citation:before {
+    background-color: $uds-color-base-maroon;
+  }
+}
+
+/*------------------------------------------------------------------
+5. Testimonial
+-  Vertically centered alignment of a standard blockquote.
+------------------------------------------------------------------- */
+.uds-blockquote.uds-testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  blockquote {
+    text-align: center;
+
+    p:first-of-type:before {
+      content: "\201C";
+    }
+
+    p:last-of-type:after {
+      content: "\201D";
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .citation:before {
+    display: inline-flex
+  }
+
+  &.with-image img {
+    max-width: 180px;
   }
 }

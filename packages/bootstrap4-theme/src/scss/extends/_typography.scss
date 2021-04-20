@@ -1,0 +1,19 @@
+.bg-white,
+.bg-gray-1,
+.bg-gray-2 {
+  a {
+    color: $uds-color-base-maroon;
+  }
+  a:visited {
+    color: $uds-color-base-darkmaroon;
+  }
+}
+
+.bg-gray-7 {
+  a {
+    color: $uds-color-base-gold;
+  }
+  a:visited {
+    color: $uds-color-base-darkgold;
+  }
+}
