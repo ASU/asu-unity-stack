@@ -3,6 +3,7 @@
 $glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
+$uds-breakpoint-sm: 576px;
 
 .#{$glide-class} {
   $this: &;
@@ -87,7 +88,7 @@ $glide-modifier-separator: "--" !default;
     z-index: 2;
     margin-left: -5.5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: $uds-breakpoint-sm) {
       bottom: -8rem; // Place below.
     }
     //&#{$se}arrow {
@@ -151,7 +152,7 @@ $glide-modifier-separator: "--" !default;
     list-style: none;
     transform: translateX(-50%);
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: $uds-breakpoint-sm) {
       display: none;
     }
   }

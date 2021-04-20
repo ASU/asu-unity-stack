@@ -25,8 +25,8 @@ import "./styles.scss";
  */
 const BaseCarousel = ({
   perView = "1",
-  width = "inherit",
-  maxWidth = "inherit",
+  width,
+  maxWidth,
   carouselItems,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is

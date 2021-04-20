@@ -93,21 +93,16 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
   // listener (https://glidejs.com/docs/events/) handlers defined and configs
   // all mustered.
   const slider = new Glide(`#${instanceName}`, sliderConfig);
-  //const slider = new Glide(".glide", sliderConfig);
 
   // Implement glidejs event listeners.
-
   // We use event listeners to clear and set class names to show/hide
   // gradients when at the start, middle or end of a slider.
 
   // On build.before event...
   slider.on("build.before", function () {
     // Set .slider-start for starting gradient styles.
-    let gliderElement = document.getElementById(`${instanceName}`);
-    // it breaks on resize
-    if (!gliderElement) {
-      return;
-    }
+    const gliderElement = document.querySelector(`#${instanceName}`);
+    if (!gliderElement) return; // necessary. it breaks on resize
     gliderElement.classList.add("slider-start");
   });
 
@@ -115,6 +110,8 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
   slider.on("move", function () {
     // Get glider top level element.
     const gliderElement = document.querySelector(`#${instanceName}`);
+    if (!gliderElement) return; // necessary. it breaks on resize
+
     const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
     const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
     // Gradient-triggering classes.
@@ -174,7 +171,6 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
     */
 
   slider.mount();
-  //console.log(slider);
 }
 
 export { setupCaroarousel };
