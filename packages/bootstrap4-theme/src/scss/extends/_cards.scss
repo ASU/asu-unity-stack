@@ -74,6 +74,24 @@ Cards - Table of Contents
   position: relative;
 }
 
+.card-image-gradient {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.card-image-gradient::after {
+  display: block;
+  position: absolute;
+  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
+    0% 0% no-repeat padding-box;
+  height: $uds-component-card-basic-image-top-height;
+  width: 100%;
+  top: 0;
+  content: '';
+}
+
 .card-img-top img,
 .card-img-top {
   max-width: $uds-component-card-basic-image-top-width-percent;
@@ -194,6 +212,10 @@ Cards - Table of Contents
     padding: 24px 24px 16px 24px;
   }
 
+  .card-image-gradient::after {
+    height: 160px;
+  }
+
   .card-img-top img,
   .card-img-top {
     height: 160px;
@@ -228,6 +250,9 @@ Cards - Table of Contents
 .card-lg {
   .card-img-top img,
   .card-img-top {
+    height: $uds-component-card-basic-image-top-height-lg;
+  }
+  .card-image-gradient::after {
     height: $uds-component-card-basic-image-top-height-lg;
   }
 }
