@@ -1,0 +1,41 @@
+.uds-image-text-block {
+  &-container {
+    max-width: $uds-breakpoint-xl;
+    border: $uds-image-text-block-container-border;
+    background: $uds-image-text-block-container-background;
+    display: $uds-image-text-block-container-display;
+    flex-direction: $uds-image-text-block-container-basic-display-direction;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      flex-direction: $uds-image-text-block-container-small-display-direction;
+    }
+  }
+
+  &-image-container {
+    display: $uds-image-text-block-image-container-display;
+    flex: $uds-image-text-block-image-container-flex-size;
+
+    img {
+      object-fit: $uds-image-text-block-image-container-object-fit;
+    }
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      order: $uds-image-text-block-image-container-order-sm;
+    }
+  }
+
+  &-text-container {
+    flex: $uds-image-text-block-text-container-flex-size;
+    /*
+    * Set a max width of 50% here because padding/margins are added in addition to the space given for flex, therefore
+    * the width of the text container is actually bigger than of the image container otherwise.
+    */
+    max-width: $uds-image-text-block-text-container-max-width-sm;
+    padding: $uds-size-spacing-6;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      margin: $uds-size-spacing-4;
+      max-width: $uds-image-text-block-text-container-max-width;
+      order: $uds-image-text-block-text-container-order-sm;
+    }
+  }
+}
