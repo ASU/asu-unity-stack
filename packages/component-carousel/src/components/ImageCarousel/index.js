@@ -60,4 +60,4 @@ const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
   );
 };
 
-export { ImageCarousel };
+export { ImageCarousel, imageTemplate };

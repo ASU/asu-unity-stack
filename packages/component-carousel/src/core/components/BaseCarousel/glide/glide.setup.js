@@ -85,8 +85,10 @@ function buildConfig(perView = "1") {
  * @param {string } instanceName
  * @param {string | number} perView
  * @param {number} buttonCount
+ *
+ * @returns {Glide.Static}
  */
-function setupCaroarousel(instanceName, perView, buttonCount) {
+function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
   const sliderConfig = buildConfig(perView);
 
   // Load up a new glideJS slider, but don't mount until we have event
@@ -148,6 +150,14 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
     }
   });
 
+  slider.on("move.after", () => {
+    const currentSlider = document.querySelector(`#${instanceName}`);
+    // @ts-ignore
+    const { index } = slider;
+    currentSlider.setAttribute("data-current-index", index+1);
+    onItemClick && onItemClick(index);
+  });
+
   // On Resize event...
   /* TODO Leverage this event to recalculate and updating number of bullets.
      * See notes about this above.
@@ -172,6 +182,7 @@ function setupCaroarousel(instanceName, perView, buttonCount) {
     */
 
   slider.mount();
+  return slider;
 }
 
 export { setupCaroarousel };

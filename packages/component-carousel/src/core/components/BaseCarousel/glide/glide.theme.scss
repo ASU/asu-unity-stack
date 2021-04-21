@@ -5,6 +5,7 @@ $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
 $uds-color-base-gray-7: #191919;
+$uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
 .#{$glide-class} {
   $this: &;
@@ -89,9 +90,6 @@ $uds-color-base-gray-7: #191919;
     z-index: 2;
     align-self: center;
 
-    @media only screen and (max-width: $uds-breakpoint-sm) {
-      bottom: -8rem; // Place below.
-    }
     //&#{$se}arrow {
     .glide__arrow {
       color: #191919;
@@ -146,8 +144,9 @@ $uds-color-base-gray-7: #191919;
   &#{$se}bullets {
     z-index: 2;
     list-style: none;
-    width: max-content;
-    align-self: center;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
 
     @media only screen and (max-width: $uds-breakpoint-sm) {
       display: none;
@@ -155,13 +154,13 @@ $uds-color-base-gray-7: #191919;
   }
 
   &#{$se}bullet {
+    transition: all 300ms ease-in-out;
     background-color: #d0d0d0; // rgba(255, 255, 255, 0.5);
     width: 1rem;
     height: 1rem;
     padding: 0;
     border-radius: 50%;
     border: 2px solid transparent;
-    transition: all 300ms ease-in-out;
     cursor: pointer;
     line-height: 0;
     margin: 0 0.5em;
@@ -178,6 +177,49 @@ $uds-color-base-gray-7: #191919;
 
     &#{$sm}active {
       background-color: #191919; //white;
+    }
+  }
+
+  &.image-gallery {
+    gap: 16px;
+
+    .image-navigator {
+      position: relative;
+      .glide__arrows {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        // z-index: -1;
+
+        .glide__arrow {
+          width: 2rem;
+          height: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // z-index: 3;
+          svg {
+            height: 1rem;
+            position: static;
+          }
+        }
+      }
+    }
+    .bullet-image {
+      flex-basis: auto;
+      max-height: 40px;
+      width: 88px;
+      height: 48px;
+      border-radius: 0;
+      z-index: 3;
+    }
+    // glide__bullet bullet-image glide__bullet--active
+    .#{$glide-class}__bullet--active {
+      background-color: transparent;
+      border: 5px solid $uds-color-brand-gold;
     }
   }
 
