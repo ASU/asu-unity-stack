@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/html';
 
 export default { title: "Components/Inset Box" }
 
-storiesOf("Components/Inset Box", module)
+storiesOf("Components/Content Sections/Inset Box", module)
   .addParameters({
     happo: false
   })
