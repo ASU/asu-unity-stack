@@ -1,10 +1,6 @@
 FROM node:12
 
-# private registry packages and Docker: 
-# https://docs.npmjs.com/docker-and-private-modules
 ARG NPM_TOKEN
-COPY .npmrc .npmrc
-COPY package.json package.json
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -15,9 +11,8 @@ WORKDIR /usr/src/app
 # Copy app
 COPY . .
 
+RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn install
-RUN rm -f .npmrc
-#RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn build
 RUN yarn build-storybook
 
