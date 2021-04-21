@@ -85,9 +85,107 @@ storiesOf('Components/Buttons', module)
 `
   )
 
-  .add(
-    'Prev/next buttons',
-    () => `
+  .add('Icon-only buttons - Color and sizes', () => `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-12 col-lg-4 bg-white p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+    
+        <div class="col col-12 col-lg-4 bg-white p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+  </div>
+</div>
+`)
+
+
+.add('Icon-only buttons - Color Combinations', () => `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-12 col-lg-4 bg-white p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+    <div class="col col-12 col-lg-4 bg-light-gray p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-white">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>   
+    </div>
+    <div class="col col-12 col-lg-4 bg-light p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+    </div>
+    <div class="col col-12 col-lg-4 bg-dark p-3">
+      <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-large btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>
+      <button type="button" class="btn btn-circle btn-circle-alt-gray">
+        <i class="fas fa-times"></i>
+        <span class="sr-only" >Close</span>
+      </button>   
+    </div>
+  </div>
+</div>
+`)
+
+.add('Prev/next buttons', () => `
 <div class="container-fluid">
   <div class="row">
     <div class="col col-12 col-lg-4 bg-white p-3">
