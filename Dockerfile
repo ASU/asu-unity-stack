@@ -11,6 +11,7 @@ WORKDIR /usr/src/app
 # Copy app
 COPY . .
 
+RUN echo "@asu-design-system:registry=https://registry.web.asu.edu/" > ~/.npmrc
 RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn install
 RUN yarn build
