@@ -4,38 +4,16 @@
 import { h, Fragment } from "preact";
 import { ImageGalleryCarousel } from ".";
 
-const myCarouselItems = [
-  {
-    id: 1,
-    imageSource: "https://source.unsplash.com/random/800x400?a=1",
+const myCarouselItems = [];
+
+for (let index = 1; index < 20; index++) {
+  myCarouselItems.push({
+    id: index,
+    imageSource: "https://source.unsplash.com/random/800x400?a=" + index,
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 2,
-    imageSource: "https://source.unsplash.com/random/800x400?a=2",
-    altText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 3,
-    imageSource: "https://source.unsplash.com/random/800x400?a=3",
-    altText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 4,
-    imageSource: "https://source.unsplash.com/random/800x400?a=4",
-    altText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 5,
-    imageSource: "https://source.unsplash.com/random/800x400?a=5",
-    altText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-];
+  });
+}
 
 const mockItemWithContent = () => {
   return myCarouselItems.map(item => ({
@@ -54,15 +32,13 @@ const mockItemWithMoreContent = () => {
     ...item,
     content: (
       <>
+        <h3>Content {index + 1}</h3>
 
-          <h3>Content {index + 1}</h3>
-
-          <p>
-            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua eiusmod tempo.
-          </p>
-
+        <p>
+          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua eiusmod tempo.
+        </p>
       </>
     ),
   }));
@@ -74,7 +50,11 @@ export default {
 };
 
 export const ImageGalleryCarouselDefault = () => (
-  <ImageGalleryCarousel perView="1" maxWidth="800px" imageItems={myCarouselItems} />
+  <ImageGalleryCarousel
+    perView="1"
+    maxWidth="800px"
+    imageItems={myCarouselItems}
+  />
 );
 
 export const ImageGalleryCarouselWithContent = () => (
@@ -82,6 +62,7 @@ export const ImageGalleryCarouselWithContent = () => (
     perView="1"
     maxWidth="800px"
     imageItems={mockItemWithContent()}
+    hasContent={true}
   />
 );
 
