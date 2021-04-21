@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                 echo 'Publishing packages to private NPM registry...'
-                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                //sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                 sh 'yarn publish-packages'
             }
         }
