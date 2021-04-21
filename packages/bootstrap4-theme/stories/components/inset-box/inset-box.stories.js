@@ -1,13 +1,6 @@
-import { storiesOf } from '@storybook/html';
+export default { title: "Components/Content Sections/Inset Box" }
 
-export default { title: "Components/Inset Box" }
-
-storiesOf("Components/Content Sections/Inset Box", module)
-  .addParameters({
-    happo: false
-  })
-
-.add('Basic Example', () => `
+export const BasicExample = () => `
   <div class="uds-inset-box-container">
     <div class="uds-inset-box-content">
       <h3>Lorem ipsum dolor sit amet</h3>
@@ -20,9 +13,9 @@ storiesOf("Components/Content Sections/Inset Box", module)
       </div>
     </div>
   </div>
-`)
+`;
 
-.add('Example With Blockquote', () => `
+export const ExampleWithBlockquote = () => `
  <div class="uds-inset-box-container">
     <div class="uds-inset-box-content">
       <div class="uds-blockquote uds-testimonial accent-gold">
@@ -39,9 +32,9 @@ storiesOf("Components/Content Sections/Inset Box", module)
       </div>
     </div>
   </div>
-`)
+`;
 
-.add('Example With List', () => `
+export const ExampleWithList = () => `
   <div class="uds-inset-box-container">
     <div class="uds-inset-box-content">
       <ol class="uds-list uds-steplist">
@@ -51,4 +44,4 @@ storiesOf("Components/Content Sections/Inset Box", module)
       </ol>
     </div>
   </div>
-`);
+`;
