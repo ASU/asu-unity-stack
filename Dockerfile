@@ -13,7 +13,6 @@ COPY . .
 
 RUN echo "registry=https://registry.web.asu.edu/" > ~/.npmrc
 RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-COPY ~/.npmrc .npmrc
 RUN yarn install
 RUN yarn build
 RUN yarn build-storybook
