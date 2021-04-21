@@ -54,16 +54,15 @@ const mockItemWithMoreContent = () => {
     ...item,
     content: (
       <>
-        <div className="card-header">
-          <h3 className="card-title">Content {index + 1}</h3>
-        </div>
-        <div className="card-body">
-          <p className="card-text">
+
+          <h3>Content {index + 1}</h3>
+
+          <p>
             Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
             amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua eiusmod tempo.{" "}
+            ut labore et dolore magna aliqua eiusmod tempo.
           </p>
-        </div>
+
       </>
     ),
   }));
