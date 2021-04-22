@@ -8,8 +8,8 @@ import React from "react";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { EventLocation } from "../EventLocation";
-import { UdsButton } from "../UdsButton";
-import { UdsTagButton } from "../UdsTagButton";
+import { Button } from "../Button";
+import { ButtonTag } from "../ButtonTag";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -147,15 +147,15 @@ const CardContent = ({
     {buttons &&
       buttons.map((button, index) => (
         <div key={index} className={UdsStyles["card-button"]}>
-          <UdsButton color={button.color}>{button.label}</UdsButton>
+          <Button color={button.color}>{button.label}</Button>
         </div>
       ))}
     {tags && (
       <div className={UdsStyles["card-tags"]}>
         {tags.map((tag, index) => (
-          <UdsTagButton key={index} color={tag.color}>
+          <ButtonTag key={index} color={tag.color}>
             {tag.label}
-          </UdsTagButton>
+          </ButtonTag>
         ))}
       </div>
     )}
