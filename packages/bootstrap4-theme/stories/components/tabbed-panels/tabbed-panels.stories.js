@@ -8,7 +8,7 @@ storiesOf('Components/Tabbed Panels', module)
   })
 
   .add('White Background', () => `
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
         <nav class="uds-tabbed-panels">
@@ -37,7 +37,7 @@ storiesOf('Components/Tabbed Panels', module)
 `)
 
   .add('Dark background', () => `
-  <div class="container-fluid bg-dark">
+  <div class="container bg-dark">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
         <nav class="uds-tabbed-panels uds-tabbed-panels-dark">
@@ -66,7 +66,7 @@ storiesOf('Components/Tabbed Panels', module)
 `)
 
 .add('Light Gray Background', () => `
-<div class="container-fluid bg-light">
+<div class="container bg-light">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
       <nav class="uds-tabbed-panels">
@@ -95,7 +95,7 @@ storiesOf('Components/Tabbed Panels', module)
 `)
 
   .add('Dark Gray Background', () => `
-  <div class="container-fluid bg-gray">
+  <div class="container bg-gray">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
         <nav class="uds-tabbed-panels">
