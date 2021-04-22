@@ -27,46 +27,27 @@ storiesOf('Components/Tabbed Panels', module)
           </a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home tab content...</div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile tab content...</div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact tab content...</div>
-        </div>
-      </div>
-    </div>
-  </div>
-`)
-
-  .add('Dark background', () => `
-  <div class="container bg-dark">
-    <div class="row">
-      <div class="col-12 col-md-8 col-lg-10 col-xl-12">
-        <nav class="uds-tabbed-panels uds-tabbed-panels-dark">
-          <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
-          <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </nav>
-        <div class="tab-content text-light" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home tab content...</div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile tab content...</div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact tab content...</div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
       </div>
     </div>
   </div>
 `)
 
-.add('Light Gray Background', () => `
-<div class="container bg-light">
+.add('Light Background', () => `
+<div class="container bg-gray-1">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
       <nav class="uds-tabbed-panels">
@@ -85,17 +66,28 @@ storiesOf('Components/Tabbed Panels', module)
         </a>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home tab content...</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile tab content...</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact tab content...</div>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 `)
 
-  .add('Dark Gray Background', () => `
-  <div class="container bg-gray">
+  .add('Gray Background', () => `
+  <div class="container bg-gray-2">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
         <nav class="uds-tabbed-panels">
@@ -114,13 +106,62 @@ storiesOf('Components/Tabbed Panels', module)
         </a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home tab content...</div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Profile tab content...</div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact tab content...</div>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
       </div>
     </div>
   </div>
+`)
+
+.add('Dark Background', () => `
+<div class="container bg-dark">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+      <nav class="uds-tabbed-panels uds-tabbed-panels-dark">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
+        </div>
+        <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show text-white active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+          <br>
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
+        </div>
+        <div class="tab-pane fade text-white" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+          <br>
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+        <div class="tab-pane fade text-white" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+          <br>
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+      </div>
+    </div>
+  </div>
+</div>
 `);
 /*
   .add('Nav element', () => `<nav class="nav">

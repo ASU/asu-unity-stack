@@ -1,17 +1,5 @@
-.smokemode .nav-tabs .nav-link {
-  background-color: transparent;
-}
-
-.smokemode .nav-tabs .nav-link.active {
-  background-color: transparent;
-}
-
-.background-smokemode {
-  background-color: $uds-color-base-gray-2;
-}
-
 .uds-tabbed-panels {
-  box-shadow: inset 0px -2px 0px 0px $uds-color-base-gray-2;
+  box-shadow: inset 0px -2px 0px 0px $uds-color-base-gray-4;
   flex-wrap: inherit;
   overflow: hidden;
   position: relative;
@@ -84,10 +72,6 @@
       }
     }
   }
-}
-
-.tab-content {
-  padding-top: 32px;
 }
 
 .scroll-control {
