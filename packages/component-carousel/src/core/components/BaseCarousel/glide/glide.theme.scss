@@ -180,6 +180,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     $thumbnail-width: 88px;
     $thumbnail-height: 48px;
     $element-gap: 16px;
+    $image-navigator-height: $thumbnail-height + $element-gap;
     $border-element: 1px solid #d0d0d0;
     gap: $element-gap;
     overflow: hidden;
@@ -193,7 +194,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           border-bottom: $border-element;
         }
         .uds-caption-text {
-          padding: 1rem;
+          padding: 1rem 0;
           display: inline-block;
         }
       }
@@ -206,11 +207,11 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
     .image-navigator {
       position: relative;
-      height: calc($thumbnail-height + $element-gap);
+      height: $image-navigator-height;
       padding-bottom: 1rem;
 
       .glide__arrows {
-        width: 100%;
+        width: max-content;
         display: flex;
         justify-content: space-between;
 
@@ -223,8 +224,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           justify-content: center;
           z-index: 3;
           position: absolute;
-          bottom: calc(50%);
-          transform: translateY(calc(50%));
+          transform: translateY(50%);
 
           svg {
             height: 0.8rem;
