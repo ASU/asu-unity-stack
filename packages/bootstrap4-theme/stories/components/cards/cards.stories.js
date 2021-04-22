@@ -1063,10 +1063,12 @@ export const checkboxStackedCard = () => `
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
 
-        <div class="card card-story-checkbox-stacked">
+        <div class="card card-checkbox-stacked">
           <div class="card-image-content">
-            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-            <form class="uds-form card-form ml-4">
+            <div class="card-image-gradient">
+              <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+            </div>
+            <form class="uds-form card-image-overlay-content ml-4">
               <fieldset class="card-image-fieldset">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
@@ -1105,11 +1107,12 @@ export const checkboxInlineCard = () => `
 <div class="container">
   <div class="row row-spaced pt-2 pb-2">
     <div class="col col-12 col-md-6 col-lg-4">
-
-      <div class="card card-story-checkbox-inline">
+      <div class="card card-checkbox-inline">
         <div class="card-image-content">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <form class="uds-form card-form ml-4">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
+          <form class="uds-form card-image-overlay-content ml-4">
             <fieldset class="card-image-fieldset inline">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
@@ -1140,6 +1143,104 @@ export const checkboxInlineCard = () => `
       </div> <!-- .card -->
 
     </div> <!-- .col -->
+  </div>
+</div>
+`;
+
+export const mediaTypeOverlayCard = () => `
+<div class="container">
+  <div class="row row-spaced pt-2 pb-2">
+    <div class="col col-12 col-md-6 col-lg-4">
+
+      <div class="card card-checkbox-inline">
+        <div class="card-image-content">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
+          <div class="card-image-overlay-content media-type-overlay ml-4 mb-4">
+            <span class="fas icon-small fa-video" title="Video Icon"></span>
+          </div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-maroon">Default button</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div> <!-- .card -->
+
+    </div>
+    <div class="col col-12 col-md-6 col-lg-4">
+
+      <div class="card card-story card-checkbox-inline">
+        <div class="card-image-content">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
+          <div class="card-image-overlay-content media-type-overlay ml-4 mb-2">
+            <span class="fas icon-small fa-video" title="Video Icon"></span>
+          </div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Basic card with mixed content and a fixed width.  Cards have no margin and no fixed width by default (they’ll naturally fill the full width of its parent), so use 'spacing utilities'.</p>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-maroon">Default button</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+
+  <div class="row">
+    <div class="col col-12">
+      <div class="pt-4">
+        <h2>Approved overlay icons</h2>
+      </div>
+    <div>
+  </div>
+  <div class="row">
+      <span class="col mr-4">
+        <h3>Video</h3>
+        <div class="media-type-overlay mt-2">
+          <span class="fas icon-small fa-video" title="Video Icon"></span>
+        </div>
+      </span>
+      <span class="col mr-4">
+        <h3>Audio</h3>
+        <div class="media-type-overlay mt-2">
+          <span class="fas icon-small fa-volume-up" title="Video Icon"></span>
+        </div>
+      </span>
+      <span class="col mr-4">
+        <h3>VR/AR/360</h3>
+        <div class="media-type-overlay mt-2">
+          <span class="fas icon-small fa-street-view" title="Video Icon"></span>
+        </div>
+      </span>
+      <span class="col mr-4">
+        <h3>Image gallery</h3>
+        <div class="media-type-overlay mt-2">
+          <span class="fas icon-small fa-images" title="Video Icon"></span>
+        </div>
+      </span>
   </div>
 </div>
 `;

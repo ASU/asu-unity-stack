@@ -5,7 +5,7 @@ import { cx, css } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 
 import {
-  containerSize,
+  focusStyle,
   BreakpointLg,
   breakpointForMin
 } from "../../theme";
@@ -14,6 +14,9 @@ import {
  * Title
  **/
 const titleStyles = breakpoint => css`
+  a {
+    ${focusStyle}
+  }
   .title {
     line-height: 1;
     font-size: 1rem;
@@ -27,8 +30,6 @@ const titleStyles = breakpoint => css`
     /*padding-right: 4px;*/
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     transition-duration: 1s;
-
-
 
     &.active {
       background-position: -200%;
