@@ -1,0 +1,26 @@
+.highlight-on-scroll-text {
+  background-size: 0%;
+}
+
+.animate-bg-in-scroll {
+  background: linear-gradient(
+    to left,
+    transparent 50%,
+    $uds-color-base-gold 50%
+  );
+  animation: load 800ms normal forwards;
+  background-size: 0%;
+}
+
+@keyframes load {
+  0% {
+    background-size: 0%;
+  }
+  100% {
+    background-size: 200%;
+  }
+}
+
+.space-for-scrolling {
+  margin-top: 120vh;
+}
