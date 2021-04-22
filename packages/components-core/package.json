@@ -31,6 +31,8 @@
     "@testing-library/react": "^11.2.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-jest": "^24.3.5",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
     "jest": "^26.6.3",
@@ -39,6 +41,7 @@
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
+    "regenerator-runtime": "^0.13.7",
     "storybook-css-modules-preset": "^1.0.7",
     "style-loader": "^2.0.0"
   },

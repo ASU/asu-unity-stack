@@ -8,8 +8,8 @@ import React from "react";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { EventLocation } from "../EventLocation";
-import { UdsButton } from "../UdsButton";
-import { UdsTagButton } from "../UdsTagButton";
+// import { UdsButton } from "../UdsButton";
+// import { UdsTagButton } from "../UdsTagButton";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -30,8 +30,8 @@ export const Card = ({
   eventFormat,
   eventLocation,
   eventTime,
-  buttons,
-  tags,
+  // buttons,
+  // tags,
 }) => {
   const cardClass = classNames(UdsStyles["card"], {
     [UdsStyles[`card-degree`]]: type === "degree",
@@ -64,8 +64,8 @@ export const Card = ({
               eventTime={eventTime}
               title={title}
               link={link}
-              buttons={buttons}
-              tags={tags}
+              // buttons={buttons}
+              // tags={tags}
             />
           </div>
         ) : (
@@ -77,8 +77,8 @@ export const Card = ({
             eventTime={eventTime}
             title={title}
             link={link}
-            buttons={buttons}
-            tags={tags}
+            // buttons={buttons}
+            // tags={tags}
           />
         )}
       </div>
@@ -92,12 +92,12 @@ Card.propTypes = {
   horizontal: PropTypes.bool,
   clickable: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  link: PropTypes.string, //TODO: should this be required?
+  link: PropTypes.string, // TODO: should this be required?
   body: PropTypes.string,
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
   eventLocation: PropTypes.string,
   eventTime: PropTypes.string,
-  icon: PropTypes.elementType, // React Component
+  // icon: PropTypes.elementType, // React Component
   image: PropTypes.string,
   imageAltText: PropTypes.string,
 };
@@ -107,11 +107,12 @@ Card.defaultProps = {
   width: "100%",
   horizontal: false,
   clickable: false,
+  link: "",
   body: "",
   eventFormat: "stack",
   eventTime: "",
   eventLocation: "",
-  icon: "",
+  // icon: "",
   image: "",
   imageAltText: "",
 };
@@ -127,8 +128,8 @@ const CardContent = ({
   eventLocation,
   eventTime,
   title,
-  buttons,
-  tags,
+  // buttons,
+  // tags,
 }) => (
   <>
     <div className={UdsStyles["card-header"]}>
@@ -144,7 +145,7 @@ const CardContent = ({
         eventLocation={eventLocation}
       />
     )}
-    {buttons &&
+    {/* {buttons &&
       buttons.map((button, index) => (
         <div key={index} className={UdsStyles["card-button"]}>
           <UdsButton color={button.color}>{button.label}</UdsButton>
@@ -158,9 +159,26 @@ const CardContent = ({
           </UdsTagButton>
         ))}
       </div>
-    )}
+    )} */}
   </>
 );
+
+CardContent.propTypes = {
+  type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
+  body: PropTypes.string,
+  eventFormat: PropTypes.oneOf(["stack", "inline"]),
+  eventLocation: PropTypes.string,
+  eventTime: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+CardContent.defaultProps = {
+  type: "default",
+  body: "",
+  eventFormat: "stack",
+  eventLocation: "",
+  eventTime: "",
+};
 
 const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   if (eventFormat === "inline") {
@@ -206,4 +224,16 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
       </div>
     </>
   );
+};
+
+EventInfo.propTypes = {
+  eventFormat: PropTypes.oneOf(["stack", "inline"]),
+  eventLocation: PropTypes.string,
+  eventTime: PropTypes.string,
+};
+
+EventInfo.defaultProps = {
+  eventFormat: "stack",
+  eventLocation: "",
+  eventTime: "",
 };

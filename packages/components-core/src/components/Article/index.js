@@ -402,7 +402,7 @@ Article.propTypes = {
   /**
    * Location title
    */
-  locationtitle: PropTypes.string,
+  locationTitle: PropTypes.string,
   /**
    * Address line 1
    */
