@@ -1,21 +1,24 @@
 .highlight-on-scroll-text {
-  background-size: 200% 200%;
-  transition: background-position 800ms;
-  transition-delay: 200ms;
-  background-image: linear-gradient(
-    to left,
-    transparent 50%,
-    $uds-color-base-gold 0
-  );
-  background-position: right;
-
-  &.delayed {
-    transition-delay: 400ms;
-  }
+  background-size: 0%;
 }
 
 .animate-bg-in-scroll {
-  background-position: left;
+  background: linear-gradient(
+    to left,
+    transparent 50%,
+    $uds-color-base-gold 50%
+  );
+  animation: load 800ms normal forwards;
+  background-size: 0%;
+}
+
+@keyframes load {
+  0% {
+    background-size: 0%;
+  }
+  100% {
+    background-size: 200%;
+  }
 }
 
 .space-for-scrolling {
