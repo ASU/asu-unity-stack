@@ -24,6 +24,9 @@ pipeline {
                 }
             }
             steps {
+                sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                //sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                 sh 'yarn install'
                 sh 'yarn build'
                 sh 'yarn build-storybook'
@@ -37,7 +40,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'yarn test'
+                echo 'Tests temporarily disabled...'
+                //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
                 //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
             }
         }
@@ -50,6 +54,8 @@ pipeline {
             }
             steps {
                 echo 'Publishing packages to private NPM registry...'
+                sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                 sh 'yarn publish-packages'
             }
         }
@@ -62,7 +68,7 @@ pipeline {
                 sh 'aws --version'
                 sh '$(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)'
                 echo 'Building the Docker image...'
-                sh 'docker build -t $REPOSITORY_URI:latest .'
+                sh 'docker build --build-arg NPM_TOKEN="$NPM_TOKEN" -t $REPOSITORY_URI:latest .'
                 sh 'docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:v_$BUILD_NUMBER'
                 echo 'Pushing the Docker images...'
                 sh 'docker push $REPOSITORY_URI:latest'

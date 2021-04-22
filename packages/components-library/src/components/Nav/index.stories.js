@@ -1,13 +1,14 @@
 
 
 
+import { Nav } from ".";
+
 import {
   BasicNavTree,
   NavTreeWithButtons,
   NavTreeMega,
 } from "./NavTreeExample";
 
-import { Nav } from ".";
 
 export default {
   component: Nav,

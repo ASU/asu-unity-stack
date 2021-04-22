@@ -1,6 +1,8 @@
 /* eslint-disable react/no-danger */
 import { cx, css } from "@emotion/css";
+
 import { Icon } from "../Icons";
+import { focusStyle } from "../../theme"
 
 const Card = props => {
   return (
@@ -78,7 +80,7 @@ const CardBody = ({ show, id, ...props }) => {
           min-height: 1px;
           padding: 1.25rem;
           ${!show &&
-          css`
+          `
             display: none;
           `}
         `,
@@ -125,7 +127,7 @@ const FoldableCardBody = ({ show, id, ...props }) => {
       class={cx(
         css`
           ${show &&
-          css`
+          `
             border-top: 1px solid #d0d0d0;
           `}
         `,
@@ -157,6 +159,8 @@ const FoldableCardHeader = ({ show, id, ...props }) => {
         cursor: pointer;
         border: 0;
 
+        ${focusStyle}
+
         h4 {
           display: flex;
           flex-direction: row;
@@ -181,7 +185,7 @@ const FoldableCardHeader = ({ show, id, ...props }) => {
 
         ${
           show
-            ? css`
+            ? `
                 .fa-chevron-down {
                   transform: rotate(-180deg);
                 }

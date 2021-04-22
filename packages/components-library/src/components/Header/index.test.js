@@ -7,8 +7,11 @@ import expect  from "expect";
 // NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent, screen, waitFor } from "@testing-library/preact";
-import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
+
 import { Header } from "./";
+
+import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
+
 import { matchers } from "@emotion/jest";
 
 // Add the custom matchers provided by '@emotion/jest'

@@ -1,6 +1,7 @@
 
 
 import PropTypes from "prop-types";
+
 import * as S from "./styles";
 
 const Navbar = ({ children, mobileOpen, logo, ...props }) => {

@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 
 import { useRef, useEffect, useCallback } from "preact/compat";
-import * as S from "./styles";
 import PropTypes from "prop-types";
+
+import * as S from "./styles";
 
 const Search = ({ type, open, inputRef, mobile, ...props }) => {
 
@@ -30,7 +31,7 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
             required
           />
 
-          <label class="univeral-search" id="asu-search-label" onmousedown={() => event.preventDefault() /** prevent label click from removing input focus */ }>
+          <label class="universal-search" id="asu-search-label" onmousedown={() => event.preventDefault() /** prevent label click from removing input focus */ }>
             Search ASU
           </label>
 

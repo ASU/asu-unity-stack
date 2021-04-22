@@ -1,25 +1,27 @@
 /* eslint-disable react/prop-types */
-import { forwardRef } from "preact/compat";
 import { cx, css } from "@emotion/css";
+import { forwardRef } from "preact/compat";
+
 import {
+  focusStyle,
   containerSize,
   primaryNavTopPadding,
   BreakpointXl,
   BreakpointLg,
   srOnly,
 } from "../../theme";
-import { navStyles } from "../Nav/styles";
 import { buttonStyles } from "../Button/styles";
-import { searchStyles } from "../Search/styles";
 import { loginStyles } from "../Login/styles";
 import { logoStyles } from "../Logo/styles";
-import { titleStyles } from "../Title/styles";
-import { navItemStyles } from "../NavItem/styles";
+import { navStyles } from "../Nav/styles";
 import {
   navbarStyles,
   navbarContainerStyles,
   navbarTogglerStyles,
 } from "../Navbar/styles";
+import { navItemStyles } from "../NavItem/styles";
+import { searchStyles } from "../Search/styles";
+import { titleStyles } from "../Title/styles";
 
 const Header = ({ children, breakpoint, ...props }) => {
   return (
@@ -116,6 +118,10 @@ const universalStyles = breakpoint => css`
       justify-content: flex-end;
     }
 
+    .nav-grid {
+      align-items: center;
+    }
+
     @media (max-width: ${breakpoint}) {
       display: none;
       padding: 0;
@@ -202,6 +208,14 @@ const UniversalNavLinks = ({ children, ...props }) => {
             padding: 0.25rem 0.5rem;
             color: #484848;
             margin: 0;
+            position: relative;
+            padding-top: 0;
+            padding-bottom: 0;
+            ${focusStyle}
+
+            &:hover{
+              text-decoration: underline;
+            }
           }
         `
       )}

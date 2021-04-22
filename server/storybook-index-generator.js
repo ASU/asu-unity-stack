@@ -174,6 +174,12 @@ module.exports = generateHTML = packages => `
           <p><a class="btn btn-maroon btn-medium" href="asuheader">View the guide</a></p>
         </div>
 
+        <div class="col-md-6 pb-8">
+          <h2>Unity Design System Package Registry</h2>
+          <p>Learn how to install and use the packages listed below in your ASU projects. Important note: Users may only login and check out packages on the registry. On your first visit, follow steps 1 and 3, skipping 2.</p>
+          <p><a class="btn btn-maroon btn-medium" href="https://registry.web.asu.edu/">Visit package registry</a></p>
+        </div>
+
         ${packages.map(generateRow).join("")}
 
       </div>

@@ -48,7 +48,7 @@
       },
       "hover": {
         "text-decoration": {
-          "value": "underline"
+          "value": "none"
         },
         "color": {
           "value": "{color.base.white.value}"

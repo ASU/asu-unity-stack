@@ -26,59 +26,74 @@ In order to build the project, the dev environment needs to have the following p
 
 You need to set up your development environment before you can do anything.
 
-Typically, the easiest and most reliable way to manage Node.js and NPM on your desktop is via [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm). NVM allows you install and switch between multiple versions of node, which may necessary depending on what projects you are helping to develop.
+**Note:** this project is a Yarn Workspaces monorepo. This means only the `yarn` utility is to be used to interact with this codebase. `npm` should never be used to install or update packages or to execute project scripts.
 
-On MacOS or Linux, you should be able to follow the standard install instructions and run the NVM install script on your terminal:
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-or
-```
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-After installing nvm, if you get `nvm: command not found` error, close out your current terminal and reopen a new one.
+The recommended method for setting up your local development environment is to use [Volta - Javascript Tool Manager](https://volta.sh/). Volta is designed to allow MacOS, Liux, and Windows users to easily install and use the correct version of Node, NPM, and Yarn for their projects. In addition to easily installing different versions of Node on your computer and switching between them when needed, this project has been configured to notify Volta what version of Node and Yarn is required to work on this project. This ensure all devs are using the same version of these tools, and preventing some subtle errors and development issues from occurring.
 
-MacOS may require you install the Xcode Command Line Tools, if you haven't already for other development tasks in the past and you do not wish to install the full 4.3 GB Xcode framework:
+Visit [Getting Started](https://docs.volta.sh/guide/getting-started) for instructions on installing on your computer.
 
-[How to Install Command Line Tools in OS X Mavericks & Yosemite (Without Xcode)](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/)
-
-On Windows, you will need to install [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows). Follow the instruction there for your setup.)
-
-If these methods fail for you, you can always use the traditional install method provided by [Node.js and NPM from nodejs.org](https://nodejs.org/en/download/)
- or to use:
-- on OSX use [homebrew](http://brew.sh) `brew install node`
-- on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
-
-Once you have node and npm installed (included automatically with node), verify your node install works correctly:
+For MacOS, you only need to execute the following command in your terminal:
 
 ```
-node -v
-```
-and
-```
-npm -v
+curl https://get.volta.sh | bash
 ```
 
-You should get printouts of the current version of node and npm that are installed.
+You must then close and restart all open terminal sessions so the new Volta paths can take effect.
 
-To install and activate a specific version of Node for a project, such as the current LTS (Long-Term Support) version of node for this project, lts = v10 as of June 2019:
+#### Installing Node engines
+When you install a tool to your toolchain, you always choose a default version of that tool, which Volta will use unless you’re working within a project directory that has configured Volta to use a different version.
+
+For example, you can select your default version of node by installing a particular version:
 
 ```
-nvm install lts
-nvm use lts
-nvm alias default lts
+volta install node@14.15.5
 ```
 
-These three commands install, activate, and set the current LTS version of node to v10.x.
-
-Next, install yarn globally
-
-```bash
-npm install yarn -g
+You don’t need to specify a precise version, in which case Volta will choose a suitable version to match your request:
 ```
-Yarn is an alternative package manager to `npm`. In particular, yarn provides performance and added features for monorepos and other configuration elements in our project.
+volta install node@14
+```
+
+You can also specify latest—or even leave off the version entirely, and Volta will choose the latest LTS release:
+```
+volta install node
+```
+
+#### Installing Yarn
+
+Similarly, you can install versions of the npm and Yarn package managers with volta:
+```
+volta install yarn
+```
+
+and for other projects that use npm:
+```
+volta install npm
+```
 
 ## ❯ Quickstart Guide
+
+**Note:** this project is a Yarn Workspaces monorepo. This means only the `yarn` utility is to be used to interact with this codebase. `npm` should never be used to install or update packages or to execute project scripts.
+
+## ❯ How to use the private package registry:
+
+The ASU Unity Design System packages have been published to a private package service that requires user authentication. Before you can install or update these packages in this project (inlcuding running `yarn install` for the first time after the project is cloned to your local machine), you must create a user account on the ASU private Verdaccio package server and sign-in.
+
+1. Visit this URL and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
+
+2. Configure NPM to use our private registry. The easiest way is to add the following line to the .npmrc file in your home directory (e.g. `/home/{username}/.npmrc`):
+
+```@asu-design-system:registry=https://registry.web.asu.edu/```
+
+This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, login using:
+
+```npm login --registry https://registry.web.asu.edu/```
+
+3. Test installing packages using yarn or npm inside of another NPM project:
+
+```yarn add @asu-design-system/design-tokens```
+
+Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
 
 #### Local development
 The easiest way to get started is to spin up storybook as a dev environment:
@@ -102,7 +117,7 @@ See the developer documentation on storybook at https://storybook.js.org/docs/ba
 
 ```bash
 yarn build # build the project
-yarn test # run tests
+yarn test  # run tests
 ```
 
 It's also possible to build a package from the git project root with a Yarn workspace command like:
@@ -126,25 +141,6 @@ yarn stop # stop the testing server
  - Jest (https://jestjs.io/docs/en/getting-started)
  - Puppeteer (https://pptr.dev/)
 
-
-## ❯ How to use the private package registry:
-
-1. Go here and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
-
-2. Configure NPM to use our private registry. The easiest way I found is to add the following line to the .npmrc file in my home directory:
-
-```@asu-design-system:registry=https://registry.web.asu.edu/```
-
-This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, try to login using:
-
-```npm login --registry https://registry.web.asu.edu/```
-
-3. Test installing packages using yarn or npm inside of another NPM project:
-
-```yarn add @asu-design-system/design-tokens@dev```
-
-Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
-
 ## ❯ Build process:
 
 Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins which builds, tests, and then publishes packages to the 'dev' channel of our private npm registry.
@@ -153,22 +149,60 @@ After publishing, a QA environment is deployed to AWS ECS with the latest built 
 
 ```https://unity.web.asu.edu/```
 
-## ❯ Publishing packages:
+## ❯ Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
 
-In order to trigger a release, commits must be structured properly in order for semantic release to read commits, generate changelogs and publish packages.
+In order to trigger a release, commit and Pull Request messages must be structured properly in order for semantic-release to accurately update packages versions, generate changelogs and publish packages.
 
-Here are examples of a patch, minor, and major release:
+The ASU Unity project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with semantic versioning (SemVer), by describing the features, fixes, and breaking changes made in commit messages.
+
+The commit message should be structured as follows:
 
 ```
-fix(pencil): stop graphite breaking when too much pressure applied
+<type>[optional scope]: <description>
 
-feat(pencil): add 'graphiteWidth' option
+[optional body]
 
-perf(pencil): remove graphiteWidth option
+[optional footer]
+```
+
+### Examples
+
+#### Commit message with description and breaking change (Major version release)
+There is no scope specified, which means this change impacts the entire monorepo.
+
+```
+feat: allow provided config object to extend other configs
+
+BREAKING CHANGE: `extends` key in config file is now used for extending other config files
+```
+
+#### Commit message with scope
+This change was made within the 'lang' package. This is a minor version release.
+```
+feat(lang): add polish language
+```
+
+#### Commit message for a fix using an (optional) issue number.
+```
+fix(components-library): correct minor typos in code
+
+see the issue for details on the typos fixed
+
+closes issue #12
 ```
 
 More information can be found [here](https://semantic-release.gitbook.io/semantic-release/) under 'Commit Message Format' section
+
+### Project Update!
+
+Two build tools have been added to this project to assist contributors to write properly formatted commit messages: commitizen and commitlint.
+
+`commitlint` now evaluates *all* commits for format compliance **BEFORE** your commit is saved into the repository. All `git commit` commands are reviewed and accepted or rejected based on the message meeting our the Conventional Commit standard. If your commit message is formatted incorrectly, `commitlint` will reject your commit and require you to resubmit with the correct syntax.
+
+To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
+
+![GitHub Logo](/doc/assets/commitizen-prompts.png)
 
 ## ❯ Contributing:
 

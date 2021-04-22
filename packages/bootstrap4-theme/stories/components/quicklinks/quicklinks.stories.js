@@ -5,7 +5,7 @@ export const quickLinks = () => `
     <div class="row">
       <div class="col-md-12">
 
-        <div class="quicklinks quicklinks-expanded-md">
+        <div class="uds-quicklinks uds-quicklinks-expanded-md">
           <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             On this page<span class="fas fa-chevron-down"></span>
           </button>
@@ -21,8 +21,8 @@ export const quickLinks = () => `
           </div>
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
 
 `;

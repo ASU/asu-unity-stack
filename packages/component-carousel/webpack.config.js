@@ -6,7 +6,7 @@ module.exports = [];
 
 const shared = {
   entry: {
-    core: "./index.js",
+    carousel: "./index.js",
   },
   module: {
     rules: [

@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
-import * as S from "./styles";
-import { Nav } from "../Nav";
-import { UniversalSearch } from "../Search";
-import { Login } from "../Login";
-import { Navbar } from "../Navbar";
-import { Logo } from "../Logo";
-import { Title } from "../Title";
+
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { Login } from "../Login";
+import { Logo } from "../Logo";
+import { Nav } from "../Nav";
+import { Navbar } from "../Navbar";
+import { UniversalSearch } from "../Search";
+import { Title } from "../Title";
+import * as S from "./styles";
 
 const Header = ({
   navTree,
@@ -152,10 +153,10 @@ const Header = ({
       }
       data-onclick-identifier = "top-of-header"
     >
-      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action"></div>
+      <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action" />
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
-          <a href="https://www.asu.edu/">ASU home</a>
+          <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/colleges/">Colleges and schools</a>
           <Login {...{ loggedIn, loginLink, logoutLink, userName }} />

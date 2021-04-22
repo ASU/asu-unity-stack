@@ -14,9 +14,9 @@ storiesOf('Components/Sidebar', module)
       <div class="col-md-12 pb-4"><h1>Take a look at the sidebar</h1></div>
       <div class="col-md-4">
 
+        <h3>Lorem ipsum</h3>
         <nav id="sidebar-left" class="sidebar accordion" aria-label="Secondary">
 
-          <div class="nav-text">Continue to</div>
           <a class="nav-link" href="#">Default Link</a>
           <a class="nav-link active" href="#">Active Link</a>
 
