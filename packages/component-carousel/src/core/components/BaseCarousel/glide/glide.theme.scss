@@ -147,10 +147,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     max-width: 100%;
     display: flex;
     justify-content: center;
-
-    @media only screen and (max-width: $uds-breakpoint-sm) {
-      display: none;
-    }
   }
 
   &#{$se}bullet {
@@ -181,52 +177,93 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 
   &.image-gallery {
-    gap: 16px;
-    border: 1px solid #d0d0d0;
+    $thumbnail-width: 88px;
+    $thumbnail-height: 48px;
+    $element-gap: 16px;
+    $border-element: 1px solid #d0d0d0;
+    gap: $element-gap;
     overflow: hidden;
 
+    .image-gallery-action-area {
+      border: $border-element;
+      border-top: 0;
+
+      &[data-has-content="true"] {
+        .image-navigator {
+          border-bottom: $border-element;
+        }
+        .uds-caption-text {
+          padding: 1rem;
+          display: inline-block;
+        }
+      }
+    }
+
     figcaption {
-      padding: 0.75rem;
+      padding: 0 0.75rem;
       font-size: 0.75rem;
     }
 
     .image-navigator {
       position: relative;
+      height: calc($thumbnail-height + $element-gap);
+      padding-bottom: 1rem;
+
       .glide__arrows {
-        position: absolute;
-        left: 0;
-        bottom: 10px;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        // z-index: -1;
 
         .glide__arrow {
-          width: 2rem;
-          height: 2rem;
+          $btn-nav-size: 1.5rem;
+          width: $btn-nav-size;
+          height: $btn-nav-size;
           display: flex;
           align-items: center;
           justify-content: center;
-          // z-index: 3;
+          z-index: 3;
+          position: absolute;
+          bottom: calc(50%);
+          transform: translateY(calc(50%));
+
           svg {
-            height: 1rem;
+            height: 0.8rem;
             position: static;
+          }
+
+          &.glide__arrow--prev {
+            left: 0;
+          }
+          &.glide__arrow--next {
+            right: 0;
           }
         }
       }
     }
     .bullet-image {
       flex-basis: auto;
-      max-height: 40px;
       width: 88px;
       height: 48px;
       border-radius: 0;
-      z-index: 3;
+      z-index: 2;
     }
     // glide__bullet bullet-image glide__bullet--active
     .#{$glide-class}__bullet--active {
       background-color: transparent;
       border: 5px solid $uds-color-brand-gold;
+    }
+  }
+
+  @media only screen and (max-width: $uds-breakpoint-sm) {
+    &:not(&.image-gallery) {
+      .glide__bullets {
+        display: none;
+      }
+    }
+    &.image-gallery {
+      .image-navigator .glide__arrows .glide__arrow {
+        display: none;
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 // @ts-check
 /** @jsx h */
 import { h } from "preact";
+import PropTypes from "prop-types";
 
 const PrevIcon = () => (
   <svg
@@ -25,7 +26,7 @@ const PrevIcon = () => (
  * @param {{
  *  onClick?: () => void
  * }} props
- * @returns
+ * @returns { JSX.Element }
  */
 const PrevButton = ({ onClick = () => null }) => (
   <button
@@ -37,5 +38,9 @@ const PrevButton = ({ onClick = () => null }) => (
     <PrevIcon />
   </button>
 );
+
+PrevButton.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export { PrevButton, PrevIcon };

@@ -2,13 +2,14 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import { setupCaroarousel } from "./glide/glide.setup";
-import { useEffect, useRef } from "preact/compat";
+import PropTypes from "prop-types";
+import { useEffect } from "preact/compat";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
-import { SliderItems, BulletItems, NavButtons } from "./components";
+import { setupCaroarousel } from "./glide/glide.setup";
 import { calcualteViewItems } from "./helper/width-calculator";
+import { SliderItems, BulletItems, NavButtons } from "./components";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
 // Initially based on this approach:
@@ -38,7 +39,7 @@ const BaseCarousel = ({
   CustomNavComponent,
   role,
   ariaLabelledBy,
-  onItemClick = (index) => null,
+  onItemClick = index => null,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -90,6 +91,18 @@ const BaseCarousel = ({
       )}
     </div>
   );
+};
+
+BaseCarousel.propTypes = {
+  perView: PropTypes.string,
+  width: PropTypes.string,
+  maxWidth: PropTypes.string,
+  carouselItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cssClass: PropTypes.string,
+  CustomNavComponent: PropTypes.object,
+  role: PropTypes.string,
+  ariaLabelledBy: PropTypes.string,
+  onItemClick: PropTypes.func,
 };
 
 export { BaseCarousel, calcualteViewItems };

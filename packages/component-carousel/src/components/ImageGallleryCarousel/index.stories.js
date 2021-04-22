@@ -6,7 +6,7 @@ import { ImageGalleryCarousel } from ".";
 
 const myCarouselItems = [];
 
-for (let index = 1; index < 20; index++) {
+for (let index = 1; index < 10; index++) {
   myCarouselItems.push({
     id: index,
     imageSource: "https://source.unsplash.com/random/800x400?a=" + index,

@@ -1,17 +1,27 @@
 // @ts-check
 /** @jsx h */
 import { h, Fragment } from "preact";
+import PropTypes from "prop-types";
 
+/**
+ *
+ * @param {{ children: JSX.Element | JSX.Element[] }} props
+ * @returns { JSX.Element }
+ */
 const BaseBulletItemContainer = ({ children }) => (
   <div className="glide__bullets" data-glide-el="controls[nav]">
     {children}
   </div>
 );
 
+BaseBulletItemContainer.propTypes = {
+  children: PropTypes.object.isRequired,
+};
+
 /**
  *
- * @param {{ buttonCount: number}} props
- * @returns
+ * @param {{ buttonCount: number }} props
+ * @returns { JSX.Element }
  */
 const BulletItems = ({ buttonCount }) => {
   // Build out bullets markup based on buttonCount.
@@ -19,6 +29,8 @@ const BulletItems = ({ buttonCount }) => {
   for (let i = 0; i < buttonCount; i++) {
     bulletItems.push(
       <button
+        type="button"
+        key={"bullet-" + i}
         className={"glide__bullet"}
         data-glide-dir={"=" + i}
         aria-label={"Slide view " + (i + 1)}
@@ -28,18 +40,17 @@ const BulletItems = ({ buttonCount }) => {
   return <BaseBulletItemContainer>{bulletItems}</BaseBulletItemContainer>;
 };
 
+BulletItems.propTypes = {
+  buttonCount: PropTypes.number.isRequired,
+};
+
 /**
  *
- * @param {{ buttonCount: number, imageItems: string[], onItemClick?: (index: number) => void }} props
- * @returns
+ * @param {{ imageItems: string[], onItemClick?: (index: number) => void }} props
+ * @returns {JSX.Element}
  */
-const ImageBulletItems = ({
-  buttonCount,
-  imageItems,
-  onItemClick = index => null,
-}) => {
-  // Build out bullets markup based on buttonCount.
-  let bulletItems = imageItems.map((img, i) => (
+const ImageBulletItems = ({ imageItems, onItemClick = index => null }) => {
+  const bulletItems = imageItems.map((img, i) => (
     <img
       src={img}
       className={"glide__bullet bullet-image"}
@@ -50,6 +61,11 @@ const ImageBulletItems = ({
   ));
 
   return <BaseBulletItemContainer>{bulletItems}</BaseBulletItemContainer>;
+};
+
+ImageBulletItems.propTypes = {
+  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onItemClick: PropTypes.func,
 };
 
 export { BaseBulletItemContainer, BulletItems, ImageBulletItems };

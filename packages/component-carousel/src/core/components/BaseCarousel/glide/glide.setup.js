@@ -151,10 +151,11 @@ function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
   });
 
   slider.on("move.after", () => {
-    const currentSlider = document.querySelector(`#${instanceName}`);
+    const gliderElement = document.querySelector(`#${instanceName}`);
+    if (!gliderElement) return; // necessary. it breaks on resize
     // @ts-ignore
     const { index } = slider;
-    currentSlider.setAttribute("data-current-index", index+1);
+    gliderElement.setAttribute("data-current-index", index+1);
     onItemClick && onItemClick(index);
   });
 

@@ -16,11 +16,11 @@ const RenderPreact = (component, props, target) => {
 /**
  * Initialize the Carousel.
  *
- * @param {*} props - Properties to initialize the carousel with. See the
+ * @param {object} props - Properties to initialize the carousel with. See the
  * component definiton src/components/AsuCarousel/index.js for more details.
- * @param {*} hydrate - If true, will run Preact's hydrate function instead of render.
+ * @param {boolean} hydrate - If true, will run Preact's hydrate function instead of render.
  * Should only be set to true if the header has been completely rendered server-side.
- * @param {*} target - The ID of the containing <div> where the header should
+ * @param {string} target - The ID of the containing <div> where the header should
  * be either hydrated or rendered.
  */
 const initCarousel = (props, target = "carouselContainer", hydrate = false) => {

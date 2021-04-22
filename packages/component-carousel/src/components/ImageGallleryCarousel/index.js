@@ -1,11 +1,15 @@
 // @ts-check
 
 import { h, Fragment } from "preact";
-import { useMemo, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
+import PropTypes from "prop-types";
+
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 import {
   ImageBulletItems,
-  NavButtons,
+  PrevButton,
+  NextButton,
+  BaseNavButtonContainer,
 } from "../../core/components/BaseCarousel/components";
 
 /**
@@ -46,7 +50,7 @@ const imageTemplate = ({ id, imageSource, altText, content }) => ({
  *     content?: any
  *   }[]
  *  }} props
- * @returns
+ * @returns { JSX.Element }
  */
 const ImageGalleryCarousel = ({
   perView,
@@ -57,25 +61,32 @@ const ImageGalleryCarousel = ({
 }) => {
   const carouselItems = imageItems.map(imageTemplate);
 
-  const CustomNavComponent = ({ buttonCount, instanceName }) => {
+  /**
+   *
+   * @param {{ instanceName: string }} props
+   * @returns { JSX.Element }
+   */
+  const CustomNavComponent = ({ instanceName }) => {
     const [content, setContent] = useState(imageItems[0].content);
 
     const onItemClick = () => {
       const currentSlider = document.querySelector(`#${instanceName}`);
-      const currentIndex= currentSlider.getAttribute("data-current-index");
+      const currentIndex = currentSlider.getAttribute("data-current-index");
       const item = imageItems[currentIndex];
       setContent(item.content);
     };
     let bulletItems = imageItems.map(item => item.imageSource);
     return (
-      <>
+      <div className="image-gallery-action-area" data-has-content={hasContent}>
         <div className="image-navigator">
-          <ImageBulletItems
-            buttonCount={buttonCount}
-            imageItems={bulletItems}
-            onItemClick={onItemClick}
-          />
-          <NavButtons onClick={onItemClick} />
+          <BaseNavButtonContainer>
+            <PrevButton />
+            <ImageBulletItems
+              imageItems={bulletItems}
+              onItemClick={onItemClick}
+            />
+            <NextButton />
+          </BaseNavButtonContainer>
         </div>
         {hasContent ? (
           <figure class="figure uds-figure">
@@ -91,7 +102,7 @@ const ImageGalleryCarousel = ({
             </figcaption>
           </figure>
         ) : null}
-      </>
+      </div>
     );
   };
 
@@ -104,11 +115,18 @@ const ImageGalleryCarousel = ({
       cssClass="image-gallery"
       role="figure"
       ariaLabelledBy="caption"
-      // onItemClick={onItemClick}
       // @ts-ignore
       CustomNavComponent={props => <CustomNavComponent {...props} />}
     />
   );
+};
+
+ImageGalleryCarousel.propTypes = {
+  perView: PropTypes.string.isRequired,
+  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  width: PropTypes.string,
+  maxWidth: PropTypes.string,
+  hasContent: PropTypes.bool,
 };
 
 export { ImageGalleryCarousel };

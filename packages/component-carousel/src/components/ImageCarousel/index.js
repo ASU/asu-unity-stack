@@ -1,6 +1,7 @@
 // @ts-check
-
 import { h } from "preact";
+import PropTypes from "prop-types";
+
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
@@ -10,8 +11,8 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  *          imageSource: string
  *          altText:string
  *          content?: string | h.JSX.Element
- *        }} param0
- * @returns
+ *        }} props
+ * @returns {{ id: number, item: h.JSX.Element }}
  */
 const imageTemplate = ({ id, imageSource, altText, content }) => ({
   id,
@@ -41,13 +42,18 @@ const imageTemplate = ({ id, imageSource, altText, content }) => ({
  *
  * @param {{
  *            perView: string | number
+ *            imageItems: { id: number, imageSource: string, altText:string }[]
  *            maxWidth?: string
  *            width?: string
- *            imageItems: { id: number, imageSource: string, altText:string }[]
  *        }} props
  * @returns
  */
-const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
+const ImageCarousel = ({
+  perView,
+  imageItems,
+  width = undefined,
+  maxWidth = undefined,
+}) => {
   const carouselItems = imageItems.map(imageTemplate);
 
   return (
@@ -58,6 +64,13 @@ const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
       carouselItems={carouselItems}
     />
   );
+};
+
+ImageCarousel.propTypes = {
+  perView: PropTypes.string.isRequired,
+  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  width: PropTypes.string,
+  maxWidth: PropTypes.string,
 };
 
 export { ImageCarousel, imageTemplate };
