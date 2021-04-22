@@ -1,5 +1,5 @@
-import React from "react";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 import { Button } from ".";
 
@@ -8,13 +8,17 @@ export default {
   component: Button,
 };
 
-const Template = args => (
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
-      <Button {...args}>{args.label}</Button>
+const Template = args => {
+  const { label } = args;
+
+  return (
+    <div className="container-fluid">
+      <div className="col col-sm-12 p-3">
+        <Button {...args}>{label}</Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {

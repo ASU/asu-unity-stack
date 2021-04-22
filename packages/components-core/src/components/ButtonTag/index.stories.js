@@ -7,13 +7,17 @@ export default {
   component: ButtonTag,
 };
 
-const Template = args => (
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
-      <ButtonTag {...args}>{args.label}</ButtonTag>
+const Template = args => {
+  const { label } = args;
+
+  return (
+    <div className="container-fluid">
+      <div className="col col-sm-12 p-3">
+        <ButtonTag {...args}>{label}</ButtonTag>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const TagButton = Template.bind({});
 TagButton.args = {

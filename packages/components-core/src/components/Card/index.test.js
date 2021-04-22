@@ -8,13 +8,13 @@ import { Card } from ".";
 it("default card has no visual regressions", async () => {
   render(
     <Card
-      type={"event"}
-      width={"25%"}
+      type="event"
+      width="25%"
       horizontal={false}
       clickable={false}
-      title={"Default Title"}
-      image={"https://via.placeholder.com/300x200"}
-      imageAltText={"placeholder image"}
+      title="Default Title"
+      image="https://via.placeholder.com/300x200"
+      imageAltText="placeholder image"
     />
   );
 

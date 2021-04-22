@@ -19,12 +19,12 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
+import { Button } from "../Button";
 import { EventDate } from "../EventDate";
 import { EventLocation } from "../EventLocation";
-import { UdsButton } from "../UdsButton";
 import "./index.css";
 
 const sanitizeDangerousMarkup = content => {
@@ -235,14 +235,14 @@ export const Article = ({
               <div
                 className={classNames(UdsStyles["card-button"], "uds-button")}
               >
-                <UdsButton color="maroon">Attend on Zoom</UdsButton>
+                <Button color="maroon">Attend on Zoom</Button>
               </div>
               <div
                 className={classNames(UdsStyles["card-button"], "uds-button")}
               >
-                <UdsButton color="gray" size="small">
+                <Button color="gray" size="small">
                   Add to calendar
-                </UdsButton>
+                </Button>
               </div>
             </div>
           )}

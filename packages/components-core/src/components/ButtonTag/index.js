@@ -9,20 +9,21 @@ export const ButtonTag = ({
   children,
   color,
   disabled,
-  element: Tag,
+  element,
   innerRef,
   href,
   onClick,
   ...attributes
 }) => {
   const btnClasses = classNames(UdsStyles["btn"], UdsStyles[`btn-tag`], {
-    [UdsStyles[`btn-tag-alt-white`]]: "white" === color,
-    [UdsStyles[`btn-tag-alt-gray`]]: "gray" === color,
-    [UdsStyles[`btn-tag-alt-dark`]]: "dark" === color,
+    [UdsStyles[`btn-tag-alt-white`]]: color === "white",
+    [UdsStyles[`btn-tag-alt-gray`]]: color === "gray",
+    [UdsStyles[`btn-tag-alt-dark`]]: color === "dark",
     [UdsStyles[`disabled`]]: disabled,
   });
 
-  if (href && Tag === "button") {
+  let Tag = element;
+  if (href && element === "button") {
     Tag = "a";
   }
 
@@ -43,11 +44,11 @@ export const ButtonTag = ({
 
 ButtonTag.propTypes = {
   ariaLabel: PropTypes.string,
-  block: PropTypes.bool,
   children: PropTypes.node,
   color: PropTypes.oneOf(["white", "gray", "dark"]),
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["button", "a"]),
+  href: PropTypes.string,
 
   // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
   innerRef: PropTypes.oneOfType([
@@ -56,11 +57,16 @@ ButtonTag.propTypes = {
     PropTypes.string,
   ]),
 
-  href: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 ButtonTag.defaultProps = {
+  ariaLabel: undefined,
+  children: undefined,
   color: "gray",
+  disabled: false,
   element: "button",
+  href: undefined,
+  innerRef: undefined,
+  onClick: undefined,
 };
