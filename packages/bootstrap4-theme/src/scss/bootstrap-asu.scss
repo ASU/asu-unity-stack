@@ -34,6 +34,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/dividers';
 @import 'variables/dropdown';
 @import 'variables/form-fields';
+@import 'variables/quote-image-background';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
