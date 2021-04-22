@@ -3,9 +3,15 @@
 $glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
+$uds-breakpoint-sm: 576px;
+$uds-color-base-gray-7: #191919;
 
 .#{$glide-class} {
   $this: &;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
   // Gradient variations wired up to js in component.
   // .glide.slider-start::after rule w/o "to right"
@@ -80,13 +86,12 @@ $glide-modifier-separator: "--" !default;
 
   // Arrows.
   &#{$se}arrows {
-    position: absolute;
-    display: inline;
-    left: 50%;
-    bottom: -11rem; // Place below.
     z-index: 2;
-    margin-left: -5.5rem; // TODO Recentering arrows. May need to tweak - OR find better way.
+    align-self: center;
 
+    @media only screen and (max-width: $uds-breakpoint-sm) {
+      bottom: -8rem; // Place below.
+    }
     //&#{$se}arrow {
     .glide__arrow {
       color: #191919;
@@ -101,7 +106,6 @@ $glide-modifier-separator: "--" !default;
       opacity: 1;
       cursor: pointer;
       transition: opacity 150ms ease, border 300ms ease-in-out;
-      transform: translateY(-50%);
       line-height: 1;
 
       &.glide__arrow--disabled {
@@ -140,13 +144,14 @@ $glide-modifier-separator: "--" !default;
 
   // Bullets
   &#{$se}bullets {
-    position: absolute;
     z-index: 2;
-    bottom: -3rem;
-    left: 50%;
-    display: inline-flex;
     list-style: none;
-    transform: translateX(-50%);
+    width: max-content;
+    align-self: center;
+
+    @media only screen and (max-width: $uds-breakpoint-sm) {
+      display: none;
+    }
   }
 
   &#{$se}bullet {
@@ -186,5 +191,23 @@ $glide-modifier-separator: "--" !default;
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+  }
+
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+
+  figure.uds-figure {
+    margin: 0;
+
+    figcaption *,
+    .uds-caption-text {
+      color: $uds-color-base-gray-7;
+    }
   }
 }
