@@ -1065,7 +1065,9 @@ export const checkboxStackedCard = () => `
 
         <div class="card card-checkbox-stacked">
           <div class="card-image-content">
-            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+            <div class="card-image-gradient">
+              <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+            </div>
             <form class="uds-form card-image-overlay-content ml-4">
               <fieldset class="card-image-fieldset">
                 <div class="form-check">
@@ -1105,10 +1107,11 @@ export const checkboxInlineCard = () => `
 <div class="container">
   <div class="row row-spaced pt-2 pb-2">
     <div class="col col-12 col-md-6 col-lg-4">
-
       <div class="card card-checkbox-inline">
         <div class="card-image-content">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
           <form class="uds-form card-image-overlay-content ml-4">
             <fieldset class="card-image-fieldset inline">
               <div class="form-check">
@@ -1151,12 +1154,12 @@ export const mediaTypeOverlayCard = () => `
 
       <div class="card card-checkbox-inline">
         <div class="card-image-content">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
           <div class="card-image-overlay-content media-type-overlay ml-4 mb-4">
             <span class="fas icon-small fa-video" title="Video Icon"></span>
           </div>
-
-
         </div>
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
@@ -1180,12 +1183,12 @@ export const mediaTypeOverlayCard = () => `
 
       <div class="card card-story card-checkbox-inline">
         <div class="card-image-content">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-image-gradient">
+            <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          </div>
           <div class="card-image-overlay-content media-type-overlay ml-4 mb-2">
             <span class="fas icon-small fa-video" title="Video Icon"></span>
           </div>
-
-
         </div>
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
