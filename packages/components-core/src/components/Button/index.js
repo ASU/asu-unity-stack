@@ -1,7 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
@@ -11,7 +11,7 @@ export const Button = ({
   children,
   color,
   disabled,
-  element: Tag,
+  element,
   icon,
   innerRef,
   href,
@@ -21,13 +21,14 @@ export const Button = ({
 }) => {
   const btnClasses = classNames(UdsStyles["btn"], {
     [UdsStyles[`btn-${color}`]]: true,
-    [UdsStyles[`btn-md`]]: "small" === size,
-    [UdsStyles[`btn-sm`]]: "xsmall" === size,
+    [UdsStyles[`btn-md`]]: size === "small",
+    [UdsStyles[`btn-sm`]]: size === "xsmall",
     [UdsStyles[`btn-block`]]: block,
     [UdsStyles[`disabled`]]: disabled,
   });
 
-  if (href && Tag === "button") {
+  let Tag = element;
+  if (href && element === "button") {
     Tag = "a";
   }
 
@@ -51,10 +52,11 @@ export const Button = ({
 Button.propTypes = {
   ariaLabel: PropTypes.string,
   block: PropTypes.bool,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["button", "a"]),
+  href: PropTypes.string,
   icon: PropTypes.elementType,
 
   // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
@@ -64,13 +66,19 @@ Button.propTypes = {
     PropTypes.string,
   ]),
 
-  href: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(["default", "small", "xsmall"]),
 };
 
 Button.defaultProps = {
+  ariaLabel: undefined,
+  block: false,
   color: "gray",
+  disabled: false,
   element: "button",
+  href: undefined,
+  icon: undefined,
+  innerRef: undefined,
+  onClick: undefined,
   size: "default",
 };

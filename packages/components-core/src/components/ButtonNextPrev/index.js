@@ -1,11 +1,11 @@
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React from "react";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
@@ -28,7 +28,7 @@ export const ButtonNextPrev = ({
   if (direction === "next") {
     return (
       <button
-        type={"button"}
+        type="button"
         {...attributes}
         className={btnClasses}
         ref={innerRef}
@@ -42,7 +42,7 @@ export const ButtonNextPrev = ({
 
   return (
     <button
-      type={"button"}
+      type="button"
       {...attributes}
       className={btnClasses}
       ref={innerRef}
@@ -56,9 +56,10 @@ export const ButtonNextPrev = ({
 
 ButtonNextPrev.propTypes = {
   color: PropTypes.oneOf(["white", "gray", "black"]),
-  direction: PropTypes.oneOf(["next", "prev"]),
+  direction: PropTypes.oneOf(["next", "prev"]).isRequired,
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["button", "a"]),
+  href: PropTypes.string,
 
   // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
   innerRef: PropTypes.oneOfType([
@@ -67,11 +68,14 @@ ButtonNextPrev.propTypes = {
     PropTypes.string,
   ]),
 
-  href: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 ButtonNextPrev.defaultProps = {
   color: "white",
+  disabled: false,
   element: "button",
+  href: undefined,
+  innerRef: undefined,
+  onClick: undefined,
 };
