@@ -23,8 +23,6 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
-import { EventDate } from "../EventDate";
-import { EventLocation } from "../EventLocation";
 import "./index.css";
 
 const sanitizeDangerousMarkup = content => {
@@ -42,17 +40,10 @@ export const Article = ({
   body,
   date,
   type,
-  image,
+  headerImageUrl,
   title,
-  startTime,
-  stopTime,
-  locationTitle,
-  address1,
-  address2,
-  city,
-  state,
-  zip,
-  locationLink,
+  eventLocation,
+  eventTime,
 }) => {
   const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
     [UdsStyles["col-lg-12"]]: type !== "event",
@@ -171,14 +162,14 @@ export const Article = ({
 
   return (
     <>
-      {image && type !== "event" && (
+      {headerImageUrl && type !== "event" && (
         <div
           className={classNames(
             UdsStyles["uds-hero"],
             UdsStyles["uds-hero-md"]
           )}
           style={{
-            backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${image})`,
+            backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
           }}
         />
       )}
@@ -271,7 +262,9 @@ export const Article = ({
                 transform="shrink-2"
               />
               <h4>Date and time:</h4>
-              <EventDate startTime={startTime} stopTime={stopTime} />
+              <div
+                dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
+              />
             </div>
             <div
               className={classNames(
@@ -287,14 +280,8 @@ export const Article = ({
                 transform="shrink-2"
               />
               <h4>Location:</h4>
-              <EventLocation
-                title={locationTitle}
-                address1={address1}
-                address2={address2}
-                city={city}
-                state={state}
-                zip={zip}
-                locationLink={locationLink}
+              <div
+                dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
               />
             </div>
           </div>
@@ -351,97 +338,24 @@ export const Article = ({
 };
 
 Article.propTypes = {
-  /**
-   * Type of article
-   */
   type: PropTypes.oneOf(["event", "news"]),
-  /**
-   * This is the relative or absolute url to the full-page article
-   */
   articleUrl: PropTypes.string.isRequired,
-  /**
-   * Article image
-   */
-  image: PropTypes.string,
-  /**
-   * Title
-   */
+  headerImageUrl: PropTypes.string,
   title: PropTypes.string.isRequired,
-  /**
-   * Date for the article
-   */
   date: PropTypes.string.isRequired,
-  /**
-   * Body content for the article
-   */
   body: PropTypes.string.isRequired,
-  /**
-   * Article author full name
-   */
   authorName: PropTypes.string.isRequired,
-  /**
-   * Article author title
-   */
   authorTitle: PropTypes.string,
-  /**
-   * Article author email
-   */
   authorEmail: PropTypes.string,
-  /**
-   * Article author phone number
-   */
   authorPhone: PropTypes.string,
-  /**
-   * Event start time
-   */
-  startTime: PropTypes.string,
-  /**
-   * Event stop time
-   */
-  stopTime: PropTypes.string,
-  /**
-   * Location title
-   */
-  locationTitle: PropTypes.string,
-  /**
-   * Address line 1
-   */
-  address1: PropTypes.string,
-  /**
-   * Address line 2
-   */
-  address2: PropTypes.string,
-  /**
-   * City
-   */
-  city: PropTypes.string,
-  /**
-   * State
-   */
-  state: PropTypes.string,
-  /**
-   * Zip
-   */
-  zip: PropTypes.string,
-  /**
-   * Location link
-   */
-  locationLink: PropTypes.string,
+  eventLocation: PropTypes.string.isRequired,
+  eventTime: PropTypes.string.isRequired,
 };
 
 Article.defaultProps = {
   type: "news",
-  image: "",
+  headerImageUrl: undefined,
   authorTitle: "",
   authorEmail: "",
   authorPhone: "",
-  startTime: "",
-  stopTime: "",
-  locationTitle: "",
-  address1: "",
-  address2: "",
-  city: "",
-  state: "",
-  zip: "",
-  locationLink: "",
 };
