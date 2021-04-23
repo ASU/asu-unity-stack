@@ -88,7 +88,6 @@ const ImageGalleryCarousel = ({
           </BaseNavButtonContainer>
         </div>
         {hasContent ? (
-          <figure className="figure uds-figure">
             <figcaption
               id="caption"
               className="figure-caption uds-figure-caption"
@@ -99,7 +98,6 @@ const ImageGalleryCarousel = ({
                 content
               )}
             </figcaption>
-          </figure>
         ) : null}
       </div>
     );

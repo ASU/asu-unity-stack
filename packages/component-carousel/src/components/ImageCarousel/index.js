@@ -61,6 +61,7 @@ const ImageCarousel = ({
       perView={+perView}
       maxWidth={maxWidth}
       width={width}
+      cssClass="image-carousel"
       carouselItems={carouselItems}
     />
   );

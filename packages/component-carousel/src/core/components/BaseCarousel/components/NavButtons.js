@@ -6,7 +6,10 @@ import PropTypes from "prop-types";
 import { PrevButton, NextButton } from ".";
 
 const BaseNavButtonContainer = ({ children }) => (
-  <div className="glide__arrows" data-glide-el="controls">
+  <div
+    className="glide__arrows"
+    data-glide-el="controls"
+  >
     {children}
   </div>
 );

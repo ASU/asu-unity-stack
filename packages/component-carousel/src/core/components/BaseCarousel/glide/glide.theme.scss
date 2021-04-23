@@ -245,6 +245,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       width: 88px;
       height: 48px;
       border-radius: 0;
+      border: 0;
       z-index: 2;
     }
     // glide__bullet bullet-image glide__bullet--active
@@ -288,12 +289,26 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
   }
 
-  figure.uds-figure {
-    margin: 0;
-
-    figcaption *,
-    .uds-caption-text {
-      color: $uds-color-base-gray-7;
+  &.image-gallery,
+  &.image-carousel {
+    @mixin li-inactive-border {
+      li:not(.glide__slide--active) img {
+        border: 0;
+      }
     }
+
+    &[role="figure"],
+    figure.uds-figure {
+      margin: 0;
+
+      figcaption *,
+      .uds-caption-text {
+        color: $uds-color-base-gray-7;
+      }
+
+      @include li-inactive-border;
+    }
+
+    @include li-inactive-border;
   }
 }
