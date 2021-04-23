@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
 import { ButtonClose } from ".";
