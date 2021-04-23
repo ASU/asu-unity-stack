@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: "off" */
 import classNames from "classnames";
 import React from "react";
 

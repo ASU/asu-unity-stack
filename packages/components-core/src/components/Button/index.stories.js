@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: "off" */
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 

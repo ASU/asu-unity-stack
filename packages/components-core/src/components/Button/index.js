@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: "off" */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";

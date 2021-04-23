@@ -26,7 +26,6 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
     "dot-notation": "off",
-    "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
   },
 };
