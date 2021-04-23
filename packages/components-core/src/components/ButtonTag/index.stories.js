@@ -8,6 +8,11 @@ export default {
   component: ButtonTag,
 };
 
+const handleClick = e => {
+  e.preventDefault();
+  alert("The button was clicked.");
+};
+
 const Template = args => {
   const { label } = args;
 
@@ -24,4 +29,5 @@ export const TagButton = Template.bind({});
 TagButton.args = {
   label: "Tag Button",
   color: "gray",
+  onClick: handleClick,
 };
