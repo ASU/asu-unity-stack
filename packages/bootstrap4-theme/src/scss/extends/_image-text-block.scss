@@ -1,44 +1,51 @@
 .uds-image-text-block {
   &-container {
-    max-width: $uds-breakpoint-xl;
-    border: $uds-image-text-block-container-border;
-    background: $uds-image-text-block-container-background;
-    display: $uds-image-text-block-container-display;
-    flex-direction: $uds-image-text-block-container-basic-display-direction;
+    border: 1px solid $uds-color-base-gray-3;
+    background: $uds-color-background-white 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: row;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
-      flex-direction: $uds-image-text-block-container-small-display-direction;
+      flex-direction: column;
     }
   }
 
   &-image-container {
-    display: $uds-image-text-block-image-container-display;
-    flex: $uds-image-text-block-image-container-flex-size;
+    display: flex;
+    flex: 1;
 
     img {
-      object-fit: $uds-image-text-block-image-container-object-fit;
+      object-fit: cover;
     }
 
     @media screen and (max-width: $uds-breakpoint-sm) {
       display: block;
       object-fit: cover;
-      order: $uds-image-text-block-image-container-order-sm;
+      order: 1;
     }
   }
 
   &-text-container {
-    flex: $uds-image-text-block-text-container-flex-size;
+    flex: 1;
     /*
     * Set a max width of 50% here because padding/margins are added in addition to the space given for flex, therefore
     * the width of the text container is actually bigger than of the image container otherwise.
     */
-    max-width: $uds-image-text-block-text-container-max-width-sm;
-    padding: $uds-size-spacing-6;
+    max-width: 50%;
+    padding: 48px 96px;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
-      padding: $uds-size-spacing-2;
-      max-width: $uds-image-text-block-text-container-max-width;
-      order: $uds-image-text-block-text-container-order-sm;
+      padding: 24px;
+      max-width: 100%;
+      order: 2;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-md) {
+      padding: 36px;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-lg) {
+      padding: 48px;
     }
   }
 }
