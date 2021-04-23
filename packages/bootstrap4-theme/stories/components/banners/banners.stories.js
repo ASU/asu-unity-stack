@@ -21,8 +21,8 @@ storiesOf('Components/Banners', module)
       here</a>.
     </div>
     <div class="banner-buttons">
-      <a href="https://provost.asu.edu/sync/students" type="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
-      <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
+      <a href="https://provost.asu.edu/sync/students" role="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
+      <a href="https://students.asu.edu/faq" role="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
@@ -43,8 +43,8 @@ storiesOf('Components/Banners', module)
       here</a>.
     </div>
     <div class="banner-buttons">
-      <a href="https://provost.asu.edu/sync/students" type="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
-      <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
+      <a href="https://provost.asu.edu/sync/students" role="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
+      <a href="https://students.asu.edu/faq" role="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
@@ -65,8 +65,8 @@ storiesOf('Components/Banners', module)
       here</a>.
     </div>
     <div class="banner-buttons">
-      <a href="https://provost.asu.edu/sync/students" type="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
-      <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
+      <a href="https://provost.asu.edu/sync/students" role="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
+      <a href="https://students.asu.edu/faq" role="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
@@ -87,8 +87,8 @@ storiesOf('Components/Banners', module)
       here</a>.
     </div>
     <div class="banner-buttons">
-      <a href="https://provost.asu.edu/sync/students" type="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
-      <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-dark">FAQ Page</a>
+      <a href="https://provost.asu.edu/sync/students" role="button" class="btn btn-sm btn-dark">Info. on teaching and learning remotely</a>
+      <a href="https://students.asu.edu/faq" role="button" class="btn btn-sm btn-dark">FAQ Page</a>
     </div>
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
@@ -109,8 +109,8 @@ storiesOf('Components/Banners', module)
       here</a>.
     </div>
     <div class="banner-buttons">
-      <a href="https://provost.asu.edu/sync/students" type="button" class="btn btn-sm btn-gold">Info. on teaching and learning remotely</a>
-      <a href="https://students.asu.edu/faq" type="button" class="btn btn-sm btn-gold">FAQ Page</a>
+      <a href="https://provost.asu.edu/sync/students" role="button" class="btn btn-sm btn-gold">Info. on teaching and learning remotely</a>
+      <a href="https://students.asu.edu/faq" role="button" class="btn btn-sm btn-gold">FAQ Page</a>
     </div>
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
