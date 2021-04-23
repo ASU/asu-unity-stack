@@ -1,6 +1,6 @@
 // @ts-check
 /** @jsx h */
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import PropTypes from "prop-types";
 
 /**
@@ -49,7 +49,7 @@ BulletItems.propTypes = {
  * @param {{ imageItems: string[], onItemClick?: (index: number) => void }} props
  * @returns {JSX.Element}
  */
-const ImageBulletItems = ({ imageItems, onItemClick = index => null }) => {
+const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
   const bulletItems = imageItems.map((img, i) => (
     <img
       src={img}

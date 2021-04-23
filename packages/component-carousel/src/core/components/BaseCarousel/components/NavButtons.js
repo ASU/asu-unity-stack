@@ -1,6 +1,6 @@
 // @ts-check
 /** @jsx h */
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import PropTypes from "prop-types";
 
 import { PrevButton, NextButton } from ".";

@@ -1,7 +1,6 @@
 // @ts-check
 /** @jsx h */
-/* eslint-disable react/prop-types */
-import { h, Fragment } from "preact";
+import { h, Fragment} from "preact";
 import { useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 
@@ -39,7 +38,7 @@ const BaseCarousel = ({
   CustomNavComponent,
   role,
   ariaLabelledBy,
-  onItemClick = index => null,
+  onItemClick = () => null,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -63,13 +62,13 @@ const BaseCarousel = ({
 
   useEffect(() => {
     setupCaroarousel(instanceName, perView, +buttonCount, onItemClick);
-  }, []);
+  }, [instanceName, perView, buttonCount, onItemClick]);
 
   return (
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={`glide ${  cssClass}`}
+      className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
     >

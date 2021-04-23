@@ -1,6 +1,5 @@
 // @ts-check
-
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { useState } from "preact/hooks";
 import PropTypes from "prop-types";
 
@@ -22,13 +21,13 @@ import {
  *        }} props
  * @returns
  */
-const imageTemplate = ({ id, imageSource, altText, content }) => ({
+const imageTemplate = ({ id, imageSource, altText }) => ({
   id,
   item: (
-    <div class="uds-img">
+    <div className="uds-img">
       <img
         src={imageSource}
-        class="uds-img figure-img img-fluid"
+        className="uds-img figure-img img-fluid"
         alt={altText}
       />
     </div>
@@ -89,7 +88,7 @@ const ImageGalleryCarousel = ({
           </BaseNavButtonContainer>
         </div>
         {hasContent ? (
-          <figure class="figure uds-figure">
+          <figure className="figure uds-figure">
             <figcaption
               id="caption"
               className="figure-caption uds-figure-caption"
