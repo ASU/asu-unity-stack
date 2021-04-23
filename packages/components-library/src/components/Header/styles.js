@@ -217,6 +217,10 @@ const UniversalNavLinks = ({ children, ...props }) => {
               text-decoration: underline;
             }
           }
+
+          > a.sr-only-focusable {
+            position: relative;
+          }
         `
       )}
     >
