@@ -18,7 +18,10 @@
     img {
       object-fit: $uds-image-text-block-image-container-object-fit;
     }
+
     @media screen and (max-width: $uds-breakpoint-sm) {
+      display: block;
+      object-fit: cover;
       order: $uds-image-text-block-image-container-order-sm;
     }
   }
@@ -33,7 +36,7 @@
     padding: $uds-size-spacing-6;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
-      margin: $uds-size-spacing-4;
+      padding: $uds-size-spacing-2;
       max-width: $uds-image-text-block-text-container-max-width;
       order: $uds-image-text-block-text-container-order-sm;
     }
