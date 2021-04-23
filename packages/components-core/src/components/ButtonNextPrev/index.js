@@ -1,4 +1,3 @@
-/* eslint react/jsx-props-no-spreading: "off" */
 import {
   faChevronLeft,
   faChevronRight,
@@ -14,10 +13,8 @@ export const ButtonNextPrev = ({
   color,
   direction,
   disabled,
-  element: Tag,
   innerRef,
   onClick,
-  ...attributes
 }) => {
   const btnClasses = classNames(
     UdsStyles["btn"],
@@ -30,8 +27,8 @@ export const ButtonNextPrev = ({
     return (
       <button
         type="button"
-        {...attributes}
         className={btnClasses}
+        disabled={disabled}
         ref={innerRef}
         onClick={onClick}
       >
@@ -44,7 +41,6 @@ export const ButtonNextPrev = ({
   return (
     <button
       type="button"
-      {...attributes}
       className={btnClasses}
       ref={innerRef}
       onClick={onClick}
@@ -59,8 +55,6 @@ ButtonNextPrev.propTypes = {
   color: PropTypes.oneOf(["white", "gray", "black"]),
   direction: PropTypes.oneOf(["next", "prev"]).isRequired,
   disabled: PropTypes.bool,
-  element: PropTypes.oneOf(["button", "a"]),
-  href: PropTypes.string,
 
   // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
   innerRef: PropTypes.oneOfType([
@@ -75,8 +69,6 @@ ButtonNextPrev.propTypes = {
 ButtonNextPrev.defaultProps = {
   color: "white",
   disabled: false,
-  element: "button",
-  href: undefined,
   innerRef: undefined,
   onClick: undefined,
 };
