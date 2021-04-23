@@ -35,7 +35,7 @@ export const Card = ({
 }) => {
   if (clickable && clickHref) {
     return (
-      <a href={clickHref}>
+      <a role="button" href={clickHref}>
         <BaseCard
           type={type}
           width={width}
@@ -55,6 +55,7 @@ export const Card = ({
       </a>
     );
   }
+
   return (
     <BaseCard
       type={type}
