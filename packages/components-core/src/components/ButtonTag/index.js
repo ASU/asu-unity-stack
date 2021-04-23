@@ -45,7 +45,7 @@ export const ButtonTag = ({
 
 ButtonTag.propTypes = {
   ariaLabel: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["white", "gray", "dark"]),
   disabled: PropTypes.bool,
   element: PropTypes.oneOf(["button", "a"]),
@@ -63,9 +63,8 @@ ButtonTag.propTypes = {
 
 ButtonTag.defaultProps = {
   ariaLabel: undefined,
-  children: undefined,
   color: "gray",
-  disabled: false,
+  disabled: undefined,
   element: "button",
   href: undefined,
   innerRef: undefined,

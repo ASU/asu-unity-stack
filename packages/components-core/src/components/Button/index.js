@@ -73,9 +73,9 @@ Button.propTypes = {
 
 Button.defaultProps = {
   ariaLabel: undefined,
-  block: false,
+  block: undefined,
   color: "gray",
-  disabled: false,
+  disabled: undefined,
   element: "button",
   href: undefined,
   icon: undefined,
