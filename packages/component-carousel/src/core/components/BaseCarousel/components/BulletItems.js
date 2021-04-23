@@ -9,7 +9,12 @@ import PropTypes from "prop-types";
  * @returns { JSX.Element }
  */
 const BaseBulletItemContainer = ({ children }) => (
-  <div className="glide__bullets" data-glide-el="controls[nav]">
+  <div
+    className="glide__bullets"
+    data-glide-el="controls[nav]"
+    // this is needed when the children is provided
+    onClick={e => e.stopImmediatePropagation()}
+  >
     {children}
   </div>
 );
@@ -30,10 +35,10 @@ const BulletItems = ({ buttonCount }) => {
     bulletItems.push(
       <button
         type="button"
-        key={`bullet-${  i}`}
+        key={`bullet-${i}`}
         className={"glide__bullet"}
-        data-glide-dir={`=${  i}`}
-        aria-label={`Slide view ${  i + 1}`}
+        data-glide-dir={`=${i}`}
+        aria-label={`Slide view ${i + 1}`}
       />
     );
   }
@@ -52,11 +57,15 @@ BulletItems.propTypes = {
 const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
   const bulletItems = imageItems.map((img, i) => (
     <img
+      key={`bullet-${i}`}
       src={img}
       className={"glide__bullet bullet-image"}
-      data-glide-dir={`=${  i}`}
-      aria-label={`Slide view ${  i + 1}`}
-      onClick={() => onItemClick(i)}
+      data-glide-dir={`=${i}`}
+      aria-label={`Slide view ${i + 1}`}
+      onClick={e => {
+        e.stopPropagation();
+        onItemClick(i);
+      }}
     />
   ));
 
