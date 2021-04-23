@@ -9,6 +9,11 @@ export default {
   component: Button,
 };
 
+const handleClick = e => {
+  e.preventDefault();
+  alert("The button was clicked.");
+};
+
 const Template = args => {
   const { label } = args;
 
@@ -24,12 +29,14 @@ const Template = args => {
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
   label: "Default Button",
+  onClick: handleClick,
 };
 
 export const SmallGoldButton = Template.bind({});
 SmallGoldButton.args = {
   color: "gold",
   label: "Small Gold Button",
+  onClick: handleClick,
   size: "small",
 };
 
@@ -38,6 +45,7 @@ IconButton.args = {
   color: "gold",
   icon: faRocket,
   label: "Icon Button",
+  onClick: handleClick,
 };
 
 export const LinkButton = Template.bind({});

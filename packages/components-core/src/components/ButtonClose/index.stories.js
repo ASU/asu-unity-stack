@@ -8,6 +8,11 @@ export default {
   component: ButtonClose,
 };
 
+const handleClick = e => {
+  e.preventDefault();
+  alert("Close button was clicked.");
+};
+
 const Template = args => {
   const { bgColor } = args;
 
@@ -30,16 +35,19 @@ export const DefaultCloseButton = Template.bind({});
 DefaultCloseButton.args = {
   bgColor: "white",
   color: "white",
+  onClick: handleClick,
 };
 
 export const GrayCloseButton = Template.bind({});
 GrayCloseButton.args = {
   bgColor: "light",
   color: "gray",
+  onClick: handleClick,
 };
 
 export const DarkCloseButton = Template.bind({});
 DarkCloseButton.args = {
   bgColor: "dark",
   color: "dark",
+  onClick: handleClick,
 };
