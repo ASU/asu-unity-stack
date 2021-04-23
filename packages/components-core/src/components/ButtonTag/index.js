@@ -45,10 +45,26 @@ export const ButtonTag = ({
 
 ButtonTag.propTypes = {
   ariaLabel: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["white", "gray", "dark"]),
   disabled: PropTypes.bool,
-  element: PropTypes.oneOf(["button", "a"]),
+
+  // Pass in a Component to override default button element
+  // example: react-router Link
+  // default: 'button'
+  element: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.string,
+        PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
+      ])
+    ),
+  ]),
+
   href: PropTypes.string,
 
   // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
@@ -63,9 +79,8 @@ ButtonTag.propTypes = {
 
 ButtonTag.defaultProps = {
   ariaLabel: undefined,
-  children: undefined,
   color: "gray",
-  disabled: false,
+  disabled: undefined,
   element: "button",
   href: undefined,
   innerRef: undefined,
