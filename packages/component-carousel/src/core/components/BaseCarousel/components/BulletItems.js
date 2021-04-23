@@ -30,10 +30,10 @@ const BulletItems = ({ buttonCount }) => {
     bulletItems.push(
       <button
         type="button"
-        key={"bullet-" + i}
+        key={`bullet-${  i}`}
         className={"glide__bullet"}
-        data-glide-dir={"=" + i}
-        aria-label={"Slide view " + (i + 1)}
+        data-glide-dir={`=${  i}`}
+        aria-label={`Slide view ${  i + 1}`}
       />
     );
   }
@@ -54,8 +54,8 @@ const ImageBulletItems = ({ imageItems, onItemClick = index => null }) => {
     <img
       src={img}
       className={"glide__bullet bullet-image"}
-      data-glide-dir={"=" + i}
-      aria-label={"Slide view " + (i + 1)}
+      data-glide-dir={`=${  i}`}
+      aria-label={`Slide view ${  i + 1}`}
       onClick={() => onItemClick(i)}
     />
   ));

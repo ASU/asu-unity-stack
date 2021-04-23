@@ -2,6 +2,7 @@
 /** @jsx h */
 
 import { h, Fragment } from "preact";
+
 import { ImageCarousel } from ".";
 
 const myCarouselItems = [

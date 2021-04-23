@@ -2,14 +2,14 @@
 /** @jsx h */
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
-import PropTypes from "prop-types";
 import { useEffect } from "preact/compat";
+import PropTypes from "prop-types";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
+import { SliderItems, BulletItems, NavButtons } from "./components";
 import { setupCaroarousel } from "./glide/glide.setup";
 import { calcualteViewItems } from "./helper/width-calculator";
-import { SliderItems, BulletItems, NavButtons } from "./components";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
 // Initially based on this approach:
@@ -69,7 +69,7 @@ const BaseCarousel = ({
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={"glide " + cssClass}
+      className={`glide ${  cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
     >

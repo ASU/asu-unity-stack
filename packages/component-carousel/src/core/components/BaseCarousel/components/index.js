@@ -5,11 +5,11 @@
 // This serves as the required link to the license as per attribution
 // guidelines provided at time of use: https://fontawesome.com/license
 
-import { SliderItems } from "./SliderItems";
-import { BaseNavButtonContainer, NavButtons } from "./NavButtons";
 import { BaseBulletItemContainer, BulletItems, ImageBulletItems } from "./BulletItems";
-import { PrevButton } from "./PrevButton";
+import { BaseNavButtonContainer, NavButtons } from "./NavButtons";
 import { NextButton } from "./NextButton";
+import { PrevButton } from "./PrevButton";
+import { SliderItems } from "./SliderItems";
 
 export {
   SliderItems,

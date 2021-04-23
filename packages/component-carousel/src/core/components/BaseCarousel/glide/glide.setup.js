@@ -101,7 +101,7 @@ function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
   // gradients when at the start, middle or end of a slider.
 
   // On build.before event...
-  slider.on("build.before", function () {
+  slider.on("build.before", () => {
     // Set .slider-start for starting gradient styles.
     const gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
@@ -109,7 +109,7 @@ function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
   });
 
   // On Move event...
-  slider.on("move", function () {
+  slider.on("move", () => {
     // Get glider top level element.
     const gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
