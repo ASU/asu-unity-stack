@@ -9,20 +9,6 @@ import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 export default {
   title: "UDS/Card",
   component: Card,
-  argTypes: {
-    type: {
-      type: "select",
-      options: ["default", "degree", "event", "news", "story"],
-    },
-    width: {
-      type: "select",
-      options: ["25%", "50%", "75%", "100%"],
-    },
-    eventFormat: {
-      type: "select",
-      options: ["stack", "inline"],
-    },
-  },
 };
 
 const Template = args => (
@@ -52,13 +38,23 @@ Default.args = {
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
-    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
-    { color: "gold", size: "small", label: "CTA button", clickTarget: "#" },
+    {
+      color: "maroon",
+      size: "default",
+      label: "CTA button",
+      href: "/#example-link",
+    },
+    {
+      color: "gold",
+      size: "small",
+      label: "CTA button",
+      href: "/#example-link",
+    },
   ],
   tags: [
-    { color: "gray", label: "tag1", clickTarget: "#" },
-    { color: "gray", label: "tag2", clickTarget: "#" },
-    { color: "gray", label: "tag3", clickTarget: "#" },
+    { color: "gray", label: "tag1", href: "/#example-link" },
+    { color: "gray", label: "tag2", href: "/#example-link" },
+    { color: "gray", label: "tag3", href: "/#example-link" },
   ],
 };
 
@@ -90,7 +86,12 @@ Event.args = {
   eventTime: "Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
   eventLocation: "Downtown Phoenix campus",
   buttons: [
-    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
+    {
+      color: "maroon",
+      size: "default",
+      label: "CTA button",
+      href: "/#example-link",
+    },
   ],
 };
 
@@ -106,12 +107,17 @@ Story.args = {
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
-    { color: "maroon", size: "default", label: "CTA button", clickTarget: "#" },
+    {
+      color: "maroon",
+      size: "default",
+      label: "CTA button",
+      href: "/#example-link",
+    },
   ],
   tags: [
-    { color: "gray", label: "tag1", clickTarget: "#" },
-    { color: "gray", label: "tag2", clickTarget: "#" },
-    { color: "gray", label: "tag3", clickTarget: "#" },
+    { color: "gray", label: "tag1", href: "/#example-link" },
+    { color: "gray", label: "tag2", href: "/#example-link" },
+    { color: "gray", label: "tag3", href: "/#example-link" },
   ],
 };
 
@@ -121,15 +127,16 @@ ClickableStoryCard.args = {
   width: "25%",
   horizontal: false,
   clickable: true,
+  clickHref: "/#example-link",
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Story title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   tags: [
-    { color: "gray", label: "tag1", clickTarget: "#" },
-    { color: "gray", label: "tag2", clickTarget: "#" },
-    { color: "gray", label: "tag3", clickTarget: "#" },
+    { color: "gray", label: "tag1", href: "/#example-link" },
+    { color: "gray", label: "tag2", href: "/#example-link" },
+    { color: "gray", label: "tag3", href: "/#example-link" },
   ],
 };
 
@@ -145,9 +152,9 @@ HorizontalStoryCard.args = {
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   tags: [
-    { color: "gray", label: "tag1", clickTarget: "#" },
-    { color: "gray", label: "tag2", clickTarget: "#" },
-    { color: "gray", label: "tag3", clickTarget: "#" },
+    { color: "gray", label: "tag1", href: "/#example-link" },
+    { color: "gray", label: "tag2", href: "/#example-link" },
+    { color: "gray", label: "tag3", href: "/#example-link" },
   ],
 };
 
@@ -167,7 +174,7 @@ AsuNewsStory.args = {
       color: "maroon",
       size: "default",
       label: "Read at ASU News",
-      clickTarget: "#",
+      href: "/#example-link",
     },
   ],
 };
@@ -184,6 +191,11 @@ GlobalFuturesStory.args = {
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
-    { color: "maroon", size: "default", label: "Read more", clickTarget: "#" },
+    {
+      color: "maroon",
+      size: "default",
+      label: "Read more",
+      href: "/#example-link",
+    },
   ],
 };
