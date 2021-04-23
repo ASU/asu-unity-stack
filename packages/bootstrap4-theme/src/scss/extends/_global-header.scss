@@ -310,26 +310,17 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     color: $uds-color-base-gray-7;
     border: 0;
     margin-right: $uds-size-spacing-4;
+    min-height: 48px;
+    min-width: 80px;
 
     &:focus {
       outline: 0;
     }
 
-    .fa-stack {
-      width: 0.875em;
-      height: 1em;
-    }
-
-    .fa-circle {
+    .fa-circle.fa-stack-2x {
       color: $uds-color-base-gray-2;
-      font-size: $uds-size-font-medium;
-      margin-left: -12px;
-      /* Magic number, align icon with hamburger */
-    }
-
-    .fa-times {
-      margin-left: -5px;
-      /* Magic number, same thing */
+      height: 2rem;
+      width: 2rem;
     }
 
     &.collapsed {
