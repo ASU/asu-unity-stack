@@ -56,7 +56,23 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   disabled: PropTypes.bool,
-  element: PropTypes.oneOf(["button", "a"]),
+
+  // Pass in a Component to override default button element
+  // example: react-router Link
+  // default: 'button'
+  element: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.string,
+        PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
+      ])
+    ),
+  ]),
+
   href: PropTypes.string,
   icon: PropTypes.elementType,
 
