@@ -39,7 +39,6 @@
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
-    "regenerator-runtime": "^0.13.7",
     "storybook-css-modules-preset": "^1.0.7",
     "style-loader": "^2.0.0"
   },
