@@ -34,18 +34,18 @@
     max-width: 50%;
     padding: 48px 96px;
 
-    @media screen and (max-width: $uds-breakpoint-sm) {
-      padding: 24px;
-      max-width: 100%;
-      order: 2;
+    @media screen and (max-width: $uds-breakpoint-lg) {
+      padding: 48px;
     }
 
     @media screen and (max-width: $uds-breakpoint-md) {
       padding: 36px;
     }
 
-    @media screen and (max-width: $uds-breakpoint-lg) {
-      padding: 48px;
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      padding: 24px;
+      max-width: 100%;
+      order: 2;
     }
   }
 }
