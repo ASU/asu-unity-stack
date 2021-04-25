@@ -112,6 +112,11 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     &.sr-only {
       justify-self: flex-start;
     }
+
+    &:focus {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 
   .login-status {
