@@ -1,9 +1,22 @@
 .uds-quote-image-background {
   display: flex;
-  flex-direction: row;
+  position: relative;
+  justify-content: center;
 
   &-image-container {
-    flex: 1;
-    z-index: i;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &-quote-container {
+    z-index: 1;
   }
 }
