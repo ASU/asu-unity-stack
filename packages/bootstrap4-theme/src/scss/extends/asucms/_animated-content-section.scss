@@ -1,36 +1,81 @@
-.content-section {
-  padding: 0 16px;
-  .button-area {
-    width: 30%;
-  }
-}
-
-.image-holder {
-  position: relative;
-  background-image: url('https://i.imgur.com/a5ZU7k2.png');
-  background-size: cover;
-  height: 600px;
-  width: auto;
-}
-
-.image-holder:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(
-    to top,
-    rgba(25, 25, 25, 0.75) 0%,
-    rgba(25, 25, 25, 0) 100%
-  );
-}
-
-.content-holder {
-  position: absolute;
-  bottom: 0;
+.animated-content-section {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  .content-section {
+    .button-area {
+      width: 30%;
+    }
+
+    background-size: cover;
+    height: 600px;
+    width: 400px;
+    min-width: 300px;
+    position: relative;
+    transition: all 1s cubic-bezier(0.19, 1, 0.19, 1);
+    margin: 0 16px;
+    &.section-1 {
+      background-image: url('https://i.imgur.com/a5ZU7k2.png');
+    }
+
+    &.section-2 {
+      background-image: url('https://i.imgur.com/1BupgeE.png');
+    }
+
+    &.section-3 {
+      background-image: url('https://i.imgur.com/uRi6oLf.png');
+    }
+  }
+
+  @media screen and (max-width: $uds-grid-container-max-width-lg) {
+    flex-direction: column;
+
+    .long-text {
+      display: none;
+    }
+  }
+
+  .image-holder:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to top,
+      rgba(25, 25, 25, 0.75) 0%,
+      rgba(25, 25, 25, 0) 100%
+    );
+  }
+
+  .content-holder {
+    position: absolute;
+    bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and (min-width: $uds-grid-container-max-width-lg) {
+    .content-section:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    .hidden-details {
+      transition: all 1s cubic-bezier(0.19, 1, 0.19, 1);
+      max-height: 0px;
+      overflow: hidden;
+      opacity: 0;
+    }
+    .content-section:hover .hidden-details {
+      max-height: 300px;
+      opacity: 1;
+    }
+  }
 }
