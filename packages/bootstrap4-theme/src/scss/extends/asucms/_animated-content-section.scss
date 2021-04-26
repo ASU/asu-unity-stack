@@ -15,7 +15,7 @@
     min-width: 300px;
     position: relative;
     transition: all 1s cubic-bezier(0.19, 1, 0.19, 1);
-    margin: 0 16px;
+    margin: 0 $uds-size-spacing-2;
     &.section-1 {
       background-image: url('https://i.imgur.com/a5ZU7k2.png');
     }
@@ -53,7 +53,7 @@
 
   .content-holder {
     position: absolute;
-    bottom: 32px;
+    bottom: $uds-size-spacing-4;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -69,7 +69,7 @@
 
     .hidden-details {
       transition: all 1s cubic-bezier(0.19, 1, 0.19, 1);
-      max-height: 0px;
+      max-height: 0;
       overflow: hidden;
       opacity: 0;
     }
