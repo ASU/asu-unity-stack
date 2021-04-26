@@ -1,6 +1,6 @@
 // @ts-check
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import PropTypes from "prop-types";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
@@ -37,7 +37,6 @@ const imageTemplate = ({ id, imageSource, altText }) => ({
 /**
  *
  * @param {{
- *  perView: string | number
  *  maxWidth?: string
  *  width?: string
  *  hasContent?: boolean
@@ -52,14 +51,12 @@ const imageTemplate = ({ id, imageSource, altText }) => ({
  * @returns { JSX.Element }
  */
 const ImageGalleryCarousel = ({
-  perView,
   width,
   maxWidth,
   imageItems,
   hasContent = false,
 }) => {
   const carouselItems = imageItems.map(imageTemplate);
-
   /**
    *
    * @param {{ instanceName: string }} props
@@ -68,13 +65,31 @@ const ImageGalleryCarousel = ({
   const CustomNavComponent = ({ instanceName }) => {
     const [content, setContent] = useState(imageItems[0].content);
 
-    const onItemClick = () => {
+    useEffect(() => {
       const currentSlider = document.querySelector(`#${instanceName}`);
-      const currentIndex = currentSlider.getAttribute("data-current-index");
+      const observer = new MutationObserver(mCallback);
+      const ATTR_INDEX = "data-current-index";
+
+      function mCallback(mutations) {
+        for (let mutation of mutations) {
+          if (mutation && mutation.attributeName === ATTR_INDEX) {
+            onItemClick(+currentSlider.getAttribute(ATTR_INDEX));
+          }
+        }
+      }
+
+      observer.observe(currentSlider, {
+        attributes: true,
+      });
+    }, [instanceName]);
+
+    const onItemClick = currentIndex => {
       const item = imageItems[currentIndex];
       setContent(item.content);
     };
+
     let bulletItems = imageItems.map(item => item.imageSource);
+
     return (
       <div className="image-gallery-action-area" data-has-content={hasContent}>
         <div className="image-navigator">
@@ -82,22 +97,22 @@ const ImageGalleryCarousel = ({
             <PrevButton />
             <ImageBulletItems
               imageItems={bulletItems}
-              onItemClick={onItemClick}
+              onItemClick={index => onItemClick(index)}
             />
             <NextButton />
           </BaseNavButtonContainer>
         </div>
         {hasContent ? (
-            <figcaption
-              id="caption"
-              className="figure-caption uds-figure-caption"
-            >
-              {typeof content === "string" ? (
-                <span className="uds-caption-text">{content}</span>
-              ) : (
-                content
-              )}
-            </figcaption>
+          <figcaption
+            id="caption"
+            className="figure-caption uds-figure-caption"
+          >
+            {typeof content === "string" ? (
+              <span className="uds-caption-text">{content}</span>
+            ) : (
+              content
+            )}
+          </figcaption>
         ) : null}
       </div>
     );
@@ -105,13 +120,14 @@ const ImageGalleryCarousel = ({
 
   return (
     <BaseCarousel
-      perView={+perView}
+      perView={1}
       maxWidth={maxWidth}
       width={width}
       carouselItems={carouselItems}
       cssClass="image-gallery"
       role="figure"
       ariaLabelledBy="caption"
+      isFullWidth={true}
       // @ts-ignore
       CustomNavComponent={props => <CustomNavComponent {...props} />}
     />

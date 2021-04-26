@@ -6,20 +6,22 @@ import { ImageGalleryCarousel } from ".";
 
 const myCarouselItems = [];
 
-for (let index = 1; index < 10; index++) {
+for (let index = 1; index <= 8; index++) {
   myCarouselItems.push({
     id: index,
-    imageSource: `https://source.unsplash.com/random/800x400?a=${  index}`,
+    imageSource: `https://source.unsplash.com/random/800x400?a=${index}`,
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   });
 }
 
 const mockItemWithContent = () => {
-  return myCarouselItems.map(item => ({
+  return myCarouselItems.map((item, index) => ({
     ...item,
     content: `
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+    Content ${index + 1}
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
       commodo ligula eget dolor. Aenean massa. Cum sociis natoque
       penatibus et magnis dis parturient montes, nascetur ridiculus mus.
       Donec quam felis, ultricies nec, pellentesque eu, pretium …
@@ -49,18 +51,15 @@ export default {
   title: "Image Gallery Carousel",
 };
 
+const maxWidth = "835px";
+
 export const ImageGalleryCarouselDefault = () => (
-  <ImageGalleryCarousel
-    perView="1"
-    maxWidth="800px"
-    imageItems={myCarouselItems}
-  />
+  <ImageGalleryCarousel maxWidth={maxWidth} imageItems={myCarouselItems} />
 );
 
 export const ImageGalleryCarouselWithContent = () => (
   <ImageGalleryCarousel
-    perView="1"
-    maxWidth="800px"
+    maxWidth={maxWidth}
     imageItems={mockItemWithContent()}
     hasContent={true}
   />
@@ -68,8 +67,7 @@ export const ImageGalleryCarouselWithContent = () => (
 
 export const ImageCarouselWithMoreContent = () => (
   <ImageGalleryCarousel
-    perView="1"
-    maxWidth="800px"
+    maxWidth={maxWidth}
     imageItems={mockItemWithMoreContent()}
     hasContent={true}
   />

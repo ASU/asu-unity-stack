@@ -4,9 +4,11 @@ import Glide from "@glidejs/glide";
 /**
  *
  * @param {string | number} perView
+ * @param {boolean} isFullWidth
+ *
  * @returns {Glide.Options}
  */
-function buildConfig(perView = "1") {
+function buildConfig(perView = "1", isFullWidth) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
   let perViewSm, perViewMd, perViewLg;
   switch (perView) {
@@ -30,6 +32,9 @@ function buildConfig(perView = "1") {
       perViewLg = 1;
   }
 
+  const smallPeeek = { before: 0, after: 62 };
+  const largePeek = { before: 124, after: 124 };
+
   // Set GlideJS config options, per https://glidejs.com/docs/options/
   return {
     type: "slider", // No wrap-around.
@@ -42,54 +47,68 @@ function buildConfig(perView = "1") {
     swipeThreshold: 80, // Distance required for swipe to change slide.
     dragThreshold: 120, // Distance for mouse drag to change slide.
     perTouch: 1, // Number of slides that can be moved per each swipe/drag.
-    breakpoints: {
-      576: {
-        // BS4 sm
-        perView: perViewSm,
-        peek: { before: 0, after: 62 },
-      },
-      768: {
-        // BS4 md
-        //perView: props.perView > 1 ? 2 : 1,
-        perView: perViewSm,
-        peek: { before: 124, after: 124 },
-      },
-      992: {
-        // BS4 lg
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewMd,
-        peek: { before: 124, after: 124 },
-      },
-      1260: {
-        // BS4 xl
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-      1400: {
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-      1920: {
-        //perView: props.perView > 1 ? props.perView : 1,
-        perView: perViewLg,
-        peek: { before: 124, after: 124 },
-      },
-    },
+    // isFullWidth = true, then we have only image per view which takes the full width.
+    // no need for reakpoints
+    breakpoints: isFullWidth
+      ? null
+      : {
+          576: {
+            // BS4 sm
+            perView: perViewSm,
+            peek: smallPeeek,
+          },
+          768: {
+            // BS4 md
+            //perView: props.perView > 1 ? 2 : 1,
+            perView: perViewSm,
+            peek: largePeek,
+          },
+          992: {
+            // BS4 lg
+            //perView: props.perView > 1 ? props.perView : 1,
+            perView: perViewMd,
+            peek: largePeek,
+          },
+          1260: {
+            // BS4 xl
+            //perView: props.perView > 1 ? props.perView : 1,
+            perView: perViewLg,
+            peek: largePeek,
+          },
+          1400: {
+            //perView: props.perView > 1 ? props.perView : 1,
+            perView: perViewLg,
+            peek: largePeek,
+          },
+          1920: {
+            //perView: props.perView > 1 ? props.perView : 1,
+            perView: perViewLg,
+            peek: largePeek,
+          },
+        },
   };
 }
 
 /**
  *
- * @param {string } instanceName
- * @param {string | number} perView
- * @param {number} buttonCount
+ * @param {{
+ *  instanceName: string
+ *  perView: string | number
+ *  buttonCount: number
+ *  isFullWidth?: boolean
+ *  onItemClick?: (index: number) =>  void
+ * }} props
  *
  * @returns {Glide.Static}
  */
-function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
-  const sliderConfig = buildConfig(perView);
+function setupCaroarousel({
+  instanceName,
+  perView,
+  buttonCount,
+  isFullWidth = false,
+  onItemClick,
+}) {
+  const sliderConfig = buildConfig(perView, isFullWidth);
 
   // Load up a new glideJS slider, but don't mount until we have event
   // listener (https://glidejs.com/docs/events/) handlers defined and configs
@@ -148,15 +167,9 @@ function setupCaroarousel(instanceName, perView, buttonCount, onItemClick) {
       arrowPrev.classList.remove("glide__arrow--disabled");
       arrowNext.classList.remove("glide__arrow--disabled");
     }
-  });
 
-  slider.on("move.after", () => {
-    const gliderElement = document.querySelector(`#${instanceName}`);
-    if (!gliderElement) return; // necessary. it breaks on resize
-    // @ts-ignore
-    const { index } = slider;
-    gliderElement.setAttribute("data-current-index", index+1);
-    onItemClick && onItemClick(index);
+    gliderElement.setAttribute("data-current-index", currentIndendx);
+    onItemClick && onItemClick(currentIndendx);
   });
 
   // On Resize event...

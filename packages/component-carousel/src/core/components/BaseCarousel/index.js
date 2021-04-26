@@ -1,6 +1,6 @@
 // @ts-check
 /** @jsx h */
-import { h, Fragment} from "preact";
+import { h, Fragment } from "preact";
 import { useEffect } from "preact/compat";
 import PropTypes from "prop-types";
 
@@ -26,6 +26,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            role?: string
  *            ariaLabelledBy?: string
  *            onItemClick?: (index: number) => void
+ *            isFullWidth?: boolean
  *          }} props
  * @returns
  */
@@ -38,6 +39,7 @@ const BaseCarousel = ({
   CustomNavComponent,
   role,
   ariaLabelledBy,
+  isFullWidth,
   onItemClick = () => null,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
@@ -61,8 +63,14 @@ const BaseCarousel = ({
   const buttonCount = calcualteViewItems(carouselItems.length, +perView);
 
   useEffect(() => {
-    setupCaroarousel(instanceName, perView, +buttonCount, onItemClick);
-  }, [instanceName, perView, buttonCount, onItemClick]);
+    setupCaroarousel({
+      instanceName,
+      perView,
+      buttonCount,
+      isFullWidth,
+      onItemClick,
+    });
+  }, [instanceName, perView, buttonCount, isFullWidth, onItemClick]);
 
   return (
     <div
