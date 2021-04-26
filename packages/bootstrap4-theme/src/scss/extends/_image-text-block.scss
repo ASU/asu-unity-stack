@@ -5,6 +5,10 @@
     display: flex;
     flex-direction: row;
 
+    @include media-breakpoint-up(md) {
+      max-height: 540px;
+    }
+
     @media screen and (max-width: $uds-breakpoint-sm) {
       flex-direction: column;
     }
@@ -46,6 +50,13 @@
       padding: 24px;
       max-width: 100%;
       order: 2;
+
+      .btn {
+        font-size: $uds-component-button-small-font-size;
+        padding: $uds-component-button-padding-y-small
+          $uds-component-button-padding-x-small;
+        line-height: 1rem;
+      }
     }
   }
 }
