@@ -1,4 +1,4 @@
-export default { title: 'Components/Quick Links' };
+export default { title: 'Components/Anchor menu' };
 
 export const quickLinks = () => `
   <div class="container">
