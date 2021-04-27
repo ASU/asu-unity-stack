@@ -1,0 +1,47 @@
+.uds-card-and-image {
+  background-position: top;
+  display: flex;
+  flex-direction: row;
+  max-width: 1920px;
+  height: auto;
+  padding: 48px 96px;
+
+  @media screen and (max-width: $uds-breakpoint-sm) {
+    padding: 24px;
+    flex-direction: column;
+  }
+
+  &.uds-card-and-image-sm {
+    height: 412px;
+    padding: 24px 48px;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      padding: 24px;
+      height: auto;
+    }
+  }
+
+  &.uds-card-and-image-md {
+    height: 512px;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      height: auto;
+    }
+  }
+
+  &.uds-card-and-image-lg {
+    height: 684px;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      height: auto;
+    }
+  }
+
+  &-container {
+    max-width: 384px;
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      padding-top: 50%;
+      margin: 50% auto 1rem auto;
+    }
+  }
+}
