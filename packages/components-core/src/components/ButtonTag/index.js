@@ -44,14 +44,27 @@ export const ButtonTag = ({
 };
 
 ButtonTag.propTypes = {
+  /**
+    ARIA label for accessibility
+  */
   ariaLabel: PropTypes.string,
+  /**
+    Content nodes to be wrapped by rendered Button element (usually just the text label)
+  */
   children: PropTypes.node.isRequired,
+  /**
+    Button background color
+  */
   color: PropTypes.oneOf(["white", "gray", "dark"]),
+  /**
+    Disable the button?
+  */
   disabled: PropTypes.bool,
 
-  // Pass in a Component to override default button element
-  // example: react-router Link
-  // default: 'button'
+  /**
+    Pass in a Component to override default button element.
+    For example: react-router Link
+  */
   element: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string,
@@ -65,15 +78,24 @@ ButtonTag.propTypes = {
     ),
   ]),
 
+  /**
+    Link target url; will cause button to be rendered as `<a>` link
+  */
   href: PropTypes.string,
 
-  // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
+  /**
+   * ref will only get you a reference to the Button component, use innerRef to
+   * get a reference to the DOM element (for things like focus management).
+   */
   innerRef: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
     PropTypes.string,
   ]),
 
+  /**
+    Event handler function for `<button>`
+  */
   onClick: PropTypes.func,
 };
 

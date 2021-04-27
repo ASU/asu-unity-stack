@@ -6,6 +6,22 @@ import { ButtonClose } from ".";
 export default {
   title: "UDS/ButtonClose",
   component: ButtonClose,
+  parameters: {
+    docs: {
+      description: {
+        component: `The ButtonClose component can be used to generate UDS-compliant \`<button>\` DOM
+        elements.
+
+## Usage
+
+The ButtonClose component will output \`<button>\` tags. you must provide an event handler function
+for the \`onClick\` prop.
+
+View component examples and source code below.
+        `,
+      },
+    },
+  },
 };
 
 const handleClick = e => {
