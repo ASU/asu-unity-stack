@@ -34,6 +34,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/dividers';
 @import 'variables/dropdown';
 @import 'variables/form-fields';
+@import 'variables/video';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
