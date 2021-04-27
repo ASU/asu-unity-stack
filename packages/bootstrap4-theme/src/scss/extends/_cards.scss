@@ -9,6 +9,10 @@ Cards - Table of Contents
 6. Foldable - Desktop Disable
 7. Accordion
 8. Quick Links
+9. Checkbox Stacked Cards
+10. Checkbox Inline Cards
+11. Checkbox Inline Cards
+12. Generic Header Image Overlay
 -------------------------------------------------------------------*/
 
 .row-spaced {
@@ -68,6 +72,24 @@ Cards - Table of Contents
 
 .card-image-content {
   position: relative;
+}
+
+.card-image-gradient {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.card-image-gradient::after {
+  display: block;
+  position: absolute;
+  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
+    0% 0% no-repeat padding-box;
+  height: $uds-component-card-basic-image-top-height;
+  width: 100%;
+  top: 0;
+  content: '';
 }
 
 .card-img-top img,
@@ -190,6 +212,10 @@ Cards - Table of Contents
     padding: 24px 24px 16px 24px;
   }
 
+  .card-image-gradient::after {
+    height: 160px;
+  }
+
   .card-img-top img,
   .card-img-top {
     height: 160px;
@@ -224,6 +250,9 @@ Cards - Table of Contents
 .card-lg {
   .card-img-top img,
   .card-img-top {
+    height: $uds-component-card-basic-image-top-height-lg;
+  }
+  .card-image-gradient::after {
     height: $uds-component-card-basic-image-top-height-lg;
   }
 }
@@ -758,10 +787,10 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-11. Checkbox Stacked Cards
+9. Checkbox Stacked Cards
 --------------------------------------------------------------------*/
 
-.card-story-checkbox-stacked .card-header .card-title:after {
+.card-checkbox-stacked .card-header .card-title:after {
   content: $uds-component-card-degree-title-underline-content;
   width: $uds-component-card-degree-title-underline-width;
   height: $uds-component-card-degree-title-underline-height;
@@ -769,25 +798,19 @@ Cards - Table of Contents
   margin-top: $uds-component-card-degree-title-underline-margin-top;
 }
 
-.card-story-checkbox-stacked .card-header {
+.card-checkbox-stacked .card-header {
   position: relative;
 }
 
-.card-story-checkbox-stacked .card-form {
-  position: absolute;
-  bottom: $uds-component-card-checkbox-stacked-bottom;
-  color: $white;
-}
-
-.card-story-checkbox-stacked .card-footer {
+.card-checkbox-stacked .card-footer {
   background-color: $white;
 }
 
 /*------------------------------------------------------------------
-12. Checkbox Inline Cards
+10. Checkbox Inline Cards
 --------------------------------------------------------------------*/
 
-.card-story-checkbox-stacked .card-header .card-title:after {
+.card-checkbox-stacked .card-header .card-title:after {
   content: $uds-component-card-degree-title-underline-content;
   width: $uds-component-card-degree-title-underline-width;
   height: $uds-component-card-degree-title-underline-height;
@@ -795,16 +818,44 @@ Cards - Table of Contents
   margin-top: $uds-component-card-degree-title-underline-margin-top;
 }
 
-.card-story-checkbox-inline .card-header {
+.card-checkbox-inline .card-header {
   position: relative;
 }
 
-.card-story-checkbox-inline .card-form {
-  position: absolute;
-  bottom: $uds-component-card-checkbox-inline-bottom;
-  color: $white;
+.card-checkbox-inline .card-footer {
+  background-color: $white;
 }
 
-.card-story-checkbox-inline .card-footer {
-  background-color: $white;
+/*------------------------------------------------------------------
+11. Checkbox Inline Cards
+--------------------------------------------------------------------*/
+.media-type-overlay {
+  background-color: white;
+  border: 1px solid $uds-color-base-gray-3;
+  border-radius: 32px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*------------------------------------------------------------------
+12. Generic Header Image Overlay
+--------------------------------------------------------------------*/
+.card-image-overlay-content {
+  position: absolute;
+  bottom: 0;
+  color: $white;
+
+  .fa-video {
+    color: $uds-color-base-gray-7;
+    font-size: 2rem;
+  }
+}
+
+.icon-example {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

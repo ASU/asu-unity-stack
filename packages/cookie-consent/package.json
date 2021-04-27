@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/cookie-consent",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
   "author": "Michael Samuelson",
@@ -43,6 +43,8 @@
     "react-cookie-consent": "^6.2.3",
     "sass": "^1.32.8",
     "sass-loader": "^10.0.1",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0"
   },
   "peerDependencies": {

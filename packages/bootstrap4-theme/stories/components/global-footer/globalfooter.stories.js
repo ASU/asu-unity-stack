@@ -897,7 +897,7 @@ storiesOf('Components/Global Footer', module)
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
-          <div class="col">
+          <div class="col p-xl-0">
             <div class="d-flex footer-innovation-links">
               <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
               <nav class="nav" aria-label="University Services">
@@ -916,14 +916,16 @@ storiesOf('Components/Global Footer', module)
     <div class="wrapper" id="wrapper-footer-colophon">
       <div class="container" id="footer-colophon">
         <div class="row">
-          <div class="col">
-            <nav class="nav colophon" aria-label="University Legal and Compliance">
-              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
-            </nav>
+          <div class="col p-xl-0">
+            <div class="footer-legal-links pl-lg-2 pl-xl-0">
+              <nav class="nav colophon" aria-label="University Legal and Compliance">
+                <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
+                <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
+                <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
+                <a class="nav-link" href="https://www.asu.edu/tou/">Terms of Use</a>
+                <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+              </nav>
+            </div>
           </div>
         </div>
       </div>

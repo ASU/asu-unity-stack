@@ -77,6 +77,12 @@ const srOnly = css`
   }
 `;
 
+const focusStyle = `
+  &:focus {
+    outline: none !important;
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+`
 const mobileBreak = "1260px";
 
 const containerSize = "1224px";
@@ -85,6 +91,7 @@ const containerSize = "1224px";
 const primaryNavTopPadding = "24px";
 
 export {
+  focusStyle,
   hiddenStyle,
   showReset,
   breakpointForMin,

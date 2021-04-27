@@ -8,6 +8,8 @@
 .uds-cookie-consent-component-wrapper {
   margin: 0 auto;
   max-width: 1200px;
+  position: relative;
+  z-index: 999;
   .uds-cookie-consent-component {
     position: fixed;
     bottom: $uds-size-spacing-4;
