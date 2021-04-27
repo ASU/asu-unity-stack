@@ -28,15 +28,24 @@ export const ButtonClose = ({ color, innerRef, onClick }) => {
 };
 
 ButtonClose.propTypes = {
+  /**
+    Color the button based on the background color
+  */
   color: PropTypes.oneOf(["white", "gray", "black"]),
 
-  // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
+  /**
+   * ref will only get you a reference to the Button component, use innerRef to
+   * get a reference to the DOM element (for things like focus management).
+   */
   innerRef: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
     PropTypes.string,
   ]),
 
+  /**
+    Event handler function for `<button>`
+  */
   onClick: PropTypes.func,
 };
 

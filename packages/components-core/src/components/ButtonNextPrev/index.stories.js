@@ -6,6 +6,21 @@ import { ButtonNextPrev } from ".";
 export default {
   title: "UDS/ButtonNextPrev",
   component: ButtonNextPrev,
+  parameters: {
+    docs: {
+      description: {
+        component: `The ButtonNextPrev component can be used to generate UDS-compliant \`<button>\` DOM
+        elements.
+
+## Usage
+
+The ButtonNextPrev component will output \`<button>\` tags. you must provide an event handler function
+for the \`onClick\` prop.
+
+View component examples and source code below.`,
+      },
+    },
+  },
 };
 
 const handleClick = e => {
