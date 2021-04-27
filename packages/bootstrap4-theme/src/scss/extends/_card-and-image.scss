@@ -6,6 +6,10 @@
   height: auto;
   padding: 48px 96px;
 
+  &-reverse {
+    flex-direction: row-reverse;
+  }
+
   @media screen and (max-width: $uds-breakpoint-sm) {
     padding: 24px;
     flex-direction: column;
