@@ -13,9 +13,9 @@ export const Button = ({
   color,
   disabled,
   element,
+  href,
   icon,
   innerRef,
-  href,
   onClick,
   size,
   ...attributes
@@ -51,15 +51,31 @@ export const Button = ({
 };
 
 Button.propTypes = {
+  /**
+    ARIA label for accessibility
+  */
   ariaLabel: PropTypes.string,
+  /**
+    Render button as a block-button?
+  */
   block: PropTypes.bool,
+  /**
+    Content nodes to be wrapped by rendered Button element (usually just the text label)
+  */
   children: PropTypes.node.isRequired,
+  /**
+    Button background color
+  */
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  /**
+    Disable the button?
+  */
   disabled: PropTypes.bool,
 
-  // Pass in a Component to override default button element
-  // example: react-router Link
-  // default: 'button'
+  /**
+    Pass in a Component to override default button element.
+    For example: react-router Link
+  */
   element: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string,
@@ -73,18 +89,33 @@ Button.propTypes = {
     ),
   ]),
 
+  /**
+    Link target url; will cause button to be rendered as `<a>` link
+  */
   href: PropTypes.string,
+  /**
+    React Font Awesome icon to be rendered in button label.
+  */
   icon: PropTypes.elementType,
 
-  // ref will only get you a reference to the Button component, use innerRef to get a reference to the DOM element (for things like focus management).
+  /**
+   * ref will only get you a reference to the Button component, use innerRef to
+   * get a reference to the DOM element (for things like focus management).
+   */
   innerRef: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
     PropTypes.string,
   ]),
 
+  /**
+    Event handler function for `<button>`
+  */
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(["default", "small", "xsmall"]),
+  /**
+    Button size
+  */
+  size: PropTypes.oneOf(["medium", "small", "xsmall"]),
 };
 
 Button.defaultProps = {
@@ -97,5 +128,5 @@ Button.defaultProps = {
   icon: undefined,
   innerRef: undefined,
   onClick: undefined,
-  size: "default",
+  size: "medium",
 };
