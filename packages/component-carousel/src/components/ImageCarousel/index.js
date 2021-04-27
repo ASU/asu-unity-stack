@@ -17,17 +17,17 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
 const imageTemplate = ({ id, imageSource, altText, content }) => ({
   id,
   item: (
-    <div class="uds-img">
-      <figure class="figure uds-figure">
+    <div className="uds-img">
+      <figure className="figure uds-figure">
         <img
           src={imageSource}
-          class="uds-img figure-img img-fluid"
+          className="uds-img figure-img img-fluid"
           alt={altText}
         />
         {content && (
-          <figcaption class="figure-caption uds-figure-caption">
+          <figcaption className="figure-caption uds-figure-caption">
             {typeof content === "string" ? (
-              <span class="uds-caption-text">{content}</span>
+              <span className="uds-caption-text">{content}</span>
             ) : (
               content
             )}
