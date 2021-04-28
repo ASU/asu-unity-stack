@@ -35,6 +35,23 @@
     }
   }
 
+  .uds-story-hero-container {
+    background-color: white;
+    width: 1296px;
+    display: $uds-component-heroes-uds-hero-uds-hero-container-display;
+    flex-direction: $uds-component-heroes-uds-hero-uds-hero-container-flex-direction;
+    align-items: $uds-component-heroes-uds-hero-uds-hero-container-align-items;
+    margin: auto auto -41px auto;
+    padding-top: 20px;
+    padding-left: 138px;
+
+    p {
+      font: normal normal bold 48px Arial;
+      font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+      margin-bottom: $uds-component-heroes-uds-hero-uds-hero-container-p-margin-bottom;
+    }
+  }
+
   &.uds-hero-sm {
     height: $uds-component-heroes-uds-hero-uds-hero-sm-height; // 256px
     .container.uds-hero-container {

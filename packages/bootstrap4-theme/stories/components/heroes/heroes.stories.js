@@ -40,4 +40,46 @@ storiesOf('Components/Heroes', module)
 </div>
 `)
 
-; // close
+  .add('Story hero, medium', () => `
+<div class="uds-hero uds-story-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+
+  <div class="container uds-story-hero-container">
+  <div class = >
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+    <div class="uds-story-hero-text col-sm-12 col-md-7">
+      <p>This is a primary headline. This story hero is meant to accommodate long titles.</p>
+    </div>
+    </div>
+    
+    
+  </div>
+</div>
+`)
+
+  .add('Story hero, large', () => `
+<div class="uds-hero uds-story-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+  <div class="container uds-story-hero-container">
+  <div class = >
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+    <div class="uds-story-hero-text col-sm-12 col-md-7">
+      <p>This is a primary headline. This story hero is meant to accommodate long titles.</p>
+    </div>
+    </div>
+    
+    
+  </div>
+</div>
+`)
+;
