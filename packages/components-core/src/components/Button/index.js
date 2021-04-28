@@ -115,7 +115,7 @@ Button.propTypes = {
   /**
     Button size
   */
-  size: PropTypes.oneOf(["medium", "small", "xsmall"]),
+  size: PropTypes.oneOf(["default", "small", "xsmall"]),
 };
 
 Button.defaultProps = {
@@ -128,5 +128,5 @@ Button.defaultProps = {
   icon: undefined,
   innerRef: undefined,
   onClick: undefined,
-  size: "medium",
+  size: "default",
 };
