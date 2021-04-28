@@ -1,5 +1,4 @@
 export default { title: 'ASUCMS/Stories of Excellence' };
-import exampleImage from './example-image.jpg';
 
 export const StoriesOfExcellence = () => `
   <div class="container stories-of-excellence p-0">
