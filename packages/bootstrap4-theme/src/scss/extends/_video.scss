@@ -17,18 +17,16 @@
 
   &-btn-play {
     background-color: white !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
     z-index: 2;
     opacity: 0.7;
 
     &:hover {
       opacity: 1;
       transform: scale(1.15);
+    }
+
+    .svg-inline--fa.fa-w-14 {
+      margin-left: 5px; // magic number to make play button appear more centered
     }
   }
 
@@ -62,6 +60,9 @@
   }
 
   &-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     background: transparent
       linear-gradient(180deg, #19191900 0%, #191919c9 100%) 0% 0% no-repeat
