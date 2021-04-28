@@ -24,7 +24,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                //sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                 sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                 //sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                 sh 'yarn install'
