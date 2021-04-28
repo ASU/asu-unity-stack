@@ -1,5 +1,6 @@
-import { action } from "@storybook/addon-actions";
 import { css } from "@emotion/css";
+import { action } from "@storybook/addon-actions";
+
 import { Button } from ".";
 
 export default {

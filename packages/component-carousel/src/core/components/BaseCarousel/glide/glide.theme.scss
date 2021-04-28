@@ -5,6 +5,7 @@ $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
 $uds-color-base-gray-7: #191919;
+$uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
 .#{$glide-class} {
   $this: &;
@@ -89,9 +90,6 @@ $uds-color-base-gray-7: #191919;
     z-index: 2;
     align-self: center;
 
-    @media only screen and (max-width: $uds-breakpoint-sm) {
-      bottom: -8rem; // Place below.
-    }
     //&#{$se}arrow {
     .glide__arrow {
       color: #191919;
@@ -146,22 +144,19 @@ $uds-color-base-gray-7: #191919;
   &#{$se}bullets {
     z-index: 2;
     list-style: none;
-    width: max-content;
-    align-self: center;
-
-    @media only screen and (max-width: $uds-breakpoint-sm) {
-      display: none;
-    }
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &#{$se}bullet {
+    transition: all 300ms ease-in-out;
     background-color: #d0d0d0; // rgba(255, 255, 255, 0.5);
     width: 1rem;
     height: 1rem;
     padding: 0;
     border-radius: 50%;
     border: 2px solid transparent;
-    transition: all 300ms ease-in-out;
     cursor: pointer;
     line-height: 0;
     margin: 0 0.5em;
@@ -178,6 +173,104 @@ $uds-color-base-gray-7: #191919;
 
     &#{$sm}active {
       background-color: #191919; //white;
+    }
+  }
+
+  &.image-gallery {
+    $thumbnail-width: 88px;
+    $thumbnail-height: 48px;
+    $element-gap: 16px;
+    $image-navigator-height: $thumbnail-height + $element-gap;
+    $border-element: 1px solid #d0d0d0;
+    gap: 0;
+    overflow: hidden;
+
+    .glide__track {
+      border: $border-element;
+    }
+
+    .image-gallery-action-area {
+      border: $border-element;
+      border-top: 0;
+
+      &[data-has-content="true"] {
+        .image-navigator {
+          border-bottom: $border-element;
+        }
+        .uds-caption-text {
+          padding: 1rem 0;
+          display: inline-block;
+        }
+      }
+    }
+
+    figcaption {
+      padding: 0 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .image-navigator {
+      position: relative;
+      min-height: $image-navigator-height;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      .glide__arrows {
+        width: max-content;
+        display: flex;
+        justify-content: space-between;
+
+        .glide__arrow {
+          $btn-nav-size: 1.5rem;
+          width: $btn-nav-size;
+          height: $btn-nav-size;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 3;
+          position: absolute;
+          transform: translateY(50%);
+
+          svg {
+            height: 0.8rem;
+            position: static;
+          }
+
+          &.glide__arrow--prev {
+            left: 0;
+          }
+          &.glide__arrow--next {
+            right: 0;
+          }
+        }
+      }
+    }
+
+    .bullet-image {
+      flex-basis: auto;
+      width: 88px;
+      height: 48px;
+      border-radius: 0;
+      border: 0;
+      z-index: 2;
+    }
+
+    .#{$glide-class}__bullet--active {
+      background-color: transparent;
+      border: 5px solid $uds-color-brand-gold;
+    }
+  }
+
+  @media only screen and (max-width: $uds-breakpoint-sm) {
+    &:not(&.image-gallery) {
+      .glide__bullets {
+        display: none;
+      }
+    }
+    &.image-gallery {
+      .image-navigator .glide__arrows .glide__arrow {
+        display: none;
+      }
     }
   }
 
@@ -202,12 +295,26 @@ $uds-color-base-gray-7: #191919;
     box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
   }
 
-  figure.uds-figure {
-    margin: 0;
-
-    figcaption *,
-    .uds-caption-text {
-      color: $uds-color-base-gray-7;
+  &.image-gallery,
+  &.image-carousel {
+    @mixin li-inactive-border {
+      li:not(.glide__slide--active) img {
+        border: 0;
+      }
     }
+
+    &[role="figure"],
+    figure.uds-figure {
+      margin: 0;
+
+      figcaption *,
+      .uds-caption-text {
+        color: $uds-color-base-gray-7;
+      }
+
+      @include li-inactive-border;
+    }
+
+    @include li-inactive-border;
   }
 }
