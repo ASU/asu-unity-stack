@@ -1,7 +1,8 @@
-/* eslint react/jsx-props-no-spreading: "off" */
+/* eslint react/jsx-props-no-spreading: "off", no-alert: "off" */
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+
 import { Button } from ".";
 
 export default {

@@ -40,7 +40,6 @@
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
-    "react-router-dom": "^5.2.0",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
@@ -60,6 +59,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-reveal": "^1.2.2",
+    "react-router-dom": "^5.2.0",
     "react-share": "^4.4.0",
     "reactstrap": "^8.9.0"
   }

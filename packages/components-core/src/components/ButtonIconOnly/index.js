@@ -58,6 +58,7 @@ ButtonIconOnly.propTypes = {
 
 ButtonIconOnly.defaultProps = {
   color: "gray",
+  icon: undefined,
   innerRef: undefined,
   onClick: undefined,
   size: "small",

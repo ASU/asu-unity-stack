@@ -34,19 +34,15 @@ const handleClick = e => {
   alert("Close button was clicked.");
 };
 
-const Template = args => {
-  const { bgColor } = args;
-
-  return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col col-sm-12 p-3">
-          <ButtonIconOnly {...args} />
-        </div>
+const Template = args => (
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
+        <ButtonIconOnly {...args} />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
