@@ -18,7 +18,7 @@ export const Button = ({
   innerRef,
   onClick,
   size,
-  ...attributes
+  ...props
 }) => {
   const btnClasses = classNames(UdsStyles["btn"], {
     [UdsStyles[`btn-${color}`]]: true,
@@ -36,7 +36,7 @@ export const Button = ({
   return (
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
-      {...attributes}
+      {...props}
       className={btnClasses}
       href={href}
       ref={innerRef}
