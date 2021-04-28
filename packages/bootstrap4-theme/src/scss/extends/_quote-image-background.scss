@@ -1,22 +1,35 @@
 .uds-quote-image-background {
+  align-items: flex-end;
+  background-position: top;
+  color: $uds-color-base-white !important;
   display: flex;
-  position: relative;
+  height: auto;
   justify-content: center;
+  max-width: 1920px;
+  min-height: 412px;
+  padding: 48px 96px;
 
-  &-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-
-    img {
-      object-fit: cover;
-    }
+  &.uds-quote-image-background-sm {
+    height: 412px;
   }
 
-  &-quote-container {
-    z-index: 1;
+  &.uds-quote-image-background-md {
+    height: 512px;
+  }
+
+  &.uds-quote-image-background-lg {
+    height: 684px;
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .uds-quote-image-background {
+    height: auto;
+
+    &-sm,
+    &-md,
+    &-lg {
+      height: auto;
+    }
   }
 }
