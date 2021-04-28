@@ -22,11 +22,9 @@ storiesOf('Components/Sidebar', module)
 
           <div class="card card-foldable">
             <div class="card-header">
-              <h4>
-                <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
+                <a id="cardOne" class="collapsed nav-link" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
                   <span class="fas fa-chevron-up"></span>
                 </a>
-              </h4>
             </div><!-- end .card-header -->
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent=".sidebar">
               <a href="#" class="nav-link">A Long Link Total that is two or more lines of text</a>
@@ -37,11 +35,9 @@ storiesOf('Components/Sidebar', module)
 
           <div class="card card-foldable">
             <div class="card-header">
-              <h4>
-                  <a id="cardTwo" class="collapsed" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
+                  <a id="cardTwo" class="collapsed nav-link" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
                   <span class="fas fa-chevron-up"></span>
                 </a>
-              </h4>
             </div>
             <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent=".sidebar">
               <a href="#" class="nav-link">Work it harder</a>
@@ -59,11 +55,9 @@ storiesOf('Components/Sidebar', module)
 
           <div class="card card-foldable">
             <div class="card-header">
-              <h4>
-                  <a id="cardThree" class="collapsed" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
+                  <a id="cardThree" class="collapsed nav-link" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
                   <span class="fas fa-chevron-up"></span>
                 </a>
-              </h4>
             </div>
             <div id="cardBodyThree" class="collapse card-body" aria-labelledby="cardThree" data-parent=".sidebar">
               <a href="#" class="nav-link">Crow's nest square-rigged hands chase</a>
