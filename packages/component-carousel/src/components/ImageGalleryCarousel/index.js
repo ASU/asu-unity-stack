@@ -137,8 +137,8 @@ const ImageGalleryCarousel = ({
 ImageGalleryCarousel.propTypes = {
   perView: PropTypes.string.isRequired,
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
-  maxWidth: PropTypes.string.isRequired,
   width: PropTypes.string,
+  maxWidth: PropTypes.string,
   hasContent: PropTypes.bool,
 };
 

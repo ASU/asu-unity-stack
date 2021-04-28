@@ -28,8 +28,8 @@ export default {
 const maxWidth = "500px";
 const itemColorCombinations = {
   Gold: ["accent-gold", "with-image"],
-  // Gold_Black_And_White: ["accent-gold", "text-white", "with-image"],
   Maroon: ["accent-maroon", "with-image"],
+  Gold_White_Text: ["text-white", "accent-gold", "with-image"],
   // eslint-disable-next-line quote-props
   None: null,
 };
@@ -47,29 +47,62 @@ const itemQuoteColorCombinations = {
   None: null,
 };
 
+const backgroundColors = {
+  White: "",
+  Gray: "p-6 bg-gray-2",
+  Black: "p-6 bg-gray-7",
+};
+
 const GROUP_STYLE = "Styles";
 
-export const TestimonialCarouselDefault = () => (
-  <TestimonialCarousel
-    itemStyle={{
-      itemCssClass: select(
-        "Item Color Combination",
-        itemColorCombinations,
-        itemColorCombinations.Gold,
-        GROUP_STYLE
-      ),
-      itemQuoteContentCssClass: select(
-        "Quote Content Color Combination",
-        itemQuoteColorCombinations,
-        itemQuoteColorCombinations.None,
-        GROUP_STYLE
-      ),
+/**
+ *
+ * @param {{ children: JSX.Element}} props
+ * @returns { h.JSX.Element}
+ */
+const Wrapper = ({ children }) => (
+  <div
+    className={select(
+      "Background color",
+      backgroundColors,
+      backgroundColors.White,
+      GROUP_STYLE
+    )}
+    style={{
+      width:"fit-content"
     }}
-    maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-    hasNavButtons={boolean("Has Nav Buttons", true, GROUP_STYLE)}
-    hasPositionIndicators={boolean("Has Indicators", true, GROUP_STYLE)}
-    testimonialItems={object("Testimonials", testimonialWithImage, GROUP_STYLE)}
-  />
+  >
+    {children}
+  </div>
+);
+
+export const TestimonialCarouselDefault = () => (
+  <Wrapper>
+    <TestimonialCarousel
+      itemStyle={{
+        itemCssClass: select(
+          "Item Color Combination",
+          itemColorCombinations,
+          itemColorCombinations.Gold,
+          GROUP_STYLE
+        ),
+        itemQuoteContentCssClass: select(
+          "Quote Content Color Combination",
+          itemQuoteColorCombinations,
+          itemQuoteColorCombinations.None,
+          GROUP_STYLE
+        ),
+      }}
+      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      hasNavButtons={boolean("Has Nav Buttons", true, GROUP_STYLE)}
+      hasPositionIndicators={boolean("Has Indicators", true, GROUP_STYLE)}
+      testimonialItems={object(
+        "Testimonials",
+        testimonialWithImage,
+        GROUP_STYLE
+      )}
+    />
+  </Wrapper>
 );
 
 export const TestimonialCarouselWithNoImage = () => (
