@@ -1,3 +1,13 @@
+/*--------------------------------------------------------------
+# Heroes
+
+1. Mixins
+2. Hero, Desktop
+3. Hero, Mobile
+4. Story Hero, Mobile
+5. Story Hero, Desktop
+--------------------------------------------------------------*/
+
 // ASU Design System Hero styles without Bootstrap variables to override.
 
 // Shared styling between md and lg heroes.
@@ -8,6 +18,10 @@
     line-height: $uds-size-spacing-4;
   }
 }
+
+/*--------------------------------------------------------------
+2. Hero, Desktop
+--------------------------------------------------------------*/
 
 .uds-hero {
   background-size: cover;
@@ -33,14 +47,14 @@
     }
 
     p {
-      color: $uds-base-color-white;
+      color: $uds-color-base-white;
       font-size: $uds-size-spacing-3;
       margin-bottom: 1.75rem; // Magic number.
     }
   }
 
   &.uds-hero-sm {
-    height: 16rem; // 256px
+    height: $uds-size-spacing-32;
 
     .container.uds-hero-container {
       width: 100%;
@@ -48,7 +62,7 @@
   }
 
   &.uds-hero-md {
-    height: 32rem; // 512px
+    height: $uds-size-spacing-64;
 
     .container {
       @include container-md-and-lg();
@@ -64,7 +78,10 @@
   }
 }
 
-// Media Queries
+/*--------------------------------------------------------------
+3. Hero, Mobile
+--------------------------------------------------------------*/
+
 .uds-hero {
   .uds-hero-container {
 
@@ -95,7 +112,63 @@
 
     // Snap lg hero to md at 1400px.
     @media screen and (max-width: 1400px) {
-      height: 32rem; // 512px
+      height: $uds-size-spacing-64;
     }
+  }
+}
+
+/*--------------------------------------------------------------
+4. Story Hero, Mobile
+--------------------------------------------------------------*/
+.uds-story-hero {
+  display: grid;
+  grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
+  grid-template-rows: 11.5rem 4.5rem auto;
+  gap: 0px 0px;
+
+  .hero {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 2;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+    background-color: $uds-color-base-white;
+
+    padding: 2rem 2rem 0;
+
+    .breadcrumb {
+      padding: .75rem 0;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+5. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+// Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
+@media (min-width: 950px) {
+  .uds-story-hero {
+    grid-template-columns: $uds-size-spacing-3 1fr $uds-size-spacing-3;
+    grid-template-rows: calc(#{$uds-size-spacing-64} - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+
+    &.uds-story-hero-lg {
+      grid-template-rows: calc(42.75rem - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+    }
+
+    .content {
+      padding: 2rem 10rem 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .uds-story-hero {
+    grid-template-columns: 1fr 1224px 1fr;
   }
 }
