@@ -47,8 +47,8 @@ function buildConfig(perView = "1", isFullWidth) {
     swipeThreshold: 80, // Distance required for swipe to change slide.
     dragThreshold: 120, // Distance for mouse drag to change slide.
     perTouch: 1, // Number of slides that can be moved per each swipe/drag.
-    // isFullWidth = true, then we have only image per view which takes the full width.
-    // no need for reakpoints
+    // if isFullWidth = true, then we have only 1 image per view which takes the full width.
+    // no need for breakpoints
     breakpoints: isFullWidth
       ? null
       : {
@@ -59,29 +59,24 @@ function buildConfig(perView = "1", isFullWidth) {
           },
           768: {
             // BS4 md
-            //perView: props.perView > 1 ? 2 : 1,
             perView: perViewSm,
             peek: largePeek,
           },
           992: {
             // BS4 lg
-            //perView: props.perView > 1 ? props.perView : 1,
             perView: perViewMd,
             peek: largePeek,
           },
           1260: {
             // BS4 xl
-            //perView: props.perView > 1 ? props.perView : 1,
             perView: perViewLg,
             peek: largePeek,
           },
           1400: {
-            //perView: props.perView > 1 ? props.perView : 1,
             perView: perViewLg,
             peek: largePeek,
           },
           1920: {
-            //perView: props.perView > 1 ? props.perView : 1,
             perView: perViewLg,
             peek: largePeek,
           },
@@ -133,43 +128,13 @@ function setupCaroarousel({
     const gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
 
-    const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
-    const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
-    // Gradient-triggering classes.
-    const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
-
     // @ts-ignore
-    const currentIndendx = slider.index;
+    const currentIndex = slider.index;
 
-    // Set/clear classes for gradients.
-    if (currentIndendx == 0) {
-      // START SLIDE.
-      // Gradient for start.
-      gliderElement.classList.remove(...gradientClasses);
-      gliderElement.classList.add("slider-start");
-      // Enable/disable prev/next styles. Glide takes care of actual disable.
-      arrowPrev.classList.add("glide__arrow--disabled");
-      arrowNext.classList.remove("glide__arrow--disabled");
-    } else if (currentIndendx >= buttonCount - 1) {
-      // MIDDLE SLIDES.
-      // Gradient for end.
-      gliderElement.classList.remove(...gradientClasses);
-      gliderElement.classList.add("slider-end");
-      // Enable/disable prev/next styles. Glide takes care of actual disable.
-      arrowPrev.classList.remove("glide__arrow--disabled");
-      arrowNext.classList.add("glide__arrow--disabled");
-    } else {
-      // LAST SLIDE.
-      // Gradient for middle.
-      gliderElement.classList.remove(...gradientClasses);
-      gliderElement.classList.add("slider-mid");
-      // Enable/disable prev/next styles. Glide takes care of actual disable.
-      arrowPrev.classList.remove("glide__arrow--disabled");
-      arrowNext.classList.remove("glide__arrow--disabled");
-    }
-
-    gliderElement.setAttribute("data-current-index", currentIndendx);
-    onItemClick && onItemClick(currentIndendx);
+    setNavButtonGradient(gliderElement, currentIndex, buttonCount);
+    // set the current index
+    gliderElement.setAttribute("data-current-index", currentIndex);
+    onItemClick && onItemClick(currentIndex);
   });
 
   // On Resize event...
@@ -197,6 +162,43 @@ function setupCaroarousel({
 
   slider.mount();
   return slider;
+}
+
+function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
+  const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
+  const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
+
+  if (!(arrowPrev || arrowNext)) return; // necessary. it breaks when the nav button are hidden
+
+  // Gradient-triggering classes.
+  const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
+  const cssDisabledClass = "glide__arrow--disabled";
+
+  gliderElement.classList.remove(...gradientClasses);
+
+  // Set/clear classes for gradients.
+  if (currentIndex == 0) {
+    // START SLIDE.
+    // Gradient for start.
+    gliderElement.classList.add("slider-start");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.add(cssDisabledClass);
+    arrowNext.classList.remove(cssDisabledClass);
+  } else if (currentIndex >= buttonCount - 1) {
+    // MIDDLE SLIDES.
+    // Gradient for end.
+    gliderElement.classList.add("slider-end");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.remove(cssDisabledClass);
+    arrowNext.classList.add(cssDisabledClass);
+  } else {
+    // LAST SLIDE.
+    // Gradient for middle.
+    gliderElement.classList.add("slider-mid");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.remove(cssDisabledClass);
+    arrowNext.classList.remove(cssDisabledClass);
+  }
 }
 
 export { setupCaroarousel };

@@ -286,6 +286,13 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     cursor: -webkit-grabbing;
   }
 
+  &[data-remove-side-background="true"] {
+    &::after,
+    &::before {
+      content: none;
+    }
+  }
+
   button:focus,
   a:focus,
   input:focus,
