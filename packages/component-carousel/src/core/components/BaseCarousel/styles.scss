@@ -4,7 +4,7 @@ import "!style-loader!css-loader!sass-loader!../../../../../../node_modules/@gli
 // Optional styles can be included ala...
 //import "!style-loader!css-loader!sass-loader!../../../../../node_modules/@glidejs/glide/src/assets/sass/glide.theme.scss";
 // Copy that and drop into this directory and adapt for us...
-import "!style-loader!css-loader!sass-loader!./glide.theme.scss";
+import "!style-loader!css-loader!sass-loader!./glide/glide.theme.scss";
 
 // Alternatively, Core scss for @glidejs/glide can be included from preview.js with
 //import "!style-loader!css-loader!sass-loader!../../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss";
