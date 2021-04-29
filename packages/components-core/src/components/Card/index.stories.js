@@ -21,7 +21,40 @@ const Template = args => (
         UdsStyles["pb-2"]
       )}
     >
-      <Card {...args} />
+      <div
+        className={classNames(
+          UdsStyles["col"],
+          UdsStyles["col-12"],
+          UdsStyles["col-md-6"],
+          UdsStyles["col-lg-4"]
+        )}
+      >
+        <Card {...args} />
+      </div>
+    </div>
+  </div>
+);
+
+const HorizontalTemplate = args => (
+  <div className={UdsStyles["container"]}>
+    <div
+      className={classNames(
+        UdsStyles["row"],
+        UdsStyles["row-spaced"],
+        UdsStyles["pt-2"],
+        UdsStyles["pb-2"]
+      )}
+    >
+      <div
+        className={classNames(
+          UdsStyles["col"],
+          UdsStyles["col-12"],
+          UdsStyles["col-md-12"],
+          UdsStyles["col-lg-6"]
+        )}
+      >
+        <Card {...args} />
+      </div>
     </div>
   </div>
 );
@@ -29,7 +62,6 @@ const Template = args => (
 export const Default = Template.bind({});
 Default.args = {
   type: "default",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -61,7 +93,6 @@ Default.args = {
 export const Degree = Template.bind({});
 Degree.args = {
   type: "degree",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -74,7 +105,6 @@ Degree.args = {
 export const Event = Template.bind({});
 Event.args = {
   type: "event",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -98,7 +128,6 @@ Event.args = {
 export const Story = Template.bind({});
 Story.args = {
   type: "story",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -124,7 +153,6 @@ Story.args = {
 export const ClickableStoryCard = Template.bind({});
 ClickableStoryCard.args = {
   type: "story",
-  width: "25%",
   horizontal: false,
   clickable: true,
   clickHref: "/#example-link",
@@ -140,10 +168,9 @@ ClickableStoryCard.args = {
   ],
 };
 
-export const HorizontalStoryCard = Template.bind({});
+export const HorizontalStoryCard = HorizontalTemplate.bind({});
 HorizontalStoryCard.args = {
   type: "story",
-  width: "75%",
   horizontal: true,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -161,7 +188,6 @@ HorizontalStoryCard.args = {
 export const AsuNewsStory = Template.bind({});
 AsuNewsStory.args = {
   type: "story",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
@@ -182,7 +208,6 @@ AsuNewsStory.args = {
 export const GlobalFuturesStory = Template.bind({});
 GlobalFuturesStory.args = {
   type: "story",
-  width: "25%",
   horizontal: false,
   clickable: false,
   image: "https://picsum.photos/300/200",
