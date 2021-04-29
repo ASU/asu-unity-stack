@@ -1,6 +1,7 @@
 // @ts-check
-
 import { h } from "preact";
+import PropTypes from "prop-types";
+
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
@@ -10,23 +11,23 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  *          imageSource: string
  *          altText:string
  *          content?: string | h.JSX.Element
- *        }} param0
- * @returns
+ *        }} props
+ * @returns {{ id: number, item: h.JSX.Element }}
  */
 const imageTemplate = ({ id, imageSource, altText, content }) => ({
   id,
   item: (
-    <div class="uds-img">
-      <figure class="figure uds-figure">
+    <div className="uds-img">
+      <figure className="figure uds-figure">
         <img
           src={imageSource}
-          class="uds-img figure-img img-fluid"
+          className="uds-img figure-img img-fluid"
           alt={altText}
         />
         {content && (
-          <figcaption class="figure-caption uds-figure-caption">
+          <figcaption className="figure-caption uds-figure-caption">
             {typeof content === "string" ? (
-              <span class="uds-caption-text">{content}</span>
+              <span className="uds-caption-text">{content}</span>
             ) : (
               content
             )}
@@ -41,13 +42,18 @@ const imageTemplate = ({ id, imageSource, altText, content }) => ({
  *
  * @param {{
  *            perView: string | number
+ *            imageItems: { id: number, imageSource: string, altText:string }[]
  *            maxWidth?: string
  *            width?: string
- *            imageItems: { id: number, imageSource: string, altText:string }[]
  *        }} props
  * @returns
  */
-const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
+const ImageCarousel = ({
+  perView,
+  imageItems,
+  width = undefined,
+  maxWidth = undefined,
+}) => {
   const carouselItems = imageItems.map(imageTemplate);
 
   return (
@@ -55,9 +61,17 @@ const ImageCarousel = ({ perView, width, maxWidth, imageItems }) => {
       perView={+perView}
       maxWidth={maxWidth}
       width={width}
+      cssClass="image-carousel"
       carouselItems={carouselItems}
     />
   );
 };
 
-export { ImageCarousel };
+ImageCarousel.propTypes = {
+  perView: PropTypes.string.isRequired,
+  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  width: PropTypes.string,
+  maxWidth: PropTypes.string,
+};
+
+export { ImageCarousel, imageTemplate };

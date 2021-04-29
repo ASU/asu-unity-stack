@@ -22,6 +22,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/cards';
 @import 'variables/icons';
 @import 'variables/images';
+@import 'variables/image-text-block';
 @import 'variables/inset-box';
 @import 'variables/headings';
 @import 'variables/list';
@@ -35,6 +36,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/dropdown';
 @import 'variables/form-fields';
 @import 'variables/video';
+@import 'variables/card-and-image';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
