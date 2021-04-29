@@ -148,6 +148,7 @@ const universalStyles = breakpoint => css`
           margin-right: 0;
           text-align: center;
           width: 100%;
+          height: auto;
           font-size: 0.875rem;
           padding: 1rem 1.5rem;
           border-top: 1px solid #d0d0d0;
