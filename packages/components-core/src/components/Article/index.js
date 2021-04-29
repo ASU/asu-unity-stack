@@ -332,7 +332,7 @@ export const Article = ({
                   />
                 </LinkedinShareButton>
               </div>
-              {date && <i>{date}</i>}
+              {date && <i className="news-date">{date}</i>}
             </div>
           </div>
         )}

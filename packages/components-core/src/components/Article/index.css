@@ -48,6 +48,11 @@ ol.breadcrumb > li {
   margin-right: 12px;
 }
 
+i.news-date {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
 .highlight-gold {
   box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
   background: #ffc627;
