@@ -45,7 +45,7 @@ Event.args = {
   authorTitle: "ASU Library",
   authorEmail: "jacqueline.young@asu.edu",
   authorPhone: "480-727-4058",
-  eventTime: "November 33, 2030, 12:00 p.m. - 1:30 p.m.",
+  eventTime: "November 33, 2030,<br />12:00 p.m. - 1:30 p.m.",
   eventLocation:
     "Vault Gallery, Downtown Phoenix campus Library<br />411 N Central Ave, Phoenix AZ 85004",
   zoomUrl: "https://google/com",
