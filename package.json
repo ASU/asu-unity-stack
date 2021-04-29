@@ -20,7 +20,8 @@
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
     "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -64,6 +65,7 @@
     "husky": "^6.0.0",
     "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^1.4.1",
+    "nunjucks": "^3.2.0",
     "prettier": "^2.2.1",
     "purgecss-webpack-plugin": "^4.0.3",
     "rimraf": "^3.0.2",
