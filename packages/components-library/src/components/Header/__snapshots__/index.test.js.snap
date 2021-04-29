@@ -1479,7 +1479,7 @@ exports[`Header Snapshot test 1`] = `
           <a
             href="https://www.asu.edu/"
           >
-            ASU home
+            ASU Home
           </a>
           <a
             href="https://my.asu.edu/"
@@ -1517,7 +1517,7 @@ exports[`Header Snapshot test 1`] = `
               type="search"
             />
             <label
-              class="univeral-search"
+              class="universal-search"
               id="asu-search-label"
             >
               Search ASU

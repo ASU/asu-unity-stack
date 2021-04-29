@@ -238,7 +238,6 @@ Footer - Table of Contents
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-
     img {
       height: 100px;
       width: auto;
@@ -252,13 +251,18 @@ Footer - Table of Contents
 }
 
 // #footer-innovation, Mobile
-
+@include media-breakpoint-down(lg) {
+  .footer-innovation-links {
+    padding-left: 15px;
+  }
+}
 @include media-breakpoint-down(md) {
   #footer-innovation {
     padding: 0;
 
     .footer-innovation-links {
       flex-direction: column;
+      padding-left: 0;
       padding-bottom: $uds-size-spacing-3;
 
       img {

@@ -1,7 +1,7 @@
+// @ts-check
 /** @jsx h */
 
 import { h, Fragment } from "preact";
-
 import { AsuCarousel } from ".";
 
 const myCarouselItems = [
@@ -144,7 +144,7 @@ const myCarouselItems = [
 
 export default {
   component: AsuCarousel,
-  title: "Carousel",
+  title: "Asu Carousel",
 };
 
 export const ThreeItemCarousel = () => (

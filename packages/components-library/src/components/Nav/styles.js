@@ -4,6 +4,7 @@ import { css, cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 
 import {
+  focusStyle,
   hiddenStyle,
   showReset,
   BreakpointSm,
@@ -28,6 +29,7 @@ const navListStyles = breakpoint => css`
 
     a {
       text-decoration: none;
+      ${focusStyle}
     }
 
     > li {
@@ -152,7 +154,7 @@ const navListStyles = breakpoint => css`
           display: block;
           border-bottom: 1px solid #cccccc;
           align-items: center;
-
+          margin: 4px 4px;
           > svg {
             float: right;
             font-size: 1.25rem;

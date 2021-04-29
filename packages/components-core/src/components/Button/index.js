@@ -18,7 +18,7 @@ export const Button = ({
   innerRef,
   onClick,
   size,
-  ...attributes
+  ...props
 }) => {
   const btnClasses = classNames(UdsStyles["btn"], {
     [UdsStyles[`btn-${color}`]]: true,
@@ -36,7 +36,7 @@ export const Button = ({
   return (
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
-      {...attributes}
+      {...props}
       className={btnClasses}
       href={href}
       ref={innerRef}
@@ -115,7 +115,7 @@ Button.propTypes = {
   /**
     Button size
   */
-  size: PropTypes.oneOf(["medium", "small", "xsmall"]),
+  size: PropTypes.oneOf(["default", "small", "xsmall"]),
 };
 
 Button.defaultProps = {
@@ -128,5 +128,5 @@ Button.defaultProps = {
   icon: undefined,
   innerRef: undefined,
   onClick: undefined,
-  size: "medium",
+  size: "default",
 };

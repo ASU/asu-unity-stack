@@ -1,42 +1,49 @@
-import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+export default { title: 'Components/Breadcrumbs' };
 
-storiesOf('Components/Breadcrumbs', module)
-  .addParameters({
-    happo: false,
-  })
+export const breadcrumbsAgainstWhiteBackground = () => `
+  <div class="bg-white">
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+  </div>
+`;
 
-.add('Breadcrumbs', () => `
-<nav aria-label="breadcrumbs">
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="#">Home</a></li>
-  <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
-  <li class="breadcrumb-item active" aria-current="page">Current Page</li>
-</ol>
-</nav>`)
+export const breadcrumbsAgainstGray1Background = () => `
+  <div class="bg-gray-1">
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+  </div>
+`;
 
-/*
-.add('Accessible breadcrumbs', () => `
-<nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-  <li class="breadcrumb-item active" aria-current="page">Home</li>
-</ol>
-</nav>
+export const breadcrumbsAgainstGray2Background = () => `
+  <div class="bg-gray-2">
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+  </div>
+`;
 
-<nav aria-label="breadcrumb1">
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="#">Home</a></li>
-  <li class="breadcrumb-item active" aria-current="page">Library</li>
-</ol>
-</nav>
-
-<nav aria-label="breadcrumb2">
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="#">Home</a></li>
-  <li class="breadcrumb-item"><a href="#">Library</a></li>
-  <li class="breadcrumb-item active" aria-current="page">Data</li>
-</ol>
-</nav>`)
-*/
-
-; // close
+export const breadcrumbsAgainstGray7Background = () => `
+  <div class="bg-gray-7">
+    <nav aria-label="breadcrumbs">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Second Nav Item</a></li>
+        <li class="breadcrumb-item active text-gray-1" aria-current="page">Current Page</li>
+      </ol>
+    </nav>
+  </div>
+`;
