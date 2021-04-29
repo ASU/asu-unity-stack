@@ -12,7 +12,6 @@ module.exports = {
     "plugin:react/recommended",
     "airbnb",
     "plugin:prettier/recommended", // Make this the last element so prettier config overrides other formatting rules
-    // "plugin:jest/recommended",
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -21,14 +20,10 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: [
-    "react",
-    // "jest"
-  ],
+  plugins: ["react"],
   rules: {
     "react/jsx-filename-extension": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
     "dot-notation": "off",
-    "import/prefer-default-export": "off",
   },
 };
