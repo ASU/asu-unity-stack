@@ -13,19 +13,19 @@ const myCarouselItems = [
   },
   {
     id: 2,
-    imageSource: "https://source.unsplash.com/random/800x400?a=2",
+    imageSource: "https://source.unsplash.com/random/400x200?a=2",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 3,
-    imageSource: "https://source.unsplash.com/random/800x400?a=3",
+    imageSource: "https://source.unsplash.com/random/600x400?a=3",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 4,
-    imageSource: "https://source.unsplash.com/random/800x400?a=4",
+    imageSource: "https://source.unsplash.com/random/600x600?a=4",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
