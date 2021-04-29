@@ -71,6 +71,7 @@ ol.breadcrumb > li {
   background-color: maroon;
   vertical-align: middle;
   margin-right: 4px;
+  border-radius: 4px;
 }
 
 .icon-bg svg {
@@ -125,4 +126,20 @@ svg.fa-map-marker-alt {
 
 .event-info .react-share__ShareButton {
   margin-right: 24px;
+}
+
+.event-author-email > a,
+.author-contact > a {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.event-author-email > a:hover,
+.author-contact > a:hover {
+  text-decoration: underline;
+  transform: none;
 }
