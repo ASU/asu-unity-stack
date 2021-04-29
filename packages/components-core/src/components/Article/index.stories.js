@@ -19,8 +19,8 @@ const Template = args => <Article {...args} />;
 export const News = Template.bind({});
 News.args = {
   type: "news",
-  articleUrl: "https://google.com",
-  image: "https://source.unsplash.com/random/1600x500",
+  articleUrl: "https://example.com",
+  headerImageUrl: "https://source.unsplash.com/random/1920x512",
   title:
     "Clarisse Machanguana takes her skill set to the next level at ASU Thunderbird",
   date: "March 18, 2021",
@@ -35,8 +35,7 @@ News.args = {
 export const Event = Template.bind({});
 Event.args = {
   type: "event",
-  articleUrl: "https://google.com",
-  image: "https://source.unsplash.com/random/1920x1200",
+  articleUrl: "https://example.com",
   title:
     "ASU Book Group: 'There's No Crying in Newsrooms' by Kristin Grady Gilger and Julia Wallace",
   date: "March 18, 2021",
@@ -46,12 +45,7 @@ Event.args = {
   authorTitle: "ASU Library",
   authorEmail: "jacqueline.young@asu.edu",
   authorPhone: "480-727-4058",
-  startTime: "November 33, 2030, 12:33 a.m.",
-  stopTime: "12:33 p.m.",
-  locationTitle: "Vault Gallery, Downtown Phoenix campus Library",
-  address1: "411 N Central Ave",
-  address2: "",
-  city: "Phoenix",
-  state: "AZ",
-  zip: "85004",
+  eventTime: "November 33, 2030, 12:00 p.m. - 1:30 p.m.",
+  eventLocation:
+    "Vault Gallery, Downtown Phoenix campus Library<br />411 N Central Ave, Phoenix AZ 85004",
 };
