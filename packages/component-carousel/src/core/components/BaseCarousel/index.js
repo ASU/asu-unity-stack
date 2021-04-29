@@ -16,17 +16,28 @@ import { calcualteViewItems } from "./helper/width-calculator";
 
 /**
  *
+ * @typedef {{
+ *            id: string | number
+ *            item: JSX.Element
+ *          }} CarouselItem
+ */
+
+/**
+ *
  * @param {{
  *            perView?: number | string
  *            width?: string
- *            maxWidth?: string
- *            carouselItems: {id: string | number, item: JSX.Element}[]
+ *            maxWidth: string
+ *            carouselItems: CarouselItem[]
  *            cssClass?: string
  *            CustomNavComponent?: JSX.Element
  *            role?: string
  *            ariaLabelledBy?: string
  *            onItemClick?: (index: number) => void
  *            isFullWidth?: boolean
+ *            hasNavButtons?: boolean
+ *            hasPositionIndicators?: boolean
+ *            removeSideBackground?: boolean
  *          }} props
  * @returns
  */
@@ -40,6 +51,9 @@ const BaseCarousel = ({
   role,
   ariaLabelledBy,
   isFullWidth,
+  removeSideBackground = false,
+  hasNavButtons = true,
+  hasPositionIndicators = true,
   onItemClick = () => null,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
@@ -79,6 +93,7 @@ const BaseCarousel = ({
       className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
+      data-remove-side-background={removeSideBackground}
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
@@ -92,8 +107,8 @@ const BaseCarousel = ({
         />
       ) : (
         <>
-          <BulletItems buttonCount={buttonCount} />
-          <NavButtons />
+          {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
+          {hasNavButtons && <NavButtons />}
         </>
       )}
     </div>

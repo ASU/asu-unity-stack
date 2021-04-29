@@ -36,7 +36,9 @@ $image-assets-path: '/img' !default;
 @import 'variables/dropdown';
 @import 'variables/form-fields';
 @import 'variables/tooltips';
+@import 'variables/video';
 @import 'variables/card-and-image';
+
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
 @import '../../node_modules/bootstrap/scss/variables';
