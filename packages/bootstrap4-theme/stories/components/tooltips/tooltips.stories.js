@@ -1,20 +1,5 @@
 export default { title: "Components/Tooltips" }
 
-export const OnHyperlink = () => `
-<div class="background white">
-
-  <span class="uds-tooltip uds-tooltip-white">
-    <a href="">Empty Link</a>
-
-    <span class="uds-tooltip-text">
-      <span class="uds-tooltip-text-heading">Lorem ipsum dolor sit amet</span>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sediqua. Ut enim ad mitrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </span>
-  </span>
-
-</div>
-`;
-
 export const WhiteBackground = () => `
 <div class="background white">
 
