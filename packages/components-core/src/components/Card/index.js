@@ -9,6 +9,7 @@ import React from "react";
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
+import "./card.css";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
