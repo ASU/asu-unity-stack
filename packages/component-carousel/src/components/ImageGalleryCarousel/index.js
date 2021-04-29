@@ -126,7 +126,7 @@ const ImageGalleryCarousel = ({
       carouselItems={carouselItems}
       cssClass="image-gallery"
       role="figure"
-      ariaLabelledBy="caption"
+      ariaLabelledBy={hasContent ? "caption" : null}
       isFullWidth={true}
       // @ts-ignore
       CustomNavComponent={props => <CustomNavComponent {...props} />}
