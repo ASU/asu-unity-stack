@@ -12,6 +12,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN echo "registry=https://registry.web.asu.edu/" > ~/.npmrc
+RUN echo "always-auth=true" >> ~/.npmrc
 RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn install
 RUN yarn build
