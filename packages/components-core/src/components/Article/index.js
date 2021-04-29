@@ -44,10 +44,11 @@ export const Article = ({
   title,
   eventLocation,
   eventTime,
+  zoomUrl,
+  calendarUrl,
 }) => {
   const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
-    [UdsStyles["col-lg-12"]]: type !== "event",
-    [UdsStyles["col-lg-8"]]: type === "event",
+    [UdsStyles["col-lg-8"]]: type === "event" && (zoomUrl || calendarUrl),
   });
 
   const AuthorInfo = () => {
@@ -68,7 +69,9 @@ export const Article = ({
                   transform="shrink-2"
                 />
               </span>
-              <Button href={`mailto: ${authorEmail}`}>{authorEmail}</Button>
+              <Button href={`mailto: ${authorEmail}`} color="link">
+                {authorEmail}
+              </Button>
             </div>
           )}
           {authorPhone && (
@@ -81,7 +84,9 @@ export const Article = ({
                   transform="shrink-2"
                 />
               </span>
-              <Button href={`tel: ${authorPhone}`}>{authorPhone}</Button>
+              <Button href={`tel: ${authorPhone}`} color="link">
+                {authorPhone}
+              </Button>
             </div>
           )}
         </div>
@@ -113,7 +118,9 @@ export const Article = ({
           <div className="event-author">{authorName}</div>
           <div className="event-author-title">{authorTitle}</div>
           <div className="event-author-email">
-            <Button href={`mailto: ${authorEmail}`}>{authorEmail}</Button>
+            <Button href={`mailto: ${authorEmail}`} color="link">
+              {authorEmail}
+            </Button>
           </div>
         </div>
         <div
@@ -223,18 +230,24 @@ export const Article = ({
                 UdsStyles["col-xs-12"]
               )}
             >
-              <div
-                className={classNames(UdsStyles["card-button"], "uds-button")}
-              >
-                <Button color="maroon">Attend on Zoom</Button>
-              </div>
-              <div
-                className={classNames(UdsStyles["card-button"], "uds-button")}
-              >
-                <Button color="gray" size="small">
-                  Add to calendar
-                </Button>
-              </div>
+              {zoomUrl && (
+                <div
+                  className={classNames(UdsStyles["card-button"], "uds-button")}
+                >
+                  <Button color="maroon" href={zoomUrl}>
+                    Attend on Zoom
+                  </Button>
+                </div>
+              )}
+              {calendarUrl && (
+                <div
+                  className={classNames(UdsStyles["card-button"], "uds-button")}
+                >
+                  <Button color="gray" size="small" href={calendarUrl}>
+                    Add to calendar
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -350,6 +363,8 @@ Article.propTypes = {
   authorPhone: PropTypes.string,
   eventLocation: PropTypes.string.isRequired,
   eventTime: PropTypes.string.isRequired,
+  zoomUrl: PropTypes.string,
+  calendarUrl: PropTypes.string,
 };
 
 Article.defaultProps = {

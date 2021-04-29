@@ -48,4 +48,6 @@ Event.args = {
   eventTime: "November 33, 2030, 12:00 p.m. - 1:30 p.m.",
   eventLocation:
     "Vault Gallery, Downtown Phoenix campus Library<br />411 N Central Ave, Phoenix AZ 85004",
+  zoomUrl: "https://google/com",
+  calendarUrl: "https://google.com",
 };
