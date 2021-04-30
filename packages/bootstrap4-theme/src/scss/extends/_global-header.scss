@@ -931,6 +931,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   #asu-header.scrolled + div,
   #asu-header.scrolled + main {
     @include transition;
-    margin-top: 81x;
+    margin-top: 81px;
   }
 }
