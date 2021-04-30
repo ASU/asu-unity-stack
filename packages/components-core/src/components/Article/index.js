@@ -6,7 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { zhCN } from "date-fns/locale";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
