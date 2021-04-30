@@ -6,7 +6,6 @@
 
 <p align="center">
   A Bootstrap 4-based web ui kit for website developers building new websites from scratch or for inclusion as a standardized theming foundation for ASU application frameworks, such as Drupal, WordPress, or other application frameworks. A comprehensive development and testing framework has been implemented using best-in-class tools like StorybookJS and Jest.
-
 </p>
 
 <br />
