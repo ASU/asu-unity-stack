@@ -1,3 +1,8 @@
 a + a {
   margin-left: 5px;
 }
+
+a.c-card {
+  color: initial;
+  text-decoration: none;
+}
