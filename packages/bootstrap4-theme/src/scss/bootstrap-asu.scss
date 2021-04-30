@@ -37,7 +37,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/form-fields';
 @import 'variables/video';
 @import 'variables/card-and-image';
-
+@import 'variables/back-to-top-button';
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
 @import '../../node_modules/bootstrap/scss/variables';
