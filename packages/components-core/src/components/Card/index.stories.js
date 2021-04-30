@@ -143,6 +143,7 @@ Story.args = {
       href: "/#example-link",
     },
   ],
+  linkUrl: "http://google.com",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },

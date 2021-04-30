@@ -49,6 +49,6 @@ Event.args = {
   eventLocation:
     "Vault Gallery, Downtown Phoenix campus Library<br />411 N Central Ave, Phoenix AZ 85004",
   registrationUrl: "https://google.com",
-  zoomUrl: "https://google/com",
+  zoomUrl: "https://google.com",
   calendarUrl: "https://google.com",
 };
