@@ -279,7 +279,7 @@ const CardContent = ({
     <div className={UdsStyles["card-body"]}>
       <p className={UdsStyles["card-text"]}>{body}</p>
     </div>
-    {type === "event" && (
+    {type === "event" && (eventTime || eventLocation) && (
       <EventInfo
         eventFormat={eventFormat}
         eventTime={eventTime}
@@ -374,20 +374,24 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   if (eventFormat === "inline") {
     return (
       <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faCalendar} />
+        {eventTime && (
+          <div className={UdsStyles["card-event-icons"]}>
+            <div>
+              <FontAwesomeIcon icon={faCalendar} />
+            </div>
+            <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
-        </div>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
+        )}
+        {eventLocation && (
+          <div className={UdsStyles["card-event-icons"]}>
+            <div>
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+            </div>
+            <div
+              dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
+            />
           </div>
-          <div
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
-          />
-        </div>
+        )}
       </div>
     );
   }
@@ -395,26 +399,30 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   // else "stacked"
   return (
     <>
-      <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faCalendar} />
+      {eventTime && (
+        <div className={UdsStyles["card-event-details"]}>
+          <div className={UdsStyles["card-event-icons"]}>
+            <div>
+              <FontAwesomeIcon icon={faCalendar} />
+            </div>
+            <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
         </div>
-      </div>
-      <div className={UdsStyles["card-event-details"]}>
-        <div className={UdsStyles["card-event-icons"]}>
-          <div>
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
+      )}
+      {eventLocation && (
+        <div className={UdsStyles["card-event-details"]}>
+          <div className={UdsStyles["card-event-icons"]}>
+            <div>
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+            </div>
+            <span>
+              <div
+                dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
+              />
+            </span>
           </div>
-          <span>
-            <div
-              dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
-            />
-          </span>
         </div>
-      </div>
+      )}
     </>
   );
 };
