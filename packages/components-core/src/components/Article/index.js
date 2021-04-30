@@ -63,15 +63,13 @@ export const Article = ({
         </div>
       );
     }
-    if (zoomUrl) {
-      return (
-        <div className={classNames(UdsStyles["card-button"], "uds-button")}>
-          <Button color="maroon" href={zoomUrl}>
-            Attend on Zoom
-          </Button>
-        </div>
-      );
-    }
+    return (
+      <div className={classNames(UdsStyles["card-button"], "uds-button")}>
+        <Button color="maroon" href={zoomUrl}>
+          Attend on Zoom
+        </Button>
+      </div>
+    );
   };
 
   const AuthorInfo = () => {
@@ -196,29 +194,21 @@ export const Article = ({
   };
 
   const eventLocations = () => {
-    if ((registrationUrl && zoomUrl) || eventLocation) {
-      return (
-        <div
-          className={classNames(
-            UdsStyles["col"],
-            UdsStyles["col-lg-4"],
-            UdsStyles["col-md-6"],
-            UdsStyles["col-sm-12"]
-          )}
-        >
-          <FontAwesomeIcon
-            icon={faMapMarkerAlt}
-            size="lg"
-            transform="shrink-2"
-          />
-          <h4>Location:</h4>
-          <div
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
-          />
-          {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
-        </div>
-      );
-    }
+    return (
+      <div
+        className={classNames(
+          UdsStyles["col"],
+          UdsStyles["col-lg-4"],
+          UdsStyles["col-md-6"],
+          UdsStyles["col-sm-12"]
+        )}
+      >
+        <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" transform="shrink-2" />
+        <h4>Location:</h4>
+        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
+        {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
+      </div>
+    );
   };
 
   return (
@@ -284,7 +274,7 @@ export const Article = ({
                 UdsStyles["col-xs-12"]
               )}
             >
-              {primaryButton()}
+              {(registrationUrl || zoomUrl) && primaryButton()}
               {calendarUrl && (
                 <div
                   className={classNames(UdsStyles["card-button"], "uds-button")}
@@ -327,7 +317,8 @@ export const Article = ({
                 />
               </div>
             )}
-            {eventLocations()}
+            {((registrationUrl && zoomUrl) || eventLocation) &&
+              eventLocations()}
           </div>
         )}
 
@@ -405,4 +396,7 @@ Article.defaultProps = {
   authorTitle: "",
   authorEmail: "",
   authorPhone: "",
+  registrationUrl: "",
+  zoomUrl: "",
+  calendarUrl: "",
 };
