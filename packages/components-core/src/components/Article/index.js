@@ -191,6 +191,32 @@ export const Article = ({
     );
   };
 
+  const eventLocations = () => {
+    if ((registrationUrl && zoomUrl) || eventLocation) {
+      return (
+        <div
+          className={classNames(
+            UdsStyles["col"],
+            UdsStyles["col-lg-4"],
+            UdsStyles["col-md-6"],
+            UdsStyles["col-sm-12"]
+          )}
+        >
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            size="lg"
+            transform="shrink-2"
+          />
+          <h4>Location:</h4>
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
+          />
+          {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       {headerImageUrl && type !== "event" && (
@@ -277,45 +303,27 @@ export const Article = ({
               UdsStyles["pb-2"]
             )}
           >
-            <div
-              className={classNames(
-                UdsStyles["col"],
-                UdsStyles["col-lg-4"],
-                UdsStyles["col-md-6"],
-                UdsStyles["col-sm-12"]
-              )}
-            >
-              <FontAwesomeIcon
-                icon={faCalendar}
-                size="lg"
-                transform="shrink-2"
-              />
-              <h4>Date and time:</h4>
+            {eventTime && (
               <div
-                dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
-              />
-            </div>
-            <div
-              className={classNames(
-                UdsStyles["col"],
-                UdsStyles["col-lg-4"],
-                UdsStyles["col-md-6"],
-                UdsStyles["col-sm-12"]
-              )}
-            >
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                size="lg"
-                transform="shrink-2"
-              />
-              <h4>Location:</h4>
-              <div
-                dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
-              />
-              {registrationUrl && zoomUrl && (
-                <a href={zoomUrl}>Attend on Zoom</a>
-              )}
-            </div>
+                className={classNames(
+                  UdsStyles["col"],
+                  UdsStyles["col-lg-4"],
+                  UdsStyles["col-md-6"],
+                  UdsStyles["col-sm-12"]
+                )}
+              >
+                <FontAwesomeIcon
+                  icon={faCalendar}
+                  size="lg"
+                  transform="shrink-2"
+                />
+                <h4>Date and time:</h4>
+                <div
+                  dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
+                />
+              </div>
+            )}
+            {eventLocations()}
           </div>
         )}
 
