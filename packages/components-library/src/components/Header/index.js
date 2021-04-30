@@ -156,6 +156,8 @@ const Header = ({
       <div onmousedown={killEvent} onclick={onClickCallbackOverride} data-onclick-identifier="no-action" />
       <S.UniversalNav open={mobileOpen} ref={universalRef} {...{ searchOpen }}>
         <S.UniversalNavLinks>
+          <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
+          <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
           <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/colleges/">Colleges and schools</a>

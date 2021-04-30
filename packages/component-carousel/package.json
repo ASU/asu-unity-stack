@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "src/index.js",
   "author": "Michael Samuelson",
@@ -14,6 +14,7 @@
     "prop-types": "^15.7.2"
   },
   "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "build": "webpack --mode=production --progress",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
