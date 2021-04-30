@@ -149,7 +149,7 @@ const navListStyles = breakpoint => css`
         margin-right: 0;
 
         > a {
-          padding: 1rem 1rem 0.5rem 1rem;
+          padding: 1rem 2rem 0.5rem;
           justify-content: space-between;
           display: block;
           border-bottom: 1px solid #cccccc;
