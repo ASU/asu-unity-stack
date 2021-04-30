@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import { zhCN } from "date-fns/locale";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
@@ -44,12 +45,35 @@ export const Article = ({
   title,
   eventLocation,
   eventTime,
+  registrationUrl,
   zoomUrl,
   calendarUrl,
 }) => {
   const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
-    [UdsStyles["col-lg-8"]]: type === "event" && (zoomUrl || calendarUrl),
+    [UdsStyles["col-lg-8"]]:
+      type === "event" && (registrationUrl || zoomUrl || calendarUrl),
   });
+
+  const primaryButton = () => {
+    if (registrationUrl) {
+      return (
+        <div className={classNames(UdsStyles["card-button"], "uds-button")}>
+          <Button color="maroon" href={registrationUrl}>
+            Register
+          </Button>
+        </div>
+      );
+    }
+    if (zoomUrl) {
+      return (
+        <div className={classNames(UdsStyles["card-button"], "uds-button")}>
+          <Button color="maroon" href={zoomUrl}>
+            Attend on Zoom
+          </Button>
+        </div>
+      );
+    }
+  };
 
   const AuthorInfo = () => {
     return (
@@ -230,15 +254,7 @@ export const Article = ({
                 UdsStyles["col-xs-12"]
               )}
             >
-              {zoomUrl && (
-                <div
-                  className={classNames(UdsStyles["card-button"], "uds-button")}
-                >
-                  <Button color="maroon" href={zoomUrl}>
-                    Attend on Zoom
-                  </Button>
-                </div>
-              )}
+              {primaryButton()}
               {calendarUrl && (
                 <div
                   className={classNames(UdsStyles["card-button"], "uds-button")}
@@ -296,6 +312,9 @@ export const Article = ({
               <div
                 dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
               />
+              {registrationUrl && zoomUrl && (
+                <a href={zoomUrl}>Attend on Zoom</a>
+              )}
             </div>
           </div>
         )}
@@ -363,6 +382,7 @@ Article.propTypes = {
   authorPhone: PropTypes.string,
   eventLocation: PropTypes.string.isRequired,
   eventTime: PropTypes.string.isRequired,
+  registrationUrl: PropTypes.string,
   zoomUrl: PropTypes.string,
   calendarUrl: PropTypes.string,
 };
