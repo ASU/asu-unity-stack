@@ -136,14 +136,20 @@ export const Article = ({
           <h4>For more information contact:</h4>
           <div className="event-author">{authorName}</div>
           <div className="event-author-title">{authorTitle}</div>
-          <div className="event-author-info">
-            <div>
-              <a href={`mailto: ${authorEmail}`}>{authorEmail}</a>
+          {(authorEmail || authorPhone) && (
+            <div className="event-author-info">
+              {authorEmail && (
+                <div>
+                  <a href={`mailto: ${authorEmail}`}>{authorEmail}</a>
+                </div>
+              )}
+              {authorPhone && (
+                <div>
+                  <a href={`tel: ${authorPhone}`}>{authorPhone}</a>
+                </div>
+              )}
             </div>
-            <div>
-              <a href={`tel: ${authorPhone}`}>{authorPhone}</a>
-            </div>
-          </div>
+          )}
         </div>
         <div
           className={classNames(
