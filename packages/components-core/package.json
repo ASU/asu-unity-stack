@@ -16,7 +16,8 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "yarn build"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
