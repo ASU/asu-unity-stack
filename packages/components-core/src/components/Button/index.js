@@ -1,8 +1,8 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
