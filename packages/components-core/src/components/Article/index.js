@@ -92,9 +92,7 @@ export const Article = ({
                   transform="shrink-2"
                 />
               </span>
-              <Button href={`mailto: ${authorEmail}`} color="link">
-                {authorEmail}
-              </Button>
+              <a href={`mailto: ${authorEmail}`}>{authorEmail}</a>
             </div>
           )}
           {authorPhone && (
@@ -107,9 +105,7 @@ export const Article = ({
                   transform="shrink-2"
                 />
               </span>
-              <Button href={`tel: ${authorPhone}`} color="link">
-                {authorPhone}
-              </Button>
+              <a href={`tel: ${authorPhone}`}>{authorPhone}</a>
             </div>
           )}
         </div>
@@ -140,10 +136,13 @@ export const Article = ({
           <h4>For more information contact:</h4>
           <div className="event-author">{authorName}</div>
           <div className="event-author-title">{authorTitle}</div>
-          <div className="event-author-email">
-            <Button href={`mailto: ${authorEmail}`} color="link">
-              {authorEmail}
-            </Button>
+          <div className="event-author-info">
+            <div>
+              <a href={`mailto: ${authorEmail}`}>{authorEmail}</a>
+            </div>
+            <div>
+              <a href={`tel: ${authorPhone}`}>{authorPhone}</a>
+            </div>
           </div>
         </div>
         <div
