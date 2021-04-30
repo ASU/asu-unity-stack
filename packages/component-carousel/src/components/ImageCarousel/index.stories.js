@@ -56,7 +56,6 @@ const mockItemWithMoreContent = () => {
     content: (
       <>
         <h3>Content {index + 1}</h3>
-
         <p>
           Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -85,7 +84,7 @@ const GROUP_STYLE = "Styles";
 const Wrapper = ({ children }) => (
   <div
     style={{
-      display: "flex",
+      // display: "flex",
       maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
     }}
   >
@@ -119,6 +118,7 @@ export const ImageCarouselWithMoreContent = () => (
       perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
       maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
       imageItems={mockItemWithMoreContent()}
+
     />
   </Wrapper>
 );

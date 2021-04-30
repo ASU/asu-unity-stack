@@ -18,8 +18,7 @@ const imageFormats = [
   "300x400",
 ];
 
-const getImageFormat = index => "400x600";
-//  imageFormats[index];
+const getImageFormat = index => imageFormats[index];
 
 for (let index = 0; index < 8; index++) {
   myCarouselItems.push({
