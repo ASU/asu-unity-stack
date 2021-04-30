@@ -121,10 +121,15 @@
 4. Story Hero, Mobile
 --------------------------------------------------------------*/
 .uds-story-hero {
+
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall mobile hero image - 4.5rem offset for the indented content.
   display: grid;
   grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
-  grid-template-rows: 11.5rem 4.5rem auto;
+  grid-template-rows: calc(#{$uds-size-spacing-32} - 4.5rem) 4.5rem auto;
   gap: 0px 0px;
+  max-width: 1920px;
+  margin: 0 auto;
 
   .hero {
     grid-column: 1 / span 3;
@@ -139,10 +144,17 @@
     grid-row: 2 / span 2;
     background-color: $uds-color-base-white;
 
-    padding: 2rem 2rem 0;
+    // Padding from top of content box should be carried by whatever element comes within it.
+    padding: 0 $uds-size-spacing-2;
 
-    .breadcrumb {
+    .breadcrumb,
+    p.meta {
       padding: .75rem 0;
+      margin: $uds-size-spacing-half 0;
+    }
+
+    h1 {
+      margin-top: 0;
     }
   }
 }
@@ -153,6 +165,9 @@
 
 // Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
 @media (min-width: 950px) {
+
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall hero image - 8rem offset for the indented content.
   .uds-story-hero {
     grid-template-columns: $uds-size-spacing-3 1fr $uds-size-spacing-3;
     grid-template-rows: calc(#{$uds-size-spacing-64} - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
@@ -161,14 +176,20 @@
       grid-template-rows: calc(42.75rem - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
     }
 
+    // Calc value: 8.34% is the width of one bootstrap column. 12px is the gutter on the outside.
     .content {
-      padding: 2rem 10rem 0;
+      padding: 0 calc(8.34% + 12px);
+
+      .breadcrumb,
+      p.meta {
+        margin: 1.25rem 0 2.25rem;
+      }
     }
   }
 }
 
 @include media-breakpoint-up(xl) {
   .uds-story-hero {
-    grid-template-columns: 1fr 1224px 1fr;
+    grid-template-columns: 1fr calc(1200px + 12px + 12px) 1fr;
   }
 }
