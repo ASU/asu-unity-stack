@@ -2,6 +2,7 @@
 import { h, hydrate, render } from "preact";
 
 import { AsuCarousel } from "../../components/AsuCarousel";
+import { TestimonialCarousel } from "../../components/TestimonialCarousel";
 
 const HydratePreact = (component, props, target) => {
   return hydrate(h(component, props), target);
@@ -29,4 +30,26 @@ const initCarousel = (props, target = "carouselContainer", hydrate = false) => {
   }
 };
 
-export { HydratePreact, RenderPreact, initCarousel };
+/**
+ * Initialize the TestimonialCarousel.
+ *
+ * @param {object} props - Properties to initialize the carousel with. See the
+ * component definiton src/components/AsuCarousel/index.js for more details.
+ * @param {boolean} hydrate - If true, will run Preact's hydrate function instead of render.
+ * Should only be set to true if the header has been completely rendered server-side.
+ * @param {string} target - The ID of the containing <div> where the header should
+ * be either hydrated or rendered.
+ */
+const initTestimonialCarousel = (
+  props,
+  target = "testimonialCarouselContainer",
+  hydrate = false
+) => {
+  if (hydrate) {
+    HydratePreact(TestimonialCarousel, props, document.getElementById(target));
+  } else {
+    RenderPreact(TestimonialCarousel, props, document.getElementById(target));
+  }
+};
+
+export { HydratePreact, RenderPreact, initCarousel, initTestimonialCarousel };
