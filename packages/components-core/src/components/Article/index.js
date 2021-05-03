@@ -38,7 +38,7 @@ export const Article = ({
   authorEmail,
   authorPhone,
   body,
-  date,
+  publicationDate,
   type,
   headerImageUrl,
   title,
@@ -354,7 +354,9 @@ export const Article = ({
                   />
                 </LinkedinShareButton>
               </div>
-              {date && <i className="news-date">{date}</i>}
+              {publicationDate && (
+                <i className="news-date">{publicationDate}</i>
+              )}
             </div>
           </div>
         )}
@@ -377,7 +379,7 @@ Article.propTypes = {
   articleUrl: PropTypes.string.isRequired,
   headerImageUrl: PropTypes.string,
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  publicationDate: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   authorName: PropTypes.string.isRequired,
   authorTitle: PropTypes.string,
