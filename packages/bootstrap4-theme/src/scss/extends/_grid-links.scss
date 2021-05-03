@@ -1,0 +1,26 @@
+.uds-grid-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.75rem;
+  row-gap: 1.75rem;
+
+  & > div {
+    display: inline-block;
+    border: 1px solid $uds-color-base-gray-3;
+    font: normal normal bold 1.25rem Arial;
+    color: $uds-color-base-gray-7;
+    padding: 1.5rem;
+
+    & > a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    & > .uds-grid-links-icon {
+      margin-right: 1rem;
+    }
+  }
+}
