@@ -1,4 +1,4 @@
-export default { title: 'Components/Display List' };
+export default { title: 'Components/Lists/Display List' };
 
 export const Default = () => `
 <div class="container">
