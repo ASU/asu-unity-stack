@@ -10,27 +10,7 @@ import Glide from "@glidejs/glide";
  */
 function buildConfig(perView = "1", isFullWidth) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
-  let perViewSm, perViewMd, perViewLg;
-  switch (perView) {
-    case "3":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 3;
-      break;
-    case "2":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 2;
-      break;
-    case "1":
-    default:
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 1;
-      perViewLg = 1;
-  }
+  let { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
 
   const smallPeeek = { before: 0, after: 62 };
   const largePeek = { before: 124, after: 124 };
@@ -42,7 +22,10 @@ function buildConfig(perView = "1", isFullWidth) {
     bound: true, // Only if type slider with focusAt 0
     rewind: false, // Only if type slider
     gap: 24, // Space between slides... may be impacted by viewport size.
-    keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
+    // `keyboard` Left/Right arrow key support for slides - true is default.
+    // Is not fully Accessible, on keydown allcarousels move simultaneously
+    // A custome keyboard handler is implemented
+    keyboard: false,
     startAt: 0,
     swipeThreshold: 80, // Distance required for swipe to change slide.
     dragThreshold: 120, // Distance for mouse drag to change slide.
@@ -85,6 +68,41 @@ function buildConfig(perView = "1", isFullWidth) {
 }
 
 /**
+ * Compute hoa many items will be visible on different viewport
+ * @param {string | number} perView
+ * @returns {object}
+ */
+function computeItemPerView(perView) {
+  let perViewSm, perViewMd, perViewLg;
+  switch (perView) {
+    case "3":
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 2;
+      perViewLg = 3;
+      break;
+    case "2":
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 2;
+      perViewLg = 2;
+      break;
+    case "1":
+    default:
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 1;
+      perViewLg = 1;
+  }
+
+  return {
+    perViewSm,
+    perViewMd,
+    perViewLg,
+  };
+}
+
+/**
  *
  * @param {{
  *  instanceName: string
@@ -108,11 +126,19 @@ function setupCaroarousel({
   // Load up a new glideJS slider, but don't mount until we have event
   // listener (https://glidejs.com/docs/events/) handlers defined and configs
   // all mustered.
+
   const slider = new Glide(`#${instanceName}`, sliderConfig);
 
   // Implement glidejs event listeners.
-  // We use event listeners to clear and set class names to show/hide
-  // gradients when at the start, middle or end of a slider.
+
+  // Attatch event listener and instruct slide to go left and right
+  const gliderElement = document.querySelector(`#${instanceName}`);
+  gliderElement.addEventListener("keyup", e => {
+    // @ts-ignore
+    if (e.keyCode == 39) slider.go(">");
+    // @ts-ignore
+    else if (e.keyCode == 37) slider.go("<");
+  });
 
   // On build.before event...
   slider.on("build.before", () => {
@@ -130,7 +156,8 @@ function setupCaroarousel({
 
     // @ts-ignore
     const currentIndex = slider.index;
-
+    // We use event listeners to clear and set class names to show/hide
+    // gradients when at the start, middle or end of a slider.
     setNavButtonGradient(gliderElement, currentIndex, buttonCount);
     // set the current index
     gliderElement.setAttribute("data-current-index", currentIndex);
@@ -164,6 +191,14 @@ function setupCaroarousel({
   return slider;
 }
 
+/**
+ * This function clears and set class names to show/hide
+ * gradients when at the start, middle or end of a slider.
+ * @param {Element} gliderElement
+ * @param {number} currentIndex
+ * @param {number} buttonCount
+ * @returns {void}
+ */
 function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
   const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
   const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
