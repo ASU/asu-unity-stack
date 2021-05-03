@@ -155,15 +155,21 @@ ol.uds-list {
   }
 
   li:before,
-  ol ol li:before,
-  ol ol ol ol li:before {
-    content: counter(listcounter) ' ';
+  ol ol ol li:before,
+  ol ol ol ol ol li:before {
+    content: counter(listcounter) '. ';
     counter-increment: listcounter;
   }
 
   ol li:before,
-  ol ol ol li:before {
-    content: counter(listcounter, lower-alpha) ' ';
+  ol ol ol ol li:before {
+    content: counter(listcounter, lower-alpha) '. ';
+    counter-increment: listcounter;
+  }
+
+  ol ol li:before,
+  ol ol ol ol ol ol li:before {
+    content: counter(listcounter, lower-roman) '. ';
     counter-increment: listcounter;
   }
 

@@ -19,6 +19,9 @@ const autoprefixer = require('autoprefixer');
 const cfg = require('./gulpconfig.json');
 const paths = cfg.paths;
 
+// Use Dart Sass to avoid random compliation errors.
+sass.compiler = require('sass');
+
 // Run:
 // gulp sass
 // Compiles SCSS files into CSS
@@ -30,12 +33,12 @@ gulp.task('sass', function () {
         errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        }
+        },
       })
     )
     // .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true }))
-    .pipe(postcss([ autoprefixer() ]))
+    .pipe(postcss([autoprefixer()]))
     // .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.css));
   return stream;
@@ -62,7 +65,7 @@ gulp.task('sasslint', function () {
         errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        }
+        },
       })
     )
     .pipe(sassLint())
@@ -91,7 +94,7 @@ gulp.task('minifycss', function () {
         errorHandler: function (err) {
           console.log(err);
           this.emit('end');
-        }
+        },
       })
     )
     .pipe(rename({ suffix: '.min' }))
@@ -107,7 +110,7 @@ gulp.task('styles', function (callback) {
 // gulp scripts.
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function () {
-  const scripts = [ 'src/js/_license.js' ];
+  const scripts = ['src/js/_license.js'];
   gulp
     .src(scripts, { allowEmpty: true })
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -159,7 +162,7 @@ gulp.task('copy-dist-assets', function (done) {
 
 // Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
-  return del([ paths.dist + '/**' ]);
+  return del([paths.dist + '/**']);
 });
 
 // Run

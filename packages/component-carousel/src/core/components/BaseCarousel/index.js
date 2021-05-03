@@ -27,7 +27,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  * @param {{
  *            perView?: number | string
  *            width?: string
- *            maxWidth: string
+ *            maxWidth?: string
  *            carouselItems: CarouselItem[]
  *            cssClass?: string
  *            CustomNavComponent?: JSX.Element
