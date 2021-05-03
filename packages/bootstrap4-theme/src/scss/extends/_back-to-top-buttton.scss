@@ -19,6 +19,10 @@
   transform: rotate(-90deg);
   text-align: right;
 
+  &-show {
+    display: inline-flex;
+  }
+
   &:hover .fa-chevron-right {
     right: 6px;
   }
