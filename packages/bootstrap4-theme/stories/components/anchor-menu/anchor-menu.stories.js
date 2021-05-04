@@ -13,17 +13,17 @@ export const AnchorMenu = () => `
         </div>
 
         <div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg sticky-top">
-          <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            On this page: <span class="fas fa-chevron-down"></span>
-          </button>
+          <h4 data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            On This Page: <span class="fas fa-chevron-down"></span>
+          </h4>
           <div class="separator"></div>
           <div id="collapseExample" class="card card-body collapse">
             <nav class="nav" aria-label="Same Page">
-              <a class="nav-link" href="#first"></span>Live long</a>
-              <a class="nav-link" href="#second"><span class="fas fa-hand-spock"></span>Prosper</a>
-              <a class="nav-link" href="#third"><span class="fa fa-lightbulb"></span>To boldly go</a>
-              <a class="nav-link" href="#fourth"><span class="fa fa-lightbulb"></span>Where no one</a>
-              <a class="nav-link" href="#fifth">Has gone before</a>
+              <a class="nav-link" href="#first"><span class="fas fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#second"><span class="fas fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#third"><span class="fa fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#fourth"><span class="fa fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#fifth"><span class="fa fa-link"></span>Anchor item</a>
             </nav>
           </div>
         </div>

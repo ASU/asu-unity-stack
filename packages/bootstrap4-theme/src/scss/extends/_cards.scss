@@ -632,8 +632,8 @@ Cards - Table of Contents
   background-color: white;
 
   &-shrink {
-    button {
-      padding: $uds-size-spacing-2 0 !important;
+    h4 {
+      margin: 0.75rem 0.5rem !important;
     }
 
     .nav-link {
@@ -641,11 +641,10 @@ Cards - Table of Contents
     }
   }
 
-  button {
-    border-radius: 0;
-    border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
-    display: block;
-    margin: 0 auto;
+  h4 {
+    font-size: 1rem;
+    padding: 0 !important;
+    margin: 1.25rem 0.75rem;
 
     &:hover {
       transform: none;
@@ -668,7 +667,7 @@ Cards - Table of Contents
     width: 100%;
   }
 
-  button[aria-expanded='true'] {
+  h4[aria-expanded='true'] {
     svg {
       transform: rotate(180deg);
     }
@@ -713,11 +712,8 @@ Cards - Table of Contents
   flex-direction: row;
   border-bottom: 1px solid $uds-color-base-gray-3;
 
-  button {
-    border-bottom: 0;
+  h4 {
     font-size: 1.25rem;
-    margin: 0 0.5rem 1rem 0.5rem;
-    padding: 1.5rem 0.5rem;
 
     svg {
       display: none;
