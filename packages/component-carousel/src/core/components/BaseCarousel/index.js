@@ -38,6 +38,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            hasNavButtons?: boolean
  *            hasPositionIndicators?: boolean
  *            removeSideBackground?: boolean
+ *            imageAutoSize?: boolean
  *          }} props
  * @returns
  */
@@ -54,6 +55,7 @@ const BaseCarousel = ({
   removeSideBackground = false,
   hasNavButtons = true,
   hasPositionIndicators = true,
+  imageAutoSize = true,
   onItemClick = () => null,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
@@ -94,6 +96,7 @@ const BaseCarousel = ({
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
+      data-image-auto-size={imageAutoSize}
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
