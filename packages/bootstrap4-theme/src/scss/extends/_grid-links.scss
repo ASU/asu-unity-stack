@@ -1,17 +1,23 @@
 .uds-grid-links {
+  column-gap: 1.75rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 1.75rem;
   row-gap: 1.75rem;
+  padding: 2rem;
+
+  @media screen and (max-width: $uds-breakpoint-md) {
+    padding: 1rem;
+    grid-template-columns: 1fr;
+  }
 
   & > div {
-    display: inline-block;
     border: 1px solid $uds-color-base-gray-3;
-    font: normal normal bold 1.25rem Arial;
     color: $uds-color-base-gray-7;
+    display: flex;
     padding: 1.5rem;
 
     & > a {
+      font: normal normal bold 1.25rem Arial;
       text-decoration: none;
 
       &:hover {
@@ -21,6 +27,35 @@
 
     & > .uds-grid-links-icon {
       margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &-light {
+    background-color: $uds-color-base-gray-1;
+  }
+
+  &-dark {
+    background-color: $uds-color-base-gray-7;
+
+    & > div {
+      & > a {
+        color: white;
+      }
+      & > .uds-grid-links-icon {
+        color: white;
+      }
+    }
+
+    &.gold {
+      & > div {
+        & > a {
+          color: $uds-color-base-gold;
+        }
+        & > .uds-grid-links-icon {
+          color: $uds-color-base-gold;
+        }
+      }
     }
   }
 }
