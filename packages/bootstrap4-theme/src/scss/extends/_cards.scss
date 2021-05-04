@@ -8,7 +8,7 @@ Cards - Table of Contents
 5. Foldable Cards
 6. Foldable - Desktop Disable
 7. Accordion
-8. Quick Links
+8. Anchor Menu
 9. Checkbox Stacked Cards
 10. Checkbox Inline Cards
 11. Checkbox Inline Cards
@@ -623,12 +623,23 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-8. Quick Links
+8. Anchor Menu
 --------------------------------------------------------------------*/
 
-.uds-quicklinks {
+.uds-anchor-menu {
   display: flex;
   flex-direction: column;
+  background-color: white;
+
+  &-shrink {
+    button {
+      padding: $uds-size-spacing-2 0 !important;
+    }
+
+    .nav-link {
+      padding: $uds-size-spacing-2 0 !important;
+    }
+  }
 
   button {
     border-radius: 0;
@@ -661,10 +672,6 @@ Cards - Table of Contents
     svg {
       transform: rotate(180deg);
     }
-
-    + .separator {
-      display: none;
-    }
   }
 
   .card-body {
@@ -679,7 +686,7 @@ Cards - Table of Contents
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-3 0;
     border-bottom: 1px solid $uds-color-base-gray-3;
-    text-align: center;
+    text-align: start;
     font-weight: 700;
 
     &:visited {
@@ -701,10 +708,15 @@ Cards - Table of Contents
   }
 }
 
-@mixin uds-quicklinks-expanded {
+@mixin uds-anchor-menu-expanded {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid $uds-color-base-gray-3;
+
   button {
     border-bottom: 0;
-    font-size: 30px;
+    font-size: 1.25rem;
+    border-bottom: $uds-size-spacing-1 solid transparent;
 
     svg {
       display: none;
@@ -721,14 +733,6 @@ Cards - Table of Contents
     margin-bottom: $uds-size-spacing-1;
     padding: $uds-size-spacing-3 $uds-size-spacing-1;
 
-    &:first-of-type {
-      padding-top: $uds-size-spacing-3;
-    }
-
-    &:last-of-type {
-      padding-bottom: $uds-size-spacing-3;
-    }
-
     &:hover,
     &.active {
       margin-bottom: 0;
@@ -742,7 +746,7 @@ Cards - Table of Contents
   }
 
   .separator {
-    order: 3;
+    display: none;
   }
 
   .collapse {
@@ -763,26 +767,26 @@ Cards - Table of Contents
 }
 
 @include media-breakpoint-up(sm) {
-  .uds-quicklinks.uds-quicklinks-expanded-sm {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-sm {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .uds-quicklinks.uds-quicklinks-expanded-md {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-md {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .uds-quicklinks.uds-quicklinks-expanded-lg {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-lg {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .uds-quicklinks.uds-quicklinks-expanded-xl {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-xl {
+    @include uds-anchor-menu-expanded;
   }
 }
 
