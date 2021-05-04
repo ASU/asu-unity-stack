@@ -10,7 +10,7 @@ storiesOf('Components/Banners', module)
 
 .add('Banners, green', () => `
 <div class="banner-green">
-  <div class="banner" role="banner">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -34,7 +34,7 @@ storiesOf('Components/Banners', module)
 
   .add('Banners, orange', () => `
 <div class="banner-orange">
-  <div class="banner" role="banner">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -58,7 +58,7 @@ storiesOf('Components/Banners', module)
 
   .add('Banners, blue', () => `
 <div class="banner-blue">
-  <div class="banner" role="banner">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -82,7 +82,7 @@ storiesOf('Components/Banners', module)
 
   .add('Banners, gray', () => `
 <div class="banner-gray">
-  <div class="banner" role="banner">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -106,7 +106,7 @@ storiesOf('Components/Banners', module)
 
   .add('Banners, black', () => `
 <div class="banner-black">
-  <div class="banner" role="banner">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>

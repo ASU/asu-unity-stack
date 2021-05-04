@@ -95,15 +95,6 @@
 }
 
 // Media Queries
-
-@media screen and (min-width: $uds-breakpoint-sm) {
-  .banner {
-    max-width: 1200px;
-    margin: auto;
-  }
-
-}
-
 .banner {
   // Mobile tweaks. 576px
   @media screen and (max-width: $uds-breakpoint-sm) {
