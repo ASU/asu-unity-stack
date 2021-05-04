@@ -5,16 +5,24 @@ import PropTypes from "prop-types";
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
- * This function creates a html template which render an image
- * @param {{
- *          id: number
- *          imageSource: string
- *          altText:string
- *          content?: string | h.JSX.Element
- *        }} props
- * @returns {{ id: number, item: h.JSX.Element }}
+ * @typedef {import('../../core/components/BaseCarousel').CarouselItem} CarouselItem
  */
-const imageTemplate = ({ id, imageSource, altText, content }) => ({
+
+/**
+ * @typedef {{
+ *  id: number
+ *  imageSource: string
+ *  altText:string
+ *  content?: string | h.JSX.Element
+ * }} ImageItem
+ */
+
+/**
+ * This function creates a html template which render an image
+ * @param {ImageItem} props
+ * @returns {CarouselItem}
+ */
+const htmlTemplate = ({ id, imageSource, altText, content }) => ({
   id,
   item: (
     <div className="uds-img">
@@ -41,20 +49,22 @@ const imageTemplate = ({ id, imageSource, altText, content }) => ({
 /**
  *
  * @param {{
- *            perView: string | number
- *            imageItems: { id: number, imageSource: string, altText:string }[]
- *            maxWidth?: string
- *            width?: string
- *        }} props
- * @returns
+ *    perView: string | number
+ *    imageItems: ImageItem []
+ *    maxWidth?: string
+ *    width?: string
+ *    imageAutoSize?: boolean
+ *  }} props
+ * @returns { JSX.Element }
  */
 const ImageCarousel = ({
   perView,
   imageItems,
   width = undefined,
   maxWidth = undefined,
+  imageAutoSize = true,
 }) => {
-  const carouselItems = imageItems.map(imageTemplate);
+  const carouselItems = imageItems.map(htmlTemplate);
 
   return (
     <BaseCarousel
@@ -63,6 +73,7 @@ const ImageCarousel = ({
       width={width}
       cssClass="image-carousel"
       carouselItems={carouselItems}
+      imageAutoSize={imageAutoSize}
     />
   );
 };
@@ -72,6 +83,7 @@ ImageCarousel.propTypes = {
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
+  imageAutoSize: PropTypes.bool,
 };
 
-export { ImageCarousel, imageTemplate };
+export { ImageCarousel, htmlTemplate };
