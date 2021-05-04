@@ -148,7 +148,7 @@ const navListStyles = breakpoint => css`
       > li {
         margin-right: 0;
 
-        > a {
+        > a, .drop-controls {
           padding: 1rem 2rem 0.5rem;
           justify-content: space-between;
           display: block;

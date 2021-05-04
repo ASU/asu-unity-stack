@@ -157,6 +157,11 @@ const universalStyles = breakpoint => css`
           :nth-child(even) {
             border-left: 1px solid #d0d0d0;
           }
+
+          &.sr-only {
+            display: none;
+          }
+
         }
       }
 
@@ -214,7 +219,7 @@ const UniversalNavLinks = ({ children, ...props }) => {
             padding-bottom: 0;
             ${focusStyle}
 
-            &:hover{
+            &:hover {
               text-decoration: underline;
             }
           }
