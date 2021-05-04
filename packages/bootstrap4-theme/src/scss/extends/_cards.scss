@@ -716,7 +716,8 @@ Cards - Table of Contents
   button {
     border-bottom: 0;
     font-size: 1.25rem;
-    border-bottom: $uds-size-spacing-1 solid transparent;
+    margin: 0 0.5rem 1rem 0.5rem;
+    padding: 1.5rem 0.5rem;
 
     svg {
       display: none;
@@ -725,12 +726,11 @@ Cards - Table of Contents
 
   nav {
     flex-direction: row;
-    justify-content: space-evenly;
   }
 
   .nav-link {
     border-bottom: 0;
-    margin-bottom: $uds-size-spacing-1;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     padding: $uds-size-spacing-3 $uds-size-spacing-1;
 
     &:hover,

@@ -38,19 +38,15 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  // This code sets active class on anchor on click
-  // anchors.forEach((anchor) => {
-  //   anchor.addEventListener('click', function (e) {
-  //     e.preventDefault();
+  // Set click event of anchors
+  for (let [key, value] of anchorTargets) {
+    key.addEventListener('click', function (e) {
+      const active = document.querySelector('.nav-link.active');
+      if (active) active.classList.remove('active');
 
-  //     scrollTo()
-
-  //     const active = document.querySelector('.nav-link.active');
-  //     if (active) active.classList.remove('active');
-
-  //     e.target.classList.add('active');
-  //   });
-  // });
+      e.target.classList.add('active');
+    });
+  }
 });
 
 function getOffset(el) {
