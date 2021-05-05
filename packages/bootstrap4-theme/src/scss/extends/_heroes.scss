@@ -108,6 +108,12 @@
     }
   }
 
+  &.uds-hero-md {
+    @media screen and (max-width: 576px){
+      height: $uds-size-spacing-32;
+    }
+  }
+
   &.uds-hero-lg {
 
     // Snap lg hero to md at 1400px.
