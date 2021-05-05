@@ -140,8 +140,8 @@ yarn test
 
 ```
 
-## Caousel properties
-### Card caousel properties
+## Carousel properties
+### Card carousel properties
 
 ```JS
 /**
@@ -169,7 +169,7 @@ yarn test
  */
  ```
 
-### Image caousel properties
+### Image carousel properties
 
 ```JS
 /**
@@ -192,7 +192,7 @@ yarn test
  */
  ```
 
- ### Image Gallery caousel properties
+ ### Image Gallery carousel properties
 
 ```JS
 /**
@@ -217,7 +217,7 @@ yarn test
  ```
 
 
- ### Testimonial caousel properties
+ ### Testimonial carousel properties
 
 ```JS
 
@@ -257,6 +257,13 @@ yarn test
    *  }} props
    */
  ```
-### All caousel examples
+### All carousel examples
 
-The folder [packages/component-carousel/examples](./packages/component-carousel/examples) contains examples to use the carousel on static HTML page
+The folder [packages/component-carousel/examples](/packages/component-carousel/examples)
+<br/>contains examples to use the carousel on static HTML page
+
+### All carousel examples
+- [Card carousel](/packages/component-carousel/examples/card.html)
+- [Image Gallery carousel](/packages/component-carousel/examples/image-gallery.html)
+- [Image carousel](/packages/component-carousel/examples/image.html)
+- [Testimonial carousel](/packages/component-carousel/examples/testimonial.html)
