@@ -1,7 +1,7 @@
 export default { title: 'ASUCMS/Image Carousel' };
 
 export const imageCarousel = () => `
-  <div class="">
+  <div>
     <div class="carousel-header-section">
       <h2><span class="highlight-gold">One university, many places</span></h2>
     </div>
