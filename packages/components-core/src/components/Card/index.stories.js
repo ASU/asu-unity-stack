@@ -9,6 +9,22 @@ import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 export default {
   title: "UDS/Card",
   component: Card,
+  parameters: {
+    docs: {
+      description: {
+        component: `The Card component can be used to generate UDS-compliant default, degree, story, news and event cards.
+
+## Usage
+
+By default, the Card component will output the default layout for a card, which will not render eventTime or eventLocation props. Therefore, it will not use the eventFormat prop, either.
+
+Only by passing the value "event" to the type prop will take the eventFormat prop and render eventTime and eventLocation.
+
+View component examples and source code below.
+        `,
+      },
+    },
+  },
 };
 
 const Template = args => (
@@ -101,6 +117,21 @@ Degree.args = {
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
 };
+Degree.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        title="Default title"
+        type="degree"
+      />`,
+    },
+  },
+};
 
 export const Event = Template.bind({});
 Event.args = {
@@ -124,6 +155,32 @@ Event.args = {
     },
   ],
 };
+Event.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        buttons={[
+          {
+            color: 'maroon',
+            href: '/#example-link',
+            label: 'CTA button',
+            size: 'default'
+          }
+        ]}
+        eventFormat="inline"
+        eventLocation="Downtown Phoenix campus"
+        eventTime="Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m."
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        title="Event title"
+        type="event"
+      />`,
+    },
+  },
+};
 
 export const Story = Template.bind({});
 Story.args = {
@@ -143,12 +200,55 @@ Story.args = {
       href: "/#example-link",
     },
   ],
+  linkLabel: "Default link",
   linkUrl: "http://google.com",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
+};
+Story.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        buttons={[
+          {
+            color: 'maroon',
+            href: '/#example-link',
+            label: 'CTA button',
+            size: 'default'
+          }
+        ]}
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        linkLabel="Default link"
+        linkUrl="http://google.com"
+        tags={[
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag1'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag2'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag3'
+          }
+        ]}
+        title="Story title"
+        type="story"
+      />`,
+    },
+  },
 };
 
 export const ClickableStoryCard = Template.bind({});
@@ -168,6 +268,40 @@ ClickableStoryCard.args = {
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
 };
+ClickableStoryCard.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        clickHref="/#example-link"
+        clickable
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        tags={[
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag1'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag2'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag3'
+          }
+        ]}
+        title="Story title"
+        type="story"
+      />`,
+    },
+  },
+};
 
 export const HorizontalStoryCard = HorizontalTemplate.bind({});
 HorizontalStoryCard.args = {
@@ -184,6 +318,39 @@ HorizontalStoryCard.args = {
     { color: "gray", label: "tag2", href: "/#example-link" },
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
+};
+HorizontalStoryCard.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        horizontal
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        tags={[
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag1'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag2'
+          },
+          {
+            color: 'gray',
+            href: '/#example-link',
+            label: 'tag3'
+          }
+        ]}
+        title="Horizontal story"
+        type="story"
+      />`,
+    },
+  },
 };
 
 export const AsuNewsStory = Template.bind({});
@@ -205,6 +372,29 @@ AsuNewsStory.args = {
     },
   ],
 };
+AsuNewsStory.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        buttons={[
+          {
+            color: 'maroon',
+            href: '/#example-link',
+            label: 'Read at ASU News',
+            size: 'default'
+          }
+        ]}
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        title="ASU News Story title"
+        type="story"
+      />`,
+    },
+  },
+};
 
 export const GlobalFuturesStory = Template.bind({});
 GlobalFuturesStory.args = {
@@ -224,4 +414,27 @@ GlobalFuturesStory.args = {
       href: "/#example-link",
     },
   ],
+};
+GlobalFuturesStory.parameters = {
+  docs: {
+    description: {
+      story: `
+
+    <Card
+        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        buttons={[
+          {
+            color: 'maroon',
+            href: '/#example-link',
+            label: 'Read more',
+            size: 'default'
+          }
+        ]}
+        image="https://picsum.photos/300/200"
+        imageAltText="An example image"
+        title="GFL News Story title"
+        type="story"
+      />`,
+    },
+  },
 };

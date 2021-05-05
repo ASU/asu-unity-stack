@@ -294,7 +294,7 @@ export const Article = ({
               UdsStyles["row"],
               UdsStyles["row-spaced"],
               UdsStyles["pt-3"],
-              UdsStyles["pb-2"]
+              UdsStyles["mb-2"]
             )}
           >
             {eventTime && (
@@ -375,30 +375,77 @@ export const Article = ({
 };
 
 Article.propTypes = {
+  /**
+   * Type of article
+   */
   type: PropTypes.oneOf(["event", "news"]),
+  /**
+   * This is the relative or absolute url to the full-page article
+   */
   articleUrl: PropTypes.string.isRequired,
-  headerImageUrl: PropTypes.string,
+  /**
+   * Title
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Date for the article
+   */
   publicationDate: PropTypes.string.isRequired,
+  /**
+   * Body content for the article
+   */
   body: PropTypes.string.isRequired,
-  authorName: PropTypes.string.isRequired,
-  authorTitle: PropTypes.string,
+  /**
+   * Article author email
+   */
   authorEmail: PropTypes.string,
+  /**
+   * Article author full name
+   */
+  authorName: PropTypes.string.isRequired,
+  /**
+   * Article author phone number
+   */
   authorPhone: PropTypes.string,
-  eventLocation: PropTypes.string.isRequired,
-  eventTime: PropTypes.string.isRequired,
-  registrationUrl: PropTypes.string,
-  zoomUrl: PropTypes.string,
+  /**
+   * Article author title
+   */
+  authorTitle: PropTypes.string,
+  /**
+   * URL for an "add to calendar" button
+   */
   calendarUrl: PropTypes.string,
+  /**
+   * Article image
+   */
+  headerImageUrl: PropTypes.string,
+  /**
+   * Event location
+   */
+  eventLocation: PropTypes.string,
+  /**
+   * Event time
+   */
+  eventTime: PropTypes.string,
+  /**
+   * URL for a registation button
+   */
+  registrationUrl: PropTypes.string,
+  /**
+   * URL for a Zoom button
+   */
+  zoomUrl: PropTypes.string,
 };
 
 Article.defaultProps = {
   type: "news",
+  authorEmail: undefined,
+  authorPhone: undefined,
+  authorTitle: undefined,
+  calendarUrl: undefined,
   headerImageUrl: undefined,
-  authorTitle: "",
-  authorEmail: "",
-  authorPhone: "",
-  registrationUrl: "",
-  zoomUrl: "",
-  calendarUrl: "",
+  eventLocation: undefined,
+  eventTime: undefined,
+  registrationUrl: undefined,
+  zoomUrl: undefined,
 };

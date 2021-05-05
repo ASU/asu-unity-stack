@@ -32,6 +32,7 @@ export const Card = ({
   eventLocation,
   eventTime,
   buttons,
+  linkLabel,
   linkUrl,
   tags,
 }) => {
@@ -52,6 +53,7 @@ export const Card = ({
           eventLocation={eventLocation}
           eventTime={eventTime}
           buttons={buttons}
+          linkLabel={linkLabel}
           linkUrl={linkUrl}
           tags={tags}
         />
@@ -74,6 +76,7 @@ export const Card = ({
       eventLocation={eventLocation}
       eventTime={eventTime}
       buttons={buttons}
+      linkLabel={linkLabel}
       linkUrl={linkUrl}
       tags={tags}
     />
@@ -81,19 +84,61 @@ export const Card = ({
 };
 
 Card.propTypes = {
+  /**
+   * Type of card
+   */
   type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
+  /**
+   * Width of card
+   */
   width: PropTypes.oneOf(["25%", "50%", "75%", "100%"]),
+  /**
+   * Enable horizontal mode
+   */
   horizontal: PropTypes.bool,
+  /**
+   * Enable clickable card
+   */
   clickable: PropTypes.bool,
-  clickHref: PropTypes.string, // card target if clickable
+  /**
+   * Card target if clickable
+   */
+  clickHref: PropTypes.string,
+  /**
+   * Card title
+   */
   title: PropTypes.string.isRequired,
-  icon: PropTypes.elementType, // React Component
+  /**
+   * FontAwesome React icon alternative to image (optional -- only valid for default cards)
+   */
+  icon: PropTypes.elementType,
+  /**
+   * Card body content
+   */
   body: PropTypes.string,
+  /**
+   * Event info format
+   */
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
+  /**
+   * Location
+   */
   eventLocation: PropTypes.string,
+  /**
+   * Event start time
+   */
   eventTime: PropTypes.string,
+  /**
+   * Card header image
+   */
   image: PropTypes.string,
+  /**
+   * Card header image alt text
+   */
   imageAltText: PropTypes.string,
+  /**
+   * Buttons
+   */
   buttons: PropTypes.arrayOf(
     PropTypes.shape({
       ariaLabel: PropTypes.string,
@@ -105,7 +150,11 @@ Card.propTypes = {
       size: PropTypes.oneOf(["default", "small", "xsmall"]),
     })
   ),
+  linkLabel: PropTypes.string,
   linkUrl: PropTypes.string,
+  /**
+   * Tags
+   */
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       ariaLabel: PropTypes.string,
@@ -131,6 +180,7 @@ Card.defaultProps = {
   image: undefined,
   imageAltText: undefined,
   buttons: undefined,
+  linkLabel: undefined,
   linkUrl: undefined,
   tags: undefined,
 };
@@ -153,6 +203,7 @@ const BaseCard = ({
   eventLocation,
   eventTime,
   buttons,
+  linkLabel,
   linkUrl,
   tags,
 }) => {
@@ -186,6 +237,7 @@ const BaseCard = ({
               eventTime={eventTime}
               title={title}
               buttons={buttons}
+              linkLabel={linkLabel}
               linkUrl={linkUrl}
               tags={tags}
             />
@@ -199,6 +251,7 @@ const BaseCard = ({
             eventTime={eventTime}
             title={title}
             buttons={buttons}
+            linkLabel={linkLabel}
             linkUrl={linkUrl}
             tags={tags}
           />
@@ -232,6 +285,7 @@ BaseCard.propTypes = {
       size: PropTypes.oneOf(["default", "small", "xsmall"]),
     })
   ),
+  linkLabel: PropTypes.string,
   linkUrl: PropTypes.string,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
@@ -257,7 +311,8 @@ BaseCard.defaultProps = {
   image: "",
   imageAltText: "",
   buttons: undefined,
-  linkUrl: "",
+  linkLabel: undefined,
+  linkUrl: undefined,
   tags: undefined,
 };
 
@@ -269,6 +324,7 @@ const CardContent = ({
   eventTime,
   title,
   buttons,
+  linkLabel,
   linkUrl,
   tags,
 }) => (
@@ -305,9 +361,9 @@ const CardContent = ({
           </Button>
         </div>
       ))}
-    {linkUrl && (
+    {linkUrl && linkLabel && (
       <div className={UdsStyles["card-link"]}>
-        <a href={linkUrl}>Link Url</a>
+        <a href={linkUrl}>{linkLabel}</a>
       </div>
     )}
     {tags && (
@@ -347,6 +403,7 @@ CardContent.propTypes = {
       size: PropTypes.oneOf(["default", "small", "xsmall"]),
     })
   ),
+  linkLabel: PropTypes.string,
   linkUrl: PropTypes.string,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
@@ -366,7 +423,8 @@ CardContent.defaultProps = {
   eventLocation: "",
   eventTime: "",
   buttons: undefined,
-  linkUrl: "",
+  linkLabel: undefined,
+  linkUrl: undefined,
   tags: undefined,
 };
 
