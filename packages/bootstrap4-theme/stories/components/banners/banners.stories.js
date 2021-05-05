@@ -9,7 +9,8 @@ storiesOf('Components/Banners', module)
   // TODO Re-namespace the top level class and copy over rules.
 
 .add('Banners, green', () => `
-  <div class="banner banner-green" role="banner">
+<div class="banner-green">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -28,10 +29,12 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
+</div>
   `)
 
   .add('Banners, orange', () => `
-  <div class="banner banner-orange" role="banner">
+<div class="banner-orange">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -50,10 +53,12 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
+ </div>
   `)
 
   .add('Banners, blue', () => `
-  <div class="banner banner-blue" role="banner">
+<div class="banner-blue">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -72,10 +77,12 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
+</div>
   `)
 
   .add('Banners, gray', () => `
-  <div class="banner banner-gray" role="banner">
+<div class="banner-gray">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -93,11 +100,13 @@ storiesOf('Components/Banners', module)
     <div class="banner-close">
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
+  </div>
   </div>
   `)
 
   .add('Banners, black', () => `
-  <div class="banner banner-black" role="banner">
+<div class="banner-black">
+  <div class="banner container" role="banner">
     <div class="banner-icon">
       <span title="Banner" class="fa fa-icon fa-bell"></span>
     </div>
@@ -116,6 +125,7 @@ storiesOf('Components/Banners', module)
       <button type="button" class="btn btn-circle btn-circle-alt-black close" aria-label="Close" onclick="event.target.parentNode.parentNode.style.display='none';"><i class="fas fa-times"></i></button>
     </div>
   </div>
+</div>
 `)
 
 ; // close
