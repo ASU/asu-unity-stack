@@ -1,15 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html
-  lang="en"
-  dir="ltr"
-  prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#"
->
-  <head profile="http://www.w3.org/1999/xhtml/vocab">
-    <meta charset="utf-8" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Carousel - Test page</title>
-
+    <title>Testimonial Carousel- Example page</title>
     <!-- CSS only -->
     <link
       rel="stylesheet"
@@ -20,13 +15,16 @@
     <script src="../dist/vendor.production.js"></script>
     <script src="../dist/carousel.production.js"></script>
   </head>
-
   <body>
-    <!-- Provide target divs for two carousels. Must have unique ids. -->
-    <div id="testimonialCarouselContainer"></div>
+    <div class="container">
+      <div class="d-flex justify-content-center border p-4">
+        <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+        <div id="testimonialCarouselContainer"></div>
+      </div>
+    </div>
 
     <script>
-      var testimonialNoCitation = [
+      var myCarouselItems = [
         {
           id: 1,
           quote: {
@@ -53,7 +51,7 @@
       AsuWebcarousel.initTestimonialCarousel({
         targetSelector: "#testimonialCarouselContainer",
         props: {
-          testimonialItems: testimonialNoCitation,
+          testimonialItems: myCarouselItems,
           maxWidth: "500px",
           hasNavButtons: true,
           hasPositionIndicators: true,
@@ -61,8 +59,10 @@
             itemCssClass: ["with-image", "accent-gold"],
             // itemQuoteContentCssClass: ["text-maroon"],
           },
+          // imageAutoSize: false,// default true
         },
       });
     </script>
+    <script src="./js/example-helper.js"></script>
   </body>
 </html>

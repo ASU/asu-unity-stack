@@ -36,72 +36,58 @@ yarn test
 
 ## Use as a JS module in React app
 
-```
+```JAVASCRIPT
     import { AsuCarousel } from '@asu-design-system/component-carousel@dev'
 
     // Define your carousel items. Contents of "item:" should be a Unity
     // Design System Card. Only one example provided below.
     const myCarouselItems = [
-      {
-        id: 1,
-        item: (
-          <div className="card">
-            <img
-              className="card-img-top"
-              src="https://source.unsplash.com/random/800x400?a=1"
-              alt="Card image cap"
-            ></img>
-            <div className="card-header">
-              <h3 className="card-title">Card One</h3>
-            </div>
-            <div className="card-body">
-              <p className="card-text">
-                Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua eiusmod tempo.{" "}
-              </p>
-            </div>
-            <div className="card-button">
-              <a href="#" className="btn btn-maroon">
-                Button link here
-              </a>
-            </div>
-          </div>
-        ),
-      },
-      {
-        id: 2,
-        item: (
-          <div className="card">
-          ... rest of card markup here.
-          </div>
-        ),
-      },
-      {
-        id: 3,
-        item: (
-          <div className="card">
-          ... rest of card markup here.
-          </div>
-        ),
-      },
-      {
-        id: 4,
-        item: (
-          <div className="card">
-          ... rest of card markup here.
-          </div>
-        ),
-      },
-      {
-        id: 5,
-        item: (
-          <div className="card">
-          ... rest of card markup here.
-          </div>
-        ),
-      },
-    ];
+        {
+          id: 1,
+          imageSource: "https://source.unsplash.com/random/500x400?a=-1",
+          altText: "Card image cap",
+          title: "Card 1",
+          content:
+            "Body 1 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 2,
+          imageSource: "https://source.unsplash.com/random/300x400?a=0",
+          altText: "Card image cap",
+          title: "Card 2",
+          content: "Body 2 ....",
+          buttonLink: {
+            url: "#",
+            text: "..",
+          },
+        },
+        {
+          id: 3,
+          imageSource: "https://source.unsplash.com/random/400x400?a=1",
+          altText: "Card image cap",
+          title: "Card 3",
+          content: "Body 3 ....",
+          buttonLink: {
+            url: "#",
+            text: "..",
+          },
+        },
+        {
+          id: 4,
+          imageSource: "https://source.unsplash.com/random/200x200?a=2",
+          altText: "Card image cap",
+          title: "Card 4",
+          content: "Body 4 ......",
+          buttonLink: {
+            url: "#",
+            text: "..",
+          },
+        },
+      ];
 
     // Build out the component, providing your carousel items and setting the
     // perView prop to either 1, 2 or 3 to define number of slides to show at a
@@ -109,7 +95,7 @@ yarn test
     const App = (props) => {
       return (
         <div>
-          <AsuCarousel perView="3" carouselItems={myCarouselItems}></AsuCarousel>
+          <CardCarousel perView="1" cardItems={myCarouselItems} />
         </div>
       )
     };
@@ -120,32 +106,157 @@ yarn test
 
 ## Use on static HTML page (illustrating multiple carousels)
 
-```
+```HTML
 <!-- Provide target divs for two carousels. Must have unique ids. -->
-<div id="carouselContainer></div>
-<div id="anotherCarouselContainer></div>
+<div id="carouselContainer"></div>
+<div id="anotherCarouselContainer"></div>
 
 <!-- include bundled scripts from Preact packages -->
 <script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.production.js"></script>
 <script src="/node_modules/@asu-design-system/component-carousel/dist/core.production.js"></script>
-
 <script>
-
   // Setup and initialize the first carousel.
   var props = {
-    perView: 3,
+    targetSelector: "#carouselContainer",
     carouselItems: myCarouselItems, // See myCarouselItems example above.
+    perView: 3,
+    maxWidth: "100%", // Is not mandatory
   };
   // No need to provide target ID as carouselContainer is the default.
   componentCarousel.initCarousel(props);
 
   // Setup and initialize the second carousel.
-  var differentProps = {
-    perView: 1,
-    carouselItems: differentCarouselItems, // To be built by implementer.
-  };
-  // If deploying to a target id other than the default, you must specify it.
+  AsuWebcarousel.initCardCarousel({
+    targetSelector: "#anotherCarouselContainer",
+    props: {
+      cardItems: differentCarouselItems,// To be built by implementer.
+      perView: 1,
+      maxWidth: "500px", // Is not mandatory
+    },
+  });
+
   componentCarousel.initCarousel(props, "anotherCarouselContainer");
 </script>
 
 ```
+
+## Caousel properties
+### Card caousel properties
+
+```JS
+/**
+ * @typedef {{
+ *   id: number | string
+ *   imageSource: string
+ *   altText:string
+ *   title:string
+ *   content:string
+ *   buttonLink: {
+ *    url: string
+ *    text: string
+ *   }
+ *}} CardItem
+ */
+
+/**
+ * @param {{
+ *   perView: string | number
+ *   cardItems: CardItem []
+ *   maxWidth?: string
+ *   width?: string
+ *   imageAutoSize?: boolean
+ *  }} props
+ */
+ ```
+
+### Image caousel properties
+
+```JS
+/**
+ * @typedef {{
+ *  id: number
+ *  imageSource: string
+ *  altText:string
+ *  content?: string | h.JSX.Element
+ * }} ImageItem
+ */
+
+/**
+ * @param {{
+ *    perView: string | number
+ *    imageItems: ImageItem []
+ *    maxWidth?: string
+ *    width?: string
+ *    imageAutoSize?: boolean
+ *  }} props
+ */
+ ```
+
+ ### Image Gallery caousel properties
+
+```JS
+/**
+ * @typedef {{
+ *     id: number,
+ *     imageSource: string,
+ *     thumbnailSource?: string,
+ *     altText:string
+ *     content?: any
+ * }} ImageCarouselItem
+ */
+
+/**
+ * @param {{
+ *    maxWidth?: string
+ *    width?: string
+ *    hasContent?: boolean
+ *    imageItems: ImageCarouselItem []
+ *    imageAutoSize?: boolean
+ *  }} props
+ */
+ ```
+
+
+ ### Testimonial caousel properties
+
+```JS
+
+  /**
+   * @typedef {{
+   *  id: number
+   *  imageSource?: string
+   *  altText?:string
+   *  quote: {
+   *    title?: string
+   *    content: string
+   *    cite?: {
+   *       name: string
+   *       description?: string
+   *    }
+   *  }
+   * }} TestimonialItem
+   */
+
+  /**
+   * @typedef {{
+   *      itemCssClass?: string[]
+   *      itemTitleCssClass?: string[]
+   *      itemQuoteContentCssClass?: string[]
+   * }} ItemCssClass
+   */
+
+  /**
+   * @param {{
+   *    testimonialItems: TestimonialItem[]
+   *    maxWidth: string
+   *    width?: string
+   *    hasPositionIndicators?: boolean
+   *    hasNavButtons?: boolean
+   *    itemStyle?:ItemCssClass
+   *    imageAutoSize?: boolean
+   *  }} props
+   */
+ ```
+### All caousel examples
+
+The folder [packages/component-carousel/examples](./packages/component-carousel/examples) contains examples to use the carousel on static HTML page

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Carousel- Example page</title>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+
+    <!-- include bundled scripts from Preact packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/carousel.production.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-grid justify-content-center border p-4">
+        <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+        <div id="imageCarouselContainer"></div>
+      </div>
+    </div>
+
+    <script>
+      var myCarouselItems = [
+        {
+          id: 1,
+          imageSource: "https://source.unsplash.com/random/800x400?a=1",
+          altText:
+            "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
+        },
+        {
+          id: 2,
+          imageSource: "https://source.unsplash.com/random/400x200?a=2",
+          altText:
+            "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
+        },
+        {
+          id: 3,
+          imageSource: "https://source.unsplash.com/random/600x400?a=3",
+          altText:
+            "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
+        },
+        {
+          id: 4,
+          imageSource: "https://source.unsplash.com/random/600x600?a=4",
+          altText:
+            "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
+        },
+        {
+          id: 5,
+          imageSource: "https://source.unsplash.com/random/600x500?a=5",
+          altText:
+            "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
+        },
+      ];
+
+      // Setup and initialize the Image carousel.
+      AsuWebcarousel.initImageCarousel({
+        targetSelector: "#imageCarouselContainer",
+        props: {
+          perView: "2",
+          imageItems: myCarouselItems,
+          // maxWidth: "1000px",
+          // imageAutoSize: false,// default true
+        },
+      });
+    </script>
+    <script src="./js/example-helper.js"></script>
+  </body>
+</html>
