@@ -668,13 +668,33 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       .subdomain-name {
         font-size: $uds-size-font-xl;
         margin-bottom: 0;
+
+        a {
+          color: #191919;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
       }
 
       &.subdomain-name {
         font-size: $uds-size-font-xxl;
         margin: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
         font-weight: 700;
+
+        a {
+          color: #191919;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
       }
+
     }
 
     .navbar-site-buttons {
@@ -921,7 +941,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 }
 
 // Desktop
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-down(lg) {
   #asu-header + div,
   #asu-header + main {
     @include transition;
@@ -931,6 +951,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   #asu-header.scrolled + div,
   #asu-header.scrolled + main {
     @include transition;
-    margin-top: 81x;
+    margin-top: 81px;
   }
 }
