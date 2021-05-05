@@ -93,11 +93,14 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       & > div.uds-img {
         display: flex;
         width: auto;
-
+        max-width: 100%;
         img {
           flex-grow: 1;
           object-fit: cover;
-          border: 10px solid red;
+
+          &.uds-img {
+            max-width: 100%;
+          }
         }
 
         & figure.uds-figure {
