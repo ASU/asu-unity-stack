@@ -51,8 +51,8 @@ const htmlTemplate = ({
       </div>
       {buttonLink && (
         <div className="card-button">
-          <a href="#" className="btn btn-maroon">
-            Button link here
+          <a href={buttonLink.url} className="btn btn-maroon">
+            {buttonLink.text}
           </a>
         </div>
       )}

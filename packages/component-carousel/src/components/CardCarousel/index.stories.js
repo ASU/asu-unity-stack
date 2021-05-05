@@ -33,7 +33,7 @@ for (let index = 0; index < 8; index++) {
       ut labore et dolore magna aliqua eiusmod tempo.`,
     buttonLink: {
       url: "#",
-      text: "Button link here",
+      text: `Button ${index + 1} link here`,
     },
   });
 }
