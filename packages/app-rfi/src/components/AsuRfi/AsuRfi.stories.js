@@ -17,7 +17,7 @@ export default {
   },
 };
 
-const RfiTemplate = args => {
+const Template = args => {
   const { label } = args;
 
   return (
@@ -29,10 +29,10 @@ const RfiTemplate = args => {
   );
 };
 
-export const RfiNoPlancode = RfiTemplate.bind({});
+export const RfiNoPlancode = Template.bind({});
 RfiNoPlancode.args = {};
 
-export const RfiPlancode = RfiTemplate.bind({});
+export const RfiPlancode = Template.bind({});
 RfiPlancode.args = {
   programPlanCode: "TODO plancode",
 };
