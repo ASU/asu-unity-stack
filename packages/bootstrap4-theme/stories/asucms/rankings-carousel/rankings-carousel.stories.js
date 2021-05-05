@@ -1,93 +1,52 @@
-export default { title: 'ASUCMS/Image Carousel' };
+export default { title: 'ASUCMS/Rankings Carousel' };
 
-export const imageCarousel = () => `
-  <div class="asu-cms-image-carousel">
-    <div class="carousel-header-section">
-      <h2><span class="highlight-gold">One university, many places</span></h2>
+export const rankingsCarousel = () => `
+  <div class="rankings-component">
+    <div class="placeholder-section">
+      Left-side
     </div>
-    <div class="image-carousel">
-      <div id="one-university-carousel" class="glide">
+    <div class="image-carousel mb-2">
+      <div id="rankings-carousel" class="glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Poly.png"
-                  alt="Polytechnic campus">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Polytechnic campus</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
+                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210211-ASURankings-1Innovation%20(1).png"
+                  alt="Replace with appropriate alt text">
               </div>
             </li>
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Tempe.png"
-                  alt="Tempe campus">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Tempe campus</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
+                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210211-ASURankings-_BestBachelors.png"
+                  alt="Replace with appropriate alt text">
               </div>
             </li>
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-West.png"
-                  alt="West campus">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">West campus</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
+                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210211-ASURankings-_Excellence.png"
+                  alt="Replace with appropriate alt text">
               </div>
             </li>
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-DowntownPhoenix.png"
-                  alt="Downtown Phoenix Campus">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Downtown Phoenix Campus</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
+                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210211-ASURankings-_Top10International.png"
+                  alt="Replace with appropriate alt text">
               </div>
             </li>
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Skysong.png"
-                  alt="Skysong">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Skysong</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
-              </div>
-            </li>
-            <li class="glide__slide">
-              <div class="asucms-image">
-                <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Washington.png"
-                  alt="Washington D.C.">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Washington D.C.</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
-              </div>
-            </li>
-            <li class="glide__slide">
-              <div class="asucms-image">
-                <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Havasu.png"
-                  alt="Lake Havasu">
-                <div class="content-area">
-                  <div class="highlight-gray slide-header">Lake Havasu</div>
-                  <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
-                </div>
+                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210211-ASURankings-_Top25MBA.png"
+                  alt="Replace with appropriate alt text">
               </div>
             </li>
           </ul>
         </div>
+
         <div class="glide__arrows" data-glide-el="controls">
           <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
             <svg
@@ -118,7 +77,13 @@ export const imageCarousel = () => `
             </svg>
           </button>
         </div>
+        <div class="link-section">
+          <a href="example.com">View all rankings</a>
+        </div>
       </div>
+    </div>
+    <div class="placeholder-section">
+      Right-side
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.js"></script>
     <script>
@@ -166,29 +131,25 @@ export const imageCarousel = () => `
         }
       }
 
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-      let peek = 0;
-      if(vw < 768) {
-        peek = 50;
-      } else if(vw < 1260) {
-        peek = 100;
-      } else {
-        peek = 170;
-      }
-      new Glide('#one-university-carousel', {
+
+      new Glide('#rankings-carousel', {
           type: "slider", // No wrap-around.
           focusAt: 0,
           bound: true, // Only if type slider with focusAt 0
           rewind: false, // Only if type slider
-          gap: 24, // Space between slides... may be impacted by viewport size.
           keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
           startAt: 0,
           swipeThreshold: 80, // Distance required for swipe to change slide.
           dragThreshold: 120, // Distance for mouse drag to change slide.
           perTouch: 1, // Number of slides that can be moved per each swipe/drag.
-          peek,
+          peek: 0,
+          gap: 0,
           perView: 1,
       }).mount({ ArrowDisabler });
     </script>
   </div>
 `;
+
+
+
+
