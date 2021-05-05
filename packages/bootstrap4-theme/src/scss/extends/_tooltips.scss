@@ -1,0 +1,124 @@
+.uds-tooltip {
+  // Turn tooltip icon blue on hover
+  &:hover {
+    .fa-stack .fa-circle {
+      color: $uds-color-font-light-info;
+    }
+  }
+
+  // Display tooltip text on icon hover
+  &:hover &-text {
+    visibility: visible;
+  }
+
+  // Text inside tooltip
+  &-text {
+    background: #191919 0% 0% no-repeat padding-box;
+    backdrop-filter: blur(8px);
+    color: $uds-color-base-gray-1;
+    font: normal normal normal 1rem Arial;
+    line-height: 2rem;
+    margin: 0px 5px; // x margin to give it spacing from the element
+    // width: 288px; XD notes say max width 288 but show width of 353.
+    // 353 looks better in my opinion, but can change if necessary
+    max-width: 353px;
+    padding: 2rem;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+
+    // Heading inside tooltip
+    &-heading {
+      color: $uds-color-base-gray-1;
+      display: block;
+      font: normal normal bold 1rem Arial;
+      letter-spacing: 0px;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+  }
+
+  // Default/white mode colors
+  &,
+  &-white {
+    .fa-stack {
+      .fa-circle {
+        color: $uds-color-base-gray-3;
+      }
+
+      .fa-info {
+        color: $uds-color-base-white;
+      }
+    }
+  }
+
+  // Base gray colors
+  &-base-gray {
+    .fa-stack {
+      .fa-circle {
+        color: $uds-color-base-gray-4;
+      }
+
+      .fa-info {
+        color: $uds-color-base-gray-1;
+      }
+    }
+  }
+
+  // Gray colors
+  &-gray {
+    .fa-stack {
+      .fa-circle {
+        color: $uds-color-base-gray-4;
+      }
+
+      .fa-info {
+        color: $uds-color-background-gray;
+      }
+    }
+  }
+
+  // Dark colors
+  &-dark {
+    .fa-stack {
+      .fa-circle {
+        color: $uds-color-base-gray-5;
+      }
+
+      .fa-info {
+        color: $uds-color-font-dark-base;
+      }
+    }
+  }
+
+  .fa-stack > * {
+    font-size: 0.75rem;
+  }
+
+  i {
+    vertical-align: middle;
+  }
+}
+
+.background {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  padding: 36px;
+
+  &.white {
+    background-color: $uds-color-background-white;
+  }
+
+  &.base-gray {
+    background-color: $uds-color-base-gray-1;
+  }
+
+  &.gray {
+    background-color: $uds-color-background-gray;
+  }
+
+  &.dark {
+    background-color: $uds-color-background-dark;
+  }
+}

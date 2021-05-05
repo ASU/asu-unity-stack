@@ -1,0 +1,29 @@
+.uds-quote-image-background {
+  align-items: flex-end;
+  background-position: top;
+  color: $uds-color-base-white !important;
+  display: flex;
+  flex-direction: row;
+  height: 512px;
+  justify-content: center;
+  max-width: 1920px;
+  padding: 48px 96px;
+
+  @media screen and (max-width: $uds-breakpoint-sm) {
+    height: auto;
+    min-height: 512px;
+    padding: 24px;
+    width: 100%;
+  }
+
+  &-container {
+    max-width: 384px;
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      width: 100%;
+
+      .uds-blockquote {
+        font-size: 1rem;
+      }
+    }
+  }
+}

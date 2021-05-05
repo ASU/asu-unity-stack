@@ -13,7 +13,7 @@ const myCarouselItems = [
           className="card-img-top"
           src="https://source.unsplash.com/random/800x400?a=1"
           alt="Card image cap"
-         />
+        />
         <div className="card-header">
           <h3 className="card-title">Card One</h3>
         </div>
@@ -40,7 +40,7 @@ const myCarouselItems = [
           className="card-img-top"
           src="https://source.unsplash.com/random/800x400?a=2"
           alt="Card image cap"
-         />
+        />
         <div className="card-header">
           <h3 className="card-title">Card Two</h3>
         </div>
@@ -67,7 +67,7 @@ const myCarouselItems = [
           className="card-img-top"
           src="https://source.unsplash.com/random/800x400?a=3"
           alt="Card image cap"
-         />
+        />
         <div className="card-header">
           <h3 className="card-title">Card Three</h3>
         </div>
@@ -94,7 +94,7 @@ const myCarouselItems = [
           className="card-img-top"
           src="https://source.unsplash.com/random/800x400?a=4"
           alt="Card image cap"
-         />
+        />
         <div className="card-header">
           <h3 className="card-title">Card Four</h3>
         </div>
@@ -121,7 +121,7 @@ const myCarouselItems = [
           className="card-img-top"
           src="https://source.unsplash.com/random/800x400?a=5"
           alt="Card image cap"
-         />
+        />
         <div className="card-header">
           <h3 className="card-title">Card Five</h3>
         </div>
