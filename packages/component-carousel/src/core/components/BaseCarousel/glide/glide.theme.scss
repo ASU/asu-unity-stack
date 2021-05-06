@@ -84,7 +84,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   &#{$se}slides {
     margin-bottom: 0; // Avoid gap, for gradient,
 
-    & .glide__slide {
+   [data-image-auto-size="true"] & .glide__slide {
       height: auto;
       position: relative;
       display: inline-flex;
@@ -93,10 +93,14 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       & > div.uds-img {
         display: flex;
         width: auto;
-
+        max-width: 100%;
         img {
           flex-grow: 1;
           object-fit: cover;
+
+          &.uds-img {
+            max-width: 100%;
+          }
         }
 
         & figure.uds-figure {

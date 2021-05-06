@@ -43,6 +43,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/back-to-top-button';
 @import 'variables/display-list';
 @import 'variables/card-image-and-content';
+@import 'variables/card-arrangements';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';

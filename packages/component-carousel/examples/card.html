@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Carousel- Example page</title>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+
+    <!-- include bundled scripts from Preact packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/carousel.production.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-center border p-4">
+        <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+        <div id="cardCarouselContainer"></div>
+      </div>
+    </div>
+
+    <script>
+      var myCarouselItems = [
+        {
+          id: 0,
+          imageSource: "https://source.unsplash.com/random/500x400?a=-1",
+          altText: "Card image cap",
+          title: "Card 1",
+          content:
+            "Body 1 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 1,
+          imageSource: "https://source.unsplash.com/random/300x400?a=0",
+          altText: "Card image cap",
+          title: "Card 2",
+          content:
+            "Body 2 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 2,
+          imageSource: "https://source.unsplash.com/random/400x400?a=1",
+          altText: "Card image cap",
+          title: "Card 3",
+          content:
+            "Body 3 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 3,
+          imageSource: "https://source.unsplash.com/random/200x200?a=2",
+          altText: "Card image cap",
+          title: "Card 4",
+          content:
+            "Body 4 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 4,
+          imageSource: "https://source.unsplash.com/random/300x400?a=3",
+          altText: "Card image cap",
+          title: "Card 5",
+          content:
+            "Body 5 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 5,
+          imageSource: "https://source.unsplash.com/random/300x400?a=4",
+          altText: "Card image cap",
+          title: "Card 6",
+          content:
+            "Body 6 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 6,
+          imageSource: "https://source.unsplash.com/random/400x400?a=5",
+          altText: "Card image cap",
+          title: "Card 7",
+          content:
+            "Body 7 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+        {
+          id: 7,
+          imageSource: "https://source.unsplash.com/random/300x400?a=6",
+          altText: "Card image cap",
+          title: "Card 8",
+          content:
+            "Body 8 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttonLink: {
+            url: "#",
+            text: "Button link here",
+          },
+        },
+      ];
+
+      // Setup and initialize the Card carousel.
+      AsuWebcarousel.initCardCarousel({
+        targetSelector: "#cardCarouselContainer",
+        props: {
+          perView: "2",
+          cardItems: myCarouselItems,
+          maxWidth: "1000px",
+          // imageAutoSize: false,// default true
+        },
+      });
+    </script>
+    <script src="./js/example-helper.js"></script>
+  </body>
+</html>
