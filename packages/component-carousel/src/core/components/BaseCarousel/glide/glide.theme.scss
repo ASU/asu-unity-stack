@@ -83,6 +83,33 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   &#{$se}slides {
     margin-bottom: 0; // Avoid gap, for gradient,
+
+   [data-image-auto-size="true"] & .glide__slide {
+      height: auto;
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+
+      & > div.uds-img {
+        display: flex;
+        width: auto;
+        max-width: 100%;
+        img {
+          flex-grow: 1;
+          object-fit: cover;
+
+          &.uds-img {
+            max-width: 100%;
+          }
+        }
+
+        & figure.uds-figure {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+        }
+      }
+    }
   }
 
   // Arrows.
@@ -185,6 +212,10 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     gap: 0;
     overflow: hidden;
 
+    & li.glide__slide {
+      display: list-item;
+    }
+
     .glide__track {
       border: $border-element;
     }
@@ -253,6 +284,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       border-radius: 0;
       border: 0;
       z-index: 2;
+      object-fit: cover;
     }
 
     .#{$glide-class}__bullet--active {

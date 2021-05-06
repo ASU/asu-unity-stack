@@ -21,6 +21,10 @@ h1 {
 
   @media (max-width: 577px) {
     font-size: $heading-one-mobile-font-size;
+
+    &.article {
+      font-size: $heading-one-mobile-font-size;
+    }
   }
 }
 
@@ -51,47 +55,35 @@ h5 {
 h1 span.highlight,
 h2 span.highlight {
   &-gold {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color);
   }
 
   &-black {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-black-background-color,
-      $heading-highlight-black-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-black-background-color,
+      $heading-highlight-black-text-color);
   }
 
   &-white {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-white-background-color,
-      $heading-highlight-white-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-white-background-color,
+      $heading-highlight-white-text-color);
   }
 }
 
 h3 span.highlight,
 h4 span.highlight {
   &-gold {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color);
   }
 
   &-black {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-black-background-color,
-      $heading-highlight-black-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-black-background-color,
+      $heading-highlight-black-text-color);
   }
 
   &-white {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-white-background-color,
-      $heading-highlight-white-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-white-background-color,
+      $heading-highlight-white-text-color);
   }
 }

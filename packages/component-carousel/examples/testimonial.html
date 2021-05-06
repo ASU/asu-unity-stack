@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonial Carousel- Example page</title>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+
+    <!-- include bundled scripts from Preact packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/carousel.production.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-center border p-4">
+        <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+        <div id="testimonialCarouselContainer"></div>
+      </div>
+    </div>
+
+    <script>
+      var myCarouselItems = [
+        {
+          id: 1,
+          quote: {
+            title: "Walt Disney",
+            content:
+              "Laughter is timeless, imagination has no age, dreams are forever.",
+          },
+          imageSource: `https://placeimg.com/300/300/nature`,
+          altText: `Image of Walt Disney`,
+        },
+        {
+          id: 2,
+          quote: {
+            title: "Walt Disney",
+            content: `We keep opening new doors and doing new things,
+      because we’recurious and curiosity keeps leading us down new paths.`,
+          },
+          imageSource: `https://placeimg.com/300/300/nature`,
+          altText: `Image of Walt Disney`,
+        },
+      ];
+
+      // Setup and initialize the testimonial carousel.
+      AsuWebcarousel.initTestimonialCarousel({
+        targetSelector: "#testimonialCarouselContainer",
+        props: {
+          testimonialItems: myCarouselItems,
+          maxWidth: "500px",
+          hasNavButtons: true,
+          hasPositionIndicators: true,
+          itemStyle: {
+            itemCssClass: ["with-image", "accent-gold"],
+            // itemQuoteContentCssClass: ["text-maroon"],
+          },
+          // imageAutoSize: false,// default true
+        },
+      });
+    </script>
+    <script src="./js/example-helper.js"></script>
+  </body>
+</html>
