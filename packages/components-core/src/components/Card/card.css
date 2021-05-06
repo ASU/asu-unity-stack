@@ -3,6 +3,6 @@ a + a {
 }
 
 a.c-card {
-  color: initial;
+  color: #191919 !important;
   text-decoration: none;
 }
