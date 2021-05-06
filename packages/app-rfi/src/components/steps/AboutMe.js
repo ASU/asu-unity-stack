@@ -17,8 +17,18 @@ const AboutMe = () => {
   return (
     <>
       <h3>About Me</h3>
-      <RfiTextInput label="First name *" name="firstName" />
-      <RfiTextInput label="Last name *" name="lastName" />
+      <RfiTextInput
+        label="First name"
+        name="firstName"
+        isRequired
+        helperText="First name"
+      />
+      <RfiTextInput
+        label="Last name"
+        name="lastName"
+        isRequired
+        helperText="Last name"
+      />
       {/*            <RfiTextInput label="Date of Birth *" name="dateOfBirth" /> */}
       <RfiDatepicker
         label="Date of Birth *"
@@ -26,6 +36,7 @@ const AboutMe = () => {
         dateFormat="MM/dd/yyyy"
         className="form-control"
         placeholderText="MM/DD/YYYY"
+        isRequired
       />
       <RfiEmailInput label="Email Address *" name="email" />
     </>

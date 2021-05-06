@@ -1,18 +1,19 @@
 // DISABLED@ts-check
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useField } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Label, Error, Text, StyledSelect, E } from "./styled-components";
+// import { Label, Error, Text, StyledSelect, E } from "./StyledControls";
 
 const RfiSelect = ({ id, label, name, options }) => {
   const [field, meta] = useField({ name });
   const isError = meta.touched && meta.error;
   return (
-    <E>
-      <Label htmlFor={id || name}>{label}</Label>
-      <StyledSelect error={isError} {...field}>
+    <>
+      <label htmlFor={id || name}>{label}</label>
+      <select error={isError} {...field}>
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}
@@ -21,9 +22,9 @@ const RfiSelect = ({ id, label, name, options }) => {
             {option.text}
           </option>
         ))}
-      </StyledSelect>
-      <Text>{isError ? <Error>{meta.error}</Error> : null}</Text>
-    </E>
+      </select>
+      <div>{isError ? <div>{meta.error}</div> : null}</div>
+    </>
   );
 };
 

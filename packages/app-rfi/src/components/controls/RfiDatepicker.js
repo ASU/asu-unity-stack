@@ -1,10 +1,16 @@
 // DISABLED@ts-check
+/* eslint-disable no-unused-vars */
+import {
+  faExclamationTriangle,
+  faCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field } from "formik"; // removed unused Formik, setFieldValue
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 
-import { Label, Error, Text, E } from "./styled-components"; // removed unused Input
+// import { Label, Error, Text, E } from "./StyledControls"; // removed unused Input
 
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
@@ -16,6 +22,7 @@ const RfiDatepicker = ({
   dateFormat,
   className,
   placeholderText,
+  isRequired,
 }) => {
   return (
     <Field name={name}>
@@ -25,7 +32,6 @@ const RfiDatepicker = ({
         meta,
       }) => {
         const isError = meta.touched && meta.error;
-        console.log(field, touched, errors, setFieldValue, "avoid undefined");
         // FIXME Issue with returning to this step and not seeing the default value in state (it's still there)
         // Fix is likely to be with reading from state and popping the value in the right place in the props
         // const [dob, setDob] = useState();
@@ -37,28 +43,38 @@ const RfiDatepicker = ({
         // console.log(meta, 'META');
         // console.log(touched, 'TOUCHED');
         // console.log(errors, 'ERRORS');
-        console.log(values, "VALUES");
-        console.log(values.name, "VALUES.name");
+        // console.log(values, "VALUES");
+        // console.log(values.name, "VALUES.name");
         return (
-          <E>
-            <Label htmlFor={id || name}>{label}</Label>
+          <>
+            <label htmlFor={id}>
+              {isRequired ? (
+                <span title="Required">
+                  <FontAwesomeIcon icon={faCircle} />
+                </span>
+              ) : null}
+              {label}
+            </label>
             <DatePicker
+              id={name}
               name={name}
+              isRequired={isRequired}
               dateFormat={dateFormat || "MM/dd/yyyy"}
               className={className}
               placeholderText={placeholderText}
               showMonthDropdown
               showYearDropdown
               dropdownMode="select"
-              selected={dob}
+              selected={false}
+              openToDate={dob}
               value={dob}
               onChange={date => {
                 setDob(date);
                 setFieldValue(name, date);
               }}
             />
-            <Text>{isError ? <Error>{meta.error}</Error> : null}</Text>
-          </E>
+            <div>{isError ? <div>{meta.error}</div> : null}</div>
+          </>
         );
       }}
     </Field>
@@ -71,6 +87,7 @@ RfiDatepicker.defaultProps = {
   dateFormat: "",
   className: "",
   placeholderText: "",
+  isRequired: false,
 };
 
 RfiDatepicker.propTypes = {
@@ -80,6 +97,7 @@ RfiDatepicker.propTypes = {
   dateFormat: PropTypes.string,
   className: PropTypes.string,
   placeholderText: PropTypes.string,
+  isRequired: PropTypes.bool, // Implement our own req'd prop so Yup validates.
 };
 
 export { RfiDatepicker };

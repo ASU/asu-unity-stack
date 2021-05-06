@@ -10,7 +10,8 @@ import "./AsuRfi.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // TODO import styles!
-// import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
+// eslint-disable-next-line no-unused-vars
+import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 // Needs to be set for CSS modules.
 // See https://github.com/reactstrap/reactstrap/issues/1049

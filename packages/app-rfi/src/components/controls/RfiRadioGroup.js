@@ -1,10 +1,11 @@
 // @ts-check
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Span, Error, Text, LabelGroup, E } from "./styled-components";
+// import { Span, Error, Text, LabelGroup, E } from "./StyledControls";
 
 const RfiRadioGroup = ({ name, options, label }) => {
   return (
@@ -17,16 +18,16 @@ const RfiRadioGroup = ({ name, options, label }) => {
       }) => {
         const isError = meta.error;
         return (
-          <E>
-            <LabelGroup htmlFor={name}>{label}</LabelGroup>
+          <>
+            <label htmlFor={name}>{label}</label>
             {options.map(option => (
               <span key={option.key ? option.key : option.value}>
                 <Field type="radio" {...field} value={option.value} />{" "}
-                <Span>{option.text}</Span>
+                <span>{option.text}</span>
               </span>
             ))}
-            <Text>{isError ? <Error>{meta.error}</Error> : null}</Text>
-          </E>
+            <div>{isError ? <div>{meta.error}</div> : null}</div>
+          </>
         );
       }}
     </Field>

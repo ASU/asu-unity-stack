@@ -113,6 +113,8 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
     )}
   </div>
 );
+// TODO disable submit button above when clicked. formik.isSubmitting isn't
+// available. Maybe our success page will just hide the button...
 
 RfiStepper.propTypes = {
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,

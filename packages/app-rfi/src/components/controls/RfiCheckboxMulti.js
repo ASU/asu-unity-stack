@@ -1,26 +1,26 @@
 // @ts-check
+/* eslint-disable no-unused-vars */
 import { useField, Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Span, Error, Text, LabelGroup, Label, E } from "./styled-components";
+// import { Span, Error, Text, LabelGroup, Label, E } from "./StyledControls";
 
 const RfiCheckboxMulti = ({ label, name, options }) => {
   const [field, meta] = useField({ name, type: "checkbox" });
-  console.log(field, "avoid undefined");
   const isError = meta.touched && meta.error;
   return (
-    <E>
+    <>
       {/* <div>meta.touched:{""+meta.touched} meta.error:{meta.error}</div> */}
-      <LabelGroup>{label}</LabelGroup>
+      <div>{label}</div>
       {options.map(option => (
-        <Label key={option.id || option.value}>
-          <Field type="checkbox" name={name} value={option.value} />
-          <Span>{option.text}</Span>
-        </Label>
+        <label htmlFor={name} key={option.id || option.value}>
+          <Field type="checkbox" id={name} name={name} value={option.value} />
+          <span>{option.text}</span>
+        </label>
       ))}
-      <Text>{isError ? <Error>{meta.error}</Error> : null}</Text>
-    </E>
+      <div>{isError ? <div>{meta.error}</div> : null}</div>
+    </>
   );
 };
 

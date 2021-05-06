@@ -96,4 +96,24 @@ Field Group: "I'm interested in..." - Program Details
 - program plan
 - campus
 - start dat
+
+From legacy module - a trail for what to update from
+  // Load degree settings
+  //// If AJAX, uses existing form_state campus value
+  $degree_assets = array(
+    'academic_plan' => '',
+    'academic_program' => '',
+    'degree_awarded' => '',
+    'degree_program' => '',
+    'diploma_description' => '',
+    'campus' => array(),
+    'deg_code' => '',
+    'deg_name' => '',
+    'college_code' => '',
+    'college_name' => '',
+    'form_type' => '',
+    'grad_dates' => '',
+    'start_dates' => array(),
+  );
+
 */

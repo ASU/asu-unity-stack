@@ -1,23 +1,23 @@
 // @ts-check
+/* eslint-disable no-unused-vars */
 import { Field, useField } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Text, Error, Label, Span, E } from "./styled-components";
+// import { Text, Error, Label, Span, E } from "./StyledControls";
 
 const RfiCheckboxSingle = ({ children, name, value }) => {
   const [field, meta] = useField({ name, type: "checkbox" });
-  console.log(field, "avoid undefined");
   const isError = meta.touched && meta.error;
   return (
-    <E>
+    <>
       {/* <div>meta.touched:{""+meta.touched} meta.error:{meta.error}</div> */}
-      <Label className="checkbox">
-        <Field type="checkbox" name={name} value={value} />
-        <Span>{children}</Span>
-      </Label>
-      <Text>{isError ? <Error>{meta.error}</Error> : null}</Text>
-    </E>
+      <label htmlFor={name} className="checkbox">
+        <Field type="checkbox" id={name} name={name} value={value} />
+        <span>{children}</span>
+      </label>
+      <div>{isError ? <div>{meta.error}</div> : null}</div>
+    </>
   );
 };
 
