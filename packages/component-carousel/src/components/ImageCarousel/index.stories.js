@@ -1,5 +1,6 @@
 // @ts-check
 /** @jsx h */
+import { number, text } from "@storybook/addon-knobs";
 import { h, Fragment } from "preact";
 
 import { ImageCarousel } from ".";
@@ -13,25 +14,25 @@ const myCarouselItems = [
   },
   {
     id: 2,
-    imageSource: "https://source.unsplash.com/random/800x400?a=2",
+    imageSource: "https://source.unsplash.com/random/400x200?a=2",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 3,
-    imageSource: "https://source.unsplash.com/random/800x400?a=3",
+    imageSource: "https://source.unsplash.com/random/600x400?a=3",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 4,
-    imageSource: "https://source.unsplash.com/random/800x400?a=4",
+    imageSource: "https://source.unsplash.com/random/600x600?a=4",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 5,
-    imageSource: "https://source.unsplash.com/random/800x400?a=5",
+    imageSource: "https://source.unsplash.com/random/600x500?a=5",
     altText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
@@ -54,15 +55,12 @@ const mockItemWithMoreContent = () => {
     ...item,
     content: (
       <>
-
-          <h3>Content {index + 1}</h3>
-
-          <p>
-            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua eiusmod tempo.
-          </p>
-
+        <h3>Content {index + 1}</h3>
+        <p>
+          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua eiusmod tempo.
+        </p>
       </>
     ),
   }));
@@ -73,22 +71,55 @@ export default {
   title: "Image Carousel",
 };
 
+const maxWidth = "800px";
+// const maxHeight = "600px";
+
+const GROUP_STYLE = "Styles";
+
+/**
+ *
+ * @param {{ children: JSX.Element}} props
+ * @returns { h.JSX.Element}
+ */
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      // setting display flex the 'maxHeight' gets applied but the carousel squashes
+      // display: "flex",
+      // maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
+    }}
+  >
+    {children}
+  </div>
+);
+
 export const ImageCarouselDefault = () => (
-  <ImageCarousel perView="1" maxWidth="800px" imageItems={myCarouselItems} />
+  <Wrapper>
+    <ImageCarousel
+      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      imageItems={myCarouselItems}
+    />
+  </Wrapper>
 );
 
 export const ImageCarouselWithContent = () => (
-  <ImageCarousel
-    perView="1"
-    maxWidth="800px"
-    imageItems={mockItemWithContent()}
-  />
+  <Wrapper>
+    <ImageCarousel
+      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      imageItems={mockItemWithContent()}
+    />
+  </Wrapper>
 );
 
 export const ImageCarouselWithMoreContent = () => (
-  <ImageCarousel
-    perView="1"
-    maxWidth="800px"
-    imageItems={mockItemWithMoreContent()}
-  />
+  <Wrapper>
+    <ImageCarousel
+      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      imageItems={mockItemWithMoreContent()}
+
+    />
+  </Wrapper>
 );

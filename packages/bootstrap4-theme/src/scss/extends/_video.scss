@@ -1,0 +1,82 @@
+.uds-video {
+  &-with-caption {
+    border: 1px solid $uds-color-base-gray-3;
+
+    figure {
+      margin: 0;
+      display: flex;
+      align-items: center;
+
+      figcaption {
+        color: $uds-color-base-gray-5;
+        font-size: $uds-size-font-tiny;
+        margin: 1rem;
+      }
+    }
+  }
+
+  &-btn-play {
+    background-color: white !important;
+    z-index: 2;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    .svg-inline--fa.fa-w-14 {
+      margin-left: 5px; // magic number to make play button appear more centered
+    }
+  }
+
+  &-container {
+    margin: 48px;
+
+    @media screen and (max-width: $uds-breakpoint-md) {
+      margin: 24px;
+    }
+
+    video {
+      height: auto;
+      width: 100%;
+      z-index: 0;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+  &-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+  }
+
+  &-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: transparent
+      linear-gradient(180deg, #19191900 0%, #191919c9 100%) 0% 0% no-repeat
+      padding-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+
+    &:hover button.uds-video-btn-play {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+}

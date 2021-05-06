@@ -12,16 +12,25 @@ import {
 } from "../../core/components/BaseCarousel/components";
 
 /**
- * This function creates a html template which render an image
- * @param {{
- *          id: number
- *          imageSource: string
- *          altText:string
- *          content?: string | h.JSX.Element
- *        }} props
- * @returns
+ * @typedef {import('../../core/components/BaseCarousel').CarouselItem} CarouselItem
  */
-const imageTemplate = ({ id, imageSource, altText }) => ({
+
+/**
+ * @typedef {{
+ *     id: number,
+ *     imageSource: string,
+ *     thumbnailSource?: string,
+ *     altText:string
+ *     content?: any
+ * }} ImageCarouselItem
+ */
+
+/**
+ * This function creates a html template which render an image
+ * @param {ImageCarouselItem} props
+ * @returns {CarouselItem}
+ */
+const htmlTemplate = ({ id, imageSource, altText }) => ({
   id,
   item: (
     <div className="uds-img">
@@ -37,16 +46,11 @@ const imageTemplate = ({ id, imageSource, altText }) => ({
 /**
  *
  * @param {{
- *  maxWidth?: string
- *  width?: string
- *  hasContent?: boolean
- *  imageItems: {
- *     id: number,
- *     imageSource: string,
- *     thumbnailSource?: string,
- *     altText:string
- *     content?: any
- *   }[]
+ *    maxWidth?: string
+ *    width?: string
+ *    hasContent?: boolean
+ *    imageItems: ImageCarouselItem []
+ *    imageAutoSize?: boolean
  *  }} props
  * @returns { JSX.Element }
  */
@@ -55,8 +59,9 @@ const ImageGalleryCarousel = ({
   maxWidth,
   imageItems,
   hasContent = false,
+  imageAutoSize = true,
 }) => {
-  const carouselItems = imageItems.map(imageTemplate);
+  const carouselItems = imageItems.map(htmlTemplate);
   /**
    *
    * @param {{ instanceName: string }} props
@@ -126,8 +131,9 @@ const ImageGalleryCarousel = ({
       carouselItems={carouselItems}
       cssClass="image-gallery"
       role="figure"
-      ariaLabelledBy="caption"
+      ariaLabelledBy={hasContent ? "caption" : null}
       isFullWidth={true}
+      imageAutoSize={imageAutoSize}
       // @ts-ignore
       CustomNavComponent={props => <CustomNavComponent {...props} />}
     />
@@ -140,6 +146,7 @@ ImageGalleryCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   hasContent: PropTypes.bool,
+  imageAutoSize: PropTypes.bool,
 };
 
 export { ImageGalleryCarousel };

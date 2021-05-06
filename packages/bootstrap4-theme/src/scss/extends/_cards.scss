@@ -8,7 +8,7 @@ Cards - Table of Contents
 5. Foldable Cards
 6. Foldable - Desktop Disable
 7. Accordion
-8. Quick Links
+8. Anchor Menu
 9. Checkbox Stacked Cards
 10. Checkbox Inline Cards
 11. Checkbox Inline Cards
@@ -642,18 +642,28 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-8. Quick Links
+8. Anchor Menu
 --------------------------------------------------------------------*/
 
-.uds-quicklinks {
+.uds-anchor-menu {
   display: flex;
   flex-direction: column;
+  background-color: white;
 
-  button {
-    border-radius: 0;
-    border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
-    display: block;
-    margin: 0 auto;
+  &-shrink {
+    h4 {
+      margin: 0.75rem 0.5rem !important;
+    }
+
+    .nav-link {
+      padding: $uds-size-spacing-2 0 !important;
+    }
+  }
+
+  h4 {
+    font-size: 1rem;
+    padding: 0 !important;
+    margin: 1.25rem 0.75rem;
 
     &:hover {
       transform: none;
@@ -676,13 +686,9 @@ Cards - Table of Contents
     width: 100%;
   }
 
-  button[aria-expanded='true'] {
+  h4[aria-expanded='true'] {
     svg {
       transform: rotate(180deg);
-    }
-
-    + .separator {
-      display: none;
     }
   }
 
@@ -698,7 +704,7 @@ Cards - Table of Contents
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-3 0;
     border-bottom: 1px solid $uds-color-base-gray-3;
-    text-align: center;
+    text-align: start;
     font-weight: 700;
 
     &:visited {
@@ -720,10 +726,13 @@ Cards - Table of Contents
   }
 }
 
-@mixin uds-quicklinks-expanded {
-  button {
-    border-bottom: 0;
-    font-size: 30px;
+@mixin uds-anchor-menu-expanded {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid $uds-color-base-gray-3;
+
+  h4 {
+    font-size: 1.25rem;
 
     svg {
       display: none;
@@ -732,21 +741,12 @@ Cards - Table of Contents
 
   nav {
     flex-direction: row;
-    justify-content: space-evenly;
   }
 
   .nav-link {
     border-bottom: 0;
-    margin-bottom: $uds-size-spacing-1;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     padding: $uds-size-spacing-3 $uds-size-spacing-1;
-
-    &:first-of-type {
-      padding-top: $uds-size-spacing-3;
-    }
-
-    &:last-of-type {
-      padding-bottom: $uds-size-spacing-3;
-    }
 
     &:hover,
     &.active {
@@ -761,7 +761,7 @@ Cards - Table of Contents
   }
 
   .separator {
-    order: 3;
+    display: none;
   }
 
   .collapse {
@@ -782,26 +782,26 @@ Cards - Table of Contents
 }
 
 @include media-breakpoint-up(sm) {
-  .uds-quicklinks.uds-quicklinks-expanded-sm {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-sm {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .uds-quicklinks.uds-quicklinks-expanded-md {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-md {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .uds-quicklinks.uds-quicklinks-expanded-lg {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-lg {
+    @include uds-anchor-menu-expanded;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .uds-quicklinks.uds-quicklinks-expanded-xl {
-    @include uds-quicklinks-expanded;
+  .uds-anchor-menu.uds-anchor-menu-expanded-xl {
+    @include uds-anchor-menu-expanded;
   }
 }
 
