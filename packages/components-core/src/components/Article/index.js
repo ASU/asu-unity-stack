@@ -19,7 +19,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, NavItem } from "reactstrap";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
@@ -32,21 +32,22 @@ const sanitizeDangerousMarkup = content => {
 };
 
 export const Article = ({
-  articleUrl,
-  authorName,
-  authorTitle,
-  authorEmail,
-  authorPhone,
-  body,
-  publicationDate,
   type,
-  headerImageUrl,
+  articleUrl,
+  publicationDate,
   title,
+  body,
+  authorEmail,
+  authorName,
+  authorPhone,
+  authorTitle,
+  breadcrumbs,
+  calendarUrl,
   eventLocation,
   eventTime,
+  headerImageUrl,
   registrationUrl,
   zoomUrl,
-  calendarUrl,
 }) => {
   const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
     [UdsStyles["col-lg-8"]]:
@@ -211,6 +212,28 @@ export const Article = ({
     );
   };
 
+  const activeBreadcrumb = item => {
+    if (item.active) {
+      return (
+        <BreadcrumbItem
+          active
+          tag="li"
+          className={UdsStyles["breadcrumb-item"]}
+        >
+          {item.title}
+        </BreadcrumbItem>
+      );
+    }
+
+    return (
+      <BreadcrumbItem tag="li" className={UdsStyles["breadcrumb-item"]}>
+        <BreadcrumbItem tag="a" href={item.url}>
+          {item.title}
+        </BreadcrumbItem>
+      </BreadcrumbItem>
+    );
+  };
+
   return (
     <>
       {headerImageUrl && type !== "event" && (
@@ -232,37 +255,23 @@ export const Article = ({
           "wrapper-container"
         )}
       >
+        {breadcrumbs && (
+          <div className={classNames(UdsStyles["row"], UdsStyles["pt-4"])}>
+            <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
+              <Breadcrumb listClassName={UdsStyles["breadcrumb"]}>
+                {breadcrumbs.map(item => activeBreadcrumb(item))}
+              </Breadcrumb>
+            </div>
+          </div>
+        )}
+
         <div
           className={classNames(
             UdsStyles["row"],
-            UdsStyles["pt-4"],
-            UdsStyles["pb-3"]
+            UdsStyles["pb-2"],
+            UdsStyles["pt-3"]
           )}
         >
-          <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
-            <Breadcrumb listClassName={UdsStyles["breadcrumb"]}>
-              <BreadcrumbItem tag="li" className={UdsStyles["breadcrumb-item"]}>
-                <BreadcrumbItem tag="a" href="#">
-                  Home
-                </BreadcrumbItem>
-              </BreadcrumbItem>
-              <BreadcrumbItem tag="li" className={UdsStyles["breadcrumb-item"]}>
-                <BreadcrumbItem tag="a" href="#">
-                  Second nav item
-                </BreadcrumbItem>
-              </BreadcrumbItem>
-              <BreadcrumbItem
-                active
-                tag="li"
-                className={UdsStyles["breadcrumb-item"]}
-              >
-                Current page
-              </BreadcrumbItem>
-            </Breadcrumb>
-          </div>
-        </div>
-
-        <div className={classNames(UdsStyles["row"], UdsStyles["pb-2"])}>
           <div className={hClasses}>
             <h2>{title}</h2>
           </div>
@@ -384,13 +393,13 @@ Article.propTypes = {
    */
   articleUrl: PropTypes.string.isRequired,
   /**
-   * Title
-   */
-  title: PropTypes.string.isRequired,
-  /**
    * Date for the article
    */
   publicationDate: PropTypes.string.isRequired,
+  /**
+   * Title
+   */
+  title: PropTypes.string.isRequired,
   /**
    * Body content for the article
    */
@@ -411,6 +420,14 @@ Article.propTypes = {
    * Article author title
    */
   authorTitle: PropTypes.string,
+  /**
+   * Breadcrumbs array
+   */
+  breadcrumbs: PropTypes.shape({
+    title: PropTypes.string,
+    url: PropTypes.string,
+    active: PropTypes.bool,
+  }),
   /**
    * URL for an "add to calendar" button
    */
