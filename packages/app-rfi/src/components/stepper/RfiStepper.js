@@ -1,4 +1,6 @@
 // @ts-check
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
@@ -60,7 +62,8 @@ class RfiStepper extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <div>
-        <Progress value={progress * 100} />
+        <Progress value={progress * 100} className="rfi-progress" />
+        <h2>Request information</h2>
         <Formik
           initialValues={initValues}
           validationSchema={Yup.object().shape(schema)}
@@ -103,13 +106,15 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
   <div>
     {stepNum > 0 ? (
       <Button type="button" onClick={handleBack}>
-        &laquo; Back
+        <FontAwesomeIcon icon={faAngleLeft} /> Prev
       </Button>
     ) : null}
     {stepNum < lastStep ? (
-      <Button type="submit">Next &raquo;</Button>
+      <Button type="submit">
+        Next <FontAwesomeIcon icon={faAngleRight} />
+      </Button>
     ) : (
-      <Button type="submit">Submit</Button>
+      <Button type="submit">Consent/submit</Button>
     )}
   </div>
 );

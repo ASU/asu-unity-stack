@@ -1,1 +1,11 @@
-body { /*background-color: cornsilk; color: blue;*/ margin-top:1em; }
+body {
+  /* TODO remove this line eventually */
+  margin-top: 1em;
+}
+
+.rfi-progress {
+  background-color: #fff;
+}
+.rfi-progress .progress-bar {
+  background-color: #ffc627;
+}
