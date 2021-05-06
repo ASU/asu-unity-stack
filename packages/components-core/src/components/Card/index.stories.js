@@ -16,9 +16,9 @@ export default {
 
 ## Usage
 
-By default, the Card component will output the default layout for a card, which will not render eventTime or eventLocation props. Therefore, it will not use the eventFormat prop, either.
-
-Only by passing the value "event" to the type prop will take the eventFormat prop and render eventTime and eventLocation.
+Most props are valid options for all card types, except for the event-specific props.
+Card users are responsible to meet all UDS design guidelines with their Cards,
+including rules on the use of Call-to-Action buttons and tags.
 
 View component examples and source code below.
         `,
@@ -143,8 +143,8 @@ Event.args = {
   title: "Event title",
   body:
     "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  eventFormat: "inline",
-  eventTime: "Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
+  eventFormat: "stack",
+  eventTime: "Wed, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
   eventLocation: "Downtown Phoenix campus",
   buttons: [
     {
@@ -159,6 +159,8 @@ Event.parameters = {
   docs: {
     description: {
       story: `
+The event props, \`eventLocation\` and \`eventTime\` are allowed to contain basic HTML formatting, primarily \`<br>\` for line breaks.
+
 
     <Card
         body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
@@ -170,9 +172,9 @@ Event.parameters = {
             size: 'default'
           }
         ]}
-        eventFormat="inline"
+        eventFormat="stack"
         eventLocation="Downtown Phoenix campus"
-        eventTime="Wednesday, November 21st, 2021<br />11:30 a.m - 12:30 p.m."
+        eventTime="Wed, November 21st, 2021<br>11:30 a.m - 12:30 p.m."
         image="https://picsum.photos/300/200"
         imageAltText="An example image"
         title="Event title"
@@ -390,49 +392,6 @@ AsuNewsStory.parameters = {
         image="https://picsum.photos/300/200"
         imageAltText="An example image"
         title="ASU News Story title"
-        type="story"
-      />`,
-    },
-  },
-};
-
-export const GlobalFuturesStory = Template.bind({});
-GlobalFuturesStory.args = {
-  type: "story",
-  horizontal: false,
-  clickable: false,
-  image: "https://picsum.photos/300/200",
-  imageAltText: "An example image",
-  title: "GFL News Story title",
-  body:
-    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  buttons: [
-    {
-      color: "maroon",
-      size: "default",
-      label: "Read more",
-      href: "/#example-link",
-    },
-  ],
-};
-GlobalFuturesStory.parameters = {
-  docs: {
-    description: {
-      story: `
-
-    <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
-        buttons={[
-          {
-            color: 'maroon',
-            href: '/#example-link',
-            label: 'Read more',
-            size: 'default'
-          }
-        ]}
-        image="https://picsum.photos/300/200"
-        imageAltText="An example image"
-        title="GFL News Story title"
         type="story"
       />`,
     },
