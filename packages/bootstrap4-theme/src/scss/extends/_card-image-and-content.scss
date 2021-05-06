@@ -1,0 +1,69 @@
+.uds-card-image-and-content {
+  display: flex;
+  flex-direction: column;
+
+  & > .image-container {
+    background-size: cover;
+    background-position: top;
+    display: flex;
+    height: $uds-size-spacing-64;
+    max-width: $uds-breakpoint-xxxl;
+    position: relative;
+    width: 100%;
+
+    & > span {
+      color: $uds-color-base-white;
+      left: 0px;
+      bottom: 0px;
+      font: normal normal bold $uds-size-font-xxxl Arial;
+      padding: $uds-size-spacing-4;
+      position: absolute;
+      max-width: 50%;
+    }
+  }
+
+  & > .content-section {
+    display: flex;
+    flex-direction: row;
+    padding: $uds-size-spacing-6 $uds-size-spacing-3;
+
+    & > .card {
+      // -249 = -(card image height + content-section padding + border)
+      margin: -249px 96px 0 96px;
+      max-width: $uds-breakpoint-md;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    & > .content-section {
+      padding: $uds-size-spacing-4;
+
+      & > .card {
+        // -193 = -(card image height + content-section padding + border)
+        margin: -193px 24px 0 24px;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    & > .image-container {
+      max-height: 160px;
+
+      & > span {
+        font: normal normal bold $uds-size-font-xxl Arial;
+        padding: $uds-size-spacing-3;
+        max-width: 100%;
+      }
+    }
+
+    & > .content-section {
+      align-items: center;
+      flex-direction: column;
+      padding: $uds-size-spacing-3;
+
+      & > .card {
+        margin: $uds-size-spacing-3 0 0 0;
+      }
+    }
+  }
+}
