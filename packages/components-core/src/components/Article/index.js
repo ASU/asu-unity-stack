@@ -19,7 +19,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-import { Breadcrumb, BreadcrumbItem, NavItem } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
@@ -423,11 +423,13 @@ Article.propTypes = {
   /**
    * Breadcrumbs array
    */
-  breadcrumbs: PropTypes.shape({
-    title: PropTypes.string,
-    url: PropTypes.string,
-    active: PropTypes.bool,
-  }),
+  breadcrumbs: PropTypes.array(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      active: PropTypes.bool,
+    })
+  ),
   /**
    * URL for an "add to calendar" button
    */
@@ -459,6 +461,7 @@ Article.defaultProps = {
   authorEmail: undefined,
   authorPhone: undefined,
   authorTitle: undefined,
+  breadcrumbs: undefined,
   calendarUrl: undefined,
   headerImageUrl: undefined,
   eventLocation: undefined,
