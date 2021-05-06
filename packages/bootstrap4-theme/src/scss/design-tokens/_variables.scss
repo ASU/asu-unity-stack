@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Sun, 18 Apr 2021 17:42:29 GMT
+// Generated on Mon, 15 Feb 2021 19:21:02 GMT
 
 $uds-asset-font-icon-name: "FontAwesome";
 $uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
@@ -158,7 +158,7 @@ $uds-component-button-font-weight: bold;
 $uds-component-button-text-decoration: none;
 $uds-component-button-line-height: 1rem;
 $uds-component-button-max-width: 17.5rem;
-$uds-component-button-hover-state-transform: scale(1.05);
+$uds-component-button-hover-state-transform: scale(1.1);
 $uds-component-button-active-state-transform: scale(1);
 $uds-component-button-padding: 1rem 2rem;
 $uds-component-button-padding-y: 1rem;
@@ -175,10 +175,8 @@ $uds-component-button-badge-border-radius: 400rem;
 $uds-component-button-badge-font-weight: normal;
 $uds-component-button-badge-height: 1.375rem; // Magic number: 22px not a multiple of 8
 $uds-component-button-close-height: 2rem;
-$uds-component-button-close-opacity: 100%;
+$uds-component-button-close-opacity: 50%;
 $uds-component-button-close-width: 2rem;
-$uds-component-button-close-padding-top: 0;
-$uds-component-button-close-padding-bottom: 0.125rem;
 $uds-component-button-close-disabled-opacity: 100%;
 $uds-component-button-close-white-background-color: #ffffff;
 $uds-component-button-close-gray-background-color: #bfbfbf;
@@ -401,7 +399,7 @@ $uds-component-pager-max-width: 17.5rem;
 $uds-component-pager-hover-state-transform: scale(1.1);
 $uds-component-pager-active-state-transform: scale(1);
 $uds-component-pager-padding: 1rem 2rem;
-$uds-component-pager-hover-text-decoration: none;
+$uds-component-pager-hover-text-decoration: underline;
 $uds-component-pager-hover-color: #ffffff;
 $uds-component-pager-active-background-color: #8c1d40;
 $uds-component-pager-active-color: #ffffff;

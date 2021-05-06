@@ -35,7 +35,7 @@ Cards - Table of Contents
 }
 
 .card-hover:hover {
-  transform: $uds-component-card-basic-hover-transform;
+  transform: scale(1.05);
   cursor: $uds-component-card-basic-hover-cursor;
   box-shadow: $uds-component-card-basic-hover-box-shadow;
 }
@@ -79,6 +79,7 @@ Cards - Table of Contents
   height: 100%;
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 .card-image-gradient::after {
@@ -109,6 +110,11 @@ Cards - Table of Contents
   flex-grow: 100;
 }
 
+.card > div:first-of-type {
+  padding-top:32px;
+  flex-grow: 1;
+}
+
 .card-link {
   padding: 0 32px 24px 32px;
 }
@@ -126,6 +132,7 @@ Cards - Table of Contents
 
 .card-tags .btn-tag {
   margin-top: 8px;
+  margin-right: 8px;
 }
 
 .card-button {
@@ -210,6 +217,10 @@ Cards - Table of Contents
 
   .card-header {
     padding: 24px 24px 16px 24px;
+  }
+  .card > div:first-of-type {
+    padding-top: 24px;
+    flex-grow: 1;
   }
 
   .card-image-gradient::after {
@@ -328,6 +339,10 @@ Cards - Table of Contents
 .card-story .card-header {
   padding-top: 24px;
 }
+.card-story > div:first-of-type {
+    padding: 24px 16px 16px 16px;
+    flex-grow: 1;
+}
 
 .card-story .card-footer {
   padding: $uds-component-card-basic-footer-link-padding;
@@ -392,9 +407,13 @@ Cards - Table of Contents
 
 .card-event-details {
   display: flex;
+  flex-grow: 100000;
   padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
   font-size: 14px;
+}
+.card-event-details + .card-event-details {
+  flex-grow: 999900000;
 }
 
 .card-event-details > div:first-child {
