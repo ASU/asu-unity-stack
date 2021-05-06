@@ -423,7 +423,7 @@ Article.propTypes = {
   /**
    * Breadcrumbs array
    */
-  breadcrumbs: PropTypes.array(
+  breadcrumbs: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,

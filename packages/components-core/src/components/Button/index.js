@@ -121,7 +121,6 @@ Button.propTypes = {
 Button.defaultProps = {
   ariaLabel: undefined,
   block: undefined,
-  breadcrumbs: undefined,
   color: "gray",
   disabled: undefined,
   element: "button",
