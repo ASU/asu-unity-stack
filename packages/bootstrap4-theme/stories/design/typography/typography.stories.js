@@ -274,3 +274,40 @@ export const InternalNotes = () => `
 </div>
 `;
 */
+
+// export const ASUHeadings = () => `
+// <div class="container bg-white">
+//   <div class="row">
+//     <div class="col col-sm-12 p-3">
+//       <h1>Heading 1</h1>
+//       <p>Paragraph 1</p>
+
+//       <h2>Heading 2</h2>
+//       <p>Paragraph 2</p>
+
+//       <h3>Heading 3</h3>
+//       <p>Paragraph 3</p>
+
+//       <h4>Heading 4</h4>
+//       <p>Paragraph 4</p>
+
+//       <h5>Heading 5</h5>
+//       <p>Paragraph 5</p>
+
+//       <h6>Heading 6</h6>
+//       <p>Paragraph 6</p>
+
+//       <h4>This heading will not have additional spacing<h4>
+//       <h5>This heading will also not have additional spacing<h5>
+//     </div>
+//   </div>
+
+//   <h1>Another heading 1</h1>
+//   <p>Another paragraph</p>
+
+//   <h2>Another heading 2</h2>
+//   <p>Another paragraph</p>
+
+//   <h3>This heading should not have additional space</h3>
+// </div>
+// `;
