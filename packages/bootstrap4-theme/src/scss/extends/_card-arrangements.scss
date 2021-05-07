@@ -1,0 +1,68 @@
+.container {
+  padding: 2.5rem;
+}
+
+.uds-card-arrangement {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+
+  & > &-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > h2 {
+      font: normal normal bold 2.5rem Arial;
+    }
+
+    & > button {
+      margin-left: auto;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      flex-direction: column;
+    }
+  }
+
+  & > &-card-container {
+    column-gap: $uds-size-spacing-3;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    margin-top: $uds-size-spacing-3;
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      grid-auto-flow: row;
+      row-gap: $uds-size-spacing-2;
+    }
+  }
+
+  &-vertical {
+    flex-direction: row;
+
+    & > .uds-card-arrangement-content-container {
+      align-items: flex-start;
+      justify-content: start;
+      flex: 1;
+      flex-direction: column;
+
+      & > button {
+        margin: initial;
+      }
+    }
+
+    & > .uds-card-arrangement-card-container {
+      flex: 2;
+      row-gap: $uds-size-spacing-3;
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-rows: repeat(auto-fill, 1fr);
+      margin-left: $uds-size-spacing-3;
+    }
+  }
+
+  @media screen and (max-width: $uds-breakpoint-sm) {
+    flex-direction: column;
+  }
+}

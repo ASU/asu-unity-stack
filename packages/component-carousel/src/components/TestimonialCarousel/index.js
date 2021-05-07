@@ -10,17 +10,17 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
  * @typedef {{
- *          id: number
- *          quote: {
- *            title?: string
- *            content: string
- *            cite?: {
- *               name: string
- *               description?: string
- *            }
- *          }
- *          imageSource?: string
- *          altText?:string
+ *  id: number
+ *  quote: {
+ *    title?: string
+ *    content: string
+ *    cite?: {
+ *       name: string
+ *       description?: string
+ *    }
+ *  }
+ *  imageSource?: string
+ *  altText?:string
  * }} TestimonialItem
  *
  *
@@ -43,7 +43,7 @@ const spreadClasses = classes => (classes || []).join(" ");
  * @param {ItemCssClass} itemStyle
  * @returns { CarouselItem }
  */
-const template = ({ id, imageSource, altText, quote }, itemStyle = {}) => ({
+const htmlTemplate = ({ id, imageSource, altText, quote }, itemStyle = {}) => ({
   id,
   item: (
     <div
@@ -84,12 +84,13 @@ const template = ({ id, imageSource, altText, quote }, itemStyle = {}) => ({
 /**
  *
  * @param {{
- *  testimonialItems: TestimonialItem[]
- *  maxWidth: string
- *  width?: string
- *  hasPositionIndicators?: boolean
- *  hasNavButtons?: boolean
- *  itemStyle?:ItemCssClass
+*    testimonialItems: TestimonialItem[]
+*    maxWidth: string
+*    width?: string
+*    hasPositionIndicators?: boolean
+*    hasNavButtons?: boolean
+*    itemStyle?:ItemCssClass
+*    imageAutoSize?: boolean
  *  }} props
  * @returns { JSX.Element }
  */
@@ -100,8 +101,11 @@ const TestimonialCarousel = ({
   hasNavButtons = false,
   hasPositionIndicators = false,
   itemStyle = {},
+  imageAutoSize = true,
 }) => {
-  const carouselItems = testimonialItems.map(item => template(item, itemStyle));
+  const carouselItems = testimonialItems.map(item =>
+    htmlTemplate(item, itemStyle)
+  );
 
   return (
     <BaseCarousel
@@ -113,6 +117,7 @@ const TestimonialCarousel = ({
       removeSideBackground={true}
       hasNavButtons={hasNavButtons}
       hasPositionIndicators={hasPositionIndicators}
+      imageAutoSize={imageAutoSize}
     />
   );
 };
@@ -123,6 +128,7 @@ TestimonialCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   hasContent: PropTypes.bool,
+  imageAutoSize: PropTypes.bool,
 };
 
 export { TestimonialCarousel };
