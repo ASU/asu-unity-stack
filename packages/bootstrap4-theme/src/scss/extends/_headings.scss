@@ -11,6 +11,27 @@ h5 {
   line-height: $heading-line-height;
 }
 
+// If there is a heading between two paragraphs,
+// there needs to be more space above the heading than below it to ensure that content is chunked appropriately and remains legible.
+// The following two selectors combined target heading elements surrounded by p elements
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  margin-top: $uds-size-spacing-4;
+}
+
+p:last-of-type + h1,
+p:last-of-type + h2,
+p:last-of-type + h3,
+p:last-of-type + h4,
+p:last-of-type + h5,
+p:last-of-type + h6 {
+  margin-top: $heading-margin;
+}
+
 h1 {
   font-size: $heading-one-font-size;
   letter-spacing: $heading-one-letter-spacing;
