@@ -51,6 +51,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@storybook/addon-knobs": "^6.2.9",
     "classnames": "^2.2.6",
     "date-fns": "^2.19.0",
     "dompurify": "^2.2.7",
