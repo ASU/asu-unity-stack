@@ -25,7 +25,7 @@
   & > .content-section {
     display: flex;
     flex-direction: row;
-    padding: $uds-size-spacing-6 $uds-size-spacing-3;
+    padding: $uds-size-spacing-6 0 $uds-size-spacing-6 $uds-size-spacing-3;
 
     & > .card {
       // -249 = -(card image height + content-section padding + border)
@@ -36,9 +36,10 @@
 
   @include media-breakpoint-down(md) {
     & > .content-section {
-      padding: $uds-size-spacing-4;
+      padding: $uds-size-spacing-4 0 $uds-size-spacing-4 $uds-size-spacing-4;
 
       & > .card {
+        max-width: 50%;
         // -193 = -(card image height + content-section padding + border)
         margin: -193px 24px 0 24px;
       }
@@ -63,6 +64,7 @@
 
       & > .card {
         margin: $uds-size-spacing-3 0 0 0;
+        max-width: 100%;
       }
     }
   }
