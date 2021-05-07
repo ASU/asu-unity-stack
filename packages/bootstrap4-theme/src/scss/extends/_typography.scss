@@ -17,3 +17,13 @@
     color: $uds-color-base-darkgold;
   }
 }
+
+// If there is a heading between two paragraphs, there needs to be more space above the heading than below it to ensure that content is chunked appropriately and remains legible.
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  margin-top: $uds-size-spacing-4;
+}
