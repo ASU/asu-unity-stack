@@ -308,8 +308,17 @@ export const InternalNotes = () => `
 //       <h6>Heading 6</h6>
 //       <p>Paragraph 6</p>
 
-//       <h5>This heading will have no additional spacing</h5>
+//       <h4>This heading will not have additional spacing<h4>
+//       <h5>This heading will also not have additional spacing<h5>
 //     </div>
 //   </div>
+
+//   <h1>Another heading 1</h1>
+//   <p>Another paragraph</p>
+
+//   <h2>Another heading 2</h2>
+//   <p>Another paragraph</p>
+
+//   <h3>This heading should not have additional space</h3>
 // </div>
 // `;
