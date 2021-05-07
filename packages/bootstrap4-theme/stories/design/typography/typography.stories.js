@@ -259,17 +259,6 @@ export const InlineTextElements = () => `
 </div>
 `;
 
-export const Blockquotes = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 p-3">
-      <blockquote class="blockquote">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      </blockquote>
-    </div>
-  </div>
-`;
-
 /*
 export const InternalNotes = () => `
 <div class="container">
