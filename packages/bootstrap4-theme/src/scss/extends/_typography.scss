@@ -27,3 +27,19 @@ p + h5,
 p + h6 {
   margin-top: $uds-size-spacing-4;
 }
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p,
+p + h1:last-child,
+p + h2:last-child,
+p + h3:last-child,
+p + h4:last-child,
+p + h5:last-child,
+p + h6:last-child {
+  margin-top: $uds-size-spacing-2;
+}
+
