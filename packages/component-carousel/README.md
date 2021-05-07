@@ -220,6 +220,13 @@ yarn test
  ### Testimonial carousel properties
 
 ```JS
+  /**
+   * @typedef {{
+   *      containerCssClass?: string[]
+   *      titleCssClass?: string[]
+   *      contentCssClass?: string[]
+   * }} TestimonialStyle
+   */
 
   /**
    * @typedef {{
@@ -235,14 +242,6 @@ yarn test
    *    }
    *  }
    * }} TestimonialItem
-   */
-
-  /**
-   * @typedef {{
-   *      itemCssClass?: string[]
-   *      itemTitleCssClass?: string[]
-   *      itemQuoteContentCssClass?: string[]
-   * }} ItemCssClass
    */
 
   /**

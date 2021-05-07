@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "private": false,
   "dependencies": {
+    "@asu-design-system/components-core": "^1.0.0",
     "@asu-design-system/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@glidejs/glide": "^3.4.1",
