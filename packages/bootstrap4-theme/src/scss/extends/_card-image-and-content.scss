@@ -1,17 +1,17 @@
 .uds-card-image-and-content {
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
 
-  & > .image-container {
+  &-image-container {
     background-size: cover;
     background-position: top;
     display: flex;
-    height: $uds-size-spacing-64;
-    max-width: $uds-breakpoint-xxxl;
+    height: 512px;
     position: relative;
     width: 100%;
 
-    & > span {
+    & > &-headline {
       color: $uds-color-base-white;
       left: 0px;
       bottom: 0px;
@@ -22,49 +22,49 @@
     }
   }
 
-  & > .content-section {
+  &-content-container {
     display: flex;
     flex-direction: row;
-    padding: $uds-size-spacing-6 0 $uds-size-spacing-6 $uds-size-spacing-3;
 
-    & > .card {
-      // -249 = -(card image height + content-section padding + border)
-      margin: -249px 96px 0 96px;
-      max-width: $uds-breakpoint-md;
+    .content {
+      padding: $uds-size-spacing-4;
+    }
+
+    .card {
+      margin: -201px 96px 0 96px;
     }
   }
+}
 
-  @include media-breakpoint-down(md) {
-    & > .content-section {
-      padding: $uds-size-spacing-4 0 $uds-size-spacing-4 $uds-size-spacing-4;
-
-      & > .card {
-        max-width: 50%;
-        // -193 = -(card image height + content-section padding + border)
-        margin: -193px 24px 0 24px;
+@media only screen and (max-width: $uds-breakpoint-lg) {
+  .uds-card-image-and-content {
+    &-content-container {
+      .card {
+        margin: -161px 48px 0 48px;
       }
     }
   }
+}
 
-  @include media-breakpoint-down(sm) {
-    & > .image-container {
-      max-height: 160px;
-
-      & > span {
-        font: normal normal bold $uds-size-font-xxl Arial;
-        padding: $uds-size-spacing-3;
-        max-width: 100%;
-      }
-    }
-
-    & > .content-section {
-      align-items: center;
+@media only screen and (max-width: $uds-breakpoint-md) {
+  .uds-card-image-and-content {
+    &-content-container {
       flex-direction: column;
-      padding: $uds-size-spacing-3;
+      .card {
+        margin: 0 24px 24px 24px;
+      }
+    }
+  }
+}
 
-      & > .card {
-        margin: $uds-size-spacing-3 0 0 0;
-        max-width: 100%;
+@media only screen and (max-width: $uds-breakpoint-sm) {
+  .uds-card-image-and-content {
+    &-image-container {
+      height: $uds-size-spacing-32;
+
+      & > &-headline {
+        font: normal normal bold 2rem Arial;
+        padding: $uds-size-spacing-4;
       }
     }
   }

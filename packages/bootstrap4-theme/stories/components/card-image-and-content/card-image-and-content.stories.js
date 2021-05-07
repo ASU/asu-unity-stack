@@ -2,17 +2,19 @@ export default { title: 'Components/Content Sections/Card Image And Content' };
 import exampleImage from './example-image.jpg';
 
 export const Default = () => `
-<div class="container">
+<div class="p-0 p-md-5">
 
   <div class="uds-card-image-and-content">
-    <div class="image-container" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-      <span>Section headline goes here</span>
+    <div class="uds-card-image-and-content-image-container" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+      <div class="uds-card-image-and-content-image-container-headline">
+        Section headline goes here
+      </div>
     </div>
-    <div class="content-section">
-      <div class="container p-0">
+
+    <div class="uds-card-image-and-content-content-container">
+      <div class="content">
         Here is some introductory text about the topic featured in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
       </div>
-
       <div class="card">
         <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
         <div class="card-header">
