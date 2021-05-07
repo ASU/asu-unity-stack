@@ -3,7 +3,6 @@ import { withKnobs, object, select } from "@storybook/addon-knobs";
 import React from "react";
 
 import { Testimonial } from ".";
-// import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
 export default {
   title: "UDS/Testimonial",
