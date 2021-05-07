@@ -85,7 +85,7 @@ class RfiStepper extends React.Component {
         >
           {() => {
             return (
-              <Form>
+              <Form className="uds-form uds-rfi">
                 {React.createElement(formComponent, {})}
 
                 <RfiStepperButtons

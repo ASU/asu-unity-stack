@@ -1,16 +1,13 @@
 // DISABLED@ts-check
 /* eslint-disable no-unused-vars */
-import {
-  faExclamationTriangle,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field } from "formik"; // removed unused Formik, setFieldValue
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 
-// import { Label, Error, Text, E } from "./StyledControls"; // removed unused Input
+import { RfiLabel, RfiError } from "./controls-helpers";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
@@ -22,7 +19,7 @@ const RfiDatepicker = ({
   dateFormat,
   className,
   placeholderText,
-  isRequired,
+  requiredIcon,
 }) => {
   return (
     <Field name={name}>
@@ -46,48 +43,56 @@ const RfiDatepicker = ({
         // console.log(values, "VALUES");
         // console.log(values.name, "VALUES.name");
         return (
-          <>
-            <label htmlFor={id}>
-              {isRequired ? (
-                <span title="Required">
-                  <FontAwesomeIcon icon={faCircle} />
-                </span>
-              ) : null}
-              {label}
-            </label>
-            <DatePicker
-              id={name}
+          <div className="form-group">
+            <RfiLabel
+              label={label}
               name={name}
-              isRequired={isRequired}
-              dateFormat={dateFormat || "MM/dd/yyyy"}
-              className={className}
-              placeholderText={placeholderText}
-              showMonthDropdown
-              showYearDropdown
-              dropdownMode="select"
-              selected={false}
-              openToDate={dob}
-              value={dob}
-              onChange={date => {
-                setDob(date);
-                setFieldValue(name, date);
-              }}
+              id={id}
+              requiredIcon={requiredIcon}
             />
-            <div>{isError ? <div>{meta.error}</div> : null}</div>
-          </>
+            <div className="input-group input-group-trailing-icon">
+              <DatePicker
+                id={name}
+                name={name}
+                // isRequired={isRequired}
+                dateFormat={dateFormat || "MM/dd/yyyy"}
+                className={className}
+                placeholderText={placeholderText}
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                // selected={false}
+                selected={dob}
+                openToDate={dob}
+                value={dob}
+                onChange={date => {
+                  setDob(date);
+                  setFieldValue(name, date);
+                  console.log(date, "date");
+                  console.log(dob, "dob");
+                }}
+              />
+              <FontAwesomeIcon icon={faCalendar} />
+            </div>
+            <RfiError isError={isError} metaError={meta.error} />
+          </div>
         );
       }}
     </Field>
   );
 };
 
+// Note on requiredIcon. Yup required status is not readily available so we
+// duplicate the setting in our props got displaying the required icon until
+// Formik has a better way to do it.
+
 RfiDatepicker.defaultProps = {
   // TODO better defaults?
-  id: "",
-  dateFormat: "",
-  className: "",
-  placeholderText: "",
-  isRequired: false,
+  id: undefined,
+  dateFormat: undefined,
+  className: undefined,
+  placeholderText: undefined,
+  requiredIcon: false,
 };
 
 RfiDatepicker.propTypes = {
@@ -97,7 +102,7 @@ RfiDatepicker.propTypes = {
   dateFormat: PropTypes.string,
   className: PropTypes.string,
   placeholderText: PropTypes.string,
-  isRequired: PropTypes.bool, // Implement our own req'd prop so Yup validates.
+  requiredIcon: PropTypes.bool, // Implement our own req'd prop so Yup validates.
 };
 
 export { RfiDatepicker };

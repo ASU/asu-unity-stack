@@ -16,29 +16,37 @@ import { RfiTextInput, RfiEmailInput, RfiDatepicker } from "../controls";
 const AboutMe = () => {
   return (
     <>
-      <h3>About Me</h3>
+      <h3>About me</h3>
       <RfiTextInput
         label="First name"
+        id="firstName"
         name="firstName"
-        isRequired
+        requiredIcon
         helperText="First name"
       />
       <RfiTextInput
         label="Last name"
+        id="lastName"
         name="lastName"
-        isRequired
+        requiredIcon
         helperText="Last name"
       />
       {/*            <RfiTextInput label="Date of Birth *" name="dateOfBirth" /> */}
       <RfiDatepicker
-        label="Date of Birth *"
+        label="Date of Birth"
+        id="dateOfBirth"
         name="dateOfBirth"
         dateFormat="MM/dd/yyyy"
         className="form-control"
         placeholderText="MM/DD/YYYY"
-        isRequired
+        requiredIcon
       />
-      <RfiEmailInput label="Email Address *" name="email" />
+      <RfiEmailInput
+        label="Email Address *"
+        id="email"
+        name="email"
+        requiredIcon
+      />
     </>
   );
 };
@@ -62,10 +70,10 @@ const aboutMeForm = {
   },
 
   initialValues: {
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    email: "",
+    firstName: undefined,
+    lastName: undefined,
+    dateOfBirth: undefined,
+    email: undefined,
   },
 };
 

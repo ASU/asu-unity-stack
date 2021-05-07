@@ -1,26 +1,46 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-props-no-spreading */
 import { useField, Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { Span, Error, Text, LabelGroup, Label, E } from "./StyledControls";
+import { RfiError } from "./controls-helpers";
 
 const RfiCheckboxMulti = ({ label, name, options }) => {
-  const [field, meta] = useField({ name, type: "checkbox" });
-  const isError = meta.touched && meta.error;
   return (
-    <>
-      {/* <div>meta.touched:{""+meta.touched} meta.error:{meta.error}</div> */}
-      <div>{label}</div>
-      {options.map(option => (
-        <label htmlFor={name} key={option.id || option.value}>
-          <Field type="checkbox" id={name} name={name} value={option.value} />
-          <span>{option.text}</span>
-        </label>
-      ))}
-      <div>{isError ? <div>{meta.error}</div> : null}</div>
-    </>
+    <Field as="div" name={name}>
+      {({
+        field,
+        // eslint-disable-next-line no-unused-vars
+        form: { touched, errors },
+        meta,
+      }) => {
+        const isError = meta.error;
+        return (
+          <fieldset>
+            <legend>{label}</legend>
+            <RfiError isError={isError} metaError={meta.error} />
+            {options.map(option => (
+              <div
+                className="form-check"
+                key={option.key ? option.key : option.value}
+              >
+                <Field
+                  type="checkbox"
+                  id={name + option.key}
+                  {...field}
+                  value={option.value}
+                />{" "}
+                <label htmlFor={name + option.key} className="form-check-label">
+                  {option.text}
+                </label>
+              </div>
+            ))}
+          </fieldset>
+        );
+      }}
+    </Field>
   );
 };
 

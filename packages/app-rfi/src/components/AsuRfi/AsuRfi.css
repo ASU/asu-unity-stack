@@ -9,3 +9,26 @@ body {
 .rfi-progress .progress-bar {
   background-color: #ffc627;
 }
+
+/* We're not using html5 :valid and :invalid pseudo classes so we need
+   to tweak .invalid-feedback */
+form.uds-form.uds-rfi .invalid-feedback {
+  display: inline-block;
+}
+
+/* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
+   have a solid example of how this should work anyway. Full width wouldn't
+   be right. */
+form.uds-form.uds-rfi .input-group-trailing-icon svg {
+  position: relative;
+  right: 1.5rem;
+  top: 0.75rem;
+}
+
+/* For some reason, not being picked up, so doing ourselves for now. */
+form.uds-form.uds-rfi label svg.uds-field-required {
+  font-size: 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.125rem;
+  color: #b72a2a;
+}

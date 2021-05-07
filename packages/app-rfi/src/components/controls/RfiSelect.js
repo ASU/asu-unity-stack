@@ -5,15 +5,15 @@ import { useField } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { Label, Error, Text, StyledSelect, E } from "./StyledControls";
+import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiSelect = ({ id, label, name, options }) => {
+const RfiSelect = ({ id, label, name, requiredIcon, options }) => {
   const [field, meta] = useField({ name });
   const isError = meta.touched && meta.error;
   return (
-    <>
-      <label htmlFor={id || name}>{label}</label>
-      <select error={isError} {...field}>
+    <div className="form-group">
+      <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
+      <select id={id} className="form-control" error={isError} {...field}>
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}
@@ -23,14 +23,19 @@ const RfiSelect = ({ id, label, name, options }) => {
           </option>
         ))}
       </select>
-      <div>{isError ? <div>{meta.error}</div> : null}</div>
-    </>
+      <RfiError isError={isError} metaError={meta.error} />
+    </div>
   );
 };
 
+// Note on requiredIcon. Yup required status is not readily available so we
+// duplicate the setting in our props got displaying the required icon until
+// Formik has a better way to do it.
+
 RfiSelect.defaultProps = {
   // TODO better defaults?
-  id: "",
+  id: undefined,
+  requiredIcon: undefined,
 };
 
 RfiSelect.propTypes = {
@@ -44,6 +49,7 @@ RfiSelect.propTypes = {
       text: PropTypes.string.isRequired,
     })
   ).isRequired,
+  requiredIcon: PropTypes.bool,
 };
 
 export { RfiSelect };

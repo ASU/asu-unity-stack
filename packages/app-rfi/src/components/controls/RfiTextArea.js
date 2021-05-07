@@ -5,34 +5,50 @@ import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { TxtArea, Label, Error, Text, E } from "./StyledControls";
+import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiTextArea = ({ label, name, id }) => {
+const RfiTextArea = ({ label, name, id, requiredIcon }) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
         const isError = meta.touched && meta.error;
         return (
-          <>
-            <label htmlFor={id || name}>{label}</label>
-            <textarea error={isError} {...field} />
-            <div>{isError ? <div>{meta.error}</div> : null}</div>
-          </>
+          <div className="form-group">
+            <RfiLabel
+              label={label}
+              name={name}
+              id={id}
+              requiredIcon={requiredIcon}
+            />
+            <textarea
+              id={id}
+              error={isError}
+              {...field}
+              className="form-control"
+            />
+            <RfiError isError={isError} metaError={meta.error} />
+          </div>
         );
       }}
     </Field>
   );
 };
 
+// Note on requiredIcon. Yup required status is not readily available so we
+// duplicate the setting in our props got displaying the required icon until
+// Formik has a better way to do it.
+
 RfiTextArea.defaultProps = {
   // TODO better defaults?
-  id: "",
+  id: undefined,
+  requiredIcon: undefined,
 };
 
 RfiTextArea.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
+  requiredIcon: PropTypes.bool,
 };
 
 export { RfiTextArea };

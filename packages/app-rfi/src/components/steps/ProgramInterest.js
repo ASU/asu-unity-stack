@@ -45,24 +45,32 @@ const ProgramInterest = () => {
         contact you about enrolling at ASU
       </p>
       <RfiSelect
-        label="My program of interest is *"
+        label="My program of interest is"
+        id="programPlan"
         name="programPlan"
         options={programPlanOptions}
+        requiredIcon
       />
       <RfiSelect
-        label="I will be a future *"
+        label="I will be a future"
+        id="studentType"
         name="studentType"
         options={studentTypeOptions}
+        requiredIcon
       />
       <RfiSelect
-        label="My campus of choice is *"
+        label="My campus of choice is"
+        id="campus"
         name="campus"
         options={campusOptions}
+        requiredIcon
       />
       <RfiSelect
-        label="My start date *"
+        label="My start date"
+        id="startDate"
         name="startDate"
         options={startDateOptions}
+        requiredIcon
       />
     </>
   );
@@ -81,10 +89,10 @@ const programInterestForm = {
   },
 
   initialValues: {
-    studentType: "",
-    programPlan: "", // TODO default from prop if present
-    campus: "",
-    startDate: "",
+    studentType: undefined,
+    programPlan: undefined, // TODO default from prop if present
+    campus: undefined,
+    startDate: undefined,
   },
 };
 

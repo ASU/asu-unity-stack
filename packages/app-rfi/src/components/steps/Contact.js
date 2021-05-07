@@ -77,13 +77,19 @@ const Contact = () => {
   return (
     <>
       <h3>Contact info</h3>
-      <RfiTextInput label="Phone *" name="phone" />
-      <RfiCheckboxSingle name="mobile" value="1">
+      <RfiTextInput label="Phone" id="phone" name="phone" requiredIcon />
+      <RfiCheckboxSingle id="mobile" name="mobile" value="1">
         This is a USA mobile number and I would like to receive information via
         SMS text messaging
       </RfiCheckboxSingle>
-      <RfiSelect label="Country *" name="country" options={countryOptions} />
-      <RfiTextInput label="Postal code * (TODO)" name="zipcode" />
+      <RfiSelect
+        label="Country"
+        id="country"
+        name="country"
+        options={countryOptions}
+        requiredIcon
+      />
+      <RfiTextInput label="Postal code (TODO)" name="zipcode" requiredIcon />
     </>
   );
 };
@@ -97,16 +103,16 @@ const contactForm = {
     phone: Yup.string() // TODO transform ?
       .max(24, "Too long")
       .required("Required"),
-    mobile: Yup.boolean(),
+    mobile: Yup.string(),
     country: Yup.string().required("Required"),
     zipcode: Yup.string().required("Required"), // TODO Required only if countyry is US.
   },
 
   initialValues: {
-    phone: "",
-    mobile: "",
-    country: "",
-    zipcode: "",
+    phone: undefined,
+    mobile: undefined,
+    country: undefined,
+    zipcode: undefined,
   },
 };
 

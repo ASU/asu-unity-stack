@@ -13,9 +13,12 @@ import {
 // Options
 
 const veteranStatusOptions = [
-  { key: "1", value: "option 1", text: "Option 1" },
-  { key: "2", value: "option 2", text: "Option 2" },
-  { key: "3", value: "option 3", text: "Option 3" },
+  { key: "1", value: "None", text: "None" },
+  { key: "2", value: "Active Duty", text: "Active Duty" },
+  { key: "3", value: "National Guard", text: "National Guard" },
+  { key: "4", value: "Veteran", text: "Veteran" },
+  { key: "5", value: "Armed forces reserve", text: "Armed forces reserve" },
+  { key: "6", value: "Spouse/Dependent", text: "Spouse/Dependent" },
 ];
 
 // TODO Determine preferable way to source these.
@@ -31,32 +34,40 @@ const countryOptions = [
 const Optional = () => {
   return (
     <>
-      <h3>About Me</h3>
-      <RfiCheckboxSingle name="notCitizen" value="1">
-        TODO get wording: I am not a citizen of the United States.
+      <h3>More about me</h3>
+      <RfiCheckboxSingle id="notCitizen" name="notCitizen" value="1">
+        I am not a U.S. citizen and do not have a green card.
       </RfiCheckboxSingle>
-      <RfiRadioGroup
-        label="Veteran status... TODO GET WORDING"
-        name="veteranStatus"
-        options={veteranStatusOptions}
-      />
       <RfiSelect
         label="Country"
+        id="country"
         name="country"
         options={countryOptions}
         // disabled TODO flagged by ts-check so commented out
       />{" "}
       {/* TODO make disabled work */}
-      <RfiTextInput label="Address" name="address" />
-      <RfiTextInput label="City" name="city" />
-      <RfiTextInput label="State or Province" name="stateProvince" />
+      <RfiTextInput label="Address" id="address" name="address" />
+      <RfiTextInput label="City" id="city" name="city" />
+      <RfiTextInput
+        label="State or Province"
+        id="stateProvince"
+        name="stateProvince"
+      />
       <RfiTextInput
         label="Zipcode"
+        id="zipcode"
         name="zipcode" /* disabled TODO flagged by ts-check */
       />{" "}
       {/* TODO make disabled work */}
+      <RfiRadioGroup
+        label="U.S. Veteran admission information and services"
+        id="veteranStatus"
+        name="veteranStatus"
+        options={veteranStatusOptions}
+      />
       <RfiTextArea
         label="Additional assistance requested"
+        id="additionalAssistance"
         name="additionalAssistance"
       />
     </>
@@ -68,7 +79,7 @@ const Optional = () => {
 const optionalForm = {
   component: Optional,
   validationSchema: {
-    notCitizen: Yup.boolean(),
+    notCitizen: Yup.string(),
     veteranStatus: Yup.string(),
     country: Yup.string(),
     address: Yup.string(),
@@ -79,14 +90,14 @@ const optionalForm = {
   },
 
   initialValues: {
-    notCitizen: "",
-    veteranStatus: "",
-    country: "", // TODO use value, disable
-    address: "",
-    city: "",
-    stateProvince: "",
-    zipcode: "", // TODO use value, disable
-    additionalAssistance: "",
+    notCitizen: undefined,
+    veteranStatus: undefined,
+    country: undefined, // TODO use value, disable
+    address: undefined,
+    city: undefined,
+    stateProvince: undefined,
+    zipcode: undefined, // TODO use value, disable
+    additionalAssistance: undefined,
   },
 };
 

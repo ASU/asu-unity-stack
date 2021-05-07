@@ -1,46 +1,33 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import {
-  faExclamationTriangle,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { Input, Label, Error, Text, E } from "./StyledControls";
+import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiTextInput = ({ label, name, id, isRequired, helperText }) => {
+const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
         const isError = meta.touched && meta.error;
         return (
           <div className="form-group">
-            <label htmlFor={id || name}>
-              {isRequired ? (
-                <span title="Required">
-                  <FontAwesomeIcon icon={faCircle} />
-                </span>
-              ) : null}
-              {label}
-            </label>
+            <RfiLabel
+              label={label}
+              name={name}
+              id={id}
+              requiredIcon={requiredIcon}
+            />
             <input
+              id={id}
               type="text"
               {...field}
               className="form-control"
               placeholder={helperText}
             />
-            <div>
-              {isError ? (
-                <small className="form-text invalid-feedback">
-                  <FontAwesomeIcon icon={faExclamationTriangle} />
-                  {meta.error}
-                </small>
-              ) : null}
-            </div>
+            <RfiError isError={isError} metaError={meta.error} />
           </div>
         );
       }}
@@ -48,21 +35,22 @@ const RfiTextInput = ({ label, name, id, isRequired, helperText }) => {
   );
 };
 
-// Note on isRequired. Yup required status is not readily available so we
-// duplicate the setting in our props until Formik has a better way to do it.
+// Note on requiredIcon. Yup required status is not readily available so we
+// duplicate the setting in our props got displaying the required icon until
+// Formik has a better way to do it.
 
 RfiTextInput.defaultProps = {
   // TODO better defaults?
-  id: "",
-  isRequired: "",
-  helperText: "",
+  id: undefined,
+  requiredIcon: undefined,
+  helperText: undefined,
 };
 
 RfiTextInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
-  isRequired: PropTypes.bool,
+  requiredIcon: PropTypes.bool,
   helperText: PropTypes.string,
 };
 

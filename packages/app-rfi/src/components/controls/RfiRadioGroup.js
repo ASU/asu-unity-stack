@@ -5,9 +5,9 @@ import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { Span, Error, Text, LabelGroup, E } from "./StyledControls";
+import { RfiError } from "./controls-helpers";
 
-const RfiRadioGroup = ({ name, options, label }) => {
+const RfiRadioGroup = ({ name, id, options, label }) => {
   return (
     <Field as="div" name={name}>
       {({
@@ -18,16 +18,26 @@ const RfiRadioGroup = ({ name, options, label }) => {
       }) => {
         const isError = meta.error;
         return (
-          <>
-            <label htmlFor={name}>{label}</label>
+          <fieldset>
+            <legend>{label}</legend>
+            <RfiError isError={isError} metaError={meta.error} />
             {options.map(option => (
-              <span key={option.key ? option.key : option.value}>
-                <Field type="radio" {...field} value={option.value} />{" "}
-                <span>{option.text}</span>
-              </span>
+              <div
+                className="form-check"
+                key={option.key ? option.key : option.value}
+              >
+                <Field
+                  type="radio"
+                  id={name + option.key}
+                  {...field}
+                  value={option.value}
+                />{" "}
+                <label htmlFor={name + option.key} className="form-check-label">
+                  {option.text}
+                </label>
+              </div>
             ))}
-            <div>{isError ? <div>{meta.error}</div> : null}</div>
-          </>
+          </fieldset>
         );
       }}
     </Field>
@@ -36,6 +46,7 @@ const RfiRadioGroup = ({ name, options, label }) => {
 
 RfiRadioGroup.propTypes = {
   label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({

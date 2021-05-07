@@ -5,28 +5,41 @@ import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-// import { Input, Label, Error, Text, E } from "./StyledControls";
+import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiEmailInput = ({ name, label }) => {
+const RfiEmailInput = ({ name, label, id, requiredIcon }) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
         const isError = meta.touched && meta.error;
         return (
-          <>
-            <label htmlFor={name}>{label}</label>
-            <input type="text" {...field} />
-            <div>{isError ? <div>{meta.error}</div> : null}</div>
-          </>
+          <div className="form-group">
+            <RfiLabel
+              label={label}
+              name={name}
+              id={id}
+              requiredIcon={requiredIcon}
+            />
+            <input type="text" {...field} id={id} className="form-control" />
+            <RfiError isError={isError} metaError={meta.error} />
+          </div>
         );
       }}
     </Field>
   );
 };
 
+RfiEmailInput.defaultProps = {
+  // TODO better defaults?
+  id: undefined,
+  requiredIcon: undefined,
+};
+
 RfiEmailInput.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  requiredIcon: PropTypes.bool,
 };
 
 export { RfiEmailInput };
