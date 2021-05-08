@@ -13,7 +13,7 @@ import React from "react";
 // eslint-disable-next-line no-unused-vars
 import UdsStyles from "../../../node_modules/@asu-design-system/bootstrap4-theme/dist/css/bootstrap-asu.min.css";
 
-import RfiMainForm from "../steps";
+import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./AsuRfi.css";
 
 // import { Util } from "reactstrap";
