@@ -38,21 +38,21 @@ const Optional = () => {
       <RfiCheckboxSingle id="notCitizen" name="notCitizen" value="1">
         I am not a U.S. citizen and do not have a green card.
       </RfiCheckboxSingle>
-      <RfiSelect
+      {/* <RfiSelect
         label="Country"
         id="country"
         name="country"
         options={countryOptions}
         // disabled TODO flagged by ts-check so commented out
-      />{" "}
+      /> */}{" "}
       {/* TODO make disabled work */}
       <RfiTextInput label="Address" id="address" name="address" />
       <RfiTextInput label="City" id="city" name="city" />
-      <RfiTextInput
+      {/* <RfiTextInput
         label="State or Province"
         id="stateProvince"
         name="stateProvince"
-      />
+      /> */}
       <RfiTextInput
         label="Zipcode"
         id="zipcode"
