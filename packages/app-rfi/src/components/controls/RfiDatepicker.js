@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
+// TODO nix the kitchen sink. Requires resolution of build issues.
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 
@@ -29,19 +30,11 @@ const RfiDatepicker = ({
         meta,
       }) => {
         const isError = meta.touched && meta.error;
-        // FIXME Issue with returning to this step and not seeing the default value in state (it's still there)
-        // Fix is likely to be with reading from state and popping the value in the right place in the props
-        // const [dob, setDob] = useState();
-        const [dob, setDob] = useState(
-          new Date(new Date().setFullYear(new Date().getFullYear() - 20))
-        );
-        // const [dob, setDob] = useState(setFieldValue);
-        // console.log(field, 'FIELD');
-        // console.log(meta, 'META');
-        // console.log(touched, 'TOUCHED');
-        // console.log(errors, 'ERRORS');
-        // console.log(values, "VALUES");
-        // console.log(values.name, "VALUES.name");
+        // TODO We strive to keep implementation details out of the control
+        // components, but with the datepicker the automatic value mapping from
+        // Formik needs a little help. The value defaults to undefined, but
+        // if we return after setting, it'll be set correctly if we map it here.
+        const [dateVal, setDateVal] = useState(values.dateOfBirth);
         return (
           <div className="form-group">
             <RfiLabel
@@ -62,14 +55,12 @@ const RfiDatepicker = ({
                 showYearDropdown
                 dropdownMode="select"
                 // selected={false}
-                selected={dob}
-                openToDate={dob}
-                value={dob}
+                selected={dateVal}
+                openToDate={dateVal}
+                value={dateVal}
                 onChange={date => {
-                  setDob(date);
+                  setDateVal(date);
                   setFieldValue(name, date);
-                  console.log(date, "date");
-                  console.log(dob, "dob");
                 }}
               />
               <FontAwesomeIcon icon={faCalendar} />
