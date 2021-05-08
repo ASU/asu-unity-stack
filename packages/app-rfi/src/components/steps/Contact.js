@@ -54,6 +54,7 @@ async function fetchCountries() {
         value: co.countryCodeTwoChar,
         text: co.description,
       }));
+      results.unshift({ key: -1, value: "", text: "-- select country --" });
       console.log(results, "Results");
       // TODO set up local country data be used as a fallback if we don't get any.
       // TODO log if we didn't get results and had to use fallback.
