@@ -32,3 +32,134 @@ form.uds-form.uds-rfi label svg.uds-field-required {
   margin-bottom: 0.125rem;
   color: #b72a2a;
 }
+
+/* TODO CHECKS copied wholesale from boostrap-asu.css due to not getting all styles */
+.form-check {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+}
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled ~ .form-check-label {
+  color: #6c757d;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+}
+
+.form-check-inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 0;
+  margin-right: 0.75rem;
+}
+.form-check-inline .form-check-input {
+  position: static;
+  margin-top: 0;
+  margin-right: 0.3125rem;
+  margin-left: 0;
+}
+/* TODO END CHECKS copied wholesale from boostrap-asu.css due to not getting all styles */
+
+.rfi-progress.progress {
+  border-radius: 0;
+}
+
+/* TODO IMAGE TEXT BLOCK copied from boostrap-asu.css due to note getting all styles */
+.uds-image-text-block-container {
+  border: 1px solid #d0d0d0;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+@media (min-width: 768px) {
+  .uds-image-text-block-container {
+    max-height: auto; /* TODO TWEAKED 540px; */
+  }
+}
+@media screen and (max-width: 576px) {
+  .uds-image-text-block-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.uds-image-text-block-image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.uds-image-text-block-image-container img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+@media screen and (max-width: 576px) {
+  .uds-image-text-block-image-container {
+    display: block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+}
+.uds-image-text-block-text-container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  /*
+  * Set a max width of 50% here because padding/margins are added in addition to the space given for flex, therefore
+  * the width of the text container is actually bigger than of the image container otherwise.
+  */
+  max-width: 50%;
+  padding: 0px; /* TODO TWEAKED 48px 96px; */
+}
+.uds-image-text-block-text-container .uds-rfi-form-wrapper {
+  /* TODO Block is new addition */
+  padding: 48px;
+}
+@media screen and (max-width: 992px) {
+  .uds-image-text-block-text-container {
+    padding: 0px; /* TODO TWEAKED */
+  }
+}
+@media screen and (max-width: 768px) {
+  .uds-image-text-block-text-container {
+    padding: 0px; /* TODO TWEAKED */
+  }
+}
+@media screen and (max-width: 576px) {
+  .uds-image-text-block-text-container {
+    padding: 0px; /* TODO TWEAKED */
+    max-width: 100%;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+  }
+  .uds-image-text-block-text-container .btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    line-height: 1rem;
+  }
+}
+/* TODO END IMAGE TEXT BLOCK copied from boostrap-asu.css due to note getting all styles */

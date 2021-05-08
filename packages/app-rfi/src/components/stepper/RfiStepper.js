@@ -63,60 +63,70 @@ class RfiStepper extends React.Component {
     return (
       <div>
         <Progress value={progress * 100} className="rfi-progress" />
-        <h2>Request information</h2>
-        <Formik
-          initialValues={initValues}
-          validationSchema={Yup.object().shape(schema)}
-          onSubmit={(values, { setSubmitting, setFieldTouched }) => {
-            // eslint-disable-next-line no-undef
-            setTimeout(() => {
-              setSubmitting(false);
+        <div className="uds-rfi-form-wrapper">
+          <h2>Request information</h2>
+          <Formik
+            initialValues={initValues}
+            validationSchema={Yup.object().shape(schema)}
+            onSubmit={(values, { setSubmitting, setFieldTouched }) => {
+              // eslint-disable-next-line no-undef
+              setTimeout(() => {
+                setSubmitting(false);
 
-              if (step === lastStep) {
-                handleSubmit(values);
-              } else {
-                this.next();
-                Object.keys(initialValues[step + 1]).map(key => {
-                  return setFieldTouched(key, false, false);
-                });
-              }
-            }, 400);
-          }}
-        >
-          {() => {
-            return (
-              <Form className="uds-form uds-rfi">
-                {React.createElement(formComponent, {})}
+                if (step === lastStep) {
+                  handleSubmit(values);
+                } else {
+                  this.next();
+                  Object.keys(initialValues[step + 1]).map(key => {
+                    return setFieldTouched(key, false, false);
+                  });
+                }
+              }, 400);
+            }}
+          >
+            {() => {
+              return (
+                <Form className="uds-form uds-rfi">
+                  {React.createElement(formComponent, {})}
 
-                <RfiStepperButtons
-                  stepNum={step}
-                  lastStep={lastStep}
-                  handleBack={this.prev}
-                />
-              </Form>
-            );
-          }}
-        </Formik>
+                  <RfiStepperButtons
+                    stepNum={step}
+                    lastStep={lastStep}
+                    handleBack={this.prev}
+                  />
+                </Form>
+              );
+            }}
+          </Formik>
+        </div>
       </div>
     );
   }
 }
 
 const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
-  <div>
-    {stepNum > 0 ? (
-      <Button type="button" onClick={handleBack}>
-        <FontAwesomeIcon icon={faAngleLeft} /> Prev
-      </Button>
-    ) : null}
-    {stepNum < lastStep ? (
-      <Button type="submit">
-        Next <FontAwesomeIcon icon={faAngleRight} />
-      </Button>
-    ) : (
-      <Button type="submit">Consent/submit</Button>
-    )}
-  </div>
+  <nav aria-label="Request information form" className="container">
+    <div className="row justify-content-end">
+      <div className="col-6">
+        {stepNum > 0 ? (
+          <Button type="button" onClick={handleBack}>
+            <FontAwesomeIcon icon={faAngleLeft} /> Prev
+          </Button>
+        ) : null}
+      </div>
+      <div className="col-6 text-right">
+        {stepNum < lastStep ? (
+          <Button type="submit">
+            Next <FontAwesomeIcon icon={faAngleRight} />
+          </Button>
+        ) : (
+          <Button type="submit" className="btn btn-gold">
+            Consent/submit
+          </Button>
+        )}
+      </div>
+    </div>
+  </nav>
 );
 // TODO disable submit button above when clicked. formik.isSubmitting isn't
 // available. Maybe our success page will just hide the button...
