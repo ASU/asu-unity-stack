@@ -1,19 +1,55 @@
 // @ts-check
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
-import { RfiTextInput, RfiEmailInput, RfiDatepicker } from "../controls";
-
-// import { setFieldValue } from 'formik'
-// import DatePicker from "react-datepicker"
-// import "react-datepicker/dist/react-datepicker.css";
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import {
+  RfiTextInput,
+  RfiEmailInput,
+  RfiDatepicker,
+  RfiSelect,
+} from "../controls";
 
 // Component
 
-// TODO dateOfBirth should use datepicker. See https://stackblitz.com/edit/demo-react-formik-datepicker
+// Datepicker note: see https://stackblitz.com/edit/demo-react-formik-datepicker
 
 const AboutMe = () => {
+  const [termOptions, setTermOptions] = useState([]);
+
+  // Term options
+  useEffect(() => {
+    // Term logic example: for term 2217, the 2 is for century, 21 for last 2 of
+    // year, 1 for spring, 7 for fall. We don't do summer, but it's 4, for
+    // reference.
+    const termData = [];
+    const currMo = new Date().getMonth();
+    for (let i = 0; i < 5; i += 1) {
+      // Use i to calculate out years.
+      const year = new Date().getFullYear() + i;
+      const mil = year.toString();
+      const termSpring = mil.slice(0, 1) + mil.slice(2) + 1; // 1 == spring
+      const termFall = mil.slice(0, 1) + mil.slice(2) + 7; // 7 == fall
+      // Drop spring for current year.
+      if (i > 0) {
+        termData.push({
+          key: termSpring,
+          value: termSpring,
+          text: `${year} Spring`,
+        });
+      }
+      // Drop fall for current year if currMo is greater than June.
+      if (i > 0 || currMo < 6) {
+        // Month is based off zero index.
+        termData.push({
+          key: termFall,
+          value: termFall,
+          text: `${year} Fall`,
+        });
+      }
+    }
+    setTermOptions(termData);
+  }, []); // Run only once. TODO change so we can update based on selections.
+
   return (
     <>
       <h3>About me</h3>
@@ -47,6 +83,13 @@ const AboutMe = () => {
         name="email"
         requiredIcon
       />
+      <RfiSelect
+        label="My start date"
+        id="startDate"
+        name="startDate"
+        options={termOptions}
+        requiredIcon
+      />
     </>
   );
 };
@@ -67,6 +110,7 @@ const aboutMeForm = {
       .required("Required"),
     dateOfBirth: Yup.date().required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
+    startDate: Yup.string().required("Required"),
   },
 
   initialValues: {
@@ -74,14 +118,18 @@ const aboutMeForm = {
     lastName: undefined,
     dateOfBirth: undefined,
     email: undefined,
+    startDate: undefined,
   },
 };
 
 export default aboutMeForm;
 
 /*
-- first name
-- last name
-- date of birth
-- emai
+FIELDS
+- email
+- firstName
+- lastName
+- phone
+- zipcode/postal code
+- entry term
 */

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {
   RfiTextInput,
   RfiCheckboxSingle,
-  RfiSelect,
+  // RfiSelect,
   RfiRadioGroup,
   RfiTextArea,
 } from "../controls";
@@ -22,12 +22,12 @@ const veteranStatusOptions = [
 ];
 
 // TODO Determine preferable way to source these.
-const countryOptions = [
-  { key: "1", value: "", text: "-- Select --" },
-  { key: "2", value: "Country A", text: "Country A" },
-  { key: "3", value: "Country B", text: "Country B" },
-  { key: "4", value: "Country C", text: "Country C" },
-];
+// const countryOptions = [
+//   { key: "1", value: "", text: "-- Select --" },
+//   { key: "2", value: "Country A", text: "Country A" },
+//   { key: "3", value: "Country B", text: "Country B" },
+//   { key: "4", value: "Country C", text: "Country C" },
+// ];
 
 // Component
 
@@ -104,14 +104,23 @@ const optionalForm = {
 export default optionalForm;
 
 /*
-Field Group: Optional
-- not US citizen [checkbox]
-- US Veteran
-- [redux] country
-- Address
-- City
-- State/Province
-- [redux] Postal code
-- Additional assistance
+FIELDS
+- country of citizenship
+- street address
+- city
+- state
+- country (repeat?)
+- date of birth
+- military veteran
+- questions/comments
 - [markup] Consent wordin
+
+HIDDEN FIELDS
+- international (derived based on country of citizenship)
+- source
+- url
+- ga_client id
+
+- ??? hash/client id
+
 */

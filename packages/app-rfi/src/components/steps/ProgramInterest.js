@@ -6,35 +6,53 @@ import { RfiSelect } from "../controls";
 
 // Options
 
-// TODO options from lookup
-const programPlanOptions = [
-  { key: "1", value: "", text: "-- Select --" },
-  { key: "2", value: "Program A", text: "Program A" },
-  { key: "3", value: "Program B", text: "Program B" },
-  { key: "4", value: "Program C", text: "Program C" },
+// TODO if we have to fallback to XMLRPC services... https://github.com/ganl/mimic-xmlrpc
+// Or any benefit in doing a wrapper/adapter service... via a lambda? :D
+
+// TODO verify value to use
+const campusOptions = [
+  { key: "0", value: "", text: "-- Select --" },
+  {
+    key: "1",
+    value: "on campus",
+    text: "I plan to take some/all of my classes on campus",
+  },
+  {
+    key: "2",
+    value: "online",
+    text: "I plan to study 100% online through ASU Online",
+  },
+  {
+    key: "3",
+    value: "no preference",
+    text: "I am not sure",
+  },
 ];
 
 const studentTypeOptions = [
-  { key: "1", value: "", text: "-- Select --" },
-  { key: "2", value: "First Time Freshman", text: "First Time Freshman" },
-  { key: "3", value: "Transfer", text: "Transfer" },
-  { key: "4", value: "Readmission", text: "Readmission" },
+  { key: "0", value: "", text: "-- Select --" },
+  { key: "1", value: "First Time Freshman", text: "First-year undergraduate" },
+  { key: "2", value: "Transfer", text: "Transferring undergraduate" },
+  {
+    key: "3",
+    value: "Readmission",
+    text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
+  },
 ];
 
-const campusOptions = [
-  { key: "1", value: "", text: "-- Select --" },
-  { key: "2", value: "Downtown", text: "Downtown" },
-  { key: "3", value: "West", text: "West" },
-  { key: "4", value: "Online", text: "Online" },
+const areaInterestOptions = [
+  { key: "0", value: "", text: "-- Select --" },
+  { key: "1", value: "Interest A", text: "Interest A" },
+  { key: "2", value: "Interest B", text: "Interest B" },
+  { key: "3", value: "Interest C", text: "Interest C" },
 ];
 
-// TODO options from lookup
-const startDateOptions = [
-  { key: "1", value: "", text: "-- Select --" },
-  { key: "2", value: "a0Jd000000OH746EAD", text: "2020 Fall" },
-  { key: "3", value: "a0Jd000000OH74BEAT", text: "2021 Spring" },
+const programPlanOptions = [
+  { key: "0", value: "", text: "-- Select --" },
+  { key: "1", value: "Program A", text: "Program A" },
+  { key: "2", value: "Program B", text: "Program B" },
+  { key: "3", value: "Program C", text: "Program C" },
 ];
-
 // Component
 
 const ProgramInterest = () => {
@@ -44,32 +62,39 @@ const ProgramInterest = () => {
         Please complete and submit the form below, and a representative will
         contact you about enrolling at ASU
       </p>
+      {/*
+      <RfiRadioGroup
+        label="Which applies to you?"
+        id="campus"
+        name="campus"
+        options={campusOptions}
+      /> */}
       <RfiSelect
-        label="My program of interest is"
-        id="programPlan"
-        name="programPlan"
-        options={programPlanOptions}
-        requiredIcon
-      />
-      <RfiSelect
-        label="I will be a future"
-        id="studentType"
-        name="studentType"
-        options={studentTypeOptions}
-        requiredIcon
-      />
-      <RfiSelect
-        label="My campus of choice is"
+        label="Which applies to you?"
         id="campus"
         name="campus"
         options={campusOptions}
         requiredIcon
       />
       <RfiSelect
-        label="My start date"
-        id="startDate"
-        name="startDate"
-        options={startDateOptions}
+        label="Select your student status"
+        id="studentType"
+        name="studentType"
+        options={studentTypeOptions}
+        requiredIcon
+      />
+      <RfiSelect
+        label="Area of interest"
+        id="areaInterest"
+        name="areaInterest"
+        options={areaInterestOptions}
+        requiredIcon
+      />
+      <RfiSelect
+        label="Program of interest"
+        id="programPlan"
+        name="programPlan"
+        options={programPlanOptions}
         requiredIcon
       />
     </>
@@ -82,28 +107,28 @@ const programInterestForm = {
   component: ProgramInterest,
 
   validationSchema: {
-    studentType: Yup.string().required("Required"),
-    programPlan: Yup.string().required("Required"),
     campus: Yup.string().required("Required"),
-    startDate: Yup.string().required("Required"),
+    studentType: Yup.string().required("Required"),
+    areaInterest: Yup.string().required("Required"),
+    programPlan: Yup.string().required("Required"),
   },
 
   initialValues: {
-    studentType: undefined,
-    programPlan: undefined, // TODO default from prop if present
     campus: undefined,
-    startDate: undefined,
+    studentType: undefined,
+    areaInterest: undefined,
+    programPlan: undefined,
   },
 };
 
 export default programInterestForm;
 
 /*
-Field Group: "I'm interested in..." - Program Details
-- student type
-- program plan
-- campus
-- start dat
+FIELDS
+x- campus
+x- career and student type // TODO selection will be used to derive values for payload
+- interest 1 - area of interest
+- interest 2 - program of interest
 
 From legacy module - a trail for what to update from
   // Load degree settings
