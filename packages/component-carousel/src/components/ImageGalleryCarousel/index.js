@@ -93,6 +93,13 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
     });
   }, [instanceName]);
 
+  useEffect(() => {
+    const imgs = document.querySelectorAll(".image-navigator img");
+    imgs.forEach(img =>
+      img.addEventListener("click", e => e.stopPropagation())
+    );
+  }, []);
+
   const bulletItems = imageItems.map(item => item.imageSource);
 
   return (

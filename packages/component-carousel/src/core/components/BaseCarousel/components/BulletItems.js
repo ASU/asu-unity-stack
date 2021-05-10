@@ -61,9 +61,14 @@ BulletItems.propTypes = {
  * @returns {JSX.Element}
  */
 const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
+  /**
+   *
+   * @param {React.MouseEvent<HTMLImageElement, MouseEvent>} e
+   * @param {number} index
+   */
   const clickBullet = (e, index) => {
     const { ariaSelected } = e.currentTarget.dataset;
-    e.currentTarget.dataset.ariaSelected = !ariaSelected;
+    e.currentTarget.dataset.ariaSelected = String(!ariaSelected);
     e.stopPropagation();
     onItemClick(index);
   };
