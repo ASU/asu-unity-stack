@@ -62,10 +62,11 @@ const Testimonial = ({
           </span>
         </h3>
       )}
-      <p className={spreadClasses(itemStyle.contentCssClass)}>
-        {quote.content}
-      </p>
-
+      {quote.content && (
+        <p className={spreadClasses(itemStyle.contentCssClass)}>
+          {quote.content}
+        </p>
+      )}
       {quote.cite && (
         <div className="citation">
           <cite className="name">{quote.cite.name}</cite>
@@ -81,7 +82,7 @@ const Testimonial = ({
 Testimonial.propTypes = {
   quote: PropTypes.shape({
     title: PropTypes.string,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.string,
     cite: PropTypes.shape({
       name: PropTypes.string,
       description: PropTypes.string,
