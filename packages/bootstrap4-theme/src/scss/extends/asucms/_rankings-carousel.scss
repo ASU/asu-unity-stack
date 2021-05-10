@@ -40,6 +40,7 @@
   width: 100%;
   border: 1px solid #d0d0d0;
 
+  //Middle component starts here
   .image-carousel {
     grid-area: carousel;
     overflow: hidden;
@@ -165,4 +166,5 @@
       cursor: -webkit-grabbing;
     }
   }
+  //Middle component starts here
 }
