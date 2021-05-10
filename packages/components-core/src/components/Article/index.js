@@ -199,9 +199,9 @@ export const Article = ({
       <div
         className={classNames(
           UdsStyles["col"],
+          UdsStyles["col-12"],
           UdsStyles["col-lg-4"],
-          UdsStyles["col-md-6"],
-          UdsStyles["col-sm-12"]
+          UdsStyles["col-md-6"]
         )}
       >
         <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" transform="shrink-2" />
