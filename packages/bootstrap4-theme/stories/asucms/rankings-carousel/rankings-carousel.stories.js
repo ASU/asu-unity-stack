@@ -2,10 +2,10 @@ export default { title: 'ASUCMS/Rankings Carousel' };
 
 export const rankingsCarousel = () => `
   <div class="rankings-component">
-    <div class="placeholder-section">
-      Left-side
+    <div class="find-my-degree">
+      Find My Degree
     </div>
-    <div class="image-carousel mb-2">
+    <div class="image-carousel">
       <div id="rankings-carousel" class="glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
@@ -82,8 +82,8 @@ export const rankingsCarousel = () => `
         </div>
       </div>
     </div>
-    <div class="placeholder-section">
-      Right-side
+    <div class="i-am-future">
+      I am a future
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.js"></script>
     <script>
