@@ -46,6 +46,8 @@ const navListStyles = breakpoint => css`
         }
       }
 
+
+
       > a {
         :after {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -62,6 +64,12 @@ const navListStyles = breakpoint => css`
           width: 0;
           margin-left: 0;
           top: 0.5rem;
+        }
+
+        &.nav-item-selected {
+          :after {
+            width: 100%;
+          }
         }
       }
 
