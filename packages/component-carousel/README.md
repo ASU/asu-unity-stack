@@ -262,7 +262,18 @@ The folder [packages/component-carousel/examples](/packages/component-carousel/e
 <br/>contains examples to use the carousel on static HTML page
 
 ### All carousel examples
+
 - [Card carousel](/packages/component-carousel/examples/card.html)
 - [Image Gallery carousel](/packages/component-carousel/examples/image-gallery.html)
 - [Image carousel](/packages/component-carousel/examples/image.html)
 - [Testimonial carousel](/packages/component-carousel/examples/testimonial.html)
+### Test examples
+
+- run `cd packages/component-carousel`
+- run `lite-server`
+- open the broweser to the url `http://localhost:3000/examples/card.html`
+  (port number may be different)
+
+# References
+
+-  (Add React to a Website)[https://reactjs.org/docs/add-react-to-a-website.html]

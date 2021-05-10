@@ -1,5 +1,4 @@
 // @ts-check
-/** @jsx h */
 
 /**
  * @typedef {import('.').TestimonialItem} TestimonialItem

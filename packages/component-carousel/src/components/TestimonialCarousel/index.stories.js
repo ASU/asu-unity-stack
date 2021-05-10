@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 // @ts-check
-/** @jsx h */
 import {
   withKnobs,
   text,
@@ -7,7 +7,7 @@ import {
   object,
   select,
 } from "@storybook/addon-knobs";
-import { h } from "preact";
+import React from "react";
 
 import { TestimonialCarousel } from ".";
 
@@ -58,7 +58,7 @@ const GROUP_STYLE = "Styles";
 /**
  *
  * @param {{ children: JSX.Element}} props
- * @returns { h.JSX.Element}
+ * @returns { JSX.Element}
  */
 const Wrapper = ({ children }) => (
   <div

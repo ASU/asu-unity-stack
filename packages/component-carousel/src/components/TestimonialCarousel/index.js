@@ -1,7 +1,7 @@
 // @ts-check
 import { Testimonial } from "@asu-design-system/components-core/src/components/Testimonial";
-import { h } from "preact";
 import PropTypes from "prop-types";
+import React from "react";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
@@ -79,8 +79,8 @@ const TestimonialCarousel = ({
       maxWidth={maxWidth}
       width={width}
       carouselItems={carouselItems}
-      isFullWidth={true}
-      removeSideBackground={true}
+      isFullWidth
+      removeSideBackground
       hasNavButtons={hasNavButtons}
       hasPositionIndicators={hasPositionIndicators}
       imageAutoSize={imageAutoSize}
@@ -89,14 +89,26 @@ const TestimonialCarousel = ({
 };
 
 TestimonialCarousel.propTypes = {
-  perView: PropTypes.string.isRequired,
-  testimonialItems: PropTypes.arrayOf(PropTypes.shape(Testimonial.propTypes))
-    .isRequired,
-  itemStyle: PropTypes.object,
+  testimonialItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      content: PropTypes.string.isRequired,
+      cite: PropTypes.shape({
+        name: PropTypes.string,
+        description: PropTypes.string,
+      }),
+    })
+  ).isRequired,
+  itemStyle: PropTypes.shape({
+    containerCssClass: PropTypes.arrayOf(PropTypes.string),
+    titleCssClass: PropTypes.arrayOf(PropTypes.string),
+    contentCssClass: PropTypes.arrayOf(PropTypes.string),
+  }),
   width: PropTypes.string,
   maxWidth: PropTypes.string,
-  hasContent: PropTypes.bool,
   imageAutoSize: PropTypes.bool,
+  hasNavButtons: PropTypes.bool,
+  hasPositionIndicators: PropTypes.bool,
 };
 
 export { TestimonialCarousel };

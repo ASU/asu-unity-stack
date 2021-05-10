@@ -1,8 +1,6 @@
 // @ts-check
-/** @jsx h */
-import { h, Fragment } from "preact";
-import { useEffect } from "preact/compat";
 import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
@@ -75,7 +73,7 @@ const BaseCarousel = ({
   // Get glide instance class name.
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
-  let instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
+  const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
   const buttonCount = calcualteViewItems(carouselItems.length, +perView);
 
   useEffect(() => {
@@ -104,10 +102,7 @@ const BaseCarousel = ({
 
       {CustomNavComponent ? (
         // @ts-ignore
-        <CustomNavComponent
-          buttonCount={buttonCount}
-          instanceName={instanceName}
-        />
+        <CustomNavComponent instanceName={instanceName} />
       ) : (
         <>
           {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
@@ -124,10 +119,15 @@ BaseCarousel.propTypes = {
   maxWidth: PropTypes.string,
   carouselItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   cssClass: PropTypes.string,
-  CustomNavComponent: PropTypes.object,
+  CustomNavComponent: PropTypes.element,
   role: PropTypes.string,
   ariaLabelledBy: PropTypes.string,
   onItemClick: PropTypes.func,
+  isFullWidth: PropTypes.bool,
+  removeSideBackground: PropTypes.bool,
+  hasNavButtons: PropTypes.bool,
+  hasPositionIndicators: PropTypes.bool,
+  imageAutoSize: PropTypes.bool,
 };
 
 export { BaseCarousel, calcualteViewItems };

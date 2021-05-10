@@ -1,7 +1,5 @@
 // @ts-check
 import {
-  HydratePreact,
-  RenderPreact,
   initCardCarousel,
   initTestimonialCarousel,
   initImageCarousel,
@@ -10,8 +8,6 @@ import {
 
 export * from "./components";
 export {
-  HydratePreact,
-  RenderPreact,
   initCardCarousel,
   initTestimonialCarousel,
   initImageCarousel,

@@ -14,30 +14,26 @@
  * @returns {number}
  */
 function calcualteViewItems(itemCount, perView) {
-
   let buttonCount;
 
   // Get Original viewport width so we can set buttonCount.
   // Note: buttonCount is not adaptive at this time, per comment above.
-  let vw = Math.max(
+  const vw = Math.max(
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
   );
-  //console.log("VW", vw);
+
   buttonCount = itemCount;
   if (vw < 768) {
     // Value for sm breakpoint
-    //console.log("VW sm", vw);
     // No adjusting buttonCount. Always max, one at a time for sm.
   } else if (vw < 992) {
     // Value for md breakpoint
-    //console.log("VW md", vw);
     if (perView >= 2) {
       buttonCount = itemCount - 1;
     }
   } else {
     // Value for lg breakpoint
-    //console.log("VW lg", vw);
     if (perView >= 2) {
       buttonCount = itemCount - 1;
     }
@@ -49,6 +45,4 @@ function calcualteViewItems(itemCount, perView) {
   return buttonCount;
 }
 
-export {
-  calcualteViewItems
-}
+export { calcualteViewItems };

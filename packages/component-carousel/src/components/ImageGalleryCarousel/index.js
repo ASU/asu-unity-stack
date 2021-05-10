@@ -1,7 +1,6 @@
 // @ts-check
-import { h } from "preact";
-import { useEffect, useState } from "preact/hooks";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 import {
@@ -21,9 +20,22 @@ import {
  *     imageSource: string,
  *     thumbnailSource?: string,
  *     altText:string
- *     content?: any
+ *     content?: string
  * }} ImageCarouselItem
  */
+
+const sharedProps = {
+  imageItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      imageSource: PropTypes.string,
+      thumbnailSource: PropTypes.string,
+      altText: PropTypes.string,
+      content: PropTypes.string,
+    })
+  ),
+  hasContent: PropTypes.bool,
+};
 
 /**
  * This function creates a html template which render an image
@@ -46,6 +58,76 @@ const htmlTemplate = ({ id, imageSource, altText }) => ({
 /**
  *
  * @param {{
+ * instanceName: string
+ * imageItems: ImageCarouselItem []
+ * hasContent: boolean
+ * }} props
+ * @returns { JSX.Element }
+ */
+// eslint-disable-next-line react/prop-types
+const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
+  const ATTR_INDEX = "data-current-index";
+  const currentSlider = document.querySelector(`#${instanceName}`);
+  const [content, setContent] = useState(imageItems[0].content);
+
+  const onItemClick = currentIndex => {
+    const item = imageItems[currentIndex];
+    setContent(item.content);
+  };
+
+  useEffect(() => {
+    function onDataCurrentIndexChange(mutations) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const mutation of mutations) {
+        if (mutation && mutation.attributeName === ATTR_INDEX) {
+          return onItemClick(+currentSlider.getAttribute(ATTR_INDEX));
+        }
+      }
+      return null;
+    }
+
+    const observer = new MutationObserver(onDataCurrentIndexChange);
+
+    observer.observe(currentSlider, {
+      attributes: true,
+    });
+  }, [instanceName]);
+
+  const bulletItems = imageItems.map(item => item.imageSource);
+
+  return (
+    <div className="image-gallery-action-area" data-has-content={hasContent}>
+      <div className="image-navigator">
+        <BaseNavButtonContainer>
+          <PrevButton />
+          <ImageBulletItems
+            imageItems={bulletItems}
+            onItemClick={index => onItemClick(index)}
+          />
+          <NextButton />
+        </BaseNavButtonContainer>
+      </div>
+      {hasContent ? (
+        <figcaption id="caption" className="figure-caption uds-figure-caption">
+          {typeof content === "string" ? (
+            <span className="uds-caption-text">{content}</span>
+          ) : (
+            content
+          )}
+        </figcaption>
+      ) : null}
+    </div>
+  );
+};
+
+CustomNavComponent.propTypes = {
+  imageItems: sharedProps.imageItems,
+  hasContent: sharedProps.hasContent,
+};
+
+/**
+ *
+ * @param {{
  *    maxWidth?: string
  *    width?: string
  *    hasContent?: boolean
@@ -62,66 +144,6 @@ const ImageGalleryCarousel = ({
   imageAutoSize = true,
 }) => {
   const carouselItems = imageItems.map(htmlTemplate);
-  /**
-   *
-   * @param {{ instanceName: string }} props
-   * @returns { JSX.Element }
-   */
-  const CustomNavComponent = ({ instanceName }) => {
-    const [content, setContent] = useState(imageItems[0].content);
-
-    useEffect(() => {
-      const currentSlider = document.querySelector(`#${instanceName}`);
-      const observer = new MutationObserver(mCallback);
-      const ATTR_INDEX = "data-current-index";
-
-      function mCallback(mutations) {
-        for (let mutation of mutations) {
-          if (mutation && mutation.attributeName === ATTR_INDEX) {
-            onItemClick(+currentSlider.getAttribute(ATTR_INDEX));
-          }
-        }
-      }
-
-      observer.observe(currentSlider, {
-        attributes: true,
-      });
-    }, [instanceName]);
-
-    const onItemClick = currentIndex => {
-      const item = imageItems[currentIndex];
-      setContent(item.content);
-    };
-
-    let bulletItems = imageItems.map(item => item.imageSource);
-
-    return (
-      <div className="image-gallery-action-area" data-has-content={hasContent}>
-        <div className="image-navigator">
-          <BaseNavButtonContainer>
-            <PrevButton />
-            <ImageBulletItems
-              imageItems={bulletItems}
-              onItemClick={index => onItemClick(index)}
-            />
-            <NextButton />
-          </BaseNavButtonContainer>
-        </div>
-        {hasContent ? (
-          <figcaption
-            id="caption"
-            className="figure-caption uds-figure-caption"
-          >
-            {typeof content === "string" ? (
-              <span className="uds-caption-text">{content}</span>
-            ) : (
-              content
-            )}
-          </figcaption>
-        ) : null}
-      </div>
-    );
-  };
 
   return (
     <BaseCarousel
@@ -132,20 +154,25 @@ const ImageGalleryCarousel = ({
       cssClass="image-gallery"
       role="figure"
       ariaLabelledBy={hasContent ? "caption" : null}
-      isFullWidth={true}
+      isFullWidth
       imageAutoSize={imageAutoSize}
       // @ts-ignore
-      CustomNavComponent={props => <CustomNavComponent {...props} />}
+      CustomNavComponent={({ instanceName }) => (
+        <CustomNavComponent
+          instanceName={instanceName}
+          hasContent={hasContent}
+          imageItems={imageItems}
+        />
+      )}
     />
   );
 };
 
 ImageGalleryCarousel.propTypes = {
-  perView: PropTypes.string.isRequired,
-  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  imageItems: sharedProps.imageItems.isRequired,
+  hasContent: sharedProps.hasContent,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
-  hasContent: PropTypes.bool,
   imageAutoSize: PropTypes.bool,
 };
 

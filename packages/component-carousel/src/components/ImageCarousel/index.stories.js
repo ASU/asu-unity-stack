@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 // @ts-check
-/** @jsx h */
 import { number, text } from "@storybook/addon-knobs";
-import { h, Fragment } from "preact";
+import React from "react";
 
 import { ImageCarousel } from ".";
 
@@ -79,15 +79,17 @@ const GROUP_STYLE = "Styles";
 /**
  *
  * @param {{ children: JSX.Element}} props
- * @returns { h.JSX.Element}
+ * @returns { JSX.Element}
  */
 const Wrapper = ({ children }) => (
   <div
-    style={{
-      // setting display flex the 'maxHeight' gets applied but the carousel squashes
-      // display: "flex",
-      // maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
-    }}
+    style={
+      {
+        // setting display flex the 'maxHeight' gets applied but the carousel squashes
+        // display: "flex",
+        // maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
+      }
+    }
   >
     {children}
   </div>
@@ -119,7 +121,6 @@ export const ImageCarouselWithMoreContent = () => (
       perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
       maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
       imageItems={mockItemWithMoreContent()}
-
     />
   </Wrapper>
 );
