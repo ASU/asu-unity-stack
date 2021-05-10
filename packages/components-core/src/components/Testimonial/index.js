@@ -1,8 +1,5 @@
 /* eslint-disable react/require-default-props */
 // @ts-check
-// TODO: it necessary to compile this file into a Preact componet
-// eslint-disable-next-line no-unused-vars, import/no-extraneous-dependencies
-import { h } from "preact";
 import PropTypes from "prop-types";
 import React from "react";
 
