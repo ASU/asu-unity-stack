@@ -92,7 +92,7 @@ TestimonialCarousel.propTypes = {
   testimonialItems: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
-      content: PropTypes.string.isRequired,
+      content: PropTypes.string,
       cite: PropTypes.shape({
         name: PropTypes.string,
         description: PropTypes.string,

@@ -177,7 +177,7 @@ yarn test
  *  id: number
  *  imageSource: string
  *  altText:string
- *  content?: string | h.JSX.Element
+ *  content?: string | JSX.Element
  * }} ImageItem
  */
 

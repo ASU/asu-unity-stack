@@ -23,7 +23,10 @@ const BaseBulletItemContainer = ({ children }) => (
 );
 
 BaseBulletItemContainer.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 
 /**
@@ -84,7 +87,7 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
 };
 
 ImageBulletItems.propTypes = {
-  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  imageItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   onItemClick: PropTypes.func,
 };
 

@@ -23,7 +23,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
 /**
  *
  * @param {{
- *            perView?: number | string
+ *            perView?: number
  *            width?: string
  *            maxWidth?: string
  *            carouselItems: CarouselItem[]
@@ -41,7 +41,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  * @returns
  */
 const BaseCarousel = ({
-  perView = "1",
+  perView = 1,
   width,
   maxWidth,
   carouselItems,
@@ -74,7 +74,7 @@ const BaseCarousel = ({
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
   const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
-  const buttonCount = calcualteViewItems(carouselItems.length, +perView);
+  const buttonCount = calcualteViewItems(carouselItems.length, perView);
 
   useEffect(() => {
     setupCaroarousel({
@@ -114,12 +114,12 @@ const BaseCarousel = ({
 };
 
 BaseCarousel.propTypes = {
-  perView: PropTypes.string,
+  perView: PropTypes.number,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   carouselItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   cssClass: PropTypes.string,
-  CustomNavComponent: PropTypes.element,
+  CustomNavComponent: PropTypes.func,
   role: PropTypes.string,
   ariaLabelledBy: PropTypes.string,
   onItemClick: PropTypes.func,

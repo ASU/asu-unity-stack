@@ -4,7 +4,7 @@ import Glide from "@glidejs/glide";
 
 /**
  * Compute hoa many items will be visible on different viewport
- * @param {string | number} perView
+ * @param {number} perView
  * @returns {object}
  */
 function computeItemPerView(perView) {
@@ -12,19 +12,19 @@ function computeItemPerView(perView) {
   let perViewMd;
   let perViewLg;
   switch (perView) {
-    case "3":
+    case 3:
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 3;
       break;
-    case "2":
+    case 2:
       // Values used in config call.
       perViewSm = 1;
       perViewMd = 2;
       perViewLg = 2;
       break;
-    case "1":
+    case 1:
     default:
       // Values used in config call.
       perViewSm = 1;
@@ -41,12 +41,12 @@ function computeItemPerView(perView) {
 
 /**
  *
- * @param {string | number} perView
+ * @param {number} perView
  * @param {boolean} isFullWidth
  *
  * @returns {Glide.Options}
  */
-function buildConfig(perView = "1", isFullWidth) {
+function buildConfig(perView = 1, isFullWidth) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
   const { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
 
@@ -154,7 +154,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
  *
  * @param {{
  *  instanceName: string
- *  perView: string | number
+ *  perView: number
  *  buttonCount: number
  *  isFullWidth?: boolean
  *  onItemClick?: (index: number) =>  void

@@ -31,7 +31,7 @@ const sharedProps = {
       imageSource: PropTypes.string,
       thumbnailSource: PropTypes.string,
       altText: PropTypes.string,
-      content: PropTypes.string,
+      content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     })
   ),
   hasContent: PropTypes.bool,
@@ -67,7 +67,6 @@ const htmlTemplate = ({ id, imageSource, altText }) => ({
 // eslint-disable-next-line react/prop-types
 const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const ATTR_INDEX = "data-current-index";
-  const currentSlider = document.querySelector(`#${instanceName}`);
   const [content, setContent] = useState(imageItems[0].content);
 
   const onItemClick = currentIndex => {
@@ -76,6 +75,8 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   };
 
   useEffect(() => {
+    const currentSlider = document.querySelector(`#${instanceName}`);
+
     function onDataCurrentIndexChange(mutations) {
       // eslint-disable-next-line no-restricted-syntax
       for (const mutation of mutations) {
@@ -87,7 +88,6 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
     }
 
     const observer = new MutationObserver(onDataCurrentIndexChange);
-
     observer.observe(currentSlider, {
       attributes: true,
     });
