@@ -4,7 +4,7 @@ import './modals'
 export const Default = () => `
 <div class="container-fluid">
 
-  <button id="openModalButton" class="btn btn-dark">Show Modal</button>
+  <button id="openModalButton" class="btn btn-dark">Show modal</button>
 
   <div id="uds-modal" class="uds-modal">
     <div class="uds-modal-container">
