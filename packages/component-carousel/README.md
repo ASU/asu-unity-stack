@@ -269,6 +269,11 @@ The folder [packages/component-carousel/examples](/packages/component-carousel/e
 - [Testimonial carousel](/packages/component-carousel/examples/testimonial.html)
 ### Test examples
 
+If you want to test the examples files you need to install an application server <br />
+and run it into the folder `/packages/component-carousel/examples`. <br />
+For example, if you want to use the `npm` package `lite-server` follow these steps:
+
+- run `npm -g i lite-server` . MAC users may need to use `sudo npm -g i lite-server`
 - run `cd packages/component-carousel`
 - run `lite-server`
 - open the broweser to the url `http://localhost:3000/examples/card.html`
