@@ -62,38 +62,31 @@ const ProgramInterest = () => {
         Please complete and submit the form below, and a representative will
         contact you about enrolling at ASU
       </p>
-      {/*
-      <RfiRadioGroup
-        label="Which applies to you?"
-        id="campus"
-        name="campus"
-        options={campusOptions}
-      /> */}
       <RfiSelect
         label="Which applies to you?"
-        id="campus"
-        name="campus"
+        id="Campus"
+        name="Campus"
         options={campusOptions}
         requiredIcon
       />
       <RfiSelect
         label="Select your student status"
-        id="studentType"
-        name="studentType"
+        id="CareerAndStudentType"
+        name="CareerAndStudentType"
         options={studentTypeOptions}
         requiredIcon
       />
       <RfiSelect
         label="Area of interest"
-        id="areaInterest"
-        name="areaInterest"
+        id="Interest1"
+        name="Interest1"
         options={areaInterestOptions}
         requiredIcon
       />
       <RfiSelect
         label="Program of interest"
-        id="programPlan"
-        name="programPlan"
+        id="Interest2"
+        name="Interest2"
         options={programPlanOptions}
         requiredIcon
       />
@@ -107,17 +100,17 @@ const programInterestForm = {
   component: ProgramInterest,
 
   validationSchema: {
-    campus: Yup.string().required("Required"),
-    studentType: Yup.string().required("Required"),
-    areaInterest: Yup.string().required("Required"),
-    programPlan: Yup.string().required("Required"),
+    Campus: Yup.string().required("Required"),
+    CareerAndStudentType: Yup.string().required("Required"),
+    Interest1: Yup.string().required("Required"),
+    Interest2: Yup.string().required("Required"),
   },
 
   initialValues: {
-    campus: undefined,
-    studentType: undefined,
-    areaInterest: undefined,
-    programPlan: undefined,
+    Campus: undefined,
+    CareerAndStudentType: undefined,
+    Interest1: undefined,
+    Interest2: undefined,
   },
 };
 
@@ -125,10 +118,10 @@ export default programInterestForm;
 
 /*
 FIELDS
-x- campus
-x- career and student type // TODO selection will be used to derive values for payload
-- interest 1 - area of interest
-- interest 2 - program of interest
+- Campus
+- CareerAndStudentType // TODO A TWOFER - selection will be used to derive values for payload
+- Interest1 - area of interest // TODO based on campus: for Online pull from ASUO API, else pull from Degree Search API // TODO admin can hide via prop
+- Interest2 - program of interest // TODO same logic as above + auto populate on a degree detail page (via prop) // TODO optional for ground ugrad, required for grad
 
 From legacy module - a trail for what to update from
   // Load degree settings

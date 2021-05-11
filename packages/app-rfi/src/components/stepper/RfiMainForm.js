@@ -4,7 +4,6 @@ import React from "react";
 // @ts-ignore
 import RfiImage from "../../../img/WS2-DefaultImagev01-Final.png";
 import aboutMeForm from "../steps/AboutMe";
-import contactForm from "../steps/Contact";
 import optionalForm from "../steps/Optional";
 import programInterestForm from "../steps/ProgramInterest";
 import RfiStepper from "./RfiStepper";
@@ -26,19 +25,16 @@ const RfiMainForm = () => (
               validationSchemas={[
                 programInterestForm.validationSchema,
                 aboutMeForm.validationSchema,
-                contactForm.validationSchema,
                 optionalForm.validationSchema,
               ]}
               initialValues={[
                 programInterestForm.initialValues,
                 aboutMeForm.initialValues,
-                contactForm.initialValues,
                 optionalForm.initialValues,
               ]}
               formComponents={[
                 programInterestForm.component,
                 aboutMeForm.component,
-                contactForm.component,
                 optionalForm.component,
               ]}
               handleSubmit={value => {

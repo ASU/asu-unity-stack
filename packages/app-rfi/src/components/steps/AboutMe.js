@@ -5,19 +5,22 @@ import * as Yup from "yup";
 import {
   RfiTextInput,
   RfiEmailInput,
-  RfiDatepicker,
   RfiSelect,
+  // RfiCheckboxSingle,
 } from "../controls";
 
 // Component
-
-// Datepicker note: see https://stackblitz.com/edit/demo-react-formik-datepicker
 
 const AboutMe = () => {
   const [termOptions, setTermOptions] = useState([]);
 
   // Term options
   useEffect(() => {
+    // TODO IF graduate call graduateAllApplyDates
+    // https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=AcadPlan,Degree,Descrlong,graduateAllApplyDates&program=graduate&cert=false&nopassive=true
+
+    // TODO ELSE default to undergrad and use this
+
     // Term logic example: for term 2217, the 2 is for century, 21 for last 2 of
     // year, 1 for spring, 7 for fall. We don't do summer, but it's 4, for
     // reference.
@@ -47,46 +50,48 @@ const AboutMe = () => {
         });
       }
     }
+    termData.unshift({ key: -1, value: "", text: "-- select start date --" });
     setTermOptions(termData);
   }, []); // Run only once. TODO change so we can update based on selections.
 
   return (
     <>
       <h3>About me</h3>
+      <RfiEmailInput
+        label="Email Address *"
+        id="EmailAddress"
+        name="EmailAddress"
+        requiredIcon
+      />
       <RfiTextInput
         label="First name"
-        id="firstName"
-        name="firstName"
+        id="FirstName"
+        name="FirstName"
         requiredIcon
         helperText="First name"
       />
       <RfiTextInput
         label="Last name"
-        id="lastName"
-        name="lastName"
+        id="LastName"
+        name="LastName"
         requiredIcon
         helperText="Last name"
       />
-      {/*            <RfiTextInput label="Date of Birth *" name="dateOfBirth" /> */}
-      <RfiDatepicker
-        label="Date of Birth"
-        id="dateOfBirth"
-        name="dateOfBirth"
-        dateFormat="MM/dd/yyyy"
-        className="form-control"
-        placeholderText="MM/DD/YYYY"
-        requiredIcon
-      />
-      <RfiEmailInput
-        label="Email Address *"
-        id="email"
-        name="email"
+      <RfiTextInput label="Phone" id="Phone" name="Phone" requiredIcon />
+      {/* <RfiCheckboxSingle id="mobile" name="mobile" value="1">
+        This is a USA mobile number and I would like to receive information via
+        SMS text messaging
+      </RfiCheckboxSingle> */}
+      <RfiTextInput
+        label="Postal code"
+        id="ZipCode"
+        name="ZipCode"
         requiredIcon
       />
       <RfiSelect
         label="My start date"
-        id="startDate"
-        name="startDate"
+        id="EntryTerm"
+        name="EntryTerm"
         options={termOptions}
         requiredIcon
       />
@@ -100,25 +105,31 @@ const aboutMeForm = {
   component: AboutMe,
 
   validationSchema: {
-    firstName: Yup.string()
+    EmailAddress: Yup.string().email("Invalid email").required("Required"),
+    FirstName: Yup.string()
       .min(2, "Too short")
       .max(64, "Too long")
       .required("Required"),
-    lastName: Yup.string()
+    LastName: Yup.string()
       .min(2, "Too short")
       .max(64, "Too long")
       .required("Required"),
-    dateOfBirth: Yup.date().required("Required"),
-    email: Yup.string().email("Invalid email").required("Required"),
-    startDate: Yup.string().required("Required"),
+    Phone: Yup.string() // TODO transform ?
+      .max(24, "Too long")
+      .required("Required"),
+    // mobile: Yup.string(),
+    ZipCode: Yup.string().required("Required"), // TODO Required only if countyry is US.
+    EntryTerm: Yup.string().required("Required"),
   },
 
   initialValues: {
-    firstName: undefined,
-    lastName: undefined,
-    dateOfBirth: undefined,
-    email: undefined,
-    startDate: undefined,
+    EmailAddress: undefined,
+    FirstName: undefined,
+    LastName: undefined,
+    Phone: undefined,
+    // mobile: undefined,
+    ZipCode: undefined,
+    EntryTerm: undefined,
   },
 };
 
@@ -126,10 +137,10 @@ export default aboutMeForm;
 
 /*
 FIELDS
-- email
-- firstName
-- lastName
-- phone
-- zipcode/postal code
-- entry term
+- EmailAddress
+- FirstName
+- LastName
+- Phone // TODO use Yup phone library
+- ZipCode
+- EntryTerm // TODO more logic and svc call based on if graduate / undergrad
 */
