@@ -118,7 +118,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
       <div className="col-6 text-right">
         {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
         {stepNum < lastStep ? (
-          <Button type="submit" className={`rfi-button-step` + (stepNum + 1)}>
+          <Button type="submit" className={`rfi-button-step${stepNum + 1}`}>
             Next <FontAwesomeIcon icon={faAngleRight} />
           </Button>
         ) : (

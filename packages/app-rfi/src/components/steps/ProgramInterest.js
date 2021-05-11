@@ -142,4 +142,10 @@ From legacy module - a trail for what to update from
     'start_dates' => array(),
   );
 
+  Note on campus options:
+  Not sure we're going to need these in the MVP...
+  Campus codes as defined by http://www.public.asu.edu/~lcabre/javadocs/dsws/
+	There is no actual endpoint to get these: array( 'TEMPE', 'POLY', 'DTPHX', 'WEST', 'ONLNE' );
+
+
 */

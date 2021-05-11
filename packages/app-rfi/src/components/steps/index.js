@@ -1,4 +1,4 @@
 // @ts-check
-import { RfiMainForm } from "./RfiMainForm";
+import { RfiMainForm } from "../stepper/RfiMainForm";
 
 export default RfiMainForm;
