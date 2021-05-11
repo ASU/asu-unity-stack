@@ -64,6 +64,7 @@ class RfiStepper extends React.Component {
       <div>
         <Progress value={progress * 100} className="rfi-progress" />
         <div className="uds-rfi-form-wrapper">
+          <div>{`Step ${step + 1} of ${totalSteps}`}</div>
           <h2>Request information</h2>
           <Formik
             initialValues={initValues}
