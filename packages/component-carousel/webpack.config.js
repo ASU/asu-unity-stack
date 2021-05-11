@@ -1,5 +1,4 @@
 const path = require("path");
-const nodeExternals = require("webpack-node-externals");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = [];
@@ -17,7 +16,7 @@ const shared = {
           {
             loader: "babel-loader",
             options: {
-              presets: ["preact"],
+              presets: ["@babel/env", "@babel/preset-react"],
             },
           },
         ],
@@ -26,12 +25,6 @@ const shared = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
-    alias: {
-      "react": "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-      // Must be below test-utils
-    },
   },
 };
 
@@ -83,6 +76,7 @@ module.exports.push({
   },
 });
 
+// const nodeExternals = require("webpack-node-externals");
 // SSR bundle config - should be used server-side only
 /*
 module.exports.push(

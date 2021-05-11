@@ -1,17 +1,13 @@
 // @ts-check
 import {
-  HydratePreact,
-  RenderPreact,
   initCardCarousel,
   initTestimonialCarousel,
   initImageCarousel,
   initImageGalleryCarousel,
-} from "./core/helpers/component-helper";
+} from "./core/utils/init-carousel";
 
 export * from "./components";
 export {
-  HydratePreact,
-  RenderPreact,
   initCardCarousel,
   initTestimonialCarousel,
   initImageCarousel,

@@ -1,16 +1,54 @@
+/* eslint-disable no-unused-expressions */
 // @ts-check
 import Glide from "@glidejs/glide";
 
 /**
+ * Compute hoa many items will be visible on different viewport
+ * @param {number} perView
+ * @returns {object}
+ */
+function computeItemPerView(perView) {
+  let perViewSm;
+  let perViewMd;
+  let perViewLg;
+  switch (perView) {
+    case 3:
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 2;
+      perViewLg = 3;
+      break;
+    case 2:
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 2;
+      perViewLg = 2;
+      break;
+    case 1:
+    default:
+      // Values used in config call.
+      perViewSm = 1;
+      perViewMd = 1;
+      perViewLg = 1;
+  }
+
+  return {
+    perViewSm,
+    perViewMd,
+    perViewLg,
+  };
+}
+
+/**
  *
- * @param {string | number} perView
+ * @param {number} perView
  * @param {boolean} isFullWidth
  *
  * @returns {Glide.Options}
  */
-function buildConfig(perView = "1", isFullWidth) {
+function buildConfig(perView = 1, isFullWidth) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
-  let { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
+  const { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
 
   const smallPeeek = { before: 0, after: 62 };
   const largePeek = { before: 124, after: 124 };
@@ -68,45 +106,55 @@ function buildConfig(perView = "1", isFullWidth) {
 }
 
 /**
- * Compute hoa many items will be visible on different viewport
- * @param {string | number} perView
- * @returns {object}
+ * This function clears and set class names to show/hide
+ * gradients when at the start, middle or end of a slider.
+ * @param {Element} gliderElement
+ * @param {number} currentIndex
+ * @param {number} buttonCount
+ * @returns {void}
  */
-function computeItemPerView(perView) {
-  let perViewSm, perViewMd, perViewLg;
-  switch (perView) {
-    case "3":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 3;
-      break;
-    case "2":
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 2;
-      perViewLg = 2;
-      break;
-    case "1":
-    default:
-      // Values used in config call.
-      perViewSm = 1;
-      perViewMd = 1;
-      perViewLg = 1;
-  }
+function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
+  const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
+  const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
 
-  return {
-    perViewSm,
-    perViewMd,
-    perViewLg,
-  };
+  if (!(arrowPrev || arrowNext)) return; // necessary. it breaks when the nav button are hidden
+
+  // Gradient-triggering classes.
+  const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
+  const cssDisabledClass = "glide__arrow--disabled";
+
+  gliderElement.classList.remove(...gradientClasses);
+
+  // Set/clear classes for gradients.
+  if (currentIndex === 0) {
+    // START SLIDE.
+    // Gradient for start.
+    gliderElement.classList.add("slider-start");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.add(cssDisabledClass);
+    arrowNext.classList.remove(cssDisabledClass);
+  } else if (currentIndex >= buttonCount - 1) {
+    // MIDDLE SLIDES.
+    // Gradient for end.
+    gliderElement.classList.add("slider-end");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.remove(cssDisabledClass);
+    arrowNext.classList.add(cssDisabledClass);
+  } else {
+    // LAST SLIDE.
+    // Gradient for middle.
+    gliderElement.classList.add("slider-mid");
+    // Enable/disable prev/next styles. Glide takes care of actual disable.
+    arrowPrev.classList.remove(cssDisabledClass);
+    arrowNext.classList.remove(cssDisabledClass);
+  }
 }
 
 /**
  *
  * @param {{
  *  instanceName: string
- *  perView: string | number
+ *  perView: number
  *  buttonCount: number
  *  isFullWidth?: boolean
  *  onItemClick?: (index: number) =>  void
@@ -132,18 +180,18 @@ function setupCaroarousel({
   // Implement glidejs event listeners.
 
   // Attatch event listener and instruct slide to go left and right
-  const gliderElement = document.querySelector(`#${instanceName}`);
+  let gliderElement = document.querySelector(`#${instanceName}`);
   gliderElement.addEventListener("keyup", e => {
     // @ts-ignore
-    if (e.keyCode == 39) slider.go(">");
+    if (e.keyCode === 39) slider.go(">");
     // @ts-ignore
-    else if (e.keyCode == 37) slider.go("<");
+    else if (e.keyCode === 37) slider.go("<");
   });
 
   // On build.before event...
   slider.on("build.before", () => {
     // Set .slider-start for starting gradient styles.
-    const gliderElement = document.querySelector(`#${instanceName}`);
+    gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
     gliderElement.classList.add("slider-start");
   });
@@ -151,7 +199,7 @@ function setupCaroarousel({
   // On Move event...
   slider.on("move", () => {
     // Get glider top level element.
-    const gliderElement = document.querySelector(`#${instanceName}`);
+    gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
 
     // @ts-ignore
@@ -189,51 +237,6 @@ function setupCaroarousel({
 
   slider.mount();
   return slider;
-}
-
-/**
- * This function clears and set class names to show/hide
- * gradients when at the start, middle or end of a slider.
- * @param {Element} gliderElement
- * @param {number} currentIndex
- * @param {number} buttonCount
- * @returns {void}
- */
-function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
-  const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
-  const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
-
-  if (!(arrowPrev || arrowNext)) return; // necessary. it breaks when the nav button are hidden
-
-  // Gradient-triggering classes.
-  const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
-  const cssDisabledClass = "glide__arrow--disabled";
-
-  gliderElement.classList.remove(...gradientClasses);
-
-  // Set/clear classes for gradients.
-  if (currentIndex == 0) {
-    // START SLIDE.
-    // Gradient for start.
-    gliderElement.classList.add("slider-start");
-    // Enable/disable prev/next styles. Glide takes care of actual disable.
-    arrowPrev.classList.add(cssDisabledClass);
-    arrowNext.classList.remove(cssDisabledClass);
-  } else if (currentIndex >= buttonCount - 1) {
-    // MIDDLE SLIDES.
-    // Gradient for end.
-    gliderElement.classList.add("slider-end");
-    // Enable/disable prev/next styles. Glide takes care of actual disable.
-    arrowPrev.classList.remove(cssDisabledClass);
-    arrowNext.classList.add(cssDisabledClass);
-  } else {
-    // LAST SLIDE.
-    // Gradient for middle.
-    gliderElement.classList.add("slider-mid");
-    // Enable/disable prev/next styles. Glide takes care of actual disable.
-    arrowPrev.classList.remove(cssDisabledClass);
-    arrowNext.classList.remove(cssDisabledClass);
-  }
 }
 
 export { setupCaroarousel };

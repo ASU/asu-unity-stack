@@ -1,18 +1,18 @@
 // @ts-check
-/** @jsx h */
-import { h } from "preact";
 import PropTypes from "prop-types";
+import React from "react";
 
-import { PrevButton, NextButton } from ".";
+import { NextButton } from "./NextButton";
+import { PrevButton } from "./PrevButton";
 
-const BaseNavButtonContainer = ({ children }) => (
-  <div
-    className="glide__arrows"
-    data-glide-el="controls"
-  >
+const BaseNavButtonContainer = ({ children = null }) => (
+  <div className="glide__arrows" data-glide-el="controls">
     {children}
   </div>
 );
+BaseNavButtonContainer.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element),
+};
 
 /**
  *
@@ -31,8 +31,8 @@ const NavButtons = ({ onClick = () => null, children = null }) => (
 );
 
 NavButtons.propTypes = {
-  children: PropTypes.object,
-  onItemClick: PropTypes.func,
+  children: PropTypes.element,
+  onClick: PropTypes.func,
 };
 
 export { BaseNavButtonContainer, NavButtons };

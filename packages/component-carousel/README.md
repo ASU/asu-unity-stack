@@ -3,7 +3,7 @@ ASU Web Standards-based implementation of @glidejs/glide npm library carousel.
 
 ## Dependencies
 
-1. [Preact](https://preactjs.com/)
+1. [React](https://reactjs.org/)
 2. [GlideJS](https://glidejs.com/)
 
 In order to use Web Standards 2.0 cards in your Carousel, you must install the
@@ -177,7 +177,7 @@ yarn test
  *  id: number
  *  imageSource: string
  *  altText:string
- *  content?: string | h.JSX.Element
+ *  content?: string | JSX.Element
  * }} ImageItem
  */
 
@@ -220,6 +220,13 @@ yarn test
  ### Testimonial carousel properties
 
 ```JS
+  /**
+   * @typedef {{
+   *      containerCssClass?: string[]
+   *      titleCssClass?: string[]
+   *      contentCssClass?: string[]
+   * }} TestimonialStyle
+   */
 
   /**
    * @typedef {{
@@ -235,14 +242,6 @@ yarn test
    *    }
    *  }
    * }} TestimonialItem
-   */
-
-  /**
-   * @typedef {{
-   *      itemCssClass?: string[]
-   *      itemTitleCssClass?: string[]
-   *      itemQuoteContentCssClass?: string[]
-   * }} ItemCssClass
    */
 
   /**
@@ -263,7 +262,23 @@ The folder [packages/component-carousel/examples](/packages/component-carousel/e
 <br/>contains examples to use the carousel on static HTML page
 
 ### All carousel examples
+
 - [Card carousel](/packages/component-carousel/examples/card.html)
 - [Image Gallery carousel](/packages/component-carousel/examples/image-gallery.html)
 - [Image carousel](/packages/component-carousel/examples/image.html)
 - [Testimonial carousel](/packages/component-carousel/examples/testimonial.html)
+### Test examples
+
+If you want to test the examples files you need to install an application server <br />
+and run it into the folder `/packages/component-carousel/examples`. <br />
+For example, if you want to use the `npm` package `lite-server` follow these steps:
+
+- run `npm -g i lite-server` . MAC users may need to use `sudo npm -g i lite-server`
+- run `cd packages/component-carousel`
+- run `lite-server`
+- open the broweser to the url `http://localhost:3000/examples/card.html`
+  (port number may be different)
+
+# References
+
+-  (Add React to a Website)[https://reactjs.org/docs/add-react-to-a-website.html]

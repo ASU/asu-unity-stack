@@ -1,6 +1,5 @@
 // @ts-check
-/** @jsx h */
-import { h, Fragment } from "preact";
+import React from "react";
 
 import { CardCarousel } from ".";
 
@@ -18,7 +17,7 @@ const imageFormats = [
 const getImageFormat = index => imageFormats[index];
 
 const myCarouselItems = [];
-for (let index = 0; index < 8; index++) {
+for (let index = 0; index < 8; index += 1) {
   myCarouselItems.push({
     id: index,
     imageSource: `https://source.unsplash.com/random/${getImageFormat(
@@ -62,4 +61,3 @@ export const MultipleCarousels = () => (
     <CardCarousel perView="2" cardItems={myCarouselItems} />
   </>
 );
-

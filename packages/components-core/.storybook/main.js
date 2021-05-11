@@ -7,6 +7,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",
+    '@storybook/addon-knobs',
   ],
   webpackFinal: config => {
     return {
@@ -21,3 +22,4 @@ module.exports = {
     };
   },
 };
+

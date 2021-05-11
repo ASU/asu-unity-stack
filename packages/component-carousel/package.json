@@ -6,13 +6,6 @@
   "author": "Michael Samuelson",
   "license": "UNLICENSED",
   "private": false,
-  "dependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@glidejs/glide": "^3.4.1",
-    "preact": "^10.5.10",
-    "prop-types": "^15.7.2"
-  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "build": "webpack --mode=production --progress",
@@ -28,12 +21,42 @@
     "url": "https://github.com/asu/asu-unity-stack",
     "directory": "packages/component-carousel"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-design-system/design-tokens": "^1.1.0",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@glidejs/glide": "^3.4.1",
     "@storybook/addon-a11y": "^6.1.15",
     "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-docs": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.3",
     "@storybook/addon-knobs": "^6.1.15",
-    "@storybook/preact": "^6.1.15",
+    "@storybook/addon-links": "^6.2.3",
+    "@storybook/react": "^6.2.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "devDependencies": {
+    "@asu-design-system/design-tokens": "^1.1.0",
+    "@babel/core": "^7.13.14",
+    "@testing-library/react": "^11.2.6",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
+    "jest": "^26.6.3",
+    "jest-image-snapshot": "^4.4.1",
+    "jest-transform-css": "^2.1.0",
+    "jest-transform-file": "^1.1.1",
+    "jsdom-screenshot": "^4.0.0",
+    "postcss": "^7.0.2",
     "semantic-release": "^17.4.2",
-    "semantic-release-monorepo": "^7.0.4"
+    "semantic-release-monorepo": "^7.0.4",
+    "storybook-css-modules-preset": "^1.0.7",
+    "style-loader": "^2.0.0"
   }
 }

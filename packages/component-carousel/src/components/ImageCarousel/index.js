@@ -1,6 +1,6 @@
 // @ts-check
-import { h } from "preact";
 import PropTypes from "prop-types";
+import React from "react";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
@@ -13,7 +13,7 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  *  id: number
  *  imageSource: string
  *  altText:string
- *  content?: string | h.JSX.Element
+ *  content?: string | JSX.Element
  * }} ImageItem
  */
 
@@ -49,8 +49,8 @@ const htmlTemplate = ({ id, imageSource, altText, content }) => ({
 /**
  *
  * @param {{
- *    perView: string | number
- *    imageItems: ImageItem []
+ *    perView: number
+ *    imageItems: ImageItem[]
  *    maxWidth?: string
  *    width?: string
  *    imageAutoSize?: boolean
@@ -79,7 +79,7 @@ const ImageCarousel = ({
 };
 
 ImageCarousel.propTypes = {
-  perView: PropTypes.string.isRequired,
+  perView: PropTypes.number.isRequired,
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
