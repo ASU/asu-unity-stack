@@ -22,9 +22,7 @@ export const defaultQuote = () => `
         document.querySelectorAll('.highlight-on-scroll-text').forEach((elem) => {
           const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-              console.log(entry);
               if (entry.isIntersecting) {
-                console.log('intersecting!');
                 entry.target.classList.add('animate-bg-in-scroll');
               }
             });
