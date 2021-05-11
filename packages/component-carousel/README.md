@@ -3,7 +3,7 @@ ASU Web Standards-based implementation of @glidejs/glide npm library carousel.
 
 ## Dependencies
 
-1. [Preact](https://preactjs.com/)
+1. [React](https://reactjs.org/)
 2. [GlideJS](https://glidejs.com/)
 
 In order to use Web Standards 2.0 cards in your Carousel, you must install the
