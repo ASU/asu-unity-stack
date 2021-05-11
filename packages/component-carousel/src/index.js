@@ -4,7 +4,7 @@ import {
   initTestimonialCarousel,
   initImageCarousel,
   initImageGalleryCarousel,
-} from "./core/services/init-carousel.service";
+} from "./core/utils/init-carousel";
 
 export * from "./components";
 export {
