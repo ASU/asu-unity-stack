@@ -1,4 +1,3 @@
-import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
 storiesOf('Components/Pagination', module)

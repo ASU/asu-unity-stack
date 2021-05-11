@@ -1,5 +1,5 @@
 (function () {
-  document.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('DOMContentLoaded', function () {
     let hasScrolledToNecessaryDepth = false;
     // Safari || Chrome, Firefox, IE, Opera
     let previousScrollPosition =
