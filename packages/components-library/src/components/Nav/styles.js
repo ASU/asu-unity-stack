@@ -46,8 +46,6 @@ const navListStyles = breakpoint => css`
         }
       }
 
-
-
       > a {
         :after {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -388,6 +386,13 @@ const dropControlsStyles = breakpoint => css`
 
     > a {
       color: #191919;
+    }
+
+    :hover,
+    &.nav-item-selected {
+      :after {
+        width: 100%;
+      }
     }
 
     > svg {
