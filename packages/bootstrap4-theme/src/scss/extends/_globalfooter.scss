@@ -238,10 +238,12 @@ Footer - Table of Contents
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-    img {
-      height: 100px;
-      width: auto;
+    .img-link {
       order: 2;
+      img {
+        height: 100px;
+        width: auto;
+      }
     }
 
     .nav-link {
