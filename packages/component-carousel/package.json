@@ -41,7 +41,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
-    "@asu-design-system/bootstrap4-theme": "latest",
+    "@asu-design-system/design-tokens": "^1.1.0",
     "@babel/core": "^7.13.14",
     "@testing-library/react": "^11.2.6",
     "babel-loader": "^8.2.2",
