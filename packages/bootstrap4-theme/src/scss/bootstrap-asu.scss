@@ -46,6 +46,7 @@ $image-assets-path: '/img' !default;
 @import 'variables/card-image-and-content';
 @import 'variables/card-arrangements';
 @import 'variables/modals';
+@import 'variables/image-background-with-cta';
 
 //== Bootstrap Required
 @import '../../node_modules/bootstrap/scss/functions';
