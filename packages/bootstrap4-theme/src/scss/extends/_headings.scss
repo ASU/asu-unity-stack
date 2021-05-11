@@ -35,6 +35,7 @@ p:last-of-type + h6 {
 h1 {
   font-size: $heading-one-font-size;
   letter-spacing: $heading-one-letter-spacing;
+  line-height: normal;
 
   &.article {
     font-size: $heading-one-article-font-size;
