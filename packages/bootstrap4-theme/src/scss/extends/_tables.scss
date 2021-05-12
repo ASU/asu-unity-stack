@@ -1,14 +1,26 @@
 .uds-fixed-table {
-  overflow: auto;
+  border: 1px solid $uds-color-base-gray-2;
   position: relative;
 
+  &-container {
+    overflow: hidden;
+    position: relative;
+  }
+
   table.uds-table {
+    border: none;
     tr > *:first-child {
       left: 0;
       position: sticky;
       width: 315px;
       min-width: 315px;
       max-width: 315px;
+
+      @media screen and (max-width: $uds-breakpoint-sm) {
+        width: 128px;
+        min-width: 128px;
+        max-width: 128px;
+      }
     }
 
     tr > *:nth-child(n + 2),
@@ -25,9 +37,14 @@
     position: absolute;
     height: 100%;
     top: 0;
+    z-index: 100;
 
     &.show {
       display: block;
+
+      @media screen and (max-width: $uds-breakpoint-sm) {
+        display: none; // User will scroll with finger on mobile
+      }
     }
 
     &.previous {
@@ -58,7 +75,7 @@
 
 table.uds-table {
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid $uds-color-base-gray-2;
 
   th,
   td {
@@ -118,6 +135,10 @@ table.uds-table {
         &.indent {
           font-weight: normal;
           padding-left: 4rem;
+
+          @media screen and (max-width: $uds-breakpoint-sm) {
+            padding-left: 2rem;
+          }
         }
       }
     }
