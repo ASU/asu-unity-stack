@@ -714,7 +714,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     }
 
     .navbar-nav {
-      line-height: $uds-size-spacing-2;
+      line-height: $uds-size-spacing-3; // 1.5 rem
 
       > .nav-link {
         border: 0;
@@ -824,7 +824,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       }
 
       h3 {
-        margin-top: 0;
+        margin-top: 40px;
       }
     }
 
