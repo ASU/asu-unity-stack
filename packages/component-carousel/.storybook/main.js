@@ -1,32 +1,24 @@
-const path = require('path');
+const path = require("path");
+const PROJECT_DIR = path.resolve(__dirname, "../");
+let devConfig = require("../webpack/webpack.dev");
 
 module.exports = {
   addons: [
-    '@storybook/addon-knobs',
-    '@storybook/addon-viewport',
-    '@storybook/addon-a11y',
+    "@storybook/addon-knobs",
+    "@storybook/addon-viewport",
+    "@storybook/addon-a11y",
   ],
-  stories: ['../src/**/*.stories.js'],
-  webpackFinal: async (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
-
-    // Make whatever fine-grained changes you need
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: [
-        'style-loader',
-        { loader: 'css-loader', options: { importLoaders: 1} },
-        {
-          loader: 'sass-loader',
-          options: {
-          },
+  stories: ["../src/**/*.stories.js"],
+  webpackFinal: async config => {
+    return {
+      ...config,
+      resolve: {
+        extensions: [".js", ".jsx"],
+        alias: {
+          // this is needed to compile components-core components which inject css classes
+          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
         },
-      ],
-    });
-
-    // Return the altered config
-    return config;
+      },
+    };
   },
-}
+};
