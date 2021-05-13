@@ -4,8 +4,6 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-
 export const Button = ({
   ariaLabel,
   block,
@@ -20,12 +18,12 @@ export const Button = ({
   size,
   ...props
 }) => {
-  const btnClasses = classNames(UdsStyles["btn"], {
-    [UdsStyles[`btn-${color}`]]: true,
-    [UdsStyles[`btn-md`]]: size === "small",
-    [UdsStyles[`btn-sm`]]: size === "xsmall",
-    [UdsStyles[`btn-block`]]: block,
-    [UdsStyles[`disabled`]]: disabled,
+  const btnClasses = classNames("btn", {
+    [`btn-${color}`]: true,
+    [`btn-md`]: size === "small",
+    [`btn-sm`]: size === "xsmall",
+    [`btn-block`]: block,
+    [`disabled`]: disabled,
   });
 
   let Tag = element;
