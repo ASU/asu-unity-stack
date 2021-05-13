@@ -52,7 +52,7 @@ const common = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],å
+    extensions: [".js", ".jsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
