@@ -63,6 +63,12 @@ const navListStyles = breakpoint => css`
           margin-left: 0;
           top: 0.5rem;
         }
+
+        &.nav-item-selected {
+          :after {
+            width: 100%;
+          }
+        }
       }
 
       @media (min-width: ${breakpointForMin(breakpoint)}) {
@@ -380,6 +386,13 @@ const dropControlsStyles = breakpoint => css`
 
     > a {
       color: #191919;
+    }
+
+    :hover,
+    &.nav-item-selected {
+      :after {
+        width: 100%;
+      }
     }
 
     > svg {
