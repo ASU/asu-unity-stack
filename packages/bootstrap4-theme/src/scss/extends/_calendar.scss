@@ -19,6 +19,9 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       margin-bottom: ($uds-size-spacing-1 / 2);
+      &.mobile {
+        display: none;
+      }
     }
     .body {
       display: grid;
@@ -71,6 +74,12 @@ Mobile
       .heading {
         border-bottom: 1px solid $uds-color-base-gray-5;
         padding-bottom: $uds-size-spacing-1;
+        &.desktop {
+          display: none;
+        }
+        &.mobile {
+          display: grid;
+        }
       }
       .body {
         border: unset;

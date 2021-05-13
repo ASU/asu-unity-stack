@@ -80,16 +80,17 @@
   };
 
   const render = () => {
-    const daysOfWeek =
-      window.innerWidth <= 992 ? mobileDaysOfWeek : desktopDaysOfWeek;
     const calendarContainer = document.getElementById('calendar');
     calendarContainer.innerHTML = `
       <div class="calendar-title">
         <h2>${months[state.month]} ${state.year}</h2>
       </div>
       <div class="calendar-grid">
-        <div class="heading">
-          ${daysOfWeek.map((day) => `<p>${day}</p>`).join('')}
+        <div class="heading desktop">
+          ${desktopDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
+        </div>
+        <div class="heading mobile">
+          ${mobileDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
         </div>
         <div class="body">
           ${datesForGrid(state.year, state.month)
