@@ -1,4 +1,5 @@
 // @ts-check
+import { Card } from "@asu-design-system/components-core/src/components/Card";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -10,61 +11,87 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
  * @typedef {{
- *   id: number | string
+ *   id: number
  *   imageSource: string
- *   altText:string
- *   title:string
- *   content:string
- *   buttonLink: {
- *    url: string
- *    text: string
- *   }
+ *   imageAltText: string
+ *   title: string
+ *   content?: string
+ *   eventLocation?: string
+ *   buttons?: {
+ *    ariaLabel: string,
+ *    color?: "gold" | "maroon" | "gray" | "dark"
+ *    href?: string,
+ *    label: string,
+ *    onClick?: () => void,
+ *    size: "default" | "small" | "xsmall"
+ *   }[]
+ *   eventTime?: string
+ *   linkLabel?: string
+ *   linkUrl?: string
+ *   tags?: {
+ *      ariaLabel: string,
+ *      color: "white" | "gray" | "dark"
+ *      href: string,
+ *      label: string,
+ *      onClick: () => void,
+ *   } []
  *}} CardItem
  */
 
 /**
  *
  * @param {CardItem} props
+ * @param {string} cardType
+ * @param {string} cardEventFormat
+ * @param {boolean} cardHorizontal
  * @returns {CarouselItem}
  */
-const htmlTemplate = ({
-  id,
-  imageSource,
-  altText,
-  title,
-  content,
-  buttonLink,
-}) => ({
+
+const htmlTemplate = (
+  {
+    id,
+    imageSource,
+    imageAltText,
+    title,
+    content,
+    eventLocation,
+    eventTime,
+    buttons,
+    linkLabel,
+    linkUrl,
+    tags,
+  },
+  cardType,
+  cardHorizontal,
+  cardEventFormat
+) => ({
   id,
   item: (
-    <div className="card">
-      <img
-        className="card-img-top"
-        src={imageSource}
-        alt={altText || "image card"}
-      />
-      <div className="card-header">
-        <h3 className="card-title">{title}</h3>
-      </div>
-      <div className="card-body">
-        <p className="card-text">{content}</p>
-      </div>
-      {buttonLink && (
-        <div className="card-button">
-          <a href={buttonLink.url} className="btn btn-maroon">
-            {buttonLink.text}
-          </a>
-        </div>
-      )}
-    </div>
+    <Card
+      type={cardType}
+      horizontal={cardHorizontal}
+      image={imageSource}
+      imageAltText={imageAltText}
+      title={title}
+      body={content}
+      eventFormat={cardEventFormat}
+      eventLocation={eventLocation}
+      eventTime={eventTime}
+      buttons={buttons}
+      linkLabel={linkLabel}
+      linkUrl={linkUrl}
+      tags={tags}
+    />
   ),
 });
-
 /**
  *
  * @param {{
  *   perView: string | number
  *   cardItems: CardItem []
+ *   cardType?: "default" | "degree" | "event" | "news" | "story"
+ *   cardEventFormat?: "stack" | "inline"
+ *   cardHorizontal?: boolean
  *   maxWidth?: string
  *   width?: string
  *   imageAutoSize?: boolean
@@ -74,18 +101,22 @@ const htmlTemplate = ({
 const CardCarousel = ({
   perView,
   cardItems,
+  cardType = "default",
+  cardEventFormat = "stack",
+  cardHorizontal = false,
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
 }) => {
-  const carouselItems = cardItems.map(htmlTemplate);
+  const carouselItems = cardItems.map(item =>
+    htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
+  );
 
   return (
     <BaseCarousel
       perView={+perView}
       maxWidth={maxWidth}
       width={width}
-      cssClass="image-carousel"
       carouselItems={carouselItems}
       imageAutoSize={imageAutoSize}
     />
@@ -94,7 +125,23 @@ const CardCarousel = ({
 
 CardCarousel.propTypes = {
   perView: PropTypes.string.isRequired,
-  cardItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cardItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string,
+      eventLocation: PropTypes.string,
+      eventTime: PropTypes.string,
+      image: PropTypes.string,
+      imageAltText: PropTypes.string,
+      buttons: Card.propTypes.buttons,
+      linkLabel: PropTypes.string,
+      linkUrl: PropTypes.string,
+      tags: Card.propTypes.tags,
+    })
+  ).isRequired,
+  cardType: Card.propTypes.type,
+  cardEventFormat: Card.propTypes.eventFormat,
+  cardHorizontal: Card.propTypes.horizontal,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   imageAutoSize: PropTypes.bool,
