@@ -67,6 +67,11 @@
       transform: scale(1.1);
     }
 
+    .content-section:focus {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
     .hidden-details {
       transition: all 1s cubic-bezier(0.19, 1, 0.19, 1);
       max-height: 0;
@@ -74,6 +79,11 @@
       opacity: 0;
     }
     .content-section:hover .hidden-details {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .content-section:focus .hidden-details {
       max-height: 300px;
       opacity: 1;
     }
