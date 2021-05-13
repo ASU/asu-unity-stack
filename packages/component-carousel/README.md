@@ -43,49 +43,76 @@ yarn test
     // Design System Card. Only one example provided below.
     const myCarouselItems = [
         {
-          id: 1,
+          id: 0,
           imageSource: "https://source.unsplash.com/random/500x400?a=-1",
-          altText: "Card image cap",
+          imageAltText: "Card image cap",
           title: "Card 1",
           content:
             "Body 1 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
-          buttonLink: {
-            url: "#",
-            text: "Button link here",
-          },
+          buttons: [
+            {
+              ariaLabel: "dummy button",
+              color: "maroon",
+              href: "#",
+              label: `Button 1 link here`,
+              size: "default",
+              onClick: () => window.alert("Holoa Amigo 😃."),
+            },
+          ],
+        },
+        {
+          id: 1,
+          imageSource: "https://source.unsplash.com/random/300x400?a=0",
+          imageAltText: "Card image cap",
+          title: "Card 2",
+          content:
+            "Body 2 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttons: [
+            {
+              ariaLabel: "dummy button",
+              color: "maroon",
+              href: "#",
+              label: `Button 2 link here`,
+              size: "default",
+              onClick: () => window.alert("Holoa Amigo 😃."),
+            },
+          ],
         },
         {
           id: 2,
-          imageSource: "https://source.unsplash.com/random/300x400?a=0",
-          altText: "Card image cap",
-          title: "Card 2",
-          content: "Body 2 ....",
-          buttonLink: {
-            url: "#",
-            text: "..",
-          },
+          imageSource: "https://source.unsplash.com/random/400x400?a=1",
+          imageAltText: "Card image cap",
+          title: "Card 3",
+          content:
+            "Body 3 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttons: [
+            {
+              ariaLabel: "dummy button",
+              color: "maroon",
+              href: "#",
+              label: `Button 3 link here`,
+              size: "default",
+              onClick: () => window.alert("Holoa Amigo 😃."),
+            },
+          ],
         },
         {
           id: 3,
-          imageSource: "https://source.unsplash.com/random/400x400?a=1",
-          altText: "Card image cap",
-          title: "Card 3",
-          content: "Body 3 ....",
-          buttonLink: {
-            url: "#",
-            text: "..",
-          },
-        },
-        {
-          id: 4,
           imageSource: "https://source.unsplash.com/random/200x200?a=2",
-          altText: "Card image cap",
+          imageAltText: "Card image cap",
           title: "Card 4",
-          content: "Body 4 ......",
-          buttonLink: {
-            url: "#",
-            text: "..",
-          },
+          content:
+            "Body 4 copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit\n      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n      ut labore et dolore magna aliqua eiusmod tempo.",
+          buttons: [
+            {
+              ariaLabel: "dummy button",
+              color: "maroon",
+              href: "#",
+              label: `Button 4 link here`,
+              size: "default",
+              onClick: () => window.alert("Hola Amigo 😃."),
+            },
+          ],
         },
       ];
 
@@ -95,7 +122,7 @@ yarn test
     const App = (props) => {
       return (
         <div>
-          <CardCarousel perView="1" cardItems={myCarouselItems} />
+          <CardCarousel perView={1} cardItems={myCarouselItems} />
         </div>
       )
     };
@@ -126,7 +153,7 @@ yarn test
   componentCarousel.initCarousel(props);
 
   // Setup and initialize the second carousel.
-  AsuWebcarousel.initCardCarousel({
+  AsuWebCarousel.initCardCarousel({
     targetSelector: "#anotherCarouselContainer",
     props: {
       cardItems: differentCarouselItems,// To be built by implementer.
@@ -146,22 +173,40 @@ yarn test
 ```JS
 /**
  * @typedef {{
- *   id: number | string
+ *   id: number
  *   imageSource: string
- *   altText:string
- *   title:string
- *   content:string
- *   buttonLink: {
- *    url: string
- *    text: string
- *   }
- *}} CardItem
+ *   imageAltText: string
+ *   title: string
+ *   content?: string
+ *   eventLocation?: string
+ *   buttons?: {
+ *    ariaLabel: string,
+ *    color?: "gold" | "maroon" | "gray" | "dark"
+ *    href?: string,
+ *    label: string,
+ *    onClick?: () => void,
+ *    size: "default" | "small" | "xsmall"
+ *   }[]
+ *   eventTime?: string
+ *   linkLabel?: string
+ *   linkUrl?: string
+ *   tags?: {
+ *      ariaLabel: string,
+ *      color: "white" | "gray" | "dark"
+ *      href: string,
+ *      label: string,
+ *      onClick: () => void,
+ *   } []
+ * }} CardItem
  */
 
 /**
  * @param {{
  *   perView: string | number
  *   cardItems: CardItem []
+ *   cardType?: "default" | "degree" | "event" | "news" | "story"
+ *   cardEventFormat?: "stack" | "inline"
+ *   cardHorizontal?: boolean
  *   maxWidth?: string
  *   width?: string
  *   imageAutoSize?: boolean
@@ -183,7 +228,7 @@ yarn test
 
 /**
  * @param {{
- *    perView: string | number
+ *    perView: number
  *    imageItems: ImageItem []
  *    maxWidth?: string
  *    width?: string
