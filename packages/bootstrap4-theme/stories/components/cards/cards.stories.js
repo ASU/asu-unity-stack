@@ -1189,7 +1189,7 @@ export const checkboxStackedCard = () => `
 
         <div class="card card-checkbox-stacked">
           <div class="card-image-content">
-            <div class="card-image-gradient">
+            <div class="card-image-gradient checkbox-card">
               <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
             </div>
             <form class="uds-form card-image-overlay-content ml-4">
@@ -1233,7 +1233,7 @@ export const checkboxInlineCard = () => `
     <div class="col col-12 col-md-6 col-lg-4">
       <div class="card card-checkbox-inline">
         <div class="card-image-content">
-          <div class="card-image-gradient">
+          <div class="card-image-gradient checkbox-card">
             <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           </div>
           <form class="uds-form card-image-overlay-content ml-4">
