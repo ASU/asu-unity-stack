@@ -646,13 +646,15 @@ Cards - Table of Contents
 --------------------------------------------------------------------*/
 
 .uds-anchor-menu {
+  position: sticky;
+  top: 91px;
   display: flex;
   flex-direction: column;
   background-color: white;
 
   &-shrink {
     h4 {
-      margin: 0.75rem 0.5rem !important;
+      margin: 0.5rem 0.5rem !important;
     }
 
     .nav-link {

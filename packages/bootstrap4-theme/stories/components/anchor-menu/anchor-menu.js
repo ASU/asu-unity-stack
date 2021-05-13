@@ -3,20 +3,24 @@ window.addEventListener('DOMContentLoaded', function () {
   const anchors = navbar.getElementsByClassName('nav-link');
   const anchorTargets = new Map();
   const navbarInitialPos = navbar.getBoundingClientRect().top;
+  const globalHeaderHeight = 91;
+
+  // !!!!!!! getBoundingClientRect gives coordinates of element as it relates to the window AT THE WINDOWS CURRENT POSITION. Need to make any calls to get position of elements from outside
+  // scroll method before it is effected by scroll.
 
   // Cache the anchor target elements by mapping them
   // as a key / pair so we don't have to
   // parse the dom on every scroll event
-  anchors.forEach((anchor) => {
+  for (anchor of anchors) {
     const targetId = anchor.getAttribute('href').replace('#', '');
     const target = document.getElementById(targetId);
     anchorTargets.set(anchor, target);
-  });
+  }
 
   window.onscroll = function () {
-    const positionFromTop =
-      (document.body.scrollTop || document.documentElement.scrollTop) +
-      navbar.offsetHeight;
+    const scrollTop =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const positionFromTop = scrollTop;
 
     if (positionFromTop > navbarInitialPos) {
       navbar.classList.add('uds-anchor-menu-shrink');
@@ -28,8 +32,8 @@ window.addEventListener('DOMContentLoaded', function () {
       const offsets = getOffset(value);
 
       if (
-        positionFromTop > offsets.y &&
-        positionFromTop < offsets.y + value.clientHeight
+        positionFromTop > value.getBoundingClientRect().top &&
+        positionFromTop < value.getBoundingClientRect().top + offsets.y
       ) {
         key.classList.add('active');
       } else {
@@ -41,9 +45,17 @@ window.addEventListener('DOMContentLoaded', function () {
   // Set click event of anchors
   for (let [key, value] of anchorTargets) {
     key.addEventListener('click', function (e) {
-      const active = document.querySelector('.nav-link.active');
-      if (active) active.classList.remove('active');
+      e.preventDefault();
+      // Offset scroll by height of navbar and height of global header
+      window.scrollTo(
+        0,
+        value.getBoundingClientRect().top -
+          navbar.offsetHeight -
+          globalHeaderHeight
+      );
 
+      const active = navbar.querySelector('.nav-link.active');
+      if (active) active.classList.remove('active');
       e.target.classList.add('active');
     });
   }
