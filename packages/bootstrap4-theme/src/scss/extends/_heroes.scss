@@ -84,7 +84,6 @@
 
 .uds-hero {
   .uds-hero-container {
-
     // Mobile adjustments.
     @media screen and (max-width: 576px) {
       margin-bottom: -2rem;
@@ -100,22 +99,35 @@
   }
 
   &.uds-hero-sm {
-
     // Adjustment to sm hero spacing for mobile.
     @media screen and (max-width: 576px) {
-      padding-left: $uds-size-spacing-3;
       padding-bottom: $uds-size-spacing-4;
+
+      .highlight {
+        box-shadow: -0.15em 0 0 $uds-color-base-gray-1,
+          0.15em 0 0 $uds-color-base-gray-1;
+        background-color: $uds-color-base-gray-1;
+      }
     }
   }
 
   &.uds-hero-md {
-    @media screen and (max-width: 576px){
+    @media screen and (max-width: 576px) {
       height: $uds-size-spacing-32;
+
+      .container {
+        position: relative;
+        top: $uds-size-spacing-4;
+        .highlight {
+          box-shadow: -0.15em 0 0 $uds-color-base-gray-1,
+            0.15em 0 0 $uds-color-base-gray-1;
+          background-color: $uds-color-base-gray-1;
+        }
+      }
     }
   }
 
   &.uds-hero-lg {
-
     // Snap lg hero to md at 1400px.
     @media screen and (max-width: 1400px) {
       height: $uds-size-spacing-64;
@@ -127,7 +139,6 @@
 4. Story Hero, Mobile
 --------------------------------------------------------------*/
 .uds-story-hero {
-
   // Calc value in the grid-template row definitions:
   // First row = height of the overall mobile hero image - 4.5rem offset for the indented content.
   display: grid;
@@ -155,7 +166,7 @@
 
     .breadcrumb,
     p.meta {
-      padding: .75rem 0;
+      padding: 0.75rem 0;
       margin: $uds-size-spacing-half 0;
     }
 
@@ -171,7 +182,6 @@
 
 // Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
 @media (min-width: 950px) {
-
   // Calc value in the grid-template row definitions:
   // First row = height of the overall hero image - 8rem offset for the indented content.
   .uds-story-hero {
