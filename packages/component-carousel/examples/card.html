@@ -111,7 +111,10 @@
               href: "#",
               label: `Button 5 link here`,
               size: "default",
-              onClick: () => window.alert("Holoa Amigo 😃."),
+              onClick: () => {
+                window.alert("Hola Amigo 😃.");
+                return false;
+              },
             },
           ],
         },

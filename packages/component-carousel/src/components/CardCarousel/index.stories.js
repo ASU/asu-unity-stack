@@ -40,7 +40,10 @@ for (let index = 0; index < 8; index += 1) {
         label: `Button ${index + 1} link here`,
         size: "default",
         // eslint-disable-next-line no-alert
-        onClick: () => window.alert("Holoa Amigo 😃."),
+        onClick: () => {
+          window.alert("Hola Amigo 😃.");
+          return false;
+        },
       },
     ],
   });
