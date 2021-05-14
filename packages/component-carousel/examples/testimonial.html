@@ -56,8 +56,12 @@
           hasNavButtons: true,
           hasPositionIndicators: true,
           itemStyle: {
-            itemCssClass: ["with-image", "accent-gold"],
-            // itemQuoteContentCssClass: ["text-maroon"],
+            /* if a testimonial item has the attribute `imageSource`
+            then the carousel will ass the class "with-image" automatically
+            to that item */
+            containerCssClass: ["accent-gold"],
+            // titleCssClass: ["highlight-gold", "text-white"],
+            // contentCssClass: ["text-maroon"],
           },
           // imageAutoSize: false,// default true
         },
