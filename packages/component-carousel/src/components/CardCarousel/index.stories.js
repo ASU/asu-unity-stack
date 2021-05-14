@@ -39,8 +39,8 @@ for (let index = 0; index < 8; index += 1) {
         href: "#",
         label: `Button ${index + 1} link here`,
         size: "default",
-        // eslint-disable-next-line no-alert
         onClick: () => {
+          // eslint-disable-next-line no-alert
           window.alert("Hola Amigo 😃.");
           return false;
         },

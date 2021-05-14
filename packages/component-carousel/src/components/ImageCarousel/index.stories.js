@@ -9,31 +9,31 @@ const myCarouselItems = [
   {
     id: 1,
     imageSource: "https://source.unsplash.com/random/800x400?a=1",
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 2,
     imageSource: "https://source.unsplash.com/random/400x200?a=2",
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 3,
     imageSource: "https://source.unsplash.com/random/600x400?a=3",
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 4,
     imageSource: "https://source.unsplash.com/random/600x600?a=4",
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
   {
     id: 5,
     imageSource: "https://source.unsplash.com/random/600x500?a=5",
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   },
 ];
@@ -53,16 +53,10 @@ const mockItemWithContent = () => {
 const mockItemWithMoreContent = () => {
   return myCarouselItems.map((item, index) => ({
     ...item,
-    content: (
-      <>
-        <h3>Content {index + 1}</h3>
-        <p>
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </>
-    ),
+    title: `Content ${index + 1}`,
+    content: ` Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua eiusmod tempo.`,
   }));
 };
 
