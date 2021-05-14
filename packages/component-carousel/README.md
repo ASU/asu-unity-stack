@@ -149,8 +149,8 @@ yarn test
     perView: 3,
     maxWidth: "100%", // Is not mandatory
   };
-  // No need to provide target ID as carouselContainer is the default.
-  componentCarousel.initCarousel(props);
+
+  AsuWebCarousel.initCardCarousel(props);
 
   // Setup and initialize the second carousel.
   AsuWebCarousel.initCardCarousel({
@@ -161,8 +161,6 @@ yarn test
       maxWidth: "500px", // Is not mandatory
     },
   });
-
-  componentCarousel.initCarousel(props, "anotherCarouselContainer");
 </script>
 
 ```
