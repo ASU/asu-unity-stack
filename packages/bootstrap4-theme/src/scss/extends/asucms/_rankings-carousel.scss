@@ -1,6 +1,8 @@
 .image-carousel {
   grid-area: carousel;
   overflow: hidden;
+  height: 100%;
+  background-color: $uds-color-base-gold;
 
   .asucms-image {
     display: flex;
@@ -22,8 +24,13 @@
   /* glide.core.css (Unmodified) */
   .glide {
     width: 100%;
+    height: 100%;
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .glide * {
     box-sizing: inherit;
