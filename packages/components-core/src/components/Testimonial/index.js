@@ -28,7 +28,7 @@ const spreadClasses = classes => (classes || []).join(" ");
  *    }
  *  }
  *  imageSource?: string
- *  altText?:string
+ *  imageAltText?:string
  *  itemStyle?:TestimonialStyle
  * }} TestimonialProps
  */
@@ -40,7 +40,7 @@ const spreadClasses = classes => (classes || []).join(" ");
  */
 const Testimonial = ({
   imageSource = null,
-  altText = null,
+  imageAltText = null,
   quote,
   itemStyle = {},
 }) => (
@@ -49,7 +49,7 @@ const Testimonial = ({
       imageSource ? "with-image" : ""
     } ${spreadClasses(itemStyle.containerCssClass)}`}
   >
-    {imageSource && <img src={imageSource} alt={altText} />}
+    {imageSource && <img src={imageSource} alt={imageAltText} />}
     <svg role="presentation" viewBox="0 0 302.87 245.82">
       <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
     </svg>
@@ -89,7 +89,7 @@ Testimonial.propTypes = {
     }),
   }).isRequired,
   imageSource: PropTypes.string,
-  altText: PropTypes.string,
+  imageAltText: PropTypes.string,
   itemStyle: PropTypes.shape({
     containerCssClass: PropTypes.arrayOf(PropTypes.string),
     titleCssClass: PropTypes.arrayOf(PropTypes.string),
