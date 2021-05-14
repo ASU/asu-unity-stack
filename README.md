@@ -35,9 +35,7 @@ Adhering to the standard Volta installation instructions would introduce a weakp
 For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
 ```
-$ cd getvolta
-$ chmod +x getvolta.sh
-$ ./getvolta.sh
+bash ./getvolta/getvolta.sh
 ```
 
 When deemed necessary, we'll review newer versions of the installer from https://get.volta.sh/ and update our copy of getvolta.sh.
