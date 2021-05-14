@@ -221,8 +221,9 @@ yarn test
  * @typedef {{
  *  id: number
  *  imageSource: string
- *  altText:string
- *  content?: string | JSX.Element
+ *  imageAltText: string
+ *  title?: string
+ *  content?: string
  * }} ImageItem
  */
 
@@ -245,7 +246,7 @@ yarn test
  *     id: number,
  *     imageSource: string,
  *     thumbnailSource?: string,
- *     altText:string
+ *     imageAltText:string
  *     content?: any
  * }} ImageCarouselItem
  */
@@ -277,7 +278,7 @@ yarn test
    * @typedef {{
    *  id: number
    *  imageSource?: string
-   *  altText?:string
+   *  imageAltText?:string
    *  quote: {
    *    title?: string
    *    content: string
