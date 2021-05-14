@@ -85,7 +85,7 @@ Cards - Table of Contents
 .card-image-gradient::after {
   display: block;
   position: absolute;
-  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 100%)
+  background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 120%)
     0% 0% no-repeat padding-box;
   height: $uds-component-card-basic-image-top-height;
   width: 100%;
@@ -110,8 +110,8 @@ Cards - Table of Contents
   flex-grow: 100;
 }
 
-.card > div:first-of-type {
-  padding-top:32px;
+.card:not(.card.card-foldable) > div:first-of-type:not(.card-image-content) {
+  padding-top: 32px;
   flex-grow: 1;
 }
 
@@ -340,8 +340,7 @@ Cards - Table of Contents
   padding-top: 24px;
 }
 .card-story > div:first-of-type {
-    padding: 24px 16px 16px 16px;
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .card-story .card-footer {
@@ -809,14 +808,6 @@ Cards - Table of Contents
 9. Checkbox Stacked Cards
 --------------------------------------------------------------------*/
 
-.card-checkbox-stacked .card-header .card-title:after {
-  content: $uds-component-card-degree-title-underline-content;
-  width: $uds-component-card-degree-title-underline-width;
-  height: $uds-component-card-degree-title-underline-height;
-  display: $uds-component-card-degree-title-underline-display;
-  margin-top: $uds-component-card-degree-title-underline-margin-top;
-}
-
 .card-checkbox-stacked .card-header {
   position: relative;
 }
@@ -828,14 +819,6 @@ Cards - Table of Contents
 /*------------------------------------------------------------------
 10. Checkbox Inline Cards
 --------------------------------------------------------------------*/
-
-.card-checkbox-stacked .card-header .card-title:after {
-  content: $uds-component-card-degree-title-underline-content;
-  width: $uds-component-card-degree-title-underline-width;
-  height: $uds-component-card-degree-title-underline-height;
-  display: $uds-component-card-degree-title-underline-display;
-  margin-top: $uds-component-card-degree-title-underline-margin-top;
-}
 
 .card-checkbox-inline .card-header {
   position: relative;

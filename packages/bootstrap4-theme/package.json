@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "3.20.0",
+  "version": "3.20.5",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
