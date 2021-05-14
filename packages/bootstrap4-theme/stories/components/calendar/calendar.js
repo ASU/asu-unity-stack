@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="calendar-nav">
-        <button id="prev-month" aria-label="Previus month"><span class="fas fa-angle-left"></span></button>
+        <button id="prev-month" aria-label="Previous month"><span class="fas fa-angle-left"></span></button>
         <button id="next-month" aria-label="Next month"><span class="fas fa-angle-right"></span></button>
       </div>
   `;
