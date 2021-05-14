@@ -1,5 +1,5 @@
 # ASU Carousel
-ASU Web Standards-based implementation of @glidejs/glide npm library carousel.
+ASU Web Standards-based implementation of `@glidejs/glide` npm library carousel.
 
 ## Dependencies
 
@@ -300,18 +300,18 @@ yarn test
    *  }} props
    */
  ```
-### All carousel examples
+### Examples
 
 The folder [packages/component-carousel/examples](/packages/component-carousel/examples)
 <br/>contains examples to use the carousel on static HTML page
 
-### All carousel examples
+#### Examples - quick links
 
 - [Card carousel](/packages/component-carousel/examples/card.html)
 - [Image Gallery carousel](/packages/component-carousel/examples/image-gallery.html)
 - [Image carousel](/packages/component-carousel/examples/image.html)
 - [Testimonial carousel](/packages/component-carousel/examples/testimonial.html)
-### Test examples
+#### Examples - run and test
 
 If you want to test the examples files you need to install an application server <br />
 and run it into the folder `/packages/component-carousel/examples`. <br />
