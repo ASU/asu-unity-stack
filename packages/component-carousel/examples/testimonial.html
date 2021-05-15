@@ -33,7 +33,7 @@
               "Laughter is timeless, imagination has no age, dreams are forever.",
           },
           imageSource: `https://placeimg.com/300/300/nature`,
-          altText: `Image of Walt Disney`,
+          imageAltText: `Image of Walt Disney`,
         },
         {
           id: 2,
@@ -43,12 +43,12 @@
       because we’recurious and curiosity keeps leading us down new paths.`,
           },
           imageSource: `https://placeimg.com/300/300/nature`,
-          altText: `Image of Walt Disney`,
+          imageAltText: `Image of Walt Disney`,
         },
       ];
 
       // Setup and initialize the testimonial carousel.
-      AsuWebcarousel.initTestimonialCarousel({
+      AsuWebCarousel.initTestimonialCarousel({
         targetSelector: "#testimonialCarouselContainer",
         props: {
           testimonialItems: myCarouselItems,
@@ -56,8 +56,12 @@
           hasNavButtons: true,
           hasPositionIndicators: true,
           itemStyle: {
-            itemCssClass: ["with-image", "accent-gold"],
-            // itemQuoteContentCssClass: ["text-maroon"],
+            /* if a testimonial item has the attribute `imageSource`
+            then the carousel will ass the class "with-image" automatically
+            to that item */
+            containerCssClass: ["accent-gold"],
+            // titleCssClass: ["highlight-gold", "text-white"],
+            // contentCssClass: ["text-maroon"],
           },
           // imageAutoSize: false,// default true
         },
