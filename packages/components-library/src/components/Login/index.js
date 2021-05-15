@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
@@ -16,7 +15,7 @@ const Login = ({ loggedIn, loginLink, logoutLink, userName, ...props }) => {
           </a>
         </>
       ) : (
-        <a href={loginLink}>Sign in</a>
+        <a href={loginLink}>Sign In</a>
       )}
     </S.Login>
   );
@@ -33,7 +32,7 @@ Login.propTypes = {
 Login.defaultProps = {
   logoutLink: "https://webapp4.asu.edu/myasu/Signout",
   loginLink: "https://weblogin.asu.edu/cgi-bin/login",
-  loggedIn: false
+  loggedIn: false,
 };
 
 export { Login };

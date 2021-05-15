@@ -163,6 +163,10 @@ const universalStyles = breakpoint => css`
           }
 
         }
+
+        .login-status a {
+          color: #191919;
+        }
       }
 
     }
