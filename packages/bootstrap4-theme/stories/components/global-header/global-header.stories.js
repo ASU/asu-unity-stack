@@ -10,7 +10,9 @@ storiesOf('Components/Global Header', module)
     happo: false,
   })
 
-  .add('Basic', () => `
+  .add(
+    'Basic',
+    () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
@@ -134,9 +136,12 @@ storiesOf('Components/Global Header', module)
     <div id="skip-to-content" class="sr-only"></div>
     <!-- Page content starts here -->
   </div>
-  `)
+  `
+  )
 
-  .add('Dropdown menus', () => `
+  .add(
+    'Dropdown menus',
+    () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
@@ -427,9 +432,12 @@ storiesOf('Components/Global Header', module)
     <!-- Page content starts here -->
   </div>
 
-  `)
+  `
+  )
 
-  .add('No navigation', () => `
+  .add(
+    'No navigation',
+    () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
@@ -523,9 +531,12 @@ storiesOf('Components/Global Header', module)
     <!-- Page content starts here -->
   </div>
 
-  `)
+  `
+  )
 
-  .add('No navigation w/buttons', () => `
+  .add(
+    'No navigation w/buttons',
+    () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
@@ -623,9 +634,12 @@ storiesOf('Components/Global Header', module)
     <!-- Page content starts here -->
   </div>
 
-  `)
+  `
+  )
 
-  .add('Scrolled state', () => `
+  .add(
+    'Scrolled state',
+    () => `
   <header id="asu-header" class="fixed-top">
 
     <div id="wrapper-header-top">
@@ -752,4 +766,5 @@ storiesOf('Components/Global Header', module)
     <div class="bg-gray-4" style="height:70vh;"></div>
   </main>
 
-  `)
+  `
+  );
