@@ -1,5 +1,3 @@
-
-
 import { cx, css } from "@emotion/css";
 
 import { breakpointForMin } from "../../theme";
@@ -12,12 +10,16 @@ const loginStyles = breakpoint => css`
     margin-right: 0.5rem;
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 
-    > a, span {
+    > a,
+    span {
       padding: 0;
       margin: 0;
       color: #484848;
       text-decoration: none;
       position: relative;
+    }
+    > a:hover {
+      text-decoration: underline;
     }
     .name {
       font-weight: 700;
@@ -35,7 +37,7 @@ const loginStyles = breakpoint => css`
     }
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
   }
 `;

@@ -147,7 +147,8 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
   .form-inline label {
     position: relative;
-    margin-left: -85px;
+    right: 72px;
+    margin-left: -95px;
     font-weight: 400;
     transition: all 0.5s;
     color: $uds-color-base-gray-5;

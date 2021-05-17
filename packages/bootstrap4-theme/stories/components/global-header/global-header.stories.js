@@ -22,16 +22,16 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign out</a>
+                <a class="signout" href="#">Sign Out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
-                <label id="header-top-search">Search ASU</label>
+                <label id="header-top-search">Search asu.edu</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -102,7 +102,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search asu.edu">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -112,11 +112,11 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <div class="nav-link login-status">
-                        Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign out</a>
+                        Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
                       </div>
                     </div>
                   </div>
@@ -151,15 +151,15 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
-                <a class="signin" href="#">Sign in</a>
+                <a class="signin" href="#">Sign In</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
-                <label id="header-top-search">Search ASU</label>
+                <label id="header-top-search">Search asu.edu</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -399,7 +399,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search ASU" placeholder="Search ASU">
+                      <input class="form-control" type="search" name="q" aria-label="Search asu.edu" placeholder="Search asu.edu">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -409,10 +409,10 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
 
@@ -447,16 +447,16 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign out</a>
+                <a class="signout" href="#">Sign Out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
-                <label id="header-top-search">Search ASU</label>
+                <label id="header-top-search">Search asu.edu</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -498,7 +498,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search asu.edu">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -508,10 +508,10 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
 
@@ -546,15 +546,15 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
-                <a class="signin" href="#">Sign in</a>
+                <a class="signin" href="#">Sign In</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
-                <label id="header-top-search">Search ASU</label>
+                <label id="header-top-search">Search asu.edu</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -601,7 +601,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search asu.edu">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -611,10 +611,10 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
 
@@ -649,16 +649,16 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU Home</a>
+              <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
-                <a class="signout" href="#">Sign out</a>
+                <a class="signout" href="#">Sign Out</a>
               </div>
               <form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
                 <input class="form-control" type="search" name="q" aria-labelledby="header-top-search" required>
-                <label id="header-top-search">Search ASU</label>
+                <label id="header-top-search">Search asu.edu</label>
                 <input name="site" value="default_collection" type="hidden">
                 <input name="sort" value="date:D:L:d1" type="hidden">
                 <input name="output" value="xml_no_dtd" type="hidden">
@@ -730,7 +730,7 @@ storiesOf('Components/Global Header', module)
 
                   <div class="navbar-mobile-footer">
                     <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search asu.edu">
                       <input name="site" value="default_collection" type="hidden">
                       <input name="sort" value="date:D:L:d1" type="hidden">
                       <input name="output" value="xml_no_dtd" type="hidden">
@@ -740,10 +740,10 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
 
