@@ -15,7 +15,7 @@ export default {
  */
 export const DefaultView = ({ image }) => (
   <DegreePage
-    hero={{
+    introContent={{
       image,
     }}
   />

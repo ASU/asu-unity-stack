@@ -24,15 +24,15 @@
  * @typedef {("text" | "text-image-overlay" | "text-photo-grid")} IntroType
  *
  * @typedef {{
- *    type: IntroType
- *    image: AppImageProps
- *    header: AppContentProps
- *    title: AppContentProps
- *    body: AppContentProps
- *    photoGrid: {
+ *    type?: IntroType
+ *    image?: AppImageProps
+ *    header?: AppContentProps
+ *    title?: AppContentProps
+ *    body?: AppContentProps
+ *    photoGrid?: {
  *      images: AppImageProps[]
  *    }
- * }} IntoContentProps
+ * }} IntroContentProps
  */
 
 /**
@@ -66,7 +66,7 @@
  * @typedef {{
  *  sharedDataSources?: AppDataSource []
  *  hero?: HeroProps
- *  introContent?: IntoContentProps
+ *  introContent?: IntroContentProps
  *  degreeList?: GridListProps
  * }} AppProps
  */

@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { Hero, IntroContent } from "../../core/components";
+import { IntroContent } from "../../core/components";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
@@ -12,13 +12,13 @@ import { Hero, IntroContent } from "../../core/components";
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const DegreePage = ({ hero }) => {
+const DegreePage = ({ introContent }) => {
   return (
     <>
-      <Hero image={hero.image} content={hero.content} />
+      {/* <Hero image={hero.image} content={hero.content} /> */}
       <div className="container">
         <main>
-          <IntroContent />
+          <IntroContent image={introContent.image} />
           {/* todo: add here other components */}
         </main>
       </div>
@@ -27,7 +27,7 @@ const DegreePage = ({ hero }) => {
 };
 
 DegreePage.propTypes = {
-  hero: Hero.propTypes,
+  introContent: IntroContent.propTypes,
 };
 
 export { DegreePage };
