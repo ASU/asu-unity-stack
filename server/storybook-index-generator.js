@@ -176,7 +176,8 @@ module.exports = generateHTML = packages => `
 
         <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
-          <p>Learn how to install and use the packages listed below in your ASU projects. Important note: Users may only login and check out packages on the registry. On your first visit, follow steps 1 and 3, skipping 2.</p>
+          <p>Learn how to install and use the packages listed below in your ASU projects. On your first visit, follow steps 1 and 3, skipping 2. Users cannot publish packages.
+          If you receive errors attempting to install packages from the registry, please ensure the line <pre>@asu-design-system:registry=https://registry.web.asu.edu</pre> is in your <pre>~/.npmrc</pre> file.</p>
           <p><a class="btn btn-maroon btn-medium" href="https://registry.web.asu.edu/">Visit package registry</a></p>
         </div>
 
