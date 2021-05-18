@@ -19,14 +19,11 @@ function initializeAnchorMenu() {
   }
 
   window.onscroll = function () {
-    let scrollTop = window.scrollY;
-    // document.body.scrollTop || document.documentElement.scrollTop;
-
     if (navbar.getBoundingClientRect().top <= globalHeader.offsetHeight) {
       navbar.classList.add('uds-anchor-menu-sticky');
       navbar.style.top = globalHeader.offsetHeight + 'px'; // Can't set this in stylesheet because global header height isn't static
     }
-    if (scrollTop <= navbarInitialPosition) {
+    if (window.scrollY <= navbarInitialPosition) {
       navbar.classList.remove('uds-anchor-menu-sticky');
       navbar.style.top = null;
     }
@@ -45,6 +42,8 @@ function initializeAnchorMenu() {
         anchor.classList.remove('active');
       }
     }
+
+    previousScrollPosition = window.scrollY;
   };
 
   // Set click event of anchors
@@ -52,12 +51,30 @@ function initializeAnchorMenu() {
     anchor.addEventListener('click', function (e) {
       e.preventDefault(); // prevent default goto action, need to line up under header and navbar
 
-      window.scrollTo(0, anchorTarget.offsetTop);
+      // OffsetTop + 1 is a hack. If you click the first anchor item, offsetTop is exactly the cutoff to make the navbar sticky, which pops it back into the dom and throws
+      // off positioning. Adding 1 to the offset top makes sure the navbar remains sticky
+      const targetPosition = anchorTarget.offsetTop + 1;
+      window.scrollTo(0, targetPosition);
 
-      let timer = previousScrollPosition === 0 ? 500 : 0;
-      setTimeout(() => {
-        navbar.style.top = globalHeader.offsetHeight + 'px';
-      }, timer);
+      // If page has not been scrolled, global header will still be full size. Therefore, navigating to target at this point will not compensate for header size change.
+      // This will cause anchor menu to sticky to the bottom of where global header *was*, before the size change. The global header size change has an animation
+      // duration of .5s, so we need to wait for it to fully shrink before repositioning the anchor menu. Also, since the anchor menu will not have been stickied at this point,
+      // the content will now be covered by the anchor menu, so we must scroll back down some to avoid overlapping the content.
+      // To "fix" this, we need to
+      if (previousScrollPosition === 0) {
+        setTimeout(() => {
+          navbar.style.top = globalHeader.offsetHeight + 'px';
+          setTimeout(() => {
+            window.scrollTo(0, targetPosition - navbar.offsetHeight);
+          }, 200);
+        }, 300);
+      }
+
+      if (previousScrollPosition < navbarInitialPosition) {
+        setTimeout(() => {
+          window.scrollTo(0, targetPosition - navbar.offsetHeight);
+        }, 100);
+      }
 
       // Remove active class from other anchor in navbar, and add it to the clicked anchor
       const active = navbar.querySelector('.nav-link.active');
