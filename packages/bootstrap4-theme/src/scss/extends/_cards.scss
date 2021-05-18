@@ -646,15 +646,22 @@ Cards - Table of Contents
 --------------------------------------------------------------------*/
 
 .uds-anchor-menu {
-  position: sticky;
-  top: 91px;
-  display: flex;
-  flex-direction: column;
   background-color: white;
 
-  &-shrink {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-sticky {
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    justify-content: center;
+
     h4 {
-      margin: 0.5rem 0.5rem !important;
+      margin: 1rem 0.5rem !important;
     }
 
     .nav-link {
@@ -732,6 +739,10 @@ Cards - Table of Contents
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid $uds-color-base-gray-3;
+
+  .uds-anchor-menu-wrapper {
+    flex-direction: row;
+  }
 
   h4 {
     font-size: 1.25rem;

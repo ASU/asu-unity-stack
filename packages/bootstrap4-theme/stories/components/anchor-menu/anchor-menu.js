@@ -1,12 +1,14 @@
-window.addEventListener('DOMContentLoaded', function () {
+jQuery(function () {
   initializeAnchorMenu();
 });
 
 function initializeAnchorMenu() {
+  const globalHeader = document.getElementById('asu-header');
   const navbar = document.getElementById('uds-anchor-menu');
   const anchors = navbar.getElementsByClassName('nav-link');
+  const navbarInitialPosition = navbar.offsetTop;
   const anchorTargets = new Map();
-  const globalHeader = document.getElementById('asu-header');
+  let previousScrollPosition = window.scrollY;
 
   // Cache the anchor target elements by mapping them as a key/pair so don't have to
   // parse the dom on every scroll event
@@ -17,15 +19,16 @@ function initializeAnchorMenu() {
   }
 
   window.onscroll = function () {
-    // Assume global header will be present
-    const top = globalHeader.offsetHeight;
+    let scrollTop = window.scrollY;
+    // document.body.scrollTop || document.documentElement.scrollTop;
 
-    // If the top of the navbar is at or below the window top, apply style to shrink navbar
-    // Actual top height must be compensated, assuming global header is present
-    if (navbar.getBoundingClientRect().top <= top) {
-      navbar.classList.add('uds-anchor-menu-shrink');
-    } else {
-      navbar.classList.remove('uds-anchor-menu-shrink');
+    if (navbar.getBoundingClientRect().top <= globalHeader.offsetHeight) {
+      navbar.classList.add('uds-anchor-menu-sticky');
+      navbar.style.top = globalHeader.offsetHeight + 'px'; // Can't set this in stylesheet because global header height isn't static
+    }
+    if (scrollTop <= navbarInitialPosition) {
+      navbar.classList.remove('uds-anchor-menu-sticky');
+      navbar.style.top = null;
     }
 
     for (let [anchor, target] of anchorTargets) {
@@ -47,9 +50,14 @@ function initializeAnchorMenu() {
   // Set click event of anchors
   for (let [anchor, anchorTarget] of anchorTargets) {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
+      e.preventDefault(); // prevent default goto action, need to line up under header and navbar
 
-      window.scrollTo(0, anchorTarget.getBoundingClientRect().top);
+      window.scrollTo(0, anchorTarget.offsetTop);
+
+      let timer = previousScrollPosition === 0 ? 500 : 0;
+      setTimeout(() => {
+        navbar.style.top = globalHeader.offsetHeight + 'px';
+      }, timer);
 
       // Remove active class from other anchor in navbar, and add it to the clicked anchor
       const active = navbar.querySelector('.nav-link.active');
