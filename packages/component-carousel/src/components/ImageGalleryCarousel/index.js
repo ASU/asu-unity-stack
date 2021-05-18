@@ -19,7 +19,8 @@ import {
  *     id: number,
  *     imageSource: string,
  *     thumbnailSource?: string,
- *     altText:string
+ *     imageAltText:string
+ *     title?: string
  *     content?: string
  * }} ImageCarouselItem
  */
@@ -30,7 +31,7 @@ const sharedProps = {
       id: PropTypes.number,
       imageSource: PropTypes.string,
       thumbnailSource: PropTypes.string,
-      altText: PropTypes.string,
+      imageAltText: PropTypes.string,
       content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     })
   ),
@@ -42,14 +43,14 @@ const sharedProps = {
  * @param {ImageCarouselItem} props
  * @returns {CarouselItem}
  */
-const htmlTemplate = ({ id, imageSource, altText }) => ({
+const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
   id,
   item: (
     <div className="uds-img">
       <img
         src={imageSource}
         className="uds-img figure-img img-fluid"
-        alt={altText}
+        alt={imageAltText}
       />
     </div>
   ),
@@ -67,10 +68,12 @@ const htmlTemplate = ({ id, imageSource, altText }) => ({
 // eslint-disable-next-line react/prop-types
 const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const ATTR_INDEX = "data-current-index";
+  const [title, setTitle] = useState(imageItems[0].title);
   const [content, setContent] = useState(imageItems[0].content);
 
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
+    setTitle(item.title);
     setContent(item.content);
   };
 
@@ -114,13 +117,18 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
           <NextButton />
         </BaseNavButtonContainer>
       </div>
-      {hasContent ? (
+      {hasContent && (title || content) ? (
         <figcaption id="caption" className="figure-caption uds-figure-caption">
-          {typeof content === "string" ? (
-            <span className="uds-caption-text">{content}</span>
-          ) : (
-            content
-          )}
+          <div className="uds-caption-text">
+            {!title ? (
+              <span>{content}</span>
+            ) : (
+              <>
+                <h3>{title}</h3>
+                <p>{content}</p>
+              </>
+            )}
+          </div>
         </figcaption>
       ) : null}
     </div>

@@ -30,13 +30,17 @@ You need to set up your development environment before you can do anything.
 
 The recommended method for setting up your local development environment is to use [Volta - Javascript Tool Manager](https://volta.sh/). Volta is designed to allow MacOS, Liux, and Windows users to easily install and use the correct version of Node, NPM, and Yarn for their projects. In addition to easily installing different versions of Node on your computer and switching between them when needed, this project has been configured to notify Volta what version of Node and Yarn is required to work on this project. This ensure all devs are using the same version of these tools, and preventing some subtle errors and development issues from occurring.
 
-Visit [Getting Started](https://docs.volta.sh/guide/getting-started) for instructions on installing on your computer.
+Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of  the installer script, vetted it, and included it here, in the getvolta/ folder.
 
-For MacOS, you only need to execute the following command in your terminal:
+For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
 ```
-curl https://get.volta.sh | bash
+bash ./getvolta/getvolta.sh
 ```
+
+When deemed necessary, we'll review newer versions of the installer from https://get.volta.sh/ and update our copy of getvolta.sh.
+
+For reference, the original Volta install instructions and references to the script can be found at [Getting Started](https://docs.volta.sh/guide/getting-started).
 
 You must then close and restart all open terminal sessions so the new Volta paths can take effect.
 

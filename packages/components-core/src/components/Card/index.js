@@ -6,7 +6,6 @@ import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import "./card.css";
@@ -207,28 +206,24 @@ const BaseCard = ({
   linkUrl,
   tags,
 }) => {
-  const cardClass = classNames(UdsStyles["card"], {
-    [UdsStyles[`card-degree`]]: type === "degree",
-    [UdsStyles[`card-event`]]: type === "event",
-    [UdsStyles[`card-story`]]: type === "story",
-    [UdsStyles[`w-${width.replace("%", "")}`]]: width !== "100%",
-    [UdsStyles[`card-horizontal`]]: horizontal,
-    [UdsStyles[`card-hover`]]: clickable,
+  const cardClass = classNames("card", {
+    [`card-degree`]: type === "degree",
+    [`card-event`]: type === "event",
+    [`card-story`]: type === "story",
+    [`w-${width.replace("%", "")}`]: width !== "100%",
+    [`card-horizontal`]: horizontal,
+    [`card-hover`]: clickable,
   });
 
   return (
     <>
       <div className={cardClass}>
         {image && (
-          <img
-            className={UdsStyles["card-img-top"]}
-            src={image}
-            alt={imageAltText}
-          />
+          <img className="card-img-top" src={image} alt={imageAltText} />
         )}
         {!image && icon && <FontAwesomeIcon icon={icon} />}
         {horizontal ? (
-          <div className={UdsStyles["card-content-wrapper"]}>
+          <div className="card-content-wrapper">
             <CardContent
               type={type}
               body={body}
@@ -329,11 +324,11 @@ const CardContent = ({
   tags,
 }) => (
   <>
-    <div className={UdsStyles["card-header"]}>
-      <h3 className={UdsStyles["card-title"]}>{title}</h3>
+    <div className="card-header">
+      <h3 className="card-title">{title}</h3>
     </div>
-    <div className={UdsStyles["card-body"]}>
-      <p className={UdsStyles["card-text"]}>{body}</p>
+    <div className="card-body">
+      <p className="card-text">{body}</p>
     </div>
     {type === "event" && (eventTime || eventLocation) && (
       <EventInfo
@@ -344,10 +339,7 @@ const CardContent = ({
     )}
     {buttons &&
       buttons.map(button => (
-        <div
-          key={`${button.label}-${button.href}`}
-          className={UdsStyles["card-button"]}
-        >
+        <div key={`${button.label}-${button.href}`} className="card-button">
           <Button
             ariaLabel={button.ariaLabel}
             color={button.color}
@@ -362,12 +354,12 @@ const CardContent = ({
         </div>
       ))}
     {linkUrl && linkLabel && (
-      <div className={UdsStyles["card-link"]}>
+      <div className="card-link">
         <a href={linkUrl}>{linkLabel}</a>
       </div>
     )}
     {tags && (
-      <div className={UdsStyles["card-tags"]}>
+      <div className="card-tags">
         {tags.map(tag => (
           <ButtonTag
             key={`${tag.label}-${tag.href}`}
@@ -431,9 +423,9 @@ CardContent.defaultProps = {
 const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   if (eventFormat === "inline") {
     return (
-      <div className={UdsStyles["card-event-details"]}>
+      <div className="card-event-details">
         {eventTime && (
-          <div className={UdsStyles["card-event-icons"]}>
+          <div className="card-event-icons">
             <div>
               <FontAwesomeIcon icon={faCalendar} />
             </div>
@@ -441,7 +433,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
           </div>
         )}
         {eventLocation && (
-          <div className={UdsStyles["card-event-icons"]}>
+          <div className="card-event-icons">
             <div>
               <FontAwesomeIcon icon={faMapMarkerAlt} />
             </div>
@@ -458,8 +450,8 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
   return (
     <>
       {eventTime && (
-        <div className={UdsStyles["card-event-details"]}>
-          <div className={UdsStyles["card-event-icons"]}>
+        <div className="card-event-details">
+          <div className="card-event-icons">
             <div>
               <FontAwesomeIcon icon={faCalendar} />
             </div>
@@ -468,8 +460,8 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         </div>
       )}
       {eventLocation && (
-        <div className={UdsStyles["card-event-details"]}>
-          <div className={UdsStyles["card-event-icons"]}>
+        <div className="card-event-details">
+          <div className="card-event-icons">
             <div>
               <FontAwesomeIcon icon={faMapMarkerAlt} />
             </div>

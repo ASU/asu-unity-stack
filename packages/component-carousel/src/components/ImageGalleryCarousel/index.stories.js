@@ -26,7 +26,7 @@ for (let index = 0; index < 8; index += 1) {
     imageSource: `https://source.unsplash.com/random/${getImageFormat(
       index
     )}?a=${index - 1}`,
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   });
 }
@@ -48,17 +48,10 @@ const mockItemWithContent = () => {
 const mockItemWithMoreContent = () => {
   return myCarouselItems.map((item, index) => ({
     ...item,
-    content: (
-      <>
-        <h3>Content {index + 1}</h3>
-
-        <p>
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </>
-    ),
+    title: `Content ${index + 1}`,
+    content: `Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua eiusmod tempo.`,
   }));
 };
 

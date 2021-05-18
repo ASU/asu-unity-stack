@@ -1,7 +1,7 @@
 // @ts-check
 
 const toolBar = `
-    <div class="row">
+    <div class="test-toolbar row">
       <div class="col-md-12">
 
         <div class="uds-quicklinks uds-quicklinks-expanded-md">
@@ -21,10 +21,10 @@ const toolBar = `
 
 const style = `
   <style>
-    a:not(.active) {
+   .test-toolbar a:not(.active) {
       color: black;
     }
-    a.active {
+    .test-toolbar a.active {
       font-weight: bold;
     }
   </style>

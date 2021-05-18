@@ -25,7 +25,7 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  *    }
  *  }
  *  imageSource?: string
- *  altText?:string
+ *  imageAltText?:string
  * }} TestimonialItem
  */
 
@@ -35,12 +35,15 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  * @param {TestimonialStyle} itemStyle
  * @returns { CarouselItem }
  */
-const htmlTemplate = ({ id, imageSource, altText, quote }, itemStyle = {}) => ({
+const htmlTemplate = (
+  { id, imageSource, imageAltText, quote },
+  itemStyle = {}
+) => ({
   id,
   item: (
     <Testimonial
       imageSource={imageSource}
-      altText={altText}
+      imageAltText={imageAltText}
       quote={quote}
       itemStyle={itemStyle}
     />

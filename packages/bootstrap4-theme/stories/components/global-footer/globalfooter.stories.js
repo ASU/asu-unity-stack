@@ -1,14 +1,16 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 import endorsedLogo from './asu_universitytechoffice_horiz_rgb_white_150ppi.png';
-import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png'
+import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png';
 
 storiesOf('Components/Global Footer', module)
   .addParameters({
     happo: false,
   })
 
-  .add('Global elements only', () => `
+  .add(
+    'Global elements only',
+    () => `
   <footer role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-innovation">
@@ -16,7 +18,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -48,9 +52,12 @@ storiesOf('Components/Global Footer', module)
 
   </footer>
 
-  `)
+  `
+  )
 
-  .add('Zero columns', () => `
+  .add(
+    'Zero columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -79,7 +86,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -110,9 +119,12 @@ storiesOf('Components/Global Footer', module)
     </div>
 
   </footer>
-  `)
+  `
+  )
 
-  .add('One column', () => `
+  .add(
+    'One column',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -155,7 +167,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -186,9 +200,12 @@ storiesOf('Components/Global Footer', module)
     </div>
 
   </footer>
-  `)
+  `
+  )
 
-  .add('One column, no logo or social', () => `
+  .add(
+    'One column, no logo or social',
+    () => `
   <footer role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-columns">
@@ -210,7 +227,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -241,9 +260,12 @@ storiesOf('Components/Global Footer', module)
     </div>
 
   </footer>
-  `)
+  `
+  )
 
-  .add('Two columns', () => `
+  .add(
+    'Two columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -307,7 +329,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -337,9 +361,12 @@ storiesOf('Components/Global Footer', module)
       </div>
     </div>
   </footer>
-  `)
+  `
+  )
 
-  .add('Three columns', () => `
+  .add(
+    'Three columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -424,7 +451,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -454,9 +483,12 @@ storiesOf('Components/Global Footer', module)
       </div>
     </div>
   </footer>
-  `)
+  `
+  )
 
-  .add('Four columns', () => `
+  .add(
+    'Four columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -562,7 +594,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -592,9 +626,12 @@ storiesOf('Components/Global Footer', module)
       </div>
     </div>
   </footer>
-  `)
+  `
+  )
 
-  .add('Five columns', () => `
+  .add(
+    'Five columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -721,7 +758,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -751,9 +790,12 @@ storiesOf('Components/Global Footer', module)
       </div>
     </div>
   </footer>
-  `)
+  `
+  )
 
-  .add('Six columns', () => `
+  .add(
+    'Six columns',
+    () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
@@ -899,7 +941,9 @@ storiesOf('Components/Global Footer', module)
         <div class="row">
           <div class="col p-xl-0">
             <div class="d-flex footer-innovation-links">
-              <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a class="img-link" href="https://www.asu.edu/rankings">
+                <img src=${innovationLockup} alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              </a>
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
@@ -931,5 +975,5 @@ storiesOf('Components/Global Footer', module)
       </div>
     </div>
   </footer>
-  `)
-
+  `
+  );

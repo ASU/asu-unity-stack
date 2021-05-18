@@ -15,7 +15,9 @@ const imageFormats = [
 ];
 
 const getImageFormat = index => imageFormats[index];
-
+/**
+ * @type import(".").CardItem []
+ */
 const myCarouselItems = [];
 for (let index = 0; index < 8; index += 1) {
   myCarouselItems.push({
@@ -23,17 +25,27 @@ for (let index = 0; index < 8; index += 1) {
     imageSource: `https://source.unsplash.com/random/${getImageFormat(
       index
     )}?a=${index - 1}`,
-    altText: "Card image cap",
+    imageAltText: "Card image cap",
     title: `Card ${index + 1}`,
     content: `Body ${
       index + 1
     } copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
       amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       ut labore et dolore magna aliqua eiusmod tempo.`,
-    buttonLink: {
-      url: "#",
-      text: `Button ${index + 1} link here`,
-    },
+    buttons: [
+      {
+        ariaLabel: "dummy button",
+        color: "maroon",
+        href: "#",
+        label: `Button ${index + 1} link here`,
+        size: "default",
+        onClick: () => {
+          // eslint-disable-next-line no-alert
+          window.alert("Hola Amigo 😃.");
+          return false;
+        },
+      },
+    ],
   });
 }
 
