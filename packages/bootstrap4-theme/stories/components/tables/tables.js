@@ -1,15 +1,28 @@
+/**
+ * Javascript for fixed table functionality. Fixed table should display scroll buttons when hovering over scrollable portion of table,
+ * and hide them when hovering over fixed column or when mouse exits table.
+ *
+ * The scroll buttons must be outside the table container, within the table wrapper, due to the absolute positioning requirements.
+ * Because the table scrolls, if they were to be absolutely positioned in the same container as the table, they would scroll with it.
+ */
 window.addEventListener('DOMContentLoaded', function () {
-  const tables = document.getElementsByClassName('uds-fixed-table');
+  initializeFixedTable();
+});
 
-  tables.forEach((table) => {
-    const container = table.getElementsByClassName(
-      'uds-fixed-table-container'
+function initializeFixedTable() {
+  const tableWrappers = document.getElementsByClassName(
+    'uds-table-fixed-wrapper'
+  );
+
+  tableWrappers.forEach((wrapper) => {
+    const container = wrapper.getElementsByClassName('uds-table-fixed')[0];
+    const previous = wrapper.getElementsByClassName(
+      'scroll-control previous'
     )[0];
-    const previous = table.getElementsByClassName('scroll-control previous')[0];
-    const next = table.getElementsByClassName('scroll-control next')[0];
+    const next = wrapper.getElementsByClassName('scroll-control next')[0];
 
     // If the user leaves the scrollable area, hide the scroll
-    table.addEventListener('mouseleave', function () {
+    wrapper.addEventListener('mouseleave', function () {
       previous.classList.remove('show');
       next.classList.remove('show');
     });
@@ -87,4 +100,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // if (actualScrollLeft !== container.scrollWidth) next.classList.add('show');
   });
-});
+}
