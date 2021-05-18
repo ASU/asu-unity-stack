@@ -1,4 +1,7 @@
 module.exports = {
+  globals: {
+    fetchMock: true,
+  },
   settings: {
     react: {
       version: "detect", // Automatically detect the react version
