@@ -71,87 +71,103 @@
       }
     }
   }
+}
 
-  &-fixed {
-    overflow: hidden;
+.uds-table-fixed {
+  overflow: hidden;
+  border: 1px solid $uds-color-base-gray-2;
 
-    &-wrapper {
-      position: relative;
+  &-wrapper {
+    position: relative;
 
-      .scroll-control {
-        display: none;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        z-index: 100;
+    .scroll-control {
+      display: none;
+      position: absolute;
+      height: 100%;
+      pointer-events: none;
+      top: 0;
+      z-index: 100;
 
-        &.show {
-          display: block;
+      &.show {
+        display: block;
+      }
 
-          @media screen and (max-width: $uds-breakpoint-sm) {
-            display: none; // User will scroll with finger on mobile
-          }
-        }
+      &.previous {
+        background: linear-gradient(
+          90deg,
+          rgba(25, 25, 25, 0.25) 0%,
+          rgba(25, 25, 25, 0) 100%
+        );
+        left: 315px;
+      }
 
-        &.previous {
-          background: linear-gradient(
-            90deg,
-            rgba(25, 25, 25, 0.25) 0%,
-            rgba(25, 25, 25, 0) 100%
-          );
-          left: 315px;
-        }
+      &.next {
+        background: linear-gradient(
+          90deg,
+          rgba(25, 25, 25, 0) 0%,
+          rgba(25, 25, 25, 0.25) 100%
+        );
+        right: 0;
+      }
 
-        &.next {
-          background: linear-gradient(
-            90deg,
-            rgba(25, 25, 25, 0) 0%,
-            rgba(25, 25, 25, 0.25) 100%
-          );
-          right: 0;
-        }
+      button {
+        pointer-events: all;
+        margin: 0 8px;
+        position: relative;
+        top: 50%;
+      }
+    }
+  }
 
-        button {
-          margin: 0 8px;
-          position: relative;
-          top: 50%;
-        }
+  & > table {
+    border: none;
+
+    tr > *:first-child {
+      left: 0;
+      position: sticky;
+      width: 315px;
+      min-width: 315px;
+      max-width: 315px;
+
+      @media screen and (max-width: $uds-breakpoint-sm) {
+        width: 128px;
+        min-width: 128px;
+        max-width: 128px;
       }
     }
 
-    & > table {
-      border: none;
-
-      tr > *:first-child {
-        left: 0;
-        position: sticky;
-        width: 315px;
-        min-width: 315px;
-        max-width: 315px;
-
-        @media screen and (max-width: $uds-breakpoint-sm) {
-          width: 128px;
-          min-width: 128px;
-          max-width: 128px;
-        }
-      }
-
-      tr > *:nth-child(n + 2),
-      td {
-        box-sizing: border-box;
-        max-width: 100px;
-        width: 100px;
-        min-width: 100px;
-      }
+    tr > *:nth-child(n + 2),
+    td {
+      box-sizing: border-box;
+      max-width: 100px;
+      width: 100px;
+      min-width: 100px;
     }
   }
 }
 
 @media screen and (max-width: $uds-breakpoint-md) {
   .uds-table {
+    overflow: hidden;
+  }
+
+  .uds-table-fixed {
     overflow-x: scroll;
-    & > table {
+    &-wrapper {
       overflow: hidden;
+      .scroll-control {
+        pointer-events: none;
+        display: block;
+
+        &.previous {
+          left: 128px;
+        }
+
+        &.previous button,
+        &.next button {
+          visibility: hidden;
+        }
+      }
     }
   }
 }
