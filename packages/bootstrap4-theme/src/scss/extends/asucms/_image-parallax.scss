@@ -1,0 +1,26 @@
+.full-width-test-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.parallax-container {
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  .parallax-wrapper {
+    position: absolute;
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.asu-for-you {
+      height: 700px;
+      background-size: cover;
+      background-image: url('https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouBG.png');
+    }
+  }
+}
