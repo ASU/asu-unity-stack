@@ -111,6 +111,9 @@ export const Fixed = () => `
             <thead>
               <tr>
                 <th scope="col">Enrollment</th>
+                <th scope="col">Fall 2012</th>
+                <th scope="col">Fall 2013</th>
+                <th scope="col">Fall 2014</th>
                 <th scope="col">Fall 2015</th>
                 <th scope="col">Fall 2016</th>
                 <th scope="col">Fall 2017</th>
@@ -130,9 +133,15 @@ export const Fixed = () => `
                 <td>71,946</td>
                 <td>71,946</td>
                 <td>71,946</td>
+                <td>71,946</td>
+                <td>71,946</td>
+                <td>71,946</td>
               </tr>
               <tr>
                 <th scope="row" class="indent">Tempe</th>
+                <td>51,869</td>
+                <td>51,869</td>
+                <td>51,869</td>
                 <td>51,869</td>
                 <td>51,869</td>
                 <td>51,869</td>
@@ -150,9 +159,15 @@ export const Fixed = () => `
                 <td>11,737</td>
                 <td>11,737</td>
                 <td>11,737</td>
+                <td>11,737</td>
+                <td>11,737</td>
+                <td>11,737</td>
               </tr>
               <tr>
                 <th scope="row" class="indent">Polytechnic</th>
+                <td>4,380</td>
+                <td>4,380</td>
+                <td>4,380</td>
                 <td>4,380</td>
                 <td>4,380</td>
                 <td>4,380</td>
@@ -170,9 +185,15 @@ export const Fixed = () => `
                 <td>3,663</td>
                 <td>3,663</td>
                 <td>3,663</td>
+                <td>3,663</td>
+                <td>3,663</td>
+                <td>3,663</td>
               </tr>
               <tr>
                 <th scope="row" class="indent">Thunderbird</th>
+                <td>297</td>
+                <td>297</td>
+                <td>297</td>
                 <td>297</td>
                 <td>297</td>
                 <td>297</td>
@@ -190,8 +211,14 @@ export const Fixed = () => `
                 <td>26,200</td>
                 <td>26,200</td>
                 <td>26,200</td>
+                <td>26,200</td>
+                <td>26,200</td>
+                <td>26,200</td>
               </tr>
               <th scope="row">Total</th>
+                <td>98,146</td>
+                <td>98,146</td>
+                <td>98,146</td>
                 <td>98,146</td>
                 <td>98,146</td>
                 <td>98,146</td>
