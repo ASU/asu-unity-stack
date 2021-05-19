@@ -7,7 +7,6 @@ function initializeAnchorMenu() {
   const navbar = document.getElementById('uds-anchor-menu');
   const anchors = navbar.getElementsByClassName('nav-link');
   const navbarInitialPosition = navbar.offsetTop;
-  const navbarInitialHeight = navbar.offsetHeight;
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
 
