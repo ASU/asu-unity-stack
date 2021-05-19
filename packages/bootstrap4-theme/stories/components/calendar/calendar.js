@@ -96,11 +96,19 @@
           ${datesForGrid(state.year, state.month)
             .map(
               (date) =>
-                `<p id="${date.key}" class="calendar-item ${date.monthClass}">
+                `<h3 id="${date.key}" class="calendar-item ${
+                  date.monthClass
+                }" ${
+                  date.todayClass
+                    ? `aria-label="${date.todayClass[0].toUpperCase()}${date.todayClass.slice(
+                        1
+                      )}"`
+                    : ''
+                }>
                   <span class="${date.todayClass ? date.todayClass : ''}">${
                   date.date
                 }</span>
-                </p>`
+                </h3>`
             )
             .join('')}
         </div>
