@@ -3,6 +3,8 @@ Chart.register(...registerables);
 
 (function () {
   window.addEventListener('DOMContentLoaded', function () {
+    const GRAPH_PERCENTAGE_COMPLETE = 50;
+    document.getElementById('percentage-display').innerHTML = GRAPH_PERCENTAGE_COMPLETE + '%';
     var ctx = document.getElementById('uds-donut');
 
     const config = {
@@ -10,7 +12,7 @@ Chart.register(...registerables);
       data: {
         datasets: [
           {
-            data: [50, 50],
+            data: [GRAPH_PERCENTAGE_COMPLETE, 100 - GRAPH_PERCENTAGE_COMPLETE],
             backgroundColor: ['#ffc627', '#fafafa'],
           },
         ],
