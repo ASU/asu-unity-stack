@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { spreadClasses } from "../../core/models/utils/css-utils";
+import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
  * @typedef {{

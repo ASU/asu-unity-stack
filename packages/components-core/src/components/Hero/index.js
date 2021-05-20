@@ -5,7 +5,7 @@ import {
   contentPropType,
   imagePropType,
 } from "../../core/models/shared-prop-types";
-import { spreadClasses } from "../../core/models/utils/css-utils";
+import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
  * @typedef {import('../../core/models/shared-model-types').ImageProps} ImageProps
