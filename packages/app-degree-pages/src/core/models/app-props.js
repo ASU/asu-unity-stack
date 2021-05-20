@@ -28,7 +28,7 @@
  *    image?: AppImageProps
  *    header?: AppContentProps
  *    title?: AppContentProps
- *    body?: AppContentProps
+ *    content?: AppContentProps
  *    photoGrid?: {
  *      images: AppImageProps[]
  *    }

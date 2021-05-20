@@ -17,8 +17,8 @@ import { DegreePage } from "../../components";
  */
 const initDegreePage = ({ targetSelector, props }) => {
   const target = document.querySelector(targetSelector);
-
-  ReactDOM.render(React.createElement(DegreePage, props), target);
+  const element = React.createElement(() => <DegreePage />, props);
+  ReactDOM.render(element, target);
 };
 
 export { initDegreePage };
