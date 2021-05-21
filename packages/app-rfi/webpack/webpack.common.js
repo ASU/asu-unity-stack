@@ -13,7 +13,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
   entry: {
-    libCore: "./src/index.js",
+    appRfi: "./src/index.js",
   },
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),

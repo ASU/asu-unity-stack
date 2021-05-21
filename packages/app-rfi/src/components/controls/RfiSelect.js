@@ -9,7 +9,7 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 
 const RfiSelect = ({ id, label, name, requiredIcon, options }) => {
   const [field, meta] = useField({ name });
-  const isError = meta.touched && meta.error;
+  const isError = meta.touched && meta.error; // TODO generating non fatal error
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
