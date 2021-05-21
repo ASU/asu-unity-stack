@@ -1,13 +1,56 @@
 // @ts-check
-import React from "react";
+import { useFormikContext } from "formik";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import { RfiSelect } from "../controls";
 
+// Helper functions
+
+function safelyParseJSON(json) {
+  let parsed;
+  try {
+    parsed = JSON.parse(json);
+  } catch (e) {
+    console.log(e, "Error parsing JSON");
+    console.log(json, "Error JSON");
+  }
+  return parsed; // Could be undefined!
+}
+
 // Options
 
-// TODO if we have to fallback to XMLRPC services... https://github.com/ganl/mimic-xmlrpc
-// Or any benefit in doing a wrapper/adapter service... via a lambda? :D
+// Fetch degree data from our CF reverse proxy of Degree Search REST API.
+// Returns the full degree dataset for the given program (undergrad | graduate).
+// We do filtering in useEffect()s to manage filtering logic for our various
+// field options.
+async function fetchDegreeData() {
+  // fetch(`https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr&program=undergrad&cert=false`)
+
+  // TODO
+  // Bad encoding on CampusStringArray and planCatDescr <- missing "s
+  // Removed from query for now.
+
+  // TODO var to be provided
+  // const program = "undergrad";
+  const program = "graduate";
+
+  // TODO put in useEffect
+
+  // Just ask for all fields
+  return (
+    fetch(
+      `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg&program=${program}&cert=false`
+    )
+      // Handle as text first due to encoding issues.
+      .then(response => response.text()) // Get as raw text first
+      .then(raw => {
+        return safelyParseJSON(raw);
+      })
+      // .then(data => console.log(data, "data from safelyParseJson"))
+      .catch(error => new Error(error))
+  );
+}
 
 // TODO verify value to use
 const campusOptions = [
@@ -35,27 +78,107 @@ const studentTypeOptions = [
   { key: "2", value: "Transfer", text: "Transferring undergraduate" },
   {
     key: "3",
-    value: "Readmission",
+    value: "Readmission", // TODO what should value be here
     text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
   },
 ];
 
-const areaInterestOptions = [
-  { key: "0", value: "", text: "-- Select --" },
-  { key: "1", value: "Interest A", text: "Interest A" },
-  { key: "2", value: "Interest B", text: "Interest B" },
-  { key: "3", value: "Interest C", text: "Interest C" },
-];
-
-const programPlanOptions = [
-  { key: "0", value: "", text: "-- Select --" },
-  { key: "1", value: "Program A", text: "Program A" },
-  { key: "2", value: "Program B", text: "Program B" },
-  { key: "3", value: "Program C", text: "Program C" },
-];
 // Component
 
 const ProgramInterest = () => {
+  const [degreeData, setDegreeData] = useState([]);
+  const [areaInterestOptions, setAreaInterestOptions] = useState([
+    { key: "0", value: "", text: "-- Select --" },
+    { key: "1", value: "error", text: "Load failed: Area of Interest Options" },
+  ]);
+  const [programInterestOptions, setProgramInterestOptions] = useState([
+    { key: "0", value: "", text: "-- Select --" },
+    { key: "1", value: "error", text: "Load failed: Program Interest Options" },
+  ]);
+
+  // Surface values from Formik context
+  const { values } = useFormikContext();
+
+  // Check if degree data has loaded.
+  const degreeDataIsLoaded = () => {
+    return degreeData.length > 0 && typeof degreeData.map === "function";
+  };
+
+  // FETCH data from Degree Search REST API.
+  useEffect(() => {
+    // TODO Use localStorage
+    // TODO check for locally stored data before calling fetch.
+    // TODO localStorage see pg 159 in Learning React
+    // TODO it's possible it makes more sense for this to be pushed up the tree
+    // into RfiStepper so it's only called once...
+
+    // Fetch master of degree data.
+    fetchDegreeData().then(data => {
+      // Set state on countryOptions.
+      setDegreeData(data.programs);
+      console.log(data.programs, "data for degreeData");
+    });
+  }, []); // Run only once
+
+  // Campus
+  useEffect(() => {
+    if (!degreeDataIsLoaded()) {
+      return;
+    }
+    console.log("Campus");
+    // Logic in here.
+    // TODO wire in props then check for props.Campus
+  }, [degreeData]);
+
+  // CareerAndStudentType
+  useEffect(() => {
+    if (!degreeDataIsLoaded()) {
+      return;
+    }
+    console.log("CareerAndStudentType");
+    // Logic in here.
+    // TODO wire in props then check for props and values.
+  }, [degreeData]);
+
+  // Interest1: areaInterestOptions filter and set logic.
+  useEffect(() => {
+    if (!degreeDataIsLoaded()) {
+      return;
+    }
+
+    // TODO HOLD WAITING ON FIELD DATA BEING VALID
+    // TODO Map areaInterstOptions / Interest1 planCatDescr
+    setAreaInterestOptions(
+      degreeData.map(program => ({
+        key: program.AcadPlan,
+        value: program.AcadPlan,
+        text: `MOCK: ${program.Descr100}`,
+      }))
+    );
+    console.log(programInterestOptions, "mock areaInterestOptions SET");
+  }, [degreeData, values.Campus]);
+
+  // Interest2: programInterestOptions filter and set logic.
+  useEffect(() => {
+    if (!degreeDataIsLoaded()) {
+      return;
+    }
+
+    // Map programPlanOptions for Interest2
+    // DS REST value: AcadPlan and label: Descr100;
+    setProgramInterestOptions(
+      degreeData.map(program => ({
+        key: program.AcadPlan,
+        value: program.AcadPlan,
+        text: program.Descr100,
+      }))
+    );
+    console.log(programInterestOptions, "programInterestOptions SET");
+  }, [degreeData, values.Campus, values.Interest1]); // TODO Run when...
+
+  // TODO start using react-select?
+  // See https://binyamin.medium.com/formik-with-react-select-952b4db8768a
+
   return (
     <>
       <p>
@@ -87,7 +210,7 @@ const ProgramInterest = () => {
         label="Program of interest"
         id="Interest2"
         name="Interest2"
-        options={programPlanOptions}
+        options={programInterestOptions}
         requiredIcon
       />
     </>
@@ -114,7 +237,7 @@ const programInterestForm = {
   },
 };
 
-export default programInterestForm;
+export { programInterestForm };
 
 /*
 FIELDS

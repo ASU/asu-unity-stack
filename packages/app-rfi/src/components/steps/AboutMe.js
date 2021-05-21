@@ -16,7 +16,7 @@ const AboutMe = () => {
 
   // Term options
   useEffect(() => {
-    // TODO IF graduate call graduateAllApplyDates
+    // TODO IF graduate call for field graduateAllApplyDates then parse.
     // https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=AcadPlan,Degree,Descrlong,graduateAllApplyDates&program=graduate&cert=false&nopassive=true
 
     // TODO ELSE default to undergrad and use this
@@ -118,7 +118,7 @@ const aboutMeForm = {
       .max(24, "Too long")
       .required("Required"),
     // mobile: Yup.string(),
-    ZipCode: Yup.string().required("Required"), // TODO Required only if countyry is US.
+    ZipCode: Yup.string().required("Required"), // TODO Required only if campus != online.
     EntryTerm: Yup.string().required("Required"),
   },
 
@@ -133,7 +133,7 @@ const aboutMeForm = {
   },
 };
 
-export default aboutMeForm;
+export { aboutMeForm };
 
 /*
 FIELDS
@@ -142,5 +142,5 @@ FIELDS
 - LastName
 - Phone // TODO use Yup phone library
 - ZipCode
-- EntryTerm // TODO more logic and svc call based on if graduate / undergrad
+- EntryTerm // TODO more logic and svc call based on if graduate / undergrad -- See notes in options function for REST service call
 */

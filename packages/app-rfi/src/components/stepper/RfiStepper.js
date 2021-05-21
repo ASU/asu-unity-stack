@@ -146,4 +146,4 @@ RfiStepperButtons.propTypes = {
   handleBack: PropTypes.func.isRequired,
 };
 
-export default RfiStepper;
+export { RfiStepper };

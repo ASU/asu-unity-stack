@@ -156,7 +156,7 @@ const optionalForm = {
     State: Yup.string(),
     Country: Yup.string(),
     BirthDate: Yup.date(),
-    Zip: Yup.string(),
+    Zip: Yup.string(), // TODO default to * ZipCode *
     MilitaryStatus: Yup.string(),
     Comments: Yup.string().max(250, "Too long. 250 characters maximum."),
   },
@@ -175,7 +175,7 @@ const optionalForm = {
   },
 };
 
-export default optionalForm;
+export { optionalForm };
 
 /*
 FIELDS
@@ -188,10 +188,10 @@ FIELDS
 - BirthDate
 - MilitaryStatus
 - Comments
-- [markup] Consent wordin
+- [markup] Consent wording
 
 HIDDEN FIELDS
-- NIX? international (derived based on country of citizenship)
+- Test - 1 or nothing
 - Source
 - URL
 - ga_clientid
