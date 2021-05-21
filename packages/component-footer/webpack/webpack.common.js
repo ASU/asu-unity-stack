@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const common = {
   entry: {
-    Footer: "../index.js",
+    Footer: "../src/index.js",
   },
   module: {
     rules: [
