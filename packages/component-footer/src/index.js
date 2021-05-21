@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import asuLogo from "./asuLogo.png";
 import endorsedLogo from "./endorsedLogo.png";
+import innovationLogo from "./innovationLogo.png";
 
 export const Footer = ({ social, contact }) => {
   return (
@@ -41,7 +42,7 @@ const Innovation = () => {
             <div className="d-flex footer-innovation-links">
               <a className="img-link" href="https://www.asu.edu/rankings">
                 <img
-                  src={asuLogo}
+                  src={innovationLogo}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
                 />
               </a>
