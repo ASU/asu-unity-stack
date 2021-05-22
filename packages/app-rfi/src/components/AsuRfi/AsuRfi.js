@@ -24,13 +24,13 @@ export default AsuRfi;
 // Props
 AsuRfi.defaultProps = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
-    StudentType: "",
-    AreaOfInterest: "",
-    ProgramOfInterest: "",
-    State: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },

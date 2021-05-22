@@ -58,17 +58,17 @@ const campusOptions = [
   { key: "0", value: "", text: "-- Select --" },
   {
     key: "1",
-    value: "on campus",
+    value: "GROUND",
     text: "I plan to take some/all of my classes on campus",
   },
   {
     key: "2",
-    value: "online",
+    value: "ONLNE",
     text: "I plan to study 100% online through ASU Online",
   },
   {
     key: "3",
-    value: "no preference",
+    value: "NOPREF",
     text: "I am not sure",
   },
 ];
@@ -246,13 +246,13 @@ const programInterestForm = {
 // Props
 ProgramInterest.defaultProps = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
-    StudentType: "",
-    AreaOfInterest: "",
-    ProgramOfInterest: "",
-    State: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },

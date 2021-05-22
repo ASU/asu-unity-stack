@@ -32,13 +32,13 @@ const Template = args => {
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
   rfiConfig: {
-    Campus: "",
+    Campus: undefined,
     College: "CHI",
-    Department: "",
-    StudentType: "",
-    AreaOfInterest: "",
-    ProgramOfInterest: "",
-    State: "",
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -47,13 +47,13 @@ RfiOnCollegePage.args = {
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
 RfiOnCollegePageWithAreaOfInterest.args = {
   rfiConfig: {
-    Campus: "",
+    Campus: undefined,
     College: "CES",
-    Department: "",
-    StudentType: "",
+    Department: undefined,
+    StudentType: undefined,
     AreaOfInterest: "STEM",
-    ProgramOfInterest: "",
-    State: "",
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -62,13 +62,13 @@ RfiOnCollegePageWithAreaOfInterest.args = {
 export const RfiOnDegreePage = Template.bind({});
 RfiOnDegreePage.args = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
-    StudentType: "",
-    AreaOfInterest: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
     ProgramOfInterest: "TEESTEMBAE",
-    State: "",
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -77,13 +77,13 @@ RfiOnDegreePage.args = {
 export const RfiOnCollegeDepartmentPage = Template.bind({});
 RfiOnCollegeDepartmentPage.args = {
   rfiConfig: {
-    Campus: "",
+    Campus: undefined,
     College: "CES",
     Department: "CINFOTECH",
-    StudentType: "",
-    AreaOfInterest: "",
-    ProgramOfInterest: "",
-    State: "",
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -92,13 +92,13 @@ RfiOnCollegeDepartmentPage.args = {
 export const RfiOnNonAcademicUnitPage = Template.bind({});
 RfiOnNonAcademicUnitPage.args = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
-    StudentType: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
     AreaOfInterest: "Health and Wellness",
-    ProgramOfInterest: "",
-    State: "",
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -109,13 +109,13 @@ RfiOnNonAcademicUnitPage.args = {
 export const RfiOnCertOrMinorPage = Template.bind({});
 RfiOnCertOrMinorPage.args = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
-    StudentType: "",
-    AreaOfInterest: "",
-    ProgramOfInterest: "",
-    State: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },
@@ -124,11 +124,11 @@ RfiOnCertOrMinorPage.args = {
 export const RfiOnCampaignLandingPage = Template.bind({});
 RfiOnCampaignLandingPage.args = {
   rfiConfig: {
-    Campus: "",
-    College: "",
-    Department: "",
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
     StudentType: "Graduate",
-    AreaOfInterest: "",
+    AreaOfInterest: undefined,
     ProgramOfInterest: "BAGLSMS",
     State: "CA",
     SuccessMsg: "Success.",
