@@ -40,6 +40,8 @@ class RfiStepper extends React.Component {
   };
 
   render() {
+    console.log(this.props, "props in RfiStepper");
+
     const { step } = this.state;
     const { validationSchemas, initialValues, formComponents } = this.props;
     const schema = validationSchemas[step];
@@ -88,7 +90,7 @@ class RfiStepper extends React.Component {
             {() => {
               return (
                 <Form className="uds-form uds-rfi">
-                  {React.createElement(formComponent, {})}
+                  {React.createElement(formComponent, this.props)}
 
                   <RfiStepperButtons
                     stepNum={step}

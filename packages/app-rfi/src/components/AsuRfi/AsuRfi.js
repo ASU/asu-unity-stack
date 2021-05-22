@@ -11,10 +11,10 @@ import React from "react";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./AsuRfi.css";
 
-const AsuRfi = ({ programPlanCode }) => {
+const AsuRfi = ({ rfiConfig }) => {
   return (
     <div>
-      <RfiMainForm programPlancode={programPlanCode} />
+      <RfiMainForm rfiConfig={rfiConfig} />
     </div>
   );
 };
@@ -23,10 +23,17 @@ export default AsuRfi;
 
 // Props
 AsuRfi.defaultProps = {
-  // TODO real default...?
-  programPlanCode: "",
+  rfiConfig: {
+    Campus: "",
+    College: "",
+    Department: "",
+    StudentType: "",
+    AreaOfInterest: "",
+    ProgramOfInterest: "",
+    State: "",
+  },
 };
 
 AsuRfi.propTypes = {
-  programPlanCode: PropTypes.string,
+  rfiConfig: PropTypes.instanceOf(Object),
 };

@@ -1,5 +1,6 @@
 // @ts-check
 import { useFormikContext } from "formik";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
@@ -85,7 +86,7 @@ const studentTypeOptions = [
 
 // Component
 
-const ProgramInterest = () => {
+const ProgramInterest = ({ rfiConfig }) => {
   const [degreeData, setDegreeData] = useState([]);
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     { key: "0", value: "", text: "-- Select --" },
@@ -95,6 +96,9 @@ const ProgramInterest = () => {
     { key: "0", value: "", text: "-- Select --" },
     { key: "1", value: "error", text: "Load failed: Program Interest Options" },
   ]);
+
+  // TODO remove debug / error avoid, once used.
+  console.log(rfiConfig, "props in ProgramInterest");
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -235,6 +239,23 @@ const programInterestForm = {
     Interest1: undefined,
     Interest2: undefined,
   },
+};
+
+// Props
+ProgramInterest.defaultProps = {
+  rfiConfig: {
+    Campus: "",
+    College: "",
+    Department: "",
+    StudentType: "",
+    AreaOfInterest: "",
+    ProgramOfInterest: "",
+    State: "",
+  },
+};
+
+ProgramInterest.propTypes = {
+  rfiConfig: PropTypes.instanceOf(Object),
 };
 
 export { programInterestForm };

@@ -1,4 +1,5 @@
 // @ts-check
+import PropTypes from "prop-types";
 import React from "react";
 
 // @ts-ignore
@@ -8,7 +9,7 @@ import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
 import { RfiStepper } from "./RfiStepper";
 
-const RfiMainForm = () => (
+const RfiMainForm = ({ rfiConfig }) => (
   <div className="container">
     <div className="row">
       <div className="col col-12 ">
@@ -22,6 +23,7 @@ const RfiMainForm = () => (
           </div>
           <div className="uds-image-text-block-text-container">
             <RfiStepper
+              rfiConfig={rfiConfig}
               validationSchemas={[
                 programInterestForm.validationSchema,
                 aboutMeForm.validationSchema,
@@ -66,5 +68,22 @@ const RfiMainForm = () => (
     </div>
   </div>
 );
+
+// Props
+RfiMainForm.defaultProps = {
+  rfiConfig: {
+    Campus: "",
+    College: "",
+    Department: "",
+    StudentType: "",
+    AreaOfInterest: "",
+    ProgramOfInterest: "",
+    State: "",
+  },
+};
+
+RfiMainForm.propTypes = {
+  rfiConfig: PropTypes.instanceOf(Object),
+};
 
 export { RfiMainForm };
