@@ -79,6 +79,8 @@ RfiMainForm.defaultProps = {
     AreaOfInterest: "",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 

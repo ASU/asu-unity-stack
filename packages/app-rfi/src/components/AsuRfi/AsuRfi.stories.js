@@ -39,6 +39,8 @@ RfiOnCollegePage.args = {
     AreaOfInterest: "",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -52,6 +54,8 @@ RfiOnCollegePageWithAreaOfInterest.args = {
     AreaOfInterest: "STEM",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -65,6 +69,8 @@ RfiOnDegreePage.args = {
     AreaOfInterest: "",
     ProgramOfInterest: "TEESTEMBAE",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -78,6 +84,8 @@ RfiOnCollegeDepartmentPage.args = {
     AreaOfInterest: "",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -91,6 +99,8 @@ RfiOnNonAcademicUnitPage.args = {
     AreaOfInterest: "Health and Wellness",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -106,6 +116,8 @@ RfiOnCertOrMinorPage.args = {
     AreaOfInterest: "",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
@@ -119,5 +131,7 @@ RfiOnCampaignLandingPage.args = {
     AreaOfInterest: "",
     ProgramOfInterest: "BAGLSMS",
     State: "CA",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };

@@ -116,6 +116,8 @@ const ProgramInterest = ({ rfiConfig }) => {
     // TODO it's possible it makes more sense for this to be pushed up the tree
     // into RfiStepper so it's only called once...
 
+    // TODO PREFETCH DS REST UGRAD and GRAD && ASUO API UGRAD and GRAD and store local?
+
     // Fetch master of degree data.
     fetchDegreeData().then(data => {
       // Set state on countryOptions.
@@ -251,6 +253,8 @@ ProgramInterest.defaultProps = {
     AreaOfInterest: "",
     ProgramOfInterest: "",
     State: "",
+    SuccessMsg: "Success.",
+    Test: 0,
   },
 };
 
