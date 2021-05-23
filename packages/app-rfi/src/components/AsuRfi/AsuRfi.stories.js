@@ -29,6 +29,21 @@ const Template = args => {
   );
 };
 
+export const RfiDefault = Template.bind({});
+RfiDefault.args = {
+  rfiConfig: {
+    Campus: undefined, // ONLNE, GROUND, NOPREF
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined, // Graduate, Undergrad
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined, // Only US States
+    SuccessMsg: undefined,
+    Test: undefined,
+  },
+};
+
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
   rfiConfig: {
@@ -131,6 +146,36 @@ RfiOnCampaignLandingPage.args = {
     AreaOfInterest: undefined,
     ProgramOfInterest: "BAGLSMS",
     State: "CA",
+    SuccessMsg: "Success.",
+    Test: 0,
+  },
+};
+
+export const RfiTesterA = Template.bind({});
+RfiTesterA.args = {
+  rfiConfig: {
+    Campus: "ONLNE",
+    College: undefined,
+    Department: undefined,
+    StudentType: "Graduate",
+    AreaOfInterest: "BAGLSMS",
+    ProgramOfInterest: "BAGLSMS",
+    State: "CA",
+    SuccessMsg: "Success.",
+    Test: 0,
+  },
+};
+
+export const RfiTesterB = Template.bind({});
+RfiTesterB.args = {
+  rfiConfig: {
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: "Undergrad",
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
     SuccessMsg: "Success.",
     Test: 0,
   },

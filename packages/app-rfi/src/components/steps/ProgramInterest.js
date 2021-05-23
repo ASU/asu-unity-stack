@@ -25,24 +25,48 @@ function safelyParseJSON(json) {
 // Returns the full degree dataset for the given program (undergrad | graduate).
 // We do filtering in useEffect()s to manage filtering logic for our various
 // field options.
-async function fetchDegreeData() {
+async function fetchDegreeData(Campus, CareerAndStudentType) {
   // fetch(`https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr&program=undergrad&cert=false`)
 
-  // TODO
-  // Bad encoding on CampusStringArray and planCatDescr <- missing "s
+  let serviceUrl;
+  let program;
+
+  // TODO // Bad encoding on CampusStringArray and planCatDescr <- missing "s
   // Removed from query for now.
 
-  // TODO var to be provided
-  // const program = "undergrad";
-  const program = "graduate";
+  // ASUOnline API
+  if (Campus === "ONLNE") {
+    program =
+      CareerAndStudentType === "Readmission" ? "graduate" : "undergraduate";
+    serviceUrl = `https://asuonline.asu.edu/lead-submissions-v3.3/programs?category=${program}`;
+    return (
+      fetch(serviceUrl, {
+        headers: {
+          // eslint-disable-next-line prettier/prettier
+          Accept: "application/json",
+        },
+      })
+        // Handle as text first due to encoding issues.
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
+        // .then(data => console.log(data, "data from safelyParseJson"))
+        .catch(error => new Error(error))
+    );
+  }
 
-  // TODO put in useEffect
+  // Degree Search REST API
+  program = CareerAndStudentType === "Readmission" ? "graduate" : "undergrad";
+  serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg&program=${program}&cert=false`;
 
-  // Just ask for all fields
   return (
-    fetch(
-      `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg&program=${program}&cert=false`
-    )
+    fetch(serviceUrl, {
+      headers: {
+        // eslint-disable-next-line prettier/prettier
+        Accept: "application/json",
+      },
+    })
       // Handle as text first due to encoding issues.
       .then(response => response.text()) // Get as raw text first
       .then(raw => {
@@ -53,7 +77,6 @@ async function fetchDegreeData() {
   );
 }
 
-// TODO verify value to use
 const campusOptions = [
   { key: "0", value: "", text: "-- Select --" },
   {
@@ -79,7 +102,7 @@ const studentTypeOptions = [
   { key: "2", value: "Transfer", text: "Transferring undergraduate" },
   {
     key: "3",
-    value: "Readmission", // TODO what should value be here
+    value: "Readmission",
     text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
   },
 ];
@@ -90,11 +113,19 @@ const ProgramInterest = ({ rfiConfig }) => {
   const [degreeData, setDegreeData] = useState([]);
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     { key: "0", value: "", text: "-- Select --" },
-    { key: "1", value: "error", text: "Load failed: Area of Interest Options" },
+    {
+      key: "1",
+      value: "error",
+      text: "Load failed. Please try again in 5 minutes.",
+    },
   ]);
   const [programInterestOptions, setProgramInterestOptions] = useState([
     { key: "0", value: "", text: "-- Select --" },
-    { key: "1", value: "error", text: "Load failed: Program Interest Options" },
+    {
+      key: "1",
+      value: "error",
+      text: "Load failed. Please try again in 5 minutes.",
+    },
   ]);
 
   // TODO remove debug / error avoid, once used.
@@ -105,33 +136,39 @@ const ProgramInterest = ({ rfiConfig }) => {
 
   // Check if degree data has loaded.
   const degreeDataIsLoaded = () => {
-    return degreeData.length > 0 && typeof degreeData.map === "function";
+    console.log(degreeData, "degreeDataIsLoaded() CHECK");
+    // return true;
+    return degreeData.length;
+    // return degreeData.length > 0 && typeof degreeData.map === "function";
   };
 
   // FETCH data from Degree Search REST API.
   useEffect(() => {
-    // TODO Use localStorage
-    // TODO check for locally stored data before calling fetch.
-    // TODO localStorage see pg 159 in Learning React
-    // TODO it's possible it makes more sense for this to be pushed up the tree
-    // into RfiStepper so it's only called once...
-
-    // TODO PREFETCH DS REST UGRAD and GRAD && ASUO API UGRAD and GRAD and store local?
+    // TODO implment sessionStorage, see pg 159 in Learning React
+    // HOLD on using sessionStorage due to limiting complexity while getting
+    // basic switching/fetching behaviors in place.
 
     // Fetch master of degree data.
-    fetchDegreeData().then(data => {
-      // Set state on countryOptions.
-      setDegreeData(data.programs);
-      console.log(data.programs, "data for degreeData");
+
+    fetchDegreeData(values.Campus, values.CareerAndStudentType).then(data => {
+      // ASUOnline data
+      if (values.Campus === "ONLNE") {
+        setDegreeData(data);
+        console.log(data, "fetched degreeData ONLNE");
+      } else {
+        // Degree Search data
+        setDegreeData(data.programs);
+        console.log(data.programs, "fetched degreeData");
+      }
     });
-  }, []); // Run only once
+  }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these chagne.
 
   // Campus
   useEffect(() => {
     if (!degreeDataIsLoaded()) {
       return;
     }
-    console.log("Campus");
+    console.log("useEffect for Campus");
     // Logic in here.
     // TODO wire in props then check for props.Campus
   }, [degreeData]);
@@ -141,7 +178,7 @@ const ProgramInterest = ({ rfiConfig }) => {
     if (!degreeDataIsLoaded()) {
       return;
     }
-    console.log("CareerAndStudentType");
+    console.log("useEffect for CareerAndStudentType");
     // Logic in here.
     // TODO wire in props then check for props and values.
   }, [degreeData]);
@@ -154,14 +191,16 @@ const ProgramInterest = ({ rfiConfig }) => {
 
     // TODO HOLD WAITING ON FIELD DATA BEING VALID
     // TODO Map areaInterstOptions / Interest1 planCatDescr
-    setAreaInterestOptions(
-      degreeData.map(program => ({
-        key: program.AcadPlan,
-        value: program.AcadPlan,
-        text: `MOCK: ${program.Descr100}`,
-      }))
-    );
-    console.log(programInterestOptions, "mock areaInterestOptions SET");
+    if (values.Campus !== "ONLNE") {
+      setAreaInterestOptions(
+        degreeData.map(program => ({
+          key: program.AcadPlan,
+          value: program.AcadPlan,
+          text: `MOCK: ${program.Descr100}`,
+        }))
+      );
+      console.log(programInterestOptions, "mock areaInterestOptions SET");
+    }
   }, [degreeData, values.Campus]);
 
   // Interest2: programInterestOptions filter and set logic.
@@ -170,16 +209,31 @@ const ProgramInterest = ({ rfiConfig }) => {
       return;
     }
 
+    console.log(degreeData, "programInterestOptions degreeData CHECKIN");
+
     // Map programPlanOptions for Interest2
     // DS REST value: AcadPlan and label: Descr100;
-    setProgramInterestOptions(
-      degreeData.map(program => ({
-        key: program.AcadPlan,
-        value: program.AcadPlan,
-        text: program.Descr100,
-      }))
-    );
-    console.log(programInterestOptions, "programInterestOptions SET");
+    if (values.Campus === "ONLNE") {
+      // ASUOnline mapping
+      setProgramInterestOptions(
+        degreeData.map(program => ({
+          key: program.code,
+          value: program.code,
+          text: program.title,
+        }))
+      );
+      console.log(programInterestOptions, "programInterestOptions SET");
+    } else {
+      // Degree Search REST mapping
+      setProgramInterestOptions(
+        degreeData.map(program => ({
+          key: program.AcadPlan,
+          value: program.AcadPlan,
+          text: program.Descr100,
+        }))
+      );
+      console.log(programInterestOptions, "programInterestOptions SET");
+    }
   }, [degreeData, values.Campus, values.Interest1]); // TODO Run when...
 
   // TODO start using react-select?

@@ -43,8 +43,14 @@ class RfiStepper extends React.Component {
     console.log(this.props, "props in RfiStepper");
 
     const { step } = this.state;
-    const { validationSchemas, initialValues, formComponents } = this.props;
+    const {
+      validationSchemas,
+      initialValues,
+      formComponents,
+      rfiConfig,
+    } = this.props;
     const schema = validationSchemas[step];
+    console.log(initialValues, `initialValues at ${step}`);
 
     // For the progress bar.
     const totalSteps = initialValues.length;
@@ -58,6 +64,19 @@ class RfiStepper extends React.Component {
     const initValues = initialValues.reduce((item, total) => {
       return { ...total, ...item };
     });
+    console.log(initialValues, "initialValues");
+    console.log(initValues, "initValues");
+
+    // Intercede with initial values from props via rfiConfig.
+    initValues.Campus = rfiConfig.Campus;
+    if (rfiConfig.StudentType === "Graduate") {
+      initValues.CareerAndStudentType = "Readmission";
+    } else if (rfiConfig.StudentType === "Undergrad") {
+      initValues.CareerAndStudentType = "First Time Freshman";
+    }
+    initValues.Interest1 = rfiConfig.AreaOfInterest;
+    initValues.Interest2 = rfiConfig.ProgramOfInterest;
+    initValues.State = rfiConfig.State;
 
     const formComponent = formComponents[step];
     const lastStep = formComponents.length - 1;
