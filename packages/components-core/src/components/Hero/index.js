@@ -1,4 +1,5 @@
 // @ts-check
+import PropTypes from "prop-types";
 import React from "react";
 
 import {
@@ -14,6 +15,7 @@ import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
  * @typedef {{
+ *    type?: "heading-hero" | "story-hero" // defau is "heading-hero"
  *    image: ImageProps
  *    title?: ContentProps
  *    content?: ContentProps
@@ -21,11 +23,21 @@ import { spreadClasses } from "../../core/utils/css-utils";
  */
 
 /**
- *
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-const Hero = ({ image, title, content }) => {
+function storyHeroHtmlTemplate({ image, title, content }) {
+  // eslint-disable-next-line no-console
+  console.log({ image, title, content });
+  //  TODO: to be implemented
+  return <div>TODO: to be implemented</div>;
+}
+
+/**
+ * @param {HeroProps} props
+ * @returns {JSX.Element}
+ */
+function headingHeroHtmlTemplate({ image, title, content }) {
   return (
     <div
       className={`uds-hero ${spreadClasses(image.cssClass)}`}
@@ -49,9 +61,30 @@ const Hero = ({ image, title, content }) => {
       </div>
     </div>
   );
+}
+
+/**
+ *
+ * @param {HeroProps} props
+ * @returns {JSX.Element}
+ */
+const Hero = ({ type = "heading-hero", image, title, content }) => {
+  const templateTypes = {
+    "heading-hero": () => headingHeroHtmlTemplate({ image, title, content }),
+    "story-hero": () => storyHeroHtmlTemplate({ image, title, content }),
+    "undefined": () => {
+      console.error(
+        `the type '${type}' is not supported by the 'Hero' component.`
+      );
+      return null;
+    },
+  };
+
+  return templateTypes[type]();
 };
 
 Hero.propTypes = {
+  type: PropTypes.oneOf(["heading-hero", "story-hero"]),
   image: imagePropType.isRequired,
   title: contentPropType,
   content: contentPropType,
