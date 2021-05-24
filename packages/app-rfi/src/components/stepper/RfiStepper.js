@@ -90,13 +90,20 @@ class RfiStepper extends React.Component {
           <Formik
             initialValues={initValues}
             validationSchema={Yup.object().shape(schema)}
-            onSubmit={(values, { setSubmitting, setFieldTouched }) => {
+            onSubmit={(
+              values,
+              { setSubmitting, setFieldTouched, resetForm } /* FormikBag */
+            ) => {
               // eslint-disable-next-line no-undef
               setTimeout(() => {
                 setSubmitting(false);
 
                 if (step === lastStep) {
                   handleSubmit(values);
+                  // TODO add a check for success before resetting form?
+                  // That way we could display a "try again in a few moments"
+                  // on error. Else, display success message.
+                  resetForm();
                 } else {
                   this.next();
                   Object.keys(initialValues[step + 1]).map(key => {
