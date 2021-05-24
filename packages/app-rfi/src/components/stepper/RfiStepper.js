@@ -48,6 +48,7 @@ class RfiStepper extends React.Component {
       initialValues,
       formComponents,
       rfiConfig,
+      handleSubmit,
     } = this.props;
     const schema = validationSchemas[step];
     console.log(initialValues, `initialValues at ${step}`);
@@ -80,7 +81,6 @@ class RfiStepper extends React.Component {
 
     const formComponent = formComponents[step];
     const lastStep = formComponents.length - 1;
-    const { handleSubmit } = this.props;
     return (
       <div>
         <Progress value={progress * 100} className="rfi-progress" />
@@ -106,7 +106,7 @@ class RfiStepper extends React.Component {
               }, 400);
             }}
           >
-            {() => {
+            {formik => {
               return (
                 <Form className="uds-form uds-rfi">
                   {React.createElement(formComponent, this.props)}
@@ -115,6 +115,7 @@ class RfiStepper extends React.Component {
                     stepNum={step}
                     lastStep={lastStep}
                     handleBack={this.prev}
+                    submitting={formik.isSubmitting}
                   />
                 </Form>
               );
@@ -126,7 +127,7 @@ class RfiStepper extends React.Component {
   }
 }
 
-const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
+const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
   <nav aria-label="Request information form" className="container">
     <div className="row justify-content-end">
       <div className="col-6">
@@ -143,7 +144,11 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack }) => (
             Next <FontAwesomeIcon icon={faAngleRight} />
           </Button>
         ) : (
-          <Button type="submit" className="rfi-button btn btn-gold">
+          <Button
+            type="submit"
+            className="rfi-button btn btn-gold"
+            disabled={submitting ? true : false}
+          >
             Consent/submit
           </Button>
         )}
@@ -165,6 +170,7 @@ RfiStepperButtons.propTypes = {
   stepNum: PropTypes.number.isRequired,
   lastStep: PropTypes.number.isRequired,
   handleBack: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
 };
 
 export { RfiStepper };
