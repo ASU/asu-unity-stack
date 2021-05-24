@@ -1,15 +1,23 @@
 // @ts-check
 import PropTypes from "prop-types";
 
-const imagePropType = PropTypes.shape({
+const imagePropTypes = {
   url: PropTypes.string,
   altText: PropTypes.string,
   cssClass: PropTypes.arrayOf(PropTypes.string),
+};
+
+const contentPropTypes = {
+  text: PropTypes.string,
+  cssClass: PropTypes.arrayOf(PropTypes.string),
+};
+
+const imagePropType = PropTypes.shape({
+  ...imagePropTypes,
 });
 
 const contentPropType = PropTypes.shape({
-  text: PropTypes.string,
-  cssClass: PropTypes.arrayOf(PropTypes.string),
+  ...contentPropTypes,
 });
 
-export { imagePropType, contentPropType };
+export { imagePropType, contentPropType, imagePropTypes, contentPropTypes };

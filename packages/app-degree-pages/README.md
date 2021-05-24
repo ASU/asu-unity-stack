@@ -77,3 +77,4 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api
 - [Jest Fetch Mock](https://www.npmjs.com/package/jest-fetch-mock)
+- [Type Checking JavaScript Files](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html)

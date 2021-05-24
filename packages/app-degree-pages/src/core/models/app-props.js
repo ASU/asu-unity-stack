@@ -1,3 +1,8 @@
+// @ts-check
+
+// eslint-disable-next-line no-unused-vars
+import { tagHeadings } from "./constants";
+
 /**
  * @typedef {{
  *    url: string
@@ -15,20 +20,26 @@
 
 /**
  * @typedef {{
+ *    component?: keyof tagHeadings
+ * }} ChildType
+ *
+ * @typedef {AppContentProps & ChildType} AppTitleProps
+ */
+
+/**
+ * @typedef {{
  *    image: AppImageProps
  *    content?: AppContentProps
  * }} HeroProps
  */
 
 /**
- * @typedef {("text" | "text-image-overlay" | "text-photo-grid")} IntroType
- *
  * @typedef {{
- *    type?: IntroType
+ *    type?: "text" | "text-image-overlay" | "text-photo-grid"
  *    image?: AppImageProps
- *    header?: AppContentProps
- *    title?: AppContentProps
- *    content?: AppContentProps
+ *    header?: AppTitleProps
+ *    title?: AppTitleProps
+ *    contents?: AppContentProps[]
  *    photoGrid?: {
  *      images: AppImageProps[]
  *    }

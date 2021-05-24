@@ -1,4 +1,5 @@
 // @ts-check
+import PropTypes from "prop-types";
 import React from "react";
 
 import { IntroContent } from "../../core/components";
@@ -16,18 +17,25 @@ const DegreePage = ({ introContent }) => {
   return (
     <>
       {/* <Hero image={hero.image} content={hero.content} /> */}
-      <div className="container">
-        <main>
-          <IntroContent image={introContent.image} />
-          {/* todo: add here other components */}
-        </main>
-      </div>
+
+      <main className="container">
+        <IntroContent
+          type={introContent.type}
+          header={introContent.header}
+          title={introContent.title}
+          contents={introContent.contents}
+          image={introContent.image}
+          photoGrid={introContent.photoGrid}
+        />
+
+        {/* todo: add here other components */}
+      </main>
     </>
   );
 };
 
 DegreePage.propTypes = {
-  introContent: IntroContent.propTypes,
+  introContent: PropTypes.shape(IntroContent.propTypes),
 };
 
 export { DegreePage };
