@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 1.75rem;
-  padding: 2rem;
 
   @media screen and (max-width: $uds-breakpoint-md) {
     padding: 1rem;

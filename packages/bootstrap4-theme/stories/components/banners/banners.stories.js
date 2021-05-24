@@ -8,7 +8,7 @@ storiesOf('Components/Banners', module)
   // TODO FLEXBOX THIS SUCKER.
   // TODO Re-namespace the top level class and copy over rules.
 
-.add('Banners, green', () => `
+.add('Banners - green', () => `
 <div class="banner-green">
   <div class="banner container" role="banner">
     <div class="banner-icon">
@@ -32,7 +32,7 @@ storiesOf('Components/Banners', module)
 </div>
   `)
 
-  .add('Banners, orange', () => `
+  .add('Banners - orange', () => `
 <div class="banner-orange">
   <div class="banner container" role="banner">
     <div class="banner-icon">
@@ -56,7 +56,7 @@ storiesOf('Components/Banners', module)
  </div>
   `)
 
-  .add('Banners, blue', () => `
+  .add('Banners - blue', () => `
 <div class="banner-blue">
   <div class="banner container" role="banner">
     <div class="banner-icon">
@@ -80,7 +80,7 @@ storiesOf('Components/Banners', module)
 </div>
   `)
 
-  .add('Banners, gray', () => `
+  .add('Banners - gray2 background', () => `
 <div class="banner-gray">
   <div class="banner container" role="banner">
     <div class="banner-icon">
@@ -104,7 +104,7 @@ storiesOf('Components/Banners', module)
   </div>
   `)
 
-  .add('Banners, black', () => `
+  .add('Banners - gray7 background', () => `
 <div class="banner-black">
   <div class="banner container" role="banner">
     <div class="banner-icon">

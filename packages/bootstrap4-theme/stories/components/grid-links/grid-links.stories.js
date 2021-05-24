@@ -1,6 +1,6 @@
 export default { title: 'Components/Grid Links' };
 
-export const GridLinksOnWhiteBackground = () => `
+export const GridLinksWhiteBackground = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -44,7 +44,7 @@ export const GridLinksOnWhiteBackground = () => `
 </div>
 `;
 
-export const GridLinksOnLightGrayBackground = () => `
+export const GridLinksGrey1Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -88,7 +88,7 @@ export const GridLinksOnLightGrayBackground = () => `
 </div>
 `;
 
-export const GoldGridLinksOnDarkBackground = () => `
+export const GoldGridLinksGrey7Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -132,7 +132,7 @@ export const GoldGridLinksOnDarkBackground = () => `
 </div>
 `;
 
-export const GridLinksOnDarkBackground = () => `
+export const GridLinksGrey7Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">

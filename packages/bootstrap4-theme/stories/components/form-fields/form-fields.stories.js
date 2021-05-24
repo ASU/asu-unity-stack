@@ -54,8 +54,8 @@ Should only run and be packaged for storybook preview.
 -->
   `)
 
-  .add('Text inputs, various backgrounds', () => `
-<div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
+  .add('Text inputs - various backgrounds', () => `
+<div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
   <div class="form-group">
     <label for="exampleDefaultInputWhite">Default text input label</label>
@@ -94,7 +94,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
+<div style="background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray1">
   <div class="form-group">
     <label for="exampleDefaultInputGray1">Default text input label</label>
@@ -133,7 +133,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
+<div style="background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray2">
   <div class="form-group">
     <label for="exampleDefaultInputGray2">Default text input label</label>
@@ -172,7 +172,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
+<div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray7">
   <div class="form-group">
     <label for="exampleDefaultInputGray7">Default text input label</label>
@@ -245,9 +245,9 @@ Should only run and be packaged for storybook preview.
 </form>
   `)
 
-  .add('Textareas, multiple backgrounds', () => `
+  .add('Textareas - multiple backgrounds', () => `
 
-<div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
+<div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
 
   <div class="form-group">
@@ -280,7 +280,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
+<div style="background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray1">
 
   <div class="form-group">
@@ -313,7 +313,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
+<div style="background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray2">
 
   <div class="form-group">
@@ -346,7 +346,7 @@ Should only run and be packaged for storybook preview.
 </form>
 </div>
 
-<div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
+<div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray7">
 
   <div class="form-group">
@@ -545,9 +545,9 @@ Should only run and be packaged for storybook preview.
 </form>
 `)
 
-.add('Checkboxes and Radios, white background', () => `
+.add('Checkboxes and Radios - white background', () => `
 
-<div style="padding:2rem;background-color:white;"><!-- This div for Storybook display only. -->
+<div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
 
   <div class="form-check">
@@ -707,8 +707,8 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios, gray1 background', () => `
-<div style="padding:2rem;background-color:#fafafa;"><!-- This div for Storybook display only. -->
+.add('Checkboxes and Radios - gray1 background', () => `
+<div style="background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray1">
 
   <div class="form-check">
@@ -868,8 +868,8 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios, gray2 background', () => `
-<div style="padding:2rem;background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
+.add('Checkboxes and Radios - gray2 background', () => `
+<div style="background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray2">
 
   <div class="form-check">
@@ -1029,8 +1029,8 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios, gray7 (black) background', () => `
-<div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
+.add('Checkboxes and Radios - gray7 background', () => `
+<div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray7">
 
   <div class="form-check">
@@ -1340,7 +1340,7 @@ Should only run and be packaged for storybook preview.
 </form>
   `)
 
-.add('Kitchen Sink Form, client side validation with :invalid and :valid - Not yet validated, form in "needs-validation" state', () => `
+.add('Kitchen Sink Form - client side validation with :invalid and :valid - Not yet validated - form in "needs-validation" state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
@@ -1516,7 +1516,7 @@ styles based on input element type attribute are triggered and displayed.
 </form>
   `)
 
-.add('Kitchen Sink Form, client side validation with :invalid and :valid - Validated, form in was-validated state', () => `
+.add('Kitchen Sink Form - client side validation with :invalid and :valid - Validated - form in was-validated state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
@@ -1694,13 +1694,13 @@ styles based on input element type attribute are triggered and displayed.
 </form>
   `)
 
-.add('Kitchen Sink Form, gray7 (black) background, client side validation with :invalid and :valid - Not yet validated, form in "needs-validation" state', () => `
+.add('Kitchen Sink Form - gray7 background - client side validation with :invalid and :valid - Not yet validated - form in "needs-validation" state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
 styles based on input element type attribute are triggered and displayed.
 
-<div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
+<div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form needs-validation uds-form-gray7">
 
   <div class="form-group">
@@ -1872,13 +1872,13 @@ styles based on input element type attribute are triggered and displayed.
 </div>
   `)
 
-.add('Kitchen Sink Form, dark background, client side validation with :invalid and :valid - Validated, form in "was-validated" state', () => `
+.add('Kitchen Sink Form - dark background - client side validation with :invalid and :valid - Validated - form in "was-validated" state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
 styles based on input element type attribute are triggered and displayed.
 
-<div style="padding:2rem;background-color:#191919;"><!-- This div for Storybook display only. -->
+<div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form was-validated uds-form-gray7">
 
   <div class="form-group">
