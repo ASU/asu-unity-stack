@@ -1,4 +1,5 @@
 // @ts-check
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,10 +16,10 @@ import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
  * @typedef {{
- *    type?: "heading-hero" | "story-hero" // defau is "heading-hero"
+ *    type?: "heading-hero" | "story-hero" // defaut value is "heading-hero"
  *    image: ImageProps
  *    title?: ContentProps
- *    content?: ContentProps
+ *    contents?: ContentProps[]
  * }} HeroProps
  */
 
@@ -26,9 +27,9 @@ import { spreadClasses } from "../../core/utils/css-utils";
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-function storyHeroHtmlTemplate({ image, title, content }) {
+function storyHeroHtmlTemplate({ image, title, contents }) {
   // eslint-disable-next-line no-console
-  console.log({ image, title, content });
+  console.log({ image, title, contents });
   //  TODO: to be implemented
   return <div>TODO: to be implemented</div>;
 }
@@ -37,10 +38,25 @@ function storyHeroHtmlTemplate({ image, title, content }) {
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-function headingHeroHtmlTemplate({ image, title, content }) {
+function headingHeroHtmlTemplate({ image, title, contents }) {
+  const imageSize = {
+    small: "uds-hero-sm",
+    medium: "uds-hero-md",
+    large: "uds-hero-lg",
+    undefined: null,
+  };
+
+  const highlightColor = {
+    gold: "highlight highlight-gold",
+    black: "highlight highlight-black",
+    undefined: null,
+  };
+
   return (
     <div
-      className={`uds-hero ${spreadClasses(image.cssClass)}`}
+      className={classNames(`uds-hero ${spreadClasses(image.cssClass)}`, {
+        [imageSize[image.size]]: image.size,
+      })}
       style={{
         backgroundImage: `url(${image.url})`,
       }}
@@ -48,16 +64,21 @@ function headingHeroHtmlTemplate({ image, title, content }) {
       <div className="container uds-hero-container">
         {title && (
           <h1 className="heading heading-one col-md-8">
-            <span className={`${spreadClasses(title.cssClass)}`}>
+            <span
+              className={classNames(`${spreadClasses(title.cssClass)}`, {
+                [highlightColor[title.highlightColor]]: title.highlightColor,
+              })}
+            >
               {title.text}
             </span>
           </h1>
         )}
-        {content && (
-          <div className="uds-hero-text col-sm-12 col-md-7">
-            <p>{content.text}</p>
-          </div>
-        )}
+        {contents &&
+          contents.map(content => (
+            <div className="uds-hero-text col-sm-12 col-md-7">
+              <p>{content.text}</p>
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -68,10 +89,10 @@ function headingHeroHtmlTemplate({ image, title, content }) {
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-const Hero = ({ type = "heading-hero", image, title, content }) => {
+const Hero = ({ type = "heading-hero", image, title, contents }) => {
   const templateTypes = {
-    "heading-hero": () => headingHeroHtmlTemplate({ image, title, content }),
-    "story-hero": () => storyHeroHtmlTemplate({ image, title, content }),
+    "heading-hero": () => headingHeroHtmlTemplate({ image, title, contents }),
+    "story-hero": () => storyHeroHtmlTemplate({ image, title, contents }),
     "undefined": () => {
       console.error(
         `the type '${type}' is not supported by the 'Hero' component.`
@@ -87,7 +108,7 @@ Hero.propTypes = {
   type: PropTypes.oneOf(["heading-hero", "story-hero"]),
   image: imagePropType.isRequired,
   title: contentPropType,
-  content: contentPropType,
+  contents: PropTypes.arrayOf(contentPropType),
 };
 
 export { Hero };

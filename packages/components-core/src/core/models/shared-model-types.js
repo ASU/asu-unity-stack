@@ -5,6 +5,7 @@
  *    url: string
  *    altText?: string
  *    cssClass?: string []
+ *    size: "small" | "medium" | "large"
  * }} ImageProps
  */
 
@@ -12,6 +13,7 @@
  * @typedef {{
  *    text: string
  *    cssClass?: string []
+ *    highlightColor?: "gold" | "black"
  * }} ContentProps
  */
 
