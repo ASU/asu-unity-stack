@@ -1,13 +1,18 @@
 // @ts-check
+import PropTypes from "prop-types";
 import React from "react";
+
+function createMarkup(output) {
+  return { __html: output };
+}
 
 // Component
 
-const Success = () => {
+const Success = ({ rfiConfig }) => {
   return (
     <>
       <h3>Success</h3>
-      <div>success message goes here...</div>
+      <div dangerouslySetInnerHTML={createMarkup(rfiConfig.SuccessMsg)} />
     </>
   );
 };
@@ -19,6 +24,25 @@ const successForm = {
   validationSchema: {},
 
   initialValues: {},
+};
+
+// Props
+Success.defaultProps = {
+  rfiConfig: {
+    Campus: undefined,
+    College: undefined,
+    Department: undefined,
+    StudentType: undefined,
+    AreaOfInterest: undefined,
+    ProgramOfInterest: undefined,
+    State: undefined,
+    SuccessMsg: "Success.",
+    Test: 0,
+  },
+};
+
+Success.propTypes = {
+  rfiConfig: PropTypes.instanceOf(Object),
 };
 
 export { successForm };

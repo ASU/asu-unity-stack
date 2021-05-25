@@ -176,7 +176,7 @@ RfiTesterB.args = {
     AreaOfInterest: undefined,
     ProgramOfInterest: undefined,
     State: undefined,
-    SuccessMsg: "Success.",
+    SuccessMsg: "Success. <strong>You made it.</strong>",
     Test: 0,
   },
 };
