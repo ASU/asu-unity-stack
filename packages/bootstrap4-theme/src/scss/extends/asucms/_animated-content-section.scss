@@ -62,12 +62,8 @@
   }
 
   @media screen and (min-width: $uds-grid-container-max-width-lg) {
-    .content-section:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-    }
-
-    .content-section:focus {
+    .content-section:hover,
+    .content-section:focus-within {
       cursor: pointer;
       transform: scale(1.1);
     }
@@ -78,12 +74,8 @@
       overflow: hidden;
       opacity: 0;
     }
-    .content-section:hover .hidden-details {
-      max-height: 300px;
-      opacity: 1;
-    }
-
-    .content-section:focus .hidden-details {
+    .content-section:hover .hidden-details,
+    .content-section:focus-within .hidden-details {
       max-height: 300px;
       opacity: 1;
     }
