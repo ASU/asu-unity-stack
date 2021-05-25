@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Footer } from ".";
 
 import endorsedLogo from "./endorsedLogo.png";
@@ -8,6 +9,7 @@ export default {
   component: Footer,
 };
 
+/* eslint-disable-next-line react/jsx-props-no-spreading */
 const Template = args => <Footer {...args} />;
 
 export const Default = Template.bind({});

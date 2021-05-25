@@ -1,8 +1,4 @@
-import PropTypes, { shape } from "prop-types";
-import React, { useState } from "react";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookSquare,
   faInstagramSquare,
@@ -10,19 +6,13 @@ import {
   faTwitterSquare,
   faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
-import asuLogo from "./asuLogo.png";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes, { shape } from "prop-types";
+import React, { useState } from "react";
+
 import endorsedLogo from "./endorsedLogo.png";
 import innovationLogo from "./innovationLogo.png";
-
-export const Footer = ({ social, contact }) => {
-  return (
-    <footer role="contentinfo">
-      {social && <Social social={social} />}
-      {contact && <Contact contact={contact} />}
-      <Base />
-    </footer>
-  );
-};
 
 const Base = () => {
   return (
@@ -219,7 +209,7 @@ const Contact = ({
             <>
               {columns.map((column, columnIndex) => (
                 <ColumnSection
-                  key={`footlink-${columnIndex}`}
+                  key={`footlink-${column.title}`}
                   columnIndex={columnIndex}
                   column={column}
                 />
@@ -266,12 +256,18 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   return (
     <div className="col-xl flex-footer">
       <div className="card card-foldable desktop-disable-xl">
-        <div className="card-header" onClick={() => setShow(!show)}>
+        <div
+          className="card-header"
+          role="button"
+          onClick={() => setShow(!show)}
+          onKeyDown={() => setShow(!show)}
+          tabIndex={0}
+        >
           <h5>
             <a
               id={`footlink-header-${columnIndex}`}
               className="collapsed"
-              href={"#footlink-" + columnIndex}
+              href={`#footlink-${columnIndex}`}
               role="button"
             >
               {title}
@@ -281,11 +277,11 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         </div>
         <div
           id={`footlink-${columnIndex}`}
-          className={"collapse card-body " + (show ? "show" : "")}
+          className={`collapse card-body ${show ? "show" : ""}`}
         >
-          {links.map((link, index) => (
+          {links.map(link => (
             <a
-              key={`footlink-${columnIndex}-link-${index}`}
+              key={`footlink-${title}-link-${link.text}`}
               className="nav-link"
               href={link.url}
               title={link.title}
@@ -311,4 +307,19 @@ ColumnSection.propTypes = {
       })
     ),
   }),
+};
+
+export const Footer = ({ social, contact }) => {
+  return (
+    <footer role="contentinfo">
+      {social && <Social social={social} />}
+      {contact && <Contact contact={contact} />}
+      <Base />
+    </footer>
+  );
+};
+
+Footer.propTypes = {
+  social: PropTypes.shape(Social.propTypes),
+  contact: PropTypes.shape(Contact.propTypes),
 };
