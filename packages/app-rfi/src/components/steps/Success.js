@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
