@@ -54,7 +54,7 @@ export const Gray2Background = () => `
 </div>
 `;
 
-export const Grey7Background = () => `
+export const Gray7Background = () => `
 <div class="background dark">
 
   <span class="uds-tooltip uds-tooltip-dark">

@@ -24,7 +24,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered List - grey2 background', () => `
+.add('Unordered List - Gray 2 Background', () => `
 <ul class="uds-list smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -33,7 +33,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered List - grey1 background', () => `
+.add('Unordered List - Gray 1 Background', () => `
 <ul class="uds-list light-smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -42,7 +42,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered List - grey7 background', () => `
+.add('Unordered List - Gray 7 Background', () => `
 <ul class="uds-list darkmode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -51,7 +51,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Unordered List - Gold Bullet - grey7 background', () => `
+.add('Unordered List - Gold Bullet - Gray 7 Background', () => `
 <ul class="uds-list darkmode gold">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -301,7 +301,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered List - grey2 background', () => `
+.add('Ordered List - Gray 2 Background', () => `
 <ol class="uds-list smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -310,7 +310,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered List - grey1 background', () => `
+.add('Ordered List - Gray 1 Background', () => `
 <ol class="uds-list light-smokemode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -319,7 +319,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Ordered List - grey7 background', () => `
+.add('Ordered List - Gray 7 Background', () => `
 <ol class="uds-list darkmode">
   <li>Lorem ipsum dolor sit amet</li>
   <li>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -371,7 +371,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Icon List - grey7 background', () => `
+.add('Icon List - Gray 7 Background', () => `
 <ul class="uds-list fa-ul darkmode">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -380,7 +380,7 @@ storiesOf('Components/List', module)
 </ul>
 `)
 
-.add('Icon List - Gold Icon - grey7 background', () => `
+.add('Icon List - Gold Icon - Gray 7 Background', () => `
 <ul class="uds-list fa-ul darkmode gold">
   <li><span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet</li>
   <li><span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
@@ -414,7 +414,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - grey2 background', () => `
+.add('Step List - Gray 2 Background', () => `
 <ol class="uds-list uds-steplist smokemode">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -422,7 +422,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - Gold Counter - grey2 background', () => `
+.add('Step List - Gold Counter - Gray 2 Background', () => `
 <ol class="uds-list uds-steplist smokemode uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -430,7 +430,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - Maroon Counter - grey2 background', () => `
+.add('Step List - Maroon Counter - Gray 2 Background', () => `
 <ol class="uds-list uds-steplist smokemode uds-steplist-maroon">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -438,7 +438,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - grey1 background', () => `
+.add('Step List - Gray 1 Background', () => `
 <ol class="uds-list uds-steplist light-smokemode">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -446,7 +446,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - Gold Counter - grey1 background', () => `
+.add('Step List - Gold Counter - Gray 1 Background', () => `
 <ol class="uds-list uds-steplist light-smokemode uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -454,7 +454,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - Maroon Counter - grey1 background', () => `
+.add('Step List - Maroon Counter - Gray 1 Background', () => `
 <ol class="uds-list uds-steplist light-smokemode uds-steplist-maroon">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -462,7 +462,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - grey7 background', () => `
+.add('Step List - Gray 7 Background', () => `
 <ol class="uds-list uds-steplist darkmode">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
@@ -470,7 +470,7 @@ storiesOf('Components/List', module)
 </ol>
 `)
 
-.add('Step List - Gold Counter - grey7 background', () => `
+.add('Step List - Gold Counter - Gray 7 Background', () => `
 <ol class="uds-list uds-steplist darkmode uds-steplist-gold">
   <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
   <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>

@@ -44,7 +44,7 @@ export const GridLinksWhiteBackground = () => `
 </div>
 `;
 
-export const GridLinksGrey1Background = () => `
+export const GridLinksGray1Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -88,7 +88,7 @@ export const GridLinksGrey1Background = () => `
 </div>
 `;
 
-export const GoldGridLinksGrey7Background = () => `
+export const GoldGridLinksGray7Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -132,7 +132,7 @@ export const GoldGridLinksGrey7Background = () => `
 </div>
 `;
 
-export const GridLinksGrey7Background = () => `
+export const GridLinksGray7Background = () => `
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-8">

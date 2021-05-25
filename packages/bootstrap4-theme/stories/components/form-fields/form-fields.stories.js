@@ -54,7 +54,7 @@ Should only run and be packaged for storybook preview.
 -->
   `)
 
-  .add('Text inputs - various backgrounds', () => `
+  .add('Text inputs - Various Backgrounds', () => `
 <div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
   <div class="form-group">
@@ -245,7 +245,7 @@ Should only run and be packaged for storybook preview.
 </form>
   `)
 
-  .add('Textareas - multiple backgrounds', () => `
+  .add('Textareas - Multiple Backgrounds', () => `
 
 <div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
@@ -545,7 +545,7 @@ Should only run and be packaged for storybook preview.
 </form>
 `)
 
-.add('Checkboxes and Radios - white background', () => `
+.add('Checkboxes and Radios - White Background', () => `
 
 <div style="background-color:white;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-white">
@@ -707,7 +707,7 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios - gray1 background', () => `
+.add('Checkboxes and Radios - Gray 1 Background', () => `
 <div style="background-color:#fafafa;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray1">
 
@@ -868,7 +868,7 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios - gray2 background', () => `
+.add('Checkboxes and Radios - Gray 2 Background', () => `
 <div style="background-color:#e8e8e8;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray2">
 
@@ -1029,7 +1029,7 @@ Should only run and be packaged for storybook preview.
 </div>
 `)
 
-.add('Checkboxes and Radios - gray7 background', () => `
+.add('Checkboxes and Radios - Gray 7 Background', () => `
 <div style="background-color:#191919;"><!-- This div for Storybook display only. -->
 <form class="uds-form uds-form-gray7">
 
@@ -1340,7 +1340,7 @@ Should only run and be packaged for storybook preview.
 </form>
   `)
 
-.add('Kitchen Sink Form - client side validation with :invalid and :valid - Not yet validated - form in "needs-validation" state', () => `
+.add('Kitchen Sink Form - Client side validation with :invalid and :valid - Not yet validated - Form in "needs-validation" state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
@@ -1516,7 +1516,7 @@ styles based on input element type attribute are triggered and displayed.
 </form>
   `)
 
-.add('Kitchen Sink Form - client side validation with :invalid and :valid - Validated - form in was-validated state', () => `
+.add('Kitchen Sink Form - Client side validation with :invalid and :valid - Validated - Form in was-validated state', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
@@ -1694,7 +1694,7 @@ styles based on input element type attribute are triggered and displayed.
 </form>
   `)
 
-.add('Kitchen Sink Form - gray7 background - client side validation with :invalid and :valid - Not yet validated - form in "needs-validation" state', () => `
+.add('Kitchen Sink Form - Client side validation with :invalid and :valid - Not yet validated - Form in "needs-validation" state - Gray 7 Background', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation
@@ -1872,7 +1872,7 @@ styles based on input element type attribute are triggered and displayed.
 </div>
   `)
 
-.add('Kitchen Sink Form - dark background - client side validation with :invalid and :valid - Validated - form in "was-validated" state', () => `
+.add('Kitchen Sink Form - Client side validation with :invalid and :valid - Validated - Form in "was-validated" state - Gray 7 Background', () => `
 <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
 <p>When the form is marked with class "was-validated", browser-based validation

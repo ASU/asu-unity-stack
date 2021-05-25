@@ -46,7 +46,7 @@ storiesOf('Components/Tabbed Panels', module)
   </div>
 `)
 
-.add('Grey1 background', () => `
+.add('Gray 1 Background', () => `
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -86,7 +86,7 @@ storiesOf('Components/Tabbed Panels', module)
 </div>
 `)
 
-  .add('Gray2 background', () => `
+  .add('Gray 2 Background', () => `
   <div class="container bg-gray-2">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -125,7 +125,7 @@ storiesOf('Components/Tabbed Panels', module)
   </div>
 `)
 
-.add('Grey7 background', () => `
+.add('Gray 7 Background', () => `
 <div class="container bg-dark">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
