@@ -54,7 +54,7 @@ class RfiStepper extends React.Component {
     console.log(initialValues, `initialValues at ${step}`);
 
     // For the progress bar.
-    const totalSteps = initialValues.length;
+    const totalSteps = initialValues.length - 1; // Don't count success step.
     const progress = step / totalSteps;
 
     // Debug
@@ -85,7 +85,10 @@ class RfiStepper extends React.Component {
       <div>
         <Progress value={progress * 100} className="rfi-progress" />
         <div className="uds-rfi-form-wrapper">
-          <div>{`Step ${step + 1} of ${totalSteps}`}</div>
+          {/* Don't display step details if we're on the success "step". */}
+          {step !== lastStep ? (
+            <div>{`Step ${step + 1} of ${totalSteps}`}</div>
+          ) : undefined}
           <h2>Request information</h2>
           <Formik
             initialValues={initValues}
@@ -94,38 +97,50 @@ class RfiStepper extends React.Component {
               values,
               { setSubmitting, setFieldTouched, resetForm } /* FormikBag */
             ) => {
+              // TODO What did this setTimeout() accomplish? Unnecessary? Faux
+              // temporary disable? Disable double clicking?
               // eslint-disable-next-line no-undef
               setTimeout(() => {
                 setSubmitting(false);
 
-                if (step === lastStep) {
+                // Submit on step before success/last step.
+                if (step === lastStep - 1) {
                   handleSubmit(values);
-                  // TODO add a check for success before resetting form?
-                  // That way we could display a "try again in a few moments"
-                  // on error. Else, display success message.
+                  // TODO add a check for success before resetting form and
+                  // advancing? That way we could display a "try again in a few
+                  // moments" on error. Else, display success message.
                   resetForm();
-                } else {
-                  this.next();
-                  Object.keys(initialValues[step + 1]).map(key => {
-                    return setFieldTouched(key, false, false);
-                  });
                 }
+                // Advance the step.
+                this.next();
+                Object.keys(initialValues[step + 1]).map(key => {
+                  return setFieldTouched(key, false, false);
+                });
               }, 400);
             }}
           >
             {formik => {
-              return (
-                <Form className="uds-form uds-rfi">
-                  {React.createElement(formComponent, this.props)}
+              // Render lastStep without stepper buttons.
+              if (step === lastStep) {
+                return (
+                  <Form className="uds-form uds-rfi">
+                    {React.createElement(formComponent, this.props)}
+                  </Form>
+                );
+              } else {
+                return (
+                  <Form className="uds-form uds-rfi">
+                    {React.createElement(formComponent, this.props)}
 
-                  <RfiStepperButtons
-                    stepNum={step}
-                    lastStep={lastStep}
-                    handleBack={this.prev}
-                    submitting={formik.isSubmitting}
-                  />
-                </Form>
-              );
+                    <RfiStepperButtons
+                      stepNum={step}
+                      lastStep={lastStep}
+                      handleBack={this.prev}
+                      submitting={formik.isSubmitting}
+                    />
+                  </Form>
+                );
+              }
             }}
           </Formik>
         </div>
@@ -146,7 +161,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
       </div>
       <div className="col-6 text-right">
         {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
-        {stepNum < lastStep ? (
+        {stepNum < lastStep - 1 ? (
           <Button type="submit" className={`rfi-button-step${stepNum + 1}`}>
             Next <FontAwesomeIcon icon={faAngleRight} />
           </Button>
@@ -163,8 +178,6 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
     </div>
   </nav>
 );
-// TODO disable submit button above when clicked. formik.isSubmitting isn't
-// available. Maybe our success page will just hide the button...
 
 RfiStepper.propTypes = {
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,

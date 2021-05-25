@@ -7,6 +7,7 @@ import RfiImage from "../../../img/WS2-DefaultImagev01-Final.png";
 import { aboutMeForm } from "../steps/AboutMe";
 import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
+import { successForm } from "../steps/Success";
 import { RfiStepper } from "./RfiStepper";
 
 const RfiMainForm = ({ rfiConfig }) => {
@@ -29,19 +30,28 @@ const RfiMainForm = ({ rfiConfig }) => {
                   programInterestForm.validationSchema,
                   aboutMeForm.validationSchema,
                   optionalForm.validationSchema,
+                  successForm.validationSchema,
                 ]}
                 initialValues={[
                   programInterestForm.initialValues,
                   aboutMeForm.initialValues,
                   optionalForm.initialValues,
+                  successForm.initialValues,
                 ]}
                 formComponents={[
                   programInterestForm.component,
                   aboutMeForm.component,
                   optionalForm.component,
+                  successForm.component,
                 ]}
                 handleSubmit={value => {
-                  // eslint-disable-next-line no-undef
+                  // TODO Why? - while waiting using next lines, isSubmitting
+                  // isn't honored re: submit button disabling - see disabled
+                  // on submit button.
+                  // handleSubmit={async value => {
+                  // await new Promise(r => setTimeout(r, 2000));
+
+                  // eslint-disable-next-line no-alert
                   alert(`SUBMITTED FORM \n${JSON.stringify(value, null, 2)}`);
 
                   // TODO Build payload... notes:
