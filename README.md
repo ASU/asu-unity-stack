@@ -109,6 +109,7 @@ yarn install # do this at git root
 cd packages/<package-name> # step into package root
 yarn storybook # run storybook
 ```
+If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu-design-system:registry=https://registry.web.asu.edu` is in your `~/.npmrc` file. This will ensure that all @asu-design-system packages are sourced from the registry.
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
