@@ -309,17 +309,22 @@ ColumnSection.propTypes = {
   }),
 };
 
-export const Footer = ({ social, contact }) => {
+export const ASUFooter = ({ social, contact }) => {
+  const showSocial =
+    social && typeof social === "object" && Object.keys(social).length > 0;
+  const showContact =
+    contact && typeof contact === "object" && Object.keys(contact).length > 0;
+
   return (
     <footer role="contentinfo">
-      {social && <Social social={social} />}
-      {contact && <Contact contact={contact} />}
+      {showSocial && <Social social={social} />}
+      {showContact && <Contact contact={contact} />}
       <Base />
     </footer>
   );
 };
 
-Footer.propTypes = {
+ASUFooter.propTypes = {
   social: PropTypes.shape(Social.propTypes),
   contact: PropTypes.shape(Contact.propTypes),
 };

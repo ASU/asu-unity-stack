@@ -1,16 +1,16 @@
 import React from "react";
 
-import { Footer } from ".";
+import { ASUFooter } from ".";
 
 import endorsedLogo from "./endorsedLogo.png";
 
 export default {
-  title: "UDS/Footer",
-  component: Footer,
+  title: "UDS/ASU Footer",
+  component: ASUFooter,
 };
 
 /* eslint-disable-next-line react/jsx-props-no-spreading */
-const Template = args => <Footer {...args} />;
+const Template = args => <ASUFooter {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
