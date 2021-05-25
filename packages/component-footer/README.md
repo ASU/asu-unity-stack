@@ -26,8 +26,14 @@ yarn test
 
 ## Use as a JS module in React app
 
+### Default import
 ```JAVASCRIPT
     import { ASUFooter } from '@asu-design-system/component-footer@dev'
+```
+
+### Aliased import
+```JAVASCRIPT
+  import { ASUFooter as Footer } from '@asu-design-system/component-footer@dev'
 ```
 
 ### Define your footer sections. Defaults to basic footer with no arguments. Optional sections include the social and content sections.
@@ -77,7 +83,7 @@ yarn test
   const App = (props) => {
     return (
       <div>
-        <Footer social={social} contact={contact} />
+        <ASUFooter social={social} contact={contact} />
       </div>
     )
   };
