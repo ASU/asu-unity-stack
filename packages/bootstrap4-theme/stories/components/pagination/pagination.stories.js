@@ -52,20 +52,24 @@ storiesOf('Components/Pagination', module)
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Prev</a>
+      <a class="page-link" href="#">First</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Prev</a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">40</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">12
+      <a class="page-link" href="#">41
       <span class="sr-only">(current)</span></a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><a class="page-link" href="#">42</a></li>
     <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item"><a class="page-link" href="#">44</a></li>
-    <li class="page-item"><a class="page-link" href="#">45</a></li>
-    <li class="page-item"><a class="page-link" href="#">46</a></li>
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Next</a>
+      <a class="page-link" href="#">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">Last</a>
     </li>
   </ul>
 </nav>
@@ -75,20 +79,24 @@ storiesOf('Components/Pagination', module)
 <nav aria-label="...">
   <ul class="pagination justify-content-center border p-2">
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Prev</a>
+      <a class="page-link" href="#">First</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Prev</a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">40</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">12
+      <a class="page-link" href="#">41
       <span class="sr-only">(current)</span></a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><a class="page-link" href="#">42</a></li>
     <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item"><a class="page-link" href="#">44</a></li>
-    <li class="page-item"><a class="page-link" href="#">45</a></li>
-    <li class="page-item"><a class="page-link" href="#">46</a></li>
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Next</a>
+      <a class="page-link" href="#">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">Last</a>
     </li>
   </ul>
 </nav>
@@ -98,20 +106,24 @@ storiesOf('Components/Pagination', module)
 <nav aria-label="...">
   <ul class="pagination justify-content-center uds-bg-gray pt-2 pb-2">
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Prev</a>
+      <a class="page-link" href="#">First</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Prev</a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">40</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">12
+      <a class="page-link" href="#">41
       <span class="sr-only">(current)</span></a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><a class="page-link" href="#">42</a></li>
     <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item"><a class="page-link" href="#">44</a></li>
-    <li class="page-item"><a class="page-link" href="#">45</a></li>
-    <li class="page-item"><a class="page-link" href="#">46</a></li>
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Next</a>
+      <a class="page-link" href="#">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">Last</a>
     </li>
   </ul>
 </nav>
@@ -121,20 +133,24 @@ storiesOf('Components/Pagination', module)
 <nav aria-label="...">
   <ul class="pagination justify-content-center uds-bg-dark pt-2 pb-2">
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Prev</a>
+      <a class="page-link" href="#">First</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">11</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Prev</a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item"><a class="page-link" href="#">40</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">12
+      <a class="page-link" href="#">41
       <span class="sr-only">(current)</span></a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">13</a></li>
+    <li class="page-item"><a class="page-link" href="#">42</a></li>
     <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item"><a class="page-link" href="#">44</a></li>
-    <li class="page-item"><a class="page-link" href="#">45</a></li>
-    <li class="page-item"><a class="page-link" href="#">46</a></li>
     <li class="page-item">
-      <a class="page-link page-link-icon" href="#">Next</a>
+      <a class="page-link" href="#">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">Last</a>
     </li>
   </ul>
 </nav>
