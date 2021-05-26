@@ -94,9 +94,9 @@ storiesOf('Components/Pagination', module)
 </nav>
 `)
 
-.add('Background Gray', () => `
+.add('Gray 2 Background', () => `
 <nav aria-label="...">
-  <ul class="pagination justify-content-center uds-bg-gray p-2">
+  <ul class="pagination justify-content-center uds-bg-gray pt-2 pb-2">
     <li class="page-item">
       <a class="page-link page-link-icon" href="#">Prev</a>
     </li>
@@ -117,9 +117,9 @@ storiesOf('Components/Pagination', module)
 </nav>
 `)
 
-.add('Background Dark', () => `
+.add('Gray 7 Background', () => `
 <nav aria-label="...">
-  <ul class="pagination justify-content-center uds-bg-dark p-2">
+  <ul class="pagination justify-content-center uds-bg-dark pt-2 pb-2">
     <li class="page-item">
       <a class="page-link page-link-icon" href="#">Prev</a>
     </li>

@@ -18,7 +18,7 @@ export const WhiteBackground = () => `
 </div>
 `;
 
-export const BaseGrayBackground = () => `
+export const Gray1Background = () => `
 <div class="background base-gray">
 
   <span class="uds-tooltip uds-tooltip-base-gray">
@@ -36,7 +36,7 @@ export const BaseGrayBackground = () => `
 </div>
 `;
 
-export const GrayBackground = () => `
+export const Gray2Background = () => `
 <div class="background gray">
 
   <span class="uds-tooltip uds-tooltip-gray">
@@ -54,7 +54,7 @@ export const GrayBackground = () => `
 </div>
 `;
 
-export const DarkBackground = () => `
+export const Gray7Background = () => `
 <div class="background dark">
 
   <span class="uds-tooltip uds-tooltip-dark">
