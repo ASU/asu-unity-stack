@@ -7,13 +7,19 @@ import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiSelect = ({ id, label, name, requiredIcon, options }) => {
+const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
   const [field, meta] = useField({ name });
   const isError = meta.touched && meta.error; // TODO generating non fatal error
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
-      <select id={id} className="form-control" error={isError} {...field}>
+      <select
+        id={id}
+        className="form-control"
+        error={isError}
+        disabled={disabled}
+        {...field}
+      >
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}
@@ -36,6 +42,7 @@ RfiSelect.defaultProps = {
   // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
+  disabled: false,
 };
 
 RfiSelect.propTypes = {
@@ -49,6 +56,7 @@ RfiSelect.propTypes = {
       text: PropTypes.string.isRequired,
     })
   ).isRequired,
+  disabled: PropTypes.bool,
   requiredIcon: PropTypes.bool,
 };
 
