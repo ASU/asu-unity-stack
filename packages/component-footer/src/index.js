@@ -10,6 +10,7 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape } from "prop-types";
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
 import endorsedLogo from "./endorsedLogo.png";
 import innovationLogo from "./innovationLogo.png";
@@ -309,7 +310,7 @@ ColumnSection.propTypes = {
   }),
 };
 
-export const ASUFooter = ({ social, contact }) => {
+const ASUFooter = ({ social, contact }) => {
   const showSocial =
     social && typeof social === "object" && Object.keys(social).length > 0;
   const showContact =
@@ -328,3 +329,11 @@ ASUFooter.propTypes = {
   social: PropTypes.shape(Social.propTypes),
   contact: PropTypes.shape(Contact.propTypes),
 };
+
+const RenderReact = (component, props, target) =>
+  ReactDOM.render(React.createElement(component, props), target);
+
+const initASUFooter = ({ targetSelector, props }) =>
+  RenderReact(ASUFooter, props, document.querySelector(targetSelector));
+
+export { ASUFooter, initASUFooter };

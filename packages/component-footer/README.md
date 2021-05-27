@@ -36,6 +36,72 @@ yarn test
   import { ASUFooter as Footer } from '@asu-design-system/component-footer@dev'
 ```
 
+### Import for use in HTML page
+```HTML
+<html>
+  <head>
+    <!-- Add scripts to include react -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <!-- Create target container -->
+    <div id="asuFooter"></div>
+
+    <script src="./vendor.production.js"></script>
+    <script src="./Footer.production.js"></script>
+    <script>
+      // Setup props for footer
+      var props = {
+        social: {
+          unitLogo: 'path/to/your/unit/logo.png',
+          mediaLinks: {
+            facebook: 'https://facebook.com', // link to your facebook page
+            twitter: 'https://twitter.com', // link to your twitter page
+            instagram: 'https://instagrampage.com', // link to your instagram page
+            linkedIn: 'https://linkedin.com', // link to your linked in page
+            youtube: 'https://youtube.com' // link to your youtube page
+          }
+        },
+        contact: {
+          title:
+            'Complete Name of College, School or Unit Title Should Go Here',
+          contactLink: '#',
+          contributionLink: '#',
+          columns: [
+            {
+              title: 'Column Two',
+              links: [
+                {
+                  url: '#',
+                  title: 'link',
+                  text: 'Biological and Health Systems Computing'
+                }
+                // Additional links go here
+              ]
+            }
+            // Additional columns go here
+          ]
+        }
+      };
+
+      AsuFooter.initASUFooter({
+        targetSelector: '#asuFooter',
+        props: props
+      });
+    </script>
+  </body>
+</html>
+
+```
+
 ### Define your footer sections. Defaults to basic footer with no arguments. Optional sections include the social and content sections.
 
 * Social section displays approved custom unit logo and links to social media pages. Each social media link is optional and may be ommitted. Template to build social object is as follows:
