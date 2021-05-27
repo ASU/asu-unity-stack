@@ -15,8 +15,11 @@ class RfiStepper extends React.Component {
     };
   }
 
-  // TODO confirm works
-  // next() {
+  // Possible TODO: prompt user before leaving a dirty form in Formik:
+  // https://github.com/formium/formik/issues/1657
+
+  // TODO Resolve parse error. .babelrc already has plugin identified.
+  // Possible solutions: https://github.com/babel/babel/issues/8711
   // ts-check didn't like
   next = () => {
     this.setState(prevState => {
@@ -27,8 +30,6 @@ class RfiStepper extends React.Component {
     });
   };
 
-  // TODO confirm works
-  // prev() {
   // ts-check didn't like
   prev = () => {
     this.setState(prevState => {
@@ -78,6 +79,9 @@ class RfiStepper extends React.Component {
     initValues.Interest1 = rfiConfig.AreaOfInterest;
     initValues.Interest2 = rfiConfig.ProgramOfInterest;
     initValues.State = rfiConfig.State;
+    // Avoid Uncontrolled to controlled switch warning:
+    // https://github.com/formium/formik/issues/28
+    initValues.Email = "";
 
     const formComponent = formComponents[step];
     const lastStep = formComponents.length - 1;
