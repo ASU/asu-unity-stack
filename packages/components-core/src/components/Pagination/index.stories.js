@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import React from "react";
 
-import Pagination from ".";
+import { Pagination } from ".";
 
 import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 
@@ -67,7 +67,7 @@ Bordered.args = {
 };
 
 export const Gray1Background = Template.bind({});
-Gray1Background.args = { type: "default", background: "gray1" };
+Gray1Background.args = { type: "default", background: "gray1", currentPage: 5 };
 
 export const Gray2Background = Template.bind({});
 Gray2Background.args = { type: "default", background: "gray2" };
