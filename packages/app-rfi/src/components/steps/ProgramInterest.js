@@ -116,7 +116,7 @@ const ProgramInterest = ({ rfiConfig }) => {
     { key: "0", value: "", text: "-- Select --" },
     {
       key: "1",
-      value: "error",
+      value: "",
       text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
@@ -124,7 +124,7 @@ const ProgramInterest = ({ rfiConfig }) => {
     { key: "0", value: "", text: "-- Select --" },
     {
       key: "1",
-      value: "error",
+      value: "",
       text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
