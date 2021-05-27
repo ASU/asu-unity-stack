@@ -21,7 +21,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   // Linear-gradients.
   position: relative;
-  margin-bottom: 11rem;
   // At start, no "to right" in ::after rule
   &.slider-start::after {
     // .glide::after
