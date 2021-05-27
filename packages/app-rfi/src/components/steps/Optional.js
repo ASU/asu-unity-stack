@@ -1,10 +1,10 @@
 // @ts-check
+import { useFormikContext } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import {
   RfiTextInput,
-  // RfiCheckboxSingle,
   RfiDatepicker,
   RfiRadioGroup,
   RfiTextArea,
@@ -12,12 +12,72 @@ import {
 } from "../controls";
 
 // Options
+function getCountryOptions(resultsArrayOfObjects) {
+  let i = 1;
+  // TODO Resolve eslint error when dust settles. Not hurting anything for now.
+  // eslint-disable-next-line no-return-assign
+  const results = resultsArrayOfObjects.map(co => ({
+    key: (i += 1),
+    value: co.countryCodeTwoChar,
+    text: co.description,
+  }));
+  results.unshift({
+    key: 0,
+    value: "",
+    text: "-- select state or province --",
+  });
+  return results;
+}
+
+function getStateOptions(resultsArrayOfObjects, formikValues) {
+  // Only return state options for US and CA.
+  if (!(formikValues.Country === "US" || formikValues.Country === "CA")) {
+    return [
+      {
+        key: 0,
+        value: "",
+        text: "",
+      },
+    ];
+  }
+
+  // formikValues.Country will either be US or CA if we made it here.
+  // Filter so we only have that array member.
+  const arrayWithStateObject = resultsArrayOfObjects.filter(
+    country => country.countryCodeTwoChar === formikValues.Country
+  );
+  // Destructure arrayOfStateObjects[0].states
+  // Good reference on destructuring nested objects:
+  // https://dmitripavlutin.com/javascript-object-destructuring/#6-extracting-properties-from-nested-objects
+  const {
+    0: { states },
+  } = arrayWithStateObject;
+  // Filter out problematic IGD value.
+  const arrayOfStates = states.filter(country => country.stateCode !== "IGD");
+
+  let i = 1;
+  // TODO Resolve eslint error when dust settles. Not hurting anything for now.
+  // eslint-disable-next-line no-return-assign
+  const results = arrayOfStates.map(st => ({
+    key: (i += 1),
+    value: st.description,
+    text: st.description,
+  }));
+  results.unshift({
+    key: 0,
+    value: "",
+    text: "-- select state or province --",
+  });
+  return results;
+}
 
 // Fetch Country Options from Data Potluck's readable stream service.
-async function fetchCountries() {
+async function fetchCountries(optionsCallback, formikValues) {
   // fetch("https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states")
+  const serviceUrl =
+    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states";
 
-  return fetch("https://api.myasuplat-dpl.asu.edu/api/codeset/countries")
+  return fetch(serviceUrl)
     .then(response => response.body)
     .then(rb => {
       const reader = rb.getReader();
@@ -50,20 +110,10 @@ async function fetchCountries() {
     .then(result => {
       // Parse results
       const resultJson = JSON.parse(result);
-      const resultsArrayOfOjbects = Object.values(resultJson);
+      const resultsArrayOfObjects = Object.values(resultJson);
       // Format for select options.
-      let i = 0;
-      // TODO Resolve when dust settles. Not hurting anything for now.
-      // eslint-disable-next-line no-return-assign
-      const results = resultsArrayOfOjbects.map(co => ({
-        key: (i += 1),
-        value: co.countryCodeTwoChar,
-        text: co.description,
-      }));
-      results.unshift({ key: -1, value: "", text: "-- select country --" });
+      const results = optionsCallback(resultsArrayOfObjects, formikValues);
       // console.log(results, "Results");
-      // TODO set up local country data be used as a fallback if we don't get any.
-      // TODO Attach details to log if we didn't get results and had to use fallback.
       return results;
     })
     .catch(error => new Error(error));
@@ -83,15 +133,49 @@ const veteranStatusOptions = [
 // Component
 
 const Optional = () => {
-  const [countryOptions, setCountries] = useState([]);
+  const [countryOptions, setCountries] = useState([
+    { key: "0", value: "", text: "-- Select --" },
+    {
+      key: "1",
+      value: "error",
+      text: "Load failed. Please try again in 5 minutes.",
+    },
+  ]);
+  const [stateOptions, setStates] = useState([
+    { key: "0", value: "", text: "-- Select --" },
+    {
+      key: "1",
+      value: "error",
+      text: "Load failed. Please try again in 5 minutes.",
+    },
+  ]);
+  const [statesDisabled, setStatesDisabled] = useState(true);
 
+  // Surface values from Formik context
+  const { values } = useFormikContext();
+
+  // Countries
   useEffect(() => {
     // Fetch country options.
-    fetchCountries().then(data => {
+    fetchCountries(getCountryOptions, values).then(data => {
       // Set state on countryOptions.
       setCountries(data);
     });
   }, []); // Run only once
+
+  // States and Provinces
+  useEffect(() => {
+    // Fetch country options.
+    fetchCountries(getStateOptions, values).then(data => {
+      // Set state on countryOptions.
+      setStates(data);
+    });
+    if (!(values.Country === "US" || values.Country === "CA")) {
+      setStatesDisabled(true);
+    } else {
+      setStatesDisabled(false);
+    }
+  }, [values.Country]);
 
   return (
     <>
@@ -114,10 +198,12 @@ const Optional = () => {
         name="Country"
         options={countryOptions}
       />
-      <RfiTextInput
-        label="State or Province - TODO" // TODO make select - dependent on country...
+      <RfiSelect
+        label="State or Province"
         id="State"
         name="State"
+        options={stateOptions}
+        disabled={statesDisabled}
       />
       <RfiTextInput label="Zipcode" id="Zip" name="Zip" />
       <RfiDatepicker
