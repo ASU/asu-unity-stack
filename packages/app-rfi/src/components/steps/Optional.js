@@ -46,9 +46,7 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
   const arrayWithStateObject = resultsArrayOfObjects.filter(
     country => country.countryCodeTwoChar === formikValues.Country
   );
-  // Destructure arrayOfStateObjects[0].states
-  // Good reference on destructuring nested objects:
-  // https://dmitripavlutin.com/javascript-object-destructuring/#6-extracting-properties-from-nested-objects
+  // Destructure states from arrayWithStateObject[0].states
   const {
     0: { states },
   } = arrayWithStateObject;
@@ -269,7 +267,7 @@ FIELDS
 - Street1 (address)
 - City
 - Country // TODO default to country identified by phone number
-- State // TODO update options based on Country
+- State
 - Zip - // TODO default to ZipCode from first page
 - BirthDate
 - MilitaryStatus
