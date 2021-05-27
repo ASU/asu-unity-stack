@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 
 import "./pagination.css";
 
-import PageItem from "./PageItem";
+import { PageItem } from "./PageItem";
 
-const Pagination = ({
+export const Pagination = ({
   type,
   background,
-  actualPage,
+  currentPage,
   totalPages,
   showFirstButton,
   showLastButton,
@@ -18,8 +18,8 @@ const Pagination = ({
   const [selectedPage, setSelectedPage] = useState(null);
 
   useEffect(() => {
-    setSelectedPage(actualPage);
-  }, [actualPage]);
+    setSelectedPage(currentPage);
+  }, [currentPage]);
 
   const handleChangePage = (e, page) => {
     const actions = {
@@ -130,7 +130,7 @@ Pagination.propTypes = {
   /**
    * Current page
    */
-  actualPage: PropTypes.number,
+  currentPage: PropTypes.number,
   /**
    * Total number of pages
    */
@@ -150,10 +150,8 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-  actualPage: 1,
+  currentPage: 1,
   totalPages: 10,
   showFirstButton: false,
   showLastButton: false,
 };
-
-export default Pagination;

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-const PageItem = ({
+export const PageItem = ({
   isClickeable,
   disabled,
   pageLinkicon,
@@ -51,5 +51,3 @@ PageItem.defaultProps = {
   selectedPage: false,
   onClick: () => {},
 };
-
-export default PageItem;
