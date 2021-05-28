@@ -74,8 +74,12 @@ function headingHeroHtmlTemplate({ image, title, contents }) {
           </h1>
         )}
         {contents &&
-          contents.map(content => (
-            <div className="uds-hero-text col-sm-12 col-md-7">
+          contents.map((content, index) => (
+            <div
+              // eslint-disable-next-line react/no-array-index-key
+              key={`content-${index}`}
+              className="uds-hero-text col-sm-12 col-md-7"
+            >
               <p>{content.text}</p>
             </div>
           ))}

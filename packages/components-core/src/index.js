@@ -5,6 +5,7 @@ import {
   ButtonIconOnly,
   ButtonTag,
   Testimonial,
+  Hero,
 } from "./components";
 
-export { Card, Article, Button, ButtonIconOnly, ButtonTag, Testimonial };
+export { Card, Article, Button, ButtonIconOnly, ButtonTag, Testimonial, Hero };
