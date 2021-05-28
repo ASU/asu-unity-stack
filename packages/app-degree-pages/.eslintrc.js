@@ -30,10 +30,18 @@ module.exports = {
   ],
   rules: {
     "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
     "dot-notation": "off",
     "import/prefer-default-export": "off",
-    "react/require-default-props": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
   },
 };

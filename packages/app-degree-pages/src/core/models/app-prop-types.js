@@ -20,4 +20,18 @@ const contentPropType = PropTypes.shape({
   ...contentPropTypes,
 });
 
-export { imagePropType, contentPropType, imagePropTypes, contentPropTypes };
+const dataSourcePropType = PropTypes.shape({
+  id: PropTypes.string,
+  sourceType: PropTypes.oneOf(["api", "shared-data-source", "static-json"]), // default `api`
+  sharedDataSourceId: PropTypes.string, // only if `dataSourceType == "shared-data-source"``
+  data: PropTypes.arrayOf(PropTypes.object), // only if `dataSourceType == "static-json"``
+  apiUrl: PropTypes.string, // only if `dataSourceType == "api"``
+});
+
+export {
+  imagePropType,
+  contentPropType,
+  imagePropTypes,
+  contentPropTypes,
+  dataSourcePropType,
+};

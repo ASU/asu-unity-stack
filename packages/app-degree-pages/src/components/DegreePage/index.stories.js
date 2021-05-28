@@ -17,9 +17,15 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const UndergraduateDegreePage = ({ introContent }) => (
-  <DegreePage introContent={introContent} />
+const Template = ({ introContent, degreeList }) => (
+  <DegreePage introContent={introContent} degreeList={degreeList} />
 );
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const UndergraduateDegreePage = Template.bind({});
 
 /**
  * @type {AppProps}
@@ -47,15 +53,16 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
+  degreeList: {
+    dataSource: "/api/mocks/degree-search",
+  },
 };
 
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const AreaStudyDgreePage1 = ({ introContent }) => (
-  <DegreePage introContent={introContent} />
-);
+export const AreaStudyDgreePage1 = Template.bind({});
 
 /**
  * @type {AppProps}
@@ -99,15 +106,16 @@ AreaStudyDgreePage1.args = {
       ],
     },
   },
+  degreeList: {
+    dataSource: "/api/mocks/degree-search",
+  },
 };
 
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const AreaStudyDgreePage2 = ({ introContent }) => (
-  <DegreePage introContent={introContent} />
-);
+export const AreaStudyDgreePage2 = Template.bind({});
 
 /**
  * @type {AppProps}
@@ -147,5 +155,8 @@ AreaStudyDgreePage2.args = {
     image: {
       url: "https://source.unsplash.com/random/800x400?a=1",
     },
+  },
+  degreeList: {
+    dataSource: "/api/mocks/degree-search",
   },
 };

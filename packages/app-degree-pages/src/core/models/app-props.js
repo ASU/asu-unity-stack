@@ -60,16 +60,22 @@ import { tagHeadings } from "./constants";
 /**
  * @typedef {{
  *    id?: string
- *    label: AppContentProps
+ *    label: string
+ *    ariaLabel?: string
  *    dataKey: string
+ *    dataKeyLink?: string
+ *    className?: string
  *    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
  *    format?: (dataKey: string, value: string) => string
  *    minWidth?: number
+ *    sortable?: boolean
+ *    hasInfo?: boolean
+ *    renderTemplate?: (col: GridColumn, row: Object, rowIndex: number) => JSX.Element
  * }} GridColumn
  *
  * @typedef {{
  *    dataSource: AppDataSource | string
- *    columns: GridColumn[]
+ *    columns?: GridColumn[]
  * }} GridListProps
  */
 

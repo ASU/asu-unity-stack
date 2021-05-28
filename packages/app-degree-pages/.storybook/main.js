@@ -1,6 +1,5 @@
 const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../");
-let devConfig = require("../webpack/webpack.dev");
 
 module.exports = {
   addons: [

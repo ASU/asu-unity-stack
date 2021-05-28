@@ -5,6 +5,8 @@ ASU Web Standards-based implementation of the Degree page component
 ## Dependencies
 
 1. [React](https://reactjs.org/)
+2. [Font Awesome](https://fontawesome.com/)
+- - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
 
 In order to use ASU Web Standards 2.0 you must install the
 ASU Design System Bootstrap 4 theme
