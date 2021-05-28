@@ -330,8 +330,9 @@ ASUFooter.propTypes = {
   contact: PropTypes.shape(Contact.propTypes),
 };
 
-const RenderReact = (component, props, target) =>
+const RenderReact = (component, props, target) => {
   ReactDOM.render(React.createElement(component, props), target);
+};
 
 const initASUFooter = ({ targetSelector, props }) =>
   RenderReact(ASUFooter, props, document.querySelector(targetSelector));
