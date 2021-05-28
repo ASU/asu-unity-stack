@@ -70,7 +70,14 @@ import { tagHeadings } from "./constants";
  *    minWidth?: number
  *    sortable?: boolean
  *    hasInfo?: boolean
- *    renderTemplate?: (col: GridColumn, row: Object, rowIndex: number) => JSX.Element
+ *    renderTemplate?: (
+ *      props: {
+ *                col: GridColumn
+ *                row: Object
+ *                rowIndex: number
+ *                onMouseOver?: (url: string) => void
+ *                onMouseOut?: () => void
+ *             }) => JSX.Element
  * }} GridColumn
  *
  * @typedef {{
