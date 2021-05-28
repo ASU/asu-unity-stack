@@ -8,7 +8,7 @@ export const Donut = () => `
 
       <div class="uds-charts-and-graphs-container">
         <div class="uds-charts-and-graphs-overlay">
-          <h4>50%</h4>
+          <h4 id="percentage-display"></h4>
           <span>Fact goes here</span>
         </div>
         <canvas id="uds-donut"></canvas>

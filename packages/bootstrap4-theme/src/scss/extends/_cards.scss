@@ -8,11 +8,10 @@ Cards - Table of Contents
 5. Foldable Cards
 6. Foldable - Desktop Disable
 7. Accordion
-8. Anchor Menu
-9. Checkbox Stacked Cards
+8. Checkbox Stacked Cards
+9. Checkbox Inline Cards
 10. Checkbox Inline Cards
-11. Checkbox Inline Cards
-12. Generic Header Image Overlay
+11. Generic Header Image Overlay
 -------------------------------------------------------------------*/
 
 .row-spaced {
@@ -87,7 +86,7 @@ Cards - Table of Contents
   position: absolute;
   background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 120%)
     0% 0% no-repeat padding-box;
-  height: $uds-component-card-basic-image-top-height;
+  height: 160px;
   width: 100%;
   top: 0;
   content: '';
@@ -339,7 +338,9 @@ Cards - Table of Contents
 .card-story .card-header {
   padding-top: 24px;
 }
-.card-story > div:first-of-type {
+
+.card-story > div:first-of-type:not(.card-image-content) {
+  padding: 24px 16px 16px 16px;
   flex-grow: 1;
 }
 
@@ -641,171 +642,7 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-8. Anchor Menu
---------------------------------------------------------------------*/
-
-.uds-anchor-menu {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-
-  &-shrink {
-    h4 {
-      margin: 0.75rem 0.5rem !important;
-    }
-
-    .nav-link {
-      padding: $uds-size-spacing-2 0 !important;
-    }
-  }
-
-  h4 {
-    font-size: 1rem;
-    padding: 0 !important;
-    margin: 1.25rem 0.75rem;
-
-    &:hover {
-      transform: none;
-    }
-
-    svg {
-      margin-left: $uds-size-spacing-1;
-      transform: rotate(0deg);
-    }
-
-    svg {
-      margin-left: $uds-size-spacing-1;
-    }
-  }
-
-  div.separator {
-    display: block;
-    background-color: $uds-color-base-gray-3;
-    height: 1px;
-    width: 100%;
-  }
-
-  h4[aria-expanded='true'] {
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-
-  .card-body {
-    padding-top: $uds-size-spacing-3;
-  }
-
-  nav {
-    flex-direction: column;
-  }
-
-  .nav-link {
-    color: $uds-color-base-gray-7;
-    padding: $uds-size-spacing-3 0;
-    border-bottom: 1px solid $uds-color-base-gray-3;
-    text-align: start;
-    font-weight: 700;
-
-    &:visited {
-      color: $uds-color-base-gray-7;
-    }
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
-    &:last-of-type {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    svg {
-      margin-right: $uds-size-spacing-1;
-    }
-  }
-}
-
-@mixin uds-anchor-menu-expanded {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid $uds-color-base-gray-3;
-
-  h4 {
-    font-size: 1.25rem;
-
-    svg {
-      display: none;
-    }
-  }
-
-  nav {
-    flex-direction: row;
-  }
-
-  .nav-link {
-    border-bottom: 0;
-    margin: 0 0.5rem 0.5rem 0.5rem;
-    padding: $uds-size-spacing-3 $uds-size-spacing-1;
-
-    &:hover,
-    &.active {
-      margin-bottom: 0;
-      border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
-    }
-  }
-
-  .card {
-    border: 0;
-    padding: 0;
-  }
-
-  .separator {
-    display: none;
-  }
-
-  .collapse {
-    display: block;
-    height: auto !important;
-    visibility: visible;
-
-    &:not(.show) {
-      display: block;
-    }
-  }
-
-  .collapsing {
-    position: relative;
-    height: unset !important;
-    overflow: hidden;
-  }
-}
-
-@include media-breakpoint-up(sm) {
-  .uds-anchor-menu.uds-anchor-menu-expanded-sm {
-    @include uds-anchor-menu-expanded;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  .uds-anchor-menu.uds-anchor-menu-expanded-md {
-    @include uds-anchor-menu-expanded;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .uds-anchor-menu.uds-anchor-menu-expanded-lg {
-    @include uds-anchor-menu-expanded;
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  .uds-anchor-menu.uds-anchor-menu-expanded-xl {
-    @include uds-anchor-menu-expanded;
-  }
-}
-
-/*------------------------------------------------------------------
-9. Checkbox Stacked Cards
+8. Checkbox Stacked Cards
 --------------------------------------------------------------------*/
 
 .card-checkbox-stacked .card-header {
@@ -817,7 +654,7 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-10. Checkbox Inline Cards
+9. Checkbox Inline Cards
 --------------------------------------------------------------------*/
 
 .card-checkbox-inline .card-header {
@@ -829,7 +666,7 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-11. Checkbox Inline Cards
+10. Checkbox Inline Cards
 --------------------------------------------------------------------*/
 .media-type-overlay {
   background-color: white;
@@ -843,7 +680,7 @@ Cards - Table of Contents
 }
 
 /*------------------------------------------------------------------
-12. Generic Header Image Overlay
+11. Generic Header Image Overlay
 --------------------------------------------------------------------*/
 .card-image-overlay-content {
   position: absolute;

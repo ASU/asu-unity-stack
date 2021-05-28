@@ -26,16 +26,6 @@ import { titleStyles } from "../Title/styles";
 const Header = ({ children, breakpoint, ...props }) => {
   return (
     <>
-      <div id="asu-report-accessiblity">
-        <a
-          href="https://www.asu.edu/accessibility/"
-          class={css`
-            ${srOnly}
-          `}
-        >
-          Report an accessibility problem
-        </a>
-      </div>
       <header
         {...props}
         class={cx(
