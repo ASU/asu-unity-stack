@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from "react";
+
 import { Testimonial } from ".";
 
 export default {
@@ -28,7 +29,7 @@ const itemQuoteColorCombinations = {
   None: null,
 };
 
-// eslint-disable-next-line react/prop-types
+// eslint-disable-next-line react/prop-types, react/jsx-props-no-spreading
 const Template = args => <Testimonial {...args} />;
 
 export const Default = Template.bind({});

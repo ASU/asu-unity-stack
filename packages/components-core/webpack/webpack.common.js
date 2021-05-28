@@ -100,8 +100,10 @@ module.exports = {
       Vendor: path.resolve(PROJECT_DIR, "vendor/"),
     },
   },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
-  },
+  // Comment the following block out to include React bundled with the component
+  // Uncomment it to exclude react from being bundled with the component
+  // externals: {
+  //   "react": "React",
+  //   "react-dom": "ReactDOM",
+  // },
 };
