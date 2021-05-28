@@ -2,8 +2,6 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import "./pagination.css";
-
 import { PageItem } from "./PageItem";
 
 export const Pagination = ({
