@@ -37,67 +37,39 @@ function initializeFixedTable() {
       'tr > *:first-child'
     );
     for (let i = 0; i < showScrollWhenHoverTheseElements.length; i++) {
-      showScrollWhenHoverTheseElements[i].addEventListener(
-        'mouseenter',
-        function () {
-          previous.classList.add('show');
-          next.classList.add('show');
-        }
-      );
+      ['mouseenter', 'focus', 'hover'].forEach((event) => {
+        showScrollWhenHoverTheseElements[i].addEventListener(
+          event,
+          function () {
+            previous.classList.add('show');
+            next.classList.add('show');
+          }
+        );
+      });
     }
 
     // If the user leaves the scrollable area, hide the scroll
     for (let i = 0; i < hideScrollWhenHoverTheseElements.length; i++) {
-      hideScrollWhenHoverTheseElements[i].addEventListener(
-        'mouseenter',
-        function () {
-          previous.classList.remove('show');
-          next.classList.remove('show');
-        }
-      );
+      ['mouseenter', 'focus', 'hover'].forEach((event) => {
+        hideScrollWhenHoverTheseElements[i].addEventListener(
+          event,
+          function () {
+            previous.classList.remove('show');
+            next.classList.remove('show');
+          }
+        );
+      });
     }
 
-    previous.addEventListener('click', function () {
-      // Scroll can't go beyond it's bounds, so don't need to do checks here (once it hits zero, it won't go lower)
-      container.scrollLeft -= 100;
+    ['click', 'focus'].forEach((event) => {
+      previous.addEventListener(event, function () {
+        // Scroll can't go beyond it's bounds, so don't need to do checks here (once it hits zero, it won't go lower)
+        container.scrollLeft -= 100;
+      });
+
+      next.addEventListener(event, function () {
+        container.scrollLeft += 100;
+      });
     });
-
-    next.addEventListener('click', function () {
-      container.scrollLeft += 100;
-    });
-
-    // Originally thought scroll should show all the time, but only when not scrolled all the way to one direction
-    // ie. if not scrolled all the way to left, show previous button
-    // Will leave this code in case it is relevant later
-
-    // container.onscroll = function () {
-    //   if (container.scrollLeft === 0) {
-    //     previous.classList.remove('show');
-    //   } else {
-    //     previous.classList.add('show');
-    //     /**
-    //      * The first column is sticky and therefore offsets the actual scroll postion.
-    //      * To get the actual scroll position, we need to take what the browser thinks is the scrollLeft,
-    //      * add the fixed sticky column width (315px) to compensate, and then add the width of the scrollable
-    //      * part of the container
-    //      * container.offsetWidth - 315 is like saying
-    //      * "take the whole container and subtract the width of the sticky column to give me the width of the scrollable portion"
-    //      */
-    //     const actualScrollLeft =
-    //       container.scrollLeft + 315 + (container.offsetWidth - 315);
-
-    //     if (actualScrollLeft === container.scrollWidth) {
-    //       next.classList.remove('show');
-    //     } else {
-    //       next.classList.add('show');
-    //     }
-    //   }
-    // };
-
-    // // Also check on DOM loaded to determine if the next button should be displayed initially
-    // const actualScrollLeft =
-    //   container.scrollLeft + 315 + (container.offsetWidth - 315);
-
-    // if (actualScrollLeft !== container.scrollWidth) next.classList.add('show');
   });
 }

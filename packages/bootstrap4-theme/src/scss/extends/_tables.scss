@@ -1,5 +1,6 @@
 .uds-table {
   border: 1px solid $uds-color-base-gray-2;
+  overflow-x: scroll;
 
   & > table {
     width: 100%;
@@ -47,7 +48,8 @@
           }
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
           th,
           td {
             background-color: $uds-color-base-gray-2;
@@ -74,7 +76,7 @@
 }
 
 .uds-table-fixed {
-  overflow: hidden;
+  overflow-x: scroll;
   border: 1px solid $uds-color-base-gray-2;
 
   &-wrapper {
@@ -128,12 +130,6 @@
       width: 315px;
       min-width: 315px;
       max-width: 315px;
-
-      @media screen and (max-width: $uds-breakpoint-sm) {
-        width: 128px;
-        min-width: 128px;
-        max-width: 128px;
-      }
     }
 
     tr > *:nth-child(n + 2),
@@ -148,24 +144,42 @@
 
 @media screen and (max-width: $uds-breakpoint-md) {
   .uds-table {
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .uds-table-fixed {
     overflow-x: scroll;
     &-wrapper {
-      overflow: hidden;
+      overflow-x: hidden;
       .scroll-control {
         pointer-events: none;
         display: block;
 
-        &.previous {
-          left: 128px;
-        }
-
         &.previous button,
         &.next button {
           visibility: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .uds-table {
+    & > table {
+      tr > *:first-child {
+        width: 128px;
+        min-width: 128px;
+        max-width: 128px;
+      }
+    }
+  }
+
+  .uds-table-fixed {
+    &-wrapper {
+      .scroll-control {
+        &.previous {
+          left: 128px;
         }
       }
     }
