@@ -131,20 +131,19 @@ class RfiStepper extends React.Component {
                     {React.createElement(formComponent, this.props)}
                   </Form>
                 );
-              } else {
-                return (
-                  <Form className="uds-form uds-rfi">
-                    {React.createElement(formComponent, this.props)}
-
-                    <RfiStepperButtons
-                      stepNum={step}
-                      lastStep={lastStep}
-                      handleBack={this.prev}
-                      submitting={formik.isSubmitting}
-                    />
-                  </Form>
-                );
               }
+              return (
+                <Form className="uds-form uds-rfi">
+                  {React.createElement(formComponent, this.props)}
+
+                  <RfiStepperButtons
+                    stepNum={step}
+                    lastStep={lastStep}
+                    handleBack={this.prev}
+                    submitting={formik.isSubmitting}
+                  />
+                </Form>
+              );
             }}
           </Formik>
         </div>
@@ -173,7 +172,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
           <Button
             type="submit"
             className="rfi-button btn btn-gold"
-            disabled={submitting ? true : false}
+            disabled={!!submitting}
           >
             Consent/submit
           </Button>
@@ -186,6 +185,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
 RfiStepper.propTypes = {
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rfiConfig: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
