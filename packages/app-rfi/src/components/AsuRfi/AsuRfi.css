@@ -16,6 +16,11 @@ form.uds-form.uds-rfi .invalid-feedback {
   display: inline-block;
 }
 
+/* Phone field width correction */
+form.uds-form.uds-rfi .rfi-phone-form-group input {
+  width: 100%;
+}
+
 /* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
    have a solid example of how this should work anyway. Full width wouldn't
    be right. */

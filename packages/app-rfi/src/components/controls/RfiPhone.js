@@ -17,7 +17,7 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
       {({ field, form: { touched, errors, setFieldValue }, meta }) => {
         const isError = meta.touched && meta.error;
         return (
-          <div className="form-group">
+          <div className="form-group rfi-phone-form-group">
             <RfiLabel
               label={label}
               name={name}
