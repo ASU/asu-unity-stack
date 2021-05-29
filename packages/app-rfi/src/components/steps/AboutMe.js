@@ -6,6 +6,7 @@ import {
   RfiTextInput,
   RfiEmailInput,
   RfiSelect,
+  RfiPhone,
   // RfiCheckboxSingle,
 } from "../controls";
 
@@ -77,7 +78,7 @@ const AboutMe = () => {
         requiredIcon
         helperText="Last name"
       />
-      <RfiTextInput label="Phone" id="Phone" name="Phone" requiredIcon />
+      <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon />
       {/* <RfiCheckboxSingle id="mobile" name="mobile" value="1">
         This is a USA mobile number and I would like to receive information via
         SMS text messaging
