@@ -9,11 +9,11 @@ function createMarkup(output) {
 
 // Component
 
-const Success = ({ rfiConfig }) => {
+const Success = ({ SuccessMsg }) => {
   return (
     <>
       <h3>Success</h3>
-      <div dangerouslySetInnerHTML={createMarkup(rfiConfig.SuccessMsg)} />
+      <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
     </>
   );
 };
@@ -29,21 +29,11 @@ const successForm = {
 
 // Props
 Success.defaultProps = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  SuccessMsg: "Success.",
 };
 
 Success.propTypes = {
-  rfiConfig: PropTypes.instanceOf(Object),
+  SuccessMsg: PropTypes.instanceOf(String),
 };
 
 export { successForm };

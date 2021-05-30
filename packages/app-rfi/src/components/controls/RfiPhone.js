@@ -1,7 +1,7 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -12,6 +12,9 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 // Component
 
 const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
+  // Surface values from Formik context
+  const { values } = useFormikContext();
+
   return (
     <Field name={name}>
       {({ field, form: { touched, errors, setFieldValue }, meta }) => {
@@ -29,7 +32,7 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
               {...field}
               className="form-control"
               placeholder={helperText}
-              country="us"
+              country={values.Country ? values.Country.toLowerCase() : "us"}
               preferredCountries={["us"]}
               onChange={(phone, country, e, formattedValue) => {
                 // Set value so Formik gets it.

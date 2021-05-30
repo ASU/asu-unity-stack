@@ -110,7 +110,7 @@ const studentTypeOptions = [
 
 // Component
 
-const ProgramInterest = ({ rfiConfig }) => {
+const ProgramInterest = () => {
   const [degreeData, setDegreeData] = useState([]);
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     { key: "0", value: "", text: "-- Select --" },
@@ -128,9 +128,6 @@ const ProgramInterest = ({ rfiConfig }) => {
       text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
-
-  // TODO remove debug / error avoid, once used.
-  console.log(rfiConfig, "props in ProgramInterest");
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -298,25 +295,6 @@ const programInterestForm = {
   },
 };
 
-// Props
-ProgramInterest.defaultProps = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
-};
-
-ProgramInterest.propTypes = {
-  rfiConfig: PropTypes.instanceOf(Object),
-};
-
 export { programInterestForm };
 
 /*
@@ -325,30 +303,4 @@ FIELDS
 - CareerAndStudentType // TODO A TWOFER - selection will be used to derive values for payload
 - Interest1 - area of interest // TODO based on campus: for Online pull from ASUO API, else pull from Degree Search API // TODO admin can hide via prop
 - Interest2 - program of interest // TODO same logic as above + auto populate on a degree detail page (via prop) // TODO optional for ground ugrad, required for grad
-
-From legacy module - a trail for what to update from
-  // Load degree settings
-  //// If AJAX, uses existing form_state campus value
-  $degree_assets = array(
-    'academic_plan' => '',
-    'academic_program' => '',
-    'degree_awarded' => '',
-    'degree_program' => '',
-    'diploma_description' => '',
-    'campus' => array(),
-    'deg_code' => '',
-    'deg_name' => '',
-    'college_code' => '',
-    'college_name' => '',
-    'form_type' => '',
-    'grad_dates' => '',
-    'start_dates' => array(),
-  );
-
-  Note on campus options:
-  Not sure we're going to need these in the MVP...
-  Campus codes as defined by http://www.public.asu.edu/~lcabre/javadocs/dsws/
-	There is no actual endpoint to get these: array( 'TEMPE', 'POLY', 'DTPHX', 'WEST', 'ONLNE' );
-
-
 */

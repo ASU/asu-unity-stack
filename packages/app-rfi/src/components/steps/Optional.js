@@ -163,9 +163,9 @@ const Optional = () => {
 
   // States and Provinces
   useEffect(() => {
-    // Fetch country options.
+    // Fetch state options.
     fetchCountries(getStateOptions, values).then(data => {
-      // Set state on countryOptions.
+      // Set state on stateOptions.
       setStates(data);
     });
     if (!(values.Country === "US" || values.Country === "CA")) {
@@ -247,7 +247,6 @@ const optionalForm = {
 
   initialValues: {
     CitizenshipCountry: undefined,
-    // notCitizen: undefined,
     Street1: undefined,
     City: undefined,
     State: undefined,
@@ -262,24 +261,10 @@ const optionalForm = {
 export { optionalForm };
 
 /*
-FIELDS
-- CitizenshipCountry
-- Street1 (address)
-- City
-- Country // TODO default to country identified by phone number
-- State
-- Zip - // TODO default to ZipCode from first page
-- BirthDate
-- MilitaryStatus
-- Comments
-- [markup] Consent wording
-
 HIDDEN FIELDS
 - Test - 1 or nothing
 - Source
 - URL
 - ga_clientid
-
-- ??? hash/client id
-
+- datetime
 */

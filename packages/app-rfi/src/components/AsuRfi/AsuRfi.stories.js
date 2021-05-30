@@ -31,152 +31,160 @@ const Template = args => {
 
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
-  rfiConfig: {
-    Campus: undefined, // ONLNE, GROUND, NOPREF
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined, // Graduate, Undergrad
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined, // Only US States
-    SuccessMsg: undefined,
-    Test: undefined,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces - use full name.
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: "CHI",
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: "CHI",
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
 RfiOnCollegePageWithAreaOfInterest.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: "CES",
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: "STEM",
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: "CES",
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: "STEM",
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 export const RfiOnDegreePage = Template.bind({});
 RfiOnDegreePage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: "TEESTEMBAE",
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: "TEESTEMBAE",
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 export const RfiOnCollegeDepartmentPage = Template.bind({});
 RfiOnCollegeDepartmentPage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: "CES",
-    Department: "CINFOTECH",
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: "CES",
+  Department: "CINFOTECH",
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 export const RfiOnNonAcademicUnitPage = Template.bind({});
 RfiOnNonAcademicUnitPage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: "Health and Wellness",
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: "Health and Wellness",
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: true, // TODO implement handling
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
-// TODO Decide how we're handling these to start with...
-// Do we need a cert prop?
 export const RfiOnCertOrMinorPage = Template.bind({});
 RfiOnCertOrMinorPage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: true, // TODO implement handling
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: `<div>Request information on this program by sending an email to <a href="mailto:notreal@example.com">notreal@example.com</a></div>`,
+  Test: false,
 };
 
 export const RfiOnCampaignLandingPage = Template.bind({});
 RfiOnCampaignLandingPage.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: "Graduate",
-    AreaOfInterest: undefined,
-    ProgramOfInterest: "BAGLSMS",
-    State: "CA",
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: "Graduate",
+  AreaOfInterest: undefined,
+  ProgramOfInterest: "BAGLSMS",
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: "US",
+  StateProvince: "New Mexico", // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
-export const RfiTesterA = Template.bind({});
-RfiTesterA.args = {
-  rfiConfig: {
-    Campus: "ONLNE",
-    College: undefined,
-    Department: undefined,
-    StudentType: "Graduate",
-    AreaOfInterest: "BAGLSMS",
-    ProgramOfInterest: "BAGLSMS",
-    State: "CA",
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+export const RfiTestMode = Template.bind({});
+RfiTestMode.args = {
+  Campus: "ONLNE", // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: "Graduate",
+  AreaOfInterest: "BAGLSMS",
+  ProgramOfInterest: "BAGLSMS",
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: "US",
+  StateProvince: "California", // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
-export const RfiTesterB = Template.bind({});
-RfiTesterB.args = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: "Undergrad",
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success. <strong>You made it.</strong>",
-    Test: 0,
-  },
+export const RfiDevTester = Template.bind({});
+RfiDevTester.args = {
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: "Undergrad",
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: "DZ",
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success. <strong>You made it.</strong>",
+  Test: false,
 };

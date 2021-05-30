@@ -10,7 +10,20 @@ import { programInterestForm } from "../steps/ProgramInterest";
 import { successForm } from "../steps/Success";
 import { RfiStepper } from "./RfiStepper";
 
-const RfiMainForm = ({ rfiConfig }) => {
+const RfiMainForm = ({
+  Campus,
+  College,
+  Department,
+  StudentType,
+  AreaOfInterest,
+  ProgramOfInterest,
+  ProgramOfInterestOptional,
+  IsCertMinor,
+  Country,
+  StateProvince,
+  SuccessMsg,
+  Test,
+}) => {
   return (
     <div className="container">
       <div className="row">
@@ -25,7 +38,18 @@ const RfiMainForm = ({ rfiConfig }) => {
             </div>
             <div className="uds-image-text-block-text-container">
               <RfiStepper
-                rfiConfig={rfiConfig}
+                Campus={Campus}
+                College={College}
+                Department={Department}
+                StudentType={StudentType}
+                AreaOfInterest={AreaOfInterest}
+                ProgramOfInterest={ProgramOfInterest}
+                ProgramOfInterestOptional={ProgramOfInterestOptional}
+                IsCertMinor={IsCertMinor}
+                Country={Country}
+                StateProvince={StateProvince}
+                SuccessMsg={SuccessMsg}
+                Test={Test}
                 validationSchemas={[
                   programInterestForm.validationSchema,
                   aboutMeForm.validationSchema,
@@ -83,21 +107,33 @@ const RfiMainForm = ({ rfiConfig }) => {
 
 // Props
 RfiMainForm.defaultProps = {
-  rfiConfig: {
-    Campus: undefined,
-    College: undefined,
-    Department: undefined,
-    StudentType: undefined,
-    AreaOfInterest: undefined,
-    ProgramOfInterest: undefined,
-    State: undefined,
-    SuccessMsg: "Success.",
-    Test: 0,
-  },
+  Campus: undefined,
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined,
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined,
+  SuccessMsg: "Success.",
+  Test: false,
 };
 
 RfiMainForm.propTypes = {
-  rfiConfig: PropTypes.instanceOf(Object),
+  Campus: PropTypes.string,
+  College: PropTypes.string,
+  Department: PropTypes.string,
+  StudentType: PropTypes.string,
+  AreaOfInterest: PropTypes.string,
+  ProgramOfInterest: PropTypes.string,
+  ProgramOfInterestOptional: PropTypes.bool,
+  IsCertMinor: PropTypes.bool,
+  Country: PropTypes.string,
+  StateProvince: PropTypes.string,
+  SuccessMsg: PropTypes.string,
+  Test: PropTypes.bool,
 };
 
 export { RfiMainForm };

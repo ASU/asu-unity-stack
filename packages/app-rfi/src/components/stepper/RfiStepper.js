@@ -48,8 +48,19 @@ class RfiStepper extends React.Component {
       validationSchemas,
       initialValues,
       formComponents,
-      rfiConfig,
       handleSubmit,
+      Campus,
+      College,
+      Department,
+      StudentType,
+      AreaOfInterest,
+      ProgramOfInterest,
+      ProgramOfInterestOptional,
+      IsCertMinor,
+      Country,
+      StateProvince,
+      SuccessMsg,
+      Test,
     } = this.props;
     const schema = validationSchemas[step];
     console.log(initialValues, `initialValues at ${step}`);
@@ -69,16 +80,17 @@ class RfiStepper extends React.Component {
     console.log(initialValues, "initialValues");
     console.log(initValues, "initValues");
 
-    // Intercede with initial values from props via rfiConfig.
-    initValues.Campus = rfiConfig.Campus;
-    if (rfiConfig.StudentType === "Graduate") {
+    // Intercede with initial values from props.
+    initValues.Campus = Campus;
+    if (StudentType === "Graduate") {
       initValues.CareerAndStudentType = "Readmission";
-    } else if (rfiConfig.StudentType === "Undergrad") {
+    } else if (StudentType === "Undergrad") {
       initValues.CareerAndStudentType = "First Time Freshman";
     }
-    initValues.Interest1 = rfiConfig.AreaOfInterest;
-    initValues.Interest2 = rfiConfig.ProgramOfInterest;
-    initValues.State = rfiConfig.State;
+    initValues.Interest1 = AreaOfInterest;
+    initValues.Interest2 = ProgramOfInterest;
+    initValues.Country = Country;
+    initValues.State = StateProvince;
     // Avoid Uncontrolled to controlled switch warning:
     // https://github.com/formium/formik/issues/28
     initValues.Email = "";
@@ -185,9 +197,20 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
 RfiStepper.propTypes = {
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
-  rfiConfig: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  Campus: PropTypes.string,
+  College: PropTypes.string,
+  Department: PropTypes.string,
+  StudentType: PropTypes.string,
+  AreaOfInterest: PropTypes.string,
+  ProgramOfInterest: PropTypes.string,
+  ProgramOfInterestOptional: PropTypes.bool,
+  IsCertMinor: PropTypes.bool,
+  Country: PropTypes.string,
+  StateProvince: PropTypes.string,
+  SuccessMsg: PropTypes.string,
+  Test: PropTypes.bool,
 };
 
 RfiStepperButtons.propTypes = {
