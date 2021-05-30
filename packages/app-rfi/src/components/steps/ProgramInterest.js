@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 // @ts-check
 import { useFormikContext } from "formik";
-import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
