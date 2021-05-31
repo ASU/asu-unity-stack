@@ -21,6 +21,17 @@ form.uds-form.uds-rfi .rfi-phone-form-group input {
   width: 100%;
 }
 
+/* Required icon footer */
+form.uds-form.uds-rfi .rfi-required-footnote {
+  font-size: 0.75rem;
+}
+form.uds-form.uds-rfi .rfi-required-footnote svg {
+  font-size: 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.125rem;
+  color: #b72a2a;
+}
+
 /* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
    have a solid example of how this should work anyway. Full width wouldn't
    be right. */

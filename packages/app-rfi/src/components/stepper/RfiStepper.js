@@ -1,5 +1,9 @@
 // @ts-check
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
@@ -103,8 +107,8 @@ class RfiStepper extends React.Component {
     // SuccessMsg.
     if (IsCertMinor) {
       return (
-        <div className="uds-rfi-form-wrapper">
-          <h2>Request Information</h2>
+        <div className="uds-rfi-form-wrapper rfi-cert-minor">
+          <h2>Request information</h2>
           <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
         </div>
       );
@@ -169,6 +173,13 @@ class RfiStepper extends React.Component {
                 <Form className="uds-form uds-rfi">
                   {React.createElement(formComponent, this.props)}
 
+                  <div className="rfi-required-footnote" title="Required">
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className="uds-field-required"
+                    />{" "}
+                    Required
+                  </div>
                   <RfiStepperButtons
                     stepNum={step}
                     lastStep={lastStep}
