@@ -170,7 +170,7 @@ RfiTestMode.args = {
   Country: "US",
   StateProvince: "California", // Only US states or CA provinces
   SuccessMsg: "Success.",
-  Test: false,
+  Test: true,
 };
 
 export const RfiDevTester = Template.bind({});

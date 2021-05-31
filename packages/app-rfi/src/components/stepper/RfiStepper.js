@@ -7,6 +7,10 @@ import React from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
+function createMarkup(output) {
+  return { __html: output };
+}
+
 class RfiStepper extends React.Component {
   constructor(props) {
     super(props);
@@ -95,6 +99,17 @@ class RfiStepper extends React.Component {
     // https://github.com/formium/formik/issues/28
     initValues.Email = "";
 
+    // If configured as a Cert or Minor, skip the form and only display
+    // SuccessMsg.
+    if (IsCertMinor) {
+      return (
+        <div className="uds-rfi-form-wrapper">
+          <h2>Request Information</h2>
+          <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
+        </div>
+      );
+    }
+
     const formComponent = formComponents[step];
     const lastStep = formComponents.length - 1;
     return (
@@ -105,7 +120,13 @@ class RfiStepper extends React.Component {
           {step !== lastStep ? (
             <div>{`Step ${step + 1} of ${totalSteps}`}</div>
           ) : undefined}
-          <h2>Request information</h2>
+          {!Test ? (
+            <h2>Request information</h2>
+          ) : (
+            <h2>
+              <span className="highlight-gold">RFI IN TEST MODE</span>
+            </h2>
+          )}
           <Formik
             initialValues={initValues}
             validationSchema={Yup.object().shape(schema)}
