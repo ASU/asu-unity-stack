@@ -2,7 +2,12 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
-import { IntroContent, DegreeList } from "../../core/components";
+import {
+  IntroContent,
+  DegreeList,
+  Filters,
+  SearchBar,
+} from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { urlResolver } from "../../core/utils/data-path-resolver";
@@ -39,7 +44,8 @@ const DegreePage = ({ introContent, degreeList }) => {
           image={introContent.image}
           photoGrid={introContent.photoGrid}
         />
-
+        <SearchBar />
+        <Filters />
         {isError && <div>Something went wrong ...</div>}
         {isLoading ? (
           <div>Loading ...</div>
