@@ -74,10 +74,11 @@ import { tagHeadings } from "./constants";
  *      props: {
  *                col: GridColumn
  *                row: Object
- *                rowIndex: number
+ *                rowIndex?: number
+ *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void
  *                onMouseOut?: () => void
- *             }) => JSX.Element
+ *             }) => any
  * }} GridColumn
  *
  * @typedef {{

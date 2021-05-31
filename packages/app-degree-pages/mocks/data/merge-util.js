@@ -11,11 +11,15 @@ const OUTPUT_FILE = `${INPUT_FILE_2}.new.json`;
 const inpuntJson = JSON.parse(fs.readFileSync(INPUT_FILE));
 const data = JSON.parse(fs.readFileSync(INPUT_FILE_2));
 
-const key = "AcadPlan";
+const keys = ["asuAcadpMrfText"];
 
 const programs = data.programs.map((p, index) => {
-  const newAttrValue = inpuntJson.programs[index][key];
-  return { ...p, [key]: newAttrValue };
+  const inputValaues = {};
+  keys.forEach(key => {
+    const newAttrValue = inpuntJson.programs[index][key];
+    inputValaues[key] = newAttrValue;
+  });
+  return { ...p, ...inputValaues };
 });
 
 const newData = {

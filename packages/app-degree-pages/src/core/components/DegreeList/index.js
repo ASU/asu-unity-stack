@@ -1,13 +1,15 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
-// import { dataPathResolver } from "../../utils/data-path-resolver";
-import { idGenerator } from "../../utils/id-generator";
-import { toTitleCase } from "../../utils/string-utils";
-import { InfoButton, FavButton, ApplyNow, RequestInfo } from "./components";
+import {
+  majorInfoLink,
+  mapTooltipLink,
+  saveFav,
+} from "../../services/degree-http-service";
+import { idGenerator, toTitleCase } from "../../utils";
+import { ChevronIconButton, InfoIcon, FavButton } from "../icons";
+import { ApplyNow, RequestInfo } from "./components";
 import { BoxPreview, Table } from "./index.style";
 
 /** @typedef {import("../../models/app-props").GridColumn}  GridColumn */
@@ -17,60 +19,71 @@ import { BoxPreview, Table } from "./index.style";
  * }} GridListingProps
  */
 
-function majorInfoLink(AcadPlan) {
-  return `https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/${AcadPlan}/undergrad/false`;
-}
+const renderInfo = row => (
+  <div>
+    <header>
+      <strong>Program Description:</strong>
+    </header>
+    <p>{row["DescrlongExtns"]}</p>
+    <div className="show-more-text link">[ ... more ]</div>
+  </div>
+);
 
-function mapTooltipLink(location) {
-  return `https://webapp4.asu.edu/programs/tooltipcampus?campus=${location}&amp;program=undergrad`;
-}
+const renderExtraInfo = row => {
+  const mathintensity = {
+    G: "General",
+    M: "Moderate",
+    S: "Substantial",
+  };
+  return (
+    <div>
+      <div>
+        <strong>Additional Program Fee: </strong>
+        {row["AsuProgramFee"] === "Y" && "Yes"}
+      </div>
+      <div>
+        <strong>Second Language Requirement: </strong>
+        {row["AsuLangReqFlag"] === "Y" ? row["asuAcadpLrfText"] || "Yes" : "No"}
+      </div>
 
-function saveFav(AcadPlan) {
-  const url = `https://webapp4.asu.edu/programs/save?acadPlan=ASU00,${AcadPlan}&program=undergrad&cert=false`;
-  fetch(url).then();
-}
+      <div>
+        <strong>First Required Math Course:</strong>
+        {row["asuMathReqFlag"] === "Y" && (
+          <div>
+            <strong>First Required Math Course:</strong>
+            <span>{row["additionalMathReqCourse"]}</span>
+            {row["asuAcadpMrfText"] && <span>{row["asuAcadpMrfText"]}</span>}
+          </div>
+        )}
+      </div>
 
-// https://asudev.jira.com/wiki/spaces/eadvisor/pages/887324850/Apply%2BNow%2BButton%2Band%2BModal%2BDisplay%2BLogic
-function applyNow() {
-  // todo
-}
+      <div>
+        <strong>Math Intensity:</strong>
+        {mathintensity[row["MathIntensity"]]}
+      </div>
+    </div>
+  );
+};
 
-/**
- *
-Descr100
-Degree
-CollegeUrlJoioint
-CollegeUrl
-CampusWueInfo:
-AcadPlan // major info
-CampusStringArray
-managedOnlineCampus
-concurrentDegreeMajorMaps
-onlineMajorMapURL
-AsuCritTrackUrl
-DescrlongExtns
-AsuProgramFee
-AsuLangReqFlag
-additionalMathReqCourse
-MinMathReq
-MathIntensity
-asuAcadpMrfText
-
- */
-
+/* eslint-disable react/prop-types */
 /** @type {GridColumn []} */
-const defaultColumns = [
+const columns = [
   {
     dataKey: "Descr100",
-    dataKeyLink: "AcadPlan",
     label: "Major",
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
-    renderTemplate: ({ col, row }) => (
-      <a href={majorInfoLink(row[col.dataKeyLink])} target="blank">
-        {row[col.dataKey]}
-      </a>
+    renderTemplate: ({ col, row, rowIndex, onClick }) => (
+      <div className="cell-container">
+        <a
+          href={majorInfoLink(row["Institution"], row["AcadPlan"])}
+          target="blank"
+        >
+          {row[col.dataKey]} {}
+        </a>
+        <ChevronIconButton onClick={selected => onClick(rowIndex, selected)} />
+      </div>
     ),
   },
   {
@@ -81,7 +94,11 @@ const defaultColumns = [
     renderTemplate: ({ col, row }) => (
       <div className="cell-container">
         <span>{row[col.dataKey]}</span>
-        <InfoButton />
+        <InfoIcon
+          onClick={() =>
+            alert(`${row["DegreeDescr"]}\n\n${row["DegreeDescrlong"]}`)
+          }
+        />
       </div>
     ),
   },
@@ -91,11 +108,20 @@ const defaultColumns = [
     label: "Required Courses",
     ariaLabel: "Required Courses",
     className: "required-course",
-    renderTemplate: ({ col, row }) => (
-      <a href={row[col.dataKeyLink]} target="blank">
-        Major Map
-      </a>
-    ),
+    renderTemplate: ({ row }) => {
+      const isOnline = row["managedOnlineCampus"];
+      const directUrl = isOnline
+        ? row["onlineMajorMapURL"]
+        : row["AsuCritTrackUrl"];
+
+      const directMapLink = (
+        <a href={directUrl} target="blank">
+          Major Map
+        </a>
+      );
+
+      return directMapLink;
+    },
   },
   {
     dataKey: "CampusStringArray",
@@ -110,13 +136,13 @@ const defaultColumns = [
             key={location}
             href={mapTooltipLink(location)}
             target="blank"
-            onMouseOver={() => onMouseOver(mapTooltipLink(location))}
-            onFocus={() => null}
-            onMouseOut={() => onMouseOut()}
-            onBlur={() => null}
+            // onMouseOver={() => onMouseOver(mapTooltipLink(location))}
+            // onFocus={() => null}
+            // onMouseOut={() => onMouseOut()}
+            // onBlur={() => null}
           >{`${toTitleCase(location)}, `}</a>
         ))}
-        <InfoButton />
+        <InfoIcon />
       </div>
     ),
   },
@@ -129,7 +155,7 @@ const defaultColumns = [
     renderTemplate: () => (
       <div className="cell-container">
         <a href="/">4+1 years</a>
-        <InfoButton />
+        <InfoIcon />
       </div>
     ),
   },
@@ -185,27 +211,42 @@ const defaultColumns = [
     ),
   },
 ];
+/* eslint-enable react/prop-types */
 
 const genRowId = idGenerator(`row-`);
+
 /**
  *
  * @param {GridListingProps} props
  * @returns {JSX.Element}
  */
 const DegreeList = ({ programms }) => {
-  /** @type {GridColumn []} */
-  const columns = defaultColumns;
-  const [preview, setPreview] = useState({
-    isOpen: false,
-    url: "",
-    posTop: 0,
-    posLeft: 0,
-  });
+  // const [preview, setPreview] = useState({
+  //   isOpen: false,
+  //   url: "",
+  //   posTop: 0,
+  //   posLeft: 0,
+  // });
+  // /** @type {GridColumn []} */
+
+  /** @type {{current: HTMLTableSectionElement}} */
+  const valueRef = React.useRef(null);
+
+  const setOpenRowIndex = (rowIndex, selected) => {
+    const rows = valueRef.current.children;
+    Array.prototype.forEach.call(
+      rows,
+      (r, i) => i !== rowIndex && r.setAttribute("data-is-open", "false")
+    );
+
+    const currentRow = valueRef.current.children[rowIndex];
+    currentRow.setAttribute("data-is-open", String(selected));
+  };
 
   return (
     <section className="container">
       <BoxPreview className="box-preview">
-        <iframe
+        {/* <iframe
           src={preview.url}
           width="500px"
           height="500px"
@@ -216,7 +257,7 @@ const DegreeList = ({ programms }) => {
             top: preview.posTop,
             left: preview.posLeft,
           }}
-        />
+        /> */}
       </BoxPreview>
 
       <Table>
@@ -235,38 +276,38 @@ const DegreeList = ({ programms }) => {
             ))}
           </tr>
         </thead>
-        <tbody>
-          {programms.slice(0, 10).map((row, rowIndex) => {
-            const rowId = genRowId.next().value;
+        <tbody ref={valueRef}>
+          {
+            // programms
+            programms.slice(0, 10).map((row, rowCurrentIndex) => {
+              const rowId = genRowId.next().value;
+              const rowIndex = rowCurrentIndex * 2;
+              return (
+                <>
+                  <tr key={rowId} role="row">
+                    {columns.map(col => (
+                      <td
+                        key={`${rowId}-${col.dataKey}`}
+                        className={`${col.className}`}
+                      >
+                        {col.renderTemplate?.({
+                          col,
+                          row,
+                          rowIndex,
+                          onClick: setOpenRowIndex,
+                        })}
+                      </td>
+                    ))}
+                  </tr>
 
-            return (
-              <tr key={rowId} id="refine-N-13-0 -0-false-BMUS" role="row">
-                {columns.map(col => (
-                  <td
-                    key={`${rowId}-${col.dataKey}`}
-                    className={`${col.className}`}
-                  >
-                    {col.renderTemplate?.({
-                      col,
-                      row,
-                      rowIndex,
-                      // onMouseOver: url =>
-                      //   setPreview({
-                      //     isOpen: true,
-                      //     url,
-                      //     posTop: 1,
-                      //     posLeft: 1,
-                      //   }),
-                      // onMouseOut: () =>
-                      //   setPreview({
-                      //     isOpen: false,
-                      //   }),
-                    })}
-                  </td>
-                ))}
-              </tr>
-            );
-          })}
+                  <tr className="row-info">
+                    <td colSpan={5}>{renderInfo(row)}</td>
+                    <td colSpan={2}>{renderExtraInfo(row)}</td>
+                  </tr>
+                </>
+              );
+            })
+          }
         </tbody>
         <tfoot>
           <tr>
@@ -281,4 +322,5 @@ const DegreeList = ({ programms }) => {
 DegreeList.propTypes = {
   programms: PropTypes.arrayOf(PropTypes.object),
 };
+
 export { DegreeList };
