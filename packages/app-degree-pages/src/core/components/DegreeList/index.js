@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {
+  accellerateDegreeLink,
   majorInfoLink,
   mapTooltipLink,
+  requestInfoLink,
   saveFav,
 } from "../../services/degree-http-service";
 import { idGenerator, toTitleCase } from "../../utils";
@@ -74,7 +76,7 @@ const columns = [
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
-    renderTemplate: ({ col, row, rowIndex, onClick }) => (
+    contentTemplate: ({ col, row, rowIndex, onClick }) => (
       <div className="cell-container">
         <a
           href={majorInfoLink(row["Institution"], row["AcadPlan"])}
@@ -91,11 +93,12 @@ const columns = [
     label: "Degree",
     ariaLabel: "Degree: activate to sort column",
     className: "degree",
-    renderTemplate: ({ col, row }) => (
+    contentTemplate: ({ col, row }) => (
       <div className="cell-container">
         <span>{row[col.dataKey]}</span>
         <InfoIcon
           onClick={() =>
+            // todo: refactor this solution
             alert(`${row["DegreeDescr"]}\n\n${row["DegreeDescrlong"]}`)
           }
         />
@@ -108,7 +111,7 @@ const columns = [
     label: "Required Courses",
     ariaLabel: "Required Courses",
     className: "required-course",
-    renderTemplate: ({ row }) => {
+    contentTemplate: ({ row }) => {
       const isOnline = row["managedOnlineCampus"];
       const directUrl = isOnline
         ? row["onlineMajorMapURL"]
@@ -127,22 +130,32 @@ const columns = [
     dataKey: "CampusStringArray",
     label: "Location",
     ariaLabel: "Location: activate to sort column",
-    className: "location",
+    className: "campus-location",
     sortable: true,
-    renderTemplate: ({ col, row, onMouseOver, onMouseOut }) => (
-      <div className="cell-container">
+    contentTemplate: ({ col, row, onMouseOver, onMouseOut }) => (
+      <div className="container">
         {row[col.dataKey]?.map(location => (
-          <a
-            key={location}
-            href={mapTooltipLink(location)}
-            target="blank"
-            // onMouseOver={() => onMouseOver(mapTooltipLink(location))}
-            // onFocus={() => null}
-            // onMouseOut={() => onMouseOut()}
-            // onBlur={() => null}
-          >{`${toTitleCase(location)}, `}</a>
+          <div className="row justify-content-between">
+            <a
+              key={location}
+              href={mapTooltipLink(location)}
+              target="blank"
+              // onMouseOver={() => onMouseOver(mapTooltipLink(location))}
+              // onFocus={() => null}
+              // onMouseOut={() => onMouseOut()}
+              // onBlur={() => null}
+            >{`${toTitleCase(location)}, `}</a>
+            <InfoIcon
+              onClick={() =>
+                // todo: refactor this solution
+                fetch(accellerateDegreeLink(row["AcadPlan"])).then(res => {
+                  const body = res.json();
+                  alert(`4+1 years\n\n${body}`);
+                })
+              }
+            />
+          </div>
         ))}
-        <InfoIcon />
       </div>
     ),
   },
@@ -152,10 +165,28 @@ const columns = [
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
     sortable: true,
-    renderTemplate: () => (
+    contentTemplate: ({ row }) => (
       <div className="cell-container">
-        <a href="/">4+1 years</a>
-        <InfoIcon />
+        {row["accelerateDegrees"]?.length > 0 && (
+          <div className="row justify-content-between">
+            <a
+              href={accellerateDegreeLink(row["AcadPlan"])}
+              rel="noreferrer"
+              target="_blank"
+            >
+              4+1 years
+            </a>
+            <InfoIcon
+              onClick={() =>
+                // todo: refactor this solution
+                fetch(accellerateDegreeLink(row["AcadPlan"])).then(res => {
+                  const body = res.json();
+                  alert(`4+1 years\n\n${body}`);
+                })
+              }
+            />
+          </div>
+        )}
       </div>
     ),
   },
@@ -166,7 +197,7 @@ const columns = [
     ariaLabel: "College/School: activate to sort column",
     className: "college",
     sortable: true,
-    renderTemplate: ({ col, row }) => (
+    contentTemplate: ({ col, row }) => (
       <a href={row[col.dataKeyLink]} target="_blank" rel="noreferrer">
         {row[col.dataKey]}
       </a>
@@ -177,7 +208,13 @@ const columns = [
     dataKeyLink: "AcadPlan",
     label: "Compare and favorite",
     className: "compare-fav",
-    renderTemplate: ({ col, row, rowIndex }) => (
+    // todo: refactor this solution
+    headerTemplate: () => (
+      <div>
+        <InfoIcon onClick={() => alert("Compare and favorite: info....")} />
+      </div>
+    ),
+    contentTemplate: ({ col, row, rowIndex }) => (
       <form className="uds-form cell-container">
         <div className="form-check m-0">
           <input
@@ -203,10 +240,21 @@ const columns = [
     hasInfo: true,
     ariaLabel: "Apply Now or Request Info",
     className: "apply-info",
-    renderTemplate: () => (
-      <div className="cell-container">
-        <ApplyNow />
-        <RequestInfo />
+    contentTemplate: ({ row }) => (
+      <div className="row flex-column  align-items-end p-1">
+        <ApplyNow
+          onClick={() =>
+            // todo: refactor this solution
+            alert("APPLY NOW: TODO...")
+          }
+        />
+        <RequestInfo
+          href={requestInfoLink(
+            row["AcadPlan"],
+            row["Descr100"],
+            row["EmailAddr"]
+          )}
+        />
       </div>
     ),
   },
@@ -271,7 +319,7 @@ const DegreeList = ({ programms }) => {
                 aria-controls="programsTable"
                 aria-label={col.ariaLabel}
               >
-                <span>{col.label}</span>
+                {col.headerTemplate?.() || <span>{col.label}</span>}
               </th>
             ))}
           </tr>
@@ -290,7 +338,7 @@ const DegreeList = ({ programms }) => {
                         key={`${rowId}-${col.dataKey}`}
                         className={`${col.className}`}
                       >
-                        {col.renderTemplate?.({
+                        {col.contentTemplate?.({
                           col,
                           row,
                           rowIndex,

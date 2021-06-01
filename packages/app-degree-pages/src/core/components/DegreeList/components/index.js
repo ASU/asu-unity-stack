@@ -1,30 +1,34 @@
 // @ts-check
+import PropTypes from "prop-types";
 import React from "react";
 
-const RequestInfo = () => (
-  <div className="reqInfo">
-    <a
-      className="btn btn-maroon btn-sm btn-block"
-      href="https://requestinfo.asu.edu/request-info?prog=UGHI&amp;plan=FAMUSTTBM&amp;name=Theory+and+Composition+%28Theory%29&amp;contact=MDTAdmissions@asu.edu"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Request Info
-    </a>
-  </div>
+import { Button } from "../../../../../../components-core/src/components/Button";
+
+const RequestInfo = ({ href }) => (
+  <Button
+    color="maroon"
+    size="small"
+    ariaLabel="Request Info"
+    element="button"
+    target="_blank"
+    href={href}
+  >
+    Request Info
+  </Button>
 );
 
-const ApplyNow = () => (
-  <div>
-    <button
-      type="button"
-      className="btn btn-gold btn-sm btn-block tt_Apply"
-      data-toggle="modal"
-      data-target="#myModal_"
-    >
-      Apply Now
-    </button>
-  </div>
+RequestInfo.propTypes = {
+  href: PropTypes.string,
+};
+
+const ApplyNow = ({ onClick = () => null }) => (
+  <Button color="gold" onClick={onClick} size="small" ariaLabel="Apply now">
+    Apply Now
+  </Button>
 );
+
+ApplyNow.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export { RequestInfo, ApplyNow };

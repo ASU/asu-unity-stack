@@ -27,11 +27,10 @@ const Table = styled.table`
   width: 100%;
   margin: 0 auto;
   clear: both;
-  border-collapse: separate;
   border-spacing: 0;
 
   a {
-    decoration: none;
+    text-decoration: none;
   }
 
   thead {
@@ -52,6 +51,9 @@ const Table = styled.table`
   tr {
     .major {
       width: 80px;
+      a {
+        font-weight: 700;
+      }
     }
 
     .degree {
@@ -62,8 +64,8 @@ const Table = styled.table`
       width: 160px;
     }
 
-    .location {
-      width: 77px;
+    .campus-location {
+      width: 90px;
     }
 
     .college {
@@ -77,16 +79,26 @@ const Table = styled.table`
     .compare-fav {
       width: 110px;
     }
+
+    .apply-info {
+      & .btn {
+        width: fit-content;
+        :first-child {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
   }
 
   tbody {
     tr {
+      border: 1px solid var(--table-border-color);
+      border-top: 0;
+
       &:hover {
         background-color: #e7e7e8;
         background-color: #d2d2d2;
       }
-
-      border: 1px solid var(--table-border-color);
 
       .info-apply .cell-container {
         display: flex;
@@ -108,6 +120,12 @@ const Table = styled.table`
       opacity: 0;
       transition: visibility 0.5s, opacity 0.5s, line-height 0.3s linear;
       line-height: 0;
+      border: 0;
+
+      & * {
+        margin: 0;
+        padding: 0;
+      }
     }
 
     tr[data-is-open="true"] + tr.row-info {

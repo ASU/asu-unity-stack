@@ -70,7 +70,8 @@ import { tagHeadings } from "./constants";
  *    minWidth?: number
  *    sortable?: boolean
  *    hasInfo?: boolean
- *    renderTemplate?: (
+ *    headerTemplate?: () => JSX.Element
+ *    contentTemplate?: (
  *      props: {
  *                col: GridColumn
  *                row: Object
@@ -78,7 +79,7 @@ import { tagHeadings } from "./constants";
  *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void
  *                onMouseOut?: () => void
- *             }) => any
+ *             }) => JSX.Element
  * }} GridColumn
  *
  * @typedef {{

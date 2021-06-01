@@ -11,6 +11,7 @@ const DEGREE_SEARCH_URL =
   `MinMathReq,DescrlongExtns,MathIntensity,` +
   `AsuLangReqFlag,CampusStringArray,managedOnlineCampus,asuAcadpMrfText,` +
   `AsuProgramFee,additionalMathReqCourse,AcadPlan,Institution,` +
+  `accelerateDegrees,EmailAddr` +
   `&program=undergrad` +
   `&cert=false`;
 

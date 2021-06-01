@@ -43,8 +43,12 @@ function FavButton({ onClick = () => null }) {
       onClick={onClickButton}
       data-selected={selected}
     >
-      {baseIcon("fas", selected ? "" : "none", "remove to my favorites")}
-      {baseIcon("far", selected ? "none" : "", "add to my favorites", {
+      {baseIcon(
+        "fas",
+        selected ? "" : "none",
+        "Saved as favorited. Click to remove"
+      )}
+      {baseIcon("far", selected ? "none" : "", "Click to save as favorited", {
         color: "#e5e5e5",
       })}
     </span>

@@ -11,7 +11,7 @@ const OUTPUT_FILE = `${INPUT_FILE_2}.new.json`;
 const inpuntJson = JSON.parse(fs.readFileSync(INPUT_FILE));
 const data = JSON.parse(fs.readFileSync(INPUT_FILE_2));
 
-const keys = ["asuAcadpMrfText"];
+const keys = ["EmailAddr"];
 
 const programs = data.programs.map((p, index) => {
   const inputValaues = {};

@@ -5,7 +5,7 @@ import { fetchData } from "../utils/fetch-data";
 const path = "https://webapp4.asu.edu/programs";
 
 // Descr100,Degree,CollegeUrlJoioint,CollegeUrl,CampusWueInfo:,CampusStringArray,managedOnlineCampus,concurrentDegreeMajorMaps,onlineMajorMapURL,AsuCritTrackUrl,DescrlongExtns,AsuProgramFee,AsuLangReqFlag,additionalMathReqCourse,MinMathReq,MathIntensity,asuAcadpMrfText,
-// https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeUrlJoioint,CollegeUrl,CampusWueInfo:,CampusStringArray,managedOnlineCampus,concurrentDegreeMajorMaps,onlineMajorMapURL,AsuCritTrackUrl,DescrlongExtns,AsuProgramFee,AsuLangReqFlag,additionalMathReqCourse,MinMathReq,MathIntensity,asuAcadpMrfText,&program=undergrad&cert=false
+// https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=EmailAddr&program=undergrad&cert=false
 const DEGREE_SEARCH_URL =
   `https://degreesearch-proxy.apps.asu.edu/degreesearch` +
   `/?init=false` +
@@ -47,10 +47,31 @@ function mapTooltipLink(location, program = "undergrad") {
   return `${path}/tooltipcampus?campus=${location}&amp;program=${program}`;
 }
 
-function mapTooltipSubPlanMapLink(location, acadPlanCode) {
+function mapTooltipSubPlanMapLink(acadPlanCode) {
   return `${path}/tooltipsubplanmajormap/listMajorMaps/ASU00/${acadPlanCode}`;
 }
+function accellerateDegreeLink(
+  acadPlanCode,
+  program = "undergrad",
+  cert = "false"
+) {
+  return `${path}/t5/majorinfo/ASU00/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
+}
 
+function requestInfoLink(acadPlanCode, progNameDesc, emailAddress) {
+  // todo: find out where to put  this constant. or replace with field coming from API
+  const requestinfourl = "https://requestinfo.asu.edu/request-info";
+  // todo: find out field
+  const prog = "UGHI";
+
+  return (
+    `${requestinfourl}` +
+    `?prog=${prog}` +
+    `&plan=${acadPlanCode}` +
+    `&name=${progNameDesc}` +
+    `&contact=${emailAddress}`
+  );
+}
 function saveFav(
   institutionCode,
   acadPlanCode,
@@ -72,6 +93,8 @@ export {
   majorInfoLink,
   mapTooltipLink,
   mapTooltipSubPlanMapLink,
+  accellerateDegreeLink,
+  requestInfoLink,
   saveFav,
   applyNow,
 };
