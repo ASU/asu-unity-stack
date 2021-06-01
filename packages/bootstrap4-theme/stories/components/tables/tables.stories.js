@@ -4,16 +4,16 @@ import './tables';
 export const Default = () => `
 <div class="container">
 
-  <div class="uds-table">
+  <div class="uds-table" tabindex="0">
     <table>
       <thead>
         <tr>
-          <th scope="col">Enrollment</th>
-          <th scope="col">Fall 2016</th>
-          <th scope="col">Fall 2017</th>
-          <th scope="col">Fall 2018</th>
-          <th scope="col">Fall 2019</th>
-          <th scope="col">Fall 2020</th>
+          <th scope="col" tabindex="0">Enrollment</th>
+          <th scope="col" tabindex="0">Fall 2016</th>
+          <th scope="col" tabindex="0">Fall 2017</th>
+          <th scope="col" tabindex="0">Fall 2018</th>
+          <th scope="col" tabindex="0">Fall 2019</th>
+          <th scope="col" tabindex="0">Fall 2020</th>
         </tr>
       </thead>
       <tbody>
@@ -91,7 +91,7 @@ export const Fixed = () => `
   <div class="row">
     <div class="col-12">
 
-      <div class="uds-table-fixed-wrapper">
+      <div class="uds-table-fixed-wrapper" >
         <div class="scroll-control previous">
           <button type="button" class="btn btn-circle btn-circle-alt-gray">
             <i class="fas fa-chevron-left"></i>
@@ -106,21 +106,21 @@ export const Fixed = () => `
           </button>
         </div>
 
-        <div class="uds-table uds-table-fixed">
+        <div class="uds-table uds-table-fixed" tabindex="0">
           <table>
             <thead>
               <tr>
-                <th scope="col">Enrollment</th>
-                <th scope="col">Fall 2012</th>
-                <th scope="col">Fall 2013</th>
-                <th scope="col">Fall 2014</th>
-                <th scope="col">Fall 2015</th>
-                <th scope="col">Fall 2016</th>
-                <th scope="col">Fall 2017</th>
-                <th scope="col">Fall 2018</th>
-                <th scope="col">Fall 2019</th>
-                <th scope="col">Fall 2020</th>
-                <th scope="col">Fall 2021</th>
+                <th scope="col" tabindex="0">Enrollment</th>
+                <th scope="col" tabindex="0">Fall 2012</th>
+                <th scope="col" tabindex="0">Fall 2013</th>
+                <th scope="col" tabindex="0">Fall 2014</th>
+                <th scope="col" tabindex="0">Fall 2015</th>
+                <th scope="col" tabindex="0">Fall 2016</th>
+                <th scope="col" tabindex="0">Fall 2017</th>
+                <th scope="col" tabindex="0">Fall 2018</th>
+                <th scope="col" tabindex="0">Fall 2019</th>
+                <th scope="col" tabindex="0">Fall 2020</th>
+                <th scope="col" tabindex="0">Fall 2021</th>
               </tr>
             </thead>
             <tbody>
