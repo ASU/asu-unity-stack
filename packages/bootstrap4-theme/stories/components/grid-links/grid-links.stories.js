@@ -8,7 +8,7 @@ export const BackgroundWhite = () => `
     </div>
     <div class="col-md-12">
 
-      <div class="ic-grid-links two-columns mobile-at-md">
+      <div class="uds-grid-links two-columns mobile-at-md">
         <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
         <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
         <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>
@@ -34,7 +34,7 @@ export const BackgroundGray1 = () => `
 
       <div class="col-md-12">
 
-        <div class="ic-grid-links three-columns mobile-at-md">
+        <div class="uds-grid-links three-columns mobile-at-md">
           <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
           <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
           <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>
@@ -61,7 +61,7 @@ export const GoldText = () => `
 
       <div class="col-md-12">
 
-        <div class="ic-grid-links three-columns mobile-at-lg text-gold">
+        <div class="uds-grid-links three-columns mobile-at-lg text-gold">
           <a href="#">First-year student</a>
           <a href="#">Online student</a>
           <a href="#">Transfer student</a>
@@ -88,7 +88,7 @@ export const WhiteText = () => `
 
       <div class="col-md-12">
 
-        <div class="ic-grid-links four-columns mobile-at-xl text-white">
+        <div class="uds-grid-links four-columns mobile-at-xl text-white">
           <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
           <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
           <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>

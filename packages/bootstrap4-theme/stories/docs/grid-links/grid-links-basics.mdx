@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Grid Links" />
+
+# UDS Grid Links
+
+The recommended markup for a "grid links" section begins with a list of `<a></a>` links wrapped in a generic `<div class="uds-grid-links">` tag.
+
+# Content Image Overlap
+
+```
+<div class="uds-image-overlap">
+  <img class="img-fluid" src="https://placeimg.com/800/800/nature" alt="Generic image from PlaceIMG" />
+  <div class="content-wrapper">
+    <h3>Headline <span class="highlight-gold"> with emphasis</h3>
+    <p>Your content goes here. Normal paragraphs and other content types are permissible.</p>
+  </div>
+</div>
+```
+
+- The content image overlap element uses a CSS grid in the large format (desktop) display to control the spacing, padding and other layout options.
+- The component scales at the xl and lg breakpoints in Bootstrap while still maintaining the "desktop" look. Below the lg breakpoint, it will default to the mobile display.
+- Add the modifier class `content-left` to `<div class='uds-image-overlap">'` to produce the left content variant.
+- The markup for the left and right variants is otherwise exactly the same.
+
+## Other notes
+
+The XD design specifications call for the use of an 4:3 sized image (800px by 600px) for this component. However, it will work with nearly any horizontal image.
+
+- A 16:9 sized image will produce an available text area roughly the size of a single line headline + one paragraph.
+- A 1:1 (square) image will add enough room for three or four paragraphs, but does take up at least one full length of a standard laptop screen.
+
+The component is intended for presentation within a column set that spans the full width of the page. (i.e. `col-12`). However, it will scale to smaller smaller column widths if desired.
+
+- The recommended minimum width for this style of a component is col-6.
+- At that width, you may also need to adjust the padding of the inset box as well as the overall length of your content. (Think short!)
+
+
