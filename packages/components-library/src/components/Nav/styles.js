@@ -26,6 +26,7 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
+    overflow-x: hidden;
 
     a {
       text-decoration: none;
