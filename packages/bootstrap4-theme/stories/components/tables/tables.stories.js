@@ -8,12 +8,12 @@ export const Default = () => `
     <table>
       <thead>
         <tr>
-          <th scope="col" tabindex="0">Enrollment</th>
-          <th scope="col" tabindex="0">Fall 2016</th>
-          <th scope="col" tabindex="0">Fall 2017</th>
-          <th scope="col" tabindex="0">Fall 2018</th>
-          <th scope="col" tabindex="0">Fall 2019</th>
-          <th scope="col" tabindex="0">Fall 2020</th>
+          <th scope="col">Enrollment</th>
+          <th scope="col">Fall 2016</th>
+          <th scope="col">Fall 2017</th>
+          <th scope="col">Fall 2018</th>
+          <th scope="col">Fall 2019</th>
+          <th scope="col">Fall 2020</th>
         </tr>
       </thead>
       <tbody>
@@ -110,17 +110,17 @@ export const Fixed = () => `
           <table>
             <thead>
               <tr>
-                <th scope="col" tabindex="0">Enrollment</th>
-                <th scope="col" tabindex="0">Fall 2012</th>
-                <th scope="col" tabindex="0">Fall 2013</th>
-                <th scope="col" tabindex="0">Fall 2014</th>
-                <th scope="col" tabindex="0">Fall 2015</th>
-                <th scope="col" tabindex="0">Fall 2016</th>
-                <th scope="col" tabindex="0">Fall 2017</th>
-                <th scope="col" tabindex="0">Fall 2018</th>
-                <th scope="col" tabindex="0">Fall 2019</th>
-                <th scope="col" tabindex="0">Fall 2020</th>
-                <th scope="col" tabindex="0">Fall 2021</th>
+                <th scope="col">Enrollment</th>
+                <th scope="col">Fall 2012</th>
+                <th scope="col">Fall 2013</th>
+                <th scope="col">Fall 2014</th>
+                <th scope="col">Fall 2015</th>
+                <th scope="col">Fall 2016</th>
+                <th scope="col">Fall 2017</th>
+                <th scope="col">Fall 2018</th>
+                <th scope="col">Fall 2019</th>
+                <th scope="col">Fall 2020</th>
+                <th scope="col">Fall 2021</th>
               </tr>
             </thead>
             <tbody>
