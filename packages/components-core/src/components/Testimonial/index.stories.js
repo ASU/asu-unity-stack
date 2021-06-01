@@ -6,6 +6,33 @@ import { Testimonial } from ".";
 export default {
   title: "UDS/Testimonial",
   component: Testimonial,
+  decorators: [
+    (Story, context) => {
+      const { backgroundColor, ...props } = context.args;
+      return (
+        <div
+          className={`p-6 ${backgroundColor}`}
+          style={{ width: "fit-content" }}
+        >
+          <Story {...props} />
+        </div>
+      );
+    },
+  ],
+  argTypes: {
+    backgroundColor: {
+      defaultValue: "",
+      options: ["", "bg-gray-2", "bg-gray-7"],
+      control: {
+        type: "radio",
+        labels: {
+          "": "White",
+          "bg-gray-2": "Gray",
+          "bg-gray-7": "Black",
+        },
+      },
+    },
+  },
 };
 
 const itemColorCombinations = {
