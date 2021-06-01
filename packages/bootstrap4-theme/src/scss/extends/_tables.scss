@@ -144,7 +144,7 @@
 
 @media screen and (max-width: $uds-breakpoint-md) {
   .uds-table {
-    overflow-x: hidden;
+    overflow-x: scroll;
   }
 
   .uds-table-fixed {
