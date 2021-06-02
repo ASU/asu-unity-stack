@@ -31,7 +31,6 @@ View component examples and source code below.
 
 const handleClick = e => {
   e.preventDefault();
-  alert("Close button was clicked.");
 };
 
 const Template = args => (
