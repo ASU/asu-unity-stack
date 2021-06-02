@@ -1,13 +1,15 @@
 .uds-tooltip {
   // Turn tooltip icon blue on hover
-  &:hover {
+  &:hover,
+  &:focus {
     .fa-stack .fa-circle {
       color: $uds-color-font-light-info;
     }
   }
 
   // Display tooltip text on icon hover
-  &:hover &-text {
+  &:hover &-text,
+  :focus &-text {
     visibility: visible;
   }
 
