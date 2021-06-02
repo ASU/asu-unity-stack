@@ -1,62 +1,109 @@
+/*--------------------------------------------------------------
+# Inner Circle Grid Links
+
+1. Mobile
+2 Desktop modifiers
+--------------------------------------------------------------*/
+
+@mixin like-an-h4 {
+  font-size: $uds-size-font-large;
+  letter-spacing: $uds-component-heading-four-letter-spacing;
+  font-weight: 700;
+}
+
+/*--------------------------------------------------------------
+1. Mobile
+--------------------------------------------------------------*/
+
 .uds-grid-links {
-  column-gap: 1.75rem;
+  grid-template-columns: 1fr;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 1.75rem;
-  padding: 2rem;
+  grid-template-rows: auto;
+  column-gap: $uds-size-spacing-3;
+  row-gap: $uds-size-spacing-3;
 
-  @media screen and (max-width: $uds-breakpoint-md) {
-    padding: 1rem;
-    grid-template-columns: 1fr;
-  }
-
-  & > div {
+  a {
+    @include like-an-h4;
     border: 1px solid $uds-color-base-gray-3;
     color: $uds-color-base-gray-7;
-    display: flex;
-    padding: 1.5rem;
+    background-color: $uds-color-base-white;
+    padding: $uds-size-spacing-3;
+    text-decoration: none;
 
-    & > a {
-      color: $uds-color-base-gray-7;
-      font: normal normal bold 1.25rem Arial;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    svg {
+      margin-right: $uds-size-spacing-1;
     }
 
-    & > .uds-grid-links-icon {
-      margin-right: 1rem;
-      font-size: 1.5rem;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  &-light {
-    background-color: $uds-color-base-gray-1;
+  &.text-gold a {
+    color:$uds-color-base-gold;
+    background-color:$uds-color-base-gray-7;
   }
 
-  &-dark {
-    background-color: $uds-color-base-gray-7;
+  &.text-white a {
+    color:$uds-color-base-white;
+    background-color:$uds-color-base-gray-7;
+  }
+}
 
-    & > div {
-      & > a {
-        color: white;
-      }
-      & > .uds-grid-links-icon {
-        color: white;
-      }
-    }
+/*--------------------------------------------------------------
+2. Desktop modifiers
+--------------------------------------------------------------*/
 
-    &.gold {
-      & > div {
-        & > a {
-          color: $uds-color-base-gold;
-        }
-        & > .uds-grid-links-icon {
-          color: $uds-color-base-gold;
-        }
-      }
-    }
+@mixin two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@mixin three-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@mixin four-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@include media-breakpoint-up(md) {
+  .uds-grid-links.mobile-at-md.two-columns {
+    @include two-col;
+  }
+
+  .uds-grid-links.mobile-at-md.three-columns {
+    @include three-col;
+  }
+
+  .uds-grid-links.mobile-at-md.four-columns {
+    @include four-col;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .uds-grid-links.mobile-at-lg.two-columns {
+    @include two-col;
+  }
+
+  .uds-grid-links.mobile-at-lg.three-columns {
+    @include three-col;
+  }
+
+  .uds-grid-links.mobile-at-lg.four-columns {
+    @include four-col;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .uds-grid-links.mobile-at-xl.two-columns {
+    @include two-col;
+  }
+
+  .uds-grid-links.mobile-at-xl.three-columns {
+    @include three-col;
+  }
+
+  .uds-grid-links.mobile-at-xl.four-columns {
+    @include four-col;
   }
 }
