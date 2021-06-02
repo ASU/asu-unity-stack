@@ -98,6 +98,7 @@ const Hero = ({ type = "heading-hero", image, title, contents }) => {
     "heading-hero": () => headingHeroHtmlTemplate({ image, title, contents }),
     "story-hero": () => storyHeroHtmlTemplate({ image, title, contents }),
     "undefined": () => {
+      // eslint-disable-next-line no-console
       console.error(
         `the type '${type}' is not supported by the 'Hero' component.`
       );

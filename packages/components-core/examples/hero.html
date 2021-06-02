@@ -18,14 +18,14 @@
         THOSE LINES BELOW
      -->
     <!-- *************************************************************** -->
-    <!-- <script
+    <script
       src="https://unpkg.com/react@17/umd/react.development.js"
       crossorigin
     ></script>
     <script
       src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
       crossorigin
-    ></script> -->
+    ></script>
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
     <script src="../dist/libCore.min.js"></script>
@@ -39,21 +39,6 @@
     </div>
 
     <script>
-      // ***************************************************************
-      // ATTENTION: the commented code below is just a workaround waiting
-      // ***************************************************************
-      // the ticket Uds-620 to be finished.
-      // uncommented to try the Hero component but do not included it when
-      // the component is used in a CMS'HTML_page
-      // temporary workaround
-      // if (!AsuWebCore.initHero) {
-      //   AsuWebCore.initHero = function ({ targetSelector, props }) {
-      //     const element = React.createElement(AsuWebCore.Hero, props);
-      //     const domContainer = document.querySelector(targetSelector);
-      //     ReactDOM.render(element, domContainer);
-      //   };
-      // }
-
       // Setup and initialize the testimonial carousel.
       AsuWebCore.initHero({
         targetSelector: "#hero",
