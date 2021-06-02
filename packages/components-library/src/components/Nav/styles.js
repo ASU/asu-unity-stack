@@ -123,7 +123,7 @@ const navListStyles = breakpoint => css`
         display: block;
         padding: 0.5rem 0.75rem;
         color: #191919;
-        width: 100%;
+        white-space: nowrap;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
