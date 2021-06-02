@@ -1,11 +1,21 @@
+// @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+/**
+ * @typedef {import('../../../core/shared-model-types').PageItemProps} PageItemProps
+ */
+
+/**
+ * @param {PageItemProps} props
+ * @returns
+ */
+
 export const PageItem = ({
   isClickeable,
   disabled,
-  pageLinkicon,
+  pageLinkIcon,
   selectedPage,
   onClick,
   children,
@@ -20,7 +30,7 @@ export const PageItem = ({
       {isClickeable ? (
         <button
           className={classNames("page-link", {
-            [`page-link-icon`]: pageLinkicon,
+            [`page-link-icon`]: pageLinkIcon,
           })}
           type="button"
           onClick={onClick}
@@ -38,7 +48,7 @@ export const PageItem = ({
 PageItem.propTypes = {
   isClickeable: PropTypes.bool,
   disabled: PropTypes.bool,
-  pageLinkicon: PropTypes.bool,
+  pageLinkIcon: PropTypes.bool,
   selectedPage: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
@@ -47,7 +57,7 @@ PageItem.propTypes = {
 PageItem.defaultProps = {
   isClickeable: false,
   disabled: false,
-  pageLinkicon: false,
+  pageLinkIcon: false,
   selectedPage: false,
   onClick: () => {},
 };
