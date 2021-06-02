@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card component - Example page</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css" />
+
+  <!-- *************************************************************** -->
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- ATTENTION! IF REACT IS NOT BUNDLED INTO THE LIBRARY UNCOMMENT
+          THOSE LINES BELOW
+       -->
+  <!-- *************************************************************** -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- *************************************************************** -->
+  <!-- include bundled scripts from packages -->
+  <script src="../dist/libCore.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center border p-4">
+      <!-- Provide target elements -->
+      <div id="default-card"></div>
+      <div id="icon-card"></div>
+      <div id="degree-card"></div>
+      <div id="event-card"></div>
+      <div id="story-card"></div>
+      <div id="clickable-card"></div>
+      <div id="horizontal-card"></div>
+      <div id="asu-news-card"></div>
+    </div>
+  </div>
+
+  <script>
+    // Setup and initialize cards options.
+    AsuWebCore.initCard({
+      targetSelector: "#default-card",
+      props: {
+        type: "default",
+        horizontal: false,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Default title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        buttons: [
+          {
+            color: "maroon",
+            size: "default",
+            label: "CTA button",
+          },
+          {
+            color: "gold",
+            size: "small",
+            label: "CTA button",
+          },
+        ],
+        tags: [
+          { color: "gray", label: "tag1", href: "/#example-link" },
+          { color: "gray", label: "tag2", href: "/#example-link" },
+          { color: "gray", label: "tag3", href: "/#example-link" },
+        ],
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#icon-card",
+      props: {
+        type: "default",
+        horizontal: false,
+        clickable: false,
+        title: "Default title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        buttons: [
+          {
+            color: "maroon",
+            size: "default",
+            label: "Button text",
+          },
+        ],
+        icon: "newspaper",
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#degree-card",
+      props:{
+        type: "degree",
+        horizontal: false,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Default title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#event-card",
+      props: {
+        type: "event",
+        horizontal: false,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Event title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        eventFormat: "stack",
+        eventTime: "Wed, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
+        eventLocation: "Downtown Phoenix campus",
+        buttons: [
+          {
+            color: "maroon",
+            size: "default",
+            label: "CTA button",
+          },
+        ],
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#story-card",
+      props: {
+        type: "story",
+        horizontal: false,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Story title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        buttons: [
+          {
+            color: "maroon",
+            size: "default",
+            label: "CTA button",
+          },
+        ],
+        linkLabel: "Default link",
+        linkUrl: "http://google.com",
+        tags: [
+          { color: "gray", label: "tag1", href: "/#example-link" },
+          { color: "gray", label: "tag2", href: "/#example-link" },
+          { color: "gray", label: "tag3", href: "/#example-link" },
+        ],
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#clickable-card",
+      props: {
+        type: "story",
+        horizontal: false,
+        clickable: true,
+        clickHref: "/#example-link",
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Story title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        tags: [
+          { color: "gray", label: "tag1", href: "/#example-link" },
+          { color: "gray", label: "tag2", href: "/#example-link" },
+          { color: "gray", label: "tag3", href: "/#example-link" },
+        ],
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#horizontal-card",
+      props: {
+        type: "story",
+        horizontal: true,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "Horizontal story",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        tags: [
+          { color: "gray", label: "tag1", href: "/#example-link" },
+          { color: "gray", label: "tag2", href: "/#example-link" },
+          { color: "gray", label: "tag3", href: "/#example-link" },
+        ],
+      },
+    });
+    AsuWebCore.initCard({
+      targetSelector: "#asu-news-card",
+      props: {
+        type: "story",
+        horizontal: false,
+        clickable: false,
+        image: "https://picsum.photos/300/200",
+        imageAltText: "An example image",
+        title: "ASU News Story title",
+        body:
+          "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+        buttons: [
+          {
+            color: "maroon",
+            size: "default",
+            label: "Read at ASU News",
+          },
+        ],
+      },
+    });
+  </script>
+  <script src="./js/example-helper.js"></script>
+</body>
+
+</html>

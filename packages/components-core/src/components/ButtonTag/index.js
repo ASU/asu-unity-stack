@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const ButtonTag = ({
+  label,
   ariaLabel,
-  children,
   color,
   disabled,
   element,
@@ -36,20 +36,20 @@ export const ButtonTag = ({
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      {children}
+      {label}
     </Tag>
   );
 };
 
 ButtonTag.propTypes = {
   /**
+    Button tag label
+  */
+  label: PropTypes.string,
+  /**
     ARIA label for accessibility
   */
   ariaLabel: PropTypes.string,
-  /**
-    Content nodes to be wrapped by rendered Button element (usually just the text label)
-  */
-  children: PropTypes.node.isRequired,
   /**
     Button background color
   */
@@ -98,6 +98,7 @@ ButtonTag.propTypes = {
 };
 
 ButtonTag.defaultProps = {
+  label: "",
   ariaLabel: undefined,
   color: "gray",
   disabled: undefined,

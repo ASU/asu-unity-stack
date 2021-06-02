@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button Tag component - Example page</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css" />
+
+  <!-- *************************************************************** -->
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- ATTENTION! IF REACT IS NOT BUNDLED INTO THE LIBRARY UNCOMMENT
+          THOSE LINES BELOW
+       -->
+  <!-- *************************************************************** -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- *************************************************************** -->
+  <!-- include bundled scripts from packages -->
+  <script src="../dist/libCore.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center border p-4">
+      <!-- Provide target elements -->
+      <div id="tag-button"></div>
+      <div id="tag-link"></div>
+    </div>
+  </div>
+
+  <script>
+    // Setup and initialize button tags options.
+    AsuWebCore.initButtonTag({
+      targetSelector: "#tag-button",
+      props: {
+        label: "Tag Button",
+        color: "gray",
+        onClick: () => alert('Tag button clicked'),
+      },
+    });
+    AsuWebCore.initButtonTag({
+      targetSelector: "#tag-link",
+      props: {
+        label: "Tag Link",
+        color: "white",
+        href: "/#example-link",
+      },
+    });
+  </script>
+  <script src="./js/example-helper.js"></script>
+</body>
+
+</html>

@@ -5,15 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import "./card.css";
-
-const initializeIcons = () => {
-  library.add(fas, far);
-};
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -40,9 +36,7 @@ export const Card = ({
   linkUrl,
   tags,
 }) => {
-  useEffect(() => {
-    initializeIcons();
-  }, []);
+  library.add(fas, far);
 
   if (clickable && clickHref) {
     return (

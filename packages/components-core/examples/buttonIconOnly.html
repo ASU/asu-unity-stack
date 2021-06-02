@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button Icon Only component - Example page</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css" />
+
+  <!-- *************************************************************** -->
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- ATTENTION! IF REACT IS NOT BUNDLED INTO THE LIBRARY UNCOMMENT
+          THOSE LINES BELOW
+       -->
+  <!-- *************************************************************** -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- *************************************************************** -->
+  <!-- include bundled scripts from packages -->
+  <script src="../dist/libCore.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center border p-4">
+      <!-- Provide target elements -->
+      <div id="default-button"></div>
+      <div id="close-button"></div>
+      <div id="next-button"></div>
+      <div id="prev-button"></div>
+    </div>
+  </div>
+
+  <script>
+    // Setup and initialize button icon only options.
+    AsuWebCore.initButtonIconOnly({
+      targetSelector: "#default-button",
+      props: {
+        color: "white",
+        icon: "times",
+        onClick: () => alert("Button clicked"),
+      },
+    });
+    AsuWebCore.initButtonIconOnly({
+      targetSelector: "#close-button",
+      props: {
+        color: "white",
+        icon: "times",
+        onClick: () => alert("Button clicked"),
+      },
+    });
+    AsuWebCore.initButtonIconOnly({
+      targetSelector: "#next-button",
+      props: {
+        color: "white",
+        icon: "chevron-right",
+        size: "large",
+        onClick: () => alert("Button clicked"),
+      },
+    });
+    AsuWebCore.initButtonIconOnly({
+      targetSelector: "#prev-button",
+      props: {
+        color: "white",
+        icon: "chevron-left",
+        size: "large",
+        onClick: () => alert("Button clicked"),
+      },
+    });
+  </script>
+  <script src="./js/example-helper.js"></script>
+</body>
+
+</html>

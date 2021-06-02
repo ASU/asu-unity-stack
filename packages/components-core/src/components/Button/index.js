@@ -1,13 +1,16 @@
 /* eslint react/jsx-props-no-spreading: "off" */
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
 export const Button = ({
+  label,
   ariaLabel,
   block,
-  children,
   color,
   disabled,
   element,
@@ -18,6 +21,8 @@ export const Button = ({
   size,
   ...props
 }) => {
+  library.add(fas, far);
+
   const btnClasses = classNames("btn", {
     [`btn-${color}`]: true,
     [`btn-md`]: size === "small",
@@ -41,14 +46,17 @@ export const Button = ({
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      {icon && <FontAwesomeIcon icon={icon} />}
-      {icon && `  `}
-      {children}
+      {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}
+      {label}
     </Tag>
   );
 };
 
 Button.propTypes = {
+  /**
+   * Button label
+   */
+  label: PropTypes.string,
   /**
     ARIA label for accessibility
   */
@@ -57,10 +65,6 @@ Button.propTypes = {
     Render button as a block-button?
   */
   block: PropTypes.bool,
-  /**
-    Content nodes to be wrapped by rendered Button element (usually just the text label)
-  */
-  children: PropTypes.node.isRequired,
   /**
     Button background color
   */
@@ -92,9 +96,9 @@ Button.propTypes = {
   */
   href: PropTypes.string,
   /**
-    React Font Awesome icon to be rendered in button label.
+    React Font Awesome icon name string to be rendered in button label.
   */
-  icon: PropTypes.elementType,
+  icon: PropTypes.string,
 
   /**
    * ref will only get you a reference to the Button component, use innerRef to
@@ -117,6 +121,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  label: "",
   ariaLabel: undefined,
   block: undefined,
   color: "gray",
