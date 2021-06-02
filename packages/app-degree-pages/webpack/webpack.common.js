@@ -1,7 +1,11 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+
+const PROJECT_DIR = path.resolve(__dirname, "../");
 
 const common = {
+  context: path.join(PROJECT_DIR, "src"),
   entry: {
     DegreePages: "./index.js",
   },
@@ -53,6 +57,10 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@components-core": path.resolve(__dirname, "../../components-core/src"),
+      "@utils": path.resolve(__dirname, "../src/core/utils"),
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),

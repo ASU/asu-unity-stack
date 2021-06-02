@@ -8,7 +8,6 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 // production bundle
 const config = {
   ...common,
-  context: path.join(PROJECT_DIR, "src"),
   mode: "production",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
@@ -41,10 +40,10 @@ const config = {
    to include React library externally, such explained in this link
    https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
    */
-  // externals: {
-  //   "react": "React",
-  //   "react-dom": "ReactDOM",
-  // },
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM",
+  },
 };
 
 module.exports = config;
