@@ -8,6 +8,8 @@ import {
   Testimonial,
 } from "./components";
 
+export * from "./utils";
+
 export {
   Card,
   Article,
