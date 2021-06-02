@@ -15,7 +15,7 @@
 1. Mobile
 --------------------------------------------------------------*/
 
-.ic-grid-links {
+.uds-grid-links {
   grid-template-columns: 1fr;
   display: grid;
   grid-template-rows: auto;
@@ -67,43 +67,43 @@
 }
 
 @include media-breakpoint-up(md) {
-  .ic-grid-links.mobile-at-md.two-columns {
+  .uds-grid-links.mobile-at-md.two-columns {
     @include two-col;
   }
 
-  .ic-grid-links.mobile-at-md.three-columns {
+  .uds-grid-links.mobile-at-md.three-columns {
     @include three-col;
   }
 
-  .ic-grid-links.mobile-at-md.four-columns {
+  .uds-grid-links.mobile-at-md.four-columns {
     @include four-col;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .ic-grid-links.mobile-at-lg.two-columns {
+  .uds-grid-links.mobile-at-lg.two-columns {
     @include two-col;
   }
 
-  .ic-grid-links.mobile-at-lg.three-columns {
+  .uds-grid-links.mobile-at-lg.three-columns {
     @include three-col;
   }
 
-  .ic-grid-links.mobile-at-lg.four-columns {
+  .uds-grid-links.mobile-at-lg.four-columns {
     @include four-col;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .ic-grid-links.mobile-at-xl.two-columns {
+  .uds-grid-links.mobile-at-xl.two-columns {
     @include two-col;
   }
 
-  .ic-grid-links.mobile-at-xl.three-columns {
+  .uds-grid-links.mobile-at-xl.three-columns {
     @include three-col;
   }
 
-  .ic-grid-links.mobile-at-xl.four-columns {
+  .uds-grid-links.mobile-at-xl.four-columns {
     @include four-col;
   }
 }

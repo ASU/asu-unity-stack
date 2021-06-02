@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Grid Links" />
+
+# UDS Grid Links
+
+The recommended markup for a "grid links" section is a list of links wrapped in a generic `<div>`.
+
+```
+<div class="uds-grid-links">
+  <a href="#"><span class="fa fa-fw fa-generic-icon"></span>Icon and Link Text</a>
+  <a href="#">Just a link</a>
+  ...
+</div>
+```
+
+<div class="pt-4">&nbsp;</div>
+
+# Modifiers for desktop views
+
+In addition to the required `uds-grid-links` class, there are two additional class modifiers that can control the number of columns present in your link grid, as well as the point at which the display will become mobile-first. (The mobile display is a single column of grid links.)
+
+## Column modifiers
+
+Use one of the following classes to produce a grid containing the specified number of columns.
+
+- `two-columns` for a 2 column format.
+- `three-columns` for a 3 column format.
+- `four-columns` for a 4 column format.
+
+Note that the classes above are different than the Bootstrap utility classes to control a column layout on a page.
+
+## Mobile-at modifiers
+
+Include one of the following utility classes to control when the display will break to a single column display.
+
+- `mobile-at-md` will be mobile until the `md` breakpoint.
+- `mobile-at-lg` will be mobile until the `lg` breakpoint.
+- `mobile-at-xl` will be mobile until the `xl` breakpoint.
+
+## Background Colors
+
+Add a background color and change the foregrround color of the `.uds-grid-links` component to match.
+
+- First, wrap the `uds-grid-links` element in a container.
+- Apply a utility background color class to that container. Use either `uds-gray-1` or `uds-gray-7` for light gray or dark backgrounds.
+- Add appropriate padding to the container.
+- Include a the appropriate `text-color` utility class to modify the foreground color, if needed.
+
+```
+<section class="bg-gray-7 p-8">
+  <div class="uds-grid-links text-white">
+    ...
+  </div>
+</section>
+```
+
+<div class="pt-4">&nbsp;</div>
+
+# Additional notes
+
+When using Font Awesome icons in the display of these grid links, it is recommended to use the utility `fa-fw` class to keep all of the included icons the same width. This will keep everything lined up within the grid in both desktop and mobile presentations. More from [Font Awesome](https://fontawesome.com/v5.15/how-to-use/on-the-web/styling/fixed-width-icons).
+
+
