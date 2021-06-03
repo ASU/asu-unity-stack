@@ -1,4 +1,5 @@
 // @ts-check
+import { Button } from "@asu-design-system/components-core/src/components";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -12,7 +13,7 @@ import { Section, ButtonLink } from "./index.style";
 
 /**
  * @typedef {{
- *  onApplyFilters?: (data: object) => void
+ *  onApplyFilters?: (data: { location: string[], acceleratedConcurrent: string }) => void
  *  onCleanFilters?: () => void
  * }} FilterProps
  */
@@ -36,7 +37,7 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
     if (id === "asuLocal") {
       setState({
         ...state,
-        location: ["ONLINE"],
+        location: ["ONLNE"],
         asuLocal: Array.from(event.target.selectedOptions, item => item.value),
       });
     } else {
@@ -52,14 +53,13 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
   };
 
   const handleApplyFilters = () => {
-    const filters = { ...state };
-    delete filters.asuLocal;
-    if (onApplyFilters) onApplyFilters(filters);
+    const { asuLocal, ...filters } = state;
+    onApplyFilters?.(filters);
   };
 
   const handleCleanFilters = () => {
     setState(INITIAL_STATE);
-    if (onCleanFilters) onCleanFilters();
+    onCleanFilters?.();
   };
 
   return (
@@ -97,13 +97,15 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
         </div>
       </form>
       <div>
-        <button
-          className="btn btn-maroon"
-          type="button"
+        <Button
+          color="maroon"
+          label="Apply filters"
+          ariaLabel="Apply filters"
+          size="default"
           onClick={handleApplyFilters}
         >
           Apply filters
-        </button>
+        </Button>
         <ButtonLink className="btn btn-link" onClick={handleCleanFilters}>
           Clean filters
         </ButtonLink>

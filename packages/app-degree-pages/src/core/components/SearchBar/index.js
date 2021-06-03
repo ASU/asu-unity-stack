@@ -1,4 +1,5 @@
 // @ts-check
+import { Button } from "@asu-design-system/components-core/src/components";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
@@ -20,7 +21,7 @@ const SearchBar = ({ onSearch }) => {
   const [keyword, setKeyword] = useState("");
 
   const handleSearch = () => {
-    if (onSearch) onSearch(keyword);
+    onSearch?.(keyword);
   };
 
   return (
@@ -38,13 +39,15 @@ const SearchBar = ({ onSearch }) => {
           />
         </div>
       </form>
-      <button
-        className="btn btn-maroon mt-2"
-        type="button"
+      <Button
+        color="maroon"
+        label="Search now"
+        ariaLabel="Search now"
+        size="default"
         onClick={handleSearch}
       >
         Search now
-      </button>
+      </Button>
     </Section>
   );
 };

@@ -6,7 +6,7 @@ const locationOptions = [
   { id: 2, value: "TEMPE", label: "Tempe campus" },
   { id: 3, value: "TBIRD", label: "Thunderbird campus" },
   { id: 4, value: "WEST", label: "West campus" },
-  { id: 5, value: "ONLINE", label: "ASU Online" },
+  { id: 5, value: "ONLNE", label: "ASU Online" },
 ];
 
 const asuLocalOptions = [

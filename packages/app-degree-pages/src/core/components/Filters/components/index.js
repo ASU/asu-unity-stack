@@ -9,7 +9,7 @@ import React from "react";
  *  selected: string | string[]
  *  multiple?: boolean
  *  options: any[]
- *  onChange: (id, event) => void
+ *  onChange: (id: string, event: React.ChangeEvent<HTMLSelectElement>) => void
  * }} SelectFormGroupProps
  */
 
