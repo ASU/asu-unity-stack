@@ -107,7 +107,6 @@ const columns = [
   },
   {
     dataKey: "concurrentDegreeMajorMaps",
-    dataKeyLink: "AsuCritTrackUrl",
     label: "Required Courses",
     ariaLabel: "Required Courses",
     className: "required-course",
@@ -127,14 +126,13 @@ const columns = [
     },
   },
   {
-    dataKey: "CampusStringArray",
     label: "Location",
     ariaLabel: "Location: activate to sort column",
     className: "campus-location",
     sortable: true,
-    contentTemplate: ({ col, row, onMouseOver, onMouseOut }) => (
+    contentTemplate: ({ row, onMouseOver, onMouseOut }) => (
       <div className="container">
-        {row[col.dataKey]?.map(location => (
+        {row["CampusStringArray"]?.map(location => (
           <div className="row justify-content-between">
             <a
               key={location}
@@ -148,10 +146,11 @@ const columns = [
             <InfoIcon
               onClick={() =>
                 // todo: refactor this solution
-                fetch(accellerateDegreeLink(row["AcadPlan"])).then(res => {
-                  const body = res.json();
-                  alert(`4+1 years\n\n${body}`);
-                })
+                fetch(mapTooltipLink(location))
+                  .then(res => res.text())
+                  .then(body => {
+                    alert(`Location\n\n${body}`);
+                  })
               }
             />
           </div>
@@ -160,7 +159,6 @@ const columns = [
     ),
   },
   {
-    dataKey: "accelerateDegrees",
     label: "Accelerated/ Concurrent",
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
@@ -179,10 +177,12 @@ const columns = [
             <InfoIcon
               onClick={() =>
                 // todo: refactor this solution
-                fetch(accellerateDegreeLink(row["AcadPlan"])).then(res => {
-                  const body = res.json();
-                  alert(`4+1 years\n\n${body}`);
-                })
+                fetch(accellerateDegreeLink(row["AcadPlan"]))
+                  .then(res => res.text())
+                  .then(body => {
+                    console.log("body", body);
+                    alert(`4+1 years\n\n${body}`);
+                  })
               }
             />
           </div>
@@ -191,21 +191,17 @@ const columns = [
     ),
   },
   {
-    dataKey: "CollegeDescr100",
-    dataKeyLink: "CollegeUrl",
     label: "College/School",
     ariaLabel: "College/School: activate to sort column",
     className: "college",
     sortable: true,
-    contentTemplate: ({ col, row }) => (
-      <a href={row[col.dataKeyLink]} target="_blank" rel="noreferrer">
-        {row[col.dataKey]}
+    contentTemplate: ({ row }) => (
+      <a href={row["CollegeUrl"]} target="_blank" rel="noreferrer">
+        {row["CollegeDescr100"]}
       </a>
     ),
   },
   {
-    dataKey: "compFav",
-    dataKeyLink: "AcadPlan",
     label: "Compare and favorite",
     className: "compare-fav",
     // todo: refactor this solution
@@ -214,7 +210,7 @@ const columns = [
         <InfoIcon onClick={() => alert("Compare and favorite: info....")} />
       </div>
     ),
-    contentTemplate: ({ col, row, rowIndex }) => (
+    contentTemplate: ({ row, rowIndex }) => (
       <form className="uds-form cell-container">
         <div className="form-check m-0">
           <input
@@ -230,12 +226,11 @@ const columns = [
             &nbsp;
           </label>
         </div>
-        <FavButton onClick={() => saveFav(row[col.dataKeyLink])} />
+        <FavButton onClick={() => saveFav(row["AcadPlan"])} />
       </form>
     ),
   },
   {
-    dataKey: "info",
     label: "",
     hasInfo: true,
     ariaLabel: "Apply Now or Request Info",

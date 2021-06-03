@@ -62,7 +62,7 @@ import { tagHeadings } from "./constants";
  *    id?: string
  *    label: string
  *    ariaLabel?: string
- *    dataKey: string
+ *    dataKey?: string
  *    dataKeyLink?: string
  *    className?: string
  *    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';

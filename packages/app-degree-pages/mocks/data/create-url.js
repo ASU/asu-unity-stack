@@ -5,13 +5,12 @@ const DEGREE_SEARCH_URL =
   `/?init=false` +
   `&method=findDegreeByFirstLetterMapArray` +
   `&fields=` +
-  `Descr100,CollegeDescr100,CollegeUrl,AsuCritTrackUrl,` +
-  `Degree,DegreeDescr,DegreeDescrshort,DegreeDescrlong,` +
-  `SubPlnMajorMapUrl,SubPlnMajorMaps,SubplnMajorMapSubplanCode,` +
-  `MinMathReq,DescrlongExtns,MathIntensity,` +
-  `AsuLangReqFlag,CampusStringArray,managedOnlineCampus,asuAcadpMrfText,` +
-  `AsuProgramFee,additionalMathReqCourse,AcadPlan,Institution,` +
-  `accelerateDegrees,EmailAddr` +
+  `Descr100,Institution,AcadPlan,Degree,DegreeDescr,DegreeDescrlong,` +
+  `concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL,` +
+  `AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,` +
+  `CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee,` +
+  `AsuLangReqFlag,asuAcadpLrfText,` +
+  `asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,` +
   `&program=undergrad` +
   `&cert=false`;
 

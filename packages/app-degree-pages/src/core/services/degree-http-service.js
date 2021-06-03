@@ -2,10 +2,9 @@
 
 import { fetchData } from "../utils/fetch-data";
 
-const path = "https://webapp4.asu.edu/programs";
+// const path = "https://webapp4.asu.edu/programs";
+const path = "/programs";
 
-// Descr100,Degree,CollegeUrlJoioint,CollegeUrl,CampusWueInfo:,CampusStringArray,managedOnlineCampus,concurrentDegreeMajorMaps,onlineMajorMapURL,AsuCritTrackUrl,DescrlongExtns,AsuProgramFee,AsuLangReqFlag,additionalMathReqCourse,MinMathReq,MathIntensity,asuAcadpMrfText,
-// https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=EmailAddr&program=undergrad&cert=false
 const DEGREE_SEARCH_URL =
   `https://degreesearch-proxy.apps.asu.edu/degreesearch` +
   `/?init=false` +
