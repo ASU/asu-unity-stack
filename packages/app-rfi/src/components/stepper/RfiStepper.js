@@ -125,7 +125,11 @@ class RfiStepper extends React.Component {
             <div>{`Step ${step + 1} of ${totalSteps}`}</div>
           ) : undefined}
           {!Test ? (
-            <h2>Request information</h2>
+            step === 0 ? (
+              <h2>Request information</h2>
+            ) : (
+              ""
+            )
           ) : (
             <h2>
               <span className="highlight-gold">RFI IN TEST MODE</span>
