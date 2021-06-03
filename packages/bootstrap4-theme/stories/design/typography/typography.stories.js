@@ -45,7 +45,7 @@ export const bodyCopyGray2 = () => `
 `;
 
 export const bodyCopyGray7 = () => `
-<div class="container bg-gray-7 text-gray-1">
+<div class="container bg-gray-7 text-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
       <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="text-gold">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
