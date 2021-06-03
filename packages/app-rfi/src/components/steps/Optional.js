@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import {
   RfiTextInput,
   RfiDatepicker,
-  RfiRadioGroup,
   RfiTextArea,
   RfiSelect,
 } from "../controls";
@@ -212,7 +211,7 @@ const Optional = () => {
         className="form-control"
         placeholderText="MM/DD/YYYY"
       />
-      <RfiRadioGroup
+      <RfiSelect
         label="U.S. Veteran admission information and services"
         id="MilitaryStatus"
         name="MilitaryStatus"
