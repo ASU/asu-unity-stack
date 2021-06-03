@@ -4,7 +4,18 @@ import {
   Button,
   ButtonIconOnly,
   ButtonTag,
+  Pagination,
   Testimonial,
 } from "./components";
 
-export { Card, Article, Button, ButtonIconOnly, ButtonTag, Testimonial };
+export * from "./utils";
+
+export {
+  Card,
+  Article,
+  Button,
+  ButtonIconOnly,
+  ButtonTag,
+  Pagination,
+  Testimonial,
+};

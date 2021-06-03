@@ -1,10 +1,18 @@
+// @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import "./pagination.css";
-
 import { PageItem } from "./PageItem";
+
+/**
+ * @typedef {import('../../core/shared-model-types').PaginationProps} PaginationProps
+ */
+
+/**
+ * @param {PaginationProps} props
+ * @returns {JSX.Element}
+ */
 
 export const Pagination = ({
   type,
@@ -90,7 +98,7 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === 1}
-          pageLinkicon={!showFirstButton}
+          pageLinkIcon={!showFirstButton}
           onClick={e => handleChangePage(e, "prev")}
         >
           Prev
@@ -99,7 +107,7 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === totalPages}
-          pageLinkicon={!showLastButton}
+          pageLinkIcon={!showLastButton}
           onClick={e => handleChangePage(e, "next")}
         >
           Next

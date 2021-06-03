@@ -1,14 +1,19 @@
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import "./card.css";
+
+const initializeIcons = () => {
+  library.add(fas, far);
+};
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -35,6 +40,10 @@ export const Card = ({
   linkUrl,
   tags,
 }) => {
+  useEffect(() => {
+    initializeIcons();
+  }, []);
+
   if (clickable && clickHref) {
     return (
       <a role="button" href={clickHref} className="c-card">
@@ -108,9 +117,9 @@ Card.propTypes = {
    */
   title: PropTypes.string.isRequired,
   /**
-   * FontAwesome React icon alternative to image (optional -- only valid for default cards)
+   * FontAwesome React icon alternative to image (optional -- only valid for default cards). Icon string name
    */
-  icon: PropTypes.elementType,
+  icon: PropTypes.string,
   /**
    * Card body content
    */
@@ -218,10 +227,12 @@ const BaseCard = ({
   return (
     <>
       <div className={cardClass}>
-        {image && (
+        {!!image && (
           <img className="card-img-top" src={image} alt={imageAltText} />
         )}
-        {!image && icon && <FontAwesomeIcon icon={icon} />}
+        {!image && icon && (
+          <FontAwesomeIcon icon={icon} className="fa-2x card-icon-top" />
+        )}
         {horizontal ? (
           <div className="card-content-wrapper">
             <CardContent
@@ -262,7 +273,7 @@ BaseCard.propTypes = {
   horizontal: PropTypes.bool,
   clickable: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.elementType, // React Component
+  icon: PropTypes.string, // Icon string name
   body: PropTypes.string,
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
   eventLocation: PropTypes.string,
@@ -427,7 +438,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         {eventTime && (
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={faCalendar} />
+              <FontAwesomeIcon icon={["far", "calendar"]} />
             </div>
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
@@ -435,7 +446,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         {eventLocation && (
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              <FontAwesomeIcon icon="map-marker-alt" />
             </div>
             <div
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
@@ -453,7 +464,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         <div className="card-event-details">
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={faCalendar} />
+              <FontAwesomeIcon icon={["far", "calendar"]} />
             </div>
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
@@ -463,7 +474,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         <div className="card-event-details">
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              <FontAwesomeIcon icon="map-marker-alt" />
             </div>
             <span>
               <div

@@ -90,13 +90,11 @@ Default.args = {
       color: "maroon",
       size: "default",
       label: "CTA button",
-      href: "/#example-link",
     },
     {
       color: "gold",
       size: "small",
       label: "CTA button",
-      href: "/#example-link",
     },
   ],
   tags: [
@@ -104,6 +102,24 @@ Default.args = {
     { color: "gray", label: "tag2", href: "/#example-link" },
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  type: "default",
+  horizontal: false,
+  clickable: false,
+  title: "Default title",
+  body:
+    "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  buttons: [
+    {
+      color: "maroon",
+      size: "default",
+      label: "Button text",
+    },
+  ],
+  icon: "newspaper",
 };
 
 export const Degree = Template.bind({});
@@ -151,7 +167,6 @@ Event.args = {
       color: "maroon",
       size: "default",
       label: "CTA button",
-      href: "/#example-link",
     },
   ],
 };
@@ -167,7 +182,6 @@ The event props, \`eventLocation\` and \`eventTime\` are allowed to contain basi
         buttons={[
           {
             color: 'maroon',
-            href: '/#example-link',
             label: 'CTA button',
             size: 'default'
           }
@@ -199,7 +213,6 @@ Story.args = {
       color: "maroon",
       size: "default",
       label: "CTA button",
-      href: "/#example-link",
     },
   ],
   linkLabel: "Default link",
@@ -220,7 +233,6 @@ Story.parameters = {
         buttons={[
           {
             color: 'maroon',
-            href: '/#example-link',
             label: 'CTA button',
             size: 'default'
           }
@@ -370,7 +382,6 @@ AsuNewsStory.args = {
       color: "maroon",
       size: "default",
       label: "Read at ASU News",
-      href: "/#example-link",
     },
   ],
 };
@@ -384,7 +395,6 @@ AsuNewsStory.parameters = {
         buttons={[
           {
             color: 'maroon',
-            href: '/#example-link',
             label: 'Read at ASU News',
             size: 'default'
           }

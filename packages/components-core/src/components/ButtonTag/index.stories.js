@@ -35,7 +35,6 @@ View component examples and source code below.
 
 const handleClick = e => {
   e.preventDefault();
-  alert("The button was clicked.");
 };
 
 const Template = args => {
