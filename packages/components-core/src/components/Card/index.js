@@ -353,9 +353,7 @@ const CardContent = ({
             label={button.label}
             onClick={button.onClick}
             size={button.size}
-          >
-            {button.label}
-          </Button>
+          />
         </div>
       ))}
     {linkUrl && linkLabel && (
@@ -373,9 +371,7 @@ const CardContent = ({
             href={tag.href}
             label={tag.label}
             onClick={tag.onClick}
-          >
-            {tag.label}
-          </ButtonTag>
+          />
         ))}
       </div>
     )}

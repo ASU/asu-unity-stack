@@ -166,7 +166,7 @@ const ReactRouterTemplate = args => (
   <Router>
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">
-        <Button {...args}>React Router Link</Button>
+        <Button {...args} />
       </div>
     </div>
   </Router>
@@ -176,6 +176,7 @@ export const ReactRouterLinkButton = ReactRouterTemplate.bind({});
 ReactRouterLinkButton.args = {
   color: "gold",
   element: Link,
+  label: "React Router Link",
   to: "/#example-link",
 };
 ReactRouterLinkButton.parameters = {
@@ -191,7 +192,8 @@ ReactRouterLinkButton.parameters = {
           color="gold"
           element={Link}
           to="/#example-link"
-        >React Router Link</Button>
+          label="React Router Link"
+        />
       </...>
     </Router>`,
     },
@@ -204,7 +206,8 @@ ReactRouterLinkButton.parameters = {
       color="gold"
       element={Link}
       to="/#example-link"
-    >React Router Link</Button>
+      label="React Router Link"
+    />
   </...>
 </Router>`,
     },
