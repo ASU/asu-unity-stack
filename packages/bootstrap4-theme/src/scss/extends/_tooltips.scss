@@ -1,5 +1,18 @@
 .uds-tooltip {
+  .fa-stack:hover ~ .uds-tooltip-text,
+  .fa-stack:focus ~ .uds-tooltip-text {
+    visibility: visible;
+  }
+
   // Turn tooltip icon blue on hover
+  .fa-stack:hover,
+  .fa-stack:focus {
+    color: $uds-color-font-light-info;
+    .fa-circle {
+      color: $uds-color-font-light-info;
+    }
+  }
+
   &:hover,
   &:focus {
     .fa-stack .fa-circle {
@@ -8,10 +21,10 @@
   }
 
   // Display tooltip text on icon hover
-  &:hover &-text,
-  :focus &-text {
-    visibility: visible;
-  }
+  // &:hover &-text,
+  // &:focus &-text {
+  //   visibility: visible;
+  // }
 
   // Text inside tooltip
   &-text {
@@ -20,9 +33,7 @@
     color: $uds-color-base-gray-1;
     font: normal normal normal 1rem Arial;
     line-height: 2rem;
-    margin: 0px 5px; // x margin to give it spacing from the element
-    // width: 288px; XD notes say max width 288 but show width of 353.
-    // 353 looks better in my opinion, but can change if necessary
+    margin: 0px 5px;
     max-width: 353px;
     padding: 2rem;
     position: absolute;

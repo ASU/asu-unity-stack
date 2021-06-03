@@ -3,10 +3,11 @@ export default { title: 'Components/Tooltips' };
 export const WhiteBackground = () => `
 <div class="background white">
 
-  <span tabindex="0" class="uds-tooltip uds-tooltip-white">
-    <span class="fa-stack">
-      <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-info fa-stack-1x"></i>
+  <span class="uds-tooltip uds-tooltip-white">
+    <span tabindex="0" class="fa-stack" aria-label="Tooltip">
+      <i aria-hidden="false" class="fas fa-circle fa-stack-2x"></i>
+      <i aria-hidden class="fas fa-info fa-stack-1x"></i>
+      <span class="sr-only">Tooltip text goes here</span>
     </span>
 
     <span class="uds-tooltip-text">
