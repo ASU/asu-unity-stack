@@ -1,0 +1,42 @@
+name: development-workflow
+on:
+  push:
+    branches:
+      - develop-gha
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      # - name: Setup NPM registry
+      #   run: |
+      #    echo "registry=https://registry.web.asu.edu/" > ~/.npmrc
+      #    echo "always-auth=true" >> ~/.npmrc
+      #    echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+      # Cache yarn cache directory for faster builds
+      # Doesn't work when using act to test GHA locally
+      # - name: Cache yarn cache
+      #   uses: c-hive/gha-yarn-cache@v1
+
+      - name: Yarn install
+        run: yarn install
+
+      - name: Yarn build
+        run: yarn build
+
+      - name: Yarn build-storybook
+        run: yarn build-storybook
+
+  test:
+    name: Test
+    steps:
+      - run: echo 'Tests temporarily disabled'
