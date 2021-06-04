@@ -62,7 +62,7 @@ import { tagHeadings } from "./constants";
  *    id?: string
  *    label: string
  *    ariaLabel?: string
- *    dataKey: string
+ *    dataKey?: string
  *    dataKeyLink?: string
  *    className?: string
  *    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
@@ -70,11 +70,13 @@ import { tagHeadings } from "./constants";
  *    minWidth?: number
  *    sortable?: boolean
  *    hasInfo?: boolean
- *    renderTemplate?: (
+ *    headerTemplate?: () => JSX.Element
+ *    contentTemplate?: (
  *      props: {
  *                col: GridColumn
  *                row: Object
- *                rowIndex: number
+ *                rowIndex?: number
+ *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void
  *                onMouseOut?: () => void
  *             }) => JSX.Element

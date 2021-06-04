@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "jsx": "react",
+    "paths": {
+      "@components-core": [
+        "../components-core/src"
+      ],
+      "@utils": [
+        "./src/core/utils"
+      ]
+    }
+  },
+}
