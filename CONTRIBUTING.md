@@ -143,20 +143,22 @@ with them.
 
 ## Contributing a new package
 
-If you have a package you'd like to contribute, or want to build a new package, start by creating an issue on this repo with details about the package. From there we can discuss the details of the package and any individual needs. Once a package has been approved for inclusion in the repo, there are a couple of helpful resources for package setup and testing:
-
-For a full explanation of basic configuration see example package [config](./examples/example-package/README.md)
+If you have a package you'd like to contribute, or want to build a new package, start by creating an issue on this repo with details about the package. From there we can discuss the details of the package and any individual needs. Once a package has been approved for inclusion in the repo, please review a few similar packages in the repo to become familiar with the configurations and details packages within our monorepo need to supply. Some details follow.
 
 ### Storybook configuration
 
-Storybook is the standard component explorer which we use for local development. Each package should have a Storybook configuration under a root '.storybook' directory. For more info see the Storybook config in the 'examples/example-package/.storybook' directory, and the example story [here](../examples/example-package/src/components/Example/Example.stories.js).
+Storybook is the standard component explorer which we use for local development. Each package should have a Storybook configuration under a package root '.storybook' directory and a ComponentName.stories.js story in the directory with the component.
 
 ### Webpack configuration
 
-We are using Webpack to statically bundle React component modules for universal deployment in any application. Typically there are separate development and production Webpack configurations located under a 'webpack' directory at the package root. See the 'examples/example-package/webpack' directory for inspiration.
+We are using Webpack to statically bundle React component modules for universal deployment in any application. Typically there are separate development and production Webpack configurations located under a 'webpack' directory at the package root.
 
 Note: The PostCSS plugin is used alongside Webpack for some advanced CSS processing, but is not required for all packages.
 
 ### Testing configuration
 
-Jest configuration is included in the package.json for most packages. See testing [requirements](./tests/README.md), and also example [test](../examples/example-package/src/components/Example/Example.test.js).
+Jest configuration is included in the package.json for most packages. See testing [requirements](./tests/README.md).
+
+### Unity component design philosophy
+
+All our components in Bootstrap and React aim to be self-contained. Styling and css should be managed inside the component itself. Props should be used to tell the component what behavior or Unity design variants we want and will let the component work out the valid styling needed to make that happen. Note: a component may internally rely on other Unity packages for those styles. Passing CSS in as props is highly discouraged. Instead, a component should have a prop, “type” (or similar name), that the consumer can set to a valid Unity design variant such as, for example “small”, “medium”, “large”, or “story”. Props should be seen as a contract with a component's consumers and we should aim to keep them as simple and guarded against breakage as possible. By using props to identify styling based on Unity design variants, we allow the component to own the details for implementing those variants, rather than the consumer, and that will ensure smoother updates in the future.
