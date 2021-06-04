@@ -34,18 +34,44 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
   const [state, setState] = useState(INITIAL_STATE);
 
   const handleChangeMultipleField = (id, event) => {
-    if (id === "asuLocal") {
-      setState({
-        ...state,
-        location: ["ONLNE"],
-        asuLocal: Array.from(event.target.selectedOptions, item => item.value),
-      });
-    } else {
-      setState({
-        ...state,
-        [id]: Array.from(event.target.selectedOptions, item => item.value),
-      });
-    }
+    const stateMap = {
+      asuLocal: () =>
+        setState({
+          ...state,
+          location: state.location.includes("ONLNE")
+            ? [...state.location]
+            : ["ONLNE", ...state.location],
+          asuLocal: Array.from(
+            event.target.selectedOptions,
+            item => item.value
+          ),
+        }),
+      location: () =>
+        setState({
+          ...state,
+          location: state.asuLocal[0]
+            ? [
+                "ONLNE",
+                ...Array.from(event.target.selectedOptions, item =>
+                  item.value !== "ONLNE" ? item.value : ""
+                ),
+              ]
+            : Array.from(event.target.selectedOptions, item => item.value),
+        }),
+    };
+    const renderedValue = () =>
+      stateMap[id]
+        ? stateMap[id]()
+        : () =>
+            setState({
+              ...state,
+              [id]: Array.from(
+                event.target.selectedOptions,
+                item => item.value
+              ),
+            });
+
+    renderedValue();
   };
 
   const handleChangeField = (id, event) => {
@@ -54,6 +80,7 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
 
   const handleApplyFilters = () => {
     const { asuLocal, ...filters } = state;
+    console.log(filters);
     onApplyFilters?.(filters);
   };
 
@@ -61,6 +88,8 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
     setState(INITIAL_STATE);
     onCleanFilters?.();
   };
+
+  console.log(state);
 
   return (
     <Section className="container mt-4 pb-6 mb-6">
