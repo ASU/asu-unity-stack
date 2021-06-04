@@ -40,6 +40,15 @@
 
     h1 {
       margin-left: 0;
+      margin-top: 0;
+    }
+    h3 {
+      margin-left: 0;
+      margin-bottom: 0;
+
+      //Needs to left-align with a h1, which has exactly twice the
+      //font-size, and so needs half the normal h3 padding.
+      padding-left: 6px;
     }
 
     .uds-hero-text {

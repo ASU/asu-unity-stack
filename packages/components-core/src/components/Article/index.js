@@ -58,17 +58,13 @@ export const Article = ({
     if (registrationUrl) {
       return (
         <div className={classNames(UdsStyles["card-button"], "uds-button")}>
-          <Button color="maroon" href={registrationUrl}>
-            Register
-          </Button>
+          <Button color="maroon" href={registrationUrl} label="Register" />
         </div>
       );
     }
     return (
       <div className={classNames(UdsStyles["card-button"], "uds-button")}>
-        <Button color="maroon" href={zoomUrl}>
-          Attend on Zoom
-        </Button>
+        <Button color="maroon" href={zoomUrl} label="Attend on Zoom" />
       </div>
     );
   };
@@ -288,9 +284,12 @@ export const Article = ({
                 <div
                   className={classNames(UdsStyles["card-button"], "uds-button")}
                 >
-                  <Button color="gray" size="small" href={calendarUrl}>
-                    Add to calendar
-                  </Button>
+                  <Button
+                    color="gray"
+                    size="small"
+                    href={calendarUrl}
+                    label="Add to calendar"
+                  />
                 </div>
               )}
             </div>

@@ -26,6 +26,7 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
+    overflow-x: hidden;
 
     a {
       text-decoration: none;
@@ -122,7 +123,7 @@ const navListStyles = breakpoint => css`
         display: block;
         padding: 0.5rem 0.75rem;
         color: #191919;
-        width: 100%;
+        white-space: nowrap;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
