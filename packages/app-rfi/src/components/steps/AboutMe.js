@@ -19,7 +19,7 @@ function createMarkup(output) {
 
 // Components
 
-const Gdpr = ({ campus }) => {
+const RfiGdpr = ({ campus }) => {
   let gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can unsubscribe at any time by contacting UnsubFutureStudentComm@asu.edu. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
   if (campus === "ONLNE") {
     gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
@@ -124,7 +124,7 @@ const AboutMe = () => {
         options={termOptions}
         requiredIcon
       />
-      <Gdpr campus={values.Campus} />
+      <RfiGdpr campus={values.Campus} />
     </>
   );
 };
@@ -189,7 +189,7 @@ const aboutMeForm = {
 
 // Props
 
-Gdpr.propTypes = {
+RfiGdpr.propTypes = {
   campus: PropTypes.string.isRequired,
 };
 
