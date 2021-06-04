@@ -41,6 +41,9 @@ form.uds-form.uds-rfi .rfi-required-footnote svg {
 .uds-rfi-form-wrapper .rfi-consent {
   margin-bottom: 0.5rem;
 }
+.uds-rfi-form-wrapper .rfi-consent .rfi-consent-wording {
+  font-size: 12px;
+}
 
 /* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
    have a solid example of how this should work anyway. Full width wouldn't

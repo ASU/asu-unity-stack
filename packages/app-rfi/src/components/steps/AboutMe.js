@@ -1,4 +1,7 @@
 // @ts-check
+/* eslint-disable react/no-danger */
+import { useFormikContext } from "formik";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
@@ -7,13 +10,38 @@ import {
   RfiEmailInput,
   RfiSelect,
   RfiPhone,
-  // RfiCheckboxSingle,
+  RfiCheckboxSingle,
 } from "../controls";
 
-// Component
+function createMarkup(output) {
+  return { __html: output };
+}
+
+// Components
+
+const Gdpr = ({ campus }) => {
+  let gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can unsubscribe at any time by contacting UnsubFutureStudentComm@asu.edu. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
+  if (campus === "ONLNE") {
+    gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
+  }
+  return (
+    <div className="rfi-consent">
+      <div
+        className="rfi-consent-wording"
+        dangerouslySetInnerHTML={createMarkup(gdprWording)}
+      />
+      <RfiCheckboxSingle id="GdprConsent" name="GdprConsent" requiredIcon>
+        I consent
+      </RfiCheckboxSingle>
+    </div>
+  );
+};
 
 const AboutMe = () => {
   const [termOptions, setTermOptions] = useState([]);
+
+  // Surface values from Formik context
+  const { values } = useFormikContext();
 
   // Term options
   useEffect(() => {
@@ -96,9 +124,7 @@ const AboutMe = () => {
         options={termOptions}
         requiredIcon
       />
-      <div className="rfi-consent">
-        TODO GDPR consent wording to go here, dependent on campus selection
-      </div>
+      <Gdpr campus={values.Campus} />
     </>
   );
 };
@@ -119,8 +145,32 @@ const aboutMeForm = {
       .max(64, "Too long")
       .required("Required"),
     Phone: Yup.string().max(30, "Too long").required("Required"),
+    // TODO MAYBE WE DON'T USE YUP FOR CONDITIONAL REQ VALIDATIONS?
     ZipCode: Yup.string().required("Required"), // TODO Required only if campus != online.
+    // ZipCode: Yup.string().when("Campus", {
+    //   is: "ONLNE",
+    //   otherwise: d => d.required("Required"),
+    //   // then: Yup.string(),
+    //   // otherwise: Yup.string().required("Required"),
+    // }), // TODO Required only if campus != online.
+    // ZipCode: Yup.string().test(
+    //   "test-zipcode",
+    //   "Validation failure message",
+    //   // eslint-disable-next-line no-unused-vars
+    //   function ziptest(value, context) {
+    //     // return value.length > 0;
+    //     // console.log(values, "VAAAAAAAALUES");
+    //     console.log(value, "VAAAAAAAALUE");
+    //     console.log(context, "CONTEXXXXXXXT");
+    //     return false;
+    //   }
+    // ),
     EntryTerm: Yup.string().required("Required"),
+    GdprConsent: Yup.boolean()
+      .required("Consent is required")
+      .oneOf([true], "Consent is required"),
+    // Dependencies from other steps
+    // Campus: Yup.string(),
   },
 
   initialValues: {
@@ -131,7 +181,16 @@ const aboutMeForm = {
     // mobile: undefined,
     ZipCode: undefined,
     EntryTerm: undefined,
+    GdprConsent: undefined,
+    // Dependencies from other steps, value set from formik context.
+    // Campus: values.Campus,
   },
+};
+
+// Props
+
+Gdpr.propTypes = {
+  campus: PropTypes.string.isRequired,
 };
 
 export { aboutMeForm };

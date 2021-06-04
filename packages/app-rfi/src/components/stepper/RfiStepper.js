@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable no-unused-vars, no-nested-ternary */
 import {
   faAngleLeft,
   faAngleRight,
@@ -231,6 +232,22 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
     </div>
   </nav>
 );
+
+// Props
+RfiStepper.defaultProps = {
+  Campus: undefined,
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined,
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined,
+  SuccessMsg: "Success.",
+  Test: false,
+};
 
 RfiStepper.propTypes = {
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
