@@ -77,3 +77,23 @@ export const storyHeroLarge = () => `
   </div>
 </section>
 `;
+
+export const heroMediumBlackTitle = () => `
+<div class="uds-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+  <div class="container uds-hero-container">
+    <h3 class="heading heading-one col-md-8"><span class="highlight highlight-black">Subtitle</span></h3>
+    <h1 class="heading heading-one col-md-8"><span class="highlight highlight-white">Title</span></h1>
+  </div>
+</div>
+`;
+
+export const heroLargeBlackTitle = () => `
+<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+  <div class="container uds-hero-container">
+    <h3 class="heading heading-one col-md-8"><span class="highlight highlight-black">Subtitle</span></h3>
+    <h1 class="heading heading-one col-md-8"><span class="highlight highlight-white">Title</span></h1>
+  </div>
+</div>
+`
+
+; // close

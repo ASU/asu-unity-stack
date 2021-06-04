@@ -32,6 +32,7 @@ const style = `
     </style>
   `;
 
+
 function setActivePageLink() {
   const parseLink = url => {
     const index = url.lastIndexOf("/");
