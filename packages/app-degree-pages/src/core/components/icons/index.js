@@ -61,11 +61,21 @@ const SortIcon = () => (
 
 /**
  *
- * @param {{onClick: () => void}} props
+ * @param {{
+ *            onClick: () => void
+ *            onMouseOver: () => void
+ * }} props
  * @returns {JSX.Element}
  */
-const InfoIcon = ({ onClick = () => null }) => (
-  <span role="button" tabIndex={0} onClick={onClick} onKeyDown={onClick}>
+const InfoIcon = ({ onClick = () => null, onMouseOver = () => null }) => (
+  <span
+    role="button"
+    tabIndex={0}
+    onClick={onClick}
+    onKeyDown={onClick}
+    onMouseOver={onMouseOver}
+    onFocus={onMouseOver}
+  >
     <i
       className="fas fa-info-circle"
       style={{

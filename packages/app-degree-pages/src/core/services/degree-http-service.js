@@ -2,8 +2,8 @@
 
 import { fetchData } from "../utils/fetch-data";
 
-// const path = "https://webapp4.asu.edu/programs";
-const path = "/programs";
+const path = "https://webapp4.asu.edu/programs";
+// const path = "/programs";
 
 const DEGREE_SEARCH_URL =
   `https://degreesearch-proxy.apps.asu.edu/degreesearch` +
@@ -32,7 +32,7 @@ async function getDegreePrograms(url) {
  * @returns
  */
 function majorInfoLink(
-  institutionCode,
+  institutionCode = "ASU00",
   acadPlanCode,
   program = "undergrad",
   cert = "false",
@@ -43,6 +43,7 @@ function majorInfoLink(
 }
 
 function mapTooltipLink(location, program = "undergrad") {
+  const path = "/programs";
   return `${path}/tooltipcampus?campus=${location}&amp;program=${program}`;
 }
 
@@ -72,7 +73,7 @@ function requestInfoLink(acadPlanCode, progNameDesc, emailAddress) {
   );
 }
 function saveFav(
-  institutionCode,
+  institutionCode = "ASU00",
   acadPlanCode,
   program = "undergrad",
   cert = "false"

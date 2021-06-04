@@ -1,6 +1,8 @@
 // @ts-check
+import { sanitize } from "dompurify";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 
 import {
   accellerateDegreeLink,
@@ -12,7 +14,7 @@ import {
 import { idGenerator, toTitleCase } from "../../utils";
 import { ChevronIconButton, InfoIcon, FavButton } from "../icons";
 import { ApplyNow, RequestInfo } from "./components";
-import { BoxPreview, Table } from "./index.style";
+import { Table } from "./index.style";
 
 /** @typedef {import("../../models/app-props").GridColumn}  GridColumn */
 /**
@@ -76,13 +78,13 @@ const columns = [
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
-    contentTemplate: ({ col, row, rowIndex, onClick }) => (
+    contentTemplate: ({ row, rowIndex, onClick }) => (
       <div className="cell-container">
         <a
           href={majorInfoLink(row["Institution"], row["AcadPlan"])}
           target="blank"
         >
-          {row[col.dataKey]} {}
+          {row["Descr100"]} {}
         </a>
         <ChevronIconButton onClick={selected => onClick(rowIndex, selected)} />
       </div>
@@ -126,39 +128,46 @@ const columns = [
     },
   },
   {
+    dataKey: "Location",
     label: "Location",
     ariaLabel: "Location: activate to sort column",
     className: "campus-location",
     sortable: true,
-    contentTemplate: ({ row, onMouseOver, onMouseOut }) => (
-      <div className="container">
-        {row["CampusStringArray"]?.map(location => (
-          <div className="row justify-content-between">
-            <a
-              key={location}
-              href={mapTooltipLink(location)}
-              target="blank"
-              // onMouseOver={() => onMouseOver(mapTooltipLink(location))}
-              // onFocus={() => null}
-              // onMouseOut={() => onMouseOut()}
-              // onBlur={() => null}
-            >{`${toTitleCase(location)}, `}</a>
-            <InfoIcon
-              onClick={() =>
-                // todo: refactor this solution
-                fetch(mapTooltipLink(location))
-                  .then(res => res.text())
-                  .then(body => {
-                    alert(`Location\n\n${body}`);
-                  })
-              }
-            />
-          </div>
-        ))}
-      </div>
-    ),
+    contentTemplate: ({ row, onMouseOver }) => {
+      const showTooltip = location =>
+        // todo: refactor this solution
+        fetch(mapTooltipLink(location))
+          .then(res => res.text())
+          .then(body => {
+            onMouseOver(body);
+            // alert(`Location\n\n${body}`);
+          });
+
+      return (
+        <div className="container">
+          {row["CampusStringArray"]?.map(location => (
+            <div className="row justify-content-between">
+              <a
+                key={location}
+                href={mapTooltipLink(location)}
+                target="blank"
+              >{`${toTitleCase(location)}, `}</a>
+              <span
+                data-tip
+                data-for="registerTip"
+                onMouseOver={() => showTooltip(location)}
+                onFocus={() => showTooltip(location)}
+              >
+                <InfoIcon />
+              </span>
+            </div>
+          ))}
+        </div>
+      );
+    },
   },
   {
+    dataKey: "accelerateDegrees",
     label: "Accelerated/ Concurrent",
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
@@ -191,6 +200,7 @@ const columns = [
     ),
   },
   {
+    dataKey: "CollegeDescr100",
     label: "College/School",
     ariaLabel: "College/School: activate to sort column",
     className: "college",
@@ -202,6 +212,7 @@ const columns = [
     ),
   },
   {
+    dataKey: "compare-fav",
     label: "Compare and favorite",
     className: "compare-fav",
     // todo: refactor this solution
@@ -231,6 +242,7 @@ const columns = [
     ),
   },
   {
+    dataKey: "compare-apply-info",
     label: "",
     hasInfo: true,
     ariaLabel: "Apply Now or Request Info",
@@ -264,13 +276,7 @@ const genRowId = idGenerator(`row-`);
  * @returns {JSX.Element}
  */
 const DegreeList = ({ programms }) => {
-  // const [preview, setPreview] = useState({
-  //   isOpen: false,
-  //   url: "",
-  //   posTop: 0,
-  //   posLeft: 0,
-  // });
-  // /** @type {GridColumn []} */
+  const [tooltip, setTooltip] = useState("");
 
   /** @type {{current: HTMLTableSectionElement}} */
   const valueRef = React.useRef(null);
@@ -286,23 +292,20 @@ const DegreeList = ({ programms }) => {
     currentRow.setAttribute("data-is-open", String(selected));
   };
 
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  });
+
   return (
     <section className="container">
-      <BoxPreview className="box-preview">
-        {/* <iframe
-          src={preview.url}
-          width="500px"
-          height="500px"
-          title="preview"
-          style={{
-            display: preview.isOpen ? "block" : "none",
-            position: "absolute",
-            top: preview.posTop,
-            left: preview.posLeft,
+      <ReactTooltip id="registerTip" place="top" effect="solid">
+        <span
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: sanitize(tooltip),
           }}
-        /> */}
-      </BoxPreview>
-
+        />
+      </ReactTooltip>
       <Table>
         <thead>
           <tr role="row">
@@ -338,14 +341,19 @@ const DegreeList = ({ programms }) => {
                           row,
                           rowIndex,
                           onClick: setOpenRowIndex,
+                          onMouseOver: content => setTooltip(content),
                         })}
                       </td>
                     ))}
                   </tr>
 
-                  <tr className="row-info">
-                    <td colSpan={5}>{renderInfo(row)}</td>
-                    <td colSpan={2}>{renderExtraInfo(row)}</td>
+                  <tr key={`${rowId}-row-info`} className="row-info">
+                    <td key={`${rowId}-info`} colSpan={5}>
+                      {renderInfo(row)}
+                    </td>
+                    <td key={`${rowId}-extra-info`} colSpan={2}>
+                      {renderExtraInfo(row)}
+                    </td>
                   </tr>
                 </>
               );

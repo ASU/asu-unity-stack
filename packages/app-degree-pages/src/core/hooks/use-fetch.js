@@ -18,7 +18,6 @@ const useFetch = () => {
     const fetchData = async () => {
       setIsError(false);
       setIsLoading(true);
-
       try {
         const result = await fetch(url).then(res => res.json());
 
