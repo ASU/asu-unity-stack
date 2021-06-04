@@ -11,9 +11,31 @@ h5 {
   line-height: $heading-line-height;
 }
 
+// If there is a heading between two paragraphs,
+// there needs to be more space above the heading than below it to ensure that content is chunked appropriately and remains legible.
+// The following two selectors combined target heading elements surrounded by p elements
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  margin-top: $uds-size-spacing-4;
+}
+
+p:last-of-type + h1,
+p:last-of-type + h2,
+p:last-of-type + h3,
+p:last-of-type + h4,
+p:last-of-type + h5,
+p:last-of-type + h6 {
+  margin-top: $heading-margin;
+}
+
 h1 {
   font-size: $heading-one-font-size;
   letter-spacing: $heading-one-letter-spacing;
+  line-height: normal;
 
   &.article {
     font-size: $heading-one-article-font-size;
@@ -21,6 +43,10 @@ h1 {
 
   @media (max-width: 577px) {
     font-size: $heading-one-mobile-font-size;
+
+    &.article {
+      font-size: $heading-one-mobile-font-size;
+    }
   }
 }
 
@@ -59,47 +85,35 @@ h4 span[class^='highlight-'] {
 h1 span.highlight,
 h2 span.highlight {
   &-gold {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color);
   }
 
   &-black {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-black-background-color,
-      $heading-highlight-black-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-black-background-color,
+      $heading-highlight-black-text-color);
   }
 
   &-white {
-    @include heading-highlight-large-box-shadow(
-      $heading-highlight-white-background-color,
-      $heading-highlight-white-text-color
-    );
+    @include heading-highlight-large-box-shadow($heading-highlight-white-background-color,
+      $heading-highlight-white-text-color);
   }
 }
 
 h3 span.highlight,
 h4 span.highlight {
   &-gold {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color);
   }
 
   &-black {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-black-background-color,
-      $heading-highlight-black-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-black-background-color,
+      $heading-highlight-black-text-color);
   }
 
   &-white {
-    @include heading-highlight-small-box-shadow(
-      $heading-highlight-white-background-color,
-      $heading-highlight-white-text-color
-    );
+    @include heading-highlight-small-box-shadow($heading-highlight-white-background-color,
+      $heading-highlight-white-text-color);
   }
 }
