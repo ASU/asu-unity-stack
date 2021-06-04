@@ -96,6 +96,9 @@ const AboutMe = () => {
         options={termOptions}
         requiredIcon
       />
+      <div className="rfi-consent">
+        TODO GDPR consent wording to go here, dependent on campus selection
+      </div>
     </>
   );
 };
@@ -115,10 +118,7 @@ const aboutMeForm = {
       .min(2, "Too short")
       .max(64, "Too long")
       .required("Required"),
-    Phone: Yup.string() // TODO transform ?
-      .max(24, "Too long")
-      .required("Required"),
-    // mobile: Yup.string(),
+    Phone: Yup.string().max(30, "Too long").required("Required"),
     ZipCode: Yup.string().required("Required"), // TODO Required only if campus != online.
     EntryTerm: Yup.string().required("Required"),
   },

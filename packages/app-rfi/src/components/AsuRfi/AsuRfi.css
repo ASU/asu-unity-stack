@@ -32,6 +32,16 @@ form.uds-form.uds-rfi .rfi-required-footnote svg {
   color: #b72a2a;
 }
 
+.uds-rfi-form-wrapper h2 {
+  margin: 0;
+}
+.uds-rfi-form-wrapper .rfi-steps {
+  font-size: 14px;
+}
+.uds-rfi-form-wrapper .rfi-consent {
+  margin-bottom: 0.5rem;
+}
+
 /* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
    have a solid example of how this should work anyway. Full width wouldn't
    be right. */

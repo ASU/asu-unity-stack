@@ -222,7 +222,6 @@ const Optional = () => {
         id="Comments"
         name="Comments"
       />
-      <div>TODO consent wording to go here, dependent on campus selection</div>
     </>
   );
 };

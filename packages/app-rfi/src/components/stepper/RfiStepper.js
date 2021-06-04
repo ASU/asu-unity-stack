@@ -122,7 +122,9 @@ class RfiStepper extends React.Component {
         <div className="uds-rfi-form-wrapper">
           {/* Don't display step details if we're on the success "step". */}
           {step !== lastStep ? (
-            <div>{`Step ${step + 1} of ${totalSteps}`}</div>
+            <div className="rfi-steps">{`Step ${
+              step + 1
+            } of ${totalSteps}`}</div>
           ) : undefined}
           {!Test ? (
             step === 0 ? (
