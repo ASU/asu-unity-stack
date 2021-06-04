@@ -147,6 +147,30 @@ export const cardBody = () => `
   </div>
 `;
 
+export const cardIcon = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <div class="card">
+        <div class="card-header card-header-icon">
+        <i class="fas fa-newspaper fa-2x card-icon"></i>
+            <h3 class="card-title">Headline goes here</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+            </p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-maroon">Button text</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+`;
+
 export const cardEventInfo = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
