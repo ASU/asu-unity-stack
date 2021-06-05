@@ -1,15 +1,31 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
 const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
+  // Surface values from Formik context
+  const { values } = useFormikContext();
+
+  // Ideally we'd not have implementation logic in this generic component, but
+  // due to structural challenges in obtaining sibling field values via form
+  // context, implementing that here with conditional protections is the most
+  // reasonable solve identified.
+  function customValidate(value) {
+    let error;
+    // Require ZipCode unless Campus is "ONLNE".
+    if (id === "ZipCode" && values.Campus !== "ONLNE" && !value) {
+      error = "Required";
+    }
+    return error;
+  }
+
   return (
-    <Field name={name}>
+    <Field name={name} validate={customValidate}>
       {({ field, form: { touched, errors }, meta }) => {
         const isError = meta.touched && meta.error;
         return (

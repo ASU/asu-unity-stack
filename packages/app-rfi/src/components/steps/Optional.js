@@ -151,6 +151,12 @@ const Optional = () => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
+  // Zip
+  useEffect(() => {
+    // Default to required code from previous step.
+    values.Zip = values.ZipCode;
+  }, []);
+
   // Countries
   useEffect(() => {
     // Fetch country options.

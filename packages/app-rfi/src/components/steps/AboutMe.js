@@ -83,6 +83,10 @@ const AboutMe = () => {
     setTermOptions(termData);
   }, []); // Run only once. TODO change so we can update based on selections.
 
+  // TODO swap Term label - but need to know mechanism first... Confirm.
+  // HS students: When will you be graduating from high schooll?
+  // Transfer and Grad: When do you anticipate starting at ASU?
+
   return (
     <>
       <h3>About me</h3>
@@ -107,22 +111,18 @@ const AboutMe = () => {
         helperText="Last name"
       />
       <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon />
-      {/* <RfiCheckboxSingle id="mobile" name="mobile" value="1">
-        This is a USA mobile number and I would like to receive information via
-        SMS text messaging
-      </RfiCheckboxSingle> */}
       <RfiTextInput
         label="Postal code"
         id="ZipCode"
         name="ZipCode"
-        requiredIcon
+        requiredIcon={values.Campus !== "ONLNE"}
       />
       <RfiSelect
         label="My start date"
         id="EntryTerm"
         name="EntryTerm"
         options={termOptions}
-        requiredIcon
+        requiredIcon={values.Campus !== "ONLNE"}
       />
       <RfiGdpr campus={values.Campus} />
     </>
@@ -145,27 +145,12 @@ const aboutMeForm = {
       .max(64, "Too long")
       .required("Required"),
     Phone: Yup.string().max(30, "Too long").required("Required"),
-    // TODO MAYBE WE DON'T USE YUP FOR CONDITIONAL REQ VALIDATIONS?
-    ZipCode: Yup.string().required("Required"), // TODO Required only if campus != online.
-    // ZipCode: Yup.string().when("Campus", {
-    //   is: "ONLNE",
-    //   otherwise: d => d.required("Required"),
-    //   // then: Yup.string(),
-    //   // otherwise: Yup.string().required("Required"),
-    // }), // TODO Required only if campus != online.
-    // ZipCode: Yup.string().test(
-    //   "test-zipcode",
-    //   "Validation failure message",
-    //   // eslint-disable-next-line no-unused-vars
-    //   function ziptest(value, context) {
-    //     // return value.length > 0;
-    //     // console.log(values, "VAAAAAAAALUES");
-    //     console.log(value, "VAAAAAAAALUE");
-    //     console.log(context, "CONTEXXXXXXXT");
-    //     return false;
-    //   }
-    // ),
-    EntryTerm: Yup.string().required("Required"),
+    // ZipCode and EnteryTerm are required if campus != online. Conditional
+    // validation is deferred to Formik and implemented via customValidate() in
+    // RfiTextInput.js and RfiSelect.js for better access to sibling field
+    // values thru useFormikContext.
+    ZipCode: Yup.string(),
+    EntryTerm: Yup.string(),
     GdprConsent: Yup.boolean()
       .required("Consent is required")
       .oneOf([true], "Consent is required"),
