@@ -1,17 +1,21 @@
 // DISABLED@ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { Field, useField, useFormikContext } from "formik";
+import { useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
+import Select, { OptionProps } from "react-select";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-// Note: We use a mix of Field and useField here to circumvent issues
-// experienced using solely one of the other.
+// Implmenting React Select with Formik and Yup integation can be a bit tricky.
+// Using this approach minus the Typescript bits:
+// https://gist.github.com/hubgit/e394e9be07d95cd5e774989178139ae8#gistcomment-3168746
+// See also the note below included with the Select props, about how we've
+// implemented custom validation.
 
 const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
-  const [field, meta] = useField({ name });
+  const [field, meta, helpers] = useField({ name });
   const isError = meta.touched && meta.error; // TODO generating non fatal error
 
   // Surface values from Formik context
@@ -33,24 +37,23 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
-      <Field
-        as="select"
-        id={id}
-        className="form-control"
-        error={isError}
-        disabled={disabled}
-        validate={customValidate}
-        {...field}
-      >
-        {options.map(option => (
-          <option
-            key={option.key ? option.key : option.value}
-            value={option.value}
-          >
-            {option.text}
-          </option>
-        ))}
-      </Field>
+      <Select
+        options={options}
+        name={name}
+        value={
+          options ? options.find(option => option.value === field.value) : ""
+        }
+        isDisabled={disabled}
+        onChange={option => helpers.setValue(option.value)}
+        onBlur={field.onBlur}
+        // NOTE on custom validation - since we're not using the Formik Field
+        // component here, we can't use the validate prop to configure a custom
+        // validation function like we do in RfiTextInput.js for implementing
+        // validation that has dependencies across steps. As a solve, for
+        // Select fields requiring such logic, we implement it in a custom
+        // validate function attached via the Formik component's validate prop
+        // in RfiStepper.js.
+      />
       <RfiError isError={isError} metaError={meta.error} />
     </div>
   );

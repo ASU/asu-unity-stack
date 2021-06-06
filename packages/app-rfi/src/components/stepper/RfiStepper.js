@@ -49,9 +49,26 @@ class RfiStepper extends React.Component {
     });
   };
 
-  render() {
-    console.log(this.props, "props in RfiStepper");
+  // Validation for RfiSelect fields with dependencies across steps that don't
+  // play well with Formik and Yup. We implement standard Formik, form-level,
+  // non-Yup validation for this. More details in RfiSelect.js. Other field
+  // types that require custom validation with cross-step dependencies should
+  // see RfiTextInputs.js for a more flexible field-based approach.
+  // See Formik validation flavors: https://formik.org/docs/guides/validation
+  validate = values => {
+    const errors = {};
+    // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
+    if (
+      this.state.step === 1 &&
+      values.Campus !== "ONLNE" &&
+      !values.EntryTerm
+    ) {
+      errors.EntryTerm = "Entry term is required";
+    }
+    return errors;
+  };
 
+  render() {
     const { step } = this.state;
     const {
       validationSchemas,
@@ -141,6 +158,7 @@ class RfiStepper extends React.Component {
           <Formik
             initialValues={initValues}
             validationSchema={Yup.object().shape(schema)}
+            validate={this.validate}
             onSubmit={(
               values,
               { setSubmitting, setFieldTouched, resetForm } /* FormikBag */
@@ -222,10 +240,10 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
         ) : (
           <Button
             type="submit"
-            className="rfi-button btn btn-gold"
+            className="rfi-submit btn btn-gold"
             disabled={!!submitting}
           >
-            Consent/submit
+            Submit
           </Button>
         )}
       </div>

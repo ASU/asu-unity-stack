@@ -64,22 +64,20 @@ const AboutMe = () => {
       // Drop spring for current year.
       if (i > 0) {
         termData.push({
-          key: termSpring,
           value: termSpring,
-          text: `${year} Spring`,
+          label: `${year} Spring`,
         });
       }
       // Drop fall for current year if currMo is greater than June.
       if (i > 0 || currMo < 6) {
         // Month is based off zero index.
         termData.push({
-          key: termFall,
           value: termFall,
-          text: `${year} Fall`,
+          label: `${year} Fall`,
         });
       }
     }
-    termData.unshift({ key: -1, value: "", text: "-- select start date --" });
+    // termData.unshift({ value: "", label: "-- select start date --" });
     setTermOptions(termData);
   }, []); // Run only once. TODO change so we can update based on selections.
 
@@ -154,8 +152,6 @@ const aboutMeForm = {
     GdprConsent: Yup.boolean()
       .required("Consent is required")
       .oneOf([true], "Consent is required"),
-    // Dependencies from other steps
-    // Campus: Yup.string(),
   },
 
   initialValues: {
@@ -163,12 +159,9 @@ const aboutMeForm = {
     FirstName: undefined,
     LastName: undefined,
     Phone: undefined,
-    // mobile: undefined,
     ZipCode: undefined,
     EntryTerm: undefined,
     GdprConsent: undefined,
-    // Dependencies from other steps, value set from formik context.
-    // Campus: values.Campus,
   },
 };
 

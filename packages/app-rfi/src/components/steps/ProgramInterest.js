@@ -78,32 +78,26 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
 }
 
 const campusOptions = [
-  { key: "0", value: "", text: "-- Select --" },
   {
-    key: "1",
     value: "GROUND",
-    text: "I plan to take some/all of my classes on campus",
+    label: "I plan to take some/all of my classes on campus",
   },
   {
-    key: "2",
     value: "ONLNE",
-    text: "I plan to study 100% online through ASU Online",
+    label: "I plan to study 100% online through ASU Online",
   },
   {
-    key: "3",
     value: "NOPREF",
-    text: "I am not sure",
+    label: "I am not sure",
   },
 ];
 
 const studentTypeOptions = [
-  { key: "0", value: "", text: "-- Select --" },
-  { key: "1", value: "First Time Freshman", text: "First-year undergraduate" },
-  { key: "2", value: "Transfer", text: "Transferring undergraduate" },
+  { value: "First Time Freshman", label: "First-year undergraduate" },
+  { value: "Transfer", label: "Transferring undergraduate" },
   {
-    key: "3",
     value: "Readmission",
-    text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
+    label: "Graduate (Masters, PhD, EdD, DNP, etc.)",
   },
 ];
 
@@ -112,19 +106,15 @@ const studentTypeOptions = [
 const ProgramInterest = () => {
   const [degreeData, setDegreeData] = useState([]);
   const [areaInterestOptions, setAreaInterestOptions] = useState([
-    { key: "0", value: "", text: "-- Select --" },
     {
-      key: "1",
       value: "",
-      text: "Load failed. Please try again in 5 minutes.",
+      label: "Load failed. Please try again in 5 minutes.",
     },
   ]);
   const [programInterestOptions, setProgramInterestOptions] = useState([
-    { key: "0", value: "", text: "-- Select --" },
     {
-      key: "1",
       value: "",
-      text: "Load failed. Please try again in 5 minutes.",
+      label: "Load failed. Please try again in 5 minutes.",
     },
   ]);
 
@@ -135,6 +125,10 @@ const ProgramInterest = () => {
   const degreeDataIsLoaded = () => {
     console.log(degreeData, "degreeDataIsLoaded() CHECK");
     // return true;
+    // TODO confirm not causing issues. Here for defense.
+    if (typeof degreeData !== "object") {
+      return false;
+    }
     return degreeData.length;
     // return degreeData.length > 0 && typeof degreeData.map === "function";
   };
@@ -189,12 +183,13 @@ const ProgramInterest = () => {
     // TODO HOLD WAITING ON FIELD DATA BEING VALID
     // TODO Map areaInterstOptions / Interest1 planCatDescr
     if (values.Campus !== "ONLNE") {
+      // [{ key: "0", value: "", text: "-- Select --" }].concat(
       setAreaInterestOptions(
         degreeData.map(program => ({
-          key: program.AcadPlan,
           value: program.AcadPlan,
-          text: `MOCK: ${program.Descr100}`,
+          label: `MOCK: ${program.Descr100}`,
         }))
+        // )
       );
       console.log(programInterestOptions, "mock areaInterestOptions SET");
     }
@@ -214,9 +209,8 @@ const ProgramInterest = () => {
       // ASUOnline mapping
       setProgramInterestOptions(
         degreeData.map(program => ({
-          key: program.code,
           value: program.code,
-          text: program.title,
+          label: program.title,
         }))
       );
       console.log(programInterestOptions, "programInterestOptions SET");
@@ -224,9 +218,8 @@ const ProgramInterest = () => {
       // Degree Search REST mapping
       setProgramInterestOptions(
         degreeData.map(program => ({
-          key: program.AcadPlan,
           value: program.AcadPlan,
-          text: program.Descr100,
+          label: program.Descr100,
         }))
       );
       console.log(programInterestOptions, "programInterestOptions SET");
@@ -282,8 +275,11 @@ const programInterestForm = {
   validationSchema: {
     Campus: Yup.string().required("Required"),
     CareerAndStudentType: Yup.string().required("Required"),
-    Interest1: Yup.string().required("Required"),
-    Interest2: Yup.string().required("Required"),
+    // TODO commented out while DS REST API is broken.
+    // Interest1: Yup.string().required("Required"),
+    // Interest2: Yup.string().required("Required"),
+    Interest1: Yup.string(),
+    Interest2: Yup.string(),
   },
 
   initialValues: {

@@ -12,18 +12,15 @@ import {
 
 // Options
 function getCountryOptions(resultsArrayOfObjects) {
-  let i = 1;
   // TODO Resolve eslint error when dust settles. Not hurting anything for now.
   // eslint-disable-next-line no-return-assign
   const results = resultsArrayOfObjects.map(co => ({
-    key: (i += 1),
     value: co.countryCodeTwoChar,
-    text: co.description,
+    label: co.description,
   }));
   results.unshift({
-    key: 0,
     value: "",
-    text: "-- select state or province --",
+    label: "-- select state or province --",
   });
   return results;
 }
@@ -33,9 +30,8 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
   if (!(formikValues.Country === "US" || formikValues.Country === "CA")) {
     return [
       {
-        key: 0,
         value: "",
-        text: "",
+        label: "",
       },
     ];
   }
@@ -52,18 +48,15 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
   // Filter out problematic IGD value.
   const arrayOfStates = states.filter(country => country.stateCode !== "IGD");
 
-  let i = 1;
   // TODO Resolve eslint error when dust settles. Not hurting anything for now.
   // eslint-disable-next-line no-return-assign
   const results = arrayOfStates.map(st => ({
-    key: (i += 1),
     value: st.description,
-    text: st.description,
+    label: st.description,
   }));
   results.unshift({
-    key: 0,
     value: "",
-    text: "-- select state or province --",
+    label: "-- select state or province --",
   });
   return results;
 }
@@ -117,12 +110,12 @@ async function fetchCountries(optionsCallback, formikValues) {
 }
 
 const veteranStatusOptions = [
-  { key: "1", value: "None", text: "None" },
-  { key: "2", value: "Active Duty", text: "Active Duty" },
-  { key: "3", value: "National Guard", text: "National Guard" },
-  { key: "4", value: "Veteran", text: "Veteran" },
-  { key: "5", value: "Armed forces reserve", text: "Armed forces reserve" },
-  { key: "6", value: "Spouse/Dependent", text: "Spouse/Dependent" },
+  { value: "None", label: "None" },
+  { value: "Active Duty", label: "Active Duty" },
+  { value: "National Guard", label: "National Guard" },
+  { value: "Veteran", label: "Veteran" },
+  { value: "Armed forces reserve", label: "Armed forces reserve" },
+  { value: "Spouse/Dependent", label: "Spouse/Dependent" },
 ];
 
 // Datepicker note: see https://stackblitz.com/edit/demo-react-formik-datepicker
@@ -131,19 +124,15 @@ const veteranStatusOptions = [
 
 const Optional = () => {
   const [countryOptions, setCountries] = useState([
-    { key: "0", value: "", text: "-- Select --" },
     {
-      key: "1",
       value: "error",
-      text: "Load failed. Please try again in 5 minutes.",
+      label: "Load failed. Please try again in 5 minutes.",
     },
   ]);
   const [stateOptions, setStates] = useState([
-    { key: "0", value: "", text: "-- Select --" },
     {
-      key: "1",
       value: "error",
-      text: "Load failed. Please try again in 5 minutes.",
+      label: "Load failed. Please try again in 5 minutes.",
     },
   ]);
   const [statesDisabled, setStatesDisabled] = useState(true);
