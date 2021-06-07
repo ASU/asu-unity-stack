@@ -46,9 +46,12 @@
   .nav-link {
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-3 0;
-    border-bottom: 1px solid $uds-color-base-gray-3;
     text-align: start;
     font-weight: 400;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $uds-color-base-gray-3;
+    }
 
     &:visited {
       color: $uds-color-base-gray-7;
@@ -129,6 +132,13 @@
 @include media-breakpoint-up(lg) {
   .uds-anchor-menu.uds-anchor-menu-expanded-lg {
     @include uds-anchor-menu-expanded;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .uds-anchor-menu h4 {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
