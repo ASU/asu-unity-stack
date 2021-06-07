@@ -1,3 +1,4 @@
+export * from "./AnchorMenu";
 export * from "./Article";
 export * from "./Card";
 export * from "./Button";

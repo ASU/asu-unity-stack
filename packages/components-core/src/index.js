@@ -6,6 +6,7 @@ import {
   ButtonTag,
   Pagination,
   Testimonial,
+  AnchorMenu,
 } from "./components";
 
 export * from "./utils";
@@ -18,4 +19,5 @@ export {
   ButtonTag,
   Pagination,
   Testimonial,
+  AnchorMenu,
 };
