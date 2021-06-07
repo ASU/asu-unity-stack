@@ -12,6 +12,8 @@ const toolBar = `
                 <a class="nav-link" href="buttonIconOnly.html"><span class="fas fa-hand-spock"></span>Button Icon Only</a>
                 <a class="nav-link" href="buttonTag.html"><span class="fas fa-hand-spock"></span>Button Tag</a>
                 <a class="nav-link" href="card.html"><span class="fas fa-hand-spock"></span>Card</a>
+                <a class="nav-link" href="hero.html"><span class="fas fa-hand-spock"></span>Hero</a>
+                <a class="nav-link" href="pagination.html"><span class="fas fa-hand-spock"></span>Pagination</a>
                 <a class="nav-link" href="testimonial.html"><span class="fas fa-hand-spock"></span>Testimonial</a>
               </nav>
             </div>
