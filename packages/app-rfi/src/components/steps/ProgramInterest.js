@@ -163,7 +163,12 @@ const ProgramInterest = () => {
 
     if (values.Campus !== "ONLNE") {
       // Create array of Area of Interest arrays with duplicates.
-      const dupAoIArrays = degreeData.map(e => [...e.planCatDescr]);
+      const dupAoIArrays = degreeData.map(e => {
+        if (e.planCatDescr) {
+          return [...e.planCatDescr];
+        }
+        return [];
+      });
       // Concatenate all arrays together, turn into Set so dupes are removed,
       // and then destructure back into an array. And sort alphabetically.
       const areasOfInterest = [
@@ -259,11 +264,8 @@ const programInterestForm = {
   validationSchema: {
     Campus: Yup.string().required("Required"),
     CareerAndStudentType: Yup.string().required("Required"),
-    // TODO commented out while DS REST API is broken.
-    // Interest1: Yup.string().required("Required"),
-    // Interest2: Yup.string().required("Required"),
-    Interest1: Yup.string(),
-    Interest2: Yup.string(),
+    Interest1: Yup.string().required("Required"),
+    Interest2: Yup.string().required("Required"),
   },
 
   initialValues: {
