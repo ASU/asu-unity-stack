@@ -135,6 +135,12 @@ const Table = styled.table`
       line-height: 1.5;
     }
   }
+
+  tfoot {
+    ul {
+      margin-bottom: 0 !important;
+    }
+  }
 `;
 
 export { Table, BoxPreview };
