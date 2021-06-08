@@ -6,19 +6,6 @@ import * as Yup from "yup";
 
 import { RfiSelect } from "../controls";
 
-// Helper functions
-
-function safelyParseJSON(json) {
-  let parsed;
-  try {
-    parsed = JSON.parse(json);
-  } catch (e) {
-    console.log(e, "Error parsing JSON");
-    console.log(json, "Error JSON");
-  }
-  return parsed; // Could be undefined!
-}
-
 // Options
 
 // Fetch degree data from our CF reverse proxy of Degree Search REST API.
@@ -58,23 +45,14 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
 
   // Degree Search REST API
   program = CareerAndStudentType === "Readmission" ? "graduate" : "undergrad";
-  serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg&program=${program}&cert=false`;
+  serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&program=${program}&cert=false`;
 
-  return (
-    fetch(serviceUrl, {
-      headers: {
-        // eslint-disable-next-line prettier/prettier
-        Accept: "application/json",
-      },
+  return fetch(serviceUrl)
+    .then(response => response.json())
+    .then(data => {
+      return data;
     })
-      // Handle as text first due to encoding issues.
-      .then(response => response.text()) // Get as raw text first
-      .then(raw => {
-        return safelyParseJSON(raw);
-      })
-      // .then(data => console.log(data, "data from safelyParseJson"))
-      .catch(error => new Error(error))
-  );
+    .catch(error => new Error(error));
 }
 
 const campusOptions = [
@@ -133,7 +111,7 @@ const ProgramInterest = () => {
     // return degreeData.length > 0 && typeof degreeData.map === "function";
   };
 
-  // FETCH data from Degree Search REST API.
+  // FETCH master degree data from Degree Search REST API.
   useEffect(() => {
     // TODO implment sessionStorage, see pg 159 in Learning React
     // HOLD on using sessionStorage due to limiting complexity while getting
@@ -142,12 +120,15 @@ const ProgramInterest = () => {
     // Fetch master of degree data.
 
     fetchDegreeData(values.Campus, values.CareerAndStudentType).then(data => {
-      // ASUOnline data
       if (values.Campus === "ONLNE") {
+        // ASUOnline data
+        // Already sorted alpha by service, for us.
         setDegreeData(data);
         console.log(data, "fetched degreeData ONLNE");
       } else {
         // Degree Search data
+        // Sort alpha on degree name.
+        data.programs.sort((a, b) => (a.Descr100 > b.Descr100 ? 1 : -1));
         setDegreeData(data.programs);
         console.log(data.programs, "fetched degreeData");
       }
@@ -180,16 +161,19 @@ const ProgramInterest = () => {
       return;
     }
 
-    // TODO HOLD WAITING ON FIELD DATA BEING VALID
-    // TODO Map areaInterstOptions / Interest1 planCatDescr
     if (values.Campus !== "ONLNE") {
-      // [{ key: "0", value: "", text: "-- Select --" }].concat(
+      // Create array of Area of Interest arrays with duplicates.
+      const dupAoIArrays = degreeData.map(e => [...e.planCatDescr]);
+      // Concatenate all arrays together, turn into Set so dupes are removed,
+      // and then destructure back into an array. And sort alphabetically.
+      const areasOfInterest = [
+        ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
+      ].sort();
       setAreaInterestOptions(
-        degreeData.map(program => ({
-          value: program.AcadPlan,
-          label: `MOCK: ${program.Descr100}`,
+        areasOfInterest.map(aoi => ({
+          value: aoi,
+          label: aoi,
         }))
-        // )
       );
       console.log(programInterestOptions, "mock areaInterestOptions SET");
     }
@@ -204,7 +188,6 @@ const ProgramInterest = () => {
     console.log(degreeData, "programInterestOptions degreeData CHECKIN");
 
     // Map programPlanOptions for Interest2
-    // DS REST value: AcadPlan and label: Descr100;
     if (values.Campus === "ONLNE") {
       // ASUOnline mapping
       setProgramInterestOptions(
@@ -216,6 +199,7 @@ const ProgramInterest = () => {
       console.log(programInterestOptions, "programInterestOptions SET");
     } else {
       // Degree Search REST mapping
+      // DS REST value: AcadPlan and label: Descr100;
       setProgramInterestOptions(
         degreeData.map(program => ({
           value: program.AcadPlan,
@@ -232,8 +216,8 @@ const ProgramInterest = () => {
   return (
     <>
       <p>
-        Please complete and submit the form below, and a representative will
-        contact you about enrolling at ASU
+        To learn more about ASU or a specific program, fill out the form below
+        then check your email.
       </p>
       <RfiSelect
         label="Which applies to you?"

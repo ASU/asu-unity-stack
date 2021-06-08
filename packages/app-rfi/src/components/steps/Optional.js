@@ -213,7 +213,7 @@ const Optional = () => {
         options={veteranStatusOptions}
       />
       <RfiTextArea
-        label="Additional assistance requested"
+        label="Do you have any questions?"
         id="Comments"
         name="Comments"
       />
