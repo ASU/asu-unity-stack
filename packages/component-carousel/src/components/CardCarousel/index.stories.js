@@ -22,7 +22,7 @@ const myCarouselItems = [];
 for (let index = 0; index < 8; index += 1) {
   const content =
     index === 3
-      ? "Short Body Content"
+      ? "Only two lines of text here, to show our fixed height."
       : `Body ${index + 1}
     copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
     amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
