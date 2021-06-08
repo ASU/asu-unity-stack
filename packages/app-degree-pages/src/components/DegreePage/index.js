@@ -24,6 +24,7 @@ import { urlResolver } from "../../core/utils/data-path-resolver";
  */
 const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, isLoading, isError }, doFetchPrograms] = useFetch();
+  const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
   const url = urlResolver(degreeList.dataSource);
 
@@ -46,6 +47,8 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     location: locations,
   }) => {
     if (acceleratedConcurrent || locations) {
+      setSearchLoading(true);
+
       /** @param {Object.<string, []>} row  */
       const isValidCampus = (row = {}) => {
         const campusList = row["CampusStringArray"];
@@ -65,6 +68,8 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         isValidCampus(row) && isValidAcceleratedConcurrent(row);
 
       setTableView(data.programs.filter(doFilter));
+
+      setSearchLoading(false);
     }
   };
 
@@ -75,9 +80,11 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
    * @param {string} keyword
    */
   const onDegreeSeaerch = keyword => {
+    setSearchLoading(true);
     setTableView(
-      data.programs.filter(row => row["DescrlongExtns"].contains(keyword))
+      data.programs.filter(row => row["DescrlongExtns"]?.includes?.(keyword))
     );
+    setSearchLoading(false);
   };
 
   return (
@@ -99,7 +106,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           onCleanFilters={onDegreeCleanFilters}
         />
         {isError && <div>Something went wrong ...</div>}
-        {isLoading ? <div>Loading ...</div> : null}
+        {isLoading || searchLoading ? <div>Loading ...</div> : null}
         <DegreeList loading={isLoading} programms={tableView} />
       </main>
     </>
