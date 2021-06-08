@@ -30,7 +30,12 @@ const RfiGdpr = ({ campus }) => {
         className="rfi-consent-wording"
         dangerouslySetInnerHTML={createMarkup(gdprWording)}
       />
-      <RfiCheckboxSingle id="GdprConsent" name="GdprConsent" requiredIcon>
+      <RfiCheckboxSingle
+        id="GdprConsent"
+        name="GdprConsent"
+        value="1"
+        requiredIcon
+      >
         I consent
       </RfiCheckboxSingle>
     </div>

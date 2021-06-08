@@ -76,9 +76,8 @@ RfiSelect.propTypes = {
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string,
       value: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
+      label: PropTypes.string,
     })
   ).isRequired,
   disabled: PropTypes.bool,
