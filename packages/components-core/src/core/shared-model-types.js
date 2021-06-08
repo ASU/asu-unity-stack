@@ -8,6 +8,7 @@
  *  totalPages?: number,
  *  showFirstButton?: boolean,
  *  showLastButton?: boolean,
+ *  totalNumbers?: number,
  *  onChange: (e: Event, pages: number) => void,
  * }} PaginationProps
  */
