@@ -6,6 +6,7 @@ import {
   ButtonTag,
   Pagination,
   Testimonial,
+  AnchorMenu,
   Hero,
 } from "./components";
 
@@ -19,5 +20,6 @@ export {
   ButtonTag,
   Pagination,
   Testimonial,
+  AnchorMenu,
   Hero,
 };

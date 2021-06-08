@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { AnchorMenu } from "../components/AnchorMenu";
 import { Article } from "../components/Article";
 import { Button } from "../components/Button";
 import { ButtonIconOnly } from "../components/ButtonIconOnly";
@@ -25,6 +26,12 @@ import { Testimonial } from "../components/Testimonial";
 const RenderReact = (component, props, target) => {
   ReactDOM.render(React.createElement(component, props), target);
 };
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initAnchorMenu = ({ targetSelector, props }) =>
+  RenderReact(AnchorMenu, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props
