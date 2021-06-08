@@ -7,6 +7,8 @@ import { Button } from "../components/Button";
 import { ButtonIconOnly } from "../components/ButtonIconOnly";
 import { ButtonTag } from "../components/ButtonTag";
 import { Card } from "../components/Card";
+import { Hero } from "../components/Hero";
+import { Pagination } from "../components/Pagination";
 import { Testimonial } from "../components/Testimonial";
 
 /**
@@ -57,5 +59,17 @@ export const initCard = ({ targetSelector, props }) =>
 /**
  * @param {ComponentProps} props
  */
+export const initPagination = ({ targetSelector, props }) =>
+  RenderReact(Pagination, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
 export const initTestimonial = ({ targetSelector, props }) =>
   RenderReact(Testimonial, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initHero = ({ targetSelector, props }) =>
+  RenderReact(Hero, props, document.querySelector(targetSelector));

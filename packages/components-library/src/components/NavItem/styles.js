@@ -48,7 +48,7 @@ const navItemStyles = breakpoint => css`
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       > a {
         padding: 0.5rem 0;
-        white-space: normal;
+        white-space: nowrap;
 
         :visited {
           color: #191919;

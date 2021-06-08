@@ -38,12 +38,10 @@ const handleClick = e => {
 };
 
 const Template = args => {
-  const { label } = args;
-
   return (
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">
-        <ButtonTag {...args}>{label}</ButtonTag>
+        <ButtonTag {...args} />
       </div>
     </div>
   );
@@ -67,7 +65,7 @@ const ReactRouterTemplate = args => (
   <Router>
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">
-        <ButtonTag {...args}>React Router Link</ButtonTag>
+        <ButtonTag {...args} />
       </div>
     </div>
   </Router>
@@ -76,6 +74,7 @@ const ReactRouterTemplate = args => (
 export const ReactRouterLinkTag = ReactRouterTemplate.bind({});
 ReactRouterLinkTag.args = {
   color: "white",
+  label: "Ract Router Link",
   element: Link,
   to: "/#example-link",
 };
