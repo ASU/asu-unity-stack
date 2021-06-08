@@ -98,6 +98,23 @@ import { tagHeadings } from "./constants";
  */
 
 /**
+ * @typedef {{
+ *  text: string
+ *  url: string
+ * }} AtAGlanceItem
+ */
+
+/**
+ *  @typedef {{
+ *    offeredBy: AtAGlanceItem
+ *   locations: AtAGlanceItem[]
+ *   firstRequirementMathCourse: string
+ *   mathIntensity: string
+ *  timeCommitment: string
+ * }} AtAGlanceProps
+ */
+
+/**
  * This help VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */

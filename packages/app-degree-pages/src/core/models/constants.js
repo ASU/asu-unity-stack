@@ -11,4 +11,15 @@ const tagHeadings = {
 
 const tagHeadingList = Object.values(tagHeadings);
 
-export { tagHeadings, tagHeadingList };
+const glanceItemsMap = {
+  offeredBy: { icon: "university", title: "Offered by" },
+  locations: { icon: "map-marker-alt", title: "Location" },
+  firstRequirementMathCourse: {
+    icon: "pencil-alt",
+    title: "First Required math Course",
+  },
+  mathIntensity: { icon: "calculator", title: "Math intensity" },
+  timeCommitment: { icon: "calendar-alt", title: "Time commitment" },
+};
+
+export { tagHeadings, tagHeadingList, glanceItemsMap };
