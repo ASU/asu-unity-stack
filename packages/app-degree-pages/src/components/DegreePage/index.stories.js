@@ -34,10 +34,17 @@ UndergraduateDegreePage.args = {
   hero: {
     image: {
       url: "https://source.unsplash.com/random/800x400?a=1",
+      altText: "Undergraduate Degree Title",
+      size: "small",
     },
-    content: {
-      text: "Undergraduate Degrees",
+    title: {
+      text: "Undergraduate Degree Title",
     },
+    contents: [
+      {
+        text: "Undergraduate Degrees",
+      },
+    ],
   },
   introContent: {
     type: "text",
@@ -72,9 +79,11 @@ AreaStudyDgreePage1.args = {
     image: {
       url: "https://source.unsplash.com/random/800x400?a=1",
     },
-    content: {
-      text: "Area of study degrees",
-    },
+    contents: [
+      {
+        text: "Area of study degrees",
+      },
+    ],
   },
   introContent: {
     type: "text-photo-grid",
@@ -125,9 +134,11 @@ AreaStudyDgreePage2.args = {
     image: {
       url: "https://source.unsplash.com/random/800x400?a=1",
     },
-    content: {
-      text: "[Subdomain] degrees in [area of study]",
-    },
+    contents: [
+      {
+        text: "[Subdomain] degrees in [area of study]",
+      },
+    ],
   },
   introContent: {
     type: "text-image-overlay",

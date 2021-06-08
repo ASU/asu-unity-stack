@@ -26,12 +26,6 @@ import { tagHeadings } from "./constants";
  * @typedef {AppContentProps & ChildType} AppTitleProps
  */
 
-/**
- * @typedef {{
- *    image: AppImageProps
- *    content?: AppContentProps
- * }} HeroProps
- */
 
 /**
  * @typedef {{
@@ -91,7 +85,7 @@ import { tagHeadings } from "./constants";
 /**
  * @typedef {{
  *  sharedDataSources?: AppDataSource []
- *  hero?: HeroProps
+ *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  degreeList?: GridListProps
  * }} AppProps

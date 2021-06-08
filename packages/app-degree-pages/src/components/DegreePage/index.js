@@ -1,4 +1,5 @@
 // @ts-check
+import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
@@ -16,7 +17,7 @@ import { urlResolver } from "../../core/utils/data-path-resolver";
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const DegreePage = ({ introContent, degreeList }) => {
+const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, isLoading, isError }, doFetchPrograms] = useFetch();
   const url = urlResolver(degreeList.dataSource);
 
@@ -24,11 +25,13 @@ const DegreePage = ({ introContent, degreeList }) => {
     doFetchPrograms(url);
   }, [url]);
 
-  console.log("(data.programs)", data);
-
   return (
     <>
-      {/* <Hero image={hero.image} content={hero.content} /> */}
+      <Hero
+        image={hero.image}
+        title={{ ...hero.title, cssClass: ["text-white"] }}
+        contents={hero.contents}
+      />
 
       <main className="container" data-is-loading={isLoading}>
         <IntroContent
@@ -52,6 +55,7 @@ const DegreePage = ({ introContent, degreeList }) => {
 };
 
 DegreePage.propTypes = {
+  hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
   degreeList: PropTypes.shape({
     dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
