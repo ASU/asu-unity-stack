@@ -100,6 +100,12 @@
         max-width: 100%;
       }
 
+      h3 {
+        //Needs to left-align with a h1, which has exactly twice the
+        //font-size, and so needs half the normal h3 padding.
+        padding-left: 10px;
+      }
+
       p {
         display: none;
       }
