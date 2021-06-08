@@ -7,6 +7,7 @@ import {
   Pagination,
   Testimonial,
   AnchorMenu,
+  Hero,
 } from "./components";
 
 export * from "./utils";
@@ -20,4 +21,5 @@ export {
   Pagination,
   Testimonial,
   AnchorMenu,
+  Hero,
 };
