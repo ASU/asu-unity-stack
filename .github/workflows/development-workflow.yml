@@ -11,7 +11,6 @@ jobs:
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
-      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node: ["12", "14"]
@@ -19,11 +18,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Setup node and create .npmrc
+      - name: Setup node to install packages from npm
         uses: actions/setup-node@v2
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           node-version: ${{ matrix.node }}
-          registry-url: "https://npm.pkg.github.com"
+          registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -46,6 +47,14 @@ jobs:
       - name: Run tests
         run: |
           echo 'Tests temporarily disabled'
+
+      - name: Setup node for publishing to Github packages
+        uses: actions/setup-node@v2
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
         run: |
