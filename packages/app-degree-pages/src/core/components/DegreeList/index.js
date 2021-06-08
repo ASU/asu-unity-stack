@@ -1,7 +1,9 @@
+/* eslint-disable react/no-danger */
 // @ts-check
+import { Pagination } from "@asu-design-system/components-core";
 import { sanitize } from "dompurify";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
 import {
@@ -11,7 +13,7 @@ import {
   requestInfoLink,
   saveFav,
 } from "../../services/degree-http-service";
-import { idGenerator, toTitleCase } from "../../utils";
+import { computePages, idGenerator, toTitleCase } from "../../utils";
 import { ChevronIconButton, InfoIcon, FavButton } from "../icons";
 import { ApplyNow, RequestInfo } from "./components";
 import { Table } from "./index.style";
@@ -20,6 +22,7 @@ import { Table } from "./index.style";
 /**
  *  @typedef {{
  *    programms: Object[]
+ *    loading: boolean
  * }} GridListingProps
  */
 
@@ -28,7 +31,11 @@ const renderInfo = row => (
     <header>
       <strong>Program Description:</strong>
     </header>
-    <p>{row["DescrlongExtns"]}</p>
+    <p
+      dangerouslySetInnerHTML={{
+        __html: sanitize(row["DescrlongExtns"]),
+      }}
+    />
     <div className="show-more-text link">[ ... more ]</div>
   </div>
 );
@@ -56,7 +63,13 @@ const renderExtraInfo = row => {
           <div>
             <strong>First Required Math Course:</strong>
             <span>{row["additionalMathReqCourse"]}</span>
-            {row["asuAcadpMrfText"] && <span>{row["asuAcadpMrfText"]}</span>}
+            {row["asuAcadpMrfText"] && (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: sanitize(row["asuAcadpMrfText"]),
+                }}
+              />
+            )}
           </div>
         )}
       </div>
@@ -99,6 +112,7 @@ const columns = [
       <div className="cell-container">
         <span>{row[col.dataKey]}</span>
         <InfoIcon
+          onMouseOver={null}
           onClick={() =>
             // todo: refactor this solution
             alert(`${row["DegreeDescr"]}\n\n${row["DegreeDescrlong"]}`)
@@ -134,6 +148,7 @@ const columns = [
     className: "campus-location",
     sortable: true,
     contentTemplate: ({ row, onMouseOver }) => {
+      const genCampusId = idGenerator(`campus-`);
       const showTooltip = location =>
         // todo: refactor this solution
         fetch(mapTooltipLink(location))
@@ -146,7 +161,10 @@ const columns = [
       return (
         <div className="container">
           {row["CampusStringArray"]?.map(location => (
-            <div className="row justify-content-between">
+            <div
+              key={genCampusId.next().value}
+              className="row justify-content-between"
+            >
               <a
                 key={location}
                 href={mapTooltipLink(location)}
@@ -158,7 +176,10 @@ const columns = [
                 onMouseOver={() => showTooltip(location)}
                 onFocus={() => showTooltip(location)}
               >
-                <InfoIcon />
+                <InfoIcon
+                  onMouseOver={null}
+                  onClick={() => alert("Campus: info....")}
+                />
               </span>
             </div>
           ))}
@@ -184,12 +205,13 @@ const columns = [
               4+1 years
             </a>
             <InfoIcon
+              onMouseOver={null}
               onClick={() =>
                 // todo: refactor this solution
                 fetch(accellerateDegreeLink(row["AcadPlan"]))
                   .then(res => res.text())
                   .then(body => {
-                    console.log("body", body);
+                    console.warn("body", body);
                     alert(`4+1 years\n\n${body}`);
                   })
               }
@@ -218,7 +240,10 @@ const columns = [
     // todo: refactor this solution
     headerTemplate: () => (
       <div>
-        <InfoIcon onClick={() => alert("Compare and favorite: info....")} />
+        <InfoIcon
+          onMouseOver={null}
+          onClick={() => alert("Compare and favorite: info....")}
+        />
       </div>
     ),
     contentTemplate: ({ row, rowIndex }) => (
@@ -275,8 +300,15 @@ const genRowId = idGenerator(`row-`);
  * @param {GridListingProps} props
  * @returns {JSX.Element}
  */
-const DegreeList = ({ programms }) => {
+const DegreeList = ({ programms, loading }) => {
+  const ROW_PAGES = 8;
+  const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
+
   const [tooltip, setTooltip] = useState("");
+  const [tableView, setTableView] = useState({
+    fromRecord: 0,
+    toRecord: ROW_PAGES,
+  });
 
   /** @type {{current: HTMLTableSectionElement}} */
   const valueRef = React.useRef(null);
@@ -290,6 +322,12 @@ const DegreeList = ({ programms }) => {
 
     const currentRow = valueRef.current.children[rowIndex];
     currentRow.setAttribute("data-is-open", String(selected));
+  };
+
+  const onPageChange = (_, newPage) => {
+    const fromRecord = (newPage - 1) * ROW_PAGES;
+    const toRecord = fromRecord + ROW_PAGES;
+    setTableView({ fromRecord, toRecord });
   };
 
   useEffect(() => {
@@ -325,44 +363,55 @@ const DegreeList = ({ programms }) => {
         <tbody ref={valueRef}>
           {
             // programms
-            programms.slice(0, 10).map((row, rowCurrentIndex) => {
-              const rowId = genRowId.next().value;
-              const rowIndex = rowCurrentIndex * 2;
-              return (
-                <>
-                  <tr key={rowId} role="row">
-                    {columns.map(col => (
-                      <td
-                        key={`${rowId}-${col.dataKey}`}
-                        className={`${col.className}`}
-                      >
-                        {col.contentTemplate?.({
-                          col,
-                          row,
-                          rowIndex,
-                          onClick: setOpenRowIndex,
-                          onMouseOver: content => setTooltip(content),
-                        })}
-                      </td>
-                    ))}
-                  </tr>
+            programms
+              .slice(tableView.fromRecord, tableView.toRecord)
+              .map((row, rowCurrentIndex) => {
+                const rowId = genRowId.next().value;
+                const rowIndex = rowCurrentIndex * 2;
+                return (
+                  <Fragment key={rowId}>
+                    <tr key={rowId} role="row">
+                      {columns.map(col => (
+                        <td
+                          key={`${rowId}-${col.dataKey}`}
+                          className={`${col.className}`}
+                        >
+                          {col.contentTemplate?.({
+                            col,
+                            row,
+                            rowIndex,
+                            onClick: setOpenRowIndex,
+                            onMouseOver: content => setTooltip(content),
+                          })}
+                        </td>
+                      ))}
+                    </tr>
 
-                  <tr key={`${rowId}-row-info`} className="row-info">
-                    <td key={`${rowId}-info`} colSpan={5}>
-                      {renderInfo(row)}
-                    </td>
-                    <td key={`${rowId}-extra-info`} colSpan={2}>
-                      {renderExtraInfo(row)}
-                    </td>
-                  </tr>
-                </>
-              );
-            })
+                    <tr key={`${rowId}-row-info`} className="row-info">
+                      <td key={`${rowId}-info`} colSpan={5}>
+                        {renderInfo(row)}
+                      </td>
+                      <td key={`${rowId}-extra-info`} colSpan={2}>
+                        {renderExtraInfo(row)}
+                      </td>
+                    </tr>
+                  </Fragment>
+                );
+              })
           }
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={columns.length}>todo: pagination...</td>
+            <td colSpan={columns.length}>
+              <Pagination
+                type="default"
+                background="white"
+                totalPages={TOTAL_PAGES}
+                onChange={onPageChange}
+                showFirstButton
+                showLastButton
+              />
+            </td>
           </tr>
         </tfoot>
       </Table>
@@ -372,6 +421,7 @@ const DegreeList = ({ programms }) => {
 
 DegreeList.propTypes = {
   programms: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool,
 };
 
 export { DegreeList };

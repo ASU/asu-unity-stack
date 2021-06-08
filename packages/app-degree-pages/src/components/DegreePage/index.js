@@ -30,13 +30,25 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     doFetchPrograms(url);
   }, [url]);
 
+  /**
+   *
+   * @param {{ location: string[], acceleratedConcurrent: string }} data
+   */
+  const onDegreeApplyFilters = data => {
+    console.warn("onDegreeApplyFilters", data);
+  };
+
+  /**
+   *
+   * @param {string} keyword
+   */
+  const onDegreeSeaerch = keyword => {
+    console.warn("onDegreeSeaerch", keyword);
+  };
+
   return (
     <>
-      <Hero
-        image={hero.image}
-        title={{ ...hero.title, cssClass: ["text-white"] }}
-        contents={hero.contents}
-      />
+      <Hero image={hero.image} title={hero.title} contents={hero.contents} />
 
       <main className="container" data-is-loading={isLoading}>
         <IntroContent
@@ -47,14 +59,14 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           image={introContent.image}
           photoGrid={introContent.photoGrid}
         />
-        <SearchBar />
-        <Filters />
+        <SearchBar onSearch={onDegreeSeaerch} />
+        <Filters
+          onApplyFilters={onDegreeApplyFilters}
+          onCleanFilters={() => alert("Filter cleaned")}
+        />
         {isError && <div>Something went wrong ...</div>}
-        {isLoading ? (
-          <div>Loading ...</div>
-        ) : (
-          <DegreeList programms={data.programs || []} />
-        )}
+        {isLoading ? <div>Loading ...</div> : null}
+        <DegreeList loading={isLoading} programms={data.programs || []} />
       </main>
     </>
   );

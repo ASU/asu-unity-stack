@@ -17,8 +17,8 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ introContent, degreeList }) => (
-  <DegreePage introContent={introContent} degreeList={degreeList} />
+const Template = ({ hero, introContent, degreeList }) => (
+  <DegreePage hero={hero} introContent={introContent} degreeList={degreeList} />
 );
 
 /**
@@ -33,12 +33,14 @@ export const UndergraduateDegreePage = Template.bind({});
 UndergraduateDegreePage.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
-      altText: "Undergraduate Degree Title",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      altText: "Undergraduate Degrees",
       size: "small",
     },
     title: {
-      text: "Undergraduate Degree Title",
+      text: "Undergraduate Degrees",
+      highlightColor: "gold",
     },
     contents: [
       {
@@ -61,7 +63,9 @@ UndergraduateDegreePage.args = {
     ],
   },
   degreeList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource:
+      "https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan,Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL,AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee,AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,&init=false&program=undergrad&cert=false",
+    // dataSource: "/api/mocks/degree-search",
   },
 };
 
@@ -77,7 +81,9 @@ export const AreaStudyDgreePage1 = Template.bind({});
 AreaStudyDgreePage1.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      size: "small",
     },
     contents: [
       {
@@ -132,7 +138,9 @@ export const AreaStudyDgreePage2 = Template.bind({});
 AreaStudyDgreePage2.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      size: "small",
     },
     contents: [
       {
