@@ -3,14 +3,20 @@
 import { useState, useEffect } from "react";
 
 /**
- *
- * @returns {Object[]}
+ * @typedef {{
+ *    data: {
+ *        programs: [Object.<string, any>]
+ *    }
+ *    isLoading: boolean
+ *    isError: any
+ * }} FetchResponse
+ * @returns {[FetchResponse, (url: string) => void]}
  */
 const useFetch = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     if (!url) return;

@@ -64,7 +64,12 @@ UndergraduateDegreePage.args = {
   },
   degreeList: {
     dataSource:
-      "https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan,Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL,AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee,AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,&init=false&program=undergrad&cert=false",
+      "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
+      "?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan," +
+      "Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
+      "AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,concurrentDegrees," +
+      "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
+      "AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,&init=false&program=undergrad&cert=false",
     // dataSource: "/api/mocks/degree-search",
   },
 };

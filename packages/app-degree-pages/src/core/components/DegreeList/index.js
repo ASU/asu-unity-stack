@@ -305,10 +305,7 @@ const DegreeList = ({ programms, loading }) => {
   const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
 
   const [tooltip, setTooltip] = useState("");
-  const [tableView, setTableView] = useState({
-    fromRecord: 0,
-    toRecord: ROW_PAGES,
-  });
+  const [tableView, setTableView] = useState([]);
 
   /** @type {{current: HTMLTableSectionElement}} */
   const valueRef = React.useRef(null);
@@ -327,12 +324,14 @@ const DegreeList = ({ programms, loading }) => {
   const onPageChange = (_, newPage) => {
     const fromRecord = (newPage - 1) * ROW_PAGES;
     const toRecord = fromRecord + ROW_PAGES;
-    setTableView({ fromRecord, toRecord });
+
+    setTableView(programms.slice(fromRecord, toRecord));
   };
 
   useEffect(() => {
+    setTableView(programms.slice(0, ROW_PAGES));
     ReactTooltip.rebuild();
-  });
+  }, [programms]);
 
   return (
     <section className="container">
@@ -363,47 +362,46 @@ const DegreeList = ({ programms, loading }) => {
         <tbody ref={valueRef}>
           {
             // programms
-            programms
-              .slice(tableView.fromRecord, tableView.toRecord)
-              .map((row, rowCurrentIndex) => {
-                const rowId = genRowId.next().value;
-                const rowIndex = rowCurrentIndex * 2;
-                return (
-                  <Fragment key={rowId}>
-                    <tr key={rowId} role="row">
-                      {columns.map(col => (
-                        <td
-                          key={`${rowId}-${col.dataKey}`}
-                          className={`${col.className}`}
-                        >
-                          {col.contentTemplate?.({
-                            col,
-                            row,
-                            rowIndex,
-                            onClick: setOpenRowIndex,
-                            onMouseOver: content => setTooltip(content),
-                          })}
-                        </td>
-                      ))}
-                    </tr>
+            tableView.map((row, rowCurrentIndex) => {
+              const rowId = genRowId.next().value;
+              const rowIndex = rowCurrentIndex * 2;
+              return (
+                <Fragment key={rowId}>
+                  <tr key={rowId} role="row">
+                    {columns.map(col => (
+                      <td
+                        key={`${rowId}-${col.dataKey}`}
+                        className={`${col.className}`}
+                      >
+                        {col.contentTemplate?.({
+                          col,
+                          row,
+                          rowIndex,
+                          onClick: setOpenRowIndex,
+                          onMouseOver: content => setTooltip(content),
+                        })}
+                      </td>
+                    ))}
+                  </tr>
 
-                    <tr key={`${rowId}-row-info`} className="row-info">
-                      <td key={`${rowId}-info`} colSpan={5}>
-                        {renderInfo(row)}
-                      </td>
-                      <td key={`${rowId}-extra-info`} colSpan={2}>
-                        {renderExtraInfo(row)}
-                      </td>
-                    </tr>
-                  </Fragment>
-                );
-              })
+                  <tr key={`${rowId}-row-info`} className="row-info">
+                    <td key={`${rowId}-info`} colSpan={5}>
+                      {renderInfo(row)}
+                    </td>
+                    <td key={`${rowId}-extra-info`} colSpan={2}>
+                      {renderExtraInfo(row)}
+                    </td>
+                  </tr>
+                </Fragment>
+              );
+            })
           }
         </tbody>
         <tfoot>
           <tr>
             <td colSpan={columns.length}>
               <Pagination
+                // count={5}
                 type="default"
                 background="white"
                 totalPages={TOTAL_PAGES}

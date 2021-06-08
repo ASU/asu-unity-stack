@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   IntroContent,
@@ -24,26 +24,60 @@ import { urlResolver } from "../../core/utils/data-path-resolver";
  */
 const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, isLoading, isError }, doFetchPrograms] = useFetch();
+  const [tableView, setTableView] = useState([]);
   const url = urlResolver(degreeList.dataSource);
 
   useEffect(() => {
     doFetchPrograms(url);
   }, [url]);
 
+  useEffect(() => {
+    setTableView(data?.programs || []);
+  }, [data]);
+
   /**
-   *
-   * @param {{ location: string[], acceleratedConcurrent: string }} data
+   * @param {{
+   *    location: string[]
+   *    acceleratedConcurrent: "acceleratedConcurrent" | "concurrentDegrees"
+   * }} data
    */
-  const onDegreeApplyFilters = data => {
-    console.warn("onDegreeApplyFilters", data);
+  const onDegreeApplyFilters = ({
+    acceleratedConcurrent,
+    location: locations,
+  }) => {
+    if (acceleratedConcurrent || locations) {
+      /** @param {Object.<string, []>} row  */
+      const isValidCampus = (row = {}) => {
+        const campusList = row["CampusStringArray"];
+        return locations
+          ? campusList?.some(campus => locations.includes(campus))
+          : true;
+      };
+
+      /** @param {Object.<string, []>} row  */
+      const isValidAcceleratedConcurrent = (row = {}) => {
+        const acceleratedConcurrentList = row[acceleratedConcurrent];
+        return locations ? acceleratedConcurrentList?.length > 0 : true;
+      };
+
+      /** @param {Object.<string, any>} row  */
+      const doFilter = row =>
+        isValidCampus(row) && isValidAcceleratedConcurrent(row);
+
+      setTableView(data.programs.filter(doFilter));
+    }
   };
+
+  const onDegreeCleanFilters = () => setTableView(data?.programs || []);
 
   /**
    *
    * @param {string} keyword
    */
   const onDegreeSeaerch = keyword => {
-    console.warn("onDegreeSeaerch", keyword);
+    setTableView(
+      data.programs.filter(row => row["DescrlongExtns"].contains(keyword))
+    );
   };
 
   return (
@@ -62,11 +96,11 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         <SearchBar onSearch={onDegreeSeaerch} />
         <Filters
           onApplyFilters={onDegreeApplyFilters}
-          onCleanFilters={() => alert("Filter cleaned")}
+          onCleanFilters={onDegreeCleanFilters}
         />
         {isError && <div>Something went wrong ...</div>}
         {isLoading ? <div>Loading ...</div> : null}
-        <DegreeList loading={isLoading} programms={data.programs || []} />
+        <DegreeList loading={isLoading} programms={tableView} />
       </main>
     </>
   );
