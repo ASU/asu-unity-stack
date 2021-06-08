@@ -19,7 +19,7 @@
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --dry-run",
+    "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha",
     "prepare": "husky install",
     "commit": "cz"
   },
