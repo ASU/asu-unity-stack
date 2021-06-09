@@ -5,13 +5,21 @@ import React, { useEffect, useState } from "react";
 
 import {
   IntroContent,
-  DegreeList,
+  DegreeGridView,
+  DegreeListView,
   Filters,
+  Loader,
   SearchBar,
 } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import {
+  DataViewSwitch,
+  GRID_VIEW_ID,
+  LIST_VIEW_ID,
+} from "./components/DataViewSwitch";
+import FilterSummary from "./components/FilterSummary";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
@@ -26,6 +34,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, isLoading, isError }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
+  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
   const url = urlResolver(degreeList.dataSource);
 
   useEffect(() => {
@@ -46,7 +55,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     acceleratedConcurrent,
     location: locations,
   }) => {
-    if (acceleratedConcurrent || locations) {
+    if (acceleratedConcurrent || locations?.length > 0) {
       setSearchLoading(true);
 
       /** @param {Object.<string, []>} row  */
@@ -79,7 +88,14 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
    *
    * @param {string} keyword
    */
-  const onDegreeSeaerch = keyword => {
+  const onDegreeSeaerch = (keyword = "") => {
+    /* todo: this won't work since the only way to clear up
+              the search is to provide an empty keyword */
+    // if (!keyword.trim()) {
+    //   alert("Please provide a valid keyword");
+    //   return;
+    // }
+
     setSearchLoading(true);
     setTableView(
       data.programs.filter(row => row["DescrlongExtns"]?.includes?.(keyword))
@@ -105,9 +121,30 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           onApplyFilters={onDegreeApplyFilters}
           onCleanFilters={onDegreeCleanFilters}
         />
+        {isLoading || searchLoading ? <Loader /> : null}
         {isError && <div>Something went wrong ...</div>}
-        {isLoading || searchLoading ? <div>Loading ...</div> : null}
-        <DegreeList loading={isLoading} programms={tableView} />
+        <section className="container m-1">
+          <div className="d-flex justify-content-between">
+            <FilterSummary
+              appliedFilters={["lorem ipsum", "tempe", "online"]}
+            />
+
+            <DataViewSwitch
+              onChange={selectedViewId => {
+                setSearchLoading(true);
+                setDataViewComponent(selectedViewId);
+                setSearchLoading(false);
+              }}
+              checkedId={dataViewComponent}
+            />
+          </div>
+        </section>
+        {dataViewComponent === GRID_VIEW_ID ? (
+          <DegreeGridView loading={isLoading} programms={tableView} />
+        ) : null}
+        {dataViewComponent === LIST_VIEW_ID ? (
+          <DegreeListView loading={isLoading} programms={tableView} />
+        ) : null}
       </main>
     </>
   );

@@ -1,6 +1,6 @@
 // @ts-check
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const BoxPreview = styled.div`
   .box-preview {
@@ -16,7 +16,53 @@ const BoxPreview = styled.div`
   }
 `;
 
+const tableLoader = css`
+  @keyframes loading {
+    40% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  &[data-loading="true"] {
+    td {
+      position: relative;
+
+      .bar {
+        background-color: #e7e7e7;
+        height: 14px;
+        border-radius: 7px;
+        width: 80%;
+      }
+
+      &:after {
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 24px;
+        background-image: linear-gradient(
+          100deg,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.5) 60%,
+          rgba(255, 255, 255, 0) 80%
+        );
+        background-size: 200px 24px;
+        background-position: -100px 0;
+        background-repeat: no-repeat;
+        animation: loading 1s infinite;
+      }
+    }
+  }
+`;
+
 const Table = styled.table`
+  ${tableLoader}
   --table-border-color: #e5e5e5;
 
   background-color: #fafafa;
