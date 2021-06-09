@@ -5,6 +5,29 @@ import { tagHeadings } from "./constants";
 
 /**
  * @typedef {{
+ *  ariaLabel: string
+ *  color: "gold" | "maroon" | "gray" | "dark"
+ *  icon: string
+ *  href: string
+ *  label: string
+ *  onClick: () => void
+ *  size: "default" | "small" | "xsmall"
+ * }} ButtonProps
+ */
+
+/**
+ * @typedef {{
+ *  color?: "gold" | "maroon" | "gray" | "dark"
+ *  content: {
+ *    icon?: string
+ *    header: string
+ *    body: string
+ *   }
+ * }} AccordionCard
+ */
+
+/**
+ * @typedef {{
  *    url: string
  *    altText?: string
  *    cssClass?: string []
@@ -25,7 +48,6 @@ import { tagHeadings } from "./constants";
  *
  * @typedef {AppContentProps & ChildType} AppTitleProps
  */
-
 
 /**
  * @typedef {{
@@ -89,6 +111,18 @@ import { tagHeadings } from "./constants";
  *  introContent?: IntroContentProps
  *  degreeList?: GridListProps
  * }} AppProps
+ */
+
+/**
+ * @typedef {{
+ *  sectionHeader: string
+ *  contentText: {
+ *    title: string
+ *    description: string
+ *  }
+ *  buttons: ButtonProps[]
+ *  accordionCards: AccordionCard[]
+ * }} RequirementsProps
  */
 
 /**

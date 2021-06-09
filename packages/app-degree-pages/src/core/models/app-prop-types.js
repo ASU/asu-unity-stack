@@ -1,6 +1,25 @@
 // @ts-check
 import PropTypes from "prop-types";
 
+const buttonPropTypes = PropTypes.shape({
+  ariaLabel: PropTypes.string,
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  icon: PropTypes.string,
+  href: PropTypes.string,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(["default", "small", "xsmall"]),
+});
+
+const accordionCardPropTypes = PropTypes.shape({
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: PropTypes.shape({
+    icon: PropTypes.string,
+    header: PropTypes.string,
+    body: PropTypes.string,
+  }),
+});
+
 const imagePropTypes = {
   url: PropTypes.string,
   altText: PropTypes.string,
@@ -29,6 +48,8 @@ const dataSourcePropType = PropTypes.shape({
 });
 
 export {
+  buttonPropTypes,
+  accordionCardPropTypes,
   imagePropType,
   contentPropType,
   imagePropTypes,
