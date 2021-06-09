@@ -53,6 +53,12 @@
       border-bottom: 1px solid $uds-color-base-gray-3;
     }
 
+    &:hover,
+    &.active {
+      margin-bottom: 0;
+      border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
+    }
+
     &:visited {
       color: $uds-color-base-gray-7;
     }
