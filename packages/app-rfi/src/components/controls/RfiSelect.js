@@ -3,12 +3,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Select, { OptionProps } from "react-select";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-// Implmenting React Select with Formik and Yup integation can be a bit tricky.
+// Implementing React Select with Formik and Yup integation can be a bit tricky.
 // Using this approach minus the Typescript bits:
 // https://gist.github.com/hubgit/e394e9be07d95cd5e774989178139ae8#gistcomment-3168746
 // See also the note below included with the Select props, about how we've
@@ -21,18 +21,8 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
-  // Ideally we'd not have implementation logic in this generic component, but
-  // due to structural challenges in obtaining sibling field values via form
-  // context, implementing that here with conditional protections is the most
-  // reasonable solve identified.
-  function customValidate(value) {
-    let error;
-    // Require EntryTerm unless Campus is "ONLNE".
-    if (id === "EntryTerm" && values.Campus !== "ONLNE" && !value) {
-      error = "Required";
-    }
-    return error;
-  }
+  // NOTE: We implement custom validation related to RfiSelect in
+  // RfiStepper.js in order to manage dependency logic across steps.
 
   return (
     <div className="form-group">
@@ -41,7 +31,7 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
         options={options}
         name={name}
         value={
-          options ? options.find(option => option.value === field.value) : ""
+          options ? options.find(option => option.value === field.value) : null
         }
         isDisabled={disabled}
         onChange={option => helpers.setValue(option.value)}

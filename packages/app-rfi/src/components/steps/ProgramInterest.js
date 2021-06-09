@@ -1,10 +1,35 @@
 /* eslint-disable no-console */
 // @ts-check
 import { useFormikContext } from "formik";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import { RfiSelect } from "../controls";
+
+// Helpers
+
+// Filter degree data based on form field value.
+// Currently coded to match on array fields. Could make that optional.
+function filterDegrees(
+  degreeData,
+  degreeDataFieldName,
+  formValues,
+  formValueName
+) {
+  // If we have a form value for a field such as "Interest1",
+  if (formValues[formValueName]) {
+    return degreeData.filter(degree => {
+      if (degree[degreeDataFieldName]) {
+        // Filter degree data based on the form values for the matching field.
+        return degree[degreeDataFieldName].includes(formValues[formValueName]);
+      }
+      return degreeData;
+    });
+  }
+  // If not filtering, pass through.
+  return degreeData;
+}
 
 // Options
 
@@ -17,9 +42,6 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
 
   let serviceUrl;
   let program;
-
-  // TODO // Bad encoding on CampusStringArray and planCatDescr <- missing "s
-  // Removed from query for now.
 
   // ASUOnline API
   if (Campus === "ONLNE") {
@@ -38,7 +60,6 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
         .then(data => {
           return data;
         })
-        // .then(data => console.log(data, "data from safelyParseJson"))
         .catch(error => new Error(error))
     );
   }
@@ -81,7 +102,7 @@ const studentTypeOptions = [
 
 // Component
 
-const ProgramInterest = () => {
+const ProgramInterest = props => {
   const [degreeData, setDegreeData] = useState([]);
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     {
@@ -95,20 +116,20 @@ const ProgramInterest = () => {
       label: "Load failed. Please try again in 5 minutes.",
     },
   ]);
+  const [selectKey, setSelectKey] = useState(0);
+
+  console.log(props, "PROPS");
 
   // Surface values from Formik context
   const { values } = useFormikContext();
 
   // Check if degree data has loaded.
   const degreeDataIsLoaded = () => {
-    console.log(degreeData, "degreeDataIsLoaded() CHECK");
-    // return true;
-    // TODO confirm not causing issues. Here for defense.
+    // console.log(degreeData, "degreeDataIsLoaded()");
     if (typeof degreeData !== "object") {
       return false;
     }
     return degreeData.length;
-    // return degreeData.length > 0 && typeof degreeData.map === "function";
   };
 
   // FETCH master degree data from Degree Search REST API.
@@ -130,10 +151,10 @@ const ProgramInterest = () => {
         // Sort alpha on degree name.
         data.programs.sort((a, b) => (a.Descr100 > b.Descr100 ? 1 : -1));
         setDegreeData(data.programs);
-        console.log(data.programs, "fetched degreeData");
+        console.log(data.programs, "fetched degreeData DS REST");
       }
     });
-  }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these chagne.
+  }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these change.
 
   // Campus
   useEffect(() => {
@@ -160,8 +181,40 @@ const ProgramInterest = () => {
     if (!degreeDataIsLoaded()) {
       return;
     }
+    console.log("useEffect for Interest1 AoI");
 
-    if (values.Campus !== "ONLNE") {
+    // Force the the Area of Interest and Program of Interest selects to
+    // re-render ala https://github.com/JedWatson/react-select/issues/2846
+    // in order to clear selection when options reload. Best solve, given
+    // structural challenges.
+    setSelectKey(selectKey + 1);
+    // Also clear value used in Formik validation, as it doesn't get cleared.
+    if (!props.AreaOfInterest) {
+      values.Interest1 = undefined;
+    }
+
+    if (values.Campus === "ONLNE") {
+      // ASUOnline Areas of Interest
+      // Create array of Area of Interest arrays with duplicates.
+      const dupAoIArrays = degreeData.map(e => {
+        if (e.interestareas) {
+          return [...e.interestareas];
+        }
+        return [];
+      });
+      // Concatenate all arrays together, turn into Set so dupes are removed,
+      // and then destructure back into an array. And sort alphabetically.
+      const areasOfInterest = [
+        ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
+      ].sort();
+      setAreaInterestOptions(
+        areasOfInterest.map(aoi => ({
+          value: aoi,
+          label: aoi,
+        }))
+      );
+    } else {
+      // DS REST Areas of Interest
       // Create array of Area of Interest arrays with duplicates.
       const dupAoIArrays = degreeData.map(e => {
         if (e.planCatDescr) {
@@ -180,43 +233,75 @@ const ProgramInterest = () => {
           label: aoi,
         }))
       );
-      console.log(programInterestOptions, "mock areaInterestOptions SET");
     }
-  }, [degreeData, values.Campus]);
+  }, [degreeData, values.CareerAndStudentType, values.Campus]);
 
   // Interest2: programInterestOptions filter and set logic.
   useEffect(() => {
     if (!degreeDataIsLoaded()) {
       return;
     }
+    console.log("useEffect for Interest2 PoI");
 
-    console.log(degreeData, "programInterestOptions degreeData CHECKIN");
+    // Force the the Area of Interest and Program of Interest selects to
+    // re-render ala https://github.com/JedWatson/react-select/issues/2846
+    // in order to clear selection when options reload. Best solve, given
+    // structural challenges.
+    setSelectKey(selectKey + 1);
+    // Also clear value used in Formik validation, as it doesn't get cleared.
+    if (!props.ProgramOfInterest) {
+      values.Interest2 = undefined;
+    }
 
     // Map programPlanOptions for Interest2
     if (values.Campus === "ONLNE") {
+      console.log(degreeData, "ONLNE degree data");
+
+      // Filter with form's values.Interest1 against data's interestareas
+      const degreeDataProcessed = filterDegrees(
+        degreeData,
+        "interestareas",
+        values,
+        "Interest1"
+      );
+
       // ASUOnline mapping
       setProgramInterestOptions(
-        degreeData.map(program => ({
+        degreeDataProcessed.map(program => ({
           value: program.code,
           label: program.title,
         }))
       );
       console.log(programInterestOptions, "programInterestOptions SET");
     } else {
+      console.log(degreeData, "DS REST degree data");
+
+      // Filter with form's values.Interest1 against data's planCatDescr
+      const degreeDataProcessed = filterDegrees(
+        degreeData,
+        "planCatDescr",
+        values,
+        "Interest1"
+      );
+
+      // TODO when changing Campus, need to ensure Interest1 and Interest2 clear out...
+
       // Degree Search REST mapping
       // DS REST value: AcadPlan and label: Descr100;
       setProgramInterestOptions(
-        degreeData.map(program => ({
+        degreeDataProcessed.map(program => ({
           value: program.AcadPlan,
           label: program.Descr100,
         }))
       );
       console.log(programInterestOptions, "programInterestOptions SET");
     }
-  }, [degreeData, values.Campus, values.Interest1]); // TODO Run when...
-
-  // TODO start using react-select?
-  // See https://binyamin.medium.com/formik-with-react-select-952b4db8768a
+  }, [
+    degreeData,
+    values.Campus,
+    values.CareerAndStudentType,
+    values.Interest1,
+  ]); // TODO Run when...
 
   return (
     <>
@@ -244,6 +329,7 @@ const ProgramInterest = () => {
         name="Interest1"
         options={areaInterestOptions}
         requiredIcon
+        key={`aoi${selectKey}`}
       />
       <RfiSelect
         label="Program of interest"
@@ -251,9 +337,22 @@ const ProgramInterest = () => {
         name="Interest2"
         options={programInterestOptions}
         requiredIcon
+        key={`poi${selectKey}`}
       />
     </>
   );
+};
+
+// Props
+// For full canonical list of props, see RfiMainForm.js
+ProgramInterest.defaultProps = {
+  AreaOfInterest: undefined,
+  ProgramOfInterest: undefined,
+};
+
+ProgramInterest.propTypes = {
+  AreaOfInterest: PropTypes.string,
+  ProgramOfInterest: PropTypes.string,
 };
 
 // Step configs
