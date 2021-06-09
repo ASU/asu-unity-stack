@@ -3145,6 +3145,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
+"@sindresorhus/is@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-3.1.2.tgz#548650de521b344e3781fbdb0ece4aa6f729afb8"
+  integrity sha512-JiX9vxoKMmu8Y3Zr2RVathBL1Cdu4Nt4MuNWemt1Nc06A0RAin9c5FArkhGsyMBWfCu4zj+9b+GxtjAnE4qqLQ==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
@@ -12190,6 +12195,16 @@ gulp-imagemin@^7.1.0:
     imagemin-mozjpeg "^8.0.0"
     imagemin-optipng "^7.0.0"
     imagemin-svgo "^7.0.0"
+
+gulp-nunjucks@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-nunjucks/-/gulp-nunjucks-5.1.0.tgz#2dac820917b11018de71c497c3ab738ba0c0c5d3"
+  integrity sha512-85prmLsQPIBXa7ROVcnivVHxil7SufT6H+rSezictJuRHmVjjPzJXr67Ajbl/Pf2bLkD+Gq3GWvLI9G0qbxT8w==
+  dependencies:
+    "@sindresorhus/is" "^3.1.2"
+    nunjucks "^3.2.0"
+    plugin-error "^1.0.1"
+    through2 "^3.0.1"
 
 gulp-plumber@^1.2.1:
   version "1.2.1"

@@ -174,7 +174,7 @@ module.exports = generateHTML = packages => `
         <div class="col-md-6 pb-8">
           <h2>ASU Header</h2>
           <p>Guidelines, requirements and best practices for using the ASU Branded Header in your site.</p>
-          <p><a class="btn btn-maroon btn-medium" href="asuheader">View the guide</a></p>
+          <p><a class="btn btn-maroon btn-medium" href="asuheader/index.html">View the guide</a></p>
         </div>
 
         <div class="col-md-6 pb-8">

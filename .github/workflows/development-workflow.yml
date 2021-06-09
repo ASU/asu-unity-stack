@@ -48,6 +48,12 @@ jobs:
         run: |
           echo 'Tests temporarily disabled'
 
+      - name: Prebuild storybook build
+          yarn deploy-storybook --dry-run
+
+      - name: Copy and compile nunjucks templates
+          yarn gulp
+
       - name: Setup node for publishing to Github packages
         uses: actions/setup-node@v2
         env:
@@ -62,4 +68,4 @@ jobs:
 
       - name: Publish to Github Pages
         run: |
-          yarn deploy-storybook
+          yarn deploy-storybook --existing-output-dir=build

@@ -62,6 +62,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gulp": "^4.0.2",
+    "gulp-nunjucks": "^5.1.0",
     "husky": "^6.0.0",
     "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^1.4.1",
