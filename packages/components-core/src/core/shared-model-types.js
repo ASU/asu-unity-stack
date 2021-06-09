@@ -2,6 +2,20 @@
 
 /**
  * @typedef {{
+ *  text: string,
+ *  targetIdName: string
+ *  icon: string
+ * }} AnchorMenuItem
+ */
+
+/**
+ * @typedef {{
+ *  items: AnchorMenuItem[]
+ * }} AnchorMenuProps
+ */
+
+/**
+ * @typedef {{
  *  type: string
  *  background: string,
  *  currentPage?: number,

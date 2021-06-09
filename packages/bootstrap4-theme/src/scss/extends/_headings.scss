@@ -35,7 +35,6 @@ p:last-of-type + h6 {
 h1 {
   font-size: $heading-one-font-size;
   letter-spacing: $heading-one-letter-spacing;
-  line-height: normal;
 
   &.article {
     font-size: $heading-one-article-font-size;
@@ -72,6 +71,14 @@ h4 {
 h5 {
   font-size: $heading-five-font-size;
   letter-spacing: $heading-five-letter-spacing;
+}
+
+h1 span[class^='highlight-'],
+h2 span[class^='highlight-'],
+h3 span[class^='highlight-'],
+h4 span[class^='highlight-'] {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 h1 span.highlight,

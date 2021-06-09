@@ -49,3 +49,12 @@ abbr {
   text-decoration-style: none !important;
   text-decoration-color: initial !important;
 }
+
+// Correct <strong> to weight 700. (BS4 default is 900.)
+// Bootstrap _reset.sass overrides this because it happens after this file is loaded.
+// Important tag required.
+b,
+strong {
+  font-weight: $uds-font-weight-bold !important;
+}
+

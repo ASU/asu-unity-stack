@@ -1,8 +1,8 @@
 /*--------------------------------------------------------------
-# Inner Circle Grid Links
+# UDS Grid Links
 
 1. Mobile
-2 Desktop modifiers
+2. Desktop modifiers
 --------------------------------------------------------------*/
 
 @mixin like-an-h4 {
@@ -54,56 +54,23 @@
 2. Desktop modifiers
 --------------------------------------------------------------*/
 
-@mixin two-col {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@mixin three-col {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@mixin four-col {
-  grid-template-columns: repeat(4, 1fr);
-}
-
 @include media-breakpoint-up(md) {
-  .uds-grid-links.mobile-at-md.two-columns {
-    @include two-col;
-  }
-
-  .uds-grid-links.mobile-at-md.three-columns {
-    @include three-col;
-  }
-
-  .uds-grid-links.mobile-at-md.four-columns {
-    @include four-col;
+  .uds-grid-links.two-columns,
+  .uds-grid-links.three-columns,
+  .uds-grid-links.four-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .uds-grid-links.mobile-at-lg.two-columns {
-    @include two-col;
-  }
-
-  .uds-grid-links.mobile-at-lg.three-columns {
-    @include three-col;
-  }
-
-  .uds-grid-links.mobile-at-lg.four-columns {
-    @include four-col;
+  .uds-grid-links.three-columns,
+  .uds-grid-links.four-columns {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .uds-grid-links.mobile-at-xl.two-columns {
-    @include two-col;
-  }
-
-  .uds-grid-links.mobile-at-xl.three-columns {
-    @include three-col;
-  }
-
-  .uds-grid-links.mobile-at-xl.four-columns {
-    @include four-col;
+  .uds-grid-links.four-columns {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

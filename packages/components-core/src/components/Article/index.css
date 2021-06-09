@@ -12,7 +12,8 @@
   max-width: fit-content;
 }
 
-h4 {
+.event-info h4,
+.wrapper-container h4 {
   margin-top: 0;
 }
 
