@@ -49,12 +49,12 @@ jobs:
           echo 'Tests temporarily disabled'
 
       - name: Prebuild storybook build
-          run: |
-            yarn deploy-storybook --dry-run
+        run: |
+          yarn deploy-storybook --dry-run
 
       - name: Copy and compile nunjucks templates
-          run: |
-            yarn gulp
+        run: |
+          yarn gulp
 
       - name: Setup node for publishing to Github packages
         uses: actions/setup-node@v2
