@@ -234,6 +234,8 @@ Each package's storybook is then built, combined, and moved to the root of the p
 ### TODO
 Dockerfile, Jenkinsfile, and contents of server directory (except storybook-index-generator.js) will become unnecessary and can be removed.
 
-### See more [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages)
+### See [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages) for more information about publishing packages
+
+### See [the top answer on this stackoverflow question](https://stackoverflow.com/questions/62819489/github-actions-why-build-with-different-node-versions) for why you should test your build against multiple node versions
 
 
