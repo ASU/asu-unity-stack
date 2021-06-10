@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { Accordion } from "../components/Accordion";
 import { AnchorMenu } from "../components/AnchorMenu";
 import { Article } from "../components/Article";
 import { Button } from "../components/Button";
@@ -26,6 +27,12 @@ import { Testimonial } from "../components/Testimonial";
 const RenderReact = (component, props, target) => {
   ReactDOM.render(React.createElement(component, props), target);
 };
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initAccordion = ({ targetSelector, props }) =>
+  RenderReact(Accordion, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props

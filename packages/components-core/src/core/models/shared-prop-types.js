@@ -14,4 +14,13 @@ const contentPropType = PropTypes.shape({
   highlightColor: PropTypes.oneOf(["gold", "black"]),
 });
 
-export { imagePropType, contentPropType };
+const accordionCardPropTypes = PropTypes.shape({
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: PropTypes.shape({
+    icon: PropTypes.string,
+    header: PropTypes.string,
+    body: PropTypes.string,
+  }),
+});
+
+export { imagePropType, contentPropType, accordionCardPropTypes };
