@@ -10,15 +10,13 @@ import {
   Filters,
   Loader,
   SearchBar,
+  DegreeList,
 } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { urlResolver } from "../../core/utils/data-path-resolver";
-import {
-  DataViewSwitch,
-  GRID_VIEW_ID,
-  LIST_VIEW_ID,
-} from "./components/DataViewSwitch";
+import { DataViewSwitch } from "./components/DataViewSwitch";
 import FilterSummary from "./components/FilterSummary";
 
 /**
@@ -31,10 +29,10 @@ import FilterSummary from "./components/FilterSummary";
  * @returns {JSX.Element}
  */
 const DegreePage = ({ hero, introContent, degreeList }) => {
-  const [{ data, isLoading, isError }, doFetchPrograms] = useFetch();
+  const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
-  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
+  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
   const url = urlResolver(degreeList.dataSource);
 
   useEffect(() => {
@@ -55,13 +53,16 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     acceleratedConcurrent,
     location: locations,
   }) => {
-    if (acceleratedConcurrent || locations?.length > 0) {
+    // prevent search
+    if (!data?.programs) return;
+
+    if (acceleratedConcurrent || locations.length > 0) {
       setSearchLoading(true);
 
       /** @param {Object.<string, []>} row  */
       const isValidCampus = (row = {}) => {
         const campusList = row["CampusStringArray"];
-        return locations
+        return locations.length > 0
           ? campusList?.some(campus => locations.includes(campus))
           : true;
       };
@@ -69,7 +70,9 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
       /** @param {Object.<string, []>} row  */
       const isValidAcceleratedConcurrent = (row = {}) => {
         const acceleratedConcurrentList = row[acceleratedConcurrent];
-        return locations ? acceleratedConcurrentList?.length > 0 : true;
+        return acceleratedConcurrent
+          ? acceleratedConcurrentList?.length > 0
+          : true;
       };
 
       /** @param {Object.<string, any>} row  */
@@ -77,7 +80,6 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         isValidCampus(row) && isValidAcceleratedConcurrent(row);
 
       setTableView(data.programs.filter(doFilter));
-
       setSearchLoading(false);
     }
   };
@@ -88,7 +90,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
    *
    * @param {string} keyword
    */
-  const onDegreeSeaerch = (keyword = "") => {
+  const onDegreeSearch = (keyword = "") => {
     /* todo: this won't work since the only way to clear up
               the search is to provide an empty keyword */
     // if (!keyword.trim()) {
@@ -105,10 +107,10 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
 
   return (
     <>
-      <Hero image={hero.image} title={hero.title} contents={hero.contents} />
+      {/* <Hero image={hero.image} title={hero.title} contents={hero.contents} /> */}
 
-      <main className="container" data-is-loading={isLoading}>
-        <IntroContent
+      <main className="container" data-is-loading={loading}>
+        {/* <IntroContent
           type={introContent.type}
           header={introContent.header}
           title={introContent.title}
@@ -116,13 +118,12 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           image={introContent.image}
           photoGrid={introContent.photoGrid}
         />
-        <SearchBar onSearch={onDegreeSeaerch} />
+        <SearchBar onSearch={onDegreeSearch} />
         <Filters
           onApplyFilters={onDegreeApplyFilters}
           onCleanFilters={onDegreeCleanFilters}
-        />
-        {isLoading || searchLoading ? <Loader /> : null}
-        {isError && <div>Something went wrong ...</div>}
+        /> */}
+        {error && <div>Something went wrong ...</div>}
         <section className="container m-1">
           <div className="d-flex justify-content-between">
             <FilterSummary
@@ -139,12 +140,19 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
             />
           </div>
         </section>
-        {dataViewComponent === GRID_VIEW_ID ? (
-          <DegreeGridView loading={isLoading} programms={tableView} />
-        ) : null}
-        {dataViewComponent === LIST_VIEW_ID ? (
-          <DegreeListView loading={isLoading} programms={tableView} />
-        ) : null}
+        ``
+        <div>
+          loading: {String(loading)} searchLoading: {String(searchLoading)}
+        </div>
+        {loading || searchLoading ? (
+          <Loader />
+        ) : (
+          <DegreeList
+            dataViewComponent={dataViewComponent}
+            loading={loading || searchLoading}
+            programms={tableView}
+          />
+        )}
       </main>
     </>
   );

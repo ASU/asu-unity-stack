@@ -25,8 +25,8 @@ import { Section, ButtonLink } from "./index.style";
  */
 
 const INITIAL_STATE = {
-  location: [""],
-  asuLocal: [""],
+  location: [],
+  asuLocal: [],
   acceleratedConcurrent: "accelerateDegrees",
 };
 

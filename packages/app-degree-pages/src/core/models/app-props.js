@@ -1,7 +1,11 @@
 // @ts-check
-
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
+import { degreeDataPropResolverService } from "../services";
 import { tagHeadings } from "./constants";
+
+// dummy type to help the intellisense
+const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
+/** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
  * @typedef {{
@@ -25,7 +29,6 @@ import { tagHeadings } from "./constants";
  *
  * @typedef {AppContentProps & ChildType} AppTitleProps
  */
-
 
 /**
  * @typedef {{
@@ -68,7 +71,8 @@ import { tagHeadings } from "./constants";
  *    contentTemplate?: (
  *      props: {
  *                col: GridColumn
- *                row: Object
+ *                row: Object<string, any>
+ *                resolver?: DegreeDataPropResolver
  *                rowIndex?: number
  *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void

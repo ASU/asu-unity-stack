@@ -91,42 +91,54 @@ const Table = styled.table`
 
   th,
   td {
-    padding: 8px;
+    padding: 8px 20px;
+    // display: inline-block;
   }
 
   tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    td {
+      vertical-align: top;
+    }
+
     .major {
-      width: 80px;
+      width: 250px;
       a {
         font-weight: 700;
       }
     }
 
     .degree {
-      width: 80px;
+      width: 75px;
     }
 
     .required-course {
-      width: 160px;
+      width: 100px;
     }
 
     .campus-location {
       width: 90px;
     }
 
-    .college {
-      width: 180px;
+    .accelerated-concurrent {
+      width: 115px;
     }
 
-    .accelerated-concurrent {
-      width: 120px;
+    .college {
+      width: 210px;
     }
 
     .compare-fav {
-      width: 110px;
+      // width: 180px;
     }
 
     .apply-info {
+      width: 168px;
       & .btn {
         width: fit-content;
         :first-child {
@@ -141,8 +153,7 @@ const Table = styled.table`
       border: 1px solid var(--table-border-color);
       border-top: 0;
 
-      &:hover {
-        background-color: #e7e7e8;
+      &:not(.row-info):hover {
         background-color: #d2d2d2;
       }
 
@@ -156,8 +167,48 @@ const Table = styled.table`
       td .cell-container {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        // align-items: center;
+        justify-content: space-between;
         gap: 0.5rem;
+      }
+    }
+
+    tr.row-info {
+      td > div {
+        position: relative;
+      }
+      input.togle-more-text {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      input:checked + .desc-long {
+        max-height: fit-content;
+        overflow: auto;
+      }
+
+      .desc-long {
+        max-height: 200px;
+        overflow: hidden;
+      }
+
+      label {
+        position: absolute;
+        right: 0px;
+        transform: translateY(-195%);
+        border: 0;
+        background: white;
+        box-shadow: 5px 5px 8px 16px #f3f3f3;
+      }
+    }
+
+    tr.row-info {
+      td:first-child {
+        flex-basis: 55%;
+      }
+
+      td:last-child {
       }
     }
 

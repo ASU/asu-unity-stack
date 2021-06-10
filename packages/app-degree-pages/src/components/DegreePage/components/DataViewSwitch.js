@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../core/models";
+
 const InputState = styled.input.attrs({
   type: "radio",
   className: "btn-check",
@@ -15,9 +17,6 @@ const InputState = styled.input.attrs({
     font-size: 75%;
   }
 `;
-
-const GRID_VIEW_ID = "grid-view";
-const LIST_VIEW_ID = "list-view";
 
 /**
  *
@@ -61,4 +60,4 @@ DataViewSwitch.propTypes = {
   onChange: PropTypes.func,
 };
 
-export { DataViewSwitch, GRID_VIEW_ID, LIST_VIEW_ID };
+export { DataViewSwitch };

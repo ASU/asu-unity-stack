@@ -2,6 +2,15 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { degreeDataPropResolverService } from "../../../services";
+import {
+  accellerateDegreeLink,
+  majorInfoLink,
+  mapTooltipLink,
+  requestInfoLink,
+  saveFav,
+} from "../../../services/degree-http-service";
+import { SectionCard } from "./index.style";
 /**
  *
  * @param {import("..").GridListingProps} props
@@ -9,35 +18,49 @@ import React from "react";
  */
 function DegreeListView({ programms, loading }) {
   return (
-    <section className="container row">
-      {programms.map(p => (
-        <div className="col-4">
-          <Card
-            type="degree"
-            horizontal={false}
-            clickable={false}
-            image="https://picsum.photos/300/200"
-            imageAltText="An example image"
-            title="Default title"
-            body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur a."
-            linkLabel="View Program Details"
-            linkUrl="/"
-            buttons={[
-              {
-                color: "maroon",
-                size: "default",
-                label: "Reqeuest Info",
-              },
-              {
-                color: "gold",
-                size: "small",
-                label: "Apply",
-              },
-            ]}
-          />
-        </div>
-      ))}
-    </section>
+    <SectionCard className="container row">
+      {programms.map(row => {
+        const resolver = degreeDataPropResolverService(row);
+
+        return (
+          <div className="col-3">
+            <Card
+              type="degree"
+              horizontal={false}
+              clickable={false}
+              image="https://picsum.photos/300/200"
+              imageAltText="An example image"
+              title={resolver.getMajorDesc()}
+              linkLabel="View Program Details"
+              linkUrl={majorInfoLink(
+                resolver.getInstitution(),
+                resolver.getAcadPlan()
+              )}
+              buttons={[
+                {
+                  color: "maroon",
+                  size: "default",
+                  label: "Reqeuest Info",
+                  href: requestInfoLink(
+                    resolver.getAcadPlan(),
+                    resolver.getMajorDesc(),
+                    resolver.getEmailAddress()
+                  ),
+                },
+                {
+                  color: "gold",
+                  size: "small",
+                  label: "Apply",
+                  onClick: () =>
+                    // todo: refactor this solution
+                    alert("APPLY NOW: TODO..."),
+                },
+              ]}
+            />
+          </div>
+        );
+      })}
+    </SectionCard>
   );
 }
 

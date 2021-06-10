@@ -1,11 +1,10 @@
 /* eslint-disable react/no-danger */
 // @ts-check
-import { Pagination } from "@asu-design-system/components-core";
 import { sanitize } from "dompurify";
-import PropTypes from "prop-types";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
+import { degreeDataPropResolverService } from "../../../services";
 import {
   accellerateDegreeLink,
   majorInfoLink,
@@ -13,70 +12,84 @@ import {
   requestInfoLink,
   saveFav,
 } from "../../../services/degree-http-service";
-import { computePages, idGenerator, toTitleCase } from "../../../utils";
+import { idGenerator, toTitleCase } from "../../../utils";
 import { ChevronIconButton, InfoIcon, FavButton } from "../../icons";
-import { ApplyNow, RequestInfo } from "./components";
+import { ApplyNow } from "../components/ApplyNow";
+import { RequestInfo } from "../components/RequestInfo";
+import { degreeListPropTypes } from "../programs-prop-types";
 import { Table } from "./index.style";
 
 /** @typedef {import("../../../models/app-props").GridColumn}  GridColumn */
+/** @typedef {import("../../../models/app-props").DegreeDataPropResolver}  DegreeDataPropResolver */
 
-const renderInfo = row => (
+/**
+ *
+ * @param {{
+ *  resolver: DegreeDataPropResolver
+ *  id: string
+ * }} props
+ */
+const renderInfo = ({ resolver, id }) => (
   <div>
     <header>
       <strong>Program Description:</strong>
     </header>
+    <input className="togle-more-text" type="checkbox" id={`#${id}`} />
     <p
+      className="desc-long"
+      id={id}
       dangerouslySetInnerHTML={{
-        __html: sanitize(row["DescrlongExtns"]),
+        __html: sanitize(resolver.getDescrLongExtented()),
       }}
     />
-    <div className="show-more-text link">[ ... more ]</div>
+    <label htmlFor={`#${id}`}>[ more ]</label>
   </div>
 );
 
-const renderExtraInfo = row => {
-  const mathintensity = {
-    G: "General",
-    M: "Moderate",
-    S: "Substantial",
-  };
-  return (
+/**
+ *
+ * @param {{
+ *  resolver: DegreeDataPropResolver
+ * }} props
+ * @returns
+ */
+const renderExtraInfo = ({ resolver }) => (
+  <div>
     <div>
-      <div>
-        <strong>Additional Program Fee: </strong>
-        {row["AsuProgramFee"] === "Y" && "Yes"}
-      </div>
-      <div>
-        <strong>Second Language Requirement: </strong>
-        {row["AsuLangReqFlag"] === "Y" ? row["asuAcadpLrfText"] || "Yes" : "No"}
-      </div>
-
-      <div>
-        <strong>First Required Math Course:</strong>
-        {row["asuMathReqFlag"] === "Y" && (
-          <div>
-            <strong>First Required Math Course:</strong>
-            <span>{row["additionalMathReqCourse"]}</span>
-            {row["asuAcadpMrfText"] && (
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: sanitize(row["asuAcadpMrfText"]),
-                }}
-              />
-            )}
-          </div>
-        )}
-      </div>
-
-      <div>
-        <strong>Math Intensity:</strong>
-        {mathintensity[row["MathIntensity"]]}
-      </div>
+      <strong>Additional Program Fee: </strong>
+      {resolver.hasAsuProgramFee() && "Yes"}
     </div>
-  );
-};
+    <div>
+      <strong>Second Language Requirement: </strong>
+      {resolver.hasAsuLangReqFlag()
+        ? resolver.getAcadPlanText() || "Yes"
+        : "No"}
+    </div>
 
-/* eslint-disable react/prop-types */
+    <div>
+      {resolver.hasMathReqFlag() && (
+        <div>
+          <strong>First Required Math Course:</strong>
+          <span>{resolver.getAdditionalMathReqCourse()}</span>
+          {resolver.getOtherMathReqCourse() && (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: sanitize(resolver.getOtherMathReqCourse()),
+              }}
+            />
+          )}
+        </div>
+      )}
+    </div>
+
+    <div>
+      <strong>Math Intensity:</strong>
+      {resolver.getMathIntensity()}
+    </div>
+  </div>
+);
+
+/* eslint-disable react/prop-types, no-alert, no-console */
 /** @type {GridColumn []} */
 const columns = [
   {
@@ -85,13 +98,16 @@ const columns = [
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
-    contentTemplate: ({ row, rowIndex, onClick }) => (
+    contentTemplate: ({ resolver, rowIndex, onClick }) => (
       <div className="cell-container">
         <a
-          href={majorInfoLink(row["Institution"], row["AcadPlan"])}
+          href={majorInfoLink(
+            resolver.getInstitution(),
+            resolver.getAcadPlan()
+          )}
           target="blank"
         >
-          {row["Descr100"]} {}
+          {resolver.getMajorDesc()}
         </a>
         <ChevronIconButton onClick={selected => onClick(rowIndex, selected)} />
       </div>
@@ -102,14 +118,16 @@ const columns = [
     label: "Degree",
     ariaLabel: "Degree: activate to sort column",
     className: "degree",
-    contentTemplate: ({ col, row }) => (
+    contentTemplate: ({ resolver }) => (
       <div className="cell-container">
-        <span>{row[col.dataKey]}</span>
+        <span>{resolver.getDegree()}</span>
         <InfoIcon
           onMouseOver={null}
           onClick={() =>
             // todo: refactor this solution
-            alert(`${row["DegreeDescr"]}\n\n${row["DegreeDescrlong"]}`)
+            alert(
+              `${resolver.getDegreeDesc()}\n\n${resolver.getDegreeDescLong()}`
+            )
           }
         />
       </div>
@@ -120,11 +138,11 @@ const columns = [
     label: "Required Courses",
     ariaLabel: "Required Courses",
     className: "required-course",
-    contentTemplate: ({ row }) => {
-      const isOnline = row["managedOnlineCampus"];
+    contentTemplate: ({ resolver }) => {
+      const isOnline = resolver.isOnline();
       const directUrl = isOnline
-        ? row["onlineMajorMapURL"]
-        : row["AsuCritTrackUrl"];
+        ? resolver.getOnlineMajorMapURL()
+        : resolver.getAsuCritTrackUrl();
 
       const directMapLink = (
         <a href={directUrl} target="blank">
@@ -141,7 +159,7 @@ const columns = [
     ariaLabel: "Location: activate to sort column",
     className: "campus-location",
     sortable: true,
-    contentTemplate: ({ row, onMouseOver }) => {
+    contentTemplate: ({ resolver, onMouseOver }) => {
       const genCampusId = idGenerator(`campus-`);
       const showTooltip = location =>
         // todo: refactor this solution
@@ -153,12 +171,9 @@ const columns = [
           });
 
       return (
-        <div className="container">
-          {row["CampusStringArray"]?.map(location => (
-            <div
-              key={genCampusId.next().value}
-              className="row justify-content-between"
-            >
+        <div>
+          {resolver.getCampusList().map(location => (
+            <div key={genCampusId.next().value} className="cell-container">
               <a
                 key={location}
                 href={mapTooltipLink(location)}
@@ -187,12 +202,12 @@ const columns = [
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
     sortable: true,
-    contentTemplate: ({ row }) => (
-      <div className="cell-container">
-        {row["accelerateDegrees"]?.length > 0 && (
-          <div className="row justify-content-between">
+    contentTemplate: ({ resolver }) => (
+      <div>
+        {resolver.getAccelerateDegrees().length > 0 && (
+          <div className="cell-container">
             <a
-              href={accellerateDegreeLink(row["AcadPlan"])}
+              href={accellerateDegreeLink(resolver.getAcadPlan())}
               rel="noreferrer"
               target="_blank"
             >
@@ -202,7 +217,7 @@ const columns = [
               onMouseOver={null}
               onClick={() =>
                 // todo: refactor this solution
-                fetch(accellerateDegreeLink(row["AcadPlan"]))
+                fetch(accellerateDegreeLink(resolver.getAcadPlan()))
                   .then(res => res.text())
                   .then(body => {
                     console.warn("body", body);
@@ -221,52 +236,52 @@ const columns = [
     ariaLabel: "College/School: activate to sort column",
     className: "college",
     sortable: true,
-    contentTemplate: ({ row }) => (
-      <a href={row["CollegeUrl"]} target="_blank" rel="noreferrer">
-        {row["CollegeDescr100"]}
+    contentTemplate: ({ resolver }) => (
+      <a href={resolver.getCollegeUrl()} target="_blank" rel="noreferrer">
+        {resolver.getCollegeDesc()}
       </a>
     ),
   },
-  {
-    dataKey: "compare-fav",
-    label: "Compare and favorite",
-    className: "compare-fav",
-    // todo: refactor this solution
-    headerTemplate: () => (
-      <div>
-        <InfoIcon
-          onMouseOver={null}
-          onClick={() => alert("Compare and favorite: info....")}
-        />
-      </div>
-    ),
-    contentTemplate: ({ row, rowIndex }) => (
-      <form className="uds-form cell-container">
-        <div className="form-check m-0">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id={`fav-button-${rowIndex}`}
-            value="option1"
-          />
-          <label
-            className="form-check-label"
-            htmlFor={`fav-button-${rowIndex}`}
-          >
-            &nbsp;
-          </label>
-        </div>
-        <FavButton onClick={() => saveFav(row["AcadPlan"])} />
-      </form>
-    ),
-  },
+  // {
+  //   dataKey: "compare-fav",
+  //   label: "Compare and favorite",
+  //   className: "compare-fav",
+  //   // todo: refactor this solution
+  //   headerTemplate: () => (
+  //     <div>
+  //       <InfoIcon
+  //         onMouseOver={null}
+  //         onClick={() => alert("Compare and favorite: info....")}
+  //       />
+  //     </div>
+  //   ),
+  //   contentTemplate: ({ row, rowIndex }) => (
+  //     <form className="uds-form cell-container">
+  //       <div className="form-check m-0">
+  //         <input
+  //           className="form-check-input"
+  //           type="checkbox"
+  //           id={`fav-button-${rowIndex}`}
+  //           value="option1"
+  //         />
+  //         <label
+  //           className="form-check-label"
+  //           htmlFor={`fav-button-${rowIndex}`}
+  //         >
+  //           &nbsp;
+  //         </label>
+  //       </div>
+  //       <FavButton onClick={() => saveFav(row["AcadPlan"])} />
+  //     </form>
+  //   ),
+  // },
   {
     dataKey: "compare-apply-info",
     label: "",
     hasInfo: true,
     ariaLabel: "Apply Now or Request Info",
     className: "apply-info",
-    contentTemplate: ({ row }) => (
+    contentTemplate: ({ resolver }) => (
       <div className="row flex-column  align-items-end p-1">
         <ApplyNow
           onClick={() =>
@@ -276,16 +291,16 @@ const columns = [
         />
         <RequestInfo
           href={requestInfoLink(
-            row["AcadPlan"],
-            row["Descr100"],
-            row["EmailAddr"]
+            resolver.getAcadPlan(),
+            resolver.getMajorDesc(),
+            resolver.getEmailAddress()
           )}
         />
       </div>
     ),
   },
 ];
-/* eslint-enable react/prop-types */
+/* eslint-enable react/prop-types, no-alert, no-console */
 
 const genRowId = idGenerator(`row-`);
 
@@ -295,12 +310,8 @@ const genRowId = idGenerator(`row-`);
  * @returns {JSX.Element}
  */
 const DegreeGridView = ({ programms, loading }) => {
-  const ROW_PAGES = 8;
-  const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
-  // const emptyList = columns.map()
-
   const [tooltip, setTooltip] = useState("");
-  const [tableView, setTableView] = useState([]);
+  // const [tableView, setTableView] = useState([]);
 
   /** @type {{current: HTMLTableSectionElement}} */
   const valueRef = React.useRef(null);
@@ -315,18 +326,6 @@ const DegreeGridView = ({ programms, loading }) => {
     const currentRow = valueRef.current.children[rowIndex];
     currentRow.setAttribute("data-is-open", String(selected));
   };
-
-  const onPageChange = (_, newPage) => {
-    const fromRecord = (newPage - 1) * ROW_PAGES;
-    const toRecord = fromRecord + ROW_PAGES;
-
-    setTableView(programms.slice(fromRecord, toRecord));
-  };
-
-  useEffect(() => {
-    setTableView(programms.slice(0, ROW_PAGES));
-    ReactTooltip.rebuild();
-  }, [programms]);
 
   return (
     <section className="container">
@@ -357,9 +356,11 @@ const DegreeGridView = ({ programms, loading }) => {
         <tbody ref={valueRef}>
           {
             // programms
-            tableView.map((row, rowCurrentIndex) => {
+            programms.map((row, rowCurrentIndex) => {
               const rowId = genRowId.next().value;
               const rowIndex = rowCurrentIndex * 2;
+              const resolver = degreeDataPropResolverService(row);
+
               return (
                 <Fragment key={rowId}>
                   <tr key={rowId} role="row">
@@ -369,6 +370,7 @@ const DegreeGridView = ({ programms, loading }) => {
                         className={`${col.className}`}
                       >
                         {col.contentTemplate?.({
+                          resolver,
                           col,
                           row,
                           rowIndex,
@@ -380,11 +382,11 @@ const DegreeGridView = ({ programms, loading }) => {
                   </tr>
 
                   <tr key={`${rowId}-row-info`} className="row-info">
-                    <td key={`${rowId}-info`} colSpan={5}>
-                      {renderInfo(row)}
+                    <td key={`${rowId}-info`} colSpan={4}>
+                      {renderInfo({ resolver, id: `${rowId}-more-text` })}
                     </td>
-                    <td key={`${rowId}-extra-info`} colSpan={2}>
-                      {renderExtraInfo(row)}
+                    <td key={`${rowId}-extra-info`} colSpan={3}>
+                      {renderExtraInfo({ resolver })}
                     </td>
                   </tr>
                 </Fragment>
@@ -392,29 +394,11 @@ const DegreeGridView = ({ programms, loading }) => {
             })
           }
         </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan={columns.length}>
-              <Pagination
-                // count={5}
-                type="default"
-                background="white"
-                totalPages={TOTAL_PAGES}
-                onChange={onPageChange}
-                showFirstButton
-                showLastButton
-              />
-            </td>
-          </tr>
-        </tfoot>
       </Table>
     </section>
   );
 };
 
-DegreeGridView.propTypes = {
-  programms: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-};
+DegreeGridView.propTypes = degreeListPropTypes;
 
 export { DegreeGridView };

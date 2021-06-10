@@ -29,19 +29,4 @@ RequestInfo.propTypes = {
   href: PropTypes.string,
 };
 
-const ApplyNow = ({ onClick = () => null }) => (
-  // @ts-ignore
-  <Button
-    label="Apply now"
-    ariaLabel="Apply now"
-    onClick={onClick}
-    color="gold"
-    size="small"
-  />
-);
-
-ApplyNow.propTypes = {
-  onClick: PropTypes.func,
-};
-
-export { RequestInfo, ApplyNow };
+export { RequestInfo };

@@ -11,4 +11,7 @@ const tagHeadings = {
 
 const tagHeadingList = Object.values(tagHeadings);
 
-export { tagHeadings, tagHeadingList };
+const GRID_VIEW_ID = "grid-view";
+const LIST_VIEW_ID = "list-view";
+
+export { tagHeadings, tagHeadingList, GRID_VIEW_ID, LIST_VIEW_ID };
