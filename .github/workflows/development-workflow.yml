@@ -11,7 +11,7 @@ jobs:
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
-      NODE_VERSION: "12.22.1"
+      NODE_VERSION: 12.22.1
 
     steps:
       - name: Checkout repo
