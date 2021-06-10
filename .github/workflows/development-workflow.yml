@@ -11,6 +11,7 @@ jobs:
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
+      NODE_VERSION: "12.22.1"
 
     steps:
       - name: Checkout repo
@@ -21,7 +22,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          node-version: "14"
+          node-version: $NODE_VERSION
           registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
@@ -61,7 +62,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: "14"
+          node-version: $NODE_VERSION
           registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
