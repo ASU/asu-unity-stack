@@ -19,6 +19,7 @@ export const Button = ({
   innerRef,
   onClick,
   size,
+  classes,
   ...props
 }) => {
   library.add(fas, far);
@@ -40,7 +41,7 @@ export const Button = ({
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
       {...props}
-      className={btnClasses}
+      className={classNames(classes) || btnClasses}
       href={href}
       ref={innerRef}
       onClick={onClick}
@@ -118,6 +119,10 @@ Button.propTypes = {
     Button size
   */
   size: PropTypes.oneOf(["default", "small", "xsmall"]),
+  /**
+    Classes to add to button
+  */
+  classes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Button.defaultProps = {
@@ -132,4 +137,5 @@ Button.defaultProps = {
   innerRef: undefined,
   onClick: undefined,
   size: "default",
+  classes: undefined,
 };

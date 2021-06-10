@@ -20,18 +20,27 @@ const getImageFormat = index => imageFormats[index];
  */
 const myCarouselItems = [];
 for (let index = 0; index < 8; index += 1) {
+  const content =
+    index === 3
+      ? "Only two lines of text here, to show our fixed height."
+      : `Body ${index + 1}
+    copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua eiusmod tempo.`;
+
+  const imageSource =
+    index === 5
+      ? "https://br0ken"
+      : `https://source.unsplash.com/random/${getImageFormat(index)}?a=${
+          index - 1
+        }`;
+
   myCarouselItems.push({
     id: index,
-    imageSource: `https://source.unsplash.com/random/${getImageFormat(
-      index
-    )}?a=${index - 1}`,
+    imageSource,
     imageAltText: "Card image cap",
     title: `Card ${index + 1}`,
-    content: `Body ${
-      index + 1
-    } copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua eiusmod tempo.`,
+    content,
     buttons: [
       {
         ariaLabel: "dummy button",
@@ -55,7 +64,7 @@ export default {
 };
 
 export const ThreeItemCarousel = () => (
-  <CardCarousel perView="3" cardItems={myCarouselItems} />
+  <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
 );
 
 export const TwoItemCarousel = () => (

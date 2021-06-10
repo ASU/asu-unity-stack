@@ -8,5 +8,10 @@
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#580846",
+    "titleBar.activeBackground": "#7B0B62",
+    "titleBar.activeForeground": "#FFFBFE"
   }
 }
