@@ -11,9 +11,7 @@ jobs:
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
-    strategy:
-      matrix:
-        node: ["12"]
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -23,7 +21,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "14"
           registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
@@ -63,7 +61,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "14"
           registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
