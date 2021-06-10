@@ -1,7 +1,7 @@
 name: development-workflow
 on:
   push:
-    branches: ["develop-gha"]
+    branches: ["dev"]
 
 jobs:
   run-yarn-build:
@@ -11,7 +11,6 @@ jobs:
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
-      NODE_VERSION: 12.22.1
 
     steps:
       - name: Checkout repo
@@ -22,7 +21,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          node-version: $NODE_VERSION
+          node-version: "12.x"
           registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
@@ -62,7 +61,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: $NODE_VERSION
+          node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
