@@ -50,41 +50,70 @@ const AboutMe = () => {
 
   // Term options
   useEffect(() => {
-    // TODO IF graduate call for field graduateAllApplyDates then parse.
-    // https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=AcadPlan,Degree,Descrlong,graduateAllApplyDates&program=graduate&cert=false&nopassive=true
+    // IF degree is graduate and values.Campus !== ONLNE, call and get terms
+    // for the specific program.
+    if (
+      values.Campus !== "ONLNE" &&
+      values.CareerAndStudentType === "Readmission"
+    ) {
+      // Degree Search REST API
+      if (values.Interest2) {
+        const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
+        // Alternate field graduateAllApplyDates has similar data, but lacks a
+        // good label and appears like it might have more dupes.
 
-    // TODO ELSE default to undergrad and use this
+        fetch(serviceUrl)
+          .then(response => response.json())
+          .then(data => {
+            // Structure of response: data.programs[0].applyInfo
+            const {
+              programs: [{ applyInfo }],
+            } = data;
+            setTermOptions(
+              // Convert object to array so we can .sort and .map.
+              Object.entries(applyInfo)
+                .sort((a, b) => (a[1] > b[1] ? 1 : -1))
+                .map(termValue => ({
+                  value: termValue[0].split(":")[2],
+                  label: termValue[1].split(":")[0],
+                }))
+            );
+          })
+          .catch(error => new Error(error));
+      }
+    } else {
+      // ELSE default to undergrad and build our own options.
 
-    // Term logic example: for term 2217, the 2 is for century, 21 for last 2 of
-    // year, 1 for spring, 7 for fall. We don't do summer, but it's 4, for
-    // reference.
-    const termData = [];
-    const currMo = new Date().getMonth();
-    for (let i = 0; i < 5; i += 1) {
-      // Use i to calculate out years.
-      const year = new Date().getFullYear() + i;
-      const mil = year.toString();
-      const termSpring = mil.slice(0, 1) + mil.slice(2) + 1; // 1 == spring
-      const termFall = mil.slice(0, 1) + mil.slice(2) + 7; // 7 == fall
-      // Drop spring for current year.
-      if (i > 0) {
-        termData.push({
-          value: termSpring,
-          label: `${year} Spring`,
-        });
+      // Term logic example: for term 2217, the 2 is for century, 21 for last 2 of
+      // year, 1 for spring, 7 for fall. We don't do summer, but it's 4, for
+      // reference.
+      const termData = [];
+      const currMo = new Date().getMonth();
+      for (let i = 0; i < 5; i += 1) {
+        // Use i to calculate out years.
+        const year = new Date().getFullYear() + i;
+        const mil = year.toString();
+        const termSpring = mil.slice(0, 1) + mil.slice(2) + 1; // 1 == spring
+        const termFall = mil.slice(0, 1) + mil.slice(2) + 7; // 7 == fall
+        // Drop spring for current year.
+        if (i > 0) {
+          termData.push({
+            value: termSpring,
+            label: `${year} Spring`,
+          });
+        }
+        // Drop fall for current year if currMo is greater than June.
+        if (i > 0 || currMo < 6) {
+          // Month is based off zero index.
+          termData.push({
+            value: termFall,
+            label: `${year} Fall`,
+          });
+        }
       }
-      // Drop fall for current year if currMo is greater than June.
-      if (i > 0 || currMo < 6) {
-        // Month is based off zero index.
-        termData.push({
-          value: termFall,
-          label: `${year} Fall`,
-        });
-      }
+      setTermOptions(termData);
     }
-    // termData.unshift({ value: "", label: "-- select start date --" });
-    setTermOptions(termData);
-  }, []); // Run only once. TODO change so we can update based on selections.
+  }, []); // Run once. If user changes degree, runs again on return to the step.
 
   // TODO swap Term label - but need to know mechanism first... Confirm.
   // HS students: When will you be graduating from high schooll?
