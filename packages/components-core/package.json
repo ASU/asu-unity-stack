@@ -8,7 +8,8 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack.git"
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/components-core"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
