@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-carousel",
+  "name": "@asu/component-carousel",
   "version": "1.6.1",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "src/index.js",
@@ -20,7 +20,7 @@
     "directory": "packages/component-carousel"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/asu"
   },
   "dependencies": {
     "@asu-design-system/components-core": "^1.0.0",
