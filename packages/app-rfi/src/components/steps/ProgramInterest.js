@@ -377,7 +377,10 @@ const ProgramInterest = props => {
         id="Interest2"
         name="Interest2"
         options={programInterestOptions}
-        requiredIcon
+        requiredIcon={
+          // eslint-disable-next-line react/destructuring-assignment
+          !props.ProgramOfInterestOptional || values.Campus === "ONLNE"
+        }
         key={`poi${selectKey}`}
       />
     </>
@@ -389,6 +392,7 @@ const ProgramInterest = props => {
 ProgramInterest.defaultProps = {
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
+  ProgramOfInterestOptional: false,
   // Used but indirectly.
   // Department: undefined,
   // College: undefined,
@@ -397,6 +401,7 @@ ProgramInterest.defaultProps = {
 ProgramInterest.propTypes = {
   AreaOfInterest: PropTypes.string,
   ProgramOfInterest: PropTypes.string,
+  ProgramOfInterestOptional: PropTypes.bool,
   // Used but indirectly.
   // Department: PropTypes.string,
   // College: PropTypes.string,
@@ -410,8 +415,8 @@ const programInterestForm = {
   validationSchema: {
     Campus: Yup.string().required("Required"),
     CareerAndStudentType: Yup.string().required("Required"),
-    Interest1: Yup.string().required("Required"),
-    Interest2: Yup.string().required("Required"),
+    Interest1: Yup.string(), // Uses form-level validation in RfiStepper.js
+    Interest2: Yup.string(), // Uses form-level validation in RfiStepper.js
   },
 
   initialValues: {

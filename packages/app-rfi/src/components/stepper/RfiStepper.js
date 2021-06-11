@@ -57,15 +57,24 @@ class RfiStepper extends React.Component {
   // See Formik validation flavors: https://formik.org/docs/guides/validation
   validate = values => {
     const errors = {};
-    console.log(values.Interest1, "INTEREST 1");
-    console.log(values.Interest2, "INTEREST 2");
-    // If on step 1 check Interest1 and Interest 2
-    // if (this.state.step === 0 && !values.Interest1) {
-    //   errors.Interest1 = "Area of Interest is required";
-    // }
-    // if (this.state.step === 0 && !values.Interest2) {
-    //   errors.Interest2 = "Program of Interest is required";
-    // }
+    // console.log(values.Interest1, "INTEREST 1");
+    // console.log(values.Interest2, "INTEREST 2");
+    // console.log(this.props.ProgramOfInterestOptional, "PoI Optional");
+
+    // If on step 1 check Interest1
+    if (this.state.step === 0 && !values.Interest1) {
+      errors.Interest1 = "Area of Interest is required";
+    }
+    // If on step 1  and Interest2 is empty, and is not optional or campus is
+    // ONLNE, require Interest2.
+    if (
+      this.state.step === 0 &&
+      !values.Interest2 &&
+      (!this.props.ProgramOfInterestOptional || values.Campus === "ONLNE")
+    ) {
+      errors.Interest2 = "Program of Interest is required";
+    }
+
     // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
     if (
       this.state.step === 1 &&
