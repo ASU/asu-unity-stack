@@ -14,20 +14,43 @@ import { RfiSelect } from "../controls";
 function filterDegrees(
   degreeData,
   degreeDataFieldName,
-  formValues,
-  formValueName
+  filterValue,
+  filterValueName
 ) {
   // If we have a form value for a field such as "Interest1",
-  if (formValues[formValueName]) {
+  if (filterValue[filterValueName]) {
     return degreeData.filter(degree => {
-      if (degree[degreeDataFieldName]) {
+      // Check for array fields.
+      if (Array.isArray(degree[degreeDataFieldName])) {
         // Filter degree data based on the form values for the matching field.
-        return degree[degreeDataFieldName].includes(formValues[formValueName]);
+        return degree[degreeDataFieldName].includes(
+          filterValue[filterValueName]
+        );
       }
-      return degreeData;
+      // Check for string fields.
+      if (degree[degreeDataFieldName]) {
+        // Make a logical assertion on the string for our filter outcome.
+        return degree[degreeDataFieldName] === filterValue[filterValueName];
+      }
+      return true;
     });
   }
   // If not filtering, pass through.
+  return degreeData;
+}
+
+// Filter degree data by Department or College props if they exist.
+function filterDegreesByDeptOrCollege(degreeData, props) {
+  // Progress return if most specific is found first.
+  if (props.Department) {
+    // Filter with prop's props.Department against data's DepartmentCode
+    return filterDegrees(degreeData, "DepartmentCode", props, "Department");
+  }
+  if (props.College) {
+    // Filter with prop's props.College against data's CollegeAcadOrg
+    return filterDegrees(degreeData, "CollegeAcadOrg", props, "College");
+  }
+  // Passthrough.
   return degreeData;
 }
 
@@ -75,6 +98,8 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
     })
     .catch(error => new Error(error));
 }
+
+// Options
 
 const campusOptions = [
   {
@@ -195,6 +220,9 @@ const ProgramInterest = props => {
 
     if (values.Campus === "ONLNE") {
       // ASUOnline Areas of Interest
+
+      // No Department or College filter for ASUOnline degree data.
+
       // Create array of Area of Interest arrays with duplicates.
       const dupAoIArrays = degreeData.map(e => {
         if (e.interestareas) {
@@ -215,8 +243,15 @@ const ProgramInterest = props => {
       );
     } else {
       // DS REST Areas of Interest
+
+      // Filter with props.Department or props.College if they exist.
+      const degreeDataProcessed = filterDegreesByDeptOrCollege(
+        degreeData,
+        props
+      );
+
       // Create array of Area of Interest arrays with duplicates.
-      const dupAoIArrays = degreeData.map(e => {
+      const dupAoIArrays = degreeDataProcessed.map(e => {
         if (e.planCatDescr) {
           return [...e.planCatDescr];
         }
@@ -265,6 +300,8 @@ const ProgramInterest = props => {
         "Interest1"
       );
 
+      // No Department or College filter for ASUOnline degree data.
+
       // ASUOnline mapping
       setProgramInterestOptions(
         degreeDataProcessed.map(program => ({
@@ -277,14 +314,18 @@ const ProgramInterest = props => {
       console.log(degreeData, "DS REST degree data");
 
       // Filter with form's values.Interest1 against data's planCatDescr
-      const degreeDataProcessed = filterDegrees(
+      const degreeDataFiltered = filterDegrees(
         degreeData,
         "planCatDescr",
         values,
         "Interest1"
       );
 
-      // TODO when changing Campus, need to ensure Interest1 and Interest2 clear out...
+      // Filter with props.Department or props.College if they exist.
+      const degreeDataProcessed = filterDegreesByDeptOrCollege(
+        degreeDataFiltered,
+        props
+      );
 
       // Degree Search REST mapping
       // DS REST value: AcadPlan and label: Descr100;
@@ -348,11 +389,17 @@ const ProgramInterest = props => {
 ProgramInterest.defaultProps = {
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
+  // Used but indirectly.
+  // Department: undefined,
+  // College: undefined,
 };
 
 ProgramInterest.propTypes = {
   AreaOfInterest: PropTypes.string,
   ProgramOfInterest: PropTypes.string,
+  // Used but indirectly.
+  // Department: PropTypes.string,
+  // College: PropTypes.string,
 };
 
 // Step configs

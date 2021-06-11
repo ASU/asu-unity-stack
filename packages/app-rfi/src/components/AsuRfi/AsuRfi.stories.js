@@ -48,7 +48,7 @@ RfiDefault.args = {
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: "CHI",
+  College: "CGM", // CHI
   Department: undefined,
   StudentType: undefined, // Graduate, Undergrad
   AreaOfInterest: undefined,
