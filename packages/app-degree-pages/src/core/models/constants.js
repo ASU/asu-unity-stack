@@ -13,5 +13,12 @@ const tagHeadingList = Object.values(tagHeadings);
 
 const GRID_VIEW_ID = "grid-view";
 const LIST_VIEW_ID = "list-view";
+const GRID_PROGRAMS_ID = "degree-list-programs";
 
-export { tagHeadings, tagHeadingList, GRID_VIEW_ID, LIST_VIEW_ID };
+export {
+  tagHeadings,
+  tagHeadingList,
+  GRID_PROGRAMS_ID,
+  GRID_VIEW_ID,
+  LIST_VIEW_ID,
+};

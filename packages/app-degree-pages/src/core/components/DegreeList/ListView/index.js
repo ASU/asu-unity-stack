@@ -2,13 +2,11 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { GRID_PROGRAMS_ID } from "../../../models";
 import { degreeDataPropResolverService } from "../../../services";
 import {
-  accellerateDegreeLink,
   majorInfoLink,
-  mapTooltipLink,
   requestInfoLink,
-  saveFav,
 } from "../../../services/degree-http-service";
 import { SectionCard } from "./index.style";
 /**
@@ -18,7 +16,7 @@ import { SectionCard } from "./index.style";
  */
 function DegreeListView({ programms, loading }) {
   return (
-    <SectionCard className="container row">
+    <SectionCard id={GRID_PROGRAMS_ID} className="container row">
       {programms.map(row => {
         const resolver = degreeDataPropResolverService(row);
 

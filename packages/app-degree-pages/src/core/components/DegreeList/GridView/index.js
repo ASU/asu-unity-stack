@@ -1,19 +1,23 @@
-/* eslint-disable react/no-danger */
 // @ts-check
 import { sanitize } from "dompurify";
-import React, { Fragment, useState } from "react";
-import ReactTooltip from "react-tooltip";
+import React, { Fragment } from "react";
 
+import { GRID_PROGRAMS_ID } from "../../../models";
 import { degreeDataPropResolverService } from "../../../services";
 import {
   accellerateDegreeLink,
+  accellerateDegreeDynamicLink,
   majorInfoLink,
   mapTooltipLink,
   requestInfoLink,
-  saveFav,
+  // saveFav,
 } from "../../../services/degree-http-service";
 import { idGenerator, toTitleCase } from "../../../utils";
-import { ChevronIconButton, InfoIcon, FavButton } from "../../icons";
+import {
+  ChevronIconButton,
+  InfoButtonIcon,
+  //  FavButton
+} from "../../icons";
 import { ApplyNow } from "../components/ApplyNow";
 import { RequestInfo } from "../components/RequestInfo";
 import { degreeListPropTypes } from "../programs-prop-types";
@@ -121,14 +125,11 @@ const columns = [
     contentTemplate: ({ resolver }) => (
       <div className="cell-container">
         <span>{resolver.getDegree()}</span>
-        <InfoIcon
-          onMouseOver={null}
-          onClick={() =>
-            // todo: refactor this solution
-            alert(
-              `${resolver.getDegreeDesc()}\n\n${resolver.getDegreeDescLong()}`
-            )
-          }
+        <InfoButtonIcon
+          popover={{
+            title: resolver.getDegreeDesc(),
+            body: resolver.getDegreeDescLong(),
+          }}
         />
       </div>
     ),
@@ -159,17 +160,8 @@ const columns = [
     ariaLabel: "Location: activate to sort column",
     className: "campus-location",
     sortable: true,
-    contentTemplate: ({ resolver, onMouseOver }) => {
+    contentTemplate: ({ resolver }) => {
       const genCampusId = idGenerator(`campus-`);
-      const showTooltip = location =>
-        // todo: refactor this solution
-        fetch(mapTooltipLink(location))
-          .then(res => res.text())
-          .then(body => {
-            onMouseOver(body);
-            // alert(`Location\n\n${body}`);
-          });
-
       return (
         <div>
           {resolver.getCampusList().map(location => (
@@ -179,15 +171,12 @@ const columns = [
                 href={mapTooltipLink(location)}
                 target="blank"
               >{`${toTitleCase(location)}, `}</a>
-              <span
-                data-tip
-                data-for="registerTip"
-                onMouseOver={() => showTooltip(location)}
-                onFocus={() => showTooltip(location)}
-              >
-                <InfoIcon
-                  onMouseOver={null}
-                  onClick={() => alert("Campus: info....")}
+              <span>
+                <InfoButtonIcon
+                  popover={{
+                    title: toTitleCase(location),
+                    body: () => fetch(mapTooltipLink(location)),
+                  }}
                 />
               </span>
             </div>
@@ -213,17 +202,12 @@ const columns = [
             >
               4+1 years
             </a>
-            <InfoIcon
-              onMouseOver={null}
-              onClick={() =>
-                // todo: refactor this solution
-                fetch(accellerateDegreeLink(resolver.getAcadPlan()))
-                  .then(res => res.text())
-                  .then(body => {
-                    console.warn("body", body);
-                    alert(`4+1 years\n\n${body}`);
-                  })
-              }
+            <InfoButtonIcon
+              popover={{
+                title: "4+1 years",
+                body: () =>
+                  fetch(accellerateDegreeDynamicLink(resolver.getAcadPlan())),
+              }}
             />
           </div>
         )}
@@ -249,7 +233,7 @@ const columns = [
   //   // todo: refactor this solution
   //   headerTemplate: () => (
   //     <div>
-  //       <InfoIcon
+  //       <InfoButtonIcon
   //         onMouseOver={null}
   //         onClick={() => alert("Compare and favorite: info....")}
   //       />
@@ -310,9 +294,6 @@ const genRowId = idGenerator(`row-`);
  * @returns {JSX.Element}
  */
 const DegreeGridView = ({ programms, loading }) => {
-  const [tooltip, setTooltip] = useState("");
-  // const [tableView, setTableView] = useState([]);
-
   /** @type {{current: HTMLTableSectionElement}} */
   const valueRef = React.useRef(null);
 
@@ -329,15 +310,7 @@ const DegreeGridView = ({ programms, loading }) => {
 
   return (
     <section className="container">
-      <ReactTooltip id="registerTip" place="top" effect="solid">
-        <span
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: sanitize(tooltip),
-          }}
-        />
-      </ReactTooltip>
-      <Table data-loading={loading}>
+      <Table id={GRID_PROGRAMS_ID} data-loading={loading}>
         <thead>
           <tr role="row">
             {columns.map(col => (
@@ -375,7 +348,6 @@ const DegreeGridView = ({ programms, loading }) => {
                           row,
                           rowIndex,
                           onClick: setOpenRowIndex,
-                          onMouseOver: content => setTooltip(content),
                         })}
                       </td>
                     ))}

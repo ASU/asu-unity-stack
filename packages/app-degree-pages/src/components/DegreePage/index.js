@@ -5,16 +5,19 @@ import React, { useEffect, useState } from "react";
 
 import {
   IntroContent,
-  DegreeGridView,
-  DegreeListView,
   Filters,
   Loader,
   SearchBar,
   DegreeList,
 } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
-import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../core/models";
+import {
+  GRID_PROGRAMS_ID,
+  GRID_VIEW_ID,
+  LIST_VIEW_ID,
+} from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
+import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { DataViewSwitch } from "./components/DataViewSwitch";
 import FilterSummary from "./components/FilterSummary";
@@ -32,7 +35,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
-  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
+  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
   const url = urlResolver(degreeList.dataSource);
 
   useEffect(() => {
@@ -43,13 +46,18 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     setTableView(data?.programs || []);
   }, [data]);
 
+  const scrollIntoGrid = () => {
+    // document.querySelector(`#${GRID_PROGRAMS_ID}`).scrollIntoView({
+    //   behavior: "smooth",
+    // });
+  };
   /**
    * @param {{
    *    location: string[]
    *    acceleratedConcurrent: "acceleratedConcurrent" | "concurrentDegrees"
    * }} data
    */
-  const onDegreeApplyFilters = ({
+  const onDegreeApplyFilters = async ({
     acceleratedConcurrent,
     location: locations,
   }) => {
@@ -59,9 +67,15 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     if (acceleratedConcurrent || locations.length > 0) {
       setSearchLoading(true);
 
+      await doFetchPrograms(url);
+      if (data?.programs?.length > 0) {
+        scrollIntoGrid();
+      }
+
       /** @param {Object.<string, []>} row  */
       const isValidCampus = (row = {}) => {
-        const campusList = row["CampusStringArray"];
+        const resolver = degreeDataPropResolverService(row);
+        const campusList = resolver.getCampusList();
         return locations.length > 0
           ? campusList?.some(campus => locations.includes(campus))
           : true;
@@ -80,6 +94,9 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         isValidCampus(row) && isValidAcceleratedConcurrent(row);
 
       setTableView(data.programs.filter(doFilter));
+
+      scrollIntoGrid();
+
       setSearchLoading(false);
     }
   };
@@ -90,7 +107,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
    *
    * @param {string} keyword
    */
-  const onDegreeSearch = (keyword = "") => {
+  const onDegreeSearch = async (keyword = "") => {
     /* todo: this won't work since the only way to clear up
               the search is to provide an empty keyword */
     // if (!keyword.trim()) {
@@ -99,18 +116,25 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     // }
 
     setSearchLoading(true);
-    setTableView(
-      data.programs.filter(row => row["DescrlongExtns"]?.includes?.(keyword))
-    );
+    await doFetchPrograms(url);
+    if (data?.programs?.length > 0) {
+      setTableView(
+        data.programs.filter(row => {
+          const resolver = degreeDataPropResolverService(row);
+          return resolver.getDescrLongExtented()?.includes?.(keyword);
+        })
+      );
+      scrollIntoGrid();
+    }
     setSearchLoading(false);
   };
 
   return (
     <>
-      {/* <Hero image={hero.image} title={hero.title} contents={hero.contents} /> */}
+      <Hero image={hero.image} title={hero.title} contents={hero.contents} />
 
       <main className="container" data-is-loading={loading}>
-        {/* <IntroContent
+        <IntroContent
           type={introContent.type}
           header={introContent.header}
           title={introContent.title}
@@ -122,7 +146,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         <Filters
           onApplyFilters={onDegreeApplyFilters}
           onCleanFilters={onDegreeCleanFilters}
-        /> */}
+        />
         {error && <div>Something went wrong ...</div>}
         <section className="container m-1">
           <div className="d-flex justify-content-between">
@@ -141,9 +165,6 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           </div>
         </section>
         ``
-        <div>
-          loading: {String(loading)} searchLoading: {String(searchLoading)}
-        </div>
         {loading || searchLoading ? (
           <Loader />
         ) : (
