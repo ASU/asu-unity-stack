@@ -1,7 +1,7 @@
 export default { title: 'Components/Tooltips' };
 
 export const WhiteBackground = () => `
-<div class="bg-white">
+<div class="uds-tooltip-bg-white">
 
   <div class="uds-tooltip-container">
     <button tabindex="0" class="uds-tooltip uds-tooltip-white" aria-describedby="tooltip-desc">
@@ -22,7 +22,7 @@ export const WhiteBackground = () => `
 `;
 
 export const BaseGrayBackground = () => `
-<div class="bg-gray-1">
+<div class="uds-tooltip-bg-gray-1">
 
   <div class="uds-tooltip-container">
     <button tabindex="0" class="uds-tooltip uds-tooltip-gray-1" aria-describedby="tooltip-desc">
@@ -43,7 +43,7 @@ export const BaseGrayBackground = () => `
 `;
 
 export const GrayBackground = () => `
-<div class="bg-gray">
+<div class="uds-tooltip-bg-gray">
 
    <div class="uds-tooltip-container">
     <button tabindex="0" class="uds-tooltip uds-tooltip-gray" aria-describedby="tooltip-desc">
@@ -64,7 +64,7 @@ export const GrayBackground = () => `
 `;
 
 export const DarkBackground = () => `
-<div class="bg-dark">
+<div class="uds-tooltip-bg-dark">
 
   <div class="uds-tooltip-container">
     <button tabindex="0" class="uds-tooltip uds-tooltip-dark" aria-describedby="tooltip-desc">
