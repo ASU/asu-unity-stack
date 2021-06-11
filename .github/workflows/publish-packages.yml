@@ -4,7 +4,7 @@ on:
     branches: ["develop-gha"]
 
 jobs:
-  run-yarn-build:
+  run-publish-packages:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,12 +41,6 @@ jobs:
         run: |
           yarn install
           yarn build
-
-      - name: Run tests
-        run: |
-          echo 'Tests temporarily disabled'
-          echo 'Could run yarn lint here'
-          echo 'Or yarn test:e2e or yarn percy, once tests are ready'
 
       - name: Setup node for publishing to Github packages
         uses: actions/setup-node@v2
