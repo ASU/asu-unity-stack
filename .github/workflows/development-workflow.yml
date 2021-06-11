@@ -10,7 +10,6 @@ jobs:
       contents: read
       packages: write
     env:
-      GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
 
     steps:
       - name: Checkout repo
@@ -66,6 +65,8 @@ jobs:
           scope: "@asu"
 
       - name: Yarn publish packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn publish-packages
 
