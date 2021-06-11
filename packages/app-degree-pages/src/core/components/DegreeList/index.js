@@ -20,8 +20,8 @@ import { degreeListPropTypes } from "./programs-prop-types";
  * @type {Object.<string, DegreeGridView |  DegreeListView>}
  */
 const programViewer = {
-  [GRID_VIEW_ID]: DegreeGridView,
-  [LIST_VIEW_ID]: DegreeListView,
+  [GRID_VIEW_ID]: DegreeListView,
+  [LIST_VIEW_ID]: DegreeGridView,
 };
 
 /**

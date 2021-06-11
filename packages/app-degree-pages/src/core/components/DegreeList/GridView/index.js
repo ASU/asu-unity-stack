@@ -315,13 +315,13 @@ const DegreeGridView = ({ programms, loading }) => {
     currentRow.setAttribute("data-is-open", String(selected));
   };
 
-  useEffect(
-    () =>
-      tableRef.current.scrollIntoView({
-        behavior: "smooth",
-      }),
-    [programms]
-  );
+  // useEffect(
+  //   () =>
+  //     tableRef.current.scrollIntoView({
+  //       behavior: "smooth",
+  //     }),
+  //   [programms]
+  // );
 
   return (
     <section className="container">

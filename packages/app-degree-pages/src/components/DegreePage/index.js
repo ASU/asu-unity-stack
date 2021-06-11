@@ -13,7 +13,6 @@ import {
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   GRID_PROGRAMS_ID,
-  GRID_VIEW_ID,
   LIST_VIEW_ID,
 } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
@@ -35,7 +34,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
-  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
+  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
   const url = urlResolver(degreeList.dataSource);
 
   useEffect(() => {
@@ -164,7 +163,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
             />
           </div>
         </section>
-        ``
+
         {loading || searchLoading ? (
           <Loader />
         ) : (
