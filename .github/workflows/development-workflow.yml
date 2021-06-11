@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: Setup node to install packages from npm
         uses: actions/setup-node@v2
@@ -61,11 +63,13 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@asu"
 
       - name: Yarn publish packages
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
+          GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
         run: |
           yarn publish-packages
 
