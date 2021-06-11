@@ -3,10 +3,12 @@
   "version": "1.1.4",
   "description": "",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "restricted",
+    "registry": "http://registry.web.asu.edu/"
   },
   "repository": {
-    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
     "directory": "packages/design-tokens"
   },
   "scripts": {
