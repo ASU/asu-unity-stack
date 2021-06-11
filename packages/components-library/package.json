@@ -5,11 +5,9 @@
   "main": "dist/components-library.js",
   "module": "src/index.js",
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
-    "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git",
     "directory": "packages/components-library"
   },
