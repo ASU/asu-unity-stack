@@ -7,6 +7,7 @@
       "channel": "dev"
     }
   ],
+  "repositoryUrl": "https://github.com/asu/asu-design-systems",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
