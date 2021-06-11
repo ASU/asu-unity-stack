@@ -58,6 +58,8 @@ jobs:
 
       - name: Setup node for publishing to Github packages
         uses: actions/setup-node@v2
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
         with:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
@@ -65,6 +67,7 @@ jobs:
       - name: Yarn publish packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
+          NPM_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn publish-packages
