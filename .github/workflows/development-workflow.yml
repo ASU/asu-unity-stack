@@ -1,7 +1,7 @@
 name: development-workflow
 on:
   push:
-    branches: ["dev"]
+    branches: ["develop-gha"]
 
 jobs:
   run-yarn-build:
@@ -42,34 +42,33 @@ jobs:
           yarn install
           yarn build
 
-      - name: Run tests
-        run: |
-          echo 'Tests temporarily disabled'
-          echo 'Could run yarn lint here'
-          echo 'Or yarn test:e2e or yarn percy, once tests are ready'
+      # - name: Run tests
+      #   run: |
+      #     echo 'Tests temporarily disabled'
+      #     echo 'Could run yarn lint here'
+      #     echo 'Or yarn test:e2e or yarn percy, once tests are ready'
 
-      - name: Prebuild storybook build
-        run: |
-          yarn deploy-storybook --dry-run
+      # - name: Prebuild storybook build
+      #   run: |
+      #     yarn deploy-storybook --dry-run
 
-      - name: Copy and compile nunjucks templates
-        run: |
-          yarn gulp
+      # - name: Copy and compile nunjucks templates
+      #   run: |
+      #     yarn gulp
 
       - name: Setup node for publishing to Github packages
         uses: actions/setup-node@v2
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn publish-packages
 
-      - name: Publish to Github Pages
-        run: |
-          yarn deploy-storybook --existing-output-dir=build
+      # - name: Publish to Github Pages
+      #   run: |
+      #     yarn deploy-storybook --existing-output-dir=build
