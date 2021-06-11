@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "4.2.2",
+  "version": "4.2.4",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -18,7 +18,7 @@
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./dist",
     "build": "gulp",
     "prepare": "yarn run build"
   },
