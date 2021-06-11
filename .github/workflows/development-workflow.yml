@@ -65,7 +65,7 @@ jobs:
 
       - name: Yarn publish packages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
         run: |
           yarn publish-packages
 
