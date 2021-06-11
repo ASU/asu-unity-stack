@@ -150,7 +150,7 @@ const AboutMe = () => {
         requiredIcon={values.Campus !== "ONLNE"}
       />
       <RfiSelect
-        label="My start date"
+        label="When do you anticipate starting at ASU?"
         id="EntryTerm"
         name="EntryTerm"
         options={termOptions}
