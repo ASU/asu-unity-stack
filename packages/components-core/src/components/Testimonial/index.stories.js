@@ -14,7 +14,7 @@ export default {
           className={`p-6 ${backgroundColor}`}
           style={{ width: "fit-content" }}
         >
-          <Story {...props} />
+          <Story props={props} />
         </div>
       );
     },
