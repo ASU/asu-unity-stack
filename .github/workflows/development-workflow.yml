@@ -9,7 +9,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    env:
 
     steps:
       - name: Checkout repo
