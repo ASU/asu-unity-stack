@@ -1,6 +1,7 @@
 // @ts-check
 import { sanitize } from "dompurify";
-import React, { Fragment } from "react";
+// import PropTypes from "prop-types";
+import React, { Fragment, useEffect } from "react";
 
 import { GRID_PROGRAMS_ID } from "../../../models";
 import { degreeDataPropResolverService } from "../../../services";
@@ -129,6 +130,7 @@ const columns = [
           popover={{
             title: resolver.getDegreeDesc(),
             body: resolver.getDegreeDescLong(),
+            withAuto: false,
           }}
         />
       </div>
@@ -176,6 +178,7 @@ const columns = [
                   popover={{
                     title: toTitleCase(location),
                     body: () => fetch(mapTooltipLink(location)),
+                    withAuto: true,
                   }}
                 />
               </span>
@@ -207,6 +210,7 @@ const columns = [
                 title: "4+1 years",
                 body: () =>
                   fetch(accellerateDegreeDynamicLink(resolver.getAcadPlan())),
+                withAuto: false,
               }}
             />
           </div>
@@ -287,6 +291,7 @@ const columns = [
 /* eslint-enable react/prop-types, no-alert, no-console */
 
 const genRowId = idGenerator(`row-`);
+// * @param {import("react").Ref<HTMLTableElement>} ?ref
 
 /**
  *
@@ -294,23 +299,33 @@ const genRowId = idGenerator(`row-`);
  * @returns {JSX.Element}
  */
 const DegreeGridView = ({ programms, loading }) => {
+  /** @type {{current: HTMLTableElement}} */
+  const tableRef = React.useRef(null);
   /** @type {{current: HTMLTableSectionElement}} */
-  const valueRef = React.useRef(null);
+  const tbodyRef = React.useRef(null);
 
   const setOpenRowIndex = (rowIndex, selected) => {
-    const rows = valueRef.current.children;
+    const rows = tbodyRef.current.children;
     Array.prototype.forEach.call(
       rows,
       (r, i) => i !== rowIndex && r.setAttribute("data-is-open", "false")
     );
 
-    const currentRow = valueRef.current.children[rowIndex];
+    const currentRow = tbodyRef.current.children[rowIndex];
     currentRow.setAttribute("data-is-open", String(selected));
   };
 
+  useEffect(
+    () =>
+      tableRef.current.scrollIntoView({
+        behavior: "smooth",
+      }),
+    [programms]
+  );
+
   return (
     <section className="container">
-      <Table id={GRID_PROGRAMS_ID} data-loading={loading}>
+      <Table id={GRID_PROGRAMS_ID} ref={tableRef} data-loading={loading}>
         <thead>
           <tr role="row">
             {columns.map(col => (
@@ -326,7 +341,7 @@ const DegreeGridView = ({ programms, loading }) => {
             ))}
           </tr>
         </thead>
-        <tbody ref={valueRef}>
+        <tbody ref={tbodyRef}>
           {
             // programms
             programms.map((row, rowCurrentIndex) => {

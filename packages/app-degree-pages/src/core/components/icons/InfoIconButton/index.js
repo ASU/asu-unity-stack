@@ -83,14 +83,16 @@ const Tooltip = styled.div`
  *    popover: {
  *      title: string
  *      body: string | (() => Promise)
+ *      withAuto: boolean
  *    }
  * }} props
  * @returns {JSX.Element}
  */
-const InfoButtonIcon = ({ popover = { title: "", body: "" } }) => {
+const InfoButtonIcon = ({
+  popover = { title: "", body: "", withAuto: false },
+}) => {
   const [popoverBody, setBody] = useState("");
   const [dataShow, setDataShow] = useState(false);
-  const [withAuto, setWidthAuto] = useState(false);
   const target = useRef(null);
   const tooltip = useRef(null);
   const popperInstance = useRef(null);
@@ -108,10 +110,6 @@ const InfoButtonIcon = ({ popover = { title: "", body: "" } }) => {
       ],
     });
   }, []);
-
-  useEffect(() => {
-    setWidthAuto(typeof popover.body !== "string");
-  }, [popover]);
 
   function show() {
     const { body } = popover;
@@ -148,7 +146,7 @@ const InfoButtonIcon = ({ popover = { title: "", body: "" } }) => {
         id="tooltip"
         role="tooltip"
         data-show={dataShow}
-        data-width-auto={withAuto}
+        data-width-auto={popover.withAuto}
       >
         <h3 className="popover-header">{popover.title}</h3>
         <div id="arrow" data-popper-arrow className="popover-arrow" />

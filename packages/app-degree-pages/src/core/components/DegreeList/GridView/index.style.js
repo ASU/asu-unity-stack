@@ -2,20 +2,6 @@
 
 import styled, { css } from "styled-components";
 
-const BoxPreview = styled.div`
-  .box-preview {
-    // display: none;
-    width: 100%;
-  }
-
-  a:hover + .box-preview,
-  .box-preview:hover {
-    display: block;
-    position: relative;
-    z-index: 100;
-  }
-`;
-
 const tableLoader = css`
   @keyframes loading {
     40% {
@@ -123,6 +109,9 @@ const Table = styled.table`
 
     .campus-location {
       width: 90px;
+      & > div {
+        width: fit-content;
+      }
     }
 
     .accelerated-concurrent {
@@ -232,12 +221,6 @@ const Table = styled.table`
       line-height: 1.5;
     }
   }
-
-  tfoot {
-    ul {
-      margin-bottom: 0 !important;
-    }
-  }
 `;
 
-export { Table, BoxPreview };
+export { Table };
