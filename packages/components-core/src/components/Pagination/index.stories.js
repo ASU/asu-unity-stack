@@ -67,10 +67,15 @@ Bordered.args = {
 };
 
 export const Gray1Background = Template.bind({});
-Gray1Background.args = { type: "default", background: "gray1", currentPage: 5 };
+Gray1Background.args = { type: "default", background: "gray1", currentPage: 7 };
 
 export const Gray2Background = Template.bind({});
-Gray2Background.args = { type: "default", background: "gray2" };
+Gray2Background.args = {
+  type: "default",
+  background: "gray2",
+  currentPage: 5,
+  totalNumbers: 5,
+};
 
 export const Gray7Background = Template.bind({});
 Gray7Background.args = { type: "default", background: "gray7" };
