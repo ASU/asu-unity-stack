@@ -11,6 +11,9 @@
     "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/components-core"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js",

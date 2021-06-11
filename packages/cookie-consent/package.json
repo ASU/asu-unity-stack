@@ -17,6 +17,9 @@
     "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/cookie-consent"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
     "@babel/core": "^7.13.14",

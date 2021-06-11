@@ -7,6 +7,9 @@
     "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/design-tokens"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "yarn run clean && yarn run style-dictionary build",
     "clean": "yarn rimraf build",

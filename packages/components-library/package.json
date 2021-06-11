@@ -9,6 +9,9 @@
     "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/components-library"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
   "private": false,
