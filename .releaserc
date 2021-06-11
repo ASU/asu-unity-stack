@@ -1,5 +1,6 @@
 {
   "branches": [
+    "develop-gha",
     "master",
     {
       "name": "dev",
