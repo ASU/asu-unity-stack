@@ -7,7 +7,7 @@
       "channel": "dev"
     }
   ],
-  "repositoryUrl": "https://github.com/asu/asu-design-systems",
+  "repositoryUrl": "https://github.com/asu/asu-unity-stack",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
