@@ -16,10 +16,6 @@
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/asu/asu-unity-stack.git",

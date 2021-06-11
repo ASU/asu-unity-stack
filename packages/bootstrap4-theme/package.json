@@ -8,10 +8,6 @@
     "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/bootstrap4-theme"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
