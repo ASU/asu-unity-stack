@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-console */
 // @ts-check
 import { useFormikContext } from "formik";
@@ -60,7 +61,7 @@ function filterDegreesByDeptOrCollege(degreeData, props) {
 // Returns the full degree dataset for the given program (undergrad | graduate).
 // We do filtering in useEffect()s to manage filtering logic for our various
 // field options.
-async function fetchDegreeData(Campus, CareerAndStudentType) {
+async function fetchDegreesData(Campus, CareerAndStudentType) {
   // fetch(`https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr&program=undergrad&cert=false`)
 
   let serviceUrl;
@@ -99,6 +100,24 @@ async function fetchDegreeData(Campus, CareerAndStudentType) {
     .catch(error => new Error(error));
 }
 
+// Fetch a single degree record by the acadPlan (aka Program of Interest, aka
+// Interest2) from DS REST API. Results include ONLNE results, so haven't
+// implemented dual logic for ASUOnline. Doesn't seem to be required by the
+// use cases, either.
+async function fetchDegreeByAcadPlan(acadPlan) {
+  // TODO Confirm we don't need to add support for ASUOnline lookup?
+  // serviceUrl = `https://asuonline.asu.edu/lead-submissions-v3.3/programs?plancode[]=${acadPlan}`;
+
+  const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${acadPlan}&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false`;
+  return fetch(serviceUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data, "FETCH DEGREE BY ACAD PLAN");
+      return data;
+    })
+    .catch(error => new Error(error));
+}
+
 // Options
 
 const campusOptions = [
@@ -116,7 +135,7 @@ const campusOptions = [
   },
 ];
 
-const studentTypeOptions = [
+const studentTypeOptionsDefault = [
   { value: "First Time Freshman", label: "First-year undergraduate" },
   { value: "Transfer", label: "Transferring undergraduate" },
   {
@@ -129,6 +148,9 @@ const studentTypeOptions = [
 
 const ProgramInterest = props => {
   const [degreeData, setDegreeData] = useState([]);
+  const [studentTypeOptions, setStudentTypeOptions] = useState(
+    studentTypeOptionsDefault
+  );
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     {
       value: "",
@@ -165,7 +187,7 @@ const ProgramInterest = props => {
 
     // Fetch master of degree data.
 
-    fetchDegreeData(values.Campus, values.CareerAndStudentType).then(data => {
+    fetchDegreesData(values.Campus, values.CareerAndStudentType).then(data => {
       if (values.Campus === "ONLNE") {
         // ASUOnline data
         // Already sorted alpha by service, for us.
@@ -181,24 +203,47 @@ const ProgramInterest = props => {
     });
   }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these change.
 
-  // Campus
+  // Campus and CareerAndStudentType
   useEffect(() => {
     if (!degreeDataIsLoaded()) {
       return;
     }
-    console.log("useEffect for Campus");
-    // Logic in here.
-    // TODO wire in props then check for props.Campus
-  }, [degreeData]);
-
-  // CareerAndStudentType
-  useEffect(() => {
-    if (!degreeDataIsLoaded()) {
-      return;
+    // Setup Campus and CareerAndStudentType values, options and display if
+    // the ProgramOfInterest prop is present - ie. rendering for a Degree Page.
+    if (props.ProgramOfInterest) {
+      console.log("useEffect for Campus and CareerAndStudentType");
+      // Call to get individual degree...
+      // Currently only supporting Degree Search REST API degrees, but it
+      // returns degrees with ONLNE campus, so perhaps is sufficient.
+      fetchDegreeByAcadPlan(props.ProgramOfInterest).then(degree => {
+        // Set Campus to NOPREF since we'll have a mix of degree types since DS
+        // REST API also stores ONLNE degeees.
+        values.Campus = "NOPREF";
+        // Update options for CareerAndStudentType
+        // If Degree starts with a B, it's undergrad.
+        // TODO Is there a better means of identifying undergrad programs?
+        if (degree.programs[0].Degree.charAt(0) === "B") {
+          // PoI is undergrad degree.
+          // Set only undergrad options for studentTypeOptions.
+          setStudentTypeOptions([
+            { value: "First Time Freshman", label: "First-year undergraduate" },
+            { value: "Transfer", label: "Transferring undergraduate" },
+          ]);
+        } else {
+          // PoI is graduate degree.
+          // Setting the options here helps trigger dependent useEffects, even
+          // though we won't display this single option.
+          setStudentTypeOptions([
+            {
+              value: "Readmission",
+              label: "Graduate (Masters, PhD, EdD, DNP, etc.)",
+            },
+          ]);
+          // For Grad, set the value and we'll hide the field in the jsx.
+          values.CareerAndStudentType = "Readmission"; // Gradudate
+        }
+      });
     }
-    console.log("useEffect for CareerAndStudentType");
-    // Logic in here.
-    // TODO wire in props then check for props and values.
   }, [degreeData]);
 
   // Interest1: areaInterestOptions filter and set logic.
@@ -342,7 +387,7 @@ const ProgramInterest = props => {
     values.Campus,
     values.CareerAndStudentType,
     values.Interest1,
-  ]); // TODO Run when...
+  ]);
 
   return (
     <>
@@ -350,35 +395,54 @@ const ProgramInterest = props => {
         To learn more about ASU or a specific program, fill out the form below
         then check your email.
       </p>
-      <RfiSelect
-        label="Which applies to you?"
-        id="Campus"
-        name="Campus"
-        options={campusOptions}
-        requiredIcon
-      />
-      <RfiSelect
-        label="Select your student status"
-        id="CareerAndStudentType"
-        name="CareerAndStudentType"
-        options={studentTypeOptions}
-        requiredIcon
-      />
-      <RfiSelect
-        label="Area of interest"
-        id="Interest1"
-        name="Interest1"
-        options={areaInterestOptions}
-        requiredIcon
-        key={`aoi${selectKey}`}
-      />
+      {
+        // Hide if we have a ProgramOfInterest prop.
+        // We have a useEffect above that sets the value.
+        props.ProgramOfInterest === undefined && (
+          <RfiSelect
+            label="Which applies to you?"
+            id="Campus"
+            name="Campus"
+            options={campusOptions}
+            requiredIcon
+          />
+        )
+      }
+      {
+        // Hide if we have a ProgramOfInterest prop and there is only one
+        // option. We have a useEffect above that sets the value in the case
+        // there's only one option.
+        (props.ProgramOfInterest === undefined ||
+          studentTypeOptions.length !== 1) && (
+          <RfiSelect
+            label="Select your student status"
+            id="CareerAndStudentType"
+            name="CareerAndStudentType"
+            options={studentTypeOptions}
+            requiredIcon
+          />
+        )
+      }
+      {
+        // Hide if we have a ProgramOfInterest prop.
+        props.ProgramOfInterest === undefined && (
+          <RfiSelect
+            label="Area of interest"
+            id="Interest1"
+            name="Interest1"
+            options={areaInterestOptions}
+            requiredIcon
+            key={`aoi${selectKey}`}
+          />
+        )
+      }
       <RfiSelect
         label="Program of interest"
         id="Interest2"
         name="Interest2"
         options={programInterestOptions}
+        disabled={props.ProgramOfInterest !== undefined}
         requiredIcon={
-          // eslint-disable-next-line react/destructuring-assignment
           !props.ProgramOfInterestOptional || values.Campus === "ONLNE"
         }
         key={`poi${selectKey}`}

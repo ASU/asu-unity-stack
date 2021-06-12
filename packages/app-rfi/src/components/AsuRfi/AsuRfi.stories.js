@@ -77,14 +77,33 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   Test: false,
 };
 
-export const RfiOnDegreePage = Template.bind({});
-RfiOnDegreePage.args = {
+// Important note: At current, only supports Degree Search REST API degrees.
+// Assumption: Degree page use case doesn't need to support ASUOnline degrees.
+// Also, DS REST API returns degrees with ONLNE status, so perhaps it's covered.
+export const RfiOnDegreePageUndergraduate = Template.bind({});
+RfiOnDegreePageUndergraduate.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
   StudentType: undefined, // Graduate, Undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: "TEESTEMBAE",
+  ProgramOfInterestOptional: false,
+  IsCertMinor: false,
+  Country: undefined,
+  StateProvince: undefined, // Only US states or CA provinces
+  SuccessMsg: "Success.",
+  Test: false,
+};
+
+export const RfiOnDegreePageGraduate = Template.bind({});
+RfiOnDegreePageGraduate.args = {
+  Campus: undefined, // ONLNE, GROUND, NOPREF
+  College: undefined,
+  Department: undefined,
+  StudentType: undefined, // Graduate, Undergrad
+  AreaOfInterest: undefined,
+  ProgramOfInterest: "TBGMCIDMGM",
   ProgramOfInterestOptional: false,
   IsCertMinor: false,
   Country: undefined,

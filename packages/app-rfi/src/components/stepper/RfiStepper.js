@@ -61,11 +61,16 @@ class RfiStepper extends React.Component {
     // console.log(values.Interest2, "INTEREST 2");
     // console.log(this.props.ProgramOfInterestOptional, "PoI Optional");
 
-    // If on step 1 check Interest1
-    if (this.state.step === 0 && !values.Interest1) {
+    // If on step 1 and Interest1 is empty and we don't have a
+    // ProgramOfInterest (aka Interest2) prop, require Interest1.
+    if (
+      this.state.step === 0 &&
+      !values.Interest1 &&
+      !this.props.ProgramOfInterest
+    ) {
       errors.Interest1 = "Area of Interest is required";
     }
-    // If on step 1  and Interest2 is empty, and is not optional or campus is
+    // If on step 1 and Interest2 is empty, and is not optional or campus is
     // ONLNE, require Interest2.
     if (
       this.state.step === 0 &&
