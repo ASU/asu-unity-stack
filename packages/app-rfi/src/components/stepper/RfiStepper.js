@@ -21,7 +21,33 @@ class RfiStepper extends React.Component {
     super(props);
     this.state = {
       step: 0,
+      certEmailAddr: undefined,
     };
+  }
+
+  // Async state handling for isCertMinor certEmailAddr state.
+  setStateAsync(state) {
+    return new Promise(resolve => {
+      this.setState(state, resolve);
+    });
+  }
+  async componentDidMount() {
+    // If configured as a cert or minor and we have a program of interest, look
+    // up the program's email address and set it in state for use in
+    // isCertMinor render below.
+    if (this.props.IsCertMinor && this.props.ProgramOfInterest) {
+      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${this.props.ProgramOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
+      const response = await fetch(serviceUrl)
+        .then(response => response.json())
+        .catch(error => new Error(error));
+      // Structure of response: response.programs[0].EmailAddr
+      if (response.programs) {
+        const {
+          programs: [{ EmailAddr }],
+        } = response;
+        await this.setStateAsync({ certEmailAddr: EmailAddr });
+      }
+    }
   }
 
   // Possible TODO: prompt user before leaving a dirty form in Formik:
@@ -147,9 +173,18 @@ class RfiStepper extends React.Component {
     // If configured as a Cert or Minor, skip the form and only display
     // SuccessMsg.
     if (IsCertMinor) {
+      const emailRender = (
+        <div className="rfi-cert-minor-email-message">
+          Request information on this program by sending an email to{" "}
+          <a href={`mailto:${this.state.certEmailAddr}`}>
+            {this.state.certEmailAddr}
+          </a>
+        </div>
+      );
       return (
         <div className="uds-rfi-form-wrapper rfi-cert-minor">
           <h2>Request information</h2>
+          {this.state.certEmailAddr && emailRender}
           <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
         </div>
       );

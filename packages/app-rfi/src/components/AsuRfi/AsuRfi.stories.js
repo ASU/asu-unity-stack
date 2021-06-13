@@ -151,12 +151,12 @@ RfiOnCertOrMinorPage.args = {
   Department: undefined,
   StudentType: undefined, // Graduate, Undergrad
   AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
+  ProgramOfInterest: "LAINSCERT",
   ProgramOfInterestOptional: false,
   IsCertMinor: true, // TODO implement handling
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `<div>Request information on this program by sending an email to <a href="mailto:notreal@example.com">notreal@example.com</a></div>`,
+  SuccessMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
   Test: false,
 };
 
