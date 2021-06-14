@@ -41,14 +41,14 @@ const Template = args => (
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
   color: "white",
-  icon: "times",
+  icon: ["fas", "times"],
   onClick: handleClick,
 };
 
 export const CloseButton = Template.bind({});
 CloseButton.args = {
   color: "white",
-  icon: "times",
+  icon: ["fas", "times"],
   onClick: handleClick,
 };
 CloseButton.parameters = {
@@ -62,7 +62,7 @@ CloseButton.parameters = {
 
     <Button
       color: "white"
-      icon: "times"
+      icon: ["fas", "times"]
       onClick: {handleClick}
     />Default Button</Button>`,
     },
@@ -75,7 +75,7 @@ CloseButton.parameters = {
 
 <Button
   color: "white"
-  icon: "times"
+  icon: ["fas", "times"]
   onClick: {handleClick}
 />Default Button</Button>`,
     },
@@ -85,7 +85,7 @@ CloseButton.parameters = {
 export const NextButton = Template.bind({});
 NextButton.args = {
   color: "white",
-  icon: "chevron-right",
+  icon: ["fas", "chevron-right"],
   onClick: handleClick,
   size: "large",
 };
@@ -100,7 +100,7 @@ NextButton.parameters = {
 
     <Button
       color: "white"
-      icon: "chevron-right"
+      icon: ["fas", "chevron-right"]
       onClick: {handleClick}
       size: "large"
     />Next Button</Button>`,
@@ -114,7 +114,7 @@ NextButton.parameters = {
 
 <Button
   color: "white"
-  icon: "chevron-right"
+  icon: ["fas", "chevron-right"]
   onClick: {handleClick}
   size: "large"
 />Next Button</Button>`,
@@ -125,7 +125,7 @@ NextButton.parameters = {
 export const PrevButton = Template.bind({});
 PrevButton.args = {
   color: "white",
-  icon: "chevron-left",
+  icon: ["fas", "chevron-left"],
   onClick: handleClick,
   size: "large",
 };
@@ -140,7 +140,7 @@ PrevButton.parameters = {
 
     <Button
       color: "white"
-      icon: "chevron-left"
+      icon: ["fas", "chevron-left"]
       onClick: {handleClick}
       size: "large"
     />Prev Button</Button>`,
@@ -154,7 +154,7 @@ PrevButton.parameters = {
 
 <Button
   color: "white"
-  icon: "chevron-left"
+  icon: ["fas", "chevron-left"]
   onClick: {handleClick}
   size: "large"
 />Prev Button</Button>`,

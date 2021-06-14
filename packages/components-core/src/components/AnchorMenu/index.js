@@ -1,6 +1,5 @@
 // @ts-check
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -21,7 +20,7 @@ import "./index.css";
  */
 
 export const AnchorMenu = ({ items }) => {
-  library.add(fas, far);
+  library.add(fas);
   const anchorMenuRef = useRef(null);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -81,7 +80,9 @@ export const AnchorMenu = ({ items }) => {
         >
           <h4>
             On This Page:
-            <FontAwesomeIcon icon={`chevron-${showMenu ? "up" : "down"}`} />
+            <FontAwesomeIcon
+              icon={["fas", `chevron-${showMenu ? "up" : "down"}`]}
+            />
           </h4>
         </button>
         <div
@@ -116,7 +117,7 @@ AnchorMenu.propTypes = {
     PropTypes.shape({
       text: PropTypes.string.isRequired,
       targetIdName: PropTypes.string.isRequired,
-      icon: PropTypes.string,
+      icon: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
 };
