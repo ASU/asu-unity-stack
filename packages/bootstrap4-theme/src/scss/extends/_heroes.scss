@@ -94,6 +94,10 @@ div[class^='uds-hero'] {
         bottom: $uds-size-spacing-7;
       }
 
+      h3 {
+        margin-left: -2px; //Align with h1
+      }
+
       p {
         display: none;
       }
