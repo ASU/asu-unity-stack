@@ -13,36 +13,6 @@ import { urlResolver } from "../../core/utils/data-path-resolver";
 
 /**
  *
- * @param {{
- *  data:  Object
- * }} props
- * @returns
- */
-const PageBody = ({ data }) => {
-  const resolver = degreeDataPropResolverService(data || {});
-
-  return (
-    <div>
-      <AtAGlance
-        offeredBy={{
-          text: resolver.getMajorDesc(),
-          url: "",
-        }}
-        locations={[
-          ...resolver.getCampusList(),
-          resolver.getAsuOfficeLoc(),
-          resolver.getCampusWue(),
-        ]}
-        firstRequirementMathCourse={resolver.getMinMathReq()}
-        mathIntensity={resolver.getMathIntensity()}
-        timeCommitment="***TBD"
-      />
-    </div>
-  );
-};
-
-/**
- *
  * @param {ProgramDetailPageProps} props
  * @returns
  */
