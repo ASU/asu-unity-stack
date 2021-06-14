@@ -80,3 +80,5 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 - [Jest APIs](https://jestjs.io/docs/api
 - [Jest Fetch Mock](https://www.npmjs.com/package/jest-fetch-mock)
 - [Type Checking JavaScript Files](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html)
+- [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)
+  - [JSDoc @template: Generics](https://github.com/microsoft/TypeScript/issues/27387)

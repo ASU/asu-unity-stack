@@ -1,10 +1,11 @@
-// @ts-check
+// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 
+// @ts-check
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../core/models";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../models";
 
 const InputState = styled.input.attrs({
   type: "radio",

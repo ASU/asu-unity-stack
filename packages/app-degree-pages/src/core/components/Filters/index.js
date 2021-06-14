@@ -80,7 +80,6 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
 
   const handleApplyFilters = () => {
     const { asuLocal, ...filters } = state;
-    console.log(filters);
     onApplyFilters?.(filters);
   };
 
@@ -88,8 +87,6 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
     setState(INITIAL_STATE);
     onCleanFilters?.();
   };
-
-  console.log(state);
 
   return (
     <Section className="container mt-4 pb-6 mb-6">

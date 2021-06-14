@@ -1,3 +1,5 @@
+// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+
 /* eslint-disable react/no-danger */
 /* eslint-disable react/prop-types */
 // @ts-check
@@ -78,7 +80,6 @@ const Tooltip = styled.div`
 `;
 
 /**
- *
  * @param {{
  *    popover: {
  *      title: string
@@ -88,7 +89,8 @@ const Tooltip = styled.div`
  * }} props
  * @returns {JSX.Element}
  */
-const InfoButtonIcon = ({
+// eslint-disable-next-line no-unused-vars
+const DeferredInfoButtonIcon = ({
   popover = { title: "", body: "", withAuto: false },
 }) => {
   const [popoverBody, setBody] = useState("");
@@ -178,4 +180,22 @@ const InfoButtonIcon = ({
   );
 };
 
+// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+/* TODO: the component below is just a palce holder
+    restore the  export { InfoButtonIcon }; once is back in scope
+ */
+/**
+ * @param {{
+ *    popover: {
+ *      title: string
+ *      body: string | (() => Promise)
+ *      withAuto: boolean
+ *    }
+ * }} props
+ * @returns {JSX.Element}
+ */
+// @ts-ignore
+// eslint-disable-next-line no-unused-vars
+const InfoButtonIcon = props => <span />;
 export { InfoButtonIcon };
+// export { InfoButtonIcon };

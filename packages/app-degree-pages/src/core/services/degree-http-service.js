@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 // @ts-check
 
 import { fetchData } from "../utils/fetch-data";

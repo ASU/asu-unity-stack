@@ -1,3 +1,6 @@
+/* eslint-disable no-alert */
+// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+// @ts-check
 import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
@@ -16,7 +19,11 @@ import { SectionCard } from "./index.style";
  */
 function DegreeListView({ programms, loading }) {
   return (
-    <SectionCard id={GRID_PROGRAMS_ID} className="container row">
+    <SectionCard
+      id={GRID_PROGRAMS_ID}
+      className="container row"
+      data-loading={loading}
+    >
       {programms.map(row => {
         const resolver = degreeDataPropResolverService(row);
 

@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../../core/utils";
+import { idGenerator } from "../../utils";
 
 /**
  *
@@ -12,7 +12,7 @@ import { idGenerator } from "../../../core/utils";
  * }} props
  * @returns
  */
-function FilterSummary({ appliedFilters = [] }) {
+function FiltersSummary({ appliedFilters = [] }) {
   const genFilterId = idGenerator("filter-");
   return (
     <div>
@@ -33,8 +33,8 @@ function FilterSummary({ appliedFilters = [] }) {
   );
 }
 
-FilterSummary.propTypes = {
+FiltersSummary.propTypes = {
   appliedFilters: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default FilterSummary;
+export { FiltersSummary };

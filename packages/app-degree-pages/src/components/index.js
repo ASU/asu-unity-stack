@@ -1,3 +1,3 @@
-import { DegreePage } from "./DegreePage";
+import { ListingPage } from "./ListingPage";
 
-export { DegreePage };
+export { ListingPage };

@@ -6,20 +6,17 @@ import React, { useEffect, useState } from "react";
 import {
   IntroContent,
   Filters,
+  FiltersSummary,
   Loader,
   SearchBar,
-  DegreeList,
+  ProgramList,
 } from "../../core/components";
+// import { DataViewSwitch } from "../../core/components/ProgramList/DataViewSwitch";
 import { useFetch } from "../../core/hooks/use-fetch";
-import {
-  GRID_PROGRAMS_ID,
-  LIST_VIEW_ID,
-} from "../../core/models";
+import { LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
-import { DataViewSwitch } from "./components/DataViewSwitch";
-import FilterSummary from "./components/FilterSummary";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
@@ -30,12 +27,15 @@ import FilterSummary from "./components/FilterSummary";
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const DegreePage = ({ hero, introContent, degreeList }) => {
+const ListingPage = ({ hero, introContent, programList }) => {
+  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{programs: []}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
-  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
-  const url = urlResolver(degreeList.dataSource);
+  /** @type {import("../../core/models").UseStateTuple<LIST_VIEW_ID>} */
+  const [dataViewComponent] = useState(LIST_VIEW_ID);
+  // const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
+  const url = urlResolver(programList.dataSource);
 
   useEffect(() => {
     doFetchPrograms(url);
@@ -45,11 +45,6 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
     setTableView(data?.programs || []);
   }, [data]);
 
-  const scrollIntoGrid = () => {
-    // document.querySelector(`#${GRID_PROGRAMS_ID}`).scrollIntoView({
-    //   behavior: "smooth",
-    // });
-  };
   /**
    * @param {{
    *    location: string[]
@@ -67,9 +62,6 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
       setSearchLoading(true);
 
       await doFetchPrograms(url);
-      if (data?.programs?.length > 0) {
-        scrollIntoGrid();
-      }
 
       /** @param {Object.<string, []>} row  */
       const isValidCampus = (row = {}) => {
@@ -91,11 +83,7 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
       /** @param {Object.<string, any>} row  */
       const doFilter = row =>
         isValidCampus(row) && isValidAcceleratedConcurrent(row);
-
       setTableView(data.programs.filter(doFilter));
-
-      scrollIntoGrid();
-
       setSearchLoading(false);
     }
   };
@@ -123,7 +111,6 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
           return resolver.getDescrLongExtented()?.includes?.(keyword);
         })
       );
-      scrollIntoGrid();
     }
     setSearchLoading(false);
   };
@@ -149,25 +136,26 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
         {error && <div>Something went wrong ...</div>}
         <section className="container m-1">
           <div className="d-flex justify-content-between">
-            <FilterSummary
+            <FiltersSummary
               appliedFilters={["lorem ipsum", "tempe", "online"]}
             />
 
-            <DataViewSwitch
+            {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
+            {/* <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
                 setSearchLoading(false);
               }}
               checkedId={dataViewComponent}
-            />
+            /> */}
           </div>
         </section>
 
         {loading || searchLoading ? (
           <Loader />
         ) : (
-          <DegreeList
+          <ProgramList
             dataViewComponent={dataViewComponent}
             loading={loading || searchLoading}
             programms={tableView}
@@ -178,12 +166,12 @@ const DegreePage = ({ hero, introContent, degreeList }) => {
   );
 };
 
-DegreePage.propTypes = {
+ListingPage.propTypes = {
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
-  degreeList: PropTypes.shape({
+  programList: PropTypes.shape({
     dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
   }),
 };
 
-export { DegreePage };
+export { ListingPage };

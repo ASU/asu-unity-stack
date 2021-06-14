@@ -2,23 +2,27 @@
 // @ts-check
 import React from "react";
 
-import { DegreePage } from ".";
+import { ListingPage } from ".";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
  */
 
 export default {
-  component: DegreePage,
-  title: "Degree Page",
+  component: ListingPage,
+  title: "Listing Page",
 };
 
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ hero, introContent, degreeList }) => (
-  <DegreePage hero={hero} introContent={introContent} degreeList={degreeList} />
+const Template = ({ hero, introContent, programList }) => (
+  <ListingPage
+    hero={hero}
+    introContent={introContent}
+    programList={programList}
+  />
 );
 
 /**
@@ -62,7 +66,7 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
-  degreeList: {
+  programList: {
     dataSource:
       "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
       "?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan," +
@@ -126,7 +130,7 @@ AreaStudyDgreePage1.args = {
       ],
     },
   },
-  degreeList: {
+  programList: {
     dataSource: "/api/mocks/degree-search",
   },
 };
@@ -180,7 +184,7 @@ AreaStudyDgreePage2.args = {
       url: "https://source.unsplash.com/random/800x400?a=1",
     },
   },
-  degreeList: {
+  programList: {
     dataSource: "/api/mocks/degree-search",
   },
 };

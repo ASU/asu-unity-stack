@@ -28,9 +28,9 @@ const programViewer = {
  *
  * @param {{
  *  dataViewComponent: GRID_VIEW_ID | LIST_VIEW_ID
- * } & GridListingProps} param0
+ * } & GridListingProps} props
  */
-function DegreeList({ dataViewComponent, loading, programms }) {
+function ProgramList({ dataViewComponent, loading, programms }) {
   const ROW_PAGES = 8;
   const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
@@ -65,9 +65,9 @@ function DegreeList({ dataViewComponent, loading, programms }) {
   );
 }
 
-DegreeList.propTypes = {
+ProgramList.propTypes = {
   dataViewComponent: PropTypes.string,
   ...degreeListPropTypes,
 };
 
-export { DegreeList, DegreeListView, DegreeGridView };
+export { ProgramList, DegreeListView, DegreeGridView };

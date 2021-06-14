@@ -8,6 +8,11 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
+ * @template S
+ * @typedef {[S, import("react").Dispatch<import("react").SetStateAction<S>>]} UseStateTuple
+ */
+
+/**
  * @typedef {{
  *    url: string
  *    altText?: string
@@ -91,7 +96,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *  sharedDataSources?: AppDataSource []
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
- *  degreeList?: GridListProps
+ *  programList?: GridListProps
  * }} AppProps
  */
 

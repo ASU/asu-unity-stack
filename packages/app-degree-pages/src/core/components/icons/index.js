@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { BaseStateIconButton } from "./BaseStateIconButton";
 import { InfoButtonIcon } from "./InfoIconButton";

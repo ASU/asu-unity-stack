@@ -1,6 +1,6 @@
 // @ts-check
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const SectionCard = styled.section`
   .card-link {
@@ -9,9 +9,9 @@ const SectionCard = styled.section`
 
   .card-button {
     order: 2;
-     & * {
-      font-size: 70%;;
-     }
+    & * {
+      font-size: 70%;
+    }
   }
 `;
 

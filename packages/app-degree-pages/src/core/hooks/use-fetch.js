@@ -3,14 +3,27 @@
 import { useState, useEffect } from "react";
 
 /**
+ * @template S
+ * @typedef {[FetchResponse<S>, FetchCallback]} UseFetchTuple
+ */
+
+/**
+ * @template E
  * @typedef {{
- *    data: {
- *        programs: [Object.<string, any>]
- *    }
+ *    data: E
  *    loading: boolean
  *    error: object
  * }} FetchResponse
- * @returns {[FetchResponse, (url: string) => void]}
+ */
+
+/**
+ *  @typedef {(url: string) => void} FetchCallback
+ */
+
+/**
+ * @template T
+ * @returns {[
+ * FetchResponse<T>, FetchCallback]}
  */
 const useFetch = () => {
   const [data, setData] = useState();
