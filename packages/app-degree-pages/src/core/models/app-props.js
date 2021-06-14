@@ -48,6 +48,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * }} IntroContentProps
  */
 
+/* TODO: condider to remove this type, the application does not look to rquire
+         this level of complexity. The datasource look to be a simple string
+          which reppresents the API URL
+*/
 /**
  *
  * @typedef {{
@@ -101,7 +105,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * This help VSCODE and JSOC to recognize the syntax
+ * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */
 export const JSDOC = "jsdoc";

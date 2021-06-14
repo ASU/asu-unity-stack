@@ -36,7 +36,6 @@ const columns = [
             resolver.getInstitution(),
             resolver.getAcadPlan()
           )}
-          target="blank"
         >
           {resolver.getMajorDesc()}
         </a>
@@ -73,11 +72,7 @@ const columns = [
         ? resolver.getOnlineMajorMapURL()
         : resolver.getAsuCritTrackUrl();
 
-      const directMapLink = (
-        <a href={directUrl} target="blank">
-          Major Map
-        </a>
-      );
+      const directMapLink = <a href={directUrl}>Major Map</a>;
 
       return directMapLink;
     },
@@ -92,13 +87,15 @@ const columns = [
       const genCampusId = idGenerator(`campus-`);
       return (
         <div>
-          {resolver.getCampusList().map(location => (
+          {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
-              <a
-                key={location}
-                href={mapTooltipLink(location)}
-                target="blank"
-              >{`${toTitleCase(location)}, `}</a>
+              {/*  TODO: This link is currently deferred till we discover which URL to link */}
+              {/* <a key={location} href={mapTooltipLink(location)}>{`${toTitleCase(
+                location
+              )}, `}</a> */}
+              <span>{`${toTitleCase(location)}${
+                index < campusList.length - 1 ? ", " : ""
+              }`}</span>
               <span>
                 <InfoButtonIcon
                   popover={{

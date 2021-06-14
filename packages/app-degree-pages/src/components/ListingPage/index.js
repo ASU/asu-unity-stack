@@ -13,13 +13,14 @@ import {
 } from "../../core/components";
 // import { DataViewSwitch } from "../../core/components/ProgramList/DataViewSwitch";
 import { useFetch } from "../../core/hooks/use-fetch";
-import { LIST_VIEW_ID } from "../../core/models";
+import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
+ * @typedef {import("../../core/components/Filters").FiltersState} FiltersState
  */
 
 /**
@@ -37,6 +38,15 @@ const ListingPage = ({ hero, introContent, programList }) => {
   // const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
   const url = urlResolver(programList.dataSource);
 
+  /** @type {import("../../core/models").UseStateTuple<FiltersState>} */
+  const [stateFilters, setStateFilters] = useState({
+    locations: [],
+    asuLocals: [],
+    acceleratedConcurrent: "all",
+  });
+  /** @type {import("../../core/models").UseStateTuple<string[]>} */
+  const [appliedFilters, setAppliedFilters] = useState([]);
+
   useEffect(() => {
     doFetchPrograms(url);
   }, [url]);
@@ -46,46 +56,51 @@ const ListingPage = ({ hero, introContent, programList }) => {
   }, [data]);
 
   /**
-   * @param {{
-   *    location: string[]
-   *    acceleratedConcurrent: "acceleratedConcurrent" | "concurrentDegrees"
-   * }} data
+   * @param {import("src/core/components/Filters").FiltersState} data
    */
-  const onDegreeApplyFilters = async ({
-    acceleratedConcurrent,
-    location: locations,
-  }) => {
+  const onDegreeApplyFilters = async ({ acceleratedConcurrent, locations }) => {
+    // ============================================================
     // prevent search
-    if (!data?.programs) return;
+    // ============================================================
+    if (loading || searchLoading) return;
 
-    if (acceleratedConcurrent || locations.length > 0) {
-      setSearchLoading(true);
-
-      await doFetchPrograms(url);
-
-      /** @param {Object.<string, []>} row  */
-      const isValidCampus = (row = {}) => {
-        const resolver = degreeDataPropResolverService(row);
-        const campusList = resolver.getCampusList();
-        return locations.length > 0
-          ? campusList?.some(campus => locations.includes(campus))
-          : true;
-      };
-
-      /** @param {Object.<string, []>} row  */
-      const isValidAcceleratedConcurrent = (row = {}) => {
-        const acceleratedConcurrentList = row[acceleratedConcurrent];
-        return acceleratedConcurrent
-          ? acceleratedConcurrentList?.length > 0
-          : true;
-      };
-
-      /** @param {Object.<string, any>} row  */
-      const doFilter = row =>
-        isValidCampus(row) && isValidAcceleratedConcurrent(row);
-      setTableView(data.programs.filter(doFilter));
-      setSearchLoading(false);
+    if (!acceleratedConcurrent && locations.length === 0) {
+      return;
     }
+    // ============================================================
+
+    setSearchLoading(true);
+
+    await doFetchPrograms(url);
+
+    /** @param {Object.<string, []>} row  */
+    const isValidCampus = (row = {}) => {
+      const resolver = degreeDataPropResolverService(row);
+
+      return locations.length > 0
+        ? resolver.getCampusList()?.some(campus => locations.includes(campus))
+        : true;
+    };
+
+    /** @param {Object.<string, []>} row  */
+    const isValidAcceleratedConcurrent = (row = {}) => {
+      return acceleratedConcurrent && acceleratedConcurrent !== "all"
+        ? row[acceleratedConcurrent]?.length > 0
+        : true;
+    };
+
+    /** @param {Object.<string, any>} row  */
+    const doFilter = row =>
+      isValidCampus(row) && isValidAcceleratedConcurrent(row);
+    setTableView(data.programs.filter(doFilter));
+    setSearchLoading(false);
+
+    // set summary filters
+    const newAppliedFilterList = [...locations];
+    if (acceleratedConcurrent !== "all")
+      newAppliedFilterList.push(acceleratedConcurrent.replace("Degrees", ""));
+
+    setAppliedFilters(newAppliedFilterList);
   };
 
   const onDegreeCleanFilters = () => setTableView(data?.programs || []);
@@ -115,6 +130,39 @@ const ListingPage = ({ hero, introContent, programList }) => {
     setSearchLoading(false);
   };
 
+  const onRemoveFilterValue = filterValue => {
+    // clean up: summary filters component
+    const newFilters = appliedFilters.filter(f => f !== filterValue);
+    setAppliedFilters(newFilters);
+    // clean up: state filters component
+    /** @type {FiltersState} */
+    const cleanFilters = {};
+
+    if (filterValue === "ONLNE") {
+      cleanFilters["asuLocals"] = [];
+      cleanFilters["locations"] = stateFilters.locations.filter(
+        f => f !== filterValue
+      );
+    } else if (acceleratedConcurrentValues.includes(`${filterValue}Degrees`)) {
+      cleanFilters["acceleratedConcurrent"] = "all";
+    } else {
+      cleanFilters["locations"] = stateFilters.locations.filter(
+        f => f !== filterValue
+      );
+    }
+
+    setStateFilters({
+      ...stateFilters,
+      ...cleanFilters,
+    });
+
+    // clean up: redo query with new filters
+    onDegreeApplyFilters({
+      acceleratedConcurrent: stateFilters.acceleratedConcurrent,
+      locations: stateFilters.locations,
+    });
+  };
+
   return (
     <>
       <Hero image={hero.image} title={hero.title} contents={hero.contents} />
@@ -130,6 +178,8 @@ const ListingPage = ({ hero, introContent, programList }) => {
         />
         <SearchBar onSearch={onDegreeSearch} />
         <Filters
+          value={stateFilters}
+          onValueChange={setStateFilters}
           onApplyFilters={onDegreeApplyFilters}
           onCleanFilters={onDegreeCleanFilters}
         />
@@ -137,7 +187,8 @@ const ListingPage = ({ hero, introContent, programList }) => {
         <section className="container m-1">
           <div className="d-flex justify-content-between">
             <FiltersSummary
-              appliedFilters={["lorem ipsum", "tempe", "online"]}
+              appliedFilters={appliedFilters}
+              onRemoveFilter={onRemoveFilterValue}
             />
 
             {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
