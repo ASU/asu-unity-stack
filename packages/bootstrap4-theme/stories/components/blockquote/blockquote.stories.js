@@ -53,7 +53,7 @@ export const blockquoteWithImage = () => `
       <div class="col-md-8">
 
         <div class="uds-blockquote with-image">
-          <img src="https://placeimg.com/400/400/any" alt="Pretend this is Michael M. Crow, President of ASU"/>
+          <img src="https://placeimg.com/600/400/any" alt="Pretend this is Michael M. Crow, President of ASU"/>
           <blockquote>
             <p>ASU is a comprehensive public research university, measured not by whom we exclude, but rather by whom we include and how they succeed; advancing research and discovery of public value; and assuming fundamental responsibility for the economic, social, cultural and overall health of the communities it serves.</p>
             <div class="citation">
@@ -228,7 +228,7 @@ export const testimonialsWithImage = () => `
       <div class="col-md-6">
 
         <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon">
-          <img src="https://placeimg.com/400/400/arch" alt="Pretend this is Han Solo"/>
+          <img src="https://placeimg.com/600/400/arch" alt="Pretend this is Han Solo"/>
           <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
             <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z"/>
           </svg>

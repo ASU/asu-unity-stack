@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-
 import React, { useState } from "react";
 
 import { BaseStateIconButton } from "./BaseStateIconButton";
+import { InfoButtonIcon } from "./InfoIconButton";
 
 /**
  *
@@ -59,33 +59,6 @@ const SortIcon = () => (
   <i className="fa fa-caret-down fa-lg" aria-hidden="true" />
 );
 
-/**
- *
- * @param {{
- *            onClick: () => void
- *            onMouseOver: () => void
- * }} props
- * @returns {JSX.Element}
- */
-const InfoIcon = ({ onClick = () => null, onMouseOver = () => null }) => (
-  <span
-    role="button"
-    tabIndex={0}
-    onClick={onClick}
-    onKeyDown={onClick}
-    onMouseOver={onMouseOver}
-    onFocus={onMouseOver}
-  >
-    <i
-      className="fas fa-info-circle"
-      style={{
-        color: "#747474",
-      }}
-      aria-hidden="true"
-    />
-  </span>
-);
-
 const ChevronUpIcon = () => (
   <i className="fas fa-chevron-up" aria-hidden="true" />
 );
@@ -109,7 +82,7 @@ const ChevronIconButton = ({ onClick = () => null }) =>
 export {
   FavButton,
   SortIcon,
-  InfoIcon,
+  InfoButtonIcon,
   ChevronUpIcon,
   ChevronDownIcon,
   ChevronIconButton,

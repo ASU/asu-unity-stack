@@ -22,4 +22,15 @@ const glanceItemsMap = {
   timeCommitment: { icon: "calendar-alt", title: "Time commitment" },
 };
 
-export { tagHeadings, tagHeadingList, glanceItemsMap };
+const GRID_VIEW_ID = "grid-view";
+const LIST_VIEW_ID = "list-view";
+const GRID_PROGRAMS_ID = "degree-list-programs";
+
+export {
+  tagHeadings,
+  tagHeadingList,
+  glanceItemsMap,
+  GRID_PROGRAMS_ID,
+  GRID_VIEW_ID,
+  LIST_VIEW_ID,
+};

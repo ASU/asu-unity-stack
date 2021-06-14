@@ -37,7 +37,47 @@ function mockDegreeSeearch(router) {
       ONLNE: "asu-online.html",
     };
     const PAGE_PATH = "./mocks/pages/tooltip-campus/";
-    const pageHTML = fs.readFileSync(PAGE_PATH + campusPages[campus]);
+    let pageHTML;
+
+    if (campusPages[campus]) {
+      pageHTML = fs.readFileSync(PAGE_PATH + campusPages[campus]);
+    } else {
+      pageHTML = `
+            <html>
+            <head></head>
+            <body>
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, deserunt.
+                NO MAP FOR THIS CAMPUS
+            </body>
+          </html>
+      `;
+    }
+
+    res.send(pageHTML);
+  });
+
+  // https://webapp4.asu.edu/programs/tooltipdynamic/accelerate/FAARTHBA/null/ASU00/undergrad
+  router.get(/^\/programs\/tooltipdynamic\/accelerate/, (req, res) => {
+    console.log("> request from " + getFullUrl(req));
+
+    const pageHTML = `
+    <html>
+    <head></head>
+    <body>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, deserunt.
+        This program allows students to accelerate their studies by combining
+        undergraduate with graduate coursework, which may allow them to earn a
+        bachelor's and a master's degree in as few as five years (for some
+        programs). <br /><br />Each program has requirements students must meet to
+        be eligible for consideration. Acceptance to the graduate program requires
+        a separate application. During their junior year, eligible students are
+        advised by their academic departments to apply.
+      </div>
+    </body>
+  </html>
+    `;
 
     res.send(pageHTML);
   });

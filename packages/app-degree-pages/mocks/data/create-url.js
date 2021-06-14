@@ -7,7 +7,8 @@ const DEGREE_SEARCH_URL =
   `&fields=` +
   `Descr100,Institution,AcadPlan,Degree,DegreeDescr,DegreeDescrlong,` +
   `concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL,` +
-  `AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,` +
+  `AsuCritTrackUrl,CampusStringArray,AcadPlan,` +
+  `accelerateDegrees,concurrentDegrees,` +
   `CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee,` +
   `AsuLangReqFlag,asuAcadpLrfText,` +
   `asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,` +

@@ -2,23 +2,27 @@
 // @ts-check
 import React from "react";
 
-import { DegreePage } from ".";
+import { ListingPage } from ".";
 
 /**
  * @typedef {import('../../core/models/app-props').AppProps} AppProps
  */
 
 export default {
-  component: DegreePage,
-  title: "Degree Page",
+  component: ListingPage,
+  title: "Listing Page",
 };
 
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ introContent, degreeList }) => (
-  <DegreePage introContent={introContent} degreeList={degreeList} />
+const Template = ({ hero, introContent, programList }) => (
+  <ListingPage
+    hero={hero}
+    introContent={introContent}
+    programList={programList}
+  />
 );
 
 /**
@@ -33,11 +37,20 @@ export const UndergraduateDegreePage = Template.bind({});
 UndergraduateDegreePage.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      altText: "Undergraduate Degrees",
+      size: "small",
     },
-    content: {
+    title: {
       text: "Undergraduate Degrees",
+      highlightColor: "gold",
     },
+    contents: [
+      {
+        text: "Undergraduate Degrees",
+      },
+    ],
   },
   introContent: {
     type: "text",
@@ -53,8 +66,15 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
-  degreeList: {
-    dataSource: "/api/mocks/degree-search",
+  programList: {
+    dataSource:
+      "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
+      "?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan," +
+      "Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
+      "AsuCritTrackUrl,CampusStringArray,AcadPlan,accelerateDegrees,concurrentDegrees," +
+      "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
+      "AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,&init=false&program=undergrad&cert=false",
+    // dataSource: "/api/mocks/degree-search",
   },
 };
 
@@ -70,11 +90,15 @@ export const AreaStudyDgreePage1 = Template.bind({});
 AreaStudyDgreePage1.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      size: "small",
     },
-    content: {
-      text: "Area of study degrees",
-    },
+    contents: [
+      {
+        text: "Area of study degrees",
+      },
+    ],
   },
   introContent: {
     type: "text-photo-grid",
@@ -106,7 +130,7 @@ AreaStudyDgreePage1.args = {
       ],
     },
   },
-  degreeList: {
+  programList: {
     dataSource: "/api/mocks/degree-search",
   },
 };
@@ -123,11 +147,15 @@ export const AreaStudyDgreePage2 = Template.bind({});
 AreaStudyDgreePage2.args = {
   hero: {
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      size: "small",
     },
-    content: {
-      text: "[Subdomain] degrees in [area of study]",
-    },
+    contents: [
+      {
+        text: "[Subdomain] degrees in [area of study]",
+      },
+    ],
   },
   introContent: {
     type: "text-image-overlay",
@@ -156,7 +184,7 @@ AreaStudyDgreePage2.args = {
       url: "https://source.unsplash.com/random/800x400?a=1",
     },
   },
-  degreeList: {
+  programList: {
     dataSource: "/api/mocks/degree-search",
   },
 };

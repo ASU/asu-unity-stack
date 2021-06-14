@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "2.1.5",
+  "version": "2.1.7",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
   "module": "src/index.js",
@@ -20,8 +20,8 @@
     "build": "webpack --progress && yarn prerender",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "start-storybook -p 8089 -s ./public",
-    "build-storybook": "build-storybook -c .storybook -s public -o export",
+    "storybook": "start-storybook -p 8089 -s ./dist",
+    "build-storybook": "build-storybook -s ./dist",
     "prerender": "node scripts/prerender-templates.js"
   },
   "devDependencies": {

@@ -1,7 +1,16 @@
 // @ts-check
-
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
+import { degreeDataPropResolverService } from "../services";
 import { tagHeadings } from "./constants";
+
+// dummy type to help the intellisense
+const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
+/** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
+
+/**
+ * @template S
+ * @typedef {[S, import("react").Dispatch<import("react").SetStateAction<S>>]} UseStateTuple
+ */
 
 /**
  * @typedef {{
@@ -28,13 +37,6 @@ import { tagHeadings } from "./constants";
 
 /**
  * @typedef {{
- *    image: AppImageProps
- *    content?: AppContentProps
- * }} HeroProps
- */
-
-/**
- * @typedef {{
  *    type?: "text" | "text-image-overlay" | "text-photo-grid"
  *    image?: AppImageProps
  *    header?: AppTitleProps
@@ -46,6 +48,10 @@ import { tagHeadings } from "./constants";
  * }} IntroContentProps
  */
 
+/* TODO: condider to remove this type, the application does not look to rquire
+         this level of complexity. The datasource look to be a simple string
+          which reppresents the API URL
+*/
 /**
  *
  * @typedef {{
@@ -74,7 +80,8 @@ import { tagHeadings } from "./constants";
  *    contentTemplate?: (
  *      props: {
  *                col: GridColumn
- *                row: Object
+ *                row: Object<string, any>
+ *                resolver?: DegreeDataPropResolver
  *                rowIndex?: number
  *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void
@@ -91,9 +98,9 @@ import { tagHeadings } from "./constants";
 /**
  * @typedef {{
  *  sharedDataSources?: AppDataSource []
- *  hero?: HeroProps
+ *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
- *  degreeList?: GridListProps
+ *  programList?: GridListProps
  * }} AppProps
  */
 
@@ -116,6 +123,7 @@ import { tagHeadings } from "./constants";
 
 /**
  * This help VSCODE and JSOC to recognize the syntax
+ * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */
 export const JSDOC = "jsdoc";

@@ -1,9 +1,4 @@
 /* eslint react/jsx-props-no-spreading: "off" */
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 import { ButtonIconOnly } from ".";
@@ -46,22 +41,20 @@ const Template = args => (
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
   color: "white",
-  icon: faTimes,
+  icon: "times",
   onClick: handleClick,
 };
 
 export const CloseButton = Template.bind({});
 CloseButton.args = {
   color: "white",
-  icon: faTimes,
+  icon: "times",
   onClick: handleClick,
 };
 CloseButton.parameters = {
   docs: {
     description: {
       story: `
-    import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -69,13 +62,12 @@ CloseButton.parameters = {
 
     <Button
       color: "white"
-      icon: {faTimes}
+      icon: "times"
       onClick: {handleClick}
     />Default Button</Button>`,
     },
     source: {
-      code: `import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
+      code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -83,7 +75,7 @@ CloseButton.parameters = {
 
 <Button
   color: "white"
-  icon: {faTimes}
+  icon: "times"
   onClick: {handleClick}
 />Default Button</Button>`,
     },
@@ -93,7 +85,7 @@ CloseButton.parameters = {
 export const NextButton = Template.bind({});
 NextButton.args = {
   color: "white",
-  icon: faChevronRight,
+  icon: "chevron-right",
   onClick: handleClick,
   size: "large",
 };
@@ -101,8 +93,6 @@ NextButton.parameters = {
   docs: {
     description: {
       story: `
-    import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -110,14 +100,13 @@ NextButton.parameters = {
 
     <Button
       color: "white"
-      icon: {faChevronRight}
+      icon: "chevron-right"
       onClick: {handleClick}
       size: "large"
     />Next Button</Button>`,
     },
     source: {
-      code: `import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
+      code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -125,7 +114,7 @@ NextButton.parameters = {
 
 <Button
   color: "white"
-  icon: {faChevronRight}
+  icon: "chevron-right"
   onClick: {handleClick}
   size: "large"
 />Next Button</Button>`,
@@ -136,7 +125,7 @@ NextButton.parameters = {
 export const PrevButton = Template.bind({});
 PrevButton.args = {
   color: "white",
-  icon: faChevronLeft,
+  icon: "chevron-left",
   onClick: handleClick,
   size: "large",
 };
@@ -144,8 +133,6 @@ PrevButton.parameters = {
   docs: {
     description: {
       story: `
-    import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -153,14 +140,13 @@ PrevButton.parameters = {
 
     <Button
       color: "white"
-      icon: {faChevronLeft}
+      icon: "chevron-left"
       onClick: {handleClick}
       size: "large"
     />Prev Button</Button>`,
     },
     source: {
-      code: `import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
+      code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -168,7 +154,7 @@ PrevButton.parameters = {
 
 <Button
   color: "white"
-  icon: {faChevronLeft}
+  icon: "chevron-left"
   onClick: {handleClick}
   size: "large"
 />Prev Button</Button>`,

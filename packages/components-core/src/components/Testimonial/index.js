@@ -3,11 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-/**
- * @param {string []} classes
- * @returns {string}
- */
-const spreadClasses = classes => (classes || []).join(" ");
+import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
  * @typedef {{

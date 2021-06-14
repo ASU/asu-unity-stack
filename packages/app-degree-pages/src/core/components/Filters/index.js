@@ -1,7 +1,7 @@
 // @ts-check
-import { Button } from "@asu-design-system/components-core/src/components";
+import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 
 import {
   locationOptions,
@@ -12,9 +12,25 @@ import { SelectFormGroup } from "./components";
 import { Section, ButtonLink } from "./index.style";
 
 /**
+ *  @typedef  {{
+ *    locations?: string [],
+ *    asuLocals?: string [],
+ *    acceleratedConcurrent: "acceleratedConcurrent" | "concurrentDegrees" | "all"
+ * }} FiltersState
+ */
+
+/**
+ *
  * @typedef {{
- *  onApplyFilters?: (data: { location: string[], acceleratedConcurrent: string }) => void
- *  onCleanFilters?: () => void
+ *  value: FiltersState
+ *  onValueChange: () => void
+ *  onApplyFilters: (
+ *    data: {
+ *      location: string[],
+ *      acceleratedConcurrent: string
+ *    }
+ * ) => void
+ *  onCleanFilters: () => void
  * }} FilterProps
  */
 
@@ -25,46 +41,52 @@ import { Section, ButtonLink } from "./index.style";
  */
 
 const INITIAL_STATE = {
-  location: [""],
-  asuLocal: [""],
-  acceleratedConcurrent: "accelerateDegrees",
+  locations: [],
+  asuLocals: [],
+  acceleratedConcurrent: acceleratedConcurrentOptions[0].value,
 };
 
-const Filters = ({ onApplyFilters, onCleanFilters }) => {
-  const [state, setState] = useState(INITIAL_STATE);
-
+const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
   const handleChangeMultipleField = (id, event) => {
     const stateMap = {
-      asuLocal: () =>
-        setState({
-          ...state,
-          location: state.location.includes("ONLNE")
-            ? [...state.location]
-            : ["ONLNE", ...state.location],
-          asuLocal: Array.from(
-            event.target.selectedOptions,
-            item => item.value
-          ),
-        }),
-      location: () =>
-        setState({
-          ...state,
-          location: state.asuLocal[0]
-            ? [
-                "ONLNE",
-                ...Array.from(event.target.selectedOptions, item =>
-                  item.value !== "ONLNE" ? item.value : ""
-                ),
-              ]
-            : Array.from(event.target.selectedOptions, item => item.value),
-        }),
+      asuLocal: () => {
+        const locations = value.locations.includes("ONLNE")
+          ? [...value.locations]
+          : ["ONLNE", ...value.locations];
+
+        const asuLocals = Array.from(
+          event.target.selectedOptions,
+          item => item.value
+        );
+
+        onValueChange({
+          ...value,
+          locations,
+          asuLocals,
+        });
+      },
+      location: () => {
+        const locations = value.asuLocals[0]
+          ? [
+              "ONLNE",
+              ...Array.from(event.target.selectedOptions, item =>
+                item.value !== "ONLNE" ? item.value : ""
+              ),
+            ]
+          : Array.from(event.target.selectedOptions, item => item.value);
+
+        onValueChange({
+          ...value,
+          locations,
+        });
+      },
     };
     const renderedValue = () =>
       stateMap[id]
         ? stateMap[id]()
         : () =>
-            setState({
-              ...state,
+            onValueChange({
+              ...value,
               [id]: Array.from(
                 event.target.selectedOptions,
                 item => item.value
@@ -75,21 +97,18 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
   };
 
   const handleChangeField = (id, event) => {
-    setState({ ...state, [id]: event.target.value });
+    onValueChange({ ...value, [id]: event.target.value });
   };
 
   const handleApplyFilters = () => {
-    const { asuLocal, ...filters } = state;
-    console.log(filters);
+    const { asuLocals, ...filters } = value;
     onApplyFilters?.(filters);
   };
 
   const handleCleanFilters = () => {
-    setState(INITIAL_STATE);
+    onValueChange(INITIAL_STATE);
     onCleanFilters?.();
   };
-
-  console.log(state);
 
   return (
     <Section className="container mt-4 pb-6 mb-6">
@@ -100,7 +119,7 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
             multiple
             id="location"
             label="Location or online"
-            selected={state.location}
+            selected={value.locations}
             options={locationOptions}
             onChange={handleChangeMultipleField}
           />
@@ -110,7 +129,7 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
             multiple
             id="asuLocal"
             label="ASU Local"
-            selected={state.asuLocal}
+            selected={value.asuLocals}
             options={asuLocalOptions}
             onChange={handleChangeMultipleField}
           />
@@ -119,7 +138,7 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
           <SelectFormGroup
             id="acceleratedConcurrent"
             label="Accelerated/Concurrent"
-            selected={state.acceleratedConcurrent}
+            selected={value.acceleratedConcurrent}
             options={acceleratedConcurrentOptions}
             onChange={handleChangeField}
           />
@@ -144,6 +163,12 @@ const Filters = ({ onApplyFilters, onCleanFilters }) => {
 };
 
 Filters.propTypes = {
+  value: PropTypes.shape({
+    locations: PropTypes.arrayOf(PropTypes.string),
+    asuLocals: PropTypes.arrayOf(PropTypes.string),
+    acceleratedConcurrent: PropTypes.string,
+  }),
+  onValueChange: PropTypes.func,
   onApplyFilters: PropTypes.func,
   onCleanFilters: PropTypes.func,
 };
