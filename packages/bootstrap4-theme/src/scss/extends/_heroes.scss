@@ -23,74 +23,86 @@
 2. Hero, Desktop
 --------------------------------------------------------------*/
 
-.uds-hero {
+div[class^='uds-hero'] {
   background-size: cover;
   background-position: top;
   width: 100%;
   height: 42.75rem;
   display: flex;
   max-width: 1920px;
+  position: relative;
 
-  .uds-hero-container {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: auto auto $uds-size-spacing-4 auto;
+  .hero-content {
+    position: absolute;
+    bottom: $uds-size-spacing-6;
+    left: $uds-size-spacing-12;
+    width: 50%;
 
     h1 {
-      margin-left: 0;
-      margin-top: 0;
+      margin: 0;
     }
+
     h3 {
-      margin-left: 0;
+      margin-left: -6px; //Align with h1
       margin-bottom: 0;
-
-      //Needs to left-align with a h1, which has exactly twice the
-      //font-size, and so needs half the normal h3 padding.
-      padding-left: 6px;
-    }
-
-    .uds-hero-text {
-      margin-left: 0;
     }
 
     p {
       color: $uds-color-base-white;
       font-size: $uds-size-spacing-3;
-      margin-bottom: 1.75rem; // Magic number.
+      margin: $uds-size-spacing-4 0;
     }
   }
 
   &.uds-hero-sm {
     height: $uds-size-spacing-32;
-
-    .container.uds-hero-container {
-      width: 100%;
-    }
   }
 
   &.uds-hero-md {
     height: $uds-size-spacing-64;
-
-    .container {
-      @include container-md-and-lg();
-    }
   }
 
   &.uds-hero-lg {
-    height: 42.75rem; // 684px
-
-    .container.uds-hero-container {
-      @include container-md-and-lg();
-    }
+    height: 42.75rem;
   }
 }
 
 /*--------------------------------------------------------------
 3. Hero, Mobile
 --------------------------------------------------------------*/
+@media screen and (max-width: $uds-breakpoint-sm) {
+  div[class^='uds-hero'] {
 
+
+    .hero-content {
+
+      h1 {
+
+      }
+
+      h3 {
+
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    &.uds-hero-sm {
+
+    }
+
+    &.uds-hero-md {
+
+    }
+
+    &.uds-hero-lg {
+
+    }
+  }
+}
+/*
 .uds-hero {
   .uds-hero-container {
     // Mobile adjustments.
@@ -143,7 +155,7 @@
     }
   }
 }
-
+*/
 /*--------------------------------------------------------------
 4. Story Hero, Mobile
 --------------------------------------------------------------*/
