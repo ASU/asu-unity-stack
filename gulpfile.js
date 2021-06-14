@@ -1,4 +1,3 @@
-/* Commenting out now due to broken Jenkins build throwing errors related to "Cleaning outputDir"
 const gulp = require("gulp");
 const nunjucks = require("gulp-nunjucks");
 const clean = require("gulp-clean");
@@ -6,12 +5,12 @@ const filter = require("gulp-filter");
 
 copy = () =>
   gulp
-    .src(["./server/views/**         PUT BACK WHEN UNCOMMENTED          /*"])
+    .src(["./server/views/**/*"])
     .pipe(gulp.dest("./build/@asu-design-system"));
 
 compile = () =>
   gulp
-    .src("./build/@asu-design-system/**         PUT BACK WEHEN UNCOMMENTED          /*.njk")
+    .src("./build/@asu-design-system/**/*.njk")
     .pipe(nunjucks.compile())
     .pipe(filter("components-library"))
     .pipe(gulp.dest("build"));
@@ -27,4 +26,3 @@ cleanup = () =>
     .pipe(clean());
 
 exports.default = gulp.series(copy, compile, cleanup);
-*/
