@@ -2,11 +2,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { AnchorMenu } from "../components/AnchorMenu";
 import { Article } from "../components/Article";
 import { Button } from "../components/Button";
 import { ButtonIconOnly } from "../components/ButtonIconOnly";
 import { ButtonTag } from "../components/ButtonTag";
 import { Card } from "../components/Card";
+import { Hero } from "../components/Hero";
+import { Pagination } from "../components/Pagination";
 import { Testimonial } from "../components/Testimonial";
 
 /**
@@ -23,6 +26,12 @@ import { Testimonial } from "../components/Testimonial";
 const RenderReact = (component, props, target) => {
   ReactDOM.render(React.createElement(component, props), target);
 };
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initAnchorMenu = ({ targetSelector, props }) =>
+  RenderReact(AnchorMenu, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props
@@ -57,5 +66,17 @@ export const initCard = ({ targetSelector, props }) =>
 /**
  * @param {ComponentProps} props
  */
+export const initPagination = ({ targetSelector, props }) =>
+  RenderReact(Pagination, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
 export const initTestimonial = ({ targetSelector, props }) =>
   RenderReact(Testimonial, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initHero = ({ targetSelector, props }) =>
+  RenderReact(Hero, props, document.querySelector(targetSelector));

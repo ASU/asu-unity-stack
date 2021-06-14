@@ -1,4 +1,5 @@
-// @ts-nocheck
+/* eslint-disable react/jsx-props-no-spreading */
+// @ts-check
 import React from "react";
 
 import { Testimonial } from ".";
@@ -8,19 +9,20 @@ export default {
   component: Testimonial,
   decorators: [
     (Story, context) => {
-      const { backgroundColor, ...props } = context.args;
+      // Extract wrapper background color from args, it doesn't need passed down to component
+      const { wrapperBackgroundColor, ...args } = context.args;
       return (
         <div
-          className={`p-6 ${backgroundColor}`}
+          className={`p-6 ${wrapperBackgroundColor}`}
           style={{ width: "fit-content" }}
         >
-          <Story props={props} />
+          {Story({ args })}
         </div>
       );
     },
   ],
   argTypes: {
-    backgroundColor: {
+    wrapperBackgroundColor: {
       defaultValue: "",
       options: ["", "bg-gray-2", "bg-gray-7"],
       control: {
