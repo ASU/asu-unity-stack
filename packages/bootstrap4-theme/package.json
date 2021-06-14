@@ -18,7 +18,7 @@
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook -s ./dist",
+    "build-storybook": "build-storybook",
     "build": "gulp",
     "prepare": "yarn run build"
   },
