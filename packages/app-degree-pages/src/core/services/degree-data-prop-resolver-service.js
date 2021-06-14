@@ -46,8 +46,12 @@ function degreeDataPropResolverService(row = {}) {
     getMathIntensityRawValue: () => row["MathIntensity"],
     getMinMathReq: () => row["MinMathReq"],
     getMarketText: () => row["marketText"],
+    /** @return {string} */
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
+    /** @return {string} */
     getCampusWue: () => row["campusWue"] || "",
+    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
+    getChangeMajor: () => row["ChangeMajor"],
   };
 }
 

@@ -3,17 +3,13 @@
 /**
  * @typedef {{
  *    contents: import("./shared-types").ContentItem[]
- *    video: {
- *        url: string
- *        altText: string
- *    }
+ *    video?: import("./shared-types").VideoItem
  * }} IntroContentProps
  */
 
 /**
  * @typedef {{
- *    title: string
- *    contents: import("./shared-types").ContentItem[]
+ *    content: import("./shared-types").ContentItem
  *  }} ProgramDescriptionProps
  */
 
@@ -138,7 +134,7 @@
  *  acadPlan?: string
  *  dataSource: import("./listing-page-types").AppDataSource | string
  *  introContent?: IntroContentProps
- *  ProgramDescription?: ProgramDescriptionProps
+ *  programDescription?: ProgramDescriptionProps
  *  atAGlance?: AtAGlanceProps
  * }} ProgramDetailPageProps
  */

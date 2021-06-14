@@ -12,12 +12,22 @@ const contentPropTypes = {
   cssClass: PropTypes.arrayOf(PropTypes.string),
 };
 
+const videoPropTypes = {
+  url: PropTypes.string,
+  altText: PropTypes.string,
+  vttUrl: PropTypes.string,
+};
+
 const imagePropType = PropTypes.shape({
   ...imagePropTypes,
 });
 
 const contentPropType = PropTypes.shape({
   ...contentPropTypes,
+});
+
+const videoPropType = PropTypes.shape({
+  ...videoPropTypes,
 });
 
 const dataSourcePropType = PropTypes.shape({
@@ -34,6 +44,7 @@ const glanceItemPropType = PropTypes.shape({
 });
 
 export {
+  videoPropType,
   imagePropType,
   contentPropType,
   imagePropTypes,

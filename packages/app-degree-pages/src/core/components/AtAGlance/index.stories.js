@@ -19,7 +19,7 @@ export default {
 
 const Template = args => <AtAGlance {...args} />;
 
-export const AtAGlanceComponent = Template.bind({});
+const AtAGlanceComponent = Template.bind({});
 AtAGlanceComponent.args = {
   offeredBy: {
     text: "Herberger Instite for Design and the Arts",

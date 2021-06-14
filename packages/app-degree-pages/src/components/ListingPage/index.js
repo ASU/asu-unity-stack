@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import {
-  IntroContent,
   Filters,
   FiltersSummary,
   Loader,
@@ -17,6 +16,7 @@ import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import { IntroContent } from "./components/IntroContent";
 
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps

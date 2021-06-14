@@ -5,6 +5,9 @@ import React from "react";
 
 import { ProgramDetailPage } from ".";
 
+// @ts-ignore
+import stockVideo from "../../assets/video/stock-video-person-drawing.mp4";
+
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
  */
@@ -18,8 +21,12 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ dataSource, atAGlance }) => (
-  <ProgramDetailPage dataSource={dataSource} atAGlance={atAGlance} />
+const Template = ({ dataSource, introContent, atAGlance }) => (
+  <ProgramDetailPage
+    dataSource={dataSource}
+    introContent={introContent}
+    atAGlance={atAGlance}
+  />
 );
 
 /**
@@ -36,10 +43,24 @@ DefaultPage.args = {
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
     `&acadPlan=BAACCBS` +
     `&fields=` +
+    `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,` +
     // at a glance
     `CollegeDescr100,` +
-    `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity` +
+    `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
     `planCatDescr&init=false`,
+  introContent: {
+    video: {
+      url: stockVideo,
+      altText: "Example video",
+    },
+    contents: [
+      {
+        text: `Can you imagine yourself hosting successful events and meetings?
+        Then this program is right for you. Earn a degree that showcases your advanced knowledge of event programming, operations, financial management and marketing.
+        The instructors work in all aspects of the event industry.`,
+      },
+    ],
+  },
   atAGlance: {
     offeredBy: {
       text: "Herberger Instite for Design and the Arts",

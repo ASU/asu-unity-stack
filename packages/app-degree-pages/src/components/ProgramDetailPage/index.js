@@ -8,15 +8,49 @@ import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import IntroContent from "./components/IntroContent";
+import { ProgramDescription } from "./components/ProgramDescription";
+import { VideoPage } from "./components/VideoPage";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
+
+/**
+ *
+ * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
+ * @returns {import("src/core/models/shared-types").LinkItem[]}
+ */
+function getLocations(resolver) {
+  const locations = [];
+
+  if (resolver.getCampusList().length > 0)
+    locations.push(
+      ...resolver.getCampusList().map(location => ({
+        text: location,
+        url: "#",
+      }))
+    );
+
+  if (resolver.getAsuOfficeLoc())
+    locations.push({
+      text: resolver.getAsuOfficeLoc(),
+      url: "#",
+    });
+
+  if (resolver.getCampusWue())
+    locations.push({
+      text: resolver.getCampusWue(),
+      url: "#",
+    });
+
+  return locations;
+}
 
 /**
  *
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource }) => {
+const ProgramDetailPage = ({ dataSource, introContent }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -48,22 +82,41 @@ const ProgramDetailPage = ({ dataSource }) => {
         {loading ? (
           <Loader />
         ) : (
-          <div>
-            <AtAGlance
-              offeredBy={{
-                text: resolver.getCollegeDesc(),
-                url: "",
-              }}
-              locations={[
-                ...resolver.getCampusList(),
-                resolver.getAsuOfficeLoc(),
-                resolver.getCampusWue(),
-              ]}
-              firstRequirementMathCourse={resolver.getMinMathReq()}
-              mathIntensity={resolver.getMathIntensity()}
-              timeCommitment="***TBD"
-            />
-          </div>
+          <section className="container">
+            <div className="row p-3">
+              <div className="col col-sm-12 col-md-6 col-lg-6 ">
+                <IntroContent
+                  contents={[
+                    { text: resolver.getMarketText() },
+                    ...introContent.contents,
+                  ]}
+                />
+                <ProgramDescription content={resolver.getDescrLongExtented()} />
+                <strong>Major Map (concurrent):</strong>{" "}
+                {resolver.getConcurrentDegreeMajorMaps()}
+                <strong>Major Map (online):</strong>{" "}
+                {resolver.getOnlineMajorMapURL()}
+                <strong>Change Your Major:</strong> {resolver.getChangeMajor()}
+                <AtAGlance
+                  offeredBy={{
+                    text: resolver.getCollegeDesc(),
+                    url: "",
+                  }}
+                  locations={getLocations(resolver)}
+                  firstRequirementMathCourse={resolver.getMinMathReq()}
+                  mathIntensity={resolver.getMathIntensity()}
+                  timeCommitment="***TBD"
+                />
+              </div>
+              <div className="col col-sm-12 col-md-6 col-lg-6 ">
+                <VideoPage
+                  url={introContent.video.url}
+                  vttUrl={introContent.video.vttUrl}
+                  altText={introContent.video.altText}
+                />
+              </div>
+            </div>
+          </section>
         )}
       </main>
     </>
@@ -72,6 +125,7 @@ const ProgramDetailPage = ({ dataSource }) => {
 
 ProgramDetailPage.propTypes = {
   dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
+  introContent: PropTypes.instanceOf(PropTypes.object),
 };
 
 export { ProgramDetailPage };
