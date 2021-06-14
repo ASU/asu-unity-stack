@@ -151,11 +151,13 @@ gulp.task('copy-assets', function (done) {
 gulp.task('copy-dist-assets', function (done) {
   // Copy font-awesome to dist/
   gulp
-    .src('./src/fontawesome/**/*')
+    .src('./src/assets/fontawesome/**/*') // ********** Fix Jenkins build. Line below for GitHub Actions build
+    //.src('./src/fontawesome/**/*')
     .pipe(gulp.dest(paths.dist + '/assets/fontawesome'));
 
   // Copy global header js to dist/ for use on monorepo index page
-  gulp.src('./src/js/global-header.js').pipe(gulp.dest(paths.dist + '/js'));
+  // ********** Uncomment for GitHub Actions build
+  // gulp.src('./src/js/global-header.js').pipe(gulp.dest(paths.dist + '/js'));
 
   // Copy Bootstrap's Scripts to dist/
   gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));
