@@ -1,94 +1,23 @@
-.uds-tooltip {
-  // Turn tooltip icon blue on hover
-  &:hover {
-    .fa-stack .fa-circle {
-      color: $uds-color-font-light-info;
-    }
+div.uds-tooltip-container {
+  display: inline-block;
+  position: relative;
+}
+
+button.uds-tooltip {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  .fa-circle {
+    color: $uds-color-base-gray-3;
   }
 
-  // Display tooltip text on icon hover
-  &:hover &-text {
-    visibility: visible;
-  }
-
-  // Text inside tooltip
-  &-text {
-    background: #191919 0% 0% no-repeat padding-box;
-    backdrop-filter: blur(8px);
-    color: $uds-color-base-gray-1;
-    font: normal normal normal 1rem Arial;
-    line-height: 2rem;
-    margin: 0px 5px; // x margin to give it spacing from the element
-    // width: 288px; XD notes say max width 288 but show width of 353.
-    // 353 looks better in my opinion, but can change if necessary
-    max-width: 353px;
-    padding: 2rem;
-    position: absolute;
-    visibility: hidden;
-    z-index: 1;
-
-    // Heading inside tooltip
-    &-heading {
-      color: $uds-color-base-gray-1;
-      display: block;
-      font: normal normal bold 1rem Arial;
-      letter-spacing: 0px;
-      margin-bottom: 1rem;
-      text-align: left;
-    }
-  }
-
-  // Default/white mode colors
-  &,
-  &-white {
-    .fa-stack {
-      .fa-circle {
-        color: $uds-color-base-gray-3;
-      }
-
-      .fa-info {
-        color: $uds-color-base-white;
-      }
-    }
-  }
-
-  // Base gray colors
-  &-base-gray {
-    .fa-stack {
-      .fa-circle {
-        color: $uds-color-base-gray-4;
-      }
-
-      .fa-info {
-        color: $uds-color-base-gray-1;
-      }
-    }
-  }
-
-  // Gray colors
-  &-gray {
-    .fa-stack {
-      .fa-circle {
-        color: $uds-color-base-gray-4;
-      }
-
-      .fa-info {
-        color: $uds-color-background-gray;
-      }
-    }
-  }
-
-  // Dark colors
-  &-dark {
-    .fa-stack {
-      .fa-circle {
-        color: $uds-color-base-gray-5;
-      }
-
-      .fa-info {
-        color: $uds-color-font-dark-base;
-      }
-    }
+  .fa-info {
+    color: $uds-color-base-white;
   }
 
   .fa-stack > * {
@@ -98,26 +27,95 @@
   i {
     vertical-align: middle;
   }
+
+  &:hover,
+  &:focus {
+    + div[role='tooltip'].uds-tooltip-description {
+      visibility: visible;
+    }
+    .fa-circle {
+      color: $uds-color-font-light-info;
+    }
+  }
 }
 
-.background {
-  align-items: center;
-  display: inline-flex;
-  justify-content: center;
-
-  &.white {
-    background-color: $uds-color-background-white;
+button.uds-tooltip-gray-1 {
+  .fa-circle {
+    color: $uds-color-base-gray-4;
   }
 
-  &.base-gray {
-    background-color: $uds-color-base-gray-1;
+  .fa-info {
+    color: $uds-color-base-gray-1;
+  }
+}
+
+button.uds-tooltip-gray {
+  .fa-circle {
+    color: $uds-color-base-gray-4;
   }
 
-  &.gray {
-    background-color: $uds-color-background-gray;
+  .fa-info {
+    color: $uds-color-background-gray;
+  }
+}
+
+button.uds-tooltip-dark {
+  .fa-circle {
+    color: $uds-color-base-gray-5;
   }
 
-  &.dark {
-    background-color: $uds-color-background-dark;
+  .fa-info {
+    color: $uds-color-font-dark-base;
   }
+}
+
+div[role='tooltip'].uds-tooltip-description {
+  background: #191919 0% 0% no-repeat padding-box;
+  color: $uds-color-base-gray-1;
+  font: normal normal normal 1rem Arial;
+  line-height: 2rem;
+  margin: 0px 5px;
+  max-width: 353px;
+  min-width: 300px;
+  padding: 2rem;
+  position: absolute;
+  left: 40px;
+  top: 0;
+  visibility: hidden;
+  z-index: 1;
+
+  & > span.uds-tooltip-heading {
+    color: $uds-color-base-gray-1;
+    display: block;
+    font: normal normal bold 1rem Arial;
+    letter-spacing: 0px;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+}
+
+span.uds-tooltip-visually-hidden {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.uds-tooltip-bg-white {
+  background-color: $uds-color-base-white;
+}
+
+.uds-tooltip-bg-gray-1 {
+  background-color: $uds-color-base-gray-1;
+}
+
+.uds-tooltip-bg-gray {
+  background-color: $uds-color-background-gray;
+}
+
+.uds-tooltip-bg-dark {
+  background-color: $uds-color-background-dark;
 }
