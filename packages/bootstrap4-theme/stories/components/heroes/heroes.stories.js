@@ -3,29 +3,39 @@ export default { title: 'Components/Heroes' };
 // Random photos sourced from Unsplash: https://source.unsplash.com
 export const heroSmall = () => `
 <div class="uds-hero-sm" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-    <div class="hero-content">
+  <div class="hero-content">
+    <div class="hero-header">
       <h1 class="heading"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
     </div>
+  </div>
 </div>
 `;
 
 export const heroMedium = () => `
 <div class="uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-    <div class="hero-content">
+  <div class="hero-content">
+    <div class="hero-header">
       <h1 class="heading"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
+    </div>
+    <div class="hero-body">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <a href="#" class="btn btn-gold" />Call to action</a>
     </div>
+  </div>
 </div>
 `;
 
 export const heroLarge = () => `
 <div class="uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-    <div class="hero-content">
+  <div class="hero-content">
+    <div class="hero-header">
       <h1 class="heading"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
+    </div>
+    <div class="hero-body">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <a href="#" class="btn btn-gold" />Call to action</a>
     </div>
+  </div>
 </div>
 `;
 
@@ -76,8 +86,10 @@ export const storyHeroLarge = () => `
 export const heroMediumBlackTitle = () => `
 <div class="uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
   <div class="hero-content">
-    <h3><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1><span class="highlight-white">Title Title Title Title Title Title</span></h1>
+    <div class="hero-header">
+      <h3><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
+      <h1><span class="highlight-white">Title Title Title Title Title Title</span></h1>
+    </div>
   </div>
 </div>
 `;
@@ -85,8 +97,13 @@ export const heroMediumBlackTitle = () => `
 export const heroLargeBlackTitle = () => `
 <div class="uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
   <div class="hero-content">
-    <h3><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1><span class="highlight-white">Title Title Title Title Title Title</span></h1>
+    <div class="hero-header">
+      <h3><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
+      <h1><span class="highlight-white">Title Title Title Title Title Title</span></h1>
+    </div>
+    <div class="hero-body">
+      <a href="#" class="btn btn-gold" />Call to action</a>
+    </div>
   </div>
 </div>
 `

@@ -36,7 +36,7 @@ div[class^='uds-hero'] {
     position: absolute;
     bottom: $uds-size-spacing-6;
     left: $uds-size-spacing-12;
-    width: 50%;
+    width: 66%;
 
     h1 {
       margin: 0;
@@ -50,12 +50,21 @@ div[class^='uds-hero'] {
     p {
       color: $uds-color-base-white;
       font-size: $uds-size-spacing-3;
-      margin: $uds-size-spacing-4 0;
+      margin: 0;
+      margin-top: $uds-size-spacing-4;
+    }
+
+    .btn,
+    button {
+      margin-top: $uds-size-spacing-4;
     }
   }
 
   &.uds-hero-sm {
     height: $uds-size-spacing-32;
+    .hero-body {
+      display: none;
+    }
   }
 
   &.uds-hero-md {
@@ -75,87 +84,29 @@ div[class^='uds-hero'] {
 
 
     .hero-content {
+      position: relative;
+      height: 100%;
+      top: 0;
+      left: $uds-size-spacing-4;
 
-      h1 {
-
-      }
-
-      h3 {
-
-      }
-
-      p {
-        display: none;
-      }
-    }
-
-    &.uds-hero-sm {
-
-    }
-
-    &.uds-hero-md {
-
-    }
-
-    &.uds-hero-lg {
-
-    }
-  }
-}
-/*
-.uds-hero {
-  .uds-hero-container {
-    // Mobile adjustments.
-    @media screen and (max-width: 576px) {
-      margin-bottom: -2rem;
-
-      h1 {
-        max-width: 100%;
+      .hero-header {
+        position: absolute;
+        bottom: $uds-size-spacing-7;
       }
 
       p {
         display: none;
       }
-    }
-  }
 
-  &.uds-hero-sm {
-    // Adjustment to sm hero spacing for mobile.
-    @media screen and (max-width: 576px) {
-      padding-bottom: $uds-size-spacing-4;
-
-      .highlight {
-        box-shadow: -0.15em 0 0 $uds-color-base-gray-1,
-          0.15em 0 0 $uds-color-base-gray-1;
-        background-color: $uds-color-base-gray-1;
+      .btn,
+      button {
+        position: absolute;
+        bottom: -$uds-size-spacing-3;
       }
-    }
-  }
-
-  &.uds-hero-md {
-    @media screen and (max-width: 576px) {
-      height: $uds-size-spacing-32;
-
-      .container {
-        position: relative;
-        top: $uds-size-spacing-4;
-        .highlight {
-          box-shadow: -0.15em 0 0 $uds-color-base-gray-1,
-            0.15em 0 0 $uds-color-base-gray-1;
-          background-color: $uds-color-base-gray-1;
-        }
-      }
-    }
-  }
-
-  &.uds-hero-lg {
-    // Snap lg hero to md at 1400px.
-    @media screen and (max-width: 1400px) {
-      height: $uds-size-spacing-64;
     }
   }
 }
-*/
+
 /*--------------------------------------------------------------
 4. Story Hero, Mobile
 --------------------------------------------------------------*/
