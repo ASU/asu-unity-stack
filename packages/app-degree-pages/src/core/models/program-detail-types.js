@@ -15,9 +15,10 @@
 
 /**
  * @typedef {{
- *  buttons: import("./shared-types").LinkItem []
- *  majorMapLink: import("./shared-types").LinkItem
- *  whatIf: {
+ *  concurrentDegreeMajorMaps: string
+ *  onlineMajorMapURL: string
+ *  majorMapLink?: import("./shared-types").LinkItem
+ *  whatIf?: {
  *    text: string,
  *    changeYourMajor: import("./shared-types").LinkItem
  *  }

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-/** @typedef {import('../../core/models/program-detail-types').ProgramDescriptionProps} ProgramDescriptionProps */
+/** @typedef {import('../../../../core/models/program-detail-types').ProgramDescriptionProps} ProgramDescriptionProps */
 
 /**
  *

@@ -50,7 +50,7 @@ DefaultPage.args = {
     `planCatDescr&init=false`,
   introContent: {
     video: {
-      url: stockVideo,
+      url: "https://player.vimeo.com/video/110626871",
       altText: "Example video",
     },
     contents: [

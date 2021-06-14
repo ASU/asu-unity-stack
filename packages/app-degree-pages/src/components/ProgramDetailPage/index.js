@@ -10,6 +10,7 @@ import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import IntroContent from "./components/IntroContent";
 import { ProgramDescription } from "./components/ProgramDescription";
+import { RequiredCourse } from "./components/RequiredCourse";
 import { VideoPage } from "./components/VideoPage";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
@@ -92,11 +93,12 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                   ]}
                 />
                 <ProgramDescription content={resolver.getDescrLongExtented()} />
-                <strong>Major Map (concurrent):</strong>{" "}
-                {resolver.getConcurrentDegreeMajorMaps()}
-                <strong>Major Map (online):</strong>{" "}
-                {resolver.getOnlineMajorMapURL()}
-                <strong>Change Your Major:</strong> {resolver.getChangeMajor()}
+
+                <RequiredCourse
+                  concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                  onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                />
+
                 <AtAGlance
                   offeredBy={{
                     text: resolver.getCollegeDesc(),
@@ -107,6 +109,20 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                   mathIntensity={resolver.getMathIntensity()}
                   timeCommitment="***TBD"
                 />
+
+                <section>
+                  <h3>Application Requirment:</h3>
+                  place holder
+                </section>
+
+                <section className="change-your-major">
+                  <h3>Change Your Major:</h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: resolver.getChangeMajor(),
+                    }}
+                  />
+                </section>
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 <VideoPage
