@@ -28,10 +28,16 @@ const dataSourcePropType = PropTypes.shape({
   apiUrl: PropTypes.string, // only if `dataSourceType == "api"``
 });
 
+const glanceItemPropType = PropTypes.shape({
+  text: PropTypes.string,
+  url: PropTypes.string,
+});
+
 export {
   imagePropType,
   contentPropType,
   imagePropTypes,
   contentPropTypes,
   dataSourcePropType,
+  glanceItemPropType,
 };
