@@ -1,5 +1,4 @@
 // @ts-check
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -37,7 +36,7 @@ export const GlanceItem = ({ item, type }) => {
 
   return (
     <li>
-      <FontAwesomeIcon icon={glanceItemsMap[type].icon} className="fa-li" />
+      <i className={`fas fa-${glanceItemsMap[type].icon} fa-li`} />
       <strong>{glanceItemsMap[type].title}: </strong>
       {renderContent()}
     </li>
