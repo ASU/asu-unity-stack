@@ -4,7 +4,7 @@
  * @typedef {{
  *  text: string,
  *  targetIdName: string
- *  icon: string
+ *  icon: [string, string]
  * }} AnchorMenuItem
  */
 

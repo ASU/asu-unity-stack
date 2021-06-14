@@ -1,5 +1,6 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +23,7 @@ export const Button = ({
   classes,
   ...props
 }) => {
-  library.add(fas, far);
+  library.add(fas, far, fab);
 
   const btnClasses = classNames("btn", {
     [`btn-${color}`]: true,
@@ -97,9 +98,9 @@ Button.propTypes = {
   */
   href: PropTypes.string,
   /**
-    React Font Awesome icon name string to be rendered in button label.
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   */
-  icon: PropTypes.string,
+  icon: PropTypes.arrayOf(PropTypes.string),
 
   /**
    * ref will only get you a reference to the Button component, use innerRef to

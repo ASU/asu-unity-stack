@@ -1,4 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,7 +37,7 @@ export const Card = ({
   linkUrl,
   tags,
 }) => {
-  library.add(fas, far);
+  library.add(fab, fas, far);
 
   if (clickable && clickHref) {
     return (
@@ -111,9 +112,9 @@ Card.propTypes = {
    */
   title: PropTypes.string.isRequired,
   /**
-   * FontAwesome React icon alternative to image (optional -- only valid for default cards). Icon string name
-   */
-  icon: PropTypes.string,
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
+  */
+  icon: PropTypes.arrayOf(PropTypes.string),
   /**
    * Card body content
    */

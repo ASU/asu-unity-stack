@@ -128,7 +128,7 @@ yarn test
           label: "Button text",
         },
       ],
-      icon: "newspaper",
+      icon: ["fas", "newspaper"],
     },
   });
 </script>

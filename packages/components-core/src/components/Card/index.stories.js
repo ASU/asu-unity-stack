@@ -119,7 +119,7 @@ Icon.args = {
       label: "Button text",
     },
   ],
-  icon: "newspaper",
+  icon: ["fas", "newspaper"],
 };
 
 export const Degree = Template.bind({});
