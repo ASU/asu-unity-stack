@@ -11,8 +11,8 @@ import { degreeListPropTypes } from "../programs-prop-types";
 import { columns } from "./index.colums.config";
 import { Table } from "./index.style";
 
-/** @typedef {import("../../../models/app-props").GridColumn}  GridColumn */
-/** @typedef {import("../../../models/app-props").DegreeDataPropResolver}  DegreeDataPropResolver */
+/** @typedef {import("../../../models/listing-page-types").GridColumn}  GridColumn */
+/** @typedef {import("../../../models/shared-types").DegreeDataPropResolver}  DegreeDataPropResolver */
 
 /**
  *

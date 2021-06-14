@@ -12,7 +12,7 @@ const mathintensity = {
  *
  */
 // @ts-ignore
-function degreeDataPropResolverService(row) {
+function degreeDataPropResolverService(row = {}) {
   return {
     getMajorDesc: () => row["Descr100"],
     getInstitution: () => row["Institution"],
@@ -43,6 +43,11 @@ function degreeDataPropResolverService(row) {
     getAdditionalMathReqCourse: () => row["additionalMathReqCourse"],
     getOtherMathReqCourse: () => row["asuAcadpMrfText"],
     getMathIntensity: () => mathintensity[row["MathIntensity"]],
+    getMathIntensityRawValue: () => row["MathIntensity"],
+    getMinMathReq: () => row["MinMathReq"],
+    getMarketText: () => row["marketText"],
+    getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
+    getCampusWue: () => row["campusWue"] || "",
   };
 }
 

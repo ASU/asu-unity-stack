@@ -1,49 +1,15 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
-import { degreeDataPropResolverService } from "../services";
-import { tagHeadings } from "./constants";
-
-// dummy type to help the intellisense
-const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
-/** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
-
-/**
- * @template S
- * @typedef {[S, import("react").Dispatch<import("react").SetStateAction<S>>]} UseStateTuple
- */
-
-/**
- * @typedef {{
- *    url: string
- *    altText?: string
- *    cssClass?: string []
- * }} AppImageProps
- */
-
-/**
- * @typedef {{
- *    text: string
- *    cssClass?: string []
- * }} AppContentProps
- */
-
-/**
- * @typedef {{
- *    component?: keyof tagHeadings
- * }} ChildType
- *
- * @typedef {AppContentProps & ChildType} AppTitleProps
- */
 
 /**
  * @typedef {{
  *    type?: "text" | "text-image-overlay" | "text-photo-grid"
- *    image?: AppImageProps
- *    header?: AppTitleProps
- *    title?: AppTitleProps
- *    contents?: AppContentProps[]
+ *    image?: import("./shared-types").AppImageProps
+ *    header?: import("./shared-types").AppTitleProps
+ *    title?: import("./shared-types").AppTitleProps
+ *    contents?: import("./shared-types").ContentItem[]
  *    photoGrid?: {
- *      images: AppImageProps[]
+ *      images: import("./shared-types").AppImageProps[]
  *    }
  * }} IntroContentProps
  */
@@ -81,7 +47,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *      props: {
  *                col: GridColumn
  *                row: Object<string, any>
- *                resolver?: DegreeDataPropResolver
+ *                resolver?: import("./shared-types").DegreeDataPropResolver
  *                rowIndex?: number
  *                onClick?: (rowIndex: number, ...rest) => void
  *                onMouseOver?: (url: string) => void
@@ -97,32 +63,13 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 
 /**
  * @typedef {{
- *  sharedDataSources?: AppDataSource []
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programList?: GridListProps
- * }} AppProps
+ * }} ListingPageProps
  */
 
 /**
- * @typedef {{
- *  text: string
- *  url: string
- * }} AtAGlanceItem
- */
-
-/**
- *  @typedef {{
- *    offeredBy: AtAGlanceItem
- *   locations: AtAGlanceItem[]
- *   firstRequirementMathCourse: string
- *   mathIntensity: string
- *  timeCommitment: string
- * }} AtAGlanceProps
- */
-
-/**
- * This help VSCODE and JSOC to recognize the syntax
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */

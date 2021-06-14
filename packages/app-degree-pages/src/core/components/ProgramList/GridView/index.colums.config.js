@@ -18,7 +18,7 @@ import {
 } from "../../icons";
 import { ApplyNow } from "../components/ApplyNow";
 import { RequestInfo } from "../components/RequestInfo";
-/** @typedef {import("../../../models/app-props").GridColumn}  GridColumn */
+/** @typedef {import("../../../models/listing-page-types").GridColumn}  GridColumn */
 
 /* eslint-disable react/prop-types, no-alert, no-console */
 /** @type {GridColumn []} */

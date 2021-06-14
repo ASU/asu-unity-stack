@@ -1,4 +1,5 @@
 // @ts-check
+import { AtAGlance } from "./AtAGlance";
 import { Filters } from "./Filters";
 import { FiltersSummary } from "./FiltersSummary";
 import { IntroContent } from "./IntroContent";
@@ -7,6 +8,7 @@ import { DegreeListView, DegreeGridView, ProgramList } from "./ProgramList";
 import { SearchBar } from "./SearchBar";
 
 export {
+  Loader,
   IntroContent,
   ProgramList,
   DegreeListView,
@@ -14,5 +16,5 @@ export {
   Filters,
   FiltersSummary,
   SearchBar,
-  Loader,
+  AtAGlance,
 };

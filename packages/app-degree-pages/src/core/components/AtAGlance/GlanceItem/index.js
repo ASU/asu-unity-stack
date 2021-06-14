@@ -2,11 +2,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { glanceItemPropType } from "../../../models/app-prop-types";
-import { glanceItemsMap } from "../../../models/constants";
+import { glanceItemPropType, glanceItemsMap } from "../../../models";
 
 /**
- * @typedef {import('../../../models/app-props').AtAGlanceItem} AtAGlanceItem
+ * @typedef {import('../../../models/shared-types').LinkItem} AtAGlanceItem
  * @typedef {{
  *  item: AtAGlanceItem[] | string
  *  type: string

@@ -5,7 +5,7 @@ import React from "react";
 import { ListingPage } from ".";
 
 /**
- * @typedef {import('../../core/models/app-props').AppProps} AppProps
+ * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
 
 export default {

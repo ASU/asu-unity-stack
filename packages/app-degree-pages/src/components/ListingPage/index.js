@@ -19,13 +19,13 @@ import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 
 /**
- * @typedef {import('../../core/models/app-props').AppProps} AppProps
+ * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
  * @typedef {import("../../core/components/Filters").FiltersState} FiltersState
  */
 
 /**
  *
- * @param {AppProps} props
+ * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
 const ListingPage = ({ hero, introContent, programList }) => {
@@ -33,18 +33,18 @@ const ListingPage = ({ hero, introContent, programList }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
-  /** @type {import("../../core/models").UseStateTuple<LIST_VIEW_ID>} */
+  /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   // const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
   const url = urlResolver(programList.dataSource);
 
-  /** @type {import("../../core/models").UseStateTuple<FiltersState>} */
+  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
     locations: [],
     asuLocals: [],
     acceleratedConcurrent: "all",
   });
-  /** @type {import("../../core/models").UseStateTuple<string[]>} */
+  /** @type {import("../../core/models/shared-types").UseStateTuple<string[]>} */
   const [appliedFilters, setAppliedFilters] = useState([]);
 
   useEffect(() => {

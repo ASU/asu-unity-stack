@@ -6,7 +6,7 @@ import { glanceItemPropType } from "../../models/app-prop-types";
 import { GlanceItem } from "./GlanceItem";
 
 /**
- * @typedef {import('../../models/app-props').AtAGlanceProps} AtAGlanceProps
+ * @typedef {import('../../models/program-detail-types').AtAGlanceProps} AtAGlanceProps
  */
 
 /**

@@ -13,8 +13,8 @@ import { tagHeadingList } from "../../models/constants";
 import { spreadClasses } from "../../utils/css-utils";
 
 /**
- * @typedef {import('../../models/app-props').IntroContentProps} IntroContentProps
- * @typedef {import('../../models/app-props').AppTitleProps} AppTitleProps
+ * @typedef {import('../../models/listing-page-types').IntroContentProps} IntroContentProps
+ * @typedef {import('../../models/shared-types').AppTitleProps} AppTitleProps
  */
 
 const PhotoGrid = styled.div`
