@@ -1,5 +1,8 @@
 // @ts-check
-import { Button } from "@asu-design-system/components-core/src/components";
+import {
+  Button,
+  Accordion,
+} from "@asu-design-system/components-core/src/components";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -33,6 +36,7 @@ export const ApplicationRequirements = ({
       {buttons && (
         <div>
           {buttons.map(button => (
+            // @ts-ignore
             <Button
               ariaLabel={button.ariaLabel}
               color={button.color}
@@ -45,7 +49,9 @@ export const ApplicationRequirements = ({
           ))}
         </div>
       )}
-      <div className="mt-2">{/* Accordion here */}</div>
+      <div className="mt-2 mb-4">
+        <Accordion cards={accordionCards} openedCard={1} />
+      </div>
     </section>
   );
 };
