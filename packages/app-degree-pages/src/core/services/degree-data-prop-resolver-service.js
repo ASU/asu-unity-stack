@@ -27,6 +27,7 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
+    getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => row["CollegeDescr100"],
     getCollegeUrl: () => row["CollegeUrl"],
     getEmailAddress: () => row["EmailAddr"],

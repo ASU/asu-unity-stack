@@ -6,14 +6,6 @@ import { fetchData } from "../utils/fetch-data";
 const path = "https://webapp4.asu.edu/programs";
 // const path = "/programs";
 
-const DEGREE_SEARCH_URL =
-  `https://degreesearch-proxy.apps.asu.edu/degreesearch` +
-  `/?init=false` +
-  `&method=findDegreeByFirstLetterMapArray` +
-  `&fields=CollegeUrl,AsuCritTrackUrl,Degree,MinMathReq,DescrlongExtns,MathIntensity,AsuLangReqFlag,CampusStringArray,managedOnlineCampus,asuAcadpMrfText,Descr100,AsuProgramFee,additionalMathReqCourse,CollegeDescr100,AcadPlan,Institution,` +
-  `&program=undergrad` +
-  `&cert=false`;
-
 /**
  *
  * @param {string} url
@@ -44,7 +36,6 @@ function majorInfoLink(
 }
 
 function mapTooltipLink(location, program = "undergrad") {
-  const path = "/programs";
   return `${path}/tooltipcampus?campus=${location}&amp;program=${program}`;
 }
 
@@ -93,14 +84,12 @@ function saveFav(
   fetch(url).then();
 }
 
-// https://asudev.jira.com/wiki/spaces/eadvisor/pages/887324850/Apply%2BNow%2BButton%2Band%2BModal%2BDisplay%2BLogic
 function applyNow() {
-  // todo
+  // TODO: find the url
 }
 
 export {
   getDegreePrograms,
-  DEGREE_SEARCH_URL,
   majorInfoLink,
   mapTooltipLink,
   mapTooltipSubPlanMapLink,

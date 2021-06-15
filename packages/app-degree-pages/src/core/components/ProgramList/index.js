@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 
 import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../models";
 import { computePages } from "../../utils";
-import { DegreeGridView } from "./GridView";
-import { DegreeListView } from "./ListView";
+import { GridView } from "./GridView";
+import { ListView } from "./ListView";
 import { degreeListPropTypes } from "./programs-prop-types";
 
 /**
@@ -17,11 +17,11 @@ import { degreeListPropTypes } from "./programs-prop-types";
  */
 
 /**
- * @type {Object.<string, DegreeGridView |  DegreeListView>}
+ * @type {Object.<string, ListView |  GridView>}
  */
 const programViewer = {
-  [GRID_VIEW_ID]: DegreeListView,
-  [LIST_VIEW_ID]: DegreeGridView,
+  [GRID_VIEW_ID]: GridView,
+  [LIST_VIEW_ID]: ListView,
 };
 
 /**
@@ -70,4 +70,4 @@ ProgramList.propTypes = {
   ...degreeListPropTypes,
 };
 
-export { ProgramList, DegreeListView, DegreeGridView };
+export { ProgramList, GridView, ListView };

@@ -87,13 +87,12 @@ const columns = [
       const genCampusId = idGenerator(`campus-`);
       return (
         <div>
+          {/* {resolver.getAsuOfficeLoc()} */}
+
           {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
               {/*  TODO: This link is currently deferred till we discover which URL to link */}
-              {/* <a key={location} href={mapTooltipLink(location)}>{`${toTitleCase(
-                location
-              )}, `}</a> */}
-              <span>{`${toTitleCase(location)}${
+              <span key={location}>{`${toTitleCase(location)}${
                 index < campusList.length - 1 ? ", " : ""
               }`}</span>
               <span>
@@ -113,36 +112,39 @@ const columns = [
   },
 
   // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
-  // {
-  //   dataKey: "accelerateDegrees",
-  //   label: "Accelerated/ Concurrent",
-  //   ariaLabel: "Accelerated/ Concurrent: activate to sort column",
-  //   className: "accelerated-concurrent",
-  //   sortable: true,
-  //   contentTemplate: ({ resolver }) => (
-  //     <div>
-  //       {resolver.getAccelerateDegrees().length > 0 && (
-  //         <div className="cell-container">
-  //           <a
-  //             href={accellerateDegreeLink(resolver.getAcadPlan())}
-  //             rel="noreferrer"
-  //             target="_blank"
-  //           >
-  //             4+1 years
-  //           </a>
-  //           <InfoButtonIcon
-  //             popover={{
-  //               title: "4+1 years",
-  //               body: () =>
-  //                 fetch(accellerateDegreeDynamicLink(resolver.getAcadPlan())),
-  //               withAuto: false,
-  //             }}
-  //           />
-  //         </div>
-  //       )}
-  //     </div>
-  //   ),
-  // },
+  {
+    dataKey: "accelerateDegrees",
+    label: "Accelerated/ Concurrent",
+    ariaLabel: "Accelerated/ Concurrent: activate to sort column",
+    className: "accelerated-concurrent",
+    sortable: true,
+    contentTemplate: ({ resolver }) => (
+      <div>
+        {resolver.getConcurrentDegrees().lenght > 0 && (
+          <div className="cell-container">concurrent</div>
+        )}
+        {resolver.getAccelerateDegrees().length > 0 && (
+          <div className="cell-container">
+            <a
+              href={accellerateDegreeLink(resolver.getAcadPlan())}
+              rel="noreferrer"
+              target="_blank"
+            >
+              4+1 years
+            </a>
+            <InfoButtonIcon
+              popover={{
+                title: "4+1 years",
+                body: () =>
+                  fetch(accellerateDegreeDynamicLink(resolver.getAcadPlan())),
+                withAuto: false,
+              }}
+            />
+          </div>
+        )}
+      </div>
+    ),
+  },
   {
     dataKey: "CollegeDescr100",
     label: "College/School",
