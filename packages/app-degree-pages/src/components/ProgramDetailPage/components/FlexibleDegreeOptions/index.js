@@ -1,7 +1,7 @@
 // @ts-check
 
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 /**
  *
@@ -14,6 +14,12 @@ function FlexibleDegreeOptions(props) {
       <h2>
         <span className="highlight-gold">Flexible degree options</span>
       </h2>
+
+      <h3>Accelerated program options</h3>
+
+      <p>
+        This program allows students to obtain both a bachelor's and master's de
+      </p>
 
       <div>IN PROGRESS</div>
     </section>

@@ -51,6 +51,9 @@ DefaultPage.args = {
     // Example Careers
     "careerDataAlterOnetTitle,careerDataBrightOutlook,careerDataGreen," +
     "careerDataGrowth,careerDataOnetTitle,careerDataSalary," +
+    // flexible degree options
+    `accelerateDegrees,accelerateDegreeMajorMaps,` +
+    `concurrentDegreeMajorMaps,concurrentDegrees,` +
     // other
     `planCatDescr&init=false`,
   introContent: {
