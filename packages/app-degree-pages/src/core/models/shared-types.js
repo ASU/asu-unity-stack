@@ -33,6 +33,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    icon: string
  *    title: string
  *    content: string
+ *    buttonLink: LinkItem
  * }} CardItem
  */
 

@@ -87,6 +87,8 @@
  *      growth: number // percentage
  *      medianSalary: number // percentage
  *    }[]
+ *    BrightOutlook: import("./shared-types").LinkItem
+ *    greenOccupation:  import("./shared-types").LinkItem
  * }} ExampleCareersProps
  */
 
@@ -134,7 +136,19 @@
  *  dataSource: import("./listing-page-types").AppDataSource | string
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
+ *  requiredCoursesProps?: RequiredCoursesProps
  *  atAGlance?: AtAGlanceProps
+ *  applicationRequirements?: ApplicationRequirementsProps
+ *  changeMajorRequirements?: ChangeMajorRequirementsProps
+ *  nextSteps?: NextStepsProps
+ *  affordingCollege?: AffordingCollegeProps
+ *  flelxibleDegreeOptions?: FlelxibleDegreeOptionsProps
+ *  careerOutlook?: CareerOutlookProps
+ *  exampleCareersProps?: ExampleCareersProps
+ *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
+ *  clobalOpportunity?: GlobalOpportunityProps
+ *  attendOnline?: AttendOnlineProps
+ *  programContact?: ProgramContactProps
  * }} ProgramDetailPageProps
  */
 
