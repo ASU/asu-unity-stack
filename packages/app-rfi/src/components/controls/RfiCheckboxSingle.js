@@ -16,30 +16,19 @@ const RfiCheckboxSingle = ({ children, id, name, value, requiredIcon }) => {
   const isError = meta.touched && meta.error;
   return (
     <div className="form-check">
-      {/* <div>meta.touched:{""+meta.touched} meta.error:{meta.error}</div> */}
-      <Field
-        type="checkbox"
-        id={id}
+      <Field type="checkbox" id={id} name={name} className="form-check-input" />
+      <RfiLabel
+        label={children}
         name={name}
-        value={value}
-        className="form-check-input"
+        id={id}
+        requiredIcon={requiredIcon}
       />
-      <label htmlFor={id} className="form-check-label">
-        {requiredIcon ? (
-          <span title="Required">
-            <FontAwesomeIcon icon={faCircle} className="uds-field-required" />
-          </span>
-        ) : null}
-        &nbsp;
-        {children}
-      </label>
       <RfiError isError={!!isError} metaError={meta.error} />
     </div>
   );
 };
 
 RfiCheckboxSingle.defaultProps = {
-  // TODO better defaults?
   requiredIcon: undefined,
 };
 
