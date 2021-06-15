@@ -29,11 +29,23 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
+ * @typedef {{
+ *  ariaLabel: string
+ *  color: "gold" | "maroon" | "gray" | "dark"
+ *  icon?: string
+ *  href?: string
+ *  label: string
+ *  onClick?: () => void
+ *  size?: "default" | "small" | "xsmall"
+ * }} Button
+ */
+
+/**
  *  @typedef {{
  *    icon: string
  *    title: string
  *    content: string
- *    buttonLink: LinkItem
+ *    buttonLink: Button
  * }} CardItem
  */
 

@@ -128,4 +128,41 @@ DefaultPage.args = {
       alt: "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
+  nextSteps: {
+    cards: [
+      {
+        icon: "info-circle",
+        title: "Lear more about our programs",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Request information",
+          ariaLabel: "Request information",
+          color: "maroon",
+          href: "#",
+        },
+      },
+      {
+        icon: "file-alt",
+        title: "Apply to program",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Apply now",
+          ariaLabel: "Apply now",
+          color: "maroon",
+          href: "#",
+        },
+      },
+      {
+        icon: "map-marker-alt",
+        title: "Visit our campus",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Schedule a visit",
+          ariaLabel: "Schedule a visit",
+          color: "maroon",
+          href: "#",
+        },
+      },
+    ],
+  },
 };
