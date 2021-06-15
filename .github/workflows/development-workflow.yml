@@ -16,13 +16,13 @@ jobs:
         with:
           persist-credentials: false
 
-      # - name: Setup node to install packages from npm
-      #   uses: actions/setup-node@v2
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   with:
-      #     node-version: "12.x"
-      #     registry-url: "https://registry.web.asu.edu/"
+      - name: Setup node to install packages from npm
+        uses: actions/setup-node@v2
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          node-version: "12.x"
+          registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
