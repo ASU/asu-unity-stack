@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchor Menu Component - Example page</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css" />
+
+  <!-- *************************************************************** -->
+  <!-- Load React. -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- *************************************************************** -->
+  <!-- include bundled scripts from packages -->
+  <script src="../dist/libCore.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="border p-4">
+      <!-- Provide target elements. -->
+      <div id="accordion-component"></div>
+      <div id="colors-accordion-component" class="border-top mt-3"></div>
+      <div id="icons-accordion-component"class="border-top mt-3"></div>
+    </div>
+  </div>
+
+  <script>
+    // Setup and initialize article options.
+    AsuWebCore.initAccordion({
+      targetSelector: "#accordion-component",
+      props: {
+        cards: [
+          {
+            content: {
+              header: "Accordion Card 1",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+          {
+            content: {
+              header: "Accordion Card 2",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+          {
+            content: {
+              header: "Accordion Card 3, opened card",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+        ],
+        openedCard: 3, // Prop based on card position on the screen
+      },
+    });
+    AsuWebCore.initAccordion({
+        targetSelector: "#colors-accordion-component",
+        props: {
+          cards: [
+            {
+              content: {
+                header: "Accordion Card 1",
+                body:
+                  "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+              },
+            },
+            {
+              color: "maroon",
+              content: {
+                header: "Accordion Card 2",
+                body:
+                  "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+              },
+            },
+            {
+              color: "gray",
+              content: {
+                header: "Accordion Card 3",
+                body:
+                  "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+              },
+            },
+            {
+              color: "dark",
+              content: {
+                header: "Accordion Card 4",
+                body:
+                  "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+              },
+            },
+          ],
+        },
+      });
+      AsuWebCore.initAccordion({
+          targetSelector: "#icons-accordion-component",
+          props: {
+            cards: [
+              {
+                content: {
+                  icon: "pencil-alt",
+                  header: "Accordion Card 1",
+                  body:
+                    "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+                },
+              },
+              {
+                content: {
+                  icon: "newspaper",
+                  header: "Accordion Card 2",
+                  body:
+                    "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+                },
+              },
+            ],
+          },
+        });
+  </script>
+  <script src="./js/example-helper.js"></script>
+</body>
+
+</html>
