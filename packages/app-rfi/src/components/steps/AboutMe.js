@@ -119,7 +119,7 @@ const AboutMe = () => {
     <>
       <h3>About me</h3>
       <RfiEmailInput
-        label="Email Address *"
+        label="Email Address"
         id="EmailAddress"
         name="EmailAddress"
         requiredIcon
