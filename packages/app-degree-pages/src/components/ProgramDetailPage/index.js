@@ -167,15 +167,14 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
                     {
                       content: {
                         header: "Aditional Requirements",
-                        body:
-                          "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+                        // Change data after filter on degree type
+                        body: resolver.getDescrLongExtented5(),
                       },
                     },
                     {
                       content: {
                         header: "Transfer Admission Requirements",
-                        body:
-                          "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+                        body: resolver.getTransferAdmission(),
                       },
                     },
                   ]}
