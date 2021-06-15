@@ -25,29 +25,31 @@ class RfiStepper extends React.Component {
     };
   }
 
+  async componentDidMount() {
+    // If configured as a cert or minor and we have a program of interest, look
+    // up the program's email address and set it in state for use in
+    // isCertMinor render below.
+    const { IsCertMinor, ProgramOfInterest } = this.props;
+    if (IsCertMinor && ProgramOfInterest) {
+      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${ProgramOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
+      const resp = await fetch(serviceUrl)
+        .then(response => response.json())
+        .catch(error => new Error(error));
+      // Structure of response: response.programs[0].EmailAddr
+      if (resp.programs) {
+        const {
+          programs: [{ EmailAddr }],
+        } = resp;
+        await this.setStateAsync({ certEmailAddr: EmailAddr });
+      }
+    }
+  }
+
   // Async state handling for isCertMinor certEmailAddr state.
   setStateAsync(state) {
     return new Promise(resolve => {
       this.setState(state, resolve);
     });
-  }
-  async componentDidMount() {
-    // If configured as a cert or minor and we have a program of interest, look
-    // up the program's email address and set it in state for use in
-    // isCertMinor render below.
-    if (this.props.IsCertMinor && this.props.ProgramOfInterest) {
-      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${this.props.ProgramOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
-      const response = await fetch(serviceUrl)
-        .then(response => response.json())
-        .catch(error => new Error(error));
-      // Structure of response: response.programs[0].EmailAddr
-      if (response.programs) {
-        const {
-          programs: [{ EmailAddr }],
-        } = response;
-        await this.setStateAsync({ certEmailAddr: EmailAddr });
-      }
-    }
   }
 
   // Possible TODO: prompt user before leaving a dirty form in Formik:
@@ -83,38 +85,32 @@ class RfiStepper extends React.Component {
   // See Formik validation flavors: https://formik.org/docs/guides/validation
   validate = values => {
     const errors = {};
+    const { step } = this.state;
+    const { ProgramOfInterest, ProgramOfInterestOptional } = this.props;
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
-    if (
-      this.state.step === 0 &&
-      !values.Interest1 &&
-      !this.props.ProgramOfInterest
-    ) {
+    if (step === 0 && !values.Interest1 && !ProgramOfInterest) {
       errors.Interest1 = "Area of Interest is required";
     }
     // If on step 1 and Interest2 is empty, and is not optional or campus is
     // ONLNE, require Interest2.
     if (
-      this.state.step === 0 &&
+      step === 0 &&
       !values.Interest2 &&
-      (!this.props.ProgramOfInterestOptional || values.Campus === "ONLNE")
+      (!ProgramOfInterestOptional || values.Campus === "ONLNE")
     ) {
       errors.Interest2 = "Program of Interest is required";
     }
 
     // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
-    if (
-      this.state.step === 1 &&
-      values.Campus !== "ONLNE" &&
-      !values.EntryTerm
-    ) {
+    if (step === 1 && values.Campus !== "ONLNE" && !values.EntryTerm) {
       errors.EntryTerm = "Entry term is required";
     }
     return errors;
   };
 
   render() {
-    const { step } = this.state;
+    const { step, certEmailAddr } = this.state;
     const {
       validationSchemas,
       initialValues,
@@ -164,15 +160,13 @@ class RfiStepper extends React.Component {
       const emailRender = (
         <div className="rfi-cert-minor-email-message">
           Request information on this program by sending an email to{" "}
-          <a href={`mailto:${this.state.certEmailAddr}`}>
-            {this.state.certEmailAddr}
-          </a>
+          <a href={`mailto:${certEmailAddr}`}>{certEmailAddr}</a>
         </div>
       );
       return (
         <div className="uds-rfi-form-wrapper rfi-cert-minor">
           <h2>Request information</h2>
-          {this.state.certEmailAddr && emailRender}
+          {certEmailAddr && emailRender}
           <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
         </div>
       );
