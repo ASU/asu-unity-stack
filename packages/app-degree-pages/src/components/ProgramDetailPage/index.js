@@ -1,6 +1,6 @@
 // @ts-check
 
-import PropTypes from "prop-types";
+import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import { Loader, AtAGlance } from "../../core/components";
@@ -104,6 +104,7 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                 <RequiredCourse
                   concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                   onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                  majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
                 />
 
                 <AtAGlance
@@ -152,7 +153,20 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
 
 ProgramDetailPage.propTypes = {
   dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
-  introContent: PropTypes.instanceOf(PropTypes.object),
+  introContent: PropTypes.shape({
+    breadcrumbs: arrayOf(PropTypes.string),
+    contents: arrayOf(PropTypes.object),
+    video: PropTypes.shape({
+      url: PropTypes.string,
+      altText: PropTypes.string,
+      vttUrl: PropTypes.string,
+    }),
+    image: PropTypes.shape({
+      text: PropTypes.string,
+      url: PropTypes.string,
+      altText: PropTypes.string,
+    }),
+  }),
 };
 
 export { ProgramDetailPage };

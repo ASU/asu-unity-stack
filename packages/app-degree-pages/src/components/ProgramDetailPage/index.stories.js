@@ -41,13 +41,17 @@ export const DefaultPage = Template.bind({});
 DefaultPage.args = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
-    // `&acadPlan=LSBISBIS` +
-    `&acadPlan=ESBMEMDBSE` +
+    `&acadPlan=LSBISBIS` +
+    // `&acadPlan=ESBMEMDBSE` + // this does not have required courses
     `&fields=` +
-    `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,` +
+    `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,AsuCritTrackUrl,` +
     // at a glance
     `CollegeDescr100,` +
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
+    // Example Careers
+    "careerDataAlterOnetTitle,careerDataBrightOutlook,careerDataGreen," +
+    "careerDataGrowth,careerDataOnetTitle,careerDataSalary," +
+    // other
     `planCatDescr&init=false`,
   introContent: {
     breadcrumbs: [

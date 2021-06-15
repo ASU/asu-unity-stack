@@ -45,7 +45,7 @@ function degreeDataPropResolverService(row = {}) {
     getOtherMathReqCourse: () => row["asuAcadpMrfText"],
     getMathIntensity: () => mathintensity[row["MathIntensity"]],
     getMathIntensityRawValue: () => row["MathIntensity"],
-    getMinMathReq: () => row["MinMathReq"],
+    getMinMathReq: () => row["MinMathReq"] || "",
     getMarketText: () => row["marketText"],
     /** @return {string} */
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",

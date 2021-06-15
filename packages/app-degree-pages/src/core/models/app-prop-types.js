@@ -21,6 +21,7 @@ const videoPropTypes = {
 const linkPropTypes = {
   url: PropTypes.string,
   text: PropTypes.string,
+  isActive: PropTypes.bool,
 };
 
 const imagePropType = PropTypes.shape({

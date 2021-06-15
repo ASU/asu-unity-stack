@@ -19,11 +19,7 @@
  * @typedef {{
  *  concurrentDegreeMajorMaps: string
  *  onlineMajorMapURL: string
- *  majorMapLink?: import("./shared-types").LinkItem
- *  whatIf?: {
- *    text: string,
- *    changeYourMajor: import("./shared-types").LinkItem
- *  }
+ *  majorMapOnCampusArchiveURL: string
  * }} RequiredCoursesProps
  */
 

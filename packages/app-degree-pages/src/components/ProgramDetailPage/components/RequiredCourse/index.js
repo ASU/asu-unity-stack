@@ -21,14 +21,18 @@ const ButtonGroup = Styled.div`
 function RequiredCourse({
   concurrentDegreeMajorMaps = "",
   onlineMajorMapURL = "",
+  majorMapOnCampusArchiveURL,
 }) {
-  return (
-    <section>
+  const dt = new Date();
+  const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 11}`;
+
+  const template = (
+    <section className="container pl-0">
       <h4>Required Course (Major Map)</h4>
       <ButtonGroup>
         {concurrentDegreeMajorMaps && (
           <Button
-            label="View major map (on-campus)"
+            label={`View ${acadYear} major map (on-campus)`}
             color="maroon"
             size="small"
             element="button"
@@ -37,7 +41,7 @@ function RequiredCourse({
         )}
         {onlineMajorMapURL && (
           <Button
-            label="View major map (online)"
+            label={`View ${acadYear} major map (online)`}
             color="maroon"
             size="small"
             element="button"
@@ -45,13 +49,24 @@ function RequiredCourse({
           />
         )}
       </ButtonGroup>
+      <div className="mt-1">
+        <a href={majorMapOnCampusArchiveURL}>Major map on-campus (archive)</a>
+      </div>
+      <div className="mt-1">
+        <strong>What if:</strong> See how your courses can be applied to another
+        major and find out how to&nbsp;
+        <a href="https://changemajor.apps.asu.edu/">change your major</a>
+      </div>
     </section>
   );
+
+  return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;
 }
 
 RequiredCourse.propTypes = {
   concurrentDegreeMajorMaps: PropTypes.string,
   onlineMajorMapURL: PropTypes.string,
+  majorMapOnCampusArchiveURL: PropTypes.string,
 };
 
 export { RequiredCourse };
