@@ -39,7 +39,6 @@ const RfiTextArea = ({ label, name, id, requiredIcon }) => {
 // Formik has a better way to do it.
 
 RfiTextArea.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
 };

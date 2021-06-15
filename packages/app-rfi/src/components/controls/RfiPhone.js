@@ -62,7 +62,6 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
 // Formik has a better way to do it.
 
 RfiPhone.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
   helperText: undefined,

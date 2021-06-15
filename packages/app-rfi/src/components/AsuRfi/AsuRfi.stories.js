@@ -136,7 +136,7 @@ RfiOnNonAcademicUnitPage.args = {
   StudentType: undefined, // Graduate, Undergrad
   AreaOfInterest: "Health and Wellness",
   ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: true, // TODO implement handling
+  ProgramOfInterestOptional: true,
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
@@ -153,7 +153,7 @@ RfiOnCertOrMinorPage.args = {
   AreaOfInterest: undefined,
   ProgramOfInterest: "LAINSCERT",
   ProgramOfInterestOptional: false,
-  IsCertMinor: true, // TODO implement handling
+  IsCertMinor: true,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
   SuccessMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,

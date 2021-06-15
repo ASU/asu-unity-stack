@@ -78,7 +78,6 @@ const RfiDatepicker = ({
 // Formik has a better way to do it.
 
 RfiDatepicker.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   dateFormat: undefined,
   className: undefined,

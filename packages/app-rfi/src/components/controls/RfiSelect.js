@@ -54,7 +54,6 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
 // Formik has a better way to do it.
 
 RfiSelect.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
   disabled: false,

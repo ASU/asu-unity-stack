@@ -115,10 +115,6 @@ const AboutMe = () => {
     }
   }, []); // Run once. If user changes degree, runs again on return to the step.
 
-  // TODO swap Term label - but need to know mechanism first... Confirm.
-  // HS students: When will you be graduating from high schooll?
-  // Transfer and Grad: When do you anticipate starting at ASU?
-
   return (
     <>
       <h3>About me</h3>
@@ -206,13 +202,3 @@ RfiGdpr.propTypes = {
 };
 
 export { aboutMeForm };
-
-/*
-FIELDS
-- EmailAddress
-- FirstName
-- LastName
-- Phone // TODO use Yup phone library
-- ZipCode
-- EntryTerm // TODO more logic and svc call based on if graduate / undergrad -- See notes in options function for REST service call
-*/

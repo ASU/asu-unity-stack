@@ -103,7 +103,6 @@ async function fetchCountries(optionsCallback, formikValues) {
       const resultsArrayOfObjects = Object.values(resultJson);
       // Format for select options.
       const results = optionsCallback(resultsArrayOfObjects, formikValues);
-      // console.log(results, "Results");
       return results;
     })
     .catch(error => new Error(error));
@@ -233,7 +232,7 @@ const optionalForm = {
     State: Yup.string(),
     Country: Yup.string(),
     BirthDate: Yup.date(),
-    Zip: Yup.string(), // TODO default to * ZipCode *
+    Zip: Yup.string(),
     MilitaryStatus: Yup.string(),
     Comments: Yup.string().max(250, "Too long. 250 characters maximum."),
   },
@@ -252,12 +251,3 @@ const optionalForm = {
 };
 
 export { optionalForm };
-
-/*
-HIDDEN FIELDS
-- Test - 1 or nothing
-- Source
-- URL
-- ga_clientid
-- datetime
-*/

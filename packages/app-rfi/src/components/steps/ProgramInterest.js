@@ -112,7 +112,6 @@ async function fetchDegreeByAcadPlan(acadPlan) {
   return fetch(serviceUrl)
     .then(response => response.json())
     .then(data => {
-      console.log(data, "FETCH DEGREE BY ACAD PLAN");
       return data;
     })
     .catch(error => new Error(error));
@@ -165,14 +164,11 @@ const ProgramInterest = props => {
   ]);
   const [selectKey, setSelectKey] = useState(0);
 
-  console.log(props, "PROPS");
-
   // Surface values from Formik context
   const { values } = useFormikContext();
 
   // Check if degree data has loaded.
   const degreeDataIsLoaded = () => {
-    // console.log(degreeData, "degreeDataIsLoaded()");
     if (typeof degreeData !== "object") {
       return false;
     }
@@ -181,9 +177,10 @@ const ProgramInterest = props => {
 
   // FETCH master degree data from Degree Search REST API.
   useEffect(() => {
-    // TODO implment sessionStorage, see pg 159 in Learning React
+    // TODO Possibly: implement sessionStorage, see pg 159 in Learning React
     // HOLD on using sessionStorage due to limiting complexity while getting
     // basic switching/fetching behaviors in place.
+    // Alternately, move to using react-query library.
 
     // Fetch master of degree data.
 
@@ -192,13 +189,11 @@ const ProgramInterest = props => {
         // ASUOnline data
         // Already sorted alpha by service, for us.
         setDegreeData(data);
-        console.log(data, "fetched degreeData ONLNE");
       } else {
         // Degree Search data
         // Sort alpha on degree name.
         data.programs.sort((a, b) => (a.Descr100 > b.Descr100 ? 1 : -1));
         setDegreeData(data.programs);
-        console.log(data.programs, "fetched degreeData DS REST");
       }
     });
   }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these change.
@@ -211,7 +206,6 @@ const ProgramInterest = props => {
     // Setup Campus and CareerAndStudentType values, options and display if
     // the ProgramOfInterest prop is present - ie. rendering for a Degree Page.
     if (props.ProgramOfInterest) {
-      console.log("useEffect for Campus and CareerAndStudentType");
       // Call to get individual degree...
       // Currently only supporting Degree Search REST API degrees, but it
       // returns degrees with ONLNE campus, so perhaps is sufficient.
@@ -251,7 +245,6 @@ const ProgramInterest = props => {
     if (!degreeDataIsLoaded()) {
       return;
     }
-    console.log("useEffect for Interest1 AoI");
 
     // Force the the Area of Interest and Program of Interest selects to
     // re-render ala https://github.com/JedWatson/react-select/issues/2846
@@ -321,7 +314,6 @@ const ProgramInterest = props => {
     if (!degreeDataIsLoaded()) {
       return;
     }
-    console.log("useEffect for Interest2 PoI");
 
     // Force the the Area of Interest and Program of Interest selects to
     // re-render ala https://github.com/JedWatson/react-select/issues/2846
@@ -335,8 +327,6 @@ const ProgramInterest = props => {
 
     // Map programPlanOptions for Interest2
     if (values.Campus === "ONLNE") {
-      console.log(degreeData, "ONLNE degree data");
-
       // Filter with form's values.Interest1 against data's interestareas
       const degreeDataProcessed = filterDegrees(
         degreeData,
@@ -354,10 +344,7 @@ const ProgramInterest = props => {
           label: program.title,
         }))
       );
-      console.log(programInterestOptions, "programInterestOptions SET");
     } else {
-      console.log(degreeData, "DS REST degree data");
-
       // Filter with form's values.Interest1 against data's planCatDescr
       const degreeDataFiltered = filterDegrees(
         degreeData,
@@ -380,7 +367,6 @@ const ProgramInterest = props => {
           label: program.Descr100,
         }))
       );
-      console.log(programInterestOptions, "programInterestOptions SET");
     }
   }, [
     degreeData,
@@ -492,11 +478,3 @@ const programInterestForm = {
 };
 
 export { programInterestForm };
-
-/*
-FIELDS
-- Campus
-- CareerAndStudentType // TODO A TWOFER - selection will be used to derive values for payload
-- Interest1 - area of interest // TODO based on campus: for Online pull from ASUO API, else pull from Degree Search API // TODO admin can hide via prop
-- Interest2 - program of interest // TODO same logic as above + auto populate on a degree detail page (via prop) // TODO optional for ground ugrad, required for grad
-*/

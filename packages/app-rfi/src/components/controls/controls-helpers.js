@@ -43,7 +43,6 @@ const RfiError = ({ isError, metaError }) => {
 // Formik has a better way to do it.
 
 RfiLabel.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
 };
@@ -56,7 +55,6 @@ RfiLabel.propTypes = {
 };
 
 RfiError.defaultProps = {
-  // TODO better defaults?
   isError: undefined,
   metaError: undefined,
 };

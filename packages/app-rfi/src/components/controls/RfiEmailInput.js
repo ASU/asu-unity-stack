@@ -30,7 +30,6 @@ const RfiEmailInput = ({ name, label, id, requiredIcon }) => {
 };
 
 RfiEmailInput.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
 };

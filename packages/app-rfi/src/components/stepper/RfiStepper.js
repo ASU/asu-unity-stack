@@ -83,10 +83,6 @@ class RfiStepper extends React.Component {
   // See Formik validation flavors: https://formik.org/docs/guides/validation
   validate = values => {
     const errors = {};
-    // console.log(values.Interest1, "INTEREST 1");
-    // console.log(values.Interest2, "INTEREST 2");
-    // console.log(this.props.ProgramOfInterestOptional, "PoI Optional");
-
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
     if (
@@ -138,22 +134,14 @@ class RfiStepper extends React.Component {
       Test,
     } = this.props;
     const schema = validationSchemas[step];
-    console.log(initialValues, `initialValues at ${step}`);
 
     // For the progress bar.
     const totalSteps = initialValues.length - 1; // Don't count success step.
     const progress = step / totalSteps;
 
-    // Debug
-    // console.log(step, 'This is the step we are on');
-    // console.log(this.props.initialValues.length, 'This is total # of steps');
-    // console.log( (step + 1) / totalSteps, '% of progress');
-
     const initValues = initialValues.reduce((item, total) => {
       return { ...total, ...item };
     });
-    console.log(initialValues, "initialValues");
-    console.log(initValues, "initValues");
 
     // Intercede with initial values from props.
     initValues.Campus = Campus;

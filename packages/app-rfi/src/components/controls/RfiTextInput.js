@@ -56,7 +56,6 @@ const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
 // Formik has a better way to do it.
 
 RfiTextInput.defaultProps = {
-  // TODO better defaults?
   id: undefined,
   requiredIcon: undefined,
   helperText: undefined,

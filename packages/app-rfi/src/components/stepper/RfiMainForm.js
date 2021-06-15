@@ -69,9 +69,10 @@ const RfiMainForm = ({
                   successForm.component,
                 ]}
                 handleSubmit={value => {
-                  // TODO Why? - while waiting using next lines, isSubmitting
+                  // TODO While waiting using next lines, isSubmitting
                   // isn't honored re: submit button disabling - see disabled
-                  // on submit button.
+                  // on submit button. Not a big deal due to immediate advance
+                  // to success page. Probably doesn't need an effort.
                   // handleSubmit={async value => {
                   // await new Promise(r => setTimeout(r, 2000));
 
@@ -82,19 +83,17 @@ const RfiMainForm = ({
                   // - derive Career and StudentType based on CareerAndStudentType
                   //   - Career: Undergraduate, Graduate
                   //   - StudentType: First Time Freshman, Transfer // TODO clarification sought in MVP doc. Check back.
+                  // - hidden fields:
+                  //   - Test
+                  //   - source (added by host site via proxy)
+                  //   - URL
+                  //   - ga_client id
+                  //   - enterpriseclientid
+                  //   - datetime
+                  //   - more? confirm. international should be added by lambda
 
-                  // TODO need confirmation page... see current web standards: https://brandguide.asu.edu/executing-the-brand/web-and-mobile/web-standards/academic/rfi-request-information
-
-                  // GOOD STUFF BELOW
-                  // We have a good source of code and various service calls we may be
-                  // able to leverage, from the WP RFI plugin:
-                  // https://github.com/asu-ke-web-services/ASU-RFI-WordPress-Plugin
-                  // The list of attributes in the README might serve as a good
-                  // indication of the props we'll want to use.
-                  // See the service call code in
-                  // https://github.com/asu-ke-web-services/ASU-RFI-WordPress-Plugin/tree/develop/src/services
-                  // Including... the ASU Degree Service docs:
-                  // http://www.public.asu.edu/~lcabre/javadocs/dsws/
+                  // TODO confirmation page needs green checkbox...
+                  //      see current web standards: https://brandguide.asu.edu/executing-the-brand/web-and-mobile/web-standards/academic/rfi-request-information
                 }}
               />
             </div>
