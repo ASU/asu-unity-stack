@@ -21,7 +21,6 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
 import { Button } from "../Button";
 import "./index.css";
 
@@ -49,21 +48,21 @@ export const Article = ({
   registrationUrl,
   zoomUrl,
 }) => {
-  const hClasses = classNames(UdsStyles["col"], UdsStyles["col-12"], {
-    [UdsStyles["col-lg-8"]]:
+  const hClasses = classNames("col", "col-12", {
+    [`col-lg-8`]:
       type === "event" && (registrationUrl || zoomUrl || calendarUrl),
   });
 
   const primaryButton = () => {
     if (registrationUrl) {
       return (
-        <div className={classNames(UdsStyles["card-button"], "uds-button")}>
+        <div className={classNames("card-button", "uds-button")}>
           <Button color="maroon" href={registrationUrl} label="Register" />
         </div>
       );
     }
     return (
-      <div className={classNames(UdsStyles["card-button"], "uds-button")}>
+      <div className={classNames("card-button", "uds-button")}>
         <Button color="maroon" href={zoomUrl} label="Attend on Zoom" />
       </div>
     );
@@ -71,8 +70,8 @@ export const Article = ({
 
   const AuthorInfo = () => {
     return (
-      <div className={classNames(UdsStyles["row"], UdsStyles["pb-2"])}>
-        <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
+      <div className={classNames("row", "pb-2")}>
+        <div className={classNames("col", "col-12")}>
           <div className={classNames("author", "highlight-gold")}>
             {authorName}
           </div>
@@ -112,22 +111,15 @@ export const Article = ({
     return (
       <div
         className={classNames(
-          UdsStyles["row"],
-          UdsStyles["row-spaced"],
-          UdsStyles["mt-3"],
-          UdsStyles["pt-6"],
-          UdsStyles["pb-2"],
+          "row",
+          "row-spaced",
+          "mt-3",
+          "pt-6",
+          "pb-2",
           "event-info"
         )}
       >
-        <div
-          className={classNames(
-            UdsStyles["col"],
-            UdsStyles["col-lg-4"],
-            UdsStyles["col-md-6"],
-            UdsStyles["col-12"]
-          )}
-        >
+        <div className={classNames("col", "col-lg-4", "col-md-6", "col-12")}>
           <h4>For more information contact:</h4>
           <div className="event-author">{authorName}</div>
           <div className="event-author-title">{authorTitle}</div>
@@ -146,14 +138,7 @@ export const Article = ({
             </div>
           )}
         </div>
-        <div
-          className={classNames(
-            UdsStyles["col"],
-            UdsStyles["col-lg-4"],
-            UdsStyles["col-md-6"],
-            UdsStyles["col-12"]
-          )}
-        >
+        <div className={classNames("col", "col-lg-4", "col-md-6", "col-12")}>
           <h4>Share this event:</h4>
           <div className="article-social-media">
             <FacebookShareButton url={articleUrl} quote={title}>
@@ -192,14 +177,7 @@ export const Article = ({
 
   const eventLocations = () => {
     return (
-      <div
-        className={classNames(
-          UdsStyles["col"],
-          UdsStyles["col-12"],
-          UdsStyles["col-lg-4"],
-          UdsStyles["col-md-6"]
-        )}
-      >
+      <div className={classNames("col", "col-12", "col-lg-4", "col-md-6")}>
         <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" transform="shrink-2" />
         <h4>Location:</h4>
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
@@ -211,18 +189,14 @@ export const Article = ({
   const activeBreadcrumb = item => {
     if (item.active) {
       return (
-        <BreadcrumbItem
-          active
-          tag="li"
-          className={UdsStyles["breadcrumb-item"]}
-        >
+        <BreadcrumbItem active tag="li" className="breadcrumb-item">
           {item.title}
         </BreadcrumbItem>
       );
     }
 
     return (
-      <BreadcrumbItem tag="li" className={UdsStyles["breadcrumb-item"]}>
+      <BreadcrumbItem tag="li" className="breadcrumb-item">
         <BreadcrumbItem tag="a" href={item.url}>
           {item.title}
         </BreadcrumbItem>
@@ -234,10 +208,7 @@ export const Article = ({
     <>
       {headerImageUrl && type !== "event" && (
         <div
-          className={classNames(
-            UdsStyles["uds-hero"],
-            UdsStyles["uds-hero-md"]
-          )}
+          className={classNames("uds-hero", "uds-hero-md")}
           style={{
             backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
           }}
@@ -246,44 +217,30 @@ export const Article = ({
 
       <div
         className={classNames(
-          UdsStyles["container"],
+          "container",
           `${type}-container`,
           "wrapper-container"
         )}
       >
         {breadcrumbs && (
-          <div className={classNames(UdsStyles["row"], UdsStyles["pt-4"])}>
-            <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
-              <Breadcrumb listClassName={UdsStyles["breadcrumb"]}>
+          <div className={classNames("row", "pt-4")}>
+            <div className={classNames("col", "col-12")}>
+              <Breadcrumb listClassName="breadcrumb">
                 {breadcrumbs.map(item => activeBreadcrumb(item))}
               </Breadcrumb>
             </div>
           </div>
         )}
 
-        <div
-          className={classNames(
-            UdsStyles["row"],
-            UdsStyles["pb-2"],
-            UdsStyles["pt-3"]
-          )}
-        >
+        <div className={classNames("row", "pb-2", "pt-3")}>
           <div className={hClasses}>
             <h2>{title}</h2>
           </div>
           {type === "event" && (
-            <div
-              className={classNames(
-                UdsStyles["col"],
-                UdsStyles["col-lg-4"],
-                UdsStyles["col-xs-12"]
-              )}
-            >
+            <div className={classNames("col", "col-lg-4", "col-xs-12")}>
               {(registrationUrl || zoomUrl) && primaryButton()}
               {calendarUrl && (
-                <div
-                  className={classNames(UdsStyles["card-button"], "uds-button")}
-                >
+                <div className={classNames("card-button", "uds-button")}>
                   <Button
                     color="gray"
                     size="small"
@@ -297,21 +254,14 @@ export const Article = ({
         </div>
 
         {type === "event" && (
-          <div
-            className={classNames(
-              UdsStyles["row"],
-              UdsStyles["row-spaced"],
-              UdsStyles["pt-3"],
-              UdsStyles["mb-2"]
-            )}
-          >
+          <div className={classNames("row", "row-spaced", "pt-3", "mb-2")}>
             {eventTime && (
               <div
                 className={classNames(
-                  UdsStyles["col"],
-                  UdsStyles["col-lg-4"],
-                  UdsStyles["col-md-6"],
-                  UdsStyles["col-sm-12"]
+                  "col",
+                  "col-lg-4",
+                  "col-md-6",
+                  "col-sm-12"
                 )}
               >
                 <FontAwesomeIcon
@@ -331,14 +281,8 @@ export const Article = ({
         )}
 
         {type !== "event" && (
-          <div
-            className={classNames(
-              UdsStyles["row"],
-              UdsStyles["row-spaced"],
-              UdsStyles["pt-2"]
-            )}
-          >
-            <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
+          <div className={classNames("row", "row-spaced", "pt-2")}>
+            <div className={classNames("col", "col-12")}>
               <div className="article-social-media">
                 <FacebookShareButton url={articleUrl} quote={title}>
                   <FacebookIcon
@@ -369,8 +313,8 @@ export const Article = ({
           </div>
         )}
 
-        <div className={classNames(UdsStyles["row"])}>
-          <div className={classNames(UdsStyles["col"], UdsStyles["col-12"])}>
+        <div className={classNames("row")}>
+          <div className={classNames("col", "col-12")}>
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           </div>
         </div>
