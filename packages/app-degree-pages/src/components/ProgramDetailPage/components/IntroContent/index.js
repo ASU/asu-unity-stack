@@ -33,4 +33,4 @@ IntroContent.propTypes = {
   contents: PropTypes.arrayOf(contentPropType),
 };
 
-export default IntroContent;
+export { IntroContent };

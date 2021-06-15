@@ -8,9 +8,17 @@ import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import { AffordingCollege } from "./components/AffordingCollege";
+import { ApplicationRequirment } from "./components/ApplicationRequirment";
 import { Breadcrumbs } from "./components/Breadcrumbs";
+import { CareerOutlook } from "./components/CareerOutlook";
 import { ChangeYourMajor } from "./components/ChangeYourMajor";
-import IntroContent from "./components/IntroContent";
+import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
+import { ExampleCareers } from "./components/ExampleCareers";
+import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
+import { GlobalOpportunity } from "./components/GlobalOpportunity";
+import { IntroContent } from "./components/IntroContent";
+import { NextSteps } from "./components/NextSteps";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
 import { VideoPage } from "./components/VideoPage";
@@ -118,12 +126,23 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                   timeCommitment="***TBD"
                 />
 
-                <section>
-                  <h3>Application Requirment:</h3>
-                  place holder
-                </section>
+                <ApplicationRequirment />
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
+
+                <NextSteps />
+
+                <AffordingCollege />
+
+                <FlexibleDegreeOptions />
+
+                <CareerOutlook />
+
+                <ExampleCareers />
+
+                <CustomizeYourCollegeExperience />
+
+                <GlobalOpportunity />
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 {introContent.video && (
