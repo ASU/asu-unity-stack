@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/cookie-consent",
+  "name": "@asu/cookie-consent",
   "version": "2.0.0",
   "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
@@ -18,7 +18,7 @@
     "directory": "packages/cookie-consent"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",

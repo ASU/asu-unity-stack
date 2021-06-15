@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/bootstrap4-theme",
+  "name": "@asu/bootstrap4-theme",
   "version": "4.2.0",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
