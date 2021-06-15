@@ -60,12 +60,13 @@ jobs:
         uses: actions/setup-node@v2
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn publish-packages
 
