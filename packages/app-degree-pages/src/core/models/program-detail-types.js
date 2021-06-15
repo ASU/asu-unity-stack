@@ -78,7 +78,6 @@
 
 /**
  *  @typedef {{
- *    title: string
  *    contents: import("./shared-types").ContentItem[]
  *    image: import("./shared-types").ImageItem
  * }} CareerOutlookProps

@@ -31,6 +31,7 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeDesc: () => row["CollegeDescr100"],
     getCollegeUrl: () => row["CollegeUrl"],
     getEmailAddress: () => row["EmailAddr"],
+    getPhone: () => row["Phone"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
@@ -53,6 +54,7 @@ function degreeDataPropResolverService(row = {}) {
     getCampusWue: () => row["campusWue"] || "",
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
     getChangeMajor: () => row["ChangeMajor"],
+    getAsuCareerOpportunity: () => row["AsuCareerOpp"],
   };
 }
 

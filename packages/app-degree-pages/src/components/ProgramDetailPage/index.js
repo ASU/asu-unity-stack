@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
-import { dataSourcePropType } from "../../core/models";
+import { dataSourcePropType, imagePropType } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -61,7 +61,7 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource, introContent }) => {
+const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -182,20 +182,6 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                 />
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
-
-                <NextSteps />
-
-                <AffordingCollege />
-
-                <FlexibleDegreeOptions />
-
-                <CareerOutlook />
-
-                <ExampleCareers />
-
-                <CustomizeYourCollegeExperience />
-
-                <GlobalOpportunity />
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 {introContent.video && (
@@ -216,6 +202,25 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                 )}
               </div>
             </div>
+
+            <div className="row pl-3">
+              <NextSteps />
+
+              <AffordingCollege />
+
+              <FlexibleDegreeOptions />
+
+              <CareerOutlook
+                image={careerOutlook.image}
+                contents={[{ text: resolver.getAsuCareerOpportunity() }]}
+              />
+
+              <ExampleCareers />
+
+              <CustomizeYourCollegeExperience />
+
+              <GlobalOpportunity />
+            </div>
           </section>
         )}
       </main>
@@ -233,12 +238,9 @@ ProgramDetailPage.propTypes = {
       altText: PropTypes.string,
       vttUrl: PropTypes.string,
     }),
-    image: PropTypes.shape({
-      text: PropTypes.string,
-      url: PropTypes.string,
-      altText: PropTypes.string,
-    }),
+    image: imagePropType,
   }),
+  careerOutlook: PropTypes.shape({ image: imagePropType }),
 };
 
 export { ProgramDetailPage };
