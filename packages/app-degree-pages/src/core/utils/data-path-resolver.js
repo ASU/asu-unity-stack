@@ -20,7 +20,7 @@ function dataPathResolver(data, path) {
 
 /**
  *
- * @param {import("../models/app-props").AppDataSource | string} dataSource
+ * @param {import("../models/types/shared-types").AppDataSource | string} dataSource
  * @returns {string}
  */
 function urlResolver(dataSource) {

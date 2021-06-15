@@ -4,7 +4,7 @@
  * @typedef {{
  *  text: string,
  *  targetIdName: string
- *  icon: string
+ *  icon: [string, string]
  * }} AnchorMenuItem
  */
 
@@ -22,6 +22,7 @@
  *  totalPages?: number,
  *  showFirstButton?: boolean,
  *  showLastButton?: boolean,
+ *  totalNumbers?: number,
  *  onChange: (e: Event, pages: number) => void,
  * }} PaginationProps
  */

@@ -1,17 +1,10 @@
+/* eslint-disable no-shadow */
 // @ts-check
 
 import { fetchData } from "../utils/fetch-data";
 
 const path = "https://webapp4.asu.edu/programs";
 // const path = "/programs";
-
-const DEGREE_SEARCH_URL =
-  `https://degreesearch-proxy.apps.asu.edu/degreesearch` +
-  `/?init=false` +
-  `&method=findDegreeByFirstLetterMapArray` +
-  `&fields=CollegeUrl,AsuCritTrackUrl,Degree,MinMathReq,DescrlongExtns,MathIntensity,AsuLangReqFlag,CampusStringArray,managedOnlineCampus,asuAcadpMrfText,Descr100,AsuProgramFee,additionalMathReqCourse,CollegeDescr100,AcadPlan,Institution,` +
-  `&program=undergrad` +
-  `&cert=false`;
 
 /**
  *
@@ -43,7 +36,6 @@ function majorInfoLink(
 }
 
 function mapTooltipLink(location, program = "undergrad") {
-  const path = "/programs";
   return `${path}/tooltipcampus?campus=${location}&amp;program=${program}`;
 }
 
@@ -52,10 +44,20 @@ function mapTooltipSubPlanMapLink(acadPlanCode) {
 }
 function accellerateDegreeLink(
   acadPlanCode,
+  institutionCode = "ASU00",
   program = "undergrad",
   cert = "false"
 ) {
-  return `${path}/t5/majorinfo/ASU00/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
+  return `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
+}
+
+function accellerateDegreeDynamicLink(
+  acadPlanCode,
+  institutionCode = "ASU00",
+  program = "undergrad"
+) {
+  const path = "/programs";
+  return `${path}/tooltipdynamic/accelerate/${acadPlanCode}/null/${institutionCode}/${program}`;
 }
 
 function requestInfoLink(acadPlanCode, progNameDesc, emailAddress) {
@@ -82,18 +84,17 @@ function saveFav(
   fetch(url).then();
 }
 
-// https://asudev.jira.com/wiki/spaces/eadvisor/pages/887324850/Apply%2BNow%2BButton%2Band%2BModal%2BDisplay%2BLogic
 function applyNow() {
-  // todo
+  // TODO: find the url
 }
 
 export {
   getDegreePrograms,
-  DEGREE_SEARCH_URL,
   majorInfoLink,
   mapTooltipLink,
   mapTooltipSubPlanMapLink,
   accellerateDegreeLink,
+  accellerateDegreeDynamicLink,
   requestInfoLink,
   saveFav,
   applyNow,

@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { DegreePage } from "../../components";
+import { ListingPage } from "../../components";
 
 /**
  * @typedef {Object} DegreeProps
@@ -17,7 +17,7 @@ import { DegreePage } from "../../components";
  */
 const initDegreePage = ({ targetSelector, props }) => {
   const target = document.querySelector(targetSelector);
-  const element = React.createElement(() => <DegreePage />, props);
+  const element = React.createElement(() => <ListingPage />, props);
   ReactDOM.render(element, target);
 };
 

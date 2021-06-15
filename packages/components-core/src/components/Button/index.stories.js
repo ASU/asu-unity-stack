@@ -101,7 +101,7 @@ SmallGoldButton.parameters = {
 export const IconButton = Template.bind({});
 IconButton.args = {
   color: "gold",
-  icon: "rocket",
+  icon: ["fas", "rocket"],
   label: "Icon Button",
   onClick: handleClick,
 };
@@ -117,7 +117,7 @@ IconButton.parameters = {
 
     <Button
       color="gold"
-      icon: "rocket",
+      icon: ["fas", "rocket"],
       onClick: handleClick,
     >Icon Button</Button>`,
     },
@@ -130,7 +130,7 @@ IconButton.parameters = {
 
       <Button
         color="gold"
-        icon: "rocket",
+        icon: ["fas", "rocket"],
         onClick: handleClick,
       >Icon Button</Button>`,
     },

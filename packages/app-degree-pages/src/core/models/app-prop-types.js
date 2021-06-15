@@ -31,12 +31,32 @@ const contentPropTypes = {
   cssClass: PropTypes.arrayOf(PropTypes.string),
 };
 
+const videoPropTypes = {
+  url: PropTypes.string,
+  altText: PropTypes.string,
+  vttUrl: PropTypes.string,
+};
+
+const linkPropTypes = {
+  url: PropTypes.string,
+  text: PropTypes.string,
+  isActive: PropTypes.bool,
+};
+
 const imagePropType = PropTypes.shape({
   ...imagePropTypes,
 });
 
 const contentPropType = PropTypes.shape({
   ...contentPropTypes,
+});
+
+const videoPropType = PropTypes.shape({
+  ...videoPropTypes,
+});
+
+const linkPropType = PropTypes.shape({
+  ...linkPropTypes,
 });
 
 const dataSourcePropType = PropTypes.shape({
@@ -47,12 +67,20 @@ const dataSourcePropType = PropTypes.shape({
   apiUrl: PropTypes.string, // only if `dataSourceType == "api"``
 });
 
+const glanceItemPropType = PropTypes.shape({
+  text: PropTypes.string,
+  url: PropTypes.string,
+});
+
 export {
   buttonPropTypes,
   accordionCardPropTypes,
+  linkPropType,
+  videoPropType,
   imagePropType,
   contentPropType,
   imagePropTypes,
   contentPropTypes,
   dataSourcePropType,
+  glanceItemPropType,
 };

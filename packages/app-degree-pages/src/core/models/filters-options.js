@@ -25,14 +25,30 @@ const asuLocalOptions = [
 const acceleratedConcurrentOptions = [
   {
     id: 0,
+    value: "all",
+    label: "All",
+  },
+  {
+    id: 1,
     value: "accelerateDegrees",
     label: "Accelerated",
   },
   {
-    id: 1,
+    id: 2,
     value: "concurrentDegrees",
     label: "Concurrent",
   },
 ];
 
-export { locationOptions, asuLocalOptions, acceleratedConcurrentOptions };
+const acceleratedConcurrentValues = [
+  "acceleratedConcurrent",
+  "concurrentDegrees",
+  "all",
+];
+
+export {
+  locationOptions,
+  asuLocalOptions,
+  acceleratedConcurrentOptions,
+  acceleratedConcurrentValues,
+};

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
+import { createRange } from "../../core/utils/helpers/numbers";
 import { PageItem } from "./PageItem";
 
 /**
@@ -21,6 +22,7 @@ export const Pagination = ({
   totalPages,
   showFirstButton,
   showLastButton,
+  totalNumbers,
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
@@ -36,16 +38,23 @@ export const Pagination = ({
       next: selectedPage + 1,
       last: totalPages,
     };
-    setSelectedPage(actions[page] ? actions[page] : page);
-    if (onChange) onChange(e, actions[page] ? actions[page] : page);
+    const action = actions[page] ? actions[page] : page;
+    setSelectedPage(action);
+    if (onChange) onChange(e, action);
   };
 
   const renderPages = () => {
-    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-    const renderedPages = [
-      ...pages.slice(selectedPage - 2, selectedPage - 1),
-      ...pages.slice(selectedPage - 1, selectedPage + 1),
-    ];
+    const lowerRange = createRange(
+      selectedPage - Math.floor(totalNumbers / 2),
+      selectedPage,
+      totalPages
+    );
+    const upperRange = createRange(
+      selectedPage,
+      selectedPage + 1 + Math.floor(totalNumbers / 2),
+      totalPages
+    );
+    const renderedPages = [...lowerRange, ...upperRange];
 
     return (
       <>
@@ -152,6 +161,10 @@ Pagination.propTypes = {
    */
   showLastButton: PropTypes.bool,
   /**
+   * Total number of pages to show. Should be an odd number to center the current page un the middle
+   */
+  totalNumbers: PropTypes.number,
+  /**
    * Callback fired when the page is changed.
    */
   onChange: PropTypes.func.isRequired,
@@ -162,4 +175,5 @@ Pagination.defaultProps = {
   totalPages: 10,
   showFirstButton: false,
   showLastButton: false,
+  totalNumbers: 3,
 };

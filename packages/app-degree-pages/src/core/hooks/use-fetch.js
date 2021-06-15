@@ -3,42 +3,55 @@
 import { useState, useEffect } from "react";
 
 /**
+ * @template S
+ * @typedef {[FetchResponse<S>, FetchCallback]} UseFetchTuple
+ */
+
+/**
+ * @template E
  * @typedef {{
- *    data: {
- *        programs: [Object.<string, any>]
- *    }
- *    isLoading: boolean
- *    isError: any
+ *    data: E
+ *    loading: boolean
+ *    error: object
  * }} FetchResponse
- * @returns {[FetchResponse, (url: string) => void]}
+ */
+
+/**
+ *  @typedef {(url: string) => void} FetchCallback
+ */
+
+/**
+ * @template T
+ * @returns {[
+ * FetchResponse<T>, FetchCallback]}
  */
 const useFetch = () => {
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
     if (!url) return;
 
     const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+      setError(null);
+      setLoading(true);
       try {
         const result = await fetch(url).then(res => res.json());
 
         setData(result);
-      } catch (error) {
-        setIsError(true);
+      } catch (err) {
+        setError(err);
       }
 
-      setIsLoading(false);
+      setLoading(false);
     };
 
     fetchData();
   }, [url]);
 
-  return [{ data, isLoading, isError }, setUrl];
+  return [{ data, loading, error }, setUrl];
 };
 
 export { useFetch };

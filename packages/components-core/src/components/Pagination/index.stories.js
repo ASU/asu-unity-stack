@@ -4,8 +4,6 @@ import React from "react";
 
 import { Pagination } from ".";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-
 export default {
   title: "UDS/Pagination",
   component: Pagination,
@@ -27,23 +25,9 @@ export default {
 };
 
 const Template = args => (
-  <div className={UdsStyles["container"]}>
-    <div
-      className={classNames(
-        UdsStyles["row"],
-        UdsStyles["row-spaced"],
-        UdsStyles["pt-2"],
-        UdsStyles["pb-2"]
-      )}
-    >
-      <div
-        className={classNames(
-          UdsStyles["col"],
-          UdsStyles["col-12"],
-          UdsStyles["col-md-12"],
-          UdsStyles["col-lg-12"]
-        )}
-      >
+  <div className="container">
+    <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
+      <div className={classNames("col", "col-12", "col-md-12", "col-lg-12")}>
         <Pagination {...args} />
       </div>
     </div>
@@ -67,10 +51,15 @@ Bordered.args = {
 };
 
 export const Gray1Background = Template.bind({});
-Gray1Background.args = { type: "default", background: "gray1", currentPage: 5 };
+Gray1Background.args = { type: "default", background: "gray1", currentPage: 7 };
 
 export const Gray2Background = Template.bind({});
-Gray2Background.args = { type: "default", background: "gray2" };
+Gray2Background.args = {
+  type: "default",
+  background: "gray2",
+  currentPage: 5,
+  totalNumbers: 5,
+};
 
 export const Gray7Background = Template.bind({});
 Gray7Background.args = { type: "default", background: "gray7" };

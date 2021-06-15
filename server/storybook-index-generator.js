@@ -4,7 +4,10 @@ const generateRow = (package, index) => `
   <div class="col-md-6 pb-8">
     <h2>${package.name}</h2>
     <p class="description">${package.description}</p>
-    <p><a class="btn btn-maroon btn-medium" href="${path.join(package.name, "index.html")}">Launch</a></p>
+    <p><a class="btn btn-maroon btn-medium" href="${path.join(
+      package.name,
+      "index.html"
+    )}">Launch</a></p>
   </div>
 `;
 
@@ -14,12 +17,12 @@ module.exports = generateHTML = packages => `
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/bootstrap4-theme/dist/css/bootstrap-asu.css">
+    <link rel="stylesheet" href="./@asu-design-system/bootstrap4-theme/css/bootstrap-asu.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/bootstrap4-theme/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/bootstrap4-theme/src/js/global-header.js"></script>
-    <script type="text/javascript" src="/bootstrap4-theme/dist/assets/fontawesome/js/all.js"></script>
+    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/js/global-header.js"></script>
+    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/assets/fontawesome/js/all.js"></script>
 
     <style>
     #header-top input[type='search'] {
@@ -87,8 +90,8 @@ module.exports = generateHTML = packages => `
             <nav class="navbar navbar-expand-xl" aria-label="Main">
 
               <a class="navbar-brand" href="#">
-                <img class="vert" src="/bootstrap4-theme/dist/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
-                <img class="horiz" src="/bootstrap4-theme/dist/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
+                <img class="vert" src="./@asu-design-system/bootstrap4-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
+                <img class="horiz" src="./@asu-design-system/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
               </a>
 
               <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,7 +174,7 @@ module.exports = generateHTML = packages => `
         <div class="col-md-6 pb-8">
           <h2>ASU Header</h2>
           <p>Guidelines, requirements and best practices for using the ASU Branded Header in your site.</p>
-          <p><a class="btn btn-maroon btn-medium" href="asuheader">View the guide</a></p>
+          <p><a class="btn btn-maroon btn-medium" href="asuheader/index.html">View the guide</a></p>
         </div>
 
         <div class="col-md-6 pb-8">
@@ -194,7 +197,7 @@ module.exports = generateHTML = packages => `
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
-            <img src="/bootstrap4-theme/dist/img/endorsed-logo/asu_universitytechoffice_horiz_white.png" alt="ASU University Technology Office Arizona State University."/>
+            <img src="./@asu-design-system/bootstrap4-theme/img/endorsed-logo/asu_universitytechoffice_horiz_white.png" alt="ASU University Technology Office Arizona State University."/>
           </div>
 
           <div class="col-md" id="social-media">
@@ -216,7 +219,7 @@ module.exports = generateHTML = packages => `
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src="/bootstrap4-theme/dist/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup@2x.png" alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <img src="./@asu-design-system/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup@2x.png" alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
               <nav class="nav" aria-label="University Services">
                 <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>

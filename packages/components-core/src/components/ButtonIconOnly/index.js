@@ -1,4 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +8,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
-  library.add(fas, far);
+  library.add(fab, fas, far);
 
   const btnClasses = classNames(
     "btn",
@@ -35,9 +36,9 @@ ButtonIconOnly.propTypes = {
   */
   color: PropTypes.oneOf(["white", "gray", "black"]),
   /**
-    React Font Awesome icon name string to be rendered in button label.
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   */
-  icon: PropTypes.string,
+  icon: PropTypes.arrayOf(PropTypes.string),
   /**
    * ref will only get you a reference to the Button component, use innerRef to
    * get a reference to the DOM element (for things like focus management).
