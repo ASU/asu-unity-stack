@@ -41,7 +41,8 @@ export const DefaultPage = Template.bind({});
 DefaultPage.args = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
-    `&acadPlan=BAACCBS` +
+    // `&acadPlan=LSBISBIS` +
+    `&acadPlan=ESBMEMDBSE` +
     `&fields=` +
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,` +
     // at a glance
@@ -49,17 +50,35 @@ DefaultPage.args = {
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
     `planCatDescr&init=false`,
   introContent: {
-    video: {
-      url: "https://player.vimeo.com/video/110626871",
-      altText: "Example video",
-    },
-    contents: [
+    breadcrumbs: [
       {
-        text: `Can you imagine yourself hosting successful events and meetings?
-        Then this program is right for you. Earn a degree that showcases your advanced knowledge of event programming, operations, financial management and marketing.
-        The instructors work in all aspects of the event industry.`,
+        text: "Academic programs",
+        url: "#",
+      },
+      {
+        text: "Undergraduate degrees",
+        url: "#",
+      },
+      {
+        text: "Degree title",
+        isActive: true,
       },
     ],
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+    // video: {
+    //   url: "https://player.vimeo.com/video/110626871",
+    //   altText: "Example video",
+    // },
+    // contents: [
+    //   {
+    //     text: `Can you imagine yourself hosting successful events and meetings?
+    //     Then this program is right for you. Earn a degree that showcases your advanced knowledge of event programming, operations, financial management and marketing.
+    //     The instructors work in all aspects of the event industry.`,
+    //   },
+    // ],
   },
   atAGlance: {
     offeredBy: {

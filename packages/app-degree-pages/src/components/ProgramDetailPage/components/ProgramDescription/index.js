@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { sanitizeHTML } from "../../../../core/utils";
+
 /** @typedef {import('../../../../core/models/program-detail-types').ProgramDescriptionProps} ProgramDescriptionProps */
 
 /**
@@ -12,11 +14,7 @@ function ProgramDescription({ content }) {
   return (
     <section>
       <h2>Program description</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: content,
-        }}
-      />
+      <div dangerouslySetInnerHTML={sanitizeHTML(content)} />
     </section>
   );
 }

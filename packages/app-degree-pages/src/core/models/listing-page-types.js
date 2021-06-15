@@ -4,12 +4,12 @@
 /**
  * @typedef {{
  *    type?: "text" | "text-image-overlay" | "text-photo-grid"
- *    image?: import("./shared-types").AppImageProps
+ *    image?: import("./shared-types").ImageItem
  *    header?: import("./shared-types").AppTitleProps
  *    title?: import("./shared-types").AppTitleProps
  *    contents?: import("./shared-types").ContentItem[]
  *    photoGrid?: {
- *      images: import("./shared-types").AppImageProps[]
+ *      images: import("./shared-types").ImageItem[]
  *    }
  * }} IntroContentProps
  */

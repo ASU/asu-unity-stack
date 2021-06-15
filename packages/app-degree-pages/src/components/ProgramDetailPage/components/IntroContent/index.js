@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { contentPropType } from "../../../../core/models/app-prop-types";
-import { spreadClasses } from "../../../../core/utils/css-utils";
+import { sanitizeHTML, spreadClasses } from "../../../../core/utils";
 
 /**
  * @typedef {import('../../../../core/models/program-detail-types').IntroContentProps} IntroContentProps
@@ -17,16 +17,15 @@ import { spreadClasses } from "../../../../core/utils/css-utils";
  */
 function IntroContent({ contents = [] }) {
   return (
-    <>
+    <section>
       {contents.map((content, index) => (
-        <p
+        <div
           key={`content-${index + 1}`}
           className={`${spreadClasses(content.cssClass)}`}
-        >
-          {content.text}
-        </p>
+          dangerouslySetInnerHTML={sanitizeHTML(content.text)}
+        />
       ))}
-    </>
+    </section>
   );
 }
 

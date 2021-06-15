@@ -18,6 +18,11 @@ const videoPropTypes = {
   vttUrl: PropTypes.string,
 };
 
+const linkPropTypes = {
+  url: PropTypes.string,
+  text: PropTypes.string,
+};
+
 const imagePropType = PropTypes.shape({
   ...imagePropTypes,
 });
@@ -28,6 +33,10 @@ const contentPropType = PropTypes.shape({
 
 const videoPropType = PropTypes.shape({
   ...videoPropTypes,
+});
+
+const linkPropType = PropTypes.shape({
+  ...linkPropTypes,
 });
 
 const dataSourcePropType = PropTypes.shape({
@@ -44,6 +53,7 @@ const glanceItemPropType = PropTypes.shape({
 });
 
 export {
+  linkPropType,
   videoPropType,
   imagePropType,
   contentPropType,

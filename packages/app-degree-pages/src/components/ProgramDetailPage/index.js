@@ -8,6 +8,8 @@ import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import { Breadcrumbs } from "./components/Breadcrumbs";
+import { ChangeYourMajor } from "./components/ChangeYourMajor";
 import IntroContent from "./components/IntroContent";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
@@ -84,13 +86,18 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
           <Loader />
         ) : (
           <section className="container">
+            <div className="row pl-3">
+              <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
+            </div>
             <div className="row p-3">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 <IntroContent
-                  contents={[
-                    { text: resolver.getMarketText() },
-                    ...introContent.contents,
-                  ]}
+                  breadcrumbs={introContent.breadcrumbs}
+                  contents={
+                    introContent.contents || [
+                      { text: resolver.getMarketText() },
+                    ]
+                  }
                 />
                 <ProgramDescription content={resolver.getDescrLongExtented()} />
 
@@ -115,21 +122,25 @@ const ProgramDetailPage = ({ dataSource, introContent }) => {
                   place holder
                 </section>
 
-                <section className="change-your-major">
-                  <h3>Change Your Major:</h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: resolver.getChangeMajor(),
-                    }}
-                  />
-                </section>
+                <ChangeYourMajor content={resolver.getChangeMajor()} />
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
-                <VideoPage
-                  url={introContent.video.url}
-                  vttUrl={introContent.video.vttUrl}
-                  altText={introContent.video.altText}
-                />
+                {introContent.video && (
+                  <VideoPage
+                    url={introContent.video.url}
+                    vttUrl={introContent.video.vttUrl}
+                    altText={introContent.video.altText}
+                  />
+                )}
+                {introContent.image && (
+                  <div className="uds-img">
+                    <img
+                      src={introContent.image.url}
+                      className="img-fluid"
+                      alt={introContent.image.altText}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </section>

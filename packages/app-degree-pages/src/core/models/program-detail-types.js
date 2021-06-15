@@ -4,6 +4,8 @@
  * @typedef {{
  *    contents: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
+ *    image?: import("./shared-types").ImageItem
+ *    breadcrumbs: import("./shared-types").LinkItem []
  * }} IntroContentProps
  */
 
@@ -77,7 +79,7 @@
  *  @typedef {{
  *    title: string
  *    contents: import("./shared-types").ContentItem[]
- *    image: import("./shared-types").AppImageProps
+ *    image: import("./shared-types").ImageItem
  * }} CareerOutlookProps
  */
 
@@ -115,7 +117,7 @@
 
 /**
  *  @typedef {{
- *    image: import("./shared-types").AppImageProps
+ *    image: import("./shared-types").ImageItem
  *    contents: import("./shared-types").SectionContentItem[]
  *    learnAboutButton: import("./shared-types").LinkItem
  * }} AttendOnlineProps

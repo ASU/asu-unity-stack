@@ -24,22 +24,26 @@ function RequiredCourse({
 }) {
   return (
     <section>
-      <h3>Required Course (Major Map)</h3>
+      <h4>Required Course (Major Map)</h4>
       <ButtonGroup>
-        <Button
-          label="View major map (on-campus)"
-          color="maroon"
-          size="small"
-          element="button"
-          href={concurrentDegreeMajorMaps}
-        />
-        <Button
-          label="View major map (online)"
-          color="maroon"
-          size="small"
-          element="button"
-          href={onlineMajorMapURL}
-        />
+        {concurrentDegreeMajorMaps && (
+          <Button
+            label="View major map (on-campus)"
+            color="maroon"
+            size="small"
+            element="button"
+            href={concurrentDegreeMajorMaps}
+          />
+        )}
+        {onlineMajorMapURL && (
+          <Button
+            label="View major map (online)"
+            color="maroon"
+            size="small"
+            element="button"
+            href={onlineMajorMapURL}
+          />
+        )}
       </ButtonGroup>
     </section>
   );

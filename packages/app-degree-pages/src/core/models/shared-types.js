@@ -24,6 +24,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *    url: string
  *    text: string
+ *    isActive?: boolean
  * }} LinkItem
  */
 
@@ -40,7 +41,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    url: string
  *    altText?: string
  *    cssClass?: string []
- * }} AppImageProps
+ * }} ImageItem
  */
 
 /**
