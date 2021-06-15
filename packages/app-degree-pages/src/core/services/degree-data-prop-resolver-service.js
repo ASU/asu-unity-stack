@@ -53,6 +53,7 @@ function degreeDataPropResolverService(row = {}) {
     getCampusWue: () => row["campusWue"] || "",
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
     getChangeMajor: () => row["ChangeMajor"],
+    getAsuCareerOpportunity: () => row["AsuCareerOpp"],
   };
 }
 

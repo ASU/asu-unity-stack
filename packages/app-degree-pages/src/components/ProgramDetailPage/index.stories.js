@@ -21,11 +21,12 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ dataSource, introContent, atAGlance }) => (
+const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
+    careerOutlook={careerOutlook}
   />
 );
 
@@ -54,6 +55,8 @@ DefaultPage.args = {
     // flexible degree options
     `accelerateDegrees,accelerateDegreeMajorMaps,` +
     `concurrentDegreeMajorMaps,concurrentDegrees,` +
+    // career opportunity
+    `AsuCareerOpp,` +
     // other
     `planCatDescr&init=false`,
   introContent: {
@@ -113,5 +116,11 @@ DefaultPage.args = {
     firstRequirementMathCourse: "MAT 142 - College Mathematics",
     mathIntensity: "General",
     timeCommitment: "120 credit hours(about 4 years)",
+  },
+  careerOutlook: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
   },
 };
