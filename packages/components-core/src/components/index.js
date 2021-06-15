@@ -8,3 +8,4 @@ export * from "./ButtonTag";
 export * from "./Testimonial";
 export * from "./Pagination";
 export * from "./Hero";
+export * from "./Accordion";
