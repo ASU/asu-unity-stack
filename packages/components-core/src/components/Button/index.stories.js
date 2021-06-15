@@ -1,5 +1,4 @@
 /* eslint react/jsx-props-no-spreading: "off", no-alert: "off" */
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
@@ -32,12 +31,10 @@ const handleClick = e => {
 };
 
 const Template = args => {
-  const { label } = args;
-
   return (
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">
-        <Button {...args}>{label}</Button>
+        <Button {...args} />
       </div>
     </div>
   );
@@ -104,7 +101,7 @@ SmallGoldButton.parameters = {
 export const IconButton = Template.bind({});
 IconButton.args = {
   color: "gold",
-  icon: faRocket,
+  icon: ["fas", "rocket"],
   label: "Icon Button",
   onClick: handleClick,
 };
@@ -113,8 +110,6 @@ IconButton.parameters = {
     description: {
       story: `To include a Font Awesome icon in the button label, import the desired React icon and pass it to the Button component via the \`icon\` prop.:
 
-    import { faRocket } from "@fortawesome/free-solid-svg-icons";
-
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -122,23 +117,22 @@ IconButton.parameters = {
 
     <Button
       color="gold"
-      icon: faRocket,
+      icon: ["fas", "rocket"],
       onClick: handleClick,
     >Icon Button</Button>`,
     },
     source: {
-      code: `import { faRocket } from "@fortawesome/free-solid-svg-icons";
+      code: `
+      const handleClick = e => {
+        e.preventDefault();
+        alert("The button was clicked.");
+      };
 
-const handleClick = e => {
-  e.preventDefault();
-  alert("The button was clicked.");
-};
-
-<Button
-  color="gold"
-  icon: faRocket,
-  onClick: handleClick,
->Icon Button</Button>`,
+      <Button
+        color="gold"
+        icon: ["fas", "rocket"],
+        onClick: handleClick,
+      >Icon Button</Button>`,
     },
   },
 };
@@ -172,7 +166,7 @@ const ReactRouterTemplate = args => (
   <Router>
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">
-        <Button {...args}>React Router Link</Button>
+        <Button {...args} />
       </div>
     </div>
   </Router>
@@ -182,6 +176,7 @@ export const ReactRouterLinkButton = ReactRouterTemplate.bind({});
 ReactRouterLinkButton.args = {
   color: "gold",
   element: Link,
+  label: "React Router Link",
   to: "/#example-link",
 };
 ReactRouterLinkButton.parameters = {
@@ -197,7 +192,8 @@ ReactRouterLinkButton.parameters = {
           color="gold"
           element={Link}
           to="/#example-link"
-        >React Router Link</Button>
+          label="React Router Link"
+        />
       </...>
     </Router>`,
     },
@@ -210,7 +206,8 @@ ReactRouterLinkButton.parameters = {
       color="gold"
       element={Link}
       to="/#example-link"
-    >React Router Link</Button>
+      label="React Router Link"
+    />
   </...>
 </Router>`,
     },

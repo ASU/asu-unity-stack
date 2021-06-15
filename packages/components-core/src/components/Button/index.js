@@ -1,15 +1,17 @@
 /* eslint react/jsx-props-no-spreading: "off" */
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-
 export const Button = ({
+  label,
   ariaLabel,
   block,
-  children,
   color,
   disabled,
   element,
@@ -18,14 +20,17 @@ export const Button = ({
   innerRef,
   onClick,
   size,
+  classes,
   ...props
 }) => {
-  const btnClasses = classNames(UdsStyles["btn"], {
-    [UdsStyles[`btn-${color}`]]: true,
-    [UdsStyles[`btn-md`]]: size === "small",
-    [UdsStyles[`btn-sm`]]: size === "xsmall",
-    [UdsStyles[`btn-block`]]: block,
-    [UdsStyles[`disabled`]]: disabled,
+  library.add(fas, far, fab);
+
+  const btnClasses = classNames("btn", {
+    [`btn-${color}`]: true,
+    [`btn-md`]: size === "small",
+    [`btn-sm`]: size === "xsmall",
+    [`btn-block`]: block,
+    [`disabled`]: disabled,
   });
 
   let Tag = element;
@@ -37,20 +42,23 @@ export const Button = ({
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
       {...props}
-      className={btnClasses}
+      className={classNames(classes) || btnClasses}
       href={href}
       ref={innerRef}
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      {icon && <FontAwesomeIcon icon={icon} />}
-      {icon && `  `}
-      {children}
+      {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}
+      {label}
     </Tag>
   );
 };
 
 Button.propTypes = {
+  /**
+   * Button label
+   */
+  label: PropTypes.string,
   /**
     ARIA label for accessibility
   */
@@ -59,10 +67,6 @@ Button.propTypes = {
     Render button as a block-button?
   */
   block: PropTypes.bool,
-  /**
-    Content nodes to be wrapped by rendered Button element (usually just the text label)
-  */
-  children: PropTypes.node.isRequired,
   /**
     Button background color
   */
@@ -94,9 +98,9 @@ Button.propTypes = {
   */
   href: PropTypes.string,
   /**
-    React Font Awesome icon to be rendered in button label.
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   */
-  icon: PropTypes.elementType,
+  icon: PropTypes.arrayOf(PropTypes.string),
 
   /**
    * ref will only get you a reference to the Button component, use innerRef to
@@ -116,9 +120,14 @@ Button.propTypes = {
     Button size
   */
   size: PropTypes.oneOf(["default", "small", "xsmall"]),
+  /**
+    Classes to add to button
+  */
+  classes: PropTypes.arrayOf(PropTypes.string),
 };
 
 Button.defaultProps = {
+  label: "",
   ariaLabel: undefined,
   block: undefined,
   color: "gray",
@@ -129,4 +138,5 @@ Button.defaultProps = {
   innerRef: undefined,
   onClick: undefined,
   size: "default",
+  classes: undefined,
 };

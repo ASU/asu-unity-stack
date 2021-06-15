@@ -25,13 +25,13 @@ export const defaultCard = () => `
             <a href="#" class="btn btn-dark">Button link here</a>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+            <a href="#" class="btn btn-md btn-dark">Button link here</a>
           </div>
           <div class="card-link">
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -147,6 +147,30 @@ export const cardBody = () => `
   </div>
 `;
 
+export const cardIcon = () => `
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-md-6 col-lg-4">
+
+        <div class="card">
+        <div class="card-header card-header-icon">
+        <i class="fas fa-newspaper fa-2x card-icon"></i>
+            <h3 class="card-title">Headline goes here</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+            </p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-maroon">Button text</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
+`;
+
 export const cardEventInfo = () => `
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
@@ -248,7 +272,7 @@ export const cardCallToActions = () => `
             <a href="#" class="btn btn-dark">Button link here</a>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+            <a href="#" class="btn btn-md btn-dark">Button link here</a>
           </div>
           <div class="card-link">
             <a href="#" class="">Regular text link here</a>
@@ -268,7 +292,7 @@ export const cardTags = () => `
         <div class="card">
           <div class="card-header"></div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -312,7 +336,7 @@ export const degreeCard = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -341,7 +365,7 @@ export const storyCard = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -380,7 +404,7 @@ export const eventCard = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -434,13 +458,13 @@ export const variations = () => `
             <a href="#" class="btn btn-dark">Button link here</a>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+            <a href="#" class="btn btn-md btn-dark">Button link here</a>
           </div>
           <div class="card-link">
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -456,6 +480,10 @@ export const variations = () => `
           </div>
           <div class="card-event-details">
             <div class="card-event-icons">
+              <div><i class="far fa-calendar"></i></div>
+              <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+            </div>
+            <div class="card-event-icons">
               <div><i class="fas fa-map-marker-alt"></i></div>
               <div>Downtown Phoenix campus</div>
             </div>
@@ -464,7 +492,7 @@ export const variations = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -478,6 +506,12 @@ export const variations = () => `
           </div>
           <div class="card-event-details">
             <div class="card-event-icons">
+              <div><i class="far fa-calendar"></i></div>
+              <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
+            </div>
+          </div>
+          <div class="card-event-details">
+            <div class="card-event-icons">
               <div><i class="fas fa-map-marker-alt"></i></div>
               <div>Downtown Phoenix campus</div>
             </div>
@@ -486,7 +520,7 @@ export const variations = () => `
             <a href="#" class="btn btn-dark">Button link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -522,8 +556,8 @@ export const variations = () => `
           </div>
           <div class="card-event-details">
             <div class="card-event-icons">
-              <div><i class="fas fa-map-marker-alt"></i></div>
-              <div>Downtown Phoenix campus</div>
+              <div><i class="far fa-calendar"></i></div>
+              <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
             </div>
           </div>
           <div class="card-button">
@@ -555,7 +589,7 @@ export const variations = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -618,6 +652,53 @@ export const variations = () => `
       </div> <!-- .col -->
     </div>
   </div>
+
+  <div class="container">
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-12 col-lg-4">
+
+        <div class="card">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+          </div>
+          <div class="card-event-details">
+            <div class="card-event-icons">
+              <div><i class="fas fa-map-marker-alt"></i></div>
+              <div>Downtown Phoenix campus</div>
+            </div>
+          </div>
+          <div class="card-link">
+            <a href="#" class="">Regular text link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-12 col-lg-4">
+
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+      </div> <!-- .card -->
+
+    </div> <!-- .col -->
+    <div class="col col-12 col-lg-4">
+
+      <div class="card card-centered">
+        <i class="fas fa-rocket fa-2x card-icon-top"></i>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+      </div> <!-- .card -->
+
+      </div> <!-- .col -->
+    </div>
+  </div>
 `;
 
 export const fourColumn = () => `
@@ -634,7 +715,7 @@ export const fourColumn = () => `
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -650,7 +731,7 @@ export const fourColumn = () => `
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -663,7 +744,7 @@ export const fourColumn = () => `
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -678,23 +759,7 @@ export const fourColumn = () => `
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
-          </div>
-        </div> <!-- .card -->
-
-      </div> <!-- .col -->
-      <div class="col col-md-6 col-lg-3 col-12">
-
-        <div class="card card-sm">
-          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -710,7 +775,23 @@ export const fourColumn = () => `
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-md-6 col-lg-3 col-12">
+
+        <div class="card card-sm">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -723,7 +804,7 @@ export const fourColumn = () => `
             <h3 class="card-title">Card default title</h3>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
@@ -738,11 +819,78 @@ export const fourColumn = () => `
             <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
           </div>
           <div class="card-button">
-            <a href="#" class="btn btn-dark btn-sm">Button link here</a>
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
           </div>
         </div> <!-- .card -->
 
       </div> <!-- .col -->
+    </div>
+  </div>
+
+  <div class="container">
+  <h2>Story cards</h2>
+    <div class="row row-spaced pt-2 pb-2">
+      <div class="col col-md-6 col-lg-3 col-12">
+
+        <div class="card card-story card-sm">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-md-6 col-lg-3 col-12">
+
+        <div class="card card-story card-sm">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-md-6 col-lg-3 col-12">
+
+        <div class="card card-story card-sm">
+          <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+      <div class="col col-md-6 col-lg-3 col-12">
+
+        <div class="card card-story card-sm">
+          <div class="card-header">
+            <h3 class="card-title">Card default title</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-dark btn-md">Button link here</a>
+          </div>
+        </div> <!-- .card -->
+
+      </div> <!-- .col -->
+
     </div>
   </div>
 `;
@@ -860,7 +1008,7 @@ export const horizontal = () => `
               <a href="#" class="">Regular text link here</a>
             </div>
             <div class="card-tags">
-              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
             </div>
           </div>
         </div> <!-- .card -->
@@ -904,7 +1052,7 @@ export const horizontal = () => `
               <a href="#" class="">Regular text link here</a>
             </div>
             <div class="card-tags">
-              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
             </div>
           </div>
         </div> <!-- .card -->
@@ -1000,7 +1148,7 @@ export const horizontal = () => `
               <a href="#" class="">Regular text link here</a>
             </div>
             <div class="card-tags">
-              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+              <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
             </div>
           </div>
         </div> <!-- .card -->
@@ -1065,7 +1213,7 @@ export const checkboxStackedCard = () => `
 
         <div class="card card-checkbox-stacked">
           <div class="card-image-content">
-            <div class="card-image-gradient">
+            <div class="card-image-gradient checkbox-card">
               <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
             </div>
             <form class="uds-form card-image-overlay-content ml-4">
@@ -1094,7 +1242,7 @@ export const checkboxStackedCard = () => `
             <a href="#" class="">Regular text link here</a>
           </div>
           <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+            <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
           </div>
         </div> <!-- .card -->
 
@@ -1109,7 +1257,7 @@ export const checkboxInlineCard = () => `
     <div class="col col-12 col-md-6 col-lg-4">
       <div class="card card-checkbox-inline">
         <div class="card-image-content">
-          <div class="card-image-gradient">
+          <div class="card-image-gradient checkbox-card">
             <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
           </div>
           <form class="uds-form card-image-overlay-content ml-4">
@@ -1138,7 +1286,7 @@ export const checkboxInlineCard = () => `
           <a href="#" class="">Regular text link here</a>
         </div>
         <div class="card-tags">
-          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
         </div>
       </div> <!-- .card -->
 
@@ -1174,7 +1322,7 @@ export const mediaTypeOverlayCard = () => `
           <a href="#" class="">Regular text link here</a>
         </div>
         <div class="card-tags">
-          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
         </div>
       </div> <!-- .card -->
 
@@ -1203,7 +1351,7 @@ export const mediaTypeOverlayCard = () => `
           <a href="#" class="">Regular text link here</a>
         </div>
         <div class="card-tags">
-          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a><a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
         </div>
       </div> <!-- .card -->
     </div> <!-- .col -->
@@ -1244,4 +1392,3 @@ export const mediaTypeOverlayCard = () => `
   </div>
 </div>
 `;
-

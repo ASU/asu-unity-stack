@@ -1,14 +1,9 @@
-
 /* eslint-disable react/prop-types */
 
 import { cx, css } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 
-import {
-  focusStyle,
-  BreakpointLg,
-  breakpointForMin
-} from "../../theme";
+import { focusStyle, BreakpointLg, breakpointForMin } from "../../theme";
 
 /**
  * Title
@@ -23,7 +18,13 @@ const titleStyles = breakpoint => css`
     font-weight: 700;
     margin: 0 2rem 1.5rem 2rem;
     letter-spacing: -1px;
-    background-image: linear-gradient(to right,transparent 51%,#FFC626 51%,95%,transparent);
+    background-image: linear-gradient(
+      to right,
+      transparent 51%,
+      #ffc626 51%,
+      95%,
+      transparent
+    );
     background-position: 0 0;
     background-size: 200%;
     display: inline-block;

@@ -1,6 +1,5 @@
 // @ts-check
-/** @jsx h */
-import { h, Fragment } from "preact";
+import React from "react";
 
 import { CardCarousel } from ".";
 
@@ -16,25 +15,46 @@ const imageFormats = [
 ];
 
 const getImageFormat = index => imageFormats[index];
-
+/**
+ * @type import(".").CardItem []
+ */
 const myCarouselItems = [];
-for (let index = 0; index < 8; index++) {
+for (let index = 0; index < 8; index += 1) {
+  const content =
+    index === 3
+      ? "Only two lines of text here, to show our fixed height."
+      : `Body ${index + 1}
+    copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua eiusmod tempo.`;
+
+  const imageSource =
+    index === 5
+      ? "https://br0ken"
+      : `https://source.unsplash.com/random/${getImageFormat(index)}?a=${
+          index - 1
+        }`;
+
   myCarouselItems.push({
     id: index,
-    imageSource: `https://source.unsplash.com/random/${getImageFormat(
-      index
-    )}?a=${index - 1}`,
-    altText: "Card image cap",
+    imageSource,
+    imageAltText: "Card image cap",
     title: `Card ${index + 1}`,
-    content: `Body ${
-      index + 1
-    } copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua eiusmod tempo.`,
-    buttonLink: {
-      url: "#",
-      text: `Button ${index + 1} link here`,
-    },
+    content,
+    buttons: [
+      {
+        ariaLabel: "dummy button",
+        color: "maroon",
+        href: "#",
+        label: `Button ${index + 1} link here`,
+        size: "default",
+        onClick: () => {
+          // eslint-disable-next-line no-alert
+          window.alert("Hola Amigo 😃.");
+          return false;
+        },
+      },
+    ],
   });
 }
 
@@ -44,7 +64,7 @@ export default {
 };
 
 export const ThreeItemCarousel = () => (
-  <CardCarousel perView="3" cardItems={myCarouselItems} />
+  <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
 );
 
 export const TwoItemCarousel = () => (
@@ -62,4 +82,3 @@ export const MultipleCarousels = () => (
     <CardCarousel perView="2" cardItems={myCarouselItems} />
   </>
 );
-

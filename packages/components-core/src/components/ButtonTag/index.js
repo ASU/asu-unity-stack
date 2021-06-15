@@ -3,11 +3,9 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import UdsStyles from "../../../vendor/css/bootstrap-asu.min.module.css";
-
 export const ButtonTag = ({
+  label,
   ariaLabel,
-  children,
   color,
   disabled,
   element,
@@ -16,11 +14,11 @@ export const ButtonTag = ({
   onClick,
   ...props
 }) => {
-  const btnClasses = classNames(UdsStyles["btn"], UdsStyles[`btn-tag`], {
-    [UdsStyles[`btn-tag-alt-white`]]: color === "white",
-    [UdsStyles[`btn-tag-alt-gray`]]: color === "gray",
-    [UdsStyles[`btn-tag-alt-dark`]]: color === "dark",
-    [UdsStyles[`disabled`]]: disabled,
+  const btnClasses = classNames("btn", `btn-tag`, {
+    [`btn-tag-alt-white`]: color === "white",
+    [`btn-tag-alt-gray`]: color === "gray",
+    [`btn-tag-alt-dark`]: color === "dark",
+    [`disabled`]: disabled,
   });
 
   let Tag = element;
@@ -38,20 +36,20 @@ export const ButtonTag = ({
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      {children}
+      {label}
     </Tag>
   );
 };
 
 ButtonTag.propTypes = {
   /**
+    Button tag label
+  */
+  label: PropTypes.string,
+  /**
     ARIA label for accessibility
   */
   ariaLabel: PropTypes.string,
-  /**
-    Content nodes to be wrapped by rendered Button element (usually just the text label)
-  */
-  children: PropTypes.node.isRequired,
   /**
     Button background color
   */
@@ -100,6 +98,7 @@ ButtonTag.propTypes = {
 };
 
 ButtonTag.defaultProps = {
+  label: "",
   ariaLabel: undefined,
   color: "gray",
   disabled: undefined,

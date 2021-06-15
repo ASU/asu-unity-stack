@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 // @ts-check
-/** @jsx h */
 import { text } from "@storybook/addon-knobs";
-import { h, Fragment } from "preact";
+import React from "react";
 
 import { ImageGalleryCarousel } from ".";
 
@@ -20,13 +20,13 @@ const imageFormats = [
 
 const getImageFormat = index => imageFormats[index];
 
-for (let index = 0; index < 8; index++) {
+for (let index = 0; index < 8; index += 1) {
   myCarouselItems.push({
     id: index,
     imageSource: `https://source.unsplash.com/random/${getImageFormat(
       index
     )}?a=${index - 1}`,
-    altText:
+    imageAltText:
       "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
   });
 }
@@ -48,17 +48,10 @@ const mockItemWithContent = () => {
 const mockItemWithMoreContent = () => {
   return myCarouselItems.map((item, index) => ({
     ...item,
-    content: (
-      <>
-        <h3>Content {index + 1}</h3>
-
-        <p>
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </>
-    ),
+    title: `Content ${index + 1}`,
+    content: `Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua eiusmod tempo.`,
   }));
 };
 
@@ -75,9 +68,9 @@ const GROUP_STYLE = "Styles";
 /**
  *
  * @param {{ children: JSX.Element}} props
- * @returns { h.JSX.Element}
+ * @returns {JSX.Element}
  */
-const Wrapper = ({ children }) => (
+const Wrapper = ({ children = null }) => (
   <div
     style={{
       display: "flex",
@@ -102,7 +95,7 @@ export const ImageGalleryCarouselWithContent = () => (
     <ImageGalleryCarousel
       maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
       imageItems={mockItemWithContent()}
-      hasContent={true}
+      hasContent
     />
   </Wrapper>
 );
@@ -112,7 +105,7 @@ export const ImageCarouselWithMoreContent = () => (
     <ImageGalleryCarousel
       maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
       imageItems={mockItemWithMoreContent()}
-      hasContent={true}
+      hasContent
     />
   </Wrapper>
 );

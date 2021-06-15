@@ -1,8 +1,5 @@
-
-
 import { css } from "@emotion/css";
 import { forwardRef } from "preact/compat";
-
 
 /**
  * Logo
@@ -69,13 +66,13 @@ const logoStyles = breakpoint => css`
   }
 `;
 
-const Logo = forwardRef(({brandLink, src, mobileSrc, alt, ...props}, ref) => {
+const Logo = forwardRef(({ brandLink, src, mobileSrc, alt, ...props }, ref) => {
   return (
-    <a href={brandLink} class="navbar-logo" ref={ref} {...props} >
+    <a href={brandLink} class="navbar-logo" ref={ref} {...props}>
       <img class="vert" src={src} alt={alt} />
       <img class="horiz" src={mobileSrc} alt={alt} />
     </a>
   );
 });
 
-export { Logo, logoStyles}
+export { Logo, logoStyles };

@@ -5,7 +5,11 @@
 // This serves as the required link to the license as per attribution
 // guidelines provided at time of use: https://fontawesome.com/license
 
-import { BaseBulletItemContainer, BulletItems, ImageBulletItems } from "./BulletItems";
+import {
+  BaseBulletItemContainer,
+  BulletItems,
+  ImageBulletItems,
+} from "./BulletItems";
 import { BaseNavButtonContainer, NavButtons } from "./NavButtons";
 import { NextButton } from "./NextButton";
 import { PrevButton } from "./PrevButton";

@@ -27,62 +27,70 @@
       var myCarouselItems = [
         {
           id: 0,
-          imageSource: "https://source.unsplash.com/random/400x400??a=-1",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=-1",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 1,
-          imageSource: "https://source.unsplash.com/random/400x400??a=0",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=0",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 2,
-          imageSource: "https://source.unsplash.com/random/400x400?a=1",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200?a=1",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 3,
-          imageSource: "https://source.unsplash.com/random/400x400??a=2",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=2",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 4,
-          imageSource: "https://source.unsplash.com/random/400x400??a=3",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=3",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 5,
-          imageSource: "https://source.unsplash.com/random/400x400??a=4",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=4",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 6,
-          imageSource: "https://source.unsplash.com/random/400x400?a=5",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200?a=5",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
         {
           id: 7,
-          imageSource: "https://source.unsplash.com/random/400x400??a=6",
-          altText:
+          imageSource: "https://source.unsplash.com/random/300x200??a=6",
+          imageAltText:
             "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
         },
       ];
 
+      myCarouselItems = myCarouselItems.map((item, index) => ({
+        ...item,
+        title: `Content ${index + 1}`,
+        content: `Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                  labore et dolore magna aliqua eiusmod tempo.`,
+      }));
       // Setup and initialize the Image carousel.
-      AsuWebcarousel.initImageGalleryCarousel({
+      AsuWebCarousel.initImageGalleryCarousel({
         targetSelector: "#imageGalleryCarouselContainer",
         props: {
-          perView: "2",
+          perView: 2,
           imageItems: myCarouselItems,
           imageAutoSize: false,// default true
-          maxWidth: "500px",
+          maxWidth: "600px",
+          hasContent:  true,
         },
       });
     </script>

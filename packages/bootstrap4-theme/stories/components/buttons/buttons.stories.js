@@ -1,4 +1,3 @@
-import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
 storiesOf('Components/Buttons', module)
@@ -17,12 +16,62 @@ storiesOf('Components/Buttons', module)
   .add(
     'Button sizes',
     () => `
-<div class="container-fluid">
-  <div class="col col-sm-12 p-3"><button type="button" class="btn btn-gold">Default button</button> <button type="button" class="btn btn-maroon">Default button</button>
-    <hr />
-    <button type="button" class="btn btn-gold btn-md">Medium button</button> <button type="button" class="btn btn-maroon btn-md">Medium button</button>
-    <hr />
-    <button type="button" class="btn btn-gold btn-sm">Small button</button> <button type="button" class="btn btn-maroon btn-sm">Small button</button>
+<style>
+  .btn-grid {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+    row-gap: 1rem;
+    column-gap: 2rem;
+  }
+
+  .btn-tag { margin-top: 0 !important; }
+</style>
+
+<div class="btn-grid">
+  <div>
+    <button type="button" class="btn btn-maroon">Default button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-gold">Default button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-dark">Default button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-gray">Default button</button>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-md btn-maroon">Small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-md btn-gold">Small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-md btn-dark">Small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-md btn-gray">Small button</button>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-sm btn-maroon">X-small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-sm btn-gold">X-small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-sm btn-dark">X-small button</button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-sm btn-gray">X-small button</button>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-tag btn-tag-alt-gray">Tag item</button>
+  </div>
 </div>
 `
   )
@@ -57,34 +106,6 @@ storiesOf('Components/Buttons', module)
 <div class="col col-12 col-lg-4 bg-dark p-3"><button type="button" class="btn btn-tag btn-tag-alt-black">Tag alt black</button></div></div></div>`
   )
 
-  .add(
-    'Close button',
-    () => `
-<div class="container-fluid">
-  <div class="row">
-    <div class="col col-12 col-lg-4 bg-white p-3">
-      <button type="button" class="btn btn-circle btn-circle-alt-white">
-        <i class="fas fa-times"></i>
-        <span class="sr-only" >Close</span>
-      </button>
-    </div>
-    <div class="col col-12 col-lg-4 bg-light p-3">
-      <button type="button" class="btn btn-circle btn-circle-alt-gray">
-        <i class="fas fa-times"></i>
-        <span class="sr-only" >Close</span>
-      </button>
-    </div>
-    <div class="col col-12 col-lg-4 bg-dark p-3">
-      <button type="button" class="btn btn-circle btn-circle-alt-black">
-        <i class="fas fa-times"></i>
-        <span class="sr-only" >Close</span>
-      </button>
-    </div>
-  </div>
-</div>
-`
-  )
-
   .add('Icon-only buttons - Color and sizes', () => `
 <div class="container-fluid">
   <div class="row">
@@ -102,7 +123,7 @@ storiesOf('Components/Buttons', module)
         <span class="sr-only" >Close</span>
       </button>
     </div>
-    
+
         <div class="col col-12 col-lg-4 bg-white p-3">
       <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-white">
         <i class="fas fa-times"></i>
@@ -151,7 +172,7 @@ storiesOf('Components/Buttons', module)
       <button type="button" class="btn btn-circle btn-circle-alt-white">
         <i class="fas fa-times"></i>
         <span class="sr-only" >Close</span>
-      </button>   
+      </button>
     </div>
     <div class="col col-12 col-lg-4 bg-light p-3">
       <button type="button" class="btn btn-circle btn-circle-x-large btn-circle-alt-gray">
@@ -179,7 +200,7 @@ storiesOf('Components/Buttons', module)
       <button type="button" class="btn btn-circle btn-circle-alt-gray">
         <i class="fas fa-times"></i>
         <span class="sr-only" >Close</span>
-      </button>   
+      </button>
     </div>
   </div>
 </div>

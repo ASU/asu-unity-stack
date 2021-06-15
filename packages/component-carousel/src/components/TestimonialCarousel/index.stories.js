@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 // @ts-check
-/** @jsx h */
 import {
   withKnobs,
   text,
@@ -7,7 +7,7 @@ import {
   object,
   select,
 } from "@storybook/addon-knobs";
-import { h } from "preact";
+import React from "react";
 
 import { TestimonialCarousel } from ".";
 
@@ -27,9 +27,9 @@ export default {
 
 const maxWidth = "500px";
 const itemColorCombinations = {
-  Gold: ["accent-gold", "with-image"],
-  Maroon: ["accent-maroon", "with-image"],
-  Gold_White_Text: ["text-white", "accent-gold", "with-image"],
+  Gold: ["accent-gold"],
+  Maroon: ["accent-maroon"],
+  Gold_White_Text: ["text-white", "accent-gold"],
   // eslint-disable-next-line quote-props
   None: null,
 };
@@ -49,8 +49,8 @@ const itemQuoteColorCombinations = {
 
 const backgroundColors = {
   White: "",
-  Gray: "p-6 bg-gray-2",
-  Black: "p-6 bg-gray-7",
+  Gray: "bg-gray-2",
+  Black: "bg-gray-7",
 };
 
 const GROUP_STYLE = "Styles";
@@ -58,18 +58,18 @@ const GROUP_STYLE = "Styles";
 /**
  *
  * @param {{ children: JSX.Element}} props
- * @returns { h.JSX.Element}
+ * @returns { JSX.Element}
  */
 const Wrapper = ({ children }) => (
   <div
-    className={select(
+    className={`p-6 ${select(
       "Background color",
       backgroundColors,
       backgroundColors.White,
       GROUP_STYLE
-    )}
+    )}`}
     style={{
-      width:"fit-content"
+      width: "fit-content",
     }}
   >
     {children}
@@ -80,13 +80,13 @@ export const TestimonialCarouselDefault = () => (
   <Wrapper>
     <TestimonialCarousel
       itemStyle={{
-        itemCssClass: select(
+        containerCssClass: select(
           "Item Color Combination",
           itemColorCombinations,
           itemColorCombinations.Gold,
           GROUP_STYLE
         ),
-        itemQuoteContentCssClass: select(
+        contentCssClass: select(
           "Quote Content Color Combination",
           itemQuoteColorCombinations,
           itemQuoteColorCombinations.None,
@@ -108,7 +108,7 @@ export const TestimonialCarouselDefault = () => (
 export const TestimonialCarouselWithNoImage = () => (
   <TestimonialCarousel
     itemStyle={{
-      itemCssClass: select(
+      containerCssClass: select(
         "Item Color Combination",
         itemColorCombinations,
         itemColorCombinations.Gold
@@ -128,7 +128,7 @@ export const TestimonialCarouselWithSlider = () => (
     hasPositionIndicators={boolean("Has Indicators", false)}
     testimonialItems={object("Testimonials", testimonialWithImage2)}
     itemStyle={{
-      itemCssClass: ["with-image", "accent-gold"],
+      containerCssClass: ["accent-gold"],
     }}
   />
 );
@@ -145,12 +145,12 @@ export const TestimonialCarouselWithSliderAndPositionIndicatorDots = () => (
 export const TestimonialCarouselWithNoCitation = () => (
   <TestimonialCarousel
     itemStyle={{
-      itemCssClass: select(
+      containerCssClass: select(
         "Item Color Combination",
         itemColorCombinations,
         itemColorCombinations.Gold
       ),
-      itemTitleCssClass: select(
+      titleCssClass: select(
         "Title Color Combination",
         itemTitleColorCombinations,
         itemTitleColorCombinations["Highlight gold"]

@@ -1,20 +1,8 @@
-ol.breadcrumb {
-  .breadcrumb-item {
-    a {
-      text-decoration: none;
+.breadcrumb {
+  padding-left: 0;
+  &.bg-gray-7 {
+    li.active {
+      color: $uds-color-base-gray-1;
     }
-    // Get spacing around the / dividers right.
-    //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-padding-left-px;
-    &:first-of-type {
-      //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-first-of-type-padding-left;
-      // Reset first item number from list component styles.
-      &:before {
-        content: '';
-      }
-    }
-  }
-  .breadcrumb-item + .breadcrumb-item:before {
-    //padding-left: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-left;
-    //padding-right: $uds-component-breadcrumb-ol-breadcrumb-breadcrumb-item-plus-breadcrumb-item-before-padding-right;
   }
 }

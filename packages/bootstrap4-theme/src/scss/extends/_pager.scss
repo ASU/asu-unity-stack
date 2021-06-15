@@ -31,18 +31,17 @@ a.page-link:visited {
   transition: 0.1s ease-out;
   font-size: 14px;
 }
-@include media-breakpoint-up(md) {
-  a.page-link {
-    font-size: 16px;
-  }
-}
 a.page-link:hover {
   color: $uds-component-pager-color;
   text-decoration: $uds-component-pager-hover-text-decoration;
 }
-span.page-link:hover {
-  background-color: inherit;
-  color: inherit;
+span.page-link {
+  padding-left: 0;
+  padding-right: 0;
+  &:hover {
+    background-color: inherit;
+    color: inherit;
+  }
 }
 .page-item:last-child .page-link {
   border-radius: $uds-component-pager-border-radius;
@@ -76,6 +75,18 @@ span.page-link:hover {
 }
 
 .pagination {
+  &.uds-bg-gray1 {
+    background-color: $uds-color-base-gray-1;
+
+    :not(.active) .page-link {
+      background-color: $uds-color-base-gray-1;
+      &:hover {
+        background-color: $uds-color-base-gray-4;
+        color: $uds-color-font-dark-base;
+      }
+    }
+  }
+
   &.uds-bg-gray {
     background-color: $uds-color-background-gray;
 
@@ -119,4 +130,16 @@ span.page-link:hover {
     }
   }
 }
-// @media screen and (max-width: $uds-breakpoint-sm) {
+@include media-breakpoint-up(md) {
+  a.page-link {
+    font-size: 16px;
+  }
+}
+@include media-breakpoint-down(md) {
+  .page-item {
+    margin: 0 0.2rem;
+  }
+  a.page-link {
+    font-size: 14px;
+  }
+}

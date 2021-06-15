@@ -26,6 +26,7 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
+    overflow-x: hidden;
 
     a {
       text-decoration: none;
@@ -62,6 +63,12 @@ const navListStyles = breakpoint => css`
           width: 0;
           margin-left: 0;
           top: 0.5rem;
+        }
+
+        &.nav-item-selected {
+          :after {
+            width: 100%;
+          }
         }
       }
 
@@ -116,6 +123,7 @@ const navListStyles = breakpoint => css`
         display: block;
         padding: 0.5rem 0.75rem;
         color: #191919;
+        white-space: nowrap;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -380,6 +388,13 @@ const dropControlsStyles = breakpoint => css`
 
     > a {
       color: #191919;
+    }
+
+    :hover,
+    &.nav-item-selected {
+      :after {
+        width: 100%;
+      }
     }
 
     > svg {

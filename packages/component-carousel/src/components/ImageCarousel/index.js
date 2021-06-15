@@ -1,6 +1,6 @@
 // @ts-check
-import { h } from "preact";
 import PropTypes from "prop-types";
+import React from "react";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
@@ -12,8 +12,9 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  * @typedef {{
  *  id: number
  *  imageSource: string
- *  altText:string
- *  content?: string | h.JSX.Element
+ *  imageAltText: string
+ *  title?: string
+ *  content?: string
  * }} ImageItem
  */
 
@@ -22,7 +23,7 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  * @param {ImageItem} props
  * @returns {CarouselItem}
  */
-const htmlTemplate = ({ id, imageSource, altText, content }) => ({
+const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
   id,
   item: (
     <div className="uds-img">
@@ -30,15 +31,20 @@ const htmlTemplate = ({ id, imageSource, altText, content }) => ({
         <img
           src={imageSource}
           className="uds-img figure-img img-fluid"
-          alt={altText}
+          alt={imageAltText}
         />
-        {content && (
+        {(title || content) && (
           <figcaption className="figure-caption uds-figure-caption">
-            {typeof content === "string" ? (
-              <span className="uds-caption-text">{content}</span>
-            ) : (
-              content
-            )}
+            <div className="uds-caption-text">
+              {!title ? (
+                <span>{content}</span>
+              ) : (
+                <>
+                  <h3>{title}</h3>
+                  <p>{content}</p>
+                </>
+              )}
+            </div>
           </figcaption>
         )}
       </figure>
@@ -49,8 +55,8 @@ const htmlTemplate = ({ id, imageSource, altText, content }) => ({
 /**
  *
  * @param {{
- *    perView: string | number
- *    imageItems: ImageItem []
+ *    perView: number
+ *    imageItems: ImageItem[]
  *    maxWidth?: string
  *    width?: string
  *    imageAutoSize?: boolean
@@ -79,7 +85,7 @@ const ImageCarousel = ({
 };
 
 ImageCarousel.propTypes = {
-  perView: PropTypes.string.isRequired,
+  perView: PropTypes.number.isRequired,
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   width: PropTypes.string,
   maxWidth: PropTypes.string,

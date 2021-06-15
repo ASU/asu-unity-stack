@@ -1,5 +1,4 @@
 // @ts-check
-/** @jsx h */
 
 /**
  * @typedef {import('.').TestimonialItem} TestimonialItem
@@ -14,7 +13,7 @@ const testimonialNoCitation = [
         "Laughter is timeless, imagination has no age, dreams are forever.",
     },
     imageSource: `https://placeimg.com/300/300/nature`,
-    altText: `Image of Walt Disney`,
+    imageAltText: `Image of Walt Disney`,
   },
   {
     id: 2,
@@ -24,7 +23,7 @@ const testimonialNoCitation = [
       because we’recurious and curiosity keeps leading us down new paths.`,
     },
     imageSource: `https://placeimg.com/300/300/nature`,
-    altText: `Image of Walt Disney`,
+    imageAltText: `Image of Walt Disney`,
   },
 ];
 
@@ -82,7 +81,7 @@ const testimonialWithImage = [
       },
     },
     imageSource: `https://placeimg.com/400/400/tech`,
-    altText: `Pretend this is Han Solo`,
+    imageAltText: `Pretend this is Han Solo`,
   },
   {
     id: 2,
@@ -93,7 +92,7 @@ const testimonialWithImage = [
       },
     },
     imageSource: `https://placeimg.com/400/400/arch`,
-    altText: `Pretend this is Han Solo`,
+    imageAltText: `Pretend this is Han Solo`,
   },
 ];
 
@@ -131,7 +130,7 @@ const testimonialWithImage2 = [
       },
     },
     imageSource: `https://placeimg.com/400/400/any`,
-    altText: `Pretend this is Michael M. Crow, President of ASU`,
+    imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
   {
     id: 2,
@@ -143,7 +142,7 @@ const testimonialWithImage2 = [
       },
     },
     imageSource: `https://placeimg.com/300/300/any`,
-    altText: `Pretend this is Michael M. Crow, President of ASU`,
+    imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
 ];
 

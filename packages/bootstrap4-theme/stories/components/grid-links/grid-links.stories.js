@@ -1,177 +1,106 @@
 export default { title: 'Components/Grid Links' };
 
-export const GridLinksOnWhiteBackground = () => `
+export const BackgroundWhite = () => `
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-8">
+    <div class="col-md-12 mb-4">
+      <h3><span class="highlight-gold">Two columns.</span></h3>
+    </div>
+    <div class="col-md-12">
 
-      <div class="uds-grid-links">
-        <div>
-          <i class="fa fa-university uds-grid-links-icon"></i>
-          <a href="#">First-year student</a>
-        </div>
-        <div>
-          <i class="fa fa-desktop uds-grid-links-icon"></i>
-          <a href="#">Online student</a>
-        </div>
-        <div>
-          <i class="fa fa-lightbulb uds-grid-links-icon"></i>
-          <a href="#">Transfer student</a>
-        </div>
-        <div>
-          <i class="fa fa-user-graduate uds-grid-links-icon"></i>
-          <a href="#">Veteran student</a>
-        </div>
-        <div>
-          <i class="fa fa-graduation-cap uds-grid-links-icon"></i>
-          <a href="#">Graduate student</a>
-        </div>
-        <div>
-          <i class="fa fa-rocket uds-grid-links-icon"></i>
-          <a href="#">Universal Learner</a>
-        </div>
-        <div>
-          <i class="fa fa-globe-americas uds-grid-links-icon"></i>
-          <a href="#">International student</a>
-        </div>
-        <div>
-          <i class="fa fa-users uds-grid-links-icon"></i>
-          <a href="#">Non-degree student</a>
-        </div>
+      <div class="uds-grid-links two-columns">
+        <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
+        <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
+        <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>
+        <a href="#"><span class="fa fa-fw fa-user-graduate"></span>Veteran student</a>
+        <a href="#"><span class="fa fa-fw fa-graduation-cap"></span>Graduate student</a>
+        <a href="#"><span class="fa fa-fw fa-rocket"></span>Universal Learner</a>
+        <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
+        <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
       </div>
+
     </div>
   </div>
 </div>
 `;
 
-export const GridLinksOnLightGrayBackground = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-8">
+export const BackgroundGray1 = () => `
+<section class="bg-gray-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-4">
+        <h3><span class="highlight-gold">Three columns.</span></h3>
+      </div>
 
-      <div class="uds-grid-links uds-grid-links-light">
-        <div>
-          <i class="fa fa-university uds-grid-links-icon"></i>
-          <a href="#">First-year student</a>
+      <div class="col-md-12">
+
+        <div class="uds-grid-links three-columns">
+          <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
+          <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
+          <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>
+          <a href="#"><span class="fa fa-fw fa-user-graduate"></span>Veteran student</a>
+          <a href="#"><span class="fa fa-fw fa-graduation-cap"></span>Graduate student</a>
+          <a href="#"><span class="fa fa-fw fa-rocket"></span>Universal Learner</a>
+          <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
+          <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
         </div>
-        <div>
-          <i class="fa fa-desktop uds-grid-links-icon"></i>
-          <a href="#">Online student</a>
-        </div>
-        <div>
-          <i class="fa fa-lightbulb uds-grid-links-icon"></i>
-          <a href="#">Transfer student</a>
-        </div>
-        <div>
-          <i class="fa fa-user-graduate uds-grid-links-icon"></i>
-          <a href="#">Veteran student</a>
-        </div>
-        <div>
-          <i class="fa fa-graduation-cap uds-grid-links-icon"></i>
-          <a href="#">Graduate student</a>
-        </div>
-        <div>
-          <i class="fa fa-rocket uds-grid-links-icon"></i>
-          <a href="#">Universal Learner</a>
-        </div>
-        <div>
-          <i class="fa fa-globe-americas uds-grid-links-icon"></i>
-          <a href="#">International student</a>
-        </div>
-        <div>
-          <i class="fa fa-users uds-grid-links-icon"></i>
-          <a href="#">Non-degree student</a>
-        </div>
+
       </div>
     </div>
   </div>
-</div>
+</section>
 `;
 
-export const GoldGridLinksOnDarkBackground = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-8">
+export const GoldText = () => `
+<section class="bg-gray-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-4">
+        <h3 class="text-white">Three columns.</h3>
+      </div>
 
-      <div class="uds-grid-links uds-grid-links-dark gold">
-        <div>
-          <i class="fa fa-university uds-grid-links-icon"></i>
+      <div class="col-md-12">
+
+        <div class="uds-grid-links three-columns text-gold">
           <a href="#">First-year student</a>
-        </div>
-        <div>
-          <i class="fa fa-desktop uds-grid-links-icon"></i>
           <a href="#">Online student</a>
-        </div>
-        <div>
-          <i class="fa fa-lightbulb uds-grid-links-icon"></i>
           <a href="#">Transfer student</a>
-        </div>
-        <div>
-          <i class="fa fa-user-graduate uds-grid-links-icon"></i>
           <a href="#">Veteran student</a>
-        </div>
-        <div>
-          <i class="fa fa-graduation-cap uds-grid-links-icon"></i>
           <a href="#">Graduate student</a>
-        </div>
-        <div>
-          <i class="fa fa-rocket uds-grid-links-icon"></i>
           <a href="#">Universal Learner</a>
-        </div>
-        <div>
-          <i class="fa fa-globe-americas uds-grid-links-icon"></i>
           <a href="#">International student</a>
-        </div>
-        <div>
-          <i class="fa fa-users uds-grid-links-icon"></i>
           <a href="#">Non-degree student</a>
         </div>
+
       </div>
     </div>
   </div>
-</div>
+</section>
 `;
 
-export const GridLinksOnDarkBackground = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-8">
+export const WhiteText = () => `
+<section class="bg-gray-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-4">
+        <h3 class="text-white">Four columns.</h3>
+      </div>
 
-      <div class="uds-grid-links uds-grid-links-dark">
-        <div>
-          <i class="fa fa-university uds-grid-links-icon"></i>
-          <a href="#">First-year student</a>
+      <div class="col-md-12">
+
+        <div class="uds-grid-links four-columns text-white">
+          <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
+          <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
+          <a href="#"><span class="fa fa-fw fa-lightbulb"></span>Transfer student</a>
+          <a href="#"><span class="fa fa-fw fa-user-graduate"></span>Veteran student</a>
+          <a href="#"><span class="fa fa-fw fa-graduation-cap"></span>Graduate student</a>
+          <a href="#"><span class="fa fa-fw fa-rocket"></span>Universal Learner</a>
+          <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
+          <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
         </div>
-        <div>
-          <i class="fa fa-desktop uds-grid-links-icon"></i>
-          <a href="#">Online student</a>
-        </div>
-        <div>
-          <i class="fa fa-lightbulb uds-grid-links-icon"></i>
-          <a href="#">Transfer student</a>
-        </div>
-        <div>
-          <i class="fa fa-user-graduate uds-grid-links-icon"></i>
-          <a href="#">Veteran student</a>
-        </div>
-        <div>
-          <i class="fa fa-graduation-cap uds-grid-links-icon"></i>
-          <a href="#">Graduate student</a>
-        </div>
-        <div>
-          <i class="fa fa-rocket uds-grid-links-icon"></i>
-          <a href="#">Universal Learner</a>
-        </div>
-        <div>
-          <i class="fa fa-globe-americas uds-grid-links-icon"></i>
-          <a href="#">International student</a>
-        </div>
-        <div>
-          <i class="fa fa-users uds-grid-links-icon"></i>
-          <a href="#">Non-degree student</a>
-        </div>
+
       </div>
     </div>
   </div>
-</div>
+</section>
 `;

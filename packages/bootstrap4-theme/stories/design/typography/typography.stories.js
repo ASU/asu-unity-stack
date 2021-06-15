@@ -18,7 +18,7 @@ export const bodyCopyWhite = () => `
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="uds-light-bg-link">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
+      <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
     </div>
   </div>
 </div>
@@ -28,7 +28,7 @@ export const bodyCopyGray1 = () => `
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="uds-light-bg-link">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
+      <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
     </div>
   </div>
 </div>
@@ -38,17 +38,17 @@ export const bodyCopyGray2 = () => `
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="uds-light-bg-link">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
+      <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
     </div>
   </div>
 </div>
 `;
 
 export const bodyCopyGray7 = () => `
-<div class="container bg-gray-7 text-gray-1">
+<div class="container bg-gray-7 text-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="uds-dark-bg-link">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
+      <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. <a href="www.example.com" class="text-gold">Nullam sit amet ligula ullamcorper</a>, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac pretium lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem. Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur arcu. Nullam sit amet ligula ullamcorper, consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere vitae quam a, consectetur elementum nibh. In hac habitasse platea dictumst. Morbi elementum ornare elementum. Donec eget vehicula tortor, ac consectetur orci. Ut non finibus mi. Maecenas et sagittis ex. Ut pulvinar sed augue vitae dictum. Aenean pellentesque a felis sit amet dapibus.</p>
     </div>
   </div>
 </div>
@@ -259,16 +259,6 @@ export const InlineTextElements = () => `
 </div>
 `;
 
-export const Blockquotes = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 p-3">
-      <blockquote class="blockquote">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      </blockquote>
-    </div>
-  </div>
-`;
 /*
 export const InternalNotes = () => `
 <div class="container">
@@ -284,3 +274,40 @@ export const InternalNotes = () => `
 </div>
 `;
 */
+
+// export const ASUHeadings = () => `
+// <div class="container bg-white">
+//   <div class="row">
+//     <div class="col col-sm-12 p-3">
+//       <h1>Heading 1</h1>
+//       <p>Paragraph 1</p>
+
+//       <h2>Heading 2</h2>
+//       <p>Paragraph 2</p>
+
+//       <h3>Heading 3</h3>
+//       <p>Paragraph 3</p>
+
+//       <h4>Heading 4</h4>
+//       <p>Paragraph 4</p>
+
+//       <h5>Heading 5</h5>
+//       <p>Paragraph 5</p>
+
+//       <h6>Heading 6</h6>
+//       <p>Paragraph 6</p>
+
+//       <h4>This heading will not have additional spacing<h4>
+//       <h5>This heading will also not have additional spacing<h5>
+//     </div>
+//   </div>
+
+//   <h1>Another heading 1</h1>
+//   <p>Another paragraph</p>
+
+//   <h2>Another heading 2</h2>
+//   <p>Another paragraph</p>
+
+//   <h3>This heading should not have additional space</h3>
+// </div>
+// `;
