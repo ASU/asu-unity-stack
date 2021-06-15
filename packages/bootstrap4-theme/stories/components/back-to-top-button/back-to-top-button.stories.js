@@ -1,3 +1,12 @@
+/*
+Note: This component has been temporarily removed because there
+are concerns that it's not possible to make it accessible.
+You can see details of that decision here:
+
+https://asudev.jira.com/browse/UDS-646
+*/
+
+/*
 import './back-to-top-button';
 
 export default { title: 'Components/Back To Top Button' };
@@ -10,3 +19,4 @@ export const Default = () => `
   </button>
 </div>
 `;
+*/
