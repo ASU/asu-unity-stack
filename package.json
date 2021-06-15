@@ -20,7 +20,7 @@
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
     "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha --ci",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "commit": "cz"
   },
   "jest": {
