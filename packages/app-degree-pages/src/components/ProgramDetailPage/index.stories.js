@@ -57,6 +57,8 @@ DefaultPage.args = {
     `concurrentDegreeMajorMaps,concurrentDegrees,` +
     // career opportunity
     `AsuCareerOpp,` +
+    // program contact
+    `EmailAddr,Phone,CollegeDescr100,` +
     // other
     `planCatDescr&init=false`,
   introContent: {

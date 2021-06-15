@@ -31,6 +31,7 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeDesc: () => row["CollegeDescr100"],
     getCollegeUrl: () => row["CollegeUrl"],
     getEmailAddress: () => row["EmailAddr"],
+    getPhone: () => row["Phone"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
