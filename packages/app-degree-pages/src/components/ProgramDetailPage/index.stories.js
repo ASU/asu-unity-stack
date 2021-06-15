@@ -59,6 +59,9 @@ DefaultPage.args = {
     `AsuCareerOpp,` +
     // program contact
     `EmailAddr,Phone,CollegeDescr100,` +
+    // application requirement
+    `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
+    `AdmissionsDegRequirements,` +
     // other
     `planCatDescr&init=false`,
   introContent: {
