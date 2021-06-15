@@ -28,6 +28,7 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
       <Select
+        inputId={id}
         options={options}
         name={name}
         value={
