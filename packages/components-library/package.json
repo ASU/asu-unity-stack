@@ -20,8 +20,8 @@
     "build": "webpack --progress && yarn prerender",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "start-storybook -p 8089 -s ./dist",
-    "build-storybook": "build-storybook -s ./dist",
+    "storybook": "start-storybook -p 8089 -s ./public",
+    "build-storybook": "build-storybook -c .storybook -s public -o export",
     "prerender": "node scripts/prerender-templates.js"
   },
   "devDependencies": {
