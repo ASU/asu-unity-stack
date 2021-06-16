@@ -54,6 +54,22 @@ $image-assets-path: '/img' !default;
 @import '../../node_modules/bootstrap/scss/variables';
 @import '../../node_modules/bootstrap/scss/mixins';
 
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    25: 25%,
+    30: 30%,
+    50: 50%,
+    70: 70%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
+
 // To remove values from Bootstrap maps, these must occur between Required and Optional imports.
 
 // clean the vanilla colors from 'colors' map
