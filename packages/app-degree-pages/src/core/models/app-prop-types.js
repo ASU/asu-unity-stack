@@ -53,6 +53,14 @@ const glanceItemPropType = PropTypes.shape({
   url: PropTypes.string,
 });
 
+const exampleCareersTableDataPropTypes = PropTypes.shape({
+  career: linkPropType,
+  growth: PropTypes.number,
+  medianSalary: PropTypes.number,
+  brightOutlook: PropTypes.bool,
+  greenOccupation: PropTypes.bool,
+});
+
 export {
   linkPropType,
   videoPropType,
@@ -62,4 +70,5 @@ export {
   contentPropTypes,
   dataSourcePropType,
   glanceItemPropType,
+  exampleCareersTableDataPropTypes,
 };

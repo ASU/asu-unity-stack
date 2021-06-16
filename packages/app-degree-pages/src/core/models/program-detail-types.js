@@ -80,14 +80,7 @@
 
 /**
  *  @typedef {{
- *    contents: import("./shared-types").ContentItem[]
- *    careerTable: {
- *      career: import("./shared-types").LinkItem
- *      growth: number // percentage
- *      medianSalary: number // percentage
- *    }[]
- *    BrightOutlook: import("./shared-types").LinkItem
- *    greenOccupation:  import("./shared-types").LinkItem
+ *    tableData: import("./shared-types").TableProps[]
  * }} ExampleCareersProps
  */
 

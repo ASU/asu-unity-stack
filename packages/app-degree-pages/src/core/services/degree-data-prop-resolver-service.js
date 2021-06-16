@@ -1,5 +1,7 @@
 // @ts-check
 
+import { formatCareerData } from "../utils";
+
 const mathintensity = {
   G: "General",
   M: "Moderate",
@@ -24,6 +26,7 @@ function degreeDataPropResolverService(row = {}) {
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
+    getCareerData: () => formatCareerData(row["careerData"]),
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],

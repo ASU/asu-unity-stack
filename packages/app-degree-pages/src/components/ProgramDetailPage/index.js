@@ -161,8 +161,9 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
                 image={careerOutlook.image}
                 contents={[{ text: resolver.getAsuCareerOpportunity() }]}
               />
-
-              <ExampleCareers />
+              {resolver.getCareerData()?.length && (
+                <ExampleCareers tableData={resolver.getCareerData()} />
+              )}
 
               <CustomizeYourCollegeExperience />
 

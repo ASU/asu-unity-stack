@@ -68,6 +68,16 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
+ * @typedef {{
+ *  career: import("./shared-types").LinkItem
+ *  growth: number
+ *  medianSalary: string
+ *  brightOutlook: boolean
+ *  greenOccupation: boolean
+ * }} TableProps
+ */
+
+/**
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */

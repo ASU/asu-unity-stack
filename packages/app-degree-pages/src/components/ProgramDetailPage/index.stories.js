@@ -50,8 +50,7 @@ DefaultPage.args = {
     `CollegeDescr100,` +
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
     // Example Careers
-    "careerDataAlterOnetTitle,careerDataBrightOutlook,careerDataGreen," +
-    "careerDataGrowth,careerDataOnetTitle,careerDataSalary," +
+    "careerData," +
     // flexible degree options
     `accelerateDegrees,accelerateDegreeMajorMaps,` +
     `concurrentDegreeMajorMaps,concurrentDegrees,` +
