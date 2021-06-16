@@ -48,6 +48,9 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
                 setFieldValue("Country", phoneCountryCode);
                 setFieldValue("CitizenshipCountry", phoneCountryCode);
               }}
+              inputClass="rfi-phone-input"
+              buttonClass="rfi-phone-input-button"
+              dropdownClass="rfi-phone-input-dropdown"
             />
             <RfiError isError={isError} metaError={meta.error} />
           </div>

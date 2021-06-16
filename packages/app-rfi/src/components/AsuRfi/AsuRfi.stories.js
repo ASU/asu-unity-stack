@@ -41,7 +41,7 @@ RfiDefault.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces - use full name.
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -57,7 +57,7 @@ RfiOnCollegePage.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -73,7 +73,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -92,7 +92,7 @@ RfiOnDegreePageUndergraduate.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -108,7 +108,7 @@ RfiOnDegreePageGraduate.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -124,7 +124,7 @@ RfiOnCollegeDepartmentPage.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -140,7 +140,7 @@ RfiOnNonAcademicUnitPage.args = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -172,7 +172,7 @@ RfiOnCampaignLandingPage.args = {
   IsCertMinor: false,
   Country: "US",
   StateProvince: "New Mexico", // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 
@@ -188,7 +188,7 @@ RfiTestMode.args = {
   IsCertMinor: false,
   Country: "US",
   StateProvince: "California", // Only US states or CA provinces
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: true,
 };
 

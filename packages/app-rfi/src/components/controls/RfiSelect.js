@@ -21,6 +21,17 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
+  const style = {
+    control: (base, state) => ({
+      ...base,
+      border: state.isFocused
+        ? "2px solid #191919 !important"
+        : "1px solid #747474 !important",
+      borderRadius: 0,
+      boxShadow: state.isFocused ? 0 : 0,
+    }),
+  };
+
   // NOTE: We implement custom validation related to RfiSelect in
   // RfiStepper.js in order to manage dependency logic across steps.
 
@@ -29,6 +40,8 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
       <Select
         inputId={id}
+        styles={style}
+        className="rfi-input-select"
         options={options}
         name={name}
         value={
