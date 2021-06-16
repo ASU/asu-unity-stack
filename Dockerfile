@@ -17,6 +17,7 @@ RUN echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN yarn install
 RUN yarn build
 RUN yarn build-storybook
+RUN yarn gulp
 
 EXPOSE 3000
 CMD [ "node", "server/server.js" ]
