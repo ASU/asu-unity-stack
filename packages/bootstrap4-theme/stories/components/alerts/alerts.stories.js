@@ -63,25 +63,10 @@ storiesOf('Components/Alerts', module)
     </div>
   </div>
 
-  <p>Note: On the actual page, you will need to use an ARIA live
-  region to accept any changes:
-  <code>&lt;div id="example" role="alert"&gt;&lt;/div&gt;</code>
-  See the example for <a href="https://www.w3.org/TR/wai-aria-practices/#alert">
-  https://www.w3.org/TR/wai-aria-practices/#alert</a></p>
-  <p>By the way, you can manipulate the way an alert is announced by screen
-  readers by explicitly declaring values for the alert’s
-  <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-live">aria-live</a> and
-  <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-atomic">aria-atomic</a>
-  properties.</p>
-  <p>
-  Note: The aria-live attribute can have these values: off, polite, or aggressive.
-  Putting an aria-live attribute on an element tells AT to "hang out and watch" this container and announce any changes that may occur.
-  An alert role is added to a page when you want to set off an alert event.
-  (In this sense, the functionality of an alert role is equivalent to using aria-live=assertive and aria-atomic=true.)
-  You don't add the alert role to an element (or make such an element visible) until you want "the user agent to fire off
-  an accessible alert event using the operating system's accessibility API" (for instance, when there's a form error message).
-  </p>
-`)
+  <p>Note: On the actual page, you will need to provide a container with 
+  <code>role="alert"</code> to accept any changes. See the example for 
+  <a href="https://www.w3.org/TR/wai-aria-practices/#alert">
+  https://www.w3.org/TR/wai-aria-practices/#alert</a></p>`)
 
   /*
   .add('Alerts, all Bootstrap and extras', () => `
