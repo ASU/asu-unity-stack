@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType, imagePropType } from "../../core/models";
+import { cardPropTypes } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -61,7 +62,12 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
+const ProgramDetailPage = ({
+  dataSource,
+  introContent,
+  careerOutlook,
+  affordingCollege,
+}) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -153,7 +159,7 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
             <div className="row pl-3">
               <NextSteps />
 
-              <AffordingCollege />
+              <AffordingCollege cards={affordingCollege.cards} />
 
               <FlexibleDegreeOptions />
 
@@ -188,6 +194,9 @@ ProgramDetailPage.propTypes = {
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
+  affordingCollege: PropTypes.shape({
+    cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  }),
 };
 
 export { ProgramDetailPage };

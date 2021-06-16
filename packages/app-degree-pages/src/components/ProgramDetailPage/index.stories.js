@@ -21,12 +21,19 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  affordingCollege,
+}) => (
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
     careerOutlook={careerOutlook}
+    affordingCollege={affordingCollege}
   />
 );
 
@@ -127,5 +134,42 @@ DefaultPage.args = {
       url: "https://source.unsplash.com/random/1200x750",
       alt: "Random image. REPLACE with appropriate alt text for accessibility.",
     },
+  },
+  affordingCollege: {
+    cards: [
+      {
+        icon: "calculator",
+        title: "Tuition calculator",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Estimate tuition and fees",
+          ariaLabel: "Estimate tuition and fees",
+          color: "maroon",
+          href: "#",
+        },
+      },
+      {
+        icon: "award",
+        title: "Scholarships",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Find scholarships",
+          ariaLabel: "Find scholarships",
+          color: "maroon",
+          href: "#",
+        },
+      },
+      {
+        icon: "hand-holding-usd",
+        title: "Finanacial aid",
+        content: "Content of the card",
+        buttonLink: {
+          label: "Find financial aid",
+          ariaLabel: "Find financial aid",
+          color: "maroon",
+          href: "#",
+        },
+      },
+    ],
   },
 };
