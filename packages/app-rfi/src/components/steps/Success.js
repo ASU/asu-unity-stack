@@ -2,12 +2,15 @@
 // @ts-check
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
-function createMarkup(output) {
-  return { __html: output };
-}
+const sanitizeDangerousMarkup = content => {
+  const sanitizer = dompurify.sanitize;
+
+  return { __html: sanitizer(content) };
+};
 
 // Component
 
@@ -22,7 +25,7 @@ const Success = ({ SuccessMsg }) => {
       />
       <div className="rfi-submitted-sub-icon">Submitted</div>
       <h3>Thanks for your request!</h3>
-      <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
+      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(SuccessMsg)} />
     </div>
   );
 };

@@ -6,15 +6,18 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import dompurify from "dompurify";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
-function createMarkup(output) {
-  return { __html: output };
-}
+const sanitizeDangerousMarkup = content => {
+  const sanitizer = dompurify.sanitize;
+
+  return { __html: sanitizer(content) };
+};
 
 class RfiStepper extends React.Component {
   constructor(props) {
@@ -167,7 +170,7 @@ class RfiStepper extends React.Component {
         <div className="uds-rfi-form-wrapper rfi-cert-minor">
           <h2>Request information</h2>
           {certEmailAddr && emailRender}
-          <div dangerouslySetInnerHTML={createMarkup(SuccessMsg)} />
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(SuccessMsg)} />
         </div>
       );
     }
