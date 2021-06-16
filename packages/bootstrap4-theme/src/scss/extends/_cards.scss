@@ -642,6 +642,11 @@ Cards - Table of Contents
   .card.card-foldable {
     border-bottom: 1px solid $uds-color-base-gray-3;
   }
+  .card-header .card-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
 }
 
 /*------------------------------------------------------------------
