@@ -20,6 +20,11 @@
   font-weight: 700;
 }
 
+form.uds-form.uds-rfi p.rfi-step1-intro {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 /* We're not using html5 :valid and :invalid pseudo classes so we need
    to tweak .invalid-feedback */
 form.uds-form.uds-rfi .invalid-feedback {
@@ -86,6 +91,7 @@ form.uds-form.uds-rfi .rfi-required-footnote svg {
 }
 .uds-rfi-form-wrapper .rfi-steps {
   font-size: 14px;
+  font-weight: 700;
 }
 .uds-rfi-form-wrapper .rfi-consent {
   margin-bottom: 0.5rem;

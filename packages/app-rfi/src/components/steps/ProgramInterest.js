@@ -377,7 +377,7 @@ const ProgramInterest = props => {
 
   return (
     <>
-      <p>
+      <p className="rfi-step1-intro">
         To learn more about ASU or a specific program, fill out the form below
         then check your email.
       </p>
