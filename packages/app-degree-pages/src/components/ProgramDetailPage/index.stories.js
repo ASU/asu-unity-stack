@@ -21,12 +21,19 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  applicationRequirements,
+}) => (
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
     careerOutlook={careerOutlook}
+    applicationRequirements={applicationRequirements}
   />
 );
 
@@ -163,22 +170,6 @@ DefaultPage.args = {
         href: "#",
         label: "Readmission",
         size: "small",
-      },
-    ],
-    accordionCards: [
-      {
-        content: {
-          header: "Aditional Requirements",
-          body:
-            "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
-        },
-      },
-      {
-        content: {
-          header: "Transfer Admission Requirements",
-          body:
-            "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
-        },
       },
     ],
   },

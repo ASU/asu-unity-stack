@@ -20,14 +20,14 @@ import {
  * @returns {JSX.Element}
  */
 
-export const ApplicationRequirements = ({
+function ApplicationRequirements({
   sectionHeader,
   contentText,
   buttons,
   accordionCards,
-}) => {
+}) {
   return (
-    <section>
+    <section className="pt-6 pb-6">
       <h2>
         <span className="highlight-gold">{sectionHeader}</span>
       </h2>
@@ -54,7 +54,7 @@ export const ApplicationRequirements = ({
       </div>
     </section>
   );
-};
+}
 
 ApplicationRequirements.propTypes = {
   sectionHeader: PropTypes.string.isRequired,
@@ -65,3 +65,5 @@ ApplicationRequirements.propTypes = {
   buttons: PropTypes.arrayOf(buttonPropTypes),
   accordionCards: PropTypes.arrayOf(accordionCardPropTypes).isRequired,
 };
+
+export { ApplicationRequirements };

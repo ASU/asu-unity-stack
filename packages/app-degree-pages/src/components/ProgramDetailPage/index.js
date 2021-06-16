@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType, imagePropType } from "../../core/models";
+import { buttonPropTypes } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -61,7 +62,12 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
+const ProgramDetailPage = ({
+  dataSource,
+  introContent,
+  careerOutlook,
+  applicationRequirements,
+}) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -127,42 +133,9 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
                 />
 
                 <ApplicationRequirements
-                  sectionHeader="Application requirements"
-                  contentText={{
-                    title: "General university admission requirements",
-                    description:
-                      "All students are required to meet general university admission requirements",
-                  }}
-                  buttons={[
-                    {
-                      ariaLabel: "Freshman",
-                      color: "maroon",
-                      href: "#",
-                      label: "Freshman",
-                      size: "small",
-                    },
-                    {
-                      ariaLabel: "Transfer",
-                      color: "maroon",
-                      href: "#",
-                      label: "Transfer",
-                      size: "small",
-                    },
-                    {
-                      ariaLabel: "International",
-                      color: "maroon",
-                      href: "#",
-                      label: "International",
-                      size: "small",
-                    },
-                    {
-                      ariaLabel: "Readmission",
-                      color: "maroon",
-                      href: "#",
-                      label: "Readmission",
-                      size: "small",
-                    },
-                  ]}
+                  sectionHeader={applicationRequirements.sectionHeader}
+                  contentText={applicationRequirements.contentText}
+                  buttons={applicationRequirements.buttons}
                   accordionCards={[
                     {
                       content: {
@@ -240,6 +213,14 @@ ProgramDetailPage.propTypes = {
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
+  applicationRequirements: PropTypes.shape({
+    sectionHeader: PropTypes.string.isRequired,
+    contentText: PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+    }).isRequired,
+    buttons: PropTypes.arrayOf(buttonPropTypes),
+  }),
 };
 
 export { ProgramDetailPage };
