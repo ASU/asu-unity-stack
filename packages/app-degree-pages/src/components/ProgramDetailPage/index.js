@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType, imagePropType } from "../../core/models";
+import { cardPropTypes } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -61,7 +62,12 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
+const ProgramDetailPage = ({
+  dataSource,
+  introContent,
+  careerOutlook,
+  nextSteps,
+}) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -151,43 +157,7 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
             </div>
 
             <div className="row pl-3">
-              <NextSteps
-                cards={[
-                  {
-                    icon: "info-circle",
-                    title: "Lear more about our programs",
-                    content: "Content of the card",
-                    buttonLink: {
-                      label: "Request information",
-                      ariaLabel: "Request information",
-                      color: "maroon",
-                      href: "#",
-                    },
-                  },
-                  {
-                    icon: "file-alt",
-                    title: "Apply to program",
-                    content: "Content of the card",
-                    buttonLink: {
-                      label: "Apply now",
-                      ariaLabel: "Apply now",
-                      color: "maroon",
-                      href: "#",
-                    },
-                  },
-                  {
-                    icon: "map-marker-alt",
-                    title: "Visit our campus",
-                    content: "Content of the card",
-                    buttonLink: {
-                      label: "Schedule a visit",
-                      ariaLabel: "Schedule a visit",
-                      color: "maroon",
-                      href: "#",
-                    },
-                  },
-                ]}
-              />
+              <NextSteps cards={nextSteps.cards} />
 
               <AffordingCollege />
 
@@ -224,6 +194,9 @@ ProgramDetailPage.propTypes = {
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
+  nextSteps: PropTypes.shape({
+    cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  }),
 };
 
 export { ProgramDetailPage };

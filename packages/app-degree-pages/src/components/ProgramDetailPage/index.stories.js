@@ -21,12 +21,19 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  nextSteps,
+}) => (
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
     careerOutlook={careerOutlook}
+    nextSteps={nextSteps}
   />
 );
 

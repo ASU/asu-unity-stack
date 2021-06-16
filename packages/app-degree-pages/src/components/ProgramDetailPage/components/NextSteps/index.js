@@ -1,5 +1,5 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core/src/components";
+import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -16,7 +16,7 @@ import { cardPropTypes } from "../../../../core/models/app-prop-types";
  */
 function NextSteps({ cards }) {
   return (
-    <section className="container">
+    <section className="container pt-6 pb-6">
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 mb-4 row">
         {cards?.map(card => (
