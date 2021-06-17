@@ -31,11 +31,7 @@ const RfiMainForm = ({
         <div className="col col-12 ">
           <div className="uds-image-text-block-container">
             <div className="uds-image-text-block-image-container">
-              <img
-                src={RfiImage}
-                className="img-fluid"
-                alt="Random. REPLACE with appropriate alt text for accessibility."
-              />
+              <img src={RfiImage} className="img-fluid" alt="" />
             </div>
             <div className="uds-image-text-block-text-container">
               <RfiStepper
