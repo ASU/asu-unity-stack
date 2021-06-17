@@ -35,12 +35,6 @@
 
 /**
  * @typedef {{
- *  sectionHeader: string
- *  contentText: {
- *    title: string
- *    description: string
- *  }
- *  buttons: import("./shared-types").Button []
  *  accordionCards: import("./shared-types").AccordionCard []
  * }} ApplicationRequirementsProps
  */

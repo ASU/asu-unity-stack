@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { dataSourcePropType, imagePropType } from "../../core/models";
-import { buttonPropTypes } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -62,12 +61,7 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({
-  dataSource,
-  introContent,
-  careerOutlook,
-  applicationRequirements,
-}) => {
+const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -133,9 +127,6 @@ const ProgramDetailPage = ({
                 />
 
                 <ApplicationRequirements
-                  sectionHeader={applicationRequirements.sectionHeader}
-                  contentText={applicationRequirements.contentText}
-                  buttons={applicationRequirements.buttons}
                   accordionCards={[
                     {
                       content: {
@@ -213,14 +204,6 @@ ProgramDetailPage.propTypes = {
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
-  applicationRequirements: PropTypes.shape({
-    sectionHeader: PropTypes.string.isRequired,
-    contentText: PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-    }).isRequired,
-    buttons: PropTypes.arrayOf(buttonPropTypes),
-  }),
 };
 
 export { ProgramDetailPage };

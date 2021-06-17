@@ -21,19 +21,12 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({
-  dataSource,
-  introContent,
-  atAGlance,
-  careerOutlook,
-  applicationRequirements,
-}) => (
+const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
     careerOutlook={careerOutlook}
-    applicationRequirements={applicationRequirements}
   />
 );
 
@@ -134,43 +127,5 @@ DefaultPage.args = {
       url: "https://source.unsplash.com/random/1200x750",
       alt: "Random image. REPLACE with appropriate alt text for accessibility.",
     },
-  },
-  applicationRequirements: {
-    sectionHeader: "Application requirements",
-    contentText: {
-      title: "General university admission requirements",
-      description:
-        "All students are required to meet general university admission requirements",
-    },
-    buttons: [
-      {
-        ariaLabel: "Freshman",
-        color: "maroon",
-        href: "#",
-        label: "Freshman",
-        size: "small",
-      },
-      {
-        ariaLabel: "Transfer",
-        color: "maroon",
-        href: "#",
-        label: "Transfer",
-        size: "small",
-      },
-      {
-        ariaLabel: "International",
-        color: "maroon",
-        href: "#",
-        label: "International",
-        size: "small",
-      },
-      {
-        ariaLabel: "Readmission",
-        color: "maroon",
-        href: "#",
-        label: "Readmission",
-        size: "small",
-      },
-    ],
   },
 };
