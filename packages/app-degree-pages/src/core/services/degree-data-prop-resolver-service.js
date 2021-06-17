@@ -4,6 +4,7 @@ const mathintensity = {
   G: "General",
   M: "Moderate",
   S: "Substantial",
+  undefined: "",
 };
 
 /**
@@ -55,6 +56,7 @@ function degreeDataPropResolverService(row = {}) {
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
+    getGlobalExp: () => row["globalExp"],
   };
 }
 

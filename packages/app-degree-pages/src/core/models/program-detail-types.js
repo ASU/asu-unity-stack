@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /**
  * @typedef {{
- *    contents: import("./shared-types").ContentItem[]
+ *    contents?: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
  *    image?: import("./shared-types").ImageItem
  *    breadcrumbs: import("./shared-types").LinkItem []
@@ -72,10 +72,7 @@
  */
 
 /**
- *  @typedef {{
- *    contents: import("./shared-types").ContentItem[]
- *    image: import("./shared-types").ImageItem
- * }} CareerOutlookProps
+ *  @typedef {import("./shared-types").OverlapContentImage} CareerOutlookProps
  */
 
 /**
@@ -100,16 +97,7 @@
  */
 
 /**
- *  @typedef {{
- *   globalExperience: {
- *      contents: import("./shared-types").SectionContentItem[]
- *      learnMoreLink: import("./shared-types").LinkItem
- *   }
- *   plusAlliance:{
- *      contents: import("./shared-types").SectionContentItem[]
- *      learnMoreLink: import("./shared-types").LinkItem
- *   }
- * }} GlobalOpportunityProps
+ *  @typedef {import("./shared-types").OverlapContentImage} GlobalOpportunityProps
  */
 
 /**
@@ -145,7 +133,7 @@
  *  careerOutlook?: CareerOutlookProps
  *  exampleCareersProps?: ExampleCareersProps
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
- *  clobalOpportunity?: GlobalOpportunityProps
+ *  globalOpportunity?: GlobalOpportunityProps
  *  attendOnline?: AttendOnlineProps
  *  programContact?: ProgramContactProps
  * }} ProgramDetailPageProps

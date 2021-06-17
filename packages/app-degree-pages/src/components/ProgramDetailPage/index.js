@@ -5,7 +5,11 @@ import React, { useEffect, useState } from "react";
 
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
-import { dataSourcePropType, imagePropType } from "../../core/models";
+import {
+  dataSourcePropType,
+  imagePropType,
+  linkPropType,
+} from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
@@ -61,7 +65,12 @@ function getLocations(resolver) {
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
+const ProgramDetailPage = ({
+  dataSource,
+  introContent,
+  careerOutlook,
+  globalOpportunity,
+}) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -166,7 +175,10 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
 
               <CustomizeYourCollegeExperience />
 
-              <GlobalOpportunity />
+              <GlobalOpportunity
+                contents={[{ text: resolver.getGlobalExp() }]}
+                image={globalOpportunity.image}
+              />
             </div>
           </section>
         )}
@@ -178,7 +190,7 @@ const ProgramDetailPage = ({ dataSource, introContent, careerOutlook }) => {
 ProgramDetailPage.propTypes = {
   dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
   introContent: PropTypes.shape({
-    breadcrumbs: arrayOf(PropTypes.string),
+    breadcrumbs: arrayOf(linkPropType),
     contents: arrayOf(PropTypes.object),
     video: PropTypes.shape({
       url: PropTypes.string,
@@ -188,6 +200,7 @@ ProgramDetailPage.propTypes = {
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
+  globalOpportunity: PropTypes.shape({ image: imagePropType }),
 };
 
 export { ProgramDetailPage };

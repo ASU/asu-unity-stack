@@ -17,29 +17,8 @@ export default {
   title: "Program Detail Page",
 };
 
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
-  <ProgramDetailPage
-    dataSource={dataSource}
-    introContent={introContent}
-    atAGlance={atAGlance}
-    careerOutlook={careerOutlook}
-  />
-);
-
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-export const DefaultPage = Template.bind({});
-
-/**
- * @type {AppProps}
- */
-DefaultPage.args = {
+/** @type {AppProps} */
+const defaultArgs = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
     `&acadPlan=LSBISBIS` +
@@ -54,7 +33,7 @@ DefaultPage.args = {
     "careerDataGrowth,careerDataOnetTitle,careerDataSalary," +
     // flexible degree options
     `accelerateDegrees,accelerateDegreeMajorMaps,` +
-    `concurrentDegreeMajorMaps,concurrentDegrees,` +
+    `concurrentDegrees,concurrentDegreeMajorMaps,` +
     // career opportunity
     `AsuCareerOpp,` +
     // program contact
@@ -62,7 +41,8 @@ DefaultPage.args = {
     // application requirement
     `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
     `AdmissionsDegRequirements,` +
-    // other
+    // Global opportunity
+    `globalExp,` +
     `planCatDescr&init=false`,
   introContent: {
     breadcrumbs: [
@@ -81,7 +61,8 @@ DefaultPage.args = {
     ],
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
     // video: {
     //   url: "https://player.vimeo.com/video/110626871",
@@ -125,7 +106,42 @@ DefaultPage.args = {
   careerOutlook: {
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  globalOpportunity: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
 };
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  globalOpportunity,
+}) => (
+  <ProgramDetailPage
+    dataSource={dataSource}
+    introContent={introContent}
+    atAGlance={atAGlance}
+    careerOutlook={careerOutlook}
+    globalOpportunity={globalOpportunity}
+  />
+);
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const DefaultPage = Template.bind({});
+DefaultPage.args = defaultArgs;

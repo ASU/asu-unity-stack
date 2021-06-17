@@ -1,8 +1,9 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 
 import { glanceItemPropType, glanceItemsMap } from "../../../models";
+import { idGenerator } from "../../../utils/id-generator";
 
 /**
  * @typedef {import('../../../models/shared-types').LinkItem} AtAGlanceItem
@@ -18,16 +19,18 @@ import { glanceItemPropType, glanceItemsMap } from "../../../models";
  */
 
 export const GlanceItem = ({ item, type }) => {
+  const genId = idGenerator("glance-");
+
   const renderContent = () => {
     if (typeof item === "object") {
       return item.map((el, key) => (
-        <>
+        <Fragment key={genId.next().value}>
           {key === 2 && " or"}
           <a href={el.url} rel="noreferrer" target="_blank">
             {el.text}
           </a>
           {key < item.length - 1 && ","}
-        </>
+        </Fragment>
       ));
     }
     return item;

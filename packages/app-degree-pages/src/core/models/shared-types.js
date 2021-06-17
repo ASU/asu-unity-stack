@@ -24,8 +24,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *    url: string
  *    text: string
- *    isActive?: boolean
- * }} LinkItem
+ * } | {
+ *    text: string
+ *    isActive: boolean
+ * } } LinkItem
  */
 
 /**
@@ -65,6 +67,14 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * }} ChildType
  *
  * @typedef {ContentItem & ChildType} AppTitleProps
+ */
+
+/**
+ *  @typedef {{
+ *    title?: string
+ *    contents?: import("./shared-types").ContentItem[]
+ *    image: import("./shared-types").ImageItem
+ * }} OverlapContentImage
  */
 
 /**
