@@ -151,7 +151,10 @@ gulp.task('copy-assets', function (done) {
 gulp.task('copy-dist-assets', function (done) {
   // Copy font-awesome to dist/
   gulp
+    // For GitHub Actions
     .src('./src/fontawesome/**/*')
+    // Original setup, with Jenkins pipeline
+    //.src('./src/assets/fontawesome/**/*')
     .pipe(gulp.dest(paths.dist + '/assets/fontawesome'));
 
   // Copy global header js to dist/ for use on monorepo index page

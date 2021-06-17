@@ -24,8 +24,14 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *    url: string
  *    text: string
- *    isActive?: boolean
  * }} LinkItem
+ */
+
+/** This type set the `text` optional
+ * @typedef {{
+ *    url: string
+ *    text?: string
+ * }} SoftLinkItem
  */
 
 /**
@@ -77,6 +83,14 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * }} ChildType
  *
  * @typedef {ContentItem & ChildType} AppTitleProps
+ */
+
+/**
+ *  @typedef {{
+ *    title?: string
+ *    contents?: import("./shared-types").ContentItem[]
+ *    image: import("./shared-types").ImageItem
+ * }} OverlapContentImage
  */
 
 /**

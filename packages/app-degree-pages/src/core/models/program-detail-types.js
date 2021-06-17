@@ -1,11 +1,18 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /**
+ * This type set the `url` and `isActive` optional
  * @typedef {{
- *    contents: import("./shared-types").ContentItem[]
+ *    url?: string
+ *    text: string
+ *    isActive?: boolean
+ * }} BreadcrumbItem
+ *
+ * @typedef {{
+ *    contents?: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
  *    image?: import("./shared-types").ImageItem
- *    breadcrumbs: import("./shared-types").LinkItem []
+ *    breadcrumbs: BreadcrumbItem []
  * }} IntroContentProps
  */
 
@@ -72,10 +79,7 @@
  */
 
 /**
- *  @typedef {{
- *    contents: import("./shared-types").ContentItem[]
- *    image: import("./shared-types").ImageItem
- * }} CareerOutlookProps
+ *  @typedef {import("./shared-types").OverlapContentImage} CareerOutlookProps
  */
 
 /**
@@ -100,33 +104,23 @@
  */
 
 /**
- *  @typedef {{
- *   globalExperience: {
- *      contents: import("./shared-types").SectionContentItem[]
- *      learnMoreLink: import("./shared-types").LinkItem
- *   }
- *   plusAlliance:{
- *      contents: import("./shared-types").SectionContentItem[]
- *      learnMoreLink: import("./shared-types").LinkItem
- *   }
- * }} GlobalOpportunityProps
+ *  @typedef {import("./shared-types").OverlapContentImage} GlobalOpportunityProps
  */
 
 /**
  *  @typedef {{
  *    image: import("./shared-types").ImageItem
- *    contents: import("./shared-types").SectionContentItem[]
- *    learnAboutButton: import("./shared-types").LinkItem
+ *    contents?: import("./shared-types").SectionContentItem[]
  * }} AttendOnlineProps
  */
 
 /**
  *  @typedef {{
- *    contents: import("./shared-types").SectionContentItem[]
- *    locations: import("./shared-types").LinkItem[]
- *    emails: import("./shared-types").LinkItem[]
- *    phones: import("./shared-types").LinkItem[]
- * }} ProgramContactProps
+ *    department: import("./shared-types").LinkItem
+ *    asuOfficeLoc: string
+ *    email: import("./shared-types").LinkItem
+ *    phone: string
+ * }} ProgramContactInfoProps
  */
 
 /**
@@ -145,9 +139,12 @@
  *  careerOutlook?: CareerOutlookProps
  *  exampleCareersProps?: ExampleCareersProps
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
- *  clobalOpportunity?: GlobalOpportunityProps
+ *  globalOpportunity?: GlobalOpportunityProps
  *  attendOnline?: AttendOnlineProps
- *  programContact?: ProgramContactProps
+ *  programContactInfo?: {
+ *      departmentUrl: string
+ *      emailUrl: string
+ *  }
  * }} ProgramDetailPageProps
  */
 
