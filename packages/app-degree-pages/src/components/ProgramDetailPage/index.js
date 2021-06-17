@@ -2,6 +2,7 @@
 
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import { Loader, AtAGlance } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
@@ -62,6 +63,13 @@ function getLocations(resolver) {
   return locations;
 }
 
+const Main = styled.main`
+  section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+`;
+
 /**
  *
  * @param {ProgramDetailPageProps} props
@@ -72,6 +80,7 @@ const ProgramDetailPage = ({
   introContent,
   careerOutlook,
   globalOpportunity,
+  attendOnline,
   programContactInfo,
 }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
@@ -101,7 +110,7 @@ const ProgramDetailPage = ({
 
   return (
     <>
-      <main className="container" data-is-loading={loading}>
+      <Main className="container" data-is-loading={loading}>
         {error && <div>Something went wrong ...</div>}
         {loading ? (
           <Loader />
@@ -183,7 +192,10 @@ const ProgramDetailPage = ({
                 image={globalOpportunity.image}
               />
 
-              <AttendOnline />
+              <AttendOnline
+                learnMoreLink={resolver.getCurriculumUrl()}
+                image={attendOnline.image}
+              />
             </div>
             <div className="row p-3">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
@@ -203,7 +215,7 @@ const ProgramDetailPage = ({
             </div>
           </section>
         )}
-      </main>
+      </Main>
     </>
   );
 };
@@ -226,6 +238,7 @@ ProgramDetailPage.propTypes = {
     departmentUrl: PropTypes.string,
     emailUrl: PropTypes.string,
   }),
+  attendOnline: PropTypes.shape({ image: imagePropType }),
 };
 
 export { ProgramDetailPage };

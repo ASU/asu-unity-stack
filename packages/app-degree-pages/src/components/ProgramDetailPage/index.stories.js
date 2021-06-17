@@ -43,6 +43,8 @@ const defaultArgs = {
     `AdmissionsDegRequirements,` +
     // Global opportunity
     `globalExp,` +
+    // attend online
+    `CurriculumUrl,managedOnlineCampus,` +
     `planCatDescr&init=false`,
   introContent: {
     breadcrumbs: [
@@ -117,6 +119,13 @@ const defaultArgs = {
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
+  attendOnline: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
   programContactInfo: {
     departmentUrl: "#",
     emailUrl: "#",
@@ -134,6 +143,7 @@ const Template = ({
   careerOutlook,
   globalOpportunity,
   programContactInfo,
+  attendOnline,
 }) => (
   <ProgramDetailPage
     dataSource={dataSource}
@@ -142,6 +152,7 @@ const Template = ({
     careerOutlook={careerOutlook}
     globalOpportunity={globalOpportunity}
     programContactInfo={programContactInfo}
+    attendOnline={attendOnline}
   />
 );
 

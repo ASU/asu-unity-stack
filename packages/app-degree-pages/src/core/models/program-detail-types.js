@@ -110,8 +110,7 @@
 /**
  *  @typedef {{
  *    image: import("./shared-types").ImageItem
- *    contents: import("./shared-types").SectionContentItem[]
- *    learnAboutButton: import("./shared-types").LinkItem
+ *    contents?: import("./shared-types").SectionContentItem[]
  * }} AttendOnlineProps
  */
 
