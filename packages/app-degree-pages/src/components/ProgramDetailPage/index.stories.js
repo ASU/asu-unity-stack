@@ -135,34 +135,37 @@ const defaultArgs = {
       {
         icon: "info-circle",
         title: "Lear more about our programs",
-        content: "Content of the card",
+        content:
+          "Tell us what type of student you are and we'll get you the information you need.",
         buttonLink: {
           label: "Request information",
           ariaLabel: "Request information",
           color: "maroon",
-          href: "#",
+          href: "https://admission.asu.edu/contact/request-info",
         },
       },
       {
         icon: "file-alt",
         title: "Apply to program",
-        content: "Content of the card",
+        content:
+          "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
         buttonLink: {
           label: "Apply now",
           ariaLabel: "Apply now",
           color: "maroon",
-          href: "#",
+          href: "https://admission.asu.edu/apply",
         },
       },
       {
         icon: "map-marker-alt",
         title: "Visit our campus",
-        content: "Content of the card",
+        content:
+          "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",
         buttonLink: {
           label: "Schedule a visit",
           ariaLabel: "Schedule a visit",
           color: "maroon",
-          href: "#",
+          href: "https://visit.asu.edu/",
         },
       },
     ],
