@@ -2,10 +2,11 @@
 # Heroes
 
 1. Mixins
-2. Hero, Desktop
-3. Hero, Mobile
-4. Story Hero, Mobile
-5. Story Hero, Desktop
+2. Hero, Mobile
+3. Hero, Tablet
+4. Hero, Desktop
+5. Story Hero, Mobile
+6. Story Hero, Desktop
 --------------------------------------------------------------*/
 
 @mixin like-h3 {
@@ -39,7 +40,7 @@
 div[class^='uds-hero'] {
   display:grid;
   grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
-  grid-template-rows: auto max-content max-content $uds-size-spacing-3 $uds-size-spacing-3 auto;
+  grid-template-rows: 1fr auto auto auto $uds-size-spacing-3 auto;
   gap: 0px 0px;
   max-width: 1920px;
   margin: 0 auto;
@@ -55,15 +56,15 @@ div[class^='uds-hero'] {
     grid-column: 1 / span 3;
     grid-row: 1 / span 4;
     object-fit: cover;
-    height: $uds-size-spacing-32;
     max-width: 100%;
+    height:100%;
   }
 
   [role="doc-subtitle"] {
     @include like-h3;
     display: inline-block;
     grid-row: 2;
-    margin-bottom: -4px; // Magic number, aligns subtitle to title.
+    line-height:1;
 
     .highlight-white {
       @include like-h3-highlight-white;
@@ -81,7 +82,7 @@ div[class^='uds-hero'] {
   h1 {
     grid-row: 3;
     margin:0;
-    padding-bottom: $uds-size-spacing-3;
+    margin-bottom: $uds-size-spacing-3;
   }
 
   a.btn {
@@ -96,7 +97,7 @@ div[class^='uds-hero'] {
 
   // Base class modifier: .has-btn-row
   &.has-btn-row {
-    grid-template-rows: auto max-content max-content max-content auto;
+    grid-template-rows: 1fr repeat(4, auto);
 
     .btn-row {
       grid-row:4;
@@ -121,28 +122,40 @@ div[class^='uds-hero'] {
   }
 }
 
-div.uds-hero-sm .hero,
-div.uds-hero-md .hero {
-  height: $uds-size-spacing-32;
+div.uds-hero-sm,
+div.uds-hero-md {
+  min-height: $uds-size-spacing-32;
 }
 
-div.uds-hero-lg .hero {
-  height: $uds-size-spacing-64;
+div.uds-hero-lg {
+  min-height: $uds-size-spacing-64;
 }
 
 /*--------------------------------------------------------------
-3. Hero, Desktop
+2.5 Mobile Only
+--------------------------------------------------------------*/
+// Prevents white text on a white background when .content
+// is repositioned below the background image.
+@include media-breakpoint-down(sm) {
+  div[class^=uds-hero] .content.text-white,
+  div[class^=uds-hero] .content > .text-white {
+    color: $uds-color-base-gray-7 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+3. Hero, Tablet
 --------------------------------------------------------------*/
 @include media-breakpoint-up(md) {
   div[class^='uds-hero'] {
 
-    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
-    grid-template-rows: auto max-content max-content max-content max-content $uds-size-spacing-6;
+    grid-template-columns: 1fr minmax(0, 700px) 1fr;
+    grid-template-rows: 1fr repeat(4 ,auto) $uds-size-spacing-6;
 
     // Column alignment for decendent items
     h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
       grid-column: 2;
-      max-width: calc(1200px - 34%);
+      max-width: 700px;
       z-index:30;
     }
 
@@ -155,31 +168,41 @@ div.uds-hero-lg .hero {
     .content {
       grid-row:4;
       font-size: $uds-size-font-xl;
+      font-weight: $uds-font-weight-bold;
+      line-height: 1.5;
+
+      p:last-child {
+        margin-bottom:0;
+      }
     }
 
     h1 {
-      padding-bottom:0;
+      margin-bottom:0;
     }
 
     a.btn {
       grid-row: 5;
+      margin-top: $uds-size-spacing-3;
+      margin-bottom: 0;
+
+      & + a.btn {
+        margin-left: $uds-size-spacing-2;
+      }
     }
 
     // Base class modifier: .has-btn-row
     &.has-btn-row {
+      grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
+
       .content {
         grid-row:4;
       }
 
       .btn-row {
         grid-row:5;
-
-        .btn {
-          margin-bottom:0;
-
-          & + .btn {
-            margin-left: $uds-size-spacing-2;
-          }
+        a.btn {
+          margin-top: $uds-size-spacing-3;
+          margin-bottom: 0;
         }
       }
     }
@@ -201,15 +224,41 @@ div.uds-hero-lg .hero {
     }
   }
 
-  div.uds-hero-sm .hero {height: $uds-size-spacing-32;}
-  div.uds-hero-md .hero {height: $uds-size-spacing-64;}
-  div.uds-hero-lg .hero {height: 42.75rem;}
+  div.uds-hero-sm {height: $uds-size-spacing-32;}
+  div.uds-hero-md {height: $uds-size-spacing-64;}
+  div.uds-hero-lg {height: 42.75rem;}
+}
+
+/*--------------------------------------------------------------
+4. Hero, Desktop
+--------------------------------------------------------------*/
+@include media-breakpoint-up(lg) {
+  div[class^='uds-hero'] {
+
+    grid-template-columns: 1fr minmax(0, 940px) 1fr;
+
+    // Column alignment for decendent items
+    h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+      max-width: calc(940px - 34%);
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  div[class^='uds-hero'] {
+
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    // Column alignment for decendent items
+    h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+      max-width: calc(1200px - 34%);
+    }
+  }
 }
 
 
-
 /*--------------------------------------------------------------
-4. Story Hero, Mobile
+5. Story Hero, Mobile
 --------------------------------------------------------------*/
 .uds-story-hero {
   // Calc value in the grid-template row definitions:
@@ -250,7 +299,7 @@ div.uds-hero-lg .hero {
 }
 
 /*--------------------------------------------------------------
-5. Story Hero, Desktop
+6. Story Hero, Desktop
 --------------------------------------------------------------*/
 
 // Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.

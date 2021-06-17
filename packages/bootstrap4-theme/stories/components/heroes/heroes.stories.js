@@ -2,36 +2,38 @@ export default { title: 'Components/Heroes' };
 
 // Random photos sourced from Unsplash: https://source.unsplash.com
 export const heroSmall = () => `
+
 <div class="uds-hero-sm">
   <img class="hero" src="https://source.unsplash.com/WeYamle9fDM/1920x256" alt="Sample placeholder image." />
-    <div role="doc-subtitle"><span class="highlight-white">A surtitle above the fold</span></div>
-    <h1><span class="highlight-black">Heading One has five words.</span></h1>
+  <div role="doc-subtitle"><span class="highlight-white">The New American University</span></div>
+  <h1><span class="highlight-black">By whom it includes</span></h1>
+  <a href="#" class="btn btn-maroon">Maroon Call to Action</a>
 </div>
 `;
 
 export const heroMedium = () => `
 <div class="uds-hero-md has-btn-row">
-  <img class="hero" src="https://source.unsplash.com/xyXcGADvAwE/1920x512" alt="Sample placeholder image." />
-    <h1><span class="highlight-black">Heading One has at least twelve words.</span></h1>
-    <div class="content text-white">
-      <p>Arizona State University has developed a new model for the American research university.</p>
-      <p>Creating an institution committed to excellence, access and impact — the New American University.</p>
-    </div>
-    <div class="btn-row">
-      <a href="#" class="btn btn-md btn-gold">Gold Call to Action</a>
-      <a href="#" class="btn btn-md btn-maroon">Maroon Long Call to Action</a>
-    </div>
+  <img class="hero" src="https://source.unsplash.com/IydYk-LGOhc/1920x512" alt="Sample placeholder image." />
+  <h1><span class="highlight-gold">Gettysburg Address</span></h1>
+  <div class="content text-white">
+    <p>Four score and seven years ago our fathers brought forth upon this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
+  </div>
+  <div class="btn-row">
+    <a href="#" class="btn btn-md btn-gold">Read the 13th Amendment</a>
+    <a href="#" class="btn btn-md btn-gold">More quotes from Abraham Lincoln</a>
+  </div>
 </div>
 `;
 
 export const heroLarge = () => `
 <div class="uds-hero-lg hide-content">
-  <img class="hero" src="https://source.unsplash.com/02z1I7gv4ao/1920x684" alt="Sample placeholder image." />
-    <h1><span class="highlight-black">Heading One has eleventy bazillion words that are also in French.</span></h1>
-    <div class="content">
-      <p class="text-white">Stay Pacific uncharted relaxation transit tourist attractions insurance tent lifestyle booking train hotel. Itinerary exchange rate Budapest last minute hotel translation.</p>
-    </div>
-    <a href="#" class="btn btn-maroon">Call to action</a>
+  <img class="hero" src="https://source.unsplash.com/xyXcGADvAwE/1920x684" alt="Sample placeholder image." />
+  <div role="doc-subtitle"><span class="highlight-black">Mass Ascension</span></div>
+  <h1 class="text-white">The Albuquerque International Balloon Fiesta</h1>
+  <div class="content">
+    <p class="text-white">For nine days in October, the Albuquerque International Balloon Fiesta creates an enchanted world of vibrant balloon-filled skies. Brisk autumn mornings in the Rio Grande Valley create an otherworldly backdrop for our most popular event, Mass Ascension.</p>
+  </div>
+  <a href="#" class="btn btn-maroon">Get your tickets</a>
 </div>
 `;
 
