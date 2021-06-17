@@ -53,6 +53,13 @@ const glanceItemPropType = PropTypes.shape({
   url: PropTypes.string,
 });
 
+const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
+  PropTypes.shape({
+    title: PropTypes.string,
+    url: PropTypes.string,
+  })
+);
+
 export {
   linkPropType,
   videoPropType,
@@ -62,4 +69,5 @@ export {
   contentPropTypes,
   dataSourcePropType,
   glanceItemPropType,
+  flexibleDegreeOptionsLinks,
 };

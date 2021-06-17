@@ -67,15 +67,14 @@
 
 /**
  *  @typedef {{
- *     startContents: import("./shared-types").ContentItem[]
- *     links: import("./shared-types").LinkItem[]
- *     endContents: import("./shared-types").ContentItem[]
- * }} FlelxibleDegreeOptionItem
+ *    title: string
+ *    url: string
+ * }} FlexibleDegreeOptionItem
  *
  *  @typedef {{
- *   accelleratedOption: FlelxibleDegreeOptionItem
- *   concurrentOption: FlelxibleDegreeOptionItem
- * }} FlelxibleDegreeOptionsProps
+ *   acceleratedLinks: FlexibleDegreeOptionItem[]
+ *   concurrentLinks: FlexibleDegreeOptionItem[]
+ * }} FlexibleDegreeOptionsProps
  */
 
 /**
@@ -135,7 +134,7 @@
  *  changeMajorRequirements?: ChangeMajorRequirementsProps
  *  nextSteps?: NextStepsProps
  *  affordingCollege?: AffordingCollegeProps
- *  flelxibleDegreeOptions?: FlelxibleDegreeOptionsProps
+ *  flelxibleDegreeOptions?: FlexibleDegreeOptionsProps
  *  careerOutlook?: CareerOutlookProps
  *  exampleCareersProps?: ExampleCareersProps
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
