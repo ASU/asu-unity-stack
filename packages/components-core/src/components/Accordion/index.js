@@ -32,15 +32,19 @@ export const Accordion = ({ cards, openedCard }) => {
 
   return (
     <div className="accordion">
-      {cards?.map((card, key) => (
-        <AccordionCard
-          key={card.content.header}
-          id={key + 1}
-          item={card}
-          openCard={openCard}
-          onClick={changeOpenCard}
-        />
-      ))}
+      {cards?.map(
+        (card, key) =>
+          card.content.body &&
+          card.content.header && (
+            <AccordionCard
+              key={card.content.header}
+              id={key + 1}
+              item={card}
+              openCard={openCard}
+              onClick={changeOpenCard}
+            />
+          )
+      )}
     </div>
   );
 };
