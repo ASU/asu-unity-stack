@@ -17,36 +17,8 @@ export default {
   title: "Program Detail Page",
 };
 
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-const Template = ({
-  dataSource,
-  introContent,
-  atAGlance,
-  careerOutlook,
-  affordingCollege,
-}) => (
-  <ProgramDetailPage
-    dataSource={dataSource}
-    introContent={introContent}
-    atAGlance={atAGlance}
-    careerOutlook={careerOutlook}
-    affordingCollege={affordingCollege}
-  />
-);
-
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-export const DefaultPage = Template.bind({});
-
-/**
- * @type {AppProps}
- */
-DefaultPage.args = {
+/** @type {AppProps} */
+const defaultArgs = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
     `&acadPlan=LSBISBIS` +
@@ -61,15 +33,18 @@ DefaultPage.args = {
     "careerDataGrowth,careerDataOnetTitle,careerDataSalary," +
     // flexible degree options
     `accelerateDegrees,accelerateDegreeMajorMaps,` +
-    `concurrentDegreeMajorMaps,concurrentDegrees,` +
+    `concurrentDegrees,concurrentDegreeMajorMaps,` +
     // career opportunity
     `AsuCareerOpp,` +
     // program contact
-    `EmailAddr,Phone,CollegeDescr100,` +
+    `DepartmentName,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
     `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
     `AdmissionsDegRequirements,` +
-    // other
+    // Global opportunity
+    `globalExp,` +
+    // attend online
+    `CurriculumUrl,managedOnlineCampus,` +
     `planCatDescr&init=false`,
   introContent: {
     breadcrumbs: [
@@ -88,7 +63,8 @@ DefaultPage.args = {
     ],
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
     // video: {
     //   url: "https://player.vimeo.com/video/110626871",
@@ -132,8 +108,27 @@ DefaultPage.args = {
   careerOutlook: {
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
+  },
+  globalOpportunity: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  attendOnline: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  programContactInfo: {
+    departmentUrl: "#",
+    emailUrl: "#",
   },
   affordingCollege: {
     cards: [
@@ -173,3 +168,36 @@ DefaultPage.args = {
     ],
   },
 };
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  globalOpportunity,
+  programContactInfo,
+  attendOnline,
+  affordingCollege,
+}) => (
+  <ProgramDetailPage
+    dataSource={dataSource}
+    introContent={introContent}
+    atAGlance={atAGlance}
+    careerOutlook={careerOutlook}
+    globalOpportunity={globalOpportunity}
+    programContactInfo={programContactInfo}
+    attendOnline={attendOnline}
+    affordingCollege={affordingCollege}
+  />
+);
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const DefaultPage = Template.bind({});
+DefaultPage.args = defaultArgs;

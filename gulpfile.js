@@ -12,7 +12,9 @@ compile = () =>
   gulp
     .src("./build/@asu-design-system/**/*.njk")
     .pipe(nunjucks.compile())
-    .pipe(filter("components-library"))
+    // Commented out next line for Jenkins build. Breaks static build.
+    // Uncomment with cutover to GitHub Actions build. UDS-634
+    //.pipe(filter("components-library"))
     .pipe(gulp.dest("build"));
 
 cleanup = () =>

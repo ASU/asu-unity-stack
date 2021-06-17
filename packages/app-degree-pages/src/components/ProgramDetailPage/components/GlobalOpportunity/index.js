@@ -1,25 +1,21 @@
 // @ts-check
-
-import PropTypes from "prop-types";
 import React from "react";
+
+import { OverlapContentImage } from "../../../../core/components";
 
 /**
  *
- * @param {*} props
- * @returns
+ * @param {import("src/core/models/program-detail-types").GlobalOpportunityProps} props
+ * @returns {JSX.Element}
  */
-function GlobalOpportunity(props) {
-  return (
-    <section>
-      <h2>
-        <span className="highlight-gold">Global opportunities</span>
-      </h2>
-      <h3>General university admission requirements</h3>
-      <div>IN PROGRESS</div>
-    </section>
-  );
-}
+const GlobalOpportunity = ({ contents, image }) => (
+  <OverlapContentImage
+    title="Global opportunities"
+    contents={contents}
+    image={image}
+  />
+);
 
-GlobalOpportunity.propTypes = {};
+GlobalOpportunity.propTypes = OverlapContentImage.propTypes;
 
 export { GlobalOpportunity };
