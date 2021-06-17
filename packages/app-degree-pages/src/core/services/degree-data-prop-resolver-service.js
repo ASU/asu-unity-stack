@@ -31,8 +31,12 @@ function degreeDataPropResolverService(row = {}) {
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => row["CollegeDescr100"],
     getCollegeUrl: () => row["CollegeUrl"],
+    /** @return {string} */
     getEmailAddress: () => row["EmailAddr"],
+    /** @return {string} */
     getPhone: () => row["Phone"],
+    /** @return {string} */
+    getGDepartmentName: () => row["DepartmentName"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",

@@ -24,10 +24,14 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *    url: string
  *    text: string
- * } | {
- *    text: string
- *    isActive: boolean
- * } } LinkItem
+ * }} LinkItem
+ */
+
+/** This type set the `text` optional
+ * @typedef {{
+ *    url: string
+ *    text?: string
+ * }} SoftLinkItem
  */
 
 /**

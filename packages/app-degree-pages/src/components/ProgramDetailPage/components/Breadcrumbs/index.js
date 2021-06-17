@@ -8,7 +8,7 @@ import { idGenerator } from "../../../../core/utils";
 
 /**
  *
- * @param {{breadcrumbs: import("src/core/models/shared-types").LinkItem []}} param0
+ * @param {{breadcrumbs: import("src/core/models/program-detail-types").BreadcrumbItem []}} param0
  * @returns
  */
 function Breadcrumbs({ breadcrumbs }) {

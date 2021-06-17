@@ -37,7 +37,7 @@ const defaultArgs = {
     // career opportunity
     `AsuCareerOpp,` +
     // program contact
-    `EmailAddr,Phone,CollegeDescr100,` +
+    `DepartmentName,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
     `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
     `AdmissionsDegRequirements,` +
@@ -117,6 +117,10 @@ const defaultArgs = {
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
+  programContactInfo: {
+    departmentUrl: "#",
+    emailUrl: "#",
+  },
 };
 
 /**
@@ -129,6 +133,7 @@ const Template = ({
   atAGlance,
   careerOutlook,
   globalOpportunity,
+  programContactInfo,
 }) => (
   <ProgramDetailPage
     dataSource={dataSource}
@@ -136,6 +141,7 @@ const Template = ({
     atAGlance={atAGlance}
     careerOutlook={careerOutlook}
     globalOpportunity={globalOpportunity}
+    programContactInfo={programContactInfo}
   />
 );
 

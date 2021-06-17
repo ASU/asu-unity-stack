@@ -1,11 +1,18 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /**
+ * This type set the `url` and `isActive` optional
+ * @typedef {{
+ *    url?: string
+ *    text: string
+ *    isActive?: boolean
+ * }} BreadcrumbItem
+ *
  * @typedef {{
  *    contents?: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
  *    image?: import("./shared-types").ImageItem
- *    breadcrumbs: import("./shared-types").LinkItem []
+ *    breadcrumbs: BreadcrumbItem []
  * }} IntroContentProps
  */
 
@@ -110,11 +117,11 @@
 
 /**
  *  @typedef {{
- *    contents: import("./shared-types").SectionContentItem[]
- *    locations: import("./shared-types").LinkItem[]
- *    emails: import("./shared-types").LinkItem[]
- *    phones: import("./shared-types").LinkItem[]
- * }} ProgramContactProps
+ *    department: import("./shared-types").LinkItem
+ *    asuOfficeLoc: string
+ *    email: import("./shared-types").LinkItem
+ *    phone: string
+ * }} ProgramContactInfoProps
  */
 
 /**
@@ -135,7 +142,10 @@
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
  *  globalOpportunity?: GlobalOpportunityProps
  *  attendOnline?: AttendOnlineProps
- *  programContact?: ProgramContactProps
+ *  programContactInfo?: {
+ *      departmentUrl: string
+ *      emailUrl: string
+ *  }
  * }} ProgramDetailPageProps
  */
 
