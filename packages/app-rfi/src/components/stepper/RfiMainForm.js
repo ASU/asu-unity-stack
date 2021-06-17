@@ -9,6 +9,7 @@ import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
 import { successForm } from "../steps/Success";
 import { RfiStepper } from "./RfiStepper";
+import { getClientId } from "../utils/google-analytics";
 
 const RfiMainForm = ({
   Campus,
@@ -75,6 +76,16 @@ const RfiMainForm = ({
                   // to success page. Probably doesn't need an effort.
                   // handleSubmit={async value => {
                   // await new Promise(r => setTimeout(r, 2000));
+
+                  // Get enterpriseclientid from ASUOnline.
+                  const asuoClientId = getClientId();
+
+                  // Push to GA.
+                  // @ts-ignore
+                  if (typeof dataLayer != "undefined") {
+                    // @ts-ignore
+                    dataLayer.push({ event: "rfi-submit" });
+                  }
 
                   // eslint-disable-next-line no-alert
                   alert(`SUBMITTED FORM \n${JSON.stringify(value, null, 2)}`);
