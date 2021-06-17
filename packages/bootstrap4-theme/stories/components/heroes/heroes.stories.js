@@ -1,36 +1,37 @@
 export default { title: 'Components/Heroes' };
 
 // Random photos sourced from Unsplash: https://source.unsplash.com
-
 export const heroSmall = () => `
-<div class="uds-hero uds-hero-sm" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-  </div>
+<div class="uds-hero-sm">
+  <img class="hero" src="https://source.unsplash.com/WeYamle9fDM/1920x256" alt="Sample placeholder image." />
+    <div role="doc-subtitle"><span class="highlight-white">A surtitle above the fold</span></div>
+    <h1><span class="highlight-black">Heading One has five words.</span></h1>
 </div>
 `;
 
 export const heroMedium = () => `
-<div class="uds-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-    <div class="uds-hero-text col-sm-12 col-md-7">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="#" class="btn btn-gold" />Call to action</a>
+<div class="uds-hero-md has-btn-row">
+  <img class="hero" src="https://source.unsplash.com/xyXcGADvAwE/1920x512" alt="Sample placeholder image." />
+    <h1><span class="highlight-black">Heading One has at least twelve words.</span></h1>
+    <div class="content text-white">
+      <p>Arizona State University has developed a new model for the American research university.</p>
+      <p>Creating an institution committed to excellence, access and impact — the New American University.</p>
     </div>
-  </div>
+    <div class="btn-row">
+      <a href="#" class="btn btn-md btn-gold">Gold Call to Action</a>
+      <a href="#" class="btn btn-md btn-maroon">Maroon Long Call to Action</a>
+    </div>
 </div>
 `;
 
 export const heroLarge = () => `
-<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-    <div class="uds-hero-text col-sm-12 col-md-7">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="#" class="btn btn-gold" />Call to action</a>
+<div class="uds-hero-lg hide-content">
+  <img class="hero" src="https://source.unsplash.com/02z1I7gv4ao/1920x684" alt="Sample placeholder image." />
+    <h1><span class="highlight-black">Heading One has eleventy bazillion words that are also in French.</span></h1>
+    <div class="content">
+      <p class="text-white">Stay Pacific uncharted relaxation transit tourist attractions insurance tent lifestyle booking train hotel. Itinerary exchange rate Budapest last minute hotel translation.</p>
     </div>
-  </div>
+    <a href="#" class="btn btn-maroon">Call to action</a>
 </div>
 `;
 
@@ -78,22 +79,4 @@ export const storyHeroLarge = () => `
 </section>
 `;
 
-export const heroMediumBlackTitle = () => `
-<div class="uds-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h3 class="col-md-8"><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1 class="col-md-8"><span class="highlight-white">Title Title Title Title Title Title</span></h1>
-  </div>
-</div>
-`;
-
-export const heroLargeBlackTitle = () => `
-<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h3 class="col-md-8"><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1 class="col-md-8"><span class="highlight-white">Title Title Title Title Title Title</span></h1>
-  </div>
-</div>
-`
-
-; // close
+// close
