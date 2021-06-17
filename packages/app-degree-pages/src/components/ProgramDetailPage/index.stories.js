@@ -130,43 +130,6 @@ const defaultArgs = {
     departmentUrl: "#",
     emailUrl: "#",
   },
-  affordingCollege: {
-    cards: [
-      {
-        icon: "calculator",
-        title: "Tuition calculator",
-        content: "Content of the card",
-        buttonLink: {
-          label: "Estimate tuition and fees",
-          ariaLabel: "Estimate tuition and fees",
-          color: "maroon",
-          href: "#",
-        },
-      },
-      {
-        icon: "award",
-        title: "Scholarships",
-        content: "Content of the card",
-        buttonLink: {
-          label: "Find scholarships",
-          ariaLabel: "Find scholarships",
-          color: "maroon",
-          href: "#",
-        },
-      },
-      {
-        icon: "hand-holding-usd",
-        title: "Finanacial aid",
-        content: "Content of the card",
-        buttonLink: {
-          label: "Find financial aid",
-          ariaLabel: "Find financial aid",
-          color: "maroon",
-          href: "#",
-        },
-      },
-    ],
-  },
 };
 
 /**
@@ -181,7 +144,6 @@ const Template = ({
   globalOpportunity,
   programContactInfo,
   attendOnline,
-  affordingCollege,
 }) => (
   <ProgramDetailPage
     dataSource={dataSource}
@@ -191,7 +153,6 @@ const Template = ({
     globalOpportunity={globalOpportunity}
     programContactInfo={programContactInfo}
     attendOnline={attendOnline}
-    affordingCollege={affordingCollege}
   />
 );
 

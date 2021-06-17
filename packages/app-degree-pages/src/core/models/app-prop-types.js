@@ -63,13 +63,6 @@ const glanceItemPropType = PropTypes.shape({
   url: PropTypes.string,
 });
 
-const cardPropTypes = PropTypes.shape({
-  icon: PropTypes.string,
-  title: PropTypes.string,
-  content: PropTypes.string,
-  buttonLink: buttonPropTypes,
-});
-
 export {
   buttonPropTypes,
   linkPropType,
@@ -80,5 +73,4 @@ export {
   contentPropTypes,
   dataSourcePropType,
   glanceItemPropType,
-  cardPropTypes,
 };
