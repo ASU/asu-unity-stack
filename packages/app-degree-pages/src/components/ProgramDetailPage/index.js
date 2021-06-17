@@ -10,6 +10,7 @@ import {
   dataSourcePropType,
   imagePropType,
   linkPropType,
+  cardPropTypes,
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
@@ -82,6 +83,7 @@ const ProgramDetailPage = ({
   globalOpportunity,
   attendOnline,
   programContactInfo,
+  nextSteps,
 }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
@@ -172,7 +174,7 @@ const ProgramDetailPage = ({
               </div>
             </div>
             <div className="row pl-3">
-              <NextSteps />
+              <NextSteps cards={nextSteps.cards} />
 
               <AffordingCollege />
 
@@ -239,6 +241,9 @@ ProgramDetailPage.propTypes = {
     emailUrl: PropTypes.string,
   }),
   attendOnline: PropTypes.shape({ image: imagePropType }),
+  nextSteps: PropTypes.shape({
+    cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  }),
 };
 
 export { ProgramDetailPage };
