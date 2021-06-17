@@ -22,7 +22,7 @@ export const parameters = {
   options: {
     storySort: {
       order: ['Design',
-        ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Docs', ['Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation', 'Additional considerations'], 'Content Sections']],
+        ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Docs', ['Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation', 'Additional considerations'], 'Content Sections', 'Hero']],
     },
   },
 };
