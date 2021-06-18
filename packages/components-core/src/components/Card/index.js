@@ -210,7 +210,7 @@ const BaseCard = ({
   linkUrl,
   tags,
 }) => {
-  const cardClass = classNames("card", {
+  const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
     [`card-event`]: type === "event",
     [`card-story`]: type === "story",
