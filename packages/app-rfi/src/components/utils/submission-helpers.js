@@ -1,5 +1,5 @@
+// @ts-check
 /* Marshall and prepare values for submission payload. */
-
 export function submissionFormFieldPrep(value) {
   // ADJUST AND PROCESS FORM FIELDS
 
