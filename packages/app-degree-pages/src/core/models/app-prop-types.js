@@ -10,6 +10,16 @@ const accordionCardPropTypes = PropTypes.shape({
   }),
 });
 
+const buttonPropTypes = PropTypes.shape({
+  ariaLabel: PropTypes.string,
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  icon: PropTypes.string,
+  href: PropTypes.string,
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(["default", "small", "xsmall"]),
+});
+
 const imagePropTypes = {
   url: PropTypes.string,
   altText: PropTypes.string,
@@ -62,8 +72,16 @@ const glanceItemPropType = PropTypes.shape({
   url: PropTypes.string,
 });
 
+const cardPropTypes = PropTypes.shape({
+  icon: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  buttonLink: buttonPropTypes,
+});
+
 export {
   accordionCardPropTypes,
+  buttonPropTypes,
   linkPropType,
   videoPropType,
   imagePropType,
@@ -72,4 +90,5 @@ export {
   contentPropTypes,
   dataSourcePropType,
   glanceItemPropType,
+  cardPropTypes,
 };
