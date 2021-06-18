@@ -2,14 +2,19 @@
 
 /**
  *
- * @param {{
- *  careerDataAlterOnetTitle: string
- *  careerDataBrightOutlook: string
- *  careerDataGreen: string
- *  careerDataGrowth: number
- *  careerDataOnetTitle: string
- *  careerDataSalary: string
- * }[]} careerData
+ * @param {object[]} links
+ */
+const formatAcceleratedConcurrentLinks = links =>
+  links.map(link => ({
+    title: link.Descr,
+    url: link.PlanUrl,
+  }));
+
+export { formatAcceleratedConcurrentLinks };
+
+/**
+ *
+ * @param {object[]} careerData
  */
 
 const formatCareerData = careerData => {

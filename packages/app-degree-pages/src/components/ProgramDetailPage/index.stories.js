@@ -17,33 +17,13 @@ export default {
   title: "Program Detail Page",
 };
 
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-const Template = ({ dataSource, introContent, atAGlance, careerOutlook }) => (
-  <ProgramDetailPage
-    dataSource={dataSource}
-    introContent={introContent}
-    atAGlance={atAGlance}
-    careerOutlook={careerOutlook}
-  />
-);
-
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-export const DefaultPage = Template.bind({});
-
-/**
- * @type {AppProps}
- */
-DefaultPage.args = {
+/** @type {AppProps} */
+const defaultArgs = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
-    `&acadPlan=LSBISBIS` +
+    // `&acadPlan=LSBISBIS` +
     // `&acadPlan=ESBMEMDBSE` + // this does not have required courses
+    `&acadPlan=BABUSGLBA` + // this has accelerateDegrees and concurrentDegrees
     `&fields=` +
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,AsuCritTrackUrl,` +
     // at a glance
@@ -53,15 +33,18 @@ DefaultPage.args = {
     "careerData," +
     // flexible degree options
     `accelerateDegrees,accelerateDegreeMajorMaps,` +
-    `concurrentDegreeMajorMaps,concurrentDegrees,` +
+    `concurrentDegrees,concurrentDegreeMajorMaps,` +
     // career opportunity
     `AsuCareerOpp,` +
     // program contact
-    `EmailAddr,Phone,CollegeDescr100,` +
+    `DepartmentName,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
     `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
     `AdmissionsDegRequirements,` +
-    // other
+    // Global opportunity
+    `globalExp,` +
+    // attend online
+    `CurriculumUrl,managedOnlineCampus,` +
     `planCatDescr&init=false`,
   introContent: {
     breadcrumbs: [
@@ -80,7 +63,8 @@ DefaultPage.args = {
     ],
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
     // video: {
     //   url: "https://player.vimeo.com/video/110626871",
@@ -124,7 +108,99 @@ DefaultPage.args = {
   careerOutlook: {
     image: {
       url: "https://source.unsplash.com/random/1200x750",
-      alt: "Random image. REPLACE with appropriate alt text for accessibility.",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
+  globalOpportunity: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  attendOnline: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  programContactInfo: {
+    departmentUrl: "#",
+    emailUrl: "#",
+  },
+  nextSteps: {
+    cards: [
+      {
+        icon: "info-circle",
+        title: "Lear more about our programs",
+        content:
+          "Tell us what type of student you are and we'll get you the information you need.",
+        buttonLink: {
+          label: "Request information",
+          ariaLabel: "Request information",
+          color: "maroon",
+          href: "https://admission.asu.edu/contact/request-info",
+        },
+      },
+      {
+        icon: "file-alt",
+        title: "Apply to program",
+        content:
+          "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
+        buttonLink: {
+          label: "Apply now",
+          ariaLabel: "Apply now",
+          color: "maroon",
+          href: "https://admission.asu.edu/apply",
+        },
+      },
+      {
+        icon: "map-marker-alt",
+        title: "Visit our campus",
+        content:
+          "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",
+        buttonLink: {
+          label: "Schedule a visit",
+          ariaLabel: "Schedule a visit",
+          color: "maroon",
+          href: "https://visit.asu.edu/",
+        },
+      },
+    ],
+  },
 };
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+const Template = ({
+  dataSource,
+  introContent,
+  atAGlance,
+  careerOutlook,
+  globalOpportunity,
+  programContactInfo,
+  attendOnline,
+  nextSteps,
+}) => (
+  <ProgramDetailPage
+    dataSource={dataSource}
+    introContent={introContent}
+    atAGlance={atAGlance}
+    careerOutlook={careerOutlook}
+    globalOpportunity={globalOpportunity}
+    programContactInfo={programContactInfo}
+    attendOnline={attendOnline}
+    nextSteps={nextSteps}
+  />
+);
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const DefaultPage = Template.bind({});
+DefaultPage.args = defaultArgs;

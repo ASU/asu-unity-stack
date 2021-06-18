@@ -24,8 +24,26 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *    url: string
  *    text: string
- *    isActive?: boolean
  * }} LinkItem
+ */
+
+/** This type set the `text` optional
+ * @typedef {{
+ *    url: string
+ *    text?: string
+ * }} SoftLinkItem
+ */
+
+/**
+ * @typedef {{
+ *  ariaLabel: string
+ *  color: "gold" | "maroon" | "gray" | "dark"
+ *  icon?: string
+ *  href?: string
+ *  label: string
+ *  onClick?: () => void
+ *  size?: "default" | "small" | "xsmall"
+ * }} Button
  */
 
 /**
@@ -33,7 +51,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    icon: string
  *    title: string
  *    content: string
- *    buttonLink: LinkItem
+ *    buttonLink: Button
  * }} CardItem
  */
 
@@ -65,6 +83,25 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * }} ChildType
  *
  * @typedef {ContentItem & ChildType} AppTitleProps
+ */
+
+/**
+ * @typedef {{
+ *  color?: "gold" | "maroon" | "gray" | "dark"
+ *  content: {
+ *    icon?: string
+ *    header: string
+ *    body: string
+ *   }
+ * }} AccordionCard
+ */
+
+/**
+ *  @typedef {{
+ *    title?: string
+ *    contents?: import("./shared-types").ContentItem[]
+ *    image: import("./shared-types").ImageItem
+ * }} OverlapContentImage
  */
 
 /**

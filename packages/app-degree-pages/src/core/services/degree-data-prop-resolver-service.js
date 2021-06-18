@@ -6,6 +6,7 @@ const mathintensity = {
   G: "General",
   M: "Moderate",
   S: "Substantial",
+  undefined: "",
 };
 
 /**
@@ -23,18 +24,27 @@ function degreeDataPropResolverService(row = {}) {
     getDegreeDesc: () => row["DegreeDescr"],
     getDegreeDescLong: () => row["DegreeDescrlong"],
     getDescrLongExtented: () => row["DescrlongExtns"],
+    getCurriculumUrl: () => row["CurriculumUrl"],
+    getDescrLongExtented5: () => row["DescrlongExtn5"],
+    getTransferAdmission: () => row["TransferAdmission"],
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
     getCareerData: () => formatCareerData(row["careerData"]),
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
+    hasConcurrentOrAccelerateDegrees: () =>
+      !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => row["CollegeDescr100"],
     getCollegeUrl: () => row["CollegeUrl"],
+    /** @return {string} */
     getEmailAddress: () => row["EmailAddr"],
+    /** @return {string} */
     getPhone: () => row["Phone"],
+    /** @return {string} */
+    getGDepartmentName: () => row["DepartmentName"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
@@ -58,6 +68,7 @@ function degreeDataPropResolverService(row = {}) {
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
+    getGlobalExp: () => row["globalExp"],
   };
 }
 
