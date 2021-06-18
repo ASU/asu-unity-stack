@@ -86,6 +86,17 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
+ * @typedef {{
+ *  color?: "gold" | "maroon" | "gray" | "dark"
+ *  content: {
+ *    icon?: string
+ *    header: string
+ *    body: string
+ *   }
+ * }} AccordionCard
+ */
+
+/**
  *  @typedef {{
  *    title?: string
  *    contents?: import("./shared-types").ContentItem[]

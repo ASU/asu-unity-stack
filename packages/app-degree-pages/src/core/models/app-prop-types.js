@@ -1,6 +1,15 @@
 // @ts-check
 import PropTypes from "prop-types";
 
+const accordionCardPropTypes = PropTypes.shape({
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: PropTypes.shape({
+    icon: PropTypes.string,
+    header: PropTypes.string,
+    body: PropTypes.string,
+  }),
+});
+
 const buttonPropTypes = PropTypes.shape({
   ariaLabel: PropTypes.string,
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
@@ -71,6 +80,7 @@ const cardPropTypes = PropTypes.shape({
 });
 
 export {
+  accordionCardPropTypes,
   buttonPropTypes,
   linkPropType,
   videoPropType,
