@@ -2,6 +2,10 @@
 
 The ASU RFI Component is a React powered Request for Information form that submits requests to a Mulesoft middleware service which in turn syncs requests to Salesforce.
 
+## Installation and Requirements
+
+@asu-design-system/bootstrap4-theme is required as a peer dependency.
+
 ## ASU RFI component architectural overview:
 * Top level app: src/components/app/App.js
 * ... which invokes the main form which defines the form steps: src/components/steps/RfiMainForm.js
