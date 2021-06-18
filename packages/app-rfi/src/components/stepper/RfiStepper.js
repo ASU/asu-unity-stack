@@ -306,7 +306,7 @@ RfiStepper.defaultProps = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined,
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 

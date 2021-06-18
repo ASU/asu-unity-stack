@@ -41,11 +41,11 @@ const successForm = {
 
 // Props
 Success.defaultProps = {
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
 };
 
 Success.propTypes = {
-  SuccessMsg: PropTypes.instanceOf(String),
+  SuccessMsg: PropTypes.string,
 };
 
 export { successForm };

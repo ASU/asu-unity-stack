@@ -9,7 +9,11 @@ import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
 import { successForm } from "../steps/Success";
 import { RfiStepper } from "./RfiStepper";
-import { getClientId } from "../utils/google-analytics";
+import { setClientId, pushDataLayerEventToGa } from "../utils/google-analytics";
+import {
+  submissionFormFieldPrep,
+  submissionSetHiddenFields,
+} from "../utils/submission-helpers";
 
 const RfiMainForm = ({
   Campus,
@@ -66,41 +70,39 @@ const RfiMainForm = ({
                   successForm.component,
                 ]}
                 handleSubmit={value => {
-                  // TODO While waiting using next lines, isSubmitting
-                  // isn't honored re: submit button disabling - see disabled
-                  // on submit button. Not a big deal due to immediate advance
-                  // to success page. Probably doesn't need an effort.
-                  // handleSubmit={async value => {
-                  // await new Promise(r => setTimeout(r, 2000));
+                  // MARSHALL FIELDS FOR THE PAYLOAD
 
-                  // Get enterpriseclientid from ASUOnline.
-                  const asuoClientId = getClientId();
+                  submissionFormFieldPrep(value);
+                  submissionSetHiddenFields(value, Test);
 
-                  // Push to GA.
-                  // @ts-ignore
-                  if (typeof dataLayer != "undefined") {
-                    // @ts-ignore
-                    dataLayer.push({ event: "rfi-submit" });
-                  }
+                  // Patch ASUOnline clientid or enterpriseclientid and also
+                  // ga_clientid onto value.
+                  // TODO Confirm sourcing for ga_clientid
+                  setClientId(value);
+
+                  // Google Analytics push to simulate submit button click
+                  // after validation has occurred.
+                  pushDataLayerEventToGa("rfi-submit");
 
                   // eslint-disable-next-line no-alert
                   alert(`SUBMITTED FORM \n${JSON.stringify(value, null, 2)}`);
 
-                  // TODO Build payload... notes:
-                  // - derive Career and StudentType based on CareerAndStudentType
-                  //   - Career: Undergraduate, Graduate
-                  //   - StudentType: First Time Freshman, Transfer // TODO clarification sought in MVP doc. Check back.
-                  // - hidden fields:
-                  //   - Test
-                  //   - source (added by host site via proxy)
-                  //   - URL
-                  //   - ga_client id
-                  //   - enterpriseclientid
-                  //   - datetime
-                  //   - more? confirm. international should be added by lambda
-
-                  // TODO confirmation page needs green checkbox...
-                  //      see current web standards: https://brandguide.asu.edu/executing-the-brand/web-and-mobile/web-standards/academic/rfi-request-information
+                  fetch(
+                    // TODO TODO TODO UPDATE TEST URL TO POINT TO CLIENT PROXY
+                    `http://echo.jsontest.com/${JSON.stringify(
+                      value,
+                      null,
+                      2
+                    )}`,
+                    {
+                      method: "POST",
+                      // We convert the React state to JSON and send it as the POST body
+                      body: JSON.stringify(JSON.stringify(value, null, 2)),
+                    }
+                  ).then(function (response) {
+                    console.log(response);
+                    return response.json();
+                  });
                 }}
               />
             </div>
@@ -123,7 +125,7 @@ RfiMainForm.defaultProps = {
   IsCertMinor: false,
   Country: undefined,
   StateProvince: undefined,
-  SuccessMsg: "Success.",
+  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   Test: false,
 };
 

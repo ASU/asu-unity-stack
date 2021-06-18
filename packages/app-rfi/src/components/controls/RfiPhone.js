@@ -28,7 +28,9 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
               requiredIcon={requiredIcon}
             />
             <PhoneInput
-              id={id}
+              inputProps={{
+                name: { name },
+              }}
               {...field}
               className="form-control"
               placeholder={helperText}
