@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Loader, AtAGlance } from "../../core/components";
+import { Loader } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   dataSourcePropType,
@@ -19,6 +19,7 @@ import {
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
+import { AtAGlance } from "./components/AtAGlance";
 import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
