@@ -11,6 +11,7 @@ import {
   imagePropType,
   linkPropType,
   cardPropTypes,
+  videoPropType,
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import {
@@ -255,11 +256,7 @@ ProgramDetailPage.propTypes = {
   introContent: PropTypes.shape({
     breadcrumbs: arrayOf(linkPropType),
     contents: arrayOf(PropTypes.object),
-    video: PropTypes.shape({
-      url: PropTypes.string,
-      altText: PropTypes.string,
-      vttUrl: PropTypes.string,
-    }),
+    video: videoPropType,
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),

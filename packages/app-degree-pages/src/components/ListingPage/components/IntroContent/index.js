@@ -4,12 +4,17 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { ApplyNow, OverlapContentImage } from "../../../../core/components";
+import {
+  ApplyNow,
+  OverlapContentImage,
+  Video,
+} from "../../../../core/components";
 import {
   contentPropType,
   contentPropTypes,
   imagePropType,
   tagHeadingList,
+  videoPropType,
 } from "../../../../core/models";
 import { spreadClasses, parseHeading } from "../../../../core/utils";
 
@@ -22,6 +27,12 @@ const PhotoGrid = styled.div`
   .photo-item {
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+`;
+const SectionWrapper = styled.div`
+  .uds-img,
+  .uds-video-container {
+    margin-top: 1rem;
   }
 `;
 
@@ -75,6 +86,57 @@ function textPhotoGridTypeHtmlTemplate({
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * @param {IntroContentProps} props
+ * @returns {JSX.Element}
+ */
+function textTextMediaTypeHtmlTemplate({
+  applyNowUrl,
+  title,
+  contents,
+  image,
+  video,
+}) {
+  const Heading = parseHeading(title);
+
+  return (
+    <SectionWrapper className="container">
+      <div className="row pt-3">
+        <div className="col col-sm-12 col-md-5 col-lg-5">
+          <Heading>
+            <span className={`${spreadClasses(title.cssClass)}`}>
+              {title.text}
+            </span>
+          </Heading>
+          {contents.map((content, index) => (
+            <p
+              key={`content-${index + 1}`}
+              className={`${spreadClasses(content.cssClass)}`}
+            >
+              {content.text}
+            </p>
+          ))}
+          <ApplyNow href={applyNowUrl} />
+        </div>
+        <div className="col col-sm-12 col-md-7 col-lg-7">
+          {video && (
+            <Video
+              url={video.url}
+              vttUrl={video.vttUrl}
+              altText={video.altText}
+            />
+          )}
+          {image && (
+            <div className="uds-img">
+              <img src={image.url} className="img-fluid" alt={image.altText} />
+            </div>
+          )}
+        </div>
+      </div>
+    </SectionWrapper>
   );
 }
 
@@ -144,10 +206,19 @@ const IntroContent = ({
   title,
   contents,
   image,
+  video,
   photoGrid,
 }) => {
   const templateTypes = {
     "text": () => textTypeHtmlTemplate({ applyNowUrl, title, contents }),
+    "text-media": () =>
+      textTextMediaTypeHtmlTemplate({
+        applyNowUrl,
+        title,
+        contents,
+        image,
+        video,
+      }),
     "text-image-overlay": () =>
       textImageOverlapTypeHtmlTemplate({ applyNowUrl, title, contents, image }),
     "text-photo-grid": () =>
@@ -173,6 +244,7 @@ IntroContent.propTypes = {
   applyNowUrl: PropTypes.string,
   type: PropTypes.oneOf(["text", "text-image-overlay", "text-photo-grid"])
     .isRequired,
+  video: videoPropType,
   image: imagePropType,
   header: contentPropType,
   title: PropTypes.shape({

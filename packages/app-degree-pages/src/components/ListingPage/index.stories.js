@@ -86,7 +86,7 @@ UndergraduateDegreePage.args = {
 export const AreaStudyDegreePage1 = Template.bind({});
 
 /**
- * @type {AppProps}
+ * @type {{ args: AppProps }}
  */
 AreaStudyDegreePage1.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
@@ -94,6 +94,7 @@ AreaStudyDegreePage1.args = {
     image: {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      // @ts-ignore
       size: "small",
     },
     contents: [
@@ -103,9 +104,11 @@ AreaStudyDegreePage1.args = {
     ],
   },
   introContent: {
+    // @ts-ignore
     type: "text-photo-grid",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+      // @ts-ignore
       component: "h3",
     },
     contents: [
@@ -138,15 +141,79 @@ AreaStudyDegreePage1.args = {
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps}}
  */
 export const AreaStudyDegreePage2 = Template.bind({});
 
 /**
- * @type {{ args: AppProps}}
+ * @type {{ args: AppProps }}
  */
 AreaStudyDegreePage2.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  hero: {
+    image: {
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      // @ts-ignore
+      size: "small",
+    },
+    contents: [
+      {
+        text: "Area of study degrees",
+      },
+    ],
+  },
+  introContent: {
+    type: "text-media",
+    title: {
+      text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+      // @ts-ignore
+      component: "h3",
+    },
+    contents: [
+      {
+        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+      },
+    ],
+    image: {
+      url: "https://source.unsplash.com/random/800x400?a=1",
+    },
+  },
+  programList: {
+    dataSource: "/api/mocks/degree-search",
+  },
+};
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const AreaStudyDegreePage2B = Template.bind({});
+
+/**
+ * @type {{ args: AppProps }}
+ */
+AreaStudyDegreePage2B.args = { ...AreaStudyDegreePage2.args };
+AreaStudyDegreePage2B.args.introContent = {
+  ...AreaStudyDegreePage2.args.introContent,
+  image: undefined,
+  video: {
+    url: "/assets/video/stock-video-person-drawing.mp4",
+    altText: "",
+    vttUrl: "",
+  },
+};
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const AreaStudyDegreePage3 = Template.bind({});
+
+/**
+ * @type {{ args: AppProps }}
+ */
+AreaStudyDegreePage3.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {

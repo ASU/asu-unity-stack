@@ -172,6 +172,7 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
           title={introContent.title}
           contents={introContent.contents}
           image={introContent.image}
+          video={introContent.video}
           photoGrid={introContent.photoGrid}
         />
         <SearchBar onSearch={onDegreeSearch} />
