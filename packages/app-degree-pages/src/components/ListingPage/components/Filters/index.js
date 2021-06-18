@@ -7,7 +7,7 @@ import {
   locationOptions,
   asuLocalOptions,
   acceleratedConcurrentOptions,
-} from "../../models/filters-options";
+} from "../../../../core/models/filters-options";
 import { SelectFormGroup } from "./components";
 import { Section, ButtonLink } from "./index.style";
 

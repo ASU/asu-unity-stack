@@ -3,8 +3,8 @@ import { Pagination } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../models";
-import { computePages } from "../../utils";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";
+import { computePages } from "../../../../core/utils";
 import { GridView } from "./GridView";
 import { ListView } from "./ListView";
 import { degreeListPropTypes } from "./programs-prop-types";

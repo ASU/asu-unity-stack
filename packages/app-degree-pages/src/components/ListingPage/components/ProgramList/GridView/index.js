@@ -5,12 +5,12 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { GRID_PROGRAMS_ID } from "../../../models";
-import { degreeDataPropResolverService } from "../../../services";
+import { GRID_PROGRAMS_ID } from "../../../../../core/models";
+import { degreeDataPropResolverService } from "../../../../../core/services";
 import {
   majorInfoLink,
   requestInfoLink,
-} from "../../../services/degree-http-service";
+} from "../../../../../core/services/degree-http-service";
 import { SectionCard } from "./index.style";
 /**
  *

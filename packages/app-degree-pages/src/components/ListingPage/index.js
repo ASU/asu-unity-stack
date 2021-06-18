@@ -20,7 +20,7 @@ import { IntroContent } from "./components/IntroContent";
 
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
- * @typedef {import("../../core/components/Filters").FiltersState} FiltersState
+ * @typedef {import("./components/Filters").FiltersState} FiltersState
  */
 
 /**
@@ -56,7 +56,7 @@ const ListingPage = ({ hero, introContent, programList }) => {
   }, [data]);
 
   /**
-   * @param {import("src/core/components/Filters").FiltersState} data
+   * @param {import("src/components/ListingPage/components/Filters").FiltersState} data
    */
   const onDegreeApplyFilters = async ({ acceleratedConcurrent, locations }) => {
     // ============================================================

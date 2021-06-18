@@ -9,16 +9,16 @@ import {
   mapTooltipLink,
   requestInfoLink,
   // saveFav,
-} from "../../../services/degree-http-service";
-import { idGenerator, toTitleCase } from "../../../utils";
+} from "../../../../../core/services/degree-http-service";
+import { idGenerator, toTitleCase } from "../../../../../core/utils";
 import {
   ChevronIconButton,
   InfoButtonIcon,
   //  FavButton
-} from "../../icons";
+} from "../../../../../core/components/icons";
 import { ApplyNow } from "../components/ApplyNow";
 import { RequestInfo } from "../components/RequestInfo";
-/** @typedef {import("../../../models/listing-page-types").GridColumn}  GridColumn */
+/** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
 
 /* eslint-disable react/prop-types, no-alert, no-console */
 /** @type {GridColumn []} */
