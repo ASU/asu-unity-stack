@@ -197,8 +197,7 @@ const ProgramDetailPage = ({
 
               <AffordingCollege />
 
-              {(!!resolver.getAccelerateDegrees().length ||
-                !!resolver.getConcurrentDegrees().length) && (
+              {resolver.hasConcurrentOrAccelerateDegrees() && (
                 <FlexibleDegreeOptions
                   acceleratedLinks={formatAcceleratedConcurrentLinks(
                     resolver.getAccelerateDegrees()
