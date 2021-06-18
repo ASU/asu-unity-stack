@@ -153,9 +153,6 @@ class RfiStepper extends React.Component {
     initValues.Interest2 = ProgramOfInterest;
     initValues.Country = Country;
     initValues.State = StateProvince;
-    // Avoid Uncontrolled to controlled switch warning:
-    // https://github.com/formium/formik/issues/28
-    initValues.Email = "";
 
     // If configured as a Cert or Minor, skip the form and only display
     // SuccessMsg.
