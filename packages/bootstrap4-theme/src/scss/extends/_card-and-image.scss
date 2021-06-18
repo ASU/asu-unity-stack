@@ -1,10 +1,12 @@
 .uds-card-and-image {
   background-position: top;
+  background-size: cover;
   display: flex;
   flex-direction: row;
   height: 466px;
   max-width: 1920px;
   padding: 48px 96px;
+  width: 100%;
 
   &-right {
     flex-direction: row-reverse;
