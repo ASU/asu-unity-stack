@@ -26,7 +26,7 @@ const RfiTextArea = ({ label, name, id, requiredIcon }) => {
               {...field}
               className="form-control"
             />
-            <RfiError isError={isError} metaError={meta.error} />
+            <RfiError isError={!!isError} metaError={meta.error} />
           </div>
         );
       }}

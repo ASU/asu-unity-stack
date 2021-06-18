@@ -29,6 +29,10 @@ export function submissionFormFieldPrep(payload) {
   output.Zip = output.Zip ? output.Zip : output.ZipCode;
   delete output.ZipCode;
 
+  // Fix for un/controlled switch warning, made in RfiStepper.js, leaves this
+  // artifact. Remove.
+  delete output.Email;
+
   return output;
 }
 
