@@ -23,11 +23,15 @@ function degreeDataPropResolverService(row = {}) {
     getDegreeDescLong: () => row["DegreeDescrlong"],
     getDescrLongExtented: () => row["DescrlongExtns"],
     getCurriculumUrl: () => row["CurriculumUrl"],
+    getDescrLongExtented5: () => row["DescrlongExtn5"],
+    getTransferAdmission: () => row["TransferAdmission"],
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
+    hasConcurrentOrAccelerateDegrees: () =>
+      !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => row["CollegeDescr100"],

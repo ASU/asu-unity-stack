@@ -1,3 +1,4 @@
+// @ts-check
 import { AtAGlance } from "./AtAGlance";
 import { Loader } from "./Loader";
 import { OverlapContentImage } from "./OverlapContentImage";
