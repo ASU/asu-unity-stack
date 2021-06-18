@@ -4,15 +4,15 @@ import { sanitize } from "dompurify";
 // import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
-import { GRID_PROGRAMS_ID } from "../../../models";
-import { degreeDataPropResolverService } from "../../../services";
-import { idGenerator } from "../../../utils";
+import { GRID_PROGRAMS_ID } from "../../../../../core/models";
+import { degreeDataPropResolverService } from "../../../../../core/services";
+import { idGenerator } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
 import { columns } from "./index.colums.config";
 import { Table } from "./index.style";
 
-/** @typedef {import("../../../models/listing-page-types").GridColumn}  GridColumn */
-/** @typedef {import("../../../models/shared-types").DegreeDataPropResolver}  DegreeDataPropResolver */
+/** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
+/** @typedef {import("../../../../../core/models/shared-types").DegreeDataPropResolver}  DegreeDataPropResolver */
 
 /**
  *

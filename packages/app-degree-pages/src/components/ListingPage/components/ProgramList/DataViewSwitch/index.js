@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../models";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../../core/models";
 
 const InputState = styled.input.attrs({
   type: "radio",

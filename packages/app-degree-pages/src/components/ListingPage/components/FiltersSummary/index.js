@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../utils";
+import { idGenerator } from "../../../../core/utils";
 
 /**
  *
