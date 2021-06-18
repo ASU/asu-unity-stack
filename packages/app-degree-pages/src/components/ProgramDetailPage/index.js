@@ -13,7 +13,10 @@ import {
   cardPropTypes,
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
-import { urlResolver } from "../../core/utils/data-path-resolver";
+import {
+  urlResolver,
+  formatAcceleratedConcurrentLinks,
+} from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
 import { AttendOnline } from "./components/AttendOnline";
@@ -194,7 +197,16 @@ const ProgramDetailPage = ({
 
               <AffordingCollege />
 
-              <FlexibleDegreeOptions />
+              {resolver.hasConcurrentOrAccelerateDegrees() && (
+                <FlexibleDegreeOptions
+                  acceleratedLinks={formatAcceleratedConcurrentLinks(
+                    resolver.getAccelerateDegrees()
+                  )}
+                  concurrentLinks={formatAcceleratedConcurrentLinks(
+                    resolver.getConcurrentDegrees()
+                  )}
+                />
+              )}
 
               <CareerOutlook
                 image={careerOutlook.image}

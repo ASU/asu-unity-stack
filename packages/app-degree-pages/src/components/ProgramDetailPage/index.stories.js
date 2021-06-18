@@ -22,7 +22,8 @@ const defaultArgs = {
   dataSource:
     `https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan` +
     // `&acadPlan=LSBISBIS` +
-    `&acadPlan=ESBMEMDBSE` + // this does not have required courses
+    // `&acadPlan=ESBMEMDBSE` + // this does not have required courses
+    `&acadPlan=BABUSGLBA` + // this has accelerateDegrees and concurrentDegrees
     `&fields=` +
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,AsuCritTrackUrl,` +
     // at a glance

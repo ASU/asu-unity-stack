@@ -30,6 +30,8 @@ function degreeDataPropResolverService(row = {}) {
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
+    hasConcurrentOrAccelerateDegrees: () =>
+      !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => row["CollegeDescr100"],

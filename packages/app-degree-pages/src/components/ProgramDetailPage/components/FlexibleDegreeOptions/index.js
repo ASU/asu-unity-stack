@@ -1,31 +1,43 @@
 // @ts-check
-
-import PropTypes from "prop-types";
 import React from "react";
+
+import { flexibleDegreeOptionsLinks } from "../../../../core/models";
+import { ContentBlock } from "./ContentBlock";
+
+/**
+ * @typedef {import('../../../../core/models/program-detail-types').FlexibleDegreeOptionsProps} FlexibleDegreeOptionsProps
+ */
 
 /**
  *
- * @param {*} props
+ * @param {FlexibleDegreeOptionsProps} props
  * @returns
  */
-function FlexibleDegreeOptions(props) {
+function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
   return (
-    <section>
+    <section className="pt-6 pb-6">
       <h2>
         <span className="highlight-gold">Flexible degree options</span>
       </h2>
-
-      <h3>Accelerated program options</h3>
-
-      <p>
-        This program allows students to obtain both a bachelor's and master's de
-      </p>
-
-      <div>IN PROGRESS</div>
+      {!!acceleratedLinks.length && (
+        <ContentBlock
+          title="Accelerated program options"
+          links={acceleratedLinks}
+        />
+      )}
+      {!!concurrentLinks.length && (
+        <ContentBlock
+          title="Concurrent degree program"
+          links={concurrentLinks}
+        />
+      )}
     </section>
   );
 }
 
-FlexibleDegreeOptions.propTypes = {};
+FlexibleDegreeOptions.propTypes = {
+  acceleratedLinks: flexibleDegreeOptionsLinks,
+  concurrentLinks: flexibleDegreeOptionsLinks,
+};
 
 export { FlexibleDegreeOptions };

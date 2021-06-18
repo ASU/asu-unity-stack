@@ -79,6 +79,13 @@ const cardPropTypes = PropTypes.shape({
   buttonLink: buttonPropTypes,
 });
 
+const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
+  PropTypes.shape({
+    title: PropTypes.string,
+    url: PropTypes.string,
+  })
+);
+
 export {
   accordionCardPropTypes,
   buttonPropTypes,
@@ -91,4 +98,5 @@ export {
   dataSourcePropType,
   glanceItemPropType,
   cardPropTypes,
+  flexibleDegreeOptionsLinks,
 };
