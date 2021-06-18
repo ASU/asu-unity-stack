@@ -40,10 +40,9 @@
  * }} AtAGlanceProps
  */
 
-// todo: to be finished
 /**
- *  @typedef {{
- *  buttons: import("./shared-types").LinkItem []
+ * @typedef {{
+ *  accordionCards: import("./shared-types").AccordionCard []
  * }} ApplicationRequirementsProps
  */
 

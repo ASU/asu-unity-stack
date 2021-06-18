@@ -22,7 +22,7 @@ export const AtAGlance = ({
   timeCommitment,
 }) => {
   return (
-    <section>
+    <section className="pt-6">
       <h2>
         <span className="highlight-gold">At a glance: program details</span>
       </h2>

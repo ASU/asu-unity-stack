@@ -1,6 +1,15 @@
 // @ts-check
 import PropTypes from "prop-types";
 
+const accordionCardPropTypes = PropTypes.shape({
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: PropTypes.shape({
+    icon: PropTypes.string,
+    header: PropTypes.string,
+    body: PropTypes.string,
+  }),
+});
+
 const buttonPropTypes = PropTypes.shape({
   ariaLabel: PropTypes.string,
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
@@ -63,7 +72,15 @@ const glanceItemPropType = PropTypes.shape({
   url: PropTypes.string,
 });
 
+const cardPropTypes = PropTypes.shape({
+  icon: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  buttonLink: buttonPropTypes,
+});
+
 export {
+  accordionCardPropTypes,
   buttonPropTypes,
   linkPropType,
   videoPropType,
@@ -73,4 +90,5 @@ export {
   contentPropTypes,
   dataSourcePropType,
   glanceItemPropType,
+  cardPropTypes,
 };

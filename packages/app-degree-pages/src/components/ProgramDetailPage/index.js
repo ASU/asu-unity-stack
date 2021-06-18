@@ -10,11 +10,12 @@ import {
   dataSourcePropType,
   imagePropType,
   linkPropType,
+  cardPropTypes,
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { AffordingCollege } from "./components/AffordingCollege";
-import { ApplicationRequirment } from "./components/ApplicationRequirment";
+import { ApplicationRequirements } from "./components/ApplicationRequirements";
 import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
@@ -82,6 +83,7 @@ const ProgramDetailPage = ({
   globalOpportunity,
   attendOnline,
   programContactInfo,
+  nextSteps,
 }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
@@ -148,7 +150,23 @@ const ProgramDetailPage = ({
                   timeCommitment="***TBD"
                 />
 
-                <ApplicationRequirment />
+                <ApplicationRequirements
+                  accordionCards={[
+                    {
+                      content: {
+                        header: "Aditional Requirements",
+                        // Change data after filter on degree type
+                        body: resolver.getDescrLongExtented5(),
+                      },
+                    },
+                    {
+                      content: {
+                        header: "Transfer Admission Requirements",
+                        body: resolver.getTransferAdmission(),
+                      },
+                    },
+                  ]}
+                />
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
               </div>
@@ -172,7 +190,7 @@ const ProgramDetailPage = ({
               </div>
             </div>
             <div className="row pl-3">
-              <NextSteps />
+              <NextSteps cards={nextSteps.cards} />
 
               <AffordingCollege />
 
@@ -239,6 +257,9 @@ ProgramDetailPage.propTypes = {
     emailUrl: PropTypes.string,
   }),
   attendOnline: PropTypes.shape({ image: imagePropType }),
+  nextSteps: PropTypes.shape({
+    cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  }),
 };
 
 export { ProgramDetailPage };
