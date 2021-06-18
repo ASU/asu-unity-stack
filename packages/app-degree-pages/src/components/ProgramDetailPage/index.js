@@ -16,6 +16,7 @@ import { degreeDataPropResolverService } from "../../core/services";
 import {
   urlResolver,
   formatAcceleratedConcurrentLinks,
+  formatCareerData,
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
@@ -212,8 +213,11 @@ const ProgramDetailPage = ({
                 image={careerOutlook.image}
                 contents={[{ text: resolver.getAsuCareerOpportunity() }]}
               />
-              {resolver.getCareerData()?.length && (
-                <ExampleCareers tableData={resolver.getCareerData()} />
+
+              {resolver.hasCareerData() && (
+                <ExampleCareers
+                  tableData={formatCareerData(resolver.getCareerData())}
+                />
               )}
 
               <CustomizeYourCollegeExperience />

@@ -10,15 +10,13 @@ const formatAcceleratedConcurrentLinks = links =>
     url: link.PlanUrl,
   }));
 
-export { formatAcceleratedConcurrentLinks };
-
 /**
  *
  * @param {object[]} careerData
  */
 
-const formatCareerData = careerData => {
-  return careerData?.map(data => ({
+const formatCareerData = careerData =>
+  careerData?.map(data => ({
     career: {
       text: data.careerDataAlterOnetTitle,
       url: `https://webapp4.asu.edu/programs/t5/careerdetails/`,
@@ -28,6 +26,5 @@ const formatCareerData = careerData => {
     brightOutlook: !!data.careerDataBrightOutlook,
     greenOccupation: !!data.careerDataGreen,
   }));
-};
 
-export { formatCareerData };
+export { formatAcceleratedConcurrentLinks, formatCareerData };
