@@ -3,20 +3,17 @@ import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import {
-  Filters,
-  FiltersSummary,
-  Loader,
-  SearchBar,
-  ProgramList,
-} from "../../core/components";
-// import { DataViewSwitch } from "../../core/components/ProgramList/DataViewSwitch";
+import { Loader } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import { Filters } from "./components/Filters";
+import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
+import { ProgramList } from "./components/ProgramList";
+import { SearchBar } from "./components/SearchBar";
 
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
@@ -28,7 +25,7 @@ import { IntroContent } from "./components/IntroContent";
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
-const ListingPage = ({ hero, introContent, programList }) => {
+const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{programs: []}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
@@ -169,6 +166,7 @@ const ListingPage = ({ hero, introContent, programList }) => {
 
       <main className="container" data-is-loading={loading}>
         <IntroContent
+          applyNowUrl={applyNowUrl}
           type={introContent.type}
           header={introContent.header}
           title={introContent.title}
@@ -218,6 +216,7 @@ const ListingPage = ({ hero, introContent, programList }) => {
 };
 
 ListingPage.propTypes = {
+  applyNowUrl: PropTypes.string,
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
   programList: PropTypes.shape({

@@ -88,8 +88,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /**
  *  @typedef {{
  *    title?: string
+ *    contentDirection?: "left" |  "right"
  *    contents?: import("./shared-types").ContentItem[]
  *    image: import("./shared-types").ImageItem
+ *    contentChildren?: JSX.Element
  * }} OverlapContentImage
  */
 

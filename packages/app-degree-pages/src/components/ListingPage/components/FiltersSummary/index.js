@@ -15,7 +15,7 @@ import { idGenerator } from "../../../../core/utils";
  */
 function FiltersSummary({ appliedFilters = [], onRemoveFilter }) {
   const genFilterId = idGenerator("filter-");
-  return (
+  const template = (
     <div>
       <header>
         <strong>Applied filters</strong>
@@ -38,6 +38,9 @@ function FiltersSummary({ appliedFilters = [], onRemoveFilter }) {
       </div>
     </div>
   );
+
+  return template;
+  // return appliedFilters.length > 0 ? template : null;
 }
 
 FiltersSummary.propTypes = {

@@ -3,6 +3,7 @@
 
 /**
  * @typedef {{
+ *    applyNowUrl?: string
  *    type?: "text" | "text-image-overlay" | "text-photo-grid"
  *    image?: import("./shared-types").ImageItem
  *    header?: import("./shared-types").AppTitleProps
@@ -63,6 +64,7 @@
 
 /**
  * @typedef {{
+ *  applyNowUrl?: string
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programList?: GridListProps

@@ -3,6 +3,8 @@
 
 import { fetchData } from "../utils/fetch-data";
 
+// for the final release this must be change to a relative path
+// likely would be `const path = "/programs";`
 const path = "https://webapp4.asu.edu/programs";
 // const path = "/programs";
 
@@ -51,7 +53,7 @@ function accellerateDegreeLink(
   return `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
 }
 
-function accellerateDegreeDynamicLink(
+function accellerateDegreeTooltipLink(
   acadPlanCode,
   institutionCode = "ASU00",
   program = "undergrad"
@@ -94,7 +96,7 @@ export {
   mapTooltipLink,
   mapTooltipSubPlanMapLink,
   accellerateDegreeLink,
-  accellerateDegreeDynamicLink,
+  accellerateDegreeTooltipLink,
   requestInfoLink,
   saveFav,
   applyNow,

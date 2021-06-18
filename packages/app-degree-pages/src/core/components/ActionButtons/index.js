@@ -1,8 +1,23 @@
-// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+// TODO: THIS COMPONENTs are CURRENTLY DEFERRED
 // @ts-check
 import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
+
+const ApplyNow = ({ href = null }) => (
+  // @ts-ignore
+  <Button
+    label="Apply now"
+    ariaLabel="Apply now"
+    href={href}
+    color="gold"
+    size="small"
+  />
+);
+
+ApplyNow.propTypes = {
+  href: PropTypes.string,
+};
 
 const RequestInfo = ({ href }) => (
   // @ts-ignore
@@ -30,4 +45,4 @@ RequestInfo.propTypes = {
   href: PropTypes.string,
 };
 
-export { RequestInfo };
+export { ApplyNow, RequestInfo };

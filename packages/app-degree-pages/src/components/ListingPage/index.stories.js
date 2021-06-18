@@ -17,8 +17,9 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ hero, introContent, programList }) => (
+const Template = ({ applyNowUrl, hero, introContent, programList }) => (
   <ListingPage
+    applyNowUrl={applyNowUrl}
     hero={hero}
     introContent={introContent}
     programList={programList}
@@ -26,15 +27,12 @@ const Template = ({ hero, introContent, programList }) => (
 );
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps}}
  */
 export const UndergraduateDegreePage = Template.bind({});
 
-/**
- * @type {AppProps}
- */
 UndergraduateDegreePage.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
@@ -69,25 +67,29 @@ UndergraduateDegreePage.args = {
   programList: {
     dataSource:
       "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
-      "?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan," +
+      "?init=false" +
+      "&method=findAllDegrees" +
+      "&fields=Descr100,Institution,AcadPlan," +
       "Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
       "AsuCritTrackUrl,AsuOfficeLoc,CampusStringArray,AcadPlan,accelerateDegrees,concurrentDegrees," +
       "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
       "AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity," +
-      "&init=false&program=undergrad&cert=false",
+      "&init=false" +
+      "&program=undergrad" +
+      "&cert=false",
   },
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps}}
  */
-export const AreaStudyDgreePage1 = Template.bind({});
+export const AreaStudyDegreePage1 = Template.bind({});
 
 /**
  * @type {AppProps}
  */
-AreaStudyDgreePage1.args = {
+AreaStudyDegreePage1.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
@@ -139,12 +141,13 @@ AreaStudyDgreePage1.args = {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const AreaStudyDgreePage2 = Template.bind({});
+export const AreaStudyDegreePage2 = Template.bind({});
 
 /**
- * @type {AppProps}
+ * @type {{ args: AppProps}}
  */
-AreaStudyDgreePage2.args = {
+AreaStudyDegreePage2.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
@@ -181,7 +184,7 @@ AreaStudyDgreePage2.args = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url: "https://source.unsplash.com/random/800x600?a=1",
     },
   },
   programList: {
