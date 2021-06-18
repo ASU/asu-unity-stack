@@ -1,9 +1,10 @@
+// @ts-nocheck
+/* eslint-disable no-undef, func-names, no-unused-vars, no-plusplus */
+
 /* dataLayer event push to GA. */
 export function pushDataLayerEventToGa(eventValue) {
   // PUSH TO GA.
-  // @ts-ignore
-  if (typeof dataLayer != "undefined") {
-    // @ts-ignore
+  if (typeof dataLayer !== "undefined") {
     dataLayer.push({ event: eventValue });
   }
 }
@@ -13,38 +14,41 @@ export function pushDataLayerEventToGa(eventValue) {
  * @asuonline account Id: UA-141599-1
  * @asu enterprise account ID: UA-42798992-4
  */
-export function setClientId(value) {
-  if ("undefined" != typeof ga) {
-    return ga(function () {
+export function setClientId(payload) {
+  const output = payload;
+  if (typeof ga !== "undefined") {
+    ga(function () {
       let cidE = "";
       let cidA = "";
-      let gaIds = ga.getAll();
-      let i, size, match;
+      const gaIds = ga.getAll();
+      let i;
+      let size;
+      let match;
       for (i = 0, size = gaIds.length, match = 0; i < size; i++) {
-        if (gaIds[i].get("trackingId") === "UA-141599-1" && cidE == "") {
-          //The field name sent to the Lead API should be clientid
-          //You can use an existing field or create it dynamicaly
+        if (gaIds[i].get("trackingId") === "UA-141599-1" && cidE === "") {
+          // The field name sent to the Lead API should be clientid
+          // You can use an existing field or create it dynamicaly
           cidE = gaIds[i].get("clientId");
-          //e.g. $("#clientid").val(gaIds[i].get('clientId'));
-          // RFI TWEAK: patch clientid onto value object.
-          value.clientid = cidE;
-          value.ga_clientid = cidE; // TODO confirm correct sourcing for ga_clientid
+          // e.g. $("#clientid").val(gaIds[i].get('clientId'));
+          // RFI TWEAK: patch clientid onto output object.
+          output.clientid = cidE;
+          output.ga_clientid = cidE; // TODO confirm correct sourcing for ga_clientid
         } else if (
           gaIds[i].get("trackingId") === "UA-42798992-4" &&
-          cidA == ""
+          cidA === ""
         ) {
-          //The field name sent to the Lead API should be enterpriseclientid
-          //You can use an existing field or create it dynamicaly
+          // The field name sent to the Lead API should be enterpriseclientid
+          // You can use an existing field or create it dynamicaly
           cidA = gaIds[i].get("clientId");
-          //e.g. $("#enterpriseclientid").val(gaIds[i].get('clientId'));
-          // RFI TWEAK: patch enterpriseclientid onto value object.
-          value.enterpriseclientid = cidA;
-          value.ga_clientid = cidA; // TODO confirm correct sourcing for ga_clientid
+          // e.g. $("#enterpriseclientid").val(gaIds[i].get('clientId'));
+          // RFI TWEAK: patch enterpriseclientid onto output object.
+          output.enterpriseclientid = cidA;
+          output.ga_clientid = cidA; // TODO confirm correct sourcing for ga_clientid
         }
       }
-      return cidA;
     });
   }
+  return output;
 }
 
 /* This function gets the client Ids from GA accounts

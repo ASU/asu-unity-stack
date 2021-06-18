@@ -8,12 +8,12 @@ import { aboutMeForm } from "../steps/AboutMe";
 import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
 import { successForm } from "../steps/Success";
-import { RfiStepper } from "./RfiStepper";
 import { setClientId, pushDataLayerEventToGa } from "../utils/google-analytics";
 import {
   submissionFormFieldPrep,
   submissionSetHiddenFields,
 } from "../utils/submission-helpers";
+import { RfiStepper } from "./RfiStepper";
 
 const RfiMainForm = ({
   Campus,
@@ -72,32 +72,33 @@ const RfiMainForm = ({
                 handleSubmit={value => {
                   // MARSHALL FIELDS FOR THE PAYLOAD
 
-                  submissionFormFieldPrep(value);
-                  submissionSetHiddenFields(value, Test);
+                  let payload = value;
+                  payload = submissionFormFieldPrep(payload);
+                  payload = submissionSetHiddenFields(payload, Test);
 
                   // Patch ASUOnline clientid or enterpriseclientid and also
-                  // ga_clientid onto value.
+                  // ga_clientid onto payload.
                   // TODO Confirm sourcing for ga_clientid
-                  setClientId(value);
+                  payload = setClientId(payload);
 
                   // Google Analytics push to simulate submit button click
                   // after validation has occurred.
                   pushDataLayerEventToGa("rfi-submit");
 
                   // eslint-disable-next-line no-alert
-                  alert(`SUBMITTED FORM \n${JSON.stringify(value, null, 2)}`);
+                  alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
 
                   fetch(
                     // TODO TODO TODO UPDATE TEST URL TO POINT TO CLIENT PROXY
                     `http://echo.jsontest.com/${JSON.stringify(
-                      value,
+                      payload,
                       null,
                       2
                     )}`,
                     {
                       method: "POST",
                       // We convert the React state to JSON and send it as the POST body
-                      body: JSON.stringify(JSON.stringify(value, null, 2)),
+                      body: JSON.stringify(JSON.stringify(payload, null, 2)),
                     }
                   ).then(function (response) {
                     console.log(response);
