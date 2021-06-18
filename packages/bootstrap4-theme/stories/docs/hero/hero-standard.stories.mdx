@@ -11,6 +11,7 @@ Hero content sections come in three different size varieties.
 - `uds-hero-lg` - Will be 32rem (512px) tall on mobile and 42.75rem (684px) tall on desktop.
 
 The recommended markup for a hero image is as follows:
+
 ```
 <div class="uds-hero-md">
   <img class="hero" src="" alt="Don't forget the alt text." />
@@ -36,18 +37,26 @@ Within the context of the hero section, the inclusion of an image is mandatory. 
 
 ### The image ###
 
-Images optimized for mobile should be cropped to the following dimentions.
-Small and medium heroes: 768px width by 256px height
-Large heroes:
+Images optimized for mobile should be cropped to the following dimensions.
+
+- Small and medium heroes: 768px width by 256px height
+- Large heroes: 768px width by 512px height
+
+Images intended for a desktop display should be cropped to 1920px wide and should use the following heights.
+
+- Small hero, desktop: 265px
+- Medium hero, desktop: 512px
+- Large hero, desktop: 684px
 
 The hero section uses a standard `<img>` tag to express the background image of the section.
 
 - Be sure to include meaningful alt text for your hero image.
-- A background gradiant is automatically applied to the background image when viewing the hero on a tablet or desktop sized viewport.
+- A background gradient is automatically applied to the background image when viewing the hero on a tablet or desktop sized viewport.
 - Within the `<img>` tag, you can also chose to include a `srcset` of images that are appropriately sized for the indicated viewport.
-- The `srcset` sizes offer additional opportinites for art direction via specific cropping of the original image.
+- The `srcset` sizes offer additional opportunities for art direction via specific cropping of the original image.
 
 A fancy `<img>` example:
+
 ```
 <div class="uds-hero-md">
   <img class="hero"
@@ -101,7 +110,7 @@ Be sure to wrap your description or introduction text in a `<div class="content"
 
 
 - By default, this content will appear immediately below the background image when viewed on a mobile device.
-- For best results, consider including this kind of content within a medium (`uds-hero-md`) or large (`uds-hero-lg`) hero section omly.
+- For best results, consider including this kind of content within a medium (`uds-hero-md`) or large (`uds-hero-lg`) hero section only.
 - You may use multiple small paragraphs if desired.
 - You may use a standard unordered/ordered list if desired. (Avoid the use of the `uds-list` element here for best results.)
 - You may **not** use a standard link within this text. Instead, consider using a call to action button.
@@ -112,7 +121,7 @@ Be sure to wrap your description or introduction text in a `<div class="content"
   ...
   <div class="content text-white">
     <p>Introduction text can occur here.</p>
-    <p>If multiple paragraphs are desired, that should be OK in most circumatances.</p>
+    <p>If multiple paragraphs are desired, that should be OK in most circumstances.</p>
   </div>
   ...
 </div>
@@ -166,7 +175,7 @@ On a mobile device, buttons will wrap to a new line as necessary. They will also
 
 By default, content presented within the `<div class="content">` wrapper will appear immediately below the background image for a standard hero when viewing the page on a mobile device. This is to prevent the loss of information when viewing a potentially important description or introduction to the page.
 
-If you would like to prevent this content from being displayed at all, include a `hide-content` class along with the initial size declarartion for the hero.
+If you would like to prevent this content from being displayed at all, include a `hide-content` class along with the initial size declaration for the hero.
 
 ```
 <div class="uds-hero-md hide-content">
