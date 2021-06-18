@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Loader } from "../../core/components";
+import { Loader, Video } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   dataSourcePropType,
@@ -33,7 +33,6 @@ import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
-import { VideoPage } from "./components/VideoPage";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
 
@@ -176,7 +175,7 @@ const ProgramDetailPage = ({
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 {introContent.video && (
-                  <VideoPage
+                  <Video
                     url={introContent.video.url}
                     vttUrl={introContent.video.vttUrl}
                     altText={introContent.video.altText}

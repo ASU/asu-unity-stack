@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {import('../../../../core/models/shared-types').VideoItem} VideoItem
+ * @typedef {import('../../models/shared-types').VideoItem} VideoItem
  */
 
 /**
@@ -10,7 +10,7 @@ import React from "react";
  * @param {VideoItem} props
  * @returns
  */
-const VideoPage = ({ url = "", vttUrl, altText = "" }) => (
+const Video = ({ url = "", vttUrl, altText = "" }) => (
   <div className="uds-video-container">
     <div className="uds-video-player">
       <video title={altText}>
@@ -54,10 +54,10 @@ const VideoPage = ({ url = "", vttUrl, altText = "" }) => (
   </div>
 );
 
-VideoPage.propTypes = {
+Video.propTypes = {
   url: PropTypes.string,
   vttUrl: PropTypes.string,
   altText: PropTypes.string,
 };
 
-export { VideoPage };
+export { Video };
