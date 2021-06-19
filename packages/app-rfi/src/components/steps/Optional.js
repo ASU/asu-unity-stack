@@ -16,15 +16,10 @@ function getCountryOptions(resultsArrayOfObjects) {
   // TODO Resolve eslint error when dust settles. Not hurting anything for now.
   // eslint-disable-next-line no-return-assign
   const results = resultsArrayOfObjects.map(co => ({
-    key: (i += 1),
+    key: (i += 1).toString(),
     value: co.countryCodeTwoChar,
     text: co.description,
   }));
-  results.unshift({
-    key: 0,
-    value: "",
-    text: "Select country...",
-  });
   return results;
 }
 
@@ -33,7 +28,7 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
   if (!(formikValues.Country === "US" || formikValues.Country === "CA")) {
     return [
       {
-        key: 0,
+        key: "0",
         value: "",
         text: "",
       },
@@ -56,15 +51,10 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
   // TODO Resolve eslint error when dust settles. Not hurting anything for now.
   // eslint-disable-next-line no-return-assign
   const results = arrayOfStates.map(st => ({
-    key: (i += 1),
+    key: (i += 1).toString(),
     value: st.description,
     text: st.description,
   }));
-  results.unshift({
-    key: 0,
-    value: "",
-    text: "Select state or province...",
-  });
   return results;
 }
 

@@ -20,8 +20,14 @@ const RfiEmailInput = ({ name, label, id, requiredIcon }) => {
               id={id}
               requiredIcon={requiredIcon}
             />
-            <input type="text" {...field} id={id} className="form-control" />
-            <RfiError isError={isError} metaError={meta.error} />
+            <Field
+              type="email"
+              name={name}
+              id={id}
+              {...field}
+              className="form-control"
+            />
+            <RfiError isError={!!isError} metaError={meta.error} />
           </div>
         );
       }}

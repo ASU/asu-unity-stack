@@ -121,11 +121,6 @@ async function fetchDegreeByAcadPlan(acadPlan) {
 
 const campusOptions = [
   {
-    key: "0",
-    value: "",
-    text: "Select...",
-  },
-  {
     key: "1",
     value: "GROUND",
     text: "I plan to take some/all of my classes on campus",
@@ -143,7 +138,6 @@ const campusOptions = [
 ];
 
 const studentTypeOptionsDefault = [
-  { key: "0", value: "", text: "Select..." },
   { key: "1", value: "First Time Freshman", text: "First-year undergraduate" },
   { key: "2", value: "Transfer", text: "Transferring undergraduate" },
   {
@@ -174,7 +168,6 @@ const ProgramInterest = props => {
       text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
-  const [selectKey, setSelectKey] = useState(0);
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -234,7 +227,6 @@ const ProgramInterest = props => {
           // PoI is undergrad degree.
           // Set only undergrad options for studentTypeOptions.
           setStudentTypeOptions([
-            { key: "-1", value: "", text: "Select..." },
             {
               key: "1",
               value: "First Time Freshman",
@@ -283,16 +275,11 @@ const ProgramInterest = props => {
       const areasOfInterest = [
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
-      const aoiOptions = areasOfInterest.map(aoi => ({
-        key: aoi,
+      const aoiOptions = areasOfInterest.map((aoi, index) => ({
+        key: index.toString(), //
         value: aoi,
         text: aoi,
       }));
-      aoiOptions.unshift({
-        key: -1,
-        value: "",
-        text: "Select...",
-      });
       setAreaInterestOptions(aoiOptions);
     } else {
       // DS REST Areas of Interest
@@ -315,16 +302,11 @@ const ProgramInterest = props => {
       const areasOfInterest = [
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
-      const aoiOptions = areasOfInterest.map(aoi => ({
-        key: aoi,
+      const aoiOptions = areasOfInterest.map((aoi, index) => ({
+        key: aoi.toString(),
         value: aoi,
         text: aoi,
       }));
-      aoiOptions.unshift({
-        key: -1,
-        value: "",
-        text: "Select...",
-      });
       setAreaInterestOptions(aoiOptions);
     }
   }, [degreeData, values.CareerAndStudentType, values.Campus]);
@@ -348,16 +330,11 @@ const ProgramInterest = props => {
       // No Department or College filter for ASUOnline degree data.
 
       // ASUOnline mapping
-      const poiOptions = degreeDataProcessed.map(program => ({
-        key: program.code,
+      const poiOptions = degreeDataProcessed.map((program, index) => ({
+        key: index.toString(),
         value: program.code,
         text: program.title,
       }));
-      poiOptions.unshift({
-        key: -1,
-        value: "",
-        text: "Select...",
-      });
       setProgramInterestOptions(poiOptions);
     } else {
       // Filter with form's values.Interest1 against data's planCatDescr
@@ -376,16 +353,11 @@ const ProgramInterest = props => {
 
       // Degree Search REST mapping
       // DS REST value: AcadPlan and label: Descr100;
-      const poiOptions = degreeDataProcessed.map(program => ({
-        key: program.AcadPlan,
+      const poiOptions = degreeDataProcessed.map((program, index) => ({
+        key: index.toString(),
         value: program.AcadPlan,
         text: program.Descr100,
       }));
-      poiOptions.unshift({
-        key: -1,
-        value: "",
-        text: "Select...",
-      });
       setProgramInterestOptions(poiOptions);
     }
   }, [
@@ -458,7 +430,6 @@ const ProgramInterest = props => {
 // Props
 // For full canonical list of props, see RfiMainForm.js
 ProgramInterest.defaultProps = {
-  AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
   // Used but indirectly.
@@ -467,7 +438,6 @@ ProgramInterest.defaultProps = {
 };
 
 ProgramInterest.propTypes = {
-  AreaOfInterest: PropTypes.string,
   ProgramOfInterest: PropTypes.string,
   ProgramOfInterestOptional: PropTypes.bool,
   // Used but indirectly.

@@ -54,7 +54,7 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
               buttonClass="rfi-phone-input-button"
               dropdownClass="rfi-phone-input-dropdown"
             />
-            <RfiError isError={isError} metaError={meta.error} />
+            <RfiError isError={!!isError} metaError={meta.error} />
           </div>
         );
       }}

@@ -70,15 +70,14 @@ const AboutMe = () => {
               programs: [{ applyInfo }],
             } = data;
             // Convert object to array so we can .sort and .map.
-            const termOptions = Object.entries(applyInfo)
+            const termData = Object.entries(applyInfo)
               .sort((a, b) => (a[1] > b[1] ? 1 : -1))
               .map(termValue => ({
                 key: termValue[0].split(":")[2],
                 value: termValue[0].split(":")[2],
                 text: termValue[1].split(":")[0],
               }));
-            termOptions.unshift({ key: "-1", value: "", text: "Select..." });
-            setTermOptions(termOptions);
+            setTermOptions(termData);
           })
           .catch(error => new Error(error));
       }
@@ -114,7 +113,6 @@ const AboutMe = () => {
           });
         }
       }
-      termData.unshift({ key: "-1", value: "", text: "Select..." });
       setTermOptions(termData);
     }
   }, []); // Run once. If user changes degree, runs again on return to the step.

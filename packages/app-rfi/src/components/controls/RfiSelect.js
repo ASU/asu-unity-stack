@@ -20,6 +20,8 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
   // NOTE: We implement custom validation related to RfiSelect in
   // RfiStepper.js in order to manage dependency logic across steps.
 
+  //error={isError}
+
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
@@ -27,10 +29,10 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
         as="select"
         id={id}
         className="form-control"
-        error={isError}
         disabled={disabled}
         {...field}
       >
+        <option defaultValue>Select&hellip;</option>
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}
@@ -40,7 +42,7 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
           </option>
         ))}
       </Field>
-      <RfiError isError={isError} metaError={meta.error} />
+      <RfiError isError={!!isError} metaError={meta.error} />
     </div>
   );
 };

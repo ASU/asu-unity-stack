@@ -20,9 +20,10 @@ const RfiTextArea = ({ label, name, id, requiredIcon }) => {
               id={id}
               requiredIcon={requiredIcon}
             />
-            <textarea
+            <Field
+              as="textarea"
+              name={name}
               id={id}
-              error={isError}
               {...field}
               className="form-control"
             />

@@ -36,14 +36,15 @@ const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
               id={id}
               requiredIcon={requiredIcon}
             />
-            <input
+            <Field
               id={id}
+              name={name}
               type="text"
               {...field}
               className="form-control"
               placeholder={helperText}
             />
-            <RfiError isError={isError} metaError={meta.error} />
+            <RfiError isError={!!isError} metaError={meta.error} />
           </div>
         );
       }}
