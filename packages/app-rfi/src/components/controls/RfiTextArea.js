@@ -7,7 +7,7 @@ import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiTextArea = ({ label, name, id, requiredIcon }) => {
+const RfiTextArea = ({ label, name, id, requiredIcon, autoFocus }) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
@@ -26,6 +26,7 @@ const RfiTextArea = ({ label, name, id, requiredIcon }) => {
               id={id}
               {...field}
               className="form-control"
+              autoFocus={autoFocus}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
           </div>
@@ -49,6 +50,7 @@ RfiTextArea.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 };
 
 export { RfiTextArea };

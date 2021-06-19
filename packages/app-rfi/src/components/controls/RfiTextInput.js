@@ -7,7 +7,14 @@ import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
+const RfiTextInput = ({
+  label,
+  name,
+  id,
+  requiredIcon,
+  helperText,
+  autoFocus,
+}) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
@@ -43,6 +50,7 @@ const RfiTextInput = ({ label, name, id, requiredIcon, helperText }) => {
               {...field}
               className="form-control"
               placeholder={helperText}
+              autoFocus={autoFocus}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
           </div>
@@ -68,6 +76,7 @@ RfiTextInput.propTypes = {
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
   helperText: PropTypes.string,
+  autoFocus: PropTypes.bool,
 };
 
 export { RfiTextInput };

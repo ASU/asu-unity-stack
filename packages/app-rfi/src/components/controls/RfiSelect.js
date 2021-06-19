@@ -10,7 +10,15 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 // Note: We use a mix of Field and useField here to circumvent issues
 // experienced using solely one of the other.
 
-const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
+const RfiSelect = ({
+  id,
+  label,
+  name,
+  requiredIcon,
+  options,
+  disabled,
+  autoFocus,
+}) => {
   const [field, meta, helpers] = useField({ name });
   const isError = meta.touched && meta.error; // TODO generating non fatal error
 
@@ -30,6 +38,7 @@ const RfiSelect = ({ id, label, name, requiredIcon, options, disabled }) => {
         id={id}
         className="form-control"
         disabled={disabled}
+        autoFocus={autoFocus}
         {...field}
       >
         <option defaultValue>Select&hellip;</option>
@@ -70,6 +79,7 @@ RfiSelect.propTypes = {
   ).isRequired,
   disabled: PropTypes.bool,
   requiredIcon: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 };
 
 export { RfiSelect };

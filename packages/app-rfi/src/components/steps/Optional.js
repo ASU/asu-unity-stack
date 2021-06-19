@@ -175,6 +175,7 @@ const Optional = () => {
         id="CitizenshipCountry"
         name="CitizenshipCountry"
         options={countryOptions}
+        autoFocus
       />
       {/*
       <RfiCheckboxSingle id="notCitizen" name="notCitizen" value="1">

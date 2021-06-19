@@ -125,6 +125,7 @@ const AboutMe = () => {
         id="EmailAddress"
         name="EmailAddress"
         requiredIcon
+        autoFocus
       />
       <RfiTextInput
         label="First name"
