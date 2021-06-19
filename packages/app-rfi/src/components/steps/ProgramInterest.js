@@ -121,25 +121,35 @@ async function fetchDegreeByAcadPlan(acadPlan) {
 
 const campusOptions = [
   {
+    key: "0",
+    value: "",
+    text: "Select...",
+  },
+  {
+    key: "1",
     value: "GROUND",
-    label: "I plan to take some/all of my classes on campus",
+    text: "I plan to take some/all of my classes on campus",
   },
   {
+    key: "2",
     value: "ONLNE",
-    label: "I plan to study 100% online through ASU Online",
+    text: "I plan to study 100% online through ASU Online",
   },
   {
+    key: "3",
     value: "NOPREF",
-    label: "I am not sure",
+    text: "I am not sure",
   },
 ];
 
 const studentTypeOptionsDefault = [
-  { value: "First Time Freshman", label: "First-year undergraduate" },
-  { value: "Transfer", label: "Transferring undergraduate" },
+  { key: "0", value: "", text: "Select..." },
+  { key: "1", value: "First Time Freshman", text: "First-year undergraduate" },
+  { key: "2", value: "Transfer", text: "Transferring undergraduate" },
   {
+    key: "3",
     value: "Readmission",
-    label: "Graduate (Masters, PhD, EdD, DNP, etc.)",
+    text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
   },
 ];
 
@@ -152,14 +162,16 @@ const ProgramInterest = props => {
   );
   const [areaInterestOptions, setAreaInterestOptions] = useState([
     {
+      key: "1",
       value: "",
-      label: "Load failed. Please try again in 5 minutes.",
+      text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
   const [programInterestOptions, setProgramInterestOptions] = useState([
     {
+      key: "1",
       value: "",
-      label: "Load failed. Please try again in 5 minutes.",
+      text: "Load failed. Please try again in 5 minutes.",
     },
   ]);
   const [selectKey, setSelectKey] = useState(0);
@@ -216,12 +228,19 @@ const ProgramInterest = props => {
         // Update options for CareerAndStudentType
         // If Degree starts with a B, it's undergrad.
         // TODO Is there a better means of identifying undergrad programs?
+        // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
+        // wouldn't give us minors and certs, though).
         if (degree.programs[0].Degree.charAt(0) === "B") {
           // PoI is undergrad degree.
           // Set only undergrad options for studentTypeOptions.
           setStudentTypeOptions([
-            { value: "First Time Freshman", label: "First-year undergraduate" },
-            { value: "Transfer", label: "Transferring undergraduate" },
+            { key: "-1", value: "", text: "Select..." },
+            {
+              key: "1",
+              value: "First Time Freshman",
+              text: "First-year undergraduate",
+            },
+            { key: "2", value: "Transfer", text: "Transferring undergraduate" },
           ]);
         } else {
           // PoI is graduate degree.
@@ -229,8 +248,9 @@ const ProgramInterest = props => {
           // though we won't display this single option.
           setStudentTypeOptions([
             {
+              key: "3",
               value: "Readmission",
-              label: "Graduate (Masters, PhD, EdD, DNP, etc.)",
+              text: "Graduate (Masters, PhD, EdD, DNP, etc.)",
             },
           ]);
           // For Grad, set the value and we'll hide the field in the jsx.
@@ -244,16 +264,6 @@ const ProgramInterest = props => {
   useEffect(() => {
     if (!degreeDataIsLoaded()) {
       return;
-    }
-
-    // Force the the Area of Interest and Program of Interest selects to
-    // re-render ala https://github.com/JedWatson/react-select/issues/2846
-    // in order to clear selection when options reload. Best solve, given
-    // structural challenges.
-    setSelectKey(selectKey + 1);
-    // Also clear value used in Formik validation, as it doesn't get cleared.
-    if (!props.AreaOfInterest) {
-      values.Interest1 = undefined;
     }
 
     if (values.Campus === "ONLNE") {
@@ -273,12 +283,17 @@ const ProgramInterest = props => {
       const areasOfInterest = [
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
-      setAreaInterestOptions(
-        areasOfInterest.map(aoi => ({
-          value: aoi,
-          label: aoi,
-        }))
-      );
+      const aoiOptions = areasOfInterest.map(aoi => ({
+        key: aoi,
+        value: aoi,
+        text: aoi,
+      }));
+      aoiOptions.unshift({
+        key: -1,
+        value: "",
+        text: "Select...",
+      });
+      setAreaInterestOptions(aoiOptions);
     } else {
       // DS REST Areas of Interest
 
@@ -300,12 +315,17 @@ const ProgramInterest = props => {
       const areasOfInterest = [
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
-      setAreaInterestOptions(
-        areasOfInterest.map(aoi => ({
-          value: aoi,
-          label: aoi,
-        }))
-      );
+      const aoiOptions = areasOfInterest.map(aoi => ({
+        key: aoi,
+        value: aoi,
+        text: aoi,
+      }));
+      aoiOptions.unshift({
+        key: -1,
+        value: "",
+        text: "Select...",
+      });
+      setAreaInterestOptions(aoiOptions);
     }
   }, [degreeData, values.CareerAndStudentType, values.Campus]);
 
@@ -313,16 +333,6 @@ const ProgramInterest = props => {
   useEffect(() => {
     if (!degreeDataIsLoaded()) {
       return;
-    }
-
-    // Force the the Area of Interest and Program of Interest selects to
-    // re-render ala https://github.com/JedWatson/react-select/issues/2846
-    // in order to clear selection when options reload. Best solve, given
-    // structural challenges.
-    setSelectKey(selectKey + 1);
-    // Also clear value used in Formik validation, as it doesn't get cleared.
-    if (!props.ProgramOfInterest) {
-      values.Interest2 = undefined;
     }
 
     // Map programPlanOptions for Interest2
@@ -338,12 +348,17 @@ const ProgramInterest = props => {
       // No Department or College filter for ASUOnline degree data.
 
       // ASUOnline mapping
-      setProgramInterestOptions(
-        degreeDataProcessed.map(program => ({
-          value: program.code,
-          label: program.title,
-        }))
-      );
+      const poiOptions = degreeDataProcessed.map(program => ({
+        key: program.code,
+        value: program.code,
+        text: program.title,
+      }));
+      poiOptions.unshift({
+        key: -1,
+        value: "",
+        text: "Select...",
+      });
+      setProgramInterestOptions(poiOptions);
     } else {
       // Filter with form's values.Interest1 against data's planCatDescr
       const degreeDataFiltered = filterDegrees(
@@ -361,12 +376,17 @@ const ProgramInterest = props => {
 
       // Degree Search REST mapping
       // DS REST value: AcadPlan and label: Descr100;
-      setProgramInterestOptions(
-        degreeDataProcessed.map(program => ({
-          value: program.AcadPlan,
-          label: program.Descr100,
-        }))
-      );
+      const poiOptions = degreeDataProcessed.map(program => ({
+        key: program.AcadPlan,
+        value: program.AcadPlan,
+        text: program.Descr100,
+      }));
+      poiOptions.unshift({
+        key: -1,
+        value: "",
+        text: "Select...",
+      });
+      setProgramInterestOptions(poiOptions);
     }
   }, [
     degreeData,
@@ -418,7 +438,6 @@ const ProgramInterest = props => {
             name="Interest1"
             options={areaInterestOptions}
             requiredIcon
-            key={`aoi${selectKey}`}
           />
         )
       }
@@ -431,7 +450,6 @@ const ProgramInterest = props => {
         requiredIcon={
           !props.ProgramOfInterestOptional || values.Campus === "ONLNE"
         }
-        key={`poi${selectKey}`}
       />
     </>
   );

@@ -69,15 +69,16 @@ const AboutMe = () => {
             const {
               programs: [{ applyInfo }],
             } = data;
-            setTermOptions(
-              // Convert object to array so we can .sort and .map.
-              Object.entries(applyInfo)
-                .sort((a, b) => (a[1] > b[1] ? 1 : -1))
-                .map(termValue => ({
-                  value: termValue[0].split(":")[2],
-                  label: termValue[1].split(":")[0],
-                }))
-            );
+            // Convert object to array so we can .sort and .map.
+            const termOptions = Object.entries(applyInfo)
+              .sort((a, b) => (a[1] > b[1] ? 1 : -1))
+              .map(termValue => ({
+                key: termValue[0].split(":")[2],
+                value: termValue[0].split(":")[2],
+                text: termValue[1].split(":")[0],
+              }));
+            termOptions.unshift({ key: "-1", value: "", text: "Select..." });
+            setTermOptions(termOptions);
           })
           .catch(error => new Error(error));
       }
@@ -98,19 +99,22 @@ const AboutMe = () => {
         // Drop spring for current year.
         if (i > 0) {
           termData.push({
+            key: termSpring,
             value: termSpring,
-            label: `${year} Spring`,
+            text: `${year} Spring`,
           });
         }
         // Drop fall for current year if currMo is greater than June.
         if (i > 0 || currMo < 6) {
           // Month is based off zero index.
           termData.push({
+            key: termFall,
             value: termFall,
-            label: `${year} Fall`,
+            text: `${year} Fall`,
           });
         }
       }
+      termData.unshift({ key: "-1", value: "", text: "Select..." });
       setTermOptions(termData);
     }
   }, []); // Run once. If user changes degree, runs again on return to the step.
