@@ -21,6 +21,7 @@ const RfiEmailInput = ({ name, label, id, requiredIcon, autoFocus }) => {
               requiredIcon={requiredIcon}
             />
             <Field
+              as="input"
               type="email"
               name={name}
               id={id}
