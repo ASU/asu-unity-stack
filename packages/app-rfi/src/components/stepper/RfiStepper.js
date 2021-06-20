@@ -144,9 +144,9 @@ class RfiStepper extends React.Component {
 
     // Intercede with initial values from props.
     initValues.Campus = Campus;
-    if (StudentType === "Graduate") {
+    if (StudentType === "graduate") {
       initValues.CareerAndStudentType = "Readmission";
-    } else if (StudentType === "Undergrad") {
+    } else if (StudentType === "undergrad") {
       initValues.CareerAndStudentType = "First Time Freshman";
     }
     initValues.Interest1 = AreaOfInterest;

@@ -34,7 +34,7 @@ RfiDefault.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
@@ -50,7 +50,7 @@ RfiOnCollegePage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: "CGM", // CHI
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
@@ -66,7 +66,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: "CES",
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: "STEM",
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
@@ -85,7 +85,7 @@ RfiOnDegreePageUndergraduate.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: "TEESTEMBAE",
   ProgramOfInterestOptional: false,
@@ -101,7 +101,7 @@ RfiOnDegreePageGraduate.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: "TBGMCIDMGM",
   ProgramOfInterestOptional: false,
@@ -117,7 +117,7 @@ RfiOnCollegeDepartmentPage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: "CES",
   Department: "CINFOTECH",
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
@@ -133,7 +133,7 @@ RfiOnNonAcademicUnitPage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: "Health and Wellness",
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: true,
@@ -149,7 +149,7 @@ RfiOnCertOrMinorPage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: undefined, // Graduate, Undergrad
+  StudentType: undefined, // graduate, undergrad
   AreaOfInterest: undefined,
   ProgramOfInterest: "LAINSCERT",
   ProgramOfInterestOptional: false,
@@ -165,7 +165,7 @@ RfiOnCampaignLandingPage.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: "Graduate",
+  StudentType: "graduate",
   AreaOfInterest: undefined,
   ProgramOfInterest: "BAGLSMS",
   ProgramOfInterestOptional: false,
@@ -181,7 +181,7 @@ RfiTestMode.args = {
   Campus: "ONLNE", // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: "Graduate",
+  StudentType: "graduate",
   AreaOfInterest: "STEM",
   ProgramOfInterest: "GRGF-LABMYMS",
   ProgramOfInterestOptional: false,
@@ -197,7 +197,7 @@ RfiDevTester.args = {
   Campus: undefined, // ONLNE, GROUND, NOPREF
   College: undefined,
   Department: undefined,
-  StudentType: "Undergrad",
+  StudentType: "undergrad",
   AreaOfInterest: undefined,
   ProgramOfInterest: undefined,
   ProgramOfInterestOptional: false,
