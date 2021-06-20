@@ -276,7 +276,7 @@ const ProgramInterest = props => {
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
       const aoiOptions = areasOfInterest.map((aoi, index) => ({
-        key: index.toString(), //
+        key: index.toString(),
         value: aoi,
         text: aoi,
       }));
@@ -303,7 +303,7 @@ const ProgramInterest = props => {
         ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
       ].sort();
       const aoiOptions = areasOfInterest.map((aoi, index) => ({
-        key: aoi.toString(),
+        key: index.toString(),
         value: aoi,
         text: aoi,
       }));

@@ -49,12 +49,12 @@ module.exports = {
         exclude: /\.module\.css$/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/inline",
+        // type: "asset/resource",
+        // TODO Probably better to use asset/resource, but doesn't work with
+        // examples/rfi.html case, and unsure about how would work for CMSes.
+        // Reference: https://webpack.js.org/guides/asset-modules/
       },
     ],
   },

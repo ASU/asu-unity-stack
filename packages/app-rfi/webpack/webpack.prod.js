@@ -9,9 +9,12 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
     filename: "[name].min.js",
-    // libraryTarget: "umd",
-    // library: "AsuCookieConsent",
-    // umdNamedDefine: true,
+    library: {
+      name: "AsuRfi",
+      type: "umd",
+      umdNamedDefine: true,
+      // export: "default",
+    },
   },
   performance: {
     hints: "warning", // "error" or false are valid too

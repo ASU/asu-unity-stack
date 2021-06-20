@@ -45,7 +45,7 @@ const AsuRfi = ({
   );
 };
 
-export default AsuRfi;
+export { AsuRfi };
 
 // Props
 AsuRfi.defaultProps = {

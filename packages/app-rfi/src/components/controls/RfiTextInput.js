@@ -67,6 +67,7 @@ const RfiTextInput = ({
 RfiTextInput.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  autoFocus: undefined,
   helperText: undefined,
 };
 

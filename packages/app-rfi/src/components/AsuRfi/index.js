@@ -1,4 +1,4 @@
 // @ts-check
-import AsuRfi from "./AsuRfi";
+import { AsuRfi } from "./AsuRfi";
 
-export default AsuRfi;
+export { AsuRfi };

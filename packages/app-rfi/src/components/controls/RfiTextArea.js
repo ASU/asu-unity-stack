@@ -43,6 +43,7 @@ const RfiTextArea = ({ label, name, id, requiredIcon, autoFocus }) => {
 RfiTextArea.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  autoFocus: undefined,
 };
 
 RfiTextArea.propTypes = {

@@ -40,6 +40,7 @@ const RfiEmailInput = ({ name, label, id, requiredIcon, autoFocus }) => {
 RfiEmailInput.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  autoFocus: undefined,
 };
 
 RfiEmailInput.propTypes = {

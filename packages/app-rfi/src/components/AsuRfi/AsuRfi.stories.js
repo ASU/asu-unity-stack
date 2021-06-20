@@ -2,7 +2,7 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
-import AsuRfi from ".";
+import { AsuRfi } from ".";
 
 export default {
   title: "UDS/AsuRfi",

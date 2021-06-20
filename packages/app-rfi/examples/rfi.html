@@ -5,20 +5,52 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Degree Page- Example page</title>
+  <title>RFI component - Example page</title>
   <!-- CSS only -->
   <link rel="stylesheet"
     href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css" />
 
+  <!-- *************************************************************** -->
+  <!-- Load React. Use of unpkg for testing only. Self-host for production. -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin></script>
+  <!-- *************************************************************** -->
+
   <!-- include bundled scripts fropm RFI package -->
   <script src="../dist/appRfi.min.js"></script>
+
 </head>
 
 <body>
+  <!-- Initialize dataLayer for GA. Implementing sites will need this above GTM
+    snippet. More info: https://developers.google.com/tag-manager/devguide -->
+  <script>
+    dataLayer = [];
+  </script>
+
+  <!-- Google Tag Manager ASU Universal -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KDWN8Z');</script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KDWN8Z"
+      height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager ASU Universal -->
+
   <div class="container">
     <div class="d-flex justify-content-center border p-4">
-      <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
-      <div id="rfiContainer"></div>
+
+      <!-- Provide target div for RFI form. Unique ids or class names only. -->
+      <div id="rfi-container"></div>
+
     </div>
   </div>
 
@@ -26,8 +58,71 @@
     /**
      * This example shows how to use the RFI form component
      * from a static HTML page with plain vanilla JS
+     *
+     * React and React DOM are peer dependencies and must be included
+     * seperately as seen above. Please use locally installed copies for QA
+     * and Production sites. Unpkg examples above are for testing only.
+     *
+     * @asu-design-system/bootstrap4-theme@dev is also a peer depdenency and
+     * must be included separately. See link tag above for file to include.
+     *
+     * Additional details: Site hosting the Rfi component should have Google
+     * Tag Manager installed for proper sourcing of hidden field data and
+     * should initialize a dataLayer. Examples of both can be seen above.
+     *
+     * Find the right GTM code for your ASU site at https://unity.web.asu.edu.
+     *
+     * DEGREE SEARCH REST API QUERIES, FOR REFERENCE
+     * Best viewed in Postman. To view in your browser, install a JSON
+     * formatter extension.
+     * - Undergrad
+     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=undergrad
+     * - Graduate
+     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=graduate
+     * - Certs/Minors
+     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=true&program=graduate
+     *
+     * RFI COMPONENT PROPS, FOR REFERENCE
+     * - Campus: One of ONLNE, GROUND, NOPREF, or undefined
+     * - College: Use one acadOrgCode from reference
+     *     https://api.myasuplat-dpl.asu.edu/api/codeset/colleges
+     * - Department: Use one department code. See DepartmentCode values in
+     *     Degree Search API query.
+     * - StudentType: One of undergrad or graduate.
+     * - AreaOfInterest: One of planCatDescr values from Degree Search API
+     *     query.
+     * - ProgramOfInterest: One of AcadPlan from Degree Search API query.
+     *     (Note: Descr100 is used as label for this value in RFI UIs)
+     * - ProgramOfInterestOptional: true or false
+     * - IsCertMinor: true or false
+     * - Country: One 2 char country code ala
+     *     https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 or see data used by
+     *     RFI in https://api.myasuplat-dpl.asu.edu/api/codeset/countries
+     * - StateProvince: US or Canada only. Use a description field value from
+     *     https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states
+     * - SuccessMsg: A string. May contain HTML.
+     * - Test: true or false. Will send the form payload with Test === 1.
      */
-      // TODO
+
+    // Initialize the RFI form with provided props.
+    AsuRfi.initRfi({
+      targetSelector: "#rfi-container",
+      props: {
+        Campus: "NOPREF", // ONLNE, GROUND, NOPREF
+        College: undefined, // e.g. CES
+        Department: undefined, // e.g. CINFOTECH
+        StudentType: "undergrad",
+        AreaOfInterest: undefined, // e.g. STEM
+        ProgramOfInterest: undefined, // e.g. TSIFTBS
+        ProgramOfInterestOptional: false,
+        IsCertMinor: false,
+        Country: "US",
+        StateProvince: "Wyoming", // Only US states or CA provinces
+        SuccessMsg: "Success. <strong>You made it.</strong>",
+        Test: false,
+      },
+    });
+
   </script>
 </body>
 

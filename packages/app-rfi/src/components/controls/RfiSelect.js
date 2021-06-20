@@ -28,8 +28,6 @@ const RfiSelect = ({
   // NOTE: We implement custom validation related to RfiSelect in
   // RfiStepper.js in order to manage dependency logic across steps.
 
-  //error={isError}
-
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
@@ -63,6 +61,7 @@ const RfiSelect = ({
 RfiSelect.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  autoFocus: undefined,
   disabled: false,
 };
 
@@ -72,8 +71,8 @@ RfiSelect.propTypes = {
   name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
+      key: PropTypes.string,
+      value: PropTypes.string,
       text: PropTypes.string,
     })
   ).isRequired,
