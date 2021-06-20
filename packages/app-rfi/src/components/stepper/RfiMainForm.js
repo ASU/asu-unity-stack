@@ -90,6 +90,8 @@ const RfiMainForm = ({
 
                   fetch(
                     // TODO TODO TODO UPDATE TEST URL TO POINT TO CLIENT PROXY
+                    // NOTE: No prop required since we can use relative URL for
+                    // submit to client site proxy endpoint.
                     `http://echo.jsontest.com/${JSON.stringify(
                       payload,
                       null,
