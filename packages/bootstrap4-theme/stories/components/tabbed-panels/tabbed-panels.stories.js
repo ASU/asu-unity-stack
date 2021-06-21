@@ -7,7 +7,9 @@ storiesOf('Components/Tabbed Panels', module)
     happo: false,
   })
 
-  .add('White Background', () => `
+  .add(
+    'White Background',
+    () => `
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -16,12 +18,15 @@ storiesOf('Components/Tabbed Panels', module)
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
+            <a class="nav-item nav-link" id="nav-another-tab" data-toggle="tab" href="#nav-another" role="tab" aria-controls="nav-another" aria-selected="false">Another tab, long tab</a>
+            <a class="nav-item nav-link" id="nav-another-2-tab" data-toggle="tab" href="#nav-another-2" role="tab" aria-controls="nav-another-2" aria-selected="false">Another tab, long tab</a>
+            <a class="nav-item nav-link" id="nav-another-3-tab" data-toggle="tab" href="#nav-another-3" role="tab" aria-controls="nav-another-3" aria-selected="false">Another tab, long tab</a>
           </div>
-          <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
+          <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev" tabIndex="-1">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
+          <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next" tabIndex="-1">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
@@ -40,13 +45,28 @@ storiesOf('Components/Tabbed Panels', module)
             This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
             <br>
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-another" role="tabpanel" aria-labelledby="nav-another-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-another-2" role="tabpanel" aria-labelledby="nav-another-2-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
+          <div class="tab-pane fade" id="nav-another-3" role="tabpanel" aria-labelledby="nav-another-3-tab">
+            This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
+            <br>
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
       </div>
     </div>
   </div>
-`)
+`
+  )
 
-.add('Gray 1 Background', () => `
+  .add(
+    'Gray 1 Background',
+    () => `
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -56,11 +76,11 @@ storiesOf('Components/Tabbed Panels', module)
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
           <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
         </div>
-        <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
+        <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev" tabIndex="-1">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
+        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next" tabIndex="-1">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -84,9 +104,12 @@ storiesOf('Components/Tabbed Panels', module)
     </div>
   </div>
 </div>
-`)
+`
+  )
 
-  .add('Gray 2 Background', () => `
+  .add(
+    'Gray 2 Background',
+    () => `
   <div class="container bg-gray-2">
     <div class="row">
       <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -96,11 +119,11 @@ storiesOf('Components/Tabbed Panels', module)
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
           </div>
-          <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
+          <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev" tabIndex="-1">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
+        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next" tabIndex="-1">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -123,9 +146,12 @@ storiesOf('Components/Tabbed Panels', module)
       </div>
     </div>
   </div>
-`)
+`
+  )
 
-.add('Gray 7 Background', () => `
+  .add(
+    'Gray 7 Background',
+    () => `
 <div class="container bg-dark">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-10 col-xl-12">
@@ -135,11 +161,11 @@ storiesOf('Components/Tabbed Panels', module)
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile long tab</a>
           <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us is a long tab</a>
         </div>
-        <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev">
+        <a class="scroll-control-prev" href="#carouselExampleControls" role="button" data-scroll="prev" tabIndex="-1">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next">
+        <a class="scroll-control-next" href="#carouselExampleControls" role="button" data-scroll="next" tabIndex="-1">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -162,7 +188,8 @@ storiesOf('Components/Tabbed Panels', module)
     </div>
   </div>
 </div>
-`);
+`
+  );
 /*
   .add('Nav element', () => `<nav class="nav">
   <a class="nav-link active" href="#">Active</a>
