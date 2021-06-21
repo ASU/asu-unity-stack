@@ -33,7 +33,7 @@ const ContentBlock = ({ title, links }) => {
       </p>
       <List className="mt-3 mb-3">
         {links.map(link => (
-          <li>
+          <li key={link.title}>
             <a href={link.url} target="_blank" rel="noreferrer">
               {link.title}
             </a>

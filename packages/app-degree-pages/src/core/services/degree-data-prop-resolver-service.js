@@ -28,6 +28,8 @@ function degreeDataPropResolverService(row = {}) {
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
+    hasCareerData: () => !!row["careerData"]?.length,
+    getCareerData: () => row["careerData"] || [],
     /** @return {string []} */
     getCampusList: () => row["CampusStringArray"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
@@ -62,7 +64,7 @@ function degreeDataPropResolverService(row = {}) {
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
     /** @return {string} */
     getCampusWue: () => row["campusWue"] || "",
-    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
+    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
     getGlobalExp: () => row["globalExp"],

@@ -1,6 +1,9 @@
 // @ts-check
 import { computePages } from "./compute-pages";
-import { formatAcceleratedConcurrentLinks } from "./data-formatter-utils";
+import {
+  formatAcceleratedConcurrentLinks,
+  formatCareerData,
+} from "./data-formatter-utils";
 import { dataPathResolver, urlResolver } from "./data-path-resolver";
 import { fetchData } from "./fetch-data";
 import { idGenerator } from "./id-generator";
@@ -16,4 +19,5 @@ export {
   fetchData,
   computePages,
   formatAcceleratedConcurrentLinks,
+  formatCareerData,
 };
