@@ -3,21 +3,19 @@
 import React from "react";
 
 import {
-  accellerateDegreeLink,
-  accellerateDegreeDynamicLink,
-  majorInfoLink,
-  mapTooltipLink,
-  requestInfoLink,
-  // saveFav,
-} from "../../../../../core/services/degree-http-service";
-import { idGenerator, toTitleCase } from "../../../../../core/utils";
-import {
   ChevronIconButton,
   InfoButtonIcon,
   //  FavButton
 } from "../../../../../core/components/icons";
-import { ApplyNow } from "../components/ApplyNow";
-import { RequestInfo } from "../components/RequestInfo";
+import {
+  accellerateDegreeLink,
+  accellerateDegreeTooltipLink,
+  majorInfoLink,
+  mapTooltipLink,
+  // requestInfoLink,
+  // saveFav,
+} from "../../../../../core/services/degree-http-service";
+import { idGenerator, toTitleCase } from "../../../../../core/utils";
 /** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
 
 /* eslint-disable react/prop-types, no-alert, no-console */
@@ -136,7 +134,7 @@ const columns = [
               popover={{
                 title: "4+1 years",
                 body: () =>
-                  fetch(accellerateDegreeDynamicLink(resolver.getAcadPlan())),
+                  fetch(accellerateDegreeTooltipLink(resolver.getAcadPlan())),
                 withAuto: false,
               }}
             />

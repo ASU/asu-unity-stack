@@ -20,7 +20,7 @@ function NextSteps({ cards }) {
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 mb-4 row">
         {cards?.map(card => (
-          <div className="mt-2 col-12 col-md-4">
+          <div className="mt-2 col-12 col-md-4" key={card.title}>
             <Card
               icon={["fas", card.icon]}
               title={card.title}

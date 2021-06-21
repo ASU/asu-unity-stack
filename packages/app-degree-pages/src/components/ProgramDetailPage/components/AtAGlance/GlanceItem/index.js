@@ -2,11 +2,11 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
-import { glanceItemPropType, glanceItemsMap } from "../../../models";
-import { idGenerator } from "../../../utils/id-generator";
+import { glanceItemPropType, glanceItemsMap } from "../../../../../core/models";
+import { idGenerator } from "../../../../../core/utils/id-generator";
 
 /**
- * @typedef {import('../../../models/shared-types').LinkItem} AtAGlanceItem
+ * @typedef {import('../../../../../core/models/shared-types').LinkItem} AtAGlanceItem
  * @typedef {{
  *  item: AtAGlanceItem[] | string
  *  type: string

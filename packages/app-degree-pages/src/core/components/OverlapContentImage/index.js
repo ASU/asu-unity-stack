@@ -13,6 +13,14 @@ const ContentWrapper = styled.div`
     grid-column: 1 / span 4;
     grid-row: 3/4;
   }
+
+  .uds-image-overlap.content-right &.content-wrapper {
+    padding: 2.5rem;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
 `;
 
 /**
@@ -20,11 +28,17 @@ const ContentWrapper = styled.div`
  * @param {import("src/core/models/shared-types").OverlapContentImage} props
  * @returns
  */
-function OverlapContentImage({ title, image, contents = [] }) {
+function OverlapContentImage({
+  title,
+  image,
+  contentDirection = "left",
+  contents = [],
+  contentChildren = null,
+}) {
   const genId = idGenerator("overlap-");
   return (
     <section>
-      <div className="uds-image-overlap content-left">
+      <div className={`uds-image-overlap content-${contentDirection}`}>
         <img className="img-fluid" src={image.url} alt={image.altText} />
         <ContentWrapper className="content-wrapper">
           <h2>
@@ -36,6 +50,7 @@ function OverlapContentImage({ title, image, contents = [] }) {
               dangerouslySetInnerHTML={sanitizeHTML(content.text)}
             />
           ))}
+          {contentChildren}
         </ContentWrapper>
       </div>
     </section>
@@ -44,12 +59,14 @@ function OverlapContentImage({ title, image, contents = [] }) {
 
 OverlapContentImage.propTypes = {
   title: PropTypes.string,
+  contentDirection: PropTypes.oneOf(["left", "right"]),
   contents: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
     })
   ),
   image: imagePropType,
+  contentChildren: PropTypes.element,
 };
 
 export { OverlapContentImage };

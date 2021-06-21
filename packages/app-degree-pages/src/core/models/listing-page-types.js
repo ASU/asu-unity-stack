@@ -3,8 +3,10 @@
 
 /**
  * @typedef {{
- *    type?: "text" | "text-image-overlay" | "text-photo-grid"
+ *    applyNowUrl?: string
+ *    type?: "text" | "text-media" | "text-image-overlay" | "text-photo-grid" | string
  *    image?: import("./shared-types").ImageItem
+ *    video?: import("./shared-types").VideoItem
  *    header?: import("./shared-types").AppTitleProps
  *    title?: import("./shared-types").AppTitleProps
  *    contents?: import("./shared-types").ContentItem[]
@@ -63,6 +65,7 @@
 
 /**
  * @typedef {{
+ *  applyNowUrl?: string
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programList?: GridListProps

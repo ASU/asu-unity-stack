@@ -2,11 +2,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { glanceItemPropType } from "../../models/app-prop-types";
+import { glanceItemPropType } from "../../../../core/models/app-prop-types";
 import { GlanceItem } from "./GlanceItem";
 
 /**
- * @typedef {import('../../models/program-detail-types').AtAGlanceProps} AtAGlanceProps
+ * @typedef {import('../../../../core/models/program-detail-types').AtAGlanceProps} AtAGlanceProps
  */
 
 /**

@@ -17,8 +17,9 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ hero, introContent, programList }) => (
+const Template = ({ applyNowUrl, hero, introContent, programList }) => (
   <ListingPage
+    applyNowUrl={applyNowUrl}
     hero={hero}
     introContent={introContent}
     programList={programList}
@@ -26,15 +27,12 @@ const Template = ({ hero, introContent, programList }) => (
 );
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps}}
  */
 export const UndergraduateDegreePage = Template.bind({});
 
-/**
- * @type {AppProps}
- */
 UndergraduateDegreePage.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
@@ -69,29 +67,34 @@ UndergraduateDegreePage.args = {
   programList: {
     dataSource:
       "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
-      "?init=false&method=findAllDegrees&fields=Descr100,Institution,AcadPlan," +
+      "?init=false" +
+      "&method=findAllDegrees" +
+      "&fields=Descr100,Institution,AcadPlan," +
       "Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
       "AsuCritTrackUrl,AsuOfficeLoc,CampusStringArray,AcadPlan,accelerateDegrees,concurrentDegrees," +
       "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
       "AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity," +
-      "&init=false&program=undergrad&cert=false",
+      "&init=false" +
+      "&program=undergrad" +
+      "&cert=false",
   },
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps}}
  */
-export const AreaStudyDgreePage1 = Template.bind({});
+export const AreaStudyDegreePage1 = Template.bind({});
 
 /**
- * @type {AppProps}
+ * @type {{ args: AppProps }}
  */
-AreaStudyDgreePage1.args = {
+AreaStudyDegreePage1.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      // @ts-ignore
       size: "small",
     },
     contents: [
@@ -101,9 +104,11 @@ AreaStudyDgreePage1.args = {
     ],
   },
   introContent: {
+    // @ts-ignore
     type: "text-photo-grid",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+      // @ts-ignore
       component: "h3",
     },
     contents: [
@@ -136,15 +141,80 @@ AreaStudyDgreePage1.args = {
 };
 
 /**
+ * @type {{ args: AppProps}}
+ */
+export const AreaStudyDegreePage2 = Template.bind({});
+
+/**
+ * @type {{ args: AppProps }}
+ */
+AreaStudyDegreePage2.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  hero: {
+    image: {
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      // @ts-ignore
+      size: "small",
+    },
+    contents: [
+      {
+        text: "Area of study degrees",
+      },
+    ],
+  },
+  introContent: {
+    type: "text-media",
+    title: {
+      text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+      // @ts-ignore
+      component: "h3",
+    },
+    contents: [
+      {
+        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+      },
+    ],
+    image: {
+      url: "https://source.unsplash.com/random/800x400?a=1",
+    },
+  },
+  programList: {
+    dataSource: "/api/mocks/degree-search",
+  },
+};
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const AreaStudyDegreePage2B = Template.bind({});
+
+/**
+ * @type {{ args: AppProps }}
+ */
+AreaStudyDegreePage2B.args = { ...AreaStudyDegreePage2.args };
+AreaStudyDegreePage2B.args.introContent = {
+  ...AreaStudyDegreePage2.args.introContent,
+  image: undefined,
+  video: {
+    url: "/assets/video/stock-video-person-drawing.mp4",
+    altText: "",
+    vttUrl: "",
+  },
+};
+/**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const AreaStudyDgreePage2 = Template.bind({});
+export const AreaStudyDegreePage3 = Template.bind({});
 
 /**
- * @type {AppProps}
+ * @type {{ args: AppProps }}
  */
-AreaStudyDgreePage2.args = {
+AreaStudyDegreePage3.args = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
       url:
@@ -181,7 +251,7 @@ AreaStudyDgreePage2.args = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url: "https://source.unsplash.com/random/800x600?a=1",
     },
   },
   programList: {

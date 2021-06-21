@@ -4,13 +4,14 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Loader, AtAGlance } from "../../core/components";
+import { Loader, Video } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   dataSourcePropType,
   imagePropType,
   linkPropType,
   cardPropTypes,
+  videoPropType,
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import {
@@ -20,6 +21,7 @@ import {
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
+import { AtAGlance } from "./components/AtAGlance";
 import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
@@ -33,7 +35,6 @@ import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
-import { VideoPage } from "./components/VideoPage";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
 
@@ -176,7 +177,7 @@ const ProgramDetailPage = ({
               </div>
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 {introContent.video && (
-                  <VideoPage
+                  <Video
                     url={introContent.video.url}
                     vttUrl={introContent.video.vttUrl}
                     altText={introContent.video.altText}
@@ -260,11 +261,7 @@ ProgramDetailPage.propTypes = {
   introContent: PropTypes.shape({
     breadcrumbs: arrayOf(linkPropType),
     contents: arrayOf(PropTypes.object),
-    video: PropTypes.shape({
-      url: PropTypes.string,
-      altText: PropTypes.string,
-      vttUrl: PropTypes.string,
-    }),
+    video: videoPropType,
     image: imagePropType,
   }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),

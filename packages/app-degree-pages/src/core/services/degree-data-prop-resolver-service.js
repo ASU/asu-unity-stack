@@ -64,7 +64,7 @@ function degreeDataPropResolverService(row = {}) {
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
     /** @return {string} */
     getCampusWue: () => row["campusWue"] || "",
-    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"],
+    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
     getGlobalExp: () => row["globalExp"],
