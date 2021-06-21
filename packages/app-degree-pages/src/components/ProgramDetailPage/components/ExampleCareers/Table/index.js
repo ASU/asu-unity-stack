@@ -32,7 +32,7 @@ function Table({ data }) {
         </thead>
         <tbody>
           {data?.map(field => (
-            <tr>
+            <tr key={field.career.url}>
               <td>
                 <a href={field.career.url} target="_blank" rel="noreferrer">
                   {field.career.text}

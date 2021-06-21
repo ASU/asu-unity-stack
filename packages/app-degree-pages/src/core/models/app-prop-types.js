@@ -89,7 +89,7 @@ const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
 const exampleCareersTableDataPropTypes = PropTypes.shape({
   career: linkPropType,
   growth: PropTypes.number,
-  medianSalary: PropTypes.number,
+  medianSalary: PropTypes.string,
   brightOutlook: PropTypes.bool,
   greenOccupation: PropTypes.bool,
 });
