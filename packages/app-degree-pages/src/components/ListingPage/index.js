@@ -9,6 +9,7 @@ import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import { dataSourcePropType } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
+import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
@@ -175,6 +176,8 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
           video={introContent.video}
           photoGrid={introContent.photoGrid}
         />
+
+        <BrowseTitle />
         <SearchBar onSearch={onDegreeSearch} />
         <Filters
           value={stateFilters}
@@ -182,6 +185,7 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
           onApplyFilters={onDegreeApplyFilters}
           onCleanFilters={onDegreeCleanFilters}
         />
+
         {error && <div>Something went wrong ...</div>}
         <section className="container m-1">
           <div className="d-flex justify-content-between">

@@ -34,7 +34,10 @@ const renderInfo = ({ resolver, id }) => (
         __html: sanitize(resolver.getDescrLongExtented()),
       }}
     />
-    <label htmlFor={`#${id}`}>[ more ]</label>
+    <label className="label-more-less" htmlFor={`#${id}`}>
+      <span className="label-more">[ more ]</span>
+      <span className="label-less">[ less ]</span>
+    </label>
   </div>
 );
 

@@ -21,6 +21,14 @@ const ContentWrapper = styled.div`
       margin-top: 0;
     }
   }
+
+  .uds-image-overlap img {
+    width: 100%;
+    height: 100%;
+    grid-column: 2 / span 4;
+    grid-row: 2/5;
+    object-fit: cover;
+  }
 `;
 
 /**

@@ -29,7 +29,7 @@ function FiltersSummary({ appliedFilters = [], onRemoveFilter }) {
             onKeyDown={() => onRemoveFilter(filterValue)}
             onClick={() => onRemoveFilter(filterValue)}
           >
-            <span className="badge rounded-pill bg-secondary mr-1 pr-1">
+            <span className="btn btn-tag btn-tag-alt-white">
               <span>{filterValue}</span>
               <i className="fas fa-times pl-1" />
             </span>
