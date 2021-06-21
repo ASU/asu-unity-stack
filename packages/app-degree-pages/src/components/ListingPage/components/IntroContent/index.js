@@ -242,8 +242,12 @@ const IntroContent = ({
 
 IntroContent.propTypes = {
   applyNowUrl: PropTypes.string,
-  type: PropTypes.oneOf(["text", "text-image-overlay", "text-photo-grid"])
-    .isRequired,
+  type: PropTypes.oneOf([
+    "text",
+    "text-media",
+    "text-image-overlay",
+    "text-photo-grid",
+  ]).isRequired,
   video: videoPropType,
   image: imagePropType,
   header: contentPropType,

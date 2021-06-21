@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
-import React from "react";
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
 
 /**
  * @typedef {import('../../models/shared-types').VideoItem} VideoItem
  */
+
+const VideoOverlay = styled.div`
+  &[data-playing="true"] {
+    display: none;
+  }
+`;
 
 /**
  *
@@ -12,18 +18,51 @@ import { useRef } from "react";
  * @returns
  */
 const Video = ({ url = "", vttUrl, altText = "" }) => {
+  /** @type {React.MutableRefObject<HTMLVideoElement>} */
   const videoRef = useRef();
+  const [playing, setPlaying] = useState(false);
 
-  // function toggleVideo() {
-  //   const video = videoRef.current;
-  //   if (video.paused) video.play();
-  //   else video.pause();
-  // }
+  function toggleVideo() {
+    const video = videoRef.current;
+    if (video.paused) video.play();
+    else video.pause();
+  }
+
+  function toggleOverLay() {
+    setPlaying(!playing);
+  }
+
+  function onVideoClick(e) {
+    e.stopPropagation();
+    toggleVideo();
+    toggleOverLay();
+  }
+
+  function onVideoEnded() {
+    toggleOverLay();
+  }
+
+  function onPlayButtonClick(e) {
+    e.stopPropagation();
+    toggleOverLay();
+    toggleVideo();
+  }
+
+  function onOverlayClick(e) {
+    e.stopPropagation();
+    toggleOverLay();
+    toggleVideo();
+  }
 
   return (
     <div className="uds-video-container">
       <div className="uds-video-player">
-        <video ref={videoRef} title={altText}>
+        <video
+          ref={videoRef}
+          title={altText}
+          onClick={onVideoClick}
+          onEnded={onVideoEnded}
+        >
           <source src={url} />
 
           <track
@@ -33,13 +72,22 @@ const Video = ({ url = "", vttUrl, altText = "" }) => {
             label="english_captions"
           />
         </video>
-        <div className="uds-video-overlay">
+
+        <VideoOverlay
+          role="button"
+          tabIndex={0}
+          className="uds-video-overlay"
+          onKeyDown={onOverlayClick}
+          onClick={onOverlayClick}
+          data-playing={playing}
+        >
           <button
             type="button"
-            className="
-          btn btn-circle btn-circle-large btn-circle-alt-white
-          uds-video-btn-play
-        "
+            onClick={onPlayButtonClick}
+            className={
+              "btn btn-circle btn-circle-large" +
+              " btn-circle-alt-white uds-video-btn-play"
+            }
           >
             <svg
               className="svg-inline--fa fa-play fa-w-14"
@@ -59,7 +107,7 @@ const Video = ({ url = "", vttUrl, altText = "" }) => {
             </svg>
             <span className="sr-only">Play</span>
           </button>
-        </div>
+        </VideoOverlay>
       </div>
     </div>
   );
