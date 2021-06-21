@@ -1,5 +1,5 @@
 {
-  "name": "@asu/components-library",
+  "name": "@asu-design-system/components-library",
   "version": "2.1.7",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
@@ -10,7 +10,8 @@
     "directory": "packages/components-library"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",

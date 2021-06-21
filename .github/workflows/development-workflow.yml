@@ -1,7 +1,7 @@
 name: development-workflow
 on:
   push:
-    branches: ["develop-gha"]
+    branches: ["dev"]
 
 jobs:
   run-yarn-build:
@@ -40,35 +40,36 @@ jobs:
       - name: Install and build
         run: |
           yarn install
-      #     yarn build
-      # - name: Run tests
-      #   run: |
-      #     echo 'Tests temporarily disabled'
-      #     echo 'Could run yarn lint here'
-      #     echo 'Or yarn test:e2e or yarn percy, once tests are ready'
+          yarn build
 
-      # - name: Prebuild storybook build
-      #   run: |
-      #     yarn deploy-storybook --dry-run
+      - name: Run tests
+        run: |
+          echo 'Tests temporarily disabled'
+          echo 'Could run yarn lint here'
+          echo 'Or yarn test:e2e or yarn percy, once tests are ready'
 
-      # - name: Copy and compile nunjucks templates
-      #   run: |
-      #     yarn gulp
+      - name: Prebuild storybook build
+        run: |
+          yarn deploy-storybook --dry-run
 
-      - name: Setup node for publishing to Github packages
-        uses: actions/setup-node@v2
-        with:
-          node-version: "12.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@asu"
+      - name: Copy and compile nunjucks templates
+        run: |
+          yarn gulp
+
+      # - name: Setup node for publishing to Github packages
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: "12.x"
+      #     registry-url: "https://npm.pkg.github.com"
 
       - name: Yarn publish packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
+        # Will be used to auth with github registry for publishing once move away from verdaccio
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   GITHUB_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
         run: |
           yarn publish-packages
 
-      # - name: Publish to Github Pages
-      #   run: |
-      #     yarn deploy-storybook --existing-output-dir=build
+      - name: Publish to Github Pages
+        run: |
+          yarn deploy-storybook --existing-output-dir=build
