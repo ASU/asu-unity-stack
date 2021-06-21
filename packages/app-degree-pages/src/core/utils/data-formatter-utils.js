@@ -10,4 +10,21 @@ const formatAcceleratedConcurrentLinks = links =>
     url: link.PlanUrl,
   }));
 
-export { formatAcceleratedConcurrentLinks };
+/**
+ *
+ * @param {object[]} careerData
+ */
+
+const formatCareerData = careerData =>
+  careerData?.map(data => ({
+    career: {
+      text: data.careerDataAlterOnetTitle,
+      url: `https://webapp4.asu.edu/programs/t5/careerdetails/${data.careerDataOnetCode}`,
+    },
+    growth: data.careerDataGrowth,
+    medianSalary: data.careerDataSalary,
+    brightOutlook: !!data.careerDataBrightOutlook,
+    greenOccupation: !!data.careerDataGreen,
+  }));
+
+export { formatAcceleratedConcurrentLinks, formatCareerData };

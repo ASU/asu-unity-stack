@@ -86,6 +86,14 @@ const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
   })
 );
 
+const exampleCareersTableDataPropTypes = PropTypes.shape({
+  career: linkPropType,
+  growth: PropTypes.number,
+  medianSalary: PropTypes.string,
+  brightOutlook: PropTypes.bool,
+  greenOccupation: PropTypes.bool,
+});
+
 export {
   accordionCardPropTypes,
   buttonPropTypes,
@@ -99,4 +107,5 @@ export {
   glanceItemPropType,
   cardPropTypes,
   flexibleDegreeOptionsLinks,
+  exampleCareersTableDataPropTypes,
 };
