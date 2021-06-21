@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+        # with:
+        #   persist-credentials: false
 
       - name: Setup node to install packages from npm
         uses: actions/setup-node@v2
