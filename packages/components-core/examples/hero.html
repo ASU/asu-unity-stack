@@ -31,10 +31,10 @@
     <script src="../dist/libCore.min.js"></script>
   </head>
   <body>
+    <div id="hero"></div>
     <div class="container">
       <div class="d-flex justify-content-center border p-4">
-        <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
-        <div id="hero"></div>
+        Put here your content
       </div>
     </div>
 
@@ -48,11 +48,18 @@
             altText: "Hero image",
             size: "small", // small | medium | large
           },
+          subTitle: {
+            text: "Subtitle 1",
+            highlightColor: "white",
+            // color: "white" // "black"
+          },
           title: {
             text: "Heading 1",
             highlightColor: "gold",
+            // color: "white" // "black"
           },
           // `contents` is optional
+          contentsColor: "white", // "black"
           contents: [
             {
               text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
