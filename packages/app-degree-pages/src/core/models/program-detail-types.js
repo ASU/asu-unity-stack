@@ -36,7 +36,7 @@
  *   locations: import("./shared-types").LinkItem[]
  *   firstRequirementMathCourse: string
  *   mathIntensity: string
- *   timeCommitment: string
+ *   timeCommitment?: string
  * }} AtAGlanceProps
  */
 

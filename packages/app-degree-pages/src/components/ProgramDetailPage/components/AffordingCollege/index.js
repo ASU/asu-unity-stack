@@ -6,7 +6,7 @@ import { Section, Background } from "./index.style";
 
 function AffordingCollege() {
   return (
-    <Section className="container pt-6 pb-6">
+    <Section className="container">
       <Background />
       <h2>
         <span className="highlight-gold">Affording college</span>

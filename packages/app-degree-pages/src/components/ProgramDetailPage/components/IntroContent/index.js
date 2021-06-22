@@ -17,7 +17,7 @@ import { sanitizeHTML, spreadClasses } from "../../../../core/utils";
  */
 function IntroContent({ contents = [] }) {
   return (
-    <section>
+    <section className="pt-1 pb-1">
       {contents.map((content, index) => (
         <div
           key={`content-${index + 1}`}

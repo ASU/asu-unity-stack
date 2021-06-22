@@ -12,7 +12,7 @@ import { sanitizeHTML } from "../../../../core/utils";
  */
 function ProgramDescription({ content }) {
   return (
-    <section>
+    <section className="pt-1 pb-0">
       <h2>Program description</h2>
       <div dangerouslySetInnerHTML={sanitizeHTML(content)} />
     </section>

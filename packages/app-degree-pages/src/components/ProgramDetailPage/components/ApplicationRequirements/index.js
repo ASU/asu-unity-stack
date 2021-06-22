@@ -19,7 +19,7 @@ import { accordionCardPropTypes } from "../../../../core/models/app-prop-types";
 
 function ApplicationRequirements({ accordionCards }) {
   return (
-    <section className="pt-6 pb-6">
+    <section>
       <h2>
         <span className="highlight-gold">Application requirements</span>
       </h2>

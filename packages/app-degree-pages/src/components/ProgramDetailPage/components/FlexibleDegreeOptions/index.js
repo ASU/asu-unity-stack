@@ -15,7 +15,7 @@ import { ContentBlock } from "./ContentBlock";
  */
 function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
   return (
-    <section className="pt-6 pb-6">
+    <section>
       <h2>
         <span className="highlight-gold">Flexible degree options</span>
       </h2>

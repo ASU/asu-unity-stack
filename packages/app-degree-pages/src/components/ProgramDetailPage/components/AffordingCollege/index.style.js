@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const Section = styled.section`
   position: relative;
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
 `;
 
 const Background = styled.div`
@@ -10,10 +12,13 @@ const Background = styled.div`
   background-position: center;
   background-size: contain;
   position: absolute;
-  top: 0;
-  left: -48px;
-  width: calc(100% + 72px);
+  width: 100vw;
   height: 100%;
+  top: 0;
+  left: calc(50% - 14px);
+  right: calc(50% + 16px);
+  margin-left: -50vw;
+  margin-right: -50vw;
   z-index: -1;
 `;
 

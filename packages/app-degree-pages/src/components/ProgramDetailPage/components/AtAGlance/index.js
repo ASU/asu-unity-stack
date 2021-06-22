@@ -22,19 +22,25 @@ export const AtAGlance = ({
   timeCommitment,
 }) => {
   return (
-    <section className="pt-6">
+    <section>
       <h2>
         <span className="highlight-gold">At a glance: program details</span>
       </h2>
-      <ul className="uds-list fa-ul maroon pt-2">
-        <GlanceItem item={[offeredBy]} type="offeredBy" />
-        <GlanceItem item={locations} type="locations" />
-        <GlanceItem
-          item={firstRequirementMathCourse}
-          type="firstRequirementMathCourse"
-        />
-        <GlanceItem item={mathIntensity} type="mathIntensity" />
-        <GlanceItem item={timeCommitment} type="timeCommitment" />
+      <ul className="uds-list fa-ul maroon pt-2 pb-2">
+        {offeredBy && <GlanceItem item={[offeredBy]} type="offeredBy" />}
+        {locations && <GlanceItem item={locations} type="locations" />}
+        {firstRequirementMathCourse && (
+          <GlanceItem
+            item={firstRequirementMathCourse}
+            type="firstRequirementMathCourse"
+          />
+        )}
+        {mathIntensity && (
+          <GlanceItem item={mathIntensity} type="mathIntensity" />
+        )}
+        {timeCommitment && (
+          <GlanceItem item={timeCommitment} type="timeCommitment" />
+        )}
       </ul>
     </section>
   );
@@ -45,5 +51,5 @@ AtAGlance.propTypes = {
   locations: PropTypes.arrayOf(glanceItemPropType).isRequired,
   firstRequirementMathCourse: PropTypes.string.isRequired,
   mathIntensity: PropTypes.string.isRequired,
-  timeCommitment: PropTypes.string.isRequired,
+  timeCommitment: PropTypes.string,
 };

@@ -71,8 +71,8 @@ function getLocations(resolver) {
 
 const Main = styled.main`
   section {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 `;
 
@@ -152,7 +152,6 @@ const ProgramDetailPage = ({
                   locations={getLocations(resolver)}
                   firstRequirementMathCourse={resolver.getMinMathReq()}
                   mathIntensity={resolver.getMathIntensity()}
-                  timeCommitment="***TBD"
                 />
 
                 <ApplicationRequirements
