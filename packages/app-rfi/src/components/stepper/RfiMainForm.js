@@ -30,7 +30,7 @@ const RfiMainForm = ({
   test,
 }) => {
   return (
-    <div className="container">
+    <div className="container rfi-container-inner">
       <div className="row">
         <div className="col col-12 ">
           <div className="uds-image-text-block-container">

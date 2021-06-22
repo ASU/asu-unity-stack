@@ -115,28 +115,30 @@ form.uds-form.uds-rfi .input-group-trailing-icon svg {
 }
 
 @media (min-width: 768px) {
-  .uds-image-text-block-container {
+  .rfi-container-inner .uds-image-text-block-container {
     max-height: 100% !important;
   }
 }
-.uds-image-text-block-text-container {
+.rfi-container-inner .uds-image-text-block-text-container {
   padding: 0px;
 }
-.uds-image-text-block-text-container .uds-rfi-form-wrapper {
+.rfi-container-inner
+  .uds-image-text-block-text-container
+  .uds-rfi-form-wrapper {
   padding: 48px;
 }
 @media screen and (max-width: 992px) {
-  .uds-image-text-block-text-container {
+  .rfi-container-inner .uds-image-text-block-text-container {
     padding: 0px;
   }
 }
 @media screen and (max-width: 768px) {
-  .uds-image-text-block-text-container {
+  .rfi-container-inner .uds-image-text-block-text-container {
     padding: 0px;
   }
 }
 @media screen and (max-width: 576px) {
-  .uds-image-text-block-text-container {
+  .rfi-container-inner .uds-image-text-block-text-container {
     padding: 0px;
     max-width: 100%;
   }
