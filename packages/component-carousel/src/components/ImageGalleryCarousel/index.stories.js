@@ -32,17 +32,36 @@ for (let index = 0; index < 8; index += 1) {
 }
 
 const mockItemWithContent = () => {
-  return myCarouselItems.map((item, index) => ({
-    ...item,
-    content: `
+  return myCarouselItems.map((item, index) => {
+    const content =
+      index === 2
+        ? `
     Content ${index + 1}
 
     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
       commodo ligula eget dolor. Aenean massa. Cum sociis natoque
       penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      Donec quam felis, ultricies nec, pellentesque eu, pretium …
-  `,
-  }));
+      Donec quam felis, ultricies nec, pellentesque eu, pretium,
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+      commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      Donec quam felis, ultricies nec, pellentesque eu, pretium,
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+      commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      Donec quam felis, ultricies nec, pellentesque eu, pretium
+  `
+        : `
+  Content ${index + 1}
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+      commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  `;
+    return {
+      ...item,
+      content,
+    };
+  });
 };
 
 const mockItemWithMoreContent = () => {

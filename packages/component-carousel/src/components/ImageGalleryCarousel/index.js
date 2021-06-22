@@ -69,12 +69,17 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
 const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const ATTR_INDEX = "data-current-index";
   const [title, setTitle] = useState(imageItems[0].title);
+
   const [content, setContent] = useState(imageItems[0].content);
 
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
+    const contentToDisplay =
+      item.content.length > 250
+        ? `${item.content.substring(0, 250)}...`
+        : item.content;
     setTitle(item.title);
-    setContent(item.content);
+    setContent(contentToDisplay);
   };
 
   useEffect(() => {
@@ -104,7 +109,6 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   }, []);
 
   const bulletItems = imageItems.map(item => item.imageSource);
-
   return (
     <div className="image-gallery-action-area" data-has-content={hasContent}>
       <div className="image-navigator">
