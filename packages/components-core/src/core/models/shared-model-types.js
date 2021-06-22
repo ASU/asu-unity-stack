@@ -15,6 +15,7 @@
  *    cssClass?: string []
  *    color?: "black" | "white"
  *    highlightColor?: "gold" | "black" | "white"
+ *    maxWidth?: string
  * }} ContentProps
  */
 

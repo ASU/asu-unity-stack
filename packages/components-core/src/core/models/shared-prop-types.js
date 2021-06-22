@@ -10,6 +10,7 @@ const imagePropType = PropTypes.shape({
 
 const contentPropType = PropTypes.shape({
   text: PropTypes.string,
+  maxWidth: PropTypes.string,
   cssClass: PropTypes.arrayOf(PropTypes.string),
   highlightColor: PropTypes.oneOf(["gold", "black"]),
 });

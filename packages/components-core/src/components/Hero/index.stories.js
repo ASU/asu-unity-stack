@@ -38,8 +38,26 @@ HeroSmall.args = {
     size: "small",
   },
   title: {
-    text: "Heading 1",
+    text: "Heading with a long title 1",
     highlightColor: "gold",
+  },
+};
+
+/**
+ * @type {{ args: HeroProps}}
+ */
+export const HeroLongTitle = Template.bind({});
+
+HeroLongTitle.args = {
+  image: {
+    url: "https://source.unsplash.com/random/800x400?a=1",
+    altText: "Hero image",
+    size: "small",
+  },
+  title: {
+    text: "Heading with a long title 2",
+    highlightColor: "gold",
+    maxWidth: "100%",
   },
 };
 

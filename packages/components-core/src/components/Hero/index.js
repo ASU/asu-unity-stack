@@ -94,7 +94,7 @@ function headingHeroHtmlTemplate({
       )}
 
       {title && (
-        <h1>
+        <h1 style={{ maxWidth: title.maxWidth || "" }}>
           <span
             className={classNames({
               [textColor[title.color]]: title.color,
