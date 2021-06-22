@@ -44,7 +44,7 @@
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
-    "postcss": "^7.0.2",
+    "postcss": "^8.2.10",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-reveal": "^1.2.2",
