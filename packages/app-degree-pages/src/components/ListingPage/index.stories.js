@@ -38,17 +38,12 @@ UndergraduateDegreePage.args = {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       altText: "Undergraduate Degrees",
-      size: "small",
+      size: "medium",
     },
     title: {
       text: "Undergraduate Degrees",
       highlightColor: "gold",
     },
-    contents: [
-      {
-        text: "Undergraduate Degrees",
-      },
-    ],
   },
   introContent: {
     type: "text",
@@ -95,17 +90,17 @@ AreaStudyDegreePage1.args = {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       // @ts-ignore
-      size: "small",
+      size: "medium",
     },
     title: {
       text: "Area of study degrees",
       highlightColor: "gold",
     },
-    contents: [
-      {
-        text: "Area of study degrees",
-      },
-    ],
+    // contents: [
+    //   {
+    //     text: "Area of study degrees",
+    //   },
+    // ],
   },
   introContent: {
     // @ts-ignore
@@ -159,17 +154,17 @@ AreaStudyDegreePage2.args = {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       // @ts-ignore
-      size: "small",
+      size: "medium",
     },
     title: {
       text: "Area of study degrees",
       highlightColor: "gold",
     },
-    contents: [
-      {
-        text: "Area of study degrees",
-      },
-    ],
+    // contents: [
+    //   {
+    //     text: "Area of study degrees",
+    //   },
+    // ],
   },
   introContent: {
     type: "text-media",
@@ -227,17 +222,17 @@ AreaStudyDegreePage3.args = {
     image: {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-      size: "small",
+      size: "medium",
     },
     title: {
       text: "[Subdomain] degrees in [area of study]",
       highlightColor: "gold",
     },
-    contents: [
-      {
-        text: "[Subdomain] degrees in [area of study]",
-      },
-    ],
+    // contents: [
+    //   {
+    //     text: "[Subdomain] degrees in [area of study]",
+    //   },
+    // ],
   },
   introContent: {
     type: "text-image-overlay",
