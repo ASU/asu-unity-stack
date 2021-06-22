@@ -163,7 +163,11 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
 
   return (
     <>
-      <Hero image={hero.image} title={hero.title} contents={hero.contents} />
+      <Hero
+        image={hero.image}
+        title={{ ...hero.title, maxWidth: "100%" }}
+        contents={hero.contents}
+      />
 
       <main className="container" data-is-loading={loading}>
         <IntroContent
