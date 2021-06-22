@@ -21,8 +21,10 @@ const ContentWrapper = styled.div`
       margin-top: 0;
     }
   }
+`;
 
-  .uds-image-overlap img {
+const OverlapImage = styled.img`
+  .uds-image-overlap & {
     width: 100%;
     height: 100%;
     grid-column: 2 / span 4;
@@ -47,7 +49,11 @@ function OverlapContentImage({
   return (
     <section>
       <div className={`uds-image-overlap content-${contentDirection}`}>
-        <img className="img-fluid" src={image.url} alt={image.altText} />
+        <OverlapImage
+          className="img-fluid"
+          src={image.url}
+          alt={image.altText}
+        />
         <ContentWrapper className="content-wrapper">
           <h2>
             <span className="highlight-gold">{title}</span>
