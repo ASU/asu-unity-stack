@@ -36,6 +36,11 @@ Sidebar Navigation
   .nav-link {
     color: $uds-color-base-gray-7;
 
+    &:not(.active) {
+      display: flex;
+      justify-content: space-between;
+    }
+
     &:hover {
       text-decoration: underline;
     }
@@ -58,6 +63,10 @@ Sidebar Navigation
       width: 100%;
       background-color: $uds-color-base-gold;
       text-decoration: none;
+    }
+
+    &[aria-expanded='true'] svg {
+      transform: rotate(180deg);
     }
   }
 
@@ -83,8 +92,11 @@ Sidebar Navigation
     }
 
     .card-header {
-      h1, h2, h3, h4, h5
-      {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
         font-weight: 400;
       }
 

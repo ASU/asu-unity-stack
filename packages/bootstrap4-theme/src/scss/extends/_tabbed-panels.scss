@@ -18,12 +18,14 @@
   }
 
   .nav-tabs {
-    display: inline-flex;
+    display: flex;
     flex-wrap: inherit;
     left: 0px;
     position: relative;
     transition: all 0.25s ease 0s;
     white-space: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
 
     .nav-link {
       color: #000;

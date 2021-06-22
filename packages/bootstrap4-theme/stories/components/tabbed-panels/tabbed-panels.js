@@ -1,33 +1,39 @@
 (function () {
   jQuery(function () {
     $('.scroll-control-next').on('click', function (e) {
-      slideNav(this, e, -1);
+      if (window.innerWidth > 992) {
+        slideNav(this, e, -1);
+      }
     });
 
     $('.scroll-control-prev').on('click', function (e) {
-      slideNav(this, e, 1);
+      if (window.innerWidth > 992) {
+        slideNav(this, e, 1);
+      }
     });
 
-    $(".uds-tabbed-panels .scroll-control-prev").hide();
+    $('.uds-tabbed-panels .scroll-control-prev').hide();
+
+    if ($('#nav-tab')[0].scrollWidth <= $('.uds-tabbed-panels').width()) {
+      $('.uds-tabbed-panels .scroll-control-next').hide();
+    }
   });
 
-  function setControlVisibility(clicked) {
-    var parentContainer = $(clicked).closest(".uds-tabbed-panels");
+  function setControlVisibility(clicked, scrollOffset) {
+    var parentContainer = $(clicked).closest('.uds-tabbed-panels');
     var parentNav = $(clicked).siblings('.nav-tabs');
     var scrollPosition = parentNav.data('scroll-position') * 1;
-    var navItems = parentNav.find('.nav-item').toArray();
+    var tabPosition = parentNav[0].scrollWidth - scrollOffset;
 
     if (scrollPosition == 0) {
-      parentContainer.find(".scroll-control-prev").hide();
+      parentContainer.find('.scroll-control-prev').hide();
+    } else {
+      parentContainer.find('.scroll-control-prev').show();
     }
-    else {
-      parentContainer.find(".scroll-control-prev").show();
-    }
-    if (scrollPosition == navItems.length - 1) {
-      parentContainer.find(".scroll-control-next").hide();
-    }
-    else {
-      parentContainer.find(".scroll-control-next").show();
+    if (tabPosition <= parentContainer.width()) {
+      parentContainer.find('.scroll-control-next').hide();
+    } else {
+      parentContainer.find('.scroll-control-next').show();
     }
   }
 
@@ -35,11 +41,10 @@
     e.preventDefault();
     //.trigger('click');
     //var nextTab = $('.nav-tabs > .active').next('a.nav-item');
-    var parentContainer = $(clicked).closest(".uds-tabbed-panels");
     var parentNav = $(clicked).siblings('.nav-tabs');
     var scrollPosition = parentNav.data('scroll-position') * 1;
     var navItems = parentNav.find('.nav-item').toArray();
-    var scrollOffset = parentNav.css("left").replace("px", "") * 1;
+    var scrollOffset = parentNav.css('left').replace('px', '') * 1;
     //console.log(scrollPosition);
     var adjustNavItem = 0;
 
@@ -53,12 +58,12 @@
 
     scrollOffset = 0;
     for (var i = 0; i < scrollPosition; i++) {
-      console.log($(navItems[i]).outerWidth());
       scrollOffset += $(navItems[i]).outerWidth();
     }
-    parentNav.css("left", "-" + scrollOffset + "px");
 
-    setControlVisibility(clicked);
+    parentNav.scrollLeft(scrollOffset);
+
+    setControlVisibility(clicked, scrollOffset);
 
     /*
     if(scrollPosition == 0 && direction == 1) {
@@ -82,5 +87,4 @@
     console.log("--- end ---");
     */
   }
-
 })();

@@ -63,7 +63,7 @@ const Testimonial = ({
           {quote.content}
         </p>
       )}
-      {quote.cite && (
+      {(!!quote.cite?.name || !!quote.cite?.description) && (
         <div className="citation">
           <cite className="name">{quote.cite.name}</cite>
           {quote.cite && (
