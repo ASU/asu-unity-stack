@@ -97,6 +97,10 @@ AreaStudyDegreePage1.args = {
       // @ts-ignore
       size: "small",
     },
+    title: {
+      text: "Area of study degrees",
+      highlightColor: "gold",
+    },
     contents: [
       {
         text: "Area of study degrees",
@@ -156,6 +160,10 @@ AreaStudyDegreePage2.args = {
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       // @ts-ignore
       size: "small",
+    },
+    title: {
+      text: "Area of study degrees",
+      highlightColor: "gold",
     },
     contents: [
       {
@@ -220,6 +228,10 @@ AreaStudyDegreePage3.args = {
       url:
         "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "small",
+    },
+    title: {
+      text: "[Subdomain] degrees in [area of study]",
+      highlightColor: "gold",
     },
     contents: [
       {
