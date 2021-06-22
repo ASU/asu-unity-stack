@@ -31,50 +31,50 @@ const Template = args => {
 
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces - use full name.
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces - use full name.
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: "CGM", // CHI
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: "CGM", // CHI
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
 RfiOnCollegePageWithAreaOfInterest.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: "CES",
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: "STEM",
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: "CES",
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: "STEM",
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 // Important note: At current, only supports Degree Search REST API degrees.
@@ -82,128 +82,128 @@ RfiOnCollegePageWithAreaOfInterest.args = {
 // Also, DS REST API returns degrees with ONLNE status, so perhaps it's covered.
 export const RfiOnDegreePageUndergraduate = Template.bind({});
 RfiOnDegreePageUndergraduate.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: "TEESTEMBAE",
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: "TEESTEMBAE",
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnDegreePageGraduate = Template.bind({});
 RfiOnDegreePageGraduate.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: "TBGMCIDMGM",
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: "TBGMCIDMGM",
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnCollegeDepartmentPage = Template.bind({});
 RfiOnCollegeDepartmentPage.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: "CES",
-  Department: "CINFOTECH",
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: "CES",
+  department: "CINFOTECH",
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnNonAcademicUnitPage = Template.bind({});
 RfiOnNonAcademicUnitPage.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: "Health and Wellness",
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: true,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: "Health and Wellness",
+  programOfInterest: undefined,
+  programOfInterestOptional: true,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiOnCertOrMinorPage = Template.bind({});
 RfiOnCertOrMinorPage.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined, // graduate, undergrad
-  AreaOfInterest: undefined,
-  ProgramOfInterest: "LAINSCERT",
-  ProgramOfInterestOptional: false,
-  IsCertMinor: true,
-  Country: undefined,
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: undefined, // graduate, undergrad
+  areaOfInterest: undefined,
+  programOfInterest: "LAINSCERT",
+  programOfInterestOptional: false,
+  isCertMinor: true,
+  country: undefined,
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
+  test: false,
 };
 
 export const RfiOnCampaignLandingPage = Template.bind({});
 RfiOnCampaignLandingPage.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: "graduate",
-  AreaOfInterest: undefined,
-  ProgramOfInterest: "BAGLSMS",
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: "US",
-  StateProvince: "New Mexico", // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: "graduate",
+  areaOfInterest: undefined,
+  programOfInterest: "BAGLSMS",
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: "US",
+  stateProvince: "New Mexico", // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 export const RfiTestMode = Template.bind({});
 RfiTestMode.args = {
-  Campus: "ONLNE", // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: "graduate",
-  AreaOfInterest: "STEM",
-  ProgramOfInterest: "GRGF-LABMYMS",
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: "US",
-  StateProvince: "California", // Only US states or CA provinces
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: true,
+  campus: "GROUND", // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: "graduate",
+  areaOfInterest: "STEM",
+  programOfInterest: "TSSMACSPHD",
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: "US",
+  stateProvince: "California", // Only US states or CA provinces
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: true,
 };
 
 export const RfiDevTester = Template.bind({});
 RfiDevTester.args = {
-  Campus: undefined, // ONLNE, GROUND, NOPREF
-  College: undefined,
-  Department: undefined,
-  StudentType: "undergrad",
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: "DZ",
-  StateProvince: undefined, // Only US states or CA provinces
-  SuccessMsg: "Success. <strong>You made it.</strong>",
-  Test: false,
+  campus: undefined, // ONLNE, GROUND, NOPREF
+  college: undefined,
+  department: undefined,
+  studentType: "undergrad",
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: "DZ",
+  stateProvince: undefined, // Only US states or CA provinces
+  successMsg: "Success. <strong>You made it.</strong>",
+  test: false,
 };

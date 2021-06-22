@@ -32,9 +32,9 @@ class RfiStepper extends React.Component {
     // If configured as a cert or minor and we have a program of interest, look
     // up the program's email address and set it in state for use in
     // isCertMinor render below.
-    const { IsCertMinor, ProgramOfInterest } = this.props;
-    if (IsCertMinor && ProgramOfInterest) {
-      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${ProgramOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
+    const { isCertMinor, programOfInterest } = this.props;
+    if (isCertMinor && programOfInterest) {
+      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
       const resp = await fetch(serviceUrl)
         .then(response => response.json())
         .catch(error => new Error(error));
@@ -89,10 +89,10 @@ class RfiStepper extends React.Component {
   validate = values => {
     const errors = {};
     const { step } = this.state;
-    const { ProgramOfInterest, ProgramOfInterestOptional } = this.props;
+    const { programOfInterest, programOfInterestOptional } = this.props;
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
-    if (step === 0 && !values.Interest1 && !ProgramOfInterest) {
+    if (step === 0 && !values.Interest1 && !programOfInterest) {
       errors.Interest1 = "Area of Interest is required";
     }
     // If on step 1 and Interest2 is empty, and is not optional or campus is
@@ -100,7 +100,7 @@ class RfiStepper extends React.Component {
     if (
       step === 0 &&
       !values.Interest2 &&
-      (!ProgramOfInterestOptional || values.Campus === "ONLNE")
+      (!programOfInterestOptional || values.Campus === "ONLNE")
     ) {
       errors.Interest2 = "Program of Interest is required";
     }
@@ -119,18 +119,19 @@ class RfiStepper extends React.Component {
       initialValues,
       formComponents,
       handleSubmit,
-      Campus,
-      College,
-      Department,
-      StudentType,
-      AreaOfInterest,
-      ProgramOfInterest,
-      ProgramOfInterestOptional,
-      IsCertMinor,
-      Country,
-      StateProvince,
-      SuccessMsg,
-      Test,
+      // props
+      campus,
+      college,
+      department,
+      studentType,
+      areaOfInterest,
+      programOfInterest,
+      programOfInterestOptional,
+      isCertMinor,
+      country,
+      stateProvince,
+      successMsg,
+      test,
     } = this.props;
     const schema = validationSchemas[step];
 
@@ -138,28 +139,28 @@ class RfiStepper extends React.Component {
     const totalSteps = initialValues.length - 1; // Don't count success step.
     const progress = step / totalSteps;
 
-    const initValues = initialValues.reduce((item, total) => {
+    let initValues = initialValues.reduce((item, total) => {
       return { ...total, ...item };
     });
 
     // Intercede with initial values from props.
-    initValues.Campus = Campus;
-    if (StudentType === "graduate") {
+    initValues.Campus = campus;
+    if (studentType === "graduate") {
       initValues.CareerAndStudentType = "Readmission";
-    } else if (StudentType === "undergrad") {
+    } else if (studentType === "undergrad") {
       initValues.CareerAndStudentType = "First Time Freshman";
     }
-    initValues.Interest1 = AreaOfInterest;
-    initValues.Interest2 = ProgramOfInterest;
-    initValues.Country = Country;
-    initValues.State = StateProvince;
+    initValues.Interest1 = areaOfInterest;
+    initValues.Interest2 = programOfInterest;
+    initValues.Country = country;
+    initValues.State = stateProvince;
     // Avoid Uncontrolled to controlled switch warning:
     // https://github.com/formium/formik/issues/28
     initValues.Email = "";
 
     // If configured as a Cert or Minor, skip the form and only display
     // SuccessMsg.
-    if (IsCertMinor) {
+    if (isCertMinor) {
       const emailRender = (
         <div className="rfi-cert-minor-email-message">
           Request information on this program by sending an email to{" "}
@@ -170,7 +171,7 @@ class RfiStepper extends React.Component {
         <div className="uds-rfi-form-wrapper rfi-cert-minor">
           <h2>Request information</h2>
           {certEmailAddr && emailRender}
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(SuccessMsg)} />
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
         </div>
       );
     }
@@ -187,7 +188,7 @@ class RfiStepper extends React.Component {
               step + 1
             } of ${totalSteps}`}</div>
           ) : undefined}
-          {!Test ? (
+          {!test ? (
             step === 0 ? (
               <h2>Request information</h2>
             ) : (
@@ -296,18 +297,18 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
 
 // Props
 RfiStepper.defaultProps = {
-  Campus: undefined,
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined,
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined,
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined,
+  college: undefined,
+  department: undefined,
+  studentType: undefined,
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined,
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 RfiStepper.propTypes = {
@@ -315,18 +316,18 @@ RfiStepper.propTypes = {
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  Campus: PropTypes.string,
-  College: PropTypes.string,
-  Department: PropTypes.string,
-  StudentType: PropTypes.string,
-  AreaOfInterest: PropTypes.string,
-  ProgramOfInterest: PropTypes.string,
-  ProgramOfInterestOptional: PropTypes.bool,
-  IsCertMinor: PropTypes.bool,
-  Country: PropTypes.string,
-  StateProvince: PropTypes.string,
-  SuccessMsg: PropTypes.string,
-  Test: PropTypes.bool,
+  campus: PropTypes.string,
+  college: PropTypes.string,
+  department: PropTypes.string,
+  studentType: PropTypes.string,
+  areaOfInterest: PropTypes.string,
+  programOfInterest: PropTypes.string,
+  programOfInterestOptional: PropTypes.bool,
+  isCertMinor: PropTypes.bool,
+  country: PropTypes.string,
+  stateProvince: PropTypes.string,
+  successMsg: PropTypes.string,
+  test: PropTypes.bool,
 };
 
 RfiStepperButtons.propTypes = {

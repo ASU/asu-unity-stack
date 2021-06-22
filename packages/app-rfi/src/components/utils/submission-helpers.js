@@ -36,7 +36,7 @@ export function submissionFormFieldPrep(payload) {
   return output;
 }
 
-export function submissionSetHiddenFields(payload, Test) {
+export function submissionSetHiddenFields(payload, test) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;
@@ -46,7 +46,7 @@ export function submissionSetHiddenFields(payload, Test) {
   output.Source = "mock";
 
   // Whether we're in test mode or not: 1 or nothing. A prop value passed down.
-  output.Test = Test ? 1 : undefined;
+  output.Test = test ? 1 : undefined;
 
   // URL. Full URL, including path and params so campaign details can be
   // harvested by downstream apps.

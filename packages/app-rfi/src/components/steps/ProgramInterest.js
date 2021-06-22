@@ -40,16 +40,16 @@ function filterDegrees(
   return degreeData;
 }
 
-// Filter degree data by Department or College props if they exist.
+// Filter degree data by department or college props if they exist.
 function filterDegreesByDeptOrCollege(degreeData, props) {
   // Progress return if most specific is found first.
-  if (props.Department) {
-    // Filter with prop's props.Department against data's DepartmentCode
-    return filterDegrees(degreeData, "DepartmentCode", props, "Department");
+  if (props.department) {
+    // Filter with prop's props.department against data's DepartmentCode
+    return filterDegrees(degreeData, "DepartmentCode", props, "department");
   }
-  if (props.College) {
-    // Filter with prop's props.College against data's CollegeAcadOrg
-    return filterDegrees(degreeData, "CollegeAcadOrg", props, "College");
+  if (props.college) {
+    // Filter with prop's props.college against data's CollegeAcadOrg
+    return filterDegrees(degreeData, "CollegeAcadOrg", props, "college");
   }
   // Passthrough.
   return degreeData;
@@ -210,14 +210,15 @@ const ProgramInterest = props => {
     }
     // Setup Campus and CareerAndStudentType values, options and display if
     // the ProgramOfInterest prop is present - ie. rendering for a Degree Page.
-    if (props.ProgramOfInterest) {
+    if (props.programOfInterest) {
       // Call to get individual degree...
       // Currently only supporting Degree Search REST API degrees, but it
       // returns degrees with ONLNE campus, so perhaps is sufficient.
-      fetchDegreeByAcadPlan(props.ProgramOfInterest).then(degree => {
-        // Set Campus to NOPREF since we'll have a mix of degree types since DS
-        // REST API also stores ONLNE degeees.
-        values.Campus = "NOPREF";
+      fetchDegreeByAcadPlan(props.programOfInterest).then(degree => {
+        // Set Campus to NOPREF if a Campus value wasn't set via prop, since
+        // we'll have a mix of degree types because DS REST API also stores
+        // ONLNE degeees.
+        values.Campus = values.Campus ? values.Campus : "NOPREF";
         // Update options for CareerAndStudentType
         // If Degree starts with a B, it's undergrad.
         // TODO Is there a better means of identifying undergrad programs?
@@ -284,7 +285,7 @@ const ProgramInterest = props => {
     } else {
       // DS REST Areas of Interest
 
-      // Filter with props.Department or props.College if they exist.
+      // Filter with props.department or props.college if they exist.
       const degreeDataProcessed = filterDegreesByDeptOrCollege(
         degreeData,
         props
@@ -345,7 +346,7 @@ const ProgramInterest = props => {
         "Interest1"
       );
 
-      // Filter with props.Department or props.College if they exist.
+      // Filter with props.department or props.college if they exist.
       const degreeDataProcessed = filterDegreesByDeptOrCollege(
         degreeDataFiltered,
         props
@@ -376,7 +377,7 @@ const ProgramInterest = props => {
       {
         // Hide if we have a ProgramOfInterest prop.
         // We have a useEffect above that sets the value.
-        props.ProgramOfInterest === undefined && (
+        props.programOfInterest === undefined && (
           <RfiSelect
             label="Which applies to you?"
             id="Campus"
@@ -390,7 +391,7 @@ const ProgramInterest = props => {
         // Hide if we have a ProgramOfInterest prop and there is only one
         // option. We have a useEffect above that sets the value in the case
         // there's only one option.
-        (props.ProgramOfInterest === undefined ||
+        (props.programOfInterest === undefined ||
           studentTypeOptions.length !== 1) && (
           <RfiSelect
             label="Select your student status"
@@ -403,7 +404,7 @@ const ProgramInterest = props => {
       }
       {
         // Hide if we have a ProgramOfInterest prop.
-        props.ProgramOfInterest === undefined && (
+        props.programOfInterest === undefined && (
           <RfiSelect
             label="Area of interest"
             id="Interest1"
@@ -418,9 +419,9 @@ const ProgramInterest = props => {
         id="Interest2"
         name="Interest2"
         options={programInterestOptions}
-        disabled={props.ProgramOfInterest !== undefined}
+        disabled={props.programOfInterest !== undefined}
         requiredIcon={
-          !props.ProgramOfInterestOptional || values.Campus === "ONLNE"
+          !props.programOfInterestOptional || values.Campus === "ONLNE"
         }
       />
     </>
@@ -430,19 +431,19 @@ const ProgramInterest = props => {
 // Props
 // For full canonical list of props, see RfiMainForm.js
 ProgramInterest.defaultProps = {
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
   // Used but indirectly.
-  // Department: undefined,
-  // College: undefined,
+  // department: undefined,
+  // college: undefined,
 };
 
 ProgramInterest.propTypes = {
-  ProgramOfInterest: PropTypes.string,
-  ProgramOfInterestOptional: PropTypes.bool,
+  programOfInterest: PropTypes.string,
+  programOfInterestOptional: PropTypes.bool,
   // Used but indirectly.
-  // Department: PropTypes.string,
-  // College: PropTypes.string,
+  // department: PropTypes.string,
+  // college: PropTypes.string,
 };
 
 // Step configs

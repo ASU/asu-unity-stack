@@ -12,34 +12,34 @@ import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./AsuRfi.css";
 
 const AsuRfi = ({
-  Campus,
-  College,
-  Department,
-  StudentType,
-  AreaOfInterest,
-  ProgramOfInterest,
-  ProgramOfInterestOptional,
-  IsCertMinor,
-  Country,
-  StateProvince,
-  SuccessMsg,
-  Test,
+  campus,
+  college,
+  department,
+  studentType,
+  areaOfInterest,
+  programOfInterest,
+  programOfInterestOptional,
+  isCertMinor,
+  country,
+  stateProvince,
+  successMsg,
+  test,
 }) => {
   return (
     <div>
       <RfiMainForm
-        Campus={Campus}
-        College={College}
-        Department={Department}
-        StudentType={StudentType}
-        AreaOfInterest={AreaOfInterest}
-        ProgramOfInterest={ProgramOfInterest}
-        ProgramOfInterestOptional={ProgramOfInterestOptional}
-        IsCertMinor={IsCertMinor}
-        Country={Country}
-        StateProvince={StateProvince}
-        SuccessMsg={SuccessMsg}
-        Test={Test}
+        campus={campus}
+        college={college}
+        department={department}
+        studentType={studentType}
+        areaOfInterest={areaOfInterest}
+        programOfInterest={programOfInterest}
+        programOfInterestOptional={programOfInterestOptional}
+        isCertMinor={isCertMinor}
+        country={country}
+        stateProvince={stateProvince}
+        successMsg={successMsg}
+        test={test}
       />
     </div>
   );
@@ -49,31 +49,31 @@ export { AsuRfi };
 
 // Props
 AsuRfi.defaultProps = {
-  Campus: undefined,
-  College: undefined,
-  Department: undefined,
-  StudentType: undefined,
-  AreaOfInterest: undefined,
-  ProgramOfInterest: undefined,
-  ProgramOfInterestOptional: false,
-  IsCertMinor: false,
-  Country: undefined,
-  StateProvince: undefined,
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  Test: false,
+  campus: undefined,
+  college: undefined,
+  department: undefined,
+  studentType: undefined,
+  areaOfInterest: undefined,
+  programOfInterest: undefined,
+  programOfInterestOptional: false,
+  isCertMinor: false,
+  country: undefined,
+  stateProvince: undefined,
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  test: false,
 };
 
 AsuRfi.propTypes = {
-  Campus: PropTypes.string,
-  College: PropTypes.string,
-  Department: PropTypes.string,
-  StudentType: PropTypes.string,
-  AreaOfInterest: PropTypes.string,
-  ProgramOfInterest: PropTypes.string,
-  ProgramOfInterestOptional: PropTypes.bool,
-  IsCertMinor: PropTypes.bool,
-  Country: PropTypes.string,
-  StateProvince: PropTypes.string,
-  SuccessMsg: PropTypes.string,
-  Test: PropTypes.bool,
+  campus: PropTypes.string,
+  college: PropTypes.string,
+  department: PropTypes.string,
+  studentType: PropTypes.string,
+  areaOfInterest: PropTypes.string,
+  programOfInterest: PropTypes.string,
+  programOfInterestOptional: PropTypes.bool,
+  isCertMinor: PropTypes.bool,
+  country: PropTypes.string,
+  stateProvince: PropTypes.string,
+  successMsg: PropTypes.string,
+  test: PropTypes.bool,
 };

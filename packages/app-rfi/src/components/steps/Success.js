@@ -14,7 +14,7 @@ const sanitizeDangerousMarkup = content => {
 
 // Component
 
-const Success = ({ SuccessMsg }) => {
+const Success = ({ successMsg }) => {
   return (
     <div className="rfi-submitted">
       <FontAwesomeIcon
@@ -25,7 +25,7 @@ const Success = ({ SuccessMsg }) => {
       />
       <div className="rfi-submitted-sub-icon">Submitted</div>
       <h3>Thanks for your request!</h3>
-      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(SuccessMsg)} />
+      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
     </div>
   );
 };
@@ -41,11 +41,11 @@ const successForm = {
 
 // Props
 Success.defaultProps = {
-  SuccessMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
 };
 
 Success.propTypes = {
-  SuccessMsg: PropTypes.string,
+  successMsg: PropTypes.string,
 };
 
 export { successForm };
