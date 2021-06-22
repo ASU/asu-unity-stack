@@ -61,24 +61,8 @@ class RfiStepper extends React.Component {
   // TODO Resolve parse error. .babelrc already has plugin identified.
   // Possible solutions: https://github.com/babel/babel/issues/8711
   // ts-check didn't like
-  next = () => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        step: prevState.step + 1,
-      };
-    });
-  };
-
-  // ts-check didn't like
-  prev = () => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        step: prevState.step - 1,
-      };
-    });
-  };
+  next = () => this.setState({ step: this.state.step + 1 });
+  prev = () => this.setState({ step: this.state.step - 1 });
 
   // Validation for RfiSelect fields with dependencies across steps that don't
   // play well with Formik and Yup. We implement standard Formik, form-level,
