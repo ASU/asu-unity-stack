@@ -29,6 +29,7 @@ const PhotoGrid = styled.div`
     padding-bottom: 12px;
   }
 `;
+
 const SectionWrapper = styled.div`
   .uds-img,
   .uds-video-container {
@@ -51,7 +52,7 @@ function textPhotoGridTypeHtmlTemplate({
   return (
     <section className="container">
       <div className="row pt-3">
-        <div className="col col-sm-12 col-md-6 col-lg-6 ">
+        <div className="col col-sm-12 col-md-6 col-lg-6 pl-0">
           <Heading>
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
@@ -179,7 +180,7 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
             </span>
           </Heading>
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-6">
+        <div className="col col-sm-12 col-md-6 col-lg-6 pt-2">
           {contents.map((content, index) => (
             <p
               key={`content-${index + 1}`}
