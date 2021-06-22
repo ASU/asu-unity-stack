@@ -1,36 +1,39 @@
 export default { title: 'Components/Heroes' };
 
 // Random photos sourced from Unsplash: https://source.unsplash.com
-
 export const heroSmall = () => `
-<div class="uds-hero uds-hero-sm" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-  </div>
+
+<div class="uds-hero-sm">
+  <img class="hero" src="https://source.unsplash.com/WeYamle9fDM/1920x256" alt="Sample placeholder image." />
+  <div role="doc-subtitle"><span class="highlight-white">The New American University</span></div>
+  <h1><span class="highlight-black">By whom it includes</span></h1>
+  <a href="#" class="btn btn-maroon">Maroon Call to Action</a>
 </div>
 `;
 
 export const heroMedium = () => `
-<div class="uds-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-    <div class="uds-hero-text col-sm-12 col-md-7">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="#" class="btn btn-gold" />Call to action</a>
-    </div>
+<div class="uds-hero-md has-btn-row">
+  <img class="hero" src="https://source.unsplash.com/IydYk-LGOhc/1920x512" alt="Sample placeholder image." />
+  <h1><span class="highlight-gold">Gettysburg Address</span></h1>
+  <div class="content text-white">
+    <p>Four score and seven years ago our fathers brought forth upon this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
+  </div>
+  <div class="btn-row">
+    <a href="#" class="btn btn-md btn-gold">Read the 13th Amendment</a>
+    <a href="#" class="btn btn-md btn-gold">More quotes from Abraham Lincoln</a>
   </div>
 </div>
 `;
 
 export const heroLarge = () => `
-<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h1 class="heading heading-one col-md-8"><span class="highlight-gold highlight-heading-one">Heading 1</span></h1>
-    <div class="uds-hero-text col-sm-12 col-md-7">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="#" class="btn btn-gold" />Call to action</a>
-    </div>
+<div class="uds-hero-lg hide-content">
+  <img class="hero" src="https://source.unsplash.com/xyXcGADvAwE/1920x684" alt="Sample placeholder image." />
+  <div role="doc-subtitle"><span class="highlight-black">Mass Ascension</span></div>
+  <h1 class="text-white">The Albuquerque International Balloon Fiesta</h1>
+  <div class="content">
+    <p class="text-white">For nine days in October, the Albuquerque International Balloon Fiesta creates an enchanted world of vibrant balloon-filled skies. Brisk autumn mornings in the Rio Grande Valley create an otherworldly backdrop for our most popular event, Mass Ascension.</p>
   </div>
+  <a href="#" class="btn btn-maroon">Get your tickets</a>
 </div>
 `;
 
@@ -78,22 +81,4 @@ export const storyHeroLarge = () => `
 </section>
 `;
 
-export const heroMediumBlackTitle = () => `
-<div class="uds-hero uds-hero-md" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h3 class="col-md-8"><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1 class="col-md-8"><span class="highlight-white">Title Title Title Title Title Title</span></h1>
-  </div>
-</div>
-`;
-
-export const heroLargeBlackTitle = () => `
-<div class="uds-hero uds-hero-lg" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
-  <div class="container uds-hero-container">
-    <h3 class="col-md-8"><span class="highlight-black">Subtitle Subtitle Subtitle Subtitle Subtitle Subtitle</span></h3>
-    <h1 class="col-md-8"><span class="highlight-white">Title Title Title Title Title Title</span></h1>
-  </div>
-</div>
-`
-
-; // close
+// close

@@ -1,0 +1,188 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Hero/Standard Heroes" />
+
+# Standard hero #
+
+Hero content sections come in three different size varieties.
+
+- `uds-hero-sm` - Will be 16rem (256px) tall on mobile and 16rem (256px) tall on desktop.
+- `uds-hero-md` - Will be 16rem (256px) tall on mobile and 32rem (512px) tall on desktop.
+- `uds-hero-lg` - Will be 32rem (512px) tall on mobile and 42.75rem (684px) tall on desktop.
+
+The recommended markup for a hero image is as follows:
+
+```
+<div class="uds-hero-md">
+  <img class="hero" src="" alt="Don't forget the alt text." />
+  <h1>Hero headline text</h1>
+  <div class="content">
+    <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+  </div>
+  <a href="#" class="btn btn-gold">Call to action button</a>
+</div>
+```
+
+Within the context of the hero section, the inclusion of an image is mandatory. You may optionally chose to include any of the following pieces of content as required:
+- Headline text
+- An optional subtitle positioned above the title.
+- A short description or introduction to the content below.
+- A single call to action button, or a button row containing more than one button.
+
+<div class="pt-4">&nbsp;</div>
+
+## Hero content ##
+
+<div class="pt-4">&nbsp;</div>
+
+### The image ###
+
+Images optimized for mobile should be cropped to the following dimensions.
+
+- Small and medium heroes: 768px width by 256px height
+- Large heroes: 768px width by 512px height
+
+Images intended for a desktop display should be cropped to 1920px wide and should use the following heights.
+
+- Small hero, desktop: 265px
+- Medium hero, desktop: 512px
+- Large hero, desktop: 684px
+
+The hero section uses a standard `<img>` tag to express the background image of the section.
+
+- Be sure to include meaningful alt text for your hero image.
+- A background gradient is automatically applied to the background image when viewing the hero on a tablet or desktop sized viewport.
+- Within the `<img>` tag, you can also chose to include a `srcset` of images that are appropriately sized for the indicated viewport.
+- The `srcset` sizes offer additional opportunities for art direction via specific cropping of the original image.
+
+A fancy `<img>` example:
+
+```
+<div class="uds-hero-md">
+  <img class="hero"
+    srcset="centered-pitchfork-hand-768w.jpg 768w,
+            offset-pitchfork-hand-1920w.jpg 1920w"
+    sizes="(max-width: 768px) 768px,
+            1920px"
+    src="offset-pitchfork-hand-1920w.jpg"
+    alt="Student doing a pitchfork as a silhouette in the sun."
+  />
+  ...
+</div>
+```
+
+### Headline text ###
+
+Headline text should be expressed within the hero as an `H1` tag.
+
+- Use the `<span class="highlight-*">` classes to highlight all or part of the headline.
+- Include the `text-white` class within the initial `h1` for proper contrast against dark background images as needed.
+
+```
+<div class="uds-hero-md">
+  <img class="hero" src="darkimage.jpg" alt="Don't forget the alt text." />
+  <h1 class="text-white">White text with a <span class="highlight-gold">gold</span>highlight</h1>
+  ...
+</div>
+```
+
+### Subtitles ###
+
+A subtitle can be added to the hero section by the inclusion of a `<div>` with the proper ARIA role assigned. Subtitles are styled to look like a standard `<h3>` heading tag, but are expressed as a normal `<div>` to preserve the normal document outline.
+
+- Include a `text-white` class as needed for proper contrast.
+- Optionally include a `<span class="highlight-*">` class to highlight all or part of the subtitle.
+- Highlighted subtitles will align with highlighted sections of the headline for the hero.
+- Visually, subtitles will always be positioned above the title regardless of source order.
+
+```
+<div class="uds-hero-md">
+  ...
+  <div role="doc-subtitle"><span class="highlight-white">Your subtitle</span></div>
+  <h1><span class="highlight-black">The main title goes here</h1>
+  ...
+</div>
+```
+
+### Description / Introduction ###
+
+Be sure to wrap your description or introduction text in a `<div class="content">` to ensure proper alignment with the other elements within the hero. As you add content of various lengths, be sure to test your results on a desktop and mobile viewport to make sure that it doesn't cause the hero to become distorted.
+
+
+- By default, this content will appear immediately below the background image when viewed on a mobile device.
+- For best results, consider including this kind of content within a medium (`uds-hero-md`) or large (`uds-hero-lg`) hero section only.
+- You may use multiple small paragraphs if desired.
+- You may use a standard unordered/ordered list if desired. (Avoid the use of the `uds-list` element here for best results.)
+- You may **not** use a standard link within this text. Instead, consider using a call to action button.
+- Include the `text-white` class with the wrapper to ensure proper contrast against dark background images.
+
+```
+<div class="uds-hero-lg">
+  ...
+  <div class="content text-white">
+    <p>Introduction text can occur here.</p>
+    <p>If multiple paragraphs are desired, that should be OK in most circumstances.</p>
+  </div>
+  ...
+</div>
+```
+
+### Call to Action Button ###
+
+Include a standard sized button as a direct child of the `uds-hero-*` containing element to produce a properly aligned call to action button for your hero.
+
+- On a mobile device, the CTA button will automatically be positioned across the bottom border of the background image.
+- Only maroon or gold buttons are permitted within the hero section.
+
+```
+<div class="uds-hero-lg">
+  ...
+  <a href="#" class="btn btn-maroon">Maroon Call to Action</a>
+  ...
+</div>
+```
+
+## Base class modifiers ##
+
+<div class="pt-4">&nbsp;</div>
+
+You can alter the behavior of a standard hero content section by including either of two possible modifying classes along with the size declaration.
+
+### Button Rows ###
+
+Instead of using a single CTA button within the hero, you may chose to include a pair of smaller buttons as a primary and secondary action.
+
+- Declare your hero using a specific size and the `has-btn-row` modifying class.
+- Avoid using a button row with the small hero size (`uds-size-sm`) if possible.
+- Wrap your buttons in a `<div class="btn-row">`.
+- Buttons in a button row should be of the `btn-md` size.
+- For best results both buttons should be the same color.
+
+On a mobile device, buttons will wrap to a new line as necessary. They will also be presented within the context of the background image instead of along the bottom border of the image. Be sure to check that your markup doesn't distort the intended height of the element.
+
+```
+<div class="uds-hero-md has-btn-row">
+  ...
+  <div class="btn-row">
+    <a href="#" class="btn btn-md btn-gold">Primary CTA</a>
+    <a href="#" class="btn btn-md btn-gold">A secondary action</a>
+  </div>
+  ...
+</div>
+```
+
+### Hide Content on Mobile ###
+
+By default, content presented within the `<div class="content">` wrapper will appear immediately below the background image for a standard hero when viewing the page on a mobile device. This is to prevent the loss of information when viewing a potentially important description or introduction to the page.
+
+If you would like to prevent this content from being displayed at all, include a `hide-content` class along with the initial size declaration for the hero.
+
+```
+<div class="uds-hero-md hide-content">
+  ...
+  <div class="content">
+    <p class="text-white">This content will only be visible when the hero is viewed on a desktop or tablet sized device.</p>
+  </div>
+  ...
+</div>
+```
