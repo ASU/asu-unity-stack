@@ -13,7 +13,8 @@
  * @typedef {{
  *    text: string
  *    cssClass?: string []
- *    highlightColor?: "gold" | "black"
+ *    color?: "black" | "white"
+ *    highlightColor?: "gold" | "black" | "white"
  * }} ContentProps
  */
 
