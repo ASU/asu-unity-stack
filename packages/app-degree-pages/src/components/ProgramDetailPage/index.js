@@ -129,7 +129,7 @@ const ProgramDetailPage = ({
               <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
             </div>
             <div className="row p-3">
-              <div className="col col-sm-12 col-md-6 col-lg-6 ">
+              <div className="col col-sm-12 col-md-7 col-lg-7">
                 {resolver.getMarketText() ? (
                   <IntroContent
                     breadcrumbs={introContent.breadcrumbs}
@@ -180,7 +180,7 @@ const ProgramDetailPage = ({
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
               </div>
-              <div className="col col-sm-12 col-md-6 col-lg-6">
+              <div className="col col-sm-12 col-md-5 col-lg-5">
                 {introContent.video && (
                   <VideoWrapper>
                     <Video
