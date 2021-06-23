@@ -15,12 +15,12 @@ export const heroMedium = () => `
 <div class="uds-hero-md has-btn-row">
   <img class="hero" src="https://source.unsplash.com/IydYk-LGOhc/1920x512" alt="Sample placeholder image." />
   <h1><span class="highlight-gold">Gettysburg Address</span></h1>
-  <div class="content text-white">
-    <p>Four score and seven years ago our fathers brought forth upon this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
+  <div class="content">
+    <p class="text-white">Four score and seven years ago our fathers brought forth upon this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
   </div>
   <div class="btn-row">
-    <a href="#" class="btn btn-md btn-gold">Read the 13th Amendment</a>
-    <a href="#" class="btn btn-md btn-gold">More quotes from Abraham Lincoln</a>
+    <a href="#" class="btn btn-default btn-gold">Read the 13th Amendment</a>
+    <a href="#" class="btn btn-default btn-gold ml-2">More quotes from Abraham Lincoln</a>
   </div>
 </div>
 `;
