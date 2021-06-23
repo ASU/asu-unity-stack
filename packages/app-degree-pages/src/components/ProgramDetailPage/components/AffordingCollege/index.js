@@ -6,12 +6,12 @@ import { Section, Background } from "./index.style";
 
 function AffordingCollege() {
   return (
-    <Section className="container pt-6 pb-6">
+    <Section className="container">
       <Background />
       <h2>
         <span className="highlight-gold">Affording college</span>
       </h2>
-      <div className="mt-2 mb-2 row">
+      <div className="mt-2 row">
         <div className="mt-2 col-12 col-md-4">
           <Card
             icon={["fas", "calculator"]}

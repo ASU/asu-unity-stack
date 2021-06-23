@@ -30,20 +30,13 @@ import { ChangeYourMajor } from "./components/ChangeYourMajor";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
-import { IntroContent } from "./components/IntroContent";
+import { MarketText } from "./components/MarketText";
 import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
-
-const VideoWrapper = styled.div`
-  .uds-video-container {
-    margin-top: 2.5rem;
-  }
-`;
-
 
 /**
  *
@@ -77,9 +70,23 @@ function getLocations(resolver) {
 }
 
 const Main = styled.main`
-  section {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  & > section section {
+    margin-bottom: 96px;
+
+    & > * {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    & h2 {
+      line-height: 1;
+    }
+  }
+`;
+
+const VideoWrapper = styled.div`
+  .uds-video-container {
+    margin-top: 2.5rem;
   }
 `;
 
@@ -128,26 +135,30 @@ const ProgramDetailPage = ({
             <div className="row pl-3">
               <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
             </div>
-            <div className="row p-3">
+            <div className="row pl-3">
               <div className="col col-sm-12 col-md-7 col-lg-7">
-                {resolver.getMarketText() ? (
-                  <IntroContent
-                    breadcrumbs={introContent.breadcrumbs}
-                    contents={
-                      introContent.contents || [
-                        { text: resolver.getMarketText() },
-                      ]
-                    }
+                <section className="intro">
+                  {resolver.getMarketText() ? (
+                    <MarketText
+                      breadcrumbs={introContent.breadcrumbs}
+                      contents={
+                        introContent.contents || [
+                          { text: resolver.getMarketText() },
+                        ]
+                      }
+                    />
+                  ) : null}
+
+                  <ProgramDescription
+                    content={resolver.getDescrLongExtented()}
                   />
-                ) : null}
 
-                <ProgramDescription content={resolver.getDescrLongExtented()} />
-
-                <RequiredCourse
-                  concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
-                  onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                  majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
-                />
+                  <RequiredCourse
+                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                  />
+                </section>
 
                 <AtAGlance
                   offeredBy={{
@@ -240,7 +251,7 @@ const ProgramDetailPage = ({
                 image={attendOnline.image}
               />
             </div>
-            <div className="row p-3">
+            <div className="row pl-3">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 <ProgramContactInfo
                   department={{

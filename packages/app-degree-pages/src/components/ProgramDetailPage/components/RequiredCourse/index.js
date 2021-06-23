@@ -31,7 +31,7 @@ function RequiredCourse({
   const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 11}`;
 
   const template = (
-    <section className="container pl-0">
+    <div className="container pl-0">
       <h4>Required Course (Major Map)</h4>
       <ButtonGroup className="pt-1">
         {concurrentDegreeMajorMaps && (
@@ -59,7 +59,7 @@ function RequiredCourse({
         major and find out how to&nbsp;
         <a href="https://changemajor.apps.asu.edu/">change your major</a>
       </div>
-    </section>
+    </div>
   );
 
   return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;

@@ -47,27 +47,21 @@ function OverlapContentImage({
 }) {
   const genId = idGenerator("overlap-");
   return (
-    <section>
-      <div className={`uds-image-overlap content-${contentDirection}`}>
-        <OverlapImage
-          className="img-fluid"
-          src={image.url}
-          alt={image.altText}
-        />
-        <ContentWrapper className="content-wrapper">
-          <h2>
-            <span className="highlight-gold">{title}</span>
-          </h2>
-          {contents.map(content => (
-            <div
-              key={genId.next().value}
-              dangerouslySetInnerHTML={sanitizeHTML(content.text)}
-            />
-          ))}
-          {contentChildren}
-        </ContentWrapper>
-      </div>
-    </section>
+    <div className={`uds-image-overlap content-${contentDirection}`}>
+      <OverlapImage className="img-fluid" src={image.url} alt={image.altText} />
+      <ContentWrapper className="content-wrapper">
+        <h2>
+          <span className="highlight-gold">{title}</span>
+        </h2>
+        {contents.map(content => (
+          <div
+            key={genId.next().value}
+            dangerouslySetInnerHTML={sanitizeHTML(content.text)}
+          />
+        ))}
+        {contentChildren}
+      </ContentWrapper>
+    </div>
   );
 }
 

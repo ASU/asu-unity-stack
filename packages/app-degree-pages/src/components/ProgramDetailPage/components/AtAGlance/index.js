@@ -22,11 +22,11 @@ export const AtAGlance = ({
   timeCommitment,
 }) => {
   return (
-    <section className="pt-6">
+    <section>
       <h2>
         <span className="highlight-gold">At a glance: program details</span>
       </h2>
-      <ul className="uds-list fa-ul maroon pt-2">
+      <ul className="uds-list fa-ul maroon pt-2 pb-0">
         <GlanceItem item={[offeredBy]} type="offeredBy" />
         <GlanceItem item={locations} type="locations" />
         <GlanceItem

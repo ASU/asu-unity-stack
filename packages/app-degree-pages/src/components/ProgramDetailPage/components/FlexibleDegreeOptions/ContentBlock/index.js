@@ -40,7 +40,7 @@ const ContentBlock = ({ title, links }) => {
           </li>
         ))}
       </List>
-      <p>
+      <p className="mb-0">
         Acceptance to the graduate program requires a separate application.
         During their junior year, eligible students will be advised by their
         academic departments to apply.

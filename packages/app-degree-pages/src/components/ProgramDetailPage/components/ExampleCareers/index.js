@@ -18,7 +18,7 @@ import { Table } from "./Table";
  */
 function ExampleCareers({ tableData }) {
   return (
-    <section className="pt-6 pb-6">
+    <section>
       <h2>Example careers</h2>
       <p>
         Students who complete this degree program may be prepared for the

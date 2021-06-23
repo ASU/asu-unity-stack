@@ -2,8 +2,15 @@
 
 import PropTypes from "prop-types";
 import React from "react";
+import styled from "styled-components";
 
 import { sanitizeHTML } from "../../../../core/utils";
+
+const WrapperContainer = styled.div`
+  & p:last-of-type {
+    margin-bottom: 0;
+  }
+`;
 
 /**
  *
@@ -18,7 +25,7 @@ function ChangeYourMajor({ content }) {
           Change Your Major requirements for current students
         </span>
       </h2>
-      <div dangerouslySetInnerHTML={sanitizeHTML(content)} />
+      <WrapperContainer dangerouslySetInnerHTML={sanitizeHTML(content)} />
     </section>
   );
 }

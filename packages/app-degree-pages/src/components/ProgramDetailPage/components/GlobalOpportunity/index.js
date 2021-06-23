@@ -9,11 +9,13 @@ import { OverlapContentImage } from "../../../../core/components";
  * @returns {JSX.Element}
  */
 const GlobalOpportunity = ({ contents, image }) => (
-  <OverlapContentImage
-    title="Global opportunities"
-    contents={contents}
-    image={image}
-  />
+  <section>
+    <OverlapContentImage
+      title="Global opportunities"
+      contents={contents}
+      image={image}
+    />
+  </section>
 );
 
 GlobalOpportunity.propTypes = OverlapContentImage.propTypes;
