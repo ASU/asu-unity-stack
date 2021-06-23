@@ -32,9 +32,13 @@ class RfiStepper extends React.Component {
     // If configured as a cert or minor and we have a program of interest, look
     // up the program's email address and set it in state for use in
     // isCertMinor render below.
-    const { isCertMinor, programOfInterest } = this.props;
+    const {
+      dataSourceDegreeSearch,
+      isCertMinor,
+      programOfInterest,
+    } = this.props;
     if (isCertMinor && programOfInterest) {
-      const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
+      const serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
       const resp = await fetch(serviceUrl)
         .then(response => response.json())
         .catch(error => new Error(error));
@@ -117,6 +121,9 @@ class RfiStepper extends React.Component {
       stateProvince,
       successMsg,
       test,
+      dataSourceDegreeSearch,
+      dataSourceAsuOnline,
+      dataSourceCountriesStates,
     } = this.props;
     const schema = validationSchemas[step];
 
@@ -313,6 +320,9 @@ RfiStepper.propTypes = {
   stateProvince: PropTypes.string,
   successMsg: PropTypes.string,
   test: PropTypes.bool,
+  dataSourceDegreeSearch: PropTypes.string.isRequired,
+  dataSourceAsuOnline: PropTypes.string.isRequired,
+  dataSourceCountriesStates: PropTypes.string.isRequired,
 };
 
 RfiStepperButtons.propTypes = {

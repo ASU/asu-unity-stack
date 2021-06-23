@@ -61,7 +61,12 @@ function filterDegreesByDeptOrCollege(degreeData, props) {
 // Returns the full degree dataset for the given program (undergrad | graduate).
 // We do filtering in useEffect()s to manage filtering logic for our various
 // field options.
-async function fetchDegreesData(Campus, CareerAndStudentType) {
+async function fetchDegreesData(
+  dataSourceDegreeSearch,
+  dataSourceAsuOnline,
+  Campus,
+  CareerAndStudentType
+) {
   let serviceUrl;
   let program;
 
@@ -69,7 +74,7 @@ async function fetchDegreesData(Campus, CareerAndStudentType) {
   if (Campus === "ONLNE") {
     program =
       CareerAndStudentType === "Readmission" ? "graduate" : "undergraduate";
-    serviceUrl = `https://asuonline.asu.edu/lead-submissions-v3.3/programs?category=${program}`;
+    serviceUrl = `${dataSourceAsuOnline}?category=${program}`;
     return (
       fetch(serviceUrl, {
         headers: {
@@ -88,7 +93,7 @@ async function fetchDegreesData(Campus, CareerAndStudentType) {
 
   // Degree Search REST API
   program = CareerAndStudentType === "Readmission" ? "graduate" : "undergrad";
-  serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&program=${program}&cert=false`;
+  serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&program=${program}&cert=false`;
 
   return fetch(serviceUrl)
     .then(response => response.json())
@@ -102,11 +107,10 @@ async function fetchDegreesData(Campus, CareerAndStudentType) {
 // Interest2) from DS REST API. Results include ONLNE results, so haven't
 // implemented dual logic for ASUOnline. Doesn't seem to be required by the
 // use cases, either.
-async function fetchDegreeByAcadPlan(acadPlan) {
+async function fetchDegreeByAcadPlan(dataSourceDegreeSearch, acadPlan) {
   // TODO Confirm we don't need to add support for ASUOnline lookup?
-  // serviceUrl = `https://asuonline.asu.edu/lead-submissions-v3.3/programs?plancode[]=${acadPlan}`;
 
-  const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${acadPlan}&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false`;
+  const serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findDegreeByAcadPlan&acadPlan=${acadPlan}&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false`;
   return fetch(serviceUrl)
     .then(response => response.json())
     .then(data => {
@@ -187,7 +191,12 @@ const ProgramInterest = props => {
 
     // Fetch master of degree data.
 
-    fetchDegreesData(values.Campus, values.CareerAndStudentType).then(data => {
+    fetchDegreesData(
+      props.dataSourceDegreeSearch,
+      props.dataSourceAsuOnline,
+      values.Campus,
+      values.CareerAndStudentType
+    ).then(data => {
       if (values.Campus === "ONLNE") {
         // ASUOnline data
         // Already sorted alpha by service, for us.
@@ -212,7 +221,10 @@ const ProgramInterest = props => {
       // Call to get individual degree...
       // Currently only supporting Degree Search REST API degrees, but it
       // returns degrees with ONLNE campus, so perhaps is sufficient.
-      fetchDegreeByAcadPlan(props.programOfInterest).then(degree => {
+      fetchDegreeByAcadPlan(
+        props.dataSourceDegreeSearch,
+        props.programOfInterest
+      ).then(degree => {
         // Set Campus to NOPREF if a Campus value wasn't set via prop, since
         // we'll have a mix of degree types because DS REST API also stores
         // ONLNE degeees.
@@ -439,6 +451,8 @@ ProgramInterest.defaultProps = {
 ProgramInterest.propTypes = {
   programOfInterest: PropTypes.string,
   programOfInterestOptional: PropTypes.bool,
+  dataSourceDegreeSearch: PropTypes.string.isRequired,
+  dataSourceAsuOnline: PropTypes.string.isRequired,
   // Used but indirectly.
   // department: PropTypes.string,
   // college: PropTypes.string,

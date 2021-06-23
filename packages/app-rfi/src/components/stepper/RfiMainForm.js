@@ -28,6 +28,9 @@ const RfiMainForm = ({
   stateProvince,
   successMsg,
   test,
+  dataSourceDegreeSearch,
+  dataSourceAsuOnline,
+  dataSourceCountriesStates,
 }) => {
   return (
     <div className="container rfi-container-inner">
@@ -51,6 +54,9 @@ const RfiMainForm = ({
                 stateProvince={stateProvince}
                 successMsg={successMsg}
                 test={test}
+                dataSourceDegreeSearch={dataSourceDegreeSearch}
+                dataSourceAsuOnline={dataSourceAsuOnline}
+                dataSourceCountriesStates={dataSourceCountriesStates}
                 validationSchemas={[
                   programInterestForm.validationSchema,
                   aboutMeForm.validationSchema,
@@ -145,6 +151,9 @@ RfiMainForm.propTypes = {
   stateProvince: PropTypes.string,
   successMsg: PropTypes.string,
   test: PropTypes.bool,
+  dataSourceDegreeSearch: PropTypes.string.isRequired,
+  dataSourceAsuOnline: PropTypes.string.isRequired,
+  dataSourceCountriesStates: PropTypes.string.isRequired,
 };
 
 export { RfiMainForm };

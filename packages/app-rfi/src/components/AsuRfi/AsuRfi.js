@@ -24,6 +24,9 @@ const AsuRfi = ({
   stateProvince,
   successMsg,
   test,
+  dataSourceDegreeSearch,
+  dataSourceAsuOnline,
+  dataSourceCountriesStates,
 }) => {
   return (
     <div>
@@ -40,6 +43,9 @@ const AsuRfi = ({
         stateProvince={stateProvince}
         successMsg={successMsg}
         test={test}
+        dataSourceDegreeSearch={dataSourceDegreeSearch}
+        dataSourceAsuOnline={dataSourceAsuOnline}
+        dataSourceCountriesStates={dataSourceCountriesStates}
       />
     </div>
   );
@@ -61,6 +67,12 @@ AsuRfi.defaultProps = {
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch:
+    "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceAsuOnline:
+    "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+  dataSourceCountriesStates:
+    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };
 
 AsuRfi.propTypes = {
@@ -76,4 +88,7 @@ AsuRfi.propTypes = {
   stateProvince: PropTypes.string,
   successMsg: PropTypes.string,
   test: PropTypes.bool,
+  dataSourceDegreeSearch: PropTypes.string,
+  dataSourceAsuOnline: PropTypes.string,
+  dataSourceCountriesStates: PropTypes.string,
 };

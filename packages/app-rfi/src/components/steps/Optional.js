@@ -1,5 +1,6 @@
 // @ts-check
 import { useFormikContext } from "formik";
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
@@ -59,10 +60,12 @@ function getStateOptions(resultsArrayOfObjects, formikValues) {
 }
 
 // Fetch Country Options from Data Potluck's readable stream service.
-async function fetchCountries(optionsCallback, formikValues) {
-  // fetch("https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states")
-  const serviceUrl =
-    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states";
+async function fetchCountries(
+  dataSourceCountriesStates,
+  optionsCallback,
+  formikValues
+) {
+  const serviceUrl = `${dataSourceCountriesStates}?include=states`;
 
   return fetch(serviceUrl)
     .then(response => response.body)
@@ -118,7 +121,7 @@ const veteranStatusOptions = [
 
 // Component
 
-const Optional = () => {
+const Optional = ({ dataSourceCountriesStates }) => {
   const [countryOptions, setCountries] = useState([
     {
       key: "1",
@@ -147,19 +150,23 @@ const Optional = () => {
   // Countries
   useEffect(() => {
     // Fetch country options.
-    fetchCountries(getCountryOptions, values).then(data => {
-      // Set state on countryOptions.
-      setCountries(data);
-    });
+    fetchCountries(dataSourceCountriesStates, getCountryOptions, values).then(
+      data => {
+        // Set state on countryOptions.
+        setCountries(data);
+      }
+    );
   }, []); // Run only once
 
   // States and Provinces
   useEffect(() => {
     // Fetch state options.
-    fetchCountries(getStateOptions, values).then(data => {
-      // Set state on stateOptions.
-      setStates(data);
-    });
+    fetchCountries(dataSourceCountriesStates, getStateOptions, values).then(
+      data => {
+        // Set state on stateOptions.
+        setStates(data);
+      }
+    );
     if (!(values.Country === "US" || values.Country === "CA")) {
       setStatesDisabled(true);
     } else {
@@ -218,6 +225,10 @@ const Optional = () => {
       />
     </>
   );
+};
+
+Optional.propTypes = {
+  dataSourceCountriesStates: PropTypes.string.isRequired,
 };
 
 // Step configs

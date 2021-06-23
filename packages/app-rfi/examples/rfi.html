@@ -83,25 +83,31 @@
      *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=true&program=graduate
      *
      * RFI COMPONENT PROPS, FOR REFERENCE
-     * - Campus: One of ONLNE, GROUND, NOPREF, or undefined
-     * - College: Use one acadOrgCode from reference
+     * - campus: One of ONLNE, GROUND, NOPREF, or undefined
+     * - college: Use one acadOrgCode from reference
      *     https://api.myasuplat-dpl.asu.edu/api/codeset/colleges
-     * - Department: Use one department code. See DepartmentCode values in
+     * - department: Use one department code. See DepartmentCode values in
      *     Degree Search API query.
-     * - StudentType: One of undergrad or graduate.
-     * - AreaOfInterest: One of planCatDescr values from Degree Search API
+     * - studentType: One of undergrad or graduate.
+     * - areaOfInterest: One of planCatDescr values from Degree Search API
      *     query.
-     * - ProgramOfInterest: One of AcadPlan from Degree Search API query.
+     * - programOfInterest: One of AcadPlan from Degree Search API query.
      *     (Note: Descr100 is used as label for this value in RFI UIs)
-     * - ProgramOfInterestOptional: true or false
-     * - IsCertMinor: true or false
-     * - Country: One 2 char country code ala
+     * - programOfInterestOptional: true or false
+     * - isCertMinor: true or false
+     * - country: One 2 char country code ala
      *     https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 or see data used by
      *     RFI in https://api.myasuplat-dpl.asu.edu/api/codeset/countries
-     * - StateProvince: US or Canada only. Use a description field value from
+     * - stateProvince: US or Canada only. Use a description field value from
      *     https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states
-     * - SuccessMsg: A string. May contain HTML.
-     * - Test: true or false. Will send the form payload with Test === 1.
+     * - successMsg: A string. May contain HTML.
+     * - test: true or false. Will send the form payload with Test === 1.
+     * - dataSourceDegreeSearch: Degree Search REST API. Uses default if not
+     *     supplied.
+     * - dataSourceAsuOnline: ASUOnline Programs API. Uses default if not
+     *     supplied.
+     * - dataSourceCountriesStates: Data Potluck Countries codeset service.
+     *     Uses default if not supplied.
      */
 
     // Initialize the RFI form with provided props.
@@ -120,6 +126,9 @@
         stateProvince: "Wyoming", // Only US states or CA provinces
         successMsg: "Success. <strong>You made it.</strong>",
         test: false,
+        dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+        dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+        dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
       },
     });
 

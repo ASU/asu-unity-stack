@@ -43,6 +43,9 @@ RfiDefault.args = {
   stateProvince: undefined, // Only US states or CA provinces - use full name.
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+  dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };
 
 export const RfiOnCollegePage = Template.bind({});
@@ -59,6 +62,9 @@ RfiOnCollegePage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
@@ -75,6 +81,9 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 // Important note: At current, only supports Degree Search REST API degrees.
@@ -94,6 +103,9 @@ RfiOnDegreePageUndergraduate.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnDegreePageGraduate = Template.bind({});
@@ -110,6 +122,9 @@ RfiOnDegreePageGraduate.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnCollegeDepartmentPage = Template.bind({});
@@ -126,6 +141,9 @@ RfiOnCollegeDepartmentPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnNonAcademicUnitPage = Template.bind({});
@@ -142,6 +160,9 @@ RfiOnNonAcademicUnitPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnCertOrMinorPage = Template.bind({});
@@ -158,6 +179,9 @@ RfiOnCertOrMinorPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiOnCampaignLandingPage = Template.bind({});
@@ -174,6 +198,9 @@ RfiOnCampaignLandingPage.args = {
   stateProvince: "New Mexico", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiTestMode = Template.bind({});
@@ -190,6 +217,9 @@ RfiTestMode.args = {
   stateProvince: "California", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: true,
+  dataSourceDegreeSearch: undefined,
+  dataSourceAsuOnline: undefined,
+  dataSourceCountriesStates: undefined,
 };
 
 export const RfiDevTester = Template.bind({});
@@ -206,4 +236,10 @@ RfiDevTester.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: "Success. <strong>You made it.</strong>",
   test: false,
+  dataSourceDegreeSearch:
+    "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceAsuOnline:
+    "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+  dataSourceCountriesStates:
+    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };
