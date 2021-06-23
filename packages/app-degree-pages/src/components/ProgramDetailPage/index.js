@@ -38,6 +38,13 @@ import { RequiredCourse } from "./components/RequiredCourse";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
 
+const VideoWrapper = styled.div`
+  .uds-video-container {
+    margin-top: 2.5rem;
+  }
+`;
+
+
 /**
  *
  * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
@@ -96,11 +103,6 @@ const ProgramDetailPage = ({
 
   const url = urlResolver(dataSource);
 
-  // if (!loading && data) {
-  //   debugger;
-  //   console.log(resolver.getCollegeDesc());
-  // }
-
   useEffect(() => {
     doFetchPrograms(url);
   }, [url]);
@@ -128,14 +130,17 @@ const ProgramDetailPage = ({
             </div>
             <div className="row p-3">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
-                <IntroContent
-                  breadcrumbs={introContent.breadcrumbs}
-                  contents={
-                    introContent.contents || [
-                      { text: resolver.getMarketText() },
-                    ]
-                  }
-                />
+                {resolver.getMarketText() ? (
+                  <IntroContent
+                    breadcrumbs={introContent.breadcrumbs}
+                    contents={
+                      introContent.contents || [
+                        { text: resolver.getMarketText() },
+                      ]
+                    }
+                  />
+                ) : null}
+
                 <ProgramDescription content={resolver.getDescrLongExtented()} />
 
                 <RequiredCourse
@@ -175,16 +180,18 @@ const ProgramDetailPage = ({
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
               </div>
-              <div className="col col-sm-12 col-md-6 col-lg-6 ">
+              <div className="col col-sm-12 col-md-6 col-lg-6">
                 {introContent.video && (
-                  <Video
-                    url={introContent.video.url}
-                    vttUrl={introContent.video.vttUrl}
-                    altText={introContent.video.altText}
-                  />
+                  <VideoWrapper>
+                    <Video
+                      url={introContent.video.url}
+                      vttUrl={introContent.video.vttUrl}
+                      altText={introContent.video.altText}
+                    />
+                  </VideoWrapper>
                 )}
                 {introContent.image && (
-                  <div className="uds-img">
+                  <div className="uds-img pt-5">
                     <img
                       src={introContent.image.url}
                       className="img-fluid"

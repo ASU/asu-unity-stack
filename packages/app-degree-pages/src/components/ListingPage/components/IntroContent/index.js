@@ -25,15 +25,14 @@ import { spreadClasses, parseHeading } from "../../../../core/utils";
 
 const PhotoGrid = styled.div`
   .photo-item {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 1.25rem;
   }
 `;
 
 const SectionWrapper = styled.div`
   .uds-img,
   .uds-video-container {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
   }
 `;
 
@@ -68,7 +67,7 @@ function textPhotoGridTypeHtmlTemplate({
           ))}
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-6 ">
+        <div className="col col-sm-12 col-md-6 col-lg-6">
           <PhotoGrid className="row">
             {photoGrid.images.map((image, index) => (
               <div
