@@ -19,7 +19,7 @@ export const heroMedium = () => `
     <p class="text-white">Four score and seven years ago our fathers brought forth upon this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.</p>
   </div>
   <div class="btn-row">
-    <a href="#" class="btn btn-default btn-gold mr-2">Read the 13th Amendment</a>
+    <a href="#" class="btn btn-default btn-gold">Read the 13th Amendment</a>
     <a href="#" class="btn btn-default btn-gold">More quotes from Abraham Lincoln</a>
   </div>
 </div>

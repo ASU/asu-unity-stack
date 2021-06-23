@@ -38,7 +38,7 @@
 --------------------------------------------------------------*/
 
 div[class^='uds-hero'] {
-  display:grid;
+  display: grid;
   grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
   grid-template-rows: 1fr auto auto auto $uds-size-spacing-3 auto;
   gap: 0px 0px;
@@ -48,7 +48,11 @@ div[class^='uds-hero'] {
   align-items: flex-end;
 
   // Column alignment for decendent items
-  h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+  h1,
+  [role='doc-subtitle'],
+  a.btn,
+  .content,
+  .btn-row {
     grid-column: 2;
   }
 
@@ -57,14 +61,14 @@ div[class^='uds-hero'] {
     grid-row: 1 / span 4;
     object-fit: cover;
     max-width: 100%;
-    height:100%;
+    height: 100%;
   }
 
-  [role="doc-subtitle"] {
+  [role='doc-subtitle'] {
     @include like-h3;
     display: inline-block;
     grid-row: 2;
-    line-height:1;
+    line-height: 1;
 
     .highlight-white {
       @include like-h3-highlight-white;
@@ -81,7 +85,7 @@ div[class^='uds-hero'] {
 
   h1 {
     grid-row: 3;
-    margin:0;
+    margin: 0;
     margin-bottom: $uds-size-spacing-3;
   }
 
@@ -91,28 +95,27 @@ div[class^='uds-hero'] {
 
   .content {
     margin-top: $uds-size-spacing-3;
-    grid-row:6;
+    grid-row: 6;
   }
-
 
   // Base class modifier: .has-btn-row
   &.has-btn-row {
     grid-template-rows: 1fr repeat(4, auto);
 
     .btn-row {
-      grid-row:4;
+      grid-row: 4;
 
       .btn {
-        margin-bottom:$uds-size-spacing-2;
+        margin-bottom: $uds-size-spacing-2;
 
         & + .btn {
-          margin-left:0;
+          margin-left: 0;
         }
       }
     }
 
     .content {
-      grid-row:5;
+      grid-row: 5;
     }
   }
 
@@ -137,8 +140,8 @@ div.uds-hero-lg {
 // Prevents white text on a white background when .content
 // is repositioned below the background image.
 @include media-breakpoint-down(sm) {
-  div[class^=uds-hero] .content.text-white,
-  div[class^=uds-hero] .content > .text-white {
+  div[class^='uds-hero'] .content.text-white,
+  div[class^='uds-hero'] .content > .text-white {
     color: $uds-color-base-gray-7 !important;
   }
 }
@@ -148,36 +151,39 @@ div.uds-hero-lg {
 --------------------------------------------------------------*/
 @include media-breakpoint-up(md) {
   div[class^='uds-hero'] {
-
     grid-template-columns: 1fr minmax(0, 700px) 1fr;
-    grid-template-rows: 1fr repeat(4 ,auto) $uds-size-spacing-6;
+    grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
     // Column alignment for decendent items
-    h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
       grid-column: 2;
       max-width: 700px;
-      z-index:30;
+      z-index: 30;
     }
 
     .hero {
       grid-column: 1 / span 3;
       grid-row: 1 / span 6;
-      z-index:10;
+      z-index: 10;
     }
 
     .content {
-      grid-row:4;
+      grid-row: 4;
       font-size: $uds-size-font-xl;
       font-weight: $uds-font-weight-bold;
       line-height: 1.5;
 
       p:last-child {
-        margin-bottom:0;
+        margin-bottom: 0;
       }
     }
 
     h1 {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
 
     a.btn {
@@ -195,39 +201,48 @@ div.uds-hero-lg {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
       .content {
-        grid-row:4;
+        grid-row: 4;
       }
 
       .btn-row {
-        grid-row:5;
-        a.btn {
+        grid-row: 5;
+
+        .btn {
           margin-top: $uds-size-spacing-3;
           margin-bottom: 0;
+          & + .btn {
+            margin-left: $uds-size-spacing-2;
+          }
         }
       }
     }
 
     // Base class modifier: .hide-content
     &.hide-content .content {
-      display:block;
+      display: block;
     }
 
     // Background shadow
     &:after {
-      content:'';
-      height:100%;
-      width:100%;
+      content: '';
+      height: 100%;
+      width: 100%;
       background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%);
       grid-column: 1 / span 3;
       grid-row: 1 / span 6;
-      z-index:20;
+      z-index: 20;
     }
   }
 
-  div.uds-hero-sm {height: $uds-size-spacing-32;}
-  div.uds-hero-md {height: $uds-size-spacing-64;}
-  div.uds-hero-lg {height: 42.75rem;}
-
+  div.uds-hero-sm {
+    height: $uds-size-spacing-32;
+  }
+  div.uds-hero-md {
+    height: $uds-size-spacing-64;
+  }
+  div.uds-hero-lg {
+    height: 42.75rem;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -235,11 +250,14 @@ div.uds-hero-lg {
 --------------------------------------------------------------*/
 @include media-breakpoint-up(lg) {
   div[class^='uds-hero'] {
-
     grid-template-columns: 1fr minmax(0, 940px) 1fr;
 
     // Column alignment for decendent items
-    h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
       max-width: calc(940px - 34%);
     }
   }
@@ -247,16 +265,18 @@ div.uds-hero-lg {
 
 @include media-breakpoint-up(xl) {
   div[class^='uds-hero'] {
-
     grid-template-columns: 1fr minmax(0, 1200px) 1fr;
 
     // Column alignment for decendent items
-    h1, [role="doc-subtitle"], a.btn, .content, .btn-row {
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
       max-width: calc(1200px - 34%);
     }
   }
 }
-
 
 /*--------------------------------------------------------------
 5. Story Hero, Mobile
