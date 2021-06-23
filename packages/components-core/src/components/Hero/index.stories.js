@@ -17,12 +17,20 @@ export default {
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ image, title, contents }) => (
-  <Hero title={title} image={image} contents={contents} />
+const Template = ({ image, title, contents, contentsColor }) => (
+  <Hero
+    title={title}
+    image={image}
+    contents={contents}
+    contentsColor={contentsColor}
+  />
 );
 
+/**
+ * @type {{ args: HeroProps}}
+ */
 export const HeroSmall = Template.bind({});
-/** @type {HeroProps} */
+
 HeroSmall.args = {
   image: {
     url: "https://source.unsplash.com/random/800x400?a=1",
@@ -30,13 +38,34 @@ HeroSmall.args = {
     size: "small",
   },
   title: {
-    text: "Heading 1",
+    text: "Heading with a long title 1",
     highlightColor: "gold",
   },
 };
 
+/**
+ * @type {{ args: HeroProps}}
+ */
+export const HeroLongTitle = Template.bind({});
+
+HeroLongTitle.args = {
+  image: {
+    url: "https://source.unsplash.com/random/800x400?a=1",
+    altText: "Hero image",
+    size: "small",
+  },
+  title: {
+    text: "Heading with a long title 2",
+    highlightColor: "gold",
+    maxWidth: "100%",
+  },
+};
+
+/**
+ * @type {{ args: HeroProps}}
+ */
 export const HeroMedium = Template.bind({});
-/** @type {HeroProps} */
+
 HeroMedium.args = {
   image: {
     url: "https://source.unsplash.com/random/800x400?a=1",
@@ -47,6 +76,7 @@ HeroMedium.args = {
     text: "Heading 1",
     highlightColor: "black",
   },
+  contentsColor: "white",
   contents: [
     {
       text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -55,8 +85,11 @@ HeroMedium.args = {
   ],
 };
 
+/**
+ * @type {{ args: HeroProps}}
+ */
 export const HeroLarge = Template.bind({});
-/** @type {HeroProps} */
+
 HeroLarge.args = {
   image: {
     url: "https://source.unsplash.com/random/800x400?a=1",
@@ -65,7 +98,9 @@ HeroLarge.args = {
   },
   title: {
     text: "Heading 1",
+    color: "white",
   },
+  contentsColor: "white",
   contents: [
     {
       text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,

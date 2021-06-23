@@ -5,9 +5,6 @@ import React from "react";
 
 import { ProgramDetailPage } from ".";
 
-// @ts-ignore
-import stockVideo from "../../assets/video/stock-video-person-drawing.mp4";
-
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
  */
@@ -204,3 +201,19 @@ const Template = ({
  */
 export const DefaultPage = Template.bind({});
 DefaultPage.args = defaultArgs;
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const PageWithVideo = Template.bind({});
+PageWithVideo.args = { ...defaultArgs };
+PageWithVideo.args.introContent = {
+  ...PageWithVideo.args.introContent,
+  image: undefined,
+  video: {
+    url: "/assets/video/stock-video-person-drawing.mp4",
+    altText: "",
+    vttUrl: "",
+  },
+};

@@ -18,7 +18,7 @@ function NextSteps({ cards }) {
   return (
     <section className="container">
       <h2>Next steps to attend ASU</h2>
-      <div className="mt-2 mb-4 row">
+      <div className="mt-2 row">
         {cards?.map(card => (
           <div className="mt-2 col-12 col-md-4" key={card.title}>
             <Card

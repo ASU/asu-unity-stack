@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable no-unused-vars */
 
 /**
  * @typedef {{

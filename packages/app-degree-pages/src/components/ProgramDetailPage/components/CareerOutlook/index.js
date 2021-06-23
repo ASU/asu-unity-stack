@@ -9,11 +9,13 @@ import { OverlapContentImage } from "../../../../core/components";
  * @returns {JSX.Element}
  */
 const CareerOutlook = ({ contents, image }) => (
-  <OverlapContentImage
-    title="Career opportunities"
-    contents={contents}
-    image={image}
-  />
+  <section>
+    <OverlapContentImage
+      title="Career opportunities"
+      contents={contents}
+      image={image}
+    />
+  </section>
 );
 
 CareerOutlook.propTypes = OverlapContentImage.propTypes;

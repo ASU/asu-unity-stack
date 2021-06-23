@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../../../core/utils";
+import { idGenerator, toTitleCase } from "../../../../core/utils";
 
 /**
  *
@@ -25,14 +25,14 @@ function FiltersSummary({ appliedFilters = [], onRemoveFilter }) {
           <span
             key={genFilterId.next().value}
             role="button"
+            aria-label={`Remove filter ${filterValue}`}
             tabIndex={-1}
             onKeyDown={() => onRemoveFilter(filterValue)}
             onClick={() => onRemoveFilter(filterValue)}
+            className="btn btn-tag btn-tag-alt-white mr-2"
           >
-            <span className="btn btn-tag btn-tag-alt-white">
-              <span>{filterValue}</span>
-              <i className="fas fa-times pl-1" />
-            </span>
+            <span>{toTitleCase(filterValue)}</span>
+            <i className="fas fa-times pl-1" />
           </span>
         ))}
       </div>

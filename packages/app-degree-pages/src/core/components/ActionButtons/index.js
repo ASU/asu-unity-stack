@@ -6,13 +6,7 @@ import React from "react";
 
 const ApplyNow = ({ href = null }) => (
   // @ts-ignore
-  <Button
-    label="Apply now"
-    ariaLabel="Apply now"
-    href={href}
-    color="gold"
-    size="small"
-  />
+  <Button label="Apply now" ariaLabel="Apply now" href={href} color="gold" />
 );
 
 ApplyNow.propTypes = {

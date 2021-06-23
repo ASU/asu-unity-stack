@@ -35,6 +35,13 @@ module.exports = {
     "dot-notation": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "no-unused-vars": [
+      "warn",
+      {
+        varsIgnorePattern: "tagHeadings|DegreeDataPropResolverServiceType",
+        argsIgnorePattern: "^_",
+      },
+    ],
     "jsx-a11y/label-has-associated-control": [
       "error",
       {

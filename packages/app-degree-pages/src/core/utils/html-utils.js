@@ -1,6 +1,7 @@
 // @ts-check
 
 import { sanitize } from "dompurify";
+
 import { tagHeadingList } from "../models";
 
 /**
@@ -22,9 +23,11 @@ function sanitizeHTML(content) {
 function parseHeading(title, defaultHeading = "h2") {
   return (
     /** @type {keyof JSX.IntrinsicElements} */
-    (tagHeadingList.includes(title.component)
-      ? title.component
-      : defaultHeading)
+    (
+      tagHeadingList.includes(title.component)
+        ? title.component
+        : defaultHeading
+    )
   );
 }
 

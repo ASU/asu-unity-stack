@@ -15,9 +15,9 @@ import { sanitizeHTML, spreadClasses } from "../../../../core/utils";
  * @param {IntroContentProps} props
  * @returns {JSX.Element}
  */
-function IntroContent({ contents = [] }) {
+function MarketText({ contents = [] }) {
   return (
-    <section className="pt-1 pb-1">
+    <div>
       {contents.map((content, index) => (
         <div
           key={`content-${index + 1}`}
@@ -25,12 +25,12 @@ function IntroContent({ contents = [] }) {
           dangerouslySetInnerHTML={sanitizeHTML(content.text)}
         />
       ))}
-    </section>
+    </div>
   );
 }
 
-IntroContent.propTypes = {
+MarketText.propTypes = {
   contents: PropTypes.arrayOf(contentPropType),
 };
 
-export { IntroContent };
+export { MarketText };

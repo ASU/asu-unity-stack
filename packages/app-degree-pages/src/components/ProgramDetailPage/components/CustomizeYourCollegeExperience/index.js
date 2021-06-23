@@ -1,14 +1,14 @@
 // @ts-check
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React from "react";
 
 /**
  *
- * @param {*} props
+ * @param {*} _props
  * @returns
  */
-function CustomizeYourCollegeExperience(props) {
+function CustomizeYourCollegeExperience(_props) {
   return (
     <section>
       <h2>Customize your college experience</h2>

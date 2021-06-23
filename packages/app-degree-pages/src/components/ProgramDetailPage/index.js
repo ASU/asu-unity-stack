@@ -26,11 +26,11 @@ import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
 import { ChangeYourMajor } from "./components/ChangeYourMajor";
-import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
+// import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
-import { IntroContent } from "./components/IntroContent";
+import { MarketText } from "./components/MarketText";
 import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
@@ -70,9 +70,23 @@ function getLocations(resolver) {
 }
 
 const Main = styled.main`
-  section {
-    padding-top: 48px;
-    padding-bottom: 48px;
+  & > section section {
+    margin-bottom: 96px;
+
+    & > * {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    & h2 {
+      line-height: 1;
+    }
+  }
+`;
+
+const VideoWrapper = styled.div`
+  .uds-video-container {
+    margin-top: 2.5rem;
   }
 `;
 
@@ -95,11 +109,6 @@ const ProgramDetailPage = ({
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
   const url = urlResolver(dataSource);
-
-  // if (!loading && data) {
-  //   debugger;
-  //   console.log(resolver.getCollegeDesc());
-  // }
 
   useEffect(() => {
     doFetchPrograms(url);
@@ -126,23 +135,30 @@ const ProgramDetailPage = ({
             <div className="row pl-3">
               <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
             </div>
-            <div className="row p-3">
-              <div className="col col-sm-12 col-md-6 col-lg-6 ">
-                <IntroContent
-                  breadcrumbs={introContent.breadcrumbs}
-                  contents={
-                    introContent.contents || [
-                      { text: resolver.getMarketText() },
-                    ]
-                  }
-                />
-                <ProgramDescription content={resolver.getDescrLongExtented()} />
+            <div className="row pl-3">
+              <div className="col col-sm-12 col-md-7 col-lg-7">
+                <section className="intro">
+                  {resolver.getMarketText() ? (
+                    <MarketText
+                      breadcrumbs={introContent.breadcrumbs}
+                      contents={
+                        introContent.contents || [
+                          { text: resolver.getMarketText() },
+                        ]
+                      }
+                    />
+                  ) : null}
 
-                <RequiredCourse
-                  concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
-                  onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                  majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
-                />
+                  <ProgramDescription
+                    content={resolver.getDescrLongExtented()}
+                  />
+
+                  <RequiredCourse
+                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                  />
+                </section>
 
                 <AtAGlance
                   offeredBy={{
@@ -174,16 +190,18 @@ const ProgramDetailPage = ({
 
                 <ChangeYourMajor content={resolver.getChangeMajor()} />
               </div>
-              <div className="col col-sm-12 col-md-6 col-lg-6 ">
+              <div className="col col-sm-12 col-md-5 col-lg-5">
                 {introContent.video && (
-                  <Video
-                    url={introContent.video.url}
-                    vttUrl={introContent.video.vttUrl}
-                    altText={introContent.video.altText}
-                  />
+                  <VideoWrapper>
+                    <Video
+                      url={introContent.video.url}
+                      vttUrl={introContent.video.vttUrl}
+                      altText={introContent.video.altText}
+                    />
+                  </VideoWrapper>
                 )}
                 {introContent.image && (
-                  <div className="uds-img">
+                  <div className="uds-img pt-5">
                     <img
                       src={introContent.image.url}
                       className="img-fluid"
@@ -220,7 +238,7 @@ const ProgramDetailPage = ({
                 />
               )}
 
-              <CustomizeYourCollegeExperience />
+              {/* <CustomizeYourCollegeExperience /> */}
 
               <GlobalOpportunity
                 contents={[{ text: resolver.getGlobalExp() }]}
@@ -232,7 +250,7 @@ const ProgramDetailPage = ({
                 image={attendOnline.image}
               />
             </div>
-            <div className="row p-3">
+            <div className="row pl-3">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 <ProgramContactInfo
                   department={{
