@@ -5,9 +5,6 @@ import React from "react";
 
 import { ProgramDetailPage } from ".";
 
-// @ts-ignore
-import stockVideo from "../../assets/video/stock-video-person-drawing.mp4";
-
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
  */

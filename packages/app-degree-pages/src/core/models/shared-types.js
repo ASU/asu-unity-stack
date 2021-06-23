@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable no-unused-vars */
+
 import { degreeDataPropResolverService } from "../services";
 import { tagHeadings } from "./constants";
 

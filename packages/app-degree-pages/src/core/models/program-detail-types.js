@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable no-unused-vars */
+
 /**
  * This type set the `url` and `isActive` optional
  * @typedef {{

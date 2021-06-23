@@ -9,9 +9,9 @@ const SectionWrapper = styled.section`
 
 const BrowseTitle = () => (
   <SectionWrapper className="container">
-      <h2>
-        <span className="highlight-gold">Browse degrees</span>
-      </h2>
+    <h2>
+      <span className="highlight-gold">Browse degrees</span>
+    </h2>
   </SectionWrapper>
 );
 

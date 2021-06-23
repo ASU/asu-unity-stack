@@ -26,7 +26,7 @@ import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
 import { ChangeYourMajor } from "./components/ChangeYourMajor";
-import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
+// import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
@@ -221,7 +221,7 @@ const ProgramDetailPage = ({
                 />
               )}
 
-              <CustomizeYourCollegeExperience />
+              {/* <CustomizeYourCollegeExperience /> */}
 
               <GlobalOpportunity
                 contents={[{ text: resolver.getGlobalExp() }]}

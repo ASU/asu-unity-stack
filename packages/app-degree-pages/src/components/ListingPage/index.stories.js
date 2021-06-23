@@ -27,7 +27,7 @@ const Template = ({ applyNowUrl, hero, introContent, programList }) => (
 );
 
 /**
- * @type {{ args: AppProps}}
+ * @type {{ args: AppProps }}
  */
 export const UndergraduateDegreePage = Template.bind({});
 
@@ -35,8 +35,7 @@ UndergraduateDegreePage.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       altText: "Undergraduate Degrees",
       size: "medium",
     },
@@ -76,20 +75,15 @@ UndergraduateDegreePage.args = {
 };
 
 /**
- * @type {{ args: AppProps}}
+ * @type {{ args: AppProps }}
  */
 export const AreaStudyDegreePage1 = Template.bind({});
 
-/**
- * @type {{ args: AppProps }}
- */
 AreaStudyDegreePage1.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-      // @ts-ignore
+      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
@@ -103,11 +97,9 @@ AreaStudyDegreePage1.args = {
     // ],
   },
   introContent: {
-    // @ts-ignore
     type: "text-photo-grid",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
-      // @ts-ignore
       component: "h3",
     },
     contents: [
@@ -144,16 +136,11 @@ AreaStudyDegreePage1.args = {
  */
 export const AreaStudyDegreePage2 = Template.bind({});
 
-/**
- * @type {{ args: AppProps }}
- */
 AreaStudyDegreePage2.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-      // @ts-ignore
+      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
@@ -170,7 +157,6 @@ AreaStudyDegreePage2.args = {
     type: "text-media",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
-      // @ts-ignore
       component: "h3",
     },
     contents: [
@@ -194,9 +180,6 @@ AreaStudyDegreePage2.args = {
  */
 export const AreaStudyDegreePage2B = Template.bind({});
 
-/**
- * @type {{ args: AppProps }}
- */
 AreaStudyDegreePage2B.args = { ...AreaStudyDegreePage2.args };
 AreaStudyDegreePage2B.args.introContent = {
   ...AreaStudyDegreePage2.args.introContent,
@@ -220,8 +203,7 @@ AreaStudyDegreePage3.args = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
   hero: {
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
