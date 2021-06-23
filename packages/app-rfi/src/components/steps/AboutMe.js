@@ -166,16 +166,20 @@ const aboutMeForm = {
   component: AboutMe,
 
   validationSchema: {
-    EmailAddress: Yup.string().email("Invalid email").required("Required"),
+    EmailAddress: Yup.string()
+      .email("Error: Invalid email")
+      .required("Error: Email is required"),
     FirstName: Yup.string()
-      .min(2, "Too short")
-      .max(64, "Too long")
-      .required("Required"),
+      .min(2, "Error: First name is too short")
+      .max(64, "Error: First name is too long")
+      .required("Error: First name is required"),
     LastName: Yup.string()
-      .min(2, "Too short")
-      .max(64, "Too long")
-      .required("Required"),
-    Phone: Yup.string().max(30, "Too long").required("Required"),
+      .min(2, "Error: First name is too short")
+      .max(64, "Error: First name is too long")
+      .required("Error: Last name is required"),
+    Phone: Yup.string()
+      .max(30, "Error: Phone is too long")
+      .required("Error: Phone is required"),
     // ZipCode and EnteryTerm are required if campus != online. Conditional
     // validation is deferred to Formik and implemented via customValidate() in
     // RfiTextInput.js and RfiSelect.js for better access to sibling field
@@ -183,7 +187,7 @@ const aboutMeForm = {
     ZipCode: Yup.string(),
     EntryTerm: Yup.string(),
     GdprConsent: Yup.boolean()
-      .required("Consent is required")
+      .required("Error: Consent is required")
       .oneOf([true], "Consent is required"),
   },
 

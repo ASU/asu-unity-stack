@@ -26,7 +26,7 @@ const RfiLabel = ({ label, name, id, requiredIcon }) => {
 
 const RfiError = ({ isError, metaError }) => {
   return (
-    <div>
+    <div role="alert">
       {isError ? (
         <small className="form-text invalid-feedback">
           <FontAwesomeIcon icon={faExclamationTriangle} />

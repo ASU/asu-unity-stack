@@ -245,7 +245,10 @@ const optionalForm = {
     BirthDate: Yup.date(),
     Zip: Yup.string(),
     MilitaryStatus: Yup.string(),
-    Comments: Yup.string().max(250, "Too long. 250 characters maximum."),
+    Comments: Yup.string().max(
+      250,
+      "Error: Question is too long. 250 characters maximum."
+    ),
   },
 
   initialValues: {

@@ -464,8 +464,10 @@ const programInterestForm = {
   component: ProgramInterest,
 
   validationSchema: {
-    Campus: Yup.string().required("Required"),
-    CareerAndStudentType: Yup.string().required("Required"),
+    Campus: Yup.string().required("Error: Which applies to you is required"),
+    CareerAndStudentType: Yup.string().required(
+      "Error: Student status is required"
+    ),
     Interest1: Yup.string(), // Uses form-level validation in RfiStepper.js
     Interest2: Yup.string(), // Uses form-level validation in RfiStepper.js
   },

@@ -82,7 +82,7 @@ class RfiStepper extends React.Component {
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
     if (step === 0 && !values.Interest1 && !programOfInterest) {
-      errors.Interest1 = "Area of Interest is required";
+      errors.Interest1 = "Error: Area of Interest is required";
     }
     // If on step 1 and Interest2 is empty, and is not optional or campus is
     // ONLNE, require Interest2.
@@ -91,12 +91,12 @@ class RfiStepper extends React.Component {
       !values.Interest2 &&
       (!programOfInterestOptional || values.Campus === "ONLNE")
     ) {
-      errors.Interest2 = "Program of Interest is required";
+      errors.Interest2 = "Error: Program of Interest is required";
     }
 
     // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
     if (step === 1 && values.Campus !== "ONLNE" && !values.EntryTerm) {
-      errors.EntryTerm = "Entry term is required";
+      errors.EntryTerm = "Error: Entry term is required";
     }
     return errors;
   };
@@ -172,7 +172,11 @@ class RfiStepper extends React.Component {
     const lastStep = formComponents.length - 1;
     return (
       <div>
-        <Progress value={progress * 100} className="rfi-progress" />
+        <Progress
+          value={Math.floor(progress * 100)}
+          aria-label="Progress bar"
+          className="rfi-progress"
+        />
         <div className="uds-rfi-form-wrapper">
           {/* Don't display step details if we're on the success "step". */}
           {step !== lastStep ? (

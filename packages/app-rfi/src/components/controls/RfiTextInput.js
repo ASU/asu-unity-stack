@@ -21,12 +21,13 @@ const RfiTextInput = ({
   // Ideally we'd not have implementation logic in this generic component, but
   // due to structural challenges in obtaining sibling field values via form
   // context, implementing that here with conditional protections is the most
-  // reasonable solve identified.
+  // reasonable solve identified. TODO One option might be to break out and
+  // create a unique component just for special case fields.
   function customValidate(value) {
     let error;
     // Require ZipCode unless Campus is "ONLNE".
     if (id === "ZipCode" && values.Campus !== "ONLNE" && !value) {
-      error = "Required";
+      error = "Error: Zip code is required";
     }
     return error;
   }
