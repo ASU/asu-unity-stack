@@ -316,26 +316,27 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     display: flex;
     justify-content: space-between;
     margin: $uds-size-spacing-2 0;
-    .partners-logos {
-      margin: $uds-size-spacing-1 0 $uds-size-spacing-1 $uds-size-spacing-2;
-      a {
-        display: inline-block;
-        &:not(:last-child) {
-          border-right: 1px solid $uds-color-base-gray-3;
-          margin-right: $uds-size-spacing-2;
-          padding-right: $uds-size-spacing-2;
+  }
+
+  .partners-logos {
+    margin: $uds-size-spacing-1 0 $uds-size-spacing-1 $uds-size-spacing-2;
+    a {
+      display: inline-block;
+      &:not(:last-child) {
+        border-right: 1px solid $uds-color-base-gray-3;
+        margin-right: $uds-size-spacing-2;
+        padding-right: $uds-size-spacing-2;
+      }
+      img {
+        height: 32px;
+        width: auto;
+        &.vert {
+          display: none;
         }
-        img {
-          height: 32px;
+        &.horiz {
+          height: 24px;
           width: auto;
-          &.vert {
-            display: none;
-          }
-          &.horiz {
-            height: 24px;
-            width: auto;
-            display: initial;
-          }
+          display: initial;
         }
       }
     }
@@ -639,6 +640,28 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   }
 }
 
+@media (max-width: 370px) {
+  #header-main {
+    .partner {
+      .partners-logos {
+        margin: $uds-size-spacing-1 0 $uds-size-spacing-1 $uds-size-spacing-1;
+        a {
+          &:not(:last-child) {
+            margin-right: $uds-size-spacing-1;
+            padding-right: $uds-size-spacing-1;
+          }
+          img {
+            height: 29px;
+            &.horiz {
+              height: 21px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 /*--------------------------------------------------------------
 7. Main Menu, Desktop
 --------------------------------------------------------------*/
@@ -670,22 +693,23 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
     .partner {
       margin: 0;
-      .partners-logos {
-        margin: $uds-size-spacing-1 0;
-        a {
-          &:not(:last-child) {
-            margin-right: $uds-size-spacing-3;
-            padding-right: $uds-size-spacing-3;
+    }
+
+    .partners-logos {
+      margin: $uds-size-spacing-1 0;
+      a {
+        &:not(:last-child) {
+          margin-right: $uds-size-spacing-3;
+          padding-right: $uds-size-spacing-3;
+        }
+        img {
+          height: 52px;
+          width: auto;
+          &.vert {
+            display: initial;
           }
-          img {
-            height: 52px;
-            width: auto;
-            &.vert {
-              display: initial;
-            }
-            &.horiz {
-              display: none;
-            }
+          &.horiz {
+            display: none;
           }
         }
       }
