@@ -90,7 +90,9 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
     /** @param {Object.<string, any>} row  */
     const doFilter = row =>
       isValidCampus(row) && isValidAcceleratedConcurrent(row);
+    // filter program list
     setTableView(data.programs.filter(doFilter));
+
     setSearchLoading(false);
 
     // set summary filters
@@ -149,15 +151,17 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
       );
     }
 
-    setStateFilters({
+    const newStateFilters = {
       ...stateFilters,
       ...cleanFilters,
-    });
+    };
+
+    setStateFilters({ ...newStateFilters });
 
     // clean up: redo query with new filters
     onDegreeApplyFilters({
-      acceleratedConcurrent: stateFilters.acceleratedConcurrent,
-      locations: stateFilters.locations,
+      acceleratedConcurrent: newStateFilters.acceleratedConcurrent,
+      locations: newStateFilters.locations,
     });
   };
 
@@ -191,6 +195,7 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
         />
 
         {error && <div>Something went wrong ...</div>}
+
         <section className="container m-1">
           <div className="d-flex justify-content-between">
             <FiltersSummary

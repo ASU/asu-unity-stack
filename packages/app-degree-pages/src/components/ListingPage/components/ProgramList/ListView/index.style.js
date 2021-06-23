@@ -166,47 +166,56 @@ const Table = styled.table`
       td > div {
         position: relative;
       }
+
       input.togle-more-text {
         opacity: 0;
         position: absolute;
         pointer-events: none;
-      }
 
-      input:checked + .desc-long {
-        max-height: fit-content;
-        overflow: auto;
-      }
+        &:checked + .desc-long {
+          max-height: fit-content;
+          overflow: auto;
+        }
 
-      input:checked + .desc-long + .label-more-less {
-        .label-more {
-          display: none;
+        &:checked + .desc-long + .label-more-less {
+          .label-more {
+            display: none;
+          }
+          .label-less {
+            display: inline;
+          }
         }
-        .label-less {
-          display: inline;
-        }
-      }
 
-      input:not(:checked) ~ .desc-long + .label-more-less {
-        .label-more {
-          display: inline;
-        }
-        .label-less {
-          display: none;
+        &:not(:checked) + .desc-long + .label-more-less {
+          width: 100%;
+
+          .label-more {
+            display: inline;
+          }
+          .label-less {
+            display: none;
+          }
         }
       }
 
       .desc-long {
         max-height: 200px;
         overflow: hidden;
+        transform: max-width 0.6;
       }
 
-      label {
+      label.label-more-less {
+        cursor: pointer;
+        line-height: normal;
+        color: #8c1d40;
+        background: white;
+        box-shadow: -1px -2px 20px 15px #f3f3f3;
+        text-align: right;
+        border: 0;
+        margin: 0;
         position: absolute;
         right: 0px;
-        transform: translateY(-195%);
-        border: 0;
-        background: white;
-        box-shadow: 5px 5px 8px 16px #f3f3f3;
+        bottom: 0;
       }
     }
 

@@ -27,7 +27,7 @@ const renderInfo = ({ resolver, id }) => (
       <strong>Program Description:</strong>
     </header>
     <input className="togle-more-text" type="checkbox" id={`#${id}`} />
-    <p
+    <div
       className="desc-long"
       id={id}
       dangerouslySetInnerHTML={{
@@ -35,8 +35,8 @@ const renderInfo = ({ resolver, id }) => (
       }}
     />
     <label className="label-more-less" htmlFor={`#${id}`}>
-      <span className="label-more">[ more ]</span>
-      <span className="label-less">[ less ]</span>
+      <span className="label-more">[...more]</span>
+      <span className="label-less">[...less]</span>
     </label>
   </div>
 );
@@ -110,7 +110,7 @@ const ListView = ({ programms, loading }) => {
   };
 
   return (
-    <section className="container">
+    <section className="container mb-4">
       <Table id={GRID_PROGRAMS_ID} ref={tableRef} data-loading={loading}>
         <thead>
           <tr role="row">

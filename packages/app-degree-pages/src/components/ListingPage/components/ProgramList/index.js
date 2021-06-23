@@ -53,7 +53,7 @@ function ProgramList({ dataViewComponent, loading, programms }) {
       <ProgramsViewer loading={loading} programms={tableView} />
 
       <Pagination
-        // count={5}
+        totalNumbers={7}
         type="default"
         background="white"
         totalPages={TOTAL_PAGES}
