@@ -46,20 +46,22 @@ function computeItemPerView(perView) {
  *
  * @returns {Glide.Options}
  */
-function buildConfig(perView = 1, isFullWidth) {
+function buildConfig(perView = 1, isFullWidth, hasPeek = true) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
   const { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
 
-  const smallPeeek = { before: 0, after: 62 };
-  const largePeek = { before: 124, after: 124 };
-
   // Set GlideJS config options, per https://glidejs.com/docs/options/
+
+  const gap = hasPeek ? 24 : 0;
+  const smallPeek = hasPeek ? { before: 0, after: 62 } : 0;
+  const largePeek = hasPeek ? { before: 124, after: 124 } : 0;
+
   return {
     type: "slider", // No wrap-around.
     focusAt: 0,
     bound: true, // Only if type slider with focusAt 0
     rewind: false, // Only if type slider
-    gap: 24, // Space between slides... may be impacted by viewport size.
+    gap, // Space between slides... may be impacted by viewport size.
     // `keyboard` Left/Right arrow key support for slides - true is default.
     // Is not fully Accessible, on keydown allcarousels move simultaneously
     // A custome keyboard handler is implemented
@@ -78,7 +80,7 @@ function buildConfig(perView = 1, isFullWidth) {
           576: {
             // BS4 sm
             perView: perViewSm,
-            peek: smallPeeek,
+            peek: smallPeek,
           },
           768: {
             // BS4 md
@@ -160,6 +162,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
  *  buttonCount: number
  *  isFullWidth?: boolean
  *  onItemClick?: (index: number) =>  void
+ *  hasPeek?: boolean
  * }} props
  *
  * @returns {Glide.Static}
@@ -170,9 +173,9 @@ function setupCaroarousel({
   buttonCount,
   isFullWidth = false,
   onItemClick,
+  hasPeek = true,
 }) {
-  const sliderConfig = buildConfig(perView, isFullWidth);
-
+  const sliderConfig = buildConfig(perView, isFullWidth, hasPeek);
   // Load up a new glideJS slider, but don't mount until we have event
   // listener (https://glidejs.com/docs/events/) handlers defined and configs
   // all mustered.

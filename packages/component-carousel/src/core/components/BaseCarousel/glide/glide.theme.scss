@@ -211,12 +211,27 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     gap: 0;
     overflow: hidden;
 
-    & li.glide__slide {
-      display: list-item;
-    }
-
     .glide__track {
       border: $border-element;
+
+      .#{$glide-class}#{$se}slides {
+        & li.glide__slide {
+          display: list-item;
+        }
+        margin-bottom: 0; // Avoid gap, for gradient,
+        height: 100%;
+        .glide__slide {
+          height: 100%;
+
+          & > div.uds-img {
+            height: 100%;
+            img {
+              object-fit: contain;
+              border: none;
+            }
+          }
+        }
+      }
     }
 
     .image-gallery-action-area {
