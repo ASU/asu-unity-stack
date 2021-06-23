@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { accordionCardPropTypes } from "../../../../core/models/app-prop-types";
+import { ButtonsContainer } from "./index.style";
 
 /**
  * @typedef {import('../../../../core/models/program-detail-types').ApplicationRequirementsProps} ApplicationRequirementsProps
@@ -28,7 +29,7 @@ function ApplicationRequirements({ accordionCards }) {
         All students are required to meet general university admission
         requirements
       </p>
-      <div>
+      <ButtonsContainer>
         <Button
           ariaLabel="Freshman"
           color="maroon"
@@ -57,7 +58,7 @@ function ApplicationRequirements({ accordionCards }) {
           label="Readmission"
           size="small"
         />
-      </div>
+      </ButtonsContainer>
       <div className="mt-2 mb-4">
         <Accordion cards={accordionCards} openedCard={1} />
       </div>

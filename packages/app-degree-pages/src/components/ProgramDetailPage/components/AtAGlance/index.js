@@ -26,7 +26,7 @@ export const AtAGlance = ({
       <h2>
         <span className="highlight-gold">At a glance: program details</span>
       </h2>
-      <ul className="uds-list fa-ul maroon pt-2 pb-0">
+      <ul className="uds-list fa-ul maroon pt-2 pb-0 pr-0">
         {offeredBy && <GlanceItem item={[offeredBy]} type="offeredBy" />}
         {locations && <GlanceItem item={locations} type="locations" />}
         {firstRequirementMathCourse && (

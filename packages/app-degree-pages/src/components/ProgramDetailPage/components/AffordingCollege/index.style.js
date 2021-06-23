@@ -15,8 +15,8 @@ const Background = styled.div`
   width: 100vw;
   height: 100%;
   top: 0;
-  left: calc(50% - 14px);
-  right: calc(50% + 16px);
+  left: 50%;
+  right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
   z-index: -1;
