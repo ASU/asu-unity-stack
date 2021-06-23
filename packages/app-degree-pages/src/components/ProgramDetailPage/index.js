@@ -86,7 +86,7 @@ const Main = styled.main`
 
 const VideoWrapper = styled.div`
   .uds-video-container {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
   }
 `;
 
