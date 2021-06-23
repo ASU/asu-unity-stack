@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable no-unused-vars, no-nested-ternary */
+/* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate */
 import {
   faAngleLeft,
   faAngleRight,
@@ -62,6 +62,7 @@ class RfiStepper extends React.Component {
   // Possible solutions: https://github.com/babel/babel/issues/8711
   // ts-check didn't like
   next = () => this.setState({ step: this.state.step + 1 });
+
   prev = () => this.setState({ step: this.state.step - 1 });
 
   // Validation for RfiSelect fields with dependencies across steps that don't
@@ -123,7 +124,7 @@ class RfiStepper extends React.Component {
     const totalSteps = initialValues.length - 1; // Don't count success step.
     const progress = step / totalSteps;
 
-    let initValues = initialValues.reduce((item, total) => {
+    const initValues = initialValues.reduce((item, total) => {
       return { ...total, ...item };
     });
 

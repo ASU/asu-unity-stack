@@ -62,8 +62,6 @@ function filterDegreesByDeptOrCollege(degreeData, props) {
 // We do filtering in useEffect()s to manage filtering logic for our various
 // field options.
 async function fetchDegreesData(Campus, CareerAndStudentType) {
-  // fetch(`https://webapp4.asu.edu/programs/t5/service?init=false&method=findDegreeByFirstLetterMapArray&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr&program=undergrad&cert=false`)
-
   let serviceUrl;
   let program;
 

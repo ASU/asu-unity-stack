@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 // @ts-ignore
-import RfiImage from "../../../img/WS2-DefaultImagev01-Final.png";
+import RfiImage from "../../assets/img/WS2-DefaultImagev01-Final.png";
 import { aboutMeForm } from "../steps/AboutMe";
 import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
