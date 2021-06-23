@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Section = styled.section`
   position: relative;
-  padding-top: 96px !important;
-  padding-bottom: 96px !important;
+  padding-top: 96px;
+  padding-bottom: 96px;
 `;
 
 const Background = styled.div`

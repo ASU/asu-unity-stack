@@ -87,7 +87,7 @@ const Main = styled.main`
 const VideoWrapper = styled.div`
   .uds-video-container {
     margin-top: 1.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -202,7 +202,7 @@ const ProgramDetailPage = ({
                   </VideoWrapper>
                 )}
                 {introContent.image && (
-                  <div className="uds-img pt-5 pb-4">
+                  <div className="uds-img pt-3 pb-3">
                     <img
                       src={introContent.image.url}
                       className="img-fluid"
