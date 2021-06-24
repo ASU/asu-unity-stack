@@ -91,11 +91,11 @@
     opacity: 1;
 
     &-white {
-      background-image: $topo-black;
+      background-image: $topo-white;
     }
 
     &-black {
-      background-image: $topo-white;
+      background-image: $topo-black;
     }
   }
 }
