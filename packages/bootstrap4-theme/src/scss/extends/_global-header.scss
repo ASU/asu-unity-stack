@@ -104,6 +104,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     padding: $uds-size-spacing-half $uds-size-spacing-1 $uds-size-spacing-half
       $uds-size-spacing-1;
     margin-right: $uds-size-spacing-1;
+    white-space: nowrap;
 
     &:hover {
       text-decoration: underline;
@@ -418,6 +419,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         $uds-size-spacing-4;
       border-top: 1px solid $uds-color-base-gray-3;
       color: $uds-color-base-gray-7;
+      white-space: nowrap;
 
       svg.fa-home {
         display: none;
@@ -443,6 +445,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   .navbar-site-buttons {
     padding: 1rem 2rem;
     border-top: 1px solid #d0d0d0;
+    flex-flow: initial;
 
     .btn {
       margin-bottom: $uds-size-spacing-1;
@@ -455,6 +458,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
   #menubar {
     overflow-y: scroll;
+    overflow-x: hidden;
 
     &.collapsing {
       height: unset !important;
@@ -504,6 +508,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         font-size: $uds-size-font-small;
         padding: $uds-size-spacing-2 $uds-size-spacing-3;
         border-top: 1px solid $uds-color-base-gray-3;
+        white-space: nowrap;
 
         &:nth-child(even) {
           border-left: 1px solid $uds-color-base-gray-3;
@@ -800,6 +805,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         padding: 0.5rem 0.75rem;
         /* Magic number */
         margin-right: $uds-size-spacing-1;
+        white-space: nowrap;
 
         &:after {
           @include gold-underline-desktop;
