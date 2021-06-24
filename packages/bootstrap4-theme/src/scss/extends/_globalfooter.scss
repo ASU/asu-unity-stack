@@ -137,7 +137,7 @@ Footer - Table of Contents
 // #footer-columns, mobile first design
 
 #footer-columns {
-  padding: $uds-size-spacing-3 $uds-size-spacing-4;
+  padding: $uds-size-spacing-0 $uds-size-spacing-4;
 
   #info-column {
     .contact-link {
@@ -150,7 +150,7 @@ Footer - Table of Contents
     }
 
     .contribute-button {
-      margin-bottom: $uds-size-spacing-4;
+      margin-bottom: $uds-size-spacing-3;
     }
   }
 
@@ -256,8 +256,10 @@ Footer - Table of Contents
 @include media-breakpoint-down(lg) {
   #footer-innovation {
     .footer-innovation-links {
-      img {
-        height: 76px;
+      .img-link {
+        img {
+          height: 76px;
+        }
       }
     }
   }
@@ -268,15 +270,15 @@ Footer - Table of Contents
 
     .footer-innovation-links {
       flex-direction: column;
-      padding-left: 0;
-      padding-bottom: $uds-size-spacing-3;
-
-      img {
-        width: 100%;
-        height: auto;
-        order: -1;
+      padding: $uds-size-spacing-1 0 $uds-size-spacing-1 0;
+      .img-link {
+        margin-right: 0;
+        img {
+          width: 100%;
+          height: auto;
+          order: -1;
+        }
       }
-
       @include nav-to-grid;
     }
   }
