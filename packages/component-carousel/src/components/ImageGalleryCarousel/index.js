@@ -175,6 +175,7 @@ const ImageGalleryCarousel = ({
       ariaLabelledBy={hasContent ? "caption" : null}
       isFullWidth
       imageAutoSize={imageAutoSize}
+      hasPeek={false}
       // @ts-ignore
       CustomNavComponent={({ instanceName }) => (
         <CustomNavComponent
