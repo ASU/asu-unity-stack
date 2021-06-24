@@ -148,10 +148,9 @@ module.exports = generateHTML = packages => `
   <main>
     <div id="skip-to-content" class="sr-only"></div>
 
-    <div class="uds-hero uds-hero-sm" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://uto.asu.edu/sites/default/files/general/clay-banks-ljqarjajotc-unsplash.jpg');">
-      <div class="container uds-hero-container">
-        <h1 class="heading heading-one col-md-8"><span class="highlight highlight-gold highlight-heading-one">Unity Component Explorer</span></h1>
-      </div>
+    <div class="uds-hero-sm">
+      <img class="hero" src="https://images.unsplash.com/photo-1454117096348-e4abbeba002c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=265&ixlib=rb-1.2.1&q=80&w=1920" alt="" />
+      <h1><span class="highlight-black">Unity Component Explorer</span></h1>
     </div>
 
     <div class="container">
@@ -180,7 +179,7 @@ module.exports = generateHTML = packages => `
         <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
           <p>Learn how to install and use the packages listed below in your ASU projects. On your first visit, follow steps 1 and 3, skipping 2. Users cannot publish packages.
-          If you receive errors attempting to install packages from the registry, please ensure the line <pre>@asu-design-system:registry=https://registry.web.asu.edu</pre> is in your <pre>~/.npmrc</pre> file.</p>
+          If you receive errors attempting to install packages from the registry, please ensure the line <strong>@asu-design-system:registry=https://registry.web.asu.edu</strong> is in your <strong>~/.npmrc</strong> file.</p>
           <p><a class="btn btn-maroon btn-medium" href="https://registry.web.asu.edu/">Visit package registry</a></p>
         </div>
 
