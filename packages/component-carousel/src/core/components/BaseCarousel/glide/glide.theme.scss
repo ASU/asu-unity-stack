@@ -303,11 +303,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         display: none;
       }
     }
-    &.image-gallery {
-      .image-navigator .glide__arrows .glide__arrow {
-        display: none;
-      }
-    }
   }
 
   &#{$sm}swipeable {
