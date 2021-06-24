@@ -4,9 +4,13 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import { Loader } from "../../core/components";
+import { ListingPageContext } from "../../core/context";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
-import { dataSourcePropType } from "../../core/models/app-prop-types";
+import {
+  columSettingsPropType,
+  dataSourcePropType,
+} from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils/data-path-resolver";
 import { BrowseTitle } from "./components/BrowseTitle";
@@ -26,7 +30,14 @@ import { SearchBar } from "./components/SearchBar";
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
-const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
+const ListingPage = ({
+  actionUrls,
+  hasSearchBar = false,
+  hasFilters = false,
+  hero,
+  introContent,
+  programList,
+}) => {
   /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{programs: []}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
@@ -167,41 +178,50 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
 
   return (
     <>
-      <Hero
-        image={hero.image}
-        title={{ ...hero.title, maxWidth: "100%" }}
-        contents={hero.contents}
-      />
+      {hero ? (
+        <Hero
+          image={hero.image}
+          title={{ ...hero.title, maxWidth: "100%" }}
+          contents={hero.contents}
+        />
+      ) : null}
 
       <main className="container" data-is-loading={loading}>
-        <IntroContent
-          applyNowUrl={applyNowUrl}
-          type={introContent.type}
-          header={introContent.header}
-          title={introContent.title}
-          contents={introContent.contents}
-          image={introContent.image}
-          video={introContent.video}
-          photoGrid={introContent.photoGrid}
-        />
+        {introContent ? (
+          <IntroContent
+            applyNowUrl={actionUrls?.applyNowUrl}
+            type={introContent.type}
+            header={introContent.header}
+            title={introContent.title}
+            contents={introContent.contents}
+            image={introContent.image}
+            video={introContent.video}
+            photoGrid={introContent.photoGrid}
+          />
+        ) : null}
 
-        <BrowseTitle />
-        <SearchBar onSearch={onDegreeSearch} />
-        <Filters
-          value={stateFilters}
-          onValueChange={setStateFilters}
-          onApplyFilters={onDegreeApplyFilters}
-          onCleanFilters={onDegreeCleanFilters}
-        />
+        {hasSearchBar || hasFilters ? <BrowseTitle /> : null}
+
+        {hasSearchBar ? <SearchBar onSearch={onDegreeSearch} /> : null}
+        {hasFilters ? (
+          <Filters
+            value={stateFilters}
+            onValueChange={setStateFilters}
+            onApplyFilters={onDegreeApplyFilters}
+            onCleanFilters={onDegreeCleanFilters}
+          />
+        ) : null}
 
         {error && <div>Something went wrong ...</div>}
 
         <section className="container m-1">
           <div className="d-flex justify-content-between">
-            <FiltersSummary
-              appliedFilters={appliedFilters}
-              onRemoveFilter={onRemoveFilterValue}
-            />
+            {hasFilters ? (
+              <FiltersSummary
+                appliedFilters={appliedFilters}
+                onRemoveFilter={onRemoveFilterValue}
+              />
+            ) : null}
 
             {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
             {/* <DataViewSwitch
@@ -222,6 +242,7 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
             dataViewComponent={dataViewComponent}
             loading={loading || searchLoading}
             programms={tableView}
+            columSettings={programList.settings}
           />
         )}
       </main>
@@ -230,11 +251,16 @@ const ListingPage = ({ applyNowUrl = "", hero, introContent, programList }) => {
 };
 
 ListingPage.propTypes = {
-  applyNowUrl: PropTypes.string,
+  actionUrls: PropTypes.shape({
+    applyNowUrl: PropTypes.string,
+  }),
+  hasSearchBar: PropTypes.bool,
+  hasFilters: PropTypes.bool,
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
   programList: PropTypes.shape({
     dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
+    settings: columSettingsPropType,
   }),
 };
 

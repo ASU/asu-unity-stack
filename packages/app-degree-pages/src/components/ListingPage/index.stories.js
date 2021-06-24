@@ -17,22 +17,25 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ applyNowUrl, hero, introContent, programList }) => (
+const Template = ({ actionUrls, hero, introContent, programList }) => (
   <ListingPage
-    applyNowUrl={applyNowUrl}
+    actionUrls={actionUrls}
     hero={hero}
     introContent={introContent}
     programList={programList}
   />
 );
 
+const actionUrls = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+};
 /**
  * @type {{ args: AppProps }}
  */
 export const UndergraduateDegreePage = Template.bind({});
 
 UndergraduateDegreePage.args = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  actionUrls,
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
@@ -71,6 +74,9 @@ UndergraduateDegreePage.args = {
       "&init=false" +
       "&program=undergrad" +
       "&cert=false",
+    settings: {
+      hideCollegeSchool: true,
+    },
   },
 };
 
@@ -80,7 +86,7 @@ UndergraduateDegreePage.args = {
 export const AreaStudyDegreePage1 = Template.bind({});
 
 AreaStudyDegreePage1.args = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  actionUrls,
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
@@ -137,7 +143,7 @@ AreaStudyDegreePage1.args = {
 export const AreaStudyDegreePage2 = Template.bind({});
 
 AreaStudyDegreePage2.args = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  actionUrls,
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",

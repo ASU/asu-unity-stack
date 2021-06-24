@@ -57,17 +57,28 @@
  * }} GridColumn
  *
  * @typedef {{
+ *  hideCollegeSchool?: boolean
+ * }} ColumSettings
+ *
+ * @typedef {{
  *    dataSource: AppDataSource | string
  *    columns?: GridColumn[]
+ *    settings?: ColumSettings
  * }} GridListProps
  */
 
 /**
  * @typedef {{
- *  applyNowUrl?: string
+ *  actionUrls?: {
+ *    applyNowUrl?: string
+ *    majorDetailPageUrl?: string
+ *    accelerateDegreeDetailPageUrl?: string
+ * }
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
- *  programList?: GridListProps
+ *  hasSearchBar?: boolean
+ *  hasFilters?: boolean
+ *  programList: GridListProps
  * }} ListingPageProps
  */
 

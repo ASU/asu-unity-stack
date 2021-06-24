@@ -58,10 +58,6 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
-    alias: {
-      "@components-core": path.resolve(__dirname, "../../components-core/src"),
-      "@utils": path.resolve(__dirname, "../src/core/utils"),
-    },
   },
   plugins: [
     new CleanWebpackPlugin(),

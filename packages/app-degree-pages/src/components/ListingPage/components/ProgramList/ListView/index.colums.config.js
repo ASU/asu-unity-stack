@@ -22,7 +22,7 @@ import { idGenerator, toTitleCase } from "../../../../../core/utils";
 /** @type {GridColumn []} */
 const columns = [
   {
-    dataKey: "Descr100",
+    dataKey: "Major",
     label: "Major",
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
@@ -60,7 +60,7 @@ const columns = [
     ),
   },
   {
-    dataKey: "concurrentDegreeMajorMaps",
+    dataKey: "RequiredCourses",
     label: "Required Courses",
     ariaLabel: "Required Courses",
     className: "required-course",
@@ -111,7 +111,7 @@ const columns = [
 
   // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
   {
-    dataKey: "accelerateDegrees",
+    dataKey: "AcceleratedConcurrent",
     label: "Accelerated/ Concurrent",
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
@@ -144,7 +144,7 @@ const columns = [
     ),
   },
   {
-    dataKey: "CollegeDescr100",
+    dataKey: "CollegeSchool",
     label: "College/School",
     ariaLabel: "College/School: activate to sort column",
     className: "college",
