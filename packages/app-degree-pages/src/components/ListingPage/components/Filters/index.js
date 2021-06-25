@@ -101,7 +101,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
   };
 
   const handleApplyFilters = () => {
-    const { asuLocals, ...filters } = value;
+    const { asuLocals: _, ...filters } = value;
     onApplyFilters?.(filters);
   };
 

@@ -38,7 +38,7 @@ module.exports = {
     "no-unused-vars": [
       "warn",
       {
-        varsIgnorePattern: "tagHeadings|DegreeDataPropResolverServiceType",
+        varsIgnorePattern: "_|tagHeadings|DegreeDataPropResolverServiceType",
         argsIgnorePattern: "^_",
       },
     ],

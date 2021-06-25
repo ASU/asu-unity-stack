@@ -1,14 +1,14 @@
 /* eslint-disable react/no-danger */
 // @ts-check
 import { sanitize } from "dompurify";
-// import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 
+import { ListingPageContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
 import { idGenerator } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
-import { columns } from "./index.colums.config";
+import { columns as configColumns } from "./index.colums.config";
 import { Table } from "./index.style";
 
 /** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
@@ -98,6 +98,11 @@ const ListView = ({ programms, loading }) => {
   /** @type {{current: HTMLTableSectionElement}} */
   const tbodyRef = React.useRef(null);
 
+  const { columSettings } = useContext(ListingPageContext);
+  const columns = columSettings?.hideCollegeSchool
+    ? configColumns.filter(c => c.dataKey !== "CollegeSchool")
+    : configColumns;
+
   const setOpenRowIndex = (rowIndex, selected) => {
     const rows = tbodyRef.current.children;
     Array.prototype.forEach.call(
@@ -172,6 +177,8 @@ const ListView = ({ programms, loading }) => {
   );
 };
 
-ListView.propTypes = degreeListPropTypes;
+ListView.propTypes = {
+  ...degreeListPropTypes,
+};
 
 export { ListView };

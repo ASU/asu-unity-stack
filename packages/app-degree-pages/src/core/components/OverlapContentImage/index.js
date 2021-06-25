@@ -56,6 +56,7 @@ function OverlapContentImage({
         {contents.map(content => (
           <div
             key={genId.next().value}
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={sanitizeHTML(content.text)}
           />
         ))}

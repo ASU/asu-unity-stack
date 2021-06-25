@@ -94,6 +94,14 @@ const exampleCareersTableDataPropTypes = PropTypes.shape({
   greenOccupation: PropTypes.bool,
 });
 
+const columSettingsPropTypes = {
+  hideCollegeSchool: PropTypes.bool,
+};
+
+const columSettingsPropType = PropTypes.shape({
+  ...columSettingsPropTypes,
+});
+
 export {
   accordionCardPropTypes,
   buttonPropTypes,
@@ -108,4 +116,6 @@ export {
   cardPropTypes,
   flexibleDegreeOptionsLinks,
   exampleCareersTableDataPropTypes,
+  columSettingsPropType,
+  columSettingsPropTypes,
 };
