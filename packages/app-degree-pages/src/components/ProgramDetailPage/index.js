@@ -71,7 +71,8 @@ function getLocations(resolver) {
 
 const Main = styled.main`
   & > section section {
-    margin-bottom: 96px;
+    --marginBottom: 96px;
+    margin-bottom: var(--marginBottom);
 
     & > * {
       margin-top: 0;
@@ -80,6 +81,12 @@ const Main = styled.main`
 
     & h2 {
       line-height: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    & > section section {
+      --marginBottom: 48px;
     }
   }
 `;
