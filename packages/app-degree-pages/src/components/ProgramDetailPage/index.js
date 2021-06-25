@@ -133,10 +133,10 @@ const ProgramDetailPage = ({
           <Loader />
         ) : (
           <section className="container">
-            <div className="row pl-3">
+            <div className="row">
               <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
             </div>
-            <div className="row pl-3">
+            <div className="row">
               <div className="col col-sm-12 col-md-7 col-lg-7">
                 <section className="intro">
                   {resolver.getMarketText() ? (
@@ -213,7 +213,7 @@ const ProgramDetailPage = ({
                 )}
               </div>
             </div>
-            <div className="row pl-3">
+            <div className="row">
               <NextSteps cards={nextSteps.cards} />
 
               <AffordingCollege />
@@ -252,7 +252,7 @@ const ProgramDetailPage = ({
                 image={attendOnline.image}
               />
             </div>
-            <div className="row pl-3">
+            <div className="row">
               <div className="col col-sm-12 col-md-6 col-lg-6 ">
                 <ProgramContactInfo
                   department={{

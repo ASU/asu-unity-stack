@@ -14,6 +14,7 @@ function ProgramDescription({ content }) {
   return (
     <div>
       <h2>Program description</h2>
+      {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={sanitizeHTML(content)} />
     </div>
   );

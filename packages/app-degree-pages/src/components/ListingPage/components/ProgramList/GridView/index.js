@@ -5,10 +5,7 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import {
-  columSettingsPropTypes,
-  GRID_PROGRAMS_ID,
-} from "../../../../../core/models";
+import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
 import {
   majorInfoLink,
@@ -20,7 +17,7 @@ import { SectionCard } from "./index.style";
  * @param {import("..").GridListingProps} props
  * @returns
  */
-function GridView({ programms, loading, columSettings }) {
+function GridView({ programms, loading }) {
   return (
     <SectionCard
       id={GRID_PROGRAMS_ID}
@@ -75,7 +72,6 @@ function GridView({ programms, loading, columSettings }) {
 GridView.propTypes = {
   programms: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
-  columSettings: columSettingsPropTypes,
 };
 
 export { GridView };

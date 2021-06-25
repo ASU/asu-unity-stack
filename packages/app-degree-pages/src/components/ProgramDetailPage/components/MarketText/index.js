@@ -22,6 +22,7 @@ function MarketText({ contents = [] }) {
         <div
           key={`content-${index + 1}`}
           className={`${spreadClasses(content.cssClass)}`}
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={sanitizeHTML(content.text)}
         />
       ))}

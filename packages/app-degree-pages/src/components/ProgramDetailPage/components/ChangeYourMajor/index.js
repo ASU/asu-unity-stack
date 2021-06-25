@@ -10,6 +10,10 @@ const WrapperContainer = styled.div`
   & p:last-of-type {
     margin-bottom: 0;
   }
+
+  & a {
+    word-break: break-word;
+  }
 `;
 
 /**

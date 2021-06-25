@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
 import { Loader } from "../../core/components";
-import { ListingPageContext } from "../../core/context";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import {
