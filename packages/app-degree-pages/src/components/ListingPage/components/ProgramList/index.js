@@ -10,6 +10,7 @@ import {
   LIST_VIEW_ID,
 } from "../../../../core/models";
 import { computePages } from "../../../../core/utils";
+import { AccordionView } from "./AccordionView";
 import { GridView } from "./GridView";
 import { ListView } from "./ListView";
 import { degreeListPropTypes } from "./programs-prop-types";
@@ -51,7 +52,6 @@ function ProgramList({ dataViewComponent, loading, programms, columSettings }) {
 
   useEffect(() => {
     setTableView(programms.slice(0, ROW_PAGES));
-    // ReactTooltip.rebuild();
   }, [programms]);
 
   return (

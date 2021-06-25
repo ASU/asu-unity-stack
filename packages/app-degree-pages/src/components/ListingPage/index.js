@@ -2,6 +2,7 @@
 import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import { Loader } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
@@ -24,6 +25,14 @@ import { SearchBar } from "./components/SearchBar";
  * @typedef {import("./components/Filters").FiltersState} FiltersState
  */
 
+const Main = styled.main`
+  @media (max-width: 768px) {
+    & {
+      font-size: 0.9rem;
+    }
+  }
+`;
+
 /**
  *
  * @param {ListingPageProps} props
@@ -31,8 +40,8 @@ import { SearchBar } from "./components/SearchBar";
  */
 const ListingPage = ({
   actionUrls,
-  hasSearchBar = false,
-  hasFilters = false,
+  hasSearchBar = true,
+  hasFilters = true,
   hero,
   introContent,
   programList,
@@ -185,7 +194,7 @@ const ListingPage = ({
         />
       ) : null}
 
-      <main className="container" data-is-loading={loading}>
+      <Main className="container" data-is-loading={loading}>
         {introContent ? (
           <IntroContent
             applyNowUrl={actionUrls?.applyNowUrl}
@@ -244,7 +253,7 @@ const ListingPage = ({
             columSettings={programList.settings}
           />
         )}
-      </main>
+      </Main>
     </>
   );
 };

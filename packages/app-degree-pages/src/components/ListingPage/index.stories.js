@@ -17,12 +17,21 @@ export default {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ actionUrls, hero, introContent, programList }) => (
+const Template = ({
+  actionUrls,
+  hero,
+  introContent,
+  programList,
+  hasFilters,
+  hasSearchBar,
+}) => (
   <ListingPage
     actionUrls={actionUrls}
     hero={hero}
     introContent={introContent}
     programList={programList}
+    hasSearchBar={hasSearchBar}
+    hasFilters={hasFilters}
   />
 );
 
@@ -61,6 +70,8 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
+  hasFilters: false,
+  hasSearchBar: false,
   programList: {
     dataSource:
       "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
@@ -132,6 +143,8 @@ AreaStudyDegreePage1.args = {
       ],
     },
   },
+  hasFilters: false,
+  hasSearchBar: false,
   programList: {
     dataSource: "/api/mocks/degree-search",
   },

@@ -2,6 +2,14 @@
 
 import styled, { css } from "styled-components";
 
+// const globalStyle = css`
+//   @media (max-width: 2000px) {
+//     table {
+//       display: none;
+//     }
+//   }
+// `;
+
 const tableLoader = css`
   @keyframes loading {
     40% {

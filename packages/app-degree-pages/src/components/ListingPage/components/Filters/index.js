@@ -144,7 +144,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
           />
         </div>
       </form>
-      <div>
+      <div className="filter-action-buttons">
         <Button
           color="maroon"
           label="Apply filters"

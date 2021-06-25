@@ -51,7 +51,7 @@ function textPhotoGridTypeHtmlTemplate({
   return (
     <section className="container">
       <div className="row pt-3">
-        <div className="col col-sm-12 col-md-6 col-lg-6 pl-0">
+        <div className="col col-sm-12 col-md-5 pl-0">
           <Heading>
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
@@ -67,7 +67,7 @@ function textPhotoGridTypeHtmlTemplate({
           ))}
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-6">
+        <div className="col col-sm-12 col-md-7">
           <PhotoGrid className="row">
             {photoGrid.images.map((image, index) => (
               <div
@@ -105,7 +105,7 @@ function textTextMediaTypeHtmlTemplate({
   return (
     <SectionWrapper className="container">
       <div className="row pt-3">
-        <div className="col col-sm-12 col-md-5 col-lg-5">
+        <div className="col col-sm-12 col-md-5">
           <Heading>
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
@@ -121,7 +121,7 @@ function textTextMediaTypeHtmlTemplate({
           ))}
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col col-sm-12 col-md-7 col-lg-7">
+        <div className="col col-sm-12 col-md-7">
           {video && (
             <Video
               url={video.url}
@@ -172,14 +172,14 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
   return (
     <section className="container">
       <div className="row pt-3">
-        <div className="col col-sm-12 col-md-6 col-lg-6">
+        <div className="col col-sm-12 col-md-5">
           <Heading>
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
             </span>
           </Heading>
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-6 pt-2">
+        <div className="col col-sm-12 col-md-7 pt-2">
           {contents.map((content, index) => (
             <p
               key={`content-${index + 1}`}

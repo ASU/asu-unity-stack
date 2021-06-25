@@ -14,6 +14,10 @@ const Section = styled.section`
       width: 280px;
     }
   }
+
+  form {
+    margin-bottom: 1rem;
+  }
 `;
 
 export { Section };
