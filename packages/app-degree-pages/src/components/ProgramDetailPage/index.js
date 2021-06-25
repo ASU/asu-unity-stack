@@ -128,7 +128,7 @@ const ProgramDetailPage = ({
 
   return (
     <>
-      <Main className="container" data-is-loading={loading}>
+      <Main data-is-loading={loading}>
         {error && <div>Something went wrong ...</div>}
         {loading ? (
           <Loader />
