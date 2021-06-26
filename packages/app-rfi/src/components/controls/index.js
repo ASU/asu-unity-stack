@@ -1,7 +1,7 @@
 // @ts-check
 import { RfiCheckboxMulti } from "./RfiCheckboxMulti";
 import { RfiCheckboxSingle } from "./RfiCheckboxSingle";
-import { RfiDatepicker } from "./RfiDatepicker";
+import { RfiDateInput } from "./RfiDateInput";
 import { RfiEmailInput } from "./RfiEmailInput";
 import { RfiPhone } from "./RfiPhone";
 import { RfiRadioGroup } from "./RfiRadioGroup";
@@ -10,13 +10,13 @@ import { RfiTextArea } from "./RfiTextArea";
 import { RfiTextInput } from "./RfiTextInput";
 
 export {
-  RfiTextInput,
+  RfiCheckboxMulti,
+  RfiCheckboxSingle,
+  RfiDateInput,
   RfiEmailInput,
   RfiPhone,
-  RfiTextArea,
-  RfiCheckboxSingle,
-  RfiCheckboxMulti,
-  RfiSelect,
   RfiRadioGroup,
-  RfiDatepicker,
+  RfiSelect,
+  RfiTextArea,
+  RfiTextInput,
 };

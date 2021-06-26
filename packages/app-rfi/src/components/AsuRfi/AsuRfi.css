@@ -1,6 +1,9 @@
 .rfi-progress {
   background-color: #fff;
 }
+.rfi-progress.progress {
+  border-radius: 0;
+}
 .rfi-progress .progress-bar {
   background-color: #ffc627;
 }
@@ -99,19 +102,6 @@ form.uds-form.uds-rfi .rfi-required-footnote svg {
 .uds-rfi-form-wrapper .rfi-consent .rfi-consent-wording {
   font-size: 12px;
   margin-bottom: 0.5rem;
-}
-
-/* TODO quick and dirty positioning, as wasn't picking up styles AND we don't
-   have a solid example of how this should work anyway. Full width wouldn't
-   be right. */
-form.uds-form.uds-rfi .input-group-trailing-icon svg {
-  position: relative;
-  right: 1.5rem;
-  top: 0.75rem;
-}
-
-.rfi-progress.progress {
-  border-radius: 0;
 }
 
 @media (min-width: 768px) {

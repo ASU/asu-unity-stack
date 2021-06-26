@@ -33,6 +33,12 @@ export function submissionFormFieldPrep(payload) {
   // artifact. Remove.
   delete output.Email;
 
+  // Can't transform the date to iso value during validation as it breaks type
+  // checking in Yup, so doing it here.
+  output.BirthDate = output.BirthDate
+    ? new Date(output.BirthDate).toISOString()
+    : undefined;
+
   return output;
 }
 

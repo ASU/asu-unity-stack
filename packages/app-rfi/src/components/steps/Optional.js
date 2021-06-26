@@ -6,7 +6,7 @@ import * as Yup from "yup";
 
 import {
   RfiTextInput,
-  RfiDatepicker,
+  RfiDateInput,
   RfiTextArea,
   RfiSelect,
 } from "../controls";
@@ -117,8 +117,6 @@ const veteranStatusOptions = [
   { key: "6", value: "Spouse/Dependent", text: "Spouse/Dependent" },
 ];
 
-// Datepicker note: see https://stackblitz.com/edit/demo-react-formik-datepicker
-
 // Component
 
 const Optional = ({ dataSourceCountriesStates }) => {
@@ -204,13 +202,11 @@ const Optional = ({ dataSourceCountriesStates }) => {
         disabled={statesDisabled}
       />
       <RfiTextInput label="Zipcode" id="Zip" name="Zip" />
-      <RfiDatepicker
+      <RfiDateInput
         label="Date of Birth"
         id="BirthDate"
         name="BirthDate"
-        dateFormat="MM/dd/yyyy"
-        className="form-control"
-        placeholderText="MM/DD/YYYY"
+        helperText="MM/DD/YYYY"
       />
       <RfiSelect
         label="U.S. Veteran admission information and services"
@@ -242,7 +238,9 @@ const optionalForm = {
     City: Yup.string(),
     State: Yup.string(),
     Country: Yup.string(),
-    BirthDate: Yup.date(),
+    // We'll turn this into an iso date string in
+    // src/components/utils/submission-helpers.js
+    BirthDate: Yup.date().typeError("Error: Not a valid date of birth"),
     Zip: Yup.string(),
     MilitaryStatus: Yup.string(),
     Comments: Yup.string().max(
