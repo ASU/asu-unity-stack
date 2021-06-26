@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate */
+/* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate, react/no-danger */
 import {
   faAngleLeft,
   faAngleRight,

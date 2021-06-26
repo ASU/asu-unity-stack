@@ -29,6 +29,8 @@ const Template = args => {
   );
 };
 
+const testSubmissionUrl = "https://httpbin.org/post";
+
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
@@ -46,6 +48,7 @@ RfiDefault.args = {
   dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
   dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
+  submissionUrl: testSubmissionUrl, // Should point to host site's API Proxy endpoint so Source value can be added and submitted from backend.
 };
 
 export const RfiOnCollegePage = Template.bind({});
@@ -65,6 +68,7 @@ RfiOnCollegePage.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
@@ -84,6 +88,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 // Important note: At current, only supports Degree Search REST API degrees.
@@ -106,6 +111,7 @@ RfiOnDegreePageUndergraduate.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnDegreePageGraduate = Template.bind({});
@@ -125,6 +131,7 @@ RfiOnDegreePageGraduate.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnCollegeDepartmentPage = Template.bind({});
@@ -144,6 +151,7 @@ RfiOnCollegeDepartmentPage.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnNonAcademicUnitPage = Template.bind({});
@@ -163,6 +171,7 @@ RfiOnNonAcademicUnitPage.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnCertOrMinorPage = Template.bind({});
@@ -182,6 +191,7 @@ RfiOnCertOrMinorPage.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiOnCampaignLandingPage = Template.bind({});
@@ -201,6 +211,7 @@ RfiOnCampaignLandingPage.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiTestMode = Template.bind({});
@@ -220,6 +231,7 @@ RfiTestMode.args = {
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
+  submissionUrl: testSubmissionUrl,
 };
 
 export const RfiDevTester = Template.bind({});
@@ -242,4 +254,5 @@ RfiDevTester.args = {
     "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
   dataSourceCountriesStates:
     "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
+  submissionUrl: testSubmissionUrl,
 };

@@ -31,6 +31,7 @@ const RfiMainForm = ({
   dataSourceDegreeSearch,
   dataSourceAsuOnline,
   dataSourceCountriesStates,
+  submissionUrl,
 }) => {
   return (
     <div className="container rfi-container-inner">
@@ -91,27 +92,32 @@ const RfiMainForm = ({
                   // after validation has occurred.
                   pushDataLayerEventToGa("rfi-submit");
 
-                  // eslint-disable-next-line no-alert
-                  alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
+                  if (test) {
+                    // eslint-disable-next-line no-alert
+                    alert(
+                      `SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`
+                    );
+                  }
 
                   fetch(
-                    // TODO TODO TODO UPDATE TEST URL TO POINT TO CLIENT PROXY
-                    // NOTE: No prop required since we can use relative URL for
-                    // submit to client site proxy endpoint.
-                    `http://echo.jsontest.com/${JSON.stringify(
-                      payload,
-                      null,
-                      2
-                    )}`,
+                    // NOTE: You can use relative URL for submission to client
+                    // site proxy endpoint.
+                    `${submissionUrl}`,
                     {
                       method: "POST",
-                      // We convert the React state to JSON and send it as the POST body
-                      body: JSON.stringify(JSON.stringify(payload, null, 2)),
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      // We convert the payload to JSON and send it as the
+                      // POST body.
+                      body: JSON.stringify(payload),
                     }
-                  ).then(function (response) {
-                    console.log(response);
-                    return response.json();
-                  });
+                  )
+                    .then(response => response.json())
+                    .then(response => {
+                      // eslint-disable-next-line no-console
+                      console.log("Successful submit:", response);
+                    });
                 }}
               />
             </div>
@@ -154,6 +160,7 @@ RfiMainForm.propTypes = {
   dataSourceDegreeSearch: PropTypes.string.isRequired,
   dataSourceAsuOnline: PropTypes.string.isRequired,
   dataSourceCountriesStates: PropTypes.string.isRequired,
+  submissionUrl: PropTypes.string.isRequired,
 };
 
 export { RfiMainForm };

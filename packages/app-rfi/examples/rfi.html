@@ -108,6 +108,9 @@
      *     supplied.
      * - dataSourceCountriesStates: Data Potluck Countries codeset service.
      *     Uses default if not supplied.
+     * - submissionUrl: URL or path for receiving and handling submission
+     *     and adding Source value identifier to payload before sending to RFI
+     *     Submission Handler service.
      */
 
     // Initialize the RFI form with provided props.
@@ -129,6 +132,7 @@
         dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
         dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
         dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
+        submissionUrl: "https://httpbin.org/post", // Test endpoint
       },
     });
 

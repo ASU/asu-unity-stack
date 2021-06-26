@@ -27,6 +27,7 @@ const AsuRfi = ({
   dataSourceDegreeSearch,
   dataSourceAsuOnline,
   dataSourceCountriesStates,
+  submissionUrl,
 }) => {
   return (
     <div>
@@ -46,6 +47,7 @@ const AsuRfi = ({
         dataSourceDegreeSearch={dataSourceDegreeSearch}
         dataSourceAsuOnline={dataSourceAsuOnline}
         dataSourceCountriesStates={dataSourceCountriesStates}
+        submissionUrl={submissionUrl}
       />
     </div>
   );
@@ -91,4 +93,5 @@ AsuRfi.propTypes = {
   dataSourceDegreeSearch: PropTypes.string,
   dataSourceAsuOnline: PropTypes.string,
   dataSourceCountriesStates: PropTypes.string,
+  submissionUrl: PropTypes.string.isRequired,
 };
