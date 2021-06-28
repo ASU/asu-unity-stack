@@ -71,6 +71,7 @@ const ImageCarousel = ({
   imageAutoSize = true,
 }) => {
   const carouselItems = imageItems.map(htmlTemplate);
+  const activateGlideActions = imageItems.length > perView;
 
   return (
     <BaseCarousel
@@ -80,6 +81,10 @@ const ImageCarousel = ({
       cssClass="image-carousel"
       carouselItems={carouselItems}
       imageAutoSize={imageAutoSize}
+      removeSideBackground={imageItems.length <= perView}
+      hasPositionIndicators={activateGlideActions}
+      hasNavButtons={activateGlideActions}
+      isDraggable={activateGlideActions}
     />
   );
 };
