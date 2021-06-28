@@ -70,8 +70,8 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
-  hasFilters: false,
-  hasSearchBar: false,
+  // hasFilters: false,
+  // hasSearchBar: false,
   programList: {
     dataSource:
       "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
@@ -117,7 +117,7 @@ AreaStudyDegreePage1.args = {
     type: "text-photo-grid",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
-      component: "h3",
+      // component: "h2", default h2
     },
     contents: [
       {
@@ -176,7 +176,7 @@ AreaStudyDegreePage2.args = {
     type: "text-media",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
-      component: "h3",
+      // component: "h2", default h2
     },
     contents: [
       {
@@ -239,11 +239,11 @@ AreaStudyDegreePage3.args = {
     type: "text-image-overlay",
     header: {
       text: "Intro Content Image Overlay",
-      component: "h2",
+      // component: "h2", default h2
     },
     title: {
       text: "This is the contents that goes in the box",
-      component: "h3",
+      // component: "h2", default h2
     },
     contents: [
       {

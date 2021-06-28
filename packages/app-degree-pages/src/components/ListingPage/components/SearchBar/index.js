@@ -1,9 +1,14 @@
 // @ts-check
-import { Button } from "@asu-design-system/components-core/src/components";
+import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import styled from "styled-components";
 
-import { Section } from "./index.style";
+const Section = styled.div`
+  label[for="search-field"] {
+    margin-bottom: 0;
+  }
+`;
 
 /**
  * @typedef {{
@@ -25,29 +30,35 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <Section className="container mt-2">
-      <form className="mt-3 uds-form">
+    <Section className="container mt-5">
+      <form className="uds-form p-0 col-md-6 col-sm-12">
         <div className="form-group mb-0 mr-2">
           <label htmlFor="search-field">Search</label>
-          <input
-            id="search-field"
-            value={keyword}
-            type="text"
-            className="form-control"
-            placeholder="Search degree programs"
-            onChange={e => setKeyword(e.target.value)}
-          />
+
+          <div className="d-flex row align-items-baseline g-3">
+            <div className="col-sm-12 col-md-6 align-self-end">
+              <input
+                id="search-field"
+                value={keyword}
+                type="text"
+                className="form-control"
+                placeholder="Search degree programs"
+                onChange={e => setKeyword(e.target.value)}
+              />
+            </div>
+
+            <div className="col-sm-12 col-md-6">
+              <Button
+                color="maroon"
+                label="Search now"
+                ariaLabel="Search now"
+                size="default"
+                onClick={handleSearch}
+              />
+            </div>
+          </div>
         </div>
       </form>
-      <Button
-        color="maroon"
-        label="Search now"
-        ariaLabel="Search now"
-        size="default"
-        onClick={handleSearch}
-      >
-        Search now
-      </Button>
     </Section>
   );
 };

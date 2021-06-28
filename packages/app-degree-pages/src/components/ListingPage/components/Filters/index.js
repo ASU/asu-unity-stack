@@ -111,7 +111,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
   };
 
   return (
-    <Section className="container mt-4 pb-6 mb-6">
+    <Section className="container">
       <h4>Filter your results</h4>
       <form className="mt-3 uds-form row">
         <div className="col-lg-4 col-md-12">

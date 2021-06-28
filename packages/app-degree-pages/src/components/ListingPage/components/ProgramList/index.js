@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
   .mobile-view {
     display: none;
   }
+
   @media (max-width: 768px) {
     .desktop-view {
       display: none;

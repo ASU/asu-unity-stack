@@ -17,7 +17,7 @@ const VideoOverlay = styled.div`
  * @param {VideoItem} props
  * @returns
  */
-const Video = ({ url = "", vttUrl, altText = "" }) => {
+const Video = ({ url = "", vttUrl, altText = "", className }) => {
   /** @type {React.MutableRefObject<HTMLVideoElement>} */
   const videoRef = useRef();
   const [playing, setPlaying] = useState(false);
@@ -55,7 +55,7 @@ const Video = ({ url = "", vttUrl, altText = "" }) => {
   }
 
   return (
-    <div className="uds-video-container">
+    <div className={`uds-video-container ${className}`}>
       <div className="uds-video-player">
         <video
           ref={videoRef}
@@ -117,6 +117,7 @@ Video.propTypes = {
   url: PropTypes.string,
   vttUrl: PropTypes.string,
   altText: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export { Video };

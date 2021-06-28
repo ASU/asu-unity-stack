@@ -4,18 +4,22 @@ import { Accordion } from "@asu-design-system/components-core";
 import React from "react";
 import styled from "styled-components";
 
-import { degreeDataPropResolverService } from "../../../../../core/services";
+import {
+  degreeDataPropResolverService,
+  majorInfoLink,
+} from "../../../../../core/services";
 import { toTitleCase } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
 
 const WrapperSection = styled.div`
   & {
     ul {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0;
       list-style: none;
       padding: 0;
 
-      li {
+      li:not(:last-child) {
         margin-bottom: 1rem;
       }
     }
@@ -44,7 +48,13 @@ const AccordionView = ({ programms }) => {
         body: `<ul>
         <li>
           <strong>Major:</strong>
-          <br />${resolver.getMajorDesc()}
+          <br />
+            <a href=${majorInfoLink(
+              resolver.getInstitution(),
+              resolver.getAcadPlan()
+            )}>
+              ${resolver.getMajorDesc()}
+            </a>
         </li>
         <li>
           <strong>Degree:</strong>

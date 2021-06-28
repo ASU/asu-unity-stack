@@ -2,23 +2,37 @@
 
 import PropTypes from "prop-types";
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { imagePropType } from "../../models";
 import { sanitizeHTML, idGenerator } from "../../utils";
 
+const GlobalStyle = createGlobalStyle`
+.uds-image-overlap {
+  padding-top: 0 ;
+}
+`;
+
 const ContentWrapper = styled.div`
-  .uds-image-overlap.content-left &.content-wrapper {
-    padding-left: 0;
-    grid-column: 1 / span 4;
-    grid-row: 3/4;
+  @media (max-width: 768px) {
+    & {
+      font-size: 0.9rem;
+    }
   }
 
-  .uds-image-overlap.content-right &.content-wrapper {
-    padding: 2.5rem;
+  @media (min-width: 992px) {
+    .uds-image-overlap.content-left &.content-wrapper {
+      padding-left: 0;
+      grid-column: 1 / span 4;
+      grid-row: 3/4;
+    }
 
-    h2 {
-      margin-top: 0;
+    .uds-image-overlap.content-right &.content-wrapper {
+      padding: 2.5rem;
+
+      h2 {
+        margin-top: 0;
+      }
     }
   }
 `;
@@ -48,11 +62,12 @@ function OverlapContentImage({
   const genId = idGenerator("overlap-");
   return (
     <div className={`uds-image-overlap content-${contentDirection}`}>
+      <GlobalStyle />
       <OverlapImage className="img-fluid" src={image.url} alt={image.altText} />
       <ContentWrapper className="content-wrapper">
-        <h2>
+        <h3>
           <span className="highlight-gold">{title}</span>
-        </h2>
+        </h3>
         {contents.map(content => (
           <div
             key={genId.next().value}

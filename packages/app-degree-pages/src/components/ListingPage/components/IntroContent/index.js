@@ -25,14 +25,16 @@ import { spreadClasses, parseHeading } from "../../../../core/utils";
 
 const PhotoGrid = styled.div`
   .photo-item {
-    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 `;
 
-const SectionWrapper = styled.div`
-  .uds-img,
-  .uds-video-container {
-    margin-top: 1.25rem;
+const SectionWrapper = styled.section`
+  @media (max-width: 480px) {
+    .uds-img,
+    .uds-video-container {
+      margin: 0;
+    }
   }
 `;
 
@@ -50,9 +52,9 @@ function textPhotoGridTypeHtmlTemplate({
 
   return (
     <section className="container">
-      <div className="row pt-3">
-        <div className="col col-sm-12 col-md-5 pl-0">
-          <Heading>
+      <div className="row">
+        <div className="col-sm-12 col-md-5">
+          <Heading className="mt-0">
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
             </span>
@@ -67,11 +69,11 @@ function textPhotoGridTypeHtmlTemplate({
           ))}
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col col-sm-12 col-md-7">
+        <div className="col-sm-12 col-md-7 d-none d-sm-none d-md-block">
           <PhotoGrid className="row">
             {photoGrid.images.map((image, index) => (
               <div
-                className="photo-item col col-sm-12 col-md-6 col-lg-6"
+                className="photo-item col-sm-12 col-md-6 col-lg-6"
                 key={`img-${index + 1}`}
               >
                 <img
@@ -104,9 +106,9 @@ function textTextMediaTypeHtmlTemplate({
 
   return (
     <SectionWrapper className="container">
-      <div className="row pt-3">
-        <div className="col col-sm-12 col-md-5">
-          <Heading>
+      <div className="row gy-3">
+        <div className="col-sm-12 col-md-5">
+          <Heading className="mt-0">
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
             </span>
@@ -121,12 +123,13 @@ function textTextMediaTypeHtmlTemplate({
           ))}
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col col-sm-12 col-md-7">
+        <div className="col-sm-12 col-md-7">
           {video && (
             <Video
               url={video.url}
               vttUrl={video.vttUrl}
               altText={video.altText}
+              className="mt-0"
             />
           )}
           {image && (
@@ -144,7 +147,12 @@ function textTextMediaTypeHtmlTemplate({
  * @param {IntroContentProps} props
  * @returns {JSX.Element}
  */
-function textImageOverlapTypeHtmlTemplate({ title, contents, image }) {
+function textImageOverlapTypeHtmlTemplate({
+  applyNowUrl,
+  title,
+  contents,
+  image,
+}) {
   return (
     <section className="container">
       <div className="row">
@@ -154,7 +162,11 @@ function textImageOverlapTypeHtmlTemplate({ title, contents, image }) {
             contents={contents}
             image={image}
             contentDirection="right"
-            // contentChildren={<ApplyNow href={applyNowUrl} />}
+            contentChildren={
+              <div className="mt-2">
+                <ApplyNow href={applyNowUrl} />
+              </div>
+            }
           />
         </div>
       </div>
@@ -171,15 +183,15 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
 
   return (
     <section className="container">
-      <div className="row pt-3">
-        <div className="col col-sm-12 col-md-5">
-          <Heading>
+      <div className="row">
+        <div className="col-sm-12 col-md-5">
+          <Heading className="mt-0">
             <span className={`${spreadClasses(title.cssClass)}`}>
               {title.text}
             </span>
           </Heading>
         </div>
-        <div className="col col-sm-12 col-md-7 pt-2">
+        <div className="col-sm-12 col-md-7">
           {contents.map((content, index) => (
             <p
               key={`content-${index + 1}`}

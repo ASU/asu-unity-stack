@@ -2,9 +2,9 @@
 import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-import { Loader } from "../../core/components";
+import { Loader, Main as MainSection, ThemeStyle } from "../../core/components";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import {
@@ -25,10 +25,20 @@ import { SearchBar } from "./components/SearchBar";
  * @typedef {import("./components/Filters").FiltersState} FiltersState
  */
 
-const Main = styled.main`
+const Main = styled(MainSection)`
+  margin-top: var(--uds-dp-section-margin);
+
   @media (max-width: 768px) {
     & {
       font-size: 0.9rem;
+    }
+  }
+`;
+
+const ListingStyle = createGlobalStyle`
+  @media (max-width: 480px) {
+      div[class^=uds-hero] {
+        grid-template-rows: 1fr auto auto 1.5rem auto;
     }
   }
 `;
@@ -186,15 +196,19 @@ const ListingPage = ({
 
   return (
     <>
+      <ThemeStyle />
+      <ListingStyle />
       {hero ? (
-        <Hero
-          image={hero.image}
-          title={{ ...hero.title, maxWidth: "100%" }}
-          contents={hero.contents}
-        />
+        <section>
+          <Hero
+            image={hero.image}
+            title={{ ...hero.title, maxWidth: "100%" }}
+            contents={hero.contents}
+          />
+        </section>
       ) : null}
 
-      <Main className="container" data-is-loading={loading}>
+      <Main data-is-loading={loading} className="main-section">
         {introContent ? (
           <IntroContent
             applyNowUrl={actionUrls?.applyNowUrl}
@@ -208,31 +222,35 @@ const ListingPage = ({
           />
         ) : null}
 
-        {hasSearchBar || hasFilters ? <BrowseTitle /> : null}
-
-        {hasSearchBar ? <SearchBar onSearch={onDegreeSearch} /> : null}
-        {hasFilters ? (
-          <Filters
-            value={stateFilters}
-            onValueChange={setStateFilters}
-            onApplyFilters={onDegreeApplyFilters}
-            onCleanFilters={onDegreeCleanFilters}
-          />
+        {hasSearchBar || hasFilters ? (
+          <section className="no-space">
+            <BrowseTitle />
+            {hasSearchBar ? <SearchBar onSearch={onDegreeSearch} /> : null}
+            {hasFilters ? (
+              <Filters
+                value={stateFilters}
+                onValueChange={setStateFilters}
+                onApplyFilters={onDegreeApplyFilters}
+                onCleanFilters={onDegreeCleanFilters}
+              />
+            ) : null}
+          </section>
         ) : null}
 
         {error && <div>Something went wrong ...</div>}
 
-        <section className="container m-1">
-          <div className="d-flex justify-content-between">
-            {hasFilters ? (
-              <FiltersSummary
-                appliedFilters={appliedFilters}
-                onRemoveFilter={onRemoveFilterValue}
-              />
-            ) : null}
+        {hasFilters ? (
+          <section className="container">
+            <div className="d-flex justify-content-between">
+              {hasFilters ? (
+                <FiltersSummary
+                  appliedFilters={appliedFilters}
+                  onRemoveFilter={onRemoveFilterValue}
+                />
+              ) : null}
 
-            {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
-            {/* <DataViewSwitch
+              {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
+              {/* <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
@@ -240,8 +258,9 @@ const ListingPage = ({
               }}
               checkedId={dataViewComponent}
             /> */}
-          </div>
-        </section>
+            </div>
+          </section>
+        ) : null}
 
         {loading || searchLoading ? (
           <Loader />

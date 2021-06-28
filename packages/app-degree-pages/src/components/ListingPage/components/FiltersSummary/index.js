@@ -21,6 +21,7 @@ function FiltersSummary({ appliedFilters = [], onRemoveFilter }) {
         <strong>Applied filters</strong>
       </header>
       <div>
+        {appliedFilters.length === 0 ? <span>No filters selected</span> : null}
         {appliedFilters.map(filterValue => (
           <span
             key={genFilterId.next().value}

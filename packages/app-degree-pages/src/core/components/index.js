@@ -5,4 +5,5 @@ import { Video } from "./Video";
 
 export * from "./ActionButtons";
 export * from "./icons";
+export * from "./Styles";
 export { Loader, OverlapContentImage, Video };

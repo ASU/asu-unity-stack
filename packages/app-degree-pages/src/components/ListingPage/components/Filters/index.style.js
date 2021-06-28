@@ -1,8 +1,10 @@
 // @ts-check
 import styled from "styled-components";
 
-const Section = styled.section`
+const Section = styled.div`
   border-bottom: 1px solid #d0d0d0;
+  margin-bottom: calc(var(--uds-dp-section-margin) / 2);
+  padding-bottom: calc(var(--uds-dp-section-margin) / 2);
 
   @media (max-width: 768px) {
     .filter-action-buttons {
