@@ -18,7 +18,7 @@ storiesOf('Components/Sidebar', module)
         <nav id="sidebar-left" class="sidebar accordion" aria-label="Secondary">
 
           <a class="nav-link" href="#">Default Link</a>
-          <a class="nav-link active" href="#">Active Link</a>
+          <a class="nav-link is-active" href="#">Active Link</a>
 
           <div class="card card-foldable">
             <div class="card-header">
@@ -29,7 +29,7 @@ storiesOf('Components/Sidebar', module)
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent=".sidebar">
               <a href="#" class="nav-link">A Long Link Total that is two or more lines of text</a>
               <a href="#" class="nav-link">Another link here</a>
-              <a href="#" class="nav-link active">One more link</a>
+              <a href="#" class="nav-link is-active">One more link</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
 
@@ -43,7 +43,7 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Work it harder</a>
               <a href="#" class="nav-link">Make it better</a>
               <a href="#" class="nav-link">Do it faster</a>
-              <a href="#" class="nav-link active">Makes us stronger</a>
+              <a href="#" class="nav-link is-active">Makes us stronger</a>
               <a href="#" class="nav-link">More than ever</a>
               <a href="#" class="nav-link">Hour after</a>
               <a href="#" class="nav-link">Our work is</a>
@@ -63,7 +63,7 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Crow's nest square-rigged hands chase</a>
               <a href="#" class="nav-link">Davy Jones' Locker belaying pin Sail ho mizzen</a>
               <a href="#" class="nav-link">Lugger to go on account loaded to the gunwalls lad</a>
-              <a href="#" class="nav-link active">Skysail fluke overhaul hardtack</a>
+              <a href="#" class="nav-link is-active">Skysail fluke overhaul hardtack</a>
               <a href="#" class="nav-link">Sloop flogging chase guns lee</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
