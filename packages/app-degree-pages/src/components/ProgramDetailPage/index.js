@@ -144,7 +144,7 @@ const ProgramDetailPage = ({
             <div className="row">
               <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
             </div>
-            <div className="row">
+            <div className="row flex-column-reverse flex-sm-row">
               <div className="col col-sm-12 col-md-7 col-lg-7">
                 <section className="intro">
                   {resolver.getMarketText() ? (
@@ -177,7 +177,6 @@ const ProgramDetailPage = ({
                   locations={getLocations(resolver)}
                   firstRequirementMathCourse={resolver.getMinMathReq()}
                   mathIntensity={resolver.getMathIntensity()}
-                  timeCommitment="***TBD"
                 />
 
                 <ApplicationRequirements
