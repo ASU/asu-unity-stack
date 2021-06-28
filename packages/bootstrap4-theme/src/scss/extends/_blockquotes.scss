@@ -26,7 +26,6 @@ blockquote:before {
 2. Blockquote, mobile
 ------------------------------------------------------------------- */
 .uds-blockquote {
-
   display: grid;
   grid-template-columns: auto 1fr;
   gap: $uds-size-spacing-3;
@@ -42,7 +41,6 @@ blockquote:before {
   }
 
   blockquote {
-
     grid-column: 2;
     margin-top: 0;
     margin-bottom: 0;
@@ -52,12 +50,11 @@ blockquote:before {
     }
 
     p:last-of-type:after {
-      content: "\201D";
+      content: '\201D';
     }
   }
 
   .citation {
-
     cite {
       display: block;
       font-size: $uds-size-font-medium;
@@ -69,7 +66,7 @@ blockquote:before {
 
       &.name:before {
         padding-right: 0.5em;
-        content: "\2014";
+        content: '\2014';
       }
 
       &.description {
@@ -80,39 +77,33 @@ blockquote:before {
   }
 
   &.with-image {
-
     img {
-      max-width: 40px;
-      height: auto;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
+      object-fit: cover;
+      border-radius: 100%;
+      width: 72px;
+      height: 72px;
     }
 
     blockquote p:first-of-type:before {
-      content: "\201C";
+      content: '\201C';
     }
-
   }
 
   &.no-citation {
     blockquote {
-
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       p:first-of-type:before {
-        content: "\201C";
+        content: '\201C';
       }
 
       h3 {
         margin-bottom: 0;
       }
 
-      h3+p {
+      h3 + p {
         margin-top: $uds-size-spacing-3;
       }
     }
@@ -145,16 +136,6 @@ blockquote:before {
     h3 {
       text-align: center;
     }
-
-    img {
-      max-width: 180px;
-      height: auto;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
-    }
   }
 }
 
@@ -162,9 +143,7 @@ blockquote:before {
 4. Blockquote, desktop
 ------------------------------------------------------------------- */
 @include media-breakpoint-up(sm) {
-
   .uds-blockquote {
-
     &.no-cite {
       align-items: center;
     }
@@ -173,18 +152,12 @@ blockquote:before {
       gap: $uds-size-spacing-4;
 
       img {
-        max-width: 180px;
-        height: auto;
-        background-repeat: no-repeat;
-        background-position: 50%;
-        border-radius: 50%;
         width: 180px;
         height: 180px;
       }
     }
 
     &.with-image.reversed {
-
       img {
         grid-column: 2;
       }
@@ -195,7 +168,6 @@ blockquote:before {
       }
     }
   }
-
 }
 
 /*------------------------------------------------------------------
@@ -204,9 +176,7 @@ blockquote:before {
 ------------------------------------------------------------------- */
 .alt-citation,
 .uds-testimonial {
-
   .citation {
-
     &:before {
       content: '';
       display: block;
@@ -248,11 +218,11 @@ blockquote:before {
     text-align: center;
 
     p:first-of-type:before {
-      content: "\201C";
+      content: '\201C';
     }
 
     p:last-of-type:after {
-      content: "\201D";
+      content: '\201D';
     }
 
     p:last-of-type {
@@ -261,10 +231,11 @@ blockquote:before {
   }
 
   .citation:before {
-    display: inline-flex
+    display: inline-flex;
   }
 
   &.with-image img {
-    max-width: 180px;
+    width: 180px;
+    height: 180px;
   }
 }
