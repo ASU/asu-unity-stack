@@ -2,6 +2,7 @@
 import { Pagination } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import { createGlobalStyle } from "styled-components";
 
 import { ListingPageContext } from "../../../../core/context";
 import {
@@ -15,11 +16,28 @@ import { GridView } from "./GridView";
 import { ListView } from "./ListView";
 import { degreeListPropTypes } from "./programs-prop-types";
 
+const GlobalStyle = createGlobalStyle`
+  .mobile-view {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .desktop-view {
+      display: none;
+    }
+    .mobile-view {
+      display: block;
+      .card-foldable .card-header h4 a {
+        color: #8c1d40;
+      }
+    }
+  }
+`;
+
 /**
  *  @typedef {{
  *    programms: Object[]
  *    loading: boolean
- *    columSettings: import("src/core/models/listing-page-types").ColumSettings
+ *    columSettings?: import("src/core/models/listing-page-types").ColumSettings
  * }} GridListingProps
  */
 
@@ -60,11 +78,19 @@ function ProgramList({ dataViewComponent, loading, programms, columSettings }) {
         columSettings,
       }}
     >
-      <ProgramsViewer
-        loading={loading}
-        programms={tableView}
-        columSettings={columSettings}
-      />
+      <GlobalStyle />
+
+      <div className="desktop-view">
+        <ProgramsViewer
+          loading={loading}
+          programms={tableView}
+          columSettings={columSettings}
+        />
+      </div>
+
+      <div className="mobile-view">
+        <AccordionView loading={loading} programms={tableView} />
+      </div>
 
       <Pagination
         totalNumbers={7}

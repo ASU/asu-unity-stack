@@ -1,30 +1,77 @@
 // @ts-check
 
 import { Accordion } from "@asu-design-system/components-core";
-import { sanitize } from "dompurify";
-import PropTypes from "prop-types";
 import React from "react";
+import styled from "styled-components";
 
-import { idGenerator } from "../../../../../core/utils";
+import { degreeDataPropResolverService } from "../../../../../core/services";
+import { toTitleCase } from "../../../../../core/utils";
+import { degreeListPropTypes } from "../programs-prop-types";
 
-function AccordionView(props) {
-  const cards = [
-    {
+const WrapperSection = styled.div`
+  & {
+    ul {
+      margin-top: 1rem;
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+`;
+
+/**
+ *
+ * @param {import("..").GridListingProps} props
+ * @returns {JSX.Element}
+ */
+const AccordionView = ({ programms }) => {
+  /**
+   * @type {{
+   *   content: {
+   *     header: string
+   *    body: string
+   *   }
+   * }[]}
+   * */
+  const cards = programms.map(row => {
+    const resolver = degreeDataPropResolverService(row);
+    return {
       content: {
-        icon: "pencil-alt",
-        header: "Accordion Card 1",
-        body: "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+        header: resolver.getMajorDesc(),
+        body: `<ul>
+        <li>
+          <strong>Major:</strong>
+          <br />${resolver.getMajorDesc()}
+        </li>
+        <li>
+          <strong>Degree:</strong>
+          <br />${resolver.getDegree()}
+        </li>
+        <li>
+          <strong>Location:</strong>
+          <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
+        </li>
+        <li>
+          <strong>College:</strong>
+          <br />${resolver.getCollegeDesc()}
+        </li>
+      </ul>`,
       },
-    },
-  ];
+    };
+  });
 
   return (
-    <>
+    <WrapperSection>
       <Accordion cards={cards} openedCard={1} />
-    </>
+    </WrapperSection>
   );
-}
+};
 
-AccordionView.propTypes = {};
+AccordionView.propTypes = {
+  ...degreeListPropTypes,
+};
 
-export default AccordionView;
+export { AccordionView };
