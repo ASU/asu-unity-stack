@@ -2,6 +2,7 @@
 import React from "react";
 
 import { HeaderPropTypes } from "./core/models/app-prop-types";
+import { Header } from "./index.styles";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps
@@ -30,7 +31,11 @@ const ASUHeader = ({
   expandOnHover,
   mobileNavTree,
 }) => {
-  return <header>Hola</header>;
+  return (
+    <Header>
+      <h1 className="header">Header</h1>
+    </Header>
+  );
 };
 
 ASUHeader.propTypes = { ...HeaderPropTypes };

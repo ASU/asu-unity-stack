@@ -18,7 +18,7 @@ const Template = args => (
   <>
     <ASUHeader {...args} />
     <div style={{ width: "100%", height: "300vh" }}>
-      <h2 className="text-center mt-6">Scroll section</h2>
+      <h1 style={{ textAlign: "center" }}>Scroll section</h1>
     </div>
   </>
 );
