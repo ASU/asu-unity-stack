@@ -71,7 +71,8 @@ function getLocations(resolver) {
 
 const Main = styled.main`
   & > section section {
-    margin-bottom: 96px;
+    --marginBottom: 96px;
+    margin-bottom: var(--marginBottom);
 
     & > * {
       margin-top: 0;
@@ -82,12 +83,19 @@ const Main = styled.main`
       line-height: 1;
     }
   }
+
+  @media (max-width: 768px) {
+    & > section section {
+      --marginBottom: 48px;
+    }
+  }
 `;
 
 const VideoWrapper = styled.div`
   .uds-video-container {
     margin: 0;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -127,7 +135,7 @@ const ProgramDetailPage = ({
 
   return (
     <>
-      <Main className="container" data-is-loading={loading}>
+      <Main data-is-loading={loading}>
         {error && <div>Something went wrong ...</div>}
         {loading ? (
           <Loader />
