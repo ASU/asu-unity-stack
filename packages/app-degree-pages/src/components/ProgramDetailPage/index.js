@@ -211,7 +211,7 @@ const ProgramDetailPage = ({
                   </VideoWrapper>
                 )}
                 {introContent.image && (
-                  <div className="uds-img pt-5">
+                  <div className="uds-img pt-3 pb-3">
                     <img
                       src={introContent.image.url}
                       className="img-fluid"
