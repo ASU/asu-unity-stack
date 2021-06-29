@@ -13,7 +13,7 @@ function ErrorAlert({ message = "" }) {
       style={{
         display: closed,
         position: "sticky",
-        top:  0,
+        top: 0,
         zIndex: 100,
       }}
     >
