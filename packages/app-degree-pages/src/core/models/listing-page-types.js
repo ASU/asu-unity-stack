@@ -19,15 +19,36 @@
          this level of complexity. The datasource look to be a simple string
           which reppresents the API URL
 */
+//  * TODO: remove it if not needed anymore
+//  * @typedef {{
+//  *    id?: string
+//  *    sourceType?: "api" | "shared-data-source" | "static-json" // default `api`
+//  *    sharedDataSourceId?: string // only if `dataSourceType == "shared-data-source"``
+//  *    data?: object[] // only if `dataSourceType == "static-json"``
+//  *    apiUrl?: string  // only if `dataSourceType == "api"``
+//  * }} OldAppDataSource
+
 /**
+ * @typedef {"true" | "false"} stringBool
  *
  * @typedef {{
- *    id?: string
- *    sourceType?: "api" | "shared-data-source" | "static-json" // default `api`
- *    sharedDataSourceId?: string // only if `dataSourceType == "shared-data-source"``
- *    data?: object[] // only if `dataSourceType == "static-json"``
- *    apiUrl?: string  // only if `dataSourceType == "api"``
+ *    endpoint: string
+ *    method: string
+ *    init?: stringBool
+ *    [x:string]: string
  * }} AppDataSource
+ *
+ * @typedef {{
+ *    program?: string
+ *    cert?: stringBool
+ *    CollegeAcadOrg?: string
+ *    DepartmentCode?: string
+ * } & AppDataSource } ProgramListDataSource
+ *
+ * @typedef {{
+ *    acadPlan: string
+ * } & AppDataSource } ProgramDetailDataSource
+ *
  */
 
 /**
@@ -61,7 +82,7 @@
  * }} ColumSettings
  *
  * @typedef {{
- *    dataSource: AppDataSource | string
+ *    dataSource: ProgramListDataSource | string
  *    columns?: GridColumn[]
  *    settings?: ColumSettings
  * }} GridListProps

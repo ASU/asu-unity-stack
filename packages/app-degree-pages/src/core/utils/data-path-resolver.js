@@ -18,19 +18,4 @@ function dataPathResolver(data, path) {
   return value;
 }
 
-/**
- *
- * @param {import("../models/types/shared-types").AppDataSource | string} dataSource
- * @returns {string}
- */
-function urlResolver(dataSource) {
-  if (typeof dataSource === "object") {
-    return dataSource.apiUrl;
-  }
-  if (typeof dataSource === "string") {
-    return dataSource;
-  }
-  return "";
-}
-
-export { dataPathResolver, urlResolver };
+export { dataPathResolver };

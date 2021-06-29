@@ -1,7 +1,7 @@
 // @ts-check
 
+import { tagHeadings } from "../constants/component-constants";
 import { degreeDataPropResolverService } from "../services";
-import { tagHeadings } from "./constants";
 
 // dummy type to help the intellisense
 const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
@@ -17,7 +17,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    url: string
  *    altText: string
  *    vttUrl: string
- *    className: string
+ *    className?: string
  * }} VideoItem
  */
 

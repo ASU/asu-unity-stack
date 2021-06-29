@@ -117,7 +117,7 @@
 /**
  *  @typedef {{
  *  acadPlan?: string
- *  dataSource: import("./listing-page-types").AppDataSource | string
+ *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps

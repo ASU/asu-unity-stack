@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { Loader, Main as MainSection, ThemeStyle } from "../../core/components";
+import {
+  Loader,
+  Main as MainSection,
+  ThemeStyle,
+  ErrorAlert,
+} from "../../core/components";
+import { programListFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import {
@@ -12,7 +18,7 @@ import {
   dataSourcePropType,
 } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
-import { urlResolver } from "../../core/utils/data-path-resolver";
+import { urlResolver } from "../../core/utils";
 import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
@@ -63,7 +69,7 @@ const ListingPage = ({
   /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   // const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
-  const url = urlResolver(programList.dataSource);
+  const url = urlResolver(programList.dataSource, programListFields);
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
@@ -198,6 +204,9 @@ const ListingPage = ({
     <>
       <ThemeStyle />
       <ListingStyle />
+
+      {error && <ErrorAlert message="Something went wrong ..." />}
+
       {hero ? (
         <section>
           <Hero
@@ -236,8 +245,6 @@ const ListingPage = ({
             ) : null}
           </section>
         ) : null}
-
-        {error && <div>Something went wrong ...</div>}
 
         {hasFilters ? (
           <section className="container">

@@ -38,6 +38,18 @@ const Template = ({
 const actionUrls = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
 };
+
+/** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
+const dataSource = {
+  endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  method: "findAllDegrees",
+  init: "false",
+  program: "undergrad", // graduate | undergrad
+  cert: "false",
+  CollegeAcadOrg: null, //  example values: CLW, CTB, CTE
+  DepartmentCode: null, //  example values: CMANAGE, CHUMARTCLT, CHL
+};
+
 /**
  * @type {{ args: AppProps }}
  */
@@ -73,18 +85,7 @@ UndergraduateDegreePage.args = {
   // hasFilters: false,
   // hasSearchBar: false,
   programList: {
-    dataSource:
-      "https://degreesearch-proxy.apps.asu.edu/degreesearch/" +
-      "?init=false" +
-      "&method=findAllDegrees" +
-      "&fields=Descr100,Institution,AcadPlan," +
-      "Degree,DegreeDescr,DegreeDescrlong,concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
-      "AsuCritTrackUrl,AsuOfficeLoc,CampusStringArray,AcadPlan,accelerateDegrees,concurrentDegrees," +
-      "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
-      "AsuLangReqFlag,asuAcadpLrfText,asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity," +
-      "&init=false" +
-      "&program=undergrad" +
-      "&cert=false",
+    dataSource,
     settings: {
       hideCollegeSchool: true,
     },

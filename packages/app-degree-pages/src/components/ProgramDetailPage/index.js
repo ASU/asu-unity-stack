@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { Loader, Video } from "../../core/components";
+import { programDetailFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   dataSourcePropType,
@@ -15,9 +16,9 @@ import {
 } from "../../core/models";
 import { degreeDataPropResolverService } from "../../core/services";
 import {
-  urlResolver,
   formatAcceleratedConcurrentLinks,
   formatCareerData,
+  urlResolver,
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
@@ -117,7 +118,7 @@ const ProgramDetailPage = ({
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
-  const url = urlResolver(dataSource);
+  const url = urlResolver(dataSource, programDetailFields);
 
   useEffect(() => {
     doFetchPrograms(url);

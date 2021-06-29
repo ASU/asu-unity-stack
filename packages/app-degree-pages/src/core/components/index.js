@@ -1,9 +1,8 @@
 // @ts-check
-import { Loader } from "./Loader";
-import { OverlapContentImage } from "./OverlapContentImage";
-import { Video } from "./Video";
-
+export * from "./Loader";
+export * from "./OverlapContentImage";
+export * from "./Video";
 export * from "./ActionButtons";
+export * from "./ErrorAlert";
 export * from "./icons";
 export * from "./Styles";
-export { Loader, OverlapContentImage, Video };
