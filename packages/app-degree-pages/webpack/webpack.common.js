@@ -8,7 +8,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    DegreePages: "./index.js",
+    "degree-pages": "./index.js",
   },
   module: {
     rules: [

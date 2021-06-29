@@ -19,12 +19,15 @@ const defaultArgs = {
   dataSource: {
     endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
     method: "findDegreeByAcadPlan",
-    init: false,
+    init: "false",
     acadPlan: "BABUSGLBA",
-    // acadPlan: "LSBISBIS",
+    // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
   introContent: {
+    // hideMarketText: true,
+    // hideProgramDesc: true,
+    // hideRequiredCourses: true,
     breadcrumbs: [
       {
         text: "Academic programs",
@@ -44,10 +47,13 @@ const defaultArgs = {
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
+    // optional
     // video: {
-    //   url: "https://player.vimeo.com/video/110626871",
-    //   altText: "Example video",
+    //   url: "/assets/video/stock-video-person-drawing.mp4",
+    //   altText: "",
+    //   vttUrl: "",
     // },
+    // optional, override market text
     // contents: [
     //   {
     //     text: `Can you imagine yourself hosting successful events and meetings?
@@ -57,6 +63,7 @@ const defaultArgs = {
     // ],
   },
   atAGlance: {
+    // hide: true,
     offeredBy: {
       text: "Herberger Instite for Design and the Arts",
       url: "#",
@@ -83,31 +90,12 @@ const defaultArgs = {
     mathIntensity: "General",
     timeCommitment: "120 credit hours(about 4 years)",
   },
-  careerOutlook: {
-    image: {
-      url: "https://source.unsplash.com/random/1200x750",
-      altText:
-        "Random image. REPLACE with appropriate alt text for accessibility.",
-    },
-  },
-  globalOpportunity: {
-    image: {
-      url: "https://source.unsplash.com/random/1200x750",
-      altText:
-        "Random image. REPLACE with appropriate alt text for accessibility.",
-    },
-  },
-  attendOnline: {
-    image: {
-      url: "https://source.unsplash.com/random/1200x750",
-      altText:
-        "Random image. REPLACE with appropriate alt text for accessibility.",
-    },
-  },
-  programContactInfo: {
-    departmentUrl: "#",
-    emailUrl: "#",
-  },
+  // applicationRequirements: {
+  //   hide: true,
+  // },
+  // changeMajorRequirements: {
+  //   hide: true,
+  // },
   nextSteps: {
     cards: [
       {
@@ -148,6 +136,40 @@ const defaultArgs = {
       },
     ],
   },
+  // affordingCollege: {
+  //   hide: true,
+  // },
+  // flexibleDegreeOptions: {
+  //   hide: true,
+  // },
+  careerOutlook: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  // exampleCareers: {
+  //   hide: true,
+  // },
+  globalOpportunity: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  attendOnline: {
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  programContactInfo: {
+    departmentUrl: "#",
+    emailUrl: "#",
+  },
 };
 
 /**
@@ -158,7 +180,12 @@ const Template = ({
   dataSource,
   introContent,
   atAGlance,
+  applicationRequirements,
+  changeMajorRequirements,
+  affordingCollege,
+  flexibleDegreeOptions,
   careerOutlook,
+  exampleCareers,
   globalOpportunity,
   programContactInfo,
   attendOnline,
@@ -168,7 +195,12 @@ const Template = ({
     dataSource={dataSource}
     introContent={introContent}
     atAGlance={atAGlance}
+    applicationRequirements={applicationRequirements}
+    changeMajorRequirements={changeMajorRequirements}
+    affordingCollege={affordingCollege}
+    flexibleDegreeOptions={flexibleDegreeOptions}
     careerOutlook={careerOutlook}
+    exampleCareers={exampleCareers}
     globalOpportunity={globalOpportunity}
     programContactInfo={programContactInfo}
     attendOnline={attendOnline}

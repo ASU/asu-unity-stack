@@ -108,7 +108,13 @@ const VideoWrapper = styled.div`
 const ProgramDetailPage = ({
   dataSource,
   introContent,
+  atAGlance,
+  applicationRequirements,
+  changeMajorRequirements,
+  affordingCollege,
+  flexibleDegreeOptions,
   careerOutlook,
+  exampleCareers,
   globalOpportunity,
   attendOnline,
   programContactInfo,
@@ -142,66 +148,89 @@ const ProgramDetailPage = ({
           <Loader />
         ) : (
           <section className="container">
-            <div className="row">
-              <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
-            </div>
+            {introContent?.breadcrumbs ? (
+              <div className="row">
+                <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
+              </div>
+            ) : null}
+
             <div className="row flex-column-reverse flex-sm-row">
               <div className="col col-sm-12 col-md-7 col-lg-7">
-                <section className="intro">
-                  {resolver.getMarketText() ? (
-                    <MarketText
-                      breadcrumbs={introContent.breadcrumbs}
-                      contents={
-                        introContent.contents || [
-                          { text: resolver.getMarketText() },
-                        ]
+                {introContent ? (
+                  <section className="intro">
+                    {!introContent.hideMarketText &&
+                    resolver.getMarketText() ? (
+                      <MarketText
+                        breadcrumbs={introContent?.breadcrumbs}
+                        contents={
+                          introContent?.contents || [
+                            { text: resolver.getMarketText() },
+                          ]
+                        }
+                      />
+                    ) : null}
+
+                    {!introContent.hideProgramDesc ? (
+                      <ProgramDescription
+                        content={resolver.getDescrLongExtented()}
+                      />
+                    ) : null}
+
+                    {!introContent.hideRequiredCourses ? (
+                      <RequiredCourse
+                        concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                        onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                        majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                      />
+                    ) : null}
+                  </section>
+                ) : null}
+
+                {!atAGlance?.hide ? (
+                  <AtAGlance
+                    offeredBy={
+                      atAGlance?.offeredBy || {
+                        text: resolver.getCollegeDesc(),
+                        url: "",
                       }
-                    />
-                  ) : null}
-
-                  <ProgramDescription
-                    content={resolver.getDescrLongExtented()}
+                    }
+                    locations={atAGlance?.locations || getLocations(resolver)}
+                    firstRequirementMathCourse={
+                      atAGlance?.firstRequirementMathCourse ||
+                      resolver.getMinMathReq()
+                    }
+                    mathIntensity={
+                      atAGlance?.mathIntensity || resolver.getMathIntensity()
+                    }
                   />
+                ) : null}
 
-                  <RequiredCourse
-                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
-                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                {!applicationRequirements?.hide ? (
+                  <ApplicationRequirements
+                    accordionCards={[
+                      {
+                        content: {
+                          header: "Aditional Requirements",
+                          // Change data after filter on degree type
+                          body: resolver.getDescrLongExtented5(),
+                        },
+                      },
+                      {
+                        content: {
+                          header: "Transfer Admission Requirements",
+                          body: resolver.getTransferAdmission(),
+                        },
+                      },
+                    ]}
                   />
-                </section>
+                ) : null}
 
-                <AtAGlance
-                  offeredBy={{
-                    text: resolver.getCollegeDesc(),
-                    url: "",
-                  }}
-                  locations={getLocations(resolver)}
-                  firstRequirementMathCourse={resolver.getMinMathReq()}
-                  mathIntensity={resolver.getMathIntensity()}
-                />
-
-                <ApplicationRequirements
-                  accordionCards={[
-                    {
-                      content: {
-                        header: "Aditional Requirements",
-                        // Change data after filter on degree type
-                        body: resolver.getDescrLongExtented5(),
-                      },
-                    },
-                    {
-                      content: {
-                        header: "Transfer Admission Requirements",
-                        body: resolver.getTransferAdmission(),
-                      },
-                    },
-                  ]}
-                />
-
-                <ChangeYourMajor content={resolver.getChangeMajor()} />
+                {!changeMajorRequirements?.hide ? (
+                  <ChangeYourMajor content={resolver.getChangeMajor()} />
+                ) : null}
               </div>
               <div className="col col-sm-12 col-md-5 col-lg-5">
-                {introContent.video && (
+                {introContent?.video && (
                   <VideoWrapper>
                     <Video
                       url={introContent.video.url}
@@ -210,7 +239,7 @@ const ProgramDetailPage = ({
                     />
                   </VideoWrapper>
                 )}
-                {introContent.image && (
+                {introContent?.image && (
                   <div className="uds-img pt-3 pb-3">
                     <img
                       src={introContent.image.url}
@@ -222,27 +251,30 @@ const ProgramDetailPage = ({
               </div>
             </div>
             <div className="row">
-              <NextSteps cards={nextSteps.cards} />
+              {nextSteps ? <NextSteps cards={nextSteps.cards} /> : null}
 
-              <AffordingCollege />
+              {!affordingCollege?.hide ? <AffordingCollege /> : null}
 
-              {resolver.hasConcurrentOrAccelerateDegrees() && (
-                <FlexibleDegreeOptions
-                  acceleratedLinks={formatAcceleratedConcurrentLinks(
-                    resolver.getAccelerateDegrees()
-                  )}
-                  concurrentLinks={formatAcceleratedConcurrentLinks(
-                    resolver.getConcurrentDegrees()
-                  )}
+              {!flexibleDegreeOptions?.hide &&
+                resolver.hasConcurrentOrAccelerateDegrees() && (
+                  <FlexibleDegreeOptions
+                    acceleratedLinks={formatAcceleratedConcurrentLinks(
+                      resolver.getAccelerateDegrees()
+                    )}
+                    concurrentLinks={formatAcceleratedConcurrentLinks(
+                      resolver.getConcurrentDegrees()
+                    )}
+                  />
+                )}
+
+              {careerOutlook ? (
+                <CareerOutlook
+                  image={careerOutlook.image}
+                  contents={[{ text: resolver.getAsuCareerOpportunity() }]}
                 />
-              )}
+              ) : null}
 
-              <CareerOutlook
-                image={careerOutlook.image}
-                contents={[{ text: resolver.getAsuCareerOpportunity() }]}
-              />
-
-              {resolver.hasCareerData() && (
+              {!exampleCareers?.hide && resolver.hasCareerData() && (
                 <ExampleCareers
                   tableData={formatCareerData(resolver.getCareerData())}
                 />
@@ -250,32 +282,39 @@ const ProgramDetailPage = ({
 
               {/* <CustomizeYourCollegeExperience /> */}
 
-              <GlobalOpportunity
-                contents={[{ text: resolver.getGlobalExp() }]}
-                image={globalOpportunity.image}
-              />
-
-              <AttendOnline
-                learnMoreLink={resolver.getCurriculumUrl()}
-                image={attendOnline.image}
-              />
-            </div>
-            <div className="row">
-              <div className="col col-sm-12 col-md-6 col-lg-6 ">
-                <ProgramContactInfo
-                  department={{
-                    text: resolver.getGDepartmentName(),
-                    url: programContactInfo.departmentUrl,
-                  }}
-                  email={{
-                    text: resolver.getEmailAddress(),
-                    url: programContactInfo.emailUrl,
-                  }}
-                  asuOfficeLoc={resolver.getAsuOfficeLoc()}
-                  phone={resolver.getPhone()}
+              {globalOpportunity ? (
+                <GlobalOpportunity
+                  contents={[{ text: resolver.getGlobalExp() }]}
+                  image={globalOpportunity.image}
                 />
-              </div>
+              ) : null}
+
+              {attendOnline ? (
+                <AttendOnline
+                  learnMoreLink={resolver.getCurriculumUrl()}
+                  image={attendOnline.image}
+                />
+              ) : null}
             </div>
+
+            {programContactInfo ? (
+              <div className="row">
+                <div className="col col-sm-12 col-md-6 col-lg-6 ">
+                  <ProgramContactInfo
+                    department={{
+                      text: resolver.getGDepartmentName(),
+                      url: programContactInfo.departmentUrl,
+                    }}
+                    email={{
+                      text: resolver.getEmailAddress(),
+                      url: programContactInfo.emailUrl,
+                    }}
+                    asuOfficeLoc={resolver.getAsuOfficeLoc()}
+                    phone={resolver.getPhone()}
+                  />
+                </div>
+              </div>
+            ) : null}
           </section>
         )}
       </Main>
@@ -286,18 +325,34 @@ const ProgramDetailPage = ({
 ProgramDetailPage.propTypes = {
   dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
   introContent: PropTypes.shape({
+    hideMarketText: PropTypes.bool,
+    hideProgramDesc: PropTypes.bool,
+    hideRequiredCourses: PropTypes.bool,
     breadcrumbs: arrayOf(linkPropType),
     contents: arrayOf(PropTypes.object),
     video: videoPropType,
     image: imagePropType,
   }),
+  atAGlance: PropTypes.shape({
+    hide: PropTypes.bool,
+    offeredBy: linkPropType,
+    locations: arrayOf(linkPropType),
+    firstRequirementMathCourse: PropTypes.string,
+    mathIntensity: PropTypes.string,
+    timeCommitment: PropTypes.string,
+  }),
+  applicationRequirements: PropTypes.shape({ hide: PropTypes.bool }),
+  changeMajorRequirements: PropTypes.shape({ hide: PropTypes.bool }),
+  affordingCollege: PropTypes.shape({ hide: PropTypes.bool }),
+  flexibleDegreeOptions: PropTypes.shape({ hide: PropTypes.bool }),
   careerOutlook: PropTypes.shape({ image: imagePropType }),
+  exampleCareers: PropTypes.shape({ hide: PropTypes.bool }),
   globalOpportunity: PropTypes.shape({ image: imagePropType }),
+  attendOnline: PropTypes.shape({ image: imagePropType }),
   programContactInfo: PropTypes.shape({
     departmentUrl: PropTypes.string,
     emailUrl: PropTypes.string,
   }),
-  attendOnline: PropTypes.shape({ image: imagePropType }),
   nextSteps: PropTypes.shape({
     cards: PropTypes.arrayOf(cardPropTypes).isRequired,
   }),

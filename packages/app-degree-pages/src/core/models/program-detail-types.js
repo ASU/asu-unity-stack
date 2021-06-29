@@ -9,6 +9,9 @@
  * }} BreadcrumbItem
  *
  * @typedef {{
+ *    hideMarketText?: boolean
+ *    hideProgramDesc?: boolean
+ *    hideRequiredCourses?: boolean
  *    contents?: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
  *    image?: import("./shared-types").ImageItem
@@ -116,19 +119,23 @@
 
 /**
  *  @typedef {{
+ *   hide?: boolean
+ *  }} HideProp
+ *
+ *  @typedef {{
  *  acadPlan?: string
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps
- *  atAGlance?: AtAGlanceProps
- *  applicationRequirements?: ApplicationRequirementsProps
- *  changeMajorRequirements?: ChangeMajorRequirementsProps
+ *  atAGlance?: HideProp & AtAGlanceProps
+ *  applicationRequirements?: HideProp
+ *  changeMajorRequirements?: HideProp
  *  nextSteps?: NextStepsProps
- *  affordingCollege?: AffordingCollegeProps
- *  flelxibleDegreeOptions?: FlexibleDegreeOptionsProps
+ *  affordingCollege?: HideProp
+ *  flexibleDegreeOptions?: HideProp
  *  careerOutlook?: CareerOutlookProps
- *  exampleCareersProps?: ExampleCareersProps
+ *  exampleCareers?: HideProp
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
  *  globalOpportunity?: GlobalOpportunityProps
  *  attendOnline?: AttendOnlineProps
