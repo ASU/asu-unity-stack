@@ -43,10 +43,11 @@ function computeItemPerView(perView) {
  *
  * @param {number} perView
  * @param {boolean} isFullWidth
+ * @param {boolean} isDraggable
  *
  * @returns {Glide.Options}
  */
-function buildConfig(perView = 1, isFullWidth, hasPeek = true) {
+function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
   // Set a perView value for each breakpoint so we adapt down appropriately.
   const { perViewSm, perViewMd, perViewLg } = computeItemPerView(perView);
 
@@ -68,7 +69,7 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true) {
     keyboard: false,
     startAt: 0,
     swipeThreshold: 80, // Distance required for swipe to change slide.
-    dragThreshold: 120, // Distance for mouse drag to change slide.
+    dragThreshold: isDraggable ? 120 : false, // Distance for mouse drag to change slide.
     perTouch: 1, // Number of slides that can be moved per each swipe/drag.
     perView: perViewLg, // Can be overwritten at breakpoints
     peek: largePeek, // Can be overwritten at breakpoints
@@ -163,6 +164,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
  *  isFullWidth?: boolean
  *  onItemClick?: (index: number) =>  void
  *  hasPeek?: boolean
+ *  isDraggable?: boolean
  * }} props
  *
  * @returns {Glide.Static}
@@ -174,8 +176,9 @@ function setupCaroarousel({
   isFullWidth = false,
   onItemClick,
   hasPeek = true,
+  isDraggable,
 }) {
-  const sliderConfig = buildConfig(perView, isFullWidth, hasPeek);
+  const sliderConfig = buildConfig(perView, isFullWidth, hasPeek, isDraggable);
   // Load up a new glideJS slider, but don't mount until we have event
   // listener (https://glidejs.com/docs/events/) handlers defined and configs
   // all mustered.

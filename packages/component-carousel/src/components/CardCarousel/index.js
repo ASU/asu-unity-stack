@@ -111,6 +111,7 @@ const CardCarousel = ({
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
   );
+  const activateGlideActions = cardItems.length > perView;
 
   return (
     <BaseCarousel
@@ -119,6 +120,10 @@ const CardCarousel = ({
       width={width}
       carouselItems={carouselItems}
       imageAutoSize={imageAutoSize}
+      removeSideBackground={cardItems.length <= perView}
+      hasPositionIndicators={activateGlideActions}
+      hasNavButtons={activateGlideActions}
+      isDraggable={activateGlideActions}
     />
   );
 };

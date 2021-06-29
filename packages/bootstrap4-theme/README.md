@@ -29,9 +29,9 @@
 
 ## ❯ Table of Contents
 
+- [Development Overview](#-development-overview)
 - [Load Theme into Webpage](#-load-theme-into-webpage)
 - [Import into Application](#-import-into-application)
-- [Development Overview](#-development-overview)
 - [Setup Local Development Environment](#-setup-local-development-environment)
 - [Development Procedures](#-development-procedures)
 - [Prepare Releases](#-prepare-releases)
@@ -40,6 +40,16 @@
 - [Further Documentation](#-further-documentation)
 - [Related Projects](#-related-projects)
 - [License](#-license)
+
+![divider](./divider.png)
+
+## ❯ Development Overview
+
+The goal of this project is to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
+
+StorybookJS has been configured to be the primary, live development interface for this theme, and some example stories have been installed to demonstrate how Storybook works. Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
+
+Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that you can install with a single-click when VS Code pops up a notification about the recommended extensions.
 
 ![divider](./divider.png)
 
@@ -52,16 +62,6 @@
 ## ❯ Import into Application
 
 ### TODO
-
-![divider](./divider.png)
-
-## ❯ Development Overview
-
-The goal of this project is to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
-
-StorybookJS has been configured to be the primary, live development interface for this theme, and some example stories have been installed to demonstrate how Storybook works. Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
-
-Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that you can install with a single-click when VS Code pops up a notification about the recommended extensions.
 
 ![divider](./divider.png)
 

@@ -38,6 +38,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            removeSideBackground?: boolean
  *            imageAutoSize?: boolean
  *            hasPeek?: boolean
+ *            isDraggable?: boolean
  *          }} props
  * @returns
  */
@@ -57,6 +58,7 @@ const BaseCarousel = ({
   imageAutoSize = true,
   onItemClick = () => null,
   hasPeek = true,
+  isDraggable = true,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -86,8 +88,17 @@ const BaseCarousel = ({
       isFullWidth,
       onItemClick,
       hasPeek,
+      isDraggable,
     });
-  }, [instanceName, perView, buttonCount, isFullWidth, onItemClick, hasPeek]);
+  }, [
+    instanceName,
+    perView,
+    buttonCount,
+    isFullWidth,
+    onItemClick,
+    hasPeek,
+    isDraggable,
+  ]);
 
   return (
     <div
@@ -132,6 +143,7 @@ BaseCarousel.propTypes = {
   hasPositionIndicators: PropTypes.bool,
   imageAutoSize: PropTypes.bool,
   hasPeek: PropTypes.bool,
+  isDraggable: PropTypes.bool,
 };
 
 export { BaseCarousel, calcualteViewItems };
