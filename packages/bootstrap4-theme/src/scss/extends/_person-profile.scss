@@ -1,0 +1,70 @@
+/*--------------------------------------------------------------
+Desktop styles
+--------------------------------------------------------------*/
+.uds-person-profile {
+  display: flex;
+  max-width: 800px;
+  .profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+  }
+  .person {
+    margin-left: $uds-size-spacing-3;
+    &-name {
+      margin: $uds-size-spacing-1 0;
+    }
+    &-profession {
+      margin: 0 0 $uds-size-spacing-2 0;
+    }
+    ul {
+      list-style-type: none;
+      display: flex;
+      padding-left: 0;
+      li:not(:first-child) {
+        margin-left: $uds-size-spacing-3;
+      }
+      &.person-contact-info {
+        margin-bottom: $uds-size-spacing-3;
+      }
+      &.person-social-medias a {
+        color: $uds-color-base-gray-7;
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
+/*--------------------------------------------------------------
+Mobile Styles
+--------------------------------------------------------------*/
+@include media-breakpoint-down(lg) {
+  .uds-person-profile {
+    padding: 0 $uds-size-spacing-4;
+  }
+}
+@include media-breakpoint-down(md) {
+  .uds-person-profile {
+    max-width: 300px;
+    flex-direction: column;
+    .person {
+      margin: 0;
+      &-name {
+        margin-top: $uds-size-spacing-3;
+      }
+      &-description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+      ul.person-contact-info {
+        flex-direction: column;
+        li {
+          margin-top: $uds-size-spacing-1;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
