@@ -163,6 +163,7 @@ const ImageGalleryCarousel = ({
   imageAutoSize = true,
 }) => {
   const carouselItems = imageItems.map(htmlTemplate);
+  const activateGlideActions = imageItems.length > 1;
 
   return (
     <BaseCarousel
@@ -184,6 +185,10 @@ const ImageGalleryCarousel = ({
           imageItems={imageItems}
         />
       )}
+      removeSideBackground={imageItems.length <= 1}
+      hasPositionIndicators={activateGlideActions}
+      hasNavButtons={activateGlideActions}
+      isDraggable={activateGlideActions}
     />
   );
 };
