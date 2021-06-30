@@ -25,11 +25,31 @@ export const Pagination = ({
   totalNumbers,
   onChange,
 }) => {
+  const SMALL_DEDVICE_WIDTH = 450;
+  const SMALL_DEDVICE_TOTAL_NUMBER = 3;
   const [selectedPage, setSelectedPage] = useState(null);
+  const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
+  const [isSmallDevice, setSmallDevice] = useState(
+    window.innerWidth < SMALL_DEDVICE_WIDTH
+  );
 
   useEffect(() => {
     setSelectedPage(currentPage);
   }, [currentPage]);
+
+  const mediaQueryList = window.matchMedia(
+    `(max-width: ${SMALL_DEDVICE_WIDTH}px)`
+  );
+
+  mediaQueryList.addEventListener("change", e => {
+    if (e.matches) {
+      setCurrentTotalNumbers(SMALL_DEDVICE_TOTAL_NUMBER);
+      setSmallDevice(true);
+    } else {
+      setCurrentTotalNumbers(totalPages);
+      setSmallDevice(false);
+    }
+  });
 
   const handleChangePage = (e, page) => {
     const actions = {
@@ -45,20 +65,20 @@ export const Pagination = ({
 
   const renderPages = () => {
     const lowerRange = createRange(
-      selectedPage - Math.floor(totalNumbers / 2),
+      selectedPage - Math.floor(currentTotalNumbers / 2),
       selectedPage,
       totalPages
     );
     const upperRange = createRange(
       selectedPage,
-      selectedPage + 1 + Math.floor(totalNumbers / 2),
+      selectedPage + 1 + Math.floor(currentTotalNumbers / 2),
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
 
     return (
       <>
-        {renderedPages[0] !== 1 && <PageItem>...</PageItem>}
+        {!isSmallDevice && renderedPages[0] !== 1 && <PageItem>...</PageItem>}
         {renderedPages.map(
           page =>
             page && (
@@ -72,9 +92,10 @@ export const Pagination = ({
               </PageItem>
             )
         )}
-        {renderedPages[renderedPages.length - 1] !== totalPages && (
-          <PageItem>...</PageItem>
-        )}
+        {!isSmallDevice &&
+          renderedPages[renderedPages.length - 1] !== totalPages && (
+            <PageItem>...</PageItem>
+          )}
       </>
     );
   };
@@ -110,7 +131,7 @@ export const Pagination = ({
           pageLinkIcon={!showFirstButton}
           onClick={e => handleChangePage(e, "prev")}
         >
-          Prev
+          {!isSmallDevice ? "Prev" : ""}
         </PageItem>
         {renderPages()}
         <PageItem
@@ -119,7 +140,7 @@ export const Pagination = ({
           pageLinkIcon={!showLastButton}
           onClick={e => handleChangePage(e, "next")}
         >
-          Next
+          {!isSmallDevice ? "Next" : ""}
         </PageItem>
         {showLastButton && (
           <PageItem
