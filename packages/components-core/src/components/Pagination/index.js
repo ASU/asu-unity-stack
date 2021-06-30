@@ -25,31 +25,52 @@ export const Pagination = ({
   totalNumbers,
   onChange,
 }) => {
+  const X_SMALL_DEDVICE_WIDTH = 413;
   const SMALL_DEDVICE_WIDTH = 450;
   const SMALL_DEDVICE_TOTAL_NUMBER = 3;
   const [selectedPage, setSelectedPage] = useState(null);
+  // start small device
   const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
   const [isSmallDevice, setSmallDevice] = useState(
     window.innerWidth < SMALL_DEDVICE_WIDTH
   );
+  const [isXSmallDevice, setXSmallDevice] = useState(
+    window.innerWidth < X_SMALL_DEDVICE_WIDTH
+  );
+  // end small device
+  const [showArrows, setShowArrows] = useState(!showLastButton);
 
   useEffect(() => {
     setSelectedPage(currentPage);
   }, [currentPage]);
 
-  const mediaQueryList = window.matchMedia(
+  // start small device
+  const mediaQuerySmallDevice = window.matchMedia(
     `(max-width: ${SMALL_DEDVICE_WIDTH}px)`
   );
 
-  mediaQueryList.addEventListener("change", e => {
+  mediaQuerySmallDevice.addEventListener("change", e => {
     if (e.matches) {
       setCurrentTotalNumbers(SMALL_DEDVICE_TOTAL_NUMBER);
       setSmallDevice(true);
+      setShowArrows(true);
     } else {
-      setCurrentTotalNumbers(totalPages);
+      setCurrentTotalNumbers(totalNumbers);
       setSmallDevice(false);
+      setXSmallDevice(false);
+      setShowArrows(!showLastButton);
     }
   });
+
+  const mediaQueryXSmallDevice = window.matchMedia(
+    `(max-width: ${X_SMALL_DEDVICE_WIDTH}px)`
+  );
+
+  mediaQueryXSmallDevice.addEventListener("change", e =>
+    setXSmallDevice(e.matches)
+  );
+
+  // end small device
 
   const handleChangePage = (e, page) => {
     const actions = {
@@ -116,7 +137,7 @@ export const Pagination = ({
           }
         )}
       >
-        {showFirstButton && (
+        {!isSmallDevice && showFirstButton && (
           <PageItem
             isClickeable
             disabled={selectedPage === 1}
@@ -128,21 +149,21 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === 1}
-          pageLinkIcon={!showFirstButton}
+          pageLinkIcon={showArrows}
           onClick={e => handleChangePage(e, "prev")}
         >
-          {!isSmallDevice ? "Prev" : ""}
+          {isXSmallDevice ? "" : "Prev"}
         </PageItem>
         {renderPages()}
         <PageItem
           isClickeable
           disabled={selectedPage === totalPages}
-          pageLinkIcon={!showLastButton}
+          pageLinkIcon={showArrows}
           onClick={e => handleChangePage(e, "next")}
         >
-          {!isSmallDevice ? "Next" : ""}
+          {isXSmallDevice ? "" : "Next"}
         </PageItem>
-        {showLastButton && (
+        {!isSmallDevice && showLastButton && (
           <PageItem
             isClickeable
             disabled={selectedPage === totalPages}
