@@ -7,7 +7,7 @@ export const BackgroundWhite = () => `
       <h3><span class="highlight-gold">Two columns.</span></h3>
     </div>
     <div class="col-md-12 pl-0 pr-0">
-
+      <!-- Component Start -->
       <div class="uds-grid-links two-columns">
         <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
         <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
@@ -18,7 +18,7 @@ export const BackgroundWhite = () => `
         <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
         <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
       </div>
-
+      <!-- Component End -->
     </div>
   </div>
 </div>
@@ -31,9 +31,8 @@ export const BackgroundGray1 = () => `
       <div class="col-md-12 mb-4">
         <h3><span class="highlight-gold">Three columns.</span></h3>
       </div>
-
       <div class="col-md-12 pl-0 pr-0">
-
+        <!-- Component Start -->
         <div class="uds-grid-links three-columns">
           <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
           <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
@@ -44,7 +43,7 @@ export const BackgroundGray1 = () => `
           <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
           <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
         </div>
-
+        <!-- Component End -->
       </div>
     </div>
   </div>
@@ -58,9 +57,8 @@ export const GoldText = () => `
       <div class="col-md-12 mb-4">
         <h3 class="text-white">Three columns.</h3>
       </div>
-
       <div class="col-md-12 pl-0 pr-0">
-
+        <!-- Component Start -->
         <div class="uds-grid-links three-columns text-gold">
           <a href="#">First-year student</a>
           <a href="#">Online student</a>
@@ -71,7 +69,7 @@ export const GoldText = () => `
           <a href="#">International student</a>
           <a href="#">Non-degree student</a>
         </div>
-
+        <!-- Component End -->
       </div>
     </div>
   </div>
@@ -85,9 +83,8 @@ export const WhiteText = () => `
       <div class="col-md-12 mb-4">
         <h3 class="text-white">Four columns.</h3>
       </div>
-
       <div class="col-md-12 pl-0 pr-0">
-
+        <!-- Component Start -->
         <div class="uds-grid-links four-columns text-white">
           <a href="#"><span class="fa fa-fw fa-university"></span>First-year student</a>
           <a href="#"><span class="fa fa-fw fa-desktop"></span>Online student</a>
@@ -98,7 +95,7 @@ export const WhiteText = () => `
           <a href="#"><span class="fa fa-fw fa-globe-americas"></span>International student</a>
           <a href="#"><span class="fa fa-fw fa-users"></span>Non-degree student</a>
         </div>
-
+        <!-- Component End -->
       </div>
     </div>
   </div>
