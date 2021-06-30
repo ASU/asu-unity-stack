@@ -1,6 +1,11 @@
 // @ts-check;
-import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useRef } from "react";
 
+import { HeaderMain } from "./components/HeaderMain";
+import { HeaderTop } from "./components/HeaderTop";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { Header } from "./index.styles";
 
@@ -31,9 +36,22 @@ const ASUHeader = ({
   expandOnHover,
   mobileNavTree,
 }) => {
+  library.add(fas);
+  const headerRef = useRef(null);
+
+  const handleWindowScroll = () => {
+    headerRef.current.classList.add("scrolled");
+  };
+
+  useEffect(() => {
+    window?.addEventListener("scroll", handleWindowScroll);
+    return () => window.removeEventListener("scroll", handleWindowScroll);
+  }, []);
+
   return (
-    <Header>
-      <h1 className="header">Header</h1>
+    <Header ref={headerRef}>
+      <HeaderTop />
+      <HeaderMain />
     </Header>
   );
 };
