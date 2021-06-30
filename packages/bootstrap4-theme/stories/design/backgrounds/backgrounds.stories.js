@@ -109,3 +109,23 @@ export const PatternDividersAndBackgroundPatterns = () => `
 <div style="height: 250px" class="container-fluid bg network-black"></div>
 `;
 
+export const PartialBackgrounds = () => `
+<div class="container p-5">
+  <div class="mb-5 bg morse-code-white bg-top bg-percent-66">
+    <div style="height: 200px; border: 1px solid black;"></div>
+  </div>
+
+
+  <div class="mb-5 bg gray-7-bg bg-top bg-percent-25">
+    <div style="height: 200px; border: 1px solid black;"></div>
+  </div>
+
+  <div class="mb-5 bg topo-black bg-bottom bg-percent-66">
+    <div style="height: 200px; border: 1px solid black;"></div>
+  </div>
+
+  <div class="mb-5 bg gray-2-bg bg-bottom bg-percent-50">
+    <div style="height: 200px; border: 1px solid black;"></div>
+  </div>
+</div>
+`;

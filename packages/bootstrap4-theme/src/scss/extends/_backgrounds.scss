@@ -1,22 +1,74 @@
+@use "sass:map";
+
 .background-panel {
   height: 322px;
 }
 
-.gray-7-bg {
-  background: $uds-color-base-gray-7;
+.bg {
+  background: $bg;
+  opacity: $bg-opacity;
 }
 
-.gray-2-bg {
-  background: $uds-color-base-gray-2;
-}
+$uds-backgrounds: (
+  ("name": "morse-code-white", "value": $morse-code-white, "type": "image"),
+  ("name": "morse-code-black", "value": $morse-code-black, "type": "image"),
+  ("name": "network-white", "value": $network-white, "type": "image"),
+  ("name": "network-black", "value": $network-black, "type": "image"),
+  ("name": "topo-white", "value": $topo-white, "type": "image"),
+  ("name": "topo-black", "value": $topo-black, "type": "image"),
+  ("name": "gray-7-bg", "value": $uds-color-base-gray-7, "type": "color"),
+  ("name": "gray-2-bg", "value": $uds-color-base-gray-2, "type": "color"),
+  ("name": "gray-1-bg", "value": $uds-color-base-gray-1, "type": "color"),
+  ("name": "white-bg", "value": $uds-color-base-white, "type": "color"),
+  ("name": "black-bg", "value": #000, "type": "color"),
+  );
+$bg-positions: (
+  ("name": "bg-top", "value": 'top'),
+  ("name": "bg-bottom", "value": 'bottom') ,
+  );
+$bg-sizes: ("-25": 25%, "-33": 33%, "-50": 50%, "-66": 66%, "-75": 75%, "-100": 100%);
 
-.gray-1-bg {
-  background: $uds-color-base-gray-1;
-}
-
-.white-bg {
-  background: $uds-color-base-white;
-  border: 1px solid $uds-color-base-gray-3;
+@each $UDSBackground in $uds-backgrounds {
+  $backgroundName: map.get($UDSBackground, 'name');
+  $backgroundRule: map.get($UDSBackground, 'value');
+  $backgroundType: map.get($UDSBackground, 'type');
+  @each $pos in $bg-positions {
+    $positionClass: map.get($pos, 'name');
+    $positionValue: map.get($pos, 'value');
+    @each $size, $value in $bg-sizes {
+      .bg {
+        &.#{$backgroundName} {
+          @if $backgroundType == 'image' {
+            background-image: $backgroundRule;
+          } @else {
+            background: $backgroundRule;
+            @if $backgroundName == "white-bg" {
+              border: 1px solid $uds-color-base-gray-3;
+            }
+          }
+          &.#{$positionClass} {
+            &.bg-percent {
+              &#{$size} {
+                @if $size == "-100" {
+                  @if $backgroundType == 'image' {
+                    background-image: $backgroundRule;
+                  } @else {
+                    background-color: $backgroundRule;
+                  }
+                } @else {
+                  @if $backgroundType == 'image' {
+                    background: linear-gradient(to #{$positionValue}, #fff calc(100% - #{$value}), transparent calc(100% - #{$value})), $backgroundRule;
+                  } @else {
+                    background: linear-gradient(to #{$positionValue}, #fff calc(100% - #{$value}), $backgroundRule calc(100% - #{$value}));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .image-bg {
@@ -61,41 +113,4 @@
   margin: 20px 0 100px 0;
   font-size: 50px;
   color: $uds-color-base-gray-3;
-}
-
-.bg {
-  background: $bg;
-  opacity: $bg-opacity;
-
-  &.morse-code {
-    &-white {
-      background-image: $morse-code-white;
-    }
-
-    &-black {
-      background-image: $morse-code-black;
-    }
-  }
-
-  &.network {
-    &-white {
-      background-image: $network-white;
-    }
-
-    &-black {
-      background-image: $network-black;
-    }
-  }
-
-  &.topo {
-    opacity: 1;
-
-    &-white {
-      background-image: $topo-white;
-    }
-
-    &-black {
-      background-image: $topo-black;
-    }
-  }
 }
