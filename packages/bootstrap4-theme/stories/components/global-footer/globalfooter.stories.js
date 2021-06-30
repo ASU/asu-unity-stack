@@ -14,7 +14,7 @@ storiesOf('Components/Global Footer', module)
   <footer role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -35,7 +35,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -60,7 +60,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -82,7 +82,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -103,7 +103,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -127,7 +127,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -149,7 +149,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-columns">
-      <div class="container-xl" id="footer-columns">
+      <div class="container" id="footer-columns">
         <div class="row">
 
           <div class="col-xl-3" id="info-column">
@@ -163,7 +163,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -184,7 +184,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -209,7 +209,7 @@ storiesOf('Components/Global Footer', module)
   <footer role="contentinfo">
 
     <div class="wrapper" id="wrapper-footer-columns">
-      <div class="container-xl" id="footer-columns">
+      <div class="container" id="footer-columns">
         <div class="row">
 
           <div class="col-xl-3" id="info-column">
@@ -223,7 +223,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -244,7 +244,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -268,7 +268,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -291,7 +291,7 @@ storiesOf('Components/Global Footer', module)
 
     <div class="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container-xl" id="footer-columns">
+        <div class="container" id="footer-columns">
           <div class="row">
 
             <div class="col-xl-3" id="info-column">
@@ -325,7 +325,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -346,7 +346,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -369,7 +369,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -392,7 +392,7 @@ storiesOf('Components/Global Footer', module)
 
     <div class="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container-xl" id="footer-columns">
+        <div class="container" id="footer-columns">
           <div class="row">
 
             <div class="col-xl" id="info-column">
@@ -447,7 +447,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -468,7 +468,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -491,7 +491,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -514,7 +514,7 @@ storiesOf('Components/Global Footer', module)
 
     <div class="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container-xl" id="footer-columns">
+        <div class="container" id="footer-columns">
           <div class="row">
 
             <div class="col-xl" id="info-column">
@@ -590,7 +590,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -611,7 +611,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -634,7 +634,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -657,7 +657,7 @@ storiesOf('Components/Global Footer', module)
 
     <div class="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container-xl" id="footer-columns">
+        <div class="container" id="footer-columns">
           <div class="row">
 
             <div class="col-xl" id="info-column">
@@ -754,7 +754,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
@@ -775,7 +775,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
             <nav class="nav colophon" aria-label="University Legal and Compliance">
@@ -798,7 +798,7 @@ storiesOf('Components/Global Footer', module)
     () => `
   <footer role="contentinfo">
     <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container-xl" id="endorsed-footer">
+      <div class="container" id="endorsed-footer">
         <div class="row">
 
           <div class="col-md" id="endorsed-logo">
@@ -821,7 +821,7 @@ storiesOf('Components/Global Footer', module)
 
     <div class="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container-xl" id="footer-columns">
+        <div class="container" id="footer-columns">
           <div class="row">
 
             <div class="col-xl" id="info-column">
@@ -937,7 +937,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container-xl" id="footer-innovation">
+      <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col p-xl-0">
             <div class="d-flex footer-innovation-links">
@@ -958,7 +958,7 @@ storiesOf('Components/Global Footer', module)
     </div>
 
     <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container-xl" id="footer-colophon">
+      <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col p-xl-0">
             <div class="footer-legal-links">
