@@ -10,11 +10,14 @@ import { PageItem } from "./PageItem";
  * @typedef {import('../../core/shared-model-types').PaginationProps} PaginationProps
  */
 
+const X_SMALL_DEDVICE_WIDTH = 413;
+const SMALL_DEDVICE_WIDTH = 450;
+const SMALL_DEDVICE_TOTAL_NUMBER = 3;
+
 /**
  * @param {PaginationProps} props
  * @returns {JSX.Element}
  */
-
 export const Pagination = ({
   type,
   background,
@@ -25,9 +28,6 @@ export const Pagination = ({
   totalNumbers,
   onChange,
 }) => {
-  const X_SMALL_DEDVICE_WIDTH = 413;
-  const SMALL_DEDVICE_WIDTH = 450;
-  const SMALL_DEDVICE_TOTAL_NUMBER = 3;
   const [selectedPage, setSelectedPage] = useState(null);
   // start small device
   const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
@@ -38,7 +38,7 @@ export const Pagination = ({
     window.innerWidth < X_SMALL_DEDVICE_WIDTH
   );
   // end small device
-  const [showArrows, setShowArrows] = useState(!showLastButton);
+  const [showArrowIcons, setShowArrowIcons] = useState(!showLastButton);
 
   useEffect(() => {
     setSelectedPage(currentPage);
@@ -53,12 +53,12 @@ export const Pagination = ({
     if (e.matches) {
       setCurrentTotalNumbers(SMALL_DEDVICE_TOTAL_NUMBER);
       setSmallDevice(true);
-      setShowArrows(true);
+      setShowArrowIcons(true);
     } else {
       setCurrentTotalNumbers(totalNumbers);
       setSmallDevice(false);
       setXSmallDevice(false);
-      setShowArrows(!showLastButton);
+      setShowArrowIcons(!showLastButton);
     }
   });
 
@@ -69,7 +69,6 @@ export const Pagination = ({
   mediaQueryXSmallDevice.addEventListener("change", e =>
     setXSmallDevice(e.matches)
   );
-
   // end small device
 
   const handleChangePage = (e, page) => {
@@ -149,7 +148,7 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === 1}
-          pageLinkIcon={showArrows}
+          pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
         >
           {isXSmallDevice ? "" : "Prev"}
@@ -158,7 +157,7 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === totalPages}
-          pageLinkIcon={showArrows}
+          pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         >
           {isXSmallDevice ? "" : "Next"}
