@@ -1,3 +1,4 @@
+// @ts-check
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
@@ -146,7 +147,7 @@ Card.propTypes = {
     PropTypes.shape({
       ariaLabel: PropTypes.string,
       color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
-      icon: PropTypes.elementType,
+      icon: PropTypes.arrayOf(PropTypes.string),
       href: PropTypes.string,
       label: PropTypes.string,
       onClick: PropTypes.func,
@@ -268,7 +269,7 @@ BaseCard.propTypes = {
   horizontal: PropTypes.bool,
   clickable: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string, // Icon string name
+  icon: PropTypes.arrayOf(PropTypes.string), // React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   body: PropTypes.string,
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
   eventLocation: PropTypes.string,
@@ -279,7 +280,7 @@ BaseCard.propTypes = {
     PropTypes.shape({
       ariaLabel: PropTypes.string,
       color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
-      icon: PropTypes.elementType,
+      icon: PropTypes.arrayOf(PropTypes.string),
       href: PropTypes.string,
       label: PropTypes.string,
       onClick: PropTypes.func,
@@ -346,6 +347,7 @@ const CardContent = ({
     {buttons &&
       buttons.map(button => (
         <div key={`${button.label}-${button.href}`} className="card-button">
+          {/* @ts-ignore */}
           <Button
             ariaLabel={button.ariaLabel}
             color={button.color}
@@ -365,6 +367,7 @@ const CardContent = ({
     {tags && (
       <div className="card-tags">
         {tags.map(tag => (
+          // @ts-ignore
           <ButtonTag
             key={`${tag.label}-${tag.href}`}
             ariaLabel={tag.ariaLabel}
@@ -390,7 +393,7 @@ CardContent.propTypes = {
     PropTypes.shape({
       ariaLabel: PropTypes.string,
       color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
-      icon: PropTypes.elementType,
+      icon: PropTypes.arrayOf(PropTypes.string),
       href: PropTypes.string,
       label: PropTypes.string,
       onClick: PropTypes.func,
@@ -431,6 +434,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
             <div>
               <FontAwesomeIcon icon={["far", "calendar"]} />
             </div>
+            {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         )}
@@ -440,6 +444,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
               <FontAwesomeIcon icon="map-marker-alt" />
             </div>
             <div
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
             />
           </div>
@@ -457,6 +462,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
             <div>
               <FontAwesomeIcon icon={["far", "calendar"]} />
             </div>
+            {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         </div>
@@ -469,6 +475,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
             </div>
             <span>
               <div
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
               />
             </span>
