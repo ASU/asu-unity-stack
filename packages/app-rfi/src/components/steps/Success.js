@@ -25,7 +25,10 @@ const Success = ({ successMsg }) => {
       />
       <div className="rfi-submitted-sub-icon">Submitted</div>
       <h3>Thanks for your request!</h3>
-      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
+      <div
+        className="rfi-success-msg-wrapper"
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)}
+      />
     </div>
   );
 };

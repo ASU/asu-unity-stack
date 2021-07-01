@@ -11,8 +11,9 @@
 .rfi-submitted h3 {
   font-size: 2.25rem;
 }
-.rfi-submitted div {
+.rfi-submitted .rfi-success-msg-wrapper {
   font-size: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 .rfi-submitted-icon {
   margin-top: 3rem;
@@ -102,6 +103,11 @@ form.uds-form.uds-rfi .rfi-required-footnote svg {
 .uds-rfi-form-wrapper .rfi-consent .rfi-consent-wording {
   font-size: 12px;
   margin-bottom: 0.5rem;
+}
+
+.rfi-cert-minor .rfi-cert-minor-email-message {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
