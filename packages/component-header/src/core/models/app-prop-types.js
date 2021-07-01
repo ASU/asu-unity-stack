@@ -40,4 +40,4 @@ const HeaderPropTypes = {
   mobileNavTree: PropTypes.arrayOf(PropTypes.object),
 };
 
-export { HeaderPropTypes, LoginPropTypes };
+export { HeaderPropTypes, LoginPropTypes, LogoPropTypes };

@@ -3,10 +3,7 @@ import styled from "styled-components";
 const breakpoint = "1260px";
 
 const Wrapper = styled.div`
-  /* Remove afetr its done */
-  height: 100px;
   background-color: #ffffff;
-  border-bottom: 1px solid #d0d0d0;
   .navbar {
     padding: 0;
     align-items: flex-start;

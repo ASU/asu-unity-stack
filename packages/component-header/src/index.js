@@ -50,7 +50,7 @@ const ASUHeader = ({
   return (
     <Header ref={headerRef}>
       <HeaderTop login={{ loggedIn, loginLink, logoutLink, userName }} />
-      <HeaderMain />
+      <HeaderMain logo={logo} />
     </Header>
   );
 };
