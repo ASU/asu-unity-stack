@@ -10,9 +10,10 @@ storiesOf('Components/Tabbed Panels', module)
   .add(
     'White Background',
     () => `
-  <div class="container">
+  <div class="container-xl">
     <div class="row">
-      <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+        <!-- Component Start -->
         <nav class="uds-tabbed-panels">
           <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
@@ -58,6 +59,7 @@ storiesOf('Components/Tabbed Panels', module)
             <br>
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
+        <!-- Component End -->
       </div>
     </div>
   </div>
@@ -67,9 +69,10 @@ storiesOf('Components/Tabbed Panels', module)
   .add(
     'Gray 1 Background',
     () => `
-<div class="container bg-gray-1">
+<div class="container-xl bg-gray-1">
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+      <!-- Component Start -->
       <nav class="uds-tabbed-panels">
         <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
@@ -101,6 +104,7 @@ storiesOf('Components/Tabbed Panels', module)
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
       </div>
+      <!-- Component End -->
     </div>
   </div>
 </div>
@@ -110,9 +114,10 @@ storiesOf('Components/Tabbed Panels', module)
   .add(
     'Gray 2 Background',
     () => `
-  <div class="container bg-gray-2">
+  <div class="container-xl bg-gray-2">
     <div class="row">
-      <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+        <!-- Component Start -->
         <nav class="uds-tabbed-panels">
           <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
@@ -143,6 +148,7 @@ storiesOf('Components/Tabbed Panels', module)
             <br>
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
         </div>
+        <!-- Component End -->
       </div>
     </div>
   </div>
@@ -152,9 +158,10 @@ storiesOf('Components/Tabbed Panels', module)
   .add(
     'Gray 7 Background',
     () => `
-<div class="container bg-dark">
+<div class="container-xl bg-dark">
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+      <!-- Component Start -->
       <nav class="uds-tabbed-panels uds-tabbed-panels-dark">
         <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home long tab</a>
@@ -185,6 +192,7 @@ storiesOf('Components/Tabbed Panels', module)
           <br>
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
       </div>
+      <!-- Component End -->
     </div>
   </div>
 </div>

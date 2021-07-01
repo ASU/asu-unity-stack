@@ -21,6 +21,7 @@
   grid-template-rows: auto;
   column-gap: $uds-size-spacing-3;
   row-gap: $uds-size-spacing-3;
+  padding: 0 $uds-size-spacing-4;
 
   a {
     @include like-an-h4;
@@ -40,13 +41,13 @@
   }
 
   &.text-gold a {
-    color:$uds-color-base-gold;
-    background-color:$uds-color-base-gray-7;
+    color: $uds-color-base-gold;
+    background-color: $uds-color-base-gray-7;
   }
 
   &.text-white a {
-    color:$uds-color-base-white;
-    background-color:$uds-color-base-gray-7;
+    color: $uds-color-base-white;
+    background-color: $uds-color-base-gray-7;
   }
 }
 
@@ -70,7 +71,10 @@
 }
 
 @include media-breakpoint-up(xl) {
-  .uds-grid-links.four-columns {
-    grid-template-columns: repeat(4, 1fr);
+  .uds-grid-links {
+    padding: 0;
+    &.four-columns {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

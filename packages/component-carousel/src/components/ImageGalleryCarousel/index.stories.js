@@ -8,7 +8,7 @@ import { ImageGalleryCarousel } from ".";
 const myCarouselItems = [];
 
 const imageFormats = [
-  "500x400",
+  "700x400",
   "300x400",
   "400x400",
   "200x200",

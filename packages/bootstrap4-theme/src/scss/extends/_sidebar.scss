@@ -36,7 +36,7 @@ Sidebar Navigation
   .nav-link {
     color: $uds-color-base-gray-7;
 
-    &:not(.active) {
+    &:not(.is-active) {
       display: flex;
       justify-content: space-between;
     }
@@ -49,12 +49,12 @@ Sidebar Navigation
       color: $uds-color-base-gray-7;
     }
 
-    &.active {
+    &.is-active {
       text-decoration: none;
       padding-bottom: 0;
     }
 
-    &.active:after {
+    &.is-active:after {
       content: '';
       position: relative;
       display: block;

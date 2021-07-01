@@ -1,7 +1,7 @@
 .uds-card-arrangement {
   display: flex;
   flex-direction: column;
-  max-width: 1920px;
+  max-width: 1400px;
 
   & > &-content-container {
     display: flex;
@@ -27,6 +27,16 @@
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, 1fr);
     margin-top: $uds-size-spacing-3;
+
+    &.auto-arrangement {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: $uds-size-spacing-3;
+      row-gap: $uds-size-spacing-3;
+      .card {
+        max-width: 320px;
+      }
+    }
 
     @media screen and (max-width: $uds-breakpoint-sm) {
       grid-auto-flow: row;

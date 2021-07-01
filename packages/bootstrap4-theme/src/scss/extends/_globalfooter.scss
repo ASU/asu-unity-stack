@@ -31,7 +31,6 @@ Footer - Table of Contents
     grid-auto-flow: column;
     justify-items: start;
     width: 100%;
-    padding: 0 2rem;
   }
 
   .nav-link {
@@ -47,6 +46,13 @@ Footer - Table of Contents
 /*------------------------------------------------------------------
 2. Wrapper Base Colors
 --------------------------------------------------------------------*/
+.wrapper {
+  padding: 0 $uds-size-spacing-4;
+  .col-md {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 #wrapper-endorsed-footer,
 #wrapper-footer-columns {
@@ -85,6 +91,15 @@ Footer - Table of Contents
   }
 }
 
+@include media-breakpoint-up(lg) {
+  .wrapper {
+    .col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 /*------------------------------------------------------------------
 3. Endorsed Footer (#endorsed-footer)
 --------------------------------------------------------------------*/
@@ -98,6 +113,8 @@ Footer - Table of Contents
 }
 
 #social-media {
+  padding-right: 0;
+  padding-left: 0;
   .nav {
     padding-bottom: $uds-size-spacing-3;
   }
@@ -112,12 +129,15 @@ Footer - Table of Contents
 // #endorsed-footer, up to desktop
 
 @include media-breakpoint-up(md) {
-  #endorsed-logo img {
-    box-sizing: border-box;
-    padding: 0.5rem 0 0.5rem 0;
-    margin-left: -1.625rem; /* Magic number. Derived from internal padding of endorsed logo */
-    max-height: $uds-size-spacing-16;
-    width: auto;
+  #endorsed-logo {
+    display: flex;
+    align-items: center;
+    img {
+      box-sizing: border-box;
+      padding: 0.5rem 0 0.5rem 0;
+      max-height: $uds-size-spacing-14;
+      width: auto;
+    }
   }
 
   #social-media .nav {
@@ -137,7 +157,7 @@ Footer - Table of Contents
 // #footer-columns, mobile first design
 
 #footer-columns {
-  padding: $uds-size-spacing-3 $uds-size-spacing-4;
+  padding: 0;
 
   #info-column {
     .contact-link {
@@ -150,7 +170,7 @@ Footer - Table of Contents
     }
 
     .contribute-button {
-      margin-bottom: $uds-size-spacing-4;
+      margin-bottom: $uds-size-spacing-3;
     }
   }
 
@@ -165,6 +185,7 @@ Footer - Table of Contents
 
     .card-header {
       border-top: 1px solid $uds-color-divider-lighter;
+      padding-left: 0;
 
       a {
         color: $uds-color-base-gray-2;
@@ -256,8 +277,10 @@ Footer - Table of Contents
 @include media-breakpoint-down(lg) {
   #footer-innovation {
     .footer-innovation-links {
-      img {
-        height: 76px;
+      .img-link {
+        img {
+          height: 76px;
+        }
       }
     }
   }
@@ -268,15 +291,15 @@ Footer - Table of Contents
 
     .footer-innovation-links {
       flex-direction: column;
-      padding-left: 0;
-      padding-bottom: $uds-size-spacing-3;
-
-      img {
-        width: 100%;
-        height: auto;
-        order: -1;
+      padding: $uds-size-spacing-1 0 $uds-size-spacing-1 0;
+      .img-link {
+        margin-right: 0;
+        img {
+          width: 100%;
+          height: auto;
+          order: -1;
+        }
       }
-
       @include nav-to-grid;
     }
   }
