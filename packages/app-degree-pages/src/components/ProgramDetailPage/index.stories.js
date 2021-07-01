@@ -24,6 +24,17 @@ const defaultArgs = {
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
+  hero: {
+    image: {
+      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      altText: "Undergraduate Degrees",
+      size: "medium",
+    },
+    title: {
+      text: "Undergraduate Degrees",
+      highlightColor: "gold",
+    },
+  },
   introContent: {
     // hideMarketText: true,
     // hideProgramDesc: true,
@@ -179,6 +190,7 @@ const defaultArgs = {
 const Template = ({
   dataSource,
   introContent,
+  hero,
   atAGlance,
   applicationRequirements,
   changeMajorRequirements,
@@ -194,6 +206,7 @@ const Template = ({
   <ProgramDetailPage
     dataSource={dataSource}
     introContent={introContent}
+    hero={hero}
     atAGlance={atAGlance}
     applicationRequirements={applicationRequirements}
     changeMajorRequirements={changeMajorRequirements}

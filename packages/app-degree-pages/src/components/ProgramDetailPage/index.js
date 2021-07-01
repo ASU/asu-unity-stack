@@ -1,5 +1,5 @@
 // @ts-check
-
+import { AnchorMenu, Hero } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -107,6 +107,7 @@ const VideoWrapper = styled.div`
  */
 const ProgramDetailPage = ({
   dataSource,
+  hero,
   introContent,
   atAGlance,
   applicationRequirements,
@@ -142,6 +143,31 @@ const ProgramDetailPage = ({
 
   return (
     <>
+      {hero ? (
+        <section>
+          <Hero
+            image={hero.image}
+            title={{ ...hero.title, maxWidth: "100%" }}
+            contents={hero.contents}
+          />
+        </section>
+      ) : null}
+      {/* <AnchorMenu
+        items={[
+          {
+            text: "First container",
+            targetIdName: "first-container",
+            icon: ["link"],
+          },
+          { text: "Second container", targetIdName: "second-container" },
+          { text: "Third container", targetIdName: "third-container" },
+          {
+            text: "Fourth container",
+            targetIdName: "fourth-container",
+            icon: "link",
+          },
+        ]}
+      /> */}
       <Main data-is-loading={loading}>
         {error && <div>Something went wrong ...</div>}
         {loading ? (
@@ -324,6 +350,7 @@ const ProgramDetailPage = ({
 
 ProgramDetailPage.propTypes = {
   dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
+  hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape({
     hideMarketText: PropTypes.bool,
     hideProgramDesc: PropTypes.bool,

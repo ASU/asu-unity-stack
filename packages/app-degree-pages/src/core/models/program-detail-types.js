@@ -125,6 +125,7 @@
  *  @typedef {{
  *  acadPlan?: string
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
+ *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps
