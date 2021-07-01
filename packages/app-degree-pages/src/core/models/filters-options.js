@@ -6,8 +6,7 @@ const locationOptions = [
   { id: 2, value: "TEMPE", label: "Tempe campus" },
   { id: 3, value: "TBIRD", label: "Thunderbird campus" },
   { id: 4, value: "WEST", label: "West campus" },
-  { id: 5, value: "MESACITYCR", label: "ASU@Mesa City Center" },
-  { id: 6, value: "ONLNE", label: "ASU Online" },
+  { id: 5, value: "ONLNE", label: "ASU Online" },
 ];
 
 const asuLocalOptions = [
@@ -20,7 +19,8 @@ const asuLocalOptions = [
   { id: 6, value: "TUCSN", label: "ASU@Tucson" },
   { id: 7, value: "YAVAP", label: "ASU@Yavapai" },
   { id: 8, value: "AWC", label: "ASU@Yuma" },
-  { id: 9, value: "CALHC", label: "Colleges at Lake Havasu City" },
+  { id: 9, value: "MESACITYCR", label: "ASU@Mesa City Center" },
+  { id: 10, value: "CALHC", label: "Colleges at Lake Havasu City" },
 ];
 
 const acceleratedConcurrentOptions = [
