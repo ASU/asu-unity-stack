@@ -394,6 +394,7 @@ const ProgramInterest = props => {
             name="Campus"
             options={campusOptions}
             requiredIcon
+            required
           />
         )
       }
@@ -409,6 +410,7 @@ const ProgramInterest = props => {
             name="CareerAndStudentType"
             options={studentTypeOptions}
             requiredIcon
+            required
           />
         )
       }
@@ -421,6 +423,7 @@ const ProgramInterest = props => {
             name="Interest1"
             options={areaInterestOptions}
             requiredIcon
+            required
           />
         )
       }
@@ -433,6 +436,7 @@ const ProgramInterest = props => {
         requiredIcon={
           !props.programOfInterestOptional || values.Campus === "ONLNE"
         }
+        required={!props.programOfInterestOptional || values.Campus === "ONLNE"}
       />
     </>
   );

@@ -7,7 +7,14 @@ import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiTextArea = ({ label, name, id, requiredIcon, autoFocus }) => {
+const RfiTextArea = ({
+  label,
+  name,
+  id,
+  requiredIcon,
+  required,
+  autoFocus,
+}) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
@@ -26,6 +33,7 @@ const RfiTextArea = ({ label, name, id, requiredIcon, autoFocus }) => {
               id={id}
               {...field}
               className="form-control"
+              required={required}
               autoFocus={autoFocus}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
@@ -43,6 +51,7 @@ const RfiTextArea = ({ label, name, id, requiredIcon, autoFocus }) => {
 RfiTextArea.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  required: undefined,
   autoFocus: undefined,
 };
 
@@ -51,6 +60,7 @@ RfiTextArea.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
+  required: PropTypes.bool,
   autoFocus: PropTypes.bool,
 };
 

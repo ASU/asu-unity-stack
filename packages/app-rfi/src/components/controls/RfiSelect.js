@@ -15,6 +15,7 @@ const RfiSelect = ({
   label,
   name,
   requiredIcon,
+  required,
   options,
   disabled,
   autoFocus,
@@ -35,6 +36,7 @@ const RfiSelect = ({
         as="select"
         id={id}
         className="form-control"
+        required={required}
         disabled={disabled}
         autoFocus={autoFocus}
         {...field}
@@ -61,6 +63,7 @@ const RfiSelect = ({
 RfiSelect.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  required: undefined,
   autoFocus: undefined,
   disabled: false,
 };
@@ -78,6 +81,7 @@ RfiSelect.propTypes = {
   ).isRequired,
   disabled: PropTypes.bool,
   requiredIcon: PropTypes.bool,
+  required: PropTypes.bool,
   autoFocus: PropTypes.bool,
 };
 

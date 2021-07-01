@@ -35,6 +35,7 @@ const RfiGdpr = ({ campus }) => {
         name="GdprConsent"
         value="1"
         requiredIcon
+        required
       >
         I consent
       </RfiCheckboxSingle>
@@ -125,6 +126,7 @@ const AboutMe = () => {
         id="EmailAddress"
         name="EmailAddress"
         requiredIcon
+        required
         autoFocus
       />
       <RfiTextInput
@@ -132,6 +134,7 @@ const AboutMe = () => {
         id="FirstName"
         name="FirstName"
         requiredIcon
+        required
         helperText="First name"
       />
       <RfiTextInput
@@ -139,14 +142,16 @@ const AboutMe = () => {
         id="LastName"
         name="LastName"
         requiredIcon
+        required
         helperText="Last name"
       />
-      <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon />
+      <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon required />
       <RfiTextInput
         label="Postal code"
         id="ZipCode"
         name="ZipCode"
         requiredIcon={values.Campus !== "ONLNE"}
+        required={values.Campus !== "ONLNE"}
       />
       <RfiSelect
         label="When do you anticipate starting at ASU?"
@@ -154,6 +159,7 @@ const AboutMe = () => {
         name="EntryTerm"
         options={termOptions}
         requiredIcon={values.Campus !== "ONLNE"}
+        required={values.Campus !== "ONLNE"}
       />
       <RfiGdpr campus={values.Campus} />
     </>
@@ -178,7 +184,15 @@ const aboutMeForm = {
       .max(64, "Error: First name is too long")
       .required("Error: Last name is required"),
     Phone: Yup.string()
-      .max(30, "Error: Phone is too long")
+      .min(4, "Error: Phone is too short")
+      .max(20, "Error: Phone is too long")
+      // Not happy with how this performs, but leaving here for possible future
+      // implementation. Interaction with PhoneInput complicates behavior.
+      // .matches(
+      //   // Based on regex from Simple React Validator
+      //   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/,
+      //   "Error: Phone number is not valid"
+      // )
       .required("Error: Phone is required"),
     // ZipCode and EnteryTerm are required if campus != online. Conditional
     // validation is deferred to Formik and implemented via customValidate() in

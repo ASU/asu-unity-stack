@@ -11,7 +11,7 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 
 // Component
 
-const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
+const RfiPhone = ({ label, name, id, requiredIcon, required, helperText }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
@@ -30,6 +30,8 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
             <PhoneInput
               inputProps={{
                 name: { name },
+                // eslint-disable-next-line object-shorthand
+                required: required,
               }}
               {...field}
               className="form-control"
@@ -69,6 +71,7 @@ const RfiPhone = ({ label, name, id, requiredIcon, helperText }) => {
 RfiPhone.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  required: undefined,
   helperText: undefined,
 };
 
@@ -77,6 +80,7 @@ RfiPhone.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
+  required: PropTypes.bool,
   helperText: PropTypes.string,
 };
 

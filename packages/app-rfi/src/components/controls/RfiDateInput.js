@@ -14,6 +14,7 @@ const RfiDateInput = ({
   name,
   id,
   requiredIcon,
+  required,
   helperText,
   autoFocus,
 }) => {
@@ -53,6 +54,7 @@ const RfiDateInput = ({
                 type="text"
                 {...field}
                 className="form-control"
+                required={required}
                 placeholder={helperText}
                 autoFocus={autoFocus}
               />
@@ -73,6 +75,7 @@ const RfiDateInput = ({
 RfiDateInput.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  required: undefined,
   autoFocus: undefined,
   helperText: undefined,
 };
@@ -82,6 +85,7 @@ RfiDateInput.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
+  required: PropTypes.bool,
   helperText: PropTypes.string,
   autoFocus: PropTypes.bool,
 };

@@ -7,7 +7,14 @@ import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 
-const RfiEmailInput = ({ name, label, id, requiredIcon, autoFocus }) => {
+const RfiEmailInput = ({
+  name,
+  label,
+  id,
+  requiredIcon,
+  required,
+  autoFocus,
+}) => {
   return (
     <Field name={name}>
       {({ field, form: { touched, errors }, meta }) => {
@@ -27,6 +34,7 @@ const RfiEmailInput = ({ name, label, id, requiredIcon, autoFocus }) => {
               id={id}
               {...field}
               className="form-control"
+              required={required}
               autoFocus={autoFocus}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
@@ -40,6 +48,7 @@ const RfiEmailInput = ({ name, label, id, requiredIcon, autoFocus }) => {
 RfiEmailInput.defaultProps = {
   id: undefined,
   requiredIcon: undefined,
+  required: undefined,
   autoFocus: undefined,
 };
 
@@ -48,6 +57,7 @@ RfiEmailInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   requiredIcon: PropTypes.bool,
+  required: PropTypes.bool,
   autoFocus: PropTypes.bool,
 };
 
