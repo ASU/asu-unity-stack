@@ -9,6 +9,27 @@
   opacity: $bg-opacity;
 }
 
+.black-bg {
+  background: #000;
+}
+
+.gray-7-bg {
+  background: $uds-color-base-gray-7;
+}
+
+.gray-2-bg {
+  background: $uds-color-base-gray-2;
+}
+
+.gray-1-bg {
+  background: $uds-color-base-gray-1;
+}
+
+.white-bg {
+  background: $uds-color-base-white;
+  border: 1px solid $uds-color-base-gray-3;
+}
+
 $uds-backgrounds: (
   ("name": "morse-code-white", "value": $morse-code-white, "type": "image"),
   ("name": "morse-code-black", "value": $morse-code-black, "type": "image"),
@@ -40,11 +61,6 @@ $bg-sizes: ("-25": 25%, "-33": 33%, "-50": 50%, "-66": 66%, "-75": 75%, "-100": 
         &.#{$backgroundName} {
           @if $backgroundType == 'image' {
             background-image: $backgroundRule;
-          } @else {
-            background: $backgroundRule;
-            @if $backgroundName == "white-bg" {
-              border: 1px solid $uds-color-base-gray-3;
-            }
           }
           &.#{$positionClass} {
             &.bg-percent {
