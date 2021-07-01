@@ -1,7 +1,6 @@
 // @ts-check;
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
@@ -50,7 +49,7 @@ const ASUHeader = ({
 
   return (
     <Header ref={headerRef}>
-      <HeaderTop />
+      <HeaderTop login={{ loggedIn, loginLink, logoutLink, userName }} />
       <HeaderMain />
     </Header>
   );

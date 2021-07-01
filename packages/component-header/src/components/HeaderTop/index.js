@@ -1,8 +1,11 @@
 import React from "react";
 
+import { LoginPropTypes } from "../../core/models/app-prop-types";
 import { Wrapper } from "./index.styles";
+import { Login } from "./Login";
+import { Search } from "./Search";
 
-const HeaderTop = () => {
+const HeaderTop = ({ login }) => {
   return (
     <Wrapper>
       <div className="container-xl">
@@ -32,19 +35,20 @@ const HeaderTop = () => {
             >
               Colleges and Schools
             </a>
-            <div className="nav-link login-status">
-              <a className="name" href="#">
-                Sparky
-              </a>
-              <a className="signout" href="#">
-                Sign Out
-              </a>
-            </div>
+            <Login
+              loggedIn={login.loggedIn}
+              loginLink={login.loginLink}
+              logoutLink={login.logoutLink}
+              userName={login.userName}
+            />
+            <Search />
           </nav>
         </div>
       </div>
     </Wrapper>
   );
 };
+
+HeaderTop.propTypes = { login: { ...LoginPropTypes } };
 
 export { HeaderTop };

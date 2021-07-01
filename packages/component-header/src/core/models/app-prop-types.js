@@ -16,7 +16,6 @@ const TitlePropTypes = {
 };
 
 const LoginPropTypes = {
-  class: PropTypes.string,
   loggedIn: PropTypes.bool.isRequired,
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
@@ -41,4 +40,4 @@ const HeaderPropTypes = {
   mobileNavTree: PropTypes.arrayOf(PropTypes.object),
 };
 
-export { HeaderPropTypes };
+export { HeaderPropTypes, LoginPropTypes };

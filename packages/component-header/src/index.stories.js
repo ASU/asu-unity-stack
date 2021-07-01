@@ -17,8 +17,18 @@ export default {
 const Template = args => (
   <>
     <ASUHeader {...args} />
-    <div style={{ width: "100%", height: "300vh" }}>
-      <h1 style={{ textAlign: "center" }}>Scroll section</h1>
+    <div
+      style={{
+        width: "100%",
+        height: "200vh",
+        background: "#f0f0f0",
+        paddingTop: 40,
+        marginTop: 120,
+      }}
+    >
+      <h1 style={{ textAlign: "center", fontFamily: "Arial" }}>
+        Scroll section
+      </h1>
     </div>
   </>
 );

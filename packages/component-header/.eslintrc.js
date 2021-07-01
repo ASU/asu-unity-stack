@@ -31,6 +31,7 @@ module.exports = {
   rules: {
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "dot-notation": "off",
     "import/prefer-default-export": "off",
