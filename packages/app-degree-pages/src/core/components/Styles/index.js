@@ -22,7 +22,7 @@ const Main = styled.main`
 
   // &.main-section > section:not(.no-space),
   & > section section:not(.no-space) {
-    margin-top: var(--uds-dp-section-margin);
+    margin-bottom: var(--uds-dp-section-margin);
 
     & > * {
       margin-top: 0;
