@@ -10,11 +10,14 @@ import { PageItem } from "./PageItem";
  * @typedef {import('../../core/shared-model-types').PaginationProps} PaginationProps
  */
 
+const X_SMALL_DEDVICE_WIDTH = 413;
+const SMALL_DEDVICE_WIDTH = 450;
+const SMALL_DEDVICE_TOTAL_NUMBER = 3;
+
 /**
  * @param {PaginationProps} props
  * @returns {JSX.Element}
  */
-
 export const Pagination = ({
   type,
   background,
@@ -26,10 +29,47 @@ export const Pagination = ({
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
+  // start small device
+  const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
+  const [isSmallDevice, setSmallDevice] = useState(
+    window.innerWidth < SMALL_DEDVICE_WIDTH
+  );
+  const [isXSmallDevice, setXSmallDevice] = useState(
+    window.innerWidth < X_SMALL_DEDVICE_WIDTH
+  );
+  // end small device
+  const [showArrowIcons, setShowArrowIcons] = useState(!showLastButton);
 
   useEffect(() => {
     setSelectedPage(currentPage);
   }, [currentPage]);
+
+  // start small device
+  const mediaQuerySmallDevice = window.matchMedia(
+    `(max-width: ${SMALL_DEDVICE_WIDTH}px)`
+  );
+
+  mediaQuerySmallDevice.addEventListener("change", e => {
+    if (e.matches) {
+      setCurrentTotalNumbers(SMALL_DEDVICE_TOTAL_NUMBER);
+      setSmallDevice(true);
+      setShowArrowIcons(true);
+    } else {
+      setCurrentTotalNumbers(totalNumbers);
+      setSmallDevice(false);
+      setXSmallDevice(false);
+      setShowArrowIcons(!showLastButton);
+    }
+  });
+
+  const mediaQueryXSmallDevice = window.matchMedia(
+    `(max-width: ${X_SMALL_DEDVICE_WIDTH}px)`
+  );
+
+  mediaQueryXSmallDevice.addEventListener("change", e =>
+    setXSmallDevice(e.matches)
+  );
+  // end small device
 
   const handleChangePage = (e, page) => {
     const actions = {
@@ -45,20 +85,20 @@ export const Pagination = ({
 
   const renderPages = () => {
     const lowerRange = createRange(
-      selectedPage - Math.floor(totalNumbers / 2),
+      selectedPage - Math.floor(currentTotalNumbers / 2),
       selectedPage,
       totalPages
     );
     const upperRange = createRange(
       selectedPage,
-      selectedPage + 1 + Math.floor(totalNumbers / 2),
+      selectedPage + 1 + Math.floor(currentTotalNumbers / 2),
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
 
     return (
       <>
-        {renderedPages[0] !== 1 && <PageItem>...</PageItem>}
+        {!isSmallDevice && renderedPages[0] !== 1 && <PageItem>...</PageItem>}
         {renderedPages.map(
           page =>
             page && (
@@ -72,9 +112,10 @@ export const Pagination = ({
               </PageItem>
             )
         )}
-        {renderedPages[renderedPages.length - 1] !== totalPages && (
-          <PageItem>...</PageItem>
-        )}
+        {!isSmallDevice &&
+          renderedPages[renderedPages.length - 1] !== totalPages && (
+            <PageItem>...</PageItem>
+          )}
       </>
     );
   };
@@ -95,7 +136,7 @@ export const Pagination = ({
           }
         )}
       >
-        {showFirstButton && (
+        {!isSmallDevice && showFirstButton && (
           <PageItem
             isClickeable
             disabled={selectedPage === 1}
@@ -107,21 +148,21 @@ export const Pagination = ({
         <PageItem
           isClickeable
           disabled={selectedPage === 1}
-          pageLinkIcon={!showFirstButton}
+          pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
         >
-          Prev
+          {isXSmallDevice ? "" : "Prev"}
         </PageItem>
         {renderPages()}
         <PageItem
           isClickeable
           disabled={selectedPage === totalPages}
-          pageLinkIcon={!showLastButton}
+          pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         >
-          Next
+          {isXSmallDevice ? "" : "Next"}
         </PageItem>
-        {showLastButton && (
+        {!isSmallDevice && showLastButton && (
           <PageItem
             isClickeable
             disabled={selectedPage === totalPages}
