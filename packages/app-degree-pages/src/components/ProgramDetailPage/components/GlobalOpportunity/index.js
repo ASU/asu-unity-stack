@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { OverlapContentImage } from "../../../../core/components";
+import { progDetailSectionIds } from "../../../../core/models";
 
 const WrapperContainer = styled.section`
   & a {
@@ -16,7 +17,7 @@ const WrapperContainer = styled.section`
  * @returns {JSX.Element}
  */
 const GlobalOpportunity = ({ contents, image }) => (
-  <WrapperContainer>
+  <WrapperContainer id={progDetailSectionIds.globalOpportunity.targetIdName}>
     <OverlapContentImage
       title="Global opportunities"
       contents={contents}

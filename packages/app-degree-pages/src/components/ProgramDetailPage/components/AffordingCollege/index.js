@@ -2,11 +2,15 @@
 import { Card } from "@asu-design-system/components-core";
 import React from "react";
 
+import { progDetailSectionIds } from "../../../../core/models";
 import { Section, Background } from "./index.style";
 
 function AffordingCollege() {
   return (
-    <Section className="container">
+    <Section
+      className="container"
+      id={progDetailSectionIds.affordingCollege.targetIdName}
+    >
       <Background />
       <h2>
         <span className="highlight-gold">Affording college</span>

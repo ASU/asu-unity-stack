@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { progDetailSectionIds } from "../../../../core/models";
 import { glanceItemPropType } from "../../../../core/models/app-prop-types";
 import { GlanceItem } from "./GlanceItem";
 
@@ -22,7 +23,7 @@ export const AtAGlance = ({
   timeCommitment,
 }) => {
   return (
-    <section>
+    <section id={progDetailSectionIds.atAGlance.targetIdName}>
       <h2>
         <span className="highlight-gold">At a glance: program details</span>
       </h2>

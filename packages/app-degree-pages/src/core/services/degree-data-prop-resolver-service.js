@@ -71,4 +71,35 @@ function degreeDataPropResolverService(row = {}) {
   };
 }
 
-export { degreeDataPropResolverService };
+/**
+ *
+ * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
+ * @returns {import("src/core/models/shared-types").LinkItem[]}
+ */
+function getCampusLocations(resolver) {
+  const locations = [];
+
+  if (resolver.getCampusList().length > 0)
+    locations.push(
+      ...resolver.getCampusList().map(location => ({
+        text: location,
+        url: "#",
+      }))
+    );
+
+  if (resolver.getAsuOfficeLoc())
+    locations.push({
+      text: resolver.getAsuOfficeLoc(),
+      url: "#",
+    });
+
+  if (resolver.getCampusWue())
+    locations.push({
+      text: resolver.getCampusWue(),
+      url: "#",
+    });
+
+  return locations;
+}
+
+export { degreeDataPropResolverService, getCampusLocations };

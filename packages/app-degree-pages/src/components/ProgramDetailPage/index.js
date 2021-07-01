@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Loader, Video } from "../../core/components";
+import { Loader, Main, ThemeStyle, Video } from "../../core/components";
 import { programDetailFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
@@ -13,8 +13,12 @@ import {
   linkPropType,
   cardPropTypes,
   videoPropType,
+  progDetailSectionIds,
 } from "../../core/models";
-import { degreeDataPropResolverService } from "../../core/services";
+import {
+  degreeDataPropResolverService,
+  getCampusLocations,
+} from "../../core/services";
 import {
   formatAcceleratedConcurrentLinks,
   formatCareerData,
@@ -39,58 +43,27 @@ import { RequiredCourse } from "./components/RequiredCourse";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
 
-/**
- *
- * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
- * @returns {import("src/core/models/shared-types").LinkItem[]}
- */
-function getLocations(resolver) {
-  const locations = [];
+// const Main = styled.main`
+//   & > section section {
+//     --marginBottom: 96px;
+//     margin-bottom: var(--marginBottom);
 
-  if (resolver.getCampusList().length > 0)
-    locations.push(
-      ...resolver.getCampusList().map(location => ({
-        text: location,
-        url: "#",
-      }))
-    );
+//     & > * {
+//       margin-top: 0;
+//       padding-top: 0;
+//     }
 
-  if (resolver.getAsuOfficeLoc())
-    locations.push({
-      text: resolver.getAsuOfficeLoc(),
-      url: "#",
-    });
+//     & h2 {
+//       line-height: 1;
+//     }
+//   }
 
-  if (resolver.getCampusWue())
-    locations.push({
-      text: resolver.getCampusWue(),
-      url: "#",
-    });
-
-  return locations;
-}
-
-const Main = styled.main`
-  & > section section {
-    --marginBottom: 96px;
-    margin-bottom: var(--marginBottom);
-
-    & > * {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    & h2 {
-      line-height: 1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    & > section section {
-      --marginBottom: 48px;
-    }
-  }
-`;
+//   @media (max-width: 768px) {
+//     & > section section {
+//       --marginBottom: 48px;
+//     }
+//   }
+// `;
 
 const VideoWrapper = styled.div`
   .uds-video-container {
@@ -143,6 +116,7 @@ const ProgramDetailPage = ({
 
   return (
     <>
+      <ThemeStyle />
       {hero ? (
         <section>
           <Hero
@@ -152,23 +126,13 @@ const ProgramDetailPage = ({
           />
         </section>
       ) : null}
-      {/* <AnchorMenu
-        items={[
-          {
-            text: "First container",
-            targetIdName: "first-container",
-            icon: ["link"],
-          },
-          { text: "Second container", targetIdName: "second-container" },
-          { text: "Third container", targetIdName: "third-container" },
-          {
-            text: "Fourth container",
-            targetIdName: "fourth-container",
-            icon: "link",
-          },
-        ]}
-      /> */}
-      <Main data-is-loading={loading}>
+      <AnchorMenu
+        items={Object.values(progDetailSectionIds).map(item => ({
+          ...item,
+          icon: null,
+        }))}
+      />
+      <Main data-is-loading={loading} className="main-section">
         {error && <div>Something went wrong ...</div>}
         {loading ? (
           <Loader />
@@ -220,7 +184,9 @@ const ProgramDetailPage = ({
                         url: "",
                       }
                     }
-                    locations={atAGlance?.locations || getLocations(resolver)}
+                    locations={
+                      atAGlance?.locations || getCampusLocations(resolver)
+                    }
                     firstRequirementMathCourse={
                       atAGlance?.firstRequirementMathCourse ||
                       resolver.getMinMathReq()

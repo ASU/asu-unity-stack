@@ -6,7 +6,10 @@ import {
 import PropTypes from "prop-types";
 import React from "react";
 
-import { accordionCardPropTypes } from "../../../../core/models/app-prop-types";
+import {
+  accordionCardPropTypes,
+  progDetailSectionIds,
+} from "../../../../core/models";
 import { ButtonsContainer } from "./index.style";
 
 /**
@@ -20,7 +23,7 @@ import { ButtonsContainer } from "./index.style";
 
 function ApplicationRequirements({ accordionCards }) {
   return (
-    <section>
+    <section id={progDetailSectionIds.applicationRequirements.targetIdName}>
       <h2>
         <span className="highlight-gold">Application requirements</span>
       </h2>

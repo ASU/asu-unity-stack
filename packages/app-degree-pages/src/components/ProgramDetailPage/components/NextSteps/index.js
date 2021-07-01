@@ -3,7 +3,7 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { cardPropTypes } from "../../../../core/models/app-prop-types";
+import { progDetailSectionIds, cardPropTypes } from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/models/program-detail-types').NextStepsProps} NextStepsProps
@@ -16,7 +16,10 @@ import { cardPropTypes } from "../../../../core/models/app-prop-types";
  */
 function NextSteps({ cards }) {
   return (
-    <section className="container">
+    <section
+      className="container"
+      id={progDetailSectionIds.nextSteps.targetIdName}
+    >
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 row">
         {cards?.map(card => (

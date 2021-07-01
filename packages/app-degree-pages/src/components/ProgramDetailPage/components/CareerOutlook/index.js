@@ -2,6 +2,7 @@
 import React from "react";
 
 import { OverlapContentImage } from "../../../../core/components";
+import { progDetailSectionIds } from "../../../../core/models";
 
 /**
  *
@@ -9,7 +10,7 @@ import { OverlapContentImage } from "../../../../core/components";
  * @returns {JSX.Element}
  */
 const CareerOutlook = ({ contents, image }) => (
-  <section>
+  <section id={progDetailSectionIds.careerOutlook.targetIdName}>
     <OverlapContentImage
       title="Career opportunities"
       contents={contents}

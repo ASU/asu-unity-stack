@@ -32,7 +32,7 @@ import { SearchBar } from "./components/SearchBar";
  */
 
 const Main = styled(MainSection)`
-  margin-top: var(--uds-dp-section-margin);
+  // margin-top: var(--uds-dp-section-margin);
 
   @media (max-width: 768px) {
     & {
@@ -217,7 +217,7 @@ const ListingPage = ({
         </section>
       ) : null}
 
-      <Main data-is-loading={loading} className="main-section">
+      <Main data-is-loading={loading} className="main-section dg-margin-top">
         {introContent ? (
           <IntroContent
             applyNowUrl={actionUrls?.applyNowUrl}

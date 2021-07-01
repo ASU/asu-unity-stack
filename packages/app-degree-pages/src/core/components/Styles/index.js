@@ -20,9 +20,9 @@ const Main = styled.main`
     margin-top: var(--uds-dp-section-margin);
   }
 
-  &.main-section > section:not(.no-space),
+  // &.main-section > section:not(.no-space),
   & > section section:not(.no-space) {
-    margin-bottom: var(--uds-dp-section-margin);
+    margin-top: var(--uds-dp-section-margin);
 
     & > * {
       margin-top: 0;
@@ -34,11 +34,11 @@ const Main = styled.main`
     }
   }
 
-  @media (max-width: 768px) {
-    & {
-      font-size: 0.9rem;
-    }
-  }
+  // @media (max-width: 768px) {
+  //   & {
+  //     font-size: 0.9rem;
+  //   }
+  // }
 `;
 
 export { Main, ThemeStyle };
