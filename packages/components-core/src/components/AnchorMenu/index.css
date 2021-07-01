@@ -14,6 +14,7 @@
 .uds-anchor-menu .nav-link {
   border: none;
   background-color: #ffffff;
+  margin-right: 0.3rem;
 }
 
 @media (max-width: 1230px) {

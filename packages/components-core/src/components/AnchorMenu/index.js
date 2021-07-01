@@ -10,6 +10,8 @@ import { Button } from "../Button";
 
 import "./index.css";
 
+const anchorMenuHeight = 103;
+
 /**
  * @typedef { import('../../core/shared-model-types').AnchorMenuProps } AnchorMenuProps
  */
@@ -19,30 +21,37 @@ import "./index.css";
  * @returns {JSX.Element}
  */
 
-export const AnchorMenu = ({ items }) => {
+export const AnchorMenu = ({ items, firstElementId }) => {
   library.add(fas);
   const anchorMenuRef = useRef(null);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
 
   const handleWindowScroll = () => {
+    const curPos = window.scrollY;
+    const firstElement = document
+      .getElementById(firstElementId)
+      ?.getBoundingClientRect().top;
     // Scroll position
-    if (window.scrollY > anchorMenuRef.current.offsetTop) {
+    if (curPos > anchorMenuRef.current.offsetTop)
       anchorMenuRef.current.classList.add("sticky");
-    } else {
+    if (firstElement >= 0) {
       anchorMenuRef.current.classList.remove("sticky");
+      setActualContainer("");
     }
     // Change active containers on scroll
-    const offset = window.scrollY + anchorMenuRef.current.offsetHeight;
+    let curSection = "";
     items?.forEach(({ targetIdName }) => {
       const container = document.getElementById(targetIdName);
-      const containerOffsetTop = container?.offsetTop;
-      const containerOffsetBottom =
-        container?.offsetTop + container?.offsetHeight;
-      if (offset >= containerOffsetTop && offset <= containerOffsetBottom) {
-        setActualContainer(targetIdName);
+      const containerTop =
+        container?.getBoundingClientRect().top - anchorMenuHeight;
+      const containerBottom =
+        container?.getBoundingClientRect().bottom - anchorMenuHeight;
+      if (containerTop < 0 && containerBottom > 0) {
+        curSection = targetIdName;
       }
     });
+    setActualContainer(curSection);
   };
 
   useEffect(() => {
@@ -51,8 +60,12 @@ export const AnchorMenu = ({ items }) => {
   }, []);
 
   const handleClickLink = container => {
-    let scrollTo = document.getElementById(container).offsetTop - 70;
-    if (window.scrollY === 0) scrollTo -= anchorMenuRef.current.offsetHeight;
+    const curScroll = window.scrollY - 100;
+    let scrollTo =
+      document.getElementById(container)?.getBoundingClientRect().top +
+      curScroll;
+    if (!anchorMenuRef.current.classList.contains("sticky"))
+      scrollTo -= anchorMenuHeight;
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
   };
 
@@ -113,6 +126,9 @@ export const AnchorMenu = ({ items }) => {
 };
 
 AnchorMenu.propTypes = {
+  /**
+   * Anchor menu items
+   */
   items: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -120,4 +136,8 @@ AnchorMenu.propTypes = {
       icon: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
+  /**
+   * First next sibling element of the anchor menu
+   */
+  firstElementId: PropTypes.string.isRequired,
 };
