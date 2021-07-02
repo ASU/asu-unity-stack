@@ -33,6 +33,7 @@ const Template = args => (
         <AnchorMenu {...args} />
         {/* Demostration purposes containers */}
         <div id="first-container">
+          <h2>First container</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             consectetur lectus nec laoreet elementum. Mauris ut sapien nibh.
@@ -80,6 +81,7 @@ const Template = args => (
           </p>
         </div>
         <div id="second-container">
+          <h2>Second container</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             consectetur lectus nec laoreet elementum. Mauris ut sapien nibh.
@@ -127,6 +129,7 @@ const Template = args => (
           </p>
         </div>
         <div id="third-container">
+          <h2>Third container</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             consectetur lectus nec laoreet elementum. Mauris ut sapien nibh.
@@ -174,6 +177,7 @@ const Template = args => (
           </p>
         </div>
         <div id="fourth-container" style={{ marginBottom: 400 }}>
+          <h2>Fourth container</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             consectetur lectus nec laoreet elementum. Mauris ut sapien nibh.

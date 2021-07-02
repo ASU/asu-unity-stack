@@ -10,8 +10,6 @@ import { Button } from "../Button";
 
 import "./index.css";
 
-const anchorMenuHeight = 103;
-
 /**
  * @typedef { import('../../core/shared-model-types').AnchorMenuProps } AnchorMenuProps
  */
@@ -32,13 +30,14 @@ export const AnchorMenu = ({ items, firstElementId }) => {
     const firstElement = document
       .getElementById(firstElementId)
       ?.getBoundingClientRect().top;
+    const anchorMenuHeight = 103;
     // Scroll position
-    if (curPos > anchorMenuRef.current.offsetTop)
-      anchorMenuRef.current.classList.add("sticky");
     if (firstElement >= 0) {
       anchorMenuRef.current.classList.remove("sticky");
       setActualContainer("");
     }
+    if (curPos > anchorMenuRef.current.getBoundingClientRect().top)
+      anchorMenuRef.current.classList.add("sticky");
     // Change active containers on scroll
     let curSection = "";
     items?.forEach(({ targetIdName }) => {
@@ -61,6 +60,7 @@ export const AnchorMenu = ({ items, firstElementId }) => {
 
   const handleClickLink = container => {
     const curScroll = window.scrollY - 100;
+    const anchorMenuHeight = window.innerWidth <= 992 ? 410 : 90;
     let scrollTo =
       document.getElementById(container)?.getBoundingClientRect().top +
       curScroll;
@@ -84,7 +84,7 @@ export const AnchorMenu = ({ items, firstElementId }) => {
     >
       <div className="container-xl uds-anchor-menu-wrapper">
         <button
-          className="mobile-menu-toggler"
+          className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
           type="button"
           onClick={handleMenuVisibility}
           data-toggle="collapse"
@@ -93,9 +93,7 @@ export const AnchorMenu = ({ items, firstElementId }) => {
         >
           <h4>
             On This Page:
-            <FontAwesomeIcon
-              icon={["fas", `chevron-${showMenu ? "up" : "down"}`]}
-            />
+            <FontAwesomeIcon icon="chevron-down" />
           </h4>
         </button>
         <div
@@ -106,6 +104,7 @@ export const AnchorMenu = ({ items, firstElementId }) => {
         >
           <nav className="nav" aria-label="Same Page">
             {items?.map(item => (
+              // @ts-ignore
               <Button
                 key={item.targetIdName}
                 classes={[
