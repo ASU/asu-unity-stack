@@ -1,0 +1,141 @@
+.rfi-progress {
+  background-color: #fff;
+}
+.rfi-progress.progress {
+  border-radius: 0;
+}
+.rfi-progress .progress-bar {
+  background-color: #ffc627;
+}
+
+.rfi-submitted h3 {
+  font-size: 2.25rem;
+}
+.rfi-submitted .rfi-success-msg-wrapper {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.rfi-submitted-icon {
+  margin-top: 3rem;
+}
+.rfi-submitted-sub-icon {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
+
+form.uds-form.uds-rfi p.rfi-step1-intro {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* We're not using html5 :valid and :invalid pseudo classes so we need
+   to tweak .invalid-feedback */
+form.uds-form.uds-rfi .invalid-feedback {
+  display: inline-block;
+}
+
+/* Phone field styles */
+form.uds-form.uds-rfi .rfi-phone-form-group input {
+  width: 100%;
+}
+form.uds-form.uds-rfi .rfi-phone-form-group input.rfi-phone-input {
+  border-radius: 0;
+  height: auto;
+  padding-left: 48px !important;
+}
+form.uds-form.uds-rfi .rfi-phone-form-group .rfi-phone-input-button {
+  border-radius: 0;
+  border-color: #747474;
+  background-color: #fafafa;
+  outline: 0;
+  -webkit-box-shadow: 0 !important;
+  box-shadow: none !important;
+}
+form.uds-form.uds-rfi
+  .rfi-phone-form-group
+  .rfi-phone-input-button
+  .selected-flag:focus {
+  border: 2px solid #191919 !important;
+  border-radius: 0;
+  outline: 0;
+  -webkit-box-shadow: 0 !important;
+  box-shadow: none !important;
+}
+form.uds-form.uds-rfi .rfi-phone-form-group .rfi-phone-input-dropdown:focus {
+  border: 2px solid #191919 !important;
+  outline: 0;
+  -webkit-box-shadow: 0 !important;
+  box-shadow: none !important;
+}
+
+/* React Select fields undo/tweak focus related styles of emberdded input.
+   Note styles for main focus are handled in RfiSelect.js */
+form.uds-form.uds-rfi .rfi-input-select input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  position: relative;
+  left: -1rem;
+}
+
+/* Required icon footer */
+form.uds-form.uds-rfi .rfi-required-footnote {
+  font-size: 0.75rem;
+}
+form.uds-form.uds-rfi .rfi-required-footnote svg {
+  font-size: 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.125rem;
+  color: #b72a2a;
+}
+
+.uds-rfi-form-wrapper h2 {
+  margin: 0;
+}
+.uds-rfi-form-wrapper .rfi-steps {
+  font-size: 14px;
+  font-weight: 700;
+}
+.uds-rfi-form-wrapper .rfi-consent {
+  margin-bottom: 0.5rem;
+}
+.uds-rfi-form-wrapper .rfi-consent .rfi-consent-wording {
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.rfi-cert-minor .rfi-cert-minor-email-message {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .rfi-container-inner .uds-image-text-block-container {
+    max-height: 100% !important;
+  }
+}
+.rfi-container-inner .uds-image-text-block-text-container {
+  padding: 0px;
+}
+.rfi-container-inner
+  .uds-image-text-block-text-container
+  .uds-rfi-form-wrapper {
+  padding: 48px;
+}
+@media screen and (max-width: 992px) {
+  .rfi-container-inner .uds-image-text-block-text-container {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .rfi-container-inner .uds-image-text-block-text-container {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .rfi-container-inner .uds-image-text-block-text-container {
+    padding: 0px;
+    max-width: 100%;
+  }
+}
