@@ -6,11 +6,13 @@ import { TitlePropTypes } from "../../../core/models/app-prop-types";
 import { TitleWrapper } from "./index.styles";
 
 const Title = () => {
-  const { title, parentOrg, parentOrgUrl, baseUrl } = useAppContext();
+  const { title, parentOrg, parentOrgUrl, baseUrl, breakpoint } =
+    useAppContext();
 
   if (parentOrg) {
     return (
-      <TitleWrapper>
+      // @ts-ignore
+      <TitleWrapper breakpoint={breakpoint}>
         <a className="unit-name" href={parentOrgUrl}>
           {parentOrg}
         </a>
@@ -21,7 +23,8 @@ const Title = () => {
     );
   }
   return (
-    <TitleWrapper>
+    // @ts-ignore
+    <TitleWrapper breakpoint={breakpoint}>
       <a className="title-subunit-name" href={baseUrl}>
         {title}
       </a>

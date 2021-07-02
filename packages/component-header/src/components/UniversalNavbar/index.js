@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { useAppContext } from "../../core/context/app-context";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
@@ -19,8 +20,11 @@ import { Search } from "./Search";
  */
 
 const UniversalNavbar = ({ display }) => {
+  const { breakpoint } = useAppContext();
+
   return (
-    <Wrapper className={`universal-nav-${display}`}>
+    // @ts-ignore
+    <Wrapper className={`universal-nav-${display}`} breakpoint={breakpoint}>
       <div className="container-xl">
         <div className="header-top">
           <nav className="nav" aria-label="Top">

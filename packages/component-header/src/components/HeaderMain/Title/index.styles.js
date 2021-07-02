@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-const breakpoint = "1260px";
-
 const TitleWrapper = styled.div`
+  width: 100%;
   line-height: 1;
   font-size: 1rem;
   font-weight: 700;
@@ -36,7 +35,7 @@ const TitleWrapper = styled.div`
     color: #191919;
   }
 
-  @media (min-width: ${breakpoint}) {
+  @media (min-width: ${({ breakpoint }) => breakpoint}) {
     line-height: 1;
     font-weight: 700;
     padding: 0;

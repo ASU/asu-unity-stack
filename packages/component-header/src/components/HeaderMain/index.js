@@ -2,12 +2,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
+import { useAppContext } from "../../core/context/app-context";
 import { Wrapper } from "./index.styles";
 import { Logo } from "./Logo";
 import { NavbarContainer } from "./NavbarContainer";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
+  const { breakpoint } = useAppContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleChangeMenuVisibility = () => {
@@ -15,7 +17,8 @@ const HeaderMain = () => {
   };
 
   return (
-    <Wrapper>
+    // @ts-ignore
+    <Wrapper breakpoint={breakpoint}>
       <div className="container-xl">
         <div className="header-main">
           <nav className="navbar navbar-expand-xl" aria-label="Main">

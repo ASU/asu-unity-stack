@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect } from "react";
 
+import { useAppContext } from "../../../core/context/app-context";
 import { SearchWrapper } from "./index.styles";
 
 /**
@@ -18,6 +19,7 @@ import { SearchWrapper } from "./index.styles";
  */
 
 const Search = ({ display }) => {
+  const { breakpoint } = useAppContext();
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -34,6 +36,8 @@ const Search = ({ display }) => {
       action="https://search.asu.edu/search"
       method="get"
       name="gs"
+      // @ts-ignore
+      breakpoint={breakpoint}
     >
       {display === "desktop" ? (
         <>
@@ -58,17 +62,17 @@ const Search = ({ display }) => {
         </>
       ) : (
         <>
-          <FontAwesomeIcon icon="search" />
           <label>
+            <FontAwesomeIcon icon="search" />
             <input
               ref={inputRef}
               className="form-control"
               type="search"
               name="q"
               aria-labelledby="header-top-search"
+              placeholder="Search asu.edu"
               required
             />
-            Search asu.edu
           </label>
         </>
       )}

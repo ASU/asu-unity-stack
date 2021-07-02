@@ -20,11 +20,12 @@ import { NavItem } from "./NavItem";
  */
 
 const NavbarContainer = ({ display }) => {
-  const { navTree, mobileNavTree, expandOnHover, buttons } = useAppContext();
+  const { navTree, mobileNavTree, expandOnHover, buttons, breakpoint } =
+    useAppContext();
 
   return (
-    <Wrapper className={`navbar-container-${display}`}>
-      <div></div>
+    // @ts-ignore
+    <Wrapper className={`navbar-container-${display}`} breakpoint={breakpoint}>
       {/* Navbar Footer */}
       <UniversalNavbar display="mobile" />
     </Wrapper>

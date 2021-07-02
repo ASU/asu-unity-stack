@@ -5,10 +5,12 @@ import { useAppContext } from "../../../core/context/app-context";
 import { LoginWrapper } from "./index.styles";
 
 const Login = () => {
-  const { loggedIn, userName, logoutLink, loginLink } = useAppContext();
+  const { loggedIn, userName, logoutLink, loginLink, breakpoint } =
+    useAppContext();
 
   return (
-    <LoginWrapper className="nav-link">
+    // @ts-ignore
+    <LoginWrapper className="nav-link" breakpoint={breakpoint}>
       {loggedIn ? (
         <>
           {userName ? <span className="name">{userName}</span> : ""}

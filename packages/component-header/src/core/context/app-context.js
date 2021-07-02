@@ -3,12 +3,17 @@ import React, { createContext, useContext } from "react";
 
 import { HeaderPropTypes } from "../models/app-prop-types";
 
+const breakpoints = { Lg: "992px", Xl: "1260px" };
+
 const AppContext = createContext();
 
 const AppContextProvider = ({ initialValue, children }) => {
-  return (
-    <AppContext.Provider value={initialValue}>{children}</AppContext.Provider>
-  );
+  const value = {
+    ...initialValue,
+    breakpoint: breakpoints[initialValue.breakpoint],
+  };
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 AppContextProvider.propTypes = {

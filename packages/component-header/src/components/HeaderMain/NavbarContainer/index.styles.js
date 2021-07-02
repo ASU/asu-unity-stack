@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
-const breakpoint = "1260px";
-
 const Wrapper = styled.div`
   &.navbar-container-mobile {
     display: none;
   }
-  @media (max-width: ${breakpoint}) {
+  @media (max-width: ${({ breakpoint }) => breakpoint}) {
     flex-direction: column;
     width: 100%;
     &.navbar-container-desktop {

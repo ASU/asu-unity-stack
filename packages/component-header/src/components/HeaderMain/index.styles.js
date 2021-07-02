@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const breakpoint = "1260px";
-
 const Wrapper = styled.div`
   background-color: #ffffff;
   border-bottom: 1px solid #d0d0d0;
@@ -24,11 +22,11 @@ const Wrapper = styled.div`
   .navbar-toggler {
     display: none;
   }
-  @media (max-width: ${breakpoint}) {
+  @media (max-width: ${({ breakpoint }) => breakpoint}) {
     padding: 0;
     .navbar {
       padding: 1.5rem 0 0 0;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
       justify-content: space-between;
     }

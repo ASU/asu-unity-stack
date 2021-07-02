@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const breakpoint = "1260px";
-
 const Wrapper = styled.div`
   background-color: #e8e8e8;
   height: 24px;
@@ -49,23 +47,41 @@ const Wrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${breakpoint}) {
+  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+    height: auto;
     &.universal-nav-desktop {
       display: none;
     }
     &.universal-nav-mobile {
       display: initial;
     }
-    height: auto;
     .header-top {
       .nav {
+        width: 100%;
         height: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column-reverse;
         .links-container {
-          
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-auto-flow: row;
+          justify-items: start;
+          width: 100%;
+          .nav-link {
+            color: #191919;
+            margin-right: 0;
+            text-align: center;
+            width: 100%;
+            font-size: 0.875rem;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #d0d0d0;
+            justify-content: center;
+            &:nth-child(even) {
+              border-left: 1px solid #d0d0d0;
+            }
+          }
         }
       }
     }

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const breakpointXl = "1260px";
-
 const Header = styled.header`
   font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
     sans-serif;
@@ -10,6 +8,11 @@ const Header = styled.header`
   right: 0;
   left: 0;
   z-index: 1030;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
   .container-xl {
     height: 100%;
     max-width: 1224px;
@@ -25,7 +28,7 @@ const Header = styled.header`
       box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
     }
   }
-  @media (max-width: ${breakpointXl}) {
+  @media (max-width: 1260px) {
     .container-xl {
       max-width: 100%;
     }
