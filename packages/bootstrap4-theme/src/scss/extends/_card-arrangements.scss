@@ -68,6 +68,10 @@
     }
   }
 
+  @media screen and (max-width: $uds-breakpoint-xl) {
+    padding: 0 $uds-size-spacing-2;
+  }
+
   @media screen and (max-width: $uds-breakpoint-sm) {
     flex-direction: column;
   }

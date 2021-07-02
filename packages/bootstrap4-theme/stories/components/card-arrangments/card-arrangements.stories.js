@@ -380,7 +380,7 @@ export const FourCardArrangement = () => `
 `;
 
 export const CardsAutoArrangement = () => `
-<div class="container">
+<div class="col">
   <div class="uds-card-arrangement">
     <div class="uds-card-arrangement-content-container">
       <h2>Lorem ipsum dolor sit amet</h2>
