@@ -16,11 +16,11 @@ const ThemeStyle = createGlobalStyle`
 `;
 
 const Main = styled.main`
-  .dg-margin-top {
+  &.dg-margin-top {
     margin-top: var(--uds-dp-section-margin);
   }
 
-  // &.main-section > section:not(.no-space),
+  &.main-section > section:not(.no-space),
   & > section section:not(.no-space) {
     margin-bottom: var(--uds-dp-section-margin);
 
@@ -33,12 +33,6 @@ const Main = styled.main`
       line-height: 1;
     }
   }
-
-  // @media (max-width: 768px) {
-  //   & {
-  //     font-size: 0.9rem;
-  //   }
-  // }
 `;
 
 export { Main, ThemeStyle };

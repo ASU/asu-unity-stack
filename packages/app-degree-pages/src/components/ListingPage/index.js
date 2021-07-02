@@ -32,8 +32,6 @@ import { SearchBar } from "./components/SearchBar";
  */
 
 const Main = styled(MainSection)`
-  // margin-top: var(--uds-dp-section-margin);
-
   @media (max-width: 768px) {
     & {
       font-size: 0.9rem;
@@ -68,7 +66,8 @@ const ListingPage = ({
   const [tableView, setTableView] = useState([]);
   /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
-  // const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
+  /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
+  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
   const url = urlResolver(programList.dataSource, programListFields);
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
@@ -145,7 +144,7 @@ const ListingPage = ({
    * @param {string} keyword
    */
   const onDegreeSearch = async (keyword = "") => {
-    /* todo: this won't work since the only way to clear up
+    /* TODO: this won't work since the only way to clear up
               the search is to provide an empty keyword */
     // if (!keyword.trim()) {
     //   alert("Please provide a valid keyword");

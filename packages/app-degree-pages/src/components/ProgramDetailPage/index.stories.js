@@ -232,10 +232,14 @@ DefaultPage.args = defaultArgs;
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const PageWithVideo = Template.bind({});
-PageWithVideo.args = { ...defaultArgs };
-PageWithVideo.args.introContent = {
-  ...PageWithVideo.args.introContent,
+export const PageWithVideoAndMarketTextext = Template.bind({});
+PageWithVideoAndMarketTextext.args = { ...defaultArgs };
+PageWithVideoAndMarketTextext.args.dataSource = {
+  ...PageWithVideoAndMarketTextext.args.dataSource,
+  acadPlan: "LSBISBIS", // this has marketText
+};
+PageWithVideoAndMarketTextext.args.introContent = {
+  ...PageWithVideoAndMarketTextext.args.introContent,
   image: undefined,
   video: {
     url: "/assets/video/stock-video-person-drawing.mp4",

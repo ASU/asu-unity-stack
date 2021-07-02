@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Loader, Main, ThemeStyle, Video } from "../../core/components";
+import { ErrorAlert, Loader, Main, ThemeStyle, Video } from "../../core/components";
 import { programDetailFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
@@ -31,7 +31,6 @@ import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
 import { ChangeYourMajor } from "./components/ChangeYourMajor";
-// import { CustomizeYourCollegeExperience } from "./components/CustomizeYourCollegeExperience";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
@@ -42,28 +41,6 @@ import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
-
-// const Main = styled.main`
-//   & > section section {
-//     --marginBottom: 96px;
-//     margin-bottom: var(--marginBottom);
-
-//     & > * {
-//       margin-top: 0;
-//       padding-top: 0;
-//     }
-
-//     & h2 {
-//       line-height: 1;
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     & > section section {
-//       --marginBottom: 48px;
-//     }
-//   }
-// `;
 
 const VideoWrapper = styled.div`
   .uds-video-container {
@@ -117,6 +94,9 @@ const ProgramDetailPage = ({
   return (
     <>
       <ThemeStyle />
+
+      {error && <ErrorAlert message="Something went wrong ..." />}
+
       {hero ? (
         <section>
           <Hero
@@ -133,11 +113,10 @@ const ProgramDetailPage = ({
         }))}
       />
       <Main data-is-loading={loading} className="main-section">
-        {error && <div>Something went wrong ...</div>}
         {loading ? (
           <Loader />
         ) : (
-          <section className="container">
+          <section className="container mt-4">
             {introContent?.breadcrumbs ? (
               <div className="row">
                 <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />

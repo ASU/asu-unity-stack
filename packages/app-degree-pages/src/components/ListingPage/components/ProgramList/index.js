@@ -79,29 +79,31 @@ function ProgramList({ dataViewComponent, loading, programms, columSettings }) {
         columSettings,
       }}
     >
-      <GlobalStyle />
+      <section>
+        <GlobalStyle />
 
-      <div className="desktop-view">
-        <ProgramsViewer
-          loading={loading}
-          programms={tableView}
-          columSettings={columSettings}
+        <div className="desktop-view">
+          <ProgramsViewer
+            loading={loading}
+            programms={tableView}
+            columSettings={columSettings}
+          />
+        </div>
+
+        <div className="mobile-view mb-2">
+          <AccordionView loading={loading} programms={tableView} />
+        </div>
+
+        <Pagination
+          totalNumbers={7}
+          type="default"
+          background="white"
+          totalPages={TOTAL_PAGES}
+          onChange={onPageChange}
+          showFirstButton
+          showLastButton
         />
-      </div>
-
-      <div className="mobile-view">
-        <AccordionView loading={loading} programms={tableView} />
-      </div>
-
-      <Pagination
-        totalNumbers={7}
-        type="default"
-        background="white"
-        totalPages={TOTAL_PAGES}
-        onChange={onPageChange}
-        showFirstButton
-        showLastButton
-      />
+      </section>
     </ListingPageContext.Provider>
   );
 }
