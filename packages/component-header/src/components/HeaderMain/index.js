@@ -31,8 +31,10 @@ const HeaderMain = () => {
             >
               <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
             </button>
-            <Title />
-            <NavbarContainer display="desktop" />
+            <div>
+              <Title />
+              <NavbarContainer display="desktop" />
+            </div>
             {mobileMenuOpen && <NavbarContainer display="mobile" />}
           </nav>
         </div>

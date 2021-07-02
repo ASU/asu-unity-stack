@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: flex;
   &.navbar-container-mobile {
     display: none;
   }

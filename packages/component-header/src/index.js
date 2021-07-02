@@ -40,7 +40,12 @@ const ASUHeader = ({
   const headerRef = useRef(null);
 
   const handleWindowScroll = () => {
-    headerRef.current.classList.add("scrolled");
+    const curPos = window.scrollY;
+    if (curPos > headerRef.current.getBoundingClientRect().top) {
+      headerRef.current.classList.add("scrolled");
+    } else {
+      headerRef.current.classList.remove("scrolled");
+    }
   };
 
   useEffect(() => {
@@ -68,7 +73,8 @@ const ASUHeader = ({
         mobileNavTree,
       }}
     >
-      <Header ref={headerRef}>
+      {/* @ts-ignore */}
+      <Header ref={headerRef} breakpoint={breakpoint}>
         <UniversalNavbar display="desktop" />
         <HeaderMain />
       </Header>
