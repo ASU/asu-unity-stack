@@ -1,14 +1,13 @@
+// @ts-check
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
-import vertLogo from "../../assets/images/arizona-state-university-logo-vertical.png";
-import horizLogo from "../../assets/images/arizona-state-university-logo.png";
-import { LogoPropTypes } from "../../core/models/app-prop-types";
-import { DesktopNavbar } from "./DesktopNavbar";
 import { Wrapper } from "./index.styles";
-import { MobileNavbar } from "./MobileNavbar";
+import { Logo } from "./Logo";
+import { NavbarContainer } from "./NavbarContainer";
+import { Title } from "./Title";
 
-const HeaderMain = ({ logo }) => {
+const HeaderMain = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleChangeMenuVisibility = () => {
@@ -20,40 +19,23 @@ const HeaderMain = ({ logo }) => {
       <div className="container-xl">
         <div className="header-main">
           <nav className="navbar navbar-expand-xl" aria-label="Main">
-            <a
-              href={logo ? logo.brandLink : "asu.edu"}
-              className="navbar-brand"
-            >
-              <img
-                className="vert"
-                src={logo ? logo.src : vertLogo}
-                alt={logo ? logo.alt : "Arizona State University"}
-              />
-              <img
-                className="horiz"
-                src={logo ? logo.mobileScr : horizLogo}
-                alt={logo ? logo.alt : "Arizona State University"}
-              />
-            </a>
-            {mobileMenuOpen && <MobileNavbar />}
+            <Logo />
             <button
-              className="navbar-toggler"
+              className="navbar-toggler collapsed"
               type="button"
               onClick={handleChangeMenuVisibility}
               aria-label="Toggle navigation"
             >
               <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
             </button>
-            <DesktopNavbar />
+            <Title />
+            <NavbarContainer display="desktop" />
+            {mobileMenuOpen && <NavbarContainer display="mobile" />}
           </nav>
         </div>
       </div>
     </Wrapper>
   );
-};
-
-HeaderMain.propTypes = {
-  logo: { ...LogoPropTypes },
 };
 
 export { HeaderMain };

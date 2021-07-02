@@ -1,9 +1,12 @@
+// @ts-check
 import React from "react";
 
-import { LoginPropTypes } from "../../../core/models/app-prop-types";
+import { useAppContext } from "../../../core/context/app-context";
 import { LoginWrapper } from "./index.styles";
 
-const Login = ({ loggedIn, loginLink, logoutLink, userName }) => {
+const Login = () => {
+  const { loggedIn, userName, logoutLink, loginLink } = useAppContext();
+
   return (
     <LoginWrapper className="nav-link">
       {loggedIn ? (
@@ -19,7 +22,5 @@ const Login = ({ loggedIn, loginLink, logoutLink, userName }) => {
     </LoginWrapper>
   );
 };
-
-Login.propTypes = { ...LoginPropTypes };
 
 export { Login };

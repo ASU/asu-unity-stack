@@ -1,10 +1,11 @@
-// @ts-check;
+// @ts-check
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
-import { HeaderTop } from "./components/HeaderTop";
+import { UniversalNavbar } from "./components/UniversalNavbar";
+import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { Header } from "./index.styles";
 
@@ -21,7 +22,7 @@ import { Header } from "./index.styles";
 const ASUHeader = ({
   navTree,
   title,
-  baseUrl,
+  baseUrl = "/",
   parentOrg,
   parentOrgUrl,
   logo,
@@ -30,9 +31,9 @@ const ASUHeader = ({
   loginLink,
   logoutLink,
   buttons,
-  breakpoint,
-  animateTitle,
-  expandOnHover,
+  breakpoint = "Xl",
+  animateTitle = true,
+  expandOnHover = false,
   mobileNavTree,
 }) => {
   library.add(fas);
@@ -48,10 +49,30 @@ const ASUHeader = ({
   }, []);
 
   return (
-    <Header ref={headerRef}>
-      <HeaderTop login={{ loggedIn, loginLink, logoutLink, userName }} />
-      <HeaderMain logo={logo} />
-    </Header>
+    <AppContextProvider
+      initialValue={{
+        navTree,
+        title,
+        baseUrl,
+        parentOrg,
+        parentOrgUrl,
+        logo,
+        loggedIn,
+        userName,
+        loginLink,
+        logoutLink,
+        buttons,
+        breakpoint,
+        animateTitle,
+        expandOnHover,
+        mobileNavTree,
+      }}
+    >
+      <Header ref={headerRef}>
+        <UniversalNavbar display="desktop" />
+        <HeaderMain />
+      </Header>
+    </AppContextProvider>
   );
 };
 

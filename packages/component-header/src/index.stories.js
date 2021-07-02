@@ -23,7 +23,7 @@ const Template = args => (
         height: "200vh",
         background: "#f0f0f0",
         paddingTop: 40,
-        marginTop: 120,
+        marginTop: 140,
       }}
     >
       <h1 style={{ textAlign: "center", fontFamily: "Arial" }}>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const breakpoint = "1260px";
+
 const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -23,6 +25,9 @@ const LoginWrapper = styled.div`
 
   > a.signout:after {
     content: ") ";
+  }
+  @media (max-width: ${breakpoint}) {
+    width: 100%;
   }
 `;
 

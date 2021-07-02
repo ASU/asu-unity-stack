@@ -17,6 +17,14 @@ const Header = styled.header`
     margin-left: auto;
     width: 100%;
   }
+  button,
+  a {
+    text-decoration: none;
+    &:focus {
+      outline: none !important;
+      box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+    }
+  }
   @media (max-width: ${breakpointXl}) {
     .container-xl {
       max-width: 100%;
