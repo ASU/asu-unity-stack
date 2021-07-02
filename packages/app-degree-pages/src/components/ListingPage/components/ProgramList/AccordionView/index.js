@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import {
   degreeDataPropResolverService,
-  majorInfoLink,
+  parseMajorInfoLink,
 } from "../../../../../core/services";
 import { toTitleCase } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
@@ -31,7 +31,7 @@ const WrapperSection = styled.div`
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const AccordionView = ({ programms }) => {
+const AccordionView = ({ programms, actionUrls }) => {
   /**
    * @type {{
    *   content: {
@@ -49,10 +49,7 @@ const AccordionView = ({ programms }) => {
         <li>
           <strong>Major:</strong>
           <br />
-            <a href=${majorInfoLink(
-              resolver.getInstitution(),
-              resolver.getAcadPlan()
-            )}>
+            <a href=${parseMajorInfoLink(resolver, actionUrls.applyNowUrl)}>
               ${resolver.getMajorDesc()}
             </a>
         </li>

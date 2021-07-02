@@ -181,21 +181,10 @@ const DeferredInfoButtonIcon = ({
 };
 
 // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
-/* TODO: the component below is just a palce holder
-    restore the  export { InfoButtonIcon }; once is back in scope
+/* TODO: the component below is just a place holder
+     once the InfoIcon component is back in scope,
+     rename DeferredInfoButtonIcon to InfoButtonIcon
+     and remove `const InfoButtonIcon = _ => <span />;`
  */
-/**
- * @param {{
- *    popover: {
- *      title: string
- *      body: string | (() => Promise)
- *      withAuto: boolean
- *    }
- * }} props
- * @returns {JSX.Element}
- */
-// @ts-ignore
-// eslint-disable-next-line no-unused-vars
-const InfoButtonIcon = props => <span />;
+const InfoButtonIcon = _ => <span />;
 export { InfoButtonIcon };
-// export { InfoButtonIcon };

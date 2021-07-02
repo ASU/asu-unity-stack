@@ -72,6 +72,7 @@
  *                resolver?: import("./shared-types").DegreeDataPropResolver
  *                rowIndex?: number
  *                onClick?: (rowIndex: number, ...rest) => void
+ *                actionUrls?: ActionUrlProps
  *                onMouseOver?: (url: string) => void
  *                onMouseOut?: () => void
  *             }) => JSX.Element
@@ -87,14 +88,18 @@
  *    settings?: ColumSettings
  * }} GridListProps
  */
+/**
+ * @typedef {{
+ *    applyNowUrl?: string
+ *    majorInfoUrl?: string
+ *    majorInfoOnlineUrl?: string
+ *    accelerateDegreeUrl?: string
+ * }} ActionUrlProps
+ */
 
 /**
  * @typedef {{
- *  actionUrls?: {
- *    applyNowUrl?: string
- *    majorDetailPageUrl?: string
- *    accelerateDegreeDetailPageUrl?: string
- * }
+ *  actionUrls?: ActionUrlProps
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  hasSearchBar?: boolean

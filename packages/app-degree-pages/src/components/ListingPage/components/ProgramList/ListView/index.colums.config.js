@@ -8,12 +8,11 @@ import {
   //  FavButton
 } from "../../../../../core/components/icons";
 import {
-  accellerateDegreeLink,
-  accellerateDegreeTooltipLink,
-  majorInfoLink,
+  parseMajorInfoLink,
+  accellerateDegreeTooltipLink, // TODO: this link needs a double check
   mapTooltipLink,
-  // requestInfoLink,
-  // saveFav,
+  // requestInfoLink, // TODO: this contains the old page request info
+  // saveFav, // TODO: this should handle the save to favorite
 } from "../../../../../core/services/degree-http-service";
 import { idGenerator, toTitleCase } from "../../../../../core/utils";
 /** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
@@ -27,14 +26,9 @@ const columns = [
     ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
-    contentTemplate: ({ resolver, rowIndex, onClick }) => (
+    contentTemplate: ({ resolver, rowIndex, actionUrls, onClick }) => (
       <div className="cell-container">
-        <a
-          href={majorInfoLink(
-            resolver.getInstitution(),
-            resolver.getAcadPlan()
-          )}
-        >
+        <a href={parseMajorInfoLink(resolver, actionUrls?.majorInfoUrl)}>
           {resolver.getMajorDesc()}
         </a>
         <ChevronIconButton onClick={selected => onClick(rowIndex, selected)} />
@@ -85,7 +79,7 @@ const columns = [
       const genCampusId = idGenerator(`campus-`);
       return (
         <div>
-          {/* {resolver.getAsuOfficeLoc()} */}
+          {/* TODO: it maybe necessary {resolver.getAsuOfficeLoc()} */}
 
           {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
@@ -116,7 +110,7 @@ const columns = [
     ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
     sortable: true,
-    contentTemplate: ({ resolver }) => (
+    contentTemplate: ({ resolver, actionUrls }) => (
       <div>
         {resolver.getConcurrentDegrees().lenght > 0 && (
           <div className="cell-container">concurrent</div>
@@ -124,7 +118,10 @@ const columns = [
         {resolver.getAccelerateDegrees().length > 0 && (
           <div className="cell-container">
             <a
-              href={accellerateDegreeLink(resolver.getAcadPlan())}
+              href={parseMajorInfoLink(
+                resolver,
+                actionUrls.accelerateDegreeUrl
+              )}
               rel="noreferrer"
               target="_blank"
             >

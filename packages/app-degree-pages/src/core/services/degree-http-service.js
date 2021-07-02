@@ -5,8 +5,8 @@ import { fetchData } from "../utils/fetch-data";
 
 // for the final release this must be change to a relative path
 // likely would be `const path = "/programs";`
-const path = "https://webapp4.asu.edu/programs";
-// const path = "/programs";
+// const path = "https://webapp4.asu.edu/programs";
+const path = "/programs";
 
 /**
  *
@@ -17,24 +17,39 @@ async function getDegreePrograms(url) {
   return fetchData(url);
 }
 
+// /** TODO: keep as reference
+//  *
+//  * @param {string} institutionCode
+//  * @param {string} acadPlanCode
+//  * @param {string} program
+//  * @param {string} cert
+//  * @param {string} searchOnline
+//  * @returns
+//  */
+// function LEGACY_majorInfoLink(
+//   institutionCode = "ASU00",
+//   acadPlanCode,
+//   program = "undergrad",
+//   cert = "false",
+//   searchOnline = "" // searchOnline
+// ) {
+//   const url = `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}`;
+//   return !searchOnline ? url : `${url}/searchOnline`;
+// }
+
 /**
  *
- * @param {string} institutionCode
- * @param {string} acadPlanCode
- * @param {string} program
- * @param {string} cert
- * @param {string} searchOnline
- * @returns
+ * @param {import("../models/shared-types").DegreeDataPropResolver} resolver
+ * @param {string} majorInfoUrl
  */
-function majorInfoLink(
-  institutionCode = "ASU00",
-  acadPlanCode,
-  program = "undergrad",
-  cert = "false",
-  searchOnline = "" // searchOnline
-) {
-  const url = `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}`;
-  return !searchOnline ? url : `${url}/searchOnline`;
+function parseMajorInfoLink(resolver, majorInfoUrl) {
+  let res = majorInfoUrl || "";
+
+  res = res
+    .replaceAll("{INSTITUTION_CODE}", resolver.getInstitution())
+    .replaceAll("{ACAD_PLAN_CODE}", resolver.getAcadPlan());
+
+  return res;
 }
 
 function mapTooltipLink(location, program = "undergrad") {
@@ -44,14 +59,16 @@ function mapTooltipLink(location, program = "undergrad") {
 function mapTooltipSubPlanMapLink(acadPlanCode) {
   return `${path}/tooltipsubplanmajormap/listMajorMaps/ASU00/${acadPlanCode}`;
 }
-function accellerateDegreeLink(
-  acadPlanCode,
-  institutionCode = "ASU00",
-  program = "undergrad",
-  cert = "false"
-) {
-  return `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
-}
+
+// /** TODO: keep as reference
+// function Legacy_accellerateDegreeLink(
+//   acadPlanCode,
+//   institutionCode = "ASU00",
+//   program = "undergrad",
+//   cert = "false"
+// ) {
+//   return `${path}/t5/majorinfo/${institutionCode}/${acadPlanCode}/${program}/${cert}#accelerateDeg`;
+// }
 
 function accellerateDegreeTooltipLink(
   acadPlanCode,
@@ -62,6 +79,7 @@ function accellerateDegreeTooltipLink(
   return `${path}/tooltipdynamic/accelerate/${acadPlanCode}/null/${institutionCode}/${program}`;
 }
 
+//  TODO: this contains the old page request info
 function requestInfoLink(acadPlanCode, progNameDesc, emailAddress) {
   // todo: find out where to put  this constant. or replace with field coming from API
   const requestinfourl = "https://requestinfo.asu.edu/request-info";
@@ -76,6 +94,8 @@ function requestInfoLink(acadPlanCode, progNameDesc, emailAddress) {
     `&contact=${emailAddress}`
   );
 }
+
+// TODO: this should handle the save to favorite
 function saveFav(
   institutionCode = "ASU00",
   acadPlanCode,
@@ -91,13 +111,14 @@ function applyNow() {
 }
 
 export {
+  accellerateDegreeTooltipLink,
+  applyNow,
   getDegreePrograms,
-  majorInfoLink,
+  // majorInfoLink,
   mapTooltipLink,
   mapTooltipSubPlanMapLink,
-  accellerateDegreeLink,
-  accellerateDegreeTooltipLink,
+  // accellerateDegreeLink,
   requestInfoLink,
+  parseMajorInfoLink,
   saveFav,
-  applyNow,
 };

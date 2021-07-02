@@ -35,8 +35,15 @@ const Template = ({
   />
 );
 
+/** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  majorInfoUrl:
+    `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+    `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
+  accelerateDegreeUrl:
+    `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+    `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false#accelerateDeg`,
 };
 
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */

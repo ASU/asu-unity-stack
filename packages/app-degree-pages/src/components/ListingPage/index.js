@@ -276,6 +276,7 @@ const ListingPage = ({
             loading={loading || searchLoading}
             programms={tableView}
             columSettings={programList.settings}
+            actionUrls={actionUrls}
           />
         )}
       </Main>

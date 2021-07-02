@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
  *    programms: Object[]
  *    loading: boolean
  *    columSettings?: import("src/core/models/listing-page-types").ColumSettings
+ *    actionUrls: import("src/core/models/listing-page-types").ActionUrlProps
  * }} GridListingProps
  */
 
@@ -56,7 +57,13 @@ const programViewer = {
  *  dataViewComponent: GRID_VIEW_ID | LIST_VIEW_ID
  * } & GridListingProps} props
  */
-function ProgramList({ dataViewComponent, loading, programms, columSettings }) {
+function ProgramList({
+  dataViewComponent,
+  loading,
+  programms,
+  columSettings,
+  actionUrls,
+}) {
   const ROW_PAGES = 8;
   const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
@@ -87,11 +94,16 @@ function ProgramList({ dataViewComponent, loading, programms, columSettings }) {
             loading={loading}
             programms={tableView}
             columSettings={columSettings}
+            actionUrls={actionUrls}
           />
         </div>
 
         <div className="mobile-view mb-2">
-          <AccordionView loading={loading} programms={tableView} />
+          <AccordionView
+            loading={loading}
+            programms={tableView}
+            actionUrls={actionUrls}
+          />
         </div>
 
         <Pagination

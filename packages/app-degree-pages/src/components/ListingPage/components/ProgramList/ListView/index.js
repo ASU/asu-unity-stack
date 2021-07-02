@@ -85,14 +85,13 @@ const renderExtraInfo = ({ resolver }) => (
 );
 
 const genRowId = idGenerator(`row-`);
-// * @param {import("react").Ref<HTMLTableElement>} ?ref
 
 /**
  *
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const ListView = ({ programms, loading }) => {
+const ListView = ({ programms, loading, actionUrls }) => {
   /** @type {{current: HTMLTableElement}} */
   const tableRef = React.useRef(null);
   /** @type {{current: HTMLTableSectionElement}} */
@@ -154,6 +153,7 @@ const ListView = ({ programms, loading }) => {
                           row,
                           rowIndex,
                           onClick: setOpenRowIndex,
+                          actionUrls,
                         })}
                       </td>
                     ))}
