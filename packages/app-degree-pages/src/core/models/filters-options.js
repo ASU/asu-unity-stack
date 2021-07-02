@@ -19,7 +19,8 @@ const asuLocalOptions = [
   { id: 6, value: "TUCSN", label: "ASU@Tucson" },
   { id: 7, value: "YAVAP", label: "ASU@Yavapai" },
   { id: 8, value: "AWC", label: "ASU@Yuma" },
-  { id: 9, value: "CALHC", label: "Colleges at Lake Havasu City" },
+  { id: 9, value: "MESACITYCR", label: "ASU@Mesa City Center" },
+  { id: 10, value: "CALHC", label: "Colleges at Lake Havasu City" },
 ];
 
 const acceleratedConcurrentOptions = [
