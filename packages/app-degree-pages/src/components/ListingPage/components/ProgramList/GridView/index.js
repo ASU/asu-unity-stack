@@ -2,22 +2,22 @@
 // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 // @ts-check
 import { Card } from "@asu-design-system/components-core";
-import PropTypes from "prop-types";
 import React from "react";
 
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
 import {
-  majorInfoLink,
+  parseMajorInfoLink,
   requestInfoLink,
 } from "../../../../../core/services/degree-http-service";
+import { degreeListPropTypes } from "../programs-prop-types";
 import { SectionCard } from "./index.style";
 /**
  *
  * @param {import("..").GridListingProps} props
  * @returns
  */
-function GridView({ programms, loading }) {
+function GridView({ programms, loading, actionUrls }) {
   return (
     <SectionCard
       id={GRID_PROGRAMS_ID}
@@ -37,10 +37,7 @@ function GridView({ programms, loading }) {
               imageAltText="An example image"
               title={resolver.getMajorDesc()}
               linkLabel="View Program Details"
-              linkUrl={majorInfoLink(
-                resolver.getInstitution(),
-                resolver.getAcadPlan()
-              )}
+              linkUrl={parseMajorInfoLink(resolver, actionUrls.majorInfoUrl)}
               buttons={[
                 {
                   color: "maroon",
@@ -70,8 +67,7 @@ function GridView({ programms, loading }) {
 }
 
 GridView.propTypes = {
-  programms: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
+  ...degreeListPropTypes,
 };
 
 export { GridView };

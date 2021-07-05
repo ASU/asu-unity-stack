@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { linkPropType } from "../../../../core/models";
+import { linkPropShape } from "../../../../core/models";
 import { idGenerator } from "../../../../core/utils";
 
 /**
@@ -40,7 +40,7 @@ function Breadcrumbs({ breadcrumbs }) {
 }
 
 Breadcrumbs.propTypes = {
-  breadcrumbs: PropTypes.arrayOf(linkPropType),
+  breadcrumbs: PropTypes.arrayOf(linkPropShape),
 };
 
 export { Breadcrumbs };

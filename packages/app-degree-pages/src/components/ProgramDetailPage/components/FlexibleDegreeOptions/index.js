@@ -1,7 +1,10 @@
 // @ts-check
 import React from "react";
 
-import { flexibleDegreeOptionsLinks } from "../../../../core/models";
+import {
+  flexibleDegreeOptionsLinks,
+  progDetailSectionIds,
+} from "../../../../core/models";
 import { ContentBlock } from "./ContentBlock";
 
 /**
@@ -15,7 +18,7 @@ import { ContentBlock } from "./ContentBlock";
  */
 function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
   return (
-    <section>
+    <section id={progDetailSectionIds.flexibleDegreeOptions.targetIdName}>
       <h2>
         <span className="highlight-gold">Flexible degree options</span>
       </h2>

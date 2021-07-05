@@ -15,7 +15,10 @@ const progDetailSectionIds = {
     targetIdName: "application-requirements",
     text: "Application Requirements",
   },
-  // changeMajorRequirements?: HtargetIdNameeProp
+  changeMajorRequirements: {
+    targetIdName: "change-major-requirements",
+    text: "Change Major Requirement",
+  },
   nextSteps: {
     targetIdName: "next-steps",
     text: "Next Steps",
@@ -24,22 +27,32 @@ const progDetailSectionIds = {
     targetIdName: "affording-college",
     text: "Affording College",
   },
-  // flexibleDegreeOptions?: HtargetIdNameeProp
+  flexibleDegreeOptions: {
+    targetIdName: "flexible-degree-options",
+    text: "Flexible Degree Options",
+  },
   careerOutlook: {
     targetIdName: "career-outlook",
     text: "Career opportunities",
   },
-  // exampleCareers?: HtargetIdNameeProp
+  exampleCareers: {
+    targetIdName: "example-careers",
+    text: "Example Careers",
+  },
+  // TODO: To be implemented
   // customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
   globalOpportunity: {
     targetIdName: "global-opportunity",
     text: "Global opportunities",
   },
-  // attendOnline?: AttendOnlineProps
-  // programContactInfo?: {
-  //     departmentUrl: string
-  //     emailUrl: string
-  // }
+  attendOnline: {
+    targetIdName: "attend-online",
+    text: "Attend Online",
+  },
+  programContactInfo: {
+    targetIdName: "Program Contact Info",
+    text: "Global opportunities",
+  },
 };
 
 export { progDetailSectionIds };

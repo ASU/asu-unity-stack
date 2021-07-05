@@ -4,6 +4,7 @@ import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { progDetailSectionIds } from "../../../../core/models";
 import { imagePropType } from "../../../../core/models/app-prop-types";
 import { idGenerator } from "../../../../core/utils";
 
@@ -27,6 +28,7 @@ function AttendOnline({ image, learnMoreLink, contents }) {
   const genId = idGenerator("attend-online-");
   return (
     <section
+      id={progDetailSectionIds.attendOnline.targetIdName}
       className="uds-card-and-image"
       style={{
         backgroundImage,

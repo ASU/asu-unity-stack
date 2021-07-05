@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { exampleCareersTableDataPropTypes } from "../../../../../core/models/app-prop-types";
+import { exampleCareersTableDataPropShape } from "../../../../../core/models/app-prop-types";
 import { SunIcon, LeafIcon } from "../index.style";
 
 /**
@@ -53,7 +53,7 @@ function Table({ data }) {
 }
 
 Table.propTypes = {
-  data: PropTypes.arrayOf(exampleCareersTableDataPropTypes),
+  data: PropTypes.arrayOf(exampleCareersTableDataPropShape),
 };
 
 export { Table };

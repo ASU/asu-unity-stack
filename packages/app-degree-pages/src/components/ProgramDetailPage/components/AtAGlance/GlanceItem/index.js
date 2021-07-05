@@ -2,7 +2,10 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
-import { glanceItemPropType, glanceItemsMap } from "../../../../../core/models";
+import {
+  glanceItemPropShape,
+  glanceItemsMap,
+} from "../../../../../core/models";
 import { idGenerator } from "../../../../../core/utils/id-generator";
 
 /**
@@ -47,7 +50,7 @@ export const GlanceItem = ({ item, type }) => {
 
 GlanceItem.propTypes = {
   item: PropTypes.oneOfType([
-    PropTypes.arrayOf(glanceItemPropType),
+    PropTypes.arrayOf(glanceItemPropShape),
     PropTypes.string,
   ]),
   type: PropTypes.string,

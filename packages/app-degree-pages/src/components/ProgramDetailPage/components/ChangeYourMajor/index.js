@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import { progDetailSectionIds } from "../../../../core/models";
 import { sanitizeHTML } from "../../../../core/utils";
 
 const WrapperContainer = styled.div`
@@ -23,7 +24,10 @@ const WrapperContainer = styled.div`
  */
 function ChangeYourMajor({ content }) {
   return (
-    <section className="change-your-major">
+    <section
+      id={progDetailSectionIds.changeMajorRequirements.targetIdName}
+      className="change-your-major"
+    >
       <h2>
         <span className="highlight-gold">
           Change Your Major requirements for current students

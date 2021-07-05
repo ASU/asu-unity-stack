@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { progDetailSectionIds } from "../../../../core/models";
-import { glanceItemPropType } from "../../../../core/models/app-prop-types";
+import { glanceItemPropShape } from "../../../../core/models/app-prop-types";
 import { GlanceItem } from "./GlanceItem";
 
 /**
@@ -48,8 +48,8 @@ export const AtAGlance = ({
 };
 
 AtAGlance.propTypes = {
-  offeredBy: glanceItemPropType.isRequired,
-  locations: PropTypes.arrayOf(glanceItemPropType).isRequired,
+  offeredBy: glanceItemPropShape.isRequired,
+  locations: PropTypes.arrayOf(glanceItemPropShape).isRequired,
   firstRequirementMathCourse: PropTypes.string.isRequired,
   mathIntensity: PropTypes.string.isRequired,
   timeCommitment: PropTypes.string,

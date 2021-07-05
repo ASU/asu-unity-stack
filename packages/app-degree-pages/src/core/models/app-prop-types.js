@@ -1,7 +1,7 @@
 // @ts-check
 import PropTypes from "prop-types";
 
-const accordionCardPropTypes = PropTypes.shape({
+const accordionCardPropShape = PropTypes.shape({
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   content: PropTypes.shape({
     icon: PropTypes.string,
@@ -10,7 +10,7 @@ const accordionCardPropTypes = PropTypes.shape({
   }),
 });
 
-const buttonPropTypes = PropTypes.shape({
+const buttonPropShape = PropTypes.shape({
   ariaLabel: PropTypes.string,
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   icon: PropTypes.string,
@@ -20,46 +20,46 @@ const buttonPropTypes = PropTypes.shape({
   size: PropTypes.oneOf(["default", "small", "xsmall"]),
 });
 
-const imagePropTypes = {
+const imagePropType = {
   url: PropTypes.string,
   altText: PropTypes.string,
   cssClass: PropTypes.arrayOf(PropTypes.string),
 };
 
-const contentPropTypes = {
+const contentPropType = {
   text: PropTypes.string,
   cssClass: PropTypes.arrayOf(PropTypes.string),
 };
 
-const videoPropTypes = {
+const videoPropType = {
   url: PropTypes.string,
   altText: PropTypes.string,
   vttUrl: PropTypes.string,
 };
 
-const linkPropTypes = {
+const linkPropType = {
   url: PropTypes.string,
   text: PropTypes.string,
   isActive: PropTypes.bool,
 };
 
-const imagePropType = PropTypes.shape({
-  ...imagePropTypes,
+const imagePropShape = PropTypes.shape({
+  ...imagePropType,
 });
 
-const contentPropType = PropTypes.shape({
-  ...contentPropTypes,
+const contentPropShape = PropTypes.shape({
+  ...contentPropType,
 });
 
-const videoPropType = PropTypes.shape({
-  ...videoPropTypes,
+const videoPropShape = PropTypes.shape({
+  ...videoPropType,
 });
 
-const linkPropType = PropTypes.shape({
-  ...linkPropTypes,
+const linkPropShape = PropTypes.shape({
+  ...linkPropType,
 });
 
-const dataSourcePropType = PropTypes.shape({
+const dataSourcePropShape = PropTypes.shape({
   id: PropTypes.string,
   sourceType: PropTypes.oneOf(["api", "shared-data-source", "static-json"]), // default `api`
   sharedDataSourceId: PropTypes.string, // only if `dataSourceType == "shared-data-source"``
@@ -67,16 +67,16 @@ const dataSourcePropType = PropTypes.shape({
   apiUrl: PropTypes.string, // only if `dataSourceType == "api"``
 });
 
-const glanceItemPropType = PropTypes.shape({
+const glanceItemPropShape = PropTypes.shape({
   text: PropTypes.string,
   url: PropTypes.string,
 });
 
-const cardPropTypes = PropTypes.shape({
+const cardPropShape = PropTypes.shape({
   icon: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.string,
-  buttonLink: buttonPropTypes,
+  buttonLink: buttonPropShape,
 });
 
 const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
@@ -86,36 +86,64 @@ const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
   })
 );
 
-const exampleCareersTableDataPropTypes = PropTypes.shape({
-  career: linkPropType,
+const exampleCareersTableDataPropShape = PropTypes.shape({
+  career: linkPropShape,
   growth: PropTypes.number,
   medianSalary: PropTypes.string,
   brightOutlook: PropTypes.bool,
   greenOccupation: PropTypes.bool,
 });
 
-const columSettingsPropTypes = {
+const columSettingsPropType = {
   hideCollegeSchool: PropTypes.bool,
 };
 
-const columSettingsPropType = PropTypes.shape({
-  ...columSettingsPropTypes,
+const columSettingsPropShape = PropTypes.shape({
+  ...columSettingsPropType,
+});
+
+const anchorMenuPropType = {
+  atAGlance: PropTypes.bool,
+  applicationRequirements: PropTypes.bool,
+  changeMajorRequirements: PropTypes.bool,
+  nextSteps: PropTypes.bool,
+  affordingCollege: PropTypes.bool,
+  flexibleDegreeOptions: PropTypes.bool,
+  careerOutlook: PropTypes.bool,
+  exampleCareers: PropTypes.bool,
+  customizeYourCollegeExperience: PropTypes.bool,
+  globalOpportunity: PropTypes.bool,
+  attendOnline: PropTypes.bool,
+  programContactInfo: PropTypes.bool,
+  externalAnchors: PropTypes.arrayOf(
+    PropTypes.shape({
+      targetIdName: PropTypes.string,
+      text: PropTypes.string,
+    })
+  ),
+};
+
+const anchorMenuPropShape = PropTypes.shape({
+  ...anchorMenuPropType,
 });
 
 export {
-  accordionCardPropTypes,
-  buttonPropTypes,
-  linkPropType,
+  anchorMenuPropType,
+  anchorMenuPropShape,
+  accordionCardPropShape,
+  buttonPropShape,
+  linkPropShape,
+  videoPropShape,
   videoPropType,
+  imagePropShape,
+  contentPropShape,
   imagePropType,
   contentPropType,
-  imagePropTypes,
-  contentPropTypes,
-  dataSourcePropType,
-  glanceItemPropType,
-  cardPropTypes,
+  dataSourcePropShape,
+  glanceItemPropShape,
+  cardPropShape,
   flexibleDegreeOptionsLinks,
-  exampleCareersTableDataPropTypes,
+  exampleCareersTableDataPropShape,
+  columSettingsPropShape,
   columSettingsPropType,
-  columSettingsPropTypes,
 };

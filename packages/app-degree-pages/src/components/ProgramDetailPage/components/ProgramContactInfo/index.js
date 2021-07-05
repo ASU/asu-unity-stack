@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { linkPropType } from "../../../../core/models";
+import { linkPropShape, progDetailSectionIds } from "../../../../core/models";
 
 const ListContainer = styled.ul`
   list-style: none;
@@ -42,7 +42,7 @@ const ListContainer = styled.ul`
  */
 function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
   return (
-    <section>
+    <section id={progDetailSectionIds.programContactInfo.targetIdName}>
       <h2>
         <span className="highlight-gold">Program contact information</span>
       </h2>
@@ -81,9 +81,9 @@ function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
 }
 
 ProgramContactInfo.propTypes = {
-  department: linkPropType,
+  department: linkPropShape,
   asuOfficeLoc: PropTypes.string,
-  email: linkPropType,
+  email: linkPropShape,
   phone: PropTypes.string,
 };
 

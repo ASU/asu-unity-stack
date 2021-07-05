@@ -3,6 +3,26 @@
 /**
  * This type set the `url` and `isActive` optional
  * @typedef {{
+ *    atAGlance: boolean,
+ *    applicationRequirements: boolean,
+ *    changeMajorRequirements: boolean,
+ *    nextSteps: boolean,
+ *    affordingCollege: boolean,
+ *    flexibleDegreeOptions: boolean,
+ *    careerOutlook: boolean,
+ *    exampleCareers: boolean,
+ *    customizeYourCollegeExperience: boolean,
+ *    globalOpportunity: boolean,
+ *    attendOnline: boolean,
+ *    programContactInfo: boolean,
+ *    externalAnchors: {
+ *        targetIdName: string
+ *        text: string,
+ *      }[],
+ * }} AnchorMenuProps
+/**
+ * This type set the `url` and `isActive` optional
+ * @typedef {{
  *    url?: string
  *    text: string
  *    isActive?: boolean
@@ -123,8 +143,8 @@
  *  }} HideProp
  *
  *  @typedef {{
- *  acadPlan?: string
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
+ *  anchorMenu?: AnchorMenuProps
  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps

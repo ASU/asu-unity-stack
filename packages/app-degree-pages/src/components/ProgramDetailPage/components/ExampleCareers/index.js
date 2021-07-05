@@ -3,7 +3,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { exampleCareersTableDataPropTypes } from "../../../../core/models/app-prop-types";
+import { progDetailSectionIds } from "../../../../core/models";
+import { exampleCareersTableDataPropShape } from "../../../../core/models/app-prop-types";
 import { SunIcon, LeafIcon } from "./index.style";
 import { Table } from "./Table";
 
@@ -18,7 +19,7 @@ import { Table } from "./Table";
  */
 function ExampleCareers({ tableData }) {
   return (
-    <section>
+    <section id={progDetailSectionIds.exampleCareers.targetIdName}>
       <h2>Example careers</h2>
       <p>
         Students who complete this degree program may be prepared for the
@@ -51,7 +52,7 @@ function ExampleCareers({ tableData }) {
 }
 
 ExampleCareers.propTypes = {
-  tableData: PropTypes.arrayOf(exampleCareersTableDataPropTypes),
+  tableData: PropTypes.arrayOf(exampleCareersTableDataPropShape),
 };
 
 export { ExampleCareers };

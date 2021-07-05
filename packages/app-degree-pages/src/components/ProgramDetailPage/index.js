@@ -1,19 +1,26 @@
 // @ts-check
-import { AnchorMenu, Hero } from "@asu-design-system/components-core";
+import { Hero } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { ErrorAlert, Loader, Main, ThemeStyle, Video } from "../../core/components";
+import {
+  ErrorAlert,
+  Loader,
+  Main,
+  OnThisPageAnchorMenu,
+  ThemeStyle,
+  Video,
+} from "../../core/components";
 import { programDetailFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
-  dataSourcePropType,
-  imagePropType,
-  linkPropType,
-  cardPropTypes,
-  videoPropType,
-  progDetailSectionIds,
+  anchorMenuPropType,
+  cardPropShape,
+  dataSourcePropShape,
+  linkPropShape,
+  imagePropShape,
+  videoPropShape,
 } from "../../core/models";
 import {
   degreeDataPropResolverService,
@@ -57,6 +64,7 @@ const VideoWrapper = styled.div`
  */
 const ProgramDetailPage = ({
   dataSource,
+  anchorMenu,
   hero,
   introContent,
   atAGlance,
@@ -88,9 +96,6 @@ const ProgramDetailPage = ({
     setResolver(newResolver);
   }, [data?.programs]);
 
-  // eslint-disable-next-line no-console
-  console.log("data", data);
-
   return (
     <>
       <ThemeStyle />
@@ -106,12 +111,9 @@ const ProgramDetailPage = ({
           />
         </section>
       ) : null}
-      <AnchorMenu
-        items={Object.values(progDetailSectionIds).map(item => ({
-          ...item,
-          icon: null,
-        }))}
-      />
+
+      <OnThisPageAnchorMenu anchorMenu={anchorMenu} />
+
       <Main data-is-loading={loading} className="main-section">
         {loading ? (
           <Loader />
@@ -294,21 +296,22 @@ const ProgramDetailPage = ({
 };
 
 ProgramDetailPage.propTypes = {
-  dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
+  dataSource: PropTypes.oneOfType([dataSourcePropShape, PropTypes.string]),
+  anchorMenu: PropTypes.shape(anchorMenuPropType),
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape({
     hideMarketText: PropTypes.bool,
     hideProgramDesc: PropTypes.bool,
     hideRequiredCourses: PropTypes.bool,
-    breadcrumbs: arrayOf(linkPropType),
+    breadcrumbs: arrayOf(linkPropShape),
     contents: arrayOf(PropTypes.object),
-    video: videoPropType,
-    image: imagePropType,
+    video: videoPropShape,
+    image: imagePropShape,
   }),
   atAGlance: PropTypes.shape({
     hide: PropTypes.bool,
-    offeredBy: linkPropType,
-    locations: arrayOf(linkPropType),
+    offeredBy: linkPropShape,
+    locations: arrayOf(linkPropShape),
     firstRequirementMathCourse: PropTypes.string,
     mathIntensity: PropTypes.string,
     timeCommitment: PropTypes.string,
@@ -317,16 +320,16 @@ ProgramDetailPage.propTypes = {
   changeMajorRequirements: PropTypes.shape({ hide: PropTypes.bool }),
   affordingCollege: PropTypes.shape({ hide: PropTypes.bool }),
   flexibleDegreeOptions: PropTypes.shape({ hide: PropTypes.bool }),
-  careerOutlook: PropTypes.shape({ image: imagePropType }),
+  careerOutlook: PropTypes.shape({ image: imagePropShape }),
   exampleCareers: PropTypes.shape({ hide: PropTypes.bool }),
-  globalOpportunity: PropTypes.shape({ image: imagePropType }),
-  attendOnline: PropTypes.shape({ image: imagePropType }),
+  globalOpportunity: PropTypes.shape({ image: imagePropShape }),
+  attendOnline: PropTypes.shape({ image: imagePropShape }),
   programContactInfo: PropTypes.shape({
     departmentUrl: PropTypes.string,
     emailUrl: PropTypes.string,
   }),
   nextSteps: PropTypes.shape({
-    cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+    cards: PropTypes.arrayOf(cardPropShape).isRequired,
   }),
 };
 

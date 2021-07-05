@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {
-  accordionCardPropTypes,
+  accordionCardPropShape,
   progDetailSectionIds,
 } from "../../../../core/models";
 import { ButtonsContainer } from "./index.style";
@@ -70,7 +70,7 @@ function ApplicationRequirements({ accordionCards }) {
 }
 
 ApplicationRequirements.propTypes = {
-  accordionCards: PropTypes.arrayOf(accordionCardPropTypes).isRequired,
+  accordionCards: PropTypes.arrayOf(accordionCardPropShape).isRequired,
 };
 
 export { ApplicationRequirements };

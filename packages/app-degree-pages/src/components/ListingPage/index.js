@@ -14,8 +14,8 @@ import { programListFields } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import {
-  columSettingsPropType,
-  dataSourcePropType,
+  columSettingsPropShape,
+  dataSourcePropShape,
 } from "../../core/models/app-prop-types";
 import { degreeDataPropResolverService } from "../../core/services";
 import { urlResolver } from "../../core/utils";
@@ -293,8 +293,8 @@ ListingPage.propTypes = {
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
   programList: PropTypes.shape({
-    dataSource: PropTypes.oneOfType([dataSourcePropType, PropTypes.string]),
-    settings: columSettingsPropType,
+    dataSource: PropTypes.oneOfType([dataSourcePropShape, PropTypes.string]),
+    settings: columSettingsPropShape,
   }),
 };
 

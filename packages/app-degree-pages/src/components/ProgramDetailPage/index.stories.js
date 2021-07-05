@@ -24,6 +24,26 @@ const defaultArgs = {
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
+  anchorMenu: {
+    atAGlance: true,
+    applicationRequirements: true,
+    changeMajorRequirements: true,
+    nextSteps: true,
+    affordingCollege: true,
+    flexibleDegreeOptions: true,
+    careerOutlook: true,
+    exampleCareers: true,
+    customizeYourCollegeExperience: true,
+    globalOpportunity: true,
+    attendOnline: true,
+    programContactInfo: true,
+    externalAnchors: [
+      {
+        targetIdName: "my-request-form-info-id",
+        text: "Request Information",
+      },
+    ],
+  },
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
@@ -189,6 +209,7 @@ const defaultArgs = {
  */
 const Template = ({
   dataSource,
+  anchorMenu,
   introContent,
   hero,
   atAGlance,
@@ -205,6 +226,7 @@ const Template = ({
 }) => (
   <ProgramDetailPage
     dataSource={dataSource}
+    anchorMenu={anchorMenu}
     introContent={introContent}
     hero={hero}
     atAGlance={atAGlance}

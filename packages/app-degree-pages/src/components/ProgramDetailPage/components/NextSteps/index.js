@@ -3,7 +3,7 @@ import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { progDetailSectionIds, cardPropTypes } from "../../../../core/models";
+import { progDetailSectionIds, cardPropShape } from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/models/program-detail-types').NextStepsProps} NextStepsProps
@@ -38,7 +38,7 @@ function NextSteps({ cards }) {
 }
 
 NextSteps.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  cards: PropTypes.arrayOf(cardPropShape).isRequired,
 };
 
 export { NextSteps };

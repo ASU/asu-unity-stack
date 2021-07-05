@@ -10,9 +10,10 @@ import {
   Video,
 } from "../../../../core/components";
 import {
+  contentPropShape,
   contentPropType,
-  contentPropTypes,
   imagePropType,
+  imagePropShape,
   tagHeadingList,
   videoPropType,
 } from "../../../../core/models";
@@ -260,16 +261,16 @@ IntroContent.propTypes = {
     "text-image-overlay",
     "text-photo-grid",
   ]).isRequired,
-  video: videoPropType,
-  image: imagePropType,
+  video: PropTypes.shape({ ...videoPropType }),
+  image: PropTypes.shape({ ...imagePropType }),
   header: contentPropType,
   title: PropTypes.shape({
-    ...contentPropTypes,
+    ...contentPropType,
     component: PropTypes.oneOf(tagHeadingList),
   }),
-  contents: PropTypes.arrayOf(contentPropType),
+  contents: PropTypes.arrayOf(contentPropShape),
   photoGrid: PropTypes.shape({
-    images: PropTypes.arrayOf(imagePropType),
+    images: PropTypes.arrayOf(imagePropShape),
   }),
 };
 
