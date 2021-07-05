@@ -74,10 +74,10 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
 
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
-    const contentToDisplay =
-      item.content.length > 250
-        ? `${item.content.substring(0, 250)}...`
-        : item.content;
+    let contentToDisplay = item.content;
+    if(contentToDisplay && contentToDisplay.length > 250){
+      contentToDisplay = `${contentToDisplay.substring(0, 250)}...`;
+    }
     setTitle(item.title);
     setContent(contentToDisplay);
   };
@@ -101,23 +101,20 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
     });
   }, [instanceName]);
 
-  useEffect(() => {
-    const imgs = document.querySelectorAll(".image-navigator img");
-    imgs.forEach(img =>
-      img.addEventListener("click", e => e.stopPropagation())
-    );
-  }, []);
-
   const bulletItems = imageItems.map(item => item.imageSource);
   return (
     <div className="image-gallery-action-area" data-has-content={hasContent}>
       <div className="image-navigator">
         <BaseNavButtonContainer>
           <PrevButton />
-          <ImageBulletItems
-            imageItems={bulletItems}
-            onItemClick={index => onItemClick(index)}
-          />
+          <div className="image-navigator-images">
+            <div className="navigation-slider">
+              <ImageBulletItems
+                imageItems={bulletItems}
+                onItemClick={index => onItemClick(index)}
+              />
+            </div>
+          </div>
           <NextButton />
         </BaseNavButtonContainer>
       </div>
