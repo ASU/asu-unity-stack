@@ -27,16 +27,10 @@ const defaultArgs = {
   anchorMenu: {
     atAGlance: true,
     applicationRequirements: true,
-    changeMajorRequirements: true,
     nextSteps: true,
     affordingCollege: true,
-    flexibleDegreeOptions: true,
     careerOutlook: true,
-    exampleCareers: true,
-    customizeYourCollegeExperience: true,
     globalOpportunity: true,
-    attendOnline: true,
-    programContactInfo: true,
     externalAnchors: [
       {
         targetIdName: "my-request-form-info-id",
@@ -44,6 +38,26 @@ const defaultArgs = {
       },
     ],
   },
+  // anchorMenu: {
+  //   atAGlance: true,
+  //   applicationRequirements: true,
+  //   changeMajorRequirements: true,
+  //   nextSteps: true,
+  //   affordingCollege: true,
+  //   flexibleDegreeOptions: true,
+  //   careerOutlook: true,
+  //   exampleCareers: true,
+  //   customizeYourCollegeExperience: true,
+  //   globalOpportunity: true,
+  //   attendOnline: true,
+  //   programContactInfo: true,
+  //   externalAnchors: [
+  //     {
+  //       targetIdName: "my-request-form-info-id",
+  //       text: "Request Information",
+  //     },
+  //   ],
+  // },
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",

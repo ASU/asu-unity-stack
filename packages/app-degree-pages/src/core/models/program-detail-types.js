@@ -3,19 +3,19 @@
 /**
  * This type set the `url` and `isActive` optional
  * @typedef {{
- *    atAGlance: boolean,
- *    applicationRequirements: boolean,
- *    changeMajorRequirements: boolean,
- *    nextSteps: boolean,
- *    affordingCollege: boolean,
- *    flexibleDegreeOptions: boolean,
- *    careerOutlook: boolean,
- *    exampleCareers: boolean,
- *    customizeYourCollegeExperience: boolean,
- *    globalOpportunity: boolean,
- *    attendOnline: boolean,
- *    programContactInfo: boolean,
- *    externalAnchors: {
+ *    atAGlance?: boolean,
+ *    applicationRequirements?: boolean,
+ *    changeMajorRequirements?: boolean,
+ *    nextSteps?: boolean,
+ *    affordingCollege?: boolean,
+ *    flexibleDegreeOptions?: boolean,
+ *    careerOutlook?: boolean,
+ *    exampleCareers?: boolean,
+ *    customizeYourCollegeExperience?: boolean,
+ *    globalOpportunity?: boolean,
+ *    attendOnline?: boolean,
+ *    programContactInfo?: boolean,
+ *    externalAnchors?: {
  *        targetIdName: string
  *        text: string,
  *      }[],

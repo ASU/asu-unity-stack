@@ -33,7 +33,7 @@ const progDetailSectionIds = {
   },
   careerOutlook: {
     targetIdName: "career-outlook",
-    text: "Career opportunities",
+    text: "Career Outlook",
   },
   exampleCareers: {
     targetIdName: "example-careers",
