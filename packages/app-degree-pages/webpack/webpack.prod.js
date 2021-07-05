@@ -1,7 +1,7 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const common = require("./webpack.common.js");
+const common = require("./webpack.common");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
@@ -12,8 +12,12 @@ const config = {
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
     filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "Asu[name]",
+    library: {
+      name: "AsuDegreePages",
+      type: "umd",
+      umdNamedDefine: true,
+      // export: "default",
+    },
     umdNamedDefine: true,
   },
   optimization: {

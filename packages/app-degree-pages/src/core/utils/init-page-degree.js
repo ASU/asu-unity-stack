@@ -3,22 +3,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ListingPage } from "../../components";
+import { ListingPage, ProgramDetailPage } from "../../components";
 
 /**
- * @typedef {Object} DegreeProps
+ * @typedef {Object} ComponentProps
  * @property {string} targetSelector - The CSS selector (#id or .class)
  * which identify the <div> element where the header should be rendered.
- * @property {object} props - Properties to initialize the component with.
+ * @property {Object} props - Properties to initialize the component with.
  */
 
 /**
- * @param {DegreeProps} props
+ * @param {ComponentProps} props
  */
-const initDegreePage = ({ targetSelector, props }) => {
+const RenderReact = (component, props, targetSelector) => {
   const target = document.querySelector(targetSelector);
-  const element = React.createElement(() => <ListingPage />, props);
-  ReactDOM.render(element, target);
+  ReactDOM.render(React.createElement(component, props), target);
 };
 
-export { initDegreePage };
+/**
+ * @param {ComponentProps} props
+ */
+const initListingPage = ({ targetSelector, props }) => {
+  RenderReact(ListingPage, props, targetSelector);
+};
+
+/**
+ * @param {ComponentProps} props
+ */
+const initProgramDetailPage = ({ targetSelector, props }) => {
+  RenderReact(ProgramDetailPage, props, targetSelector);
+};
+
+export { initListingPage, initProgramDetailPage };

@@ -48,6 +48,6 @@ function setActivePageLink() {
   });
 }
 
-document.head.insertAdjacentHTML("beforeend", style);
-document.querySelector(".container").insertAdjacentHTML("afterbegin", toolBar);
+// document.head.insertAdjacentHTML("beforeend", style);
+// document.querySelector(".container").insertAdjacentHTML("afterbegin", toolBar);
 setActivePageLink();

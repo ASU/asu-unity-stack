@@ -50,11 +50,11 @@ const actionUrls = {
 const dataSource = {
   endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   method: "findAllDegrees",
-  init: "false",
+  init: "false", // "true" | "false"Î
   program: "undergrad", // graduate | undergrad
-  cert: "false",
-  CollegeAcadOrg: null, //  example values: CLW, CTB, CTE
-  DepartmentCode: null, //  example values: CMANAGE, CHUMARTCLT, CHL
+  cert: "false", // "true" | "false"
+  CollegeAcadOrg: null, //  OPTIONAL: example values: CLW, CTB, CTE
+  DepartmentCode: null, //  OPTIONAL: example values: CMANAGE, CHUMARTCLT, CHL
 };
 
 /**
@@ -89,8 +89,8 @@ UndergraduateDegreePage.args = {
       },
     ],
   },
-  // hasFilters: false,
-  // hasSearchBar: false,
+  // hasFilters: false, // OPTIONAL
+  // hasSearchBar: false, // OPTIONAL
   programList: {
     dataSource,
     settings: {

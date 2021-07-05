@@ -15,19 +15,6 @@
  * }} IntroContentProps
  */
 
-/* TODO: condider to remove this type, the application does not look to rquire
-         this level of complexity. The datasource look to be a simple string
-          which reppresents the API URL
-*/
-//  * TODO: remove it if not needed anymore
-//  * @typedef {{
-//  *    id?: string
-//  *    sourceType?: "api" | "shared-data-source" | "static-json" // default `api`
-//  *    sharedDataSourceId?: string // only if `dataSourceType == "shared-data-source"``
-//  *    data?: object[] // only if `dataSourceType == "static-json"``
-//  *    apiUrl?: string  // only if `dataSourceType == "api"``
-//  * }} OldAppDataSource
-
 /**
  * @typedef {"true" | "false"} stringBool
  *

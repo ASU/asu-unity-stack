@@ -1,3 +1,2 @@
-import { ListingPage } from "./ListingPage";
-
-export { ListingPage };
+export * from "./ListingPage";
+export * from "./ProgramDetailPage";
