@@ -22,6 +22,15 @@ Sidebar Navigation
 --------------------------------------------------------------------*/
 
 .sidebar {
+  &.gray-7-bg {
+    a.nav-link,
+    button.nav-link {
+      color: $uds-color-background-white;
+    }
+    .card-foldable {
+      background-color: $uds-color-base-gray-7;
+    }
+  }
   .nav-text {
     @include like-an-h5;
     color: $uds-color-base-gray-7;
