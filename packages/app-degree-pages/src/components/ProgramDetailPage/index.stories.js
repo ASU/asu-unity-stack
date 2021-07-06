@@ -20,7 +20,7 @@ const defaultArgs = {
     endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
     method: "findDegreeByAcadPlan",
     init: "false",
-    acadPlan: "BABUSGLBA",
+    acadPlan: "BABUSGLBA", // any valid acadPlan code
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
