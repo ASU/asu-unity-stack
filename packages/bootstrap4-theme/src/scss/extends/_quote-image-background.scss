@@ -1,6 +1,8 @@
 .uds-quote-image-background {
-  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: top;
+  align-items: flex-end;
   color: $uds-color-base-white !important;
   display: flex;
   flex-direction: row;
