@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Degree Page- Example page</title>
+    <title>Listing Page- Example page</title>
     <!-- CSS only -->
+    <!-- FONTAWESOME loaded from CDN 'kit' URL -->
+    <script
+      src="https://kit.fontawesome.com/35fb12a3a9.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link
       rel="stylesheet"
       href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
     />
+
     <!-- *************************************************************** -->
     <!-- Load React. -->
     <script
@@ -29,7 +36,6 @@
     <!-- <script src="../mocks/RequestInfoForm/index.js"></script> -->
   </head>
   <body>
-
     <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
     <div id="degreePageContainer"></div>
 
@@ -53,8 +59,10 @@
       const actionUrls = {
         applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
         majorInfoUrl:
-          `https://webapp4.asu.edu/programs/t5/majorinfo/` +
-          `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
+          `/examples/program-detail-page.html` + `?acadPlan={ACAD_PLAN_CODE}`,
+        // majorInfoUrl:
+        //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+        //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
         accelerateDegreeUrl:
           `https://webapp4.asu.edu/programs/t5/majorinfo/` +
           `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false#accelerateDeg`,
