@@ -29,12 +29,14 @@
     margin-top: $uds-size-spacing-3;
 
     &.auto-arrangement {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: $uds-size-spacing-3;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: row;
       row-gap: $uds-size-spacing-3;
-      .card {
-        max-width: 320px;
+      &.three-columns {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      &.four-columns {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
@@ -69,10 +71,36 @@
   }
 
   @media screen and (max-width: $uds-breakpoint-xl) {
-    padding: 0 $uds-size-spacing-2;
+    & > &-card-container {
+      &.auto-arrangement {
+        &.four-columns {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $uds-breakpoint-lg) {
+    & > &-card-container {
+      &.auto-arrangement {
+        &.four-columns,
+        &.three-columns {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
   }
 
   @media screen and (max-width: $uds-breakpoint-sm) {
     flex-direction: column;
+    & > &-card-container {
+      &.auto-arrangement {
+        grid-template-columns: 1fr;
+        &.four-columns,
+        &.three-columns {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
   }
 }
