@@ -20,11 +20,13 @@ import { Header } from "./index.styles";
  */
 
 const ASUHeader = ({
+  isPartner = false,
   navTree,
   title,
   baseUrl = "/",
   parentOrg,
   parentOrgUrl,
+  partnerLogo,
   logo,
   loggedIn,
   userName,
@@ -56,11 +58,13 @@ const ASUHeader = ({
   return (
     <AppContextProvider
       initialValue={{
+        isPartner,
         navTree,
         title,
         baseUrl,
         parentOrg,
         parentOrgUrl,
+        partnerLogo,
         logo,
         loggedIn,
         userName,

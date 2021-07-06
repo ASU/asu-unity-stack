@@ -29,6 +29,12 @@ const Wrapper = styled.div`
       align-items: center;
       flex-wrap: wrap;
       justify-content: space-between;
+      &.partner {
+        flex-direction: row-reverse;
+      }
+    }
+    .expand-title {
+      width: 100%;
     }
     .navbar-brand {
       padding: 0;

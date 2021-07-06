@@ -23,7 +23,9 @@ const LoginPropTypes = {
 };
 
 const HeaderPropTypes = {
+  isPartner: PropTypes.bool,
   navTree: PropTypes.arrayOf(PropTypes.object),
+  partnerLogo: PropTypes.shape(LogoPropTypes),
   logo: PropTypes.shape(LogoPropTypes),
   title: PropTypes.string,
   parentOrg: TitlePropTypes.parentOrg,

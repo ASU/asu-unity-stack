@@ -35,6 +35,7 @@ const Template = args => (
 
 export const Default = Template.bind({});
 Default.args = {
+  isPartner: false,
   loggedIn: false,
   userName: "",
   navTree: basicNavTree,
@@ -124,3 +125,10 @@ ExpandOnHover.args = {
 };
 
 export const Partner = Template.bind({});
+Partner.args = {
+  isPartner: true,
+  navTree: basicNavTree,
+  loggedIn: false,
+  userName: "",
+  breakpoint: "Lg",
+};

@@ -6,10 +6,11 @@ import { useAppContext } from "../../core/context/app-context";
 import { Wrapper } from "./index.styles";
 import { Logo } from "./Logo";
 import { NavbarContainer } from "./NavbarContainer";
+import { Partner } from "./Partner";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
-  const { breakpoint } = useAppContext();
+  const { breakpoint, isPartner } = useAppContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleChangeMenuVisibility = () => {
@@ -21,8 +22,11 @@ const HeaderMain = () => {
     <Wrapper breakpoint={breakpoint}>
       <div className="container-xl">
         <div className="header-main">
-          <nav className="navbar navbar-expand-xl" aria-label="Main">
-            <Logo />
+          <nav
+            className={`navbar navbar-expand-xl ${isPartner ? "partner" : ""}`}
+            aria-label="Main"
+          >
+            {!isPartner && <Logo />}
             <button
               className="navbar-toggler collapsed"
               type="button"
@@ -31,8 +35,8 @@ const HeaderMain = () => {
             >
               <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
             </button>
-            <div>
-              <Title />
+            <div className={`${!isPartner ? "expand-title" : ""}`}>
+              {isPartner ? <Partner /> : <Title />}
               <NavbarContainer display="desktop" />
             </div>
             {mobileMenuOpen && <NavbarContainer display="mobile" />}
