@@ -306,7 +306,10 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         .glide__arrow {
           $btn-nav-size: 2.5rem;
           width: $btn-nav-size;
-          height: $btn-nav-size;
+          @supports not (-webkit-touch-callout: none) {
+            /* Height breaks border radius on iOS */
+            height: $btn-nav-size;
+          }
           display: flex;
           align-items: center;
           justify-content: center;
@@ -315,8 +318,17 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           transform: translateY(50%);
 
           svg {
-            height: 0.8rem;
+            height: 1rem;
             position: static;
+
+          }
+
+          @supports (-webkit-touch-callout: none) {
+            svg {
+              height: 2rem;
+              position: absolute;
+              top: 1rem;
+            }
           }
 
           &.glide__arrow--prev {
