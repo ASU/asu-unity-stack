@@ -45,6 +45,7 @@ const Wrapper = styled.div`
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
+    width: 100%;
     height: auto;
     .header-top {
       .nav {

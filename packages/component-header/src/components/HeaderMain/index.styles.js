@@ -8,6 +8,9 @@ const HeaderMainWrapper = styled.div`
     display: flex;
     align-items: flex-start;
   }
+  .inner-nav-container {
+    width: 100%;
+  }
   .navbar-brand {
     .vert {
       display: block;

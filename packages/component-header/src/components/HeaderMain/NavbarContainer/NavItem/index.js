@@ -2,7 +2,7 @@
 import React from "react";
 
 const NavItem = () => {
-  return <div>NavItem</div>;
+  return <li>NavItem</li>;
 };
 
 export { NavItem };

@@ -2,11 +2,19 @@
 
 /**
  * @typedef {{
- *    alt: string,
- *    src: string,
- *    mobileSrc: string,
- *    brandLink: string,
+ *    alt: string
+ *    src: string
+ *    mobileSrc: string
+ *    brandLink: string
  *  }} Logo
+ */
+
+/**
+ * @typedef {{
+ *    href: string
+ *    color?: "gold" | "maroon" | "light" | "dark"
+ *    text: string
+ *  }} Button
  */
 
 /**
@@ -23,7 +31,7 @@
  *  userName: string
  *  loginLink: string
  *  logoutLink:  string
- *  buttons: object[]
+ *  buttons: Button[]
  *  breakpoint: "Lg" | "Xl"
  *  animateTitle: boolean
  *  expandOnHover: boolean

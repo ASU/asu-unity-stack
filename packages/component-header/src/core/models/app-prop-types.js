@@ -22,6 +22,12 @@ const LoginPropTypes = {
   userName: PropTypes.string,
 };
 
+const ButtonPropTypes = {
+  text: PropTypes.string.isRequired,
+  color: PropTypes.oneOf(["gold", "maroon", "light", "dark"]),
+  href: PropTypes.string.isRequired,
+};
+
 const HeaderPropTypes = {
   isPartner: PropTypes.bool,
   navTree: PropTypes.arrayOf(PropTypes.object),
@@ -35,11 +41,17 @@ const HeaderPropTypes = {
   userName: LoginPropTypes.userName,
   loginLink: LoginPropTypes.loginLink,
   logoutLink: LoginPropTypes.logoutLink,
-  buttons: PropTypes.arrayOf(PropTypes.object),
+  buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
   expandOnHover: PropTypes.bool,
   mobileNavTree: PropTypes.arrayOf(PropTypes.object),
 };
 
-export { HeaderPropTypes, LoginPropTypes, LogoPropTypes, TitlePropTypes };
+export {
+  HeaderPropTypes,
+  LoginPropTypes,
+  LogoPropTypes,
+  TitlePropTypes,
+  ButtonPropTypes,
+};
