@@ -1,7 +1,7 @@
 export default { title: "Components/Content Sections/Inset Box" }
 
 export const BasicExample = () => `
-  <div class="uds-inset-box-container">
+  <div class="uds-inset-box-container gray-1-bg">
     <div class="uds-inset-box-content">
       <h3>Lorem ipsum dolor sit amet</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
@@ -16,7 +16,7 @@ export const BasicExample = () => `
 `;
 
 export const ExampleWithBlockquote = () => `
- <div class="uds-inset-box-container">
+ <div class="uds-inset-box-container gray-2-bg">
     <div class="uds-inset-box-content">
       <div class="uds-blockquote uds-testimonial accent-gold">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -35,13 +35,28 @@ export const ExampleWithBlockquote = () => `
 `;
 
 export const ExampleWithList = () => `
-  <div class="uds-inset-box-container">
+  <div class="uds-inset-box-container gray-7-bg">
     <div class="uds-inset-box-content">
       <ol class="uds-list uds-steplist">
         <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
         <li>This is a quintenary headline<br><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</span></li>
         <li>This is a quintenary headline<br><span>sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
       </ol>
+    </div>
+  </div>
+`;
+
+export const WhiteBackground = () => `
+  <div class="uds-inset-box-container white-bg">
+    <div class="uds-inset-box-content">
+      <h3>Lorem ipsum dolor sit amet</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.</p>
+      <div class="d-flex mb-2">
+        <a href="#" class="btn btn-dark mr-2">Button link here</a>
+        <a href="#" class="btn btn-dark">Button link here</a>
+      </div>
+      <a href="#" class="">Regular text link here</a>
+      </div>
     </div>
   </div>
 `;
