@@ -112,7 +112,9 @@ const ProgramDetailPage = ({
         </section>
       ) : null}
 
-      <OnThisPageAnchorMenu anchorMenu={anchorMenu} />
+      {anchorMenu && Object.keys(anchorMenu).length > 0 ? (
+        <OnThisPageAnchorMenu anchorMenu={anchorMenu} />
+      ) : null}
 
       <Main data-is-loading={loading} className="main-section">
         {loading ? (

@@ -8,15 +8,21 @@ import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 /**
  *
  * @param {{anchorMenu: import("src/core/models/program-detail-types").AnchorMenuProps}} props
- * @returns
+ * @returns {JSX.Element}
  */
 function OnThisPageAnchorMenu({ anchorMenu }) {
+  /** @type {import("@asu-design-system/components-core/src/core/shared-model-types").AnchorMenuItem[]} */
   const anchorList = Object.keys(progDetailSectionIds)
     .filter(key => anchorMenu[key])
     .map(key => progDetailSectionIds[key])
-    .concat(anchorMenu.externalAnchors);
+    .concat(anchorMenu?.externalAnchors || []);
 
-  return <AnchorMenu items={anchorList} />;
+  return (
+    <AnchorMenu
+      items={anchorList}
+      firstElementId={anchorList[0]?.targetIdName}
+    />
+  );
 }
 
 OnThisPageAnchorMenu.propTypes = {

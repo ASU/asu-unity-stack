@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { imagePropType } from "../../models";
+import { imagePropShape } from "../../models";
 import { sanitizeHTML, idGenerator } from "../../utils";
 
 const GlobalStyle = createGlobalStyle`
@@ -89,7 +89,7 @@ OverlapContentImage.propTypes = {
       text: PropTypes.string,
     })
   ),
-  image: imagePropType,
+  image: imagePropShape,
   contentChildren: PropTypes.element,
 };
 

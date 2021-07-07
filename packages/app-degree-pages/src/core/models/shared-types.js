@@ -118,6 +118,13 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
+ * @typedef {{
+ *  targetIdName: string
+ *  text: string
+ * }} AnchorItem
+ */
+
+/**
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */

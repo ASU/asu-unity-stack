@@ -32,10 +32,10 @@ const defaultArgs = {
     careerOutlook: true,
     globalOpportunity: true,
     externalAnchors: [
-      {
-        targetIdName: "my-request-form-info-id",
-        text: "Request Information",
-      },
+      // {
+      //   targetIdName: "my-request-form-info-id",
+      //   text: "Request Information",
+      // },
     ],
   },
   // anchorMenu: {

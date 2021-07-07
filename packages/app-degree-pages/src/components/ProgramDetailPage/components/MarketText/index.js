@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { contentPropType } from "../../../../core/models/app-prop-types";
+import { contentPropShape } from "../../../../core/models/app-prop-types";
 import { sanitizeHTML, spreadClasses } from "../../../../core/utils";
 
 /**
@@ -31,7 +31,7 @@ function MarketText({ contents = [] }) {
 }
 
 MarketText.propTypes = {
-  contents: PropTypes.arrayOf(contentPropType),
+  contents: PropTypes.arrayOf(contentPropShape),
 };
 
 export { MarketText };

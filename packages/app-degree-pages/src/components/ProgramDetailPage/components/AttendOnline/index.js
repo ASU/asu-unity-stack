@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { progDetailSectionIds } from "../../../../core/models";
-import { imagePropType } from "../../../../core/models/app-prop-types";
+import { imagePropShape } from "../../../../core/models/app-prop-types";
 import { idGenerator } from "../../../../core/utils";
 
 const defaultText = `
@@ -64,7 +64,7 @@ function AttendOnline({ image, learnMoreLink, contents }) {
 
 AttendOnline.propTypes = {
   learnMoreLink: PropTypes.string,
-  image: imagePropType,
+  image: imagePropShape,
   contents: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
