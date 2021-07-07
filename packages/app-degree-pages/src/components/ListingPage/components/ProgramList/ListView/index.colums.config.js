@@ -11,6 +11,7 @@ import {
   parseMajorInfoLink,
   accellerateDegreeTooltipLink, // TODO: this link needs a double check
   mapTooltipLink,
+  accellerateDegreeLink,
   // requestInfoLink, // TODO: this contains the old page request info
   // saveFav, // TODO: this should handle the save to favorite
 } from "../../../../../core/services/degree-http-service";
@@ -118,12 +119,8 @@ const columns = [
         {resolver.getAccelerateDegrees().length > 0 && (
           <div className="cell-container">
             <a
-              href={parseMajorInfoLink(
-                resolver,
-                actionUrls.accelerateDegreeUrl
-              )}
+              href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}
               rel="noreferrer"
-              target="_blank"
             >
               4+1 years
             </a>

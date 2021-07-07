@@ -11,6 +11,7 @@ import { List } from "./index.style";
 
 /**
  * @typedef {{
+ *  id: string
  *  title: string
  *  links: FlexibleDegreeOptionItem[]
  * }} ContentBlockProps
@@ -22,9 +23,9 @@ import { List } from "./index.style";
  * @returns
  */
 
-const ContentBlock = ({ title, links }) => {
+const ContentBlock = ({ id, title, links }) => {
   return (
-    <div className="mt-4">
+    <div id={id} className="mt-4">
       <h3>{title}</h3>
       <p>
         This program allows students to obtain both a bachelor&apos;s and
@@ -50,6 +51,7 @@ const ContentBlock = ({ title, links }) => {
 };
 
 ContentBlock.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   links: flexibleDegreeOptionsLinks,
 };

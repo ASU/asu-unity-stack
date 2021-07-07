@@ -33,6 +33,7 @@ module.exports = {
     "react/require-default-props": "off",
     "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
     "dot-notation": "off",
+    "no-console": { allow: ["warn", "error"] },
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
     "no-unused-vars": [

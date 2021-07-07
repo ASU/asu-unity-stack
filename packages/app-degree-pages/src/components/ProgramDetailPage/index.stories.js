@@ -25,17 +25,16 @@ const defaultArgs = {
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
   anchorMenu: {
-    atAGlance: true,
     applicationRequirements: true,
     nextSteps: true,
     affordingCollege: true,
     careerOutlook: true,
     globalOpportunity: true,
     externalAnchors: [
-      // {
-      //   targetIdName: "my-request-form-info-id",
-      //   text: "Request Information",
-      // },
+      {
+        targetIdName: "my-request-form-info-id",
+        text: "Request Information",
+      },
     ],
   },
   // anchorMenu: {

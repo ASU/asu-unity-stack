@@ -8,7 +8,6 @@ const degreeListPropTypes = {
     applyNowUrl: PropTypes.string,
     majorInfoUrl: PropTypes.string,
     majorInfoOnlineUrl: PropTypes.string,
-    accelerateDegreeUrl: PropTypes.string,
   }),
 };
 

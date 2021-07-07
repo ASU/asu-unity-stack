@@ -24,12 +24,14 @@ function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
       </h2>
       {!!acceleratedLinks.length && (
         <ContentBlock
+          id={progDetailSectionIds.flexibleDegreeOptions.acceleratedId}
           title="Accelerated program options"
           links={acceleratedLinks}
         />
       )}
       {!!concurrentLinks.length && (
         <ContentBlock
+          id={progDetailSectionIds.flexibleDegreeOptions.concurrentId}
           title="Concurrent degree program"
           links={concurrentLinks}
         />

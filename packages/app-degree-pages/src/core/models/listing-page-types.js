@@ -79,8 +79,6 @@
  * @typedef {{
  *    applyNowUrl?: string
  *    majorInfoUrl?: string
- *    majorInfoOnlineUrl?: string
- *    accelerateDegreeUrl?: string
  * }} ActionUrlProps
  */
 

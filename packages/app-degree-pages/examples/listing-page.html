@@ -56,16 +56,13 @@
         // DepartmentCode: null, //  OPTIONAL: example values: CMANAGE, CHUMARTCLT, CHL
       };
 
+      // those links are just examples
       const actionUrls = {
         applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
-        majorInfoUrl:
-          `/examples/program-detail-page.html` + `?acadPlan={ACAD_PLAN_CODE}`,
+        majorInfoUrl: `/examples/program-detail-page.html?acadPlan={ACAD_PLAN_CODE}`,
         // majorInfoUrl:
-        //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
-        //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
-        accelerateDegreeUrl:
-          `https://webapp4.asu.edu/programs/t5/majorinfo/` +
-          `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false#accelerateDeg`,
+        //   `programs/College/{ACAD_PLAN_CODE}/undergrad/false`
+        // more example here: https://asudev.jira.com/browse/WS2-691?focusedCommentId=1302038
       };
 
       AsuDegreePages.initListingPage({

@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 // @ts-check
 
+import { progDetailSectionIds } from "../models";
 import { fetchData } from "../utils/fetch-data";
 
 // for the final release this must be change to a relative path
@@ -50,6 +51,16 @@ function parseMajorInfoLink(resolver, majorInfoUrl) {
     .replaceAll("{ACAD_PLAN_CODE}", resolver.getAcadPlan());
 
   return res;
+}
+
+/**
+ *
+ * @param {import("../models/shared-types").DegreeDataPropResolver} resolver
+ * @param {string} majorInfoUrl
+ */
+function accellerateDegreeLink(resolver, majorInfoUrl) {
+  let res = parseMajorInfoLink(resolver, majorInfoUrl);
+  return res + "#" + progDetailSectionIds.flexibleDegreeOptions.acceleratedId;
 }
 
 function mapTooltipLink(location, program = "undergrad") {
@@ -114,10 +125,9 @@ export {
   accellerateDegreeTooltipLink,
   applyNow,
   getDegreePrograms,
-  // majorInfoLink,
   mapTooltipLink,
   mapTooltipSubPlanMapLink,
-  // accellerateDegreeLink,
+  accellerateDegreeLink,
   requestInfoLink,
   parseMajorInfoLink,
   saveFav,

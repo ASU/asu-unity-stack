@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
@@ -263,7 +262,7 @@ IntroContent.propTypes = {
   ]).isRequired,
   video: PropTypes.shape({ ...videoPropType }),
   image: PropTypes.shape({ ...imagePropType }),
-  header: contentPropType,
+  header: contentPropShape,
   title: PropTypes.shape({
     ...contentPropType,
     component: PropTypes.oneOf(tagHeadingList),

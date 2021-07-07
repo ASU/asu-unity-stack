@@ -38,12 +38,10 @@ const Template = ({
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
-  majorInfoUrl:
-    `https://webapp4.asu.edu/programs/t5/majorinfo/` +
-    `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
-  accelerateDegreeUrl:
-    `https://webapp4.asu.edu/programs/t5/majorinfo/` +
-    `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false#accelerateDeg`,
+  majorInfoUrl: `/?path=/story/program-detail-page--default-page`,
+  // majorInfoUrl:
+  //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+  //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
 };
 
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
@@ -227,7 +225,7 @@ export const AreaStudyDegreePage3 = Template.bind({});
  * @type {{ args: AppProps }}
  */
 AreaStudyDegreePage3.args = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  actionUrls,
   hero: {
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",

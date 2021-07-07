@@ -13,7 +13,7 @@ const progDetailSectionIds = {
   },
   applicationRequirements: {
     targetIdName: "application-requirements",
-    text: "Application Requirements",
+    text: "App. Requirements",
   },
   changeMajorRequirements: {
     targetIdName: "change-major-requirements",
@@ -30,6 +30,8 @@ const progDetailSectionIds = {
   flexibleDegreeOptions: {
     targetIdName: "flexible-degree-options",
     text: "Flexible Degree Options",
+    acceleratedId: "flexible-accelerated-options",
+    concurrentId: "flexible-concurrent-options",
   },
   careerOutlook: {
     targetIdName: "career-outlook",
