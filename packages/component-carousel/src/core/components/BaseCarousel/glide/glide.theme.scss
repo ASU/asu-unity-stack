@@ -302,6 +302,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         .glide__arrow {
           $btn-nav-size: 2.5rem;
@@ -315,7 +316,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           justify-content: center;
           z-index: 3;
           position: absolute;
-          transform: translateY(50%);
 
           svg {
             height: 1rem;

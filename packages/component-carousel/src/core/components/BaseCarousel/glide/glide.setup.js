@@ -212,7 +212,6 @@ function setupCaroarousel({
 
     // @ts-ignore
     const currentIndex = slider.index;
-
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
     if (imageGalleryNav) {
       const images = imageGalleryNav.querySelectorAll(
@@ -227,8 +226,13 @@ function setupCaroarousel({
       const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
       const halfDiff = (fullNavWidth - imageNav.offsetWidth) / 2;
 
-      const pos = halfDiff - inactiveImage.offsetWidth * currentIndex;
-      imageGalleryNav.style.left = `${pos}px`;
+      if(currentIndex > 1){
+        const pos = halfDiff - (inactiveImage.offsetWidth * (currentIndex - 1));
+        imageGalleryNav.style.left = `${pos}px`;
+      } else {
+        const pos = halfDiff;
+        imageGalleryNav.style.left = `${pos}px`;
+      }
     }
 
     // We use event listeners to clear and set class names to show/hide
