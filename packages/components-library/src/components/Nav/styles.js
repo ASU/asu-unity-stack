@@ -501,6 +501,7 @@ const menuColumnStyles = breakpoint => css`
       border-right: none;
       width: 100%;
       padding: 0;
+      margin-bottom: 2rem;
       > li {
         :last-of-type {
           border: none;
