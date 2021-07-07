@@ -4,7 +4,6 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
-import { UniversalNavbar } from "./components/UniversalNavbar";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { Header } from "./index.styles";
@@ -79,7 +78,6 @@ const ASUHeader = ({
     >
       {/* @ts-ignore */}
       <Header ref={headerRef} breakpoint={breakpoint}>
-        <UniversalNavbar display="desktop" />
         <HeaderMain />
       </Header>
     </AppContextProvider>

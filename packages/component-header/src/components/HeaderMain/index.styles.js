@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const HeaderMainWrapper = styled.div`
   background-color: #ffffff;
   border-bottom: 1px solid #d0d0d0;
   .navbar {
@@ -64,4 +64,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export { Wrapper };
+export { HeaderMainWrapper };

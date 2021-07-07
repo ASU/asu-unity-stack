@@ -4,9 +4,6 @@ const Wrapper = styled.div`
   background-color: #e8e8e8;
   height: 24px;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-  &.universal-nav-mobile {
-    display: none;
-  }
   .header-top {
     height: 100%;
     .nav {
@@ -49,12 +46,6 @@ const Wrapper = styled.div`
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     height: auto;
-    &.universal-nav-desktop {
-      display: none;
-    }
-    &.universal-nav-mobile {
-      display: initial;
-    }
     .header-top {
       .nav {
         width: 100%;

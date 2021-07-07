@@ -1,25 +1,14 @@
 // @ts-check
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { useIsMobile } from "../../../core/hooks/isMobile";
 import { SearchWrapper } from "./index.styles";
 
-/**
- * @typedef {{
- *  display: "mobile" | "desktop"
- * }} UniversalNavbarProps
- */
-
-/**
- *
- * @param {UniversalNavbarProps} props
- * @returns {JSX.Element}
- */
-
-const Search = ({ display }) => {
+const Search = () => {
   const { breakpoint } = useAppContext();
+  const isMobile = useIsMobile(breakpoint);
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -39,7 +28,7 @@ const Search = ({ display }) => {
       // @ts-ignore
       breakpoint={breakpoint}
     >
-      {display === "desktop" ? (
+      {!isMobile ? (
         <>
           <button
             type="button"
@@ -85,10 +74,6 @@ const Search = ({ display }) => {
       <input name="proxystylesheet" value="asu_frontend" type="hidden" />
     </SearchWrapper>
   );
-};
-
-Search.propTypes = {
-  display: PropTypes.oneOf(["mobile", "desktop"]),
 };
 
 export { Search };

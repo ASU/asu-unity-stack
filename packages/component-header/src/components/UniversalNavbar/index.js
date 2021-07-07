@@ -1,5 +1,4 @@
 // @ts-check
-import PropTypes from "prop-types";
 import React from "react";
 
 import { useAppContext } from "../../core/context/app-context";
@@ -7,24 +6,12 @@ import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
 
-/**
- * @typedef {{
- *  display: "mobile" | "desktop"
- * }} UniversalNavbarProps
- */
-
-/**
- *
- * @param {UniversalNavbarProps} props
- * @returns {JSX.Element}
- */
-
-const UniversalNavbar = ({ display }) => {
+const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
 
   return (
     // @ts-ignore
-    <Wrapper className={`universal-nav-${display}`} breakpoint={breakpoint}>
+    <Wrapper breakpoint={breakpoint}>
       <div className="container-xl">
         <div className="header-top">
           <nav className="nav" aria-label="Top">
@@ -55,16 +42,12 @@ const UniversalNavbar = ({ display }) => {
               </a>
               <Login />
             </div>
-            <Search display={display} />
+            <Search />
           </nav>
         </div>
       </div>
     </Wrapper>
   );
-};
-
-UniversalNavbar.propTypes = {
-  display: PropTypes.oneOf(["mobile", "desktop"]),
 };
 
 export { UniversalNavbar };

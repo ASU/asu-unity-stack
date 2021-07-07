@@ -1,45 +1,35 @@
 // @ts-check
-import PropTypes from "prop-types";
 import React from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { useIsMobile } from "../../../core/hooks/isMobile";
 import { idGenerator } from "../../../utils/id-generator";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";
 import { NavItem } from "./NavItem";
 
-/**
- * @typedef {{
- *  display: "mobile" | "desktop"
- * }} NavbarContainerProps
- */
-
-/**
- *
- * @param {NavbarContainerProps} props
- * @returns {JSX.Element}
- */
-
-const NavbarContainer = ({ display }) => {
-  const { navTree, mobileNavTree, expandOnHover, buttons, breakpoint } =
-    useAppContext();
+const NavbarContainer = () => {
+  const {
+    navTree,
+    mobileNavTree,
+    expandOnHover,
+    buttons,
+    breakpoint,
+  } = useAppContext();
+  const isMobile = useIsMobile(breakpoint);
 
   return (
     // @ts-ignore
-    <Wrapper className={`navbar-container-${display}`} breakpoint={breakpoint}>
+    <Wrapper breakpoint={breakpoint}>
       {navTree?.map(link => {
         const genKey = idGenerator(`${link.text}-`);
         const key = genKey.next().value;
         return <NavItem key={key} />;
       })}
       {/* Navbar Footer */}
-      <UniversalNavbar display="mobile" />
+      {isMobile && <UniversalNavbar />}
     </Wrapper>
   );
-};
-
-NavbarContainer.propTypes = {
-  display: PropTypes.oneOf(["mobile", "desktop"]),
 };
 
 export { NavbarContainer };

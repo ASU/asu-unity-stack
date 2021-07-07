@@ -16,7 +16,7 @@ const TitlePropTypes = {
 };
 
 const LoginPropTypes = {
-  loggedIn: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool,
   loginLink: PropTypes.string,
   logoutLink: PropTypes.string,
   userName: PropTypes.string,
