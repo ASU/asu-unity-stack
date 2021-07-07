@@ -961,7 +961,7 @@ storiesOf('Components/Global Footer', module)
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col p-xl-0">
-            <div class="footer-legal-links pl-lg-2 pl-xl-0">
+            <div class="footer-legal-links">
               <nav class="nav colophon" aria-label="University Legal and Compliance">
                 <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and Trademark</a>
                 <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
