@@ -379,7 +379,7 @@ export const FourCardArrangement = () => `
 </div>
 `;
 
-export const CardsAutoArrangement = () => `
+export const CardsAutoArrangementTwoColumns = () => `
 <div class="col">
   <div class="uds-card-arrangement">
     <div class="uds-card-arrangement-content-container">
@@ -387,6 +387,366 @@ export const CardsAutoArrangement = () => `
       <button class="btn btn-dark">Default button</button>
     </div>
     <div class="uds-card-arrangement-card-container auto-arrangement">
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div`;
+
+export const CardsAutoArrangementThreeColumns = () => `
+<div class="col">
+  <div class="uds-card-arrangement">
+    <div class="uds-card-arrangement-content-container">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <button class="btn btn-dark">Default button</button>
+    </div>
+    <div class="uds-card-arrangement-card-container auto-arrangement three-columns">
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
+        <div class="card-header">
+          <h3 class="card-title">Card default title</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        </p>
+        </div>
+        <div class="card-event-details">
+          <div class="card-event-icons">
+            <div><i class="fas fa-map-marker-alt"></i></div>
+            <div>Downtown Phoenix campus</div>
+          </div>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-dark">Button link here</a>
+        </div>
+        <div class="card-button">
+          <a href="#" class="btn btn-sm btn-dark">Button link here</a>
+        </div>
+        <div class="card-link">
+          <a href="#" class="">Regular text link here</a>
+        </div>
+        <div class="card-tags">
+          <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 2</a> <a class="btn btn-tag btn-tag-alt-white" href="#" >test tag 3</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div`;
+
+export const CardsAutoArrangementFourColumns = () => `
+<div class="col">
+  <div class="uds-card-arrangement">
+    <div class="uds-card-arrangement-content-container">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <button class="btn btn-dark">Default button</button>
+    </div>
+    <div class="uds-card-arrangement-card-container auto-arrangement four-columns">
       <div class="card">
         <img class="card-img-top" src="${exampleImage}" alt="Card image cap">
         <div class="card-header">

@@ -11,6 +11,7 @@
 /**
  * @typedef {{
  *  items: AnchorMenuItem[]
+ *  firstElementId: string
  * }} AnchorMenuProps
  */
 

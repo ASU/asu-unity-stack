@@ -11,13 +11,16 @@
   cursor: default;
 }
 
+.uds-anchor-menu button.mobile-menu-toggler svg {
+  transition: all 0.3s;
+}
+
+.uds-anchor-menu button.show-menu svg {
+  transform: rotate(-180deg);
+}
+
 .uds-anchor-menu .nav-link {
   border: none;
   background-color: #ffffff;
-}
-
-@media (max-width: 1230px) {
-  .uds-anchor-menu .nav-link:not(:last-child) {
-    border-bottom: 1px solid #d0d0d0;
-  }
+  margin-right: 0.3rem;
 }
