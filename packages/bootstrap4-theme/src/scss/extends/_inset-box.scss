@@ -3,6 +3,7 @@
     display: $uds-inset-box-container-display;
     justify-content: $uds-inset-box-container-justify-content;
     padding: $uds-size-spacing-6;
+    width: 100%;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
       padding: $uds-size-spacing-3;
@@ -14,7 +15,7 @@
     border: 1px solid $uds-color-base-gray-3;
     max-width: $uds-breakpoint-xxxl;
     padding: $uds-size-spacing-4 $uds-size-spacing-16;
-    width: $uds-inset-box-content-small-width;
+    width: $uds-inset-box-content-basic-width;
 
     @media screen and (max-width: $uds-breakpoint-lg) {
       padding: $uds-size-spacing-4;
@@ -22,6 +23,7 @@
 
     @media screen and (max-width: $uds-breakpoint-sm) {
       padding: $uds-size-spacing-2;
+      width: $uds-inset-box-content-small-width;
 
       .btn {
         font-size: $uds-component-button-small-font-size;
