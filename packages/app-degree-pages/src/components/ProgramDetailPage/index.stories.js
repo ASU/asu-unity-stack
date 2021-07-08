@@ -14,13 +14,22 @@ export default {
   title: "Program Detail Page",
 };
 
+// ====================================================================================
+// TEST:  this is just an example which shows how to parse the page URL querystring
+// to get the acadPlan
+// ====================================================================================
+const queryAcadPllan = new URL(window.location.href).searchParams.get(
+  "acadPlan"
+);
+// ====================================================================================
+
 /** @type {AppProps} */
 const defaultArgs = {
   dataSource: {
     endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
     method: "findDegreeByAcadPlan",
     init: "false",
-    acadPlan: "BABUSGLBA", // any valid acadPlan code
+    acadPlan: queryAcadPllan || "BABUSGLBA",
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },
