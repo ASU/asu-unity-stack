@@ -5,19 +5,18 @@ import { progDetailSectionIds } from "../models";
 
 //  TODO: this should handle the map tooltip
 function mapTooltipLink() {
-   // TODO: to be implemented
+  // TODO: to be implemented
 }
 
 //  TODO: this should handle the subplan tooltip
 function mapTooltipSubPlanMapLink() {
-    // TODO: to be implemented
+  // TODO: to be implemented
 }
 
 //  TODO: this should handle the accellerate / concurrent tooltip
 function accellerateDegreeTooltipLink() {
-    // TODO: to be implemented
+  // TODO: to be implemented
 }
-
 
 //  TODO: this should handle the request info link
 function requestInfoLink() {
@@ -34,7 +33,7 @@ function saveFav() {
  * @param {import("../models/shared-types").DegreeDataPropResolver} resolver
  * @param {string} majorInfoUrl
  */
- function parseMajorInfoLink(resolver, majorInfoUrl) {
+function parseMajorInfoLink(resolver, majorInfoUrl) {
   let res = majorInfoUrl || "";
 
   res = res
@@ -50,8 +49,8 @@ function saveFav() {
  * @param {string} majorInfoUrl
  */
 function accellerateDegreeLink(resolver, majorInfoUrl) {
-  let res = parseMajorInfoLink(resolver, majorInfoUrl);
-  return res + "#" + progDetailSectionIds.flexibleDegreeOptions.acceleratedId;
+  const res = parseMajorInfoLink(resolver, majorInfoUrl);
+  return `${res}#${progDetailSectionIds.flexibleDegreeOptions.acceleratedId}`;
 }
 
 export {
@@ -63,4 +62,3 @@ export {
   parseMajorInfoLink,
   saveFav,
 };
-

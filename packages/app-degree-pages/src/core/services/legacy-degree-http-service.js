@@ -57,8 +57,7 @@ function saveFav(
   fetch(url).then();
 }
 
-
-//** TODO: keep as reference
+//* * TODO: keep as reference
 //  *
 //  * @param {string} institutionCode
 //  * @param {string} acadPlanCode
