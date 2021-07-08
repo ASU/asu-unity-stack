@@ -14,13 +14,27 @@
  *    href: string
  *    color?: "gold" | "maroon" | "light" | "dark"
  *    text: string
+ *    onClick?: () => void
  *  }} Button
  */
 
 /**
  * @typedef {{
+ *  id: number,
+ *  href?: string,
+ *  text?: string,
+ *  type?: string,
+ *  selected?: boolean,
+ *  items?: [object][],
+ *  buttons?: Button[],
+ *  class?: string
+ * }} NavTreeProps
+ */
+
+/**
+ * @typedef {{
  *  isPartner: boolean
- *  navTree: object[]
+ *  navTree: NavTreeProps[]
  *  title?: string
  *  baseUrl?: string
  *  parentOrg?:  string
@@ -35,7 +49,7 @@
  *  breakpoint: "Lg" | "Xl"
  *  animateTitle: boolean
  *  expandOnHover: boolean
- *  mobileNavTree: object[]
+ *  mobileNavTree: NavTreeProps[]
  * }} HeaderProps
  */
 

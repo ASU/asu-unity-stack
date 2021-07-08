@@ -314,7 +314,8 @@ const navTreeMega = [
           text: "Curabitur viverra arcu nisl",
         },
         {
-          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },
@@ -410,7 +411,8 @@ const navTreeMega = [
           text: "Lake Havasu",
         },
         {
-          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },
@@ -547,7 +549,8 @@ const navTreeMega = [
           text: "The Lake Havasu Campus",
         },
         {
-          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href:
+            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },

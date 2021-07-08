@@ -26,11 +26,23 @@ const ButtonPropTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.oneOf(["gold", "maroon", "light", "dark"]),
   href: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
+
+const NavTreePropTypes = PropTypes.shape({
+  id: PropTypes.number,
+  href: PropTypes.string,
+  text: PropTypes.string,
+  type: PropTypes.string,
+  selected: PropTypes.bool,
+  items: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
+  buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
+  class: PropTypes.string,
+});
 
 const HeaderPropTypes = {
   isPartner: PropTypes.bool,
-  navTree: PropTypes.arrayOf(PropTypes.object),
+  navTree: PropTypes.arrayOf(NavTreePropTypes),
   partnerLogo: PropTypes.shape(LogoPropTypes),
   logo: PropTypes.shape(LogoPropTypes),
   title: PropTypes.string,
@@ -45,7 +57,7 @@ const HeaderPropTypes = {
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
   expandOnHover: PropTypes.bool,
-  mobileNavTree: PropTypes.arrayOf(PropTypes.object),
+  mobileNavTree: PropTypes.arrayOf(NavTreePropTypes),
 };
 
 export {
@@ -54,4 +66,5 @@ export {
   LogoPropTypes,
   TitlePropTypes,
   ButtonPropTypes,
+  NavTreePropTypes,
 };

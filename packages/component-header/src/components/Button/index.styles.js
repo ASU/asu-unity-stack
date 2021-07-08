@@ -21,6 +21,7 @@ const ButtonWrapper = styled.a`
   }
   &.button-dark {
     background-color: #191919;
+    color: #ffffff;
   }
   &.button-maroon {
     background-color: #8c1d40;

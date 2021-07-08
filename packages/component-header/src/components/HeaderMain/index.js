@@ -42,11 +42,7 @@ const HeaderMain = () => {
               >
                 <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
               </button>
-              <div
-                className={`${
-                  !isPartner ? "expand-title" : ""
-                } inner-nav-container`}
-              >
+              <div className={`${!isPartner ? "expand-title" : ""}`}>
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>

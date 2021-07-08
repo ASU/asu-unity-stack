@@ -13,9 +13,9 @@ import { ButtonWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const Button = ({ href, color, text }) => {
+const Button = ({ href, color, text, onClick }) => {
   return (
-    <ButtonWrapper href={href} className={`button-${color}`}>
+    <ButtonWrapper href={href} className={`button-${color}`} onClick={onClick}>
       {text}
     </ButtonWrapper>
   );

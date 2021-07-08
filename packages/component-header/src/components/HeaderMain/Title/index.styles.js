@@ -5,7 +5,7 @@ const TitleWrapper = styled.div`
   line-height: 1;
   font-size: 1rem;
   font-weight: 700;
-  margin: 0 2rem 1.5rem 2rem;
+  padding: 0 2rem 1.5rem 2rem;
   letter-spacing: -1px;
   background-image: linear-gradient(
     to right,
@@ -17,10 +17,9 @@ const TitleWrapper = styled.div`
   background-position: 0 0;
   background-size: 200%;
   display: inline-block;
-  /*padding-right: 4px;*/
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   transition-duration: 1s;
-
+  margin: 0;
   &.active {
     background-position: -200%;
   }
@@ -28,19 +27,16 @@ const TitleWrapper = styled.div`
   > .unit-name {
     display: none;
   }
-
   .unit-name,
   .subunit-name,
   .title-subunit-name {
     color: #191919;
   }
-
   @media (min-width: ${({ breakpoint }) => breakpoint}) {
     line-height: 1;
     font-weight: 700;
     padding: 0;
     margin: 1rem 0 0.5rem 0;
-
     > .unit-name {
       font-size: 1rem;
       margin-bottom: 0.5rem;
@@ -50,20 +46,20 @@ const TitleWrapper = styled.div`
         text-decoration: underline;
       }
     }
-
-    .title-subunit-name {
-      font-size: 2rem;
-      margin: 1.5rem 0 1rem 0;
-      font-weight: 700;
+    .subunit-name {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      display: inline-block;
 
       :hover {
         text-decoration: underline;
       }
     }
-
-    .subunit-name {
-      font-size: 1.5rem;
-      margin-bottom: 0;
+    .title-subunit-name {
+      font-size: 2rem;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0.5rem 0 0.5rem 0;
 
       :hover {
         text-decoration: underline;

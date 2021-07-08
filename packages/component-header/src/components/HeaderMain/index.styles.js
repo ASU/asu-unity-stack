@@ -8,9 +8,6 @@ const HeaderMainWrapper = styled.div`
     display: flex;
     align-items: flex-start;
   }
-  .inner-nav-container {
-    width: 100%;
-  }
   .navbar-brand {
     .vert {
       display: block;
@@ -25,6 +22,9 @@ const HeaderMainWrapper = styled.div`
   .navbar-toggler {
     display: none;
   }
+  .expand-title {
+    width: 100%;
+  }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     padding: 0;
     .navbar {
@@ -35,9 +35,6 @@ const HeaderMainWrapper = styled.div`
       &.partner {
         flex-direction: row-reverse;
       }
-    }
-    .expand-title {
-      width: 100%;
     }
     .navbar-brand {
       padding: 0;

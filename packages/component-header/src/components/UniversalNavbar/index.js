@@ -11,7 +11,7 @@ const UniversalNavbar = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint}>
+    <Wrapper breakpoint={breakpoint} className="universal-nav">
       <div className="container-xl">
         <div className="header-top">
           <nav className="nav" aria-label="Top">

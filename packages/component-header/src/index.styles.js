@@ -15,6 +15,10 @@ const Header = styled.header`
   *::after {
     box-sizing: border-box;
   }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
   .container-xl {
     height: 100%;
     max-width: 1224px;
@@ -32,7 +36,7 @@ const Header = styled.header`
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
     &.scrolled {
-      .universal-nav-desktop {
+      .universal-nav {
         height: 0;
         overflow: hidden;
       }
@@ -40,13 +44,13 @@ const Header = styled.header`
         display: none;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       }
+      a.subunit-name {
+        margin: 0.52rem 0;
+      }
       a.subunit-name,
       a.title-subunit-name {
         font-size: 1.5em;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-      }
-      .title {
-        margin-top: 1.5rem;
       }
       .navbar-brand img {
         height: 64px;

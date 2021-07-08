@@ -6,12 +6,24 @@ const Wrapper = styled.nav`
   justify-content: space-between;
   .nav-list {
     display: flex;
-    list-style-type: none;
-    padding: 0;
+    margin: 0;
+    overflow-x: auto;
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     flex-direction: column;
     width: 100%;
+    .nav-list {
+      flex-direction: column;
+      width: 100%;
+      overflow-y: auto;
+      max-height: calc(100vh - 270px);
+    }
+    .buttons-container {
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      width: 100%;
+    }
   }
 `;
 

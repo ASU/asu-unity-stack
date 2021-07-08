@@ -1,5 +1,5 @@
 // @ts-check
-import React from "react";
+import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
@@ -10,27 +10,48 @@ import { Wrapper } from "./index.styles";
 import { NavItem } from "./NavItem";
 
 const NavbarContainer = () => {
-  const {
-    navTree,
-    mobileNavTree,
-    expandOnHover,
-    buttons,
-    breakpoint,
-  } = useAppContext();
+  const { navTree, mobileNavTree, buttons, breakpoint } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
+  const [itemOpened, setItemOpened] = useState(undefined);
+
+  const handleSetItemOpened = itemId => {
+    setItemOpened(itemId === itemOpened ? undefined : itemId);
+  };
 
   return (
     // @ts-ignore
     <Wrapper breakpoint={breakpoint}>
       <ul className="nav-list">
-        {navTree?.map(link => {
-          const genKey = idGenerator(`${link.text}-`);
-          const key = genKey.next().value;
-          return <NavItem key={key} />;
-        })}
+        {!!mobileNavTree?.length && isMobile
+          ? mobileNavTree?.map((link, i) => {
+              const item = { ...link, id: i };
+              const genKey = idGenerator(`${link.text}-`);
+              const key = genKey.next().value;
+              return (
+                <NavItem
+                  key={key}
+                  link={item}
+                  setItemOpened={() => handleSetItemOpened(i)}
+                  itemOpened={itemOpened}
+                />
+              );
+            })
+          : navTree?.map((link, i) => {
+              const item = { ...link, id: i };
+              const genKey = idGenerator(`${link.text}-`);
+              const key = genKey.next().value;
+              return (
+                <NavItem
+                  key={key}
+                  link={item}
+                  setItemOpened={() => handleSetItemOpened(i)}
+                  itemOpened={itemOpened}
+                />
+              );
+            })}
       </ul>
       {!!buttons?.length && (
-        <form>
+        <form className="buttons-container">
           {buttons?.map(button => (
             <Button {...button} key={button.text} />
           ))}
