@@ -1,7 +1,7 @@
 export default { title: 'ASUCMS/Image Carousel' };
 
 export const imageCarousel = () => `
-  <div class="asu-cms-image-carousel">
+  <div class="asu-cms-image-carousel" style="max-width: 1920px; margin: auto;">
     <div class="carousel-header-section">
       <h2><span class="highlight-gold">One university, many places</span></h2>
     </div>
@@ -167,20 +167,18 @@ export const imageCarousel = () => `
       }
 
       const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const gap = 48;
       let peek = 0;
-      if(vw < 768) {
-        peek = 50;
-      } else if(vw < 1260) {
-        peek = 100;
-      } else {
-        peek = 170;
+      if(vw > 1200) {
+        // We want slides to max-width at 1200px but we can only control the peek
+        peek = 360; // (1920 - 1200) / 2;
       }
       new Glide('#one-university-carousel', {
           type: "slider", // No wrap-around.
           focusAt: 0,
           bound: true, // Only if type slider with focusAt 0
           rewind: false, // Only if type slider
-          gap: 24, // Space between slides... may be impacted by viewport size.
+          gap, // Space between slides... may be impacted by viewport size.
           keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
           startAt: 0,
           swipeThreshold: 80, // Distance required for swipe to change slide.

@@ -25,7 +25,11 @@ export const demoTwoImagesInPageOfSections = () => `
     <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg">
   </section>
   <div class="d-flex flex-column justify-content-center align-items-center" style="height: 500px;">
-    Section 6
+    <div style="height: 80%; width: 80%; margin auto;">
+    <button type="button" class="btn btn-gold btn-md">Medium button</button> <button type="button" class="btn btn-maroon btn-md">Medium button</button>
+    <hr />
+    <button type="button" class="btn btn-gold btn-sm">Small button</button> <button type="button" class="btn btn-maroon btn-sm">Small button</button>
+    </div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center" style="height: 500px;">
     Section 7

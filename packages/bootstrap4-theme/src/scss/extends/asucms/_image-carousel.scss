@@ -2,7 +2,13 @@
   /* Custom css */
 
   .carousel-header-section {
-    margin-left: 170px;
+    margin-left: 365px; // See gap calc in JS, plus header padding
+  }
+
+  @media (max-width: $uds-breakpoint-xl) {
+    .carousel-header-section {
+      margin-left: 5px;
+    }
   }
 
   .image-carousel {
