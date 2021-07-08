@@ -7,7 +7,7 @@ const scrollHandler = () => {
     const the_image = container.querySelector("img");
 
     const default_position = container.offsetHeight - the_image.height * MAGIC_PARALLAX_FACTOR;
-    const distance_to_travel = window.innerHeight + container.offsetHeight;
+    const distance_to_travel = the_image.dataset.parallaxType === 'scroll-to' ? window.innerHeight : window.innerHeight + container.offsetHeight;
     const top_of_container = container.getBoundingClientRect().top;
     const amount_of_distance_travelled = window.innerHeight - top_of_container;
     const portion_of_container_scrolled = amount_of_distance_travelled / distance_to_travel;
@@ -29,7 +29,7 @@ const image_resizer = (image) => {
   const image_starting_height = image.height;
 
   // First, we want the image to be the width of the screen.
-  let size_change_factor = window.innerWidth / image_starting_width;
+  let size_change_factor = container.offsetWidth / image_starting_width;
 
   // Second, if this is too short to allow parallax, given
   // the size of the container, we scale it up further to
@@ -41,11 +41,13 @@ const image_resizer = (image) => {
   let new_height = image_starting_height * size_change_factor;
   let new_width = image_starting_width * size_change_factor;
 
-  if(new_height < container.offsetHeight * MAGIC_PARALLAX_FACTOR){
-    size_change_factor = (container.offsetHeight * MAGIC_PARALLAX_FACTOR) / new_height;
+  const parallaxFactor = +image.dataset.parallaxFactor || MAGIC_PARALLAX_FACTOR;
+  if(!image.dataset.noScale && new_height < container.offsetHeight * parallaxFactor){
+    size_change_factor = (container.offsetHeight * parallaxFactor) / new_height;
 
     new_height *= size_change_factor;
     new_width *= size_change_factor;
+
     new_left_pos = ((new_width - container.offsetWidth) / 2) * -1;
   }
   image.style.height = new_height + 'px';

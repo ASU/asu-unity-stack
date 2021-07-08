@@ -34,7 +34,7 @@ export const demoTwoImagesInPageOfSections = () => `
     Section 8
   </div>
   <section class="parallax-container asu-for-you">
-    <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png">
+    <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png" data-parallax-factor="1" data-parallax-type="scroll-to">
   </section>
 </div>
 `;
@@ -75,7 +75,7 @@ export const demoTwoImagesWithContentInPageOfSections = () => `
     Section 8
   </div>
   <section class="parallax-container asu-for-you">
-    <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png">
+    <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png" data-parallax-factor="1">
     <div class="parallax-container-content">
       <h2>Reimagining education for everyone</h2>
       <h3><span class="highlight-gold">New programs for all ages</span></h3>
