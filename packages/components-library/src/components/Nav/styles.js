@@ -11,7 +11,7 @@ import {
   BreakpointLg,
   BreakpointXl,
   containerSize,
-  breakpointForMin
+  breakpointForMin,
 } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
@@ -156,7 +156,8 @@ const navListStyles = breakpoint => css`
       > li {
         margin-right: 0;
 
-        > a, .drop-controls {
+        > a,
+        .drop-controls {
           padding: 1rem 2rem 0.5rem;
           justify-content: space-between;
           display: block;
@@ -306,7 +307,7 @@ const dropdownContainerStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      padding-left: 3rem;
+      padding-left: 2rem;
       flex-direction: column;
       max-height: 0;
       border: none;
@@ -315,6 +316,10 @@ const dropdownContainerStyles = breakpoint => css`
         position: relative;
         display: flex;
         max-height: 10000px;
+      }
+
+      h3 {
+        padding-left: 0.3rem;
       }
     }
 
@@ -345,7 +350,12 @@ const dropdownContainerStyles = breakpoint => css`
 
 const DropdownContainer = props => {
   return (
-    <div class={cx("dropdown", props.open ? "open" : "", props.class)} data-onclick-identifier = {"leave-open"} onMouseDown={e => {}} onClick={e => {}}>
+    <div
+      class={cx("dropdown", props.open ? "open" : "", props.class)}
+      data-onclick-identifier={"leave-open"}
+      onMouseDown={e => {}}
+      onClick={e => {}}
+    >
       <div>{props.children}</div>
       {props.buttons ? (
         <div class="button-row">
@@ -491,6 +501,7 @@ const menuColumnStyles = breakpoint => css`
       border-right: none;
       width: 100%;
       padding: 0;
+      margin-bottom: 2rem;
       > li {
         :last-of-type {
           border: none;
@@ -575,6 +586,12 @@ const componentStyles = breakpoint => css`
 const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
+    li:last-child div.dropdown:not(.mega) {
+      left: auto !important;
+      right: 98px !important;
+      clip: auto !important;
+      position: absolute !important;
+    }
   }
 `;
 

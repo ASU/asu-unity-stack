@@ -177,7 +177,7 @@ const Header = ({
           >
             Report an accessibility problem
           </a>
-          <a href="https://www.asu.edu/">ASU home</a>
+          <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
           <a href="https://www.asu.edu/about/colleges-and-schools">
             Colleges and Schools
