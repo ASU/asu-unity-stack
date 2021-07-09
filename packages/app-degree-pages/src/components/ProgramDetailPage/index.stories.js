@@ -26,9 +26,9 @@ const queryAcadPllan = new URL(window.location.href).searchParams.get(
 /** @type {AppProps} */
 const defaultArgs = {
   dataSource: {
-    endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
-    method: "findDegreeByAcadPlan",
-    init: "false",
+    // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+    // OPTIONAL - method: "findDegreeByAcadPlan",
+    // OPTIONAL - init: "false",
     acadPlan: queryAcadPllan || "BABUSGLBA",
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses

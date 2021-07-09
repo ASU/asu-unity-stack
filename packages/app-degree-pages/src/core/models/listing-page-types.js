@@ -19,8 +19,8 @@
  * @typedef {"true" | "false"} stringBool
  *
  * @typedef {{
- *    endpoint: string
- *    method: string
+ *    endpoint?: string
+ *    method?: string
  *    init?: stringBool
  *    [x:string]: string
  * }} AppDataSource

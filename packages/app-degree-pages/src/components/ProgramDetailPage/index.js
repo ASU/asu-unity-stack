@@ -12,7 +12,7 @@ import {
   ThemeStyle,
   Video,
 } from "../../core/components";
-import { programDetailFields } from "../../core/constants";
+import { detailPageDefaultDataSource } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   anchorMenuPropType,
@@ -83,17 +83,19 @@ const ProgramDetailPage = ({
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
-  const url = urlResolver(dataSource, programDetailFields);
+  const url = urlResolver(dataSource, detailPageDefaultDataSource);
 
   useEffect(() => {
     doFetchPrograms(url);
   }, [url]);
 
   useEffect(() => {
-    const newResolver = degreeDataPropResolverService(
-      data?.programs ? data?.programs[0] : {}
-    );
-    setResolver(newResolver);
+    if (data?.programs) {
+      const newResolver = degreeDataPropResolverService(
+        data?.programs ? data?.programs[0] : {}
+      );
+      setResolver(newResolver);
+    }
   }, [data?.programs]);
 
   return (

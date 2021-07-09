@@ -6,7 +6,7 @@ import { createGlobalStyle } from "styled-components";
 
 import { ListingPageContext } from "../../../../core/context";
 import {
-  columSettingsPropType,
+  columSettingsPropShape,
   GRID_VIEW_ID,
   LIST_VIEW_ID,
 } from "../../../../core/models";
@@ -122,7 +122,7 @@ function ProgramList({
 
 ProgramList.propTypes = {
   dataViewComponent: PropTypes.string,
-  columSettings: columSettingsPropType,
+  columSettings: columSettingsPropShape,
   ...degreeListPropTypes,
 };
 

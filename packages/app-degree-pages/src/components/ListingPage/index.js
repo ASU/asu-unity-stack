@@ -10,7 +10,7 @@ import {
   ThemeStyle,
   ErrorAlert,
 } from "../../core/components";
-import { programListFields } from "../../core/constants";
+import { listingPageDefaultDataSource } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
 import {
@@ -68,7 +68,7 @@ const ListingPage = ({
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
-  const url = urlResolver(programList.dataSource, programListFields);
+  const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
@@ -153,6 +153,7 @@ const ListingPage = ({
 
     setSearchLoading(true);
     await doFetchPrograms(url);
+
     if (data?.programs?.length > 0) {
       setTableView(
         data.programs.filter(row => {

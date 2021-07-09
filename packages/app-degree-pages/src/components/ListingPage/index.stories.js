@@ -46,13 +46,13 @@ const actionUrls = {
 
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
-  method: "findAllDegrees",
-  init: "false", // "true" | "false"Î
+  // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  // OPTIONAL - method: "findAllDegrees",
+  // OPTIONAL - init: "false", // "true" | "false"
   program: "undergrad", // graduate | undergrad
   cert: "false", // "true" | "false"
-  CollegeAcadOrg: null, //  OPTIONAL: example values: CLW, CTB, CTE
-  DepartmentCode: null, //  OPTIONAL: example values: CMANAGE, CHUMARTCLT, CHL
+  // OPTIONAL -CollegeAcadOrg: null, //  example values: CLW, CTB, CTE
+  // OPTIONAL -DepartmentCode: null, //  example values: CMANAGE, CHUMARTCLT, CHL
 };
 
 /**
