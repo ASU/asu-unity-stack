@@ -12,7 +12,10 @@ import {
   ThemeStyle,
   Video,
 } from "../../core/components";
-import { detailPageDefaultDataSource } from "../../core/constants";
+import {
+  defaultImages,
+  detailPageDefaultDataSource,
+} from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   anchorMenuPropType,
@@ -259,17 +262,19 @@ const ProgramDetailPage = ({
 
               {/* <CustomizeYourCollegeExperience /> */}
 
-              {globalOpportunity ? (
+              {!globalOpportunity?.hide ? (
                 <GlobalOpportunity
                   contents={[{ text: resolver.getGlobalExp() }]}
-                  image={globalOpportunity.image}
+                  image={
+                    globalOpportunity?.image || defaultImages.globalOpportunity
+                  }
                 />
               ) : null}
 
-              {attendOnline ? (
+              {!attendOnline?.hide ? (
                 <AttendOnline
                   learnMoreLink={resolver.getCurriculumUrl()}
-                  image={attendOnline.image}
+                  image={attendOnline?.image || defaultImages.attendOnline}
                 />
               ) : null}
             </div>
@@ -326,8 +331,14 @@ ProgramDetailPage.propTypes = {
   flexibleDegreeOptions: PropTypes.shape({ hide: PropTypes.bool }),
   careerOutlook: PropTypes.shape({ image: imagePropShape }),
   exampleCareers: PropTypes.shape({ hide: PropTypes.bool }),
-  globalOpportunity: PropTypes.shape({ image: imagePropShape }),
-  attendOnline: PropTypes.shape({ image: imagePropShape }),
+  globalOpportunity: PropTypes.shape({
+    hide: PropTypes.bool,
+    image: imagePropShape,
+  }),
+  attendOnline: PropTypes.shape({
+    hide: PropTypes.bool,
+    image: imagePropShape,
+  }),
   programContactInfo: PropTypes.shape({
     departmentUrl: PropTypes.string,
     emailUrl: PropTypes.string,

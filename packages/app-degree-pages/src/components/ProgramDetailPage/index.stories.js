@@ -202,23 +202,28 @@ const defaultArgs = {
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
+  // OPTIONAL
   // exampleCareers: {
   //   hide: true,
   // },
-  globalOpportunity: {
-    image: {
-      url: "https://source.unsplash.com/random/1200x750",
-      altText:
-        "Random image. REPLACE with appropriate alt text for accessibility.",
-    },
-  },
-  attendOnline: {
-    image: {
-      url: "https://source.unsplash.com/random/1200x750",
-      altText:
-        "Random image. REPLACE with appropriate alt text for accessibility.",
-    },
-  },
+  // OPTIONAL
+  // globalOpportunity: {
+  // hide: true,
+  // image: {
+  //   url: "https://source.unsplash.com/random/1200x750",
+  //   altText:
+  //     "Random image. REPLACE with appropriate alt text for accessibility.",
+  // },
+  // },
+  // OPTIONAL
+  // attendOnline: {
+  // hide: true,
+  // image: {
+  //   url: "https://source.unsplash.com/random/1200x750",
+  //   altText:
+  //     "Random image. REPLACE with appropriate alt text for accessibility.",
+  // },
+  // },
   programContactInfo: {
     departmentUrl: "#",
     emailUrl: "#",

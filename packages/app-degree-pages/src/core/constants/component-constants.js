@@ -26,6 +26,17 @@ const GRID_VIEW_ID = "grid-view";
 const LIST_VIEW_ID = "list-view";
 const GRID_PROGRAMS_ID = "degree-list-programs";
 
+const defaultImages = {
+  globalOpportunity: {
+    url: "/assets/img/global-opportunity.jpg",
+    altText: "Global opportunity",
+  },
+  attendOnline: {
+    url: "/assets/img/attend-online.jpg",
+    altText: "Attend online",
+  },
+};
+
 export {
   tagHeadings,
   tagHeadingList,
@@ -33,4 +44,5 @@ export {
   GRID_PROGRAMS_ID,
   GRID_VIEW_ID,
   LIST_VIEW_ID,
+  defaultImages,
 };

@@ -123,7 +123,7 @@
 
 /**
  *  @typedef {{
- *    image: import("./shared-types").ImageItem
+ *    image?: import("./shared-types").ImageItem
  *    contents?: import("./shared-types").SectionContentItem[]
  * }} AttendOnlineProps
  */
@@ -158,8 +158,8 @@
  *  careerOutlook?: CareerOutlookProps
  *  exampleCareers?: HideProp
  *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
- *  globalOpportunity?: GlobalOpportunityProps
- *  attendOnline?: AttendOnlineProps
+ *  globalOpportunity?: HideProp & GlobalOpportunityProps
+ *  attendOnline?: HideProp &  AttendOnlineProps
  *  programContactInfo?: {
  *      departmentUrl: string
  *      emailUrl: string

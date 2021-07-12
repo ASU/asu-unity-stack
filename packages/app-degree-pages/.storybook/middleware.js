@@ -27,6 +27,27 @@ function mockDegreeSeearch(router) {
     res.send(dataSearch);
   });
 
+  /**
+   * TODO: this was necessary to test the default images inside the folder assets.
+   * for some reason the storybook webpack which config is into the file main.js
+   * it does not allow the plugin CopyWebpackPlugin to work properly
+   * new CopyWebpackPlugin({
+   *    patterns: [
+   *      // TODO: mock may not be needed anymore
+   *      { from: path.join(PROJECT_DIR, "mocks"), to: "mocks" },
+   *      { from: path.join(PROJECT_DIR, "src/assets"), to: "assets" },
+   *    ],
+   *   ),
+   */
+  router.get(/^\/assets\/img/, (req, res) => {
+    console.log("> request image from " + getFullUrl(req));
+    console.log("> url: " + req.originalUrl);
+    const PAGE_PATH = "./src/" + req.originalUrl;
+
+    const img = fs.readFileSync(PAGE_PATH);
+    res.send(img);
+  });
+
   router.get(/^\/programs\/tooltipcampus/, (req, res) => {
     console.log("> request from " + getFullUrl(req));
     // res.redirect('https://webapp4.asu.edu/' + req.originalUrl)
