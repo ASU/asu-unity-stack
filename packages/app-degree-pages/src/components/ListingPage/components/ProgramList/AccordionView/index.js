@@ -31,7 +31,7 @@ const WrapperSection = styled.div`
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const AccordionView = ({ programms, actionUrls }) => {
+const AccordionView = ({ programs, actionUrls }) => {
   /**
    * @type {{
    *   content: {
@@ -40,7 +40,7 @@ const AccordionView = ({ programms, actionUrls }) => {
    *   }
    * }[]}
    * */
-  const cards = programms.map(row => {
+  const cards = programs.map(row => {
     const resolver = degreeDataPropResolverService(row);
     return {
       content: {

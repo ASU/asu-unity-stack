@@ -50,7 +50,7 @@ function AffordingCollege() {
           <Card
             icon={["fas", "hand-holding-usd"]}
             title="Finanacial aid"
-            body="ASU has many financial aid options. Almost everyone, regardless of inconme, can qualify for some of financial aid. In fact, more than 70 percent of all ASU students receive some form of financial assistance every year."
+            body="ASU has many financial aid options. Almost everyone, regardless of income, can qualify for some of financial aid. In fact, more than 70 percent of all ASU students receive some form of financial assistance every year."
             buttons={[
               {
                 label: "Find financial aid",

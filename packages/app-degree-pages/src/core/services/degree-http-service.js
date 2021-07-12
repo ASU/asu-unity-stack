@@ -21,6 +21,7 @@ function accellerateDegreeTooltipLink() {
 //  TODO: this should handle the request info link
 function requestInfoLink() {
   // TODO: to be implemented
+  return "";
 }
 
 // TODO: this should handle the save to favorite

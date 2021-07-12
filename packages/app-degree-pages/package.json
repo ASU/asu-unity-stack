@@ -31,13 +31,6 @@
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@popperjs/core": "^2.9.2",
-    "@storybook/addon-a11y": "^6.1.15",
-    "@storybook/addon-actions": "^6.1.15",
-    "@storybook/addon-controls": "^6.2.9",
-    "@storybook/addon-docs": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.3",
-    "@storybook/addon-links": "^6.2.3",
-    "@storybook/react": "^6.2.3",
     "dompurify": "^2.2.9",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -66,6 +59,13 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.1.1"
+    "terser-webpack-plugin": "^5.1.1",
+    "@storybook/addon-a11y": "^6.1.15",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-controls": "^6.2.9",
+    "@storybook/addon-docs": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-links": "^6.2.3",
+    "@storybook/react": "^6.2.3"
   }
 }

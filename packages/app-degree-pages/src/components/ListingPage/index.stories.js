@@ -62,17 +62,18 @@ export const UndergraduateDegreePage = Template.bind({});
 
 UndergraduateDegreePage.args = {
   actionUrls,
-  hero: {
-    image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-      altText: "Undergraduate Degrees",
-      size: "medium",
-    },
-    title: {
-      text: "Undergraduate Degrees",
-      highlightColor: "gold",
-    },
-  },
+  hero: null,
+  // hero: {
+  //   image: {
+  //     url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+  //     altText: "Undergraduate Degrees",
+  //     size: "medium",
+  //   },
+  //   title: {
+  //     text: "Undergraduate Degrees",
+  //     highlightColor: "gold",
+  //   },
+  // },
   introContent: {
     type: "text",
     title: {

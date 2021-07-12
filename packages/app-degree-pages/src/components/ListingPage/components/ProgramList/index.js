@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
 /**
  *  @typedef {{
- *    programms: Object[]
+ *    programs: Object[]
  *    loading: boolean
  *    columSettings?: import("src/core/models/listing-page-types").ColumSettings
  *    actionUrls: import("src/core/models/listing-page-types").ActionUrlProps
@@ -60,12 +60,12 @@ const programViewer = {
 function ProgramList({
   dataViewComponent,
   loading,
-  programms,
+  programs,
   columSettings,
   actionUrls,
 }) {
   const ROW_PAGES = 8;
-  const TOTAL_PAGES = computePages(programms.length, ROW_PAGES);
+  const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
   const [tableView, setTableView] = useState([]);
 
@@ -73,12 +73,12 @@ function ProgramList({
     const fromRecord = (newPage - 1) * ROW_PAGES;
     const toRecord = fromRecord + ROW_PAGES;
 
-    setTableView(programms.slice(fromRecord, toRecord));
+    setTableView(programs.slice(fromRecord, toRecord));
   };
 
   useEffect(() => {
-    setTableView(programms.slice(0, ROW_PAGES));
-  }, [programms]);
+    setTableView(programs.slice(0, ROW_PAGES));
+  }, [programs]);
 
   return (
     <ListingPageContext.Provider
@@ -92,7 +92,7 @@ function ProgramList({
         <div className="desktop-view">
           <ProgramsViewer
             loading={loading}
-            programms={tableView}
+            programs={tableView}
             columSettings={columSettings}
             actionUrls={actionUrls}
           />
@@ -101,7 +101,7 @@ function ProgramList({
         <div className="mobile-view mb-2">
           <AccordionView
             loading={loading}
-            programms={tableView}
+            programs={tableView}
             actionUrls={actionUrls}
           />
         </div>

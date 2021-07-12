@@ -17,7 +17,7 @@ or in some other manner provide the styles required.
 
 ``` bash
 # add app-degree-pages
-yarn add @@asu-design-system/app-degree-pages
+yarn add @asu-design-system/app-degree-pages
 
 # run storybook
 yarn storybook
@@ -48,10 +48,6 @@ TODO...
 
 TODO...
 
-## DegreePage Lifecycle
-
-TODO...
-
 ### Examples
 
 The folder [packages/app-degree-pages/examples](/packages/app-degree-pages/examples)
@@ -77,7 +73,7 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 # References
 - [React](https://reactjs.org/)
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
-- [Jest APIs](https://jestjs.io/docs/api
+- [Jest APIs](https://jestjs.io/docs/api)
 - [Jest Fetch Mock](https://www.npmjs.com/package/jest-fetch-mock)
 - [Type Checking JavaScript Files](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html)
 - [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)

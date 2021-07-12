@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 const degreeListPropTypes = {
-  programms: PropTypes.arrayOf(PropTypes.object),
+  programs: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
   actionUrls: PropTypes.shape({
     applyNowUrl: PropTypes.string,

@@ -275,7 +275,7 @@ const ListingPage = ({
           <ProgramList
             dataViewComponent={dataViewComponent}
             loading={loading || searchLoading}
-            programms={tableView}
+            programs={tableView}
             columSettings={programList.settings}
             actionUrls={actionUrls}
           />

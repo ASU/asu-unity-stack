@@ -17,14 +17,14 @@ import { SectionCard } from "./index.style";
  * @param {import("..").GridListingProps} props
  * @returns
  */
-function GridView({ programms, loading, actionUrls }) {
+function GridView({ programs, loading, actionUrls }) {
   return (
     <SectionCard
       id={GRID_PROGRAMS_ID}
       className="container row"
       data-loading={loading}
     >
-      {programms.map(row => {
+      {programs.map(row => {
         const resolver = degreeDataPropResolverService(row);
 
         return (
@@ -43,11 +43,10 @@ function GridView({ programms, loading, actionUrls }) {
                   color: "maroon",
                   size: "default",
                   label: "Reqeuest Info",
-                  href: requestInfoLink(
-                    resolver.getAcadPlan(),
-                    resolver.getMajorDesc(),
-                    resolver.getEmailAddress()
-                  ),
+                  href: requestInfoLink(),
+                  // resolver.getAcadPlan(),
+                  // resolver.getMajorDesc(),
+                  // resolver.getEmailAddress()
                 },
                 {
                   color: "gold",

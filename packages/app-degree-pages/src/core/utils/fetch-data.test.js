@@ -9,7 +9,7 @@ describe("#Test Degree HTTP request", () => {
     fetchMock.resetMocks();
   });
 
-  it("should return the degree list programms", async () => {
+  it("should return the degree list programs", async () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockProgram));
     const URL = "../../../mocks/data/degree-search.json";
     const json = await fetchData(URL);

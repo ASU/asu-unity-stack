@@ -91,7 +91,7 @@ const genRowId = idGenerator(`row-`);
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const ListView = ({ programms, loading, actionUrls }) => {
+const ListView = ({ programs, loading, actionUrls }) => {
   /** @type {{current: HTMLTableElement}} */
   const tableRef = React.useRef(null);
   /** @type {{current: HTMLTableSectionElement}} */
@@ -133,8 +133,8 @@ const ListView = ({ programms, loading, actionUrls }) => {
         </thead>
         <tbody ref={tbodyRef}>
           {
-            // programms
-            programms.map((row, rowCurrentIndex) => {
+            // programs
+            programs.map((row, rowCurrentIndex) => {
               const rowId = genRowId.next().value;
               const rowIndex = rowCurrentIndex * 2;
               const resolver = degreeDataPropResolverService(row);
