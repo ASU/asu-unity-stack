@@ -1,7 +1,7 @@
 .uds-quote-image-background {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position: center;
   align-items: flex-end;
   color: $uds-color-base-white !important;
   display: flex;
@@ -10,6 +10,7 @@
   justify-content: center;
   max-width: 1920px;
   padding: 48px 96px;
+  width: 100%;
 
   @media screen and (max-width: $uds-breakpoint-sm) {
     height: auto;
