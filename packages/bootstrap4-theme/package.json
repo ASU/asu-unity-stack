@@ -17,7 +17,7 @@
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "storybook": "start-storybook -s ./dist -p 9009",
+    "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -s ./dist",
     "build": "gulp",
     "prepare": "yarn run build"
@@ -29,6 +29,8 @@
     "@storybook/addon-docs": "^6.2.3",
     "@storybook/addon-storysource": "^6.2.3",
     "@storybook/addon-viewport": "^6.2.3",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/react": "^6.3.4",
     "autoprefixer": "^10.2.5",
     "bootstrap": "^4.6.0",
     "chart.js": "^3.2.1",
@@ -63,7 +65,6 @@
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb",
   "dependencies": {
-    "@storybook/html": "^6.3.4",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   }

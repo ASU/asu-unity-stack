@@ -1,5 +1,5 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+import { storiesOf } from '@storybook/react';
 import endorsedLogo from './asu_universitytechoffice_horiz_rgb_white_150ppi.png';
 import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png';
 

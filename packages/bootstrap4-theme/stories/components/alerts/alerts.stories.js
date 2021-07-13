@@ -1,5 +1,5 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+import { storiesOf } from '@storybook/react';
 storiesOf('Components/Alerts', module)
   .addParameters({
     happo: false,
@@ -63,8 +63,8 @@ storiesOf('Components/Alerts', module)
     </div>
   </div>
 
-  <p>Note: On the actual page, you will need to provide a container with 
-  <code>role="alert"</code> to accept any changes. See the example for 
+  <p>Note: On the actual page, you will need to provide a container with
+  <code>role="alert"</code> to accept any changes. See the example for
   <a href="https://www.w3.org/TR/wai-aria-practices/#alert">
   https://www.w3.org/TR/wai-aria-practices/#alert</a></p>`)
 

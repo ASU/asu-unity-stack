@@ -1,5 +1,5 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+import { storiesOf } from '@storybook/react';
 import './tabbed-panels.js'
 
 storiesOf('Components/Tabbed Panels', module)

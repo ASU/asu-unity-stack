@@ -1,5 +1,5 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+import { storiesOf } from '@storybook/react';
 storiesOf('Components/Banners', module)
   .addParameters({
     happo: false,

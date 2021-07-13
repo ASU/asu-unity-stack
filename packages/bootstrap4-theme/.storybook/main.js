@@ -6,6 +6,7 @@ module.exports = {
     '../stories/**/*.stories.[tj]s',
   ],
   addons: [
+    '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-viewport',

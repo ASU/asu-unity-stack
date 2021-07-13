@@ -1,4 +1,4 @@
-import { storiesOf } from '@storybook/html';
+import { storiesOf } from '@storybook/react';
 
 storiesOf('Components/Person Profile', module)
   .addParameters({
