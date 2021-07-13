@@ -64,11 +64,6 @@ Default.args = {
     {
       color: "gold",
       size: "small",
-      label: "CTA button",
-    },
-    {
-      color: "dark",
-      size: "small",
       label: "Link Button",
       href: "/",
       target: "_top",
