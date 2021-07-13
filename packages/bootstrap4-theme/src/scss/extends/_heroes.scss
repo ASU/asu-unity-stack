@@ -79,6 +79,8 @@ div[class^='uds-hero'] {
       @include like-h3-highlight-gold;
     }
     span {
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
       margin-left: 0.15em;
     }
   }
