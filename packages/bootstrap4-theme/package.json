@@ -29,7 +29,6 @@
     "@storybook/addon-docs": "^6.2.3",
     "@storybook/addon-storysource": "^6.2.3",
     "@storybook/addon-viewport": "^6.2.3",
-    "@storybook/html": "^6.2.3",
     "autoprefixer": "^10.2.5",
     "bootstrap": "^4.6.0",
     "chart.js": "^3.2.1",
@@ -62,5 +61,10 @@
     "storybook-addon-xd-designs": "^5.5.0",
     "style-loader": "^2.0.0"
   },
-  "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
+  "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb",
+  "dependencies": {
+    "@storybook/html": "^6.3.4",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  }
 }
