@@ -1,0 +1,6 @@
+
+/**
+ * @typedef {{
+ *    atAGlance?: boolean
+ * }} AnchorMenuProps
+ */

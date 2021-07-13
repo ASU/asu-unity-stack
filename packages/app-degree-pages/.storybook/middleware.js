@@ -48,6 +48,15 @@ function mockDegreeSeearch(router) {
     res.send(img);
   });
 
+  router.get(/^\/mocks\/img/, (req, res) => {
+    console.log("> request mocks image from " + getFullUrl(req));
+    console.log("> url: " + req.originalUrl);
+    const PAGE_PATH = "./" + req.originalUrl;
+
+    const img = fs.readFileSync(PAGE_PATH);
+    res.send(img);
+  });
+
   router.get(/^\/programs\/tooltipcampus/, (req, res) => {
     console.log("> request from " + getFullUrl(req));
     // res.redirect('https://webapp4.asu.edu/' + req.originalUrl)

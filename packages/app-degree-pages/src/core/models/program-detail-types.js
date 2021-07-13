@@ -20,6 +20,8 @@
  *        text: string,
  *      }[],
  * }} AnchorMenuProps
+ */
+
 /**
  * This type set the `url` and `isActive` optional
  * @typedef {{

@@ -24,7 +24,6 @@ const columns = [
   {
     dataKey: "Major",
     label: "Major",
-    ariaLabel: "Major (Concentration): activate to sort column",
     className: "major",
     sortable: true,
     contentTemplate: ({ resolver, rowIndex, actionUrls, onClick }) => (
@@ -32,14 +31,17 @@ const columns = [
         <a href={parseMajorInfoLink(resolver, actionUrls?.majorInfoUrl)}>
           {resolver.getMajorDesc()}
         </a>
-        <ChevronIconButton onClick={selected => onClick(rowIndex, selected)} />
+        <ChevronIconButton
+          ariaLabel={`${resolver.getMajorDesc()} arrow`}
+          ariaControls={`row-info-${rowIndex}`}
+          onClick={selected => onClick(rowIndex, selected)}
+        />
       </div>
     ),
   },
   {
     dataKey: "Degree",
     label: "Degree",
-    ariaLabel: "Degree: activate to sort column",
     className: "degree",
     contentTemplate: ({ resolver }) => (
       <div className="cell-container">
@@ -57,7 +59,6 @@ const columns = [
   {
     dataKey: "RequiredCourses",
     label: "Required Courses",
-    ariaLabel: "Required Courses",
     className: "required-course",
     contentTemplate: ({ resolver }) => {
       const isOnline = resolver.isOnline();
@@ -73,7 +74,6 @@ const columns = [
   {
     dataKey: "Location",
     label: "Location",
-    ariaLabel: "Location: activate to sort column",
     className: "campus-location",
     sortable: true,
     contentTemplate: ({ resolver }) => {
@@ -108,7 +108,6 @@ const columns = [
   {
     dataKey: "AcceleratedConcurrent",
     label: "Accelerated/ Concurrent",
-    ariaLabel: "Accelerated/ Concurrent: activate to sort column",
     className: "accelerated-concurrent",
     sortable: true,
     contentTemplate: ({ resolver, actionUrls }) => (
@@ -140,7 +139,6 @@ const columns = [
   {
     dataKey: "CollegeSchool",
     label: "College/School",
-    ariaLabel: "College/School: activate to sort column",
     className: "college",
     sortable: true,
     contentTemplate: ({ resolver }) => (

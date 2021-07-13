@@ -46,29 +46,11 @@ const defaultArgs = {
       },
     ],
   },
-  // anchorMenu: {
-  //   atAGlance: true,
-  //   applicationRequirements: true,
-  //   changeMajorRequirements: true,
-  //   nextSteps: true,
-  //   affordingCollege: true,
-  //   flexibleDegreeOptions: true,
-  //   careerOutlook: true,
-  //   exampleCareers: true,
-  //   customizeYourCollegeExperience: true,
-  //   globalOpportunity: true,
-  //   attendOnline: true,
-  //   programContactInfo: true,
-  //   externalAnchors: [
-  //     {
-  //       targetIdName: "my-request-form-info-id",
-  //       text: "Request Information",
-  //     },
-  //   ],
-  // },
   hero: {
     image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/" +
+        "ds_header_undergrad.jpg",
       altText: "Undergraduate Degrees",
       size: "medium",
     },
@@ -251,23 +233,38 @@ const Template = ({
   attendOnline,
   nextSteps,
 }) => (
-  <ProgramDetailPage
-    dataSource={dataSource}
-    anchorMenu={anchorMenu}
-    introContent={introContent}
-    hero={hero}
-    atAGlance={atAGlance}
-    applicationRequirements={applicationRequirements}
-    changeMajorRequirements={changeMajorRequirements}
-    affordingCollege={affordingCollege}
-    flexibleDegreeOptions={flexibleDegreeOptions}
-    careerOutlook={careerOutlook}
-    exampleCareers={exampleCareers}
-    globalOpportunity={globalOpportunity}
-    programContactInfo={programContactInfo}
-    attendOnline={attendOnline}
-    nextSteps={nextSteps}
-  />
+  <>
+    <ProgramDetailPage
+      dataSource={dataSource}
+      anchorMenu={anchorMenu}
+      introContent={introContent}
+      hero={hero}
+      atAGlance={atAGlance}
+      applicationRequirements={applicationRequirements}
+      changeMajorRequirements={changeMajorRequirements}
+      affordingCollege={affordingCollege}
+      flexibleDegreeOptions={flexibleDegreeOptions}
+      careerOutlook={careerOutlook}
+      exampleCareers={exampleCareers}
+      globalOpportunity={globalOpportunity}
+      programContactInfo={programContactInfo}
+      attendOnline={attendOnline}
+      nextSteps={nextSteps}
+    />
+    <section id="my-request-form-info-id" className="container mb-4">
+      <div className="row">
+        <h4>This is a just a Place holder</h4>
+        <img
+          src="/mocks/img/request-form-information.png"
+          alt=""
+          style={{
+            opacity: "0.7",
+            mixBlendMode: "luminosity"
+          }}
+        />
+      </div>
+    </section>
+  </>
 );
 
 /**

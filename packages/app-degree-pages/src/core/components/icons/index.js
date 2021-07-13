@@ -41,7 +41,7 @@ function FavButton({ onClick = () => null }) {
       tabIndex={0}
       onKeyDown={onClickButton}
       onClick={onClickButton}
-      data-selected={selected}
+      aria-pressed={selected}
     >
       {baseIcon(
         "fas",
@@ -69,14 +69,20 @@ const ChevronDownIcon = () => (
 
 /**
  *
- * @param {{onClick: (selected: boolean) => void}} props
+ * @param {{
+ *  onClick: (selected: boolean) => void
+ *  ariaLabel: string
+ *  ariaControls: string
+ * }} props
  * @returns {JSX.Element}
  */
-const ChevronIconButton = ({ onClick = () => null }) =>
+const ChevronIconButton = ({ onClick = () => null, ariaLabel, ariaControls }) =>
   BaseStateIconButton({
     baseIconClassName1: "fas fa-chevron-up",
     baseIconClassName2: "fas fa-chevron-down",
     onClick,
+    ariaLabel,
+    ariaControls,
   });
 
 export {

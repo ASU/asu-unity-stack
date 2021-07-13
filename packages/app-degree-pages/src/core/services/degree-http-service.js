@@ -4,18 +4,21 @@
 import { progDetailSectionIds } from "../models";
 
 //  TODO: this should handle the map tooltip
-function mapTooltipLink() {
+function mapTooltipLink(_) {
   // TODO: to be implemented
+  return "";
 }
 
 //  TODO: this should handle the subplan tooltip
-function mapTooltipSubPlanMapLink() {
+function mapTooltipSubPlanMapLink(_) {
   // TODO: to be implemented
+  return "";
 }
 
 //  TODO: this should handle the accellerate / concurrent tooltip
-function accellerateDegreeTooltipLink() {
+function accellerateDegreeTooltipLink(_) {
   // TODO: to be implemented
+  return "";
 }
 
 //  TODO: this should handle the request info link

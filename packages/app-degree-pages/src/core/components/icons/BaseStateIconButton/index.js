@@ -10,6 +10,8 @@ import React, { useState, useMemo } from "react";
  *    baseIconClassName2: string
  *    baseIconAriaLabel2?: string
  *    baseIconStyle2?: Object
+ *    ariaLabel: string
+ *    ariaControls: string
  * }} props
  * @returns {JSX.Element}
  */
@@ -20,10 +22,12 @@ function BaseStateIconButton({
   baseIconAriaLabel2,
   baseIconClassName2,
   baseIconStyle2,
+  ariaLabel,
+  ariaControls,
   onClick = () => null,
 }) {
   const [selected, setSelected] = useState(false);
-  const baseIcon = (iconClassName, display, ariaLabel, style) => (
+  const baseIcon = (iconClassName, display, icoAriaLabel, style) => (
     <span
       style={{
         cursor: "pointer",
@@ -32,8 +36,8 @@ function BaseStateIconButton({
     >
       <i
         className={`${iconClassName}`}
-        aria-label={ariaLabel}
-        title={ariaLabel}
+        aria-label={icoAriaLabel}
+        title={icoAriaLabel}
         style={style}
       />
     </span>
@@ -50,7 +54,9 @@ function BaseStateIconButton({
       tabIndex={0}
       onKeyDown={onClickButton}
       onClick={onClickButton}
-      data-selected={selected}
+      aria-label={ariaLabel}
+      aria-expanded={selected}
+      aria-controls={ariaControls}
     >
       {baseIcon(
         baseIconClassName1,

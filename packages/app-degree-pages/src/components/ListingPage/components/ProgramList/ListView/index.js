@@ -123,7 +123,7 @@ const ListView = ({ programs, loading, actionUrls }) => {
                 key={col.dataKey}
                 tabIndex={0}
                 className={`${col.className}`}
-                aria-controls="programsTable"
+                scope="col"
                 aria-label={col.ariaLabel}
               >
                 {col.headerTemplate?.() || <span>{col.label}</span>}
@@ -159,7 +159,11 @@ const ListView = ({ programs, loading, actionUrls }) => {
                     ))}
                   </tr>
 
-                  <tr key={`${rowId}-row-info`} className="row-info">
+                  <tr
+                    key={`${rowId}-row-info`}
+                    id={`row-info-${rowIndex}`}
+                    className="row-info"
+                  >
                     <td key={`${rowId}-info`} colSpan={3}>
                       {renderInfo({ resolver, id: `${rowId}-more-text` })}
                     </td>

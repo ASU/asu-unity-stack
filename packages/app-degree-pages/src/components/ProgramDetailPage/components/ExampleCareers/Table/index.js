@@ -14,7 +14,6 @@ import { SunIcon, LeafIcon } from "../index.style";
  * @param {{ data: TableProps[] }} props
  * @returns {JSX.Element}
  */
-
 function Table({ data }) {
   return (
     <div className="uds-table mb-1">
@@ -33,7 +32,7 @@ function Table({ data }) {
         <tbody>
           {data?.map(field => (
             <tr key={field.career.url}>
-              <td>
+              <th scope="row" style={{ fontWeight: "normal" }}>
                 <a href={field.career.url} target="_blank" rel="noreferrer">
                   {field.career.text}
                 </a>
@@ -41,7 +40,7 @@ function Table({ data }) {
                   <LeafIcon className="fas fa-leaf ml-1" />
                 )}
                 {field.brightOutlook && <SunIcon className="fas fa-sun ml-1" />}
-              </td>
+              </th>
               <td className="text-end">{field.growth}%</td>
               <td className="text-end">{field.medianSalary}</td>
             </tr>
