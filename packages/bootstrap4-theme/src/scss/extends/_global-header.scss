@@ -443,6 +443,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   }
 
   .navbar-site-buttons {
+    min-width: max-content;
     padding: 1rem 2rem;
     border-top: 1px solid #d0d0d0;
     flex-flow: initial;
@@ -598,6 +599,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     padding: $uds-size-spacing-2;
     border: 0; // Overrides BS Option;
     border-top: 1px solid $uds-color-base-gray-3;
+    top: 102%;
 
     .btn {
       margin: $uds-size-spacing-1 0;
@@ -814,7 +816,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         }
 
         &.nav-link-home:after {
-          bottom: -7px;
+          bottom: -8px;
           /* Home needs to be tweaked to not overlap border */
         }
 
@@ -882,7 +884,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     .dropdown-menu {
       margin: -1px 0 0 0;
       border: 1px solid $uds-color-base-gray-3;
-      border-top: 1px solid $uds-color-base-white;
       padding: $uds-size-spacing-4;
 
       div[class^='col-'] {
@@ -939,6 +940,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         margin-left: calc(-50vw + 50%);
         margin-top: 0;
         padding: 0;
+        top: 100%;
       }
 
       .row {
@@ -1013,7 +1015,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 #asu-header + div,
 #asu-header + main {
   @include transition;
-  margin-top: 113px;
+  margin-top: 145px;
 }
 
 #asu-header.scrolled + div,
@@ -1027,12 +1029,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   #asu-header + div,
   #asu-header + main {
     @include transition;
-    margin-top: 137px;
-  }
-
-  #asu-header.scrolled + div,
-  #asu-header.scrolled + main {
-    @include transition;
-    margin-top: 81px;
+    margin-top: 110px;
   }
 }
