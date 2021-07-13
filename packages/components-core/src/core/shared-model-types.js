@@ -12,6 +12,7 @@
  * @typedef {{
  *  items: AnchorMenuItem[]
  *  firstElementId: string
+ *  focusFirstFocusableElement?: boolean
  * }} AnchorMenuProps
  */
 

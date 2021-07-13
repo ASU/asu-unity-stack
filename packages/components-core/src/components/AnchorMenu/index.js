@@ -6,6 +6,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
+import { useMediaQuery } from "../../core/hooks/use-media-query";
+import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 
 import "./index.css";
@@ -19,11 +21,17 @@ import "./index.css";
  * @returns {JSX.Element}
  */
 
-export const AnchorMenu = ({ items, firstElementId }) => {
+export const AnchorMenu = ({
+  items,
+  firstElementId,
+  focusFirstFocusableElement = false,
+}) => {
   library.add(fas);
   const anchorMenuRef = useRef(null);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const isSmallDevice = useMediaQuery("(max-width: 991px)");
+  const menuTitle = "On This Page";
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
@@ -67,6 +75,9 @@ export const AnchorMenu = ({ items, firstElementId }) => {
     if (!anchorMenuRef.current.classList.contains("sticky"))
       scrollTo -= anchorMenuHeight;
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
+
+    if (focusFirstFocusableElement)
+      queryFirstFocusable(`#${container}`)?.focus();
   };
 
   const handleMenuVisibility = () => {
@@ -83,26 +94,31 @@ export const AnchorMenu = ({ items, firstElementId }) => {
       )}
     >
       <div className="container-xl uds-anchor-menu-wrapper">
-        <button
-          className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
-          type="button"
-          onClick={handleMenuVisibility}
-          data-toggle="collapse"
-          data-target="#collapseAnchorMenu"
-          aria-controls="collapseAnchorMenu"
-        >
-          <h4>
-            On This Page:
-            <FontAwesomeIcon icon="chevron-down" />
-          </h4>
-        </button>
+        {isSmallDevice ? (
+          <button
+            className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
+            type="button"
+            onClick={handleMenuVisibility}
+            data-toggle="collapse"
+            data-target="#collapseAnchorMenu"
+            aria-controls="collapseAnchorMenu"
+          >
+            <h4>
+              {menuTitle}:
+              <FontAwesomeIcon icon="chevron-down" />
+            </h4>
+          </button>
+        ) : (
+          <h4>{menuTitle}:</h4>
+        )}
+
         <div
           id="collapseAnchorMenu"
           className={classNames("card", "card-body", "collapse", {
             [`show`]: showMenu,
           })}
         >
-          <nav className="nav" aria-label="Same Page">
+          <nav className="nav" aria-label={menuTitle}>
             {items?.map(item => (
               // @ts-ignore
               <Button
@@ -139,4 +155,9 @@ AnchorMenu.propTypes = {
    * First next sibling element of the anchor menu
    */
   firstElementId: PropTypes.string.isRequired,
+  /**
+   * If true it focus the first focusable element into the section
+   * If false it focus the next menu item into the nav bar
+   */
+  focusFirstFocusableElement: PropTypes.bool,
 };
