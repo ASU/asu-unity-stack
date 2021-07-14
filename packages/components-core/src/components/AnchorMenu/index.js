@@ -72,12 +72,14 @@ export const AnchorMenu = ({
     let scrollTo =
       document.getElementById(container)?.getBoundingClientRect().top +
       curScroll;
+
     if (!anchorMenuRef.current.classList.contains("sticky"))
       scrollTo -= anchorMenuHeight;
-    window.scrollTo({ top: scrollTo, behavior: "smooth" });
 
     if (focusFirstFocusableElement)
       queryFirstFocusable(`#${container}`)?.focus();
+
+    window.scrollTo({ top: scrollTo, behavior: "smooth" });
   };
 
   const handleMenuVisibility = () => {
