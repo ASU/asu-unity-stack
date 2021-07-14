@@ -21,12 +21,38 @@ Sidebar Navigation
 2. Sidebar
 --------------------------------------------------------------------*/
 
+.sidebar-toggler {
+  border: 1px solid $uds-color-base-gray-3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $uds-size-spacing-3 $uds-size-spacing-2;
+
+  p {
+    margin: 0;
+  }
+
+  svg {
+    transition: all 0.3s;
+  }
+
+  &[aria-expanded='false'] {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
 .sidebar {
   .nav-text {
     @include like-an-h5;
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-2;
-    border: 1px solid $uds-color-base-gray-2;
+    border: 1px solid $uds-color-base-gray-3;
 
     &:not(:last-child) {
       border-bottom: 0;
@@ -71,7 +97,7 @@ Sidebar Navigation
   }
 
   > .nav-link {
-    border: 1px solid $uds-color-base-gray-2;
+    border: 1px solid $uds-color-base-gray-3;
     padding: $uds-size-spacing-3 $uds-size-spacing-2;
     overflow: hidden;
     color: $uds-color-base-gray-7;
@@ -84,7 +110,7 @@ Sidebar Navigation
   }
 
   .card-foldable {
-    border: 1px solid $uds-color-base-gray-2;
+    border: 1px solid $uds-color-base-gray-3;
 
     .card-header,
     .card-body {
@@ -127,6 +153,25 @@ Sidebar Navigation
 
     &:not(:last-child) {
       border-bottom: 0;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &.collapse {
+      display: block;
+      height: auto !important;
+      visibility: visible;
+
+      &:not(.show) {
+        display: block;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    > .nav-link:first-child,
+    .card-foldable:first-child {
+      border-top-width: 0;
     }
   }
 }

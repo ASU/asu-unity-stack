@@ -23,7 +23,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -113,7 +113,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <div class="nav-link login-status">
@@ -152,7 +152,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -410,7 +410,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
@@ -448,7 +448,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -509,7 +509,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
@@ -547,7 +547,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -612,7 +612,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
@@ -650,7 +650,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -741,7 +741,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
@@ -782,7 +782,7 @@ storiesOf('Components/Global Header', module)
             <nav class="nav" aria-label="Top">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to main content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
-              <a class="nav-link" href="https://asu.edu">ASU home</a>
+              <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
@@ -881,7 +881,7 @@ storiesOf('Components/Global Header', module)
                       <input name="proxystylesheet" value="asu_frontend" type="hidden">
                     </form>
                     <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
+                      <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
                       <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>

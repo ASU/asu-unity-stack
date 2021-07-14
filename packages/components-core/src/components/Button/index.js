@@ -39,6 +39,7 @@ export const Button = ({
   onClick,
   size,
   classes,
+  target,
   ...props
 }) => {
   library.add(fas, far, fab);
@@ -65,6 +66,7 @@ export const Button = ({
       ref={innerRef}
       onClick={onClick}
       aria-label={ariaLabel}
+      target={Tag === "a" ? target : null}
     >
       {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}
       {label}
@@ -142,6 +144,10 @@ Button.propTypes = {
     Classes to add to button
   */
   classes: PropTypes.arrayOf(PropTypes.string),
+  /**
+   Link target type
+   */
+  target: PropTypes.oneOf(["_blank", "_self", "_top", "_parent"]),
 };
 
 Button.defaultProps = {
@@ -157,4 +163,5 @@ Button.defaultProps = {
   onClick: undefined,
   size: "default",
   classes: undefined,
+  target: "_self",
 };

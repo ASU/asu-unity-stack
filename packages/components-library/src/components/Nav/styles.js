@@ -11,7 +11,7 @@ import {
   BreakpointLg,
   BreakpointXl,
   containerSize,
-  breakpointForMin
+  breakpointForMin,
 } from "../../theme";
 import { IconChevronDown } from "../Icons/styles";
 
@@ -26,7 +26,7 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
-    overflow-x: hidden;
+    overflow-x: auto;
 
     a {
       text-decoration: none;
@@ -156,11 +156,12 @@ const navListStyles = breakpoint => css`
       > li {
         margin-right: 0;
 
-        > a, .drop-controls {
+        > a,
+        .drop-controls {
           padding: 1rem 2rem 0.5rem;
           justify-content: space-between;
           display: block;
-          border-bottom: 1px solid #cccccc;
+          border-top: 1px solid #cccccc;
           align-items: center;
           margin: 4px 4px;
           > svg {
@@ -169,12 +170,15 @@ const navListStyles = breakpoint => css`
           }
         }
 
-        :first-of-type {
-          border-top: 1px solid #cccccc;
-        }
-
         :last-of-type {
           border-bottom: none;
+        }
+
+        &.dropdown-open {
+          > a,
+          .drop-controls {
+            border-bottom: 1px solid #cccccc;
+          }
         }
       }
 
@@ -246,14 +250,13 @@ const dropdownContainerStyles = breakpoint => css`
     justify-content: space-between;
     background: #ffffff;
     border: 1px solid #d0d0d0;
-    border-top: none;
     opacity: 0;
     visibility: hidden;
     z-index: 999;
     flex-wrap: nowrap;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     overflow: hidden;
-    margin: -1px 0 0 0;
+    margin: 0.3px 0 0 0;
     flex-direction: column;
 
     > div {
@@ -306,7 +309,7 @@ const dropdownContainerStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      padding-left: 3rem;
+      padding: 1rem 2rem;
       flex-direction: column;
       max-height: 0;
       border: none;
@@ -315,6 +318,10 @@ const dropdownContainerStyles = breakpoint => css`
         position: relative;
         display: flex;
         max-height: 10000px;
+      }
+
+      h3 {
+        padding-left: 0.3rem;
       }
     }
 
@@ -345,7 +352,12 @@ const dropdownContainerStyles = breakpoint => css`
 
 const DropdownContainer = props => {
   return (
-    <div class={cx("dropdown", props.open ? "open" : "", props.class)} data-onclick-identifier = {"leave-open"} onMouseDown={e => {}} onClick={e => {}}>
+    <div
+      class={cx("dropdown", props.open ? "open" : "", props.class)}
+      data-onclick-identifier={"leave-open"}
+      onMouseDown={e => {}}
+      onClick={e => {}}
+    >
       <div>{props.children}</div>
       {props.buttons ? (
         <div class="button-row">
@@ -575,6 +587,12 @@ const componentStyles = breakpoint => css`
 const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
+    li:last-child div.dropdown:not(.mega) {
+      left: auto !important;
+      right: 98px !important;
+      clip: auto !important;
+      position: absolute !important;
+    }
   }
 `;
 
