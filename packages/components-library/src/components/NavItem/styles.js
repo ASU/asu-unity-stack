@@ -43,6 +43,7 @@ const navItemStyles = breakpoint => css`
   .navlink {
     > a {
       color: #191919;
+      padding: 1rem 0.5rem;
     }
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {

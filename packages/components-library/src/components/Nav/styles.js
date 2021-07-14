@@ -26,7 +26,7 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
-    overflow-x: hidden;
+    overflow-x: auto;
 
     a {
       text-decoration: none;
@@ -161,7 +161,7 @@ const navListStyles = breakpoint => css`
           padding: 1rem 2rem 0.5rem;
           justify-content: space-between;
           display: block;
-          border-bottom: 1px solid #cccccc;
+          border-top: 1px solid #cccccc;
           align-items: center;
           margin: 4px 4px;
           > svg {
@@ -170,12 +170,15 @@ const navListStyles = breakpoint => css`
           }
         }
 
-        :first-of-type {
-          border-top: 1px solid #cccccc;
-        }
-
         :last-of-type {
           border-bottom: none;
+        }
+
+        &.dropdown-open {
+          > a,
+          .drop-controls {
+            border-bottom: 1px solid #cccccc;
+          }
         }
       }
 
@@ -247,14 +250,13 @@ const dropdownContainerStyles = breakpoint => css`
     justify-content: space-between;
     background: #ffffff;
     border: 1px solid #d0d0d0;
-    border-top: none;
     opacity: 0;
     visibility: hidden;
     z-index: 999;
     flex-wrap: nowrap;
     transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
     overflow: hidden;
-    margin: -1px 0 0 0;
+    margin: 0.3px 0 0 0;
     flex-direction: column;
 
     > div {
@@ -307,7 +309,7 @@ const dropdownContainerStyles = breakpoint => css`
     }
 
     @media (max-width: ${breakpoint}) {
-      padding-left: 2rem;
+      padding: 1rem 2rem;
       flex-direction: column;
       max-height: 0;
       border: none;
@@ -501,7 +503,6 @@ const menuColumnStyles = breakpoint => css`
       border-right: none;
       width: 100%;
       padding: 0;
-      margin-bottom: 2rem;
       > li {
         :last-of-type {
           border: none;
