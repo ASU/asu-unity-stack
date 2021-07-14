@@ -333,12 +333,16 @@ const CardContent = ({
   tags,
 }) => (
   <>
-    <div className="card-header">
-      <h3 className="card-title">{title}</h3>
-    </div>
-    <div className="card-body">
-      <p className="card-text">{body}</p>
-    </div>
+    {!!title && (
+      <div className="card-header">
+        <h3 className="card-title">{title}</h3>
+      </div>
+    )}
+    {!!body && (
+      <div className="card-body">
+        <p className="card-text">{body}</p>
+      </div>
+    )}
     {type === "event" && (eventTime || eventLocation) && (
       <EventInfo
         eventFormat={eventFormat}
@@ -346,11 +350,12 @@ const CardContent = ({
         eventLocation={eventLocation}
       />
     )}
-    {buttons &&
-      buttons.map(button => (
-        <div key={`${button.label}-${button.href}`} className="card-button">
-          {/* @ts-ignore */}
+    {buttons && (
+      <div className="card-button">
+        {buttons.map(button => (
+          // @ts-ignore
           <Button
+            key={`${button.label}-${button.href}`}
             ariaLabel={button.ariaLabel}
             color={button.color}
             icon={button.icon}
@@ -360,8 +365,9 @@ const CardContent = ({
             size={button.size}
             target={button.target}
           />
-        </div>
-      ))}
+        ))}
+      </div>
+    )}
     {linkUrl && linkLabel && (
       <div className="card-link">
         <a href={linkUrl}>{linkLabel}</a>

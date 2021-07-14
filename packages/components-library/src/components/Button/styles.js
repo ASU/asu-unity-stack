@@ -60,7 +60,7 @@ const Button = forwardRef(
             user-select: none;
             background-color: transparent;
             border: 1px solid transparent;
-            padding: 1rem 2rem;
+            padding: 1rem 2rem !important;
             font-size: 1rem;
             line-height: 1rem;
             border-radius: 400rem;
@@ -88,13 +88,13 @@ const Button = forwardRef(
               height: ${ComponentButtonSmallHeight};
               min-width: ${ComponentButtonSmallMinWidth};
               padding: ${ComponentButtonPaddingYSmall}
-                ${ComponentButtonPaddingXSmall};
+                ${ComponentButtonPaddingXSmall} !important;
             `}
 
         ${medium &&
             `
               font-size: 0.875rem;
-              padding: 0.5rem 1rem;
+              padding: 0.5rem 1rem !important;
             `}
 
         ${large &&
@@ -184,7 +184,7 @@ const buttonStyles = css`
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem !important;
     font-size: 1rem;
     line-height: 1rem;
     border-radius: 400rem;
@@ -210,14 +210,14 @@ const buttonStyles = css`
       font-size: ${ComponentButtonSmallFontSize};
       height: ${ComponentButtonSmallHeight};
       min-width: ${ComponentButtonSmallMinWidth};
-      padding: ${ComponentButtonPaddingYSmall} ${ComponentButtonPaddingXSmall};
+      padding: ${ComponentButtonPaddingYSmall} ${ComponentButtonPaddingXSmall} !important;
     }
 
     &.btn-medium {
       font-size: ${ComponentButtonMediumFontSize};
       height: ${ComponentButtonMediumHeight};
       min-width: ${ComponentButtonMediumMinWidth};
-      padding: ${ComponentButtonPaddingYMedium} ${ComponentButtonPaddingXMedium};
+      padding: ${ComponentButtonPaddingYMedium} ${ComponentButtonPaddingXMedium} !important;
     }
 
     &.btn-large {
