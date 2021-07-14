@@ -106,7 +106,7 @@ const videoTemplate = ({
               " btn-circle-alt-white uds-video-btn-play"
             }
           >
-            <i className="fa fa-play" />
+            <i className="fas fa-play" />
             <span className="sr-only">Play</span>
           </button>
         </VideoOverlay>
