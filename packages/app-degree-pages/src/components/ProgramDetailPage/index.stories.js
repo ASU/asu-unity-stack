@@ -47,6 +47,7 @@ const defaultArgs = {
     ],
   },
   hero: {
+    // hide: true,// OPTIONAL
     image: {
       url:
         "https://webapp4.asu.edu/programs/resources/images/" +
@@ -98,7 +99,7 @@ const defaultArgs = {
     // ],
   },
   atAGlance: {
-    // hide: true,
+    //   hide: true, // OPTIONAL
     offeredBy: {
       text: "Herberger Instite for Design and the Arts",
       url: "#",
@@ -126,10 +127,10 @@ const defaultArgs = {
     timeCommitment: "120 credit hours(about 4 years)",
   },
   // applicationRequirements: {
-  //   hide: true,
+  //   hide: true, // OPTIONAL
   // },
   // changeMajorRequirements: {
-  //   hide: true,
+  //   hide: true, // OPTIONAL
   // },
   nextSteps: {
     cards: [
@@ -172,10 +173,10 @@ const defaultArgs = {
     ],
   },
   // affordingCollege: {
-  //   hide: true,
+  //   hide: true, // OPTIONAL
   // },
   // flexibleDegreeOptions: {
-  //   hide: true,
+  //   hide: true, // OPTIONAL
   // },
   careerOutlook: {
     image: {
@@ -184,28 +185,26 @@ const defaultArgs = {
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
   },
-  // OPTIONAL
   // exampleCareers: {
-  //   hide: true,
+  //   hide: true, // OPTIONAL
   // },
   // OPTIONAL
-  // globalOpportunity: {
-  // hide: true,
-  // image: {
-  //   url: "https://source.unsplash.com/random/1200x750",
-  //   altText:
-  //     "Random image. REPLACE with appropriate alt text for accessibility.",
-  // },
-  // },
-  // OPTIONAL
-  // attendOnline: {
-  // hide: true,
-  // image: {
-  //   url: "https://source.unsplash.com/random/1200x750",
-  //   altText:
-  //     "Random image. REPLACE with appropriate alt text for accessibility.",
-  // },
-  // },
+  globalOpportunity: {
+    //   hide: true, // OPTIONAL
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  attendOnline: {
+    // hide: true,// OPTIONAL
+    image: {
+      url: "https://source.unsplash.com/random/1200x750",
+      altText:
+        "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
   programContactInfo: {
     departmentUrl: "#",
     emailUrl: "#",
@@ -259,7 +258,7 @@ const Template = ({
           alt=""
           style={{
             opacity: "0.7",
-            mixBlendMode: "luminosity"
+            mixBlendMode: "luminosity",
           }}
         />
       </div>
@@ -292,4 +291,17 @@ PageWithVideoAndMarketTextext.args.introContent = {
     altText: "",
     vttUrl: "",
   },
+};
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const PageWithDefaultContent = Template.bind({});
+PageWithDefaultContent.args = {
+  ...defaultArgs,
+  hero: null,
+  nextSteps: null,
+  globalOpportunity: null,
+  attendOnline: null,
 };

@@ -147,14 +147,14 @@
  *  @typedef {{
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  anchorMenu?: AnchorMenuProps
- *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
+ *  hero?: HideProp & import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps
  *  atAGlance?: HideProp & AtAGlanceProps
  *  applicationRequirements?: HideProp
  *  changeMajorRequirements?: HideProp
- *  nextSteps?: NextStepsProps
+ *  nextSteps?: HideProp & NextStepsProps
  *  affordingCollege?: HideProp
  *  flexibleDegreeOptions?: HideProp
  *  careerOutlook?: CareerOutlookProps

@@ -12,15 +12,13 @@ import {
   ThemeStyle,
   Video,
 } from "../../core/components";
-import {
-  defaultImages,
-  detailPageDefaultDataSource,
-} from "../../core/constants";
+import { detailPageDefaultDataSource } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   anchorMenuPropType,
   cardPropShape,
   dataSourcePropShape,
+  detailPageDefault,
   linkPropShape,
   imagePropShape,
   videoPropShape,
@@ -107,12 +105,12 @@ const ProgramDetailPage = ({
 
       {error && <ErrorAlert message="Something went wrong ..." />}
 
-      {hero ? (
+      {!hero?.hide ? (
         <section>
           <Hero
-            image={hero.image}
-            title={{ ...hero.title, maxWidth: "100%" }}
-            contents={hero.contents}
+            image={hero?.image || detailPageDefault.hero.image}
+            title={{ ...hero?.title, maxWidth: "100%" }}
+            contents={hero?.contents}
           />
         </section>
       ) : null}
@@ -231,7 +229,11 @@ const ProgramDetailPage = ({
               </div>
             </div>
             <div className="row">
-              {nextSteps ? <NextSteps cards={nextSteps.cards} /> : null}
+              {!nextSteps?.hide ? (
+                <NextSteps
+                  cards={nextSteps?.cards || detailPageDefault.nextSteps.cards}
+                />
+              ) : null}
 
               {!affordingCollege?.hide ? <AffordingCollege /> : null}
 
@@ -266,7 +268,8 @@ const ProgramDetailPage = ({
                 <GlobalOpportunity
                   contents={[{ text: resolver.getGlobalExp() }]}
                   image={
-                    globalOpportunity?.image || defaultImages.globalOpportunity
+                    globalOpportunity?.image ||
+                    detailPageDefault.globalOpportunity.image
                   }
                 />
               ) : null}
@@ -274,7 +277,9 @@ const ProgramDetailPage = ({
               {!attendOnline?.hide ? (
                 <AttendOnline
                   learnMoreLink={resolver.getCurriculumUrl()}
-                  image={attendOnline?.image || defaultImages.attendOnline}
+                  image={
+                    attendOnline?.image || detailPageDefault.attendOnline.image
+                  }
                 />
               ) : null}
             </div>
@@ -344,6 +349,7 @@ ProgramDetailPage.propTypes = {
     emailUrl: PropTypes.string,
   }),
   nextSteps: PropTypes.shape({
+    hide: PropTypes.bool,
     cards: PropTypes.arrayOf(cardPropShape).isRequired,
   }),
 };

@@ -8,6 +8,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
+ * @typedef {import("../../../../components-core/src/core/models/shared-model-types").ImageProps} ImageProps
+ */
+
+/**
  * @template S
  * @typedef {[S, import("react").Dispatch<import("react").SetStateAction<S>>]} UseStateTuple
  */
