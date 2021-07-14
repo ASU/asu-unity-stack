@@ -25,5 +25,6 @@ export const parameters = {
         ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Docs', ['Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation', 'Additional considerations'], 'Content Sections', 'Hero']],
     },
   },
+  layout: 'fullscreen'
 };
 

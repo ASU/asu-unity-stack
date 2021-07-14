@@ -1,5 +1,6 @@
 import React from 'react';
-import { Basic } from '../stories/components/global-header/global-header.stories.js';
+import { Basic } from '../stories/components/global-header/global-header.components.js';
+import { GlobalElementsOnly } from '../stories/components/global-footer/global-footer.components.js';
 
 export const createComponent = (name) => {
   return {
@@ -32,7 +33,7 @@ export const createStory = (componentJSX) => {
     <div>
       { args.header && <Basic /> }
       <div>{ componentJSX }</div>
-      { args.footer && <div>footer</div> }
+      { args.footer && <GlobalElementsOnly /> }
     </div>
   );
 
