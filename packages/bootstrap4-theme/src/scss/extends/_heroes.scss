@@ -69,17 +69,19 @@ div[class^='uds-hero'] {
     display: inline-block;
     grid-row: 2;
     line-height: 1;
-
     .highlight-white {
       @include like-h3-highlight-white;
     }
-
     .highlight-black {
       @include like-h3-highlight-black;
     }
-
     .highlight-gold {
       @include like-h3-highlight-gold;
+    }
+    span {
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      margin-left: 0.15em;
     }
   }
 
@@ -87,6 +89,9 @@ div[class^='uds-hero'] {
     grid-row: 3;
     margin: 0;
     margin-bottom: $uds-size-spacing-3;
+    span {
+      margin-left: 0.15em;
+    }
   }
 
   a.btn {
