@@ -8,10 +8,12 @@ import {
   Testimonial,
   AnchorMenu,
   Hero,
+  Accordion,
   Video,
 } from "./components";
 
 export * from "./utils";
+export * from "./core/hooks/use-media-query";
 
 export {
   Card,
@@ -23,5 +25,6 @@ export {
   Testimonial,
   AnchorMenu,
   Hero,
+  Accordion,
   Video,
 };
