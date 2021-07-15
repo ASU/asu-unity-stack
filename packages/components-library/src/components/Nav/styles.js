@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { css, cx } from "@emotion/css";
-import { forwardRef } from "preact/compat";
+import { forwardRef, useEffect, useState, useRef } from "preact/compat";
 
 import {
   focusStyle,
@@ -26,7 +26,6 @@ const navListStyles = breakpoint => css`
     margin: 0;
     padding: 0;
     align-items: flex-end;
-    overflow-x: auto;
 
     a {
       text-decoration: none;
@@ -73,7 +72,7 @@ const navListStyles = breakpoint => css`
       }
 
       @media (min-width: ${breakpointForMin(breakpoint)}) {
-        position: static;
+        position: relative;
 
         &.dropdown-open,
         &.active {
@@ -258,9 +257,18 @@ const dropdownContainerStyles = breakpoint => css`
     overflow: hidden;
     margin: 0.3px 0 0 0;
     flex-direction: column;
+    max-height: 500px;
+    overflow: hidden;
 
     > div {
       width: 100%;
+    }
+
+    &.aligned-right:not(.mega) {
+      position: absolute;
+      clip: auto;
+      right: 0;
+      left: auto;
     }
 
     &.mega {
@@ -351,9 +359,27 @@ const dropdownContainerStyles = breakpoint => css`
 `;
 
 const DropdownContainer = props => {
+  const dropdownRef = useRef(null);
+  const [alignedRight, setAlignedRight] = useState(false);
+
+  useEffect(() => {
+    if (window && dropdownRef.current) {
+      const elPosition = dropdownRef.current.getBoundingClientRect().left;
+      const breakpointPosition = window.innerWidth * 0.55;
+      console.log(elPosition);
+      setAlignedRight(elPosition > breakpointPosition);
+    }
+  }, []);
+
   return (
     <div
-      class={cx("dropdown", props.open ? "open" : "", props.class)}
+      ref={dropdownRef}
+      class={cx(
+        "dropdown",
+        props.open ? "open" : "",
+        props.class,
+        alignedRight ? "aligned-right" : ""
+      )}
       data-onclick-identifier={"leave-open"}
       onMouseDown={e => {}}
       onClick={e => {}}
@@ -587,12 +613,6 @@ const componentStyles = breakpoint => css`
 const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
-    li:last-child div.dropdown:not(.mega) {
-      left: auto !important;
-      right: 98px !important;
-      clip: auto !important;
-      position: absolute !important;
-    }
   }
 `;
 
