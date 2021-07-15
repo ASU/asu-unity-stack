@@ -36,7 +36,7 @@
     <!-- <script src="../mocks/RequestInfoForm/index.js"></script> -->
   </head>
   <body>
-    <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+    <!-- Provide target divs for the component. Must have unique ids or class name. -->
     <div id="degreePageContainer"></div>
 
     <script>
@@ -65,6 +65,115 @@
         // more example here: https://asudev.jira.com/browse/WS2-691?focusedCommentId=1302038
       };
 
+      // =======================================================================
+      // Optional introContent configuration which type is "text-photo-grid"
+      // =======================================================================
+      const introContentTextPhotoGrid = {
+        type: "text-photo-grid",
+        title: {
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          // component: "h2", default h2
+        },
+        contents: [
+          {
+            text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+          },
+        ],
+        photoGrid: {
+          images: [
+            {
+              url: "https://source.unsplash.com/random/800x400?a=1",
+            },
+            {
+              url: "https://source.unsplash.com/random/800x400?a=1",
+            },
+            {
+              url: "https://source.unsplash.com/random/800x400?a=1",
+            },
+            {
+              url: "https://source.unsplash.com/random/800x400?a=1",
+            },
+          ],
+        },
+      };
+      // =======================================================================
+      // Optional introContent configuration which type is "text-media"
+      // =======================================================================
+      const introContentTextMedia = {
+        type: "text-media",
+        title: {
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          // component: "h2", default h2
+        },
+        contents: [
+          {
+            text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+          },
+        ],
+        image: {
+          url: "https://source.unsplash.com/random/800x400?a=1",
+        },
+      };
+      // =======================================================================
+      // Optional introContent configuration which type is "text-image-overlay"
+      // =======================================================================
+      const introContentTextImageOverlay = {
+        type: "text-image-overlay",
+        header: {
+          text: "Intro Content Image Overlay",
+          // component: "h2", default h2
+        },
+        title: {
+          text: "This is the contents that goes in the box",
+          // component: "h2", default h2
+        },
+        contents: [
+          {
+            text: `Instagram tour operator travel sailing flying package.
+           Territory New York City group discount active lifestyle creditcard
+           insurance wellness kayak guide overnight rural lonely planet.`,
+          },
+          {
+            text: `Train luxury Paris recommendations nature France sight seeing.
+           Flexibility Amsterdam maps.
+           Pacific lonely planet private jet national insurance taxi tourist attractions.
+           Budget Pacific guide caravan Barcelona place to stay maps gateway diary tour operator money`,
+          },
+        ],
+        image: {
+          url: "https://source.unsplash.com/random/800x600?a=1",
+        },
+      };
+      // =======================================================================
+      // Optional introContent configuration which type is "text"
+      // =======================================================================
+      const introContentText = {
+        type: "text",
+        title: {
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          // component: "h2", default h2
+        },
+        contents: [
+          {
+            text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+          },
+        ],
+      };
+      // =======================================================================
+      // Different introContent configuration can be tested here below:
+      // =======================================================================
+      // const introContent = introContentTextPhotoGrid
+      // const introContent = introContentTextMedia
+      // const introContent = introContentTextImageOverlay
+      // const introContent = introContentText
+      const introContent = introContentText;
+
       AsuDegreePages.initListingPage({
         targetSelector: "#degreePageContainer",
         props: {
@@ -80,20 +189,7 @@
               highlightColor: "gold",
             },
           },
-          introContent: {
-            type: "text",
-            title: {
-              text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
-              // component: "h2", default h2
-            },
-            contents: [
-              {
-                text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
-              },
-            ],
-          },
+          introContent,
           // hasFilters: false, // OPTIONAL
           // hasSearchBar: false, // OPTIONAL
           programList: {

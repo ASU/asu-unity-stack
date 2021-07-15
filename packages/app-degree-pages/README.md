@@ -6,7 +6,9 @@ ASU Web Standards-based implementation of the Degree page component
 
 1. [React](https://reactjs.org/)
 2. [Font Awesome](https://fontawesome.com/)
-- - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
+    - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
+3. [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu-design-system/bootstrap4-theme)
+    - [CDN link](https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css)
 
 In order to use ASU Web Standards 2.0 you must install the
 ASU Design System Bootstrap 4 theme
@@ -37,17 +39,212 @@ yarn test
 2. ```yarn add @asu-design-system/app-degree-pages```
 
 ## Use as a JS module in React app
+### ListingPage component
 
-TODO...
+You can find an extended example of how to set `ListingPage` props [here](/packages/app-degree-pages/src/components/ListingPage/index.stories.js)
+
+```JS
+  import { ListingPage } from '@asu-design-system/app-degree-pages'
+
+  const ListingPageApp = ({
+    actionUrls,
+    hero,
+    introContent,
+    programList,
+    hasFilters,
+    hasSearchBar,
+  }) => {
+  return (
+        <ListingPage
+          actionUrls={actionUrls}
+          hero={hero}
+          introContent={introContent}
+          programList={programList}
+          hasSearchBar={hasSearchBar}
+          hasFilters={hasFilters}
+      />
+    )
+  };
+```
+### ProgramDetailPage component
+
+You can find an extended example of how to set `ProgramDetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
+
+```JS
+ import { ProgramDetailPage } from '@asu-design-system/app-degree-pages'
+
+ const ProgramDetailPageApp = ({
+    dataSource,
+    anchorMenu,
+    introContent,
+    hero,
+    atAGlance,
+    applicationRequirements,
+    changeMajorRequirements,
+    affordingCollege,
+    flexibleDegreeOptions,
+    careerOutlook,
+    exampleCareers,
+    globalOpportunity,
+    programContactInfo,
+    attendOnline,
+    nextSteps,
+  }) => (
+    <ProgramDetailPage
+      dataSource={dataSource}
+      anchorMenu={anchorMenu}
+      introContent={introContent}
+      hero={hero}
+      atAGlance={atAGlance}
+      applicationRequirements={applicationRequirements}
+      changeMajorRequirements={changeMajorRequirements}
+      affordingCollege={affordingCollege}
+      flexibleDegreeOptions={flexibleDegreeOptions}
+      careerOutlook={careerOutlook}
+      exampleCareers={exampleCareers}
+      globalOpportunity={globalOpportunity}
+      programContactInfo={programContactInfo}
+      attendOnline={attendOnline}
+      nextSteps={nextSteps}
+    />
+  );
+```
 
 ## Use on static HTML page
 
-TODO...
+### ListingPage component
 
+You can find an extended example of how to set `ListingPage` props [here](/packages/app-degree-pages/examples/listing-page.html)
+
+```HTML
+
+    <!-- FONTAWESOME loaded from CDN 'kit' URL -->
+    <script
+      src="https://kit.fontawesome.com/35fb12a3a9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+
+    <!-- *************************************************************** -->
+    <!-- Load React. -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+    <!-- *************************************************************** -->
+    <!-- include bundled scripts from packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/degreePages.production.js"></script>
+
+    <div id="degreePageContainer"></div>
+
+    <script>
+      AsuDegreePages.initListingPage({
+        targetSelector: "#degreePageContainer",
+        props: { /** See ee file examples/listing-page.html */ }
+      });
+    </script>
+```
+### ProgramDetailPage component
+
+You can find an extended example of how to set `ProgramDetailPage` props [here](/packages/app-degree-pages/examples/program-detail-page.html)
+
+```HTML
+
+    <!-- FONTAWESOME loaded from CDN 'kit' URL -->
+    <script
+      src="https://kit.fontawesome.com/35fb12a3a9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+
+    <!-- *************************************************************** -->
+    <!-- Load React. -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+    <!-- *************************************************************** -->
+    <!-- include bundled scripts from packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/degreePages.production.js"></script>
+
+    <div id="degreePageContainer"></div>
+
+    <script>
+      AsuDegreePages.initProgramDetailPage({
+        targetSelector: "#degreePageContainer",
+        props: { /** See ee file examples/program-detail-page.htmll */ }
+      });
+    </script>
+
+```
 ## DegreePage properties
+### ListingPage component
 
-TODO...
+You can find the full list of props types into the file [listing-page-types.js here](/packages/app-degree-pages/src/core/models/listing-page-types.js)
 
+```JS
+  /**
+  * @typedef {{
+  *  actionUrls?: ActionUrlProps
+  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
+  *  introContent?: IntroContentProps
+  *  hasSearchBar?: boolean
+  *  hasFilters?: boolean
+  *  programList: GridListProps
+  * }} ListingPageProps
+  */
+```
+### ProgramDetailPage component
+You can find the full list of props types into the file [program-detail-types.js here](/packages/app-degree-pages/src/core/models/program-detail-typesjs)
+
+```JS
+/**
+ *  @typedef {{
+ *   hide?: boolean
+ *  }} HideProp
+ *
+ *  @typedef {{
+ *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
+ *  anchorMenu?: AnchorMenuProps
+ *  hero?: HideProp & import("@asu-design-system/components-core/src/components").HeroProps
+ *  introContent?: IntroContentProps
+ *  programDescription?: ProgramDescriptionProps
+ *  requiredCoursesProps?: RequiredCoursesProps
+ *  atAGlance?: HideProp & AtAGlanceProps
+ *  applicationRequirements?: HideProp
+ *  changeMajorRequirements?: HideProp
+ *  nextSteps?: HideProp & NextStepsProps
+ *  affordingCollege?: HideProp
+ *  flexibleDegreeOptions?: HideProp
+ *  careerOutlook?: CareerOutlookProps
+ *  exampleCareers?: HideProp
+ *  globalOpportunity?: HideProp & GlobalOpportunityProps
+ *  attendOnline?: HideProp &  AttendOnlineProps
+ *  programContactInfo?: {
+ *      departmentUrl: string
+ *      emailUrl: string
+ *  }
+ * }} ProgramDetailPageProps
+ */
+```
 ### Examples
 
 The folder [packages/app-degree-pages/examples](/packages/app-degree-pages/examples)
@@ -55,7 +252,8 @@ The folder [packages/app-degree-pages/examples](/packages/app-degree-pages/examp
 
 #### Examples - quick links
 
-- [Degree page](/packages/app-degree-pages/examples/degree-page.html)
+- [Listing page](/packages/app-degree-pages/examples/listing-page.html)
+- [Program Detail Page](/packages/app-degree-pages/examples/program-detail-page.html)
 
 #### Examples - run and test
 

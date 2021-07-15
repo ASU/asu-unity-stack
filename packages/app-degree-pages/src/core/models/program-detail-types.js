@@ -111,6 +111,7 @@
  * }} ExampleCareersProps
  */
 
+// TODO: to be implemented
 /**
  *  @typedef {{
  *    title: string
@@ -159,7 +160,6 @@
  *  flexibleDegreeOptions?: HideProp
  *  careerOutlook?: CareerOutlookProps
  *  exampleCareers?: HideProp
- *  customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
  *  globalOpportunity?: HideProp & GlobalOpportunityProps
  *  attendOnline?: HideProp &  AttendOnlineProps
  *  programContactInfo?: {

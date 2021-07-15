@@ -3,7 +3,6 @@
 import React from "react";
 
 import { ListingPage } from ".";
-
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
@@ -210,7 +209,7 @@ AreaStudyDegreePage2B.args.introContent = {
   image: undefined,
   video: {
     url: "/assets/video/stock-video-person-drawing.mp4",
-    altText: "",
+    title: "",
     vttUrl: "",
   },
 };
