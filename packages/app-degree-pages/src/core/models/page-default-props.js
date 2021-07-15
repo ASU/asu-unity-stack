@@ -64,21 +64,21 @@ const detailPageDefault = {
   globalOpportunity: {
     // TODO: temp image. to be replaced with the new one
     image: {
-      url: `${scriptPath}/assets/img/global-opportunity.jpg`,
+      url: `${scriptPath}assets/img/global-opportunity.jpg`,
       altText: "Global opportunity",
     },
   },
   careerOutlook: {
     image: {
       // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}/assets/img/career-outlook.jpg`,
+      url: `${scriptPath}assets/img/career-outlook.jpg`,
       altText: "Career Outlook",
     },
   },
   attendOnline: {
     image: {
       // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}/assets/img/attend-online.jpg`,
+      url: `${scriptPath}assets/img/attend-online.jpg`,
       altText: "Attend online",
     },
   },
