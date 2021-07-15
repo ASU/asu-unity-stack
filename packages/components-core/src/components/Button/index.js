@@ -8,6 +8,24 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+/**
+ *
+ * @param {{
+ *  label?: string,
+ *  ariaLabel?: string,
+ *  block?: boolean,
+ *  color?: string,
+ *  disabled?: boolean,
+ *  element?: any,
+ *  href?: string,
+ *  icon?: string[],
+ *  innerRef?: any,
+ *  onClick?: () => void,
+ *  size?: string,
+ *  classes?: string[],
+ * }} props
+ * @returns {JSX.Element}
+ */
 export const Button = ({
   label,
   ariaLabel,

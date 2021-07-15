@@ -232,17 +232,13 @@ const Template = args => (
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    {
-      text: "First container",
-      targetIdName: "first-container",
-      icon: ["fas", "link"],
-    },
+    { text: "First container", targetIdName: "first-container", icon: "link" },
     { text: "Second container", targetIdName: "second-container" },
     { text: "Third container", targetIdName: "third-container" },
     {
       text: "Fourth container",
       targetIdName: "fourth-container",
-      icon: ["fas", "link"],
+      icon: "link",
     },
   ],
   firstElementId: "first-container",
