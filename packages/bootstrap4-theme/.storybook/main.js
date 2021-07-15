@@ -8,7 +8,14 @@ module.exports = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
     '@storybook/addon-viewport',
     'storybook-addon-xd-designs',
     {
