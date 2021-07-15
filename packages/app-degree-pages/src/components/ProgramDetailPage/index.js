@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
+import { Hero, Video } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -10,7 +10,6 @@ import {
   Main,
   OnThisPageAnchorMenu,
   ThemeStyle,
-  Video,
 } from "../../core/components";
 import { detailPageDefaultDataSource } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
@@ -213,7 +212,7 @@ const ProgramDetailPage = ({
                     <Video
                       url={introContent.video.url}
                       vttUrl={introContent.video.vttUrl}
-                      altText={introContent.video.altText}
+                      title={introContent.video.title}
                     />
                   </VideoWrapper>
                 )}

@@ -83,13 +83,13 @@ const defaultArgs = {
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
-    // optional
+    // OPTIONAL
     // video: {
     //   url: "/assets/video/stock-video-person-drawing.mp4",
     //   altText: "",
     //   vttUrl: "",
     // },
-    // optional, override market text
+    // OPTIONAL, override market text
     // contents: [
     //   {
     //     text: `Can you imagine yourself hosting successful events and meetings?
@@ -188,7 +188,6 @@ const defaultArgs = {
   // exampleCareers: {
   //   hide: true, // OPTIONAL
   // },
-  // OPTIONAL
   globalOpportunity: {
     //   hide: true, // OPTIONAL
     image: {
@@ -288,7 +287,7 @@ PageWithVideoAndMarketTextext.args.introContent = {
   image: undefined,
   video: {
     url: "/assets/video/stock-video-person-drawing.mp4",
-    altText: "",
+    title: "",
     vttUrl: "",
   },
 };

@@ -1,13 +1,10 @@
 // @ts-check
+import { Video } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import {
-  ApplyNow,
-  OverlapContentImage,
-  Video,
-} from "../../../../core/components";
+import { ApplyNow, OverlapContentImage } from "../../../../core/components";
 import {
   contentPropShape,
   contentPropType,
@@ -128,7 +125,7 @@ function textTextMediaTypeHtmlTemplate({
             <Video
               url={video.url}
               vttUrl={video.vttUrl}
-              altText={video.altText}
+              title={video.title}
               className="mt-0"
             />
           )}
