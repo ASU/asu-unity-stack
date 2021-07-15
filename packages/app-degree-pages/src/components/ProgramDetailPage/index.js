@@ -248,9 +248,12 @@ const ProgramDetailPage = ({
                   />
                 )}
 
-              {careerOutlook ? (
+              {!careerOutlook?.hide ? (
                 <CareerOutlook
-                  image={careerOutlook.image}
+                  image={
+                    careerOutlook?.image ||
+                    detailPageDefault.careerOutlook.image
+                  }
                   contents={[{ text: resolver.getAsuCareerOpportunity() }]}
                 />
               ) : null}
@@ -333,7 +336,10 @@ ProgramDetailPage.propTypes = {
   changeMajorRequirements: PropTypes.shape({ hide: PropTypes.bool }),
   affordingCollege: PropTypes.shape({ hide: PropTypes.bool }),
   flexibleDegreeOptions: PropTypes.shape({ hide: PropTypes.bool }),
-  careerOutlook: PropTypes.shape({ image: imagePropShape }),
+  careerOutlook: PropTypes.shape({
+    hide: PropTypes.bool,
+    image: imagePropShape,
+  }),
   exampleCareers: PropTypes.shape({ hide: PropTypes.bool }),
   globalOpportunity: PropTypes.shape({
     hide: PropTypes.bool,

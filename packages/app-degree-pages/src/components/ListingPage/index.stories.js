@@ -57,9 +57,9 @@ const dataSource = {
 /**
  * @type {{ args: AppProps }}
  */
-export const UndergraduateDegreePage = Template.bind({});
+export const PageWithIntroText = Template.bind({});
 
-UndergraduateDegreePage.args = {
+PageWithIntroText.args = {
   actionUrls,
   hero: {
     image: {
@@ -98,9 +98,9 @@ UndergraduateDegreePage.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const AreaStudyDegreePage1 = Template.bind({});
+export const PageWithIntroTextPhotoGrid = Template.bind({});
 
-AreaStudyDegreePage1.args = {
+PageWithIntroTextPhotoGrid.args = {
   actionUrls,
   hero: {
     image: {
@@ -157,9 +157,9 @@ AreaStudyDegreePage1.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const AreaStudyDegreePage2 = Template.bind({});
+export const PageWithIntroTextMediaImage = Template.bind({});
 
-AreaStudyDegreePage2.args = {
+PageWithIntroTextMediaImage.args = {
   actionUrls,
   hero: {
     image: {
@@ -201,14 +201,14 @@ AreaStudyDegreePage2.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const AreaStudyDegreePage2B = Template.bind({});
+export const PageWithIntroTextMediaVideo = Template.bind({});
 
-AreaStudyDegreePage2B.args = { ...AreaStudyDegreePage2.args };
-AreaStudyDegreePage2B.args.introContent = {
-  ...AreaStudyDegreePage2.args.introContent,
+PageWithIntroTextMediaVideo.args = { ...PageWithIntroTextMediaImage.args };
+PageWithIntroTextMediaVideo.args.introContent = {
+  ...PageWithIntroTextMediaImage.args.introContent,
   image: undefined,
   video: {
-    url: "/assets/video/stock-video-person-drawing.mp4",
+    url: "/examples/assets/video/stock-video-person-drawing.mp4",
     title: "",
     vttUrl: "",
   },
@@ -217,12 +217,12 @@ AreaStudyDegreePage2B.args.introContent = {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const AreaStudyDegreePage3 = Template.bind({});
+export const PageWithIntroTextImageOverlay = Template.bind({});
 
 /**
  * @type {{ args: AppProps }}
  */
-AreaStudyDegreePage3.args = {
+PageWithIntroTextImageOverlay.args = {
   actionUrls,
   hero: {
     image: {

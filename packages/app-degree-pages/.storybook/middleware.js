@@ -1,8 +1,8 @@
 // @ts-check
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const express = require("express");
 const fs = require("fs");
 
-const { createProxyMiddleware } = require("http-proxy-middleware");
 const dataSearch = require("../mocks/data/degree-search.json");
 
 // const app = express();
@@ -39,8 +39,8 @@ function mockDegreeSeearch(router) {
    *    ],
    *   ),
    */
-  router.get(/^\/assets\/img/, (req, res) => {
-    console.log("> request image from " + getFullUrl(req));
+  router.get(/^\/assets\/(img|video)/, (req, res) => {
+    console.log("> request asset from " + getFullUrl(req));
     console.log("> url: " + req.originalUrl);
     const PAGE_PATH = "./src/" + req.originalUrl;
 
@@ -48,7 +48,7 @@ function mockDegreeSeearch(router) {
     res.send(img);
   });
 
-  router.get(/^\/mocks\/img/, (req, res) => {
+  router.get(/^\/examples\/assets\/(img|video)/, (req, res) => {
     console.log("> request mocks image from " + getFullUrl(req));
     console.log("> url: " + req.originalUrl);
     const PAGE_PATH = "./" + req.originalUrl;

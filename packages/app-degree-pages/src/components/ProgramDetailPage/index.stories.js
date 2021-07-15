@@ -85,7 +85,7 @@ const defaultArgs = {
     },
     // OPTIONAL
     // video: {
-    //   url: "/assets/video/stock-video-person-drawing.mp4",
+    //   url: "/examples/assets/video/stock-video-person-drawing.mp4",
     //   altText: "",
     //   vttUrl: "",
     // },
@@ -253,7 +253,7 @@ const Template = ({
       <div className="row">
         <h4>This is a just a Place holder</h4>
         <img
-          src="/mocks/img/request-form-information.png"
+          src="/examples/assets/img/request-form-information.png"
           alt=""
           style={{
             opacity: "0.7",
@@ -276,17 +276,17 @@ DefaultPage.args = defaultArgs;
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const PageWithVideoAndMarketTextext = Template.bind({});
-PageWithVideoAndMarketTextext.args = { ...defaultArgs };
-PageWithVideoAndMarketTextext.args.dataSource = {
-  ...PageWithVideoAndMarketTextext.args.dataSource,
+export const PageWithVideoAndMarketText = Template.bind({});
+PageWithVideoAndMarketText.args = { ...defaultArgs };
+PageWithVideoAndMarketText.args.dataSource = {
+  ...PageWithVideoAndMarketText.args.dataSource,
   acadPlan: "LSBISBIS", // this has marketText
 };
-PageWithVideoAndMarketTextext.args.introContent = {
-  ...PageWithVideoAndMarketTextext.args.introContent,
+PageWithVideoAndMarketText.args.introContent = {
+  ...PageWithVideoAndMarketText.args.introContent,
   image: undefined,
   video: {
-    url: "/assets/video/stock-video-person-drawing.mp4",
+    url: "/examples/assets/video/stock-video-person-drawing.mp4",
     title: "",
     vttUrl: "",
   },

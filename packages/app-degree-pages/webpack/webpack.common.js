@@ -65,11 +65,7 @@ const common = {
       filename: "[name].[contenthash].css",
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        // TODO: mock may not be needed anymore
-        { from: path.join(PROJECT_DIR, "mocks"), to: "mocks" },
-        { from: path.join(PROJECT_DIR, "src/assets"), to: "assets" },
-      ],
+      patterns: [{ from: path.join(PROJECT_DIR, "src/assets"), to: "assets" }],
     }),
   ],
 };

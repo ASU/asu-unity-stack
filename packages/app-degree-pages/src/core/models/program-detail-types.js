@@ -158,7 +158,7 @@
  *  nextSteps?: HideProp & NextStepsProps
  *  affordingCollege?: HideProp
  *  flexibleDegreeOptions?: HideProp
- *  careerOutlook?: CareerOutlookProps
+ *  careerOutlook?: HideProp & CareerOutlookProps
  *  exampleCareers?: HideProp
  *  globalOpportunity?: HideProp & GlobalOpportunityProps
  *  attendOnline?: HideProp &  AttendOnlineProps

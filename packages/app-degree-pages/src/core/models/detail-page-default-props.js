@@ -1,8 +1,8 @@
 // @ts-check
 
-// /**
-//  * @type {Object.<string, import("../models/shared-types").ImageProps>}
-//  */
+import { getCurrnetScriptPath } from "../utils/script-utils";
+
+const scriptPath = getCurrnetScriptPath();
 
 /**
  * @type {import("./program-detail-types").ProgramDetailPageProps}
@@ -12,7 +12,7 @@ const detailPageDefault = {
   hero: {
     image: {
       // TODO: temp image. to be replaced with the new one
-      url: "/mocks/img/hero.jpg",
+      url: `${scriptPath}assets/img/hero.jpg`,
       altText: "Detail Page Degree",
       size: "medium",
     },
@@ -62,13 +62,25 @@ const detailPageDefault = {
     ],
   },
   globalOpportunity: {
+    // TODO: temp image. to be replaced with the new one
     image: {
-      url: "/assets/img/global-opportunity.jpg",
+      url: `${scriptPath}/assets/img/global-opportunity.jpg`,
       altText: "Global opportunity",
     },
   },
+  careerOutlook: {
+    image: {
+      // TODO: temp image. to be replaced with the new one
+      url: `${scriptPath}/assets/img/career-outlook.jpg`,
+      altText: "Career Outlook",
+    },
+  },
   attendOnline: {
-    image: { url: "/assets/img/attend-online.jpg", altText: "Attend online" },
+    image: {
+      // TODO: temp image. to be replaced with the new one
+      url: `${scriptPath}/assets/img/attend-online.jpg`,
+      altText: "Attend online",
+    },
   },
 };
 
