@@ -35,7 +35,6 @@ const Template = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  isPartner: false,
   loggedIn: false,
   userName: "",
   navTree: basicNavTree,

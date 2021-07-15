@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const NavItemWrapper = styled.li`
+  position: relative;
   padding: 0;
   margin: 0 0.5rem 0 0;
   &:hover > a:after {

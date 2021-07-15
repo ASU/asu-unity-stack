@@ -7,7 +7,6 @@ const Wrapper = styled.nav`
   .nav-list {
     display: flex;
     margin: 0;
-    overflow-x: auto;
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     flex-direction: column;

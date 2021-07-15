@@ -100,7 +100,13 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       >
         {renderNavLinks()}
       </a>
-      {opened && <DropdownItem items={link.items} buttons={link.buttons} />}
+      {opened && (
+        <DropdownItem
+          items={link.items}
+          buttons={link.buttons}
+          classes={`header-dropdown-${link.id}`}
+        />
+      )}
     </NavItemWrapper>
   );
 };

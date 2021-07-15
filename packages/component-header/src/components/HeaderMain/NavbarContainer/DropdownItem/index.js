@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
@@ -10,8 +10,9 @@ import { DropdownWrapper } from "./index.styles";
 /**
  * @typedef { import("../../../../core/models/types").Button } Button
  * @typedef {{
- *  buttons: Button[]
  *  items: [object][]
+ *  buttons: Button[]
+ *  classes?: string,
  * }} DropdownItemProps
  */
 
@@ -21,9 +22,19 @@ import { DropdownWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const DropdownItem = ({ items, buttons }) => {
+const DropdownItem = ({ items, buttons, classes }) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
+  const dropdownRef = useRef(null);
+  const [alignedRight, setAlignedRight] = useState(false);
+
+  useEffect(() => {
+    if (window && dropdownRef.current) {
+      const elPosition = dropdownRef.current.getBoundingClientRect().left;
+      const breakpointPosition = window.innerWidth * 0.55;
+      setAlignedRight(elPosition > breakpointPosition);
+    }
+  }, []);
 
   const stopPropagation = e => {
     e.stopPropagation();
@@ -61,7 +72,10 @@ const DropdownItem = ({ items, buttons }) => {
 
   return (
     <DropdownWrapper
-      className={`${isMega ? "mega" : ""}`}
+      ref={dropdownRef}
+      className={`${classes}${alignedRight ? " aligned-right" : ""}${
+        isMega ? " mega" : ""
+      }`}
       // @ts-ignore
       breakpoint={breakpoint}
     >
@@ -98,6 +112,7 @@ const DropdownItem = ({ items, buttons }) => {
 DropdownItem.propTypes = {
   items: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
+  classes: PropTypes.string,
 };
 
 export { DropdownItem };

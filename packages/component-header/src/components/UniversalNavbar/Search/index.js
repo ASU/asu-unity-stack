@@ -27,6 +27,7 @@ const Search = () => {
       name="gs"
       // @ts-ignore
       breakpoint={breakpoint}
+      className={open ? "open-search" : ""}
     >
       {!isMobile ? (
         <>
@@ -34,19 +35,30 @@ const Search = () => {
             type="button"
             aria-label="Search asu.edu"
             onClick={handleChangeVisibility}
+            className="search-button"
           >
-            <FontAwesomeIcon icon={open ? "times-circle" : "search"} />
+            <FontAwesomeIcon icon="search" />
           </button>
           {open && (
-            <input
-              ref={inputRef}
-              className="form-control"
-              type="search"
-              name="q"
-              aria-labelledby="header-top-search"
-              placeholder="Search asu.edu"
-              required
-            />
+            <>
+              <input
+                ref={inputRef}
+                className="form-control"
+                type="search"
+                name="q"
+                aria-labelledby="header-top-search"
+                placeholder="Search asu.edu"
+                required
+              />
+              <button
+                type="button"
+                aria-label="Search asu.edu"
+                onClick={handleChangeVisibility}
+                className="close-search"
+              >
+                <FontAwesomeIcon icon="times" />
+              </button>
+            </>
           )}
         </>
       ) : (

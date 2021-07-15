@@ -19,10 +19,10 @@ import { Header } from "./index.styles";
  */
 
 const ASUHeader = ({
-  isPartner = false,
+  isPartner,
   navTree,
   title,
-  baseUrl = "/",
+  baseUrl,
   parentOrg,
   parentOrgUrl,
   partnerLogo,
@@ -32,9 +32,9 @@ const ASUHeader = ({
   loginLink,
   logoutLink,
   buttons,
-  breakpoint = "Xl",
-  animateTitle = true,
-  expandOnHover = false,
+  breakpoint,
+  animateTitle,
+  expandOnHover,
   mobileNavTree,
 }) => {
   library.add(fas);
@@ -85,5 +85,13 @@ const ASUHeader = ({
 };
 
 ASUHeader.propTypes = { ...HeaderPropTypes };
+
+ASUHeader.defaultProps = {
+  isPartner: false,
+  baseUrl: "/",
+  breakpoint: "Xl",
+  animateTitle: true,
+  expandOnHover: false,
+};
 
 export { ASUHeader };

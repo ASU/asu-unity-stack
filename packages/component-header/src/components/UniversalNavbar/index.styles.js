@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   background-color: #e8e8e8;
-  height: 24px;
+  min-height: 24px;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   .header-top {
     height: 100%;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
-    height: auto;
+    min-height: auto;
     .header-top {
       .nav {
         width: 100%;

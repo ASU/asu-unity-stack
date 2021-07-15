@@ -6,10 +6,16 @@ const DropdownWrapper = styled.div`
   border: 1px solid #d0d0d0;
   margin: 0;
   z-index: 1031;
+  max-height: 500px;
+  overflow: hidden;
   &.mega {
     width: 100%;
     left: 0;
     margin-left: 0 !important;
+  }
+  &.aligned-right:not(.mega) {
+    position: absolute;
+    right: 0;
   }
   > .dropdown-container {
     max-width: 1200px;
@@ -39,7 +45,7 @@ const DropdownWrapper = styled.div`
       }
       .nav-button {
         margin-top: auto;
-        padding-top: 1.5rem;
+        padding-top: 2rem;
       }
       .nav-link {
         a {
@@ -70,6 +76,7 @@ const DropdownWrapper = styled.div`
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     position: initial;
     border: none;
+    max-height: unset;
     > .dropdown-container {
       max-width: 100%;
       padding: 1rem 2rem;
@@ -86,6 +93,9 @@ const DropdownWrapper = styled.div`
         }
         .ul-heading {
           font-size: 1.25rem;
+        }
+        .nav-button {
+          padding-top: 1.5rem;
         }
         .nav-link {
           &:not(:last-child) {
