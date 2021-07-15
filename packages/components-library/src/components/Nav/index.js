@@ -1,4 +1,12 @@
-import { useEffect, useState, useMemo, useRef, createRef, forwardRef, useImperativeHandle } from "preact/compat";
+import {
+  useEffect,
+  useState,
+  useMemo,
+  useRef,
+  createRef,
+  forwardRef,
+  useImperativeHandle,
+} from "preact/compat";
 import PropTypes from "prop-types";
 
 import { Button } from "../Button";
@@ -11,335 +19,346 @@ import * as S from "./styles";
  * Render entire Nav.
  * @param {} props
  */
-const Nav = forwardRef(({
-  navTree,
-  width,
-  mobileOpen,
-  maxMobileHeight,
-  buttons,
-  injectStyles,
-  breakpoint,
-  expandOnHover
-}, ref) => {
-  /** State to keep track of currently focused Nav Item */
-  const [focused, setFocus] = useState([-1, -1, -1]);
-  /** State for keeping track of open dropdown nav */
-  const [open, setOpen] = useState(-1);
+const Nav = forwardRef(
+  (
+    {
+      navTree,
+      width,
+      mobileOpen,
+      maxMobileHeight,
+      buttons,
+      injectStyles,
+      breakpoint,
+      expandOnHover,
+    },
+    ref
+  ) => {
+    /** State to keep track of currently focused Nav Item */
+    const [focused, setFocus] = useState([-1, -1, -1]);
+    /** State for keeping track of open dropdown nav */
+    const [open, setOpen] = useState(-1);
 
-  useImperativeHandle(
-    ref,
-    () => ({
+    useImperativeHandle(ref, () => ({
       forceToggle(whatWasClicked) {
         let isAriaOpen = false;
 
         // Check if already open
-        for (let i=0; i<whatWasClicked.attributes.length; i++) {
+        for (let i = 0; i < whatWasClicked.attributes.length; i++) {
           let attribute = whatWasClicked.attributes[i];
-          if (attribute.name === 'aria-expanded') {
-            if (attribute.value === 'true') {
+          if (attribute.name === "aria-expanded") {
+            if (attribute.value === "true") {
               isAriaOpen = true;
             }
           }
         }
 
         const id = whatWasClicked.dataset.onclickIdentifier;
-        if (!isAriaOpen || (isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === 'true'))) {
-          setOpen(parseInt(id.substring(id.indexOf(".")+1)));
-          whatWasClicked.dataset.onclickDropdownOpen = 'true';
+        if (
+          !isAriaOpen ||
+          isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === "true")
+        ) {
+          setOpen(parseInt(id.substring(id.indexOf(".") + 1)));
+          whatWasClicked.dataset.onclickDropdownOpen = "true";
         } else {
           setOpen(-1);
-          whatWasClicked.dataset.onclickDropdownOpen = 'false';
+          whatWasClicked.dataset.onclickDropdownOpen = "false";
         }
       },
 
       forceOpen(whatWasClicked) {
         const id = whatWasClicked.dataset.onclickIdentifier;
-        setOpen(parseInt(id.substring(id.indexOf(".")+1)));
-        whatWasClicked.dataset.onclickDropdownOpen = 'true';
+        setOpen(parseInt(id.substring(id.indexOf(".") + 1)));
+        whatWasClicked.dataset.onclickDropdownOpen = "true";
+      },
+    }));
+
+    const setFocusCallback = newFocus => {
+      setFocus(newFocus);
+    };
+
+    // Get breakpoint from theme and props
+    const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
+    const bpointInt = parseInt(bpoint, 10);
+
+    /***
+     * Compile a list of Refs to interact with the focus state of Nav menu
+     */
+    const navList = useMemo(() => {
+      // return empty array if navtree not defined
+      if (!Array.isArray(navTree) || navTree.length == 0) {
+        return [];
       }
-    }),
-  )
 
-  const setFocusCallback = newFocus => {
-    setFocus(newFocus);
-  };
+      return navTree.map(item => {
+        const newRef = createRef();
 
-  // Get breakpoint from theme and props
-  const bpoint = breakpoint === "Xl" ? S.BreakpointXl : S.BreakpointLg;
-  const bpointInt = parseInt(bpoint, 10);
+        // copy the prop to a new object, to avoid mutating props on render
+        let menus = [];
 
-  /***
-   * Compile a list of Refs to interact with the focus state of Nav menu
-   */
-  const navList = useMemo(() => {
-    // return empty array if navtree not defined
-    if (!Array.isArray(navTree) || navTree.length == 0) {
-      return [];
-    }
+        // Destructure the items array of the nav item to items variable,
+        // temp is now the nav item without the 'items' array
+        let { items, ...temp } = item;
 
-    return navTree.map(item => {
-      const newRef = createRef();
+        if (items && items[0].length > 0) {
+          // Create a ref for each submenu item, which will be
+          // passed down to the DropNav to manage focus
+          for (let i = 0; i < items.length; i++) {
+            for (let j = 0; j < items[i].length; j++) {
+              if (!menus[i]) {
+                menus[i] = [];
+              }
 
-      // copy the prop to a new object, to avoid mutating props on render
-      let menus = [];
+              menus[i][j] = Object.assign({}, items[i][j]);
 
-      // Destructure the items array of the nav item to items variable,
-      // temp is now the nav item without the 'items' array
-      let { items, ...temp } = item;
-
-      if (items && items[0].length > 0) {
-        // Create a ref for each submenu item, which will be
-        // passed down to the DropNav to manage focus
-        for (let i = 0; i < items.length; i++) {
-          for (let j = 0; j < items[i].length; j++) {
-            if (!menus[i]) {
-              menus[i] = [];
-            }
-
-            menus[i][j] = Object.assign({}, items[i][j]);
-
-            // Heading isn't focusable, so don't pass ref
-            if (items[i][j].type != "heading") {
-              const childRef = createRef();
-              menus[i][j].ref = childRef;
+              // Heading isn't focusable, so don't pass ref
+              if (items[i][j].type != "heading") {
+                const childRef = createRef();
+                menus[i][j].ref = childRef;
+              }
             }
           }
         }
+
+        return {
+          ref: newRef,
+          item: temp,
+          menus,
+        };
+      });
+    }, [navTree]);
+
+    //event handler keyboard navigation
+    const handleKeyDown = e => {
+      const Left = 37;
+      const Up = 38;
+      const Right = 39;
+      const Down = 40;
+      const Escape = 27;
+
+      const derState = deriveFocusState(focused, navList);
+
+      if (derState.hasFocus) {
+        switch (e.keyCode) {
+          case Left:
+            e.preventDefault();
+            setFocusCallback(moveLeft(focused, derState, navList));
+            break;
+          case Right:
+            e.preventDefault();
+            setFocusCallback(moveRight(focused, derState, navList));
+            break;
+          case Up:
+            e.preventDefault();
+            setFocusCallback(moveUp(focused, derState, navList));
+            break;
+          case Down:
+            // Open the menu before moving down to submenu item
+            if (derState.isTop && derState.hasSubs && open != focused[0]) {
+              setOpen(focused[0]);
+              return;
+            }
+
+            e.preventDefault();
+            setFocusCallback(moveDown(focused, derState, navList));
+            break;
+          case Escape:
+            // handle tab key
+            if (!derState.isTop) {
+              setFocusCallback([focused[0], -1, -1]);
+            }
+            break;
+          default:
+            break;
+        }
       }
+    };
 
-      return {
-        ref: newRef,
-        item: temp,
-        menus,
-      };
-    });
-  }, [navTree]);
+    /** When focus state changes, call .focus() on actual DOM node */
+    useEffect(() => {
+      const derState = deriveFocusState(focused, navList);
 
-  //event handler keyboard navigation
-  const handleKeyDown = e => {
-    const Left = 37;
-    const Up = 38;
-    const Right = 39;
-    const Down = 40;
-    const Escape = 27;
+      if (derState.hasFocus) {
+        const [x, y, z] = focused;
 
-    const derState = deriveFocusState(focused, navList);
-
-    if (derState.hasFocus) {
-      switch (e.keyCode) {
-        case Left:
-          e.preventDefault();
-          setFocusCallback(moveLeft(focused, derState, navList));
-          break;
-        case Right:
-          e.preventDefault();
-          setFocusCallback(moveRight(focused, derState, navList));
-          break;
-        case Up:
-          e.preventDefault();
-          setFocusCallback(moveUp(focused, derState, navList));
-          break;
-        case Down:
-          // Open the menu before moving down to submenu item
-          if (derState.isTop && derState.hasSubs && open != focused[0]) {
-            setOpen(focused[0]);
-            return;
+        if (derState.isTop) {
+          // only focus the node if it's not already focused
+          if (
+            navList[x].ref &&
+            navList[x].ref.current !== document.activeElement
+          ) {
+            navList[x].ref.current.focus();
           }
 
-          e.preventDefault();
-          setFocusCallback(moveDown(focused, derState, navList));
-          break;
-        case Escape:
-          // handle tab key
-          if (!derState.isTop) {
-            setFocusCallback([focused[0], -1, -1]);
+          // if currently focused item is not in open menu, close menu
+          if (open !== x) {
+            setOpen(-1);
           }
-          break;
-        default:
-          break;
-      }
-    }
-  };
-
-  /** When focus state changes, call .focus() on actual DOM node */
-  useEffect(() => {
-    const derState = deriveFocusState(focused, navList);
-
-    if (derState.hasFocus) {
-      const [x, y, z] = focused;
-
-      if (derState.isTop) {
-        // only focus the node if it's not already focused
-        if (
-          navList[x].ref &&
-          navList[x].ref.current !== document.activeElement
+        } else if (
+          navList[x].menus[y][z].ref &&
+          navList[x].menus[y][z].ref.current !== document.activeElement
         ) {
-          navList[x].ref.current.focus();
+          navList[x].menus[y][z].ref.current.focus();
         }
 
-        // if currently focused item is not in open menu, close menu
-        if (open !== x) {
-          setOpen(-1);
-        }
-      } else if (
-        navList[x].menus[y][z].ref &&
-        navList[x].menus[y][z].ref.current !== document.activeElement
-      ) {
-        navList[x].menus[y][z].ref.current.focus();
-      }
-
-      // if keypress causes focus to leave open menu, close menu
-    } else if (open !== -1) {
-      setOpen(-1);
-    }
-  }, [focused, navList]);
-
-  /*** Detecting click outside of container */
-  const navRef = useRef(null);
-
-  useEffect(() => {
-    // close nav if clicked outside nav
-    const handleClickOutside = event => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
+        // if keypress causes focus to leave open menu, close menu
+      } else if (open !== -1) {
         setOpen(-1);
       }
-    };
+    }, [focused, navList]);
 
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [navRef]);
+    /*** Detecting click outside of container */
+    const navRef = useRef(null);
 
-  // handle focus moving out of Nav
-  const onBlurNav = e => {
-    // only change state if focus moves away from
-    // container element
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      // remove focus
-      setFocusCallback([-1, -1, -1]);
-    }
-  };
+    useEffect(() => {
+      // close nav if clicked outside nav
+      const handleClickOutside = event => {
+        if (navRef.current && !navRef.current.contains(event.target)) {
+          setOpen(-1);
+        }
+      };
 
-  const DropComponent = expandOnHover ? HoverDropNav : DropNav;
-  const mobile = width <= bpointInt;
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [navRef]);
 
-  return (
-    <S.Nav
-      open={mobileOpen}
-      maxMobileHeight={maxMobileHeight}
-      injectStyles={injectStyles}
-      breakpoint={breakpoint}
-    >
-      <S.NavList
-        {...(!mobile ? { onfocusout: onBlurNav } : {})}
-        onKeyDown={handleKeyDown}
-        ref={navRef}
-      >
-        {navList.map((item, pindex) => {
-          const navItem = item.item;
-          const subs = item.menus;
-
-          if (subs && subs.length > 0 && subs[0].length > 0) {
-            return (
-              <DropComponent
-                {...navItem}
-                pIndex={pindex}
-                setFocus={setFocusCallback}
-                ref={item.ref}
-                isOpen={open == pindex}
-                setOpen={setOpen}
-                mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
-                mobile={mobile}
-              >
-                {subs.map((sub, index) => {
-                  return (
-                    <S.MenuColumn>
-                      {sub.map((item, ind) => {
-                        return (
-                          <NavItem
-                            onFocus={() => {
-                              setFocus([pindex, index, ind]);
-                              setOpen(pindex);
-                            }}
-                            ref={subs[index][ind].ref}
-                            type={
-                              item.hasOwnProperty("type")
-                                ? item.type
-                                : undefined
-                            }
-                            color={
-                              item.hasOwnProperty("color")
-                                ? item.color
-                                : undefined
-                            }
-                            class={
-                              item.hasOwnProperty("class")
-                                ? item.class
-                                : undefined
-                            }
-                            href={
-                              item.hasOwnProperty("href")
-                                ? item.href
-                                : undefined
-                            }
-
-                          >
-                            {item.text}
-                          </NavItem>
-                        );
-                      })}
-                    </S.MenuColumn>
-                  );
-                })}
-              </DropComponent>
-            );
-          }
-
-          // Return a single nav item if there are no submenus
-          return (
-            <NavItem
-              onFocus={() => {
-                setFocusCallback([pindex, -1, -1]);
-              }}
-              ref={item.ref}
-              type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
-              color={
-                navItem.hasOwnProperty("color") ? navItem.color : undefined
-              }
-              class={navItem.hasOwnProperty("class") ? navItem.class : ""}
-              href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
-              selected={
-                navItem.hasOwnProperty("selected") ? navItem.selected : false
-              }
-            >
-              {navItem.text}
-            </NavItem>
-          );
-        })}
-      </S.NavList>
-      {
-        // render buttons if props is passed
-        buttons.length > 0 && (
-          <S.ButtonForm>
-            {buttons.map(item => {
-              let color = item.color ? item.color : "maroon";
-
-              // Return a single nav item if there are no submenus
-              return (
-                <Button href={item.href} {...{ [color]: true }} medium>
-                  {item.text}
-                </Button>
-              );
-            })}
-          </S.ButtonForm>
-        )
+    // handle focus moving out of Nav
+    const onBlurNav = e => {
+      // only change state if focus moves away from
+      // container element
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        // remove focus
+        setFocusCallback([-1, -1, -1]);
       }
-    </S.Nav>
-  );
-});
+    };
+
+    const DropComponent = expandOnHover ? HoverDropNav : DropNav;
+    const mobile = width <= bpointInt;
+
+    return (
+      <S.Nav
+        open={mobileOpen}
+        maxMobileHeight={maxMobileHeight}
+        injectStyles={injectStyles}
+        breakpoint={breakpoint}
+      >
+        <S.NavList
+          {...(!mobile ? { onfocusout: onBlurNav } : {})}
+          onKeyDown={handleKeyDown}
+          ref={navRef}
+        >
+          {navList.map((item, pindex) => {
+            const navItem = item.item;
+            const subs = item.menus;
+
+            if (subs && subs.length > 0 && subs[0].length > 0) {
+              return (
+                <DropComponent
+                  {...navItem}
+                  pIndex={pindex}
+                  setFocus={setFocusCallback}
+                  ref={item.ref}
+                  isOpen={open == pindex}
+                  setOpen={setOpen}
+                  mega={subs.length > 2} // add mega class if dropdown contains 3 or more menus
+                  mobile={mobile}
+                >
+                  {subs.map((sub, index) => {
+                    return (
+                      <S.MenuColumn key={`mwnu-item-${pindex}-${index}`}>
+                        {sub.map((item, ind) => {
+                          return (
+                            <NavItem
+                              key={`nav-item-${pindex}-${index}-${ind}`}
+                              onFocus={() => {
+                                setFocus([pindex, index, ind]);
+                                setOpen(pindex);
+                              }}
+                              ref={subs[index][ind].ref}
+                              type={
+                                item.hasOwnProperty("type")
+                                  ? item.type
+                                  : undefined
+                              }
+                              color={
+                                item.hasOwnProperty("color")
+                                  ? item.color
+                                  : undefined
+                              }
+                              class={
+                                item.hasOwnProperty("class")
+                                  ? item.class
+                                  : undefined
+                              }
+                              href={
+                                item.hasOwnProperty("href")
+                                  ? item.href
+                                  : undefined
+                              }
+                            >
+                              {item.text}
+                            </NavItem>
+                          );
+                        })}
+                      </S.MenuColumn>
+                    );
+                  })}
+                </DropComponent>
+              );
+            }
+
+            // Return a single nav item if there are no submenus
+            return (
+              <NavItem
+                key={`nav-item-${pindex}`}
+                onFocus={() => {
+                  setFocusCallback([pindex, -1, -1]);
+                }}
+                ref={item.ref}
+                type={navItem.hasOwnProperty("type") ? navItem.type : undefined}
+                color={
+                  navItem.hasOwnProperty("color") ? navItem.color : undefined
+                }
+                class={navItem.hasOwnProperty("class") ? navItem.class : ""}
+                href={navItem.hasOwnProperty("href") ? navItem.href : undefined}
+                selected={
+                  navItem.hasOwnProperty("selected") ? navItem.selected : false
+                }
+              >
+                {navItem.text}
+              </NavItem>
+            );
+          })}
+        </S.NavList>
+        {
+          // render buttons if props is passed
+          buttons.length > 0 && (
+            <S.ButtonForm>
+              {buttons.map((item, index) => {
+                let color = item.color ? item.color : "maroon";
+
+                // Return a single nav item if there are no submenus
+                return (
+                  <Button
+                    key={`button-${index}`}
+                    href={item.href}
+                    {...{ [color]: true }}
+                    medium
+                  >
+                    {item.text}
+                  </Button>
+                );
+              })}
+            </S.ButtonForm>
+          )
+        }
+      </S.Nav>
+    );
+  }
+);
 
 Nav.propTypes = {
   navTree: PropTypes.arrayOf(PropTypes.object),
