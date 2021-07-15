@@ -9,6 +9,7 @@ import {
   AnchorMenu,
   Hero,
   Accordion,
+  Video,
 } from "./components";
 
 export * from "./utils";
@@ -25,4 +26,5 @@ export {
   AnchorMenu,
   Hero,
   Accordion,
+  Video,
 };

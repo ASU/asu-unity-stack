@@ -21,7 +21,7 @@ storiesOf('Components/Sidebar', module)
           <p>Select Section</p>
           <span class="fas fa-chevron-up"/>
         </div>
-        <nav id="sidebar-left" class="sidebar accordion collapse" aria-label="Secondary">
+        <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
 
           <a class="nav-link" href="#">Default Link</a>
           <a class="nav-link is-active" href="#">Active Link</a>
