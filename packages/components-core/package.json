@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-core",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "main": "./src/index.js",
   "description": "Core UDS Preact UI components required by other higher-order Preact packages",
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
