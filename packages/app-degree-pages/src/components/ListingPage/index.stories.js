@@ -62,6 +62,7 @@ export const PageWithIntroText = Template.bind({});
 PageWithIntroText.args = {
   actionUrls,
   hero: {
+    // hide: true,// OPTIONAL
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       altText: "Undergraduate Degrees",
@@ -103,6 +104,7 @@ export const PageWithIntroTextPhotoGrid = Template.bind({});
 PageWithIntroTextPhotoGrid.args = {
   actionUrls,
   hero: {
+    // hide: true,// OPTIONAL
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",
@@ -162,6 +164,7 @@ export const PageWithIntroTextMediaImage = Template.bind({});
 PageWithIntroTextMediaImage.args = {
   actionUrls,
   hero: {
+    // hide: true,// OPTIONAL
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",
@@ -225,6 +228,7 @@ export const PageWithIntroTextImageOverlay = Template.bind({});
 PageWithIntroTextImageOverlay.args = {
   actionUrls,
   hero: {
+    // hide: true,// OPTIONAL
     image: {
       url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
       size: "medium",

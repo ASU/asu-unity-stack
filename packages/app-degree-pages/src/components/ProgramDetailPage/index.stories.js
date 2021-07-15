@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint react/jsx-props-no-spreading: "off" */
 // @ts-check
-import React from "react";
-
 import { ProgramDetailPage } from ".";
+import React from "react";
 
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
@@ -135,7 +134,7 @@ const defaultArgs = {
   nextSteps: {
     cards: [
       {
-        icon: "info-circle",
+        icon: ["fas", "info-circle"],
         title: "Lear more about our programs",
         content:
           "Tell us what type of student you are and we'll get you the information you need.",
@@ -147,7 +146,7 @@ const defaultArgs = {
         },
       },
       {
-        icon: "file-alt",
+        icon: ["fas", "file-alt"],
         title: "Apply to program",
         content:
           "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
@@ -159,7 +158,7 @@ const defaultArgs = {
         },
       },
       {
-        icon: "map-marker-alt",
+        icon: ["fas", "map-marker-alt"],
         title: "Visit our campus",
         content:
           "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",

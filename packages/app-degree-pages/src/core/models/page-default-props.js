@@ -8,7 +8,7 @@ const scriptPath = getCurrnetScriptPath();
  * @type {import("./program-detail-types").ProgramDetailPageProps}
  */
 const detailPageDefault = {
-  dataSource: null,
+  dataSource: undefined,
   hero: {
     image: {
       // TODO: temp image. to be replaced with the new one
@@ -24,7 +24,7 @@ const detailPageDefault = {
   nextSteps: {
     cards: [
       {
-        icon: "info-circle",
+        icon: ["fas", "info-circle"],
         title: "Lear more about our programs",
         content:
           "Tell us what type of student you are and we'll get you the information you need.",
@@ -36,7 +36,7 @@ const detailPageDefault = {
         },
       },
       {
-        icon: "file-alt",
+        icon: ["fas", "file-alt"],
         title: "Apply to program",
         content:
           "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
@@ -48,7 +48,7 @@ const detailPageDefault = {
         },
       },
       {
-        icon: "map-marker-alt",
+        icon: ["fas", "map-marker-alt"],
         title: "Visit our campus",
         content:
           "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",
@@ -84,4 +84,19 @@ const detailPageDefault = {
   },
 };
 
-export { detailPageDefault };
+/**
+ * @type {import("./listing-page-types").ListingPageProps}
+ */
+const listingPageDefault = {
+  hero: {
+    image: {
+      // TODO: temp image. to be replaced with the new one
+      url: `${scriptPath}assets/img/hero.jpg`,
+      altText: "Listing Page Degree",
+      size: "medium",
+    },
+  },
+  programList: undefined,
+};
+
+export { detailPageDefault, listingPageDefault };

@@ -42,17 +42,18 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  * @typedef {{
  *  ariaLabel: string
  *  color: "gold" | "maroon" | "gray" | "dark"
- *  icon?: string
+ *  icon?: string []
  *  href?: string
  *  label: string
  *  onClick?: () => void
  *  size?: "default" | "small" | "xsmall"
+ *  target?: "_blank" | "_self" | "_top" | "_parent"
  * }} Button
  */
 
 /**
  *  @typedef {{
- *    icon: string
+ *    icon: string []
  *    title: string
  *    content: string
  *    buttonLink: Button

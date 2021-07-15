@@ -1,6 +1,13 @@
 // @ts-check
 
 /**
+ *
+ * @typedef {{
+ *    hide?: boolean
+ * } & import("@asu-design-system/components-core/src/components").HeroProps} HeroProps
+ */
+
+/**
  * @typedef {{
  *    applyNowUrl?: string
  *    type?: "text" | "text-media" | "text-image-overlay" | "text-photo-grid" | string
@@ -85,7 +92,7 @@
 /**
  * @typedef {{
  *  actionUrls?: ActionUrlProps
- *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
+ *  hero?: HeroProps
  *  introContent?: IntroContentProps
  *  hasSearchBar?: boolean
  *  hasFilters?: boolean

@@ -12,7 +12,11 @@ import {
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
 import { useFetch } from "../../core/hooks/use-fetch";
-import { acceleratedConcurrentValues, LIST_VIEW_ID } from "../../core/models";
+import {
+  acceleratedConcurrentValues,
+  listingPageDefault,
+  LIST_VIEW_ID,
+} from "../../core/models";
 import {
   columSettingsPropShape,
   dataSourcePropShape,
@@ -207,12 +211,12 @@ const ListingPage = ({
 
       {error && <ErrorAlert message="Something went wrong ..." />}
 
-      {hero ? (
+      {!hero?.hide ? (
         <section>
           <Hero
-            image={hero.image}
-            title={{ ...hero.title, maxWidth: "100%" }}
-            contents={hero.contents}
+            image={hero?.image || listingPageDefault.hero.image}
+            title={{ ...hero?.title, maxWidth: "100%" }}
+            contents={hero?.contents}
           />
         </section>
       ) : null}

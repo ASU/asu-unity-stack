@@ -25,7 +25,7 @@ function NextSteps({ cards }) {
         {cards?.map(card => (
           <div className="mt-2 col-12 col-md-4" key={card.title}>
             <Card
-              icon={["fas", card.icon]}
+              icon={card.icon}
               title={card.title}
               body={card.content}
               buttons={[card.buttonLink]}
