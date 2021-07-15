@@ -26,6 +26,7 @@
       <div id="icon-button"></div>
       <div id="small-gold-button"></div>
       <div id="link-button"></div>
+      <div id="blank-link-button"></div>
     </div>
   </div>
 
@@ -62,6 +63,15 @@
         color: "maroon",
         href: "/#example-link",
         label: "Link Button",
+      },
+    });
+    AsuWebCore.initButton({
+      targetSelector: "#blank-link-button",
+      props: {
+        color: "maroon",
+        href: "/#example-link",
+        label: "Link Button",
+        target: "_blank",
       },
     });
   </script>

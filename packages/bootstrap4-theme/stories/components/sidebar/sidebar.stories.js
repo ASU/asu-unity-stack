@@ -6,7 +6,9 @@ storiesOf('Components/Sidebar', module)
     happo: false,
   })
 
-  .add('Sidebar Navigation', () => `
+  .add(
+    'Sidebar Navigation',
+    () => `
 
   <div class="container my-5">
 
@@ -15,7 +17,11 @@ storiesOf('Components/Sidebar', module)
       <div class="col-md-4">
 
         <h3>Lorem ipsum</h3>
-        <nav id="sidebar-left" class="sidebar accordion" aria-label="Secondary">
+        <div class="sidebar-toggler" data-toggle="collapse" data-target="#sidebar-left" aria-expanded="false" aria-controls="sidebar-left">
+          <p>Select Section</p>
+          <span class="fas fa-chevron-up"/>
+        </div>
+        <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
 
           <a class="nav-link" href="#">Default Link</a>
           <a class="nav-link is-active" href="#">Active Link</a>
@@ -75,7 +81,7 @@ storiesOf('Components/Sidebar', module)
 
       </div><!-- end .col -->
 
-      <div class="col-md-8">
+      <div class="col-md-8 mt-2">
 
 
         <p>This story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
@@ -153,4 +159,5 @@ storiesOf('Components/Sidebar', module)
 
   </div>
 
-  `)
+  `
+  );

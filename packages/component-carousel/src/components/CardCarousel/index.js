@@ -24,6 +24,7 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  *    label: string,
  *    onClick?: () => void,
  *    size: "default" | "small" | "xsmall"
+ *    target: "_self" | "_blank" | "_top" | "_parent"
  *   }[]
  *   eventTime?: string
  *   linkLabel?: string

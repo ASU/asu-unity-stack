@@ -140,6 +140,9 @@ Cards - Table of Contents
 .card-button {
   margin-top: $uds-component-card-basic-button-margin-top;
   padding: 0 32px 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
 }
 
 .card > div:last-child {

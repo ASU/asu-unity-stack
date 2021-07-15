@@ -6,3 +6,11 @@ a.c-card {
   color: #191919 !important;
   text-decoration: none;
 }
+
+.card-button {
+  column-gap: 1rem;
+}
+
+.card-button .btn {
+  margin: 0;
+}

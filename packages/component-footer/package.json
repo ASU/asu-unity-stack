@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-footer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ASU implementation of global footer",
   "main": "src/index.js",
   "author": "Conner Shannon",

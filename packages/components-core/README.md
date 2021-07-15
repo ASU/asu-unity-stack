@@ -141,12 +141,18 @@ The folder [packages/components-core/examples](/packages/components-core/example
 
 #### Examples - quick links
 
+- [Accordion](/packages/components-core/examples/accordion.html)
+- [Anchor Menu](/packages/components-core/examples/anchorMenu.html)
+- [Article](/packages/components-core/examples/article.html)
 - [Article](/packages/components-core/examples/article.html)
 - [Button](/packages/components-core/examples/button.html)
 - [Button Icon Only](/packages/components-core/examples/buttonIconOnly.html)
 - [Button Tag](/packages/components-core/examples/buttonTag.html)
 - [Card](/packages/components-core/examples/carg.html)
+- [Hero](/packages/components-core/examples/hero.html)
+- [Pagination](/packages/components-core/examples/pagination.html)
 - [Testimonial](/packages/components-core/examples/testimonial.html)
+- [Video](/packages/components-core/examples/video.html)
 #### Examples - run and test
 
 If you want to test the examples files you need to install an application server <br />

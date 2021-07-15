@@ -162,6 +162,14 @@ LinkButton.parameters = {
   },
 };
 
+export const TargetBlankButton = Template.bind({});
+TargetBlankButton.args = {
+  color: "maroon",
+  href: "/#example-link",
+  label: "Link Button",
+  target: "_blank",
+};
+
 const ReactRouterTemplate = args => (
   <Router>
     <div className="container-fluid">

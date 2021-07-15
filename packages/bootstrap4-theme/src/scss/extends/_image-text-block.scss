@@ -38,6 +38,10 @@
     max-width: 50%;
     padding: 48px 96px;
 
+    &.gray-7-bg {
+      color: $uds-color-base-white;
+    }
+
     @media screen and (max-width: $uds-breakpoint-lg) {
       padding: 48px;
     }

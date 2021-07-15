@@ -7,7 +7,7 @@ import { focusStyle, hiddenStyle, breakpointForMin } from "../../theme";
 import { Icon } from "../Icons";
 
 const navItemStyles = breakpoint => css`
-  a{
+  a {
     ${focusStyle}
   }
 
@@ -43,12 +43,12 @@ const navItemStyles = breakpoint => css`
   .navlink {
     > a {
       color: #191919;
+      padding: 1rem 0.5rem;
     }
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       > a {
         padding: 0.5rem 0;
-        white-space: nowrap;
 
         :visited {
           color: #191919;
@@ -64,13 +64,14 @@ const navItemStyles = breakpoint => css`
 
   .navbutton {
     margin-top: auto;
+    padding-top: 1rem;
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       order: 1;
     }
 
     @media (max-width: ${breakpoint}) {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
   }
 `;
@@ -92,7 +93,6 @@ const NavLink = forwardRef(({ onFocus, children, selected, ...props }, ref) => {
 
 const NavIcon = forwardRef(
   ({ children, onFocus, type, alt, selected, ...props }, ref) => {
-
     return (
       <li class="navicon">
         <a

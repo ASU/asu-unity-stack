@@ -12,6 +12,7 @@ import { Card } from "../components/Card";
 import { Hero } from "../components/Hero";
 import { Pagination } from "../components/Pagination";
 import { Testimonial } from "../components/Testimonial";
+import { Video } from "../components/Video";
 
 /**
  * @typedef {Object} ComponentProps
@@ -87,3 +88,9 @@ export const initTestimonial = ({ targetSelector, props }) =>
  */
 export const initHero = ({ targetSelector, props }) =>
   RenderReact(Hero, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initVideo = ({ targetSelector, props }) =>
+  RenderReact(Video, props, document.querySelector(targetSelector));

@@ -126,14 +126,6 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     />
                   </a>
                 )}
-                {mediaLinks.linkedIn && (
-                  <a className="nav-link" href={mediaLinks.linkedIn}>
-                    <FontAwesomeIcon
-                      title="LinkedIn Social Media Icon"
-                      icon={faLinkedin}
-                    />
-                  </a>
-                )}
                 {mediaLinks.instagram && (
                   <a className="nav-link" href={mediaLinks.instagram}>
                     <FontAwesomeIcon
@@ -147,6 +139,14 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="YouTube Social Media Icon"
                       icon={faYoutubeSquare}
+                    />
+                  </a>
+                )}
+                {mediaLinks.linkedIn && (
+                  <a className="nav-link" href={mediaLinks.linkedIn}>
+                    <FontAwesomeIcon
+                      title="LinkedIn Social Media Icon"
+                      icon={faLinkedin}
                     />
                   </a>
                 )}
