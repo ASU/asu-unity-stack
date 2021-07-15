@@ -75,7 +75,7 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
     let contentToDisplay = item.content;
-    if(contentToDisplay && contentToDisplay.length > 250){
+    if (contentToDisplay && contentToDisplay.length > 250) {
       contentToDisplay = `${contentToDisplay.substring(0, 250)}...`;
     }
     setTitle(item.title);

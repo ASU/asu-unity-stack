@@ -222,12 +222,12 @@ function setupCaroarousel({
       );
       const imageNav = gliderElement.querySelector(".image-navigator-images");
 
-      //glide centers bullets, 10px represents the extra width of the selected image
+      // glide centers bullets, 10px represents the extra width of the selected image
       const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
       const halfDiff = (fullNavWidth - imageNav.offsetWidth) / 2;
 
-      if(currentIndex > 1){
-        const pos = halfDiff - (inactiveImage.offsetWidth * (currentIndex - 1));
+      if (currentIndex > 1) {
+        const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
         imageGalleryNav.style.left = `${pos}px`;
       } else {
         const pos = halfDiff;
