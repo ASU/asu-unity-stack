@@ -8,6 +8,7 @@ import {
   Testimonial,
   AnchorMenu,
   Hero,
+  Video,
 } from "./components";
 
 export * from "./utils";
@@ -22,4 +23,5 @@ export {
   Testimonial,
   AnchorMenu,
   Hero,
+  Video,
 };

@@ -9,3 +9,4 @@ export * from "./Testimonial";
 export * from "./Pagination";
 export * from "./Hero";
 export * from "./Accordion";
+export * from "./Video";

@@ -17,6 +17,7 @@ const toolBar = `
                 <a class="nav-link" href="hero.html"><span class="fas fa-hand-spock"></span>Hero</a>
                 <a class="nav-link" href="pagination.html"><span class="fas fa-hand-spock"></span>Pagination</a>
                 <a class="nav-link" href="testimonial.html"><span class="fas fa-hand-spock"></span>Testimonial</a>
+                <a class="nav-link" href="video.html"><span class="fab fa-youtube"></span>Video</a>
               </nav>
             </div>
           </div>
