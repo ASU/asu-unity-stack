@@ -1,20 +1,23 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const common = require("./webpack.common.js");
+const common = require("./webpack.common");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
 // production bundle
 const config = {
   ...common,
-  context: path.join(PROJECT_DIR, "src"),
   mode: "production",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
     filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "Asu[name]",
+    library: {
+      name: "AsuHeader",
+      type: "umd",
+      umdNamedDefine: true,
+      // export: "default",
+    },
     umdNamedDefine: true,
   },
   optimization: {
@@ -41,10 +44,10 @@ const config = {
    to include React library externally, such explained in this link
    https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags
    */
-  // externals: {
-  //   "react": "React",
-  //   "react-dom": "ReactDOM",
-  // },
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM",
+  },
 };
 
 module.exports = config;

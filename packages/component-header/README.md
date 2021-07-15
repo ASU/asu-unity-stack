@@ -37,36 +37,4 @@ yarn test
 ```
 
 ### Import for use in HTML page
-```HTML
-<html>
-  <head>
-    <!-- Add scripts to include react -->
-    <script
-      src="https://unpkg.com/react@17/umd/react.production.min.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-      crossorigin
-    ></script>
-  </head>
-  <body>
-    <h1>Header Test</h1>
-    <!-- Create target container -->
-    <div id="asu-header"></div>
-
-    <script src="./vendor.production.js"></script>
-    <script src="./Header.production.js"></script>
-    <script>
-      // Setup props for footer - TODO
-      var props = {};
-
-      AsuFooter.initASUFooter({
-        targetSelector: '#asu-header',
-        props: props
-      });
-    </script>
-  </body>
-</html>
-
-```
+You can find an example of how to set `ASUHeader` props [here](/packages/component-header/examples/global-header.html)
