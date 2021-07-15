@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint react/jsx-props-no-spreading: "off" */
 // @ts-check
-import { ProgramDetailPage } from ".";
 import React from "react";
+
+import { ProgramDetailPage } from ".";
 
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
