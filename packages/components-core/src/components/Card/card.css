@@ -5,6 +5,7 @@
 a.c-card {
   color: #191919 !important;
   text-decoration: none;
+  display: block;
 }
 
 .card-button {
