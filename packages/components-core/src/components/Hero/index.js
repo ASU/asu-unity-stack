@@ -59,9 +59,9 @@ function headingHeroHtmlTemplate({
   };
 
   const highlightColor = {
-    gold: "highlight highlight-gold",
-    black: "highlight highlight-black",
-    white: "highlight highlight-white",
+    gold: "highlight-gold",
+    black: "highlight-black",
+    white: "highlight-white",
     undefined: "",
   };
 
