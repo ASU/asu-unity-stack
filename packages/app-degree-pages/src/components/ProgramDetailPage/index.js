@@ -108,7 +108,13 @@ const ProgramDetailPage = ({
         <section>
           <Hero
             image={hero?.image || detailPageDefault.hero.image}
-            title={{ ...hero?.title, maxWidth: "100%" }}
+            title={{
+              ...(hero?.title || {
+                text: resolver.getMajorDesc(),
+                color: "white",
+              }),
+              maxWidth: "100%",
+            }}
             contents={hero?.contents}
           />
         </section>

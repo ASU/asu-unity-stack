@@ -102,4 +102,28 @@ const listingPageDefault = {
   programList: undefined,
 };
 
-export { detailPageDefault, listingPageDefault };
+/**
+ *
+ * @param {import("./listing-page-types").AppDataSource | string} dataSource
+ * @returns
+ */
+const resolveListingHeroTitle = dataSource => {
+  if (typeof dataSource === "string") return "Degrees";
+
+  // Undergraduate Minors and Certificates
+
+  const { program, cert } = dataSource;
+  let typeProgram = "";
+
+  if (program === "undergrad" && cert === "true")
+    return "Undergraduate Minors and Certificates";
+
+  if (program === "undergrad") return "Undergraduate Degrees";
+
+  if (program === "graduate" && cert === "true")
+    return "Graduate Degrees and Certificates";
+
+  if (program === "graduate") return "Graduate Degrees";
+};
+
+export { detailPageDefault, listingPageDefault, resolveListingHeroTitle };

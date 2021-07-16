@@ -49,12 +49,12 @@ const dataSource = {
   // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   // another example: dataSource: "/api/mocks/degree-search",
 
-  // OPTIONAL - method: "findAllDegrees",
-  // OPTIONAL - init: "false", // "true" | "false"
-  program: "undergrad", // graduate | undergrad
-  cert: "false", // "true" | "false"
-  // OPTIONAL -CollegeAcadOrg: null, //  example values: CLW, CTB, CTE
-  // OPTIONAL -DepartmentCode: null, //  example values: CMANAGE, CHUMARTCLT, CHL
+  // method: "findAllDegrees", // OPTIONAL
+  // init: "false",  // OPTIONAL "true" | "false"
+  program: "graduate", // graduate | undergrad
+  cert: "true", // "true" | "false"
+  // CollegeAcadOrg: null, // OPTIONAL example values: CLW, CTB, CTE
+  // DepartmentCode: null,  // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
 
 /**
