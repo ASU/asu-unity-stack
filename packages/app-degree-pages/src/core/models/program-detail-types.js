@@ -37,7 +37,7 @@
  *    contents?: import("./shared-types").ContentItem[]
  *    video?: import("./shared-types").VideoItem
  *    image?: import("./shared-types").ImageItem
- *    breadcrumbs: BreadcrumbItem []
+ *    breadcrumbs?: BreadcrumbItem []
  * }} IntroContentProps
  */
 
