@@ -1,5 +1,5 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/react';
+import { storiesOf } from '@storybook/html';
 
 storiesOf('Components/Sidebar', module)
   .addParameters({
@@ -9,27 +9,22 @@ storiesOf('Components/Sidebar', module)
   .add(
     'Sidebar Navigation',
     () => `
-
   <div class="container my-5">
-
     <div class="row mt-4">
       <div class="col-md-12 pb-4"><h1>Take a look at the sidebar</h1></div>
       <div class="col-md-4">
-
         <h3>Lorem ipsum</h3>
         <div class="sidebar-toggler" data-toggle="collapse" data-target="#sidebar-left" aria-expanded="false" aria-controls="sidebar-left">
           <p>Select Section</p>
           <span class="fas fa-chevron-up"/>
         </div>
         <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
-
           <div class="nav-link-container">
             <a class="nav-link" href="#">Default Link</a>
           </div>
           <div class="nav-link-container">
             <a class="nav-link is-active" href="#">Active Link</a>
           </div>
-
           <div class="card card-foldable">
             <div class="card-header">
                 <a id="cardOne" class="collapsed nav-link" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
@@ -42,7 +37,6 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link is-active">One more link</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
-
           <div class="card card-foldable">
             <div class="card-header">
                   <a id="cardTwo" class="collapsed nav-link" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
@@ -60,11 +54,9 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Never over</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
-
           <div class="nav-link-container">
             <a class="nav-link" href="#">Link between cards</a>
           </div>
-
           <div class="card card-foldable">
             <div class="card-header">
                   <a id="cardThree" class="collapsed nav-link" data-toggle="collapse" href="#cardBodyThree" role="button" aria-expanded="false" aria-controls="cardBodyThree">There be gold inside
@@ -85,19 +77,12 @@ storiesOf('Components/Sidebar', module)
           <div class="nav-link-container">
             <a class="nav-link" href="#">Last Link</a>
           </di>
-
         </nav><!-- end .sidebar -->
-
       </div><!-- end .col -->
-
       <div class="col-md-8 mt-2">
-
-
         <p>This story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
         <p>Foldable cards can be mixed in with static navigation links to create a section of content which behaves like an accordion and reveals navigation items which are nested two levels deep.</p>
-
         <h2>Ligula aenean leo porttitor eu conseq</h2>
-
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa
         <strong>strong</strong>. Cum sociis natoque penatibus
@@ -116,33 +101,27 @@ storiesOf('Components/Sidebar', module)
         viverra nulla ut metus varius laoreet. Quisque rutrum.
         Aenean imperdiet. Etiam ultricies nisi vel augue.
         Curabitur ullamcorper ultricies nisi.</p>
-
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
         <h2>Aenean commodo ligula eget dolor aenean massa</h2>
-
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
         <ul class="uds-list">
           <li>Lorem ipsum dolor sit amet consectetuer.</li>
           <li>Aenean commodo ligula eget dolor.</li>
           <li>Aenean massa cum sociis natoque penatibus.</li>
         </ul>
-
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
         <blockquote>
         Lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor.
@@ -156,17 +135,13 @@ storiesOf('Components/Sidebar', module)
         justo. Nullam <a class="external ext" href="#">link</a>
         dictum felis eu pede mollis pretium.
         </blockquote>
-
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit. Aenean commodo ligula eget dolor. Aenean massa.
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
       </div><!-- end .col -->
     </div><!-- end .row -->
-
   </div>
-
   `
   );

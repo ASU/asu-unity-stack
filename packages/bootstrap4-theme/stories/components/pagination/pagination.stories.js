@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
-export default createComponent('Dividers');
+export default createComponent('Pagination');
 
 
 const ExampleComponent = (
