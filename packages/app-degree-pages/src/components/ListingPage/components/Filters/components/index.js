@@ -26,25 +26,23 @@ const SelectFormGroup = ({
   multiple,
   options,
   onChange,
-}) => {
-  return (
-    <div className="form-group">
-      <label htmlFor={id}>{label}</label>
-      <select
-        className="form-control"
-        id={id}
-        multiple={multiple}
-        onChange={event => onChange(id, event)}
-        value={selected}
-      >
-        {options?.map(option => (
-          <option key={option.id} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
+}) => (
+  <div className="form-group">
+    <label htmlFor={id}>{label}</label>
+    <select
+      className="form-control"
+      id={id}
+      multiple={multiple}
+      onChange={event => onChange(id, event)}
+      value={selected}
+    >
+      {options?.map(option => (
+        <option key={option.id} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  </div>
+);
 
 export { SelectFormGroup };

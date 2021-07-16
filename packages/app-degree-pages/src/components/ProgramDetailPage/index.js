@@ -108,7 +108,13 @@ const ProgramDetailPage = ({
         <section>
           <Hero
             image={hero?.image || detailPageDefault.hero.image}
-            title={{ ...hero?.title, maxWidth: "100%" }}
+            title={{
+              ...(hero?.title || {
+                text: resolver.getMajorDesc(),
+                color: "white",
+              }),
+              maxWidth: "100%",
+            }}
             contents={hero?.contents}
           />
         </section>
@@ -131,35 +137,32 @@ const ProgramDetailPage = ({
 
             <div className="row flex-column-reverse flex-sm-row">
               <div className="col col-sm-12 col-md-7 col-lg-7">
-                {introContent ? (
-                  <section className="intro">
-                    {!introContent.hideMarketText &&
-                    resolver.getMarketText() ? (
-                      <MarketText
-                        breadcrumbs={introContent?.breadcrumbs}
-                        contents={
-                          introContent?.contents || [
-                            { text: resolver.getMarketText() },
-                          ]
-                        }
-                      />
-                    ) : null}
+                <section className="intro">
+                  {!introContent?.hideMarketText && resolver.getMarketText() ? (
+                    <MarketText
+                      breadcrumbs={introContent?.breadcrumbs}
+                      contents={
+                        introContent?.contents || [
+                          { text: resolver.getMarketText() },
+                        ]
+                      }
+                    />
+                  ) : null}
 
-                    {!introContent.hideProgramDesc ? (
-                      <ProgramDescription
-                        content={resolver.getDescrLongExtented()}
-                      />
-                    ) : null}
+                  {!introContent?.hideProgramDesc ? (
+                    <ProgramDescription
+                      content={resolver.getDescrLongExtented()}
+                    />
+                  ) : null}
 
-                    {!introContent.hideRequiredCourses ? (
-                      <RequiredCourse
-                        concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
-                        onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                        majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
-                      />
-                    ) : null}
-                  </section>
-                ) : null}
+                  {!introContent?.hideRequiredCourses ? (
+                    <RequiredCourse
+                      concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                      onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                      majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                    />
+                  ) : null}
+                </section>
 
                 {!atAGlance?.hide ? (
                   <AtAGlance
@@ -188,7 +191,7 @@ const ProgramDetailPage = ({
                       {
                         content: {
                           header: "Aditional Requirements",
-                          // Change data after filter on degree type
+                          // TOD: Change data after filter on degree type
                           body: resolver.getDescrLongExtented5(),
                         },
                       },
@@ -216,13 +219,21 @@ const ProgramDetailPage = ({
                     />
                   </VideoWrapper>
                 )}
-                {introContent?.image && (
+                {!introContent?.video && (
                   <div className="uds-img pt-3 pb-3">
-                    <img
-                      src={introContent.image.url}
-                      className="img-fluid"
-                      alt={introContent.image.altText}
-                    />
+                    {introContent?.image ? (
+                      <img
+                        src={introContent.image.url}
+                        className="img-fluid"
+                        alt={introContent.image.altText}
+                      />
+                    ) : (
+                      <img
+                        src={detailPageDefault.introContent.image.url}
+                        className="img-fluid"
+                        alt={detailPageDefault.introContent.image.altText}
+                      />
+                    )}
                   </div>
                 )}
               </div>

@@ -42,6 +42,7 @@ const defaultArgs = {
     externalAnchors: [
       {
         targetIdName: "my-request-form-info-id",
+        // targetIdName: "#my-request-form-info-id", this stil work but is not recommended
         text: "Request Information",
       },
     ],
@@ -269,8 +270,22 @@ const Template = ({
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const DefaultPage = Template.bind({});
-DefaultPage.args = defaultArgs;
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  introContent: null,
+  hero: null,
+  nextSteps: null,
+  globalOpportunity: null,
+  attendOnline: null,
+};
+
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+export const PageWithContent = Template.bind({});
+PageWithContent.args = defaultArgs;
 
 /**
  * @param {AppProps} props
@@ -290,17 +305,4 @@ PageWithVideoAndMarketText.args.introContent = {
     title: "",
     vttUrl: "",
   },
-};
-
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
-export const PageWithDefaultContent = Template.bind({});
-PageWithDefaultContent.args = {
-  ...defaultArgs,
-  hero: null,
-  nextSteps: null,
-  globalOpportunity: null,
-  attendOnline: null,
 };

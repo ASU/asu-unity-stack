@@ -41,8 +41,8 @@ function Table({ data }) {
                 )}
                 {field.brightOutlook && <SunIcon className="fas fa-sun ml-1" />}
               </th>
-              <td className="text-end">{field.growth}%</td>
-              <td className="text-end">{field.medianSalary}</td>
+              <td className="text-end">{+field.growth}%</td>
+              <td className="text-end">{field.medianSalary || 0}</td>
             </tr>
           ))}
         </tbody>

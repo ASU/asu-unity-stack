@@ -15,6 +15,7 @@ import { useFetch } from "../../core/hooks/use-fetch";
 import {
   acceleratedConcurrentValues,
   listingPageDefault,
+  resolveListingHeroTitle,
   LIST_VIEW_ID,
 } from "../../core/models";
 import {
@@ -119,11 +120,10 @@ const ListingPage = ({
     };
 
     /** @param {Object.<string, []>} row  */
-    const isValidAcceleratedConcurrent = (row = {}) => {
-      return acceleratedConcurrent && acceleratedConcurrent !== "all"
+    const isValidAcceleratedConcurrent = (row = {}) =>
+      acceleratedConcurrent && acceleratedConcurrent !== "all"
         ? row[acceleratedConcurrent]?.length > 0
         : true;
-    };
 
     /** @param {Object.<string, any>} row  */
     const doFilter = row =>
@@ -215,7 +215,12 @@ const ListingPage = ({
         <section>
           <Hero
             image={hero?.image || listingPageDefault.hero.image}
-            title={{ ...hero?.title, maxWidth: "100%" }}
+            title={{
+              text: resolveListingHeroTitle(programList.dataSource),
+              highlightColor: "gold",
+              ...hero?.title,
+              maxWidth: "100%",
+            }}
             contents={hero?.contents}
           />
         </section>

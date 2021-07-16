@@ -69,18 +69,23 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
   };
 
   const bulletItems = imageItems.map((img, i) => (
-    <img
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+    <span
       role="option"
+      className="bullet-image-container"
       key={`bullet-${i}`}
-      src={img}
-      className="glide__bullet bullet-image"
       data-glide-dir={`=${i}`}
       aria-label={`Slide view ${i + 1}`}
       aria-selected="false"
       onClick={e => clickBullet(e, i)}
       onKeyDown={e => clickBullet(e, i)}
-    />
+      tabIndex={i}
+    >
+      <img
+        src={img}
+        alt={`Slide ${i + 1}`}
+        className="glide__bullet bullet-image"
+      />
+    </span>
   ));
 
   return <BaseBulletItemContainer>{bulletItems}</BaseBulletItemContainer>;

@@ -11,13 +11,11 @@ import React, { createContext } from "react";
 const ListingPageContext = createContext(null);
 
 // TODO: may not be necessary. check and in case remove it
-const ListingPageProvider = ({ children }) => {
-  return (
-    <ListingPageContext.Provider value={null}>
-      {children}
-    </ListingPageContext.Provider>
-  );
-};
+const ListingPageProvider = ({ children }) => (
+  <ListingPageContext.Provider value={null}>
+    {children}
+  </ListingPageContext.Provider>
+);
 
 ListingPageProvider.propTypes = {
   children: PropTypes.element,

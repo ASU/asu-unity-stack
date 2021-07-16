@@ -65,7 +65,14 @@ const common = {
       filename: "[name].[contenthash].css",
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: path.join(PROJECT_DIR, "src/assets"), to: "assets" }],
+      patterns: [
+        { from: path.join(PROJECT_DIR, "src/assets"), to: "assets" },
+        // this is use only for storybook examples
+        {
+          from: path.join(PROJECT_DIR, "examples/assets"),
+          to: "examples/assets",
+        },
+      ],
     }),
   ],
 };

@@ -73,7 +73,7 @@ const glanceItemPropShape = PropTypes.shape({
 });
 
 const cardPropShape = PropTypes.shape({
-  icon: PropTypes.string,
+  icon: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   content: PropTypes.string,
   buttonLink: buttonPropShape,
@@ -88,7 +88,7 @@ const flexibleDegreeOptionsLinks = PropTypes.arrayOf(
 
 const exampleCareersTableDataPropShape = PropTypes.shape({
   career: linkPropShape,
-  growth: PropTypes.number,
+  growth: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
   medianSalary: PropTypes.string,
   brightOutlook: PropTypes.bool,
   greenOccupation: PropTypes.bool,

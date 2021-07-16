@@ -238,7 +238,9 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
       &[data-has-content="true"] {
         .image-navigator {
-          border-bottom: $border-element;
+          .image-navigator-images {
+            border-bottom: $border-element;
+          }
         }
         .uds-caption-text {
           padding: 1rem 0;
@@ -260,30 +262,73 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     }
 
     .image-navigator {
-      position: relative;
-      min-height: $image-navigator-height;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      .image-navigator-images {
+        min-height: $image-navigator-height;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+
+        .navigation-slider {
+          position: relative;
+          left: 0px;
+
+          .glide__bullets {
+            position: relative;
+            .bullet-image-container {
+              position: relative;
+
+              .bullet-image {
+                flex-basis: auto;
+                width: 88px;
+                height: 48px;
+                border-radius: 0;
+                border: 0;
+                z-index: 2;
+                object-fit: cover;
+              }
+            }
+
+            .#{$glide-class}__bullet--active {
+              background-color: transparent;
+              border: 5px solid $uds-color-brand-gold;
+            }
+          }
+        }
+      }
 
       .glide__arrows {
-        width: max-content;
+        width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         .glide__arrow {
-          $btn-nav-size: 1.5rem;
+          $btn-nav-size: 2.5rem;
           width: $btn-nav-size;
-          height: $btn-nav-size;
+          @supports not (-webkit-touch-callout: none) {
+            /* Height breaks border radius on iOS */
+            height: $btn-nav-size;
+          }
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 3;
           position: absolute;
-          transform: translateY(50%);
 
           svg {
-            height: 0.8rem;
+            height: 1rem;
             position: static;
+
+          }
+
+          @supports (-webkit-touch-callout: none) {
+            svg {
+              height: 2rem;
+              position: absolute;
+              top: 1rem;
+            }
           }
 
           &.glide__arrow--prev {
@@ -295,21 +340,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         }
       }
     }
-
-    .bullet-image {
-      flex-basis: auto;
-      width: 88px;
-      height: 48px;
-      border-radius: 0;
-      border: 0;
-      z-index: 2;
-      object-fit: cover;
-    }
-
-    .#{$glide-class}__bullet--active {
-      background-color: transparent;
-      border: 5px solid $uds-color-brand-gold;
-    }
   }
 
   @media only screen and (max-width: $uds-breakpoint-sm) {
@@ -319,7 +349,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       }
     }
     &.image-gallery {
-      .image-navigator .glide__arrows .glide__arrow {
+      .image-navigator .image-navigator-images .glide__arrows .glide__arrow {
         display: none;
       }
     }

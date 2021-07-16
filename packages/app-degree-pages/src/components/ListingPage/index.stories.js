@@ -2,7 +2,8 @@
 // @ts-check
 import React from "react";
 
-import { ListingPage } from ".";
+import { ListingPage } from "./index";
+
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
@@ -37,7 +38,7 @@ const Template = ({
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
-  majorInfoUrl: `/?path=/story/program-detail-page--default-page&acadPlan={ACAD_PLAN_CODE}`,
+  majorInfoUrl: `/?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
   // majorInfoUrl:
   //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
@@ -46,12 +47,45 @@ const actionUrls = {
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
 const dataSource = {
   // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
-  // OPTIONAL - method: "findAllDegrees",
-  // OPTIONAL - init: "false", // "true" | "false"
-  program: "undergrad", // graduate | undergrad
-  cert: "false", // "true" | "false"
-  // OPTIONAL -CollegeAcadOrg: null, //  example values: CLW, CTB, CTE
-  // OPTIONAL -DepartmentCode: null, //  example values: CMANAGE, CHUMARTCLT, CHL
+  // another example: dataSource: "/api/mocks/degree-search",
+
+  // method: "findAllDegrees", // OPTIONAL
+  // init: "false",  // OPTIONAL "true" | "false"
+  program: "graduate", // graduate | undergrad
+  cert: "true", // "true" | "false"
+  // CollegeAcadOrg: null, // OPTIONAL example values: CLW, CTB, CTE
+  // DepartmentCode: null,  // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+};
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const Default = Template.bind({});
+
+Default.args = {
+  actionUrls,
+  hero: null,
+  introContent: {
+    type: "text",
+    title: {
+      text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+    },
+    contents: [
+      {
+        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
+      },
+    ],
+  },
+  // hasFilters: false, // OPTIONAL
+  // hasSearchBar: false, // OPTIONAL
+  programList: {
+    dataSource,
+    settings: {
+      hideCollegeSchool: true,
+    },
+  },
 };
 
 /**
@@ -152,7 +186,7 @@ PageWithIntroTextPhotoGrid.args = {
   hasFilters: false,
   hasSearchBar: false,
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };
 
@@ -197,7 +231,7 @@ PageWithIntroTextMediaImage.args = {
     },
   },
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };
 
@@ -271,6 +305,6 @@ PageWithIntroTextImageOverlay.args = {
     },
   },
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };

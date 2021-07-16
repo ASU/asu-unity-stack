@@ -3,16 +3,23 @@
 import { getCurrnetScriptPath } from "../utils/script-utils";
 
 const scriptPath = getCurrnetScriptPath();
+const detailImageFolder = `${scriptPath}assets/img/detail-page`;
+const listingImageFolder = `${scriptPath}assets/img/listing-page`;
 
 /**
  * @type {import("./program-detail-types").ProgramDetailPageProps}
  */
 const detailPageDefault = {
   dataSource: undefined,
+  introContent: {
+    image: {
+      url: `${detailImageFolder}/intro.jpg`,
+      altText: "Detail Page Degree",
+    },
+  },
   hero: {
     image: {
-      // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}assets/img/hero.jpg`,
+      url: `${detailImageFolder}/hero.jpg`,
       altText: "Detail Page Degree",
       size: "medium",
     },
@@ -62,23 +69,20 @@ const detailPageDefault = {
     ],
   },
   globalOpportunity: {
-    // TODO: temp image. to be replaced with the new one
     image: {
-      url: `${scriptPath}assets/img/global-opportunity.jpg`,
+      url: `${detailImageFolder}/global-opportunity.jpg`,
       altText: "Global opportunity",
     },
   },
   careerOutlook: {
     image: {
-      // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}assets/img/career-outlook.jpg`,
+      url: `${detailImageFolder}/career-outlook.jpg`,
       altText: "Career Outlook",
     },
   },
   attendOnline: {
     image: {
-      // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}assets/img/attend-online.jpg`,
+      url: `${detailImageFolder}/attend-online.jpg`,
       altText: "Attend online",
     },
   },
@@ -90,8 +94,7 @@ const detailPageDefault = {
 const listingPageDefault = {
   hero: {
     image: {
-      // TODO: temp image. to be replaced with the new one
-      url: `${scriptPath}assets/img/hero.jpg`,
+      url: `${listingImageFolder}/hero.jpg`,
       altText: "Listing Page Degree",
       size: "medium",
     },
@@ -99,4 +102,27 @@ const listingPageDefault = {
   programList: undefined,
 };
 
-export { detailPageDefault, listingPageDefault };
+/**
+ *
+ * @param {import("./listing-page-types").AppDataSource | string} dataSource
+ * @returns
+ */
+const resolveListingHeroTitle = dataSource => {
+  if (typeof dataSource === "string") return "Degrees";
+
+  const { program, cert } = dataSource;
+
+  if (program === "undergrad" && cert === "true")
+    return "Undergraduate Minors and Certificates";
+
+  if (program === "undergrad") return "Undergraduate Degrees";
+
+  if (program === "graduate" && cert === "true")
+    return "Graduate Degrees and Certificates";
+
+  if (program === "graduate") return "Graduate Degrees";
+
+  return "Degrees";
+};
+
+export { detailPageDefault, listingPageDefault, resolveListingHeroTitle };

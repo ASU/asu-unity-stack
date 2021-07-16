@@ -11,6 +11,7 @@ const NextIcon = () => (
     className="svg-inline--fa fa-chevron-right fa-w-10"
     role="img"
     xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
     viewBox="0 0 320 512"
   >
     <path
