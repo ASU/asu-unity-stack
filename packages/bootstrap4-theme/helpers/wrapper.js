@@ -2,9 +2,9 @@ import React from 'react';
 import { Basic } from '../stories/components/global-header/global-header.components.js';
 import { GlobalElementsOnly } from '../stories/components/global-footer/global-footer.components.js';
 
-export const createComponent = (name) => {
+export const createComponent = (name, section='Components') => {
   return {
-    title: `Components/${name}`,
+    title: `${section}/${name}`,
     argTypes: {
       header: {
         control: { type: 'boolean' },

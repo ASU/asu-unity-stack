@@ -1,7 +1,8 @@
-export default { title: 'Design/Backgrounds' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Backgrounds', 'Design');
 
-
-export const approvedBackgroundColors = () => `
+const approvedBackgroundColorsComponent = (
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -23,9 +24,9 @@ export const approvedBackgroundColors = () => `
       </div>
     </div>
   </div>
-`;
+);
 
-export const approvedBackgroundPatterns = () => `
+const approvedBackgroundPatternsComponent = (
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -63,9 +64,9 @@ export const approvedBackgroundPatterns = () => `
       </div>
     </div>
   </div>
-`;
+);
 
-export const imageBackgrounds = () => `
+const imageBackgroundsComponent = (
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -77,9 +78,9 @@ export const imageBackgrounds = () => `
       </div>
     </div>
   </div>
-`;
+);
 
-export const backgroundsScaling = () => `
+const backgroundsScalingComponent = (
   <div class="jumbotron-fluid max-size-container scaling-container">
     <span class="content-description">1920px max width</span>
     <div class="section-line"></div>
@@ -93,19 +94,31 @@ export const backgroundsScaling = () => `
       </div>
     </div>
   </div>
-`;
+);
 
-export const PatternDividersAndBackgroundPatterns = () => `
-<div class="container p-5">
-  <h2>
-    <span class="highlight-gold">Pattern dividers and background patterns</span>
-  </h2>
-</div>
-<div style="height: 250px" class="container-fluid bg morse-code-white"></div>
-<div style="height: 250px" class="container-fluid bg morse-code-black"></div>
-<div style="height: 250px" class="container-fluid bg topo-white"></div>
-<div style="height: 250px" class="container-fluid bg topo-black"></div>
-<div style="height: 250px" class="container-fluid bg network-white"></div>
-<div style="height: 250px" class="container-fluid bg network-black"></div>
-`;
+const PatternDividersAndBackgroundPatternsComponent = (
+  <div>
+    <div class="container p-5">
+      <h2>
+        <span class="highlight-gold">Pattern dividers and background patterns</span>
+      </h2>
+    </div>
+    <div style={{height: '250px'}} class="container-fluid bg morse-code-white"></div>
+    <div style={{height: '250px'}} class="container-fluid bg morse-code-black"></div>
+    <div style={{height: '250px'}} class="container-fluid bg topo-white"></div>
+    <div style={{height: '250px'}} class="container-fluid bg topo-black"></div>
+    <div style={{height: '250px'}} class="container-fluid bg network-white"></div>
+    <div style={{height: '250px'}} class="container-fluid bg network-black"></div>
+  </div>
+);
+
+export const approvedBackgroundColors = createStory(approvedBackgroundColorsComponent)
+export const approvedBackgroundPatterns = createStory(approvedBackgroundPatternsComponent)
+export const imageBackgrounds = createStory(imageBackgroundsComponent)
+export const backgroundsScaling = createStory(backgroundsScalingComponent)
+export const PatternDividersAndBackgroundPatterns = createStory(PatternDividersAndBackgroundPatternsComponent)
+
+
+
+
 

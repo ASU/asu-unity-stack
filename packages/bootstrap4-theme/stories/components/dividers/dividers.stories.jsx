@@ -1,6 +1,5 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
-
 export default createComponent('Dividers');
 
 

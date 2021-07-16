@@ -1,10 +1,9 @@
-export default { title: 'Design/Layout' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Layout', 'Design');
 
-export const columnSizing = () => `
-  <style>
-    .row > div > div {height:7rem;}
-  </style>
 
+const ColumnSizingComponent = (
   <div class="container">
 
     <div class="row mb-6">
@@ -52,14 +51,27 @@ export const columnSizing = () => `
 
     <div class="row row-cols-2 mb-6">
 
-      <div class="col-8"><div class="bg-gray-2" style="height:20rem;"><h3>Content Left</h3></div></div>
-      <div class="col-4"><div class="bg-gray-2" style="height:20rem;"><h3>Sidebar</h3></div></div>
+      <div class="col-8"><div class="bg-gray-2" style={{height: '20rem'}}><h3>Content Left</h3></div></div>
+      <div class="col-4"><div class="bg-gray-2" style={{height: '20rem'}}><h3>Sidebar</h3></div></div>
 
-      <div class="col-4"><div class="bg-gray-4" style="height:20rem;"><h3>Sidebar</h3></div></div>
-      <div class="col-8"><div class="bg-gray-4" style="height:20rem;"><h3>Content Right</h3></div></div>
+      <div class="col-4"><div class="bg-gray-4" style={{height: '20rem'}}><h3>Sidebar</h3></div></div>
+      <div class="col-8"><div class="bg-gray-4" style={{height: '20rem'}}><h3>Content Right</h3></div></div>
 
     </div>
 
   </div>
+);
 
-`;
+const css = `  <style>
+.row > div > div {height:7rem;}
+</style>`;
+
+const ColumnSizingStory = (
+  <div>
+    {css}
+    <ColumnSizingComponent />
+  </div>
+)
+
+export const ColumnSizing = createStory(ColumnSizingComponent)
+

@@ -1,13 +1,10 @@
-import { storiesOf } from '@storybook/react';
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Calendar');
 import './calendar';
 
-storiesOf('Components/Calendar', module)
-  .addParameters({
-    happo: false,
-  })
 
-  .add(
-    'Calendar',
-    () => `
-      <div id="calendar"></div>`
-  );
+const CalendarComponent = (
+  <div id="calendar"></div>
+)
+export const Calendar = createStory(CalendarComponent)

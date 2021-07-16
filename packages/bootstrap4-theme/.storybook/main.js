@@ -1,21 +1,16 @@
 const path = require('path');
 
+
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
+    '../stories/**/*.stories.jsx',
     '../stories/**/*.stories.[tj]s',
   ],
   addons: [
+    '@storybook/addon-docs',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
     '@storybook/addon-viewport',
     'storybook-addon-xd-designs',
     {
@@ -50,3 +45,4 @@ module.exports = {
     return config;
   },
 };
+

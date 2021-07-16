@@ -1,20 +1,22 @@
-export default { title: 'Design/Typography' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Typography', 'Design');
 
-export const font = () => `
-<div class="container">
-  <div class="row">
-    <div class="col col-sm-12 p-3">
-      <h1>Arial bold</h1>
-      <p><strong>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</strong></p>
+const Componentfont = (
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-12 p-3">
+        <h1>Arial bold</h1>
+        <p><strong>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</strong></p>
 
-      <h1 style="font-weight:100!important;">Arial regular</h1>
-      <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</p>
+        <h1 style={{'font-weight':'100!important'}}>Arial regular</h1>
+        <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</p>
+      </div>
     </div>
   </div>
-<div>
-`;
+);
 
-export const bodyCopyWhite = () => `
+const ComponentbodyCopyWhite = (
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -22,9 +24,9 @@ export const bodyCopyWhite = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray1 = () => `
+const ComponentbodyCopyGray1 = (
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -32,9 +34,9 @@ export const bodyCopyGray1 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray2 = () => `
+const ComponentbodyCopyGray2 = (
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -42,9 +44,9 @@ export const bodyCopyGray2 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray7 = () => `
+const ComponentbodyCopyGray7 = (
 <div class="container bg-gray-7 text-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -52,9 +54,9 @@ export const bodyCopyGray7 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsWhite = () => `
+const ComponentASUHeadingsWhite = (
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -67,9 +69,9 @@ export const ASUHeadingsWhite = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray1 = () => `
+const ComponentASUHeadingsGray1 = (
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -82,9 +84,9 @@ export const ASUHeadingsGray1 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray2 = () => `
+const ComponentASUHeadingsGray2 = (
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -97,9 +99,9 @@ export const ASUHeadingsGray2 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray7 = () => `
+const ComponentASUHeadingsGray7 = (
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -112,54 +114,54 @@ export const ASUHeadingsGray7 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsWhite = () => `
+const ComponentHighlightsWhite = (
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray1 = () => `
+const ComponentHighlightsGray1 = (
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray2 = () => `
+const ComponentHighlightsGray2 = (
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
-      <h3><span class="highlight-white">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
+      <h3><span class="highlight-white">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray7 = () => `
+const ComponentHighlightsGray7 = (
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-white">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-white">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsHighlights = () => `
+const ComponentASUHeadingsHighlights = (
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -171,9 +173,9 @@ export const ASUHeadingsHighlights = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsContentPage = () => `
+const ComponentASUHeadingsContentPage = (
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -200,9 +202,9 @@ export const ASUHeadingsContentPage = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const Lead = () => `
+const ComponentLead = (
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -212,9 +214,9 @@ export const Lead = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUParagraphs = () => `
+const ComponentASUParagraphs = (
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -240,9 +242,9 @@ export const ASUParagraphs = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const InlineTextElements = () => `
+const ComponentInlineTextElements = (
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -257,57 +259,58 @@ export const InlineTextElements = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-/*
-export const InternalNotes = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 p-3">
-      <p>Just some notes about elements that we need to style or think through.</p>
-      <ul>
-        <li>Display classes - prominent in BS, will produce the wrong results currently.</li>
-        <li>Description lists</li>
-        <li>Compare/Contrast elements on https://getbootstrap.com/docs/4.5/content/typography</li>
-    </div>
-  </div>
-</div>
-`;
-*/
 
-// export const ASUHeadings = () => `
-// <div class="container bg-white">
-//   <div class="row">
-//     <div class="col col-sm-12 p-3">
-//       <h1>Heading 1</h1>
-//       <p>Paragraph 1</p>
+export const font = createStory(Componentfont)
+export const bodyCopyWhite = createStory(ComponentbodyCopyWhite)
+export const bodyCopyGray1 = createStory(ComponentbodyCopyGray1)
+export const bodyCopyGray2 = createStory(ComponentbodyCopyGray2)
+export const bodyCopyGray7 = createStory(ComponentbodyCopyGray7)
+export const ASUHeadingsWhite = createStory(ComponentASUHeadingsWhite)
+export const ASUHeadingsGray1 = createStory(ComponentASUHeadingsGray1)
+export const ASUHeadingsGray2 = createStory(ComponentASUHeadingsGray2)
+export const ASUHeadingsGray7 = createStory(ComponentASUHeadingsGray7)
+export const HighlightsWhite = createStory(ComponentHighlightsWhite)
+export const HighlightsGray1 = createStory(ComponentHighlightsGray1)
+export const HighlightsGray2 = createStory(ComponentHighlightsGray2)
+export const HighlightsGray7 = createStory(ComponentHighlightsGray7)
+export const ASUHeadingsHighlights = createStory(ComponentASUHeadingsHighlights)
+export const ASUHeadingsContentPage = createStory(ComponentASUHeadingsContentPage)
+export const Lead = createStory(ComponentLead)
+export const ASUParagraphs = createStory(ComponentASUParagraphs)
+export const InlineTextElements = createStory(ComponentInlineTextElements)
 
-//       <h2>Heading 2</h2>
-//       <p>Paragraph 2</p>
 
-//       <h3>Heading 3</h3>
-//       <p>Paragraph 3</p>
 
-//       <h4>Heading 4</h4>
-//       <p>Paragraph 4</p>
 
-//       <h5>Heading 5</h5>
-//       <p>Paragraph 5</p>
 
-//       <h6>Heading 6</h6>
-//       <p>Paragraph 6</p>
 
-//       <h4>This heading will not have additional spacing<h4>
-//       <h5>This heading will also not have additional spacing<h5>
-//     </div>
-//   </div>
 
-//   <h1>Another heading 1</h1>
-//   <p>Another paragraph</p>
 
-//   <h2>Another heading 2</h2>
-//   <p>Another paragraph</p>
 
-//   <h3>This heading should not have additional space</h3>
-// </div>
-// `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
