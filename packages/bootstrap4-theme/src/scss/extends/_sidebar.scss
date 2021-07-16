@@ -36,7 +36,7 @@ Sidebar Navigation
     transition: all 0.3s;
   }
 
-  &[aria-expanded='true'] {
+  &[aria-expanded='false'] {
     svg {
       transform: rotate(-180deg);
     }
@@ -69,7 +69,9 @@ Sidebar Navigation
   }
 
   .nav-link {
+    padding: $uds-size-spacing-2 $uds-size-spacing-1;
     color: $uds-color-base-gray-7;
+    @include like-an-h4;
 
     &:not(.is-active) {
       display: flex;
@@ -106,13 +108,13 @@ Sidebar Navigation
     }
   }
 
-  > .nav-link {
-    border-top: 1px solid $uds-color-base-gray-3;
-    padding: $uds-size-spacing-3 $uds-size-spacing-2;
+  > .nav-link-container {
+    padding: $uds-size-spacing-1;
     overflow: hidden;
     color: $uds-color-base-gray-7;
-
-    @include like-an-h4;
+    &:not(:first-child) {
+      border-top: 1px solid $uds-color-base-gray-3;
+    }
   }
 
   .card-foldable {
