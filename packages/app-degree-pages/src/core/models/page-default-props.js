@@ -110,10 +110,7 @@ const listingPageDefault = {
 const resolveListingHeroTitle = dataSource => {
   if (typeof dataSource === "string") return "Degrees";
 
-  // Undergraduate Minors and Certificates
-
   const { program, cert } = dataSource;
-  let typeProgram = "";
 
   if (program === "undergrad" && cert === "true")
     return "Undergraduate Minors and Certificates";
@@ -124,6 +121,8 @@ const resolveListingHeroTitle = dataSource => {
     return "Graduate Degrees and Certificates";
 
   if (program === "graduate") return "Graduate Degrees";
+
+  return "Degrees";
 };
 
 export { detailPageDefault, listingPageDefault, resolveListingHeroTitle };
