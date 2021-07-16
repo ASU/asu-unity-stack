@@ -29,12 +29,12 @@
  *    endpoint?: string
  *    method?: string
  *    init?: stringBool
+ *    cert?: stringBool
  *    [x:string]: string
  * }} AppDataSource
  *
  * @typedef {{
  *    program?: string
- *    cert?: stringBool
  *    CollegeAcadOrg?: string
  *    DepartmentCode?: string
  * } & AppDataSource } ProgramListDataSource

@@ -23,32 +23,30 @@ import { List } from "./index.style";
  * @returns
  */
 
-const ContentBlock = ({ id, title, links }) => {
-  return (
-    <div id={id} className="mt-4">
-      <h3>{title}</h3>
-      <p>
-        This program allows students to obtain both a bachelor&apos;s and
-        master&apos;s degree in as little as five years. It is offered as an
-        accelerated bachelor&apos;s and master&apos;s degree with:
-      </p>
-      <List className="mt-3 mb-3">
-        {links.map(link => (
-          <li key={link.title}>
-            <a href={link.url} target="_blank" rel="noreferrer">
-              {link.title}
-            </a>
-          </li>
-        ))}
-      </List>
-      <p className="mb-0">
-        Acceptance to the graduate program requires a separate application.
-        During their junior year, eligible students will be advised by their
-        academic departments to apply.
-      </p>
-    </div>
-  );
-};
+const ContentBlock = ({ id, title, links }) => (
+  <div id={id} className="mt-4">
+    <h3>{title}</h3>
+    <p>
+      This program allows students to obtain both a bachelor&apos;s and
+      master&apos;s degree in as little as five years. It is offered as an
+      accelerated bachelor&apos;s and master&apos;s degree with:
+    </p>
+    <List className="mt-3 mb-3">
+      {links.map(link => (
+        <li key={link.title}>
+          <a href={link.url} target="_blank" rel="noreferrer">
+            {link.title}
+          </a>
+        </li>
+      ))}
+    </List>
+    <p className="mb-0">
+      Acceptance to the graduate program requires a separate application. During
+      their junior year, eligible students will be advised by their academic
+      departments to apply.
+    </p>
+  </div>
+);
 
 ContentBlock.propTypes = {
   id: PropTypes.string,
