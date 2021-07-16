@@ -120,6 +120,7 @@ const CardCarousel = ({
       maxWidth={maxWidth}
       width={width}
       carouselItems={carouselItems}
+      cssClass="aligned-carousel"
       imageAutoSize={imageAutoSize}
       removeSideBackground={cardItems.length <= perView}
       hasPositionIndicators={activateGlideActions}

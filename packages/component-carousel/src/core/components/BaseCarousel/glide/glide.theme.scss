@@ -4,8 +4,13 @@ $glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
+$uds-breakpoint-lg: 1200px;
 $uds-color-base-gray-7: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
+
+.container .aligned-carousel {
+  margin-left: -104px !important;
+}
 
 .#{$glide-class} {
   $this: &;
@@ -81,7 +86,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   $sm: $glide-modifier-separator;
 
   &#{$se}slides {
-   [data-image-auto-size="true"] & .glide__slide {
+    [data-image-auto-size="true"] & .glide__slide {
       height: auto;
       position: relative;
       display: inline-flex;
@@ -198,6 +203,11 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     &#{$sm}active {
       background-color: #191919; //white;
     }
+  }
+
+  &.aligned-carousel {
+    width: calc(1200px + 104px * 2);
+    margin: auto;
   }
 
   &.image-gallery {
@@ -320,7 +330,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           svg {
             height: 1rem;
             position: static;
-
           }
 
           @supports (-webkit-touch-callout: none) {
@@ -355,6 +364,12 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     }
   }
 
+  @media only screen and (max-width: $uds-breakpoint-lg) {
+    &.aligned-carousel {
+      width: 100%;
+    }
+  }
+
   &#{$sm}swipeable {
     cursor: grab;
     cursor: -moz-grab;
@@ -385,6 +400,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   &.image-gallery,
   &.image-carousel {
+    margin: auto;
     @mixin li-inactive-border {
       li:not(.glide__slide--active) img {
         border: 0;

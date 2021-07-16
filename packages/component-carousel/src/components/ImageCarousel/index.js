@@ -78,7 +78,7 @@ const ImageCarousel = ({
       perView={+perView}
       maxWidth={maxWidth}
       width={width}
-      cssClass="image-carousel"
+      cssClass="image-carousel aligned-carousel"
       carouselItems={carouselItems}
       imageAutoSize={imageAutoSize}
       removeSideBackground={imageItems.length <= perView}
