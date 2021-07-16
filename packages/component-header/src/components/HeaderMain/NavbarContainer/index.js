@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
-import { idGenerator } from "../../../utils/id-generator";
+import { idGenerator } from "../../../utils";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";
@@ -25,7 +25,7 @@ const NavbarContainer = () => {
         {!!mobileNavTree?.length && isMobile
           ? mobileNavTree?.map((link, i) => {
               const item = { ...link, id: i };
-              const genKey = idGenerator(`${link.text}-`);
+              const genKey = idGenerator(`${link.text}-${i}-`);
               const key = genKey.next().value;
               return (
                 <NavItem
@@ -38,7 +38,7 @@ const NavbarContainer = () => {
             })
           : navTree?.map((link, i) => {
               const item = { ...link, id: i };
-              const genKey = idGenerator(`${link.text}-`);
+              const genKey = idGenerator(`${link.text}-${i}-`);
               const key = genKey.next().value;
               return (
                 <NavItem

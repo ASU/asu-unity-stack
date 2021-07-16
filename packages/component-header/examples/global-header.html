@@ -18,6 +18,11 @@
 <body>
   <!-- Provide target divs for the component. Must have unique ids or class name. -->
   <div id="header-container"></div>
+  <div style='width: 100% ; height: 200vh ; background: #f0f0f0 ; padding-top: 40px; margin-top: 140px'>
+    <h1 style='text-align: center ; font-family: Arial'>
+      Scroll section
+    </h1>
+  </div>
 
   <script>
     const navTree =[
@@ -72,35 +77,6 @@
         {
           text: "People",
           href: "#",
-          items: [
-            [
-              {
-                classes: "border first",
-                href: "https://www.asu.edu/map/",
-                text: "Map",
-              },
-              {
-                href: "https://campus.asu.edu/tempe/",
-                text: "Tempe",
-              },
-              {
-                href: "https://campus.asu.edu/west/",
-                text: "West",
-              },
-              {
-                href: "https://campus.asu.edu/polytechnic/",
-                text: "Polytechnic",
-              },
-              {
-                href: "https://asuonline.asu.edu/",
-                text: "Online and Extended",
-              },
-              {
-                href: "https://havasu.asu.edu/",
-                text: "Mauris viverra, sem nec",
-              },
-            ],
-          ],
         },
         {
           text: "My ASU",
@@ -334,7 +310,7 @@
         ],
       },
     ];
-    AsuHeader.initASUHeader({
+    AsuHeader.initGlobalHeader({
       targetSelector: "#header-container",
       props: {
         loggedIn: false,
@@ -355,7 +331,7 @@
           {
             text: "CTA Button 2",
             href: "#",
-            color: "light",
+            color: "maroon",
           },
         ],
       },

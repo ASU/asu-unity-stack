@@ -1,13 +1,12 @@
 import React from "react";
 
-import { ASUHeader } from ".";
-
+import { ASUHeader } from "./header";
 import {
   basicNavTree,
   navTreeWithButtons,
   navTreeMega,
   mobileNavTree,
-} from "./utils/data-mock";
+} from "./utils";
 
 export default {
   title: "UDS/ASU Header",

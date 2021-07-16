@@ -100,11 +100,11 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       >
         {renderNavLinks()}
       </a>
-      {opened && (
+      {link.items && (
         <DropdownItem
           items={link.items}
           buttons={link.buttons}
-          classes={`header-dropdown-${link.id}`}
+          classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
         />
       )}
     </NavItemWrapper>

@@ -64,9 +64,6 @@ const common = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: path.join(PROJECT_DIR, "src/assets"), to: "assets" }],
-    }),
   ],
 };
 

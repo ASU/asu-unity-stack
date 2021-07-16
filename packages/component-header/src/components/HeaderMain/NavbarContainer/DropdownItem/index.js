@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
-import { idGenerator } from "../../../../utils/id-generator";
+import { idGenerator } from "../../../../utils";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
 
@@ -81,7 +81,7 @@ const DropdownItem = ({ items, buttons, classes }) => {
     >
       <div className="dropdown-container">
         {items?.map((item, index0) => {
-          const genKey = idGenerator(`dropdown-item-${index0}`);
+          const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
           return (
             <ul key={key}>

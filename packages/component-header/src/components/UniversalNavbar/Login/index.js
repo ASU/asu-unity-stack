@@ -5,13 +5,8 @@ import { useAppContext } from "../../../core/context/app-context";
 import { LoginWrapper } from "./index.styles";
 
 const Login = () => {
-  const {
-    loggedIn,
-    userName,
-    logoutLink,
-    loginLink,
-    breakpoint,
-  } = useAppContext();
+  const { loggedIn, userName, logoutLink, loginLink, breakpoint } =
+    useAppContext();
 
   return (
     // @ts-ignore
