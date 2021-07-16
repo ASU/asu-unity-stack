@@ -1,4 +1,6 @@
 // @ts-check
+import classNames from "classnames";
+
 import {
   Button,
   Accordion,
@@ -16,7 +18,7 @@ import {
  * @typedef {import('../../../../core/models/program-detail-types').ApplicationRequirementsProps} ApplicationRequirementsProps
  */
 
-const BuuttonList = styled.ul`
+const ButtonList = styled.ul`
   display: inline-flex;
   list-style: none;
   padding: 0;
@@ -54,6 +56,12 @@ function ApplicationRequirements({ accordionCards }) {
       href: "https://admission.asu.edu/undergrad/readmission",
     },
   ];
+
+  // clean up those records with `header` or `body` with empty/null values
+  const reqList = accordionCards.filter(
+    ({ content }) => content.body?.trim() && content.header?.trim()
+  );
+
   return (
     <section id={progDetailSectionIds.applicationRequirements.targetIdName}>
       <h2>
@@ -64,7 +72,11 @@ function ApplicationRequirements({ accordionCards }) {
         All students are required to meet general university admission
         requirements
       </p>
-      <BuuttonList>
+      <ButtonList
+        className={classNames("", {
+          "mb-0": reqList.length === 0,
+        })}
+      >
         {items.map(({ label, href }) => (
           <li key={label}>
             <Button
@@ -76,10 +88,12 @@ function ApplicationRequirements({ accordionCards }) {
             />
           </li>
         ))}
-      </BuuttonList>
-      <div className="mt-2 mb-4">
-        <Accordion cards={accordionCards} openedCard={1} />
-      </div>
+      </ButtonList>
+      {reqList.length > 0 && (
+        <div className="mt-2 mb-4">
+          <Accordion cards={reqList} openedCard={1} />
+        </div>
+      )}
     </section>
   );
 }
