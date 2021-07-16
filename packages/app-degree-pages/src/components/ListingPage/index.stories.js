@@ -3,6 +3,7 @@
 import React from "react";
 
 import { ListingPage } from ".";
+
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
@@ -46,6 +47,8 @@ const actionUrls = {
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
 const dataSource = {
   // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  // another example: dataSource: "/api/mocks/degree-search",
+
   // OPTIONAL - method: "findAllDegrees",
   // OPTIONAL - init: "false", // "true" | "false"
   program: "undergrad", // graduate | undergrad
@@ -152,7 +155,7 @@ PageWithIntroTextPhotoGrid.args = {
   hasFilters: false,
   hasSearchBar: false,
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };
 
@@ -197,7 +200,7 @@ PageWithIntroTextMediaImage.args = {
     },
   },
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };
 
@@ -271,6 +274,6 @@ PageWithIntroTextImageOverlay.args = {
     },
   },
   programList: {
-    dataSource: "/api/mocks/degree-search",
+    dataSource,
   },
 };

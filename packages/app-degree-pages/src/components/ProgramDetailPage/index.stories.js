@@ -42,6 +42,7 @@ const defaultArgs = {
     externalAnchors: [
       {
         targetIdName: "my-request-form-info-id",
+        // targetIdName: "#my-request-form-info-id", this stil work but is not recommended
         text: "Request Information",
       },
     ],
