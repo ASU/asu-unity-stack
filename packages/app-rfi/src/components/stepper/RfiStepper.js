@@ -32,11 +32,8 @@ class RfiStepper extends React.Component {
     // If configured as a cert or minor and we have a program of interest, look
     // up the program's email address and set it in state for use in
     // isCertMinor render below.
-    const {
-      dataSourceDegreeSearch,
-      isCertMinor,
-      programOfInterest,
-    } = this.props;
+    const { dataSourceDegreeSearch, isCertMinor, programOfInterest } =
+      this.props;
     if (isCertMinor && programOfInterest) {
       const serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
       const resp = await fetch(serviceUrl)
