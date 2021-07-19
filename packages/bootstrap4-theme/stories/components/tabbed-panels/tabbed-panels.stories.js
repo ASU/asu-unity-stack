@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
-export default createComponent('Dividers');
+export default createComponent('Tabbed Panels');
 import './tabbed-panels.js'
 
 
@@ -84,8 +84,8 @@ const Gray1BackgroundComponent = (
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
           This is an ordinary paragraph that is long enough to wrap to multiple lines so that you can see how spacing looks. At vero eos et accusam et justo duo dolores et ea rebu.
           <br />
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem.</div>
-      </div>
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
+        </div>
     </div>
   </div>
 )

@@ -53,7 +53,7 @@ const SmallImagesComponent = (
     used to serve as an example, not a recommendation. Please use the best practices
     of your environment, context and layout strategy.</p>
 
-    <div style="width:25%;">
+    <div style={{width: '25%'}}>
       <div class="uds-img">
         <img src="https://source.unsplash.com/random/800x600" class="uds-img img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
       </div>
@@ -61,7 +61,7 @@ const SmallImagesComponent = (
 
     <br /><br />
 
-    <div style="width:25%;">
+    <div style={{width: '25%'}}>
       <div class="uds-img uds-img-drop-shadow">
         <figure class="figure uds-figure">
           <img src="https://source.unsplash.com/random/800x600" class="uds-img figure-img img-fluid" alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."></img>

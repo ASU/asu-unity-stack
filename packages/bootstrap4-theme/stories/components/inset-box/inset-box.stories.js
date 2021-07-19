@@ -62,7 +62,6 @@ export const ExampleWithList = () => `
     <!-- Component end -->
   </div>
 </div>
-
 `;
 
 export const WhiteBackground = () => `
