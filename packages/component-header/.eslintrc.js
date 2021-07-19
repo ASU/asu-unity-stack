@@ -37,12 +37,5 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
-    "no-unused-vars": [
-      "warn",
-      {
-        varsIgnorePattern: "tagHeadings|DegreeDataPropResolverServiceType",
-        argsIgnorePattern: "^_",
-      },
-    ],
   },
 };

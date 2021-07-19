@@ -18,37 +18,27 @@ const NavbarContainer = () => {
     setItemOpened(itemId === itemOpened ? undefined : itemId);
   };
 
+  const renderItem = (link, index) => {
+    const item = { ...link, id: index };
+    const genKey = idGenerator(`${link.text}-${index}-`);
+    const key = genKey.next().value;
+    return (
+      <NavItem
+        key={key}
+        link={item}
+        setItemOpened={() => handleSetItemOpened(index)}
+        itemOpened={itemOpened}
+      />
+    );
+  };
+
   return (
     // @ts-ignore
     <Wrapper breakpoint={breakpoint}>
       <ul className="nav-list">
         {!!mobileNavTree?.length && isMobile
-          ? mobileNavTree?.map((link, i) => {
-              const item = { ...link, id: i };
-              const genKey = idGenerator(`${link.text}-${i}-`);
-              const key = genKey.next().value;
-              return (
-                <NavItem
-                  key={key}
-                  link={item}
-                  setItemOpened={() => handleSetItemOpened(i)}
-                  itemOpened={itemOpened}
-                />
-              );
-            })
-          : navTree?.map((link, i) => {
-              const item = { ...link, id: i };
-              const genKey = idGenerator(`${link.text}-${i}-`);
-              const key = genKey.next().value;
-              return (
-                <NavItem
-                  key={key}
-                  link={item}
-                  setItemOpened={() => handleSetItemOpened(i)}
-                  itemOpened={itemOpened}
-                />
-              );
-            })}
+          ? mobileNavTree?.map((link, i) => renderItem(link, i))
+          : navTree?.map((link, i) => renderItem(link, i))}
       </ul>
       {!!buttons?.length && (
         <form className="buttons-container">

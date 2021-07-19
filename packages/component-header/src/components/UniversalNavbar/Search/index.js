@@ -62,20 +62,18 @@ const Search = () => {
           )}
         </>
       ) : (
-        <>
-          <label>
-            <FontAwesomeIcon icon="search" />
-            <input
-              ref={inputRef}
-              className="form-control"
-              type="search"
-              name="q"
-              aria-labelledby="header-top-search"
-              placeholder="Search asu.edu"
-              required
-            />
-          </label>
-        </>
+        <label>
+          <FontAwesomeIcon icon="search" />
+          <input
+            ref={inputRef}
+            className="form-control"
+            type="search"
+            name="q"
+            aria-labelledby="header-top-search"
+            placeholder="Search asu.edu"
+            required
+          />
+        </label>
       )}
       <input name="site" value="default_collection" type="hidden" />
       <input name="sort" value="date:D:L:d1" type="hidden" />
