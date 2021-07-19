@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { ApplyNow, OverlapContentImage } from "../../../../core/components";
+import {
+  ApplyNow,
+  OverlapContentImage,
+  ParagrapList,
+} from "../../../../core/components";
 import {
   contentPropShape,
   contentPropType,
@@ -13,7 +17,7 @@ import {
   tagHeadingList,
   videoPropType,
 } from "../../../../core/models";
-import { spreadClasses, parseHeading } from "../../../../core/utils";
+import { parseHeading, spreadClasses } from "../../../../core/utils";
 
 /**
  * @typedef {import('../../../../core/models/listing-page-types').IntroContentProps} IntroContentProps
@@ -56,14 +60,7 @@ function textPhotoGridTypeHtmlTemplate({
               {title.text}
             </span>
           </Heading>
-          {contents.map((content, index) => (
-            <p
-              key={`content-${index + 1}`}
-              className={`${spreadClasses(content.cssClass)}`}
-            >
-              {content.text}
-            </p>
-          ))}
+          <ParagrapList contents={contents} />
           <ApplyNow href={applyNowUrl} />
         </div>
         <div className="col-sm-12 col-md-7 d-none d-sm-none d-md-block">
@@ -110,14 +107,7 @@ function textTextMediaTypeHtmlTemplate({
               {title.text}
             </span>
           </Heading>
-          {contents.map((content, index) => (
-            <p
-              key={`content-${index + 1}`}
-              className={`${spreadClasses(content.cssClass)}`}
-            >
-              {content.text}
-            </p>
-          ))}
+          <ParagrapList contents={contents} />
           <ApplyNow href={applyNowUrl} />
         </div>
         <div className="col-sm-12 col-md-7">
@@ -189,14 +179,7 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
           </Heading>
         </div>
         <div className="col-sm-12 col-md-7">
-          {contents.map((content, index) => (
-            <p
-              key={`content-${index + 1}`}
-              className={`${spreadClasses(content.cssClass)}`}
-            >
-              {content.text}
-            </p>
-          ))}
+          <ParagrapList contents={contents} />
           <ApplyNow href={applyNowUrl} />
         </div>
       </div>

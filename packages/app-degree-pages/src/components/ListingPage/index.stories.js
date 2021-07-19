@@ -72,6 +72,12 @@ Default.args = {
     },
     contents: [
       {
+        text: `<p>Lorem, <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+     </p>`,
+      },
+      {
         text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
@@ -98,7 +104,9 @@ PageWithIntroText.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/" +
+        "ds_header_undergrad.jpg",
       altText: "Undergraduate Degrees",
       size: "medium",
     },
@@ -114,7 +122,7 @@ PageWithIntroText.args = {
     },
     contents: [
       {
-        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+        text: `<b>Lorem</b>, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
       },
@@ -140,7 +148,9 @@ PageWithIntroTextPhotoGrid.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/" +
+        "ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
@@ -161,7 +171,7 @@ PageWithIntroTextPhotoGrid.args = {
     },
     contents: [
       {
-        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+        text: `<b>Lorem</b>, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
       },
@@ -200,7 +210,9 @@ PageWithIntroTextMediaImage.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/" +
+        "ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
@@ -221,7 +233,7 @@ PageWithIntroTextMediaImage.args = {
     },
     contents: [
       {
-        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
+        text: `<b>Lorem</b>, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?`,
       },
@@ -264,7 +276,9 @@ PageWithIntroTextImageOverlay.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+      url:
+        "https://webapp4.asu.edu/programs/resources/images/" +
+        "ds_header_undergrad.jpg",
       size: "medium",
     },
     title: {
@@ -289,7 +303,7 @@ PageWithIntroTextImageOverlay.args = {
     },
     contents: [
       {
-        text: `Instagram tour operator travel sailing flying package.
+        text: `<b>Instagram</b> tour operator travel sailing flying package.
          Territory New York City group discount active lifestyle creditcard
          insurance wellness kayak guide overnight rural lonely planet.`,
       },

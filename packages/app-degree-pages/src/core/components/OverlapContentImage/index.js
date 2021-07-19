@@ -5,7 +5,7 @@ import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { imagePropShape } from "../../models";
-import { sanitizeHTML, idGenerator } from "../../utils";
+import { ParagrapList } from "../ParagrapList";
 
 const GlobalStyle = createGlobalStyle`
 .uds-image-overlap {
@@ -59,7 +59,6 @@ function OverlapContentImage({
   contents = [],
   contentChildren = null,
 }) {
-  const genId = idGenerator("overlap-");
   return (
     <div className={`uds-image-overlap content-${contentDirection}`}>
       <GlobalStyle />
@@ -68,13 +67,7 @@ function OverlapContentImage({
         <h3>
           <span className="highlight-gold">{title}</span>
         </h3>
-        {contents.map(content => (
-          <div
-            key={genId.next().value}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={sanitizeHTML(content.text)}
-          />
-        ))}
+        <ParagrapList contents={contents} />
         {contentChildren}
       </ContentWrapper>
     </div>

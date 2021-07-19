@@ -7,4 +7,8 @@ function toTitleCase(str) {
   );
 }
 
-export { toTitleCase };
+function isHtml(text) {
+  return /<\/?[a-z][\s\S]*>/i.test(text);
+}
+
+export { toTitleCase, isHtml };

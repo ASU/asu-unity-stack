@@ -4,5 +4,6 @@ export * from "./ErrorAlert";
 export * from "./Loader";
 export * from "./OnThisPageAnchorMenu";
 export * from "./OverlapContentImage";
+export * from "./ParagrapList";
 export * from "./Styles";
 export * from "./icons";
