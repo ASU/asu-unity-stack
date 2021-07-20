@@ -81,7 +81,7 @@ storiesOf('Components/Global Header', module)
                     <a class="nav-link" href="#">Tour</a>
                     <a class="nav-link" href="#">Research</a>
 
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown header-dropdown-1">
                       <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
                         <span class="fa fa-chevron-down"></span>
@@ -208,7 +208,7 @@ storiesOf('Components/Global Header', module)
                       <span title="Home" class="fas fa-fw fa-home"></span>
                     </a>
 
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown header-dropdown-1">
                       <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Drop (1 Col)
                         <span class="fa fa-chevron-down"></span>
@@ -219,12 +219,12 @@ storiesOf('Components/Global Header', module)
                           <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                           <a class="dropdown-item" href="#">Dapibus lorem</a>
                           <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
-                          <a href="#" class="btn btn-sm btn-dark">CTA action 2</a>
+                          <a href="#" class="btn btn-sm btn-dark col-btn">CTA action 2</a>
                         </div>
                       </div>
                     </div>
 
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown header-dropdown-2">
                       <a class="nav-link" href="#" id="dropdown-two-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Drop (2 col)
                         <span class="fa fa-chevron-down"></span>
@@ -250,7 +250,7 @@ storiesOf('Components/Global Header', module)
                       </div>
                     </div>
 
-                    <div class="nav-item dropdown megamenu active">
+                    <div class="nav-item dropdown megamenu active header-dropdown-3">
                       <a class="nav-link" href="#" id="megamenu-three-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mega Menu (3 col)
                         <span class="fa fa-chevron-down"></span>
@@ -286,7 +286,7 @@ storiesOf('Components/Global Header', module)
                     </div>
 
 
-                    <div class="nav-item dropdown megamenu">
+                    <div class="nav-item dropdown megamenu header-dropdown-4">
                       <a class="nav-link" href="#" id="megamenu-four-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mega Menu (4 col)
                         <span class="fa fa-chevron-down"></span>
@@ -341,7 +341,7 @@ storiesOf('Components/Global Header', module)
 
                     </div>
 
-                    <div class="nav-item dropdown megamenu">
+                    <div class="nav-item dropdown megamenu header-dropdown-5">
                       <a class="nav-link" href="#" id="megamenu-five-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mega Menu (5 col)
                         <span class="fa fa-chevron-down"></span>
@@ -355,7 +355,7 @@ storiesOf('Components/Global Header', module)
                                 <a class="dropdown-item" href="#">Navigation link</a>
                                 <a class="dropdown-item" href="#">Second link in the list</a>
                                 <a class="dropdown-item" href="#">Here is link number three</a>
-                                <a href="#" class="btn btn-sm btn-dark">CTA in column</a>
+                                <a href="#" class="btn btn-sm btn-dark col-btn">CTA in column</a>
                             </div>
                             <div class="col-lg">
                               <h3>Column Two</h3>
@@ -373,14 +373,14 @@ storiesOf('Components/Global Header', module)
                               <a class="dropdown-item" href="#">Quis tempus aliquam semper imperdiet</a>
                               <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
+                              <a href="#" class="btn btn-sm btn-dark col-btn">CTA in Column</a>
                             </div>
                             <div class="col-lg">
                               <h3>Column Four</h3>
                               <a class="dropdown-item" href="#">Dis quam quis nisi ligula</a>
                               <a class="dropdown-item" href="#">Nisi ligula eget orci</a>
                               <a class="dropdown-item" href="#">Dapibus lorem</a>
-                              <a href="#" class="btn btn-sm btn-dark">CTA in Column</a>
+                              <a href="#" class="btn btn-sm btn-dark col-btn">CTA in Column</a>
                             </div>
                             <div class="col-lg">
                               <h3>Mambo #5</h3>
@@ -713,19 +713,47 @@ storiesOf('Components/Global Header', module)
                     <a class="nav-link" href="#">Contact</a>
                     <a class="nav-link" href="#">Tour</a>
 
-                    <div class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
-                      <span class="fa fa-chevron-down"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
-                      <div class="dropdown-col">
-                        <a class="dropdown-item" href="#">Navigation link</a>
-                        <a class="dropdown-item" href="#">Another link</a>
-                        <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
+                    <div class="nav-item dropdown header-dropdown-1">
+                      <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                        <span class="fa fa-chevron-down"></span>
+                      </a>
+                      <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+                        <div class="dropdown-col">
+                          <a class="dropdown-item" href="#">Navigation link</a>
+                          <a class="dropdown-item" href="#">Another link</a>
+                          <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
+
+                    <div class="nav-item dropdown aligned-right header-dropdown-2">
+                      <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown 2
+                        <span class="fa fa-chevron-down"></span>
+                      </a>
+                      <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+                        <div class="dropdown-col">
+                          <a class="dropdown-item" href="#">Navigation link</a>
+                          <a class="dropdown-item" href="#">Another link</a>
+                          <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="nav-item dropdown aligned-right header-dropdown-3">
+                      <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown 3
+                        <span class="fa fa-chevron-down"></span>
+                      </a>
+                      <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+                        <div class="dropdown-col">
+                          <a class="dropdown-item" href="#">Navigation link</a>
+                          <a class="dropdown-item" href="#">Another link</a>
+                          <a class="dropdown-item" href="#">This dropdown menu has a maximum width</a>
+                        </div>
+                      </div>
+                    </div>
 
                   </div><!-- end .navbar-nav -->
 
@@ -848,7 +876,7 @@ storiesOf('Components/Global Header', module)
                     <a class="nav-link" href="#">Contact</a>
                     <a class="nav-link" href="#">Tour</a>
 
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown header-dropdown-1">
                     <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Dropdown
                       <span class="fa fa-chevron-down"></span>

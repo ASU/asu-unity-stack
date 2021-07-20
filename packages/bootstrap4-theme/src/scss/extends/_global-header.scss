@@ -613,6 +613,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
     div[class^='col-']:last-child {
       margin-bottom: 0;
     }
+
+    .col-btn {
+      margin-top: 1.5rem;
+    }
   }
 
   .dropdown-col {
@@ -873,6 +877,11 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         @include gold-underline-expand-desktop;
       }
 
+      &.aligned-right:not(.megamenu) .dropdown-menu {
+        right: 0;
+        left: unset;
+      }
+
       svg.fa-chevron-down {
         float: none;
         display: inline-block;
@@ -893,6 +902,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       &.dropdown-columns.show {
         display: flex;
       }
+
+      .col-btn {
+        margin-top: 2rem;
+      }
     }
 
     .dropdown-col {
@@ -908,7 +921,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       }
 
       h3 {
-        margin-top: 40px;
+        margin-top: 0;
       }
     }
 

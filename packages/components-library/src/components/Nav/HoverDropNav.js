@@ -83,7 +83,7 @@ const HoverDropNav = forwardRef(
 
         <S.DropdownContainer
           {...{ open: isOpen }}
-          class={mega ? "mega" : ""}
+          class={`header-dropdown-${pIndex}${mega ? " mega" : ""}`}
           {...(buttons
             ? {
                 buttons: buttons.map((item, index) => {

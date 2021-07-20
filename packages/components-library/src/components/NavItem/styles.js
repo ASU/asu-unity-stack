@@ -64,14 +64,15 @@ const navItemStyles = breakpoint => css`
 
   .navbutton {
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 2rem;
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       order: 1;
     }
 
     @media (max-width: ${breakpoint}) {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      padding: 0;
     }
   }
 `;

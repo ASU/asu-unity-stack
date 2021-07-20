@@ -96,6 +96,134 @@ const BasicNavTree = [
     text: "Contact us",
     href: "#",
   },
+  {
+    text: "Two Column 1",
+    href: "/",
+    items: [
+      [
+        {
+          type: "heading",
+          text: "Column 1",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Pellentesque ornare",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Curabitur viverra arcu nisl",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          text: "Aenean pharetra",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+          text: "Pellentesque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+          text: "Donec sagittis nulla",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+          text: "Quisque fringilla",
+        },
+        {
+          href: "https://www.asu.edu/about",
+          text: "Integer vel gravida lectus",
+        },
+      ],
+      [
+        {
+          href: "https://www.asu.edu/?feature=newsevents",
+          type: "heading",
+          text: "Ut quis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+          text: "Nunc in libero odio",
+        },
+        {
+          href: "https://www.asu.edu/?feature=research",
+          text: "Maecenas quam elit",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+          text: "Ut at vehicula neque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          type: "button",
+          text: "Sed molestie",
+        },
+      ],
+    ],
+  },
+  {
+    text: "Two Column 2",
+    href: "/",
+    items: [
+      [
+        {
+          type: "heading",
+          text: "Column 1",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Pellentesque ornare",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Curabitur viverra arcu nisl",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          text: "Aenean pharetra",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+          text: "Pellentesque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+          text: "Donec sagittis nulla",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+          text: "Quisque fringilla",
+        },
+        {
+          href: "https://www.asu.edu/about",
+          text: "Integer vel gravida lectus",
+        },
+      ],
+      [
+        {
+          href: "https://www.asu.edu/?feature=newsevents",
+          type: "heading",
+          text: "Ut quis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+          text: "Nunc in libero odio",
+        },
+        {
+          href: "https://www.asu.edu/?feature=research",
+          text: "Maecenas quam elit",
+        },
+        {
+          href: "https://www.asu.edu/?feature=academics",
+          text: "Ut at vehicula neque",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          type: "button",
+          text: "Sed molestie",
+        },
+      ],
+    ],
+  },
 ];
 
 const NavTreeWithButtons = [
