@@ -14,18 +14,18 @@ const ButtonWrapper = styled.a`
     transform: scale(1.05);
   }
   &.button-light {
-    background-color: #bfbfbf;
+    background-color: #bfbfbf !important;
   }
   &.button-gold {
-    background-color: #ffc627;
+    background-color: #ffc627 !important;
   }
   &.button-dark {
-    background-color: #191919;
-    color: #ffffff;
+    background-color: #191919 !important;
+    color: #ffffff !important;
   }
   &.button-maroon {
-    background-color: #8c1d40;
-    color: #ffffff;
+    background-color: #8c1d40 !important;
+    color: #ffffff !important;
   }
 `;
 
