@@ -6,8 +6,6 @@ const DropdownWrapper = styled.div`
   border: 1px solid #d0d0d0;
   margin: 0;
   z-index: 1031;
-  max-height: 500px;
-  overflow: hidden;
   visibility: hidden;
   &.opened {
     visibility: visible;

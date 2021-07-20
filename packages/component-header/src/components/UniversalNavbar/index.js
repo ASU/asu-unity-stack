@@ -29,7 +29,7 @@ const UniversalNavbar = () => {
                 Report an accessibility problem
               </a>
               <a className="nav-link" href="https://asu.edu">
-                ASU home
+                ASU Home
               </a>
               <a className="nav-link" href="https://my.asu.edu">
                 My ASU

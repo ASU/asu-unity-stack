@@ -4,6 +4,7 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  white-space: nowrap;
   .nav-list {
     display: flex;
     margin: 0;

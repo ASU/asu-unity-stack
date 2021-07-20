@@ -3,6 +3,7 @@ import styled from "styled-components";
 const HeaderMainWrapper = styled.div`
   background-color: #ffffff;
   border-bottom: 1px solid #d0d0d0;
+  padding: 0 12px;
   .navbar {
     padding: 0;
     display: flex;
