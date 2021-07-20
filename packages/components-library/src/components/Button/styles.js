@@ -116,28 +116,28 @@ const Button = forwardRef(
 
         ${maroon &&
             `
-              color: #ffffff;
+              color: #ffffff !important;
               background-color: #8c1d40;
               border-color: #8c1d40;
 
               :visited:not(.btn) {
-                color: #ffffff;
+                color: #ffffff !important;
               }
             `}
 
         ${dark &&
             `
-              color: ${ComponentButtonDarkColor};
+              color: ${ComponentButtonDarkColor} !important;
               background-color: ${ComponentButtonDarkBackgroundColor};
 
               :visited:not(.btn) {
-                color: ${ComponentButtonDarkColor};
+                color: ${ComponentButtonDarkColor} !important;
               }
             `}
 
         ${light &&
             `
-              color: ${ComponentButtonLightColor};
+              color: ${ComponentButtonLightColor} !important;
               background-color: ${ComponentButtonLightBackgroundColor};
             `}
           `,
