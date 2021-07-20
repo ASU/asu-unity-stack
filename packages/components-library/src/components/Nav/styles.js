@@ -257,8 +257,6 @@ const dropdownContainerStyles = breakpoint => css`
     overflow: hidden;
     margin: 0.3px 0 0 0;
     flex-direction: column;
-    max-height: 500px;
-    overflow: hidden;
 
     > div {
       width: 100%;
@@ -366,7 +364,6 @@ const DropdownContainer = props => {
     if (window && dropdownRef.current) {
       const elPosition = dropdownRef.current.getBoundingClientRect().left;
       const breakpointPosition = window.innerWidth * 0.55;
-      console.log(elPosition);
       setAlignedRight(elPosition > breakpointPosition);
     }
   }, []);

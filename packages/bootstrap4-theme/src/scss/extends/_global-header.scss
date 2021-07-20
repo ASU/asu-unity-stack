@@ -894,8 +894,6 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       margin: -1px 0 0 0;
       border: 1px solid $uds-color-base-gray-3;
       padding: $uds-size-spacing-4;
-      max-height: 500px;
-      overflow: hidden;
 
       div[class^='col-'] {
         margin-bottom: 0;
@@ -923,7 +921,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       }
 
       h3 {
-        margin-top: 40px;
+        margin-top: 0;
       }
     }
 
