@@ -23,8 +23,12 @@ storiesOf('Components/Sidebar', module)
         </div>
         <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
 
-          <a class="nav-link" href="#">Default Link</a>
-          <a class="nav-link is-active" href="#">Active Link</a>
+          <div class="nav-link-container">
+            <a class="nav-link" href="#">Default Link</a>
+          </div>
+          <div class="nav-link-container">
+            <a class="nav-link is-active" href="#">Active Link</a>
+          </div>
 
           <div class="card card-foldable">
             <div class="card-header">
@@ -57,7 +61,9 @@ storiesOf('Components/Sidebar', module)
             </div><!-- end .card-body -->
           </div><!-- end .card -->
 
-          <a class="nav-link" href="#">Link between cards</a>
+          <div class="nav-link-container">
+            <a class="nav-link" href="#">Link between cards</a>
+          </div>
 
           <div class="card card-foldable">
             <div class="card-header">
@@ -73,9 +79,12 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Sloop flogging chase guns lee</a>
             </div><!-- end .card-body -->
           </div><!-- end .card -->
-
-          <a class="nav-link" href="#">Default Link</a>
-          <a class="nav-link" href="#">Last Link</a>
+          <div class="nav-link-container">
+            <a class="nav-link" href="#">Default Link</a>
+          </div>
+          <div class="nav-link-container">
+            <a class="nav-link" href="#">Last Link</a>
+          </di>
 
         </nav><!-- end .sidebar -->
 
