@@ -54,7 +54,7 @@ const dataSource = {
   program: "graduate", // graduate | undergrad
   cert: "true", // "true" | "false"
   // CollegeAcadOrg: null, // OPTIONAL example values: CLW, CTB, CTE
-  // DepartmentCode: null,  // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+  // DepartmentCode: null, // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
 
 /**
@@ -91,6 +91,22 @@ Default.args = {
     settings: {
       hideCollegeSchool: true,
     },
+  },
+};
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
+
+DefaultWithCollegeAcadOrgAndDepartmentCode.args = { ...Default.args };
+DefaultWithCollegeAcadOrgAndDepartmentCode.args.programList = {
+  ...Default.args.programList,
+  dataSource: {
+    // @ts-ignore
+    ...Default.args.programList.dataSource,
+    CollegeAcadOrg: "CTB",
+    DepartmentCode: "CMANAGE",
   },
 };
 
