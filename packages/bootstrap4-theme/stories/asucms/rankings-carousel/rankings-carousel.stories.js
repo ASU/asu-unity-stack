@@ -137,6 +137,7 @@ export const rankingsCarousel = () => `
           peek: 0,
           gap: 0,
           perView: 1,
+          autoplay: 5000, //Change this to change time between scroll. Time is in miliseconds(5 seconds on this example)
       }).mount({ ArrowDisabler });
     </script>
   </div>
