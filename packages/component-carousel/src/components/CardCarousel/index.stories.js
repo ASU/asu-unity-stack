@@ -64,21 +64,27 @@ export default {
 };
 
 export const ThreeItemCarousel = () => (
-  <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+  <div className="container">
+    <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+  </div>
 );
 
 export const TwoItemCarousel = () => (
-  <CardCarousel perView="2" cardItems={myCarouselItems} />
+  <div className="container">
+    <CardCarousel perView="2" cardItems={myCarouselItems} />
+  </div>
 );
 
 export const OneItemCarousel = () => (
-  <CardCarousel perView="1" cardItems={myCarouselItems} />
+  <div className="container">
+    <CardCarousel perView="1" cardItems={myCarouselItems} />
+  </div>
 );
 
 export const MultipleCarousels = () => (
-  <>
+  <div className="container">
     <CardCarousel perView="3" cardItems={myCarouselItems} />
     <CardCarousel perView="1" cardItems={myCarouselItems} />
     <CardCarousel perView="2" cardItems={myCarouselItems} />
-  </>
+  </div>
 );

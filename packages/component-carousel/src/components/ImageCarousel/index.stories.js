@@ -77,6 +77,7 @@ const GROUP_STYLE = "Styles";
  */
 const Wrapper = ({ children }) => (
   <div
+    className="container"
     style={
       {
         // setting display flex the 'maxHeight' gets applied but the carousel squashes
