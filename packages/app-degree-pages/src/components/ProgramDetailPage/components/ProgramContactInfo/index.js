@@ -25,6 +25,7 @@ const ListContainer = styled.ul`
       padding-bottom: 2rem;
     }
 
+    .c-icon,
     i {
       margin-right: 0.5rem;
     }
@@ -58,21 +59,21 @@ function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
         <li>
           <div>
             <i
-              className="fas icon-small fa-map-marker-alt"
+              className="c-icon fas icon-small fa-map-marker-alt"
               title="Department  Address"
             />
             <a href={department.url}>{department.text}</a>
           </div>
         </li>
         <li>
-          <div className="text-dark office-loc">{asuOfficeLoc}</div>
+          <div className="c-icon text-dark office-loc">{asuOfficeLoc}</div>
         </li>
         <li>
-          <i className="fas icon-small fa-envelope" title="Email" />
+          <i className="c-icon fas icon-small fa-envelope" title="Email" />
           <a href={email.url || email.text}>{email.text}</a>
         </li>
         <li>
-          <i className="fas icon-small fa-phone" title="Phone" />
+          <i className="c-icon fas icon-small fa-phone" title="Phone" />
           <a href={`tel:${phone}`}>{phone}</a>
         </li>
       </ListContainer>
