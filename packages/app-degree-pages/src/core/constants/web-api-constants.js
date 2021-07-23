@@ -8,6 +8,7 @@ const listingPageDefaultDataSource = {
   method: "findAllDegrees",
   init: "false",
   fields:
+    "CollegeAcadOrg,DepartmentCode," +
     "Descr100,Institution,AcadPlan," +
     "Degree,DegreeDescr,DegreeDescrlong," +
     "concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +

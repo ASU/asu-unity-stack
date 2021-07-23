@@ -11,6 +11,7 @@ import {
   ErrorAlert,
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
+import { useListingPageLogger } from "../../core/hooks";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   acceleratedConcurrentValues,
@@ -54,6 +55,67 @@ const ListingStyle = createGlobalStyle`
 
 /**
  *
+ * @param {{
+ * programs: Object[]
+ * filters: import("src/components/ListingPage/components/Filters").FiltersState
+ * }} props
+ * @returns
+ */
+function filterData({
+  programs = [],
+  filters: {
+    collegeAcadOrg,
+    departmentCode,
+    acceleratedConcurrent,
+    locations = [],
+  },
+}) {
+  // ============================================================
+  /** @param {Object.<string, []>} row  */
+  const isValidCollegeAcadOrg = (row = {}) => {
+    const resolver = degreeDataPropResolverService(row);
+
+    return collegeAcadOrg
+      ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
+      : true;
+  };
+  // ============================================================
+  /** @param {Object.<string, []>} row  */
+  const isValidDepartmentCode = (row = {}) => {
+    const resolver = degreeDataPropResolverService(row);
+
+    return departmentCode
+      ? resolver.getDepartmentCode().includes(departmentCode)
+      : true;
+  };
+  // ============================================================
+  /** @param {Object.<string, []>} row  */
+  const isValidCampus = (row = {}) => {
+    const resolver = degreeDataPropResolverService(row);
+
+    return locations.length > 0
+      ? resolver.getCampusList()?.some(campus => locations.includes(campus))
+      : true;
+  };
+  // ============================================================
+  /** @param {Object.<string, []>} row  */
+  const isValidAcceleratedConcurrent = (row = {}) =>
+    acceleratedConcurrent && acceleratedConcurrent !== "all"
+      ? row[acceleratedConcurrent]?.length > 0
+      : true;
+  // ============================================================
+  /** @param {Object.<string, any>} row  */
+  const doFilter = row =>
+    isValidCollegeAcadOrg(row) &&
+    isValidDepartmentCode(row) &&
+    isValidCampus(row) &&
+    isValidAcceleratedConcurrent(row);
+
+  return programs.filter(doFilter);
+}
+
+/**
+ *
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
@@ -74,6 +136,8 @@ const ListingPage = ({
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
+  // These filter are input props which never change.
+  const { collegeAcadOrg, departmentCode } = programList.dataSource;
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
@@ -84,12 +148,31 @@ const ListingPage = ({
   /** @type {import("../../core/models/shared-types").UseStateTuple<string[]>} */
   const [appliedFilters, setAppliedFilters] = useState([]);
 
+  useListingPageLogger({
+    dataSource: programList.dataSource,
+    tableView,
+    programs: data?.programs,
+    stateFilters,
+  });
+
   useEffect(() => {
     doFetchPrograms(url);
   }, [url]);
 
   useEffect(() => {
-    setTableView(data?.programs || []);
+    if (collegeAcadOrg || departmentCode) {
+      setTableView(
+        filterData({
+          programs: data?.programs,
+          filters: {
+            collegeAcadOrg,
+            departmentCode,
+          },
+        })
+      );
+    } else {
+      setTableView(data?.programs || []);
+    }
   }, [data]);
 
   /**
@@ -101,7 +184,12 @@ const ListingPage = ({
     // ============================================================
     if (loading || searchLoading) return;
 
-    if (!acceleratedConcurrent && locations.length === 0) {
+    if (
+      !acceleratedConcurrent &&
+      locations.length === 0 &&
+      !collegeAcadOrg &&
+      !departmentCode
+    ) {
       return;
     }
     // ============================================================
@@ -110,26 +198,17 @@ const ListingPage = ({
 
     await doFetchPrograms(url);
 
-    /** @param {Object.<string, []>} row  */
-    const isValidCampus = (row = {}) => {
-      const resolver = degreeDataPropResolverService(row);
+    const filteredPrograms = filterData({
+      programs: data.programs,
+      filters: {
+        collegeAcadOrg,
+        departmentCode,
+        acceleratedConcurrent,
+        locations,
+      },
+    });
 
-      return locations.length > 0
-        ? resolver.getCampusList()?.some(campus => locations.includes(campus))
-        : true;
-    };
-
-    /** @param {Object.<string, []>} row  */
-    const isValidAcceleratedConcurrent = (row = {}) =>
-      acceleratedConcurrent && acceleratedConcurrent !== "all"
-        ? row[acceleratedConcurrent]?.length > 0
-        : true;
-
-    /** @param {Object.<string, any>} row  */
-    const doFilter = row =>
-      isValidCampus(row) && isValidAcceleratedConcurrent(row);
-    // filter program list
-    setTableView(data.programs.filter(doFilter));
+    setTableView(filteredPrograms);
 
     setSearchLoading(false);
 
@@ -199,8 +278,9 @@ const ListingPage = ({
 
     // clean up: redo query with new filters
     onDegreeApplyFilters({
-      acceleratedConcurrent: newStateFilters.acceleratedConcurrent,
-      locations: newStateFilters.locations,
+      ...newStateFilters,
+      // acceleratedConcurrent: newStateFilters.acceleratedConcurrent,
+      // locations: newStateFilters.locations,
     });
   };
 

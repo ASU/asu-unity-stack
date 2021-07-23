@@ -35,8 +35,8 @@
  *
  * @typedef {{
  *    program?: string
- *    CollegeAcadOrg?: string
- *    DepartmentCode?: string
+ *    collegeAcadOrg?: string
+ *    departmentCode?: string
  * } & AppDataSource } ProgramListDataSource
  *
  * @typedef {{
@@ -77,7 +77,7 @@
  * }} ColumSettings
  *
  * @typedef {{
- *    dataSource: ProgramListDataSource | string
+ *    dataSource: ProgramListDataSource
  *    columns?: GridColumn[]
  *    settings?: ColumSettings
  * }} GridListProps

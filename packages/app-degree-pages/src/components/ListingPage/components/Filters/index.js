@@ -13,9 +13,11 @@ import { Section, ButtonLink } from "./index.style";
 
 /**
  *  @typedef  {{
- *    locations?: string [],
- *    asuLocals?: string [],
- *    acceleratedConcurrent: "acceleratedConcurrent" | "concurrentDegrees" | "all"
+ *    collegeAcadOrg?: string
+ *    departmentCode?: string
+ *    locations?: string []
+ *    asuLocals?: string []
+ *    acceleratedConcurrent?: "acceleratedConcurrent" | "concurrentDegrees" | "all"
  * }} FiltersState
  */
 

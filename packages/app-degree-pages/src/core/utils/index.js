@@ -8,3 +8,4 @@ export * from "./jsx-utils";
 export * from "./id-generator";
 export * from "./string-utils";
 export * from "./script-utils";
+export * from "./dev-tools-utils";
