@@ -23,6 +23,9 @@
 
   &-container {
     max-width: 384px;
+    .card .card-header {
+      padding-bottom: $uds-size-spacing-2 !important;
+    }
     @media screen and (max-width: $uds-breakpoint-sm) {
       width: 100%;
     }
