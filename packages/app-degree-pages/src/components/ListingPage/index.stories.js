@@ -53,8 +53,8 @@ const dataSource = {
   // init: "false",  // OPTIONAL "true" | "false"
   program: "graduate", // graduate | undergrad
   cert: "true", // "true" | "false"
-  // CollegeAcadOrg: null, // OPTIONAL example values: CLW, CTB, CTE
-  // DepartmentCode: null, // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+  // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
+  // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
 
 /**
@@ -105,8 +105,8 @@ DefaultWithCollegeAcadOrgAndDepartmentCode.args.programList = {
   dataSource: {
     // @ts-ignore
     ...Default.args.programList.dataSource,
-    CollegeAcadOrg: "CTB",
-    DepartmentCode: "CMANAGE",
+    collegeAcadOrg: "CGF",
+    departmentCode: "CSFIS",
   },
 };
 

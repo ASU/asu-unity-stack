@@ -68,6 +68,10 @@ function degreeDataPropResolverService(row = {}) {
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
     getGlobalExp: () => row["globalExp"],
+    /** @return {string} */
+    getCollegeAcadOrg: () => row["CollegeAcadOrg"],
+    /** @return {string} */
+    getDepartmentCode: () => row["DepartmentCode"],
   };
 }
 
