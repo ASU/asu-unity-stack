@@ -102,5 +102,10 @@
         }
       }
     }
+    &-vertical {
+      & > .uds-card-arrangement-card-container {
+        margin-left: 0;
+      }
+    }
   }
 }
