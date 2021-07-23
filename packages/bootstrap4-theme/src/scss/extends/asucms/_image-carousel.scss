@@ -1,6 +1,12 @@
 .asu-cms-image-carousel {
   /* Custom css */
 
+  // We need to take care of absolutely
+  // positioned arrow buttons below the component
+  @media (max-width: 1200px) {
+    //button height + gap from carousel
+    padding-bottom: calc(48px + 32px);
+  }
   .carousel-header-section {
     margin-left: 365px; // See gap calc in JS, plus header padding
   }

@@ -2,7 +2,7 @@ export default { title: 'ASUCMS/Rankings Carousel' };
 
 export const rankingsCarousel = () => `
   <div class="image-carousel">
-    <div id="rankings-carousel" class="glide">
+    <div id="rankings-carousel" class="glide rankings-carousel">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
           <li class="glide__slide">

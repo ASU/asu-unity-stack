@@ -1,131 +1,133 @@
 .image-carousel {
-  grid-area: carousel;
-  overflow: hidden;
-  height: 100%;
-  background-color: $uds-color-base-gold;
-
-  .asucms-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .rankings-carousel {
+    grid-area: carousel;
+    overflow: hidden;
+    height: 100%;
     background-color: $uds-color-base-gold;
-    img {
-      width: 100%;
-      height: auto;
-      max-width: 500px;
-      background-size: cover;
+
+    .asucms-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $uds-color-base-gold;
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        background-size: cover;
+      }
     }
-  }
-  .link-section {
-    position: absolute;
-    bottom: 20px;
-    right: 5%;
-  }
-  /* glide.core.css (Unmodified) */
-  .glide {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .glide * {
-    box-sizing: inherit;
-  }
-  .glide__track {
-    overflow: hidden;
-  }
-  .glide__slides {
-    width: 100%;
-    position: relative;
-    list-style: none;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    touch-action: pan-Y;
-    overflow: hidden;
-    padding: 0;
-    margin-bottom: 0;
-    white-space: nowrap;
-    display: flex;
-    flex-wrap: nowrap;
-    will-change: transform;
-  }
-  .glide__slides--dragging {
-    user-select: none;
-  }
-  .glide__slide {
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    white-space: normal;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .glide__slide a {
-    user-select: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-  .glide__arrows {
-    -webkit-touch-callout: none;
-    user-select: none;
-  }
-  .glide__bullets {
-    -webkit-touch-callout: none;
-    user-select: none;
-  }
-  .glide--rtl {
-    direction: rtl;
-  }
+    .link-section {
+      position: absolute;
+      bottom: 20px;
+      right: 5%;
+    }
+    /* glide.core.css (Unmodified) */
+    .glide {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .glide * {
+      box-sizing: inherit;
+    }
+    .glide__track {
+      overflow: hidden;
+    }
+    .glide__slides {
+      width: 100%;
+      position: relative;
+      list-style: none;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      touch-action: pan-Y;
+      overflow: hidden;
+      padding: 0;
+      margin-bottom: 0;
+      white-space: nowrap;
+      display: flex;
+      flex-wrap: nowrap;
+      will-change: transform;
+    }
+    .glide__slides--dragging {
+      user-select: none;
+    }
+    .glide__slide {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      white-space: normal;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .glide__slide a {
+      user-select: none;
+      -webkit-user-drag: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    .glide__arrows {
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
+    .glide__bullets {
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
+    .glide--rtl {
+      direction: rtl;
+    }
 
-  /* glide.theme.css (Modified) */
-  .glide__arrow {
-    position: absolute;
-    display: block;
-    bottom: -8px;
-    width: 48px;
-    height: 48px;
-    z-index: 2;
-    color: #191919;
-    text-transform: uppercase;
-    padding: 0 12px;
-    background-color: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 50%;
-    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
-    text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
-    opacity: 1;
-    cursor: pointer;
-    transition: opacity 150ms ease, border 300ms ease-in-out;
-    transform: translateY(-50%);
-    line-height: 1;
-  }
-  .glide__arrow:focus {
-    box-shadow: none !important;
-  }
-  .glide__arrow--left {
-    left: calc(5% + 24px);
-  }
-  .glide__arrow--right {
-    left: calc(5% + 24px + 48px + 16px);
-  }
-  .glide__arrow--disabled {
-    opacity: 0.33;
-  }
+    /* glide.theme.css (Modified) */
+    .glide__arrow {
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      width: 48px;
+      height: 48px;
+      z-index: 2;
+      color: #191919;
+      text-transform: uppercase;
+      padding: 0 12px;
+      background-color: #ffffff;
+      border: 1px solid #d0d0d0;
+      border-radius: 50%;
+      box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+      text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+      opacity: 1;
+      cursor: pointer;
+      transition: opacity 150ms ease, border 300ms ease-in-out;
+      transform: translateY(-50%);
+      line-height: 1;
+    }
+    .glide__arrow:focus {
+      box-shadow: none !important;
+    }
+    .glide__arrow--left {
+      left: calc(5% + 24px);
+    }
+    .glide__arrow--right {
+      left: calc(5% + 24px + 48px + 16px);
+    }
+    .glide__arrow--disabled {
+      opacity: 0.33;
+    }
 
-  .glide--swipeable {
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-  }
+    .glide--swipeable {
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+    }
 
-  .glide--dragging {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
+    .glide--dragging {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
   }
 }
