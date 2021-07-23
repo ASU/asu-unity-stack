@@ -20,4 +20,4 @@ const DonutChart = (
 );
 
 
-export const BasicDonutChart = createStory(DonutChart)
+export const BasicDonutChart = createStory(DonutChart);

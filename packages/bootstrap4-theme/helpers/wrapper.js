@@ -36,7 +36,6 @@ export const createStory = (componentJSX) => {
       { args.footer && <GlobalElementsOnly /> }
     </div>
   );
-
   return Template.bind({});
 }
 

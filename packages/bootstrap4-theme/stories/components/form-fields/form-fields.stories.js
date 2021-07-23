@@ -55,7 +55,7 @@ const TextInputsComponent = (
 
 const TextInputsVariousBackgroundsComponent = (
   <div>
-    <div style="background-color:white;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-white">
       <div class="form-group">
         <label for="exampleDefaultInputWhite">Default text input label</label>
@@ -94,7 +94,7 @@ const TextInputsVariousBackgroundsComponent = (
     </form>
     </div>
 
-    <div style="background-color:#fafafa;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': '#fafafa'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray1">
       <div class="form-group">
         <label for="exampleDefaultInputGray1">Default text input label</label>
@@ -133,7 +133,7 @@ const TextInputsVariousBackgroundsComponent = (
     </form>
     </div>
 
-    <div style="background-color:#e8e8e8;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': '#e8e8e8'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray2">
       <div class="form-group">
         <label for="exampleDefaultInputGray2">Default text input label</label>
@@ -172,7 +172,7 @@ const TextInputsVariousBackgroundsComponent = (
     </form>
     </div>
 
-    <div style="background-color:#191919;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray7">
       <div class="form-group">
         <label for="exampleDefaultInputGray7">Default text input label</label>
@@ -250,7 +250,7 @@ const TextareasComponent = (
 
 const TextareasMultipleBackgroundsComponent = (
   <div>
-    <div style="background-color:white;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
       <form class="uds-form uds-form-white">
 
         <div class="form-group">
@@ -283,7 +283,7 @@ const TextareasMultipleBackgroundsComponent = (
       </form>
       </div>
 
-      <div style="background-color:#fafafa;">{/* This div for Storybook display only. */}
+      <div style={{'background-color': '#fafafa'}}>{/* This div for Storybook display only. */}
       <form class="uds-form uds-form-gray1">
 
         <div class="form-group">
@@ -316,7 +316,7 @@ const TextareasMultipleBackgroundsComponent = (
       </form>
       </div>
 
-      <div style="background-color:#e8e8e8;">{/* This div for Storybook display only. */}
+      <div style={{'background-color': '#e8e8e8'}}>{/* This div for Storybook display only. */}
       <form class="uds-form uds-form-gray2">
 
         <div class="form-group">
@@ -349,7 +349,7 @@ const TextareasMultipleBackgroundsComponent = (
       </form>
       </div>
 
-      <div style="background-color:#191919;">{/* This div for Storybook display only. */}
+      <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
       <form class="uds-form uds-form-gray7">
 
         <div class="form-group">
@@ -552,7 +552,7 @@ const RadiosComponent = (
 
 
 const CheckboxesAndRadiosWhiteBackgroundComponent = (
-  <div style="background-color:white;">{/* This div for Storybook display only. */}
+  <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-white">
 
       <div class="form-check">
@@ -714,7 +714,7 @@ const CheckboxesAndRadiosWhiteBackgroundComponent = (
 
 
 const CheckboxesAndRadiosGray1BackgroundComponent = (
-  <div style="background-color:#fafafa;">{/* This div for Storybook display only. */}
+  <div style={{'background-color': '#fafafa'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray1">
 
       <div class="form-check">
@@ -875,7 +875,7 @@ const CheckboxesAndRadiosGray1BackgroundComponent = (
 
 
 const CheckboxesAndRadiosGray2BackgroundComponent = (
-  <div style="background-color:#e8e8e8;">{/* This div for Storybook display only. */}
+  <div style={{'background-color': '#e8e8e8'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray2">
 
       <div class="form-check">
@@ -1037,7 +1037,7 @@ const CheckboxesAndRadiosGray2BackgroundComponent = (
 
 
 const CheckboxesAndRadiosGray7BackgroundComponent = (
-  <div style="background-color:#191919;">{/* This div for Storybook display only. */}
+  <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray7">
 
       <div class="form-check">
@@ -1720,7 +1720,7 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormI
     <p>When the form is marked with class "was-validated", browser-based validation
     styles based on input element type attribute are triggered and displayed.</p>
 
-    <div style="background-color:#191919;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
     <form class="uds-form needs-validation uds-form-gray7">
 
       <div class="form-group">
@@ -1901,7 +1901,7 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasVa
     <p>When the form is marked with class "was-validated", browser-based validation
     styles based on input element type attribute are triggered and displayed.</p>
 
-    <div style="background-color:#191919;">{/* This div for Storybook display only. */}
+    <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
     <form class="uds-form was-validated uds-form-gray7">
 
       <div class="form-group">
