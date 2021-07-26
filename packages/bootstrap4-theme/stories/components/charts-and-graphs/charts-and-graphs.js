@@ -28,7 +28,7 @@ const init = () => {
   var myChart = new Chart(ctx, config);
 };
 
-(function () {
+export const initChart = function () {
   if( document.readyState !== 'loading' ) {
     console.log('333');
     init();
@@ -39,4 +39,4 @@ const init = () => {
       init();
     });
   }
-})();
+};
