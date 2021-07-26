@@ -112,20 +112,21 @@ Footer - Table of Contents
   padding: $uds-size-spacing-3 0 $uds-size-spacing-2 0;
 }
 
-#social-media {
-  padding-right: 0;
-  padding-left: 0;
-  .nav {
-    padding-bottom: $uds-size-spacing-3;
-  }
-  .nav-link {
-    font-size: $uds-size-icon-base;
-    color: $uds-color-base-gray-4;
-    line-height: 1;
-    padding-top: 7px; // Magic number and a hack. Reducing the padding by 1px to make the height = 48px.
+#endorsed-footer {
+  #social-media {
+    padding-right: 0;
+    padding-left: 0;
+    .nav {
+      padding-bottom: $uds-size-spacing-3;
+    }
+    .nav-link {
+      font-size: $uds-size-icon-base;
+      color: $uds-color-base-gray-4;
+      line-height: 1;
+      padding-top: 7px; // Magic number and a hack. Reducing the padding by 1px to make the height = 48px.
+    }
   }
 }
-
 // #endorsed-footer, up to desktop
 
 @include media-breakpoint-up(md) {
