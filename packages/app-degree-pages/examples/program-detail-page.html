@@ -93,6 +93,7 @@
       AsuDegreePages.initProgramDetailPage({
         targetSelector: "#degreePageContainer",
         props: {
+          appPathFolder: "http://localhost:3000/dist",
           dataSource: {
             endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
             method: "findDegreeByAcadPlan",
@@ -137,11 +138,11 @@
           // },
           hero: {
             // OPTIONAL
-            image: {
-              url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-              altText: "Undergraduate Degrees",
-              size: "medium",
-            },
+            // image: {
+            //   url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+            //   altText: "Undergraduate Degrees",
+            //   size: "medium",
+            // },
             title: {
               text: "Undergraduate Degrees",
               highlightColor: "gold",

@@ -65,7 +65,7 @@ const dataSource = {
 export const Default = Template.bind({});
 
 Default.args = {
-  // appPathFolder: "/", // OPTIONAL
+  appPathFolder: ".", // OPTIONAL
   actionUrls,
   hero: null,
   introContent: {
@@ -103,7 +103,6 @@ Default.args = {
 export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
 DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
   ...Default.args,
-  appPathFolder: "/", // OPTIONAL
 };
 DefaultWithCollegeAcadOrgAndDepartmentCode.args.programList = {
   ...Default.args.programList,
