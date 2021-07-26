@@ -91,6 +91,7 @@
 
 /**
  * @typedef {{
+ *  appPathFolder?: string,
  *  actionUrls?: ActionUrlProps
  *  hero?: HeroProps
  *  introContent?: IntroContentProps

@@ -14,6 +14,63 @@ export default {
   title: "Program Detail Page",
 };
 
+/**
+ * @param {AppProps} props
+ * @returns {JSX.Element}
+ */
+const Template = ({
+  appPathFolder,
+  dataSource,
+  anchorMenu,
+  introContent,
+  hero,
+  atAGlance,
+  applicationRequirements,
+  changeMajorRequirements,
+  affordingCollege,
+  flexibleDegreeOptions,
+  careerOutlook,
+  exampleCareers,
+  globalOpportunity,
+  programContactInfo,
+  attendOnline,
+  nextSteps,
+}) => (
+  <>
+    <ProgramDetailPage
+      appPathFolder={appPathFolder}
+      dataSource={dataSource}
+      anchorMenu={anchorMenu}
+      introContent={introContent}
+      hero={hero}
+      atAGlance={atAGlance}
+      applicationRequirements={applicationRequirements}
+      changeMajorRequirements={changeMajorRequirements}
+      affordingCollege={affordingCollege}
+      flexibleDegreeOptions={flexibleDegreeOptions}
+      careerOutlook={careerOutlook}
+      exampleCareers={exampleCareers}
+      globalOpportunity={globalOpportunity}
+      programContactInfo={programContactInfo}
+      attendOnline={attendOnline}
+      nextSteps={nextSteps}
+    />
+    <section id="my-request-form-info-id" className="container mb-4">
+      <div className="row">
+        <h4>This is a just a Place holder</h4>
+        <img
+          src="/examples/assets/img/request-form-information.png"
+          alt=""
+          style={{
+            opacity: "0.7",
+            mixBlendMode: "luminosity",
+          }}
+        />
+      </div>
+    </section>
+  </>
+);
+
 // ====================================================================================
 // TEST:  this is just an example which shows how to parse the page URL querystring
 // to get the acadPlan
@@ -25,10 +82,11 @@ const queryAcadPllan = new URL(window.location.href).searchParams.get(
 
 /** @type {AppProps} */
 const defaultArgs = {
+  // appPathFolder: "/", // OPTIONAL
   dataSource: {
-    // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
-    // OPTIONAL - method: "findDegreeByAcadPlan",
-    // OPTIONAL - init: "false",
+    // endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/", // OPTIONAL
+    // method: "findDegreeByAcadPlan", // OPTIONAL
+    // init: "false", // OPTIONAL
     acadPlan: queryAcadPllan || "BABUSGLBA",
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
@@ -215,61 +273,6 @@ const defaultArgs = {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-const Template = ({
-  dataSource,
-  anchorMenu,
-  introContent,
-  hero,
-  atAGlance,
-  applicationRequirements,
-  changeMajorRequirements,
-  affordingCollege,
-  flexibleDegreeOptions,
-  careerOutlook,
-  exampleCareers,
-  globalOpportunity,
-  programContactInfo,
-  attendOnline,
-  nextSteps,
-}) => (
-  <>
-    <ProgramDetailPage
-      dataSource={dataSource}
-      anchorMenu={anchorMenu}
-      introContent={introContent}
-      hero={hero}
-      atAGlance={atAGlance}
-      applicationRequirements={applicationRequirements}
-      changeMajorRequirements={changeMajorRequirements}
-      affordingCollege={affordingCollege}
-      flexibleDegreeOptions={flexibleDegreeOptions}
-      careerOutlook={careerOutlook}
-      exampleCareers={exampleCareers}
-      globalOpportunity={globalOpportunity}
-      programContactInfo={programContactInfo}
-      attendOnline={attendOnline}
-      nextSteps={nextSteps}
-    />
-    <section id="my-request-form-info-id" className="container mb-4">
-      <div className="row">
-        <h4>This is a just a Place holder</h4>
-        <img
-          src="/examples/assets/img/request-form-information.png"
-          alt=""
-          style={{
-            opacity: "0.7",
-            mixBlendMode: "luminosity",
-          }}
-        />
-      </div>
-    </section>
-  </>
-);
-
-/**
- * @param {AppProps} props
- * @returns {JSX.Element}
- */
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
@@ -285,7 +288,10 @@ Default.args = {
  * @returns {JSX.Element}
  */
 export const PageWithContent = Template.bind({});
-PageWithContent.args = defaultArgs;
+PageWithContent.args = {
+  ...defaultArgs,
+  appPathFolder: "/", // OPTIONAL
+};
 
 /**
  * @param {AppProps} props

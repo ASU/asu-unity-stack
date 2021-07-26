@@ -1,9 +1,9 @@
 // @ts-check
 
-function getCurrnetScriptPath() {
+function getCurrentScriptPath() {
   // @ts-ignore
   const match = (document.currentScript.src || "").match(/(.*\/)/);
   return match.length > 0 ? match[0] : "/";
 }
 
-export { getCurrnetScriptPath };
+export { getCurrentScriptPath };

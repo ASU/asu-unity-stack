@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero, Video } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 
 import {
@@ -17,7 +17,7 @@ import {
   anchorMenuPropType,
   cardPropShape,
   dataSourcePropShape,
-  detailPageDefault,
+  resolveDefaultProps,
   linkPropShape,
   imagePropShape,
   videoPropShape,
@@ -63,6 +63,7 @@ const VideoWrapper = styled.div`
  * @returns
  */
 const ProgramDetailPage = ({
+  appPathFolder,
   dataSource,
   anchorMenu,
   hero,
@@ -84,6 +85,10 @@ const ProgramDetailPage = ({
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
+  const { detailPageDefault } = useMemo(
+    () => resolveDefaultProps(appPathFolder),
+    []
+  );
 
   useEffect(() => {
     doFetchPrograms(url);
@@ -323,7 +328,8 @@ const ProgramDetailPage = ({
 };
 
 ProgramDetailPage.propTypes = {
-  dataSource: PropTypes.oneOfType([dataSourcePropShape, PropTypes.string]),
+  appPathFolder: PropTypes.string,
+  dataSource: dataSourcePropShape,
   anchorMenu: PropTypes.shape(anchorMenuPropType),
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape({
