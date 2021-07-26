@@ -146,7 +146,8 @@
  *  }} HideProp
  *
  *  @typedef {{
- *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
+ *  appPathFolder?: string,
+ *  dataSource: import("./listing-page-types").ProgramDetailDataSource
  *  anchorMenu?: AnchorMenuProps
  *  hero?: HideProp & import("@asu-design-system/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps

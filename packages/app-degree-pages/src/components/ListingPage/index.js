@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import {
@@ -15,7 +15,7 @@ import { useListingPageLogger } from "../../core/hooks";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
   acceleratedConcurrentValues,
-  listingPageDefault,
+  resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
 } from "../../core/models";
@@ -120,6 +120,7 @@ function filterData({
  * @returns {JSX.Element}
  */
 const ListingPage = ({
+  appPathFolder,
   actionUrls,
   hasSearchBar = true,
   hasFilters = true,
@@ -136,6 +137,10 @@ const ListingPage = ({
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
+  const { listingPageDefault } = useMemo(
+    () => resolveDefaultProps(appPathFolder),
+    []
+  );
   // These filter are input props which never change.
   const { collegeAcadOrg, departmentCode } = programList.dataSource;
 
@@ -375,6 +380,7 @@ const ListingPage = ({
 };
 
 ListingPage.propTypes = {
+  appPathFolder: PropTypes.string,
   actionUrls: PropTypes.shape({
     applyNowUrl: PropTypes.string,
   }),
@@ -383,7 +389,7 @@ ListingPage.propTypes = {
   hero: PropTypes.shape(Hero.propTypes),
   introContent: PropTypes.shape(IntroContent.propTypes),
   programList: PropTypes.shape({
-    dataSource: PropTypes.oneOfType([dataSourcePropShape, PropTypes.string]),
+    dataSource: dataSourcePropShape,
     settings: columSettingsPropShape,
   }),
 };

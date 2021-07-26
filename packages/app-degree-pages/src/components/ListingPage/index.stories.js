@@ -18,6 +18,7 @@ export default {
  * @returns {JSX.Element}
  */
 const Template = ({
+  appPathFolder,
   actionUrls,
   hero,
   introContent,
@@ -26,6 +27,7 @@ const Template = ({
   hasSearchBar,
 }) => (
   <ListingPage
+    appPathFolder={appPathFolder}
     actionUrls={actionUrls}
     hero={hero}
     introContent={introContent}
@@ -63,6 +65,7 @@ const dataSource = {
 export const Default = Template.bind({});
 
 Default.args = {
+  // appPathFolder: "/", // OPTIONAL
   actionUrls,
   hero: null,
   introContent: {
@@ -98,8 +101,10 @@ Default.args = {
  * @type {{ args: AppProps}}
  */
 export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
-
-DefaultWithCollegeAcadOrgAndDepartmentCode.args = { ...Default.args };
+DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
+  ...Default.args,
+  appPathFolder: "/", // OPTIONAL
+};
 DefaultWithCollegeAcadOrgAndDepartmentCode.args.programList = {
   ...Default.args.programList,
   dataSource: {
