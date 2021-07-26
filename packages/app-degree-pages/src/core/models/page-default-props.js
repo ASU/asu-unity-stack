@@ -11,9 +11,8 @@ const currentScriptPath = getCurrentScriptPath();
  */
 const resolveDefaultProps = appPathFolder => {
   const scriptPath = appPathFolder || currentScriptPath;
-
-  const detailImageFolder = `${scriptPath}assets/img/detail-page`;
-  const listingImageFolder = `${scriptPath}assets/img/listing-page`;
+  const detailImageFolder = `${scriptPath}/assets/img/detail-page`;
+  const listingImageFolder = `${scriptPath}/assets/img/listing-page`;
 
   /**
    * @type {import("./program-detail-types").ProgramDetailPageProps}

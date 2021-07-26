@@ -82,7 +82,7 @@ const queryAcadPllan = new URL(window.location.href).searchParams.get(
 
 /** @type {AppProps} */
 const defaultArgs = {
-  // appPathFolder: "/", // OPTIONAL
+  appPathFolder: ".", // OPTIONAL
   dataSource: {
     // endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/", // OPTIONAL
     // method: "findDegreeByAcadPlan", // OPTIONAL
@@ -290,7 +290,6 @@ Default.args = {
 export const PageWithContent = Template.bind({});
 PageWithContent.args = {
   ...defaultArgs,
-  appPathFolder: "/", // OPTIONAL
 };
 
 /**
