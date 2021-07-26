@@ -39,7 +39,7 @@ const Template = ({
 
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  applyNowUrl: "https://admission.asu.edu/apply",
   majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
   // majorInfoUrl:
   //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +

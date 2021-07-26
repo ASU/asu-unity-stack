@@ -18,7 +18,10 @@ import { ContentBlock } from "./ContentBlock";
  */
 function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
   return (
-    <section id={progDetailSectionIds.flexibleDegreeOptions.targetIdName}>
+    <section
+      id={progDetailSectionIds.flexibleDegreeOptions.targetIdName}
+      className="container"
+    >
       <h2>
         <span className="highlight-gold">Flexible degree options</span>
       </h2>

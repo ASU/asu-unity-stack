@@ -58,7 +58,7 @@ const AccordionView = ({ programs, actionUrls }) => {
           <br />${resolver.getDegree()}
         </li>
         <li>
-          <strong>Location:</strong>
+          <strong>Campus or location:</strong>
           <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
         </li>
         <li>

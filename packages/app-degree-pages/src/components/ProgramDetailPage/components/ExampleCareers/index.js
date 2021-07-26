@@ -19,7 +19,10 @@ import { Table } from "./Table";
  */
 function ExampleCareers({ tableData }) {
   return (
-    <section id={progDetailSectionIds.exampleCareers.targetIdName}>
+    <section
+      id={progDetailSectionIds.exampleCareers.targetIdName}
+      className="container"
+    >
       <h2>Example careers</h2>
       <p>
         Students who complete this degree program may be prepared for the
