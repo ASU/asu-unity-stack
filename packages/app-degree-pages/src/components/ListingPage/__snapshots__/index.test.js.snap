@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div
+  className="alert alert-danger"
+  role="alert"
+  style={
+    Object {
+      "display": "",
+      "position": "sticky",
+      "top": 0,
+      "zIndex": 100,
+    }
+  }
+>
+  <div
+    className="alert-icon"
+  >
+    <span
+      aria-label="Error"
+      className="fa fa-icon fa-exclamation-triangle"
+    />
+  </div>
+  <div
+    className="alert-content"
+  >
+    
+  </div>
+  <div
+    className="alert-close"
+  >
+    <button
+      aria-label="Close"
+      className="btn btn-circle btn-circle-alt-black close"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="fas fa-times"
+      />
+    </button>
+  </div>
+</div>
+`;
