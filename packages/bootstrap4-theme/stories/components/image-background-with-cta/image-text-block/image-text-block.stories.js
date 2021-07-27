@@ -3,8 +3,7 @@ export default {title: "Components/Content Sections/Image And Text Block"}
 export const ImageOnLeft = () => `
 <div class="container">
   <div class="row">
-    <div class="col col-12 ">
-
+    <!-- Component start -->
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -25,7 +24,7 @@ export const ImageOnLeft = () => `
           </div>
         </div>
       </div>
-    </div>
+    <!-- Component end -->
   </div>
 </div>
 `;
@@ -33,7 +32,7 @@ export const ImageOnLeft = () => `
 export const ImageOnRight = () => `
 <div class="container">
   <div class="row">
-    <div class="col col-12 ">
+    <!-- Component start -->
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-text-container">
           <h3>This is a heading</h3>
@@ -54,17 +53,15 @@ export const ImageOnRight = () => `
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
         </div>
       </div>
-
-      </div>
-    </div>
+    <!-- Component end -->
   </div>
+</div>
 `;
 
 export const Gray1Background = () => `
 <div class="container">
   <div class="row">
-    <div class="col col-12 ">
-
+    <!-- Component start -->
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -85,7 +82,7 @@ export const Gray1Background = () => `
           </div>
         </div>
       </div>
-    </div>
+    <!-- Component end -->
   </div>
 </div>
 `;
@@ -93,8 +90,7 @@ export const Gray1Background = () => `
 export const Gray2Background = () => `
 <div class="container">
   <div class="row">
-    <div class="col col-12 ">
-
+    <!-- Component start -->
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -115,7 +111,7 @@ export const Gray2Background = () => `
           </div>
         </div>
       </div>
-    </div>
+    <!-- Component end -->
   </div>
 </div>
 `;
@@ -123,8 +119,7 @@ export const Gray2Background = () => `
 export const Gray7Background = () => `
 <div class="container">
   <div class="row">
-    <div class="col col-12 ">
-
+    <!-- Component start -->
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -145,7 +140,7 @@ export const Gray7Background = () => `
           </div>
         </div>
       </div>
-    </div>
+    <!-- Component end -->
   </div>
 </div>
 `;
