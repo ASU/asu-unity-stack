@@ -70,8 +70,33 @@ storiesOf('Components/List', module)
             <ul class="uds-list">
               <li>Lorem ipsum dolor sit amet
               <ul class="uds-list">
+                <li>Lorem ipsum dolor sit amet
+                  <ul class="uds-list">
+                    <li>Lorem ipsum dolor sit amet
+                      <ul class="uds-list">
+                        <li>Lorem ipsum dolor sit amet
+                          <ul class="uds-list">
+                            <li>Lorem ipsum dolor sit amet
+                              <ul class="uds-list">
+                                <li>Lorem ipsum dolor sit amet
+                                  <ul class="uds-list">
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                  </ul>
+                                </li>
+                                <li>Lorem ipsum dolor sit amet</li>
+                              </ul>
+                            </li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                          </ul>
+                        </li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                      </ul>
+                    </li>
+                    <li>Lorem ipsum dolor sit amet</li>
+                  </ul>
+                </li>
                 <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </ul>
             </li>
           </ul>
@@ -338,8 +363,33 @@ storiesOf('Components/List', module)
                       <ol class="uds-list">
                           <li>Lorem ipsum dolor sit amet
                               <ol class="uds-list">
+                                  <li>Lorem ipsum dolor sit amet
+                                    <ol class="uds-list">
+                                        <li>Lorem ipsum dolor sit amet
+                                          <ol class="uds-list">
+                                              <li>Lorem ipsum dolor sit amet
+                                                  <ol class="uds-list">
+                                                      <li>Lorem ipsum dolor sit amet
+                                                          <ol class="uds-list">
+                                                              <li>Lorem ipsum dolor sit amet
+                                                                  <ol class="uds-list">
+                                                                      <li>Lorem ipsum dolor sit amet</li>
+                                                                      <li>Lorem ipsum dolor sit amet</li>
+                                                                  </ol>
+                                                              </li>
+                                                              <li>Lorem ipsum dolor sit amet</li>
+                                                          </ol>
+                                                      </li>
+                                                      <li>Lorem ipsum dolor sit amet</li>
+                                                  </ol>
+                                              </li>
+                                              <li>Lorem ipsum dolor sit amet</li>
+                                          </ol>
+                                        </li>
+                                        <li>Lorem ipsum dolor sit amet</li>
+                                    </ol>
+                                  </li>
                                   <li>Lorem ipsum dolor sit amet</li>
-                                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                               </ol>
                           </li>
                       </ol>

@@ -17,7 +17,10 @@
 @mixin uds-ul-list-styles {
   li:before,
   ul ul li:before,
-  ul ul ul ul li:before {
+  ul ul ul ul li:before,
+  ul ul ul ul ul ul li:before,
+  ul ul ul ul ul ul ul ul li:before,
+  ul ul ul ul ul ul ul ul ul ul li:before {
     content: '\2022 '; //$uds-component-list-ul-styles-content-bullet;
     font-size: $uds-component-list-ul-styles-font-size;
     vertical-align: $uds-component-list-ul-styles-vertical-align;
@@ -27,7 +30,10 @@
   }
 
   ul li:before,
-  ul ul ul li:before {
+  ul ul ul li:before,
+  ul ul ul ul ul li:before,
+  ul ul ul ul ul ul ul li:before,
+  ul ul ul ul ul ul ul ul ul li:before {
     content: '\25E6 '; //$uds-component-list-ul-styles-content-bullet-empty;
   }
 
@@ -156,19 +162,24 @@ ol.uds-list {
 
   li:before,
   ol ol ol li:before,
-  ol ol ol ol ol li:before {
+  ol ol ol ol ol ol li:before,
+  ol ol ol ol ol ol ol ol ol li:before {
     content: counter(listcounter) '. ';
     counter-increment: listcounter;
   }
 
   ol li:before,
-  ol ol ol ol li:before {
+  ol ol ol ol li:before,
+  ol ol ol ol ol ol ol li:before,
+  ol ol ol ol ol ol ol ol ol ol li:before {
     content: counter(listcounter, lower-alpha) '. ';
     counter-increment: listcounter;
   }
 
   ol ol li:before,
-  ol ol ol ol ol ol li:before {
+  ol ol ol ol ol li:before,
+  ol ol ol ol ol ol ol ol li:before,
+  ol ol ol ol ol ol ol ol ol ol ol li:before {
     content: counter(listcounter, lower-roman) '. ';
     counter-increment: listcounter;
   }
