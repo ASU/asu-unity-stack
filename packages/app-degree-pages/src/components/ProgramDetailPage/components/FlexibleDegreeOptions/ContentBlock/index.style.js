@@ -7,9 +7,9 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 187px;
-  @media (max-width: 1024px) {
-    max-height: 300px;
+  max-height: 320px;
+  li:not(:last-child) {
+    margin-bottom: 1rem;
   }
   @media (max-width: 767px) {
     max-height: 100%;
