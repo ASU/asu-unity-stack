@@ -49,3 +49,9 @@
     }
   }
 }
+
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .uds-image-background-with-cta {
+    margin: 0 20px;
+  }
+}
