@@ -1,10 +1,30 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Calendar');
-import './calendar';
+import { initCalendar } from './calendar';
 
 
-const CalendarComponent = (
+const CalendarComponentMarkup = (
   <div id="calendar"></div>
 )
-export const Calendar = createStory(CalendarComponent)
+
+
+
+class CalendarComponent extends React.Component {
+
+  componentDidMount() {
+    initCalendar();
+  }
+
+  render() {
+    return CalendarComponentMarkup;
+  }
+}
+
+const ExampleStory = (
+  <div>
+    <CalendarComponent />
+  </div>
+)
+
+export const Calendar = createStory(ExampleStory)

@@ -30,12 +30,9 @@ const init = () => {
 
 export const initChart = function () {
   if( document.readyState !== 'loading' ) {
-    console.log('333');
     init();
   } else {
-    console.log('111');
     window.addEventListener('DOMContentLoaded', function () {
-      console.log('222');
       init();
     });
   }

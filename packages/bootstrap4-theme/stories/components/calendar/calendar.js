@@ -1,4 +1,4 @@
-(function () {
+export const initCalendar = function () {
   const months = [
     'January',
     'February',
@@ -136,7 +136,11 @@
     }
   });
 
-  window.addEventListener('DOMContentLoaded', () => {
+  if( document.readyState !== 'loading' ) {
     showCalendar(0);
-  });
-})();
+  } else {
+    window.addEventListener('DOMContentLoaded', function () {
+      showCalendar(0);
+    });
+  }
+};

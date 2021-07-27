@@ -1,10 +1,10 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Tabbed Panels');
-import './tabbed-panels.js'
+import { initTabs } from './tabbed-panels.js';
 
 
-const WhiteBackgroundComponent = (
+const WhiteBackgroundMarkup = (
   <div>
     <nav class="uds-tabbed-panels">
       <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
@@ -54,7 +54,7 @@ const WhiteBackgroundComponent = (
   </div>
 )
 
-const Gray1BackgroundComponent = (
+const Gray1BackgroundMarkup = (
   <div>
     <nav class="uds-tabbed-panels">
       <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
@@ -90,7 +90,7 @@ const Gray1BackgroundComponent = (
   </div>
 )
 
-const Gray2BackgroundComponent = (
+const Gray2BackgroundMarkup = (
   <div>
     <nav class="uds-tabbed-panels">
       <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
@@ -125,7 +125,7 @@ const Gray2BackgroundComponent = (
   </div>
 )
 
-const Gray7BackgroundComponent = (
+const Gray7BackgroundMarkup = (
   <div>
     <nav class="uds-tabbed-panels uds-tabbed-panels-dark">
       <div class="nav nav-tabs" id="nav-tab" role="tablist" data-scroll-position="0">
@@ -163,11 +163,55 @@ const Gray7BackgroundComponent = (
 
 
 
+class WhiteBackgroundComponent extends React.Component {
+
+  componentDidMount() {
+    initTabs();
+  }
+
+  render() {
+    return WhiteBackgroundMarkup;
+  }
+}
+
+class Gray1BackgroundComponent extends React.Component {
+
+  componentDidMount() {
+    initTabs();
+  }
+
+  render() {
+    return Gray1BackgroundMarkup;
+  }
+}
+
+class Gray2BackgroundComponent extends React.Component {
+
+  componentDidMount() {
+    initTabs();
+  }
+
+  render() {
+    return Gray2BackgroundMarkup;
+  }
+}
+
+class Gray7BackgroundComponent extends React.Component {
+
+  componentDidMount() {
+    initTabs();
+  }
+
+  render() {
+    return Gray7BackgroundMarkup;
+  }
+}
+
 const WhiteBackgroundStory = (
   <div class="container-xl">
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
-        {WhiteBackgroundComponent}
+        <WhiteBackgroundComponent />
       </div>
     </div>
   </div>
@@ -178,7 +222,7 @@ const Gray1BackgroundStory = (
   <div class="container-xl bg-gray-1">
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
-        {Gray1BackgroundComponent}
+        <Gray1BackgroundComponent />
       </div>
     </div>
   </div>
@@ -189,7 +233,7 @@ const Gray2BackgroundStory = (
   <div class="container-xl bg-gray-2">
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
-        {Gray2BackgroundComponent}
+        <Gray2BackgroundComponent />
       </div>
     </div>
   </div>
@@ -200,7 +244,7 @@ const Gray7BackgroundStory = (
   <div class="container-xl bg-dark">
     <div class="row">
       <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
-        {Gray7BackgroundComponent}
+        <Gray7BackgroundComponent />
       </div>
     </div>
   </div>

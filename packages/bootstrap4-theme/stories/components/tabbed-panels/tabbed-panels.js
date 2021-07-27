@@ -1,4 +1,4 @@
-(function () {
+export const initTabs = function () {
   'use strict';
   jQuery(function () {
     $(document).on('click', function (e) {
@@ -74,4 +74,4 @@
 
     setControlVisibility(clicked, scrollOffset);
   };
-})();
+};
