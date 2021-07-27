@@ -1,13 +1,12 @@
-
 // Do not edit directly
 // Generated on Thu, 24 Jun 2021 09:21:59 GMT
 
-$uds-asset-font-icon-name: "FontAwesome";
-$uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
-$uds-asset-font-icon-eot: "assets/fontawesome/webfonts/fa-regular-400.eot";
-$uds-asset-font-icon-woff: "assets/fontawesome/webfonts/fa-regular-400.woff";
-$uds-asset-font-icon-woff-2: "assets/fontawesome/webfonts/fa-regular-400.woff2";
-$uds-asset-font-icon-svg: "assets/fontawesome/sprites/regular.svg";
+$uds-asset-font-icon-name: 'FontAwesome';
+$uds-asset-font-icon-ttf: 'assets/fontawesome/webfonts/fa-regular-400.ttf';
+$uds-asset-font-icon-eot: 'assets/fontawesome/webfonts/fa-regular-400.eot';
+$uds-asset-font-icon-woff: 'assets/fontawesome/webfonts/fa-regular-400.woff';
+$uds-asset-font-icon-woff-2: 'assets/fontawesome/webfonts/fa-regular-400.woff2';
+$uds-asset-font-icon-svg: 'assets/fontawesome/sprites/regular.svg';
 $uds-breakpoint-xs: 0; // Mapped to BS4, grid-breakpoints.xs
 $uds-breakpoint-sm: 576px; // Mapped to BS4, grid-breakpoints.sm
 $uds-breakpoint-md: 768px; // Mapped to BS4, grid-breakpoints.md
@@ -26,7 +25,12 @@ $uds-color-background-success: #e9f5db; // Background - Success
 $uds-color-background-error: #f7dddd; // Background - Error
 $uds-color-background-warning: #ffeade; // Background - Warning
 $uds-color-background-info: #d6f0fa; // Background - Information
-$uds-color-background-overlay: rgba(25, 25, 25, 0); // Background - Modal overlay
+$uds-color-background-overlay: rgba(
+  25,
+  25,
+  25,
+  0
+); // Background - Modal overlay
 $uds-color-base-gold: #ffc627; // ASU Gold
 $uds-color-base-maroon: #8c1d40; // ASU Maroon
 $uds-color-base-white: #ffffff; // White
@@ -75,7 +79,8 @@ $uds-color-font-light-success: #78be20; // Success text on dark background
 $uds-color-font-light-info: #00b0f3; // Information text on dark background
 $uds-color-divider-darker: #1e1e1e; // Footer accent - darker
 $uds-color-divider-lighter: #393939; // Footer accent - lighter
-$uds-font-family-base: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+$uds-font-family-base: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans',
+  FreeSans, sans-serif;
 $uds-font-family-icons: FontAwesome;
 $uds-font-weight-lighter: 100;
 $uds-font-weight-light: 300;
@@ -125,18 +130,18 @@ $uds-size-spacing-half: 0.25rem;
 $uds-size-spacing-base: 1rem;
 $uds-weight-font-regular: 400;
 $uds-weight-font-bold: 700;
-$uds-time-transition-short: 0.20s;
-$uds-time-transition-base: 0.40s;
-$uds-time-transition-long: 0.60s;
-$uds-time-transition-xl: 1.00s;
+$uds-time-transition-short: 0.2s;
+$uds-time-transition-base: 0.4s;
+$uds-time-transition-long: 0.6s;
+$uds-time-transition-xl: 1s;
 $uds-time-delay-short: 0.05s;
-$uds-time-delay-base: 0.10s;
-$uds-time-delay-long: 0.20s;
-$uds-time-duration-short: 2.00s;
-$uds-time-duration-base: 4.00s;
-$uds-time-duration-long: 6.00s;
+$uds-time-delay-base: 0.1s;
+$uds-time-delay-long: 0.2s;
+$uds-time-duration-short: 2s;
+$uds-time-duration-base: 4s;
+$uds-time-duration-long: 6s;
 $uds-component-breadcrumb-font-size: 0.875rem;
-$uds-component-breadcrumb-padding-y: .75rem; // Magic number
+$uds-component-breadcrumb-padding-y: 0.75rem; // Magic number
 $uds-component-breadcrumb-padding-x: 1rem;
 $uds-component-breadcrumb-item-padding: 0.5rem;
 $uds-component-breadcrumb-margin-bottom: 1rem;
@@ -165,10 +170,10 @@ $uds-component-button-padding-y: 1rem;
 $uds-component-button-padding-x: 2rem;
 $uds-component-button-padding-y-medium: 0.5rem;
 $uds-component-button-padding-x-medium: 1rem;
-$uds-component-button-padding-x-small: .75rem; // Magic number: 12px not a multiple of 8.
+$uds-component-button-padding-x-small: 0.75rem; // Magic number: 12px not a multiple of 8.
 $uds-component-button-padding-y-small: 0.25rem;
 $uds-component-button-text-align: center;
-$uds-component-button-transition: .03s ease-in-out;
+$uds-component-button-transition: 0.03s ease-in-out;
 $uds-component-button-disabled-opacity: 50%;
 $uds-component-button-badge-background-color: #bfbfbf;
 $uds-component-button-badge-border-radius: 400rem;
@@ -214,7 +219,7 @@ $uds-component-card-basic-height-percent: 100%;
 $uds-component-card-basic-display: flex;
 $uds-component-card-basic-flex-direction: column;
 $uds-component-card-basic-hover-transform: scale(1.05);
-$uds-component-card-basic-hover-box-shadow: 0px 8px 16px rgba(25,25,25,0.2);
+$uds-component-card-basic-hover-box-shadow: 0px 8px 16px rgba(25, 25, 25, 0.2);
 $uds-component-card-basic-hover-cursor: pointer;
 $uds-component-card-basic-active-transform: scale(1);
 $uds-component-card-basic-image-top-width-percent: 100%;
@@ -255,12 +260,13 @@ $uds-component-card-story-body-margin-sm: 0 1rem 0 1rem;
 $uds-component-card-story-background-color: #ffffff;
 $uds-component-header-breakpoints-mobile: 60rem;
 $uds-component-header-line-height: 1.5rem;
-$uds-component-heading-font-family: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+$uds-component-heading-font-family: Arial, Helvetica, 'Nimbus Sans L',
+  'Liberation Sans', FreeSans, sans-serif;
 $uds-component-heading-font-weight: 700;
 $uds-component-heading-text-align: left;
 $uds-component-heading-opacity: 1;
 $uds-component-heading-margin: 1rem;
-$uds-component-heading-line-height-formula: calc(100% + .12em);
+$uds-component-heading-line-height-formula: calc(100% + 0.12em);
 $uds-component-heading-highlight-box-shadow-large-first-offset-x: -0.15em;
 $uds-component-heading-highlight-box-shadow-large-first-offset-y: 0;
 $uds-component-heading-highlight-box-shadow-large-first-blur-radius: 0;
@@ -280,19 +286,29 @@ $uds-component-heading-highlight-black-text-color: #fafafa;
 $uds-component-heading-highlight-white-bg-color: #ffffff;
 $uds-component-heading-highlight-white-text-color: #191919;
 $uds-component-heading-one-font-size: 4rem;
-$uds-component-heading-one-letter-spacing: -0.035em;
+$uds-component-heading-one-letter-spacing: -0.14rem;
+$uds-component-heading-one-line-height: 4.25rem;
 $uds-component-heading-one-article-font-size: 3rem;
+$uds-component-heading-one-article-letter-spacing: -0.105rem;
+$uds-component-heading-one-article-line-height: 3.25rem;
 $uds-component-heading-one-mobile-font-size: 2.25rem;
+$uds-component-heading-one-mobile-line-height: 2.5rem;
+$uds-component-heading-one-mobile-letter-spacing: -0.078rem;
 $uds-component-heading-two-font-size: 2.5rem;
-$uds-component-heading-two-letter-spacing: -0.035em;
+$uds-component-heading-two-letter-spacing: -0.0875rem;
+$uds-component-heading-two-line-height: 2.75rem;
 $uds-component-heading-two-mobile-font-size: 2rem;
-$uds-component-heading-two-mobile-letter-spacing: -0.035em;
+$uds-component-heading-two-mobile-line-height: 2.125rem;
+$uds-component-heading-two-mobile-letter-spacing: -0.07rem;
 $uds-component-heading-three-font-size: 1.5rem;
-$uds-component-heading-three-letter-spacing: -0.035em;
+$uds-component-heading-three-line-height: 1.75rem;
+$uds-component-heading-three-letter-spacing: -0.0525rem;
 $uds-component-heading-four-font-size: 1.25rem;
-$uds-component-heading-four-letter-spacing: -0.025em;
+$uds-component-heading-four-line-height: 1.625rem;
+$uds-component-heading-four-letter-spacing: -0.01875em;
 $uds-component-heading-five-font-size: 1rem;
-$uds-component-heading-five-letter-spacing: -0.015em;
+$uds-component-heading-five-line-height: 1.5rem;
+$uds-component-heading-five-letter-spacing: -0.015rem;
 $uds-component-heroes-container-md-and-lg-width-percent: 100%;
 $uds-component-heroes-container-md-and-lg-uds-hero-text-line-height: 2rem;
 $uds-component-heroes-uds-hero-background-size: cover;
@@ -329,8 +345,8 @@ $uds-component-list-spacing-list-style: none;
 $uds-component-list-spacing-li-max-width: 75rem;
 $uds-component-list-spacing-li-margin-bottom: 1rem;
 $uds-component-list-spacing-li-last-of-type-margin-bottom: 0rem;
-$uds-component-list-ul-styles-content-bullet: \2022 ;
-$uds-component-list-ul-styles-content-bullet-empty: \25E6 ;
+$uds-component-list-ul-styles-content-bullet: \2022;
+$uds-component-list-ul-styles-content-bullet-empty: \25e6;
 $uds-component-list-ul-styles-font-size: 2rem;
 $uds-component-list-ul-styles-vertical-align: middle;
 $uds-component-list-ul-styles-line-height: 1.5rem;
@@ -369,7 +385,8 @@ $uds-component-list-ol-styles-li-nth-of-type-99-margin-left: -2.9rem; // Magic n
 $uds-component-list-ol-styles-steplist-styles-padding-left: 1.5rem;
 $uds-component-list-ol-styles-steplist-styles-li-padding-bottom: 2rem;
 $uds-component-list-ol-styles-steplist-styles-li-margin-bottom: 3rem;
-$uds-component-list-ol-styles-steplist-styles-li-border-bottom: 1px solid #bfbfbf;
+$uds-component-list-ol-styles-steplist-styles-li-border-bottom: 1px solid
+  #bfbfbf;
 $uds-component-list-ol-styles-steplist-styles-li-font-weight: bold;
 $uds-component-list-ol-styles-steplist-styles-li-span-padding-left: 0; // Text alignment below headline.
 $uds-component-list-ol-styles-steplist-styles-li-span-display: block;
@@ -378,7 +395,8 @@ $uds-component-list-ol-styles-steplist-styles-li-span-font-weight: normal;
 $uds-component-list-ol-styles-steplist-styles-li-li-before-border-radius: 50rem;
 $uds-component-list-ol-styles-steplist-styles-li-li-before-background-color: #191919;
 $uds-component-list-ol-styles-steplist-styles-li-li-before-color: #fafafa;
-$uds-component-list-ol-styles-steplist-styles-li-li-before-padding: 0.5rem 0.8rem; // Magic number: Following is more true to XD steplist circle sizing but look less rounded: padding: 0.4rem 0.6rem
+$uds-component-list-ol-styles-steplist-styles-li-li-before-padding: 0.5rem
+  0.8rem; // Magic number: Following is more true to XD steplist circle sizing but look less rounded: padding: 0.4rem 0.6rem
 $uds-component-list-ol-styles-steplist-styles-li-li-before-margin-right: 2rem;
 $uds-component-list-ol-styles-steplist-styles-li-li-before-margin-left: -4.5rem;
 $uds-component-list-ol-styles-steplist-styles-li-li-before-font-size: 1.25rem;
