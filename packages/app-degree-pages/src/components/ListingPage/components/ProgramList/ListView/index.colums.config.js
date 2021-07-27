@@ -73,7 +73,7 @@ const columns = [
   },
   {
     dataKey: "Location",
-    label: "Location",
+    label: "Campus or location",
     className: "campus-location",
     sortable: true,
     contentTemplate: ({ resolver }) => {
