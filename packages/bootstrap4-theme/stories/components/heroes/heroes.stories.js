@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Heroes');
 
 
-const HeroSmallComponent = (
+export const HeroSmall = createStory(
   <div class="uds-hero-sm">
     <img class="hero" src="https://source.unsplash.com/WeYamle9fDM/1920x256" alt="Sample placeholder image." />
     <div role="doc-subtitle"><span class="highlight-white">The New American University</span></div>
@@ -13,7 +13,7 @@ const HeroSmallComponent = (
 );
 
 
-const HeroMediumComponent = (
+export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
     <img class="hero" src="https://source.unsplash.com/IydYk-LGOhc/1920x512" alt="Sample placeholder image." />
     <h1><span class="highlight-gold">Gettysburg Address</span></h1>
@@ -28,7 +28,7 @@ const HeroMediumComponent = (
 );
 
 
-const HeroLargeComponent = (
+export const HeroLarge = createStory(
   <div class="uds-hero-lg hide-content">
     <img class="hero" src="https://source.unsplash.com/xyXcGADvAwE/1920x684" alt="Sample placeholder image." />
     <div role="doc-subtitle"><span class="highlight-black">Mass Ascension</span></div>
@@ -41,7 +41,7 @@ const HeroLargeComponent = (
 );
 
 
-const StoryHeroComponent = (
+export const StoryHero = createStory(
   <section class="uds-story-hero">
     <img class="hero" src="https://source.unsplash.com/random/1920x512" alt="Be sure to include alt text in your image tag." />
     <div class="content">
@@ -58,7 +58,7 @@ const StoryHeroComponent = (
 );
 
 
-const StoryHeroLargeComponent = (
+export const StoryHeroLarge = createStory(
   <section class="uds-story-hero uds-story-hero-lg entry-header">
     <img class="hero" src="https://source.unsplash.com/random/1920x512" alt="Be sure to include alt text in your image tag." />
     <div class="content">
@@ -76,7 +76,7 @@ const StoryHeroLargeComponent = (
 
 
 
-const StoryHeroStory = (
+export const StoryHero = createStory(
   <div>
     { StoryHeroComponent }
     { /* The following section is included to allow for the easy testing of how a bootstrap container behaves with this element. */ }
@@ -93,8 +93,3 @@ const StoryHeroStory = (
     </div>
   </div>
 )
-export const HeroSmall = createStory(HeroSmallComponent);
-export const HeroMedium = createStory(HeroMediumComponent);
-export const HeroLarge = createStory(HeroLargeComponent);
-export const StoryHero = createStory(StoryHeroStory);
-export const StoryHeroLarge = createStory(StoryHeroLargeComponent);
