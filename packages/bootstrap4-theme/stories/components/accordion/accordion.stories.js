@@ -96,7 +96,7 @@ export const accordion = () => `
         <p>With some small modifications of the <strong>foldable card</strong> code, a series of foldable cards can be connected together to form an accordion.</p>
         <ul style="padding:1rem 3rem;">
           <li>Wrap the collection of foldable cards with an element containing the class of <code>.accordion</code> and a unique ID.</li>
-          <li>Include the <code>data-parent</code> attribute within the card body elemment to properly toggle the folded/expanded state.</li>
+          <li>Include the <code>data-parent</code> attribute within the card body element to properly toggle the folded/expanded state.</li>
         </ul>
 
         <div class="accordion" id="accordionExample">
