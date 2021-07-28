@@ -7,27 +7,30 @@ import React, { useState } from "react";
  *
  * @param {{
  *  message: string
- *  type: string
+ *  type: "error" | "info"
  * }} props
  * @returns
  */
 function MessageAlert({ message, type }) {
   const [closed, setClosed] = useState("");
-  const settings = {
+  const alerts = {
     error: {
-      alertClass: "danger",
-      alertIcon: "fa-exclamation-triangle",
-      alertIconLabel: "Error",
+      className: "alert-danger",
+      icon: "fa-exclamation-triangle",
+      ariaLabel: "Error",
     },
     info: {
-      alertClass: "danger",
-      alertIcon: "fa-exclamation-triangle",
-      alertIconLabel: "Info",
+      className: "alert-info",
+      icon: "fa-info-circle",
+      ariaLabel: "Information",
     },
   };
+
+  const alert = alerts[type];
+
   return (
     <div
-      className="alert alert-danger"
+      className={`alert ${alert.className}`}
       role="alert"
       style={{
         display: closed,
@@ -38,8 +41,8 @@ function MessageAlert({ message, type }) {
     >
       <div className="alert-icon">
         <span
-          aria-label="Error"
-          className="fa fa-icon fa-exclamation-triangle"
+          aria-label={alert.ariaLabel}
+          className={`fa fa-icon ${alert.icon}`}
         />
       </div>
       <div className="alert-content">{message}</div>
@@ -58,16 +61,23 @@ function MessageAlert({ message, type }) {
 }
 
 MessageAlert.propTypes = {
-  type: PropTypes.string,
-  message: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  message: PropTypes.oneOf(["error", "info"]).isRequired,
 };
 
 /* eslint-disable react/prop-types */
-function ErrorAlert({ message = "" }) {
+
+/**
+ * @param {{ message: string }} props
+ */
+function ErrorAlert({ message }) {
   return <MessageAlert message={message} type="error" />;
 }
 
-function InfoAlert({ message = "" }) {
+/**
+ * @param {{ message: string }} props
+ */
+function InfoAlert({ message }) {
   return <MessageAlert message={message} type="info" />;
 }
 /* eslint-enable react/prop-types */

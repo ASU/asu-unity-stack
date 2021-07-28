@@ -36,7 +36,9 @@ const resolveDefaultProps = appPathFolder => {
       },
       title: {
         text: "Detail Page Degree",
+        color: "black",
         highlightColor: "gold",
+        maxWidth: "100%",
       },
     },
     nextSteps: {

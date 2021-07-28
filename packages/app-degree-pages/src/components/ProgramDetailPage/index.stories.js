@@ -275,8 +275,9 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  introContent: null,
   hero: null,
+  anchorMenu: null,
+  introContent: null,
   nextSteps: null,
   globalOpportunity: null,
   attendOnline: null,

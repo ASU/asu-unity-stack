@@ -55,7 +55,7 @@
 
       // those links are just examples
       const actionUrls = {
-        applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+        // applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
         majorInfoUrl: `/examples/program-detail-page.html?acadPlan={ACAD_PLAN_CODE}`,
         // majorInfoUrl:
         //   `programs/College/{ACAD_PLAN_CODE}/undergrad/false`
@@ -68,7 +68,8 @@
       const introContentTextPhotoGrid = {
         type: "text-photo-grid",
         title: {
-          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text:
+            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -101,7 +102,8 @@
       const introContentTextMedia = {
         type: "text-media",
         title: {
-          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text:
+            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -151,7 +153,8 @@
       const introContentText = {
         type: "text",
         title: {
-          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text:
+            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -176,22 +179,24 @@
         props: {
           appPathFolder: "http://localhost:3000/dist",
           actionUrls,
-          hero: {
-            // image: {
-            //   url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
-            //   altText: "Undergraduate Degrees",
-            //   size: "medium",
-            // },
-            title: {
-              text: "Undergraduate Degrees",
-              highlightColor: "gold",
-            },
-          },
+          // OPTIONAL
+          // hero: {
+          //   image: {
+          //     url: "https://webapp4.asu.edu/programs/resources/images/ds_header_undergrad.jpg",
+          //     altText: "Undergraduate Degrees",
+          //     size: "medium",
+          //   },
+          //   title: {
+          //     text: "Undergraduate Degrees",
+          //     highlightColor: "gold",
+          //   },
+          // },
           introContent,
           // hasFilters: false, // OPTIONAL
           // hasSearchBar: false, // OPTIONAL
           programList: {
             dataSource,
+            // OPTIONAL
             settings: {
               hideCollegeSchool: true,
             },

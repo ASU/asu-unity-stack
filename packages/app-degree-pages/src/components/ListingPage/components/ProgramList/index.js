@@ -118,7 +118,9 @@ function ProgramList({
             showLastButton
           />
         ) : (
-          <InfoAlert />
+          <section className="container no-space">
+            <InfoAlert message="No result found for the filters applied" />
+          </section>
         )}
       </section>
     </ListingPageContext.Provider>

@@ -225,7 +225,10 @@ const ListingPage = ({
     setAppliedFilters(newAppliedFilterList);
   };
 
-  const onDegreeCleanFilters = () => setTableView(data?.programs || []);
+  const onDegreeCleanFilters = () => {
+    setAppliedFilters([]);
+    setTableView(data?.programs || []);
+  };
 
   /**
    *

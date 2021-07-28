@@ -115,7 +115,7 @@ const Table = styled.table`
     }
 
     .accelerated-concurrent {
-      width: 115px;
+      width: 120px;
     }
 
     .college {
