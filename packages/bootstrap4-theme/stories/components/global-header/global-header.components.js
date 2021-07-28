@@ -704,10 +704,10 @@ export const ScrolledState = (props) => {
       </header>
       <main>
         <div id="skip-to-content" class="sr-only"></div>
-        <div style="background: url('https://picsum.photos/id/1035/1900/500'); height:500px;"></div>
-        <div class="bg-gray-6" style="height:70vh;"></div>
-        <div class="bg-gray-5" style="height:70vh;"></div>
-        <div class="bg-gray-4" style="height:70vh;"></div>
+        <div style={{'background': "url('https://picsum.photos/id/1035/1900/500')", 'height':'500px'}}></div>
+        <div class="bg-gray-6" style={{'height': '70vh'}}></div>
+        <div class="bg-gray-5" style={{'height': '70vh'}}></div>
+        <div class="bg-gray-4" style={{'height': '70vh'}}></div>
       </main>
     </div>
   )
