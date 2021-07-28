@@ -59,12 +59,8 @@ const dataSource = {
   // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
 
-/**
- * @type {{ args: AppProps }}
- */
-export const Default = Template.bind({});
-
-Default.args = {
+/** @type {AppProps} */
+const defaultArgs = {
   appPathFolder: ".", // OPTIONAL
   actionUrls,
   hero: null,
@@ -98,19 +94,29 @@ Default.args = {
 };
 
 /**
+ * @type {{ args: AppProps }}
+ */
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+  hero: null,
+};
+
+/**
  * @type {{ args: AppProps}}
  */
 export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
 DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
   ...Default.args,
-};
-DefaultWithCollegeAcadOrgAndDepartmentCode.args.programList = {
-  ...Default.args.programList,
-  dataSource: {
-    // @ts-ignore
-    ...Default.args.programList.dataSource,
-    collegeAcadOrg: "CGF",
-    departmentCode: "CSFIS",
+  hero: null,
+  programList: {
+    ...Default.args.programList,
+    dataSource: {
+      // @ts-ignore
+      ...Default.args.programList.dataSource,
+      collegeAcadOrg: "CGF",
+      departmentCode: "CSFIS",
+    },
   },
 };
 

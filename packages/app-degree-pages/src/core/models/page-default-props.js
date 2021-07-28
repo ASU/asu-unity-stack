@@ -7,7 +7,10 @@ const currentScriptPath = getCurrentScriptPath();
 /**
  *
  * @param {string} appPathFolder
- * @returns {Object}
+ * @returns {{
+ *    listingPageDefault: import("./listing-page-types").ListingPageProps
+ *    detailPageDefault: import("./program-detail-types").ProgramDetailPageProps
+ * }}
  */
 const resolveDefaultProps = appPathFolder => {
   const scriptPath = appPathFolder || currentScriptPath;
@@ -100,6 +103,9 @@ const resolveDefaultProps = appPathFolder => {
    * @type {import("./listing-page-types").ListingPageProps}
    */
   const listingPageDefault = {
+    actionUrls: {
+      applyNowUrl: "https://admission.asu.edu/apply",
+    },
     hero: {
       image: {
         url: `${listingImageFolder}/hero.jpg`,

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 
+import { InfoAlert } from "../../../../core/components";
 import { ListingPageContext } from "../../../../core/context";
 import {
   columSettingsPropShape,
@@ -106,15 +107,19 @@ function ProgramList({
           />
         </div>
 
-        <Pagination
-          totalNumbers={7}
-          type="default"
-          background="white"
-          totalPages={TOTAL_PAGES}
-          onChange={onPageChange}
-          showFirstButton
-          showLastButton
-        />
+        {programs.length > 0 ? (
+          <Pagination
+            totalNumbers={7}
+            type="default"
+            background="white"
+            totalPages={TOTAL_PAGES}
+            onChange={onPageChange}
+            showFirstButton
+            showLastButton
+          />
+        ) : (
+          <InfoAlert />
+        )}
       </section>
     </ListingPageContext.Provider>
   );

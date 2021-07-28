@@ -314,7 +314,10 @@ const ListingPage = ({
       <Main data-is-loading={loading} className="main-section dg-margin-top">
         {introContent ? (
           <IntroContent
-            applyNowUrl={actionUrls?.applyNowUrl}
+            applyNowUrl={
+              actionUrls?.applyNowUrl ||
+              listingPageDefault.actionUrls.applyNowUrl
+            }
             type={introContent.type}
             header={introContent.header}
             title={introContent.title}

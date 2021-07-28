@@ -3,9 +3,28 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-function ErrorAlert({ message = "" }) {
+/**
+ *
+ * @param {{
+ *  message: string
+ *  type: string
+ * }} props
+ * @returns
+ */
+function MessageAlert({ message, type }) {
   const [closed, setClosed] = useState("");
-
+  const settings = {
+    error: {
+      alertClass: "danger",
+      alertIcon: "fa-exclamation-triangle",
+      alertIconLabel: "Error",
+    },
+    info: {
+      alertClass: "danger",
+      alertIcon: "fa-exclamation-triangle",
+      alertIconLabel: "Info",
+    },
+  };
   return (
     <div
       className="alert alert-danger"
@@ -38,8 +57,19 @@ function ErrorAlert({ message = "" }) {
   );
 }
 
-ErrorAlert.propTypes = {
+MessageAlert.propTypes = {
+  type: PropTypes.string,
   message: PropTypes.string,
 };
 
-export { ErrorAlert };
+/* eslint-disable react/prop-types */
+function ErrorAlert({ message = "" }) {
+  return <MessageAlert message={message} type="error" />;
+}
+
+function InfoAlert({ message = "" }) {
+  return <MessageAlert message={message} type="info" />;
+}
+/* eslint-enable react/prop-types */
+
+export { ErrorAlert, InfoAlert };
