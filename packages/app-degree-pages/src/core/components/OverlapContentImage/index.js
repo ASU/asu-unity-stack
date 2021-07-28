@@ -8,9 +8,12 @@ import { imagePropShape } from "../../models";
 import { ParagrapList } from "../ParagrapList";
 
 const GlobalStyle = createGlobalStyle`
-.uds-image-overlap {
-  padding-top: 0 ;
-}
+  .uds-image-overlap {
+    padding-top: 0 ;
+    @media (max-width: 768px) {
+      padding-top: 1.5rem !important;
+    }
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -23,8 +26,6 @@ const ContentWrapper = styled.div`
   @media (min-width: 992px) {
     .uds-image-overlap.content-left &.content-wrapper {
       padding-left: 0;
-      grid-column: 1 / span 4;
-      grid-row: 3/4;
     }
 
     .uds-image-overlap.content-right &.content-wrapper {
