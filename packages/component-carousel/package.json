@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "src/index.js",
   "author": "Michael Samuelson",
