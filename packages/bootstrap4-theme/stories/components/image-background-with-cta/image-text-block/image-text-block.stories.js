@@ -1,9 +1,13 @@
-export default {title: "Components/Content Sections/Image And Text Block"}
+import React from 'react';
+import { createComponent, createStory } from '../../../../helpers/wrapper.js'
+export default createComponent('Content Sections/Image And Text Block');
 
-export const ImageOnLeft = () => `
+
+
+export const ImageOnLeft = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
+    { /* Component start */ }
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -22,15 +26,15 @@ export const ImageOnLeft = () => `
           </div>
         </div>
       </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);
 
-export const ImageOnRight = () => `
+export const ImageOnRight = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
+    { /* Component start */ }
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-text-container">
           <h3>This is a heading</h3>
@@ -49,15 +53,15 @@ export const ImageOnRight = () => `
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
         </div>
       </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);
 
-export const Gray1Background = () => `
+export const Gray1Background = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
+    { /* Component start */ }
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -76,15 +80,15 @@ export const Gray1Background = () => `
           </div>
         </div>
       </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);
 
-export const Gray2Background = () => `
+export const Gray2Background = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
+    { /* Component start */ }
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -103,15 +107,15 @@ export const Gray2Background = () => `
           </div>
         </div>
       </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);
 
-export const Gray7Background = () => `
+export const Gray7Background = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
+    { /* Component start */ }
       <div class="uds-image-text-block-container">
         <div class="uds-image-text-block-image-container">
           <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
@@ -130,7 +134,7 @@ export const Gray7Background = () => `
           </div>
         </div>
       </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);

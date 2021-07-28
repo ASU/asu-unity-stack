@@ -1,14 +1,9 @@
-import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Sidebar');
 
-storiesOf('Components/Sidebar', module)
-  .addParameters({
-    happo: false,
-  })
 
-  .add(
-    'Sidebar Navigation',
-    () => `
+export const UnorderedList = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-12 pb-4"><h1>Take a look at the sidebar</h1></div>
@@ -30,13 +25,13 @@ storiesOf('Components/Sidebar', module)
                 <a id="cardOne" class="collapsed nav-link" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" aria-expanded="false" aria-controls="cardBodyOne">Expandable link sections
                   <span class="fas fa-chevron-down ml-1"></span>
                 </a>
-            </div><!-- end .card-header -->
+            </div>{ /* end .card-header */ }
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent=".sidebar">
               <a href="#" class="nav-link">A Long Link Total that is two or more lines of text</a>
               <a href="#" class="nav-link">Another link here</a>
               <a href="#" class="nav-link is-active">One more link</a>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{ /* end .card-body */ }
+          </div>{ /* end .card */ }
           <div class="card card-foldable">
             <div class="card-header">
                   <a id="cardTwo" class="collapsed nav-link" data-toggle="collapse" href="#cardBodyTwo" role="button" aria-expanded="false" aria-controls="cardBodyTwo">There should only be one open section at a time.
@@ -52,8 +47,8 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Hour after</a>
               <a href="#" class="nav-link">Our work is</a>
               <a href="#" class="nav-link">Never over</a>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{ /* end .card-body */ }
+          </div>{ /* end .card */ }
           <div class="nav-link-container">
             <a class="nav-link" href="#">Link between cards</a>
           </div>
@@ -69,16 +64,16 @@ storiesOf('Components/Sidebar', module)
               <a href="#" class="nav-link">Lugger to go on account loaded to the gunwalls lad</a>
               <a href="#" class="nav-link is-active">Skysail fluke overhaul hardtack</a>
               <a href="#" class="nav-link">Sloop flogging chase guns lee</a>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{ /* end .card-body */ }
+          </div>{ /* end .card */ }
           <div class="nav-link-container">
             <a class="nav-link" href="#">Default Link</a>
           </div>
           <div class="nav-link-container">
             <a class="nav-link" href="#">Last Link</a>
           </di>
-        </nav><!-- end .sidebar -->
-      </div><!-- end .col -->
+        </nav>{ /* end .sidebar */ }
+      </div>{ /* end .col */ }
       <div class="col-md-8 mt-2">
         <p>This story isn't about the page content itself. Rather, you should focus your attention on the sidebar navigation element to the left.</p>
         <p>Foldable cards can be mixed in with static navigation links to create a section of content which behaves like an accordion and reveals navigation items which are nested two levels deep.</p>
@@ -140,8 +135,7 @@ storiesOf('Components/Sidebar', module)
         Cum sociis natoque penatibus et magnis dis parturient
         montes, nascetur ridiculus mus. Donec quam felis,
         ultricies nec, pellentesque eu, pretium quis, sem.</p>
-      </div><!-- end .col -->
-    </div><!-- end .row -->
+      </div>{ /* end .col */ }
+    </div>{ /* end .row */ }
   </div>
-  `
-  );
+);
