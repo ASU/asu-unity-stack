@@ -270,22 +270,21 @@ const defaultArgs = {
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps }}
  */
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  introContent: null,
   hero: null,
+  anchorMenu: null,
+  introContent: null,
   nextSteps: null,
   globalOpportunity: null,
   attendOnline: null,
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps }}
  */
 export const PageWithContent = Template.bind({});
 PageWithContent.args = {
@@ -293,8 +292,7 @@ PageWithContent.args = {
 };
 
 /**
- * @param {AppProps} props
- * @returns {JSX.Element}
+ * @type {{ args: AppProps }}
  */
 export const PageWithVideoAndMarketText = Template.bind({});
 PageWithVideoAndMarketText.args = { ...defaultArgs };

@@ -49,7 +49,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         <li>
           <strong>Major:</strong>
           <br />
-            <a href=${parseMajorInfoLink(resolver, actionUrls.applyNowUrl)}>
+            <a href=${parseMajorInfoLink(resolver, actionUrls.majorInfoUrl)}>
               ${resolver.getMajorDesc()}
             </a>
         </li>

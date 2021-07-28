@@ -222,6 +222,7 @@ const IntroContent = ({
         photoGrid,
       }),
     "undefined": () => {
+      // eslint-disable-next-line no-console
       console.error(
         `the type '${type}' is not supported by the 'IntroContent' component.`
       );
