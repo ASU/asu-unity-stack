@@ -75,7 +75,9 @@ const AboutMe = () => {
               .sort((a, b) => (a[1] > b[1] ? 1 : -1))
               .map(termValue => ({
                 key: termValue[0].split(":")[2],
-                value: termValue[0].split(":")[2],
+                value: `${termValue[0].split(":")[2]}:${
+                  termValue[1].split(":")[0]
+                }`,
                 text: termValue[1].split(":")[0],
               }));
             setTermOptions(termData);
@@ -100,7 +102,7 @@ const AboutMe = () => {
         if (i > 0) {
           termData.push({
             key: termSpring,
-            value: termSpring,
+            value: `${termSpring}:${year} Spring`,
             text: `${year} Spring`,
           });
         }
@@ -109,7 +111,7 @@ const AboutMe = () => {
           // Month is based off zero index.
           termData.push({
             key: termFall,
-            value: termFall,
+            value: `${termFall}:${year} Fall`,
             text: `${year} Fall`,
           });
         }

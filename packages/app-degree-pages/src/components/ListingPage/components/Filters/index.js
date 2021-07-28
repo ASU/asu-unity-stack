@@ -120,7 +120,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
           <SelectFormGroup
             multiple
             id="location"
-            label="Location or online"
+            label="Campuses or online"
             selected={value.locations}
             options={locationOptions}
             onChange={handleChangeMultipleField}
@@ -130,7 +130,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
           <SelectFormGroup
             multiple
             id="asuLocal"
-            label="ASU Local"
+            label="ASU location, ASU Local"
             selected={value.asuLocals}
             options={asuLocalOptions}
             onChange={handleChangeMultipleField}
@@ -139,13 +139,18 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
         <div className="col-lg-4 col-md-12">
           <SelectFormGroup
             id="acceleratedConcurrent"
-            label="Accelerated/Concurrent"
+            label="Accelerated, Concurrent"
             selected={value.acceleratedConcurrent}
             options={acceleratedConcurrentOptions}
             onChange={handleChangeField}
           />
         </div>
       </form>
+      <div className="hint-container">
+        <p>
+          <small>*CTRL + Click to select multiple</small>
+        </p>
+      </div>
       <div className="filter-action-buttons">
         <Button
           color="maroon"
@@ -157,7 +162,7 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
           Apply filters
         </Button>
         <ButtonLink className="btn btn-link" onClick={handleCleanFilters}>
-          Clean filters
+          Clear filters
         </ButtonLink>
       </div>
     </Section>

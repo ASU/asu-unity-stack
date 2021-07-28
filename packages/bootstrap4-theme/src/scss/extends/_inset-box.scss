@@ -3,9 +3,11 @@
     display: $uds-inset-box-container-display;
     justify-content: $uds-inset-box-container-justify-content;
     padding: $uds-size-spacing-6;
+    margin: 0 12px;
     width: 100%;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
+      margin: 0 $uds-size-spacing-4;
       padding: $uds-size-spacing-3;
     }
   }

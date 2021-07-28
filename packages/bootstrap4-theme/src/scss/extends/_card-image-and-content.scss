@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   max-width: 1200px;
+  margin: 0 12px;
 
   &-image-container {
     background-size: cover;
@@ -34,6 +35,7 @@
     .card {
       width: 35%;
       margin: -201px 5% 0 10%;
+      height: unset;
     }
   }
 }
@@ -71,6 +73,7 @@
 
 @media only screen and (max-width: $uds-breakpoint-sm) {
   .uds-card-image-and-content {
+    margin: 0;
     &-image-container {
       height: $uds-size-spacing-32;
 
