@@ -273,6 +273,7 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api)
 - [Jest Fetch Mock](https://www.npmjs.com/package/jest-fetch-mock)
+- [Mocking `document` in jest](https://newbedev.com/mocking-document-in-jest)
 - [Type Checking JavaScript Files](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html)
   - [JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
 - [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)

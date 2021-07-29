@@ -1,14 +1,27 @@
 // @ts-check
+import { render } from "@testing-library/react";
 import React from "react";
-import renderer from "react-test-renderer";
 
 import { OnThisPageAnchorMenu } from ".";
 
 describe("#OnThisPageAnchorMenu", () => {
   it("should define the component", () => {
-    const component = renderer.create(<OnThisPageAnchorMenu anchorMenu={{}} />);
+    const targetIdName = "dummyId";
+    const text = "dummy link";
 
-    const page = component.toJSON();
-    expect(page).toBeDefined();
+    /** @type {import("src/core/models/program-detail-types").AnchorMenuProps} */
+    const anchorMenu = {
+      affordingCollege: true,
+      externalAnchors: [
+        {
+          text,
+          targetIdName,
+        },
+      ],
+    };
+    const component = render(<OnThisPageAnchorMenu anchorMenu={anchorMenu} />);
+    expect(component).toBeDefined();
+    expect(component.getByText("Affording College")).not.toBeNull();
+    expect(component.getByText(text)).not.toBeNull();
   });
 });
