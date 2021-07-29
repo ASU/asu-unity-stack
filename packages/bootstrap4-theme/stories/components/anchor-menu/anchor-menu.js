@@ -1,8 +1,4 @@
-jQuery(function () {
-  initializeAnchorMenu();
-});
-
-function initializeAnchorMenu() {
+const init = () => {
   const globalHeader = document.getElementById('asu-header');
   const navbar = document.getElementById('uds-anchor-menu');
   const anchors = navbar.getElementsByClassName('nav-link');
@@ -96,3 +92,15 @@ function initializeAnchorMenu() {
     });
   }
 }
+
+
+
+export const initializeAnchorMenu = function () {
+  if( document.readyState !== 'loading' ) {
+    init();
+  } else {
+    window.addEventListener('DOMContentLoaded', function () {
+      init();
+    });
+  }
+};

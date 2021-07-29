@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Colors', 'Design');
 
 
-const ColorPaletteComponent = (
+export const ColorPaletteComponent = createStory(
   <div>
     <div class="container-fluid mt-2">
       <div class="row">
@@ -126,17 +126,7 @@ const ColorPaletteComponent = (
   </div>
 );
 
-
-// TODO: Check if this css belongs in the component
-const css = `<style> h5+p, p+p {margin-bottom: 0; padding-bottom:.25rem; } h5 {margin-top: 0;} </style>`;
-const ColorPaletteStory = (
-  <div style={{paddingTop: '100px'}}>
-    {css}
-    {ColorPaletteComponent}
-  </div>
-)
-
-const CombinationsComponent = (
+export const CombinationsComponent = createStory(
   <div class="container-fluid mt-2">
 
     <div class="row">
@@ -171,10 +161,5 @@ const CombinationsComponent = (
         </div>
       </div>
     </div>
-
   </div>
 )
-
-export const ColorPalette = createStory(ColorPaletteStory)
-
-export const Combinations = createStory(CombinationsComponent)

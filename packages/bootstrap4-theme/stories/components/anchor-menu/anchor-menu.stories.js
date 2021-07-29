@@ -1,10 +1,10 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Anchor Menu');
-import './anchor-menu';
+import { initializeAnchorMenu } from './anchor-menu';
 import { Basic } from '../global-header/global-header.components.js'
 
-const AnchorMenuComponent = (
+const AnchorMenuComponentMarkUp = (
   <div class="container-fluid">
     { Basic }
 
@@ -88,4 +88,29 @@ const AnchorMenuComponent = (
   </div>
 );
 
-export const AnchorMenu = createStory(AnchorMenuComponent)
+
+
+
+
+
+
+
+class AnchorMenuComponent extends React.Component {
+
+  componentDidMount() {
+    initializeAnchorMenu();
+  }
+
+  render() {
+    return AnchorMenuComponentMarkUp;
+  }
+}
+
+const AnchorMenuStory = (
+  <div>
+    <AnchorMenuComponent />
+  </div>
+)
+
+export const AnchorMenu = createStory(AnchorMenuStory);
+

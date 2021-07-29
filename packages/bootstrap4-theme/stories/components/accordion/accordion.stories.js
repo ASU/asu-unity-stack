@@ -276,7 +276,7 @@ const AccordionWithIconsComponent = (
             <br/>
 
             <code style={{background: '#e3e1e1', display: 'block', padding: '5px', border: '1px solid gray'}}>
-            <pre style={{'margin-left': '-100px'}}>
+            <pre>
               &lt;div class=&quot;card card-foldable mt-3&quot;&gt;
                 &lt;div class=&quot;card-header card-header-icon&quot;&gt;
                   &lt;h4&gt;
