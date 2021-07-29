@@ -1,3 +1,4 @@
+// @ts-check
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
@@ -6,6 +7,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React from "react";
 
+/**
+ * @typedef {{
+ *  color?: string
+ *  icon: string[]
+ *  innerRef?: React.RefObject
+ *  onClick?: () => void
+ *  size?: "large" | "small"
+ * }} ButtonIconOnlyProps
+ */
+
+/**
+ * @param {ButtonIconOnlyProps} props
+ * @returns {JSX.Element}
+ */
 export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
   library.add(fab, fas, far);
 
@@ -19,6 +34,7 @@ export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
       onClick={onClick}
       aria-label="Close"
     >
+      {/* @ts-ignore */}
       <FontAwesomeIcon icon={icon} />
     </button>
   );

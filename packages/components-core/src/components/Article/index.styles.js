@@ -73,7 +73,7 @@ const Wrapper = styled.div`
   .icon-bg {
     display: inline-block;
     position: relative;
-    padding: 1px 3px;
+    padding: 1px 3.5px;
     background-color: maroon;
     margin-right: 4px;
     border-radius: 4px;

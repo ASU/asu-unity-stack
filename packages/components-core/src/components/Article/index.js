@@ -1,3 +1,4 @@
+// @ts-check
 import classNames from "classnames";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
@@ -22,6 +23,37 @@ const sanitizeDangerousMarkup = content => {
 
   return { __html: sanitizer(content) };
 };
+
+/**
+ * @typedef { import("../../core/models/shared-model-types").BreadcrumbProps } BreadcrumbProps
+ */
+
+/**
+ * @typedef {{
+ *  type: "event" | "news"
+ *  articleUrl?: string
+ *  publicationDate?: string
+ *  title?: string
+ *  body?: string
+ *  authorEmail?: string
+ *  authorName?: string
+ *  authorPhone?: string
+ *  authorTitle?: string
+ *  breadcrumbs?: BreadcrumbProps[]
+ *  calendarUrl?: string
+ *  eventLocation?: string
+ *  eventTime?: string
+ *  headerImageUrl?: string
+ *  registrationUrl?: string
+ *  zoomUrl?: string
+ * }} ArticleProps
+ */
+
+/**
+ *
+ * @param {ArticleProps} props
+ * @returns {JSX.Element}
+ */
 
 export const Article = ({
   type,
@@ -120,6 +152,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </FacebookShareButton>
+            {/* @ts-ignore */}
             <TwitterShareButton url={articleUrl} quote={title}>
               <TwitterIcon
                 size={28}
@@ -127,6 +160,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </TwitterShareButton>
+            {/* @ts-ignore */}
             <EmailShareButton url={authorEmail} quote={title}>
               <EmailIcon
                 size={28}
@@ -134,6 +168,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </EmailShareButton>
+            {/* @ts-ignore */}
             <LinkedinShareButton url={articleUrl} quote={title}>
               <LinkedinIcon
                 size={28}
@@ -250,6 +285,7 @@ export const Article = ({
                     bgStyle={{ fill: "maroon" }}
                   />
                 </FacebookShareButton>
+                {/* @ts-ignore */}
                 <TwitterShareButton url={articleUrl} quote={title}>
                   <TwitterIcon
                     size={28}
@@ -257,6 +293,7 @@ export const Article = ({
                     bgStyle={{ fill: "maroon" }}
                   />
                 </TwitterShareButton>
+                {/* @ts-ignore */}
                 <LinkedinShareButton url={articleUrl} quote={title}>
                   <LinkedinIcon
                     size={28}

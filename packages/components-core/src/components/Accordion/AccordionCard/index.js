@@ -43,6 +43,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => {
           >
             {item.content.icon ? (
               <span className="card-icon">
+                {/* @ts-ignore */}
                 <FontAwesomeIcon icon={item.content.icon} className="mr-2" />
                 {item.content.header}
               </span>

@@ -1,3 +1,4 @@
+// @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -9,21 +10,11 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- *
- * @param {{
- *  label?: string,
- *  ariaLabel?: string,
- *  block?: boolean,
- *  color?: string,
- *  disabled?: boolean,
- *  element?: any,
- *  href?: string,
- *  icon?: string[],
- *  innerRef?: any,
- *  onClick?: () => void,
- *  size?: string,
- *  classes?: string[],
- * }} props
+ * @typedef {import('../../core/models/shared-model-types').ButtonProps} ButtonProps
+ */
+
+/**
+ * @param {ButtonProps} props
  * @returns {JSX.Element}
  */
 export const Button = ({
@@ -68,6 +59,7 @@ export const Button = ({
       aria-label={ariaLabel}
       target={Tag === "a" ? target : null}
     >
+      {/* @ts-ignore */}
       {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}
       {label}
     </Tag>

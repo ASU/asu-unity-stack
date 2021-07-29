@@ -1,3 +1,4 @@
+// @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";

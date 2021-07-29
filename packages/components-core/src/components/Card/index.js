@@ -19,6 +19,37 @@ const sanitizeDangerousMarkup = content => {
   return { __html: sanitizer(content) };
 };
 
+/**
+ * @typedef {import('../../core/models/shared-model-types').ButtonProps} ButtonProps
+ * @typedef {import('../../core/models/shared-model-types').TagsProps} TagsProps
+ */
+
+/**
+ * @typedef {{
+ *  type?: string
+ *  width?: "25%" | "50%" | "75%" | "100%"
+ *  horizontal?: boolean
+ *  clickable?: boolean
+ *  clickHref?: string
+ *  image?: string
+ *  imageAltText?: string
+ *  title?: string
+ *  icon?: string[]
+ *  body?: string
+ *  eventFormat?: "stack" | "inline"
+ *  eventLocation?: string
+ *  eventTime?: string
+ *  buttons?: ButtonProps[]
+ *  linkLabel?: string
+ *  linkUrl?: string
+ *  tags?: TagsProps[]
+ * }} CardProps
+ */
+
+/**
+ * @param {CardProps} props
+ * @returns {JSX.Element}
+ */
 export const Card = ({
   type,
   width,

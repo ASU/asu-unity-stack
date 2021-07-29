@@ -2,6 +2,45 @@
 
 /**
  * @typedef {{
+ *  label?: string,
+ *  ariaLabel?: string,
+ *  block?: boolean,
+ *  color?: string,
+ *  disabled?: boolean,
+ *  element?: any,
+ *  href?: string,
+ *  icon?: string[],
+ *  innerRef?: any,
+ *  onClick?: () => void,
+ *  size?: string,
+ *  classes?: string[],
+ *  target?: "_blank" | "_self" | "_top" | "_parent"
+ * }} ButtonProps
+ */
+
+/**
+ * @typedef {{
+ *  label?: string
+ *  ariaLabel?: string
+ *  color?: string
+ *  disabled?: boolean
+ *  element?: JSX.Element | string
+ *  innerRef?: React.RefObject
+ *  href?: string
+ *  onClick?: () => void
+ * }} TagsProps
+ */
+
+/**
+ * @typedef {{
+ *  title: string
+ *  url: string
+ *  active: boolean
+ * }} BreadcrumbProps
+ */
+
+/**
+ * @typedef {{
  *    url: string
  *    altText?: string
  *    cssClass?: string []
