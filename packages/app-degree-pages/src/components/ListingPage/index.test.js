@@ -1,9 +1,8 @@
 // @ts-check
+import { render, act } from "@testing-library/react";
 import React from "react";
-import renderer from "react-test-renderer";
 
-import { Button } from "../../../../components-core/src/components/Button";
-// import { ListingPage } from "./index";
+import { ListingPage } from "./index";
 
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
@@ -41,20 +40,22 @@ const defaultArgs = {
   },
 };
 
-test("Link changes the class when hovered", () => {
-  const component = renderer.create(
-    <Button />
-    // <ListingPage
-    //   appPathFolder={defaultArgs.appPathFolder}
-    //   actionUrls={defaultArgs.actionUrls}
-    //   hero={defaultArgs.hero}
-    //   introContent={defaultArgs.introContent}
-    //   programList={defaultArgs.programList}
-    //   hasSearchBar={defaultArgs.hasSearchBar}
-    //   hasFilters={defaultArgs.hasFilters}
-    // />
-  );
+describe("#ListingPage", () => {
+  it("should define the component", async () => {
+    await act(async () => {
+      const component = await render(
+        <ListingPage
+          appPathFolder={defaultArgs.appPathFolder}
+          actionUrls={defaultArgs.actionUrls}
+          hero={defaultArgs.hero}
+          introContent={defaultArgs.introContent}
+          programList={defaultArgs.programList}
+          hasSearchBar={defaultArgs.hasSearchBar}
+          hasFilters={defaultArgs.hasFilters}
+        />
+      );
 
-  const page = component.toJSON();
-  expect(page).toMatchSnapshot();
+      expect(component).toBeDefined();
+    });
+  });
 });

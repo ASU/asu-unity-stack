@@ -4,12 +4,10 @@ module.exports = {
   setupFilesAfterEnv: ["./setupTests.js"],
   transform: {
     "^.+\\.(js|jsx)$": "babel-jest",
+    // "^@asu-design-system/components-core/^.+\\.(js|jsx)$": "babel-jest",
+    // "@asu-design-system/components-core$": "babel-jest",
     "^.+\\.css$": "jest-transform-css",
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
   },
-  transformIgnorePatterns: [
-    "/node_modules/",
-    "@asu-design-system",
-    "@asu-design-system/components-core",
-  ],
+  transformIgnorePatterns: ["/node_modules/"],
 };
