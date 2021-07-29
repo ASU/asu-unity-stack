@@ -1,13 +1,8 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
 
-const VideoOverlay = styled.div`
-  &[data-playing="true"] {
-    display: none;
-  }
-`;
+import { VideoOverlay } from "./index.styles";
 
 /**
  * @typedef {{
@@ -101,10 +96,7 @@ const videoTemplate = ({
           <button
             type="button"
             onClick={onPlayButtonClick}
-            className={
-              "btn btn-circle btn-circle-large" +
-              " btn-circle-alt-white uds-video-btn-play"
-            }
+            className="btn btn-circle btn-circle-large btn-circle-alt-white uds-video-btn-play"
           >
             <i className="fas fa-play" />
             <span className="sr-only">Play</span>

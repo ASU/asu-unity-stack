@@ -11,7 +11,7 @@ import React from "react";
 
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
-import "./card.css";
+import { AnchorWrapper, CardWrapper } from "./index.styles";
 
 const sanitizeDangerousMarkup = content => {
   const sanitizer = dompurify.sanitize;
@@ -42,7 +42,7 @@ export const Card = ({
 
   if (clickable && clickHref) {
     return (
-      <a role="button" href={clickHref} className="c-card">
+      <AnchorWrapper role="button" href={clickHref} className="c-card">
         <BaseCard
           type={type}
           width={width}
@@ -61,7 +61,7 @@ export const Card = ({
           linkUrl={linkUrl}
           tags={tags}
         />
-      </a>
+      </AnchorWrapper>
     );
   }
 
@@ -223,7 +223,7 @@ const BaseCard = ({
 
   return (
     <>
-      <div className={cardClass}>
+      <CardWrapper className={cardClass}>
         {!!image && (
           <img className="card-img-top" src={image} alt={imageAltText} />
         )}
@@ -259,7 +259,7 @@ const BaseCard = ({
             tags={tags}
           />
         )}
-      </div>
+      </CardWrapper>
     </>
   );
 };
