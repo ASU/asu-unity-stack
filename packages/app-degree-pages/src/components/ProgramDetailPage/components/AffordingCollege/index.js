@@ -19,8 +19,8 @@ function AffordingCollege() {
         <div className="mt-2 col-12 col-md-4">
           <Card
             icon={["fas", "calculator"]}
-            title="Tuition calculator"
-            body="Our tuition calculator can help you estimate full-time tuition fees for this program without financial aid. Keep in mind: More than 80% of our students recieve financial aid."
+            title="Tuition estimator"
+            body="The tuition estimator shows the tuition and fee breakdown for your particular major, campus and residency status without financial aid."
             buttons={[
               {
                 label: "Estimate tuition and fees",
@@ -35,11 +35,11 @@ function AffordingCollege() {
           <Card
             icon={["fas", "award"]}
             title="Scholarships"
-            body="Find and apply from relevant scholarships."
+            body="Scholarships are a type of aid that does not need to be paid back. Some you apply for and some are automatic."
             buttons={[
               {
-                label: "Find scholarships",
-                ariaLabel: "Find scholarships",
+                label: "Learn about scholarships",
+                ariaLabel: "Learn about scholarships",
                 color: "maroon",
                 href: "https://students.asu.edu/scholarships",
               },
@@ -50,11 +50,11 @@ function AffordingCollege() {
           <Card
             icon={["fas", "hand-holding-usd"]}
             title="Finanacial aid"
-            body="ASU has many financial aid options. Almost everyone, regardless of income, can qualify for some of financial aid. In fact, more than 70 percent of all ASU students receive some form of financial assistance every year."
+            body="There are many financial aid options available for students. In fact, more than 80 percent of all ASU students receive some form of financial assistance every year."
             buttons={[
               {
-                label: "Find financial aid",
-                ariaLabel: "Find financial aid",
+                label: "Explore financial aid",
+                ariaLabel: "Explore financial aid",
                 color: "maroon",
                 href: "https://students.asu.edu/financialaid/types",
               },
