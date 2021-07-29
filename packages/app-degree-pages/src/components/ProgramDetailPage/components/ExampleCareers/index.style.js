@@ -2,9 +2,8 @@
 import styled from "styled-components";
 
 const widthSetUp = `
-  min-width: max-content !important;
-  max-width: max-content !important;
-  width: max-content !important;
+  width: unset !important;
+  min-width: unset !important;
 `;
 
 const SunIcon = styled.i`
