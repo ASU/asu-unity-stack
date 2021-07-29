@@ -10,6 +10,7 @@ import { ParagrapList } from "../ParagrapList";
 const GlobalStyle = createGlobalStyle`
   .uds-image-overlap {
     padding-top: 0 ;
+    width: auto;
     @media (max-width: 768px) {
       padding-top: 1.5rem !important;
     }
