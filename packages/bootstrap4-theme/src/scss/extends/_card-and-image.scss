@@ -2,11 +2,13 @@
   background-position: top;
   background-size: cover;
   display: flex;
+  align-items: center;
   flex-direction: row;
   height: 466px;
   max-width: 1920px;
   padding: 48px 96px;
   width: 100%;
+  margin: 0 12px;
 
   &-right {
     flex-direction: row-reverse;
@@ -19,6 +21,7 @@
     min-height: 720px;
     padding: 24px;
     width: 100%;
+    margin: 0;
   }
 
   &-container {

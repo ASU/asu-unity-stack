@@ -114,18 +114,19 @@ const ProgramDetailPage = ({
           <Hero
             image={hero?.image || detailPageDefault.hero.image}
             title={{
-              ...(hero?.title || {
-                text: resolver.getMajorDesc(),
-                color: "white",
-              }),
-              maxWidth: "100%",
+              ...detailPageDefault.hero.title,
+              text: resolver.getMajorDesc(),
+              ...hero?.title,
             }}
             contents={hero?.contents}
           />
         </section>
       ) : null}
 
-      {anchorMenu && Object.keys(anchorMenu).length > 0 ? (
+      {anchorMenu &&
+      (Object.keys(anchorMenu).filter(key => key !== "externalAnchors").length >
+        0 ||
+        anchorMenu?.externalAnchors?.length > 0) ? (
         <OnThisPageAnchorMenu anchorMenu={anchorMenu} />
       ) : null}
 
@@ -135,7 +136,7 @@ const ProgramDetailPage = ({
         ) : (
           <section className="container mt-4">
             {introContent?.breadcrumbs ? (
-              <div className="row">
+              <div className="row col-12">
                 <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
               </div>
             ) : null}

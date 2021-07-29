@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/app-degree-pages",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "ASU implementation of degree pages",
   "main": "src/index.js",
   "author": "Michele Di Benedetto",
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@storybook/addon-a11y": "^6.3.4",
@@ -50,7 +51,9 @@
     "@storybook/addon-links": "^6.3.4",
     "@storybook/react": "^6.3.4",
     "@testing-library/react": "^11.2.6",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.4",
@@ -63,6 +66,7 @@
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
+    "react-test-renderer": "^17.0.2",
     "sass-loader": "^11.1.0",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",

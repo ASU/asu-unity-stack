@@ -6,6 +6,11 @@ const Section = styled.div`
   margin-bottom: calc(var(--uds-dp-section-margin) / 2);
   padding-bottom: calc(var(--uds-dp-section-margin) / 2);
 
+  .hint-container {
+    margin-top: -1.25rem;
+    margin-bottom: 2rem;
+  }
+
   @media (max-width: 768px) {
     .filter-action-buttons {
       & {

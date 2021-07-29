@@ -209,7 +209,7 @@ const Optional = ({ dataSourceCountriesStates }) => {
         helperText="MM/DD/YYYY"
       />
       <RfiSelect
-        label="U.S. Veteran admission information and services"
+        label="Military/veteran status"
         id="MilitaryStatus"
         name="MilitaryStatus"
         options={veteranStatusOptions}

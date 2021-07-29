@@ -101,17 +101,32 @@
         "font-size": {
           "value": "4rem"
         },
+        "line-height": {
+          "value": "4.25rem"
+        },
         "letter-spacing": {
-          "value": "-0.035em"
+          "value": "-0.14rem"
         },
         "article": {
           "font-size": {
             "value": "3rem"
+          },
+          "line-height": {
+            "value": "3.25rem"
+          },
+          "letter-spacing": {
+            "value": "-0.105rem"
           }
         },
         "mobile": {
           "font-size": {
             "value": "2.25rem"
+          },
+          "line-height": {
+            "value": "2.5rem"
+          },
+          "letter-spacing": {
+            "value": "-0.078rem"
           }
         }
       },
@@ -119,15 +134,21 @@
         "font-size": {
           "value": "2.5rem"
         },
+        "line-height": {
+          "value": "2.75rem"
+        },
         "letter-spacing": {
-          "value": "-0.035em"
+          "value": "-0.0875rem"
         },
         "mobile": {
           "font-size": {
             "value": "2rem"
           },
+          "line-height": {
+            "value": "2.125rem"
+          },
           "letter-spacing": {
-            "value": "-0.035em"
+            "value": "-0.07rem"
           }
         }
       },
@@ -135,24 +156,33 @@
         "font-size": {
           "value": "1.5rem"
         },
+        "line-height": {
+          "value": "1.75rem"
+        },
         "letter-spacing": {
-          "value": "-0.035em"
+          "value": "-0.0525rem"
         }
       },
       "four": {
         "font-size": {
           "value": "1.25rem"
         },
+        "line-height": {
+          "value": "1.625rem"
+        },
         "letter-spacing": {
-          "value": "-0.025em"
+          "value": "-0.01875rem"
         }
       },
       "five": {
         "font-size": {
           "value": "1rem"
         },
+        "line-height": {
+          "value": "1.5rem"
+        },
         "letter-spacing": {
-          "value": "-0.015em"
+          "value": "-0.015rem"
         }
       }
     }

@@ -1,5 +1,7 @@
 .uds-image-text-block {
   &-container {
+    width: 100%;
+    margin: 0 12px;
     border: 1px solid $uds-color-base-gray-3;
     background: $uds-color-background-white 0% 0% no-repeat padding-box;
     display: flex;
@@ -10,15 +12,18 @@
     }
 
     @media screen and (max-width: $uds-breakpoint-sm) {
+      margin: 0 $uds-size-spacing-4;
       flex-direction: column;
     }
   }
 
   &-image-container {
+    width: 100%;
     display: flex;
     flex: 1;
 
     img {
+      width: 100%;
       object-fit: cover;
     }
 

@@ -12,6 +12,8 @@ const ListContainer = styled.ul`
   padding-left: 0rem;
 
   & li {
+    display: flex;
+    align-items: center;
     :not(:first-child) {
       display: flex;
       padding-bottom: 0.5rem;
@@ -25,8 +27,14 @@ const ListContainer = styled.ul`
       padding-bottom: 2rem;
     }
 
+    > div {
+      display: flex;
+      align-items: center;
+    }
+
     .c-icon,
     i {
+      font-size: 1rem;
       margin-right: 0.5rem;
     }
 

@@ -49,7 +49,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         <li>
           <strong>Major:</strong>
           <br />
-            <a href=${parseMajorInfoLink(resolver, actionUrls.applyNowUrl)}>
+            <a href=${parseMajorInfoLink(resolver, actionUrls.majorInfoUrl)}>
               ${resolver.getMajorDesc()}
             </a>
         </li>
@@ -58,7 +58,7 @@ const AccordionView = ({ programs, actionUrls }) => {
           <br />${resolver.getDegree()}
         </li>
         <li>
-          <strong>Location:</strong>
+          <strong>Campus or location:</strong>
           <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
         </li>
         <li>

@@ -6,17 +6,18 @@
   color: $uds-color-base-white !important;
   display: flex;
   flex-direction: row;
-  height: 512px;
+  height: auto;
   justify-content: center;
   max-width: 1920px;
   padding: 48px 96px;
   width: 100%;
+  margin: 0 12px;
 
   @media screen and (max-width: $uds-breakpoint-sm) {
-    height: auto;
     min-height: 512px;
     padding: 24px;
     width: 100%;
+    margin: 0;
   }
 
   &-container {

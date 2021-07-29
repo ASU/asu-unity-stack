@@ -34,42 +34,52 @@ p:last-of-type + h6 {
 
 h1 {
   font-size: $heading-one-font-size;
+  line-height: $heading-one-line-height;
   letter-spacing: $heading-one-letter-spacing;
 
   &.article {
     font-size: $heading-one-article-font-size;
+    line-height: $heading-one-article-line-height;
+    letter-spacing: $heading-one-article-letter-spacing;
   }
 
   @media (max-width: 577px) {
-    font-size: $heading-one-mobile-font-size;
-
+    &,
     &.article {
       font-size: $heading-one-mobile-font-size;
+      line-height: $heading-one-mobile-line-height;
+      letter-spacing: $heading-one-mobile-letter-spacing;
     }
   }
 }
 
 h2 {
   font-size: $heading-two-font-size;
+  line-height: $heading-two-line-height;
   letter-spacing: $heading-two-letter-spacing;
 
   @media (max-width: 577px) {
     font-size: $heading-two-mobile-font-size;
+    line-height: $heading-two-mobile-line-height;
+    letter-spacing: $heading-two-mobile-letter-spacing;
   }
 }
 
 h3 {
   font-size: $heading-three-font-size;
+  line-height: $heading-three-line-height;
   letter-spacing: $heading-three-letter-spacing;
 }
 
 h4 {
   font-size: $heading-four-font-size;
+  line-height: $heading-four-line-height;
   letter-spacing: $heading-four-letter-spacing;
 }
 
 h5 {
   font-size: $heading-five-font-size;
+  line-height: $heading-five-line-height;
   letter-spacing: $heading-five-letter-spacing;
 }
 
@@ -84,35 +94,47 @@ h4 span[class^='highlight-'] {
 h1 span.highlight,
 h2 span.highlight {
   &-gold {
-    @include heading-highlight-large-box-shadow($heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color);
+    @include heading-highlight-large-box-shadow(
+      $heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color
+    );
   }
 
   &-black {
-    @include heading-highlight-large-box-shadow($heading-highlight-black-background-color,
-      $heading-highlight-black-text-color);
+    @include heading-highlight-large-box-shadow(
+      $heading-highlight-black-background-color,
+      $heading-highlight-black-text-color
+    );
   }
 
   &-white {
-    @include heading-highlight-large-box-shadow($heading-highlight-white-background-color,
-      $heading-highlight-white-text-color);
+    @include heading-highlight-large-box-shadow(
+      $heading-highlight-white-background-color,
+      $heading-highlight-white-text-color
+    );
   }
 }
 
 h3 span.highlight,
 h4 span.highlight {
   &-gold {
-    @include heading-highlight-small-box-shadow($heading-highlight-gold-background-color,
-      $heading-highlight-gold-text-color);
+    @include heading-highlight-small-box-shadow(
+      $heading-highlight-gold-background-color,
+      $heading-highlight-gold-text-color
+    );
   }
 
   &-black {
-    @include heading-highlight-small-box-shadow($heading-highlight-black-background-color,
-      $heading-highlight-black-text-color);
+    @include heading-highlight-small-box-shadow(
+      $heading-highlight-black-background-color,
+      $heading-highlight-black-text-color
+    );
   }
 
   &-white {
-    @include heading-highlight-small-box-shadow($heading-highlight-white-background-color,
-      $heading-highlight-white-text-color);
+    @include heading-highlight-small-box-shadow(
+      $heading-highlight-white-background-color,
+      $heading-highlight-white-text-color
+    );
   }
 }
