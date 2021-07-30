@@ -91,6 +91,7 @@ const GROUP_STYLE = "Styles";
  */
 const Wrapper = ({ children = null }) => (
   <div
+    className="container"
     style={{
       display: "flex",
       maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
