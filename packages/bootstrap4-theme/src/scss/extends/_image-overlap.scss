@@ -9,6 +9,7 @@
 .uds-image-overlap {
   position: relative;
   padding-top: $uds-size-spacing-3;
+  width: 100%;
 
   &:before {
     content: '';
