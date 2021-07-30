@@ -3,14 +3,14 @@
 .banner {
   position: relative;
   display: flex;
-  padding: $uds-size-spacing-4;
+  padding: $uds-size-spacing-4 12px;
 
   .banner-icon {
-    flex: 1;
-    text-align: right;
+    text-align: left;
     svg {
       font-size: $uds-size-spacing-4;
-      margin: ($uds-size-spacing-1 / 2) $uds-size-spacing-4;
+      margin: ($uds-size-spacing-1 / 2) $uds-size-spacing-4
+        ($uds-size-spacing-1 / 2) 0;
     }
   }
   .banner-content {
@@ -26,6 +26,7 @@
     button {
       margin-top: $uds-size-spacing-1;
       margin-bottom: $uds-size-spacing-1;
+      margin-left: 0;
     }
     // Do buttons in their own flexbox, column-style, no stretching.
     display: flex;
@@ -38,13 +39,11 @@
     margin-right: -$uds-size-spacing-2;
 
     // Edits close button content (i.e. "X" inside bubble)
-    .close
-    {
+    .close {
       opacity: $uds-component-button-close-opacity;
       font-size: 1rem;
 
-      &:hover
-      {
+      &:hover {
         opacity: $uds-component-button-close-opacity;
       }
     }
@@ -98,9 +97,10 @@
 .banner {
   // Mobile tweaks. 576px
   @media screen and (max-width: $uds-breakpoint-sm) {
+    padding: $uds-size-spacing-4;
     flex-direction: column;
     .banner-icon {
-      text-align: left;
+      flex: 1;
       margin-bottom: $uds-size-spacing-1;
 
       svg {
