@@ -61,8 +61,8 @@ function MessageAlert({ message, type }) {
 }
 
 MessageAlert.propTypes = {
-  type: PropTypes.string.isRequired,
-  message: PropTypes.oneOf(["error", "info"]).isRequired,
+  type: PropTypes.oneOf(["error", "info"]).isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 /* eslint-disable react/prop-types */
