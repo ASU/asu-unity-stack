@@ -71,7 +71,7 @@ export const UnorderedList = createStory(
           </div>
           <div class="nav-link-container">
             <a class="nav-link" href="#">Last Link</a>
-          </di>
+          </div>
         </nav>{ /* end .sidebar */ }
       </div>{ /* end .col */ }
       <div class="col-md-8 mt-2">

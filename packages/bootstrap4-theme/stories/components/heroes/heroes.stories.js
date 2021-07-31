@@ -76,9 +76,9 @@ export const StoryHeroLarge = createStory(
 
 
 
-export const StoryHero = createStory(
+export const StoryHeroWithContent = createStory(
   <div>
-    { StoryHeroComponent }
+    { StoryHero }
     { /* The following section is included to allow for the easy testing of how a bootstrap container behaves with this element. */ }
     <div class="container-xl">
       <div class="row">

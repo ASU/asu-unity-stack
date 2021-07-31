@@ -261,78 +261,56 @@ const PrevAndNextButtonsComponent = (
 );
 
 
+const demoButtonStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  paddingTop: '10px'
+};
 const TestButtons = (
   <div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-gold">Gold</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-maroon">Maroon</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-link">Link</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-light">Light</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-dark">Dark</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-success">Alert: Success</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-danger">Alert: Danger</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-warning">Alert: Warning</button>
     </div>
-    <div>
+    <div style={demoButtonStyle}>
       <button type="button" class="btn btn-info">Alert: Info</button>
     </div>
   </div>
 );
 
-
-const focusButtonsCSS = `<style>
-.button-list {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.x-col {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid;
-  padding: 10px;
-}
-
-.x-col div {
-  padding-top: 10px;
-}
-
-.x-col.col-left {
-  background-color: #191919;
-}
-
-.x-col.col-center {
-  background: linear-gradient(rgba(25, 25, 25, 0), rgba(25, 25, 25, 0.75));
-}
-
-.x-col.col-right {
-  background-color: #fffff;
-}
-</style>`;
+const demoColumnStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  border: '1px solid',
+  padding: '10px'
+};
 
 const FocusButtonsAndLinksComponent = (
-  <div>
-    {focusButtonsCSS}
-    <div class="button-list">
-      <div class="x-col col-left">{TestButtons}</div>
-      <div class="x-col col-center">{TestButtons}</div>
-      <div class="x-col col-right">{TestButtons}</div>
-    </div>
+  <div style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px'}}>
+    <div style={{backgroundColor: '#191919', ...demoColumnStyles}}>{TestButtons}</div>
+    <div style={{background: "linear-gradient(rgba(25, 25, 25, 0), rgba(25, 25, 25, 0.75))", ...demoColumnStyles}}>{TestButtons}</div>
+    <div style={{backgroundColor: '#ffffff', ...demoColumnStyles}}>{TestButtons}</div>
   </div>
 );
 

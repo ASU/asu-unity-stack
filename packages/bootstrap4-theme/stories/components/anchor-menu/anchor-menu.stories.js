@@ -1,38 +1,39 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js'
+import { createComponent, createStoryWithInit } from '../../../helpers/wrapper.js'
 export default createComponent('Anchor Menu');
 import { initializeAnchorMenu } from './anchor-menu';
 import { Basic } from '../global-header/global-header.components.js'
 
 const AnchorMenuComponentMarkUp = (
   <div class="container-fluid">
-    { Basic }
+    <Basic />
 
-    <div class="uds-hero uds-hero-md" style={{'background-image': "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')"}}>
-      <div class="container uds-hero-container">
-        <h1 class="heading heading-one col-md-8"><span class="highlight highlight-gold highlight-heading-one">Heading 1</span></h1>
-        <div class="uds-hero-text col-sm-12 col-md-7">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a href="#" class="btn btn-gold">Call to action</a>
-        </div>
+    <div class="uds-hero-lg has-btn-row">
+      <img class="hero" src="https://source.unsplash.com/random/1920x1200" alt="Sample placeholder image." />
+      <h1><span class="highlight-gold">Gettysburg Address</span></h1>
+      <div class="content">
+      <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="btn-row">
+        <a href="#" class="btn btn-default btn-gold">Read the 13th Amendment</a>
       </div>
     </div>
 
     <div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
-    <div class="container-xl">
-      <div class="uds-anchor-menu-wrapper">
-        <h4 data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          On This Page: <span class="fas fa-chevron-down"></span>
-        </h4>
-        <div id="collapseExample" class="card card-body collapse">
-          <nav class="nav" aria-label="Same Page">
-            <a class="nav-link" href="#first"><span class="fas fa-link"></span>Anchor item</a>
-            <a class="nav-link" href="#second"><span class="fas fa-link"></span>Anchor item</a>
-            <a class="nav-link" href="#third"><span class="fa fa-link"></span>Anchor item</a>
-            <a class="nav-link" href="#fourth"><span class="fa fa-link"></span>Anchor item</a>
-            <a class="nav-link" href="#fifth"><span class="fa fa-link"></span>Anchor item</a>
-          </nav>
-        </div>
+      <div class="container-xl">
+        <div class="uds-anchor-menu-wrapper">
+          <h4 data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            On This Page: <span class="fas fa-chevron-down"></span>
+          </h4>
+          <div id="collapseExample" class="card card-body collapse">
+            <nav class="nav" aria-label="Same Page">
+              <a class="nav-link" href="#first"><span class="fas fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#second"><span class="fas fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#third"><span class="fa fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#fourth"><span class="fa fa-link"></span>Anchor item</a>
+              <a class="nav-link" href="#fifth"><span class="fa fa-link"></span>Anchor item</a>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
@@ -88,29 +89,4 @@ const AnchorMenuComponentMarkUp = (
   </div>
 );
 
-
-
-
-
-
-
-
-class AnchorMenuComponent extends React.Component {
-
-  componentDidMount() {
-    initializeAnchorMenu();
-  }
-
-  render() {
-    return AnchorMenuComponentMarkUp;
-  }
-}
-
-const AnchorMenuStory = (
-  <div>
-    <AnchorMenuComponent />
-  </div>
-)
-
-export const AnchorMenu = createStory(AnchorMenuStory);
-
+export const AnchorMenu = createStoryWithInit(AnchorMenuComponentMarkUp, initializeAnchorMenu);

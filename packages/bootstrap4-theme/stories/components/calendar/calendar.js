@@ -136,11 +136,5 @@ export const initCalendar = function () {
     }
   });
 
-  if( document.readyState !== 'loading' ) {
-    showCalendar(0);
-  } else {
-    window.addEventListener('DOMContentLoaded', function () {
-      showCalendar(0);
-    });
-  }
+  showCalendar(0);
 };

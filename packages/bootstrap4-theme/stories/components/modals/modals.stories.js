@@ -1,7 +1,7 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js'
+import { createComponent, createStoryWithInit } from '../../../helpers/wrapper.js'
 export default createComponent('Modals');
-import './modals.js'
+import { initModals } from './modals.js';
 
 const ModalComponent = (
   <div class="container-fluid">
@@ -20,4 +20,4 @@ const ModalComponent = (
   </div>
 );
 
-export const Modal = createStory(ModalComponent)
+export const Modal = createStoryWithInit(ModalComponent, initModals)

@@ -1,7 +1,7 @@
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
-const init = () => {
+export const initChart = () => {
   const GRAPH_PERCENTAGE_COMPLETE = 50;
   document.getElementById('percentage-display').innerHTML = GRAPH_PERCENTAGE_COMPLETE + '%';
   var ctx = document.getElementById('uds-donut');
@@ -26,14 +26,4 @@ const init = () => {
   };
 
   var myChart = new Chart(ctx, config);
-};
-
-export const initChart = function () {
-  if( document.readyState !== 'loading' ) {
-    init();
-  } else {
-    window.addEventListener('DOMContentLoaded', function () {
-      init();
-    });
-  }
 };
