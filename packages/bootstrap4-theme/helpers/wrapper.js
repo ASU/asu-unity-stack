@@ -14,11 +14,6 @@ export const createComponent = (name, section='Components') => {
         default: false,
       }
     },
-    parameters: {
-      docs: {
-        page: null,
-      }
-    },
   }
 }
 
