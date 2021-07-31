@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStoryWithInit } from '../../../helpers/wrapper.js'
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Modals');
 import { initModals } from './modals.js';
 
@@ -20,4 +20,4 @@ const ModalComponent = (
   </div>
 );
 
-export const Modal = createStoryWithInit(ModalComponent, initModals)
+export const Modal = createStory(ModalComponent, initModals)

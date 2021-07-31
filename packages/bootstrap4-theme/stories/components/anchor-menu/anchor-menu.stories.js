@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStoryWithInit } from '../../../helpers/wrapper.js'
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Anchor Menu');
 import { initializeAnchorMenu } from './anchor-menu';
 import { Basic } from '../global-header/global-header.components.js'
@@ -89,4 +89,4 @@ const AnchorMenuComponentMarkUp = (
   </div>
 );
 
-export const AnchorMenu = createStoryWithInit(AnchorMenuComponentMarkUp, initializeAnchorMenu);
+export const AnchorMenu = createStory(AnchorMenuComponentMarkUp, initializeAnchorMenu);

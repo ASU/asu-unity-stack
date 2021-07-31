@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStoryWithInit } from '../../../helpers/wrapper.js'
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
 import { initChart } from './charts-and-graphs';
 
 export default createComponent('Charts And Graphs');
@@ -20,5 +20,5 @@ const DonutChartMarkUp = (
 );
 
 
-export const BasicDonutChart = createStoryWithInit(DonutChartMarkUp, initChart);
+export const BasicDonutChart = createStory(DonutChartMarkUp, initChart);
 
