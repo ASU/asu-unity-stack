@@ -29,10 +29,10 @@ function FiltersSummary({
       data-filter-id={filterName}
       onKeyDown={() => onRemove(filterName, filter)}
       onClick={() => onRemove(filterName, filter)}
-      className="btn btn-tag btn-tag-alt-white mr-2"
+      className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center mr-2"
     >
-      <span>{filter.text}</span>
-      <i className="fas fa-times pl-1" />
+      <span className="pr-1">{filter.text}</span>
+      <i className="fas fa-times" />
     </span>
   );
 

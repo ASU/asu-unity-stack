@@ -153,6 +153,11 @@ const ListingPage = ({
     ...INITIAL_FILTER_STATE,
   });
 
+  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  const [appliedFilters, setAppliedFilters] = useState({
+    ...INITIAL_FILTER_STATE,
+  });
+
   useListingPageLogger({
     dataSource: programList.dataSource,
     tableView,
@@ -181,13 +186,10 @@ const ListingPage = ({
   }, [data]);
 
   /**
-   * @param {FiltersState} data
+   * @param {FiltersState} activeFilters
    */
-  const onFilterApply = async ({
-    acceleratedConcurrent,
-    locations,
-    asuLocals,
-  }) => {
+  const onFilterApply = async activeFilters => {
+    const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
     // ============================================================
     // prevent search
     // ============================================================
@@ -219,7 +221,8 @@ const ListingPage = ({
       },
     });
 
-    setStateFilters({ ...stateFilters, isActive: true });
+    setStateFilters({ ...activeFilters });
+    setAppliedFilters({ ...activeFilters });
     setTableView(filteredPrograms);
     setSearchLoading(false);
   };
@@ -265,23 +268,15 @@ const ListingPage = ({
   const onFilterSummaryRemove = (filterName, { value }) => {
     const updatedFilters =
       filterName === "acceleratedConcurrent"
-        ? onlneOption
+        ? defaultAccelConcOption
         : stateFilters[filterName].filter(f => f.value !== value);
 
     const newFilters = {
       ...stateFilters,
       [filterName]: updatedFilters,
     };
-    setStateFilters(newFilters);
 
-    if (filterName === "acceleratedConcurrent") {
-      onFilterApply({
-        ...stateFilters,
-        acceleratedConcurrent: defaultAccelConcOption,
-      });
-    } else {
-      onFilterApply(newFilters);
-    }
+    onFilterApply(newFilters);
   };
 
   return (
@@ -343,7 +338,7 @@ const ListingPage = ({
             <div className="d-flex justify-content-between">
               {hasFilters ? (
                 <FiltersSummary
-                  value={stateFilters}
+                  value={appliedFilters}
                   onRemove={onFilterSummaryRemove}
                 />
               ) : null}
