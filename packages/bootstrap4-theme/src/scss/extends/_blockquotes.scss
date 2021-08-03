@@ -34,7 +34,7 @@ blockquote:before {
   font-weight: 700;
 
   @include media-breakpoint-down(sm) {
-    margin: 32px;
+    padding: 32px;
   }
 
   svg {
