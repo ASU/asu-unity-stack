@@ -1,6 +1,9 @@
-export default { title: 'Components/Accordions' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Accordions');
 
-export const foldableCard = () => `
+
+export const FoldableCardComponent = createStory(
   <div class="container my-5">
 
     <div class="row">
@@ -84,9 +87,11 @@ export const foldableCard = () => `
     </div>
 
   </div>
-`;
+);
 
-export const accordion = () => `
+
+
+export const AccordionComponent = createStory(
   <div class="container my-5">
 
     <div class="row mt-4">
@@ -94,7 +99,7 @@ export const accordion = () => `
 
         <h4>Accordion</h4>
         <p>With some small modifications of the <strong>foldable card</strong> code, a series of foldable cards can be connected together to form an accordion.</p>
-        <ul style="padding:1rem 3rem;">
+        <ul style={{padding:'1rem 3rem'}}>
           <li>Wrap the collection of foldable cards with an element containing the class of <code>.accordion</code> and a unique ID.</li>
           <li>Include the <code>data-parent</code> attribute within the card body element to properly toggle the folded/expanded state.</li>
         </ul>
@@ -108,14 +113,14 @@ export const accordion = () => `
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
-            </div><!-- end .card-header -->
+            </div>{/* end .card-header */}
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
               <h4>Quatrenary Headline</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3">
             <div class="card-header">
@@ -130,8 +135,8 @@ export const accordion = () => `
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3">
             <div class="card-header">
@@ -145,18 +150,19 @@ export const accordion = () => `
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
-        </div><!-- end .accordion -->
+        </div>{/* end .accordion */}
 
       </div>
     </div>
 
   </div>
-`;
+);
 
-export const accordionWithColorCombinations = () => `
+
+export const AccordionWithColorCombinationsComponent = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-10">
@@ -166,7 +172,7 @@ export const accordionWithColorCombinations = () => `
         <p>
           Identify the element wich has the class <code>.card-foldable</code>
         </p>
-        <ul style="padding:0 3rem;">
+        <ul style={{padding:'0 3rem'}}>
           <li>Gold is the default style no change needed</li>
           <li>To set the marron color add the class <code>.card-maroon</code></li>
           <li>To set the gray color add the class <code>.card-gray</code></li>
@@ -183,14 +189,14 @@ export const accordionWithColorCombinations = () => `
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
-            </div><!-- end .card-header -->
+            </div>{/* end .card-header */}
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
               <h4>Quatrenary Headline</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3 card-maroon">
             <div class="card-header">
@@ -206,8 +212,8 @@ export const accordionWithColorCombinations = () => `
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3 card-gray">
             <div class="card-header">
@@ -222,8 +228,8 @@ export const accordionWithColorCombinations = () => `
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3 card-dark">
             <div class="card-header">
@@ -233,29 +239,30 @@ export const accordionWithColorCombinations = () => `
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
-            </div><!-- end .card-header -->
+            </div>{/* end .card-header */}
             <div id="cardBodyFour" class="collapse card-body" aria-labelledby="cardFour" data-parent="#accordionExample">
               <h4>Quatrenary Headline</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
-        </div><!-- end .accordion -->
+        </div>{/* end .accordion */}
       </div>
     </div>
   </div>
-`;
+);
 
-export const accordionWithIcons = () => `
+
+export const AccordionWithIconsComponent = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-10">
         <h4>Accordion with icons</h4>
         <p>With some small modifications of the <strong>foldable card</strong> code, different icons can be inserted.</p>
 
-        <ul style="padding:0 3rem;">
+        <ul style={{padding:'0 3rem'}}>
           <li>Identify the card which you want to add the icon</li>
           <li>Identify element header with class <code>.card-header</code>
             and add the class <code>.card-header-icon</code>
@@ -268,8 +275,8 @@ export const accordionWithIcons = () => `
             <br/> Example:
             <br/>
 
-            <code style="background: #e3e1e1; display: block; padding: 5px; border: 1px solid gray;">
-            <pre style="margin-left: -100px;">
+            <code style={{background: '#e3e1e1', display: 'block', padding: '5px', border: '1px solid gray'}}>
+            <pre>
               &lt;div class=&quot;card card-foldable mt-3&quot;&gt;
                 &lt;div class=&quot;card-header card-header-icon&quot;&gt;
                   &lt;h4&gt;
@@ -295,6 +302,7 @@ export const accordionWithIcons = () => `
                 &lt;/div&gt;
                 </pre>
                 </code>
+          </li>
         </ul>
 
         <div class="accordion" id="accordionExample">
@@ -310,14 +318,14 @@ export const accordionWithIcons = () => `
                   <span class="fas fa-chevron-up"></span>
                 </a>
               </h4>
-            </div><!-- end .card-header -->
+            </div>{/* end .card-header */}
             <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
               <h4>Quatrenary Headline</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
           <div class="card card-foldable mt-3 card-maroon">
             <div class="card-header card-header-icon">
@@ -336,16 +344,17 @@ export const accordionWithIcons = () => `
               <h5>This is a level five headline. There's a fancy word for that too.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-            </div><!-- end .card-body -->
-          </div><!-- end .card -->
+            </div>{/* end .card-body */}
+          </div>{/* end .card */}
 
-        </div><!-- end .accordion -->
+        </div>{/* end .accordion */}
       </div>
     </div>
   </div>
-`;
+);
 
-export const disableFoldAtBreakpoint = () => `
+
+export const DisableFoldAtBreakpointComponent = createStory(
   <div class="container my-5">
 
     <div class="row">
@@ -377,7 +386,7 @@ export const disableFoldAtBreakpoint = () => `
             ultricies nec, pellentesque eu, pretium quis, sem.</p>
           </div>
         </div>
-      </div><!-- end .col -->
+      </div>{/* end .col */}
 
       <div class="col-md-7 mb-4">
         <div class="card card-foldable desktop-disable-lg">
@@ -397,7 +406,7 @@ export const disableFoldAtBreakpoint = () => `
             ultricies nec, pellentesque eu, pretium quis, sem.</p>
           </div>
         </div>
-      </div><!-- end .col -->
+      </div>{/* end .col */}
 
       <div class="col-md-7 mb-4">
         <div class="card card-foldable desktop-disable-xl">
@@ -421,4 +430,5 @@ export const disableFoldAtBreakpoint = () => `
       </div>
     </div>
   </div>
-`;
+);
+

@@ -1,4 +1,4 @@
-(function () {
+export const initCalendar = function () {
   const months = [
     'January',
     'February',
@@ -136,7 +136,5 @@
     }
   });
 
-  window.addEventListener('DOMContentLoaded', () => {
-    showCalendar(0);
-  });
-})();
+  showCalendar(0);
+};
