@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Accordions');
 
 
-const FoldableCardComponent = (
+export const FoldableCardComponent = createStory(
   <div class="container my-5">
 
     <div class="row">
@@ -91,7 +91,7 @@ const FoldableCardComponent = (
 
 
 
-const AccordionComponent = (
+export const AccordionComponent = createStory(
   <div class="container my-5">
 
     <div class="row mt-4">
@@ -162,7 +162,7 @@ const AccordionComponent = (
 );
 
 
-const AccordionWithColorCombinationsComponent = (
+export const AccordionWithColorCombinationsComponent = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-10">
@@ -255,7 +255,7 @@ const AccordionWithColorCombinationsComponent = (
 );
 
 
-const AccordionWithIconsComponent = (
+export const AccordionWithIconsComponent = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-10">
@@ -354,7 +354,7 @@ const AccordionWithIconsComponent = (
 );
 
 
-const DisableFoldAtBreakpointComponent = (
+export const DisableFoldAtBreakpointComponent = createStory(
   <div class="container my-5">
 
     <div class="row">
@@ -432,9 +432,3 @@ const DisableFoldAtBreakpointComponent = (
   </div>
 );
 
-
-export const FoldableCard = createStory(FoldableCardComponent);
-export const Accordion = createStory(AccordionComponent);
-export const AccordionWithColorCombinations = createStory(AccordionWithColorCombinationsComponent);
-export const AccordionWithIcons = createStory(AccordionWithIconsComponent);
-export const DisableFoldAtBreakpoint = createStory(DisableFoldAtBreakpointComponent);

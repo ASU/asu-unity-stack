@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Pagination');
 
 
-const ExampleComponent = (
+export const ExampleComponent = createStory(
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -16,7 +16,7 @@ const ExampleComponent = (
 )
 
 
-const ExampleWithIconsComponent = (
+export const ExampleWithIconsComponent = createStory(
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link page-link-icon" href="#">Prev</a></li>
@@ -31,7 +31,7 @@ const ExampleWithIconsComponent = (
 
 
 
-const DisabledAndActiveStatesComponent = (
+export const DisabledAndActiveStatesComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination">
       <li class="page-item disabled">
@@ -52,7 +52,7 @@ const DisabledAndActiveStatesComponent = (
 
 
 
-const LargeNumbersComponent = (
+export const LargeNumbersComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination">
       <li class="page-item">
@@ -81,7 +81,7 @@ const LargeNumbersComponent = (
 
 
 
-const BordersComponent = (
+export const BordersComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination justify-content-center border p-2">
       <li class="page-item">
@@ -110,7 +110,7 @@ const BordersComponent = (
 
 
 
-const Gray2BackgroundComponent = (
+export const Gray2BackgroundComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination justify-content-center uds-bg-gray pt-2 pb-2">
       <li class="page-item">
@@ -139,7 +139,7 @@ const Gray2BackgroundComponent = (
 
 
 
-const Gray7BackgroundComponent = (
+export const Gray7BackgroundComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination justify-content-center uds-bg-dark pt-2 pb-2">
       <li class="page-item">
@@ -166,7 +166,7 @@ const Gray7BackgroundComponent = (
   </nav>
 )
 
-const AlignmentComponent = (
+export const AlignmentComponent = createStory(
   <div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
@@ -196,14 +196,4 @@ const AlignmentComponent = (
       </ul>
     </nav>
   </div>
-)
-
-
-export const Example = createStory(ExampleComponent)
-export const ExampleWithIcons = createStory(ExampleWithIconsComponent)
-export const DisabledAndActiveStates = createStory(DisabledAndActiveStatesComponent)
-export const LargeNumbers = createStory(LargeNumbersComponent)
-export const Borders = createStory(BordersComponent)
-export const Gray2Background = createStory(Gray2BackgroundComponent)
-export const Gray7Background = createStory(Gray7BackgroundComponent)
-export const Alignment = createStory(AlignmentComponent)
+);

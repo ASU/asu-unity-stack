@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Backgrounds', 'Design');
 
-const approvedBackgroundColorsComponent = (
+export const approvedBackgroundColors = createStory(
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -26,7 +26,7 @@ const approvedBackgroundColorsComponent = (
   </div>
 );
 
-const approvedBackgroundPatternsComponent = (
+export const approvedBackgroundPatterns = createStory(
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -66,7 +66,7 @@ const approvedBackgroundPatternsComponent = (
   </div>
 );
 
-const imageBackgroundsComponent = (
+export const imageBackgrounds = createStory(
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 pb-3">
@@ -80,7 +80,7 @@ const imageBackgroundsComponent = (
   </div>
 );
 
-const backgroundsScalingComponent = (
+export const backgroundsScaling = createStory(
   <div class="jumbotron-fluid max-size-container scaling-container">
     <span class="content-description">1920px max width</span>
     <div class="section-line"></div>
@@ -96,7 +96,7 @@ const backgroundsScalingComponent = (
   </div>
 );
 
-const PatternDividersAndBackgroundPatternsComponent = (
+export const PatternDividersAndBackgroundPatterns = createStory(
   <div>
     <div class="container p-5">
       <h2>
@@ -111,14 +111,4 @@ const PatternDividersAndBackgroundPatternsComponent = (
     <div style={{height: '250px'}} class="container-fluid bg network-black"></div>
   </div>
 );
-
-export const approvedBackgroundColors = createStory(approvedBackgroundColorsComponent)
-export const approvedBackgroundPatterns = createStory(approvedBackgroundPatternsComponent)
-export const imageBackgrounds = createStory(imageBackgroundsComponent)
-export const backgroundsScaling = createStory(backgroundsScalingComponent)
-export const PatternDividersAndBackgroundPatterns = createStory(PatternDividersAndBackgroundPatternsComponent)
-
-
-
-
 

@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Breadcrumbs');
 
 
-const BreadcrumbsAgainstWhiteBackgroundComponent = (
+export const BreadcrumbsAgainstWhiteBackground = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-white">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -14,7 +14,7 @@ const BreadcrumbsAgainstWhiteBackgroundComponent = (
 );
 
 
-const BreadcrumbsAgainstGray1BackgroundComponent = (
+export const BreadcrumbsAgainstGray1Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-1">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -25,7 +25,7 @@ const BreadcrumbsAgainstGray1BackgroundComponent = (
 );
 
 
-const BreadcrumbsAgainstGray2BackgroundComponent = (
+export const BreadcrumbsAgainstGray2Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-2">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -36,7 +36,7 @@ const BreadcrumbsAgainstGray2BackgroundComponent = (
 );
 
 
-const BreadcrumbsAgainstGray7BackgroundComponent = (
+export const BreadcrumbsAgainstGray7Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-7">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -45,8 +45,3 @@ const BreadcrumbsAgainstGray7BackgroundComponent = (
     </ol>
   </nav>
 );
-
-export const BreadcrumbsAgainstWhiteBackground = createStory(BreadcrumbsAgainstWhiteBackgroundComponent);
-export const BreadcrumbsAgainstGray1Background = createStory(BreadcrumbsAgainstGray1BackgroundComponent);
-export const BreadcrumbsAgainstGray2Background = createStory(BreadcrumbsAgainstGray2BackgroundComponent);
-export const BreadcrumbsAgainstGray7Background = createStory(BreadcrumbsAgainstGray7BackgroundComponent);

@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Buttons');
 
-const ButtonColorsComponent = (
+export const ButtonColorsComponent = createStory(
   <div class="container-fluid">
     <div class="col col-sm-12 p-3">
       <button class="btn btn-gold" type="submit">Button button</button>
@@ -15,25 +15,19 @@ const ButtonColorsComponent = (
   </div>
 );
 
-const buttonSizesCSS = `
-  <style>
-    .btn-grid {
-      display: inline-grid;
-      grid-auto-flow: column;
-      grid-template-columns: repeat(4, auto);
-      grid-template-rows: repeat(4, auto);
-      row-gap: 1rem;
-      column-gap: 2rem;
-    }
 
-    .btn-tag { margin-top: 0 !important; }
-  </style>
-`;
-const ButtonSizesComponent = (
+
+const sizesDemoStyle = {
+  display: 'inline-grid',
+  gridAutoFlow: 'column',
+  gridTemplateColumns: 'repeat(4, auto)',
+  gridTemplateRows: 'repeat(4, auto)',
+  rowGap: '1rem',
+  columnGap: '2rem',
+}
+export const ButtonSizesComponent = createStory(
   <div>
-    {buttonSizesCSS}
-
-    <div class="btn-grid">
+    <div style={sizesDemoStyle}>
       <div>
         <button type="button" class="btn btn-maroon">Default button</button>
       </div>
@@ -74,14 +68,14 @@ const ButtonSizesComponent = (
       </div>
 
       <div>
-        <button type="button" class="btn btn-tag btn-tag-alt-gray">Tag item</button>
+        <button type="button" class="btn btn-tag-alt-gray">Tag item</button>
       </div>
     </div>
   </div>
 );
 
 
-const ButtonWithIconComponent = (
+export const ButtonWithIconComponent = createStory(
   <div class="container-fluid"><div class="col col-sm-12 p-3">
     <a href="#" class="btn btn-gold" role="button">
       <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
@@ -93,7 +87,7 @@ const ButtonWithIconComponent = (
 );
 
 
-const DisabledStateComponent = (
+export const DisabledStateComponent = createStory(
   <div class="container-fluid">
     <div class="col col-sm-12 p-3">
       <button type="button" class="btn btn-gold" disabled>Gold button</button>
@@ -105,7 +99,7 @@ const DisabledStateComponent = (
 );
 
 
-const ButtonTagsComponent = (
+export const ButtonTagsComponent = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-12 col-lg-4 bg-white p-3">
@@ -122,7 +116,7 @@ const ButtonTagsComponent = (
 );
 
 
-const IconOnlyButtonsColorAndSizesComponent = (
+export const IconOnlyButtonsColorAndSizesComponent = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-12 col-lg-4 bg-white p-3">
@@ -157,7 +151,7 @@ const IconOnlyButtonsColorAndSizesComponent = (
     </div>
   </div>
 );
-const IconOnlyButtonsColorCombinationsComponent = (
+export const IconOnlyButtonsColorCombinationsComponent = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-12 col-lg-4 bg-white p-3">
@@ -221,7 +215,7 @@ const IconOnlyButtonsColorCombinationsComponent = (
 );
 
 
-const PrevAndNextButtonsComponent = (
+export const PrevAndNextButtonsComponent = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-12 col-lg-4 bg-white p-3">
@@ -306,22 +300,12 @@ const demoColumnStyles = {
   padding: '10px'
 };
 
-const FocusButtonsAndLinksComponent = (
+export const FocusButtonsAndLinksComponent = createStory(
   <div style={{display: 'flex', justifyContent: 'space-evenly', paddingTop: '30px'}}>
     <div style={{backgroundColor: '#191919', ...demoColumnStyles}}>{TestButtons}</div>
     <div style={{background: "linear-gradient(rgba(25, 25, 25, 0), rgba(25, 25, 25, 0.75))", ...demoColumnStyles}}>{TestButtons}</div>
     <div style={{backgroundColor: '#ffffff', ...demoColumnStyles}}>{TestButtons}</div>
   </div>
 );
-
-export const ButtonColors = createStory(ButtonColorsComponent)
-export const ButtonSizes = createStory(ButtonSizesComponent)
-export const ButtonWithIcon = createStory(ButtonWithIconComponent)
-export const DisabledState = createStory(DisabledStateComponent)
-export const ButtonTags = createStory(ButtonTagsComponent)
-export const IconOnlyButtonsColorAndSizes = createStory(IconOnlyButtonsColorAndSizesComponent)
-export const IconOnlyButtonsColorCombinations = createStory(IconOnlyButtonsColorCombinationsComponent)
-export const PrevAndNextButtons = createStory(PrevAndNextButtonsComponent)
-export const FocusButtonsAndLinks = createStory(FocusButtonsAndLinksComponent)
 
 

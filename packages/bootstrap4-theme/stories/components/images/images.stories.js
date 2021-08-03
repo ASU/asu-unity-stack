@@ -9,12 +9,12 @@ export default createComponent('Images');
 // TODO Consider employing JS to enforce 255 character max for captions.
 
 
-const LargeImageNoCaptionComponent = (
+export const LargeImageNoCaptionComponent = createStory(
   <div class="uds-img">
     <img src="https://source.unsplash.com/random/1200x750" class="img-fluid" alt="Random image. REPLACE with appropriate alt text for accessibility."></img>
   </div>
 );
-const LargeImageCaptionComponent = (
+export const LargeImageCaptionComponent = createStory(
   <div>
     <div class="uds-img">
       <figure class="figure uds-figure">
@@ -26,7 +26,7 @@ const LargeImageCaptionComponent = (
   </div>
 );
 
-const LargeImagesDropShadowComponent = (
+export const LargeImagesDropShadowComponent = createStory(
   <div>
     <div class="uds-img uds-img-drop-shadow">
       <img src="https://source.unsplash.com/random/800x600" class="uds-img XXuds-img-drop-shadow img-fluid" alt="Random image with dropshadow. REPLACE with appropriate alt text."></img>
@@ -45,7 +45,7 @@ const LargeImagesDropShadowComponent = (
   </div>
 );
 
-const SmallImagesComponent = (
+export const SmallImagesComponent = createStory(
   <div>
     <p>The .uds-img element takes up 100% of its container. For small images, ensure
     the .uds-img element is contained by an appropriately sized container. These
@@ -71,9 +71,3 @@ const SmallImagesComponent = (
     </div>
   </div>
 );
-
-
-export const LargeImageNoCaption = createStory(LargeImageNoCaptionComponent)
-export const LargeImageCaption = createStory(LargeImageCaptionComponent)
-export const LargeImagesDropShadow = createStory(LargeImagesDropShadowComponent)
-export const SmallImages = createStory(SmallImagesComponent)

@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Alerts');
 
 
-const AlertsComponent = (
+export const AlertsComponent = createStory(
   <div>
     <div class="alert alert-warning" role="alert">
       <div class="alert-icon">
@@ -67,5 +67,3 @@ const AlertsComponent = (
     https://www.w3.org/TR/wai-aria-practices/#alert</a></p>
   </div>
 )
-
-export const Alerts = createStory(AlertsComponent)

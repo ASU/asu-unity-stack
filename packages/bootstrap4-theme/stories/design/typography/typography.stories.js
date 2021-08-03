@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Typography', 'Design');
 
-const Componentfont = (
+export const Componentfont = createStory(
   <div class="container">
     <div class="row">
       <div class="col col-sm-12 p-3">
@@ -16,7 +16,7 @@ const Componentfont = (
   </div>
 );
 
-const ComponentbodyCopyWhite = (
+export const ComponentbodyCopyWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -26,7 +26,7 @@ const ComponentbodyCopyWhite = (
 </div>
 );
 
-const ComponentbodyCopyGray1 = (
+export const ComponentbodyCopyGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -36,7 +36,7 @@ const ComponentbodyCopyGray1 = (
 </div>
 );
 
-const ComponentbodyCopyGray2 = (
+export const ComponentbodyCopyGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -46,7 +46,7 @@ const ComponentbodyCopyGray2 = (
 </div>
 );
 
-const ComponentbodyCopyGray7 = (
+export const ComponentbodyCopyGray7 = createStory(
 <div class="container bg-gray-7 text-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -56,7 +56,7 @@ const ComponentbodyCopyGray7 = (
 </div>
 );
 
-const ComponentASUHeadingsWhite = (
+export const ComponentASUHeadingsWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -71,7 +71,7 @@ const ComponentASUHeadingsWhite = (
 </div>
 );
 
-const ComponentASUHeadingsGray1 = (
+export const ComponentASUHeadingsGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -86,7 +86,7 @@ const ComponentASUHeadingsGray1 = (
 </div>
 );
 
-const ComponentASUHeadingsGray2 = (
+export const ComponentASUHeadingsGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -101,7 +101,7 @@ const ComponentASUHeadingsGray2 = (
 </div>
 );
 
-const ComponentASUHeadingsGray7 = (
+export const ComponentASUHeadingsGray7 = createStory(
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -116,7 +116,7 @@ const ComponentASUHeadingsGray7 = (
 </div>
 );
 
-const ComponentHighlightsWhite = (
+export const ComponentHighlightsWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -127,7 +127,7 @@ const ComponentHighlightsWhite = (
 </div>
 );
 
-const ComponentHighlightsGray1 = (
+export const ComponentHighlightsGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -138,7 +138,7 @@ const ComponentHighlightsGray1 = (
 </div>
 );
 
-const ComponentHighlightsGray2 = (
+export const ComponentHighlightsGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -150,7 +150,7 @@ const ComponentHighlightsGray2 = (
 </div>
 );
 
-const ComponentHighlightsGray7 = (
+export const ComponentHighlightsGray7 = createStory(
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -161,7 +161,7 @@ const ComponentHighlightsGray7 = (
 </div>
 );
 
-const ComponentASUHeadingsHighlights = (
+export const ComponentASUHeadingsHighlights = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -175,7 +175,7 @@ const ComponentASUHeadingsHighlights = (
 </div>
 );
 
-const ComponentASUHeadingsContentPage = (
+export const ComponentASUHeadingsContentPage = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -204,7 +204,7 @@ const ComponentASUHeadingsContentPage = (
 </div>
 );
 
-const ComponentLead = (
+export const ComponentLead = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -216,7 +216,7 @@ const ComponentLead = (
 </div>
 );
 
-const ComponentASUParagraphs = (
+export const ComponentASUParagraphs = createStory(
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -244,7 +244,7 @@ const ComponentASUParagraphs = (
 </div>
 );
 
-const ComponentInlineTextElements = (
+export const ComponentInlineTextElements = createStory(
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -260,26 +260,6 @@ const ComponentInlineTextElements = (
   </div>
 </div>
 );
-
-
-export const font = createStory(Componentfont)
-export const bodyCopyWhite = createStory(ComponentbodyCopyWhite)
-export const bodyCopyGray1 = createStory(ComponentbodyCopyGray1)
-export const bodyCopyGray2 = createStory(ComponentbodyCopyGray2)
-export const bodyCopyGray7 = createStory(ComponentbodyCopyGray7)
-export const ASUHeadingsWhite = createStory(ComponentASUHeadingsWhite)
-export const ASUHeadingsGray1 = createStory(ComponentASUHeadingsGray1)
-export const ASUHeadingsGray2 = createStory(ComponentASUHeadingsGray2)
-export const ASUHeadingsGray7 = createStory(ComponentASUHeadingsGray7)
-export const HighlightsWhite = createStory(ComponentHighlightsWhite)
-export const HighlightsGray1 = createStory(ComponentHighlightsGray1)
-export const HighlightsGray2 = createStory(ComponentHighlightsGray2)
-export const HighlightsGray7 = createStory(ComponentHighlightsGray7)
-export const ASUHeadingsHighlights = createStory(ComponentASUHeadingsHighlights)
-export const ASUHeadingsContentPage = createStory(ComponentASUHeadingsContentPage)
-export const Lead = createStory(ComponentLead)
-export const ASUParagraphs = createStory(ComponentASUParagraphs)
-export const InlineTextElements = createStory(ComponentInlineTextElements)
 
 
 

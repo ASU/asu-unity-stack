@@ -4,7 +4,7 @@ export default createComponent('Tables');
 import './tables';
 
 
-const DefaultComponent = (
+export const DefaultComponent = createStory(
   <div class="container">
 
     <div class="uds-table" tabindex="0">
@@ -91,7 +91,7 @@ const DefaultComponent = (
 );
 
 
-const FixedComponent = (
+export const FixedComponent = createStory(
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -242,7 +242,3 @@ const FixedComponent = (
     </div>
   </div>
 );
-
-
-export const Default = createStory(DefaultComponent);
-export const Fixed = createStory(FixedComponent);

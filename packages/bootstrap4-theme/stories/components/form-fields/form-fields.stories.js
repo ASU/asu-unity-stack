@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Form Fields');
 
 
-const TextInputsComponent = (
+export const TextInputs = createStory(
   <form class="uds-form">
 
     <div class="form-group">
@@ -53,7 +53,7 @@ const TextInputsComponent = (
 );
 
 
-const TextInputsVariousBackgroundsComponent = (
+export const TextInputsVariousBackgrounds = createStory(
   <div>
     <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-white">
@@ -214,7 +214,7 @@ const TextInputsVariousBackgroundsComponent = (
 );
 
 
-const TextareasComponent = (
+export const Textareas = createStory(
   <form class="uds-form">
 
     <div class="form-group">
@@ -248,7 +248,7 @@ const TextareasComponent = (
 );
 
 
-const TextareasMultipleBackgroundsComponent = (
+export const TextareasMultipleBackgrounds = createStory(
   <div>
     <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
       <form class="uds-form uds-form-white">
@@ -385,7 +385,7 @@ const TextareasMultipleBackgroundsComponent = (
 );
 
 
-const CheckboxesComponent = (
+export const Checkboxes = createStory(
 
   <form class="uds-form">
   <div class="form-check">
@@ -460,7 +460,7 @@ const CheckboxesComponent = (
 );
 
 
-const RadiosComponent = (
+export const Radios = createStory(
   <form class="uds-form">
     <fieldset>
       <legend>A Group of Radios</legend>
@@ -551,7 +551,7 @@ const RadiosComponent = (
 );
 
 
-const CheckboxesAndRadiosWhiteBackgroundComponent = (
+export const CheckboxesAndRadiosWhiteBackground = createStory(
   <div style={{'background-color': 'white'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-white">
 
@@ -713,7 +713,7 @@ const CheckboxesAndRadiosWhiteBackgroundComponent = (
 );
 
 
-const CheckboxesAndRadiosGray1BackgroundComponent = (
+export const CheckboxesAndRadiosGray1Background = createStory(
   <div style={{'background-color': '#fafafa'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray1">
 
@@ -874,7 +874,7 @@ const CheckboxesAndRadiosGray1BackgroundComponent = (
 );
 
 
-const CheckboxesAndRadiosGray2BackgroundComponent = (
+export const CheckboxesAndRadiosGray2Background = createStory(
   <div style={{'background-color': '#e8e8e8'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray2">
 
@@ -1036,7 +1036,7 @@ const CheckboxesAndRadiosGray2BackgroundComponent = (
 );
 
 
-const CheckboxesAndRadiosGray7BackgroundComponent = (
+export const CheckboxesAndRadiosGray7Background = createStory(
   <div style={{'background-color': '#191919'}}>{/* This div for Storybook display only. */}
     <form class="uds-form uds-form-gray7">
 
@@ -1198,7 +1198,7 @@ const CheckboxesAndRadiosGray7BackgroundComponent = (
 );
 
 
-const SelectsComponent = (
+export const Selects = createStory(
   <form class="uds-form">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Example select</label>
@@ -1267,7 +1267,7 @@ const SelectsComponent = (
 );
 
 
-const KitchenSinkFormComponent = (
+export const KitchenSinkForm = createStory(
   <div>
     <p><a href="https://getbootstrap.com/docs/4.0/components/forms/">Bootstrap 4 form docs</a></p>
 
@@ -1353,7 +1353,7 @@ const KitchenSinkFormComponent = (
 );
 
 
-const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateComponent = (
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationState = createStory(
   <div>
     <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
@@ -1532,7 +1532,7 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormI
 );
 
 
-const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateComponent = (
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedState = createStory(
   <div>
     <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
@@ -1713,7 +1713,7 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasVa
 );
 
 
-const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7BackgroundComponent = (
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7Background = createStory(
   <div>
     <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
@@ -1894,7 +1894,7 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormI
 );
 
 
-const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7BackgroundComponent = (
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7Background = createStory(
   <div>
     <p><a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">Bootstrap 4 form docs regarding validation</a></p>
 
@@ -2075,20 +2075,3 @@ const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasVa
     </div>
   </div>
 );
-
-export const TextInputs = createStory(TextInputsComponent)
-export const TextInputsVariousBackgrounds = createStory(TextInputsVariousBackgroundsComponent)
-export const Textareas = createStory(TextareasComponent)
-export const TextareasMultipleBackgrounds = createStory(TextareasMultipleBackgroundsComponent)
-export const Checkboxes = createStory(CheckboxesComponent)
-export const Radios = createStory(RadiosComponent)
-export const CheckboxesAndRadiosWhiteBackground = createStory(CheckboxesAndRadiosWhiteBackgroundComponent)
-export const CheckboxesAndRadiosGray1Background = createStory(CheckboxesAndRadiosGray1BackgroundComponent)
-export const CheckboxesAndRadiosGray2Background = createStory(CheckboxesAndRadiosGray2BackgroundComponent)
-export const CheckboxesAndRadiosGray7Background = createStory(CheckboxesAndRadiosGray7BackgroundComponent)
-export const Selects = createStory(SelectsComponent)
-export const KitchenSinkForm = createStory(KitchenSinkFormComponent)
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationState = createStory(KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateComponent)
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedState = createStory(KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateComponent)
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7Background = createStory(KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7BackgroundComponent)
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7Background = createStory(KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7BackgroundComponent)

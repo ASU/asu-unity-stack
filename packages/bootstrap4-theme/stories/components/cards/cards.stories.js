@@ -5,7 +5,7 @@ import exampleImage from './example-image.jpg';
 
 
 
-const defaultCardComponent = (
+export const defaultCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -44,7 +44,7 @@ const defaultCardComponent = (
   </div>
 );
 
-const cardImagesComponent = (
+export const cardImages = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -104,7 +104,7 @@ const cardImagesComponent = (
   </div>
 );
 
-const cardTitlesComponent = (
+export const cardTitles = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -137,7 +137,7 @@ const cardTitlesComponent = (
   </div>
 );
 
-const cardBodyComponent = (
+export const cardBody = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -155,7 +155,7 @@ const cardBodyComponent = (
   </div>
 );
 
-const cardIconComponent = (
+export const cardIcon = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -179,7 +179,7 @@ const cardIconComponent = (
   </div>
 );
 
-const cardEventInfoComponent = (
+export const cardEventInfo = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -271,7 +271,7 @@ const cardEventInfoComponent = (
   </div>
 );
 
-const cardCallToActionsComponent = (
+export const cardCallToActions = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -294,7 +294,7 @@ const cardCallToActionsComponent = (
   </div>
 );
 
-const cardTagsComponent = (
+export const cardTags = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -326,7 +326,7 @@ const cardTagsComponent = (
   </div>
 );
 
-const degreeCardComponent = (
+export const degreeCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -355,7 +355,7 @@ const degreeCardComponent = (
   </div>
 );
 
-const storyCardComponent = (
+export const storyCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -384,7 +384,7 @@ const storyCardComponent = (
   </div>
 );
 
-const eventCardComponent = (
+export const eventCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -423,7 +423,7 @@ const eventCardComponent = (
   </div>
 );
 
-const hoverableComponent = (
+export const hoverable = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -445,7 +445,7 @@ const hoverableComponent = (
   </div>
 );
 
-const variationsComponent = (
+export const variations = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -713,7 +713,7 @@ const variationsComponent = (
   </div>
 );
 
-const fourColumnComponent = (
+export const fourColumn = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -909,7 +909,7 @@ const fourColumnComponent = (
   </div>
 );
 
-const threeColumnComponent = (
+export const threeColumn = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-lg-4">
@@ -963,7 +963,7 @@ const threeColumnComponent = (
   </div>
 );
 
-const twoColumnComponent = (
+export const twoColumn = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-12 col-lg-6">
@@ -1004,7 +1004,7 @@ const twoColumnComponent = (
   </div>
 );
 
-const horizontalComponent = (
+export const horizontal = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -1192,7 +1192,7 @@ const horizontalComponent = (
   </div>
 );
 
-const sizingUsingUtilitiesComponent = (
+export const sizingUsingUtilities = createStory(
   <div>
     <div class="card w-75">
       <img class="card-img-top" src={exampleImage} alt="Card image cap" />
@@ -1224,7 +1224,7 @@ const sizingUsingUtilitiesComponent = (
   </div>
 );
 
-const checkboxStackedCardComponent = (
+export const checkboxStackedCard = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -1271,7 +1271,7 @@ const checkboxStackedCardComponent = (
   </div>
 );
 
-const checkboxInlineCardComponent = (
+export const checkboxInlineCard = createStory(
 <div class="container">
   <div class="row row-spaced pt-2 pb-2">
     <div class="col col-12 col-md-6 col-lg-4">
@@ -1315,7 +1315,7 @@ const checkboxInlineCardComponent = (
 </div>
 );
 
-const mediaTypeOverlayCardComponent = (
+export const mediaTypeOverlayCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">
@@ -1412,28 +1412,3 @@ const mediaTypeOverlayCardComponent = (
     </div>
   </div>
 );
-
-
-
-
-export const defaultCard = createStory(defaultCardComponent);
-export const cardImages = createStory(cardImagesComponent);
-export const cardTitles = createStory(cardTitlesComponent);
-export const cardBody = createStory(cardBodyComponent);
-export const cardIcon = createStory(cardIconComponent);
-export const cardEventInfo = createStory(cardEventInfoComponent);
-export const cardCallToActions = createStory(cardCallToActionsComponent);
-export const cardTags = createStory(cardTagsComponent);
-export const degreeCard = createStory(degreeCardComponent);
-export const storyCard = createStory(storyCardComponent);
-export const eventCard = createStory(eventCardComponent);
-export const hoverable = createStory(hoverableComponent);
-export const variations = createStory(variationsComponent);
-export const fourColumn = createStory(fourColumnComponent);
-export const threeColumn = createStory(threeColumnComponent);
-export const twoColumn = createStory(twoColumnComponent);
-export const horizontal = createStory(horizontalComponent);
-export const sizingUsingUtilities = createStory(sizingUsingUtilitiesComponent);
-export const checkboxStackedCard = createStory(checkboxStackedCardComponent);
-export const checkboxInlineCard = createStory(checkboxInlineCardComponent);
-export const mediaTypeOverlayCard = createStory(mediaTypeOverlayCardComponent);

@@ -5,7 +5,7 @@ export default createComponent('Banners');
 
 
 
-const BannersGreenComponent = (
+export const BannersGreen = createStory(
   <div class="banner-green">
     <div class="banner container" role="banner">
       <div class="banner-icon">
@@ -29,7 +29,7 @@ const BannersGreenComponent = (
   </div>
 );
 
-const BannersOrangeComponent = (
+export const BannersOrange = createStory(
   <div class="banner-orange">
     <div class="banner container" role="banner">
       <div class="banner-icon">
@@ -53,7 +53,7 @@ const BannersOrangeComponent = (
   </div>
 );
 
-const BannersBlueComponent = (
+export const BannersBlue = createStory(
   <div class="banner-blue">
     <div class="banner container" role="banner">
       <div class="banner-icon">
@@ -77,7 +77,7 @@ const BannersBlueComponent = (
   </div>
 );
 
-const BannersGray2Component = (
+export const BannersGray2 = createStory(
   <div class="banner-gray">
     <div class="banner container" role="banner">
       <div class="banner-icon">
@@ -101,7 +101,7 @@ const BannersGray2Component = (
   </div>
 );
 
-const BannersGray7Component = (
+export const BannersGray7 = createStory(
   <div class="banner-black">
     <div class="banner container" role="banner">
       <div class="banner-icon">
@@ -124,9 +124,3 @@ const BannersGray7Component = (
     </div>
   </div>
 );
-
-export const BannersGreen = createStory(BannersGreenComponent)
-export const BannersOrange = createStory(BannersOrangeComponent)
-export const BannersBlue = createStory(BannersBlueComponent)
-export const BannersGray2 = createStory(BannersGray2Component)
-export const BannersGray7 = createStory(BannersGray7Component)

@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Blockquotes and Testimonials');
 
 
-const BlockquoteNoImageComponent = (
+export const BlockquoteNoImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -50,7 +50,7 @@ const BlockquoteNoImageComponent = (
 );
 
 
-const BlockquoteWithImageComponent = (
+export const BlockquoteWithImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -93,7 +93,7 @@ const BlockquoteWithImageComponent = (
 );
 
 
-const BlockquoteNoCitationComponent = (
+export const BlockquoteNoCitation = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -130,7 +130,7 @@ const BlockquoteNoCitationComponent = (
 );
 
 
-const BlockquoteAltCitationComponent = (
+export const BlockquoteAltCitation = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -177,7 +177,7 @@ const BlockquoteAltCitationComponent = (
 );
 
 
-const TestimonialsNoImageComponent = (
+export const TestimonialsNoImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -224,7 +224,7 @@ const TestimonialsNoImageComponent = (
 );
 
 
-const TestimonialsWithImageComponent = (
+export const TestimonialsWithImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -270,11 +270,3 @@ const TestimonialsWithImageComponent = (
   </div>
 
 );
-
-
-export const BlockquoteNoImage = createStory(BlockquoteNoImageComponent);
-export const BlockquoteWithImage = createStory(BlockquoteWithImageComponent);
-export const BlockquoteNoCitation = createStory(BlockquoteNoCitationComponent);
-export const BlockquoteAltCitation = createStory(BlockquoteAltCitationComponent);
-export const TestimonialsNoImage = createStory(TestimonialsNoImageComponent);
-export const TestimonialsWithImage = createStory(TestimonialsWithImageComponent);

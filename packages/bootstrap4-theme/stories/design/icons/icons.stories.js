@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Icons', 'Design');
 
 
-const navigationalIconsComponent = (
+export const navigationalIcons = createStory(
   <div>
     <div class="container-fluid">
       <div class="row">
@@ -112,7 +112,7 @@ const navigationalIconsComponent = (
 );
 
 
-const contactIconsComponent = (
+export const contactIcons = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-sm-12 col-md-4 p-4">
@@ -142,7 +142,7 @@ const contactIconsComponent = (
     </div>
   </div>);
 
-const informationalIconsComponent = (
+export const informationalIcons = createStory(
   <div class="container-fluid">
     <div class="row">
       <div class="col col-sm-12 col-md-4 p-4">
@@ -173,7 +173,7 @@ const informationalIconsComponent = (
   </div>
 );
 
-const socialMediaIconsComponent = (
+export const socialMediaIcons = createStory(
   <div class="wrapper" id="wrapper-endorsed-footer">
     <div class="container" id="endorsed-footer">
       <div class="row">
@@ -197,8 +197,3 @@ const socialMediaIconsComponent = (
     </div>
   </div>
 );
-
-export const navigationalIcons = createStory(navigationalIconsComponent)
-export const contactIcons = createStory(contactIconsComponent)
-export const informationalIcons = createStory(informationalIconsComponent)
-export const socialMediaIcons = createStory(socialMediaIconsComponent)

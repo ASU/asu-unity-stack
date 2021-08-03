@@ -5,7 +5,7 @@ import './video'
 import stockVideo from './stock-video-person-drawing.mp4'
 
 
-const DefaultComponent = (
+export const Default = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
@@ -31,7 +31,7 @@ const DefaultComponent = (
 );
 
 
-const DefaultWithCaptionComponent = (
+export const DefaultWithCaption = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
@@ -60,7 +60,7 @@ const DefaultWithCaptionComponent = (
 );
 
 
-const YoutubeVideoComponent = (
+export const YoutubeVideo = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
@@ -77,7 +77,7 @@ const YoutubeVideoComponent = (
 );
 
 
-const YoutubeVideoWithCaptionComponent = (
+export const YoutubeVideoWithCaption = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
@@ -95,9 +95,3 @@ const YoutubeVideoWithCaptionComponent = (
     </div>
   </div>
 );
-
-
-export const Default = createStory(DefaultComponent);
-export const DefaultWithCaption = createStory(DefaultWithCaptionComponent);
-export const YoutubeVideo = createStory(YoutubeVideoComponent);
-export const YoutubeVideoWithCaption = createStory(YoutubeVideoWithCaptionComponent);

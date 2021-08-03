@@ -3,7 +3,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js'
 export default createComponent('Layout', 'Design');
 
 
-const ColumnSizingComponent = (
+export const ColumnSizingComponent = createStory(
   <div class="container">
 
     <div class="row mb-6">
@@ -61,17 +61,3 @@ const ColumnSizingComponent = (
 
   </div>
 );
-
-const css = `  <style>
-.row > div > div {height:7rem;}
-</style>`;
-
-const ColumnSizingStory = (
-  <div>
-    {css}
-    <ColumnSizingComponent />
-  </div>
-)
-
-export const ColumnSizing = createStory(ColumnSizingComponent)
-
