@@ -34,7 +34,7 @@ blockquote:before {
   font-weight: 700;
 
   @include media-breakpoint-down(sm) {
-    padding: 32px;
+    padding: $uds-size-spacing-4;
   }
 
   svg {
