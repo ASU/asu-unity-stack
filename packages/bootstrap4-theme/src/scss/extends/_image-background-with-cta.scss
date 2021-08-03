@@ -3,10 +3,12 @@
   display: flex;
   height: 512px;
   justify-content: center;
+  width: 100%;
   max-width: 1920px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  margin: 0 12px;
 
   &-container {
     align-items: baseline;
@@ -52,6 +54,6 @@
 
 @media screen and (max-width: $uds-breakpoint-sm) {
   .uds-image-background-with-cta {
-    margin: 0 20px;
+    margin: 0;
   }
 }
