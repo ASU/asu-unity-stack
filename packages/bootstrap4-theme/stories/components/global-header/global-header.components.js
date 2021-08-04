@@ -3,8 +3,7 @@ import horizlogo from './arizona-state-university-logo.png';
 import vertlogo from './arizona-state-university-logo-vertical.png';
 import starbucksLogo from './asu-starbucks.png';
 
-export const Basic = (props) => {
-  return (
+export const Basic = (
     <div>
       <header id="asu-header" class="fixed-top">
         <div id="wrapper-header-top">
@@ -113,13 +112,11 @@ export const Basic = (props) => {
         { /* Page content starts here */ }
       </div>
     </div>
-  )
-};
+  );
 
 
 
-export const DropDownMenus = (props) => {
-  return (
+export const DropDownMenus = (
     <div>
       <header id="asu-header" class="fixed-top">
           <div id="wrapper-header-top">
@@ -389,12 +386,10 @@ export const DropDownMenus = (props) => {
           { /* Page content starts here */ }
         </div>
     </div>
-  )
-};
+  );
 
 
-export const NoNavigation = (props) => {
-  return (
+export const NoNavigation = (
     <div>
       <header id="asu-header" class="fixed-top">
         <div id="wrapper-header-top">
@@ -477,12 +472,10 @@ export const NoNavigation = (props) => {
         { /* Page content starts here */ }
       </div>
     </div>
-  )
-}
+);
 
 
-export const NoNavigationAndWithButtons = (props) => {
-  return (
+export const NoNavigationAndWithButtons = (
     <div>
       <header id="asu-header" class="fixed-top">
         <div id="wrapper-header-top">
@@ -568,11 +561,9 @@ export const NoNavigationAndWithButtons = (props) => {
         { /* Page content starts here */ }
       </div>
     </div>
-  )
-}
+  );
 
-export const ScrolledState = (props) => {
-  return (
+export const ScrolledState = (
     <div>
       <header id="asu-header" class="fixed-top">
         <div id="wrapper-header-top">
@@ -710,12 +701,10 @@ export const ScrolledState = (props) => {
         <div class="bg-gray-4" style={{'height': '70vh'}}></div>
       </main>
     </div>
-  )
-}
+  );
 
 
-export const Partner = (props) => {
-  return (
+export const Partner = (
     <div>
       <header id="asu-header" class="fixed-top">
         <div id="wrapper-header-top">
@@ -832,5 +821,4 @@ export const Partner = (props) => {
         { /* Page content starts here */ }
       </div>
     </div>
-  )
-}
+  );

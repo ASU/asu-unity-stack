@@ -2,8 +2,7 @@ import React from 'react';
 import endorsedLogo from './asu_universitytechoffice_horiz_rgb_white_150ppi.png';
 import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png';
 
-export const GlobalElementsOnly = () => {
-  return (
+export const GlobalElementsOnly = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-footer-innovation">
         <div class="container" id="footer-innovation">
@@ -42,12 +41,10 @@ export const GlobalElementsOnly = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
 
 
-export const ZeroColumns = () => {
-  return (
+export const ZeroColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -109,12 +106,10 @@ export const ZeroColumns = () => {
       </div>
 
     </footer>
-  )
-}
+  );
 
 
-export const OneColumn = () => {
-  return (
+export const OneColumn = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -190,12 +185,10 @@ export const OneColumn = () => {
       </div>
 
     </footer>
-  )
-}
+  );
 
 
-export const OneColumnNoLogoOrSocial = () => {
-  return (
+export const OneColumnNoLogoOrSocial = (
     <footer role="contentinfo">
 
       <div class="wrapper" id="wrapper-footer-columns">
@@ -250,12 +243,10 @@ export const OneColumnNoLogoOrSocial = () => {
       </div>
 
     </footer>
-  )
-}
+  );
 
 
-export const TwoColumns = () => {
-  return (
+export const TwoColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -351,12 +342,10 @@ export const TwoColumns = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
 
 
-export const ThreeColumns = () => {
-  return (
+export const ThreeColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -473,12 +462,10 @@ export const ThreeColumns = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
 
 
-export const FourColumns = () => {
-  return (
+export const FourColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -616,12 +603,10 @@ export const FourColumns = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
 
 
-export const FiveColumns = () => {
-  return (
+export const FiveColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -780,12 +765,10 @@ export const FiveColumns = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
 
 
-export const SixColumns = () => {
-  return (
+export const SixColumns = (
     <footer role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
@@ -965,5 +948,4 @@ export const SixColumns = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
