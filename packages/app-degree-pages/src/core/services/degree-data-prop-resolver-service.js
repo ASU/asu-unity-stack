@@ -22,7 +22,7 @@ function degreeDataPropResolverService(row = {}) {
     getDegreeDesc: () => row["DegreeDescr"],
     getDegreeDescLong: () => row["DegreeDescrlong"],
     getDescrLongExtented: () => row["DescrlongExtns"],
-    getCurriculumUrl: () => row["CurriculumUrl"],
+    getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
     getDescrLongExtented5: () => row["DescrlongExtn5"],
     getTransferAdmission: () => row["TransferAdmission"],
     isOnline: () => row["managedOnlineCampus"],
@@ -67,7 +67,7 @@ function degreeDataPropResolverService(row = {}) {
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
     getChangeMajor: () => row["ChangeMajor"],
     getAsuCareerOpportunity: () => row["AsuCareerOpp"],
-    getGlobalExp: () => row["globalExp"],
+    getGlobalExp: () => row["globalExp"]?.trim(),
     /** @return {string} */
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],
     /** @return {string} */
@@ -106,4 +106,42 @@ function getCampusLocations(resolver) {
   return locations;
 }
 
-export { degreeDataPropResolverService, getCampusLocations };
+/**
+ *
+ * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
+ * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
+ */
+const filterAnchorMenu = (anchorMenu, resolver) => {
+  const validAnchors = { ...anchorMenu };
+
+  if (validAnchors.globalOpportunity && !resolver.getGlobalExp()) {
+    validAnchors.globalOpportunity = false;
+  }
+  if (validAnchors.careerOutlook && !resolver.getAsuCareerOpportunity()) {
+    validAnchors.careerOutlook = false;
+  }
+  if (validAnchors.attendOnline && !resolver.getCurriculumUrl()) {
+    validAnchors.attendOnline = false;
+  }
+
+  return validAnchors;
+};
+
+/**
+ *
+ * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
+ * @returns
+ */
+const hasValidAnchorMenu = anchorMenu => {
+  const res =
+    Object.keys(anchorMenu).filter(key => key !== "externalAnchors").length >
+      0 || anchorMenu?.externalAnchors?.length > 0;
+  return res;
+};
+
+export {
+  degreeDataPropResolverService,
+  filterAnchorMenu,
+  getCampusLocations,
+  hasValidAnchorMenu,
+};
