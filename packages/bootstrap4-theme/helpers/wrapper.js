@@ -28,32 +28,25 @@ export const UnityStory = (props) => {
 }
 
 export const createStory = (componentJSX, initFunc=null) => {
-  class NewComponent extends React.Component {
 
-    componentDidMount() {
-      if(initFunc) {
-        // Necessitated by Storybook intricacies.
-        if( document.readyState !== 'loading' ) {
-          setTimeout(function(){ initFunc(); }, 500);
-        } else {
-          window.addEventListener('DOMContentLoaded', function () {
-            initFunc();
-          });
-        }
+  const Template = ({...args}) => {
+    if(initFunc) {
+      // Necessitated by Storybook intricacies.
+      if( document.readyState !== 'loading' ) {
+        setTimeout(function(){ initFunc(); }, 150);
+      } else {
+        window.addEventListener('DOMContentLoaded', function () {
+          initFunc();
+        });
       }
     }
-
-    render() {
-      return componentJSX;
-    }
-  }
-
-  const Template = ({...args}) => (
-    <div>
-      { args.header && <Basic /> }
-      <NewComponent />
-      { args.footer && <GlobalElementsOnly /> }
-    </div>
-  );
+    return (
+      <div>
+        { args.header && Basic }
+        { componentJSX }
+        { args.footer && GlobalElementsOnly  }
+      </div>
+    )
+  };
   return Template.bind({});
 }

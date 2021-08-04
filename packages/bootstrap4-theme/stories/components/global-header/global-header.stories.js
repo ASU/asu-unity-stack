@@ -4,27 +4,39 @@ export default { title: 'Components/Global Header'};
 
 
 const BasicTemplate = ({...args}) => (
-  <Basic />
+  <div>
+    { Basic }
+  </div>
 );
 
 const DropDownMenusTemplate = ({...args}) => (
-  <DropDownMenus />
+  <div>
+    { DropDownMenus }
+  </div>
 );
 
 const NoNavigationTemplate = ({...args}) => (
-  <NoNavigation />
+  <div>
+    { NoNavigation }
+  </div>
 );
 
 const NoNavigationAndWithButtonsTemplate = ({...args}) => (
-  <NoNavigationAndWithButtons />
+  <div>
+    { NoNavigationAndWithButtons }
+  </div>
 );
 
 const ScrolledStateTemplate = ({...args}) => (
-  <ScrolledState />
+  <div>
+    { ScrolledState }
+  </div>
 );
 
 const PartnerTemplate = ({...args}) => (
-  <Partner />
+  <div>
+    { Partner }
+  </div>
 );
 
 export const BasicExample =  BasicTemplate.bind({});
