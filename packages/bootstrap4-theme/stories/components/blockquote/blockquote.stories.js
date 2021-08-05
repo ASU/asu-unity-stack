@@ -1,6 +1,9 @@
-export default { title: 'Components/Blockquotes and Testimonials' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Blockquotes and Testimonials');
 
-export const blockquoteNoImage = () => `
+
+export const BlockquoteNoImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -18,8 +21,8 @@ export const blockquoteNoImage = () => `
           </blockquote>
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
+      </div>
+    </div>
 
     <div class="row pt-6">
       <div class="col-md-8">
@@ -41,13 +44,13 @@ export const blockquoteNoImage = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container  -->
+      </div>
+    </div>
+  </div>
+);
 
-`;
 
-export const blockquoteWithImage = () => `
+export const BlockquoteWithImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -84,13 +87,13 @@ export const blockquoteWithImage = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
+);
 
-`;
 
-export const blockquoteNoCitation = () => `
+export const BlockquoteNoCitation = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -103,8 +106,8 @@ export const blockquoteNoCitation = () => `
           </blockquote>
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
+      </div>{/*  end .col  */}
+    </div>{/*  end .row  */}
 
     <div class="row pt-6">
       <div class="col-md-8">
@@ -121,13 +124,13 @@ export const blockquoteNoCitation = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
+);
 
-`;
 
-export const blockquoteAltCitation = () => `
+export const BlockquoteAltCitation = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -145,8 +148,8 @@ export const blockquoteAltCitation = () => `
           </blockquote>
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
+      </div>
+    </div>
 
     <div class="row pt-6">
       <div class="col-md-9">
@@ -168,14 +171,13 @@ export const blockquoteAltCitation = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
+);
 
-`;
 
-
-export const testimonialsNoImage = () => `
+export const TestimonialsNoImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -216,13 +218,13 @@ export const testimonialsNoImage = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
+);
 
-`;
 
-export const testimonialsWithImage = () => `
+export const TestimonialsWithImage = createStory(
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -263,8 +265,8 @@ export const testimonialsWithImage = () => `
 
         </div>
 
-      </div><!-- end .col -->
-    </div><!-- end .row -->
-  </div><!-- end .container -->
+      </div>
+    </div>
+  </div>
 
-`;
+);

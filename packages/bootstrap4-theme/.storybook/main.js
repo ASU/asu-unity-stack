@@ -1,13 +1,16 @@
 const path = require('path');
 
+
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
+    '../stories/**/*.stories.jsx',
     '../stories/**/*.stories.[tj]s',
   ],
   addons: [
-    '@storybook/addon-a11y',
     '@storybook/addon-docs',
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
     '@storybook/addon-viewport',
     'storybook-addon-xd-designs',
     {
@@ -42,3 +45,4 @@ module.exports = {
     return config;
   },
 };
+
