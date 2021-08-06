@@ -237,6 +237,7 @@ const ListingPage = ({
 
   const onFilterClean = () => {
     setStateFilters(INITIAL_FILTER_STATE);
+    setAppliedFilters(INITIAL_FILTER_STATE);
     setTableView(data?.programs || []);
   };
 
@@ -270,10 +271,10 @@ const ListingPage = ({
     const updatedFilters =
       filterName === "acceleratedConcurrent"
         ? defaultAccelConcOption
-        : stateFilters[filterName].filter(f => f.value !== value);
+        : appliedFilters[filterName].filter(f => f.value !== value);
 
     const newFilters = {
-      ...stateFilters,
+      ...appliedFilters,
       [filterName]: updatedFilters,
     };
 
