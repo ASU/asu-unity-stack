@@ -52,12 +52,15 @@ const acceleratedConcurrentValues = [
   "all",
 ];
 
+const isAccelConcValid = opt => opt?.value && opt?.value !== "all";
+
 export {
-  locationOptions,
   asuLocalOptions,
   acceleratedConcurrentOptions,
   acceleratedConcurrentValues,
+  defaultAccelConcOption,
+  isAccelConcValid,
+  locationOptions,
   ONLNE,
   onlneOption,
-  defaultAccelConcOption,
 };

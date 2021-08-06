@@ -128,7 +128,7 @@ const anchorMenuPropShape = PropTypes.shape({
 });
 
 const optionItemShape = PropTypes.shape({
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.string,
 });
 

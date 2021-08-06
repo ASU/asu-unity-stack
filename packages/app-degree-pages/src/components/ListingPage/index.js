@@ -19,6 +19,7 @@ import {
   LIST_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
+  isAccelConcValid,
 } from "../../core/models";
 import {
   columSettingsPropShape,
@@ -104,7 +105,7 @@ function filterData({
   // ============================================================
   /** @param {Object.<string, []>} row  */
   const isValidAcceleratedConcurrent = (row = {}) =>
-    acceleratedConcurrent?.value !== "all"
+    isAccelConcValid(acceleratedConcurrent)
       ? row[acceleratedConcurrent.value]?.length > 0
       : true;
   // ============================================================
