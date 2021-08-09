@@ -1,10 +1,5 @@
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
@@ -33,8 +28,6 @@ export const Button = ({
   target,
   ...props
 }) => {
-  library.add(fas, far, fab);
-
   const btnClasses = classNames("btn", {
     [`btn-${color}`]: true,
     [`btn-md`]: size === "small",
@@ -59,8 +52,7 @@ export const Button = ({
       aria-label={ariaLabel}
       target={Tag === "a" ? target : null}
     >
-      {/* @ts-ignore */}
-      {icon && <FontAwesomeIcon icon={icon} className="mr-1" />}
+      {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} mr-1`} />}
       {label}
     </Tag>
   );

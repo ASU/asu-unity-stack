@@ -1,7 +1,4 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
@@ -18,7 +15,6 @@ import { AccordionCard } from "./AccordionCard";
  */
 
 export const Accordion = ({ cards, openedCard }) => {
-  library.add(fas, far);
   const [openCard, setOpenCard] = useState(null);
 
   useEffect(() => {

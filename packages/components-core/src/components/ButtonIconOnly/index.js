@@ -1,9 +1,4 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -22,8 +17,6 @@ import React from "react";
  * @returns {JSX.Element}
  */
 export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
-  library.add(fab, fas, far);
-
   return (
     <button
       type="button"
@@ -34,8 +27,7 @@ export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
       onClick={onClick}
       aria-label="Close"
     >
-      {/* @ts-ignore */}
-      <FontAwesomeIcon icon={icon} />
+      <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
     </button>
   );
 };

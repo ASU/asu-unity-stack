@@ -21,7 +21,8 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/components-core@dev```
+2. Make sure to have included [FontAwesome](https://fontawesome.com/) on your project to allow icons to be shown
+3. ```yarn add @asu-design-system/components-core@dev```
 
 
 ## Use as a JS module in React app
@@ -75,6 +76,14 @@ yarn test
 <!-- Provide target divs for two carousels. Must have unique ids. -->
 <div id="default-card"></div>
 <div id="icon-card"></div>
+
+<!-- Include font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/v4-shims.min.js"
+  integrity="sha512-1ND726aZWs77iIUxmOoCUGluOmCT9apImcOVOcDCOSVAUxk3ZSJcuGsHoJ+i4wIOhXieZZx6rY9s6i5xEy1RPg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- include bundled scripts from Preact packages -->
 <script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.production.js"></script>

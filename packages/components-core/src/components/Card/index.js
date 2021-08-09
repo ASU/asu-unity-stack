@@ -1,9 +1,4 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
@@ -69,8 +64,6 @@ export const Card = ({
   linkUrl,
   tags,
 }) => {
-  library.add(fab, fas, far);
-
   if (clickable && clickHref) {
     return (
       <AnchorWrapper role="button" href={clickHref} className="c-card">
@@ -259,7 +252,7 @@ const BaseCard = ({
           <img className="card-img-top" src={image} alt={imageAltText} />
         )}
         {!image && icon && (
-          <FontAwesomeIcon icon={icon} className="fa-2x card-icon-top" />
+          <i className={`${icon?.[0]} fa-${icon?.[1]} fa-2x card-icon-top`} />
         )}
         {horizontal ? (
           <div className="card-content-wrapper">
@@ -473,7 +466,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         {eventTime && (
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={["far", "calendar"]} />
+              <i className="far fa-calendar" />
             </div>
             {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
@@ -482,7 +475,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         {eventLocation && (
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon="map-marker-alt" />
+              <i className="fas fa-map-marker-alt" />
             </div>
             <div
               // eslint-disable-next-line react/no-danger
@@ -501,7 +494,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         <div className="card-event-details">
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon={["far", "calendar"]} />
+              <i className="far fa-calendar" />
             </div>
             {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
@@ -512,7 +505,7 @@ const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
         <div className="card-event-details">
           <div className="card-event-icons">
             <div>
-              <FontAwesomeIcon icon="map-marker-alt" />
+              <i className="fas fa-map-marker-alt" />
             </div>
             <span>
               <div
