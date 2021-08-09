@@ -37,7 +37,8 @@ export const Accordion = ({ cards, openedCard }) => {
           card.content.body &&
           card.content.header && (
             <AccordionCard
-              key={card.content.header}
+              // eslint-disable-next-line react/no-array-index-key
+              key={key + 1}
               id={key + 1}
               item={card}
               openCard={openCard}

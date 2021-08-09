@@ -102,7 +102,10 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  hero: null,
+  hero: {
+    hide: true,
+  },
+  introContent: null,
 };
 
 /**

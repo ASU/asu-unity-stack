@@ -91,7 +91,7 @@ const genRowId = idGenerator(`row-`);
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const ListView = ({ programs, loading, actionUrls }) => {
+const ListView = ({ programs, totalRows, loading, actionUrls }) => {
   /** @type {{current: HTMLTableElement}} */
   const tableRef = React.useRef(null);
   /** @type {{current: HTMLTableSectionElement}} */
@@ -115,7 +115,12 @@ const ListView = ({ programs, loading, actionUrls }) => {
 
   return (
     <section className="container mb-4">
-      <Table id={GRID_PROGRAMS_ID} ref={tableRef} data-loading={loading}>
+      <Table
+        id={GRID_PROGRAMS_ID}
+        ref={tableRef}
+        data-loading={loading}
+        title={`${totalRows} program found`}
+      >
         <thead>
           <tr role="row">
             {columns.map(col => (

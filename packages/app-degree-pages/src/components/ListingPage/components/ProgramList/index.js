@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
  *  @typedef {{
  *    programs: Object[]
  *    loading: boolean
+ *    totalRows?: number
  *    columSettings?: import("src/core/models/listing-page-types").ColumSettings
  *    actionUrls: import("src/core/models/listing-page-types").ActionUrlProps
  * }} GridListingProps
@@ -94,6 +95,7 @@ function ProgramList({
           <ProgramsViewer
             loading={loading}
             programs={tableView}
+            totalRows={programs?.length}
             columSettings={columSettings}
             actionUrls={actionUrls}
           />
@@ -103,6 +105,7 @@ function ProgramList({
           <AccordionView
             loading={loading}
             programs={tableView}
+            totalRows={programs?.length}
             actionUrls={actionUrls}
           />
         </div>

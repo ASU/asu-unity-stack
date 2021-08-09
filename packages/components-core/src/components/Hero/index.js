@@ -17,7 +17,7 @@ import {
 /**
  * @typedef {{
  *    type?: "heading-hero" | "story-hero" // defaut value is "heading-hero"
- *    image: ImageProps
+ *    image?: ImageProps
  *    title?: ContentProps
  *    subTitle?: ContentProps
  *    contents?: ContentProps[]
@@ -149,7 +149,7 @@ const Hero = props => {
 
 Hero.propTypes = {
   type: PropTypes.oneOf(["heading-hero", "story-hero"]),
-  image: imagePropType.isRequired,
+  image: imagePropType,
   title: contentPropType,
   subTitle: contentPropType,
   contents: PropTypes.arrayOf(contentPropType),
