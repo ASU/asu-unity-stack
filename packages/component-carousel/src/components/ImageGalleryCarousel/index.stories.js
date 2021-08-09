@@ -65,12 +65,20 @@ const mockItemWithContent = () => {
 };
 
 const mockItemWithMoreContent = () => {
+  const shortContent = `Body copy goes <span style="font-weight: bold; display: inline;">here in bold!</span>. Then there's a <a href="https://google.com">link!!!!</a>
+  Limit to 5 lines max`;
+  const longContent = `Body copy goes <span style="font-weight: bold; display: inline;">here in bold!</span>. Then there's a <a href="https://google.com">link!!!!</a>
+  Limit to 5 lines max. Lorem ipsum dolor sit amet,
+  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua eiusmod tempo, , sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua eiusmod tempo, , sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua eiusmod tempo, , sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua eiusmod tempo, , sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua eiusmod tempo.`;
   return myCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
-    content: `Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua eiusmod tempo.`,
+    content: index % 2 === 1 ? shortContent : longContent,
   }));
 };
 

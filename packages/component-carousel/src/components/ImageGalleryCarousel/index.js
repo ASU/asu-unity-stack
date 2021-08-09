@@ -62,11 +62,12 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
  * instanceName: string
  * imageItems: ImageCarouselItem []
  * hasContent: boolean
+ * maxWidth?: string
  * }} props
  * @returns { JSX.Element }
  */
 // eslint-disable-next-line react/prop-types
-const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
+const CustomNavComponent = ({ instanceName, imageItems, hasContent, maxWidth }) => {
   const ATTR_INDEX = "data-current-index";
   const [title, setTitle] = useState(imageItems[0].title);
 
@@ -74,15 +75,22 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
 
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
-    let contentToDisplay = item.content;
-    if (contentToDisplay && contentToDisplay.length > 250) {
-      contentToDisplay = `${contentToDisplay.substring(0, 250)}...`;
-    }
     setTitle(item.title);
-    setContent(contentToDisplay);
+    setContent(item.content);
   };
 
   useEffect(() => {
+    // Make height consistent across all slides.
+    // Assumes about 6 horizontal and 20 vertical px per character.
+    const textArea = document.querySelector(`.image-gallery figcaption .uds-caption-text div`);
+    const longestContent = imageItems.reduce((acc, val) => {
+      return val.content.length > acc ? val.content.length : acc;
+    }, 0);
+    const contentWidth = parseInt(window.getComputedStyle(textArea, null).getPropertyValue("width").split('px')[0]);
+    const charactersPerLine = contentWidth / 6;
+    const linesNeeded = parseInt(longestContent / charactersPerLine);
+    textArea.style.height = `${linesNeeded * 20}px`;
+
     const currentSlider = document.querySelector(`#${instanceName}`);
 
     function onDataCurrentIndexChange(mutations) {
@@ -122,11 +130,11 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
         <figcaption id="caption" className="figure-caption uds-figure-caption">
           <div className="uds-caption-text">
             {!title ? (
-              <span>{content}</span>
+              <div dangerouslySetInnerHTML={{__html: content}} />
             ) : (
               <>
                 <h3>{title}</h3>
-                <p>{content}</p>
+                <div dangerouslySetInnerHTML={{__html: content}} />
               </>
             )}
           </div>
@@ -180,6 +188,7 @@ const ImageGalleryCarousel = ({
           instanceName={instanceName}
           hasContent={hasContent}
           imageItems={imageItems}
+          maxWidth={maxWidth}
         />
       )}
       removeSideBackground={imageItems.length <= 1}
