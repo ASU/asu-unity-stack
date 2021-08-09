@@ -5,6 +5,8 @@ import React from "react";
 
 import { ProgramDetailPage } from ".";
 
+import { getStoryBookBaseUrl } from "../../core/utils";
+
 /**
  * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
  */
@@ -130,7 +132,8 @@ const defaultArgs = {
       },
       {
         text: "Undergraduate degrees",
-        url: "#",
+        // this is just an example working on Storybook
+        url: `${getStoryBookBaseUrl()}?path=/story/listing-page--default`,
       },
       {
         text: "Degree title",
@@ -138,7 +141,7 @@ const defaultArgs = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/1200x750",
+      url: "https://source.unsplash.com/random/1200x750?college",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -239,7 +242,7 @@ const defaultArgs = {
   // },
   careerOutlook: {
     image: {
-      url: "https://source.unsplash.com/random/1200x750",
+      url: "https://source.unsplash.com/random/1200x750?career",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -250,7 +253,7 @@ const defaultArgs = {
   globalOpportunity: {
     //   hide: true, // OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750",
+      url: "https://source.unsplash.com/random/1200x750?job",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -258,7 +261,7 @@ const defaultArgs = {
   attendOnline: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750",
+      url: "https://source.unsplash.com/random/1200x750?classroom,online",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -308,4 +311,14 @@ PageWithVideoAndMarketText.args.introContent = {
     title: "",
     vttUrl: "",
   },
+};
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const PageWithNoGlobalOpportunity = Template.bind({});
+PageWithNoGlobalOpportunity.args = { ...defaultArgs };
+PageWithNoGlobalOpportunity.args.dataSource = {
+  ...PageWithNoGlobalOpportunity.args.dataSource,
+  acadPlan: "ASAPSSCERT", // this has no global opportunity
 };

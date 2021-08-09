@@ -5,19 +5,27 @@ import React from "react";
 
 import {
   locationOptions,
+  filterValueShape,
   asuLocalOptions,
   acceleratedConcurrentOptions,
-} from "../../../../core/models/filters-options";
+} from "../../../../core/models";
 import { SelectFormGroup } from "./components";
 import { Section, ButtonLink } from "./index.style";
 
 /**
+ * @typedef  {{
+ *    id?: string | number
+ *    text: string
+ *    value: string
+ * }} FilterOption
+ *
  *  @typedef  {{
+ *    isActive?: boolean
  *    collegeAcadOrg?: string
  *    departmentCode?: string
- *    locations?: string []
- *    asuLocals?: string []
- *    acceleratedConcurrent?: "acceleratedConcurrent" | "concurrentDegrees" | "all"
+ *    locations?: FilterOption []
+ *    asuLocals?: FilterOption []
+ *    acceleratedConcurrent?: FilterOption
  * }} FiltersState
  */
 
@@ -25,91 +33,80 @@ import { Section, ButtonLink } from "./index.style";
  *
  * @typedef {{
  *  value: FiltersState
- *  onValueChange: () => void
- *  onApplyFilters: (
- *    data: {
- *      location: string[],
- *      acceleratedConcurrent: string
- *    }
+ *  onChange: (newFilters: FiltersState) => void
+ *  onApply: (
+ *    data: FiltersState
  * ) => void
- *  onCleanFilters: () => void
+ *  onClean: () => void
  * }} FilterProps
  */
+
+/** @type {FiltersState} */
+const INITIAL_FILTER_STATE = {
+  isActive: false,
+  locations: [],
+  asuLocals: [],
+  acceleratedConcurrent: { value: "all", text: "" },
+};
+
+const getOptionProps = option => ({
+  id: option.id,
+  value: option.value,
+  text: option.text,
+});
 
 /**
  *
  * @param {FilterProps} props
  * @returns {JSX.Element}
  */
+const Filters = ({ value, onChange, onApply, onClean }) => {
+  const changeLocationField = /**
+   * @param {string} targetId
+   * @param {{ target: HTMLSelectElement}} event
+   */ (targetId, { target: { selectedOptions } }) => {
+    let newLocations = [];
+    let newAsuLocals = [];
+    const selectedItems = Array.from(selectedOptions, getOptionProps);
 
-const INITIAL_STATE = {
-  locations: [],
-  asuLocals: [],
-  acceleratedConcurrent: acceleratedConcurrentOptions[0].value,
-};
+    const { locations: cachedLocations, asuLocals: cachedAsuLocals } = value;
 
-const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
-  const handleChangeMultipleField = (id, event) => {
-    const stateMap = {
-      asuLocal: () => {
-        const locations = value.locations.includes("ONLNE")
-          ? [...value.locations]
-          : ["ONLNE", ...value.locations];
-
-        const asuLocals = Array.from(
-          event.target.selectedOptions,
-          item => item.value
-        );
-
-        onValueChange({
-          ...value,
-          locations,
-          asuLocals,
-        });
+    const mapValueFor = {
+      locationsRender: () => {
+        newLocations = selectedItems;
+        newAsuLocals = cachedAsuLocals;
       },
-      location: () => {
-        const locations = value.asuLocals[0]
-          ? [
-              "ONLNE",
-              ...Array.from(event.target.selectedOptions, item =>
-                item.value !== "ONLNE" ? item.value : ""
-              ),
-            ]
-          : Array.from(event.target.selectedOptions, item => item.value);
-
-        onValueChange({
-          ...value,
-          locations,
-        });
+      asuLocalsRender: () => {
+        newAsuLocals = selectedItems;
+        newLocations = cachedLocations;
       },
     };
-    const renderedValue = () =>
-      stateMap[id]
-        ? stateMap[id]()
-        : () =>
-            onValueChange({
-              ...value,
-              [id]: Array.from(
-                event.target.selectedOptions,
-                item => item.value
-              ),
-            });
 
-    renderedValue();
+    mapValueFor[`${targetId}Render`]();
+    onChange({
+      ...value,
+      locations: newLocations,
+      asuLocals: newAsuLocals,
+    });
   };
 
-  const handleChangeField = (id, event) => {
-    onValueChange({ ...value, [id]: event.target.value });
+  const changeAcceleratedConcurrentField = /**
+   * @param {string} targetId
+   * @param {{ target: HTMLSelectElement}} event
+   */ (targetId, { target: { selectedOptions } }) => {
+    onChange({ ...value, [targetId]: getOptionProps(selectedOptions[0]) });
   };
 
-  const handleApplyFilters = () => {
-    const { asuLocals: _, ...filters } = value;
-    onApplyFilters?.(filters);
+  const applyFilters = () => {
+    onApply?.({
+      ...value,
+      isActive: true,
+    });
   };
 
-  const handleCleanFilters = () => {
-    onValueChange(INITIAL_STATE);
-    onCleanFilters?.();
+  const cleanFilters = () => {
+    onChange(INITIAL_FILTER_STATE);
+    onClean?.();
   };
 
   return (
@@ -119,30 +116,30 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
         <div className="col-lg-4 col-md-12">
           <SelectFormGroup
             multiple
-            id="location"
+            id="locations"
             label="Campuses or online"
-            selected={value.locations}
+            selected={value.locations.map(item => item.value)}
             options={locationOptions}
-            onChange={handleChangeMultipleField}
+            onChange={changeLocationField}
           />
         </div>
         <div className="col-lg-4 col-md-12">
           <SelectFormGroup
             multiple
-            id="asuLocal"
+            id="asuLocals"
             label="ASU location, ASU Local"
-            selected={value.asuLocals}
+            selected={value.asuLocals.map(item => item.value)}
             options={asuLocalOptions}
-            onChange={handleChangeMultipleField}
+            onChange={changeLocationField}
           />
         </div>
         <div className="col-lg-4 col-md-12">
           <SelectFormGroup
             id="acceleratedConcurrent"
             label="Accelerated, Concurrent"
-            selected={value.acceleratedConcurrent}
+            selected={value.acceleratedConcurrent.value}
             options={acceleratedConcurrentOptions}
-            onChange={handleChangeField}
+            onChange={changeAcceleratedConcurrentField}
           />
         </div>
       </form>
@@ -157,11 +154,9 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
           label="Apply filters"
           ariaLabel="Apply filters"
           size="default"
-          onClick={handleApplyFilters}
-        >
-          Apply filters
-        </Button>
-        <ButtonLink className="btn btn-link" onClick={handleCleanFilters}>
+          onClick={applyFilters}
+        />
+        <ButtonLink className="btn btn-link" onClick={cleanFilters}>
           Clear filters
         </ButtonLink>
       </div>
@@ -170,14 +165,10 @@ const Filters = ({ value, onValueChange, onApplyFilters, onCleanFilters }) => {
 };
 
 Filters.propTypes = {
-  value: PropTypes.shape({
-    locations: PropTypes.arrayOf(PropTypes.string),
-    asuLocals: PropTypes.arrayOf(PropTypes.string),
-    acceleratedConcurrent: PropTypes.string,
-  }),
-  onValueChange: PropTypes.func,
-  onApplyFilters: PropTypes.func,
-  onCleanFilters: PropTypes.func,
+  value: filterValueShape,
+  onChange: PropTypes.func,
+  onApply: PropTypes.func,
+  onClean: PropTypes.func,
 };
 
-export { Filters };
+export { Filters, INITIAL_FILTER_STATE };

@@ -127,6 +127,17 @@ const anchorMenuPropShape = PropTypes.shape({
   ...anchorMenuPropType,
 });
 
+const optionItemShape = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.string,
+});
+
+const filterValueShape = PropTypes.shape({
+  locations: PropTypes.arrayOf(optionItemShape),
+  asuLocals: PropTypes.arrayOf(optionItemShape),
+  acceleratedConcurrent: optionItemShape,
+});
+
 export {
   anchorMenuPropType,
   anchorMenuPropShape,
@@ -146,4 +157,6 @@ export {
   exampleCareersTableDataPropShape,
   columSettingsPropShape,
   columSettingsPropType,
+  filterValueShape,
+  optionItemShape,
 };

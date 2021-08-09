@@ -1,6 +1,9 @@
-export default { title: 'Components/List/Display List' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('List/Display List');
 
-export const Default = () => `
+
+export const Default = createStory(
 <div class="container">
 
       <ul class="uds-list uds-display-list">
@@ -19,9 +22,9 @@ export const Default = () => `
       </ul>
 
 </div>
-`;
+);
 
-export const IconBullets = () => `
+export const IconBullets = createStory(
 <div class="container">
 
   <ul class="uds-list uds-display-list fa-ul">
@@ -48,9 +51,9 @@ export const IconBullets = () => `
   </ul>
 
 </div>
-`;
+);
 
-export const LightSmokemode = () => `
+export const LightSmokemode = createStory(
 <div class="container">
 
   <ul class="uds-list uds-display-list light-smokemode">
@@ -92,9 +95,9 @@ export const LightSmokemode = () => `
   </ul>
 
 </div>
-`;
+);
 
-export const Smokemode = () => `
+export const Smokemode = createStory(
 <div class="container">
 
   <ul class="uds-list uds-display-list smokemode">
@@ -136,9 +139,9 @@ export const Smokemode = () => `
   </ul>
 
 </div>
-`;
+);
 
-export const Darkmode = () => `
+export const Darkmode = createStory(
 <div class="container">
   <ul class="uds-list uds-display-list darkmode">
     <li>Lorem ipsum dolor sit amet
@@ -179,9 +182,9 @@ export const Darkmode = () => `
   </ul>
 
 </div>
-`;
+);
 
-export const DarkmodeGold = () => `
+export const DarkmodeGold = createStory(
 <div class="container">
 
   <ul class="uds-list uds-display-list darkmode gold">
@@ -223,4 +226,4 @@ export const DarkmodeGold = () => `
   </ul>
 
 </div>
-`;
+);

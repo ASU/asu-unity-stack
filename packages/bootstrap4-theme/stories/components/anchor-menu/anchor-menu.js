@@ -1,18 +1,13 @@
-jQuery(function () {
-  initializeAnchorMenu();
-});
-
-function initializeAnchorMenu() {
+export const initializeAnchorMenu = () => {
   const globalHeader = document.getElementById('asu-header');
   const navbar = document.getElementById('uds-anchor-menu');
   const anchors = navbar.getElementsByClassName('nav-link');
   const navbarInitialPosition = navbar.offsetTop;
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
-
   // Cache the anchor target elements by mapping them as a key/pair so don't have to
   // parse the dom on every scroll event
-  for (anchor of anchors) {
+  for (let anchor of anchors) {
     const targetId = anchor.getAttribute('href').replace('#', '');
     const target = document.getElementById(targetId);
     anchorTargets.set(anchor, target);

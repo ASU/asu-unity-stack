@@ -6,4 +6,11 @@ function getCurrentScriptPath() {
   return match.length > 0 ? match[0].substr(0, match[0].length - 1) : "/";
 }
 
-export { getCurrentScriptPath };
+function getStoryBookBaseUrl() {
+  const { origin, pathname } = window.location;
+  const baseUrl = origin + pathname.replace("iframe.html", "");
+
+  return baseUrl || "/";
+}
+
+export { getCurrentScriptPath, getStoryBookBaseUrl };
