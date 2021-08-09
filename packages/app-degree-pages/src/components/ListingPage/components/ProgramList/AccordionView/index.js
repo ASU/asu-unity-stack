@@ -24,6 +24,9 @@ const WrapperSection = styled.div`
       }
     }
   }
+  .accordion .card.card-foldable {
+    border-bottom: 1px solid #d0d0d0;
+  }
 `;
 
 /**
