@@ -67,7 +67,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
  * @returns { JSX.Element }
  */
 // eslint-disable-next-line react/prop-types
-const CustomNavComponent = ({ instanceName, imageItems, hasContent, maxWidth }) => {
+const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const ATTR_INDEX = "data-current-index";
   const [title, setTitle] = useState(imageItems[0].title);
 
