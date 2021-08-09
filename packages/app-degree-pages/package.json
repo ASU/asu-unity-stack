@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/app-degree-pages",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "ASU implementation of degree pages",
   "main": "src/index.js",
   "author": "Michele Di Benedetto",
