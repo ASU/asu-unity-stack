@@ -29,7 +29,8 @@
     }
 
     &[aria-expanded='true'] {
-      svg {
+      svg,
+      i {
         transform: rotate(180deg);
       }
     }

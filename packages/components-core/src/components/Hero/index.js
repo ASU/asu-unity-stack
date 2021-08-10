@@ -2,12 +2,12 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
-import styled from "styled-components";
 
 import {
   contentPropType,
   imagePropType,
 } from "../../core/models/shared-prop-types";
+import { HeroImage } from "./index.styles";
 
 /**
  * @typedef {import('../../core/models/shared-model-types').ImageProps} ImageProps
@@ -24,10 +24,6 @@ import {
  *    contentsColor?: "white" | "black"
  * }} HeroProps
  */
-
-const HeroImage = styled.img`
-  width: 100%;
-`;
 
 /**
  * @param {HeroProps} props
