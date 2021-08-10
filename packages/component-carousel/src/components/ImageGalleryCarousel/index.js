@@ -82,13 +82,21 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   useEffect(() => {
     // Make height consistent across all slides.
     // Assumes about 6 horizontal and 20 vertical px per character.
-    const textArea = document.querySelector(`.image-gallery figcaption .uds-caption-text div`);
+    const textArea = document.querySelector(
+      `.image-gallery figcaption .uds-caption-text div`
+    );
     const longestContent = imageItems.reduce((acc, val) => {
       return val.content.length > acc ? val.content.length : acc;
     }, 0);
-    const contentWidth = parseInt(window.getComputedStyle(textArea, null).getPropertyValue("width").split('px')[0]);
+    const contentWidth = parseInt(
+      window
+        .getComputedStyle(textArea, null)
+        .getPropertyValue("width")
+        .split("px")[0],
+      10
+    );
     const charactersPerLine = contentWidth / 6;
-    const linesNeeded = parseInt(longestContent / charactersPerLine);
+    const linesNeeded = parseInt(longestContent / charactersPerLine, 10);
     textArea.style.height = `${linesNeeded * 20}px`;
 
     const currentSlider = document.querySelector(`#${instanceName}`);
@@ -129,14 +137,9 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
       {hasContent && (title || content) ? (
         <figcaption id="caption" className="figure-caption uds-figure-caption">
           <div className="uds-caption-text">
-            {!title ? (
-              <div dangerouslySetInnerHTML={{__html: content}} />
-            ) : (
-              <>
-                <h3>{title}</h3>
-                <div dangerouslySetInnerHTML={{__html: content}} />
-              </>
-            )}
+            {title ? <h3>{title}</h3> : null}
+            {/* eslint-disable-next-line react/no-danger */}
+            <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </figcaption>
       ) : null}
