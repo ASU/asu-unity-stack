@@ -19,13 +19,16 @@ import {
   LIST_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
-  isAccelConcValid,
 } from "../../core/models";
 import {
   columSettingsPropShape,
   dataSourcePropShape,
 } from "../../core/models/app-prop-types";
-import { degreeDataPropResolverService } from "../../core/services";
+import {
+  degreeDataPropResolverService,
+  filterData,
+  sortPrograms,
+} from "../../core/services";
 import { urlResolver } from "../../core/utils";
 import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
@@ -58,69 +61,6 @@ const ListingStyle = createGlobalStyle`
 
 /**
  *
- * @param {{
- * programs: Object[]
- * filters: FiltersState
- * }} props
- * @returns
- */
-function filterData({
-  programs = [],
-  filters: {
-    collegeAcadOrg,
-    departmentCode,
-    acceleratedConcurrent,
-    locations = [],
-  },
-}) {
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCollegeAcadOrg = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return collegeAcadOrg
-      ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidDepartmentCode = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return departmentCode
-      ? resolver.getDepartmentCode().includes(departmentCode)
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCampus = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return locations.length > 0
-      ? resolver
-          .getCampusList()
-          ?.some(campus => locations.some(loc => loc.value === campus))
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidAcceleratedConcurrent = (row = {}) =>
-    isAccelConcValid(acceleratedConcurrent)
-      ? row[acceleratedConcurrent.value]?.length > 0
-      : true;
-  // ============================================================
-  /** @param {Object.<string, any>} row  */
-  const doFilter = row =>
-    isValidCollegeAcadOrg(row) &&
-    isValidDepartmentCode(row) &&
-    isValidCampus(row) &&
-    isValidAcceleratedConcurrent(row);
-
-  return programs.filter(doFilter);
-}
-
-/**
- *
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
@@ -133,10 +73,11 @@ const ListingPage = ({
   introContent,
   programList,
 }) => {
-  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{programs: []}>} */
+  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<ProgramListingResponse>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
+  const [dataInitView, setDataInitView] = useState([]);
   /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
@@ -171,19 +112,20 @@ const ListingPage = ({
   }, [url]);
 
   useEffect(() => {
+    let dataInit = sortPrograms(data?.programs || []);
+    // apply buil-in filters
     if (collegeAcadOrg || departmentCode) {
-      setTableView(
-        filterData({
-          programs: data?.programs,
-          filters: {
-            collegeAcadOrg,
-            departmentCode,
-          },
-        })
-      );
-    } else {
-      setTableView(data?.programs || []);
+      dataInit = filterData({
+        programs: dataInit,
+        filters: {
+          collegeAcadOrg,
+          departmentCode,
+        },
+      });
     }
+
+    setDataInitView(dataInit);
+    setTableView(dataInit);
   }, [data]);
 
   /**
@@ -238,7 +180,7 @@ const ListingPage = ({
   const onFilterClean = () => {
     setStateFilters(INITIAL_FILTER_STATE);
     setAppliedFilters(INITIAL_FILTER_STATE);
-    setTableView(data?.programs || []);
+    setTableView(dataInitView);
   };
 
   /**
