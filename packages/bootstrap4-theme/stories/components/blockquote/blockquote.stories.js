@@ -6,7 +6,7 @@ export default createComponent('Blockquotes and Testimonials');
 export const BlockquoteNoImage = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
         <div class="uds-blockquote accent-maroon">
           <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -25,9 +25,9 @@ export const BlockquoteNoImage = createStory(
     </div>
 
     <div class="row pt-6">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
-        <div class="wrapper p-4 p-sm-6 bg-gray-7">
+        <div class="pt-4 pt-sm-6 bg-gray-7">
 
           <div class="uds-blockquote accent-gold text-white">
             <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -53,7 +53,7 @@ export const BlockquoteNoImage = createStory(
 export const BlockquoteWithImage = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
         <div class="uds-blockquote with-image">
           <img src="https://placeimg.com/600/400/any" alt="Pretend this is Michael M. Crow, President of ASU"/>
@@ -70,9 +70,9 @@ export const BlockquoteWithImage = createStory(
     </div>
 
     <div class="row mt-6">
-      <div class="col-md-10">
+      <div class="col-md-10 px-0">
 
-        <div class="wrapper p-4 p-sm-6 bg-gray-2">
+        <div class="pt-4 pt-sm-6 bg-gray-2">
 
           <div class="uds-blockquote with-image reversed">
             <img src="https://placeimg.com/300/300/any" alt="Pretend this is Michael M. Crow, President of ASU"/>
@@ -96,7 +96,7 @@ export const BlockquoteWithImage = createStory(
 export const BlockquoteNoCitation = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
         <div class="uds-blockquote no-citation with-image">
           <img src="https://placeimg.com/300/300/nature" alt="Image of Walt Disney"/>
@@ -110,9 +110,9 @@ export const BlockquoteNoCitation = createStory(
     </div>{/*  end .row  */}
 
     <div class="row pt-6">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
-        <div class="wrapper p-4 p-sm-6 bg-gray-7">
+        <div class="pt-4 pt-sm-6 bg-gray-7">
 
         <div class="uds-blockquote no-citation with-image reversed">
           <img src="https://placeimg.com/300/300/tech" alt="Image of Walt Disney"/>
@@ -133,7 +133,7 @@ export const BlockquoteNoCitation = createStory(
 export const BlockquoteAltCitation = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
         <div class="uds-blockquote alt-citation accent-gold">
           <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -152,9 +152,9 @@ export const BlockquoteAltCitation = createStory(
     </div>
 
     <div class="row pt-6">
-      <div class="col-md-9">
+      <div class="col-md-9 px-0">
 
-        <div class="wrapper p-4 p-sm-6 bg-gray-1">
+        <div class="pt-4 pt-sm-6 bg-gray-1">
 
           <div class="uds-blockquote alt-citation accent-maroon">
             <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -180,7 +180,7 @@ export const BlockquoteAltCitation = createStory(
 export const TestimonialsNoImage = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 px-0">
 
         <div class="uds-blockquote uds-testimonial accent-gold">
           <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -199,9 +199,9 @@ export const TestimonialsNoImage = createStory(
     </div>
 
     <div class="row mt-6">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
-        <div class="wrapper p-4 p-sm-6 bg-gray-2">
+        <div class="pt-4 pt-sm-6 bg-gray-2">
 
           <div class="uds-blockquote uds-testimonial accent-maroon">
             <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -227,7 +227,7 @@ export const TestimonialsNoImage = createStory(
 export const TestimonialsWithImage = createStory(
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 px-0">
 
         <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon">
           <img src="https://placeimg.com/600/400/arch" alt="Pretend this is Han Solo"/>
@@ -246,9 +246,9 @@ export const TestimonialsWithImage = createStory(
     </div>
 
     <div class="row mt-6">
-      <div class="col-md-8">
+      <div class="col-md-8 px-0">
 
-        <div class="wrapper p-6 p-sm-4 bg-gray-7">
+        <div class="pt-6 pt-sm-4 bg-gray-7">
 
           <div class="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white">
             <img src="https://placeimg.com/400/400/tech" alt="Pretend this is Han Solo"/>
