@@ -364,7 +364,8 @@ const CardContent = ({
     )}
     {!!body && (
       <div className="card-body">
-        <p className="card-text">{body}</p>
+        {/* eslint-disable-next-line react/no-danger */}
+        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
       </div>
     )}
     {type === "event" && (eventTime || eventLocation) && (
