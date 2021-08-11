@@ -1,7 +1,7 @@
-/* eslint-disable react/no-danger */
+/* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
 import { sanitize } from "dompurify";
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, createRef } from "react";
 
 import { ListingPageContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
@@ -21,25 +21,40 @@ import { Table } from "./index.style";
  *  id: string
  * }} props
  */
-const renderInfo = ({ resolver, id }) => (
-  <div>
-    <header>
-      <strong>Program Description:</strong>
-    </header>
-    <input className="togle-more-text" type="checkbox" id={`#${id}`} />
-    <div
-      className="desc-long"
-      id={id}
-      dangerouslySetInnerHTML={{
-        __html: sanitize(resolver.getDescrLongExtented()),
-      }}
-    />
-    <label className="label-more-less" htmlFor={`#${id}`}>
-      <span className="label-more">[...more]</span>
-      <span className="label-less">[...less]</span>
-    </label>
-  </div>
-);
+const renderInfo = ({ resolver, id }) => {
+  const labelRef = createRef();
+
+  const triggerDescription = e => {
+    if (e.key === "Enter") labelRef?.current.click();
+  };
+
+  return (
+    <div>
+      <header>
+        <strong>Program Description:</strong>
+      </header>
+      <input className="togle-more-text" type="checkbox" id={`#${id}`} />
+      <div
+        className="desc-long"
+        id={id}
+        dangerouslySetInnerHTML={{
+          __html: sanitize(resolver.getDescrLongExtented()),
+        }}
+      />
+      <label
+        ref={labelRef}
+        className="label-more-less"
+        htmlFor={`#${id}`}
+        role="button"
+        tabIndex={0}
+        onKeyDown={triggerDescription}
+      >
+        <span className="label-more">[...more]</span>
+        <span className="label-less">[...less]</span>
+      </label>
+    </div>
+  );
+};
 
 /**
  *
