@@ -46,7 +46,7 @@ Sidebar Navigation
     display: none;
   }
   @include media-breakpoint-down(md) {
-    margin: 0 $uds-size-spacing-4;
+    margin: 0 1.25rem;
   }
 }
 
