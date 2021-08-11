@@ -75,6 +75,7 @@ const videoTemplate = ({
           title={title}
           onClick={onVideoClick}
           onEnded={onVideoEnded}
+          playsInline
         >
           <source src={url} />
 
