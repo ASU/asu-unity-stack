@@ -1,7 +1,7 @@
 // @ts-check
 import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Section = styled.div`
@@ -12,7 +12,9 @@ const Section = styled.div`
 
 /**
  * @typedef {{
- *  onSearch?: (keyword: string) => void
+ *  onSearch: () => void
+ *  onChange: (keyword: string) => void
+ *  value: string
  * }} SearchBarProps
  */
 
@@ -22,16 +24,16 @@ const Section = styled.div`
  * @returns {JSX.Element}
  */
 
-const SearchBar = ({ onSearch }) => {
-  const [keyword, setKeyword] = useState("");
-
-  const handleSearch = () => {
-    onSearch?.(keyword);
-  };
-
+const SearchBar = ({ value, onChange, onSearch }) => {
   return (
     <Section className="container mt-5">
-      <form className="uds-form p-0 col-md-6 col-sm-12">
+      <form
+        className="uds-form p-0 col-md-6 col-sm-12"
+        onSubmit={e => {
+          e.preventDefault();
+          onSearch();
+        }}
+      >
         <div className="form-group mb-0 mr-2">
           <label htmlFor="search-field">Search</label>
 
@@ -39,11 +41,11 @@ const SearchBar = ({ onSearch }) => {
             <div className="col-sm-12 col-md-6 align-self-end">
               <input
                 id="search-field"
-                value={keyword}
+                value={value}
                 type="text"
                 className="form-control"
                 placeholder="Search degree programs"
-                onChange={e => setKeyword(e.target.value)}
+                onChange={e => onChange(e.target.value)}
               />
             </div>
 
@@ -53,7 +55,7 @@ const SearchBar = ({ onSearch }) => {
                 label="Search now"
                 ariaLabel="Search now"
                 size="default"
-                onClick={handleSearch}
+                onClick={onSearch}
               />
             </div>
           </div>
@@ -64,6 +66,8 @@ const SearchBar = ({ onSearch }) => {
 };
 
 SearchBar.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   onSearch: PropTypes.func,
 };
 

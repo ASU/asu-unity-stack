@@ -13,40 +13,24 @@ import { SelectFormGroup } from "./components";
 import { Section, ButtonLink } from "./index.style";
 
 /**
- * @typedef  {{
- *    id?: string | number
- *    text: string
- *    value: string
- * }} FilterOption
- *
- *  @typedef  {{
- *    isActive?: boolean
- *    collegeAcadOrg?: string
- *    departmentCode?: string
- *    locations?: FilterOption []
- *    asuLocals?: FilterOption []
- *    acceleratedConcurrent?: FilterOption
- * }} FiltersState
- */
-
-/**
  *
  * @typedef {{
- *  value: FiltersState
- *  onChange: (newFilters: FiltersState) => void
+ *  value: import("src").FiltersState
+ *  onChange: (newFilters: import("src").FiltersState) => void
  *  onApply: (
- *    data: FiltersState
+ *    data: import("src").FiltersState
  * ) => void
  *  onClean: () => void
  * }} FilterProps
  */
 
-/** @type {FiltersState} */
+/** @type {import("src").FiltersState} */
 const INITIAL_FILTER_STATE = {
   isActive: false,
   locations: [],
   asuLocals: [],
   acceleratedConcurrent: { value: "all", text: "" },
+  keyword: null,
 };
 
 const getOptionProps = option => ({
