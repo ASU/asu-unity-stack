@@ -129,7 +129,7 @@ const youtubeTemplate = ({
       "uds-video-with-caption": caption,
     })}
   >
-    <div className="uds-video-player">
+    <div className="uds-video-player youtube-video">
       <iframe title={title} src={url} />
     </div>
     {caption && (
