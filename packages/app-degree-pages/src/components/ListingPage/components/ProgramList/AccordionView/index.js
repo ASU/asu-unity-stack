@@ -75,7 +75,7 @@ const AccordionView = ({ programs, actionUrls }) => {
 
   return (
     <WrapperSection>
-      <Accordion cards={cards} openedCard={1} />
+      <Accordion cards={cards} />
     </WrapperSection>
   );
 };

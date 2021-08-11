@@ -72,7 +72,7 @@
 /**
  * @typedef {{
  *  cards: AccordionCard[]
- *  openedCard: number
+ *  openedCard?: number
  * }} AccordionProps
  */
 
