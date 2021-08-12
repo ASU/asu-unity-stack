@@ -13,6 +13,11 @@ const ThemeStyle = createGlobalStyle`
     }
   }
 
+  .element-focus:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
+  }
+
 `;
 
 const Main = styled.main`
