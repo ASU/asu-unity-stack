@@ -53,7 +53,7 @@ Default.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Default title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
     {
       color: "maroon",
@@ -81,7 +81,7 @@ Icon.args = {
   horizontal: false,
   clickable: false,
   title: "Default title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
     {
       color: "maroon",
@@ -100,7 +100,7 @@ Degree.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Default title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
 };
 Degree.parameters = {
   docs: {
@@ -108,7 +108,7 @@ Degree.parameters = {
       story: `
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         image="https://picsum.photos/300/200"
         imageAltText="An example image"
         title="Default title"
@@ -126,7 +126,7 @@ Event.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Event title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   eventFormat: "stack",
   eventTime: "Wed, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
   eventLocation: "Downtown Phoenix campus",
@@ -146,7 +146,7 @@ The event props, \`eventLocation\` and \`eventTime\` are allowed to contain basi
 
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         buttons={[
           {
             color: 'maroon',
@@ -174,7 +174,7 @@ Story.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Story title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
     {
       color: "maroon",
@@ -196,7 +196,7 @@ Story.parameters = {
       story: `
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         buttons={[
           {
             color: 'maroon',
@@ -241,7 +241,7 @@ ClickableStoryCard.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Story title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },
@@ -254,7 +254,7 @@ ClickableStoryCard.parameters = {
       story: `
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         clickHref="/#example-link"
         clickable
         image="https://picsum.photos/300/200"
@@ -291,7 +291,7 @@ HorizontalStoryCard.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "Horizontal story",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },
@@ -304,7 +304,7 @@ HorizontalStoryCard.parameters = {
       story: `
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         horizontal
         image="https://picsum.photos/300/200"
         imageAltText="An example image"
@@ -340,7 +340,7 @@ AsuNewsStory.args = {
   image: "https://picsum.photos/300/200",
   imageAltText: "An example image",
   title: "ASU News Story title",
-  body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
     {
       color: "maroon",
@@ -355,7 +355,7 @@ AsuNewsStory.parameters = {
       story: `
 
     <Card
-        body="Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         buttons={[
           {
             color: 'maroon',

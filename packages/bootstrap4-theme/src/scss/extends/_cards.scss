@@ -547,7 +547,8 @@ Cards - Table of Contents
           align-self: flex-start;
         }
 
-        &.collapsed svg.fa-chevron-up {
+        &.collapsed svg.fa-chevron-up,
+        &.collapsed i.fa-chevron-up {
           transform: rotate(180deg);
         }
       }

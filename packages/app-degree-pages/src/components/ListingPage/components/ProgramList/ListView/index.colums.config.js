@@ -117,10 +117,7 @@ const columns = [
         )}
         {resolver.getAccelerateDegrees().length > 0 && (
           <div className="cell-container">
-            <a
-              href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}
-              rel="noreferrer"
-            >
+            <a href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}>
               4+1 years
             </a>
             <InfoButtonIcon
@@ -142,9 +139,7 @@ const columns = [
     className: "college",
     sortable: true,
     contentTemplate: ({ resolver }) => (
-      <a href={resolver.getCollegeUrl()} target="_blank" rel="noreferrer">
-        {resolver.getCollegeDesc()}
-      </a>
+      <a href={resolver.getCollegeUrl()}>{resolver.getCollegeDesc()}</a>
     ),
   },
 
