@@ -10,6 +10,20 @@ import {
   BaseNavButtonContainer,
 } from "../../core/components/BaseCarousel/components";
 
+const calculateHeightNeeded = (content, width) => {
+  // Make height consistent across all slides.
+  // Assumes about 6 horizontal and 20 vertical px per character.
+  if (!content) {
+    return 0;
+  }
+  const brCount = (content.match(/<br/g) || []).length;
+  const charactersPerLine = width / 6;
+
+  const linesNeeded =
+    parseInt(content.length / charactersPerLine, 10) + brCount;
+
+  return linesNeeded * 20;
+};
 /**
  * @typedef {import('../../core/components/BaseCarousel').CarouselItem} CarouselItem
  */
@@ -80,24 +94,23 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   };
 
   useEffect(() => {
-    // Make height consistent across all slides.
-    // Assumes about 6 horizontal and 20 vertical px per character.
     const textArea = document.querySelector(
       `.image-gallery figcaption .uds-caption-text div`
     );
-    const longestContent = imageItems.reduce((acc, val) => {
-      return val.content.length > acc ? val.content.length : acc;
-    }, 0);
-    const contentWidth = parseInt(
-      window
-        .getComputedStyle(textArea, null)
-        .getPropertyValue("width")
-        .split("px")[0],
-      10
-    );
-    const charactersPerLine = contentWidth / 6;
-    const linesNeeded = parseInt(longestContent / charactersPerLine, 10);
-    textArea.style.height = `${linesNeeded * 20}px`;
+    if (textArea) {
+      const contentWidth = parseInt(
+        window
+          .getComputedStyle(textArea, null)
+          .getPropertyValue("width")
+          .split("px")[0],
+        10
+      );
+      const tallestContent = imageItems.reduce((acc, val) => {
+        const heightNeeded = calculateHeightNeeded(val.content, contentWidth);
+        return heightNeeded > acc ? heightNeeded : acc;
+      }, 0);
+      textArea.style.height = `${tallestContent}px`;
+    }
 
     const currentSlider = document.querySelector(`#${instanceName}`);
 
