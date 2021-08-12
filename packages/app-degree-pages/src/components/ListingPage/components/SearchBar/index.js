@@ -47,7 +47,7 @@ const SearchBar = ({ onSearch }) => {
               />
             </div>
 
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mt-2 mt-sm-0">
               <Button
                 color="maroon"
                 label="Search now"
