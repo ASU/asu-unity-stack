@@ -43,7 +43,7 @@ const renderInfo = ({ resolver, id }) => {
       />
       <label
         ref={labelRef}
-        className="label-more-less"
+        className="label-more-less element-focus"
         htmlFor={`#${id}`}
         role="button"
         tabIndex={0}
