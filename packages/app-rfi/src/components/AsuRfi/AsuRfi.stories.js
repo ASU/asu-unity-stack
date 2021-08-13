@@ -34,6 +34,7 @@ const testSubmissionUrl = "https://httpbin.org/post";
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -54,6 +55,7 @@ RfiDefault.args = {
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CGM", // CHI
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -74,6 +76,7 @@ RfiOnCollegePage.args = {
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
 RfiOnCollegePageWithAreaOfInterest.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CES",
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -97,6 +100,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
 export const RfiOnDegreePageUndergraduate = Template.bind({});
 RfiOnDegreePageUndergraduate.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -117,6 +121,7 @@ RfiOnDegreePageUndergraduate.args = {
 export const RfiOnDegreePageGraduate = Template.bind({});
 RfiOnDegreePageGraduate.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -137,6 +142,7 @@ RfiOnDegreePageGraduate.args = {
 export const RfiOnCollegeDepartmentPage = Template.bind({});
 RfiOnCollegeDepartmentPage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CES",
   department: "CINFOTECH",
   studentType: undefined, // graduate, undergrad
@@ -157,6 +163,7 @@ RfiOnCollegeDepartmentPage.args = {
 export const RfiOnNonAcademicUnitPage = Template.bind({});
 RfiOnNonAcademicUnitPage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -177,6 +184,7 @@ RfiOnNonAcademicUnitPage.args = {
 export const RfiOnCertOrMinorPage = Template.bind({});
 RfiOnCertOrMinorPage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: undefined, // graduate, undergrad
@@ -197,6 +205,7 @@ RfiOnCertOrMinorPage.args = {
 export const RfiOnCampaignLandingPage = Template.bind({});
 RfiOnCampaignLandingPage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: "graduate",
@@ -217,6 +226,7 @@ RfiOnCampaignLandingPage.args = {
 export const RfiTestMode = Template.bind({});
 RfiTestMode.args = {
   campus: "GROUND", // ONLNE, GROUND, NOPREF
+  actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: "graduate",
@@ -237,6 +247,7 @@ RfiTestMode.args = {
 export const RfiDevTester = Template.bind({});
 RfiDevTester.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
+  actualCampus: "POLY", // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
   department: undefined,
   studentType: "undergrad",

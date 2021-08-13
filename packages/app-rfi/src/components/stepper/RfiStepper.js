@@ -107,6 +107,7 @@ class RfiStepper extends React.Component {
       handleSubmit,
       // props
       campus,
+      actualCampus,
       college,
       department,
       studentType,
@@ -291,6 +292,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
 // Props
 RfiStepper.defaultProps = {
   campus: undefined,
+  actualCampus: undefined,
   college: undefined,
   department: undefined,
   studentType: undefined,
@@ -310,6 +312,7 @@ RfiStepper.propTypes = {
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   campus: PropTypes.string,
+  actualCampus: PropTypes.string,
   college: PropTypes.string,
   department: PropTypes.string,
   studentType: PropTypes.string,
