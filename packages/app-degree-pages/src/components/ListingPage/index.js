@@ -59,6 +59,12 @@ const ListingStyle = createGlobalStyle`
   }
 `;
 
+const FilterSeparator = styled.div.attrs({ className: "container" })`
+  border-bottom: 1px solid #d0d0d0;
+  margin-bottom: calc(var(--uds-dp-section-margin) / 2);
+  padding-bottom: calc(var(--uds-dp-section-margin) / 2);
+`;
+
 /**
  *
  * @param {ListingPageProps} props
@@ -274,6 +280,7 @@ const ListingPage = ({
                 onClean={onFilterClean}
               />
             ) : null}
+            <FilterSeparator />
           </section>
         ) : null}
 
