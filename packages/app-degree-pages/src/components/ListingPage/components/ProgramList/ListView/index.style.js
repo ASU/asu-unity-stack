@@ -156,7 +156,6 @@ const Table = styled.table`
       td .cell-container {
         display: flex;
         flex-direction: row;
-        // align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
       }
@@ -175,6 +174,16 @@ const Table = styled.table`
         &:checked + .desc-long {
           max-height: fit-content;
           overflow: auto;
+        }
+
+        &:not(:checked) + .desc-long::after {
+          content: " ";
+          height: 1rem;
+          background: #ffffff;
+          box-shadow: -1px -2px 20px 15px #f3f3f3;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
         }
 
         &:checked + .desc-long + .label-more-less {
