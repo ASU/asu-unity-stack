@@ -1,9 +1,10 @@
 // @ts-check
 
 import { Accordion } from "@asu-design-system/components-core";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { ListingPageContext } from "../../../../../core/context";
 import {
   degreeDataPropResolverService,
   parseMajorInfoLink,
@@ -36,6 +37,7 @@ const WrapperSection = styled.div`
  * @returns {JSX.Element}
  */
 const AccordionView = ({ programs, actionUrls }) => {
+  const { columSettings } = useContext(ListingPageContext);
   /**
    * @type {{
    *   content: {
@@ -101,13 +103,19 @@ const AccordionView = ({ programs, actionUrls }) => {
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>
-          <br />${getAcceleratedConcurrent()}
+          <br />${getAcceleratedConcurrent() || "-"}
         </li>
-        <li>
-          <strong>College/School:</strong>
-          <br />
-          <a href=${resolver.getCollegeUrl()}>${resolver.getCollegeDesc()}</a>
-        </li>
+        ${
+          !columSettings?.hideCollegeSchool
+            ? ` <li>
+                  <strong>College/School:</strong>
+                  <br />
+                  <a href=${resolver.getCollegeUrl()}>
+                    ${resolver.getCollegeDesc()}
+                  </a>
+                </li>`
+            : ""
+        }
       </ul>`,
       },
     };
