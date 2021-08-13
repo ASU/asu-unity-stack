@@ -64,7 +64,14 @@ function OverlapContentImage({
   return (
     <div className={`uds-image-overlap content-${contentDirection}`}>
       <GlobalStyle />
-      <OverlapImage className="img-fluid" src={image.url} alt={image.altText} />
+      <OverlapImage
+        className="img-fluid"
+        src={image?.url}
+        alt={image?.altText}
+        onError={e => {
+          e.currentTarget.style.display = "none";
+        }}
+      />
       <ContentWrapper className="content-wrapper">
         <h3>
           <span className="highlight-gold">{title}</span>
