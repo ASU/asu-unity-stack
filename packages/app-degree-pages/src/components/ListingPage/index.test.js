@@ -4,6 +4,18 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+/** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
+const actionUrls = {
+  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
+};
+
+/** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
+const dataSource = {
+  program: "graduate",
+  cert: "true",
+};
+
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
@@ -11,11 +23,7 @@ import { ListingPage } from "./index";
 /** @type {AppProps} */
 const defaultArgs = {
   appPathFolder: ".", // OPTIONAL
-  actionUrls: {
-    applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
-    majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
-  },
-  hero: null,
+  actionUrls,
   introContent: {
     type: "text",
     title: {
@@ -27,13 +35,8 @@ const defaultArgs = {
       },
     ],
   },
-  // hasFilters: false, // OPTIONAL
-  // hasSearchBar: false, // OPTIONAL
   programList: {
-    dataSource: {
-      program: "graduate", // graduate | undergrad
-      cert: "true", // "true" | "false"
-    },
+    dataSource,
     settings: {
       hideCollegeSchool: true,
     },
@@ -41,9 +44,14 @@ const defaultArgs = {
 };
 
 describe("#ListingPage", () => {
-  it("should define the component", async () => {
+  /** @type {import("@testing-library/react").RenderResult} */
+  let component = null;
+  /** @type {HTMLElement} */
+  let container = null;
+
+  beforeEach(async () => {
     await act(async () => {
-      const component = await render(
+      component = await render(
         <ListingPage
           appPathFolder={defaultArgs.appPathFolder}
           actionUrls={defaultArgs.actionUrls}
@@ -54,8 +62,39 @@ describe("#ListingPage", () => {
           hasFilters={defaultArgs.hasFilters}
         />
       );
-
-      expect(component).toBeDefined();
+      container = component.container;
     });
+  });
+
+  it("should define the component", () => {
+    expect(component).toBeDefined();
+  });
+
+  it("should define `Intro content` section", async () => {
+    expect(component.getByTestId("intro-content")).toBeDefined();
+  });
+
+  it("should define `Hero` section", async () => {
+    expect(container.querySelector(".uds-hero")).not.toBeNull();
+  });
+
+  it("should define `Browse Title` section", async () => {
+    expect(component.getByTestId("browse-title")).toBeDefined();
+  });
+
+  it("should define `Search bar` section", async () => {
+    expect(component.getByTestId("search-bar")).toBeDefined();
+  });
+
+  it("should define `Filters` section", async () => {
+    expect(component.getByTestId("filters")).toBeDefined();
+  });
+
+  it("should define `Filters Summary` section", async () => {
+    expect(component.getByTestId("filters-summary")).toBeDefined();
+  });
+
+  it("should define `Program List` section", async () => {
+    expect(component.getByTestId("program-list")).toBeDefined();
   });
 });

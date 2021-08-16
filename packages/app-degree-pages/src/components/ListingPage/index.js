@@ -231,7 +231,7 @@ const ListingPage = ({
       {error && <ErrorAlert message="Something went wrong ..." />}
 
       {!hero?.hide ? (
-        <section>
+        <section data-testid="hero">
           <Hero
             image={hero?.image || listingPageDefault.hero.image}
             title={{

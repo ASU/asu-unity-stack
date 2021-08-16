@@ -30,7 +30,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <Section className="container mt-5">
+    <Section className="container mt-5" data-testid="search-bar">
       <form className="uds-form p-0 col-md-6 col-sm-12">
         <div className="form-group mb-0 mr-2">
           <label htmlFor="search-field">Search</label>

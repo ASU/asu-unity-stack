@@ -88,7 +88,7 @@ function ProgramList({
         columSettings,
       }}
     >
-      <section>
+      <section data-testid="program-list">
         <GlobalStyle />
 
         <div className="desktop-view">

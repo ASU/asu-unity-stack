@@ -46,7 +46,7 @@ function FiltersSummary({
   );
 
   return (
-    <div>
+    <div data-testid="filters-summary">
       <header>
         <strong>Applied filters</strong>
       </header>

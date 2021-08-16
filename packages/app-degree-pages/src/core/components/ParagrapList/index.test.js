@@ -16,6 +16,7 @@ describe("#ParagrapList", () => {
     ];
 
     const { getByText } = render(<ParagrapList contents={contents} />);
+    expect(getByText("Dummy text 1")).toBeDefined();
     expect(getByText("Dummy text 2")).toBeDefined();
   });
 });

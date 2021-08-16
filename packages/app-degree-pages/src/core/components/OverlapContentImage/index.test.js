@@ -25,6 +25,7 @@ describe("#OverlapContentImage", () => {
     expect(getByText("dummy tile")).toBeDefined();
 
     const img = getByAltText(image.altText);
+    // @ts-ignore
     expect(img.src).toContain(image.url);
   });
 });

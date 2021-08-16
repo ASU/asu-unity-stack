@@ -110,7 +110,7 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
   };
 
   return (
-    <Section className="container">
+    <Section className="container" data-testid="filters">
       <h4>Filter your results</h4>
       <form className="mt-3 uds-form row">
         <div className="col-lg-4 col-md-12">
