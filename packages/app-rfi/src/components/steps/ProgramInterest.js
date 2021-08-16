@@ -40,8 +40,9 @@ function filterDegrees(
   return degreeData;
 }
 
-// Filter degree data by department or college props if they exist.
-function filterDegreesByDeptOrCollege(degreeData, props) {
+// Filter degree data by department or college or actualCampus props if they
+// exist.
+function filterDegreesByDeptOrCollegeOrCampus(degreeData, props) {
   // Progress return if most specific is found first.
   if (props.department) {
     // Filter with prop's props.department against data's DepartmentCode
@@ -50,6 +51,15 @@ function filterDegreesByDeptOrCollege(degreeData, props) {
   if (props.college) {
     // Filter with prop's props.college against data's CollegeAcadOrg
     return filterDegrees(degreeData, "CollegeAcadOrg", props, "college");
+  }
+  if (props.actualCampus) {
+    // Filter with prop's props.actualCampus against data's CampusStringArray
+    return filterDegrees(
+      degreeData,
+      "CampusStringArray",
+      props,
+      "actualCampus"
+    );
   }
   // Passthrough.
   return degreeData;
@@ -296,7 +306,7 @@ const ProgramInterest = props => {
       // DS REST Areas of Interest
 
       // Filter with props.department or props.college if they exist.
-      const degreeDataProcessed = filterDegreesByDeptOrCollege(
+      const degreeDataProcessed = filterDegreesByDeptOrCollegeOrCampus(
         degreeData,
         props
       );
@@ -357,7 +367,7 @@ const ProgramInterest = props => {
       );
 
       // Filter with props.department or props.college if they exist.
-      const degreeDataProcessed = filterDegreesByDeptOrCollege(
+      const degreeDataProcessed = filterDegreesByDeptOrCollegeOrCampus(
         degreeDataFiltered,
         props
       );
