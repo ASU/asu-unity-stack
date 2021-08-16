@@ -83,7 +83,8 @@
      *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=true&program=graduate
      *
      * RFI COMPONENT PROPS, FOR REFERENCE
-     * - campus: One of ONLNE, GROUND, NOPREF, or undefined
+     * - campus: One of a campus type: ONLNE, GROUND, NOPREF, or undefined
+     * - actualCampus: A specific campus like TEMPE, DTPHX, POLY, WEST, ONLNE...
      * - college: Use one acadOrgCode from reference
      *     https://api.myasuplat-dpl.asu.edu/api/codeset/colleges
      * - department: Use one department code. See DepartmentCode values in
@@ -118,6 +119,7 @@
       targetSelector: "#rfi-container",
       props: {
         campus: "NOPREF", // ONLNE, GROUND, NOPREF
+        actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
         college: undefined, // e.g. CES
         department: undefined, // e.g. CINFOTECH
         studentType: "undergrad",

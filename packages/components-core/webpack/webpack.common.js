@@ -78,21 +78,6 @@ module.exports = {
     //   paths: glob.sync(`${PROJECT_DIR}src/**/*`, { nodir: true }),
     // }),
     // new BundleAnalyzerPlugin(),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(
-            PROJECT_DIR,
-            "node_modules/@asu-design-system/bootstrap4-theme/dist/css/bootstrap-asu.min.css"
-          ),
-          to: path.resolve(
-            PROJECT_DIR,
-            "vendor/css/bootstrap-asu.min.module.css"
-          ),
-          force: true,
-        },
-      ],
-    }),
   ],
   resolve: {
     alias: {

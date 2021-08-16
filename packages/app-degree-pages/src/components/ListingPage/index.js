@@ -14,19 +14,24 @@ import { listingPageDefaultDataSource } from "../../core/constants";
 import { useListingPageLogger } from "../../core/hooks";
 import { useFetch } from "../../core/hooks/use-fetch";
 import {
-  acceleratedConcurrentValues,
   resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
+  defaultAccelConcOption,
+  onlneOption,
 } from "../../core/models";
 import {
   columSettingsPropShape,
   dataSourcePropShape,
 } from "../../core/models/app-prop-types";
-import { degreeDataPropResolverService } from "../../core/services";
+import {
+  degreeDataPropResolverService,
+  filterData,
+  sortPrograms,
+} from "../../core/services";
 import { urlResolver } from "../../core/utils";
 import { BrowseTitle } from "./components/BrowseTitle";
-import { Filters } from "./components/Filters";
+import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
@@ -35,6 +40,7 @@ import { SearchBar } from "./components/SearchBar";
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
  * @typedef {import("./components/Filters").FiltersState} FiltersState
+ * @typedef {import("./components/Filters").FilterOption} FilterOption
  */
 
 const Main = styled(MainSection)`
@@ -55,67 +61,6 @@ const ListingStyle = createGlobalStyle`
 
 /**
  *
- * @param {{
- * programs: Object[]
- * filters: import("src/components/ListingPage/components/Filters").FiltersState
- * }} props
- * @returns
- */
-function filterData({
-  programs = [],
-  filters: {
-    collegeAcadOrg,
-    departmentCode,
-    acceleratedConcurrent,
-    locations = [],
-  },
-}) {
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCollegeAcadOrg = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return collegeAcadOrg
-      ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidDepartmentCode = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return departmentCode
-      ? resolver.getDepartmentCode().includes(departmentCode)
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCampus = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
-    return locations.length > 0
-      ? resolver.getCampusList()?.some(campus => locations.includes(campus))
-      : true;
-  };
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidAcceleratedConcurrent = (row = {}) =>
-    acceleratedConcurrent && acceleratedConcurrent !== "all"
-      ? row[acceleratedConcurrent]?.length > 0
-      : true;
-  // ============================================================
-  /** @param {Object.<string, any>} row  */
-  const doFilter = row =>
-    isValidCollegeAcadOrg(row) &&
-    isValidDepartmentCode(row) &&
-    isValidCampus(row) &&
-    isValidAcceleratedConcurrent(row);
-
-  return programs.filter(doFilter);
-}
-
-/**
- *
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
@@ -128,10 +73,11 @@ const ListingPage = ({
   introContent,
   programList,
 }) => {
-  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{programs: []}>} */
+  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<ProgramListingResponse>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
+  const [dataInitView, setDataInitView] = useState([]);
   /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
@@ -146,12 +92,13 @@ const ListingPage = ({
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
-    locations: [],
-    asuLocals: [],
-    acceleratedConcurrent: "all",
+    ...INITIAL_FILTER_STATE,
   });
-  /** @type {import("../../core/models/shared-types").UseStateTuple<string[]>} */
-  const [appliedFilters, setAppliedFilters] = useState([]);
+
+  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  const [appliedFilters, setAppliedFilters] = useState({
+    ...INITIAL_FILTER_STATE,
+  });
 
   useListingPageLogger({
     dataSource: programList.dataSource,
@@ -165,25 +112,27 @@ const ListingPage = ({
   }, [url]);
 
   useEffect(() => {
+    let dataInit = sortPrograms(data?.programs || []);
+    // apply buil-in filters
     if (collegeAcadOrg || departmentCode) {
-      setTableView(
-        filterData({
-          programs: data?.programs,
-          filters: {
-            collegeAcadOrg,
-            departmentCode,
-          },
-        })
-      );
-    } else {
-      setTableView(data?.programs || []);
+      dataInit = filterData({
+        programs: dataInit,
+        filters: {
+          collegeAcadOrg,
+          departmentCode,
+        },
+      });
     }
+
+    setDataInitView(dataInit);
+    setTableView(dataInit);
   }, [data]);
 
   /**
-   * @param {import("src/components/ListingPage/components/Filters").FiltersState} data
+   * @param {FiltersState} activeFilters
    */
-  const onDegreeApplyFilters = async ({ acceleratedConcurrent, locations }) => {
+  const onFilterApply = async activeFilters => {
+    const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
     // ============================================================
     // prevent search
     // ============================================================
@@ -192,6 +141,7 @@ const ListingPage = ({
     if (
       !acceleratedConcurrent &&
       locations.length === 0 &&
+      asuLocals.length === 0 &&
       !collegeAcadOrg &&
       !departmentCode
     ) {
@@ -209,25 +159,28 @@ const ListingPage = ({
         collegeAcadOrg,
         departmentCode,
         acceleratedConcurrent,
-        locations,
+        locations:
+          asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
       },
     });
 
+    setStateFilters({ ...activeFilters });
+    setAppliedFilters({ ...activeFilters });
     setTableView(filteredPrograms);
-
     setSearchLoading(false);
-
-    // set summary filters
-    const newAppliedFilterList = [...locations];
-    if (acceleratedConcurrent !== "all")
-      newAppliedFilterList.push(acceleratedConcurrent.replace("Degrees", ""));
-
-    setAppliedFilters(newAppliedFilterList);
   };
 
-  const onDegreeCleanFilters = () => {
-    setAppliedFilters([]);
-    setTableView(data?.programs || []);
+  /**
+   * @param {FiltersState} filters
+   */
+  const onFilterChange = async filters => {
+    setStateFilters(filters);
+  };
+
+  const onFilterClean = () => {
+    setStateFilters(INITIAL_FILTER_STATE);
+    setAppliedFilters(INITIAL_FILTER_STATE);
+    setTableView(dataInitView);
   };
 
   /**
@@ -256,40 +209,18 @@ const ListingPage = ({
     setSearchLoading(false);
   };
 
-  const onRemoveFilterValue = filterValue => {
-    // clean up: summary filters component
-    const newFilters = appliedFilters.filter(f => f !== filterValue);
-    setAppliedFilters(newFilters);
-    // clean up: state filters component
-    /** @type {FiltersState} */
-    const cleanFilters = {};
+  const onFilterSummaryRemove = (filterName, { value }) => {
+    const updatedFilters =
+      filterName === "acceleratedConcurrent"
+        ? defaultAccelConcOption
+        : appliedFilters[filterName].filter(f => f.value !== value);
 
-    if (filterValue === "ONLNE") {
-      cleanFilters["asuLocals"] = [];
-      cleanFilters["locations"] = stateFilters.locations.filter(
-        f => f !== filterValue
-      );
-    } else if (acceleratedConcurrentValues.includes(`${filterValue}Degrees`)) {
-      cleanFilters["acceleratedConcurrent"] = "all";
-    } else {
-      cleanFilters["locations"] = stateFilters.locations.filter(
-        f => f !== filterValue
-      );
-    }
-
-    const newStateFilters = {
-      ...stateFilters,
-      ...cleanFilters,
+    const newFilters = {
+      ...appliedFilters,
+      [filterName]: updatedFilters,
     };
 
-    setStateFilters({ ...newStateFilters });
-
-    // clean up: redo query with new filters
-    onDegreeApplyFilters({
-      ...newStateFilters,
-      // acceleratedConcurrent: newStateFilters.acceleratedConcurrent,
-      // locations: newStateFilters.locations,
-    });
+    onFilterApply(newFilters);
   };
 
   return (
@@ -338,9 +269,9 @@ const ListingPage = ({
             {hasFilters ? (
               <Filters
                 value={stateFilters}
-                onValueChange={setStateFilters}
-                onApplyFilters={onDegreeApplyFilters}
-                onCleanFilters={onDegreeCleanFilters}
+                onChange={onFilterChange}
+                onApply={onFilterApply}
+                onClean={onFilterClean}
               />
             ) : null}
           </section>
@@ -351,8 +282,8 @@ const ListingPage = ({
             <div className="d-flex justify-content-between">
               {hasFilters ? (
                 <FiltersSummary
-                  appliedFilters={appliedFilters}
-                  onRemoveFilter={onRemoveFilterValue}
+                  value={appliedFilters}
+                  onRemove={onFilterSummaryRemove}
                 />
               ) : null}
 

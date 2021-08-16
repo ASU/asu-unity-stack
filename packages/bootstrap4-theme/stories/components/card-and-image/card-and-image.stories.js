@@ -1,10 +1,13 @@
-export default { title: 'Components/Content Sections/Card And Image' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Content Sections/Card And Image');
 
-export const LeftFloatedCard = () => `
+
+export const LeftFloatedCard = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
-    <div class="uds-card-and-image" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+    { /* Component start */ }
+    <div class="uds-card-and-image" style={{'background-image': "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')"}}>
       <div class="uds-card-and-image-container">
         <div class="card card-centered">
           <i class="fas fa-rocket fa-2x card-icon-top"></i>
@@ -20,16 +23,16 @@ export const LeftFloatedCard = () => `
         </div>
       </div>
     </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);
 
-export const RightFloatedCard = () => `
+export const RightFloatedCard = createStory(
 <div class="container">
   <div class="row">
-    <!-- Component start -->
-    <div class="uds-card-and-image uds-card-and-image-right" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200');">
+    { /* Component start */ }
+    <div class="uds-card-and-image uds-card-and-image-right" style={{'background-image': "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')"}}>
       <div class="uds-card-and-image-container">
         <div class="card card-centered">
           <i class="fas fa-rocket fa-2x card-icon-top"></i>
@@ -45,7 +48,7 @@ export const RightFloatedCard = () => `
         </div>
       </div>
     </div>
-    <!-- Component end -->
+    { /* Component end */ }
   </div>
 </div>
-`;
+);

@@ -110,7 +110,7 @@ function textTextMediaTypeHtmlTemplate({
           <ParagrapList contents={contents} />
           <ApplyNow href={applyNowUrl} />
         </div>
-        <div className="col-sm-12 col-md-7">
+        <div className="col-sm-12 col-md-7 mt-2 mt-sm-0">
           {video && (
             <Video
               url={video.url}

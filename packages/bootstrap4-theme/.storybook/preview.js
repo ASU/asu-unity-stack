@@ -1,4 +1,4 @@
-import { addDecorator, addParameters } from '@storybook/html';
+import { addDecorator, addParameters } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
@@ -25,5 +25,6 @@ export const parameters = {
         ['Colors', 'Typography', 'Layout', 'Icons', 'Backgrounds', 'Focus States'], 'Components', 'Docs', ['Global Header', ['Header top', 'Header main', 'Navbar options', 'No navigation', 'Additional considerations'], 'Content Sections', 'Hero']],
     },
   },
+  layout: 'fullscreen'
 };
 

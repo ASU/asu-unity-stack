@@ -24,6 +24,9 @@ const WrapperSection = styled.div`
       }
     }
   }
+  .accordion .card.card-foldable {
+    border-bottom: 1px solid #d0d0d0;
+  }
 `;
 
 /**
@@ -72,7 +75,7 @@ const AccordionView = ({ programs, actionUrls }) => {
 
   return (
     <WrapperSection>
-      <Accordion cards={cards} openedCard={1} />
+      <Accordion cards={cards} />
     </WrapperSection>
   );
 };

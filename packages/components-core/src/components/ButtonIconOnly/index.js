@@ -1,31 +1,33 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
+// @ts-check
 import PropTypes from "prop-types";
 import React from "react";
 
+/**
+ * @typedef {{
+ *  color?: string
+ *  icon: string[]
+ *  innerRef?: React.RefObject
+ *  onClick?: () => void
+ *  size?: "large" | "small"
+ * }} ButtonIconOnlyProps
+ */
+
+/**
+ * @param {ButtonIconOnlyProps} props
+ * @returns {JSX.Element}
+ */
 export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
-  library.add(fab, fas, far);
-
-  const btnClasses = classNames(
-    "btn",
-    "btn-circle",
-    `btn-circle-alt-${color}`,
-    `${size === "large" && "btn-circle-large"}`
-  );
-
   return (
     <button
       type="button"
-      className={btnClasses}
+      className={`btn btn-circle btn-circle-alt-${color} ${
+        size === "large" && "btn-circle-large"
+      }`}
       ref={innerRef}
       onClick={onClick}
       aria-label="Close"
     >
-      <FontAwesomeIcon icon={icon} />
+      <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
     </button>
   );
 };

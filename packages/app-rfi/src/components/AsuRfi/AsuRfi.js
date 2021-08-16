@@ -13,6 +13,7 @@ import "./AsuRfi.css";
 
 const AsuRfi = ({
   campus,
+  actualCampus,
   college,
   department,
   studentType,
@@ -33,6 +34,7 @@ const AsuRfi = ({
     <div>
       <RfiMainForm
         campus={campus}
+        actualCampus={actualCampus}
         college={college}
         department={department}
         studentType={studentType}
@@ -58,6 +60,7 @@ export { AsuRfi };
 // Props
 AsuRfi.defaultProps = {
   campus: undefined,
+  actualCampus: undefined,
   college: undefined,
   department: undefined,
   studentType: undefined,
@@ -79,6 +82,7 @@ AsuRfi.defaultProps = {
 
 AsuRfi.propTypes = {
   campus: PropTypes.string,
+  actualCampus: PropTypes.string,
   college: PropTypes.string,
   department: PropTypes.string,
   studentType: PropTypes.string,

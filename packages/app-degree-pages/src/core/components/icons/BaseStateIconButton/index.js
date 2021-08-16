@@ -51,8 +51,9 @@ function BaseStateIconButton({
   const res = (
     <span
       role="button"
+      className="element-focus"
       tabIndex={0}
-      onKeyDown={onClickButton}
+      onKeyDown={e => e.key === "Enter" && onClickButton()}
       onClick={onClickButton}
       aria-label={ariaLabel}
       aria-expanded={selected}

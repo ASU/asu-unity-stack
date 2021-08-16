@@ -10,6 +10,20 @@ import {
   BaseNavButtonContainer,
 } from "../../core/components/BaseCarousel/components";
 
+const calculateHeightNeeded = (content, width) => {
+  // Make height consistent across all slides.
+  // Assumes about 6 horizontal and 20 vertical px per character.
+  if (!content) {
+    return 0;
+  }
+  const brCount = (content.match(/<br/g) || []).length;
+  const charactersPerLine = width / 6;
+
+  const linesNeeded =
+    parseInt(content.length / charactersPerLine, 10) + brCount;
+
+  return linesNeeded * 20;
+};
 /**
  * @typedef {import('../../core/components/BaseCarousel').CarouselItem} CarouselItem
  */
@@ -62,6 +76,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
  * instanceName: string
  * imageItems: ImageCarouselItem []
  * hasContent: boolean
+ * maxWidth?: string
  * }} props
  * @returns { JSX.Element }
  */
@@ -74,15 +89,29 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
 
   const onItemClick = currentIndex => {
     const item = imageItems[currentIndex];
-    let contentToDisplay = item.content;
-    if (contentToDisplay && contentToDisplay.length > 250) {
-      contentToDisplay = `${contentToDisplay.substring(0, 250)}...`;
-    }
     setTitle(item.title);
-    setContent(contentToDisplay);
+    setContent(item.content);
   };
 
   useEffect(() => {
+    const textArea = document.querySelector(
+      `.image-gallery figcaption .uds-caption-text div`
+    );
+    if (textArea) {
+      const contentWidth = parseInt(
+        window
+          .getComputedStyle(textArea, null)
+          .getPropertyValue("width")
+          .split("px")[0],
+        10
+      );
+      const tallestContent = imageItems.reduce((acc, val) => {
+        const heightNeeded = calculateHeightNeeded(val.content, contentWidth);
+        return heightNeeded > acc ? heightNeeded : acc;
+      }, 0);
+      textArea.style.height = `${tallestContent}px`;
+    }
+
     const currentSlider = document.querySelector(`#${instanceName}`);
 
     function onDataCurrentIndexChange(mutations) {
@@ -121,14 +150,9 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
       {hasContent && (title || content) ? (
         <figcaption id="caption" className="figure-caption uds-figure-caption">
           <div className="uds-caption-text">
-            {!title ? (
-              <span>{content}</span>
-            ) : (
-              <>
-                <h3>{title}</h3>
-                <p>{content}</p>
-              </>
-            )}
+            {title ? <h3>{title}</h3> : null}
+            {/* eslint-disable-next-line react/no-danger */}
+            <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </figcaption>
       ) : null}
@@ -180,6 +204,7 @@ const ImageGalleryCarousel = ({
           instanceName={instanceName}
           hasContent={hasContent}
           imageItems={imageItems}
+          maxWidth={maxWidth}
         />
       )}
       removeSideBackground={imageItems.length <= 1}

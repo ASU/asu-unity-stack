@@ -62,15 +62,12 @@ const GROUP_STYLE = "Styles";
  */
 const Wrapper = ({ children }) => (
   <div
-    className={`p-6 ${select(
+    className={`container ${select(
       "Background color",
       backgroundColors,
       backgroundColors.White,
       GROUP_STYLE
     )}`}
-    style={{
-      width: "fit-content",
-    }}
   >
     {children}
   </div>
@@ -106,59 +103,67 @@ export const TestimonialCarouselDefault = () => (
 );
 
 export const TestimonialCarouselWithNoImage = () => (
-  <TestimonialCarousel
-    itemStyle={{
-      containerCssClass: select(
-        "Item Color Combination",
-        itemColorCombinations,
-        itemColorCombinations.Gold
-      ),
-    }}
-    maxWidth={text("Max Width", maxWidth)}
-    hasNavButtons={boolean("Has Nav Buttons", true)}
-    hasPositionIndicators={boolean("Has Indicators", true)}
-    testimonialItems={object("Testimonials", testimonialNoImage)}
-  />
+  <div className="container">
+    <TestimonialCarousel
+      itemStyle={{
+        containerCssClass: select(
+          "Item Color Combination",
+          itemColorCombinations,
+          itemColorCombinations.Gold
+        ),
+      }}
+      maxWidth={text("Max Width", maxWidth)}
+      hasNavButtons={boolean("Has Nav Buttons", true)}
+      hasPositionIndicators={boolean("Has Indicators", true)}
+      testimonialItems={object("Testimonials", testimonialNoImage)}
+    />
+  </div>
 );
 
 export const TestimonialCarouselWithSlider = () => (
-  <TestimonialCarousel
-    maxWidth={text("Max Width", maxWidth)}
-    hasNavButtons={boolean("Has Nav Buttons", true)}
-    hasPositionIndicators={boolean("Has Indicators", false)}
-    testimonialItems={object("Testimonials", testimonialWithImage2)}
-    itemStyle={{
-      containerCssClass: ["accent-gold"],
-    }}
-  />
+  <div className="container">
+    <TestimonialCarousel
+      maxWidth={text("Max Width", maxWidth)}
+      hasNavButtons={boolean("Has Nav Buttons", true)}
+      hasPositionIndicators={boolean("Has Indicators", false)}
+      testimonialItems={object("Testimonials", testimonialWithImage2)}
+      itemStyle={{
+        containerCssClass: ["accent-gold"],
+      }}
+    />
+  </div>
 );
 
 export const TestimonialCarouselWithSliderAndPositionIndicatorDots = () => (
-  <TestimonialCarousel
-    maxWidth={text("Max Width", maxWidth)}
-    hasNavButtons={boolean("Has Nav Buttons", true)}
-    hasPositionIndicators={boolean("Has Indicators", true)}
-    testimonialItems={object("Testimonials", testimonialNoImage2)}
-  />
+  <div className="container">
+    <TestimonialCarousel
+      maxWidth={text("Max Width", maxWidth)}
+      hasNavButtons={boolean("Has Nav Buttons", true)}
+      hasPositionIndicators={boolean("Has Indicators", true)}
+      testimonialItems={object("Testimonials", testimonialNoImage2)}
+    />
+  </div>
 );
 
 export const TestimonialCarouselWithNoCitation = () => (
-  <TestimonialCarousel
-    itemStyle={{
-      containerCssClass: select(
-        "Item Color Combination",
-        itemColorCombinations,
-        itemColorCombinations.Gold
-      ),
-      titleCssClass: select(
-        "Title Color Combination",
-        itemTitleColorCombinations,
-        itemTitleColorCombinations["Highlight gold"]
-      ),
-    }}
-    maxWidth={text("Max Width", maxWidth)}
-    hasNavButtons={boolean("Has Nav Buttons", true)}
-    hasPositionIndicators={boolean("Has Indicators", true)}
-    testimonialItems={object("Testimonials", testimonialNoCitation)}
-  />
+  <div className="container">
+    <TestimonialCarousel
+      itemStyle={{
+        containerCssClass: select(
+          "Item Color Combination",
+          itemColorCombinations,
+          itemColorCombinations.Gold
+        ),
+        titleCssClass: select(
+          "Title Color Combination",
+          itemTitleColorCombinations,
+          itemTitleColorCombinations["Highlight gold"]
+        ),
+      }}
+      maxWidth={text("Max Width", maxWidth)}
+      hasNavButtons={boolean("Has Nav Buttons", true)}
+      hasPositionIndicators={boolean("Has Indicators", true)}
+      testimonialItems={object("Testimonials", testimonialNoCitation)}
+    />
+  </div>
 );

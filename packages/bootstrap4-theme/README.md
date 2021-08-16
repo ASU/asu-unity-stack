@@ -225,7 +225,6 @@ yarn gulp               # Execute the default Gulp task (validate)
 
 #### TODO 
 
-
 ![divider](./divider.png)
 
 ## ❯ Project Structure
