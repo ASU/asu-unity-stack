@@ -49,52 +49,77 @@ describe("#ListingPage", () => {
   /** @type {HTMLElement} */
   let container = null;
 
-  beforeEach(async () => {
+  /** @param {AppProps} props  */
+  async function renderListingPage(props) {
     await act(async () => {
       component = await render(
         <ListingPage
-          appPathFolder={defaultArgs.appPathFolder}
-          actionUrls={defaultArgs.actionUrls}
-          hero={defaultArgs.hero}
-          introContent={defaultArgs.introContent}
-          programList={defaultArgs.programList}
-          hasSearchBar={defaultArgs.hasSearchBar}
-          hasFilters={defaultArgs.hasFilters}
+          appPathFolder={props.appPathFolder}
+          actionUrls={props.actionUrls}
+          hero={props.hero}
+          introContent={props.introContent}
+          programList={props.programList}
+          hasSearchBar={props.hasSearchBar}
+          hasFilters={props.hasFilters}
         />
       );
       container = component.container;
     });
+  }
+
+  describe("#Default props", () => {
+    beforeEach(async () => {
+      await renderListingPage(defaultArgs);
+    });
+
+    it("should define the component", () => {
+      expect(component).toBeDefined();
+    });
+
+    it("should define `Hero` section", async () => {
+      expect(container.querySelector(".uds-hero")).toBeInTheDocument();
+    });
+
+    const cases = [
+      [`Intro content`, `intro-content`],
+      [`Browse Title`, `browse-title`],
+      [`Search bar`, `search-bar`],
+      [`Filters`, `filters`],
+      [`Filters Summary`, `filters-summary`],
+      [`Program List`, `program-list`],
+    ];
+
+    test.each(cases)("should define `%p` section", (_, testId) =>
+      expect(component.getByTestId(testId)).toBeInTheDocument()
+    );
   });
 
-  it("should define the component", () => {
-    expect(component).toBeDefined();
-  });
+  describe("#Custom props", () => {
+    beforeEach(async () => {
+      /** @type {AppProps} */
+      const customProps = {
+        ...defaultArgs,
+        hasFilters: false,
+        hasSearchBar: false,
+        hero: {
+          hide: true,
+        },
+      };
+      await renderListingPage(customProps);
+    });
 
-  it("should define `Intro content` section", async () => {
-    expect(component.getByTestId("intro-content")).toBeDefined();
-  });
+    it("should `Hero` section be undefined", async () => {
+      expect(container.querySelector(".uds-hero")).not.toBeInTheDocument();
+    });
 
-  it("should define `Hero` section", async () => {
-    expect(container.querySelector(".uds-hero")).not.toBeNull();
-  });
+    const cases = [
+      [`Search bar`, `search-bar`],
+      [`Filters`, `filters`],
+      [`Filters Summary`, `filters-summary`],
+    ];
 
-  it("should define `Browse Title` section", async () => {
-    expect(component.getByTestId("browse-title")).toBeDefined();
-  });
-
-  it("should define `Search bar` section", async () => {
-    expect(component.getByTestId("search-bar")).toBeDefined();
-  });
-
-  it("should define `Filters` section", async () => {
-    expect(component.getByTestId("filters")).toBeDefined();
-  });
-
-  it("should define `Filters Summary` section", async () => {
-    expect(component.getByTestId("filters-summary")).toBeDefined();
-  });
-
-  it("should define `Program List` section", async () => {
-    expect(component.getByTestId("program-list")).toBeDefined();
+    test.each(cases)("should `%p` section be undefined", (_, testId) =>
+      expect(component.queryByTestId(testId)).toBeNull()
+    );
   });
 });
