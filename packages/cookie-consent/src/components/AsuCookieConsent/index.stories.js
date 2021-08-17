@@ -1,5 +1,3 @@
-import { h } from "preact";
-
 import { AsuCookieConsent } from ".";
 
 export default {
