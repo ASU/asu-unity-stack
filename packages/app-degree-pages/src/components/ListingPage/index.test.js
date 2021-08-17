@@ -4,6 +4,8 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import * as service from "../../core/services/degree-data-manager-service";
+
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
@@ -43,6 +45,17 @@ const defaultArgs = {
   },
 };
 
+// import { Pagination } from "@asu-design-system/components-core/src/components/Pagination";
+// jest.genMockFromModule("@asu-design-system/components-core");
+// jest.mock(
+//   "../../../../components-core/src/components/Pagination",
+//   () =>
+//     ({ children }) =>
+//       <div>{children}</div>
+// );
+const mockDatafilter = jest.spyOn(service, "filterData");
+const mockSortPrograms = jest.spyOn(service, "sortPrograms");
+
 describe("#ListingPage", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component = null;
@@ -67,9 +80,14 @@ describe("#ListingPage", () => {
     });
   }
 
-  describe("#Default props", () => {
+  describe("#With default props", () => {
     beforeEach(async () => {
       await renderListingPage(defaultArgs);
+    });
+
+    it("should call useEffect functions", () => {
+      expect(mockSortPrograms).toHaveBeenCalled();
+      expect(mockDatafilter).not.toHaveBeenCalled();
     });
 
     it("should define the component", () => {
@@ -80,7 +98,7 @@ describe("#ListingPage", () => {
       expect(container.querySelector(".uds-hero")).toBeInTheDocument();
     });
 
-    const cases = [
+    const sectionCases = [
       [`Intro content`, `intro-content`],
       [`Browse Title`, `browse-title`],
       [`Search bar`, `search-bar`],
@@ -89,12 +107,12 @@ describe("#ListingPage", () => {
       [`Program List`, `program-list`],
     ];
 
-    test.each(cases)("should define `%p` section", (_, testId) =>
+    test.each(sectionCases)("should define `%p` section", (_, testId) =>
       expect(component.getByTestId(testId)).toBeInTheDocument()
     );
   });
 
-  describe("#Custom props", () => {
+  describe("#With `Filters` and `Hero` hidden", () => {
     beforeEach(async () => {
       /** @type {AppProps} */
       const customProps = {
@@ -121,5 +139,28 @@ describe("#ListingPage", () => {
     test.each(cases)("should `%p` section be undefined", (_, testId) =>
       expect(component.queryByTestId(testId)).toBeNull()
     );
+  });
+
+  describe("#With `collegeAcadOrg` and `departmentCode`", () => {
+    beforeEach(async () => {
+      /** @type {AppProps} */
+      const customProps = {
+        ...defaultArgs,
+        programList: {
+          ...defaultArgs.programList,
+          dataSource: {
+            ...defaultArgs.programList.dataSource,
+            collegeAcadOrg: "CES",
+            // departmentCode: "CGRAPHINFO",
+          },
+        },
+      };
+      await renderListingPage(customProps);
+    });
+
+    it("should call useEffect functions and `sortPrograms()`", () => {
+      expect(mockSortPrograms).toHaveBeenCalled();
+      expect(mockDatafilter).toHaveBeenCalled();
+    });
   });
 });

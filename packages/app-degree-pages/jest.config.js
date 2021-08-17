@@ -10,4 +10,7 @@ module.exports = {
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
   },
   transformIgnorePatterns: ["/node_modules/"],
+  moduleNameMapper: {
+    "@asu-design-system/components-core": "<rootDir>/mocks/components-core-mocks.js",
+  },
 };
