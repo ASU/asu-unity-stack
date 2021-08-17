@@ -1,0 +1,28 @@
+/*--------------------------------------------------------------
+# Global Styles
+--------------------------------------------------------------*/
+.asu-header-align {
+  max-width: 1224px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.container .asu-header-align {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@include media-breakpoint-down(lg) {
+  .asu-header-align {
+    max-width: 100%;
+    padding-left: $uds-size-spacing-4;
+    padding-right: $uds-size-spacing-4;
+  }
+  .container .asu-header-align,
+  .container-fluid .asu-header-align {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

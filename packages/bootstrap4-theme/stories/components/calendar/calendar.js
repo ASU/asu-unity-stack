@@ -82,9 +82,9 @@ export const initCalendar = function () {
   const render = () => {
     const calendarContainer = document.getElementById('calendar');
     calendarContainer.innerHTML = `
-      <div class="calendar-title">
-        <h2>${months[state.month]} ${state.year}</h2>
-      </div>
+      <h2>
+        <span class="highlight-black">${months[state.month]} ${state.year}</span>
+      </h2>
       <div class="calendar-grid">
         <div class="heading desktop">
           ${desktopDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}

@@ -8,10 +8,25 @@
   max-width: 1920px;
   padding: 48px 96px;
   width: 100%;
-  margin: 0 12px;
 
   &-right {
-    flex-direction: row-reverse;
+    .uds-card-and-image-container {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &-container {
+    display: flex;
+    width: 100%;
+    .card {
+      max-width: 384px;
+      .card-header {
+        padding-bottom: $uds-size-spacing-2 !important;
+      }
+    }
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      width: 100%;
+    }
   }
 
   @media screen and (max-width: $uds-breakpoint-sm) {
@@ -22,15 +37,8 @@
     padding: 24px;
     width: 100%;
     margin: 0;
-  }
-
-  &-container {
-    max-width: 384px;
-    .card .card-header {
-      padding-bottom: $uds-size-spacing-2 !important;
-    }
-    @media screen and (max-width: $uds-breakpoint-sm) {
-      width: 100%;
+    .asu-header-align {
+      padding: 0;
     }
   }
 }

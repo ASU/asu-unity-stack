@@ -1,15 +1,10 @@
 #calendar {
-  .calendar-title {
-    h2 {
-      width: max-content;
-      background-color: $uds-color-background-dark;
-      color: $uds-color-base-gray-1;
-      padding: 0 $uds-size-spacing-1;
-    }
+  width: 100%;
+  h2 {
+    margin-left: 0.15em;
   }
   .calendar-grid {
-    margin: $uds-size-spacing-3 0;
-    padding: ($uds-size-spacing-3 / 2);
+    margin: $uds-size-spacing-4 0;
     text-align: left;
     font-weight: 700;
     p {
@@ -40,7 +35,7 @@
         border-radius: $uds-component-button-border-radius;
         background-color: $uds-component-button-maroon-background-color;
         color: $uds-color-background-white;
-        padding: ($uds-size-spacing-1 / 2);
+        padding: ($uds-size-spacing-1 / 2) 0.3rem;
       }
       .prev,
       .next {

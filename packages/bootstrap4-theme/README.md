@@ -29,17 +29,30 @@
 
 ## ❯ Table of Contents
 
-- [Development Overview](#-development-overview)
-- [Load Theme into Webpage](#-load-theme-into-webpage)
-- [Import into Application](#-import-into-application)
-- [Setup Local Development Environment](#-setup-local-development-environment)
-- [Development Procedures](#-development-procedures)
-- [Prepare Releases](#-prepare-releases)
-- [Project Structure](#-project-structure)
-- [Contribute to Project](#-contribute-to-project)
-- [Further Documentation](#-further-documentation)
-- [Related Projects](#-related-projects)
-- [License](#-license)
+- [❯ Table of Contents](#-table-of-contents)
+- [❯ Development Overview](#-development-overview)
+- [❯ Load Theme into Webpage](#-load-theme-into-webpage)
+  - [TODO](#todo)
+- [❯ Import into Application](#-import-into-application)
+  - [TODO](#todo-1)
+- [❯ Setup Local Development Environment](#-setup-local-development-environment)
+  - [Install Node and Yarn](#install-node-and-yarn)
+  - [Install VS Code](#install-vs-code)
+- [❯ Development Procedures](#-development-procedures)
+  - [Clone and initialize this project](#clone-and-initialize-this-project)
+  - [Launch Storybook Dev Server](#launch-storybook-dev-server)
+  - [Run local visual snapshot tests on all theme components.](#run-local-visual-snapshot-tests-on-all-theme-components)
+- [❯ Prepare Releases](#-prepare-releases)
+  - [Linting and compiling the source code](#linting-and-compiling-the-source-code)
+  - [Publish Package Releases](#publish-package-releases)
+    - [TODO](#todo-2)
+- [❯ Project Structure](#-project-structure)
+  - [Development of new Components](#development-of-new-components)
+- [❯ Contribute to Project](#-contribute-to-project)
+- [❯ Further Documentation](#-further-documentation)
+- [❯ Related Projects](#-related-projects)
+  - [TODO: List related projects such as Unity, WebSpark, WordSpark, etc.](#todo-list-related-projects-such-as-unity-webspark-wordspark-etc)
+- [❯ License](#-license)
 
 ![divider](./divider.png)
 
@@ -223,7 +236,7 @@ yarn gulp               # Execute the default Gulp task (validate)
 
 ### Publish Package Releases
 
-#### TODO 
+#### TODO
 
 ![divider](./divider.png)
 
@@ -239,6 +252,34 @@ yarn gulp               # Execute the default Gulp task (validate)
 | **test/e2e/** *.test.ts           | End-2-End tests (Not Yet Implemented) |
 | **test/integration/** *.test.ts   | Integration tests (Not Yet Implemented) |
 
+
+![divider](./divider.png)
+
+### Development of new Components
+
+For the development of new components, have in mind the following things:
+
+* Add comments on the beginning and end of the markup of each component.
+* For every component, MUST create a story to represent how to align that component with the header(if the components needs to be aligned).
+* For full width and aligned components, use the default story to represent the full width component and add a new story for the aligned version(with the header) of the component.
+* To align components with the header use the following structure
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="asu-header-align">
+          <!-- Component start -->
+          .
+          .
+          <!-- Component end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  ```
+* To align content of full width components to the header add `asu-header-align` class to the container of the body of the component(not the container of the component itself).
+
+Take a look at [this](./stories/components/card-and-image/card-and-image.stories.js) or [this](./stories/components/person-profile/person-profile.stories.js) components as examples.
 
 ![divider](./divider.png)
 

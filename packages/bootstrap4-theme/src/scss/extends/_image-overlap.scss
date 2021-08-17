@@ -34,7 +34,6 @@
 @include media-breakpoint-up(lg) {
   .uds-image-overlap {
     max-height: 100%;
-    margin: 0 12px;
 
     &:before {
       display: none;
