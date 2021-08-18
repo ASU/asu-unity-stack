@@ -129,6 +129,24 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
+ * @typedef  {{
+ *    id?: string | number
+ *    text: string
+ *    value: string
+ * }} FilterOption
+ *
+ *  @typedef  {{
+ *    isActive?: boolean
+ *    keyword?: string
+ *    collegeAcadOrg?: string
+ *    departmentCode?: string
+ *    locations?: FilterOption []
+ *    asuLocals?: FilterOption []
+ *    acceleratedConcurrent?: FilterOption
+ * }} FiltersState
+ */
+
+/**
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */

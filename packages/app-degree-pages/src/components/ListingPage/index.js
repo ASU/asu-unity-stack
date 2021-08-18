@@ -24,11 +24,7 @@ import {
   columSettingsPropShape,
   dataSourcePropShape,
 } from "../../core/models/app-prop-types";
-import {
-  degreeDataPropResolverService,
-  filterData,
-  sortPrograms,
-} from "../../core/services";
+import { filterData, sortPrograms } from "../../core/services";
 import { urlResolver } from "../../core/utils";
 import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
@@ -39,8 +35,8 @@ import { SearchBar } from "./components/SearchBar";
 
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
- * @typedef {import("./components/Filters").FiltersState} FiltersState
- * @typedef {import("./components/Filters").FilterOption} FilterOption
+ * @typedef {import("../../core/models/shared-types").FiltersState} FiltersState
+ * @typedef {import("../../core/models/shared-types").FilterOption} FilterOption
  */
 
 const Main = styled(MainSection)`
@@ -57,6 +53,12 @@ const ListingStyle = createGlobalStyle`
         grid-template-rows: 1fr auto auto 1.5rem auto;
     }
   }
+`;
+
+const FilterSeparator = styled.div.attrs({ className: "container" })`
+  border-bottom: 1px solid #d0d0d0;
+  margin-bottom: calc(var(--uds-dp-section-margin) / 2);
+  padding-bottom: calc(var(--uds-dp-section-margin) / 2);
 `;
 
 /**
@@ -78,6 +80,7 @@ const ListingPage = ({
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
   const [dataInitView, setDataInitView] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
   /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
@@ -131,7 +134,45 @@ const ListingPage = ({
   /**
    * @param {FiltersState} activeFilters
    */
-  const onFilterApply = async activeFilters => {
+  const applyFilters = async activeFilters => {
+    const { acceleratedConcurrent, locations, asuLocals, keyword } =
+      activeFilters;
+
+    setSearchLoading(true);
+
+    await doFetchPrograms(url);
+
+    const filteredPrograms = filterData({
+      programs: dataInitView,
+      filters: {
+        collegeAcadOrg,
+        departmentCode,
+        acceleratedConcurrent,
+        locations:
+          asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
+        keyword,
+      },
+    });
+
+    setStateFilters({ ...activeFilters });
+    setAppliedFilters({ ...activeFilters });
+    setTableView(filteredPrograms);
+    setSearchLoading(false);
+  };
+
+  const onSearchByKeyword = async () => {
+    const newFilters = {
+      ...appliedFilters,
+      keyword: searchKeyword,
+    };
+
+    applyFilters(newFilters);
+  };
+
+  /**
+   * @param {FiltersState} activeFilters
+   */
+  const onFilterApply = activeFilters => {
     const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
     // ============================================================
     // prevent search
@@ -148,26 +189,7 @@ const ListingPage = ({
       return;
     }
     // ============================================================
-
-    setSearchLoading(true);
-
-    await doFetchPrograms(url);
-
-    const filteredPrograms = filterData({
-      programs: data.programs,
-      filters: {
-        collegeAcadOrg,
-        departmentCode,
-        acceleratedConcurrent,
-        locations:
-          asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
-      },
-    });
-
-    setStateFilters({ ...activeFilters });
-    setAppliedFilters({ ...activeFilters });
-    setTableView(filteredPrograms);
-    setSearchLoading(false);
+    applyFilters(activeFilters);
   };
 
   /**
@@ -181,32 +203,7 @@ const ListingPage = ({
     setStateFilters(INITIAL_FILTER_STATE);
     setAppliedFilters(INITIAL_FILTER_STATE);
     setTableView(dataInitView);
-  };
-
-  /**
-   *
-   * @param {string} keyword
-   */
-  const onDegreeSearch = async (keyword = "") => {
-    /* TODO: this won't work since the only way to clear up
-              the search is to provide an empty keyword */
-    // if (!keyword.trim()) {
-    //   alert("Please provide a valid keyword");
-    //   return;
-    // }
-
-    setSearchLoading(true);
-    await doFetchPrograms(url);
-
-    if (data?.programs?.length > 0) {
-      setTableView(
-        data.programs.filter(row => {
-          const resolver = degreeDataPropResolverService(row);
-          return resolver.getDescrLongExtented()?.includes?.(keyword);
-        })
-      );
-    }
-    setSearchLoading(false);
+    setSearchKeyword("");
   };
 
   const onFilterSummaryRemove = (filterName, { value }) => {
@@ -220,7 +217,7 @@ const ListingPage = ({
       [filterName]: updatedFilters,
     };
 
-    onFilterApply(newFilters);
+    applyFilters(newFilters);
   };
 
   return (
@@ -265,7 +262,13 @@ const ListingPage = ({
         {hasSearchBar || hasFilters ? (
           <section className="no-space">
             <BrowseTitle />
-            {hasSearchBar ? <SearchBar onSearch={onDegreeSearch} /> : null}
+            {hasSearchBar ? (
+              <SearchBar
+                value={searchKeyword}
+                onChange={setSearchKeyword}
+                onSearch={onSearchByKeyword}
+              />
+            ) : null}
             {hasFilters ? (
               <Filters
                 value={stateFilters}
@@ -274,6 +277,7 @@ const ListingPage = ({
                 onClean={onFilterClean}
               />
             ) : null}
+            <FilterSeparator />
           </section>
         ) : null}
 

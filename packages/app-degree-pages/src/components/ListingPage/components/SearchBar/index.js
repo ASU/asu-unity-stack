@@ -8,11 +8,18 @@ const Section = styled.div`
   label[for="search-field"] {
     margin-bottom: 0;
   }
+
+  &[data-searching="true"] button {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
 `;
 
 /**
  * @typedef {{
- *  onSearch?: (keyword: string) => void
+ *  onSearch: () => void
+ *  onChange: (keyword: string) => void
+ *  value: string
  * }} SearchBarProps
  */
 
@@ -22,16 +29,19 @@ const Section = styled.div`
  * @returns {JSX.Element}
  */
 
-const SearchBar = ({ onSearch }) => {
-  const [keyword, setKeyword] = useState("");
-
-  const handleSearch = () => {
-    onSearch?.(keyword);
-  };
-
+const SearchBar = ({ value, onChange, onSearch }) => {
+  const [searching, setSearching] = useState(false);
   return (
-    <Section className="container mt-5" data-testid="search-bar">
-      <form className="uds-form p-0 col-md-6 col-sm-12">
+    <Section className="container mt-5" data-searching={searching}>
+      <form
+        className="uds-form p-0 col-md-6 col-sm-12"
+        onSubmit={e => {
+          e.preventDefault();
+          onSearch();
+          setSearching(true);
+          setTimeout(() => setSearching(false), 500);
+        }}
+      >
         <div className="form-group mb-0 mr-2">
           <label htmlFor="search-field">Search</label>
 
@@ -39,21 +49,21 @@ const SearchBar = ({ onSearch }) => {
             <div className="col-sm-12 col-md-6 align-self-end">
               <input
                 id="search-field"
-                value={keyword}
+                value={value}
                 type="text"
                 className="form-control"
                 placeholder="Search degree programs"
-                onChange={e => setKeyword(e.target.value)}
+                onChange={e => onChange(e.target.value)}
               />
             </div>
 
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mt-2 mt-sm-0">
               <Button
                 color="maroon"
                 label="Search now"
                 ariaLabel="Search now"
                 size="default"
-                onClick={handleSearch}
+                onClick={onSearch}
               />
             </div>
           </div>
@@ -64,6 +74,8 @@ const SearchBar = ({ onSearch }) => {
 };
 
 SearchBar.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   onSearch: PropTypes.func,
 };
 

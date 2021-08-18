@@ -1,13 +1,15 @@
 // @ts-check
 
 import { Accordion } from "@asu-design-system/components-core";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { ListingPageContext } from "../../../../../core/context";
 import {
   degreeDataPropResolverService,
   parseMajorInfoLink,
 } from "../../../../../core/services";
+import { accellerateDegreeLink } from "../../../../../core/services/degree-http-service";
 import { toTitleCase } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
 
@@ -35,6 +37,7 @@ const WrapperSection = styled.div`
  * @returns {JSX.Element}
  */
 const AccordionView = ({ programs, actionUrls }) => {
+  const { columSettings } = useContext(ListingPageContext);
   /**
    * @type {{
    *   content: {
@@ -45,6 +48,36 @@ const AccordionView = ({ programs, actionUrls }) => {
    * */
   const cards = programs.map(row => {
     const resolver = degreeDataPropResolverService(row);
+
+    const getRequiredCourses = () => {
+      const isOnline = resolver.isOnline();
+      const directUrl = isOnline
+        ? resolver.getOnlineMajorMapURL()
+        : resolver.getAsuCritTrackUrl();
+
+      return `<a href=${directUrl}>Major Map</a>`;
+    };
+
+    const getAcceleratedConcurrent = () => `<div>
+        ${
+          resolver.getConcurrentDegrees().lenght > 0
+            ? "<div className='cell-container'>concurrent</div>"
+            : ""
+        }
+        ${
+          resolver.getAccelerateDegrees().length > 0
+            ? `<div className="cell-container">
+                <a href=${accellerateDegreeLink(
+                  resolver,
+                  actionUrls.majorInfoUrl
+                )}>
+                  4+1 years
+                </a>
+              </div>`
+            : ""
+        }
+    </div>`;
+
     return {
       content: {
         header: resolver.getMajorDesc(),
@@ -61,13 +94,28 @@ const AccordionView = ({ programs, actionUrls }) => {
           <br />${resolver.getDegree()}
         </li>
         <li>
+          <strong>Required Courses:</strong>
+          <br />${getRequiredCourses()}
+        </li>
+        <li>
           <strong>Campus or location:</strong>
           <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
         </li>
         <li>
-          <strong>College:</strong>
-          <br />${resolver.getCollegeDesc()}
+          <strong>Accelerated/Concurrent:</strong>
+          <br />${getAcceleratedConcurrent() || "-"}
         </li>
+        ${
+          !columSettings?.hideCollegeSchool
+            ? ` <li>
+                  <strong>College/School:</strong>
+                  <br />
+                  <a href=${resolver.getCollegeUrl()}>
+                    ${resolver.getCollegeDesc()}
+                  </a>
+                </li>`
+            : ""
+        }
       </ul>`,
       },
     };

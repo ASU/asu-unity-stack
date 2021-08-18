@@ -102,9 +102,6 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  hero: {
-    hide: true,
-  },
   introContent: null,
 };
 
@@ -213,16 +210,16 @@ PageWithIntroTextPhotoGrid.args = {
     photoGrid: {
       images: [
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-1.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-2.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-3.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-4.jpeg",
         },
       ],
     },

@@ -18,6 +18,7 @@ function filterData({
     departmentCode,
     acceleratedConcurrent,
     locations = [],
+    keyword,
   },
 }) {
   // ============================================================
@@ -56,12 +57,22 @@ function filterData({
       ? row[acceleratedConcurrent.value]?.length > 0
       : true;
   // ============================================================
+  /** @param {Object.<string, []>} row  */
+  const isValidForKeyword = (row = {}) => {
+    const resolver = degreeDataPropResolverService(row);
+
+    return keyword
+      ? resolver.getDescrLongExtented()?.includes?.(keyword)
+      : true;
+  };
+  // ============================================================
   /** @param {Object.<string, any>} row  */
   const doFilter = row =>
     isValidCollegeAcadOrg(row) &&
     isValidDepartmentCode(row) &&
     isValidCampus(row) &&
-    isValidAcceleratedConcurrent(row);
+    isValidAcceleratedConcurrent(row) &&
+    isValidForKeyword(row);
 
   return programs.filter(doFilter);
 }
