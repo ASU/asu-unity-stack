@@ -28,61 +28,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   // Linear-gradients.
   position: relative;
-  // At start, no "to right" in ::after rule
-  &.slider-start::after {
-    // .glide::after
-    background: linear-gradient(
-      to left,
-      rgba(25, 25, 25, 0.2),
-      48px,
-      rgba(255, 255, 255, 0) 96px
-    );
-    content: "\00a0";
-    height: 100%;
-    position: absolute; // Breaks swipe, unless...
-    pointer-events: none; // ... we use this.
-    width: 100%;
-    top: 0;
-  }
-  // In the middle, show both gradients.
-  &.slider-mid::after {
-    // .glide::after
-    background: linear-gradient(
-        to right,
-        rgba(25, 25, 25, 0.2),
-        48px,
-        rgba(255, 255, 255, 0) 96px
-      ),
-      // Use gradient stacking for right edge.
-      linear-gradient(
-          to left,
-          rgba(25, 25, 25, 0.2),
-          48px,
-          rgba(255, 255, 255, 0) 96px
-        );
-    content: "\00a0";
-    height: 100%;
-    position: absolute; // Breaks swipe, unless...
-    pointer-events: none; // ... we use this.
-    width: 100%;
-    top: 0;
-  }
-  // At end, no "to left" in ::after rule
-  &.slider-end::after {
-    // .glide::after
-    background: linear-gradient(
-      to right,
-      rgba(25, 25, 25, 0.2),
-      48px,
-      rgba(255, 255, 255, 0) 96px
-    );
-    content: "\00a0";
-    height: 100%;
-    position: absolute; // Breaks swipe, unless...
-    pointer-events: none; // ... we use this.
-    width: 100%;
-    top: 0;
-  }
 
   $se: $glide-element-separator;
   $sm: $glide-modifier-separator;
@@ -116,6 +61,68 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     }
   }
 
+  .glide__track {
+    position: relative;
+    // At start, no "to right" in ::after rule
+    &.slider-start::after {
+      // .glide::after
+      background: linear-gradient(
+        to left,
+        rgba(25, 25, 25, 0.2),
+        48px,
+        rgba(255, 255, 255, 0) 96px
+      );
+      content: "\00a0";
+      height: 100%;
+      position: absolute; // Breaks swipe, unless...
+      pointer-events: none; // ... we use this.
+      width: 100%;
+      top: 0;
+    }
+    // In the middle, show both gradients.
+    &.slider-mid::after {
+      // .glide::after
+      background: linear-gradient(
+          to right,
+          rgba(25, 25, 25, 0.2),
+          48px,
+          rgba(255, 255, 255, 0) 96px
+        ),
+        // Use gradient stacking for right edge.
+        linear-gradient(
+            to left,
+            rgba(25, 25, 25, 0.2),
+            48px,
+            rgba(255, 255, 255, 0) 96px
+          );
+      content: "\00a0";
+      height: 100%;
+      position: absolute; // Breaks swipe, unless...
+      pointer-events: none; // ... we use this.
+      width: 100%;
+      top: 0;
+    }
+    // At end, no "to left" in ::after rule
+    &.slider-end::after {
+      // .glide::after
+      background: linear-gradient(
+        to right,
+        rgba(25, 25, 25, 0.2),
+        48px,
+        rgba(255, 255, 255, 0) 96px
+      );
+      content: "\00a0";
+      height: 100%;
+      position: absolute; // Breaks swipe, unless...
+      pointer-events: none; // ... we use this.
+      width: 100%;
+      top: 0;
+    }
+    .glide__slides {
+      margin-bottom: 0;
+    }
+  }
+
   // Arrows.
   &#{$se}arrows {
     z-index: 2;
@@ -130,7 +137,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       background-color: #e8e8e8;
       border: 1px solid #d0d0d0; // rgba(255, 255, 255, 0.5);
       border-radius: 50%;
-      font-size: 2rem;
+      font-size: 1.3rem;
       text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
       opacity: 1;
       cursor: pointer;
@@ -145,9 +152,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       }
 
       svg {
-        height: 1.25rem;
-        position: relative;
-        bottom: 0.125rem;
+        width: 0.625em;
       }
 
       &:focus {
