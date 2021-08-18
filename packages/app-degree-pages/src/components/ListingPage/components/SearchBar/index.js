@@ -32,7 +32,11 @@ const Section = styled.div`
 const SearchBar = ({ value, onChange, onSearch }) => {
   const [searching, setSearching] = useState(false);
   return (
-    <Section className="container mt-5" data-searching={searching}>
+    <Section
+      className="container mt-5"
+      data-searching={searching}
+      data-testid="search-bar"
+    >
       <form
         className="uds-form p-0 col-md-6 col-sm-12"
         onSubmit={e => {

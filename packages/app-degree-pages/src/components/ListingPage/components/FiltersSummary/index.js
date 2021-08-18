@@ -8,8 +8,8 @@ import { idGenerator } from "../../../../core/utils";
 
 /**
  * @param {{
- *  value: import("../Filters").FiltersState
- *  onRemove: (filterName: string, filter: import("../Filters").FilterOption) => void
+ *  value: import("src").FiltersState
+ *  onRemove: (filterName: string, filter: import("src").FilterOption) => void
  * }} propsÎ
  * @returns {JSX.Element}
  */
@@ -26,7 +26,7 @@ function FiltersSummary({
   /**
    *
    * @param {"locations" | "asuLocals" | "acceleratedConcurrent"} filterName
-   * @param {import("../Filters").FilterOption} filter
+   * @param {import("src").FilterOption} filter
    * @returns
    */
   const SummaryItem = (filterName, filter) => (
@@ -50,7 +50,7 @@ function FiltersSummary({
       <header>
         <strong>Applied filters</strong>
       </header>
-      <div>
+      <div data-testid="tags">
         {!isActive || filterCount === 0 ? (
           <span>No filters applied</span>
         ) : (

@@ -1,4 +1,5 @@
 // @ts-check
+import { Hero } from "@asu-design-system/components-core";
 import { render, act } from "@testing-library/react";
 import React from "react";
 
@@ -45,14 +46,6 @@ const defaultArgs = {
   },
 };
 
-// import { Pagination } from "@asu-design-system/components-core/src/components/Pagination";
-// jest.genMockFromModule("@asu-design-system/components-core");
-// jest.mock(
-//   "../../../../components-core/src/components/Pagination",
-//   () =>
-//     ({ children }) =>
-//       <div>{children}</div>
-// );
 const mockDatafilter = jest.spyOn(service, "filterData");
 const mockSortPrograms = jest.spyOn(service, "sortPrograms");
 
@@ -85,7 +78,7 @@ describe("#ListingPage", () => {
       await renderListingPage(defaultArgs);
     });
 
-    it("should call useEffect functions", () => {
+    it("should call useEffect", () => {
       expect(mockSortPrograms).toHaveBeenCalled();
       expect(mockDatafilter).not.toHaveBeenCalled();
     });
@@ -95,7 +88,7 @@ describe("#ListingPage", () => {
     });
 
     it("should define `Hero` section", async () => {
-      expect(container.querySelector(".uds-hero")).toBeInTheDocument();
+      expect(Hero).toHaveBeenCalled();
     });
 
     const sectionCases = [

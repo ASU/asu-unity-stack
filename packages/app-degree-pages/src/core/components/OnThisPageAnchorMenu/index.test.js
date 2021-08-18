@@ -1,8 +1,11 @@
 // @ts-check
+import { AnchorMenu } from "@asu-design-system/components-core";
 import { render } from "@testing-library/react";
 import React from "react";
 
 import { OnThisPageAnchorMenu } from ".";
+
+import { progDetailSectionIds } from "../../models";
 
 describe("#OnThisPageAnchorMenu", () => {
   it("should define the component", () => {
@@ -19,9 +22,23 @@ describe("#OnThisPageAnchorMenu", () => {
         },
       ],
     };
+
+    const items = [
+      { targetIdName: "affording-college", text: "Affording College" },
+      { icon: null, targetIdName: "dummyId", text: "dummy link" },
+    ];
+
     const component = render(<OnThisPageAnchorMenu anchorMenu={anchorMenu} />);
     expect(component).toBeDefined();
-    expect(component.getByText("Affording College")).not.toBeNull();
-    expect(component.getByText(text)).not.toBeNull();
+    expect(AnchorMenu).toHaveBeenCalledWith(
+      expect.objectContaining({
+        items: expect.arrayContaining(items),
+        firstElementId: expect.stringContaining(
+          progDetailSectionIds.affordingCollege.targetIdName
+        ),
+        focusFirstFocusableElement: true,
+      }),
+      expect.anything()
+    );
   });
 });

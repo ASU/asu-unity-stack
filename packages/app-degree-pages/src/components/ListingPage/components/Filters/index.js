@@ -140,7 +140,11 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
           size="default"
           onClick={applyFilters}
         />
-        <ButtonLink className="btn btn-link" onClick={cleanFilters}>
+        <ButtonLink
+          data-testid="clear-filters"
+          className="btn btn-link"
+          onClick={cleanFilters}
+        >
           Clear filters
         </ButtonLink>
       </div>

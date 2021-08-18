@@ -11,6 +11,7 @@ module.exports = {
   },
   transformIgnorePatterns: ["/node_modules/"],
   moduleNameMapper: {
-    "@asu-design-system/components-core": "<rootDir>/mocks/components-core-mocks.js",
+    "@asu-design-system/components-core":
+      "<rootDir>/mocks/components-core-mocks.js",
   },
 };

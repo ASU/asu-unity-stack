@@ -2,13 +2,17 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 import fetchMock from "jest-fetch-mock";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
+import replaceAllInserter from "string.prototype.replaceall";
+
+import * as data from "./mocks/data/degree-search.json";
 import {
   detailPageDefaultDataSource,
   listingPageDefaultDataSource,
 } from "./src/core/constants";
 
-import * as data from "./mocks/data/degree-search.json";
-
+// fix issue with replaceAl()
+replaceAllInserter.shim();
+// mock all fetch() calls
 fetchMock.enableMocks();
 fetchMock.mockResponse(() => Promise.resolve(JSON.stringify([1, 2, 3])));
 
