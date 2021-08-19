@@ -91,11 +91,13 @@ function getCampusLocations(resolver) {
       }))
     );
 
-  if (resolver.getAsuOfficeLoc())
-    locations.push({
-      text: resolver.getAsuOfficeLoc(),
-      url: "#",
-    });
+  // TODO: double check if still needed.
+  // TODO: th this is classroom not a location.
+  // if (resolver.getAsuOfficeLoc())
+  //   locations.push({
+  //     text: resolver.getAsuOfficeLoc(),
+  //     url: "#",
+  //   });
 
   if (resolver.getCampusWue())
     locations.push({
