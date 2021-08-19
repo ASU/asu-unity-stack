@@ -175,7 +175,7 @@ const ProgramDetailPage = ({
                     offeredBy={
                       atAGlance?.offeredBy || {
                         text: resolver.getCollegeDesc(),
-                        url: "",
+                        url: resolver.getCollegeUrl(),
                       }
                     }
                     locations={
