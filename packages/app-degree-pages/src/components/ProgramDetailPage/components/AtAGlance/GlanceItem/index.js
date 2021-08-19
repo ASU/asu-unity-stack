@@ -26,13 +26,12 @@ export const GlanceItem = ({ item, type }) => {
 
   const renderContent = () => {
     if (typeof item === "object") {
-      return item.map((el, key) => (
+      return item.map((el, index) => (
         <Fragment key={genId.next().value}>
-          {key === 2 && " or"}
+          {index > 0 && index < item.length - 1 ? ", " : " or "}
           <a href={el.url} rel="noreferrer" target="_blank">
             {el.text}
           </a>
-          {key < item.length - 1 && ","}
         </Fragment>
       ));
     }
