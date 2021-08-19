@@ -36,7 +36,15 @@ function degreeDataPropResolverService(row = {}) {
       !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
-    getCollegeDesc: () => row["CollegeDescr100"],
+    getCollegeDesc: () => {
+      // webservice value example "for Design and the Arts, Herberger Institute"
+      /** @type {String} */
+      const collegeDescRaw = row["CollegeDescr100"];
+      const collegeDesc = collegeDescRaw
+        ? collegeDescRaw.split(",").reverse().join(" ").trim()
+        : "";
+      return collegeDesc;
+    },
     getCollegeUrl: () => row["CollegeUrl"],
     /** @return {string} */
     getEmailAddress: () => row["EmailAddr"],
