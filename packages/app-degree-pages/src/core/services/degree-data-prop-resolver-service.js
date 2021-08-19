@@ -1,5 +1,7 @@
 // @ts-check
 
+import { campusDefinitions } from "../models";
+
 const mathintensity = {
   G: "General",
   M: "Moderate",
@@ -93,25 +95,24 @@ function getCampusLocations(resolver) {
 
   if (resolver.getCampusList().length > 0)
     locations.push(
-      ...resolver.getCampusList().map(location => ({
-        text: location,
-        url: "#",
-      }))
+      ...resolver.getCampusList().map(
+        location =>
+          campusDefinitions[location.toUpperCase()] || {
+            text: location,
+            url: "",
+          }
+      )
     );
 
-  // TODO: double check if still needed.
-  // TODO: th this is classroom not a location.
-  // if (resolver.getAsuOfficeLoc())
-  //   locations.push({
-  //     text: resolver.getAsuOfficeLoc(),
-  //     url: "#",
-  //   });
-
-  if (resolver.getCampusWue())
-    locations.push({
-      text: resolver.getCampusWue(),
-      url: "#",
-    });
+  if (resolver.getCampusWue()) {
+    const location = resolver.getCampusWue();
+    locations.push(
+      campusDefinitions[location?.toUpperCase()] || {
+        text: location,
+        url: "",
+      }
+    );
+  }
 
   return locations;
 }
