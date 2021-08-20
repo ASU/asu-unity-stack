@@ -124,6 +124,9 @@ Footer - Table of Contents
       color: $uds-color-base-gray-4;
       line-height: 1;
       padding-top: 7px; // Magic number and a hack. Reducing the padding by 1px to make the height = 48px.
+      &:first-child {
+        padding-left: 0;
+      }
     }
   }
 }
@@ -279,6 +282,7 @@ Footer - Table of Contents
   #footer-innovation {
     .footer-innovation-links {
       .img-link {
+        order: initial;
         img {
           height: 76px;
         }
