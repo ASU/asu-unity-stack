@@ -1,6 +1,6 @@
 // @ts-check
 
-import { campusDefinitions } from "../models";
+import { findCampusDefinition } from "../models";
 
 const mathintensity = {
   G: "General",
@@ -9,6 +9,7 @@ const mathintensity = {
   undefined: "",
 };
 
+const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
 /**
  *
  * @param {Object.<string, any>} row
@@ -21,6 +22,13 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => row["Institution"],
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
+    // If Degree starts with a B, it's undergrad.
+    // TODO Is there a better means of identifying undergrad programs?
+    // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
+    // wouldn't give us minors and certs, though).
+    isUndergradProgram: () => isUndergradProgram(row),
+    /** @returns {"undergrad" |  "graduate"} */
+    getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
     getDegreeDescLong: () => row["DegreeDescrlong"],
     getDescrLongExtented: () => row["DescrlongExtns"],
@@ -91,26 +99,28 @@ function degreeDataPropResolverService(row = {}) {
  * @returns {import("src/core/models/shared-types").LinkItem[]}
  */
 function getCampusLocations(resolver) {
+  const program = resolver.getProgramType();
   const locations = [];
+  const getDefaultLocation = location => ({
+    text: location,
+    url: "",
+  });
 
-  if (resolver.getCampusList().length > 0)
+  const campusList = resolver.getCampusList();
+  if (campusList.length > 0)
     locations.push(
-      ...resolver.getCampusList().map(
+      ...campusList.map(
         location =>
-          campusDefinitions[location.toUpperCase()] || {
-            text: location,
-            url: "",
-          }
+          findCampusDefinition(location, program) ||
+          getDefaultLocation(location)
       )
     );
 
-  if (resolver.getCampusWue()) {
-    const location = resolver.getCampusWue();
+  const campusWueLocation = resolver.getCampusWue();
+  if (campusWueLocation) {
     locations.push(
-      campusDefinitions[location?.toUpperCase()] || {
-        text: location,
-        url: "",
-      }
+      findCampusDefinition(campusWueLocation, program) ||
+        getDefaultLocation(campusWueLocation)
     );
   }
 
