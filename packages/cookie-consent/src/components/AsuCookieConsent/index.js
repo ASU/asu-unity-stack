@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { h } from "preact";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "preact/compat";
 import propTypes from "prop-types";
 import CookieConsent from "react-cookie-consent";
@@ -20,7 +19,7 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
     // visible during the ease-out transition. We use this setTimeout
     // then apply an additional class to trigger display:none and
     // visibility:hidden rules for a11y.
-    setTimeout(function () {
+    setTimeout(() => {
       setEaseOut(" ease-closed ease-closed-hidden");
     }, 500);
   };
@@ -90,14 +89,6 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
           }}
           expires={90}
         >
-          <button
-            className="uds-cookie-consent-faux-close-btn"
-            aria-label="Close"
-            style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
-            onClick={distantClick}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
           ASU websites use cookies to enhance user experience, analyze site
           usage, and assist with outreach and enrollment. By continuing to use
           this site, you are giving us your consent to do this. Learn more about
@@ -110,6 +101,14 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
             Privacy Statement
           </a>
           .
+          <button
+            className="uds-cookie-consent-faux-close-btn"
+            aria-label="Close"
+            style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
+            onClick={distantClick}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </CookieConsent>
       </div>
     </div>
