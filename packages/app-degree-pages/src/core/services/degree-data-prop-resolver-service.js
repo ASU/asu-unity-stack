@@ -9,6 +9,10 @@ const mathintensity = {
   undefined: "",
 };
 
+// If Degree starts with a B, it's undergrad.
+// TODO Is there a better means of identifying undergrad programs?
+// Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
+// wouldn't give us minors and certs, though).
 const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
 /**
  *
@@ -22,10 +26,6 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => row["Institution"],
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
-    // If Degree starts with a B, it's undergrad.
-    // TODO Is there a better means of identifying undergrad programs?
-    // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
-    // wouldn't give us minors and certs, though).
     isUndergradProgram: () => isUndergradProgram(row),
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
