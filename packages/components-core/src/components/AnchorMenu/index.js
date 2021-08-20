@@ -9,7 +9,7 @@ import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
 /**
- * @typedef { import('../../core/shared-model-types').AnchorMenuProps } AnchorMenuProps
+ * @typedef { import('../../core/models/shared-model-types').AnchorMenuProps } AnchorMenuProps
  */
 
 /**

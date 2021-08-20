@@ -1,19 +1,6 @@
 // @ts-check
 
-import { sanitize } from "dompurify";
-
 import { tagHeadingList } from "../models";
-
-/**
- *
- * @param {string} content
- * @returns {{ __html: string }}
- */
-function sanitizeHTML(content) {
-  return {
-    __html: sanitize(content),
-  };
-}
 
 /**
  *
@@ -31,4 +18,4 @@ function parseHeading(title, defaultHeading = "h2") {
   );
 }
 
-export { sanitizeHTML, parseHeading };
+export { parseHeading };

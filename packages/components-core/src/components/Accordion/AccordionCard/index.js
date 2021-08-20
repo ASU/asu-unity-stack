@@ -1,16 +1,10 @@
 // @ts-check
 import classNames from "classnames";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
+import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
 
 /**
  * @typedef {import('../../../core/models/shared-model-types').AccordionCardItemProps} AccordionCardItemProps
