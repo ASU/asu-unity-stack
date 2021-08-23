@@ -23,13 +23,6 @@
       &:hover {
         text-decoration: none;
       }
-      &:focus {
-        background-color: $uds-color-base-maroon;
-        color: $uds-color-base-white;
-        text-decoration: none;
-        outline: 0;
-        padding: 1px 3px;
-      }
     }
     // 676 + 46 for additional spacing to adjust margins at just the right time.
     @media (max-width: 722px) {
@@ -48,6 +41,7 @@
       visibility: hidden;
     }
     .uds-cookie-consent-container {
+      position: relative;
       background: $uds-color-base-gray-2;
       border: 1px solid $uds-color-base-gray-3;
       padding: $uds-size-spacing-2 $uds-size-spacing-3 $uds-size-spacing-3
@@ -79,14 +73,16 @@
       }
 
       .uds-cookie-consent-content {
+        width: 90%;
         font-family: $uds-font-family-base;
         color: $uds-color-font-dark-base;
         font-weight: $uds-font-weight-light;
+        
       }
       .uds-cookie-consent-faux-close-btn {
-        position: relative;
-        top: -0.25rem;
-        right: -0.75rem;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
         // Design token values copied from bootstrap4-theme extends/_buttons.scss.
         // Didn't need all the rules since we're working without BS4 classes.
         border-radius: $uds-component-button-border-radius;
@@ -107,6 +103,10 @@
         }
         &:not(:disabled):not(.disabled) {
           cursor: pointer;
+        }
+        @media (max-width: 768px) {
+          top: 0.5rem;
+          right: 0.5rem;
         }
       }
 
@@ -151,6 +151,14 @@
           opacity: 1;
         }
       }
+    }
+  }
+  button,
+  a {
+    text-decoration: none;
+    &:focus {
+      outline: none !important;
+      box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
     }
   }
 }

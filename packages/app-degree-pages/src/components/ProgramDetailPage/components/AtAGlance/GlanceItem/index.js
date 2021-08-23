@@ -26,15 +26,24 @@ export const GlanceItem = ({ item, type }) => {
 
   const renderContent = () => {
     if (typeof item === "object") {
-      return item.map((el, key) => (
-        <Fragment key={genId.next().value}>
-          {key === 2 && " or"}
-          <a href={el.url} rel="noreferrer" target="_blank">
-            {el.text}
-          </a>
-          {key < item.length - 1 && ","}
-        </Fragment>
-      ));
+      return item.map((loc, index) => {
+        const url = ["", "#"].includes(loc.url) ? null : loc.url;
+        let separator = "";
+        if (index > 0 && index < item.length - 1) {
+          separator = ", ";
+        }
+        if (index === item.length - 1 && item.length > 1) {
+          separator = " or ";
+        }
+        return (
+          <Fragment key={genId.next().value}>
+            {separator}
+            <a href={url} rel="noreferrer" target="_blank">
+              {loc.text}
+            </a>
+          </Fragment>
+        );
+      });
     }
     return item;
   };
