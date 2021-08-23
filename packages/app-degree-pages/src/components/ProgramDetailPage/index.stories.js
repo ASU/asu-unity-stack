@@ -283,6 +283,7 @@ Default.args = {
   introContent: null,
   nextSteps: null,
   globalOpportunity: null,
+  atAGlance: null,
   attendOnline: null,
 };
 

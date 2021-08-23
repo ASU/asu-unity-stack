@@ -498,10 +498,6 @@ Cards - Table of Contents
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
-  @include media-breakpoint-down(sm) {
-    margin: 0 $uds-size-spacing-4;
-  }
-
   &.card-maroon {
     border-left-color: $uds-color-base-maroon;
   }
