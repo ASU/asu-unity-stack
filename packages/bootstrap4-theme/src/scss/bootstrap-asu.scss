@@ -92,6 +92,7 @@ $theme-colors: map-remove($theme-colors, 'primary', 'secondary');
 // Remove the vanilla spacing units not overwritten already
 $theme-colors: map-remove($theme-colors, 1, 3, 5);
 
+
 //= Bootstrap Scaffolding (optional)
 @import '../../node_modules/bootstrap/scss/root';
 @import '../../node_modules/bootstrap/scss/reboot';
@@ -130,3 +131,20 @@ $theme-colors: map-remove($theme-colors, 1, 3, 5);
 
 // css Bootstrap doesn't have variables for
 @import 'bootstrap-asu-extends';
+
+/* -----------------------------------------------------
+Container/ row / column padding adjustments for mobile.
+
+Bootstrap doesn't natively provide a way to alter the behavior
+its native grid elements based on a media query. This overrides
+that behavior at screens <= 575px. (The small breakpoint.)
+
+Should be included after @import scss/grid. Registered here for clarity.
+------------------------------------------------------ */
+
+@include media-breakpoint-down(sm){
+  .container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+    padding-left:2rem;
+    padding-right:2rem;
+  }
+}

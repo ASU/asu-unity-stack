@@ -1,9 +1,9 @@
 import React from 'react';
-import endorsedLogo from './asu_universitytechoffice_horiz_rgb_white_150ppi.png';
+import endorsedLogo from './ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png';
 import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png';
 
 export const GlobalElementsOnly = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-footer-innovation">
         <div class="container" id="footer-innovation">
           <div class="row">
@@ -45,7 +45,7 @@ export const GlobalElementsOnly = (
 
 
 export const ZeroColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -110,7 +110,7 @@ export const ZeroColumns = (
 
 
 export const OneColumn = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -189,7 +189,7 @@ export const OneColumn = (
 
 
 export const OneColumnNoLogoOrSocial = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
 
       <div class="wrapper" id="wrapper-footer-columns">
         <div class="container" id="footer-columns">
@@ -247,7 +247,7 @@ export const OneColumnNoLogoOrSocial = (
 
 
 export const TwoColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -346,7 +346,7 @@ export const TwoColumns = (
 
 
 export const ThreeColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -466,7 +466,7 @@ export const ThreeColumns = (
 
 
 export const FourColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -607,7 +607,7 @@ export const FourColumns = (
 
 
 export const FiveColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
@@ -769,7 +769,7 @@ export const FiveColumns = (
 
 
 export const SixColumns = (
-    <footer role="contentinfo">
+    <footer id="asu-footer" role="contentinfo">
       <div class="wrapper" id="wrapper-endorsed-footer">
         <div class="container" id="endorsed-footer">
           <div class="row">
