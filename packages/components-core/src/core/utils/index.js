@@ -15,6 +15,7 @@ import { Testimonial } from "../../components/Testimonial";
 import { Video } from "../../components/Video";
 import { spreadClasses } from "./css-utils";
 import { sanitizeDangerousMarkup } from "./html-utils";
+import { idGenerator } from "./id-generator";
 
 /**
  * @typedef {Object} ComponentProps
@@ -97,4 +98,4 @@ export const initHero = ({ targetSelector, props }) =>
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
 
-export { sanitizeDangerousMarkup, spreadClasses };
+export { sanitizeDangerousMarkup, spreadClasses, idGenerator };

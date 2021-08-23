@@ -1,4 +1,5 @@
 // @ts-check
+import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
@@ -6,7 +7,6 @@ import {
   glanceItemPropShape,
   glanceItemsMap,
 } from "../../../../../core/models";
-import { idGenerator } from "../../../../../core/utils/id-generator";
 
 /**
  * @typedef {import('../../../../../core/models/shared-types').LinkItem} AtAGlanceItem

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { createRange } from "../../core/utils/helpers/numbers";
+import { createRange } from "../../core/utils/numbers";
 import { PageItem } from "./PageItem";
 
 /**

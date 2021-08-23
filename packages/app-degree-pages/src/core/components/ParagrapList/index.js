@@ -3,12 +3,13 @@
 import {
   spreadClasses,
   sanitizeDangerousMarkup,
+  idGenerator,
 } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { contentPropShape } from "../../models";
-import { idGenerator, isHtml } from "../../utils";
+import { isHtml } from "../../utils";
 
 /**
  *

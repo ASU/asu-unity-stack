@@ -1,12 +1,14 @@
 /* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
-import { sanitize } from "dompurify";
+import {
+  idGenerator,
+  sanitizeDangerousMarkup,
+} from "@asu-design-system/components-core";
 import React, { Fragment, useContext, createRef } from "react";
 
 import { ListingPageContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
-import { idGenerator } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
 import { columns as configColumns } from "./index.colums.config";
 import { Table } from "./index.style";
@@ -37,9 +39,9 @@ const renderInfo = ({ resolver, id }) => {
       <div
         className="desc-long"
         id={id}
-        dangerouslySetInnerHTML={{
-          __html: sanitize(resolver.getDescrLongExtented()),
-        }}
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+          resolver.getDescrLongExtented()
+        )}
       />
       <label
         ref={labelRef}
