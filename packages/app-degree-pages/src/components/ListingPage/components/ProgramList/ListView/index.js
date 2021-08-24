@@ -85,9 +85,9 @@ const renderExtraInfo = ({ resolver }) => (
           <span>{resolver.getAdditionalMathReqCourse()}</span>
           {resolver.getOtherMathReqCourse() && (
             <span
-              dangerouslySetInnerHTML={{
-                __html: sanitize(resolver.getOtherMathReqCourse()),
-              }}
+              dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+                resolver.getOtherMathReqCourse()
+              )}
             />
           )}
         </div>
