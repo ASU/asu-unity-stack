@@ -95,6 +95,7 @@ Sidebar Navigation
     &.is-active:after {
       content: '';
       position: relative;
+      top: 0.5rem;
       display: block;
       margin-top: $uds-size-spacing-2;
       height: $uds-size-spacing-1;
@@ -150,6 +151,12 @@ Sidebar Navigation
 
     .card-body > .nav-link {
       padding: 0 $uds-size-spacing-5 0 $uds-size-spacing-3;
+
+      &:last-child {
+        &:after {
+          top: 1rem;
+        }
+      }
 
       &:after {
         margin-top: $uds-size-spacing-1;
