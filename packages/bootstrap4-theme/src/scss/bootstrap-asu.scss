@@ -16,7 +16,6 @@ $image-assets-path: '/img' !default;
 @import 'variables/alerts';
 @import 'variables/banners';
 @import 'variables/spacing';
-@import 'variables/typography';
 @import 'variables/buttons';
 @import 'variables/blockquotes';
 @import 'variables/cards';
@@ -127,6 +126,9 @@ $theme-colors: map-remove($theme-colors, 1, 3, 5);
 @import '../../node_modules/bootstrap/scss/spinners';
 @import '../../node_modules/bootstrap/scss/utilities';
 @import '../../node_modules/bootstrap/scss/print';
+
+// move here every import which needs to override bootstrap classes
+@import 'variables/typography';
 
 // css Bootstrap doesn't have variables for
 @import 'bootstrap-asu-extends';
