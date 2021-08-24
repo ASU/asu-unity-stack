@@ -1,7 +1,5 @@
 /* eslint-disable react/no-danger */
 // @ts-check
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
@@ -17,11 +15,10 @@ const sanitizeDangerousMarkup = content => {
 const Success = ({ successMsg }) => {
   return (
     <div className="rfi-submitted">
-      <FontAwesomeIcon
-        icon={faCheckCircle}
-        size="6x"
-        className="rfi-submitted-icon"
-        color="#78BE20"
+      <i
+        className="fas fa-check-circle rfi-submitted-icon"
+        style={{ fontSize: "6rem", color: "#78BE20" }}
+        aria-hidden="true"
       />
       <div className="rfi-submitted-sub-icon">Submitted</div>
       <h3>Thanks for your request!</h3>

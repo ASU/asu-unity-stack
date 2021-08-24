@@ -26,6 +26,10 @@ React and React-DOM are required as peer dependencies. Install with:
 project. Install the latest version with the following command:
 `yarn add @asu-design-system/bootstrap4-theme@dev`
 
+Make sure to have included [FontAwesome](https://fontawesome.com/) in your
+project to allow icons to be shown:
+`yarn add @asu-design-system/components-core@dev`
+
 Additionally, Google Tag Manager (GTM) and a dataLayer should be provided by
 the site launching the RFI component so Google Analytics data can be properly
 included as hidden field data in submissions. See the Header Guide on

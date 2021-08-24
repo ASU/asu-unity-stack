@@ -1,10 +1,5 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
-import {
-  faExclamationTriangle,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field, useField } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
