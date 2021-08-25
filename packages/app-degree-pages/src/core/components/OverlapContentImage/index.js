@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
     padding-top: 0;
     width: auto;
     align-items: center;
+
+    &:after{
+      height: 100%;
+    }
     @media (max-width: 768px) {
       padding-top: 1.5rem !important;
     }
@@ -19,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const ContentWrapper = styled.div`
+  .uds-image-overlap.content-right &.content-wrapper,
   .uds-image-overlap.content-left &.content-wrapper {
     height: fit-content;
   }
@@ -48,9 +53,12 @@ const OverlapImage = styled.img`
   .uds-image-overlap & {
     width: 100%;
     height: 100%;
-    grid-column: 2 / span 4;
     grid-row: 2/5;
     object-fit: cover;
+  }
+
+  .uds-image-overlap.content-right & {
+    grid-row: 1 / span 3;
   }
 `;
 
