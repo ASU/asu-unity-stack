@@ -289,3 +289,4 @@ Most Bootstrap UI elements can be used independently of the Bootstrap grid eleme
 ## ❯ License
 
 [MIT](/LICENSE)
+
