@@ -189,12 +189,15 @@ Cards - Table of Contents
     padding: 0 24px 24px 24px;
   }
 
-  .card-button .btn {
-    font-size: $uds-component-button-small-font-size;
-    padding: $uds-component-button-padding-y-small
-      $uds-component-button-padding-x-small;
-    line-height: 1rem;
-  }
+  // TODO: This block of rules causes inconsistency between buttons side
+  // TODO: removed ad per request on ticket UDS-866
+  // TODO: we should consider to review all CSS, for any button types, in small viewport
+  // .card-button .btn {
+  //   font-size: $uds-component-button-small-font-size;
+  //   padding: $uds-component-button-padding-y-small
+  //     $uds-component-button-padding-x-small;
+  //   line-height: 1rem;
+  // }
 
   .card > div:last-child {
     padding-bottom: 24px;
