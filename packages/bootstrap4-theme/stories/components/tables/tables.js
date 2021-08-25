@@ -33,9 +33,8 @@ function initializeFixedTable() {
     );
 
     // If the user leaves the scrollable area, hide the scroll
-    const hideScrollWhenHoverTheseElements = container.querySelectorAll(
-      'tr > *:first-child'
-    );
+    const hideScrollWhenHoverTheseElements =
+      container.querySelectorAll('tr > *:first-child');
     for (let i = 0; i < showScrollWhenHoverTheseElements.length; i++) {
       ['mouseenter', 'focus', 'hover'].forEach((event) => {
         showScrollWhenHoverTheseElements[i].addEventListener(

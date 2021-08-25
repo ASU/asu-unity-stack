@@ -45,9 +45,6 @@ Sidebar Navigation
   @include media-breakpoint-up(md) {
     display: none;
   }
-  @include media-breakpoint-down(md) {
-    margin: 0 1.25rem;
-  }
 }
 
 .sidebar {
@@ -182,6 +179,5 @@ Sidebar Navigation
 
   @include media-breakpoint-down(md) {
     border-top: 0;
-    margin: 0 $uds-size-spacing-4;
   }
 }

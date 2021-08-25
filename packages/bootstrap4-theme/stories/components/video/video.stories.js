@@ -8,6 +8,7 @@ export const Default = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
+        {/* Component start */}
         <div class="uds-video-container">
           <div class="uds-video-player">
             <video caption="Example video">
@@ -30,6 +31,7 @@ export const Default = createStory(
             </div>
           </div>
         </div>
+        {/* Component end */}
       </div>
     </div>
   </div>
@@ -39,6 +41,7 @@ export const DefaultWithCaption = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
+        {/* Component start */}
         <div class="uds-video-container uds-video-with-caption">
           <div class="uds-video-player">
             <video caption="Example video">
@@ -64,6 +67,7 @@ export const DefaultWithCaption = createStory(
             <figcaption>Photo by Dent/ASU Now</figcaption>
           </figure>
         </div>
+        {/* Component end */}
       </div>
     </div>
   </div>
@@ -73,6 +77,7 @@ export const YoutubeVideo = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
+        {/* Component start */}
         <div class="uds-video-container uds-video-with-caption">
           <div class="uds-video-player youtube-video">
             <iframe
@@ -81,6 +86,7 @@ export const YoutubeVideo = createStory(
             ></iframe>
           </div>
         </div>
+        {/* Component end */}
       </div>
     </div>
   </div>
@@ -90,6 +96,7 @@ export const YoutubeVideoWithCaption = createStory(
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-12">
+        {/* Component start */}
         <div class="uds-video-container uds-video-with-caption">
           <div class="uds-video-player youtube-video">
             <iframe
@@ -101,6 +108,7 @@ export const YoutubeVideoWithCaption = createStory(
             <figcaption>Photo by Dent/ASU Now</figcaption>
           </figure>
         </div>
+        {/* Component end */}
       </div>
     </div>
   </div>
