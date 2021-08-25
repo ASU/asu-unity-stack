@@ -179,7 +179,7 @@ const Header = ({
           </a>
           <a href="https://www.asu.edu/">ASU Home</a>
           <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/about/colleges-and-schools">
+          <a href="https://www.asu.edu/academics/colleges-schools">
             Colleges and Schools
           </a>
           <Login {...{ loggedIn, loginLink, logoutLink, userName }} />

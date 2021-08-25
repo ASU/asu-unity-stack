@@ -25,7 +25,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
                 <a class="signout" href="#">Sign Out</a>
@@ -115,7 +115,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <div class="nav-link login-status">
                         Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
                       </div>
@@ -154,7 +154,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="signin" href="#">Sign In</a>
               </div>
@@ -412,7 +412,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
@@ -450,7 +450,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
                 <a class="signout" href="#">Sign Out</a>
@@ -511,7 +511,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
@@ -549,7 +549,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="signin" href="#">Sign In</a>
               </div>
@@ -614,7 +614,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
@@ -652,7 +652,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
                 <a class="signout" href="#">Sign Out</a>
@@ -771,7 +771,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>
@@ -812,7 +812,7 @@ storiesOf('Components/Global Header', module)
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
                 <a class="signout" href="#">Sign Out</a>
@@ -911,7 +911,7 @@ storiesOf('Components/Global Header', module)
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and Schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and Schools</a>
                       <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
                     </div>
                   </div>

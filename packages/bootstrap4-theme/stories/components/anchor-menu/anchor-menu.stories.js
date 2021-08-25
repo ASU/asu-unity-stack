@@ -19,7 +19,7 @@ export const AnchorMenu = () => `
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU Home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-              <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+              <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and schools</a>
               <div class="nav-link login-status">
                 <a class="name" href="#">Sparky</a>
                 <a class="signout" href="#">Sign out</a>
@@ -98,7 +98,7 @@ export const AnchorMenu = () => `
                     <div class="nav-grid">
                       <a class="nav-link" href="https://asu.edu">ASU Home</a>
                       <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+                      <a class="nav-link" href="https://www.asu.edu/academics/colleges-schools">Colleges and schools</a>
                       <div class="nav-link login-status">
                         Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign out</a>
                       </div>
