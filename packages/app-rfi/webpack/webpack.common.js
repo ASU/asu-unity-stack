@@ -1,13 +1,8 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-const CopyPlugin = require("copy-webpack-plugin");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 const path = require("path");
-const glob = require("glob");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
@@ -23,9 +18,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(jsx|js)?$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/env", "@babel/preset-react"],
+            },
+          },
+        ],
       },
       // Process CSS Modules on files matching '*.module.css'
       {
@@ -74,25 +76,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
-    // new PurgecssPlugin({
-    //   paths: glob.sync(`${PROJECT_DIR}src/**/*`, { nodir: true }),
-    // }),
-    // new BundleAnalyzerPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(
-    //         PROJECT_DIR,
-    //         "node_modules/@asu-design-system/bootstrap4-theme/dist/css/bootstrap-asu.min.css"
-    //       ),
-    //       to: path.resolve(
-    //         PROJECT_DIR,
-    //         "vendor/css/bootstrap-asu.min.module.css"
-    //       ),
-    //       force: true,
-    //     },
-    //   ],
-    // }),
   ],
   resolve: {
     alias: {

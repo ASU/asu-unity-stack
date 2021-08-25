@@ -1,8 +1,17 @@
+// @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+/**
+ * @typedef {import('../../core/models/shared-model-types').TagsProps} ButtonTagProps
+ */
+
+/**
+ * @param {ButtonTagProps} props
+ * @returns {JSX.Element}
+ */
 export const ButtonTag = ({
   label,
   ariaLabel,
@@ -27,6 +36,7 @@ export const ButtonTag = ({
   }
 
   return (
+    // @ts-ignore
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
       {...props}

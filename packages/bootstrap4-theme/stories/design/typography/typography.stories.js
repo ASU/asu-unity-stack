@@ -1,20 +1,22 @@
-export default { title: 'Design/Typography' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Typography', 'Design');
 
-export const font = () => `
-<div class="container">
-  <div class="row">
-    <div class="col col-sm-12 p-3">
-      <h1>Arial bold</h1>
-      <p><strong>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</strong></p>
+export const Componentfont = createStory(
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-12 p-3">
+        <h1>Arial bold</h1>
+        <p><strong>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</strong></p>
 
-      <h1 style="font-weight:100!important;">Arial regular</h1>
-      <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</p>
+        <h1 style={{'font-weight':'100!important'}}>Arial regular</h1>
+        <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>1234567890.!?:;</p>
+      </div>
     </div>
   </div>
-<div>
-`;
+);
 
-export const bodyCopyWhite = () => `
+export const ComponentbodyCopyWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -22,9 +24,9 @@ export const bodyCopyWhite = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray1 = () => `
+export const ComponentbodyCopyGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -32,9 +34,9 @@ export const bodyCopyGray1 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray2 = () => `
+export const ComponentbodyCopyGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -42,9 +44,9 @@ export const bodyCopyGray2 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const bodyCopyGray7 = () => `
+export const ComponentbodyCopyGray7 = createStory(
 <div class="container bg-gray-7 text-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -52,9 +54,9 @@ export const bodyCopyGray7 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsWhite = () => `
+export const ComponentASUHeadingsWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -67,9 +69,9 @@ export const ASUHeadingsWhite = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray1 = () => `
+export const ComponentASUHeadingsGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -82,9 +84,9 @@ export const ASUHeadingsGray1 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray2 = () => `
+export const ComponentASUHeadingsGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -97,9 +99,9 @@ export const ASUHeadingsGray2 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsGray7 = () => `
+export const ComponentASUHeadingsGray7 = createStory(
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -112,54 +114,54 @@ export const ASUHeadingsGray7 = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsWhite = () => `
+export const ComponentHighlightsWhite = createStory(
 <div class="container bg-white">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray1 = () => `
+export const ComponentHighlightsGray1 = createStory(
 <div class="container bg-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray2 = () => `
+export const ComponentHighlightsGray2 = createStory(
 <div class="container bg-gray-2">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-black">Lorem ipsum</span></h4>
-      <h3><span class="highlight-white">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-black">Lorem ipsum</span></h3>
+      <h3><span class="highlight-white">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const HighlightsGray7 = () => `
+export const ComponentHighlightsGray7 = createStory(
 <div class="container bg-gray-7 text-gray-1">
   <div class="row">
     <div class="col col-sm-12 p-3">
-      <h3><span class="highlight-gold">Lorem ipsum</span></h4>
-      <h3><span class="highlight-white">Lorem ipsum</span></h4>
+      <h3><span class="highlight-gold">Lorem ipsum</span></h3>
+      <h3><span class="highlight-white">Lorem ipsum</span></h3>
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsHighlights = () => `
+export const ComponentASUHeadingsHighlights = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -171,9 +173,9 @@ export const ASUHeadingsHighlights = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUHeadingsContentPage = () => `
+export const ComponentASUHeadingsContentPage = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -200,9 +202,9 @@ export const ASUHeadingsContentPage = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const Lead = () => `
+export const ComponentLead = createStory(
 <div class="container">
   <div class="row">
     <div class="col col-sm-12 p-3">
@@ -212,9 +214,9 @@ export const Lead = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const ASUParagraphs = () => `
+export const ComponentASUParagraphs = createStory(
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -240,9 +242,9 @@ export const ASUParagraphs = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-export const InlineTextElements = () => `
+export const ComponentInlineTextElements = createStory(
 <div class="container">
   <div class="row">
     <div class="col-sm-12 p-3">
@@ -257,57 +259,38 @@ export const InlineTextElements = () => `
     </div>
   </div>
 </div>
-`;
+);
 
-/*
-export const InternalNotes = () => `
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 p-3">
-      <p>Just some notes about elements that we need to style or think through.</p>
-      <ul>
-        <li>Display classes - prominent in BS, will produce the wrong results currently.</li>
-        <li>Description lists</li>
-        <li>Compare/Contrast elements on https://getbootstrap.com/docs/4.5/content/typography</li>
-    </div>
-  </div>
-</div>
-`;
-*/
 
-// export const ASUHeadings = () => `
-// <div class="container bg-white">
-//   <div class="row">
-//     <div class="col col-sm-12 p-3">
-//       <h1>Heading 1</h1>
-//       <p>Paragraph 1</p>
 
-//       <h2>Heading 2</h2>
-//       <p>Paragraph 2</p>
 
-//       <h3>Heading 3</h3>
-//       <p>Paragraph 3</p>
 
-//       <h4>Heading 4</h4>
-//       <p>Paragraph 4</p>
 
-//       <h5>Heading 5</h5>
-//       <p>Paragraph 5</p>
 
-//       <h6>Heading 6</h6>
-//       <p>Paragraph 6</p>
 
-//       <h4>This heading will not have additional spacing<h4>
-//       <h5>This heading will also not have additional spacing<h5>
-//     </div>
-//   </div>
 
-//   <h1>Another heading 1</h1>
-//   <p>Another paragraph</p>
 
-//   <h2>Another heading 2</h2>
-//   <p>Another paragraph</p>
 
-//   <h3>This heading should not have additional space</h3>
-// </div>
-// `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

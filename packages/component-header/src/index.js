@@ -1,2 +1,2 @@
 export { ASUHeader } from "./header";
-export { initGlobalHeader } from "./utils/init-header";
+export { initGlobalHeader } from "./core/utils/init-header";

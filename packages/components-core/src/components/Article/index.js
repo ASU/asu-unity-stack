@@ -1,12 +1,5 @@
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import {
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// @ts-check
 import classNames from "classnames";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 import {
@@ -21,14 +14,40 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
+import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
-import "./index.css";
+import { Wrapper, EventInfoWrapper } from "./index.styles";
 
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
+/**
+ * @typedef { import("../../core/models/shared-model-types").BreadcrumbProps } BreadcrumbProps
+ */
 
-  return { __html: sanitizer(content) };
-};
+/**
+ * @typedef {{
+ *  type: "event" | "news"
+ *  articleUrl?: string
+ *  publicationDate?: string
+ *  title?: string
+ *  body?: string
+ *  authorEmail?: string
+ *  authorName?: string
+ *  authorPhone?: string
+ *  authorTitle?: string
+ *  breadcrumbs?: BreadcrumbProps[]
+ *  calendarUrl?: string
+ *  eventLocation?: string
+ *  eventTime?: string
+ *  headerImageUrl?: string
+ *  registrationUrl?: string
+ *  zoomUrl?: string
+ * }} ArticleProps
+ */
+
+/**
+ *
+ * @param {ArticleProps} props
+ * @returns {JSX.Element}
+ */
 
 export const Article = ({
   type,
@@ -56,13 +75,13 @@ export const Article = ({
   const primaryButton = () => {
     if (registrationUrl) {
       return (
-        <div className={classNames("card-button", "uds-button")}>
+        <div className="card-button uds-button">
           <Button color="maroon" href={registrationUrl} label="Register" />
         </div>
       );
     }
     return (
-      <div className={classNames("card-button", "uds-button")}>
+      <div className="card-button uds-button">
         <Button color="maroon" href={zoomUrl} label="Attend on Zoom" />
       </div>
     );
@@ -70,21 +89,14 @@ export const Article = ({
 
   const AuthorInfo = () => {
     return (
-      <div className={classNames("row", "pb-2")}>
-        <div className={classNames("col", "col-12")}>
-          <div className={classNames("author", "highlight-gold")}>
-            {authorName}
-          </div>
+      <div className="row pb-2">
+        <div className="col col-12">
+          <div className="author highlight-gold">{authorName}</div>
           {authorTitle && <div className="author-title">{authorTitle}</div>}
           {authorEmail && (
             <div className="author-contact">
               <span className="icon-bg">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  color="white"
-                  size="xs"
-                  transform="shrink-2"
-                />
+                <i className="fas fa-envelope" />
               </span>
               <a href={`mailto: ${authorEmail}`}>{authorEmail}</a>
             </div>
@@ -92,12 +104,7 @@ export const Article = ({
           {authorPhone && (
             <div className="author-contact">
               <span className="icon-bg">
-                <FontAwesomeIcon
-                  icon={faPhone}
-                  color="white"
-                  size="xs"
-                  transform="shrink-2"
-                />
+                <i className="fas fa-phone" />
               </span>
               <a href={`tel: ${authorPhone}`}>{authorPhone}</a>
             </div>
@@ -109,17 +116,8 @@ export const Article = ({
 
   const EventInfo = () => {
     return (
-      <div
-        className={classNames(
-          "row",
-          "row-spaced",
-          "mt-3",
-          "pt-6",
-          "pb-2",
-          "event-info"
-        )}
-      >
-        <div className={classNames("col", "col-lg-4", "col-md-6", "col-12")}>
+      <EventInfoWrapper className="row row-spaced mt-3 pt-6 pb-2 event-info">
+        <div className="col col-lg-4 col-md-6 col-12">
           <h4>For more information contact:</h4>
           <div className="event-author">{authorName}</div>
           <div className="event-author-title">{authorTitle}</div>
@@ -138,7 +136,7 @@ export const Article = ({
             </div>
           )}
         </div>
-        <div className={classNames("col", "col-lg-4", "col-md-6", "col-12")}>
+        <div className="col col-lg-4 col-md-6 col-12">
           <h4>Share this event:</h4>
           <div className="article-social-media">
             <FacebookShareButton url={articleUrl} quote={title}>
@@ -148,6 +146,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </FacebookShareButton>
+            {/* @ts-ignore */}
             <TwitterShareButton url={articleUrl} quote={title}>
               <TwitterIcon
                 size={28}
@@ -155,6 +154,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </TwitterShareButton>
+            {/* @ts-ignore */}
             <EmailShareButton url={authorEmail} quote={title}>
               <EmailIcon
                 size={28}
@@ -162,6 +162,7 @@ export const Article = ({
                 bgStyle={{ fill: "maroon" }}
               />
             </EmailShareButton>
+            {/* @ts-ignore */}
             <LinkedinShareButton url={articleUrl} quote={title}>
               <LinkedinIcon
                 size={28}
@@ -171,15 +172,18 @@ export const Article = ({
             </LinkedinShareButton>
           </div>
         </div>
-      </div>
+      </EventInfoWrapper>
     );
   };
 
   const eventLocations = () => {
     return (
-      <div className={classNames("col", "col-12", "col-lg-4", "col-md-6")}>
-        <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" transform="shrink-2" />
-        <h4>Location:</h4>
+      <div className="col col-12 col-lg-4 col-md-6">
+        <h4>
+          <i className="fas fa-map-marker-alt" />
+          Location:
+        </h4>
+        {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
@@ -208,23 +212,17 @@ export const Article = ({
     <>
       {headerImageUrl && type !== "event" && (
         <div
-          className={classNames("uds-hero", "uds-hero-md")}
+          className="uds-hero uds-hero-md"
           style={{
             backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
           }}
         />
       )}
 
-      <div
-        className={classNames(
-          "container",
-          `${type}-container`,
-          "wrapper-container"
-        )}
-      >
+      <Wrapper className={`container ${type}-container wrapper-container`}>
         {breadcrumbs && (
-          <div className={classNames("row", "pt-4")}>
-            <div className={classNames("col", "col-12")}>
+          <div className="row pt-4">
+            <div className="col col-12">
               <Breadcrumb listClassName="breadcrumb">
                 {breadcrumbs.map(item => activeBreadcrumb(item))}
               </Breadcrumb>
@@ -232,15 +230,15 @@ export const Article = ({
           </div>
         )}
 
-        <div className={classNames("row", "pb-2", "pt-3")}>
+        <div className="row pb-2 pt-3">
           <div className={hClasses}>
             <h2>{title}</h2>
           </div>
           {type === "event" && (
-            <div className={classNames("col", "col-lg-4", "col-xs-12")}>
+            <div className="col col-lg-4 col-xs-12">
               {(registrationUrl || zoomUrl) && primaryButton()}
               {calendarUrl && (
-                <div className={classNames("card-button", "uds-button")}>
+                <div className="card-button uds-button">
                   <Button
                     color="gray"
                     size="small"
@@ -253,24 +251,16 @@ export const Article = ({
           )}
         </div>
 
-        {type === "event" && (
-          <div className={classNames("row", "row-spaced", "pt-3", "mb-2")}>
+        {type === "event" ? (
+          <div className="row row-spaced pt-3 mb-2">
             {eventTime && (
-              <div
-                className={classNames(
-                  "col",
-                  "col-lg-4",
-                  "col-md-6",
-                  "col-sm-12"
-                )}
-              >
-                <FontAwesomeIcon
-                  icon={faCalendar}
-                  size="lg"
-                  transform="shrink-2"
-                />
-                <h4>Date and time:</h4>
+              <div className="col col-lg-4 col-md-6 col-sm-12">
+                <h4>
+                  <i className="far fa-calendar" />
+                  Date and time:
+                </h4>
                 <div
+                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
                 />
               </div>
@@ -278,11 +268,9 @@ export const Article = ({
             {((registrationUrl && zoomUrl) || eventLocation) &&
               eventLocations()}
           </div>
-        )}
-
-        {type !== "event" && (
-          <div className={classNames("row", "row-spaced", "pt-2")}>
-            <div className={classNames("col", "col-12")}>
+        ) : (
+          <div className="row row-spaced pt-2">
+            <div className="col col-12">
               <div className="article-social-media">
                 <FacebookShareButton url={articleUrl} quote={title}>
                   <FacebookIcon
@@ -291,6 +279,7 @@ export const Article = ({
                     bgStyle={{ fill: "maroon" }}
                   />
                 </FacebookShareButton>
+                {/* @ts-ignore */}
                 <TwitterShareButton url={articleUrl} quote={title}>
                   <TwitterIcon
                     size={28}
@@ -298,6 +287,7 @@ export const Article = ({
                     bgStyle={{ fill: "maroon" }}
                   />
                 </TwitterShareButton>
+                {/* @ts-ignore */}
                 <LinkedinShareButton url={articleUrl} quote={title}>
                   <LinkedinIcon
                     size={28}
@@ -313,15 +303,16 @@ export const Article = ({
           </div>
         )}
 
-        <div className={classNames("row")}>
-          <div className={classNames("col", "col-12")}>
+        <div className="row">
+          <div className="col col-12">
+            {/* eslint-disable-next-line react/no-danger */}
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           </div>
         </div>
 
         {type === "news" && AuthorInfo()}
         {type === "event" && EventInfo()}
-      </div>
+      </Wrapper>
     </>
   );
 };

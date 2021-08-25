@@ -33,6 +33,10 @@ blockquote:before {
   font-size: $uds-size-font-large;
   font-weight: 700;
 
+  @include media-breakpoint-down(sm) {
+    padding: $uds-size-spacing-4;
+  }
+
   svg {
     grid-column: 1;
     fill: $uds-color-base-gray-7;

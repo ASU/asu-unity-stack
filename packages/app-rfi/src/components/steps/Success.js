@@ -1,16 +1,10 @@
 /* eslint-disable react/no-danger */
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
 
 // Component
 

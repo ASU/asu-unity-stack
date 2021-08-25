@@ -1,12 +1,14 @@
-/* eslint-disable react/no-danger */
+/* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
-import { sanitize } from "dompurify";
-import React, { Fragment, useContext } from "react";
+import {
+  idGenerator,
+  sanitizeDangerousMarkup,
+} from "@asu-design-system/components-core";
+import React, { Fragment, useContext, createRef } from "react";
 
 import { ListingPageContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
-import { idGenerator } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
 import { columns as configColumns } from "./index.colums.config";
 import { Table } from "./index.style";
@@ -21,25 +23,40 @@ import { Table } from "./index.style";
  *  id: string
  * }} props
  */
-const renderInfo = ({ resolver, id }) => (
-  <div>
-    <header>
-      <strong>Program Description:</strong>
-    </header>
-    <input className="togle-more-text" type="checkbox" id={`#${id}`} />
-    <div
-      className="desc-long"
-      id={id}
-      dangerouslySetInnerHTML={{
-        __html: sanitize(resolver.getDescrLongExtented()),
-      }}
-    />
-    <label className="label-more-less" htmlFor={`#${id}`}>
-      <span className="label-more">[...more]</span>
-      <span className="label-less">[...less]</span>
-    </label>
-  </div>
-);
+const renderInfo = ({ resolver, id }) => {
+  const labelRef = createRef();
+
+  const triggerDescription = e => {
+    if (e.key === "Enter") labelRef?.current.click();
+  };
+
+  return (
+    <div>
+      <header>
+        <strong>Program Description:</strong>
+      </header>
+      <input className="togle-more-text" type="checkbox" id={`#${id}`} />
+      <div
+        className="desc-long"
+        id={id}
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+          resolver.getDescrLongExtented()
+        )}
+      />
+      <label
+        ref={labelRef}
+        className="label-more-less element-focus"
+        htmlFor={`#${id}`}
+        role="button"
+        tabIndex={0}
+        onKeyDown={triggerDescription}
+      >
+        <span className="label-more">[...more]</span>
+        <span className="label-less">[...less]</span>
+      </label>
+    </div>
+  );
+};
 
 /**
  *
@@ -68,9 +85,9 @@ const renderExtraInfo = ({ resolver }) => (
           <span>{resolver.getAdditionalMathReqCourse()}</span>
           {resolver.getOtherMathReqCourse() && (
             <span
-              dangerouslySetInnerHTML={{
-                __html: sanitize(resolver.getOtherMathReqCourse()),
-              }}
+              dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+                resolver.getOtherMathReqCourse()
+              )}
             />
           )}
         </div>
@@ -91,7 +108,7 @@ const genRowId = idGenerator(`row-`);
  * @param {import("..").GridListingProps} props
  * @returns {JSX.Element}
  */
-const ListView = ({ programs, loading, actionUrls }) => {
+const ListView = ({ programs, totalRows, loading, actionUrls }) => {
   /** @type {{current: HTMLTableElement}} */
   const tableRef = React.useRef(null);
   /** @type {{current: HTMLTableSectionElement}} */
@@ -115,7 +132,12 @@ const ListView = ({ programs, loading, actionUrls }) => {
 
   return (
     <section className="container mb-4">
-      <Table id={GRID_PROGRAMS_ID} ref={tableRef} data-loading={loading}>
+      <Table
+        id={GRID_PROGRAMS_ID}
+        ref={tableRef}
+        data-loading={loading}
+        title={`${totalRows} program found`}
+      >
         <thead>
           <tr role="row">
             {columns.map(col => (
@@ -132,6 +154,16 @@ const ListView = ({ programs, loading, actionUrls }) => {
           </tr>
         </thead>
         <tbody ref={tbodyRef}>
+          {programs.length === 0 ? (
+            <tr role="presentation">
+              <td
+                colSpan={columns.length}
+                aria-label="No result found for the filters applied"
+              >
+                &nbsp;
+              </td>
+            </tr>
+          ) : null}
           {
             // programs
             programs.map((row, rowCurrentIndex) => {

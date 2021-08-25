@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "6.4.4",
+  "version": "6.6.5",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -17,7 +17,7 @@
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "storybook": "start-storybook -s ./dist -p 9009",
+    "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -s ./dist",
     "build": "gulp",
     "prepare": "yarn run build"
@@ -25,11 +25,11 @@
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@storybook/addon-a11y": "^6.2.3",
-    "@storybook/addon-docs": "^6.2.3",
-    "@storybook/addon-storysource": "^6.2.3",
-    "@storybook/addon-viewport": "^6.2.3",
-    "@storybook/html": "^6.2.3",
+    "@storybook/addon-a11y": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-storysource": "^6.3.4",
+    "@storybook/addon-viewport": "^6.3.4",
+    "@storybook/react": "^6.3.4",
     "autoprefixer": "^10.2.5",
     "bootstrap": "^4.6.0",
     "chart.js": "^3.2.1",
@@ -62,5 +62,9 @@
     "storybook-addon-xd-designs": "^5.5.0",
     "style-loader": "^2.0.0"
   },
-  "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb"
+  "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb",
+  "dependencies": {
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  }
 }

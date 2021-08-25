@@ -1,12 +1,10 @@
 // @ts-check
-
-import { Button } from "@asu-design-system/components-core";
+import { Button, idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { progDetailSectionIds } from "../../../../core/models";
 import { imagePropShape } from "../../../../core/models/app-prop-types";
-import { idGenerator } from "../../../../core/utils";
 
 const defaultText = `
 ASU offers this program in an online format

@@ -1,9 +1,9 @@
 // @ts-check
+import { idGenerator } from "@asu-design-system/components-core";
 import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
-import { idGenerator } from "../../../utils";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";

@@ -24,7 +24,9 @@ import {
 } from "../../core/models";
 import {
   degreeDataPropResolverService,
+  filterAnchorMenu,
   getCampusLocations,
+  hasValidAnchorMenu,
 } from "../../core/services";
 import {
   formatAcceleratedConcurrentLinks,
@@ -103,6 +105,8 @@ const ProgramDetailPage = ({
     }
   }, [data?.programs]);
 
+  const filteredAnchorMenu = filterAnchorMenu(anchorMenu, resolver);
+
   return (
     <>
       <ThemeStyle />
@@ -123,18 +127,15 @@ const ProgramDetailPage = ({
         </section>
       ) : null}
 
-      {anchorMenu &&
-      (Object.keys(anchorMenu).filter(key => key !== "externalAnchors").length >
-        0 ||
-        anchorMenu?.externalAnchors?.length > 0) ? (
-        <OnThisPageAnchorMenu anchorMenu={anchorMenu} />
+      {!loading && hasValidAnchorMenu(filteredAnchorMenu) ? (
+        <OnThisPageAnchorMenu anchorMenu={filteredAnchorMenu} />
       ) : null}
 
       <Main data-is-loading={loading} className="main-section">
         {loading ? (
           <Loader />
         ) : (
-          <section className="container mt-4">
+          <section className="container mt-4 mb-0">
             {introContent?.breadcrumbs ? (
               <div className="row col-12">
                 <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
@@ -146,7 +147,6 @@ const ProgramDetailPage = ({
                 <section className="intro">
                   {!introContent?.hideMarketText && resolver.getMarketText() ? (
                     <MarketText
-                      breadcrumbs={introContent?.breadcrumbs}
                       contents={
                         introContent?.contents || [
                           { text: resolver.getMarketText() },
@@ -175,7 +175,7 @@ const ProgramDetailPage = ({
                     offeredBy={
                       atAGlance?.offeredBy || {
                         text: resolver.getCollegeDesc(),
-                        url: "",
+                        url: resolver.getCollegeUrl(),
                       }
                     }
                     locations={
@@ -265,7 +265,7 @@ const ProgramDetailPage = ({
                   />
                 )}
 
-              {!careerOutlook?.hide ? (
+              {!careerOutlook?.hide && resolver.getAsuCareerOpportunity() ? (
                 <CareerOutlook
                   image={
                     careerOutlook?.image ||
@@ -283,7 +283,7 @@ const ProgramDetailPage = ({
 
               {/* <CustomizeYourCollegeExperience /> */}
 
-              {!globalOpportunity?.hide ? (
+              {!globalOpportunity?.hide && resolver.getGlobalExp() ? (
                 <GlobalOpportunity
                   contents={[{ text: resolver.getGlobalExp() }]}
                   image={
@@ -293,7 +293,7 @@ const ProgramDetailPage = ({
                 />
               ) : null}
 
-              {!attendOnline?.hide ? (
+              {!attendOnline?.hide && resolver.getCurriculumUrl() ? (
                 <AttendOnline
                   learnMoreLink={resolver.getCurriculumUrl()}
                   image={

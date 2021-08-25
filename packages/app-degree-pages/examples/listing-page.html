@@ -68,8 +68,7 @@
       const introContentTextPhotoGrid = {
         type: "text-photo-grid",
         title: {
-          text:
-            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -82,16 +81,16 @@
         photoGrid: {
           images: [
             {
-              url: "https://source.unsplash.com/random/800x400?a=1",
+              url: "./assets/img/demo-phot-1.jpeg",
             },
             {
-              url: "https://source.unsplash.com/random/800x400?a=1",
+              url: "./assets/img/demo-phot-2.jpeg",
             },
             {
-              url: "https://source.unsplash.com/random/800x400?a=1",
+              url: "./assets/img/demo-phot-3.jpeg",
             },
             {
-              url: "https://source.unsplash.com/random/800x400?a=1",
+              url: "./assets/img/demo-phot-4.jpeg",
             },
           ],
         },
@@ -102,8 +101,7 @@
       const introContentTextMedia = {
         type: "text-media",
         title: {
-          text:
-            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -116,6 +114,11 @@
         image: {
           url: "https://source.unsplash.com/random/800x400?a=1",
         },
+        // video: {
+        //   url: "./assets/video/stock-video-person-drawing.mp4",
+        //   title: "",
+        //   vttUrl: "",
+        // },
       };
       // =======================================================================
       // Optional introContent configuration which type is "text-image-overlay"
@@ -153,8 +156,7 @@
       const introContentText = {
         type: "text",
         title: {
-          text:
-            "This is introductory marketing copy. Lorem ipsum dolor sit amet",
+          text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
           // component: "h2", default h2
         },
         contents: [
@@ -168,10 +170,9 @@
       // =======================================================================
       // Different introContent configuration can be tested here below:
       // =======================================================================
-      // const introContent = introContentTextPhotoGrid
+      // const introContent = introContentTextPhotoGrid;
       // const introContent = introContentTextMedia
       // const introContent = introContentTextImageOverlay
-      // const introContent = introContentText
       const introContent = introContentText;
 
       AsuDegreePages.initListingPage({

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
+import { idGenerator } from "@asu-design-system/components-core";
 import React from "react";
 
 import {
@@ -15,7 +16,7 @@ import {
   // requestInfoLink, // TODO: this contains the old page request info
   // saveFav, // TODO: this should handle the save to favorite
 } from "../../../../../core/services/degree-http-service";
-import { idGenerator, toTitleCase } from "../../../../../core/utils";
+import { toTitleCase } from "../../../../../core/utils";
 /** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
 
 /* eslint-disable react/prop-types, no-alert, no-console */
@@ -117,10 +118,7 @@ const columns = [
         )}
         {resolver.getAccelerateDegrees().length > 0 && (
           <div className="cell-container">
-            <a
-              href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}
-              rel="noreferrer"
-            >
+            <a href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}>
               4+1 years
             </a>
             <InfoButtonIcon
@@ -142,9 +140,7 @@ const columns = [
     className: "college",
     sortable: true,
     contentTemplate: ({ resolver }) => (
-      <a href={resolver.getCollegeUrl()} target="_blank" rel="noreferrer">
-        {resolver.getCollegeDesc()}
-      </a>
+      <a href={resolver.getCollegeUrl()}>{resolver.getCollegeDesc()}</a>
     ),
   },
 

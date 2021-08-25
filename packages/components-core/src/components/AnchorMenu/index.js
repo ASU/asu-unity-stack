@@ -1,7 +1,4 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
@@ -9,11 +6,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "../../core/hooks/use-media-query";
 import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
-
-import "./index.css";
+import { AnchorMenuWrapper } from "./index.styles";
 
 /**
- * @typedef { import('../../core/shared-model-types').AnchorMenuProps } AnchorMenuProps
+ * @typedef { import('../../core/models/shared-model-types').AnchorMenuProps } AnchorMenuProps
  */
 
 /**
@@ -26,7 +22,6 @@ export const AnchorMenu = ({
   firstElementId,
   focusFirstFocusableElement = false,
 }) => {
-  library.add(fas);
   const anchorMenuRef = useRef(null);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -87,13 +82,9 @@ export const AnchorMenu = ({
   };
 
   return (
-    <div
+    <AnchorMenuWrapper
       ref={anchorMenuRef}
-      className={classNames(
-        "uds-anchor-menu",
-        "uds-anchor-menu-expanded-lg",
-        "mb-4"
-      )}
+      className="uds-anchor-menu uds-anchor-menu-expanded-lg mb-4"
     >
       <div className="container-xl uds-anchor-menu-wrapper">
         {isSmallDevice ? (
@@ -106,8 +97,7 @@ export const AnchorMenu = ({
             aria-controls="collapseAnchorMenu"
           >
             <h4>
-              {menuTitle}:
-              <FontAwesomeIcon icon="chevron-down" />
+              {menuTitle}:<i className="fas fa-chevron-down" />
             </h4>
           </button>
         ) : (
@@ -138,7 +128,7 @@ export const AnchorMenu = ({
           </nav>
         </div>
       </div>
-    </div>
+    </AnchorMenuWrapper>
   );
 };
 

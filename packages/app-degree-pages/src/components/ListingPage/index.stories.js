@@ -4,6 +4,8 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import { getStoryBookBaseUrl } from "../../core/utils";
+
 /**
  * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
  */
@@ -39,8 +41,9 @@ const Template = ({
 
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
-  // applyNowUrl: "https://admission.asu.edu/apply",  // OPTIONAL
-  majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
+  applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
+  // this is just an example working on Storybook
+  majorInfoUrl: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
   // majorInfoUrl:
   //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
@@ -99,7 +102,7 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  hero: null,
+  introContent: null,
 };
 
 /**
@@ -114,8 +117,10 @@ DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
-      collegeAcadOrg: "CGF",
-      departmentCode: "CSFIS",
+      // collegeAcadOrg: "CGF",
+      // departmentCode: "CSFIS",
+      collegeAcadOrg: "CES",
+      // departmentCode: "CGRAPHINFO",
     },
   },
 };
@@ -205,16 +210,16 @@ PageWithIntroTextPhotoGrid.args = {
     photoGrid: {
       images: [
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-1.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-2.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-3.jpeg",
         },
         {
-          url: "https://source.unsplash.com/random/800x400?a=1",
+          url: "examples/assets/img/demo-phot-4.jpeg",
         },
       ],
     },

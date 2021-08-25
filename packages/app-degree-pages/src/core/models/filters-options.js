@@ -1,44 +1,50 @@
 // @ts-check
 
+const ONLNE = "ONLNE";
+
 const locationOptions = [
-  { id: 0, value: "DTPHX", label: "Downtown Phoenix campus" },
-  { id: 1, value: "POLY", label: "Polytechnic campus" },
-  { id: 2, value: "TEMPE", label: "Tempe campus" },
-  { id: 3, value: "WEST", label: "West campus" },
-  { id: 4, value: "ONLNE", label: "ASU Online" },
+  { id: 0, value: "DTPHX", text: "Downtown Phoenix campus" },
+  { id: 1, value: "POLY", text: "Polytechnic campus" },
+  { id: 2, value: "TEMPE", text: "Tempe campus" },
+  { id: 3, value: "WEST", text: "West campus" },
+  { id: 4, value: "ONLNE", text: "ASU Online" },
 ];
 
+const onlneOption = locationOptions[4];
+
 const asuLocalOptions = [
-  { id: 0, value: "COCHS", label: "ASU@Cochise" },
-  { id: 1, value: "LOSAN", label: "ASU@Los Angeles" },
-  { id: 2, value: "NEAZ", label: "ASU@Northeastern Arizona" },
-  { id: 3, value: "PIMA", label: "ASU@Pima" },
-  { id: 4, value: "CAC", label: "ASU@Pinal" },
-  { id: 5, value: "EAC", label: "ASU@TheGilaValley" },
-  { id: 6, value: "TUCSN", label: "ASU@Tucson" },
-  { id: 7, value: "YAVAP", label: "ASU@Yavapai" },
-  { id: 8, value: "AWC", label: "ASU@Yuma" },
-  { id: 9, value: "MESACITYCR", label: "ASU@Mesa City Center" },
-  { id: 10, value: "CALHC", label: "Colleges at Lake Havasu City" },
+  { id: 0, value: "COCHS", text: "ASU@Cochise" },
+  { id: 1, value: "LOSAN", text: "ASU@Los Angeles" },
+  { id: 2, value: "NEAZ", text: "ASU@Northeastern Arizona" },
+  { id: 3, value: "PIMA", text: "ASU@Pima" },
+  { id: 4, value: "CAC", text: "ASU@Pinal" },
+  { id: 5, value: "EAC", text: "ASU@TheGilaValley" },
+  { id: 6, value: "TUCSN", text: "ASU@Tucson" },
+  { id: 7, value: "YAVAP", text: "ASU@Yavapai" },
+  { id: 8, value: "AWC", text: "ASU@Yuma" },
+  { id: 9, value: "MESACITYCR", text: "ASU@Mesa City Center" },
+  { id: 10, value: "CALHC", text: "Colleges at Lake Havasu City" },
 ];
 
 const acceleratedConcurrentOptions = [
   {
     id: 0,
     value: "all",
-    label: "All",
+    text: "All",
   },
   {
     id: 1,
     value: "accelerateDegrees",
-    label: "Accelerated",
+    text: "Accelerated",
   },
   {
     id: 2,
     value: "concurrentDegrees",
-    label: "Concurrent",
+    text: "Concurrent",
   },
 ];
+
+const defaultAccelConcOption = acceleratedConcurrentOptions[0];
 
 const acceleratedConcurrentValues = [
   "acceleratedConcurrent",
@@ -46,9 +52,15 @@ const acceleratedConcurrentValues = [
   "all",
 ];
 
+const isAccelConcValid = opt => opt?.value && opt?.value !== "all";
+
 export {
-  locationOptions,
   asuLocalOptions,
   acceleratedConcurrentOptions,
   acceleratedConcurrentValues,
+  defaultAccelConcOption,
+  isAccelConcValid,
+  locationOptions,
+  ONLNE,
+  onlneOption,
 };

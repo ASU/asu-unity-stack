@@ -1,9 +1,9 @@
+import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
-import { idGenerator } from "../../../../utils";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
 

@@ -1,6 +1,9 @@
-export default { title: 'Components/Breadcrumbs' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js'
+export default createComponent('Breadcrumbs');
 
-export const breadcrumbsAgainstWhiteBackground = () => `
+
+export const BreadcrumbsAgainstWhiteBackground = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-white">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -8,9 +11,10 @@ export const breadcrumbsAgainstWhiteBackground = () => `
       <li class="breadcrumb-item active" aria-current="page">Current Page</li>
     </ol>
   </nav>
-`;
+);
 
-export const breadcrumbsAgainstGray1Background = () => `
+
+export const BreadcrumbsAgainstGray1Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-1">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -18,9 +22,10 @@ export const breadcrumbsAgainstGray1Background = () => `
       <li class="breadcrumb-item active" aria-current="page">Current Page</li>
     </ol>
   </nav>
-`;
+);
 
-export const breadcrumbsAgainstGray2Background = () => `
+
+export const BreadcrumbsAgainstGray2Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-2">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -28,9 +33,10 @@ export const breadcrumbsAgainstGray2Background = () => `
       <li class="breadcrumb-item active" aria-current="page">Current Page</li>
     </ol>
   </nav>
-`;
+);
 
-export const breadcrumbsAgainstGray7Background = () => `
+
+export const BreadcrumbsAgainstGray7Background = createStory(
   <nav aria-label="breadcrumbs">
     <ol class="breadcrumb bg-gray-7">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -38,4 +44,4 @@ export const breadcrumbsAgainstGray7Background = () => `
       <li class="breadcrumb-item active" aria-current="page">Current Page</li>
     </ol>
   </nav>
-`;
+);

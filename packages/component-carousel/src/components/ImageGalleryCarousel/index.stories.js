@@ -31,8 +31,8 @@ for (let index = 0; index < 8; index += 1) {
   });
 }
 
-const mockItemWithContent = () => {
-  return myCarouselItems.map((item, index) => {
+const mockItemWithContent = () =>
+  myCarouselItems.map((item, index) => {
     const content =
       index === 2
         ? `
@@ -62,15 +62,31 @@ const mockItemWithContent = () => {
       content,
     };
   });
-};
 
 const mockItemWithMoreContent = () => {
+  const shortContent = `Body copy goes <span style="font-weight: bold; display: inline;">here in bold!</span>. Then there's a <a href="https://google.com">link!!!!</a>
+  Limit to 5 lines max`;
+  const longContent = `
+  <div>
+    <p>
+      <strong>Lorem ipsum is </strong>
+    </p>
+    <br />
+    <p>
+      <strong>p</strong>laceholder text commonly used in the graphic,
+      print, and publishing industries for previewing layouts and visual
+      mockups. Lorem ipsum is placeholder text commonly used in the graphic,
+      print, and publishing industries for previewing layouts and visual
+      mockups. Lorem ipsum is placeholder text commonly used in the graphic,
+      print, and publishing industries for previewing layouts and visual
+      mockups.&nbsp;<a href="https://packagist.org/packages/asuwebplatforms/webspark-module-webspark_blocks">
+      https://packagist.org/packages/asuwebplatforms/webspark-module-webspark_blocks</a></p>
+  </div>
+  `;
   return myCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
-    content: `Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua eiusmod tempo.`,
+    content: index % 2 === 1 ? shortContent : longContent,
   }));
 };
 

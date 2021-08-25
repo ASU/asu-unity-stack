@@ -17,6 +17,7 @@ import { RfiStepper } from "./RfiStepper";
 
 const RfiMainForm = ({
   campus,
+  actualCampus,
   college,
   department,
   studentType,
@@ -44,6 +45,7 @@ const RfiMainForm = ({
             <div className="uds-image-text-block-text-container">
               <RfiStepper
                 campus={campus}
+                actualCampus={actualCampus}
                 college={college}
                 department={department}
                 studentType={studentType}
@@ -131,6 +133,7 @@ const RfiMainForm = ({
 // Props
 RfiMainForm.defaultProps = {
   campus: undefined,
+  actualCampus: undefined,
   college: undefined,
   department: undefined,
   studentType: undefined,
@@ -146,6 +149,7 @@ RfiMainForm.defaultProps = {
 
 RfiMainForm.propTypes = {
   campus: PropTypes.string,
+  actualCampus: PropTypes.string,
   college: PropTypes.string,
   department: PropTypes.string,
   studentType: PropTypes.string,

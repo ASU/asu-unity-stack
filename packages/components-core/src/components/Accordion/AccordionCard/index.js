@@ -1,17 +1,10 @@
 // @ts-check
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
+import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
 
 /**
  * @typedef {import('../../../core/models/shared-model-types').AccordionCardItemProps} AccordionCardItemProps
@@ -43,13 +36,15 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => {
           >
             {item.content.icon ? (
               <span className="card-icon">
-                <FontAwesomeIcon icon={item.content.icon} className="mr-2" />
+                <i
+                  className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} mr-2`}
+                />
                 {item.content.header}
               </span>
             ) : (
               item.content.header
             )}
-            <FontAwesomeIcon icon="chevron-up" />
+            <i className="fas fa-chevron-up" />
           </a>
         </h4>
       </div>
