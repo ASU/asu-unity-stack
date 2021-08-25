@@ -31,8 +31,8 @@ for (let index = 0; index < 8; index += 1) {
   });
 }
 
-const mockItemWithContent = () => {
-  return myCarouselItems.map((item, index) => {
+const mockItemWithContent = () =>
+  myCarouselItems.map((item, index) => {
     const content =
       index === 2
         ? `
@@ -62,7 +62,6 @@ const mockItemWithContent = () => {
       content,
     };
   });
-};
 
 const mockItemWithMoreContent = () => {
   const shortContent = `Body copy goes <span style="font-weight: bold; display: inline;">here in bold!</span>. Then there's a <a href="https://google.com">link!!!!</a>
