@@ -1,6 +1,5 @@
 // @ts-check
 import classNames from "classnames";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 import {
@@ -15,14 +14,9 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
+import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
 
 /**
  * @typedef { import("../../core/models/shared-model-types").BreadcrumbProps } BreadcrumbProps

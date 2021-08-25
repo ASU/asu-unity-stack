@@ -1,11 +1,10 @@
 // @ts-check
-
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
 import { progDetailSectionIds } from "../../../../core/models";
-import { sanitizeHTML } from "../../../../core/utils";
 
 const WrapperContainer = styled.div`
   & p:last-of-type {
@@ -33,7 +32,9 @@ function ChangeYourMajor({ content }) {
           Change Your Major requirements for current students
         </span>
       </h2>
-      <WrapperContainer dangerouslySetInnerHTML={sanitizeHTML(content)} />
+      <WrapperContainer
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
+      />
     </section>
   );
 }

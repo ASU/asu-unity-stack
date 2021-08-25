@@ -12,7 +12,7 @@ import {
   Video,
 } from "./components";
 
-export * from "./utils";
+export * from "./core/utils";
 export * from "./core/hooks/use-media-query";
 
 export {

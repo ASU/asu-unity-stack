@@ -30,7 +30,6 @@
     "@asu-design-system/design-tokens": "^1.1.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
-    "dompurify": "^2.2.9",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

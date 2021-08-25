@@ -1,23 +1,17 @@
 // @ts-check
 /* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate, react/no-danger */
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import {
   faAngleLeft,
   faAngleRight,
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import dompurify from "dompurify";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
 
 class RfiStepper extends React.Component {
   constructor(props) {

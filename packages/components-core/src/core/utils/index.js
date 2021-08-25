@@ -2,17 +2,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Accordion } from "../components/Accordion";
-import { AnchorMenu } from "../components/AnchorMenu";
-import { Article } from "../components/Article";
-import { Button } from "../components/Button";
-import { ButtonIconOnly } from "../components/ButtonIconOnly";
-import { ButtonTag } from "../components/ButtonTag";
-import { Card } from "../components/Card";
-import { Hero } from "../components/Hero";
-import { Pagination } from "../components/Pagination";
-import { Testimonial } from "../components/Testimonial";
-import { Video } from "../components/Video";
+import { Accordion } from "../../components/Accordion";
+import { AnchorMenu } from "../../components/AnchorMenu";
+import { Article } from "../../components/Article";
+import { Button } from "../../components/Button";
+import { ButtonIconOnly } from "../../components/ButtonIconOnly";
+import { ButtonTag } from "../../components/ButtonTag";
+import { Card } from "../../components/Card";
+import { Hero } from "../../components/Hero";
+import { Pagination } from "../../components/Pagination";
+import { Testimonial } from "../../components/Testimonial";
+import { Video } from "../../components/Video";
+import { spreadClasses } from "./css-utils";
+import { sanitizeDangerousMarkup } from "./html-utils";
+import { idGenerator } from "./id-generator";
 
 /**
  * @typedef {Object} ComponentProps
@@ -94,3 +97,5 @@ export const initHero = ({ targetSelector, props }) =>
  */
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
+
+export { sanitizeDangerousMarkup, spreadClasses, idGenerator };

@@ -1,7 +1,6 @@
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
-
-import { sanitizeHTML } from "../../../../core/utils";
 
 /** @typedef {import('../../../../core/models/program-detail-types').ProgramDescriptionProps} ProgramDescriptionProps */
 
@@ -15,7 +14,7 @@ function ProgramDescription({ content }) {
     <div>
       <h2>Program description</h2>
       {/* eslint-disable-next-line react/no-danger */}
-      <div dangerouslySetInnerHTML={sanitizeHTML(content)} />
+      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)} />
     </div>
   );
 }
