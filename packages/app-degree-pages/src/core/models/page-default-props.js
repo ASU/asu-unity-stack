@@ -59,7 +59,7 @@ const resolveDefaultProps = appPathFolder => {
           icon: ["fas", "file-alt"],
           title: "Apply to program",
           content:
-            "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
+            "Arizona State University invites first-year, transfer, international, graduate and online students to apply for admission using our online application.",
           buttonLink: {
             label: "Apply now",
             ariaLabel: "Apply now",
