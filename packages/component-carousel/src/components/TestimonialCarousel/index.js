@@ -88,7 +88,6 @@ const TestimonialCarousel = ({
       hasPositionIndicators={hasPositionIndicators}
       imageAutoSize={imageAutoSize}
       hasPeek={false}
-      hasShadow={false}
     />
   );
 };

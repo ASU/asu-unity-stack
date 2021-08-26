@@ -1,6 +1,6 @@
 //@import 'variables';
 // Copied variables.scss content here locally.
-$glide-class: "asu-carousel" !default;
+$glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
@@ -122,13 +122,11 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   .glide__track {
     position: relative;
 
+    @include shadow();
+
     .glide__slides {
       margin-bottom: 0;
     }
-  }
-
-  &[data-has-shadow = "true"] .glide__track {
-    @include shadow();
   }
 
   // Arrows.
@@ -291,7 +289,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
           position: relative;
           left: 0px;
 
-          .asu-carousel__bullets {
+          .glide__bullets {
             position: relative;
             .bullet-image-container {
               position: relative;
@@ -314,7 +312,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
               }
             }
 
-            .glide__bullet--active {
+            .#{$glide-class}__bullet--active {
               background-color: transparent;
               border: 5px solid $uds-color-brand-gold;
             }
@@ -322,7 +320,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         }
       }
 
-      .asu-carousel__arrows {
+      .glide__arrows {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -359,14 +357,14 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   @media only screen and (max-width: $uds-breakpoint-sm) {
     &:not(&.image-gallery) {
-      .asu-carousel__bullets {
+      .glide__bullets {
         display: none;
       }
     }
     &.image-gallery {
       width: calc(100% - 40px);
       margin: auto !important;
-      .image-navigator .image-navigator-images .asu-carousel__arrows .glide__arrow {
+      .image-navigator .image-navigator-images .glide__arrows .glide__arrow {
         display: none;
       }
     }

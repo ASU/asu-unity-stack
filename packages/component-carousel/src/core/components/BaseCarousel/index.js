@@ -28,7 +28,7 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            maxWidth?: string
  *            carouselItems: CarouselItem[]
  *            cssClass?: string
- *            CustomNavComponent?: JSX.Element[]
+ *            CustomNavComponent?: JSX.Element
  *            role?: string
  *            ariaLabelledBy?: string
  *            onItemClick?: (index: number) => void
@@ -39,7 +39,6 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            imageAutoSize?: boolean
  *            hasPeek?: boolean
  *            isDraggable?: boolean
- *            hasShadow: boolean
  *          }} props
  * @returns
  */
@@ -60,7 +59,6 @@ const BaseCarousel = ({
   onItemClick = () => null,
   hasPeek = true,
   isDraggable = true,
-  hasShadow = true,
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -106,12 +104,11 @@ const BaseCarousel = ({
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={`asu-carousel ${cssClass}`}
+      className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
       data-image-auto-size={imageAutoSize}
-      data-has-shadow={hasShadow}
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
@@ -147,7 +144,6 @@ BaseCarousel.propTypes = {
   imageAutoSize: PropTypes.bool,
   hasPeek: PropTypes.bool,
   isDraggable: PropTypes.bool,
-  hasShadow: PropTypes.bool,
 };
 
 export { BaseCarousel, calcualteViewItems };
