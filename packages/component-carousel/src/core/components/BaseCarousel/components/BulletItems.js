@@ -42,7 +42,7 @@ const BulletItems = ({ buttonCount }) => {
       <button
         type="button"
         key={`bullet-${i}`}
-        className="glide__bullet"
+        className="asu-carousel__bullet"
         data-glide-dir={`=${i}`}
         aria-label={`Slide view ${i + 1}`}
       />
