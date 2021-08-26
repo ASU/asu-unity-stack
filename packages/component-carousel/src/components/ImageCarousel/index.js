@@ -85,6 +85,7 @@ const ImageCarousel = ({
       hasPositionIndicators={activateGlideActions}
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
+      hasShadow
     />
   );
 };

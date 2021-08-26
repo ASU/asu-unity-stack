@@ -211,6 +211,7 @@ const ImageGalleryCarousel = ({
       hasPositionIndicators={activateGlideActions}
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
+      hasShadow
     />
   );
 };
