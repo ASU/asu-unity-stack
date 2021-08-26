@@ -122,11 +122,13 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   .glide__track {
     position: relative;
 
-    @include shadow();
-
     .glide__slides {
       margin-bottom: 0;
     }
+  }
+
+  &[data-has-shadow = "true"] .glide__track {
+    @include shadow();
   }
 
   // Arrows.
