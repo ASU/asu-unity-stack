@@ -31,7 +31,7 @@ export const Basic = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -205,7 +205,7 @@ export const Basic = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>
@@ -263,7 +263,7 @@ export const DropDownMenus = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -798,7 +798,7 @@ export const DropDownMenus = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>
@@ -853,7 +853,7 @@ export const NoNavigation = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -979,7 +979,7 @@ export const NoNavigation = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>
@@ -1034,7 +1034,7 @@ export const NoNavigationAndWithButtons = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1165,7 +1165,7 @@ export const NoNavigationAndWithButtons = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>
@@ -1220,7 +1220,7 @@ export const ScrolledState = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1456,7 +1456,7 @@ export const ScrolledState = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>
@@ -1519,7 +1519,7 @@ export const Partner = (
                 </a>
                 <a
                   class="nav-link"
-                  href="https://asu.edu/about/colleges-and-schools"
+                  href="https://www.asu.edu/academics/colleges-schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1709,7 +1709,7 @@ export const Partner = (
                         </a>
                         <a
                           class="nav-link"
-                          href="https://asu.edu/about/colleges-and-schools"
+                          href="https://www.asu.edu/academics/colleges-schools"
                         >
                           Colleges and Schools
                         </a>

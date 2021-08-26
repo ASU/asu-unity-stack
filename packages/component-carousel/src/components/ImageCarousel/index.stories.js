@@ -38,8 +38,8 @@ const myCarouselItems = [
   },
 ];
 
-const mockItemWithContent = () => {
-  return myCarouselItems.map(item => ({
+const mockItemWithContent = () =>
+  myCarouselItems.map(item => ({
     ...item,
     content: `
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -48,17 +48,15 @@ const mockItemWithContent = () => {
       Donec quam felis, ultricies nec, pellentesque eu, pretium …
   `,
   }));
-};
 
-const mockItemWithMoreContent = () => {
-  return myCarouselItems.map((item, index) => ({
+const mockItemWithMoreContent = () =>
+  myCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
     content: ` Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua eiusmod tempo.`,
   }));
-};
 
 export default {
   component: ImageCarousel,
