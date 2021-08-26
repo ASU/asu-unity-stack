@@ -20,7 +20,7 @@ const calculateHeightNeeded = (content, width) => {
   const charactersPerLine = width / 6;
 
   const linesNeeded =
-    parseInt(content.length / charactersPerLine, 10) + brCount;
+    parseInt(String(content.length / charactersPerLine), 10) + brCount;
 
   return linesNeeded * 20;
 };
