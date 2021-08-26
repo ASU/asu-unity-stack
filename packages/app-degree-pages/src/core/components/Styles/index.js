@@ -18,9 +18,17 @@ const ThemeStyle = createGlobalStyle`
     box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
   }
 
+  div[class^=uds-hero] h1 {
+    margin-left: 0.15em;
+
+    span {
+      margin-left: 0;
+    }
+  }
+
   h1 span.highlight-gold,
   h2 span.highlight-gold{
-    margin-left;
+    margin-left: 0.15em;
   }
 
 `;
