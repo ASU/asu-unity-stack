@@ -104,7 +104,7 @@ const BaseCarousel = ({
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={`glide ${cssClass}`}
+      className={`asu-carousel ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}

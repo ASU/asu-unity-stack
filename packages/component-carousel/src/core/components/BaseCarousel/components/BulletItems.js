@@ -12,7 +12,7 @@ const BaseBulletItemContainer = ({ children }) => (
   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
   <div
     role="group"
-    className="glide__bullets"
+    className="asu-carousel__bullets"
     data-glide-el="controls[nav]"
     // this is needed when the children is provided
     onClick={e => e.stopPropagation()}

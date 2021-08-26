@@ -6,7 +6,7 @@ import { NextButton } from "./NextButton";
 import { PrevButton } from "./PrevButton";
 
 const BaseNavButtonContainer = ({ children = null }) => (
-  <div className="glide__arrows" data-glide-el="controls">
+  <div className="asu-carousel__arrows" data-glide-el="controls">
     {children}
   </div>
 );
