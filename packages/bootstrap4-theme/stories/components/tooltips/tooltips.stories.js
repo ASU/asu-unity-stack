@@ -29,7 +29,7 @@ export const WhiteBackground = createStory(
 );
 
 export const BaseGrayBackground = createStory(
-  <div class="uds-tooltip-bg-gray-1">
+  <div class="uds-tooltip-bg-base-gray">
     <div class="uds-tooltip-container">
       <button
         tabindex="0"
@@ -101,4 +101,5 @@ export const DarkBackground = createStory(
     </div>
   </div>,
   initTooltip
+
 );

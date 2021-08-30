@@ -46,6 +46,11 @@ const navItemStyles = breakpoint => css`
       padding: 1rem 0.5rem;
     }
 
+    & + .navbutton {
+      margin-top: auto;
+      padding-top: 2rem;
+    }
+
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       > a {
         padding: 0.5rem 0;
@@ -63,9 +68,9 @@ const navItemStyles = breakpoint => css`
   }
 
   .navbutton {
-    margin-top: auto;
-    padding-top: 2rem;
-
+    & + .navbutton {
+      margin-top: 0.5rem;
+    }
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       order: 1;
     }
