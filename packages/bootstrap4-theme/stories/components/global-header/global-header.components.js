@@ -663,9 +663,20 @@ export const DropDownMenus = (
                                 <a class="dropdown-item" href="#">
                                   Here is link number three
                                 </a>
-                                <a href="#" class="btn btn-sm btn-dark col-btn">
-                                  CTA in column
-                                </a>
+                                <div class="btns-row">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-dark col-btn"
+                                  >
+                                    CTA in column
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-dark col-btn"
+                                  >
+                                    CTA in column
+                                  </a>
+                                </div>
                               </div>
                               <div class="col-lg">
                                 <h3>Column Two</h3>
