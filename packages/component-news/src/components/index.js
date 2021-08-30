@@ -1,4 +1,4 @@
 // ts-check
-export * from "./CarouselNews";
-export * from "./GridCardNews";
-export * from "./ListCardlNews";
+export * from "./CardCarouselNews";
+export * from "./CardGridNews";
+export * from "./CardListlNews";

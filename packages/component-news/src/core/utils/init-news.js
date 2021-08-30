@@ -2,7 +2,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { GridCardNews, ListCardlNews, CarouselNews } from "../../components";
+import {
+  CardGridNews,
+  CardListlNews,
+  CardCarouselNews,
+} from "../../components";
 
 /**
  * @typedef {Object} ComponentProps
@@ -19,26 +23,26 @@ const RenderReact = (component, props, target) => {
 /**
  * @param {ComponentProps} props
  */
-const initGridCardNewsComponent = ({ targetSelector, props }) => {
-  RenderReact(GridCardNews, props, document.querySelector(targetSelector));
+const initCardGridNewsComponent = ({ targetSelector, props }) => {
+  RenderReact(CardGridNews, props, document.querySelector(targetSelector));
 };
 
 /**
  * @param {ComponentProps} props
  */
-const initListCardlNewsComponent = ({ targetSelector, props }) => {
-  RenderReact(ListCardlNews, props, document.querySelector(targetSelector));
+const initCardListNewsComponent = ({ targetSelector, props }) => {
+  RenderReact(CardListlNews, props, document.querySelector(targetSelector));
 };
 
 /**
  * @param {ComponentProps} props
  */
-const initCarouselNewsComponent = ({ targetSelector, props }) => {
-  RenderReact(CarouselNews, props, document.querySelector(targetSelector));
+const initCardCarouselNewsComponent = ({ targetSelector, props }) => {
+  RenderReact(CardCarouselNews, props, document.querySelector(targetSelector));
 };
 
 export {
-  initGridCardNewsComponent,
-  initListCardlNewsComponent,
-  initCarouselNewsComponent,
+  initCardGridNewsComponent,
+  initCardListNewsComponent,
+  initCardCarouselNewsComponent,
 };

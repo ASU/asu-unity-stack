@@ -26,6 +26,7 @@
     "directory": "packages/component-news"
   },
   "dependencies": {
+    "@asu-design-system/component-carousel": "^0.0.0",
     "@asu-design-system/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "prop-types": "^15.7.2",

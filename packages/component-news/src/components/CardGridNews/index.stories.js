@@ -1,14 +1,14 @@
 // @ts-check
 import React from "react";
 
-import { GridCardNews } from "./index";
+import { CardGridNews } from "./index";
 
 export default {
   title: "UDS/GridCardNews",
-  component: GridCardNews,
+  component: CardGridNews,
 };
 
-const Template = args => <GridCardNews {...args} />;
+const Template = args => <CardGridNews {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
