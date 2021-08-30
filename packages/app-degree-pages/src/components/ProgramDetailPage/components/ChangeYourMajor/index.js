@@ -29,7 +29,7 @@ function ChangeYourMajor({ content }) {
     >
       <h2>
         <span className="highlight-gold">
-          Change Your Major requirements for current students
+          Change your major requirements for current students
         </span>
       </h2>
       <WrapperContainer

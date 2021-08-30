@@ -49,7 +49,7 @@ function AffordingCollege() {
         <div className="mt-2 col-12 col-md-4">
           <Card
             icon={["fas", "hand-holding-usd"]}
-            title="Finanacial aid"
+            title="Financial aid"
             body="There are many financial aid options available for students. In fact, more than 80 percent of all ASU students receive some form of financial assistance every year."
             buttons={[
               {

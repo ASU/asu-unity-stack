@@ -23,7 +23,7 @@ function ExampleCareers({ tableData }) {
       id={progDetailSectionIds.exampleCareers.targetIdName}
       className="container"
     >
-      <h2>Example careers</h2>
+      <h3>Example careers</h3>
       <p>
         Students who complete this degree program may be prepared for the
         following careers. Advanced degrees or certifications may be required

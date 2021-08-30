@@ -16,7 +16,10 @@ export const GlobalElementsOnly = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -25,7 +28,7 @@ export const GlobalElementsOnly = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -46,16 +49,19 @@ export const GlobalElementsOnly = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -131,7 +137,10 @@ export const ZeroColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -140,7 +149,7 @@ export const ZeroColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -161,16 +170,19 @@ export const ZeroColumns = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -266,7 +278,10 @@ export const OneColumn = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -275,7 +290,7 @@ export const OneColumn = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -296,16 +311,19 @@ export const OneColumn = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -353,7 +371,10 @@ export const OneColumnNoLogoOrSocial = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -362,7 +383,7 @@ export const OneColumnNoLogoOrSocial = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -383,16 +404,19 @@ export const OneColumnNoLogoOrSocial = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -533,7 +557,10 @@ export const TwoColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -542,7 +569,7 @@ export const TwoColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -563,16 +590,19 @@ export const TwoColumns = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -761,7 +791,10 @@ export const ThreeColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -770,7 +803,7 @@ export const ThreeColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -791,16 +824,19 @@ export const ThreeColumns = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -1037,7 +1073,10 @@ export const FourColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -1046,7 +1085,7 @@ export const FourColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -1067,16 +1106,19 @@ export const FourColumns = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -1361,7 +1403,10 @@ export const FiveColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -1370,7 +1415,7 @@ export const FiveColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -1391,16 +1436,19 @@ export const FiveColumns = (
               class="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a class="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a class="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">
+              <a class="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">
+              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
                 Terms of Use
               </a>
               <a class="nav-link" href="https://www.asu.edu/emergency/">
@@ -1727,7 +1775,10 @@ export const SixColumns = (
                 />
               </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/asujobs">
@@ -1736,7 +1787,7 @@ export const SixColumns = (
                 <a class="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">
+                <a class="nav-link" href="https://www.asu.edu/about/contact">
                   Contact ASU
                 </a>
                 <a class="nav-link" href="https://my.asu.edu/">
@@ -1758,16 +1809,22 @@ export const SixColumns = (
                 class="nav colophon"
                 aria-label="University Legal and Compliance"
               >
-                <a class="nav-link" href="https://www.asu.edu/copyright/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/copyright-trademark"
+                >
                   Copyright and Trademark
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/accessibility/">
                   Accessibility
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/privacy/">
+                <a class="nav-link" href="https://www.asu.edu/about/privacy">
                   Privacy
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/tou/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/terms-of-use"
+                >
                   Terms of Use
                 </a>
                 <a class="nav-link" href="https://www.asu.edu/emergency/">

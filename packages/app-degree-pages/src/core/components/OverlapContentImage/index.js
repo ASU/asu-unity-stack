@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { imagePropShape } from "../../models";
+import { parseHeading } from "../../utils";
 import { ParagrapList } from "../ParagrapList";
 
 const GlobalStyle = createGlobalStyle`
@@ -73,11 +74,13 @@ function OverlapContentImage({
   contentDirection = "left",
   contents = [],
   contentChildren = null,
+  headingTag = "H3",
 }) {
   /** @type {{current: HTMLDivElement}} */
   const textAreaRef = useRef();
   /** @type {{current: HTMLImageElement}} */
   const imgRef = useRef();
+  const Heading = parseHeading(headingTag);
 
   function computeImageHeight() {
     const PERCENTAGE_INCREASE = 1.2;
@@ -111,9 +114,9 @@ function OverlapContentImage({
         }}
       />
       <ContentWrapper ref={textAreaRef} className="content-wrapper">
-        <h3>
+        <Heading>
           <span className="highlight-gold">{title}</span>
-        </h3>
+        </Heading>
         <ParagrapList contents={contents} />
         {contentChildren}
       </ContentWrapper>
@@ -122,6 +125,7 @@ function OverlapContentImage({
 }
 
 OverlapContentImage.propTypes = {
+  headingTag: PropTypes.string,
   title: PropTypes.string,
   contentDirection: PropTypes.oneOf(["left", "right"]),
   contents: PropTypes.arrayOf(

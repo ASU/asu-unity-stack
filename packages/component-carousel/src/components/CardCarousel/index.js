@@ -126,6 +126,7 @@ const CardCarousel = ({
       hasPositionIndicators={activateGlideActions}
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
+      hasShadow
     />
   );
 };

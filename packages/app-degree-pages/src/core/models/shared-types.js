@@ -103,6 +103,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 
 /**
  *  @typedef {{
+ *    headingTag?: string
  *    title?: string
  *    contentDirection?: "left" |  "right"
  *    contents?: import("./shared-types").ContentItem[]

@@ -38,7 +38,10 @@ const Innovation = () => {
                 />
               </a>
               <nav className="nav" aria-label="University Services">
-                <a className="nav-link" href="https://www.asu.edu/map/">
+                <a
+                  className="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
                   Maps and Locations
                 </a>
                 <a className="nav-link" href="https://www.asu.edu/asujobs">
@@ -47,7 +50,10 @@ const Innovation = () => {
                 <a className="nav-link" href="https://isearch.asu.edu/">
                   Directory
                 </a>
-                <a className="nav-link" href="https://www.asu.edu/contactasu/">
+                <a
+                  className="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                >
                   Contact ASU
                 </a>
                 <a className="nav-link" href="https://my.asu.edu/">
@@ -72,16 +78,22 @@ const Legal = () => {
               className="nav colophon"
               aria-label="University Legal and Compliance"
             >
-              <a className="nav-link" href="https://www.asu.edu/copyright/">
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
                 Copyright and Trademark
               </a>
               <a className="nav-link" href="https://www.asu.edu/accessibility/">
                 Accessibility
               </a>
-              <a className="nav-link" href="https://www.asu.edu/privacy/">
+              <a className="nav-link" href="https://www.asu.edu/about/privacy">
                 Privacy
               </a>
-              <a className="nav-link" href="https://www.asu.edu/tou/">
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+              >
                 Terms of Use
               </a>
               <a className="nav-link" href="https://www.asu.edu/emergency/">

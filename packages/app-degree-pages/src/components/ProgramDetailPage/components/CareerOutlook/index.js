@@ -12,6 +12,7 @@ import { progDetailSectionIds } from "../../../../core/models";
 const CareerOutlook = ({ contents, image }) => (
   <section id={progDetailSectionIds.careerOutlook.targetIdName}>
     <OverlapContentImage
+      headingTag="H2"
       title={progDetailSectionIds.careerOutlook.text}
       contents={contents}
       image={image}

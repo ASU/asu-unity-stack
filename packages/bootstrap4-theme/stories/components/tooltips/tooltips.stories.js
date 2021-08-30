@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Tooltips');
+import { initTooltip } from './tooltips.js';
 
 export const WhiteBackground = createStory(
   <div class="uds-tooltip-bg-white">
@@ -23,11 +24,12 @@ export const WhiteBackground = createStory(
         commodo consequat.
       </div>
     </div>
-  </div>
+  </div>,
+  initTooltip
 );
 
 export const BaseGrayBackground = createStory(
-  <div class="uds-tooltip-bg-gray-1">
+  <div class="uds-tooltip-bg-base-gray">
     <div class="uds-tooltip-container">
       <button
         tabindex="0"
@@ -47,7 +49,8 @@ export const BaseGrayBackground = createStory(
         commodo consequat.
       </div>
     </div>
-  </div>
+  </div>,
+  initTooltip
 );
 
 export const GrayBackground = createStory(
@@ -71,7 +74,8 @@ export const GrayBackground = createStory(
         commodo consequat.
       </div>
     </div>
-  </div>
+  </div>,
+  initTooltip
 );
 
 export const DarkBackground = createStory(
@@ -95,5 +99,6 @@ export const DarkBackground = createStory(
         commodo consequat.
       </div>
     </div>
-  </div>
+  </div>,
+  initTooltip
 );

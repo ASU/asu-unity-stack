@@ -36,7 +36,7 @@ function AttendOnline({ image, learnMoreLink, contents }) {
         <div className="card card-centered">
           <i className="fas fa-wifi fa-2x card-icon-top" />
           <div className="card-header">
-            <h3 className="card-title">Attend Online</h3>
+            <h3 className="card-title">Attend online</h3>
           </div>
           <div className="card-body">
             {contents ? (
