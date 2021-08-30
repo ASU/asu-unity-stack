@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Events } from "../../events";
+import { CardsGridEvents, CardsListEvents } from "../../components";
 
 /**
  * @typedef {Object} ComponentProps
@@ -19,8 +19,15 @@ const RenderReact = (component, props, target) => {
 /**
  * @param {ComponentProps} props
  */
-const initEventsComponent = ({ targetSelector, props }) => {
-  RenderReact(Events, props, document.querySelector(targetSelector));
+const initCardsGridEventsComponent = ({ targetSelector, props }) => {
+  RenderReact(CardsGridEvents, props, document.querySelector(targetSelector));
 };
 
-export { initEventsComponent };
+/**
+ * @param {ComponentProps} props
+ */
+const initCardsListEventsComponent = ({ targetSelector, props }) => {
+  RenderReact(CardsListEvents, props, document.querySelector(targetSelector));
+};
+
+export { initCardsGridEventsComponent, initCardsListEventsComponent };

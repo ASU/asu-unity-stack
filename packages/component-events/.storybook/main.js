@@ -8,7 +8,7 @@ module.exports = {
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
   ],
-  stories: ["../src/*.stories.js"],
+  stories: ["../src/**/*.stories.js"],
   webpackFinal: async config => {
     return {
       ...config,

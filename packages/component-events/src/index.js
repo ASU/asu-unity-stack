@@ -1,2 +1,5 @@
-export { Events } from "./events";
-export { initEventsComponent } from "./core/utils/init-events";
+export * from "./components";
+export {
+  initCardsGridEventsComponent,
+  initCardsListEventsComponent,
+} from "./core/utils/init-events";

@@ -13,7 +13,7 @@ const config = {
     path: path.resolve(PROJECT_DIR, "dist"),
     filename: "[name].production.js",
     library: {
-      name: "Events",
+      name: "events",
       type: "umd",
       umdNamedDefine: true,
       // export: "default",
