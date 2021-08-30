@@ -101,5 +101,4 @@ export const DarkBackground = createStory(
     </div>
   </div>,
   initTooltip
-
 );
