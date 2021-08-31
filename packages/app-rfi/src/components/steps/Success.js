@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 // @ts-check
-import dompurify from "dompurify";
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 

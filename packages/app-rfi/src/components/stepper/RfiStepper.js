@@ -1,6 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate, react/no-danger */
-import dompurify from "dompurify";
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
