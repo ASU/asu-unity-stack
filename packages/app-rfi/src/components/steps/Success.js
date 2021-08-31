@@ -4,12 +4,6 @@ import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
-
 // Component
 
 const Success = ({ successMsg }) => {

@@ -1,10 +1,15 @@
 /* eslint-disable react/no-danger */
 // @ts-check
+import {
+  spreadClasses,
+  sanitizeDangerousMarkup,
+  idGenerator,
+} from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { contentPropShape } from "../../models";
-import { idGenerator, isHtml, sanitizeHTML, spreadClasses } from "../../utils";
+import { isHtml } from "../../utils";
 
 /**
  *
@@ -22,7 +27,7 @@ function ParagrapList({ contents = [] }) {
         isHtml(content.text) ? (
           <div
             key={genId.next().value}
-            dangerouslySetInnerHTML={sanitizeHTML(content.text)}
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(content.text)}
           />
         ) : (
           <p

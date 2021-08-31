@@ -36,7 +36,7 @@ const UniversalNavbar = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://asu.edu/about/colleges-and-schools"
+                href="https://www.asu.edu/academics/colleges-schools"
               >
                 Colleges and Schools
               </a>

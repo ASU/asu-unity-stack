@@ -46,10 +46,6 @@ const DropdownWrapper = styled.div`
         margin: 1rem 0;
         line-height: calc(100% + 0.12em);
       }
-      .nav-button {
-        margin-top: auto;
-        padding-top: 2rem;
-      }
       .nav-link {
         a {
           width: 100%;
@@ -60,6 +56,13 @@ const DropdownWrapper = styled.div`
           color: #191919;
           &:hover {
             color: #8c1d40;
+          }
+        }
+        & + .nav-button {
+          margin-top: auto;
+          padding-top: 2rem;
+          & + .nav-button {
+            margin-top: 1rem;
           }
         }
       }

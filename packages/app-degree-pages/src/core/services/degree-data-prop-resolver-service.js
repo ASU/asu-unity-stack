@@ -1,5 +1,7 @@
 // @ts-check
 
+import { findCampusDefinition } from "../models";
+
 const mathintensity = {
   G: "General",
   M: "Moderate",
@@ -7,6 +9,11 @@ const mathintensity = {
   undefined: "",
 };
 
+// If Degree starts with a B, it's undergrad.
+// TODO Is there a better means of identifying undergrad programs?
+// Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
+// wouldn't give us minors and certs, though).
+const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
 /**
  *
  * @param {Object.<string, any>} row
@@ -19,6 +26,9 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => row["Institution"],
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
+    isUndergradProgram: () => isUndergradProgram(row),
+    /** @returns {"undergrad" |  "graduate"} */
+    getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
     getDegreeDescLong: () => row["DegreeDescrlong"],
     getDescrLongExtented: () => row["DescrlongExtns"],
@@ -36,7 +46,15 @@ function degreeDataPropResolverService(row = {}) {
       !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
-    getCollegeDesc: () => row["CollegeDescr100"],
+    getCollegeDesc: () => {
+      // webservice value example "for Design and the Arts, Herberger Institute"
+      /** @type {String} */
+      const collegeDescRaw = row["CollegeDescr100"];
+      const collegeDesc = collegeDescRaw
+        ? collegeDescRaw.split(",").reverse().join(" ").trim()
+        : "";
+      return collegeDesc;
+    },
     getCollegeUrl: () => row["CollegeUrl"],
     /** @return {string} */
     getEmailAddress: () => row["EmailAddr"],
@@ -81,27 +99,30 @@ function degreeDataPropResolverService(row = {}) {
  * @returns {import("src/core/models/shared-types").LinkItem[]}
  */
 function getCampusLocations(resolver) {
+  const program = resolver.getProgramType();
   const locations = [];
+  const getDefaultLocation = location => ({
+    text: location,
+    url: "",
+  });
 
-  if (resolver.getCampusList().length > 0)
+  const campusList = resolver.getCampusList();
+  if (campusList.length > 0)
     locations.push(
-      ...resolver.getCampusList().map(location => ({
-        text: location,
-        url: "#",
-      }))
+      ...campusList.map(
+        location =>
+          findCampusDefinition(location, program) ||
+          getDefaultLocation(location)
+      )
     );
 
-  if (resolver.getAsuOfficeLoc())
-    locations.push({
-      text: resolver.getAsuOfficeLoc(),
-      url: "#",
-    });
-
-  if (resolver.getCampusWue())
-    locations.push({
-      text: resolver.getCampusWue(),
-      url: "#",
-    });
+  const campusWueLocation = resolver.getCampusWue();
+  if (campusWueLocation) {
+    locations.push(
+      findCampusDefinition(campusWueLocation, program) ||
+        getDefaultLocation(campusWueLocation)
+    );
+  }
 
   return locations;
 }

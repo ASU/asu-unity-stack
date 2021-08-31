@@ -1,3 +1,12 @@
+@mixin focusState {
+  + div[role='tooltip'].uds-tooltip-description {
+    visibility: visible;
+  }
+  .fa-circle {
+    color: $uds-color-font-light-info;
+  }
+}
+
 div.uds-tooltip-container {
   display: inline-block;
   position: relative;
@@ -28,13 +37,12 @@ button.uds-tooltip {
     vertical-align: middle;
   }
 
-  &:hover,
   &:focus {
-    + div[role='tooltip'].uds-tooltip-description {
-      visibility: visible;
-    }
-    .fa-circle {
-      color: $uds-color-font-light-info;
+    @include focusState();
+  }
+  @include media-breakpoint-up(sm) {
+    &:hover {
+      @include focusState();
     }
   }
 }
@@ -108,7 +116,7 @@ span.uds-tooltip-visually-hidden {
   background-color: $uds-color-base-white;
 }
 
-.uds-tooltip-bg-gray-1 {
+.uds-tooltip-bg-base-gray {
   background-color: $uds-color-base-gray-1;
 }
 

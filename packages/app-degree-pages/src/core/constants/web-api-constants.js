@@ -29,7 +29,7 @@ const detailPageDefaultDataSource = {
   fields:
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,AsuCritTrackUrl,` +
     // at a glance
-    `Descr100,CollegeDescr100,` +
+    `Descr100,CollegeDescr100,CollegeUrl,` +
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
     // Example Careers
     "careerData," +

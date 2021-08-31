@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {import('../../../core/shared-model-types').PageItemProps} PageItemProps
+ * @typedef {import('../../../core/models/shared-model-types').PageItemProps} PageItemProps
  */
 
 /**

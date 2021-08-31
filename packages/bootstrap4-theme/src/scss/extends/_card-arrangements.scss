@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   max-width: 1400px;
-  margin: 0 12px;
 
   & > &-content-container {
     display: flex;
@@ -94,7 +93,6 @@
 
   @media screen and (max-width: $uds-breakpoint-sm) {
     flex-direction: column;
-    margin: 0 $uds-size-spacing-4;
     & > &-card-container {
       &.auto-arrangement {
         grid-template-columns: 1fr;

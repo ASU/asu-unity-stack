@@ -1,12 +1,10 @@
 // @ts-check
-
-import { Button } from "@asu-design-system/components-core";
+import { Button, idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { progDetailSectionIds } from "../../../../core/models";
 import { imagePropShape } from "../../../../core/models/app-prop-types";
-import { idGenerator } from "../../../../core/utils";
 
 const defaultText = `
 ASU offers this program in an online format
@@ -38,7 +36,7 @@ function AttendOnline({ image, learnMoreLink, contents }) {
         <div className="card card-centered">
           <i className="fas fa-wifi fa-2x card-icon-top" />
           <div className="card-header">
-            <h3 className="card-title">Attend Online</h3>
+            <h3 className="card-title">Attend online</h3>
           </div>
           <div className="card-body">
             {contents ? (

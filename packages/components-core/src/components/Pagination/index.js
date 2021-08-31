@@ -3,11 +3,11 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { createRange } from "../../core/utils/helpers/numbers";
+import { createRange } from "../../core/utils/numbers";
 import { PageItem } from "./PageItem";
 
 /**
- * @typedef {import('../../core/shared-model-types').PaginationProps} PaginationProps
+ * @typedef {import('../../core/models/shared-model-types').PaginationProps} PaginationProps
  */
 
 const X_SMALL_DEDVICE_WIDTH = 413;

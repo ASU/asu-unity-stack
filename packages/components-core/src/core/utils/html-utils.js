@@ -1,4 +1,5 @@
 // @ts-check
+import { sanitize } from "dompurify";
 
 /**
  * @typedef {{
@@ -19,5 +20,12 @@ function queryFirstFocusable(targetSelector) {
 
   return focusable;
 }
+/**
+ * @param {string} content
+ * @returns {Object}
+ */
+export const sanitizeDangerousMarkup = content => {
+  return { __html: sanitize(content) };
+};
 
 export { queryFirstFocusable };

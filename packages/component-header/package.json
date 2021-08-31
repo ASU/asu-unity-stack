@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-header",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ASU Global Header",
   "main": "src/index.js",
   "author": "Nicolas Baudon",
@@ -26,6 +26,7 @@
     "directory": "packages/component-header"
   },
   "peerDependencies": {
+    "@asu-design-system/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",

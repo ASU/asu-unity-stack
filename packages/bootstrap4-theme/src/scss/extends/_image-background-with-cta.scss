@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin: 0 12px;
+  margin: auto;
 
   &-container {
     align-items: baseline;
@@ -55,5 +55,8 @@
 @media screen and (max-width: $uds-breakpoint-sm) {
   .uds-image-background-with-cta {
     margin: 0;
+    .container {
+      padding: 0;
+    }
   }
 }

@@ -198,7 +198,7 @@ const defaultArgs = {
     cards: [
       {
         icon: ["fas", "info-circle"],
-        title: "Lear more about our programs",
+        title: "Learn more about our programs",
         content:
           "Tell us what type of student you are and we'll get you the information you need.",
         buttonLink: {
@@ -283,6 +283,7 @@ Default.args = {
   introContent: null,
   nextSteps: null,
   globalOpportunity: null,
+  atAGlance: null,
   attendOnline: null,
 };
 

@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { imagePropShape } from "../../models";
+import { parseHeading } from "../../utils";
 import { ParagrapList } from "../ParagrapList";
 
 const GlobalStyle = createGlobalStyle`
@@ -12,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     padding-top: 0;
     width: auto;
     align-items: center;
+
+    &:after{
+      height: 100%;
+    }
     @media (max-width: 768px) {
       padding-top: 1.5rem !important;
     }
@@ -19,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const ContentWrapper = styled.div`
+  .uds-image-overlap.content-right &.content-wrapper,
   .uds-image-overlap.content-left &.content-wrapper {
     height: fit-content;
   }
@@ -48,9 +54,12 @@ const OverlapImage = styled.img`
   .uds-image-overlap & {
     width: 100%;
     height: 100%;
-    grid-column: 2 / span 4;
     grid-row: 2/5;
     object-fit: cover;
+  }
+
+  .uds-image-overlap.content-right & {
+    grid-row: 1 / span 3;
   }
 `;
 
@@ -65,11 +74,13 @@ function OverlapContentImage({
   contentDirection = "left",
   contents = [],
   contentChildren = null,
+  headingTag = "H3",
 }) {
   /** @type {{current: HTMLDivElement}} */
   const textAreaRef = useRef();
   /** @type {{current: HTMLImageElement}} */
   const imgRef = useRef();
+  const Heading = parseHeading(headingTag);
 
   function computeImageHeight() {
     const PERCENTAGE_INCREASE = 1.2;
@@ -103,9 +114,9 @@ function OverlapContentImage({
         }}
       />
       <ContentWrapper ref={textAreaRef} className="content-wrapper">
-        <h3>
+        <Heading>
           <span className="highlight-gold">{title}</span>
-        </h3>
+        </Heading>
         <ParagrapList contents={contents} />
         {contentChildren}
       </ContentWrapper>
@@ -114,6 +125,7 @@ function OverlapContentImage({
 }
 
 OverlapContentImage.propTypes = {
+  headingTag: PropTypes.string,
   title: PropTypes.string,
   contentDirection: PropTypes.oneOf(["left", "right"]),
   contents: PropTypes.arrayOf(

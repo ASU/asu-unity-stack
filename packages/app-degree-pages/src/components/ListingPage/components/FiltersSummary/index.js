@@ -1,10 +1,9 @@
 // @ts-check
-
+import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { filterValueShape, isAccelConcValid } from "../../../../core/models";
-import { idGenerator } from "../../../../core/utils";
 
 /**
  * @param {{

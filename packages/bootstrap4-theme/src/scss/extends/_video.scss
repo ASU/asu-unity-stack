@@ -31,12 +31,6 @@
   }
 
   &-container {
-    margin: 48px;
-
-    @media screen and (max-width: $uds-breakpoint-md) {
-      margin: 24px;
-    }
-
     video {
       height: auto;
       width: 100%;

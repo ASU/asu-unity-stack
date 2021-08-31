@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ASUHeader } from "../header";
+import { ASUHeader } from "../../header";
 
 /**
  * @typedef {Object} ComponentProps

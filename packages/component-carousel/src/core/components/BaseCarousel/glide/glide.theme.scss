@@ -8,6 +8,64 @@ $uds-breakpoint-lg: 1200px;
 $uds-color-base-gray-7: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
+@mixin shadow {
+  // At start, no "to right" in ::after rule
+  &.slider-start::after {
+    // .glide::after
+    background: linear-gradient(
+      to left,
+      rgba(25, 25, 25, 0.2),
+      48px,
+      rgba(255, 255, 255, 0) 96px
+    );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+  // In the middle, show both gradients.
+  &.slider-mid::after {
+    // .glide::after
+    background: linear-gradient(
+        to right,
+        rgba(25, 25, 25, 0.2),
+        48px,
+        rgba(255, 255, 255, 0) 96px
+      ),
+      // Use gradient stacking for right edge.
+      linear-gradient(
+          to left,
+          rgba(25, 25, 25, 0.2),
+          48px,
+          rgba(255, 255, 255, 0) 96px
+        );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+  // At end, no "to left" in ::after rule
+  &.slider-end::after {
+    // .glide::after
+    background: linear-gradient(
+      to right,
+      rgba(25, 25, 25, 0.2),
+      48px,
+      rgba(255, 255, 255, 0) 96px
+    );
+    content: "\00a0";
+    height: 100%;
+    position: absolute; // Breaks swipe, unless...
+    pointer-events: none; // ... we use this.
+    width: 100%;
+    top: 0;
+  }
+}
+
 @media only screen and (min-width: 577px) {
   .container .aligned-carousel {
     margin-left: -124px !important;
@@ -63,64 +121,14 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   .glide__track {
     position: relative;
-    // At start, no "to right" in ::after rule
-    &.slider-start::after {
-      // .glide::after
-      background: linear-gradient(
-        to left,
-        rgba(25, 25, 25, 0.2),
-        48px,
-        rgba(255, 255, 255, 0) 96px
-      );
-      content: "\00a0";
-      height: 100%;
-      position: absolute; // Breaks swipe, unless...
-      pointer-events: none; // ... we use this.
-      width: 100%;
-      top: 0;
-    }
-    // In the middle, show both gradients.
-    &.slider-mid::after {
-      // .glide::after
-      background: linear-gradient(
-          to right,
-          rgba(25, 25, 25, 0.2),
-          48px,
-          rgba(255, 255, 255, 0) 96px
-        ),
-        // Use gradient stacking for right edge.
-        linear-gradient(
-            to left,
-            rgba(25, 25, 25, 0.2),
-            48px,
-            rgba(255, 255, 255, 0) 96px
-          );
-      content: "\00a0";
-      height: 100%;
-      position: absolute; // Breaks swipe, unless...
-      pointer-events: none; // ... we use this.
-      width: 100%;
-      top: 0;
-    }
-    // At end, no "to left" in ::after rule
-    &.slider-end::after {
-      // .glide::after
-      background: linear-gradient(
-        to right,
-        rgba(25, 25, 25, 0.2),
-        48px,
-        rgba(255, 255, 255, 0) 96px
-      );
-      content: "\00a0";
-      height: 100%;
-      position: absolute; // Breaks swipe, unless...
-      pointer-events: none; // ... we use this.
-      width: 100%;
-      top: 0;
-    }
+
     .glide__slides {
       margin-bottom: 0;
     }
+  }
+
+  &[data-has-shadow = "true"] .glide__track {
+    @include shadow();
   }
 
   // Arrows.
@@ -149,10 +157,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         background-color: #fafafa;
         border: 1px solid #e8e8e8;
         opacity: 1;
-      }
-
-      svg {
-        width: 0.625em;
       }
 
       &:focus {
@@ -229,6 +233,10 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     .glide__track {
       border: $border-element;
 
+      &::after {
+        content: none;
+      }
+
       .#{$glide-class}#{$se}slides {
         & li.glide__slide {
           display: list-item;
@@ -268,13 +276,16 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     }
 
     .image-navigator {
+      position: relative;
       .image-navigator-images {
         min-height: $image-navigator-height;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        width: 80%;
+        width: 100%;
         margin: auto;
         overflow: hidden;
+
+        @include shadow();
 
         .navigation-slider {
           position: relative;
@@ -284,15 +295,22 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
             position: relative;
             .bullet-image-container {
               position: relative;
+              margin: 0 0.5rem;
+              height: 48px;
+
+              &:first-child {
+                margin-left: 16rem;
+              }
 
               .bullet-image {
                 flex-basis: auto;
                 width: 88px;
-                height: 48px;
+                height: 100%;
                 border-radius: 0;
                 border: 0;
                 z-index: 2;
                 object-fit: cover;
+                margin: 0;
               }
             }
 
@@ -313,29 +331,21 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
         .glide__arrow {
           $btn-nav-size: 2.5rem;
           width: $btn-nav-size;
-          @supports not (-webkit-touch-callout: none) {
-            /* Height breaks border radius on iOS */
-            height: $btn-nav-size;
-          }
+          height: $btn-nav-size;
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 3;
           position: absolute;
+          background-color: #ffffff;
 
-          svg {
-            height: 1rem;
-            position: static;
+          &:hover {
+            border-color: #d0d0d0;
           }
 
-          @supports (-webkit-touch-callout: none) {
-            svg {
-              height: 2rem;
-              position: absolute;
-              top: 1rem;
-            }
+          .arrow-icon {
+            font-size: 1rem;
           }
-
           &.glide__arrow--prev {
             left: 0;
           }

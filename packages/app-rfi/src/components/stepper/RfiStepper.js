@@ -7,12 +7,6 @@ import React from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
-
 class RfiStepper extends React.Component {
   constructor(props) {
     super(props);
