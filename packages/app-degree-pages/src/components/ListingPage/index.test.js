@@ -194,16 +194,23 @@ describe("#ListingPage", () => {
       const searchField = component.getByTestId("search-field");
       const searchBarForm = component.getByTestId("search-bar-form");
 
-      fireEvent.change(searchField, {
-        target: {
-          value: "computer",
-        },
-      });
-
       await waitFor(() => {
+        const programRows = component.getByTestId("program-rows");
+        fireEvent.change(searchField, {
+          target: {
+            value: "nonsense",
+          },
+        });
+
         fireEvent.submit(searchBarForm);
+        expect(programRows.children.length).toBe(16);
         expect(mockfilterData).toHaveBeenCalled();
       });
+
+      // await waitFor(() => {
+      //   const programRows = component.getByTestId("program-rows");
+      //   expect(programRows.children.length).toBeLessThan(16);
+      // });
     });
 
     it("should apply filters when you select options and click the button", async () => {
@@ -224,6 +231,8 @@ describe("#ListingPage", () => {
       });
 
       await waitFor(() => {
+        const programRows = component.getByTestId("program-rows");
+        expect(programRows.children.length).toBeLessThan(16);
         expect(bthTags.children.length).toBe(2);
       });
     });
