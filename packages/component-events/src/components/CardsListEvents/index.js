@@ -1,9 +1,10 @@
 // @ts-check
 import React from "react";
 
-import { Layout } from "../../core/components/Layout";
+import { Events } from "../../core/components/Events";
+import { Header } from "../../core/components/Header";
 import { eventsPropTypes } from "../../core/models/prop-types";
-import { CardsListWrapper } from "./index.styles";
+import { ListView } from "./ListView";
 
 /**
  *
@@ -11,11 +12,14 @@ import { CardsListWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const CardsListEvents = ({ header, ctaButton }) => {
+const CardsListEvents = ({ header, ctaButton, dataSource }) => {
   return (
-    <Layout header={header} ctaButton={ctaButton}>
-      <CardsListWrapper>Cards List Events component</CardsListWrapper>
-    </Layout>
+    <section className="container">
+      <Header header={header} ctaButton={ctaButton} />
+      <Events dataSource={dataSource}>
+        <ListView />
+      </Events>
+    </section>
   );
 };
 

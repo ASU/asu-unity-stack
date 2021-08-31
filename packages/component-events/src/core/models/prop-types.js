@@ -12,9 +12,25 @@ const layoutCTAPropTypes = PropTypes.shape({
   url: PropTypes.string,
 });
 
+const dataSourcePropTypes = PropTypes.shape({
+  url: PropTypes.string.isRequired,
+  filters: PropTypes.string,
+}).isRequired;
+
 const eventsPropTypes = {
   header: layoutHeaderPropTypes,
   ctaButton: layoutCTAPropTypes,
+  dataSource: dataSourcePropTypes,
 };
 
-export { layoutHeaderPropTypes, layoutCTAPropTypes, eventsPropTypes };
+const viewPropTypes = {
+  events: PropTypes.array,
+};
+
+export {
+  layoutHeaderPropTypes,
+  layoutCTAPropTypes,
+  dataSourcePropTypes,
+  eventsPropTypes,
+  viewPropTypes,
+};

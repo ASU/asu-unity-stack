@@ -2,6 +2,10 @@
 
 /**
  *  @typedef {{
+ *  events?: object[]
+ * }} ViewProps
+ *
+ *  @typedef {{
  *    color?: string
  *    text?: string
  * }} LayoutHeaderProps
@@ -13,8 +17,14 @@
  * }} LayoutCtaButtonProps
  *
  * @typedef {{
+ *  url: string
+ *  filters?: string
+ * }} DataSource
+ *
+ * @typedef {{
  *  header?: LayoutHeaderProps
  *  ctaButton?: LayoutCtaButtonProps
+ *  dataSource: DataSource
  * }} EventsProps
  */
 

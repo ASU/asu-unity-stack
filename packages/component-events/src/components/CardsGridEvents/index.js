@@ -1,9 +1,10 @@
 // @ts-check
 import React from "react";
 
-import { Layout } from "../../core/components/Layout";
+import { Events } from "../../core/components/Events";
+import { Header } from "../../core/components/Header";
 import { eventsPropTypes } from "../../core/models/prop-types";
-import { CardsGridWrapper } from "./index.styles";
+import { GridView } from "./GridView";
 
 /**
  *
@@ -11,11 +12,14 @@ import { CardsGridWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const CardsGridEvents = ({ header, ctaButton }) => {
+const CardsGridEvents = ({ header, ctaButton, dataSource }) => {
   return (
-    <Layout header={header} ctaButton={ctaButton}>
-      <CardsGridWrapper>Cards Grid Events component</CardsGridWrapper>
-    </Layout>
+    <section className="container">
+      <Header header={header} ctaButton={ctaButton} />
+      <Events dataSource={dataSource}>
+        <GridView />
+      </Events>
+    </section>
   );
 };
 

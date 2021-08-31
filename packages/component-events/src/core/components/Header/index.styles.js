@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const LayoutWrapper = styled.section`
+const HeaderWrapper = styled.div`
   h2.color-white {
     color: #ffffff;
   }
 `;
 
-export { LayoutWrapper };
+export { HeaderWrapper };
