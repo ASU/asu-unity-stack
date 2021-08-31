@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-const CardsGridWrapper = styled.section``;
+const CardsGridWrapper = styled.div``;
 
 export { CardsGridWrapper };

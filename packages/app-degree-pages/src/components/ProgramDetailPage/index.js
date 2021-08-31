@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero, Video } from "@asu-design-system/components-core";
+import { Hero, Video, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
@@ -12,7 +12,6 @@ import {
   ThemeStyle,
 } from "../../core/components";
 import { detailPageDefaultDataSource } from "../../core/constants";
-import { useFetch } from "../../core/hooks/use-fetch";
 import {
   anchorMenuPropType,
   cardPropShape,
@@ -82,7 +81,6 @@ const ProgramDetailPage = ({
   programContactInfo,
   nextSteps,
 }) => {
-  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<{ programs: {}[]}>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 

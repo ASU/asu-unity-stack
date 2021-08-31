@@ -3,11 +3,18 @@ import React from "react";
 import { CardsGridEvents } from ".";
 
 export default {
-  title: "UDS/D8 Events/Cards Grid",
+  title: "D8 Events/Cards Grid",
   component: CardsGridEvents,
 };
 
 const Template = args => <CardsGridEvents {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  header: { color: "dark", text: "Events list" },
+  ctaButton: {
+    color: "gold",
+    url: "https://news.asu.edu",
+    text: "Click to see more events",
+  },
+};

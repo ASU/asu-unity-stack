@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
+import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
@@ -12,7 +12,6 @@ import {
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
 import { useListingPageLogger } from "../../core/hooks";
-import { useFetch } from "../../core/hooks/use-fetch";
 import {
   resolveDefaultProps,
   resolveListingHeroTitle,
@@ -75,7 +74,6 @@ const ListingPage = ({
   introContent,
   programList,
 }) => {
-  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<ProgramListingResponse>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);

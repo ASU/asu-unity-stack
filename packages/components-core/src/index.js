@@ -13,7 +13,7 @@ import {
 } from "./components";
 
 export * from "./core/utils";
-export * from "./core/hooks/use-media-query";
+export * from "./core/hooks";
 
 export {
   Card,
