@@ -134,6 +134,7 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
       </div>
       <div className="filter-action-buttons">
         <Button
+          data-testid="btn-apply-filter"
           color="maroon"
           label="Apply filters"
           ariaLabel="Apply filters"
@@ -141,7 +142,7 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
           onClick={applyFilters}
         />
         <ButtonLink
-          data-testid="clear-filters"
+          data-testid="btn-clear-filters"
           className="btn btn-link"
           onClick={cleanFilters}
         >

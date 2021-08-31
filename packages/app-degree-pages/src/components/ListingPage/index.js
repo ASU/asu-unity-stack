@@ -181,6 +181,7 @@ const ListingPage = ({
 
     if (
       !acceleratedConcurrent &&
+      acceleratedConcurrent?.value === "all" &&
       locations.length === 0 &&
       asuLocals.length === 0 &&
       !collegeAcadOrg &&

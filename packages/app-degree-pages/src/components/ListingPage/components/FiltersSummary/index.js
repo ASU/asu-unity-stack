@@ -49,7 +49,7 @@ function FiltersSummary({
       <header>
         <strong>Applied filters</strong>
       </header>
-      <div data-testid="tags">
+      <div data-testid="summary-filter-tags">
         {!isActive || filterCount === 0 ? (
           <span>No filters applied</span>
         ) : (

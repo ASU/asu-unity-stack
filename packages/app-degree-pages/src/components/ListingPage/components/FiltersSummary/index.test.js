@@ -1,5 +1,5 @@
 // @ts-check
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import React from "react";
 
 import { FiltersSummary } from ".";
@@ -14,17 +14,16 @@ function renderFiltersSummary(value = mockValue) {
 describe("#FiltersSummary", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component = null;
-  /** @type {HTMLElement} */
-  let container = null;
 
   beforeEach(() => {
     component = renderFiltersSummary();
-    container = component.container;
   });
 
   it("should define the component", () => {
     expect(component).toBeDefined();
-    expect(component.getByTestId("tags").childElementCount).toBe(1);
+    expect(component.getByTestId("summary-filter-tags").childElementCount).toBe(
+      1
+    );
   });
 });
 

@@ -10,6 +10,8 @@ import {
   listingPageDefaultDataSource,
 } from "./src/core/constants";
 
+import "./mocks/components-core-mocks";
+
 // fix issue with replaceAl()
 replaceAllInserter.shim();
 // mock all fetch() calls

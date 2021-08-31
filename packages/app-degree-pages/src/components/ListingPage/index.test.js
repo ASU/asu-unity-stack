@@ -1,10 +1,15 @@
 // @ts-check
 import { Hero } from "@asu-design-system/components-core";
-import { render, act } from "@testing-library/react";
+import { render, act, waitFor, fireEvent } from "@testing-library/react";
 import React from "react";
 
 import { ListingPage } from "./index";
 
+import {
+  locationOptions,
+  asuLocalOptions,
+  acceleratedConcurrentOptions,
+} from "../../core/models";
 import * as service from "../../core/services/degree-data-manager-service";
 
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
@@ -46,7 +51,7 @@ const defaultArgs = {
   },
 };
 
-const mockDatafilter = jest.spyOn(service, "filterData");
+const mockfilterData = jest.spyOn(service, "filterData");
 const mockSortPrograms = jest.spyOn(service, "sortPrograms");
 
 describe("#ListingPage", () => {
@@ -80,7 +85,7 @@ describe("#ListingPage", () => {
 
     it("should call useEffect", () => {
       expect(mockSortPrograms).toHaveBeenCalled();
-      expect(mockDatafilter).not.toHaveBeenCalled();
+      expect(mockfilterData).not.toHaveBeenCalled();
     });
 
     it("should define the component", () => {
@@ -153,7 +158,91 @@ describe("#ListingPage", () => {
 
     it("should call useEffect functions and `sortPrograms()`", () => {
       expect(mockSortPrograms).toHaveBeenCalled();
-      expect(mockDatafilter).toHaveBeenCalled();
+      expect(mockfilterData).toHaveBeenCalled();
+    });
+  });
+
+  describe("#With user interaction", () => {
+    beforeEach(async () => {
+      await renderListingPage(defaultArgs);
+    });
+
+    const selectOptionFilters = () => {
+      const locations = component.getByTestId("locations");
+      const asuLocals = component.getByTestId("asuLocals");
+      const acceleratedConcurrent = component.getByTestId(
+        "acceleratedConcurrent"
+      );
+      const btnApplyfilter = component.getByTestId("btn-apply-filter");
+
+      fireEvent.change(locations, {
+        target: { value: locationOptions[0].value },
+      });
+      fireEvent.change(asuLocals, {
+        target: { value: asuLocalOptions[0].value },
+      });
+      fireEvent.change(acceleratedConcurrent, {
+        target: {
+          value: acceleratedConcurrentOptions[1].value,
+        },
+      });
+
+      fireEvent.click(btnApplyfilter);
+    };
+
+    it("should trigger apply a filter when the user type a keyword", async () => {
+      const searchField = component.getByTestId("search-field");
+      const searchBarForm = component.getByTestId("search-bar-form");
+
+      fireEvent.change(searchField, {
+        target: {
+          value: "computer",
+        },
+      });
+
+      await waitFor(() => {
+        fireEvent.submit(searchBarForm);
+        expect(mockfilterData).toHaveBeenCalled();
+      });
+    });
+
+    it("should apply filters when you select options and click the button", async () => {
+      await waitFor(() => {
+        selectOptionFilters();
+        expect(mockfilterData).toHaveBeenCalled();
+      });
+    });
+
+    it("should remove one filter when the you click a summary tag", async () => {
+      selectOptionFilters();
+      const bthTags = component.getByTestId("summary-filter-tags");
+
+      await waitFor(() => {
+        expect(bthTags.children.length).toBe(3);
+        fireEvent.click(bthTags.children[1]);
+        expect(mockfilterData).toHaveBeenCalled();
+      });
+
+      await waitFor(() => {
+        expect(bthTags.children.length).toBe(2);
+      });
+    });
+
+    it("should clear all filter when you click `Clear` button", async () => {
+      selectOptionFilters();
+      const bthTags = component.getByTestId("summary-filter-tags");
+
+      const btnClearFilter = component.getByTestId("btn-clear-filters");
+      await waitFor(() => {
+        expect(bthTags.children.length).toBe(3);
+        fireEvent.click(btnClearFilter);
+        expect(mockfilterData).toHaveBeenCalled();
+      });
+
+      await waitFor(() => {
+        // the only element will be the <span> No filter applied place holder</span>
+        expect(bthTags.children.length).toBe(1);
+      });
     });
   });
 });

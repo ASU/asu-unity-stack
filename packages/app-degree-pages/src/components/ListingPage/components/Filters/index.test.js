@@ -95,7 +95,7 @@ describe("#Filters With state", () => {
 
     const component = renderFilter(value);
 
-    const buttonElement = component.getByTestId("clear-filters");
+    const buttonElement = component.getByTestId("btn-clear-filters");
     fireEvent.click(buttonElement);
     expect(mockOnClean).toHaveBeenCalledTimes(1);
   });

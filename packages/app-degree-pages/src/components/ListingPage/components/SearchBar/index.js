@@ -1,7 +1,7 @@
 // @ts-check
 import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Section = styled.div`
@@ -31,6 +31,9 @@ const Section = styled.div`
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const [searching, setSearching] = useState(false);
+  let timeoutId;
+  useEffect(() => () => clearTimeout(timeoutId), []);
+
   return (
     <Section
       className="container mt-5"
@@ -38,12 +41,14 @@ const SearchBar = ({ value, onChange, onSearch }) => {
       data-testid="search-bar"
     >
       <form
+        data-testid="search-bar-form"
         className="uds-form p-0 col-md-6 col-sm-12"
         onSubmit={e => {
           e.preventDefault();
           onSearch();
           setSearching(true);
-          setTimeout(() => setSearching(false), 500);
+          timeoutId = setTimeout(() => setSearching(false), 500);
+          clearTimeout(timeoutId);
         }}
       >
         <div className="form-group mb-0 mr-2">
@@ -52,6 +57,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
           <div className="d-flex row align-items-baseline g-3">
             <div className="col-sm-12 col-md-6 align-self-end">
               <input
+                data-testid="search-field"
                 id="search-field"
                 value={value}
                 type="text"
