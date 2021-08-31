@@ -3,8 +3,8 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable react/prop-types */
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { createPopper } from "@popperjs/core";
-import { sanitize } from "dompurify";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -154,7 +154,7 @@ const DeferredInfoButtonIcon = ({
         <div id="arrow" data-popper-arrow className="popover-arrow" />
         <div
           className="popover-body"
-          dangerouslySetInnerHTML={{ __html: sanitize(popoverBody) }}
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(popoverBody)}
         />
       </Tooltip>
 

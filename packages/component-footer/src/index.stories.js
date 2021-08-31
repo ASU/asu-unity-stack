@@ -71,8 +71,7 @@ TwoColumns.args = {
           {
             url: "#",
             title: "link",
-            text:
-              "Transport and Energy Sustainability and the Built Environment",
+            text: "Transport and Energy Sustainability and the Built Environment",
           },
           {
             url: "#",
@@ -113,8 +112,7 @@ ThreeColumns.args = {
           {
             url: "#",
             title: "link",
-            text:
-              "Transport and Energy Sustainability and the Built Environment",
+            text: "Transport and Energy Sustainability and the Built Environment",
           },
           {
             url: "#",
@@ -155,8 +153,7 @@ FourColumns.args = {
           {
             url: "#",
             title: "link",
-            text:
-              "Transport and Energy Sustainability and the Built Environment",
+            text: "Transport and Energy Sustainability and the Built Environment",
           },
           {
             url: "#",
@@ -197,8 +194,7 @@ FiveColumns.args = {
           {
             url: "#",
             title: "link",
-            text:
-              "Transport and Energy Sustainability and the Built Environment",
+            text: "Transport and Energy Sustainability and the Built Environment",
           },
           {
             url: "#",
@@ -239,8 +235,7 @@ SixColumns.args = {
           {
             url: "#",
             title: "link",
-            text:
-              "Transport and Energy Sustainability and the Built Environment",
+            text: "Transport and Energy Sustainability and the Built Environment",
           },
           {
             url: "#",

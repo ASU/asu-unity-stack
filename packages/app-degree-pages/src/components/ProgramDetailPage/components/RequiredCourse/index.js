@@ -52,7 +52,7 @@ function RequiredCourse({
         )}
       </ButtonGroup>
       <div className="mt-3">
-        <a href={majorMapOnCampusArchiveURL}>Majormap on-campus (archive)</a>
+        <a href={majorMapOnCampusArchiveURL}>Major map on-campus (archive)</a>
       </div>
       <div className="mt-3">
         <strong>What if:</strong> See how your courses can be applied to another

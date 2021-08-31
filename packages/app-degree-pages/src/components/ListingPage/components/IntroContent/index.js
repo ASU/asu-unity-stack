@@ -1,5 +1,5 @@
 // @ts-check
-import { Video } from "@asu-design-system/components-core";
+import { Video, spreadClasses } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
@@ -17,7 +17,7 @@ import {
   tagHeadingList,
   videoPropType,
 } from "../../../../core/models";
-import { parseHeading, spreadClasses } from "../../../../core/utils";
+import { parseHeading } from "../../../../core/utils";
 
 /**
  * @typedef {import('../../../../core/models/listing-page-types').IntroContentProps} IntroContentProps

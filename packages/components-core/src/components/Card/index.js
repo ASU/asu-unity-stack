@@ -1,18 +1,12 @@
 // @ts-check
 import classNames from "classnames";
-import dompurify from "dompurify";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import { AnchorWrapper, CardWrapper } from "./index.styles";
-
-const sanitizeDangerousMarkup = content => {
-  const sanitizer = dompurify.sanitize;
-
-  return { __html: sanitizer(content) };
-};
 
 /**
  * @typedef {import('../../core/models/shared-model-types').ButtonProps} ButtonProps

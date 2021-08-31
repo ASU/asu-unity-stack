@@ -19,6 +19,7 @@ const WrapperContainer = styled.section`
 const GlobalOpportunity = ({ contents, image }) => (
   <WrapperContainer id={progDetailSectionIds.globalOpportunity.targetIdName}>
     <OverlapContentImage
+      headingTag="H2"
       title="Global opportunities"
       contents={contents}
       image={image}

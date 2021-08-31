@@ -175,7 +175,7 @@ const ProgramDetailPage = ({
                     offeredBy={
                       atAGlance?.offeredBy || {
                         text: resolver.getCollegeDesc(),
-                        url: "",
+                        url: resolver.getCollegeUrl(),
                       }
                     }
                     locations={
@@ -196,7 +196,7 @@ const ProgramDetailPage = ({
                     accordionCards={[
                       {
                         content: {
-                          header: "Aditional Requirements",
+                          header: "Additional Requirements",
                           // TOD: Change data after filter on degree type
                           body: resolver.getDescrLongExtented5(),
                         },

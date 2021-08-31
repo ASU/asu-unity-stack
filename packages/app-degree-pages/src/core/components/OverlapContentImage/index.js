@@ -1,16 +1,22 @@
 // @ts-check
 
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { imagePropShape } from "../../models";
+import { parseHeading } from "../../utils";
 import { ParagrapList } from "../ParagrapList";
 
 const GlobalStyle = createGlobalStyle`
   .uds-image-overlap {
-    padding-top: 0 ;
+    padding-top: 0;
     width: auto;
+    align-items: center;
+
+    &:after{
+      height: 100%;
+    }
     @media (max-width: 768px) {
       padding-top: 1.5rem !important;
     }
@@ -18,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const ContentWrapper = styled.div`
+  .uds-image-overlap.content-right &.content-wrapper,
+  .uds-image-overlap.content-left &.content-wrapper {
+    height: fit-content;
+  }
+
   @media (max-width: 768px) {
     & {
       font-size: 0.9rem;
@@ -43,9 +54,12 @@ const OverlapImage = styled.img`
   .uds-image-overlap & {
     width: 100%;
     height: 100%;
-    grid-column: 2 / span 4;
     grid-row: 2/5;
     object-fit: cover;
+  }
+
+  .uds-image-overlap.content-right & {
+    grid-row: 1 / span 3;
   }
 `;
 
@@ -60,11 +74,38 @@ function OverlapContentImage({
   contentDirection = "left",
   contents = [],
   contentChildren = null,
+  headingTag = "H3",
 }) {
+  /** @type {{current: HTMLDivElement}} */
+  const textAreaRef = useRef();
+  /** @type {{current: HTMLImageElement}} */
+  const imgRef = useRef();
+  const Heading = parseHeading(headingTag);
+
+  function computeImageHeight() {
+    const PERCENTAGE_INCREASE = 1.2;
+    const textAreaHeight = textAreaRef.current.offsetHeight;
+    imgRef.current.style.height = `${textAreaHeight * PERCENTAGE_INCREASE}px`;
+  }
+
+  useEffect(() => {
+    computeImageHeight();
+    // debounce window resize
+    let timeoutId;
+    const resizeListener = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => computeImageHeight(), 150);
+    };
+    window.addEventListener("resize", resizeListener);
+
+    return () => window.removeEventListener("resize", resizeListener);
+  }, [imgRef, textAreaRef]);
+
   return (
     <div className={`uds-image-overlap content-${contentDirection}`}>
       <GlobalStyle />
       <OverlapImage
+        ref={imgRef}
         className="img-fluid"
         src={image?.url}
         alt={image?.altText}
@@ -72,10 +113,10 @@ function OverlapContentImage({
           e.currentTarget.style.display = "none";
         }}
       />
-      <ContentWrapper className="content-wrapper">
-        <h3>
+      <ContentWrapper ref={textAreaRef} className="content-wrapper">
+        <Heading>
           <span className="highlight-gold">{title}</span>
-        </h3>
+        </Heading>
         <ParagrapList contents={contents} />
         {contentChildren}
       </ContentWrapper>
@@ -84,6 +125,7 @@ function OverlapContentImage({
 }
 
 OverlapContentImage.propTypes = {
+  headingTag: PropTypes.string,
   title: PropTypes.string,
   contentDirection: PropTypes.oneOf(["left", "right"]),
   contents: PropTypes.arrayOf(

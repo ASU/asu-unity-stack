@@ -121,6 +121,10 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
 function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
   const arrowPrev = gliderElement.querySelector(`.glide__arrow--prev`);
   const arrowNext = gliderElement.querySelector(`.glide__arrow--next`);
+  const gliderTrack = gliderElement.querySelector(".glide__track");
+  const imageGalleryNavigation = gliderElement.querySelector(
+    ".image-navigator-images"
+  );
 
   if (!(arrowPrev || arrowNext)) return; // necessary. it breaks when the nav button are hidden
 
@@ -128,27 +132,31 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
   const gradientClasses = ["slider-start", "slider-mid", "slider-end"];
   const cssDisabledClass = "glide__arrow--disabled";
 
-  gliderElement.classList.remove(...gradientClasses);
+  gliderTrack?.classList.remove(...gradientClasses);
+  imageGalleryNavigation?.classList.remove(...gradientClasses);
 
   // Set/clear classes for gradients.
   if (currentIndex === 0) {
     // START SLIDE.
     // Gradient for start.
-    gliderElement.classList.add("slider-start");
+    gliderTrack?.classList.add("slider-start");
+    imageGalleryNavigation?.classList.add("slider-start");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev.classList.add(cssDisabledClass);
     arrowNext.classList.remove(cssDisabledClass);
   } else if (currentIndex >= buttonCount - 1) {
     // MIDDLE SLIDES.
     // Gradient for end.
-    gliderElement.classList.add("slider-end");
+    gliderTrack?.classList.add("slider-end");
+    imageGalleryNavigation?.classList.add("slider-end");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev.classList.remove(cssDisabledClass);
     arrowNext.classList.add(cssDisabledClass);
   } else {
     // LAST SLIDE.
     // Gradient for middle.
-    gliderElement.classList.add("slider-mid");
+    gliderTrack?.classList.add("slider-mid");
+    imageGalleryNavigation?.classList.add("slider-mid");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev.classList.remove(cssDisabledClass);
     arrowNext.classList.remove(cssDisabledClass);

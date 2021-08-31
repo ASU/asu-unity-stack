@@ -43,13 +43,12 @@ const createCarousel = ({ typeCarousel, targetSelector, props }) => {
 /**
  * @param {CarouselProps} props
  */
-const initCardCarousel = ({ targetSelector, props }) => {
-  return createCarousel({
+const initCardCarousel = ({ targetSelector, props }) =>
+  createCarousel({
     typeCarousel: "card",
     targetSelector,
     props,
   });
-};
 
 /**
  * @param {CarouselProps} props
