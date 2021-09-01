@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { Events } from "../../core/components/Events";
+import { EventsFeedProvider } from "../../core/components/EventsFeedProvider";
 import { Header } from "../../core/components/Header";
 import { eventsPropTypes } from "../../core/models/prop-types";
 import { ListView } from "./ListView";
@@ -16,9 +16,9 @@ const CardsListEvents = ({ header, ctaButton, dataSource }) => {
   return (
     <section className="container">
       <Header header={header} ctaButton={ctaButton} />
-      <Events dataSource={dataSource}>
+      <EventsFeedProvider dataSource={dataSource}>
         <ListView />
-      </Events>
+      </EventsFeedProvider>
     </section>
   );
 };

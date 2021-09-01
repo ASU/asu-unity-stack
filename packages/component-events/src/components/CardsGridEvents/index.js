@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { Events } from "../../core/components/Events";
+import { EventsFeedProvider } from "../../core/components/EventsFeedProvider";
 import { Header } from "../../core/components/Header";
 import { eventsPropTypes } from "../../core/models/prop-types";
 import { GridView } from "./GridView";
@@ -16,9 +16,9 @@ const CardsGridEvents = ({ header, ctaButton, dataSource }) => {
   return (
     <section className="container">
       <Header header={header} ctaButton={ctaButton} />
-      <Events dataSource={dataSource}>
+      <EventsFeedProvider dataSource={dataSource}>
         <GridView />
-      </Events>
+      </EventsFeedProvider>
     </section>
   );
 };

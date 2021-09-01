@@ -1,18 +1,13 @@
 // @ts-check
 import React from "react";
 
-import { viewPropTypes } from "../../../core/models/prop-types";
+import { useEventsContext } from "../../../core/context/events-context";
 import { GridViewWrapper } from "./index.styles";
 
-/**
- *
- * @param {import('../../../core/models/types').ViewProps} props
- * @returns {JSX.Element}
- */
-const GridView = ({ events }) => {
+const GridView = () => {
+  const { events } = useEventsContext();
+
   return <GridViewWrapper>Grid component</GridViewWrapper>;
 };
-
-GridView.propTypes = viewPropTypes;
 
 export { GridView };

@@ -23,14 +23,9 @@ const eventsPropTypes = {
   dataSource: dataSourcePropTypes,
 };
 
-const viewPropTypes = {
-  events: PropTypes.array,
-};
-
 export {
   layoutHeaderPropTypes,
   layoutCTAPropTypes,
   dataSourcePropTypes,
   eventsPropTypes,
-  viewPropTypes,
 };

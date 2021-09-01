@@ -2,10 +2,6 @@
 
 /**
  *  @typedef {{
- *  events?: object[]
- * }} ViewProps
- *
- *  @typedef {{
  *    color?: string
  *    text?: string
  * }} LayoutHeaderProps
