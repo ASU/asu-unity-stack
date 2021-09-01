@@ -2,19 +2,18 @@
 
 /**
  *  @typedef {{
- *    color: string
- *    text: string
+ *    color?: string
+ *    text?: string
  * }} FeedHeader
  *
  *  @typedef {{
- *    color: string
- *    text: string
- *    url: string
+ *    color?: string
+ *    text?: string
+ *    url?: string
  * }} FeedCtaButton
  *
  * @typedef {{
- *  feedType?: "carousel" | "card-grid" | "card-list"
- *  header: AppHeader
+ *  header: FeedHeader
  *  ctaButton: FeedCtaButton
  *  dataSource: { url: string }
  *  maxItems?: number

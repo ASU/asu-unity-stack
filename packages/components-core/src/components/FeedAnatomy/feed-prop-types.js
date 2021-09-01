@@ -17,6 +17,7 @@ const feedComponentShape = PropTypes.shape({
   header: feedCtaButtonShape,
   ctaButton: feedHeaderShape,
   dataSource: feedDataSourceShape,
+  maxItems: PropTypes.number,
 });
 
 export {
