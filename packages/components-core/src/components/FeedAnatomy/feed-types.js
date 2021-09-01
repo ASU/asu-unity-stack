@@ -1,29 +1,23 @@
-// @ts-check
+// ts-check
 
 /**
  *  @typedef {{
  *    color?: string
  *    text?: string
- * }} LayoutHeaderProps
+ * }} FeedHeader
  *
  *  @typedef {{
  *    color?: string
  *    text?: string
  *    url?: string
- * }} LayoutCtaButtonProps
+ * }} FeedCtaButton
  *
  * @typedef {{
- *  url: string
- *  filters?: string
- * }} DataSource
- *
- * @typedef {{
- *  header: LayoutHeaderProps
- *  ctaButton: LayoutCtaButtonProps
- *  dataSource: DataSource
+ *  header: FeedHeader
+ *  ctaButton: FeedCtaButton
+ *  dataSource: { url: string }
  *  maxItems?: number
  * }} FeedType
- *
  */
 
 /**

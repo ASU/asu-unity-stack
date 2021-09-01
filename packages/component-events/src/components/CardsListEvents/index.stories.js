@@ -18,6 +18,8 @@ Default.args = {
     text: "Click to see more events",
   },
   dataSource: {
-    url: "https://cors-anywhere.herokuapp.com/https://asuevents.asu.edu/feed-json/college_liberal_arts_and_sciences",
+    url:
+      "https://cors-anywhere.herokuapp.com/" +
+      "https://asuevents.asu.edu/feed-json/",
   },
 };

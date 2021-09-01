@@ -1,25 +1,21 @@
 // @ts-check
 import React from "react";
 
-import { EventsFeedProvider } from "../../core/components/EventsFeedProvider";
-import { Header } from "../../core/components/Header";
-import { eventsPropTypes } from "../../core/models/prop-types";
+import { BaseFeed } from "../../core/components/BaseFeed";
+import { eventsPropTypes } from "../../core/models/propTypes";
 import { ListView } from "./ListView";
 
 /**
  *
- * @param {import('../../core/models/types').EventsProps} props
+ * @param {import('../../core/models/types').FeedType} props
  * @returns {JSX.Element}
  */
 
 const CardsListEvents = ({ header, ctaButton, dataSource }) => {
   return (
-    <section className="container">
-      <Header header={header} ctaButton={ctaButton} />
-      <EventsFeedProvider dataSource={dataSource}>
-        <ListView />
-      </EventsFeedProvider>
-    </section>
+    <BaseFeed {...{ header, ctaButton, dataSource }}>
+      <ListView />
+    </BaseFeed>
   );
 };
 

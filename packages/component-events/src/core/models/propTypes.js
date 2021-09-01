@@ -21,6 +21,7 @@ const eventsPropTypes = {
   header: layoutHeaderPropTypes,
   ctaButton: layoutCTAPropTypes,
   dataSource: dataSourcePropTypes,
+  maxItems: PropTypes.number,
 };
 
 export {

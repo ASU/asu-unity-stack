@@ -2,4 +2,4 @@ export * from "./components";
 export {
   initCardsGridEventsComponent,
   initCardsListEventsComponent,
-} from "./core/utils/init-events";
+} from "./core/utils";
