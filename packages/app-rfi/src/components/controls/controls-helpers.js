@@ -1,12 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import {
-  faExclamationTriangle,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,7 +9,7 @@ const RfiLabel = ({ label, name, id, requiredIcon }) => {
     <label htmlFor={id || name}>
       {requiredIcon ? (
         <span title="Required">
-          <FontAwesomeIcon icon={faCircle} className="uds-field-required" />
+          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
         </span>
       ) : null}
       &nbsp;
@@ -29,7 +23,7 @@ const RfiError = ({ isError, metaError }) => {
     <div role="alert">
       {isError ? (
         <small className="form-text invalid-feedback">
-          <FontAwesomeIcon icon={faExclamationTriangle} />
+          <i className="fas fa-exclamation-triangle" aria-hidden="true" />
           &nbsp;
           {metaError}
         </small>

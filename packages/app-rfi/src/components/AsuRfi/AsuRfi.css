@@ -79,15 +79,32 @@ form.uds-form.uds-rfi .rfi-input-select input:focus {
   left: -1rem;
 }
 
-/* Required icon footer */
-form.uds-form.uds-rfi .rfi-required-footnote {
-  font-size: 0.75rem;
-}
-form.uds-form.uds-rfi .rfi-required-footnote svg {
+/* For instances where FontAwesome SVG conversion doesn't happen, we need to
+   provide rules for i tags */
+form.uds-form.uds-rfi label i.uds-field-required {
   font-size: 0.5rem;
   margin-right: 0.25rem;
   margin-bottom: 0.125rem;
   color: #b72a2a;
+  vertical-align: 3px;
+}
+form.uds-form.uds-rfi .input-group-trailing-icon i {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  color: #191919;
+}
+
+/* Required icon footer */
+form.uds-form.uds-rfi .rfi-required-footnote {
+  font-size: 0.75rem;
+}
+form.uds-form.uds-rfi .rfi-required-footnote i {
+  font-size: 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.125rem;
+  color: #b72a2a;
+  vertical-align: 1px;
 }
 
 .uds-rfi-form-wrapper h2 {
