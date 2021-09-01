@@ -13,9 +13,12 @@
  * }} ComponentCtaButton
  *
  * @typedef {{
+ *  feedType?: "carousel" | "card-grid" | "card-list"
  *  header: AppHeader
  *  ctaButton: ComponentCtaButton
- * }} NewsType
+ *  dataSource: { url: string }
+ *  maxRows?: number
+ * }} FeedsType
  */
 
 /**

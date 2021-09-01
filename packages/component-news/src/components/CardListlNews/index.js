@@ -1,22 +1,34 @@
 // @ts-check
-import React from "react";
+import { FeedContext } from "@asu-design-system/components-core";
+import React, { useContext } from "react";
 
-import { Layout } from "../../core/components/Layout";
-import {
-  componentHeaderShape,
-  componentCtaButtonShape,
-} from "../../core/models/news-prop-types";
+import { BaseFeed } from "../../core/components/BaseFeed";
 import { NewsWrapper } from "./index.styles";
 
-const CardListlNews = ({ header, ctaButton }) => (
-  <Layout header={header} ctaButton={ctaButton}>
-    <NewsWrapper>ListCardlNews PLACE HOLDER</NewsWrapper>
-  </Layout>
+const ListTemplate = () => {
+  const { feeds } = useContext(FeedContext);
+
+  return (
+    <NewsWrapper>
+      Card Listl News PLACE HOLDER
+      <br />
+      <h1>Total {feeds?.length}</h1>
+      <ul>
+        {feeds?.map((feed, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={index}>{feed.node.title}</li>
+        ))}
+      </ul>
+    </NewsWrapper>
+  );
+};
+
+const CardListlNews = props => (
+  <BaseFeed {...props}>
+    <ListTemplate />
+  </BaseFeed>
 );
 
-CardListlNews.propTypes = {
-  header: componentHeaderShape,
-  ctaButton: componentCtaButtonShape,
-};
+CardListlNews.propTypes = BaseFeed.propTypes;
 
 export { CardListlNews };
