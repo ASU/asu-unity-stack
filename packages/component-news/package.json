@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "News component",
   "main": "src/index.js",
-  "author": "Nicolas Baudon",
+  "author": "Michele Dibenedetto",
   "license": "Unlicensed",
   "private": true,
   "publishConfig": {
@@ -26,7 +26,7 @@
     "directory": "packages/component-news"
   },
   "dependencies": {
-    "@asu-design-system/component-carousel": "^0.0.0",
+    "@asu-design-system/component-carousel": "1.8.3",
     "@asu-design-system/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "prop-types": "^15.7.2",
@@ -63,7 +63,6 @@
     "jsdom-screenshot": "^4.0.0",
     "postcss-loader": "^6.1.1",
     "raw-loader": "^4.0.2",
-    "sass-loader": "^11.1.0",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",

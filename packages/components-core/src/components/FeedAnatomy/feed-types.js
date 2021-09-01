@@ -17,7 +17,7 @@
  *  header: AppHeader
  *  ctaButton: FeedCtaButton
  *  dataSource: { url: string }
- *  maxRows?: number
+ *  maxItems?: number
  * }} FeedType
  */
 
