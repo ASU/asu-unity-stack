@@ -1,11 +1,21 @@
 // @ts-check
 import React from "react";
+import styled from "styled-components";
 
 import {
   feedComponentShape,
   feedCtaButtonShape,
   feedHeaderShape,
 } from "./feed-prop-types";
+
+const ButtonColumn = styled.div`
+  @media screen and (min-width: 768px) {
+    & {
+      display: inline-flex;
+      justify-content: flex-end;
+    }
+  }
+`;
 
 /**
  *
@@ -25,15 +35,15 @@ const FeedHeader = ({
   const ctaButton = { ...defaultProps.ctaButton, ...pCtaButton };
 
   return (
-    <div className="row justify-content-between align-items-center">
+    <div className="row justify-content-between align-items-center pb-6">
       <div className="col-sm-12 col-md-9">
         <h2 className={`text-${header.color}`}>{header.text}</h2>
       </div>
-      <div className="col-sm-12 col-md-3">
+      <ButtonColumn className="col-sm-12 col-md-3">
         <a className={`btn btn-${ctaButton.color}`} href={ctaButton.url}>
           {ctaButton.text}
         </a>
-      </div>
+      </ButtonColumn>
     </div>
   );
 };

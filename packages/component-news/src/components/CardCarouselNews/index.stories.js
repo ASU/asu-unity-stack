@@ -16,7 +16,7 @@ const Template = args => <CardCarouselNews {...args} />;
  */
 export const Default = Template.bind({});
 Default.args = {
-  header: { color: "dark", text: "News list - card carousel" },
+  header: { color: "dark", text: "News carousel" },
   ctaButton: {
     color: "gold",
     url: "https://news.asu.edu",

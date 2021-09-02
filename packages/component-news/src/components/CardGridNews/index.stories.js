@@ -16,7 +16,7 @@ const Template = args => <CardGridNews {...args} />;
  */
 export const Default = Template.bind({});
 Default.args = {
-  header: { color: "dark", text: "News list - card grid" },
+  header: { color: "dark", text: "News grid" },
   ctaButton: {
     color: "gold",
     url: "https://news.asu.edu",
@@ -27,4 +27,5 @@ Default.args = {
       "https://cors-anywhere.herokuapp.com/" +
       "https://asunow.asu.edu/feeds-json/",
   },
+  maxItems: 7,
 };

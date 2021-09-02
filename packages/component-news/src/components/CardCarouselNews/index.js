@@ -8,15 +8,15 @@ import { NewsWrapper } from "./index.styles";
 
 const cardRow = (item, index, cardsButtonsColor = "maroon") => ({
   id: index,
-  imageSource: item.image_url,
-  imageAltText: item.image_alt,
+  imageSource: item.imageUrl,
+  imageAltText: item.imageAltText,
   title: item.title,
-  content: item.teaser,
+  content: item.content,
   buttons: [
     {
       ariaLabel: `Read more`,
       color: cardsButtonsColor,
-      href: item.path,
+      href: item.buttonLink,
       label: `Read more`,
       size: "default",
     },
@@ -25,11 +25,16 @@ const cardRow = (item, index, cardsButtonsColor = "maroon") => ({
 
 const CarouselTemplate = () => {
   const { feeds } = useContext(FeedContext);
-  const cardItems = feeds?.map((feed, index) => cardRow(feed.node, index));
+  const cardItems = feeds?.map((feed, index) => cardRow(feed, index));
 
   return (
     <NewsWrapper>
-      <CardCarousel perView="3" cardItems={cardItems || []} />
+      <CardCarousel
+        width="auto"
+        cardType="story"
+        perView="3"
+        cardItems={cardItems || []}
+      />
     </NewsWrapper>
   );
 };

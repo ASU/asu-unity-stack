@@ -1,43 +1,41 @@
 // @ts-check
-import { FeedContext } from "@asu-design-system/components-core";
+import { Card, FeedContext } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 
 import { BaseFeed } from "../../core/components/BaseFeed";
+import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
-const listRow = (item, cardsButtonsColor = "maroon") => (
-  <div className="card card-hover cards-items-container" key={item.nid}>
-    <a href={item.path}>
-      <div className="row no-gutters">
-        <div className="col-lg-4">
-          <img
-            className="card-img h-100"
-            src={item.image_url}
-            alt={item.image_alt}
-          />
-        </div>
-        <div className="col-lg-8">
-          <div className="list-view card-body row-cards-body-container">
-            <h3 className="list-view card-title">
-              {item.title}
-              <p className="card-text text-muted m-0">
-                {item.interests.split("|").join(", ")}
-              </p>
-            </h3>
-            <div className="button-container">
-              <a
-                className={`btn btn-${
-                  cardsButtonsColor || "maroon"
-                } text-white read-more-btn`}
-                href={item.path}
-              >
-                Read at ASU News
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
+/**
+ * @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType} FeedType
+ */
+
+const listRow = event => (
+  <div className="card card-hover cards-items-container" key={event.id}>
+    <Card
+      type="story"
+      horizontal
+      eventFormat="inline"
+      eventLocation={event.location}
+      clickable={!!event.buttonLink}
+      clickHref={event.buttonLink}
+      title={event.title}
+      body={`<p class="card-text text-dark">${event.content}</p>`}
+      image={event.imageUrl}
+      imageAltText={event.title}
+      linkLabel={event.eventButtonText}
+      linkUrl={event.eventButtonUrl}
+      buttons={[
+        {
+          ariaLabel: `Read at ASU News`,
+          color: "maroon",
+          href: event.buttonLink,
+          label: `Read at ASU News`,
+          size: "default",
+        },
+      ]}
+      tags={parseInterests(event?.interests)}
+    />
   </div>
 );
 
@@ -48,12 +46,15 @@ const ListTemplate = () => {
     <NewsWrapper className="row row-spaced">
       {feeds?.map((feed, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <React.Fragment key={index}>{listRow(feed.node)}</React.Fragment>
+        <React.Fragment key={index}>{listRow(feed)}</React.Fragment>
       ))}
     </NewsWrapper>
   );
 };
 
+/**
+ * @param {FeedType} props
+ */
 const CardListlNews = props => (
   <BaseFeed {...props}>
     <ListTemplate />

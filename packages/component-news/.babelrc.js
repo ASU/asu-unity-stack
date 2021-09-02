@@ -7,7 +7,16 @@ module.exports = function (api) {
       "@babel/preset-react",
     ],
     ignore: ["node_modules"],
-    plugins: ["@babel/plugin-transform-runtime"],
+    plugins: [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          asyncGenerators: true,
+          generators: true,
+          async: true,
+        },
+      ],
+    ],
     env: {
       test: {
         presets: [

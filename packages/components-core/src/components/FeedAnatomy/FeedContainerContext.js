@@ -5,10 +5,11 @@ import React, { useState, useEffect, createContext } from "react";
 import styled from "styled-components";
 
 import { useFetch } from "../../core/hooks/use-fetch";
+import { Loader } from "../Loader";
 
 const Container = styled.section``;
 
-const FeedContext = createContext({});
+const FeedContext = createContext(null);
 
 /**
  * @param {{
@@ -16,7 +17,7 @@ const FeedContext = createContext({});
  *  renderBody: JSX.Element
  *  dataSource: {url?: string }
  *  maxItems: number
- *  dataTransformer?: (data: object[]) => object[]
+ *  dataTransformer?: (data: object) => object
  *  dataFilter?: () => any
  *  defaultProps: import("./feed-types").FeedType
  * }} props
@@ -42,7 +43,7 @@ const FeedContainerProvider = ({
   }, [dataSource?.url]);
 
   useEffect(() => {
-    // TODO: filter the data
+    // TODO: filter data
     setFeeds(rawData?.nodes.map(dataTransformer).slice(0, maxItems));
   }, [rawData]);
 
@@ -53,7 +54,15 @@ const FeedContainerProvider = ({
         {error ? (
           <span>Error, try again!</span>
         ) : (
-          <>{loading && !feeds ? "Loading..." : renderBody}</>
+          <>
+            {loading && !feeds ? (
+              <div className="text-center mt-4">
+                <Loader />
+              </div>
+            ) : (
+              renderBody
+            )}
+          </>
         )}
       </Container>
     </FeedContext.Provider>
