@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ListViewWrapper = styled.ul`
   padding: 0;
-  margin: 2rem 0 0 0;
+  margin: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -12,6 +12,14 @@ const ListViewWrapper = styled.ul`
     .card-img-top {
       width: 235px;
       height: 235px;
+    }
+    .card-event-icons {
+      &:nth-child(1) {
+        width: 58%;
+      }
+      &:nth-child(2) {
+        width: 42%;
+      }
     }
   }
   @media (max-width: 992px) {

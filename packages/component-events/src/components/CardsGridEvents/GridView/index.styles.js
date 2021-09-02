@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const GridViewWrapper = styled.ul`
   padding: 0;
-  margin: 2rem 0 0 0;
+  margin: 0;
   list-style-type: none;
   display: grid;
   column-gap: 24px;
@@ -12,7 +12,12 @@ const GridViewWrapper = styled.ul`
       height: 100%;
     }
     .card-event-icons {
-      width: 50%;
+      &:nth-child(1) {
+        width: 58%;
+      }
+      &:nth-child(2) {
+        width: 42%;
+      }
     }
   }
   @media (max-width: 768px) {

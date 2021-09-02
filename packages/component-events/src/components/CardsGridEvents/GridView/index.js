@@ -2,7 +2,7 @@
 import { FeedContext, Card } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 
-import { formatDate, formatTime } from "../../../core/utils";
+import { formatDate, formatTime } from "../../../core/utils/date";
 import { GridViewWrapper } from "./index.styles";
 
 const GridView = () => {

@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { defaultProps } from "../../constants/default-props";
+import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";
 
 const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
@@ -24,6 +25,7 @@ const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
     }
     renderBody={<FeedBody>{children}</FeedBody>}
     dataTransformer={transformData}
+    dataFilter={filterData}
     dataSource={dataSource}
     defaultProps={defaultProps}
     maxItems={maxItems}

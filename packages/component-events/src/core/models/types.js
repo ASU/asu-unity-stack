@@ -13,7 +13,7 @@
  * }} LayoutCtaButtonProps
  *
  * @typedef {{
- *  url: string
+ *  url?: string
  *  filters?: string
  * }} DataSource
  *

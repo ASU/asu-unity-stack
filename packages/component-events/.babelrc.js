@@ -3,7 +3,20 @@ module.exports = function (api) {
 
   return {
     presets: [
-      ["@babel/preset-env", { targets: { node: "current" } }],
+      [
+        "@babel/preset-env",
+        {
+          targets: {
+            esmodules: true,
+            node: "current",
+          },
+          // useBuiltIns: false,
+          // useBuiltIns: "entry",
+          // corejs: 3,
+          // modules: false,
+          // debug: true,
+        },
+      ],
       "@babel/preset-react",
     ],
     ignore: ["node_modules"],
@@ -14,7 +27,10 @@ module.exports = function (api) {
           [
             "@babel/preset-env",
             {
-              targets: { esmodules: true, node: "current" },
+              targets: {
+                esmodules: true,
+                node: "current",
+              },
             },
           ],
           "@babel/preset-react",
