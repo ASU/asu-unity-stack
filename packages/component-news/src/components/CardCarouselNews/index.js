@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { NewsWrapper } from "./index.styles";
 
-const cardRow = (item, index, cardsButtonsColor = "maroon") => ({
+const cardRow = (item, index) => ({
   id: index,
   imageSource: item.imageUrl,
   imageAltText: item.imageAltText,
@@ -15,7 +15,7 @@ const cardRow = (item, index, cardsButtonsColor = "maroon") => ({
   buttons: [
     {
       ariaLabel: `Read more`,
-      color: cardsButtonsColor,
+      color: "maroon",
       href: item.buttonLink,
       label: `Read more`,
       size: "default",

@@ -3,19 +3,35 @@ module.exports = function (api) {
 
   return {
     presets: [
-      ["@babel/preset-env", { targets: { node: "current" } }],
+      [
+        "@babel/preset-env",
+        {
+          targets: {
+            esmodules: true,
+            node: "current",
+          },
+          // useBuiltIns: false,
+          // useBuiltIns: "entry",
+          // corejs: 3,
+          // modules: false,
+          // debug: true,
+        },
+      ],
       "@babel/preset-react",
     ],
     ignore: ["node_modules"],
     plugins: [
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          asyncGenerators: true,
-          generators: true,
-          async: true,
-        },
-      ],
+      "@babel/plugin-transform-runtime",
+      // [
+      //   "@babel/plugin-transform-runtime",
+      //   {
+      //     corejs: 3,
+      //     asyncGenerators: true,
+      //     generators: true,
+      //     async: true,
+      //     helpers: true,
+      //   },
+      // ],
     ],
     env: {
       test: {
@@ -23,7 +39,10 @@ module.exports = function (api) {
           [
             "@babel/preset-env",
             {
-              targets: { esmodules: true, node: "current" },
+              targets: {
+                esmodules: true,
+                node: "current",
+              },
             },
           ],
           "@babel/preset-react",
