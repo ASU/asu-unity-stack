@@ -11,6 +11,7 @@ const feedCtaButtonShape = PropTypes.shape({
 });
 const feedDataSourceShape = PropTypes.shape({
   url: PropTypes.string,
+  filters: PropTypes.string,
 });
 
 const feedComponentShape = PropTypes.shape({

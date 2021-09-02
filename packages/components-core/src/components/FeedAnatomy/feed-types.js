@@ -13,9 +13,14 @@
  * }} FeedCtaButton
  *
  * @typedef {{
+ *  url?: string
+ *  filters?: string
+ * }} DataSource
+ *
+ * @typedef {{
  *  header: FeedHeader
  *  ctaButton: FeedCtaButton
- *  dataSource: { url: string }
+ *  dataSource: DataSource
  *  maxItems?: number
  * }} FeedType
  */

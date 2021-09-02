@@ -26,6 +26,8 @@ Default.args = {
     url:
       "https://cors-anywhere.herokuapp.com/" +
       "https://asunow.asu.edu/feeds-json/",
+    // Example with filters(not needed)
+    filters: "easy_on_the_wallet,alumni_association,staff,sports",
   },
   maxItems: 10,
 };

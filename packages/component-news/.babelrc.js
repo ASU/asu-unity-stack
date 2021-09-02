@@ -10,29 +10,12 @@ module.exports = function (api) {
             esmodules: true,
             node: "current",
           },
-          // useBuiltIns: false,
-          // useBuiltIns: "entry",
-          // corejs: 3,
-          // modules: false,
-          // debug: true,
         },
       ],
       "@babel/preset-react",
     ],
     ignore: ["node_modules"],
-    plugins: [
-      "@babel/plugin-transform-runtime",
-      // [
-      //   "@babel/plugin-transform-runtime",
-      //   {
-      //     corejs: 3,
-      //     asyncGenerators: true,
-      //     generators: true,
-      //     async: true,
-      //     helpers: true,
-      //   },
-      // ],
-    ],
+    plugins: ["@babel/plugin-transform-runtime"],
     env: {
       test: {
         presets: [
