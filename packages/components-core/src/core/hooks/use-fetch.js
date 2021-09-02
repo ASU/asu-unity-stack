@@ -34,18 +34,42 @@ const useFetch = () => {
   useEffect(() => {
     if (!url) return;
 
-    const fetchData = async () => {
+    /* TODO:
+       for some reason `async/await` throuw an error  `Uncaught ReferenceError: regeneratorRuntime is not defined`
+       in News Component when the it used a vanillaJS component.
+       The plugin "@babel/plugin-transform-runtime" it is suppssed to fix it but it does not.
+     */
+    // const fetchData = async () => {
+    //   setError(null);
+    //   setLoading(true);
+    //   try {
+    //     const result = await fetch(url).then(res => res.json());
+
+    //     setData(result);
+    //   } catch (err) {
+    //     setError(err);
+    //   }
+
+    //   setLoading(false);
+    // };
+    // TODO: temporary solution to overcome the above issue
+    const fetchData = () => {
       setError(null);
       setLoading(true);
       try {
-        const result = await fetch(url).then(res => res.json());
-
-        setData(result);
+        fetch(url)
+          .then(res => res.json())
+          .then(result => {
+            setData(result);
+            setLoading(false);
+          })
+          .catch(err => {
+            setError(err);
+            setLoading(false);
+          });
       } catch (err) {
         setError(err);
       }
-
-      setLoading(false);
     };
 
     fetchData();
