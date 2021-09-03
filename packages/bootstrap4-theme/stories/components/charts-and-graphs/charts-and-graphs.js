@@ -3,7 +3,8 @@ Chart.register(...registerables);
 
 export const initChart = () => {
   const GRAPH_PERCENTAGE_COMPLETE = 50;
-  document.getElementById('percentage-display').innerHTML = GRAPH_PERCENTAGE_COMPLETE + '%';
+  document.getElementById('percentage-display').innerHTML =
+    GRAPH_PERCENTAGE_COMPLETE + '%';
   var ctx = document.getElementById('uds-donut');
 
   const config = {

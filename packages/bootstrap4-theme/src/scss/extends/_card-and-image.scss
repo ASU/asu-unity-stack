@@ -8,7 +8,6 @@
   max-width: 1920px;
   padding: 48px 96px;
   width: 100%;
-  margin: 0 12px;
 
   &-right {
     flex-direction: row-reverse;
@@ -22,6 +21,10 @@
     padding: 24px;
     width: 100%;
     margin: 0;
+    .container {
+      padding-left: $uds-size-spacing-1;
+      padding-right: $uds-size-spacing-1;
+    }
   }
 
   &-container {

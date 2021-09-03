@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Field, useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
 

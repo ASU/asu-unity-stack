@@ -1,12 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate, react/no-danger */
 import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
-import {
-  faAngleLeft,
-  faAngleRight,
-  faCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
@@ -231,9 +225,9 @@ class RfiStepper extends React.Component {
                   {React.createElement(formComponent, this.props)}
 
                   <div className="rfi-required-footnote" title="Required">
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className="uds-field-required"
+                    <i
+                      className="fas fa-circle uds-field-required"
+                      aria-hidden="true"
                     />{" "}
                     Required
                   </div>
@@ -259,7 +253,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
       <div className="col-6">
         {stepNum > 0 ? (
           <Button type="button" onClick={handleBack}>
-            <FontAwesomeIcon icon={faAngleLeft} /> Prev
+            <i className="fas fa-angle-left" aria-hidden="true" /> Prev
           </Button>
         ) : null}
       </div>
@@ -267,7 +261,7 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
         {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
         {stepNum < lastStep - 1 ? (
           <Button type="submit" className={`rfi-button-step${stepNum + 1}`}>
-            Next <FontAwesomeIcon icon={faAngleRight} />
+            Next <i className="fas fa-angle-right" aria-hidden="true" />
           </Button>
         ) : (
           <Button

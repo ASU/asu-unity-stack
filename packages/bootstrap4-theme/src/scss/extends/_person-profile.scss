@@ -38,11 +38,6 @@ Desktop styles
 /*--------------------------------------------------------------
 Mobile Styles
 --------------------------------------------------------------*/
-@include media-breakpoint-down(lg) {
-  .uds-person-profile {
-    padding: 0 $uds-size-spacing-4;
-  }
-}
 @include media-breakpoint-down(md) {
   .uds-person-profile {
     max-width: 300px;

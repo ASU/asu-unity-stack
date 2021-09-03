@@ -1,8 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
@@ -58,7 +56,7 @@ const RfiDateInput = ({
                 placeholder={helperText}
                 autoFocus={autoFocus}
               />
-              <FontAwesomeIcon icon={faCalendar} />
+              <i className="far fa-calendar" aria-hidden="true" />
             </div>
             <RfiError isError={!!isError} metaError={meta.error} />
           </div>

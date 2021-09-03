@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/bootstrap4-theme",
-  "version": "6.6.6",
+  "version": "6.6.10",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
@@ -55,7 +55,7 @@
     "node-sass": "^5.0.0",
     "popper.js": "^1.16.1",
     "postcss": "^8.2.9",
-    "sass": "^1.32.8",
+    "sass": "1.32.8",
     "sass-loader": "^10.0.2",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
