@@ -1,6 +1,6 @@
 // @ts-check
 
-import { filterFields } from "../constants/filters";
+import { filterFields } from "../constants/filter-fields";
 
 const normalizeFiltersData = filter => {
   const normalizedFilter = filter.toLowerCase().split(" ").join("_");
@@ -9,27 +9,30 @@ const normalizeFiltersData = filter => {
 
 /**
  *
- * @param {object[]} data
- * @param {string} filters
- * @return {object[]}
+ * @param {object} event
+ * @param {string} rawFilters
+ * @return {boolean}
  */
-const filterData = (data, filters) => {
-  if (!filters) return data;
+const filterData = (event, rawFilters) => {
+  if (!rawFilters) return true;
 
-  const providedFilters = filters.split(",");
-  const filteredData = [];
-  data?.forEach(event => {
-    providedFilters.forEach(filter => {
-      filterFields.forEach(field => {
-        const normalizedField = normalizeFiltersData(event[field]);
-        const existEventOnData = filteredData.find(el => el.id === event.id);
-        if (normalizedField.includes(filter) && !existEventOnData)
-          filteredData.push(event);
-      });
-    });
-  });
+  const filters = rawFilters.split(",");
 
-  return filteredData;
+  for (let filterIndex = 0; filterIndex < filters.length; filterIndex += 1) {
+    const filter = filters[filterIndex];
+    for (
+      let fieldIndex = 0;
+      fieldIndex < filterFields.length;
+      fieldIndex += 1
+    ) {
+      const field = filterFields[fieldIndex];
+      const filterValue = normalizeFiltersData(event[field] || "");
+
+      if (filterValue.includes(filter)) return true;
+    }
+  }
+
+  return false;
 };
 
 export { filterData };
