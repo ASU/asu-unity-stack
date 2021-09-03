@@ -11,8 +11,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { defaultProps } from "../../constants/default-props";
-import { filterData } from "../../services/dataManager";
-import { transformData } from "../../transformers/data.transfromer";
+import { filterData } from "../../services/data-manager";
+import { transformData } from "../../transformers/transform-data";
 
 /**
  * @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType} FeedType

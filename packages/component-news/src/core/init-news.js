@@ -2,11 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {
-  CardGridNews,
-  CardListlNews,
-  CardCarouselNews,
-} from "../../components";
+import { CardGridNews, CardListlNews, CardCarouselNews } from "../components";
 
 /**
  * @typedef {Object} ComponentProps

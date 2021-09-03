@@ -1,2 +1,2 @@
 export * from "./components";
-export * from "./core/utils/init-news";
+export * from "./core/init-news";
