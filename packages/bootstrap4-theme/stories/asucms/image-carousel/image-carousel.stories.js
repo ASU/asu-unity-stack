@@ -1,7 +1,11 @@
-export default { title: 'ASUCMS/Image Carousel' };
+import React from 'react';
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { initCarousel } from './image-carousel';
+export default createComponent('Image Carousel', 'ASUCMS');
 
-export const imageCarousel = () => `
-  <div class="asu-cms-image-carousel" style="max-width: 1920px; margin: auto;">
+
+export const defaultCard = createStory(
+  <div class="asu-cms-image-carousel" style={{maxWidth: '1920px', margin: 'auto'}}>
     <div class="carousel-header-section">
       <h2><span class="highlight-gold">One university, many places</span></h2>
     </div>
@@ -12,8 +16,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Poly.png"
-                  alt="Polytechnic campus">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Polytechnic campus" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Polytechnic campus</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -23,8 +27,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Tempe.png"
-                  alt="Tempe campus">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Tempe campus" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Tempe campus</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -34,8 +38,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-West.png"
-                  alt="West campus">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="West campus" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">West campus</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -45,8 +49,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-DowntownPhoenix.png"
-                  alt="Downtown Phoenix Campus">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Downtown Phoenix Campus" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Downtown Phoenix Campus</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -56,8 +60,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Skysong.png"
-                  alt="Skysong">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Skysong" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Skysong</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -67,8 +71,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Washington.png"
-                  alt="Washington D.C.">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Washington D.C." />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Washington D.C.</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -78,8 +82,8 @@ export const imageCarousel = () => `
             <li class="glide__slide">
               <div class="asucms-image">
                 <img
-                  src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/210105-HomepageLocations-Havasu.png"
-                  alt="Lake Havasu">
+                  src="https://source.unsplash.com/random/700x400"
+                  alt="Lake Havasu" />
                 <div class="content-area">
                   <div class="highlight-gray slide-header">Lake Havasu</div>
                   <input class="btn btn-gold" type="submit" value="Schedule a tour"></input>
@@ -121,72 +125,6 @@ export const imageCarousel = () => `
       </div>
     </div>
     <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.js"></script>
-    <script>
-      var ArrowDisabler = function (Glide, Components, Events) {
-        return {
-          mount() {
-            // Only in effect when rewinding is disabled
-            if (Glide.settings.rewind) {
-              return
-            }
-
-            Glide.on(['mount.after', 'run'], () => {
-              // Filter out arrows_control
-              for (let controlItem of Components.Controls.items) {
-                if (controlItem.className !== 'glide__arrows') {
-                  continue
-                }
-
-                // Set left arrow state
-                var left = controlItem.querySelector('.glide__arrow--left')
-                if (left) {
-                  if (Glide.index === 0) {
-                    left.classList.add("glide__arrow--disabled");
-                    //left.setAttribute('disabled', '') // Disable on first slide
-                  } else {
-                    left.classList.remove("glide__arrow--disabled");
-                    //left.removeAttribute('disabled') // Enable on other slides
-                  }
-                }
-
-                // Set right arrow state
-                var right = controlItem.querySelector('.glide__arrow--right')
-                if (right) {
-                    if (Glide.index === Components.Sizes.length - Glide.settings.perView) {
-                      right.classList.add("glide__arrow--disabled");
-                      //right.setAttribute('disabled', '') // Disable on last slide
-                    } else {
-                      right.classList.remove("glide__arrow--disabled");
-                      //right.removeAttribute('disabled') // Disable on other slides
-                    }
-                }
-              }
-            })
-          }
-        }
-      }
-
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-      const gap = 48;
-      let peek = 0;
-      if(vw > 1200) {
-        // We want slides to max-width at 1200px but we can only control the peek
-        peek = 360; // (1920 - 1200) / 2;
-      }
-      new Glide('#one-university-carousel', {
-          type: "slider", // No wrap-around.
-          focusAt: 0,
-          bound: true, // Only if type slider with focusAt 0
-          rewind: false, // Only if type slider
-          gap, // Space between slides... may be impacted by viewport size.
-          keyboard: true, // Left/Right arrow key support for slides - true is default. Accessible?
-          startAt: 0,
-          swipeThreshold: 80, // Distance required for swipe to change slide.
-          dragThreshold: 120, // Distance for mouse drag to change slide.
-          perTouch: 1, // Number of slides that can be moved per each swipe/drag.
-          peek,
-          perView: 1,
-      }).mount({ ArrowDisabler });
-    </script>
-  </div>
-`;
+  </div>,
+  initCarousel
+);
