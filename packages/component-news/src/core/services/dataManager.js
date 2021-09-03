@@ -1,4 +1,4 @@
-import { filterFields } from "../constants/filters";
+import { filterFields } from "../constants/filter-fields";
 
 /**
  *
@@ -8,18 +8,25 @@ import { filterFields } from "../constants/filters";
 const filterData = (node, rawFilters = "") => {
   if (!rawFilters) return true;
 
-  const filters = rawFilters.split("|");
-  for (let key of filterFields) {
-    for (let filter of filters) {
-      const nodeValue = node[key];
-      if (nodeValue.includes(filter)) {
-        return true;
-      }
+  const filters = rawFilters.split(",");
+
+  for (let fieldIndex = 0; fieldIndex < filterFields.length; fieldIndex += 1) {
+    const key = filterFields[fieldIndex];
+    for (let filterIndex = 0; filterIndex < filters.length; filterIndex += 1) {
+      const filter = filters[filterIndex];
+      const nodeValue = node[key] || "";
+
+      const matches = nodeValue.match(new RegExp(filter, "gi"));
+      if (matches?.length > 0) return true;
     }
   }
-  filterFields.forEach(key => {
 
   return false;
 };
 
-export { filterData };
+const normalizeFiltersData = filter => {
+  const normalizedFilter = filter.toLowerCase().split(" ").join("_");
+  return normalizedFilter;
+};
+
+export { filterData, normalizeFiltersData };

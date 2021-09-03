@@ -26,8 +26,21 @@ Default.args = {
     url:
       "https://cors-anywhere.herokuapp.com/" +
       "https://asunow.asu.edu/feeds-json/",
-    // Example with filters(not needed)
-    filters: "easy_on_the_wallet,alumni_association,staff,sports",
   },
   maxItems: 10,
+};
+
+/**
+ * @type {{ args: FeedType}}
+ */
+export const WithFilters = Template.bind({});
+WithFilters.args = {
+  ...Default.args,
+  dataSource: {
+    ...Default.args.dataSource,
+    filters:
+      "nursing_and_health_care,School of Mathematical and Natural Sciences,Student",
+    // filters: "Nursing and Health Care",
+    // filters: "Health,Journalism",
+  },
 };

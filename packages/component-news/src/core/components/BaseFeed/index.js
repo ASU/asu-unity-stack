@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { defaultProps } from "../../constants/default-props";
+import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";
 
 /**
@@ -20,22 +21,33 @@ import { transformData } from "../../transformers/data.transfromer";
 /**
  * @param {FeedType & {children: object}} props
  */
-const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
-  <FeedContainerProvider
-    renderHeader={
-      <FeedHeader
-        header={header}
-        ctaButton={ctaButton}
-        defaultProps={defaultProps}
-      />
-    }
-    renderBody={<FeedBody>{children}</FeedBody>}
-    dataSource={dataSource}
-    defaultProps={defaultProps}
-    maxItems={maxItems}
-    dataTransformer={transformData}
-  />
-);
+const BaseFeed = ({
+  children,
+  header,
+  ctaButton,
+  dataSource: pDataSource,
+  maxItems,
+}) => {
+  const filters = pDataSource.filters?.replace(/_/g, " ");
+  const dataSource = { ...pDataSource, filters };
+  return (
+    <FeedContainerProvider
+      renderHeader={
+        <FeedHeader
+          header={header}
+          ctaButton={ctaButton}
+          defaultProps={defaultProps}
+        />
+      }
+      renderBody={<FeedBody>{children}</FeedBody>}
+      dataSource={dataSource}
+      defaultProps={defaultProps}
+      maxItems={maxItems}
+      dataTransformer={transformData}
+      dataFilter={filterData}
+    />
+  );
+};
 
 BaseFeed.propTypes = {
   header: feedHeaderShape,
