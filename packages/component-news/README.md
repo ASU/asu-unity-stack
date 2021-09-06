@@ -33,3 +33,63 @@ yarn test
 ### Import for use in HTML page
 You can find an example of how to set `News` props [here](/packages/component-news/examples/card-list-news.html)
 
+# Component views
+The new `News Component` has 3 type of view as the old one:
+
+- Carousel view
+- Grid Card view
+- List Card view
+# Props and settings
+
+The componet can customize by setting the following props
+
+```JS
+/**
+ *  @typedef {{
+ *    color?: string
+ *    text?: string
+ * }} FeedHeader
+ *
+ *  @typedef {{
+ *    color?: string
+ *    text?: string
+ *    url?: string
+ * }} FeedCtaButton
+ *
+ * @typedef {{
+ *  url?: string
+ *  filters?: string
+ * }} DataSource
+ *
+ * @typedef {{
+ *  header: FeedHeader
+ *  ctaButton: FeedCtaButton
+ *  dataSource: DataSource
+ *  maxItems?: number
+ * }} FeedType
+ */
+```
+
+## Example
+
+```JS
+{
+  header: {
+    color: "dark",
+    text: "News carousel"
+},
+  ctaButton: {
+    color: "gold",
+    url: "https://news.asu.edu",
+    text: "Click to see more news",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+    filters: "validFilter,more words filter,filter_with_underscore"
+  },
+  maxItems: 10,
+  }
+  ```
+  The prop `filters` need a special mention.
+   It is meant to be a string which contains all desired filters separated by a comma `,`
+
