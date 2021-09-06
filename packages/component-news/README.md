@@ -90,6 +90,16 @@ The componet can customize by setting the following props
   maxItems: 10,
   }
   ```
-  The prop `filters` need a special mention.
-   It is meant to be a string which contains all desired filters separated by a comma `,`
+  The prop `filters` needs a special mention.
+  It is meant to be a string which contains all desired filters separated by a comma `,`
+
+  Fields where the filter will be applied
+
+```JS
+const filterFields =
+["newsUnits", "interests", "audiences"];
+```
+
+  Any one dataSource filter value will be checked against every field in the feed source
+  which are listed in the file [src/core/constants/filter-fields.js](/packages/component-news/src/core/constants/filter-fields.js) and a value match on any field will result in the news item being included in the output.
 
