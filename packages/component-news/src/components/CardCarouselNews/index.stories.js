@@ -1,18 +1,22 @@
 // @ts-check
 import React from "react";
+import withMock from "storybook-addon-mock";
 
 import { CardCarouselNews } from "./index";
+
+import { createMockParam } from "../../core/utils";
 
 /** @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType } FeedType */
 export default {
   title: "UDS/CarouselCardNews",
   component: CardCarouselNews,
+  decorators: [withMock],
 };
 
 const Template = args => <CardCarouselNews {...args} />;
 
 /**
- * @type {{ args: FeedType}}
+ * @type {{ args: FeedType, parameters: object}}
  */
 export const Default = Template.bind({});
 Default.args = {
@@ -23,11 +27,12 @@ Default.args = {
     text: "Click to see more news",
   },
   dataSource: {
-    url:
-      "https://cors-anywhere.herokuapp.com/" +
-      "https://asunow.asu.edu/feeds-json/",
+    url: "/api/mocks/feeds-json",
   },
   maxItems: 10,
+};
+Default.parameters = {
+  mockData: createMockParam(),
 };
 
 /**

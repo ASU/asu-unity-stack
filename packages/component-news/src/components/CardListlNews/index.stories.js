@@ -1,18 +1,22 @@
 // @ts-check
 import React from "react";
+import withMock from "storybook-addon-mock";
 
 import { CardListlNews } from "./index";
+
+import { createMockParam } from "../../core/utils";
 
 /** @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType } FeedType */
 
 export default {
   title: "UDS/CardListlNews",
   component: CardListlNews,
+  decorators: [withMock],
 };
 
 const Template = args => <CardListlNews {...args} />;
 /**
- * @type {{ args: FeedType}}
+ * @type {{ args: FeedType, parameters: object}}
  */
 export const Default = Template.bind({});
 Default.args = {
@@ -28,6 +32,9 @@ Default.args = {
       "https://asunow.asu.edu/feeds-json/",
   },
   maxItems: 10,
+};
+Default.parameters = {
+  mockData: createMockParam(),
 };
 
 /**

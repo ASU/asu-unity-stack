@@ -1,4 +1,5 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
@@ -62,6 +63,15 @@ const common = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        // this is use only for storybook examples
+        {
+          from: path.join(PROJECT_DIR, "__mocks__/api"),
+          to: "__mocks__/api",
+        },
+      ],
     }),
   ],
 };
