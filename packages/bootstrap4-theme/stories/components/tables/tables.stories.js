@@ -22,8 +22,8 @@ export const DefaultComponent = createStory(
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Metropolitan campus population</th>
-                <td>71,946</td>
+                <th scope="row"><p>Metropolitan campus population</p></th>
+                <td><p>71,946</p></td>
                 <td>71,946</td>
                 <td>71,946</td>
                 <td>71,946</td>
