@@ -1,10 +1,14 @@
 import React from "react";
+import withMock from "storybook-addon-mock";
 
 import { CardsGridEvents } from ".";
+
+import { createMockParam } from "../../core/utils";
 
 export default {
   title: "D8 Events/Cards Grid",
   component: CardsGridEvents,
+  decorators: [withMock],
 };
 
 const Template = args => <CardsGridEvents {...args} />;
@@ -18,10 +22,11 @@ Default.args = {
     text: "Click to see more events",
   },
   dataSource: {
-    url:
-      "https://cors-anywhere.herokuapp.com/" +
-      "https://asuevents.asu.edu/feed-json/",
+    url: "/api/mocks/feeds-json",
   },
+};
+Default.parameters = {
+  mockData: createMockParam(),
 };
 
 export const WithFilters = Template.bind({});
@@ -33,9 +38,10 @@ WithFilters.args = {
     text: "Click to see more events",
   },
   dataSource: {
-    url:
-      "https://cors-anywhere.herokuapp.com/" +
-      "https://asuevents.asu.edu/feed-json/",
+    url: "/api/mocks/feeds-json",
     filters: "easy_on_the_wallet,alumni_association",
   },
+};
+WithFilters.parameters = {
+  mockData: createMockParam(),
 };
