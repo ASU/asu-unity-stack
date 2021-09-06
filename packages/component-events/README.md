@@ -85,5 +85,15 @@ You can find an example of how to set `Events` props [here](/packages/component-
     },
   }
  ```
-The prop `filters` need a special mention.
+The prop `filters` needs a special mention.
 It is meant to be a string which contains all desired filters separated by a comma `,`
+
+Fields where the filter will be applied
+
+```JS
+const filterFields = ["eventTopics", "eventUnits", "interests", "audiences"];
+```
+
+Any one dataSource filter value will be checked against every field in the feed source
+which are listed in the file [src/core/constants/filter-fields.js](/packages/component-events/src/core/constants/filter-fields.js) and a value match on any field will result in the events item being included in the output.
+If there is the need of adding or removing filter field, this could be easily done in the filters array mentioned above.
