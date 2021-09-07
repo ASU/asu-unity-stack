@@ -23,6 +23,7 @@
     "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha --ci",
     "prepare": "husky install",
     "commit": "cz",
+    "prettier": "prettier \"packages/**/*.js\" --write",
     "pretty-quick": "pretty-quick --staged",
     "husky-prepare": "husky install"
   },

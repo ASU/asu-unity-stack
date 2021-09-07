@@ -6,3 +6,6 @@ lib
 .cache
 coverage
 *.md
+storybook-static
+fontawesome
+webpack
