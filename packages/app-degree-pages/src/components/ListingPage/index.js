@@ -181,6 +181,7 @@ const ListingPage = ({
 
     if (
       !acceleratedConcurrent &&
+      acceleratedConcurrent?.value === "all" &&
       locations.length === 0 &&
       asuLocals.length === 0 &&
       !collegeAcadOrg &&
@@ -228,7 +229,7 @@ const ListingPage = ({
       {error && <ErrorAlert message="Something went wrong ..." />}
 
       {!hero?.hide ? (
-        <section>
+        <section data-testid="hero">
           <Hero
             image={hero?.image || listingPageDefault.hero.image}
             title={{

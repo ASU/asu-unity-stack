@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const express = require("express");
 const fs = require("fs");
 
-const dataSearch = require("../mocks/data/degree-search.json");
+const dataSearch = require("../__mocks__/data/degree-search.json");
 
 // const app = express();
 // app.use(
@@ -34,7 +34,7 @@ function mockDegreeSeearch(router) {
    * new CopyWebpackPlugin({
    *    patterns: [
    *      // TODO: mock may not be needed anymore
-   *      { from: path.join(PROJECT_DIR, "mocks"), to: "mocks" },
+   *      { from: path.join(PROJECT_DIR, "__mocks__"), to: "__mocks__" },
    *      { from: path.join(PROJECT_DIR, "src/assets"), to: "assets" },
    *    ],
    *   ),
@@ -49,7 +49,7 @@ function mockDegreeSeearch(router) {
   });
 
   router.get(/^\/examples\/assets\/(img|video)/, (req, res) => {
-    console.log("> request mocks image from " + getFullUrl(req));
+    console.log("> request mock image from " + getFullUrl(req));
     console.log("> url: " + req.originalUrl);
     const PAGE_PATH = "./" + req.originalUrl;
 
@@ -66,7 +66,7 @@ function mockDegreeSeearch(router) {
       TEMPE: "asu-tempe.html",
       ONLNE: "asu-online.html",
     };
-    const PAGE_PATH = "./mocks/pages/tooltip-campus/";
+    const PAGE_PATH = "./__mocks__/pages/tooltip-campus/";
     let pageHTML;
 
     if (campusPages[campus]) {
