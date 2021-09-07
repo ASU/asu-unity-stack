@@ -22,7 +22,9 @@
     "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
     "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha --ci",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "pretty-quick": "pretty-quick --staged",
+    "husky-prepare": "husky install"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -67,7 +69,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-filter": "^7.0.0",
     "gulp-nunjucks": "^5.1.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.2",
     "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^1.4.1",
     "nunjucks": "^3.2.0",
@@ -85,7 +87,9 @@
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^2.5.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pretty-quick": "^3.1.1"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
