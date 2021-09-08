@@ -7,8 +7,8 @@ import { filterValueShape, isAccelConcValid } from "../../../../core/models";
 
 /**
  * @param {{
- *  value: import("../Filters").FiltersState
- *  onRemove: (filterName: string, filter: import("../Filters").FilterOption) => void
+ *  value: import("src").FiltersState
+ *  onRemove: (filterName: string, filter: import("src").FilterOption) => void
  * }} propsÎ
  * @returns {JSX.Element}
  */
@@ -25,7 +25,7 @@ function FiltersSummary({
   /**
    *
    * @param {"locations" | "asuLocals" | "acceleratedConcurrent"} filterName
-   * @param {import("../Filters").FilterOption} filter
+   * @param {import("src").FilterOption} filter
    * @returns
    */
   const SummaryItem = (filterName, filter) => (
@@ -45,11 +45,11 @@ function FiltersSummary({
   );
 
   return (
-    <div>
+    <div data-testid="filters-summary">
       <header>
         <strong>Applied filters</strong>
       </header>
-      <div>
+      <div data-testid="summary-filter-tags">
         {!isActive || filterCount === 0 ? (
           <span>No filters applied</span>
         ) : (

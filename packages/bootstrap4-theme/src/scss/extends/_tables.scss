@@ -25,6 +25,14 @@
         box-sizing: border-box;
         min-width: 300px;
       }
+
+      @media screen and (max-width: $uds-breakpoint-sm) {
+        :first-child {
+          width: 128px;
+          min-width: 128px;
+          max-width: 128px;
+        }
+      }
     }
 
     > thead {
@@ -40,6 +48,12 @@
         th,
         td {
           background-color: white;
+
+          p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+          }
         }
         &:nth-child(2n) {
           th,
@@ -165,16 +179,6 @@
 }
 
 @media screen and (max-width: $uds-breakpoint-sm) {
-  .uds-table {
-    & > table {
-      tr > *:first-child {
-        width: 128px;
-        min-width: 128px;
-        max-width: 128px;
-      }
-    }
-  }
-
   .uds-table-fixed {
     &-wrapper {
       .scroll-control {

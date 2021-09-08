@@ -153,7 +153,7 @@ const ListView = ({ programs, totalRows, loading, actionUrls }) => {
             ))}
           </tr>
         </thead>
-        <tbody ref={tbodyRef}>
+        <tbody ref={tbodyRef} data-testid="program-rows">
           {programs.length === 0 ? (
             <tr role="presentation">
               <td

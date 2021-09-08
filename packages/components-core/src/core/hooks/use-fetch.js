@@ -35,10 +35,10 @@ const useFetch = () => {
     if (!url) return;
 
     /* TODO:
-       for some reason `async/await` throuw an error  `Uncaught ReferenceError: regeneratorRuntime is not defined`
-       in News Component when the it used a vanillaJS component.
-       The plugin "@babel/plugin-transform-runtime" it is suppssed to fix it but it does not.
-     */
+      for some reason `async/await` throuw an error  `Uncaught ReferenceError: regeneratorRuntime is not defined`
+      in News Component when the it used a vanillaJS component.
+      The plugin "@babel/plugin-transform-runtime" it is suppssed to fix it but it does not.
+    */
     // const fetchData = async () => {
     //   setError(null);
     //   setLoading(true);

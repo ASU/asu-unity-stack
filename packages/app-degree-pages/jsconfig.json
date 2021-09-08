@@ -5,6 +5,7 @@
     "declaration": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "jsx": "react",
     "paths": {

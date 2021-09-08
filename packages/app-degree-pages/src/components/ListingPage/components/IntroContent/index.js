@@ -52,7 +52,7 @@ function textPhotoGridTypeHtmlTemplate({
   const Heading = parseHeading(title);
 
   return (
-    <section className="container">
+    <section className="container" data-testid="intro-content">
       <div className="row">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">
@@ -99,7 +99,7 @@ function textTextMediaTypeHtmlTemplate({
   const Heading = parseHeading(title);
 
   return (
-    <SectionWrapper className="container">
+    <SectionWrapper className="container" data-testid="intro-content">
       <div className="row gy-3">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">
@@ -141,7 +141,7 @@ function textImageOverlapTypeHtmlTemplate({
   image,
 }) {
   return (
-    <section className="container">
+    <section className="container" data-testid="intro-content">
       <div className="row">
         <div className="col-md-12">
           <OverlapContentImage
@@ -169,7 +169,7 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
   const Heading = parseHeading(title);
 
   return (
-    <section className="container">
+    <section className="container" data-testid="intro-content">
       <div className="row">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">
