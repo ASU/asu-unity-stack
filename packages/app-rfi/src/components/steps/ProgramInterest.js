@@ -377,7 +377,9 @@ const ProgramInterest = props => {
       const poiOptions = degreeDataProcessed.map((program, index) => ({
         key: index.toString(),
         value: program.AcadPlan,
-        text: program.Descr100,
+        text: `${program.Descr100} ${
+          program.Degree ? `(${program.Degree})` : ""
+        }`,
       }));
       setProgramInterestOptions(poiOptions);
     }
