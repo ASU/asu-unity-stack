@@ -163,7 +163,7 @@
  *  exampleCareers?: HideProp
  *  globalOpportunity?: HideProp & GlobalOpportunityProps
  *  attendOnline?: HideProp &  AttendOnlineProps
- *  programContactInfo?: {
+ *  programContactInfo?: HideProp & {
  *      departmentUrl: string
  *      emailUrl: string
  *  }
