@@ -12,6 +12,8 @@ import {
   Video,
 } from "./components";
 
+export * from "./components/FeedAnatomy";
+
 export * from "./core/utils";
 export * from "./core/hooks/use-media-query";
 
