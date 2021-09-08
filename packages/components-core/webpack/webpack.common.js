@@ -1,13 +1,6 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-const CopyPlugin = require("copy-webpack-plugin");
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const PurgecssPlugin = require("purgecss-webpack-plugin");
-
 const path = require("path");
-const glob = require("glob");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
@@ -74,10 +67,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
-    // new PurgecssPlugin({
-    //   paths: glob.sync(`${PROJECT_DIR}src/**/*`, { nodir: true }),
-    // }),
-    // new BundleAnalyzerPlugin(),
   ],
   resolve: {
     alias: {

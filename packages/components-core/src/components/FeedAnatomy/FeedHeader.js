@@ -35,7 +35,10 @@ const FeedHeader = ({
   const ctaButton = { ...defaultProps.ctaButton, ...pCtaButton };
 
   return (
-    <div className="row justify-content-between align-items-center pb-6">
+    <div
+      className="row justify-content-between align-items-center pb-6"
+      data-testid="feed-header"
+    >
       <div className="col-sm-12 col-md-9">
         <h2 className={`text-${header.color}`}>{header.text}</h2>
       </div>

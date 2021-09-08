@@ -26,6 +26,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => {
       <div className="card-header">
         <h4>
           <a
+            data-testid="accordion-opener"
             className={classNames({ [`collapsed`]: id !== openCard })}
             data-toggle="collapse"
             href={`#card-body-${id}`}
