@@ -11,9 +11,9 @@ import { GridView } from "./GridView";
  * @returns {JSX.Element}
  */
 
-const CardsGridEvents = ({ header, ctaButton, dataSource }) => {
+const CardsGridEvents = ({ header, ctaButton, dataSource, maxItems }) => {
   return (
-    <BaseFeed {...{ header, ctaButton, dataSource }}>
+    <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
       <GridView />
     </BaseFeed>
   );

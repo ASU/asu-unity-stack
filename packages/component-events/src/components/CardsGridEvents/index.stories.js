@@ -45,3 +45,20 @@ WithFilters.args = {
 WithFilters.parameters = {
   mockData: createMockParam(),
 };
+
+export const MaxItems = Template.bind({});
+MaxItems.args = {
+  header: { color: "dark", text: "Events list" },
+  ctaButton: {
+    color: "gold",
+    url: "https://news.asu.edu",
+    text: "Click to see more events",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+  maxItems: 5,
+};
+MaxItems.parameters = {
+  mockData: createMockParam(),
+};

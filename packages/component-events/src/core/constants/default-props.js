@@ -15,6 +15,7 @@ const defaultProps = {
   dataSource: {
     url: "https://asuevents.asu.edu/feed-json/",
   },
+  maxItems: 3,
 };
 
 export { defaultProps };

@@ -6,6 +6,7 @@ const GridViewWrapper = styled.ul`
   list-style-type: none;
   display: grid;
   column-gap: 24px;
+  row-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
   li {
     a {
@@ -23,7 +24,6 @@ const GridViewWrapper = styled.ul`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
     .card-content-wrapper {
       padding-top: 0 !important;
     }

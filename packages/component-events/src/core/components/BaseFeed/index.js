@@ -28,7 +28,7 @@ const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
     dataFilter={filterData}
     dataSource={dataSource}
     defaultProps={defaultProps}
-    maxItems={maxItems}
+    maxItems={maxItems || defaultProps.maxItems}
   />
 );
 

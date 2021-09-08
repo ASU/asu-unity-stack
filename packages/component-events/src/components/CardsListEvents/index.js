@@ -11,9 +11,9 @@ import { ListView } from "./ListView";
  * @returns {JSX.Element}
  */
 
-const CardsListEvents = ({ header, ctaButton, dataSource }) => {
+const CardsListEvents = ({ header, ctaButton, dataSource, maxItems }) => {
   return (
-    <BaseFeed {...{ header, ctaButton, dataSource }}>
+    <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
       <ListView />
     </BaseFeed>
   );
