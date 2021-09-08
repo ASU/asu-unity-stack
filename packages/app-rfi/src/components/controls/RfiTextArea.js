@@ -14,6 +14,8 @@ const RfiTextArea = ({
   requiredIcon,
   required,
   autoFocus,
+  disabled,
+  helperText,
 }) => {
   return (
     <Field name={name}>
@@ -35,6 +37,8 @@ const RfiTextArea = ({
               className="form-control"
               required={required}
               autoFocus={autoFocus}
+              disabled={disabled}
+              placeholder={helperText}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
           </div>
@@ -53,6 +57,8 @@ RfiTextArea.defaultProps = {
   requiredIcon: undefined,
   required: undefined,
   autoFocus: undefined,
+  disabled: false,
+  helperText: undefined,
 };
 
 RfiTextArea.propTypes = {
@@ -62,6 +68,8 @@ RfiTextArea.propTypes = {
   requiredIcon: PropTypes.bool,
   required: PropTypes.bool,
   autoFocus: PropTypes.bool,
+  disabled: PropTypes.bool,
+  helperText: PropTypes.string,
 };
 
 export { RfiTextArea };
