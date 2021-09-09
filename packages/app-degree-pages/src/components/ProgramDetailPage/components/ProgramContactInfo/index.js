@@ -78,7 +78,7 @@ function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
         </li>
         <li>
           <i className="c-icon fas icon-small fa-envelope" title="Email" />
-          <a href={email.url || email.text}>{email.text}</a>
+          <a href={`mailto:${email.url || email.text}`}>{email.text}</a>
         </li>
         <li>
           <i className="c-icon fas icon-small fa-phone" title="Phone" />

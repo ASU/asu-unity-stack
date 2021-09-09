@@ -303,17 +303,21 @@ const ProgramDetailPage = ({
               ) : null}
             </div>
 
-            {programContactInfo ? (
+            {!programContactInfo?.hide ? (
               <div className="row">
                 <div className="col col-sm-12 col-md-6 col-lg-6 ">
                   <ProgramContactInfo
                     department={{
-                      text: resolver.getGDepartmentName(),
-                      url: programContactInfo.departmentUrl,
+                      text: resolver.getDepartmentName(),
+                      url:
+                        programContactInfo?.departmentUrl ||
+                        resolver.getPlanUrl(),
                     }}
                     email={{
                       text: resolver.getEmailAddress(),
-                      url: programContactInfo.emailUrl,
+                      url:
+                        programContactInfo?.emailUrl ||
+                        resolver.getEmailAddress(),
                     }}
                     asuOfficeLoc={resolver.getAsuOfficeLoc()}
                     phone={resolver.getPhone()}
@@ -368,6 +372,7 @@ ProgramDetailPage.propTypes = {
     image: imagePropShape,
   }),
   programContactInfo: PropTypes.shape({
+    hide: PropTypes.bool,
     departmentUrl: PropTypes.string,
     emailUrl: PropTypes.string,
   }),
