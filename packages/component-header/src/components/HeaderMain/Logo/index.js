@@ -14,6 +14,7 @@ const Logo = () => {
     <a
       href={logo ? logo.brandLink : "https://asu.edu"}
       className="navbar-brand"
+      data-testid="logo"
     >
       <img
         className="vert"

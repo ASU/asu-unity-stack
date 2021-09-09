@@ -22,11 +22,11 @@ const Search = () => {
 
   return (
     <SearchWrapper
+      // @ts-ignore
+      breakpoint={breakpoint}
       action="https://search.asu.edu/search"
       method="get"
       name="gs"
-      // @ts-ignore
-      breakpoint={breakpoint}
       className={open ? "open-search" : ""}
     >
       {!isMobile ? (
