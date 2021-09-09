@@ -1068,7 +1068,23 @@ We need to easily and consistently align
 the content of full width components with
 the content of the header
 */
-.uds-content-align {
-  max-width: 1920;
-  margin: auto;
+.uds-full-width {
+  .uds-content-align {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 $uds-size-spacing-2;
+
+    @include media-breakpoint-up(md) {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: 940px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      max-width: 1200px;
+    }
+  }
 }

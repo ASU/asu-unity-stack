@@ -10,7 +10,7 @@ export const LeftFloatedCard = createStory(
         "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')",
     }}
   >
-    <div class="uds-card-and-image-container">
+    <div class="uds-card-and-image-container uds-content-align">
       <div class="card card-centered">
         <i class="fas fa-rocket fa-2x card-icon-top"></i>
         <div class="card-header">
