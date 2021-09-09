@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 const feedHeaderShape = PropTypes.shape({
-  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  color: PropTypes.oneOf(["white", "dark"]),
   text: PropTypes.string,
 });
 const feedCtaButtonShape = PropTypes.shape({
@@ -15,8 +15,8 @@ const feedDataSourceShape = PropTypes.shape({
 });
 
 const feedComponentShape = PropTypes.shape({
-  header: feedCtaButtonShape,
-  ctaButton: feedHeaderShape,
+  header: feedHeaderShape,
+  ctaButton: feedCtaButtonShape,
   dataSource: feedDataSourceShape,
   maxItems: PropTypes.number,
 });

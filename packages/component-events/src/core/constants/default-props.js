@@ -1,18 +1,19 @@
 // @ts-check
 
-/** @type {import("../models/news-types").FeedsType} */
+/** @type {import("../models/types").FeedType} */
+
 const defaultProps = {
   header: {
     color: "dark",
-    text: "Knowledge and enterprise news",
+    text: "Events list",
   },
   ctaButton: {
     color: "gold",
-    text: "More stories and videos",
+    text: "Click to see more events",
     url: "https://news.asu.edu",
   },
   dataSource: {
-    url: "https://asunow.asu.edu/feeds-json",
+    url: "https://asuevents.asu.edu/feed-json/",
   },
   maxItems: 3,
 };
