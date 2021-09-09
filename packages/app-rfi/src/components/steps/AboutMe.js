@@ -80,7 +80,13 @@ const AboutMe = () => {
                 }`,
                 text: termValue[1].split(":")[0],
               }));
-            setTermOptions(termData);
+            // Dedupe based on object key property as dupe terms can occur due
+            // to multiple campus offerings.
+            // Explanation: https://stackoverflow.com/a/56768137
+            const dedupedTermData = [
+              ...new Map(termData.map(item => [item.key, item])).values(),
+            ];
+            setTermOptions(dedupedTermData);
           })
           .catch(error => new Error(error));
       }
