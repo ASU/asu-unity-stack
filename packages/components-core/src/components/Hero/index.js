@@ -73,10 +73,15 @@ function headingHeroHtmlTemplate({
         [imageSize[image.size]]: image.size,
       })}
     >
-      <HeroImage className="hero" src={image.url} alt={image.altText} />
+      <HeroImage
+        className="hero"
+        src={image.url}
+        alt={image.altText}
+        data-testid="hero-image"
+      />
 
       {subTitle && (
-        <div role="doc-subtitle">
+        <div role="doc-subtitle" data-testid="hero-subtitle">
           <span
             className={classNames({
               [textColor[subTitle.color]]: subTitle.color,
@@ -90,7 +95,7 @@ function headingHeroHtmlTemplate({
       )}
 
       {title && (
-        <h1 style={{ maxWidth: title.maxWidth || "" }}>
+        <h1 style={{ maxWidth: title.maxWidth || "" }} data-testid="hero-title">
           <span
             className={classNames({
               [textColor[title.color]]: title.color,
@@ -104,6 +109,7 @@ function headingHeroHtmlTemplate({
 
       {contents && (
         <div
+          data-testid="hero-content"
           className={classNames("content", {
             [textColor[contentsColor]]: contentsColor,
           })}
@@ -114,8 +120,6 @@ function headingHeroHtmlTemplate({
           ))}
         </div>
       )}
-
-      {/* TODO:  HERE WILL IMPLEMENT THE BUTTONS */}
     </div>
   );
 }

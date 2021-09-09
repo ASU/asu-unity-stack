@@ -34,12 +34,15 @@ export const PageItem = ({
           })}
           type="button"
           onClick={onClick}
+          data-testid="page-link"
         >
           {children}
           {selectedPage && <span className="sr-only">(current)</span>}
         </button>
       ) : (
-        <span className="page-link">{children}</span>
+        <span className="page-link" data-testid="page-link">
+          {children}
+        </span>
       )}
     </li>
   );
