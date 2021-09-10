@@ -290,22 +290,34 @@ Default.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithContent = Template.bind({});
-PageWithContent.args = {
+export const WithContent = Template.bind({});
+WithContent.args = {
   ...defaultArgs,
 };
 
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithVideoAndMarketText = Template.bind({});
-PageWithVideoAndMarketText.args = { ...defaultArgs };
-PageWithVideoAndMarketText.args.dataSource = {
-  ...PageWithVideoAndMarketText.args.dataSource,
+export const WithNotAcceptNewStudents = Template.bind({});
+WithNotAcceptNewStudents.args = {
+  ...defaultArgs,
+  dataSource: {
+    ...defaultArgs.dataSource,
+    acadPlan: "BABUSCLBA",
+  },
+};
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const WithVideoAndMarketText = Template.bind({});
+WithVideoAndMarketText.args = { ...defaultArgs };
+WithVideoAndMarketText.args.dataSource = {
+  ...WithVideoAndMarketText.args.dataSource,
   acadPlan: "LSBISBIS", // this has marketText
 };
-PageWithVideoAndMarketText.args.introContent = {
-  ...PageWithVideoAndMarketText.args.introContent,
+WithVideoAndMarketText.args.introContent = {
+  ...WithVideoAndMarketText.args.introContent,
   image: undefined,
   video: {
     url: "/examples/assets/video/stock-video-person-drawing.mp4",
@@ -317,9 +329,9 @@ PageWithVideoAndMarketText.args.introContent = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithNoGlobalOpportunity = Template.bind({});
-PageWithNoGlobalOpportunity.args = { ...defaultArgs };
-PageWithNoGlobalOpportunity.args.dataSource = {
-  ...PageWithNoGlobalOpportunity.args.dataSource,
+export const WithNoGlobalOpportunity = Template.bind({});
+WithNoGlobalOpportunity.args = { ...defaultArgs };
+WithNoGlobalOpportunity.args.dataSource = {
+  ...WithNoGlobalOpportunity.args.dataSource,
   acadPlan: "ASAPSSCERT", // this has no global opportunity
 };

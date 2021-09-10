@@ -42,6 +42,7 @@ const useFetch = () => {
 
         setData(result);
       } catch (err) {
+        console.error(err);
         setError(err);
       }
 

@@ -3,6 +3,7 @@
 import { isAccelConcValid } from "../models";
 import { degreeDataPropResolverService } from "./degree-data-prop-resolver-service";
 
+/** @typedef {import("../models/shared-types").DegreeDataPropResolver} PropResolver */
 /**
  *
  * @param {{
@@ -22,28 +23,22 @@ function filterData({
   },
 }) {
   // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCollegeAcadOrg = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
+  /** @param {PropResolver} resolver   */
+  const isValidCollegeAcadOrg = resolver => {
     return collegeAcadOrg
       ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
       : true;
   };
   // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidDepartmentCode = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
+  /** @param {PropResolver} resolver   */
+  const isValidDepartmentCode = resolver => {
     return departmentCode
       ? resolver.getDepartmentCode().includes(departmentCode)
       : true;
   };
   // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidCampus = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
+  /** @param {PropResolver} resolver   */
+  const isValidCampus = resolver => {
     return locations.length > 0
       ? resolver
           .getCampusList()
@@ -57,22 +52,25 @@ function filterData({
       ? row[acceleratedConcurrent.value]?.length > 0
       : true;
   // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidForKeyword = (row = {}) => {
-    const resolver = degreeDataPropResolverService(row);
-
+  /** @param {PropResolver} resolver   */
+  const isValidForKeyword = resolver => {
     return keyword
       ? resolver.getDescrLongExtented()?.includes?.(keyword)
       : true;
   };
   // ============================================================
   /** @param {Object.<string, any>} row  */
-  const doFilter = row =>
-    isValidCollegeAcadOrg(row) &&
-    isValidDepartmentCode(row) &&
-    isValidCampus(row) &&
-    isValidAcceleratedConcurrent(row) &&
-    isValidForKeyword(row);
+  const doFilter = row => {
+    const resolver = degreeDataPropResolverService(row);
+    return (
+      resolver.isValidActiveProgram() &&
+      isValidCollegeAcadOrg(resolver) &&
+      isValidDepartmentCode(resolver) &&
+      isValidCampus(resolver) &&
+      isValidAcceleratedConcurrent(row) &&
+      isValidForKeyword(resolver)
+    );
+  };
 
   return programs.filter(doFilter);
 }
