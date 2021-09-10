@@ -12,6 +12,7 @@ module.exports = {
   webpackFinal: async config => {
     return {
       ...config,
+      module: { ...config.module, rules: devConfig.module.rules },
       resolve: {
         extensions: [".js", ".jsx"],
         alias: {

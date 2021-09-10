@@ -69,6 +69,8 @@
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "sass": "^1.39.2",
+    "sass-loader": "^10",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
