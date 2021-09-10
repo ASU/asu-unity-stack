@@ -45,12 +45,12 @@ You can find an example of how to set `Events` props [here](/packages/component-
  ```JS
  /**
   *  @typedef {{
-  *    color?: string
+  *    color?: "white" | "dark"
   *    text?: string
   * }} FeedHeader
   *
   *  @typedef {{
-  *    color?: string
+  *    color?: "gold" | "maroon" | "gray" | "dark"
   *    text?: string
   *    url?: string
   * }} FeedCtaButton
@@ -61,8 +61,8 @@ You can find an example of how to set `Events` props [here](/packages/component-
   * }} DataSource
   *
   * @typedef {{
-  *  header: FeedHeader
-  *  ctaButton: FeedCtaButton
+  *  header?: FeedHeader
+  *  ctaButton?: FeedCtaButton
   *  dataSource: DataSource
   *  maxItems?: number
   * }} FeedType

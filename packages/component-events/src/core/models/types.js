@@ -2,12 +2,12 @@
 
 /**
  *  @typedef {{
- *    color?: string
+ *    color?: "dark" | "white"
  *    text?: string
  * }} LayoutHeaderProps
  *
  *  @typedef {{
- *    color?: string
+ *    color?: "gold" | "maroon" | "dark" | "gray"
  *    text?: string
  *    url?: string
  * }} LayoutCtaButtonProps
@@ -18,8 +18,8 @@
  * }} DataSource
  *
  * @typedef {{
- *  header: LayoutHeaderProps
- *  ctaButton: LayoutCtaButtonProps
+ *  header?: LayoutHeaderProps
+ *  ctaButton?: LayoutCtaButtonProps
  *  dataSource: DataSource
  *  maxItems?: number
  * }} FeedType

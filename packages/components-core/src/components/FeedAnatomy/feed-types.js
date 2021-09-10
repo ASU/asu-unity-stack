@@ -25,7 +25,7 @@
  *
  * @typedef {{
  *  header?: FeedHeader
- *  ctaButton: FeedCtaButton
+ *  ctaButton?: FeedCtaButton
  *  cardButton?: FeedCardButton
  *  dataSource: DataSource
  *  maxItems?: number
