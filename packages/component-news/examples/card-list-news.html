@@ -49,16 +49,27 @@
       AsuNews.initCardListNewsComponent({
         targetSelector: "#news-wrapper",
         props: {
-          header: { color: "dark", text: "News Grid" },
+          header: {
+            color: "dark",
+            text: "News list",
+          },
           ctaButton: {
-            color: "gold",
+            color: "maroon", // "gold", "maroon", "gray", "dark"
             url: "https://news.asu.edu",
             text: "Click to see more news",
           },
           dataSource: {
-            url:
-              "https://cors-anywhere.herokuapp.com/" +
-              "https://asunow.asu.edu/feeds-json/",
+            url: "./api/feeds.json", // here the real URL
+            // filters:
+            //   "nursing_and_health_care,School of Mathematical and Natural Sciences,Student",
+            // filters: "Nursing and Health Care",
+            // filters: "Health,Journalism",
+          },
+          maxItems: 10,
+          cardButton: {
+            color: "gold", // "gold", "maroon", "gray", "dark"
+            text: "Read news",
+            size: "default", //   "default" | "small" | "medium" | "large"
           },
         },
       });

@@ -5,10 +5,18 @@ const feedHeaderShape = PropTypes.shape({
   color: PropTypes.oneOf(["white", "dark"]),
   text: PropTypes.string,
 });
+
 const feedCtaButtonShape = PropTypes.shape({
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   text: PropTypes.string,
 });
+
+const feedCardButtonShape = PropTypes.shape({
+  color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+  text: PropTypes.string,
+  size: PropTypes.string,
+});
+
 const feedDataSourceShape = PropTypes.shape({
   url: PropTypes.string,
   filters: PropTypes.string,
@@ -26,4 +34,5 @@ export {
   feedHeaderShape,
   feedCtaButtonShape,
   feedDataSourceShape,
+  feedCardButtonShape,
 };

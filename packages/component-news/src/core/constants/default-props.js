@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("../models/news-types").FeedsType} */
+/** @type {import("../models/news-types").FeedType} */
 const defaultProps = {
   header: {
     color: "dark",
@@ -10,6 +10,11 @@ const defaultProps = {
     color: "gold",
     text: "More stories and videos",
     url: "https://news.asu.edu",
+  },
+  cardButton: {
+    color: "maroon",
+    text: "Read at ASU News",
+    size: "default",
   },
   dataSource: {
     url: "https://asunow.asu.edu/feeds-json",
