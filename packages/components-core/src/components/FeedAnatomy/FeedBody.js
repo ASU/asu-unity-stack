@@ -10,7 +10,7 @@ import React from "react";
  * @returns
  */
 const FeedBody = ({ children }) => (
-  <div className="row">
+  <div className="row" data-testid="feed-body">
     <div className="col">{children}</div>
   </div>
 );

@@ -41,7 +41,7 @@ const detailPageDefaultDataSource = {
     // career opportunity
     `AsuCareerOpp,` +
     // program contact
-    `DepartmentName,EmailAddr,Phone,CollegeDescr100,` +
+    `DepartmentName,PlanUrl,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
     `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
     `AdmissionsDegRequirements,` +

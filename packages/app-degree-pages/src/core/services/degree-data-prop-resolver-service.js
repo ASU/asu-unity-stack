@@ -69,7 +69,9 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getPhone: () => row["Phone"],
     /** @return {string} */
-    getGDepartmentName: () => row["DepartmentName"],
+    getDepartmentName: () => row["DepartmentName"],
+    /** @return {string} */
+    getPlanUrl: () => row["PlanUrl"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",

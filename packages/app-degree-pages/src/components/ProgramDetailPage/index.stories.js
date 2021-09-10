@@ -61,7 +61,7 @@ const Template = ({
       <div className="row">
         <h4>This is a just a Place holder</h4>
         <img
-          src="/examples/assets/img/request-form-information.png"
+          src="./examples/assets/img/request-form-information.png"
           alt=""
           style={{
             opacity: "0.7",
@@ -147,7 +147,7 @@ const defaultArgs = {
     },
     // OPTIONAL
     // video: {
-    //   url: "/examples/assets/video/stock-video-person-drawing.mp4",
+    //   url: "./examples/assets/video/stock-video-person-drawing.mp4",
     //   altText: "",
     //   vttUrl: "",
     // },
@@ -267,6 +267,7 @@ const defaultArgs = {
     },
   },
   programContactInfo: {
+    // hide: true, // OPTIONAL
     departmentUrl: "#",
     emailUrl: "#",
   },
@@ -285,6 +286,7 @@ Default.args = {
   globalOpportunity: null,
   atAGlance: null,
   attendOnline: null,
+  programContactInfo: null,
 };
 
 /**
@@ -320,7 +322,7 @@ WithVideoAndMarketText.args.introContent = {
   ...WithVideoAndMarketText.args.introContent,
   image: undefined,
   video: {
-    url: "/examples/assets/video/stock-video-person-drawing.mp4",
+    url: "./examples/assets/video/stock-video-person-drawing.mp4",
     title: "",
     vttUrl: "",
   },

@@ -106,7 +106,7 @@ const videoTemplate = ({
         </VideoOverlay>
       </div>
       {caption && (
-        <figure>
+        <figure data-testid="video-caption">
           <figcaption>{caption}</figcaption>
         </figure>
       )}
@@ -133,7 +133,7 @@ const youtubeTemplate = ({
       <iframe title={title} src={url} />
     </div>
     {caption && (
-      <figure>
+      <figure data-testid="video-caption">
         <figcaption>{caption}</figcaption>
       </figure>
     )}

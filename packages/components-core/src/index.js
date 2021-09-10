@@ -13,9 +13,8 @@ import {
 } from "./components";
 
 export * from "./components/FeedAnatomy";
-
 export * from "./core/utils";
-export * from "./core/hooks/use-media-query";
+export * from "./core/hooks";
 
 export {
   Card,

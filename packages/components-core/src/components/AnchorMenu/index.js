@@ -8,6 +8,8 @@ import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
+const menuTitle = "On This Page";
+
 /**
  * @typedef { import('../../core/models/shared-model-types').AnchorMenuProps } AnchorMenuProps
  */
@@ -26,7 +28,6 @@ export const AnchorMenu = ({
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
-  const menuTitle = "On This Page";
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
@@ -114,6 +115,7 @@ export const AnchorMenu = ({
             {items?.map(item => (
               // @ts-ignore
               <Button
+                data-testid={`anchor-item-${item.targetIdName}`}
                 key={item.targetIdName}
                 classes={[
                   "nav-link",

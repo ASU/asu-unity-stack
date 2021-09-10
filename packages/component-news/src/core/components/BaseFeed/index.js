@@ -40,11 +40,11 @@ const BaseFeed = ({
         />
       }
       renderBody={<FeedBody>{children}</FeedBody>}
-      dataSource={dataSource}
-      defaultProps={defaultProps}
-      maxItems={maxItems}
       dataTransformer={transformData}
       dataFilter={filterData}
+      dataSource={dataSource}
+      defaultProps={defaultProps}
+      maxItems={maxItems || defaultProps.maxItems}
     />
   );
 };
