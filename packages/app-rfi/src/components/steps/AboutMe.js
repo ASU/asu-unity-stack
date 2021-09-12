@@ -7,6 +7,7 @@ import * as Yup from "yup";
 
 import {
   RfiTextInput,
+  RfiTextArea,
   RfiEmailInput,
   RfiSelect,
   RfiPhone,
@@ -161,14 +162,26 @@ const AboutMe = () => {
         requiredIcon={values.Campus !== "ONLNE"}
         required={values.Campus !== "ONLNE"}
       />
-      <RfiSelect
-        label="When do you anticipate starting at ASU?"
-        id="EntryTerm"
-        name="EntryTerm"
-        options={termOptions}
-        requiredIcon={values.Campus !== "ONLNE"}
-        required={values.Campus !== "ONLNE"}
-      />
+      {termOptions.length ? (
+        <RfiSelect
+          label="When do you anticipate starting at ASU?"
+          id="EntryTerm"
+          name="EntryTerm"
+          options={termOptions}
+          requiredIcon={values.Campus !== "ONLNE"}
+          required={values.Campus !== "ONLNE"}
+        />
+      ) : (
+        <RfiTextArea
+          label="When do you anticipate starting at ASU?"
+          id="EntryTerm"
+          name="EntryTerm"
+          helperText="The program you are interested in is not accepting new students at this time. Please select a different program of interest, and then select the semester you would like to start."
+          disabled
+          requiredIcon={values.Campus !== "ONLNE"}
+          required={values.Campus !== "ONLNE"}
+        />
+      )}
       <RfiGdpr campus={values.Campus} />
     </>
   );
