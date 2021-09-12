@@ -1,7 +1,7 @@
 module.exports = {
   settings: {
     react: {
-      version: "detect", // Automatically detect the react version
+      version: "detect",
     },
   },
   env: {
@@ -11,8 +11,8 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "airbnb",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended", // Make this the last element so prettier config overrides other formatting rules
-    // "plugin:jest/recommended",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -22,13 +22,11 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: [
-    "react",
-    // "jest"
-  ],
+  plugins: ["react", "jest"],
   rules: {
     "react/jsx-filename-extension": "off",
-    "prettier/prettier": ["error", {}, { usePrettierrc: true }], // Use our .prettierrc file as source
+    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "dot-notation": "off",
     "import/prefer-default-export": "off",
   },
