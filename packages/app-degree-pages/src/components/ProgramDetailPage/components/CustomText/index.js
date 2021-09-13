@@ -8,15 +8,12 @@ import React from "react";
  * @returns {JSX.Element}
  */
 function CustomText({ content = "" }) {
-  debugger
   return (
-    <div>
-      PIPOOOOO
-      <div
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
-      />
-    </div>
+    <div
+      className="mt-3"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
+    />
   );
 }
 
