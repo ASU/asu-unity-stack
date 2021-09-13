@@ -11,7 +11,7 @@ import React from "react";
  */
 function ProgramDescription({ content }) {
   return (
-    <div>
+    <div data-testid="program-description">
       <h2>Program description</h2>
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)} />

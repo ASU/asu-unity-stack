@@ -62,7 +62,10 @@ function ApplicationRequirements({ accordionCards }) {
   );
 
   return (
-    <section id={progDetailSectionIds.applicationRequirements.targetIdName}>
+    <section
+      id={progDetailSectionIds.applicationRequirements.targetIdName}
+      data-testid="application-requirements"
+    >
       <h2>
         <span className="highlight-gold">Application requirements</span>
       </h2>

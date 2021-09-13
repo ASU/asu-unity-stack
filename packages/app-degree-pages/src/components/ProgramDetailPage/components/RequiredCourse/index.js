@@ -31,7 +31,7 @@ function RequiredCourse({
   const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 11}`;
 
   const template = (
-    <div className="container pl-0">
+    <div className="container pl-0" data-testid="required-course">
       <h4>Required Course (Major Map)</h4>
       <ButtonGroup className="pt-1">
         {concurrentDegreeMajorMaps && (

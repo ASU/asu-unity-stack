@@ -31,6 +31,7 @@ function AttendOnline({ image, learnMoreLink, contents }) {
       style={{
         backgroundImage,
       }}
+      data-testid="attend-online"
     >
       <div className="uds-card-and-image-container">
         <div className="card card-centered">

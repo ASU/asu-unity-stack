@@ -19,7 +19,7 @@ import { contentPropShape } from "../../../../core/models/app-prop-types";
  */
 function MarketText({ contents = [] }) {
   return (
-    <div>
+    <div data-testid="market-text">
       {contents.map((content, index) => (
         <div
           key={`content-${index + 1}`}

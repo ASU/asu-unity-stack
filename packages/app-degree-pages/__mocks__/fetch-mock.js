@@ -5,18 +5,18 @@ import {
   listingPageDefaultDataSource,
 } from "../src/core/constants";
 import "./components-core-mock";
-import * as data from "./data/degree-search.json";
+import * as detailData from "./data/degree-search-detail.json";
+import * as listData from "./data/degree-search.json";
 
 // mock all fetch() calls
 fetchMock.enableMocks();
 fetchMock.mockResponse(req => {
   let res = { programs: [] };
   if (req.url.includes(listingPageDefaultDataSource.method)) {
-    res = data;
+    res = listData;
   }
   if (req.url.includes(detailPageDefaultDataSource.method)) {
-    res = { programs: data.programs?.splice(0, 1) };
+    res = detailData;
   }
   return Promise.resolve(JSON.stringify(res));
 });
-

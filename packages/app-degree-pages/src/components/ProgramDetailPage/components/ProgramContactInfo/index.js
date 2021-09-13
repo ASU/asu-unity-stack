@@ -51,7 +51,10 @@ const ListContainer = styled.ul`
  */
 function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
   return (
-    <section id={progDetailSectionIds.programContactInfo.targetIdName}>
+    <section
+      id={progDetailSectionIds.programContactInfo.targetIdName}
+      data-testid="program-contact-info"
+    >
       <h2>
         <span className="highlight-gold">Program contact information</span>
       </h2>

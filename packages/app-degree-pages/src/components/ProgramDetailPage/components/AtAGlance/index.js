@@ -22,7 +22,10 @@ export const AtAGlance = ({
   mathIntensity,
   timeCommitment,
 }) => (
-  <section id={progDetailSectionIds.atAGlance.targetIdName}>
+  <section
+    id={progDetailSectionIds.atAGlance.targetIdName}
+    data-testid="at-aglance"
+  >
     <h2>
       <span className="highlight-gold">At a glance: program details</span>
     </h2>

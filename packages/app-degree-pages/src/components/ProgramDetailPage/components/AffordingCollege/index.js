@@ -10,6 +10,7 @@ function AffordingCollege() {
     <Section
       className="container"
       id={progDetailSectionIds.affordingCollege.targetIdName}
+      data-testid="affording-college"
     >
       <Background />
       <h2>

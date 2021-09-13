@@ -17,7 +17,10 @@ const WrapperContainer = styled.section`
  * @returns {JSX.Element}
  */
 const GlobalOpportunity = ({ contents, image }) => (
-  <WrapperContainer id={progDetailSectionIds.globalOpportunity.targetIdName}>
+  <WrapperContainer
+    id={progDetailSectionIds.globalOpportunity.targetIdName}
+    data-testid="global-opportunity"
+  >
     <OverlapContentImage
       headingTag="H2"
       title="Global opportunities"

@@ -10,7 +10,10 @@ import { progDetailSectionIds } from "../../../../core/models";
  * @returns {JSX.Element}
  */
 const CareerOutlook = ({ contents, image }) => (
-  <section id={progDetailSectionIds.careerOutlook.targetIdName}>
+  <section
+    id={progDetailSectionIds.careerOutlook.targetIdName}
+    data-testid="career-outlook"
+  >
     <OverlapContentImage
       headingTag="H2"
       title={progDetailSectionIds.careerOutlook.text}

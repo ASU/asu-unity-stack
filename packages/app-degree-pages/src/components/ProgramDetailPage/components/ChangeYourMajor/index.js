@@ -26,6 +26,7 @@ function ChangeYourMajor({ content }) {
     <section
       id={progDetailSectionIds.changeMajorRequirements.targetIdName}
       className="change-your-major"
+      data-testid="change-your-major"
     >
       <h2>
         <span className="highlight-gold">

@@ -15,7 +15,7 @@ function Breadcrumbs({ breadcrumbs }) {
 
   return (
     breadcrumbs && (
-      <nav aria-label="breadcrumbs">
+      <nav aria-label="breadcrumbs" data-testid="breadcrumbs">
         <ol className="breadcrumb bg-white">
           {breadcrumbs.map(bread =>
             bread?.isActive ? (

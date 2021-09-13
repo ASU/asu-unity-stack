@@ -19,6 +19,7 @@ function NextSteps({ cards }) {
     <section
       className="container"
       id={progDetailSectionIds.nextSteps.targetIdName}
+      data-testid="next-steps"
     >
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 row">

@@ -22,6 +22,7 @@ function ExampleCareers({ tableData }) {
     <section
       id={progDetailSectionIds.exampleCareers.targetIdName}
       className="container"
+      data-testid="example-careers"
     >
       <h3>Example careers</h3>
       <p>
