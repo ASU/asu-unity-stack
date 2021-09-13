@@ -2,15 +2,21 @@
 
 /**
  *  @typedef {{
- *    color?: string
+ *    color?: "white" | "dark"
  *    text?: string
  * }} FeedHeader
  *
  *  @typedef {{
- *    color?: string
+ *    color?: "gold" | "maroon" | "gray" | "dark"
  *    text?: string
  *    url?: string
  * }} FeedCtaButton
+ *
+ *  @typedef {{
+ *    color?: "gold" | "maroon" | "gray" | "dark"
+ *    text?: string
+ *    size?: "default" | "small" | "medium" | "large"
+ * }} FeedCardButton
  *
  * @typedef {{
  *  url?: string
@@ -18,8 +24,9 @@
  * }} DataSource
  *
  * @typedef {{
- *  header: FeedHeader
- *  ctaButton: FeedCtaButton
+ *  header?: FeedHeader
+ *  ctaButton?: FeedCtaButton
+ *  cardButton?: FeedCardButton
  *  dataSource: DataSource
  *  maxItems?: number
  * }} FeedType

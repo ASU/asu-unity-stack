@@ -52,7 +52,7 @@ const FeedContainerProvider = ({
 
   return (
     <FeedContext.Provider value={{ feeds }}>
-      <Container className="container">
+      <Container>
         {renderHeader}
         {error ? (
           <span>Error, try again!</span>

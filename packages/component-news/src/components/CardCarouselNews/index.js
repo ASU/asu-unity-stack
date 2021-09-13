@@ -4,28 +4,43 @@ import { FeedContext } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 
 import { BaseFeed } from "../../core/components/BaseFeed";
+import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
-const cardRow = (item, index) => ({
+/**
+ *
+ * @param {Object} feed
+ * @param {number} index
+ * @param {import("../../core/models/news-types").CardButton} cardButton
+ */
+const cardRow = (feed, index, cardButton) => ({
   id: index,
-  imageSource: item.imageUrl,
-  imageAltText: item.imageAltText,
-  title: item.title,
-  content: item.content,
+  imageSource: feed.imageUrl,
+  imageAltText: feed.imageAltText,
+  title: feed.title,
+  content: feed.content,
   buttons: [
     {
-      ariaLabel: `Read more`,
-      color: "maroon",
-      href: item.buttonLink,
-      label: `Read more`,
-      size: "default",
+      ariaLabel: cardButton.text,
+      color: cardButton.color,
+      label: cardButton.text,
+      size: cardButton.size,
+      href: feed.buttonLink,
     },
   ],
 });
 
-const CarouselTemplate = () => {
+/**
+ * @param {{
+ *  cardButton: import("../../core/models/news-types").CardButton
+ * }} props
+ */
+// eslint-disable-next-line react/prop-types
+const CarouselTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext);
-  const cardItems = feeds?.map((feed, index) => cardRow(feed, index));
+  const cardItems = feeds?.map((feed, index) =>
+    cardRow(feed, index, cardButton)
+  );
 
   return (
     <NewsWrapper>
@@ -38,10 +53,15 @@ const CarouselTemplate = () => {
     </NewsWrapper>
   );
 };
-
-const CardCarouselNews = props => (
+// eslint-enable-next-line react/prop-types
+/**
+ * @param {import("../../core/models/news-types").FeedType} props
+ */
+const CardCarouselNews = ({ cardButton, ...props }) => (
   <BaseFeed {...props}>
-    <CarouselTemplate />
+    <CarouselTemplate
+      cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+    />
   </BaseFeed>
 );
 
