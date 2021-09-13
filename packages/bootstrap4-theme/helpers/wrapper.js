@@ -31,7 +31,7 @@ export const createComponent = (name, section='Components') => {
             4: '4 Column (Fixed Width)'
           },
         }
-      }
+      },
     },
   }
 }
