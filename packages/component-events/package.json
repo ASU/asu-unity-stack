@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-events",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "D8 Events",
   "main": "src/index.js",
   "author": "Nicolas Baudon",
