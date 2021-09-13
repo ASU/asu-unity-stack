@@ -39,6 +39,7 @@ import { AttendOnline } from "./components/AttendOnline";
 import { Breadcrumbs } from "./components/Breadcrumbs";
 import { CareerOutlook } from "./components/CareerOutlook";
 import { ChangeYourMajor } from "./components/ChangeYourMajor";
+import { CustomText } from "./components/CustomText";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
@@ -104,7 +105,6 @@ const ProgramDetailPage = ({
   }, [data?.programs]);
 
   const filteredAnchorMenu = filterAnchorMenu(anchorMenu, resolver);
-
   return (
     <>
       <ThemeStyle />
@@ -143,6 +143,10 @@ const ProgramDetailPage = ({
             <div className="row flex-column-reverse flex-sm-row">
               <div className="col col-sm-12 col-md-7 col-lg-7">
                 <section className="intro">
+                  {!resolver.isValidActiveProgram() ? (
+                    <CustomText content={resolver.getAsuCustomText()} />
+                  ) : null}
+
                   {!introContent?.hideMarketText && resolver.getMarketText() ? (
                     <MarketText
                       contents={

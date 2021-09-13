@@ -14,6 +14,14 @@ const mathintensity = {
 // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
 // wouldn't give us minors and certs, though).
 const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
+// Check if a program is still accepting new students
+const hasGraduateApplyDates = row =>
+  Object.keys(row["graduateApplyDates"] || {}).length > 0;
+const hasPlanDeadlines = row =>
+  Object.keys(row["planDeadlines"] || {}).length > 0;
+const isValidActiveProgram = row =>
+  hasPlanDeadlines(row) || hasGraduateApplyDates(row);
+
 /**
  *
  * @param {Object.<string, any>} row
@@ -79,7 +87,8 @@ function degreeDataPropResolverService(row = {}) {
     getMathIntensity: () => mathintensity[row["MathIntensity"]],
     getMathIntensityRawValue: () => row["MathIntensity"],
     getMinMathReq: () => row["MinMathReq"] || "",
-    getMarketText: () => row["marketText"],
+    /** @return {string} */
+    getMarketText: () => row["marketText"]?.trim(),
     /** @return {string} */
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
     /** @return {string} */
@@ -92,6 +101,15 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],
     /** @return {string} */
     getDepartmentCode: () => row["DepartmentCode"],
+    /** @return {Object.<string, string>} */
+    getGraduateApplyDates: () => row["graduateApplyDates"],
+    hasGraduateApplyDates: () => hasGraduateApplyDates(row),
+    /** @return {Object.<string, string>} */
+    getPlanDeadlines: () => row["planDeadlines"],
+    hasPlanDeadlines: () => hasPlanDeadlines(row),
+    isValidActiveProgram: () => isValidActiveProgram(row),
+    getAsuDegSrchFlg: () => row["AsuDegSrchFlg"],
+    getAsuCustomText: () => row["AsuCustomText"],
   };
 }
 

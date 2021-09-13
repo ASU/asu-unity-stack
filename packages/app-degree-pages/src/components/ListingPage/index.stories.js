@@ -56,8 +56,8 @@ const dataSource = {
 
   // method: "findAllDegrees", // OPTIONAL
   // init: "false",  // OPTIONAL "true" | "false"
-  program: "graduate", // graduate | undergrad
-  cert: "true", // "true" | "false"
+  program: "undergrad", // graduate | undergrad
+  // cert: "true", // "true" | "false" // OPTIONAL
   // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
   // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
