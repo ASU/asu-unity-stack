@@ -13,7 +13,13 @@ const Login = () => {
     <LoginWrapper className="nav-link" breakpoint={breakpoint}>
       {loggedIn ? (
         <>
-          {userName ? <span className="name">{userName}</span> : ""}
+          {userName ? (
+            <span className="name" data-testid="user-name">
+              {userName}
+            </span>
+          ) : (
+            ""
+          )}
           <a className="signout" href={logoutLink}>
             Sign Out
           </a>

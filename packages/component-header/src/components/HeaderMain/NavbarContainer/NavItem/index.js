@@ -97,6 +97,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
+        data-testid="nav-item"
       >
         {renderNavLinks()}
       </a>
