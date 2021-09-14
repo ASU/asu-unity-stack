@@ -14,24 +14,26 @@ const Contact = ({
   contact: { title, contactLink, contributionLink, columns },
 }) => {
   return (
-    <div className="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns" data-testid="contact">
       <div className="container" id="footer-columns">
-        <div className="row">
+        <div className="row" data-testid="columns-container">
           <div className="col-xl-3" id="info-column">
             <h5>{title}</h5>
             <p className="contact-link">
               <a href={contactLink}>Contact Us</a>
             </p>
             {contributionLink && (
-              <p className="contribute-button">
+              <p
+                className="contribute-button"
+                data-testid="contact-contribution-link"
+              >
                 <a href={contributionLink} className="btn btn-small btn-gold">
                   Contribute
                 </a>
               </p>
             )}
           </div>
-
-          {columns && columns.length > 0 && (
+          {columns && columns.length && (
             <>
               {columns.map((column, columnIndex) => (
                 <ColumnSection

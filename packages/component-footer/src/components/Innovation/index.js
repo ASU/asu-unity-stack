@@ -6,7 +6,11 @@ import innovationLogo from "../../assets/images/innovationLogo.png";
 
 const Innovation = () => {
   return (
-    <div className="wrapper" id="wrapper-footer-innovation">
+    <div
+      className="wrapper"
+      id="wrapper-footer-innovation"
+      data-testid="innovation"
+    >
       <div className="container" id="footer-innovation">
         <div className="row">
           <div className="col">

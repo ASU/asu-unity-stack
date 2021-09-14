@@ -15,7 +15,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="col-xl flex-footer">
+    <div className="col-xl flex-footer testname-column">
       <div className="card card-foldable desktop-disable-xl">
         <div
           className="card-header"

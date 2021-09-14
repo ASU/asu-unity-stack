@@ -21,7 +21,7 @@ import endorsedLogo from "../../assets/images/endorsedLogo.png";
  */
 const Social = ({ social: { unitLogo, mediaLinks } }) => {
   return (
-    <div className="wrapper" id="wrapper-endorsed-footer">
+    <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">
         <div className="row">
           <div className="col-md" id="endorsed-logo">
@@ -35,7 +35,11 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
             <div className="col-md" id="social-media">
               <nav className="nav" aria-label="Social Media">
                 {mediaLinks.facebook && (
-                  <a className="nav-link" href={mediaLinks.facebook}>
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.facebook}
+                    data-testid="facebook"
+                  >
                     <FontAwesomeIcon
                       title="Facebook Social Media Icon"
                       icon={faFacebookSquare}
@@ -43,7 +47,11 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                   </a>
                 )}
                 {mediaLinks.twitter && (
-                  <a className="nav-link" href={mediaLinks.twitter}>
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.twitter}
+                    data-testid="twitter"
+                  >
                     <FontAwesomeIcon
                       title="Twitter Social Media Icon"
                       icon={faTwitterSquare}
@@ -51,7 +59,11 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                   </a>
                 )}
                 {mediaLinks.instagram && (
-                  <a className="nav-link" href={mediaLinks.instagram}>
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.instagram}
+                    data-testid="instagram"
+                  >
                     <FontAwesomeIcon
                       title="Instagram Social Media Icon"
                       icon={faInstagramSquare}
@@ -59,7 +71,11 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                   </a>
                 )}
                 {mediaLinks.youtube && (
-                  <a className="nav-link" href={mediaLinks.youtube}>
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.youtube}
+                    data-testid="youtube"
+                  >
                     <FontAwesomeIcon
                       title="YouTube Social Media Icon"
                       icon={faYoutubeSquare}
@@ -67,7 +83,11 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                   </a>
                 )}
                 {mediaLinks.linkedIn && (
-                  <a className="nav-link" href={mediaLinks.linkedIn}>
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.linkedIn}
+                    data-testid="linkedin"
+                  >
                     <FontAwesomeIcon
                       title="LinkedIn Social Media Icon"
                       icon={faLinkedin}

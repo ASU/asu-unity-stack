@@ -3,7 +3,7 @@ import React from "react";
 
 const Legal = () => {
   return (
-    <div className="wrapper" id="wrapper-footer-colophon">
+    <div className="wrapper" id="wrapper-footer-colophon" data-testid="legal">
       <div className="container" id="footer-colophon">
         <div className="row">
           <div className="col">
