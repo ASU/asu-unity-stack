@@ -1,24 +1,16 @@
 // ts-check
 
 /**
- *  @typedef {{
- *    color: string
- *    text: string
- * }} ComponentHeader
+ * @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType} CoreFeedsType
+ * */
+
+/**
+ * @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedCardButton} CardButton
+ * */
+
+/**
  *
- *  @typedef {{
- *    color: string
- *    text: string
- *    url: string
- * }} ComponentCtaButton
- *
- * @typedef {{
- *  feedType?: "carousel" | "card-grid" | "card-list"
- *  header: AppHeader
- *  ctaButton: ComponentCtaButton
- *  dataSource: { url: string }
- *  maxItems?: number
- * }} FeedsType
+ * @typedef {{feedType?: "carousel" | "card-grid" | "card-list"} & CoreFeedsType} FeedType
  */
 
 /**

@@ -20,32 +20,45 @@ const Template = args => <CardCarouselNews {...args} />;
  */
 export const Default = Template.bind({});
 Default.args = {
-  header: { color: "dark", text: "News carousel" },
   ctaButton: {
-    color: "gold",
     url: "https://news.asu.edu",
-    text: "Click to see more news",
   },
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-  maxItems: 10,
 };
 Default.parameters = {
   mockData: createMockParam(),
 };
 
 /**
- * @type {{ args: FeedType}}
+ * @type {{ args: FeedType, parameters: object}}
  */
-export const WithFilters = Template.bind({});
-WithFilters.args = {
-  ...Default.args,
+export const WithProps = Template.bind({});
+WithProps.args = {
+  header: {
+    color: "dark",
+    text: "News Carousel",
+  },
+  ctaButton: {
+    color: "maroon", // "gold", "maroon", "gray", "dark"
+    url: "https://news.asu.edu",
+    text: "Click to see more news",
+  },
   dataSource: {
-    ...Default.args.dataSource,
+    url: "/api/mocks/feeds-json",
     filters:
       "nursing_and_health_care,School of Mathematical and Natural Sciences,Student",
     // filters: "Nursing and Health Care",
     // filters: "Health,Journalism",
   },
+  maxItems: 7,
+  cardButton: {
+    color: "gold",
+    text: "Read news",
+    size: "default", //   "default" | "small" | "medium" | "large"
+  },
+};
+WithProps.parameters = {
+  mockData: createMockParam(),
 };

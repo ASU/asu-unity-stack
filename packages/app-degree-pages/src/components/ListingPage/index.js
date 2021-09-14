@@ -115,15 +115,13 @@ const ListingPage = ({
   useEffect(() => {
     let dataInit = sortPrograms(data?.programs || []);
     // apply buil-in filters
-    if (collegeAcadOrg || departmentCode) {
-      dataInit = filterData({
-        programs: dataInit,
-        filters: {
-          collegeAcadOrg,
-          departmentCode,
-        },
-      });
-    }
+    dataInit = filterData({
+      programs: dataInit,
+      filters: {
+        collegeAcadOrg,
+        departmentCode,
+      },
+    });
 
     setDataInitView(dataInit);
     setTableView(dataInit);

@@ -12,7 +12,7 @@ const Partner = () => {
   const { partnerLogo, logo: asuLogo, breakpoint } = useAppContext();
 
   return (
-    <PartnerLogosWrapper breakpoint={breakpoint}>
+    <PartnerLogosWrapper breakpoint={breakpoint} data-testid="partner">
       <a
         href={
           partnerLogo ? partnerLogo.brandLink : "https://starbucks.asu.edu/"

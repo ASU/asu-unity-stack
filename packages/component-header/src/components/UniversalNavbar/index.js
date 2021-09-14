@@ -10,8 +10,12 @@ const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
 
   return (
-    // @ts-ignore
-    <Wrapper breakpoint={breakpoint} className="universal-nav">
+    <Wrapper
+      // @ts-ignore
+      breakpoint={breakpoint}
+      className="universal-nav"
+      data-testid="universal-navbar"
+    >
       <div className="container-xl">
         <div className="header-top">
           <nav className="nav" aria-label="Top">

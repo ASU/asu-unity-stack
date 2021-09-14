@@ -46,15 +46,21 @@ The componet can customize by setting the following props
 ```JS
 /**
  *  @typedef {{
- *    color?: string
+ *    color?: "white" | "dark"
  *    text?: string
  * }} FeedHeader
  *
  *  @typedef {{
- *    color?: string
+ *    color?: "gold" | "maroon" | "gray" | "dark"
  *    text?: string
  *    url?: string
  * }} FeedCtaButton
+ *
+ *  @typedef {{
+ *    color?: "gold" | "maroon" | "gray" | "dark"
+ *    text?: string
+ *    size?: "default" | "small" | "medium" | "large"
+ * }} FeedCardButton
  *
  * @typedef {{
  *  url?: string
@@ -62,12 +68,14 @@ The componet can customize by setting the following props
  * }} DataSource
  *
  * @typedef {{
- *  header: FeedHeader
+ *  header?: FeedHeader
  *  ctaButton: FeedCtaButton
+ *  cardButton?: FeedCardButton
  *  dataSource: DataSource
  *  maxItems?: number
  * }} FeedType
  */
+
 ```
 
 ## Example

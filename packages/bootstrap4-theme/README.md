@@ -282,7 +282,7 @@ Most Bootstrap UI elements can be used independently of the Bootstrap grid eleme
 
 ## ❯ Related Projects
 
-### TODO: List related projects such as Unity, WebSpark, WordSpark, etc.
+### TODO: List related projects such as Unity, WebSpark, WordSpark, etc...
 
 ![divider](./divider.png)
 

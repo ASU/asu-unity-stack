@@ -66,7 +66,7 @@ const common = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        // this is use only for storybook examples
+        // for storybook examples
         {
           from: path.join(PROJECT_DIR, "__mocks__/api"),
           to: "__mocks__/api",

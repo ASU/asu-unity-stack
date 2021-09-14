@@ -8,6 +8,7 @@ const listingPageDefaultDataSource = {
   method: "findAllDegrees",
   init: "false",
   fields:
+    `graduateApplyDates,planDeadlines,AsuDegSrchFlg,` +
     "CollegeAcadOrg,DepartmentCode," +
     "Descr100,Institution,AcadPlan," +
     "Degree,DegreeDescr,DegreeDescrlong," +
@@ -27,6 +28,7 @@ const detailPageDefaultDataSource = {
   method: "findDegreeByAcadPlan",
   init: "false",
   fields:
+    `graduateApplyDates,planDeadlines,AsuDegSrchFlg,AsuCustomText,` +
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,ChangeMajor,AsuCritTrackUrl,` +
     // at a glance
     `Descr100,CollegeDescr100,CollegeUrl,` +

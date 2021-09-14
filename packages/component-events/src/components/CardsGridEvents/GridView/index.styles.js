@@ -12,6 +12,9 @@ const GridViewWrapper = styled.ul`
     a {
       height: 100%;
     }
+    .card-img-top {
+      border-radius: 0 !important;
+    }
     .card-event-icons {
       &:nth-child(1) {
         width: 58%;

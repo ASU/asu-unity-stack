@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "src/index.js",
   "author": "Michael Samuelson",
@@ -69,6 +69,8 @@
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "sass": "^1.39.2",
+    "sass-loader": "^10",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",

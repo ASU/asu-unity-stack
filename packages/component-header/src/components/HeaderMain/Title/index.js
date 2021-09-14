@@ -11,8 +11,12 @@ const Title = () => {
 
   if (parentOrg) {
     return (
-      // @ts-ignore
-      <TitleWrapper breakpoint={breakpoint} className="title">
+      <TitleWrapper
+        // @ts-ignore
+        breakpoint={breakpoint}
+        className="title"
+        data-testid="title"
+      >
         <a className="unit-name" href={parentOrgUrl}>
           {parentOrg}
         </a>
@@ -24,7 +28,7 @@ const Title = () => {
   }
   return (
     // @ts-ignore
-    <TitleWrapper breakpoint={breakpoint} className="title">
+    <TitleWrapper breakpoint={breakpoint} className="title" data-testid="title">
       <a className="title-subunit-name" href={baseUrl}>
         {title}
       </a>

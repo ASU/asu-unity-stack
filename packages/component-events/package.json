@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-events",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "D8 Events",
   "main": "src/index.js",
   "author": "Nicolas Baudon",
@@ -63,7 +63,8 @@
     "jsdom-screenshot": "^4.0.0",
     "postcss-loader": "^6.1.1",
     "raw-loader": "^4.0.2",
-    "sass-loader": "^11.1.0",
+    "sass": "^1.39.2",
+    "sass-loader": "^10",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",

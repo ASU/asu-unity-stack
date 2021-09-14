@@ -1,4 +1,4 @@
-module.exports = function (api) {
+module.exports = api => {
   api.cache(true);
 
   return {
@@ -6,15 +6,24 @@ module.exports = function (api) {
       ["@babel/preset-env", { targets: { node: "current" } }],
       "@babel/preset-react",
     ],
+    plugins: [
+      "@babel/plugin-syntax-jsx",
+      "@babel/plugin-transform-react-jsx",
+      "@babel/plugin-transform-runtime",
+    ],
     ignore: ["node_modules"],
-    plugins: ["@babel/plugin-transform-runtime"],
     env: {
       test: {
+        plugins: [
+          "@babel/plugin-syntax-jsx",
+          "babel-plugin-dynamic-import-node",
+          "@babel/plugin-transform-react-jsx",
+        ],
         presets: [
           [
             "@babel/preset-env",
             {
-              targets: { esmodules: true, node: "current" },
+              targets: { node: "current" },
             },
           ],
           "@babel/preset-react",

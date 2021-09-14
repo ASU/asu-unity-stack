@@ -62,3 +62,13 @@ MaxItems.args = {
 MaxItems.parameters = {
   mockData: createMockParam(),
 };
+
+export const WithNoHeader = Template.bind({});
+WithNoHeader.args = {
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+};
+WithNoHeader.parameters = {
+  mockData: createMockParam(),
+};

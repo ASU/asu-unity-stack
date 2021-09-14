@@ -17,11 +17,13 @@ import { transformData } from "../../transformers/data.transfromer";
 const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
   <FeedContainerProvider
     renderHeader={
-      <FeedHeader
-        header={header}
-        ctaButton={ctaButton}
-        defaultProps={defaultProps}
-      />
+      header && ctaButton ? (
+        <FeedHeader
+          header={header}
+          ctaButton={ctaButton}
+          defaultProps={defaultProps}
+        />
+      ) : null
     }
     renderBody={<FeedBody>{children}</FeedBody>}
     dataTransformer={transformData}
