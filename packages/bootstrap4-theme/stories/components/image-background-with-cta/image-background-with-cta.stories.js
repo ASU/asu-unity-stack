@@ -5,31 +5,6 @@ export default createComponent(
 );
 
 export const Default = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
-        <div
-          class="uds-image-background-with-cta"
-          style={{
-            backgroundImage:
-              "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')",
-          }}
-        >
-          <div class="uds-image-background-with-cta-container">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </span>
-            <button class="btn btn-gold">Default button</button>
-          </div>
-        </div>
-        {/* Component end */}
-      </div>
-    </div>
-  </div>
-);
-
-export const FullWidth = createStory(
   <section
     class="uds-image-background-with-cta"
     style={{
@@ -37,17 +12,11 @@ export const FullWidth = createStory(
         "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')",
     }}
   >
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="uds-image-background-with-cta-container">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </span>
-            <button class="btn btn-gold">Default button</button>
-          </div>
-        </div>
-      </div>
+    <div class="uds-image-background-with-cta-container uds-content-align">
+      <span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </span>
+      <button class="btn btn-gold">Default button</button>
     </div>
   </section>
 );
