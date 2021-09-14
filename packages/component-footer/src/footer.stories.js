@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ASUFooter } from ".";
-
-import endorsedLogo from "./endorsedLogo.png";
+// eslint-disable-next-line import/no-unresolved
+import endorsedLogo from "./assets/images/endorsedLogo.png";
+import { ASUFooter } from "./footer";
 
 export default {
   title: "UDS/ASU Footer",
