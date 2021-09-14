@@ -20,7 +20,9 @@ const hasGraduateApplyDates = row =>
 const hasPlanDeadlines = row =>
   Object.keys(row["planDeadlines"] || {}).length > 0;
 const isValidActiveProgram = row =>
-  hasPlanDeadlines(row) || hasGraduateApplyDates(row);
+  Object.keys(row).length > 0
+    ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
+    : true;
 
 /**
  *

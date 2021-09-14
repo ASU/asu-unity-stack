@@ -1,2 +1,2 @@
 export * from "./ListingPage";
-export * from "./ProgramDetailPage";
+export * from "./DetailPage";

@@ -14,7 +14,10 @@ function ProgramDescription({ content }) {
     <div data-testid="program-description">
       <h2>Program description</h2>
       {/* eslint-disable-next-line react/no-danger */}
-      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)} />
+      <div
+        data-testid="program-description-body"
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
+      />
     </div>
   );
 }

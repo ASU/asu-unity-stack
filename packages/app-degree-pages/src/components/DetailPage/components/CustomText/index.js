@@ -10,6 +10,7 @@ import React from "react";
 function CustomText({ content = "" }) {
   return (
     <div
+      data-testid="custom-text"
       className="mt-3"
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}

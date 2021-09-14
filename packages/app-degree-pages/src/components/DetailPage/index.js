@@ -1,8 +1,7 @@
 // @ts-check
-import { Hero, Video, useFetch } from "@asu-design-system/components-core";
+import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";
-import styled from "styled-components";
 
 import {
   ErrorAlert,
@@ -43,6 +42,8 @@ import { CustomText } from "./components/CustomText";
 import { ExampleCareers } from "./components/ExampleCareers";
 import { FlexibleDegreeOptions } from "./components/FlexibleDegreeOptions";
 import { GlobalOpportunity } from "./components/GlobalOpportunity";
+import { IntroImage } from "./components/IntroImage";
+import { IntroVideo } from "./components/IntroVideo";
 import { MarketText } from "./components/MarketText";
 import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
@@ -51,20 +52,12 @@ import { RequiredCourse } from "./components/RequiredCourse";
 
 /** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
 
-const VideoWrapper = styled.div`
-  .uds-video-container {
-    margin: 0;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-`;
-
 /**
  *
  * @param {ProgramDetailPageProps} props
  * @returns
  */
-const ProgramDetailPage = ({
+const DetailPage = ({
   appPathFolder,
   dataSource,
   anchorMenu,
@@ -97,9 +90,7 @@ const ProgramDetailPage = ({
 
   useEffect(() => {
     if (data?.programs) {
-      const newResolver = degreeDataPropResolverService(
-        data?.programs ? data?.programs[0] : {}
-      );
+      const newResolver = degreeDataPropResolverService(data?.programs[0]);
       setResolver(newResolver);
     }
   }, [data?.programs]);
@@ -219,30 +210,23 @@ const ProgramDetailPage = ({
               </div>
               <div className="col col-sm-12 col-md-5 col-lg-5">
                 {introContent?.video && (
-                  <VideoWrapper>
-                    <Video
-                      url={introContent.video.url}
-                      vttUrl={introContent.video.vttUrl}
-                      title={introContent.video.title}
-                    />
-                  </VideoWrapper>
+                  <IntroVideo
+                    url={introContent.video.url}
+                    vttUrl={introContent.video.vttUrl}
+                    title={introContent.video.title}
+                  />
                 )}
                 {!introContent?.video && (
-                  <div className="uds-img pt-3 pb-3">
-                    {introContent?.image ? (
-                      <img
-                        src={introContent.image.url}
-                        className="img-fluid"
-                        alt={introContent.image.altText}
-                      />
-                    ) : (
-                      <img
-                        src={detailPageDefault.introContent.image.url}
-                        className="img-fluid"
-                        alt={detailPageDefault.introContent.image.altText}
-                      />
-                    )}
-                  </div>
+                  <IntroImage
+                    url={
+                      introContent?.image?.url ||
+                      detailPageDefault.introContent.image.url
+                    }
+                    altText={
+                      introContent?.image?.altText ||
+                      detailPageDefault.introContent.image.altText
+                    }
+                  />
                 )}
               </div>
             </div>
@@ -334,7 +318,7 @@ const ProgramDetailPage = ({
   );
 };
 
-ProgramDetailPage.propTypes = {
+DetailPage.propTypes = {
   appPathFolder: PropTypes.string,
   dataSource: dataSourcePropShape,
   anchorMenu: PropTypes.shape(anchorMenuPropType),
@@ -380,8 +364,8 @@ ProgramDetailPage.propTypes = {
   }),
   nextSteps: PropTypes.shape({
     hide: PropTypes.bool,
-    cards: PropTypes.arrayOf(cardPropShape).isRequired,
+    cards: PropTypes.arrayOf(cardPropShape),
   }),
 };
 
-export { ProgramDetailPage };
+export { DetailPage };

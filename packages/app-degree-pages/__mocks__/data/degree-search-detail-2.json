@@ -1,24 +1,13 @@
 {
   "programs": [
     {
-      "planDeadlines": {
-        "ONLNE:SESA:2221": "2022 Spring:null:2022-01-10:null: ",
-        "ONLNE:SESB:2224": "2022 Summer:null:2022-06-29:null: ",
-        "ONLNE:SESB:2221": "2022 Spring:null:2022-03-14:null: ",
-        "ONLNE:SESA:2224": "2022 Summer:null:2022-05-16:null: ",
-        "WEST:REG:2221": "2022 Spring:null:2022-01-10:null: ",
-        "ONLNE:SESA:2227": "2022 Fall:null:2022-08-18:null: ",
-        "WEST:REG:2224": "2022 Summer:null:2022-06-29:null: ",
-        "ONLNE:SESB:2227": "2022 Fall:null:2022-10-12:null: ",
-        "WEST:REG:2227": "2022 Fall:null:2022-08-23:null: ",
-        "ONLNE:SESB:2217": "2021 Fall:null:2021-10-13:null: "
-      },
       "CollegeUrl": "https://wpcarey.asu.edu/",
       "EmailAddr": "wpcareyug@asu.edu",
       "CurriculumUrl": "https://asuonline.asu.edu/online-degree-programs/undergraduate/bachelor-arts-business-global-logistics-management/",
       "CollegeDescr100": "Business, W. P. Carey School of",
       "AsuOfficeLoc": "FAB N106",
       "AdmissionsDegRequirements": " ",
+      "graduateApplyDates": {},
       "DescrlongExtns": "<p>Logistics management focuses on the integration and partnerships necessary to meet customer needs on a timely basis, with relevant and high-quality products produced and delivered in a service-effective manner.</p><p>This BA program in business with a concentration in global logistics management trains students to be strategic thinkers, excellent analysts, effective communicators and team leaders who are focused on efficiency, effectiveness and increasing revenue.</p><p>An efficient logistics management system is critical to the success of global corporations, ensuring the supply of goods and services flowing through the system closely matches the demand. Logistics management professionals manage, coordinate and transport products from raw materials to the finished goods that sit on a local store shelf or are offered by an online retailer. Efficient logistics is a key reason consumers can buy an ever-increasing variety of goods and services at remarkably low prices. Not surprisingly, logistics also plays a major role in the health care industry where efficient, effective delivery systems are gaining significant traction.</p>",
       "concurrentDegreeMajorMaps": [
         "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BABUSGLBA/TBINTRABS/ALL/2021"
@@ -29,7 +18,9 @@
       "CampusStringArray": ["WEST", "ONLNE"],
       "Phone": "480/965-6044",
       "gradAdditionalRequirements": [],
-      "marketText": "<p>In the growing field of international trade, skilled managers are highly sought after by global corporations. Prepare yourself for leadership roles with courses offered through this unique degree program, such as supply chain management for global operations, international trade and regional economic agreements, and big data in the global economy.</p>",
+      "AsuDegSrchFlg": "Y",
+      "marketText": " ",
+      "AsuCustomText": "",
       "AsuCritTrackUrl": "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BABUSGLBA/null/ALL/2021",
       "globalExp": "<p>As globalization continues to impact the way business functions, study abroad programs can provide students exposure to the world of business. Students gain valuable skills employers seek, including communication and interpersonal skills, flexibility, motivation and a global perspective on business applications worldwide.</p><p>Business students can study abroad nearly anywhere and gain valuable internship experience in global business hubs like Australia, Germany, England, Singapore, China, the United Arab Emirates, among many others.</p><p>The W. P. Carey School of Business recommends the following study abroad programs for students majoring in business with a concentration in global logistics management: <a href=\"https://mystudyabroad.asu.edu/students/major/wp-carey/global-logistics-management\">mystudyabroad.asu.edu/students/major/wp-carey/global-logistics-management</a>.</p>",
       "MinMathReq": "MAT  210 - Brief Calculus",
@@ -294,6 +285,7 @@
           "SMISUrl": " "
         }
       ],
+      "PlanUrl": "https://wpcarey.asu.edu/undergraduate-degrees",
       "accelerateDegrees": [
         {
           "CollegeUrlJoint": ["https://thunderbird.asu.edu"],
@@ -2280,6 +2272,18 @@
         }
       ],
       "planCatDescr": ["Business"],
+      "planDeadlines": {
+        "ONLNE:SESA:2221": "2022 Spring:null:2022-01-10:null: ",
+        "ONLNE:SESB:2224": "2022 Summer:null:2022-06-29:null: ",
+        "ONLNE:SESB:2221": "2022 Spring:null:2022-03-14:null: ",
+        "ONLNE:SESA:2224": "2022 Summer:null:2022-05-16:null: ",
+        "WEST:REG:2221": "2022 Spring:null:2022-01-10:null: ",
+        "ONLNE:SESA:2227": "2022 Fall:null:2022-08-18:null: ",
+        "WEST:REG:2224": "2022 Summer:null:2022-06-29:null: ",
+        "ONLNE:SESB:2227": "2022 Fall:null:2022-10-12:null: ",
+        "WEST:REG:2227": "2022 Fall:null:2022-08-23:null: ",
+        "ONLNE:SESB:2217": "2021 Fall:null:2021-10-13:null: "
+      },
       "managedOnlineCampus": true,
       "onlineMajorMapURL": "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BABUSGLBA/null/ONLINE/2021",
       "TransferAdmission": "<p>Transfer applicants must have a 3.00 GPA for all transfer work and meet university transfer admission requirements. Transfer students should select an additional major, which must be outside W. P. Carey School of Business, when applying for admission.</p> <p>Transfer students must have a cumulative transfer GPA of 3.00 and a cumulative ASU GPA of 3.00 (if applicable) in addition to meeting the general admission requirements in order to be admitted to this program. If the student does not meet the admission requirements for the concurrent program, they are placed in the BS in international trade.</p>\n<p>Students with fewer than 45 transfer credit hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are placed in the exploratory social and behavioral sciences program in University College.</p>\n <p>Students with more than 45 transfer credit hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are prompted in My ASU to select a new major.</p>",

@@ -3,7 +3,7 @@
 // @ts-check
 import React from "react";
 
-import { ProgramDetailPage } from ".";
+import { DetailPage } from ".";
 
 import { getStoryBookBaseUrl } from "../../core/utils";
 
@@ -12,7 +12,7 @@ import { getStoryBookBaseUrl } from "../../core/utils";
  */
 
 export default {
-  component: ProgramDetailPage,
+  component: DetailPage,
   title: "Program Detail Page",
 };
 
@@ -39,7 +39,7 @@ const Template = ({
   nextSteps,
 }) => (
   <>
-    <ProgramDetailPage
+    <DetailPage
       appPathFolder={appPathFolder}
       dataSource={dataSource}
       anchorMenu={anchorMenu}
@@ -282,9 +282,15 @@ Default.args = {
   hero: null,
   anchorMenu: null,
   introContent: null,
-  nextSteps: null,
-  globalOpportunity: null,
   atAGlance: null,
+  applicationRequirements: null,
+  changeMajorRequirements: null,
+  nextSteps: null,
+  affordingCollege: null,
+  flexibleDegreeOptions: null,
+  careerOutlook: null,
+  exampleCareers: null,
+  globalOpportunity: null,
   attendOnline: null,
   programContactInfo: null,
 };

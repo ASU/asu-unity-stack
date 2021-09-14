@@ -57,10 +57,10 @@
 
 /**
  *  @typedef {{
- *   offeredBy: import("./shared-types").LinkItem
- *   locations: import("./shared-types").LinkItem[]
- *   firstRequirementMathCourse: string
- *   mathIntensity: string
+ *   offeredBy?: import("./shared-types").LinkItem
+ *   locations?: import("./shared-types").LinkItem[]
+ *   firstRequirementMathCourse?: string
+ *   mathIntensity?: string
  *   timeCommitment?: string
  * }} AtAGlanceProps
  */
@@ -79,13 +79,13 @@
 
 /**
  *  @typedef {{
- *    cards: import("./shared-types").CardItem[]
+ *    cards?: import("./shared-types").CardItem[]
  * }} NextStepsProps
  */
 
 /**
  *  @typedef {{
- *    cards: import("./shared-types").CardItem[]
+ *    cards?: import("./shared-types").CardItem[]
  * }} AffordingCollegeProps
  */
 
@@ -164,8 +164,8 @@
  *  globalOpportunity?: HideProp & GlobalOpportunityProps
  *  attendOnline?: HideProp &  AttendOnlineProps
  *  programContactInfo?: HideProp & {
- *      departmentUrl: string
- *      emailUrl: string
+ *      departmentUrl?: string
+ *      emailUrl?: string
  *  }
  * }} ProgramDetailPageProps
  */
