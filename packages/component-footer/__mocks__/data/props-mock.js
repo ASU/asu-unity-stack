@@ -1,0 +1,3 @@
+const defaultState = {};
+
+export { defaultState };
