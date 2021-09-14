@@ -99,6 +99,7 @@ form.uds-form.uds-rfi .input-group-trailing-icon i {
 form.uds-form.uds-rfi .rfi-required-footnote {
   font-size: 0.75rem;
 }
+form.uds-form.uds-rfi .rfi-required-footnote svg,
 form.uds-form.uds-rfi .rfi-required-footnote i {
   font-size: 0.5rem;
   margin-right: 0.25rem;
