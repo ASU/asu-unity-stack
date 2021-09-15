@@ -46,7 +46,7 @@ export const UnityStory = (props) => {
   )
 }
 
-export const createStory = (componentJSX, initFunc=null) => {
+export const createStory = (componentJSX, initFunc=null, omitTemplate=false) => {
 
   const Template = ({...args}) => {
     if(initFunc) {
@@ -60,10 +60,12 @@ export const createStory = (componentJSX, initFunc=null) => {
       }
     }
 
+    const componentCode = omitTemplate ? componentJSX : template(componentJSX, args.template);
+
     return (
       <div>
         { args.header && Basic }
-        { template(componentJSX, args.template) }
+        { componentCode }
         { args.footer && GlobalElementsOnly  }
       </div>
     )
