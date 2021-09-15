@@ -247,13 +247,27 @@ class RfiStepper extends React.Component {
   }
 }
 
+// Note on the spans around the FA i tags below:
+// When the host site/app deploys FA such that it replaces the i's with svg
+// tags, when React tries to rewrite the DOM we get hit with the error
+// "Failed to execute 'removeChild' on 'Node': The node to be removed is not
+// a child of this node" ala https://github.com/facebook/react/issues/11538.
+// And after reading up more on the issue via the links in this Stackoverflow:
+// https://stackoverflow.com/a/48552226/4942751
+// The solution I hit on was to wrap the i's with spans so when the DOM
+// rewrite happens, the FA switcheroo is happening a layer below the element
+// that in this case React is trying to remove.
+
 const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
   <nav aria-label="Request information form" className="container">
     <div className="row justify-content-end">
       <div className="col-6">
         {stepNum > 0 ? (
           <Button type="button" onClick={handleBack}>
-            <i className="fas fa-angle-left" aria-hidden="true" /> Prev
+            <span>
+              <i className="fas fa-angle-left" aria-hidden="true" />
+            </span>{" "}
+            Prev
           </Button>
         ) : null}
       </div>
@@ -261,7 +275,10 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
         {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
         {stepNum < lastStep - 1 ? (
           <Button type="submit" className={`rfi-button-step${stepNum + 1}`}>
-            Next <i className="fas fa-angle-right" aria-hidden="true" />
+            Next{" "}
+            <span>
+              <i className="fas fa-angle-right" aria-hidden="true" />
+            </span>
           </Button>
         ) : (
           <Button
