@@ -18,6 +18,7 @@ import {
   LIST_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
+  ERROR_MESSAGE,
 } from "../../core/models";
 import {
   columSettingsPropShape,
@@ -169,22 +170,25 @@ const ListingPage = ({
    * @param {FiltersState} activeFilters
    */
   const onFilterApply = activeFilters => {
-    const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
+    // TODO: consider to remove
+    // const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
     // ============================================================
     // prevent search
     // ============================================================
     if (loading || searchLoading) return;
-
-    if (
-      !acceleratedConcurrent &&
-      acceleratedConcurrent?.value === "all" &&
-      locations.length === 0 &&
-      asuLocals.length === 0 &&
-      !collegeAcadOrg &&
-      !departmentCode
-    ) {
-      return;
-    }
+    // TODO: consider to remove
+    // TODO:I comment this block since does look to be ever called
+    // TODO: The filter acceleratedConcurrent?.value is always st least  "all"
+    // if (
+    //   !acceleratedConcurrent &&
+    //   acceleratedConcurrent?.value === "all" &&
+    //   locations.length === 0 &&
+    //   asuLocals.length === 0 &&
+    //   !collegeAcadOrg &&
+    //   !departmentCode
+    // ) {
+    //   return;
+    // }
     // ============================================================
     applyFilters(activeFilters);
   };
@@ -222,7 +226,7 @@ const ListingPage = ({
       <ThemeStyle />
       <ListingStyle />
 
-      {error && <ErrorAlert message="Something went wrong ..." />}
+      {error && <ErrorAlert message={ERROR_MESSAGE} />}
 
       {!hero?.hide ? (
         <section data-testid="hero">
@@ -281,12 +285,10 @@ const ListingPage = ({
         {hasFilters ? (
           <section className="container">
             <div className="d-flex justify-content-between">
-              {hasFilters ? (
-                <FiltersSummary
-                  value={appliedFilters}
-                  onRemove={onFilterSummaryRemove}
-                />
-              ) : null}
+              <FiltersSummary
+                value={appliedFilters}
+                onRemove={onFilterSummaryRemove}
+              />
 
               {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
               {/* <DataViewSwitch

@@ -1,6 +1,12 @@
 // @ts-check
 import { Hero } from "@asu-design-system/components-core";
-import { render, act, waitFor, fireEvent } from "@testing-library/react";
+import {
+  render,
+  act,
+  waitFor,
+  fireEvent,
+  cleanup,
+} from "@testing-library/react";
 import React from "react";
 
 import { ListingPage } from "./index";
@@ -9,6 +15,7 @@ import {
   locationOptions,
   asuLocalOptions,
   acceleratedConcurrentOptions,
+  ERROR_MESSAGE,
 } from "../../core/models";
 import * as service from "../../core/services/degree-data-manager-service";
 
@@ -75,8 +82,25 @@ describe("#ListingPage", () => {
         />
       );
       container = component.container;
+      // expect(component.getByTestId("loader")).toBeInTheDocument();
     });
   }
+
+  describe("#With loading spinner", () => {
+    beforeEach(async () => {
+      globalThis.doDelay = true;
+      await renderListingPage(defaultArgs);
+    });
+
+    // eslint-disable-next-line no-return-assign
+    afterAll(() => (globalThis.doDelay = false));
+
+    it("should define Loading component", async () => {
+      await waitFor(() => {
+        expect(component.getByTestId("loader")).toBeInTheDocument();
+      });
+    });
+  });
 
   describe("#With default props", () => {
     beforeEach(async () => {
@@ -85,7 +109,7 @@ describe("#ListingPage", () => {
 
     it("should call useEffect", () => {
       expect(mockSortPrograms).toHaveBeenCalled();
-      expect(mockfilterData).not.toHaveBeenCalled();
+      expect(mockfilterData).toHaveBeenCalled();
     });
 
     it("should define the component", () => {
@@ -110,13 +134,15 @@ describe("#ListingPage", () => {
     );
   });
 
-  describe("#With `Filters` and `Hero` hidden", () => {
+  describe("#With hidden sections", () => {
     beforeEach(async () => {
       /** @type {AppProps} */
       const customProps = {
         ...defaultArgs,
-        hasFilters: false,
+        actionUrls: null,
+        introContent: null,
         hasSearchBar: false,
+        hasFilters: false,
         hero: {
           hide: true,
         },
@@ -129,6 +155,7 @@ describe("#ListingPage", () => {
     });
 
     const cases = [
+      [`Intro content`, `intro-content`],
       [`Search bar`, `search-bar`],
       [`Filters`, `filters`],
       [`Filters Summary`, `filters-summary`],
@@ -162,7 +189,7 @@ describe("#ListingPage", () => {
     });
   });
 
-  describe("#With user interaction", () => {
+  describe("#With user who applies filters", () => {
     beforeEach(async () => {
       await renderListingPage(defaultArgs);
     });
@@ -193,24 +220,24 @@ describe("#ListingPage", () => {
     it("should trigger apply a filter when the user type a keyword", async () => {
       const searchField = component.getByTestId("search-field");
       const searchBarForm = component.getByTestId("search-bar-form");
-
-      await waitFor(() => {
-        const programRows = component.getByTestId("program-rows");
-        fireEvent.change(searchField, {
-          target: {
-            value: "nonsense",
-          },
-        });
-
-        fireEvent.submit(searchBarForm);
-        expect(programRows.children.length).toBe(16);
-        expect(mockfilterData).toHaveBeenCalled();
-      });
+      const programRows = component.getByTestId("program-rows");
 
       // await waitFor(() => {
-      //   const programRows = component.getByTestId("program-rows");
-      //   expect(programRows.children.length).toBeLessThan(16);
+      //   expect(programRows.children.length).toBe(16);
       // });
+
+      fireEvent.change(searchField, {
+        target: {
+          value: "nonsense",
+        },
+      });
+
+      fireEvent.submit(searchBarForm);
+
+      await waitFor(() => {
+        expect(programRows.children.length).toBe(1);
+        expect(mockfilterData).toHaveBeenCalled();
+      });
     });
 
     it("should apply filters when you select options and click the button", async () => {
@@ -252,6 +279,33 @@ describe("#ListingPage", () => {
         // the only element will be the <span> No filter applied place holder</span>
         expect(bthTags.children.length).toBe(1);
       });
+    });
+  });
+
+  describe("#With error", () => {
+    beforeEach(async () => {
+      /** @type {AppProps} */
+      const customProps = {
+        ...defaultArgs,
+        programList: {
+          dataSource: {
+            endpoint: "dummy-error-url",
+            ...defaultArgs.programList.dataSource,
+          },
+        },
+      };
+
+      await renderListingPage(customProps);
+    });
+    afterEach(cleanup);
+
+    it("should display an error message and no result message", () => {
+      const errorMessage = component.getByText(ERROR_MESSAGE);
+      const noResultMessage = component.getByText(
+        "No result found for the filters applied"
+      );
+      expect(errorMessage).toBeInTheDocument();
+      expect(noResultMessage).toBeInTheDocument();
     });
   });
 });

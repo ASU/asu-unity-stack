@@ -15,6 +15,7 @@ import {
   anchorMenuPropType,
   cardPropShape,
   dataSourcePropShape,
+  ERROR_MESSAGE,
   resolveDefaultProps,
   linkPropShape,
   imagePropShape,
@@ -100,7 +101,7 @@ const DetailPage = ({
     <>
       <ThemeStyle />
 
-      {error && <ErrorAlert message="Something went wrong ..." />}
+      {error && <ErrorAlert message={ERROR_MESSAGE} />}
 
       {!hero?.hide ? (
         <section>

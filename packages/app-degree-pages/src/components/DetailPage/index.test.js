@@ -1,13 +1,7 @@
 // @ts-check
 import { Hero } from "@asu-design-system/components-core";
-import * as componentsCore from "@asu-design-system/components-core";
-import {
-  render,
-  act,
-  waitFor,
-  waitForElementToBeRemoved,
-  cleanup,
-} from "@testing-library/react";
+// import * as componentsCore from "@asu-design-system/components-core";
+import { render, act, waitFor, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { DetailPage } from "./index";
@@ -43,7 +37,7 @@ const mockDegreeDataPropResolverService = jest.spyOn(
   service,
   "degreeDataPropResolverService"
 );
-const mockUseFetch = jest.spyOn(componentsCore, "useFetch");
+// const mockUseFetch = jest.spyOn(componentsCore, "useFetch");
 
 const sectionCases = [
   ["Market Text", "market-text"],

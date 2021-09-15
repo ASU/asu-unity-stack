@@ -13,9 +13,9 @@ function ProgramDescription({ content }) {
   return (
     <div data-testid="program-description">
       <h2>Program description</h2>
-      {/* eslint-disable-next-line react/no-danger */}
       <div
         data-testid="program-description-body"
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
       />
     </div>

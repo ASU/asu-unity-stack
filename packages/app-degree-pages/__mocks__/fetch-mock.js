@@ -19,7 +19,6 @@ fetchMock.mockResponse(req => {
   }
   if (req.url.includes("dummy-broken-json")) {
     const badResponse = { programs: undefined };
-    console.log("dummy-broken-json")
     return Promise.resolve(JSON.stringify(badResponse));
   }
 
@@ -31,6 +30,10 @@ fetchMock.mockResponse(req => {
     res = detailNoNewStudentData;
   } else if (req.url.includes(detailPageDefaultDataSource.method)) {
     res = detailData;
+  }
+
+  if (globalThis.doDelay) {
+    return new Promise(resolve => setTimeout(() => resolve(res), 10));
   }
   return Promise.resolve(JSON.stringify(res));
 });
