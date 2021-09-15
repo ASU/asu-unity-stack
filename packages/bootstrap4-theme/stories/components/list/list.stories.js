@@ -3,32 +3,21 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('List');
 
 export const UnorderedList = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
-        <ul class="uds-list">
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>
-            Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </li>
-          <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li>
-            Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet
-          </li>
-        </ul>
-        {/* Component end */}
-      </div>
-    </div>
-  </div>
+  <ul class="uds-list">
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>
+      Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua.
+    </li>
+    <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
+    <li>
+      Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet
+    </li>
+  </ul>
 );
 
-export const UnorderedListMaroonBullet = createStory(<div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
+export const UnorderedListMaroonBullet = createStory(
   <ul class="uds-list maroon">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -38,17 +27,9 @@ export const UnorderedListMaroonBullet = createStory(<div class="container">
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const UnorderedListGray2Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list smokemode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -58,17 +39,9 @@ export const UnorderedListGray2Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const UnorderedListGray1Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list light-smokemode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -78,17 +51,9 @@ export const UnorderedListGray1Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const UnorderedListGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list darkmode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -98,17 +63,9 @@ export const UnorderedListGray7Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const UnorderedListGoldBulletGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list darkmode gold">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -118,17 +75,9 @@ export const UnorderedListGoldBulletGray7Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const UnorderedListMultiLevel = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list">
     <li>
       Lorem ipsum dolor sit amet
@@ -186,17 +135,9 @@ export const UnorderedListMultiLevel = createStory(
     </li>
     <li>Lorem ipsum dolor sit amet</li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedList = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -573,17 +514,9 @@ export const OrderedList = createStory(
     </li>
     <li>Dolor sit amet, consectetur adipiscing elit.</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedListMaroonCounter = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list maroon">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -593,17 +526,9 @@ export const OrderedListMaroonCounter = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedListGray2Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list smokemode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -613,17 +538,9 @@ export const OrderedListGray2Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedListGray1Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list light-smokemode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -633,17 +550,9 @@ export const OrderedListGray1Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedListGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list darkmode">
     <li>Lorem ipsum dolor sit amet</li>
     <li>
@@ -653,17 +562,9 @@ export const OrderedListGray7Background = createStory(
     <li>Ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const OrderedListMultiLevel = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list">
     <li>
       Lorem ipsum dolor sit amet
@@ -721,17 +622,9 @@ export const OrderedListMultiLevel = createStory(
     </li>
     <li>Lorem ipsum dolor sit amet</li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const IconList = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list fa-ul">
     <li>
       <span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
@@ -756,17 +649,9 @@ export const IconList = createStory(
       for guidelines.
     </li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const IconListMaroonIcon = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list fa-ul maroon">
     <li>
       <span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
@@ -785,17 +670,9 @@ export const IconListMaroonIcon = createStory(
       ut lorem ipsum dolor sit amet
     </li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const IconListGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list fa-ul darkmode">
     <li>
       <span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
@@ -814,17 +691,9 @@ export const IconListGray7Background = createStory(
       ut lorem ipsum dolor sit amet
     </li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const IconListGoldIconGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ul class="uds-list fa-ul darkmode gold">
     <li>
       <span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
@@ -843,17 +712,9 @@ export const IconListGoldIconGray7Background = createStory(
       ut lorem ipsum dolor sit amet
     </li>
   </ul>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepList = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist">
     <li>
       This is a quintenary headline
@@ -882,17 +743,9 @@ export const StepList = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGoldCounter = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist uds-steplist-gold">
     <li>
       This is a quintenary headline
@@ -921,17 +774,9 @@ export const StepListGoldCounter = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListMaroonCounter = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist uds-steplist-maroon">
     <li>
       This is a quintenary headline
@@ -960,17 +805,9 @@ export const StepListMaroonCounter = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGray2Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist smokemode">
     <li>
       This is a quintenary headline
@@ -999,17 +836,9 @@ export const StepListGray2Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGoldCounterGray2Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist smokemode uds-steplist-gold">
     <li>
       This is a quintenary headline
@@ -1038,17 +867,9 @@ export const StepListGoldCounterGray2Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListMaroonCounterGray2Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist smokemode uds-steplist-maroon">
     <li>
       This is a quintenary headline
@@ -1077,17 +898,9 @@ export const StepListMaroonCounterGray2Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGray1Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist light-smokemode">
     <li>
       This is a quintenary headline
@@ -1116,17 +929,9 @@ export const StepListGray1Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGoldCounterGray1Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist light-smokemode uds-steplist-gold">
     <li>
       This is a quintenary headline
@@ -1155,17 +960,9 @@ export const StepListGoldCounterGray1Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListMaroonCounterGray1Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist light-smokemode uds-steplist-maroon">
     <li>
       This is a quintenary headline
@@ -1194,17 +991,9 @@ export const StepListMaroonCounterGray1Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
   <ol class="uds-list uds-steplist darkmode">
     <li>
       This is a quintenary headline
@@ -1233,48 +1022,36 @@ export const StepListGray7Background = createStory(
       </span>
     </li>
   </ol>
-  {/* Component end */}
-      </div>
-    </div>
-  </div>
 );
 
 export const StepListGoldCounterGray7Background = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {/* Component start */}
-        <ol class="uds-list uds-steplist darkmode uds-steplist-gold">
-          <li>
-            This is a quintenary headline
-            <br />
-            <span>
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </span>
-          </li>
-          <li>
-            This is a quintenary headline
-            <br />
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt.
-            </span>
-          </li>
-          <li>
-            This is a quintenary headline
-            <br />
-            <span>
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </span>
-          </li>
-        </ol>
-        {/* Component end */}
-      </div>
-    </div>
-  </div>
+  <ol class="uds-list uds-steplist darkmode uds-steplist-gold">
+    <li>
+      This is a quintenary headline
+      <br />
+      <span>
+        sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+      </span>
+    </li>
+    <li>
+      This is a quintenary headline
+      <br />
+      <span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum
+        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt.
+      </span>
+    </li>
+    <li>
+      This is a quintenary headline
+      <br />
+      <span>
+        sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+      </span>
+    </li>
+  </ol>
 );

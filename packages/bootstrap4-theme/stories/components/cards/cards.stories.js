@@ -4,60 +4,54 @@ export default createComponent('Cards');
 import exampleImage from './example-image.jpg';
 
 export const defaultCard = createStory(
-  <div class="container">
-    <div class="row row-spaced pt-2 pb-2">
-      <div class="col col-12 col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-          <div class="card-header">
-            <h3 class="card-title">Card default title</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua eiusmod tempo.
-            </p>
-          </div>
-          <div class="card-event-details">
-            <div class="card-event-icons">
-              <div>
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div>Downtown Phoenix campus</div>
-            </div>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-dark">
-              Button link here
-            </a>
-          </div>
-          <div class="card-button">
-            <a href="#" class="btn btn-md btn-dark">
-              Button link here
-            </a>
-          </div>
-          <div class="card-link">
-            <a href="#" class="">
-              Regular text link here
-            </a>
-          </div>
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
-              test tag
-            </a>
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 2
-            </a>
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 3
-            </a>
-          </div>
+  <div class="card">
+    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+    <div class="card-header">
+      <h3 class="card-title">Card default title</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua eiusmod tempo.
+      </p>
+    </div>
+    <div class="card-event-details">
+      <div class="card-event-icons">
+        <div>
+          <i class="fas fa-map-marker-alt"></i>
         </div>
+        <div>Downtown Phoenix campus</div>
       </div>
     </div>
+    <div class="card-button">
+      <a href="#" class="btn btn-dark">
+        Button link here
+      </a>
+    </div>
+    <div class="card-button">
+      <a href="#" class="btn btn-md btn-dark">
+        Button link here
+      </a>
+    </div>
+    <div class="card-link">
+      <a href="#" class="">
+        Regular text link here
+      </a>
+    </div>
+    <div class="card-tags">
+      <a class="btn btn-tag btn-tag-alt-white" href="#">
+        test tag
+      </a>
+      <a class="btn btn-tag btn-tag-alt-white" href="#">
+        test tag 2
+      </a>
+      <a class="btn btn-tag btn-tag-alt-white" href="#">
+        test tag 3
+      </a>
+    </div>
   </div>
-);
+)
 
 export const cardImages = createStory(
   <div>
