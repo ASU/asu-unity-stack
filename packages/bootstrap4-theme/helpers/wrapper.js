@@ -1,8 +1,8 @@
 import React from "react";
 import { template } from './templates';
 
-import { Basic } from '../stories/components/global-header/global-header.components.js';
-import { GlobalElementsOnly } from '../stories/components/global-footer/global-footer.components.js';
+import { Basic as Header } from '../stories/components/global-header/global-header.components.js';
+import { GlobalElementsOnly as Footer } from '../stories/components/global-footer/global-footer.components.js';
 export const createComponent = (name, section='Components') => {
   return {
     title: `${section}/${name}`,
@@ -64,9 +64,9 @@ export const createStory = (componentJSX, initFunc=null, omitTemplate=false) => 
 
     return (
       <div>
-        { args.header && Basic }
+        { args.header && Header }
         { componentCode }
-        { args.footer && GlobalElementsOnly  }
+        { args.footer && Footer  }
       </div>
     )
   };

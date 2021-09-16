@@ -218,7 +218,8 @@ Footer - Table of Contents
 
 @include media-breakpoint-up(xl) {
   #footer-columns {
-    padding: $uds-size-spacing-6 0;
+    padding-top: $uds-size-spacing-6;
+    padding-bottom: $uds-size-spacing-6;
 
     h5 {
       margin: 0 0 $uds-size-spacing-3 0;

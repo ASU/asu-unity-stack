@@ -1766,7 +1766,7 @@ export const SixColumns = (
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
-          <div class="col p-xl-0">
+          <div class="col">
             <div class="d-flex footer-innovation-links">
               <a class="img-link" href="https://www.asu.edu/rankings">
                 <img
@@ -1803,7 +1803,7 @@ export const SixColumns = (
     <div class="wrapper" id="wrapper-footer-colophon">
       <div class="container" id="footer-colophon">
         <div class="row">
-          <div class="col p-xl-0">
+          <div class="col">
             <div class="footer-legal-links">
               <nav
                 class="nav colophon"
