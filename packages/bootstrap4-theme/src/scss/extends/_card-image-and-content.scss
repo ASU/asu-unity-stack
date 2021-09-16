@@ -1,7 +1,6 @@
 .uds-card-image-and-content {
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
 
   &-image-container {
     background-size: cover;
@@ -10,21 +9,22 @@
     height: 512px;
     position: relative;
     width: 100%;
+  }
+
+  &-content-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
 
     & > &-headline {
       left: 0px;
-      bottom: 0px;
+      top: -175px;
       font: normal normal bold $uds-size-font-xxxl Arial;
       padding: $uds-size-spacing-4;
       position: absolute;
       max-width: 50%;
       color: $uds-color-base-white;
     }
-  }
-
-  &-content-container {
-    display: flex;
-    flex-direction: row;
 
     .content {
       width: 55%;
@@ -52,13 +52,12 @@
 
 @media only screen and (max-width: $uds-breakpoint-md) {
   .uds-card-image-and-content {
-    &-image-container {
+    &-content-container {
+      flex-direction: column;
+
       & > &-headline {
         max-width: 100%;
       }
-    }
-    &-content-container {
-      flex-direction: column;
       .content {
         width: 100%;
       }
@@ -74,7 +73,8 @@
   .uds-card-image-and-content {
     &-image-container {
       height: $uds-size-spacing-32;
-
+    }
+    &-content-container {
       & > &-headline {
         font: normal normal bold 2rem Arial;
         padding: $uds-size-spacing-4;
