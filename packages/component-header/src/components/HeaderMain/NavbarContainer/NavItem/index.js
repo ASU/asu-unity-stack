@@ -6,6 +6,7 @@ import React from "react";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
+import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
@@ -98,6 +99,9 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
+        onFocus={() =>
+          trackGAEvent(link.type === "icon-home" ? "home button" : link.text)
+        }
       >
         {renderNavLinks()}
       </a>

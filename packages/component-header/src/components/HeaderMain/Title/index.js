@@ -3,6 +3,7 @@ import React from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { TitlePropTypes } from "../../../core/models/app-prop-types";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { TitleWrapper } from "./index.styles";
 
 const Title = () => {
@@ -17,10 +18,18 @@ const Title = () => {
         className="title"
         data-testid="title"
       >
-        <a className="unit-name" href={parentOrgUrl}>
+        <a
+          className="unit-name"
+          href={parentOrgUrl}
+          onFocus={() => trackGAEvent(parentOrg)}
+        >
           {parentOrg}
         </a>
-        <a className="subunit-name" href={baseUrl}>
+        <a
+          className="subunit-name"
+          href={baseUrl}
+          onFocus={() => trackGAEvent(title)}
+        >
           {title}
         </a>
       </TitleWrapper>
@@ -29,7 +38,11 @@ const Title = () => {
   return (
     // @ts-ignore
     <TitleWrapper breakpoint={breakpoint} className="title" data-testid="title">
-      <a className="title-subunit-name" href={baseUrl}>
+      <a
+        className="title-subunit-name"
+        href={baseUrl}
+        onFocus={() => trackGAEvent(title)}
+      >
         {title}
       </a>
     </TitleWrapper>

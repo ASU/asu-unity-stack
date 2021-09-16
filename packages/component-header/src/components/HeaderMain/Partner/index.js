@@ -6,6 +6,7 @@ import asuVertLogo from "../../../assets/images/arizona-state-university-logo-ve
 import asuHorizLogo from "../../../assets/images/arizona-state-university-logo.png";
 import starbucksLogo from "../../../assets/images/asu-starbucks.png";
 import { useAppContext } from "../../../core/context/app-context";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { PartnerLogosWrapper } from "./index.styles";
 
 const Partner = () => {
@@ -17,13 +18,17 @@ const Partner = () => {
         href={
           partnerLogo ? partnerLogo.brandLink : "https://starbucks.asu.edu/"
         }
+        onFocus={() => trackGAEvent("starbucks logo")}
       >
         <img
           src={partnerLogo ? partnerLogo.src : starbucksLogo}
           alt={partnerLogo ? partnerLogo.alt : "Asu Starbucks logo"}
         />
       </a>
-      <a href={asuLogo ? asuLogo.brandLink : "https://asu.edu"}>
+      <a
+        href={asuLogo ? asuLogo.brandLink : "https://asu.edu"}
+        onFocus={() => trackGAEvent("asu logo")}
+      >
         <img
           className="vert"
           src={asuLogo ? asuLogo.src : asuVertLogo}

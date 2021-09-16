@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
+import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
 
@@ -57,13 +58,18 @@ const DropdownItem = ({ items, buttons, classes }) => {
             color={link.color || "dark"}
             href={link.href}
             onClick={stopPropagation}
+            onFocus={() => trackGAEvent(link.text)}
           />
         </li>
       );
     }
     return (
       <li key={key} className="nav-link">
-        <a href={link.href} onClick={stopPropagation}>
+        <a
+          href={link.href}
+          onClick={stopPropagation}
+          onFocus={() => trackGAEvent(link.text)}
+        >
           {link.text}
         </a>
       </li>

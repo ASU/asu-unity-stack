@@ -4,7 +4,7 @@ import vertlogo from './arizona-state-university-logo-vertical.png';
 import starbucksLogo from './asu-starbucks.png';
 
 export const Basic = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -79,7 +79,7 @@ export const Basic = (
           <div class="row">
             <div id="header-main" class="col-12">
               <nav class="navbar navbar-expand-xl" aria-label="Main">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" data-ga="asu logo">
                   <img
                     class="vert"
                     src={vertlogo}
@@ -107,7 +107,10 @@ export const Basic = (
                   </span>
                 </button>
                 <div class="navbar-container">
-                  <div class="title subdomain-name">
+                  <div
+                    class="title subdomain-name"
+                    data-ga="university technology office"
+                  >
                     University Technology Office
                   </div>
                   <div
@@ -115,14 +118,18 @@ export const Basic = (
                     id="menubar"
                   >
                     <div class="navbar-nav">
-                      <a class="nav-link nav-link-home active" href="/">
+                      <a
+                        class="nav-link nav-link-home active"
+                        href="/"
+                        data-ga="home button"
+                      >
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="tour">
                         Tour
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="research">
                         Research
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
@@ -134,6 +141,7 @@ export const Basic = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="dropdown"
                         >
                           Dropdown
                           <span class="fa fa-chevron-down"></span>
@@ -143,13 +151,25 @@ export const Basic = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="navigation link"
+                            >
                               Navigation link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="another link"
+                            >
                               Another link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="this dropdown menu has a maximun width"
+                            >
                               This dropdown menu has a maximum width
                             </a>
                           </div>
@@ -158,7 +178,11 @@ export const Basic = (
                     </div>
                     {/* end .navbar-nav */}
                     <form class="navbar-site-buttons form-inline">
-                      <a href="#" class="btn btn-md btn-maroon">
+                      <a
+                        href="#"
+                        class="btn btn-md btn-maroon"
+                        data-ga="call to action"
+                      >
                         Call to action
                       </a>
                     </form>
@@ -232,11 +256,11 @@ export const Basic = (
       <div id="skip-to-content" class="sr-only"></div>
       {/* Page content starts here */}
     </div>
-  </div>
+  </>
 );
 
 export const DropDownMenus = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -308,7 +332,7 @@ export const DropDownMenus = (
           <div class="row">
             <div id="header-main" class="col-12">
               <nav class="navbar navbar-expand-xl" aria-label="Main">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" data-ga="asu logo">
                   <img
                     class="vert"
                     src={vertlogo}
@@ -337,10 +361,18 @@ export const DropDownMenus = (
                 </button>
                 <div class="navbar-container">
                   <div class="title">
-                    <a href="#" class="unit-name">
+                    <a
+                      href="#"
+                      class="unit-name"
+                      data-ga="ira a. fulton schools of engineering"
+                    >
                       Ira A. Fulton Schools of Engineering
                     </a>
-                    <span class="subdomain-name">
+                    <span
+                      class="subdomain-name"
+                      data-ga="school of computing, informatics, and decisions systems
+                      engineering"
+                    >
                       School of Computing, Informatics, and Decisions Systems
                       Engineering
                     </span>
@@ -350,7 +382,11 @@ export const DropDownMenus = (
                     id="menubar"
                   >
                     <div class="navbar-nav">
-                      <a class="nav-link nav-link-home" href="/">
+                      <a
+                        class="nav-link nav-link-home"
+                        href="/"
+                        data-ga="home button"
+                      >
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
@@ -363,6 +399,7 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="drop (1 col)"
                         >
                           Drop (1 Col)
                           <span class="fa fa-chevron-down"></span>
@@ -372,19 +409,39 @@ export const DropDownMenus = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="massa nunc dictum nan venenatis"
+                            >
                               Massa nunc dictum nam venenatis
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="dis quam quis nisi ligula"
+                            >
                               Dis quam quis nisi ligula
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="dapibus lorem"
+                            >
                               Dapibus lorem
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="nisi ligula eget orci"
+                            >
                               Nisi ligula eget orci
                             </a>
-                            <a href="#" class="btn btn-sm btn-dark col-btn">
+                            <a
+                              href="#"
+                              class="btn btn-sm btn-dark col-btn"
+                              data-ga="cta action 2"
+                            >
                               CTA action 2
                             </a>
                           </div>
@@ -399,6 +456,7 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="drop (2 col)"
                         >
                           Drop (2 col)
                           <span class="fa fa-chevron-down"></span>
@@ -409,41 +467,86 @@ export const DropDownMenus = (
                         >
                           <div class="dropdown-col">
                             <h3>Column One</h3>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="dis quam quis nisi ligula"
+                            >
                               Dis quam quis nisi ligula
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="nisi ligula eget orci"
+                            >
                               Nisi ligula eget orci
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="massa nunc dictum nam venenatis"
+                            >
                               Massa nunc dictum nam venenatis
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="dapibus lorem"
+                            >
                               Dapibus lorem
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="ultricies tellus eu"
+                            >
                               Ultricies tellus eu
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="pretium massa quis vitae pede quisque nulla
+                              ultricies sit"
+                            >
                               Pretium massa quis vitae pede quisque nulla
                               ultricies sit
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="quis tempus aliquam semper imperdiet"
+                            >
                               Quis tempus aliquam semper imperdiet
                             </a>
                           </div>
                           <div class="dropdown-col">
                             <h3>Brady Header</h3>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="here's the story"
+                            >
                               Here's the story
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="of a man named Brady"
+                            >
                               Of a man named Brady
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="who was busy with three"
+                            >
                               Who was busy with three
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="boys of his own"
+                            >
                               Boys of his own
                             </a>
                           </div>
@@ -458,6 +561,7 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="mega menu (3 col)"
                         >
                           Mega Menu (3 col)
                           <span class="fa fa-chevron-down"></span>
@@ -470,50 +574,103 @@ export const DropDownMenus = (
                             <div class="row">
                               <div class="col-lg">
                                 <h3>Column one</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="recommended max of ten links"
+                                >
                                   Recommended max of ten links
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="second link in the list"
+                                >
                                   Second link in the list
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="here is link number three"
+                                >
                                   Here is link number three
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="ultricies tellus eu"
+                                >
                                   Ultricies tellus eu
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column two</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dis quam quis nisi ligula"
+                                >
                                   Dis quam quis nisi ligula
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="massa nunc dictum nam venenatis"
+                                >
                                   Massa nunc dictum nam venenatis
                                 </a>
                               </div>
                               <div class="col-lg-4">
                                 <h3>Last call 'em</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="navigation link"
+                                >
                                   Navigation link
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="another link as an example of when something
+                                  wraps"
+                                >
                                   Another link as an example of when something
                                   wraps
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="culture of inclusion"
+                                >
                                   Culture of inclusion
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="public research university"
+                                >
                                   Public research university
                                 </a>
                               </div>
@@ -530,6 +687,7 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="mega menu (4 col)"
                         >
                           Mega Menu (4 col)
                           <span class="fa fa-chevron-down"></span>
@@ -542,90 +700,187 @@ export const DropDownMenus = (
                             <div class="row">
                               <div class="col-lg">
                                 <h3>Column one</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="navigation link"
+                                >
                                   Navigation link
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="second link in the list"
+                                >
                                   Second link in the list
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="here is link number three"
+                                >
                                   Here is link number three
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="ultricies tellus eu"
+                                >
                                   Ultricies tellus eu
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column two</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi eget orci"
+                                >
                                   Nisi eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dis quam quis nisi ligula"
+                                >
                                   Dis quam quis nisi ligula
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="massa nunc venenatis"
+                                >
                                   Massa nunc venenatis
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pede quisque nulla ultricies sit"
+                                >
                                   Pede quisque nulla ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="ultricies tellus eu"
+                                >
                                   Ultricies tellus eu
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column three</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dis quam quis nisi ligula"
+                                >
                                   Dis quam quis nisi ligula
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="massa nunc dictum nam venenatis"
+                                >
                                   Massa nunc dictum nam venenatis
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="ultricies tellus eu"
+                                >
                                   Ultricies tellus eu
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="semper imperdiet"
+                                >
                                   Semper imperdiet
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column four</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dis quam quis nisi ligula"
+                                >
                                   Dis quam quis nisi ligula
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
                               </div>
                             </div>
                             <div class="row with-buttons">
                               <div class="col-lg-12">
-                                <a href="#" class="btn btn-sm btn-gold">
+                                <a
+                                  href="#"
+                                  class="btn btn-sm btn-gold"
+                                  data-ga="mega menu cta 1"
+                                >
                                   Mega menu CTA 1
                                 </a>
-                                <a href="#" class="btn btn-sm btn-maroon">
+                                <a
+                                  href="#"
+                                  class="btn btn-sm btn-maroon"
+                                  data-ga="mega menu cta 2"
+                                >
                                   Mega menu CTA 2
                                 </a>
                               </div>
@@ -642,6 +897,7 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="mega menu (5 col)"
                         >
                           Mega Menu (5 col)
                           <span class="fa fa-chevron-down"></span>
@@ -654,25 +910,39 @@ export const DropDownMenus = (
                             <div class="row">
                               <div class="col-lg">
                                 <h3>Column One</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="navigation link"
+                                >
                                   Navigation link
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="second link in the list"
+                                >
                                   Second link in the list
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="here is link number three"
+                                >
                                   Here is link number three
                                 </a>
                                 <div class="btns-row">
                                   <a
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
+                                    data-ga="cta in column"
                                   >
                                     CTA in column
                                   </a>
                                   <a
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
+                                    data-ga="cta in column"
                                   >
                                     CTA in column
                                   </a>
@@ -680,83 +950,175 @@ export const DropDownMenus = (
                               </div>
                               <div class="col-lg">
                                 <h3>Column Two</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column Three</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="quis tempus aliquam semper imperdiet"
+                                >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a href="#" class="btn btn-sm btn-dark col-btn">
+                                <a
+                                  href="#"
+                                  class="btn btn-sm btn-dark col-btn"
+                                  data-ga="cta in column"
+                                >
                                   CTA in Column
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Column Four</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dis quam quis nisi ligula"
+                                >
                                   Dis quam quis nisi ligula
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="nisi ligula eget orci"
+                                >
                                   Nisi ligula eget orci
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="dapibus lorem"
+                                >
                                   Dapibus lorem
                                 </a>
-                                <a href="#" class="btn btn-sm btn-dark col-btn">
+                                <a
+                                  href="#"
+                                  class="btn btn-sm btn-dark col-btn"
+                                  data-ga="cta in column"
+                                >
                                   CTA in Column
                                 </a>
                               </div>
                               <div class="col-lg">
                                 <h3>Mambo #5</h3>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="jump up and down and"
+                                >
                                   Jump up and down and
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="shake your head to the sound"
+                                >
                                   Shake your head to the sound
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="put your hand on the ground"
+                                >
                                   Put your hand on the ground
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="take one step left and one step right"
+                                >
                                   Take one step left and one step right
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="if it looks like this"
+                                >
                                   If it looks like this
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a
+                                  class="dropdown-item"
+                                  href="#"
+                                  data-ga="then you doing it right"
+                                >
                                   Then you doing it right
                                 </a>
                               </div>
@@ -833,11 +1195,11 @@ export const DropDownMenus = (
       <div id="skip-to-content" class="sr-only"></div>
       {/* Page content starts here */}
     </div>
-  </div>
+  </>
 );
 
 export const NoNavigation = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -912,7 +1274,7 @@ export const NoNavigation = (
           <div class="row">
             <div id="header-main" class="col-12">
               <nav class="navbar navbar-expand-xl" aria-label="Main">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" data-ga="asu logo">
                   <img
                     class="vert"
                     src={vertlogo}
@@ -941,7 +1303,9 @@ export const NoNavigation = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#">Landing page title</a>
+                    <a href="#" data-ga="landing page title">
+                      Landing page title
+                    </a>
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
@@ -1014,11 +1378,11 @@ export const NoNavigation = (
       <div id="skip-to-content" class="sr-only"></div>
       {/* Page content starts here */}
     </div>
-  </div>
+  </>
 );
 
 export const NoNavigationAndWithButtons = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -1090,7 +1454,7 @@ export const NoNavigationAndWithButtons = (
           <div class="row">
             <div id="header-main" class="col-12">
               <nav class="navbar navbar-expand-xl" aria-label="Main">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" data-ga="asu logo">
                   <img
                     class="vert"
                     src={vertlogo}
@@ -1119,17 +1483,27 @@ export const NoNavigationAndWithButtons = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#">Landing page title</a>
+                    <a href="#" data-ga="landing page title">
+                      Landing page title
+                    </a>
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
                     <form class="navbar-site-buttons form-inline">
-                      <a href="#" class="btn btn-md btn-maroon">
+                      <a
+                        href="#"
+                        class="btn btn-md btn-maroon"
+                        data-ga="cta button 1"
+                      >
                         CTA button 1
                       </a>
-                      <a href="#" class="btn btn-md btn-dark">
+                      <a
+                        href="#"
+                        class="btn btn-md btn-dark"
+                        data-ga="cta button 2"
+                      >
                         CTA button 2
                       </a>
                     </form>
@@ -1200,11 +1574,11 @@ export const NoNavigationAndWithButtons = (
       <div id="skip-to-content" class="sr-only"></div>
       {/* Page content starts here */}
     </div>
-  </div>
+  </>
 );
 
 export const ScrolledState = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -1279,7 +1653,7 @@ export const ScrolledState = (
           <div class="row">
             <div id="header-main" class="col-12">
               <nav class="navbar navbar-expand-xl" aria-label="Main">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#" asu-ga="asu logo">
                   <img
                     class="vert"
                     src={vertlogo}
@@ -1307,7 +1681,10 @@ export const ScrolledState = (
                   </span>
                 </button>
                 <div class="navbar-container">
-                  <div class="title subdomain-name">
+                  <div
+                    class="title subdomain-name"
+                    data-ga="university technology office"
+                  >
                     University Technology Office
                   </div>
                   <div
@@ -1315,23 +1692,27 @@ export const ScrolledState = (
                     id="menubar"
                   >
                     <div class="navbar-nav">
-                      <a class="nav-link nav-link-home active" href="/">
+                      <a
+                        class="nav-link nav-link-home active"
+                        href="/"
+                        data-ga="home button"
+                      >
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="admission">
                         Admission
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="alumni">
                         Alumni
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="giving">
                         Giving
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="contact">
                         Contact
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="tour">
                         Tour
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
@@ -1343,6 +1724,7 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="dropdown"
                         >
                           Dropdown
                           <span class="fa fa-chevron-down"></span>
@@ -1352,13 +1734,25 @@ export const ScrolledState = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="navigation link"
+                            >
                               Navigation link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="another link"
+                            >
                               Another link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="this dropdown menu has a maximum width"
+                            >
                               This dropdown menu has a maximum width
                             </a>
                           </div>
@@ -1373,6 +1767,7 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="dropdown 2"
                         >
                           Dropdown 2<span class="fa fa-chevron-down"></span>
                         </a>
@@ -1381,13 +1776,25 @@ export const ScrolledState = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="navigation link"
+                            >
                               Navigation link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="another link"
+                            >
                               Another link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="this dropdown menu has a maximum width"
+                            >
                               This dropdown menu has a maximum width
                             </a>
                           </div>
@@ -1402,6 +1809,7 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="dropdown 3"
                         >
                           Dropdown 3<span class="fa fa-chevron-down"></span>
                         </a>
@@ -1410,13 +1818,25 @@ export const ScrolledState = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="navigation link"
+                            >
                               Navigation link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="another link"
+                            >
                               Another link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="this dropdown menu has a maximum width"
+                            >
                               This dropdown menu has a maximum width
                             </a>
                           </div>
@@ -1499,11 +1919,11 @@ export const ScrolledState = (
       <div class="bg-gray-5" style={{ height: '70vh' }}></div>
       <div class="bg-gray-4" style={{ height: '70vh' }}></div>
     </main>
-  </div>
+  </>
 );
 
 export const Partner = (
-  <div>
+  <>
     <header id="asu-header" class="fixed-top">
       <div id="wrapper-header-top">
         <div class="container-xl">
@@ -1580,10 +2000,10 @@ export const Partner = (
               <nav class="navbar-expand-xl" aria-label="Main">
                 <div class="partner">
                   <div class="partners-logos">
-                    <a href="#">
+                    <a href="#" data-ga="starbucks logo">
                       <img src={starbucksLogo} alt="Asu Starbucks logo" />
                     </a>
-                    <a href="#">
+                    <a href="#" data-ga="asu logo">
                       <img
                         class="vert"
                         src={vertlogo}
@@ -1618,23 +2038,27 @@ export const Partner = (
                     id="menubar"
                   >
                     <div class="navbar-nav">
-                      <a class="nav-link nav-link-home active" href="/">
+                      <a
+                        class="nav-link nav-link-home active"
+                        href="/"
+                        data-ga="home button"
+                      >
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="admission">
                         Admission
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="alumni">
                         Alumni
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="giving">
                         Giving
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="contact">
                         Contact
                       </a>
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#" data-ga="tour">
                         Tour
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
@@ -1646,6 +2070,7 @@ export const Partner = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          data-ga="dropdown"
                         >
                           Dropdown
                           <span class="fa fa-chevron-down"></span>
@@ -1655,13 +2080,25 @@ export const Partner = (
                           aria-labelledby="dropdown-one-col"
                         >
                           <div class="dropdown-col">
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="navigation link"
+                            >
                               Navigation link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="another link"
+                            >
                               Another link
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a
+                              class="dropdown-item"
+                              href="#"
+                              data-ga="this dropdown menu has a maximum width"
+                            >
                               This dropdown menu has a maximum width
                             </a>
                           </div>
@@ -1670,10 +2107,18 @@ export const Partner = (
                     </div>
                     {/* end .navbar-nav */}
                     <form class="navbar-site-buttons form-inline">
-                      <a href="#" class="btn btn-md btn-maroon">
+                      <a
+                        href="#"
+                        class="btn btn-md btn-maroon"
+                        data-ga="cta button 1"
+                      >
                         CTA Button 1
                       </a>
-                      <a href="#" class="btn btn-md btn-dark">
+                      <a
+                        href="#"
+                        class="btn btn-md btn-dark"
+                        data-ga="cta button 2"
+                      >
                         CTA Button 2
                       </a>
                     </form>
@@ -1744,5 +2189,5 @@ export const Partner = (
       <div id="skip-to-content" class="sr-only"></div>
       {/* Page content starts here */}
     </div>
-  </div>
+  </>
 );
