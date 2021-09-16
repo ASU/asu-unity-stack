@@ -13,11 +13,11 @@ export const Default = createStory(
           "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/random/1920x1200')",
       }}
     >
-      <div class="uds-card-image-and-content-image-container-headline">
+    </div>
+    <div class="uds-card-image-and-content-content-container uds-content-align">
+      <div class="uds-card-image-and-content-content-container-headline uds-content-align">
         Section headline goes here
       </div>
-    </div>
-    <div class="uds-card-image-and-content-content-container">
       <div class="content">
         Here is some introductory text about the topic featured in this
         section. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
