@@ -1,5 +1,6 @@
 import React from 'react';
-export default { title: 'Components/Global Footer' };
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+export default createComponent('Global Footer');
 
 import {
   GlobalElementsOnly,
@@ -13,34 +14,12 @@ import {
   SixColumns,
 } from './global-footer.components.js';
 
-const GlobalElementsOnlyTemplate = ({ ...args }) => (
-  <div>{GlobalElementsOnly}</div>
-);
-export const GlobalElementsOnlyHeader = GlobalElementsOnlyTemplate.bind({});
-
-const ZeroColumnsTemplate = ({ ...args }) => <div>{ZeroColumns}</div>;
-export const ZeroColumnsHeader = ZeroColumnsTemplate.bind({});
-
-const OneColumnTemplate = ({ ...args }) => <div>{OneColumn}</div>;
-export const OneColumnHeader = OneColumnTemplate.bind({});
-
-const OneColumnNoLogoOrSocialTemplate = ({ ...args }) => (
-  <div>{OneColumnNoLogoOrSocial}</div>
-);
-export const OneColumnNoLogoOrSocialHeader =
-  OneColumnNoLogoOrSocialTemplate.bind({});
-
-const TwoColumnsTemplate = ({ ...args }) => <div>{TwoColumns}</div>;
-export const TwoColumnsHeader = TwoColumnsTemplate.bind({});
-
-const ThreeColumnsTemplate = ({ ...args }) => <div>{ThreeColumns}</div>;
-export const ThreeColumnsHeader = ThreeColumnsTemplate.bind({});
-
-const FourColumnsTemplate = ({ ...args }) => <div>{FourColumns}</div>;
-export const FourColumnsHeader = FourColumnsTemplate.bind({});
-
-const FiveColumnsTemplate = ({ ...args }) => <div>{FiveColumns}</div>;
-export const FiveColumnsHeader = FiveColumnsTemplate.bind({});
-
-const SixColumnsTemplate = ({ ...args }) => <div>{SixColumns}</div>;
-export const SixColumnsHeader = SixColumnsTemplate.bind({});
+export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly);
+export const ZeroColumnsExample = createStory(ZeroColumns);
+export const OneColumnExample = createStory(OneColumn);
+export const OneColumnNoLogoOrSocialExample = createStory(OneColumnNoLogoOrSocial);
+export const TwoColumnsExample = createStory(TwoColumns);
+export const ThreeColumnsExample = createStory(ThreeColumns);
+export const FourColumnsExample = createStory(FourColumns);
+export const FiveColumnsExample = createStory(FiveColumns);
+export const SixColumnsExample = createStory(SixColumns);
