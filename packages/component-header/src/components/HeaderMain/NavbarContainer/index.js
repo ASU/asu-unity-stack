@@ -47,7 +47,7 @@ const NavbarContainer = () => {
             <Button
               {...button}
               key={button.text}
-              onFocus={() => trackGAEvent(button.text)}
+              onFocus={() => trackGAEvent(button.text.toLowerCase())}
             />
           ))}
         </form>

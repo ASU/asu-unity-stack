@@ -47,14 +47,14 @@ const DropNav = forwardRef(
           onMouseDown={e => {
             e.preventDefault();
             toggle(pIndex);
-            !isOpen && trackGAEvent(text);
+            !isOpen && trackGAEvent(text.toLowerCase());
           }}
           onKeyDown={e => {
             const code = e.keyCode;
             // open menu upon 'enter' or 'space' keypress
             if (code == 32 || code == 13) {
               toggle(pIndex);
-              !isOpen && trackGAEvent(text);
+              !isOpen && trackGAEvent(text.toLowerCase());
             }
           }}
           onFocus={e => {

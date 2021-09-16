@@ -277,7 +277,7 @@ const Nav = forwardRef(
                               onFocus={() => {
                                 setFocus([pindex, index, ind]);
                                 setOpen(pindex);
-                                trackGAEvent(item.text);
+                                trackGAEvent(item.text.toLowerCase());
                               }}
                               ref={subs[index][ind].ref}
                               type={
@@ -317,7 +317,7 @@ const Nav = forwardRef(
               <NavItem
                 key={`nav-item-${pindex}`}
                 onFocus={() => {
-                  trackGAEvent(navItem.text);
+                  trackGAEvent(navItem.text.toLowerCase());
                   setFocusCallback([pindex, -1, -1]);
                 }}
                 ref={item.ref}

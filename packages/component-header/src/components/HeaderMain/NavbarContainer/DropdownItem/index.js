@@ -58,7 +58,7 @@ const DropdownItem = ({ items, buttons, classes }) => {
             color={link.color || "dark"}
             href={link.href}
             onClick={stopPropagation}
-            onFocus={() => trackGAEvent(link.text)}
+            onFocus={() => trackGAEvent(link.text.toLowerCase())}
           />
         </li>
       );
@@ -68,7 +68,7 @@ const DropdownItem = ({ items, buttons, classes }) => {
         <a
           href={link.href}
           onClick={stopPropagation}
-          onFocus={() => trackGAEvent(link.text)}
+          onFocus={() => trackGAEvent(link.text.toLowerCase())}
         >
           {link.text}
         </a>
