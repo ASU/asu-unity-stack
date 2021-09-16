@@ -35,6 +35,7 @@ const videoPropType = {
   url: PropTypes.string,
   altText: PropTypes.string,
   vttUrl: PropTypes.string,
+  title: PropTypes.string,
 };
 
 const linkPropType = {

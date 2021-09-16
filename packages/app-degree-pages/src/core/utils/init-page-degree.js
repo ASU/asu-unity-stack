@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ListingPage, ProgramDetailPage } from "../../components";
+import { ListingPage, DetailPage } from "../../components";
 
 /**
  * @typedef {Object} ComponentProps
@@ -31,7 +31,7 @@ const initListingPage = ({ targetSelector, props }) => {
  * @param {ComponentProps} props
  */
 const initProgramDetailPage = ({ targetSelector, props }) => {
-  RenderReact(ProgramDetailPage, props, targetSelector);
+  RenderReact(DetailPage, props, targetSelector);
 };
 
 export { initListingPage, initProgramDetailPage };

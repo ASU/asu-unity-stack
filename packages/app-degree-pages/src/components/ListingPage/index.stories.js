@@ -12,7 +12,7 @@ import { getStoryBookBaseUrl } from "../../core/utils";
 
 export default {
   component: ListingPage,
-  title: "Listing Page",
+  title: "Program Listing Page",
 };
 
 /**
@@ -108,8 +108,8 @@ Default.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
-DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
+export const WithCollegeAcadOrgAndDepartmentCode = Template.bind({});
+WithCollegeAcadOrgAndDepartmentCode.args = {
   ...Default.args,
   hero: null,
   programList: {
@@ -128,9 +128,9 @@ DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithIntroText = Template.bind({});
+export const WithIntroText = Template.bind({});
 
-PageWithIntroText.args = {
+WithIntroText.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
@@ -172,9 +172,9 @@ PageWithIntroText.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithIntroTextPhotoGrid = Template.bind({});
+export const WithIntroTextPhotoGrid = Template.bind({});
 
-PageWithIntroTextPhotoGrid.args = {
+WithIntroTextPhotoGrid.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
@@ -234,9 +234,9 @@ PageWithIntroTextPhotoGrid.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const PageWithIntroTextMediaImage = Template.bind({});
+export const WithIntroTextMediaImage = Template.bind({});
 
-PageWithIntroTextMediaImage.args = {
+WithIntroTextMediaImage.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
@@ -281,11 +281,11 @@ PageWithIntroTextMediaImage.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const PageWithIntroTextMediaVideo = Template.bind({});
+export const WithIntroTextMediaVideo = Template.bind({});
 
-PageWithIntroTextMediaVideo.args = { ...PageWithIntroTextMediaImage.args };
-PageWithIntroTextMediaVideo.args.introContent = {
-  ...PageWithIntroTextMediaImage.args.introContent,
+WithIntroTextMediaVideo.args = { ...WithIntroTextMediaImage.args };
+WithIntroTextMediaVideo.args.introContent = {
+  ...WithIntroTextMediaImage.args.introContent,
   image: undefined,
   video: {
     url: "/examples/assets/video/stock-video-person-drawing.mp4",
@@ -297,12 +297,12 @@ PageWithIntroTextMediaVideo.args.introContent = {
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const PageWithIntroTextImageOverlay = Template.bind({});
+export const WithIntroTextImageOverlay = Template.bind({});
 
 /**
  * @type {{ args: AppProps }}
  */
-PageWithIntroTextImageOverlay.args = {
+WithIntroTextImageOverlay.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL

@@ -26,6 +26,8 @@ const GRID_VIEW_ID = "grid-view";
 const LIST_VIEW_ID = "list-view";
 const GRID_PROGRAMS_ID = "degree-list-programs";
 
+const ERROR_MESSAGE = "Sorry, Something went wrong.";
+
 export {
   tagHeadings,
   tagHeadingList,
@@ -33,4 +35,5 @@ export {
   GRID_PROGRAMS_ID,
   GRID_VIEW_ID,
   LIST_VIEW_ID,
+  ERROR_MESSAGE,
 };

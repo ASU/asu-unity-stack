@@ -30,6 +30,7 @@ function MessageAlert({ message, type }) {
 
   return (
     <div
+      data-testid="message-alert"
       className={`alert ${alert.className}`}
       role="alert"
       style={{
