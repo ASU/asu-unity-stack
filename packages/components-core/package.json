@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "jest --config=./jest.config.js --silent",
+    "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
