@@ -66,12 +66,6 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 }
 
-@media only screen and (min-width: 577px) {
-  .container .aligned-carousel {
-    margin-left: -124px !important;
-  }
-}
-
 .#{$glide-class} {
   $this: &;
 
@@ -217,8 +211,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 
   &.aligned-carousel {
-    width: calc(1200px + 124px * 2);
-    margin: auto;
+    width: 100%;
   }
 
   &.image-gallery {

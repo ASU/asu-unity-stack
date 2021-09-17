@@ -2,6 +2,9 @@
 import React from "react";
 
 import { CardCarousel } from ".";
+import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components.js';
+
+
 
 const imageFormats = [
   "500x400",
@@ -65,7 +68,12 @@ export default {
 
 export const ThreeItemCarousel = () => (
   <div className="container">
-    <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+    <div className="row">
+      <div className="col-12">
+        {Header}
+        <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+      </div>
+    </div>
   </div>
 );
 
