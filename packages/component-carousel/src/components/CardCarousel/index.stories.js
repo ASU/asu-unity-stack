@@ -67,11 +67,13 @@ export default {
 };
 
 export const ThreeItemCarousel = () => (
-  <div className="container">
-    <div className="row">
-      <div className="col-12">
-        {Header}
-        <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+  <div>
+    {Header}
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+        </div>
       </div>
     </div>
   </div>
