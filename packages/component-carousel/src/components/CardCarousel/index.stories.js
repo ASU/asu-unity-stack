@@ -72,7 +72,7 @@ export const ThreeItemCarousel = () => (
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <CardCarousel perView="3" cardItems={myCarouselItems} width="1400px" />
+          <CardCarousel perView="3" cardItems={myCarouselItems} width="100%" />
         </div>
       </div>
     </div>
