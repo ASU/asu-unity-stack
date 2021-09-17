@@ -39,11 +39,11 @@ const HoverDropNav = forwardRef(
           ? {
               onMouseEnter: e => {
                 setOpen(pIndex);
-                !isOpen && trackGAEvent(text.toLowerCase());
+                !isOpen && trackGAEvent(text);
               },
               onMouseLeave: e => {
                 setOpen(-1);
-                !isOpen && trackGAEvent(text.toLowerCase());
+                !isOpen && trackGAEvent(text);
               },
             }
           : {})}

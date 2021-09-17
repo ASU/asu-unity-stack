@@ -21,14 +21,14 @@ const Title = () => {
         <a
           className="unit-name"
           href={parentOrgUrl}
-          onFocus={() => trackGAEvent(parentOrg.toLowerCase())}
+          onFocus={() => trackGAEvent(parentOrg)}
         >
           {parentOrg}
         </a>
         <a
           className="subunit-name"
           href={baseUrl}
-          onFocus={() => trackGAEvent(title.toLowerCase())}
+          onFocus={() => trackGAEvent(title)}
         >
           {title}
         </a>
@@ -41,7 +41,7 @@ const Title = () => {
       <a
         className="title-subunit-name"
         href={baseUrl}
-        onFocus={() => trackGAEvent(title.toLowerCase())}
+        onFocus={() => trackGAEvent(title)}
       >
         {title}
       </a>

@@ -16,7 +16,7 @@ export const initGA = () => {
   const elements = document.querySelectorAll('[data-ga]');
   elements.forEach((element) =>
     element.addEventListener('focus', () => {
-      const text = element.getAttribute('data-ga');
+      const text = element.getAttribute('data-ga').toLowerCase();
       pushGAEvent(text);
     })
   );

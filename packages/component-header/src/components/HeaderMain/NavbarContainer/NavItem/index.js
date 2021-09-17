@@ -100,9 +100,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         tabIndex={0}
         data-testid="nav-item"
         onFocus={() =>
-          trackGAEvent(
-            link.type === "icon-home" ? "home button" : link.text.toLowerCase()
-          )
+          trackGAEvent(link.type === "icon-home" ? "home button" : link.text)
         }
       >
         {renderNavLinks()}

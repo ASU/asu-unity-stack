@@ -1,7 +1,8 @@
 /**
- * @param {string} text
+ * @param {string} eventText
  */
-const trackGAEvent = (text = "") => {
+const trackGAEvent = (eventText = "") => {
+  const text = eventText.toLowerCase();
   const { dataLayer } = window;
   const event = {
     event: "link",
