@@ -131,7 +131,7 @@ const ListView = ({ programs, totalRows, loading, actionUrls }) => {
   };
 
   return (
-    <section className="container mb-4">
+    <section className="container mb-4" data-testid="list-view">
       <Table
         id={GRID_PROGRAMS_ID}
         ref={tableRef}

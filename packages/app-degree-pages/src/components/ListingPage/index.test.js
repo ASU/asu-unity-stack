@@ -82,7 +82,6 @@ describe("#ListingPage", () => {
         />
       );
       container = component.container;
-      // expect(component.getByTestId("loader")).toBeInTheDocument();
     });
   }
 
@@ -100,6 +99,61 @@ describe("#ListingPage", () => {
         expect(component.getByTestId("loader")).toBeInTheDocument();
       });
     });
+  });
+
+  describe("#With various intro content", () => {
+    const sectionCases = [
+      ["text-photo-grid", "text-photo-grid"],
+      ["text-media", "text-media"],
+      ["text", "text"],
+      ["text-image-overlay", "text-image-overlay"],
+    ];
+
+    test.each(sectionCases)(
+      "should define intro Content of type `%p`",
+      async (_, introType) => {
+        /** @type {AppProps} */
+        const customProps = {
+          ...defaultArgs,
+          introContent: {
+            type: introType,
+            title: {
+              text: `Dummy title of type ${introType}`,
+            },
+            contents: [
+              {
+                text: `<p>dummy text </p>`,
+              },
+            ],
+            image: {
+              url: "https://source.unsplash.com/random/800x600?a=1",
+            },
+            photoGrid: {
+              images: [
+                {
+                  url: "examples/assets/img/demo-phot-1.jpeg",
+                },
+                {
+                  url: "examples/assets/img/demo-phot-2.jpeg",
+                },
+                {
+                  url: "examples/assets/img/demo-phot-3.jpeg",
+                },
+                {
+                  url: "examples/assets/img/demo-phot-4.jpeg",
+                },
+              ],
+            },
+          },
+        };
+
+        await renderListingPage(customProps);
+
+        const introComponent = component.getByTestId("intro-content");
+        expect(introComponent).toBeInTheDocument();
+        expect(introComponent).toHaveAttribute("data-type", introType);
+      }
+    );
   });
 
   describe("#With default props", () => {
@@ -306,6 +360,19 @@ describe("#ListingPage", () => {
       );
       expect(errorMessage).toBeInTheDocument();
       expect(noResultMessage).toBeInTheDocument();
+    });
+  });
+
+  describe("#With Accordion mobile view", () => {
+    beforeEach(async () => {
+      await renderListingPage(defaultArgs);
+    });
+
+    it("should define Accordion view when view port is smaller", async () => {
+      const accordion = component.getByTestId("accordion-view");
+      const list = component.getByTestId("list-view");
+      expect(list).toBeVisible();
+      expect(accordion).not.toBeVisible();
     });
   });
 });
