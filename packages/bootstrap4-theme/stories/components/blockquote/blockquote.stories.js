@@ -20,13 +20,15 @@ export const BlockquoteNoImage = createStory(
           and the pursuit of Happiness.
         </p>
         <div class="citation">
-          <cite class="name">Thomas Jefferson</cite>
-          <cite class="description">The Declaration of Independence</cite>
+          <div class="citation-content">
+            <cite class="name">Thomas Jefferson</cite>
+            <cite class="description">The Declaration of Independence</cite>
+          </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="p-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote accent-gold text-white uds-content-align">
         <svg
           title="Open quote"
@@ -42,8 +44,10 @@ export const BlockquoteNoImage = createStory(
             dedicated to the proposition that all men are created equal.
           </p>
           <div class="citation">
-            <cite class="name">Abraham Lincoln</cite>
-            <cite class="description">Gettysburg Address</cite>
+            <div class="citation-content">
+              <cite class="name">Abraham Lincoln Lincoln Lincoln </cite>
+              <cite class="description">Gettysburg Address</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -66,10 +70,12 @@ export const BlockquoteWithImage = createStory(
           assuming fundamental responsibility for the economic, social,
           cultural and overall health of the communities it serves.
         </p>
-        <div class="citation">
-          <cite class="name">Michael M. Crow</cite>
-          <cite class="description">ASU Charter</cite>
-        </div>
+          <div class="citation">
+            <div class="citation-content">
+              <cite class="name">Michael M. Crow</cite>
+              <cite class="description">ASU Charter</cite>
+            </div>
+          </div>
       </blockquote>
     </div>
 
@@ -87,8 +93,10 @@ export const BlockquoteWithImage = createStory(
             achieve excellence, access and impact.
           </p>
           <div class="citation">
-            <cite class="name">Michael M. Crow</cite>
-            <cite class="description">ASU Charter</cite>
+            <div class="citation-content">
+              <cite class="name">Michael M. Crow</cite>
+              <cite class="description">ASU Charter</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -151,8 +159,10 @@ export const BlockquoteAltCitation = createStory(
           and some people make it happen.
         </p>
         <div class="citation">
-          <cite class="name">Michael Jordan</cite>
-          <cite class="description">NBA Superstar</cite>
+          <div class="citation-content">
+            <cite class="name">Michael Jordan</cite>
+            <cite class="description">NBA Superstar</cite>
+          </div>
         </div>
       </blockquote>
     </div>
@@ -172,8 +182,10 @@ export const BlockquoteAltCitation = createStory(
             championships.
           </p>
           <div class="citation">
-            <cite class="name">Michael Jordan</cite>
-            <cite class="description">NBA Superstar</cite>
+            <div class="citation-content">
+              <cite class="name">Michael Jordan</cite>
+              <cite class="description">NBA Superstar</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -198,8 +210,10 @@ export const TestimonialsNoImage = createStory(
           wish to serve under them.
         </p>
         <div class="citation">
-          <cite class="name">Spock</cite>
-          <cite class="description">First officer, USS Enterprise</cite>
+          <div class="citation-content">
+            <cite class="name">Spock</cite>
+            <cite class="description">First officer, USS Enterprise</cite>
+          </div>
         </div>
       </blockquote>
     </div>
@@ -221,8 +235,10 @@ export const TestimonialsNoImage = createStory(
             you both in ways you cannot yet realize.
           </p>
           <div class="citation">
-            <cite class="name">Spock</cite>
-            <cite class="description">First officer, USS Enterprise</cite>
+            <div class="citation-content">
+              <cite class="name">Spock</cite>
+              <cite class="description">First officer, USS Enterprise</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -250,7 +266,9 @@ export const TestimonialsWithImage = createStory(
           blaster at your side, kid.
         </p>
         <div class="citation">
-          <cite class="name">Han Solo</cite>
+          <div class="citation-content">
+            <cite class="name">Han Solo</cite>
+          </div>
         </div>
       </blockquote>
     </div>
@@ -276,7 +294,9 @@ export const TestimonialsWithImage = createStory(
             the Jedi — all of it. It’s all true.
           </p>
           <div class="citation">
-            <cite class="name">Han Solo</cite>
+            <div class="citation-content">
+              <cite class="name">Han Solo</cite>
+            </div>
           </div>
         </blockquote>
       </div>
