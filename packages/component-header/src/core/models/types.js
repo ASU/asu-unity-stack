@@ -15,6 +15,7 @@
  *    color?: "gold" | "maroon" | "light" | "dark"
  *    text: string
  *    onClick?: () => void
+ *    onFocus?: () => void
  *  }} Button
  */
 

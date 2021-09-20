@@ -2,6 +2,7 @@
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { Heading } from "../Heading";
 import * as S from "./styles";
 
@@ -11,7 +12,6 @@ import * as S from "./styles";
  */
 const NavItem = forwardRef(
   ({ onFocus, type, children, href, ...props }, ref) => {
-
     switch (type) {
       case "button":
         // standards only allow dark buttons in nav dropdowns
@@ -47,7 +47,7 @@ const NavItem = forwardRef(
           <S.NavIcon
             {...props}
             href={href}
-            {...(onFocus ? { onFocus } : "")}
+            onFocus={() => trackGAEvent("home button")}
             ref={ref}
             type="home"
             alt={`${children} icon`}
@@ -79,11 +79,11 @@ NavItem.propTypes = {
   href: PropTypes.string,
   children: PropTypes.string.isRequired, // children always required (accessiblity and mobile)
   icon: PropTypes.string,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
 };
 
 NavItem.defaultProps = {
-  selected: false
+  selected: false,
 };
 
 export default NavItem;

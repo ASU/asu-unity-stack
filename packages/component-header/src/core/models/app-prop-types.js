@@ -27,6 +27,7 @@ const ButtonPropTypes = {
   color: PropTypes.oneOf(["gold", "maroon", "light", "dark"]),
   href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  onFocus: PropTypes.func,
 };
 
 const NavTreePropTypes = PropTypes.shape({

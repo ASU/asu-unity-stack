@@ -3,6 +3,7 @@ import { cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { Button } from "../Button";
 import * as S from "./styles";
 
@@ -37,12 +38,12 @@ const HoverDropNav = forwardRef(
         {...(!mobile
           ? {
               onMouseEnter: e => {
-                //e.preventDefault();
                 setOpen(pIndex);
+                !isOpen && trackGAEvent(text);
               },
               onMouseLeave: e => {
-                //e.preventDefault();
                 setOpen(-1);
+                !isOpen && trackGAEvent(text);
               },
             }
           : {})}
@@ -54,7 +55,6 @@ const HoverDropNav = forwardRef(
             role="button"
             aria-expanded={isOpen}
             onFocus={e => {
-              //navOpen(pIndex);
               setFocus([pIndex, -1, -1]);
             }}
             tabIndex="0"

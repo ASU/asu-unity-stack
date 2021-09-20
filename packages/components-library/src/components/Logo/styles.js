@@ -1,6 +1,8 @@
 import { css } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
+
 /**
  * Logo
  */
@@ -68,7 +70,13 @@ const logoStyles = breakpoint => css`
 
 const Logo = forwardRef(({ brandLink, src, mobileSrc, alt, ...props }, ref) => {
   return (
-    <a href={brandLink} class="navbar-logo" ref={ref} {...props}>
+    <a
+      href={brandLink}
+      class="navbar-logo"
+      ref={ref}
+      {...props}
+      onFocus={() => trackGAEvent("asu logo")}
+    >
       <img class="vert" src={src} alt={alt} />
       <img class="horiz" src={mobileSrc} alt={alt} />
     </a>

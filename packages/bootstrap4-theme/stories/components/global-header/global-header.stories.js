@@ -10,10 +10,14 @@ import {
   ScrolledState,
   Partner,
 } from './global-header.components.js';
+import { initGA } from './global-header';
 
-export const BasicExample = createStory(Basic);
-export const DropDownMenusExample = createStory(DropDownMenus);
-export const NoNavigationExample = createStory(NoNavigation);
-export const NoNavigationAndWithButtonsExample = createStory(NoNavigationAndWithButtons);
-export const ScrolledStateExample = createStory(ScrolledState);
-export const PartnerExample = createStory(Partner);
+export const BasicExample = createStory(Basic, initGA);
+export const DropDownMenusExample = createStory(DropDownMenus, initGA);
+export const NoNavigationExample = createStory(NoNavigation, initGA);
+export const NoNavigationAndWithButtonsExample = createStory(
+  NoNavigationAndWithButtons,
+  initGA
+);
+export const ScrolledStateExample = createStory(ScrolledState, initGA);
+export const PartnerExample = createStory(Partner, initGA);
