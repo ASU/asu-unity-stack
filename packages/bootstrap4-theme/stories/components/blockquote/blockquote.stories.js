@@ -79,7 +79,7 @@ export const BlockquoteWithImage = createStory(
       </blockquote>
     </div>
 
-    <section class="bg-gray-2 my-12 py-4">
+    <section class="bg-gray-2">
       <div class="uds-blockquote with-image reversed uds-content-align">
         <img
           src="https://placeimg.com/300/300/any"
@@ -123,7 +123,7 @@ export const BlockquoteNoCitation = createStory(
     </div>
 
 
-    <div class="p-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
           src="https://placeimg.com/300/300/tech"
@@ -167,7 +167,7 @@ export const BlockquoteAltCitation = createStory(
       </blockquote>
     </div>
 
-    <section class="bg-gray-1 mt-8 pt-md-4">
+    <section class="bg-gray-1">
       <div class="uds-blockquote alt-citation accent-maroon uds-content-align">
         <svg
           title="Open quote"
@@ -219,7 +219,7 @@ export const TestimonialsNoImage = createStory(
     </div>
 
 
-    <div class="pt-md-4 bg-gray-2">
+    <div class="bg-gray-2">
       <div class="uds-blockquote uds-testimonial accent-maroon uds-content-align">
         <svg
           title="Open quote"
@@ -247,7 +247,7 @@ export const TestimonialsNoImage = createStory(
 );
 
 export const TestimonialsWithImage = createStory(
-  <div class="mt-8">
+  <div>
     <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
         src="https://placeimg.com/600/400/arch"
@@ -273,7 +273,7 @@ export const TestimonialsWithImage = createStory(
       </blockquote>
     </div>
 
-    <div class="pt-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
           src="https://placeimg.com/400/400/tech"

@@ -262,7 +262,7 @@ blockquote:before {
   cite.name,
   cite.description {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   &.with-image img {
