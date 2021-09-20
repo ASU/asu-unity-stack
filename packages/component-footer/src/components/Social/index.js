@@ -12,6 +12,12 @@ import React from "react";
 
 // @ts-ignore
 import endorsedLogo from "../../assets/images/endorsedLogo.png";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const DEFAULT_GA_EVENT = {
+  type: "external link",
+  section: "primary footer",
+};
 
 /**
  * @param {{
@@ -39,6 +45,12 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     className="nav-link"
                     href={mediaLinks.facebook}
                     data-testid="facebook"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "facebook icon",
+                      })
+                    }
                   >
                     <FontAwesomeIcon
                       title="Facebook Social Media Icon"
@@ -51,6 +63,12 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     className="nav-link"
                     href={mediaLinks.twitter}
                     data-testid="twitter"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "twitter icon",
+                      })
+                    }
                   >
                     <FontAwesomeIcon
                       title="Twitter Social Media Icon"
@@ -63,6 +81,12 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     className="nav-link"
                     href={mediaLinks.instagram}
                     data-testid="instagram"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "instagram icon",
+                      })
+                    }
                   >
                     <FontAwesomeIcon
                       title="Instagram Social Media Icon"
@@ -75,6 +99,12 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     className="nav-link"
                     href={mediaLinks.youtube}
                     data-testid="youtube"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "youtube icon",
+                      })
+                    }
                   >
                     <FontAwesomeIcon
                       title="YouTube Social Media Icon"
@@ -87,6 +117,12 @@ const Social = ({ social: { unitLogo, mediaLinks } }) => {
                     className="nav-link"
                     href={mediaLinks.linkedIn}
                     data-testid="linkedin"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "linkedin icon",
+                      })
+                    }
                   >
                     <FontAwesomeIcon
                       title="LinkedIn Social Media Icon"

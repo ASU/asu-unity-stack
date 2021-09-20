@@ -19,19 +19,46 @@ export const GlobalElementsOnly = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -52,19 +79,47 @@ export const GlobalElementsOnly = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -89,31 +144,61 @@ export const ZeroColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -140,19 +225,46 @@ export const ZeroColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -173,19 +285,47 @@ export const ZeroColumns = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -210,31 +350,61 @@ export const OneColumn = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -281,19 +451,46 @@ export const OneColumn = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -314,19 +511,47 @@ export const OneColumn = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -374,19 +599,46 @@ export const OneColumnNoLogoOrSocial = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -407,19 +659,47 @@ export const OneColumnNoLogoOrSocial = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -444,31 +724,61 @@ export const TwoColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -560,19 +870,46 @@ export const TwoColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -593,19 +930,47 @@ export const TwoColumns = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -630,31 +995,61 @@ export const ThreeColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -794,19 +1189,46 @@ export const ThreeColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -827,19 +1249,47 @@ export const ThreeColumns = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -864,31 +1314,61 @@ export const FourColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -1076,19 +1556,46 @@ export const FourColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -1109,19 +1616,47 @@ export const FourColumns = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -1146,31 +1681,61 @@ export const FiveColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -1406,19 +1971,46 @@ export const FiveColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -1439,19 +2031,47 @@ export const FiveColumns = (
               <a
                 class="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="copyright and trademark"
               >
                 Copyright and Trademark
               </a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="accessibility"
+              >
                 Accessibility
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/privacy">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga-section="secondary footer"
+                data-ga="privacy"
+              >
                 Privacy
               </a>
-              <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="terms of use"
+              >
                 Terms of Use
               </a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+                data-ga-type="internal link"
+                data-ga-section="tertiary footer"
+                data-ga="emergency"
+              >
                 Emergency
               </a>
             </nav>
@@ -1476,31 +2096,61 @@ export const SixColumns = (
 
           <div class="col-md" id="social-media">
             <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="facebook icon"
+              >
                 <span
                   title="Facebook Social Media Icon"
                   class="fab fa-facebook-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="twitter icon"
+              >
                 <span
                   title="Twitter Social Media Icon"
                   class="fab fa-twitter-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="instagram icon"
+              >
                 <span
                   title="Instagram Social Media Icon"
                   class="fab fa-instagram-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="youtube icon"
+              >
                 <span
                   title="YouTube Social Media Icon"
                   class="fab fa-youtube-square"
                 ></span>
               </a>
-              <a class="nav-link" href="#">
+              <a
+                class="nav-link"
+                href="#"
+                data-ga-type="external link"
+                data-ga-section="primary footer"
+                data-ga="linkedin icon"
+              >
                 <span
                   title="LinkedIn Social Media Icon"
                   class="fab fa-linkedin"
@@ -1778,19 +2428,46 @@ export const SixColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="maps and locations"
                 >
                   Maps and Locations
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="jobs"
+                >
                   Jobs
                 </a>
-                <a class="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="directory"
+                >
                   Directory
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/contact">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="contact asu"
+                >
                   Contact ASU
                 </a>
-                <a class="nav-link" href="https://my.asu.edu/">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                  data-ga-type="internal link"
+                  data-ga-section="secondary footer"
+                  data-ga="my asu"
+                >
                   My ASU
                 </a>
               </nav>
@@ -1812,22 +2489,47 @@ export const SixColumns = (
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/copyright-trademark"
+                  data-ga-type="internal link"
+                  data-ga-section="tertiary footer"
+                  data-ga="copyright and trademark"
                 >
                   Copyright and Trademark
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/accessibility/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/accessibility/"
+                  data-ga-type="internal link"
+                  data-ga-section="tertiary footer"
+                  data-ga="accessibility"
+                >
                   Accessibility
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/about/privacy">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/privacy"
+                  data-ga-type="internal link"
+                  data-ga-section="tertiary footer"
+                  data-ga-section="secondary footer"
+                  data-ga="privacy"
+                >
                   Privacy
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/about/terms-of-use"
+                  data-ga-type="internal link"
+                  data-ga-section="tertiary footer"
+                  data-ga="terms of use"
                 >
                   Terms of Use
                 </a>
-                <a class="nav-link" href="https://www.asu.edu/emergency/">
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/emergency/"
+                  data-ga-type="internal link"
+                  data-ga-section="tertiary footer"
+                  data-ga="emergency"
+                >
                   Emergency
                 </a>
               </nav>

@@ -3,6 +3,12 @@ import React from "react";
 
 // @ts-ignore
 import innovationLogo from "../../assets/images/innovationLogo.png";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const DEFAULT_GA_EVENT = {
+  type: "internal link",
+  section: "secondary footer",
+};
 
 const Innovation = () => {
   return (
@@ -25,22 +31,61 @@ const Innovation = () => {
                 <a
                   className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
+                  onFocus={() =>
+                    trackGAEvent({
+                      ...DEFAULT_GA_EVENT,
+                      text: "maps and locations",
+                    })
+                  }
                 >
                   Maps and Locations
                 </a>
-                <a className="nav-link" href="https://www.asu.edu/asujobs">
+                <a
+                  className="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                  onFocus={() =>
+                    trackGAEvent({
+                      ...DEFAULT_GA_EVENT,
+                      text: "jobs",
+                    })
+                  }
+                >
                   Jobs
                 </a>
-                <a className="nav-link" href="https://isearch.asu.edu/">
+                <a
+                  className="nav-link"
+                  href="https://isearch.asu.edu/"
+                  onFocus={() =>
+                    trackGAEvent({
+                      ...DEFAULT_GA_EVENT,
+                      text: "directory",
+                    })
+                  }
+                >
                   Directory
                 </a>
                 <a
                   className="nav-link"
                   href="https://www.asu.edu/about/contact"
+                  onFocus={() =>
+                    trackGAEvent({
+                      ...DEFAULT_GA_EVENT,
+                      text: "contact asu",
+                    })
+                  }
                 >
                   Contact ASU
                 </a>
-                <a className="nav-link" href="https://my.asu.edu/">
+                <a
+                  className="nav-link"
+                  href="https://my.asu.edu/"
+                  onFocus={() =>
+                    trackGAEvent({
+                      ...DEFAULT_GA_EVENT,
+                      text: "my asu",
+                    })
+                  }
+                >
                   My ASU
                 </a>
               </nav>
