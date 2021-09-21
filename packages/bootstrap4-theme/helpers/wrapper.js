@@ -53,7 +53,6 @@ export const UnityStory = (props) => {
  *  bootstrap: () => null,
  *  initFunc: () => null,
  *  omitTemplate: boolean,
- *  columsTemplate: number,
  * }} props
  * @returns  {JSX.Element}
  */
@@ -62,10 +61,9 @@ export const createStoryExtend = (
   {
     initFunc = null,
     omitTemplate = false,
-    columsTemplate = null,
   }
 ) => {
-  return createStory(componentJSX, initFunc, omitTemplate, columsTemplate);
+  return createStory(componentJSX, initFunc, omitTemplate);
 };
 
 export const createStory = (
