@@ -2,7 +2,7 @@
 // @ts-check
 import { number, text } from "@storybook/addon-knobs";
 import React from "react";
-import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components.js';
+import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components';
 import { ImageCarousel } from ".";
 
 const myCarouselItems = [
