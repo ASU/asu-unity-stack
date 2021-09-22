@@ -520,6 +520,11 @@ Cards - Table of Contents
       & .card-icon {
         display: flex;
         margin-left: -($uds-size-spacing-3 / 2);
+        align-items: flex-start;
+
+        svg {
+          margin-top: 2px; //adjust for line height of text
+        }
       }
     }
 
