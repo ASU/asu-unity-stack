@@ -234,12 +234,27 @@ function setupCaroarousel({
       const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
       const halfDiff = (fullNavWidth - imageNav.offsetWidth) / 2;
 
-      if (currentIndex > 1) {
-        const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
-        imageGalleryNav.style.left = `${pos}px`;
+      const lastSlide = images[images.length - 1];
+      const lastSlideRight = lastSlide.getBoundingClientRect().right;
+      const imageNavRect = imageNav.getBoundingClientRect();
+      if (
+        lastSlideRight > imageNavRect.right ||
+        currentIndex <= images.length - 3
+      ) {
+        if (currentIndex > 1) {
+          const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
+          imageGalleryNav.style.left = `${pos}px`;
+        } else {
+          const pos = halfDiff;
+          imageGalleryNav.style.left = `${pos}px`;
+        }
       } else {
-        const pos = halfDiff;
-        imageGalleryNav.style.left = `${pos}px`;
+        const fromTarget = imageNavRect.right - 75 - lastSlideRight;
+        const currentPos = parseFloat(
+          imageGalleryNav.style.left.replace("px", "")
+        );
+        const newPos = currentPos + fromTarget;
+        imageGalleryNav.style.left = `${newPos}px`;
       }
     }
 
