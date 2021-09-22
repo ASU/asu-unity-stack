@@ -117,6 +117,7 @@ export const ButtonWithIconComponent = createStory(
       <a href="#" class="btn btn-gold" role="button">
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
+      <hr />
       <a href="#" class="btn btn-maroon" role="button">
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
@@ -130,6 +131,7 @@ export const DisabledStateComponent = createStory(
       <button type="button" class="btn btn-gold" disabled>
         Gold button
       </button>
+      <hr />
       <button type="button" class="btn btn-maroon" disabled>
         Button
       </button>
@@ -143,6 +145,7 @@ export const DisabledStateComponent = createStory(
       >
         Gold link
       </a>
+      <hr />
       <a
         href="#"
         class="btn btn-maroon disabled"
