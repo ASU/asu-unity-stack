@@ -2,7 +2,7 @@
 // @ts-check
 import { number, text } from "@storybook/addon-knobs";
 import React from "react";
-
+import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components';
 import { ImageCarousel } from ".";
 
 const myCarouselItems = [
@@ -89,13 +89,20 @@ const Wrapper = ({ children }) => (
 );
 
 export const ImageCarouselDefault = () => (
-  <Wrapper>
-    <ImageCarousel
-      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={myCarouselItems}
-    />
-  </Wrapper>
+  <div>
+    {Header}
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+        <ImageCarousel
+          perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+          maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+          imageItems={myCarouselItems}
+        />
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 export const ImageCarouselWithContent = () => (
