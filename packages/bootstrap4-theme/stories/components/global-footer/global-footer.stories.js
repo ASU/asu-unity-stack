@@ -13,20 +13,20 @@ import {
   FiveColumns,
   SixColumns,
 } from './global-footer.components.js';
-import { initGA } from './global-footer';
+import { initFooterGA } from './global-footer';
 
 export const GlobalElementsOnlyExample = createStory(
   GlobalElementsOnly,
-  initGA
+  initFooterGA
 );
-export const ZeroColumnsExample = createStory(ZeroColumns, initGA);
-export const OneColumnExample = createStory(OneColumn, initGA);
+export const ZeroColumnsExample = createStory(ZeroColumns, initFooterGA);
+export const OneColumnExample = createStory(OneColumn, initFooterGA);
 export const OneColumnNoLogoOrSocialExample = createStory(
   OneColumnNoLogoOrSocial,
-  initGA
+  initFooterGA
 );
-export const TwoColumnsExample = createStory(TwoColumns, initGA);
-export const ThreeColumnsExample = createStory(ThreeColumns, initGA);
-export const FourColumnsExample = createStory(FourColumns, initGA);
-export const FiveColumnsExample = createStory(FiveColumns, initGA);
-export const SixColumnsExample = createStory(SixColumns, initGA);
+export const TwoColumnsExample = createStory(TwoColumns, initFooterGA);
+export const ThreeColumnsExample = createStory(ThreeColumns, initFooterGA);
+export const FourColumnsExample = createStory(FourColumns, initFooterGA);
+export const FiveColumnsExample = createStory(FiveColumns, initFooterGA);
+export const SixColumnsExample = createStory(SixColumns, initFooterGA);
