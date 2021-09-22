@@ -9,7 +9,7 @@ export const AlertsComponent = createStory(
         <span title="Alert" class="fa fa-icon fa-bell"></span>
       </div>
       <div class="alert-content">
-        Alert (orange): This is a warning alert to alert, confirm or
+        Warning (orange): This is a warning alert to alert, confirm or
         notify. It is built using{' '}
         <a href="https://getbootstrap.com/docs/4.0/components/alerts">
           the Bootstrap 4 .alert-warning class
