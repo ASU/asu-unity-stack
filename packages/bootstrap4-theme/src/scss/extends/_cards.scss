@@ -192,6 +192,7 @@ Cards - Table of Contents
   @include media-breakpoint-down(md) {
     .card-buttons{
       display: flex;
+      flex-wrap: wrap;
       .card-button {
         display: inline;
         padding-right: 0;

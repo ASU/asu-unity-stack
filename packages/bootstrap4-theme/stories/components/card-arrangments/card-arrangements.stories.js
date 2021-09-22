@@ -34,15 +34,17 @@ export const TwoCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -85,15 +87,17 @@ export const TwoCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -147,15 +151,17 @@ export const ThreeCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -198,15 +204,17 @@ export const ThreeCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -249,15 +257,17 @@ export const ThreeCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -437,15 +447,17 @@ export const FourCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -488,15 +500,17 @@ export const FourCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -539,15 +553,17 @@ export const FourCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -590,15 +606,17 @@ export const FourCardArrangement = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -652,15 +670,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -703,15 +723,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -754,15 +776,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -805,15 +829,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -856,15 +882,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -907,15 +935,17 @@ export const CardsAutoArrangementTwoColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -969,15 +999,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1020,15 +1052,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1071,15 +1105,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1122,15 +1158,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1173,15 +1211,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1224,15 +1264,17 @@ export const CardsAutoArrangementThreeColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1286,15 +1328,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1337,15 +1381,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1388,15 +1434,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1439,15 +1487,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1490,15 +1540,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
@@ -1541,15 +1593,17 @@ export const CardsAutoArrangementFourColumns = createStory(
             <div>Downtown Phoenix campus</div>
           </div>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-dark">
+              Button link here
+            </a>
+          </div>
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
