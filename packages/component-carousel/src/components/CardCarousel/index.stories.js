@@ -2,7 +2,7 @@
 import React from "react";
 
 import { CardCarousel } from ".";
-import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components.js';
+import { Basic as Header } from '../../../../bootstrap4-theme/stories/components/global-header/global-header.components';
 
 
 
