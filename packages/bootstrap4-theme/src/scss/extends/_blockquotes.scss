@@ -33,6 +33,8 @@ blockquote:before {
   font-size: $uds-size-font-large;
   font-weight: 700;
 
+  padding: $uds-size-spacing-4;
+
   @include media-breakpoint-down(sm) {
     padding: $uds-size-spacing-4;
   }
@@ -59,6 +61,12 @@ blockquote:before {
   }
 
   .citation {
+    display: flex;
+
+    .citation-content {
+      display: flex;
+      flex-direction: column;
+    }
     cite {
       display: block;
       font-size: $uds-size-font-medium;
@@ -68,16 +76,16 @@ blockquote:before {
         font-weight: 700;
       }
 
-      &.name:before {
-        padding-right: 0.5em;
-        content: '\2014';
-      }
-
       &.description {
         font-weight: 400;
-        padding-left: 1.5rem;
       }
     }
+  }
+
+  .citation:before {
+    padding-right: 0.5em;
+    margin-top: -5px;
+    content: '\2014';
   }
 
   &.with-image {
@@ -181,6 +189,10 @@ blockquote:before {
 .alt-citation,
 .uds-testimonial {
   .citation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     &:before {
       content: '';
       display: block;
@@ -192,11 +204,19 @@ blockquote:before {
 
     cite.name:before {
       content: none;
+      display: flex;
+    }
+
+    cite.name {
+      display: flex;
+      justify-content: flex-start;
     }
 
     cite.description {
       font-weight: 400;
       padding-left: 0;
+      display: flex;
+      justify-content: flex-start;
     }
   }
 
@@ -236,6 +256,13 @@ blockquote:before {
 
   .citation:before {
     display: inline-flex;
+    margin: $uds-size-spacing-2 auto;
+  }
+
+  cite.name,
+  cite.description {
+    display: flex;
+    justify-content: center;
   }
 
   &.with-image img {
