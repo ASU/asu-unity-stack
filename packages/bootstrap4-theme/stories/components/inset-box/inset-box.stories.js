@@ -62,7 +62,7 @@ export const WhiteBackground = createStory(
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
       </p>
-      <div class="d-flex mb-2">
+      <div class="uds-inset-box-buttons">
         <a href="#" class="btn btn-dark mr-2">
           Button link here
         </a>
