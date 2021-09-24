@@ -345,12 +345,13 @@ Cards - Table of Contents
   padding-right: 16px;
 }
 
-.card-story .card-header {
-  padding-top: 24px;
+.card-story:not(.card.card-foldable)
+  > div:first-of-type:not(.card-image-content) {
+  padding-top: 16px;
 }
 
 .card-story > div:first-of-type:not(.card-image-content) {
-  padding: 24px 16px 16px 16px;
+  padding: 16px;
   flex-grow: 1;
 }
 
