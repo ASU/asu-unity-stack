@@ -37,6 +37,7 @@
  *    program?: string
  *    collegeAcadOrg?: string
  *    departmentCode?: string
+ *    showInactivePrograms?: boolean | stringBool
  * } & AppDataSource } ProgramListDataSource
  *
  * @typedef {{

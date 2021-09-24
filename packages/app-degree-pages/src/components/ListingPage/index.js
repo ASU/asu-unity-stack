@@ -90,7 +90,8 @@ const ListingPage = ({
     []
   );
   // These filter are input props which never change.
-  const { collegeAcadOrg, departmentCode } = programList.dataSource;
+  const { collegeAcadOrg, departmentCode, showInactivePrograms } =
+    programList.dataSource;
 
   /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
   const [stateFilters, setStateFilters] = useState({
@@ -121,6 +122,7 @@ const ListingPage = ({
       filters: {
         collegeAcadOrg,
         departmentCode,
+        showInactivePrograms,
       },
     });
 
@@ -148,6 +150,7 @@ const ListingPage = ({
         locations:
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
+        showInactivePrograms,
       },
     });
 

@@ -104,6 +104,22 @@ Default.args = {
   ...defaultArgs,
   introContent: null,
 };
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithCertificate = Template.bind({});
+DefaultWithCertificate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      cert: "true",
+      showInactivePrograms: "true",
+    },
+  },
+};
 
 /**
  * @type {{ args: AppProps}}
