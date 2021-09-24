@@ -33,11 +33,13 @@ const BaseFeed = ({
   return (
     <FeedContainerProvider
       renderHeader={
-        <FeedHeader
-          header={header}
-          ctaButton={ctaButton}
-          defaultProps={defaultProps}
-        />
+        header && ctaButton ? (
+          <FeedHeader
+            header={header}
+            ctaButton={ctaButton}
+            defaultProps={defaultProps}
+          />
+        ) : null
       }
       renderBody={<FeedBody>{children}</FeedBody>}
       dataTransformer={transformData}
