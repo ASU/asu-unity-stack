@@ -9,7 +9,7 @@ addParameters({
 });
 
 import './scss-loader.scss';
-import '../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+import '../../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 import jquery from 'jquery';
 global.$ = jquery;

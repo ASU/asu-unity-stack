@@ -1,8 +1,8 @@
 const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
+const PROJECT_DIR = path.resolve(__dirname, "../../");
 
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../../src/**/*.percy.mdx", "../../src/**/*.percy.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

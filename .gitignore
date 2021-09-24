@@ -103,6 +103,7 @@ typings/
 dist
 build
 stats.html
+percy-storybook
 
 .history
 .idea
