@@ -145,7 +145,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     arrowPrev.classList.add(cssDisabledClass);
     arrowNext.classList.remove(cssDisabledClass);
   } else if (currentIndex >= buttonCount - 1) {
-    // MIDDLE SLIDES.
+    // LAST SLIDE.
     // Gradient for end.
     gliderTrack?.classList.add("slider-end");
     imageGalleryNavigation?.classList.add("slider-end");
@@ -153,7 +153,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     arrowPrev.classList.remove(cssDisabledClass);
     arrowNext.classList.add(cssDisabledClass);
   } else {
-    // LAST SLIDE.
+    // MIDDLE SLIDES.
     // Gradient for middle.
     gliderTrack?.classList.add("slider-mid");
     imageGalleryNavigation?.classList.add("slider-mid");
