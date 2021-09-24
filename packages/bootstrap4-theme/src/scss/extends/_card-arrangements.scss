@@ -18,6 +18,11 @@
 
     @media screen and (max-width: $uds-breakpoint-sm) {
       flex-direction: column;
+      align-items: flex-start;
+      & > button {
+        margin-left: unset;
+        margin-right: auto;
+      }
     }
   }
 
