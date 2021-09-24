@@ -3,28 +3,28 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Buttons');
 
 export const ButtonColorsComponent = createStory(
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
-      <button class="btn btn-gold" type="submit">
-        Button button
-      </button>
-      <a class="btn btn-gold" type="button" href="#">
-        Anchor tag button
-      </a>
-      <input class="btn btn-gold" type="submit" value="Input button" />
-      <hr />
-      <button type="button" class="btn btn-maroon">
-        Maroon
-      </button>
-      <hr />
-      <button type="button" class="btn btn-gray">
-        Light
-      </button>
-      <hr />
-      <button type="button" class="btn btn-dark">
-        Dark
-      </button>
-    </div>
+  <div>
+    <button class="btn btn-gold" type="submit">
+      Button button
+    </button>
+    <hr />
+    <a class="btn btn-gold" type="button" href="#">
+      Anchor tag button
+    </a>
+    <hr />
+    <input class="btn btn-gold" type="submit" value="Input button" />
+    <hr />
+    <button type="button" class="btn btn-maroon">
+      Maroon
+    </button>
+    <hr />
+    <button type="button" class="btn btn-gray">
+      Light
+    </button>
+    <hr />
+    <button type="button" class="btn btn-dark">
+      Dark
+    </button>
   </div>
 );
 
@@ -117,6 +117,7 @@ export const ButtonWithIconComponent = createStory(
       <a href="#" class="btn btn-gold" role="button">
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
+      <hr />
       <a href="#" class="btn btn-maroon" role="button">
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
@@ -130,6 +131,7 @@ export const DisabledStateComponent = createStory(
       <button type="button" class="btn btn-gold" disabled>
         Gold button
       </button>
+      <hr />
       <button type="button" class="btn btn-maroon" disabled>
         Button
       </button>
@@ -143,6 +145,7 @@ export const DisabledStateComponent = createStory(
       >
         Gold link
       </a>
+      <hr />
       <a
         href="#"
         class="btn btn-maroon disabled"
@@ -418,40 +421,6 @@ const TestButtons = (
       <button type="button" class="btn btn-info">
         Alert: Info
       </button>
-    </div>
-  </div>
-);
-
-const demoColumnStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  border: '1px solid',
-  padding: '10px',
-};
-
-export const FocusButtonsAndLinksComponent = createStory(
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      paddingTop: '30px',
-    }}
-  >
-    <div style={{ backgroundColor: '#191919', ...demoColumnStyles }}>
-      {TestButtons}
-    </div>
-    <div
-      style={{
-        background:
-          'linear-gradient(rgba(25, 25, 25, 0), rgba(25, 25, 25, 0.75))',
-        ...demoColumnStyles,
-      }}
-    >
-      {TestButtons}
-    </div>
-    <div style={{ backgroundColor: '#ffffff', ...demoColumnStyles }}>
-      {TestButtons}
     </div>
   </div>
 );
