@@ -28,7 +28,7 @@ function RequiredCourse({
   majorMapOnCampusArchiveURL,
 }) {
   const dt = new Date();
-  const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 11}`;
+  const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 1}`;
 
   const template = (
     <div className="container pl-0" data-testid="required-course">
