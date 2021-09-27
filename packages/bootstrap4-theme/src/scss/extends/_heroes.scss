@@ -149,6 +149,18 @@ div.uds-hero-lg {
   div[class^='uds-hero'] .content > .text-white {
     color: $uds-color-base-gray-7 !important;
   }
+  div.uds-hero-sm,
+  div.uds-hero-md {
+    .hero {
+      max-height: $uds-size-spacing-32;
+    }
+  }
+
+  div.uds-hero-lg {
+    .hero {
+      max-height: $uds-size-spacing-64;
+    }
+  }
 }
 
 /*--------------------------------------------------------------
