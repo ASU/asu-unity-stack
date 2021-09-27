@@ -42,10 +42,12 @@ export const Default = createStory(
             incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
         </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-sm btn-dark">
-            Button link here
-          </a>
+        <div class="card-buttons">
+          <div class="card-button">
+            <a href="#" class="btn btn-sm btn-dark">
+              Button link here
+            </a>
+          </div>
         </div>
         <div class="card-link">
           <a href="#" class="">
