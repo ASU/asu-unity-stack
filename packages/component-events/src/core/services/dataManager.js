@@ -19,7 +19,7 @@ const filterData = (event, rawFilters) => {
   const filters = rawFilters.split(",");
 
   for (let filterIndex = 0; filterIndex < filters.length; filterIndex += 1) {
-    const filter = filters[filterIndex];
+    const filter = normalizeFiltersData(filters[filterIndex]);
     for (
       let fieldIndex = 0;
       fieldIndex < filterFields.length;
