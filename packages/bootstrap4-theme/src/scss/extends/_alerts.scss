@@ -5,6 +5,8 @@
 .alert {
   color: $uds-color-font-dark-base;
   display: flex;
+  border-radius: 0;
+
   .alert-icon {
     flex: 0 0 $uds-size-spacing-8;
     svg {

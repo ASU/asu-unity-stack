@@ -20,13 +20,15 @@ export const BlockquoteNoImage = createStory(
           and the pursuit of Happiness.
         </p>
         <div class="citation">
-          <cite class="name">Thomas Jefferson</cite>
-          <cite class="description">The Declaration of Independence</cite>
+          <div class="citation-content">
+            <cite class="name">Thomas Jefferson</cite>
+            <cite class="description">The Declaration of Independence</cite>
+          </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="p-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote accent-gold text-white uds-content-align">
         <svg
           title="Open quote"
@@ -42,8 +44,10 @@ export const BlockquoteNoImage = createStory(
             dedicated to the proposition that all men are created equal.
           </p>
           <div class="citation">
-            <cite class="name">Abraham Lincoln</cite>
-            <cite class="description">Gettysburg Address</cite>
+            <div class="citation-content">
+              <cite class="name">Abraham Lincoln Lincoln Lincoln </cite>
+              <cite class="description">Gettysburg Address</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -66,14 +70,16 @@ export const BlockquoteWithImage = createStory(
           assuming fundamental responsibility for the economic, social,
           cultural and overall health of the communities it serves.
         </p>
-        <div class="citation">
-          <cite class="name">Michael M. Crow</cite>
-          <cite class="description">ASU Charter</cite>
-        </div>
+          <div class="citation">
+            <div class="citation-content">
+              <cite class="name">Michael M. Crow</cite>
+              <cite class="description">ASU Charter</cite>
+            </div>
+          </div>
       </blockquote>
     </div>
 
-    <section class="bg-gray-2 my-12 py-4">
+    <section class="bg-gray-2">
       <div class="uds-blockquote with-image reversed uds-content-align">
         <img
           src="https://placeimg.com/300/300/any"
@@ -87,8 +93,10 @@ export const BlockquoteWithImage = createStory(
             achieve excellence, access and impact.
           </p>
           <div class="citation">
-            <cite class="name">Michael M. Crow</cite>
-            <cite class="description">ASU Charter</cite>
+            <div class="citation-content">
+              <cite class="name">Michael M. Crow</cite>
+              <cite class="description">ASU Charter</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -115,7 +123,7 @@ export const BlockquoteNoCitation = createStory(
     </div>
 
 
-    <div class="p-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
           src="https://placeimg.com/300/300/tech"
@@ -151,13 +159,15 @@ export const BlockquoteAltCitation = createStory(
           and some people make it happen.
         </p>
         <div class="citation">
-          <cite class="name">Michael Jordan</cite>
-          <cite class="description">NBA Superstar</cite>
+          <div class="citation-content">
+            <cite class="name">Michael Jordan</cite>
+            <cite class="description">NBA Superstar</cite>
+          </div>
         </div>
       </blockquote>
     </div>
 
-    <section class="bg-gray-1 mt-8 pt-md-4">
+    <section class="bg-gray-1">
       <div class="uds-blockquote alt-citation accent-maroon uds-content-align">
         <svg
           title="Open quote"
@@ -172,8 +182,10 @@ export const BlockquoteAltCitation = createStory(
             championships.
           </p>
           <div class="citation">
-            <cite class="name">Michael Jordan</cite>
-            <cite class="description">NBA Superstar</cite>
+            <div class="citation-content">
+              <cite class="name">Michael Jordan</cite>
+              <cite class="description">NBA Superstar</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -198,14 +210,16 @@ export const TestimonialsNoImage = createStory(
           wish to serve under them.
         </p>
         <div class="citation">
-          <cite class="name">Spock</cite>
-          <cite class="description">First officer, USS Enterprise</cite>
+          <div class="citation-content">
+            <cite class="name">Spock</cite>
+            <cite class="description">First officer, USS Enterprise</cite>
+          </div>
         </div>
       </blockquote>
     </div>
 
 
-    <div class="pt-md-4 bg-gray-2">
+    <div class="bg-gray-2">
       <div class="uds-blockquote uds-testimonial accent-maroon uds-content-align">
         <svg
           title="Open quote"
@@ -221,8 +235,10 @@ export const TestimonialsNoImage = createStory(
             you both in ways you cannot yet realize.
           </p>
           <div class="citation">
-            <cite class="name">Spock</cite>
-            <cite class="description">First officer, USS Enterprise</cite>
+            <div class="citation-content">
+              <cite class="name">Spock</cite>
+              <cite class="description">First officer, USS Enterprise</cite>
+            </div>
           </div>
         </blockquote>
       </div>
@@ -231,7 +247,7 @@ export const TestimonialsNoImage = createStory(
 );
 
 export const TestimonialsWithImage = createStory(
-  <div class="mt-8">
+  <div>
     <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
         src="https://placeimg.com/600/400/arch"
@@ -250,12 +266,14 @@ export const TestimonialsWithImage = createStory(
           blaster at your side, kid.
         </p>
         <div class="citation">
-          <cite class="name">Han Solo</cite>
+          <div class="citation-content">
+            <cite class="name">Han Solo</cite>
+          </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="pt-md-4 bg-gray-7">
+    <div class="bg-gray-7">
       <div class="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
           src="https://placeimg.com/400/400/tech"
@@ -276,7 +294,9 @@ export const TestimonialsWithImage = createStory(
             the Jedi — all of it. It’s all true.
           </p>
           <div class="citation">
-            <cite class="name">Han Solo</cite>
+            <div class="citation-content">
+              <cite class="name">Han Solo</cite>
+            </div>
           </div>
         </blockquote>
       </div>

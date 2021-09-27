@@ -24,15 +24,7 @@ function calcualteViewItems(itemCount, perView) {
   );
 
   buttonCount = itemCount;
-  if (vw < 768) {
-    // Value for sm breakpoint
-    // No adjusting buttonCount. Always max, one at a time for sm.
-  } else if (vw < 992) {
-    // Value for md breakpoint
-    if (perView >= 2) {
-      buttonCount = itemCount - 1;
-    }
-  } else {
+  if (vw >= 992) {
     // Value for lg breakpoint
     if (perView >= 2) {
       buttonCount = itemCount - 1;

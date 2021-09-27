@@ -2,9 +2,7 @@
 .btn {
   text-decoration: $uds-component-button-text-decoration;
   font-weight: $uds-component-button-font-weight;
-  & + & {
-    margin-left: $uds-size-spacing-2;
-  }
+  white-space: nowrap;
   &.btn-md {
     font-size: $uds-component-button-medium-font-size;
     padding: $uds-component-button-padding-y-medium

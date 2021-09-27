@@ -145,7 +145,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     arrowPrev.classList.add(cssDisabledClass);
     arrowNext.classList.remove(cssDisabledClass);
   } else if (currentIndex >= buttonCount - 1) {
-    // MIDDLE SLIDES.
+    // LAST SLIDE.
     // Gradient for end.
     gliderTrack?.classList.add("slider-end");
     imageGalleryNavigation?.classList.add("slider-end");
@@ -153,7 +153,7 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     arrowPrev.classList.remove(cssDisabledClass);
     arrowNext.classList.add(cssDisabledClass);
   } else {
-    // LAST SLIDE.
+    // MIDDLE SLIDES.
     // Gradient for middle.
     gliderTrack?.classList.add("slider-mid");
     imageGalleryNavigation?.classList.add("slider-mid");
@@ -198,10 +198,13 @@ function setupCaroarousel({
   // Attatch event listener and instruct slide to go left and right
   let gliderElement = document.querySelector(`#${instanceName}`);
   gliderElement.addEventListener("keyup", e => {
-    // @ts-ignore
-    if (e.keyCode === 39) slider.go(">");
-    // @ts-ignore
-    else if (e.keyCode === 37) slider.go("<");
+    if (e.keyCode === 39) {
+      slider.go(">");
+    } else if (e.keyCode === 37) {
+      slider.go("<");
+    } else if(e.keyCode === 13) {
+      slider.go(document.activeElement.dataset.glideDir);
+    }
   });
 
   // On build.before event...
@@ -234,12 +237,27 @@ function setupCaroarousel({
       const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
       const halfDiff = (fullNavWidth - imageNav.offsetWidth) / 2;
 
-      if (currentIndex > 1) {
-        const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
-        imageGalleryNav.style.left = `${pos}px`;
+      const lastSlide = images[images.length - 1];
+      const lastSlideRight = lastSlide.getBoundingClientRect().right;
+      const imageNavRect = imageNav.getBoundingClientRect();
+      if (
+        lastSlideRight > imageNavRect.right ||
+        currentIndex <= images.length - 3
+      ) {
+        if (currentIndex > 1) {
+          const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
+          imageGalleryNav.style.left = `${pos}px`;
+        } else {
+          const pos = halfDiff;
+          imageGalleryNav.style.left = `${pos}px`;
+        }
       } else {
-        const pos = halfDiff;
-        imageGalleryNav.style.left = `${pos}px`;
+        const fromTarget = imageNavRect.right - 75 - lastSlideRight;
+        const currentPos = parseFloat(
+          imageGalleryNav.style.left.replace("px", "")
+        );
+        const newPos = currentPos + fromTarget;
+        imageGalleryNav.style.left = `${newPos}px`;
       }
     }
 
