@@ -18,9 +18,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 
 /**
  * @typedef {{
- *    title: string
+ *    type?: "video" | "youtube"
+ *    title?: string
  *    url: string
- *    vttUrl: string
+ *    vttUrl?: string
  * }} VideoItem
  */
 
