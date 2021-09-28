@@ -6,6 +6,7 @@ import { OverlapContentImage } from "../../../../core/components";
 import { progDetailSectionIds } from "../../../../core/models";
 
 const WrapperContainer = styled.section`
+  width: 100%;
   & a {
     word-break: break-word;
   }
@@ -23,7 +24,7 @@ const GlobalOpportunity = ({ contents, image }) => (
   >
     <OverlapContentImage
       headingTag="H2"
-      title="Global opportunities"
+      title={progDetailSectionIds.globalOpportunity.text}
       contents={contents}
       image={image}
     />
