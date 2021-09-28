@@ -29,8 +29,14 @@ const ListViewWrapper = styled.ul`
       .card-content-wrapper {
         padding-top: 0 !important;
       }
-      .card-event-icons {
-        width: 50%;
+      .card-event-details {
+        flex-direction: column;
+        .card-event-icons {
+          width: 100%;
+          &:nth-child(1) {
+            margin-bottom: 24px;
+          }
+        }
       }
       .card-img-top {
         height: auto;
