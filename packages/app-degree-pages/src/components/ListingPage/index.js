@@ -122,7 +122,7 @@ const ListingPage = ({
       filters: {
         collegeAcadOrg,
         departmentCode,
-        showInactivePrograms,
+        showInactivePrograms: showInactivePrograms ?? false,
       },
     });
 
@@ -150,7 +150,7 @@ const ListingPage = ({
         locations:
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
-        showInactivePrograms,
+        showInactivePrograms: showInactivePrograms ?? false,
       },
     });
 
