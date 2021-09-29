@@ -144,6 +144,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    locations?: FilterOption []
  *    asuLocals?: FilterOption []
  *    acceleratedConcurrent?: FilterOption
+ *    showInactivePrograms?: boolean | import("./listing-page-types").stringBool
  * }} FiltersState
  */
 
