@@ -9,7 +9,7 @@ const ListView = () => {
   const { feeds } = useContext(FeedContext);
 
   return (
-    <ListViewWrapper>
+    <ListViewWrapper data-testid="list-view-container">
       {feeds?.map(event => (
         <li key={event.id}>
           <Card
