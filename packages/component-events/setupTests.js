@@ -1,6 +1,7 @@
-import fetchMock from "jest-fetch-mock";
+// @ts-check
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 
-fetchMock.enableMocks();
+import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
 
 expect.extend({ toMatchImageSnapshot });
