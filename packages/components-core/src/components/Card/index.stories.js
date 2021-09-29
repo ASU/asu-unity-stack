@@ -28,8 +28,14 @@ View component examples and source code below.
 const Template = args => (
   <div className="container">
     <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
-      <div className={classNames("col", "col-12", "col-md-6", "col-lg-4")}>
-        <Card {...args} />
+      <div className={classNames("col", "col-12")}>
+        <div class="uds-card-arrangement ">
+          <div class="uds-card-arrangement-card-container  auto-arrangement   three-columns">
+            <Card {...args} />
+            <Card {...args} />
+            <Card {...args} />
+          </div>
+        </div>
       </div>
     </div>
   </div>
