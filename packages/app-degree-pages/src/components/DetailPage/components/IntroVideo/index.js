@@ -16,9 +16,9 @@ const VideoWrapper = styled.div`
 /**
  * @param {import("src/core/models/shared-types").VideoItem} props
  */
-const IntroVideo = ({ url, vttUrl, title }) => (
+const IntroVideo = ({ type, url, vttUrl, title }) => (
   <VideoWrapper data-testid="intro-video">
-    <Video url={url} vttUrl={vttUrl} title={title} />
+    <Video type={type} url={url} vttUrl={vttUrl} title={title} />
   </VideoWrapper>
 );
 

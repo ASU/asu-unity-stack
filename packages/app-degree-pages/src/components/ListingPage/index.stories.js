@@ -130,6 +130,7 @@ WithCollegeAcadOrgAndDepartmentCode.args = {
   hero: null,
   programList: {
     ...Default.args.programList,
+    // @ts-ignore
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
