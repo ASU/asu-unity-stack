@@ -15,18 +15,19 @@ const GridViewWrapper = styled.ul`
     .card-img-top {
       border-radius: 0 !important;
     }
-    .card-event-icons {
-      &:nth-child(1) {
-        width: 58%;
-      }
-      &:nth-child(2) {
-        width: 42%;
-      }
-    }
   }
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    .card-event-details {
+      flex-direction: column;
+      .card-event-icons {
+        width: 100%;
+        &:nth-child(1) {
+          margin-bottom: 24px;
+        }
+      }
+    }
     .card-content-wrapper {
       padding-top: 0 !important;
     }
