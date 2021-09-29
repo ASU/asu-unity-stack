@@ -1,8 +1,16 @@
 // @ts-check
 import React from "react";
+import styled from "styled-components";
 
 import { OverlapContentImage } from "../../../../core/components";
 import { progDetailSectionIds } from "../../../../core/models";
+
+const WrapperContainer = styled.section`
+  width: 100%;
+  & a {
+    word-break: break-word;
+  }
+`;
 
 /**
  *
@@ -10,7 +18,7 @@ import { progDetailSectionIds } from "../../../../core/models";
  * @returns {JSX.Element}
  */
 const CareerOutlook = ({ contents, image }) => (
-  <section
+  <WrapperContainer
     id={progDetailSectionIds.careerOutlook.targetIdName}
     data-testid="career-outlook"
   >
@@ -20,7 +28,7 @@ const CareerOutlook = ({ contents, image }) => (
       contents={contents}
       image={image}
     />
-  </section>
+  </WrapperContainer>
 );
 
 CareerOutlook.propTypes = OverlapContentImage.propTypes;
