@@ -309,6 +309,23 @@ WithIntroTextMediaVideo.args.introContent = {
     vttUrl: "",
   },
 };
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const WithIntroTextMediaYoutubeVideo = Template.bind({});
+
+WithIntroTextMediaYoutubeVideo.args = { ...WithIntroTextMediaImage.args };
+WithIntroTextMediaYoutubeVideo.args.introContent = {
+  ...WithIntroTextMediaImage.args.introContent,
+  image: undefined,
+  video: {
+    // @ts-ignore
+    type: "youtube",
+    url: "https://www.youtube.com/embed/YW2p0ctzK9c",
+  },
+};
+
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}

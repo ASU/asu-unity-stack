@@ -121,6 +121,7 @@ function textTextMediaTypeHtmlTemplate({
         <div className="col-sm-12 col-md-7 mt-2 mt-sm-0">
           {video && (
             <Video
+              type={video.type}
               url={video.url}
               vttUrl={video.vttUrl}
               title={video.title}
