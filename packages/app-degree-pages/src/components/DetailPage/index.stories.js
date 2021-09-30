@@ -349,7 +349,7 @@ WithYoutubeVideo.args.introContent = {
   video: {
     // @ts-ignore
     type: "youtube",
-    url: "https://www.youtube.com/embed/YW2p0ctzK9c",
+    url: "https://www.youtube.com/watch?v=aA2DCIDNxmw&list=PLuoS9aQM7Lzurd5ezsuCIlxyag7q_c-NQ",
   },
 };
 
