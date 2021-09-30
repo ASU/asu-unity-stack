@@ -9,5 +9,5 @@ export const youtubeURLParser = (type, url) => {
   const match = url.match(regExp);
   return match && match[7].length === 11
     ? `https://www.youtube.com/embed/${match[7]}`
-    : false;
+    : url;
 };
