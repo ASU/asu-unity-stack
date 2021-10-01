@@ -9,7 +9,7 @@ const GridView = () => {
   const { feeds } = useContext(FeedContext);
 
   return (
-    <GridViewWrapper>
+    <GridViewWrapper data-testid="grid-view-container">
       {feeds?.map(event => (
         <li key={event.id}>
           <Card
