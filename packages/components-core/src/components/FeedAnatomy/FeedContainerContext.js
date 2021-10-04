@@ -58,12 +58,15 @@ const FeedContainerProvider = ({
           <span>Error, try again!</span>
         ) : (
           <>
-            {loading && !feeds ? (
+            {loading && !feeds && (
               <div className="text-center mt-4">
                 <Loader />
               </div>
-            ) : (
+            )}
+            {feeds?.length ? (
               renderBody
+            ) : (
+              <p className="text-center">No news to show.</p>
             )}
           </>
         )}
