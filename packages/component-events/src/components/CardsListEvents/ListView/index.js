@@ -6,7 +6,7 @@ import { formatDate, formatTime } from "../../../core/utils/date";
 import { ListViewWrapper } from "./index.styles";
 
 const ListView = () => {
-  const { feeds } = useContext(FeedContext);
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
 
   return (
     <ListViewWrapper data-testid="list-view-container">

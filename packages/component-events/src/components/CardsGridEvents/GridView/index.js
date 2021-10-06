@@ -6,7 +6,7 @@ import { formatDate, formatTime } from "../../../core/utils/date";
 import { GridViewWrapper } from "./index.styles";
 
 const GridView = () => {
-  const { feeds } = useContext(FeedContext);
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
 
   return (
     <GridViewWrapper data-testid="grid-view-container">
