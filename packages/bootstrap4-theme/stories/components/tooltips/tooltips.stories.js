@@ -25,7 +25,9 @@ export const WhiteBackground = createStory(
       </div>
     </div>
   </div>,
-  initTooltip
+  {
+    initFunc: initTooltip,
+  }
 );
 
 export const BaseGrayBackground = createStory(
@@ -50,7 +52,9 @@ export const BaseGrayBackground = createStory(
       </div>
     </div>
   </div>,
-  initTooltip
+  {
+    initFunc: initTooltip,
+  }
 );
 
 export const GrayBackground = createStory(
@@ -75,7 +79,9 @@ export const GrayBackground = createStory(
       </div>
     </div>
   </div>,
-  initTooltip
+  {
+    initFunc: initTooltip,
+  }
 );
 
 export const DarkBackground = createStory(
@@ -100,5 +106,7 @@ export const DarkBackground = createStory(
       </div>
     </div>
   </div>,
-  initTooltip
+  {
+    initFunc: initTooltip,
+  }
 );

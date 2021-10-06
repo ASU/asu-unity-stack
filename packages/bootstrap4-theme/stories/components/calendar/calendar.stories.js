@@ -5,5 +5,7 @@ import { initCalendar } from './calendar';
 
 export const CalendarComponent = createStory(
   <div id="calendar"></div>,
-  initCalendar
+  {
+    initFunc: initCalendar,
+  }
 );

@@ -16,5 +16,7 @@ export const DonutChartMarkUp = createStory(
       </div>
     </div>
   </div>,
-  initChart
+  {
+    initFunc: initChart
+  }
 );
