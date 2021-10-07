@@ -106,7 +106,10 @@ export const BannersOrange = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [0]
+  }
 );
 
 export const BannersBlue = createStory(
@@ -158,7 +161,10 @@ export const BannersBlue = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [0]
+  }
 );
 
 export const BannersGray2 = createStory(
@@ -210,7 +216,10 @@ export const BannersGray2 = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [0]
+  }
 );
 
 export const BannersGray7 = createStory(
@@ -262,5 +271,8 @@ export const BannersGray7 = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [0]
+  }
 );
