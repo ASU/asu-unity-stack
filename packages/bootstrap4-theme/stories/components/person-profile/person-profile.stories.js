@@ -1,6 +1,8 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Person Profile');
+
+export const PersonProfile = createStory(
   <div class="uds-person-profile">
     <img
       class="profile-img"

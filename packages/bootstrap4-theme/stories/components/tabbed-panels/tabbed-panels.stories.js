@@ -175,7 +175,9 @@ export const WhiteBackgroundStory = createStory(
       </div>
     </div>
   </div>,
-  initTabs
+  {
+    initFunc: initTabs,
+  },
 );
 
 export const Gray1BackgroundStory = createStory(
@@ -281,7 +283,9 @@ export const Gray1BackgroundStory = createStory(
       </div>
     </div>
   </div>,
-  initTabs
+  {
+    initFunc: initTabs,
+  },
 );
 
 export const Gray2BackgroundStory = createStory(
@@ -387,7 +391,9 @@ export const Gray2BackgroundStory = createStory(
       </div>
     </div>
   </div>,
-  initTabs
+  {
+    initFunc: initTabs,
+  },
 );
 
 export const Gray7BackgroundStory = createStory(
@@ -493,5 +499,7 @@ export const Gray7BackgroundStory = createStory(
       </div>
     </div>
   </div>,
-  initTabs
+  {
+    initFunc: initTabs,
+  },
 );

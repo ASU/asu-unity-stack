@@ -2,7 +2,6 @@ import React from 'react';
 import {
   createComponent,
   createStory,
-  createStoryExtend,
 } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
 
@@ -417,7 +416,7 @@ export const hoverable = createStory(
   </div>
 );
 
-export const variations = createStoryExtend(
+export const variations = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -1128,7 +1127,7 @@ export const checkboxInlineCard = createStory(
   </div>
 );
 
-export const mediaTypeOverlayCard = createStoryExtend(
+export const mediaTypeOverlayCard = createStory(
   <div class="container">
     <div class="row row-spaced pt-2 pb-2">
       <div class="col col-12 col-md-6 col-lg-4">

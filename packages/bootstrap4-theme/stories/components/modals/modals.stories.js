@@ -19,6 +19,8 @@ export const ModalComponent = createStory(
       </div>
     </div>
   </div>,
-  initModals,
-  true
+  {
+    initFunc: initModals,
+    omitTemplate: true,
+  }
 );

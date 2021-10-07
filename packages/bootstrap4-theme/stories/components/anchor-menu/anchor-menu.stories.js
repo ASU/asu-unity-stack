@@ -355,5 +355,8 @@ export const AnchorMenu = createStory(
 
     <div style={{ height: '1000px' }}></div>
   </div>,
-  initializeAnchorMenu
+  {
+    initFunc: initializeAnchorMenu,
+    omitTemplate: true
+  }
 );

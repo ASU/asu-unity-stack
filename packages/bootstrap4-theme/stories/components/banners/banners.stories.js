@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
 export default createComponent('Banners');
 
 export const BannersGreen = createStory(
@@ -51,7 +51,10 @@ export const BannersGreen = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
 
 export const BannersOrange = createStory(
@@ -103,7 +106,10 @@ export const BannersOrange = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
 
 export const BannersBlue = createStory(
@@ -155,7 +161,10 @@ export const BannersBlue = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
 
 export const BannersGray2 = createStory(
@@ -207,7 +216,10 @@ export const BannersGray2 = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
 
 export const BannersGray7 = createStory(
@@ -259,5 +271,8 @@ export const BannersGray7 = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
