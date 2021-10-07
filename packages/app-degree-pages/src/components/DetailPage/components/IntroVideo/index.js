@@ -2,7 +2,7 @@
 import { Video } from "@asu-design-system/components-core";
 import React from "react";
 import styled from "styled-components";
-
+import { youtubeURLParser } from './parseYoutubeURL';
 import { videoPropType } from "../../../../core/models";
 
 const VideoWrapper = styled.div`
@@ -16,9 +16,14 @@ const VideoWrapper = styled.div`
 /**
  * @param {import("src/core/models/shared-types").VideoItem} props
  */
-const IntroVideo = ({ url, vttUrl, title }) => (
+const IntroVideo = ({ type, url, vttUrl, title }) => (
   <VideoWrapper data-testid="intro-video">
-    <Video url={url} vttUrl={vttUrl} title={title} />
+    <Video
+      type={type}
+      url={youtubeURLParser(type, url)}
+      vttUrl={vttUrl}
+      title={title}
+    />
   </VideoWrapper>
 );
 

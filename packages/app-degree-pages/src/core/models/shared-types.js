@@ -18,9 +18,10 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 
 /**
  * @typedef {{
- *    title: string
+ *    type?: "video" | "youtube"
+ *    title?: string
  *    url: string
- *    vttUrl: string
+ *    vttUrl?: string
  * }} VideoItem
  */
 
@@ -144,6 +145,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    locations?: FilterOption []
  *    asuLocals?: FilterOption []
  *    acceleratedConcurrent?: FilterOption
+ *    showInactivePrograms?: boolean | import("./listing-page-types").stringBool
  * }} FiltersState
  */
 

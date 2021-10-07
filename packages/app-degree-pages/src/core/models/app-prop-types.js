@@ -32,6 +32,7 @@ const contentPropType = {
 };
 
 const videoPropType = {
+  type: PropTypes.oneOf(["video", "youtube"]),
   url: PropTypes.string,
   altText: PropTypes.string,
   vttUrl: PropTypes.string,

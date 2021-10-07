@@ -3,7 +3,10 @@
 import { isAccelConcValid } from "../models";
 import { degreeDataPropResolverService } from "./degree-data-prop-resolver-service";
 
-/** @typedef {import("../models/shared-types").DegreeDataPropResolver} PropResolver */
+/**
+ * @typedef {import("../models/shared-types").DegreeDataPropResolver} PropResolver
+ * @typedef {import("../../core/models/shared-types").FiltersState} FiltersState
+ */
 /**
  *
  * @param {{
@@ -20,6 +23,7 @@ function filterData({
     acceleratedConcurrent,
     locations = [],
     keyword,
+    showInactivePrograms,
   },
 }) {
   // ============================================================
@@ -59,11 +63,19 @@ function filterData({
       : true;
   };
   // ============================================================
+  /** @param {PropResolver} resolver   */
+  const isValidProgram = resolver => {
+    return JSON.parse(showInactivePrograms) === false
+      ? resolver.isValidActiveProgram()
+      : true;
+  };
+  // ============================================================
   /** @param {Object.<string, any>} row  */
   const doFilter = row => {
     const resolver = degreeDataPropResolverService(row);
+
     return (
-      resolver.isValidActiveProgram() &&
+      isValidProgram(resolver) &&
       isValidCollegeAcadOrg(resolver) &&
       isValidDepartmentCode(resolver) &&
       isValidCampus(resolver) &&

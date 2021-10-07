@@ -104,6 +104,22 @@ Default.args = {
   ...defaultArgs,
   introContent: null,
 };
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithCertificate = Template.bind({});
+DefaultWithCertificate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      cert: "true",
+      showInactivePrograms: "true",
+    },
+  },
+};
 
 /**
  * @type {{ args: AppProps}}
@@ -114,6 +130,7 @@ WithCollegeAcadOrgAndDepartmentCode.args = {
   hero: null,
   programList: {
     ...Default.args.programList,
+    // @ts-ignore
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
@@ -293,6 +310,23 @@ WithIntroTextMediaVideo.args.introContent = {
     vttUrl: "",
   },
 };
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const WithIntroTextMediaYoutubeVideo = Template.bind({});
+
+WithIntroTextMediaYoutubeVideo.args = { ...WithIntroTextMediaImage.args };
+WithIntroTextMediaYoutubeVideo.args.introContent = {
+  ...WithIntroTextMediaImage.args.introContent,
+  image: undefined,
+  video: {
+    // @ts-ignore
+    type: "youtube",
+    url: "https://www.youtube.com/embed/YW2p0ctzK9c",
+  },
+};
+
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import { template } from './templates';
 
 import { Basic as Header } from '../stories/components/global-header/global-header.components.js';
 import { GlobalElementsOnly as Footer } from '../stories/components/global-footer/global-footer.components.js';
-export const createComponent = (name, section='Components') => {
+export const createComponent = (name, section = 'Components') => {
   return {
     title: `${section}/${name}`,
     argTypes: {
@@ -28,47 +28,93 @@ export const createComponent = (name, section='Components') => {
             1: '1 Column (Fixed Width)',
             2: '2 Column (Fixed Width)',
             3: '3 Column (Fixed Width)',
-            4: '4 Column (Fixed Width)'
+            4: '4 Column (Fixed Width)',
           },
-        }
+        },
       },
     },
-  }
-}
+  };
+};
 
-export const UnityStory = (props) => {
-  return (
-    <div>
-      { props.header && <div>header</div> }
-      <div>{ props.children }</div>
-      { props.footer && <div>footer</div> }
-    </div>
-  )
-}
+export const layoutNames = {
+  FULL_WIDTH: 0,
+  ONE_COLUMN: 1,
+  TWO_COLUMN: 2,
+  THREE_COLUMN: 3,
+  FOUR_COLUMN: 4,
+};
 
-export const createStory = (componentJSX, initFunc=null, omitTemplate=false) => {
+/**
+ *
+ * @param {JSX.Element} componentJSX
+ * @param ? {{
+ *  unsupportedTemplates: [],
+ *  initFunc: () => null,
+ *  omitTemplate: boolean,
+ * }} props
+ * @returns  {JSX.Element}
+ */
 
-  const Template = ({...args}) => {
-    if(initFunc) {
-      // Necessitated by Storybook intricacies.
-      if( document.readyState !== 'loading' ) {
-        setTimeout(function(){ initFunc(); }, 150);
-      } else {
-        window.addEventListener('DOMContentLoaded', function () {
-          initFunc();
-        });
+export const createStory = (
+  componentJSX,
+  {
+    supportedTemplates = [
+      layoutNames.FULL_WIDTH,
+      layoutNames.ONE_COLUMN,
+      layoutNames.TWO_COLUMN,
+      layoutNames.THREE_COLUMN,
+      layoutNames.FOUR_COLUMN,
+    ],
+    initFunc = null,
+    omitTemplate = false,
+  } = {}
+) => {
+  const Template = ({ ...args }) => {
+    if(supportedTemplates.includes(args.template) || omitTemplate) {
+      if (initFunc) {
+        // Necessitated by Storybook intricacies.
+        if (document.readyState !== 'loading') {
+          setTimeout(function () {
+            initFunc();
+          }, 150);
+        } else {
+          window.addEventListener('DOMContentLoaded', function () {
+            initFunc();
+          });
+        }
       }
+
+      const componentCode = omitTemplate
+        ? componentJSX
+        : template(componentJSX, args.template);
+
+      return (
+        <div>
+          {args.header && Header}
+          {componentCode}
+          {args.footer && Footer}
+        </div>
+      );
+    } else {
+      return (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '80%',
+          maxWidth: '600px',
+          margin: '0 auto'}}>
+          <h2>This layout isn't supported for this element.</h2>
+          <span>Use the storybook controls to choose a supported layout:</span>
+          <ul>
+            { supportedTemplates.includes(layoutNames.FULL_WIDTH) && <li>Full-width</li> }
+            { supportedTemplates.includes(layoutNames.ONE_COLUMN) && <li>One Column</li> }
+            { supportedTemplates.includes(layoutNames.TWO_COLUMN) && <li>Two Column</li> }
+            { supportedTemplates.includes(layoutNames.THREE_COLUMN) && <li>Three Column</li> }
+            { supportedTemplates.includes(layoutNames.FOUR_COLUMN) && <li>Four Column</li> }
+          </ul>
+        </div>
+      )
     }
-
-    const componentCode = omitTemplate ? componentJSX : template(componentJSX, args.template);
-
-    return (
-      <div>
-        { args.header && Header }
-        { componentCode }
-        { args.footer && Footer  }
-      </div>
-    )
   };
   return Template.bind({});
-}
+};

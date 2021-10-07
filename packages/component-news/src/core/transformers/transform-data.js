@@ -12,6 +12,7 @@ const transformData = ({ node }, index) => {
     buttonLink: node.path,
     interests: node.interests,
     newsUnits: node.news_units,
+    eventTypes: node.event_types,
   };
 };
 

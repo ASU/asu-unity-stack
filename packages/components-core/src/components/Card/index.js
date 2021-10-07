@@ -378,21 +378,23 @@ const CardContent = ({
       />
     )}
     {buttons && (
-      <div className="card-button" data-testid="card-button">
-        {buttons.map(button => (
-          // @ts-ignore
-          <Button
-            key={`${button.label}-${button.href}`}
-            ariaLabel={button.ariaLabel}
-            color={button.color}
-            icon={button.icon}
-            href={button.href}
-            label={button.label}
-            onClick={button.onClick}
-            size={button.size}
-            target={button.target}
-          />
-        ))}
+      <div className="card-buttons">
+        <div className="card-button" data-testid="card-button">
+          {buttons.map(button => (
+            // @ts-ignore
+            <Button
+              key={`${button.label}-${button.href}`}
+              ariaLabel={button.ariaLabel}
+              color={button.color}
+              icon={button.icon}
+              href={button.href}
+              label={button.label}
+              onClick={button.onClick}
+              size={button.size}
+              target={button.target}
+            />
+          ))}
+        </div>
       </div>
     )}
     {linkUrl && linkLabel && (

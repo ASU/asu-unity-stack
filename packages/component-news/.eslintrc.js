@@ -14,8 +14,8 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "airbnb",
-    "plugin:prettier/recommended",
     "plugin:jest/recommended",
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -24,10 +24,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: [
-    "react",
-    // "jest"
-  ],
+  plugins: ["react", "jest"],
   rules: {
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",

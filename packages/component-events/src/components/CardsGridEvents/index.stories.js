@@ -13,9 +13,12 @@ export default {
 
 const Template = args => <CardsGridEvents {...args} />;
 
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
 export const Default = Template.bind({});
 Default.args = {
-  header: { color: "dark", text: "Events list" },
+  header: { color: "dark", text: "Events Cards" },
   ctaButton: {
     color: "gold",
     url: "https://news.asu.edu",
@@ -29,9 +32,12 @@ Default.parameters = {
   mockData: createMockParam(),
 };
 
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
 export const WithFilters = Template.bind({});
 WithFilters.args = {
-  header: { color: "dark", text: "Events list filtered" },
+  header: { color: "dark", text: "Events Cards Filtered" },
   ctaButton: {
     color: "gold",
     url: "https://news.asu.edu",
@@ -46,9 +52,12 @@ WithFilters.parameters = {
   mockData: createMockParam(),
 };
 
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
 export const MaxItems = Template.bind({});
 MaxItems.args = {
-  header: { color: "dark", text: "Events list" },
+  header: { color: "dark", text: "Events Cards" },
   ctaButton: {
     color: "gold",
     url: "https://news.asu.edu",
@@ -63,6 +72,9 @@ MaxItems.parameters = {
   mockData: createMockParam(),
 };
 
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
 export const WithNoHeader = Template.bind({});
 WithNoHeader.args = {
   dataSource: {

@@ -55,7 +55,7 @@ const ListTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext);
 
   return (
-    <NewsWrapper className="row-spaced">
+    <NewsWrapper className="row-spaced" data-testid="list-view-container">
       {feeds?.map((feed, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>{listRow(feed, cardButton)}</React.Fragment>

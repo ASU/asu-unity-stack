@@ -337,6 +337,25 @@ WithVideoAndMarketText.args.introContent = {
 /**
  * @type {{ args: AppProps }}
  */
+export const WithYoutubeVideo = Template.bind({});
+WithYoutubeVideo.args = { ...defaultArgs };
+WithYoutubeVideo.args.dataSource = {
+  ...WithYoutubeVideo.args.dataSource,
+  acadPlan: "LSBISBIS", // this has marketText
+};
+WithYoutubeVideo.args.introContent = {
+  ...WithYoutubeVideo.args.introContent,
+  image: undefined,
+  video: {
+    // @ts-ignore
+    type: "youtube",
+    url: "https://www.youtube.com/watch?v=aA2DCIDNxmw&list=PLuoS9aQM7Lzurd5ezsuCIlxyag7q_c-NQ",
+  },
+};
+
+/**
+ * @type {{ args: AppProps }}
+ */
 export const WithNoGlobalOpportunity = Template.bind({});
 WithNoGlobalOpportunity.args = { ...defaultArgs };
 WithNoGlobalOpportunity.args.dataSource = {

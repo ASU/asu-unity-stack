@@ -212,6 +212,7 @@ const DetailPage = ({
               <div className="col col-sm-12 col-md-5 col-lg-5">
                 {introContent?.video && (
                   <IntroVideo
+                    type={introContent.video.type}
                     url={introContent.video.url}
                     vttUrl={introContent.video.vttUrl}
                     title={introContent.video.title}

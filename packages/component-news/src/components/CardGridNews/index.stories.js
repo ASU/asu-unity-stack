@@ -20,6 +20,10 @@ const Template = args => <CardGridNews {...args} />;
  */
 export const Default = Template.bind({});
 Default.args = {
+  header: {
+    color: "dark",
+    text: "News Cards",
+  },
   ctaButton: {
     url: "https://news.asu.edu",
   },
@@ -34,14 +38,41 @@ Default.parameters = {
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const WithProps = Template.bind({});
-WithProps.args = {
+export const WithCardButtonProps = Template.bind({});
+WithCardButtonProps.args = {
   header: {
     color: "dark",
-    text: "News grid",
+    text: "News Cards",
   },
   ctaButton: {
-    color: "maroon", // "gold", "maroon", "gray", "dark"
+    color: "maroon",
+    url: "https://news.asu.edu",
+    text: "Click to see more news",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+  cardButton: {
+    color: "gold",
+    text: "Read news",
+    size: "default", //   "default" | "small" | "medium" | "large"
+  },
+};
+WithCardButtonProps.parameters = {
+  mockData: createMockParam(),
+};
+
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
+export const WithFilters = Template.bind({});
+WithFilters.args = {
+  header: {
+    color: "dark",
+    text: "News Cards Filtered",
+  },
+  ctaButton: {
+    color: "maroon",
     url: "https://news.asu.edu",
     text: "Click to see more news",
   },
@@ -52,13 +83,43 @@ WithProps.args = {
     // filters: "Nursing and Health Care",
     // filters: "Health,Journalism",
   },
-  maxItems: 7,
-  cardButton: {
-    color: "gold", // "gold", "maroon", "gray", "dark"
-    text: "Read news",
-    size: "default", //   "default" | "small" | "medium" | "large"
+};
+WithFilters.parameters = {
+  mockData: createMockParam(),
+};
+
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
+export const MaxItems = Template.bind({});
+MaxItems.args = {
+  header: {
+    color: "dark",
+    text: "News Cards",
+  },
+  ctaButton: {
+    color: "maroon",
+    url: "https://news.asu.edu",
+    text: "Click to see more news",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+  maxItems: 10,
+};
+MaxItems.parameters = {
+  mockData: createMockParam(),
+};
+
+/**
+ * @type {{ args: FeedType, parameters: object}}
+ */
+export const WithNoHeader = Template.bind({});
+WithNoHeader.args = {
+  dataSource: {
+    url: "/api/mocks/feeds-json",
   },
 };
-WithProps.parameters = {
+WithNoHeader.parameters = {
   mockData: createMockParam(),
 };

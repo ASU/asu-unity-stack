@@ -5,6 +5,7 @@ const AnchorWrapper = styled.a`
     color: #191919 !important;
     text-decoration: none;
     display: block;
+    height: 100%;
   }
 `;
 

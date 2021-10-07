@@ -1,10 +1,12 @@
 .uds-image-text-block {
   &-container {
     width: 100%;
+    max-width: 1920px;
     border: 1px solid $uds-color-base-gray-3;
     background: $uds-color-background-white 0% 0% no-repeat padding-box;
     display: flex;
     flex-direction: row;
+    margin: 0 auto;
 
     @include media-breakpoint-up(md) {
       max-height: 540px;

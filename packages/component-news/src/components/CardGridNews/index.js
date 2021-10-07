@@ -57,7 +57,7 @@ const GridTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext);
 
   return (
-    <NewsWrapper className="row row-spaced">
+    <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>{gridRow(feed, cardButton)}</React.Fragment>
