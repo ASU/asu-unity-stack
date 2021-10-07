@@ -13,6 +13,7 @@ import { ListView } from "./ListView";
 
 const CardsListEvents = ({ header, ctaButton, dataSource, maxItems }) => {
   return (
+    // Calling the high order component that fetch the data
     <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
       <ListView />
     </BaseFeed>

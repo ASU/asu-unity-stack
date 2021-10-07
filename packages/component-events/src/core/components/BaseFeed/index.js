@@ -15,6 +15,12 @@ import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";
 
 const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
+  // Calling the components-core component to fetch the data, transform it and filter it
+  // We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
+  // We provide in the renderHeader the components-core header, if it is desired to be shown
+  // We provide the maxItems prop to limit the items rendered
+  // We provide the dataSource to read the url to fetch the data
+  // We provide the defaultProps to use some needed default values in case they are not provided
   <FeedContainerProvider
     renderHeader={
       header && ctaButton ? (
