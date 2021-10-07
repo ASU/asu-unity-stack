@@ -10,15 +10,19 @@
 
     & > h2 {
       font: normal normal bold 2.5rem Arial;
+      padding-right: $uds-size-spacing-6;
     }
 
     & > button {
       margin-left: auto;
     }
 
-    @media screen and (max-width: $uds-breakpoint-sm) {
+    @media screen and (max-width: $uds-breakpoint-md) {
       flex-direction: column;
       align-items: flex-start;
+      & > h2 {
+        padding-right: 0;
+      }
       & > button {
         margin-left: unset;
         margin-right: auto;
