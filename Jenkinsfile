@@ -9,6 +9,7 @@ pipeline {
         REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
         GH_TOKEN = credentials('GH_TOKEN')
         NPM_TOKEN = credentials('NPM_TOKEN')
+        PERCY_TOKEN = credentials("PERCY_TOKEN")
     }
     options {
       withAWS(credentials:'aws-jenkins')
@@ -41,9 +42,10 @@ pipeline {
                 }
             }
             steps {
-                echo 'Tests temporarily disabled...'
                 //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
                 //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
+                sh 'echo "run visual regression testing"'
+                sh 'yarn percy'
             }
         }
         stage('Publish Packages to Registry') {

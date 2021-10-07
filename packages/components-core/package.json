@@ -17,6 +17,7 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && percy storybook ./percy-storybook",
     "build-storybook": "build-storybook",
     "postinstall": "yarn build"
   },
@@ -24,6 +25,8 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.68",
+    "@percy/storybook": "^4.0.3",
     "@asu-design-system/bootstrap4-theme": "latest",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.14",
