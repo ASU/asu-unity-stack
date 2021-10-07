@@ -105,13 +105,24 @@ div[class^='uds-hero'] {
 
   // Base class modifier: .has-btn-row
   &.has-btn-row {
-    grid-template-rows: 1fr repeat(4, auto);
+
+    grid-template-rows: 1fr auto auto $uds-size-spacing-3 auto;
+
+    .hero {
+      grid-row: 1 / span 3;
+    }
+
+    h1 {
+      grid-row: 2;
+    }
 
     .btn-row {
-      grid-row: 4;
+      grid-row: 3 / span 2;
+      display: flex;
+      flex-direction: column;
 
-      .btn {
-        margin-bottom: $uds-size-spacing-2;
+      .btn:last-child {
+        margin-top: $uds-size-spacing-2;
 
         & + .btn {
           margin-left: 0;
@@ -217,12 +228,20 @@ div.uds-hero-lg {
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
+      .hero {
+        grid-row: 1 / span 6;
+      }
+      h1 {
+        grid-row: 2;
+      }
+
       .content {
         grid-row: 4;
       }
 
       .btn-row {
         grid-row: 5;
+        flex-direction: row;
 
         .btn {
           margin-top: $uds-size-spacing-3;
