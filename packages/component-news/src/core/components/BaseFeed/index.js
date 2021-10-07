@@ -30,6 +30,12 @@ const BaseFeed = ({
 }) => {
   const filters = pDataSource.filters?.replace(/_/g, " ");
   const dataSource = { ...pDataSource, filters };
+
+  // We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
+  // We provide in the renderHeader the components-core header, if it is desired to be shown
+  // We provide the maxItems prop to limit the items rendered
+  // We provide the dataSource to read the url to fetch the data
+  // We provide the defaultProps to use some needed default values in case they are not provided
   return (
     <FeedContainerProvider
       renderHeader={

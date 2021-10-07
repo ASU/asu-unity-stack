@@ -37,7 +37,7 @@ const cardRow = (feed, index, cardButton) => ({
  */
 // eslint-disable-next-line react/prop-types
 const CarouselTemplate = ({ cardButton }) => {
-  const { feeds } = useContext(FeedContext);
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
   const cardItems = feeds?.map((feed, index) =>
     cardRow(feed, index, cardButton)
   );
@@ -58,6 +58,7 @@ const CarouselTemplate = ({ cardButton }) => {
  * @param {import("../../core/models/news-types").FeedType} props
  */
 const CardCarouselNews = ({ cardButton, ...props }) => (
+  // Calling the high order component that fetch the data
   <BaseFeed {...props}>
     <CarouselTemplate
       cardButton={{ ...defaultProps.cardButton, ...cardButton }}

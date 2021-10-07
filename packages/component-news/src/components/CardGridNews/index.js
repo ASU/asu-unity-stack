@@ -54,7 +54,7 @@ const gridRow = (feed, cardButton) => (
  */
 // eslint-disable-next-line react/prop-types
 const GridTemplate = ({ cardButton }) => {
-  const { feeds } = useContext(FeedContext);
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
 
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
@@ -71,6 +71,7 @@ const GridTemplate = ({ cardButton }) => {
  * @param {import("../../core/models/news-types").FeedType} props
  */
 const CardGridNews = ({ cardButton, ...props }) => (
+  // Calling the high order component that fetch the data
   <BaseFeed {...props}>
     <GridTemplate cardButton={{ ...defaultProps.cardButton, ...cardButton }} />
   </BaseFeed>

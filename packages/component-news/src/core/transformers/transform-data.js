@@ -1,6 +1,7 @@
+// @ts-check
 import { shortenText } from "../utils/shorten-text";
 
-// @ts-check
+// Transformer data function provided to the high order component
 const transformData = ({ node }, index) => {
   return {
     index,

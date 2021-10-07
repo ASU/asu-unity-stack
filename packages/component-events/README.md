@@ -19,35 +19,35 @@ The way it works is: when the initializer function is called, this creates the e
  - Grid Card view
  - List Card view
 ## Props and settings
+The props of the components are being typed with the use of [JSDocs](https://jsdoc.app/about-getting-started.html). With this API we can make use of direferent block tags to define prop types. Read more about [@typedef](https://jsdoc.app/tags-typedef.html) and [@param](https://jsdoc.app/tags-param.html) block tags.
+The componet can be customized by setting the following props
 
- The componet can be customized by setting the following props
-
- ```JS
- /**
-  *  @typedef {{
-  *    color?: "white" | "dark"
-  *    text?: string
-  * }} FeedHeader
-  *
-  *  @typedef {{
-  *    color?: "gold" | "maroon" | "gray" | "dark"
-  *    text?: string
-  *    url?: string
-  * }} FeedCtaButton
-  *
-  * @typedef {{
-  *  url?: string
-  *  filters?: string
-  * }} DataSource
-  *
-  * @typedef {{
-  *  header?: FeedHeader
-  *  ctaButton?: FeedCtaButton
-  *  dataSource: DataSource
-  *  maxItems?: number
-  * }} FeedType
-  */
- ```
+```JS
+/**
+ *  @typedef {{
+ *    color?: "white" | "dark"
+ *    text?: string
+ * }} FeedHeader
+ *
+ *  @typedef {{
+ *    color?: "gold" | "maroon" | "gray" | "dark"
+ *    text?: string
+ *    url?: string
+ * }} FeedCtaButton
+ *
+ * @typedef {{
+ *  url?: string
+ *  filters?: string
+ * }} DataSource
+ *
+ * @typedef {{
+ *  header?: FeedHeader
+ *  ctaButton?: FeedCtaButton
+ *  dataSource: DataSource
+ *  maxItems?: number
+ * }} FeedType
+ */
+```
 
 ## CLI Commands
 
@@ -103,7 +103,7 @@ It is meant to be a string which contains all desired filters separated by a com
 Fields where the filter will be applied
 
 ```JS
-const filterFields = ["eventTopics", "eventUnits", "interests", "audiences"];
+const filterFields = ["eventTopics", "eventUnits", "interests", "audiences", "eventTypes"];
 ```
 
 Any one dataSource filter value will be checked against every field in the feed source

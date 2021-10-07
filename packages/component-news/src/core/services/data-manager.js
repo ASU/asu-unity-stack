@@ -1,7 +1,8 @@
 import { filterFields } from "../constants/filter-fields";
 
 /**
- *
+ * Filter data function provided to the high order component
+ * It iterates throughout the filter field to filter and the provided filter values. It returns true if the new event match the filters.
  * @param {Object.<string,string>} node
  * @return {boolean}
  */
@@ -24,9 +25,4 @@ const filterData = (node, rawFilters = "") => {
   return false;
 };
 
-const normalizeFiltersData = filter => {
-  const normalizedFilter = filter.toLowerCase().split(" ").join("_");
-  return normalizedFilter;
-};
-
-export { filterData, normalizeFiltersData };
+export { filterData };

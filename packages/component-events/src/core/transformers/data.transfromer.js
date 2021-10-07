@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- *
+ * Transformer data function provided to the high order component
  * @param {object} data
  */
 const transformData = data => ({
