@@ -51,7 +51,10 @@ export const BannersGreen = createStory(
         </div>
       </div>
     </div>
-  </section>
+  </section>,
+  {
+    supportedTemplates: [0]
+  }
 );
 
 export const BannersOrange = createStory(

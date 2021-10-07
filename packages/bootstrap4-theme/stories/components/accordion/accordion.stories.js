@@ -44,7 +44,8 @@ export const FoldableCardDefaultClosed = createStory(
         eiusmod tempor
       </p>
     </div>
-  </div>
+  </div>,
+  {}
 );
 
 export const FoldableCardDefaultOpen = createStory(
@@ -88,7 +89,8 @@ export const FoldableCardDefaultOpen = createStory(
         eiusmod tempor
       </p>
     </div>
-  </div>
+  </div>,
+  {}
 );
 
 export const Accordion = createStory(
@@ -226,7 +228,8 @@ export const Accordion = createStory(
       {/* end .card-body */}
     </div>
     {/* end .card */}
-  </div>
+  </div>,
+  {}
 );
 
 export const ColorAccents = createStory(
@@ -408,7 +411,8 @@ export const ColorAccents = createStory(
       {/* end .card-body */}
     </div>
     {/* end .card */}
-  </div>
+  </div>,
+  {}
 );
 
 export const IncludedIcons = createStory(
@@ -509,7 +513,8 @@ export const IncludedIcons = createStory(
       {/* end .card-body */}
     </div>
     {/* end .card */}
-  </div>
+  </div>,
+  {}
 );
 
 export const DisableFold = createStory(
@@ -593,5 +598,6 @@ export const DisableFold = createStory(
         {/* Component end */}
       </div>
     </div>
-  </div>
+  </div>,
+  {}
 );

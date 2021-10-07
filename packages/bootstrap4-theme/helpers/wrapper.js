@@ -36,18 +36,6 @@ export const createComponent = (name, section = 'Components') => {
   };
 };
 
-/**
- *
- * @param {JSX.Element} componentJSX
- * @param {{
- *  bootstrap: () => null,
- *  unsupportedTemplates: object,
- *  initFunc: () => null,
- *  omitTemplate: boolean,
- * }} props
- * @returns  {JSX.Element}
- */
-
 export const layoutNames = {
   FULL_WIDTH: 0,
   ONE_COLUMN: 1,
@@ -55,6 +43,17 @@ export const layoutNames = {
   THREE_COLUMN: 3,
   FOUR_COLUMN: 4,
 };
+
+/**
+ *
+ * @param {JSX.Element} componentJSX
+ * @param ? {{
+ *  unsupportedTemplates: [],
+ *  initFunc: () => null,
+ *  omitTemplate: boolean,
+ * }} props
+ * @returns  {JSX.Element}
+ */
 
 export const createStory = (
   componentJSX,
@@ -68,7 +67,7 @@ export const createStory = (
     ],
     initFunc = null,
     omitTemplate = false,
-  }
+  } = {}
 ) => {
   const Template = ({ ...args }) => {
     if(supportedTemplates.includes(args.template) || omitTemplate) {
@@ -98,7 +97,22 @@ export const createStory = (
       );
     } else {
       return (
-        <div>Oh no!</div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '80%',
+          maxWidth: '600px',
+          margin: '0 auto'}}>
+          <h2>This layout isn't supported for this element.</h2>
+          <span>Use the storybook controls to choose a supported layout:</span>
+          <ul>
+            { supportedTemplates.includes(layoutNames.FULL_WIDTH) && <li>Full-width</li> }
+            { supportedTemplates.includes(layoutNames.ONE_COLUMN) && <li>One Column</li> }
+            { supportedTemplates.includes(layoutNames.TWO_COLUMN) && <li>Two Column</li> }
+            { supportedTemplates.includes(layoutNames.THREE_COLUMN) && <li>Three Column</li> }
+            { supportedTemplates.includes(layoutNames.FOUR_COLUMN) && <li>Four Column</li> }
+          </ul>
+        </div>
       )
     }
   };
