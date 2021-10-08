@@ -5,6 +5,23 @@ export const initTabs = function () {
       setButtonsCompatibility(e);
     });
 
+    document.querySelectorAll('.uds-tabbed-panels').forEach((item) => {
+      const nav = item.querySelector('.nav-tabs');
+      nav.addEventListener('scroll', function(e) {
+        const scrollPos = e.target.scrollLeft;
+        if(scrollPos === 0){
+          item.querySelector('.scroll-control-prev').style.display = 'none';
+        } else {
+          item.querySelector('.scroll-control-prev').style.display = 'block';
+        }
+        if(nav.offsetWidth + scrollPos + 3 >= nav.scrollWidth){
+          item.querySelector('.scroll-control-next').style.display = 'none';
+        } else {
+          item.querySelector('.scroll-control-next').style.display = 'block';
+        }
+      });
+    });
+
     $('.scroll-control-next').on('click', function (e) {
       if (window.innerWidth > 992) {
         slideNav(this, e, -1);
