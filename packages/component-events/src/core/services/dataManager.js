@@ -2,13 +2,19 @@
 
 import { filterFields } from "../constants/filter-fields";
 
+/**
+ * Normalize the string provided, deleting underscores and spaces
+ * @param {string} filter
+ * @returns {string}
+ */
 const normalizeFiltersData = filter => {
   const normalizedFilter = filter.toLowerCase().split(" ").join("_");
   return normalizedFilter;
 };
 
 /**
- *
+ * Filter data function provided to the high order component
+ * It iterates throughout the filter field to filter and the provided filter values. It returns true if the event match the filters.
  * @param {object} event
  * @param {string} rawFilters
  * @return {boolean}

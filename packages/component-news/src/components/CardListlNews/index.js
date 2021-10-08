@@ -52,7 +52,7 @@ const listRow = (feed, cardButton) => (
  */
 // eslint-disable-next-line react/prop-types
 const ListTemplate = ({ cardButton }) => {
-  const { feeds } = useContext(FeedContext);
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
 
   return (
     <NewsWrapper className="row-spaced" data-testid="list-view-container">
@@ -69,6 +69,7 @@ const ListTemplate = ({ cardButton }) => {
  * @param {import("../../core/models/news-types").FeedType} props
  */
 const CardListlNews = ({ cardButton, ...props }) => (
+  // Calling the high order component that fetch the data
   <BaseFeed {...props}>
     <ListTemplate cardButton={{ ...defaultProps.cardButton, ...cardButton }} />
   </BaseFeed>
