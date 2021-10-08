@@ -77,7 +77,7 @@ const ASUHeader = ({
       }}
     >
       {/* @ts-ignore */}
-      <Header ref={headerRef} breakpoint={breakpoint}>
+      <Header id="asuHeader" ref={headerRef} breakpoint={breakpoint}>
         <HeaderMain />
       </Header>
     </AppContextProvider>
