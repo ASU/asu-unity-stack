@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Buttons', 'Atoms');
+export default createComponent('Buttons', 'Atoms', 'Examples');
 
 export const ButtonColorsComponent = createStory(
   <div>

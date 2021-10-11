@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Anchor Menu', 'Atoms');
 import { initializeAnchorMenu } from './anchor-menu';
-import { Basic } from '../../components/global-header/global-header.components.js';
+import { Basic } from '../../organisms/global-header/global-header.components.js';
 
 export const AnchorMenu = createStory(
   <div>
