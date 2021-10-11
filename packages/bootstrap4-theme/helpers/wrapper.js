@@ -85,7 +85,7 @@ export const layoutNames = {
         }
       }
 
-      const codeWithArgs = typeof(componentJSX === 'function') ? componentJSX(args) : componentJSX;
+      const codeWithArgs = typeof(componentJSX) === 'function' ? componentJSX(args) : componentJSX;
 
       const componentCode = omitTemplate
         ? codeWithArgs
