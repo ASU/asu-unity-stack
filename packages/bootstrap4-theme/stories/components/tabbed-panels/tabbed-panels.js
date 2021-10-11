@@ -7,18 +7,13 @@ export const initTabs = function () {
 
     document.querySelectorAll('.uds-tabbed-panels').forEach((item) => {
       const nav = item.querySelector('.nav-tabs');
-      nav.addEventListener('scroll', function(e) {
-        const scrollPos = e.target.scrollLeft;
-        if(scrollPos === 0){
-          item.querySelector('.scroll-control-prev').style.display = 'none';
-        } else {
-          item.querySelector('.scroll-control-prev').style.display = 'block';
-        }
-        if(nav.offsetWidth + scrollPos + 3 >= nav.scrollWidth){
-          item.querySelector('.scroll-control-next').style.display = 'none';
-        } else {
-          item.querySelector('.scroll-control-next').style.display = 'block';
-        }
+      nav.addEventListener('scroll', (event) => {
+        const scrollPos = event.target.scrollLeft;
+        const prevButton = item.querySelector('.scroll-control-prev');
+        const nextButton = item.querySelector('.scroll-control-next');
+        const atFarRight = nav.offsetWidth + scrollPos + 3 >= nav.scrollWidth;
+        prevButton.style.display = scrollPos === 0 ? 'none' : 'block';
+        nextButton.style.display = atFarRight ? 'none' : 'block';
       });
     });
 
