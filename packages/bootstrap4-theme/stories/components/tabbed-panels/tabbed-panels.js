@@ -5,6 +5,18 @@ export const initTabs = function () {
       setButtonsCompatibility(e);
     });
 
+    document.querySelectorAll('.uds-tabbed-panels').forEach((item) => {
+      const nav = item.querySelector('.nav-tabs');
+      nav.addEventListener('scroll', (event) => {
+        const scrollPos = event.target.scrollLeft;
+        const prevButton = item.querySelector('.scroll-control-prev');
+        const nextButton = item.querySelector('.scroll-control-next');
+        const atFarRight = nav.offsetWidth + scrollPos + 3 >= nav.scrollWidth;
+        prevButton.style.display = scrollPos === 0 ? 'none' : 'block';
+        nextButton.style.display = atFarRight ? 'none' : 'block';
+      });
+    });
+
     $('.scroll-control-next').on('click', function (e) {
       if (window.innerWidth > 992) {
         slideNav(this, e, -1);
