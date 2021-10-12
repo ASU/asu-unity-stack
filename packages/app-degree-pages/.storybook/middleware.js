@@ -5,15 +5,6 @@ const fs = require("fs");
 
 const dataSearch = require("../__mocks__/data/degree-search.json");
 
-// const app = express();
-// app.use(
-//   "/programs/**",
-//   createProxyMiddleware({
-//     target: "https://webapp4.asu.edu",
-//     changeOrigin: true,
-//   })
-// );
-
 const getFullUrl = req =>
   req.protocol + "://" + req.get("host") + req.originalUrl;
 
@@ -59,8 +50,7 @@ function mockDegreeSeearch(router) {
 
   router.get(/^\/programs\/tooltipcampus/, (req, res) => {
     console.log("> request from " + getFullUrl(req));
-    // res.redirect('https://webapp4.asu.edu/' + req.originalUrl)
-    const campus = req.query.campus;
+     const campus = req.query.campus;
     const campusPages = {
       ASULOCAL: "asu-local.html",
       TEMPE: "asu-tempe.html",
@@ -87,7 +77,7 @@ function mockDegreeSeearch(router) {
     res.send(pageHTML);
   });
 
-  // https://webapp4.asu.edu/programs/tooltipdynamic/accelerate/FAARTHBA/null/ASU00/undergrad
+  // {DOMAIN_URL}/programs/tooltipdynamic/accelerate/FAARTHBA/null/ASU00/undergrad
   router.get(/^\/programs\/tooltipdynamic\/accelerate/, (req, res) => {
     console.log("> request from " + getFullUrl(req));
 
@@ -112,13 +102,6 @@ function mockDegreeSeearch(router) {
     res.send(pageHTML);
   });
 
-  //   router.get(
-  //     "/programs/**",
-  //     createProxyMiddleware({
-  //       target: "https://webapp4.asu.edu",
-  //       changeOrigin: true,
-  //     })
-  //   );
 }
 
 module.exports = mockDegreeSeearch;

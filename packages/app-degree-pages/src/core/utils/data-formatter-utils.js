@@ -1,5 +1,7 @@
 // @ts-check
 
+import { DOMAIN_URL } from "../constants";
+
 /**
  *
  * @param {object[]} links
@@ -19,7 +21,7 @@ const formatCareerData = careerData =>
   careerData?.map(data => ({
     career: {
       text: data.careerDataAlterOnetTitle,
-      url: `https://webapp4.asu.edu/programs/t5/careerdetails/${data.careerDataOnetCode}`,
+      url: `${DOMAIN_URL}/programs/t5/careerdetails/${data.careerDataOnetCode}`,
     },
     growth: data.careerDataGrowth,
     medianSalary: data.careerDataSalary,

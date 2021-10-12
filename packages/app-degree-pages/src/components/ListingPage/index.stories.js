@@ -4,6 +4,7 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import { DOMAIN_URL } from "../../core/constants";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
@@ -45,7 +46,7 @@ const actionUrls = {
   // this is just an example working on Storybook
   majorInfoUrl: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
   // majorInfoUrl:
-  //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+  //   `${DOMAIN_URL}/programs/t5/majorinfo/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
 };
 
@@ -152,9 +153,7 @@ WithIntroText.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       altText: "Undergraduate Degrees",
       size: "medium",
     },
@@ -196,9 +195,7 @@ WithIntroTextPhotoGrid.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {
@@ -258,9 +255,7 @@ WithIntroTextMediaImage.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {
@@ -341,9 +336,7 @@ WithIntroTextImageOverlay.args = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {
