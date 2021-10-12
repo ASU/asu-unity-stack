@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "author": "Nicolas Baudon",
   "license": "Unlicensed",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
