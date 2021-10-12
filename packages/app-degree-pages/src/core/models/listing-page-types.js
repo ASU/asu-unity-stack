@@ -30,7 +30,7 @@
  *    method?: string
  *    init?: stringBool
  *    cert?: stringBool
- *    [x:string]: string
+ *    fields?: string
  * }} AppDataSource
  *
  * @typedef {{

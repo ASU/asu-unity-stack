@@ -1,11 +1,12 @@
+import { DOMAIN_URL } from "../../src/core/constants";
+
 const data = {
   programs: [
     {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CCOMPINFO",
       EmailAddr: "cidse.undergrad@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESSCICERT/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESSCICERT/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Certificate",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -33,8 +34,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CSUSENG",
       EmailAddr: "sebe.advising@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESCMGMIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESCMGMIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -59,8 +59,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CINDUSENG",
       EmailAddr: "cidse.undergrad@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESENMMIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESENMMIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -85,8 +84,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CERM",
       EmailAddr: "polyadvising@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESERMMIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESERMMIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -111,8 +109,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CERM",
       EmailAddr: "polyadvising@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/TSETMCERT/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/TSETMCERT/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Certificate",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -140,8 +137,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CAPPSYCH",
       EmailAddr: "polyadvising@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESHSEMIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESHSEMIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -166,8 +162,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CCOMPINFO",
       EmailAddr: "cidse.undergrad@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESCPICERT/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESCPICERT/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Certificate",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -195,8 +190,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CMATERL",
       EmailAddr: "semte@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESMSEMIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESMSEMIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -221,8 +215,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CTECHMAN",
       EmailAddr: "polyadvising@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESTEM2MIN/null/ALL/2021",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESTEM2MIN/null/ALL/2021`,
       CollegeAcadOrg: "CES",
       Degree: "Minor",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",
@@ -247,8 +240,7 @@ const data = {
       CollegeUrl: "https://engineering.asu.edu/",
       DepartmentCode: "CESDN",
       EmailAddr: "engineering@asu.edu",
-      AsuCritTrackUrl:
-        "https://webapp4.asu.edu/programs/t5/requirementroadmaps/ASU00/ESTNECERT/null/ALL/2018",
+      AsuCritTrackUrl: `${DOMAIN_URL}/programs/t5/requirementroadmaps/ASU00/ESTNECERT/null/ALL/2018`,
       CollegeAcadOrg: "CES",
       Degree: "Certificate",
       CollegeDescr100: "Engineering, Ira A. Fulton Schools of",

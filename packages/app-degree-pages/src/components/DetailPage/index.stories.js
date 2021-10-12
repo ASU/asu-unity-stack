@@ -66,6 +66,7 @@ const Template = ({
           style={{
             opacity: "0.7",
             mixBlendMode: "luminosity",
+            maxWidth: "100%",
           }}
         />
       </div>
@@ -110,9 +111,7 @@ const defaultArgs = {
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       altText: "Undergraduate Degrees",
       size: "medium",
     },
