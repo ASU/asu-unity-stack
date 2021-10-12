@@ -109,9 +109,9 @@ export const Basic = (
                 <div class="navbar-container">
                   <div
                     class="title subdomain-name"
-                    data-ga-header-header="university technology office"
+                    data-ga-header-header="Subdomain name"
                   >
-                    University Technology Office
+                    Subdomain name
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
@@ -126,11 +126,19 @@ export const Basic = (
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="research">
-                        Research
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 2"
+                      >
+                        Link option 2
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -141,10 +149,9 @@ export const Basic = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 3"
                         >
-                          Dropdown
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 3<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -154,23 +161,23 @@ export const Basic = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximun width"
+                              data-ga-header="Sublink 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -364,17 +371,15 @@ export const DropDownMenus = (
                     <a
                       href="#"
                       class="unit-name"
-                      data-ga-header="ira a. fulton schools of engineering"
+                      data-ga-header="Parent unit name"
                     >
-                      Ira A. Fulton Schools of Engineering
+                      Parent unit name
                     </a>
                     <span
                       class="subdomain-name"
-                      data-ga-header="school of computing, informatics, and decisions systems
-                      engineering"
+                      data-ga-header="Subdomain name"
                     >
-                      School of Computing, Informatics, and Decisions Systems
-                      Engineering
+                      Subdomain name
                     </span>
                   </div>
                   <div
@@ -399,10 +404,9 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="drop (1 col)"
+                          data-ga-header="Link option 1"
                         >
-                          Drop (1 Col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 1<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -456,10 +460,9 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="drop (2 col)"
+                          data-ga-header="Link option 2"
                         >
-                          Drop (2 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 2<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -561,10 +564,9 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (3 col)"
+                          data-ga-header="Link option 3"
                         >
-                          Mega Menu (3 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 3<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -687,10 +689,9 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (4 col)"
+                          data-ga-header="Link option 4"
                         >
-                          Mega Menu (4 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 4<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -897,10 +898,9 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (5 col)"
+                          data-ga-header="Link option 5"
                         >
-                          Mega Menu (5 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 5<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -1303,8 +1303,8 @@ export const NoNavigation = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="landing page title">
-                      Landing page title
+                    <a href="#" data-ga-header="Subdomain name">
+                      Subdomain name
                     </a>
                   </div>
                   <div
@@ -1483,8 +1483,8 @@ export const NoNavigationAndWithButtons = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="landing page title">
-                      Landing page title
+                    <a href="#" data-ga-header="Subdomain name">
+                      Subdomain name
                     </a>
                   </div>
                   <div
@@ -1683,9 +1683,9 @@ export const ScrolledState = (
                 <div class="navbar-container">
                   <div
                     class="title subdomain-name"
-                    data-ga-header="university technology office"
+                    data-ga-header="Subdomain name"
                   >
-                    University Technology Office
+                    Subdomain name
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
@@ -1700,20 +1700,40 @@ export const ScrolledState = (
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="admission">
-                        Admission
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="alumni">
-                        Alumni
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 2"
+                      >
+                        Link option 2
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="giving">
-                        Giving
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 3"
+                      >
+                        Link option 3
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="contact">
-                        Contact
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 4"
+                      >
+                        Link option 4
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 5"
+                      >
+                        Link option 5
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -1724,10 +1744,9 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 6"
                         >
-                          Dropdown
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 6<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1737,23 +1756,23 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -1767,9 +1786,9 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown 2"
+                          data-ga-header="link option 7"
                         >
-                          Dropdown 2<span class="fa fa-chevron-down"></span>
+                          Link option 7<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1779,23 +1798,23 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -1809,9 +1828,9 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown 3"
+                          data-ga-header="Link option 8"
                         >
-                          Dropdown 3<span class="fa fa-chevron-down"></span>
+                          Link option 8<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1821,23 +1840,23 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -2046,20 +2065,24 @@ export const Partner = (
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="admission">
-                        Admission
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="alumni">
-                        Alumni
+                      <a class="nav-link" href="#" data-ga-header="Link option 2">
+                        Link option 2
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="giving">
-                        Giving
+                      <a class="nav-link" href="#" data-ga-header="Link option 3">
+                        Link option 3
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="contact">
-                        Contact
+                      <a class="nav-link" href="#" data-ga-header="Link option 4">
+                        Link option 4
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a class="nav-link" href="#" data-ga-header="Link option 5">
+                        Link option 5
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -2070,9 +2093,9 @@ export const Partner = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 6"
                         >
-                          Dropdown
+                          Link option 6
                           <span class="fa fa-chevron-down"></span>
                         </a>
                         <div
@@ -2083,23 +2106,23 @@ export const Partner = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>

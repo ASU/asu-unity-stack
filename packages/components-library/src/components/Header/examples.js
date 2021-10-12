@@ -16,7 +16,7 @@ const AnimatedHeaderTitleExample = (props) => {
       <Header
         animateTitle={animate}
         navTree={BasicNavTree}
-        title="University Technology Office"
+        title="Subdomain name"
       />
       <Button
         onClick={() => {

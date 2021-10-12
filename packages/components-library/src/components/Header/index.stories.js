@@ -1,7 +1,3 @@
-
-
-
-
 import { withKnobs, text, boolean, object } from "@storybook/addon-knobs";
 import { Fragment } from "preact/compat";
 
@@ -38,13 +34,8 @@ export const base = () => (
     <Header
       loggedIn={boolean("loggedIn", false)}
       userName={text("userName", "")}
-      navTree={object("navTree", BasicNavTree)}
-      title={text(
-        "title",
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      )}
-      parentOrg={text("parentOrg", "Ira A. Fulton Schools of Engineering")}
-      parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
+      navTree={BasicNavTree}
+      title={text("title", "Subdomain name")}
       breakpoint={text("breakpoint", "Lg")}
     />
     <div style={"width:100%; height:200vh;"} />
@@ -58,12 +49,9 @@ export const breakpointXL = () => (
       userName={text("userName", "")}
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
-      navTree={object("navTree", BasicNavTree)}
-      title={text(
-        "title",
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      )}
-      parentOrg={text("parentOrg", "Ira A. Fulton Schools of Engineering")}
+      navTree={BasicNavTree}
+      title={text("title", "Subdomain name")}
+      parentOrg={text("parentOrg", "Parent unit name")}
       parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       breakpoint={text("breakpoint", "Xl")}
     />
@@ -78,55 +66,53 @@ export const mobileNavTree = () => (
       userName={text("userName", "")}
       logoutLink={text("logoutLink", "/caslogout")}
       loginLink={text("loginLink", "/cas")}
-      navTree={object("navTree", BasicNavTree)}
-      mobileNavTree={object("mobileNavTree", [
+      navTree={BasicNavTree}
+      mobileNavTree={[
         {
           href: "/",
           text: "This",
           type: "icon",
           class: "home",
-          selected: true
-
-        }, {
-          text: "Is A",
-          href: "https://webapp4.asu.edu/myasu/"
+          selected: true,
         },
         {
-          text: "Mobile Nav Tree",
+          text: "Link option 1",
+          href: "https://webapp4.asu.edu/myasu/",
+        },
+        {
+          text: "Link option 2",
           href: "/",
           items: [
             [
               {
                 type: "heading",
-                text: "Column One Heading"
-              }, {
+                text: "Column One",
+              },
+              {
                 href: "https://www.asu.edu/",
-                text: "Pellentesque ornare"
-              }, {
+                text: "Pellentesque ornare",
+              },
+              {
                 href: "https://www.asu.edu/",
-                text: "Curabitur viverra arcu nisl"
-              }
+                text: "Curabitur viverra arcu nisl",
+              },
             ],
             [
               {
                 href: "https://www.asu.edu/?feature=newsevents",
                 type: "heading",
-                text: "Column Two Heading"
-              }, {
+                text: "Column Two",
+              },
+              {
                 href: "https://www.asu.edu/?feature=academics",
-                text: "Nunc in libero odio"
-              }
-            ]
-          ]
-        }
-
-
-      ])}
-      title={text(
-        "title",
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      )}
-      parentOrg={text("parentOrg", "Ira A. Fulton Schools of Engineering")}
+                text: "Nunc in libero odio",
+              },
+            ],
+          ],
+        },
+      ]}
+      title={text("title", "Subdomain name")}
+      parentOrg={text("parentOrg", "Parent unit name")}
       parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       breakpoint={text("breakpoint", "Xl")}
     />
@@ -141,11 +127,38 @@ export const empty = () => (
   </Fragment>
 );
 
+export const noNavigation = () => (
+  <Fragment>
+    <Header
+      title={text("title", "Subdomain name")}
+      loggedIn={boolean("loggedIn", true)}
+      userName={text("userName", "Colton")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
+    />
+    <div style={"width:100%; height:200vh;"} />
+  </Fragment>
+);
+
+export const noNavigationWithButtons = () => (
+  <Fragment>
+    <Header
+      title={text("title", "Subdomain name")}
+      buttons={object("buttons", buttons)}
+      loggedIn={boolean("loggedIn", true)}
+      userName={text("userName", "Colton")}
+      logoutLink={text("logoutLink", "/caslogout")}
+      loginLink={text("loginLink", "/cas")}
+    />
+    <div style={"width:100%; height:200vh;"} />
+  </Fragment>
+);
+
 export const withButtons = () => (
   <Fragment>
     <Header
-      navTree={object("navTree", NavTreeWithButtons)}
-      title={text("title", "University Technology Office")}
+      navTree={NavTreeWithButtons}
+      title={text("title", "Subdomain name")}
       buttons={object("buttons", buttons)}
       loggedIn={boolean("loggedIn", true)}
       userName={text("userName", "Colton")}
@@ -159,12 +172,9 @@ export const withButtons = () => (
 export const withMenuColumns = () => (
   <Fragment>
     <Header
-      navTree={object("navTree", NavTreeMega)}
-      title={text("title", "Ira A. Fulton Schools of Engineering")}
-      parentOrg={text(
-        "parentOrg",
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      )}
+      navTree={NavTreeMega}
+      title={text("title", "Subdomain name")}
+      parentOrg={text("parentOrg", "Parent unit name")}
       parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       loggedIn={boolean("loggedIn", true)}
       userName={text("userName", "Sparky")}
@@ -178,12 +188,9 @@ export const withMenuColumns = () => (
 export const expandOnHover = () => (
   <Fragment>
     <Header
-      navTree={object("navTree", NavTreeMega)}
-      title={text("title", "Ira A. Fulton Schools of Engineering")}
-      parentOrg={text(
-        "parentOrg",
-        "School of Computing, Informatics, and Decisions Systems Engineering"
-      )}
+      navTree={NavTreeMega}
+      title={text("title", "Subdomain name")}
+      parentOrg={text("parentOrg", "Parent unit name")}
       parentOrgUrl={text("parentOrgUrl", "https://engineering.asu.edu")}
       loggedIn={boolean("loggedIn", true)}
       userName={text("userName", "Sparky")}
