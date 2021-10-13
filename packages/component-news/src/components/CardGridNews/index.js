@@ -14,7 +14,7 @@ import { NewsWrapper } from "./index.styles";
 /**
  *
  * @param {Object} feed
- * @param {import("../../core/models/news-types").CardButton} cardButton
+ * @param {import("../../core/types/news-types").CardButton} cardButton
  */
 const gridRow = (feed, cardButton) => (
   <div
@@ -48,9 +48,7 @@ const gridRow = (feed, cardButton) => (
 );
 
 /**
- * @param {{
- *  cardButton: import("../../core/models/news-types").CardButton
- * }} props
+ * @param {import("../../core/types/news-types").TemplateProps} props
  */
 // eslint-disable-next-line react/prop-types
 const GridTemplate = ({ cardButton }) => {
@@ -68,7 +66,11 @@ const GridTemplate = ({ cardButton }) => {
 // eslint-enable-next-line react/prop-types
 
 /**
- * @param {import("../../core/models/news-types").FeedType} props
+ * @typedef {import("../../core/types/news-types").FeedType} FeedType
+ */
+
+/**
+ * @param {FeedType} props
  */
 const CardGridNews = ({ cardButton, ...props }) => (
   // Calling the high order component that fetch the data

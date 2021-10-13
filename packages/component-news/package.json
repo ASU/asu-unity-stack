@@ -19,7 +19,7 @@
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9011",
     "build-storybook": "build-storybook -s ./dist",
-    "jsdoc": "jsdoc -c jsdoc.json  @asu-design-system/components-core/src/components/FeedAnatomy/entity.js ./toast.js",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
     "__jsdoc": "jsdoc -c jsdoc.json ./src/core/components/BaseFeed/index.js"
   },
   "repository": {
