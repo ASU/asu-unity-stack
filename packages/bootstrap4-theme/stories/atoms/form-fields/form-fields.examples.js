@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Form Fields', 'Atoms');
+export default createComponent('Form Fields', 'Atoms', 'Examples');
 
 export const TextInputs = createStory(
   <form class="uds-form">

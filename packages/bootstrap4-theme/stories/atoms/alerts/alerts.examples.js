@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Alerts', 'Atoms');
+export default createComponent('Alerts', 'Atoms', 'Examples');
 
 export const AlertsComponent = createStory(
   <div>

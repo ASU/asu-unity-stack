@@ -1,7 +1,9 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 
-
+/*
+We want to allow this component to change color, size, and disabled status.
+*/
 const extraOptions = {
   color: {
     name: 'Color',
@@ -37,13 +39,18 @@ const extraOptions = {
       },
     },
   },
+  disabled: {
+    name: 'Disabled',
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
 }
 export default createComponent('Buttons', 'Atoms', 'Templates', extraOptions);
 
 export const BasicButton = createStory(
   (args) => {
     return (
-      <button class={`btn ${args.color} ${args.size}`} type="submit">
+      <button class={`btn ${args.color} ${args.size}`} disabled={ args.disabled } type="submit">
         Button button
       </button>
     )
@@ -53,7 +60,7 @@ export const BasicButton = createStory(
 export const ButtonAsLink = createStory(
   (args) => {
     return (
-      <a href="#" class={`btn ${args.color} ${args.size}`} role="button">
+      <a href="#" class={`btn ${args.color} ${args.size} ${args.disabled ? 'disabled' : ''}`} role="button">
         Button button
       </a>
     )
@@ -63,7 +70,7 @@ export const ButtonAsLink = createStory(
 export const ButtonWithIcon = createStory(
   (args) => {
     return (
-      <a href="#" class={`btn ${args.color} ${args.size}`} role="button">
+      <a href="#" class={`btn ${args.color} ${args.size} ${args.disabled ? 'disabled' : ''}`} role="button">
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
     )

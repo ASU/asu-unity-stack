@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Breadcrumbs', 'Atoms');
+export default createComponent('Breadcrumbs', 'Atoms', 'Examples');
 
 export const BreadcrumbsAgainstWhiteBackground = createStory(
   <nav aria-label="breadcrumbs">
