@@ -21,7 +21,16 @@ const Innovation = () => {
         <div className="row">
           <div className="col">
             <div className="d-flex footer-innovation-links">
-              <a className="img-link" href="https://www.asu.edu/rankings">
+              <a
+                className="img-link"
+                href="https://www.asu.edu/rankings"
+                onFocus={() =>
+                  trackGAEvent({
+                    ...DEFAULT_GA_EVENT,
+                    text: "#1 in the u.s. for innovation",
+                  })
+                }
+              >
                 <img
                   src={innovationLogo}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
