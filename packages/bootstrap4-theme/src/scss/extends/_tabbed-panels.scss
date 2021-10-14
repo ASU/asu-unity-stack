@@ -126,7 +126,8 @@
 .tab-content {
   overflow-x: hidden;
   word-break: break-word;
-  padding: $uds-size-spacing-4;
+  padding-top: $uds-size-spacing-4;
+  padding-bottom: $uds-size-spacing-4;
   margin-bottom: $uds-size-spacing-4;
 }
 
