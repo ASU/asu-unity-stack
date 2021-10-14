@@ -4,7 +4,7 @@ $glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
-$uds-breakpoint-lg: 1200px;
+$uds-breakpoint-lg: 1260px;
 $uds-color-base-gray-7: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
@@ -66,10 +66,9 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 }
 
-@media only screen and (min-width: 577px) {
+@media only screen and (min-width: $uds-breakpoint-lg) {
   .container .aligned-carousel {
     margin-left: -124px !important;
-
   }
 }
 
@@ -128,7 +127,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     }
   }
 
-  &[data-has-shadow = "true"] .glide__track {
+  &[data-has-shadow="true"] .glide__track {
     @include shadow();
   }
 
