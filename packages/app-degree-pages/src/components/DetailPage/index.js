@@ -191,8 +191,7 @@ const DetailPage = ({
                       {
                         content: {
                           header: "Additional Requirements",
-                          // TOD: Change data after filter on degree type
-                          body: resolver.getDescrLongExtented5(),
+                          body: resolver.getAdditionalRequirements(),
                         },
                       },
                       {
