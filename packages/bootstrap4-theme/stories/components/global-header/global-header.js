@@ -11,13 +11,12 @@ export const initGlobalHeader = () => {
   window.addEventListener('scroll', handleWindowScroll);
 
   // DataLayer
-  const pushHeaderGAEvent = (text) => {
+  const pushHeaderGAEvent = (args) => {
     const { dataLayer } = window;
     const event = {
       region: 'navbar',
       ...args,
     };
-    console.log(event);
     if (dataLayer) dataLayer.push(event);
   };
 

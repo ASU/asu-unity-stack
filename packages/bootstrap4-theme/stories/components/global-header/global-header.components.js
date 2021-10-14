@@ -130,7 +130,7 @@ export const Basic = (
                 <div class="navbar-container">
                   <div
                     class="title subdomain-name"
-                    data-ga-header-header="Subdomain name"
+                    data-ga-header="Subdomain name"
                   >
                     Subdomain name
                   </div>
@@ -185,7 +185,7 @@ export const Basic = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 1"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 3"
                             >
                               Sublink 1
                             </a>
@@ -193,7 +193,7 @@ export const Basic = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 2"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 3"
                             >
                               Sublink 2
                             </a>
@@ -201,7 +201,7 @@ export const Basic = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 3"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 3"
                             >
                               Sublink 3
                             </a>
@@ -480,7 +480,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="massa nunc dictum nan venenatis"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 1"
                             >
                               Massa nunc dictum nam venenatis
                             </a>
@@ -488,7 +488,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dis quam quis nisi ligula"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 1"
                             >
                               Dis quam quis nisi ligula
                             </a>
@@ -496,7 +496,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dapibus lorem"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 1"
                             >
                               Dapibus lorem
                             </a>
@@ -504,7 +504,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="nisi ligula eget orci"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 1"
                             >
                               Nisi ligula eget orci
                             </a>
@@ -512,7 +512,7 @@ export const DropDownMenus = (
                               href="#"
                               class="btn btn-sm btn-dark col-btn"
                               data-ga-header="cta action 2"
-                              data-ga-header-component="CTA action 2"
+                              data-ga-header-component="link option 2"
                             >
                               CTA action 2
                             </a>
@@ -544,7 +544,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dis quam quis nisi ligula"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Dis quam quis nisi ligula
                             </a>
@@ -552,7 +552,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="nisi ligula eget orci"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Nisi ligula eget orci
                             </a>
@@ -560,7 +560,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="massa nunc dictum nam venenatis"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Massa nunc dictum nam venenatis
                             </a>
@@ -568,7 +568,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dapibus lorem"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Dapibus lorem
                             </a>
@@ -576,7 +576,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="ultricies tellus eu"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Ultricies tellus eu
                             </a>
@@ -585,7 +585,7 @@ export const DropDownMenus = (
                               href="#"
                               data-ga-header="pretium massa quis vitae pede quisque nulla
                               ultricies sit"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Pretium massa quis vitae pede quisque nulla
                               ultricies sit
@@ -594,7 +594,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="quis tempus aliquam semper imperdiet"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Quis tempus aliquam semper imperdiet
                             </a>
@@ -605,7 +605,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="here's the story"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Here's the story
                             </a>
@@ -613,7 +613,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="of a man named Brady"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Of a man named Brady
                             </a>
@@ -621,7 +621,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="who was busy with three"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Who was busy with three
                             </a>
@@ -629,7 +629,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="boys of his own"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 2"
                             >
                               Boys of his own
                             </a>
@@ -663,7 +663,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="recommended max of ten links"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Recommended max of ten links
                                 </a>
@@ -671,7 +671,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Second link in the list
                                 </a>
@@ -679,7 +679,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Here is link number three
                                 </a>
@@ -687,7 +687,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -695,7 +695,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -703,7 +703,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -714,7 +714,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -722,7 +722,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -730,7 +730,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc dictum nam venenatis"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Massa nunc dictum nam venenatis
                                 </a>
@@ -741,7 +741,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Navigation link
                                 </a>
@@ -750,7 +750,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="another link as an example of when something
                                   wraps"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Another link as an example of when something
                                   wraps
@@ -759,7 +759,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="culture of inclusion"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Culture of inclusion
                                 </a>
@@ -767,7 +767,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="public research university"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Public research university
                                 </a>
@@ -803,7 +803,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Navigation link
                                 </a>
@@ -811,7 +811,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Second link in the list
                                 </a>
@@ -819,7 +819,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Here is link number three
                                 </a>
@@ -827,7 +827,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -835,7 +835,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -846,7 +846,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi eget orci
                                 </a>
@@ -854,7 +854,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -862,7 +862,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc venenatis"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Massa nunc venenatis
                                 </a>
@@ -870,7 +870,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="pede quisque nulla ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Pede quisque nulla ultricies sit
                                 </a>
@@ -878,7 +878,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -886,7 +886,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -894,7 +894,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -905,7 +905,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -913,7 +913,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -921,7 +921,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc dictum nam venenatis"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Massa nunc dictum nam venenatis
                                 </a>
@@ -929,7 +929,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -937,7 +937,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -946,7 +946,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -955,7 +955,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Semper imperdiet
                                 </a>
@@ -966,7 +966,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -974,7 +974,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -982,7 +982,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -994,7 +994,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-gold"
                                   data-ga-header="mega menu cta 1"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 34"
                                 >
                                   Mega menu CTA 1
                                 </a>
@@ -1002,7 +1002,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-maroon"
                                   data-ga-header="mega menu cta 2"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Mega menu CTA 2
                                 </a>
@@ -1038,7 +1038,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Navigation link
                                 </a>
@@ -1046,7 +1046,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Second link in the list
                                 </a>
@@ -1054,7 +1054,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Here is link number three
                                 </a>
@@ -1063,7 +1063,7 @@ export const DropDownMenus = (
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
-                                    data-ga-header-component="dropdown"
+                                    data-ga-header-component="link option 5"
                                   >
                                     CTA in column
                                   </a>
@@ -1071,7 +1071,7 @@ export const DropDownMenus = (
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
-                                    data-ga-header-component="dropdown"
+                                    data-ga-header-component="link option 5"
                                   >
                                     CTA in column
                                   </a>
@@ -1084,7 +1084,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1093,7 +1093,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1102,7 +1102,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1111,7 +1111,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1119,7 +1119,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -1131,7 +1131,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1140,7 +1140,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1149,7 +1149,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1158,7 +1158,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1166,7 +1166,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -1174,7 +1174,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -1182,7 +1182,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-dark col-btn"
                                   data-ga-header="cta in column"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   CTA in Column
                                 </a>
@@ -1193,7 +1193,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -1201,7 +1201,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -1209,7 +1209,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -1217,7 +1217,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-dark col-btn"
                                   data-ga-header="cta in column"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   CTA in Column
                                 </a>
@@ -1228,7 +1228,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="jump up and down and"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Jump up and down and
                                 </a>
@@ -1236,7 +1236,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="shake your head to the sound"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Shake your head to the sound
                                 </a>
@@ -1244,7 +1244,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="put your hand on the ground"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Put your hand on the ground
                                 </a>
@@ -1252,7 +1252,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="take one step left and one step right"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Take one step left and one step right
                                 </a>
@@ -1260,7 +1260,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="if it looks like this"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   If it looks like this
                                 </a>
@@ -1268,7 +1268,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="then you doing it right"
-                                  data-ga-header-component="dropdown"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Then you doing it right
                                 </a>
@@ -2015,7 +2015,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 1"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 1
                             </a>
@@ -2023,7 +2023,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 2"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 2
                             </a>
@@ -2031,7 +2031,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 3"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 3
                             </a>
@@ -2062,7 +2062,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 1"
-                              data-ga-header-component="dropdown 2"
+                              data-ga-header-component="link option 7"
                             >
                               Sublink 1
                             </a>
@@ -2070,7 +2070,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 2"
-                              data-ga-header-component="dropdown 2"
+                              data-ga-header-component="link option 7"
                             >
                               Sublink 2
                             </a>
@@ -2078,7 +2078,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 3"
-                              data-ga-header-component="dropdown 2"
+                              data-ga-header-component="link option 7"
                             >
                               Sublink 3
                             </a>
@@ -2109,7 +2109,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 1"
-                              data-ga-header-component="dropdown 3"
+                              data-ga-header-component="link option 8"
                             >
                               Sublink 1
                             </a>
@@ -2117,7 +2117,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 2"
-                              data-ga-header-component="dropdown 3"
+                              data-ga-header-component="link option 8"
                             >
                               Sublink 2
                             </a>
@@ -2125,7 +2125,7 @@ export const ScrolledState = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 3"
-                              data-ga-header-component="dropdown 3"
+                              data-ga-header-component="link option 8"
                             >
                               Sublink 3
                             </a>
@@ -2415,7 +2415,7 @@ export const Partner = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 1"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 1
                             </a>
@@ -2423,7 +2423,7 @@ export const Partner = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 2"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 2
                             </a>
@@ -2431,7 +2431,7 @@ export const Partner = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="Sublink 3"
-                              data-ga-header-component="dropdown"
+                              data-ga-header-component="link option 6"
                             >
                               Sublink 3
                             </a>
