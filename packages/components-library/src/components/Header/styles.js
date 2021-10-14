@@ -123,6 +123,11 @@ const universalStyles = breakpoint => css`
         width: 100%;
         display: flex;
         justify-content: center;
+        + .navbar-component .navbar-toggler {
+          border-radius: 400rem;
+          width: 2rem;
+          height: 2rem;
+        }
       }
 
       .nav-grid {
@@ -174,13 +179,15 @@ const universalStyles = breakpoint => css`
       a.subunit-name {
         font-size: 1.5em;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+        margin: 12px 0;
       }
       .title {
         padding-bottom: 0;
-        margin: 16px 0;
+        margin: 12px 0;
       }
       .navbar-logo img {
         height: 64px;
+        margin: 12px 1rem 12px 0;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       }
     }

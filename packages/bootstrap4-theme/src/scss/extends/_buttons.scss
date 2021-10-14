@@ -3,6 +3,9 @@
   text-decoration: $uds-component-button-text-decoration;
   font-weight: $uds-component-button-font-weight;
   white-space: nowrap;
+  &::first-letter {
+    text-transform: uppercase;
+  }
   &.btn-md {
     font-size: $uds-component-button-medium-font-size;
     padding: $uds-component-button-padding-y-medium

@@ -226,6 +226,7 @@ const Header = ({
         mobileOpen={mobileOpen}
         logo={<Logo {...logo} ref={logoRef} />}
         data-onclick-identifier="mobile-dropdown"
+        hasNavigation={navTree || mobileNavTree}
       >
         {props.dangerouslyGenerateStub ? (
           <div id="asu-generated-stub" />

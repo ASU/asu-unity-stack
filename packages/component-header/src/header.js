@@ -74,6 +74,7 @@ const ASUHeader = ({
         animateTitle,
         expandOnHover,
         mobileNavTree,
+        hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
       }}
     >
       {/* @ts-ignore */}

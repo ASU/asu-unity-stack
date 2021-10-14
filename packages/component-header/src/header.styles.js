@@ -41,6 +41,9 @@ const Header = styled.header`
         height: 0;
         overflow: hidden;
       }
+      .title {
+        margin: 0.5rem 0 0 0;
+      }
       a.unit-name {
         display: none;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -56,6 +59,7 @@ const Header = styled.header`
       .navbar-brand img {
         height: 64px;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+        margin: 12px 1rem 12px 0;
       }
     }
   }

@@ -26,11 +26,16 @@ const HeaderMainWrapper = styled.div`
   .expand-title {
     width: 100%;
   }
+  @media (min-width: ${({ breakpoint }) => breakpoint}) {
+    .no-navigation {
+      margin-top: 16px;
+      display: flex;
+    }
+  }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     padding: 0;
     .navbar {
       padding: 1.5rem 0 0 0;
-      align-items: center;
       flex-wrap: wrap;
       justify-content: space-between;
       &.partner {
@@ -61,6 +66,12 @@ const HeaderMainWrapper = styled.div`
       border-radius: 50%;
       font-size: 1.25rem;
       margin-right: 2rem;
+      &.collapsed {
+        border-radius: 0;
+      }
+    }
+    .no-navigation + nav .buttons-container {
+      border-top: 1px solid #cccccc;
     }
   }
 `;

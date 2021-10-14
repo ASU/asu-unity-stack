@@ -13,7 +13,7 @@ import { Partner } from "./Partner";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
-  const { breakpoint, isPartner } = useAppContext();
+  const { breakpoint, isPartner, hasNavigation } = useAppContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile(breakpoint);
 
@@ -46,14 +46,20 @@ const HeaderMain = () => {
             >
               {!isPartner && <Logo />}
               <button
-                className="navbar-toggler collapsed"
+                className={`navbar-toggler${
+                  mobileMenuOpen ? "" : " collapsed"
+                }`}
                 type="button"
                 onClick={handleClickMobileMenu}
                 aria-label="Toggle navigation"
               >
                 <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
               </button>
-              <div className={`${!isPartner ? "expand-title" : ""}`}>
+              <div
+                className={`${!isPartner ? "expand-title" : ""}${
+                  !hasNavigation ? " no-navigation" : ""
+                }`}
+              >
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>
