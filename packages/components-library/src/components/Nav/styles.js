@@ -123,6 +123,7 @@ const navListStyles = breakpoint => css`
         padding: 0.5rem 0.75rem;
         color: #191919;
         white-space: nowrap;
+        text-transform: capitalize;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -151,6 +152,7 @@ const navListStyles = breakpoint => css`
       flex-direction: column;
       align-items: stretch;
       padding: 0;
+      border-bottom: 1px solid #cccccc;
 
       > li {
         margin-right: 0;
@@ -223,13 +225,7 @@ const buttonFormStyles = breakpoint => css`
     }
 
     @media (max-width: ${BreakpointSm}) {
-      flex-direction: column;
       align-items: flex-start;
-
-      a + a {
-        margin-top: 1rem;
-        margin-left: 0;
-      }
     }
   }
 `;
@@ -288,6 +284,7 @@ const dropdownContainerStyles = breakpoint => css`
     h3 {
       font-size: 1.5rem;
       letter-spacing: -0.035em;
+      text-transform: capitalize;
       font-weight: 700;
       text-align: left;
       opacity: 1;

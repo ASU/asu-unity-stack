@@ -37,14 +37,42 @@ Default.args = {
   loggedIn: false,
   userName: "",
   navTree: basicNavTree,
-  title: "School of Computing, Informatics, and Decisions Systems Engineering",
-  parentOrg: "Ira A. Fulton Schools of Engineering",
-  parentOrgUrl: "https://engineering.asu.edu",
+  title: "Subdomain name",
   breakpoint: "Lg",
 };
 
 export const Empty = Template.bind({});
 Empty.args = {};
+
+export const NoNavigation = Template.bind({});
+NoNavigation.args = {
+  title: "Subdomain name",
+  loggedIn: true,
+  userName: "Sparky",
+  logoutLink: "/caslogout",
+  loginLink: "/cas",
+};
+
+export const NoNavigationWithButtons = Template.bind({});
+NoNavigationWithButtons.args = {
+  title: "Subdomain name",
+  buttons: [
+    {
+      href: "/",
+      text: "CTA Button 1",
+      color: "gold",
+    },
+    {
+      text: "CTA Button 2",
+      href: "#",
+      color: "light",
+    },
+  ],
+  loggedIn: true,
+  userName: "Sparky",
+  logoutLink: "/caslogout",
+  loginLink: "/cas",
+};
 
 export const BreakpointXL = Template.bind({});
 BreakpointXL.args = {
@@ -53,8 +81,8 @@ BreakpointXL.args = {
   logoutLink: "/caslogout",
   loginLink: "/cas",
   navTree: basicNavTree,
-  title: "School of Computing, Informatics, and Decisions Systems Engineering",
-  parentOrg: "Ira A. Fulton Schools of Engineering",
+  title: "Subdomain name",
+  parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
 };
@@ -67,8 +95,8 @@ WithMobileNavTree.args = {
   loginLink: "/cas",
   navTree: basicNavTree,
   mobileNavTree,
-  title: "School of Computing, Informatics, and Decisions Systems Engineering",
-  parentOrg: "Ira A. Fulton Schools of Engineering",
+  title: "Subdomain name",
+  parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
 };
@@ -76,7 +104,7 @@ WithMobileNavTree.args = {
 export const WithButtons = Template.bind({});
 WithButtons.args = {
   navTree: navTreeWithButtons,
-  title: "University Technology Office",
+  title: "Subdomain name",
   buttons: [
     {
       href: "/",
@@ -98,9 +126,8 @@ WithButtons.args = {
 export const WithMenuColumns = Template.bind({});
 WithMenuColumns.args = {
   navTree: navTreeMega,
-  title: "Ira A. Fulton Schools of Engineering",
-  parentOrg:
-    "School of Computing, Informatics, and Decisions Systems Engineering",
+  title: "Subdomain name",
+  parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   loggedIn: true,
   userName: "Sparky",
@@ -111,9 +138,8 @@ WithMenuColumns.args = {
 export const ExpandOnHover = Template.bind({});
 ExpandOnHover.args = {
   navTree: navTreeMega,
-  title: "Ira A. Fulton Schools of Engineering",
-  parentOrg:
-    "School of Computing, Informatics, and Decisions Systems Engineering",
+  title: "Subdomain name",
+  parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   loggedIn: true,
   userName: "Sparky",
