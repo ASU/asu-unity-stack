@@ -44,9 +44,6 @@ const actionUrls = {
   applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
   // this is just an example working on Storybook
   majorInfoUrl: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
-  // TODO: update OLD LINK: majorInfoUrl:
-  //   `${DOMAIN_URL}/programs/t5/majorinfo/` +
-  //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
   // NEW LINK: majorInfoUrl:
   //   `https://degrees.apps.asu.edu/bachelors/major/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}`,
