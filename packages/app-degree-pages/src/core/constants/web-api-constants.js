@@ -1,7 +1,5 @@
 // @ts-check
 
-const DOMAIN_URL = "https://webapp4.asu.edu";
-
 /**
  * @type {import("../models/listing-page-types").AppDataSource}
  */
@@ -54,8 +52,4 @@ const detailPageDefaultDataSource = {
     `planCatDescr`,
 };
 
-export {
-  DOMAIN_URL,
-  listingPageDefaultDataSource,
-  detailPageDefaultDataSource,
-};
+export { listingPageDefaultDataSource, detailPageDefaultDataSource };

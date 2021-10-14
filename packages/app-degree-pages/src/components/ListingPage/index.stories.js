@@ -4,7 +4,6 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
-import { DOMAIN_URL } from "../../core/constants";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
@@ -45,9 +44,15 @@ const actionUrls = {
   applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
   // this is just an example working on Storybook
   majorInfoUrl: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
-  // majorInfoUrl:
+  // TODO: update OLD LINK: majorInfoUrl:
   //   `${DOMAIN_URL}/programs/t5/majorinfo/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
+  // NEW LINK: majorInfoUrl:
+  //   `https://degrees.apps.asu.edu/bachelors/major/` +
+  //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}`,
+  // https://degrees.apps.asu.edu/bachelors/major/ASU00/ESCEEBSE
+  // https://degrees.apps.asu.edu/minors/major/ASU00/BABUSMIN
+  // https://degrees.apps.asu.edu/masters-phd/major/ASU00/ARARCMARCH
 };
 
 /** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
