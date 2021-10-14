@@ -3,7 +3,16 @@
 import { useRef, useEffect, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import * as S from "./styles";
+
+const SEARCH_GA_EVENT = {
+  event: "search",
+  action: "type",
+  name: "onenter",
+  section: "topbar",
+  type: "main search",
+};
 
 const Search = ({ type, open, inputRef, mobile, ...props }) => {
   switch (type) {
@@ -27,6 +36,12 @@ const Search = ({ type, open, inputRef, mobile, ...props }) => {
             aria-labelledby="asu-search-label"
             {...(mobile ? { placeHolder: "Search asu.edu" } : {})}
             required
+            onChange={e =>
+              trackGAEvent({
+                ...SEARCH_GA_EVENT,
+                text: e.target.value,
+              })
+            }
           />
 
           <label

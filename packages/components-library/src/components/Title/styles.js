@@ -93,14 +93,14 @@ const Title = forwardRef(
           <a
             class="unit-name"
             href={parentOrgUrl}
-            onFocus={() => trackGAEvent(parentOrg)}
+            onFocus={() => trackGAEvent({ text: parentOrg })}
           >
             {parentOrg}
           </a>
           <a
             class="subunit-name"
             href={baseUrl}
-            onFocus={() => trackGAEvent(children)}
+            onFocus={() => trackGAEvent({ text: children })}
           >
             {children}
           </a>
@@ -112,7 +112,7 @@ const Title = forwardRef(
         class={cx("title", "subunit-name", props.class)}
         href={baseUrl}
         ref={ref}
-        onFocus={() => trackGAEvent(children)}
+        onFocus={() => trackGAEvent({ text: children })}
       >
         {children}
       </a>

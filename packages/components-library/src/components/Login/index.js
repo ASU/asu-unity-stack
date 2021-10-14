@@ -2,6 +2,8 @@
 import { h, Fragment } from "preact";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
+import { DEFAUL_GA_EVENT } from "../Header";
 import * as S from "./styles";
 
 const Login = ({ loggedIn, loginLink, logoutLink, userName, ...props }) => {
@@ -10,12 +12,23 @@ const Login = ({ loggedIn, loginLink, logoutLink, userName, ...props }) => {
       {loggedIn ? (
         <>
           {userName ? <span class="name">{userName}</span> : ""}
-          <a class="signout" href={logoutLink}>
+          <a
+            class="signout"
+            href={logoutLink}
+            onFocus={() =>
+              trackGAEvent({ ...DEFAUL_GA_EVENT, text: "sign out" })
+            }
+          >
             Sign Out
           </a>
         </>
       ) : (
-        <a href={loginLink}>Sign In</a>
+        <a
+          href={loginLink}
+          onFocus={() => trackGAEvent({ ...DEFAUL_GA_EVENT, text: "sign in" })}
+        >
+          Sign In
+        </a>
       )}
     </S.Login>
   );

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { trackGAEvent } from "../../services/googleAnalytics";
 import { Button } from "../Button";
+import { DROPDOWNS_GA_EVENTS } from "./DropNav";
 import * as S from "./styles";
 
 const HoverDropNav = forwardRef(
@@ -24,6 +25,7 @@ const HoverDropNav = forwardRef(
     },
     ref
   ) => {
+    const action = isOpen ? "close" : "open";
     const toggle = index => {
       if (isOpen) {
         setOpen(-1);
@@ -39,11 +41,11 @@ const HoverDropNav = forwardRef(
           ? {
               onMouseEnter: e => {
                 setOpen(pIndex);
-                !isOpen && trackGAEvent(text);
+                trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
               },
               onMouseLeave: e => {
                 setOpen(-1);
-                !isOpen && trackGAEvent(text);
+                trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
               },
             }
           : {})}

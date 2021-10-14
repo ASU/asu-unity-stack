@@ -1,8 +1,11 @@
-
-
 import { css, cx } from "@emotion/css";
 
-import { focusStyle, containerSize, primaryNavTopPadding, breakpointForMin } from "../../theme";
+import {
+  focusStyle,
+  containerSize,
+  primaryNavTopPadding,
+  breakpointForMin,
+} from "../../theme";
 import { Icon } from "../Icons";
 
 /**
@@ -115,7 +118,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class={cx("navbar-component", props.class)} >
+    <div class={cx("navbar-component", props.class)}>
       <div>{children}</div>
     </div>
   );
