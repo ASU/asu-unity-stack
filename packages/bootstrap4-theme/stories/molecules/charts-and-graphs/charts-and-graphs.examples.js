@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import { initChart } from './charts-and-graphs';
 
-export default createComponent('Charts And Graphs', 'Molecules');
+export default createComponent('Charts And Graphs', 'Molecules', 'Examples');
 
 export const DonutChartMarkUp = createStory(
   <div class="container p-5">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Modals', 'Atoms');
+export default createComponent('Modals', 'Atoms', 'Examples');
 import { initModals } from './modals.js';
 
 export const ModalComponent = createStory(

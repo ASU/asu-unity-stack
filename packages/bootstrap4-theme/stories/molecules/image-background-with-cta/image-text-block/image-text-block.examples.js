@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../../helpers/wrapper.js';
-export default createComponent('Content Sections/Image And Text Block', 'Molecules');
+export default createComponent('Content Sections/Image And Text Block', 'Molecules', 'Examples');
 
 export const ImageOnLeft = createStory(
   <div class="uds-image-text-block-container">

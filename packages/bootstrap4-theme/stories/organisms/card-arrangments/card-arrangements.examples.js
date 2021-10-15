@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Content Sections/Card Arrangements', 'Organisms');
+export default createComponent('Content Sections/Card Arrangements', 'Organisms', 'Examples');
 import exampleImage from './example-image.jpg';
 
 export const TwoCardArrangement = createStory(

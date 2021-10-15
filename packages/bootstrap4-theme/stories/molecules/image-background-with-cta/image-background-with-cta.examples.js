@@ -1,7 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent(
-  'Content Sections/Image Background With Call To Action', 'Molecules'
+  'Content Sections/Image Background With Call To Action', 'Molecules', 'Examples'
 );
 
 export const Default = createStory(

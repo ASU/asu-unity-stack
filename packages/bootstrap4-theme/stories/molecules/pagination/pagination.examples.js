@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Pagination', 'Molecules');
+export default createComponent('Pagination', 'Molecules', 'Examples');
 
 export const ExampleComponent = createStory(
   <nav aria-label="Page navigation example">

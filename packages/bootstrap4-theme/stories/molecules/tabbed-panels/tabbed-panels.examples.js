@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Tabbed Panels', 'Molecules');
+export default createComponent('Tabbed Panels', 'Molecules', 'Examples');
 import { initTabs } from './tabbed-panels.js';
 
 export const WhiteBackgroundStory = createStory(

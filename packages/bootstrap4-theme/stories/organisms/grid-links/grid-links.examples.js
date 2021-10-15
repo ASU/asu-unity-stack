@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Grid Links', 'Organisms');
+export default createComponent('Grid Links', 'Organisms', 'Examples');
 
 export const BackgroundWhiteStory = createStory(
   <div class="uds-grid-links two-columns">

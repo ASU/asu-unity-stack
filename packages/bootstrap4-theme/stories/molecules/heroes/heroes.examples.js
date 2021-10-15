@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Heroes', 'Molecules');
+export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroSmall = createStory(
   <div class="uds-hero-sm">

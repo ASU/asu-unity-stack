@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
 
-export default createComponent('Content Sections/Card Image And Content', 'Organisms');
+export default createComponent('Content Sections/Card Image And Content', 'Organisms', 'Examples');
 
 export const Default = createStory(
   <div class="uds-card-image-and-content">

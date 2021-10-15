@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Sidebar', 'Atoms');
+export default createComponent('Sidebar', 'Atoms', 'Examples');
 
 export const UnorderedList = createStory(
   <div class="container my-5">

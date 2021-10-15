@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Content Sections/Inset Box', 'Molecules');
+export default createComponent('Content Sections/Inset Box', 'Molecules', 'Examples');
 
 const DefaultExample = (buttonText = '') =>
   createStory(

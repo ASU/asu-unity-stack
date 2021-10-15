@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
-export default createComponent('Banners', 'Molecules');
+export default createComponent('Banners', 'Molecules', 'Examples');
 
 export const BannersGreen = createStory(
   <section class="banner-green">

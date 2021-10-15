@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('List/Display List', 'Molecules');
+export default createComponent('List/Display List', 'Molecules', 'Examples');
 
 export const Default = createStory(
   <ul class="uds-list uds-display-list">

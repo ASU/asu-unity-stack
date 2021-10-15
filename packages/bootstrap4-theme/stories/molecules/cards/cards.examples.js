@@ -5,7 +5,7 @@ import {
 } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
 
-export default createComponent('Cards', 'Molecules');
+export default createComponent('Cards', 'Molecules', 'Examples');
 
 export const defaultCard = createStory(
   <div class="card">

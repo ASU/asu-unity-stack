@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Person Profile', 'Molecules');
+export default createComponent('Person Profile', 'Molecules', 'Examples');
 
 export const PersonProfile = createStory(
   <div class="uds-person-profile">

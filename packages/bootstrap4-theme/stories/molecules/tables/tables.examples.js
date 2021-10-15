@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Tables', 'Molecules');
+export default createComponent('Tables', 'Molecules', 'Examples');
 import './tables';
 
 export const DefaultComponent = createStory(

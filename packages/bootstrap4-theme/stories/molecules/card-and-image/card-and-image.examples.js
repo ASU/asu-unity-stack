@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Content Sections/Card And Image', 'Molecules');
+export default createComponent('Content Sections/Card And Image', 'Molecules', 'Examples');
 
 export const LeftFloatedCard = createStory(
   <div

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-export default createComponent('Content Sections/Image Overlap', 'Molecules');
+export default createComponent('Content Sections/Image Overlap', 'Molecules', 'Examples');
 
 export const imageOverlapRight = createStory(
   <div class="uds-image-overlap">
