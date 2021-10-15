@@ -46,7 +46,7 @@ const detailPageDefaultDataSource = {
     // program contact
     `DepartmentName,PlanUrl,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
-    `DescrlongExtn5,gradAdditionalRequirements,TransferAdmission,` +
+    `DescrlongExtn5,TransferAdmission,gradAdditionalRequirements,AdmissionsDegRequirements,` +
     `AdmissionsDegRequirements,` +
     // Global opportunity
     `globalExp,` +

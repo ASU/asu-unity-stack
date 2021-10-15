@@ -187,20 +187,13 @@ const DetailPage = ({
 
                 {!applicationRequirements?.hide ? (
                   <ApplicationRequirements
-                    accordionCards={[
-                      {
-                        content: {
-                          header: "Additional Requirements",
-                          body: resolver.getAdditionalRequirements(),
-                        },
-                      },
-                      {
-                        content: {
-                          header: "Transfer Admission Requirements",
-                          body: resolver.getTransferAdmission(),
-                        },
-                      },
-                    ]}
+                    graduateRequirements={
+                      resolver.isGradProgram()
+                        ? resolver.getGraduateRequirements()
+                        : null
+                    }
+                    additionalRequirements={resolver.getDescrLongExtented5()}
+                    transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
 

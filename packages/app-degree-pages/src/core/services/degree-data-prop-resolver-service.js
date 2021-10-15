@@ -37,6 +37,7 @@ function degreeDataPropResolverService(row = {}) {
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
     isUndergradProgram: () => isUndergradProgram(row),
+    isGradProgram: () => !isUndergradProgram(row),
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
@@ -45,24 +46,27 @@ function degreeDataPropResolverService(row = {}) {
     getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
     getDescrLongExtented5: () => row["DescrlongExtn5"],
     getTransferAdmission: () => row["TransferAdmission"],
-    getAdditionalRequirements: () => {
-      if (isUndergradProgram(row)) {
-        return row["DescrlongExtn5"];
-      }
-
+    getGraduateRequirements: () => {
       /** @type {Array<Array>} */
-      const requirementList = row["gradAdditionalRequirements"];
-      if (requirementList?.length > 0) {
+      const rawRequirement1 = row["gradAdditionalRequirements"];
+      let gradRequirement1 = "";
+      if (rawRequirement1?.length > 0) {
         // requirement[0]: acadPlan. ex `LAAUDAUDD`
         // requirement[1]: brief decription of requirement
         // ex 88 credit hours, a written and oral comprehensive exam
         // requirement[2]: unknown code. ex AUD88AUDD
-        const requirements = requirementList
+        const flatRequirement1 = rawRequirement1
           .map(requirement => requirement?.[1])
           .join(" ");
-        return requirements ? `<p>${requirements}</p>` : "";
+
+        // AdmissionsDegRequirements
+        gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
       }
-      return "";
+
+      /** @type {string} */
+      const gradRequirement2 = row["AdmissionsDegRequirements"];
+
+      return `${gradRequirement1}${gradRequirement2}`;
     },
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
