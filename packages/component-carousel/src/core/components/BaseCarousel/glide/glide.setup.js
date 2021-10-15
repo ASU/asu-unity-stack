@@ -85,18 +85,18 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
           },
           768: {
             // BS4 md
-            perView: perViewSm,
-            peek: largePeek,
+            perView: perViewMd,
+            peek: smallPeek,
           },
           992: {
             // BS4 lg
-            perView: perViewMd,
-            peek: largePeek,
+            perView: perViewLg,
+            peek: smallPeek,
           },
           1260: {
             // BS4 xl
             perView: perViewLg,
-            peek: largePeek,
+            peek: smallPeek,
           },
           1400: {
             perView: perViewLg,
@@ -202,7 +202,7 @@ function setupCaroarousel({
       slider.go(">");
     } else if (e.keyCode === 37) {
       slider.go("<");
-    } else if(e.keyCode === 13) {
+    } else if (e.keyCode === 13) {
       slider.go(document.activeElement.dataset.glideDir);
     }
   });

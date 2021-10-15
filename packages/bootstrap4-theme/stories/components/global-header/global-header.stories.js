@@ -10,14 +10,24 @@ import {
   ScrolledState,
   Partner,
 } from './global-header.components.js';
-import { initHeaderGA } from './global-header';
+import { initGlobalHeader as initFunc } from './global-header';
 
-export const BasicExample = createStory(Basic, initHeaderGA);
-export const DropDownMenusExample = createStory(DropDownMenus, initHeaderGA);
-export const NoNavigationExample = createStory(NoNavigation, initHeaderGA);
+export const BasicExample = createStory(Basic, { initFunc });
+export const DropDownMenusExample = createStory(DropDownMenus, { initFunc });
+export const NoNavigationExample = createStory(NoNavigation, { initFunc });
 export const NoNavigationAndWithButtonsExample = createStory(
   NoNavigationAndWithButtons,
-  initHeaderGA
+  { initFunc }
 );
-export const ScrolledStateExample = createStory(ScrolledState, initHeaderGA);
-export const PartnerExample = createStory(Partner, initHeaderGA);
+export const StickyNoNavigationExample = createStory(
+  <>
+    {NoNavigationAndWithButtons}
+    <main>
+      <div id="skip-to-content" class="sr-only"></div>
+      <div class="bg-gray-3" style={{ height: '200vh' }}></div>
+    </main>
+  </>,
+  { initFunc }
+);
+export const ScrolledStateExample = createStory(ScrolledState, { initFunc });
+export const PartnerExample = createStory(Partner, { initFunc });
