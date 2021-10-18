@@ -19,7 +19,7 @@ const extraOptions = {
     },
   },
   backgroundColor: {
-    name: 'Size',
+    name: 'Background Color',
     options: [
       '',
       'smokemode',
