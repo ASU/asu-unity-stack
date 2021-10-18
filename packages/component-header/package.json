@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-header",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "ASU Global Header",
   "main": "src/index.js",
   "author": "Nicolas Baudon",
