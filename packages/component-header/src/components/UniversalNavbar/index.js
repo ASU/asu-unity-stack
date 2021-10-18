@@ -77,4 +77,4 @@ const UniversalNavbar = () => {
   );
 };
 
-export { UniversalNavbar, DEFAUL_GA_EVENT };
+export { UniversalNavbar };
