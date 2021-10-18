@@ -1,17 +1,16 @@
+/* eslint-disable react/no-danger */
 // @ts-check
 import {
   Button,
   Accordion,
-} from "@asu-design-system/components-core/src/components";
+  sanitizeDangerousMarkup,
+} from "@asu-design-system/components-core";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import {
-  accordionCardPropShape,
-  progDetailSectionIds,
-} from "../../../../core/models";
+import { progDetailSectionIds } from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/models/program-detail-types').ApplicationRequirementsProps} ApplicationRequirementsProps
@@ -35,12 +34,11 @@ const ButtonList = styled.ul`
   }
 `;
 
-/**
- * @param {ApplicationRequirementsProps} props
- * @returns {JSX.Element}
- */
-function ApplicationRequirements({ accordionCards }) {
-  const items = [
+const undergraduateTemplate = (
+  additionalRequirements = "",
+  transferRequirements = ""
+) => {
+  const generalRequirements = [
     {
       label: "Freshman",
       href: "https://admission.asu.edu/freshman/apply",
@@ -56,30 +54,36 @@ function ApplicationRequirements({ accordionCards }) {
     },
   ];
 
-  // clean up those records with `header` or `body` with empty/null values
-  const reqList = accordionCards.filter(
-    ({ content }) => content.body?.trim() && content.header?.trim()
-  );
+  const undergradRequirements = [];
+
+  if (additionalRequirements.trim())
+    undergradRequirements.push({
+      content: {
+        header: "Additional Requirements",
+        body: additionalRequirements,
+      },
+    });
+
+  if (transferRequirements.trim())
+    undergradRequirements.push({
+      content: {
+        header: "Transfer Admission Requirements",
+        body: transferRequirements,
+      },
+    });
 
   return (
-    <section
-      id={progDetailSectionIds.applicationRequirements.targetIdName}
-      data-testid="application-requirements"
-    >
-      <h2>
-        <span className="highlight-gold">Application requirements</span>
-      </h2>
-      <h3 className="mt-4">General university admission requirements</h3>
+    <>
       <p>
         All students are required to meet general university admission
         requirements
       </p>
       <ButtonList
         className={classNames("", {
-          "mb-0": reqList.length === 0,
+          "mb-0": undergradRequirements.length === 0,
         })}
       >
-        {items.map(({ label, href }) => (
+        {generalRequirements.map(({ label, href }) => (
           <li key={label}>
             <Button
               ariaLabel={label}
@@ -91,17 +95,50 @@ function ApplicationRequirements({ accordionCards }) {
           </li>
         ))}
       </ButtonList>
-      {reqList.length > 0 && (
+      {undergradRequirements.length > 0 && (
         <div className="mt-2 mb-4">
-          <Accordion cards={reqList} openedCard={1} />
+          <Accordion cards={undergradRequirements} openedCard={1} />
         </div>
+      )}
+    </>
+  );
+};
+
+/**
+ * @param {ApplicationRequirementsProps} props
+ * @returns {JSX.Element}
+ */
+function ApplicationRequirements({
+  graduateRequirements,
+  transferRequirements,
+  additionalRequirements,
+}) {
+  return (
+    <section
+      id={progDetailSectionIds.applicationRequirements.targetIdName}
+      data-testid="application-requirements"
+    >
+      <h2>
+        <span className="highlight-gold">Application requirements</span>
+      </h2>
+      <h3 className="mt-4">General university admission requirements</h3>
+      {graduateRequirements ? (
+        <div
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+            graduateRequirements
+          )}
+        />
+      ) : (
+        undergraduateTemplate(transferRequirements, additionalRequirements)
       )}
     </section>
   );
 }
 
 ApplicationRequirements.propTypes = {
-  accordionCards: PropTypes.arrayOf(accordionCardPropShape).isRequired,
+  graduateRequirements: PropTypes.string,
+  transferRequirements: PropTypes.string,
+  additionalRequirements: PropTypes.string,
 };
 
 export { ApplicationRequirements };

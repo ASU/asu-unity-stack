@@ -67,7 +67,9 @@
 
 /**
  * @typedef {{
- *  accordionCards: import("./shared-types").AccordionCard []
+ *  graduateRequirements?: string
+ *  additionalRequirements?: string
+ *  transferRequirements?: string
  * }} ApplicationRequirementsProps
  */
 

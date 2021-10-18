@@ -297,6 +297,18 @@ Default.args = {
 /**
  * @type {{ args: AppProps }}
  */
+export const DefaultWithGraduateDegree = Template.bind({});
+DefaultWithGraduateDegree.args = {
+  ...defaultArgs,
+  dataSource: {
+    ...defaultArgs.dataSource,
+    acadPlan: "LAAUDAUDD",
+  },
+};
+
+/**
+ * @type {{ args: AppProps }}
+ */
 export const WithContent = Template.bind({});
 WithContent.args = {
   ...defaultArgs,
