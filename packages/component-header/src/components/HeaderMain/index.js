@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import { useAppContext } from "../../core/context/app-context";
 import { useIsMobile } from "../../core/hooks/isMobile";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { UniversalNavbar } from "../UniversalNavbar";
 import { HeaderMainWrapper } from "./index.styles";
 import { Logo } from "./Logo";
@@ -18,6 +19,16 @@ const HeaderMain = () => {
 
   const handleChangeMenuVisibility = () => {
     setMobileMenuOpen(prevState => !prevState);
+  };
+
+  const handleClickMobileMenu = () => {
+    handleChangeMenuVisibility();
+    trackGAEvent({
+      event: "collapse",
+      action: mobileMenuOpen ? "close" : "open",
+      type: "click",
+      text: "menu button tablet",
+    });
   };
 
   return (
@@ -39,7 +50,7 @@ const HeaderMain = () => {
                   mobileMenuOpen ? "" : " collapsed"
                 }`}
                 type="button"
-                onClick={handleChangeMenuVisibility}
+                onClick={handleClickMobileMenu}
                 aria-label="Toggle navigation"
               >
                 <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />

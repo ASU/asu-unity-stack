@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "preact/compat";
 import PropTypes from "prop-types";
 
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { Login } from "../Login";
 import { Logo } from "../Logo";
 import { Nav } from "../Nav";
@@ -9,6 +10,10 @@ import { Navbar } from "../Navbar";
 import { UniversalSearch } from "../Search";
 import { Title } from "../Title";
 import * as S from "./styles";
+
+const DEFAUL_GA_EVENT = {
+  section: "topbar",
+};
 
 const Header = ({
   navTree,
@@ -177,9 +182,26 @@ const Header = ({
           >
             Report an accessibility problem
           </a>
-          <a href="https://www.asu.edu/">ASU Home</a>
-          <a href="https://my.asu.edu/">My ASU</a>
-          <a href="https://www.asu.edu/academics/colleges-schools">
+          <a
+            href="https://www.asu.edu/"
+            onFocus={() =>
+              trackGAEvent({ ...DEFAUL_GA_EVENT, text: "asu home" })
+            }
+          >
+            ASU Home
+          </a>
+          <a
+            href="https://my.asu.edu/"
+            onFocus={() => trackGAEvent({ ...DEFAUL_GA_EVENT, text: "my asu" })}
+          >
+            My ASU
+          </a>
+          <a
+            href="https://www.asu.edu/academics/colleges-schools"
+            onFocus={() =>
+              trackGAEvent({ ...DEFAUL_GA_EVENT, text: "colleges and schools" })
+            }
+          >
             Colleges and Schools
           </a>
           <Login {...{ loggedIn, loginLink, logoutLink, userName }} />
@@ -194,6 +216,12 @@ const Header = ({
         onClick={e => {
           e.preventDefault();
           toggle();
+          trackGAEvent({
+            event: "collapse",
+            action: mobileOpen ? "close" : "open",
+            type: "click",
+            text: "menu button tablet",
+          });
         }}
         mobileOpen={mobileOpen}
         logo={<Logo {...logo} ref={logoRef} />}
@@ -258,4 +286,4 @@ Header.defaultProps = {
   expandOnHover: false,
 };
 
-export { Header };
+export { Header, DEFAUL_GA_EVENT };

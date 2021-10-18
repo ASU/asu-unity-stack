@@ -25,16 +25,27 @@ const DEFAULT_GA_EVENT = {
  * }} props
  * @returns {JSX.Element}
  */
-const Social = ({ social: { unitLogo, mediaLinks } }) => {
+const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">
         <div className="row">
           <div className="col-md" id="endorsed-logo">
-            <img
-              src={unitLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href={logoUrl}
+              onFocus={() =>
+                trackGAEvent({
+                  ...DEFAULT_GA_EVENT,
+                  type: "internal link",
+                  text: "asu logo",
+                })
+              }
+            >
+              <img
+                src={unitLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           {mediaLinks && (

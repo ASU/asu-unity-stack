@@ -17,6 +17,7 @@
 
 /**
  *  @typedef {{
+ *   logoUrl: string
  *   unitLogo: string
  *   mediaLinks?: {
  *     facebook?: string

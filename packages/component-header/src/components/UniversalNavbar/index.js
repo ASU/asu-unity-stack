@@ -2,9 +2,14 @@
 import React from "react";
 
 import { useAppContext } from "../../core/context/app-context";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
+
+const DEFAUL_GA_EVENT = {
+  section: "topbar",
+};
 
 const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
@@ -32,15 +37,33 @@ const UniversalNavbar = () => {
               >
                 Report an accessibility problem
               </a>
-              <a className="nav-link" href="https://asu.edu">
+              <a
+                className="nav-link"
+                href="https://asu.edu"
+                onFocus={() =>
+                  trackGAEvent({ ...DEFAUL_GA_EVENT, text: "asu home" })
+                }
+              >
                 ASU Home
               </a>
-              <a className="nav-link" href="https://my.asu.edu">
+              <a
+                className="nav-link"
+                href="https://my.asu.edu"
+                onFocus={() =>
+                  trackGAEvent({ ...DEFAUL_GA_EVENT, text: "my asu" })
+                }
+              >
                 My ASU
               </a>
               <a
                 className="nav-link"
                 href="https://www.asu.edu/academics/colleges-schools"
+                onFocus={() =>
+                  trackGAEvent({
+                    ...DEFAUL_GA_EVENT,
+                    text: "colleges and schools",
+                  })
+                }
               >
                 Colleges and Schools
               </a>
