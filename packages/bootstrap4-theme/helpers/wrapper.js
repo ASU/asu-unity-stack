@@ -3,9 +3,9 @@ import { template } from './templates';
 
 import { Basic as Header } from '../stories/organisms/global-header/global-header.components.js';
 import { GlobalElementsOnly as Footer } from '../stories/organisms/global-footer/global-footer.components.js';
-export const createComponent = (name, section = 'Atoms', type = 'Templates', extraOptions = {}) => {
+export const createComponent = (name, section = 'Atoms', type = '', extraOptions = {}) => {
   return {
-    title: `${section}/${name}/${type}`,
+    title: `${section}/${name}${type === '' ? '' : '/'+type}`,
     argTypes: {
       header: {
         name: 'Show Header',

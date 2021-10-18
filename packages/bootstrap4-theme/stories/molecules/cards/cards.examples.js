@@ -7,58 +7,6 @@ import exampleImage from './example-image.jpg';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
 
-export const defaultCard = createStory(
-  <div class="card">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-    <div class="card-header">
-      <h3 class="card-title">Card default title</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua eiusmod tempo.
-      </p>
-    </div>
-    <div class="card-event-details">
-      <div class="card-event-icons">
-        <div>
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <div>Downtown Phoenix campus</div>
-      </div>
-    </div>
-    <div class="card-buttons">
-      <div class="card-button">
-        <a href="#" class="btn btn-dark">
-          Button link here
-        </a>
-      </div>
-      <div class="card-button">
-        <a href="#" class="btn btn-md btn-dark">
-          Button link here
-        </a>
-      </div>
-    </div>
-    <div class="card-link">
-      <a href="#" class="">
-        Regular text link here
-      </a>
-    </div>
-    <div class="card-tags">
-      <a class="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
-      </a>
-      <a class="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
-      </a>
-      <a class="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
-      </a>
-    </div>
-  </div>
-);
-
 export const cardImages = createStory(
   <div style={{ width: '50%' }}>
     <div class="card">
@@ -109,29 +57,6 @@ export const cardBody = createStory(
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua eiusmod tempo.
       </p>
-    </div>
-  </div>
-);
-
-export const cardIcon = createStory(
-  <div class="card">
-    <div class="card-header card-header-icon">
-      <i class="fas fa-newspaper fa-2x card-icon"></i>
-      <h3 class="card-title">Headline goes here</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua eiusmod tempo.
-      </p>
-    </div>
-    <div class="card-buttons">
-      <div class="card-button">
-        <a href="#" class="btn btn-maroon">
-          Button text
-        </a>
-      </div>
     </div>
   </div>
 );
@@ -203,31 +128,6 @@ export const cardEventInfo = createStory(
           </div>
           <div>Downtown Phoenix campus</div>
         </div>
-      </div>
-    </div>
-  </div>
-);
-
-export const cardCallToActions = createStory(
-  <div style={{ width: '50%' }}>
-    <div class="card">
-      <div class="card-header"></div>
-      <div class="card-buttons">
-        <div class="card-button">
-          <a href="#" class="btn btn-dark">
-            Button link here
-          </a>
-        </div>
-        <div class="card-button">
-          <a href="#" class="btn btn-md btn-dark">
-            Button link here
-          </a>
-        </div>
-      </div>
-      <div class="card-link">
-        <a href="#" class="">
-          Regular text link here
-        </a>
       </div>
     </div>
   </div>
@@ -793,90 +693,6 @@ export const variations = createStory(
     omitTemplate: true,
   }
 );
-
-export const fourColumn = createStory(
-  <div class="card card-sm">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-    <div class="card-header">
-      <h3 class="card-title">Card default title</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua eiusmod tempo.
-      </p>
-    </div>
-    <div class="card-buttons">
-      <div class="card-button">
-        <a href="#" class="btn btn-dark btn-md">
-          Button link here
-        </a>
-      </div>
-    </div>
-  </div>
-);
-fourColumn.args = {
-  template: 4,
-};
-
-export const threeColumn = createStory(
-  <div class="card card-sm">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-    <div class="card-header">
-      <h3 class="card-title">Card default title</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua eiusmod tempo.
-      </p>
-    </div>
-    <div class="card-buttons">
-      <div class="card-button">
-        <a href="#" class="btn btn-dark btn-md">
-          Button link here
-        </a>
-      </div>
-    </div>
-  </div>,
-  {
-    bootstrap: () => (component.argTypes.template.defaultValue = 3),
-  }
-);
-threeColumn.args = {
-  template: 3,
-};
-
-export const twoColumn = createStory(
-  <div class="card card-sm">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-    <div class="card-header">
-      <h3 class="card-title">Card default title</h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua eiusmod tempo.
-      </p>
-    </div>
-    <div class="card-buttons">
-      <div class="card-button">
-        <a href="#" class="btn btn-dark btn-md">
-          Button link here
-        </a>
-      </div>
-    </div>
-  </div>,
-  {
-    bootstrap: () => (component.argTypes.template.defaultValue = 2),
-  }
-);
-twoColumn.args = {
-  template: 1,
-};
 
 export const horizontal = createStory(
   <div>

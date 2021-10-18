@@ -180,3 +180,29 @@ export const StepList = createStory(
     )
   }
 );
+
+export const DisplayList = createStory(
+  (args) => {
+    return (
+      <ul class={`uds-list uds-display-list ${args.bulletColor} ${args.backgroundColor}`}>
+        <li>
+          Lorem ipsum dolor sit amet
+          <span>Lorem ipsum dolor sit amet</span>
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <span>Lorem ipsum dolor sit amet</span>
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet, adipiscing elit.
+          <span>Lorem ipsum dolor sit amet</span>
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet
+          <span>Lorem ipsum dolor sit amet</span>
+        </li>
+      </ul>
+    )
+  }
+);
