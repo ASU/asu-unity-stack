@@ -1,9 +1,15 @@
 import React from 'react';
+
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
+
 export default createComponent('Buttons');
 
 export const ButtonColorsComponent = createStory(
   <div>
+    <a class="btn btn-primary" href="/">btn-primary link</a>
+    <hr />
+    <button class="btn btn-primary">btn-primary button</button>
+    <hr />
     <button class="btn btn-gold" type="submit">
       Button button
     </button>
