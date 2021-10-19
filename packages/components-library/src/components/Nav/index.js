@@ -277,7 +277,10 @@ const Nav = forwardRef(
                               onFocus={() => {
                                 setFocus([pindex, index, ind]);
                                 setOpen(pindex);
-                                trackGAEvent(item.text);
+                                trackGAEvent({
+                                  text: item.text,
+                                  component: navItem.text,
+                                });
                               }}
                               ref={subs[index][ind].ref}
                               type={
@@ -317,7 +320,7 @@ const Nav = forwardRef(
               <NavItem
                 key={`nav-item-${pindex}`}
                 onFocus={() => {
-                  trackGAEvent(navItem.text);
+                  trackGAEvent({ text: navItem.text });
                   setFocusCallback([pindex, -1, -1]);
                 }}
                 ref={item.ref}
@@ -349,6 +352,7 @@ const Nav = forwardRef(
                     key={`button-${index}`}
                     href={item.href}
                     {...{ [color]: true }}
+                    onFocus={() => trackGAEvent({ text: item.text })}
                     medium
                   >
                     {item.text}

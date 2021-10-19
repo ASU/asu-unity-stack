@@ -18,6 +18,7 @@ Default.args = {};
 export const UnitLogo = Template.bind({});
 UnitLogo.args = {
   social: {
+    logoUrl: "https://www.asu.edu",
     unitLogo: endorsedLogo,
     mediaLinks: {
       facebook: "https://facebook.com",

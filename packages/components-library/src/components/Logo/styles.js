@@ -75,7 +75,7 @@ const Logo = forwardRef(({ brandLink, src, mobileSrc, alt, ...props }, ref) => {
       class="navbar-logo"
       ref={ref}
       {...props}
-      onFocus={() => trackGAEvent("asu logo")}
+      onFocus={() => trackGAEvent({ text: "asu logo" })}
     >
       <img class="vert" src={src} alt={alt} />
       <img class="horiz" src={mobileSrc} alt={alt} />

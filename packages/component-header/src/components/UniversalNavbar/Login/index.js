@@ -2,7 +2,12 @@
 import React from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { LoginWrapper } from "./index.styles";
+
+const DEFAUL_GA_EVENT = {
+  section: "topbar",
+};
 
 const Login = () => {
   const { loggedIn, userName, logoutLink, loginLink, breakpoint } =
@@ -20,12 +25,31 @@ const Login = () => {
           ) : (
             ""
           )}
-          <a className="signout" href={logoutLink}>
+          <a
+            className="signout"
+            href={logoutLink}
+            onFocus={() =>
+              trackGAEvent({
+                ...DEFAUL_GA_EVENT,
+                text: "sign out",
+              })
+            }
+          >
             Sign Out
           </a>
         </>
       ) : (
-        <a href={loginLink}>Sign In</a>
+        <a
+          href={loginLink}
+          onFocus={() =>
+            trackGAEvent({
+              ...DEFAUL_GA_EVENT,
+              text: "sign in",
+            })
+          }
+        >
+          Sign In
+        </a>
       )}
     </LoginWrapper>
   );

@@ -4,7 +4,16 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { SearchWrapper } from "./index.styles";
+
+const SEARCH_GA_EVENT = {
+  event: "search",
+  action: "type",
+  name: "onenter",
+  section: "topbar",
+  type: "main search",
+};
 
 const Search = () => {
   const { breakpoint } = useAppContext();
@@ -49,6 +58,12 @@ const Search = () => {
                 aria-labelledby="header-top-search"
                 placeholder="Search asu.edu"
                 required
+                onChange={e =>
+                  trackGAEvent({
+                    ...SEARCH_GA_EVENT,
+                    text: e.target.value,
+                  })
+                }
               />
               <button
                 type="button"
@@ -72,6 +87,12 @@ const Search = () => {
             aria-labelledby="header-top-search"
             placeholder="Search asu.edu"
             required
+            onChange={e =>
+              trackGAEvent({
+                ...SEARCH_GA_EVENT,
+                text: e.target.value,
+              })
+            }
           />
         </label>
       )}

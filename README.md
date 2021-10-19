@@ -8,10 +8,17 @@ Version DEV-1
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
 1. [bootstrap4-theme](./packages/bootstrap4-theme/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages.
-2. [components-library](./packages/components-library/README.md) - Preact component library. Contains ASU-branded global header.
-3. [component-forms](./packages/component-forms/README.md) - Preact form components.
-4. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
-5. [maps](./packages/maps/README.md) - React map components. TODO: convert this package to Preact
+2. [app-degree-pages](./packages/app-degree-pages/README.md)
+3. [app-rfi](./packages/app-rfi/README.md)
+4. [component-carousel](./packages/component-carousel/README.md)
+5. [component-events](./packages/component-events/README.md)
+6. [component-footer](./packages/component-footer/README.md)
+7. [component-header](./packages/component-header/README.md)
+8. [component-news](./packages/component-news/README.md)
+9. [components-core](./packages/components-core/README.md)
+10. [components-library](./packages/components-library/README.md) - Preact component library. Contains ASU-branded global header.
+11. [cookie-consent](./packages/cookie-consent/README.md) -
+12. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
 
 ## ❯ Dependencies
 
@@ -153,6 +160,49 @@ Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins wh
 After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
 
 ```https://unity.web.asu.edu/```
+
+## > Google Analytics integration
+
+The Google Analytics integration is being done throughout Google Tag manager, this means that the events, of the user interaction, are being cathed by Google Tag manager, and then delivered to Google Analytics.
+
+This is posible using the window `dataLayer` object. For all of the components in every package(that has the integration) of this repository we take the `dataLayer` object, with GTM already initialized by another user (CMS/WS2 user), and push each event, using `push()` method of the `dataLayer`, to the object already mentioned. When each object is included in the array, Google Tag manager catch that event.
+
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that push each event, if the `dataLayer` object exists, and that service method is called on each jsx element event handler. For example:
+
+#### **`src/component.js`**
+```JS
+<a href="#" onFocus={() => trackGAEvent(customEvent)}>Anchor Text</a>
+```
+#### **`services/googleAnalytics.js`**
+```JS
+const trackGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+}
+```
+
+For `bootstrap4-theme` package the events are being dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+
+#### **`src/component.html`**
+```JS
+<a href="#" data-ga="">Anchor Text</a>
+```
+#### **`src/component.js`**
+```JS
+const pushGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+};
+// eventListener
+const elements = document.querySelectorAll('[data-ga]');
+elements.forEach((element) =>
+  element.addEventListener('focus', () => {
+    pushGAEvent(event);
+  })
+);
+```
+
+To read more about Google Tag manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
 
 ## ❯ Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.

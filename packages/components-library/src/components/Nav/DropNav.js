@@ -7,6 +7,11 @@ import { trackGAEvent } from "../../services/googleAnalytics";
 import { Button } from "../Button";
 import * as S from "./styles";
 
+export const DROPDOWNS_GA_EVENTS = {
+  event: "collapse",
+  type: "click",
+};
+
 const DropNav = forwardRef(
   (
     {
@@ -26,6 +31,7 @@ const DropNav = forwardRef(
     },
     ref
   ) => {
+    const action = isOpen ? "close" : "open";
     const toggle = index => {
       if (isOpen) {
         setOpen(-1);
@@ -47,14 +53,14 @@ const DropNav = forwardRef(
           onMouseDown={e => {
             e.preventDefault();
             toggle(pIndex);
-            !isOpen && trackGAEvent(text);
+            trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
           }}
           onKeyDown={e => {
             const code = e.keyCode;
             // open menu upon 'enter' or 'space' keypress
             if (code == 32 || code == 13) {
               toggle(pIndex);
-              !isOpen && trackGAEvent(text);
+              trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
             }
           }}
           onFocus={e => {

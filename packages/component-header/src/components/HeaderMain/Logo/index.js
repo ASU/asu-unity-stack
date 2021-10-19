@@ -16,7 +16,7 @@ const Logo = () => {
       href={logo ? logo.brandLink : "https://asu.edu"}
       className="navbar-brand"
       data-testid="logo"
-      onFocus={() => trackGAEvent("asu logo")}
+      onFocus={() => trackGAEvent({ text: "asu logo" })}
     >
       <img
         className="vert"
