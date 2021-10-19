@@ -1,10 +1,9 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
-import exampleImage from './example-image.jpg';
-
+import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates';
 export default createComponent('Content Sections/Card Image And Content', 'Organisms', 'Examples');
 
-export const Default = createStory(
+export const CardAndImageContent = createStory(
   <div class="uds-card-image-and-content">
     <div
       class="uds-card-image-and-content-image-container"
@@ -26,46 +25,23 @@ export const Default = createStory(
         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
         reprehenderit in voluptate velit esse cillum.
       </div>
-      <div class="card">
-        <img
-          class="card-img-top"
-          src={exampleImage}
-          alt="Card image cap"
-        />
-        <div class="card-header">
-          <h3 class="card-title">Card default title</h3>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua eiusmod tempo.
-          </p>
-        </div>
-        <div class="card-buttons">
-          <div class="card-button">
-            <a href="#" class="btn btn-sm btn-dark">
-              Button link here
-            </a>
-          </div>
-        </div>
-        <div class="card-link">
-          <a href="#" class="">
-            Regular text link here
-          </a>
-        </div>
-        <div class="card-tags">
-          <a class="btn btn-tag btn-tag-alt-white" href="#">
-            test tag
-          </a>{' '}
-          <a class="btn btn-tag btn-tag-alt-white" href="#">
-            test tag 2
-          </a>{' '}
-          <a class="btn btn-tag btn-tag-alt-white" href="#">
-            test tag 3
-          </a>
-        </div>
-      </div>
+      {
+        Card(
+          {
+            cardHeader: 'image',
+            event: false,
+            link: true,
+            tags: true,
+            numButtons: 1
+          }
+        )
+      }
     </div>
-  </div>
+  </div>,
+  {
+    supportedTemplates: [layoutNames.FULL_WIDTH]
+  }
 );
+CardAndImageContent.args = {
+  template: 0
+}

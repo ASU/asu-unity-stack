@@ -12,8 +12,8 @@ import {
   FourColumns,
   FiveColumns,
   SixColumns,
-} from './global-footer.components.js';
-import { initFooterGA as initFunc } from './global-footer';
+} from './global-footer.templates.js';
+import { initFooterGA } from './global-footer';
 
 export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, {
   initFunc,

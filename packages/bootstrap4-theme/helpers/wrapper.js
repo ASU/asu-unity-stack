@@ -1,8 +1,8 @@
 import React from 'react';
 import { template } from './templates';
 
-import { Basic as Header } from '../stories/organisms/global-header/global-header.components.js';
-import { GlobalElementsOnly as Footer } from '../stories/organisms/global-footer/global-footer.components.js';
+import { Basic as Header } from '../stories/organisms/global-header/global-header.templates.js';
+import { GlobalElementsOnly as Footer } from '../stories/organisms/global-footer/global-footer.templates.js';
 export const createComponent = (name, section = 'Atoms', type = '', extraOptions = {}) => {
   return {
     title: `${section}/${name}${type === '' ? '' : '/'+type}`,
