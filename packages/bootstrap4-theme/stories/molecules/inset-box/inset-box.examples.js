@@ -53,26 +53,3 @@ export const ExampleWithBlockquote = createStory(
     </div>
   </div>
 );
-
-export const WhiteBackground = createStory(
-  <div class="uds-inset-box-container white-bg">
-    <div class="uds-inset-box-content">
-      <h3>Lorem ipsum dolor sit amet</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
-      </p>
-      <div class="uds-inset-box-buttons">
-        <a href="#" class="btn btn-dark mr-2">
-          Button link here
-        </a>
-        <a href="#" class="btn btn-dark">
-          Button link here
-        </a>
-      </div>
-      <a href="#" class="">
-        Regular text link here
-      </a>
-    </div>
-  </div>
-);

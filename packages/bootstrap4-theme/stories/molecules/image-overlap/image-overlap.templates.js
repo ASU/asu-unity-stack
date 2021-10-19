@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
 
 const extraOptions = {
   left: {
@@ -38,5 +38,8 @@ export const imageOverlapRightOrLeft = createStory(
         </div>
       </div>
     );
+  },
+  {
+    supportedTemplates: [layoutNames.ONE_COLUMN, layoutNames.TWO_COLUMN]
   }
 );
