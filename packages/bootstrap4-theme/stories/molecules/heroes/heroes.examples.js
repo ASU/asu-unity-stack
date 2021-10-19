@@ -2,31 +2,6 @@ import React from 'react';
 import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
 export default createComponent('Heroes', 'Molecules', 'Examples');
 
-export const HeroSmall = createStory(
-  <div class="uds-hero-sm">
-    <img
-      class="hero"
-      src="https://source.unsplash.com/WeYamle9fDM/1920x256"
-      alt="Sample placeholder image."
-    />
-    <div role="doc-subtitle">
-      <span class="highlight-white">The New American University</span>
-    </div>
-    <h1>
-      <span class="highlight-black">By whom it includes</span>
-    </h1>
-    <a href="#" class="btn btn-maroon">
-      Maroon Call to Action
-    </a>
-  </div>,
-  {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
-  }
-);
-HeroSmall.args = {
-  template: 0,
-}
-
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
     <img
@@ -92,80 +67,34 @@ HeroLarge.args = {
   template: 0,
 }
 
-export const StoryHero = createStory(
-  <section class="uds-story-hero">
-    <img
-      class="hero"
-      src="https://source.unsplash.com/random/1920x512"
-      alt="Be sure to include alt text in your image tag."
-    />
-    <div class="content">
-      <nav aria-label="breadcrumbs">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="#">Second Nav Item</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Current Page
-          </li>
-        </ol>
-      </nav>
-      <h1 class="article">
-        ASU is measured not by whom we exclude, but rather by whom we include
-        and how they succeed.
-      </h1>
-    </div>
-  </section>,
-  {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
-  }
-);
-StoryHero.args = {
-  template: 0,
-}
-
 export const StoryHeroLarge = createStory(
-  <section class="uds-story-hero uds-story-hero-lg entry-header">
-    <img
-      class="hero"
-      src="https://source.unsplash.com/random/1920x512"
-      alt="Be sure to include alt text in your image tag."
-    />
-    <div class="content">
-      <nav aria-label="breadcrumbs">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="#">Second Nav Item</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Current Page
-          </li>
-        </ol>
-      </nav>
-      <h1 class="article">
-        The answer to the ultimate question of life, the universe, and
-        everything
-      </h1>
-    </div>
-  </section>,
-  {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
-  }
-);
-StoryHeroLarge.args = {
-  template: 0,
-}
-
-export const StoryHeroWithContent = createStory(
   <div>
-    {StoryHero}
-    {/* The following section is included to allow for the easy testing of how a bootstrap container behaves with this element. */}
+    <section class="uds-story-hero uds-story-hero-lg entry-header">
+      <img
+        class="hero"
+        src="https://source.unsplash.com/random/1920x512"
+        alt="Be sure to include alt text in your image tag."
+      />
+      <div class="content">
+        <nav aria-label="breadcrumbs">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">Second Nav Item</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Current Page
+            </li>
+          </ol>
+        </nav>
+        <h1 class="article">
+          The answer to the ultimate question of life, the universe, and
+          everything
+        </h1>
+      </div>
+    </section>
     <div class="container-xl">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
@@ -203,11 +132,12 @@ export const StoryHeroWithContent = createStory(
         </div>
       </div>
     </div>
-  </div>,
+  </div>
+  ,
   {
     supportedTemplates: [layoutNames.FULL_WIDTH]
   }
 );
-StoryHeroWithContent.args = {
+StoryHeroLarge.args = {
   template: 0,
 }
