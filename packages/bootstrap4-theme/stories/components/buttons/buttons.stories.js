@@ -6,6 +6,7 @@ export default createComponent('Buttons');
 
 export const ButtonColorsComponent = createStory(
   <div>
+    <br />
     <a class="btn btn-primary" href="/">btn-primary link</a>
     <hr />
     <button class="btn btn-primary">btn-primary button</button>
