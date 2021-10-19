@@ -95,7 +95,7 @@ export const SmallImagesComponent = createStory(
       context and layout strategy.
     </p>
 
-    <div style={{ width: '25%' }}>
+    <div style={{ maxWidth: '300px' }}>
       {/* Component start */}
       <div class="uds-img">
         <img
@@ -110,7 +110,7 @@ export const SmallImagesComponent = createStory(
     <br />
     <br />
 
-    <div style={{ width: '25%' }}>
+    <div style={{ maxWidth: '300px' }}>
       {/* Component start */}
       <div class="uds-img uds-img-drop-shadow">
         <figure class="figure uds-figure">
