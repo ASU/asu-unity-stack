@@ -20,9 +20,9 @@
     "storybook": "start-storybook -s ./dist -p 9011",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
-    "predoc": "mkdir -p ./docs",
-    "doc": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
-    "postdoc": "node ../../scripts/process-readme-props.js"
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "repository": {
     "type": "git",
