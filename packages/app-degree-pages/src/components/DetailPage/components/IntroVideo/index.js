@@ -2,8 +2,9 @@
 import { Video } from "@asu-design-system/components-core";
 import React from "react";
 import styled from "styled-components";
-import { youtubeURLParser } from './parseYoutubeURL';
+
 import { videoPropType } from "../../../../core/models";
+import { youtubeURLParser } from "./parseYoutubeURL";
 
 const VideoWrapper = styled.div`
   .uds-video-container {

@@ -45,9 +45,11 @@ const DropdownWrapper = styled.div`
         opacity: 1;
         margin: 1rem 0;
         line-height: calc(100% + 0.12em);
+        text-transform: capitalize;
       }
       .nav-link {
         a {
+          text-transform: capitalize;
           width: 100%;
           display: inline-block;
           margin: 0.75rem 0;

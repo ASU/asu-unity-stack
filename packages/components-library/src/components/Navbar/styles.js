@@ -1,8 +1,11 @@
-
-
 import { css, cx } from "@emotion/css";
 
-import { focusStyle, containerSize, primaryNavTopPadding, breakpointForMin } from "../../theme";
+import {
+  focusStyle,
+  containerSize,
+  primaryNavTopPadding,
+  breakpointForMin,
+} from "../../theme";
 import { Icon } from "../Icons";
 
 /**
@@ -10,11 +13,11 @@ import { Icon } from "../Icons";
  */
 const navbarTogglerStyles = breakpoint => css`
   .navbar-toggler {
-    padding: 0.25rem 0.75rem;
+    position: relative;
+    padding: 0;
     font-size: 1.25rem;
     line-height: 1;
     background-color: transparent;
-    border-radius: 400rem;
     outline: 0;
     color: #191919;
     border: 0;
@@ -22,6 +25,10 @@ const navbarTogglerStyles = breakpoint => css`
     cursor: pointer;
     align-self: flex-start;
     ${focusStyle}
+
+    .fa-layers {
+      position: unset;
+    }
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
       display: none;
@@ -41,18 +48,18 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
             font-size: 1rem;
             margin-left: -12px;
             height: 2em;
-            width: 2.5em;
+            width: 2em;
           }
 
           svg.svg-inline--fa.fa-times {
             height: 1em;
             width: 1.25em;
-            margin-left: 7px;
+            margin-left: auto;
           }
 
           /** override hamburger circle icon  to fix bug in bundled react-fontawesome code **/
           .svg-inline--fa.fa-w-16.fa-circle {
-            width: 2.5em;
+            width: 2em;
           }
         `,
         "navbar-toggler"
@@ -115,7 +122,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class={cx("navbar-component", props.class)} >
+    <div class={cx("navbar-component", props.class)}>
       <div>{children}</div>
     </div>
   );
@@ -131,6 +138,18 @@ const navbarContainerStyles = breakpoint => css`
     flex-direction: column;
     align-items: flex-start;
 
+    @media (min-width: ${breakpoint}) {
+      &.no-navigation {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        .title.subunit-name,
+        .header-nav {
+          width: 50%;
+        }
+      }
+    }
     @media (max-width: ${breakpoint}) {
       width: 100%;
     }
@@ -139,7 +158,17 @@ const navbarContainerStyles = breakpoint => css`
 
 const NavbarContainer = props => {
   return (
-    <div class={cx("navbar-container", props.class)}>{props.children}</div>
+    <div
+      class={cx(
+        "navbar-container",
+        props.hasNavigation && props.hasNavigation.length
+          ? ""
+          : "no-navigation",
+        props.class
+      )}
+    >
+      {props.children}
+    </div>
   );
 };
 

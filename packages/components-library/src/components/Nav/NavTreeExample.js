@@ -7,103 +7,103 @@ const BasicNavTree = [
     class: "test-class",
   },
   {
-    text: "Degree programs",
+    text: "Link option 1",
     href: "#",
     items: [
       [
         {
-          href: "https://www.asu.edu/?feature=newsevents",
-          text: "Mauris viverra, sem nec",
+          href: "https://www.asu.edu",
+          text: "Sublink 1",
         },
         {
-          href: "https://www.asu.edu/?feature=academics",
-          text: "Academics",
+          href: "https://www.asu.edu",
+          text: "Sublink 2",
         },
         {
-          href: "https://www.asu.edu/?feature=research",
-          text: "Research",
+          href: "https://www.asu.edu",
+          text: "Sublink 3",
         },
         {
-          href: "https://www.asu.edu/?feature=athletics",
-          text: "Athletics",
+          href: "https://www.asu.edu",
+          text: "Sublink 4",
         },
         {
-          href: "https://www.asu.edu/?feature=alumni",
-          text: "Alumni",
+          href: "https://www.asu.edu",
+          text: "Sublink 5",
         },
         {
-          href: "https://www.asu.edu/?feature=giving",
-          text: "Giving",
+          href: "https://www.asu.edu",
+          text: "Sublink 6",
         },
         {
-          href: "https://www.asu.edu/?feature=president",
-          text: "President",
+          href: "https://www.asu.edu",
+          text: "Sublink 7",
         },
         {
-          href: "https://www.asu.edu/about",
-          text: "About ASU",
+          href: "https://www.asu.edu",
+          text: "Sublink 8",
         },
       ],
     ],
   },
 
   {
-    text: "People",
+    text: "Link option 2",
     href: "#",
     items: [
       [
         {
           classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "Map",
+          href: "https://www.asu.edu",
+          text: "Sublink 1",
         },
         {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Tempe",
+          href: "https://campus.asu.edu",
+          text: "Sublink 2",
         },
         {
-          href: "https://campus.asu.edu/west/",
-          text: "West",
+          href: "https://campus.asu.edu",
+          text: "Sublink 3",
         },
         {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Polytechnic",
+          href: "https://campus.asu.edu",
+          text: "Sublink 4",
         },
         {
           href: "https://asuonline.asu.edu/",
-          text: "Online and Extended",
+          text: "Sublink 5",
         },
         {
           href: "https://havasu.asu.edu/",
-          text: "Mauris viverra, sem nec",
+          text: "Sublink 6",
         },
       ],
     ],
   },
   {
-    text: "My ASU",
+    text: "Link option 3",
     href: "#",
   },
   {
-    text: "Research",
+    text: "Link option 4",
     href: "#",
   },
   {
-    text: "About us",
+    text: "Link option 5",
     href: "#",
   },
   {
-    text: "Contact us",
+    text: "Link option 6",
     href: "#",
   },
   {
-    text: "Two Column 1",
+    text: "Link option 7",
     href: "/",
     items: [
       [
         {
           type: "heading",
-          text: "Column 1",
+          text: "Column One",
         },
         {
           href: "https://www.asu.edu/",
@@ -138,7 +138,7 @@ const BasicNavTree = [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
-          text: "Ut quis",
+          text: "Column two",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -161,13 +161,13 @@ const BasicNavTree = [
     ],
   },
   {
-    text: "Two Column 2",
+    text: "Link option 8",
     href: "/",
     items: [
       [
         {
           type: "heading",
-          text: "Column 1",
+          text: "Column One",
         },
         {
           href: "https://www.asu.edu/",
@@ -202,7 +202,7 @@ const BasicNavTree = [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
-          text: "Ut quis",
+          text: "Column two",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -234,85 +234,85 @@ const NavTreeWithButtons = [
     class: "home",
   },
   {
-    text: "Degree programs",
+    text: "Link option 1",
     href: "#",
     items: [
       [
         {
-          href: "https://www.asu.edu/?feature=newsevents",
-          text: "Mauris viverra, sem nec",
+          href: "https://www.asu.edu",
+          text: "Sublink 1",
         },
         {
-          href: "https://www.asu.edu/?feature=academics",
-          text: "Academics",
+          href: "https://www.asu.edu",
+          text: "Sublink 2",
         },
         {
-          href: "https://www.asu.edu/?feature=research",
-          text: "Research",
+          href: "https://www.asu.edu",
+          text: "Sublink 3",
         },
         {
-          href: "https://www.asu.edu/?feature=athletics",
-          text: "Athletics",
+          href: "https://www.asu.edu",
+          text: "Sublink 4",
         },
         {
-          href: "https://www.asu.edu/?feature=alumni",
-          text: "Alumni",
+          href: "https://www.asu.edu",
+          text: "Sublink 5",
         },
         {
-          href: "https://www.asu.edu/?feature=giving",
-          text: "Giving",
+          href: "https://www.asu.edu",
+          text: "Sublink 6",
         },
         {
-          href: "https://www.asu.edu/?feature=president",
-          text: "President",
+          href: "https://www.asu.edu",
+          text: "Sublink 7",
         },
         {
-          href: "https://www.asu.edu/about",
-          text: "About ASU",
+          href: "https://www.asu.edu",
+          text: "Sublink 8",
         },
       ],
     ],
   },
   {
-    text: "My ASU",
+    text: "Link option 2",
     href: "#",
-    selected: true
+    selected: true,
   },
   {
-    text: "People",
+    text: "Link option 3",
     href: "#",
     items: [
       [
         {
           classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "Duis molestie commodo",
+          href: "https://www.asu.edu",
+          text: "Sublink 1",
         },
         {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Mauris viverra, sem nec",
+          href: "https://campus.asu.edu/",
+          text: "Sublink 2",
         },
         {
-          href: "https://campus.asu.edu/west/",
-          text: "Massa nunc dictum nam venenatis",
+          href: "https://campus.asu.edu/",
+          text: "Sublink 3",
         },
         {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Polytechnic",
+          href: "https://campus.asu.edu/",
+          text: "Sublink 4",
         },
         {
-          href: "https://campus.asu.edu/downtown/",
-          text: "Downtown Phoenix",
+          href: "https://campus.asu.edu/",
+          text: "Sublink 5",
         },
         {
           href: "https://asuonline.asu.edu/",
-          text: "Online and Extended",
+          text: "Sublink 6",
         },
       ],
     ],
   },
   {
-    text: "Research",
+    text: "Link option 4",
     href: "#",
   },
 ];
@@ -325,7 +325,11 @@ const NavTreeMega = [
     class: "home",
   },
   {
-    text: "One Column",
+    text: "Link option 1",
+    href: "#",
+  },
+  {
+    text: "Link option 2",
     href: "/",
     selected: true,
     items: [
@@ -362,13 +366,13 @@ const NavTreeMega = [
     ],
   },
   {
-    text: "Two Column",
+    text: "Link option 3",
     href: "/",
     items: [
       [
         {
           type: "heading",
-          text: "Column 1",
+          text: "Column One",
         },
         {
           href: "https://www.asu.edu/",
@@ -403,7 +407,7 @@ const NavTreeMega = [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
-          text: "Ut quis",
+          text: "Column two",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -426,22 +430,21 @@ const NavTreeMega = [
     ],
   },
   {
-    text: "Mega Menu (3 Col)",
+    text: "Link option 4",
     href: "#",
     items: [
       [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Maecenas lacinia",
+          text: "Column one",
         },
         {
           href: "https://havasu.asu.edu/",
           text: "Curabitur viverra arcu nisl",
         },
         {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },
@@ -466,7 +469,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 2",
+          text: "Column two",
         },
         {
           classes: "border first",
@@ -495,7 +498,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 3 Heading",
+          text: "Column three",
         },
         {
           classes: "border first",
@@ -523,22 +526,21 @@ const NavTreeMega = [
     ],
   },
   {
-    text: "Mega Menu (4 Col)",
+    text: "Link option 5",
     href: "#",
     items: [
       [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Header Column 1",
+          text: "Column One",
         },
         {
           href: "https://havasu.asu.edu/",
           text: "Lake Havasu",
         },
         {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },
@@ -563,7 +565,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 2",
+          text: "Column two",
         },
         {
           classes: "border first",
@@ -592,7 +594,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 3",
+          text: "Column three",
         },
         {
           classes: "border first",
@@ -621,7 +623,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 4",
+          text: "Column four",
         },
         {
           classes: "border first",
@@ -649,7 +651,7 @@ const NavTreeMega = [
     ],
   },
   {
-    text: "Mega Menu (5 Col)",
+    text: "Link option 6",
     href: "#",
     buttons: [
       {
@@ -668,15 +670,14 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column One Heading Text",
+          text: "Column One",
         },
         {
           href: "https://havasu.asu.edu/",
           text: "The Lake Havasu Campus",
         },
         {
-          href:
-            "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
           classes: "border",
           text: "Thunderbird",
         },
@@ -706,7 +707,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 2",
+          text: "Column two",
         },
         {
           classes: "border first",
@@ -735,7 +736,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 3",
+          text: "Column three",
         },
         {
           classes: "border first",
@@ -764,7 +765,7 @@ const NavTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column 4",
+          text: "Column four",
         },
         {
           classes: "border first",

@@ -47,7 +47,7 @@ const NavItem = forwardRef(
           <S.NavIcon
             {...props}
             href={href}
-            onFocus={() => trackGAEvent("home button")}
+            onFocus={() => trackGAEvent({ text: "home button" })}
             ref={ref}
             type="home"
             alt={`${children} icon`}

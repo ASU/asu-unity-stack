@@ -23,15 +23,27 @@ export const Basic = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
@@ -39,7 +51,12 @@ export const Basic = (
                   <a class="name" href="#">
                     Sparky
                   </a>
-                  <a class="signout" href="#">
+                  <a
+                    class="signout"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign out"
+                  >
                     Sign Out
                   </a>
                 </div>
@@ -55,6 +72,7 @@ export const Basic = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -99,6 +117,9 @@ export const Basic = (
                   aria-controls="menubar"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
                 >
                   <span title="Open mobile menu" class="fa fa-bars"></span>
                   <span title="Close mobile menu" class="fa-stack">
@@ -109,9 +130,9 @@ export const Basic = (
                 <div class="navbar-container">
                   <div
                     class="title subdomain-name"
-                    data-ga-header-header="university technology office"
+                    data-ga-header="Subdomain name"
                   >
-                    University Technology Office
+                    Subdomain name
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
@@ -121,16 +142,24 @@ export const Basic = (
                       <a
                         class="nav-link nav-link-home active"
                         href="/"
-                        data-ga-header-header="home button"
+                        data-ga-header="home button"
                       >
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="research">
-                        Research
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 2"
+                      >
+                        Link option 2
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -141,10 +170,11 @@ export const Basic = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 3"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Dropdown
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 3<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -154,23 +184,26 @@ export const Basic = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
+                              data-ga-header-component="link option 3"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
+                              data-ga-header-component="link option 3"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximun width"
+                              data-ga-header="Sublink 3"
+                              data-ga-header-component="link option 3"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -221,15 +254,27 @@ export const Basic = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
@@ -238,6 +283,8 @@ export const Basic = (
                           <a
                             class="signout"
                             href="https://webapp4.asu.edu/myasu/Signout"
+                            data-ga-header-section="topbar"
+                            data-ga-header="sign out"
                           >
                             Sign Out
                           </a>
@@ -279,20 +326,37 @@ export const DropDownMenus = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
                 <div class="nav-link login-status">
-                  <a class="signin" href="#">
+                  <a
+                    class="signin"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign in"
+                  >
                     Sign In
                   </a>
                 </div>
@@ -308,6 +372,7 @@ export const DropDownMenus = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -352,6 +417,9 @@ export const DropDownMenus = (
                   aria-controls="menubar"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
                 >
                   <span title="Open mobile menu" class="fa fa-bars"></span>
                   <span title="Close mobile menu" class="fa-stack">
@@ -364,17 +432,15 @@ export const DropDownMenus = (
                     <a
                       href="#"
                       class="unit-name"
-                      data-ga-header="ira a. fulton schools of engineering"
+                      data-ga-header="Parent unit name"
                     >
-                      Ira A. Fulton Schools of Engineering
+                      Parent unit name
                     </a>
                     <span
                       class="subdomain-name"
-                      data-ga-header="school of computing, informatics, and decisions systems
-                      engineering"
+                      data-ga-header="Subdomain name"
                     >
-                      School of Computing, Informatics, and Decisions Systems
-                      Engineering
+                      Subdomain name
                     </span>
                   </div>
                   <div
@@ -399,10 +465,11 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="drop (1 col)"
+                          data-ga-header="Link option 1"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Drop (1 Col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 1<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -413,6 +480,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="massa nunc dictum nan venenatis"
+                              data-ga-header-component="link option 1"
                             >
                               Massa nunc dictum nam venenatis
                             </a>
@@ -420,6 +488,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dis quam quis nisi ligula"
+                              data-ga-header-component="link option 1"
                             >
                               Dis quam quis nisi ligula
                             </a>
@@ -427,6 +496,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dapibus lorem"
+                              data-ga-header-component="link option 1"
                             >
                               Dapibus lorem
                             </a>
@@ -434,6 +504,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="nisi ligula eget orci"
+                              data-ga-header-component="link option 1"
                             >
                               Nisi ligula eget orci
                             </a>
@@ -441,6 +512,7 @@ export const DropDownMenus = (
                               href="#"
                               class="btn btn-sm btn-dark col-btn"
                               data-ga-header="cta action 2"
+                              data-ga-header-component="link option 2"
                             >
                               CTA action 2
                             </a>
@@ -456,10 +528,11 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="drop (2 col)"
+                          data-ga-header="Link option 2"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Drop (2 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 2<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -471,6 +544,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dis quam quis nisi ligula"
+                              data-ga-header-component="link option 2"
                             >
                               Dis quam quis nisi ligula
                             </a>
@@ -478,6 +552,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="nisi ligula eget orci"
+                              data-ga-header-component="link option 2"
                             >
                               Nisi ligula eget orci
                             </a>
@@ -485,6 +560,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="massa nunc dictum nam venenatis"
+                              data-ga-header-component="link option 2"
                             >
                               Massa nunc dictum nam venenatis
                             </a>
@@ -492,6 +568,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="dapibus lorem"
+                              data-ga-header-component="link option 2"
                             >
                               Dapibus lorem
                             </a>
@@ -499,6 +576,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="ultricies tellus eu"
+                              data-ga-header-component="link option 2"
                             >
                               Ultricies tellus eu
                             </a>
@@ -507,6 +585,7 @@ export const DropDownMenus = (
                               href="#"
                               data-ga-header="pretium massa quis vitae pede quisque nulla
                               ultricies sit"
+                              data-ga-header-component="link option 2"
                             >
                               Pretium massa quis vitae pede quisque nulla
                               ultricies sit
@@ -515,6 +594,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="quis tempus aliquam semper imperdiet"
+                              data-ga-header-component="link option 2"
                             >
                               Quis tempus aliquam semper imperdiet
                             </a>
@@ -525,6 +605,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="here's the story"
+                              data-ga-header-component="link option 2"
                             >
                               Here's the story
                             </a>
@@ -532,6 +613,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="of a man named Brady"
+                              data-ga-header-component="link option 2"
                             >
                               Of a man named Brady
                             </a>
@@ -539,6 +621,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="who was busy with three"
+                              data-ga-header-component="link option 2"
                             >
                               Who was busy with three
                             </a>
@@ -546,6 +629,7 @@ export const DropDownMenus = (
                               class="dropdown-item"
                               href="#"
                               data-ga-header="boys of his own"
+                              data-ga-header-component="link option 2"
                             >
                               Boys of his own
                             </a>
@@ -561,10 +645,11 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (3 col)"
+                          data-ga-header="Link option 3"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Mega Menu (3 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 3<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -578,6 +663,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="recommended max of ten links"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Recommended max of ten links
                                 </a>
@@ -585,6 +671,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Second link in the list
                                 </a>
@@ -592,6 +679,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Here is link number three
                                 </a>
@@ -599,6 +687,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -606,6 +695,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -613,6 +703,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -623,6 +714,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -630,6 +722,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -637,6 +730,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc dictum nam venenatis"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Massa nunc dictum nam venenatis
                                 </a>
@@ -647,6 +741,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Navigation link
                                 </a>
@@ -655,6 +750,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="another link as an example of when something
                                   wraps"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Another link as an example of when something
                                   wraps
@@ -663,6 +759,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="culture of inclusion"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Culture of inclusion
                                 </a>
@@ -670,6 +767,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="public research university"
+                                  data-ga-header-component="link option 3"
                                 >
                                   Public research university
                                 </a>
@@ -687,10 +785,11 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (4 col)"
+                          data-ga-header="Link option 4"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Mega Menu (4 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 4<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -704,6 +803,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Navigation link
                                 </a>
@@ -711,6 +811,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Second link in the list
                                 </a>
@@ -718,6 +819,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Here is link number three
                                 </a>
@@ -725,6 +827,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -732,6 +835,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -742,6 +846,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi eget orci"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi eget orci
                                 </a>
@@ -749,6 +854,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -756,6 +862,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc venenatis"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Massa nunc venenatis
                                 </a>
@@ -763,6 +870,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="pede quisque nulla ultricies sit"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Pede quisque nulla ultricies sit
                                 </a>
@@ -770,6 +878,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -777,6 +886,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -784,6 +894,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -794,6 +905,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -801,6 +913,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -808,6 +921,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="massa nunc dictum nam venenatis"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Massa nunc dictum nam venenatis
                                 </a>
@@ -815,6 +929,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -822,6 +937,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="ultricies tellus eu"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Ultricies tellus eu
                                 </a>
@@ -830,6 +946,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -838,6 +955,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="semper imperdiet"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Semper imperdiet
                                 </a>
@@ -848,6 +966,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -855,6 +974,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -862,6 +982,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -873,6 +994,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-gold"
                                   data-ga-header="mega menu cta 1"
+                                  data-ga-header-component="link option 34"
                                 >
                                   Mega menu CTA 1
                                 </a>
@@ -880,6 +1002,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-maroon"
                                   data-ga-header="mega menu cta 2"
+                                  data-ga-header-component="link option 4"
                                 >
                                   Mega menu CTA 2
                                 </a>
@@ -897,10 +1020,11 @@ export const DropDownMenus = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="mega menu (5 col)"
+                          data-ga-header="Link option 5"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Mega Menu (5 col)
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 5<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu"
@@ -914,6 +1038,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="navigation link"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Navigation link
                                 </a>
@@ -921,6 +1046,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="second link in the list"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Second link in the list
                                 </a>
@@ -928,6 +1054,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="here is link number three"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Here is link number three
                                 </a>
@@ -936,6 +1063,7 @@ export const DropDownMenus = (
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
+                                    data-ga-header-component="link option 5"
                                   >
                                     CTA in column
                                   </a>
@@ -943,6 +1071,7 @@ export const DropDownMenus = (
                                     href="#"
                                     class="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
+                                    data-ga-header-component="link option 5"
                                   >
                                     CTA in column
                                   </a>
@@ -955,6 +1084,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -963,6 +1093,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -971,6 +1102,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -979,6 +1111,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -986,6 +1119,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -997,6 +1131,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1005,6 +1140,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1013,6 +1149,7 @@ export const DropDownMenus = (
                                   href="#"
                                   data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Pretium massa quis vitae pede quisque nulla
                                   ultricies sit
@@ -1021,6 +1158,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="quis tempus aliquam semper imperdiet"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Quis tempus aliquam semper imperdiet
                                 </a>
@@ -1028,6 +1166,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -1035,6 +1174,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -1042,6 +1182,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-dark col-btn"
                                   data-ga-header="cta in column"
+                                  data-ga-header-component="link option 5"
                                 >
                                   CTA in Column
                                 </a>
@@ -1052,6 +1193,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dis quam quis nisi ligula"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dis quam quis nisi ligula
                                 </a>
@@ -1059,6 +1201,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="nisi ligula eget orci"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Nisi ligula eget orci
                                 </a>
@@ -1066,6 +1209,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="dapibus lorem"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Dapibus lorem
                                 </a>
@@ -1073,6 +1217,7 @@ export const DropDownMenus = (
                                   href="#"
                                   class="btn btn-sm btn-dark col-btn"
                                   data-ga-header="cta in column"
+                                  data-ga-header-component="link option 5"
                                 >
                                   CTA in Column
                                 </a>
@@ -1083,6 +1228,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="jump up and down and"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Jump up and down and
                                 </a>
@@ -1090,6 +1236,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="shake your head to the sound"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Shake your head to the sound
                                 </a>
@@ -1097,6 +1244,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="put your hand on the ground"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Put your hand on the ground
                                 </a>
@@ -1104,6 +1252,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="take one step left and one step right"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Take one step left and one step right
                                 </a>
@@ -1111,6 +1260,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="if it looks like this"
+                                  data-ga-header-component="link option 5"
                                 >
                                   If it looks like this
                                 </a>
@@ -1118,6 +1268,7 @@ export const DropDownMenus = (
                                   class="dropdown-item"
                                   href="#"
                                   data-ga-header="then you doing it right"
+                                  data-ga-header-component="link option 5"
                                 >
                                   Then you doing it right
                                 </a>
@@ -1163,21 +1314,35 @@ export const DropDownMenus = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
                         <a
                           class="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
+                          data-ga-header-section="topbar"
+                          data-ga-header="sign in"
                         >
                           Sign In
                         </a>
@@ -1218,15 +1383,27 @@ export const NoNavigation = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1234,7 +1411,12 @@ export const NoNavigation = (
                   <a class="name" href="#">
                     Sparky
                   </a>
-                  <a class="signout" href="#">
+                  <a
+                    class="signout"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign out"
+                  >
                     Sign Out
                   </a>
                 </div>
@@ -1250,6 +1432,7 @@ export const NoNavigation = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -1294,6 +1477,9 @@ export const NoNavigation = (
                   aria-controls="menubar"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
                 >
                   <span title="Open mobile menu" class="fa fa-bars"></span>
                   <span title="Close mobile menu" class="fa-stack">
@@ -1303,8 +1489,8 @@ export const NoNavigation = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="landing page title">
-                      Landing page title
+                    <a href="#" data-ga-header="Subdomain name">
+                      Subdomain name
                     </a>
                   </div>
                   <div
@@ -1346,21 +1532,35 @@ export const NoNavigation = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
                         <a
                           class="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
+                          data-ga-header-section="topbar"
+                          data-ga-header="sign in"
                         >
                           Sign In
                         </a>
@@ -1401,20 +1601,37 @@ export const NoNavigationAndWithButtons = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
                 <div class="nav-link login-status">
-                  <a class="signin" href="#">
+                  <a
+                    class="signin"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign in"
+                  >
                     Sign In
                   </a>
                 </div>
@@ -1430,6 +1647,7 @@ export const NoNavigationAndWithButtons = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -1474,6 +1692,9 @@ export const NoNavigationAndWithButtons = (
                   aria-controls="menubar"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
                 >
                   <span title="Open mobile menu" class="fa fa-bars"></span>
                   <span title="Close mobile menu" class="fa-stack">
@@ -1483,8 +1704,8 @@ export const NoNavigationAndWithButtons = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="landing page title">
-                      Landing page title
+                    <a href="#" data-ga-header="Subdomain name">
+                      Subdomain name
                     </a>
                   </div>
                   <div
@@ -1542,21 +1763,35 @@ export const NoNavigationAndWithButtons = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
                         <a
                           class="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
+                          data-ga-header-section="topbar"
+                          data-ga-header="sign in"
                         >
                           Sign In
                         </a>
@@ -1597,15 +1832,27 @@ export const ScrolledState = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1613,7 +1860,12 @@ export const ScrolledState = (
                   <a class="name" href="#">
                     Sparky
                   </a>
-                  <a class="signout" href="#">
+                  <a
+                    class="signout"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign out"
+                  >
                     Sign Out
                   </a>
                 </div>
@@ -1629,6 +1881,7 @@ export const ScrolledState = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -1673,6 +1926,9 @@ export const ScrolledState = (
                   aria-controls="menubar"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
                 >
                   <span title="Open mobile menu" class="fa fa-bars"></span>
                   <span title="Close mobile menu" class="fa-stack">
@@ -1683,9 +1939,9 @@ export const ScrolledState = (
                 <div class="navbar-container">
                   <div
                     class="title subdomain-name"
-                    data-ga-header="university technology office"
+                    data-ga-header="Subdomain name"
                   >
-                    University Technology Office
+                    Subdomain name
                   </div>
                   <div
                     class="collapse navbar-collapse w-100 justify-content-between"
@@ -1700,20 +1956,40 @@ export const ScrolledState = (
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="admission">
-                        Admission
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="alumni">
-                        Alumni
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 2"
+                      >
+                        Link option 2
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="giving">
-                        Giving
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 3"
+                      >
+                        Link option 3
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="contact">
-                        Contact
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 4"
+                      >
+                        Link option 4
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 5"
+                      >
+                        Link option 5
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -1724,10 +2000,11 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 6"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Dropdown
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 6<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1737,23 +2014,26 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
+                              data-ga-header-component="link option 6"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
+                              data-ga-header-component="link option 6"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
+                              data-ga-header-component="link option 6"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -1767,9 +2047,11 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown 2"
+                          data-ga-header="link option 7"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Dropdown 2<span class="fa fa-chevron-down"></span>
+                          Link option 7<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1779,23 +2061,26 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
+                              data-ga-header-component="link option 7"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
+                              data-ga-header-component="link option 7"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
+                              data-ga-header-component="link option 7"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -1809,9 +2094,11 @@ export const ScrolledState = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown 3"
+                          data-ga-header="Link option 8"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Dropdown 3<span class="fa fa-chevron-down"></span>
+                          Link option 8<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -1821,23 +2108,26 @@ export const ScrolledState = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
+                              data-ga-header-component="link option 8"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
+                              data-ga-header-component="link option 8"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
+                              data-ga-header-component="link option 8"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -1879,21 +2169,35 @@ export const ScrolledState = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schoold"
                         >
                           Colleges and Schools
                         </a>
                         <a
                           class="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
+                          data-ga-header-section="topbar"
+                          data-ga-header="sign in"
                         >
                           Sign In
                         </a>
@@ -1942,15 +2246,27 @@ export const Partner = (
                 >
                   Report an accessibility problem
                 </a>
-                <a class="nav-link" href="https://asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="asu home"
+                >
                   ASU Home
                 </a>
-                <a class="nav-link" href="https://my.asu.edu">
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu"
+                  data-ga-header-section="topbar"
+                  data-ga-header="my asu"
+                >
                   My ASU
                 </a>
                 <a
                   class="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
+                  data-ga-header-section="topbar"
+                  data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
@@ -1958,7 +2274,12 @@ export const Partner = (
                   <a class="name" href="#">
                     Sparky
                   </a>
-                  <a class="signout" href="#">
+                  <a
+                    class="signout"
+                    href="#"
+                    data-ga-header-section="topbar"
+                    data-ga-header="sign out"
+                  >
                     Sign Out
                   </a>
                 </div>
@@ -1974,6 +2295,7 @@ export const Partner = (
                     name="q"
                     aria-labelledby="header-top-search"
                     required
+                    data-ga-input-header-event="search"
                   />
                   <label id="header-top-search">Search asu.edu</label>
                   <input name="site" value="default_collection" type="hidden" />
@@ -2024,6 +2346,9 @@ export const Partner = (
                     aria-controls="menubar"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
+                    data-ga-header-event="collapse"
+                    data-ga-header-type="click"
+                    data-ga-header="menu button label"
                   >
                     <span title="Open mobile menu" class="fa fa-bars"></span>
                     <span title="Close mobile menu" class="fa-stack">
@@ -2046,20 +2371,24 @@ export const Partner = (
                         <span class="d-xl-none">Home</span>
                         <span title="Home" class="fas fa-fw fa-home"></span>
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="admission">
-                        Admission
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 1"
+                      >
+                        Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="alumni">
-                        Alumni
+                      <a class="nav-link" href="#" data-ga-header="Link option 2">
+                        Link option 2
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="giving">
-                        Giving
+                      <a class="nav-link" href="#" data-ga-header="Link option 3">
+                        Link option 3
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="contact">
-                        Contact
+                      <a class="nav-link" href="#" data-ga-header="Link option 4">
+                        Link option 4
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="tour">
-                        Tour
+                      <a class="nav-link" href="#" data-ga-header="Link option 5">
+                        Link option 5
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
                         <a
@@ -2070,9 +2399,11 @@ export const Partner = (
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
-                          data-ga-header="dropdown"
+                          data-ga-header="Link option 6"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
                         >
-                          Dropdown
+                          Link option 6
                           <span class="fa fa-chevron-down"></span>
                         </a>
                         <div
@@ -2083,23 +2414,26 @@ export const Partner = (
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="navigation link"
+                              data-ga-header="Sublink 1"
+                              data-ga-header-component="link option 6"
                             >
-                              Navigation link
+                              Sublink 1
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="another link"
+                              data-ga-header="Sublink 2"
+                              data-ga-header-component="link option 6"
                             >
-                              Another link
+                              Sublink 2
                             </a>
                             <a
                               class="dropdown-item"
                               href="#"
-                              data-ga-header="this dropdown menu has a maximum width"
+                              data-ga-header="Sublink 3"
+                              data-ga-header-component="link option 6"
                             >
-                              This dropdown menu has a maximum width
+                              Sublink 3
                             </a>
                           </div>
                         </div>
@@ -2157,21 +2491,35 @@ export const Partner = (
                         />
                       </form>
                       <div class="nav-grid">
-                        <a class="nav-link" href="https://asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="asu home"
+                        >
                           ASU Home
                         </a>
-                        <a class="nav-link" href="https://my.asu.edu">
+                        <a
+                          class="nav-link"
+                          href="https://my.asu.edu"
+                          data-ga-header-section="topbar"
+                          data-ga-header="my asu"
+                        >
                           My ASU
                         </a>
                         <a
                           class="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
+                          data-ga-header-section="topbar"
+                          data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
                         <a
                           class="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
+                          data-ga-header-section="topbar"
+                          data-ga-header="sign in"
                         >
                           Sign In
                         </a>

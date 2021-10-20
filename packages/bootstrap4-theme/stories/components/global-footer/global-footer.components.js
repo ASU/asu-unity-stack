@@ -9,7 +9,13 @@ export const GlobalElementsOnly = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -135,10 +141,17 @@ export const ZeroColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -214,7 +227,13 @@ export const ZeroColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -340,10 +359,17 @@ export const OneColumn = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -439,7 +465,13 @@ export const OneColumn = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -586,7 +618,13 @@ export const OneColumnNoLogoOrSocial = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -712,10 +750,17 @@ export const TwoColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -856,7 +901,13 @@ export const TwoColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -982,10 +1033,17 @@ export const ThreeColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -1174,7 +1232,13 @@ export const ThreeColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -1300,10 +1364,17 @@ export const FourColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -1540,7 +1611,13 @@ export const FourColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -1666,10 +1743,17 @@ export const FiveColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -1954,7 +2038,13 @@ export const FiveColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
@@ -2080,10 +2170,17 @@ export const SixColumns = (
       <div class="container" id="endorsed-footer">
         <div class="row">
           <div class="col-md" id="endorsed-logo">
-            <img
-              src={endorsedLogo}
-              alt="ASU University Technology Office Arizona State University."
-            />
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+            >
+              <img
+                src={endorsedLogo}
+                alt="ASU University Technology Office Arizona State University."
+              />
+            </a>
           </div>
 
           <div class="col-md" id="social-media">
@@ -2410,7 +2507,13 @@ export const SixColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a class="img-link" href="https://www.asu.edu/rankings">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"

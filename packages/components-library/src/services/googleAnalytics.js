@@ -1,19 +1,35 @@
 /**
- * @param {string} eventText
+ * @param {{
+ *  event: string
+ *  action: string
+ *  name: string
+ *  type: string
+ *  section: string
+ *  text: string
+ *  component: string
+ * }} args
  */
-const trackGAEvent = (eventText = "") => {
-  const text = eventText.toLowerCase();
+const trackGAEvent = ({
+  event = "link",
+  action = "click",
+  name = "onclick",
+  type = "internal link",
+  section = "main navbar",
+  text = "",
+  component,
+}) => {
   const { dataLayer } = window;
-  const event = {
-    event: "link",
-    action: "click",
-    name: "onclick",
-    type: "internal link",
+  const e = {
+    event: event.toLowerCase(),
+    action: action.toLowerCase(),
+    name: name.toLowerCase(),
+    type: type.toLowerCase(),
     region: "navbar",
-    section: "main navbar",
-    text,
+    section: section.toLowerCase(),
+    text: text.toLowerCase(),
+    ...(component && { component: component.toLowerCase() }),
   };
-  if (dataLayer) dataLayer.push(event);
+  if (dataLayer) dataLayer.push(e);
 };
 
 export { trackGAEvent };

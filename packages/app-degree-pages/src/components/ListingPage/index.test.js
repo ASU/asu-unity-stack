@@ -11,6 +11,7 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import { DOMAIN_URL } from "../../core/constants";
 import {
   locationOptions,
   asuLocalOptions,
@@ -21,7 +22,7 @@ import * as service from "../../core/services/degree-data-manager-service";
 
 /** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
 const actionUrls = {
-  applyNowUrl: "https://webapp4.asu.edu/uga_admissionsapp/?partner=CORP",
+  applyNowUrl: `${DOMAIN_URL}/uga_admissionsapp/?partner=CORP`,
   majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
 };
 

@@ -187,21 +187,13 @@ const DetailPage = ({
 
                 {!applicationRequirements?.hide ? (
                   <ApplicationRequirements
-                    accordionCards={[
-                      {
-                        content: {
-                          header: "Additional Requirements",
-                          // TOD: Change data after filter on degree type
-                          body: resolver.getDescrLongExtented5(),
-                        },
-                      },
-                      {
-                        content: {
-                          header: "Transfer Admission Requirements",
-                          body: resolver.getTransferAdmission(),
-                        },
-                      },
-                    ]}
+                    graduateRequirements={
+                      resolver.isGradProgram()
+                        ? resolver.getGraduateRequirements()
+                        : null
+                    }
+                    additionalRequirements={resolver.getDescrLongExtented5()}
+                    transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
 

@@ -10,6 +10,11 @@ import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
+export const DROPDOWNS_GA_EVENTS = {
+  event: "collapse",
+  type: "click",
+};
+
 /**
  * @param {{ icon: string, children: React.ReactNode }} props
  * @returns {JSX.Element}
@@ -69,6 +74,23 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     );
   };
 
+  const dispatchGAEvent = () => {
+    const isDropdown = !!link.items?.length;
+    const action = opened ? "close" : "open";
+    const { text } = link;
+    trackGAEvent(
+      isDropdown
+        ? {
+            ...DROPDOWNS_GA_EVENTS,
+            action,
+            text,
+          }
+        : {
+            text: link.type === "icon-home" ? "home button" : text,
+          }
+    );
+  };
+
   const handleClick = e => {
     if (link.items) {
       e.preventDefault();
@@ -78,10 +100,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         setItemOpened();
       }
     }
+    dispatchGAEvent();
   };
 
   const handleOnMouseEnterLeave = () => {
-    if (expandOnHover && !isMobile) setItemOpened();
+    if (expandOnHover && !isMobile) {
+      setItemOpened();
+      dispatchGAEvent();
+    }
   };
 
   return (
@@ -99,9 +125,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
-        onFocus={() =>
-          trackGAEvent(link.type === "icon-home" ? "home button" : link.text)
-        }
       >
         {renderNavLinks()}
       </a>
@@ -109,6 +132,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         <DropdownItem
           items={link.items}
           buttons={link.buttons}
+          dropdownName={link.text}
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
         />
       )}
