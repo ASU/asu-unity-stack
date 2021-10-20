@@ -8,10 +8,9 @@ import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
 /**
- *
  * @param {Object} feed
  * @param {number} index
- * @param {import("../../core/models/news-types").CardButton} cardButton
+ * @param {import("../../core/types/news-types").CardButton} cardButton
  */
 const cardRow = (feed, index, cardButton) => ({
   id: index,
@@ -31,9 +30,7 @@ const cardRow = (feed, index, cardButton) => ({
 });
 
 /**
- * @param {{
- *  cardButton: import("../../core/models/news-types").CardButton
- * }} props
+ * @param {import("../../core/types/news-types").TemplateProps} props
  */
 // eslint-disable-next-line react/prop-types
 const CarouselTemplate = ({ cardButton }) => {
@@ -54,8 +51,13 @@ const CarouselTemplate = ({ cardButton }) => {
   );
 };
 // eslint-enable-next-line react/prop-types
+
 /**
- * @param {import("../../core/models/news-types").FeedType} props
+ * @typedef {import("../../core/types/news-types").FeedType} FeedType
+ */
+
+/**
+ * @param {FeedType} props
  */
 const CardCarouselNews = ({ cardButton, ...props }) => (
   // Calling the high order component that fetch the data
