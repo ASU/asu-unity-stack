@@ -58,7 +58,7 @@ The componet can customize by setting the following props
 
 ```
 
-### Component props documentation
+## Component props documentation
 
 You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 

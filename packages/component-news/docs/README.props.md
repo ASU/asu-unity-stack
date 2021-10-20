@@ -1,4 +1,4 @@
-## Functions
+## Components
 
 <dl>
 <dt><a href="#CardCarouselNews">CardCarouselNews(props)</a></dt>
