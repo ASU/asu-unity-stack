@@ -52,6 +52,7 @@ const BaseFeed = ({
       dataFilter={filterData}
       dataSource={dataSource}
       defaultProps={defaultProps}
+      noFeedText="No news to show."
       maxItems={maxItems || defaultProps.maxItems}
     />
   );
