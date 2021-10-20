@@ -12,10 +12,6 @@
 ## Typedefs
 
 <dl>
-<dt><a href="#NewsFeedType">NewsFeedType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#FeedType">FeedType</a> : <code><a href="#NewsFeedType">NewsFeedType</a></code> | <code>CoreFeedsType</code></dt>
-<dd></dd>
 <dt><a href="#FeedHeader">FeedHeader</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#FeedCtaButton">FeedCtaButton</a> : <code>Object</code></dt>
@@ -25,10 +21,6 @@
 <dt><a href="#DataSource">DataSource</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#FeedType">FeedType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#NewsFeedType">NewsFeedType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#FeedType">FeedType</a> : <code><a href="#NewsFeedType">NewsFeedType</a></code> | <code>CoreFeedsType</code></dt>
 <dd></dd>
 </dl>
 
@@ -59,20 +51,6 @@
 | --- | --- |
 | props | [<code>FeedType</code>](#FeedType) | 
 
-<a name="NewsFeedType"></a>
-
-## NewsFeedType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [feedType] | <code>&quot;carousel&quot;</code> \| <code>&quot;card-grid&quot;</code> \| <code>&quot;card-list&quot;</code> | 
-
-<a name="FeedType"></a>
-
-## FeedType : [<code>NewsFeedType</code>](#NewsFeedType) \| <code>CoreFeedsType</code>
-**Kind**: global typedef  
 <a name="FeedHeader"></a>
 
 ## FeedHeader : <code>Object</code>
@@ -133,17 +111,3 @@
 | [dataSource] | [<code>DataSource</code>](#DataSource) | 
 | [maxItems] | <code>number</code> | 
 
-<a name="NewsFeedType"></a>
-
-## NewsFeedType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [feedType] | <code>&quot;carousel&quot;</code> \| <code>&quot;card-grid&quot;</code> \| <code>&quot;card-list&quot;</code> | 
-
-<a name="FeedType"></a>
-
-## FeedType : [<code>NewsFeedType</code>](#NewsFeedType) \| <code>CoreFeedsType</code>
-**Kind**: global typedef  
