@@ -9,7 +9,7 @@ import { createMockParam } from "../../core/utils";
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
 
 export default {
-  title: "UDS/CardListlNews",
+  title: "News component/Card List News",
   component: CardListlNews,
   decorators: [withMock],
 };
