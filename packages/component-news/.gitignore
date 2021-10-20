@@ -3,4 +3,5 @@ node_modules
 *.lock
 package-lock.json
 yarn-lock.json
-jsdoc
+docs/**
+!docs/README.props.md

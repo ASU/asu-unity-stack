@@ -20,7 +20,7 @@
     "storybook": "start-storybook -s ./dist -p 9011",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
-    "__jsdoc": "jsdoc -c jsdoc.json ./src/core/components/BaseFeed/index.js"
+    "jsdoc2md": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,8 @@
     "@asu-design-system/components-core": "^1.0.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
+    "jsdoc-to-markdown": "^7.1.0",
+    "jsdoc-ts-utils": "^2.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
