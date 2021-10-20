@@ -1,7 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Tabbed Panels');
-import { initTabs } from './tabbed-panels.js';
+import { initTabs as initFunc } from './tabbed-panels.js';
 
 export const WhiteBackgroundStory = createStory(
   <div>
@@ -107,9 +107,9 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-home-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -119,9 +119,9 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-profile-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -131,9 +131,9 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -143,9 +143,9 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-another-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -155,9 +155,9 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-another-2-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -167,17 +167,15 @@ export const WhiteBackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-another-3-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
     </div>
   </div>,
-  {
-    initFunc: initTabs,
-  },
+  { initFunc }
 );
 
 export const Gray1BackgroundStory = createStory(
@@ -251,9 +249,9 @@ export const Gray1BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-home-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -263,9 +261,9 @@ export const Gray1BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-profile-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -275,17 +273,15 @@ export const Gray1BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
     </div>
   </div>,
-  {
-    initFunc: initTabs,
-  },
+  { initFunc }
 );
 
 export const Gray2BackgroundStory = createStory(
@@ -359,9 +355,9 @@ export const Gray2BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-home-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -371,9 +367,9 @@ export const Gray2BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-profile-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -383,17 +379,15 @@ export const Gray2BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
     </div>
   </div>,
-  {
-    initFunc: initTabs,
-  },
+  { initFunc }
 );
 
 export const Gray7BackgroundStory = createStory(
@@ -467,9 +461,9 @@ export const Gray7BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-home-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -479,9 +473,9 @@ export const Gray7BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-profile-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
@@ -491,15 +485,13 @@ export const Gray7BackgroundStory = createStory(
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        This is an ordinary paragraph that is long enough to wrap to
-        multiple lines so that you can see how spacing looks. At vero eos et
-        accusam et justo duo dolores et ea rebu.
+        This is an ordinary paragraph that is long enough to wrap to multiple
+        lines so that you can see how spacing looks. At vero eos et accusam et
+        justo duo dolores et ea rebu.
         <br />
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
       </div>
     </div>
   </div>,
-  {
-    initFunc: initTabs,
-  },
+  { initFunc }
 );
