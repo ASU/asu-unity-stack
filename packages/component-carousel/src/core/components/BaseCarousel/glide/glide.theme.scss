@@ -425,6 +425,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       figcaption *,
       .uds-caption-text {
         color: $uds-color-base-gray-7;
+        max-width: 100%;
       }
 
       @include li-inactive-border;
