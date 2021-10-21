@@ -13,8 +13,8 @@ import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
 /**
  * @param {AccordionCardItemProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
-
 export const AccordionCard = ({ id, item, openCard, onClick }) => (
   <div
     className={classNames("card", "card-foldable", "mt-3", {

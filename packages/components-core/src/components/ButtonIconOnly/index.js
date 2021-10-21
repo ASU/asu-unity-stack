@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {{
- *  color?: string
- *  icon: string[]
- *  innerRef?: React.RefObject
- *  onClick?: () => void
- *  size?: "large" | "small"
- * }} ButtonIconOnlyProps
+ * @typedef {import('../../core/types/shared-types').ButtonIconOnlyProps} ButtonIconOnlyProps
  */
 
 /**

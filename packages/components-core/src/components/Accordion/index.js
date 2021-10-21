@@ -13,8 +13,7 @@ import { AccordionCard } from "./AccordionCard";
  * @param {AccordionProps} props
  * @returns {JSX.Element}
  */
-
-export const Accordion = ({ cards, openedCard }) => {
+const Accordion = ({ cards, openedCard }) => {
   const [openCard, setOpenCard] = useState(null);
 
   useEffect(() => {
@@ -56,3 +55,5 @@ Accordion.propTypes = {
    */
   openedCard: PropTypes.number,
 };
+
+export { Accordion };

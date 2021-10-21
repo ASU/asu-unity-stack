@@ -6,6 +6,10 @@ module.exports = {
   ...coreConfig,
   source: {
     ...coreConfig.source,
-    include: ["./src/core/types"],
+    include: [
+      ...coreConfig.source.include,
+      "./src/core/types",
+      "./src/components",
+    ],
   },
 };

@@ -18,6 +18,15 @@
  */
 
 /**
+ * @typedef {Object} ButtonIconOnlyProps
+ * @property {Array.<string>} icon
+ * @property {string} [color]
+ * @property {React.RefObject} [innerRef]
+ * @property {function():void} [onClick]
+ * @property {"large"|"small"} [size]
+ */
+
+/**
  * @typedef {Object} TagsProps
  * @property {string}  [label]
  * @property {string}  [ariaLabel]

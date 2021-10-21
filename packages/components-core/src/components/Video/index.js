@@ -6,14 +6,7 @@ import React, { useRef, useState } from "react";
 import { VideoOverlay } from "./index.styles";
 
 /**
- * @typedef {{
- *    type?: "youtube" | "video"
- *    url: string
- *    vttUrl?: string
- *    title?: string
- *    caption?: string
- *    className?: string
- * }} VideoProps
+ * @typedef {import('../../core/types/video-types').VideoProps} VideoProps
  */
 
 /**
@@ -143,7 +136,7 @@ const youtubeTemplate = ({
 /**
  *
  * @param {VideoProps} props
- * @returns
+ * @returns {JSX.Element}
  */
 const Video = ({
   type = "video",

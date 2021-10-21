@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 /**
  *
  * @param {string} query
- * @returns
+ * @returns {boolean}
  */
 function useMediaQuery(query) {
   const [matches, setMatches] = useState(false);

@@ -18,7 +18,6 @@ const menuTitle = "On This Page";
  * @param {AnchorMenuProps} props
  * @returns {JSX.Element}
  */
-
 export const AnchorMenu = ({
   items,
   firstElementId,

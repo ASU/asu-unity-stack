@@ -10,19 +10,7 @@ import {
 import { HeroImage } from "./index.styles";
 
 /**
- * @typedef {import('../../core/types/shared-types').ImageProps} ImageProps
- * @typedef {import('../../core/types/shared-types').ContentProps} ContentProps
- */
-
-/**
- * @typedef {{
- *    type?: "heading-hero" | "story-hero" // defaut value is "heading-hero"
- *    image?: ImageProps
- *    title?: ContentProps
- *    subTitle?: ContentProps
- *    contents?: ContentProps[]
- *    contentsColor?: "white" | "black"
- * }} HeroProps
+ * @typedef {import('../../core/types/hero-types').HeroProps} HeroProps
  */
 
 /**

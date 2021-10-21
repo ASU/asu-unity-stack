@@ -15,14 +15,14 @@ const FeedContext = createContext(null);
  * @param {{
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
- *  dataSource: import("./feed-types").DataSource
+ *  dataSource: import("../../core/types/feed-types").DataSource
  *  maxItems: number
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filters: string) => object
- *  defaultProps: import("./feed-types").FeedType
+ *  defaultProps: import("../../core/types/feed-types").FeedType
  * }} props
  * @returns {JSX.Element}
- *
+ * @ignore
  */
 const FeedContainerProvider = ({
   defaultProps,

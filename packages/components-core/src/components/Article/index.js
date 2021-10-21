@@ -19,36 +19,13 @@ import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
 
 /**
- * @typedef { import("../../core/types/shared-types").BreadcrumbProps } BreadcrumbProps
+ * @typedef {import('../../core/types/article-types').ArticleProps} ArticleProps
  */
 
 /**
- * @typedef {{
- *  type: "event" | "news"
- *  articleUrl?: string
- *  publicationDate?: string
- *  title?: string
- *  body?: string
- *  authorEmail?: string
- *  authorName?: string
- *  authorPhone?: string
- *  authorTitle?: string
- *  breadcrumbs?: BreadcrumbProps[]
- *  calendarUrl?: string
- *  eventLocation?: string
- *  eventTime?: string
- *  headerImageUrl?: string
- *  registrationUrl?: string
- *  zoomUrl?: string
- * }} ArticleProps
- */
-
-/**
- *
  * @param {ArticleProps} props
  * @returns {JSX.Element}
  */
-
 export const Article = ({
   type,
   articleUrl,
