@@ -6,6 +6,10 @@
   &::first-letter {
     text-transform: uppercase;
   }
+  &.btn-primary {
+    color: $white;
+    background: $primary;
+  }
   &.btn-md {
     font-size: $uds-component-button-medium-font-size;
     padding: $uds-component-button-padding-y-medium

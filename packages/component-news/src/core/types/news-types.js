@@ -1,21 +1,12 @@
 // ts-check
 
 /**
- * @typedef {import("../../../../components-core/src/core/types/feed-types").FeedType} CoreFeedsType
+ * @typedef {import("../../../../components-core/src/core/types/feed-types").FeedType} FeedType
  * */
 
 /**
  * @typedef {import("../../../../components-core/src/core/types/feed-types").FeedCardButton} CardButton
  * */
-
-/**
- *  @typedef {Object} NewsFeedType
- *  @property {"carousel" | "card-grid" | "card-list"} [feedType]
- */
-
-/**
- * @typedef {NewsFeedType & CoreFeedsType} FeedType
- */
 
 /**
  * @ignore
