@@ -6,7 +6,7 @@ import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { AccordionCard } from "./AccordionCard";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').AccordionProps} AccordionProps
+ * @typedef {import('../../core/types/shared-types').AccordionProps} AccordionProps
  */
 
 /**

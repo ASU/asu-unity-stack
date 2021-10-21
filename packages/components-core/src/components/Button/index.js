@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').ButtonProps} ButtonProps
+ * @typedef {import('../../core/types/shared-types').ButtonProps} ButtonProps
  */
 
 /**

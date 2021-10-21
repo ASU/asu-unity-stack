@@ -7,7 +7,7 @@ import { createRange } from "../../core/utils/numbers";
 import { PageItem } from "./PageItem";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').PaginationProps} PaginationProps
+ * @typedef {import('../../core/types/shared-types').PaginationProps} PaginationProps
  */
 
 const X_SMALL_DEDVICE_WIDTH = 413;

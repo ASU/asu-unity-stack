@@ -19,7 +19,7 @@ import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
 
 /**
- * @typedef { import("../../core/models/shared-model-types").BreadcrumbProps } BreadcrumbProps
+ * @typedef { import("../../core/types/shared-types").BreadcrumbProps } BreadcrumbProps
  */
 
 /**

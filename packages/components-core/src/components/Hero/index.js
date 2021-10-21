@@ -10,8 +10,8 @@ import {
 import { HeroImage } from "./index.styles";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').ImageProps} ImageProps
- * @typedef {import('../../core/models/shared-model-types').ContentProps} ContentProps
+ * @typedef {import('../../core/types/shared-types').ImageProps} ImageProps
+ * @typedef {import('../../core/types/shared-types').ContentProps} ContentProps
  */
 
 /**
