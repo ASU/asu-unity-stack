@@ -77,7 +77,6 @@ const GROUP_STYLE = "Styles";
  */
 const Wrapper = ({ children }) => (
   <div
-    className="container"
     style={
       {
         // setting display flex the 'maxHeight' gets applied but the carousel squashes
@@ -86,33 +85,22 @@ const Wrapper = ({ children }) => (
       }
     }
   >
+    {Header}
     {children}
   </div>
 );
 
 export const ImageCarouselDefault = () => (
-  <div>
-    {Header}
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <ImageCarousel
-            perView={number(
-              "Image per view",
-              1,
-              { min: 0, max: 99 },
-              GROUP_STYLE
-            )}
-            maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-            imageItems={myCarouselItems}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+  <Wrapper>
+    <ImageCarousel
+      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      imageItems={myCarouselItems}
+    />
+  </Wrapper>
 );
 
-export const ImageCarouselWithContent = () => (
+export const ImageCarouselWithCaption = () => (
   <Wrapper>
     <ImageCarousel
       perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
@@ -122,7 +110,7 @@ export const ImageCarouselWithContent = () => (
   </Wrapper>
 );
 
-export const ImageCarouselWithMoreContent = () => (
+export const ImageCarouselWithMoreCaptionContent = () => (
   <Wrapper>
     <ImageCarousel
       perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}

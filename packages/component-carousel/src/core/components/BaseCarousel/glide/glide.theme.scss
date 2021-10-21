@@ -124,11 +124,18 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
     .glide__slides {
       margin-bottom: 0;
+      .glide__slide {
+        .card {
+          width: 100%;
+        }
+      }
     }
   }
 
-  &[data-has-shadow="true"] .glide__track {
-    @include shadow();
+  @media only screen and (min-width: $uds-breakpoint-sm) {
+    &[data-has-shadow="true"] .glide__track {
+      @include shadow();
+    }
   }
 
   // Arrows.
@@ -361,6 +368,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 
   @media only screen and (max-width: $uds-breakpoint-sm) {
+    gap: 21px;
     &:not(&.image-gallery) {
       .glide__bullets {
         display: none;
