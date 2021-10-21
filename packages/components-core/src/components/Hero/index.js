@@ -16,6 +16,7 @@ import { HeroImage } from "./index.styles";
 /**
  * @param {HeroProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 function storyHeroHtmlTemplate({ image, title, contents }) {
   // eslint-disable-next-line no-console
@@ -27,6 +28,7 @@ function storyHeroHtmlTemplate({ image, title, contents }) {
 /**
  * @param {HeroProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 function headingHeroHtmlTemplate({
   image,

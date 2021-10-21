@@ -11,5 +11,6 @@ module.exports = {
       "./src/core/types",
       "./src/components",
     ],
+    excludePattern: "FeedAnatomy",
   },
 };

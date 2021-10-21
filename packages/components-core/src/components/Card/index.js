@@ -188,7 +188,6 @@ Card.defaultProps = {
 /*
  * Sub-components defined after this
  */
-
 const BaseCard = ({
   type,
   width,
