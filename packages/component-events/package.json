@@ -67,7 +67,7 @@
     "jest-transform-file": "^1.1.1",
     "jsdoc": "^3.6.7",
     "jsdoc-plugin-typescript": "^2.0.6",
-    "jsdoc-to-markdown": "^7.1.0",
+    "jsdoc-to-markdown": "5.0.0-node12.1",
     "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss-loader": "^6.1.1",
