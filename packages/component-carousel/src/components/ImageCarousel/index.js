@@ -9,17 +9,16 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * @typedef {{
- *  id: number
- *  imageSource: string
- *  imageAltText: string
- *  title?: string
- *  content?: string
- * }} ImageItem
+ * @typedef {import('../../core/types/image-carousel-types').ImageItem} ImageItem
+ */
+
+/**
+ * @typedef {import('../../core/types/image-carousel-types').ImageCarouselType} ImageCarouselType
  */
 
 /**
  * This function creates a html template which render an image
+ * @ignore
  * @param {ImageItem} props
  * @returns {CarouselItem}
  */
@@ -53,14 +52,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
 });
 
 /**
- *
- * @param {{
- *    perView: number
- *    imageItems: ImageItem[]
- *    maxWidth?: string
- *    width?: string
- *    imageAutoSize?: boolean
- *  }} props
+ * @param {ImageCarouselType} props
  * @returns { JSX.Element }
  */
 const ImageCarousel = ({
