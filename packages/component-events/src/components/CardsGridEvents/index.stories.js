@@ -5,8 +5,10 @@ import { CardsGridEvents } from ".";
 
 import { createMockParam } from "../../core/utils";
 
+/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
+
 export default {
-  title: "D8 Events/Cards Grid",
+  title: "Events component/Cards Grid",
   component: CardsGridEvents,
   decorators: [withMock],
 };
