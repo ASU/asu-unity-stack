@@ -8,15 +8,19 @@
  */
 
 /**
+ * @typedef {Object} TestimonialQuote
+ * @property {string} content
+ * @property {string} [title]
+ * @property {Object} cite
+ * @property {string} cite.name
+ * @property {string} [cite.description]
+ */
+
+/**
  * @typedef {Object} TestimonialProps
  * @property {string} imageSource
  * @property {string} imageAltText
- * @property {Object} quote
- * @property {string} quote.content
- * @property {string} [quote.title]
- * @property {Object} quote.cite
- * @property {string} quote.cite.name
- * @property {string} [quote.cite.description]
+ * @property {TestimonialQuote} quote
  * @property {TestimonialStyle} itemStyle
  */
 
