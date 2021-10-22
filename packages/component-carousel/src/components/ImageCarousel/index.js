@@ -17,10 +17,9 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * This function creates a html template which render an image
- * @ignore
  * @param {ImageItem} props
  * @returns {CarouselItem}
+ * @ignore
  */
 const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
   id,

@@ -18,12 +18,12 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * @ignore
  * @param {CardItem} props
  * @param {string} cardType
  * @param {"stack" | "inline"} cardEventFormat
  * @param {boolean} cardHorizontal
  * @returns {CarouselItem}
+ * @ignore
  */
 const htmlTemplate = (
   {

@@ -51,10 +51,9 @@ const sharedProps = {
 };
 
 /**
- * This function creates a html template which render an image
- * @ignore
  * @param {ImageGalleryCarouselItem} props
  * @returns {CarouselItem}
+ * @ignore
  */
 const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
   id,

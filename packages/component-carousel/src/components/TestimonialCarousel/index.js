@@ -22,10 +22,10 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * This function creates a html template which render an image
  * @param {TestimonialItem} props
  * @param {TestimonialStyle} itemStyle
  * @returns { CarouselItem }
+ * @ignore
  */
 const htmlTemplate = (
   { id, imageSource, imageAltText, quote },
