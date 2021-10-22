@@ -1,11 +1,11 @@
 import React from 'react';
 import { template } from './templates';
 
-import { Basic as Header } from '../stories/components/global-header/global-header.components.js';
-import { GlobalElementsOnly as Footer } from '../stories/components/global-footer/global-footer.components.js';
-export const createComponent = (name, section = 'Components') => {
+import { Basic as Header } from '../stories/organisms/global-header/global-header.templates.js';
+import { GlobalElementsOnly as Footer } from '../stories/organisms/global-footer/global-footer.templates.js';
+export const createComponent = (name, section = 'Atoms', type = '', extraOptions = {}) => {
   return {
-    title: `${section}/${name}`,
+    title: `${section}/${name}${type === '' ? '' : '/'+type}`,
     argTypes: {
       header: {
         name: 'Show Header',
@@ -32,6 +32,7 @@ export const createComponent = (name, section = 'Components') => {
           },
         },
       },
+      ...extraOptions
     },
   };
 };
@@ -55,7 +56,86 @@ export const layoutNames = {
  * @returns  {JSX.Element}
  */
 
-export const createStory = (
+ export const createStory = (
+  componentJSX,
+  {
+    supportedTemplates = [
+      layoutNames.FULL_WIDTH,
+      layoutNames.ONE_COLUMN,
+      layoutNames.TWO_COLUMN,
+      layoutNames.THREE_COLUMN,
+      layoutNames.FOUR_COLUMN,
+    ],
+    initFunc = null,
+    omitTemplate = false,
+  } = {}
+) => {
+  const Template = ({ ...args }) => {
+    if(supportedTemplates.includes(args.template) || omitTemplate) {
+      if (initFunc) {
+        // Necessitated by Storybook intricacies.
+        if (document.readyState !== 'loading') {
+          setTimeout(function () {
+            initFunc();
+          }, 150);
+        } else {
+          window.addEventListener('DOMContentLoaded', function () {
+            initFunc();
+          });
+        }
+      }
+
+      const codeWithArgs = typeof(componentJSX) === 'function' ? componentJSX(args) : componentJSX;
+
+      const componentCode = omitTemplate
+        ? codeWithArgs
+        : template(codeWithArgs, args.template);
+
+      return (
+        <div>
+          {args.header && Header}
+          {componentCode}
+          {args.footer && Footer}
+        </div>
+      );
+    } else {
+      return (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '80%',
+          maxWidth: '600px',
+          margin: '0 auto'}}>
+          <h2>This layout isn't supported for this element.</h2>
+          <span>Use the storybook controls to choose a supported layout:</span>
+          <ul>
+            { supportedTemplates.includes(layoutNames.FULL_WIDTH) && <li>Full-width</li> }
+            { supportedTemplates.includes(layoutNames.ONE_COLUMN) && <li>One Column</li> }
+            { supportedTemplates.includes(layoutNames.TWO_COLUMN) && <li>Two Column</li> }
+            { supportedTemplates.includes(layoutNames.THREE_COLUMN) && <li>Three Column</li> }
+            { supportedTemplates.includes(layoutNames.FOUR_COLUMN) && <li>Four Column</li> }
+          </ul>
+        </div>
+      )
+    }
+  };
+  return Template.bind({});
+};
+
+
+
+/**
+ *
+ * @param {JSX.Element} componentJSX
+ * @param ? {{
+ *  unsupportedTemplates: [],
+ *  initFunc: () => null,
+ *  omitTemplate: boolean,
+ * }} props
+ * @returns  {JSX.Element}
+ */
+
+ export const createStoryTwo = (
   componentJSX,
   {
     supportedTemplates = [
@@ -85,8 +165,8 @@ export const createStory = (
       }
 
       const componentCode = omitTemplate
-        ? componentJSX
-        : template(componentJSX, args.template);
+        ? componentJSX(args)
+        : template(componentJSX(args), args.template);
 
       return (
         <div>

@@ -5,8 +5,10 @@ import { CardsListEvents } from ".";
 
 import { createMockParam } from "../../core/utils";
 
+/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
+
 export default {
-  title: "D8 Events/Cards List",
+  title: "Events component/Cards List",
   component: CardsListEvents,
   decorators: [withMock],
 };
