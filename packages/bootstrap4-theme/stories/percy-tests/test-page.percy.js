@@ -3,4 +3,4 @@ export default {
 };
 
 // Card component
-// export { defaultCard as Card } from '../components/cards/cards.stories';
+export { defaultCard as Card } from '../components/cards/cards.stories';
