@@ -3,4 +3,4 @@ export default {
 };
 
 // Card component
-export { card as Card } from '../molecules/cards/cards.templates';
+export { variations as Card } from '../molecules/cards/cards.examples';
