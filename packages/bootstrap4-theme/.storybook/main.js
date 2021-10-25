@@ -3,6 +3,8 @@ module.exports = {
     '../stories/**/*.stories.mdx',
     '../stories/**/*.stories.jsx',
     '../stories/**/*.stories.[tj]s',
+    '../stories/**/*.templates.[tj]s',
+    '../stories/**/*.examples.[tj]s',
   ],
   addons: [
     '@storybook/addon-docs',

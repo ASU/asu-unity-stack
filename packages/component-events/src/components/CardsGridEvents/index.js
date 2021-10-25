@@ -6,19 +6,20 @@ import { eventsPropTypes } from "../../core/models/propTypes";
 import { GridView } from "./GridView";
 
 /**
- *
- * @param {import('../../core/models/types').FeedType} props
- * @returns {JSX.Element}
+ * @typedef {import('../../core/types/events-types').FeedType} FeedType
  */
 
-const CardsGridEvents = ({ header, ctaButton, dataSource, maxItems }) => {
-  return (
-    // Calling the high order component that fetch the data
-    <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
-      <GridView />
-    </BaseFeed>
-  );
-};
+/**
+ *
+ * @param {FeedType} props
+ * @returns {JSX.Element}
+ */
+const CardsGridEvents = ({ header, ctaButton, dataSource, maxItems }) => (
+  // Calling the high order component that fetch the data
+  <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
+    <GridView />
+  </BaseFeed>
+);
 
 CardsGridEvents.propTypes = eventsPropTypes;
 
