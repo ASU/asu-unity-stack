@@ -31,6 +31,9 @@ export const parameters = {
           'Backgrounds',
           'Focus States',
         ],
+        'Atoms',
+        'Molecules',
+        'Organisms',
         'Components',
         'Docs',
         [

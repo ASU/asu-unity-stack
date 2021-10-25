@@ -36,22 +36,24 @@ const NavbarContainer = () => {
   return (
     // @ts-ignore
     <Wrapper breakpoint={breakpoint} data-testid="navigation">
-      <ul className="nav-list">
-        {!!mobileNavTree?.length && isMobile
-          ? mobileNavTree?.map((link, i) => renderItem(link, i))
-          : navTree?.map((link, i) => renderItem(link, i))}
-      </ul>
-      {!!buttons?.length && (
-        <form className="buttons-container" data-testid="buttons-container">
-          {buttons?.map(button => (
-            <Button
-              {...button}
-              key={button.text}
-              onFocus={() => trackGAEvent({ text: button.text })}
-            />
-          ))}
-        </form>
-      )}
+      <div className="content-container">
+        <ul className="nav-list">
+          {!!mobileNavTree?.length && isMobile
+            ? mobileNavTree?.map((link, i) => renderItem(link, i))
+            : navTree?.map((link, i) => renderItem(link, i))}
+        </ul>
+        {!!buttons?.length && (
+          <form className="buttons-container" data-testid="buttons-container">
+            {buttons?.map(button => (
+              <Button
+                {...button}
+                key={button.text}
+                onFocus={() => trackGAEvent({ text: button.text })}
+              />
+            ))}
+          </form>
+        )}
+      </div>
       {/* Navbar Footer */}
       {isMobile && <UniversalNavbar />}
     </Wrapper>
