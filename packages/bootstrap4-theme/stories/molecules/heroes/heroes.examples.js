@@ -56,7 +56,7 @@ export const HeroLarge = createStory(
       </p>
     </div>
     <a href="#" class="btn btn-maroon">
-      Get your tickets
+      Get tickets
     </a>
   </div>,
   {
