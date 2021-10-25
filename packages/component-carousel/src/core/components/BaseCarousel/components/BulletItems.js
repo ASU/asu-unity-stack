@@ -14,6 +14,7 @@ const BaseBulletItemContainer = ({ children }) => (
     role="group"
     className="glide__bullets"
     data-glide-el="controls[nav]"
+    data-testid="bullets-container"
     // this is needed when the children is provided
     onClick={e => e.stopPropagation()}
     onKeyDown={e => e.stopPropagation()}

@@ -148,7 +148,11 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
         </BaseNavButtonContainer>
       </div>
       {hasContent && (title || content) ? (
-        <figcaption id="caption" className="figure-caption uds-figure-caption">
+        <figcaption
+          id="caption"
+          className="figure-caption uds-figure-caption"
+          data-testid="image-gallery-content-container"
+        >
           <div className="uds-caption-text">
             {title ? <h3>{title}</h3> : null}
             {/* eslint-disable-next-line react/no-danger */}

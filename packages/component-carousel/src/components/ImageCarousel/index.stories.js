@@ -5,43 +5,12 @@ import React from "react";
 
 import { ImageCarousel } from ".";
 
+// eslint-disable-next-line jest/no-mocks-import
+import { imageCarouselItems } from "../../../__mocks__/data/props-mock";
 import { Basic as Header } from "../../../../bootstrap4-theme/stories/organisms/global-header/global-header.templates";
 
-const myCarouselItems = [
-  {
-    id: 1,
-    imageSource: "https://source.unsplash.com/random/800x400?a=1",
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 2,
-    imageSource: "https://source.unsplash.com/random/400x200?a=2",
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 3,
-    imageSource: "https://source.unsplash.com/random/600x400?a=3",
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 4,
-    imageSource: "https://source.unsplash.com/random/600x600?a=4",
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-  {
-    id: 5,
-    imageSource: "https://source.unsplash.com/random/600x500?a=5",
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  },
-];
-
 const mockItemWithContent = () =>
-  myCarouselItems.map(item => ({
+  imageCarouselItems.map(item => ({
     ...item,
     content: `
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -52,7 +21,7 @@ const mockItemWithContent = () =>
   }));
 
 const mockItemWithMoreContent = () =>
-  myCarouselItems.map((item, index) => ({
+  imageCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
     content: ` Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
@@ -104,7 +73,7 @@ export const ImageCarouselDefault = () => (
               GROUP_STYLE
             )}
             maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-            imageItems={myCarouselItems}
+            imageItems={imageCarouselItems}
           />
         </div>
       </div>
