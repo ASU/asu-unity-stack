@@ -37,6 +37,7 @@
       font-weight: bold;
       font-size: 24px;
       margin: 0.2em 0.2em 0 0.2em;
+      text-transform: capitalize;
     }
 
     .nav-link.active {
@@ -79,10 +80,15 @@
 
 .scroll-control {
   &-prev {
+    width: 80px;
     position: absolute;
     height: 100%;
     top: 0;
-    background: rgba(0, 0, 0, 0);
+    background: linear-gradient(
+      90deg,
+      rgba(25, 25, 25, 0.25) 0%,
+      rgba(25, 25, 25, 0) 100%
+    );
     left: 0;
 
     span.carousel-control-prev-icon {
@@ -91,6 +97,7 @@
   }
 
   &-next {
+    width: 80px;
     position: absolute;
     height: 100%;
     top: 0;
@@ -111,15 +118,21 @@
     background-size: 60% 60%;
     display: block;
     opacity: 0;
-    padding: 12px 12px;
-    margin: 0 8px;
+    padding: 12px;
     position: relative;
     top: 50%;
+    left: 0;
     transform: translate(0, -50%);
     background-color: $uds-color-base-gray-1;
     border: solid 1px $uds-color-base-gray-3;
-    border-radius: 200px;
+    border-radius: 100%;
     color: #000;
+  }
+  @media screen and (max-width: $uds-breakpoint-md) {
+    &-prev,
+    &-next {
+      width: 48px;
+    }
   }
 }
 

@@ -91,18 +91,8 @@ const Header = ({ children, breakpoint, ...props }) => {
  * Universal Nav styles and component
  */
 const universalStyles = breakpoint => css`
-  .shadow.mobile-open {
-    position: fixed;
-    bottom: 155px;
-    width: 100%;
-    height: 50px;
-    border-bottom: 1px solid #d0d0d0;
-    z-index: 1700;
-    background: linear-gradient(
-      180deg,
-      rgba(232, 232, 232, 0) 0%,
-      rgba(232, 232, 232, 1) 100%
-    );
+  .shadow {
+    display: none;
   }
   .universal-nav {
     padding: 0 2rem;
@@ -136,19 +126,6 @@ const universalStyles = breakpoint => css`
         width: 100%;
         display: flex;
         justify-content: center;
-        /* &:before {
-          content: "";
-          width: 100%;
-          height: 50px;
-          position: absolute;
-          top: -50px;
-          border-bottom: 1px solid #d0d0d0;
-          background: linear-gradient(
-            180deg,
-            rgba(232, 232, 232, 0) 0%,
-            rgba(232, 232, 232, 1) 100%
-          );
-        } */
         + .navbar-component .navbar-toggler {
           border-radius: 400rem;
           width: 2rem;
@@ -188,6 +165,23 @@ const universalStyles = breakpoint => css`
           color: #191919;
         }
       }
+    }
+  }
+
+  @media (max-width: ${breakpoint}) {
+    .shadow.mobile-open {
+      position: fixed;
+      bottom: 155px;
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid #d0d0d0;
+      z-index: 1700;
+      display: block;
+      background: linear-gradient(
+        180deg,
+        rgba(232, 232, 232, 0) 0%,
+        rgba(232, 232, 232, 1) 100%
+      );
     }
   }
 
