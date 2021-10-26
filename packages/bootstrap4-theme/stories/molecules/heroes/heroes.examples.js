@@ -1,5 +1,9 @@
 import React from 'react';
-import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import {
+  createComponent,
+  createStory,
+  layoutNames,
+} from '../../../helpers/wrapper.js';
 export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
@@ -29,12 +33,12 @@ export const HeroMedium = createStory(
     </div>
   </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 HeroMedium.args = {
   template: 0,
-}
+};
 
 export const HeroLarge = createStory(
   <div class="uds-hero-lg hide-content">
@@ -60,12 +64,12 @@ export const HeroLarge = createStory(
     </a>
   </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 HeroLarge.args = {
   template: 0,
-}
+};
 
 export const StoryHeroLarge = createStory(
   <div>
@@ -132,12 +136,11 @@ export const StoryHeroLarge = createStory(
         </div>
       </div>
     </div>
-  </div>
-  ,
+  </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 StoryHeroLarge.args = {
   template: 0,
-}
+};
