@@ -91,6 +91,9 @@ const Header = ({ children, breakpoint, ...props }) => {
  * Universal Nav styles and component
  */
 const universalStyles = breakpoint => css`
+  .shadow {
+    display: none;
+  }
   .universal-nav {
     padding: 0 2rem;
     display: flex;
@@ -165,6 +168,23 @@ const universalStyles = breakpoint => css`
     }
   }
 
+  @media (max-width: ${breakpoint}) {
+    .shadow.mobile-open {
+      position: fixed;
+      bottom: 155px;
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid #d0d0d0;
+      z-index: 1700;
+      display: block;
+      background: linear-gradient(
+        180deg,
+        rgba(232, 232, 232, 0) 0%,
+        rgba(232, 232, 232, 1) 100%
+      );
+    }
+  }
+
   @media (min-width: ${breakpoint}) {
     // Scroll behaviors.
     &.scrolled {
@@ -206,16 +226,19 @@ const universalStyles = breakpoint => css`
 
 const UniversalNav = forwardRef((props, ref) => {
   return (
-    <div
-      class={cx(
-        "universal-nav",
-        props.open ? "mobile-open" : "",
-        props.searchOpen ? "search-open" : ""
-      )}
-      ref={ref}
-    >
-      <div>{props.children}</div>
-    </div>
+    <>
+      <div className={`shadow ${props.open ? "mobile-open" : ""}`} />
+      <div
+        class={cx(
+          "universal-nav",
+          props.open ? "mobile-open" : "",
+          props.searchOpen ? "search-open" : ""
+        )}
+        ref={ref}
+      >
+        <div>{props.children}</div>
+      </div>
+    </>
   );
 });
 

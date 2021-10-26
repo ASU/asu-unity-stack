@@ -434,6 +434,8 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   }
 
   .navbar-nav {
+    max-height: calc(100vh - 270px);
+    overflow-y: auto;
     .nav-link {
       text-transform: capitalize;
       padding: $uds-size-spacing-2 $uds-size-spacing-4 $uds-size-spacing-1
@@ -481,6 +483,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   #menubar {
     overflow-y: scroll;
     overflow-x: hidden;
+    min-height: calc(100vh - 110px);
 
     &.collapsing {
       height: unset !important;
@@ -492,6 +495,18 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       bottom: 0;
       right: 0;
       width: 100%;
+      &:before {
+        content: '';
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: -50px;
+        background: linear-gradient(
+          180deg,
+          rgba(232, 232, 232, 0) 0%,
+          rgba(232, 232, 232, 1) 100%
+        );
+      }
     }
   }
 
@@ -841,9 +856,12 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
     #menubar {
       overflow: initial;
+      min-height: auto;
     }
 
     .navbar-nav {
+      overflow: unset;
+      max-height: unset;
       line-height: $uds-size-spacing-3; // 1.5 rem
 
       > .nav-link {

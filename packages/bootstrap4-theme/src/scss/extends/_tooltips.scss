@@ -80,12 +80,12 @@ button.uds-tooltip-dark {
 div[role='tooltip'].uds-tooltip-description {
   background: #191919 0% 0% no-repeat padding-box;
   color: $uds-color-base-gray-1;
-  font: normal normal normal 1rem Arial;
-  line-height: 2rem;
+  font: normal normal normal $uds-size-spacing-2 Arial;
+  line-height: $uds-size-spacing-3;
   margin: 0px 5px;
   max-width: 353px;
   min-width: 300px;
-  padding: 2rem;
+  padding: $uds-size-spacing-4;
   position: absolute;
   left: 40px;
   top: 0;
@@ -95,10 +95,13 @@ div[role='tooltip'].uds-tooltip-description {
   & > span.uds-tooltip-heading {
     color: $uds-color-base-gray-1;
     display: block;
-    font: normal normal bold 1rem Arial;
+    font: normal normal bold $uds-size-spacing-2 Arial;
     letter-spacing: 0px;
-    margin-bottom: 1rem;
+    margin-bottom: $uds-size-spacing-2;
     text-align: left;
+  }
+  @media (max-width: 390px) {
+    min-width: 230px;
   }
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // @ts-check
 import React from "react";
 
@@ -12,39 +13,26 @@ export default {
   title: "Card Carousel",
 };
 
-export const ThreeItemCarousel = () => (
+/**
+ *
+ * @param {{ children: JSX.Element}} props
+ * @returns { JSX.Element}
+ */
+const Wrapper = ({ children }) => (
   <div>
     {Header}
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <CardCarousel
-            perView="3"
-            cardItems={cardCarouselItems}
-            width="100%"
-          />
-        </div>
-      </div>
-    </div>
+    {children}
   </div>
+);
+
+export const ThreeItemCarousel = () => (
+  <Wrapper>
+    <CardCarousel perView="3" cardItems={cardCarouselItems} />
+  </Wrapper>
 );
 
 export const TwoItemCarousel = () => (
-  <div className="container">
+  <Wrapper>
     <CardCarousel perView="2" cardItems={cardCarouselItems} />
-  </div>
-);
-
-export const OneItemCarousel = () => (
-  <div className="container">
-    <CardCarousel perView="1" cardItems={cardCarouselItems} />
-  </div>
-);
-
-export const MultipleCarousels = () => (
-  <div className="container">
-    <CardCarousel perView="3" cardItems={cardCarouselItems} />
-    <CardCarousel perView="1" cardItems={cardCarouselItems} />
-    <CardCarousel perView="2" cardItems={cardCarouselItems} />
-  </div>
+  </Wrapper>
 );

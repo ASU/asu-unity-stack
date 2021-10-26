@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Mon, 18 Oct 2021 09:14:12 GMT
+// Generated on Fri, 22 Oct 2021 13:56:22 GMT
 
 $uds-asset-font-icon-name: "FontAwesome";
 $uds-asset-font-icon-ttf: "assets/fontawesome/webfonts/fa-regular-400.ttf";
@@ -169,26 +169,26 @@ $uds-component-button-padding-x-small: .75rem; // Magic number: 12px not a multi
 $uds-component-button-padding-y-small: 0.25rem;
 $uds-component-button-text-align: center;
 $uds-component-button-transition: .03s ease-in-out;
-$uds-component-button-disabled-opacity: 50%;
+$uds-component-button-disabled-opacity: 0.5;
 $uds-component-button-badge-background-color: #bfbfbf;
 $uds-component-button-badge-border-radius: 400rem;
 $uds-component-button-badge-font-weight: normal;
 $uds-component-button-badge-height: 1.375rem; // Magic number: 22px not a multiple of 8
 $uds-component-button-close-height: 2rem;
-$uds-component-button-close-opacity: 100%;
+$uds-component-button-close-opacity: 1;
 $uds-component-button-close-width: 2rem;
 $uds-component-button-close-padding-top: 0;
 $uds-component-button-close-padding-bottom: 0.125rem;
-$uds-component-button-close-disabled-opacity: 100%;
+$uds-component-button-close-disabled-opacity: 1;
 $uds-component-button-close-white-background-color: #ffffff;
 $uds-component-button-close-gray-background-color: #bfbfbf;
 $uds-component-button-carousel-position-height: 1rem;
 $uds-component-button-carousel-position-width: 1rem;
 $uds-component-button-carousel-position-inactive-background-color: #bfbfbf;
-$uds-component-button-carousel-position-inactive-opacity: 25%;
+$uds-component-button-carousel-position-inactive-opacity: 0.25;
 $uds-component-button-carousel-position-black-background-color: #191919;
 $uds-component-button-carousel-position-white-background-color: #ffffff;
-$uds-component-button-carousel-slider-disabled-opacity: 50%;
+$uds-component-button-carousel-slider-disabled-opacity: 0.5;
 $uds-component-button-carousel-slider-light-background-color: #bfbfbf;
 $uds-component-button-carousel-slider-white-background-color: #ffffff;
 $uds-component-button-default-font-size: 1rem;
@@ -415,7 +415,7 @@ $uds-component-pager-hover-text-decoration: none;
 $uds-component-pager-hover-color: #ffffff;
 $uds-component-pager-active-background-color: #8c1d40;
 $uds-component-pager-active-color: #ffffff;
-$uds-component-pager-disabled-opacity: 50%;
+$uds-component-pager-disabled-opacity: 0.5;
 $uds-component-pager-icon-height: 1rem;
 $uds-component-pager-icon-width: 1rem;
 $uds-component-pager-icon-margin: 0.25rem;
@@ -438,4 +438,4 @@ $uds-component-tab-container-border-color: #747474;
 $uds-component-tab-container-border-width-px: 1px;
 $uds-component-tab-active-border-bottom: 8px solid #8c1d40;
 $uds-component-tab-active-color: #8c1d40;
-$uds-component-tab-disabled-opacity: 50%;
+$uds-component-tab-disabled-opacity: 0.5;

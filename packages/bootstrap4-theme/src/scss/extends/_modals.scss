@@ -34,8 +34,8 @@
     background-color: $uds-color-base-gray-4;
     border: 1px solid transparent;
     height: $uds-size-spacing-4; // 2rem
-    opacity: .5;
-    padding: .25rem;
+    opacity: 0.5;
+    padding: 0.25rem;
     position: absolute;
     right: 0;
     text-decoration: none;
@@ -47,15 +47,15 @@
     }
 
     &:hover {
-       opacity: 1;
+      opacity: 1;
     }
   }
 }
 
 @keyframes fadeIn {
   0% {
-     display: none;
-     opacity: 0;
+    display: none;
+    opacity: 0;
   }
   1% {
     display: flex;

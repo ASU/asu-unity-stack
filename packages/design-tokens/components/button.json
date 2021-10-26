@@ -64,7 +64,7 @@
       },
       "disabled": {
         "opacity": {
-          "value": "50%"
+          "value": "0.5"
         }
       },
       "badge": {
@@ -93,7 +93,7 @@
           "value": "2"
         },
         "opacity": {
-          "value": "100%"
+          "value": "1"
         },
         "width": {
           "value": "2"
@@ -106,7 +106,7 @@
         },
         "disabled": {
           "opacity": {
-            "value": "100%"
+            "value": "1"
           }
         },
         "white": {
@@ -133,7 +133,7 @@
               "value": "{color.brand.light.value}"
             },
             "opacity": {
-              "value": "25%"
+              "value": "0.25"
             }
           },
           "black": {
@@ -150,7 +150,7 @@
         "slider": {
           "disabled": {
             "opacity": {
-              "value": "50%"
+              "value": "0.5"
             }
           },
           "light": {

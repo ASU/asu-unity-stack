@@ -54,7 +54,7 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
   // Set GlideJS config options, per https://glidejs.com/docs/options/
 
   const gap = hasPeek ? 24 : 0;
-  const smallPeek = hasPeek ? { before: 0, after: 62 } : 0;
+  const smallPeek = hasPeek ? { before: 48, after: 48 } : 0;
   const largePeek = hasPeek ? { before: 124, after: 124 } : 0;
 
   return {

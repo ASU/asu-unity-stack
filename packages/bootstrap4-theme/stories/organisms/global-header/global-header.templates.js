@@ -219,7 +219,7 @@ export const Basic = (
                         Call to action
                       </a>
                     </form>
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
@@ -1279,7 +1279,7 @@ export const DropDownMenus = (
                       </div>
                     </div>
                     {/* end .navbar-nav */}
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
@@ -1497,7 +1497,7 @@ export const NoNavigation = (
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
@@ -1728,7 +1728,7 @@ export const NoNavigationAndWithButtons = (
                         CTA button 2
                       </a>
                     </form>
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
@@ -2134,7 +2134,7 @@ export const ScrolledState = (
                       </div>
                     </div>
                     {/* end .navbar-nav */}
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
@@ -2378,16 +2378,32 @@ export const Partner = (
                       >
                         Link option 1
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="Link option 2">
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 2"
+                      >
                         Link option 2
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="Link option 3">
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 3"
+                      >
                         Link option 3
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="Link option 4">
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 4"
+                      >
                         Link option 4
                       </a>
-                      <a class="nav-link" href="#" data-ga-header="Link option 5">
+                      <a
+                        class="nav-link"
+                        href="#"
+                        data-ga-header="Link option 5"
+                      >
                         Link option 5
                       </a>
                       <div class="nav-item dropdown header-dropdown-1">
@@ -2403,8 +2419,7 @@ export const Partner = (
                           data-ga-header-event="collapse"
                           data-ga-header-type="click"
                         >
-                          Link option 6
-                          <span class="fa fa-chevron-down"></span>
+                          Link option 6<span class="fa fa-chevron-down"></span>
                         </a>
                         <div
                           class="dropdown-menu dropdown-columns"
@@ -2456,7 +2471,7 @@ export const Partner = (
                         CTA Button 2
                       </a>
                     </form>
-                    <div class="navbar-mobile-footer">
+                    <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
