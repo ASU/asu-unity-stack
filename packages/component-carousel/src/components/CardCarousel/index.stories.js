@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 // @ts-check
 import React from "react";
 
 import { CardCarousel } from ".";
 
-import { Basic as Header } from "../../../../bootstrap4-theme/stories/components/global-header/global-header.components";
+import { Basic as Header } from "../../../../bootstrap4-theme/stories/organisms/global-header/global-header.templates";
 
 const imageFormats = [
   "500x400",
@@ -65,35 +66,26 @@ export default {
   title: "Card Carousel",
 };
 
-export const ThreeItemCarousel = () => (
+/**
+ *
+ * @param {{ children: JSX.Element}} props
+ * @returns { JSX.Element}
+ */
+const Wrapper = ({ children }) => (
   <div>
     {Header}
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <CardCarousel perView="3" cardItems={myCarouselItems} width="100%" />
-        </div>
-      </div>
-    </div>
+    {children}
   </div>
+);
+
+export const ThreeItemCarousel = () => (
+  <Wrapper>
+    <CardCarousel perView="3" cardItems={myCarouselItems} />
+  </Wrapper>
 );
 
 export const TwoItemCarousel = () => (
-  <div className="container">
+  <Wrapper>
     <CardCarousel perView="2" cardItems={myCarouselItems} />
-  </div>
-);
-
-export const OneItemCarousel = () => (
-  <div className="container">
-    <CardCarousel perView="1" cardItems={myCarouselItems} />
-  </div>
-);
-
-export const MultipleCarousels = () => (
-  <div className="container">
-    <CardCarousel perView="3" cardItems={myCarouselItems} />
-    <CardCarousel perView="1" cardItems={myCarouselItems} />
-    <CardCarousel perView="2" cardItems={myCarouselItems} />
-  </div>
+  </Wrapper>
 );

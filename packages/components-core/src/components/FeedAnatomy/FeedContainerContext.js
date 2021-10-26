@@ -20,6 +20,7 @@ const FeedContext = createContext(null);
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filters: string) => object
  *  defaultProps: import("../../core/types/feed-types").FeedType
+ *  noFeedText: string
  * }} props
  * @returns {JSX.Element}
  * @ignore
@@ -27,6 +28,7 @@ const FeedContext = createContext(null);
 const FeedContainerProvider = ({
   defaultProps,
   dataSource: pDataSource,
+  noFeedText,
   renderHeader,
   renderBody,
   dataTransformer = item => item,
@@ -58,16 +60,14 @@ const FeedContainerProvider = ({
           <span>Error, try again!</span>
         ) : (
           <>
-            {loading && !feeds && (
+            {loading && !feeds?.length && (
               <div className="text-center mt-4">
                 <Loader />
               </div>
             )}
-            {feeds?.length ? (
-              renderBody
-            ) : (
-              <p className="text-center">No news to show.</p>
-            )}
+            {feeds?.length
+              ? renderBody
+              : !loading && <p className="text-center">{noFeedText}</p>}
           </>
         )}
       </Container>
@@ -81,6 +81,7 @@ FeedContainerProvider.propTypes = {
   maxItems: PropTypes.number,
   dataTransformer: PropTypes.func,
   dataFilter: PropTypes.func,
+  noFeedText: PropTypes.string,
 };
 
 export { FeedContainerProvider, FeedContext };

@@ -1,7 +1,32 @@
 ## Constants
 
 <dl>
+<dt><a href="#AnchorMenu">AnchorMenu</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Article">Article</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Button">Button</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#ButtonIconOnly">ButtonIconOnly</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#ButtonTag">ButtonTag</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
 <dt><a href="#Card">Card</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Pagination">Pagination</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+</dl>
+
+## Components
+
+<dl>
+<dt><a href="#Accordion">Accordion(props)</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Hero">Hero(props)</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Testimonial">Testimonial(props)</a> ⇒ <code>JSX.Element</code></dt>
+<dd></dd>
+<dt><a href="#Video">Video(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd></dd>
 </dl>
 
@@ -56,6 +81,8 @@
 <dd></dd>
 <dt><a href="#TestimonialStyle">TestimonialStyle</a> : <code>Object</code></dt>
 <dd></dd>
+<dt><a href="#TestimonialQuote">TestimonialQuote</a> : <code>Object</code></dt>
+<dd></dd>
 <dt><a href="#TestimonialProps">TestimonialProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#VideoProps">VideoProps</a> : <code>Object</code></dt>
@@ -108,11 +135,58 @@
 <dd></dd>
 <dt><a href="#TestimonialStyle">TestimonialStyle</a> : <code>Object</code></dt>
 <dd></dd>
+<dt><a href="#TestimonialQuote">TestimonialQuote</a> : <code>Object</code></dt>
+<dd></dd>
 <dt><a href="#TestimonialProps">TestimonialProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#VideoProps">VideoProps</a> : <code>Object</code></dt>
 <dd></dd>
 </dl>
+
+<a name="AnchorMenu"></a>
+
+## AnchorMenu ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>AnchorMenuProps</code>](#AnchorMenuProps) | 
+
+<a name="Article"></a>
+
+## Article ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>ArticleProps</code>](#ArticleProps) | 
+
+<a name="Button"></a>
+
+## Button ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>ButtonProps</code>](#ButtonProps) | 
+
+<a name="ButtonIconOnly"></a>
+
+## ButtonIconOnly ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>ButtonIconOnlyProps</code>](#ButtonIconOnlyProps) | 
+
+<a name="ButtonTag"></a>
+
+## ButtonTag ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | <code>ButtonTagProps</code> | 
 
 <a name="Card"></a>
 
@@ -122,6 +196,51 @@
 | Param | Type |
 | --- | --- |
 | props | [<code>CardProps</code>](#CardProps) | 
+
+<a name="Pagination"></a>
+
+## Pagination ⇒ <code>JSX.Element</code>
+**Kind**: global constant  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>PaginationProps</code>](#PaginationProps) | 
+
+<a name="Accordion"></a>
+
+## Accordion(props) ⇒ <code>JSX.Element</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>AccordionProps</code>](#AccordionProps) | 
+
+<a name="Hero"></a>
+
+## Hero(props) ⇒ <code>JSX.Element</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>HeroProps</code>](#HeroProps) | 
+
+<a name="Testimonial"></a>
+
+## Testimonial(props) ⇒ <code>JSX.Element</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>TestimonialProps</code>](#TestimonialProps) | 
+
+<a name="Video"></a>
+
+## Video(props) ⇒ <code>JSX.Element</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| props | [<code>VideoProps</code>](#VideoProps) | 
 
 <a name="ArticleProps"></a>
 
@@ -467,6 +586,20 @@
 | [titleCssClass] | <code>Array.&lt;string&gt;</code> | 
 | [contentCssClass] | <code>Array.&lt;string&gt;</code> | 
 
+<a name="TestimonialQuote"></a>
+
+## TestimonialQuote : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| content | <code>string</code> | 
+| [title] | <code>string</code> | 
+| cite | <code>Object</code> | 
+| cite.name | <code>string</code> | 
+| [cite.description] | <code>string</code> | 
+
 <a name="TestimonialProps"></a>
 
 ## TestimonialProps : <code>Object</code>
@@ -477,12 +610,7 @@
 | --- | --- |
 | imageSource | <code>string</code> | 
 | imageAltText | <code>string</code> | 
-| quote | <code>Object</code> | 
-| quote.content | <code>string</code> | 
-| [quote.title] | <code>string</code> | 
-| quote.cite | <code>Object</code> | 
-| quote.cite.name | <code>string</code> | 
-| [quote.cite.description] | <code>string</code> | 
+| quote | [<code>TestimonialQuote</code>](#TestimonialQuote) | 
 | itemStyle | [<code>TestimonialStyle</code>](#TestimonialStyle) | 
 
 <a name="VideoProps"></a>
@@ -844,6 +972,20 @@
 | [titleCssClass] | <code>Array.&lt;string&gt;</code> | 
 | [contentCssClass] | <code>Array.&lt;string&gt;</code> | 
 
+<a name="TestimonialQuote"></a>
+
+## TestimonialQuote : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| content | <code>string</code> | 
+| [title] | <code>string</code> | 
+| cite | <code>Object</code> | 
+| cite.name | <code>string</code> | 
+| [cite.description] | <code>string</code> | 
+
 <a name="TestimonialProps"></a>
 
 ## TestimonialProps : <code>Object</code>
@@ -854,12 +996,7 @@
 | --- | --- |
 | imageSource | <code>string</code> | 
 | imageAltText | <code>string</code> | 
-| quote | <code>Object</code> | 
-| quote.content | <code>string</code> | 
-| [quote.title] | <code>string</code> | 
-| quote.cite | <code>Object</code> | 
-| quote.cite.name | <code>string</code> | 
-| [quote.cite.description] | <code>string</code> | 
+| quote | [<code>TestimonialQuote</code>](#TestimonialQuote) | 
 | itemStyle | [<code>TestimonialStyle</code>](#TestimonialStyle) | 
 
 <a name="VideoProps"></a>
