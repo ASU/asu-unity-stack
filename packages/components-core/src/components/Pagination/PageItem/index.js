@@ -4,14 +4,13 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {import('../../../core/models/shared-model-types').PageItemProps} PageItemProps
+ * @typedef {import('../../../core/types/shared-types').PageItemProps} PageItemProps
  */
 
 /**
  * @param {PageItemProps} props
- * @returns
+ * @ignore
  */
-
 export const PageItem = ({
   isClickeable,
   disabled,

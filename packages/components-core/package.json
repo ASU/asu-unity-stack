@@ -18,7 +18,11 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
     "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && percy storybook ./percy-storybook",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./dist",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js",
     "postinstall": "yarn build"
   },
   "bugs": {

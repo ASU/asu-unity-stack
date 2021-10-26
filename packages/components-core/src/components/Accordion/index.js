@@ -6,15 +6,14 @@ import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { AccordionCard } from "./AccordionCard";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').AccordionProps} AccordionProps
+ * @typedef {import('../../core/types/shared-types').AccordionProps} AccordionProps
  */
 
 /**
  * @param {AccordionProps} props
  * @returns {JSX.Element}
  */
-
-export const Accordion = ({ cards, openedCard }) => {
+const Accordion = ({ cards, openedCard }) => {
   const [openCard, setOpenCard] = useState(null);
 
   useEffect(() => {
@@ -56,3 +55,5 @@ Accordion.propTypes = {
    */
   openedCard: PropTypes.number,
 };
+
+export { Accordion };

@@ -6,33 +6,12 @@ import React from "react";
 import { spreadClasses } from "../../core/utils/css-utils";
 
 /**
- * @typedef {{
- *      containerCssClass?: string[]
- *      titleCssClass?: string[]
- *      contentCssClass?: string[]
- * }} TestimonialStyle
+ * @typedef {import('../../core/types/testimonial-types').TestimonialProps} TestimonialProps
  */
 
 /**
- * @typedef {{
- *  quote: {
- *    title?: string
- *    content: string
- *    cite?: {
- *       name: string
- *       description?: string
- *    }
- *  }
- *  imageSource?: string
- *  imageAltText?:string
- *  itemStyle?:TestimonialStyle
- * }} TestimonialProps
- */
-
-/**
- *
  * @param {TestimonialProps} props
- * @returns
+ * @returns {JSX.Element}
  */
 const Testimonial = ({
   imageSource = null,
