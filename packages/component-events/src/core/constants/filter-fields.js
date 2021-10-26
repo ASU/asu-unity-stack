@@ -6,6 +6,7 @@ const filterFields = [
   "interests",
   "audiences",
   "eventTypes",
+  "collegeUnit",
 ];
 
 export { filterFields };

@@ -667,7 +667,7 @@ exports[`Header Snapshot test 1`] = `
 }
 
 .emotion-1 .btn.btn-disabled {
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .emotion-1 .btn.btn-small {

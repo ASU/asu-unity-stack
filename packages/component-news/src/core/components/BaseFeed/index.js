@@ -15,7 +15,7 @@ import { filterData } from "../../services/data-manager";
 import { transformData } from "../../transformers/transform-data";
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType} FeedType
+ * @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType} FeedType
  */
 
 /**
@@ -52,6 +52,7 @@ const BaseFeed = ({
       dataFilter={filterData}
       dataSource={dataSource}
       defaultProps={defaultProps}
+      noFeedText="No news to show."
       maxItems={maxItems || defaultProps.maxItems}
     />
   );

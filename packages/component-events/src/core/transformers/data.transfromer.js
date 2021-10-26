@@ -17,6 +17,7 @@ const transformData = data => ({
   eventUnits: data.node.event_units,
   eventTopics: data.node.event_topics,
   eventTypes: data.node.event_types,
+  collegeUnit: data.node.college_unit,
   eventButtonUrl: data.node.ticketing_rsvp_url,
   eventButtonText: data.node.ticketing_rsvp_txt,
 });
