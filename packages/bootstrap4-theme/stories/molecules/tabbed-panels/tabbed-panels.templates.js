@@ -4,11 +4,7 @@ import { createComponent, createStory } from '../../../helpers/wrapper.js';
 const extraOptions = {
   bgColor: {
     name: 'Color',
-    options: [
-      '',
-      'bg-gray-1',
-      'bg-gray-2',
-      'bg-dark'],
+    options: ['', 'bg-gray-1', 'bg-gray-2', 'bg-dark'],
     defaultValue: '',
     control: {
       type: 'radio',
@@ -20,16 +16,25 @@ const extraOptions = {
       },
     },
   },
-}
+};
 
-export default createComponent('Tabbed Panels', 'Molecules', 'Templates', extraOptions);
-import { initTabs } from './tabbed-panels.js';
+export default createComponent(
+  'Tabbed Panels',
+  'Molecules',
+  'Templates',
+  extraOptions
+);
+import { initTabs as initFunc } from './tabbed-panels.js';
 
 export const TabbedPanels = createStory(
   (args) => {
     return (
       <div class={args.bgColor}>
-        <nav class={`uds-tabbed-panels ${args.bgColor === 'bg-dark' ? 'uds-tabbed-panels-dark' : ''}`}>
+        <nav
+          class={`uds-tabbed-panels ${
+            args.bgColor === 'bg-dark' ? 'uds-tabbed-panels-dark' : ''
+          }`}
+        >
           <div
             class="nav nav-tabs"
             id="nav-tab"
@@ -126,7 +131,9 @@ export const TabbedPanels = createStory(
         </nav>
         <div class="tab-content" id="nav-tabContent">
           <div
-            class={`tab-pane fade show active ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade show active ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-home"
             role="tabpanel"
             aria-labelledby="nav-home-tab"
@@ -138,7 +145,9 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-profile"
             role="tabpanel"
             aria-labelledby="nav-profile-tab"
@@ -150,7 +159,9 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-contact"
             role="tabpanel"
             aria-labelledby="nav-contact-tab"
@@ -162,7 +173,9 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-another"
             role="tabpanel"
             aria-labelledby="nav-another-tab"
@@ -174,7 +187,9 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-another-2"
             role="tabpanel"
             aria-labelledby="nav-another-2-tab"
@@ -186,7 +201,9 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${args.bgColor === 'bg-dark' ? 'text-white' : ''}`}
+            class={`tab-pane fade ${
+              args.bgColor === 'bg-dark' ? 'text-white' : ''
+            }`}
             id="nav-another-3"
             role="tabpanel"
             aria-labelledby="nav-another-3-tab"
@@ -199,9 +216,7 @@ export const TabbedPanels = createStory(
           </div>
         </div>
       </div>
-    )
+    );
   },
-  {
-    initFunc: initTabs,
-  },
+  { initFunc }
 );
