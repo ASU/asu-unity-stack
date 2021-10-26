@@ -185,7 +185,7 @@ const universalStyles = breakpoint => css`
     }
   }
 
-  @media (min-width: ${breakpoint}) {
+  @media (min-width: ${parseInt(breakpoint.split("p")[0], 10) + 1}px) {
     // Scroll behaviors.
     &.scrolled {
       .universal-nav {
