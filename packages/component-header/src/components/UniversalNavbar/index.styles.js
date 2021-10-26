@@ -47,6 +47,20 @@ const Wrapper = styled.div`
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
     min-height: auto;
+    position: relative;
+    &:before {
+      content: "";
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      top: -50px;
+      border-bottom: 1px solid #d0d0d0;
+      background: linear-gradient(
+        180deg,
+        rgba(232, 232, 232, 0) 0%,
+        rgba(232, 232, 232, 1) 100%
+      );
+    }
     .header-top {
       .nav {
         width: 100%;
@@ -62,6 +76,7 @@ const Wrapper = styled.div`
           justify-items: start;
           width: 100%;
           .nav-link {
+            white-space: normal;
             color: #191919;
             margin-right: 0;
             text-align: center;

@@ -24,9 +24,11 @@ export const AnchorMenu = ({
   focusFirstFocusableElement = false,
 }) => {
   const anchorMenuRef = useRef(null);
+  const [hasHeader, setHasHeader] = useState(false);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
+  const headerHeight = isSmallDevice ? 110 : 142;
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
@@ -34,6 +36,7 @@ export const AnchorMenu = ({
       .getElementById(firstElementId)
       ?.getBoundingClientRect().top;
     const anchorMenuHeight = 103;
+
     // Scroll position
     if (firstElement >= 0) {
       anchorMenuRef.current.classList.remove("sticky");
@@ -41,29 +44,45 @@ export const AnchorMenu = ({
     }
     if (curPos > anchorMenuRef.current.getBoundingClientRect().top)
       anchorMenuRef.current.classList.add("sticky");
+
     // Change active containers on scroll
     let curSection = "";
+    const subsHeight = hasHeader
+      ? headerHeight + anchorMenuHeight
+      : anchorMenuHeight;
     items?.forEach(({ targetIdName }) => {
       const container = document.getElementById(targetIdName);
-      const containerTop =
-        container?.getBoundingClientRect().top - anchorMenuHeight;
+      const containerTop = container?.getBoundingClientRect().top - subsHeight;
       const containerBottom =
-        container?.getBoundingClientRect().bottom - anchorMenuHeight;
+        container?.getBoundingClientRect().bottom - subsHeight;
       if (containerTop < 0 && containerBottom > 0) {
         curSection = targetIdName;
       }
     });
+
     setActualContainer(curSection);
   };
+
+  const setHeader = () => {
+    const pageHeader =
+      document.getElementById("asu-header") ||
+      document.getElementById("headerContainer") ||
+      document.getElementById("asuHeader");
+    setHasHeader(!!pageHeader);
+  };
+
+  useEffect(() => {
+    setHeader();
+  }, []);
 
   useEffect(() => {
     window?.addEventListener("scroll", handleWindowScroll);
     return () => window.removeEventListener("scroll", handleWindowScroll);
-  }, []);
+  }, [hasHeader]);
 
   const handleClickLink = container => {
-    const curScroll = window.scrollY - 100;
-    const anchorMenuHeight = window.innerWidth <= 992 ? 410 : 90;
+    const curScroll = window.scrollY - (hasHeader ? headerHeight + 100 : 100);
+    const anchorMenuHeight = isSmallDevice ? 410 : 90;
     let scrollTo =
       document.getElementById(container)?.getBoundingClientRect().top +
       curScroll;
@@ -84,7 +103,9 @@ export const AnchorMenu = ({
   return (
     <AnchorMenuWrapper
       ref={anchorMenuRef}
-      className="uds-anchor-menu uds-anchor-menu-expanded-lg mb-4"
+      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
+        hasHeader ? "with-header " : ""
+      }mb-4`}
     >
       <div className="container-xl uds-anchor-menu-wrapper">
         {isSmallDevice ? (

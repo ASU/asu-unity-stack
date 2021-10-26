@@ -10,7 +10,8 @@
       figcaption {
         color: $uds-color-base-gray-5;
         font-size: $uds-size-font-tiny;
-        margin: 1rem;
+        margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-2
+          $uds-size-spacing-2;
       }
     }
   }
@@ -19,6 +20,9 @@
     background-color: white !important;
     z-index: 2;
     opacity: 0.7;
+    width: 104px !important;
+    height: 104px !important;
+    font-size: $uds-size-spacing-5 !important;
 
     &:hover {
       opacity: 1;
@@ -27,6 +31,12 @@
 
     .svg-inline--fa.fa-w-14 {
       margin-left: 5px; // magic number to make play button appear more centered
+    }
+
+    @media (max-width: $uds-breakpoint-sm) {
+      width: 64px !important;
+      height: 64px !important;
+      font-size: $uds-size-spacing-4 !important;
     }
   }
 

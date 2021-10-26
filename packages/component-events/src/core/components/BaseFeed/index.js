@@ -36,6 +36,7 @@ const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
     dataFilter={filterData}
     dataSource={dataSource}
     defaultProps={defaultProps}
+    noFeedText="No events to show."
     maxItems={maxItems || defaultProps.maxItems}
   />
 );
