@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("../models/news-types").FeedType} */
+/** @type {import("../types/news-types").FeedType} */
 const defaultProps = {
   header: {
     color: "dark",

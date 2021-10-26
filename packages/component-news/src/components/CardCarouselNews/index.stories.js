@@ -6,9 +6,9 @@ import { CardCarouselNews } from "./index";
 
 import { createMockParam } from "../../core/utils";
 
-/** @typedef {import("@asu-design-system/components-core/src/components/FeedAnatomy/feed-types").FeedType } FeedType */
+/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
 export default {
-  title: "UDS/CarouselCardNews",
+  title: "News component/Carousel Card News",
   component: CardCarouselNews,
   decorators: [withMock],
 };

@@ -30,6 +30,7 @@ const HeaderMainWrapper = styled.div`
     .no-navigation {
       margin-top: 16px;
       display: flex;
+      align-items: center;
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
@@ -41,6 +42,9 @@ const HeaderMainWrapper = styled.div`
       &.partner {
         flex-direction: row-reverse;
       }
+    }
+    .partner .content-container {
+      min-height: calc(100vh - 240px);
     }
     .navbar-brand {
       padding: 0;
