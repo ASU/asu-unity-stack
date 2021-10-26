@@ -6,6 +6,12 @@ const AnchorMenuWrapper = styled.div`
     top: 0;
     left: 0;
     width: 100%;
+    &.with-header {
+      top: 142px;
+      @media (max-width: 992px) {
+        top: 110px;
+      }
+    }
   }
   .mobile-menu-toggler {
     background-color: transparent;

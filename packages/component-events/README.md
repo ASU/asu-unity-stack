@@ -48,6 +48,9 @@ The componet can be customized by setting the following props
  * }} FeedType
  */
 ```
+## Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 
 ## CLI Commands
 

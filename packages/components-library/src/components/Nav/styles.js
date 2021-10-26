@@ -323,6 +323,10 @@ const dropdownContainerStyles = breakpoint => css`
         max-height: 10000px;
       }
 
+      &.aligned-right:not(.mega) {
+        width: 100%;
+      }
+
       h3 {
         padding-left: 0.3rem;
       }
@@ -607,6 +611,12 @@ const componentStyles = breakpoint => css`
 const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
+    @media (max-width: ${breakpoint}) {
+      min-height: calc(100vh - 270px);
+      > *:last-child {
+        margin-bottom: 40px;
+      }
+    }
   }
 `;
 

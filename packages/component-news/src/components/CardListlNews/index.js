@@ -12,9 +12,8 @@ import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
 /**
- *
- * @param {*} feed
- * @param {import("../../core/models/news-types").CardButton} cardButton
+ * @param {object} feed
+ * @param {import("../../core/types/news-types").CardButton} cardButton
  */
 const listRow = (feed, cardButton) => (
   <div className="card card-hover cards-items-container" key={feed.id}>
@@ -46,9 +45,7 @@ const listRow = (feed, cardButton) => (
 );
 
 /**
- * @param {{
- *  cardButton: import("../../core/models/news-types").CardButton
- * }} props
+ * @param {import("../../core/types/news-types").TemplateProps} props
  */
 // eslint-disable-next-line react/prop-types
 const ListTemplate = ({ cardButton }) => {
@@ -63,10 +60,14 @@ const ListTemplate = ({ cardButton }) => {
     </NewsWrapper>
   );
 };
-
 // eslint-enable-next-line react/prop-types
+
 /**
- * @param {import("../../core/models/news-types").FeedType} props
+ * @typedef {import("../../core/types/news-types").FeedType} FeedType
+ */
+
+/**
+ * @param {FeedType} props
  */
 const CardListlNews = ({ cardButton, ...props }) => (
   // Calling the high order component that fetch the data
