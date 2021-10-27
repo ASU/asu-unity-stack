@@ -57,6 +57,18 @@ for (let index = 0; index < 8; index += 1) {
           return false;
         },
       },
+      {
+        ariaLabel: "dummy button",
+        color: "maroon",
+        href: "#",
+        label: `Button ${index + 1} link here`,
+        size: "small",
+        onClick: () => {
+          // eslint-disable-next-line no-alert
+          window.alert("Hola Amigo 😃.");
+          return false;
+        },
+      },
     ],
   });
 }
