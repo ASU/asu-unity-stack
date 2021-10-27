@@ -44,7 +44,7 @@ export const Hero = createStory(
           <span class="highlight-black">By whom it includes</span>
         </h1>
         <a href="#" class="btn btn-maroon">
-          Maroon Call to Action
+          Call to Action
         </a>
       </div>
     );
@@ -78,10 +78,10 @@ export const HeroWithButtonRow = createStory(
         </div>
         <div class="btn-row">
           <a href="#" class="btn btn-default btn-gold">
-            Read the 13th Amendment
+            Read more
           </a>
           <a href="#" class="btn btn-default btn-gold">
-            More quotes from Abraham Lincoln
+            More quotes
           </a>
         </div>
       </div>

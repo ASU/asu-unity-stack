@@ -25,10 +25,10 @@ export const HeroMedium = createStory(
     </div>
     <div class="btn-row">
       <a href="#" class="btn btn-default btn-gold">
-        Read the 13th Amendment
+        Read more
       </a>
       <a href="#" class="btn btn-default btn-gold">
-        More quotes from Abraham Lincoln
+        More quotes
       </a>
     </div>
   </div>,
@@ -60,7 +60,7 @@ export const HeroLarge = createStory(
       </p>
     </div>
     <a href="#" class="btn btn-maroon">
-      Get your tickets
+      Get tickets
     </a>
   </div>,
   {
