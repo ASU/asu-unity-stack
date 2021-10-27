@@ -6,7 +6,6 @@
  * Because the table scrolls, if they were to be absolutely positioned in the same container as the table, they would scroll with it.
  */
 window.addEventListener('DOMContentLoaded', function () {
-  console.log('>>> table DOMContentLoaded');
   initializeFixedTable();
 });
 
