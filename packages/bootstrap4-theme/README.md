@@ -246,29 +246,9 @@ yarn gulp               # Execute the default Gulp task (validate)
 View our [Contributing Guidelines](./CONTRIBUTING.md)
 
 
-### Component Start / Component End
+### Adding a new element
 
-Stories in Storybook should all maintain the following general structure to clearly deliniate where native Boostrap markup is to be included in a particular element.
-
-* Add comments on the beginning and end of the markup of each element.
-* Wrap each element in a basic Bootstrap container/row/column structure to verify that it aligns with the header and footer.
-
-  ```html
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <!-- Component start -->
-        ...
-        <!-- Component end -->
-      </div>
-    </div>
-  </div>
-  ```
-
-Most Bootstrap UI elements can be used independently of the Bootstrap grid elements if your project requires you to complete your page layout using some other method. (CSS Grid, Flexbox, an alternate grid markup.)
-
-![divider](./divider.png)
-
+View our ['Adding elements' Guidelines](./ADDING_ELEMENTS.md)
 ## ❯ Further Documentation
 
 | Name & Link                       | Description                       |

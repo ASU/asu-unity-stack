@@ -26,7 +26,12 @@ Desktop styles
         margin-left: $uds-size-spacing-3;
       }
       &.person-contact-info {
-        margin-bottom: $uds-size-spacing-3;
+        margin-bottom: $uds-size-spacing-2;
+        .person-address {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+        }
       }
       &.person-social-medias a {
         color: $uds-color-base-gray-7;

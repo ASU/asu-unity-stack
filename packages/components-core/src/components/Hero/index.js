@@ -10,24 +10,13 @@ import {
 import { HeroImage } from "./index.styles";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').ImageProps} ImageProps
- * @typedef {import('../../core/models/shared-model-types').ContentProps} ContentProps
- */
-
-/**
- * @typedef {{
- *    type?: "heading-hero" | "story-hero" // defaut value is "heading-hero"
- *    image?: ImageProps
- *    title?: ContentProps
- *    subTitle?: ContentProps
- *    contents?: ContentProps[]
- *    contentsColor?: "white" | "black"
- * }} HeroProps
+ * @typedef {import('../../core/types/hero-types').HeroProps} HeroProps
  */
 
 /**
  * @param {HeroProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 function storyHeroHtmlTemplate({ image, title, contents }) {
   // eslint-disable-next-line no-console
@@ -39,6 +28,7 @@ function storyHeroHtmlTemplate({ image, title, contents }) {
 /**
  * @param {HeroProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 function headingHeroHtmlTemplate({
   image,

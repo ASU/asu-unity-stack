@@ -11,14 +11,13 @@ import { AnchorMenuWrapper } from "./index.styles";
 const menuTitle = "On This Page";
 
 /**
- * @typedef { import('../../core/models/shared-model-types').AnchorMenuProps } AnchorMenuProps
+ * @typedef { import('../../core/types/shared-types').AnchorMenuProps } AnchorMenuProps
  */
 
 /**
  * @param {AnchorMenuProps} props
  * @returns {JSX.Element}
  */
-
 export const AnchorMenu = ({
   items,
   firstElementId,

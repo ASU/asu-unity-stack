@@ -1,1 +1,3 @@
 percy-storybook
+docs/**
+!docs/README.props.md
