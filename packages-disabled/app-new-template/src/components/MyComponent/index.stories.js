@@ -8,7 +8,7 @@ import { createMockParam } from "../../core/utils";
 
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
 export default {
-  title: "Webdir UI/Test Component",
+  title: "New App Template/Test Component",
   component: SomeComponent,
   decorators: [withMock],
 };
