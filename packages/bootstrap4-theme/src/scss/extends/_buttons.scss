@@ -42,8 +42,8 @@
   }
   &.btn-circle {
     padding: $uds-size-spacing-half $uds-size-spacing-half;
-    width: $uds-size-spacing-4;
-    height: $uds-size-spacing-4;
+    width: $uds-size-spacing-4 !important;
+    height: $uds-size-spacing-4 !important;
     border: solid 1px $gray-3;
     &.btn-circle-alt-white {
       background: $gray-2;
@@ -58,13 +58,13 @@
       color: $gray-7;
     }
     &.btn-circle-large {
-      width: $uds-size-spacing-8;
-      height: $uds-size-spacing-8;
+      width: $uds-size-spacing-8 !important;
+      height: $uds-size-spacing-8 !important;
       font-size: 1.5rem;
     }
     &.btn-circle-x-large {
-      width: 6.5rem;
-      height: 6.5rem;
+      width: 6.5rem !important;
+      height: 6.5rem !important;
       font-size: 3rem;
     }
   }
