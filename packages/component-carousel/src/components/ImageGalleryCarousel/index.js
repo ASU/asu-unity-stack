@@ -24,19 +24,17 @@ const calculateHeightNeeded = (content, width) => {
 
   return linesNeeded * 20;
 };
+
 /**
  * @typedef {import('../../core/components/BaseCarousel').CarouselItem} CarouselItem
  */
 
 /**
- * @typedef {{
- *     id: number,
- *     imageSource: string,
- *     thumbnailSource?: string,
- *     imageAltText:string
- *     title?: string
- *     content?: string
- * }} ImageCarouselItem
+ * @typedef {import('../../core/types/image-gallery-carousel-types').ImageGalleryCarouselItem} ImageGalleryCarouselItem
+ */
+
+/**
+ * @typedef {import('../../core/types/image-gallery-carousel-types').ImageGalleryCarouselType} ImageGalleryCarouselType
  */
 
 const sharedProps = {
@@ -53,9 +51,9 @@ const sharedProps = {
 };
 
 /**
- * This function creates a html template which render an image
- * @param {ImageCarouselItem} props
+ * @param {ImageGalleryCarouselItem} props
  * @returns {CarouselItem}
+ * @ignore
  */
 const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
   id,
@@ -71,16 +69,17 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
 });
 
 /**
- *
- * @param {{
- * instanceName: string
- * imageItems: ImageCarouselItem []
- * hasContent: boolean
- * maxWidth?: string
- * }} props
+ * @typedef CustomNavComponentProps
+ * @property {string} instanceName
+ * @property {Array.<ImageGalleryCarouselItem>} imageItems
+ * @property {boolean} hasContent
+ */
+
+/**
+ * @ignore
+ * @param {CustomNavComponentProps} props
  * @returns { JSX.Element }
  */
-// eslint-disable-next-line react/prop-types
 const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   const ATTR_INDEX = "data-current-index";
   const [title, setTitle] = useState(imageItems[0].title);
@@ -165,19 +164,13 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
 };
 
 CustomNavComponent.propTypes = {
+  instanceName: PropTypes.string,
   imageItems: sharedProps.imageItems,
   hasContent: sharedProps.hasContent,
 };
 
 /**
- *
- * @param {{
- *    maxWidth?: string
- *    width?: string
- *    hasContent?: boolean
- *    imageItems: ImageCarouselItem []
- *    imageAutoSize?: boolean
- *  }} props
+ * @param {ImageGalleryCarouselType} props
  * @returns { JSX.Element }
  */
 const ImageGalleryCarousel = ({

@@ -7,7 +7,8 @@ import React from "react";
  * @param {{
  *  children: JSX.Element
  * }} props
- * @returns
+ * @returns {JSX.Element}
+ * @ignore
  */
 const FeedBody = ({ children }) => (
   <div className="row" data-testid="feed-body">

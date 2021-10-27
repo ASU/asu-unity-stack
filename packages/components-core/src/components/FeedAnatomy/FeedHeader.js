@@ -20,11 +20,11 @@ const ButtonColumn = styled.div`
 /**
  *
  * @param {{
- *  defaultProps: import("./feed-types").FeedType
- *  header: import("./feed-types").FeedHeader
- *  ctaButton: import("./feed-types").FeedCtaButton
+ *  defaultProps: import("../../core/types/feed-types").FeedType
+ *  header: import("../../core/types/feed-types").FeedHeader
+ *  ctaButton: import("../../core/types/feed-types").FeedCtaButton
  * }} props
- * @returns
+ * @returns {JSX.Element}
  */
 const FeedHeader = ({
   defaultProps,

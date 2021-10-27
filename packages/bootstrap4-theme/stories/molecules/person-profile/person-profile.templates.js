@@ -25,7 +25,14 @@ export const PersonProfile = createStory(
         </li>
         <li>
           <a href="#" aria-label="See user address">
-            1234 Address St. Tempe, AZ 12345
+            <address className ="person-address">
+              <span className ="person-street">
+                1234 Address St.
+              </span>
+              <span className ="person-city">
+                Tempe AZ 12345
+              </span>
+            </address>
           </a>
         </li>
       </ul>

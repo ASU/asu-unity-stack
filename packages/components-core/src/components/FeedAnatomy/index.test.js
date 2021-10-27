@@ -5,7 +5,7 @@ import React from "react";
 
 import { FeedContainerProvider, FeedHeader, FeedBody } from ".";
 
-/** @type {import("./feed-types").FeedType} */
+/** @type {import("../../core/types/feed-types").FeedType} */
 const defaultProps = {
   header: {
     color: "dark",

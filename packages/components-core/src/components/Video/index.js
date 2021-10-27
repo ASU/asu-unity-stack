@@ -6,19 +6,13 @@ import React, { useRef, useState } from "react";
 import { VideoOverlay } from "./index.styles";
 
 /**
- * @typedef {{
- *    type?: "youtube" | "video"
- *    url: string
- *    vttUrl?: string
- *    title?: string
- *    caption?: string
- *    className?: string
- * }} VideoProps
+ * @typedef {import('../../core/types/video-types').VideoProps} VideoProps
  */
 
 /**
  * @param {VideoProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 const videoTemplate = ({
   url = "",
@@ -117,6 +111,7 @@ const videoTemplate = ({
 /**
  * @param {VideoProps} props
  * @returns {JSX.Element}
+ * @ignore
  */
 const youtubeTemplate = ({
   title = "",
@@ -143,17 +138,18 @@ const youtubeTemplate = ({
 /**
  *
  * @param {VideoProps} props
- * @returns
+ * @returns {JSX.Element}
  */
-const Video = ({
-  type = "video",
-  url = "",
-  vttUrl = null,
-  title = "",
-  caption = null,
-  className = null,
-}) =>
-  type === "youtube"
+const Video = props => {
+  const {
+    type = "video",
+    url = "",
+    vttUrl = null,
+    title = "",
+    caption = null,
+    className = null,
+  } = props;
+  return type === "youtube"
     ? youtubeTemplate({ url, title, caption, className })
     : videoTemplate({
         url,
@@ -162,6 +158,7 @@ const Video = ({
         caption,
         className,
       });
+};
 
 Video.propTypes = {
   type: PropTypes.oneOf(["video", "youtube"]),

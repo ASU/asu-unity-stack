@@ -162,6 +162,7 @@ The folder [packages/components-core/examples](/packages/components-core/example
 - [Pagination](/packages/components-core/examples/pagination.html)
 - [Testimonial](/packages/components-core/examples/testimonial.html)
 - [Video](/packages/components-core/examples/video.html)
+
 #### Examples - run and test
 
 If you want to test the examples files you need to install an application server <br />
@@ -173,3 +174,7 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 - run `lite-server`
 - open the broweser to the url `http://localhost:3000/examples/card.html`
   (port number may be different)
+
+## Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)

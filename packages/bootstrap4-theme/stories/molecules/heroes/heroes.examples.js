@@ -1,5 +1,9 @@
 import React from 'react';
-import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import {
+  createComponent,
+  createStory,
+  layoutNames,
+} from '../../../helpers/wrapper.js';
 export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
@@ -21,20 +25,20 @@ export const HeroMedium = createStory(
     </div>
     <div class="btn-row">
       <a href="#" class="btn btn-default btn-gold">
-        Read the 13th Amendment
+        Read more
       </a>
       <a href="#" class="btn btn-default btn-gold">
-        More quotes from Abraham Lincoln
+        More quotes
       </a>
     </div>
   </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 HeroMedium.args = {
   template: 0,
-}
+};
 
 export const HeroLarge = createStory(
   <div class="uds-hero-lg hide-content">
@@ -56,16 +60,16 @@ export const HeroLarge = createStory(
       </p>
     </div>
     <a href="#" class="btn btn-maroon">
-      Get your tickets
+      Get tickets
     </a>
   </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 HeroLarge.args = {
   template: 0,
-}
+};
 
 export const StoryHeroLarge = createStory(
   <div>
@@ -132,12 +136,11 @@ export const StoryHeroLarge = createStory(
         </div>
       </div>
     </div>
-  </div>
-  ,
+  </div>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 StoryHeroLarge.args = {
   template: 0,
-}
+};

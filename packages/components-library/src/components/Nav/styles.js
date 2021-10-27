@@ -648,7 +648,6 @@ const Nav = ({
             &:target {
               flex-direction: column;
               width: 100%;
-
               max-height: ${maxHeight};
               display: flex;
             }

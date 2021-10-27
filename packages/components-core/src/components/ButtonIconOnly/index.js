@@ -3,34 +3,26 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {{
- *  color?: string
- *  icon: string[]
- *  innerRef?: React.RefObject
- *  onClick?: () => void
- *  size?: "large" | "small"
- * }} ButtonIconOnlyProps
+ * @typedef {import('../../core/types/shared-types').ButtonIconOnlyProps} ButtonIconOnlyProps
  */
 
 /**
  * @param {ButtonIconOnlyProps} props
  * @returns {JSX.Element}
  */
-export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
-  return (
-    <button
-      type="button"
-      className={`btn btn-circle btn-circle-alt-${color} ${
-        size === "large" && "btn-circle-large"
-      }`}
-      ref={innerRef}
-      onClick={onClick}
-      aria-label="Close"
-    >
-      <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
-    </button>
-  );
-};
+export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => (
+  <button
+    type="button"
+    className={`btn btn-circle btn-circle-alt-${color} ${
+      size === "large" && "btn-circle-large"
+    }`}
+    ref={innerRef}
+    onClick={onClick}
+    aria-label="Close"
+  >
+    <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
+  </button>
+);
 
 ButtonIconOnly.propTypes = {
   /**

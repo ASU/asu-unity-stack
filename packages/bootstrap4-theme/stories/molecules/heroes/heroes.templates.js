@@ -1,13 +1,14 @@
 import React from 'react';
-import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import {
+  createComponent,
+  createStory,
+  layoutNames,
+} from '../../../helpers/wrapper.js';
 
 const extraOptions = {
   size: {
     name: 'Size',
-    options: [
-      'uds-hero-sm',
-      'uds-hero-md',
-      'uds-hero-lg'],
+    options: ['uds-hero-sm', 'uds-hero-md', 'uds-hero-lg'],
     defaultValue: 'uds-hero-sm',
     control: {
       type: 'radio',
@@ -18,9 +19,14 @@ const extraOptions = {
       },
     },
   },
-}
+};
 
-export default createComponent('Heroes', 'Molecules', 'Templates', extraOptions);
+export default createComponent(
+  'Heroes',
+  'Molecules',
+  'Templates',
+  extraOptions
+);
 
 export const Hero = createStory(
   (args) => {
@@ -38,18 +44,18 @@ export const Hero = createStory(
           <span class="highlight-black">By whom it includes</span>
         </h1>
         <a href="#" class="btn btn-maroon">
-          Maroon Call to Action
+          Call to Action
         </a>
       </div>
-    )
+    );
   },
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 Hero.args = {
   template: 0,
-}
+};
 
 export const HeroWithButtonRow = createStory(
   (args) => {
@@ -72,22 +78,22 @@ export const HeroWithButtonRow = createStory(
         </div>
         <div class="btn-row">
           <a href="#" class="btn btn-default btn-gold">
-            Read the 13th Amendment
+            Read more
           </a>
           <a href="#" class="btn btn-default btn-gold">
-            More quotes from Abraham Lincoln
+            More quotes
           </a>
         </div>
       </div>
-    )
+    );
   },
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 HeroWithButtonRow.args = {
   template: 0,
-}
+};
 
 export const StoryHero = createStory(
   <section class="uds-story-hero">
@@ -117,9 +123,9 @@ export const StoryHero = createStory(
     </div>
   </section>,
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 StoryHero.args = {
   template: 0,
-}
+};

@@ -13,7 +13,11 @@
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook -s ./dist"
+    "build-storybook": "build-storybook -s ./dist",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "publishConfig": {
     "access": "restricted",
@@ -74,6 +78,10 @@
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
     "jest-transform-scss": "^1.0.8",
+    "jsdoc": "^3.6.7",
+    "jsdoc-plugin-typescript": "^2.0.6",
+    "jsdoc-to-markdown": "5.0.0",
+    "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
     "postcss-flexbugs-fixes": "^5.0.2",
