@@ -300,6 +300,10 @@ yarn test
    *  }} props
    */
  ```
+## Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
+
 ### Examples
 
 The folder [packages/component-carousel/examples](/packages/component-carousel/examples)

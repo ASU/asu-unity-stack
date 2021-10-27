@@ -10,44 +10,21 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * @typedef {{
- *   id: number
- *   imageSource: string
- *   imageAltText: string
- *   title: string
- *   content?: string
- *   eventLocation?: string
- *   buttons?: {
- *    ariaLabel: string,
- *    color?: "gold" | "maroon" | "gray" | "dark"
- *    href?: string,
- *    label: string,
- *    onClick?: () => void,
- *    size: "default" | "small" | "xsmall"
- *    target: "_self" | "_blank" | "_top" | "_parent"
- *   }[]
- *   eventTime?: string
- *   linkLabel?: string
- *   linkUrl?: string
- *   tags?: {
- *      ariaLabel: string,
- *      color: "white" | "gray" | "dark"
- *      href: string,
- *      label: string,
- *      onClick: () => void,
- *   } []
- *}} CardItem
+ * @typedef {import('../../core/types/card-carousel-types').CardItem} CardItem
  */
 
 /**
- *
- * @param {CardItem} props
- * @param {string} cardType
- * @param {string} cardEventFormat
- * @param {boolean} cardHorizontal
- * @returns {CarouselItem}
+ * @typedef {import('../../core/types/card-carousel-types').CardCarouselType} CardCarouselType
  */
 
+/**
+ * @param {CardItem} props
+ * @param {string} cardType
+ * @param {"stack" | "inline"} cardEventFormat
+ * @param {boolean} cardHorizontal
+ * @returns {CarouselItem}
+ * @ignore
+ */
 const htmlTemplate = (
   {
     id,
@@ -85,18 +62,9 @@ const htmlTemplate = (
     />
   ),
 });
+
 /**
- *
- * @param {{
- *   perView: string | number
- *   cardItems: CardItem []
- *   cardType?: "default" | "degree" | "event" | "news" | "story"
- *   cardEventFormat?: "stack" | "inline"
- *   cardHorizontal?: boolean
- *   maxWidth?: string
- *   width?: string
- *   imageAutoSize?: boolean
- *  }} props
+ * @param {CardCarouselType} props
  * @returns { JSX.Element }
  */
 const CardCarousel = ({

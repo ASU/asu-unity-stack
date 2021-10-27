@@ -10,30 +10,22 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/components/Testimonial").TestimonialStyle} TestimonialStyle
+ * @typedef {import('../../core/types/testimonial-carousel-types').TestimonialItem} TestimonialItem
  */
 
 /**
- * @typedef {{
- *  id: number
- *  quote: {
- *    title?: string
- *    content: string
- *    cite?: {
- *       name: string
- *       description?: string
- *    }
- *  }
- *  imageSource?: string
- *  imageAltText?:string
- * }} TestimonialItem
+ * @typedef {import('../../core/types/testimonial-carousel-types').TestimonialStyle} TestimonialStyle
  */
 
 /**
- * This function creates a html template which render an image
+ * @typedef {import('../../core/types/testimonial-carousel-types').TestimonialCarouselType} TestimonialCarouselType
+ */
+
+/**
  * @param {TestimonialItem} props
  * @param {TestimonialStyle} itemStyle
  * @returns { CarouselItem }
+ * @ignore
  */
 const htmlTemplate = (
   { id, imageSource, imageAltText, quote },
@@ -51,16 +43,7 @@ const htmlTemplate = (
 });
 
 /**
- *
- * @param {{
- *    testimonialItems: TestimonialItem[]
- *    itemStyle?: TestimonialStyle
- *    maxWidth: string
- *    width?: string
- *    hasPositionIndicators?: boolean
- *    hasNavButtons?: boolean
- *    imageAutoSize?: boolean
- *  }} props
+ * @param {TestimonialCarouselType} props
  * @returns { JSX.Element }
  */
 const TestimonialCarousel = ({
