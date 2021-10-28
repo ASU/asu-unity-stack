@@ -8,7 +8,7 @@ import { isDebugActive } from "../utils/dev-tools-utils";
 /**
  *
  * @param {{
- * dataSource: import("../models/listing-page-types").ProgramListDataSource
+ * dataSource: import("../types/listing-page-types").ProgramListDataSource
  * tableView: Object []
  * programs: Object []
  * stateFilters: import("src").FiltersState

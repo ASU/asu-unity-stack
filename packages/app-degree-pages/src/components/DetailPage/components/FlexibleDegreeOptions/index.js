@@ -8,7 +8,7 @@ import {
 import { ContentBlock } from "./ContentBlock";
 
 /**
- * @typedef {import('../../../../core/models/program-detail-types').FlexibleDegreeOptionsProps} FlexibleDegreeOptionsProps
+ * @typedef {import('../../../../core/types/detail-page-types').FlexibleDegreeOptionsProps} FlexibleDegreeOptionsProps
  */
 
 /**

@@ -7,7 +7,7 @@ import { glanceItemPropShape } from "../../../../core/models/app-prop-types";
 import { GlanceItem } from "./GlanceItem";
 
 /**
- * @typedef {import('../../../../core/models/program-detail-types').AtAGlanceProps} AtAGlanceProps
+ * @typedef {import('../../../../core/types/detail-page-types').AtAGlanceProps} AtAGlanceProps
  */
 
 /**

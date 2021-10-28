@@ -7,7 +7,7 @@ import { linkPropShape } from "../../../../core/models";
 
 /**
  *
- * @param {{breadcrumbs: import("src/core/models/program-detail-types").BreadcrumbItem []}} param0
+ * @param {{breadcrumbs: import("src/core/types/detail-page-types").BreadcrumbItem []}} param0
  * @returns
  */
 function Breadcrumbs({ breadcrumbs }) {

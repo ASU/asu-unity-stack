@@ -34,9 +34,11 @@ import { ProgramList } from "./components/ProgramList";
 import { SearchBar } from "./components/SearchBar";
 
 /**
- * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
- * @typedef {import("../../core/models/shared-types").FiltersState} FiltersState
- * @typedef {import("../../core/models/shared-types").FilterOption} FilterOption
+ * @typedef {import('../../core/types/listing-page-types').ListingPageProps} ListingPageProps
+ * @typedef {import("../../core/types/shared-local-types").FiltersState} FiltersState
+ * @typedef {import("../../core/types/shared-local-types").FilterOption} FilterOption
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID>} UseDataViewState
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<FiltersState>} UseFiltersState
  */
 
 const Main = styled(MainSection)`
@@ -62,7 +64,6 @@ const FilterSeparator = styled.div.attrs({ className: "container" })`
 `;
 
 /**
- *
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
@@ -80,7 +81,7 @@ const ListingPage = ({
   const [tableView, setTableView] = useState([]);
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
-  /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
+  /** @type {UseDataViewState} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
@@ -93,12 +94,12 @@ const ListingPage = ({
   const { collegeAcadOrg, departmentCode, showInactivePrograms } =
     programList.dataSource;
 
-  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  /** @type {UseFiltersState} */
   const [stateFilters, setStateFilters] = useState({
     ...INITIAL_FILTER_STATE,
   });
 
-  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  /** @type {UseFiltersState} */
   const [appliedFilters, setAppliedFilters] = useState({
     ...INITIAL_FILTER_STATE,
   });

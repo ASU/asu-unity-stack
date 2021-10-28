@@ -9,8 +9,8 @@ import React from "react";
 import { contentPropShape } from "../../../../core/models/app-prop-types";
 
 /**
- * @typedef {import('../../../../core/models/program-detail-types').IntroContentProps} IntroContentProps
- * @typedef {import('../../../../core/models/shared-types').AppTitleProps} AppTitleProps
+ * @typedef {import('../../../../core/types/detail-page-types').IntroContentProps} IntroContentProps
+ * @typedef {import('../../../../core/types/shared-local-types').AppTitleProps} AppTitleProps
  */
 
 /**

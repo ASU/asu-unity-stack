@@ -14,7 +14,7 @@ const WrapperContainer = styled.section`
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").GlobalOpportunityProps} props
+ * @param {import("src/core/types/detail-page-types").GlobalOpportunityProps} props
  * @returns {JSX.Element}
  */
 const CareerOutlook = ({ contents, image }) => (

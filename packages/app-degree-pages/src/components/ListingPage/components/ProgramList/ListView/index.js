@@ -13,8 +13,8 @@ import { degreeListPropTypes } from "../programs-prop-types";
 import { columns as configColumns } from "./index.colums.config";
 import { Table } from "./index.style";
 
-/** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
-/** @typedef {import("../../../../../core/models/shared-types").DegreeDataPropResolver}  DegreeDataPropResolver */
+/** @typedef {import("../../../../../core/types/grid-column-types").GridColumn}  GridColumn */
+/** @typedef {import("../../../../../core/types/shared-local-types").DegreeDataPropResolver}  DegreeDataPropResolver */
 
 /**
  *

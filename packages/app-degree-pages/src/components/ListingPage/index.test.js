@@ -20,20 +20,20 @@ import {
 } from "../../core/models";
 import * as service from "../../core/services/degree-data-manager-service";
 
-/** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
+/** @type {import("../../core/types/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: `${DOMAIN_URL}/uga_admissionsapp/?partner=CORP`,
   majorInfoUrl: `?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
 };
 
-/** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
+/** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
   program: "graduate",
   cert: "true",
 };
 
 /**
- * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
+ * @typedef {import('../../core/types/listing-page-types').ListingPageProps } AppProps
  */
 
 /** @type {AppProps} */

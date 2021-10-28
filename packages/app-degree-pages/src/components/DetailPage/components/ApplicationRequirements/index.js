@@ -13,7 +13,7 @@ import styled from "styled-components";
 import { progDetailSectionIds } from "../../../../core/models";
 
 /**
- * @typedef {import('../../../../core/models/program-detail-types').ApplicationRequirementsProps} ApplicationRequirementsProps
+ * @typedef {import('../../../../core/types/detail-page-types').ApplicationRequirementsProps} ApplicationRequirementsProps
  */
 
 const ButtonList = styled.ul`
@@ -54,6 +54,7 @@ const undergraduateTemplate = (
     },
   ];
 
+  /** @type {import("src/core/types/shared-local-types").AccordionCard[]} */
   const undergradRequirements = [];
 
   if (additionalRequirements.trim())

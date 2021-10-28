@@ -4,8 +4,8 @@ import { isAccelConcValid } from "../models";
 import { degreeDataPropResolverService } from "./degree-data-prop-resolver-service";
 
 /**
- * @typedef {import("../models/shared-types").DegreeDataPropResolver} PropResolver
- * @typedef {import("../../core/models/shared-types").FiltersState} FiltersState
+ * @typedef {import("../types/shared-local-types").DegreeDataPropResolver} PropResolver
+ * @typedef {import("../types/shared-local-types").FiltersState} FiltersState
  */
 /**
  *
@@ -28,27 +28,24 @@ function filterData({
 }) {
   // ============================================================
   /** @param {PropResolver} resolver   */
-  const isValidCollegeAcadOrg = resolver => {
-    return collegeAcadOrg
+  const isValidCollegeAcadOrg = resolver =>
+    collegeAcadOrg
       ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
       : true;
-  };
   // ============================================================
   /** @param {PropResolver} resolver   */
-  const isValidDepartmentCode = resolver => {
-    return departmentCode
+  const isValidDepartmentCode = resolver =>
+    departmentCode
       ? resolver.getDepartmentCode().includes(departmentCode)
       : true;
-  };
   // ============================================================
   /** @param {PropResolver} resolver   */
-  const isValidCampus = resolver => {
-    return locations.length > 0
+  const isValidCampus = resolver =>
+    locations.length > 0
       ? resolver
           .getCampusList()
           ?.some(campus => locations.some(loc => loc.value === campus))
       : true;
-  };
   // ============================================================
   /** @param {Object.<string, []>} row  */
   const isValidAcceleratedConcurrent = (row = {}) =>
@@ -57,18 +54,14 @@ function filterData({
       : true;
   // ============================================================
   /** @param {PropResolver} resolver   */
-  const isValidForKeyword = resolver => {
-    return keyword
-      ? resolver.getDescrLongExtented()?.includes?.(keyword)
-      : true;
-  };
+  const isValidForKeyword = resolver =>
+    keyword ? resolver.getDescrLongExtented()?.includes?.(keyword) : true;
   // ============================================================
   /** @param {PropResolver} resolver   */
-  const isValidProgram = resolver => {
-    return JSON.parse(showInactivePrograms) === false
+  const isValidProgram = resolver =>
+    JSON.parse(showInactivePrograms) === false
       ? resolver.isValidActiveProgram()
       : true;
-  };
   // ============================================================
   /** @param {Object.<string, any>} row  */
   const doFilter = row => {

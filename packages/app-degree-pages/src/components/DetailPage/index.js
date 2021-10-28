@@ -51,12 +51,12 @@ import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
 
-/** @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} ProgramDetailPageProps */
+/**
+ * @typedef {import('../../core/types/detail-page-types').DetailPageProps} DetailPageProps
+ */
 
 /**
- *
- * @param {ProgramDetailPageProps} props
- * @returns
+ * @param {DetailPageProps} props
  */
 const DetailPage = ({
   appPathFolder,
@@ -290,13 +290,13 @@ const DetailPage = ({
                     department={{
                       text: resolver.getDepartmentName(),
                       url:
-                        programContactInfo?.departmentUrl ||
+                        programContactInfo?.department?.url ||
                         resolver.getPlanUrl(),
                     }}
                     email={{
                       text: resolver.getEmailAddress(),
                       url:
-                        programContactInfo?.emailUrl ||
+                        programContactInfo?.email?.url ||
                         resolver.getEmailAddress(),
                     }}
                     asuOfficeLoc={resolver.getAsuOfficeLoc()}
@@ -353,8 +353,8 @@ DetailPage.propTypes = {
   }),
   programContactInfo: PropTypes.shape({
     hide: PropTypes.bool,
-    departmentUrl: PropTypes.string,
-    emailUrl: PropTypes.string,
+    department: PropTypes.string,
+    email: PropTypes.string,
   }),
   nextSteps: PropTypes.shape({
     hide: PropTypes.bool,

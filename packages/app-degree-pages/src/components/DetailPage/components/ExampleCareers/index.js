@@ -9,7 +9,7 @@ import { SunIcon, LeafIcon } from "./index.style";
 import { Table } from "./Table";
 
 /**
- * @typedef {import("../../../../core/models/program-detail-types").ExampleCareersProps} ExampleCareersProps
+ * @typedef {import("../../../../core/types/detail-page-types").ExampleCareersProps} ExampleCareersProps
  */
 
 /**

@@ -2,8 +2,8 @@
 
 /**
  *
- * @param {import("../models/listing-page-types").AppDataSource} dataSource
- * @param {import("../models/listing-page-types").AppDataSource} defaultDataSource
+ * @param {import("../types/listing-page-types").AppDataSource} dataSource
+ * @param {import("../types/listing-page-types").AppDataSource} defaultDataSource
  * @returns {string}
  */
 function urlResolver(dataSource, defaultDataSource) {
