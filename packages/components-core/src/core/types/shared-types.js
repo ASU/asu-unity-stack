@@ -66,7 +66,7 @@
  * @typedef {Object} AccordionCard
  * @property {"gold" | "maroon" | "gray" | "dark"} [color]
  * @property {Object} [content]
- * @property {string} content.icon
+ * @property {string} [content.icon]
  * @property {string} content.header
  * @property {string} content.body
  */
@@ -96,7 +96,7 @@
  * @typedef {Object} AnchorMenuItem
  * @property {string} text
  * @property {string} targetIdName
- * @property {Array.<string>} icon
+ * @property {Array.<string>} [icon]
  */
 
 /**
