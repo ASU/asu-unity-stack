@@ -3,7 +3,7 @@
 <dl>
 <dt><a href="#ListingPage">ListingPage(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd></dd>
-<dt><a href="#DetailPage">DetailPage(props)</a></dt>
+<dt><a href="#DetailPage">DetailPage(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd></dd>
 </dl>
 
@@ -236,7 +236,7 @@
 
 <a name="DetailPage"></a>
 
-## DetailPage(props)
+## DetailPage(props) ⇒ <code>JSX.Element</code>
 **Kind**: global function  
 
 | Param | Type |
