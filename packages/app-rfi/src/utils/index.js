@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { AsuRfi } from "../../components";
+import { AsuRfi } from "../components/AsuRfi";
 
 /**
  * @typedef {Object} ComponentProps
