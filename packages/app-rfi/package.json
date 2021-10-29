@@ -19,7 +19,7 @@
     "build-storybook": "build-storybook",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
