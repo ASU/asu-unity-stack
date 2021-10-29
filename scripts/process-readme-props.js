@@ -3,6 +3,7 @@ const path = require("path");
 
 const packages = [
   "app-degree-pages",
+  "app-rfi",
   "component-carousel",
   "component-events",
   "component-footer",
