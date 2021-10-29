@@ -1,6 +1,6 @@
 // @ts-check
-import { AsuRfi } from "./components/AsuRfi";
+import { AsuRfi } from "./components";
 
-export { initRfi } from "./utils";
+export { initRfi } from "./core/utils/init-rfi";
 
 export { AsuRfi };
