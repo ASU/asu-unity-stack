@@ -9,7 +9,7 @@ import React from "react";
 /**
  * @param {AppType & {children: object}} props
  */
-const BaseFeed = ({ children, numItems }) => {
+const ExampleComponent = ({ children, numItems }) => {
   const items = [];
   for (let i = 0; i < numItems; i += 1) {
     items.push(<div>item!</div>);
@@ -25,9 +25,9 @@ const BaseFeed = ({ children, numItems }) => {
   );
 };
 
-BaseFeed.propTypes = {
+ExampleComponent.propTypes = {
   numItems: PropTypes.number,
   children: PropTypes.element,
 };
 
-export { BaseFeed };
+export { ExampleComponent };

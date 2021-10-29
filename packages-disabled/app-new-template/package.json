@@ -1,9 +1,9 @@
 {
-  "name": "@asu-design-system/component-news",
+  "name": "@asu-design-system/example-component",
   "version": "1.2.4",
-  "description": "News component",
+  "description": "Example component",
   "main": "src/index.js",
-  "author": "Michele Dibenedetto",
+  "author": "Example Author",
   "license": "Unlicensed",
   "private": true,
   "publishConfig": {

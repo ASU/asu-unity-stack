@@ -6,6 +6,5 @@ import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 
 import "./__mocks__/fetch-mock";
-import "./__mocks__/component-carousel-mock";
 
 expect.extend({ toMatchImageSnapshot });

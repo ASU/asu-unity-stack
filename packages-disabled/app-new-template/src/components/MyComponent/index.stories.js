@@ -2,18 +2,18 @@
 import React from "react";
 import withMock from "storybook-addon-mock";
 
-import { SomeComponent } from "./index";
+import { MyComponent } from "./index";
 
 import { createMockParam } from "../../core/utils";
 
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
 export default {
   title: "New App Template/Test Component",
-  component: SomeComponent,
+  component: MyComponent,
   decorators: [withMock],
 };
 
-const Template = args => <SomeComponent {...args} />;
+const Template = args => <MyComponent {...args} />;
 
 /**
  * @type {{ args: ComponentType, parameters: object}}

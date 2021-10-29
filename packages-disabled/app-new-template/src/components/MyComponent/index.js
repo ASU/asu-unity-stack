@@ -1,16 +1,16 @@
 // @ts-check
 import React from "react";
 
-import { BaseFeed } from "../../core/components/BaseFeed";
+import { ExampleComponent } from "../../core/components/ExampleComponent";
 
 import { defaultProps } from "../../core/constants/default-props";
 
-const SomeComponent = ({ ...props }) => (
-  <BaseFeed {...{ ...defaultProps, ...props }}>
+const MyComponent = ({ ...props }) => (
+  <ExampleComponent {...{ ...defaultProps, ...props }}>
     <div> and some thing </div>
-  </BaseFeed>
+  </ExampleComponent>
 );
 
-SomeComponent.propTypes = BaseFeed.propTypes;
+MyComponent.propTypes = ExampleComponent.propTypes;
 
-export { SomeComponent };
+export { MyComponent };
