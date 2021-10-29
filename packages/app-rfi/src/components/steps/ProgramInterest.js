@@ -235,10 +235,23 @@ const ProgramInterest = props => {
         props.dataSourceDegreeSearch,
         props.programOfInterest
       ).then(degree => {
-        // Set Campus to NOPREF if a Campus value wasn't set via prop, since
-        // we'll have a mix of degree types because DS REST API also stores
-        // ONLNE degeees.
-        values.Campus = values.Campus ? values.Campus : "NOPREF";
+        // Default Campus to NOPREF if a Campus value wasn't set via prop,
+        // since we'll have a mix of degree types because DS REST API also
+        // stores ONLNE degeees. If we have a degree that's only offered
+        // online, though, default to ONLNE.
+        let defaultCampus = "NOPREF";
+        const onlineOnly = degree.programs[0].CampusStringArray.every(
+          element => {
+            return element === "ONLNE";
+          }
+        );
+        // Is an ONLNE course but delivered through DS service, to avoid
+        // triggering codeflows for ASUOnline Lead API, we use ONLNE-DS and
+        // (still TODO) will switch out at the end before submit in
+        // submission-helpers.js.
+        defaultCampus = onlineOnly ? "ONLNE-DS" : defaultCampus;
+        values.Campus = values.Campus ? values.Campus : defaultCampus;
+
         // Update options for CareerAndStudentType
         // If Degree starts with a B, it's undergrad.
         // TODO Is there a better means of identifying undergrad programs?
