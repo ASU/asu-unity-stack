@@ -2,6 +2,79 @@
 
 ASU Web Standards-based implementation of the Degree page component
 
+## Architecture details
+
+### Document reference
+
+You can find the original document [here](https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen)
+### All possible degree page sections
+
+- Global header
+- Hero
+- Intro content
+- Next steps
+- Dedicated RFI
+- Degree listing
+- Areas of study
+
+- Program rankings
+- Program facilities
+- Location(s)
+- Faculty
+- Testimonials
+- Global opportunities
+
+- Portfolio/student work
+- Alumni/student feature
+- Customize your experience
+- At a glance
+- Application requirements
+- Contact information
+
+- Change of major reqs.
+- Flexible degree options
+- Affording college/Fin aid
+- Attend online
+- Career outlook
+- Example careers
+
+### Degree listing page template
+Degree listing pages are used for the actual degree browsing module where users can view a list of filterable degrees in either a table or grid view. Please note that the degree listing module is just one of severa l sections required for this template.
+
+<table style="border:0px;">
+  <tr>
+    <td style="width:50%; vertical-align: top">
+ <img src="./docs/listing-page-structure-left.png" />
+    </td>
+    <td style="width:50%; vertical-align: top">
+ <img src="./docs/listing-page-structure-right.png" />
+    </td>
+  </tr>
+</table>
+
+
+### Notes:
+
+Units can decide to use or not use the degree listing table column
+for college/school. Some colleges may display the different subunits . If they are all the same the college may want to turn this column off.
+
+### Program detail page template
+
+Program detail pages are used for individual degrees or programs. It contains information relevant to each respective degree.This template can be used for all types of program detail pages, whether it's an undergrad degree, grad degree, or certificate/minor. However, each have certain requirements. See the notes section below.
+
+<table style="border:0px;">
+  <tr>
+    <td style="width:50%; vertical-align: top">
+ <img src="./docs/detail-page-structure-left.png" />
+    </td>
+    <td style="width:50%; vertical-align: top">
+ <img src="./docs/detail-page-structure-right.png" />
+    </td>
+  </tr>
+</table>
+
+
+
 ## Dependencies
 
 1. [React](https://reactjs.org/)
