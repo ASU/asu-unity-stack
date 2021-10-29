@@ -1,14 +1,14 @@
 import React from 'react';
-import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import {
+  createComponent,
+  createStory,
+  layoutNames,
+} from '../../../helpers/wrapper.js';
 
 const extraOptions = {
   color: {
     name: 'Color',
-    options: [
-      'banner-orange',
-      'banner-blue',
-      'banner-gray',
-      'banner-black'],
+    options: ['banner-orange', 'banner-blue', 'banner-gray', 'banner-black'],
     defaultValue: 'banner-orange',
     control: {
       type: 'radio',
@@ -20,10 +20,14 @@ const extraOptions = {
       },
     },
   },
-}
+};
 
-
-export default createComponent('Banners', 'Molecules', 'Templates', extraOptions);
+export default createComponent(
+  'Banners',
+  'Molecules',
+  'Templates',
+  extraOptions
+);
 
 export const Banner = createStory(
   (args) => {
@@ -36,10 +40,9 @@ export const Banner = createStory(
           <div class="banner-content">
             <h3>Stay up-to-date on what's new at ASU</h3>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud{' '}
-            <a href="https://asunow.asu.edu/">read the latest updates here</a>
-            .
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud{' '}
+            <a href="https://asunow.asu.edu/">read the latest updates here</a>.
           </div>
           <div class="banner-buttons">
             <a
@@ -69,12 +72,13 @@ export const Banner = createStory(
           </div>
         </div>
       </section>
-    )
+    );
   },
   {
-    supportedTemplates: [layoutNames.FULL_WIDTH]
+    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
 Banner.args = {
   template: 0,
-}
+  color: 'banner-orange',
+};

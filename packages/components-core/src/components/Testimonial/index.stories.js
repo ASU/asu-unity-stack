@@ -80,7 +80,7 @@ WithImage.args = {
       name: `Han Solo`,
     },
   },
-  imageSource: "https://placeimg.com/400/400/tech",
+  imageSource: "https://source.unsplash.com/WLUHO9A_xik/400x400",
   altText: "Pretend this is Han Solo",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
@@ -111,7 +111,7 @@ WithCitation.args = {
       description: `ASU Charter`,
     },
   },
-  imageSource: "https://placeimg.com/400/400/any",
+  imageSource: "https://source.unsplash.com/WLUHO9A_xik/400x400",
   altText: "Pretend this is Michael M. Crow, President of ASU",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
@@ -125,7 +125,7 @@ HightlightGold.args = {
     content:
       "Laughter is timeless, imagination has no age, dreams are forever.",
   },
-  imageSource: "https://placeimg.com/300/300/nature",
+  imageSource: "https://source.unsplash.com/WLUHO9A_xik/300x300",
   altText: "Image of Walt DisneyImage of Walt Disney",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,

@@ -31,3 +31,7 @@ export const StickyNoNavigationExample = createStory(
 );
 export const ScrolledStateExample = createStory(ScrolledState, { initFunc });
 export const PartnerExample = createStory(Partner, { initFunc });
+
+BasicExample.args = {
+  template: 0,
+};

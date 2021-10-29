@@ -1,4 +1,3 @@
-import { ajaxSettings } from 'jquery';
 import React from 'react';
 import {
   createComponent,
@@ -116,5 +115,5 @@ export const cardNoTemplates = (args) => {
   )
 }
 
-export const card = createStory(cardTemplate);
+export const card = createStory(cardNoTemplates);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Sidebar', 'Atoms', 'Templates');
 
-export const UnorderedList = createStory(
+export const Sidebar = createStory(
   <div class="col-md-4">
     <h3>Lorem ipsum</h3>
     <div
@@ -169,3 +169,6 @@ export const UnorderedList = createStory(
     {/* end .sidebar */}
   </div>
 );
+Sidebar.args = {
+  template: 1,
+};

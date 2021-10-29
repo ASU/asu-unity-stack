@@ -100,6 +100,9 @@ export const TextInputs = createStory(
       */}
   </form>
 );
+TextInputs.args = {
+  template: 1,
+};
 
 export const TextInputsVariousBackgrounds = createStory(
   <div>
@@ -539,6 +542,9 @@ export const Textareas = createStory(
     </div>
   </form>
 );
+Textareas.args = {
+  template: 1,
+};
 
 export const TextareasMultipleBackgrounds = createStory(
   <div>
@@ -1081,6 +1087,9 @@ export const Checkboxes = createStory(
     </fieldset>
   </form>
 );
+Checkboxes.args = {
+  template: 1,
+};
 
 export const Radios = createStory(
   <form class="uds-form">
@@ -1263,6 +1272,9 @@ export const Radios = createStory(
     </fieldset>
   </form>
 );
+Radios.args = {
+  template: 1,
+};
 
 export const CheckboxesAndRadiosWhiteBackground = createStory(
   <div style={{ 'background-color': 'white' }}>
@@ -2816,6 +2828,9 @@ export const Selects = createStory(
     </div>
   </form>
 );
+Selects.args = {
+  template: 1,
+};
 
 export const KitchenSinkForm = createStory(
   <div>
