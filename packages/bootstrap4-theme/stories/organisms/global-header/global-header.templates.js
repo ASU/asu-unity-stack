@@ -138,87 +138,90 @@ export const Basic = (
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="navbar-nav">
-                      <a
-                        class="nav-link nav-link-home active"
-                        href="/"
-                        data-ga-header="home button"
-                      >
-                        <span class="d-xl-none">Home</span>
-                        <span title="Home" class="fas fa-fw fa-home"></span>
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 1"
-                      >
-                        Link option 1
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 2"
-                      >
-                        Link option 2
-                      </a>
-                      <div class="nav-item dropdown header-dropdown-1">
+                    <div class="header-content-container">
+                      <div class="navbar-nav">
+                        <a
+                          class="nav-link nav-link-home active"
+                          href="/"
+                          data-ga-header="home button"
+                        >
+                          <span class="d-xl-none">Home</span>
+                          <span title="Home" class="fas fa-fw fa-home"></span>
+                        </a>
                         <a
                           class="nav-link"
                           href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 3"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          data-ga-header="Link option 1"
                         >
-                          Link option 3<span class="fa fa-chevron-down"></span>
+                          Link option 1
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 2"
                         >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 1"
-                              data-ga-header-component="link option 3"
-                            >
-                              Sublink 1
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 2"
-                              data-ga-header-component="link option 3"
-                            >
-                              Sublink 2
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 3"
-                              data-ga-header-component="link option 3"
-                            >
-                              Sublink 3
-                            </a>
+                          Link option 2
+                        </a>
+                        <div class="nav-item dropdown header-dropdown-1">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 3"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 3
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 1"
+                                data-ga-header-component="link option 3"
+                              >
+                                Sublink 1
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 2"
+                                data-ga-header-component="link option 3"
+                              >
+                                Sublink 2
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 3"
+                                data-ga-header-component="link option 3"
+                              >
+                                Sublink 3
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      {/* end .navbar-nav */}
+                      <form class="navbar-site-buttons form-inline">
+                        <a
+                          href="#"
+                          class="btn btn-md btn-maroon"
+                          data-ga-header="call to action"
+                        >
+                          Call to action
+                        </a>
+                      </form>
                     </div>
-                    {/* end .navbar-nav */}
-                    <form class="navbar-site-buttons form-inline">
-                      <a
-                        href="#"
-                        class="btn btn-md btn-maroon"
-                        data-ga-header="call to action"
-                      >
-                        Call to action
-                      </a>
-                    </form>
                     <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
@@ -443,842 +446,846 @@ export const DropDownMenus = (
                       Subdomain name
                     </span>
                   </div>
-                  <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
-                    id="menubar"
-                  >
-                    <div class="navbar-nav">
-                      <a
-                        class="nav-link nav-link-home"
-                        href="/"
-                        data-ga-header="home button"
-                      >
-                        <span class="d-xl-none">Home</span>
-                        <span title="Home" class="fas fa-fw fa-home"></span>
-                      </a>
-                      <div class="nav-item dropdown header-dropdown-1">
+                  <div class="collapse navbar-collapse w-100" id="menubar">
+                    <div class="header-content-container">
+                      <div class="navbar-nav">
                         <a
-                          class="nav-link"
-                          href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 1"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          class="nav-link nav-link-home"
+                          href="/"
+                          data-ga-header="home button"
                         >
-                          Link option 1<span class="fa fa-chevron-down"></span>
+                          <span class="d-xl-none">Home</span>
+                          <span title="Home" class="fas fa-fw fa-home"></span>
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
-                        >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="massa nunc dictum nan venenatis"
-                              data-ga-header-component="link option 1"
-                            >
-                              Massa nunc dictum nam venenatis
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="dis quam quis nisi ligula"
-                              data-ga-header-component="link option 1"
-                            >
-                              Dis quam quis nisi ligula
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="dapibus lorem"
-                              data-ga-header-component="link option 1"
-                            >
-                              Dapibus lorem
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="nisi ligula eget orci"
-                              data-ga-header-component="link option 1"
-                            >
-                              Nisi ligula eget orci
-                            </a>
-                            <a
-                              href="#"
-                              class="btn btn-sm btn-dark col-btn"
-                              data-ga-header="cta action 2"
-                              data-ga-header-component="link option 2"
-                            >
-                              CTA action 2
-                            </a>
+                        <div class="nav-item dropdown header-dropdown-1">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 1"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 1
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="massa nunc dictum nan venenatis"
+                                data-ga-header-component="link option 1"
+                              >
+                                Massa nunc dictum nam venenatis
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="dis quam quis nisi ligula"
+                                data-ga-header-component="link option 1"
+                              >
+                                Dis quam quis nisi ligula
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="dapibus lorem"
+                                data-ga-header-component="link option 1"
+                              >
+                                Dapibus lorem
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="nisi ligula eget orci"
+                                data-ga-header-component="link option 1"
+                              >
+                                Nisi ligula eget orci
+                              </a>
+                              <a
+                                href="#"
+                                class="btn btn-sm btn-dark col-btn"
+                                data-ga-header="cta action 2"
+                                data-ga-header-component="link option 2"
+                              >
+                                CTA action 2
+                              </a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="nav-item dropdown header-dropdown-2">
-                        <a
-                          class="nav-link"
-                          href="#"
-                          id="dropdown-two-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 2"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
-                        >
-                          Link option 2<span class="fa fa-chevron-down"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-two-col"
-                        >
-                          <div class="dropdown-col">
-                            <h3>Column One</h3>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="dis quam quis nisi ligula"
-                              data-ga-header-component="link option 2"
-                            >
-                              Dis quam quis nisi ligula
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="nisi ligula eget orci"
-                              data-ga-header-component="link option 2"
-                            >
-                              Nisi ligula eget orci
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="massa nunc dictum nam venenatis"
-                              data-ga-header-component="link option 2"
-                            >
-                              Massa nunc dictum nam venenatis
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="dapibus lorem"
-                              data-ga-header-component="link option 2"
-                            >
-                              Dapibus lorem
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="ultricies tellus eu"
-                              data-ga-header-component="link option 2"
-                            >
-                              Ultricies tellus eu
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="pretium massa quis vitae pede quisque nulla
+                        <div class="nav-item dropdown header-dropdown-2">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-two-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 2"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 2
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-two-col"
+                          >
+                            <div class="dropdown-col">
+                              <h3>Column One</h3>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="dis quam quis nisi ligula"
+                                data-ga-header-component="link option 2"
+                              >
+                                Dis quam quis nisi ligula
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="nisi ligula eget orci"
+                                data-ga-header-component="link option 2"
+                              >
+                                Nisi ligula eget orci
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="massa nunc dictum nam venenatis"
+                                data-ga-header-component="link option 2"
+                              >
+                                Massa nunc dictum nam venenatis
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="dapibus lorem"
+                                data-ga-header-component="link option 2"
+                              >
+                                Dapibus lorem
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="ultricies tellus eu"
+                                data-ga-header-component="link option 2"
+                              >
+                                Ultricies tellus eu
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="pretium massa quis vitae pede quisque nulla
                               ultricies sit"
-                              data-ga-header-component="link option 2"
-                            >
-                              Pretium massa quis vitae pede quisque nulla
-                              ultricies sit
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="quis tempus aliquam semper imperdiet"
-                              data-ga-header-component="link option 2"
-                            >
-                              Quis tempus aliquam semper imperdiet
-                            </a>
-                          </div>
-                          <div class="dropdown-col">
-                            <h3>Brady Header</h3>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="here's the story"
-                              data-ga-header-component="link option 2"
-                            >
-                              Here's the story
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="of a man named Brady"
-                              data-ga-header-component="link option 2"
-                            >
-                              Of a man named Brady
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="who was busy with three"
-                              data-ga-header-component="link option 2"
-                            >
-                              Who was busy with three
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="boys of his own"
-                              data-ga-header-component="link option 2"
-                            >
-                              Boys of his own
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="nav-item dropdown megamenu active header-dropdown-3">
-                        <a
-                          class="nav-link"
-                          href="#"
-                          id="megamenu-three-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 3"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
-                        >
-                          Link option 3<span class="fa fa-chevron-down"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu"
-                          aria-labelledby="megamenu-three-col"
-                        >
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-lg">
-                                <h3>Column one</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="recommended max of ten links"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Recommended max of ten links
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="second link in the list"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Second link in the list
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="here is link number three"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Here is link number three
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Ultricies tellus eu
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                              </div>
-                              <div class="col-lg">
-                                <h3>Column two</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Dis quam quis nisi ligula
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="massa nunc dictum nam venenatis"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Massa nunc dictum nam venenatis
-                                </a>
-                              </div>
-                              <div class="col-lg-4">
-                                <h3>Last call 'em</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="navigation link"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Navigation link
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="another link as an example of when something
-                                  wraps"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Another link as an example of when something
-                                  wraps
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="culture of inclusion"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Culture of inclusion
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="public research university"
-                                  data-ga-header-component="link option 3"
-                                >
-                                  Public research university
-                                </a>
-                              </div>
+                                data-ga-header-component="link option 2"
+                              >
+                                Pretium massa quis vitae pede quisque nulla
+                                ultricies sit
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="quis tempus aliquam semper imperdiet"
+                                data-ga-header-component="link option 2"
+                              >
+                                Quis tempus aliquam semper imperdiet
+                              </a>
+                            </div>
+                            <div class="dropdown-col">
+                              <h3>Brady Header</h3>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="here's the story"
+                                data-ga-header-component="link option 2"
+                              >
+                                Here's the story
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="of a man named Brady"
+                                data-ga-header-component="link option 2"
+                              >
+                                Of a man named Brady
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="who was busy with three"
+                                data-ga-header-component="link option 2"
+                              >
+                                Who was busy with three
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="boys of his own"
+                                data-ga-header-component="link option 2"
+                              >
+                                Boys of his own
+                              </a>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="nav-item dropdown megamenu header-dropdown-4">
-                        <a
-                          class="nav-link"
-                          href="#"
-                          id="megamenu-four-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 4"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
-                        >
-                          Link option 4<span class="fa fa-chevron-down"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu"
-                          aria-labelledby="megamenu-four-col"
-                        >
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-lg">
-                                <h3>Column one</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="navigation link"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Navigation link
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="second link in the list"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Second link in the list
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="here is link number three"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Here is link number three
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Ultricies tellus eu
-                                </a>
-                              </div>
-                              <div class="col-lg">
-                                <h3>Column two</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi eget orci"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Nisi eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dis quam quis nisi ligula
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="massa nunc venenatis"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Massa nunc venenatis
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pede quisque nulla ultricies sit"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Pede quisque nulla ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Ultricies tellus eu
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                              </div>
-                              <div class="col-lg">
-                                <h3>Column three</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dis quam quis nisi ligula
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="massa nunc dictum nam venenatis"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Massa nunc dictum nam venenatis
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="ultricies tellus eu"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Ultricies tellus eu
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pretium massa quis vitae pede quisque nulla
-                                  ultricies sit"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Pretium massa quis vitae pede quisque nulla
-                                  ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="semper imperdiet"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Semper imperdiet
-                                </a>
-                              </div>
-                              <div class="col-lg">
-                                <h3>Column four</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dis quam quis nisi ligula
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Dapibus lorem
-                                </a>
-                              </div>
-                            </div>
-                            <div class="row with-buttons">
-                              <div class="col-lg-12">
-                                <a
-                                  href="#"
-                                  class="btn btn-sm btn-gold"
-                                  data-ga-header="mega menu cta 1"
-                                  data-ga-header-component="link option 34"
-                                >
-                                  Mega menu CTA 1
-                                </a>
-                                <a
-                                  href="#"
-                                  class="btn btn-sm btn-maroon"
-                                  data-ga-header="mega menu cta 2"
-                                  data-ga-header-component="link option 4"
-                                >
-                                  Mega menu CTA 2
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="nav-item dropdown megamenu header-dropdown-5">
-                        <a
-                          class="nav-link"
-                          href="#"
-                          id="megamenu-five-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 5"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
-                        >
-                          Link option 5<span class="fa fa-chevron-down"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu"
-                          aria-labelledby="megamenu-five-col"
-                        >
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-lg">
-                                <h3>Column One</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="navigation link"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Navigation link
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="second link in the list"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Second link in the list
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="here is link number three"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Here is link number three
-                                </a>
-                                <div class="btns-row">
+                        <div class="nav-item dropdown megamenu active header-dropdown-3">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="megamenu-three-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 3"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 3
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="megamenu-three-col"
+                          >
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-lg">
+                                  <h3>Column one</h3>
                                   <a
+                                    class="dropdown-item"
                                     href="#"
-                                    class="btn btn-sm btn-dark col-btn"
-                                    data-ga-header="cta in column"
-                                    data-ga-header-component="link option 5"
+                                    data-ga-header="recommended max of ten links"
+                                    data-ga-header-component="link option 3"
                                   >
-                                    CTA in column
+                                    Recommended max of ten links
                                   </a>
                                   <a
+                                    class="dropdown-item"
                                     href="#"
-                                    class="btn btn-sm btn-dark col-btn"
-                                    data-ga-header="cta in column"
-                                    data-ga-header-component="link option 5"
+                                    data-ga-header="second link in the list"
+                                    data-ga-header-component="link option 3"
                                   >
-                                    CTA in column
+                                    Second link in the list
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="here is link number three"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Here is link number three
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="ultricies tellus eu"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Ultricies tellus eu
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column two</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dis quam quis nisi ligula"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Dis quam quis nisi ligula
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="massa nunc dictum nam venenatis"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Massa nunc dictum nam venenatis
+                                  </a>
+                                </div>
+                                <div class="col-lg-4">
+                                  <h3>Last call 'em</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="navigation link"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Navigation link
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="another link as an example of when something
+                                  wraps"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Another link as an example of when something
+                                    wraps
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="culture of inclusion"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Culture of inclusion
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="public research university"
+                                    data-ga-header-component="link option 3"
+                                  >
+                                    Public research university
                                   </a>
                                 </div>
                               </div>
-                              <div class="col-lg">
-                                <h3>Column Two</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pretium massa quis vitae pede quisque nulla
+                            </div>
+                          </div>
+                        </div>
+                        <div class="nav-item dropdown megamenu header-dropdown-4">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="megamenu-four-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 4"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 4
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="megamenu-four-col"
+                          >
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-lg">
+                                  <h3>Column one</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="navigation link"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Navigation link
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="second link in the list"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Second link in the list
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="here is link number three"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Here is link number three
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="ultricies tellus eu"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Ultricies tellus eu
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column two</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi eget orci"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Nisi eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dis quam quis nisi ligula"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dis quam quis nisi ligula
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="massa nunc venenatis"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Massa nunc venenatis
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pede quisque nulla ultricies sit"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Pede quisque nulla ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="ultricies tellus eu"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Ultricies tellus eu
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column three</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dis quam quis nisi ligula"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dis quam quis nisi ligula
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="massa nunc dictum nam venenatis"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Massa nunc dictum nam venenatis
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="ultricies tellus eu"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Ultricies tellus eu
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Pretium massa quis vitae pede quisque nulla
-                                  ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pretium massa quis vitae pede quisque nulla
-                                  ultricies sit"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Pretium massa quis vitae pede quisque nulla
-                                  ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Pretium massa quis vitae pede quisque nulla
+                                    ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="semper imperdiet"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Semper imperdiet
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column four</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dis quam quis nisi ligula"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dis quam quis nisi ligula
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                </div>
                               </div>
-                              <div class="col-lg">
-                                <h3>Column Three</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pretium massa quis vitae pede quisque nulla
-                                  ultricies sit"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Pretium massa quis vitae pede quisque nulla
-                                  ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="pretium massa quis vitae pede quisque nulla
-                                  ultricies sit"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Pretium massa quis vitae pede quisque nulla
-                                  ultricies sit
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="quis tempus aliquam semper imperdiet"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Quis tempus aliquam semper imperdiet
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  href="#"
-                                  class="btn btn-sm btn-dark col-btn"
-                                  data-ga-header="cta in column"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  CTA in Column
-                                </a>
+                              <div class="row with-buttons">
+                                <div class="col-lg-12">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-gold"
+                                    data-ga-header="mega menu cta 1"
+                                    data-ga-header-component="link option 34"
+                                  >
+                                    Mega menu CTA 1
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-maroon"
+                                    data-ga-header="mega menu cta 2"
+                                    data-ga-header-component="link option 4"
+                                  >
+                                    Mega menu CTA 2
+                                  </a>
+                                </div>
                               </div>
-                              <div class="col-lg">
-                                <h3>Column Four</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dis quam quis nisi ligula"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Dis quam quis nisi ligula
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="nisi ligula eget orci"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Nisi ligula eget orci
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="dapibus lorem"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Dapibus lorem
-                                </a>
-                                <a
-                                  href="#"
-                                  class="btn btn-sm btn-dark col-btn"
-                                  data-ga-header="cta in column"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  CTA in Column
-                                </a>
-                              </div>
-                              <div class="col-lg">
-                                <h3>Mambo #5</h3>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="jump up and down and"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Jump up and down and
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="shake your head to the sound"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Shake your head to the sound
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="put your hand on the ground"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Put your hand on the ground
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="take one step left and one step right"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Take one step left and one step right
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="if it looks like this"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  If it looks like this
-                                </a>
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  data-ga-header="then you doing it right"
-                                  data-ga-header-component="link option 5"
-                                >
-                                  Then you doing it right
-                                </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="nav-item dropdown megamenu header-dropdown-5">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="megamenu-five-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 5"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 5
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="megamenu-five-col"
+                          >
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-lg">
+                                  <h3>Column One</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="navigation link"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Navigation link
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="second link in the list"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Second link in the list
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="here is link number three"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Here is link number three
+                                  </a>
+                                  <div class="btns-row">
+                                    <a
+                                      href="#"
+                                      class="btn btn-sm btn-dark col-btn"
+                                      data-ga-header="cta in column"
+                                      data-ga-header-component="link option 5"
+                                    >
+                                      CTA in column
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class="btn btn-sm btn-dark col-btn"
+                                      data-ga-header="cta in column"
+                                      data-ga-header-component="link option 5"
+                                    >
+                                      CTA in column
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column Two</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Pretium massa quis vitae pede quisque nulla
+                                    ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Pretium massa quis vitae pede quisque nulla
+                                    ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column Three</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Pretium massa quis vitae pede quisque nulla
+                                    ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="pretium massa quis vitae pede quisque nulla
+                                  ultricies sit"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Pretium massa quis vitae pede quisque nulla
+                                    ultricies sit
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="quis tempus aliquam semper imperdiet"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Quis tempus aliquam semper imperdiet
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-dark col-btn"
+                                    data-ga-header="cta in column"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    CTA in Column
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Column Four</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dis quam quis nisi ligula"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Dis quam quis nisi ligula
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="nisi ligula eget orci"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Nisi ligula eget orci
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="dapibus lorem"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Dapibus lorem
+                                  </a>
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-dark col-btn"
+                                    data-ga-header="cta in column"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    CTA in Column
+                                  </a>
+                                </div>
+                                <div class="col-lg">
+                                  <h3>Mambo #5</h3>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="jump up and down and"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Jump up and down and
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="shake your head to the sound"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Shake your head to the sound
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="put your hand on the ground"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Put your hand on the ground
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="take one step left and one step right"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Take one step left and one step right
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="if it looks like this"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    If it looks like this
+                                  </a>
+                                  <a
+                                    class="dropdown-item"
+                                    href="#"
+                                    data-ga-header="then you doing it right"
+                                    data-ga-header-component="link option 5"
+                                  >
+                                    Then you doing it right
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      {/* end .navbar-nav */}
                     </div>
-                    {/* end .navbar-nav */}
                     <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
@@ -1712,22 +1719,24 @@ export const NoNavigationAndWithButtons = (
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <form class="navbar-site-buttons form-inline">
-                      <a
-                        href="#"
-                        class="btn btn-md btn-maroon"
-                        data-ga-header="cta button 1"
-                      >
-                        CTA button 1
-                      </a>
-                      <a
-                        href="#"
-                        class="btn btn-md btn-dark"
-                        data-ga-header="cta button 2"
-                      >
-                        CTA button 2
-                      </a>
-                    </form>
+                    <div class="header-content-container">
+                      <form class="navbar-site-buttons form-inline">
+                        <a
+                          href="#"
+                          class="btn btn-md btn-maroon"
+                          data-ga-header="cta button 1"
+                        >
+                          CTA button 1
+                        </a>
+                        <a
+                          href="#"
+                          class="btn btn-md btn-dark"
+                          data-ga-header="cta button 2"
+                        >
+                          CTA button 2
+                        </a>
+                      </form>
+                    </div>
                     <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
@@ -1947,193 +1956,198 @@ export const ScrolledState = (
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="navbar-nav">
-                      <a
-                        class="nav-link nav-link-home active"
-                        href="/"
-                        data-ga-header="home button"
-                      >
-                        <span class="d-xl-none">Home</span>
-                        <span title="Home" class="fas fa-fw fa-home"></span>
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 1"
-                      >
-                        Link option 1
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 2"
-                      >
-                        Link option 2
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 3"
-                      >
-                        Link option 3
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 4"
-                      >
-                        Link option 4
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 5"
-                      >
-                        Link option 5
-                      </a>
-                      <div class="nav-item dropdown header-dropdown-1">
+                    <div class="header-content-container">
+                      <div class="navbar-nav">
+                        <a
+                          class="nav-link nav-link-home active"
+                          href="/"
+                          data-ga-header="home button"
+                        >
+                          <span class="d-xl-none">Home</span>
+                          <span title="Home" class="fas fa-fw fa-home"></span>
+                        </a>
                         <a
                           class="nav-link"
                           href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 6"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          data-ga-header="Link option 1"
                         >
-                          Link option 6<span class="fa fa-chevron-down"></span>
+                          Link option 1
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
-                        >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 1"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 1
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 2"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 2
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 3"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 3
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="nav-item dropdown aligned-right header-dropdown-2">
                         <a
                           class="nav-link"
                           href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="link option 7"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          data-ga-header="Link option 2"
                         >
-                          Link option 7<span class="fa fa-chevron-down"></span>
+                          Link option 2
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
-                        >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 1"
-                              data-ga-header-component="link option 7"
-                            >
-                              Sublink 1
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 2"
-                              data-ga-header-component="link option 7"
-                            >
-                              Sublink 2
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 3"
-                              data-ga-header-component="link option 7"
-                            >
-                              Sublink 3
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="nav-item dropdown aligned-right header-dropdown-3">
                         <a
                           class="nav-link"
                           href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 8"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          data-ga-header="Link option 3"
                         >
-                          Link option 8<span class="fa fa-chevron-down"></span>
+                          Link option 3
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 4"
                         >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 1"
-                              data-ga-header-component="link option 8"
-                            >
-                              Sublink 1
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 2"
-                              data-ga-header-component="link option 8"
-                            >
-                              Sublink 2
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 3"
-                              data-ga-header-component="link option 8"
-                            >
-                              Sublink 3
-                            </a>
+                          Link option 4
+                        </a>
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 5"
+                        >
+                          Link option 5
+                        </a>
+                        <div class="nav-item dropdown header-dropdown-1">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 6"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 6
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 1"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 1
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 2"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 2
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 3"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 3
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="nav-item dropdown aligned-right header-dropdown-2">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="link option 7"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 7
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 1"
+                                data-ga-header-component="link option 7"
+                              >
+                                Sublink 1
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 2"
+                                data-ga-header-component="link option 7"
+                              >
+                                Sublink 2
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 3"
+                                data-ga-header-component="link option 7"
+                              >
+                                Sublink 3
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="nav-item dropdown aligned-right header-dropdown-3">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 8"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 8
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 1"
+                                data-ga-header-component="link option 8"
+                              >
+                                Sublink 1
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 2"
+                                data-ga-header-component="link option 8"
+                              >
+                                Sublink 2
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 3"
+                                data-ga-header-component="link option 8"
+                              >
+                                Sublink 3
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      {/* end .navbar-nav */}
                     </div>
-                    {/* end .navbar-nav */}
                     <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
@@ -2362,115 +2376,118 @@ export const Partner = (
                     class="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="navbar-nav">
-                      <a
-                        class="nav-link nav-link-home active"
-                        href="/"
-                        data-ga-header="home button"
-                      >
-                        <span class="d-xl-none">Home</span>
-                        <span title="Home" class="fas fa-fw fa-home"></span>
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 1"
-                      >
-                        Link option 1
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 2"
-                      >
-                        Link option 2
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 3"
-                      >
-                        Link option 3
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 4"
-                      >
-                        Link option 4
-                      </a>
-                      <a
-                        class="nav-link"
-                        href="#"
-                        data-ga-header="Link option 5"
-                      >
-                        Link option 5
-                      </a>
-                      <div class="nav-item dropdown header-dropdown-1">
+                    <div class="header-content-container">
+                      <div class="navbar-nav">
+                        <a
+                          class="nav-link nav-link-home active"
+                          href="/"
+                          data-ga-header="home button"
+                        >
+                          <span class="d-xl-none">Home</span>
+                          <span title="Home" class="fas fa-fw fa-home"></span>
+                        </a>
                         <a
                           class="nav-link"
                           href="#"
-                          id="dropdown-one-col"
-                          role="button"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          data-ga-header="Link option 6"
-                          data-ga-header-event="collapse"
-                          data-ga-header-type="click"
+                          data-ga-header="Link option 1"
                         >
-                          Link option 6<span class="fa fa-chevron-down"></span>
+                          Link option 1
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-columns"
-                          aria-labelledby="dropdown-one-col"
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 2"
                         >
-                          <div class="dropdown-col">
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 1"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 1
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 2"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 2
-                            </a>
-                            <a
-                              class="dropdown-item"
-                              href="#"
-                              data-ga-header="Sublink 3"
-                              data-ga-header-component="link option 6"
-                            >
-                              Sublink 3
-                            </a>
+                          Link option 2
+                        </a>
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 3"
+                        >
+                          Link option 3
+                        </a>
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 4"
+                        >
+                          Link option 4
+                        </a>
+                        <a
+                          class="nav-link"
+                          href="#"
+                          data-ga-header="Link option 5"
+                        >
+                          Link option 5
+                        </a>
+                        <div class="nav-item dropdown header-dropdown-1">
+                          <a
+                            class="nav-link"
+                            href="#"
+                            id="dropdown-one-col"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-ga-header="Link option 6"
+                            data-ga-header-event="collapse"
+                            data-ga-header-type="click"
+                          >
+                            Link option 6
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+                          <div
+                            class="dropdown-menu dropdown-columns"
+                            aria-labelledby="dropdown-one-col"
+                          >
+                            <div class="dropdown-col">
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 1"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 1
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 2"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 2
+                              </a>
+                              <a
+                                class="dropdown-item"
+                                href="#"
+                                data-ga-header="Sublink 3"
+                                data-ga-header-component="link option 6"
+                              >
+                                Sublink 3
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      {/* end .navbar-nav */}
+                      <form class="navbar-site-buttons form-inline">
+                        <a
+                          href="#"
+                          class="btn btn-md btn-maroon"
+                          data-ga-header="cta button 1"
+                        >
+                          CTA Button 1
+                        </a>
+                        <a
+                          href="#"
+                          class="btn btn-md btn-dark"
+                          data-ga-header="cta button 2"
+                        >
+                          CTA Button 2
+                        </a>
+                      </form>
                     </div>
-                    {/* end .navbar-nav */}
-                    <form class="navbar-site-buttons form-inline">
-                      <a
-                        href="#"
-                        class="btn btn-md btn-maroon"
-                        data-ga-header="cta button 1"
-                      >
-                        CTA Button 1
-                      </a>
-                      <a
-                        href="#"
-                        class="btn btn-md btn-dark"
-                        data-ga-header="cta button 2"
-                      >
-                        CTA Button 2
-                      </a>
-                    </form>
                     <div class="navbar-mobile-footer pinned">
                       <form
                         class="form-inline navbar-mobile-search"
