@@ -58,6 +58,7 @@ const DropdownWrapper = styled.div`
           color: #191919;
           &:hover {
             color: #8c1d40;
+            text-decoration: underline;
           }
         }
         & + .nav-button {
