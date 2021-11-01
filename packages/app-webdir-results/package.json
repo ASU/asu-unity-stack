@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/example-component",
-  "version": "1.0.0",
+  "version": "1.2.4",
   "description": "Example component",
   "main": "src/index.js",
   "author": "Example Author",

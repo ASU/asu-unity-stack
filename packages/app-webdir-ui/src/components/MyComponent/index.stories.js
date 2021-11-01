@@ -6,7 +6,7 @@ import { MyComponent } from "./index";
 
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
 export default {
-  title: "New App Template/Test Component",
+  title: "App Webdir UI/Test Component",
   component: MyComponent,
   decorators: [withMock],
 };

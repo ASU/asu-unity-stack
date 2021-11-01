@@ -1,9 +1,9 @@
 {
-  "name": "@asu-design-system/example-component",
+  "name": "@asu-design-system/app-webdir-ui",
   "version": "1.0.0",
-  "description": "Example component",
+  "description": "App Webdir UI",
   "main": "src/index.js",
-  "author": "Example Author",
+  "author": "Mark Lambe",
   "license": "Unlicensed",
   "private": true,
   "publishConfig": {
