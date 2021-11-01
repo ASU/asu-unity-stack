@@ -2,17 +2,13 @@
   <img src="./asu_university_horiz_rgb_maroongold_150_4.png" alt="Arizona State University" width="400" />
 </p>
 
-<h1 align="center">ASU Web Standards UI Kit and Style Guide using Bootstrap 4, Jest, and StorybookJS.</h1>
+<h1 align="center">ASU Web Standards UI Kit and Style Guide using Bootstrap 4.</h1>
 
 <p align="center">
   A Bootstrap 4-based web ui kit for website developers building new websites from scratch or for inclusion as a standardized theming foundation for ASU application frameworks, such as Drupal, WordPress, or other application frameworks. A comprehensive development and testing framework has been implemented using best-in-class tools like StorybookJS and Jest.
 </p>
 
 <br />
-
-![GitHub package.json version](https://img.shields.io/github/package-json/v/gios-asu/asu-web-standards-bootstrap4.svg)
-[![Build Status](https://travis-ci.com/gios-asu/asu-web-standards-bootstrap4.svg?branch=develop)](https://travis-ci.com/gios-asu/asu-web-standards-bootstrap4)
-[![devDependencies Status](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4/dev-status.svg)](https://david-dm.org/gios-asu/asu-web-standards-bootstrap4?type=dev)
 
 ![divider](./divider.png)
 
@@ -29,39 +25,42 @@
 
 ## ❯ Table of Contents
 
-- [Development Overview](#-development-overview)
-- [Load Theme into Webpage](#-load-theme-into-webpage)
-- [Import into Application](#-import-into-application)
-- [Setup Local Development Environment](#-setup-local-development-environment)
-- [Development Procedures](#-development-procedures)
-- [Prepare Releases](#-prepare-releases)
-- [Project Structure](#-project-structure)
-- [Contribute to Project](#-contribute-to-project)
-- [Further Documentation](#-further-documentation)
-- [Related Projects](#-related-projects)
-- [License](#-license)
+- [❯ Table of Contents](#-table-of-contents)
+- [❯ Development Overview](#-development-overview)
+  - [Adding a new element to the package](#adding-a-new-element-to-the-package)
+- [❯ Import into Application](#-import-into-application)
+- [❯ Setup Local Development Environment](#-setup-local-development-environment)
+  - [Install Node and Yarn](#install-node-and-yarn)
+  - [Install VS Code](#install-vs-code)
+- [❯ Development Procedures](#-development-procedures)
+  - [Clone and initialize this project](#clone-and-initialize-this-project)
+  - [Launch Storybook Dev Server](#launch-storybook-dev-server)
+- [❯ Prepare Releases](#-prepare-releases)
+  - [Linting and compiling the source code](#linting-and-compiling-the-source-code)
+- [❯ Project Structure](#-project-structure)
+- [❯ Contribute to Project](#-contribute-to-project)
+- [❯ Further Documentation](#-further-documentation)
+- [❯ License](#-license)
 
 ![divider](./divider.png)
 
 ## ❯ Development Overview
 
-The goal of this project is to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
+This package was thought to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
 
-StorybookJS has been configured to be the primary, live development interface for this theme, and some example stories have been installed to demonstrate how Storybook works. Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
+To make the developement process easier and to bring developers, that want to use the elements that this package provide, a better ui to review them and interact with them, we make use of StorybookJS. This task provide the tool to create different pages in isolation for each of the components organized in the way the developer wants, adding controls, actions, etc.
 
-Any text editor can be used to view and edit this project, but a specialized integrated development environment (IDE) is highly suggested. [Visual Studio Code](https://code.visualstudio.com/) is a very popular, and recommended open-source IDE for working on this project. In fact, this project is configured with VS Code settings and extension recommendations that you can install with a single-click when VS Code pops up a notification about the recommended extensions.
+Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
 
-![divider](./divider.png)
+### Adding a new element to the package
 
-## ❯ Load Theme into Webpage
-
-### TODO
+For each of the elements of this package we made a classification, so read the ['Adding elements' Guidelines](./ADDING_ELEMENTS.md) to add a new element to the package.
 
 ![divider](./divider.png)
 
 ## ❯ Import into Application
 
-### TODO
+To import any element into any application you should copy the provided html code(on storybook view) on the html template you want to include the element. Make sure you have included the the font awesome library so the component can be rendered properly.
 
 ![divider](./divider.png)
 
@@ -171,16 +170,6 @@ yarn storybook
 
 Storybook will launch a live development server at http://localhost:9009 and compile all the SCSS source files defined in src/scss/bootstrap-asu.scss. Using these source files, and the stories defined in '/stories/' (all files with filenames ending `.stories.js`), Storybook will dynamically generate a development preview of styled UI elements in our theme. Any time you make changes to existing source files, or save new `.stories.js` files, Storybook will re-read your files and immediately refresh the Storybook dev website.
 
-### Run local visual snapshot tests on all theme components.
-
-The Jest testing framework has been configured to run visual snapshot tests on the theme's components when enabled in `.test.js` files (located in the same directory as the `component.stories.js` files.) These visual snapshot tests are very simplistic and fast. Once a component is determined to have been completed and meets Web Standards, the snapshjot tests will be run on that component and the resulting `__test-snapshot__` folder can be committed into the repository. Every time these snapshot tests are performed in the future, those future snapshots will be compared against our reference snapshots in `__test-snapshots__`. If that component is ever accidentally altered by unintended side-effects from other theme updates, these tests will warn us and prevent us from committing a "visual regression bug" into our theme.
-
-To run snapshot tests on the theme components:
-
-```
-yarn test:integration
-```
-
 ![divider](./divider.png)
 
 ## ❯ Prepare Releases
@@ -221,10 +210,6 @@ yarn gulp styles        # Execute the 'sass' and 'minifycss' sub-tasks
 yarn gulp               # Execute the default Gulp task (validate)
 ```
 
-### Publish Package Releases
-
-#### TODO
-
 ![divider](./divider.png)
 
 ## ❯ Project Structure
@@ -245,10 +230,6 @@ yarn gulp               # Execute the default Gulp task (validate)
 
 View our [Contributing Guidelines](./CONTRIBUTING.md)
 
-
-### Adding a new element
-
-View our ['Adding elements' Guidelines](./ADDING_ELEMENTS.md)
 ## ❯ Further Documentation
 
 | Name & Link                       | Description                       |
@@ -257,12 +238,6 @@ View our ['Adding elements' Guidelines](./ADDING_ELEMENTS.md)
 | [Font Awesome 5](https://fontawesome.com/) | Get vector icons and social logos on your website with Font Awesome, the web's most popular icon set and toolkit. |
 | [StorybookJS](https://storybook.js.org/) | Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient. |
 | [Jest](https://jestjs.io/) | Jest is a delightful JavaScript Testing Framework with a focus on simplicity. |
-
-![divider](./divider.png)
-
-## ❯ Related Projects
-
-### TODO: List related projects such as Unity, WebSpark, WordSpark, etc...
 
 ![divider](./divider.png)
 
