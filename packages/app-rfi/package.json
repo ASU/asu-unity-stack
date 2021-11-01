@@ -16,7 +16,11 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
@@ -42,6 +46,10 @@
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
+    "jsdoc": "^3.6.7",
+    "jsdoc-plugin-typescript": "^2.0.6",
+    "jsdoc-to-markdown": "5.0.0",
+    "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
     "semantic-release": "^17.4.2",
