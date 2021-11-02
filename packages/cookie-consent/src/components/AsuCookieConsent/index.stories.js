@@ -1,14 +1,28 @@
 import { AsuCookieConsent } from ".";
 
+/**
+ * @typedef {import('../../core/types/cookie-consent-types').CookieConsentProps } CookieConsentProps
+ */
+
 export default {
   title: "Cookie Consent",
   component: AsuCookieConsent,
 };
 
+/**
+ * @param {CookieConsentProps} props
+ * @returns {JSX.Element}
+ */
 const Template = args => <AsuCookieConsent {...args} />;
 
-export const BasicCookieConsent = Template.bind({});
-
+/**
+ * @type {{ args: CookieConsentProps }}
+ */
+export const Default = Template.bind({});
+Default.args = {
+  enableCookieConsent: false,
+  asuCookieDomain: false,
+};
 
 // export const basicCookieConsent = () => {
 //   window.addEventListener("DOMContentLoaded", event => {

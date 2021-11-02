@@ -3,6 +3,7 @@ const path = require("path");
 
 const packages = [
   "app-degree-pages",
+  "app-rfi",
   "component-carousel",
   "component-events",
   "component-footer",
@@ -10,6 +11,7 @@ const packages = [
   "component-news",
   "components-core",
   "components-library",
+  "cookie-consent",
 ];
 
 const processFile = docPath => {

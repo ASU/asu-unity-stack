@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-library",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
   "module": "src/index.js",
