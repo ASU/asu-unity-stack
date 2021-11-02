@@ -38,7 +38,12 @@ module.exports = {
     "no-console": 1,
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
-    "no-unused-vars": "warn",
+    "no-unused-vars": [
+      "warn",
+      {
+        argsIgnorePattern: "^_",
+      },
+    ],
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
