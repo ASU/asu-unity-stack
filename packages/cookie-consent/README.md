@@ -8,16 +8,16 @@ release. Please review install steps if you are updating from version 1.0.4 or
 earlier. Note the the component now requires a container tag in the HTML and
 for Preact to be added as a peer dependency (`$ yarn add preact`).
 
-#### Install
+### Install
 
 ```bash
 yarn add @asu-design-system/cookie-consent
 ```
 
-#### How to use
+## Use on static HTML page
 Include the bundled JS and CSS and ensure peer dependency is met:
 
-```html
+```HTML
 <!-- Cookie Consent requires Preact as a peer dependency, meaning you
   will need to install it yourself. If you use the ASU Header component, it
   will load Preact for you. Example below pulls Preact in from unpkg.com.
@@ -30,13 +30,13 @@ Include the bundled JS and CSS and ensure peer dependency is met:
 
 Then in the page's body tag include the render target:
 
-```html
+```HTML
 <div id="cookieConsentContainer"></div>
 ```
 
 Then initialize the banner. This can go below your other script tags:
 
-```
+```HTML
 <script>
   window.addEventListener("DOMContentLoaded", event => {
     // Initialize cookie consent banner
@@ -51,7 +51,7 @@ By default cookie consent will set the cookie domain to the current hostname.
 If this needs to be changed, it can be done by passing the domain to the
 AsuCookieConsent.init function, like so:
 
-```
+```HTML
 <script>
   window.addEventListener("DOMContentLoaded", event => {
     // Optional props to provide.
@@ -66,7 +66,7 @@ By default cookie consent is enabled and will display the banner if visitors
 do not have an asuCookieConsent cookie. Internally, the enableCookieConsent
 prop defaults to true, but if you pass false, the component won't render.
 
-```
+```HTML
 <script>
   window.addEventListener("DOMContentLoaded", event => {
     // Optional props to provide.
@@ -80,7 +80,7 @@ prop defaults to true, but if you pass false, the component won't render.
 If you need to use a different container ID, you can supply that to the
 AsuCookieConsent.init() like so:
 
-```
+```HTML
 <script>
   window.addEventListener("DOMContentLoaded", event => {
     // Initialize cookie consent banner
@@ -88,3 +88,13 @@ AsuCookieConsent.init() like so:
   })
 </script>
 ```
+
+## AsuCookieConsent properties
+### Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
+
+### Examples
+
+The folder [packages/cookie-consent/examples](/packages/cookie-consent/examples)
+<br/>contains examples to use the component on static HTML page
