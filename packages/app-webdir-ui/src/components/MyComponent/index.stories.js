@@ -1,22 +1,28 @@
 // @ts-check
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { MyComponent } from "./index";
 
-/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
-export default {
-  title: "App Webdir UI/Test Component",
-  component: MyComponent,
-  decorators: [withMock],
-};
+import {
+  createComponent,
+  createStory,
+} from "../../../../bootstrap4-theme/helpers/wrapper";
 
-const Template = args => <MyComponent {...args} />;
+export default createComponent(
+  "App Webdir UI/Test Component",
+  "Molecules",
+  "Templates"
+);
+
+export const Story = createStory(args => {
+  return <MyComponent {...args} />;
+});
+
+/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
 
 /**
  * @type {{ args: ComponentType, parameters: object}}
  */
-export const Story = Template.bind({});
 Story.args = {
   numItems: 4,
 };

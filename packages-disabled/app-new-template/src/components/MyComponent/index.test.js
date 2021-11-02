@@ -2,18 +2,10 @@
 import { render, cleanup, act } from "@testing-library/react";
 import React from "react";
 
-import { CardCarouselNews } from "./index";
+import { MyComponent } from "./index";
 
 const defaultArgs = {
-  header: { color: "dark", text: "News Carousel" },
-  ctaButton: {
-    color: "gold",
-    url: "https://news.asu.edu",
-    text: "Click to see more events",
-  },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
+  numItems: 6,
 };
 
 describe("#Cards Carousel News", () => {
@@ -22,7 +14,7 @@ describe("#Cards Carousel News", () => {
 
   const renderCardsCarouselNews = async props => {
     await act(async () => {
-      component = await render(<CardCarouselNews {...{ ...props }} />);
+      component = await render(<MyComponent {...{ ...props }} />);
     });
   };
 
@@ -34,19 +26,6 @@ describe("#Cards Carousel News", () => {
 
     it("should define the component", () => {
       expect(component).toBeDefined();
-    });
-  });
-
-  describe("#With No Header", () => {
-    const noHeaderArgs = { ...defaultArgs, header: undefined };
-    beforeEach(async () => {
-      await renderCardsCarouselNews(noHeaderArgs);
-    });
-    afterEach(cleanup);
-
-    it("should not render header component", () => {
-      const headerComponent = component.queryByTestId("feed-header");
-      expect(headerComponent).not.toBeInTheDocument();
     });
   });
 });
