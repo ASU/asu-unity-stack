@@ -1,7 +1,6 @@
-# ASU Unity Stack
-Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
+# ASU Unity Design System (UDS)
 
-Version DEV-1
+Base Bootstrap 4 UI theme and components for building ASU Web Standards 2.0 compliant web sites and apps.
 
 ## ❯ Packages in this repository
 
@@ -37,7 +36,7 @@ You need to set up your development environment before you can do anything.
 
 The recommended method for setting up your local development environment is to use [Volta - Javascript Tool Manager](https://volta.sh/). Volta is designed to allow MacOS, Liux, and Windows users to easily install and use the correct version of Node, NPM, and Yarn for their projects. In addition to easily installing different versions of Node on your computer and switching between them when needed, this project has been configured to notify Volta what version of Node and Yarn is required to work on this project. This ensure all devs are using the same version of these tools, and preventing some subtle errors and development issues from occurring.
 
-Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of  the installer script, vetted it, and included it here, in the getvolta/ folder.
+Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of the installer script, vetted it, and included it here, in the getvolta/ folder.
 
 For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
