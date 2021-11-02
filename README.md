@@ -262,7 +262,7 @@ To assist contributors with writing compliant commit messages, the `commitizen` 
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# Github Actions Deployment Process
+# Github Actions Deployment Process (NOT YET IMPLEMENTED)
 
 A Github Action workflow is triggered by pushing to the `dev` branch. A push includes merging a pull request or pushing directly to the branch. The file containing the steps executed during the workflow is located at the project root, `.github/workflows/development-workflow.yml`. Currently, the workflow consists of a single job with several steps. Alternatively, the same workflow could be logically split up into several jobs (ex. Build/test/deploy). Both options have pros and cons. The pros to having the workflow consist of a single job include the fact that a single job executes steps on the same runner. If the build step and test step were different jobs, you would either need to build again in the test job, or save the build output as an artifact in the first job and retrieve it in the second. Depending on number of dependencies, etc, this could drastically increase build times. Reducing the workflow to a single job also saves on account minutes. See [here](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions) for more information about github account minutes and billing. Some considerations for whether to use multiple jobs include: breaking the workflow up logically into jobs, and ability for a job to depend on completion of a previous job, ex. deploy job depends on test job to successfully complete in order for the deploy job to run.
 
