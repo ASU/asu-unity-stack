@@ -46,21 +46,21 @@
 
 ## ❯ Development Overview
 
-This package was thought to retheme the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team have provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on the suggestions of the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
+This package rethemes the vanilla Bootstrap 4 UI Kit to meet ASU Web Standards Guidelines. The Bootstrap team has provided an [excellent guide](https://getbootstrap.com/docs/4.3/getting-started/theming/) on their suggested practices for this retheming process. The starting code committed in the `/src/scss/` folder is based on suggestions from the Bootstrap theming guide and the lessons from the [GIOS Bootstrap 3 theme](https://github.com/gios-asu/ASU-Web-Standards-Bootstrap).
 
-To make the developement process easier and to bring developers, that want to use the elements that this package provide, a better ui to review them and interact with them, we make use of StorybookJS. This task provide the tool to create different pages in isolation for each of the components organized in the way the developer wants, adding controls, actions, etc.
+To make the developement process easier for developers, we make use of StorybookJS to provide a better UI for reviewing and interacting with the design elements provided by this package. With StorybookJS we create different pages in isolation for each of the components organized for developer needs, adding controls, actions, etc.
 
 Once you have followed the instructions for setting up a [local development environment](#-setup-local-development-environment), you will need to clone this project into a sutiable location on your local computer and initialize it for development tasks.
 
 ### Adding a new element to the package
 
-For each of the elements of this package we made a classification, so read the ['Adding elements' Guidelines](./ADDING_ELEMENTS.md) to add a new element to the package.
+We make use of atomic design classifications and custom tooling for elements within this system. Please read the ['Adding elements' Guidelines](./ADDING_ELEMENTS.md) when adding a new element to the package.
 
 ![divider](./divider.png)
 
 ## ❯ Import into Application
 
-To import any element into any application you should copy the provided html code(on storybook view) on the html template you want to include the element. Make sure you have included the the font awesome library so the component can be rendered properly.
+To use an element in your application you should copy the HTML code from Storybook to the HTML template where you want to include the element. Make sure you have included our Bootstrap4 Theme package assets and the Font Awesome library so your component will render properly.
 
 ![divider](./divider.png)
 
