@@ -17,7 +17,7 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
-    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && PERCY_TOKEN=32ae0cae5cde55b6c80bf809324449c56502a33c1ed3f2c2ceb8f671b260f4fb && percy storybook ./percy-storybook",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
