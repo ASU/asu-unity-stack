@@ -1,7 +1,7 @@
 // ts-check
 
 /**
- *  @typedef {Object} ComponentType
+ *  @typedef {Object} AppType
  *  @property {number} [numItems]
  */
 
