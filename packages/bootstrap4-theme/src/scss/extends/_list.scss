@@ -1,11 +1,11 @@
 // ASU Design System Lists without Bootstrap variables to override.
 
 @mixin uds-list-spacing {
+  max-width: $uds-component-list-max-width;
   padding: $uds-component-list-spacing-padding;
   list-style: $uds-component-list-spacing-list-style;
 
   li {
-    max-width: $uds-component-list-spacing-li-max-width; // TODO Revisit.
     margin-bottom: $uds-component-list-spacing-li-margin-bottom;
 
     &:last-of-type {
@@ -110,7 +110,6 @@ ul.uds-list {
     @include uds-list-spacing;
     margin-left: $uds-component-list-icon-list-margin-left;
     margin-bottom: $uds-component-list-icon-list-margin-bottom;
-    padding: $uds-component-list-icon-list-padding;
     padding-left: 2.25rem; // Avoid icon clipping. Was $uds-size-spacing-4;
     li .fa-li {
       left: $uds-component-list-icon-list-icon-left;
