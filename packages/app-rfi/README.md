@@ -86,3 +86,7 @@ until you do.
 ** <https://asuonline.asu.edu/lead-submissions-v3.3/programs>
 ** <https://asuonline.asu.edu/lead-submissions-v3.3/programs?category=undergraduate&progcode=UGBA>
 ** [See documentation for more examples](https://docs.google.com/document/d/1kdIiuipSmbnrcT9gUkeHzCQujwtCdY680ueYhcLaIUw/edit).
+
+## Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)

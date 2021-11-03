@@ -99,7 +99,10 @@ const ListingPage = ({
     ...INITIAL_FILTER_STATE,
   });
 
-  /** @type {UseFiltersState} */
+  /**
+   * @type {UseFiltersState}
+   * @ignore
+   * */
   const [appliedFilters, setAppliedFilters] = useState({
     ...INITIAL_FILTER_STATE,
   });
@@ -133,6 +136,7 @@ const ListingPage = ({
 
   /**
    * @param {FiltersState} activeFilters
+   * @ignore
    */
   const applyFilters = async activeFilters => {
     const { acceleratedConcurrent, locations, asuLocals, keyword } =
@@ -172,6 +176,7 @@ const ListingPage = ({
 
   /**
    * @param {FiltersState} activeFilters
+   * @ignore
    */
   const onFilterApply = activeFilters => {
     // TODO: consider to remove
@@ -198,6 +203,7 @@ const ListingPage = ({
   };
 
   /**
+   * @ignore
    * @param {FiltersState} filters
    */
   const onFilterChange = async filters => {

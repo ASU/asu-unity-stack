@@ -1,13 +1,32 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
+
+const extraOptions = {
+  background: {
+    name: 'Background',
+    options: ['white-bg', 'gray-1-bg', 'gray-2-bg', 'gray-7-bg'],
+    defaultValue: 'white-bg',
+    control: {
+      type: 'radio',
+      labels: {
+        'white-bg': 'White',
+        'gray-1-bg': 'Gray 1',
+        'gray-2-bg': 'Gray 2',
+        'gray-7-bg': 'Gray 3',
+      },
+    },
+  },
+};
+
 export default createComponent(
   'Content Sections/Inset Box',
   'Molecules',
-  'Templates'
+  'Templates',
+  extraOptions
 );
 
-export const Default = createStory(
-  <div class="uds-inset-box-container gray-1-bg">
+export const Default = createStory(({ background }) => (
+  <div class={`uds-inset-box-container ${background}`}>
     <div class="uds-inset-box-content">
       <h3>Lorem ipsum dolor sit amet</h3>
       <p>
@@ -27,7 +46,8 @@ export const Default = createStory(
       </a>
     </div>
   </div>
-);
+));
 Default.args = {
   template: 1,
+  background: 'white-bg',
 };

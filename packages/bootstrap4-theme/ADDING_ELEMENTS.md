@@ -1,6 +1,5 @@
 # Adding new Elements
 
-
 ## Templates
 Each element in this design system is either an atom, a molecule, or an organism, these definitions are
 taken from the [Atomic Design Methodology](https://atomicdesign.bradfrost.com/chapter-2/).

@@ -7,9 +7,6 @@
 <dd></dd>
 <dt><a href="#ImageGalleryCarousel">ImageGalleryCarousel(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd></dd>
-<dt><a href="#htmlTemplate">htmlTemplate(props, itemStyle)</a> ⇒ <code>CarouselItem</code></dt>
-<dd><p>This function creates a html template which render an image</p>
-</dd>
 <dt><a href="#TestimonialCarousel">TestimonialCarousel(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd></dd>
 </dl>
@@ -17,26 +14,6 @@
 ## Typedefs
 
 <dl>
-<dt><a href="#ButtonProps">ButtonProps</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#TagsProps">TagsProps</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#CardItem">CardItem</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#CardCarouselType">CardCarouselType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#ImageItem">ImageItem</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#ImageCarouselType">ImageCarouselType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#ImageGalleryCarouselItem">ImageGalleryCarouselItem</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#ImageGalleryCarouselType">ImageGalleryCarouselType</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#TestimonialItem">TestimonialItem</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#TestimonialCarouselType">TestimonialCarouselType</a> : <code>Object</code></dt>
-<dd></dd>
 <dt><a href="#ArticleProps">ArticleProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#CardProps">CardProps</a> : <code>Object</code></dt>
@@ -142,18 +119,6 @@
 | --- | --- |
 | props | [<code>ImageGalleryCarouselType</code>](#ImageGalleryCarouselType) | 
 
-<a name="htmlTemplate"></a>
-
-## htmlTemplate(props, itemStyle) ⇒ <code>CarouselItem</code>
-This function creates a html template which render an image
-
-**Kind**: global function  
-
-| Param | Type |
-| --- | --- |
-| props | [<code>TestimonialItem</code>](#TestimonialItem) | 
-| itemStyle | [<code>TestimonialStyle</code>](#TestimonialStyle) | 
-
 <a name="TestimonialCarousel"></a>
 
 ## TestimonialCarousel(props) ⇒ <code>JSX.Element</code>
@@ -162,159 +127,6 @@ This function creates a html template which render an image
 | Param | Type |
 | --- | --- |
 | props | [<code>TestimonialCarouselType</code>](#TestimonialCarouselType) | 
-
-<a name="ButtonProps"></a>
-
-## ButtonProps : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [label] | <code>string</code> | 
-| [ariaLabel] | <code>string</code> | 
-| [href] | <code>string</code> | 
-| [onClick] | <code>function</code> | 
-| [size] | <code>&quot;default&quot;</code> \| <code>&quot;small&quot;</code> \| <code>&quot;xsmall&quot;</code> | 
-| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
-| [target] | <code>&quot;\_blank&quot;</code> \| <code>&quot;\_self&quot;</code> \| <code>&quot;\_top&quot;</code> \| <code>&quot;\_parent&quot;</code> | 
-
-<a name="TagsProps"></a>
-
-## TagsProps : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [label] | <code>string</code> | 
-| [ariaLabel] | <code>string</code> | 
-| [href] | <code>string</code> | 
-| [onClick] | <code>function</code> | 
-| [color] | <code>&quot;white&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
-
-<a name="CardItem"></a>
-
-## CardItem : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| id | <code>number</code> | 
-| title | <code>string</code> | 
-| imageSource | <code>string</code> | 
-| imageAltText | <code>string</code> | 
-| [content] | <code>string</code> | 
-| [linkUrl] | <code>string</code> | 
-| [linkLabel] | <code>string</code> | 
-| [eventTime] | <code>string</code> | 
-| [eventLocation] | <code>string</code> | 
-| [buttons] | [<code>Array.&lt;ButtonProps&gt;</code>](#ButtonProps) | 
-| [tags] | [<code>Array.&lt;TagsProps&gt;</code>](#TagsProps) | 
-
-<a name="CardCarouselType"></a>
-
-## CardCarouselType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| cardItems | [<code>Array.&lt;CardItem&gt;</code>](#CardItem) | 
-| [perView] | <code>number</code> \| <code>string</code> | 
-| [width] | <code>string</code> | 
-| [maxWidth] | <code>string</code> | 
-| [imageAutoSize] | <code>boolean</code> | 
-| [cardHorizontal] | <code>boolean</code> | 
-| [cardEventFormat] | <code>&quot;stack&quot;</code> \| <code>&quot;inline&quot;</code> | 
-| [cardType] | <code>&quot;default&quot;</code> \| <code>&quot;degree&quot;</code> \| <code>&quot;event&quot;</code> \| <code>&quot;news&quot;</code> \| <code>&quot;story&quot;</code> | 
-
-<a name="ImageItem"></a>
-
-## ImageItem : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| id | <code>number</code> | 
-| imageSource | <code>string</code> | 
-| imageAltText | <code>string</code> | 
-| [title] | <code>string</code> | 
-| [content] | <code>string</code> | 
-
-<a name="ImageCarouselType"></a>
-
-## ImageCarouselType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| imageItems | [<code>Array.&lt;ImageItem&gt;</code>](#ImageItem) | 
-| [perView] | <code>number</code> \| <code>string</code> | 
-| [width] | <code>string</code> | 
-| [maxWidth] | <code>string</code> | 
-| [imageAutoSize] | <code>boolean</code> | 
-
-<a name="ImageGalleryCarouselItem"></a>
-
-## ImageGalleryCarouselItem : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| id | <code>number</code> | 
-| imageSource | <code>string</code> | 
-| imageAltText | <code>string</code> | 
-| [thumbnailSource] | <code>string</code> | 
-| [title] | <code>string</code> | 
-| [content] | <code>string</code> | 
-
-<a name="ImageGalleryCarouselType"></a>
-
-## ImageGalleryCarouselType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| imageItems | <code>Array.&lt;ImageCarouselItem&gt;</code> | 
-| [width] | <code>string</code> | 
-| [maxWidth] | <code>string</code> | 
-| [hasContent] | <code>boolean</code> | 
-| [imageAutoSize] | <code>boolean</code> | 
-
-<a name="TestimonialItem"></a>
-
-## TestimonialItem : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| id | <code>number</code> | 
-| [imageSource] | <code>string</code> | 
-| [imageAltText] | <code>string</code> | 
-| quote | [<code>TestimonialQuote</code>](#TestimonialQuote) | 
-
-<a name="TestimonialCarouselType"></a>
-
-## TestimonialCarouselType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| testimonialItems | [<code>Array.&lt;TestimonialItem&gt;</code>](#TestimonialItem) | 
-| maxWidth | <code>string</code> | 
-| [width] | <code>string</code> | 
-| [itemStyle] | [<code>TestimonialStyle</code>](#TestimonialStyle) | 
-| [hasPositionIndicators] | <code>boolean</code> | 
-| [hasNavButtons] | <code>boolean</code> | 
-| [imageAutoSize] | <code>boolean</code> | 
 
 <a name="ArticleProps"></a>
 
@@ -435,11 +247,12 @@ This function creates a html template which render an image
 
 | Name | Type | Description |
 | --- | --- | --- |
-| image | [<code>ImageProps</code>](#ImageProps) |  |
-| title | [<code>ContentProps</code>](#ContentProps) |  |
-| subTitle | [<code>ContentProps</code>](#ContentProps) |  |
-| contents | [<code>Array.&lt;ContentProps&gt;</code>](#ContentProps) |  |
-| contentsColor | <code>&quot;white&quot;</code> \| <code>&quot;black&quot;</code> |  |
+| [hide] | <code>boolean</code> |  |
+| [image] | [<code>ImageProps</code>](#ImageProps) |  |
+| [title] | [<code>ContentProps</code>](#ContentProps) |  |
+| [subTitle] | [<code>ContentProps</code>](#ContentProps) |  |
+| [contents] | [<code>Array.&lt;ContentProps&gt;</code>](#ContentProps) |  |
+| [contentsColor] | <code>&quot;white&quot;</code> \| <code>&quot;black&quot;</code> |  |
 | [type] | <code>&quot;heading-hero&quot;</code> \| <code>&quot;story-hero&quot;</code> | defaut value is "heading-hero" |
 
 <a name="ButtonProps"></a>
@@ -544,7 +357,7 @@ This function creates a html template which render an image
 | --- | --- |
 | [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
 | [content] | <code>Object</code> | 
-| content.icon | <code>string</code> | 
+| [content.icon] | <code>string</code> | 
 | content.header | <code>string</code> | 
 | content.body | <code>string</code> | 
 
@@ -592,7 +405,7 @@ This function creates a html template which render an image
 | --- | --- |
 | text | <code>string</code> | 
 | targetIdName | <code>string</code> | 
-| icon | <code>Array.&lt;string&gt;</code> | 
+| [icon] | <code>Array.&lt;string&gt;</code> | 
 
 <a name="AnchorMenuProps"></a>
 

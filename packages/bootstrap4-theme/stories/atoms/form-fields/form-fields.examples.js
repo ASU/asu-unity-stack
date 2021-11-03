@@ -916,7 +916,21 @@ export const Checkboxes = createStory(
         value="option1"
       />
       <label class="form-check-label" for="loneCheckbox1">
-        I like checkboxes
+      I like checkboxes
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="loneCheckbox2"
+        value="option1"
+      />
+      <label class="form-check-label" for="loneCheckbox2">
+      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
+      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
+      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
       </label>
     </div>
 

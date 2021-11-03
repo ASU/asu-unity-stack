@@ -7,6 +7,12 @@
     padding: $uds-size-spacing-6;
     width: 100%;
 
+    &.image-background{
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
     @media screen and (max-width: $uds-breakpoint-sm) {
       padding: $uds-size-spacing-3;
     }

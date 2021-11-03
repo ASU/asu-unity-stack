@@ -1,7 +1,6 @@
-# ASU Unity Stack
-Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
+# ASU Unity Design System (UDS)
 
-Version DEV-1
+Base Bootstrap 4 UI theme and components for building ASU Web Standards 2.0 compliant web sites and apps.
 
 ## ❯ Packages in this repository
 
@@ -37,7 +36,7 @@ You need to set up your development environment before you can do anything.
 
 The recommended method for setting up your local development environment is to use [Volta - Javascript Tool Manager](https://volta.sh/). Volta is designed to allow MacOS, Liux, and Windows users to easily install and use the correct version of Node, NPM, and Yarn for their projects. In addition to easily installing different versions of Node on your computer and switching between them when needed, this project has been configured to notify Volta what version of Node and Yarn is required to work on this project. This ensure all devs are using the same version of these tools, and preventing some subtle errors and development issues from occurring.
 
-Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of  the installer script, vetted it, and included it here, in the getvolta/ folder.
+Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of the installer script, vetted it, and included it here, in the getvolta/ folder.
 
 For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
@@ -263,7 +262,7 @@ To assist contributors with writing compliant commit messages, the `commitizen` 
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# Github Actions Deployment Process
+# Github Actions Deployment Process (NOT YET IMPLEMENTED)
 
 A Github Action workflow is triggered by pushing to the `dev` branch. A push includes merging a pull request or pushing directly to the branch. The file containing the steps executed during the workflow is located at the project root, `.github/workflows/development-workflow.yml`. Currently, the workflow consists of a single job with several steps. Alternatively, the same workflow could be logically split up into several jobs (ex. Build/test/deploy). Both options have pros and cons. The pros to having the workflow consist of a single job include the fact that a single job executes steps on the same runner. If the build step and test step were different jobs, you would either need to build again in the test job, or save the build output as an artifact in the first job and retrieve it in the second. Depending on number of dependencies, etc, this could drastically increase build times. Reducing the workflow to a single job also saves on account minutes. See [here](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions) for more information about github account minutes and billing. Some considerations for whether to use multiple jobs include: breaking the workflow up logically into jobs, and ability for a job to depend on completion of a previous job, ex. deploy job depends on test job to successfully complete in order for the deploy job to run.
 

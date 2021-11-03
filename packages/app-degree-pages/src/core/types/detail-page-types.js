@@ -179,7 +179,6 @@
  * @property { string } [appPathFolder]
  * @property { ProgramDetailDataSource } dataSource
  * @property { AnchorMenuProps}[anchorMenu]
- *
  * @property { HeroProps}[hero]
  * @property { IntroContentProps}[introContent]
  * @property { ProgramDescriptionProps}[programDescription]
@@ -192,7 +191,6 @@
  * @property { HideProp}[flexibleDegreeOptions]
  * @property { CareerOutlookProps}[careerOutlook]
  * @property { HideProp}[exampleCareers]
- *
  * @property { GlobalOpportunityProps}[globalOpportunity]
  * @property { AttendOnlineProps}[attendOnline]
  * @property { ProgramContactInfoProps }[programContactInfo]

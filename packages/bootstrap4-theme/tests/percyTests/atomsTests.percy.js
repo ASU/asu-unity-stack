@@ -32,7 +32,7 @@ export { LargeImageCaptionComponent as ImageWithCaption } from '../../stories/at
 export { UnorderedListMultiLevel as UnorderedList } from '../../stories/atoms/list/list.examples';
 export { OrderedListMultiLevel as OrderedList } from '../../stories/atoms/list/list.examples';
 // Sidebar component
-export { Sidebar } from '../../stories/atoms/sidebar/sidebar.templates';
+export { Default as Sidebar } from '../../stories/atoms/sidebar/sidebar.templates';
 // Tooltip component
 export { Tooltips as Tooltip } from '../../stories/atoms/tooltips/tooltips.templates';
 // Video component
