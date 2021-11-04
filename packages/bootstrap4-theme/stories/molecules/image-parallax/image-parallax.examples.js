@@ -4,15 +4,6 @@ import { initImageParallax as initFunc } from './image-parallax';
 
 export default createComponent('Image Parallax', 'Molecules', 'Examples');
 
-// export const parallaxSectionOnly = createStory(
-//   () => (
-//     <section class="parallax-container carve-your-path">
-//       <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
-//     </section>
-//   ),
-//   { initFunc }
-// );
-
 export const twoImagesInPageOfSections = createStory(
   () => (
     <div>
