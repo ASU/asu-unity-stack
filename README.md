@@ -153,14 +153,26 @@ It takes as an argument the number of days past from the last file changes.
 
 Example:
 let's say today is 4 November 2021 and I want to show those files changed 2 days ago
-run the command  `node ./scripts/check-element-changes.js -d 2`
+run the command  `node ./scripts/check-element-changes.js -d 8`
 
 I will display  only those files, which extension is `.templates.js`
-which date change is  >= 2nd November
+which date change is  >= 28 October
 
-shortcut command `yarn check-element-changes 2`
+shortcut command `yarn check-element-changes 8`
 
 <img src = "./doc/assets/check-element-changes.png" />
+
+### check-element-local-changes
+
+This tool is similar to `check-element-changes` which difference is that it does not look latest change in `git` but it does in your file system.
+
+Example:
+today: 4 November 2021
+past days: 2
+
+run the command  `node ./scripts/check-element-local-changes.js -d 2`
+
+<img src = "./doc/assets/check-element-local-changes.png" />
 
 ## ❯ Supplemental links
 
