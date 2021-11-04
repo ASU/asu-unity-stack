@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { CookieConsentWrapper } from "./CookieConsent.styles";
+import { addDays } from "./core/utils/helpers";
+
+const now = new Date();
 
 /**
  * @typedef { import('./core/types/cookie-consent-types').CookieConsentProps } CookieConsentProps
@@ -16,7 +19,7 @@ import { CookieConsentWrapper } from "./CookieConsent.styles";
  * @param {CookieConsentProps} props
  * @returns {JSX.Element}
  */
-const CookieConsent = ({ enableCookieConsent }) => {
+const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
   const cookieConsentRef = useRef(null);
   const [visible, setVisible] = useState(false);
   library.add(fas);
@@ -31,7 +34,8 @@ const CookieConsent = ({ enableCookieConsent }) => {
 
   const updateLocalStorage = () => {
     const { localStorage } = window;
-    localStorage.setItem("cookieConsent", "true");
+    const ttl = addDays(now, expirationTime).getTime();
+    localStorage.setItem("cookieConsent", ttl.toString());
   };
 
   const handleCloseConsent = () => {
@@ -42,8 +46,8 @@ const CookieConsent = ({ enableCookieConsent }) => {
   useEffect(() => {
     const { localStorage } = window;
     if (localStorage) {
-      const closedConsent = localStorage.getItem("cookieConsent") === "true";
-      setVisible(!closedConsent);
+      const item = localStorage.getItem("cookieConsent");
+      setVisible(!item ? true : now.getTime() > parseInt(item, 10));
     }
   }, []);
 
@@ -87,11 +91,15 @@ const CookieConsent = ({ enableCookieConsent }) => {
 };
 
 CookieConsent.propTypes = {
+  /* Show the banner or not */
   enableCookieConsent: PropTypes.bool,
+  /* Number of days to expire the consent */
+  expirationTime: PropTypes.number,
 };
 
 CookieConsent.defaultProps = {
   enableCookieConsent: true,
+  expirationTime: 90,
 };
 
 export { CookieConsent };
