@@ -144,6 +144,24 @@ yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
 ```
 
+## ❯ CLI tools
+
+### check-element-changes
+
+This tools shows outdated markup into the folder `bootstrap4-theme`
+It takes as argument the number of days past from the last file changes.
+
+Example:
+lets say today is 4 November 2021 and I want to show those files changed 2 days ago
+run the command  `node ./scripts/check-element-changes.js -d 2`
+
+I will display  only those files , which extension is `.templates.js`
+which date change is  >= 2nd November
+
+shortcut command `yarn check-element-changes 2`
+
+<img src = "./doc/assets/check-element-changes.png" />
+
 ## ❯ Supplemental links
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
