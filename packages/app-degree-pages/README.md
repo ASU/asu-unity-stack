@@ -111,7 +111,9 @@ Program detail pages are used for individual degrees or programs. It contains in
   </tr>
 </table>
 
-<img src="./docs/assets/notes.png" style = "border: 1px solid #d0d0d0">
+<div style = "border: 1px solid #d0d0d0">
+  <img src="./docs/assets/notes.png" >
+</div>
 
 <span>
   <br/>
@@ -143,7 +145,7 @@ You can find the full list of props types into the file [listing-page-types.js h
   * }} ListingPageProps
   */
 ```
-### ProgramDetailPage component
+### DetailPage component
 You can find the full list of props types into the file [program-detail-types.js here](/packages/app-degree-pages/src/core/models/program-detail-typesjs)
 
 ```JS
@@ -173,7 +175,7 @@ You can find the full list of props types into the file [program-detail-types.js
  *      departmentUrl: string
  *      emailUrl: string
  *  }
- * }} ProgramDetailPageProps
+ * }} DetailPageProps
  */
 ```
 
@@ -243,14 +245,14 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
     )
   };
 ```
-### ProgramDetailPage component
+### DetailPage component
 
-You can find an extended example of how to set `ProgramDetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
+You can find an extended example of how to set `DetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
 
 ```JS
- import { ProgramDetailPage } from '@asu-design-system/app-degree-pages'
+ import { DetailPage } from '@asu-design-system/app-degree-pages'
 
- const ProgramDetailPageApp = ({
+ const DetailPageApp = ({
     dataSource,
     anchorMenu,
     introContent,
@@ -267,7 +269,7 @@ You can find an extended example of how to set `ProgramDetailPage` props [here](
     attendOnline,
     nextSteps,
   }) => (
-    <ProgramDetailPage
+    <DetailPage
       dataSource={dataSource}
       anchorMenu={anchorMenu}
       introContent={introContent}
@@ -330,9 +332,9 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
       });
     </script>
 ```
-### ProgramDetailPage component
+### DetailPage component
 
-You can find an extended example of how to set `ProgramDetailPage` props [here](/packages/app-degree-pages/examples/program-detail-page.html)
+You can find an extended example of how to set `DetailPage` props [here](/packages/app-degree-pages/examples/detail-page.html)
 
 ```HTML
 
@@ -367,7 +369,7 @@ You can find an extended example of how to set `ProgramDetailPage` props [here](
     <script>
       AsuDegreePages.initProgramDetailPage({
         targetSelector: "#degreePageContainer",
-        props: { /** See ee file examples/program-detail-page.htmll */ }
+        props: { /** See ee file examples/detail-page.htmll */ }
       });
     </script>
 
@@ -380,7 +382,7 @@ The folder [packages/app-degree-pages/examples](/packages/app-degree-pages/examp
 #### Examples - quick links
 
 - [Listing page](/packages/app-degree-pages/examples/listing-page.html)
-- [Program Detail Page](/packages/app-degree-pages/examples/program-detail-page.html)
+- [Detail Page](/packages/app-degree-pages/examples/program-detail-page.html)
 
 #### Examples - run and test
 
