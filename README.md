@@ -160,7 +160,7 @@ which date change is  >= 28 October
 
 shortcut command `yarn check-element-changes 8`
 
-<img src = "./doc/assets/check-element-changes.png" />
+<img src = "./docs/assets/check-element-changes.png" />
 
 ### check-element-local-changes
 
@@ -172,7 +172,7 @@ past days: 2
 
 run the command  `node ./scripts/check-element-local-changes.js -d 2`
 
-<img src = "./doc/assets/check-element-local-changes.png" />
+<img src = "./docs/assets/check-element-local-changes.png" />
 
 ## ❯ Supplemental links
 
@@ -286,7 +286,7 @@ Two build tools have been added to this project to assist contributors to write 
 
 To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
 
-![GitHub Logo](/doc/assets/commitizen-prompts.png)
+![GitHub Logo](/docs/assets/commitizen-prompts.png)
 
 ## ❯ Contributing:
 
