@@ -111,9 +111,9 @@ Program detail pages are used for individual degrees or programs. It contains in
   </tr>
 </table>
 
-<div style = "border: 1px solid #d0d0d0">
-  <img src="./docs/assets/notes.png" >
-</div>
+<table><tr><td>
+ <img src="./docs/assets/notes.png" >
+</td></tr></table>
 
 <span>
   <br/>
@@ -183,12 +183,14 @@ You can find the full list of props types into the file [program-detail-types.js
 
 You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 
+<table><tr><td>
 <a href = "docs/README.props.md">
 <img
   style ="border: 1px solid black;"
   width = "300px"
   src="../../docs/assets/readme-props-preview.png" />
 </a>
+</td></tr></table>
 
 ## CLI Commands
 
