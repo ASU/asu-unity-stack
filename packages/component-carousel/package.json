@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "src/index.js",
   "author": "Michael Samuelson",
@@ -15,7 +15,7 @@
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "publishConfig": {

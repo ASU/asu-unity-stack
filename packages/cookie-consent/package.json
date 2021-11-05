@@ -1,16 +1,20 @@
 {
   "name": "@asu-design-system/cookie-consent",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
   "author": "Michael Samuelson",
   "license": "UNLICENSED",
   "private": false,
   "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "start:dev": "webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook -s ./dist"
+    "build-storybook": "build-storybook -s ./dist",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "publishConfig": {
     "access": "restricted",
@@ -38,6 +42,10 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
+    "jsdoc": "^3.6.7",
+    "jsdoc-plugin-typescript": "^2.0.6",
+    "jsdoc-to-markdown": "5.0.0",
+    "jsdoc-ts-utils": "^2.0.1",
     "preact": "^10.5.13",
     "prop-types": "^15.7.2",
     "react-cookie-consent": "^6.2.3",

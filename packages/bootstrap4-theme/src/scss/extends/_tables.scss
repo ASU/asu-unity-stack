@@ -92,6 +92,18 @@
 .uds-table-fixed {
   overflow-x: scroll;
   border: 1px solid $uds-color-base-gray-2;
+  scroll-behavior: smooth;
+  &-wrapper {
+    .scroll-control {
+      display: none;
+    }
+  }
+
+  &-wrapper:hover {
+    .scroll-control {
+      display: block;
+    }
+  }
 
   &-wrapper {
     position: relative;
@@ -103,10 +115,6 @@
       pointer-events: none;
       top: 0;
       z-index: 100;
-
-      &.show {
-        display: block;
-      }
 
       &.previous {
         background: linear-gradient(
@@ -185,6 +193,11 @@
         &.previous {
           left: 128px;
         }
+      }
+    }
+    & > table {
+      tr > *:first-child {
+        min-width: auto;
       }
     }
   }

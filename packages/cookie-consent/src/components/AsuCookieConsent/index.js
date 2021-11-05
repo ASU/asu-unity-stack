@@ -1,11 +1,20 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { h } from "preact"; // DO NOT REOVE THIS LINE
 import { useState } from "preact/compat";
 import propTypes from "prop-types";
 import CookieConsent from "react-cookie-consent";
 
 import "./index.scss";
 
+/**
+ * @typedef {import("../../core/types/cookie-consent-types").CookieConsentProps} CookieConsentProps
+ */
+
+/**
+ * @param {CookieConsentProps} props
+ * @returns {JSX.Element}
+ */
 const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
   const [easeOut, setEaseOut] = useState("");
 
