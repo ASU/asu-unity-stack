@@ -402,10 +402,15 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 ## Future improvements
 All the requirements for version 1 of this component were covered, further enhancements will be implemented in the next version.
 
+# Storybook
+
+- [Listing page](https://unity.web.asu.edu/@asu-design-system/app-degree-pages/index.html?path=/story/program-listing-page--default)
+- [Detail page](https://unity.web.asu.edu/@asu-design-system/app-degree-pages/index.html?path=/story/program-detail-page--default
+)
 # UX documents
 
 - [XD Degree Template Pages model](https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen)
-- [XD Degree Listing Pages][https://xd.adobe.com/view/ca5d1ca5-bdf7-40b2-9aa3-2aaa75be699a-9f0e/screen/29e8a7e8-1b04-46b3-ad22-0ebdb78eb0ca/]
+- [XD Degree Listing Pages](https://xd.adobe.com/view/ca5d1ca5-bdf7-40b2-9aa3-2aaa75be699a-9f0e/screen/29e8a7e8-1b04-46b3-ad22-0ebdb78eb0ca/)
 - [XD Degree Detail Page](https://xd.adobe.com/view/2bfe6a52-eb92-4531-93d3-cc809c365e39-7ead/)
 
 # Other docs
