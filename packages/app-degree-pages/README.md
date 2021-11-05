@@ -402,6 +402,17 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 ## Future improvements
 All the requirements for version 1 of this component were covered, further enhancements will be implemented in the next version.
 
+# UX documents
+
+- [XD Degree Template Pages model](https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen)
+- [XD Degree Listing Pages][https://xd.adobe.com/view/ca5d1ca5-bdf7-40b2-9aa3-2aaa75be699a-9f0e/screen/29e8a7e8-1b04-46b3-ad22-0ebdb78eb0ca/]
+- [XD Degree Detail Page](https://xd.adobe.com/view/2bfe6a52-eb92-4531-93d3-cc809c365e39-7ead/)
+
+# Other docs
+
+- [Web Service Fields Descriptions](https://docs.google.com/spreadsheets/d/18_0EuMOTdrJHhIFgVsl9o8QSpuCPjIF823D1B91MzgU/edit#gid=0)
+- [Degree Search SEO // URLs + Descriptions](https://docs.google.com/spreadsheets/d/1xHHT8v0EqBkKTasL0HM29lJdTbPcnCPso2AHkl_BPU4/edit#gid=0)
+
 # References
 
 - [Font Awesome](https://fontawesome.com/)
