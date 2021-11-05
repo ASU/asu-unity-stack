@@ -13,10 +13,6 @@ module.exports = {
       ...config,
       resolve: {
         extensions: [".js", ".jsx"],
-        alias: {
-          // this is needed to compile components-core components which inject css classes
-          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
-        },
       },
     };
   },

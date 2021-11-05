@@ -10,7 +10,17 @@ The initialization of this component is the same as all the packages, so it can 
  - `render`: this is provided by ReactDOM library. It is used to render the react element in the DOM. Click to read more about [render](https://reactjs.org/docs/react-dom.html).
 The way it works is: when the initializer function is called, this creates the element with the props provided and the react component.Then it is rendered on the DOM.
 
-### Component props documentation
+## Props and settings
+```JS
+/**
+ *  @typedef {{
+ *    enableCookieConsent: boolean
+ *    expirationTime?: number
+ * }} CookieConsentProps
+ */
+```
+
+## Component props documentation
 
 You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 
@@ -43,13 +53,17 @@ yarn test
     import { CookieConsent } from '@asu-design-system/component-cookie-consent@dev'
 ```
 
-### Aliased import
-```JAVASCRIPT
-  import { CookieConsent } from '@asu-design-system/component-cookie-consent@dev'
-```
-
 ### Import for use in HTML page
 You can find an example of how to set `CookieConsent` props [here](/packages/component-cookie-consent/examples/cookie-consent.html)
+
+## Example
+
+```JS
+{
+  enableCookieConsent: true,
+  expirationTime: 90, // Time in days
+};
+```
 
 ## Future improvements
 All the requirements for this component were covered, so there is no need of any further enhancements at the moment this is being written.

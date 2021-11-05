@@ -92,13 +92,12 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
 
 CookieConsent.propTypes = {
   /* Show the banner or not */
-  enableCookieConsent: PropTypes.bool,
+  enableCookieConsent: PropTypes.bool.isRequired,
   /* Number of days to expire the consent */
   expirationTime: PropTypes.number,
 };
 
 CookieConsent.defaultProps = {
-  enableCookieConsent: true,
   expirationTime: 90,
 };
 

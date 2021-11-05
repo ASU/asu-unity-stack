@@ -12,7 +12,7 @@ const Template = args => <CookieConsent {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   enableCookieConsent: true,
-  expirationTime: 90,
+  expirationTime: 90, // Time in days
 };
 
 export const ConsentDisabled = Template.bind({});

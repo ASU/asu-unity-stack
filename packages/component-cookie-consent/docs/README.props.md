@@ -6,6 +6,6 @@
 
 | Name | Type |
 | --- | --- |
-| [enableCookieConsent] | <code>boolean</code> | 
+| enableCookieConsent | <code>boolean</code> | 
 | [expirationTime] | <code>number</code> | 
 

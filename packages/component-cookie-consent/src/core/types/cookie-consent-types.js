@@ -2,7 +2,7 @@
 
 /**
  * @typedef {Object} CookieConsentProps
- * @property {boolean} [enableCookieConsent]
+ * @property {boolean} enableCookieConsent
  * @property {number} [expirationTime]
  */
 
