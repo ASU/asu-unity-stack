@@ -86,7 +86,7 @@ Cards - Table of Contents
   position: absolute;
   background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 120%)
     0% 0% no-repeat padding-box;
-  height: 160px;
+  height: 170px;
   width: 100%;
   top: 0;
   content: '';
@@ -129,12 +129,12 @@ Cards - Table of Contents
   padding: 0 32px 24px 32px;
   border-top: 0;
   margin-top: -8px;
-}
-
-.card-tags .btn-tag {
-  margin-top: 8px;
-  margin-left: 0;
-  margin-right: 1rem;
+  .btn-tag,
+  .badge {
+    margin-top: 8px;
+    margin-left: 0;
+    margin-right: 1rem;
+  }
 }
 
 .card-button {
