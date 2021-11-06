@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero, useFetch } from "@asu-design-system/components-core";
+import { Hero, useFetch } from "@asu-ke/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";
 

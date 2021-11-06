@@ -1,11 +1,11 @@
 {
-  "name": "@asu-design-system/bootstrap4-theme",
+  "name": "@asu-ke/bootstrap4-theme",
   "version": "7.4.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/ASU-KE/asu-unity-stack",
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {
@@ -23,7 +23,7 @@
     "build": "gulp"
   },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu-ke/design-tokens": "^1.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/storybook": "^4.0.3",

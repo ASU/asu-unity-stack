@@ -1,6 +1,6 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
-// import * as componentsCore from "@asu-design-system/components-core";
+import { Hero } from "@asu-ke/components-core";
+// import * as componentsCore from "@asu-ke/components-core";
 import { render, act, waitFor, cleanup } from "@testing-library/react";
 import React from "react";
 

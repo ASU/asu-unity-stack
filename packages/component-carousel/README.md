@@ -8,14 +8,14 @@ ASU Web Standards-based implementation of `@glidejs/glide` npm library carousel.
 
 In order to use Web Standards 2.0 cards in your Carousel, you must install the
 ASU Design System Bootstrap 4 theme
-```yarn add @asu-design-system/bootstrap4-theme```
+```yarn add @asu-ke/bootstrap4-theme```
 or in some other manner provide the styles required.
 
 ## CLI Commands
 
 ``` bash
 # add component-carousel
-yarn add @asu-design-system/component-carousel
+yarn add @asu-ke/component-carousel
 
 # run storybook
 yarn storybook
@@ -31,13 +31,13 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/component-carousel@dev```
+2. ```yarn add @asu-ke/component-carousel@dev```
 
 
 ## Use as a JS module in React app
 
 ```JAVASCRIPT
-    import { AsuCarousel } from '@asu-design-system/component-carousel@dev'
+    import { AsuCarousel } from '@asu-ke/component-carousel@dev'
 
     // Define your carousel items. Contents of "item:" should be a Unity
     // Design System Card. Only one example provided below.
@@ -139,8 +139,8 @@ yarn test
 <div id="anotherCarouselContainer"></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.production.js"></script>
-<script src="/node_modules/@asu-design-system/component-carousel/dist/core.production.js"></script>
+<script src="/node_modules/@asu-ke/component-carousel/dist/vendor.production.js"></script>
+<script src="/node_modules/@asu-ke/component-carousel/dist/core.production.js"></script>
 <script>
   // Setup and initialize the first carousel.
   var props = {

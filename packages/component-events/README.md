@@ -56,7 +56,7 @@ You can find a full list of props into the [docs/README.props.md](docs/README.pr
 
 ``` bash
 # add component-footer
-yarn add @asu-design-system/component-events
+yarn add @asu-ke/component-events
 
 # run storybook
 yarn storybook
@@ -72,13 +72,13 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/component-events```
+2. ```yarn add @asu-ke/component-events```
 
 ## Use as a JS module in React app
 
 ### Default import
 ```JAVASCRIPT
-    import { Events } from '@asu-design-system/component-events'
+    import { Events } from '@asu-ke/component-events'
 ```
 
 ### Import for use in HTML page

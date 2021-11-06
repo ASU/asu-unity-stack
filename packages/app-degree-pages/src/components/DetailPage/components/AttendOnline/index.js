@@ -1,5 +1,5 @@
 // @ts-check
-import { Button, idGenerator } from "@asu-design-system/components-core";
+import { Button, idGenerator } from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 

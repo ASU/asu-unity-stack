@@ -131,17 +131,17 @@ gulp.task('scripts', function () {
 gulp.task('copy-assets', function (done) {
   // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/img/**/*`)
+    .src(`${paths.node}/@asu-ke/design-tokens/build/assets/img/**/*`)
     .pipe(gulp.dest('./src/img'));
 
   // Copy font-awesome from design-token into src/
   /* gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/
+    .src(`${paths.node}/@asu-ke/design-tokens/build/assets/fontawesome/
     .pipe(gulp.dest('./src/assets/fontawesome'));**/
 
   // Copy the design-tokens SASS variables into src/
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/scss/**/*`)
+    .src(`${paths.node}/@asu-ke/design-tokens/build/scss/**/*`)
     .pipe(gulp.dest('./src/scss/design-tokens'));
 
   done();

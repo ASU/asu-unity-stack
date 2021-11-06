@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "url": "https://github.com/ASU-KE/asu-unity-stack.git",
     "directory": "packages/maps"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/ASU/asu-unity-stack/issues"
+    "url": "https://github.com/ASU-KE/asu-unity-stack/issues"
   },
-  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "homepage": "https://github.com/ASU-KE/asu-unity-stack#readme",
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

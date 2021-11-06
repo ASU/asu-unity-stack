@@ -14,11 +14,11 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageProps
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").ImageProps} ImageProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/video-types").VideoProps} VideoItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/video-types").VideoProps} VideoItem
  */
 
 /** This type set the `text` optional
@@ -29,7 +29,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").ImageProps} ImageItem
  */
 
 /**
@@ -40,7 +40,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/card-types").CardProps} CardProps
+ * @typedef {import("@asu-ke/components-core/src/core/types/card-types").CardProps} CardProps
  */
 
 /**

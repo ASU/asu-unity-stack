@@ -4,7 +4,7 @@ import {
   Button,
   Accordion,
   sanitizeDangerousMarkup,
-} from "@asu-design-system/components-core";
+} from "@asu-ke/components-core";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";

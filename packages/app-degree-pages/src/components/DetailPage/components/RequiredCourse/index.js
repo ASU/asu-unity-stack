@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@asu-design-system/components-core";
+import { Button } from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import Styled from "styled-components";

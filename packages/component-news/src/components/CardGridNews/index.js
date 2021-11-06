@@ -3,7 +3,7 @@ import {
   FeedContext,
   Card,
   feedCardButtonShape,
-} from "@asu-design-system/components-core";
+} from "@asu-ke/components-core";
 import React, { useContext } from "react";
 
 import { BaseFeed } from "../../core/components/BaseFeed";

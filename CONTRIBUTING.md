@@ -6,7 +6,7 @@ Please take a moment to review this document, as well as the web design standard
 
 ## Using the issue tracker
 
-The [issue tracker](https://github.com/asu/asu-unity-stack/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
+The [issue tracker](https://github.com/ASU-KE/asu-unity-stack/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Please contact the team directly on [slack](http://asuwebstandards.slack.com), the ASU Brandguide, or the UTO department for personal support.
 
@@ -77,7 +77,7 @@ Do the following steps to get started:
 
 ```bash
 # clone ASU Unity Stack repo to local machine
-git clone https://github.com/asu/asu-unity-stack.git
+git clone https://github.com/ASU-KE/asu-unity-stack.git
 
 # step into unity repo
 cd asu-unity-stack

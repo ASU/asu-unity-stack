@@ -1,11 +1,11 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ButtonProps} ButtonProps
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").ButtonProps} ButtonProps
  */
 
 /** @typedef {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} tagHeadings */

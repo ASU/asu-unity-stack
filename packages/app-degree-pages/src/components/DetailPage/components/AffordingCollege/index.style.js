@@ -8,7 +8,7 @@ const Section = styled.section`
 `;
 
 const Background = styled.div`
-  background-image: url("https://unity.web.asu.edu/@asu-design-system/bootstrap4-theme/static/media/TopoPatternWhite.529b0b3d.png");
+  background-image: url("https://unity.web.asu.edu/@asu-ke/bootstrap4-theme/static/media/TopoPatternWhite.529b0b3d.png");
   background-position: center;
   background-size: contain;
   position: absolute;

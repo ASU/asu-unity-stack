@@ -1,5 +1,5 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core/src/components/Card";
+import { Card } from "@asu-ke/components-core/src/components/Card";
 import PropTypes from "prop-types";
 import React from "react";
 

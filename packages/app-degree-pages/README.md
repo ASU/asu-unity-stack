@@ -7,19 +7,19 @@ ASU Web Standards-based implementation of the Degree page component
 1. [React](https://reactjs.org/)
 2. [Font Awesome](https://fontawesome.com/)
     - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
-3. [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu-design-system/bootstrap4-theme)
+3. [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu-ke/bootstrap4-theme)
     - [CDN link](https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css)
 
 In order to use ASU Web Standards 2.0 you must install the
 ASU Design System Bootstrap 4 theme
-```yarn add @asu-design-system/bootstrap4-theme```
+```yarn add @asu-ke/bootstrap4-theme```
 or in some other manner provide the styles required.
 
 ## CLI Commands
 
 ``` bash
 # add app-degree-pages
-yarn add @asu-design-system/app-degree-pages
+yarn add @asu-ke/app-degree-pages
 
 # run storybook
 yarn storybook
@@ -36,7 +36,7 @@ yarn test
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu.
 <br/>See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/app-degree-pages```
+2. ```yarn add @asu-ke/app-degree-pages```
 
 ## Use as a JS module in React app
 ### ListingPage component
@@ -44,7 +44,7 @@ yarn test
 You can find an extended example of how to set `ListingPage` props [here](/packages/app-degree-pages/src/components/ListingPage/index.stories.js)
 
 ```JS
-  import { ListingPage } from '@asu-design-system/app-degree-pages'
+  import { ListingPage } from '@asu-ke/app-degree-pages'
 
   const ListingPageApp = ({
     actionUrls,
@@ -71,7 +71,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 You can find an extended example of how to set `ProgramDetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
 
 ```JS
- import { ProgramDetailPage } from '@asu-design-system/app-degree-pages'
+ import { ProgramDetailPage } from '@asu-ke/app-degree-pages'
 
  const ProgramDetailPageApp = ({
     dataSource,
@@ -204,7 +204,7 @@ You can find the full list of props types into the file [listing-page-types.js h
   /**
   * @typedef {{
   *  actionUrls?: ActionUrlProps
-  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
+  *  hero?: import("@asu-ke/components-core/src/components").HeroProps
   *  introContent?: IntroContentProps
   *  hasSearchBar?: boolean
   *  hasFilters?: boolean
@@ -224,7 +224,7 @@ You can find the full list of props types into the file [program-detail-types.js
  *  @typedef {{
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  anchorMenu?: AnchorMenuProps
- *  hero?: HideProp & import("@asu-design-system/components-core/src/components").HeroProps
+ *  hero?: HideProp & import("@asu-ke/components-core/src/components").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps

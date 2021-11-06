@@ -1,5 +1,5 @@
 // @ts-check
-import { idGenerator } from "@asu-design-system/components-core";
+import { idGenerator } from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 

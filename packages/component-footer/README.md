@@ -5,7 +5,7 @@ ASU Web Standards-based implementation of global footer.
 
 ``` bash
 # add component-footer
-yarn add @asu-design-system/component-footer
+yarn add @asu-ke/component-footer
 
 # run storybook
 yarn storybook
@@ -21,19 +21,19 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/component-footer@dev```
+2. ```yarn add @asu-ke/component-footer@dev```
 
 
 ## Use as a JS module in React app
 
 ### Default import
 ```JAVASCRIPT
-    import { ASUFooter } from '@asu-design-system/component-footer@dev'
+    import { ASUFooter } from '@asu-ke/component-footer@dev'
 ```
 
 ### Aliased import
 ```JAVASCRIPT
-  import { ASUFooter as Footer } from '@asu-design-system/component-footer@dev'
+  import { ASUFooter as Footer } from '@asu-ke/component-footer@dev'
 ```
 
 ### Import for use in HTML page

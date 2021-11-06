@@ -1,15 +1,15 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/hero-types").HeroProps} HeroProps
+ * @typedef {import("@asu-ke/components-core/src/core/types/hero-types").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/video-types").VideoProps} VideoItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/video-types").VideoProps} VideoItem
  */
 
 /**

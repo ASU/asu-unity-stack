@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/app-degree-pages",
+  "name": "@asu-ke/app-degree-pages",
   "version": "1.14.1",
   "description": "ASU implementation of degree pages",
   "main": "src/index.js",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/ASU-KE/asu-unity-stack",
     "directory": "packages/app-degree-pages"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu-ke/components-core": "^1.0.0",
+    "@asu-ke/design-tokens": "^1.1.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",

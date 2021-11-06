@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/cookie-consent",
+  "name": "@asu-ke/cookie-consent",
   "version": "2.0.2",
   "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/ASU-KE/asu-unity-stack",
     "directory": "packages/cookie-consent"
   },
   "devDependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu-ke/design-tokens": "^1.1.0",
     "@babel/core": "^7.13.14",
     "@babel/preset-react": "^7.3.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

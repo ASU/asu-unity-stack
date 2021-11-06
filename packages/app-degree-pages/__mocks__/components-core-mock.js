@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
-import * as asuCore from "@asu-design-system/components-core";
+import * as asuCore from "@asu-ke/components-core";
 import * as React from "react";
 
 const {
@@ -28,7 +28,7 @@ const Hero = mockComponent;
 const Pagination = mockComponent;
 const Video = mockComponent;
 
-jest.doMock("@asu-design-system/components-core", () => ({
+jest.doMock("@asu-ke/components-core", () => ({
   Accordion,
   AnchorMenu,
   Button,

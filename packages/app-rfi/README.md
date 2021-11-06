@@ -22,13 +22,13 @@ read on:
 React and React-DOM are required as peer dependencies. Install with:
 `yarn add react react-dom`
 
-@asu-design-system/bootstrap4-theme is required as a peer dependency in your
+@asu-ke/bootstrap4-theme is required as a peer dependency in your
 project. Install the latest version with the following command:
-`yarn add @asu-design-system/bootstrap4-theme@dev`
+`yarn add @asu-ke/bootstrap4-theme@dev`
 
 Make sure to have included [FontAwesome](https://fontawesome.com/) in your
 project to allow icons to be shown:
-`yarn add @asu-design-system/components-core@dev`
+`yarn add @asu-ke/components-core@dev`
 
 Additionally, Google Tag Manager (GTM) and a dataLayer should be provided by
 the site launching the RFI component so Google Analytics data can be properly
@@ -44,7 +44,7 @@ Includes example and description of the props to use to configure the
 RFI form. It should work if you open the file in your browser, allowing you
 to get to know the RFI component.
 
-See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu-design-system/app-rfi/index.html?path=/story/uds-asurfi--rfi-default)
+See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu-ke/app-rfi/index.html?path=/story/uds-asurfi--rfi-default)
 for example configurations to match various use-cases.
 
 ## Requesting a Source ID

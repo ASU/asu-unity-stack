@@ -1,9 +1,6 @@
 /* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
-import {
-  idGenerator,
-  sanitizeDangerousMarkup,
-} from "@asu-design-system/components-core";
+import { idGenerator, sanitizeDangerousMarkup } from "@asu-ke/components-core";
 import React, { Fragment, useContext, createRef } from "react";
 
 import { ListingPageContext } from "../../../../../core/context";

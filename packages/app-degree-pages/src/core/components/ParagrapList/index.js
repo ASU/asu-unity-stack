@@ -4,7 +4,7 @@ import {
   spreadClasses,
   sanitizeDangerousMarkup,
   idGenerator,
-} from "@asu-design-system/components-core";
+} from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 

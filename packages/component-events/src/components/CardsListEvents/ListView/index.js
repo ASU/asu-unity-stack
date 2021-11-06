@@ -1,5 +1,5 @@
 // @ts-check
-import { FeedContext, Card } from "@asu-design-system/components-core";
+import { FeedContext, Card } from "@asu-ke/components-core";
 import React, { useContext } from "react";
 
 import { formatDate, formatTime } from "../../../core/utils/date";

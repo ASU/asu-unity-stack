@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-events",
+  "name": "@asu-ke/component-events",
   "version": "1.2.1",
   "description": "Events component",
   "main": "src/index.js",
@@ -26,11 +26,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/ASU-KE/asu-unity-stack",
     "directory": "packages/component-events"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-ke/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",

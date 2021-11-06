@@ -1,5 +1,5 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core";
+import { Card } from "@asu-ke/components-core";
 import React from "react";
 
 import { progDetailSectionIds } from "../../../../core/models";

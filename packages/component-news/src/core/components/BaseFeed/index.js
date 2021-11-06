@@ -6,7 +6,7 @@ import {
   feedHeaderShape,
   feedCtaButtonShape,
   feedDataSourceShape,
-} from "@asu-design-system/components-core";
+} from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,7 +15,7 @@ import { filterData } from "../../services/data-manager";
 import { transformData } from "../../transformers/transform-data";
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType} FeedType
+ * @typedef {import("@asu-ke/components-core/src/core/types/feed-types").FeedType} FeedType
  */
 
 /**

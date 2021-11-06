@@ -1,5 +1,5 @@
 // @ts-check
-import { idGenerator } from "@asu-design-system/components-core";
+import { idGenerator } from "@asu-ke/components-core";
 import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";

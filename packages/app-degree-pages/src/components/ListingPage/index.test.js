@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
+import { Hero } from "@asu-ke/components-core";
 import {
   render,
   act,

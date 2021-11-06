@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
-import { idGenerator } from "@asu-design-system/components-core";
+import { idGenerator } from "@asu-ke/components-core";
 import React from "react";
 
 import {

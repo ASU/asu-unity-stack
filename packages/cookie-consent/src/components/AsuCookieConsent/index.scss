@@ -3,7 +3,7 @@
 // bits for which we have uds design tokens.
 
 // Import design tokens.
-@import "~@asu-design-system/design-tokens/build/scss/_variables.scss";
+@import "~@asu-ke/design-tokens/build/scss/_variables.scss";
 
 .uds-cookie-consent-component-wrapper {
   margin: 0 auto;
@@ -77,7 +77,7 @@
         font-family: $uds-font-family-base;
         color: $uds-color-font-dark-base;
         font-weight: $uds-font-weight-light;
-        
+
       }
       .uds-cookie-consent-faux-close-btn {
         position: absolute;

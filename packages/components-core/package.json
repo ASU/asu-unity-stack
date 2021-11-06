@@ -1,14 +1,14 @@
 {
-  "name": "@asu-design-system/components-core",
+  "name": "@asu-ke/components-core",
   "version": "1.17.0",
   "main": "./src/index.js",
   "description": "Core UDS Preact UI components required by other higher-order Preact packages",
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
-  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "homepage": "https://github.com/ASU-KE/asu-unity-stack#readme",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU/asu-unity-stack.git"
+    "url": "https://github.com/ASU-KE/asu-unity-stack.git"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -25,12 +25,12 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
-    "url": "https://github.com/ASU/asu-unity-stack/issues"
+    "url": "https://github.com/ASU-KE/asu-unity-stack/issues"
   },
   "devDependencies": {
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/storybook": "^4.0.3",
-    "@asu-design-system/bootstrap4-theme": "latest",
+    "@asu-ke/bootstrap4-theme": "latest",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.14",
     "@storybook/addon-actions": "^6.2.3",

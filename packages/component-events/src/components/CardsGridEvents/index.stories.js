@@ -5,7 +5,7 @@ import { CardsGridEvents } from ".";
 
 import { createMockParam } from "../../core/utils";
 
-/** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
+/** @typedef {import("@asu-ke/components-core/src/core/types/feed-types").FeedType } FeedType */
 
 export default {
   title: "Events component/Cards Grid",

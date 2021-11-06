@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 // @ts-check
-import { Card } from "@asu-design-system/components-core";
+import { Card } from "@asu-ke/components-core";
 import React from "react";
 
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";

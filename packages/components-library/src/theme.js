@@ -25,8 +25,8 @@ import {
   ComponentButtonPaddingYMedium,
   ComponentButtonPaddingXMedium,
   ComponentButtonMaroonColor,
-  ComponentButtonMaroonBackgroundColor
-} from "@asu-design-system/design-tokens/build/es6/tokens";
+  ComponentButtonMaroonBackgroundColor,
+} from "@asu-ke/design-tokens/build/es6/tokens";
 import { css } from "@emotion/css";
 
 const hiddenStyle = css`
@@ -82,7 +82,7 @@ const focusStyle = `
     outline: none !important;
     box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
   }
-`
+`;
 const mobileBreak = "1260px";
 
 const containerSize = "1224px";
@@ -125,5 +125,5 @@ export {
   ComponentButtonPaddingYMedium,
   ComponentButtonPaddingXMedium,
   ComponentButtonMaroonColor,
-  ComponentButtonMaroonBackgroundColor
+  ComponentButtonMaroonBackgroundColor,
 };

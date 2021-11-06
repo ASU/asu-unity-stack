@@ -11,7 +11,7 @@ for Preact to be added as a peer dependency (`$ yarn add preact`).
 ### Install
 
 ```bash
-yarn add @asu-design-system/cookie-consent
+yarn add @asu-ke/cookie-consent
 ```
 
 ## Use on static HTML page

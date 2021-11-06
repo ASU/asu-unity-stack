@@ -1,6 +1,6 @@
 // @ts-check
 
-import { Accordion } from "@asu-design-system/components-core";
+import { Accordion } from "@asu-ke/components-core";
 import React, { useContext } from "react";
 import styled from "styled-components";
 

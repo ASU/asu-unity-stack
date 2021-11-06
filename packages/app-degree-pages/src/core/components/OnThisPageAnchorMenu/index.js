@@ -1,12 +1,12 @@
 // @ts-check
-import { AnchorMenu } from "@asu-design-system/components-core";
+import { AnchorMenu } from "@asu-ke/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu-ke/components-core/src/core/types/shared-types").AnchorMenuItem} AnchorMenuItem
  * */
 
 /**
