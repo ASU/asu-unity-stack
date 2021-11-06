@@ -7,8 +7,7 @@
   "license": "Unlicensed",
   "private": true,
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",

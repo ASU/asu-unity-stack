@@ -3,8 +3,7 @@
   "version": "1.1.6",
   "description": "",
   "publishConfig": {
-    "access": "restricted",
-    "registry": "http://registry.web.asu.edu/"
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",

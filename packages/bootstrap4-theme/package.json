@@ -9,8 +9,7 @@
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
