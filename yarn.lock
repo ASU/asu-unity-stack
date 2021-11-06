@@ -10,10 +10,13 @@
     loader-utils "^1.1.0"
     purgecss "^2.1.2"
 
-"@asu-design-system/bootstrap4-theme@latest":
-  version "3.3.2"
-  resolved "https://registry.web.asu.edu/@asu-design-system%2fbootstrap4-theme/-/bootstrap4-theme-3.3.2.tgz#62db873b631af4d51872f4cca3c7c07265ce3187"
-  integrity sha512-KDeIkdB4tL7tgK7hsnt7UzM4x+Lm7m30beKPPofNbK4m0i/Pf1ixHrWvpZvwxYevBnTTphh5WfOa8cg+GeBHiw==
+"@asu-ke/bootstrap4-theme@latest":
+  version "7.4.1"
+  resolved "https://npm.pkg.github.com/download/@asu-ke/bootstrap4-theme/7.4.1/4c06ef9adceb2fb3e68db869e8076a52b942920de8844e01c39f353351f6187e#d789fe321b8b4940c56553564432632a077762d7"
+  integrity sha512-3yA4WdFpmUV2oOG7rFtloEKoTL6hKM80CnzE6qr3uWufcN2JxTARKd7PAT88JDoucWQE/HBt0WmgPPNuxnJjJQ==
+  dependencies:
+    react "16.14.0"
+    react-dom "16.14.0"
 
 "@babel/code-frame@7.10.4":
   version "7.10.4"
