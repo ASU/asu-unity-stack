@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU-KE/asu-unity-stack.git"
+    "url": "git://github.com/ASU-KE/asu-unity-stack.git"
   },
   "devDependencies": {
     "@americanexpress/purgecss-loader": "^2.0.0",
