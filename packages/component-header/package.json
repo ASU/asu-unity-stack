@@ -6,6 +6,11 @@
   "author": "Nicolas Baudon",
   "license": "Unlicensed",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "src/*"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },

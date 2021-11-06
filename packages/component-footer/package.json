@@ -16,6 +16,13 @@
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*",
+    "src/*",
+    "vendor/*"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },

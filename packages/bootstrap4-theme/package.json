@@ -8,6 +8,11 @@
     "url": "git://github.com/ASU-KE/asu-unity-stack.git",
     "directory": "packages/bootstrap4-theme"
   },
+  "files": [
+    "dist/*",
+    "docs/*",
+    "src/*"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
