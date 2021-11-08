@@ -3,11 +3,13 @@ ASU Web Standards-based implementation of `@glidejs/glide` npm library carousel.
 
 ## Architecture details
 
-This component is a simple react application showing four different carousels in the `Component views` section. The core functionalities, such as transitions, responsiveness, are provided by the library `glidejs`, `BaseCarousel` is the component that implements `glidejs` and can be found in `packages/component-carousel/src/core/components/BaseCarousel/index.js` and its sub-components in `packages/component-carousel/src/core/components/BaseCarousel/components`.
-`BaseCarousel` component is used as a blueprint to create any custom carousel.
+This component is a simple react application showing four different carousels in the `Component views` section.
+<br/>The core functionalities, such as transitions, responsiveness, are provided by the library `glidejs`, `BaseCarousel` is the component that implements `glidejs` and can be found in `/src/core/components/BaseCarousel/index.js` and its sub-components in `packages/component-carousel/src/core/components/BaseCarousel/components`.
+<br/>The `BaseCarousel` component is used as a blueprint to create any custom carousel.
+
 
 ## Component views
- The new `Carousel Component` has 2 types of views:
+ The new `Carousel Component` has 4 types of views:
 
  - Card Carousel view
  - Immge Carousel view
