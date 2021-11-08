@@ -69,7 +69,8 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
   };
 
   const bulletItems = imageItems.map((img, i) => (
-    <span
+    <button
+      type="button"
       role="option"
       className="bullet-image-container"
       key={`bullet-${i}`}
@@ -78,14 +79,13 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
       aria-selected="false"
       onClick={e => clickBullet(e, i)}
       onKeyDown={e => clickBullet(e, i)}
-      tabIndex={i}
     >
       <img
         src={img}
         alt={`Slide ${i + 1}`}
         className="glide__bullet bullet-image"
       />
-    </span>
+    </button>
   ));
 
   return <BaseBulletItemContainer>{bulletItems}</BaseBulletItemContainer>;
