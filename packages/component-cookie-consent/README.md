@@ -24,6 +24,20 @@ The way it works is: when the initializer function is called, this creates the e
 
 You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 
+<table>
+  <tr>
+    <td>
+      <a href = "docs/README.props.md">
+        <img
+          style ="border: 1px solid black;"
+          width = "300px"
+          src="../../docs/assets/readme-props-preview.png"
+        />
+      </a>
+    </td>
+  </tr>
+</table>
+
 ## CLI Commands
 
 ``` bash
