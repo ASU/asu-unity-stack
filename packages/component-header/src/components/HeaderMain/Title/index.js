@@ -1,21 +1,41 @@
 // @ts-check
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { TitlePropTypes } from "../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
+import { checkFirstLoad } from "../../../core/utils/helpers/title";
 import { TitleWrapper } from "./index.styles";
 
 const Title = () => {
-  const { title, parentOrg, parentOrgUrl, baseUrl, breakpoint } =
+  const [active, setActive] = useState(false);
+  const { title, parentOrg, parentOrgUrl, baseUrl, breakpoint, animateTitle } =
     useAppContext();
+
+  useEffect(() => {
+    if (animateTitle || animateTitle === false) {
+      setActive(animateTitle);
+      return;
+    }
+    if (animateTitle) {
+      // If a custom baseUrl is passed in, it will be used to check for first page load
+      let root = baseUrl === "/" ? window.location.hostname : baseUrl;
+      // If relative baseURL given, append to the hostname for checking first page load
+      if (!root.includes(window.location.hostname) && root.indexOf("/") === 0) {
+        root = window.location.hostname + root;
+      }
+      if (checkFirstLoad(root)) {
+        setActive(true);
+      }
+    }
+  }, [active, animateTitle, baseUrl]);
 
   if (parentOrg) {
     return (
       <TitleWrapper
         // @ts-ignore
         breakpoint={breakpoint}
-        className="title"
+        className={`title ${active ? "active" : ""}`}
         data-testid="title"
       >
         <a
@@ -36,8 +56,12 @@ const Title = () => {
     );
   }
   return (
-    // @ts-ignore
-    <TitleWrapper breakpoint={breakpoint} className="title" data-testid="title">
+    <TitleWrapper
+      // @ts-ignore
+      breakpoint={breakpoint}
+      className={`title ${active ? "active" : ""}`}
+      data-testid="title"
+    >
       <a
         className="title-subunit-name"
         href={baseUrl}

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
+import { Button } from "./components/Button";
 import {
   basicNavTree,
   navTreeWithButtons,
@@ -31,6 +32,23 @@ const Template = args => (
     </div>
   </>
 );
+
+const AnimatedTitleTemplate = args => {
+  const [animate, setAnimate] = useState(false);
+
+  return (
+    <>
+      <ASUHeader {...{ ...args, animateTitle: animate }} />
+      <div style={{ marginTop: 200, textAlign: "center" }}>
+        <Button
+          text="Animate Title"
+          color="dark"
+          onClick={() => setAnimate(prevState => !prevState)}
+        />
+      </div>
+    </>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -154,5 +172,15 @@ Partner.args = {
   navTree: basicNavTree,
   loggedIn: false,
   userName: "",
-  breakpoint: "Lg",
+  breakpoint: "Xl",
+};
+
+export const AnimatedTitle = AnimatedTitleTemplate.bind({});
+AnimatedTitle.args = {
+  title: "Subdomain name",
+  navTree: basicNavTree,
+  loggedIn: false,
+  logoutLink: "/caslogout",
+  loginLink: "/cas",
+  breakpoint: "Xl",
 };
