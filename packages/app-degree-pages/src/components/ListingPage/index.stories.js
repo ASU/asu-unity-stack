@@ -8,7 +8,7 @@ import { DOMAIN_URL } from "../../core/constants";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
- * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
+ * @typedef {import('../../core/types/listing-page-types').ListingPageProps } AppProps
  */
 
 export default {
@@ -40,7 +40,7 @@ const Template = ({
   />
 );
 
-/** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
+/** @type {import("../../core/types/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
   // this is just an example working on Storybook
@@ -50,7 +50,7 @@ const actionUrls = {
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
 };
 
-/** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
+/** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
   // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   // another example: dataSource: "/api/mocks/degree-search",

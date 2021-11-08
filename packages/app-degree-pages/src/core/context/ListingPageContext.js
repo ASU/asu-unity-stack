@@ -5,7 +5,7 @@ import React, { createContext } from "react";
 
 /**
  * @type {React.Context<{
- *  columSettings: import("../models/listing-page-types").ColumSettings
+ *  columSettings: import("../types/listing-page-types").ColumSettings
  * }>}
  */
 const ListingPageContext = createContext(null);

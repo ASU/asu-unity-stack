@@ -9,7 +9,7 @@ import {
 } from "../../../../../core/models";
 
 /**
- * @typedef {import('../../../../../core/models/shared-types').LinkItem} AtAGlanceItem
+ * @typedef {import('../../../../../core/types/shared-types').LinkItem} AtAGlanceItem
  * @typedef {{
  *  item: AtAGlanceItem[] | string
  *  type: string

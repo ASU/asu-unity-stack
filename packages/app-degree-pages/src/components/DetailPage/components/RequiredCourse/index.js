@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Styled from "styled-components";
 
-/** @typedef {import('../../../../core/models/program-detail-types').RequiredCoursesProps} RequiredCoursesProps */
+/** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
 const ButtonGroup = Styled.div`
   display: flex;

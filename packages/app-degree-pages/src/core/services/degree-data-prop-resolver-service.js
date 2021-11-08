@@ -140,8 +140,8 @@ function degreeDataPropResolverService(row = {}) {
 
 /**
  *
- * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
- * @returns {import("src/core/models/shared-types").LinkItem[]}
+ * @param {import("src/core/types/shared-local-types").DegreeDataPropResolver} resolver
+ * @returns {import("src/core/types/shared-types").LinkItem[]}
  */
 function getCampusLocations(resolver) {
   const program = resolver.getProgramType();
@@ -174,8 +174,8 @@ function getCampusLocations(resolver) {
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
- * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
+ * @param {import("src/core/types/detail-page-types").AnchorMenuProps} anchorMenu
+ * @param {import("src/core/types/shared-local-types").DegreeDataPropResolver} resolver
  */
 const filterAnchorMenu = (anchorMenu, resolver) => {
   const validAnchors = { ...anchorMenu };
@@ -195,7 +195,7 @@ const filterAnchorMenu = (anchorMenu, resolver) => {
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
+ * @param {import("src/core/types/detail-page-types").AnchorMenuProps} anchorMenu
  * @returns
  */
 const hasValidAnchorMenu = anchorMenu => {

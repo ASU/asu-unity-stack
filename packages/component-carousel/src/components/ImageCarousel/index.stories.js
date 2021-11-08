@@ -24,9 +24,10 @@ const mockItemWithMoreContent = () =>
   imageCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
-    content: ` Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+    content: `<p>Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua eiusmod tempo.`,
+    labore et dolore magna aliqua eiusmod tempo.</p>
+    <p>Another line of content</p>`,
   }));
 
 export default {

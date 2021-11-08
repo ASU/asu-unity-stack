@@ -6,7 +6,7 @@ import { exampleCareersTableDataPropShape } from "../../../../../core/models/app
 import { SunIcon, LeafIcon } from "../index.style";
 
 /**
- * @typedef {import('../../../../../core/models/shared-types').TableProps} TableProps
+ * @typedef {import('../../../../../core/types/shared-types').TableProps} TableProps
  */
 
 /**

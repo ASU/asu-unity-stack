@@ -14,7 +14,7 @@ ASU offers this program in an online format
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").AttendOnlineProps & {
+ * @param {import("src/core/types/detail-page-types").AttendOnlineProps & {
  *  learnMoreLink: string
  * }} props
  * @returns

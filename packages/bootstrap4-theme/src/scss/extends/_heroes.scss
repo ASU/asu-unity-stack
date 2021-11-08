@@ -39,7 +39,7 @@
 
 div[class^='uds-hero'] {
   display: grid;
-  grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
+  grid-template-columns: $uds-size-spacing-4 1fr $uds-size-spacing-4;
   grid-template-rows: 1fr auto auto auto $uds-size-spacing-3 auto;
   gap: 0px 0px;
   max-width: 1920px;

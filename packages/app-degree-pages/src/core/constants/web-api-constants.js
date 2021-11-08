@@ -3,7 +3,7 @@
 const DOMAIN_URL = "https://webapp4.asu.edu";
 
 /**
- * @type {import("../models/listing-page-types").AppDataSource}
+ * @type {import("../types/listing-page-types").ProgramListDataSource}
  */
 const listingPageDefaultDataSource = {
   endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
@@ -23,9 +23,10 @@ const listingPageDefaultDataSource = {
 };
 
 /**
- * @type {import("../models/listing-page-types").AppDataSource}
+ * @type {import("../types/detail-page-types").ProgramDetailDataSource}
  */
 const detailPageDefaultDataSource = {
+  acadPlan: null,
   endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   method: "findDegreeByAcadPlan",
   init: "false",

@@ -4,8 +4,7 @@ import { tagHeadingList } from "../models";
 
 /**
  *
- * @param {import("../models/shared-types").AppTitleProps} title
- * @returns
+ * @param {import("../types/shared-types").ContentItem} title
  */
 function parseHeading(title, defaultHeading = "h2") {
   return (

@@ -245,6 +245,10 @@ You can find the full list of props types into the file [program-detail-types.js
  * }} ProgramDetailPageProps
  */
 ```
+
+## Component props documentation
+
+You can find a full list of props into the [docs/README.props.md](docs/README.props.md)
 ### Examples
 
 The folder [packages/app-degree-pages/examples](/packages/app-degree-pages/examples)

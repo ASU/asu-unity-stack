@@ -8,6 +8,7 @@ import React from "react";
  */
 
 /**
+ * Generic page item component to render each pagination item
  * @param {PageItemProps} props
  * @ignore
  */

@@ -9,7 +9,7 @@ import { DetailPage } from "./index";
 import * as service from "../../core/services/degree-data-prop-resolver-service";
 
 /**
- * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
+ * @typedef {import('../../core/types/detail-page-types').DetailPageProps} AppProps
  */
 
 /** @type {AppProps} */

@@ -12,7 +12,7 @@ describe("#OnThisPageAnchorMenu", () => {
     const targetIdName = "dummyId";
     const text = "dummy link";
 
-    /** @type {import("src/core/models/program-detail-types").AnchorMenuProps} */
+    /** @type {import("src/core/types/detail-page-types").AnchorMenuProps} */
     const anchorMenu = {
       affordingCollege: true,
       externalAnchors: [

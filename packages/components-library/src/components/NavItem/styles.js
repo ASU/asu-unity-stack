@@ -56,11 +56,11 @@ const navItemStyles = breakpoint => css`
       > a {
         padding: 0.5rem 0;
 
-        :visited {
+        &.nav-item:visited {
           color: #191919;
         }
 
-        :hover {
+        &.nav-item:hover {
           color: #8c1d40;
           text-decoration: underline;
         }

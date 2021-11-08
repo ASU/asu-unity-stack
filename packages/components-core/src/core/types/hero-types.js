@@ -6,11 +6,12 @@
  */
 /**
  * @typedef {Object} HeroProps
- * @property {ImageProps} image
- * @property {ContentProps} title
- * @property {ContentProps} subTitle
- * @property {ContentProps[]} contents
- * @property {"white"|"black"} contentsColor
+ * @property {boolean} [hide]
+ * @property {ImageProps} [image]
+ * @property {ContentProps} [title]
+ * @property {ContentProps} [subTitle]
+ * @property {ContentProps[]} [contents]
+ * @property {"white"|"black"} [contentsColor]
  * @property {"heading-hero"|"story-hero"} [type] defaut value is "heading-hero"
  */
 

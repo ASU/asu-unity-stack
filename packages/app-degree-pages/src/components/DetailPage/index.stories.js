@@ -8,7 +8,7 @@ import { DetailPage } from ".";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
- * @typedef {import('../../core/models/program-detail-types').ProgramDetailPageProps} AppProps
+ * @typedef {import('../../core/types/detail-page-types').DetailPageProps} AppProps
  */
 
 export default {
@@ -267,8 +267,8 @@ const defaultArgs = {
   },
   programContactInfo: {
     // hide: true, // OPTIONAL
-    departmentUrl: "#",
-    emailUrl: "#",
+    department: { text: "", url: "#" },
+    email: { text: "", url: "#" },
   },
 };
 
@@ -360,7 +360,9 @@ WithYoutubeVideo.args.introContent = {
   video: {
     // @ts-ignore
     type: "youtube",
-    url: "https://www.youtube.com/watch?v=aA2DCIDNxmw&list=PLuoS9aQM7Lzurd5ezsuCIlxyag7q_c-NQ",
+    url:
+      "https://www.youtube.com/watch" +
+      "?v=aA2DCIDNxmw&list=PLuoS9aQM7Lzurd5ezsuCIlxyag7q_c-NQ",
   },
 };
 

@@ -6,7 +6,7 @@ import { flexibleDegreeOptionsLinks } from "../../../../../core/models";
 import { List } from "./index.style";
 
 /**
- * @typedef {import('../../../../../core/models/program-detail-types').FlexibleDegreeOptionItem} FlexibleDegreeOptionItem
+ * @typedef {import('../../../../../core/types/detail-page-types').FlexibleDegreeOptionItem} FlexibleDegreeOptionItem
  */
 
 /**

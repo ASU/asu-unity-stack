@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Sidebar', 'Atoms', 'Examples');
 
-export const UnorderedList = createStory(
+export const Sidebar = createStory(
   <div class="container my-5">
     <div class="row mt-4">
       <div class="col-md-12 pb-4">

@@ -20,8 +20,7 @@ import {
 import { parseHeading } from "../../../../core/utils";
 
 /**
- * @typedef {import('../../../../core/models/listing-page-types').IntroContentProps} IntroContentProps
- * @typedef {import('../../../../core/models/shared-types').AppTitleProps} AppTitleProps
+ * @typedef {import('../../../../core/types/listing-page-types').IntroContentProps} IntroContentProps
  */
 
 const PhotoGrid = styled.div`

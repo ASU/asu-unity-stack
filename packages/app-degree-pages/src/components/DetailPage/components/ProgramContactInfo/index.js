@@ -46,7 +46,7 @@ const ListContainer = styled.ul`
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").ProgramContactInfoProps} props
+ * @param {import("src/core/types/detail-page-types").ProgramContactInfoProps} props
  * @returns
  */
 function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {

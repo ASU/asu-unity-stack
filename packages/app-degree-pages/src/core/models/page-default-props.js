@@ -8,8 +8,8 @@ const currentScriptPath = getCurrentScriptPath();
  *
  * @param {string} appPathFolder
  * @returns {{
- *    listingPageDefault: import("./listing-page-types").ListingPageProps
- *    detailPageDefault: import("./program-detail-types").ProgramDetailPageProps
+ *    listingPageDefault: import("../types/listing-page-types").ListingPageProps
+ *    detailPageDefault: import("../types/detail-page-types").DetailPageProps
  * }}
  */
 const resolveDefaultProps = appPathFolder => {
@@ -18,7 +18,7 @@ const resolveDefaultProps = appPathFolder => {
   const listingImageFolder = `${scriptPath}/assets/img/listing-page`;
 
   /**
-   * @type {import("./program-detail-types").ProgramDetailPageProps}
+   * @type {import("../types/detail-page-types").DetailPageProps}
    */
   const detailPageDefault = {
     dataSource: undefined,
@@ -102,7 +102,7 @@ const resolveDefaultProps = appPathFolder => {
   };
 
   /**
-   * @type {import("./listing-page-types").ListingPageProps}
+   * @type {import("../types/listing-page-types").ListingPageProps}
    */
   const listingPageDefault = {
     actionUrls: {
@@ -126,7 +126,7 @@ const resolveDefaultProps = appPathFolder => {
 
 /**
  *
- * @param {import("./listing-page-types").AppDataSource | string} dataSource
+ * @param {import("../types/listing-page-types").ProgramListDataSource | string} dataSource
  * @returns
  */
 const resolveListingHeroTitle = dataSource => {

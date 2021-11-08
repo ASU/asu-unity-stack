@@ -40,8 +40,8 @@ const GlobalStyle = createGlobalStyle`
  *    programs: Object[]
  *    loading: boolean
  *    totalRows?: number
- *    columSettings?: import("src/core/models/listing-page-types").ColumSettings
- *    actionUrls: import("src/core/models/listing-page-types").ActionUrlProps
+ *    columSettings?: import("src/core/types/listing-page-types").ColumSettings
+ *    actionUrls: import("src/core/types/listing-page-types").ActionUrlProps
  * }} GridListingProps
  */
 

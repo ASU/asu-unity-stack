@@ -34,7 +34,7 @@ function saveFav() {
 
 /**
  *
- * @param {import("../models/shared-types").DegreeDataPropResolver} resolver
+ * @param {import("../types/shared-local-types").DegreeDataPropResolver} resolver
  * @param {string} majorInfoUrl
  */
 function parseMajorInfoLink(resolver, majorInfoUrl) {
@@ -49,7 +49,7 @@ function parseMajorInfoLink(resolver, majorInfoUrl) {
 
 /**
  *
- * @param {import("../models/shared-types").DegreeDataPropResolver} resolver
+ * @param {import("../types/shared-local-types").DegreeDataPropResolver} resolver
  * @param {string} majorInfoUrl
  */
 function accellerateDegreeLink(resolver, majorInfoUrl) {

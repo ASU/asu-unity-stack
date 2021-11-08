@@ -65,7 +65,7 @@ const OverlapImage = styled.img`
 
 /**
  *
- * @param {import("src/core/models/shared-types").OverlapContentImage} props
+ * @param {import("src/core/types/shared-types").OverlapContentImage} props
  * @returns
  */
 function OverlapContentImage({

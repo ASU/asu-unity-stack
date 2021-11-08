@@ -38,11 +38,13 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
           >
             <div className="uds-caption-text">
               {!title ? (
-                <span>{content}</span>
+                // eslint-disable-next-line react/no-danger
+                <div dangerouslySetInnerHTML={{ __html: content }} />
               ) : (
                 <>
                   <h3>{title}</h3>
-                  <p>{content}</p>
+                  {/* eslint-disable-next-line react/no-danger */}
+                  <div dangerouslySetInnerHTML={{ __html: content }} />
                 </>
               )}
             </div>
