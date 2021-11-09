@@ -145,11 +145,11 @@ with them.
 
 If you have a package you'd like to contribute, or want to build a new package, start by creating an issue on this repo with details about the package. From there we can discuss the details of the package and any individual needs. Once a package has been approved for inclusion in the repo, there are a couple of helpful resources for package setup and testing:
 
-For a full explanation of basic configuration see example package [config](./examples/example-package/README.md)
+For a full explanation of basic configuration see example package [config](./packages-disabled/app-new-template/README.md)
 
 ### Storybook configuration
 
-Storybook is the standard component explorer which we use for local development. Each package should have a Storybook configuration under a root '.storybook' directory. For more info see the Storybook config in the 'examples/example-package/.storybook' directory, and the example story [here](../examples/example-package/src/components/Example/Example.stories.js).
+Storybook is the standard component explorer which we use for local development. Each package should have a Storybook configuration under a root '.storybook' directory. For more info see the Storybook config in the 'examples/example-package/.storybook' directory, and the example story [here](./packages-disabled/app-new-template/src/components/MyComponent/index.stories.js).
 
 ### Webpack configuration
 

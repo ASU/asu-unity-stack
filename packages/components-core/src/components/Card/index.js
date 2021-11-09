@@ -355,9 +355,9 @@ const CardContent = ({
     )}
     {buttons && (
       <div className="card-buttons">
-        <div className="card-button" data-testid="card-button">
-          {buttons.map(button => (
-            // @ts-ignore
+        {buttons.map(button => (
+          <div className="card-button" data-testid="card-button">
+            {/* @ts-ignore */}
             <Button
               key={`${button.label}-${button.href}`}
               ariaLabel={button.ariaLabel}
@@ -369,8 +369,8 @@ const CardContent = ({
               size={button.size}
               target={button.target}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     )}
     {linkUrl && linkLabel && (

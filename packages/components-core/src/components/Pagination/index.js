@@ -29,7 +29,7 @@ export const Pagination = ({
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
-  // start small device
+  // Start small device
   const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
   const [isSmallDevice, setSmallDevice] = useState(
     window.innerWidth < SMALL_DEDVICE_WIDTH
@@ -37,7 +37,7 @@ export const Pagination = ({
   const [isXSmallDevice, setXSmallDevice] = useState(
     window.innerWidth < X_SMALL_DEDVICE_WIDTH
   );
-  // end small device
+  // End small device
   const [showArrowIcons, setShowArrowIcons] = useState(!showLastButton);
 
   useEffect(() => {
@@ -84,6 +84,7 @@ export const Pagination = ({
   };
 
   const renderPages = () => {
+    // Set the ranges to be shown in the pagination
     const lowerRange = createRange(
       selectedPage - Math.floor(currentTotalNumbers / 2),
       selectedPage,

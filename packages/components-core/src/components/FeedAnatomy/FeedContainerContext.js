@@ -12,6 +12,7 @@ const Container = styled.section``;
 const FeedContext = createContext(null);
 
 /**
+ * This component is the HOC(high order component) used on component-events and component-news packages
  * @param {{
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
@@ -35,7 +36,7 @@ const FeedContainerProvider = ({
   dataFilter = item => item,
   maxItems = 3,
 }) => {
-  const [{ data: rawData, loading, error }, doFetching] = useFetch();
+  const [{ data: rawData, loading, error }, doFetching] = useFetch(); // Call the fetching hook
   const [feeds, setFeeds] = useState([]);
 
   const dataSource = { ...defaultProps.dataSource, ...pDataSource };
@@ -45,6 +46,7 @@ const FeedContainerProvider = ({
   }, [dataSource?.url]);
 
   useEffect(() => {
+    // Work all the data and set the filterd and mapped feeds
     const transformedData = rawData?.nodes.map(dataTransformer);
     const filteredData = transformedData?.filter(item =>
       dataFilter(item, pDataSource?.filters)
@@ -53,6 +55,7 @@ const FeedContainerProvider = ({
   }, [rawData]);
 
   return (
+    // Init the context to be used on its childrens
     <FeedContext.Provider value={{ feeds }}>
       <Container>
         {renderHeader}

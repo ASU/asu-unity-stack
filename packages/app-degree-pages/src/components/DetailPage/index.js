@@ -57,6 +57,7 @@ import { RequiredCourse } from "./components/RequiredCourse";
 
 /**
  * @param {DetailPageProps} props
+ * @returns {JSX.Element}
  */
 const DetailPage = ({
   appPathFolder,

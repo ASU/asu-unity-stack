@@ -32,6 +32,7 @@ export const AnchorMenu = ({
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
+    // Select first next sibling element of the anchor menu
     const firstElement = document
       .getElementById(firstElementId)
       ?.getBoundingClientRect().top;
@@ -63,6 +64,7 @@ export const AnchorMenu = ({
     setActualContainer(curSection);
   };
 
+  // Set any ASU Header on the document
   const setHeader = () => {
     const pageHeader =
       document.getElementById("asu-header") ||
@@ -81,8 +83,10 @@ export const AnchorMenu = ({
   }, [hasHeader]);
 
   const handleClickLink = container => {
+    // Set scroll position considering if ASU Header is setted or not
     const curScroll = window.scrollY - (hasHeader ? headerHeight + 100 : 100);
     const anchorMenuHeight = isSmallDevice ? 410 : 90;
+    // Set where to scroll to
     let scrollTo =
       document.getElementById(container)?.getBoundingClientRect().top +
       curScroll;
@@ -133,6 +137,7 @@ export const AnchorMenu = ({
         >
           <nav className="nav" aria-label={menuTitle}>
             {items?.map(item => (
+              // Use this package button
               // @ts-ignore
               <Button
                 data-testid={`anchor-item-${item.targetIdName}`}
