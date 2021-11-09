@@ -1,17 +1,17 @@
 {
   "component": {
     "list": {
+      "max-width": {
+        "value": "43.75ch"
+      },
       "spacing": {
         "padding": {
-          "value": "{size.spacing.6.value} {size.spacing.10.value} {size.spacing.6.value} {size.spacing.4.value}"
+          "value": "0 0 {size.spacing.6.value} {size.spacing.4.value}"
         },
         "list-style": {
           "value": "none"
         },
         "li": {
-          "max-width": {
-            "value": "75ch"
-          },
           "margin-bottom": {
             "value": "{size.spacing.2.value}"
           },

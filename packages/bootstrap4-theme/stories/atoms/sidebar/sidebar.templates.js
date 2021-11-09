@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Sidebar', 'Atoms', 'Templates');
 
-export const Default = createStory(
+export const Sidebar = createStory(
   <div class="col-md-4">
     <h3>Lorem ipsum</h3>
     <div
