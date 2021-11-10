@@ -16,6 +16,7 @@ import {
   resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
+  GRID_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
   ERROR_MESSAGE,
@@ -31,6 +32,7 @@ import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
+import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
 import { SearchBar } from "./components/SearchBar";
 
 /**
@@ -82,7 +84,7 @@ const ListingPage = ({
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   /** @type {UseDataViewState} */
-  const [dataViewComponent] = useState(LIST_VIEW_ID);
+  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
@@ -300,15 +302,14 @@ const ListingPage = ({
                 onRemove={onFilterSummaryRemove}
               />
 
-              {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
-              {/* <DataViewSwitch
-              onChange={selectedViewId => {
-                setSearchLoading(true);
-                setDataViewComponent(selectedViewId);
-                setSearchLoading(false);
-              }}
-              checkedId={dataViewComponent}
-            /> */}
+              <DataViewSwitch
+                onChange={selectedViewId => {
+                  setSearchLoading(true);
+                  setDataViewComponent(selectedViewId);
+                  setSearchLoading(false);
+                }}
+                checkedId={dataViewComponent}
+              />
             </div>
           </section>
         ) : null}

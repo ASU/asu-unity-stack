@@ -1,5 +1,4 @@
 /* eslint-disable no-alert */
-// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 // @ts-check
 import { Card } from "@asu-design-system/components-core";
 import React from "react";
@@ -13,9 +12,8 @@ import {
 import { degreeListPropTypes } from "../programs-prop-types";
 import { SectionCard } from "./index.style";
 /**
- *
  * @param {import("..").GridListingProps} props
- * @returns
+ * @returns {JSX.Element}
  */
 function GridView({ programs, loading, actionUrls }) {
   return (
@@ -29,7 +27,7 @@ function GridView({ programs, loading, actionUrls }) {
         const resolver = degreeDataPropResolverService(row);
 
         return (
-          <div className="col-3">
+          <div className="col col-sm-12 col-md-4 col-lg-3">
             <Card
               type="degree"
               horizontal={false}
@@ -45,17 +43,12 @@ function GridView({ programs, loading, actionUrls }) {
                   size: "default",
                   label: "Reqeuest Info",
                   href: requestInfoLink(),
-                  // resolver.getAcadPlan(),
-                  // resolver.getMajorDesc(),
-                  // resolver.getEmailAddress()
                 },
                 {
                   color: "gold",
                   size: "small",
                   label: "Apply",
-                  onClick: () =>
-                    // todo: refactor this solution
-                    alert("APPLY NOW: TODO..."),
+                  href: actionUrls.applyNowUrl,
                 },
               ]}
             />

@@ -1,5 +1,3 @@
-// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
-
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";

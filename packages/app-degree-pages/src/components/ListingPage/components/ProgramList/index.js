@@ -18,18 +18,20 @@ import { ListView } from "./ListView";
 import { degreeListPropTypes } from "./programs-prop-types";
 
 const GlobalStyle = createGlobalStyle`
+
   .mobile-view {
     display: none;
   }
-
-  @media (max-width: 768px) {
-    .desktop-view {
-      display: none;
-    }
-    .mobile-view {
-      display: block;
-      .card-foldable .card-header h4 a {
-        color: #8c1d40;
+  [data-view-type="list-view"] {
+    @media (max-width: 768px) {
+      .desktop-view {
+        display: none;
+      }
+      .mobile-view {
+        display: block;
+        .card-foldable .card-header h4 a {
+          color: #8c1d40;
+        }
       }
     }
   }
@@ -88,7 +90,7 @@ function ProgramList({
         columSettings,
       }}
     >
-      <section data-testid="program-list">
+      <section data-testid="program-list" data-view-type={dataViewComponent}>
         <GlobalStyle />
 
         <div className="desktop-view">
