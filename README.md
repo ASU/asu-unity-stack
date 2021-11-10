@@ -152,7 +152,8 @@ This tool shows outdated markup into the folder `bootstrap4-theme`
 It takes as an argument the number of days past from the last file changes.
 
 Example:
-let's say today is 4 November 2021 and I want to show those files changed 2 days ago
+let's say today is 4 November 2021 and I want to show those files changed 8 days ago
+
 run the command  `node ./scripts/check-element-changes.js -d 8`
 
 I will display  only those files, which extension is `.templates.js`
