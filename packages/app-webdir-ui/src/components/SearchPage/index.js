@@ -1,9 +1,38 @@
 import { Button } from "@asu-design-system/components-core";
 import React from "react";
 
+import { TabbedPanels } from "../../../../components-core";
 import { getTestCards } from "../assets/test-data";
 import { ASUFacultyAndStaffResults } from "../FacultyAndStaffResults/index";
 import { SearchPage } from "./index.styles";
+
+export const pageTabs = [
+  {
+    id: "all",
+    title: "All ASU Search",
+    content: <div>Search</div>,
+  },
+  {
+    id: "subdomain",
+    title: "<<Subdomain>>",
+    content: <div>Subdomain</div>,
+  },
+  {
+    id: "staff",
+    title: "Faculty and Staff",
+    content: (
+      <ASUFacultyAndStaffResults
+        profiles={getTestCards()}
+        searchTerm="Sarah Hough"
+      />
+    ),
+  },
+  {
+    id: "students",
+    title: "Students",
+    content: <div>Students</div>,
+  },
+];
 
 const ASUSearchPage = () => {
   return (
@@ -22,10 +51,7 @@ const ASUSearchPage = () => {
           <Button color="maroon" icon={["fas", "search"]} label="Search" />
         </div>
       </form>
-      <ASUFacultyAndStaffResults
-        profiles={getTestCards()}
-        searchTerm="Sarah Hough"
-      />
+      <TabbedPanels panels={pageTabs} />
     </SearchPage>
   );
 };

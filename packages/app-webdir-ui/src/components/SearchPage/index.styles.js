@@ -18,6 +18,22 @@ const SearchPage = styled.div`
 
       input {
         margin-right: 16px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    form {
+      margin-bottom: 24px;
+      max-width: 100%;
+
+      .form-group {
+        flex-direction: column;
+
+        input {
+          margin-right: 0;
+          margin-bottom: 24px;
+        }
       }
     }
   }
