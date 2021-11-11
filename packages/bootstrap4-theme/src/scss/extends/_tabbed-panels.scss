@@ -80,6 +80,8 @@
 
 .scroll-control {
   &-prev {
+    outline: none;
+    border: none;
     width: 80px;
     position: absolute;
     height: 100%;
