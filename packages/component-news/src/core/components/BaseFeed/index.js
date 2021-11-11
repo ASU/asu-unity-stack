@@ -53,7 +53,7 @@ const BaseFeed = ({
       dataSource={dataSource}
       defaultProps={defaultProps}
       noFeedText="No news to show."
-      maxItems={maxItems || defaultProps.maxItems}
+      maxItems={maxItems}
     />
   );
 };

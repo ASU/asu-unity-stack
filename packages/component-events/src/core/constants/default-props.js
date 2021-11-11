@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("../models/types").FeedType} */
+/** @type {import("../types/events-types").FeedType} */
 
 const defaultProps = {
   header: {
@@ -15,7 +15,6 @@ const defaultProps = {
   dataSource: {
     url: "https://asuevents.asu.edu/feed-json/",
   },
-  maxItems: 3,
 };
 
 export { defaultProps };

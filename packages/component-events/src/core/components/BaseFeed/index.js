@@ -37,7 +37,7 @@ const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
     dataSource={dataSource}
     defaultProps={defaultProps}
     noFeedText="No events to show."
-    maxItems={maxItems || defaultProps.maxItems}
+    maxItems={maxItems}
   />
 );
 

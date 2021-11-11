@@ -91,8 +91,8 @@ WithFilters.parameters = {
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const MaxItems = Template.bind({});
-MaxItems.args = {
+export const WithMaxItems = Template.bind({});
+WithMaxItems.args = {
   header: {
     color: "dark",
     text: "News List",
@@ -105,9 +105,9 @@ MaxItems.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-  maxItems: 10,
+  maxItems: 2,
 };
-MaxItems.parameters = {
+WithMaxItems.parameters = {
   mockData: createMockParam(),
 };
 
