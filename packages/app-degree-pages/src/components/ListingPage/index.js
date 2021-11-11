@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import {
@@ -11,9 +11,9 @@ import {
   ErrorAlert,
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
+import { AppContext, AppProvider } from "../../core/context";
 import { useListingPageLogger } from "../../core/hooks";
 import {
-  resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
   GRID_VIEW_ID,
@@ -39,7 +39,7 @@ import { SearchBar } from "./components/SearchBar";
  * @typedef {import('../../core/types/listing-page-types').ListingPageProps} ListingPageProps
  * @typedef {import("../../core/types/shared-local-types").FiltersState} FiltersState
  * @typedef {import("../../core/types/shared-local-types").FilterOption} FilterOption
- * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID>} UseDataViewState
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID | GRID_VIEW_ID>} UseDataViewState
  * @typedef {import("../../core/types/shared-local-types").UseStateTuple<FiltersState>} UseFiltersState
  */
 
@@ -70,7 +70,7 @@ const FilterSeparator = styled.div.attrs({ className: "container" })`
  * @returns {JSX.Element}
  */
 const ListingPage = ({
-  appPathFolder,
+  appPathFolder: _,
   actionUrls,
   hasSearchBar = true,
   hasFilters = true,
@@ -84,14 +84,10 @@ const ListingPage = ({
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   /** @type {UseDataViewState} */
-  const [dataViewComponent, setDataViewComponent] = useState(GRID_VIEW_ID);
-  /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
-  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
+  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
-  const { listingPageDefault } = useMemo(
-    () => resolveDefaultProps(appPathFolder),
-    []
-  );
+  const { defaultState } = useContext(AppContext);
+  const { listingPageDefault } = defaultState;
   // These filter are input props which never change.
   const { collegeAcadOrg, departmentCode, showInactivePrograms } =
     programList.dataSource;
@@ -345,4 +341,16 @@ ListingPage.propTypes = {
   }),
 };
 
-export { ListingPage };
+/**
+ * @param {ListingPageProps} props
+ * @returns {JSX.Element}
+ */
+const AppComponent = props => (
+  <AppProvider listPageProps={props}>
+    <ListingPage {...props} />
+  </AppProvider>
+);
+
+AppComponent.propTypes = ListingPage.propTypes;
+
+export { AppComponent as ListingPage };

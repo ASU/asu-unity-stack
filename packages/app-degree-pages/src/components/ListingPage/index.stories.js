@@ -91,9 +91,10 @@ const defaultArgs = {
   // hasSearchBar: false, // OPTIONAL
   programList: {
     dataSource,
-    settings: {
-      hideCollegeSchool: true,
-    },
+    // OPTIONAL
+    // settings: {
+    //   hideCollegeSchool: true,
+    // },
   },
 };
 
@@ -181,6 +182,11 @@ WithIntroText.args = {
     dataSource,
     settings: {
       hideCollegeSchool: true,
+    },
+    cardSettings: {
+      image: {
+        url: `examples/assets/img/ds_header_undergrad.jpg`,
+      },
     },
   },
 };

@@ -64,6 +64,11 @@
  */
 
 /**
+ * @typedef {Object} CardSettings
+ * @property {ImageItem} [image]
+ */
+
+/**
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  *  @ignore

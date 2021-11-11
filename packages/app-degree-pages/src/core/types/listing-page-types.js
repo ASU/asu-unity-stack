@@ -19,6 +19,9 @@
 /**
  * @typedef {import("./shared-types").ColumSettings} ColumSettings
  */
+/**
+ * @typedef {import("./shared-types").CardSettings} CardSettings
+ */
 
 /**
  * @typedef {Object} IntroContentProps
@@ -51,6 +54,7 @@
  * @typedef {Object} GridListProps
  * @property {ProgramListDataSource}  dataSource
  * @property {ColumSettings} [settings]
+ * @property {CardSettings} [cardSettings]
  */
 
 /**
