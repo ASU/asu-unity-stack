@@ -7,9 +7,14 @@ const extraOptions = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-}
+};
 
-export default createComponent('Tables', 'Molecules', 'Templates', extraOptions);
+export default createComponent(
+  'Tables',
+  'Molecules',
+  'Templates',
+  extraOptions
+);
 import './tables';
 
 export const DefaultComponent = createStory(
@@ -27,8 +32,12 @@ export const DefaultComponent = createStory(
       </thead>
       <tbody>
         <tr>
-          <th scope="row"><p>Metropolitan campus population</p></th>
-          <td><p>71,946</p></td>
+          <th scope="row">
+            <p>Metropolitan campus population</p>
+          </th>
+          <td>
+            <p>71,946</p>
+          </td>
           <td>71,946</td>
           <td>71,946</td>
           <td>71,946</td>
@@ -260,5 +269,13 @@ export const FixedComponent = createStory(
         </tbody>
       </table>
     </div>
-  </div>
+  </div>,
+  {
+    initFunc: triggerDOMContentLoaded,
+  }
 );
+
+function triggerDOMContentLoaded() {
+  if (document.readyState !== 'loading')
+    window.dispatchEvent(new Event('DOMContentLoaded'));
+}
