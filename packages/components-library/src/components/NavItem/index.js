@@ -36,7 +36,7 @@ const NavItem = forwardRef(
             {...(onFocus ? { onFocus } : "")}
             ref={ref}
             type={props.class}
-            alt={`${children} icon`}
+            alt=""
           >
             {children}
           </S.NavIcon>
@@ -50,7 +50,7 @@ const NavItem = forwardRef(
             onFocus={() => trackGAEvent({ text: "home button" })}
             ref={ref}
             type="home"
-            alt={`${children} icon`}
+            alt=""
           >
             {children}
           </S.NavIcon>

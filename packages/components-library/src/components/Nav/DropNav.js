@@ -73,7 +73,7 @@ const DropNav = forwardRef(
           data-onclick-dropdown-open="false"
         >
           {text}{" "}
-          <S.IconChevronDown sr={text} className={isOpen ? "open" : ""} />
+          <S.IconChevronDown sr={text} className={isOpen ? "open" : ""} alt="" />
         </a>
 
         <S.DropdownContainer
