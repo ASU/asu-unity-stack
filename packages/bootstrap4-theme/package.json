@@ -17,7 +17,7 @@
     "test:integration": "start-server-and-test storybook http-get://localhost:9009 jest:integration",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json || true",
     "prebuild:storybook": "yarn run test:generate-output",
-    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && percy storybook ./percy-storybook",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_BOOTSTRAP && percy storybook ./percy-storybook",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -s ./dist",
     "build": "gulp",

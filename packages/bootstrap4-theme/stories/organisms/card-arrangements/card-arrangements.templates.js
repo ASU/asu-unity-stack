@@ -75,3 +75,7 @@ export const CardArrangement = createStory((args) => {
     </div>
   );
 });
+CardArrangement.args = {
+  template: 1,
+  numCards: 2,
+};

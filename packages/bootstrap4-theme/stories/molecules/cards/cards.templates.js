@@ -1,4 +1,3 @@
-import { ajaxSettings } from 'jquery';
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
