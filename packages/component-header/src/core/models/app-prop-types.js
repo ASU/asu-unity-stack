@@ -59,6 +59,7 @@ const HeaderPropTypes = {
   animateTitle: PropTypes.bool,
   expandOnHover: PropTypes.bool,
   mobileNavTree: PropTypes.arrayOf(NavTreePropTypes),
+  hasNavigation: PropTypes.bool,
 };
 
 export {

@@ -6,7 +6,7 @@ export const PersonProfile = createStory(
   <div class="uds-person-profile">
     <img
       class="profile-img"
-      src="https://placeimg.com/300/300/people"
+      src="https://source.unsplash.com/WLUHO9A_xik/300x300"
       alt="John Smith"
     />
     <div class="person">
@@ -25,22 +25,17 @@ export const PersonProfile = createStory(
         </li>
         <li>
           <a href="#" aria-label="See user address">
-            <address className ="person-address">
-              <span className ="person-street">
-                1234 Address St.
-              </span>
-              <span className ="person-city">
-                Tempe AZ 12345
-              </span>
+            <address className="person-address">
+              <span className="person-street">1234 Address St.</span>
+              <span className="person-city">Tempe AZ 12345</span>
             </address>
           </a>
         </li>
       </ul>
       <p class="person-description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
-        ultrices nisl, at vestibulum tortor. Phasellus ut interdum turpis,
-        et dignissim nisi. In sed volutpat lectus. Lorem ipsum dolor sit
-        amet.
+        ultrices nisl, at vestibulum tortor. Phasellus ut interdum turpis, et
+        dignissim nisi. In sed volutpat lectus. Lorem ipsum dolor sit amet.
       </p>
       <ul class="person-social-medias">
         <li>
@@ -62,3 +57,6 @@ export const PersonProfile = createStory(
     </div>
   </div>
 );
+PersonProfile.args = {
+  template: 1,
+};

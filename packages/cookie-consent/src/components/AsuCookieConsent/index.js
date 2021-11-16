@@ -116,7 +116,7 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
             style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
             onClick={distantClick}
           >
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} alt="" />
           </button>
         </CookieConsent>
       </div>

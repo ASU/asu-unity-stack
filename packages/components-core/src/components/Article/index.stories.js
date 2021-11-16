@@ -44,7 +44,7 @@ export const News = Template.bind({});
 News.args = {
   type: "news",
   articleUrl: "https://example.com",
-  headerImageUrl: "https://source.unsplash.com/random/1920x512",
+  headerImageUrl: "https://source.unsplash.com/WLUHO9A_xik/1920x512",
   title:
     "Clarisse Machanguana takes her skill set to the next level at ASU Thunderbird",
   publicationDate: "March 18, 2021",
