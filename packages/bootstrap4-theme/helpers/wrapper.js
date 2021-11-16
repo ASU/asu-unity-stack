@@ -3,9 +3,14 @@ import { template } from './templates';
 
 import { Basic as Header } from '../stories/organisms/global-header/global-header.templates.js';
 import { GlobalElementsOnly as Footer } from '../stories/organisms/global-footer/global-footer.templates.js';
-export const createComponent = (name, section = 'Atoms', type = '', extraOptions = {}) => {
+export const createComponent = (
+  name,
+  section = 'Atoms',
+  type = '',
+  extraOptions = {}
+) => {
   return {
-    title: `${section}/${name}${type === '' ? '' : '/'+type}`,
+    title: `${section}/${name}${type === '' ? '' : '/' + type}`,
     argTypes: {
       header: {
         name: 'Show Header',
@@ -32,7 +37,7 @@ export const createComponent = (name, section = 'Atoms', type = '', extraOptions
           },
         },
       },
-      ...extraOptions
+      ...extraOptions,
     },
   };
 };
@@ -56,7 +61,7 @@ export const layoutNames = {
  * @returns  {JSX.Element}
  */
 
- export const createStory = (
+export const createStory = (
   componentJSX,
   {
     supportedTemplates = [
@@ -71,7 +76,7 @@ export const layoutNames = {
   } = {}
 ) => {
   const Template = ({ ...args }) => {
-    if(supportedTemplates.includes(args.template) || omitTemplate) {
+    if (supportedTemplates.includes(args.template) || omitTemplate) {
       if (initFunc) {
         // Necessitated by Storybook intricacies.
         if (document.readyState !== 'loading') {
@@ -85,7 +90,8 @@ export const layoutNames = {
         }
       }
 
-      const codeWithArgs = typeof(componentJSX) === 'function' ? componentJSX(args) : componentJSX;
+      const codeWithArgs =
+        typeof componentJSX === 'function' ? componentJSX(args) : componentJSX;
 
       const componentCode = omitTemplate
         ? codeWithArgs
@@ -100,29 +106,40 @@ export const layoutNames = {
       );
     } else {
       return (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '80%',
-          maxWidth: '600px',
-          margin: '0 auto'}}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '80%',
+            maxWidth: '600px',
+            margin: '0 auto',
+          }}
+        >
           <h2>This layout isn't supported for this element.</h2>
           <span>Use the storybook controls to choose a supported layout:</span>
           <ul>
-            { supportedTemplates.includes(layoutNames.FULL_WIDTH) && <li>Full-width</li> }
-            { supportedTemplates.includes(layoutNames.ONE_COLUMN) && <li>One Column</li> }
-            { supportedTemplates.includes(layoutNames.TWO_COLUMN) && <li>Two Column</li> }
-            { supportedTemplates.includes(layoutNames.THREE_COLUMN) && <li>Three Column</li> }
-            { supportedTemplates.includes(layoutNames.FOUR_COLUMN) && <li>Four Column</li> }
+            {supportedTemplates.includes(layoutNames.FULL_WIDTH) && (
+              <li>Full-width</li>
+            )}
+            {supportedTemplates.includes(layoutNames.ONE_COLUMN) && (
+              <li>One Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.TWO_COLUMN) && (
+              <li>Two Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.THREE_COLUMN) && (
+              <li>Three Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.FOUR_COLUMN) && (
+              <li>Four Column</li>
+            )}
           </ul>
         </div>
-      )
+      );
     }
   };
   return Template.bind({});
 };
-
-
 
 /**
  *
@@ -135,7 +152,7 @@ export const layoutNames = {
  * @returns  {JSX.Element}
  */
 
- export const createStoryTwo = (
+export const createStoryTwo = (
   componentJSX,
   {
     supportedTemplates = [
@@ -150,7 +167,7 @@ export const layoutNames = {
   } = {}
 ) => {
   const Template = ({ ...args }) => {
-    if(supportedTemplates.includes(args.template) || omitTemplate) {
+    if (supportedTemplates.includes(args.template) || omitTemplate) {
       if (initFunc) {
         // Necessitated by Storybook intricacies.
         if (document.readyState !== 'loading') {
@@ -177,23 +194,36 @@ export const layoutNames = {
       );
     } else {
       return (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '80%',
-          maxWidth: '600px',
-          margin: '0 auto'}}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '80%',
+            maxWidth: '600px',
+            margin: '0 auto',
+          }}
+        >
           <h2>This layout isn't supported for this element.</h2>
           <span>Use the storybook controls to choose a supported layout:</span>
           <ul>
-            { supportedTemplates.includes(layoutNames.FULL_WIDTH) && <li>Full-width</li> }
-            { supportedTemplates.includes(layoutNames.ONE_COLUMN) && <li>One Column</li> }
-            { supportedTemplates.includes(layoutNames.TWO_COLUMN) && <li>Two Column</li> }
-            { supportedTemplates.includes(layoutNames.THREE_COLUMN) && <li>Three Column</li> }
-            { supportedTemplates.includes(layoutNames.FOUR_COLUMN) && <li>Four Column</li> }
+            {supportedTemplates.includes(layoutNames.FULL_WIDTH) && (
+              <li>Full-width</li>
+            )}
+            {supportedTemplates.includes(layoutNames.ONE_COLUMN) && (
+              <li>One Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.TWO_COLUMN) && (
+              <li>Two Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.THREE_COLUMN) && (
+              <li>Three Column</li>
+            )}
+            {supportedTemplates.includes(layoutNames.FOUR_COLUMN) && (
+              <li>Four Column</li>
+            )}
           </ul>
         </div>
-      )
+      );
     }
   };
   return Template.bind({});

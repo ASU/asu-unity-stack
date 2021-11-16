@@ -47,3 +47,7 @@ export const Default = createStory(({ background }) => (
     </div>
   </div>
 ));
+Default.args = {
+  template: 1,
+  background: 'white-bg',
+};
