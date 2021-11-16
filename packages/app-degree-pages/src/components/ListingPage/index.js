@@ -44,6 +44,9 @@ import { SearchBar } from "./components/SearchBar";
  */
 
 const Main = styled(MainSection)`
+  .filter-switch-container {
+    gap: 1rem;
+  }
   @media (max-width: 768px) {
     & {
       font-size: 0.9rem;
@@ -297,7 +300,7 @@ const ListingPage = ({
         ) : null}
 
         <section className="container">
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between filter-switch-container">
             {hasFilters ? (
               <FiltersSummary
                 value={appliedFilters}
