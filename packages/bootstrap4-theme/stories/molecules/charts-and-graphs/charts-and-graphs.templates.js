@@ -13,6 +13,9 @@ export const DonutChartMarkUp = createStory(
     <canvas id="uds-donut"></canvas>
   </div>,
   {
-    initFunc: initChart
+    initFunc: initChart,
   }
 );
+DonutChartMarkUp.args = {
+  template: 1,
+};

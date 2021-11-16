@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 
 import { forwardRef, useEffect, useState } from "preact/compat";
@@ -19,11 +18,6 @@ const Title = forwardRef(({ children, baseUrl, animate, ...props }, ref) => {
    * the first page load, then we set the 'active' state to animate the header with gold highlight.
    */
   useEffect(() => {
-    if (animate === true || animate === false) {
-      setActive(animate);
-      return;
-    }
-
     if (animate !== false) {
       // If a custom baseUrl is passed in, it will be used to check for first page load
       let root = baseUrl == "/" ? window.location.hostname : baseUrl;

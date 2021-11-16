@@ -144,6 +144,37 @@ yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
 ```
 
+## ❯ CLI tools
+
+### check-element-changes
+
+This tool shows outdated markup into the folder `bootstrap4-theme`
+It takes as an argument the number of days past from the last file changes.
+
+Example:
+let's say today is 4 November 2021 and I want to show those files changed 8 days ago
+
+run the command  `node ./scripts/check-element-changes.js -d 8`
+
+I will display  only those files, which extension is `.templates.js`
+which date change is  >= 28 October
+
+shortcut command `yarn check-element-changes 8`
+
+<img src = "./docs/assets/check-element-changes.png" />
+
+### check-element-local-changes
+
+This tool is similar to `check-element-changes` which difference is that it does not look latest change in `git` but it does in your file system.
+
+Example:
+today: 4 November 2021
+past days: 2
+
+run the command  `node ./scripts/check-element-local-changes.js -d 2`
+
+<img src = "./docs/assets/check-element-local-changes.png" />
+
 ## ❯ Supplemental links
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
@@ -256,7 +287,7 @@ Two build tools have been added to this project to assist contributors to write 
 
 To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
 
-![GitHub Logo](/doc/assets/commitizen-prompts.png)
+![GitHub Logo](/docs/assets/commitizen-prompts.png)
 
 ## ❯ Contributing:
 

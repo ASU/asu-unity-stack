@@ -169,3 +169,6 @@ export const Sidebar = createStory(
     {/* end .sidebar */}
   </div>
 );
+Sidebar.args = {
+  template: 1,
+};

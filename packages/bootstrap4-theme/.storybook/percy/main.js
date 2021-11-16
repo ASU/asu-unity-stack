@@ -1,8 +1,8 @@
 module.exports = {
   stories: [
-    '../../stories/**/*.percy.mdx',
-    '../../stories/**/*.percy.jsx',
-    '../../stories/**/*.percy.[tj]s',
+    '../../tests/**/*.percy.mdx',
+    '../../tests/**/*.percy.jsx',
+    '../../tests/**/*.percy.[tj]s',
   ],
   addons: [
     '@storybook/addon-docs',

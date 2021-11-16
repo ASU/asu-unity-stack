@@ -24,7 +24,7 @@ const NavLinkIcon = ({ icon, children }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FontAwesomeIcon icon={icon} className="icon-nav-item" />
+      <FontAwesomeIcon icon={icon} className="icon-nav-item" alt="" />
       <span className="mobile-only">{children}</span>
     </>
   );
@@ -68,6 +68,8 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           <FontAwesomeIcon
             icon="chevron-down"
             className={`chevron-icon ${opened ? "open" : ""}`}
+            // @ts-ignore
+            alt=""
           />
         )}
       </span>
