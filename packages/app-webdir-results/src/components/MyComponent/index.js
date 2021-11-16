@@ -2,7 +2,6 @@
 import React from "react";
 
 import { ExampleComponent } from "../../core/components/ExampleComponent";
-
 import { defaultProps } from "../../core/constants/default-props";
 
 const MyComponent = ({ ...props }) => (
