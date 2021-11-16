@@ -5,12 +5,7 @@ import React, { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 
 import { InfoAlert } from "../../../../core/components";
-import { ListingPageContext } from "../../../../core/context";
-import {
-  columSettingsPropShape,
-  GRID_VIEW_ID,
-  LIST_VIEW_ID,
-} from "../../../../core/models";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";
 import { computePages } from "../../../../core/utils";
 import { AccordionView } from "./AccordionView";
 import { GridView } from "./GridView";
@@ -42,7 +37,6 @@ const GlobalStyle = createGlobalStyle`
  *    programs: Object[]
  *    loading: boolean
  *    totalRows?: number
- *    columSettings?: import("src/core/types/listing-page-types").ColumSettings
  *    actionUrls: import("src/core/types/listing-page-types").ActionUrlProps
  * }} GridListingProps
  */
@@ -61,13 +55,7 @@ const programViewer = {
  *  dataViewComponent: GRID_VIEW_ID | LIST_VIEW_ID
  * } & GridListingProps} props
  */
-function ProgramList({
-  dataViewComponent,
-  loading,
-  programs,
-  columSettings,
-  actionUrls,
-}) {
+function ProgramList({ dataViewComponent, loading, programs, actionUrls }) {
   const ROW_PAGES = 8;
   const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
@@ -85,56 +73,48 @@ function ProgramList({
   }, [programs]);
 
   return (
-    <ListingPageContext.Provider
-      value={{
-        columSettings,
-      }}
-    >
-      <section data-testid="program-list" data-view-type={dataViewComponent}>
-        <GlobalStyle />
+    <section data-testid="program-list" data-view-type={dataViewComponent}>
+      <GlobalStyle />
 
-        <div className="desktop-view">
-          <ProgramsViewer
-            loading={loading}
-            programs={tableView}
-            totalRows={programs?.length}
-            columSettings={columSettings}
-            actionUrls={actionUrls}
-          />
-        </div>
+      <div className="desktop-view">
+        <ProgramsViewer
+          loading={loading}
+          programs={tableView}
+          totalRows={programs?.length}
+          actionUrls={actionUrls}
+        />
+      </div>
 
-        <div className="mobile-view mb-2">
-          <AccordionView
-            loading={loading}
-            programs={tableView}
-            totalRows={programs?.length}
-            actionUrls={actionUrls}
-          />
-        </div>
+      <div className="mobile-view mb-2">
+        <AccordionView
+          loading={loading}
+          programs={tableView}
+          totalRows={programs?.length}
+          actionUrls={actionUrls}
+        />
+      </div>
 
-        {programs.length > 0 ? (
-          <Pagination
-            totalNumbers={7}
-            type="default"
-            background="white"
-            totalPages={TOTAL_PAGES}
-            onChange={onPageChange}
-            showFirstButton
-            showLastButton
-          />
-        ) : (
-          <section className="container no-space">
-            <InfoAlert message="No result found for the filters applied" />
-          </section>
-        )}
-      </section>
-    </ListingPageContext.Provider>
+      {programs.length > 0 ? (
+        <Pagination
+          totalNumbers={7}
+          type="default"
+          background="white"
+          totalPages={TOTAL_PAGES}
+          onChange={onPageChange}
+          showFirstButton
+          showLastButton
+        />
+      ) : (
+        <section className="container no-space">
+          <InfoAlert message="No result found for the filters applied" />
+        </section>
+      )}
+    </section>
   );
 }
 
 ProgramList.propTypes = {
   dataViewComponent: PropTypes.string,
-  columSettings: columSettingsPropShape,
   ...degreeListPropTypes,
 };
 

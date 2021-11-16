@@ -18,7 +18,8 @@ import { SectionCard } from "./index.style";
  */
 function GridView({ programs, loading, actionUrls }) {
   const { defaultState, state } = useContext(AppContext);
-  const propImage = state?.listPageProps?.programList?.cardSettings?.image?.url;
+  const propImage =
+    state?.listPageProps?.programList?.settings?.cardDefaultImage?.url;
   const defaultImage = defaultState.detailPageDefault.hero.image.url;
   const imageUrl = propImage || defaultImage;
 

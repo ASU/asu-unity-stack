@@ -93,7 +93,11 @@ const defaultArgs = {
     dataSource,
     // OPTIONAL
     // settings: {
-    //   hideCollegeSchool: true,
+    // hideCollegeSchool: true,
+    // defaultView: "grid-view", // or "list-view"
+    // cardDefaultImage: {
+    //   url: `examples/assets/img/ds_header_undergrad.jpg`,
+    // },
     // },
   },
 };
@@ -182,9 +186,7 @@ WithIntroText.args = {
     dataSource,
     settings: {
       hideCollegeSchool: true,
-    },
-    cardSettings: {
-      image: {
+      cardDefaultImage: {
         url: `examples/assets/img/ds_header_undergrad.jpg`,
       },
     },

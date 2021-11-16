@@ -59,13 +59,10 @@
  */
 
 /**
- * @typedef {Object} ColumSettings
+ * @typedef {Object} ListSettings
  * @property {boolean} [hideCollegeSchool]
- */
-
-/**
- * @typedef {Object} CardSettings
- * @property {ImageItem} [image]
+ * @property {"grid-view" | "list-view"} [defaultView]
+ * @property {ImageItem} [cardDefaultImage]
  */
 
 /**

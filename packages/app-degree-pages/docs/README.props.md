@@ -121,9 +121,7 @@
 <dd></dd>
 <dt><a href="#TableProps">TableProps</a> : <code>Object</code></dt>
 <dd></dd>
-<dt><a href="#ColumSettings">ColumSettings</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#CardSettings">CardSettings</a> : <code>Object</code></dt>
+<dt><a href="#ListSettings">ListSettings</a> : <code>Object</code></dt>
 <dd></dd>
 </dl>
 
@@ -787,8 +785,7 @@ This type set the `url` and `isActive` optional
 | Name | Type |
 | --- | --- |
 | dataSource | [<code>ProgramListDataSource</code>](#ProgramListDataSource) | 
-| [settings] | [<code>ColumSettings</code>](#ColumSettings) | 
-| [cardSettings] | [<code>CardSettings</code>](#CardSettings) | 
+| [settings] | [<code>ListSettings</code>](#ListSettings) | 
 
 <a name="ActionUrlProps"></a>
 
@@ -899,23 +896,15 @@ This type set the `url` and `isActive` optional
 | brightOutlook | <code>boolean</code> | 
 | greenOccupation | <code>boolean</code> | 
 
-<a name="ColumSettings"></a>
+<a name="ListSettings"></a>
 
-## ColumSettings : <code>Object</code>
+## ListSettings : <code>Object</code>
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type |
 | --- | --- |
 | [hideCollegeSchool] | <code>boolean</code> | 
-
-<a name="CardSettings"></a>
-
-## CardSettings : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [image] | <code>ImageItem</code> | 
+| [defaultView] | <code>&quot;grid-view&quot;</code> \| <code>&quot;list-view&quot;</code> | 
+| [cardDefaultImage] | <code>ImageItem</code> | 
 

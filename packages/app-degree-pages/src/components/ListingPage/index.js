@@ -83,8 +83,14 @@ const ListingPage = ({
   const [tableView, setTableView] = useState([]);
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
+  // start set default data view
+  const settingDefaultView = programList.settings?.defaultView;
+  const defaultView = [LIST_VIEW_ID, GRID_VIEW_ID].includes(settingDefaultView)
+    ? settingDefaultView
+    : LIST_VIEW_ID;
   /** @type {UseDataViewState} */
-  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID);
+  const [dataViewComponent, setDataViewComponent] = useState(defaultView);
+  // end set default data view
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
   const { defaultState } = useContext(AppContext);
   const { listingPageDefault } = defaultState;
@@ -290,25 +296,24 @@ const ListingPage = ({
           </section>
         ) : null}
 
-        {hasFilters ? (
-          <section className="container">
-            <div className="d-flex justify-content-between">
+        <section className="container">
+          <div className="d-flex justify-content-between">
+            {hasFilters ? (
               <FiltersSummary
                 value={appliedFilters}
                 onRemove={onFilterSummaryRemove}
               />
-
-              <DataViewSwitch
-                onChange={selectedViewId => {
-                  setSearchLoading(true);
-                  setDataViewComponent(selectedViewId);
-                  setSearchLoading(false);
-                }}
-                checkedId={dataViewComponent}
-              />
-            </div>
-          </section>
-        ) : null}
+            ) : null}
+            <DataViewSwitch
+              onChange={selectedViewId => {
+                setSearchLoading(true);
+                setDataViewComponent(selectedViewId);
+                setSearchLoading(false);
+              }}
+              checkedId={dataViewComponent}
+            />
+          </div>
+        </section>
 
         {loading || searchLoading ? (
           <Loader />
@@ -317,7 +322,6 @@ const ListingPage = ({
             dataViewComponent={dataViewComponent}
             loading={loading || searchLoading}
             programs={tableView}
-            columSettings={programList.settings}
             actionUrls={actionUrls}
           />
         )}
