@@ -91,7 +91,6 @@ ASUHeader.defaultProps = {
   isPartner: false,
   baseUrl: "/",
   breakpoint: "Xl",
-  animateTitle: false,
   expandOnHover: false,
 };
 

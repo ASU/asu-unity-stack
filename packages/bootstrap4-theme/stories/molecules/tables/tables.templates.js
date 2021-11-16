@@ -115,6 +115,9 @@ export const DefaultComponent = createStory(
     </table>
   </div>
 );
+DefaultComponent.args = {
+  template: 1,
+};
 
 export const FixedComponent = createStory(
   <div class="uds-table-fixed-wrapper">
@@ -279,3 +282,7 @@ function triggerDOMContentLoaded() {
   if (document.readyState !== 'loading')
     window.dispatchEvent(new Event('DOMContentLoaded'));
 }
+
+FixedComponent.args = {
+  template: 1,
+};

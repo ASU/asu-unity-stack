@@ -13,11 +13,7 @@ const Title = () => {
     useAppContext();
 
   useEffect(() => {
-    if (animateTitle || animateTitle === false) {
-      setActive(animateTitle);
-      return;
-    }
-    if (animateTitle) {
+    if (animateTitle !== false) {
       // If a custom baseUrl is passed in, it will be used to check for first page load
       let root = baseUrl === "/" ? window.location.hostname : baseUrl;
       // If relative baseURL given, append to the hostname for checking first page load

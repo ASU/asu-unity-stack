@@ -5,34 +5,11 @@ import React from "react";
 
 import { ImageGalleryCarousel } from ".";
 
-const myCarouselItems = [];
-
-const imageFormats = [
-  "700x400",
-  "300x400",
-  "400x400",
-  "200x200",
-  "300x400",
-  "300x400",
-  "400x400",
-  "300x400",
-];
-
-const getImageFormat = index => imageFormats[index];
-
-for (let index = 0; index < 8; index += 1) {
-  myCarouselItems.push({
-    id: index,
-    imageSource: `https://source.unsplash.com/random/${getImageFormat(
-      index
-    )}?a=${index - 1}`,
-    imageAltText:
-      "Random image with caption below. REPLACE with appropriate alt text for accessibility.",
-  });
-}
+// eslint-disable-next-line jest/no-mocks-import
+import { imageGalleryCarouselItems } from "../../../__mocks__/data/props-mock";
 
 const mockItemWithContent = () =>
-  myCarouselItems.map((item, index) => {
+  imageGalleryCarouselItems.map((item, index) => {
     const content =
       index === 2
         ? `
@@ -83,7 +60,7 @@ const mockItemWithMoreContent = () => {
       https://packagist.org/packages/asuwebplatforms/webspark-module-webspark_blocks</a></p>
   </div>
   `;
-  return myCarouselItems.map((item, index) => ({
+  return imageGalleryCarouselItems.map((item, index) => ({
     ...item,
     title: `Content ${index + 1}`,
     content: index % 2 === 1 ? shortContent : longContent,
@@ -121,7 +98,7 @@ export const ImageGalleryCarouselDefault = () => (
   <Wrapper>
     <ImageGalleryCarousel
       maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={myCarouselItems}
+      imageItems={imageGalleryCarouselItems}
     />
   </Wrapper>
 );

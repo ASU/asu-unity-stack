@@ -17,6 +17,9 @@ export const BreadcrumbsAgainstWhiteBackground = createStory(
     </ol>
   </nav>
 );
+BreadcrumbsAgainstWhiteBackground.args = {
+  template: 1,
+};
 
 export const BreadcrumbsAgainstGray1Background = createStory(
   <nav aria-label="breadcrumbs">

@@ -121,10 +121,14 @@ export const Basic = (
                   data-ga-header-type="click"
                   data-ga-header="menu button label"
                 >
-                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span
+                    title="Open mobile menu"
+                    class="fa fa-bars"
+                    alt=""
+                  ></span>
                   <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-times fa-stack-1x"></i>
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
                 <div class="navbar-container">
@@ -146,7 +150,11 @@ export const Basic = (
                           data-ga-header="home button"
                         >
                           <span class="d-xl-none">Home</span>
-                          <span title="Home" class="fas fa-fw fa-home"></span>
+                          <span
+                            title="Home"
+                            class="fas fa-fw fa-home"
+                            alt=""
+                          ></span>
                         </a>
                         <a
                           class="nav-link"
@@ -176,7 +184,7 @@ export const Basic = (
                             data-ga-header-type="click"
                           >
                             Link option 3
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -424,10 +432,14 @@ export const DropDownMenus = (
                   data-ga-header-type="click"
                   data-ga-header="menu button label"
                 >
-                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span
+                    title="Open mobile menu"
+                    class="fa fa-bars"
+                    alt=""
+                  ></span>
                   <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-times fa-stack-1x"></i>
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
                 <div class="navbar-container">
@@ -455,7 +467,11 @@ export const DropDownMenus = (
                           data-ga-header="home button"
                         >
                           <span class="d-xl-none">Home</span>
-                          <span title="Home" class="fas fa-fw fa-home"></span>
+                          <span
+                            title="Home"
+                            class="fas fa-fw fa-home"
+                            alt=""
+                          ></span>
                         </a>
                         <div class="nav-item dropdown header-dropdown-1">
                           <a
@@ -471,7 +487,7 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 1
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -535,7 +551,7 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 2
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -653,7 +669,7 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 3
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu"
@@ -794,7 +810,7 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 4
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu"
@@ -1030,7 +1046,7 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 5
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu"
@@ -1488,10 +1504,14 @@ export const NoNavigation = (
                   data-ga-header-type="click"
                   data-ga-header="menu button label"
                 >
-                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span
+                    title="Open mobile menu"
+                    class="fa fa-bars"
+                    alt=""
+                  ></span>
                   <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-times fa-stack-1x"></i>
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
                 <div class="navbar-container no-links">
@@ -1703,10 +1723,14 @@ export const NoNavigationAndWithButtons = (
                   data-ga-header-type="click"
                   data-ga-header="menu button label"
                 >
-                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span
+                    title="Open mobile menu"
+                    class="fa fa-bars"
+                    alt=""
+                  ></span>
                   <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-times fa-stack-1x"></i>
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
                 <div class="navbar-container no-links">
@@ -1939,10 +1963,14 @@ export const ScrolledState = (
                   data-ga-header-type="click"
                   data-ga-header="menu button label"
                 >
-                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span
+                    title="Open mobile menu"
+                    class="fa fa-bars"
+                    alt=""
+                  ></span>
                   <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-times fa-stack-1x"></i>
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
                 <div class="navbar-container">
@@ -1964,7 +1992,11 @@ export const ScrolledState = (
                           data-ga-header="home button"
                         >
                           <span class="d-xl-none">Home</span>
-                          <span title="Home" class="fas fa-fw fa-home"></span>
+                          <span
+                            title="Home"
+                            class="fas fa-fw fa-home"
+                            alt=""
+                          ></span>
                         </a>
                         <a
                           class="nav-link"
@@ -2015,7 +2047,7 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 6
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -2063,7 +2095,7 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 7
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -2111,7 +2143,7 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 8
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"
@@ -2364,10 +2396,14 @@ export const Partner = (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span title="Open mobile menu" class="fa fa-bars"></span>
+                    <span
+                      title="Open mobile menu"
+                      class="fa fa-bars"
+                      alt=""
+                    ></span>
                     <span title="Close mobile menu" class="fa-stack">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-times fa-stack-1x"></i>
+                      <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                      <i class="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                 </div>
@@ -2384,7 +2420,11 @@ export const Partner = (
                           data-ga-header="home button"
                         >
                           <span class="d-xl-none">Home</span>
-                          <span title="Home" class="fas fa-fw fa-home"></span>
+                          <span
+                            title="Home"
+                            class="fas fa-fw fa-home"
+                            alt=""
+                          ></span>
                         </a>
                         <a
                           class="nav-link"
@@ -2435,7 +2475,7 @@ export const Partner = (
                             data-ga-header-type="click"
                           >
                             Link option 6
-                            <span class="fa fa-chevron-down"></span>
+                            <span class="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
                             class="dropdown-menu dropdown-columns"

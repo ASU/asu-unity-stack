@@ -6,7 +6,11 @@ import { NextButton } from "./NextButton";
 import { PrevButton } from "./PrevButton";
 
 const BaseNavButtonContainer = ({ children = null }) => (
-  <div className="glide__arrows" data-glide-el="controls">
+  <div
+    className="glide__arrows"
+    data-glide-el="controls"
+    data-testid="arrows-container"
+  >
     {children}
   </div>
 );
