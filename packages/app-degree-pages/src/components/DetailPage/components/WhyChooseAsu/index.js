@@ -2,7 +2,7 @@
 import { Card } from "@asu-design-system/components-core";
 import React from "react";
 
-import { whyChooseAsuProps } from "../../../../core/models";
+import { whyChooseAsuShape } from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/types/detail-page-types').WhyChooseAsuProps} WhyChooseAsuProps
@@ -102,6 +102,6 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
   );
 };
 
-WhyChooseAsu.propTypes = whyChooseAsuProps;
+WhyChooseAsu.propTypes = whyChooseAsuShape;
 
 export { WhyChooseAsu };

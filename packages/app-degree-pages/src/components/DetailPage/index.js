@@ -20,7 +20,7 @@ import {
   linkPropShape,
   imagePropShape,
   videoPropShape,
-  whyChooseAsuProps,
+  whyChooseAsuShape,
 } from "../../core/models";
 import {
   degreeDataPropResolverService,
@@ -376,7 +376,7 @@ DetailPage.propTypes = {
     hide: PropTypes.bool,
     cards: PropTypes.arrayOf(cardPropShape),
   }),
-  whyChooseAsu: whyChooseAsuProps,
+  whyChooseAsu: PropTypes.shape(whyChooseAsuShape),
 };
 
 export { DetailPage };
