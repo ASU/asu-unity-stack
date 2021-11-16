@@ -14,4 +14,5 @@ export const profileCardType = {
   facebookLink: PropTypes.string,
   linkedinLink: PropTypes.string,
   twitterLink: PropTypes.string,
+  size: PropTypes.string,
 };

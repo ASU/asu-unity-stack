@@ -1,76 +1,11 @@
 // @ts-check
-/* eslint react/jsx-props-no-spreading: "off" */
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { NavControlButtons } from "./index.styles";
+import { NavControls, Tab, TabContent } from "./components";
 
-export const NavControls = ({ clickPrev, clickNext }) => {
-  return (
-    <NavControlButtons>
-      <button className="scroll-control-prev" type="button" onClick={clickPrev}>
-        <span className="carousel-control-prev-icon" aria-hidden="true" />
-        <span className="sr-only">Previous</span>
-      </button>
-      <button className="scroll-control-next" type="button" onClick={clickNext}>
-        <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="sr-only">Next</span>
-      </button>
-    </NavControlButtons>
-  );
-};
-
-NavControls.propTypes = {
-  clickPrev: PropTypes.func.isRequired,
-  clickNext: PropTypes.func.isRequired,
-};
-
-export const Tab = ({ id, selected, title, selectTab }) => {
-  return (
-    <a
-      className={`nav-item nav-link ${selected ? "active" : ""}`}
-      id={id}
-      href={`#nav-${id}`}
-      role="tab"
-      aria-controls={`nav-${id}`}
-      aria-selected={selected}
-      onClick={e => selectTab(e, id)}
-    >
-      {title}
-    </a>
-  );
-};
-
-Tab.propTypes = {
-  id: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  selectTab: PropTypes.func.isRequired,
-};
-
-export const TabContent = ({ id, bgColor, selected, content }) => {
-  return (
-    <div
-      className={`tab-pane fade show ${selected ? "show active" : ""} ${
-        bgColor === "bg-dark" ? "text-white" : ""
-      }`}
-      id={`nav-${id}`}
-      role="tabpanel"
-      aria-labelledby={`nav-${id}-tab`}
-    >
-      {content}
-    </div>
-  );
-};
-
-TabContent.propTypes = {
-  id: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  content: PropTypes.element.isRequired,
-};
-
-export const TabbedPanels = ({ bgColor, panels }) => {
+export const TabbedPanels = ({ panels, bgColor }) => {
+  const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
   const [selectedId, setSelectedId] = useState(`tab-${randId}-${panels[0].id}`);
   const TabbedPanelsId = `tabbed-panels-${randId}`;
@@ -82,9 +17,9 @@ export const TabbedPanels = ({ bgColor, panels }) => {
     const scrollPos = event.target.scrollLeft;
     const prevButton = item.querySelector(".scroll-control-prev");
     const nextButton = item.querySelector(".scroll-control-next");
-    const atFarRight = nav.offsetWidth + scrollPos + 3 >= nav.scrollWidth;
-    prevButton.style.display = scrollPos === 0 ? "none" : "block";
-    nextButton.style.display = atFarRight ? "none" : "block";
+    const atFarRight = nav["offsetWidth"] + scrollPos + 3 >= nav.scrollWidth;
+    prevButton["style"].display = scrollPos === 0 ? "none" : "block";
+    nextButton["style"].display = atFarRight ? "none" : "block";
   };
 
   const slideNav = direction => {
@@ -113,7 +48,7 @@ export const TabbedPanels = ({ bgColor, panels }) => {
       content: (
         <TabContent
           id={panel.id}
-          bgColor={bgColor}
+          bgColor={backgroundColor}
           content={panel.content}
           selected={selectedId === `tab-${randId}-${panel.id}`}
           key={panel.id}
@@ -122,15 +57,13 @@ export const TabbedPanels = ({ bgColor, panels }) => {
     };
   });
 
+  let navClasses = "uds-tabbed-panels";
+  if (backgroundColor === "bg-dark") {
+    navClasses += " uds-tabbed-panels-dark";
+  }
   return (
-    <div className={bgColor}>
-      <nav
-        className={`uds-tabbed-panels ${
-          bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
-        }`}
-        onScroll={catchScroll}
-        id={TabbedPanelsId}
-      >
+    <div className={backgroundColor}>
+      <nav className={navClasses} onScroll={catchScroll} id={TabbedPanelsId}>
         <div className="nav nav-tabs" id={NavTabsId} role="tablist">
           {tabs.map(t => t.link)}
         </div>
@@ -147,7 +80,6 @@ export const TabbedPanels = ({ bgColor, panels }) => {
 };
 
 TabbedPanels.propTypes = {
-  bgColor: PropTypes.string.isRequired,
   panels: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
@@ -156,4 +88,5 @@ TabbedPanels.propTypes = {
       content: PropTypes.element,
     })
   ),
+  bgColor: PropTypes.string,
 };

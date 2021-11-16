@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { ProfileCard } from "../ProfileCard";
+import { ProfileCardTemplate } from "../ProfileCard";
 import { profileCardType } from "../ProfileCard/models";
 import { ProfileCardList } from "./index.styles";
 
@@ -9,7 +9,7 @@ const ASUProfileCardList = ({ profiles }) => {
   return (
     <ProfileCardList>
       {profiles.map(c => (
-        <ProfileCard {...c} key={c.id} />
+        <ProfileCardTemplate {...c} size="normal" key={c.id} />
       ))}
     </ProfileCardList>
   );

@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { ProfileCard } from "./index";
+import { ProfileCardTemplate } from "./index";
 
 import {
   createComponent,
@@ -15,11 +15,7 @@ export default createComponent(
   "Templates"
 );
 
-export const Story = createStory(args => {
-  return <ProfileCard {...args} />;
-});
-
-Story.args = {
+const defaultArgs = {
   imgURL: ProfilePic,
   name: "Christine Wilkinson",
   title: "Regents Professor",
@@ -33,4 +29,48 @@ Story.args = {
   facebookLink: "https://facebook.com",
   linkedinLink: "https://linkedin.com",
   twitterLink: "https://twitter.com",
+};
+
+const largeArgs = {
+  ...defaultArgs,
+  ...{
+    titles: [
+      { name: "Regents Professor", org: "ASU" },
+      { name: "Regents Professor", org: "ASU" },
+      { name: "Regents Professor", org: "ASU" },
+    ],
+  },
+};
+
+export const Default = createStory(args => {
+  return <ProfileCardTemplate {...args} />;
+});
+
+Default["args"] = defaultArgs;
+
+export const Small = createStory(args => {
+  return <ProfileCardTemplate {...args} />;
+});
+
+Small["args"] = {
+  ...defaultArgs,
+  size: "small",
+};
+
+export const Micro = createStory(args => {
+  return <ProfileCardTemplate {...args} />;
+});
+
+Micro["args"] = {
+  ...defaultArgs,
+  size: "micro",
+};
+
+export const Large = createStory(args => {
+  return <ProfileCardTemplate {...args} />;
+});
+
+Large["args"] = {
+  ...largeArgs,
+  size: "large",
 };

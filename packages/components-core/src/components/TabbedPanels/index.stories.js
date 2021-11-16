@@ -13,7 +13,7 @@ const Template = () => {
   return (
     <div className="row no-gutters">
       <div className="col uds-full-width">
-        <TabbedPanels panels={panels} bgColor="bg-gray-1" />
+        <TabbedPanels panels={panels} bgColor="bg-dark" />
       </div>
     </div>
   );
