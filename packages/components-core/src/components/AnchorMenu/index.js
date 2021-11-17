@@ -110,6 +110,7 @@ export const AnchorMenu = ({
       className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
         hasHeader ? "with-header " : ""
       }mb-4`}
+      style={showMenu ? { borderBottom: 0 } : {}}
     >
       <div className="container-xl uds-anchor-menu-wrapper">
         {isSmallDevice ? (

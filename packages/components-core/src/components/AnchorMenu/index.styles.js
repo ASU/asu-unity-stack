@@ -30,7 +30,10 @@ const AnchorMenuWrapper = styled.div`
   .nav-link {
     border: none;
     background-color: #ffffff;
-    margin-right: 0.3rem;
+    i {
+      width: 2rem !important;
+      text-align: center !important;
+    }
   }
 `;
 
