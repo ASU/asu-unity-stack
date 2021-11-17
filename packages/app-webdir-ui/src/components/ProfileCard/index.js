@@ -47,7 +47,7 @@ const ProfileCardTemplate = ({ ...props }) => {
             </li>
           </ul>
         )}
-        {["normal", "large"].includes(props.size) && (
+        {["default", "large"].includes(props.size) && (
           <div>
             <p className="person-description">{props.description}</p>
             <ul className="person-social-medias">

@@ -46,7 +46,10 @@ export const Default = createStory(args => {
   return <ProfileCardTemplate {...args} />;
 });
 
-Default["args"] = defaultArgs;
+Default["args"] = {
+  ...defaultArgs,
+  size: "default",
+};
 
 export const Small = createStory(args => {
   return <ProfileCardTemplate {...args} />;
