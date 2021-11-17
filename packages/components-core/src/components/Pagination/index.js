@@ -122,7 +122,7 @@ export const Pagination = ({
   };
 
   return (
-    <nav aria-label="Pagination">
+    <nav aria-label="Pagination" data-testid="pagination">
       <ul
         className={classNames(
           "pagination",
