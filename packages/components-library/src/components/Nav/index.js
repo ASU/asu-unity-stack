@@ -31,6 +31,7 @@ const Nav = forwardRef(
       injectStyles,
       breakpoint,
       expandOnHover,
+      title,
     },
     ref
   ) => {
@@ -269,7 +270,7 @@ const Nav = forwardRef(
                 >
                   {subs.map((sub, index) => {
                     return (
-                      <S.MenuColumn key={`mwnu-item-${pindex}-${index}`}>
+                      <S.MenuColumn key={`menu-item-${pindex}-${index}`}>
                         {sub.map((item, ind) => {
                           return (
                             <NavItem
@@ -333,6 +334,7 @@ const Nav = forwardRef(
                 selected={
                   navItem.hasOwnProperty("selected") ? navItem.selected : false
                 }
+                title={title}
               >
                 {navItem.text}
               </NavItem>
@@ -377,6 +379,7 @@ Nav.propTypes = {
   maxMobileHeight: PropTypes.number,
   injectStyles: PropTypes.bool,
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
+  title: PropTypes.string,
 };
 
 Nav.defaultProps = {
