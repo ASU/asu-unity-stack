@@ -81,7 +81,9 @@ const ProfileCardTemplate = ({ ...props }) => {
         {props.size === "small" && (
           <Button color="maroon" size="small" label="View Profile" />
         )}
-        {props.size === "micro" && <a href="#">ASU Knowledge Enterprise</a>}
+        {props.size === "micro" && (
+          <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
+        )}
       </div>
     </ProfileCard>
   );

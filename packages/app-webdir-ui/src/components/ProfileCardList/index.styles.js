@@ -8,7 +8,7 @@ const ProfileCardList = styled.div`
   .uds-person-profile {
     padding-bottom: 26px;
     padding-top: 40px;
-    border-bottom: 1px solid #C5C5C5;
+    border-bottom: 1px solid #c5c5c5;
   }
 
   .uds-person-profile:first-child {
