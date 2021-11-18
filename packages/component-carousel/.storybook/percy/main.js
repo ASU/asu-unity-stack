@@ -1,4 +1,5 @@
-const devConfig = require("../webpack/webpack.dev");
+const path = require("path");
+let devConfig = require("../../webpack/webpack.dev");
 
 module.exports = {
   addons: [
@@ -6,7 +7,10 @@ module.exports = {
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
   ],
-  stories: ["../src/**/*.stories.js"],
+  stories: [
+    "../../tests/**/*.percy.mdx",
+    "../../tests/**/*.percy.@(js|jsx|ts|tsx)",
+  ],
   webpackFinal: async config => {
     return {
       ...config,

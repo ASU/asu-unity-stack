@@ -140,7 +140,7 @@ const defaultArgs = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/1200x750?college",
+      url: "https://source.unsplash.com/WLUHO9A_xik/1200x750",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -241,7 +241,7 @@ const defaultArgs = {
   // },
   careerOutlook: {
     image: {
-      url: "https://source.unsplash.com/random/1200x750?career",
+      url: "https://source.unsplash.com/WLUHO9A_xik/1200x750",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -252,7 +252,7 @@ const defaultArgs = {
   globalOpportunity: {
     //   hide: true, // OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750?job",
+      url: "https://source.unsplash.com/WLUHO9A_xik/1200x750",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -260,7 +260,7 @@ const defaultArgs = {
   attendOnline: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750?classroom,online",
+      url: "https://source.unsplash.com/WLUHO9A_xik/1200x750",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },

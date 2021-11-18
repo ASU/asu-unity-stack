@@ -1,6 +1,3 @@
-const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
-
 module.exports = {
   addons: [
     "@storybook/addon-controls",
@@ -13,10 +10,6 @@ module.exports = {
       ...config,
       resolve: {
         extensions: [".js", ".jsx"],
-        alias: {
-          // this is needed to compile components-core components which inject css classes
-          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
-        },
       },
     };
   },

@@ -373,7 +373,7 @@ WithIntroTextImageOverlay.args = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/800x600?a=1",
+      url: "https://source.unsplash.com/WLUHO9A_xik/800x600",
     },
   },
   programList: {

@@ -61,13 +61,11 @@ const Wrapper = ({ children }) => (
 );
 
 export const ImageCarouselDefault = () => (
-  <Wrapper>
-    <ImageCarousel
-      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={imageCarouselItems}
-    />
-  </Wrapper>
+  <ImageCarousel
+    perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
+    maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+    imageItems={imageCarouselItems}
+  />
 );
 
 export const ImageCarouselWithCaption = () => (

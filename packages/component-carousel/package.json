@@ -13,6 +13,7 @@
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9009",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENT_CAROUSEL && percy storybook ./percy-storybook",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
@@ -60,6 +61,8 @@
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.68",
+    "@percy/storybook": "^4.0.3",
     "@asu-design-system/design-tokens": "^1.1.0",
     "@babel/core": "^7.13.14",
     "@babel/plugin-syntax-jsx": "^7.14.5",

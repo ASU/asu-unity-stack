@@ -12,7 +12,7 @@ const testimonialNoCitation = [
       content:
         "Laughter is timeless, imagination has no age, dreams are forever.",
     },
-    imageSource: `https://placeimg.com/300/300/nature`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/300x300`,
     imageAltText: `Image of Walt Disney`,
   },
   {
@@ -22,7 +22,7 @@ const testimonialNoCitation = [
       content: `We keep opening new doors and doing new things,
       because we’recurious and curiosity keeps leading us down new paths.`,
     },
-    imageSource: `https://placeimg.com/300/300/nature`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/300x300`,
     imageAltText: `Image of Walt Disney`,
   },
 ];
@@ -80,7 +80,7 @@ const testimonialWithImage = [
         name: `Han Solo`,
       },
     },
-    imageSource: `https://placeimg.com/400/400/tech`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/400x400`,
     imageAltText: `Pretend this is Han Solo`,
   },
   {
@@ -91,7 +91,7 @@ const testimonialWithImage = [
         name: `Han Solo`,
       },
     },
-    imageSource: `https://placeimg.com/400/400/arch`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/400x400`,
     imageAltText: `Pretend this is Han Solo`,
   },
 ];
@@ -129,7 +129,7 @@ const testimonialWithImage2 = [
         description: `ASU Charter`,
       },
     },
-    imageSource: `https://placeimg.com/400/400/any`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/400x400`,
     imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
   {
@@ -141,7 +141,7 @@ const testimonialWithImage2 = [
         description: `ASU Charter`,
       },
     },
-    imageSource: `https://placeimg.com/300/300/any`,
+    imageSource: `https://source.unsplash.com/WeYamle9fDM/300x300`,
     imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
 ];

@@ -11,6 +11,9 @@ pipeline {
         NPM_TOKEN = credentials('NPM_TOKEN')
         PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
+        PERCY_TOKEN_COMPONENT_CAROUSEL = credentials("PERCY_TOKEN_COMPONENT_CAROUSEL")
+        PERCY_TOKEN_APP_RFI = credentials("PERCY_TOKEN_APP_RFI")
+        PERCY_TOKEN_APP_DEGREE_PAGES = credentials("PERCY_TOKEN_APP_DEGREE_PAGES")
     }
     options {
       withAWS(credentials:'aws-jenkins')
@@ -46,7 +49,7 @@ pipeline {
                 //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
                 //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
                 sh 'echo "run visual regression testing"'
-                sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
+                sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE PERCY_TOKEN_COMPONENT_CAROUSEL=$PERCY_TOKEN_COMPONENT_CAROUSEL PERCY_TOKEN_APP_RFI=$PERCY_TOKEN_APP_RFI PERCY_TOKEN_APP_DEGREE_PAGES=$PERCY_TOKEN_APP_DEGREE_PAGES yarn percy'
             }
         }
         stage('Publish Packages to Registry') {
