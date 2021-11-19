@@ -6,6 +6,10 @@
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git"
