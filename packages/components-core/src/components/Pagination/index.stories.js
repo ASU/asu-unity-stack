@@ -38,7 +38,7 @@ export const Default = Template.bind({});
 Default.args = {
   type: "default",
   background: "white",
-  totalPages: 4,
+  totalPages: 10,
 };
 
 export const Bordered = Template.bind({});
@@ -46,8 +46,6 @@ Bordered.args = {
   type: "bordered",
   background: "white",
   totalPages: 45,
-  showFirstButton: true,
-  showLastButton: true,
 };
 
 export const Gray1Background = Template.bind({});

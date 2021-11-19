@@ -15,11 +15,6 @@ const extraOptions = {
       },
     },
   },
-  icons: {
-    name: 'Icons',
-    control: { type: 'boolean' },
-    defaultValue: false,
-  },
   border: {
     name: 'Border',
     control: { type: 'boolean' },
@@ -42,16 +37,9 @@ export const Basic = createStory((args) => {
           args.border ? 'justify-content-center border p-2' : ''
         } ${args.bgColor}`}
       >
-        {args.icons && (
-          <li class="page-item">
-            <a class="page-link page-link-icon" href="#">
-              Prev
-            </a>
-          </li>
-        )}
         <li class="page-item">
-          <a class="page-link" href="#">
-            Prev
+          <a class="page-link" href="#" aria-label="Previous page">
+            <i class="fa fa-chevron-left arrows"></i>
           </a>
         </li>
         <li class="page-item">
@@ -70,17 +58,10 @@ export const Basic = createStory((args) => {
           </a>
         </li>
         <li class="page-item">
-          <a class="page-link" href="#">
-            Next
+          <a class="page-link" href="#" aria-label="Next page">
+            <i class="fa fa-chevron-right arrows"></i>
           </a>
         </li>
-        {args.icons && (
-          <li class="page-item">
-            <a class="page-link page-link-icon" href="#">
-              Next
-            </a>
-          </li>
-        )}
       </ul>
     </nav>
   );

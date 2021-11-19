@@ -54,7 +54,7 @@ PageItem.propTypes = {
   pageLinkIcon: PropTypes.bool,
   selectedPage: PropTypes.bool,
   onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 PageItem.defaultProps = {

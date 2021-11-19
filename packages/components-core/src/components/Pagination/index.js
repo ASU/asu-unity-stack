@@ -10,7 +10,6 @@ import { PageItem } from "./PageItem";
  * @typedef {import('../../core/types/shared-types').PaginationProps} PaginationProps
  */
 
-const X_SMALL_DEDVICE_WIDTH = 413;
 const SMALL_DEDVICE_WIDTH = 450;
 const SMALL_DEDVICE_TOTAL_NUMBER = 3;
 
@@ -23,22 +22,11 @@ export const Pagination = ({
   background,
   currentPage,
   totalPages,
-  showFirstButton,
-  showLastButton,
   totalNumbers,
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
-  // Start small device
   const [currentTotalNumbers, setCurrentTotalNumbers] = useState(totalNumbers);
-  const [isSmallDevice, setSmallDevice] = useState(
-    window.innerWidth < SMALL_DEDVICE_WIDTH
-  );
-  const [isXSmallDevice, setXSmallDevice] = useState(
-    window.innerWidth < X_SMALL_DEDVICE_WIDTH
-  );
-  // End small device
-  const [showArrowIcons, setShowArrowIcons] = useState(!showLastButton);
 
   useEffect(() => {
     setSelectedPage(currentPage);
@@ -52,24 +40,10 @@ export const Pagination = ({
   mediaQuerySmallDevice.addEventListener("change", e => {
     if (e.matches) {
       setCurrentTotalNumbers(SMALL_DEDVICE_TOTAL_NUMBER);
-      setSmallDevice(true);
-      setShowArrowIcons(true);
     } else {
       setCurrentTotalNumbers(totalNumbers);
-      setSmallDevice(false);
-      setXSmallDevice(false);
-      setShowArrowIcons(!showLastButton);
     }
   });
-
-  const mediaQueryXSmallDevice = window.matchMedia(
-    `(max-width: ${X_SMALL_DEDVICE_WIDTH}px)`
-  );
-
-  mediaQueryXSmallDevice.addEventListener("change", e =>
-    setXSmallDevice(e.matches)
-  );
-  // end small device
 
   const handleChangePage = (e, page) => {
     const actions = {
@@ -96,27 +70,42 @@ export const Pagination = ({
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
+    const showFirstElements = renderedPages[0] !== 1;
+    const showLastElements =
+      renderedPages[renderedPages.length - 1] !== totalPages;
 
     return (
       <>
-        {!isSmallDevice && renderedPages[0] !== 1 && <PageItem>...</PageItem>}
-        {renderedPages.map(
-          page =>
-            page && (
-              <PageItem
-                isClickeable
-                key={page}
-                selectedPage={selectedPage === page}
-                onClick={e => handleChangePage(e, page)}
-              >
-                {page}
-              </PageItem>
-            )
+        {showFirstElements && (
+          <PageItem
+            isClickeable
+            selectedPage={selectedPage === 1}
+            onClick={e => handleChangePage(e, "first")}
+          >
+            1
+          </PageItem>
         )}
-        {!isSmallDevice &&
-          renderedPages[renderedPages.length - 1] !== totalPages && (
-            <PageItem>...</PageItem>
-          )}
+        {showFirstElements && <PageItem>...</PageItem>}
+        {renderedPages.map(page => (
+          <PageItem
+            isClickeable
+            key={page}
+            selectedPage={selectedPage === page}
+            onClick={e => handleChangePage(e, page)}
+          >
+            {page}
+          </PageItem>
+        ))}
+        {showLastElements && <PageItem>...</PageItem>}
+        {showLastElements && (
+          <PageItem
+            isClickeable
+            selectedPage={selectedPage === totalPages}
+            onClick={e => handleChangePage(e, "last")}
+          >
+            {totalPages}
+          </PageItem>
+        )}
       </>
     );
   };
@@ -137,41 +126,19 @@ export const Pagination = ({
           }
         )}
       >
-        {!isSmallDevice && showFirstButton && (
-          <PageItem
-            isClickeable
-            disabled={selectedPage === 1}
-            onClick={e => handleChangePage(e, "first")}
-          >
-            First
-          </PageItem>
-        )}
         <PageItem
           isClickeable
           disabled={selectedPage === 1}
-          pageLinkIcon={showArrowIcons}
+          pageLinkIcon
           onClick={e => handleChangePage(e, "prev")}
-        >
-          {isXSmallDevice ? "" : "Prev"}
-        </PageItem>
+        />
         {renderPages()}
         <PageItem
           isClickeable
           disabled={selectedPage === totalPages}
-          pageLinkIcon={showArrowIcons}
+          pageLinkIcon
           onClick={e => handleChangePage(e, "next")}
-        >
-          {isXSmallDevice ? "" : "Next"}
-        </PageItem>
-        {!isSmallDevice && showLastButton && (
-          <PageItem
-            isClickeable
-            disabled={selectedPage === totalPages}
-            onClick={e => handleChangePage(e, "last")}
-          >
-            Last
-          </PageItem>
-        )}
+        />
       </ul>
     </nav>
   );
@@ -195,14 +162,6 @@ Pagination.propTypes = {
    */
   totalPages: PropTypes.number,
   /**
-   * Show first page button
-   */
-  showFirstButton: PropTypes.bool,
-  /**
-   * Show last page button
-   */
-  showLastButton: PropTypes.bool,
-  /**
    * Total number of pages to show. Should be an odd number to center the current page un the middle
    */
   totalNumbers: PropTypes.number,
@@ -215,7 +174,5 @@ Pagination.propTypes = {
 Pagination.defaultProps = {
   currentPage: 1,
   totalPages: 10,
-  showFirstButton: false,
-  showLastButton: false,
   totalNumbers: 3,
 };

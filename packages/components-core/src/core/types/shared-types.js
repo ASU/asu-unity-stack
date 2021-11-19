@@ -132,7 +132,7 @@
  * @property {boolean} [pageLinkIcon]
  * @property {boolean} [selectedPage]
  * @property {function():void} [onClick]
- * @property {React.ReactNode} children
+ * @property {React.ReactNode} [children]
  */
 
 /**
