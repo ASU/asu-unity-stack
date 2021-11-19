@@ -49,7 +49,7 @@ const Container = styled.div`
 
 function Loader() {
   return (
-    <Container className="container ball-loader mt-4">
+    <Container data-testid="loader" className="container ball-loader mt-4">
       <div className="ball-loader-ball ball1" />
       <div className="ball-loader-ball ball2" />
       <div className="ball-loader-ball ball3" />

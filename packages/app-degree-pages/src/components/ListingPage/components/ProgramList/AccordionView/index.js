@@ -122,7 +122,7 @@ const AccordionView = ({ programs, actionUrls }) => {
   });
 
   return (
-    <WrapperSection>
+    <WrapperSection data-testid="accordion-view">
       <Accordion cards={cards} />
     </WrapperSection>
   );

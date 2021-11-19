@@ -1,1 +1,1 @@
-console.log('tabs script');
+//console.log('tabs script');

@@ -9,30 +9,7 @@ import { ButtonTag } from "../ButtonTag";
 import { AnchorWrapper, CardWrapper } from "./index.styles";
 
 /**
- * @typedef {import('../../core/models/shared-model-types').ButtonProps} ButtonProps
- * @typedef {import('../../core/models/shared-model-types').TagsProps} TagsProps
- */
-
-/**
- * @typedef {{
- *  type?: string
- *  width?: "25%" | "50%" | "75%" | "100%"
- *  horizontal?: boolean
- *  clickable?: boolean
- *  clickHref?: string
- *  image?: string
- *  imageAltText?: string
- *  title?: string
- *  icon?: string[]
- *  body?: string
- *  eventFormat?: "stack" | "inline"
- *  eventLocation?: string
- *  eventTime?: string
- *  buttons?: ButtonProps[]
- *  linkLabel?: string
- *  linkUrl?: string
- *  tags?: TagsProps[]
- * }} CardProps
+ * @typedef {import('../../core/types/card-types').CardProps} CardProps
  */
 
 /**
@@ -211,7 +188,6 @@ Card.defaultProps = {
 /*
  * Sub-components defined after this
  */
-
 const BaseCard = ({
   type,
   width,
@@ -241,12 +217,20 @@ const BaseCard = ({
 
   return (
     <>
-      <CardWrapper className={cardClass}>
+      <CardWrapper className={cardClass} data-testid="card-container">
         {!!image && (
-          <img className="card-img-top" src={image} alt={imageAltText} />
+          <img
+            className="card-img-top"
+            src={image}
+            alt={imageAltText}
+            data-testid="card-image"
+          />
         )}
         {!image && icon && (
-          <i className={`${icon?.[0]} fa-${icon?.[1]} fa-2x card-icon-top`} />
+          <i
+            className={`${icon?.[0]} fa-${icon?.[1]} fa-2x card-icon-top`}
+            data-testid="card-icon"
+          />
         )}
         {horizontal ? (
           <div className="card-content-wrapper">
@@ -352,12 +336,12 @@ const CardContent = ({
 }) => (
   <>
     {!!title && (
-      <div className="card-header">
+      <div className="card-header" data-testid="card-title">
         <h3 className="card-title">{title}</h3>
       </div>
     )}
     {!!body && (
-      <div className="card-body">
+      <div className="card-body" data-testid="card-body">
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
       </div>
@@ -370,30 +354,32 @@ const CardContent = ({
       />
     )}
     {buttons && (
-      <div className="card-button">
+      <div className="card-buttons">
         {buttons.map(button => (
-          // @ts-ignore
-          <Button
-            key={`${button.label}-${button.href}`}
-            ariaLabel={button.ariaLabel}
-            color={button.color}
-            icon={button.icon}
-            href={button.href}
-            label={button.label}
-            onClick={button.onClick}
-            size={button.size}
-            target={button.target}
-          />
+          <div className="card-button" data-testid="card-button">
+            {/* @ts-ignore */}
+            <Button
+              key={`${button.label}-${button.href}`}
+              ariaLabel={button.ariaLabel}
+              color={button.color}
+              icon={button.icon}
+              href={button.href}
+              label={button.label}
+              onClick={button.onClick}
+              size={button.size}
+              target={button.target}
+            />
+          </div>
         ))}
       </div>
     )}
     {linkUrl && linkLabel && (
-      <div className="card-link">
+      <div className="card-link" data-testid="card-link">
         <a href={linkUrl}>{linkLabel}</a>
       </div>
     )}
     {tags && (
-      <div className="card-tags">
+      <div className="card-tags" data-testid="card-tags">
         {tags.map(tag => (
           // @ts-ignore
           <ButtonTag

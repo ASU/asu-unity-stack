@@ -3,6 +3,7 @@
 import { cx, css } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { focusStyle, BreakpointLg, breakpointForMin } from "../../theme";
 
 /**
@@ -64,7 +65,7 @@ const titleStyles = breakpoint => css`
 
       &.subunit-name {
         font-size: 2rem;
-        margin: 1.5rem 0 1rem 0;
+        margin: 1rem 0 1rem 0;
         font-weight: 700;
 
         :hover {
@@ -89,10 +90,18 @@ const Title = forwardRef(
     if (parentOrg) {
       return (
         <div class={cx("title", props.class)} ref={ref}>
-          <a class="unit-name" href={parentOrgUrl}>
+          <a
+            class="unit-name"
+            href={parentOrgUrl}
+            onFocus={() => trackGAEvent({ text: parentOrg })}
+          >
             {parentOrg}
           </a>
-          <a class="subunit-name" href={baseUrl}>
+          <a
+            class="subunit-name"
+            href={baseUrl}
+            onFocus={() => trackGAEvent({ text: children })}
+          >
             {children}
           </a>
         </div>
@@ -103,6 +112,7 @@ const Title = forwardRef(
         class={cx("title", "subunit-name", props.class)}
         href={baseUrl}
         ref={ref}
+        onFocus={() => trackGAEvent({ text: children })}
       >
         {children}
       </a>

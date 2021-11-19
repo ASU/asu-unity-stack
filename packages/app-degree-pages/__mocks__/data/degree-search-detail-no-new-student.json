@@ -1,0 +1,128 @@
+{
+  "programs": [
+    {
+      "CollegeUrl": "https://wpcarey.asu.edu/",
+      "EmailAddr": "wpcareyug@asu.edu",
+      "CurriculumUrl": " ",
+      "CollegeDescr100": "Business, W. P. Carey School of",
+      "AsuOfficeLoc": "BA 160",
+      "AdmissionsDegRequirements": " ",
+      "graduateApplyDates": {},
+      "DescrlongExtns": "<p>The mission of the concentration in Chinese language and culture within the BA program in business is to create global business professionals who can function well culturally and linguistically in the business environment in China and domestically. As China becomes an increasingly important participant in the global economy and as the manufacturing and financial sectors become more globalized, the need for business professionals skilled in communicating in the Chinese language is growing.</p><p>With a network of 26 flagship programs at 22 institutions of higher education across the U.S., the language flagship program graduates are prepared to take their place among the next generation of global professionals, commanding a superior level of proficiency in languages critical to U.S. national security and economic competitiveness. This program prepares participants to function professionally in Chinese within diverse business fields.</p>",
+      "DescrlongExtn5": "<p>Freshman admission requirements for this program are the same as the university's freshman admission requirements.</p><p>Readmission requirements: Students must have a 3.00 transfer GPA (if applicable) and a 3.00 cumulative ASU GPA.</p>",
+      "ChangeMajor": "<p>Students should visit the following W. P. Carey website, <a href=\"https://students.wpcarey.asu.edu/degrees-and-advising/degree-programs/change-majors\">https://students.wpcarey.asu.edu/degrees-and-advising/degree-programs/change-majors</a> to determine if they meet change of major requirements. Students ready to change their major should submit their request through Advising SOS: <a href=\"https://apps.wpcarey.asu.edu/apps/advising/index.cfm\">https://apps.wpcarey.asu.edu/apps/advising/index.cfm</a>.</p>",
+      "MathIntensity": "M",
+      "CampusStringArray": ["TEMPE"],
+      "Phone": "480/965-4227",
+      "gradAdditionalRequirements": [],
+      "AsuDegSrchFlg": "Y",
+      "marketText": " ",
+      "AsuCustomText": "<p>ASU is no longer accepting new students to this program. Students interested in pursing a Chinese language track should apply to the <a href=\"https://webapp4.asu.edu/programs/t5/majorinfo/ASU00/BABSLACUBA/undergrad/false\">language and culture concentration</a> of the BA in business.</p>",
+      "AsuCritTrackUrl": "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BABUSCLBA/null/ALL/2019",
+      "globalExp": "<p>As globalization continues to impact the way business functions, study abroad programs provide vital experiences to students. Study abroad programs allow students in the Chinese language and culture concentration to practice language and cultural competency-building for global business success. Students gain valuable skills employers are looking for, including communication skills, flexibility, motivation and a global perspective on business applications worldwide. Successful graduates of this program are familiar with cultural customs and nuances of conducting business in China.</p><p>The W. P. Carey School of Business recommends the following study abroad programs for students majoring in business with a concentration in Chinese language and culture: <a href=\"https://mystudyabroad.asu.edu/students/major/wp-carey/chinese-language-culture\">https://mystudyabroad.asu.edu/students/major/wp-carey/chinese-language-culture</a>.</p>",
+      "MinMathReq": "MAT  210 - Brief Calculus",
+      "AsuCareerOpp": "<p>This degree program provides students with the fundamental business skills, linguistic training, critical thinking and intercultural competencies required to work in the increasingly globalized world markets that now rely on trade and commerce with China.</p><p>Graduates of this program are equipped to play a key role in companies and organizations seeking new markets or dealing with international interests in the U.S. and are suited to the demands of small-business enterprises as well as multinational companies.</p><p>Currently, there is a demand for Mandarin-speaking business professionals in the hotel and tourism industry and in the consulting, banking and finance, international trade, sports management and media fields.</p>",
+      "concurrentDegrees": [],
+      "PlanUrl": "https://students.wpcarey.asu.edu/chinese-language-and-culture-advising",
+      "accelerateDegrees": [],
+      "planCatDescr": [],
+      "planDeadlines": {},
+      "managedOnlineCampus": false,
+      "TransferAdmission": "<p>Transfer applicants must have a 3.00 GPA for all transfer work and meet university transfer admission requirements. Transfer students should select an additional major, which must be outside W. P. Carey School of Business, when applying for admission.</p>\n<p>Students with fewer than 45 transfer hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are placed in the exploratory social and behavioral sciences program in the College of Integrative Sciences and Arts.</p><p>Students with more than 45 transfer hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are prompted in My ASU to select a new major.</p>",
+      "careerData": [
+        {
+          "careerDataAlterOnetTitle": "Customs Officer",
+          "careerDataOnetTitle": "Immigration and Customs Inspectors",
+          "careerDataGrowth": 1.1,
+          "careerDataOnetCode": "33-3021.05",
+          "careerDataGreen": "",
+          "careerDataSalary": "$86,940",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "General Manager (GM)",
+          "careerDataOnetTitle": "General and Operations Managers",
+          "careerDataGrowth": 5.8,
+          "careerDataOnetCode": "11-1021.00",
+          "careerDataGreen": "GREEN",
+          "careerDataSalary": "$103,650",
+          "careerDataBrightOutlook": "BRIGHT"
+        },
+        {
+          "careerDataAlterOnetTitle": "Logistics Analyst",
+          "careerDataOnetTitle": "Logistics Analysts",
+          "careerDataGrowth": 4.4,
+          "careerDataOnetCode": "13-1081.02",
+          "careerDataGreen": "GREEN",
+          "careerDataSalary": "$76,270",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "Logistics Manager",
+          "careerDataOnetTitle": "Logistics Managers",
+          "careerDataGrowth": 3.5,
+          "careerDataOnetCode": "11-3071.03",
+          "careerDataGreen": "GREEN",
+          "careerDataSalary": "$96,390",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "Manufacturing Sales Representative",
+          "careerDataOnetTitle": "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",
+          "careerDataGrowth": 0.9,
+          "careerDataOnetCode": "41-4012.00",
+          "careerDataGreen": "",
+          "careerDataSalary": "$62,070",
+          "careerDataBrightOutlook": "BRIGHT"
+        },
+        {
+          "careerDataAlterOnetTitle": "Marketing Manager",
+          "careerDataOnetTitle": "Marketing Managers",
+          "careerDataGrowth": 6.7,
+          "careerDataOnetCode": "11-2021.00",
+          "careerDataGreen": "GREEN",
+          "careerDataSalary": "$142,170",
+          "careerDataBrightOutlook": "BRIGHT"
+        },
+        {
+          "careerDataAlterOnetTitle": "Merchandiser",
+          "careerDataOnetTitle": "Wholesale and Retail Buyers, Except Farm Products",
+          "careerDataGrowth": "",
+          "careerDataOnetCode": "13-1022.00",
+          "careerDataGreen": "GREEN",
+          "careerDataSalary": "",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "Purchasing Manager",
+          "careerDataOnetTitle": "Purchasing Managers",
+          "careerDataGrowth": 2.6,
+          "careerDataOnetCode": "11-3061.00",
+          "careerDataGreen": "",
+          "careerDataSalary": "$125,940",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "Sales Manager",
+          "careerDataOnetTitle": "Sales Managers",
+          "careerDataGrowth": 3.5,
+          "careerDataOnetCode": "11-2022.00",
+          "careerDataGreen": "",
+          "careerDataSalary": "$132,290",
+          "careerDataBrightOutlook": ""
+        },
+        {
+          "careerDataAlterOnetTitle": "Translator",
+          "careerDataOnetTitle": "Interpreters and Translators",
+          "careerDataGrowth": 20,
+          "careerDataOnetCode": "27-3091.00",
+          "careerDataGreen": "",
+          "careerDataSalary": "$52,330",
+          "careerDataBrightOutlook": "BRIGHT"
+        }
+      ],
+      "DepartmentName": "Dean, W.P. Carey School of Business",
+      "Descr100": "Business (Chinese Language and Culture)"
+    }
+  ]
+}

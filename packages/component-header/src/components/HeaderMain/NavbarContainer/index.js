@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";
@@ -34,19 +35,25 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint}>
-      <ul className="nav-list">
-        {!!mobileNavTree?.length && isMobile
-          ? mobileNavTree?.map((link, i) => renderItem(link, i))
-          : navTree?.map((link, i) => renderItem(link, i))}
-      </ul>
-      {!!buttons?.length && (
-        <form className="buttons-container">
-          {buttons?.map(button => (
-            <Button {...button} key={button.text} />
-          ))}
-        </form>
-      )}
+    <Wrapper breakpoint={breakpoint} data-testid="navigation">
+      <div className="content-container">
+        <ul className="nav-list">
+          {!!mobileNavTree?.length && isMobile
+            ? mobileNavTree?.map((link, i) => renderItem(link, i))
+            : navTree?.map((link, i) => renderItem(link, i))}
+        </ul>
+        {!!buttons?.length && (
+          <form className="buttons-container" data-testid="buttons-container">
+            {buttons?.map(button => (
+              <Button
+                {...button}
+                key={button.text}
+                onFocus={() => trackGAEvent({ text: button.text })}
+              />
+            ))}
+          </form>
+        )}
+      </div>
       {/* Navbar Footer */}
       {isMobile && <UniversalNavbar />}
     </Wrapper>

@@ -17,7 +17,7 @@ import {
   // saveFav, // TODO: this should handle the save to favorite
 } from "../../../../../core/services/degree-http-service";
 import { toTitleCase } from "../../../../../core/utils";
-/** @typedef {import("../../../../../core/models/listing-page-types").GridColumn}  GridColumn */
+/** @typedef {import("../../../../../core/types/grid-column-types").GridColumn}  GridColumn */
 
 /* eslint-disable react/prop-types, no-alert, no-console */
 /** @type {GridColumn []} */

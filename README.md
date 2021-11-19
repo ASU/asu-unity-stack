@@ -1,17 +1,23 @@
-# ASU Unity Stack
-Arizona State University Unity StaCK(Standards Compliance Kit). This project is currently under development.
+# ASU Unity Design System (UDS)
 
-Version DEV-1
+Base Bootstrap 4 UI theme and components for building ASU Web Standards 2.0 compliant web sites and apps.
 
 ## ❯ Packages in this repository
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
 1. [bootstrap4-theme](./packages/bootstrap4-theme/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages.
-2. [components-library](./packages/components-library/README.md) - Preact component library. Contains ASU-branded global header.
-3. [component-forms](./packages/component-forms/README.md) - Preact form components.
-4. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
-5. [maps](./packages/maps/README.md) - React map components. TODO: convert this package to Preact
+2. [app-degree-pages](./packages/app-degree-pages/README.md)
+3. [app-rfi](./packages/app-rfi/README.md)
+4. [component-carousel](./packages/component-carousel/README.md)
+5. [component-events](./packages/component-events/README.md)
+6. [component-footer](./packages/component-footer/README.md)
+7. [component-header](./packages/component-header/README.md)
+8. [component-news](./packages/component-news/README.md)
+9. [components-core](./packages/components-core/README.md)
+10. [components-library](./packages/components-library/README.md) - Preact component library. Contains ASU-branded global header.
+11. [cookie-consent](./packages/cookie-consent/README.md) -
+12. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
 
 ## ❯ Dependencies
 
@@ -30,7 +36,7 @@ You need to set up your development environment before you can do anything.
 
 The recommended method for setting up your local development environment is to use [Volta - Javascript Tool Manager](https://volta.sh/). Volta is designed to allow MacOS, Liux, and Windows users to easily install and use the correct version of Node, NPM, and Yarn for their projects. In addition to easily installing different versions of Node on your computer and switching between them when needed, this project has been configured to notify Volta what version of Node and Yarn is required to work on this project. This ensure all devs are using the same version of these tools, and preventing some subtle errors and development issues from occurring.
 
-Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of  the installer script, vetted it, and included it here, in the getvolta/ folder.
+Adhering to the standard Volta installation instructions would introduce a weakpoint in the Unity development toolchain, so rather than recommending you pipe to your system's bash command the result of cURLing a web-based script that could change at any time, we have captured a copy of the installer script, vetted it, and included it here, in the getvolta/ folder.
 
 For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
@@ -138,6 +144,37 @@ yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
 ```
 
+## ❯ CLI tools
+
+### check-element-changes
+
+This tool shows outdated markup into the folder `bootstrap4-theme`
+It takes as an argument the number of days past from the last file changes.
+
+Example:
+let's say today is 4 November 2021 and I want to show those files changed 8 days ago
+
+run the command  `node ./scripts/check-element-changes.js -d 8`
+
+I will display  only those files, which extension is `.templates.js`
+which date change is  >= 28 October
+
+shortcut command `yarn check-element-changes 8`
+
+<img src = "./docs/assets/check-element-changes.png" />
+
+### check-element-local-changes
+
+This tool is similar to `check-element-changes` which difference is that it does not look latest change in `git` but it does in your file system.
+
+Example:
+today: 4 November 2021
+past days: 2
+
+run the command  `node ./scripts/check-element-local-changes.js -d 2`
+
+<img src = "./docs/assets/check-element-local-changes.png" />
+
 ## ❯ Supplemental links
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
@@ -153,6 +190,49 @@ Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins wh
 After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
 
 ```https://unity.web.asu.edu/```
+
+## > Google Analytics integration
+
+The Google Analytics integration is being done throughout Google Tag manager, this means that the events, of the user interaction, are being cathed by Google Tag manager, and then delivered to Google Analytics.
+
+This is posible using the window `dataLayer` object. For all of the components in every package(that has the integration) of this repository we take the `dataLayer` object, with GTM already initialized by another user (CMS/WS2 user), and push each event, using `push()` method of the `dataLayer`, to the object already mentioned. When each object is included in the array, Google Tag manager catch that event.
+
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that push each event, if the `dataLayer` object exists, and that service method is called on each jsx element event handler. For example:
+
+#### **`src/component.js`**
+```JS
+<a href="#" onFocus={() => trackGAEvent(customEvent)}>Anchor Text</a>
+```
+#### **`services/googleAnalytics.js`**
+```JS
+const trackGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+}
+```
+
+For `bootstrap4-theme` package the events are being dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+
+#### **`src/component.html`**
+```JS
+<a href="#" data-ga="">Anchor Text</a>
+```
+#### **`src/component.js`**
+```JS
+const pushGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+};
+// eventListener
+const elements = document.querySelectorAll('[data-ga]');
+elements.forEach((element) =>
+  element.addEventListener('focus', () => {
+    pushGAEvent(event);
+  })
+);
+```
+
+To read more about Google Tag manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
 
 ## ❯ Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
@@ -207,13 +287,13 @@ Two build tools have been added to this project to assist contributors to write 
 
 To assist contributors with writing compliant commit messages, the `commitizen` tool now inserts a new commit UI into the `git commit` CLI command. When you execute `git commit` in the terminal command-line, you will be prompted with questions to help build your commit message.
 
-![GitHub Logo](/doc/assets/commitizen-prompts.png)
+![GitHub Logo](/docs/assets/commitizen-prompts.png)
 
 ## ❯ Contributing:
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-# Github Actions Deployment Process
+# Github Actions Deployment Process (NOT YET IMPLEMENTED)
 
 A Github Action workflow is triggered by pushing to the `dev` branch. A push includes merging a pull request or pushing directly to the branch. The file containing the steps executed during the workflow is located at the project root, `.github/workflows/development-workflow.yml`. Currently, the workflow consists of a single job with several steps. Alternatively, the same workflow could be logically split up into several jobs (ex. Build/test/deploy). Both options have pros and cons. The pros to having the workflow consist of a single job include the fact that a single job executes steps on the same runner. If the build step and test step were different jobs, you would either need to build again in the test job, or save the build output as an artifact in the first job and retrieve it in the second. Depending on number of dependencies, etc, this could drastically increase build times. Reducing the workflow to a single job also saves on account minutes. See [here](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions) for more information about github account minutes and billing. Some considerations for whether to use multiple jobs include: breaking the workflow up logically into jobs, and ability for a job to depend on completion of a previous job, ex. deploy job depends on test job to successfully complete in order for the deploy job to run.
 

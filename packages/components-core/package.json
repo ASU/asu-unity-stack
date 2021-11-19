@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/components-core",
-  "version": "1.13.1",
+  "version": "1.18.0",
   "main": "./src/index.js",
   "description": "Core UDS Preact UI components required by other higher-order Preact packages",
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
@@ -12,18 +12,25 @@
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "jest --config=./jest.config.js",
+    "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",
+    "build-storybook": "build-storybook -s ./dist",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js",
     "postinstall": "yarn build"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.68",
+    "@percy/storybook": "^4.0.3",
     "@asu-design-system/bootstrap4-theme": "latest",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.14",
@@ -32,14 +39,15 @@
     "@storybook/addon-essentials": "^6.2.3",
     "@storybook/addon-links": "^6.2.3",
     "@storybook/react": "^6.2.3",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
     "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
@@ -54,7 +62,8 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "@babel/plugin-transform-runtime": "^7.14.5"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^6.2.9",

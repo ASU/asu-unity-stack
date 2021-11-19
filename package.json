@@ -17,6 +17,7 @@
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
+    "percy": "lerna run percy",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
     "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
@@ -25,7 +26,8 @@
     "commit": "cz",
     "prettier": "prettier \"packages/**/*.js\" --write",
     "pretty-quick": "pretty-quick --staged",
-    "husky-prepare": "husky install"
+    "husky-prepare": "husky install",
+    "check-element-changes": "node ./scripts/check-element-changes.js -d"
   },
   "jest": {
     "preset": "jest-puppeteer",

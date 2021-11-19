@@ -74,10 +74,11 @@ const ASUHeader = ({
         animateTitle,
         expandOnHover,
         mobileNavTree,
+        hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
       }}
     >
       {/* @ts-ignore */}
-      <Header ref={headerRef} breakpoint={breakpoint}>
+      <Header id="asuHeader" ref={headerRef} breakpoint={breakpoint}>
         <HeaderMain />
       </Header>
     </AppContextProvider>
@@ -90,7 +91,6 @@ ASUHeader.defaultProps = {
   isPartner: false,
   baseUrl: "/",
   breakpoint: "Xl",
-  animateTitle: true,
   expandOnHover: false,
 };
 

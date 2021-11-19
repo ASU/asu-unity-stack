@@ -73,10 +73,22 @@
             should appear on every subdomain and page of asu.edu to ensure and optimal
             user experience as they navigate across asu.edu.</p>
 
-          <h3>The ASU Header is delivered in four ways</h3>
+          <h3>The ASU Header is delivered in five ways</h3>
 
-          <h4>Components Library header</h4>
-          <p>Intended for use within platforms and applications, this
+          <h4>Components Header</h4>
+          <p><strong>Preferred:</strong> Intended for use within platforms and applications, this
+            header variant is built using React as a peer dependency and can be implemented
+            using the <a href="/@asu-design-system/component-header/index.html">
+              @asu-design-system/component-header</a> package. This version of
+            the header does not bundle Cookie Consent or Google Tag Manager.
+            Site developers using this header must implement Cookie Consent
+            using the @asu-design-system/component-cookie-consent package themselves for
+            public-facing sites. Similarly, site developers should add Google
+            Tag Manager code snippets to their sites. See below for guidance in
+            both cases and instructions for installing packages.</p>
+
+          <h4>Components Library Header</h4>
+          <p><strong>To Be Deprecated in favor of Component Header:</strong> Intended for use within platforms and applications, this
             header variant is built using Preact and can be implemented
             using the <a href="/@asu-design-system/components-library/index.html">
               @asu-design-system/components-library</a> package. This version of
@@ -185,8 +197,8 @@
 
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
-          <p>Enterprise sites should implement the ASU Enterprise QA GTM on 
-            their "DEV" environment, and the ASU Enterprise Production GTM 
+          <p>Enterprise sites should implement the ASU Enterprise QA GTM on
+            their "DEV" environment, and the ASU Enterprise Production GTM
             on their "QA" and "Production" environments. This may be configured
             using environmental variables. Each environment has its own
             GTM ID associated with it and care must be taken to use the
@@ -200,51 +212,60 @@
           </p>
 
           <h4>ASU universal GTM code</h4>
+          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
           <pre><code>
-              &lt;!-- Google Tag Manager ASU Universal--&gt;
-              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
-              new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
-              &apos;//www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-KDWN8Z&apos;);&lt;/script&gt;
-
-              &lt;!-- Google Tag Manager (noscript) --&gt;
-              &lt;noscript&gt;&lt;iframe src=&quot;//www.googletagmanager.com/ns.html?id=GTM-KDWN8Z&quot;
-              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-              &lt;!-- End Google Tag Manager ASU Universal --&gt;
-            </code></pre>
+            &lt;!-- Google Tag Manager ASU Universal--&gt;
+            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
+            new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
+            &apos;//www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-KDWN8Z&apos;);&lt;/script&gt;
+          </code></pre>
+          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
+          <pre><code>
+            &lt;!-- Google Tag Manager (noscript) --&gt;
+            &lt;noscript&gt;&lt;iframe src=&quot;//www.googletagmanager.com/ns.html?id=GTM-KDWN8Z&quot;
+            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+            &lt;!-- End Google Tag Manager ASU Universal --&gt;
+          </code></pre>
 
           <h4>UTO Enterprise Webapp QA GTM</h4>
+          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
           <pre><code>
-              &lt;!-- Google Tag Manager --&gt;
-              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-W3FGR6T');&lt;/script&gt;
-              &lt;!-- End Google Tag Manager --&gt;
-
-              &lt;!-- Google Tag Manager (noscript) --&gt;
-              &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-W3FGR6T&quot;
-              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-              &lt;!-- End Google Tag Manager (noscript) --&gt;
-            </code></pre>
+            &lt;!-- Google Tag Manager --&gt;
+            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W3FGR6T');&lt;/script&gt;
+            &lt;!-- End Google Tag Manager --&gt;
+          </code></pre>
+          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
+          <pre><code>
+            &lt;!-- Google Tag Manager (noscript) --&gt;
+            &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-W3FGR6T&quot;
+            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+            &lt;!-- End Google Tag Manager (noscript) --&gt;
+          </code></pre>
 
           <h4>UTO Enterprise Webapp Production GTM</h4>
+          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
           <pre><code>
-              &lt;!-- Google Tag Manager --&gt;
-              &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
-              new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
-              &apos;https://www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-WPVTBHL&apos;);&lt;/script&gt;
-              &lt;!-- End Google Tag Manager --&gt;
-
-              &lt;!-- Google Tag Manager (noscript) --&gt;
-              &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-WPVTBHL&quot;
-              height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-              &lt;!-- End Google Tag Manager (noscript) --&gt;
-            </code></pre>
+            &lt;!-- Google Tag Manager --&gt;
+            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
+            new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
+            &apos;https://www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-WPVTBHL&apos;);&lt;/script&gt;
+            &lt;!-- End Google Tag Manager --&gt;
+          </code></pre>
+          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
+          <pre><code>
+            &lt;!-- Google Tag Manager (noscript) --&gt;
+            &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-WPVTBHL&quot;
+            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+            &lt;!-- End Google Tag Manager (noscript) --&gt;
+          </code></pre>
 
           <h3>Installing Unity components from the Unity package registry</h3>
           <p><a href="https://www.npmjs.com/get-npm">Install NPM</a> if you don't

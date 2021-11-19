@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
+import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useMemo, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
@@ -12,13 +12,13 @@ import {
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
 import { useListingPageLogger } from "../../core/hooks";
-import { useFetch } from "../../core/hooks/use-fetch";
 import {
   resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
+  ERROR_MESSAGE,
 } from "../../core/models";
 import {
   columSettingsPropShape,
@@ -34,9 +34,11 @@ import { ProgramList } from "./components/ProgramList";
 import { SearchBar } from "./components/SearchBar";
 
 /**
- * @typedef {import('../../core/models/listing-page-types').ListingPageProps} ListingPageProps
- * @typedef {import("../../core/models/shared-types").FiltersState} FiltersState
- * @typedef {import("../../core/models/shared-types").FilterOption} FilterOption
+ * @typedef {import('../../core/types/listing-page-types').ListingPageProps} ListingPageProps
+ * @typedef {import("../../core/types/shared-local-types").FiltersState} FiltersState
+ * @typedef {import("../../core/types/shared-local-types").FilterOption} FilterOption
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID>} UseDataViewState
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<FiltersState>} UseFiltersState
  */
 
 const Main = styled(MainSection)`
@@ -62,7 +64,6 @@ const FilterSeparator = styled.div.attrs({ className: "container" })`
 `;
 
 /**
- *
  * @param {ListingPageProps} props
  * @returns {JSX.Element}
  */
@@ -75,13 +76,12 @@ const ListingPage = ({
   introContent,
   programList,
 }) => {
-  /** @type {import("../../core/hooks/use-fetch").UseFetchTuple<ProgramListingResponse>} */
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
   const [tableView, setTableView] = useState([]);
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
-  /** @type {import("../../core/models/shared-types").UseStateTuple<LIST_VIEW_ID>} */
+  /** @type {UseDataViewState} */
   const [dataViewComponent] = useState(LIST_VIEW_ID);
   /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
   const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
@@ -91,14 +91,18 @@ const ListingPage = ({
     []
   );
   // These filter are input props which never change.
-  const { collegeAcadOrg, departmentCode } = programList.dataSource;
+  const { collegeAcadOrg, departmentCode, showInactivePrograms } =
+    programList.dataSource;
 
-  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  /** @type {UseFiltersState} */
   const [stateFilters, setStateFilters] = useState({
     ...INITIAL_FILTER_STATE,
   });
 
-  /** @type {import("../../core/models/shared-types").UseStateTuple<FiltersState>} */
+  /**
+   * @type {UseFiltersState}
+   * @ignore
+   * */
   const [appliedFilters, setAppliedFilters] = useState({
     ...INITIAL_FILTER_STATE,
   });
@@ -117,15 +121,14 @@ const ListingPage = ({
   useEffect(() => {
     let dataInit = sortPrograms(data?.programs || []);
     // apply buil-in filters
-    if (collegeAcadOrg || departmentCode) {
-      dataInit = filterData({
-        programs: dataInit,
-        filters: {
-          collegeAcadOrg,
-          departmentCode,
-        },
-      });
-    }
+    dataInit = filterData({
+      programs: dataInit,
+      filters: {
+        collegeAcadOrg,
+        departmentCode,
+        showInactivePrograms: showInactivePrograms ?? false,
+      },
+    });
 
     setDataInitView(dataInit);
     setTableView(dataInit);
@@ -133,6 +136,7 @@ const ListingPage = ({
 
   /**
    * @param {FiltersState} activeFilters
+   * @ignore
    */
   const applyFilters = async activeFilters => {
     const { acceleratedConcurrent, locations, asuLocals, keyword } =
@@ -151,6 +155,7 @@ const ListingPage = ({
         locations:
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
+        showInactivePrograms: showInactivePrograms ?? false,
       },
     });
 
@@ -171,28 +176,34 @@ const ListingPage = ({
 
   /**
    * @param {FiltersState} activeFilters
+   * @ignore
    */
   const onFilterApply = activeFilters => {
-    const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
+    // TODO: consider to remove
+    // const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
     // ============================================================
     // prevent search
     // ============================================================
     if (loading || searchLoading) return;
-
-    if (
-      !acceleratedConcurrent &&
-      locations.length === 0 &&
-      asuLocals.length === 0 &&
-      !collegeAcadOrg &&
-      !departmentCode
-    ) {
-      return;
-    }
+    // TODO: consider to remove
+    // TODO:I comment this block since does look to be ever called
+    // TODO: The filter acceleratedConcurrent?.value is always st least  "all"
+    // if (
+    //   !acceleratedConcurrent &&
+    //   acceleratedConcurrent?.value === "all" &&
+    //   locations.length === 0 &&
+    //   asuLocals.length === 0 &&
+    //   !collegeAcadOrg &&
+    //   !departmentCode
+    // ) {
+    //   return;
+    // }
     // ============================================================
     applyFilters(activeFilters);
   };
 
   /**
+   * @ignore
    * @param {FiltersState} filters
    */
   const onFilterChange = async filters => {
@@ -225,10 +236,10 @@ const ListingPage = ({
       <ThemeStyle />
       <ListingStyle />
 
-      {error && <ErrorAlert message="Something went wrong ..." />}
+      {error && <ErrorAlert message={ERROR_MESSAGE} />}
 
       {!hero?.hide ? (
-        <section>
+        <section data-testid="hero">
           <Hero
             image={hero?.image || listingPageDefault.hero.image}
             title={{
@@ -284,12 +295,10 @@ const ListingPage = ({
         {hasFilters ? (
           <section className="container">
             <div className="d-flex justify-content-between">
-              {hasFilters ? (
-                <FiltersSummary
-                  value={appliedFilters}
-                  onRemove={onFilterSummaryRemove}
-                />
-              ) : null}
+              <FiltersSummary
+                value={appliedFilters}
+                onRemove={onFilterSummaryRemove}
+              />
 
               {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
               {/* <DataViewSwitch

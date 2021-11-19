@@ -6,6 +6,7 @@ import vertLogo from "../../../assets/images/arizona-state-university-logo-verti
 // @ts-ignore
 import horizLogo from "../../../assets/images/arizona-state-university-logo.png";
 import { useAppContext } from "../../../core/context/app-context";
+import { trackGAEvent } from "../../../core/services/googleAnalytics";
 
 const Logo = () => {
   const { logo } = useAppContext();
@@ -14,6 +15,8 @@ const Logo = () => {
     <a
       href={logo ? logo.brandLink : "https://asu.edu"}
       className="navbar-brand"
+      data-testid="logo"
+      onFocus={() => trackGAEvent({ text: "asu logo" })}
     >
       <img
         className="vert"

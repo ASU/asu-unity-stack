@@ -14,8 +14,9 @@
     align-items: baseline;
     display: inline-flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    margin: 0 $uds-size-spacing-8;
 
     & > span {
       color: $uds-color-font-light-base;

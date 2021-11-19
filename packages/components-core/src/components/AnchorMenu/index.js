@@ -8,32 +8,36 @@ import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
+const menuTitle = "On This Page";
+
 /**
- * @typedef { import('../../core/models/shared-model-types').AnchorMenuProps } AnchorMenuProps
+ * @typedef { import('../../core/types/shared-types').AnchorMenuProps } AnchorMenuProps
  */
 
 /**
  * @param {AnchorMenuProps} props
  * @returns {JSX.Element}
  */
-
 export const AnchorMenu = ({
   items,
   firstElementId,
   focusFirstFocusableElement = false,
 }) => {
   const anchorMenuRef = useRef(null);
+  const [hasHeader, setHasHeader] = useState(false);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
-  const menuTitle = "On This Page";
+  const headerHeight = isSmallDevice ? 110 : 142;
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
+    // Select first next sibling element of the anchor menu
     const firstElement = document
       .getElementById(firstElementId)
       ?.getBoundingClientRect().top;
     const anchorMenuHeight = 103;
+
     // Scroll position
     if (firstElement >= 0) {
       anchorMenuRef.current.classList.remove("sticky");
@@ -41,29 +45,48 @@ export const AnchorMenu = ({
     }
     if (curPos > anchorMenuRef.current.getBoundingClientRect().top)
       anchorMenuRef.current.classList.add("sticky");
+
     // Change active containers on scroll
     let curSection = "";
+    const subsHeight = hasHeader
+      ? headerHeight + anchorMenuHeight
+      : anchorMenuHeight;
     items?.forEach(({ targetIdName }) => {
       const container = document.getElementById(targetIdName);
-      const containerTop =
-        container?.getBoundingClientRect().top - anchorMenuHeight;
+      const containerTop = container?.getBoundingClientRect().top - subsHeight;
       const containerBottom =
-        container?.getBoundingClientRect().bottom - anchorMenuHeight;
+        container?.getBoundingClientRect().bottom - subsHeight;
       if (containerTop < 0 && containerBottom > 0) {
         curSection = targetIdName;
       }
     });
+
     setActualContainer(curSection);
   };
+
+  // Set any ASU Header on the document
+  const setHeader = () => {
+    const pageHeader =
+      document.getElementById("asu-header") ||
+      document.getElementById("headerContainer") ||
+      document.getElementById("asuHeader");
+    setHasHeader(!!pageHeader);
+  };
+
+  useEffect(() => {
+    setHeader();
+  }, []);
 
   useEffect(() => {
     window?.addEventListener("scroll", handleWindowScroll);
     return () => window.removeEventListener("scroll", handleWindowScroll);
-  }, []);
+  }, [hasHeader]);
 
   const handleClickLink = container => {
-    const curScroll = window.scrollY - 100;
-    const anchorMenuHeight = window.innerWidth <= 992 ? 410 : 90;
+    // Set scroll position considering if ASU Header is setted or not
+    const curScroll = window.scrollY - (hasHeader ? headerHeight + 100 : 100);
+    const anchorMenuHeight = isSmallDevice ? 410 : 90;
+    // Set where to scroll to
     let scrollTo =
       document.getElementById(container)?.getBoundingClientRect().top +
       curScroll;
@@ -84,7 +107,9 @@ export const AnchorMenu = ({
   return (
     <AnchorMenuWrapper
       ref={anchorMenuRef}
-      className="uds-anchor-menu uds-anchor-menu-expanded-lg mb-4"
+      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
+        hasHeader ? "with-header " : ""
+      }mb-4`}
     >
       <div className="container-xl uds-anchor-menu-wrapper">
         {isSmallDevice ? (
@@ -112,8 +137,10 @@ export const AnchorMenu = ({
         >
           <nav className="nav" aria-label={menuTitle}>
             {items?.map(item => (
+              // Use this package button
               // @ts-ignore
               <Button
+                data-testid={`anchor-item-${item.targetIdName}`}
                 key={item.targetIdName}
                 classes={[
                   "nav-link",

@@ -7,6 +7,7 @@ import * as Yup from "yup";
 
 import {
   RfiTextInput,
+  RfiTextArea,
   RfiEmailInput,
   RfiSelect,
   RfiPhone,
@@ -80,7 +81,13 @@ const AboutMe = () => {
                 }`,
                 text: termValue[1].split(":")[0],
               }));
-            setTermOptions(termData);
+            // Dedupe based on object key property as dupe terms can occur due
+            // to multiple campus offerings.
+            // Explanation: https://stackoverflow.com/a/56768137
+            const dedupedTermData = [
+              ...new Map(termData.map(item => [item.key, item])).values(),
+            ];
+            setTermOptions(dedupedTermData);
           })
           .catch(error => new Error(error));
       }
@@ -155,14 +162,26 @@ const AboutMe = () => {
         requiredIcon={values.Campus !== "ONLNE"}
         required={values.Campus !== "ONLNE"}
       />
-      <RfiSelect
-        label="When do you anticipate starting at ASU?"
-        id="EntryTerm"
-        name="EntryTerm"
-        options={termOptions}
-        requiredIcon={values.Campus !== "ONLNE"}
-        required={values.Campus !== "ONLNE"}
-      />
+      {termOptions.length ? (
+        <RfiSelect
+          label="When do you anticipate starting at ASU?"
+          id="EntryTerm"
+          name="EntryTerm"
+          options={termOptions}
+          requiredIcon={values.Campus !== "ONLNE"}
+          required={values.Campus !== "ONLNE"}
+        />
+      ) : (
+        <RfiTextArea
+          label="When do you anticipate starting at ASU?"
+          id="EntryTerm"
+          name="EntryTerm"
+          helperText="The program you are interested in is not accepting new students at this time. Please select a different program of interest, and then select the semester you would like to start."
+          disabled
+          requiredIcon={values.Campus !== "ONLNE"}
+          required={values.Campus !== "ONLNE"}
+        />
+      )}
       <RfiGdpr campus={values.Campus} />
     </>
   );

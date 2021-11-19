@@ -4,12 +4,14 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
+import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
 
 /**
  * @typedef { import("../../../../core/models/types").Button } Button
  * @typedef {{
+ *  dropdownName: string
  *  items: [object][]
  *  buttons: Button[]
  *  classes?: string,
@@ -22,7 +24,7 @@ import { DropdownWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const DropdownItem = ({ items, buttons, classes }) => {
+const DropdownItem = ({ dropdownName, items, buttons, classes }) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
   const dropdownRef = useRef(null);
@@ -57,13 +59,22 @@ const DropdownItem = ({ items, buttons, classes }) => {
             color={link.color || "dark"}
             href={link.href}
             onClick={stopPropagation}
+            onFocus={() =>
+              trackGAEvent({ text: link.text, component: dropdownName })
+            }
           />
         </li>
       );
     }
     return (
       <li key={key} className="nav-link">
-        <a href={link.href} onClick={stopPropagation}>
+        <a
+          href={link.href}
+          onClick={stopPropagation}
+          onFocus={() =>
+            trackGAEvent({ text: link.text, component: dropdownName })
+          }
+        >
           {link.text}
         </a>
       </li>
@@ -110,6 +121,7 @@ const DropdownItem = ({ items, buttons, classes }) => {
 };
 
 DropdownItem.propTypes = {
+  dropdownName: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,

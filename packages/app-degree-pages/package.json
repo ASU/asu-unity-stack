@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/app-degree-pages",
-  "version": "1.8.4",
+  "version": "1.14.1",
   "description": "ASU implementation of degree pages",
   "main": "src/index.js",
   "author": "Michele Di Benedetto",
@@ -14,7 +14,11 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9009",
-    "build-storybook": "build-storybook -s ./dist"
+    "build-storybook": "build-storybook -s ./dist",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "publishConfig": {
     "access": "restricted",
@@ -49,7 +53,8 @@
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
     "@storybook/react": "^6.3.4",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -64,11 +69,15 @@
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
+    "jsdoc": "^3.6.7",
+    "jsdoc-plugin-typescript": "^2.0.6",
+    "jsdoc-to-markdown": "5.0.0",
+    "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
-    "react-test-renderer": "^17.0.2",
     "sass-loader": "^11.1.0",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
+    "string.prototype.replaceall": "^1.0.5",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1"
   }

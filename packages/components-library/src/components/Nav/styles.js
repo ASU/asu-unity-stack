@@ -123,6 +123,7 @@ const navListStyles = breakpoint => css`
         padding: 0.5rem 0.75rem;
         color: #191919;
         white-space: nowrap;
+        text-transform: capitalize;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -151,6 +152,7 @@ const navListStyles = breakpoint => css`
       flex-direction: column;
       align-items: stretch;
       padding: 0;
+      border-bottom: 1px solid #cccccc;
 
       > li {
         margin-right: 0;
@@ -162,7 +164,6 @@ const navListStyles = breakpoint => css`
           display: block;
           border-top: 1px solid #cccccc;
           align-items: center;
-          margin: 4px 4px;
           > svg {
             float: right;
             font-size: 1.25rem;
@@ -223,13 +224,7 @@ const buttonFormStyles = breakpoint => css`
     }
 
     @media (max-width: ${BreakpointSm}) {
-      flex-direction: column;
       align-items: flex-start;
-
-      a + a {
-        margin-top: 1rem;
-        margin-left: 0;
-      }
     }
   }
 `;
@@ -288,6 +283,7 @@ const dropdownContainerStyles = breakpoint => css`
     h3 {
       font-size: 1.5rem;
       letter-spacing: -0.035em;
+      text-transform: capitalize;
       font-weight: 700;
       text-align: left;
       opacity: 1;
@@ -324,6 +320,10 @@ const dropdownContainerStyles = breakpoint => css`
         position: relative;
         display: flex;
         max-height: 10000px;
+      }
+
+      &.aligned-right:not(.mega) {
+        width: 100%;
       }
 
       h3 {
@@ -610,6 +610,12 @@ const componentStyles = breakpoint => css`
 const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
+    @media (max-width: ${breakpoint}) {
+      min-height: calc(100vh - 270px);
+      > *:last-child {
+        margin-bottom: 40px;
+      }
+    }
   }
 `;
 
@@ -641,7 +647,6 @@ const Nav = ({
             &:target {
               flex-direction: column;
               width: 100%;
-
               max-height: ${maxHeight};
               display: flex;
             }

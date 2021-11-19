@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import React from "react";
 
 /**
- * @typedef {import('../../../core/models/shared-model-types').PageItemProps} PageItemProps
+ * @typedef {import('../../../core/types/shared-types').PageItemProps} PageItemProps
  */
 
 /**
+ * Generic page item component to render each pagination item
  * @param {PageItemProps} props
- * @returns
+ * @ignore
  */
-
 export const PageItem = ({
   isClickeable,
   disabled,
@@ -34,12 +34,15 @@ export const PageItem = ({
           })}
           type="button"
           onClick={onClick}
+          data-testid="page-link"
         >
           {children}
           {selectedPage && <span className="sr-only">(current)</span>}
         </button>
       ) : (
-        <span className="page-link">{children}</span>
+        <span className="page-link" data-testid="page-link">
+          {children}
+        </span>
       )}
     </li>
   );

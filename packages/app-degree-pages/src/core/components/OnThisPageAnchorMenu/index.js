@@ -6,12 +6,12 @@ import React from "react";
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/shared-model-types").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").AnchorMenuItem} AnchorMenuItem
  * */
 
 /**
  *
- * @param {{anchorMenu: import("src/core/models/program-detail-types").AnchorMenuProps}} props
+ * @param {{anchorMenu: import("src/core/types/detail-page-types").AnchorMenuProps}} props
  * @returns {JSX.Element}
  */
 function OnThisPageAnchorMenu({ anchorMenu }) {

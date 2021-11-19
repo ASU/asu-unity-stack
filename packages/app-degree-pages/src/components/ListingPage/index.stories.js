@@ -4,15 +4,16 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import { DOMAIN_URL } from "../../core/constants";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
- * @typedef {import('../../core/models/listing-page-types').ListingPageProps } AppProps
+ * @typedef {import('../../core/types/listing-page-types').ListingPageProps } AppProps
  */
 
 export default {
   component: ListingPage,
-  title: "Listing Page",
+  title: "Program Listing Page",
 };
 
 /**
@@ -39,25 +40,25 @@ const Template = ({
   />
 );
 
-/** @type {import("../../core/models/listing-page-types").ActionUrlProps} */
+/** @type {import("../../core/types/listing-page-types").ActionUrlProps} */
 const actionUrls = {
   applyNowUrl: "https://admission.asu.edu/apply", // OPTIONAL
   // this is just an example working on Storybook
   majorInfoUrl: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--default&acadPlan={ACAD_PLAN_CODE}`,
   // majorInfoUrl:
-  //   `https://webapp4.asu.edu/programs/t5/majorinfo/` +
+  //   `${DOMAIN_URL}/programs/t5/majorinfo/` +
   //   `{INSTITUTION_CODE}/{ACAD_PLAN_CODE}/undergrad/false`,
 };
 
-/** @type {import("../../core/models/listing-page-types").ProgramListDataSource} */
+/** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
   // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   // another example: dataSource: "/api/mocks/degree-search",
 
   // method: "findAllDegrees", // OPTIONAL
   // init: "false",  // OPTIONAL "true" | "false"
-  program: "graduate", // graduate | undergrad
-  cert: "true", // "true" | "false"
+  program: "undergrad", // graduate | undergrad
+  // cert: "true", // "true" | "false" // OPTIONAL
   // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
   // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
 };
@@ -104,16 +105,33 @@ Default.args = {
   ...defaultArgs,
   introContent: null,
 };
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithCertificate = Template.bind({});
+DefaultWithCertificate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      cert: "true",
+      showInactivePrograms: "true",
+    },
+  },
+};
 
 /**
  * @type {{ args: AppProps}}
  */
-export const DefaultWithCollegeAcadOrgAndDepartmentCode = Template.bind({});
-DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
+export const WithCollegeAcadOrgAndDepartmentCode = Template.bind({});
+WithCollegeAcadOrgAndDepartmentCode.args = {
   ...Default.args,
   hero: null,
   programList: {
     ...Default.args.programList,
+    // @ts-ignore
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
@@ -128,16 +146,14 @@ DefaultWithCollegeAcadOrgAndDepartmentCode.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithIntroText = Template.bind({});
+export const WithIntroText = Template.bind({});
 
-PageWithIntroText.args = {
+WithIntroText.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       altText: "Undergraduate Degrees",
       size: "medium",
     },
@@ -172,16 +188,14 @@ PageWithIntroText.args = {
 /**
  * @type {{ args: AppProps }}
  */
-export const PageWithIntroTextPhotoGrid = Template.bind({});
+export const WithIntroTextPhotoGrid = Template.bind({});
 
-PageWithIntroTextPhotoGrid.args = {
+WithIntroTextPhotoGrid.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {
@@ -234,16 +248,14 @@ PageWithIntroTextPhotoGrid.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const PageWithIntroTextMediaImage = Template.bind({});
+export const WithIntroTextMediaImage = Template.bind({});
 
-PageWithIntroTextMediaImage.args = {
+WithIntroTextMediaImage.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {
@@ -281,11 +293,11 @@ PageWithIntroTextMediaImage.args = {
 /**
  * @type {{ args: AppProps}}
  */
-export const PageWithIntroTextMediaVideo = Template.bind({});
+export const WithIntroTextMediaVideo = Template.bind({});
 
-PageWithIntroTextMediaVideo.args = { ...PageWithIntroTextMediaImage.args };
-PageWithIntroTextMediaVideo.args.introContent = {
-  ...PageWithIntroTextMediaImage.args.introContent,
+WithIntroTextMediaVideo.args = { ...WithIntroTextMediaImage.args };
+WithIntroTextMediaVideo.args.introContent = {
+  ...WithIntroTextMediaImage.args.introContent,
   image: undefined,
   video: {
     url: "/examples/assets/video/stock-video-person-drawing.mp4",
@@ -293,23 +305,38 @@ PageWithIntroTextMediaVideo.args.introContent = {
     vttUrl: "",
   },
 };
+
+/**
+ * @type {{ args: AppProps}}
+ */
+export const WithIntroTextMediaYoutubeVideo = Template.bind({});
+
+WithIntroTextMediaYoutubeVideo.args = { ...WithIntroTextMediaImage.args };
+WithIntroTextMediaYoutubeVideo.args.introContent = {
+  ...WithIntroTextMediaImage.args.introContent,
+  image: undefined,
+  video: {
+    // @ts-ignore
+    type: "youtube",
+    url: "https://www.youtube.com/embed/YW2p0ctzK9c",
+  },
+};
+
 /**
  * @param {AppProps} props
  * @returns {JSX.Element}
  */
-export const PageWithIntroTextImageOverlay = Template.bind({});
+export const WithIntroTextImageOverlay = Template.bind({});
 
 /**
  * @type {{ args: AppProps }}
  */
-PageWithIntroTextImageOverlay.args = {
+WithIntroTextImageOverlay.args = {
   actionUrls,
   hero: {
     // hide: true,// OPTIONAL
     image: {
-      url:
-        "https://webapp4.asu.edu/programs/resources/images/" +
-        "ds_header_undergrad.jpg",
+      url: `examples/assets/img/ds_header_undergrad.jpg`,
       size: "medium",
     },
     title: {

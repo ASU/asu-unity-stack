@@ -91,6 +91,9 @@ const Header = ({ children, breakpoint, ...props }) => {
  * Universal Nav styles and component
  */
 const universalStyles = breakpoint => css`
+  .shadow {
+    display: none;
+  }
   .universal-nav {
     padding: 0 2rem;
     display: flex;
@@ -123,6 +126,11 @@ const universalStyles = breakpoint => css`
         width: 100%;
         display: flex;
         justify-content: center;
+        + .navbar-component .navbar-toggler {
+          border-radius: 400rem;
+          width: 2rem;
+          height: 2rem;
+        }
       }
 
       .nav-grid {
@@ -160,7 +168,24 @@ const universalStyles = breakpoint => css`
     }
   }
 
-  @media (min-width: ${breakpoint}) {
+  @media (max-width: ${breakpoint}) {
+    .shadow.mobile-open {
+      position: fixed;
+      bottom: 155px;
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid #d0d0d0;
+      z-index: 1700;
+      display: block;
+      background: linear-gradient(
+        180deg,
+        rgba(232, 232, 232, 0) 0%,
+        rgba(232, 232, 232, 1) 100%
+      );
+    }
+  }
+
+  @media (min-width: ${parseInt(breakpoint.split("p")[0], 10) + 1}px) {
     // Scroll behaviors.
     &.scrolled {
       .universal-nav {
@@ -174,13 +199,15 @@ const universalStyles = breakpoint => css`
       a.subunit-name {
         font-size: 1.5em;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+        margin: 12px 0;
       }
       .title {
         padding-bottom: 0;
-        margin: 16px 0;
+        margin: 12px 0;
       }
       .navbar-logo img {
         height: 64px;
+        margin: 12px 1rem 12px 0;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       }
     }
@@ -199,16 +226,19 @@ const universalStyles = breakpoint => css`
 
 const UniversalNav = forwardRef((props, ref) => {
   return (
-    <div
-      class={cx(
-        "universal-nav",
-        props.open ? "mobile-open" : "",
-        props.searchOpen ? "search-open" : ""
-      )}
-      ref={ref}
-    >
-      <div>{props.children}</div>
-    </div>
+    <>
+      <div className={`shadow ${props.open ? "mobile-open" : ""}`} />
+      <div
+        class={cx(
+          "universal-nav",
+          props.open ? "mobile-open" : "",
+          props.searchOpen ? "search-open" : ""
+        )}
+        ref={ref}
+      >
+        <div>{props.children}</div>
+      </div>
+    </>
   );
 });
 

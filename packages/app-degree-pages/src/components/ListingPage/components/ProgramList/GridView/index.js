@@ -23,6 +23,7 @@ function GridView({ programs, loading, actionUrls }) {
       id={GRID_PROGRAMS_ID}
       className="container row"
       data-loading={loading}
+      data-testid="grid-view"
     >
       {programs.map(row => {
         const resolver = degreeDataPropResolverService(row);

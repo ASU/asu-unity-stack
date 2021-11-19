@@ -1,4 +1,4 @@
-// @ ts-check
+// @ts-check
 export * from "./AnchorMenu";
 export * from "./Article";
 export * from "./Card";
@@ -10,3 +10,4 @@ export * from "./Pagination";
 export * from "./Hero";
 export * from "./Accordion";
 export * from "./Video";
+export * from "./TabbedPanels";

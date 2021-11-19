@@ -14,7 +14,7 @@ import { isHtml } from "../../utils";
 /**
  *
  * @param {{
- *     contents: import("../../models/shared-types").ContentItem []
+ *     contents: import("../../types/shared-types").ContentItem []
  * }} props
  * @returns {JSX.Element}
  */

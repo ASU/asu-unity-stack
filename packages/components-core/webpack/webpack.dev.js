@@ -13,15 +13,10 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(PROJECT_DIR, "dist"),
     compress: true,
-    // historyApiFallback: true,
-    // hot: true,
   },
   plugins: [new CleanWebpackPlugin(), new DashboardPlugin()],
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
     filename: "[name].dev.js",
-    // libraryTarget: "umd",
-    // library: "AsuCookieConsent",
-    // umdNamedDefine: true,
   },
 });

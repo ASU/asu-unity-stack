@@ -3,7 +3,9 @@ import { cx } from "@emotion/css";
 import { forwardRef } from "preact/compat";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { Button } from "../Button";
+import { DROPDOWNS_GA_EVENTS } from "./DropNav";
 import * as S from "./styles";
 
 const HoverDropNav = forwardRef(
@@ -23,6 +25,7 @@ const HoverDropNav = forwardRef(
     },
     ref
   ) => {
+    const action = isOpen ? "close" : "open";
     const toggle = index => {
       if (isOpen) {
         setOpen(-1);
@@ -37,12 +40,12 @@ const HoverDropNav = forwardRef(
         {...(!mobile
           ? {
               onMouseEnter: e => {
-                //e.preventDefault();
                 setOpen(pIndex);
+                trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
               },
               onMouseLeave: e => {
-                //e.preventDefault();
                 setOpen(-1);
+                trackGAEvent({ ...DROPDOWNS_GA_EVENTS, action, text });
               },
             }
           : {})}
@@ -54,7 +57,6 @@ const HoverDropNav = forwardRef(
             role="button"
             aria-expanded={isOpen}
             onFocus={e => {
-              //navOpen(pIndex);
               setFocus([pIndex, -1, -1]);
             }}
             tabIndex="0"
@@ -63,6 +65,7 @@ const HoverDropNav = forwardRef(
             {text}{" "}
           </a>
           <S.IconChevronDown
+            alt=""
             sr={text}
             className={isOpen ? "open" : ""}
             onMouseDown={e => {

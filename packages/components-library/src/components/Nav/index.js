@@ -9,6 +9,7 @@ import {
 } from "preact/compat";
 import PropTypes from "prop-types";
 
+import { trackGAEvent } from "../../services/googleAnalytics";
 import { Button } from "../Button";
 import NavItem from "../NavItem";
 import DropNav from "./DropNav";
@@ -276,6 +277,10 @@ const Nav = forwardRef(
                               onFocus={() => {
                                 setFocus([pindex, index, ind]);
                                 setOpen(pindex);
+                                trackGAEvent({
+                                  text: item.text,
+                                  component: navItem.text,
+                                });
                               }}
                               ref={subs[index][ind].ref}
                               type={
@@ -315,6 +320,7 @@ const Nav = forwardRef(
               <NavItem
                 key={`nav-item-${pindex}`}
                 onFocus={() => {
+                  trackGAEvent({ text: navItem.text });
                   setFocusCallback([pindex, -1, -1]);
                 }}
                 ref={item.ref}
@@ -346,6 +352,7 @@ const Nav = forwardRef(
                     key={`button-${index}`}
                     href={item.href}
                     {...{ [color]: true }}
+                    onFocus={() => trackGAEvent({ text: item.text })}
                     medium
                   >
                     {item.text}

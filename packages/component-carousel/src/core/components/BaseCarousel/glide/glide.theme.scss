@@ -4,7 +4,7 @@ $glide-class: "glide" !default;
 $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
-$uds-breakpoint-lg: 1200px;
+$uds-breakpoint-lg: 1260px;
 $uds-color-base-gray-7: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
@@ -66,7 +66,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 }
 
-@media only screen and (min-width: 577px) {
+@media only screen and (min-width: $uds-breakpoint-lg) {
   .container .aligned-carousel {
     margin-left: -124px !important;
   }
@@ -124,11 +124,18 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
     .glide__slides {
       margin-bottom: 0;
+      .glide__slide {
+        .card {
+          width: 100%;
+        }
+      }
     }
   }
 
-  &[data-has-shadow = "true"] .glide__track {
-    @include shadow();
+  @media only screen and (min-width: $uds-breakpoint-sm) {
+    &[data-has-shadow="true"] .glide__track {
+      @include shadow();
+    }
   }
 
   // Arrows.
@@ -297,6 +304,8 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
               position: relative;
               margin: 0 0.5rem;
               height: 48px;
+              border: 0;
+              padding: 0;
 
               &:first-child {
                 margin-left: 16rem;
@@ -312,6 +321,9 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
                 object-fit: cover;
                 margin: 0;
               }
+            }
+            .bullet-image-container:focus {
+              box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
             }
 
             .#{$glide-class}__bullet--active {
@@ -358,13 +370,14 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
   }
 
   @media only screen and (max-width: $uds-breakpoint-sm) {
+    gap: 21px;
     &:not(&.image-gallery) {
       .glide__bullets {
         display: none;
       }
     }
     &.image-gallery {
-      width: calc(100% - 40px);
+      width: 100%;
       margin: auto !important;
       .image-navigator .image-navigator-images .glide__arrows .glide__arrow {
         display: none;
@@ -374,7 +387,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
   @media only screen and (max-width: $uds-breakpoint-lg) {
     &.aligned-carousel {
-      width: calc(100% - 40px);
+      width: 100%;
     }
   }
 
@@ -422,6 +435,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
       figcaption *,
       .uds-caption-text {
         color: $uds-color-base-gray-7;
+        max-width: 100%;
       }
 
       @include li-inactive-border;

@@ -19,36 +19,13 @@ import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
 
 /**
- * @typedef { import("../../core/models/shared-model-types").BreadcrumbProps } BreadcrumbProps
+ * @typedef {import('../../core/types/article-types').ArticleProps} ArticleProps
  */
 
 /**
- * @typedef {{
- *  type: "event" | "news"
- *  articleUrl?: string
- *  publicationDate?: string
- *  title?: string
- *  body?: string
- *  authorEmail?: string
- *  authorName?: string
- *  authorPhone?: string
- *  authorTitle?: string
- *  breadcrumbs?: BreadcrumbProps[]
- *  calendarUrl?: string
- *  eventLocation?: string
- *  eventTime?: string
- *  headerImageUrl?: string
- *  registrationUrl?: string
- *  zoomUrl?: string
- * }} ArticleProps
- */
-
-/**
- *
  * @param {ArticleProps} props
  * @returns {JSX.Element}
  */
-
 export const Article = ({
   type,
   articleUrl,
@@ -89,7 +66,7 @@ export const Article = ({
 
   const AuthorInfo = () => {
     return (
-      <div className="row pb-2">
+      <div className="row pb-2" data-testid="author-info">
         <div className="col col-12">
           <div className="author highlight-gold">{authorName}</div>
           {authorTitle && <div className="author-title">{authorTitle}</div>}
@@ -116,7 +93,10 @@ export const Article = ({
 
   const EventInfo = () => {
     return (
-      <EventInfoWrapper className="row row-spaced mt-3 pt-6 pb-2 event-info">
+      <EventInfoWrapper
+        className="row row-spaced mt-3 pt-6 pb-2 event-info"
+        data-testid="event-info"
+      >
         <div className="col col-lg-4 col-md-6 col-12">
           <h4>For more information contact:</h4>
           <div className="event-author">{authorName}</div>
@@ -212,6 +192,7 @@ export const Article = ({
     <>
       {headerImageUrl && type !== "event" && (
         <div
+          data-testid="uds-hero"
           className="uds-hero uds-hero-md"
           style={{
             backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
@@ -221,7 +202,7 @@ export const Article = ({
 
       <Wrapper className={`container ${type}-container wrapper-container`}>
         {breadcrumbs && (
-          <div className="row pt-4">
+          <div className="row pt-4" data-testid="breadcrumbs">
             <div className="col col-12">
               <Breadcrumb listClassName="breadcrumb">
                 {breadcrumbs.map(item => activeBreadcrumb(item))}
@@ -232,7 +213,7 @@ export const Article = ({
 
         <div className="row pb-2 pt-3">
           <div className={hClasses}>
-            <h2>{title}</h2>
+            <h2 data-testid="title">{title}</h2>
           </div>
           {type === "event" && (
             <div className="col col-lg-4 col-xs-12">
@@ -305,8 +286,11 @@ export const Article = ({
 
         <div className="row">
           <div className="col col-12">
-            {/* eslint-disable-next-line react/no-danger */}
-            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
+            <p
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
+              data-testid="body"
+            />
           </div>
         </div>
 

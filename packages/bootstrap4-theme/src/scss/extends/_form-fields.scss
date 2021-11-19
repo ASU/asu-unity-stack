@@ -173,7 +173,7 @@ form.uds-form {
         // check centered right.
         &::before {
           left: -2.25rem;
-          bottom: -0.1rem;
+          top: 0.1rem;
         }
         &::after {
           left: -$uds-size-spacing-4;

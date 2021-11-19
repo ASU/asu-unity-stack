@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 
 import { useState } from "preact/compat";
@@ -8,7 +7,7 @@ import { Header } from "./";
 import { Button } from "../Button";
 import { BasicNavTree } from "../Nav/NavTreeExample";
 
-const AnimatedHeaderTitleExample = (props) => {
+const AnimatedHeaderTitleExample = props => {
   const [animate, setAnimate] = useState(false);
 
   return (
@@ -16,7 +15,7 @@ const AnimatedHeaderTitleExample = (props) => {
       <Header
         animateTitle={animate}
         navTree={BasicNavTree}
-        title="University Technology Office"
+        title="Subdomain name"
       />
       <Button
         onClick={() => {

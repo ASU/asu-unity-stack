@@ -14,6 +14,16 @@ const mathintensity = {
 // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
 // wouldn't give us minors and certs, though).
 const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
+// Check if a program is still accepting new students
+const hasGraduateApplyDates = row =>
+  Object.keys(row["graduateApplyDates"] || {}).length > 0;
+const hasPlanDeadlines = row =>
+  Object.keys(row["planDeadlines"] || {}).length > 0;
+const isValidActiveProgram = row =>
+  Object.keys(row).length > 0
+    ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
+    : true;
+
 /**
  *
  * @param {Object.<string, any>} row
@@ -27,6 +37,7 @@ function degreeDataPropResolverService(row = {}) {
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
     isUndergradProgram: () => isUndergradProgram(row),
+    isGradProgram: () => !isUndergradProgram(row),
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
@@ -35,6 +46,28 @@ function degreeDataPropResolverService(row = {}) {
     getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
     getDescrLongExtented5: () => row["DescrlongExtn5"],
     getTransferAdmission: () => row["TransferAdmission"],
+    getGraduateRequirements: () => {
+      /** @type {Array<Array>} */
+      const rawRequirement1 = row["gradAdditionalRequirements"];
+      let gradRequirement1 = "";
+      if (rawRequirement1?.length > 0) {
+        // requirement[0]: acadPlan. ex `LAAUDAUDD`
+        // requirement[1]: brief decription of requirement
+        // ex 88 credit hours, a written and oral comprehensive exam
+        // requirement[2]: unknown code. ex AUD88AUDD
+        const flatRequirement1 = rawRequirement1
+          .map(requirement => requirement?.[1])
+          .join(" ");
+
+        // AdmissionsDegRequirements
+        gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
+      }
+
+      /** @type {string} */
+      const gradRequirement2 = row["AdmissionsDegRequirements"];
+
+      return `${gradRequirement1}${gradRequirement2}`;
+    },
     isOnline: () => row["managedOnlineCampus"],
     getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
     getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
@@ -61,7 +94,9 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getPhone: () => row["Phone"],
     /** @return {string} */
-    getGDepartmentName: () => row["DepartmentName"],
+    getDepartmentName: () => row["DepartmentName"],
+    /** @return {string} */
+    getPlanUrl: () => row["PlanUrl"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
@@ -77,7 +112,8 @@ function degreeDataPropResolverService(row = {}) {
     getMathIntensity: () => mathintensity[row["MathIntensity"]],
     getMathIntensityRawValue: () => row["MathIntensity"],
     getMinMathReq: () => row["MinMathReq"] || "",
-    getMarketText: () => row["marketText"],
+    /** @return {string} */
+    getMarketText: () => row["marketText"]?.trim(),
     /** @return {string} */
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
     /** @return {string} */
@@ -90,13 +126,22 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],
     /** @return {string} */
     getDepartmentCode: () => row["DepartmentCode"],
+    /** @return {Object.<string, string>} */
+    getGraduateApplyDates: () => row["graduateApplyDates"],
+    hasGraduateApplyDates: () => hasGraduateApplyDates(row),
+    /** @return {Object.<string, string>} */
+    getPlanDeadlines: () => row["planDeadlines"],
+    hasPlanDeadlines: () => hasPlanDeadlines(row),
+    isValidActiveProgram: () => isValidActiveProgram(row),
+    getAsuDegSrchFlg: () => row["AsuDegSrchFlg"],
+    getAsuCustomText: () => row["AsuCustomText"],
   };
 }
 
 /**
  *
- * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
- * @returns {import("src/core/models/shared-types").LinkItem[]}
+ * @param {import("src/core/types/shared-local-types").DegreeDataPropResolver} resolver
+ * @returns {import("src/core/types/shared-types").LinkItem[]}
  */
 function getCampusLocations(resolver) {
   const program = resolver.getProgramType();
@@ -129,8 +174,8 @@ function getCampusLocations(resolver) {
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
- * @param {import("src/core/models/shared-types").DegreeDataPropResolver} resolver
+ * @param {import("src/core/types/detail-page-types").AnchorMenuProps} anchorMenu
+ * @param {import("src/core/types/shared-local-types").DegreeDataPropResolver} resolver
  */
 const filterAnchorMenu = (anchorMenu, resolver) => {
   const validAnchors = { ...anchorMenu };
@@ -150,7 +195,7 @@ const filterAnchorMenu = (anchorMenu, resolver) => {
 
 /**
  *
- * @param {import("src/core/models/program-detail-types").AnchorMenuProps} anchorMenu
+ * @param {import("src/core/types/detail-page-types").AnchorMenuProps} anchorMenu
  * @returns
  */
 const hasValidAnchorMenu = anchorMenu => {

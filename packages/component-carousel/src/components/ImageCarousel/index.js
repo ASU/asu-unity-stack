@@ -9,19 +9,17 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
  */
 
 /**
- * @typedef {{
- *  id: number
- *  imageSource: string
- *  imageAltText: string
- *  title?: string
- *  content?: string
- * }} ImageItem
+ * @typedef {import('../../core/types/image-carousel-types').ImageItem} ImageItem
  */
 
 /**
- * This function creates a html template which render an image
+ * @typedef {import('../../core/types/image-carousel-types').ImageCarouselType} ImageCarouselType
+ */
+
+/**
  * @param {ImageItem} props
  * @returns {CarouselItem}
+ * @ignore
  */
 const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
   id,
@@ -34,14 +32,19 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
           alt={imageAltText}
         />
         {(title || content) && (
-          <figcaption className="figure-caption uds-figure-caption">
+          <figcaption
+            className="figure-caption uds-figure-caption"
+            data-testid="image-content-container"
+          >
             <div className="uds-caption-text">
               {!title ? (
-                <span>{content}</span>
+                // eslint-disable-next-line react/no-danger
+                <div dangerouslySetInnerHTML={{ __html: content }} />
               ) : (
                 <>
                   <h3>{title}</h3>
-                  <p>{content}</p>
+                  {/* eslint-disable-next-line react/no-danger */}
+                  <div dangerouslySetInnerHTML={{ __html: content }} />
                 </>
               )}
             </div>
@@ -53,14 +56,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
 });
 
 /**
- *
- * @param {{
- *    perView: number
- *    imageItems: ImageItem[]
- *    maxWidth?: string
- *    width?: string
- *    imageAutoSize?: boolean
- *  }} props
+ * @param {ImageCarouselType} props
  * @returns { JSX.Element }
  */
 const ImageCarousel = ({

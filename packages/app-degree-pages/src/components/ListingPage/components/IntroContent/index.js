@@ -20,8 +20,7 @@ import {
 import { parseHeading } from "../../../../core/utils";
 
 /**
- * @typedef {import('../../../../core/models/listing-page-types').IntroContentProps} IntroContentProps
- * @typedef {import('../../../../core/models/shared-types').AppTitleProps} AppTitleProps
+ * @typedef {import('../../../../core/types/listing-page-types').IntroContentProps} IntroContentProps
  */
 
 const PhotoGrid = styled.div`
@@ -52,7 +51,11 @@ function textPhotoGridTypeHtmlTemplate({
   const Heading = parseHeading(title);
 
   return (
-    <section className="container">
+    <section
+      className="container"
+      data-type="text-photo-grid"
+      data-testid="intro-content"
+    >
       <div className="row">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">
@@ -99,7 +102,11 @@ function textTextMediaTypeHtmlTemplate({
   const Heading = parseHeading(title);
 
   return (
-    <SectionWrapper className="container">
+    <SectionWrapper
+      className="container"
+      data-type="text-media"
+      data-testid="intro-content"
+    >
       <div className="row gy-3">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">
@@ -113,6 +120,7 @@ function textTextMediaTypeHtmlTemplate({
         <div className="col-sm-12 col-md-7 mt-2 mt-sm-0">
           {video && (
             <Video
+              type={video.type}
               url={video.url}
               vttUrl={video.vttUrl}
               title={video.title}
@@ -141,7 +149,11 @@ function textImageOverlapTypeHtmlTemplate({
   image,
 }) {
   return (
-    <section className="container">
+    <section
+      className="container"
+      data-type="text-image-overlay"
+      data-testid="intro-content"
+    >
       <div className="row">
         <div className="col-md-12">
           <OverlapContentImage
@@ -169,7 +181,7 @@ const textTypeHtmlTemplate = ({ applyNowUrl, title, contents }) => {
   const Heading = parseHeading(title);
 
   return (
-    <section className="container">
+    <section className="container" data-type="text" data-testid="intro-content">
       <div className="row">
         <div className="col-sm-12 col-md-5">
           <Heading className="mt-0">

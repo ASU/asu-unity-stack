@@ -100,7 +100,7 @@ Cards - Table of Contents
 }
 
 .card-header {
-  padding: 32px 32px 16px 32px;
+  padding: 24px 32px 16px 32px;
   flex-grow: 1;
   .card-icon {
     margin-bottom: $uds-size-spacing-2;
@@ -113,7 +113,6 @@ Cards - Table of Contents
 }
 
 .card:not(.card.card-foldable) > div:first-of-type:not(.card-image-content) {
-  padding-top: 32px;
   flex-grow: 1;
 }
 
@@ -134,7 +133,8 @@ Cards - Table of Contents
 
 .card-tags .btn-tag {
   margin-top: 8px;
-  margin-right: 8px;
+  margin-left: 0;
+  margin-right: 1rem;
 }
 
 .card-button {
@@ -187,6 +187,18 @@ Cards - Table of Contents
   .card-button {
     margin-top: $uds-component-card-basic-button-margin-top;
     padding: 0 24px 24px 24px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .card-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      .card-button {
+        display: inline;
+        padding-right: 0;
+      }
+    }
   }
 
   // TODO: This block of rules causes inconsistency between buttons side
@@ -345,12 +357,13 @@ Cards - Table of Contents
   padding-right: 16px;
 }
 
-.card-story .card-header {
-  padding-top: 24px;
+.card-story:not(.card.card-foldable)
+  > div:first-of-type:not(.card-image-content) {
+  padding-top: 16px;
 }
 
 .card-story > div:first-of-type:not(.card-image-content) {
-  padding: 24px 16px 16px 16px;
+  padding: 16px;
   flex-grow: 1;
 }
 
@@ -421,6 +434,9 @@ Cards - Table of Contents
   padding: $uds-component-card-basic-body-padding;
   padding: 0 32px 24px 32px;
   font-size: 14px;
+  > * {
+    flex: 50%;
+  }
 }
 .card-event-details + .card-event-details {
   flex-grow: 999900000;
@@ -520,6 +536,11 @@ Cards - Table of Contents
       & .card-icon {
         display: flex;
         margin-left: -($uds-size-spacing-3 / 2);
+        align-items: flex-start;
+
+        svg {
+          margin-top: 2px; //adjust for line height of text
+        }
       }
     }
 

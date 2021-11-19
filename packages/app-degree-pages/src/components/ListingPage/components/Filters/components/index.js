@@ -32,6 +32,7 @@ const SelectFormGroup = ({
     <select
       className="form-control"
       id={id}
+      data-testid={id}
       multiple={multiple}
       onChange={event => onChange(id, event)}
       value={selected}

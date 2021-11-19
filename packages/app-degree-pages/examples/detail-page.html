@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Detail Page- Example page</title>
+    <!-- CSS only -->
+    <!-- FONTAWESOME loaded from CDN 'kit' URL -->
+    <script
+      src="https://kit.fontawesome.com/35fb12a3a9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+    />
+    <!-- *************************************************************** -->
+    <!-- Load React. -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+    <!-- *************************************************************** -->
+    <!-- include bundled scripts from packages -->
+    <script src="../dist/vendor.production.js"></script>
+    <script src="../dist/degreePages.production.js"></script>
+
+    <!--  MOCK RFI form component -->
+    <!-- <script src="../__mocks__/RequestInfoForm/index.js"></script> -->
+    <style>
+      div#my-request-form-info-id {
+        position: relative;
+      }
+      div#my-request-form-info-id:after {
+        content: "Sample\a Request Information ";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font-size: 30px;
+        box-shadow: 3px 3px 15px 5px #000000;
+        border-radius: 5px;
+        padding: 10px;
+        /* background: #f9c629; */
+        background: #ffffff;
+        transform: translate(-50%) rotate(-45deg);
+        /* Text color */
+        color: rgba(0, 0, 0, 0.2);
+
+        /* Text styles */
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        white-space: pre;
+        text-align: center;
+      }
+
+      #my-request-form-info-id img {
+        width: inherit;
+        mix-blend-mode: luminosity;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
+    <div id="degreePageContainer"></div>
+
+    <div id="my-request-form-info-id" class="container">
+      <img src="./assets/img/request-form-information.png" />
+    </div>
+    <script>
+      /**
+       * This exmaple show how to use a degree page component
+       * from a static HTML page with plain vanilla JS
+       */
+      // Setup and initialize component.
+
+      // ====================================================================================
+      // TEST:  this is just an example which shows how to parse the page URL querystring
+      // to get the acadPlan
+      // ====================================================================================
+      const queryAcadPllan = new URL(window.location.href).searchParams.get(
+        "acadPlan"
+      );
+      // ====================================================================================
+
+      AsuDegreePages.initProgramDetailPage({
+        targetSelector: "#degreePageContainer",
+        props: {
+          appPathFolder: "http://localhost:3000/dist",
+          dataSource: {
+            endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+            method: "findDegreeByAcadPlan",
+            init: "false",
+            acadPlan: queryAcadPllan || "BABUSGLBA", // any valid acadPlan code
+            // acadPlan: "LSBISBIS", // this has marketText
+            // acadPlan: "ESBMEMDBSE", // this does not have required courses
+          },
+          anchorMenu: {
+            // atAGlance: true,
+            applicationRequirements: true,
+            nextSteps: true,
+            affordingCollege: true,
+            careerOutlook: true,
+            globalOpportunity: true,
+            externalAnchors: [
+              {
+                targetIdName: "my-request-form-info-id",
+                text: "Request Information",
+              },
+            ],
+          },
+          // anchorMenu: {
+          //   atAGlance: true,
+          //   applicationRequirements: true,
+          //   changeMajorRequirements: true,
+          //   nextSteps: true,
+          //   affordingCollege: true,
+          //   flexibleDegreeOptions: true,
+          //   careerOutlook: true,
+          //   exampleCareers: true,
+          //   customizeYourCollegeExperience: true,
+          //   globalOpportunity: true,
+          //   attendOnline: true,
+          //   programContactInfo: true,
+          //   externalAnchors: [
+          //     {
+          //       targetIdName: "my-request-form-info-id",
+          //       text: "Request Information",
+          //     },
+          //   ],
+          // },
+          hero: {
+            // OPTIONAL
+            // image: {
+            //   url: DOMAIN_URL + "/programs/resources/images/ds_header_undergrad.jpg",
+            //   altText: "Undergraduate Degrees",
+            //   size: "medium",
+            // },
+            title: {
+              text: "Undergraduate Degrees",
+              highlightColor: "gold",
+            },
+          },
+          introContent: {
+            // hideMarketText: true,
+            // hideProgramDesc: true,
+            // hideRequiredCourses: true,
+            breadcrumbs: [
+              {
+                text: "Academic programs",
+                url: "#",
+              },
+              {
+                text: "Undergraduate degrees",
+                url: "listing-page.html",
+              },
+              {
+                text: "Degree title",
+                isActive: true,
+              },
+            ],
+            image: {
+              url: "https://source.unsplash.com/random/1200x750",
+              altText:
+                "Random image. REPLACE with appropriate alt text for accessibility.",
+            },
+            // optional
+            // video: {
+            //   url: "/assets/video/stock-video-person-drawing.mp4",
+            //   altText: "",
+            //   vttUrl: "",
+            // },
+            // optional, override market text
+            // contents: [
+            //   {
+            //     text: `Can you imagine yourself hosting successful events and meetings?
+            //     Then this program is right for you. Earn a degree that showcases your advanced knowledge of event programming, operations, financial management and marketing.
+            //     The instructors work in all aspects of the event industry.`,
+            //   },
+            // ],
+          },
+          atAGlance: {
+            // hide: true,
+            offeredBy: {
+              text: "Herberger Instite for Design and the Arts",
+              url: "#",
+            },
+            locations: [
+              {
+                text: "Tempe campus",
+                url: "#",
+              },
+              {
+                text: "West campus",
+                url: "#",
+              },
+              {
+                text: "Online",
+                url: "#",
+              },
+              {
+                text: "ASU Local@Los Angeles",
+                url: "#",
+              },
+            ],
+            firstRequirementMathCourse: "MAT 142 - College Mathematics",
+            mathIntensity: "General",
+            timeCommitment: "120 credit hours(about 4 years)",
+          },
+          // applicationRequirements: {
+          //   hide: true,
+          // },
+          // changeMajorRequirements: {
+          //   hide: true,
+          // },
+          nextSteps: {
+            cards: [
+              {
+                icon: "info-circle",
+                title: "Lear more about our programs",
+                content:
+                  "Tell us what type of student you are and we'll get you the information you need.",
+                buttonLink: {
+                  label: "Request information",
+                  ariaLabel: "Request information",
+                  color: "maroon",
+                  href: "https://admission.asu.edu/contact/request-info",
+                },
+              },
+              {
+                icon: "file-alt",
+                title: "Apply to program",
+                content:
+                  "Arizona State University invites freshman, transfer, international, graduate and online students to apply for admission using our online application.",
+                buttonLink: {
+                  label: "Apply now",
+                  ariaLabel: "Apply now",
+                  color: "maroon",
+                  href: "https://admission.asu.edu/apply",
+                },
+              },
+              {
+                icon: "map-marker-alt",
+                title: "Visit our campus",
+                content:
+                  "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",
+                buttonLink: {
+                  label: "Schedule a visit",
+                  ariaLabel: "Schedule a visit",
+                  color: "maroon",
+                  href: "https://visit.asu.edu/",
+                },
+              },
+            ],
+          },
+          // affordingCollege: {
+          //   hide: true,
+          // },
+          // flexibleDegreeOptions: {
+          //   hide: true,
+          // },
+          careerOutlook: {
+            // OPTIONAL
+            image: {
+              url: "https://source.unsplash.com/random/1200x750",
+              altText:
+                "Random image. REPLACE with appropriate alt text for accessibility.",
+            },
+          },
+          // OPTIONAL
+          // exampleCareers: {
+          //   hide: true,
+          // },
+          globalOpportunity: {
+            // OPTIONAL
+            image: {
+              url: "https://source.unsplash.com/random/1200x750",
+              altText:
+                "Random image. REPLACE with appropriate alt text for accessibility.",
+            },
+          },
+          attendOnline: {
+            // OPTIONAL
+            image: {
+              url: "https://source.unsplash.com/random/1200x750",
+              altText:
+                "Random image. REPLACE with appropriate alt text for accessibility.",
+            },
+          },
+          programContactInfo: {
+            departmentUrl: "#",
+            emailUrl: "#",
+          },
+        },
+      });
+    </script>
+    <script src="./js/example-helper.js"></script>
+  </body>
+</html>

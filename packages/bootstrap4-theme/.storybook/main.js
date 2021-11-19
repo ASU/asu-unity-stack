@@ -1,11 +1,10 @@
-const path = require('path');
-
-
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
     '../stories/**/*.stories.jsx',
     '../stories/**/*.stories.[tj]s',
+    '../stories/**/*.templates.[tj]s',
+    '../stories/**/*.examples.[tj]s',
   ],
   addons: [
     '@storybook/addon-docs',
@@ -32,11 +31,10 @@ module.exports = {
       test: /\.scss$/,
       use: [
         'style-loader',
-        { loader: 'css-loader', options: { importLoaders: 1} },
+        { loader: 'css-loader', options: { importLoaders: 1 } },
         {
           loader: 'sass-loader',
-          options: {
-          },
+          options: {},
         },
       ],
     });
@@ -45,4 +43,3 @@ module.exports = {
     return config;
   },
 };
-

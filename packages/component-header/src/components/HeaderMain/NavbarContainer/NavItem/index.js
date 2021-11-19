@@ -6,8 +6,14 @@ import React from "react";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
+import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
+
+export const DROPDOWNS_GA_EVENTS = {
+  event: "collapse",
+  type: "click",
+};
 
 /**
  * @param {{ icon: string, children: React.ReactNode }} props
@@ -18,7 +24,7 @@ const NavLinkIcon = ({ icon, children }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FontAwesomeIcon icon={icon} className="icon-nav-item" />
+      <FontAwesomeIcon icon={icon} className="icon-nav-item" alt="" />
       <span className="mobile-only">{children}</span>
     </>
   );
@@ -62,9 +68,28 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           <FontAwesomeIcon
             icon="chevron-down"
             className={`chevron-icon ${opened ? "open" : ""}`}
+            // @ts-ignore
+            alt=""
           />
         )}
       </span>
+    );
+  };
+
+  const dispatchGAEvent = () => {
+    const isDropdown = !!link.items?.length;
+    const action = opened ? "close" : "open";
+    const { text } = link;
+    trackGAEvent(
+      isDropdown
+        ? {
+            ...DROPDOWNS_GA_EVENTS,
+            action,
+            text,
+          }
+        : {
+            text: link.type === "icon-home" ? "home button" : text,
+          }
     );
   };
 
@@ -77,10 +102,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         setItemOpened();
       }
     }
+    dispatchGAEvent();
   };
 
   const handleOnMouseEnterLeave = () => {
-    if (expandOnHover && !isMobile) setItemOpened();
+    if (expandOnHover && !isMobile) {
+      setItemOpened();
+      dispatchGAEvent();
+    }
   };
 
   return (
@@ -97,6 +126,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
+        data-testid="nav-item"
       >
         {renderNavLinks()}
       </a>
@@ -104,6 +134,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         <DropdownItem
           items={link.items}
           buttons={link.buttons}
+          dropdownName={link.text}
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
         />
       )}

@@ -2,8 +2,14 @@
 .btn {
   text-decoration: $uds-component-button-text-decoration;
   font-weight: $uds-component-button-font-weight;
-  & + & {
-    margin-left: $uds-size-spacing-2;
+  white-space: nowrap;
+  width: max-content !important;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  &.btn-primary {
+    color: $white;
+    background: $primary;
   }
   &.btn-md {
     font-size: $uds-component-button-medium-font-size;
@@ -36,7 +42,7 @@
   }
   &.btn-circle {
     padding: $uds-size-spacing-half $uds-size-spacing-half;
-    width: $uds-size-spacing-4;
+    width: $uds-size-spacing-4 !important;
     height: $uds-size-spacing-4;
     border: solid 1px $gray-3;
     &.btn-circle-alt-white {
@@ -52,12 +58,12 @@
       color: $gray-7;
     }
     &.btn-circle-large {
-      width: $uds-size-spacing-8;
+      width: $uds-size-spacing-8 !important;
       height: $uds-size-spacing-8;
       font-size: 1.5rem;
     }
     &.btn-circle-x-large {
-      width: 6.5rem;
+      width: 6.5rem !important;
       height: 6.5rem;
       font-size: 3rem;
     }
@@ -69,7 +75,6 @@
     transform: scale(0.95);
   }
 }
-
 .bg-light-gray {
   background-color: $gray-1;
 }

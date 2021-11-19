@@ -28,6 +28,7 @@ const navItemStyles = breakpoint => css`
 
       &.nav-item {
         display: block;
+        text-transform: capitalize;
       }
     }
 
@@ -55,11 +56,11 @@ const navItemStyles = breakpoint => css`
       > a {
         padding: 0.5rem 0;
 
-        :visited {
+        &.nav-item:visited {
           color: #191919;
         }
 
-        :hover {
+        &.nav-item:hover {
           color: #8c1d40;
           text-decoration: underline;
         }
