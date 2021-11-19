@@ -207,6 +207,10 @@ yarn build
 # run tests
 yarn test
 
+# run e2e tests
+yarn storybbok
+yarn e2e
+
 # it generates the document `docs/README.props.md`
 yarn docs
 

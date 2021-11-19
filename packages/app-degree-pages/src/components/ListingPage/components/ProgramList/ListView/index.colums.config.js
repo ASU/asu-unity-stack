@@ -33,6 +33,7 @@ const columns = [
           {resolver.getMajorDesc()}
         </a>
         <ChevronIconButton
+          dataId="show-row-detail"
           ariaLabel={`${resolver.getMajorDesc()} arrow`}
           ariaControls={`row-info-${rowIndex}`}
           onClick={selected => onClick(rowIndex, selected)}

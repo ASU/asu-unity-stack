@@ -1,3 +1,4 @@
+/* eslint-disable jest/valid-expect-in-promise */
 /* eslint-disable jest/no-mocks-import */
 /* eslint-disable jest/expect-expect */
 // @ts-check
@@ -17,6 +18,13 @@ function expectPagerIs(pages) {
 function expectTableRowCountIs(rowCount) {
   const table = cy.get("[data-testid='program-list'] table tbody tr");
   table.should("have.length", rowCount);
+}
+
+/** @param {string} majorName */
+function expectFirstMajorToBe(majorName = "") {
+  cy.get("table tbody > tr:first-child td.major").then(major =>
+    expect(major.text()).toBe(majorName)
+  );
 }
 
 describe("#Listing Page", () => {
@@ -40,6 +48,39 @@ describe("#Listing Page", () => {
 
     const programList = cy.getByTestId("program-list");
     expect(programList).not.toBe(null);
+  });
+
+  describe("#Major details", () => {
+    function toggleDetail() {
+      const showRowDetail = cy.get(
+        "table tbody > tr:nth-child(1) [data-testid='show-row-detail']"
+      );
+      showRowDetail.click();
+    }
+
+    beforeAll(toggleDetail);
+
+    afterAll(toggleDetail);
+
+    it("shuold open the accordion details", () => {
+      cy.get("table tbody > tr:first-child").then(row =>
+        expect(row.attr("data-is-open")).toBe("true")
+      );
+    });
+
+    it("shuold toggle more/less info", () => {
+      cy.get("table tbody > tr:nth-child(2) [data-testid='more-text']")
+        .click()
+        .then(moreText => {
+          expect(moreText.is(":visible")).toBe(false);
+        });
+
+      cy.get("table tbody > tr:nth-child(2) [data-testid='less-text']")
+        .click()
+        .then(lessText => {
+          expect(lessText.is(":visible")).toBe(false);
+        });
+    });
   });
 
   describe("#Search by keyword", () => {
@@ -111,6 +152,56 @@ describe("#Listing Page", () => {
   });
 
   describe("#Navigate program list", () => {
-    // todo
+    it("Should change page when I  click on pager bar", () => {
+      const firstRowMajors = [
+        "Accountancy",
+        "Aerospace Engineering (Autonomous Vehicle Systems)",
+        "Applied Biological Sciences (Preveterinary Medicine)",
+        "Applied Physics",
+      ];
+
+      cy.get("[data-testid='pagination'] [data-id='page-number']").as("pages");
+
+      cy.get("@pages")
+        .its("length")
+        // @ts-ignore
+        .then(len => [...Array(len).keys()])
+        .each(index => {
+          const pageIndex = /** @type {number} */ (index);
+          cy.get("@pages").eq(pageIndex).click();
+          cy.get("table tbody > tr:first-child td.major").each(td => {
+            const majorName = td.text();
+            expect(majorName).toBe(firstRowMajors[pageIndex]);
+          });
+        });
+    });
+
+    it("Should change page when I FIRST, PREV, NEXT, LAST", () => {
+      const firstPageMajor = "Accountancy";
+      const secondPageMajor =
+        "Aerospace Engineering (Autonomous Vehicle Systems)";
+      const secondLastPageMajor = "Theory and Composition (Theory)";
+      const lastPageMajor =
+        "Transborder Chicana/o and Latina/o Studies" +
+        " (US and Mexican Regional Immigration Policy and Economy)";
+
+      const firstButton = cy.get(
+        "[data-testid='pagination'] [data-id='first']"
+      );
+      firstButton.click();
+      expectFirstMajorToBe(firstPageMajor);
+
+      const nextButton = cy.get("[data-testid='pagination'] [data-id='next']");
+      nextButton.click();
+      expectFirstMajorToBe(secondPageMajor);
+
+      const lastButton = cy.get("[data-testid='pagination'] [data-id='last']");
+      lastButton.click();
+      expectFirstMajorToBe(lastPageMajor);
+
+      const prevButton = cy.get("[data-testid='pagination'] [data-id='prev']");
+      prevButton.click();
+      expectFirstMajorToBe(secondLastPageMajor);
+    });
   });
 });

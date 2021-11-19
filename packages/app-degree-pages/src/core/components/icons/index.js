@@ -73,11 +73,18 @@ const ChevronDownIcon = () => (
  *  onClick: (selected: boolean) => void
  *  ariaLabel: string
  *  ariaControls: string
+ *  dataId: string
  * }} props
  * @returns {JSX.Element}
  */
-const ChevronIconButton = ({ onClick = () => null, ariaLabel, ariaControls }) =>
+const ChevronIconButton = ({
+  onClick = () => null,
+  ariaLabel,
+  ariaControls,
+  dataId,
+}) =>
   BaseStateIconButton({
+    dataId,
     baseIconClassName1: "fas fa-chevron-up",
     baseIconClassName2: "fas fa-chevron-down",
     onClick,

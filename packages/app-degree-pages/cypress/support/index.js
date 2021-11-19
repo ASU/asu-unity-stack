@@ -6,3 +6,6 @@ import "./commands";
 if (!global.beforeAll) {
   global.beforeAll = global.before;
 }
+if (!global.afterAll) {
+  global.afterAll = global.after;
+}

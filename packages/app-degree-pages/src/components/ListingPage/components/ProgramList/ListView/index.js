@@ -51,8 +51,12 @@ const renderInfo = ({ resolver, id }) => {
         tabIndex={0}
         onKeyDown={triggerDescription}
       >
-        <span className="label-more">[...more]</span>
-        <span className="label-less">[...less]</span>
+        <span data-testid="more-text" className="label-more">
+          [...more]
+        </span>
+        <span data-testid="less-text" className="label-less">
+          [...less]
+        </span>
       </label>
     </div>
   );
