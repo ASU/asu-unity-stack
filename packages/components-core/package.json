@@ -22,8 +22,7 @@
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
-    "postdocs": "node ../../scripts/process-readme-props.js",
-    "postinstall": "yarn build"
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
