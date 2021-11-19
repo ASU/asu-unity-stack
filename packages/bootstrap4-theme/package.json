@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/ASU/asu-unity-stack.git",
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {

@@ -26,8 +26,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/component-news"
+    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/app-webdir-ui"
   },
   "dependencies": {
     "@asu-design-system/component-carousel": "^1.8.3",
