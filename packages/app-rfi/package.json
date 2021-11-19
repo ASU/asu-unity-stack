@@ -5,6 +5,11 @@
   "author": "Michael Samuelson <mlsamuel@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "UNLICENSED",
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git",

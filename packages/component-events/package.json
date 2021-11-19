@@ -6,6 +6,11 @@
   "author": "Nicolas Baudon",
   "license": "Unlicensed",
   "private": true,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"

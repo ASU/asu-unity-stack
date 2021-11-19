@@ -20,6 +20,11 @@
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"

@@ -8,6 +8,11 @@
     "url": "https://github.com/ASU/asu-unity-stack.git",
     "directory": "packages/bootstrap4-theme"
   },
+  "files": [
+    "dist/*",
+    "docs/*",
+    "src/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
