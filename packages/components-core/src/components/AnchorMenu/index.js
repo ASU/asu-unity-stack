@@ -130,12 +130,13 @@ export const AnchorMenu = ({
         )}
 
         <div
+          data-testid="anchor-menu-container"
           id="collapseAnchorMenu"
           className={classNames("card", "card-body", "collapse", {
             [`show`]: showMenu,
           })}
         >
-          <nav className="nav" aria-label={menuTitle}>
+          <nav data-testid="anchor-menu" className="nav" aria-label={menuTitle}>
             {items?.map(item => (
               // Use this package button
               // @ts-ignore

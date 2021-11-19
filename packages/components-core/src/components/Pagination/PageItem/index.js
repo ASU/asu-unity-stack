@@ -13,6 +13,7 @@ import React from "react";
  * @ignore
  */
 export const PageItem = ({
+  dataId,
   isClickeable,
   disabled,
   pageLinkIcon,
@@ -35,6 +36,7 @@ export const PageItem = ({
           type="button"
           onClick={onClick}
           data-testid="page-link"
+          data-id={dataId}
         >
           {children}
           {selectedPage && <span className="sr-only">(current)</span>}
