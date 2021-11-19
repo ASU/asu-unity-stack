@@ -2,7 +2,10 @@ const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../../");
 
 module.exports = {
-  stories: ["../../src/**/*.percy.mdx", "../../src/**/*.percy.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../../tests/**/*.percy.mdx",
+    "../../tests/**/*.percy.@(js|jsx|ts|tsx)",
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

@@ -8,13 +8,5 @@
       "university-horiz-maroongold" : { "value": "assets/asu-logo/asu_university_horiz_rgb_maroongold_150_4.png" },
       "university-horiz-white"      : { "value": "assets/asu-logo/asu_university_horiz_rgb_white_150.png" }
     },
-    "innovationbadge": {
-      "name" : { "value": "ASU Innovation Badge" },
-      "-badge-only" : {
-        "-on-dark"  : { "value": "assets/innovation-badge/asu-2020-innovation--badge-only--on-dark.png" },
-        "-on-gold"  : { "value": "assets/innovation-badge/asu-2020-innovation--badge-only--on-gold.png" },
-        "-on-white" : { "value": "assets/innovation-badge/asu-2020-innovation--badge-only--on-white.png" }
-      }
-    }
   }
 }

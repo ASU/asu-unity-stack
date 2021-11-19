@@ -99,7 +99,7 @@ export const StoryHero = createStory(
   <section class="uds-story-hero">
     <img
       class="hero"
-      src="https://source.unsplash.com/random/1920x512"
+      src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
       alt="Be sure to include alt text in your image tag."
     />
     <div class="content">

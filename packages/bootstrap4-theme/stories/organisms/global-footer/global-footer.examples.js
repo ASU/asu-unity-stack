@@ -13,7 +13,7 @@ import {
   FiveColumns,
   SixColumns,
 } from './global-footer.templates.js';
-import { initFooterGA } from './global-footer';
+import { initFooterGA as initFunc } from './global-footer';
 
 export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, {
   initFunc,
@@ -29,3 +29,6 @@ export const ThreeColumnsExample = createStory(ThreeColumns, { initFunc });
 export const FourColumnsExample = createStory(FourColumns, { initFunc });
 export const FiveColumnsExample = createStory(FiveColumns, { initFunc });
 export const SixColumnsExample = createStory(SixColumns, { initFunc });
+SixColumnsExample.args = {
+  template: 1,
+};

@@ -6,7 +6,9 @@ export default createComponent('Buttons', 'Atoms', 'Examples');
 export const ButtonColorsComponent = createStory(
   <div>
     <br />
-    <a class="btn btn-primary" href="/">btn-primary link</a>
+    <a class="btn btn-primary" href="/">
+      btn-primary link
+    </a>
     <hr />
     <button class="btn btn-primary">btn-primary button</button>
     <hr />
@@ -33,6 +35,9 @@ export const ButtonColorsComponent = createStory(
     </button>
   </div>
 );
+ButtonColorsComponent.args = {
+  template: 1,
+};
 
 const sizesDemoStyle = {
   display: 'inline-grid',
@@ -116,6 +121,9 @@ export const ButtonSizesComponent = createStory(
     </div>
   </div>
 );
+ButtonSizesComponent.args = {
+  template: 1,
+};
 
 export const ButtonWithIconComponent = createStory(
   <div class="container-fluid">

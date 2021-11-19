@@ -31,6 +31,9 @@ const HeaderMainWrapper = styled.div`
       margin-top: 16px;
       display: flex;
       align-items: center;
+      .title {
+        width: 100%;
+      }
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
