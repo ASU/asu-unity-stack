@@ -1,3 +1,5 @@
+import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
+import { SearchProvider, WithSearch } from "@elastic/react-search-ui";
 import { Button } from "@asu-design-system/components-core";
 import React from "react";
 
@@ -34,25 +36,55 @@ export const pageTabs = [
   },
 ];
 
+const connector = new AppSearchAPIConnector({
+  searchKey: "search-371auk61r2bwqtdzocdgutmg",
+  engineName: "search-ui-examples",
+  endpointBase: "http://127.0.0.1:3002",
+  cacheResponses: false
+});
+
 const ASUSearchPage = () => {
   return (
-    <SearchPage>
-      <h1>
-        <span className="highlight-gold">Search</span>
-      </h1>
-      <form className="uds-form">
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            id="exampleDefaultInput"
-            placeholder="Helper text"
-          />
-          <Button color="maroon" icon={["fas", "search"]} label="Search" />
-        </div>
-      </form>
-      <TabbedPanels panels={pageTabs} />
-    </SearchPage>
+    <SearchProvider config={{
+        apiConnector: connector,
+      }}
+    >
+      <WithSearch
+        mapContextToProps={({ searchTerm, setSearchTerm, results }) => ({
+          searchTerm,
+          setSearchTerm,
+          results
+        })}
+      >
+        {({ searchTerm, setSearchTerm, results }) => {
+          return (
+            <SearchPage>
+              <h1>
+                <span className="highlight-gold">Search</span>
+              </h1>
+              <form className="uds-form">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="search-input"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={setSearchTerm}
+                  />
+                  <Button
+                    color="maroon"
+                    icon={["fas", "search"]}
+                    label="Search"
+                  />
+                </div>
+              </form>
+              <TabbedPanels panels={pageTabs} />
+            </SearchPage>
+          );
+        }}
+      </WithSearch>
+    </SearchProvider>
   );
 };
 
