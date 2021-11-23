@@ -119,9 +119,6 @@
  * @property {string}  background
  * @property {number}  [currentPage]
  * @property {number}  [totalPages]
- * @property {boolean} [showFirstButton]
- * @property {boolean} [showLastButton]
- * @property {number}  [totalNumbers]
  * @property {PageChangeEvent} onChange
  */
 

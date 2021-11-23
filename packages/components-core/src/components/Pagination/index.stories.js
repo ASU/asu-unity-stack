@@ -38,7 +38,6 @@ export const Default = Template.bind({});
 Default.args = {
   type: "default",
   background: "white",
-  totalPages: 10,
 };
 
 export const Bordered = Template.bind({});
