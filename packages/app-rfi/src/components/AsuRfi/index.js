@@ -81,7 +81,7 @@ AsuRfi.defaultProps = {
   dataSourceDegreeSearch:
     "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   dataSourceAsuOnline:
-    "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+    "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:
     "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };

@@ -47,7 +47,7 @@ RfiDefault.args = {
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
   dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
-  dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+  dataSourceAsuOnline: undefined, // "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
   submissionUrl: testSubmissionUrl, // Should point to host site's API Proxy endpoint so Source value can be added and submitted from backend.
 };
@@ -262,7 +262,7 @@ RfiDevTester.args = {
   dataSourceDegreeSearch:
     "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   dataSourceAsuOnline:
-    "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+    "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:
     "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
   submissionUrl: testSubmissionUrl,
