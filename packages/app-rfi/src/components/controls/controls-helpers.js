@@ -4,33 +4,29 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-const RfiLabel = ({ label, name, id, requiredIcon }) => {
-  return (
-    <label htmlFor={id || name}>
-      {requiredIcon ? (
-        <span title="Required">
-          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
-        </span>
-      ) : null}
-      &nbsp;
-      {label}
-    </label>
-  );
-};
+const RfiLabel = ({ label, name, id, requiredIcon }) => (
+  <label htmlFor={id || name}>
+    {requiredIcon ? (
+      <span title="Required">
+        <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+      </span>
+    ) : null}
+    &nbsp;
+    {label}
+  </label>
+);
 
-const RfiError = ({ isError, metaError }) => {
-  return (
-    <div role="alert">
-      {isError ? (
-        <small className="form-text invalid-feedback">
-          <i className="fas fa-exclamation-triangle" aria-hidden="true" />
-          &nbsp;
-          {metaError}
-        </small>
-      ) : null}
-    </div>
-  );
-};
+const RfiError = ({ isError, metaError }) => (
+  <div role="alert">
+    {isError ? (
+      <small className="form-text invalid-feedback">
+        <i className="fas fa-exclamation-triangle" aria-hidden="true" />
+        &nbsp;
+        {metaError}
+      </small>
+    ) : null}
+  </div>
+);
 
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props got displaying the required icon until
