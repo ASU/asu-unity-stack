@@ -26,7 +26,11 @@
     padding: 32px;
     overflow: hidden;
 
-    h1, h2, h3, h4, h5 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
       margin-top: 0;
     }
   }
@@ -57,9 +61,12 @@
     }
 
     .content-wrapper {
+      position: absolute;
+      width: 550px;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
       padding: 40px;
-      grid-column: 3 / span 2;
-      grid-row: 2 / span 1;
     }
 
     &:after {
@@ -90,5 +97,3 @@
     }
   }
 }
-
-

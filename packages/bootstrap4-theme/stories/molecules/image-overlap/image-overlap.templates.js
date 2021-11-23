@@ -30,7 +30,11 @@ export const ImageOverlapRightOrLeft = createStory(
           alt="Generic image from PlaceIMG"
         />
         <div class="content-wrapper">
-          <h3>This is the content that goes in the box.</h3>
+          <h2>
+            <span class="highlight-gold">
+              This is the content that goes in the box.
+            </span>
+          </h2>
           <p>
             Instagram tour operator travel sailing flying package. Territory New
             York City group discount active lifestyle creditcard insurance
