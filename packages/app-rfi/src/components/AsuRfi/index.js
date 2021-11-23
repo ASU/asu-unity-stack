@@ -6,7 +6,7 @@ import React from "react";
 // Requires peer dependency of @asu-design-system/bootstrap4-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
-// tweaking a few styles.
+// tweaking a few styles
 
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
