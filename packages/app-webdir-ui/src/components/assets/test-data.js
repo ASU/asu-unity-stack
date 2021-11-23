@@ -5,7 +5,7 @@ export const getTestCards = (num = 15) => {
   return Array.from(Array(num)).map((x, idx) => {
     if (idx % 2 === 0) {
       return {
-        id: idx,
+        id: idx.toString(),
         imgURL: ProfilePicOne,
         name: "Christine Wilkinson",
         title: "Regents Professor",
@@ -22,7 +22,7 @@ export const getTestCards = (num = 15) => {
       };
     }
     return {
-      id: idx,
+      id: idx.toString(),
       imgURL: ProfilePicTwo,
       name: "Michael Crow",
       title: "Sr VP/Sec of Univ & Asc Prof",

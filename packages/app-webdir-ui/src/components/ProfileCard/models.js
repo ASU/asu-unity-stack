@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export const profileCardType = PropTypes.shape({
-  id: PropTypes.number,
+  id: PropTypes.string,
   imgURL: PropTypes.string,
   name: PropTypes.string,
   title: PropTypes.string,
