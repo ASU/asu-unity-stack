@@ -13,6 +13,11 @@ import {
 import { initGlobalHeader as initFunc } from './global-header';
 
 export const BasicExample = createStory(Basic, { initFunc });
+
+BasicExample.args = {
+  template: 0,
+};
+
 export const DropDownMenusExample = createStory(DropDownMenus, { initFunc });
 export const NoNavigationExample = createStory(NoNavigation, { initFunc });
 export const NoNavigationAndWithButtonsExample = createStory(

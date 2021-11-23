@@ -26,26 +26,26 @@ export const FoldableCardDefaultOpen = createStory(
     >
       <h4>This is a quaternary headline</h4>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud
       </p>
-      <h5>
-        This is a level five headline. There's a fancy word for that too.
-      </h5>
+      <h5>This is a level five headline. There's a fancy word for that too.</h5>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor
       </p>
     </div>
-  </div>,
-  {}
+  </div>
 );
+FoldableCardDefaultOpen.args = {
+  template: 1,
+};
 
 export const ColorAccents = createStory(
   <div class="accordion" id="accordionExample">
@@ -77,17 +77,16 @@ export const ColorAccents = createStory(
         <h4>Quatrenary Headline</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
       </div>
       {/* end .card-body */}
@@ -119,17 +118,16 @@ export const ColorAccents = createStory(
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -165,17 +163,16 @@ export const ColorAccents = createStory(
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
       </div>
       {/* end .card-body */}
@@ -210,17 +207,16 @@ export const ColorAccents = createStory(
         <h4>Quatrenary Headline</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
       </div>
       {/* end .card-body */}
@@ -263,17 +259,16 @@ export const IncludedIcons = createStory(
         <h4>Quatrenary Headline</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
       </div>
       {/* end .card-body */}
@@ -308,17 +303,16 @@ export const IncludedIcons = createStory(
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <h5>
-          This is a level five headline. There's a fancy word for that
-          too.
+          This is a level five headline. There's a fancy word for that too.
         </h5>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          enim ad minim veniam, quis nostrud
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

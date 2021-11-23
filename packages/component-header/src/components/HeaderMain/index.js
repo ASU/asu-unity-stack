@@ -53,7 +53,11 @@ const HeaderMain = () => {
                 onClick={handleClickMobileMenu}
                 aria-label="Toggle navigation"
               >
-                <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
+                <FontAwesomeIcon
+                  icon={mobileMenuOpen ? "times" : "bars"}
+                  // @ts-ignore
+                  alt=""
+                />
               </button>
               <div
                 className={`${!isPartner ? "expand-title" : ""}${

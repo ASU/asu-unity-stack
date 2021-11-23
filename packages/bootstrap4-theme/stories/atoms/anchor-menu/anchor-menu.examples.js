@@ -12,7 +12,7 @@ export const AnchorMenu = createStory(
       <div class="uds-hero-lg has-btn-row">
         <img
           class="hero"
-          src="https://source.unsplash.com/random/1920x1200"
+          src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
           alt="Sample placeholder image."
         />
         <h1>
@@ -357,6 +357,6 @@ export const AnchorMenu = createStory(
   </div>,
   {
     initFunc: initializeAnchorMenu,
-    omitTemplate: true
+    omitTemplate: true,
   }
 );

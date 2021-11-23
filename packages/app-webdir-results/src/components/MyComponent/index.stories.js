@@ -4,7 +4,6 @@ import withMock from "storybook-addon-mock";
 
 import { MyComponent } from "./index";
 
-
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").ComponentType } ComponentType */
 export default {
   title: "New App Template/Test Component",

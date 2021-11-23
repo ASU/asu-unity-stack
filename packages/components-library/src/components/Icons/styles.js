@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 
 import { cx } from "@emotion/css";
@@ -62,8 +61,8 @@ const IconInfoCircle = props => {
 const IconCircleClose = props => {
   return (
     <span class={cx("fa-layers fa-fw", props.class)}>
-      <FontAwesomeIcon icon={faCircle} size="2x" />
-      <FontAwesomeIcon icon={faTimes} size="1x" />
+      <FontAwesomeIcon icon={faCircle} size="2x" alt={props.alt} />
+      <FontAwesomeIcon icon={faTimes} size="1x" alt={props.alt} />
     </span>
   );
 };

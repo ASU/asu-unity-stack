@@ -73,10 +73,22 @@
             should appear on every subdomain and page of asu.edu to ensure and optimal
             user experience as they navigate across asu.edu.</p>
 
-          <h3>The ASU Header is delivered in four ways</h3>
+          <h3>The ASU Header is delivered in five ways</h3>
 
-          <h4>Components Library header</h4>
-          <p>Intended for use within platforms and applications, this
+          <h4>Components Header</h4>
+          <p><strong>Preferred:</strong> Intended for use within platforms and applications, this
+            header variant is built using React as a peer dependency and can be implemented
+            using the <a href="/@asu-design-system/component-header/index.html">
+              @asu-design-system/component-header</a> package. This version of
+            the header does not bundle Cookie Consent or Google Tag Manager.
+            Site developers using this header must implement Cookie Consent
+            using the @asu-design-system/component-cookie-consent package themselves for
+            public-facing sites. Similarly, site developers should add Google
+            Tag Manager code snippets to their sites. See below for guidance in
+            both cases and instructions for installing packages.</p>
+
+          <h4>Components Library Header</h4>
+          <p><strong>To Be Deprecated in favor of Component Header:</strong> Intended for use within platforms and applications, this
             header variant is built using Preact and can be implemented
             using the <a href="/@asu-design-system/components-library/index.html">
               @asu-design-system/components-library</a> package. This version of
@@ -185,8 +197,8 @@
 
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
-          <p>Enterprise sites should implement the ASU Enterprise QA GTM on 
-            their "DEV" environment, and the ASU Enterprise Production GTM 
+          <p>Enterprise sites should implement the ASU Enterprise QA GTM on
+            their "DEV" environment, and the ASU Enterprise Production GTM
             on their "QA" and "Production" environments. This may be configured
             using environmental variables. Each environment has its own
             GTM ID associated with it and care must be taken to use the

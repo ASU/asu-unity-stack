@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const TitleWrapper = styled.div`
-  width: 100%;
   line-height: 1;
   font-size: 1rem;
   font-weight: 700;
@@ -18,8 +17,10 @@ const TitleWrapper = styled.div`
   background-size: 200%;
   display: inline-block;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-  transition-duration: 1s;
+  transition-duration: 1.5s;
   margin: 0;
+  width: max-content;
+
   &.active {
     background-position: -200%;
   }

@@ -81,4 +81,5 @@ export const Banner = createStory(
 );
 Banner.args = {
   template: 0,
+  color: 'banner-orange',
 };

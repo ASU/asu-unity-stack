@@ -4,10 +4,10 @@ import { initImageParallax as initFunc } from './image-parallax';
 
 export default createComponent('Image Parallax', 'Molecules', 'Templates');
 
-export const imageParalax = createStory(
+export const ImageParalax = createStory(
   () => (
     <section class="parallax-container carve-your-path">
-      <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
+      <img src="https://source.unsplash.com/WLUHO9A_xik/1200x900" />
       <div class="parallax-container-content">
         <h2>Carve your path</h2>
         <p>
@@ -46,3 +46,6 @@ export const imageParalax = createStory(
   ),
   { initFunc }
 );
+ImageParalax.args = {
+  template: 1,
+};
