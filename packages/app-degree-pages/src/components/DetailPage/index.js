@@ -20,6 +20,7 @@ import {
   linkPropShape,
   imagePropShape,
   videoPropShape,
+  whyChooseAsuShape,
 } from "../../core/models";
 import {
   degreeDataPropResolverService,
@@ -50,6 +51,7 @@ import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
+import { WhyChooseAsu } from "./components/WhyChooseAsu";
 
 /**
  * @typedef {import('../../core/types/detail-page-types').DetailPageProps} DetailPageProps
@@ -76,6 +78,7 @@ const DetailPage = ({
   attendOnline,
   programContactInfo,
   nextSteps,
+  whyChooseAsu,
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
@@ -228,7 +231,8 @@ const DetailPage = ({
             <div className="row">
               {!nextSteps?.hide ? (
                 <NextSteps
-                  cards={nextSteps?.cards || detailPageDefault.nextSteps.cards}
+                  cards={nextSteps?.cards}
+                  defaultCards={detailPageDefault.nextSteps.cards}
                 />
               ) : null}
 
@@ -271,6 +275,17 @@ const DetailPage = ({
                     globalOpportunity?.image ||
                     detailPageDefault.globalOpportunity.image
                   }
+                />
+              ) : null}
+
+              {!whyChooseAsu?.hide ? (
+                <WhyChooseAsu
+                  sectionIntroText={
+                    whyChooseAsu?.sectionIntroText ||
+                    detailPageDefault.whyChooseAsu.sectionIntroText
+                  }
+                  cards={whyChooseAsu?.cards}
+                  defaultCards={detailPageDefault.whyChooseAsu.cards}
                 />
               ) : null}
 
@@ -361,6 +376,7 @@ DetailPage.propTypes = {
     hide: PropTypes.bool,
     cards: PropTypes.arrayOf(cardPropShape),
   }),
+  whyChooseAsu: PropTypes.shape(whyChooseAsuShape),
 };
 
 export { DetailPage };

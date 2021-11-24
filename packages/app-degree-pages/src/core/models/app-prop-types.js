@@ -125,6 +125,29 @@ const anchorMenuPropType = {
   ),
 };
 
+const whyChooseAsuCardShape = PropTypes.shape({
+  image: imagePropShape,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  button: buttonPropShape,
+});
+
+const whyChooseAsuCardsShape = PropTypes.shape({
+  faculty: whyChooseAsuCardShape,
+  programs: whyChooseAsuCardShape,
+  research: whyChooseAsuCardShape,
+  inclusion: whyChooseAsuCardShape,
+  mentors: whyChooseAsuCardShape,
+  honors: whyChooseAsuCardShape,
+});
+
+const whyChooseAsuShape = {
+  hide: PropTypes.bool,
+  sectionIntroText: PropTypes.string,
+  cards: whyChooseAsuCardsShape,
+  defaultCards: whyChooseAsuCardsShape,
+};
+
 const anchorMenuPropShape = PropTypes.shape({
   ...anchorMenuPropType,
 });
@@ -161,4 +184,5 @@ export {
   columSettingsPropType,
   filterValueShape,
   optionItemShape,
+  whyChooseAsuShape,
 };
