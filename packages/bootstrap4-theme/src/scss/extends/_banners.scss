@@ -1,5 +1,7 @@
 // ASU Design System Banner styles without Bootstrap variables to override.
-
+.hidden-banner {
+  display: none;
+}
 .banner {
   position: relative;
   display: flex;

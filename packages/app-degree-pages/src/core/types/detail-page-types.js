@@ -25,6 +25,10 @@
  */
 
 /**
+ * @typedef {import("./shared-types").ButtonProps} ButtonProps
+ */
+
+/**
  * @typedef {import("./shared-types").CardItem} CardItem
  */
 
@@ -115,14 +119,25 @@
  */
 
 /**
- * @typedef {Object} NextStepsProps
- * @property {boolean} [hide]
- * @property {Array.<CardItem>} [cards]
+ * @typedef {Object} NextStepsCardProp
+ * @property {string[]} [icon]
+ * @property {string} [title]
+ * @property {string} [content]
+ * @property {ButtonProps} [buttonLink]
  */
 
 /**
- * @typedef {Object} AffordingCollegeProps
- * @property {Array.<CardItem>} [cards]
+ * @typedef {Object} NextStepCardsProps
+ * @property {NextStepsCardProp} [learnMore]
+ * @property {NextStepsCardProp} [apply]
+ * @property {NextStepsCardProp} [visit]
+ */
+
+/**
+ * @typedef {Object} NextStepsProps
+ * @property {boolean} [hide]
+ * @property {NextStepCardsProps} [cards]
+ * @property {NextStepCardsProps} [defaultCards]
  */
 
 /**
@@ -174,6 +189,32 @@
  */
 
 /**
+ * @typedef {Object} WhyChooseAsuCardProp
+ * @property {ImageItem} [image]
+ * @property {string} [title]
+ * @property {string} [text]
+ * @property {ButtonProps} [button]
+ */
+
+/**
+ * @typedef {Object} WhyChooseAsuCardsProps
+ * @property {WhyChooseAsuCardProp} [faculty]
+ * @property {WhyChooseAsuCardProp} [programs]
+ * @property {WhyChooseAsuCardProp} [research]
+ * @property {WhyChooseAsuCardProp} [inclusion]
+ * @property {WhyChooseAsuCardProp} [mentors]
+ * @property {WhyChooseAsuCardProp} [honors]
+ */
+
+/**
+ * @typedef {Object} WhyChooseAsuProps
+ * @property {boolean} [hide]
+ * @property {string} [sectionIntroText]
+ * @property {WhyChooseAsuCardsProps} [cards]
+ * @property {WhyChooseAsuCardsProps} [defaultCards]
+ */
+
+/**
  *
  * @typedef {Object} DetailPageProps
  * @property { string } [appPathFolder]
@@ -194,6 +235,7 @@
  * @property { GlobalOpportunityProps}[globalOpportunity]
  * @property { AttendOnlineProps}[attendOnline]
  * @property { ProgramContactInfoProps }[programContactInfo]
+ * @property { WhyChooseAsuProps }[whyChooseAsu]
  */
 
 /**

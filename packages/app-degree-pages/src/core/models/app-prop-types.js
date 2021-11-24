@@ -98,6 +98,8 @@ const exampleCareersTableDataPropShape = PropTypes.shape({
 
 const columSettingsPropType = {
   hideCollegeSchool: PropTypes.bool,
+  defaultView: PropTypes.oneOf(["list-view", "grid-view"]),
+  cardDefaultImage: imagePropShape,
 };
 
 const columSettingsPropShape = PropTypes.shape({
@@ -123,6 +125,29 @@ const anchorMenuPropType = {
       text: PropTypes.string,
     })
   ),
+};
+
+const whyChooseAsuCardShape = PropTypes.shape({
+  image: imagePropShape,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  button: buttonPropShape,
+});
+
+const whyChooseAsuCardsShape = PropTypes.shape({
+  faculty: whyChooseAsuCardShape,
+  programs: whyChooseAsuCardShape,
+  research: whyChooseAsuCardShape,
+  inclusion: whyChooseAsuCardShape,
+  mentors: whyChooseAsuCardShape,
+  honors: whyChooseAsuCardShape,
+});
+
+const whyChooseAsuShape = {
+  hide: PropTypes.bool,
+  sectionIntroText: PropTypes.string,
+  cards: whyChooseAsuCardsShape,
+  defaultCards: whyChooseAsuCardsShape,
 };
 
 const anchorMenuPropShape = PropTypes.shape({
@@ -161,4 +186,5 @@ export {
   columSettingsPropType,
   filterValueShape,
   optionItemShape,
+  whyChooseAsuShape,
 };
