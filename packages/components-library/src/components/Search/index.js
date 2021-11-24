@@ -85,7 +85,7 @@ const UniversalSearch = ({ type, open, setOpen, mobile }) => {
     if (inputRef.current.value) {
       setOpen(true);
     }
-  }, []);
+  }, [setOpen]);
 
   const onBlurCallBack = useCallback(
     e => {
@@ -100,22 +100,22 @@ const UniversalSearch = ({ type, open, setOpen, mobile }) => {
         setOpen(false);
       }
     },
-    [open]
+    [setOpen]
   );
 
   const onClickCallback = useCallback(
-    e => {
+    () => {
       //if (open !== true) {
       setOpen(true);
       inputRef.current.focus();
       //}
     },
-    [open]
+    [setOpen]
   );
 
   const onFocusCallback = useCallback(() => {
     setOpen(true);
-  }, [open]);
+  }, [setOpen]);
 
   return (
     <S.UniversalSearch

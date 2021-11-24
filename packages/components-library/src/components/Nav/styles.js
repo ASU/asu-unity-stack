@@ -378,8 +378,8 @@ const DropdownContainer = props => {
         alignedRight ? "aligned-right" : ""
       )}
       data-onclick-identifier={"leave-open"}
-      onMouseDown={e => {}}
-      onClick={e => {}}
+      onMouseDown={() => {}}
+      onClick={() => {}}
     >
       <div>{props.children}</div>
       {props.buttons ? (
