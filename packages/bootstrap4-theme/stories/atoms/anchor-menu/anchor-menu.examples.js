@@ -35,7 +35,7 @@ export const AnchorMenu = createStory(
         id="uds-anchor-menu"
         class="uds-anchor-menu uds-anchor-menu-expanded-lg"
       >
-        <div class="container-xl">
+        <div class="container">
           <div class="uds-anchor-menu-wrapper">
             <h4
               data-toggle="collapse"

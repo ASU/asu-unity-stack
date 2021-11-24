@@ -37,6 +37,7 @@ const Template = ({
   programContactInfo,
   attendOnline,
   nextSteps,
+  whyChooseAsu,
 }) => (
   <>
     <DetailPage
@@ -56,6 +57,7 @@ const Template = ({
       programContactInfo={programContactInfo}
       attendOnline={attendOnline}
       nextSteps={nextSteps}
+      whyChooseAsu={whyChooseAsu}
     />
     <section id="my-request-form-info-id" className="container mb-4">
       <div className="row">
@@ -194,8 +196,8 @@ const defaultArgs = {
   //   hide: true, // OPTIONAL
   // },
   nextSteps: {
-    cards: [
-      {
+    cards: {
+      learnMore: {
         icon: ["fas", "info-circle"],
         title: "Learn more about our programs",
         content:
@@ -207,7 +209,7 @@ const defaultArgs = {
           href: "https://admission.asu.edu/contact/request-info",
         },
       },
-      {
+      apply: {
         icon: ["fas", "file-alt"],
         title: "Apply to program",
         content:
@@ -219,7 +221,7 @@ const defaultArgs = {
           href: "https://admission.asu.edu/apply",
         },
       },
-      {
+      visit: {
         icon: ["fas", "map-marker-alt"],
         title: "Visit our campus",
         content:
@@ -231,7 +233,7 @@ const defaultArgs = {
           href: "https://visit.asu.edu/",
         },
       },
-    ],
+    },
   },
   // affordingCollege: {
   //   hide: true, // OPTIONAL
@@ -255,6 +257,97 @@ const defaultArgs = {
       url: "https://source.unsplash.com/WLUHO9A_xik/1200x750",
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
+    },
+  },
+  whyChooseAsu: {
+    hide: false,
+    sectionIntroText:
+      "CUSTOM INTRO TEXT. ASU offers students excellent academics and unique opportunities to customize your college experience and give you an edge, including undergraduate research, internships, access to state-of-the-art facilities, and opportunities to work with world-class faculty and scientists.",
+    cards: {
+      faculty: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?career`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "World-class faculty",
+        text: "The ASU faculty is at the forefront nationally in advancing research and discovery. Our faculty members inspire new ways of thinking, innovating and solving problems socially, culturally and economically in our region and in the international community.",
+        button: {
+          label: "Faculty excellence",
+          color: "maroon",
+          href: "https://www.asu.edu/academics/faculty-excellence",
+        },
+      },
+      programs: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?job`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "Highly ranked programs",
+        text: "A leading service ranking the excellence and innovation of the nation’s top universities, U.S. News & World Report rates many ASU programs among the top 25 in the country, including more than thirty programs ranked in the nation's top 10.",
+        button: {
+          label: "ASU rankings",
+          color: "maroon",
+          href: "https://www.asu.edu/rankings",
+        },
+      },
+      research: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?person`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "Research opportunities",
+        text: "Students have the opportunity to work with mentors who are experts in their fields and establish professional connections that may last a lifetime. Engage in meaningful research and gain experience that may make you more competitive in the job market.",
+        button: {
+          label: "Research opportunities",
+          color: "maroon",
+          href: "https://provost.asu.edu/uresearch",
+        },
+      },
+      inclusion: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?online`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "An inclusive environment",
+        text: "ASU defines our success not by whom we exclude, but by whom we include and how our students succeed. Our educational programs are designed to broaden access to a quality education and support our students’ success.",
+        button: {
+          label: "ASU Charter",
+          color: "maroon",
+          href: "https://www.asu.edu/about/charter-mission",
+        },
+      },
+      mentors: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?classroom`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "Mentor network",
+        text: "Students have access to a powerful online network of diverse mentors. Engaging with the ASU Mentor Network can help to build connections with professionals, both locally and globally, who share career advice, networks, and their own success stories.",
+        button: {
+          label: "ASU Mentor network",
+          color: "maroon",
+          href: "https://mentorship.asu.edu",
+        },
+      },
+      honors: {
+        image: {
+          url: `https://source.unsplash.com/random/600x600?school`,
+          altText:
+            "Random image. REPLACE with appropriate alt text for accessibility.",
+        },
+        title: "Global education",
+        text: "ASU offers more than 300 Global Education programs in over 65 different countries. Whether you are interested in studying abroad, internships, research or service learning, there's a program for you!",
+        button: {
+          label: "Explore",
+          color: "maroon",
+          href: "https://goglobal.asu.edu",
+        },
+      },
     },
   },
   attendOnline: {
@@ -292,6 +385,7 @@ Default.args = {
   globalOpportunity: null,
   attendOnline: null,
   programContactInfo: null,
+  whyChooseAsu: null,
 };
 
 /**

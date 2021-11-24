@@ -232,7 +232,7 @@ const navTreeWithButtons = [
   {
     href: "/",
     text: "Home",
-    type: "icon",
+    type: "icon-home",
     class: "home",
   },
   {
@@ -323,7 +323,7 @@ const navTreeMega = [
   {
     href: "/",
     text: "Home",
-    type: "icon",
+    type: "icon-home",
     class: "home",
   },
   {
@@ -820,7 +820,7 @@ const mobileNavTree = [
   {
     href: "/",
     text: "This",
-    type: "icon",
+    type: "icon-home",
     class: "home",
     selected: true,
   },

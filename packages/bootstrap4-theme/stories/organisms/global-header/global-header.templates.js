@@ -148,10 +148,16 @@ export const Basic = (
                           class="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
+                          title="Subdomain name home page"
                         >
-                          <span class="d-xl-none">Home</span>
                           <span
-                            title="Home"
+                            class="d-xl-none"
+                            title="Subdomain name home page"
+                          >
+                            Home
+                          </span>
+                          <span
+                            title="Subdomain name home page"
                             class="fas fa-fw fa-home"
                             alt=""
                           ></span>
@@ -448,6 +454,7 @@ export const DropDownMenus = (
                       href="#"
                       class="unit-name"
                       data-ga-header="Parent unit name"
+                      title="Parent unit name home page"
                     >
                       Parent unit name
                     </a>
@@ -465,10 +472,16 @@ export const DropDownMenus = (
                           class="nav-link nav-link-home"
                           href="/"
                           data-ga-header="home button"
+                          title="Subdomain name home page"
                         >
-                          <span class="d-xl-none">Home</span>
                           <span
-                            title="Home"
+                            class="d-xl-none"
+                            title="Subdomain name home page"
+                          >
+                            Home
+                          </span>
+                          <span
+                            title="Subdomain name home page"
                             class="fas fa-fw fa-home"
                             alt=""
                           ></span>
@@ -1516,7 +1529,11 @@ export const NoNavigation = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="Subdomain name">
+                    <a
+                      href="#"
+                      data-ga-header="Subdomain name"
+                      title="Subdomain name home page"
+                    >
                       Subdomain name
                     </a>
                   </div>
@@ -1735,7 +1752,11 @@ export const NoNavigationAndWithButtons = (
                 </button>
                 <div class="navbar-container no-links">
                   <div class="title subdomain-name">
-                    <a href="#" data-ga-header="Subdomain name">
+                    <a
+                      href="#"
+                      data-ga-header="Subdomain name"
+                      title="Subdomain name home page"
+                    >
                       Subdomain name
                     </a>
                   </div>
@@ -1990,10 +2011,16 @@ export const ScrolledState = (
                           class="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
+                          title="Subdomain name home page"
                         >
-                          <span class="d-xl-none">Home</span>
                           <span
-                            title="Home"
+                            class="d-xl-none"
+                            title="Subdomain name home page"
+                          >
+                            Home
+                          </span>
+                          <span
+                            title="Subdomain name home page"
                             class="fas fa-fw fa-home"
                             alt=""
                           ></span>
@@ -2418,10 +2445,16 @@ export const Partner = (
                           class="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
+                          title="Subdomain name home page"
                         >
-                          <span class="d-xl-none">Home</span>
                           <span
-                            title="Home"
+                            class="d-xl-none"
+                            title="Subdomain name home page"
+                          >
+                            Home
+                          </span>
+                          <span
+                            title="Subdomain name home page"
                             class="fas fa-fw fa-home"
                             alt=""
                           ></span>

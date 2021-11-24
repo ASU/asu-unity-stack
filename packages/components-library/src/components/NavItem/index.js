@@ -11,7 +11,7 @@ import * as S from "./styles";
  * @param {} props
  */
 const NavItem = forwardRef(
-  ({ onFocus, type, children, href, ...props }, ref) => {
+  ({ onFocus, type, children, href, title, ...props }, ref) => {
     switch (type) {
       case "button":
         // standards only allow dark buttons in nav dropdowns
@@ -51,6 +51,7 @@ const NavItem = forwardRef(
             ref={ref}
             type="home"
             alt=""
+            title={`${title} home page`}
           >
             {children}
           </S.NavIcon>
@@ -79,6 +80,7 @@ NavItem.propTypes = {
   href: PropTypes.string,
   children: PropTypes.string.isRequired, // children always required (accessiblity and mobile)
   icon: PropTypes.string,
+  title: PropTypes.string,
   selected: PropTypes.bool,
 };
 

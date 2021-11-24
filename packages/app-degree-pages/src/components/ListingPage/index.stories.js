@@ -91,9 +91,14 @@ const defaultArgs = {
   // hasSearchBar: false, // OPTIONAL
   programList: {
     dataSource,
-    settings: {
-      hideCollegeSchool: true,
-    },
+    // OPTIONAL
+    // settings: {
+    // hideCollegeSchool: true,
+    // defaultView: "grid-view", // or "list-view"
+    // cardDefaultImage: {
+    //   url: `examples/assets/img/ds_header_undergrad.jpg`,
+    // },
+    // },
   },
 };
 
@@ -181,6 +186,9 @@ WithIntroText.args = {
     dataSource,
     settings: {
       hideCollegeSchool: true,
+      cardDefaultImage: {
+        url: `examples/assets/img/ds_header_undergrad.jpg`,
+      },
     },
   },
 };

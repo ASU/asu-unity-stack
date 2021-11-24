@@ -4,7 +4,7 @@ import { Accordion } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { ListingPageContext } from "../../../../../core/context";
+import { AppContext } from "../../../../../core/context";
 import {
   degreeDataPropResolverService,
   parseMajorInfoLink,
@@ -37,7 +37,8 @@ const WrapperSection = styled.div`
  * @returns {JSX.Element}
  */
 const AccordionView = ({ programs, actionUrls }) => {
-  const { columSettings } = useContext(ListingPageContext);
+  const { state } = useContext(AppContext);
+  const columSettings = state?.listPageProps?.programList?.settings;
   /**
    * @type {{
    *   content: {
