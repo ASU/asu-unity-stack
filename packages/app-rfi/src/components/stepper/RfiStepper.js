@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable no-unused-vars, react/no-danger */
+/* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
 import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
@@ -84,21 +84,14 @@ const RfiStepper = props => {
     handleSubmit,
     // props
     campus,
-    college, // TODO: not used. Can be removed?
-    department, // TODO: not used. Can be removed?
     studentType,
     areaOfInterest,
     programOfInterest,
-    programOfInterestOptional, // TODO: not used. Can be removed?
     isCertMinor,
     country,
     stateProvince,
     successMsg,
     test,
-    dataSourceDegreeSearch, // TODO: not used. Can be removed?
-    dataSourceAsuOnline, // TODO: not used. Can be removed?
-    dataSourceCountriesStates, // TODO: not used. Can be removed?
-    actualCampus,
   } = props;
   const schema = validationSchemas[step];
 
