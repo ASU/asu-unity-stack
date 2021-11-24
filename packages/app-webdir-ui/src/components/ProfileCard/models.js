@@ -16,3 +16,42 @@ export const profileCardType = PropTypes.shape({
   twitterLink: PropTypes.string,
   size: PropTypes.string,
 });
+
+export const resultsShape = PropTypes.shape({
+  acres: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  date_established: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  description: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  id: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  location: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  nps_link: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  square_km: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  states: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  title: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  visitors: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  world_heritage_site: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  _meta: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+});

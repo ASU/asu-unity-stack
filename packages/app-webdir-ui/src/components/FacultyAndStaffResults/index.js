@@ -12,11 +12,10 @@ const ASUFacultyAndStaffResults = ({
   searchTerm,
   currentPage,
   onPageChange,
-  itemsPerPage,
   totalResults,
 }) => {
   const titleText = title || "All faculty and staff results";
-
+  const itemsPerPage = 6;
   return (
     <FacultyAndStaffResults>
       <div className="results-search-message">
@@ -52,7 +51,6 @@ ASUFacultyAndStaffResults.propTypes = {
   title: PropTypes.string,
   currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
-  itemsPerPage: PropTypes.number,
   totalResults: PropTypes.number,
 };
 

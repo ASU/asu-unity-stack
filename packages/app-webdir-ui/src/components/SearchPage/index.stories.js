@@ -14,4 +14,4 @@ export default createComponent(
   "Templates"
 );
 
-export const DefaultList = createStory(<ASUSearchPage />);
+export const DefaultList = ASUSearchPage;

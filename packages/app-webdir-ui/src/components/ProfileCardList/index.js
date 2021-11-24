@@ -16,7 +16,7 @@ const ASUProfileCardList = ({ profiles }) => {
 };
 
 ASUProfileCardList.propTypes = {
-  profiles: PropTypes.arrayOf(profileCardType).isRequired,
+  profiles: PropTypes.arrayOf(profileCardType),
 };
 
 export { ASUProfileCardList };
