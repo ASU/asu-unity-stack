@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   ErrorAlert,
@@ -11,12 +11,12 @@ import {
   ThemeStyle,
 } from "../../core/components";
 import { detailPageDefaultDataSource } from "../../core/constants";
+import { AppContext, AppProvider } from "../../core/context";
 import {
   anchorMenuPropType,
   cardPropShape,
   dataSourcePropShape,
   ERROR_MESSAGE,
-  resolveDefaultProps,
   linkPropShape,
   imagePropShape,
   videoPropShape,
@@ -62,7 +62,7 @@ import { WhyChooseAsu } from "./components/WhyChooseAsu";
  * @returns {JSX.Element}
  */
 const DetailPage = ({
-  appPathFolder,
+  appPathFolder: _,
   dataSource,
   anchorMenu,
   hero,
@@ -84,10 +84,8 @@ const DetailPage = ({
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
-  const { detailPageDefault } = useMemo(
-    () => resolveDefaultProps(appPathFolder),
-    []
-  );
+  const { defaultState } = useContext(AppContext);
+  const { detailPageDefault } = defaultState;
 
   useEffect(() => {
     doFetchPrograms(url);
@@ -379,4 +377,16 @@ DetailPage.propTypes = {
   whyChooseAsu: PropTypes.shape(whyChooseAsuShape),
 };
 
-export { DetailPage };
+/**
+ * @param {DetailPageProps} props
+ * @returns {JSX.Element}
+ */
+const AppComponent = props => (
+  <AppProvider detailPageProps={props}>
+    <DetailPage {...props} />
+  </AppProvider>
+);
+
+AppComponent.propTypes = DetailPage.propTypes;
+
+export { AppComponent as DetailPage };

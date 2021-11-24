@@ -98,6 +98,8 @@ const exampleCareersTableDataPropShape = PropTypes.shape({
 
 const columSettingsPropType = {
   hideCollegeSchool: PropTypes.bool,
+  defaultView: PropTypes.oneOf(["list-view", "grid-view"]),
+  cardDefaultImage: imagePropShape,
 };
 
 const columSettingsPropShape = PropTypes.shape({
