@@ -50,7 +50,7 @@ NavLinkIcon.propTypes = {
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const opened = link.id === itemOpened;
-  const { breakpoint, expandOnHover } = useAppContext();
+  const { breakpoint, expandOnHover, title } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   const renderNavLinks = () => {
@@ -127,6 +127,9 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
+        title={
+          link.type === "icon-home" && title ? `${title} home page` : link.text
+        }
       >
         {renderNavLinks()}
       </a>
