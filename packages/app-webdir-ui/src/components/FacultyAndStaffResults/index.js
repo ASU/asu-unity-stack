@@ -10,21 +10,22 @@ const ASUFacultyAndStaffResults = ({
   profiles,
   title,
   searchTerm,
-  currentPage,
   onPageChange,
   totalResults,
+  resultsPerPage,
 }) => {
   const titleText = title || "All faculty and staff results";
-  const itemsPerPage = 6;
   return (
     <FacultyAndStaffResults>
-      <div className="results-search-message">
-        <span>Your search for </span>
-        <span className="search-message-emphasis">{searchTerm} </span>
-        <span> returned </span>
-        <span className="search-message-emphasis">{totalResults} </span>
-        <span>faculty and staff results </span>
-      </div>
+      {searchTerm && searchTerm.length > 0 && (
+        <div className="results-search-message">
+          <span>Your search for </span>
+          <span className="search-message-emphasis">{searchTerm} </span>
+          <span> returned </span>
+          <span className="search-message-emphasis">{totalResults} </span>
+          <span>faculty and staff results </span>
+        </div>
+      )}
       {profiles.length > 0 && (
         <div>
           <div className="results-title">{titleText}</div>
@@ -32,13 +33,12 @@ const ASUFacultyAndStaffResults = ({
           <Pagination
             type="default"
             background="white"
-            totalPages={Math.ceil(totalResults / itemsPerPage)}
-            currentPage={currentPage}
+            totalPages={Math.ceil(totalResults / resultsPerPage)}
             onChange={(e, action) => onPageChange(action)}
           />
         </div>
       )}
-      {profiles.length === 0 && (
+      {profiles.length === 0 && searchTerm.length > 0 && (
         <div className="results-title">Please try a different search term</div>
       )}
     </FacultyAndStaffResults>
@@ -49,9 +49,9 @@ ASUFacultyAndStaffResults.propTypes = {
   profiles: PropTypes.arrayOf(profileCardType).isRequired,
   searchTerm: PropTypes.string.isRequired,
   title: PropTypes.string,
-  currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
   totalResults: PropTypes.number,
+  resultsPerPage: PropTypes.number,
 };
 
 export { ASUFacultyAndStaffResults };

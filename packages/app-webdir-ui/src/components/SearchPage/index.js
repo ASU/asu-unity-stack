@@ -21,10 +21,9 @@ function ASUSearchPageComponent({
   searchTerm,
   setSearchTerm,
   results,
-  current,
   setCurrent,
-  setResultsPerPage,
   totalResults,
+  resultsPerPage,
 }) {
   const [term, setTerm] = useState("");
   const doSearch = () => {
@@ -67,10 +66,9 @@ function ASUSearchPageComponent({
           <ASUFacultyAndStaffResults
             profiles={dataConverter(results)}
             searchTerm={searchTerm}
-            currentPage={1}
             onPageChange={setCurrent}
             totalResults={totalResults}
-            setResultsPerPage={setResultsPerPage}
+            resultsPerPage={resultsPerPage}
           />
         </Tab>
         <Tab id="students" title="Students">
@@ -85,10 +83,9 @@ ASUSearchPageComponent.propTypes = {
   searchTerm: PropTypes.string,
   setSearchTerm: PropTypes.func,
   results: PropTypes.arrayOf(resultsShape),
-  current: PropTypes.number,
   setCurrent: PropTypes.func,
-  setResultsPerPage: PropTypes.func,
   totalResults: PropTypes.number,
+  resultsPerPage: PropTypes.number,
 };
 
 const PlusSearch = withSearch(
@@ -96,18 +93,16 @@ const PlusSearch = withSearch(
     searchTerm,
     setSearchTerm,
     results,
-    current,
     setCurrent,
-    setResultsPerPage,
     totalResults,
+    resultsPerPage,
   }) => ({
     searchTerm,
     setSearchTerm,
     results,
-    current,
     setCurrent,
-    setResultsPerPage,
     totalResults,
+    resultsPerPage,
   })
 )(ASUSearchPageComponent);
 
@@ -116,6 +111,9 @@ const ASUSearchPage = () => {
     <SearchProvider
       config={{
         apiConnector: connector,
+        initialState: {
+          resultsPerPage: 6,
+        },
       }}
     >
       <PlusSearch />

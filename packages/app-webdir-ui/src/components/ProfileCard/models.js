@@ -19,7 +19,7 @@ export const profileCardType = PropTypes.shape({
 
 export const resultsShape = PropTypes.shape({
   acres: PropTypes.shape({
-    raw: PropTypes.string,
+    raw: PropTypes.number,
   }),
   date_established: PropTypes.shape({
     raw: PropTypes.string,
@@ -37,16 +37,16 @@ export const resultsShape = PropTypes.shape({
     raw: PropTypes.string,
   }),
   square_km: PropTypes.shape({
-    raw: PropTypes.string,
+    raw: PropTypes.number,
   }),
   states: PropTypes.shape({
-    raw: PropTypes.string,
+    raw: PropTypes.arrayOf(PropTypes.string),
   }),
   title: PropTypes.shape({
     raw: PropTypes.string,
   }),
   visitors: PropTypes.shape({
-    raw: PropTypes.string,
+    raw: PropTypes.number,
   }),
   world_heritage_site: PropTypes.shape({
     raw: PropTypes.string,
