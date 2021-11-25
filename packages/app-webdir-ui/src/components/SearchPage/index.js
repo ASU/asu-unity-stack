@@ -24,6 +24,8 @@ function ASUSearchPageComponent({
   setCurrent,
   totalResults,
   resultsPerPage,
+  isLoading,
+  current,
 }) {
   const [term, setTerm] = useState("");
   const doSearch = () => {
@@ -55,26 +57,32 @@ function ASUSearchPageComponent({
           />
         </div>
       </form>
-      <TabbedPanels>
-        <Tab id="all" title="All ASU Search">
-          <div>Search</div>
-        </Tab>
-        <Tab id="subdomain" title="<<Subdomain>>">
-          <div>Subdomain</div>
-        </Tab>
-        <Tab id="staff" title="Faculty and Staff">
-          <ASUFacultyAndStaffResults
-            profiles={dataConverter(results)}
-            searchTerm={searchTerm}
-            onPageChange={setCurrent}
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-          />
-        </Tab>
-        <Tab id="students" title="Students">
-          <div>Students</div>
-        </Tab>
-      </TabbedPanels>
+      {searchTerm.length > 0 && (
+        <TabbedPanels>
+          <Tab id="all" title="All ASU Search">
+            <div>Search</div>
+          </Tab>
+          <Tab id="subdomain" title="<<Subdomain>>">
+            <div>Subdomain</div>
+          </Tab>
+          <Tab id="staff" title="Faculty and Staff">
+            {isLoading && <div>Loading...</div>}
+            {!isLoading && (
+              <ASUFacultyAndStaffResults
+                profiles={dataConverter(results)}
+                searchTerm={searchTerm}
+                onPageChange={setCurrent}
+                currentPage={current}
+                totalResults={totalResults}
+                resultsPerPage={resultsPerPage}
+              />
+            )}
+          </Tab>
+          <Tab id="students" title="Students">
+            <div>Students</div>
+          </Tab>
+        </TabbedPanels>
+      )}
     </SearchPage>
   );
 }
@@ -86,6 +94,8 @@ ASUSearchPageComponent.propTypes = {
   setCurrent: PropTypes.func,
   totalResults: PropTypes.number,
   resultsPerPage: PropTypes.number,
+  isLoading: PropTypes.bool,
+  current: PropTypes.number,
 };
 
 const PlusSearch = withSearch(
@@ -96,6 +106,8 @@ const PlusSearch = withSearch(
     setCurrent,
     totalResults,
     resultsPerPage,
+    isLoading,
+    current,
   }) => ({
     searchTerm,
     setSearchTerm,
@@ -103,6 +115,8 @@ const PlusSearch = withSearch(
     setCurrent,
     totalResults,
     resultsPerPage,
+    isLoading,
+    current,
   })
 )(ASUSearchPageComponent);
 

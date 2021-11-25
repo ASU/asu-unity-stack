@@ -13,6 +13,7 @@ const ASUFacultyAndStaffResults = ({
   onPageChange,
   totalResults,
   resultsPerPage,
+  currentPage,
 }) => {
   const titleText = title || "All faculty and staff results";
   return (
@@ -33,6 +34,7 @@ const ASUFacultyAndStaffResults = ({
           <Pagination
             type="default"
             background="white"
+            currentPage={currentPage}
             totalPages={Math.ceil(totalResults / resultsPerPage)}
             onChange={(e, action) => onPageChange(action)}
           />
@@ -52,6 +54,7 @@ ASUFacultyAndStaffResults.propTypes = {
   onPageChange: PropTypes.func,
   totalResults: PropTypes.number,
   resultsPerPage: PropTypes.number,
+  currentPage: PropTypes.number,
 };
 
 export { ASUFacultyAndStaffResults };
