@@ -63,12 +63,13 @@ const Template = ({
       <div className="row">
         <h4>This is a just a Place holder</h4>
         <img
-          src="./examples/assets/img/request-form-information.png"
+          src="./examples/assets/img/request-form-information.jpeg"
           alt=""
           style={{
             opacity: "0.7",
             mixBlendMode: "luminosity",
             maxWidth: "100%",
+            width: "100%",
           }}
         />
       </div>
