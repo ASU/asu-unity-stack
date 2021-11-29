@@ -15,29 +15,27 @@ const Partner = () => {
   return (
     <PartnerLogosWrapper breakpoint={breakpoint} data-testid="partner">
       <a
-        href={
-          partnerLogo ? partnerLogo.brandLink : "https://starbucks.asu.edu/"
-        }
+        href={partnerLogo?.brandLink ?? "https://starbucks.asu.edu/"}
         onFocus={() => trackGAEvent({ text: "starbucks logo" })}
       >
         <img
-          src={partnerLogo ? partnerLogo.src : starbucksLogo}
-          alt={partnerLogo ? partnerLogo.alt : "Asu Starbucks logo"}
+          src={partnerLogo?.src ?? starbucksLogo}
+          alt={partnerLogo?.partnerLogo ?? "Asu Starbucks logo"}
         />
       </a>
       <a
-        href={asuLogo ? asuLogo.brandLink : "https://asu.edu"}
+        href={asuLogo?.brandLink ?? "https://asu.edu"}
         onFocus={() => trackGAEvent({ text: "asu logo" })}
       >
         <img
           className="vert"
-          src={asuLogo ? asuLogo.src : asuVertLogo}
-          alt={asuLogo ? asuLogo.alt : "Arizona State University"}
+          src={asuLogo?.src ?? asuVertLogo}
+          alt={asuLogo?.alt ?? "Arizona State University"}
         />
         <img
           className="horiz"
-          src={asuLogo ? asuLogo.mobileScr : asuHorizLogo}
-          alt={asuLogo ? asuLogo.alt : "Arizona State University"}
+          src={asuLogo?.mobileScr ?? asuHorizLogo}
+          alt={asuLogo?.alt ?? "Arizona State University"}
         />
       </a>
     </PartnerLogosWrapper>
