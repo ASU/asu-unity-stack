@@ -54,6 +54,7 @@ const sectionCases = [
   ["Global Opportunity", "global-opportunity"],
   ["AttendOnline", "attend-online"],
   ["Program Contact Info", "program-contact-info"],
+  ["Why Choose Asu", "why-choose-asu"],
 ];
 
 describe("#DetailPage", () => {
@@ -201,6 +202,9 @@ describe("#DetailPage", () => {
           hide: true,
         },
         globalOpportunity: {
+          hide: true,
+        },
+        whyChooseAsu: {
           hide: true,
         },
         attendOnline: {

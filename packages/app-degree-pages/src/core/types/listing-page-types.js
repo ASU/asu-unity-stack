@@ -17,7 +17,7 @@
  */
 
 /**
- * @typedef {import("./shared-types").ColumSettings} ColumSettings
+ * @typedef {import("./shared-types").ListSettings} ListSettings
  */
 
 /**
@@ -50,7 +50,7 @@
 /**
  * @typedef {Object} GridListProps
  * @property {ProgramListDataSource}  dataSource
- * @property {ColumSettings} [settings]
+ * @property {ListSettings} [settings]
  */
 
 /**

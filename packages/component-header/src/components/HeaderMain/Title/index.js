@@ -38,6 +38,7 @@ const Title = () => {
           className="unit-name"
           href={parentOrgUrl}
           onFocus={() => trackGAEvent({ text: parentOrg })}
+          title={`${parentOrg} home page`}
         >
           {parentOrg}
         </a>
@@ -45,6 +46,7 @@ const Title = () => {
           className="subunit-name"
           href={baseUrl}
           onFocus={() => trackGAEvent({ text: title })}
+          title={`${title} home page`}
         >
           {title}
         </a>
@@ -62,6 +64,7 @@ const Title = () => {
         className="title-subunit-name"
         href={baseUrl}
         onFocus={() => trackGAEvent({ text: title })}
+        title={`${title} home page`}
       >
         {title}
       </a>

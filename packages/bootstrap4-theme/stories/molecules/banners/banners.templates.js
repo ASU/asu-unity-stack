@@ -4,6 +4,7 @@ import {
   createStory,
   layoutNames,
 } from '../../../helpers/wrapper.js';
+import { initBanner as initFunc } from './banner';
 
 const extraOptions = {
   color: {
@@ -65,7 +66,6 @@ export const Banner = createStory(
               type="button"
               class="btn btn-circle btn-circle-alt-black close"
               aria-label="Close"
-              onclick="event.target.parentNode.parentNode.style.display='none';"
             >
               <i class="fas fa-times"></i>
             </button>
@@ -75,6 +75,7 @@ export const Banner = createStory(
     );
   },
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );

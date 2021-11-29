@@ -14,7 +14,7 @@ import { progDetailSectionIds, cardPropShape } from "../../../../core/models";
  * @param {NextStepsProps} props
  * @returns
  */
-function NextSteps({ cards }) {
+function NextSteps({ cards, defaultCards }) {
   return (
     <section
       className="container"
@@ -23,23 +23,52 @@ function NextSteps({ cards }) {
     >
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 row">
-        {cards?.map(card => (
-          <div className="mt-2 col-12 col-md-4" key={card.title}>
-            <Card
-              icon={card.icon}
-              title={card.title}
-              body={card.content}
-              buttons={[card.buttonLink]}
-            />
-          </div>
-        ))}
+        <div className="mt-2 col-12 col-md-4">
+          <Card
+            icon={cards?.learnMore?.icon ?? defaultCards.learnMore.icon}
+            title={cards?.learnMore?.title ?? defaultCards.learnMore.title}
+            body={cards?.learnMore?.content ?? defaultCards.learnMore.content}
+            buttons={[
+              cards?.learnMore?.buttonLink ?? defaultCards.learnMore.buttonLink,
+            ]}
+          />
+        </div>
+        <div className="mt-2 col-12 col-md-4">
+          <Card
+            icon={cards?.apply?.icon ?? defaultCards.apply.icon}
+            title={cards?.apply?.title ?? defaultCards.apply.title}
+            body={cards?.apply?.content ?? defaultCards.apply.content}
+            buttons={[
+              cards?.apply?.buttonLink ?? defaultCards.apply.buttonLink,
+            ]}
+          />
+        </div>
+        <div className="mt-2 col-12 col-md-4">
+          <Card
+            icon={cards?.visit?.icon ?? defaultCards.visit.icon}
+            title={cards?.visit?.title ?? defaultCards.visit.title}
+            body={cards?.visit?.content ?? defaultCards.visit.content}
+            buttons={[
+              cards?.visit?.buttonLink ?? defaultCards.visit.buttonLink,
+            ]}
+          />
+        </div>
       </div>
     </section>
   );
 }
 
 NextSteps.propTypes = {
-  cards: PropTypes.arrayOf(cardPropShape).isRequired,
+  cards: PropTypes.shape({
+    learnMore: cardPropShape,
+    apply: cardPropShape,
+    visit: cardPropShape,
+  }),
+  defaultCards: PropTypes.shape({
+    learnMore: cardPropShape,
+    apply: cardPropShape,
+    visit: cardPropShape,
+  }),
 };
 
 export { NextSteps };

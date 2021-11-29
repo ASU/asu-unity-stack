@@ -230,7 +230,7 @@ const NavTreeWithButtons = [
   {
     href: "/",
     text: "Home",
-    type: "icon",
+    type: "icon-home",
     class: "home",
   },
   {
@@ -321,7 +321,7 @@ const NavTreeMega = [
   {
     href: "/",
     text: "Home",
-    type: "icon",
+    type: "icon-home",
     class: "home",
   },
   {

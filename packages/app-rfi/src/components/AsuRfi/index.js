@@ -6,7 +6,7 @@ import React from "react";
 // Requires peer dependency of @asu-design-system/bootstrap4-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
-// tweaking a few styles.
+// tweaking a few styles
 
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
@@ -81,7 +81,7 @@ AsuRfi.defaultProps = {
   dataSourceDegreeSearch:
     "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
   dataSourceAsuOnline:
-    "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
+    "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:
     "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };

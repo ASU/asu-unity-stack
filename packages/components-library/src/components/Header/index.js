@@ -249,6 +249,7 @@ const Header = ({
                 maxMobileHeight: maxMobileNavHeight,
                 breakpoint,
                 expandOnHover,
+                title
               }}
               ref={navRef}
             />
