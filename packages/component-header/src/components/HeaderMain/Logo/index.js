@@ -1,12 +1,13 @@
 // @ts-check
+import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
 
-// @ts-ignore
-import vertLogo from "../../../assets/images/arizona-state-university-logo-vertical.png";
-// @ts-ignore
-import horizLogo from "../../../assets/images/arizona-state-university-logo.png";
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
+
+const currentScriptPath = getCurrentScriptPath();
+const vertLogo = `${currentScriptPath}/assets/img/arizona-state-university-logo-vertical.png`;
+const horizLogo = `${currentScriptPath}/assets/img/arizona-state-university-logo.png`;
 
 const Logo = () => {
   const { logo } = useAppContext();
