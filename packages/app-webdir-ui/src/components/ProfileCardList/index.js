@@ -9,7 +9,7 @@ const ASUProfileCardList = ({ profiles }) => {
   return (
     <ProfileCardList>
       {profiles.map(c => (
-        <ProfileCardTemplate {...c} size="normal" key={c.id} />
+        <ProfileCardTemplate {...c} size="large" key={c.id} />
       ))}
     </ProfileCardList>
   );

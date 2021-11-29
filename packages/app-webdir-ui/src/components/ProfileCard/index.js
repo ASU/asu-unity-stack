@@ -17,7 +17,7 @@ const ProfileCardTemplate = ({ ...props }) => {
         )}
         {props.size === "large" && (
           <div className="person-profession">
-            {props.titles.map(title => (
+            {props.titles?.map(title => (
               <h4>
                 <span>{title.name}, </span>
                 <span>{title.org}</span>
