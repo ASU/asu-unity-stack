@@ -94,9 +94,7 @@ async function fetchDegreesData(
       })
         // Handle as text first due to encoding issues.
         .then(response => response.json())
-        .then(data => {
-          return data;
-        })
+        .then(data => data)
         .catch(error => new Error(error))
     );
   }
@@ -107,9 +105,7 @@ async function fetchDegreesData(
 
   return fetch(serviceUrl)
     .then(response => response.json())
-    .then(data => {
-      return data;
-    })
+    .then(data => data)
     .catch(error => new Error(error));
 }
 
@@ -123,9 +119,7 @@ async function fetchDegreeByAcadPlan(dataSourceDegreeSearch, acadPlan) {
   const serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findDegreeByAcadPlan&acadPlan=${acadPlan}&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false`;
   return fetch(serviceUrl)
     .then(response => response.json())
-    .then(data => {
-      return data;
-    })
+    .then(data => data)
     .catch(error => new Error(error));
 }
 

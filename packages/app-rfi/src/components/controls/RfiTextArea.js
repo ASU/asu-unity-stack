@@ -16,37 +16,35 @@ const RfiTextArea = ({
   autoFocus,
   disabled,
   helperText,
-}) => {
-  return (
-    <Field name={name}>
-      {({ field, form: { touched, errors }, meta }) => {
-        const isError = meta.touched && meta.error;
-        return (
-          <div className="form-group">
-            <RfiLabel
-              label={label}
-              name={name}
-              id={id}
-              requiredIcon={requiredIcon}
-            />
-            <Field
-              as="textarea"
-              name={name}
-              id={id}
-              {...field}
-              className="form-control"
-              required={required}
-              autoFocus={autoFocus}
-              disabled={disabled}
-              placeholder={helperText}
-            />
-            <RfiError isError={!!isError} metaError={meta.error} />
-          </div>
-        );
-      }}
-    </Field>
-  );
-};
+}) => (
+  <Field name={name}>
+    {({ field, form: { touched, errors }, meta }) => {
+      const isError = meta.touched && meta.error;
+      return (
+        <div className="form-group">
+          <RfiLabel
+            label={label}
+            name={name}
+            id={id}
+            requiredIcon={requiredIcon}
+          />
+          <Field
+            as="textarea"
+            name={name}
+            id={id}
+            {...field}
+            className="form-control"
+            required={required}
+            autoFocus={autoFocus}
+            disabled={disabled}
+            placeholder={helperText}
+          />
+          <RfiError isError={!!isError} metaError={meta.error} />
+        </div>
+      );
+    }}
+  </Field>
+);
 
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props got displaying the required icon until
