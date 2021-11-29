@@ -21,7 +21,6 @@ export const Tab = ({ id, bgColor, selected, children }) => {
 
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
   selected: PropTypes.bool,
   children: PropTypes.element,
