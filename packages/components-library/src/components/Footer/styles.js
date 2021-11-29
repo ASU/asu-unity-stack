@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/css";
 
-const Footer = props => {
+const Footer = () => {
   return (
     <div
       class={css`

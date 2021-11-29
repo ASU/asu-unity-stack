@@ -59,7 +59,7 @@ const Nav = forwardRef(
           !isAriaOpen ||
           isAriaOpen !== (whatWasClicked.dataset.onclickDropdownOpen === "true")
         ) {
-          setOpen(parseInt(id.substring(id.indexOf(".") + 1)));
+          setOpen(parseInt(id.substring(id.indexOf(".") + 1), 10));
           whatWasClicked.dataset.onclickDropdownOpen = "true";
         } else {
           setOpen(-1);
@@ -69,7 +69,7 @@ const Nav = forwardRef(
 
       forceOpen(whatWasClicked) {
         const id = whatWasClicked.dataset.onclickIdentifier;
-        setOpen(parseInt(id.substring(id.indexOf(".") + 1)));
+        setOpen(parseInt(id.substring(id.indexOf(".") + 1), 10));
         whatWasClicked.dataset.onclickDropdownOpen = "true";
       },
     }));
@@ -206,7 +206,7 @@ const Nav = forwardRef(
       } else if (open !== -1) {
         setOpen(-1);
       }
-    }, [focused, navList]);
+    }, [focused, navList, open]);
 
     /*** Detecting click outside of container */
     const navRef = useRef(null);
