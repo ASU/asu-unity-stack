@@ -63,19 +63,10 @@ module.exports = {
      *
      * See `Options and Defaults` for information
      */
-    new CleanWebpackPlugin(),
+    // TODO: with multiple outputs the cleanup needs to be externally.
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
   ],
-  resolve: {
-    alias: {
-      Components: path.resolve(PROJECT_DIR, "src/components/"),
-      Vendor: path.resolve(PROJECT_DIR, "vendor/"),
-    },
-  },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
-  },
 };

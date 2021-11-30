@@ -6,15 +6,27 @@
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "UNLICENSED",
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU/asu-unity-stack.git"
+    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/components-core"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -p 6006",
     "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",

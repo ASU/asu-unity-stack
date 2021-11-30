@@ -39,6 +39,12 @@ const config = {
       }),
     ],
   },
+  resolve: {
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
+  },
   /*  TODO:
    this block should be uncommented and we should decide a standard way
    to include React library externally, such explained in this link
