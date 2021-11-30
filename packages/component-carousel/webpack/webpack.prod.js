@@ -36,10 +36,9 @@ const config = {
       }),
     ],
   },
-  // externals: {
-  //   "react": "React",
-  //   "react-dom": "ReactDOM",
-  // },
+  performance: {
+    maxEntrypointSize: 255000,
+  },
 };
 
 module.exports = config;
