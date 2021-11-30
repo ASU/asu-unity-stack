@@ -35,9 +35,9 @@ const largeArgs = {
   ...defaultArgs,
   ...{
     titles: [
-      { name: "Regents Professor", org: "ASU" },
-      { name: "Regents Professor", org: "ASU" },
-      { name: "Regents Professor", org: "ASU" },
+      "Regents Professor, ASU",
+      "Regents Professor, ASU",
+      "Regents Professor, ASU",
     ],
   },
 };
