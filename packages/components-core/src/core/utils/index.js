@@ -16,7 +16,7 @@ import { Video } from "../../components/Video";
 import { spreadClasses } from "./css-utils";
 import { sanitizeDangerousMarkup } from "./html-utils";
 import { idGenerator } from "./id-generator";
-import { getCurrentScriptPath } from "./srcript-utils";
+import { getCurrentScriptPath } from "./script-utils";
 
 /**
  * @typedef {Object} ComponentProps

@@ -1,9 +1,8 @@
 // @ts-check
+import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-// @ts-ignore
-import RfiImage from "../../assets/img/WS2-DefaultImagev01-Final.png";
 import {
   setClientId,
   pushDataLayerEventToGa,
@@ -17,6 +16,8 @@ import { optionalForm } from "../steps/Optional";
 import { programInterestForm } from "../steps/ProgramInterest";
 import { successForm } from "../steps/Success";
 import { RfiStepper } from "./RfiStepper";
+
+const RfiImage = `${getCurrentScriptPath()}/assets/img/WS2-DefaultImagev01-Final.png`;
 
 const RfiMainForm = ({
   campus,

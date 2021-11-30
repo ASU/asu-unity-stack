@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // @ts-check
 import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
