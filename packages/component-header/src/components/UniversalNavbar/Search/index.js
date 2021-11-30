@@ -1,4 +1,5 @@
 // @ts-check
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -46,7 +47,7 @@ const Search = () => {
             onClick={handleChangeVisibility}
             className="search-button"
           >
-            <FontAwesomeIcon icon="search" />
+            <FontAwesomeIcon icon={faSearch} />
           </button>
           {open && (
             <>
@@ -71,14 +72,14 @@ const Search = () => {
                 onClick={handleChangeVisibility}
                 className="close-search"
               >
-                <FontAwesomeIcon icon="times" />
+                <FontAwesomeIcon icon={faTimes} />
               </button>
             </>
           )}
         </>
       ) : (
         <label>
-          <FontAwesomeIcon icon="search" />
+          <FontAwesomeIcon icon={faSearch} />
           <input
             ref={inputRef}
             className="form-control"

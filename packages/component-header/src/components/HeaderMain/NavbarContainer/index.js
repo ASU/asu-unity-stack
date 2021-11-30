@@ -1,4 +1,5 @@
 // @ts-check
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { idGenerator } from "@asu-design-system/components-core";
 import React, { useState } from "react";
 

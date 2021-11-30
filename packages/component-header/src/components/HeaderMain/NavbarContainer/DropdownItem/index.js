@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";

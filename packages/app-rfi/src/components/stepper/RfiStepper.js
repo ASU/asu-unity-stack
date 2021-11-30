@@ -1,58 +1,50 @@
 // @ts-check
-/* eslint-disable no-unused-vars, no-nested-ternary, react/destructuring-assignment, react/no-access-state-in-setstate, react/no-danger */
+/* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
 import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
-class RfiStepper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 0,
-      certEmailAddr: undefined,
-    };
-  }
+const RfiStepper = props => {
+  const [step, setStep] = useState(0);
+  const [email, setEmail] = useState("");
 
-  async componentDidMount() {
-    // If configured as a cert or minor and we have a program of interest, look
-    // up the program's email address and set it in state for use in
-    // isCertMinor render below.
-    const { dataSourceDegreeSearch, isCertMinor, programOfInterest } =
-      this.props;
-    if (isCertMinor && programOfInterest) {
-      const serviceUrl = `${dataSourceDegreeSearch}?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
-      const resp = await fetch(serviceUrl)
-        .then(response => response.json())
-        .catch(error => new Error(error));
-      // Structure of response: response.programs[0].EmailAddr
-      if (resp.programs) {
-        const {
-          programs: [{ EmailAddr }],
-        } = resp;
-        await this.setStateAsync({ certEmailAddr: EmailAddr });
+  useEffect(() => {
+    const fetchData = async () => {
+      // If configured as a cert or minor and we have a program of interest, look
+      // up the program's email address and set it in state for use in
+      // isCertMinor render below.
+      const { dataSourceDegreeSearch, isCertMinor, programOfInterest } = props;
+      if (isCertMinor && programOfInterest) {
+        const serviceUrl =
+          `${dataSourceDegreeSearch}` +
+          `?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}` +
+          `&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
+
+        const res = await fetch(serviceUrl)
+          .then(response => response.json())
+          .catch(error => new Error(error));
+        // Structure of response: response.programs[0].EmailAddr
+        if (res.programs) {
+          const {
+            programs: [{ EmailAddr }],
+          } = res;
+          setEmail(EmailAddr);
+        }
       }
-    }
-  }
+    };
 
-  // Async state handling for isCertMinor certEmailAddr state.
-  setStateAsync(state) {
-    return new Promise(resolve => {
-      this.setState(state, resolve);
-    });
-  }
+    fetchData();
+  }, []);
 
   // Possible TODO: prompt user before leaving a dirty form in Formik:
   // https://github.com/formium/formik/issues/1657
 
-  // TODO Resolve parse error. .babelrc already has plugin identified.
-  // Possible solutions: https://github.com/babel/babel/issues/8711
-  // ts-check didn't like
-  next = () => this.setState({ step: this.state.step + 1 });
+  const next = () => setStep(step + 1);
 
-  prev = () => this.setState({ step: this.state.step - 1 });
+  const prev = () => setStep(step - 1);
 
   // Validation for RfiSelect fields with dependencies across steps that don't
   // play well with Formik and Yup. We implement standard Formik, form-level,
@@ -60,10 +52,9 @@ class RfiStepper extends React.Component {
   // types that require custom validation with cross-step dependencies should
   // see RfiTextInputs.js for a more flexible field-based approach.
   // See Formik validation flavors: https://formik.org/docs/guides/validation
-  validate = values => {
+  const validate = values => {
     const errors = {};
-    const { step } = this.state;
-    const { programOfInterest, programOfInterestOptional } = this.props;
+    const { programOfInterest, programOfInterestOptional } = props;
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
     if (step === 0 && !values.Interest1 && !programOfInterest) {
@@ -86,166 +77,155 @@ class RfiStepper extends React.Component {
     return errors;
   };
 
-  render() {
-    const { step, certEmailAddr } = this.state;
-    const {
-      validationSchemas,
-      initialValues,
-      formComponents,
-      handleSubmit,
-      // props
-      campus,
-      actualCampus,
-      college,
-      department,
-      studentType,
-      areaOfInterest,
-      programOfInterest,
-      programOfInterestOptional,
-      isCertMinor,
-      country,
-      stateProvince,
-      successMsg,
-      test,
-      dataSourceDegreeSearch,
-      dataSourceAsuOnline,
-      dataSourceCountriesStates,
-    } = this.props;
-    const schema = validationSchemas[step];
+  const {
+    validationSchemas,
+    initialValues,
+    formComponents,
+    handleSubmit,
+    // props
+    campus,
+    studentType,
+    areaOfInterest,
+    programOfInterest,
+    isCertMinor,
+    country,
+    stateProvince,
+    successMsg,
+    test,
+  } = props;
+  const schema = validationSchemas[step];
 
-    // For the progress bar.
-    const totalSteps = initialValues.length - 1; // Don't count success step.
-    const progress = step / totalSteps;
+  // For the progress bar.
+  const totalSteps = initialValues.length - 1; // Don't count success step.
+  const progress = step / totalSteps;
 
-    const initValues = initialValues.reduce((item, total) => {
-      return { ...total, ...item };
-    });
+  const initValues = initialValues.reduce((item, total) => ({
+    ...total,
+    ...item,
+  }));
 
-    // Intercede with initial values from props.
-    initValues.Campus = campus;
-    if (studentType === "graduate") {
-      initValues.CareerAndStudentType = "Readmission";
-    } else if (studentType === "undergrad") {
-      initValues.CareerAndStudentType = "First Time Freshman";
-    }
-    initValues.Interest1 = areaOfInterest;
-    initValues.Interest2 = programOfInterest;
-    initValues.Country = country;
-    initValues.State = stateProvince;
-    // Avoid Uncontrolled to controlled switch warning:
-    // https://github.com/formium/formik/issues/28
-    initValues.Email = "";
+  // Intercede with initial values from props.
+  initValues.Campus = campus;
+  if (studentType === "graduate") {
+    initValues.CareerAndStudentType = "Readmission";
+  } else if (studentType === "undergrad") {
+    initValues.CareerAndStudentType = "First Time Freshman";
+  }
+  initValues.Interest1 = areaOfInterest;
+  initValues.Interest2 = programOfInterest;
+  initValues.Country = country;
+  initValues.State = stateProvince;
+  // Avoid Uncontrolled to controlled switch warning:
+  // https://github.com/formium/formik/issues/28
+  initValues.Email = "";
 
-    // If configured as a Cert or Minor, skip the form and only display
-    // SuccessMsg.
-    if (isCertMinor) {
-      const emailRender = (
-        <div className="rfi-cert-minor-email-message">
-          Request information on this program by sending an email to{" "}
-          <a href={`mailto:${certEmailAddr}`}>{certEmailAddr}</a>
-        </div>
-      );
-      return (
-        <div className="uds-rfi-form-wrapper rfi-cert-minor">
-          <h2>Request information</h2>
-          {certEmailAddr && emailRender}
-          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
-        </div>
-      );
-    }
-
-    const formComponent = formComponents[step];
-    const lastStep = formComponents.length - 1;
+  // If configured as a Cert or Minor, skip the form and only display
+  // SuccessMsg.
+  if (isCertMinor) {
+    const emailRender = (
+      <div className="rfi-cert-minor-email-message">
+        Request information on this program by sending an email to{" "}
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+    );
     return (
-      <div>
-        <Progress
-          value={Math.floor(progress * 100)}
-          aria-label="Progress bar"
-          className="rfi-progress"
-        />
-        <div className="uds-rfi-form-wrapper">
-          {/* Don't display step details if we're on the success "step". */}
-          {step !== lastStep ? (
-            <div className="rfi-steps">{`Step ${
-              step + 1
-            } of ${totalSteps}`}</div>
-          ) : undefined}
-          {!test ? (
-            step === 0 ? (
-              <h2>Request information</h2>
-            ) : (
-              ""
-            )
-          ) : (
-            <h2>
-              <span className="highlight-gold">RFI IN TEST MODE</span>
-            </h2>
-          )}
-          <Formik
-            initialValues={initValues}
-            validationSchema={Yup.object().shape(schema)}
-            validate={this.validate}
-            onSubmit={(
-              values,
-              { setSubmitting, setFieldTouched, resetForm } /* FormikBag */
-            ) => {
-              // TODO What did this setTimeout() accomplish? Unnecessary? Faux
-              // temporary disable? Disable double clicking?
-              // eslint-disable-next-line no-undef
-              setTimeout(() => {
-                setSubmitting(false);
-
-                // Submit on step before success/last step.
-                if (step === lastStep - 1) {
-                  handleSubmit(values);
-                  // TODO add a check for success before resetting form and
-                  // advancing? That way we could display a "try again in a few
-                  // moments" on error. Else, display success message.
-                  resetForm();
-                }
-                // Advance the step.
-                this.next();
-                Object.keys(initialValues[step + 1]).map(key => {
-                  return setFieldTouched(key, false, false);
-                });
-              }, 400);
-            }}
-          >
-            {formik => {
-              // Render lastStep without stepper buttons.
-              if (step === lastStep) {
-                return (
-                  <Form className="uds-form uds-rfi">
-                    {React.createElement(formComponent, this.props)}
-                  </Form>
-                );
-              }
-              return (
-                <Form className="uds-form uds-rfi">
-                  {React.createElement(formComponent, this.props)}
-
-                  <div className="rfi-required-footnote" title="Required">
-                    <i
-                      className="fas fa-circle uds-field-required"
-                      aria-hidden="true"
-                    />{" "}
-                    Required
-                  </div>
-                  <RfiStepperButtons
-                    stepNum={step}
-                    lastStep={lastStep}
-                    handleBack={this.prev}
-                    submitting={formik.isSubmitting}
-                  />
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
+      <div className="uds-rfi-form-wrapper rfi-cert-minor">
+        <h2>Request information</h2>
+        {email && emailRender}
+        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
       </div>
     );
   }
-}
+
+  const formComponent = formComponents[step];
+  const lastStep = formComponents.length - 1;
+  const StepHeader = () => {
+    if (test) {
+      return (
+        <h2>
+          <span className="highlight-gold">RFI IN TEST MODE</span>
+        </h2>
+      );
+    }
+    return step === 0 ? <h2>Request information</h2> : <></>;
+  };
+  return (
+    <div>
+      <Progress
+        value={Math.floor(progress * 100)}
+        aria-label="Progress bar"
+        className="rfi-progress"
+      />
+      <div className="uds-rfi-form-wrapper">
+        {/* Don't display step details if we're on the success "step". */}
+        {step !== lastStep ? (
+          <div className="rfi-steps">{`Step ${step + 1} of ${totalSteps}`}</div>
+        ) : undefined}
+        <StepHeader />
+        <Formik
+          initialValues={initValues}
+          validationSchema={Yup.object().shape(schema)}
+          validate={validate}
+          onSubmit={(
+            values,
+            { setSubmitting, setFieldTouched, resetForm } /* FormikBag */
+          ) => {
+            // TODO What did this setTimeout() accomplish? Unnecessary? Faux
+            // temporary disable? Disable double clicking?
+            // eslint-disable-next-line no-undef
+            setTimeout(() => {
+              setSubmitting(false);
+
+              // Submit on step before success/last step.
+              if (step === lastStep - 1) {
+                handleSubmit(values);
+                // TODO add a check for success before resetting form and
+                // advancing? That way we could display a "try again in a few
+                // moments" on error. Else, display success message.
+                resetForm();
+              }
+              // Advance the step.
+              next();
+              Object.keys(initialValues[step + 1]).map(key =>
+                setFieldTouched(key, false, false)
+              );
+            }, 400);
+          }}
+        >
+          {formik => {
+            // Render lastStep without stepper buttons.
+            if (step === lastStep) {
+              return (
+                <Form className="uds-form uds-rfi">
+                  {React.createElement(formComponent, props)}
+                </Form>
+              );
+            }
+            return (
+              <Form className="uds-form uds-rfi">
+                {React.createElement(formComponent, props)}
+
+                <div className="rfi-required-footnote" title="Required">
+                  <i
+                    className="fas fa-circle uds-field-required"
+                    aria-hidden="true"
+                  />{" "}
+                  Required
+                </div>
+                <RfiStepperButtons
+                  stepNum={step}
+                  lastStep={lastStep}
+                  handleBack={prev}
+                  submitting={formik.isSubmitting}
+                />
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
+    </div>
+  );
+};
 
 // Note on the spans around the FA i tags below:
 // When the host site/app deploys FA such that it replaces the i's with svg
