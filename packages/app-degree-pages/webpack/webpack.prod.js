@@ -16,7 +16,6 @@ const config = {
       name: "AsuDegreePages",
       type: "umd",
       umdNamedDefine: true,
-      // export: "default",
     },
     umdNamedDefine: true,
   },
@@ -38,12 +37,6 @@ const config = {
         },
       }),
     ],
-  },
-  resolve: {
-    alias: {
-      "@asu-design-system/components-core":
-        "@asu-design-system/components-core/dist/libCore.es.js",
-    },
   },
   /*  TODO:
    this block should be uncommented and we should decide a standard way
