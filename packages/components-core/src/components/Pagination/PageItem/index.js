@@ -55,6 +55,7 @@ PageItem.propTypes = {
   disabled: PropTypes.bool,
   pageLinkIcon: PropTypes.bool,
   selectedPage: PropTypes.bool,
+  dataId: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
