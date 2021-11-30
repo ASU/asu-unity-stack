@@ -65,6 +65,7 @@ const HoverDropNav = forwardRef(
             {text}{" "}
           </a>
           <S.IconChevronDown
+            alt=""
             sr={text}
             className={isOpen ? "open" : ""}
             onMouseDown={e => {

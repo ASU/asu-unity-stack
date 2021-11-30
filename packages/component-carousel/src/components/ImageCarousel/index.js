@@ -32,7 +32,10 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
           alt={imageAltText}
         />
         {(title || content) && (
-          <figcaption className="figure-caption uds-figure-caption">
+          <figcaption
+            className="figure-caption uds-figure-caption"
+            data-testid="image-content-container"
+          >
             <div className="uds-caption-text">
               {!title ? (
                 // eslint-disable-next-line react/no-danger

@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   ErrorAlert,
@@ -11,15 +11,16 @@ import {
   ThemeStyle,
 } from "../../core/components";
 import { detailPageDefaultDataSource } from "../../core/constants";
+import { AppContext, AppProvider } from "../../core/context";
 import {
   anchorMenuPropType,
   cardPropShape,
   dataSourcePropShape,
   ERROR_MESSAGE,
-  resolveDefaultProps,
   linkPropShape,
   imagePropShape,
   videoPropShape,
+  whyChooseAsuShape,
 } from "../../core/models";
 import {
   degreeDataPropResolverService,
@@ -50,6 +51,7 @@ import { NextSteps } from "./components/NextSteps";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
+import { WhyChooseAsu } from "./components/WhyChooseAsu";
 
 /**
  * @typedef {import('../../core/types/detail-page-types').DetailPageProps} DetailPageProps
@@ -60,7 +62,7 @@ import { RequiredCourse } from "./components/RequiredCourse";
  * @returns {JSX.Element}
  */
 const DetailPage = ({
-  appPathFolder,
+  appPathFolder: _,
   dataSource,
   anchorMenu,
   hero,
@@ -76,15 +78,14 @@ const DetailPage = ({
   attendOnline,
   programContactInfo,
   nextSteps,
+  whyChooseAsu,
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
-  const { detailPageDefault } = useMemo(
-    () => resolveDefaultProps(appPathFolder),
-    []
-  );
+  const { defaultState } = useContext(AppContext);
+  const { detailPageDefault } = defaultState;
 
   useEffect(() => {
     doFetchPrograms(url);
@@ -228,7 +229,8 @@ const DetailPage = ({
             <div className="row">
               {!nextSteps?.hide ? (
                 <NextSteps
-                  cards={nextSteps?.cards || detailPageDefault.nextSteps.cards}
+                  cards={nextSteps?.cards}
+                  defaultCards={detailPageDefault.nextSteps.cards}
                 />
               ) : null}
 
@@ -271,6 +273,17 @@ const DetailPage = ({
                     globalOpportunity?.image ||
                     detailPageDefault.globalOpportunity.image
                   }
+                />
+              ) : null}
+
+              {!whyChooseAsu?.hide ? (
+                <WhyChooseAsu
+                  sectionIntroText={
+                    whyChooseAsu?.sectionIntroText ||
+                    detailPageDefault.whyChooseAsu.sectionIntroText
+                  }
+                  cards={whyChooseAsu?.cards}
+                  defaultCards={detailPageDefault.whyChooseAsu.cards}
                 />
               ) : null}
 
@@ -361,6 +374,19 @@ DetailPage.propTypes = {
     hide: PropTypes.bool,
     cards: PropTypes.arrayOf(cardPropShape),
   }),
+  whyChooseAsu: PropTypes.shape(whyChooseAsuShape),
 };
 
-export { DetailPage };
+/**
+ * @param {DetailPageProps} props
+ * @returns {JSX.Element}
+ */
+const AppComponent = props => (
+  <AppProvider detailPageProps={props}>
+    <DetailPage {...props} />
+  </AppProvider>
+);
+
+AppComponent.propTypes = DetailPage.propTypes;
+
+export { AppComponent as DetailPage };

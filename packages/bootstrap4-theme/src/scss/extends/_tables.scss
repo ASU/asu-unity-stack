@@ -16,22 +16,10 @@
     tr {
       :nth-child(n + 1) {
         box-sizing: border-box;
-        max-width: 92px;
-        width: 92px;
-        min-width: 92px;
       }
 
       :first-child {
         box-sizing: border-box;
-        min-width: 300px;
-      }
-
-      @media screen and (max-width: $uds-breakpoint-sm) {
-        :first-child {
-          width: 128px;
-          min-width: 128px;
-          max-width: 128px;
-        }
       }
     }
 
@@ -149,17 +137,11 @@
     tr > *:first-child {
       left: 0;
       position: sticky;
-      width: 315px;
-      min-width: 315px;
-      max-width: 315px;
     }
 
     tr > *:nth-child(n + 2),
     td {
       box-sizing: border-box;
-      max-width: 100px;
-      width: 100px;
-      min-width: 100px;
     }
   }
 }

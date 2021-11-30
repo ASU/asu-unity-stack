@@ -1,4 +1,5 @@
 // @ts-check
+import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
@@ -53,7 +54,11 @@ const HeaderMain = () => {
                 onClick={handleClickMobileMenu}
                 aria-label="Toggle navigation"
               >
-                <FontAwesomeIcon icon={mobileMenuOpen ? "times" : "bars"} />
+                <FontAwesomeIcon
+                  icon={mobileMenuOpen ? faTimes : faBars}
+                  // @ts-ignore
+                  alt=""
+                />
               </button>
               <div
                 className={`${!isPartner ? "expand-title" : ""}${

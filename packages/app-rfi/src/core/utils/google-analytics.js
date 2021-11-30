@@ -17,7 +17,7 @@ export function pushDataLayerEventToGa(eventValue) {
 export function setClientId(payload) {
   const output = payload;
   if (typeof ga !== "undefined") {
-    ga(function () {
+    ga(() => {
       let cidE = "";
       let cidA = "";
       const gaIds = ga.getAll();

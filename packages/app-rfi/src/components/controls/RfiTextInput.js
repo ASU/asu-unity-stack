@@ -24,14 +24,14 @@ const RfiTextInput = ({
   // context, implementing that here with conditional protections is the most
   // reasonable solve identified. TODO One option might be to break out and
   // create a unique component just for special case fields.
-  function customValidate(value) {
+  const customValidate = value => {
     let error;
     // Require ZipCode unless Campus is "ONLNE".
     if (id === "ZipCode" && values.Campus !== "ONLNE" && !value) {
       error = "Error: Zip code is required";
     }
     return error;
-  }
+  };
 
   return (
     <Field name={name} validate={customValidate}>

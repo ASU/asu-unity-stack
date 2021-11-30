@@ -28,21 +28,24 @@ function FiltersSummary({
    * @param {import("src").FilterOption} filter
    * @returns
    */
-  const SummaryItem = (filterName, filter) => (
-    <span
-      key={genFilterId.next().value}
-      tabIndex={-1}
-      role="button"
-      aria-label={`Remove filter ${filter.text}`}
-      data-filter-id={filterName}
-      onKeyDown={() => onRemove(filterName, filter)}
-      onClick={() => onRemove(filterName, filter)}
-      className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center mr-2"
-    >
-      <span className="pr-1">{filter.text}</span>
-      <i className="fas fa-times" />
-    </span>
-  );
+  const SummaryItem = (filterName, filter) => {
+    const { text } = filter;
+    return (
+      <span
+        key={genFilterId.next().value}
+        tabIndex={-1}
+        role="button"
+        aria-label={`Remove filter ${text}`}
+        data-filter-id={filterName}
+        onKeyDown={() => onRemove(filterName, filter)}
+        onClick={() => onRemove(filterName, filter)}
+        className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center mr-2"
+      >
+        <span className="pr-1">{text}</span>
+        <i className="fas fa-times" />
+      </span>
+    );
+  };
 
   return (
     <div data-testid="filters-summary">

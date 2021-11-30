@@ -23,7 +23,8 @@
     "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
     "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha --ci",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "check-element-changes": "node ./scripts/check-element-changes.js -d"
   },
   "jest": {
     "preset": "jest-puppeteer",

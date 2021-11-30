@@ -1,7 +1,7 @@
 // @ts-check
 import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import {
@@ -11,11 +11,12 @@ import {
   ErrorAlert,
 } from "../../core/components";
 import { listingPageDefaultDataSource } from "../../core/constants";
+import { AppContext, AppProvider } from "../../core/context";
 import { useListingPageLogger } from "../../core/hooks";
 import {
-  resolveDefaultProps,
   resolveListingHeroTitle,
   LIST_VIEW_ID,
+  GRID_VIEW_ID,
   defaultAccelConcOption,
   onlneOption,
   ERROR_MESSAGE,
@@ -31,17 +32,21 @@ import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
+import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
 import { SearchBar } from "./components/SearchBar";
 
 /**
  * @typedef {import('../../core/types/listing-page-types').ListingPageProps} ListingPageProps
  * @typedef {import("../../core/types/shared-local-types").FiltersState} FiltersState
  * @typedef {import("../../core/types/shared-local-types").FilterOption} FilterOption
- * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID>} UseDataViewState
+ * @typedef {import("../../core/types/shared-local-types").UseStateTuple<LIST_VIEW_ID | GRID_VIEW_ID>} UseDataViewState
  * @typedef {import("../../core/types/shared-local-types").UseStateTuple<FiltersState>} UseFiltersState
  */
 
 const Main = styled(MainSection)`
+  .filter-switch-container {
+    gap: 1rem;
+  }
   @media (max-width: 768px) {
     & {
       font-size: 0.9rem;
@@ -68,7 +73,7 @@ const FilterSeparator = styled.div.attrs({ className: "container" })`
  * @returns {JSX.Element}
  */
 const ListingPage = ({
-  appPathFolder,
+  appPathFolder: _,
   actionUrls,
   hasSearchBar = true,
   hasFilters = true,
@@ -81,15 +86,17 @@ const ListingPage = ({
   const [tableView, setTableView] = useState([]);
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
+  // start set default data view
+  const settingDefaultView = programList.settings?.defaultView;
+  const defaultView = [LIST_VIEW_ID, GRID_VIEW_ID].includes(settingDefaultView)
+    ? settingDefaultView
+    : LIST_VIEW_ID;
   /** @type {UseDataViewState} */
-  const [dataViewComponent] = useState(LIST_VIEW_ID);
-  /* TODO: we need this to swtich between LIST_VIEW and GRID_VIEW
-  const [dataViewComponent, setDataViewComponent] = useState(LIST_VIEW_ID); */
+  const [dataViewComponent, setDataViewComponent] = useState(defaultView);
+  // end set default data view
   const url = urlResolver(programList.dataSource, listingPageDefaultDataSource);
-  const { listingPageDefault } = useMemo(
-    () => resolveDefaultProps(appPathFolder),
-    []
-  );
+  const { defaultState } = useContext(AppContext);
+  const { listingPageDefault } = defaultState;
   // These filter are input props which never change.
   const { collegeAcadOrg, departmentCode, showInactivePrograms } =
     programList.dataSource;
@@ -292,26 +299,24 @@ const ListingPage = ({
           </section>
         ) : null}
 
-        {hasFilters ? (
-          <section className="container">
-            <div className="d-flex justify-content-between">
+        <section className="container">
+          <div className="d-flex justify-content-between filter-switch-container">
+            {hasFilters ? (
               <FiltersSummary
                 value={appliedFilters}
                 onRemove={onFilterSummaryRemove}
               />
-
-              {/* TODO: THIS COMPONENT IS CURRENTLY DEFERRED */}
-              {/* <DataViewSwitch
+            ) : null}
+            <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
                 setSearchLoading(false);
               }}
               checkedId={dataViewComponent}
-            /> */}
-            </div>
-          </section>
-        ) : null}
+            />
+          </div>
+        </section>
 
         {loading || searchLoading ? (
           <Loader />
@@ -320,7 +325,6 @@ const ListingPage = ({
             dataViewComponent={dataViewComponent}
             loading={loading || searchLoading}
             programs={tableView}
-            columSettings={programList.settings}
             actionUrls={actionUrls}
           />
         )}
@@ -344,4 +348,16 @@ ListingPage.propTypes = {
   }),
 };
 
-export { ListingPage };
+/**
+ * @param {ListingPageProps} props
+ * @returns {JSX.Element}
+ */
+const AppComponent = props => (
+  <AppProvider listPageProps={props}>
+    <ListingPage {...props} />
+  </AppProvider>
+);
+
+AppComponent.propTypes = ListingPage.propTypes;
+
+export { AppComponent as ListingPage };

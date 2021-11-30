@@ -13,11 +13,7 @@ const Title = () => {
     useAppContext();
 
   useEffect(() => {
-    if (animateTitle || animateTitle === false) {
-      setActive(animateTitle);
-      return;
-    }
-    if (animateTitle) {
+    if (animateTitle !== false) {
       // If a custom baseUrl is passed in, it will be used to check for first page load
       let root = baseUrl === "/" ? window.location.hostname : baseUrl;
       // If relative baseURL given, append to the hostname for checking first page load
@@ -42,6 +38,7 @@ const Title = () => {
           className="unit-name"
           href={parentOrgUrl}
           onFocus={() => trackGAEvent({ text: parentOrg })}
+          title={`${parentOrg} home page`}
         >
           {parentOrg}
         </a>
@@ -49,6 +46,7 @@ const Title = () => {
           className="subunit-name"
           href={baseUrl}
           onFocus={() => trackGAEvent({ text: title })}
+          title={`${title} home page`}
         >
           {title}
         </a>
@@ -66,6 +64,7 @@ const Title = () => {
         className="title-subunit-name"
         href={baseUrl}
         onFocus={() => trackGAEvent({ text: title })}
+        title={`${title} home page`}
       >
         {title}
       </a>

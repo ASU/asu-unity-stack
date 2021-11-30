@@ -12,7 +12,7 @@ export const AnchorMenu = createStory(
       <div class="uds-hero-lg has-btn-row">
         <img
           class="hero"
-          src="https://source.unsplash.com/random/1920x1200"
+          src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
           alt="Sample placeholder image."
         />
         <h1>
@@ -35,7 +35,7 @@ export const AnchorMenu = createStory(
         id="uds-anchor-menu"
         class="uds-anchor-menu uds-anchor-menu-expanded-lg"
       >
-        <div class="container-xl">
+        <div class="container">
           <div class="uds-anchor-menu-wrapper">
             <h4
               data-toggle="collapse"
@@ -357,6 +357,6 @@ export const AnchorMenu = createStory(
   </div>,
   {
     initFunc: initializeAnchorMenu,
-    omitTemplate: true
+    omitTemplate: true,
   }
 );

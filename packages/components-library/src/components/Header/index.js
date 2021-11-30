@@ -102,7 +102,7 @@ const Header = ({
     } else if (identifier === "leave-open") {
       killEvent();
     }
-  }, []);
+  }, [killEvent]);
   const toggleNavDropdown = clickedDOM => {
     navRef.current.forceToggle(clickedDOM);
   };
@@ -249,6 +249,7 @@ const Header = ({
                 maxMobileHeight: maxMobileNavHeight,
                 breakpoint,
                 expandOnHover,
+                title
               }}
               ref={navRef}
             />

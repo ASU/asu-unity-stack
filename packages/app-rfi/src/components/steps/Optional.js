@@ -91,12 +91,12 @@ async function fetchCountries(
         },
       });
     })
-    .then(stream => {
+    .then(stream =>
       // Respond with our stream
-      return new Response(stream, {
+      new Response(stream, {
         headers: { "Content-Type": "application/json" },
-      }).text();
-    })
+      }).text()
+    )
     .then(result => {
       // Parse results
       const resultJson = JSON.parse(result);

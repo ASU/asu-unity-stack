@@ -220,3 +220,6 @@ export const TabbedPanels = createStory(
   },
   { initFunc }
 );
+TabbedPanels.args = {
+  template: 1,
+};

@@ -6,7 +6,7 @@ import {
 } from "@asu-design-system/components-core";
 import React, { Fragment, useContext, createRef } from "react";
 
-import { ListingPageContext } from "../../../../../core/context";
+import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
 import { degreeListPropTypes } from "../programs-prop-types";
@@ -118,7 +118,8 @@ const ListView = ({ programs, totalRows, loading, actionUrls }) => {
   /** @type {{current: HTMLTableSectionElement}} */
   const tbodyRef = React.useRef(null);
 
-  const { columSettings } = useContext(ListingPageContext);
+  const { state } = useContext(AppContext);
+  const columSettings = state?.listPageProps?.programList?.settings;
   const columns = columSettings?.hideCollegeSchool
     ? configColumns.filter(c => c.dataKey !== "CollegeSchool")
     : configColumns;

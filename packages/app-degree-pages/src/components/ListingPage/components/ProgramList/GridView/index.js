@@ -1,9 +1,9 @@
 /* eslint-disable no-alert */
-// TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 // @ts-check
 import { Card } from "@asu-design-system/components-core";
-import React from "react";
+import React, { useContext } from "react";
 
+import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
 import {
@@ -13,11 +13,16 @@ import {
 import { degreeListPropTypes } from "../programs-prop-types";
 import { SectionCard } from "./index.style";
 /**
- *
  * @param {import("..").GridListingProps} props
- * @returns
+ * @returns {JSX.Element}
  */
 function GridView({ programs, loading, actionUrls }) {
+  const { defaultState, state } = useContext(AppContext);
+  const propImage =
+    state?.listPageProps?.programList?.settings?.cardDefaultImage?.url;
+  const defaultImage = defaultState.detailPageDefault.hero.image.url;
+  const imageUrl = propImage || defaultImage;
+
   return (
     <SectionCard
       id={GRID_PROGRAMS_ID}
@@ -29,12 +34,12 @@ function GridView({ programs, loading, actionUrls }) {
         const resolver = degreeDataPropResolverService(row);
 
         return (
-          <div className="col-3">
+          <div className="col col-sm-12 col-md-4 col-lg-3 mb-2">
             <Card
               type="degree"
               horizontal={false}
               clickable={false}
-              image="https://picsum.photos/300/200"
+              image={imageUrl}
               imageAltText="An example image"
               title={resolver.getMajorDesc()}
               linkLabel="View Program Details"
@@ -42,20 +47,15 @@ function GridView({ programs, loading, actionUrls }) {
               buttons={[
                 {
                   color: "maroon",
-                  size: "default",
+                  size: "small",
                   label: "Reqeuest Info",
                   href: requestInfoLink(),
-                  // resolver.getAcadPlan(),
-                  // resolver.getMajorDesc(),
-                  // resolver.getEmailAddress()
                 },
                 {
                   color: "gold",
                   size: "small",
                   label: "Apply",
-                  onClick: () =>
-                    // todo: refactor this solution
-                    alert("APPLY NOW: TODO..."),
+                  href: actionUrls.applyNowUrl,
                 },
               ]}
             />

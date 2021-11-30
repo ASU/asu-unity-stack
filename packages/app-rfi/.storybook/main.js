@@ -15,7 +15,6 @@ module.exports = {
         ...config.resolve,
         alias: {
           Components: path.resolve(PROJECT_DIR, "src/components/"),
-          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
         },
       },
     };

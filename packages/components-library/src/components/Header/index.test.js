@@ -1,25 +1,22 @@
+/* eslint-disable jest/no-commented-out-tests */
 // Tells babel to use h for JSX. It's better to configure this globally.
 // See https://babeljs.io/docs/en/babel-plugin-transform-react-jsx#usage
 // In tsconfig you can specify this with the jsxFactory
 /** @jsx h */
 
-import expect  from "expect";
-// NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
-import "@testing-library/jest-dom/extend-expect";
-import { render, fireEvent, screen, waitFor } from "@testing-library/preact";
-
-import { Header } from "./";
-
-import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
-
 import { matchers } from "@emotion/jest";
+// NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
+// import { render, fireEvent, screen, waitFor } from "@testing-library/preact";
+import expect from "expect";
+import "@testing-library/jest-dom/extend-expect";
+
+// import { Header } from "./";
+// import { BasicNavTree, NavTreeMega } from "../Nav/NavTreeExample";
 
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
 describe("Header", () => {
-
-
   /*test("Snapshot test", () => {
     const title = "University Technology Office";
 
@@ -39,7 +36,6 @@ describe("Header", () => {
     expect(container.textContent).toMatch(title);
     expect(container.textContent).toMatch("Degree programs");
   });*/
-
   /*test("should dropdown on click", async () => {
     const title = "Ira A. Fulton School Of Engineering";
     const {

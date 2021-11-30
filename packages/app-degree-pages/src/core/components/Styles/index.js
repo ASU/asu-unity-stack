@@ -31,6 +31,9 @@ const ThemeStyle = createGlobalStyle`
     margin-left: 0.15em;
   }
 
+  .card > .card-buttons {
+    padding-bottom: 8px !important;
+  }
 `;
 
 const Main = styled.main`

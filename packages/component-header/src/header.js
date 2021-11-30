@@ -1,6 +1,4 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
@@ -37,7 +35,6 @@ const ASUHeader = ({
   expandOnHover,
   mobileNavTree,
 }) => {
-  library.add(fas);
   const headerRef = useRef(null);
 
   const handleWindowScroll = () => {
@@ -91,7 +88,6 @@ ASUHeader.defaultProps = {
   isPartner: false,
   baseUrl: "/",
   breakpoint: "Xl",
-  animateTitle: false,
   expandOnHover: false,
 };
 

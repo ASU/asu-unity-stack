@@ -1,4 +1,5 @@
 // @ts-check
+import { faChevronDown, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React from "react";
@@ -16,22 +17,21 @@ export const DROPDOWNS_GA_EVENTS = {
 };
 
 /**
- * @param {{ icon: string, children: React.ReactNode }} props
+ * @param {{ children: React.ReactNode }} props
  * @returns {JSX.Element}
  */
 
-const NavLinkIcon = ({ icon, children }) => {
+const NavLinkIcon = ({ children }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FontAwesomeIcon icon={icon} className="icon-nav-item" />
+      <FontAwesomeIcon icon={faHome} className="icon-nav-item" alt="" />
       <span className="mobile-only">{children}</span>
     </>
   );
 };
 
 NavLinkIcon.propTypes = {
-  icon: PropTypes.string,
   children: PropTypes.node,
 };
 
@@ -50,24 +50,22 @@ NavLinkIcon.propTypes = {
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const opened = link.id === itemOpened;
-  const { breakpoint, expandOnHover } = useAppContext();
+  const { breakpoint, expandOnHover, title } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   const renderNavLinks = () => {
-    if (link.type === "icon" || link.type === "icon-home") {
-      return (
-        <NavLinkIcon icon={link.type === "icon-home" ? "home" : link.class}>
-          {link.text}
-        </NavLinkIcon>
-      );
+    if (link.type === "icon-home") {
+      return <NavLinkIcon>{link.text}</NavLinkIcon>;
     }
     return (
       <span>
         {link.text}
         {!!link.items?.length && (
           <FontAwesomeIcon
-            icon="chevron-down"
+            icon={faChevronDown}
             className={`chevron-icon ${opened ? "open" : ""}`}
+            // @ts-ignore
+            alt=""
           />
         )}
       </span>
@@ -125,6 +123,9 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
+        title={
+          link.type === "icon-home" && title ? `${title} home page` : link.text
+        }
       >
         {renderNavLinks()}
       </a>

@@ -66,12 +66,13 @@ const NavbarToggler = ({ mobileOpen, ...props }) => {
       )}
     >
       {mobileOpen ? (
-        <Icon type="circle-close" />
+        <Icon type="circle-close" alt="" />
       ) : (
         <Icon
           type="bars"
           // If javascript is disabled, this should target and open the
           href="#asu-header-nav"
+          alt=""
         />
       )}
     </button>

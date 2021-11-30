@@ -25,37 +25,37 @@ const videoTemplate = ({
   const videoRef = useRef();
   const [playing, setPlaying] = useState(false);
 
-  function toggleVideo() {
+  const toggleVideo = () => {
     const video = videoRef.current;
     if (video.paused) video.play();
     else video.pause();
-  }
+  };
 
-  function toggleOverLay() {
+  const toggleOverLay = () => {
     setPlaying(!playing);
-  }
+  };
 
-  function onVideoClick(e) {
+  const onVideoClick = e => {
     e.stopPropagation();
     toggleVideo();
     toggleOverLay();
-  }
+  };
 
-  function onVideoEnded() {
+  const onVideoEnded = () => {
     toggleOverLay();
-  }
+  };
 
-  function onPlayButtonClick(e) {
+  const onPlayButtonClick = e => {
     e.stopPropagation();
     toggleOverLay();
     toggleVideo();
-  }
+  };
 
-  function onOverlayClick(e) {
+  const onOverlayClick = e => {
     e.stopPropagation();
     toggleOverLay();
     toggleVideo();
-  }
+  };
 
   return (
     <div

@@ -1,2 +1,5 @@
 // ts-check
-export * from "./MyComponent";
+export * from "./FacultyAndStaffResults";
+export * from "./ProfileCard";
+export * from "./ProfileCardList";
+export * from "./SearchPage";

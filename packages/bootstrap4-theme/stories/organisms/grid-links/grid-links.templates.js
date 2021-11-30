@@ -82,3 +82,7 @@ export const BackgroundWhiteStory = createStory((args) => {
     </section>
   );
 });
+BackgroundWhiteStory.args = {
+  template: 1,
+  numColumns: 'two-columns',
+};

@@ -3,14 +3,24 @@
 import styled from "styled-components";
 
 const SectionCard = styled.section`
-  .card-link {
-    order: 1;
-  }
+  margin: auto;
 
-  .card-button {
-    order: 2;
-    & * {
-      font-size: 70%;
+  .card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    order: 3;
+    margin: 0 1rem 1rem;
+
+    .card-button {
+      column-gap: 0;
+      padding: 0;
+      width: fit-content;
+    }
+    .card-button .btn {
+      margin: 0;
     }
   }
 `;

@@ -50,7 +50,7 @@ Default.args = {
   type: "default",
   horizontal: false,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -97,7 +97,7 @@ Degree.args = {
   type: "degree",
   horizontal: false,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -109,7 +109,7 @@ Degree.parameters = {
 
     <Card
         body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         title="Default title"
         type="degree"
@@ -123,7 +123,7 @@ Event.args = {
   type: "event",
   horizontal: false,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Event title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -157,7 +157,7 @@ The event props, \`eventLocation\` and \`eventTime\` are allowed to contain basi
         eventFormat="stack"
         eventLocation="Downtown Phoenix campus"
         eventTime="Wed, November 21st, 2021<br>11:30 a.m - 12:30 p.m."
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         title="Event title"
         type="event"
@@ -171,7 +171,7 @@ Story.args = {
   type: "story",
   horizontal: false,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Story title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -204,7 +204,7 @@ Story.parameters = {
             size: 'default'
           }
         ]}
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         linkLabel="Default link"
         linkUrl="http://google.com"
@@ -238,7 +238,7 @@ ClickableStoryCard.args = {
   horizontal: false,
   clickable: true,
   clickHref: "/#example-link",
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Story title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -257,7 +257,7 @@ ClickableStoryCard.parameters = {
         body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         clickHref="/#example-link"
         clickable
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         tags={[
           {
@@ -288,7 +288,7 @@ HorizontalStoryCard.args = {
   type: "story",
   horizontal: true,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Horizontal story",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -306,7 +306,7 @@ HorizontalStoryCard.parameters = {
     <Card
         body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
         horizontal
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         tags={[
           {
@@ -337,7 +337,7 @@ AsuNewsStory.args = {
   type: "story",
   horizontal: false,
   clickable: false,
-  image: "https://picsum.photos/300/200",
+  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "ASU News Story title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
@@ -363,7 +363,7 @@ AsuNewsStory.parameters = {
             size: 'default'
           }
         ]}
-        image="https://picsum.photos/300/200"
+        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
         imageAltText="An example image"
         title="ASU News Story title"
         type="story"
