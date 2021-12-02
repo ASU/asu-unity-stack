@@ -19,9 +19,10 @@ const ProfileCardTemplate = ({ ...props }) => {
           <div className="person-profession">
             {props.titles &&
               props.titles.length > 0 &&
-              props.titles.map(title => (
+              props.titles?.map(title => (
                 <h4>
-                  <span>{title}</span>
+                  <span>{title.name}, </span>
+                  <span>{title.org}</span>
                 </h4>
               ))}
           </div>
