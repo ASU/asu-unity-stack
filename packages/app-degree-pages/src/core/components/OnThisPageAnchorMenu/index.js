@@ -6,7 +6,7 @@ import React from "react";
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu-design-system/components-core").AnchorMenuItem} AnchorMenuItem
  * */
 
 /**

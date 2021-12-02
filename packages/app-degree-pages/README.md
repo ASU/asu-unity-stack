@@ -137,7 +137,7 @@ You can find the full list of props types into the file [listing-page-types.js h
   /**
   * @typedef {{
   *  actionUrls?: ActionUrlProps
-  *  hero?: import("@asu-design-system/components-core/src/components").HeroProps
+  *  hero?: import("@asu-design-system/components-core").HeroProps
   *  introContent?: IntroContentProps
   *  hasSearchBar?: boolean
   *  hasFilters?: boolean
@@ -157,7 +157,7 @@ You can find the full list of props types into the file [program-detail-types.js
  *  @typedef {{
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  anchorMenu?: AnchorMenuProps
- *  hero?: HideProp & import("@asu-design-system/components-core/src/components").HeroProps
+ *  hero?: HideProp & import("@asu-design-system/components-core").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps
