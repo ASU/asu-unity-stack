@@ -13,6 +13,7 @@ import React from "react";
  * @ignore
  */
 export const PageItem = ({
+  dataId,
   isClickeable,
   disabled,
   pageLinkIcon,
@@ -35,6 +36,7 @@ export const PageItem = ({
           type="button"
           onClick={onClick}
           data-testid="page-link"
+          data-id={dataId}
         >
           {children}
           {selectedPage && <span className="sr-only">(current)</span>}
@@ -53,6 +55,7 @@ PageItem.propTypes = {
   disabled: PropTypes.bool,
   pageLinkIcon: PropTypes.bool,
   selectedPage: PropTypes.bool,
+  dataId: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
