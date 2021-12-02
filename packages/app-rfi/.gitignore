@@ -2,6 +2,5 @@ node_modules
 /*.log
 *.lock
 package-lock.json
-dist
 docs/**
 !docs/README.props.md
