@@ -32,7 +32,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
           role="button"
           aria-expanded={id === openCard}
           aria-controls={`card-body-${id}`}
-          onClick={e => onClick(e, id)}
+          onClick={e => onClick(e, id, item.content.header)}
         >
           {item.content.icon ? (
             <span className="card-icon">

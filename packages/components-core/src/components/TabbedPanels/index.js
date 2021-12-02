@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { NavControls, Tab, TabContent } from "./components";
 
 export const TabbedPanels = ({ panels, bgColor }) => {
@@ -34,6 +35,28 @@ export const TabbedPanels = ({ panels, bgColor }) => {
     e.preventDefault();
     setSelectedId(id);
   };
+
+  const trackArrowsEvent = text => {
+    trackGAEvent({
+      event: "select",
+      action: "click",
+      name: "onclick",
+      type: "carousel",
+      region: "main content",
+      text,
+    });
+  };
+
+  const trackLinkEvent = text => {
+    trackGAEvent({
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
+      text,
+    });
+  };
+
   const tabs = panels.map(panel => {
     return {
       link: (
@@ -41,7 +64,10 @@ export const TabbedPanels = ({ panels, bgColor }) => {
           id={`tab-${randId}-${panel.id}`}
           title={panel.title}
           selected={selectedId === `tab-${randId}-${panel.id}`}
-          selectTab={switchToTab}
+          selectTab={(e, id) => {
+            switchToTab(e, id);
+            trackLinkEvent(panel.title);
+          }}
           key={panel.id}
         />
       ),
@@ -68,8 +94,14 @@ export const TabbedPanels = ({ panels, bgColor }) => {
           {tabs.map(t => t.link)}
         </div>
         <NavControls
-          clickPrev={() => slideNav(-1)}
-          clickNext={() => slideNav(1)}
+          clickPrev={() => {
+            slideNav(-1);
+            trackArrowsEvent("left chevron");
+          }}
+          clickNext={() => {
+            slideNav(1);
+            trackArrowsEvent("right chevron");
+          }}
         />
       </nav>
       <div className="tab-content" id="nav-tabContent">

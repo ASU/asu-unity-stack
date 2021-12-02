@@ -4,6 +4,16 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const gaDefaultObject = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
+
 /**
  * @typedef {import('../../core/types/shared-types').TagsProps} ButtonTagProps
  */
@@ -35,6 +45,11 @@ export const ButtonTag = ({
     Tag = "a";
   }
 
+  const handleClick = text => {
+    trackGAEvent({ ...gaDefaultObject, text });
+    onClick?.();
+  };
+
   return (
     // @ts-ignore
     <Tag
@@ -43,7 +58,7 @@ export const ButtonTag = ({
       className={btnClasses}
       href={href}
       ref={innerRef}
-      onClick={onClick}
+      onClick={() => handleClick(label)}
       aria-label={ariaLabel}
     >
       {label}

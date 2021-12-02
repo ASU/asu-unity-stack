@@ -3,7 +3,17 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { VideoOverlay } from "./index.styles";
+
+const defaultGAEvent = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+  text: "play button",
+};
 
 /**
  * @typedef {import('../../core/types/video-types').VideoProps} VideoProps
@@ -57,6 +67,10 @@ const videoTemplate = ({
     toggleVideo();
   };
 
+  const trackEvent = videoTitle => {
+    trackGAEvent({ ...defaultGAEvent, section: videoTitle });
+  };
+
   return (
     <div
       className={classNames(`uds-video-container ${className}`, {
@@ -91,7 +105,10 @@ const videoTemplate = ({
         >
           <button
             type="button"
-            onClick={onPlayButtonClick}
+            onClick={e => {
+              onPlayButtonClick(e);
+              trackEvent(caption || "");
+            }}
             className="btn btn-circle btn-circle-large btn-circle-alt-white uds-video-btn-play"
           >
             <i className="fas fa-play" />

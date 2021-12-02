@@ -4,11 +4,19 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { useMediaQuery } from "../../core/hooks/use-media-query";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
 const menuTitle = "On This Page";
+
+const defaultMobileGAEvent = {
+  event: "collapse",
+  name: "onclick",
+  type: "click",
+  text: menuTitle,
+};
 
 /**
  * @typedef { import('../../core/types/shared-types').AnchorMenuProps } AnchorMenuProps
@@ -100,6 +108,13 @@ export const AnchorMenu = ({
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
   };
 
+  const trackMobileDropdownEvent = () => {
+    trackGAEvent({
+      ...defaultMobileGAEvent,
+      action: showMenu ? "close" : "open",
+    });
+  };
+
   const handleMenuVisibility = () => {
     setShowMenu(prevState => !prevState);
   };
@@ -117,7 +132,10 @@ export const AnchorMenu = ({
           <button
             className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
             type="button"
-            onClick={handleMenuVisibility}
+            onClick={() => {
+              trackMobileDropdownEvent();
+              handleMenuVisibility();
+            }}
             data-toggle="collapse"
             data-target="#collapseAnchorMenu"
             aria-controls="collapseAnchorMenu"
