@@ -17,12 +17,14 @@ const ProfileCardTemplate = ({ ...props }) => {
         )}
         {props.size === "large" && (
           <div className="person-profession">
-            {props.titles.map(title => (
-              <h4>
-                <span>{title.name}, </span>
-                <span>{title.org}</span>
-              </h4>
-            ))}
+            {props.titles &&
+              props.titles.length > 0 &&
+              props.titles?.map(title => (
+                <h4>
+                  <span>{title.name}, </span>
+                  <span>{title.org}</span>
+                </h4>
+              ))}
           </div>
         )}
         {props.size !== "micro" && (

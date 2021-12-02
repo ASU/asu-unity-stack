@@ -15,6 +15,9 @@ const ProfileCard = styled.div`
       h4 {
         margin: 0;
         font-size: 16px;
+        span:nth-child(2) {
+          font-weight: normal;
+        }
       }
     }
   }
