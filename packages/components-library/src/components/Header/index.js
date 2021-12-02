@@ -102,7 +102,7 @@ const Header = ({
     } else if (identifier === "leave-open") {
       killEvent();
     }
-  }, []);
+  }, [killEvent]);
   const toggleNavDropdown = clickedDOM => {
     navRef.current.forceToggle(clickedDOM);
   };

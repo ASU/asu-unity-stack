@@ -62,7 +62,7 @@ const showReset = position => {
 const breakpointForMin = breakpoint => {
   let breakpointMatch = breakpoint.match(/[a-z]+|[^a-z]+/gi);
   // Add 1 and string it back together.
-  return (parseInt(breakpointMatch[0]) + 1).toString() + breakpointMatch[1];
+  return (parseInt(breakpointMatch[0], 10) + 1).toString() + breakpointMatch[1];
 };
 
 const srOnly = css`

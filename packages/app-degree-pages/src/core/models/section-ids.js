@@ -52,8 +52,8 @@ const progDetailSectionIds = {
     text: "Attend Online",
   },
   programContactInfo: {
-    targetIdName: "Program Contact Info",
-    text: "Global opportunities",
+    targetIdName: "program-contact-info",
+    text: "Program Contact Information",
   },
 };
 

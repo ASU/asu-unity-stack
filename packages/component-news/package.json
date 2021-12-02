@@ -1,11 +1,11 @@
 {
   "name": "@asu-design-system/component-news",
-  "version": "1.2.4",
-  "description": "News component",
+  "version": "1.2.5",
+  "description": "ASU News component",
   "main": "src/index.js",
   "author": "Michele Dibenedetto",
   "license": "Unlicensed",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"

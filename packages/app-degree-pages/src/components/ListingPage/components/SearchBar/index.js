@@ -69,6 +69,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
 
             <div className="col-sm-12 col-md-6 mt-2 mt-sm-0">
               <Button
+                data-testid="search-button"
                 color="maroon"
                 label="Search now"
                 ariaLabel="Search now"

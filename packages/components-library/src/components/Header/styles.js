@@ -8,7 +8,6 @@ import {
   primaryNavTopPadding,
   BreakpointXl,
   BreakpointLg,
-  srOnly,
 } from "../../theme";
 import { buttonStyles } from "../Button/styles";
 import { loginStyles } from "../Login/styles";

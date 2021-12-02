@@ -1,6 +1,5 @@
 // @ts-check
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
@@ -22,7 +21,6 @@ const now = new Date();
 const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
   const cookieConsentRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  library.add(fas);
 
   const updateEasingState = () => {
     const elementClassList = cookieConsentRef.current.classList;
@@ -74,7 +72,7 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
               className="close-btn"
               onClick={handleCloseConsent}
             >
-              <FontAwesomeIcon icon="times" />
+              <FontAwesomeIcon icon={faTimes} />
             </button>
           </div>
           <button

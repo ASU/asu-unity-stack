@@ -12,6 +12,7 @@ import React, { useState, useMemo } from "react";
  *    baseIconStyle2?: Object
  *    ariaLabel: string
  *    ariaControls: string
+ *    dataId: string
  * }} props
  * @returns {JSX.Element}
  */
@@ -24,6 +25,7 @@ function BaseStateIconButton({
   baseIconStyle2,
   ariaLabel,
   ariaControls,
+  dataId,
   onClick = () => null,
 }) {
   const [selected, setSelected] = useState(false);
@@ -50,6 +52,7 @@ function BaseStateIconButton({
 
   const res = (
     <span
+      data-testid={dataId}
       role="button"
       className="element-focus"
       tabIndex={0}
