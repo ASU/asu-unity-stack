@@ -19,7 +19,7 @@ const extraOptions = {
 };
 
 export default createComponent('Tooltips', 'Atoms', 'Templates', extraOptions);
-import { initTooltip } from './tooltips.js';
+import { initTooltip as initFunc } from './tooltips.js';
 
 export const Tooltips = createStory(
   (args) => {
@@ -52,7 +52,7 @@ export const Tooltips = createStory(
     );
   },
   {
-    initFunc: initTooltip,
+    initFunc,
   }
 );
 Tooltips.args = {
