@@ -22,8 +22,7 @@ import { useState, useEffect } from "react";
 
 /**
  * @template T
- * @returns {[
- * FetchResponse<T>, FetchCallback]}
+ * @returns {[FetchResponse<T>, FetchCallback]}
  */
 const useFetch = () => {
   const [data, setData] = useState();
