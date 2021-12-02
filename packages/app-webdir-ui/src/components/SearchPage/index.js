@@ -124,6 +124,7 @@ const ASUSearchPage = () => {
   return (
     <SearchProvider
       config={{
+        /* debug: true, */
         apiConnector: connector,
         initialState: {
           resultsPerPage: 6,
