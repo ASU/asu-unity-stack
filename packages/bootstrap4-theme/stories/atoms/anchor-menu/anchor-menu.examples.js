@@ -1,7 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Anchor Menu', 'Atoms', 'Examples');
-import { initializeAnchorMenu } from './anchor-menu';
+import { initializeAnchorMenu as initFunc } from './anchor-menu';
 import { Basic } from '../../organisms/global-header/global-header.templates.js';
 
 export const AnchorMenu = createStory(
@@ -42,24 +42,78 @@ export const AnchorMenu = createStory(
               data-target="#collapseExample"
               aria-expanded="false"
               aria-controls="collapseExample"
+              data-ga-name="onclick"
+              data-ga-event="collapse"
+              data-ga-type="click"
+              data-ga="On this page"
             >
               On This Page: <span class="fas fa-chevron-down"></span>
             </h4>
             <div id="collapseExample" class="card card-body collapse">
               <nav class="nav" aria-label="Same Page">
-                <a class="nav-link" href="#first">
+                <a
+                  class="nav-link"
+                  href="#first"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
                   <span class="fas fa-link"></span>Anchor item
                 </a>
-                <a class="nav-link" href="#second">
+                <a
+                  class="nav-link"
+                  href="#second"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
                   <span class="fas fa-link"></span>Anchor item
                 </a>
-                <a class="nav-link" href="#third">
+                <a
+                  class="nav-link"
+                  href="#third"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
                   <span class="fa fa-link"></span>Anchor item
                 </a>
-                <a class="nav-link" href="#fourth">
+                <a
+                  class="nav-link"
+                  href="#fourth"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
                   <span class="fa fa-link"></span>Anchor item
                 </a>
-                <a class="nav-link" href="#fifth">
+                <a
+                  class="nav-link"
+                  href="#fifth"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
                   <span class="fa fa-link"></span>Anchor item
                 </a>
               </nav>
@@ -356,7 +410,7 @@ export const AnchorMenu = createStory(
     <div style={{ height: '1000px' }}></div>
   </div>,
   {
-    initFunc: initializeAnchorMenu,
+    initFunc,
     omitTemplate: true,
   }
 );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Sidebar', 'Atoms', 'Templates');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const Sidebar = createStory(
   <div class="col-md-4">
@@ -11,6 +12,12 @@ export const Sidebar = createStory(
       data-target="#sidebar-left"
       aria-expanded="false"
       aria-controls="sidebar-left"
+      data-ga-name="onclick"
+      data-ga-event="collapse"
+      data-ga-type="click"
+      data-ga-region="main content"
+      data-ga-section="Lorem ipsum"
+      data-ga="Select section"
     >
       <p>Select Section</p>
       <span class="fas fa-chevron-up" />
@@ -36,6 +43,12 @@ export const Sidebar = createStory(
             data-target="#cardBodyOne"
             aria-expanded="false"
             aria-controls="cardBodyOne"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="Lorem ipsum"
+            data-ga="Expandable link sections"
           >
             Expandable link sections
             <span class="fas fa-chevron-down ml-1"></span>
@@ -71,6 +84,12 @@ export const Sidebar = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyTwo"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="Lorem ipsum"
+            data-ga="There should only be one open section at a time"
           >
             There should only be one open section at a time.
             <span class="fas fa-chevron-down ml-1"></span>
@@ -125,6 +144,12 @@ export const Sidebar = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyThree"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="Lorem ipsum"
+            data-ga="There be gold inside"
           >
             There be gold inside
             <span class="fas fa-chevron-down ml-1"></span>
@@ -167,7 +192,8 @@ export const Sidebar = createStory(
       </div>
     </nav>
     {/* end .sidebar */}
-  </div>
+  </div>,
+  { initFunc }
 );
 Sidebar.args = {
   template: 1,

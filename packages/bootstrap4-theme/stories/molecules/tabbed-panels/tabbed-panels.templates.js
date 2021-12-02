@@ -49,6 +49,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-home"
               aria-selected="true"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Home long tab"
             >
               Home long tab
             </a>
@@ -60,6 +65,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-profile"
               aria-selected="false"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Profile long tab"
             >
               Profile long tab
             </a>
@@ -71,6 +81,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-contact"
               aria-selected="false"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Contact us is a long tab"
             >
               Contact us is a long tab
             </a>
@@ -82,6 +97,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-another"
               aria-selected="false"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Another tab, long tab"
             >
               Another tab, long tab
             </a>
@@ -93,6 +113,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-another-2"
               aria-selected="false"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Another tab, long tab"
             >
               Another tab, long tab
             </a>
@@ -104,6 +129,11 @@ export const TabbedPanels = createStory(
               role="tab"
               aria-controls="nav-another-3"
               aria-selected="false"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="internal link"
+              data-ga="Another tab, long tab"
             >
               Another tab, long tab
             </a>
@@ -114,6 +144,12 @@ export const TabbedPanels = createStory(
             role="button"
             data-scroll="prev"
             tabIndex="-1"
+            data-ga-event="select"
+            data-ga-action="click"
+            data-ga-name="onclick"
+            data-ga-type="carousel"
+            data-ga-region="main content"
+            data-ga="left chevron"
           >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -124,6 +160,12 @@ export const TabbedPanels = createStory(
             role="button"
             data-scroll="next"
             tabIndex="-1"
+            data-ga-event="select"
+            data-ga-action="click"
+            data-ga-name="onclick"
+            data-ga-type="carousel"
+            data-ga-region="main content"
+            data-ga="right chevron"
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>

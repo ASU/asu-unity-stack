@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Form Fields', 'Atoms', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
 
 export const TextInputs = createStory(
   <form class="uds-form">
@@ -11,6 +12,12 @@ export const TextInputs = createStory(
         class="form-control"
         id="exampleDefaultInput"
         placeholder="Helper text"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       />
     </div>
 
@@ -22,6 +29,12 @@ export const TextInputs = createStory(
         id="exampleFocusInput"
         placeholder="Helper text"
         value="Focus me to see focus style"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       />
     </div>
 
@@ -35,6 +48,12 @@ export const TextInputs = createStory(
         id="exampleDisabledInput"
         placeholder="Helper text"
         disabled
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       />
     </div>
 
@@ -54,6 +73,12 @@ export const TextInputs = createStory(
         placeholder="Helper text"
         aria-required="true"
         required
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       />
       <small id="errorHelp" class="form-text invalid-feedback">
         <span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>
@@ -70,6 +95,12 @@ export const TextInputs = createStory(
         aria-describedby="successHelp"
         placeholder="Helper text"
         value="Input text"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       />
       <small id="successHelp" class="form-text valid-feedback">
         <span title="Alert" class="fa fa-icon fa-check-circle"></span>Success
@@ -87,6 +118,12 @@ export const TextInputs = createStory(
           class="form-control"
           id="exampleTrailingIconInput"
           placeholder="Helper text"
+          data-ga-input="blur"
+          data-ga-input-name="onclick"
+          data-ga-input-event="form"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="text label"
         />
         <span class="far fa-icon fa-calendar" aria-hidden="true"></span>
       </div>
@@ -98,7 +135,8 @@ export const TextInputs = createStory(
       document.getElementById('exampleFocusInput').focus();
       </script>
       */}
-  </form>
+  </form>,
+  { initFunc }
 );
 TextInputs.args = {
   template: 1,
@@ -481,6 +519,12 @@ export const Textareas = createStory(
         id="exampleFormControlTextareaDefault"
         rows="3"
         placeholder="Enter your textarea content..."
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       ></textarea>
     </div>
 
@@ -490,6 +534,12 @@ export const Textareas = createStory(
         class="form-control"
         id="exampleFormControlTextareaFocus"
         rows="3"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       >
         Focus here to see the focus state.
       </textarea>
@@ -508,6 +558,12 @@ export const Textareas = createStory(
         rows="3"
         placeholder="I got some content."
         disabled
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       ></textarea>
     </div>
 
@@ -518,6 +574,12 @@ export const Textareas = createStory(
         aria-describedby="errorTextareaHelp"
         id="exampleFormControlTextareaError"
         rows="3"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       ></textarea>
       <small id="errorTextareaHelp" class="form-textarea invalid-feedback">
         <span title="Alert" class="fa fa-icon fa-exclamation-triangle"></span>
@@ -532,6 +594,12 @@ export const Textareas = createStory(
         aria-describedby="successTextareaHelp"
         id="exampleFormControlTextareaSuccess"
         rows="3"
+        data-ga-input="blur"
+        data-ga-input-name="onclick"
+        data-ga-input-event="form"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="text label"
       >
         Agreeable content was entered.
       </textarea>
@@ -540,7 +608,8 @@ export const Textareas = createStory(
         message
       </small>
     </div>
-  </form>
+  </form>,
+  { initFunc }
 );
 Textareas.args = {
   template: 1,
@@ -914,9 +983,15 @@ export const Checkboxes = createStory(
         type="checkbox"
         id="loneCheckbox1"
         value="option1"
+        data-ga-input="checkbox"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="I like checkboxes"
       />
       <label class="form-check-label" for="loneCheckbox1">
-      I like checkboxes
+        I like checkboxes
       </label>
     </div>
 
@@ -926,11 +1001,27 @@ export const Checkboxes = createStory(
         type="checkbox"
         id="loneCheckbox2"
         value="option1"
+        data-ga-input="checkbox"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="Multi-line content Multi-line content Multi-line content..."
       />
       <label class="form-check-label" for="loneCheckbox2">
-      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
-      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
-      Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content Multi-line content Multi-line
+        content Multi-line content Multi-line content Multi-line content
+        Multi-line content Multi-line content
       </label>
     </div>
 
@@ -942,6 +1033,12 @@ export const Checkboxes = createStory(
         id="validLoneCheckbox"
         value="option1"
         checked
+        data-ga-input="checkbox"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="I accept"
       />
       <label class="form-check-label" for="validLoneCheckbox">
         I accept
@@ -959,6 +1056,12 @@ export const Checkboxes = createStory(
         aria-describedby="myInvalidCheckMsg"
         id="invalidLoneCheckbox"
         value="option1"
+        data-ga-input="checkbox"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+        data-ga-input-section="I also accept"
       />
       <label class="form-check-label" for="invalidLoneCheckbox">
         I also accept
@@ -977,6 +1080,12 @@ export const Checkboxes = createStory(
           type="checkbox"
           id="checkbox1"
           value="option1"
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="1"
         />
         <label class="form-check-label" for="checkbox1">
           1
@@ -989,6 +1098,12 @@ export const Checkboxes = createStory(
           id="checkbox2"
           value="option2"
           checked
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="2"
         />
         <label class="form-check-label" for="checkbox2">
           2
@@ -1001,6 +1116,12 @@ export const Checkboxes = createStory(
           id="checkbox3"
           value="option3"
           disabled
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="3"
         />
         <label class="form-check-label" for="checkbox3">
           3 (disabled)
@@ -1021,6 +1142,12 @@ export const Checkboxes = createStory(
           aria-describedby="myValidCheckboxMsg"
           id="validCheckbox1"
           value="option1"
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="1"
         />
         <label class="form-check-label" for="validCheckbox1">
           1
@@ -1034,6 +1161,12 @@ export const Checkboxes = createStory(
           id="validCheckbox2"
           value="option2"
           checked
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="2"
         />
         <label class="form-check-label" for="validCheckbox2">
           2
@@ -1047,6 +1180,12 @@ export const Checkboxes = createStory(
           id="validCheckbox3"
           value="option3"
           disabled
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="3"
         />
         <label class="form-check-label" for="validCheckbox3">
           3 (disabled)
@@ -1067,6 +1206,12 @@ export const Checkboxes = createStory(
           aria-describedby="myInvalidCheckboxMsg"
           id="invalidCheckbox1"
           value="option1"
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="1"
         />
         <label class="form-check-label" for="invalidCheckbox1">
           1
@@ -1080,6 +1225,12 @@ export const Checkboxes = createStory(
           id="invalidCheckbox2"
           value="option2"
           checked
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="2"
         />
         <label class="form-check-label" for="invalidCheckbox2">
           2
@@ -1093,13 +1244,20 @@ export const Checkboxes = createStory(
           id="invalidCheckbox3"
           value="option3"
           disabled
+          data-ga-input="checkbox"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="3"
         />
         <label class="form-check-label" for="invalidCheckbox3">
           3 (disabled)
         </label>
       </div>
     </fieldset>
-  </form>
+  </form>,
+  { initFunc }
 );
 Checkboxes.args = {
   template: 1,
@@ -1117,6 +1275,12 @@ export const Radios = createStory(
           id="exampleRadios1"
           value="option1"
           checked
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Default radio"
         />
         <label class="form-check-label" for="exampleRadios1">
           Default radio
@@ -1129,6 +1293,12 @@ export const Radios = createStory(
           name="exampleRadios"
           id="exampleRadios2"
           value="option2"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Second default radio"
         />
         <label class="form-check-label" for="exampleRadios2">
           Second default radio
@@ -1141,6 +1311,12 @@ export const Radios = createStory(
           name="exampleRadios"
           id="exampleRadios3"
           value="option3"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Third default radio"
         />
         <label class="form-check-label" for="exampleRadios3">
           Third default radio
@@ -1154,6 +1330,12 @@ export const Radios = createStory(
           id="exampleRadios4"
           value="option4"
           disabled
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Disabled radio"
         />
         <label class="form-check-label" for="exampleRadios4">
           Disabled radio
@@ -1176,6 +1358,12 @@ export const Radios = createStory(
           id="invalidRadios1"
           value="option1"
           checked
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Default radio"
         />
         <label class="form-check-label" for="invalidRadios1">
           Default radio
@@ -1189,6 +1377,12 @@ export const Radios = createStory(
           aria-describedby="myInvalidRadiosMsg"
           id="invalidRadios2"
           value="option2"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Second default radio"
         />
         <label class="form-check-label" for="invalidRadios2">
           Second default radio
@@ -1202,6 +1396,12 @@ export const Radios = createStory(
           aria-describedby="myInvalidRadiosMsg"
           id="invalidRadios3"
           value="option3"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Third default radio"
         />
         <label class="form-check-label" for="invalidRadios3">
           Third default radio
@@ -1216,6 +1416,12 @@ export const Radios = createStory(
           id="invalidRadios4"
           value="option4"
           disabled
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Disabled radio"
         />
         <label class="form-check-label" for="invalidRadios4">
           Disabled radio
@@ -1238,6 +1444,12 @@ export const Radios = createStory(
           id="validRadios1"
           value="option1"
           checked
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Default radio"
         />
         <label class="form-check-label" for="validRadios1">
           Default radio
@@ -1251,6 +1463,12 @@ export const Radios = createStory(
           aria-describedby="myValidRadiosMsg"
           id="validRadios2"
           value="option2"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Second default radio"
         />
         <label class="form-check-label" for="validRadios2">
           Second default radio
@@ -1264,6 +1482,12 @@ export const Radios = createStory(
           aria-describedby="myValidRadiosMsg"
           id="validRadios3"
           value="option3"
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Third default radio"
         />
         <label class="form-check-label" for="validRadios3">
           Third default radio
@@ -1278,13 +1502,20 @@ export const Radios = createStory(
           id="validRadios4"
           value="option4"
           disabled
+          data-ga-input="radio button"
+          data-ga-input-name="onclick"
+          data-ga-input-event="select"
+          data-ga-input-action="click"
+          data-ga-input-region="main content"
+          data-ga-input-section="Disabled radio"
         />
         <label class="form-check-label" for="validRadios4">
           Disabled radio
         </label>
       </div>
     </fieldset>
-  </form>
+  </form>,
+  { initFunc }
 );
 Radios.args = {
   template: 1,
@@ -2746,7 +2977,15 @@ export const Selects = createStory(
   <form class="uds-form">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Example select</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select
+        class="form-control"
+        id="exampleFormControlSelect1"
+        data-ga-input="select"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+      >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -2763,6 +3002,11 @@ export const Selects = createStory(
         class="form-control is-valid"
         id="exampleFormControlSelect3"
         aria-describedby="myValidSelectMsg"
+        data-ga-input="select"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
       >
         <option>1</option>
         <option>2</option>
@@ -2804,7 +3048,16 @@ export const Selects = createStory(
 
     <div class="form-group">
       <label for="exampleFormControlSelect2">Example multiple select</label>
-      <select multiple class="form-control" id="exampleFormControlSelect2">
+      <select
+        multiple
+        class="form-control"
+        id="exampleFormControlSelect2"
+        data-ga-input="select"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
+      >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -2828,6 +3081,11 @@ export const Selects = createStory(
         aria-describedby="myInvalidSelectMsg"
         aria-required="true"
         required
+        data-ga-input="select"
+        data-ga-input-name="onclick"
+        data-ga-input-event="select"
+        data-ga-input-action="click"
+        data-ga-input-region="main content"
       >
         <option>1</option>
         <option>2</option>
@@ -2840,7 +3098,8 @@ export const Selects = createStory(
         Form error message
       </small>
     </div>
-  </form>
+  </form>,
+  { initFunc }
 );
 Selects.args = {
   template: 1,
