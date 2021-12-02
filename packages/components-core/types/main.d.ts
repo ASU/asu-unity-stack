@@ -9,20 +9,21 @@ export interface AccordionCardProps {
   };
 }
 export interface AccordionProps {
-  openedCard: number
+  openedCard?: number
   cards: AccordionCardProps[]
 }
 export const Accordion: React.FunctionComponent<AccordionProps>
 
+export interface AnchorMenuItem {
+  text: string;
+  targetIdName: string;
+  icon?: string[];
+}
 export interface AnchorMenuProps {
   /**
    * Anchor menu items
    */
-  items: {
-    text: string,
-    targetIdName: string,
-    icon?: string[]
-  }[];
+  items: AnchorMenuItem[];
   /**
    * First next sibling element of the anchor menu
    */
@@ -132,7 +133,7 @@ export interface ButtonProps {
     Pass in a Component to override default button element.
     For example: react-router Link
   */
-  element?: (...args: unknown[]) => unknown | string | {
+  element?: ((...args: unknown[]) => unknown) | string | {
     $$typeof?: symbol,
     render?(...args: unknown[]): unknown
   } | ((...args: unknown[]) => unknown) | string | {
@@ -360,6 +361,7 @@ export const FeedBody: React.FunctionComponent<{
 }>
 
 export interface HeroProps {
+  hide?: boolean;
   type?: "heading-hero" | "story-hero";
   image?: ImageProps;
   title?: ContentProps;
@@ -465,3 +467,14 @@ export interface FetchResponse<E> {
   error: object
 }
 export function useFetch<T>(): [FetchResponse<T>, (url: string) => void];
+
+export function useMediaQuery(query: string): boolean;
+
+export function idGenerator(key?: string, startIndex?: number):
+  Generator<string, string, string>;
+
+export function sanitizeDangerousMarkup(content: string): {
+  __html: string;
+} | undefined
+
+export function spreadClasses(lasses: string[]): string
