@@ -16,6 +16,7 @@ import { Video } from "../../components/Video";
 import { spreadClasses } from "./css-utils";
 import { sanitizeDangerousMarkup } from "./html-utils";
 import { idGenerator } from "./id-generator";
+import { getCurrentScriptPath } from "./script-utils";
 
 /**
  * @typedef {Object} ComponentProps
@@ -98,4 +99,9 @@ export const initHero = ({ targetSelector, props }) =>
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
 
-export { sanitizeDangerousMarkup, spreadClasses, idGenerator };
+export {
+  sanitizeDangerousMarkup,
+  spreadClasses,
+  idGenerator,
+  getCurrentScriptPath,
+};

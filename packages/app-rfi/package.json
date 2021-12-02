@@ -15,7 +15,7 @@
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./dist -p 6006",
     "build-storybook": "build-storybook",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
@@ -55,7 +55,8 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "copy-webpack-plugin": "^9.0.1"
   },
   "dependencies": {
     "@asu-design-system/components-core": "^1.0.0",
