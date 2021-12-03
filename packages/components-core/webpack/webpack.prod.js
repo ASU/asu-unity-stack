@@ -26,7 +26,7 @@ const cjsConfig = merge(common, {
   mode: "production",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
-    filename: "[name].js",
+    filename: "[name].cjs.js",
     library: {
       type: "commonjs2",
     },

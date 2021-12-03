@@ -13,7 +13,7 @@
   ],
   "publishConfig": {
     "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.web.asu.edu/"
   },
   "repository": {
     "type": "git",
