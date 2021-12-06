@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import {
   RfiTextInput,
   RfiTextArea,
@@ -14,36 +15,79 @@ import {
   RfiCheckboxSingle,
 } from "../controls";
 
-function createMarkup(output) {
-  return { __html: output };
-}
+const defaultInputEvent = {
+  event: "form",
+  action: "click",
+  name: "onclick",
+  type: "blur",
+  region: "main content",
+};
+
+const defaultLinkEvent = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "main content",
+  section: "about me",
+};
 
 // Components
 
-const RfiGdpr = ({ campus }) => {
-  let gdprWording = `By submitting my information, I consent to ASU contacting me about education services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can withdraw consent by contacting ASU at <a href="mailto:UnsubFutureStudentComm@asu.edu">UnsubFutureStudentComm@asu.edu</a> or as described in communications I receive. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a> and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
-  if (campus === "ONLNE") {
-    gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
-  }
-  return (
-    <div className="rfi-consent">
-      <div
-        className="rfi-consent-wording"
-        dangerouslySetInnerHTML={createMarkup(gdprWording)}
-      />
-      <RfiCheckboxSingle
-        id="GdprConsent"
-        name="GdprConsent"
-        value="1"
-        requiredIcon
-        required
-      >
-        I consent
-      </RfiCheckboxSingle>
+const RfiGdpr = ({ campus }) => (
+  <div className="rfi-consent">
+    <div className="rfi-consent-wording">
+      <p>
+        By submitting my information, I consent to ASU contacting me about
+        campus{" "}
+        {campus === "ONLINE"
+          ? "educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above"
+          : "education services using email, direct mail, SMS/texting and digital platforms"}
+        . Message and data rates may apply. Consent is not required to receive
+        services, and I may call ASU directly at{" "}
+        <a
+          href="tel:8662776589"
+          onClick={() => {
+            trackGAEvent({ ...defaultLinkEvent, text: "866-277-6589" });
+          }}
+        >
+          866-277-6589
+        </a>
+        . I consent to ASU’s{" "}
+        <a
+          href="https://asuonline.asu.edu/text-terms/"
+          onClick={() => {
+            trackGAEvent({
+              ...defaultLinkEvent,
+              text: "mobile terms and conditions",
+            });
+          }}
+        >
+          mobile terms and conditions
+        </a>
+        , and{" "}
+        <a
+          href="https://asuonline.asu.edu/web-analytics-privacy-2/"
+          onClick={() => {
+            trackGAEvent({ ...defaultLinkEvent, text: "privacy statements" });
+          }}
+        >
+          Privacy Statements
+        </a>
+        , including the European Supplement.
+      </p>
     </div>
-  );
-};
-
+    <RfiCheckboxSingle
+      id="GdprConsent"
+      name="GdprConsent"
+      value="1"
+      requiredIcon
+      required
+    >
+      I consent
+    </RfiCheckboxSingle>
+  </div>
+);
 const AboutMe = () => {
   const [termOptions, setTermOptions] = useState([]);
 
@@ -137,6 +181,13 @@ const AboutMe = () => {
         requiredIcon
         required
         autoFocus
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ email address​",
+            text: e.target.value,
+          })
+        }
       />
       <RfiTextInput
         label="First name"
@@ -145,6 +196,13 @@ const AboutMe = () => {
         requiredIcon
         required
         helperText="First name"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ first name",
+            text: e.target.value,
+          })
+        }
       />
       <RfiTextInput
         label="Last name"
@@ -153,14 +211,41 @@ const AboutMe = () => {
         requiredIcon
         required
         helperText="Last name"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ last name",
+            text: e.target.value,
+          })
+        }
       />
-      <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon required />
+      <RfiPhone
+        label="Phone"
+        id="Phone"
+        name="Phone"
+        requiredIcon
+        required
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ phone number​",
+            text: e.target.value,
+          })
+        }
+      />
       <RfiTextInput
         label="Postal code"
         id="ZipCode"
         name="ZipCode"
         requiredIcon={values.Campus !== "ONLNE"}
         required={values.Campus !== "ONLNE"}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ zip code​",
+            text: e.target.value,
+          })
+        }
       />
       {termOptions.length ? (
         <RfiSelect
@@ -170,6 +255,13 @@ const AboutMe = () => {
           options={termOptions}
           requiredIcon={values.Campus !== "ONLNE"}
           required={values.Campus !== "ONLNE"}
+          onBlur={e =>
+            trackGAEvent({
+              ...defaultInputEvent,
+              section: "about me ^ When do you anticipate starting at ASU?​",
+              text: e.target.selectedOptions[0].innerText,
+            })
+          }
         />
       ) : (
         <RfiTextArea
@@ -180,6 +272,13 @@ const AboutMe = () => {
           disabled
           requiredIcon={values.Campus !== "ONLNE"}
           required={values.Campus !== "ONLNE"}
+          onBlur={e =>
+            trackGAEvent({
+              ...defaultInputEvent,
+              section: "about me ^ When do you anticipate starting at ASU?​",
+              text: e.target.value,
+            })
+          }
         />
       )}
       <RfiGdpr campus={values.Campus} />

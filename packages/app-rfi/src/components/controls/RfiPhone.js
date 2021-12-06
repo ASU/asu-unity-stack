@@ -11,7 +11,15 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 
 // Component
 
-const RfiPhone = ({ label, name, id, requiredIcon, required, helperText }) => {
+const RfiPhone = ({
+  label,
+  name,
+  id,
+  requiredIcon,
+  required,
+  helperText,
+  onBlur,
+}) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
 
@@ -52,6 +60,7 @@ const RfiPhone = ({ label, name, id, requiredIcon, required, helperText }) => {
                 setFieldValue("Country", phoneCountryCode);
                 setFieldValue("CitizenshipCountry", phoneCountryCode);
               }}
+              onBlur={onBlur}
               inputClass="rfi-phone-input"
               buttonClass="rfi-phone-input-button"
               dropdownClass="rfi-phone-input-dropdown"
@@ -78,6 +87,7 @@ RfiPhone.defaultProps = {
 RfiPhone.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
   required: PropTypes.bool,
