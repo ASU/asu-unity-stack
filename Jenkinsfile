@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         AWS_DEFAULT_REGION = 'us-west-2'
-        HOME = '.'
+        HOME="${env.WORKSPACE}"
         CLUSTER_NAME='UnityQACluster'
         SERVICE_NAME='UnityELBService'
         TASK_FAMILY='UnityQATask'
