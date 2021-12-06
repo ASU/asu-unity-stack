@@ -30,7 +30,7 @@
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
     <script src="../dist/vendor.production.js"></script>
-    <script src="../dist/degreePages.production.js"></script>
+    <script src="../dist/degreePages.umd.js"></script>
   </head>
   <body>
     <!-- Provide target divs for the component. Must have unique ids or class name. -->
@@ -203,7 +203,7 @@
             // OPTIONAL
             settings: {
               hideCollegeSchool: true,
-              defaultView: "grid-view", // or "list-view"
+              defaultView: "list-view", // "grid-view""grid-view" or "list-view"
               cardDefaultImage: {
                 url: `examples/assets/img/ds_header_undergrad.jpg`,
               },
