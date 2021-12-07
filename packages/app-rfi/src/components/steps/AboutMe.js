@@ -19,17 +19,9 @@ const defaultInputEvent = {
   event: "form",
   action: "click",
   name: "onclick",
-  type: "blur",
+  type: "click",
   region: "main content",
-};
-
-const defaultLinkEvent = {
-  event: "link",
-  action: "click",
-  name: "onclick",
-  type: "internal link",
-  region: "main content",
-  section: "about me",
+  component: "step 2 of 3",
 };
 
 // Components
@@ -45,33 +37,12 @@ const RfiGdpr = ({ campus }) => (
           : "education services using email, direct mail, SMS/texting and digital platforms"}
         . Message and data rates may apply. Consent is not required to receive
         services, and I may call ASU directly at{" "}
-        <a
-          href="tel:8662776589"
-          onClick={() => {
-            trackGAEvent({ ...defaultLinkEvent, text: "866-277-6589" });
-          }}
-        >
-          866-277-6589
-        </a>
-        . I consent to ASU’s{" "}
-        <a
-          href="https://asuonline.asu.edu/text-terms/"
-          onClick={() => {
-            trackGAEvent({
-              ...defaultLinkEvent,
-              text: "mobile terms and conditions",
-            });
-          }}
-        >
+        <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s{" "}
+        <a href="https://asuonline.asu.edu/text-terms/">
           mobile terms and conditions
         </a>
         , and{" "}
-        <a
-          href="https://asuonline.asu.edu/web-analytics-privacy-2/"
-          onClick={() => {
-            trackGAEvent({ ...defaultLinkEvent, text: "privacy statements" });
-          }}
-        >
+        <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">
           Privacy Statements
         </a>
         , including the European Supplement.
@@ -83,6 +54,16 @@ const RfiGdpr = ({ campus }) => (
       value="1"
       requiredIcon
       required
+      onBlur={e => {
+        trackGAEvent({
+          ...defaultInputEvent,
+          action: e.target.checked ? "click" : "unclick",
+          event: "select",
+          type: "checkbox",
+          section: "about me",
+          text: "i consent",
+        });
+      }}
     >
       I consent
     </RfiCheckboxSingle>
@@ -258,6 +239,8 @@ const AboutMe = () => {
           onBlur={e =>
             trackGAEvent({
               ...defaultInputEvent,
+              event: "select",
+              type: "When do you anticipate starting at ASU?",
               section: "about me ^ When do you anticipate starting at ASU?​",
               text: e.target.selectedOptions[0].innerText,
             })

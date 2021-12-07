@@ -4,12 +4,20 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import {
   RfiTextInput,
   RfiDateInput,
   RfiTextArea,
   RfiSelect,
 } from "../controls";
+
+const defaultGAEvent = {
+  action: "click",
+  name: "onclick",
+  region: "main content",
+  component: "step 3 of 3",
+};
 
 // Options
 function getCountryOptions(resultsArrayOfObjects) {
@@ -181,18 +189,62 @@ const Optional = ({ dataSourceCountriesStates }) => {
         name="CitizenshipCountry"
         options={countryOptions}
         autoFocus
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "select",
+            type: "Country of citizenship",
+            section: "more about me",
+            text: e.target.selectedOptions[0].innerText,
+          })
+        }
       />
       {/*
       <RfiCheckboxSingle id="notCitizen" name="notCitizen" value="1">
         I am not a U.S. citizen and do not have a green card.
       </RfiCheckboxSingle> */}
-      <RfiTextInput label="Address" id="Street1" name="Street1" />
-      <RfiTextInput label="City" id="City" name="City" />
+      <RfiTextInput
+        label="Address"
+        id="Street1"
+        name="Street1"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "form",
+            type: "click",
+            section: "more about me ^ address",
+            text: e.target.value,
+          })
+        }
+      />
+      <RfiTextInput
+        label="City"
+        id="City"
+        name="City"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "form",
+            type: "click",
+            section: "more about me ^ city",
+            text: e.target.value,
+          })
+        }
+      />
       <RfiSelect
         label="Country"
         id="Country"
         name="Country"
         options={countryOptions}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "select",
+            type: "Country",
+            section: "more about me",
+            text: e.target.selectedOptions[0].innerText,
+          })
+        }
       />
       <RfiSelect
         label="State or Province"
@@ -200,24 +252,73 @@ const Optional = ({ dataSourceCountriesStates }) => {
         name="State"
         options={stateOptions}
         disabled={statesDisabled}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "select",
+            type: "State or Province",
+            section: "more about me",
+            text: e.target.selectedOptions[0].innerText,
+          })
+        }
       />
-      <RfiTextInput label="Zipcode" id="Zip" name="Zip" />
+      <RfiTextInput
+        label="Zipcode"
+        id="Zip"
+        name="Zip"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "form",
+            type: "click",
+            section: "more about me ^ zipcode",
+            text: e.target.value,
+          })
+        }
+      />
       <RfiDateInput
         label="Date of Birth"
         id="BirthDate"
         name="BirthDate"
         helperText="MM/DD/YYYY"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "form",
+            type: "click",
+            section: "more about me ^ Date of Bith",
+            text: e.target.value,
+          })
+        }
       />
       <RfiSelect
         label="Military/veteran status"
         id="MilitaryStatus"
         name="MilitaryStatus"
         options={veteranStatusOptions}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "select",
+            type: "Military/veteran status",
+            section: "more about me",
+            text: e.target.selectedOptions[0].innerText,
+          })
+        }
       />
       <RfiTextArea
         label="Do you have any questions?"
         id="Comments"
         name="Comments"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            event: "form",
+            type: "click",
+            section: "more about me ^ Do you have any questions?",
+            text: e.target.value,
+          })
+        }
       />
     </>
   );

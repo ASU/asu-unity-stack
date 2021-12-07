@@ -10,10 +10,10 @@ import * as Yup from "yup";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const defaultButtonEvent = {
-  event: "link",
+  event: "form",
   action: "click",
   name: "onclick",
-  type: "internal link",
+  type: "click",
   region: "main content",
 };
 
@@ -275,6 +275,7 @@ const RfiStepperButtons = ({
                 ...defaultButtonEvent,
                 section,
                 text: "prev",
+                component: `step ${stepNum + 1} of ${lastStep}`,
               });
             }}
           >
@@ -296,6 +297,7 @@ const RfiStepperButtons = ({
                 ...defaultButtonEvent,
                 section,
                 text: "next",
+                component: `step ${stepNum + 1} of ${lastStep}`,
               })
             }
           >
@@ -316,6 +318,7 @@ const RfiStepperButtons = ({
                 type: "submit",
                 section,
                 text: "submit",
+                component: `step ${stepNum + 1} of ${lastStep}`,
               })
             }
           >

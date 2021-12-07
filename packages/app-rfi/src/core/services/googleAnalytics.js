@@ -31,7 +31,6 @@ const trackGAEvent = ({
     text: text.toLowerCase(),
     component: component.toLowerCase(),
   };
-  console.log(e);
   if (dataLayer) dataLayer.push(e);
 };
 
