@@ -58,6 +58,10 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
   },
   plugins: [
     // TODO: with multiple outputs the cleanup needs to be externally.
