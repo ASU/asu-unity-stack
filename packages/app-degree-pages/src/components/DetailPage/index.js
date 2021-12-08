@@ -130,7 +130,10 @@ const DetailPage = ({
           <section className="container mt-4 mb-0">
             {introContent?.breadcrumbs ? (
               <div className="row col-12">
-                <Breadcrumbs breadcrumbs={introContent.breadcrumbs} />
+                <Breadcrumbs
+                  breadcrumbs={introContent.breadcrumbs}
+                  section={hero ? hero.title.text : resolver.getMajorDesc()}
+                />
               </div>
             ) : null}
 

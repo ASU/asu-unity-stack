@@ -4,13 +4,17 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { linkPropShape } from "../../../../core/models";
+import { trackGAEvent } from "../../../../core/services/google-analytics";
 
 /**
  *
- * @param {{breadcrumbs: import("src/core/types/detail-page-types").BreadcrumbItem []}} param0
+ * @param {{
+ *  breadcrumbs: import("src/core/types/detail-page-types").BreadcrumbItem [],
+ *  section: string
+ * }} param0
  * @returns
  */
-function Breadcrumbs({ breadcrumbs }) {
+function Breadcrumbs({ breadcrumbs, section }) {
   const genId = idGenerator("breadcrumb-");
 
   return (
@@ -28,7 +32,22 @@ function Breadcrumbs({ breadcrumbs }) {
               </li>
             ) : (
               <li key={genId.next().value} className="breadcrumb-item">
-                <a href={bread?.url}>{bread.text}</a>
+                <a
+                  href={bread?.url}
+                  onClick={() =>
+                    trackGAEvent({
+                      event: "link",
+                      action: "click",
+                      name: "onclick",
+                      type: "internal link",
+                      region: "main content",
+                      section,
+                      text: bread.text,
+                    })
+                  }
+                >
+                  {bread.text}
+                </a>
               </li>
             )
           )}
@@ -40,6 +59,7 @@ function Breadcrumbs({ breadcrumbs }) {
 
 Breadcrumbs.propTypes = {
   breadcrumbs: PropTypes.arrayOf(linkPropShape),
+  section: PropTypes.string,
 };
 
 export { Breadcrumbs };
