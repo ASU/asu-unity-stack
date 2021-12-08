@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStory, layoutNames } from '../../../helpers/wrapper.js';
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Global Footer', 'Organisms', 'Examples');
 
 import {
@@ -15,26 +15,20 @@ import {
 } from './global-footer.templates.js';
 import { initFooterGA as initFunc } from './global-footer';
 
-const specialFooterWrapper = (footer) => {
-  const story = createStory(
-    <div style={{height: '100vh'}}>
-      <span>Note: The footer stories are in a special wrapper with 100vh</span>
-      { footer }
-    </div>,
-    { initFunc, supportedTemplates: [layoutNames.FULL_WIDTH] }
-  );
-  story.args = {
-    template: layoutNames.FULL_WIDTH,
-  }
-  return story;
-}
-
-export const GlobalElementsOnlyExample = specialFooterWrapper(GlobalElementsOnly);
-export const ZeroColumnsExample = specialFooterWrapper(ZeroColumns);
-export const OneColumnExample = specialFooterWrapper(OneColumn);
-export const OneColumnNoLogoOrSocialExample = specialFooterWrapper(OneColumnNoLogoOrSocial);
-export const TwoColumnsExample = specialFooterWrapper(TwoColumns);
-export const ThreeColumnsExample = specialFooterWrapper(ThreeColumns);
-export const FourColumnsExample = specialFooterWrapper(FourColumns);
-export const FiveColumnsExample = specialFooterWrapper(FiveColumns);
-export const SixColumnsExample = specialFooterWrapper(SixColumns);
+export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, {
+  initFunc,
+});
+export const ZeroColumnsExample = createStory(ZeroColumns, { initFunc });
+export const OneColumnExample = createStory(OneColumn, { initFunc });
+export const OneColumnNoLogoOrSocialExample = createStory(
+  OneColumnNoLogoOrSocial,
+  { initFunc }
+);
+export const TwoColumnsExample = createStory(TwoColumns, { initFunc });
+export const ThreeColumnsExample = createStory(ThreeColumns, { initFunc });
+export const FourColumnsExample = createStory(FourColumns, { initFunc });
+export const FiveColumnsExample = createStory(FiveColumns, { initFunc });
+export const SixColumnsExample = createStory(SixColumns, { initFunc });
+SixColumnsExample.args = {
+  template: 0,
+};

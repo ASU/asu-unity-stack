@@ -16,7 +16,7 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "start-storybook -s ./dist -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
