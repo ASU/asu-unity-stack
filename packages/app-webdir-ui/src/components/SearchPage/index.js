@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { TabbedPanels, Tab } from "../../../../components-core";
 import { ASUFacultyAndStaffResults } from "../FacultyAndStaffResults/index";
 import { dataConverter } from "../helpers/dataConverter";
+import { ProfileCard } from "../ProfileCard/index";
 import { resultsShape } from "../ProfileCard/models";
 import { SearchPage } from "./index.styles";
 
@@ -28,6 +29,7 @@ function ASUSearchPageComponent({
   current,
 }) {
   const [term, setTerm] = useState("");
+  const convertedResults = dataConverter(results);
   const doSearch = () => {
     if (term && term.length > 0) {
       setSearchTerm(term);
@@ -57,26 +59,106 @@ function ASUSearchPageComponent({
           />
         </div>
       </form>
-      {searchTerm.length > 0 && (
+      {searchTerm.length > 0 && !isLoading && (
         <TabbedPanels>
           <Tab id="all" title="All ASU Search">
-            <div>Search</div>
+            <div className="all-asu-search">
+              <div className="message">
+                <div className="results-search-message">
+                  <span>Your search for </span>
+                  <span className="search-message-emphasis">{searchTerm} </span>
+                  <span> returned </span>
+                  <span className="search-message-emphasis">
+                    {totalResults}{" "}
+                  </span>
+                  <span>faculty and staff results </span>
+                </div>
+              </div>
+              <div className="sort">
+                <form className="uds-form">
+                  <div className="form-group">
+                    <label htmlFor="sortBySelect">Sort by</label>
+                    <select className="form-control" id="sortBySelect">
+                      <option>Relevance</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+              <div className="top-results">{convertedResults.top}</div>
+              <div className="faculty-and-staff">
+                <ASUFacultyAndStaffResults
+                  searchTerm={searchTerm}
+                  onPageChange={setCurrent}
+                  currentPage={current}
+                  totalResults={totalResults}
+                  resultsPerPage={resultsPerPage}
+                  size="micro"
+                  title="Faculty and staff"
+                  summary
+                >
+                  {convertedResults.staff.slice(0, 3).map(profile => (
+                    <ProfileCard {...profile.props} size="micro" />
+                  ))}
+                </ASUFacultyAndStaffResults>
+              </div>
+              <div className="subdomain-results">
+                <ASUFacultyAndStaffResults
+                  searchTerm={searchTerm}
+                  onPageChange={setCurrent}
+                  currentPage={current}
+                  totalResults={totalResults}
+                  resultsPerPage={resultsPerPage}
+                  title="All results from <<subdomain>>"
+                  summary
+                >
+                  {convertedResults.subdomain.slice(0, 2)}
+                </ASUFacultyAndStaffResults>
+              </div>
+              <div className="students">
+                <ASUFacultyAndStaffResults
+                  searchTerm={searchTerm}
+                  onPageChange={setCurrent}
+                  currentPage={current}
+                  totalResults={totalResults}
+                  resultsPerPage={resultsPerPage}
+                  size="micro"
+                  title="Students"
+                  anonymized
+                  summary
+                >
+                  {convertedResults.students.slice(0, 3).map(profile => (
+                    <ProfileCard {...profile.props} size="micro" />
+                  ))}
+                </ASUFacultyAndStaffResults>
+              </div>
+              <div className="all-results">
+                <ASUFacultyAndStaffResults
+                  searchTerm={searchTerm}
+                  onPageChange={setCurrent}
+                  currentPage={current}
+                  totalResults={totalResults}
+                  resultsPerPage={resultsPerPage}
+                  title="All asu.edu results"
+                >
+                  {convertedResults.all}
+                </ASUFacultyAndStaffResults>
+              </div>
+            </div>
           </Tab>
           <Tab id="subdomain" title="<<Subdomain>>">
             <div>Subdomain</div>
           </Tab>
           <Tab id="staff" title="Faculty and Staff">
-            {isLoading && <div>Loading...</div>}
-            {!isLoading && (
-              <ASUFacultyAndStaffResults
-                profiles={dataConverter(results)}
-                searchTerm={searchTerm}
-                onPageChange={setCurrent}
-                currentPage={current}
-                totalResults={totalResults}
-                resultsPerPage={resultsPerPage}
-              />
-            )}
+            <ASUFacultyAndStaffResults
+              searchTerm={searchTerm}
+              onPageChange={setCurrent}
+              currentPage={current}
+              totalResults={totalResults}
+              resultsPerPage={resultsPerPage}
+              title="All faculty and staff results"
+            >
+              {convertedResults.staff}
+            </ASUFacultyAndStaffResults>
           </Tab>
           <Tab id="students" title="Students">
             <div>Students</div>

@@ -1,13 +1,13 @@
 import { Button } from "@asu-design-system/components-core";
 import React from "react";
 
-import { ProfileCard } from "./index.styles";
+import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
 
-const ProfileCardTemplate = ({ ...props }) => {
+const ProfileCard = ({ ...props }) => {
   return (
-    <ProfileCard
-      className={`uds-person-profile uds-content-align ${props.size}`}
+    <ProfileCardTemplate
+      className={`uds-person-profile uds-content-align ${props.size} ${props.fill ? "fill" : ""}`}
     >
       <img className="profile-img" src={props.imgURL} alt={props.name} />
       <div className="person">
@@ -87,10 +87,10 @@ const ProfileCardTemplate = ({ ...props }) => {
           <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
         )}
       </div>
-    </ProfileCard>
+    </ProfileCardTemplate>
   );
 };
 
-ProfileCardTemplate.propTypes = profileCardType;
+ProfileCard.propTypes = profileCardType;
 
-export { ProfileCardTemplate };
+export { ProfileCard };

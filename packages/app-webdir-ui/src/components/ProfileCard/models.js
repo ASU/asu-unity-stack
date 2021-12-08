@@ -15,6 +15,7 @@ export const profileCardType = PropTypes.shape({
   linkedinLink: PropTypes.string,
   twitterLink: PropTypes.string,
   size: PropTypes.string,
+  fill: PropTypes.bool,
 });
 
 export const resultsShape = PropTypes.shape({
