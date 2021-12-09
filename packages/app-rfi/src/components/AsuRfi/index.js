@@ -20,6 +20,7 @@ import "./index.css";
  * @return {JSX.Element}
  */
 const AsuRfi = ({
+  appPathFolder,
   campus,
   actualCampus,
   college,
@@ -40,6 +41,7 @@ const AsuRfi = ({
 }) => (
   <div>
     <RfiMainForm
+      appPathFolder={appPathFolder}
       campus={campus}
       actualCampus={actualCampus}
       college={college}
@@ -87,6 +89,7 @@ AsuRfi.defaultProps = {
 };
 
 AsuRfi.propTypes = {
+  appPathFolder: PropTypes.string,
   campus: PropTypes.string,
   actualCampus: PropTypes.string,
   college: PropTypes.string,

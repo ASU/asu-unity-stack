@@ -48,6 +48,7 @@ const DropdownWrapper = styled.div`
         text-transform: capitalize;
       }
       .nav-link {
+        padding: 0;
         a {
           text-transform: capitalize;
           width: 100%;

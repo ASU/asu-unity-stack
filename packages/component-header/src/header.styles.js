@@ -65,6 +65,8 @@ const Header = styled.header`
   }
   @media (max-width: 1260px) {
     .container-xl {
+      padding-left: 0;
+      padding-right: 0;
       max-width: 100%;
     }
   }
