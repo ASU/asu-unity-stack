@@ -20,12 +20,16 @@ const SearchWrapper = styled.form`
     color: #495057;
     border: 1px solid #707070;
     margin: 0.5rem 0;
+    display: unset;
+    &:focus {
+      border-color: transparent;
+    }
   }
   .close-search {
     background-color: #ffffff;
     border: 1px solid #d0d0d0;
     border-radius: 100%;
-    padding: 0.55rem 0.75rem;
+    padding: 0.45rem 0.75rem;
     margin-left: 0.5rem;
   }
   &.open-search {
@@ -40,11 +44,14 @@ const SearchWrapper = styled.form`
     padding: 1rem 2rem;
     label {
       position: relative;
-      background-size: 0.875rem;
+      font-size: 0.875rem;
+      margin-bottom: 0;
+      width: 100%;
       svg {
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 0.5rem;
+        transform: translate(0, -50%);
       }
       input {
         width: 100%;

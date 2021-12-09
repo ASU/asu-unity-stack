@@ -62,6 +62,7 @@ const Wrapper = styled.div`
       );
     }
     .header-top {
+      width: 100%;
       .nav {
         width: 100%;
         height: 100%;

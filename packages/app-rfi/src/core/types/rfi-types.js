@@ -2,6 +2,7 @@
 
 /**
  * @typedef {Object} RFIProps
+ * @property {string} [appPathFolder]
  * @property {string} [campus]
  * @property {string} [actualCampus]
  * @property {string} [college]

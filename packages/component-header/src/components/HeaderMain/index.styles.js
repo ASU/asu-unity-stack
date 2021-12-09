@@ -73,6 +73,7 @@ const HeaderMainWrapper = styled.div`
       border-radius: 50%;
       font-size: 1.25rem;
       margin-right: 2rem;
+      padding: 0.25rem 0.45rem;
       &.collapsed {
         border-radius: 0;
       }

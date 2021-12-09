@@ -33,6 +33,7 @@ const testSubmissionUrl = "https://httpbin.org/post";
 
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
+  appPathFolder: ".", // Optional
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
