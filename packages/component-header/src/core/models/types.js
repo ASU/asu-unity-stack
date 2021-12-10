@@ -30,7 +30,7 @@
  *  items?: [object][]
  *  buttons?: Button[]
  *  class?: string
- *  onClick?: () => void
+ *  onClick?: (e) => void
  * }} NavTreeProps
  */
 
@@ -47,9 +47,9 @@
  *  loggedIn: boolean
  *  userName: string
  *  loginLink: string
- *  onLoginClick?: () => void
+ *  onLoginClick?: (e) => void
  *  logoutLink:  string
- *  onLogoutClick?: () => void
+ *  onLogoutClick?: (e) => void
  *  buttons: Button[]
  *  breakpoint: "Lg" | "Xl"
  *  animateTitle: boolean
