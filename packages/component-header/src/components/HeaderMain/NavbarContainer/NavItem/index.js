@@ -99,6 +99,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       }
     }
     dispatchGAEvent();
+    link.onClick?.();
   };
 
   const handleOnMouseEnterLeave = () => {
