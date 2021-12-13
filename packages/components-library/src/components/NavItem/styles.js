@@ -28,7 +28,6 @@ const navItemStyles = breakpoint => css`
 
       &.nav-item {
         display: block;
-        text-transform: capitalize;
       }
     }
 

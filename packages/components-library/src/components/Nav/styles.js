@@ -123,7 +123,6 @@ const navListStyles = breakpoint => css`
         padding: 0.5rem 0.75rem;
         color: #191919;
         white-space: nowrap;
-        text-transform: capitalize;
 
         svg.fa-chevron-down {
           transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
@@ -283,7 +282,6 @@ const dropdownContainerStyles = breakpoint => css`
     h3 {
       font-size: 1.5rem;
       letter-spacing: -0.035em;
-      text-transform: capitalize;
       font-weight: 700;
       text-align: left;
       opacity: 1;
