@@ -206,7 +206,8 @@ const Nav = forwardRef(
       } else if (open !== -1) {
         setOpen(-1);
       }
-    }, [focused, navList, open]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [focused, navList]);
 
     /*** Detecting click outside of container */
     const navRef = useRef(null);

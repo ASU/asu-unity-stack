@@ -113,6 +113,7 @@ const DropdownWrapper = styled.div`
           padding-top: 1.5rem;
         }
         .nav-link {
+          padding: 0 1rem;
           &:not(:last-child) {
             border-bottom: 1px solid #d0d0d0;
           }
