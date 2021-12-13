@@ -23,7 +23,7 @@ Default.args = {
   header: { color: "dark", text: "Events Cards" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
@@ -42,7 +42,7 @@ WithFilters.args = {
   header: { color: "dark", text: "Events Cards Filtered" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
@@ -62,7 +62,7 @@ WithMaxItems.args = {
   header: { color: "dark", text: "Events Cards" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
