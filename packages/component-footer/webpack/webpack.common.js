@@ -46,12 +46,11 @@ const common = {
         exclude: /\.module\.css$/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.(jpg|png|svg)$/,
+        loader: "url-loader",
+        options: {
+          limit: Infinity, // everything
+        },
       },
     ],
   },
