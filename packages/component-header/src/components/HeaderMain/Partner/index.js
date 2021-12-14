@@ -24,7 +24,7 @@ const Partner = () => {
       >
         <img
           src={partnerLogo?.src ?? starbucksLogo}
-          alt={partnerLogo?.alt ?? "Asu Starbucks logo"}
+          alt={partnerLogo?.alt ?? "ASU Starbucks logo"}
         />
       </a>
       <a
