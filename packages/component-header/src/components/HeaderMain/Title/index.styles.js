@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const breakpointMap = {
+  "992px": "993px",
+  "1260px": "1261px",
+};
+
 const TitleWrapper = styled.div`
   line-height: 1;
   font-size: 1rem;
@@ -33,7 +38,7 @@ const TitleWrapper = styled.div`
   .title-subunit-name {
     color: #191919;
   }
-  @media (min-width: ${({ breakpoint }) => breakpoint}) {
+  @media (min-width: ${({ breakpoint }) => breakpointMap[breakpoint]}) {
     line-height: 1;
     font-weight: 700;
     padding: 0;
