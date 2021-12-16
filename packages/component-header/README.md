@@ -1,5 +1,5 @@
-# ASU Footer
-ASU Web Standards-based implementation of global footer.
+# ASU Header
+ASU Web Standards-based implementation of global header.
 
 ## CLI Commands
 

@@ -13,11 +13,11 @@ import { ButtonWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const Button = ({ href, color, text, onClick, onFocus }) => {
+const Button = ({ href, color, text, classes, onClick, onFocus }) => {
   return (
     <ButtonWrapper
       href={href}
-      className={`button-${color}`}
+      className={`button-${color} ${classes ?? ""}`}
       onClick={onClick}
       onFocus={onFocus}
     >

@@ -2,28 +2,38 @@
   "name": "@asu-design-system/component-header",
   "version": "1.3.14",
   "description": "ASU Global Header",
-  "main": "src/index.js",
+  "main": "./dist/asuHeader.cjs.js",
+  "browser": "./dist/asuHeader.umd.js",
+  "module": "./dist/asuHeader.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
   "license": "Unlicensed",
   "private": false,
+  "files": [
+     "examples/*",
+     "dist/*",
+     "docs/*"
+   ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
-  },
-  "scripts": {
-    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "jest --config=./jest.config.js --silent --coverage",
-    "test-update-snapshot": "yarn test -- -u",
-    "build": "webpack -c webpack/webpack.prod.js",
-    "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
-    "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "start-storybook -s ./dist -p 9010",
-    "build-storybook": "build-storybook -s ./dist"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/asu/asu-unity-stack",
     "directory": "packages/component-header"
+  },
+  "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "test": "jest --config=./jest.config.js --silent --coverage",
+    "test-update-snapshot": "yarn test -- -u",
+    "prebuild": "rm -rf ./dist",
+    "build": "webpack -c webpack/webpack.prod.js",
+    "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
+    "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
+    "storybook": "start-storybook -s ./dist -p 9010",
+    "build-storybook": "build-storybook -s ./dist"
   },
   "peerDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.13.12",
@@ -70,6 +80,7 @@
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "webpack-filter-warnings-plugin": "^1.2.1"
+    "webpack-filter-warnings-plugin": "^1.2.1",
+    "webpack-merge": "^5.8.0"
   }
 }
