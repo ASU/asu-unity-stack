@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-header",
-  "version": "1.3.14",
+  "version": "1.4.0",
   "description": "ASU Global Header",
   "main": "./dist/asuHeader.cjs.js",
   "browser": "./dist/asuHeader.umd.js",
@@ -10,10 +10,10 @@
   "license": "Unlicensed",
   "private": false,
   "files": [
-     "examples/*",
-     "dist/*",
-     "docs/*"
-   ],
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
