@@ -1,26 +1,50 @@
 import { Button, Pagination } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { FacultyAndStaffResults } from "./index.styles";
+import { searchEngine } from "../helpers/search";
+import { SearchResultsList } from "./index.styles";
 
-const ASUFacultyAndStaffResults = ({
-  children,
+const ASUSearchResultsList = ({
   searchTerm,
-  onPageChange,
-  totalResults,
   resultsPerPage,
-  currentPage,
   title,
   size,
   summary,
-  anonymized
+  engineName,
+  anonymized,
+  fill,
 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [results, setResults] = useState([]);
+  const [totalResults, setTotalResults] = useState(100);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    searchEngine(engineName, searchTerm, currentPage, resultsPerPage).then(
+      res => {
+        const resultsWithProps = res.results.map((profile, idx) => {
+          const newProps = {
+            ...profile.props,
+            ...{ size, fill: fill || false, key: idx },
+          };
+          return {
+            ...profile,
+            ...{ props: newProps },
+          };
+        });
+        setResults(resultsWithProps);
+        setTotalResults(res.page.total_results);
+        setIsLoading(false);
+      }
+    );
+  }, [searchTerm, currentPage]);
   const goToFaculty = () => 0;
 
   return (
-    <FacultyAndStaffResults>
-      {children.length > 0 && (
+    <SearchResultsList>
+      {results.length > 0 && (
         <div>
           <div
             className={
@@ -29,14 +53,14 @@ const ASUFacultyAndStaffResults = ({
           >
             {title}
           </div>
-          <div className={summary ? "summary" : ""}>{children}</div>
+          <div className={summary ? "summary" : ""}>{results}</div>
           {size !== "micro" && !summary && (
             <Pagination
               type="default"
               background="white"
               currentPage={currentPage}
               totalPages={Math.ceil(totalResults / resultsPerPage)}
-              onChange={(e, action) => onPageChange(action)}
+              onChange={(e, action) => setCurrentPage(action)}
             />
           )}
           {size !== "micro" && summary && (
@@ -51,7 +75,7 @@ const ASUFacultyAndStaffResults = ({
           )}
           {size === "micro" && (
             <div className="micro-options">
-              <span>{children.length} total results</span>
+              <span>{totalResults} total results</span>
               <Button
                 color="maroon"
                 label="See all results"
@@ -62,27 +86,22 @@ const ASUFacultyAndStaffResults = ({
           )}
         </div>
       )}
-      {children.length === 0 && searchTerm.length > 0 && (
+      {results.length === 0 && !isLoading && (
         <div className="results-title">Please try a different search term</div>
       )}
-    </FacultyAndStaffResults>
+    </SearchResultsList>
   );
 };
 
-ASUFacultyAndStaffResults.propTypes = {
-  children: PropTypes.oneOf(
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ).isRequired,
-  searchTerm: PropTypes.string.isRequired,
-  onPageChange: PropTypes.func,
-  totalResults: PropTypes.number,
+ASUSearchResultsList.propTypes = {
+  searchTerm: PropTypes.string,
   resultsPerPage: PropTypes.number,
-  currentPage: PropTypes.number,
   title: PropTypes.string,
   size: PropTypes.string,
   summary: PropTypes.bool,
+  engineName: PropTypes.string,
   anonymized: PropTypes.bool,
+  fill: PropTypes.bool,
 };
 
-export { ASUFacultyAndStaffResults };
+export { ASUSearchResultsList };

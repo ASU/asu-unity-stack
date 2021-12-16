@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { ASUSearchPage } from "./index";
+import { PreSearchMessage } from "./index";
 
 import {
   createComponent,
@@ -9,9 +9,9 @@ import {
 } from "../../../../bootstrap4-theme/helpers/wrapper";
 
 export default createComponent(
-  "App Webdir UI/Search Page",
+  "App Webdir UI/Pre Search Message",
   "Molecules",
   "Templates"
 );
 
-export const Default = createStory(<ASUSearchPage />);
+export const Default = createStory(<PreSearchMessage />);

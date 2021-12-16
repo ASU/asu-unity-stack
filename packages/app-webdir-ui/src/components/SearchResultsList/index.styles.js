@@ -1,7 +1,7 @@
 // @ts-check
 import styled from "styled-components";
 
-const FacultyAndStaffResults = styled.div`
+const SearchResultsList = styled.div`
   .summary {
     -webkit-mask-image: -webkit-gradient(
       linear,
@@ -57,4 +57,4 @@ const ProfileCardList = styled.div`
   }
 `;
 
-export { FacultyAndStaffResults, ProfileCardList };
+export { SearchResultsList, ProfileCardList };

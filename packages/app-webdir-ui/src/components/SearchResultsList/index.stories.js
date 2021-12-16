@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { ASUFacultyAndStaffResults } from "./index";
+import { SearchResultsList } from "./index";
 
 import {
   createComponent,
@@ -16,7 +16,7 @@ export default createComponent(
 );
 
 export const DefaultList = createStory(
-  <ASUFacultyAndStaffResults
+  <SearchResultsList
     profiles={getTestCards()}
     searchTerm="Sarah Hough"
   />

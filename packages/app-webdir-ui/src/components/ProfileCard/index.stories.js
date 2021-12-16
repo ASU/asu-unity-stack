@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { ProfileCardTemplate } from "./index";
+import { ProfileCard } from "./index";
 
 import {
   createComponent,
@@ -43,7 +43,7 @@ const largeArgs = {
 };
 
 export const Default = createStory(args => {
-  return <ProfileCardTemplate {...args} />;
+  return <ProfileCard {...args} />;
 });
 
 Default["args"] = {
@@ -52,7 +52,7 @@ Default["args"] = {
 };
 
 export const Small = createStory(args => {
-  return <ProfileCardTemplate {...args} />;
+  return <ProfileCard {...args} />;
 });
 
 Small["args"] = {
@@ -61,7 +61,7 @@ Small["args"] = {
 };
 
 export const Micro = createStory(args => {
-  return <ProfileCardTemplate {...args} />;
+  return <ProfileCard {...args} />;
 });
 
 Micro["args"] = {
@@ -70,7 +70,7 @@ Micro["args"] = {
 };
 
 export const Large = createStory(args => {
-  return <ProfileCardTemplate {...args} />;
+  return <ProfileCard {...args} />;
 });
 
 Large["args"] = {

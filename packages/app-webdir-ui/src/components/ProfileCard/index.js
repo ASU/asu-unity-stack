@@ -7,7 +7,9 @@ import { profileCardType } from "./models";
 const ProfileCard = ({ ...props }) => {
   return (
     <ProfileCardTemplate
-      className={`uds-person-profile uds-content-align ${props.size} ${props.fill ? "fill" : ""}`}
+      className={`uds-person-profile uds-content-align ${props.size} ${
+        props.fill ? "fill" : ""
+      }`}
     >
       <img className="profile-img" src={props.imgURL} alt={props.name} />
       <div className="person">

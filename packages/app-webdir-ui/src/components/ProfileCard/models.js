@@ -16,6 +16,7 @@ export const profileCardType = PropTypes.shape({
   twitterLink: PropTypes.string,
   size: PropTypes.string,
   fill: PropTypes.bool,
+  anonymized: PropTypes.bool,
 });
 
 export const resultsShape = PropTypes.shape({
