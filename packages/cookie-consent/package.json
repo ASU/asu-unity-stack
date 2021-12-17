@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/cookie-consent",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",
   "author": "Michael Samuelson",
