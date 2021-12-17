@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { NavControls, Tab, TabContent, TabHeader } from "./components";
+import { NavControls, TabContent, TabHeader } from "./components";
 
 export const Tab = ({ id, bgColor, selected, children }) => {
   return (
