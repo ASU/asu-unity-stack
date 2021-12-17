@@ -6,6 +6,12 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: none;
+    height: auto;
+    margin: inherit;
+    font-size: inherit;
+    color: inherit;
+    flex-direction: row;
   }
   .nav-list {
     display: flex;
@@ -17,8 +23,8 @@ const Wrapper = styled.nav`
       flex-direction: column;
       justify-content: flex-start;
       overflow-y: auto;
-      min-height: calc(100vh - 270px);
-      max-height: calc(100vh - 270px);
+      min-height: calc(100vh - 277px);
+      max-height: calc(100vh - 277px);
       > *:last-child {
         margin-bottom: 40px;
       }

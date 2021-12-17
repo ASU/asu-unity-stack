@@ -1,3 +1,3 @@
 export { NavControls } from "./NavControls";
-export { Tab } from "./Tab";
+export { TabHeader } from "./TabHeader";
 export { TabContent } from "./TabContent";

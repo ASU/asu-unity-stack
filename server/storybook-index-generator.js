@@ -190,41 +190,52 @@ module.exports = generateHTML = packages => `
 
   </main>
 
-  <footer role="contentinfo">
-    <!-- <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-
-          <div class="col-md" id="endorsed-logo">
-            <img src="./@asu-design-system/bootstrap4-theme/img/endorsed-logo/asu_universitytechoffice_horiz_white.png" alt="ASU University Technology Office Arizona State University."/>
-          </div>
-
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
-              <a class="nav-link" href="#"><span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span></a>
-              <a class="nav-link" href="#"><span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span></a>
-              <a class="nav-link" href="#"><span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span></a>
-              <a class="nav-link" href="#"><span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span></a>
-              <a class="nav-link" href="#"><span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span></a>
-            </nav>
-          </div>
-
-        </div>
-      </div>
-    </div> -->
-
+  <footer id="asu-footer" role="contentinfo">
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <img src="./@asu-design-system/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup@2x.png" alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020">
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+              >
+                <img
+                  src="./@asu-design-system/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
               <nav class="nav" aria-label="University Services">
-                <a class="nav-link" href="https://www.asu.edu/map/">Maps and Locations</a>
-                <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
-                <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
-                <a class="nav-link" href="https://www.asu.edu/contactasu/">Contact ASU</a>
-                <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/locations-maps"
+                >
+                  Maps and Locations
+                </a>
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/asujobs"
+                >
+                  Jobs
+                </a>
+                <a
+                  class="nav-link"
+                  href="https://isearch.asu.edu/"
+                >
+                  Directory
+                </a>
+                <a
+                  class="nav-link"
+                  href="https://www.asu.edu/about/contact"
+                >
+                  Contact ASU
+                </a>
+                <a
+                  class="nav-link"
+                  href="https://my.asu.edu/"
+                >
+                  My ASU
+                </a>
               </nav>
             </div>
           </div>
@@ -236,18 +247,45 @@ module.exports = generateHTML = packages => `
       <div class="container" id="footer-colophon">
         <div class="row">
           <div class="col">
-            <nav class="nav colophon" aria-label="University legal and compliance">
-              <a class="nav-link" href="https://www.asu.edu/copyright/">Copyright and trademark</a>
-              <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
-              <a class="nav-link" href="https://www.asu.edu/privacy/">Privacy</a>
-              <a class="nav-link" href="https://www.asu.edu/tou/">Terms of use</a>
-              <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
+            <nav
+              class="nav colophon"
+              aria-label="University Legal and Compliance"
+            >
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/copyright-trademark"
+              >
+                Copyright and Trademark
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/accessibility/"
+              >
+                Accessibility
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/privacy"
+              >
+                Privacy
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/terms-of-use"
+              >
+                Terms of Use
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/emergency/"
+              >
+                Emergency
+              </a>
             </nav>
           </div>
         </div>
       </div>
     </div>
-
   </footer>
 
   </body>

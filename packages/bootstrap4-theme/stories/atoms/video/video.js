@@ -1,4 +1,6 @@
-jQuery(function () {
+import { googleAnalytics } from '../../../src/js/googleAnalytics';
+
+export const initVideo = () => {
   function toggleOverlay(overlay) {
     overlay.fadeToggle('fast');
   }
@@ -27,4 +29,7 @@ jQuery(function () {
     toggleOverlay($(this));
     toggleVideo($(this).siblings('video').get(0));
   });
-});
+
+  // Init google analytics
+  googleAnalytics();
+};

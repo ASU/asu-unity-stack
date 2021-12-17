@@ -128,6 +128,7 @@ WithButtons.args = {
       href: "/",
       text: "CTA Button 1",
       color: "gold",
+      classes: "custom-class",
     },
     {
       text: "CTA Button 2",

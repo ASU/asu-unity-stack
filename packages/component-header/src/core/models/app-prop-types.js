@@ -26,6 +26,7 @@ const ButtonPropTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.oneOf(["gold", "maroon", "light", "dark"]),
   href: PropTypes.string.isRequired,
+  classes: PropTypes.string,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
 };
@@ -53,7 +54,9 @@ const HeaderPropTypes = {
   loggedIn: LoginPropTypes.loggedIn,
   userName: LoginPropTypes.userName,
   loginLink: LoginPropTypes.loginLink,
+  onLoginClick: PropTypes.func,
   logoutLink: LoginPropTypes.logoutLink,
+  onLogoutClick: PropTypes.func,
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,

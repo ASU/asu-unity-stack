@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-export const profileCardType = {
-  id: PropTypes.number,
+export const profileCardType = PropTypes.shape({
+  id: PropTypes.string,
   imgURL: PropTypes.string,
   name: PropTypes.string,
-  title: PropTypes.string,
+  titles: PropTypes.arrayOf(PropTypes.string),
   email: PropTypes.string,
   telephone: PropTypes.string,
   addressLink: PropTypes.string,
@@ -15,4 +15,43 @@ export const profileCardType = {
   linkedinLink: PropTypes.string,
   twitterLink: PropTypes.string,
   size: PropTypes.string,
-};
+});
+
+export const resultsShape = PropTypes.shape({
+  acres: PropTypes.shape({
+    raw: PropTypes.number,
+  }),
+  date_established: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  description: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  id: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  location: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  nps_link: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  square_km: PropTypes.shape({
+    raw: PropTypes.number,
+  }),
+  states: PropTypes.shape({
+    raw: PropTypes.arrayOf(PropTypes.string),
+  }),
+  title: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  visitors: PropTypes.shape({
+    raw: PropTypes.number,
+  }),
+  world_heritage_site: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+  _meta: PropTypes.shape({
+    raw: PropTypes.string,
+  }),
+});

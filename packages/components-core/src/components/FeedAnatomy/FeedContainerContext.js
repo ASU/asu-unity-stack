@@ -17,7 +17,7 @@ const FeedContext = createContext(null);
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
  *  dataSource: import("../../core/types/feed-types").DataSource
- *  maxItems: number
+ *  maxItems?: number
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filters: string) => object
  *  defaultProps: import("../../core/types/feed-types").FeedType
@@ -34,7 +34,7 @@ const FeedContainerProvider = ({
   renderBody,
   dataTransformer = item => item,
   dataFilter = item => item,
-  maxItems = 3,
+  maxItems,
 }) => {
   const [{ data: rawData, loading, error }, doFetching] = useFetch(); // Call the fetching hook
   const [feeds, setFeeds] = useState([]);
@@ -51,7 +51,7 @@ const FeedContainerProvider = ({
     const filteredData = transformedData?.filter(item =>
       dataFilter(item, pDataSource?.filters)
     );
-    setFeeds(filteredData?.slice(0, maxItems));
+    setFeeds(maxItems ? filteredData?.slice(0, maxItems) : filteredData);
   }, [rawData]);
 
   return (

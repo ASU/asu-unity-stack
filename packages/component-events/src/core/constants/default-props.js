@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("../models/types").FeedType} */
+/** @type {import("../types/events-types").FeedType} */
 
 const defaultProps = {
   header: {
@@ -10,12 +10,11 @@ const defaultProps = {
   ctaButton: {
     color: "gold",
     text: "Click to see more events",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
   },
   dataSource: {
     url: "https://asuevents.asu.edu/feed-json/",
   },
-  maxItems: 3,
 };
 
 export { defaultProps };

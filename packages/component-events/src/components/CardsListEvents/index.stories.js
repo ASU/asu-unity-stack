@@ -23,7 +23,7 @@ Default.args = {
   header: { color: "dark", text: "Events List" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
@@ -42,7 +42,7 @@ WithFilters.args = {
   header: { color: "dark", text: "Events List Filtered" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
@@ -57,20 +57,20 @@ WithFilters.parameters = {
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const MaxItems = Template.bind({});
-MaxItems.args = {
+export const WithMaxItems = Template.bind({});
+WithMaxItems.args = {
   header: { color: "dark", text: "Events List" },
   ctaButton: {
     color: "gold",
-    url: "https://news.asu.edu",
+    url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-  maxItems: 10,
+  maxItems: 4,
 };
-MaxItems.parameters = {
+WithMaxItems.parameters = {
   mockData: createMockParam(),
 };
 

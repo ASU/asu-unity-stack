@@ -11,7 +11,7 @@ const ListViewWrapper = styled.ul`
     height: 235px;
     .card-img-top {
       width: 235px;
-      height: 235px;
+      height: auto;
       border-radius: 0 !important;
     }
     .card-event-icons {

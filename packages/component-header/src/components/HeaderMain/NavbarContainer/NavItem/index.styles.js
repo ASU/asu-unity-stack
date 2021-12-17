@@ -8,7 +8,6 @@ const NavItemWrapper = styled.li`
     width: calc(100% + 24px);
   }
   > a {
-    text-transform: capitalize;
     display: inline-block;
     padding: 0.5rem 0.75rem;
     line-height: 1rem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Accordions', 'Atoms', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const FoldableCardDefaultOpen = createStory(
   <div class="card card-foldable">
@@ -13,6 +14,12 @@ export const FoldableCardDefaultOpen = createStory(
           role="button"
           aria-expanded="true"
           aria-controls="example-content-3"
+          data-ga="This card starts off in an unfolded state."
+          data-ga-name="onclick"
+          data-ga-event="collapse"
+          data-ga-type="click"
+          data-ga-region="main content"
+          data-ga-section="default"
         >
           This card starts off in an unfolded state.
           <span class="fas fa-chevron-up"></span>
@@ -41,7 +48,8 @@ export const FoldableCardDefaultOpen = createStory(
         tempor
       </p>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 FoldableCardDefaultOpen.args = {
   template: 1,
@@ -61,6 +69,12 @@ export const ColorAccents = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
+            data-ga="Accordion gold color (default)."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             Accordion gold color (default).
             <span class="fas fa-chevron-up"></span>
@@ -104,6 +118,12 @@ export const ColorAccents = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyTwo"
+            data-ga="Accordion maroon color."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             Accordion maroon color.
             <span class="fas fa-chevron-up"></span>
@@ -149,6 +169,12 @@ export const ColorAccents = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyThree"
+            data-ga="Accordion gray color."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             Accordion gray color.
             <span class="fas fa-chevron-up"></span>
@@ -191,6 +217,12 @@ export const ColorAccents = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyFour"
+            data-ga="Accordion dark color."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             Accordion dark color.
             <span class="fas fa-chevron-up"></span>
@@ -223,7 +255,7 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
   </div>,
-  {}
+  { initFunc }
 );
 
 export const IncludedIcons = createStory(
@@ -240,6 +272,12 @@ export const IncludedIcons = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
+            data-ga="Accordion with icon and gold color."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             <span class="card-icon">
               <i class="fas fa-dog mr-2" role="img" aria-label="..."></i>
@@ -286,6 +324,12 @@ export const IncludedIcons = createStory(
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyTwo"
+            data-ga="Accordion with icon and maroon color."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
           >
             <span class="card-icon">
               <i class="fas fa-cat mr-2" role="img" aria-label="..."></i>
@@ -323,7 +367,7 @@ export const IncludedIcons = createStory(
     </div>
     {/* end .card */}
   </div>,
-  {}
+  { initFunc }
 );
 
 export const DisableFold = createStory(
@@ -341,6 +385,12 @@ export const DisableFold = createStory(
                 role="button"
                 aria-expanded="false"
                 aria-controls="example-content-2"
+                data-ga="This will become an foldable card at the lg breakpoint"
+                data-ga-name="onclick"
+                data-ga-event="collapse"
+                data-ga-type="click"
+                data-ga-region="main content"
+                data-ga-section="default"
               >
                 This will become an foldable card at the lg breakpoint.
                 <span class="fas fa-chevron-up"></span>
@@ -381,6 +431,12 @@ export const DisableFold = createStory(
                 role="button"
                 aria-expanded="false"
                 aria-controls="example-content-3"
+                data-ga="Collapses to an foldable card at the xl breakpoint"
+                data-ga-name="onclick"
+                data-ga-event="collapse"
+                data-ga-type="click"
+                data-ga-region="main content"
+                data-ga-section="default"
               >
                 Collapses to an foldable card at the xl breakpoint.
                 <span class="fas fa-chevron-up"></span>
@@ -408,5 +464,5 @@ export const DisableFold = createStory(
       </div>
     </div>
   </div>,
-  {}
+  { initFunc }
 );

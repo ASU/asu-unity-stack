@@ -117,6 +117,7 @@ export const Pagination = ({
           page =>
             page && (
               <PageItem
+                dataId="page-number"
                 isClickeable
                 key={page}
                 selectedPage={selectedPage === page}
@@ -138,7 +139,7 @@ export const Pagination = ({
   };
 
   return (
-    <nav aria-label="Pagination">
+    <nav aria-label="Pagination" data-testid="pagination">
       <ul
         className={classNames(
           "pagination",
@@ -155,6 +156,7 @@ export const Pagination = ({
       >
         {!isSmallDevice && showFirstButton && (
           <PageItem
+            dataId="first"
             isClickeable
             disabled={selectedPage === 1}
             onClick={e => handleChangePage(e, "first")}
@@ -163,6 +165,7 @@ export const Pagination = ({
           </PageItem>
         )}
         <PageItem
+          dataId="prev"
           isClickeable
           disabled={selectedPage === 1}
           pageLinkIcon={showArrowIcons}
@@ -172,6 +175,7 @@ export const Pagination = ({
         </PageItem>
         {renderPages()}
         <PageItem
+          dataId="next"
           isClickeable
           disabled={selectedPage === totalPages}
           pageLinkIcon={showArrowIcons}
@@ -181,6 +185,7 @@ export const Pagination = ({
         </PageItem>
         {!isSmallDevice && showLastButton && (
           <PageItem
+            dataId="last"
             isClickeable
             disabled={selectedPage === totalPages}
             onClick={e => handleChangePage(e, "last")}

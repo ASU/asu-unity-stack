@@ -1,40 +1,39 @@
 import { Button } from "@asu-design-system/components-core";
-import React from "react";
+import { SearchProvider, withSearch } from "@elastic/react-search-ui";
+import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import { TabbedPanels } from "../../../../components-core";
-import { getTestCards } from "../assets/test-data";
+import { TabbedPanels, Tab } from "../../../../components-core";
 import { ASUFacultyAndStaffResults } from "../FacultyAndStaffResults/index";
+import { dataConverter } from "../helpers/dataConverter";
+import { resultsShape } from "../ProfileCard/models";
 import { SearchPage } from "./index.styles";
 
-export const pageTabs = [
-  {
-    id: "all",
-    title: "All ASU Search",
-    content: <div>Search</div>,
-  },
-  {
-    id: "subdomain",
-    title: "<<Subdomain>>",
-    content: <div>Subdomain</div>,
-  },
-  {
-    id: "staff",
-    title: "Faculty and Staff",
-    content: (
-      <ASUFacultyAndStaffResults
-        profiles={getTestCards()}
-        searchTerm="Sarah Hough"
-      />
-    ),
-  },
-  {
-    id: "students",
-    title: "Students",
-    content: <div>Students</div>,
-  },
-];
+const connector = new AppSearchAPIConnector({
+  searchKey: "search-371auk61r2bwqtdzocdgutmg",
+  engineName: "search-ui-examples",
+  hostIdentifier: "host-2376rb",
+  endpointBase: "",
+});
 
-const ASUSearchPage = () => {
+function ASUSearchPageComponent({
+  searchTerm,
+  setSearchTerm,
+  results,
+  setCurrent,
+  totalResults,
+  resultsPerPage,
+  isLoading,
+  current,
+}) {
+  const [term, setTerm] = useState("");
+  const doSearch = () => {
+    if (term && term.length > 0) {
+      setSearchTerm(term);
+    }
+  };
+
   return (
     <SearchPage>
       <h1>
@@ -45,15 +44,95 @@ const ASUSearchPage = () => {
           <input
             type="text"
             className="form-control"
-            id="exampleDefaultInput"
-            placeholder="Helper text"
+            id="search-input"
+            placeholder="Search"
+            value={term}
+            onChange={e => setTerm(e.target.value)}
           />
-          <Button color="maroon" icon={["fas", "search"]} label="Search" />
+          <Button
+            color="maroon"
+            icon={["fas", "search"]}
+            label="Search"
+            onClick={() => doSearch()}
+          />
         </div>
       </form>
-      <TabbedPanels panels={pageTabs} />
+      {searchTerm.length > 0 && (
+        <TabbedPanels>
+          <Tab id="all" title="All ASU Search">
+            <div>Search</div>
+          </Tab>
+          <Tab id="subdomain" title="<<Subdomain>>">
+            <div>Subdomain</div>
+          </Tab>
+          <Tab id="staff" title="Faculty and Staff">
+            {isLoading && <div>Loading...</div>}
+            {!isLoading && (
+              <ASUFacultyAndStaffResults
+                profiles={dataConverter(results)}
+                searchTerm={searchTerm}
+                onPageChange={setCurrent}
+                currentPage={current}
+                totalResults={totalResults}
+                resultsPerPage={resultsPerPage}
+              />
+            )}
+          </Tab>
+          <Tab id="students" title="Students">
+            <div>Students</div>
+          </Tab>
+        </TabbedPanels>
+      )}
     </SearchPage>
   );
+}
+
+ASUSearchPageComponent.propTypes = {
+  searchTerm: PropTypes.string,
+  setSearchTerm: PropTypes.func,
+  results: PropTypes.arrayOf(resultsShape),
+  setCurrent: PropTypes.func,
+  totalResults: PropTypes.number,
+  resultsPerPage: PropTypes.number,
+  isLoading: PropTypes.bool,
+  current: PropTypes.number,
 };
 
+const PlusSearch = withSearch(
+  ({
+    searchTerm,
+    setSearchTerm,
+    results,
+    setCurrent,
+    totalResults,
+    resultsPerPage,
+    isLoading,
+    current,
+  }) => ({
+    searchTerm,
+    setSearchTerm,
+    results,
+    setCurrent,
+    totalResults,
+    resultsPerPage,
+    isLoading,
+    current,
+  })
+)(ASUSearchPageComponent);
+
+const ASUSearchPage = () => {
+  return (
+    <SearchProvider
+      config={{
+        /* debug: true, */
+        apiConnector: connector,
+        initialState: {
+          resultsPerPage: 6,
+        },
+      }}
+    >
+      <PlusSearch />
+    </SearchProvider>
+  );
+};
 export { ASUSearchPage };

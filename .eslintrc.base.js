@@ -1,6 +1,8 @@
 module.exports = {
   globals: {
     fetchMock: true,
+    cy: true,
+    Cypress: true,
   },
   settings: {
     react: {

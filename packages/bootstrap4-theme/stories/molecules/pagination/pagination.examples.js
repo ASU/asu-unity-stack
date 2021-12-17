@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Pagination', 'Molecules', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
 
 export const DisabledAndActiveStatesComponent = createStory(
   <nav aria-label="...">
@@ -16,17 +17,47 @@ export const DisabledAndActiveStatesComponent = createStory(
         </a>
       </li>
       <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 1"
+        >
           1<span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 2"
+        >
           2
         </a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 3"
+        >
           3
         </a>
       </li>
@@ -36,7 +67,8 @@ export const DisabledAndActiveStatesComponent = createStory(
         </a>
       </li>
     </ul>
-  </nav>
+  </nav>,
+  { initFunc }
 );
 
 export const LargeNumbersComponent = createStory(
@@ -56,18 +88,48 @@ export const LargeNumbersComponent = createStory(
         <span class="page-link">...</span>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 40"
+        >
           40
         </a>
       </li>
       <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 41"
+        >
           41
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">
+        <a
+          class="page-link"
+          href="#"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="pagination"
+          data-ga-region="main content"
+          data-ga-section="pagination title"
+          data-ga="page 42"
+        >
           42
         </a>
       </li>
@@ -85,5 +147,6 @@ export const LargeNumbersComponent = createStory(
         </a>
       </li>
     </ul>
-  </nav>
+  </nav>,
+  { initFunc }
 );

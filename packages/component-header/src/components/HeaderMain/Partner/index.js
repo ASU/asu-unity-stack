@@ -1,18 +1,22 @@
+/* eslint-disable import/no-extraneous-dependencies */
+// @ts-check
+import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
 
-// @ts-ignore
-import asuVertLogo from "../../../assets/images/arizona-state-university-logo-vertical.png";
-// @ts-ignore
-import asuHorizLogo from "../../../assets/images/arizona-state-university-logo.png";
-import starbucksLogo from "../../../assets/images/asu-starbucks.png";
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { PartnerLogosWrapper } from "./index.styles";
+
+const currentScriptPath = getCurrentScriptPath();
+const asuVertLogo = `${currentScriptPath}/assets/img/arizona-state-university-logo-vertical.png`;
+const asuHorizLogo = `${currentScriptPath}/assets/img/arizona-state-university-logo.png`;
+const starbucksLogo = `${currentScriptPath}/assets/img/asu-starbucks.png`;
 
 const Partner = () => {
   const { partnerLogo, logo: asuLogo, breakpoint } = useAppContext();
 
   return (
+    // @ts-ignore
     <PartnerLogosWrapper breakpoint={breakpoint} data-testid="partner">
       <a
         href={partnerLogo?.brandLink ?? "https://starbucks.asu.edu/"}

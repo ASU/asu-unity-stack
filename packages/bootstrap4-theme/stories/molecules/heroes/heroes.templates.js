@@ -4,6 +4,7 @@ import {
   createStory,
   layoutNames,
 } from '../../../helpers/wrapper.js';
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
 
 const extraOptions = {
   size: {
@@ -43,13 +44,24 @@ export const Hero = createStory(
         <h1>
           <span class="highlight-black">By whom it includes</span>
         </h1>
-        <a href="#" class="btn btn-maroon">
+        <a
+          href="#"
+          class="btn btn-maroon"
+          data-ga="Call to action"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-secion="the new american university"
+        >
           Call to Action
         </a>
       </div>
     );
   },
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -77,10 +89,30 @@ export const HeroWithButtonRow = createStory(
           </p>
         </div>
         <div class="btn-row">
-          <a href="#" class="btn btn-default btn-gold">
+          <a
+            href="#"
+            class="btn btn-default btn-gold"
+            data-ga="Read more"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-section="gettysburg address"
+          >
             Read more
           </a>
-          <a href="#" class="btn btn-default btn-gold">
+          <a
+            href="#"
+            class="btn btn-default btn-gold"
+            data-ga="More quotes"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-section="gettysburg address"
+          >
             More quotes
           </a>
         </div>
@@ -88,6 +120,7 @@ export const HeroWithButtonRow = createStory(
     );
   },
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -123,6 +156,7 @@ export const StoryHero = createStory(
     </div>
   </section>,
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );

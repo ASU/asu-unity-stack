@@ -1,6 +1,5 @@
 const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
-let devConfig = require("../webpack/webpack.dev");
+const common = require("../webpack/webpack.common");
 
 module.exports = {
   addons: [
@@ -15,8 +14,7 @@ module.exports = {
       resolve: {
         extensions: [".js", ".jsx"],
         alias: {
-          // this is needed to compile components-core components which inject css classes
-          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
+          ...common.resolve.alias,
         },
       },
     };

@@ -1,4 +1,5 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
@@ -7,7 +8,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    Header: "./index.js",
+    asuHeader: "./index.js",
   },
   module: {
     rules: [
@@ -59,9 +60,13 @@ const common = {
     extensions: [".js", ".jsx"],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // TODO: with multiple outputs the cleanup needs to be externally.
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.join(PROJECT_DIR, "src/assets"), to: "assets" }],
     }),
   ],
 };

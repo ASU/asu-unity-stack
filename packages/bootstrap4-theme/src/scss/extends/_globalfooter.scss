@@ -2,11 +2,12 @@
 Footer - Table of Contents
 
 1. Component Level Mixins
-2. Wrapper Base Colors
-3. Endorsed Footer (#endorsed-footer)
-4. Footer Columns (#footer-columns)
-5. Footer Innovation (#footer-innovation)
-6. Footer Colophon (#footer-colophon)
+2. Global Footer Rules
+3. Wrapper Base Colors
+4. Endorsed Footer (#endorsed-footer)
+5. Footer Columns (#footer-columns)
+6. Footer Innovation (#footer-innovation)
+7. Footer Colophon (#footer-colophon)
 -------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
@@ -44,7 +45,14 @@ Footer - Table of Contents
 }
 
 /*------------------------------------------------------------------
-2. Wrapper Base Colors
+2. Global Footer Rules
+--------------------------------------------------------------------*/
+
+footer {
+}
+
+/*------------------------------------------------------------------
+3. Wrapper Base Colors
 --------------------------------------------------------------------*/
 
 #wrapper-endorsed-footer,
@@ -85,7 +93,7 @@ Footer - Table of Contents
 }
 
 /*------------------------------------------------------------------
-3. Endorsed Footer (#endorsed-footer)
+4. Endorsed Footer (#endorsed-footer)
 --------------------------------------------------------------------*/
 
 // #endorsed-footer, mobile first design
@@ -107,7 +115,6 @@ Footer - Table of Contents
 
 #endorsed-footer {
   #social-media {
-
     .nav {
       padding-bottom: $uds-size-spacing-3;
     }
@@ -124,7 +131,7 @@ Footer - Table of Contents
 // #endorsed-footer, only on mobile
 @include media-breakpoint-down(sm) {
   #endorsed-footer #social-media .nav-link:first-child {
-    padding-left:0;
+    padding-left: 0;
   }
 }
 
@@ -146,19 +153,18 @@ Footer - Table of Contents
     justify-content: flex-end;
 
     .nav-link:last-child {
-      padding-right:0;
+      padding-right: 0;
     }
   }
 }
 
 /*------------------------------------------------------------------
-4. Footer Columns (#footer-columns)
+5. Footer Columns (#footer-columns)
 --------------------------------------------------------------------*/
 
 // #footer-columns, mobile first design
 
 #footer-columns {
-
   #info-column {
     .contact-link {
       margin-bottom: $uds-size-spacing-4;
@@ -184,7 +190,7 @@ Footer - Table of Contents
     }
 
     .card-foldable {
-      margin:0;
+      margin: 0;
     }
 
     .card-header {
@@ -254,7 +260,7 @@ Footer - Table of Contents
 }
 
 /*------------------------------------------------------------------
-5. Footer Innovation (#footer-innovation)
+6. Footer Innovation (#footer-innovation)
 --------------------------------------------------------------------*/
 
 // #footer-innovtion, uses desktop first design for accessibility reasons.
@@ -266,7 +272,7 @@ Footer - Table of Contents
     font-weight: 700;
     .img-link {
       order: 2;
-      margin-right:0;
+      margin-right: 0;
       transform: translate(1.5rem, 0);
       img {
         height: 100px;
@@ -282,7 +288,6 @@ Footer - Table of Contents
 
 @include media-breakpoint-down(md) {
   #footer-innovation {
-
     .footer-innovation-links {
       flex-direction: column;
       padding: $uds-size-spacing-1 0 $uds-size-spacing-1 0;
@@ -301,7 +306,7 @@ Footer - Table of Contents
 }
 
 /*------------------------------------------------------------------
-6. Footer Colophon (#footer-colophon)
+7. Footer Colophon (#footer-colophon)
 --------------------------------------------------------------------*/
 
 // #footer-colophon, uses desktop first design to mirror #footer-innovation

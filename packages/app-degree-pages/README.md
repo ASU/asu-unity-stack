@@ -207,6 +207,10 @@ yarn build
 # run tests
 yarn test
 
+# run e2e tests
+yarn storybbok
+yarn e2e
+
 # it generates the document `docs/README.props.md`
 yarn docs
 
@@ -436,6 +440,9 @@ All the requirements for version 1 of this component were covered, further enhan
   - [ISSUE with replaceall-is-not-a-function](https://stackoverflow.com/questions/65295584/jest-typeerror-replaceall-is-not-a-function)
   -[Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
 - [Type Checking JavaScript Files](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html)
-  - [JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
-- [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)
+- [Cypress docs](https://docs.cypress.io/)
+  - [Cypress Jest adapter](https://github.com/phongnd39/cypress-jest-adapter)
+  - [Cypress intellisense](https://github.com/cypress-io/cypress-example-todomvc#cypress-intellisense)
+- [JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
+  - [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)
   - [JSDoc @template: Generics](https://github.com/microsoft/TypeScript/issues/27387)
