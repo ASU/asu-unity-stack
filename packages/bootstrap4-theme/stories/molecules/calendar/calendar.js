@@ -1,4 +1,10 @@
 export const initCalendar = function () {
+  const pushGAEvent = (event) => {
+    const { dataLayer } = window;
+    console.log(event);
+    if (dataLayer) dataLayer.push(event);
+  };
+
   const months = [
     'January',
     'February',
@@ -114,8 +120,32 @@ export const initCalendar = function () {
         </div>
       </div>
       <div class="calendar-nav">
-        <button id="prev-month" aria-label="Previous month"><span class="fas fa-angle-left"></span></button>
-        <button id="next-month" aria-label="Next month"><span class="fas fa-angle-right"></span></button>
+        <button
+          id="prev-month"
+          aria-label="Previous month"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="carousel"
+          data-ga-region="main content"
+          data-ga-section="calendar"
+          data-ga="left chevron"
+        >
+          <span class="fas fa-angle-left"></span>
+        </button>
+        <button
+          id="next-month"
+          aria-label="Next month"
+          data-ga-event="select"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="carousel"
+          data-ga-region="main content"
+          data-ga-section="calendar"
+          data-ga="right chevron"
+        >
+          <span class="fas fa-angle-right"></span>
+        </button>
       </div>
   `;
   };
@@ -134,6 +164,26 @@ export const initCalendar = function () {
     if (ev.target.id === 'next-month') {
       showCalendar(1);
     }
+
+    const name = ev.target.getAttribute('data-ga-name');
+    const event = ev.target.getAttribute('data-ga-event');
+    const action = ev.target.getAttribute('data-ga-action');
+    const type = ev.target.getAttribute('data-ga-type');
+    const section = ev.target.getAttribute('data-ga-section');
+    const region = ev.target.getAttribute('data-ga-region');
+    const text = ev.target.getAttribute('data-ga');
+    const component = ev.target.getAttribute('data-ga-component');
+
+    pushGAEvent({
+      name: name ? name.toLowerCase() : '',
+      event: event ? event.toLowerCase() : '',
+      action: action ? action.toLowerCase() : '',
+      type: type ? type.toLowerCase() : '',
+      section: section ? section.toLowerCase() : '',
+      region: region ? region.toLowerCase() : '',
+      text: text ? text.toLowerCase() : '',
+      component: component ? component.toLowerCase() : '',
+    });
   });
 
   showCalendar(0);

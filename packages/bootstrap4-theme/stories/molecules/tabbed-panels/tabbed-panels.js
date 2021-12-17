@@ -1,3 +1,5 @@
+import { googleAnalytics } from '../../../src/js/googleAnalytics';
+
 export const initTabs = function () {
   'use strict';
   jQuery(function () {
@@ -86,4 +88,7 @@ export const initTabs = function () {
 
     setControlVisibility(clicked, scrollOffset);
   };
+
+  // Init goolge analytics
+  googleAnalytics();
 };

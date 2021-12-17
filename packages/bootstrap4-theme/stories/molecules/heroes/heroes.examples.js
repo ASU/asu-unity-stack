@@ -5,6 +5,7 @@ import {
   layoutNames,
 } from '../../../helpers/wrapper.js';
 export default createComponent('Heroes', 'Molecules', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
@@ -24,15 +25,36 @@ export const HeroMedium = createStory(
       </p>
     </div>
     <div class="btn-row">
-      <a href="#" class="btn btn-default btn-gold">
+      <a
+        href="#"
+        class="btn btn-default btn-gold"
+        data-ga="read more"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
         Read more
       </a>
-      <a href="#" class="btn btn-default btn-gold">
+      <a
+        href="#"
+        class="btn btn-default btn-gold"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
         More quotes
       </a>
     </div>
   </div>,
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -59,11 +81,22 @@ export const HeroLarge = createStory(
         our most popular event, Mass Ascension.
       </p>
     </div>
-    <a href="#" class="btn btn-maroon">
+    <a
+      href="#"
+      class="btn btn-maroon"
+      data-ga="get tickets"
+      data-ga-name="onclick"
+      data-ga-event="link"
+      data-ga-action="click"
+      data-ga-type="internal link"
+      data-ga-region="main content"
+      data-ga-section="mass ascension"
+    >
       Get tickets
     </a>
   </div>,
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -138,6 +171,7 @@ export const StoryHeroLarge = createStory(
     </div>
   </div>,
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
