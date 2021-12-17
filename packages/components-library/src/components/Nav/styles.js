@@ -325,7 +325,7 @@ const dropdownContainerStyles = breakpoint => css`
       }
 
       h3 {
-        padding-left: 0.3rem;
+        padding-left: 1rem;
       }
     }
 
@@ -609,7 +609,7 @@ const navStyles = breakpoint => css`
   nav.header-nav {
     ${componentStyles(breakpoint)}
     @media (max-width: ${breakpoint}) {
-      min-height: calc(100vh - 270px);
+      min-height: calc(100vh - 280px);
       > *:last-child {
         margin-bottom: 40px;
       }
