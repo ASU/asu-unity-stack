@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import { trackGAEvent } from "../../../../core/services/google-analytics";
+
 const Section = styled.div`
   label[for="search-field"] {
     margin-bottom: 0;
@@ -34,6 +36,16 @@ const SearchBar = ({ value, onChange, onSearch }) => {
   let timeoutId;
   useEffect(() => () => clearTimeout(timeoutId), []);
 
+  const trackSearchEvent = text => {
+    trackGAEvent({
+      event: "search",
+      action: "type",
+      name: "onenter",
+      type: "search degree programs",
+      text,
+    });
+  };
+
   return (
     <Section
       className="container mt-5"
@@ -63,7 +75,10 @@ const SearchBar = ({ value, onChange, onSearch }) => {
                 type="text"
                 className="form-control"
                 placeholder="Search degree programs"
-                onChange={e => onChange(e.target.value)}
+                onChange={e => {
+                  onChange(e.target.value);
+                  trackSearchEvent(e.target.value);
+                }}
               />
             </div>
 

@@ -5,6 +5,16 @@ import React from "react";
 import styled from "styled-components";
 
 import { linkPropShape, progDetailSectionIds } from "../../../../core/models";
+import { trackGAEvent } from "../../../../core/services/google-analytics";
+
+const defaultGAEvent = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "main content",
+  section: "Program contact information",
+};
 
 const ListContainer = styled.ul`
   list-style: none;
@@ -73,7 +83,14 @@ function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
               className="c-icon fas icon-small fa-map-marker-alt"
               title="Department  Address"
             />
-            <a href={department.url}>{department.text}</a>
+            <a
+              href={department.url}
+              onClick={() =>
+                trackGAEvent({ ...defaultGAEvent, text: department.text })
+              }
+            >
+              {department.text}
+            </a>
           </div>
         </li>
         <li>
@@ -81,11 +98,23 @@ function ProgramContactInfo({ department, asuOfficeLoc, email, phone }) {
         </li>
         <li>
           <i className="c-icon fas icon-small fa-envelope" title="Email" />
-          <a href={`mailto:${email.url || email.text}`}>{email.text}</a>
+          <a
+            href={`mailto:${email.url || email.text}`}
+            onClick={() =>
+              trackGAEvent({ ...defaultGAEvent, text: email.text })
+            }
+          >
+            {email.text}
+          </a>
         </li>
         <li>
           <i className="c-icon fas icon-small fa-phone" title="Phone" />
-          <a href={`tel:${phone}`}>{phone}</a>
+          <a
+            href={`tel:${phone}`}
+            onClick={() => trackGAEvent({ ...defaultGAEvent, text: phone })}
+          >
+            {phone}
+          </a>
         </li>
       </ListContainer>
     </section>

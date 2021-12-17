@@ -6,7 +6,17 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { RfiSelect } from "../controls";
+
+const defaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  region: "main content",
+  section: "request information",
+  component: "step 1 of 3",
+};
 
 // Helpers
 
@@ -401,6 +411,13 @@ const ProgramInterest = props => {
             options={campusOptions}
             requiredIcon
             required
+            onBlur={e =>
+              trackGAEvent({
+                ...defaultGAEvent,
+                type: "Which applies to you?",
+                text: e.target.selectedOptions[0].innerText,
+              })
+            }
           />
         )
       }
@@ -417,6 +434,13 @@ const ProgramInterest = props => {
             options={studentTypeOptions}
             requiredIcon
             required
+            onBlur={e =>
+              trackGAEvent({
+                ...defaultGAEvent,
+                type: "Select your student status",
+                text: e.target.selectedOptions[0].innerText,
+              })
+            }
           />
         )
       }
@@ -430,6 +454,13 @@ const ProgramInterest = props => {
             options={areaInterestOptions}
             requiredIcon
             required
+            onBlur={e =>
+              trackGAEvent({
+                ...defaultGAEvent,
+                type: "Area of interest",
+                text: e.target.selectedOptions[0].innerText,
+              })
+            }
           />
         )
       }
@@ -443,6 +474,13 @@ const ProgramInterest = props => {
           !props.programOfInterestOptional || values.Campus === "ONLNE"
         }
         required={!props.programOfInterestOptional || values.Campus === "ONLNE"}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultGAEvent,
+            type: "Program of interest",
+            text: e.target.selectedOptions[0].innerText,
+          })
+        }
       />
     </>
   );
