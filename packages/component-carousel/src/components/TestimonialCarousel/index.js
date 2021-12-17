@@ -1,5 +1,5 @@
 // @ts-check
-import { Testimonial } from "@asu-design-system/components-core/src/components/Testimonial";
+import { Testimonial } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 

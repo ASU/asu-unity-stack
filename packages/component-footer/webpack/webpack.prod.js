@@ -7,8 +7,7 @@ const common = require("./webpack.common");
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
 // production bundle
-const umdConfig = {
-  ...common,
+const umdConfig = merge(common, {
   mode: "production",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
@@ -48,7 +47,7 @@ const umdConfig = {
     "react": "React",
     "react-dom": "ReactDOM",
   },
-};
+});
 
 const cjsConfig = merge(common, {
   mode: "production",

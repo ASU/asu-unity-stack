@@ -1,5 +1,5 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core/src/components/Card";
+import { Card } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -19,7 +19,7 @@ import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**
  * @param {CardItem} props
- * @param {string} cardType
+ * @param {"default" | "degree" | "event" | "news" | "story"} cardType
  * @param {"stack" | "inline"} cardEventFormat
  * @param {boolean} cardHorizontal
  * @returns {CarouselItem}

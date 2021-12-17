@@ -42,7 +42,8 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",

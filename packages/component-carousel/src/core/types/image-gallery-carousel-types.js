@@ -12,7 +12,7 @@
 
 /**
  * @typedef {Object} ImageGalleryCarouselType
- * @property {Array.<ImageCarouselItem>} imageItems
+ * @property {Array.<ImageGalleryCarouselItem>} imageItems
  * @property {string} [width]
  * @property {string} [maxWidth]
  * @property {boolean} [hasContent]

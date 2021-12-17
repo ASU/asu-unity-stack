@@ -4,6 +4,7 @@ const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
+
 const umdConfig = merge(common, {
   mode: "production",
   output: {
@@ -58,4 +59,3 @@ const esModuleConfig = merge(common, {
 });
 
 module.exports = [umdConfig, cjsConfig, esModuleConfig];
-

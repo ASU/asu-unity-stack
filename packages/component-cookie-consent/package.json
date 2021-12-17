@@ -2,31 +2,41 @@
   "name": "@asu-design-system/component-cookie-consent",
   "version": "1.1.0",
   "description": "ASU Cookie Consent",
-  "main": "src/index.js",
+  "main": "./dist/asuCookieConsent.cjs.js",
+  "browser": "./dist/asuCookieConsent.umd.js",
+  "module": "./dist/asuCookieConsent.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
   "license": "Unlicensed",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/component-cookie-consent"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9020",
     "build-storybook": "build-storybook -s ./dist",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/component-cookie-consent"
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.13.12",
@@ -76,6 +86,7 @@
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "webpack-filter-warnings-plugin": "^1.2.1"
+    "webpack-filter-warnings-plugin": "^1.2.1",
+    "webpack-merge": "^5.8.0"
   }
 }

@@ -2,19 +2,35 @@
   "name": "@asu-design-system/app-rfi",
   "version": "1.4.0",
   "description": "ASU Request For Information (RFI) form",
+  "main": "./dist/appRfi.cjs.js",
+  "browser": "./dist/appRfi.umd.js",
+  "module": "./dist/appRfi.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Michael Samuelson <mlsamuel@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "UNLICENSED",
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/app-rfi"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "storybook": "start-storybook -s ./dist -p 6006",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
@@ -28,9 +44,11 @@
   "devDependencies": {
     "@asu-design-system/bootstrap4-theme": "latest",
     "@babel/core": "^7.13.14",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/eslint-parser": "^7.13.14",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-transform-runtime": "^7.13.15",
     "@storybook/addon-actions": "^6.2.3",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.3",
@@ -56,7 +74,8 @@
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
     "style-loader": "^2.0.0",
-    "copy-webpack-plugin": "^9.0.1"
+    "copy-webpack-plugin": "^9.0.1",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "@asu-design-system/components-core": "^1.0.0",
