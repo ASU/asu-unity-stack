@@ -3,8 +3,17 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { createRange } from "../../core/utils/numbers";
 import { PageItem } from "./PageItem";
+
+const defaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  type: "pagination",
+  region: "main content",
+};
 
 /**
  * @typedef {import('../../core/types/shared-types').PaginationProps} PaginationProps
@@ -71,6 +80,10 @@ export const Pagination = ({
   );
   // end small device
 
+  const trackEvent = page => {
+    trackGAEvent({ ...defaultGAEvent, text: `page ${page}` });
+  };
+
   const handleChangePage = (e, page) => {
     const actions = {
       first: 1,
@@ -80,7 +93,7 @@ export const Pagination = ({
     };
     const action = actions[page] ? actions[page] : page;
     setSelectedPage(action);
-    if (onChange) onChange(e, action);
+    onChange?.(e, action);
   };
 
   const renderPages = () => {
@@ -108,7 +121,10 @@ export const Pagination = ({
                 isClickeable
                 key={page}
                 selectedPage={selectedPage === page}
-                onClick={e => handleChangePage(e, page)}
+                onClick={e => {
+                  trackEvent(page);
+                  handleChangePage(e, page);
+                }}
               >
                 {page}
               </PageItem>

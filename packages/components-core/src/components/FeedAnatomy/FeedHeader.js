@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import {
   feedComponentShape,
   feedCtaButtonShape,
@@ -43,7 +44,19 @@ const FeedHeader = ({
         <h2 className={`text-${header.color}`}>{header.text}</h2>
       </div>
       <ButtonColumn className="col-sm-12 col-md-3">
-        <a className={`btn btn-${ctaButton.color}`} href={ctaButton.url}>
+        <a
+          className={`btn btn-${ctaButton.color}`}
+          href={ctaButton.url}
+          onClick={() =>
+            trackGAEvent({
+              event: "link",
+              action: "click",
+              name: "onclick",
+              type: "internal link",
+              text: ctaButton.text,
+            })
+          }
+        >
           {ctaButton.text}
         </a>
       </ButtonColumn>

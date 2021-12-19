@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { AccordionCard } from "./AccordionCard";
+
+const defaultGAEvent = {
+  event: "collapse",
+  name: "onclick",
+  type: "click",
+  region: "main content",
+};
 
 /**
  * @typedef {import('../../core/types/shared-types').AccordionProps} AccordionProps
@@ -20,8 +28,17 @@ const Accordion = ({ cards, openedCard }) => {
     setOpenCard(openedCard);
   }, [openedCard]);
 
-  const changeOpenCard = (event, card) => {
+  const trackEvent = (cardId, cardTitle) => {
+    trackGAEvent({
+      ...defaultGAEvent,
+      action: openCard === cardId ? "close" : "open",
+      text: cardTitle,
+    });
+  };
+
+  const changeOpenCard = (event, card, cardTitle) => {
     event.preventDefault();
+    trackEvent(card, cardTitle);
     setOpenCard(prevState => (prevState === card ? null : card));
   };
 

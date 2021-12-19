@@ -10,7 +10,7 @@ export const TabHeader = ({ id, selected, title, selectTab }) => {
       role="tab"
       aria-controls={`nav-${id}`}
       aria-selected={selected}
-      onClick={e => selectTab(e, id)}
+      onClick={e => selectTab(e, id, title)}
     >
       {title}
     </a>

@@ -81,6 +81,7 @@
  * @callback ReactMouseEvent
  * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} event
  * @param {number} id
+ * @param {string} [cardTitle]
  * @returns {void}
  */
 

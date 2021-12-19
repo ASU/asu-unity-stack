@@ -3,10 +3,19 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import { AnchorWrapper, CardWrapper } from "./index.styles";
+
+const gaDefaultObject = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
 
 /**
  * @typedef {import('../../core/types/card-types').CardProps} CardProps
@@ -375,7 +384,18 @@ const CardContent = ({
     )}
     {linkUrl && linkLabel && (
       <div className="card-link" data-testid="card-link">
-        <a href={linkUrl}>{linkLabel}</a>
+        <a
+          href={linkUrl}
+          onClick={() =>
+            trackGAEvent({
+              ...gaDefaultObject,
+              section: title,
+              text: linkLabel,
+            })
+          }
+        >
+          {linkLabel}
+        </a>
       </div>
     )}
     {tags && (
