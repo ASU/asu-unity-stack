@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { NavControls, TabContent, TabHeader } from "./components";
+import { NavControls, TabHeader } from "./components";
 
 export const Tab = ({ id, bgColor, selected, children }) => {
   return (
@@ -38,6 +38,29 @@ export const TabbedPanels = ({ children, bgColor }) => {
   const [selectedId, setSelectedId] = useState(
     `tab-${randId}-${children[0].props.id}`
   );
+
+  const trackArrowsEvent = text => {
+    trackGAEvent({
+      event: "select",
+      action: "click",
+      name: "onclick",
+      type: "carousel",
+      region: "main content",
+      text,
+    });
+  };
+
+  const trackLinkEvent = text => {
+    trackGAEvent({
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
+      text,
+    });
+  };
+
+
   const tabs = React.Children.toArray(
     children.map(el => {
       return React.cloneElement(el, {
@@ -66,57 +89,11 @@ export const TabbedPanels = ({ children, bgColor }) => {
     });
   };
 
-  const switchToTab = (e, id) => {
+  const switchToTab = (e, id, title) => {
+    trackLinkEvent(title);
     e.preventDefault();
     setSelectedId(id);
   };
-
-  const trackArrowsEvent = text => {
-    trackGAEvent({
-      event: "select",
-      action: "click",
-      name: "onclick",
-      type: "carousel",
-      region: "main content",
-      text,
-    });
-  };
-
-  const trackLinkEvent = text => {
-    trackGAEvent({
-      event: "link",
-      action: "click",
-      name: "onclick",
-      type: "internal link",
-      text,
-    });
-  };
-
-  const tabs = panels.map(panel => {
-    return {
-      link: (
-        <Tab
-          id={`tab-${randId}-${panel.id}`}
-          title={panel.title}
-          selected={selectedId === `tab-${randId}-${panel.id}`}
-          selectTab={(e, id) => {
-            switchToTab(e, id);
-            trackLinkEvent(panel.title);
-          }}
-          key={panel.id}
-        />
-      ),
-      content: (
-        <TabContent
-          id={panel.id}
-          bgColor={backgroundColor}
-          content={panel.content}
-          selected={selectedId === `tab-${randId}-${panel.id}`}
-          key={panel.id}
-        />
-      ),
-    };
-  });
 
   let navClasses = "uds-tabbed-panels";
   if (backgroundColor === "bg-dark") {
