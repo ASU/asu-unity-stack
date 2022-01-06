@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const resultCardType = PropTypes.shape({
+export const resultCardType = {
   id: PropTypes.string,
   name: PropTypes.string,
   area: PropTypes.string,
@@ -8,4 +8,4 @@ export const resultCardType = PropTypes.shape({
   cookieTrail: PropTypes.arrayOf(PropTypes.string),
   link: PropTypes.string,
   fill: PropTypes.bool,
-});
+};

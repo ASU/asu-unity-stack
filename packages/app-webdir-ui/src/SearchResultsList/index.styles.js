@@ -34,6 +34,10 @@ const SearchResultsList = styled.div`
     margin-top: 48px;
     display: flex;
     justify-content: space-between;
+
+    &.push-right {
+      justify-content: flex-end;
+    }
   }
 `;
 

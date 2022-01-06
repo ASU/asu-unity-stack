@@ -1,7 +1,9 @@
 // @ts-check
 import styled from "styled-components";
 
-const SearchPage = styled.div`
+const SearchPageLayout = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   margin-top: 72px;
 
   h1 {
@@ -111,4 +113,4 @@ const SearchPage = styled.div`
   }
 `;
 
-export { SearchPage };
+export { SearchPageLayout };

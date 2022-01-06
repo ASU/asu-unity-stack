@@ -1,6 +1,6 @@
-import { Button } from "@asu-design-system/components-core";
 import React from "react";
 
+import { Button } from "../../../components-core/src/components/Button";
 import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
 
