@@ -99,7 +99,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     });
   };
 
-  const switchToTab = (e, id, title) => {
+  const switchToTab = (e, tabID, title) => {
     trackLinkEvent(title);
     e.preventDefault();
     setSearchParams({ [id]: tabID });
