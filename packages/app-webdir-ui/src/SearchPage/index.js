@@ -180,6 +180,7 @@ function SearchPage() {
               results={results.results}
               totalResults={results.page?.total_results}
               resultsPerPage={6}
+              currentPage={results.page?.current}
               isLoading={isLoading}
               title="All faculty and staff results"
               onPageChange={pageChange}

@@ -1,14 +1,15 @@
-import { Button } from "../../../components-core/src/components/Button";
-import { Pagination } from "../../../components-core/src/components/Pagination";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
+import { Button } from "../../../components-core/src/components/Button";
+import { Pagination } from "../../../components-core/src/components/Pagination";
 import { SearchResultsList } from "./index.styles";
 
 const ASUSearchResultsList = ({
   results,
   totalResults,
   resultsPerPage,
+  currentPage,
   isLoading,
   onPageChange,
   title,
@@ -17,12 +18,10 @@ const ASUSearchResultsList = ({
   onExpandClick,
   fill,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [displayResults, setDisplayResults] = useState(1);
 
   const changePage = page => {
     onPageChange(page);
-    setCurrentPage(page);
   };
   useEffect(() => {
     const resultsWithProps = results.map((profile, idx) => {
@@ -93,6 +92,7 @@ ASUSearchResultsList.propTypes = {
   results: PropTypes.arrayOf(PropTypes.element),
   totalResults: PropTypes.number,
   resultsPerPage: PropTypes.number,
+  currentPage: PropTypes.number,
   isLoading: PropTypes.bool,
   onPageChange: PropTypes.func,
   title: PropTypes.string,

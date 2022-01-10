@@ -28,13 +28,13 @@ const engines = {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-faculty-staff/search.json`,
     needsAuth: false,
     converter: staffConverter,
-    resultsPerSummaryPage: 3, 
+    resultsPerSummaryPage: 3,
   },
   [engineNames.STUDENTS]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-students/search.json`,
     needsAuth: true,
     converter: studentsConverter,
-    resultsPerSummaryPage: 3, 
+    resultsPerSummaryPage: 3,
   },
   [engineNames.SITES]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites/search.json`,
@@ -85,9 +85,9 @@ export const performSearch = (tab, term, page, items, auth=null) => {
       const resultsDict = {};
       Promise.all(promises).then((results) => {
         results.forEach((res) => {
-          resultsDict[res.engineName] = { 
-            results: res.results, 
-            topResult: res.topResult, 
+          resultsDict[res.engineName] = {
+            results: res.results,
+            topResult: res.topResult,
             page: res.page
           };
         });
