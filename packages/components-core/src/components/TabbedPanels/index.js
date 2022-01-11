@@ -46,9 +46,6 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
   const TabbedPanelsId = `tabbed-panels-${randId}`;
   const NavTabsId = `nav-tabs-${randId}`;
-  const [selectedId, setSelectedId] = useState(
-    `tab-${randId}-${children[0].props.id}`
-  );
 
   const trackArrowsEvent = text => {
     trackGAEvent({
@@ -70,7 +67,6 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
       text,
     });
   };
-
 
   const tabs = React.Children.toArray(
     children.map(el => {

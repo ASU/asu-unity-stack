@@ -69,8 +69,12 @@ const ASUSearchResultsList = ({
             </div>
           )}
           {size === "micro" && (
-            <div className={`micro-options ${results.length === 0 ? "push-right" : ""}`}>
-              {results.length > 0 && (<span>{totalResults} total results</span>)}
+            <div
+              className={`micro-options ${
+                results.length === 0 ? "push-right" : ""
+              }`}
+            >
+              {results.length > 0 && <span>{totalResults} total results</span>}
               <Button
                 color="maroon"
                 label="See all results"

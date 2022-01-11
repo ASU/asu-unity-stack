@@ -35,6 +35,7 @@
     "@asu-design-system/components-core": "^1.0.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
+    "axios": "^0.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

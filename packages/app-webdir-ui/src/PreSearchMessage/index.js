@@ -16,12 +16,12 @@ const PreSearchMessage = () => {
       </div>
       <div className="quick-links">
         <span>Quick links</span>
-        <a href="#">MyASU</a>
-        <a href="#">ASU directory</a>
-        <a href="#">ASU maps</a>
-        <a href="#">ASU course catalog</a>
-        <a href="#">ASU helpdesk</a>
-        <a href="#">ASU home</a>
+        <a href="https://www.asu.edu/">MyASU</a>
+        <a href="https://www.asu.edu/">ASU directory</a>
+        <a href="https://www.asu.edu/">ASU maps</a>
+        <a href="https://www.asu.edu/">ASU course catalog</a>
+        <a href="https://www.asu.edu/">ASU helpdesk</a>
+        <a href="https://www.asu.edu/">ASU home</a>
       </div>
     </PreSearchMessageTemplate>
   );

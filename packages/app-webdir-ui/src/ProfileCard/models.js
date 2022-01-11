@@ -4,10 +4,12 @@ export const profileCardType = {
   id: PropTypes.string,
   imgURL: PropTypes.string,
   name: PropTypes.string,
-  titles: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    org: PropTypes.string,
-  })),
+  titles: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      org: PropTypes.string,
+    })
+  ),
   email: PropTypes.string,
   telephone: PropTypes.string,
   addressLink: PropTypes.string,

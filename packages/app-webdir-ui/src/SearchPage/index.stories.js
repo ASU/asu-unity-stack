@@ -7,7 +7,7 @@ export default {
   component: SearchPage,
 };
 
-const Template = args => {
+const Template = () => {
   return (
     <div className="container-fluid">
       <div className="col col-sm-12 p-3">

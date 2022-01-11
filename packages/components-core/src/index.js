@@ -10,7 +10,6 @@ import {
   Hero,
   Accordion,
   Video,
-  TabbedPanels,
 } from "./components";
 
 export * from "./components/FeedAnatomy";
