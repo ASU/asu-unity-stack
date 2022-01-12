@@ -2,10 +2,27 @@
   "name": "@asu-design-system/app-degree-pages",
   "version": "1.17.0",
   "description": "ASU implementation of degree pages",
-  "main": "src/index.js",
+  "main": "./dist/degreePages.cjs.js",
+  "browser": "./dist/degreePages.umd.js",
+  "module": "./dist/degreePages.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Michele Di Benedetto",
   "license": "UNLICENSED",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.web.asu.edu/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack",
+    "directory": "packages/app-degree-pages"
+  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --passWithNoTests --coverage",
@@ -14,6 +31,7 @@
     "e2e": "yarn cy:open",
     "cy:run": "cypress run --headless",
     "cy:open": "cypress open",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
@@ -23,15 +41,6 @@
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/app-degree-pages"
   },
   "dependencies": {
     "@asu-design-system/components-core": "^1.0.0",
@@ -84,6 +93,7 @@
     "semantic-release-monorepo": "^7.0.4",
     "string.prototype.replaceall": "^1.0.5",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.1.1"
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack-merge": "^5.8.0"
   }
 }

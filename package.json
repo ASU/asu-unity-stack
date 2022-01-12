@@ -12,8 +12,10 @@
   "scripts": {
     "clean": "lerna run clean",
     "lint": "lerna run lint",
-    "build": "lerna run build",
-    "prebuild": "yarn lint",
+    "build-components-core": "lerna run --scope @asu-design-system/components-core build",
+    "build-component-carousel": "lerna run --scope @asu-design-system/component-carousel build",
+    "build": "lerna run --ignore @asu-design-system/components-core --ignore @asu-design-system/component-carousel build",
+    "prebuild": "yarn build-components-core && yarn build-component-carousel && yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",

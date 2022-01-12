@@ -1,19 +1,19 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/hero-types").HeroProps} HeroProps
+ * @typedef {import("@asu-design-system/components-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageItem
+ * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/video-types").VideoProps} VideoItem
+ * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu-design-system/components-core").AnchorMenuItem} AnchorMenuItem
  */
 
 /**

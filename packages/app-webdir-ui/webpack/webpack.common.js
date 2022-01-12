@@ -8,7 +8,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    news: "./index.js",
+    webdirUI: "./index.js",
   },
   module: {
     rules: [
@@ -69,9 +69,12 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

@@ -1,4 +1,3 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
@@ -8,7 +7,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    news: "./index.js",
+    asuNews: "./index.js",
   },
   module: {
     rules: [
@@ -69,9 +68,15 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+      "@asu-design-system/component-carousel":
+        "@asu-design-system/component-carousel/dist/asuCarousel.es.js",
+    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

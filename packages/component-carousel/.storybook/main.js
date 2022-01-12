@@ -1,10 +1,8 @@
-const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
-let devConfig = require("../webpack/webpack.dev");
+const common = require("../webpack/webpack.common");
 
 module.exports = {
   addons: [
-    "@storybook/addon-knobs",
+    "@storybook/addon-controls",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
   ],
@@ -12,12 +10,11 @@ module.exports = {
   webpackFinal: async config => {
     return {
       ...config,
-      module: { ...config.module, rules: devConfig.module.rules },
+      module: { ...config.module, rules: common.module.rules },
       resolve: {
         extensions: [".js", ".jsx"],
         alias: {
-          // this is needed to compile components-core components which inject css classes
-          Vendor: path.resolve(PROJECT_DIR, "vendor/"),
+          ...common.resolve.alias,
         },
       },
     };

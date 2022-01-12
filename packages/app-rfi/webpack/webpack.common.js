@@ -1,4 +1,3 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
@@ -58,9 +57,12 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

@@ -19,6 +19,17 @@ This repository contains multiple packages which are managed and published using
 11. [cookie-consent](./packages/cookie-consent/README.md) -
 12. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
 
+## ❯ Package Multi Output Targets
+
+Due to [the many ways Javascript can be packaged as reusable modules](https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/), 
+Unity provides multiple target outputs. When built (or installed from the Unity package registry), the dist/ folder in a Unity **REACT component package** may 
+include JS files with the following naming convention:
+- *fileName*.umd.js which is a UMD module for inclusion in browser/CMS/HTML pages. (We use this type in the Webspark 2 CMS project as the packages are included in HTML output and loaded by the browser).
+- *fileName*.es.js which is an ES6/ESM module package which can be used in React apps where the library can be implemented within the React code.
+- *fileName*.cjs.js which is a CommonJS module for use in NodeJS apps.
+Select the module type that works for your use case and include it in your project. Most React packages in Unity include an examples/ folder which provides
+an HTML example illustrating how to implement the UMD approach.
+
 ## ❯ Dependencies
 
 In order to build the project, the dev environment needs to have the following programs installed:
