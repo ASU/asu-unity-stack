@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-export const TabHeader = ({ id, selected, title, selectTab }) => {
+const TabHeader = ({ id, selected, title, selectTab }) => {
   return (
     <a
       className={`nav-item nav-link ${selected ? "active" : ""}`}
@@ -23,3 +23,5 @@ TabHeader.propTypes = {
   title: PropTypes.string.isRequired,
   selectTab: PropTypes.func.isRequired,
 };
+
+export { TabHeader };

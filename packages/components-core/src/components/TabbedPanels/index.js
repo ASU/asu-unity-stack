@@ -1,12 +1,13 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { NavControls, TabHeader } from "./components";
 
-export const Tab = ({ id, bgColor, selected, children }) => {
-  return (
+const Tab = ({ id, bgColor, selected, children }) =>
+  selected && (
     <div
       className={`tab-pane fade show ${selected ? "show active" : ""} ${
         bgColor === "bg-dark" ? "text-white" : ""
@@ -18,7 +19,6 @@ export const Tab = ({ id, bgColor, selected, children }) => {
       {children}
     </div>
   );
-};
 
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
@@ -30,14 +30,22 @@ Tab.propTypes = {
   ]),
 };
 
-export const TabbedPanels = ({ children, bgColor }) => {
+const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
+  const [activeTabID, setActiveTabID] = useState(children[0].props.id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    const current = searchParams.get(id);
+    if (current === null) {
+      setSearchParams({ [id]: activeTabID });
+    } else {
+      setActiveTabID(searchParams.get(id));
+    }
+  }, [searchParams]);
+
   const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
   const TabbedPanelsId = `tabbed-panels-${randId}`;
   const NavTabsId = `nav-tabs-${randId}`;
-  const [selectedId, setSelectedId] = useState(
-    `tab-${randId}-${children[0].props.id}`
-  );
 
   const trackArrowsEvent = text => {
     trackGAEvent({
@@ -60,16 +68,14 @@ export const TabbedPanels = ({ children, bgColor }) => {
     });
   };
 
-
   const tabs = React.Children.toArray(
     children.map(el => {
       return React.cloneElement(el, {
         bgColor: backgroundColor,
-        selected: selectedId === `tab-${randId}-${el.props.id}`,
+        selected: activeTabID === el.props.id,
       });
     })
   );
-
   const catchScroll = event => {
     const item = document.querySelector(`#${TabbedPanelsId}`);
     const nav = item.querySelector(".nav-tabs");
@@ -89,10 +95,11 @@ export const TabbedPanels = ({ children, bgColor }) => {
     });
   };
 
-  const switchToTab = (e, id, title) => {
+  const switchToTab = (e, tabID, title) => {
     trackLinkEvent(title);
     e.preventDefault();
-    setSelectedId(id);
+    setSearchParams({ [id]: tabID });
+    onTabChange(tabID);
   };
 
   let navClasses = "uds-tabbed-panels";
@@ -107,9 +114,9 @@ export const TabbedPanels = ({ children, bgColor }) => {
           {children.map(child => {
             return (
               <TabHeader
-                id={`tab-${randId}-${child.props.id}`}
+                id={child.props.id}
                 title={child.props.title}
-                selected={selectedId === `tab-${randId}-${child.props.id}`}
+                selected={activeTabID === child.props.id}
                 selectTab={switchToTab}
                 key={child.props.id}
               />
@@ -135,6 +142,10 @@ export const TabbedPanels = ({ children, bgColor }) => {
 };
 
 TabbedPanels.propTypes = {
+  id: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   bgColor: PropTypes.string,
+  onTabChange: PropTypes.func,
 };
+
+export { TabbedPanels, Tab };

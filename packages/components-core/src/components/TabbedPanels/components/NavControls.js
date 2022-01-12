@@ -3,7 +3,7 @@ import React from "react";
 
 import { NavControlButtons } from "./NavControls.styles";
 
-export const NavControls = ({ clickPrev, clickNext }) => {
+const NavControls = ({ clickPrev, clickNext }) => {
   return (
     <NavControlButtons>
       <button className="scroll-control-prev" type="button" onClick={clickPrev}>
@@ -22,3 +22,5 @@ NavControls.propTypes = {
   clickPrev: PropTypes.func.isRequired,
   clickNext: PropTypes.func.isRequired,
 };
+
+export { NavControls };

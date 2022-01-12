@@ -1,7 +1,13 @@
 // @ts-check
 import styled from "styled-components";
 
-const ProfileCard = styled.div`
+const ProfileCardTemplate = styled.div`
+  max-width: 700px;
+  &.fill {
+    background-color: #fafafa;
+    border: 1px solid #d0d0d0;
+    padding: 32px;
+  }
   &.large {
     img {
       height: 240px;
@@ -42,4 +48,4 @@ const ProfileCard = styled.div`
   }
 `;
 
-export { ProfileCard };
+export { ProfileCardTemplate };
