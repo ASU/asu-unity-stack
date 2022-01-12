@@ -2,15 +2,25 @@
 import styled from "styled-components";
 
 const ProfileCardTemplate = styled.div`
-  max-width: 700px;
+  display: flex;
+  .profile-img {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-size: 180px;
+    height: 180px;
+    width: 180px;
+    margin: 0;
+    padding: 0;
+  }
   &.fill {
     background-color: #fafafa;
     border: 1px solid #d0d0d0;
     padding: 32px;
   }
   &.large {
-    img {
-      height: 240px;
+    .profile-img {
+      background-size: 240px;
       width: 240px;
     }
     .person-name {
@@ -33,7 +43,7 @@ const ProfileCardTemplate = styled.div`
     padding: 36px;
   }
   &.micro {
-    img {
+    .profile-img {
       height: 74px;
       width: 74px;
     }

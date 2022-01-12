@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../../../components-core/src/components/Button";
 import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
+import anonPic from "../assets/anon.png";
 
 const ProfileCard = ({ ...props }) => {
   return (
@@ -11,7 +12,10 @@ const ProfileCard = ({ ...props }) => {
         props.fill ? "fill" : ""
       }`}
     >
-      <img className="profile-img" src={props.imgURL} alt={props.name} />
+      <div
+        className="profile-img"
+        style={{ backgroundImage: `url(${props.imgURL}), url(${anonPic})` }}
+      />
       <div className="person">
         <h3 className="person-name">{props.name}</h3>
         {props.size !== "large" && (
@@ -53,7 +57,7 @@ const ProfileCard = ({ ...props }) => {
         )}
         {["default", "large"].includes(props.size) && (
           <div>
-            <p className="person-description">{props.description}</p>
+            <p className="person-description">{props.description.slice(0, 120)}</p>
             <ul className="person-social-medias">
               <li>
                 <a

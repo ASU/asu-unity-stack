@@ -180,6 +180,7 @@ function SearchPage() {
               isLoading={isLoading}
               title="All faculty and staff results"
               onPageChange={pageChange}
+              size="large"
             />
           )}
         </Tab>
