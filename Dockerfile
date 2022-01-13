@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:12.22.1
 
 ARG NPM_TOKEN
 
