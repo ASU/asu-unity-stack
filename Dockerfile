@@ -1,8 +1,5 @@
 FROM node:12
 
-# Override node version set in buildkite/puppeteer:5.2.1
-ENV NODE_VERSION=12.22.1
-
 ARG NPM_TOKEN
 
 # Create app directory
