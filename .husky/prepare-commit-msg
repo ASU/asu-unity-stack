@@ -1,2 +1,4 @@
 #!/bin/sh
-exec < /dev/tty && git cz --hook || true
+#exec < /dev/tty && git cz --hook || true
+# Prevent from breaking in CI publish stage per https://github.com/commitizen/cz-cli/issues/634#issuecomment-780227672
+( exec < /dev/tty && git cz --hook --hook ) || true 2> /dev/null
