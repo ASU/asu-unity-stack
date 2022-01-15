@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "./dist/asuCarousel.cjs.js",
   "browser": "./dist/asuCarousel.umd.js",
@@ -10,10 +10,10 @@
   "license": "UNLICENSED",
   "private": false,
   "files": [
-     "examples/*",
-     "dist/*",
-     "docs/*"
-   ],
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.web.asu.edu/"
