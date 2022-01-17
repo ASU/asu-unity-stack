@@ -2,7 +2,7 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 import { Button } from "../../../../components-core/src/components/Button";
-
+import anonPic from "./anon.png";
 
 const extraOptions = {
   size: {
@@ -29,14 +29,25 @@ export default createComponent('Person Profile', 'Molecules', 'Templates', extra
 
 const PersonProfile = props => (
   <div className={`uds-person-profile ${props.size} ${props.fill ? 'fill' : ''}`}>
-    <img
-      className="profile-img"
-      src="https://source.unsplash.com/WLUHO9A_xik/300x300"
-      alt="John Smith"
-    />
+    <div className="profile-img-container">
+      <div className="profile-img-placeholder" style={{ backgroundImage: `url(${anonPic})` }}>
+        <img
+          className="profile-img"
+          src="https://source.unsplash.com/WLUHO9A_xik/300x300"
+          alt="John Smith"
+        />
+      </div>
+    </div>
     <div className="person">
       <h3 className="person-name">John Smith</h3>
-      <h4 className="person-profession">Regents Professor</h4>
+      <div className="person-profession">
+        <h4>
+          <span>Regents Professor</span>
+        </h4>
+        <h4>
+          <span>Academic Associate</span>
+        </h4>
+      </div>
       {props.size !== "micro-profile" && (
       <ul className="person-contact-info">
         <li>
@@ -145,11 +156,11 @@ const PersonProfile = props => (
         </ul>
       </div>
       )}
-      {props.size === "small" && (
+      {props.size === "small-profile" && (
         <Button color="maroon" size="small" label="View Profile" />
       )}
-      {props.size === "micro" && (
-        <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
+      {props.size === "micro-profile" && (
+        <span class="more-link"><a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a></span>
       )}
     </div>
   </div>
