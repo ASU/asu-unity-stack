@@ -4,6 +4,13 @@ Desktop styles
 .uds-person-profile {
   display: flex;
   max-width: 800px;
+
+  &.fill {
+    background-color: #fafafa;
+    border: 1px solid #d0d0d0;
+    padding: 32px;
+  }
+
   .profile-img {
     width: 180px;
     height: 180px;
