@@ -1,11 +1,22 @@
 import React from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
+import anonPic from "../assets/anon.png";
 import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
-import anonPic from "../assets/anon.png";
 
 const ProfileCard = ({ ...props }) => {
+  let titles = null;
+  if (props.titles?.length > 0 && props.size === "micro") {
+    titles = <span>{props.titles[0].name}</span>;
+  } else if (props.titles?.length > 0 && props.size === "large") {
+    titles = props.titles.map(title => (
+      <h4 key={title.name}>
+        <span>{title.name}, </span>
+        <span>{title.org}</span>
+      </h4>
+    ));
+  }
   return (
     <ProfileCardTemplate
       className={`uds-person-profile uds-content-align ${props.size} ${
@@ -21,17 +32,8 @@ const ProfileCard = ({ ...props }) => {
         {props.size !== "large" && (
           <h4 className="person-profession">{props.title}</h4>
         )}
-        {props.size === "large" && (
-          <div className="person-profession">
-            {props.titles &&
-              props.titles.length > 0 &&
-              props.titles?.map(title => (
-                <h4>
-                  <span>{title.name}, </span>
-                  <span>{title.org}</span>
-                </h4>
-              ))}
-          </div>
+        {["large", "micro"].includes(props.size) && (
+          <div className="person-profession">{titles}</div>
         )}
         {props.size !== "micro" && (
           <ul className="person-contact-info">
@@ -57,7 +59,7 @@ const ProfileCard = ({ ...props }) => {
         )}
         {["default", "large"].includes(props.size) && (
           <div>
-            <p className="person-description">{props.description.slice(0, 120)}</p>
+            <p className="person-description">{props.shortBio.slice(0, 250)}</p>
             <ul className="person-social-medias">
               <li>
                 <a

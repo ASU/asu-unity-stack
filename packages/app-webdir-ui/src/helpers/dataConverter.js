@@ -36,6 +36,9 @@ const fillInBlanks = datum => {
     bio: {
       raw: "",
     },
+    short_bio: {
+      raw: "",
+    },
     url_path_dir1: {
       raw: "",
     },
@@ -55,7 +58,38 @@ const fillInBlanks = datum => {
   return { ...full, ...datum };
 };
 
-export const staffConverter = datum => {
+export const staffConverter = (datum, size = "small") => {
+  const filledDatum = fillInBlanks(datum);
+  return (
+    <ProfileCard
+      isRequired={false}
+      id={filledDatum.eid.raw.toString()}
+      key={filledDatum.eid.raw.toString()}
+      imgURL={filledDatum.photo_url.raw}
+      name={filledDatum.display_name.raw}
+      titles={filledDatum.titles.raw.map(title => {
+        return {
+          name: title,
+          org: title,
+        };
+      })}
+      email={filledDatum.email_address.raw}
+      telephone={filledDatum.phone.raw}
+      addressLink="asu.edu"
+      addressLine1={filledDatum.address_line1.raw}
+      addressLine2={filledDatum.address_line2.raw}
+      description={filledDatum.bio.raw}
+      shortBio={filledDatum.short_bio.raw}
+      facebookLink={filledDatum.facebook_link.raw}
+      linkedinLink={filledDatum.linkedIn_link.raw}
+      twitterLink={filledDatum.twitter_link.raw}
+      size={size}
+      fill
+    />
+  );
+};
+
+export const studentsConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
   return (
     <ProfileCard
@@ -79,41 +113,13 @@ export const staffConverter = datum => {
       facebookLink={filledDatum.facebook_link.raw}
       linkedinLink={filledDatum.linkedIn_link.raw}
       twitterLink={filledDatum.twitter_link.raw}
+      size={size}
       fill
     />
   );
 };
 
-export const studentsConverter = datum => {
-  const filledDatum = fillInBlanks(datum);
-  return (
-    <ProfileCard
-      isRequired={false}
-      id={filledDatum.eid.raw.toString()}
-      key={filledDatum.eid.raw.toString()}
-      imgURL={filledDatum.photo_url.raw}
-      name={filledDatum.display_name.raw}
-      titles={filledDatum.titles.raw.map(title => {
-        return {
-          name: title,
-          org: title,
-        };
-      })}
-      email={filledDatum.email_address.raw}
-      telephone={filledDatum.phone.raw}
-      addressLink="asu.edu"
-      addressLine1={filledDatum.address_line1.raw}
-      addressLine2={filledDatum.address_line2.raw}
-      description={filledDatum.bio.raw}
-      facebookLink={filledDatum.facebook_link.raw}
-      linkedinLink={filledDatum.linkedIn_link.raw}
-      twitterLink={filledDatum.twitter_link.raw}
-      fill
-    />
-  );
-};
-
-export const anonConverter = datum => {
+export const anonConverter = (datum, size = "small") => {
   return (
     <ProfileCard
       isRequired={false}
@@ -136,11 +142,12 @@ export const anonConverter = datum => {
       facebookLink=""
       linkedinLink=""
       twitterLink=""
+      size={size}
     />
   );
 };
 
-export const subdomainConverter = datum => {
+export const subdomainConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
   return (
     <ResultCard
@@ -154,6 +161,7 @@ export const subdomainConverter = datum => {
         filledDatum.url_path_dir2.raw,
       ]}
       link={filledDatum.url.raw}
+      size={size}
       fill
     />
   );

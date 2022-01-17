@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const SearchPageLayout = styled.div`
   max-width: 1200px;
+  min-height: 80vh;
   margin: 0 auto;
   margin-top: 72px;
 

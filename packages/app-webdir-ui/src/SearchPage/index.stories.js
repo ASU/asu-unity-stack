@@ -2,19 +2,17 @@ import React from "react";
 
 import { SearchPage } from "./index";
 
-export default {
-  title: "ASU Search Page",
-  component: SearchPage,
-};
+import {
+  createComponent,
+  createStory,
+  layoutNames,
+} from "../../../bootstrap4-theme/helpers/wrapper.js";
 
-const Template = () => {
-  return (
-    <div className="container-fluid">
-      <div className="col col-sm-12 p-3">
-        <SearchPage />
-      </div>
-    </div>
-  );
-};
+export default createComponent("Search Page", "Organisms", "Template");
 
-export const Default = Template.bind({});
+export const profileCardExample = createStory(
+  <div className="uds-content-align">
+    <SearchPage />
+  </div>,
+  { supportedTemplates: [layoutNames.FULL_WIDTH] }
+);
