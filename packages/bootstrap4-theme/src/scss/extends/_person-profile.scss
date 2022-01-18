@@ -16,6 +16,12 @@ Desktop styles
     --person-profession-bottom-margin: 8px;
     --person-name-size: 20px;
     --name-top-margin: 0;
+
+    .person-profession {
+      h4:not(:first-child) {
+        display: none;
+      }
+    }
   }
   display: flex;
   max-width: var(--max-width);
@@ -54,7 +60,10 @@ Desktop styles
       margin: 0;
       line-height: 1;
       margin-bottom: var(--person-profession-bottom-margin);
-      font-size: $uds-size-font-medium;
+      h4 {
+        margin: 0;
+        font-size: $uds-size-font-medium;
+      }
     }
     .more-link {
       line-height: 1;
