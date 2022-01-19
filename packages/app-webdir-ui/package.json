@@ -8,7 +8,7 @@
   "types": "./dist/main.d.ts",
   "author": "Mark Lambe",
   "license": "Unlicensed",
-  "private": true,
+  "private": false,
   "files": [
     "examples/*",
     "dist/*",
