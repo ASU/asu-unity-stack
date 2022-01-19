@@ -2,7 +2,6 @@ import React from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import anonPic from "../assets/anon.png";
-// import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
