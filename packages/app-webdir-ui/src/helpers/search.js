@@ -55,7 +55,11 @@ const searchEngine = (engineName, term, page, items, auth) => {
     axios
       .post(
         engines[engineName].url,
-        { query: term, page: { size: items, current: page } },
+        {
+          query: term,
+          //search_fields: { asurite_id: {} },
+          page: { size: items, current: page },
+        },
         { headers: config.headers }
       )
       .then(res => {

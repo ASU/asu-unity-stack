@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import anonPic from "../assets/anon.png";
-import { ProfileCardTemplate } from "./index.styles";
+// import { ProfileCardTemplate } from "./index.styles";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
@@ -11,22 +11,25 @@ const ProfileCard = ({ ...props }) => {
     titles = <span>{props.titles[0].name}</span>;
   } else if (props.titles?.length > 0 && props.size === "large") {
     titles = props.titles.map(title => (
-      <h4 key={title.name}>
-        <span>{title.name}, </span>
-        <span>{title.org}</span>
+      <h4 key={title}>
+        <span>{title}</span>
       </h4>
     ));
   }
   return (
-    <ProfileCardTemplate
+    <div
       className={`uds-person-profile uds-content-align ${props.size} ${
         props.fill ? "fill" : ""
       }`}
     >
-      <div
-        className="profile-img"
-        style={{ backgroundImage: `url(${props.imgURL}), url(${anonPic})` }}
-      />
+      <div className="profile-img-container">
+        <div
+          className="profile-img-placeholder"
+          style={{ backgroundImage: `url(${anonPic})` }}
+        >
+          <img className="profile-img" src={props.imgURL} alt={props.name} />
+        </div>
+      </div>
       <div className="person">
         <h3 className="person-name">{props.name}</h3>
         {props.size !== "large" && (
@@ -95,7 +98,7 @@ const ProfileCard = ({ ...props }) => {
           <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
         )}
       </div>
-    </ProfileCardTemplate>
+    </div>
   );
 };
 

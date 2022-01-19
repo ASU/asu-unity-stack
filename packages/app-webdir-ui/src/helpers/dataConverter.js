@@ -67,12 +67,7 @@ export const staffConverter = (datum, size = "small") => {
       key={filledDatum.eid.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
-      titles={filledDatum.titles.raw.map(title => {
-        return {
-          name: title,
-          org: title,
-        };
-      })}
+      titles={filledDatum.titles.raw}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
       addressLink="asu.edu"
@@ -98,12 +93,7 @@ export const studentsConverter = (datum, size = "small") => {
       key={filledDatum.eid.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
-      titles={filledDatum.titles.raw.map(title => {
-        return {
-          name: title,
-          org: title,
-        };
-      })}
+      titles={filledDatum.titles.raw}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
       addressLink="asu.edu"
@@ -127,12 +117,7 @@ export const anonConverter = (datum, size = "small") => {
       key={datum}
       imgURL={anonPic}
       name="Student Name"
-      titles={[
-        {
-          name: "Title",
-          org: "",
-        },
-      ]}
+      titles={["Title"]}
       email="email@example.com"
       telephone=""
       addressLink="asu.edu"

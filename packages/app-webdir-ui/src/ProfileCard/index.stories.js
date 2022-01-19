@@ -4,7 +4,7 @@ import {
   createComponent,
   createStory,
   layoutNames,
-} from "../../../bootstrap4-theme/helpers/wrapper.js";
+} from "../../../bootstrap4-theme/helpers/wrapper";
 import { staffConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
