@@ -1,7 +1,7 @@
-import { Button, TabbedPanels, Tab } from "@asu-design-system/components-core";
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { Button, TabbedPanels, Tab } from "../../../components-core";
 import { performSearch } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
@@ -180,6 +180,7 @@ function SearchPage() {
               isLoading={isLoading}
               title="All faculty and staff results"
               onPageChange={pageChange}
+              size="large"
             />
           )}
         </Tab>

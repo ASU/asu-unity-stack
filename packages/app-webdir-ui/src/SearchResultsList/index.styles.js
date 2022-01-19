@@ -11,9 +11,19 @@ const SearchResultsList = styled.div`
       to(rgba(0, 0, 0, 0))
     );
   }
-  .uds-person-profile,
-  .uds-results-card {
-    margin-top: 32px;
+  .uds-person-profile:not(:first-child) {
+    padding-top: 32px;
+  }
+  .large {
+    .uds-person-profile,
+    .uds-results-card {
+      padding-top: 48px;
+      border-top: 1px solid #d0d0d0;
+
+      :first-child {
+        border: none;
+      }
+    }
   }
   .results-title {
     margin-bottom: 64px;
@@ -41,24 +51,4 @@ const SearchResultsList = styled.div`
   }
 `;
 
-const ProfileCardList = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  .uds-person-profile {
-    padding-bottom: 26px;
-    padding-top: 40px;
-    border-bottom: 1px solid #c5c5c5;
-  }
-
-  .uds-person-profile:first-child {
-    padding-top: 0;
-  }
-
-  .uds-person-profile:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-`;
-
-export { SearchResultsList, ProfileCardList };
+export { SearchResultsList };

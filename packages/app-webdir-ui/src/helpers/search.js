@@ -55,20 +55,28 @@ const searchEngine = (engineName, term, page, items, auth) => {
     axios
       .post(
         engines[engineName].url,
-        { query: term, page: { size: items, current: page } },
+        {
+          query: term,
+          //search_fields: { asurite_id: {} },
+          page: { size: items, current: page },
+        },
         { headers: config.headers }
       )
       .then(res => {
-        const topResult = res.data.results.reduce((prev, curr) => {
+        let topResult = res.data.results.reduce((prev, curr) => {
           return prev === null || prev["_meta"].score < curr["_meta"].score
             ? curr
             : prev;
         }, null);
+        topResult =
+          topResult === null || topResult["_meta"].score >= 1
+            ? engines[engineName].converter(topResult, "small")
+            : null;
         resolve({
           engineName,
           page: res.data.meta.page,
           results: res.data.results.map(engines[engineName].converter),
-          topResult: engines[engineName].converter(topResult),
+          topResult,
         });
       });
   });

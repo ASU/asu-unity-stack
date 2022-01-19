@@ -1,33 +1,41 @@
 import React from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
-import { ProfileCardTemplate } from "./index.styles";
+import anonPic from "../assets/anon.png";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
+  let titles = null;
+  if (props.titles?.length > 0 && props.size === "micro") {
+    titles = <span>{props.titles[0].name}</span>;
+  } else if (props.titles?.length > 0 && props.size === "large") {
+    titles = props.titles.map(title => (
+      <h4 key={title}>
+        <span>{title}</span>
+      </h4>
+    ));
+  }
   return (
-    <ProfileCardTemplate
+    <div
       className={`uds-person-profile uds-content-align ${props.size} ${
         props.fill ? "fill" : ""
       }`}
     >
-      <img className="profile-img" src={props.imgURL} alt={props.name} />
+      <div className="profile-img-container">
+        <div
+          className="profile-img-placeholder"
+          style={{ backgroundImage: `url(${anonPic})` }}
+        >
+          <img className="profile-img" src={props.imgURL} alt={props.name} />
+        </div>
+      </div>
       <div className="person">
         <h3 className="person-name">{props.name}</h3>
         {props.size !== "large" && (
           <h4 className="person-profession">{props.title}</h4>
         )}
-        {props.size === "large" && (
-          <div className="person-profession">
-            {props.titles &&
-              props.titles.length > 0 &&
-              props.titles?.map(title => (
-                <h4>
-                  <span>{title.name}, </span>
-                  <span>{title.org}</span>
-                </h4>
-              ))}
-          </div>
+        {["large", "micro"].includes(props.size) && (
+          <div className="person-profession">{titles}</div>
         )}
         {props.size !== "micro" && (
           <ul className="person-contact-info">
@@ -53,7 +61,7 @@ const ProfileCard = ({ ...props }) => {
         )}
         {["default", "large"].includes(props.size) && (
           <div>
-            <p className="person-description">{props.description}</p>
+            <p className="person-description">{props.shortBio.slice(0, 250)}</p>
             <ul className="person-social-medias">
               <li>
                 <a
@@ -89,7 +97,7 @@ const ProfileCard = ({ ...props }) => {
           <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
         )}
       </div>
-    </ProfileCardTemplate>
+    </div>
   );
 };
 

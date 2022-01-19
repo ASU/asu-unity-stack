@@ -3644,6 +3644,8 @@
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
+    prop-types "^15.7.2"
+    qs "^6.10.0"
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 

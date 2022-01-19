@@ -31,7 +31,8 @@ Tab.propTypes = {
 };
 
 const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
-  const [activeTabID, setActiveTabID] = useState(children[0].props.id);
+  const childrenArray = React.Children.toArray(children);
+  const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const current = searchParams.get(id);
@@ -68,14 +69,12 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     });
   };
 
-  const tabs = React.Children.toArray(
-    children.map(el => {
-      return React.cloneElement(el, {
-        bgColor: backgroundColor,
-        selected: activeTabID === el.props.id,
-      });
-    })
-  );
+  const tabs = childrenArray.map(el => {
+    return React.cloneElement(el, {
+      bgColor: backgroundColor,
+      selected: activeTabID === el.props.id,
+    });
+  });
   const catchScroll = event => {
     const item = document.querySelector(`#${TabbedPanelsId}`);
     const nav = item.querySelector(".nav-tabs");
@@ -111,7 +110,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     <div className={backgroundColor}>
       <nav className={navClasses} onScroll={catchScroll} id={TabbedPanelsId}>
         <div className="nav nav-tabs" id={NavTabsId} role="tablist">
-          {children.map(child => {
+          {childrenArray.map(child => {
             return (
               <TabHeader
                 id={child.props.id}

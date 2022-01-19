@@ -40,7 +40,7 @@ const ASUSearchResultsList = ({
   return (
     <SearchResultsList>
       {results && results.length > 0 && (
-        <div>
+        <div className={size}>
           <div
             className={
               size === "micro" ? "results-title-small" : "results-title"
