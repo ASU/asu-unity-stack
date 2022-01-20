@@ -45,8 +45,9 @@ pipeline {
             steps {
                 //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
                 //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
-                sh 'echo "run visual regression testing"'
-                sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
+                sh 'echo "SKIP visual regression testing"'
+                //sh 'echo "run visual regression testing"'
+                //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
             }
         }
         stage('Publish Packages to Registry') {
