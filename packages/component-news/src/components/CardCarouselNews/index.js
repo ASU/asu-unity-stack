@@ -60,7 +60,7 @@ const CarouselTemplate = ({ cardButton }) => {
  * @param {FeedType} props
  */
 const CardCarouselNews = ({ cardButton, ...props }) => (
-  // Calling the high order component that fetch the data
+  // Calling the high order component that fetches the data
   <BaseFeed {...props}>
     <CarouselTemplate
       cardButton={{ ...defaultProps.cardButton, ...cardButton }}
