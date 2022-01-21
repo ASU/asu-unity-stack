@@ -32,7 +32,7 @@ const extraOptions = {
 };
 
 export default createComponent(
-  "ProfileCard",
+  "SearchResultsList",
   "Molecules",
   "Templates",
   extraOptions
@@ -49,6 +49,7 @@ for (let i = 0; i < numResults; i++) {
 export const profileCardExample = createStory(
   args => {
     const [currentPage, setCurrentPage] = useState(1);
+    const [results, setResults] = useState(1);
     const sizedCards = cards.slice().map(profileCard => {
       const newProps = {
         ...profileCard.props,
@@ -62,7 +63,7 @@ export const profileCardExample = createStory(
 
     return (
       <ASUSearchResultsList
-        results={sizedCards}
+        results={results}
         totalResults={numResults}
         resultsPerPage={resultsPerPage}
         currentPage={currentPage}
