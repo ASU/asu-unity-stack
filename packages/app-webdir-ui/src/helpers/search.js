@@ -57,7 +57,7 @@ const searchEngine = (engineName, term, page, items, auth) => {
         engines[engineName].url,
         {
           query: term,
-          //search_fields: { asurite_id: {} },
+          // search_fields: { asurite_id: {} },
           page: { size: items, current: page },
         },
         { headers: config.headers }

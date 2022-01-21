@@ -9,8 +9,9 @@ const ProfileCard = ({ ...props }) => {
   if (props.titles?.length > 0 && props.size === "micro") {
     titles = <span>{props.titles[0].name}</span>;
   } else if (props.titles?.length > 0 && props.size === "large") {
-    titles = props.titles.map(title => (
-      <h4 key={title}>
+    titles = props.titles.map((title, idx) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <h4 key={idx}>
         <span>{title}</span>
       </h4>
     ));

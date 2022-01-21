@@ -5,47 +5,34 @@ import {
   createStory,
   layoutNames,
 } from "../../../bootstrap4-theme/helpers/wrapper";
-import { staffConverter } from "../helpers/dataConverter";
+import { subdomainConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
 const extraOptions = {
-  size: {
-    name: "Size",
-    options: ["micro", "small", "large"],
-    defaultValue: "large",
-    control: {
-      type: "radio",
-      labels: {
-        micro: "Micro",
-        small: "Small",
-        large: "Large",
-      },
-    },
-  },
   fill: {
     name: "Fill",
     control: { type: "boolean" },
-    defaultValue: false,
+    defaultValue: true,
   },
 };
 
 export default createComponent(
-  "ProfileCard",
+  "Results Card",
   "Atoms",
   "Templates",
   extraOptions
 );
 
-const profileCard = staffConverter(data);
+const resultsCard = subdomainConverter(data);
 
-export const profileCardExample = createStory(
+export const resultsCardExample = createStory(
   args => {
     const newProps = {
-      ...profileCard.props,
-      ...{ size: args.size, fill: args.fill },
+      ...resultsCard.props,
+      ...{ fill: args.fill },
     };
     const profile = {
-      ...profileCard,
+      ...resultsCard,
       ...{ props: newProps },
     };
     return (
