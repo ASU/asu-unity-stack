@@ -7,13 +7,13 @@ import anonPic from "./anon.png";
 const extraOptions = {
   size: {
     name: 'Size',
-    options: ['micro-profile', 'small-profile', ''],
+    options: ['micro', 'small', ''],
     defaultValue: '',
     control: {
       type: 'radio',
       labels: {
-        'micro-profile': 'Micro',
-        'small-profile': 'Small',
+        'micro': 'Micro',
+        'small': 'Small',
         '': 'Large',
       },
     },
@@ -48,7 +48,7 @@ const PersonProfile = props => (
           <span>Academic Associate</span>
         </h4>
       </div>
-      {props.size !== "micro-profile" && (
+      {props.size !== "micro" && (
       <ul className="person-contact-info">
         <li>
           <a
@@ -100,7 +100,7 @@ const PersonProfile = props => (
         </li>
       </ul>
       )}
-      {!["micro-profile", "small-profile"].includes(props.size) && (
+      {!["micro", "small"].includes(props.size) && (
       <div>
         <p className="person-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
@@ -156,10 +156,10 @@ const PersonProfile = props => (
         </ul>
       </div>
       )}
-      {props.size === "small-profile" && (
+      {props.size === "small" && (
         <Button color="maroon" size="small" label="View Profile" />
       )}
-      {props.size === "micro-profile" && (
+      {props.size === "micro" && (
         <span class="more-link"><a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a></span>
       )}
     </div>

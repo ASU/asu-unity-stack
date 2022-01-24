@@ -10,7 +10,7 @@ const ResultCard = ({ ...props }) => {
       : props.description;
   return (
     <ResultCardTemplate
-      className={`uds-results-card uds-content-align ${props.size} ${
+      className={`uds-results-card uds-content-align ${
         props.fill ? "fill" : ""
       }`}
     >
