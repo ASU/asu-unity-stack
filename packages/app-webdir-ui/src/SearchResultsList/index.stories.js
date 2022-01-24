@@ -49,11 +49,22 @@ for (let i = 0; i < numResults; i++) {
 export const profileCardExample = createStory(
   args => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [results, setResults] = useState(1);
-    const sizedCards = cards.slice().map(profileCard => {
+    const [results, setResults] = useState(cards.slice(0, resultsPerPage));
+
+    const changePage = newPage => {
+      setCurrentPage(newPage);
+      const startingCard = (newPage - 1) * resultsPerPage;
+      const newResults = cards.slice(
+        startingCard,
+        startingCard + resultsPerPage
+      );
+
+      setResults(newResults);
+    };
+
+    const sizedCards = results.map(profileCard => {
       const newProps = {
         ...profileCard.props,
-        ...{ size: args.size, fill: args.fill },
       };
       return {
         ...profileCard,
@@ -63,14 +74,15 @@ export const profileCardExample = createStory(
 
     return (
       <ASUSearchResultsList
-        results={results}
+        results={sizedCards}
         totalResults={numResults}
         resultsPerPage={resultsPerPage}
         currentPage={currentPage}
-        onPageChange={setCurrentPage}
+        onPageChange={changePage}
         isLoading={false}
         title="Some title"
-        size="large"
+        size={args.size}
+        fill={args.fill}
       />
     );
   },

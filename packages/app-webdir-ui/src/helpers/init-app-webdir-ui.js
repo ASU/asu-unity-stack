@@ -24,8 +24,6 @@ const RenderReact = (component, props, targetSelector) => {
  * @param {ComponentProps} props
  */
 const initSearchPage = ({ targetSelector, props = {} }) => {
-  // eslint-disable-next-line no-console
-  console.log({ targetSelector });
   RenderReact(iSearchApp, props, targetSelector);
 };
 
