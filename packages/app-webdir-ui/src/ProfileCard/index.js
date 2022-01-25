@@ -16,6 +16,9 @@ const ProfileCard = ({ ...props }) => {
       </h4>
     ));
   }
+  const hideNonExistantImages = e => {
+    e.target.style.display = "none";
+  };
   return (
     <div
       className={`uds-person-profile uds-content-align ${props.size} ${
@@ -27,7 +30,12 @@ const ProfileCard = ({ ...props }) => {
           className="profile-img-placeholder"
           style={{ backgroundImage: `url(${anonPic})` }}
         >
-          <img className="profile-img" src={props.imgURL} alt={props.name} />
+          <img
+            className="profile-img"
+            src={props.imgURL}
+            alt={props.name}
+            onError={hideNonExistantImages}
+          />
         </div>
       </div>
       <div className="person">
