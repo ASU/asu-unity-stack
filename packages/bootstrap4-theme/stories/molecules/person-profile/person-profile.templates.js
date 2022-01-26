@@ -35,6 +35,7 @@ const PersonProfile = props => (
           className="profile-img"
           src="https://source.unsplash.com/WLUHO9A_xik/300x300"
           alt="John Smith"
+          onError={(e) => e.target.style.display='none'}
         />
       </div>
     </div>
