@@ -46,7 +46,7 @@ const searchEngine = (engineName, term, page, items, auth) => {
     return new Promise(resolve => {
       resolve({
         engineName,
-        page,
+        page: { page, total_results: 0 },
         results: [...Array(items).keys()].map(anonConverter),
       });
     });
