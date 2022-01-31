@@ -29,6 +29,11 @@ const extraOptions = {
     control: { type: "boolean" },
     defaultValue: false,
   },
+  summary: {
+    name: "Summary",
+    control: { type: "boolean" },
+    defaultValue: false,
+  },
 };
 
 export default createComponent(
@@ -83,6 +88,7 @@ export const profileCardExample = createStory(
         title="Some title"
         size={args.size}
         fill={args.fill}
+        summary={args.summary}
       />
     );
   },
