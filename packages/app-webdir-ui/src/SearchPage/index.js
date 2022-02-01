@@ -55,8 +55,8 @@ function SearchPage() {
     updateContent(searchParams.get(searchTabsId));
   };
 
-  const pageChange = page => {
-    updateContent(searchParams.get(searchTabsId), page);
+  const pageChange = (page, limitUpdateTo = null) => {
+    updateContent(searchParams.get(searchTabsId), page, limitUpdateTo);
   };
 
   const tabChange = tab => {
@@ -171,7 +171,8 @@ function SearchPage() {
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All asu.edu results"
-                  onPageChange={pageChange}
+                  onPageChange={page => pageChange(page, tabIds.sites)}
+                  currentPage={results.sites?.page?.current}
                 />
               </div>
             </div>
