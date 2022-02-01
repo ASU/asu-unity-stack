@@ -15,10 +15,19 @@ function SearchPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const updateContent = (tab, page = 1) => {
-    setIsLoading(true);
-    performSearch(tab, term, page, resultsPerPage).then(res => {
-      setResults(res);
+  const updateContent = (tab, page = 1, limitUpdateTo = null) => {
+    if (!limitUpdateTo) {
+      setIsLoading(true);
+    }
+    const toSearch = limitUpdateTo || tab;
+    performSearch(toSearch, term, page, resultsPerPage).then(res => {
+      if (limitUpdateTo) {
+        const current = { ...results };
+        current[res.engineName] = res;
+        setResults(current);
+      } else {
+        setResults(res);
+      }
       setIsLoading(false);
     });
   };
@@ -29,8 +38,8 @@ function SearchPage() {
     updateContent(searchParams.get(searchTabsId));
   };
 
-  const pageChange = page => {
-    updateContent(searchParams.get(searchTabsId), page);
+  const pageChange = (page, limitUpdateTo = null) => {
+    updateContent(searchParams.get(searchTabsId), page, limitUpdateTo);
   };
 
   const tabChange = tab => {
@@ -152,7 +161,8 @@ function SearchPage() {
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All asu.edu results"
-                  onPageChange={pageChange}
+                  onPageChange={page => pageChange(page, tabIds.sites)}
+                  currentPage={results.sites?.page?.current}
                 />
               </div>
             </div>
