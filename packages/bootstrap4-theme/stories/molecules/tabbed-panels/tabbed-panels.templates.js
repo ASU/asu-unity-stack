@@ -31,7 +31,7 @@ export const TabbedPanels = createStory(
     return (
       <div class={args.bgColor}>
         <nav
-          class={`uds-tabbed-panels ${
+          class={`uds-tabbed-panels uds-content-align ${
             args.bgColor === 'bg-dark' ? 'uds-tabbed-panels-dark' : ''
           }`}
         >
