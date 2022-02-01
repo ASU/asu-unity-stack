@@ -36,7 +36,7 @@ const fillInBlanks = datum => {
     bio: {
       raw: "",
     },
-    short_bio: {
+    shortBio: {
       raw: "",
     },
     url_path_dir1: {
@@ -74,7 +74,7 @@ export const staffConverter = (datum, size = "small") => {
       addressLine1={filledDatum.address_line1.raw}
       addressLine2={filledDatum.address_line2.raw}
       description={filledDatum.bio.raw}
-      shortBio={filledDatum.short_bio.raw}
+      shortBio={filledDatum.shortBio.raw}
       facebookLink={filledDatum.facebook_link.raw}
       linkedinLink={filledDatum.linkedIn_link.raw}
       twitterLink={filledDatum.twitter_link.raw}

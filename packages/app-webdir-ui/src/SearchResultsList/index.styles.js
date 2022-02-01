@@ -25,6 +25,9 @@ const SearchResultsList = styled.div`
       }
     }
   }
+  .micro {
+    max-width: 300px;
+  }
   .results-title {
     margin-bottom: 64px;
     font-size: 40px;

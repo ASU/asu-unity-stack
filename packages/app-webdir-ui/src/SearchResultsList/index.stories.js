@@ -39,7 +39,6 @@ export default createComponent(
 );
 
 const numResults = 31;
-const resultsPerPage = 6;
 
 const cards = [];
 // eslint-disable-next-line no-plusplus
@@ -48,6 +47,7 @@ for (let i = 0; i < numResults; i++) {
 }
 export const profileCardExample = createStory(
   args => {
+    const resultsPerPage = args.size === "micro" ? 3 : 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [results, setResults] = useState(cards.slice(0, resultsPerPage));
 

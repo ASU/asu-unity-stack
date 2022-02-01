@@ -11,9 +11,17 @@ function SearchPage() {
   const resultsPerPage = 6;
   const [term, setTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [numResults, setNumResults] = useState(0);
   const [results, setResults] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const tabIds = {
+    all: "all",
+    sites: "sites",
+    faculty: "faculty",
+    students: "students",
+  };
 
   const updateContent = (tab, page = 1, limitUpdateTo = null) => {
     if (!limitUpdateTo) {
@@ -21,6 +29,15 @@ function SearchPage() {
     }
     const toSearch = limitUpdateTo || tab;
     performSearch(toSearch, term, page, resultsPerPage).then(res => {
+      if (tab === tabIds.all) {
+        const total = Object.keys(tabIds).reduce(
+          (prev, curr) => (res[curr] ? prev + res[curr].page.total_results : 0),
+          0
+        );
+        setNumResults(total);
+      } else {
+        setNumResults(res.page.total_results);
+      }
       if (limitUpdateTo) {
         const current = { ...results };
         current[res.engineName] = res;
@@ -49,13 +66,6 @@ function SearchPage() {
   const goToTab = tab => {
     updateContent(tab);
     setSearchParams({ [searchTabsId]: tab });
-  };
-
-  const tabIds = {
-    all: "all",
-    sites: "sites",
-    faculty: "faculty",
-    students: "students",
   };
 
   const preSearchOrContent = content => {
@@ -100,8 +110,8 @@ function SearchPage() {
                   <span>Your search for </span>
                   <span className="search-message-emphasis">{searchTerm} </span>
                   <span> returned </span>
-                  <span className="search-message-emphasis">N</span>
-                  <span>faculty and staff results </span>
+                  <span className="search-message-emphasis">{numResults}</span>
+                  <span> faculty and staff results </span>
                 </div>
               </div>
               <div className="sort">
@@ -121,7 +131,7 @@ function SearchPage() {
               <div className="faculty-and-staff">
                 <ASUSearchResultsList
                   results={results.faculty?.results}
-                  totalResults={results.faculty?.page?.total_results}
+                  totalResults={results.faculty?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Faculty and staff"
@@ -133,7 +143,7 @@ function SearchPage() {
               <div className="sites-results">
                 <ASUSearchResultsList
                   results={results.sites?.results}
-                  totalResults={results.sites?.page?.total_results}
+                  totalResults={results.sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All results from <<sites>>"
@@ -144,7 +154,7 @@ function SearchPage() {
               <div className="students">
                 <ASUSearchResultsList
                   results={results.students?.results}
-                  totalResults={results.students?.page?.total_results}
+                  totalResults={results.students?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Students"
@@ -157,7 +167,7 @@ function SearchPage() {
               <div className="all-results">
                 <ASUSearchResultsList
                   results={results.sites?.results}
-                  totalResults={results.sites?.page?.total_results}
+                  totalResults={results.sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All asu.edu results"
@@ -172,7 +182,7 @@ function SearchPage() {
           {preSearchOrContent(
             <ASUSearchResultsList
               results={results.results}
-              totalResults={results.page?.total_results}
+              totalResults={numResults}
               resultsPerPage={6}
               isLoading={isLoading}
               title="<<Subdomain>>"
@@ -184,7 +194,7 @@ function SearchPage() {
           {preSearchOrContent(
             <ASUSearchResultsList
               results={results.results}
-              totalResults={results.page?.total_results}
+              totalResults={numResults}
               resultsPerPage={6}
               currentPage={results.page?.current}
               isLoading={isLoading}
