@@ -1,18 +1,18 @@
 export default {
   eid: {
-    raw: "1026718",
+    raw: "1234567",
   },
   city: {
-    raw: "Tempe",
+    raw: "City",
   },
   affiliations: {
-    raw: ["Courtesy Affiliate"],
+    raw: ["Some Affiliate"],
   },
   bio: {
-    raw: "<p>Dr. Mark Antonucci is a highly accomplished leader with extensive experience in philanthropy, fundraising, people operations, university design/strategy, and student development. Mark is an educator at his core, who works tirelessly to identify and implement new approaches to deliver knowledge through universities&nbsp;to help positively shape the future of society.&nbsp;</p>\r\n\r\n<p>During his tenure with the Arizona State University Foundation, he was one of the lead strategic designers of the university\u0019s overall fundraising and advancement program, which led to seven consecutive years of record-breaking fundraising success, 90% of staff retention, and over one billion dollars in newly generated revenues. Mark was also instrumental in the design, launch, and execution of Campaign ASU 2020, which resulted in a deeper culture of philanthropy, a doubling of new major gifts secured annually, an overall increase in donor count and over $2.3B raised. His leadership portfolio included central development, advancement services, strategic initiatives, regional advancement, and management of the foundation Board.</p>\r\n\r\n<p>Mark was the architect of ASU\u0019s Next Generation Council, a national first-of-its kind advisory group designed to innovatively engage, activate, and advance millennial alumni with the aim of accelerating their involvement to become future board members and philanthropic leaders across ASU. The ASU Next Generation Council was recognized by AGB in 2020 as an innovative best practice initiative in higher education.&nbsp;</p>\r\n\r\n<p>He holds a doctorate in higher and postsecondary education from Arizona State University, where his research focused on leadership, governance, and university design. He also earned a master's degree in higher education from Arizona State University and a bachelor's degree in marketing from Quinnipiac University. Additionally, he serves as a faculty associate within the Division of Educational Leadership and Innovation with the Mary Lou Fulton Teachers College.</p>\r\n",
+    raw: "<p>Things just happen when Dr. Isa MacGuffin is around. Conservative estimates suggest a 430% increase in 'events' as soon as she arrives to a location.</p>",
   },
   shortBio: {
-    raw: "Dr. Mark Antonucci is a highly accomplished leader with extensive experience in philanthropy, fundraising, people operations, university design/strategy, and student development. Mark is an educator at his core",
+    raw: "Things just happen when Dr. Isa MacGuffin is around. Conservative estimates suggest a 430% increase in 'events' as soon as she arrives to a location.",
   },
   image_urls: {
     raw: [""],
@@ -39,17 +39,13 @@ export default {
     raw: " ",
   },
   first_name: {
-    raw: "Mark",
+    raw: "Isa",
   },
   faculty_titles: {
     raw: ["Academic Associate"],
   },
   expertise_areas: {
-    raw: [
-      "Organizational Change",
-      "Leadership Development",
-      "Higher and Postsecondary Education",
-    ],
+    raw: ["Organizational Change", "Leadership Development"],
   },
   teaching_website: {
     raw: " ",
@@ -64,10 +60,10 @@ export default {
     raw: [" "],
   },
   last_name: {
-    raw: "Antonucci",
+    raw: "MacGuffin",
   },
   subaffiliation_departments: {
-    raw: ["Arizona State University", "Fiscal & Business Ops West"],
+    raw: ["Arizona State University", "Dept. of Serendipity"],
   },
   google_plus: {
     raw: " ",
@@ -79,28 +75,28 @@ export default {
     raw: ["Academic Associate"],
   },
   middle_name: {
-    raw: "Joseph",
+    raw: "Real",
   },
   display_name: {
-    raw: "Mark Antonucci",
+    raw: "Isa MacGuffin",
   },
   mail_codes: {
     raw: [" "],
   },
   asurite_id: {
-    raw: "mantonuc",
+    raw: "isamacguf",
   },
   preferred_first_name: {
     raw: " ",
   },
   email_address: {
-    raw: "Mark.Antonucci@asu.edu",
+    raw: "Isa.MacGuffin@asu.edu",
   },
   phone: {
-    raw: "480/965-1340",
+    raw: "480/123-4567",
   },
   deptids: {
-    raw: ["192466"],
+    raw: ["123456"],
   },
   employee_types: {
     raw: ["Academic Professional"],
