@@ -25,7 +25,7 @@ const ProfileCard = ({ ...props }) => {
         props.fill ? "fill" : ""
       }`}
     >
-      <div className="profile-img-container">
+      <a href={`/profile/${props.id}`} className="profile-img-container">
         <div
           className="profile-img-placeholder"
           style={{ backgroundImage: `url(${anonPic})` }}
@@ -37,9 +37,11 @@ const ProfileCard = ({ ...props }) => {
             onError={hideNonExistantImages}
           />
         </div>
-      </div>
+      </a>
       <div className="person">
-        <h3 className="person-name">{props.name}</h3>
+        <a href={`/profile/${props.id}`}>
+          <h3 className="person-name">{props.name}</h3>
+        </a>
         {props.size !== "large" && (
           <h4 className="person-profession">{props.title}</h4>
         )}
@@ -100,7 +102,13 @@ const ProfileCard = ({ ...props }) => {
           </div>
         )}
         {props.size === "small" && (
-          <Button color="maroon" size="small" label="View Profile" />
+          <a
+            className="btn btn-maroon btn-md"
+            href={`/profile/${props.id}`}
+            role="button"
+          >
+            View Profile
+          </a>
         )}
         {props.size === "micro" && (
           <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
