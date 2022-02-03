@@ -12,7 +12,6 @@ export const profileCardType = {
   ),
   email: PropTypes.string,
   telephone: PropTypes.string,
-  addressLink: PropTypes.string,
   addressLine1: PropTypes.string,
   addressLine2: PropTypes.string,
   description: PropTypes.string,

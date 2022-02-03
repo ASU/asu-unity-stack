@@ -70,7 +70,6 @@ export const staffConverter = (datum, size = "small") => {
       titles={filledDatum.titles.raw}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
-      addressLink="asu.edu"
       addressLine1={filledDatum.address_line1.raw}
       addressLine2={filledDatum.address_line2.raw}
       description={filledDatum.bio.raw}
@@ -96,7 +95,6 @@ export const studentsConverter = (datum, size = "small") => {
       titles={filledDatum.titles.raw}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
-      addressLink="asu.edu"
       addressLine1={filledDatum.address_line1.raw}
       addressLine2={filledDatum.address_line2.raw}
       description={filledDatum.bio.raw}
@@ -120,7 +118,6 @@ export const anonConverter = (datum, size = "small") => {
       titles={["Title"]}
       email="email@example.com"
       telephone=""
-      addressLink="asu.edu"
       addressLine1=""
       addressLine2=""
       description=""

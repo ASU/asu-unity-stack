@@ -61,12 +61,12 @@ const ProfileCard = ({ ...props }) => {
               </a>
             </li>
             <li>
-              <a href={props.addressLink} aria-label="See user address">
+              <div aria-label="See user address">
                 <address className="person-address">
                   <span className="person-street">{props.addressLine1}</span>
                   <span className="person-city">{props.addressLine2}</span>
                 </address>
-              </a>
+              </div>
             </li>
           </ul>
         )}
