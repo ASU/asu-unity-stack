@@ -1132,8 +1132,10 @@ the content of the header
 */
 .uds-full-width {
   .uds-content-align {
+
+
     max-width: 1920px;
-    width: 100%;
+    width: calc(100% - $uds-size-spacing-2*2);
     margin: 0 $uds-size-spacing-2;
 
     @include media-breakpoint-up(md) {
