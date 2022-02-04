@@ -33,7 +33,7 @@ export default {
     raw: ["MLF Teachers College"],
   },
   photo_url: {
-    raw: "https://webapp4.asu.edu/photo-ws/directory_photo/1026718",
+    raw: "https://source.unsplash.com/random/400x400?a=1",
   },
   fax: {
     raw: " ",
