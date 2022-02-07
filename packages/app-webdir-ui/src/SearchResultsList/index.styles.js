@@ -8,7 +8,7 @@ const SearchResultsList = styled.div`
       left 60%,
       left bottom,
       from(rgba(0, 0, 0, 1)),
-      to(rgba(0, 0, 0, 0.4))
+      to(rgba(0, 0, 0, 0.2))
     );
   }
   .uds-person-profile:not(:first-child) {
