@@ -5,10 +5,10 @@ const SearchResultsList = styled.div`
   .summary {
     -webkit-mask-image: -webkit-gradient(
       linear,
-      left top,
+      left 60%,
       left bottom,
       from(rgba(0, 0, 0, 1)),
-      to(rgba(0, 0, 0, 0))
+      to(rgba(0, 0, 0, 0.2))
     );
   }
   .uds-person-profile:not(:first-child) {
