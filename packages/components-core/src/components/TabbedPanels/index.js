@@ -101,6 +101,29 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     onTabChange(tabID);
   };
 
+  const focusOnTab = tabID => {
+    const panels = document.getElementById(TabbedPanelsId);
+    panels.querySelector(`#${tabID}`).focus();
+  };
+
+  const goLeft = () => {
+    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
+    if (currPos > 0) {
+      const newTabID = childrenArray[currPos - 1].props.id;
+      setSearchParams({ [id]: newTabID });
+      focusOnTab(newTabID);
+      onTabChange(newTabID);
+    }
+  };
+  const goRight = () => {
+    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
+    if (currPos < childrenArray.length - 1) {
+      const newTabID = childrenArray[currPos + 1].props.id;
+      setSearchParams({ [id]: newTabID });
+      focusOnTab(newTabID);
+      onTabChange(newTabID);
+    }
+  };
   let navClasses = "uds-tabbed-panels";
   if (backgroundColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
@@ -118,6 +141,8 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
                 selected={activeTabID === child.props.id}
                 selectTab={switchToTab}
                 key={child.props.id}
+                leftKeyPressed={goLeft}
+                rightKeyPressed={goRight}
               />
             );
           })}
@@ -133,7 +158,12 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
           }}
         />
       </nav>
-      <div className="tab-content" id="nav-tabContent">
+      <div
+        className="tab-content"
+        tabIndex={0}
+        role="tabpanel"
+        id="nav-tabContent"
+      >
         {tabs}
       </div>
     </div>
