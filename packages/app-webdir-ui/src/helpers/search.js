@@ -26,18 +26,24 @@ const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 3,
+    inFlight: false,
+    abortController: null,
   },
   [engineNames.STUDENTS]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-students/search.json`,
     needsAuth: true,
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
+    inFlight: false,
+    abortController: null,
   },
   [engineNames.SITES]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites/search.json`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
+    inFlight: false,
+    abortController: null,
   },
 };
 
@@ -52,6 +58,11 @@ const searchEngine = (engineName, term, page, items, auth) => {
     });
   }
   return new Promise(resolve => {
+    if (engines[engineName].inFlight === true) {
+      engines[engineName].abortController.abort();
+    }
+    engines[engineName].inFlight = true;
+    engines[engineName].abortController = new AbortController();
     axios
       .post(
         engines[engineName].url,
@@ -60,9 +71,14 @@ const searchEngine = (engineName, term, page, items, auth) => {
           // search_fields: { asurite_id: {} },
           page: { size: items, current: page },
         },
-        { headers: config.headers }
+        {
+          headers: config.headers,
+          signal: engines[engineName].abortController.signal,
+        }
       )
       .then(res => {
+        engines[engineName].inFlight = false;
+        engines[engineName].abortController = null;
         let topResult = res.data.results.reduce((prev, curr) => {
           return prev === null || prev["_meta"].score < curr["_meta"].score
             ? curr
