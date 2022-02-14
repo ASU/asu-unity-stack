@@ -79,7 +79,10 @@ const ProfileCard = ({ ...props }) => {
                   href={props.facebookLink}
                   aria-label="Go to user Facebook profile"
                 >
-                  <span className="fab fa-facebook-square" />
+                  <span
+                    className="fab fa-facebook-square"
+                    title="Facebook Link"
+                  />
                 </a>
               </li>
               <li>
@@ -87,7 +90,7 @@ const ProfileCard = ({ ...props }) => {
                   href={props.linkedinLink}
                   aria-label="Go to user Linkedin profile"
                 >
-                  <span className="fab fa-linkedin" />
+                  <span className="fab fa-linkedin" title="LinkedIn Link" />
                 </a>
               </li>
               <li>
@@ -95,7 +98,10 @@ const ProfileCard = ({ ...props }) => {
                   href={props.twitterLink}
                   aria-label="Go to user Twitter profile"
                 >
-                  <span className="fab fa-twitter-square" />
+                  <span
+                    className="fab fa-twitter-square"
+                    title="Twitter Link"
+                  />
                 </a>
               </li>
             </ul>

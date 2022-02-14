@@ -68,6 +68,13 @@ function SearchPage() {
     setSearchParams({ [searchTabsId]: tab });
   };
 
+  const inputKeyPress = e => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      doSearch();
+    }
+  };
+
   const preSearchOrContent = content => {
     if (searchTerm.length === 0) {
       return <PreSearchMessage />;
@@ -92,6 +99,7 @@ function SearchPage() {
             placeholder="Search"
             value={term}
             onChange={e => setTerm(e.target.value)}
+            onKeyDown={inputKeyPress}
           />
           <Button
             color="maroon"
