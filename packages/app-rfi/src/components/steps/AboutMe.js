@@ -24,51 +24,46 @@ const defaultInputEvent = {
   component: "step 2 of 3",
 };
 
+function createMarkup(output) {
+  return { __html: output };
+}
+
 // Components
 
-const RfiGdpr = ({ campus }) => (
-  <div className="rfi-consent">
-    <div className="rfi-consent-wording">
-      <p>
-        By submitting my information, I consent to ASU contacting me about
-        campus{" "}
-        {campus === "ONLINE"
-          ? "educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above"
-          : "education services using email, direct mail, SMS/texting and digital platforms"}
-        . Message and data rates may apply. Consent is not required to receive
-        services, and I may call ASU directly at{" "}
-        <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s{" "}
-        <a href="https://asuonline.asu.edu/text-terms/">
-          mobile terms and conditions
-        </a>
-        , and{" "}
-        <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">
-          Privacy Statements
-        </a>
-        , including the European Supplement.
-      </p>
+const RfiGdpr = ({ campus }) => {
+  let gdprWording = `By submitting my information, I consent to ASU contacting me about education services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can withdraw consent by contacting ASU at <a href="mailto:UnsubFutureStudentComm@asu.edu">UnsubFutureStudentComm@asu.edu</a> or as described in communications I receive. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a> and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
+  if (campus === "ONLNE") {
+    gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
+  }
+  return (
+    <div className="rfi-consent">
+      <div
+        className="rfi-consent-wording"
+        dangerouslySetInnerHTML={createMarkup(gdprWording)}
+      />
+      <RfiCheckboxSingle
+        id="GdprConsent"
+        name="GdprConsent"
+        value="1"
+        requiredIcon
+        required
+        onBlur={e => {
+          trackGAEvent({
+            ...defaultInputEvent,
+            action: e.target.checked ? "click" : "unclick",
+            event: "select",
+            type: "checkbox",
+            section: "about me",
+            text: "i consent",
+          });
+        }}
+      >
+        I consent
+      </RfiCheckboxSingle>
     </div>
-    <RfiCheckboxSingle
-      id="GdprConsent"
-      name="GdprConsent"
-      value="1"
-      requiredIcon
-      required
-      onBlur={e => {
-        trackGAEvent({
-          ...defaultInputEvent,
-          action: e.target.checked ? "click" : "unclick",
-          event: "select",
-          type: "checkbox",
-          section: "about me",
-          text: "i consent",
-        });
-      }}
-    >
-      I consent
-    </RfiCheckboxSingle>
-  </div>
-);
+  );
+};
+
 const AboutMe = () => {
   const [termOptions, setTermOptions] = useState([]);
 
