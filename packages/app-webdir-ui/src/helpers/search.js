@@ -136,8 +136,8 @@ export const performSearch = (tab, term, page, items, auth = null, sort) => {
       });
     } else {
       const currentSort = engines[tab].supportedSortTypes.includes(sort)
-          ? sortOptions[sort]
-          : { _score: "desc" };
+        ? sortOptions[sort]
+        : { _score: "desc" };
       searchEngine(tab, term, page, items, auth, currentSort).then(results => {
         resolve(results);
       });

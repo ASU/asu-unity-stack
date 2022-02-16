@@ -36,7 +36,9 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const newParams = {};
+    // eslint-disable-next-line no-restricted-syntax
     for (const entry of searchParams.entries()) {
+      // eslint-disable-next-line prefer-destructuring
       newParams[entry[0]] = entry[1];
     }
     const currentTab = newParams[id];

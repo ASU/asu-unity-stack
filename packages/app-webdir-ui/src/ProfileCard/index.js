@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Button } from "../../../components-core/src/components/Button";
 import anonPic from "../assets/anon.png";
 import { profileCardType } from "./models";
 

@@ -31,10 +31,6 @@ function SearchPage() {
   const searchTabsId = "search-tabs";
   const sortParamName = "sort-by";
 
-  useEffect(() => {
-    doSearch();
-  }, [searchParams]);
-
   const updateContent = (tab, page = 1, limitUpdateTo = null) => {
     if (!limitUpdateTo) {
       setIsLoading(true);
@@ -70,7 +66,11 @@ function SearchPage() {
     updateContent(searchParams.get(searchTabsId));
   };
 
-  const setSort = (newSort) => {
+  useEffect(() => {
+    doSearch();
+  }, [searchParams]);
+
+  const setSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
   };
 
