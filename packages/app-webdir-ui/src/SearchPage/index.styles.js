@@ -26,6 +26,18 @@ const SearchPageLayout = styled.div`
     }
   }
 
+  .sort-form {
+    margin: 0;
+    max-width: 75%;
+
+    label {
+      margin-right: 16px;
+      margin-bottom: 0;
+      line-height: 36px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
   .all-asu-search {
     display: grid;
     grid-template-columns: 700px 1fr;
@@ -49,18 +61,6 @@ const SearchPageLayout = styled.div`
 
     .sort {
       grid-area: sort;
-      form {
-        margin: 0;
-        max-width: 75%;
-
-        label {
-          margin-right: 16px;
-          margin-bottom: 0;
-          line-height: 36px;
-          text-align: center;
-          white-space: nowrap;
-        }
-      }
     }
     .top-results {
       grid-area: top;
@@ -82,6 +82,10 @@ const SearchPageLayout = styled.div`
     }
   }
 
+  .faculty-tab {
+    display: grid;
+    grid-template-columns: 792px auto;
+  }
   @media (max-width: 768px) {
     form {
       margin-bottom: 24px;

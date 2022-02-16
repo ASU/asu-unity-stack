@@ -35,12 +35,18 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
-    const current = searchParams.get(id);
-    if (current === null) {
-      setSearchParams({ [id]: activeTabID });
-    } else {
-      setActiveTabID(searchParams.get(id));
+    const newParams = {};
+    for (const entry of searchParams.entries()) {
+      newParams[entry[0]] = entry[1];
     }
+    const currentTab = newParams[id];
+    if (currentTab === null) {
+      newParams[id] = activeTabID;
+    } else {
+      setActiveTabID(currentTab);
+    }
+    newParams[id] = searchParams.get(id) || activeTabID;
+    setSearchParams(newParams);
   }, [searchParams]);
 
   const [backgroundColor] = useState(bgColor || "");

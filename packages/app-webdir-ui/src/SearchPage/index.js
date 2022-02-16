@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Button, TabbedPanels, Tab } from "../../../components-core";
@@ -8,6 +8,11 @@ import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
 function SearchPage() {
+  const sortOptions = [
+    { value: "_score_desc", label: "Relevance" },
+    { value: "last_name_asc", label: "Last Name (ascending)" },
+    { value: "last_name_desc", label: "Last Name (descending)" },
+  ];
   const resultsPerPage = 6;
   const [term, setTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,36 +28,50 @@ function SearchPage() {
     students: "students",
   };
 
+  const searchTabsId = "search-tabs";
+  const sortParamName = "sort-by";
+
+  useEffect(() => {
+    doSearch();
+  }, [searchParams]);
+
   const updateContent = (tab, page = 1, limitUpdateTo = null) => {
     if (!limitUpdateTo) {
       setIsLoading(true);
     }
     const toSearch = limitUpdateTo || tab;
-    performSearch(toSearch, term, page, resultsPerPage).then(res => {
-      if (tab === tabIds.all) {
-        const total = Object.keys(tabIds).reduce(
-          (prev, curr) => (res[curr] ? prev + res[curr].page.total_results : 0),
-          0
-        );
-        setNumResults(total);
-      } else {
-        setNumResults(res.page.total_results);
+    const sort = searchParams.get(sortParamName);
+    performSearch(toSearch, term, page, resultsPerPage, null, sort).then(
+      res => {
+        if (tab === tabIds.all) {
+          const total = Object.keys(tabIds).reduce(
+            (prev, curr) =>
+              res[curr] ? prev + res[curr].page.total_results : 0,
+            0
+          );
+          setNumResults(total);
+        } else {
+          setNumResults(res.page.total_results);
+        }
+        if (limitUpdateTo) {
+          const current = { ...results };
+          current[res.engineName] = res;
+          setResults(current);
+        } else {
+          setResults(res);
+        }
+        setIsLoading(false);
       }
-      if (limitUpdateTo) {
-        const current = { ...results };
-        current[res.engineName] = res;
-        setResults(current);
-      } else {
-        setResults(res);
-      }
-      setIsLoading(false);
-    });
+    );
   };
-  const searchTabsId = "search-tabs";
 
   const doSearch = () => {
     setSearchTerm(term);
     updateContent(searchParams.get(searchTabsId));
+  };
+
+  const setSort = (newSort) => {
+    setSearchParams({ [sortParamName]: newSort });
   };
 
   const pageChange = (page, limitUpdateTo = null) => {
@@ -123,11 +142,20 @@ function SearchPage() {
                 </div>
               </div>
               <div className="sort">
-                <form className="uds-form">
+                <form className="uds-form sort-form">
                   <div className="form-group">
                     <label htmlFor="sortBySelect">Sort by</label>
-                    <select className="form-control" id="sortBySelect">
-                      <option>Relevance</option>
+                    <select
+                      className="form-control"
+                      id="sortBySelect"
+                      value={searchParams.get(sortParamName)}
+                      onChange={event => setSort(event.target.value)}
+                    >
+                      {sortOptions.map(op => (
+                        <option key={op.value} value={op.value}>
+                          {op.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </form>
@@ -200,16 +228,35 @@ function SearchPage() {
         </Tab>
         <Tab id={tabIds.faculty} title="Faculty and Staff">
           {preSearchOrContent(
-            <ASUSearchResultsList
-              results={results.results}
-              totalResults={numResults}
-              resultsPerPage={6}
-              currentPage={results.page?.current}
-              isLoading={isLoading}
-              title="All faculty and staff results"
-              onPageChange={pageChange}
-              size="large"
-            />
+            <div className="faculty-tab">
+              <ASUSearchResultsList
+                results={results.results}
+                totalResults={numResults}
+                resultsPerPage={6}
+                currentPage={results.page?.current}
+                isLoading={isLoading}
+                title="All faculty and staff results"
+                onPageChange={pageChange}
+                size="large"
+              />
+              <form className="uds-form sort-form">
+                <div className="form-group">
+                  <label htmlFor="sortBySelect">Sort by</label>
+                  <select
+                    className="form-control"
+                    id="sortBySelect"
+                    value={searchParams.get(sortParamName)}
+                    onChange={event => setSort(event.target.value)}
+                  >
+                    {sortOptions.map(op => (
+                      <option key={op.value} value={op.value}>
+                        {op.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </form>
+            </div>
           )}
         </Tab>
         <Tab id={tabIds.students} title="Students">
