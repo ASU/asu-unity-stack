@@ -28,6 +28,7 @@ const engines = {
     resultsPerSummaryPage: 3,
     inFlight: false,
     abortController: null,
+    supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.STUDENTS]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-students/search.json`,
@@ -36,6 +37,7 @@ const engines = {
     resultsPerSummaryPage: 3,
     inFlight: false,
     abortController: null,
+    supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
     url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites/search.json`,
@@ -44,10 +46,16 @@ const engines = {
     resultsPerSummaryPage: 6,
     inFlight: false,
     abortController: null,
+    supportedSortTypes: ["_score_desc"],
   },
 };
+const sortOptions = {
+  _score_desc: { _score: "desc" },
+  last_name_asc: { last_name: "asc" },
+  last_name_desc: { last_name: "desc" },
+};
 
-const searchEngine = (engineName, term, page, items, auth) => {
+const searchEngine = (engineName, term, page, items, auth, sort) => {
   if (engines[engineName].needsAuth && !auth) {
     return new Promise(resolve => {
       resolve({
@@ -67,6 +75,7 @@ const searchEngine = (engineName, term, page, items, auth) => {
       .post(
         engines[engineName].url,
         {
+          sort: [sort],
           query: term,
           // search_fields: { asurite_id: {} },
           page: { size: items, current: page },
@@ -98,16 +107,20 @@ const searchEngine = (engineName, term, page, items, auth) => {
   });
 };
 
-export const performSearch = (tab, term, page, items, auth = null) => {
+export const performSearch = (tab, term, page, items, auth = null, sort) => {
   return new Promise(resolve => {
     if (tab === "all") {
       const promises = Object.keys(engines).map(engine => {
+        const currentSort = engines[engine].supportedSortTypes.includes(sort)
+          ? sortOptions[sort]
+          : { _score: "desc" };
         return searchEngine(
           engine,
           term,
           page,
           engines[engine].resultsPerSummaryPage,
-          auth
+          auth,
+          currentSort
         );
       });
       const resultsDict = {};
@@ -122,7 +135,10 @@ export const performSearch = (tab, term, page, items, auth = null) => {
         resolve(resultsDict);
       });
     } else {
-      searchEngine(tab, term, page, items, auth).then(results => {
+      const currentSort = engines[tab].supportedSortTypes.includes(sort)
+        ? sortOptions[sort]
+        : { _score: "desc" };
+      searchEngine(tab, term, page, items, auth, currentSort).then(results => {
         resolve(results);
       });
     }
