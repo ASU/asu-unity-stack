@@ -141,25 +141,6 @@ function SearchPage() {
                   <span> faculty and staff results </span>
                 </div>
               </div>
-              <div className="sort">
-                <form className="uds-form sort-form">
-                  <div className="form-group">
-                    <label htmlFor="sortBySelect">Sort by</label>
-                    <select
-                      className="form-control"
-                      id="sortBySelect"
-                      value={searchParams.get(sortParamName)}
-                      onChange={event => setSort(event.target.value)}
-                    >
-                      {sortOptions.map(op => (
-                        <option key={op.value} value={op.value}>
-                          {op.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </form>
-              </div>
               <div className="top-results">
                 <div>{results.sites?.topResult}</div>
                 <div>{results.faculty?.topResult}</div>

@@ -45,7 +45,7 @@ const SearchPageLayout = styled.div`
     grid-row-gap: 72px;
     grid-column-gap: 126px;
     grid-template-areas:
-      "message sort"
+      "message message"
       "top faculty"
       "subdomain students"
       "all all";
