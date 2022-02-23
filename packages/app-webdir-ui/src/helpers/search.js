@@ -40,7 +40,7 @@ const engines = {
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
-    url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites/search.json`,
+    url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites-public/search.json`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
