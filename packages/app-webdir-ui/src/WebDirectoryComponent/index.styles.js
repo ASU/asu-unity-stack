@@ -28,16 +28,21 @@ const WebDirLayout = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  .plain-button {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    color: #822141;
+  }
+  .plain-button:hover {
+    cursor: pointer;
+  }
   .letters {
     grid-area: letters;
     display: flex;
     flex-wrap: true;
     justify-content: space-between;
     padding-bottom: 32px;
-
-    .letter-button:hover {
-      cursor: pointer;
-    }
   }
   .results {
     grid-area: results;

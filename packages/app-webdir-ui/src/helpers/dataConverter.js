@@ -3,7 +3,6 @@ import React from "react";
 import anonPic from "../assets/anon.png";
 import { ProfileCard } from "../ProfileCard/index";
 import { ResultCard } from "../ResultCard/index";
-import { PersonResultCard } from "../PersonResultCard/index";
 
 const fillInBlanks = datum => {
   const full = {

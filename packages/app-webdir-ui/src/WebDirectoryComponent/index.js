@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { performSearch } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
-import { performSearch } from "../helpers/search";
 
 const letters = [
   "A",
@@ -60,6 +60,17 @@ function WebDirectory() {
     });
   }
 
+  const handleKeyPressSort = (event, val) => {
+    if (event.keyCode === 13) {
+      setSort(val);
+    }
+  };
+  const handleKeyPressLetter = (event, val) => {
+    if (event.keyCode === 13) {
+      setLetter(val);
+    }
+  };
+
   useEffect(() => {
     doSearch();
   }, [searchParams]);
@@ -87,20 +98,38 @@ function WebDirectory() {
       </div>
       <div className="sort">
         Sort By:
-        <a onClick={() => setSort('name')} className="" role="button">
+        <button
+          type="button"
+          className="plain-button"
+          onClick={() => setSort("name")}
+          onKeyPress={event => handleKeyPressSort(event, "name")}
+          tabIndex={0}
+        >
           Last name
-        </a>
+        </button>
         |
-        <a onClick={() => setSort('rank')} className="" role="button">
+        <button
+          type="button"
+          className="plain-button"
+          onClick={() => setSort("rank")}
+          onKeyPress={event => handleKeyPressSort(event, "rank")}
+          tabIndex={0}
+        >
           Rank
-        </a>
+        </button>
       </div>
       <div className="letters">
         {letters.map(l => {
           return (
-            <a onClick={() => setLetter(l)} className="letter-button">
+            <button
+              type="button"
+              className="plain-button letter-button"
+              onClick={() => setLetter(l)}
+              onKeyPress={event => handleKeyPressLetter(event, l)}
+              tabIndex={0}
+            >
               {l}
-            </a>
+            </button>
           );
         })}
       </div>
