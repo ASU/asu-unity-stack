@@ -120,12 +120,23 @@ function SearchPage() {
             onChange={e => setTerm(e.target.value)}
             onKeyDown={inputKeyPress}
           />
-          <Button
-            color="maroon"
-            icon={["fas", "search"]}
-            label="Search"
-            onClick={() => doSearch()}
-          />
+          <div className="desktop-button">
+            <Button
+              color="maroon"
+              icon={["fas", "search"]}
+              label="Search"
+              onClick={() => doSearch()}
+            />
+          </div>
+          <div className="mobile-button">
+            <Button
+              color="maroon"
+              icon={["fas", "search"]}
+              label="Search"
+              onClick={() => doSearch()}
+              size="small"
+            />
+          </div>
         </div>
       </form>
       <TabbedPanels id={searchTabsId} onTabChange={tabChange}>

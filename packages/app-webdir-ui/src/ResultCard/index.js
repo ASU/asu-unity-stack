@@ -10,9 +10,7 @@ const ResultCard = ({ ...props }) => {
       : props.description;
   return (
     <ResultCardTemplate
-      className={`uds-results-card uds-content-align ${
-        props.fill ? "fill" : ""
-      }`}
+      className={`uds-results-card ${props.fill ? "fill" : ""}`}
     >
       <div>
         <div className="cookie-trail">{props.cookieTrail.join(" › ")}</div>

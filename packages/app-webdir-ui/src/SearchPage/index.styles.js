@@ -23,6 +23,12 @@ const SearchPageLayout = styled.div`
         margin-right: 16px;
         margin-bottom: 0;
       }
+      .desktop-button {
+        display: inline;
+      }
+      .mobile-button {
+        display: none;
+      }
     }
   }
 
@@ -87,6 +93,9 @@ const SearchPageLayout = styled.div`
     grid-template-columns: 792px auto;
   }
   @media (max-width: 768px) {
+    .faculty-tab {
+      grid-template-columns: 100%;
+    }
     form {
       margin-bottom: 24px;
       max-width: 100%;
@@ -97,6 +106,12 @@ const SearchPageLayout = styled.div`
         input {
           margin-right: 0;
           margin-bottom: 24px;
+        }
+        .desktop-button {
+          display: none;
+        }
+        .mobile-button {
+          display: inline;
         }
       }
     }
