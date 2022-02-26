@@ -20,9 +20,7 @@ const ProfileCard = ({ ...props }) => {
   };
   return (
     <div
-      className={`uds-person-profile uds-content-align ${props.size} ${
-        props.fill ? "fill" : ""
-      }`}
+      className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
     >
       <a href={`/profile/${props.id}`} className="profile-img-container">
         <div

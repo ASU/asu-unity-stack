@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 const SearchResultsList = styled.div`
+  max-width: 100%;
   .summary {
     -webkit-mask-image: -webkit-gradient(
       linear,
@@ -32,6 +33,7 @@ const SearchResultsList = styled.div`
     margin-bottom: 64px;
     font-size: 40px;
     font-weight: bold;
+    max-width: 100%;
   }
   .results-title-small {
     margin-bottom: 32px;
