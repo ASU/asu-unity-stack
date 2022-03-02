@@ -1,6 +1,7 @@
 import React from "react";
 
 import anonPic from "../assets/anon.png";
+import { trackGAEvent } from "../core/services/googleAnalytics";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
@@ -17,6 +18,19 @@ const ProfileCard = ({ ...props }) => {
   }
   const hideNonExistantImages = e => {
     e.target.style.display = "none";
+  };
+
+  const microLinkText = "ASU Knowledge Enterprise";
+  const sendEvent = () => {
+    trackGAEvent({
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
+      section: props.name,
+      text: microLinkText,
+      component: props.GASource,
+    });
   };
   return (
     <div
@@ -48,12 +62,20 @@ const ProfileCard = ({ ...props }) => {
         {props.size !== "micro" && (
           <ul className="person-contact-info">
             <li>
-              <a href={`mailto:${props.email}`} aria-label="Email user">
+              <a
+                onClick={() => sendEvent(props.email)}
+                href={`mailto:${props.email}`}
+                aria-label="Email user"
+              >
                 {props.email}
               </a>
             </li>
             <li>
-              <a href={`tel:${props.telephone}`} aria-label="Call user">
+              <a
+                onClick={() => sendEvent(props.telephone)}
+                href={`tel:${props.telephone}`}
+                aria-label="Call user"
+              >
                 {props.telephone}
               </a>
             </li>
@@ -73,6 +95,7 @@ const ProfileCard = ({ ...props }) => {
             <ul className="person-social-medias">
               <li>
                 <a
+                  onClick={() => sendEvent("facebook icon")}
                   href={props.facebookLink}
                   aria-label="Go to user Facebook profile"
                 >
@@ -84,6 +107,7 @@ const ProfileCard = ({ ...props }) => {
               </li>
               <li>
                 <a
+                  onClick={() => sendEvent("linkedin icon")}
                   href={props.linkedinLink}
                   aria-label="Go to user Linkedin profile"
                 >
@@ -92,6 +116,7 @@ const ProfileCard = ({ ...props }) => {
               </li>
               <li>
                 <a
+                  onClick={() => sendEvent("twitter icon")}
                   href={props.twitterLink}
                   aria-label="Go to user Twitter profile"
                 >
@@ -114,7 +139,9 @@ const ProfileCard = ({ ...props }) => {
           </a>
         )}
         {props.size === "micro" && (
-          <a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a>
+          <a onClick={sendEvent} href="/asu-knowledge-enterprise">
+            {microLinkText}
+          </a>
         )}
       </div>
     </div>

@@ -54,7 +54,7 @@ function WebDirectory() {
   function doSearch() {
     performSearch("faculty", "mark", 1, 6, null, {
       value: "_score_desc",
-      label: "Relevance",
+      label: "Relevancy",
     }).then(res => {
       setResults(res.results);
     });
