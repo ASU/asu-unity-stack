@@ -13,16 +13,10 @@ const PreSearchMessageTemplate = styled.div`
       margin-bottom: 32px;
     }
   }
-  .quick-links {
-    display: flex;
-    flex-direction: column;
-    span {
-      font-size: 24px;
+  .assisstance-area {
+    margin-top: 16px;
+    .intro-highlight {
       font-weight: bold;
-      margin-bottom: 24px;
-    }
-    a {
-      margin-bottom: 16px;
     }
   }
   @media (max-width: 768px) {

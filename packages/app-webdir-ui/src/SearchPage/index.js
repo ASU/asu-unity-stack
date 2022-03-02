@@ -5,6 +5,7 @@ import { Button, TabbedPanels, Tab } from "../../../components-core";
 import { trackGAEvent } from "../core/services/googleAnalytics";
 import { performSearch } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
+import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
@@ -206,7 +207,7 @@ function SearchPage() {
                   GASource="faculty and staff"
                 />
               </div>
-              <div className="sites-results">
+              <div className="subdomain-results">
                 <ASUSearchResultsList
                   results={results.sites?.results}
                   totalResults={results.sites?.page.total_results}
@@ -231,6 +232,9 @@ function SearchPage() {
                   onExpandClick={() => goToTab(tabIds.students)}
                   GASource="students"
                 />
+              </div>
+              <div className="quick-links">
+                <QuickLinks />
               </div>
               <div className="all-results">
                 <ASUSearchResultsList

@@ -47,13 +47,14 @@ const SearchPageLayout = styled.div`
   .all-asu-search {
     display: grid;
     grid-template-columns: 700px 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
     grid-row-gap: 72px;
     grid-column-gap: 126px;
     grid-template-areas:
       "message message"
       "top faculty"
       "subdomain students"
+      "subdomain links"
       "all all";
 
     .message {
@@ -82,6 +83,9 @@ const SearchPageLayout = styled.div`
     }
     .students {
       grid-area: students;
+    }
+    .quick-links {
+      grid-area: links;
     }
     .all-results {
       grid-area: all;
@@ -128,7 +132,8 @@ const SearchPageLayout = styled.div`
         "subdomain"
         "all"
         "faculty"
-        "students";
+        "students"
+        "links";
     }
   }
 `;
