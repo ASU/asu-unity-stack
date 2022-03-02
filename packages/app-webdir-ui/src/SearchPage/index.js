@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Button, TabbedPanels, Tab } from "../../../components-core";
+import { trackGAEvent } from "../core/services/googleAnalytics";
 import { performSearch } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
@@ -9,7 +10,7 @@ import { SearchPageLayout } from "./index.styles";
 
 function SearchPage() {
   const sortOptions = [
-    { value: "_score_desc", label: "Relevance" },
+    { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
   ];
@@ -64,14 +65,50 @@ function SearchPage() {
   const doSearch = () => {
     setSearchTerm(term);
     updateContent(searchParams.get(searchTabsId));
+    trackGAEvent({
+      event: "search",
+      action: "type",
+      name: "onenter",
+      type: "search asu.edu",
+      section: "search",
+      text: term,
+    });
   };
 
   useEffect(() => {
     doSearch();
   }, [searchParams]);
 
+  const getSortEventText = () => {
+    let text = sortOptions.find(op => {
+      return op.value === searchParams.get(sortParamName);
+    }).label;
+    if (text === "Relevancy") {
+      text = "Sort by Relevancy";
+    }
+    return text;
+  };
+
+  const openSort = () => {
+    trackGAEvent({
+      event: "collapse",
+      action: "open",
+      name: "onclick",
+      type: "click",
+      section: "all asu search",
+      text: getSortEventText(),
+    });
+  };
   const setSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
+    trackGAEvent({
+      event: "collapse",
+      action: "close",
+      name: "onclick",
+      type: "click",
+      section: "all asu search",
+      text: getSortEventText(),
+    });
   };
 
   const pageChange = (page, limitUpdateTo = null) => {
@@ -166,6 +203,7 @@ function SearchPage() {
                   size="micro"
                   summary
                   onExpandClick={() => goToTab(tabIds.faculty)}
+                  GASource="faculty and staff"
                 />
               </div>
               <div className="sites-results">
@@ -177,6 +215,7 @@ function SearchPage() {
                   title="All results from <<sites>>"
                   summary
                   onExpandClick={() => goToTab(tabIds.sites)}
+                  GASource="all results from <<subdomain>>"
                 />
               </div>
               <div className="students">
@@ -190,6 +229,7 @@ function SearchPage() {
                   summary
                   anonymized
                   onExpandClick={() => goToTab(tabIds.students)}
+                  GASource="students"
                 />
               </div>
               <div className="all-results">
@@ -201,6 +241,7 @@ function SearchPage() {
                   title="All asu.edu results"
                   onPageChange={page => pageChange(page, tabIds.sites)}
                   currentPage={results.sites?.page?.current}
+                  GASource="all asu.edu results"
                 />
               </div>
             </div>
@@ -215,6 +256,7 @@ function SearchPage() {
               isLoading={isLoading}
               title="<<Subdomain>>"
               onPageChange={pageChange}
+              GASource="<<subdomain>>"
             />
           )}
         </Tab>
@@ -230,6 +272,7 @@ function SearchPage() {
                 title="All faculty and staff results"
                 onPageChange={pageChange}
                 size="large"
+                GASource="all faculty and staff results"
               />
               <form className="uds-form sort-form">
                 <div className="form-group">
@@ -239,10 +282,13 @@ function SearchPage() {
                     id="sortBySelect"
                     value={searchParams.get(sortParamName)}
                     onChange={event => setSort(event.target.value)}
+                    onClick={openSort}
                   >
                     {sortOptions.map(op => (
                       <option key={op.value} value={op.value}>
-                        {op.label}
+                        {op.label === "Relevancy"
+                          ? "Sort by Relevancy"
+                          : op.label}
                       </option>
                     ))}
                   </select>

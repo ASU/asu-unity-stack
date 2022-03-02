@@ -8,4 +8,5 @@ export const resultCardType = {
   cookieTrail: PropTypes.arrayOf(PropTypes.string),
   link: PropTypes.string,
   fill: PropTypes.bool,
+  GASource: PropTypes.string,
 };

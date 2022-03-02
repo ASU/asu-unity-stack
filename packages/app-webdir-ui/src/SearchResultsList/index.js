@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
+import { trackGAEvent } from "../core/services/googleAnalytics";
 import { SearchResultsList } from "./index.styles";
 
 const ASUSearchResultsList = ({
@@ -17,6 +18,7 @@ const ASUSearchResultsList = ({
   summary,
   onExpandClick,
   fill,
+  GASource,
 }) => {
   const [displayResults, setDisplayResults] = useState(1);
 
@@ -27,7 +29,7 @@ const ASUSearchResultsList = ({
     const resultsWithProps = results.map((profile, idx) => {
       const newProps = {
         ...profile.props,
-        ...{ size, fill: fill || false, key: idx },
+        ...{ size, fill: fill || false, key: idx, GASource },
       };
       return {
         ...profile,
@@ -36,6 +38,18 @@ const ASUSearchResultsList = ({
     });
     setDisplayResults(resultsWithProps);
   }, [results]);
+
+  function expandClick(text) {
+    trackGAEvent({
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
+      section: GASource,
+      text,
+    });
+    onExpandClick();
+  }
 
   return (
     <SearchResultsList>
@@ -64,7 +78,7 @@ const ASUSearchResultsList = ({
                 color="maroon"
                 label="See all results from subdomain"
                 size="small"
-                onClick={onExpandClick}
+                onClick={() => expandClick("See all results from subdomain")}
               />
             </div>
           )}
@@ -79,7 +93,7 @@ const ASUSearchResultsList = ({
                 color="maroon"
                 label="See all results"
                 size="small"
-                onClick={onExpandClick}
+                onClick={() => expandClick("See all results")}
               />
             </div>
           )}
@@ -104,6 +118,7 @@ ASUSearchResultsList.propTypes = {
   summary: PropTypes.bool,
   onExpandClick: PropTypes.func,
   fill: PropTypes.bool,
+  GASource: PropTypes.string,
 };
 
 export { ASUSearchResultsList };

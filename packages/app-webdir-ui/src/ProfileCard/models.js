@@ -21,6 +21,7 @@ export const profileCardType = {
   size: PropTypes.string,
   fill: PropTypes.bool,
   anonymized: PropTypes.bool,
+  GASource: PropTypes.string,
 };
 
 export const resultsShape = PropTypes.shape({
