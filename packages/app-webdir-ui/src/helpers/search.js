@@ -22,25 +22,32 @@ export const engineNames = {
 
 const engines = {
   [engineNames.FACULTY]: {
-    url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-faculty-staff/search.json`,
+    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-search-faculty-staff`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.STUDENTS]: {
-    url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-dir-students/search.json`,
+    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-search-students`,
     needsAuth: true,
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
-    url: `https://asuis.ent.us-west-2.aws.found.io/api/as/v1/engines/web-sites-public/search.json`,
+    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-api-web-search`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
+  },
+  [engineNames.ALL]: {
+    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-meta-search`,
+    needsAuth: false,
+    converter: subdomainConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc"],
   },
 };
 const sortOptions = {
@@ -66,17 +73,14 @@ const searchEngine = (engineName, term, page, items, auth, sort, filters) => {
   }
   return new Promise(resolve => {
     axios
-      .post(
-        engines[engineName].url,
-        {
-          sort: [sort],
-          query: term,
-          // search_fields: { asurite_id: {} },
-          page: { size: items, current: page },
+      .get(`${engines[engineName].url}?query=${term}`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
         },
-        { headers: config.headers }
-      )
+      })
       .then(res => {
+        engines[engineName].inFlight = false;
+        engines[engineName].abortController = null;
         let topResult = res.data.results.reduce((prev, curr) => {
           return prev === null || prev["_meta"].score < curr["_meta"].score
             ? curr
