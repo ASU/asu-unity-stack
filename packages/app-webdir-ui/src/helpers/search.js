@@ -73,11 +73,7 @@ const searchEngine = (engineName, term, page, items, auth, sort, filters) => {
   }
   return new Promise(resolve => {
     axios
-      .get(`${engines[engineName].url}?query=${term}`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
+      .get(`${engines[engineName].url}?query=${term}`)
       .then(res => {
         engines[engineName].inFlight = false;
         engines[engineName].abortController = null;
