@@ -63,6 +63,8 @@ const HeaderPropTypes = {
   expandOnHover: PropTypes.bool,
   mobileNavTree: PropTypes.arrayOf(NavTreePropTypes),
   hasNavigation: PropTypes.bool,
+  searchUrl: PropTypes.string,
+  site: PropTypes.string,
 };
 
 export {
