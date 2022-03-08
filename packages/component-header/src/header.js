@@ -36,6 +36,8 @@ const ASUHeader = ({
   animateTitle,
   expandOnHover,
   mobileNavTree,
+  searchUrl,
+  site
 }) => {
   const headerRef = useRef(null);
 
@@ -76,6 +78,8 @@ const ASUHeader = ({
         expandOnHover,
         mobileNavTree,
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
+        searchUrl,
+        site,
       }}
     >
       {/* @ts-ignore */}

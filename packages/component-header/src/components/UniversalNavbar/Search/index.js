@@ -17,7 +17,7 @@ const SEARCH_GA_EVENT = {
 };
 
 const Search = () => {
-  const { breakpoint } = useAppContext();
+  const { breakpoint, searchUrl, site } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -29,12 +29,11 @@ const Search = () => {
   const handleChangeVisibility = () => {
     setOpen(prevState => !prevState);
   };
-
   return (
     <SearchWrapper
       // @ts-ignore
       breakpoint={breakpoint}
-      action="https://search.asu.edu/search"
+      action={searchUrl}
       method="get"
       name="gs"
       className={open ? "open-search" : ""}
@@ -97,6 +96,7 @@ const Search = () => {
           />
         </label>
       )}
+      <input name="url_host" value={site} type="hidden" />
       <input name="site" value="default_collection" type="hidden" />
       <input name="sort" value="date:D:L:d1" type="hidden" />
       <input name="output" value="xml_no_dtd" type="hidden" />
