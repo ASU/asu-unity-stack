@@ -17,11 +17,12 @@ function SearchPage() {
   ];
   const resultsPerPage = 6;
   const [term, setTerm] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
   const [numResults, setNumResults] = useState(0);
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [site, setSite] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [filters, setFilters] = useState({});
 
   const tabIds = {
     all: "all",
@@ -31,16 +32,27 @@ function SearchPage() {
   };
 
   const searchTabsId = "search-tabs";
+  const queryParamName = "query";
   const sortParamName = "sort-by";
+  const siteParamName = "url_host";
 
   const updateContent = (tab, page = 1, limitUpdateTo = null) => {
-    if (!limitUpdateTo) {
-      setIsLoading(true);
-    }
-    const toSearch = limitUpdateTo || tab;
-    const sort = searchParams.get(sortParamName);
-    performSearch(toSearch, term, page, resultsPerPage, null, sort).then(
-      res => {
+    const searchFor = searchParams.get(queryParamName);
+    if (searchFor && searchFor.length > 0 && tab) {
+      if (!limitUpdateTo) {
+        setIsLoading(true);
+      }
+      const toSearch = limitUpdateTo || tab;
+      const sort = searchParams.get(sortParamName);
+      performSearch(
+        toSearch,
+        searchFor,
+        page,
+        resultsPerPage,
+        null,
+        sort,
+        filters
+      ).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
             (prev, curr) =>
@@ -59,25 +71,31 @@ function SearchPage() {
           setResults(res);
         }
         setIsLoading(false);
-      }
-    );
+      });
+      trackGAEvent({
+        event: "search",
+        action: "type",
+        name: "onenter",
+        type: "search asu.edu",
+        section: "search",
+        text: term,
+      });
+    }
   };
 
   const doSearch = () => {
-    setSearchTerm(term);
-    updateContent(searchParams.get(searchTabsId));
-    trackGAEvent({
-      event: "search",
-      action: "type",
-      name: "onenter",
-      type: "search asu.edu",
-      section: "search",
-      text: term,
-    });
+    setSearchParams({ [queryParamName]: term });
   };
 
   useEffect(() => {
-    doSearch();
+    if (searchParams.get(queryParamName)) {
+      setTerm(searchParams.get(queryParamName));
+      updateContent(searchParams.get(searchTabsId));
+    }
+    if (searchParams.get(siteParamName)) {
+      setSite(searchParams.get(siteParamName));
+      setFilters({ site: searchParams.get(siteParamName) });
+    }
   }, [searchParams]);
 
   const getSortEventText = () => {
@@ -133,7 +151,7 @@ function SearchPage() {
   };
 
   const preSearchOrContent = content => {
-    if (searchTerm.length === 0) {
+    if (!results) {
       return <PreSearchMessage />;
       // eslint-disable-next-line no-else-return
     } else if (isLoading) {
@@ -184,20 +202,22 @@ function SearchPage() {
               <div className="message">
                 <div className="results-search-message">
                   <span>Your search for </span>
-                  <span className="search-message-emphasis">{searchTerm} </span>
+                  <span className="search-message-emphasis">
+                    {searchParams.get(queryParamName)}{" "}
+                  </span>
                   <span> returned </span>
                   <span className="search-message-emphasis">{numResults}</span>
                   <span> faculty and staff results </span>
                 </div>
               </div>
               <div className="top-results">
-                <div>{results.sites?.topResult}</div>
-                <div>{results.faculty?.topResult}</div>
+                <div>{results?.sites?.topResult}</div>
+                <div>{results?.faculty?.topResult}</div>
               </div>
               <div className="faculty-and-staff">
                 <ASUSearchResultsList
-                  results={results.faculty?.results}
-                  totalResults={results.faculty?.page.total_results}
+                  results={results?.faculty?.results}
+                  totalResults={results?.faculty?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Faculty and staff"
@@ -209,8 +229,8 @@ function SearchPage() {
               </div>
               <div className="subdomain-results">
                 <ASUSearchResultsList
-                  results={results.sites?.results}
-                  totalResults={results.sites?.page.total_results}
+                  results={results?.sites?.results}
+                  totalResults={results?.sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All results from <<sites>>"
@@ -221,8 +241,8 @@ function SearchPage() {
               </div>
               <div className="students">
                 <ASUSearchResultsList
-                  results={results.students?.results}
-                  totalResults={results.students?.page.total_results}
+                  results={results?.students?.results}
+                  totalResults={results?.students?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Students"
@@ -238,40 +258,42 @@ function SearchPage() {
               </div>
               <div className="all-results">
                 <ASUSearchResultsList
-                  results={results.sites?.results}
-                  totalResults={results.sites?.page.total_results}
+                  results={results?.sites?.results}
+                  totalResults={results?.sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All asu.edu results"
                   onPageChange={page => pageChange(page, tabIds.sites)}
-                  currentPage={results.sites?.page?.current}
+                  currentPage={results?.sites?.page?.current}
                   GASource="all asu.edu results"
                 />
               </div>
             </div>
           )}
         </Tab>
-        <Tab id={tabIds.sites} title="<<Subdomain>>">
-          {preSearchOrContent(
-            <ASUSearchResultsList
-              results={results.results}
-              totalResults={numResults}
-              resultsPerPage={6}
-              isLoading={isLoading}
-              title="<<Subdomain>>"
-              onPageChange={pageChange}
-              GASource="<<subdomain>>"
-            />
-          )}
-        </Tab>
+        {site && (
+          <Tab id={tabIds.sites} title={site}>
+            {preSearchOrContent(
+              <ASUSearchResultsList
+                results={results?.results}
+                totalResults={numResults}
+                resultsPerPage={6}
+                isLoading={isLoading}
+                title={site}
+                onPageChange={pageChange}
+                GASource={site}
+              />
+            )}
+          </Tab>
+        )}
         <Tab id={tabIds.faculty} title="Faculty and Staff">
           {preSearchOrContent(
             <div className="faculty-tab">
               <ASUSearchResultsList
-                results={results.results}
+                results={results?.results}
                 totalResults={numResults}
                 resultsPerPage={6}
-                currentPage={results.page?.current}
+                currentPage={results?.page?.current}
                 isLoading={isLoading}
                 title="All faculty and staff results"
                 onPageChange={pageChange}

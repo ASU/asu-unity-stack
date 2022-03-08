@@ -26,7 +26,7 @@ const ASUSearchResultsList = ({
     onPageChange(page);
   };
   useEffect(() => {
-    const resultsWithProps = results.map((profile, idx) => {
+    const resultsWithProps = results?.map((profile, idx) => {
       const newProps = {
         ...profile.props,
         ...{ size, fill: fill || false, key: idx, GASource },

@@ -34,7 +34,8 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const childrenArray = React.Children.toArray(children);
   const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
   const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {
+
+  const updateTabParam = tab => {
     const newParams = {};
     // eslint-disable-next-line no-restricted-syntax
     for (const entry of searchParams.entries()) {
@@ -47,8 +48,12 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     } else {
       setActiveTabID(currentTab);
     }
-    newParams[id] = searchParams.get(id) || activeTabID;
+    newParams[id] = tab;
     setSearchParams(newParams);
+  };
+
+  useEffect(() => {
+    updateTabParam(searchParams.get(id) || activeTabID);
   }, [searchParams]);
 
   const [backgroundColor] = useState(bgColor || "");
@@ -105,7 +110,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const switchToTab = (e, tabID, title) => {
     trackLinkEvent(title);
     e.preventDefault();
-    setSearchParams({ [id]: tabID });
+    updateTabParam(tabID);
     onTabChange(tabID);
   };
 
@@ -118,7 +123,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
     if (currPos > 0) {
       const newTabID = childrenArray[currPos - 1].props.id;
-      setSearchParams({ [id]: newTabID });
+      updateTabParam(newTabID);
       focusOnTab(newTabID);
       onTabChange(newTabID);
     }
@@ -127,7 +132,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
     if (currPos < childrenArray.length - 1) {
       const newTabID = childrenArray[currPos + 1].props.id;
-      setSearchParams({ [id]: newTabID });
+      updateTabParam(newTabID);
       focusOnTab(newTabID);
       onTabChange(newTabID);
     }
