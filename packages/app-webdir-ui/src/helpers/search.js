@@ -26,8 +26,6 @@ const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 3,
-    inFlight: false,
-    abortController: null,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.STUDENTS]: {
@@ -35,8 +33,6 @@ const engines = {
     needsAuth: true,
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
-    inFlight: false,
-    abortController: null,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
@@ -44,33 +40,31 @@ const engines = {
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
-    inFlight: false,
-    abortController: null,
-    supportedSortTypes: ["_score_desc"],
+    supportedSortTypes: ["_score_desc", "date_desc"],
   },
 };
 const sortOptions = {
   _score_desc: { _score: "desc" },
   last_name_asc: { last_name: "asc" },
   last_name_desc: { last_name: "desc" },
+  date_desc: {
+    arbitraryDate: {
+      order: "asc",
+    },
+  },
 };
 
-const searchEngine = (engineName, term, page, items, auth, sort) => {
+const searchEngine = (engineName, term, page, items, auth, sort, filters) => {
   if (engines[engineName].needsAuth && !auth) {
     return new Promise(resolve => {
       resolve({
         engineName,
         page: { page, total_results: 0 },
-        results: [...Array(items).keys()].map(anonConverter),
+        results: [...Array(items).keys()].map(res => anonConverter(res)),
       });
     });
   }
   return new Promise(resolve => {
-    if (engines[engineName].inFlight === true) {
-      engines[engineName].abortController.abort();
-    }
-    engines[engineName].inFlight = true;
-    engines[engineName].abortController = new AbortController();
     axios
       .post(
         engines[engineName].url,
@@ -80,14 +74,9 @@ const searchEngine = (engineName, term, page, items, auth, sort) => {
           // search_fields: { asurite_id: {} },
           page: { size: items, current: page },
         },
-        {
-          headers: config.headers,
-          signal: engines[engineName].abortController.signal,
-        }
+        { headers: config.headers }
       )
       .then(res => {
-        engines[engineName].inFlight = false;
-        engines[engineName].abortController = null;
         let topResult = res.data.results.reduce((prev, curr) => {
           return prev === null || prev["_meta"].score < curr["_meta"].score
             ? curr
@@ -100,14 +89,24 @@ const searchEngine = (engineName, term, page, items, auth, sort) => {
         resolve({
           engineName,
           page: res.data.meta.page,
-          results: res.data.results.map(engines[engineName].converter),
+          results: res.data.results.map(result =>
+            engines[engineName].converter(result)
+          ),
           topResult,
         });
       });
   });
 };
 
-export const performSearch = (tab, term, page, items, auth = null, sort) => {
+export const performSearch = (
+  tab,
+  term,
+  page,
+  items,
+  auth = null,
+  sort,
+  filters
+) => {
   return new Promise(resolve => {
     if (tab === "all") {
       const promises = Object.keys(engines).map(engine => {
@@ -120,7 +119,8 @@ export const performSearch = (tab, term, page, items, auth = null, sort) => {
           page,
           engines[engine].resultsPerSummaryPage,
           auth,
-          currentSort
+          currentSort,
+          filters
         );
       });
       const resultsDict = {};
