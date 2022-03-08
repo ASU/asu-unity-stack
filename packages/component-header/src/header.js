@@ -37,7 +37,7 @@ const ASUHeader = ({
   expandOnHover,
   mobileNavTree,
   searchUrl,
-  site
+  site,
 }) => {
   const headerRef = useRef(null);
 
