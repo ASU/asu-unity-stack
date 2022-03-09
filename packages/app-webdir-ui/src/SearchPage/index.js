@@ -32,7 +32,7 @@ function SearchPage() {
   };
 
   const searchTabsId = "search-tabs";
-  const queryParamName = "query";
+  const queryParamName = "q";
   const sortParamName = "sort-by";
   const siteParamName = "url_host";
 

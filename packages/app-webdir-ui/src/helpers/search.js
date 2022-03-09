@@ -7,13 +7,6 @@ import {
 
 const axios = require("axios");
 
-const config = {
-  headers: {
-    authorization: "Bearer search-up6w8masqk1mvfca91i2pe97",
-  },
-  itemsPerPage: 6,
-};
-
 export const engineNames = {
   FACULTY: "faculty",
   STUDENTS: "students",
