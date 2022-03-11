@@ -8,9 +8,10 @@ import {
 const axios = require("axios");
 
 export const engineNames = {
-  FACULTY: "faculty",
-  STUDENTS: "students",
-  SITES: "sites",
+  FACULTY: "web_dir_faculty_staff",
+  STUDENTS: "web_dir_students",
+  SITES: "web_sites",
+  ALL: "all",
 };
 
 const engines = {
@@ -54,41 +55,16 @@ const sortOptions = {
   },
 };
 
-const searchEngine = (engineName, term, page, items, auth, sort, filters) => {
-  if (engines[engineName].needsAuth && !auth) {
-    return new Promise(resolve => {
-      resolve({
-        engineName,
-        page: { page, total_results: 0 },
-        results: [...Array(items).keys()].map(res => anonConverter(res)),
-      });
-    });
+const getTopResult = results => {
+  const topResult = results.reduce((prev, curr) => {
+    return prev === null || prev["_meta"].score < curr["_meta"].score
+      ? curr
+      : prev;
+  }, null);
+  if (topResult && topResult["_meta"].score >= 1) {
+    return topResult;
   }
-  return new Promise(resolve => {
-    axios
-      .get(`${engines[engineName].url}?query=${term}`)
-      .then(res => {
-        engines[engineName].inFlight = false;
-        engines[engineName].abortController = null;
-        let topResult = res.data.results.reduce((prev, curr) => {
-          return prev === null || prev["_meta"].score < curr["_meta"].score
-            ? curr
-            : prev;
-        }, null);
-        topResult =
-          topResult === null || topResult["_meta"].score >= 1
-            ? engines[engineName].converter(topResult, "small")
-            : null;
-        resolve({
-          engineName,
-          page: res.data.meta.page,
-          results: res.data.results.map(result =>
-            engines[engineName].converter(result)
-          ),
-          topResult,
-        });
-      });
-  });
+  return null;
 };
 
 export const performSearch = (
@@ -101,39 +77,44 @@ export const performSearch = (
   filters
 ) => {
   return new Promise(resolve => {
-    if (tab === "all") {
-      const promises = Object.keys(engines).map(engine => {
-        const currentSort = engines[engine].supportedSortTypes.includes(sort)
-          ? sortOptions[sort]
-          : { _score: "desc" };
-        return searchEngine(
-          engine,
-          term,
-          page,
-          engines[engine].resultsPerSummaryPage,
-          auth,
-          currentSort,
-          filters
-        );
-      });
-      const resultsDict = {};
-      Promise.all(promises).then(results => {
-        results.forEach(res => {
-          resultsDict[res.engineName] = {
-            results: res.results,
-            topResult: res.topResult,
-            page: res.page,
-          };
+    const currentSort = engines[tab].supportedSortTypes.includes(sort)
+      ? sortOptions[sort]
+      : { _score: "desc" };
+
+    const query = `${engines[tab].url}?query=${term}&size=${items}&sort=${currentSort}`;
+    axios.get(query).then(res => {
+      engines[tab].inFlight = false;
+      engines[tab].abortController = null;
+
+      if (tab === "all") {
+        const results = {};
+        Object.keys(res.data).forEach((dataKey, idx) => {
+          if (!auth && engines[dataKey].needsAuth) {
+            results[dataKey] = {
+              tab: dataKey,
+              page: { current: 1, size: 3 },
+              results: new Array(3).fill(anonConverter(idx)),
+              topResult: null,
+            };
+          } else {
+            const topResult = getTopResult(res.data[dataKey].results);
+            results[dataKey] = {
+              tab: dataKey,
+              page: res.data[dataKey].meta.page,
+              results: res.data[dataKey].results.map(result =>
+                engines[dataKey].converter(result)
+              ),
+              topResult: engines[dataKey].converter(topResult, "small"),
+            };
+          }
         });
-        resolve(resultsDict);
-      });
-    } else {
-      const currentSort = engines[tab].supportedSortTypes.includes(sort)
-        ? sortOptions[sort]
-        : { _score: "desc" };
-      searchEngine(tab, term, page, items, auth, currentSort).then(results => {
         resolve(results);
+      }
+      resolve({
+        tab,
+        page: res.data.meta.page,
+        results: res.data.results.map(result => engines[tab].converter(result)),
       });
-    }
+    });
   });
 };
