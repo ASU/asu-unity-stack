@@ -26,15 +26,26 @@ function SearchPage() {
 
   const tabIds = {
     all: "all",
-    sites: "sites",
-    faculty: "faculty",
-    students: "students",
+    sites: "web_sites",
+    faculty: "web_dir_faculty_staff",
+    students: "web_dir_students",
   };
 
   const searchTabsId = "search-tabs";
-  const queryParamName = "query";
+  const queryParamName = "q";
   const sortParamName = "sort-by";
   const siteParamName = "url_host";
+
+  const updateSearchParams = (param, newValue) => {
+    const newParams = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const entry of searchParams.entries()) {
+      // eslint-disable-next-line prefer-destructuring
+      newParams[entry[0]] = entry[1];
+    }
+    newParams[param] = newValue;
+    setSearchParams(newParams);
+  };
 
   const updateContent = (tab, page = 1, limitUpdateTo = null) => {
     const searchFor = searchParams.get(queryParamName);
@@ -68,6 +79,7 @@ function SearchPage() {
           current[res.engineName] = res;
           setResults(current);
         } else {
+          console.log({ res });
           setResults(res);
         }
         setIsLoading(false);
@@ -118,8 +130,9 @@ function SearchPage() {
       text: getSortEventText(),
     });
   };
+
   const setSort = newSort => {
-    setSearchParams({ [sortParamName]: newSort });
+    updateSearchParams(sortParamName, newSort);
     trackGAEvent({
       event: "collapse",
       action: "close",
@@ -211,13 +224,15 @@ function SearchPage() {
                 </div>
               </div>
               <div className="top-results">
-                <div>{results?.sites?.topResult}</div>
-                <div>{results?.faculty?.topResult}</div>
+                <div>{results?.web_sites?.topResult}</div>
+                <div>{results?.web_dir_faculty_staff?.topResult}</div>
               </div>
               <div className="faculty-and-staff">
                 <ASUSearchResultsList
-                  results={results?.faculty?.results}
-                  totalResults={results?.faculty?.page.total_results}
+                  results={results?.web_dir_faculty_staff?.results}
+                  totalResults={
+                    results?.web_dir_faculty_staff?.page.total_results
+                  }
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Faculty and staff"
@@ -229,8 +244,8 @@ function SearchPage() {
               </div>
               <div className="subdomain-results">
                 <ASUSearchResultsList
-                  results={results?.sites?.results}
-                  totalResults={results?.sites?.page.total_results}
+                  results={results?.web_sites?.results}
+                  totalResults={results?.web_sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All results from <<sites>>"
@@ -241,8 +256,8 @@ function SearchPage() {
               </div>
               <div className="students">
                 <ASUSearchResultsList
-                  results={results?.students?.results}
-                  totalResults={results?.students?.page.total_results}
+                  results={results?.web_dir_students?.results}
+                  totalResults={results?.web_dir_students?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
                   title="Students"
@@ -258,13 +273,13 @@ function SearchPage() {
               </div>
               <div className="all-results">
                 <ASUSearchResultsList
-                  results={results?.sites?.results}
-                  totalResults={results?.sites?.page.total_results}
+                  results={results?.web_sites?.results}
+                  totalResults={results?.web_sites?.page.total_results}
                   resultsPerPage={6}
                   isLoading={isLoading}
                   title="All asu.edu results"
                   onPageChange={page => pageChange(page, tabIds.sites)}
-                  currentPage={results?.sites?.page?.current}
+                  currentPage={results?.web_sites?.page?.current}
                   GASource="all asu.edu results"
                 />
               </div>
