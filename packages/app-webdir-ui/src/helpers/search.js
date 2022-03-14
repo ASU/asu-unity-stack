@@ -82,8 +82,6 @@ export const performSearch = (
       ? sort
       : "_score";
 
-    console.log({filters});
-
     let query = `${engines[tab].url}?query=${term}&size=${items}&sort=${currentSort}`;
     query = site ? `${query}&url_host=${site}` : query;
 

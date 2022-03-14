@@ -80,7 +80,6 @@ function SearchPage() {
           current[res.engineName] = res;
           setResults(current);
         } else {
-          console.log({ res });
           setResults(res);
         }
         setIsLoading(false);
