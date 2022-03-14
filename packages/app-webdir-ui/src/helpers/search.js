@@ -74,14 +74,17 @@ export const performSearch = (
   items,
   auth = null,
   sort,
-  filters
+  filters,
+  site
 ) => {
   return new Promise(resolve => {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
-      ? sortOptions[sort]
-      : { _score: "desc" };
+      ? sort
+      : "_score";
 
-    const query = `${engines[tab].url}?query=${term}&size=${items}&sort=${currentSort}`;
+    let query = `${engines[tab].url}?query=${term}&size=${items}&sort=${currentSort}`;
+    query = site ? `${query}&url_host=${site}` : query;
+
     axios.get(query).then(res => {
       engines[tab].inFlight = false;
       engines[tab].abortController = null;
