@@ -62,7 +62,8 @@ function SearchPage() {
         resultsPerPage,
         null,
         sort,
-        filters
+        filters,
+        site
       ).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
@@ -96,7 +97,7 @@ function SearchPage() {
   };
 
   const doSearch = () => {
-    setSearchParams({ [queryParamName]: term });
+    updateSearchParams(queryParamName, term);
   };
 
   useEffect(() => {
@@ -106,7 +107,6 @@ function SearchPage() {
     }
     if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
-      setFilters({ site: searchParams.get(siteParamName) });
     }
   }, [searchParams]);
 
@@ -153,7 +153,7 @@ function SearchPage() {
 
   const goToTab = tab => {
     updateContent(tab);
-    setSearchParams({ [searchTabsId]: tab });
+    updateSearchParams(searchTabsId, tab);
   };
 
   const inputKeyPress = e => {
