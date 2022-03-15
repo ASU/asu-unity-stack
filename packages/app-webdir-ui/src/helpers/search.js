@@ -11,6 +11,7 @@ export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
   SITES: "web_sites",
+  WEB_DIRECTORY: "webdir-people-in-department",
   ALL: "all",
 };
 

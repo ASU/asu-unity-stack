@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -6,7 +7,7 @@ import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
 const sortOptions = [{ label: "label", value: 9 }];
-function WebDirectory() {
+function WebDirectory({ deptIDs, searchURL }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
@@ -19,10 +20,17 @@ function WebDirectory() {
   const pageChange = () => true;
 
   function doSearch() {
-    performSearch(engineNames.FACULTY, "mark", 1, 6, null, {
-      value: "_score_desc",
-      label: "Relevancy",
-    }).then(res => {
+    performSearch(
+      engineNames.WEB_DIRECTORY,
+      null,
+      1,
+      6,
+      null,
+      null,
+      null,
+      null,
+      searchURL
+    ).then(res => {
       setResults(res.results);
     });
   }
@@ -95,5 +103,10 @@ function WebDirectory() {
     </WebDirLayout>
   );
 }
+
+WebDirectory.propTypes = {
+  deptIDs: PropTypes.arrayOf(PropTypes.string),
+  searchURL: PropTypes.string,
+};
 
 export { WebDirectory };

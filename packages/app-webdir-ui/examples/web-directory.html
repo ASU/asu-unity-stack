@@ -35,14 +35,16 @@
     </style>
   </head>
   <body>
-    <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
     <div id="searchPageContainer"></div>
 
 
     <script>
-      webdirUI.initSearchPage({
+      webdirUI.initWebDirectory({
         targetSelector: "#searchPageContainer",
-        props: {},
+        props: {
+          deptIDs: ['1457', '1374'],
+          searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+        },
       });
     </script>
   </body>
