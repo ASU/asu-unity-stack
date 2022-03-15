@@ -16,28 +16,28 @@ export const engineNames = {
 
 const engines = {
   [engineNames.FACULTY]: {
-    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-search-faculty-staff`,
+    url: `webdir-search-faculty-staff`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.STUDENTS]: {
-    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-search-students`,
+    url: `webdir-search-students`,
     needsAuth: true,
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
-    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-api-web-search`,
+    url: `webdir-api-web-search`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
   },
   [engineNames.ALL]: {
-    url: `https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-meta-search`,
+    url: `webdir-meta-search`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
@@ -75,14 +75,18 @@ export const performSearch = (
   auth = null,
   sort,
   filters,
-  site
+  site,
+  searchURL
 ) => {
   return new Promise(resolve => {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
       ? sort
-      : "_score";
+      : "_score_desc";
 
-    let query = `${engines[tab].url}?query=${term}&size=${items}&sort=${currentSort}`;
+    const searchURLOrDefault =
+      searchURL || "https://dev-asu-isearch.ws.asu.edu/api/v1/";
+
+    let query = `${searchURLOrDefault}${engines[tab].url}?query=${term}&size=${items}&sort-by=${currentSort}`;
     query = site ? `${query}&url_host=${site}` : query;
 
     axios.get(query).then(res => {
@@ -91,12 +95,15 @@ export const performSearch = (
 
       if (tab === "all") {
         const results = {};
-        Object.keys(res.data).forEach((dataKey, idx) => {
+        Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
+            const anonResults = new Array(items)
+              .fill(1)
+              .map((n, idx) => anonConverter(idx));
             results[dataKey] = {
               tab: dataKey,
-              page: { current: 1, size: 3 },
-              results: new Array(3).fill(anonConverter(idx)),
+              page: { current: 1, size: items, total_results: items },
+              results: anonResults,
               topResult: null,
             };
           } else {
@@ -112,12 +119,15 @@ export const performSearch = (
           }
         });
         resolve(results);
+      } else {
+        resolve({
+          tab,
+          page: res.data.meta.page,
+          results: res.data.results.map(result =>
+            engines[tab].converter(result)
+          ),
+        });
       }
-      resolve({
-        tab,
-        page: res.data.meta.page,
-        results: res.data.results.map(result => engines[tab].converter(result)),
-      });
     });
   });
 };
