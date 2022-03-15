@@ -20,17 +20,15 @@ function WebDirectory({ deptIDs, searchURL }) {
   const pageChange = () => true;
 
   function doSearch() {
-    performSearch(
-      engineNames.WEB_DIRECTORY,
-      null,
-      1,
-      6,
-      null,
-      null,
-      null,
-      null,
-      searchURL
-    ).then(res => {
+    performSearch({
+      tab: engineNames.WEB_DIRECTORY,
+      page: 1,
+      items: 6,
+      searchURL,
+      filters: {
+        deptIDs,
+      },
+    }).then(res => {
       setResults(res.results);
     });
   }
