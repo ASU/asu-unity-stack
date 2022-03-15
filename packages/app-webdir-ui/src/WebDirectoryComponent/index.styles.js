@@ -7,7 +7,6 @@ const WebDirLayout = styled.div`
   grid-template-areas:
     "header        sort"
     "title        title"
-    "letters    letters"
     "results    results";
   grid-column-gap: 100px;
 
@@ -36,13 +35,6 @@ const WebDirLayout = styled.div`
   }
   .plain-button:hover {
     cursor: pointer;
-  }
-  .letters {
-    grid-area: letters;
-    display: flex;
-    flex-wrap: true;
-    justify-content: space-between;
-    padding-bottom: 32px;
   }
   .results {
     grid-area: results;
