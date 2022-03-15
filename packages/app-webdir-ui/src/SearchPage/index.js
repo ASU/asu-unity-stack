@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -9,7 +10,7 @@ import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
-function SearchPage() {
+function SearchPage({ searchURL }) {
   const sortOptions = [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
@@ -22,7 +23,8 @@ function SearchPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [site, setSite] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState({});
+  const [filters] = useState({});
+  const [sort, setSort] = useState("_score_desc");
 
   const tabIds = {
     all: "all",
@@ -54,7 +56,6 @@ function SearchPage() {
         setIsLoading(true);
       }
       const toSearch = limitUpdateTo || tab;
-      const sort = searchParams.get(sortParamName);
       performSearch(
         toSearch,
         searchFor,
@@ -63,7 +64,8 @@ function SearchPage() {
         null,
         sort,
         filters,
-        site
+        site,
+        searchURL
       ).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
@@ -107,11 +109,14 @@ function SearchPage() {
     if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
     }
+    if (searchParams.get(sortParamName)) {
+      setSort(searchParams.get(sortParamName));
+    }
   }, [searchParams]);
 
   const getSortEventText = () => {
     let text = sortOptions.find(op => {
-      return op.value === searchParams.get(sortParamName);
+      return op.value === sort;
     }).label;
     if (text === "Relevancy") {
       text = "Sort by Relevancy";
@@ -130,7 +135,8 @@ function SearchPage() {
     });
   };
 
-  const setSort = newSort => {
+  const updateSort = newSort => {
+    setSort(searchParams.get(sortParamName));
     updateSearchParams(sortParamName, newSort);
     trackGAEvent({
       event: "collapse",
@@ -228,7 +234,7 @@ function SearchPage() {
               </div>
               <div className="faculty-and-staff">
                 <ASUSearchResultsList
-                  results={results?.web_dir_faculty_staff?.results}
+                  results={results?.web_dir_faculty_staff?.results.slice(0, 3)}
                   totalResults={
                     results?.web_dir_faculty_staff?.page.total_results
                   }
@@ -255,7 +261,7 @@ function SearchPage() {
               </div>
               <div className="students">
                 <ASUSearchResultsList
-                  results={results?.web_dir_students?.results}
+                  results={results?.web_dir_students?.results.slice(0, 3)}
                   totalResults={results?.web_dir_students?.page.total_results}
                   resultsPerPage={3}
                   isLoading={isLoading}
@@ -320,8 +326,8 @@ function SearchPage() {
                   <select
                     className="form-control"
                     id="sortBySelect"
-                    value={searchParams.get(sortParamName)}
-                    onChange={event => setSort(event.target.value)}
+                    value={sort}
+                    onChange={event => updateSort(event.target.value)}
                     onClick={openSort}
                   >
                     {sortOptions.map(op => (
@@ -338,11 +344,29 @@ function SearchPage() {
           )}
         </Tab>
         <Tab id={tabIds.students} title="Students">
-          {preSearchOrContent(<div>Students</div>)}
+          {preSearchOrContent(
+            <div className="students-tab">
+              <ASUSearchResultsList
+                results={results?.results}
+                totalResults={numResults}
+                resultsPerPage={6}
+                currentPage={results?.page?.current}
+                isLoading={isLoading}
+                title="All Student results"
+                onPageChange={pageChange}
+                size="large"
+                GASource="all student results"
+              />
+            </div>
+          )}
         </Tab>
       </TabbedPanels>
     </SearchPageLayout>
   );
 }
+
+SearchPage.propTypes = {
+  searchURL: PropTypes.string,
+};
 
 export { SearchPage };
