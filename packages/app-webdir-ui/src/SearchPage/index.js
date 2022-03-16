@@ -102,16 +102,16 @@ function SearchPage({ searchURL }) {
   };
 
   useEffect(() => {
-    if (searchParams.get(queryParamName)) {
-      setTerm(searchParams.get(queryParamName));
-      updateContent(searchParams.get(searchTabsId));
-    }
     if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
     }
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
     }
+    if (searchParams.get(queryParamName)) {
+      setTerm(searchParams.get(queryParamName));
+    }
+    updateContent(searchParams.get(searchTabsId));
   }, [searchParams]);
 
   const getSortEventText = () => {
@@ -136,7 +136,7 @@ function SearchPage({ searchURL }) {
   };
 
   const updateSort = newSort => {
-    setSort(searchParams.get(sortParamName));
+    setSort(newSort);
     updateSearchParams(sortParamName, newSort);
     trackGAEvent({
       event: "collapse",
