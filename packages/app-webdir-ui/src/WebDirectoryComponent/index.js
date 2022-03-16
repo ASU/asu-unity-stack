@@ -1,42 +1,14 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { performSearch } from "../helpers/search";
+import { performSearch, engineNames } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
-const letters = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
 const sortOptions = [{ label: "label", value: 9 }];
-function WebDirectory() {
+function WebDirectory({ deptIDs, searchURL }) {
   const sortParamName = "sort-by";
-  const letterParamName = "letter";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
 
@@ -44,17 +16,18 @@ function WebDirectory() {
     setSearchParams({ [sortParamName]: newSort });
   };
 
-  const setLetter = newLetter => {
-    setSearchParams({ [letterParamName]: newLetter });
-  };
-
   const isLoading = false;
   const pageChange = () => true;
 
   function doSearch() {
-    performSearch("faculty", "mark", 1, 6, null, {
-      value: "_score_desc",
-      label: "Relevancy",
+    performSearch({
+      tab: engineNames.WEB_DIRECTORY,
+      page: 1,
+      items: 6,
+      searchURL,
+      filters: {
+        deptIDs,
+      },
     }).then(res => {
       setResults(res.results);
     });
@@ -63,11 +36,6 @@ function WebDirectory() {
   const handleKeyPressSort = (event, val) => {
     if (event.keyCode === 13) {
       setSort(val);
-    }
-  };
-  const handleKeyPressLetter = (event, val) => {
-    if (event.keyCode === 13) {
-      setLetter(val);
     }
   };
 
@@ -118,21 +86,6 @@ function WebDirectory() {
           Rank
         </button>
       </div>
-      <div className="letters">
-        {letters.map(l => {
-          return (
-            <button
-              type="button"
-              className="plain-button letter-button"
-              onClick={() => setLetter(l)}
-              onKeyPress={event => handleKeyPressLetter(event, l)}
-              tabIndex={0}
-            >
-              {l}
-            </button>
-          );
-        })}
-      </div>
       <div className="results">
         <ASUSearchResultsList
           results={results}
@@ -148,5 +101,10 @@ function WebDirectory() {
     </WebDirLayout>
   );
 }
+
+WebDirectory.propTypes = {
+  deptIDs: PropTypes.arrayOf(PropTypes.string),
+  searchURL: PropTypes.string,
+};
 
 export { WebDirectory };

@@ -8,7 +8,7 @@ in Storybook's settings (.storybook/preview.js).
 */
 import { WebDirectory } from ".";
 
-const iSearchApp = () => {
+const WebDirectoryComponent = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,4 +18,4 @@ const iSearchApp = () => {
   );
 };
 
-export { iSearchApp };
+export { WebDirectoryComponent };

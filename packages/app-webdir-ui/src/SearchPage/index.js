@@ -56,17 +56,17 @@ function SearchPage({ searchURL }) {
         setIsLoading(true);
       }
       const toSearch = limitUpdateTo || tab;
-      performSearch(
-        toSearch,
-        searchFor,
+      performSearch({
+        tab: toSearch,
+        term: searchFor,
         page,
-        resultsPerPage,
-        null,
+        items: resultsPerPage,
+        auth: null,
         sort,
         filters,
         site,
-        searchURL
-      ).then(res => {
+        searchURL,
+      }).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
             (prev, curr) =>

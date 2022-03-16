@@ -11,6 +11,7 @@ export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
   SITES: "web_sites",
+  WEB_DIRECTORY: "people_in_dept",
   ALL: "all",
 };
 
@@ -43,7 +44,15 @@ const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc"],
   },
+  [engineNames.WEB_DIRECTORY]: {
+    url: `webdir-people-in-department`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc"],
+  },
 };
+
 const sortOptions = {
   _score_desc: { _score: "desc" },
   last_name_asc: { last_name: "asc" },
@@ -67,17 +76,17 @@ const getTopResult = results => {
   return null;
 };
 
-export const performSearch = (
+export const performSearch = ({
   tab,
   term,
   page,
   items,
-  auth = null,
+  auth,
   sort,
   filters,
   site,
-  searchURL
-) => {
+  searchURL,
+}) => {
   return new Promise(resolve => {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
       ? sort
@@ -86,9 +95,24 @@ export const performSearch = (
     const searchURLOrDefault =
       searchURL || "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
-    let query = `${searchURLOrDefault}${engines[tab].url}?query=${term}&size=${items}&sort-by=${currentSort}`;
-    query = site ? `${query}&url_host=${site}` : query;
+    let query = `${searchURLOrDefault}${engines[tab].url}?&sort-by=${currentSort}`;
 
+    if (term) {
+      query = `${query}&query=${term}`;
+    }
+    if (site) {
+      query = `${query}&url_host=${site}`;
+    }
+    if (items) {
+      query = `${query}&size=${items}`;
+    }
+    if (page) {
+      query = `${query}&page=${page}`;
+    }
+    if (filters && filters.deptIDs) {
+      const deptIDParam = filters.deptIDs.map(n => `dept_id[]=${n}`).join("&");
+      query = `${query}&${deptIDParam}`;
+    }
     axios.get(query).then(res => {
       engines[tab].inFlight = false;
       engines[tab].abortController = null;

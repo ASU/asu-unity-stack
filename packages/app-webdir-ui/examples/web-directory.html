@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>iSearch - Example page</title>
+    <title>Web Directory - Example page</title>
     <!-- CSS only -->
     <!-- FONTAWESOME loaded from CDN 'kit' URL -->
     <script
@@ -39,10 +39,11 @@
 
 
     <script>
-      webdirUI.initSearchPage({
+      webdirUI.initWebDirectory({
         targetSelector: "#searchPageContainer",
         props: {
-          searchURL: "https://dev-asu-isearch.ws.asu.edu/api/v1/",
+          deptIDs: ['1457', '1374'],
+          searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
         },
       });
     </script>
