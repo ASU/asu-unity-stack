@@ -117,7 +117,7 @@ export const performSearch = ({
       engines[tab].inFlight = false;
       engines[tab].abortController = null;
 
-      if (tab === "all") {
+      if (tab === engineNames.ALL) {
         const results = {};
         Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
@@ -143,6 +143,14 @@ export const performSearch = ({
           }
         });
         resolve(results);
+      } else if (tab === engineNames.WEB_DIRECTORY) {
+        resolve({
+          tab,
+          page: res.data.meta.page,
+          results: res.data.results.map(result =>
+            engines[tab].converter(result, "large", true)
+          ),
+        });
       } else {
         resolve({
           tab,
