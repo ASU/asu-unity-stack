@@ -148,7 +148,7 @@ export const performSearch = ({
           tab,
           page: res.data.meta.page,
           results: res.data.results.map(result =>
-            engines[tab].converter(result, "large", true)
+            engines[tab].converter(result, "large")
           ),
         });
       } else {

@@ -70,7 +70,9 @@ function SearchPage({ searchURL }) {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
             (prev, curr) =>
-              res[curr] ? prev + res[curr].page.total_results : 0,
+              res[tabIds[curr]]
+                ? prev + res[tabIds[curr]].page.total_results
+                : 0,
             0
           );
           setNumResults(total);

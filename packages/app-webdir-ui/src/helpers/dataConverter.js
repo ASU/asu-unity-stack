@@ -58,10 +58,10 @@ const fillInBlanks = datum => {
   return { ...full, ...datum };
 };
 
-export const staffConverter = (datum, size = "small", reduceTitles = false) => {
+export const staffConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
   let primaryAffiliationTitle = null;
-  if (reduceTitles) {
+  if (filledDatum.titles.raw.length > 0) {
     const primaryAff = filledDatum.primaryi_search_department_affiliation.raw;
     const deptIndex = filledDatum.departments.raw.findIndex(
       dept => dept === primaryAff
