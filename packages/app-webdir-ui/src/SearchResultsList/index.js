@@ -100,7 +100,7 @@ const ASUSearchResultsList = ({
         </div>
       )}
       {!isLoading && (!results || results.length === 0) && (
-        <div className="results-title">Please try a different search term</div>
+        <div className="results-title" />
       )}
     </SearchResultsList>
   );

@@ -18,6 +18,9 @@ const fillInBlanks = datum => {
     display_name: {
       raw: "",
     },
+    title: {
+      raw: "",
+    },
     titles: {
       raw: [],
     },
@@ -52,6 +55,15 @@ const fillInBlanks = datum => {
       raw: "",
     },
     twitter_link: {
+      raw: "",
+    },
+    url_host: {
+      raw: "",
+    },
+    body_content: {
+      raw: "",
+    },
+    url: {
       raw: "",
     },
   };
