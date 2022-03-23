@@ -10,6 +10,25 @@ import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
+const SearchResultsMessage = ({ term, numResults }) => {
+  return (
+    <div className="message">
+      <div className="results-search-message">
+        <span>Your search for </span>
+        <span className="search-message-emphasis">{term} </span>
+        <span> returned </span>
+        <span className="search-message-emphasis">{numResults}</span>
+        <span> results </span>
+      </div>
+    </div>
+  );
+};
+
+SearchResultsMessage.propTypes = {
+  term: PropTypes.string,
+  numResults: PropTypes.number,
+};
+
 function SearchPage({ searchURL }) {
   const sortOptions = [
     { value: "_score_desc", label: "Relevancy" },
@@ -169,11 +188,11 @@ function SearchPage({ searchURL }) {
   };
 
   const preSearchOrContent = content => {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
     if (!results) {
       return <PreSearchMessage />;
-      // eslint-disable-next-line no-else-return
-    } else if (isLoading) {
-      return <div>Loading...</div>;
     }
     return content;
   };
@@ -217,17 +236,10 @@ function SearchPage({ searchURL }) {
         <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <div className="all-asu-search">
-              <div className="message">
-                <div className="results-search-message">
-                  <span>Your search for </span>
-                  <span className="search-message-emphasis">
-                    {searchParams.get(queryParamName)}{" "}
-                  </span>
-                  <span> returned </span>
-                  <span className="search-message-emphasis">{numResults}</span>
-                  <span> faculty and staff results </span>
-                </div>
-              </div>
+              <SearchResultsMessage
+                term={searchParams.get(queryParamName)}
+                numResults={numResults}
+              />
               <div className="top-results">
                 <div>{results?.web_sites?.topResult}</div>
                 <div>{results?.web_dir_faculty_staff?.topResult}</div>
@@ -294,21 +306,54 @@ function SearchPage({ searchURL }) {
         {site && (
           <Tab id={tabIds.sites} title={site}>
             {preSearchOrContent(
-              <ASUSearchResultsList
-                results={results?.results}
-                totalResults={numResults}
-                resultsPerPage={6}
-                isLoading={isLoading}
-                title={site}
-                onPageChange={pageChange}
-                GASource={site}
-              />
+              <div className="sites-tab">
+                <SearchResultsMessage
+                  term={searchParams.get(queryParamName)}
+                  numResults={numResults}
+                />
+                <ASUSearchResultsList
+                  results={results?.results}
+                  totalResults={numResults}
+                  resultsPerPage={6}
+                  isLoading={isLoading}
+                  title={site}
+                  onPageChange={pageChange}
+                  GASource={site}
+                />
+              </div>
             )}
           </Tab>
         )}
         <Tab id={tabIds.faculty} title="Faculty and Staff">
           {preSearchOrContent(
             <div className="faculty-tab">
+              <SearchResultsMessage
+                term={searchParams.get(queryParamName)}
+                numResults={numResults}
+              />
+              {numResults > 0 && (
+                <form className="uds-form sort-form faculty-sort">
+                  <div className="form-group">
+                    <label htmlFor="sortBySelect">Sort by</label>
+                    <select
+                      className="form-control"
+                      id="sortBySelect"
+                      value={sort}
+                      onChange={event => updateSort(event.target.value)}
+                      onClick={openSort}
+                    >
+                      {results?.results?.length > 0 &&
+                        sortOptions.map(op => (
+                          <option key={op.value} value={op.value}>
+                            {op.label === "Relevancy"
+                              ? "Sort by Relevancy"
+                              : op.label}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                </form>
+              )}
               <ASUSearchResultsList
                 results={results?.results}
                 totalResults={numResults}
@@ -319,33 +364,18 @@ function SearchPage({ searchURL }) {
                 onPageChange={pageChange}
                 size="large"
                 GASource="all faculty and staff results"
+                className="faculty-results"
               />
-              <form className="uds-form sort-form">
-                <div className="form-group">
-                  <label htmlFor="sortBySelect">Sort by</label>
-                  <select
-                    className="form-control"
-                    id="sortBySelect"
-                    value={sort}
-                    onChange={event => updateSort(event.target.value)}
-                    onClick={openSort}
-                  >
-                    {sortOptions.map(op => (
-                      <option key={op.value} value={op.value}>
-                        {op.label === "Relevancy"
-                          ? "Sort by Relevancy"
-                          : op.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </form>
             </div>
           )}
         </Tab>
         <Tab id={tabIds.students} title="Students">
           {preSearchOrContent(
             <div className="students-tab">
+              <SearchResultsMessage
+                term={searchParams.get(queryParamName)}
+                numResults={numResults}
+              />
               <ASUSearchResultsList
                 results={results?.results}
                 totalResults={numResults}
