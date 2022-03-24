@@ -1,6 +1,6 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
@@ -34,6 +34,9 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   const childrenArray = React.Children.toArray(children);
   const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [navControlsNeeded, setNavControlsNeeded] = useState(false);
+  const headerTabs = useRef(null);
+  const tabbedPanels = useRef(null);
 
   const updateTabParam = tab => {
     const newParams = {};
@@ -55,6 +58,16 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   useEffect(() => {
     updateTabParam(searchParams.get(id) || activeTabID);
   }, [searchParams]);
+
+  useEffect(() => {
+    const allTabsWidth = [
+      ...headerTabs.current.querySelectorAll(".nav-item"),
+    ].reduce((prev, curr) => prev + curr.offsetWidth, 0);
+    const componentWidth = tabbedPanels.current.offsetWidth;
+    if (allTabsWidth >= componentWidth) {
+      setNavControlsNeeded(true);
+    }
+  }, []);
 
   const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
@@ -143,9 +156,14 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   }
 
   return (
-    <div className={backgroundColor}>
+    <div className={backgroundColor} ref={tabbedPanels}>
       <nav className={navClasses} onScroll={catchScroll} id={TabbedPanelsId}>
-        <div className="nav nav-tabs" id={NavTabsId} role="tablist">
+        <div
+          className="nav nav-tabs"
+          id={NavTabsId}
+          role="tablist"
+          ref={headerTabs}
+        >
           {childrenArray.map(child => {
             return (
               <TabHeader
@@ -160,16 +178,18 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
             );
           })}
         </div>
-        <NavControls
-          clickPrev={() => {
-            slideNav(-1);
-            trackArrowsEvent("left chevron");
-          }}
-          clickNext={() => {
-            slideNav(1);
-            trackArrowsEvent("right chevron");
-          }}
-        />
+        {navControlsNeeded && (
+          <NavControls
+            clickPrev={() => {
+              slideNav(-1);
+              trackArrowsEvent("left chevron");
+            }}
+            clickNext={() => {
+              slideNav(1);
+              trackArrowsEvent("right chevron");
+            }}
+          />
+        )}
       </nav>
       <div
         className="tab-content"
