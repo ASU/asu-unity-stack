@@ -86,6 +86,7 @@ export const performSearch = ({
   filters,
   site,
   searchURL,
+  titleOverwrite,
 }) => {
   return new Promise(resolve => {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
@@ -109,15 +110,21 @@ export const performSearch = ({
     if (page) {
       query = `${query}&page=${page}`;
     }
-    if (filters && filters.deptIDs) {
-      const deptIDParam = filters.deptIDs.map(n => `dept_id[]=${n}`).join("&");
+    if (filters && filters.deptIds) {
+      const deptIDParam = filters.deptIds.map(n => `dept_id[]=${n}`).join("&");
       query = `${query}&${deptIDParam}`;
+    }
+    if (filters && filters.peopleIds) {
+      const asuriteIDParam = filters.peopleIds
+        .map(n => `asurite_id[]=${n}`)
+        .join("&");
+      query = `${query}&${asuriteIDParam}`;
     }
     axios.get(query).then(res => {
       engines[tab].inFlight = false;
       engines[tab].abortController = null;
 
-      if (tab === "all") {
+      if (tab === engineNames.ALL) {
         const results = {};
         Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
@@ -148,6 +155,14 @@ export const performSearch = ({
           }
         });
         resolve(results);
+      } else if (tab === engineNames.WEB_DIRECTORY) {
+        resolve({
+          tab,
+          page: res.data.meta.page,
+          results: res.data.results.map(result =>
+            engines[tab].converter(result, "large", titleOverwrite)
+          ),
+        });
       } else {
         resolve({
           tab,

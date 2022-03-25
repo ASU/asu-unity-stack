@@ -70,8 +70,33 @@ const fillInBlanks = datum => {
   return { ...full, ...datum };
 };
 
-export const staffConverter = (datum, size = "small") => {
+export const staffConverter = (datum, size = "small", titleOverwrite) => {
   const filledDatum = fillInBlanks(datum);
+  let primaryAffiliationTitle = null;
+  if (titleOverwrite) {
+    const deptId = titleOverwrite.find(item => {
+      return item.asurite_id === filledDatum.asurite_id.raw;
+    }).dept;
+    const deptIndex = filledDatum.deptids.raw.findIndex(
+      dept => dept === deptId
+    );
+    primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
+    const dept = filledDatum.departments.raw[deptIndex];
+    primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+  } else if (filledDatum.titles.raw.length > 0) {
+    const primaryAff = filledDatum.primaryi_search_department_affiliation.raw;
+    const deptIndex = filledDatum.departments.raw.findIndex(
+      dept => dept === primaryAff
+    );
+    const relevantField = filledDatum.title_source.raw[deptIndex];
+    if (relevantField === "titles" || !filledDatum.working_title) {
+      primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
+    } else if (relevantField === "workingTitle") {
+      primaryAffiliationTitle = filledDatum.working_title.raw;
+    }
+    const dept = filledDatum.departments.raw[deptIndex];
+    primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+  }
   return (
     <ProfileCard
       isRequired={false}
@@ -80,6 +105,7 @@ export const staffConverter = (datum, size = "small") => {
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
+      primaryAffiliationTitle={primaryAffiliationTitle}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
       addressLine1={filledDatum.address_line1.raw}

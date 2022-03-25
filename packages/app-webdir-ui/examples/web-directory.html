@@ -7,17 +7,19 @@
     <title>Web Directory - Example page</title>
     <!-- CSS only -->
     <!-- FONTAWESOME loaded from CDN 'kit' URL -->
+    <!--
     <script
       src="https://kit.fontawesome.com/35fb12a3a9.js"
       crossorigin="anonymous"
     ></script>
-
+    -->
     <link
       rel="stylesheet"
       href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
     />
     <!-- *************************************************************** -->
     <!-- Load React. -->
+    <!--
     <script
       src="https://unpkg.com/react@16/umd/react.production.min.js"
       crossorigin
@@ -26,6 +28,9 @@
       src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
       crossorigin
     ></script>
+    -->
+    <script src="./react.production.min.js"></script>
+    <script src="./react-dom.production.min.js"></script>
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
     <script src="../dist/webdirUI.umd.js"></script>
@@ -42,9 +47,11 @@
       webdirUI.initWebDirectory({
         targetSelector: "#searchPageContainer",
         props: {
-          deptIDs: ['1457', '1374'],
-          searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
-        },
+          searchType: "people_departments",
+          searchURL: "https://dev-asu-isearch.ws.asu.edu/api/v1/",
+          peopleSearch: "",
+          ids: ",mdenke:1350,lhillzev:1353,jagarc50:1350",
+        }
       });
     </script>
   </body>
