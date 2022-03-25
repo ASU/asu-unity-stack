@@ -4,7 +4,7 @@ export const profileCardType = {
   id: PropTypes.string,
   imgURL: PropTypes.string,
   name: PropTypes.string,
-  titles: PropTypes.string,
+  titles: PropTypes.arrayOf(PropTypes.string),
   email: PropTypes.string,
   telephone: PropTypes.string,
   addressLine1: PropTypes.string,

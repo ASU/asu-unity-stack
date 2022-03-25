@@ -7,12 +7,13 @@ import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
 const sortOptions = [{ label: "label", value: 9 }];
-function WebDirectory({ deptIDs, searchURL }) {
+function WebDirectory({ searchType, ids, deptIds, searchURL }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
+  const [sort, setSort] = useState(9);
 
-  const setSort = newSort => {
+  const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
   };
 
@@ -20,15 +21,27 @@ function WebDirectory({ deptIDs, searchURL }) {
   const pageChange = () => true;
 
   function doSearch() {
-    performSearch({
+    const filters = {
+      deptIds: deptIds.split(","),
+    };
+    const params = {
       tab: engineNames.WEB_DIRECTORY,
       page: 1,
       items: 6,
       searchURL,
-      filters: {
-        deptIDs,
-      },
-    }).then(res => {
+      filters,
+    };
+    if (searchType === "people_departments") {
+      const parsedIDs = ids
+        .split(",")
+        .map(pair => pair.split(":"))
+        .map(pair => {
+          return { asurite_id: pair[0], dept: pair[1] };
+        });
+      filters.peopleIds = parsedIDs.map(id => id.asurite_id);
+      params.titleOverwrite = parsedIDs;
+    }
+    performSearch(params).then(res => {
       setResults(res.results);
     });
   }
@@ -40,6 +53,9 @@ function WebDirectory({ deptIDs, searchURL }) {
   };
 
   useEffect(() => {
+    if (searchParams.get(sortParamName)) {
+      setSort(searchParams.get(sortParamName));
+    }
     doSearch();
   }, [searchParams]);
 
@@ -52,8 +68,8 @@ function WebDirectory({ deptIDs, searchURL }) {
             <select
               className="form-control"
               id="sortBySelect"
-              value={searchParams.get(sortParamName)}
-              onChange={event => setSort(event.target.value)}
+              value={sort}
+              onChange={event => setNewSort(event.target.value)}
             >
               {sortOptions.map(op => (
                 <option key={op.value} value={op.value}>
@@ -103,8 +119,10 @@ function WebDirectory({ deptIDs, searchURL }) {
 }
 
 WebDirectory.propTypes = {
-  deptIDs: PropTypes.arrayOf(PropTypes.string),
+  deptIds: PropTypes.string,
   searchURL: PropTypes.string,
+  searchType: PropTypes.string,
+  ids: PropTypes.string,
 };
 
 export { WebDirectory };
