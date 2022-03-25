@@ -57,15 +57,6 @@ const SearchPageLayout = styled.div`
       "subdomain links"
       "all all";
 
-    .message {
-      grid-area: message;
-      .results-search-message {
-        .search-message-emphasis {
-          font-weight: bold;
-        }
-      }
-    }
-
     .sort {
       grid-area: sort;
     }
@@ -91,11 +82,37 @@ const SearchPageLayout = styled.div`
       grid-area: all;
     }
   }
-
+  .sites-tab {
+    display: flex;
+    flex-direction: column;
+  }
   .faculty-tab {
     display: grid;
+    grid-template-rows: auto 1fr;
     grid-template-columns: 792px auto;
+    grid-template-areas:
+      "message sort"
+      "results results";
+    .faculty-sort {
+      grid-area: sort;
+    }
+    .faculty-results {
+      grid-area: results;
+    }
   }
+  .students-tab {
+    display: flex;
+    flex-direction: column;
+  }
+  .message {
+    grid-area: message;
+    .results-search-message {
+      .search-message-emphasis {
+        font-weight: bold;
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     .faculty-tab {
       grid-template-columns: 100%;

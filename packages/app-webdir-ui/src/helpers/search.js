@@ -128,7 +128,9 @@ export const performSearch = ({
         const results = {};
         Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
-            const anonResults = new Array(items)
+            const anonResults = new Array(
+              Math.min(items, res.data[dataKey].meta.page.total_results)
+            )
               .fill(1)
               .map((n, idx) => anonConverter(idx));
             results[dataKey] = {
@@ -145,7 +147,10 @@ export const performSearch = ({
               results: res.data[dataKey].results.map(result =>
                 engines[dataKey].converter(result)
               ),
-              topResult: engines[dataKey].converter(topResult, "small"),
+              topResult:
+                topResult === null
+                  ? topResult
+                  : engines[dataKey].converter(topResult, "small"),
             };
           }
         });
