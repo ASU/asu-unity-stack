@@ -21,9 +21,7 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
   const pageChange = () => true;
 
   function doSearch() {
-    const filters = {
-      deptIds: deptIds.split(","),
-    };
+    const filters = {};
     const params = {
       tab: engineNames.WEB_DIRECTORY,
       page: 1,
@@ -31,15 +29,18 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
       searchURL,
       filters,
     };
-    if (searchType === "people_departments") {
+    if (searchType !== "departments") {
       const parsedIDs = ids
         .split(",")
         .map(pair => pair.split(":"))
         .map(pair => {
           return { asurite_id: pair[0], dept: pair[1] };
         });
-      filters.peopleIds = parsedIDs.map(id => id.asurite_id);
+      filters.peopleIds = parsedIDs.map(item => item.asurite_id);
+      filters.deptIds = parsedIDs.map(item => item.dept);
       params.titleOverwrite = parsedIDs;
+    } else {
+      filters.deptIds = deptIds.split(",");
     }
     performSearch(params).then(res => {
       setResults(res.results);

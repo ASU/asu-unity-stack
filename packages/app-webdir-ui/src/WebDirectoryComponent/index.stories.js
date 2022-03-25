@@ -10,17 +10,47 @@ import {
 
 export default createComponent("Web Directory", "Organisms", "Templates");
 
-export const webDirectoryExample = createStory(
+export const webDirectoryExampleDepartments = createStory(
   <div className="uds-content-align">
     <WebDirectory
-      searchType="people_departments"
-      ids=",mdenke:1350,lhillzev:1353,jagarc50:1350"
+      searchType="departments"
       deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003"
       searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
 );
-webDirectoryExample.args = {
+
+webDirectoryExampleDepartments.args = {
+  template: 0,
+};
+
+export const webDirectoryExamplePeople = createStory(
+  <div className="uds-content-align">
+    <WebDirectory
+      searchType="people"
+      ids=",mdenke:1350,lhillzev:1353,jagarc50:1350"
+      searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+    />
+  </div>,
+  { supportedTemplates: [layoutNames.FULL_WIDTH] }
+);
+
+webDirectoryExamplePeople.args = {
+  template: 0,
+};
+
+export const webDirectoryExampleDepartmentsAndPeople = createStory(
+  <div className="uds-content-align">
+    <WebDirectory
+      searchType="people_departments"
+      ids=",mdenke:1350,lhillzev:1353,jagarc50:1350"
+      searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+    />
+  </div>,
+  { supportedTemplates: [layoutNames.FULL_WIDTH] }
+);
+
+webDirectoryExampleDepartmentsAndPeople.args = {
   template: 0,
 };
