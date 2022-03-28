@@ -18,8 +18,7 @@ import { WebDirectoryComponent } from "../WebDirectoryComponent/withRouter";
  */
 const RenderReactSearch = (component, props, targetSelector) => {
   const target = document.querySelector(targetSelector);
-  const reactElem = React.createElement(component, props);
-  ReactDOM.render(reactElem, target);
+  ReactDOM.render(React.createElement(component, props), target);
 };
 
 /**
