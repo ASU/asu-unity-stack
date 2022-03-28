@@ -8,11 +8,11 @@ in Storybook's settings (.storybook/preview.js).
 */
 import { WebDirectory } from ".";
 
-const WebDirectoryComponent = () => {
+const WebDirectoryComponent = props => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<WebDirectory />} />
+        <Route path="*" element={<WebDirectory {...props} />} />
       </Routes>
     </BrowserRouter>
   );
