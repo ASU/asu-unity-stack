@@ -8,11 +8,11 @@ in Storybook's settings (.storybook/preview.js).
 */
 import { SearchPage } from ".";
 
-const iSearchApp = () => {
+const iSearchApp = props => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<SearchPage />} />
+        <Route path="*" element={<SearchPage {...props} />} />
       </Routes>
     </BrowserRouter>
   );
