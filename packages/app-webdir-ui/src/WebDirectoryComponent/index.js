@@ -32,12 +32,13 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
     if (searchType !== "departments") {
       const parsedIDs = ids
         .split(",")
+        .filter(id => id.includes(":"))
         .map(pair => pair.split(":"))
         .map(pair => {
           return { asurite_id: pair[0], dept: pair[1] };
         });
       filters.peopleIds = parsedIDs.map(item => item.asurite_id);
-      filters.deptIds = parsedIDs.map(item => item.dept);
+      filters.deptIds = Array.from(new Set(parsedIDs.map(item => item.dept)));
       params.titleOverwrite = parsedIDs;
     } else {
       filters.deptIds = deptIds.split(",");

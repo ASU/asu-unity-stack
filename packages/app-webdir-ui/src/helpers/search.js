@@ -156,6 +156,11 @@ export const performSearch = ({
         });
         resolve(results);
       } else if (tab === engineNames.WEB_DIRECTORY) {
+        if (filters.peopleIds) {
+          res.data.results = res.data.results.filter(r => {
+            return filters.peopleIds.includes(r.asurite_id.raw);
+          });
+        }
         resolve({
           tab,
           page: res.data.meta.page,
