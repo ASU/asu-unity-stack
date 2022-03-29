@@ -100,7 +100,7 @@ function SearchPage({ searchURL }) {
         }
         if (limitUpdateTo) {
           const current = { ...results };
-          current[res.engineName] = res;
+          current[res.tab] = res;
           setResults(current);
         } else {
           setResults(res);
