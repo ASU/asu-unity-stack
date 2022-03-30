@@ -12,7 +12,10 @@ export default createComponent("Search Page", "Organisms", "Templates");
 
 export const searchPageExample = createStory(
   <div className="uds-content-align">
-    <SearchPage searchURL="https://dev-asu-isearch.ws.asu.edu/api/v1/" />
+    <SearchPage
+      searchURL="https://dev-asu-isearch.ws.asu.edu/api/v1/"
+      loggedIn
+    />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
 );

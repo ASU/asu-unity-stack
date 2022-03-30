@@ -53,17 +53,6 @@ const engines = {
   },
 };
 
-const sortOptions = {
-  _score_desc: { _score: "desc" },
-  last_name_asc: { last_name: "asc" },
-  last_name_desc: { last_name: "desc" },
-  date_desc: {
-    arbitraryDate: {
-      order: "asc",
-    },
-  },
-};
-
 const getTopResult = results => {
   const topResult = results.reduce((prev, curr) => {
     return prev === null || prev["_meta"].score < curr["_meta"].score

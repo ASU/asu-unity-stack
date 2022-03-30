@@ -11,23 +11,34 @@ const SearchPageLayout = styled.div`
     margin-left: 12px;
   }
 
-  form {
+  .options-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 50px;
-    max-width: 50%;
     margin-bottom: 70px;
-
-    .form-group {
-      display: flex;
-
-      input {
-        margin-right: 16px;
+    form {
+      width: 50%;
+      .form-group {
+        display: flex;
         margin-bottom: 0;
+        input {
+          margin-right: 16px;
+          margin-bottom: 0;
+        }
+        .desktop-button {
+          display: inline;
+        }
+        .mobile-button {
+          display: none;
+        }
       }
-      .desktop-button {
-        display: inline;
-      }
-      .mobile-button {
-        display: none;
+    }
+    .profile-options {
+      display: flex;
+      flex-direction: row;
+      a:not(:last-child) {
+        margin-right: 16px;
       }
     }
   }
@@ -117,22 +128,32 @@ const SearchPageLayout = styled.div`
     .faculty-tab {
       grid-template-columns: 100%;
     }
-    form {
-      margin-bottom: 24px;
-      max-width: 100%;
+    .options-area {
+      flex-direction: column;
+      form {
+        margin-bottom: 24px;
+        max-width: 100%;
 
-      .form-group {
+        .form-group {
+          flex-direction: column;
+
+          input {
+            margin-right: 0;
+            margin-bottom: 24px;
+          }
+          .desktop-button {
+            display: none;
+          }
+          .mobile-button {
+            display: inline;
+          }
+        }
+      }
+      .profile-options {
+        display: flex;
         flex-direction: column;
-
-        input {
-          margin-right: 0;
-          margin-bottom: 24px;
-        }
-        .desktop-button {
-          display: none;
-        }
-        .mobile-button {
-          display: inline;
+        a:not(:last-child) {
+          margin-bottom: 16px;
         }
       }
     }
