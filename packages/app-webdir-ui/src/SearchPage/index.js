@@ -29,7 +29,7 @@ SearchResultsMessage.propTypes = {
   numResults: PropTypes.number,
 };
 
-function SearchPage({ searchURL }) {
+function SearchPage({ searchURL, loggedIn }) {
   const sortOptions = [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
@@ -204,36 +204,54 @@ function SearchPage({ searchURL }) {
       <h1>
         <span className="highlight-gold">Search</span>
       </h1>
-      <form className="uds-form">
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            id="search-input"
-            placeholder="Search"
-            value={term}
-            onChange={e => setTerm(e.target.value)}
-            onKeyDown={inputKeyPress}
-          />
-          <div className="desktop-button">
+      <div className="options-area">
+        <form className="uds-form">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="search-input"
+              placeholder="Search"
+              value={term}
+              onChange={e => setTerm(e.target.value)}
+              onKeyDown={inputKeyPress}
+            />
+            <div className="desktop-button">
+              <Button
+                color="maroon"
+                icon={["fas", "search"]}
+                label="Search"
+                onClick={() => doSearch()}
+              />
+            </div>
+            <div className="mobile-button">
+              <Button
+                color="maroon"
+                icon={["fas", "search"]}
+                label="Search"
+                onClick={() => doSearch()}
+                size="small"
+              />
+            </div>
+          </div>
+        </form>
+        {loggedIn && (
+          <div className="profile-options">
             <Button
-              color="maroon"
-              icon={["fas", "search"]}
-              label="Search"
-              onClick={() => doSearch()}
+              color="gray"
+              icon={["fas", "lock"]}
+              label="Edit my profile"
+              href="/profile-edit"
+            />
+            <Button
+              color="gray"
+              icon={["fas", "lock"]}
+              label="Department admin"
+              href="/groups"
             />
           </div>
-          <div className="mobile-button">
-            <Button
-              color="maroon"
-              icon={["fas", "search"]}
-              label="Search"
-              onClick={() => doSearch()}
-              size="small"
-            />
-          </div>
-        </div>
-      </form>
+        )}
+      </div>
       <TabbedPanels id={searchTabsId} onTabChange={tabChange}>
         <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
@@ -399,6 +417,7 @@ function SearchPage({ searchURL }) {
 
 SearchPage.propTypes = {
   searchURL: PropTypes.string,
+  loggedIn: PropTypes.bool,
 };
 
 export { SearchPage };
