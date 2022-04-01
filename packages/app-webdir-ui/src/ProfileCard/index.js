@@ -95,7 +95,9 @@ const ProfileCard = ({ ...props }) => {
         )}
         {["default", "large"].includes(props.size) && (
           <div>
-            <p className="person-description">{props.shortBio.slice(0, 250)}</p>
+            <p className="person-description">
+              {props.shortBio?.slice(0, 250)}
+            </p>
             <ul className="person-social-medias">
               <li>
                 <a
