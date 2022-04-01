@@ -56,8 +56,14 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
   };
 
   useEffect(() => {
-    updateTabParam(searchParams.get(id) || activeTabID);
+    setActiveTabID(searchParams.get(id) || activeTabID);
   }, [searchParams]);
+
+  useEffect(() => {
+    if (!searchParams.get(id)) {
+      updateTabParam(searchParams.get(id) || activeTabID);
+    }
+  }, []);
 
   useEffect(() => {
     const allTabsWidth = [
