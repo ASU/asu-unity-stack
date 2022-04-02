@@ -128,6 +128,8 @@ function SearchPage({ searchURL, loggedIn }) {
     }
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
+    } else {
+      setSort("_score_desc");
     }
     if (searchParams.get(queryParamName)) {
       setTerm(searchParams.get(queryParamName));
