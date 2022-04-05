@@ -56,41 +56,28 @@ const SearchPageLayout = styled.div`
     }
   }
   .all-asu-search {
-    display: grid;
-    grid-template-columns: 700px 1fr;
-    grid-template-rows: repeat(5, auto);
-    grid-row-gap: 72px;
-    grid-column-gap: 126px;
-    grid-template-areas:
-      "message message"
-      "top faculty"
-      "subdomain students"
-      "subdomain links"
-      "all all";
+    display: flex;
+    flex-direction: column;
+    .all-message {
+      margin-bottom: 88px;
+    }
+    .all-content {
+      display: grid;
+      grid-template-columns: 700px 1fr;
+      grid-column-gap: 126px;
+      .all-content-column {
+        display: flex;
+        flex-direction: column;
 
-    .sort {
-      grid-area: sort;
-    }
-    .top-results {
-      grid-area: top;
-      .uds-results-card {
-        margin-bottom: 32px;
+        .all-content-item {
+          margin-bottom: 72px;
+        }
+        .top-results {
+          .uds-results-card {
+            margin-bottom: 32px;
+          }
+        }
       }
-    }
-    .faculty-and-staff {
-      grid-area: faculty;
-    }
-    .subdomain-results {
-      grid-area: subdomain;
-    }
-    .students {
-      grid-area: students;
-    }
-    .quick-links {
-      grid-area: links;
-    }
-    .all-results {
-      grid-area: all;
     }
   }
   .sites-tab {
@@ -165,7 +152,21 @@ const SearchPageLayout = styled.div`
     }
 
     .all-asu-search {
-      display: grid;
+      display: flex;
+      flex-direction: column;
+      .all-content {
+        display: flex;
+        flex-direction: column;
+        .all-content-column {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+
+    .all-asu-search {
+      display: flex;
+      flex-direction: column;
       grid-template-columns: 100%;
       grid-template-rows: repeat(6, auto);
       grid-row-gap: 48px;
