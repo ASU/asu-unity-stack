@@ -258,69 +258,84 @@ function SearchPage({ searchURL, loggedIn }) {
         <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <div className="all-asu-search">
-              <SearchResultsMessage
-                term={searchParams.get(queryParamName)}
-                numResults={numResults}
-              />
-              <div className="top-results">
-                <div>{results?.web_sites?.topResult}</div>
-                <div>{results?.web_dir_faculty_staff?.topResult}</div>
-              </div>
-              <div className="faculty-and-staff">
-                <ASUSearchResultsList
-                  results={results?.web_dir_faculty_staff?.results.slice(0, 3)}
-                  totalResults={
-                    results?.web_dir_faculty_staff?.page.total_results
-                  }
-                  resultsPerPage={3}
-                  isLoading={isLoading}
-                  title="Faculty and staff"
-                  size="micro"
-                  summary
-                  onExpandClick={() => goToTab(tabIds.faculty)}
-                  GASource="faculty and staff"
+              <div className="all-message">
+                <SearchResultsMessage
+                  term={searchParams.get(queryParamName)}
+                  numResults={numResults}
                 />
               </div>
-              <div className="subdomain-results">
-                <ASUSearchResultsList
-                  results={results?.web_sites?.results}
-                  totalResults={results?.web_sites?.page.total_results}
-                  resultsPerPage={6}
-                  isLoading={isLoading}
-                  title="All results from <<sites>>"
-                  summary
-                  onExpandClick={() => goToTab(tabIds.sites)}
-                  GASource="all results from <<subdomain>>"
-                />
-              </div>
-              <div className="students">
-                <ASUSearchResultsList
-                  results={results?.web_dir_students?.results.slice(0, 3)}
-                  totalResults={results?.web_dir_students?.page.total_results}
-                  resultsPerPage={3}
-                  isLoading={isLoading}
-                  title="Students"
-                  size="micro"
-                  summary
-                  anonymized
-                  onExpandClick={() => goToTab(tabIds.students)}
-                  GASource="students"
-                />
-              </div>
-              <div className="quick-links">
-                <QuickLinks />
-              </div>
-              <div className="all-results">
-                <ASUSearchResultsList
-                  results={results?.web_sites?.results}
-                  totalResults={results?.web_sites?.page.total_results}
-                  resultsPerPage={6}
-                  isLoading={isLoading}
-                  title="All asu.edu results"
-                  onPageChange={page => pageChange(page, tabIds.sites)}
-                  currentPage={results?.web_sites?.page?.current}
-                  GASource="all asu.edu results"
-                />
+              <div className="all-content">
+                <div className="all-content-column">
+                  <div className="top-results all-content-item">
+                    <div>{results?.web_sites?.topResult}</div>
+                    <div>{results?.web_dir_faculty_staff?.topResult}</div>
+                  </div>
+                  <div className="subdomain-results all-content-item">
+                    <ASUSearchResultsList
+                      results={results?.web_sites?.results}
+                      totalResults={results?.web_sites?.page.total_results}
+                      resultsPerPage={6}
+                      isLoading={isLoading}
+                      title="All results from <<sites>>"
+                      summary
+                      onExpandClick={() => goToTab(tabIds.sites)}
+                      GASource="all results from <<subdomain>>"
+                    />
+                  </div>
+                  <div className="all-results all-content-item">
+                    <ASUSearchResultsList
+                      results={results?.web_sites?.results}
+                      totalResults={results?.web_sites?.page.total_results}
+                      resultsPerPage={6}
+                      isLoading={isLoading}
+                      title="All asu.edu results"
+                      onPageChange={page => pageChange(page, tabIds.sites)}
+                      currentPage={results?.web_sites?.page?.current}
+                      GASource="all asu.edu results"
+                    />
+                  </div>
+                </div>
+                <div className="all-content-column">
+                  <div className="faculty-and-staff all-content-item">
+                    <ASUSearchResultsList
+                      results={results?.web_dir_faculty_staff?.results.slice(
+                        0,
+                        3
+                      )}
+                      totalResults={
+                        results?.web_dir_faculty_staff?.page.total_results
+                      }
+                      resultsPerPage={3}
+                      isLoading={isLoading}
+                      title="Faculty and staff"
+                      size="micro"
+                      summary
+                      onExpandClick={() => goToTab(tabIds.faculty)}
+                      GASource="faculty and staff"
+                    />
+                  </div>
+                  {results?.web_dir_students?.results?.length > 0 && (
+                    <div className="students all-content-item">
+                      <ASUSearchResultsList
+                        results={results?.web_dir_students?.results.slice(0, 3)}
+                        totalResults={
+                          results?.web_dir_students?.page.total_results
+                        }
+                        resultsPerPage={3}
+                        isLoading={isLoading}
+                        title="Students"
+                        size="micro"
+                        summary
+                        anonymized
+                        onExpandClick={() => goToTab(tabIds.students)}
+                        GASource="students"
+                      />
+                    </div>
+                  )}
+                  <div className="quick-links all-content-item">
+                    <QuickLinks />
+                  </div>
+                </div>
               </div>
             </div>
           )}
