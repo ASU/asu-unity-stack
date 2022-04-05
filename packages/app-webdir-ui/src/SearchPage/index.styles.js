@@ -114,6 +114,12 @@ const SearchPageLayout = styled.div`
   @media (max-width: 768px) {
     .faculty-tab {
       grid-template-columns: 100%;
+      grid-template-rows: repeat(3, auto);
+      grid-row-gap: 40px;
+      grid-template-areas:
+        "message"
+        "sort"
+        "results";
     }
     .options-area {
       flex-direction: column;
