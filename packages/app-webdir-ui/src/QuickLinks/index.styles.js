@@ -20,7 +20,7 @@ const QuickLinksTemplate = styled.div`
     outline: none;
     color: #822141;
     text-decoration: underline;
-    margin-left: -6px;
+    padding: 0;
     margin-bottom: 16px;
   }
   .plain-button:hover {
