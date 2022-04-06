@@ -17,35 +17,35 @@ export const engineNames = {
 
 const engines = {
   [engineNames.FACULTY]: {
-    url: `webdir-search-faculty-staff`,
+    url: `webdir-profiles/faculty-staff`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.STUDENTS]: {
-    url: `webdir-search-students`,
+    url: `webdir-profiles/students`,
     needsAuth: true,
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
-    url: `webdir-api-web-search`,
+    url: `webdir-search/web`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
   },
   [engineNames.ALL]: {
-    url: `webdir-meta-search`,
+    url: `webdir-search/meta`,
     needsAuth: false,
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc"],
   },
   [engineNames.WEB_DIRECTORY]: {
-    url: `webdir-people-in-department`,
+    url: `webdir-departments/profiles`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
