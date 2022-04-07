@@ -45,7 +45,7 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
     <WebDirectory
       searchType="people_departments"
       ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
-      searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+      searchURL="https://dev-asu-isearch.ws.asu.edu/api/v1/"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
