@@ -82,9 +82,11 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
     );
     primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
     const dept = filledDatum.departments.raw[deptIndex];
-    primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
-  } else if (filledDatum.titles.raw.length > 0) {
-    const primaryAff = filledDatum.primaryi_search_department_affiliation.raw;
+    if (primaryAffiliationTitle && dept) {
+      primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+    }
+  } else if (filledDatum.titles.raw && filledDatum.titles.raw.length > 0) {
+    const primaryAff = filledDatum.primary_search_department_affiliation.raw;
     const deptIndex = filledDatum.departments.raw.findIndex(
       dept => dept === primaryAff
     );
@@ -95,13 +97,15 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
       primaryAffiliationTitle = filledDatum.working_title.raw;
     }
     const dept = filledDatum.departments.raw[deptIndex];
-    primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+    if (primaryAffiliationTitle && dept) {
+      primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+    }
   }
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.eid.raw.toString()}
-      key={filledDatum.eid.raw.toString()}
+      id={filledDatum.id.raw.toString()}
+      key={filledDatum.id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
@@ -126,8 +130,8 @@ export const studentsConverter = (datum, size = "small") => {
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.eid.raw.toString()}
-      key={filledDatum.eid.raw.toString()}
+      id={filledDatum.id.raw.toString()}
+      key={filledDatum.id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
