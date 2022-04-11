@@ -39,11 +39,10 @@ const HeaderMain = () => {
       <HeaderMainWrapper breakpoint={breakpoint}>
         <div className="container-xl">
           <div className="header-main">
-            <nav
+            <div
               className={`navbar navbar-expand-xl ${
                 isPartner ? "partner" : ""
               }`}
-              aria-label="Main"
             >
               {!isPartner && <Logo />}
               <button
@@ -69,7 +68,7 @@ const HeaderMain = () => {
                 {!isMobile && <NavbarContainer />}
               </div>
               {mobileMenuOpen && isMobile && <NavbarContainer />}
-            </nav>
+            </div>
           </div>
         </div>
       </HeaderMainWrapper>
