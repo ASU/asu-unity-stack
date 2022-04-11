@@ -17,7 +17,7 @@ export default {
   image_urls: {
     raw: [""],
   },
-  primaryi_search_department_affiliation: {
+  primary_search_department_affiliation: {
     raw: "MLF Teachers College",
   },
   simplified_empl_classes: {
