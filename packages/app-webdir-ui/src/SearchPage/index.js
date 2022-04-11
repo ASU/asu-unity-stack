@@ -213,7 +213,7 @@ function SearchPage({ searchURL, loggedIn }) {
               type="text"
               className="form-control"
               id="search-input"
-              placeholder="Search"
+              placeholder="Search asu.edu"
               value={term}
               onChange={e => setTerm(e.target.value)}
               onKeyDown={inputKeyPress}
