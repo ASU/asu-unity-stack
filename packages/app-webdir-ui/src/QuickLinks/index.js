@@ -1,24 +1,12 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
 
 import { QuickLinksTemplate } from "./index.styles";
 
 const QuickLinks = () => {
-  const [, setSearchParams] = useSearchParams();
-
-  const searchTabsId = "search-tabs";
-
-  const goToFaculty = () => {
-    setSearchParams({ [searchTabsId]: "faculty" });
-  };
-
   const collagesAndSchoolsMessage = "ASU's Colleges and schools";
   return (
     <QuickLinksTemplate>
       <span>Quick links</span>
-      <button type="button" onClick={goToFaculty} className="plain-button">
-        ASU directory
-      </button>
       <a href="https://students.asu.edu/advising">
         ASU advising directory by college
       </a>

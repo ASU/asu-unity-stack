@@ -12,21 +12,6 @@ const QuickLinksTemplate = styled.div`
   a {
     margin-bottom: 16px;
   }
-  .plain-button {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #fff;
-    border: none;
-    outline: none;
-    color: #822141;
-    text-decoration: underline;
-    padding: 0;
-    margin-bottom: 16px;
-  }
-  .plain-button:hover {
-    cursor: pointer;
-    text-decoration: none;
-  }
 `;
 
 export { QuickLinksTemplate };
