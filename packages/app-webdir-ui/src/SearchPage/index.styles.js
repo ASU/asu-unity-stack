@@ -111,7 +111,7 @@ const SearchPageLayout = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1268px) {
     .faculty-tab {
       grid-template-columns: 100%;
       grid-template-rows: repeat(3, auto);

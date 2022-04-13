@@ -40,7 +40,7 @@ function SearchPage({ searchURL, loggedIn }) {
   const [numResults, setNumResults] = useState(0);
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [site, setSite] = useState(null);
+  const [site, setSite] = useState("uto.asu.edu");
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [sort, setSort] = useState("_score_desc");
@@ -123,9 +123,9 @@ function SearchPage({ searchURL, loggedIn }) {
   };
 
   useEffect(() => {
-    if (searchParams.get(siteParamName)) {
+    /* if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
-    }
+    } */
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
     } else {
@@ -255,7 +255,7 @@ function SearchPage({ searchURL, loggedIn }) {
         )}
       </div>
       <TabbedPanels id={searchTabsId} onTabChange={tabChange}>
-        <Tab id={tabIds.all} title="All ASU Search">
+        <Tab id={tabIds.all} title="All ASU search">
           {preSearchOrContent(
             <div className="all-asu-search">
               <div className="all-message">
@@ -270,18 +270,21 @@ function SearchPage({ searchURL, loggedIn }) {
                     <div>{results?.web_sites?.topResult}</div>
                     <div>{results?.web_dir_faculty_staff?.topResult}</div>
                   </div>
-                  <div className="subdomain-results all-content-item">
-                    <ASUSearchResultsList
-                      results={results?.web_sites?.results}
-                      totalResults={results?.web_sites?.page.total_results}
-                      resultsPerPage={6}
-                      isLoading={isLoading}
-                      title="All results from <<sites>>"
-                      summary
-                      onExpandClick={() => goToTab(tabIds.sites)}
-                      GASource="all results from <<subdomain>>"
-                    />
-                  </div>
+                  {site && (
+                    <div className="subdomain-results all-content-item">
+                      <ASUSearchResultsList
+                        results={results?.web_sites?.results}
+                        totalResults={results?.web_sites?.page.total_results}
+                        resultsPerPage={6}
+                        isLoading={isLoading}
+                        title={`All results from ${site}`}
+                        summary
+                        showNumResults
+                        onExpandClick={() => goToTab(tabIds.sites)}
+                        GASource={`all results from ${site}`}
+                      />
+                    </div>
+                  )}
                   <div className="all-results all-content-item">
                     <ASUSearchResultsList
                       results={results?.web_sites?.results}
@@ -289,6 +292,7 @@ function SearchPage({ searchURL, loggedIn }) {
                       resultsPerPage={6}
                       isLoading={isLoading}
                       title="All asu.edu results"
+                      showNumResults
                       onPageChange={page => pageChange(page, tabIds.sites)}
                       currentPage={results?.web_sites?.page?.current}
                       GASource="all asu.edu results"
@@ -310,6 +314,7 @@ function SearchPage({ searchURL, loggedIn }) {
                       title="Faculty and staff"
                       size="micro"
                       summary
+                      showNumResults
                       onExpandClick={() => goToTab(tabIds.faculty)}
                       GASource="faculty and staff"
                     />
@@ -361,7 +366,7 @@ function SearchPage({ searchURL, loggedIn }) {
             )}
           </Tab>
         )}
-        <Tab id={tabIds.faculty} title="Faculty and Staff">
+        <Tab id={tabIds.faculty} title="Faculty and staff">
           {preSearchOrContent(
             <div className="faculty-tab">
               <SearchResultsMessage

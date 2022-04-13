@@ -73,6 +73,7 @@ const fillInBlanks = datum => {
 export const staffConverter = (datum, size = "small", titleOverwrite) => {
   const filledDatum = fillInBlanks(datum);
   let primaryAffiliationTitle = null;
+  let primaryAffiliationDept = null;
   if (titleOverwrite) {
     const deptId = titleOverwrite.find(item => {
       return item.asurite_id === filledDatum.asurite_id.raw;
@@ -82,13 +83,13 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
     );
     primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
     const dept = filledDatum.departments.raw[deptIndex];
-    if (primaryAffiliationTitle && dept) {
-      primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+    if (dept) {
+      primaryAffiliationDept = dept;
     }
   } else if (filledDatum.titles.raw && filledDatum.titles.raw.length > 0) {
-    const primaryAff = filledDatum.primary_search_department_affiliation.raw;
+    const primaryAff = filledDatum.primary_search_department_affiliation.raw[0];
     const deptIndex = filledDatum.departments.raw.findIndex(
-      dept => dept === primaryAff
+      dept => dept.toLowerCase() === primaryAff.toLowerCase()
     );
     const relevantField = filledDatum.title_source.raw[deptIndex];
     if (relevantField === "titles" || !filledDatum.working_title) {
@@ -97,19 +98,21 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
       primaryAffiliationTitle = filledDatum.working_title.raw;
     }
     const dept = filledDatum.departments.raw[deptIndex];
-    if (primaryAffiliationTitle && dept) {
-      primaryAffiliationTitle = `${primaryAffiliationTitle}, ${dept}`;
+    if (dept) {
+      primaryAffiliationDept = dept;
     }
   }
   return (
     <ProfileCard
       isRequired={false}
       id={filledDatum.id.raw.toString()}
+      profileURL={`/profile/${filledDatum.id.raw.toString()}`}
       key={filledDatum.id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
       primaryAffiliationTitle={primaryAffiliationTitle}
+      primaryAffiliationDept={primaryAffiliationDept}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
       addressLine1={filledDatum.address_line1.raw}
@@ -131,6 +134,7 @@ export const studentsConverter = (datum, size = "small") => {
     <ProfileCard
       isRequired={false}
       id={filledDatum.id.raw.toString()}
+      profileURL={`/profile/${filledDatum.id.raw.toString()}`}
       key={filledDatum.id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
@@ -154,9 +158,10 @@ export const anonConverter = (datum, size = "small") => {
     <ProfileCard
       isRequired={false}
       id={datum.toString()}
+      profileURL={null}
       key={datum}
       imgURL={anonPic}
-      name="Student Name"
+      name="Student name"
       titles={["Title"]}
       email="email@example.com"
       telephone=""

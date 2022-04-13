@@ -16,6 +16,7 @@ const ASUSearchResultsList = ({
   title,
   size,
   summary,
+  showNumResults,
   onExpandClick,
   fill,
   GASource,
@@ -62,6 +63,11 @@ const ASUSearchResultsList = ({
           >
             {title}
           </div>
+          {size !== "micro" && showNumResults && (
+            <div className="results-found">
+              Results found: <span>{totalResults}</span>
+            </div>
+          )}
           <div className={summary ? "summary" : ""}>{displayResults}</div>
           {size !== "micro" && !summary && (
             <Pagination
@@ -88,7 +94,9 @@ const ASUSearchResultsList = ({
                 results.length === 0 ? "push-right" : ""
               }`}
             >
-              {results.length > 0 && <span>{totalResults} total results</span>}
+              {results.length > 0 && showNumResults && (
+                <span>{totalResults} total results</span>
+              )}
               <Button
                 color="maroon"
                 label="See all results"
@@ -116,6 +124,7 @@ ASUSearchResultsList.propTypes = {
   title: PropTypes.string,
   size: PropTypes.string,
   summary: PropTypes.bool,
+  showNumResults: PropTypes.bool,
   onExpandClick: PropTypes.func,
   fill: PropTypes.bool,
   GASource: PropTypes.string,

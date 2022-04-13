@@ -3,7 +3,7 @@ import React from "react";
 import { QuickLinksTemplate } from "./index.styles";
 
 const QuickLinks = () => {
-  const collagesAndSchoolsMessage = "ASU's Colleges and schools";
+  const collagesAndSchoolsMessage = "ASU's colleges and schools";
   return (
     <QuickLinksTemplate>
       <span>Quick links</span>
@@ -18,8 +18,8 @@ const QuickLinks = () => {
       <a href="https://search.lib.asu.edu/discovery/search?vid=01ASU_INST:01ASU">
         ASU Library One Search
       </a>
-      <a href="https://news.asu.edu/">ASU News</a>
-      <a href="https://asuevents.asu.edu/">ASU Events calendar</a>
+      <a href="https://news.asu.edu/">ASU news</a>
+      <a href="https://asuevents.asu.edu/">ASU events calendar</a>
       <a href="https://cfo.asu.edu/applicant">Search ASU job openings</a>
     </QuickLinksTemplate>
   );

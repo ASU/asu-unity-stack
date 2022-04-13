@@ -117,9 +117,7 @@ export const performSearch = ({
         const results = {};
         Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
-            const anonResults = new Array(
-              Math.min(items, res.data[dataKey].meta.page.total_results)
-            )
+            const anonResults = new Array(items || 3)
               .fill(1)
               .map((n, idx) => anonConverter(idx));
             results[dataKey] = {

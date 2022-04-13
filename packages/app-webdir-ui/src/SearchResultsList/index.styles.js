@@ -34,10 +34,15 @@ const SearchResultsList = styled.div`
     max-width: 300px;
   }
   .results-title {
-    margin-bottom: 48px;
     font-size: 40px;
     font-weight: bold;
     max-width: 100%;
+  }
+  .results-found {
+    margin-bottom: 32px;
+    span {
+      font-weight: bold;
+    }
   }
   .results-title-small {
     margin-bottom: 32px;
