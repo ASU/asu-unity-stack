@@ -40,7 +40,7 @@ function SearchPage({ searchURL, loggedIn }) {
   const [numResults, setNumResults] = useState(0);
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [site, setSite] = useState("uto.asu.edu");
+  const [site, setSite] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [sort, setSort] = useState("_score_desc");
@@ -123,9 +123,9 @@ function SearchPage({ searchURL, loggedIn }) {
   };
 
   useEffect(() => {
-    /* if (searchParams.get(siteParamName)) {
+    if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
-    } */
+    }
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
     } else {
