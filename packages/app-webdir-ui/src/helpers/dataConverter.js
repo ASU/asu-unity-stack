@@ -178,13 +178,16 @@ export const anonConverter = (datum, size = "small") => {
 
 export const subdomainConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
+  const desc = filledDatum.body_content.raw
+    .replace("Skip to main content ", "")
+    .replace("Skip to Main Page Content ", "");
   return (
     <ResultCard
       id={filledDatum.id.raw}
       key={filledDatum.id.raw}
       name={filledDatum.title.raw}
       area={filledDatum.url_host.raw}
-      description={filledDatum.body_content.raw}
+      description={desc}
       cookieTrail={[
         filledDatum.url_path_dir1.raw,
         filledDatum.url_path_dir2.raw,

@@ -40,7 +40,7 @@ function SearchPage({ searchURL, loggedIn }) {
   const [numResults, setNumResults] = useState(0);
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [site, setSite] = useState(null);
+  const [site, setSite] = useState("uto.asu.edu");
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [sort, setSort] = useState("_score_desc");
@@ -123,9 +123,9 @@ function SearchPage({ searchURL, loggedIn }) {
   };
 
   useEffect(() => {
-    if (searchParams.get(siteParamName)) {
+    /* if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
-    }
+    } */
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
     } else {
@@ -279,6 +279,7 @@ function SearchPage({ searchURL, loggedIn }) {
                         isLoading={isLoading}
                         title={`All results from ${site}`}
                         summary
+                        seeAllResultsText={`See all results from ${site}`}
                         showNumResults
                         onExpandClick={() => goToTab(tabIds.sites)}
                         GASource={`all results from ${site}`}
@@ -314,6 +315,7 @@ function SearchPage({ searchURL, loggedIn }) {
                       title="Faculty and staff"
                       size="micro"
                       summary
+                      seeAllResultsText="See all results"
                       showNumResults
                       onExpandClick={() => goToTab(tabIds.faculty)}
                       GASource="faculty and staff"
@@ -331,6 +333,7 @@ function SearchPage({ searchURL, loggedIn }) {
                         title="Students"
                         size="micro"
                         summary
+                        seeAllResultsText="See all results"
                         anonymized
                         onExpandClick={() => goToTab(tabIds.students)}
                         GASource="students"

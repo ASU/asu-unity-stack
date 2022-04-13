@@ -18,6 +18,7 @@ const ASUSearchResultsList = ({
   summary,
   showNumResults,
   onExpandClick,
+  seeAllResultsText,
   fill,
   GASource,
 }) => {
@@ -82,7 +83,7 @@ const ASUSearchResultsList = ({
             <div className="summary-button">
               <Button
                 color="maroon"
-                label="See all results from subdomain"
+                label={seeAllResultsText}
                 size="small"
                 onClick={() => expandClick("See all results from subdomain")}
               />
@@ -99,7 +100,7 @@ const ASUSearchResultsList = ({
               )}
               <Button
                 color="maroon"
-                label="See all results"
+                label={seeAllResultsText}
                 size="small"
                 onClick={() => expandClick("See all results")}
               />
@@ -126,6 +127,7 @@ ASUSearchResultsList.propTypes = {
   summary: PropTypes.bool,
   showNumResults: PropTypes.bool,
   onExpandClick: PropTypes.func,
+  seeAllResultsText: PropTypes.string,
   fill: PropTypes.bool,
   GASource: PropTypes.string,
 };
