@@ -16,7 +16,9 @@ const ASUSearchResultsList = ({
   title,
   size,
   summary,
+  showNumResults,
   onExpandClick,
+  seeAllResultsText,
   fill,
   GASource,
 }) => {
@@ -53,7 +55,7 @@ const ASUSearchResultsList = ({
 
   return (
     <SearchResultsList>
-      {results && results.length > 0 && (
+      {results && (
         <div className={size}>
           <div
             className={
@@ -62,6 +64,11 @@ const ASUSearchResultsList = ({
           >
             {title}
           </div>
+          {size !== "micro" && showNumResults && (
+            <div className="results-found">
+              Results found: <span>{totalResults}</span>
+            </div>
+          )}
           <div className={summary ? "summary" : ""}>{displayResults}</div>
           {size !== "micro" && !summary && (
             <Pagination
@@ -72,11 +79,11 @@ const ASUSearchResultsList = ({
               onChange={(e, action) => changePage(action)}
             />
           )}
-          {size !== "micro" && summary && (
+          {size !== "micro" && summary && results.length > 0 && (
             <div className="summary-button">
               <Button
                 color="maroon"
-                label="See all results from subdomain"
+                label={seeAllResultsText}
                 size="small"
                 onClick={() => expandClick("See all results from subdomain")}
               />
@@ -88,10 +95,12 @@ const ASUSearchResultsList = ({
                 results.length === 0 ? "push-right" : ""
               }`}
             >
-              {results.length > 0 && <span>{totalResults} total results</span>}
+              {results.length > 0 && showNumResults && (
+                <span>{totalResults} total results</span>
+              )}
               <Button
                 color="maroon"
-                label="See all results"
+                label={seeAllResultsText}
                 size="small"
                 onClick={() => expandClick("See all results")}
               />
@@ -116,7 +125,9 @@ ASUSearchResultsList.propTypes = {
   title: PropTypes.string,
   size: PropTypes.string,
   summary: PropTypes.bool,
+  showNumResults: PropTypes.bool,
   onExpandClick: PropTypes.func,
+  seeAllResultsText: PropTypes.string,
   fill: PropTypes.bool,
   GASource: PropTypes.string,
 };

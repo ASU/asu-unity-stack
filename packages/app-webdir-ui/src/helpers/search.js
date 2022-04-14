@@ -11,6 +11,7 @@ export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
   SITES: "web_sites",
+  SITES_LOCAL: "web_sites_local",
   WEB_DIRECTORY: "people_in_dept",
   ALL: "all",
 };
@@ -31,6 +32,13 @@ const engines = {
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
   },
   [engineNames.SITES]: {
+    url: `webdir-search/web`,
+    needsAuth: false,
+    converter: subdomainConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc", "date_desc"],
+  },
+  [engineNames.SITES_LOCAL]: {
     url: `webdir-search/web`,
     needsAuth: false,
     converter: subdomainConverter,
@@ -117,9 +125,7 @@ export const performSearch = ({
         const results = {};
         Object.keys(res.data).forEach(dataKey => {
           if (!auth && engines[dataKey].needsAuth) {
-            const anonResults = new Array(
-              Math.min(items, res.data[dataKey].meta.page.total_results)
-            )
+            const anonResults = new Array(items || 3)
               .fill(1)
               .map((n, idx) => anonConverter(idx));
             results[dataKey] = {

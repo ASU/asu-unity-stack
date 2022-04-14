@@ -10,7 +10,11 @@ const ProfileCard = ({ ...props }) => {
     titles = <span>{props.titles[0].name}</span>;
   } else if (props.titles?.length > 0 && props.size === "large") {
     if (props.primaryAffiliationTitle) {
-      titles = <h4>{props.primaryAffiliationTitle}</h4>;
+      titles = (
+        <h4>
+          {props.primaryAffiliationTitle}, {props.primaryAffiliationDept || ""}
+        </h4>
+      );
     } else {
       titles = props.titles.map((title, idx) => (
         // eslint-disable-next-line react/no-array-index-key
@@ -54,9 +58,12 @@ const ProfileCard = ({ ...props }) => {
         </div>
       </a>
       <div className="person">
-        <a href={`/profile/${props.id}`}>
-          <h3 className="person-name">{props.name}</h3>
-        </a>
+        {props.profileURL && (
+          <a href={`/profile/${props.id}`}>
+            <h3 className="person-name">{props.name}</h3>
+          </a>
+        )}
+        {!props.profileURL && <h3 className="person-name">{props.name}</h3>}
         {props.size !== "large" && (
           <h4 className="person-profession">{props.title}</h4>
         )}
@@ -144,10 +151,8 @@ const ProfileCard = ({ ...props }) => {
             View Profile
           </a>
         )}
-        {props.size === "micro" && (
-          <a onClick={sendEvent} href="/asu-knowledge-enterprise">
-            {microLinkText}
-          </a>
+        {props.size === "micro" && props.primaryAffiliationDept && (
+          <div>{props.primaryAffiliationDept}</div>
         )}
       </div>
     </div>
