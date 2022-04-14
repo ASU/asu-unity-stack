@@ -55,7 +55,7 @@ const ASUSearchResultsList = ({
 
   return (
     <SearchResultsList>
-      {results && results.length > 0 && (
+      {results && (
         <div className={size}>
           <div
             className={
@@ -79,7 +79,7 @@ const ASUSearchResultsList = ({
               onChange={(e, action) => changePage(action)}
             />
           )}
-          {size !== "micro" && summary && (
+          {size !== "micro" && summary && results.length > 0 && (
             <div className="summary-button">
               <Button
                 color="maroon"

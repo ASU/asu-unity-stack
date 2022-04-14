@@ -40,7 +40,7 @@ function SearchPage({ searchURL, loggedIn }) {
   const [numResults, setNumResults] = useState(0);
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [site, setSite] = useState(null);
+  const [site, setSite] = useState("http://education.asu.edu");
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [sort, setSort] = useState("_score_desc");
@@ -123,9 +123,9 @@ function SearchPage({ searchURL, loggedIn }) {
   };
 
   useEffect(() => {
-    if (searchParams.get(siteParamName)) {
+    /* if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
-    }
+    } */
     if (searchParams.get(sortParamName)) {
       setSort(searchParams.get(sortParamName));
     } else {
@@ -273,8 +273,10 @@ function SearchPage({ searchURL, loggedIn }) {
                   {site && (
                     <div className="subdomain-results all-content-item">
                       <ASUSearchResultsList
-                        results={results?.web_sites?.results}
-                        totalResults={results?.web_sites?.page.total_results}
+                        results={results?.web_sites_local?.results}
+                        totalResults={
+                          results?.web_sites_local?.page.total_results
+                        }
                         resultsPerPage={6}
                         isLoading={isLoading}
                         title={`All results from ${site}`}
