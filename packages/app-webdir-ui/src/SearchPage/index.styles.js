@@ -6,7 +6,6 @@ const SearchPageLayout = styled.div`
   min-height: 80vh;
   margin: 0 auto;
   margin-top: 72px;
-
   h1 {
     margin-left: 12px;
   }
