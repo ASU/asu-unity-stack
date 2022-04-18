@@ -34,5 +34,6 @@ export const StickyNoNavigationExample = createStory(
   </>,
   { initFunc }
 );
+
 export const ScrolledStateExample = createStory(ScrolledState, { initFunc });
 export const PartnerExample = createStory(Partner, { initFunc });
