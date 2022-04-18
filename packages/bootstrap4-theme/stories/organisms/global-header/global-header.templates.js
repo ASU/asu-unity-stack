@@ -96,7 +96,7 @@ export const Basic = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="navbar navbar-expand-xl">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -143,7 +143,7 @@ export const Basic = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <div class="navbar-nav">
+                      <nav class="navbar-nav" aria-label="main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"
@@ -224,7 +224,7 @@ export const Basic = (
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </nav>
                       {/* end .navbar-nav */}
                       <form class="navbar-site-buttons form-inline">
                         <a
@@ -310,7 +310,7 @@ export const Basic = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -413,7 +413,7 @@ export const DropDownMenus = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="navbar navbar-expand-xl">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -467,7 +467,7 @@ export const DropDownMenus = (
                   </div>
                   <div class="collapse navbar-collapse w-100" id="menubar">
                     <div class="header-content-container">
-                      <div class="navbar-nav">
+                      <nav class="navbar-nav" aria-label="main">
                         <a
                           class="nav-link nav-link-home"
                           href="/"
@@ -1312,7 +1312,7 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </nav>
                       {/* end .navbar-nav */}
                     </div>
                     <div class="navbar-mobile-footer pinned">
@@ -1386,7 +1386,7 @@ export const DropDownMenus = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -1492,7 +1492,7 @@ export const NoNavigation = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="navbar navbar-expand-xl">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -1612,7 +1612,7 @@ export const NoNavigation = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -1715,7 +1715,7 @@ export const NoNavigationAndWithButtons = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="navbar navbar-expand-xl">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -1853,7 +1853,7 @@ export const NoNavigationAndWithButtons = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -1959,7 +1959,7 @@ export const ScrolledState = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="navbar navbar-expand-xl">
                 <a class="navbar-brand" href="#" asu-ga="asu logo">
                   <img
                     class="vert"
@@ -2006,7 +2006,7 @@ export const ScrolledState = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <div class="navbar-nav">
+                      <nav class="navbar-nav" aria-label="main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"
@@ -2204,7 +2204,7 @@ export const ScrolledState = (
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </nav>
                       {/* end .navbar-nav */}
                     </div>
                     <div class="navbar-mobile-footer pinned">
@@ -2278,7 +2278,7 @@ export const ScrolledState = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -2392,7 +2392,7 @@ export const Partner = (
         <div class="container-xl">
           <div class="row">
             <div id="header-main" class="col-12">
-              <nav class="navbar-expand-xl" aria-label="Main">
+              <div class="navbar-expand-xl">
                 <div class="partner">
                   <div class="partners-logos">
                     <a href="#" data-ga-header="starbucks logo">
@@ -2440,7 +2440,7 @@ export const Partner = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <div class="navbar-nav">
+                      <nav class="navbar-nav" aria-label="main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"
@@ -2542,7 +2542,7 @@ export const Partner = (
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </nav>
                       {/* end .navbar-nav */}
                       <form class="navbar-site-buttons form-inline">
                         <a
@@ -2632,7 +2632,7 @@ export const Partner = (
                     </div>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
           </div>
         </div>

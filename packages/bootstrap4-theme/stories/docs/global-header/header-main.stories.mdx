@@ -13,23 +13,25 @@ If this does not apply to your site, the [default code can be modified](?path=/d
 The basic markup should resemble the following:
 
 ```
-<nav class="navbar navbar-expand-xl">
+<div class="navbar navbar-expand-xl">
     <a class="navbar-brand" href="#">...</a>
     <button class="navbar-toggler collapsed" type="button">...</button>
     <div class="navbar-container">
         <div class="title subdomain-name">University Technology Office</div>
         <div class="collapse" id="menubar">
-            <div class="navbar-nav">
-                <a class="nav-link nav-link-home active" href="/">
-                    <span class="d-xl-none">Home</span>
-                    <span title="Home" class="fas fa-fw fa-home"></span>
-                </a>
-                ...
-            </div><!-- end .navbar-nav -->
-            <form class="navbar-site-buttons form-inline">
-                ...
-            </form>
-            <div class="navbar-mobile-footer">...</div>
+            <div class="header-content-container">
+                <nav class="navbar-nav" aria-label="main">
+                  <a class="nav-link nav-link-home active" href="/">
+                      <span class="d-xl-none">Home</span>
+                      <span title="Home" class="fas fa-fw fa-home"></span>
+                  </a>
+                  ...
+                </nav><!-- end .navbar-nav -->
+                <form class="navbar-site-buttons form-inline">
+                    ...
+                </form>
+            </div>
+            <div class="navbar-mobile-footer pinned">...</div>
         </div>
     </div>
 </div>
