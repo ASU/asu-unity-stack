@@ -106,39 +106,45 @@ const ProfileCard = ({ ...props }) => {
               {props.shortBio?.slice(0, 250)}
             </p>
             <ul className="person-social-medias">
-              <li>
-                <a
-                  onClick={() => sendEvent("facebook icon")}
-                  href={props.facebookLink}
-                  aria-label="Go to user Facebook profile"
-                >
-                  <span
-                    className="fab fa-facebook-square"
-                    title="Facebook Link"
-                  />
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => sendEvent("linkedin icon")}
-                  href={props.linkedinLink}
-                  aria-label="Go to user Linkedin profile"
-                >
-                  <span className="fab fa-linkedin" title="LinkedIn Link" />
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => sendEvent("twitter icon")}
-                  href={props.twitterLink}
-                  aria-label="Go to user Twitter profile"
-                >
-                  <span
-                    className="fab fa-twitter-square"
-                    title="Twitter Link"
-                  />
-                </a>
-              </li>
+              {props.facebookLink && (
+                <li>
+                  <a
+                    onClick={() => sendEvent("facebook icon")}
+                    href={props.facebookLink}
+                    aria-label="Go to user Facebook profile"
+                  >
+                    <span
+                      className="fab fa-facebook-square"
+                      title="Facebook Link"
+                    />
+                  </a>
+                </li>
+              )}
+              {props.linkedinLink && (
+                <li>
+                  <a
+                    onClick={() => sendEvent("linkedin icon")}
+                    href={props.linkedinLink}
+                    aria-label="Go to user Linkedin profile"
+                  >
+                    <span className="fab fa-linkedin" title="LinkedIn Link" />
+                  </a>
+                </li>
+              )}
+              {props.twitterLink && (
+                <li>
+                  <a
+                    onClick={() => sendEvent("twitter icon")}
+                    href={props.twitterLink}
+                    aria-label="Go to user Twitter profile"
+                  >
+                    <span
+                      className="fab fa-twitter-square"
+                      title="Twitter Link"
+                    />
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         )}

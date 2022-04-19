@@ -48,14 +48,14 @@ const fillInBlanks = datum => {
     url_path_dir2: {
       raw: "",
     },
-    facebook_link: {
-      raw: "",
+    facebook: {
+      raw: null,
     },
-    linkedIn_link: {
-      raw: "",
+    linkedin: {
+      raw: null,
     },
-    twitter_link: {
-      raw: "",
+    twitter: {
+      raw: null,
     },
     url_host: {
       raw: "",
@@ -119,9 +119,9 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
       addressLine2={filledDatum.address_line2.raw}
       description={filledDatum.bio.raw}
       shortBio={filledDatum.shortBio.raw}
-      facebookLink={filledDatum.facebook_link.raw}
-      linkedinLink={filledDatum.linkedIn_link.raw}
-      twitterLink={filledDatum.twitter_link.raw}
+      facebookLink={filledDatum.facebook.raw}
+      linkedinLink={filledDatum.linkedin.raw}
+      twitterLink={filledDatum.twitter.raw}
       size={size}
       fill
     />
@@ -144,9 +144,9 @@ export const studentsConverter = (datum, size = "small") => {
       addressLine1={filledDatum.address_line1.raw}
       addressLine2={filledDatum.address_line2.raw}
       description={filledDatum.bio.raw}
-      facebookLink={filledDatum.facebook_link.raw}
-      linkedinLink={filledDatum.linkedIn_link.raw}
-      twitterLink={filledDatum.twitter_link.raw}
+      facebookLink={filledDatum.facebook.raw}
+      linkedinLink={filledDatum.linkedin.raw}
+      twitterLink={filledDatum.twitter.raw}
       size={size}
       fill
     />

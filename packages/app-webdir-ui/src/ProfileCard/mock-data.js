@@ -80,6 +80,12 @@ export default {
   display_name: {
     raw: "Isa MacGuffin",
   },
+  facebook: {
+    raw: "asd",
+  },
+  linkedin: {
+    raw: "asd",
+  },
   mail_codes: {
     raw: [" "],
   },
