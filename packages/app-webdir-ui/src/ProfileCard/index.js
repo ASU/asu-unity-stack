@@ -27,6 +27,12 @@ const ProfileCard = ({ ...props }) => {
   const hideNonExistantImages = e => {
     e.target.style.display = "none";
   };
+  let formattedTelephone = props.telephone;
+  if (formattedTelephone) {
+    const phoneArea = formattedTelephone.slice(0, 3);
+    const phoneNumber = formattedTelephone.slice(3).replace("/", "");
+    formattedTelephone = `(${phoneArea}) ${phoneNumber}`;
+  }
 
   const microLinkText = "ASU Knowledge Enterprise";
   const sendEvent = () => {
@@ -83,11 +89,11 @@ const ProfileCard = ({ ...props }) => {
             </li>
             <li>
               <a
-                onClick={() => sendEvent(props.telephone)}
-                href={`tel:${props.telephone}`}
+                onClick={() => sendEvent(formattedTelephone)}
+                href={`tel:${formattedTelephone}`}
                 aria-label="Call user"
               >
-                {props.telephone}
+                {formattedTelephone}
               </a>
             </li>
             <li>
