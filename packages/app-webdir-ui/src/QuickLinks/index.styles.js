@@ -9,7 +9,7 @@ const QuickLinksTemplate = styled.div`
     font-weight: bold;
     margin-bottom: 24px;
   }
-  a {
+  a:not(:last-child) {
     margin-bottom: 16px;
   }
 `;
