@@ -10,7 +10,7 @@ import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
-const SearchResultsMessage = ({ term, numResults }) => {
+const SearchResultsMessage = ({ term, numResults, tabText }) => {
   return (
     <div className="message">
       <div className="results-search-message">
@@ -18,6 +18,7 @@ const SearchResultsMessage = ({ term, numResults }) => {
         <span className="search-message-emphasis">{term} </span>
         <span> returned </span>
         <span className="search-message-emphasis">{numResults}</span>
+        {tabText && <span> {tabText.toLowerCase()} </span>}
         <span> results </span>
       </div>
     </div>
@@ -27,6 +28,7 @@ const SearchResultsMessage = ({ term, numResults }) => {
 SearchResultsMessage.propTypes = {
   term: PropTypes.string,
   numResults: PropTypes.number,
+  tabText: PropTypes.string,
 };
 
 function SearchPage({ searchURL, loggedIn }) {
@@ -357,6 +359,7 @@ function SearchPage({ searchURL, loggedIn }) {
                 <SearchResultsMessage
                   term={searchParams.get(queryParamName)}
                   numResults={numResults}
+                  tabText={site}
                 />
                 <ASUSearchResultsList
                   results={results?.results}
@@ -377,6 +380,7 @@ function SearchPage({ searchURL, loggedIn }) {
               <SearchResultsMessage
                 term={searchParams.get(queryParamName)}
                 numResults={numResults}
+                tabText="Faculty and staff"
               />
               {numResults > 0 && (
                 <form className="uds-form sort-form faculty-sort">
@@ -422,6 +426,7 @@ function SearchPage({ searchURL, loggedIn }) {
               <SearchResultsMessage
                 term={searchParams.get(queryParamName)}
                 numResults={numResults}
+                tabText="Students"
               />
               <ASUSearchResultsList
                 results={results?.results}
