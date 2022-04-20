@@ -16,7 +16,7 @@ const QuickLinks = () => {
       <a href="https://degrees.asu.edu/">Search majors and degree programs</a>
       <a href="https://webapp4.asu.edu/catalog/classlist">ASU class search</a>
       <a href="https://search.lib.asu.edu/discovery/search?vid=01ASU_INST:01ASU">
-        ASU Library One Search
+        ASU Library One search
       </a>
       <a href="https://news.asu.edu/">ASU news</a>
       <a href="https://asuevents.asu.edu/">ASU events calendar</a>
