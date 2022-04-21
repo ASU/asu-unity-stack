@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 const ResultCardTemplate = styled.div`
+  padding: 4px;
   max-width: 700px;
   &.fill {
     background-color: #fafafa;

@@ -3,6 +3,7 @@ import React from "react";
 import anonPic from "../assets/anon.png";
 import { trackGAEvent } from "../core/services/googleAnalytics";
 import { profileCardType } from "./models";
+import { ProfileCardLayout } from "./index.styles";
 
 const ProfileCard = ({ ...props }) => {
   let titles = null;
@@ -47,7 +48,7 @@ const ProfileCard = ({ ...props }) => {
     });
   };
   return (
-    <div
+    <ProfileCardLayout
       className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
     >
       <a href={`/profile/${props.id}`} className="profile-img-container">
@@ -66,7 +67,7 @@ const ProfileCard = ({ ...props }) => {
       <div className="person">
         {props.profileURL && (
           <a href={`/profile/${props.id}`}>
-            <h3 className="person-name">{props.name}</h3>
+            <span className="person-name">{props.name}</span>
           </a>
         )}
         {!props.profileURL && <h3 className="person-name">{props.name}</h3>}
@@ -167,7 +168,7 @@ const ProfileCard = ({ ...props }) => {
           <div>{props.primaryAffiliationDept}</div>
         )}
       </div>
-    </div>
+    </ProfileCardLayout>
   );
 };
 
