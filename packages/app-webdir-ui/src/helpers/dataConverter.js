@@ -178,9 +178,13 @@ export const anonConverter = (datum, size = "small") => {
 
 export const subdomainConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
-  const desc = filledDatum.body_content.raw
-    .replace("Skip to main content ", "")
-    .replace("Skip to Main Page Content ", "");
+  let desc = filledDatum.meta_description.raw;
+  if (!desc) {
+    desc = filledDatum.body_content.raw
+      .replace("Skip to main content ", "")
+      .replace("Skip to Main Page Content ", "");
+  }
+
   return (
     <ResultCard
       id={filledDatum.id.raw}
