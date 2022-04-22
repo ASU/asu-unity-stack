@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 const PreSearchMessageTemplate = styled.div`
+  padding: 4px;
   display: grid;
   grid-template-columns: 700px 1fr;
   grid-template-rows: 100%;

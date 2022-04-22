@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 const QuickLinksTemplate = styled.div`
+  padding: 4px;
   display: flex;
   flex-direction: column;
   span {
