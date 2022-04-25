@@ -3,7 +3,7 @@ This package is intended to provde the components needed for Search, the
 designs for which can be found [here](https://xd.adobe.com/view/41641639-f009-41e2-802c-6859906edb2c-1437/grid/).
 
 In practice, only two components will ever be used, to wit `SearchPage` and `WebDirectoryComponent`, the rest are to be used within those components.
-Let's take the one at a time.
+Let's take them one at a time.
 
 ## `SearchPage`
 The `SearchPage` component can take two props, `searchURL` and `loggedIn`.
@@ -31,7 +31,7 @@ will be appended to this. For example, by providing the URL "https://dev-asu-ise
 Here's some examples of the props:
 
 ```
-Scenario 1 - Display Web Directory for departments:  
+Scenario 1 - Display Web Directory for departments:
       webdirUI.initWebDirectory({
         targetSelector: "#searchPageContainer",
         props: {
