@@ -12,7 +12,8 @@ export const engineNames = {
   STUDENTS: "web_dir_students",
   SITES: "web_sites",
   SITES_LOCAL: "web_sites_local",
-  WEB_DIRECTORY: "people_in_dept",
+  WEB_DIRECTORY_DEPARTMENTS: "people_in_dept",
+  WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
   ALL: "all",
 };
 
@@ -30,6 +31,7 @@ const engines = {
     converter: studentsConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
+    method: "GET",
   },
   [engineNames.SITES]: {
     url: `webdir-search/web`,
@@ -37,6 +39,7 @@ const engines = {
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
+    method: "GET",
   },
   [engineNames.SITES_LOCAL]: {
     url: `webdir-search/web`,
@@ -44,6 +47,7 @@ const engines = {
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
+    method: "GET",
   },
   [engineNames.ALL]: {
     url: `webdir-search/meta`,
@@ -51,13 +55,23 @@ const engines = {
     converter: subdomainConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc"],
+    method: "GET",
   },
-  [engineNames.WEB_DIRECTORY]: {
+  [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     url: `webdir-departments/profiles`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc"],
+    method: "GET",
+  },
+  [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
+    url: `webdir-profiles/department`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc"],
+    method: "POST",
   },
 };
 
@@ -83,7 +97,6 @@ export const performSearch = ({
   filters,
   site,
   searchURL,
-  titleOverwrite,
 }) => {
   return new Promise(resolve => {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
@@ -93,31 +106,39 @@ export const performSearch = ({
     const searchURLOrDefault =
       searchURL || "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
-    let query = `${searchURLOrDefault}${engines[tab].url}?&sort-by=${currentSort}`;
+    let query = `${searchURLOrDefault}${engines[tab].url}`;
 
-    if (term) {
-      query = `${query}&query=${term}`;
+    let APICall = null;
+    if (engines[tab].method === "GET") {
+      query = `?${query}&sort-by=${currentSort}`;
+      if (term) {
+        query = `${query}&query=${term}`;
+      }
+      if (site) {
+        query = `${query}&url_host=${site}`;
+      }
+      if (items) {
+        query = `${query}&size=${items}`;
+      }
+      if (page) {
+        query = `${query}&page=${page}`;
+      }
+      if (filters && filters.deptIds) {
+        const deptIDParam = filters.deptIds.map(n => `dept_id[]=${n}`).join("&");
+        query = `${query}&${deptIDParam}`;
+      }
+      if (filters && filters.peopleIds) {
+        const asuriteIDParam = filters.peopleIds
+          .map(n => `asurite_id[]=${n}`)
+          .join("&");
+        query = `${query}&${asuriteIDParam}`;
+      }
+      APICall = () => axios.get(query);
+    } else {
+      APICall = () => axios.post(query, filters.peopleInDepts);
     }
-    if (site) {
-      query = `${query}&url_host=${site}`;
-    }
-    if (items) {
-      query = `${query}&size=${items}`;
-    }
-    if (page) {
-      query = `${query}&page=${page}`;
-    }
-    if (filters && filters.deptIds) {
-      const deptIDParam = filters.deptIds.map(n => `dept_id[]=${n}`).join("&");
-      query = `${query}&${deptIDParam}`;
-    }
-    if (filters && filters.peopleIds) {
-      const asuriteIDParam = filters.peopleIds
-        .map(n => `asurite_id[]=${n}`)
-        .join("&");
-      query = `${query}&${asuriteIDParam}`;
-    }
-    axios.get(query).then(res => {
+
+    APICall().then(res => {
       engines[tab].inFlight = false;
       engines[tab].abortController = null;
 
@@ -150,12 +171,20 @@ export const performSearch = ({
           }
         });
         resolve(results);
-      } else if (tab === engineNames.WEB_DIRECTORY) {
+      } else if (
+        [
+          engineNames.WEB_DIRECTORY_DEPARTMENTS,
+          engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+        ].includes(tab)
+      ) {
         if (filters.peopleIds) {
           res.data.results = res.data.results.filter(r => {
             return filters.peopleIds.includes(r.asurite_id.raw);
           });
         }
+        const titleOverwrite = filters.peopleInDepts
+          ? filters.peopleInDepts
+          : null;
         resolve({
           tab,
           page: res.data.meta.page,
