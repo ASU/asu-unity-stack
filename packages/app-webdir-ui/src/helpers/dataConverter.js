@@ -69,6 +69,9 @@ const fillInBlanks = datum => {
     url: {
       raw: "",
     },
+    primary_search_department_affiliation: {
+      raw: [""],
+    },
   };
   return { ...full, ...datum };
 };
