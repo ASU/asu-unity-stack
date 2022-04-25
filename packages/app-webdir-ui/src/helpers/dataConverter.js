@@ -9,6 +9,9 @@ const fillInBlanks = datum => {
     id: {
       raw: "",
     },
+    asurite_id: {
+      raw: "",
+    },
     eid: {
       raw: "",
     },
@@ -105,9 +108,9 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.id.raw.toString()}
-      profileURL={`/profile/${filledDatum.id.raw.toString()}`}
-      key={filledDatum.id.raw.toString()}
+      id={filledDatum.asurite_id.raw.toString()}
+      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
+      key={filledDatum.asurite_id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
@@ -133,9 +136,9 @@ export const studentsConverter = (datum, size = "small") => {
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.id.raw.toString()}
-      profileURL={`/profile/${filledDatum.id.raw.toString()}`}
-      key={filledDatum.id.raw.toString()}
+      id={filledDatum.asurite_id.raw.toString()}
+      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
+      key={filledDatum.asurite_id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
@@ -187,8 +190,8 @@ export const subdomainConverter = (datum, size = "small") => {
 
   return (
     <ResultCard
-      id={filledDatum.id.raw}
-      key={filledDatum.id.raw}
+      id={filledDatum.asurite_id.raw}
+      key={filledDatum.asurite_id.raw}
       name={filledDatum.title.raw}
       area={filledDatum.url_host.raw}
       description={desc}
