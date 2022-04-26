@@ -110,7 +110,7 @@ export const performSearch = ({
 
     let APICall = null;
     if (engines[tab].method === "GET") {
-      query = `?${query}&sort-by=${currentSort}`;
+      query = `${query}?&sort-by=${currentSort}`;
       if (term) {
         query = `${query}&query=${term}`;
       }

@@ -15,7 +15,7 @@ export const webDirectoryExampleDepartments = createStory(
     <WebDirectory
       searchType="departments"
       deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003"
-      searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+      searchURL="https://pr-212-asu-isearch.pantheonsite.io/api/v1/"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -30,7 +30,7 @@ export const webDirectoryExamplePeople = createStory(
     <WebDirectory
       searchType="people"
       ids=",mdenke:1350,lhillzev:1353,jagarc50:1350"
-      searchURL=" https://dev-asu-isearch.ws.asu.edu/api/v1/"
+      searchURL="https://pr-212-asu-isearch.pantheonsite.io/api/v1/"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -45,7 +45,7 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
     <WebDirectory
       searchType="people_departments"
       ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
-      searchURL="https://dev-asu-isearch.ws.asu.edu/api/v1/"
+      searchURL="https://pr-212-asu-isearch.pantheonsite.io/api/v1/"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
