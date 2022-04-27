@@ -92,20 +92,17 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
     if (dept) {
       primaryAffiliationDept = dept;
     }
-  } else if (filledDatum.titles.raw && filledDatum.titles.raw.length > 0) {
-    const primaryAff = filledDatum.primary_search_department_affiliation.raw[0];
-    const deptIndex = filledDatum.departments.raw.findIndex(
-      dept => dept.toLowerCase() === primaryAff.toLowerCase()
-    );
-    const relevantField = filledDatum.title_source.raw[deptIndex];
-    if (relevantField === "titles" || !filledDatum.working_title) {
-      primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
-    } else if (relevantField === "workingTitle") {
-      primaryAffiliationTitle = filledDatum.working_title.raw;
+  } else {
+    if (filledDatum.primary_title) {
+      // eslint-disable-next-line prefer-destructuring
+      primaryAffiliationTitle = filledDatum.primary_title.raw[0];
     }
-    const dept = filledDatum.departments.raw[deptIndex];
-    if (dept) {
-      primaryAffiliationDept = dept;
+    if (filledDatum.primary_department) {
+      primaryAffiliationDept = filledDatum.primary_department.raw;
+    } else {
+      // eslint-disable-next-line prefer-destructuring
+      primaryAffiliationDept =
+        filledDatum.primary_search_department_affiliation.raw[0];
     }
   }
   return (
