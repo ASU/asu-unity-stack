@@ -77,6 +77,8 @@ const ASUSearchResultsList = ({
               currentPage={currentPage}
               totalPages={Math.ceil(totalResults / resultsPerPage)}
               onChange={(e, action) => changePage(action)}
+              showFirstButton
+              showLastButton
             />
           )}
           {size !== "micro" && summary && results.length > 0 && (
