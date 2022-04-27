@@ -135,7 +135,7 @@ export const performSearch = ({
       }
       APICall = () => axios.get(query);
     } else {
-      APICall = () => axios.post(query, filters.peopleInDepts);
+      APICall = () => axios.post(query, { profiles: filters.peopleInDepts });
     }
 
     APICall().then(res => {
