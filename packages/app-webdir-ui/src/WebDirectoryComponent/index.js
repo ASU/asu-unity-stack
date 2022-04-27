@@ -7,7 +7,7 @@ import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
 const sortOptions = [{ label: "label", value: 9 }];
-function WebDirectory({ searchType, ids, deptIds, searchURL }) {
+function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
@@ -30,7 +30,8 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
       tab: searchTypeEngineMap[searchType],
       page: 1,
       items: 6,
-      searchURL,
+      API_URL,
+      searchApiVersion,
       filters,
     };
     if (searchType === "departments") {
@@ -123,7 +124,8 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
 
 WebDirectory.propTypes = {
   deptIds: PropTypes.string,
-  searchURL: PropTypes.string,
+  API_URL: PropTypes.string,
+  searchApiVersion: PropTypes.string,
   searchType: PropTypes.string,
   ids: PropTypes.string,
 };

@@ -24,6 +24,7 @@ const engines = {
     converter: staffConverter,
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
+    method: "GET",
   },
   [engineNames.STUDENTS]: {
     url: `webdir-profiles/students`,
@@ -96,15 +97,17 @@ export const performSearch = function({
   sort,
   filters,
   site,
-  searchURL,
-}){
-  const search = async function(resolve){
+  API_URL,
+  searchApiVersion,
+}) {
+  async function search(resolve) {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
       ? sort
       : "_score_desc";
 
-    const searchURLOrDefault =
-      searchURL || "https://dev-asu-isearch.ws.asu.edu/api/v1/";
+    const searchURLOrDefault = API_URL
+      ? `${API_URL}${searchApiVersion}`
+      : "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
     let query = `${searchURLOrDefault}${engines[tab].url}`;
 
@@ -135,14 +138,15 @@ export const performSearch = function({
       }
       APICall = () => axios.get(query);
     } else {
-      const tokenResponse = await axios.get(
-        `https://pr-212-asu-isearch.pantheonsite.io/session/token`
-      );
+      const tokenResponse = await axios.get(`${API_URL}session/token`);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };
-      APICall = () =>
-        axios.post(query, { profiles: filters.peopleInDepts }, { headers });
+      const data = {
+        full_records: true,
+        profiles: filters.peopleInDepts,
+      };
+      APICall = () => axios.post(query, data, { headers });
     }
 
     APICall().then(res => {
@@ -184,8 +188,21 @@ export const performSearch = function({
           engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
         ].includes(tab)
       ) {
+        let localResults = null;
+        let localPage = 1;
+        if (tab === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
+          localResults = res.data.map(datum => {
+            // eslint-disable-next-line camelcase
+            const {full_record, ...basicFields } = datum;
+            // eslint-disable-next-line camelcase
+            return { ...basicFields, ...full_record };
+          });
+        } else {
+          localResults = res.data.results;
+          localPage = res.data.meta.page;
+        }
         if (filters.peopleIds) {
-          res.data.results = res.data.results.filter(r => {
+          localResults = localResults.filter(r => {
             return filters.peopleIds.includes(r.asurite_id.raw);
           });
         }
@@ -194,8 +211,8 @@ export const performSearch = function({
           : null;
         resolve({
           tab,
-          page: res.data.meta.page,
-          results: res.data.results.map(result =>
+          page: localPage,
+          results: localResults.map(result =>
             engines[tab].converter(result, "large", titleOverwrite)
           ),
         });
