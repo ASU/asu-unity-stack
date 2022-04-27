@@ -80,9 +80,7 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
   const filledDatum = fillInBlanks(datum);
   let primaryAffiliationTitle = null;
   let primaryAffiliationDept = null;
-  console.log({titleOverwrite})
   if (titleOverwrite) {
-    console.log({filledDatum})
     const deptId = titleOverwrite.find(item => {
       return item.asurite_id === filledDatum.asurite_id.raw;
     }).dept_id;

@@ -88,7 +88,7 @@ const getTopResult = results => {
   return null;
 };
 
-export const performSearch = function({
+export const performSearch = function ({
   tab,
   term,
   page,
@@ -127,7 +127,9 @@ export const performSearch = function({
         query = `${query}&page=${page}`;
       }
       if (filters && filters.deptIds) {
-        const deptIDParam = filters.deptIds.map(n => `dept_id[]=${n}`).join("&");
+        const deptIDParam = filters.deptIds
+          .map(n => `dept_id[]=${n}`)
+          .join("&");
         query = `${query}&${deptIDParam}`;
       }
       if (filters && filters.peopleIds) {
@@ -193,7 +195,7 @@ export const performSearch = function({
         if (tab === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
           localResults = res.data.map(datum => {
             // eslint-disable-next-line camelcase
-            const {full_record, ...basicFields } = datum;
+            const { full_record, ...basicFields } = datum;
             // eslint-disable-next-line camelcase
             return { ...basicFields, ...full_record };
           });
@@ -226,6 +228,6 @@ export const performSearch = function({
         });
       }
     });
-  };
+  }
   return new Promise(search);
 };
