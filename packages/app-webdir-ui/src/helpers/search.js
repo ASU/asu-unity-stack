@@ -87,7 +87,7 @@ const getTopResult = results => {
   return null;
 };
 
-export const performSearch = ({
+export const performSearch = function({
   tab,
   term,
   page,
@@ -97,8 +97,8 @@ export const performSearch = ({
   filters,
   site,
   searchURL,
-}) => {
-  return new Promise(resolve => {
+}){
+  const search = async function(resolve){
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
       ? sort
       : "_score_desc";
@@ -135,7 +135,14 @@ export const performSearch = ({
       }
       APICall = () => axios.get(query);
     } else {
-      APICall = () => axios.post(query, { profiles: filters.peopleInDepts });
+      const tokenResponse = await axios.get(
+        `https://pr-212-asu-isearch.pantheonsite.io/session/token`
+      );
+      const headers = {
+        "X-CSRF-Token": tokenResponse.data,
+      };
+      APICall = () =>
+        axios.post(query, { profiles: filters.peopleInDepts }, { headers });
     }
 
     APICall().then(res => {
@@ -202,5 +209,6 @@ export const performSearch = ({
         });
       }
     });
-  });
+  };
+  return new Promise(search);
 };
