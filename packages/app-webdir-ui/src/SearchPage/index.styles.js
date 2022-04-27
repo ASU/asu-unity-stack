@@ -180,6 +180,11 @@ const SearchPageLayout = styled.div`
         "links";
     }
   }
+  li.page-item:not(.active) {
+    button.page-link:hover {
+      color: #8c1d40;
+    }
+  }
 `;
 
 export { SearchPageLayout };

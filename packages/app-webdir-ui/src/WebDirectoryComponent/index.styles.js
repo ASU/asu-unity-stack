@@ -39,6 +39,11 @@ const WebDirLayout = styled.div`
   .results {
     grid-area: results;
   }
+  li.page-item:not(.active) {
+    button.page-link:hover {
+      color: #8c1d40;
+    }
+  }
 `;
 
 export { WebDirLayout };
