@@ -184,17 +184,18 @@ export const anonConverter = (datum, size = "small") => {
 
 export const subdomainConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
-  let desc = filledDatum.meta_description.raw;
-  if (!desc) {
+  let desc = null;
+  if (filledDatum.meta_description) {
+    desc = filledDatum.meta_description.raw;
+  } else {
     desc = filledDatum.body_content.raw
       .replace("Skip to main content ", "")
       .replace("Skip to Main Page Content ", "");
   }
-
   return (
     <ResultCard
-      id={filledDatum.asurite_id.raw}
-      key={filledDatum.asurite_id.raw}
+      id={filledDatum.id.raw}
+      key={filledDatum.id.raw}
       name={filledDatum.title.raw}
       area={filledDatum.url_host.raw}
       description={desc}
