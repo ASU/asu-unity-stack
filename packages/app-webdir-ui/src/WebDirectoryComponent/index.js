@@ -7,7 +7,7 @@ import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
 const sortOptions = [{ label: "label", value: 9 }];
-function WebDirectory({ searchType, ids, deptIds, searchURL }) {
+function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
@@ -19,29 +19,31 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
 
   const isLoading = false;
   const pageChange = () => true;
-
+  const searchTypeEngineMap = {
+    departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
+    people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+    people_departments: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+  };
   function doSearch() {
     const filters = {};
     const params = {
-      tab: engineNames.WEB_DIRECTORY,
+      tab: searchTypeEngineMap[searchType],
       page: 1,
       items: 6,
-      searchURL,
+      API_URL,
+      searchApiVersion,
       filters,
     };
-    if (searchType !== "departments") {
-      const parsedIDs = ids
+    if (searchType === "departments") {
+      filters.deptIds = deptIds.split(",");
+    } else {
+      filters.peopleInDepts = ids
         .split(",")
         .filter(id => id.includes(":"))
         .map(pair => pair.split(":"))
         .map(pair => {
-          return { asurite_id: pair[0], dept: pair[1] };
+          return { asurite_id: pair[0], dept_id: pair[1] };
         });
-      filters.peopleIds = parsedIDs.map(item => item.asurite_id);
-      filters.deptIds = Array.from(new Set(parsedIDs.map(item => item.dept)));
-      params.titleOverwrite = parsedIDs;
-    } else {
-      filters.deptIds = deptIds.split(",");
     }
     performSearch(params).then(res => {
       setResults(res.results);
@@ -122,7 +124,8 @@ function WebDirectory({ searchType, ids, deptIds, searchURL }) {
 
 WebDirectory.propTypes = {
   deptIds: PropTypes.string,
-  searchURL: PropTypes.string,
+  API_URL: PropTypes.string,
+  searchApiVersion: PropTypes.string,
   searchType: PropTypes.string,
   ids: PropTypes.string,
 };

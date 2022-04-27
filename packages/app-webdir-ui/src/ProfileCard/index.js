@@ -2,8 +2,8 @@ import React from "react";
 
 import anonPic from "../assets/anon.png";
 import { trackGAEvent } from "../core/services/googleAnalytics";
-import { profileCardType } from "./models";
 import { ProfileCardLayout } from "./index.styles";
+import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
   let titles = null;

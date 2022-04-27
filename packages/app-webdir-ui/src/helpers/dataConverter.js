@@ -83,7 +83,7 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
   if (titleOverwrite) {
     const deptId = titleOverwrite.find(item => {
       return item.asurite_id === filledDatum.asurite_id.raw;
-    }).dept;
+    }).dept_id;
     const deptIndex = filledDatum.deptids.raw.findIndex(
       dept => dept === deptId
     );
