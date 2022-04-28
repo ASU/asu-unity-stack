@@ -76,10 +76,11 @@ const fillInBlanks = datum => {
   return { ...full, ...datum };
 };
 
-export const staffConverter = (datum, size = "small", titleOverwrite) => {
+export const staffConverter = (datum, size = "small") => {
   const filledDatum = fillInBlanks(datum);
   let primaryAffiliationTitle = null;
   let primaryAffiliationDept = null;
+<<<<<<< HEAD
   if (titleOverwrite) {
     const deptId = titleOverwrite.find(item => {
       return item.asurite_id === filledDatum.asurite_id.raw;
@@ -92,6 +93,15 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
     if (dept) {
       primaryAffiliationDept = dept;
     }
+=======
+  console.log({datum});
+  console.log({filledDatum});
+
+
+
+  if (filledDatum.title) {
+
+>>>>>>> 8ae465bf (fix(app-webdir-ui): title logic)
   } else {
     if (filledDatum.primary_title) {
       // eslint-disable-next-line prefer-destructuring
