@@ -153,6 +153,9 @@ const SearchPageLayout = styled.div`
     .all-asu-search {
       display: flex;
       flex-direction: column;
+      .all-message {
+        margin-bottom: 0px;
+      }
       .all-content {
         display: flex;
         flex-direction: column;
