@@ -123,6 +123,7 @@ const SearchPageLayout = styled.div`
     .options-area {
       flex-direction: column;
       form {
+        width: 100%;
         margin-bottom: 24px;
         max-width: 100%;
 
