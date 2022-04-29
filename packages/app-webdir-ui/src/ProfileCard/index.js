@@ -7,7 +7,7 @@ import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
   let title = props.primaryAffiliationTitle;
-  if (props.primaryAffiliationDept) {
+  if (props.primaryAffiliationDept && props.size !== "micro") {
     title = `${title}, ${props.primaryAffiliationDept}`;
   }
 

@@ -13,7 +13,7 @@ export default createComponent("Search Page", "Organisms", "Templates");
 export const searchPageExample = createStory(
   <div className="uds-content-align">
     <SearchPage
-      API_URL="https://dev-asu-isearch.ws.asu.edu/"
+      API_URL="https://pr-235-asu-isearch.pantheonsite.io/"
       searchApiVersion="api/v1/"
       loggedIn
     />
