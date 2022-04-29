@@ -5,23 +5,10 @@ const WebDirLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 250px;
   grid-template-areas:
-    "header        sort"
-    "title        title"
+    ".        sort"
     "results    results";
   grid-column-gap: 100px;
 
-  .header {
-    grid-area: header;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  .title {
-    grid-area: title;
-    padding: 16px 0;
-    .sort-form {
-      max-width: 500px;
-    }
-  }
   .sort {
     grid-area: sort;
     display: flex;
