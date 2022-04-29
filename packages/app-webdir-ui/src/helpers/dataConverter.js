@@ -84,7 +84,11 @@ const getTitleFromProfile = profile => {
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === profile.primary_deptid.raw
     );
-    primaryAffiliationTitle = profile.titles.raw[deptIndex];
+    if (profile.title_source.raw[deptIndex] === "titles") {
+      primaryAffiliationTitle = profile.titles.raw[deptIndex];
+    } else {
+      primaryAffiliationTitle = profile.working_title.raw[deptIndex];
+    }
     primaryAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_department && profile.primary_department.raw) {
     const deptIndex = profile.departments.raw.findIndex(
