@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import React from "react";
 
 import anonPic from "../assets/anon.png";
@@ -20,12 +21,6 @@ const fillInBlanks = datum => {
     },
     display_name: {
       raw: "",
-    },
-    title: {
-      raw: "",
-    },
-    titles: {
-      raw: [],
     },
     email_address: {
       raw: "",
@@ -76,38 +71,49 @@ const fillInBlanks = datum => {
   return { ...full, ...datum };
 };
 
-export const staffConverter = (datum, size = "small", titleOverwrite) => {
-  const filledDatum = fillInBlanks(datum);
+const getTitleFromProfile = profile => {
   let primaryAffiliationTitle = null;
   let primaryAffiliationDept = null;
-  if (titleOverwrite) {
-    const deptId = titleOverwrite.find(item => {
-      return item.asurite_id === filledDatum.asurite_id.raw;
-    }).dept_id;
-    const deptIndex = filledDatum.deptids.raw.findIndex(
-      dept => dept === deptId
+
+  if (profile.title) {
+    primaryAffiliationTitle = profile.title[0];
+    if (profile.dept_name) {
+      primaryAffiliationDept = profile.dept_name;
+    }
+  } else if (profile.titles && profile.titles.raw) {
+    const deptIndex = profile.deptids.raw.findIndex(
+      id => id === profile.primary_deptid.raw
     );
-    primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
-    const dept = filledDatum.departments.raw[deptIndex];
-    if (dept) {
-      primaryAffiliationDept = dept;
+    if (profile.title_source.raw[deptIndex] === "titles") {
+      primaryAffiliationTitle = profile.titles.raw[deptIndex];
+    } else {
+      primaryAffiliationTitle = profile.working_title.raw[deptIndex];
     }
-  } else if (filledDatum.titles.raw && filledDatum.titles.raw.length > 0) {
-    const primaryAff = filledDatum.primary_search_department_affiliation.raw[0];
-    const deptIndex = filledDatum.departments.raw.findIndex(
-      dept => dept.toLowerCase() === primaryAff.toLowerCase()
+    primaryAffiliationDept = profile.departments.raw[deptIndex];
+  } else if (profile.primary_department && profile.primary_department.raw) {
+    const deptIndex = profile.departments.raw.findIndex(
+      dept => dept === profile.primary_department.raw
     );
-    const relevantField = filledDatum.title_source.raw[deptIndex];
-    if (relevantField === "titles" || !filledDatum.working_title) {
-      primaryAffiliationTitle = filledDatum.titles.raw[deptIndex];
-    } else if (relevantField === "workingTitle") {
-      primaryAffiliationTitle = filledDatum.working_title.raw;
+    if (
+      profile.title_source.raw[0] === "workingTitle" &&
+      profile.working_title
+    ) {
+      primaryAffiliationTitle = profile.working_title.raw[0];
     }
-    const dept = filledDatum.departments.raw[deptIndex];
-    if (dept) {
-      primaryAffiliationDept = dept;
-    }
+    primaryAffiliationDept = profile.departments.raw[deptIndex];
+  } else {
+    primaryAffiliationTitle = profile.working_title.raw[0];
+    primaryAffiliationDept =
+      profile.primary_search_department_affiliation.raw[0];
   }
+
+  return { primaryAffiliationTitle, primaryAffiliationDept };
+};
+
+export const staffConverter = (datum, size = "small") => {
+  const filledDatum = fillInBlanks(datum);
+  const titles = getTitleFromProfile(filledDatum);
+
   return (
     <ProfileCard
       isRequired={false}
@@ -116,9 +122,8 @@ export const staffConverter = (datum, size = "small", titleOverwrite) => {
       key={filledDatum.asurite_id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       name={filledDatum.display_name.raw}
-      titles={filledDatum.titles.raw}
-      primaryAffiliationTitle={primaryAffiliationTitle}
-      primaryAffiliationDept={primaryAffiliationDept}
+      primaryAffiliationTitle={titles.primaryAffiliationTitle}
+      primaryAffiliationDept={titles.primaryAffiliationDept}
       email={filledDatum.email_address.raw}
       telephone={filledDatum.phone.raw}
       addressLine1={filledDatum.address_line1.raw}

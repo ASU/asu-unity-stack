@@ -6,25 +6,11 @@ import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
-  let titles = null;
-  if (props.titles?.length > 0 && props.size === "micro") {
-    titles = <span>{props.titles[0].name}</span>;
-  } else if (props.titles?.length > 0 && props.size === "large") {
-    if (props.primaryAffiliationTitle) {
-      titles = (
-        <h4>
-          {props.primaryAffiliationTitle}, {props.primaryAffiliationDept || ""}
-        </h4>
-      );
-    } else {
-      titles = props.titles.map((title, idx) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <h4 key={idx}>
-          <span>{title}</span>
-        </h4>
-      ));
-    }
+  let title = props.primaryAffiliationTitle;
+  if (props.primaryAffiliationDept && props.size !== "micro") {
+    title = `${title}, ${props.primaryAffiliationDept}`;
   }
+
   const hideNonExistantImages = e => {
     e.target.style.display = "none";
   };
@@ -71,12 +57,9 @@ const ProfileCard = ({ ...props }) => {
           </a>
         )}
         {!props.profileURL && <h3 className="person-name">{props.name}</h3>}
-        {props.size !== "large" && (
-          <h4 className="person-profession">{props.title}</h4>
-        )}
-        {["large", "micro"].includes(props.size) && (
-          <div className="person-profession">{titles}</div>
-        )}
+        <div className="person-profession">
+          <h4>{title}</h4>
+        </div>
         {props.size !== "micro" && (
           <ul className="person-contact-info">
             <li>
