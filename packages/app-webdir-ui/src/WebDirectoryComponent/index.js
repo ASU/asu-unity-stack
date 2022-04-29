@@ -65,7 +65,6 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
 
   return (
     <WebDirLayout>
-      <div className="header">People in Department</div>
       <div className="sort">
         Sort By:
         <button
