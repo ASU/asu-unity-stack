@@ -6,7 +6,6 @@ const WebDirLayout = styled.div`
   grid-template-columns: 1fr 250px;
   grid-template-areas:
     "header        sort"
-    "title        title"
     "results    results";
   grid-column-gap: 100px;
 

@@ -66,24 +66,6 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
   return (
     <WebDirLayout>
       <div className="header">People in Department</div>
-      <div className="title">
-        <form className="uds-form sort-form">
-          <div className="form-group">
-            <select
-              className="form-control"
-              id="sortBySelect"
-              value={sort}
-              onChange={event => setNewSort(event.target.value)}
-            >
-              {sortOptions.map(op => (
-                <option key={op.value} value={op.value}>
-                  {op.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </form>
-      </div>
       <div className="sort">
         Sort By:
         <button
