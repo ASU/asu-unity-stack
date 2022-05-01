@@ -208,14 +208,16 @@ export const performSearch = function ({
             return filters.peopleIds.includes(r.asurite_id.raw);
           });
         }
-        const titleOverwrite = filters.peopleInDepts
-          ? filters.peopleInDepts
-          : null;
+        // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
+        // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
+        const titleMatch = filters.peopleInDepts
+          ? { peopleInDeps: filters.peopleInDepts }
+          : { depts: filters.deptIds };
         resolve({
           tab,
           page: localPage,
           results: localResults.map(result =>
-            engines[tab].converter(result, "large", titleOverwrite)
+            engines[tab].converter(result, "large", titleMatch)
           ),
         });
       } else {

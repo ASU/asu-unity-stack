@@ -6,9 +6,11 @@ import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
-  let title = props.primaryAffiliationTitle;
-  if (props.primaryAffiliationDept && props.size !== "micro") {
-    title = `${title}, ${props.primaryAffiliationDept}`;
+  let title = props.matchedAffiliationTitle
+    ? `${props.matchedAffiliationTitle}, `
+    : "";
+  if (props.matchedAffiliationDept && props.size !== "micro") {
+    title += props.matchedAffiliationDept;
   }
 
   const hideNonExistantImages = e => {
@@ -147,8 +149,8 @@ const ProfileCard = ({ ...props }) => {
             View Profile
           </a>
         )}
-        {props.size === "micro" && props.primaryAffiliationDept && (
-          <div>{props.primaryAffiliationDept}</div>
+        {props.size === "micro" && props.matchedAffiliationDept && (
+          <div>{props.matchedAffiliationDept}</div>
         )}
       </div>
     </ProfileCardLayout>
