@@ -6,12 +6,24 @@ import { ProfileCard } from "../ProfileCard/index";
 import { ResultCard } from "../ResultCard/index";
 
 const fillInBlanks = datum => {
+  const datumAdjusted = datum;
+  // If in datum, but without .raw, delete so can be filled.
+  if (datum.asurite_id === null) {
+    delete datumAdjusted.asurite_id;
+  }
+  if (datum.display_name === null) {
+    delete datumAdjusted.display_name;
+  }
+
   const full = {
     id: {
       raw: "",
     },
     asurite_id: {
       raw: "",
+    },
+    working_title: {
+      raw: [""],
     },
     eid: {
       raw: "",
@@ -71,75 +83,127 @@ const fillInBlanks = datum => {
       raw: "",
     },
   };
-  return { ...full, ...datum };
+  return { ...full, ...datumAdjusted };
 };
 
-const getTitleFromProfile = profile => {
-  let primaryAffiliationTitle = null;
-  let primaryAffiliationDept = null;
+// If it's depts only - use that dept in place of primary_deptid
+
+const getTitleFromProfile = (profile, titleMatch) => {
+  // Note on title logic
+  // - Engine WEB_DIRECTORY_PEOPLE_AND_DEPS supplies results with title logic
+  //   already handled by the service.
+  // - Engine WEB_DIRECTORY_DEPARTMENTS needs a little help with titles,
+  //   handled below using titleMatch.depts.
+
+  let matchedAffiliationTitle = null;
+  let matchedAffiliationDept = null;
 
   if (profile.title) {
-    primaryAffiliationTitle = profile.title[0];
+    console.log("title from service");
+    // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
+    // We don't need to consult titleMatch.peopleDeps.
+    matchedAffiliationTitle = profile.title[0];
     if (profile.dept_name) {
-      primaryAffiliationDept = profile.dept_name;
+      matchedAffiliationDept = profile.dept_name;
     }
-  } else if (profile.titles && profile.titles.raw) {
+  } else if (
+    titleMatch &&
+    titleMatch.depts &&
+    profile.deptids &&
+    profile.titles
+  ) {
+    console.log("title from titleMatch.deps");
+    // A flow for WEB_DIRECTORY_DEPARTMENTS.
+    // Note: If someone is in two depts queried, there is no guarantee which
+    // title they'll get. When precision is needed, users should use the
+    // People or People in Departments component type.
+
+    // Find matching values our titleMatch.depts
+    const deptValueMatch = profile.deptids.raw.filter(id =>
+      titleMatch.depts.includes(id)
+    );
+    // Use the first value matched to match on the deptids index.
+    const deptIndex = profile.deptids.raw.findIndex(
+      id => id === deptValueMatch[0]
+    );
+    if (profile.title_source.raw[deptIndex] === "titles") {
+      matchedAffiliationTitle = profile.titles.raw[deptIndex];
+    } else if (profile.working_title) {
+      matchedAffiliationTitle = profile.working_title.raw[deptIndex];
+    }
+    matchedAffiliationDept = profile.departments.raw[deptIndex];
+  } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
+    console.log("title from fallback1 to primary_deptid");
+    // Fallback to using primary_deptid from CMS to derive the match.
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === profile.primary_deptid.raw
     );
     if (profile.title_source.raw[deptIndex] === "titles") {
-      primaryAffiliationTitle = profile.titles.raw[deptIndex];
-    } else {
-      primaryAffiliationTitle = profile.working_title.raw[deptIndex];
+      matchedAffiliationTitle = profile.titles.raw[deptIndex];
+    } else if (profile.working_title) {
+      matchedAffiliationTitle = profile.working_title.raw[deptIndex];
     }
-    primaryAffiliationDept = profile.departments.raw[deptIndex];
+    matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_department && profile.primary_department.raw) {
+    console.log("title from fallback2 to primary_department");
+    // Fallback to using primary_department name to derive the match, using
+    // working_title. This condition is unlikely to be met. If we have one, we
+    // should have the other.
     const deptIndex = profile.departments.raw.findIndex(
       dept => dept === profile.primary_department.raw
     );
     if (
-      profile.title_source.raw[0] === "workingTitle" &&
+      // profile.title_source.raw[0] === "workingTitle" &&
       profile.working_title
     ) {
-      primaryAffiliationTitle = profile.working_title.raw[0];
+      matchedAffiliationTitle = profile.working_title.raw[0];
     }
-    primaryAffiliationDept = profile.departments.raw[deptIndex];
+    matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else {
-    primaryAffiliationTitle = profile.working_title.raw[0];
-    primaryAffiliationDept =
+    console.log("title from fallback3 to hr values - final");
+    // Final fallback is to use the HR working title and department values.
+    matchedAffiliationTitle = profile.working_title.raw[0];
+    matchedAffiliationDept =
       profile.primary_search_department_affiliation.raw[0];
   }
 
-  return { primaryAffiliationTitle, primaryAffiliationDept };
+  return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (datum, size = "small") => {
+export const staffConverter = (datum, size = "small", titleMatch = null) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum);
+  const titles = getTitleFromProfile(filledDatum, titleMatch);
+
+  // We guard against null asurite_id being returned from data source in some
+  // instances by using a conditional render.
 
   return (
-    <ProfileCard
-      isRequired={false}
-      id={filledDatum.asurite_id.raw.toString()}
-      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-      key={filledDatum.asurite_id.raw.toString()}
-      imgURL={filledDatum.photo_url.raw}
-      name={filledDatum.display_name.raw}
-      primaryAffiliationTitle={titles.primaryAffiliationTitle}
-      primaryAffiliationDept={titles.primaryAffiliationDept}
-      email={filledDatum.email_address.raw}
-      telephone={filledDatum.phone.raw}
-      addressLine1={filledDatum.address_line1.raw}
-      addressLine2={filledDatum.address_line2.raw}
-      description={filledDatum.bio.raw}
-      shortBio={filledDatum.shortBio.raw}
-      facebookLink={filledDatum.facebook.raw}
-      linkedinLink={filledDatum.linkedin.raw}
-      twitterLink={filledDatum.twitter.raw}
-      website={filledDatum.website.raw}
-      size={size}
-      fill
-    />
+    <>
+      {filledDatum.asurite_id.raw.length ? (
+        <ProfileCard
+          isRequired={false}
+          id={filledDatum.asurite_id.raw.toString()}
+          profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
+          key={filledDatum.asurite_id.raw.toString()}
+          imgURL={filledDatum.photo_url.raw}
+          name={filledDatum.display_name.raw}
+          matchedAffiliationTitle={titles.matchedAffiliationTitle}
+          matchedAffiliationDept={titles.matchedAffiliationDept}
+          email={filledDatum.email_address.raw}
+          telephone={filledDatum.phone.raw}
+          addressLine1={filledDatum.address_line1.raw}
+          addressLine2={filledDatum.address_line2.raw}
+          description={filledDatum.bio.raw}
+          shortBio={filledDatum.shortBio.raw}
+          facebookLink={filledDatum.facebook.raw}
+          linkedinLink={filledDatum.linkedin.raw}
+          twitterLink={filledDatum.twitter.raw}
+          website={filledDatum.website.raw}
+          size={size}
+          fill={false}
+        />
+      ) : null}
+    </>
   );
 };
 
