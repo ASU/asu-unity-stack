@@ -85,7 +85,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn }) {
         auth: null,
         sort,
         filters,
-        site,
+        site: searchParams.get(siteParamName) || null,
         API_URL,
         searchApiVersion,
       }).then(res => {
