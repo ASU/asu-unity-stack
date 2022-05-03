@@ -13,6 +13,7 @@ export const profileCardType = {
   facebookLink: PropTypes.string,
   linkedinLink: PropTypes.string,
   twitterLink: PropTypes.string,
+  website: PropTypes.string,
   size: PropTypes.string,
   fill: PropTypes.bool,
   anonymized: PropTypes.bool,
