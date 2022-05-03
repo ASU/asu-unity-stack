@@ -79,6 +79,9 @@ const fillInBlanks = datum => {
     primary_search_department_affiliation: {
       raw: [""],
     },
+    website: {
+      raw: "",
+    },
   };
   return { ...full, ...datumAdjusted };
 };
@@ -195,6 +198,7 @@ export const staffConverter = (datum, size = "small", titleMatch = null) => {
           facebookLink={filledDatum.facebook.raw}
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
+          website={filledDatum.website.raw}
           size={size}
           fill={false}
         />

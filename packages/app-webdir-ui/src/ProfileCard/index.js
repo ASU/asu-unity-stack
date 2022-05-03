@@ -137,6 +137,17 @@ const ProfileCard = ({ ...props }) => {
                   </a>
                 </li>
               )}
+              {props.website && (
+                <li>
+                  <a
+                    onClick={() => sendEvent("website icon")}
+                    href={props.website}
+                    aria-label="Go to user Website"
+                  >
+                    <span className="fa fa-globe" title="User Website Link" />
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         )}
