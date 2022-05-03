@@ -17,6 +17,8 @@ export default {
   image_urls: {
     raw: [""],
   },
+  title: ["Job Title"],
+  dept_name: "Department",
   primary_search_department_affiliation: {
     raw: "MLF Teachers College",
   },

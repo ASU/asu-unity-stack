@@ -53,9 +53,6 @@ export default {
   subaffiliations: {
     raw: ["Alumni", "Visiting Scholar/Faculty/Researcher"],
   },
-  website: {
-    raw: " ",
-  },
   job_campuses: {
     raw: [" "],
   },
@@ -67,6 +64,11 @@ export default {
   },
   google_plus: {
     raw: " ",
+  },
+  title: ["Job Title"],
+  dept_name: "Department",
+  website: {
+    raw: "https://asu.edu",
   },
   title_source: {
     raw: ["titles"],
