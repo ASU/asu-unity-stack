@@ -196,7 +196,7 @@ export const staffConverter = (datum, size = "small", titleMatch = null) => {
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
           size={size}
-          fill
+          fill={false}
         />
       ) : null}
     </>
