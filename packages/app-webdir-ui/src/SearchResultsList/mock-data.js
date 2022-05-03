@@ -11,7 +11,7 @@ export default {
   bio: {
     raw: "<p>Things just happen when Dr. Isa MacGuffin is around. Conservative estimates suggest a 430% increase in 'events' as soon as she arrives to a location.</p>",
   },
-  shortBio: {
+  short_bio: {
     raw: "Things just happen when Dr. Isa MacGuffin is around. Conservative estimates suggest a 430% increase in 'events' as soon as she arrives to a location.",
   },
   image_urls: {

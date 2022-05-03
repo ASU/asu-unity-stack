@@ -225,7 +225,7 @@ export const performSearch = function ({
           tab,
           page: res.data.meta.page,
           results: res.data.results.map(result =>
-            engines[tab].converter(result)
+            engines[tab].converter(result, "large")
           ),
         });
       }
