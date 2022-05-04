@@ -25,6 +25,9 @@ const fillInBlanks = datum => {
     working_title: {
       raw: [""],
     },
+    titles: {
+      raw: null,
+    },
     eid: {
       raw: "",
     },
