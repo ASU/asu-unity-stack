@@ -12,24 +12,27 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
   const [sort, setSort] = useState(9);
+  const [numResults, setNumResults] = useState(0);
+  const [currPage, setCurrPage] = useState(1);
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
   };
 
   const isLoading = false;
-  const pageChange = () => true;
+  const RES_PER_PAGE = 6;
+
   const searchTypeEngineMap = {
     departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
     people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
     people_departments: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
   };
-  function doSearch() {
+  function doSearch(page = 1) {
     const filters = {};
     const params = {
       tab: searchTypeEngineMap[searchType],
-      page: 1,
-      items: 6,
+      page,
+      items: RES_PER_PAGE,
       API_URL,
       searchApiVersion,
       filters,
@@ -46,6 +49,8 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
         });
     }
     performSearch(params).then(res => {
+      setCurrPage(res.page.current);
+      setNumResults(res.page.total_results);
       setResults(res.results);
     });
   }
@@ -90,12 +95,12 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
       <div className="results">
         <ASUSearchResultsList
           results={results}
-          totalResults={results.length}
-          resultsPerPage={6}
-          currentPage={results.page?.current}
+          totalResults={numResults}
+          resultsPerPage={RES_PER_PAGE}
+          currentPage={currPage}
           isLoading={isLoading}
           title="All faculty and staff results"
-          onPageChange={pageChange}
+          onPageChange={doSearch}
           size="large"
         />
       </div>
