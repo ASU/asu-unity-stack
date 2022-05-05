@@ -6,7 +6,6 @@ import { performSearch, engineNames } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
-const sortOptions = [{ label: "label", value: 9 }];
 function WebDirectory({
   searchType,
   ids,
@@ -14,11 +13,12 @@ function WebDirectory({
   API_URL,
   searchApiVersion,
   profileURLBase,
+  display,
+  filters,
 }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
-  const [sort, setSort] = useState(9);
   const [numResults, setNumResults] = useState(0);
   const [currPage, setCurrPage] = useState(1);
   const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
@@ -35,21 +35,22 @@ function WebDirectory({
     people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
     people_departments: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
   };
-  function doSearch(page = 1) {
-    const filters = {};
+  function doSearch(sort) {
+    const requestFilters = { ...filters };
     const params = {
       tab: searchTypeEngineMap[searchType],
-      page,
-      items: RES_PER_PAGE,
+      page: 1,
+      items: display.profilesPerPage,
       API_URL,
       searchApiVersion,
-      filters,
+      filters: requestFilters,
+      sort,
       profileURLBase: profileURLBaseOrDefault,
     };
     if (searchType === "departments") {
-      filters.deptIds = deptIds.split(",");
+      requestFilters.deptIds = deptIds.split(",");
     } else {
-      filters.peopleInDepts = ids
+      requestFilters.peopleInDepts = ids
         .split(",")
         .filter(id => id.includes(":"))
         .map(pair => pair.split(":"))
@@ -66,15 +67,16 @@ function WebDirectory({
 
   const handleKeyPressSort = (event, val) => {
     if (event.keyCode === 13) {
-      setSort(val);
+      setNewSort(val);
     }
   };
 
   useEffect(() => {
-    if (searchParams.get(sortParamName)) {
-      setSort(searchParams.get(sortParamName));
-    }
-    doSearch();
+    setNewSort(display.defaultSort || "last_name_desc");
+  }, []);
+
+  useEffect(() => {
+    doSearch(searchParams.get(sortParamName));
   }, [searchParams]);
 
   return (
@@ -84,8 +86,8 @@ function WebDirectory({
         <button
           type="button"
           className="plain-button"
-          onClick={() => setSort("name")}
-          onKeyPress={event => handleKeyPressSort(event, "name")}
+          onClick={() => setNewSort("last_name_desc")}
+          onKeyPress={event => handleKeyPressSort(event, "last_name_desc")}
           tabIndex={0}
         >
           Last name
@@ -94,8 +96,8 @@ function WebDirectory({
         <button
           type="button"
           className="plain-button"
-          onClick={() => setSort("rank")}
-          onKeyPress={event => handleKeyPressSort(event, "rank")}
+          onClick={() => setNewSort("_score_desc")}
+          onKeyPress={event => handleKeyPressSort(event, "_score_desc")}
           tabIndex={0}
         >
           Rank
@@ -123,6 +125,17 @@ WebDirectory.propTypes = {
   searchType: PropTypes.string,
   ids: PropTypes.string,
   profileURLBase: PropTypes.string,
+  display: PropTypes.shape({
+    defaultSort: PropTypes.string,
+    doNotDisplayProfiles: PropTypes.string,
+    profilesPerPage: PropTypes.string,
+    usePager: PropTypes.string,
+  }),
+  filters: PropTypes.shape({
+    employee: PropTypes.string,
+    expertise: PropTypes.string,
+    title: PropTypes.string,
+  }),
 };
 
 export { WebDirectory };
