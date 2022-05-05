@@ -102,6 +102,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
   let matchedAffiliationDept = null;
 
   if (profile.title) {
+    console.log("title from service");
     // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
     // We don't need to consult titleMatch.peopleDeps.
     matchedAffiliationTitle = profile.title[0];
@@ -114,6 +115,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     profile.deptids &&
     profile.titles
   ) {
+    console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
     // Note: If someone is in two depts queried, there is no guarantee which
     // title they'll get. When precision is needed, users should use the
@@ -134,6 +136,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
+    console.log("title from fallback1 to primary_deptid");
     // Fallback to using primary_deptid from CMS to derive the match.
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === profile.primary_deptid.raw
@@ -145,6 +148,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_department && profile.primary_department.raw) {
+    console.log("title from fallback2 to primary_department");
     // Fallback to using primary_department name to derive the match, using
     // working_title. This condition is unlikely to be met. If we have one, we
     // should have the other.
@@ -159,6 +163,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else {
+    console.log("title from fallback3 to hr values - final");
     // Final fallback is to use the HR working title and department values.
     matchedAffiliationTitle = profile.working_title.raw[0];
     matchedAffiliationDept =
