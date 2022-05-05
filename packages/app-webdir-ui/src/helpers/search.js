@@ -88,7 +88,7 @@ const getTopResult = results => {
   return null;
 };
 
-export const performSearch = function ({
+export function performSearch({
   tab,
   term,
   page,
@@ -232,4 +232,4 @@ export const performSearch = function ({
     });
   }
   return new Promise(search);
-};
+}

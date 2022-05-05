@@ -6,7 +6,6 @@ import { performSearch, engineNames } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
-const sortOptions = [{ label: "label", value: 9 }];
 function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
@@ -100,7 +99,7 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
           currentPage={currPage}
           isLoading={isLoading}
           title="All faculty and staff results"
-          onPageChange={doSearch}
+          onPageChange={page => doSearch(page)}
           size="large"
         />
       </div>
