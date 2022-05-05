@@ -102,7 +102,6 @@ const getTitleFromProfile = (profile, titleMatch) => {
   let matchedAffiliationDept = null;
 
   if (profile.title) {
-    console.log("title from service");
     // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
     // We don't need to consult titleMatch.peopleDeps.
     matchedAffiliationTitle = profile.title[0];
@@ -115,7 +114,6 @@ const getTitleFromProfile = (profile, titleMatch) => {
     profile.deptids &&
     profile.titles
   ) {
-    console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
     // Note: If someone is in two depts queried, there is no guarantee which
     // title they'll get. When precision is needed, users should use the
@@ -136,7 +134,6 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
-    console.log("title from fallback1 to primary_deptid");
     // Fallback to using primary_deptid from CMS to derive the match.
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === profile.primary_deptid.raw
@@ -148,7 +145,6 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_department && profile.primary_department.raw) {
-    console.log("title from fallback2 to primary_department");
     // Fallback to using primary_department name to derive the match, using
     // working_title. This condition is unlikely to be met. If we have one, we
     // should have the other.
@@ -163,7 +159,6 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else {
-    console.log("title from fallback3 to hr values - final");
     // Final fallback is to use the HR working title and department values.
     matchedAffiliationTitle = profile.working_title.raw[0];
     matchedAffiliationDept =
@@ -173,21 +168,31 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (datum, size = "small", titleMatch = null) => {
+export const staffConverter = (
+  datum,
+  options = {
+    size: "small",
+    titleMatch: null,
+    profileURLBase: null,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum, titleMatch);
+  const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
   // We guard against null asurite_id being returned from data source in some
   // instances by using a conditional render.
-
+  const profileURLBase = options.profileURLBase ?? "";
+  const safeAsuriteID = filledDatum.asurite_id.raw.length
+    ? filledDatum.asurite_id.raw.toString()
+    : null;
   return (
     <>
-      {filledDatum.asurite_id.raw.length ? (
+      {safeAsuriteID ? (
         <ProfileCard
           isRequired={false}
-          id={filledDatum.asurite_id.raw.toString()}
-          profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-          key={filledDatum.asurite_id.raw.toString()}
+          id={safeAsuriteID}
+          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
+          key={safeAsuriteID}
           imgURL={filledDatum.photo_url.raw}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
@@ -202,7 +207,7 @@ export const staffConverter = (datum, size = "small", titleMatch = null) => {
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
           website={filledDatum.website.raw}
-          size={size}
+          size={options.size}
           fill={false}
         />
       ) : null}

@@ -31,7 +31,7 @@ SearchResultsMessage.propTypes = {
   tabText: PropTypes.string,
 };
 
-function SearchPage({ API_URL, searchApiVersion, loggedIn }) {
+function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   const sortOptions = [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
@@ -88,6 +88,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn }) {
         site: searchParams.get(siteParamName) || null,
         API_URL,
         searchApiVersion,
+        profileURLBase,
       }).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(
@@ -452,6 +453,7 @@ SearchPage.propTypes = {
   API_URL: PropTypes.string,
   searchApiVersion: PropTypes.string,
   loggedIn: PropTypes.bool,
+  profileURLBase: PropTypes.string,
 };
 
 export { SearchPage };

@@ -99,6 +99,7 @@ export function performSearch({
   site,
   API_URL,
   searchApiVersion,
+  profileURLBase,
 }) {
   async function search(resolve) {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
@@ -171,7 +172,6 @@ export function performSearch({
           } else {
             const topResult = getTopResult(res.data[dataKey].results);
             let cardSize = "micro";
-            console.log({ dataKey });
             if (
               ["web_dir_faculty_staff", "web_dir_students"].includes(dataKey)
             ) {
@@ -181,12 +181,18 @@ export function performSearch({
               tab: dataKey,
               page: res.data[dataKey].meta.page,
               results: res.data[dataKey].results.map(result =>
-                engines[dataKey].converter(result, cardSize)
+                engines[dataKey].converter(result, {
+                  size: cardSize,
+                  profileURLBase,
+                })
               ),
               topResult:
                 topResult === null
                   ? topResult
-                  : engines[dataKey].converter(topResult, "small"),
+                  : engines[dataKey].converter(topResult, {
+                      size: "small",
+                      profileURLBase,
+                    }),
             };
           }
         });
@@ -220,11 +226,16 @@ export function performSearch({
         const titleMatch = filters.peopleInDepts
           ? { peopleInDeps: filters.peopleInDepts }
           : { depts: filters.deptIds };
+
         resolve({
           tab,
           page: localPage,
           results: localResults.map(result =>
-            engines[tab].converter(result, "large", titleMatch)
+            engines[tab].converter(result, {
+              size: "large",
+              titleMatch,
+              profileURLBase,
+            })
           ),
         });
       } else {
@@ -232,7 +243,7 @@ export function performSearch({
           tab,
           page: res.data.meta.page,
           results: res.data.results.map(result =>
-            engines[tab].converter(result, "large")
+            engines[tab].converter(result, { size: "large", profileURLBase })
           ),
         });
       }

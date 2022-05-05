@@ -6,7 +6,15 @@ import { performSearch, engineNames } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
-function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
+const sortOptions = [{ label: "label", value: 9 }];
+function WebDirectory({
+  searchType,
+  ids,
+  deptIds,
+  API_URL,
+  searchApiVersion,
+  profileURLBase,
+}) {
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
   const [results, setResults] = useState([]);
@@ -35,6 +43,7 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
       API_URL,
       searchApiVersion,
       filters,
+      profileURLBase,
     };
     if (searchType === "departments") {
       filters.deptIds = deptIds.split(",");
@@ -112,6 +121,7 @@ WebDirectory.propTypes = {
   searchApiVersion: PropTypes.string,
   searchType: PropTypes.string,
   ids: PropTypes.string,
+  profileURLBase: PropTypes.string,
 };
 
 export { WebDirectory };
