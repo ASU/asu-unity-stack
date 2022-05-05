@@ -10,6 +10,18 @@ import {
 
 export default createComponent("Web Directory", "Organisms", "Templates");
 
+const display = {
+  defaultSort: "last_name",
+  doNotDisplayProfiles: "",
+  profilesPerPage: "20",
+  usePages: "1",
+};
+const filters = {
+  employee: "",
+  expertise: "",
+  title: "",
+};
+
 export const webDirectoryExampleDepartments = createStory(
   <div className="uds-content-align">
     <WebDirectory
@@ -17,6 +29,8 @@ export const webDirectoryExampleDepartments = createStory(
       deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003"
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
+      filters={filters}
+      display={display}
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -33,6 +47,8 @@ export const webDirectoryExamplePeople = createStory(
       ids=",mdenke:1350,lhillzev:1353,jagarc50:1350"
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
+      filters={filters}
+      display={display}
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -49,6 +65,8 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
       ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
+      filters={filters}
+      display={display}
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
