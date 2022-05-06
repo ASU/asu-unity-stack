@@ -173,21 +173,31 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (datum, size = "small", titleMatch = null) => {
+export const staffConverter = (
+  datum,
+  options = {
+    size: "small",
+    titleMatch: null,
+    profileURLBase: null,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum, titleMatch);
+  const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
   // We guard against null asurite_id being returned from data source in some
   // instances by using a conditional render.
-
+  const profileURLBase = options.profileURLBase ?? "";
+  const safeAsuriteID = filledDatum.asurite_id.raw.length
+    ? filledDatum.asurite_id.raw.toString()
+    : null;
   return (
     <>
-      {filledDatum.asurite_id.raw.length ? (
+      {safeAsuriteID ? (
         <ProfileCard
           isRequired={false}
-          id={filledDatum.asurite_id.raw.toString()}
-          profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-          key={filledDatum.asurite_id.raw.toString()}
+          id={safeAsuriteID}
+          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
+          key={safeAsuriteID}
           imgURL={filledDatum.photo_url.raw}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
@@ -202,7 +212,7 @@ export const staffConverter = (datum, size = "small", titleMatch = null) => {
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
           website={filledDatum.website.raw}
-          size={size}
+          size={options.size}
           fill={false}
         />
       ) : null}

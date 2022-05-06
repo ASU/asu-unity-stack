@@ -39,7 +39,7 @@ const ProfileCard = ({ ...props }) => {
     <ProfileCardLayout
       className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
     >
-      <a href={`/profile/${props.id}`} className="profile-img-container">
+      <a href={props.profileURL} className="profile-img-container">
         <div
           className="profile-img-placeholder"
           style={{ backgroundImage: `url(${anonPic})` }}
@@ -54,7 +54,7 @@ const ProfileCard = ({ ...props }) => {
       </a>
       <div className="person">
         {props.profileURL && (
-          <a href={`/profile/${props.id}`}>
+          <a href={props.profileURL}>
             <span className="person-name">{props.name}</span>
           </a>
         )}
@@ -154,7 +154,7 @@ const ProfileCard = ({ ...props }) => {
         {props.size === "small" && (
           <a
             className="btn btn-maroon btn-md"
-            href={`/profile/${props.id}`}
+            href={props.profileURL}
             role="button"
           >
             View Profile

@@ -18,6 +18,7 @@ export const profileCardType = {
   fill: PropTypes.bool,
   anonymized: PropTypes.bool,
   GASource: PropTypes.string,
+  profileURL: PropTypes.string,
 };
 
 export const resultsShape = PropTypes.shape({
