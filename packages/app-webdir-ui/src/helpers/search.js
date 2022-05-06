@@ -100,7 +100,6 @@ export function performSearch({
   API_URL,
   searchApiVersion,
   profileURLBase,
-  usePager,
 }) {
   async function search(resolve) {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
@@ -140,7 +139,7 @@ export function performSearch({
           .join("&");
         query = `${query}&${asuriteIDParam}`;
       }
-      const extraFilterOptions = ["employee", "expertise", "title", "campuses"]
+      const extraFilterOptions = ["employee", "expertise", "title", "campuses"];
       extraFilterOptions.forEach(op => {
         if (filters[op] && filters[op].length > 0) {
           query = `${query}&${op}=${filters[op]}`;

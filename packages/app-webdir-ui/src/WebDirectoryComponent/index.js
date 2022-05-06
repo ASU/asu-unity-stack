@@ -46,7 +46,6 @@ function WebDirectory({
       filters: requestFilters,
       sort,
       profileURLBase: profileURLBaseOrDefault,
-      usePager: display.usePager === "1",
     };
     if (searchType === "departments") {
       requestFilters.deptIds = deptIds.split(",");
