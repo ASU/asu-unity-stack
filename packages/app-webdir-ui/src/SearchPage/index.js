@@ -47,6 +47,9 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   const [filters] = useState({});
   const [sort, setSort] = useState("_score_desc");
 
+  const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
+
+
   const tabIds = {
     all: "all",
     sites: "web_sites",
@@ -88,7 +91,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
         site: searchParams.get(siteParamName) || null,
         API_URL,
         searchApiVersion,
-        profileURLBase,
+        profileURLBase: profileURLBaseOrDefault,
       }).then(res => {
         if (tab === tabIds.all) {
           const total = Object.keys(tabIds).reduce(

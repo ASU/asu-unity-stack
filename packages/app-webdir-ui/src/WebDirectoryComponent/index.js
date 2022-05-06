@@ -21,6 +21,7 @@ function WebDirectory({
   const [sort, setSort] = useState(9);
   const [numResults, setNumResults] = useState(0);
   const [currPage, setCurrPage] = useState(1);
+  const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
@@ -43,7 +44,7 @@ function WebDirectory({
       API_URL,
       searchApiVersion,
       filters,
-      profileURLBase,
+      profileURLBase: profileURLBaseOrDefault,
     };
     if (searchType === "departments") {
       filters.deptIds = deptIds.split(",");
