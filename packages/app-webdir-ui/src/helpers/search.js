@@ -122,13 +122,11 @@ export function performSearch({
       if (site) {
         query = `${query}&url_host=${site}`;
       }
-      if (usePager) {
-        if (items) {
-          query = `${query}&size=${items}`;
-        }
-        if (page) {
-          query = `${query}&page=${page}`;
-        }
+      if (items) {
+        query = `${query}&size=${items}`;
+      }
+      if (page) {
+        query = `${query}&page=${page}`;
       }
       if (filters && filters.deptIds) {
         const deptIDParam = filters.deptIds

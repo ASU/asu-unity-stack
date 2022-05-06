@@ -113,6 +113,7 @@ function WebDirectory({
           isLoading={isLoading}
           onPageChange={page => doSearch(page)}
           size="large"
+          hidePager={display.usePager !== "1"}
         />
       </div>
     </WebDirLayout>

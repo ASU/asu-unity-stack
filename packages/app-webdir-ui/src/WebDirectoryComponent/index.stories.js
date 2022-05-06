@@ -14,7 +14,7 @@ const display = {
   defaultSort: "last_name",
   doNotDisplayProfiles: "",
   profilesPerPage: "20",
-  usePager: "0",
+  usePager: "1",
 };
 const filters = {
   employee: "",
