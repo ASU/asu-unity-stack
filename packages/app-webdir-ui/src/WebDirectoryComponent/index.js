@@ -98,7 +98,6 @@ function WebDirectory({ searchType, ids, deptIds, API_URL, searchApiVersion }) {
           resultsPerPage={RES_PER_PAGE}
           currentPage={currPage}
           isLoading={isLoading}
-          title="All faculty and staff results"
           onPageChange={page => doSearch(page)}
           size="large"
         />
