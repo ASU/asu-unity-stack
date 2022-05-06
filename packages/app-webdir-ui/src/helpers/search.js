@@ -161,7 +161,7 @@ export function performSearch({
           if (!auth && engines[dataKey].needsAuth) {
             const anonResults = new Array(items || 3)
               .fill(1)
-              .map((n, idx) => anonConverter(idx));
+              .map((n, idx) => anonConverter(idx, "micro"));
             results[dataKey] = {
               tab: dataKey,
               page: { current: 1, size: items, total_results: items },
@@ -170,11 +170,18 @@ export function performSearch({
             };
           } else {
             const topResult = getTopResult(res.data[dataKey].results);
+            let cardSize = "micro";
+            console.log({ dataKey });
+            if (
+              ["web_dir_faculty_staff", "web_dir_students"].includes(dataKey)
+            ) {
+              cardSize = "micro";
+            }
             results[dataKey] = {
               tab: dataKey,
               page: res.data[dataKey].meta.page,
               results: res.data[dataKey].results.map(result =>
-                engines[dataKey].converter(result)
+                engines[dataKey].converter(result, cardSize)
               ),
               topResult:
                 topResult === null
