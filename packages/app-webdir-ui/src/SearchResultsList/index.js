@@ -21,6 +21,7 @@ const ASUSearchResultsList = ({
   seeAllResultsText,
   fill,
   GASource,
+  hidePager,
 }) => {
   const [displayResults, setDisplayResults] = useState(1);
 
@@ -70,7 +71,7 @@ const ASUSearchResultsList = ({
             </div>
           )}
           <div className={summary ? "summary" : ""}>{displayResults}</div>
-          {size !== "micro" && !summary && (
+          {size !== "micro" && !summary && !hidePager && (
             <Pagination
               type="default"
               background="white"
@@ -132,6 +133,7 @@ ASUSearchResultsList.propTypes = {
   seeAllResultsText: PropTypes.string,
   fill: PropTypes.bool,
   GASource: PropTypes.string,
+  hidePager: PropTypes.bool,
 };
 
 export { ASUSearchResultsList };

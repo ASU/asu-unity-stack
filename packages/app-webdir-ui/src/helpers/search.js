@@ -139,6 +139,12 @@ export function performSearch({
           .join("&");
         query = `${query}&${asuriteIDParam}`;
       }
+      const extraFilterOptions = ["employee", "expertise", "title", "campuses"];
+      extraFilterOptions.forEach(op => {
+        if (filters[op] && filters[op].length > 0) {
+          query = `${query}&${op}=${filters[op]}`;
+        }
+      });
       APICall = () => axios.get(query);
     } else {
       const tokenResponse = await axios.get(`${API_URL}session/token`);
