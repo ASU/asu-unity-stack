@@ -100,6 +100,7 @@ export function performSearch({
   API_URL,
   searchApiVersion,
   profileURLBase,
+  usePager,
 }) {
   async function search(resolve) {
     const currentSort = engines[tab].supportedSortTypes.includes(sort)
@@ -121,11 +122,13 @@ export function performSearch({
       if (site) {
         query = `${query}&url_host=${site}`;
       }
-      if (items) {
-        query = `${query}&size=${items}`;
-      }
-      if (page) {
-        query = `${query}&page=${page}`;
+      if (usePager) {
+        if (items) {
+          query = `${query}&size=${items}`;
+        }
+        if (page) {
+          query = `${query}&page=${page}`;
+        }
       }
       if (filters && filters.deptIds) {
         const deptIDParam = filters.deptIds
@@ -139,6 +142,12 @@ export function performSearch({
           .join("&");
         query = `${query}&${asuriteIDParam}`;
       }
+      const extraFilterOptions = ["employee", "expertise", "title", "campuses"]
+      extraFilterOptions.forEach(op => {
+        if (filters[op] && filters[op].length > 0) {
+          query = `${query}&${op}=${filters[op]}`;
+        }
+      });
       APICall = () => axios.get(query);
     } else {
       const tokenResponse = await axios.get(`${API_URL}session/token`);

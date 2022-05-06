@@ -14,12 +14,13 @@ const display = {
   defaultSort: "last_name",
   doNotDisplayProfiles: "",
   profilesPerPage: "20",
-  usePager: "1",
+  usePager: "0",
 };
 const filters = {
   employee: "",
   expertise: "",
   title: "",
+  campuses: "",
 };
 
 export const webDirectoryExampleDepartments = createStory(
