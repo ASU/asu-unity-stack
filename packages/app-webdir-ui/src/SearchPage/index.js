@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { Button, TabbedPanels, Tab } from "../../../components-core";
 import { trackGAEvent } from "../core/services/googleAnalytics";
-import { performSearch } from "../helpers/search";
+import { engineNames } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
 import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
