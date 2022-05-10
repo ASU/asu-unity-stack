@@ -173,31 +173,21 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (
-  datum,
-  options = {
-    size: "small",
-    titleMatch: null,
-    profileURLBase: null,
-  }
-) => {
+export const staffConverter = (datum, size = "small", titleMatch = null) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum, options.titleMatch);
+  const titles = getTitleFromProfile(filledDatum, titleMatch);
 
   // We guard against null asurite_id being returned from data source in some
   // instances by using a conditional render.
-  const profileURLBase = options.profileURLBase ?? "";
-  const safeAsuriteID = filledDatum.asurite_id.raw.length
-    ? filledDatum.asurite_id.raw.toString()
-    : null;
+
   return (
     <>
-      {safeAsuriteID ? (
+      {filledDatum.asurite_id.raw.length ? (
         <ProfileCard
           isRequired={false}
-          id={safeAsuriteID}
-          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
-          key={safeAsuriteID}
+          id={filledDatum.asurite_id.raw.toString()}
+          profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
+          key={filledDatum.asurite_id.raw.toString()}
           imgURL={filledDatum.photo_url.raw}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
@@ -212,7 +202,7 @@ export const staffConverter = (
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
           website={filledDatum.website.raw}
-          size={options.size}
+          size={size}
           fill={false}
         />
       ) : null}
@@ -240,7 +230,7 @@ export const studentsConverter = (datum, size = "small") => {
       linkedinLink={filledDatum.linkedin.raw}
       twitterLink={filledDatum.twitter.raw}
       size={size}
-      fill
+      fill={false}
     />
   );
 };
@@ -291,7 +281,7 @@ export const subdomainConverter = (datum, size = "small") => {
       ]}
       link={filledDatum.url.raw}
       size={size}
-      fill
+      fill={false}
     />
   );
 };
