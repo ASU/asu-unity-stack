@@ -32,24 +32,19 @@ SearchResultsMessage.propTypes = {
 };
 
 function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
+
+  const engineParams = {
+    filters,
+    API_URL,
+    searchApiVersion,
+    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+  };
+
   const sortOptions = [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
   ];
-  const resultsPerPage = 6;
-  const [term, setTerm] = useState("");
-  const [numResults, setNumResults] = useState(0);
-  const [results, setResults] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [site, setSite] = useState();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [filters] = useState({});
-  const [sort, setSort] = useState("_score_desc");
-
-  const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
-
-
   const tabIds = {
     all: "all",
     sites: "web_sites",
@@ -62,6 +57,21 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   const sortParamName = "sort-by";
   const siteParamName = "url_host";
 
+  const itemsPerPage = 6;
+  const [term, setTerm] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [numResults, setNumResults] = useState(0);
+  const [results, setResults] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filters] = useState({});
+  const [sort, setSort] = useState("_score_desc");
+  const [site, setSite] = useState(null);
+
+  const facultyEngine = { ...engines[engineNames.FACULTY], ...engineParams};
+  const studentsEngine = { ...engines[engineNames.STUDENTS], ...engineParams};
+  const localSiteEngine = { ...engines[engineNames.SITES_LOCAL], ...engineParams, ...{ site }};
+  const sitesEngine = { ...engines[engineNames.SITES], ...engineParams};
+
   const updateSearchParams = (param, newValue) => {
     const newParams = {};
     // eslint-disable-next-line no-restricted-syntax
@@ -73,64 +83,8 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
     setSearchParams(newParams);
   };
 
-  const updateContent = (tab, page = 1, limitUpdateTo = null) => {
-    const searchFor = searchParams.get(queryParamName);
-    if (searchFor && searchFor.length > 0 && tab) {
-      if (!limitUpdateTo) {
-        setIsLoading(true);
-      }
-      const toSearch = limitUpdateTo || tab;
-      performSearch({
-        tab: toSearch,
-        term: searchFor,
-        page,
-        items: resultsPerPage,
-        auth: null,
-        sort,
-        filters,
-        site: searchParams.get(siteParamName) || null,
-        API_URL,
-        searchApiVersion,
-        profileURLBase: profileURLBaseOrDefault,
-      }).then(res => {
-        if (tab === tabIds.all) {
-          const total = Object.keys(tabIds).reduce(
-            (prev, curr) =>
-              res[tabIds[curr]]
-                ? prev + res[tabIds[curr]].page.total_results
-                : 0,
-            0
-          );
-          setNumResults(total);
-        } else {
-          setNumResults(res.page.total_results);
-        }
-        if (limitUpdateTo) {
-          const current = { ...results };
-          current[res.tab] = res;
-          setResults(current);
-        } else {
-          setResults(res);
-        }
-        setIsLoading(false);
-      });
-      trackGAEvent({
-        event: "search",
-        action: "type",
-        name: "onenter",
-        type: "search asu.edu",
-        section: "search",
-        text: term,
-      });
-    }
-  };
-
-  const doSearch = () => {
-    updateSearchParams(queryParamName, term);
-  };
-
   useEffect(() => {
-    if (searchParams.get(siteParamName)) {
+    if(searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
     }
     if (searchParams.get(sortParamName)) {
@@ -141,7 +95,6 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
     if (searchParams.get(queryParamName)) {
       setTerm(searchParams.get(queryParamName));
     }
-    updateContent(searchParams.get(searchTabsId));
   }, [searchParams]);
 
   const getSortEventText = () => {
@@ -152,6 +105,10 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
       text = "Sort by Relevancy";
     }
     return text;
+  };
+
+  const tabChange = tab => {
+
   };
 
   const openSort = () => {
@@ -178,16 +135,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
     });
   };
 
-  const pageChange = (page, limitUpdateTo = null) => {
-    updateContent(searchParams.get(searchTabsId), page, limitUpdateTo);
-  };
-
-  const tabChange = tab => {
-    updateContent(tab);
-  };
-
   const goToTab = tab => {
-    updateContent(tab);
     updateSearchParams(searchTabsId, tab);
   };
 
@@ -198,15 +146,15 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
     }
   };
 
+  const doSearch = () => {
+    if(searchValue.length > 0){
+      updateSearchParams(queryParamName, searchValue);
+    }
+  }
+
   const preSearchOrContent = content => {
-    if (isLoading) {
-      return <div>Loading...</div>;
-    }
-    if (!results) {
-      return <PreSearchMessage />;
-    }
-    return content;
-  };
+    return term.length === 0 ? <SearchResultsMessage /> : content;
+  }
 
   return (
     <SearchPageLayout>
@@ -221,8 +169,8 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
               className="form-control"
               id="search-input"
               placeholder="Search asu.edu"
-              value={term}
-              onChange={e => setTerm(e.target.value)}
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
               onKeyDown={inputKeyPress}
             />
             <div className="desktop-button">
@@ -280,31 +228,26 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
                   {site && (
                     <div className="subdomain-results all-content-item">
                       <ASUSearchResultsList
-                        results={results?.web_sites_local?.results}
-                        totalResults={
-                          results?.web_sites_local?.page.total_results
-                        }
-                        resultsPerPage={6}
-                        isLoading={isLoading}
-                        title={`All results from ${site}`}
-                        summary
+                        engine={localSiteEngine}
+                        term={term}
+                        type="preview"
+                        itemsPerPage={6}
+                        titleText={`All results from ${site}`}
+                        numResultsText="Results found: {totalResults}"
                         seeAllResultsText={`See all results from ${site}`}
-                        showNumResults
                         onExpandClick={() => goToTab(tabIds.sites)}
                         GASource={`all results from ${site}`}
+                        hidePaginator
                       />
                     </div>
                   )}
                   <div className="all-results all-content-item">
                     <ASUSearchResultsList
-                      results={results?.web_sites?.results}
-                      totalResults={results?.web_sites?.page.total_results}
-                      resultsPerPage={6}
-                      isLoading={isLoading}
-                      title="All asu.edu results"
-                      showNumResults
-                      onPageChange={page => pageChange(page, tabIds.sites)}
-                      currentPage={results?.web_sites?.page?.current}
+                      engine={sitesEngine}
+                      term={term}
+                      type="full"
+                      itemsPerPage={6}
+                      titleText="All asu.edu results"
                       GASource="all asu.edu results"
                     />
                   </div>
@@ -312,40 +255,29 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
                 <div className="all-content-column">
                   <div className="faculty-and-staff all-content-item">
                     <ASUSearchResultsList
-                      results={results?.web_dir_faculty_staff?.results.slice(
-                        0,
-                        3
-                      )}
-                      totalResults={
-                        results?.web_dir_faculty_staff?.page.total_results
-                      }
-                      resultsPerPage={3}
-                      isLoading={isLoading}
-                      title="Faculty and staff"
-                      size="micro"
-                      summary
+                      engine={facultyEngine}
+                      term={term}
+                      itemsPerPage={3}
+                      titleText="Faculty and staff"
+                      type="micro"
                       seeAllResultsText="See all results"
-                      showNumResults
                       onExpandClick={() => goToTab(tabIds.faculty)}
                       GASource="faculty and staff"
+                      hidePaginator
                     />
                   </div>
                   {results?.web_dir_students?.results?.length > 0 && (
                     <div className="students all-content-item">
                       <ASUSearchResultsList
-                        results={results?.web_dir_students?.results.slice(0, 3)}
-                        totalResults={
-                          results?.web_dir_students?.page.total_results
-                        }
-                        resultsPerPage={3}
-                        isLoading={isLoading}
-                        title="Students"
-                        size="micro"
-                        summary
+                        engine={facultyEngine}
+                        term={term}
+                        itemsPerPage={3}
+                        titleText="Students"
+                        type="micro"
                         seeAllResultsText="See all results"
-                        anonymized
-                        onExpandClick={() => goToTab(tabIds.students)}
+                        onExpandClick={() => goToTab(tabIds.faculty)}
                         GASource="students"
+                        hidePaginator
                       />
                     </div>
                   )}
@@ -367,13 +299,12 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
                   tabText={site}
                 />
                 <ASUSearchResultsList
-                  results={results?.results}
-                  totalResults={numResults}
-                  resultsPerPage={6}
-                  isLoading={isLoading}
-                  title={site}
-                  onPageChange={pageChange}
+                  engine={sitesEngine}
+                  term={term}
+                  itemsPerPage={6}
+                  type="full"
                   GASource={site}
+                  titleText={site}
                 />
               </div>
             )}
@@ -387,40 +318,34 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
                 numResults={numResults}
                 tabText="Faculty and staff"
               />
-              {numResults > 0 && (
-                <form className="uds-form sort-form faculty-sort">
-                  <div className="form-group">
-                    <label htmlFor="sortBySelect">Sort by</label>
-                    <select
-                      className="form-control"
-                      id="sortBySelect"
-                      value={sort}
-                      onChange={event => updateSort(event.target.value)}
-                      onClick={openSort}
-                    >
-                      {results?.results?.length > 0 &&
-                        sortOptions.map(op => (
-                          <option key={op.value} value={op.value}>
-                            {op.label === "Relevancy"
-                              ? "Sort by Relevancy"
-                              : op.label}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                </form>
-              )}
+              <form className="uds-form sort-form faculty-sort">
+                <div className="form-group">
+                  <label htmlFor="sortBySelect">Sort by</label>
+                  <select
+                    className="form-control"
+                    id="sortBySelect"
+                    value={sort}
+                    onChange={event => updateSort(event.target.value)}
+                    onClick={openSort}
+                  >
+                    {results?.results?.length > 0 &&
+                      sortOptions.map(op => (
+                        <option key={op.value} value={op.value}>
+                          {op.label === "Relevancy"
+                            ? "Sort by Relevancy"
+                            : op.label}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+              </form>
               <ASUSearchResultsList
-                results={results?.results}
-                totalResults={numResults}
-                resultsPerPage={6}
-                currentPage={results?.page?.current}
-                isLoading={isLoading}
-                title="All faculty and staff results"
-                onPageChange={pageChange}
-                size="large"
+                term={term}
+                engine={facultyEngine}
+                itemsPerPage={6}
+                type="full"
                 GASource="all faculty and staff results"
-                className="faculty-results"
+                titleText="All faculty and staff results"
               />
             </div>
           )}
@@ -434,15 +359,12 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
                 tabText="Students"
               />
               <ASUSearchResultsList
-                results={results?.results}
-                totalResults={numResults}
-                resultsPerPage={6}
-                currentPage={results?.page?.current}
-                isLoading={isLoading}
-                title="All Student results"
-                onPageChange={pageChange}
-                size="large"
+                term={term}
+                engine={facultyEngine}
+                itemsPerPage={6}
+                type="full"
                 GASource="all student results"
+                titleText="All Student results"
               />
             </div>
           )}
