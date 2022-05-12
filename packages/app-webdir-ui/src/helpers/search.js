@@ -7,8 +7,6 @@ import {
 
 const axios = require("axios");
 
-export const engines = {};
-
 export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
@@ -77,75 +75,81 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
   };
 };
 
-engines[engineNames.FACULTY] = {
-  name: engineNames.FACULTY,
-  url: `webdir-profiles/faculty-staff`,
-  needsAuth: false,
-  converter: staffConverter,
-  resultsPerSummaryPage: 3,
-  supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
-  method: "GET",
-  formatter: (results, cardSize) =>
-    standardFormatter(engineNames.FACULTY, results, cardSize),
-};
-engines[engineNames.STUDENTS] = {
-  name: engineNames.STUDENTS,
-  url: `webdir-profiles/students`,
-  needsAuth: true,
-  converter: studentsConverter,
-  resultsPerSummaryPage: 3,
-  supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
-  method: "GET",
-  formatter: (results, cardSize) =>
-    standardFormatter(engineNames.STUDENTS, results, cardSize),
-};
-engines[engineNames.SITES] = {
-  name: engineNames.SITES,
-  url: `webdir-search/web`,
-  needsAuth: false,
-  converter: subdomainConverter,
-  resultsPerSummaryPage: 6,
-  supportedSortTypes: ["_score_desc", "date_desc"],
-  method: "GET",
-  formatter: (results, cardSize) =>
-    standardFormatter(engineNames.SITES, results, cardSize),
-};
-engines[engineNames.SITES_LOCAL] = {
-  name: engineNames.SITES_LOCAL,
-  url: `webdir-search/web`,
-  needsAuth: false,
-  converter: subdomainConverter,
-  resultsPerSummaryPage: 6,
-  supportedSortTypes: ["_score_desc", "date_desc"],
-  method: "GET",
-  formatter: (results, cardSize) =>
-    standardFormatter(engineNames.SITES_LOCAL, results, cardSize),
-};
-engines[engineNames.WEB_DIRECTORY_DEPARTMENTS] = {
-  name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
-  url: `webdir-departments/profiles`,
-  needsAuth: false,
-  converter: staffConverter,
-  resultsPerSummaryPage: 6,
-  supportedSortTypes: ["_score_desc", "last_name_desc"],
-  method: "GET",
-  formatter: (results, cardSize) =>
-    standardFormatter(engineNames.WEB_DIRECTORY_DEPARTMENTS, results, cardSize),
-};
-[engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS] = {
-  name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
-  url: `webdir-profiles/department`,
-  needsAuth: false,
-  converter: staffConverter,
-  resultsPerSummaryPage: 6,
-  supportedSortTypes: ["_score_desc", "last_name_desc"],
-  method: "POST",
-  formatter: (results, cardSize) =>
-    standardFormatter(
-      engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
-      results,
-      cardSize
-    ),
+export const engines = {
+  [engineNames.FACULTY]: {
+    name: engineNames.FACULTY,
+    url: `webdir-profiles/faculty-staff`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 3,
+    supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
+    method: "GET",
+    formatter: (results, cardSize) =>
+      standardFormatter(engineNames.FACULTY, results, cardSize),
+  },
+  [engineNames.STUDENTS]: {
+    name: engineNames.STUDENTS,
+    url: `webdir-profiles/students`,
+    needsAuth: true,
+    converter: studentsConverter,
+    resultsPerSummaryPage: 3,
+    supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
+    method: "GET",
+    formatter: (results, cardSize) =>
+      standardFormatter(engineNames.STUDENTS, results, cardSize),
+  },
+  [engineNames.SITES]: {
+    name: engineNames.SITES,
+    url: `webdir-search/web`,
+    needsAuth: false,
+    converter: subdomainConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc", "date_desc"],
+    method: "GET",
+    formatter: (results, cardSize) =>
+      standardFormatter(engineNames.SITES, results, cardSize),
+  },
+  [engineNames.SITES_LOCAL]: {
+    name: engineNames.SITES_LOCAL,
+    url: `webdir-search/web`,
+    needsAuth: false,
+    converter: subdomainConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc", "date_desc"],
+    method: "GET",
+    formatter: (results, cardSize) =>
+      standardFormatter(engineNames.SITES_LOCAL, results, cardSize),
+  },
+  [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
+    name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
+    url: `webdir-departments/profiles`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc", "last_name_desc"],
+    method: "GET",
+    formatter: (results, cardSize) =>
+      standardFormatter(
+        engineNames.WEB_DIRECTORY_DEPARTMENTS,
+        results,
+        cardSize
+      ),
+  },
+  [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
+    name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+    url: `webdir-profiles/department`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["_score_desc", "last_name_desc"],
+    method: "POST",
+    formatter: (results, cardSize) =>
+      standardFormatter(
+        engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+        results,
+        cardSize
+      ),
+  },
 };
 
 export const performSearch = function ({
@@ -157,6 +161,7 @@ export const performSearch = function ({
   filters,
 }) {
   async function search(resolve) {
+    console.log(1);
     const currentSort = engine.supportedSortTypes.includes(sort)
       ? sort
       : "_score_desc";
@@ -166,6 +171,7 @@ export const performSearch = function ({
       : "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
     let query = `${searchURLOrDefault}${engine.url}`;
+    console.log(2);
 
     let APICall = null;
     if (engine.method === "GET") {
@@ -206,6 +212,7 @@ export const performSearch = function ({
       };
       APICall = () => axios.post(query, data, { headers });
     }
+    console.log(3);
 
     APICall().then(res => {
       // engine.inFlight = false;
