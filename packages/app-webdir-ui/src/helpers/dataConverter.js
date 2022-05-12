@@ -246,7 +246,12 @@ export const studentsConverter = (datum, size = "small") => {
   );
 };
 
-export const anonConverter = (datum, size = "small") => {
+export const anonConverter = (
+  datum,
+  options = {
+    size: "small",
+  }
+) => {
   return (
     <ProfileCard
       isRequired={false}
@@ -264,7 +269,7 @@ export const anonConverter = (datum, size = "small") => {
       facebookLink=""
       linkedinLink=""
       twitterLink=""
-      size={size}
+      size={options.size}
     />
   );
 };

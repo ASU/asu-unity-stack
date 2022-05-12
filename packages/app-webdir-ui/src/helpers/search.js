@@ -46,6 +46,20 @@ const standardFormatter = (engineName, results, cardSize) => {
   };
 };
 
+export const anonFormatter = (engineName, numResults, cardSize) => {
+  const anonResults = new Array(numResults || 3)
+    .fill(1)
+    .map((n, idx) => anonConverter(idx, cardSize));
+  return {
+    tab: engineName,
+    page: 1,
+    results: anonResults.map(result =>
+      anonConverter(result, { size: cardSize, fill: false })
+    ),
+    topResult: null,
+  };
+};
+
 const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
   let localResults = null;
   let localPage = 1;
@@ -86,6 +100,7 @@ export const engines = {
     method: "GET",
     formatter: (results, cardSize) =>
       standardFormatter(engineNames.FACULTY, results, cardSize),
+    needsTerm: true,
   },
   [engineNames.STUDENTS]: {
     name: engineNames.STUDENTS,
@@ -97,6 +112,7 @@ export const engines = {
     method: "GET",
     formatter: (results, cardSize) =>
       standardFormatter(engineNames.STUDENTS, results, cardSize),
+    needsTerm: true,
   },
   [engineNames.SITES]: {
     name: engineNames.SITES,
@@ -108,6 +124,7 @@ export const engines = {
     method: "GET",
     formatter: (results, cardSize) =>
       standardFormatter(engineNames.SITES, results, cardSize),
+    needsTerm: true,
   },
   [engineNames.SITES_LOCAL]: {
     name: engineNames.SITES_LOCAL,
@@ -119,6 +136,7 @@ export const engines = {
     method: "GET",
     formatter: (results, cardSize) =>
       standardFormatter(engineNames.SITES_LOCAL, results, cardSize),
+    needsTerm: true,
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
@@ -128,12 +146,14 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize) =>
-      standardFormatter(
+    formatter: (results, cardSize, filters) =>
+      webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
-        cardSize
+        cardSize,
+        filters
       ),
+    needsTerm: false,
   },
   [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
     name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
@@ -143,12 +163,14 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc"],
     method: "POST",
-    formatter: (results, cardSize) =>
-      standardFormatter(
+    formatter: (results, cardSize, filters) =>
+      webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
         results,
-        cardSize
+        cardSize,
+        filters
       ),
+    needsTerm: false,
   },
 };
 
@@ -160,8 +182,7 @@ export const performSearch = function ({
   sort,
   filters,
 }) {
-  async function search(resolve) {
-    console.log(1);
+  async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort)
       ? sort
       : "_score_desc";
@@ -171,7 +192,6 @@ export const performSearch = function ({
       : "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
     let query = `${searchURLOrDefault}${engine.url}`;
-    console.log(2);
 
     let APICall = null;
     if (engine.method === "GET") {
@@ -202,6 +222,9 @@ export const performSearch = function ({
       }
       APICall = () => axios.get(query);
     } else {
+      if (!filters) {
+        return;
+      }
       const tokenResponse = await axios.get(`${engine.API_URL}session/token`);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
@@ -212,14 +235,19 @@ export const performSearch = function ({
       };
       APICall = () => axios.post(query, data, { headers });
     }
-    console.log(3);
 
-    APICall().then(res => {
-      // engine.inFlight = false;
-      // engine.abortController = null;
+    APICall()
+      .then(res => {
+        // engine.inFlight = false;
+        // engine.abortController = null;
 
-      resolve(res.data);
-    });
+        resolve(res.data);
+      })
+      .catch(err => {
+        if (err.response.status === 403) {
+          reject(403);
+        }
+      });
   }
   return new Promise(search);
 };

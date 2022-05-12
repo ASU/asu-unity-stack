@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { performSearch, engineNames } from "../helpers/search";
+import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
@@ -16,18 +16,35 @@ function WebDirectory({
   display,
   filters,
 }) {
+  const engineParams = {
+    filters,
+    API_URL,
+    searchApiVersion,
+    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+  };
+  const enginesWithParams = {
+    [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
+      ...engines[engineNames.WEB_DIRECTORY_DEPARTMENTS],
+      ...engineParams,
+    },
+    [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
+      ...engines[engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS],
+      ...engineParams,
+    },
+    [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
+      ...engines[engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS],
+      ...engineParams,
+    },
+  };
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
-  const [results, setResults] = useState([]);
-  const [numResults, setNumResults] = useState(0);
-  const [currPage, setCurrPage] = useState(1);
-  const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
+  const [sort, setSort] = useState();
+  const [requestFilters, setRequestFilters] = useState();
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
   };
 
-  const isLoading = false;
   const RES_PER_PAGE = 6;
 
   const searchTypeEngineMap = {
@@ -35,22 +52,12 @@ function WebDirectory({
     people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
     people_departments: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
   };
-  function doSearch(sort) {
-    const requestFilters = { ...filters };
-    const params = {
-      tab: searchTypeEngineMap[searchType],
-      page: 1,
-      items: display.profilesPerPage,
-      API_URL,
-      searchApiVersion,
-      filters: requestFilters,
-      sort,
-      profileURLBase: profileURLBaseOrDefault,
-    };
+  function doSearch() {
+    const tempFilters = { ...filters };
     if (searchType === "departments") {
-      requestFilters.deptIds = deptIds.split(",");
+      tempFilters["deptIds"] = deptIds.split(",");
     } else {
-      requestFilters.peopleInDepts = ids
+      tempFilters["peopleInDepts"] = ids
         .split(",")
         .filter(id => id.includes(":"))
         .map(pair => pair.split(":"))
@@ -58,11 +65,7 @@ function WebDirectory({
           return { asurite_id: pair[0], dept_id: pair[1] };
         });
     }
-    performSearch(params).then(res => {
-      setCurrPage(res.page.current);
-      setNumResults(res.page.total_results);
-      setResults(res.results);
-    });
+    setRequestFilters(tempFilters);
   }
 
   const handleKeyPressSort = (event, val) => {
@@ -72,11 +75,9 @@ function WebDirectory({
   };
 
   useEffect(() => {
-    setNewSort(display.defaultSort || "last_name_desc");
-  }, []);
-
-  useEffect(() => {
-    doSearch(searchParams.get(sortParamName));
+    if ((searchType === "departments" && deptIds) || ids) {
+      doSearch();
+    }
   }, [searchParams]);
 
   return (
@@ -105,14 +106,14 @@ function WebDirectory({
       </div>
       <div className="results">
         <ASUSearchResultsList
-          results={results}
-          totalResults={numResults}
-          resultsPerPage={RES_PER_PAGE}
-          currentPage={currPage}
-          isLoading={isLoading}
+          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
+          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
           onPageChange={page => doSearch(page)}
           size="large"
-          hidePager={display.usePager !== "1"}
+          sort={searchParams.get(sortParamName)}
+          titleText="All faculty and staff results"
+          hidePaginator={display.usePager !== "1"}
+          filters={requestFilters}
         />
       </div>
     </WebDirLayout>

@@ -154,7 +154,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
           </div>
         )}
       </div>
-      <TabbedPanels id={searchTabsId}>
+      <TabbedPanels id={searchTabsId} onTabChange={() => true}>
         <Tab id={tabIds.all} title="All ASU search">
           {preSearchOrContent(
             <AllTab

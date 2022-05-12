@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
 import { trackGAEvent } from "../core/services/googleAnalytics";
-import { performSearch } from "../helpers/search";
+import { performSearch, anonFormatter } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
@@ -25,61 +25,75 @@ const ASUSearchResultsList = ({
   setPromotedResult,
   hidePaginator,
   registerResults,
+  filters,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [subtitle, setSubtitle] = useState(null);
   const [currentPage, setCurrentPage] = useState(null);
   const [totalResults, setTotalResults] = useState(null);
+  const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
 
   const doSearch = (page = currentPage) => {
-    if (term && term.length > 0) {
+    if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
 
-      performSearch({ engine, term, page, itemsPerPage, sort }).then(res => {
-        const formattedResults = engine.formatter(res, cardSize);
-        if (registerResults) {
-          registerResults(formattedResults.page.total_results);
-        }
-        setCurrentPage(formattedResults.page.current);
-        setTotalResults(formattedResults.page.total_results);
-        const resultsWithProps = formattedResults.results.map(
-          (profile, idx) => {
-            const newProps = {
-              ...profile.props,
-              ...{ key: idx, GASource },
-            };
-            return {
-              ...profile,
-              ...{ props: newProps },
-            };
+      performSearch({ engine, term, page, itemsPerPage, sort, filters })
+        .then(res => {
+          const formattedResults = engine.formatter(res, cardSize, filters);
+          if (registerResults) {
+            registerResults(formattedResults.page.total_results);
           }
-        );
-        if (setPromotedResult) {
-          setPromotedResult(formattedResults.topResult);
-        }
-        setResults(resultsWithProps);
-        if (showSearchMessage) {
-          setSubtitle(
-            <SearchMessage
-              term={term}
-              number={formattedResults.page.total_results}
-            />
+          setCurrentPage(formattedResults.page.current);
+          setTotalResults(formattedResults.page.total_results);
+          const resultsWithProps = formattedResults.results.map(
+            (profile, idx) => {
+              const newProps = {
+                ...profile.props,
+                ...{ key: idx, GASource },
+              };
+              return {
+                ...profile,
+                ...{ props: newProps },
+              };
+            }
           );
-        } else {
-          setSubtitle(`Results found: ${formattedResults.page.total_results}`);
-        }
-        setIsLoading(false);
-        trackGAEvent({
-          event: "search",
-          action: "type",
-          name: "onenter",
-          type: "search asu.edu",
-          section: "search",
-          text: term,
+          if (setPromotedResult) {
+            setPromotedResult(formattedResults.topResult);
+          }
+          setResults(resultsWithProps);
+          if (showSearchMessage) {
+            setSubtitle(
+              <SearchMessage
+                term={term}
+                number={formattedResults.page.total_results}
+              />
+            );
+          } else {
+            setSubtitle(
+              `Results found: ${formattedResults.page.total_results}`
+            );
+          }
+          setIsLoading(false);
+          trackGAEvent({
+            event: "search",
+            action: "type",
+            name: "onenter",
+            type: "search asu.edu",
+            section: "search",
+            text: term,
+          });
+        })
+        .catch(err => {
+          if (err === 403) {
+            setResults(anonFormatter(itemsPerPage));
+            setCurrentPage(1);
+            setTotalResults("unknown");
+            setIsLoading(false);
+            setIsAnon(true);
+          }
         });
-      });
     }
   };
 
@@ -90,7 +104,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch();
-  }, [term, sort]);
+  }, [term, sort, filters]);
 
   function expandClick(text) {
     trackGAEvent({
@@ -126,7 +140,7 @@ const ASUSearchResultsList = ({
             </div>
           )}
           {results.length > 0 && <div className="results-found">{results}</div>}
-          {!hidePaginator && (
+          {!hidePaginator && !isAnon && (
             <Pagination
               type="default"
               background="white"
@@ -166,6 +180,8 @@ ASUSearchResultsList.propTypes = {
   setPromotedResult: PropTypes.func,
   hidePaginator: PropTypes.bool,
   registerResults: PropTypes.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  filters: PropTypes.object,
 };
 
 export { ASUSearchResultsList };
