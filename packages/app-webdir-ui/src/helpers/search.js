@@ -158,102 +158,116 @@ export function performSearch({
       APICall = () => axios.post(query, data, { headers });
     }
 
-    APICall().then(res => {
-      engines[tab].inFlight = false;
-      engines[tab].abortController = null;
+    APICall()
+      .then(res => {
+        engines[tab].inFlight = false;
+        engines[tab].abortController = null;
 
-      if (tab === engineNames.ALL) {
-        const results = {};
-        Object.keys(res.data).forEach(dataKey => {
-          if (!auth && engines[dataKey].needsAuth) {
-            const anonResults = new Array(items || 3)
-              .fill(1)
-              .map((n, idx) => anonConverter(idx, "micro"));
-            results[dataKey] = {
-              tab: dataKey,
-              page: { current: 1, size: items, total_results: items },
-              results: anonResults,
-              topResult: null,
-            };
-          } else {
-            const topResult = getTopResult(res.data[dataKey].results);
-            let cardSize = "micro";
-            if (
-              ["web_dir_faculty_staff", "web_dir_students"].includes(dataKey)
-            ) {
-              cardSize = "micro";
+        if (tab === engineNames.ALL) {
+          const results = {};
+          Object.keys(res.data).forEach(dataKey => {
+            if (!auth && engines[dataKey].needsAuth) {
+              const anonResults = new Array(items || 3)
+                .fill(1)
+                .map((n, idx) => anonConverter(idx, "micro"));
+              results[dataKey] = {
+                tab: dataKey,
+                page: { current: 1, size: items, total_results: items },
+                results: anonResults,
+                topResult: null,
+              };
+            } else {
+              const topResult = getTopResult(res.data[dataKey].results);
+              let cardSize = "micro";
+              if (
+                ["web_dir_faculty_staff", "web_dir_students"].includes(dataKey)
+              ) {
+                cardSize = "micro";
+              }
+              results[dataKey] = {
+                tab: dataKey,
+                page: res.data[dataKey].meta.page,
+                results: res.data[dataKey].results.map(result =>
+                  engines[dataKey].converter(result, {
+                    size: cardSize,
+                    profileURLBase,
+                  })
+                ),
+                topResult:
+                  topResult === null
+                    ? topResult
+                    : engines[dataKey].converter(topResult, {
+                        size: "small",
+                        profileURLBase,
+                      }),
+              };
             }
-            results[dataKey] = {
-              tab: dataKey,
-              page: res.data[dataKey].meta.page,
-              results: res.data[dataKey].results.map(result =>
-                engines[dataKey].converter(result, {
-                  size: cardSize,
-                  profileURLBase,
-                })
-              ),
-              topResult:
-                topResult === null
-                  ? topResult
-                  : engines[dataKey].converter(topResult, {
-                      size: "small",
-                      profileURLBase,
-                    }),
-            };
+          });
+          resolve(results);
+        } else if (
+          [
+            engineNames.WEB_DIRECTORY_DEPARTMENTS,
+            engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+          ].includes(tab)
+        ) {
+          let localResults = null;
+          let localPage = 1;
+          if (tab === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
+            localResults = res.data.map(datum => {
+              // eslint-disable-next-line camelcase
+              const { full_record, ...basicFields } = datum;
+              // eslint-disable-next-line camelcase
+              return { ...basicFields, ...full_record };
+            });
+          } else {
+            localResults = res.data.results;
+            localPage = res.data.meta.page;
           }
-        });
-        resolve(results);
-      } else if (
-        [
-          engineNames.WEB_DIRECTORY_DEPARTMENTS,
-          engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
-        ].includes(tab)
-      ) {
-        let localResults = null;
-        let localPage = 1;
-        if (tab === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
-          localResults = res.data.map(datum => {
-            // eslint-disable-next-line camelcase
-            const { full_record, ...basicFields } = datum;
-            // eslint-disable-next-line camelcase
-            return { ...basicFields, ...full_record };
+          if (filters.peopleIds) {
+            localResults = localResults.filter(r => {
+              return filters.peopleIds.includes(r.asurite_id.raw);
+            });
+          }
+          // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
+          // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
+          const titleMatch = filters.peopleInDepts
+            ? { peopleInDeps: filters.peopleInDepts }
+            : { depts: filters.deptIds };
+
+          resolve({
+            tab,
+            page: localPage,
+            results: localResults.map(result =>
+              engines[tab].converter(result, {
+                size: "large",
+                titleMatch,
+                profileURLBase,
+              })
+            ),
           });
         } else {
-          localResults = res.data.results;
-          localPage = res.data.meta.page;
-        }
-        if (filters.peopleIds) {
-          localResults = localResults.filter(r => {
-            return filters.peopleIds.includes(r.asurite_id.raw);
+          resolve({
+            tab,
+            page: res.data.meta.page,
+            results: res.data.results.map(result =>
+              engines[tab].converter(result, { size: "large", profileURLBase })
+            ),
           });
         }
-        // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
-        // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
-        const titleMatch = filters.peopleInDepts
-          ? { peopleInDeps: filters.peopleInDepts }
-          : { depts: filters.deptIds };
-
-        resolve({
-          tab,
-          page: localPage,
-          results: localResults.map(result =>
-            engines[tab].converter(result, {
-              size: "large",
-              titleMatch,
-              profileURLBase,
-            })
-          ),
-        });
-      } else {
-        resolve({
-          tab,
-          page: res.data.meta.page,
-          results: res.data.results.map(result =>
-            engines[tab].converter(result, { size: "large", profileURLBase })
-          ),
-        });
-      }
-    });
+      })
+      .catch(err => {
+        if (err.response.status === 403) {
+          const anonResults = new Array(items || 3)
+            .fill(1)
+            .map((n, idx) => anonConverter(idx, "micro"));
+          resolve({
+            tab,
+            page: { current: 1, size: items, total_results: items },
+            results: anonResults,
+            topResult: null,
+          });
+        }
+      });
   }
   return new Promise(search);
 }

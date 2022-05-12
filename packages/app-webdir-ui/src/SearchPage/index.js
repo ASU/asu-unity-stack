@@ -49,7 +49,6 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
 
   const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
 
-
   const tabIds = {
     all: "all",
     sites: "web_sites",
