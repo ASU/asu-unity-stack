@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
 import { trackGAEvent } from "../core/services/googleAnalytics";
+import { performSearch } from "../helpers/search";
+import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
 /*
@@ -15,12 +17,14 @@ const ASUSearchResultsList = ({
   type,
   engine,
   titleText,
-  numResultsText,
+  showSearchMessage,
   seeAllResultsText,
   itemsPerPage,
   onExpandClick,
   GASource,
+  setPromotedResult,
   hidePaginator,
+  registerResults,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,27 +33,42 @@ const ASUSearchResultsList = ({
   const [totalResults, setTotalResults] = useState(null);
   const cardSize = type === "micro" ? "micro" : "large";
 
-  useEffect(() => {
-    if(term && term.length > 0) {
+  const doSearch = (page = currentPage) => {
+    if (term && term.length > 0) {
       setIsLoading(true);
 
-      performSearch({engine, term, page: currentPage, itemsPerPage, sort}).then(results => {
-        const formattedResults = engine.formatter(results, cardSize)
+      performSearch({ engine, term, page, itemsPerPage, sort }).then(res => {
+        const formattedResults = engine.formatter(res, cardSize);
+        if (registerResults) {
+          registerResults(formattedResults.page.total_results);
+        }
         setCurrentPage(formattedResults.page.current);
         setTotalResults(formattedResults.page.total_results);
-        const resultsWithProps = formattedResults.results.map((profile, idx) => {
-          const newProps = {
-            ...profile.props,
-            ...{ key: idx, GASource },
-          };
-          return {
-            ...profile,
-            ...{ props: newProps },
-          };
-        });
+        const resultsWithProps = formattedResults.results.map(
+          (profile, idx) => {
+            const newProps = {
+              ...profile.props,
+              ...{ key: idx, GASource },
+            };
+            return {
+              ...profile,
+              ...{ props: newProps },
+            };
+          }
+        );
+        if (setPromotedResult) {
+          setPromotedResult(formattedResults.topResult);
+        }
         setResults(resultsWithProps);
-        if(numResultsText) {
-          setSubtitle(numResultsText.replace('{totalResults}', formattedResults.page.total_results));
+        if (showSearchMessage) {
+          setSubtitle(
+            <SearchMessage
+              term={term}
+              number={formattedResults.page.total_results}
+            />
+          );
+        } else {
+          setSubtitle(`Results found: ${formattedResults.page.total_results}`);
         }
         setIsLoading(false);
         trackGAEvent({
@@ -62,6 +81,15 @@ const ASUSearchResultsList = ({
         });
       });
     }
+  };
+
+  const onPageChange = val => {
+    setCurrentPage(val);
+    doSearch(val);
+  };
+
+  useEffect(() => {
+    doSearch();
   }, [term, sort]);
 
   function expandClick(text) {
@@ -76,39 +104,49 @@ const ASUSearchResultsList = ({
     onExpandClick();
   }
 
+  const seeMoreButton = (
+    <Button
+      color="maroon"
+      label={seeAllResultsText}
+      size="small"
+      onClick={() => expandClick("See all results from subdomain")}
+    />
+  );
+
   return (
     <SearchResultsList>
-      <div className={type}>
-        <div
-          className={
-            type === "micro" ? "results-title-small" : "results-title"
-          }
-        >
-          {titleText}
+      {!isLoading && (
+        <div className={type}>
+          <div className={`results-title${type === "micro" ? "-small" : ""}`}>
+            {titleText}
+          </div>
+          {subtitle && type !== "micro" && (
+            <div className="message">
+              <div className="results-search-message">{subtitle}</div>
+            </div>
+          )}
+          {results.length > 0 && <div className="results-found">{results}</div>}
+          {!hidePaginator && (
+            <Pagination
+              type="default"
+              background="white"
+              currentPage={currentPage}
+              totalPages={Math.ceil(totalResults / itemsPerPage)}
+              onChange={(e, action) => onPageChange(action)}
+              showFirstButton
+              showLastButton
+            />
+          )}
+          {type === "preview" && <div className="summary">{seeMoreButton}</div>}
+          {type === "micro" && (
+            <div className="summary">
+              {subtitle}
+              {seeMoreButton}
+            </div>
+          )}
         </div>
-        {subtitle && (<div>{subtitle}</div>)}
-        {!isLoading && results.length > 0 && (<div>{results}</div>)}
-        {!isLoading && results.length === 0 && (<div></div>)}
-        {!hidePaginator && (
-          <Pagination
-            type="default"
-            background="white"
-            currentPage={currentPage}
-            totalPages={Math.ceil(totalResults / itemsPerPage)}
-            onChange={(e, action) => changePage(action)}
-            showFirstButton
-            showLastButton
-          /> )
-        }
-        {type !== "full" && (
-          <Button
-            color="maroon"
-            label={seeAllResultsText}
-            size="small"
-            onClick={() => expandClick("See all results from subdomain")}
-          />
-        )}
-      </div>
+      )}
+      {isLoading && <div>Loading...</div>}
     </SearchResultsList>
   );
 };
@@ -116,14 +154,18 @@ const ASUSearchResultsList = ({
 ASUSearchResultsList.propTypes = {
   term: PropTypes.string,
   type: PropTypes.string,
-  engineName: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  engine: PropTypes.object,
+  seeAllResultsText: PropTypes.string,
   sort: PropTypes.string,
   titleText: PropTypes.string,
-  numResultsText: PropTypes.string,
+  showSearchMessage: PropTypes.bool,
   itemsPerPage: PropTypes.number,
   onExpandClick: PropTypes.func,
   GASource: PropTypes.string,
+  setPromotedResult: PropTypes.func,
   hidePaginator: PropTypes.bool,
+  registerResults: PropTypes.func,
 };
 
 export { ASUSearchResultsList };

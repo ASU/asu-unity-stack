@@ -173,21 +173,32 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (datum, size = "small", titleMatch = null) => {
+export const staffConverter = (
+  datum,
+  options = {
+    size: "small",
+    titleMatch: null,
+    profileURLBase: null,
+    fill: false,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum, titleMatch);
+  const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
   // We guard against null asurite_id being returned from data source in some
   // instances by using a conditional render.
-
+  const profileURLBase = options.profileURLBase ?? "";
+  const safeAsuriteID = filledDatum.asurite_id.raw.length
+    ? filledDatum.asurite_id.raw.toString()
+    : null;
   return (
     <>
-      {filledDatum.asurite_id.raw.length ? (
+      {safeAsuriteID ? (
         <ProfileCard
           isRequired={false}
-          id={filledDatum.asurite_id.raw.toString()}
-          profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-          key={filledDatum.asurite_id.raw.toString()}
+          id={safeAsuriteID}
+          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
+          key={safeAsuriteID}
           imgURL={filledDatum.photo_url.raw}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
@@ -202,8 +213,8 @@ export const staffConverter = (datum, size = "small", titleMatch = null) => {
           linkedinLink={filledDatum.linkedin.raw}
           twitterLink={filledDatum.twitter.raw}
           website={filledDatum.website.raw}
-          size={size}
-          fill={false}
+          size={options.size}
+          fill={options.fill}
         />
       ) : null}
     </>
@@ -230,7 +241,7 @@ export const studentsConverter = (datum, size = "small") => {
       linkedinLink={filledDatum.linkedin.raw}
       twitterLink={filledDatum.twitter.raw}
       size={size}
-      fill={false}
+      fill
     />
   );
 };
@@ -258,7 +269,13 @@ export const anonConverter = (datum, size = "small") => {
   );
 };
 
-export const subdomainConverter = (datum, size = "small") => {
+export const subdomainConverter = (
+  datum,
+  options = {
+    size: "small",
+    fill: false,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
   if (filledDatum.meta_description) {
@@ -280,8 +297,8 @@ export const subdomainConverter = (datum, size = "small") => {
         filledDatum.url_path_dir2.raw,
       ]}
       link={filledDatum.url.raw}
-      size={size}
-      fill={false}
+      size={options.size}
+      fill={options.fill}
     />
   );
 };
