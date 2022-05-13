@@ -71,9 +71,9 @@ const ASUSearchResultsList = ({
               />
             );
           } else {
-            setSubtitle(
-              `Results found: ${formattedResults.page.total_results}`
-            );
+            // setSubtitle(
+            //   `Results found: ${formattedResults.page.total_results}`
+            // );
           }
           setIsLoading(false);
           trackGAEvent({
@@ -136,12 +136,14 @@ const ASUSearchResultsList = ({
     <SearchResultsList>
       {!isLoading && (
         <div className={type}>
-          <div className={`results-title${type === "micro" ? "-small" : ""}`}>
-            {titleText}
-          </div>
           {subtitle && type !== "micro" && (
             <div className="message">
               <div className="results-search-message">{subtitle}</div>
+            </div>
+          )}
+          {titleText && (
+            <div className={`results-title${type === "micro" ? "-small" : ""}`}>
+              {titleText}
             </div>
           )}
           {results.length > 0 && <div className="results-found">{results}</div>}

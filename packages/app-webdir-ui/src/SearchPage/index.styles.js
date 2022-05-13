@@ -44,6 +44,7 @@ const SearchPageLayout = styled.div`
 
   .message {
     grid-area: message;
+    margin-bottom: 56px;
   }
 
   @media (max-width: 1268px) {

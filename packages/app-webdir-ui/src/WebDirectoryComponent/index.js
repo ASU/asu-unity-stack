@@ -111,7 +111,6 @@ function WebDirectory({
           onPageChange={page => doSearch(page)}
           size="large"
           sort={searchParams.get(sortParamName)}
-          titleText="All faculty and staff results"
           hidePaginator={display.usePager !== "1"}
           filters={requestFilters}
         />
