@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -10,7 +11,7 @@ import { QuickLinks } from "../QuickLinks/index";
 import { ASUSearchResultsList } from "../SearchResultsList/index";
 import { SearchPageLayout } from "./index.styles";
 
-const SearchResultsMessage = ({ term, numResults, tabText }) => {
+const SearchResultsMessage = ({ term, numResults, tabText, loggedIn }) => {
   return (
     <div className="message">
       <div className="results-search-message">
@@ -20,6 +21,13 @@ const SearchResultsMessage = ({ term, numResults, tabText }) => {
         <span className="search-message-emphasis">{numResults}</span>
         {tabText && <span> {tabText.toLowerCase()} </span>}
         <span> results </span>
+        {(!loggedIn && tabText === "Students")
+        ? <span>
+            <p><a href="/caslogin">Sign in </a>
+            to view the full student directory or edit the public
+            status of your profile</p>
+          </span>
+        : null }
       </div>
     </div>
   );
@@ -29,6 +37,7 @@ SearchResultsMessage.propTypes = {
   term: PropTypes.string,
   numResults: PropTypes.number,
   tabText: PropTypes.string,
+  loggedIn: PropTypes.bool,
 };
 
 function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
@@ -48,7 +57,6 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   const [sort, setSort] = useState("_score_desc");
 
   const profileURLBaseOrDefault = profileURLBase || "https://isearch.asu.edu";
-
 
   const tabIds = {
     all: "all",
