@@ -7,14 +7,17 @@ const SearchResultsList = styled.div`
   .uds-results-card {
     margin-bottom: 48px;
   }
-  .summary {
-    -webkit-mask-image: -webkit-gradient(
-      linear,
-      left 60%,
-      left bottom,
-      from(rgba(0, 0, 0, 1)),
-      to(rgba(0, 0, 0, 0.2))
-    );
+  .micro,
+  .preview {
+    .results-found {
+      -webkit-mask-image: -webkit-gradient(
+        linear,
+        left 60%,
+        left bottom,
+        from(rgba(0, 0, 0, 1)),
+        to(rgba(0, 0, 0, 0.2))
+      );
+    }
   }
   .uds-person-profile:not(:first-child) {
     padding-top: 32px;
@@ -48,6 +51,10 @@ const SearchResultsList = styled.div`
     margin-bottom: 32px;
     font-size: 26px;
     font-weight: bold;
+  }
+  .summary {
+    display: flex;
+    justify-content: space-between;
   }
   .summary-button {
     display: flex;

@@ -252,6 +252,7 @@ export const anonConverter = (
     size: "small",
   }
 ) => {
+  console.log({options})
   return (
     <ProfileCard
       isRequired={false}

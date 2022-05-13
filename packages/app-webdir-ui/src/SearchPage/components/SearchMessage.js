@@ -10,7 +10,7 @@ const SearchMessage = ({ term, number }) => {
       <span className="search-message-emphasis">{term} </span>
       <span>returned </span>
       <span className="search-message-emphasis">{number} </span>
-      <span>rsults </span>
+      <span>results </span>
     </SearchMessageLayout>
   );
 };

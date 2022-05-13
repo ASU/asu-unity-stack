@@ -87,7 +87,12 @@ const ASUSearchResultsList = ({
         })
         .catch(err => {
           if (err === 403) {
-            setResults(anonFormatter(itemsPerPage));
+            const anonCards = anonFormatter(
+              engine.name,
+              itemsPerPage,
+              cardSize
+            );
+            setResults(anonCards.results);
             setCurrentPage(1);
             setTotalResults("unknown");
             setIsLoading(false);
