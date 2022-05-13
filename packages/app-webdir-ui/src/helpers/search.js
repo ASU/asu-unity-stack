@@ -1,3 +1,6 @@
+/* eslint no-use-before-define: ["warn", {"variables": true}] */
+// ^^^ Set to "warn" instead of default "error" as we're not throwing any
+// ReferenceError's and attempts to resolve resulted in other problems.
 import {
   staffConverter,
   studentsConverter,
