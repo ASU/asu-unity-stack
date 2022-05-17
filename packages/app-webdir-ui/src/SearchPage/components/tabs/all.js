@@ -45,7 +45,6 @@ const AllTab = ({ term, engines, site, goToTab }) => {
                 seeAllResultsText={`See all results from ${site}`}
                 onExpandClick={() => goToTab(tabIds.sites)}
                 GASource={`all results from ${site}`}
-                setPromotedResult={setPromotedResult}
                 hidePaginator
                 registerResults={registerResults}
               />
@@ -59,6 +58,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
               itemsPerPage={6}
               titleText="All asu.edu results"
               GASource="all asu.edu results"
+              setPromotedResult={setPromotedResult}
               registerResults={registerResults}
             />
           </div>
