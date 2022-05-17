@@ -179,6 +179,7 @@ export const staffConverter = (
     size: "small",
     titleMatch: null,
     profileURLBase: null,
+    fill: false,
   }
 ) => {
   const filledDatum = fillInBlanks(datum);
@@ -213,7 +214,7 @@ export const staffConverter = (
           twitterLink={filledDatum.twitter.raw}
           website={filledDatum.website.raw}
           size={options.size}
-          fill={false}
+          fill={options.fill}
         />
       ) : null}
     </>
@@ -245,7 +246,12 @@ export const studentsConverter = (datum, size = "small") => {
   );
 };
 
-export const anonConverter = (datum, size = "small") => {
+export const anonConverter = (
+  datum,
+  options = {
+    size: "small",
+  }
+) => {
   return (
     <ProfileCard
       isRequired={false}
@@ -263,12 +269,18 @@ export const anonConverter = (datum, size = "small") => {
       facebookLink=""
       linkedinLink=""
       twitterLink=""
-      size={size}
+      size={options.size}
     />
   );
 };
 
-export const subdomainConverter = (datum, size = "small") => {
+export const subdomainConverter = (
+  datum,
+  options = {
+    size: "small",
+    fill: false,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
   if (filledDatum.meta_description) {
@@ -290,8 +302,8 @@ export const subdomainConverter = (datum, size = "small") => {
         filledDatum.url_path_dir2.raw,
       ]}
       link={filledDatum.url.raw}
-      size={size}
-      fill
+      size={options.size}
+      fill={options.fill}
     />
   );
 };

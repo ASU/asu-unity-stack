@@ -4,43 +4,112 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
 import { trackGAEvent } from "../core/services/googleAnalytics";
+import { performSearch, anonFormatter } from "../helpers/search";
+import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
+/*
+  'type' must be 'micro', 'preview', or 'full'.
+*/
 const ASUSearchResultsList = ({
-  results,
-  totalResults,
-  resultsPerPage,
-  currentPage,
-  isLoading,
-  onPageChange,
-  title,
-  size,
-  summary,
-  showNumResults,
-  onExpandClick,
+  term,
+  sort,
+  type,
+  engine,
+  titleText,
+  showSearchMessage,
   seeAllResultsText,
-  fill,
+  itemsPerPage,
+  onExpandClick,
   GASource,
-  hidePager,
+  setPromotedResult,
+  hidePaginator,
+  registerResults,
+  filters,
 }) => {
-  const [displayResults, setDisplayResults] = useState(1);
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [subtitle, setSubtitle] = useState(null);
+  const [currentPage, setCurrentPage] = useState(null);
+  const [totalResults, setTotalResults] = useState(null);
+  const [isAnon, setIsAnon] = useState(false);
+  const cardSize = type === "micro" ? "micro" : "large";
 
-  const changePage = page => {
-    onPageChange(page);
+  const doSearch = (page = currentPage) => {
+    if ((term && term.length > 0) || !engine.needsTerm) {
+      setIsLoading(true);
+
+      performSearch({ engine, term, page, itemsPerPage, sort, filters })
+        .then(res => {
+          const formattedResults = engine.formatter(res, cardSize, filters);
+          if (registerResults) {
+            registerResults(formattedResults.page.total_results);
+          }
+          setCurrentPage(formattedResults.page.current);
+          setTotalResults(formattedResults.page.total_results);
+          const resultsWithProps = formattedResults.results.map(
+            (profile, idx) => {
+              const newProps = {
+                ...profile.props,
+                ...{ key: idx, GASource },
+              };
+              return {
+                ...profile,
+                ...{ props: newProps },
+              };
+            }
+          );
+          if (setPromotedResult) {
+            setPromotedResult(formattedResults.topResult);
+          }
+          setResults(resultsWithProps);
+          if (showSearchMessage) {
+            setSubtitle(
+              <SearchMessage
+                term={term}
+                number={formattedResults.page.total_results}
+              />
+            );
+          } else {
+            // setSubtitle(
+            //   `Results found: ${formattedResults.page.total_results}`
+            // );
+          }
+          setIsLoading(false);
+          trackGAEvent({
+            event: "search",
+            action: "type",
+            name: "onenter",
+            type: "search asu.edu",
+            section: "search",
+            text: term,
+          });
+        })
+        .catch(err => {
+          if (err === 403) {
+            const anonCards = anonFormatter(
+              engine.name,
+              itemsPerPage,
+              cardSize
+            );
+            setResults(anonCards.results);
+            setCurrentPage(1);
+            setTotalResults("unknown");
+            setIsLoading(false);
+            setIsAnon(true);
+          }
+        });
+    }
   };
+
+  const onPageChange = val => {
+    setCurrentPage(val);
+    doSearch(val);
+  };
+
   useEffect(() => {
-    const resultsWithProps = results?.map((profile, idx) => {
-      const newProps = {
-        ...profile.props,
-        ...{ size, fill: fill || false, key: idx, GASource },
-      };
-      return {
-        ...profile,
-        ...{ props: newProps },
-      };
-    });
-    setDisplayResults(resultsWithProps);
-  }, [results]);
+    doSearch();
+  }, [term, sort, filters]);
 
   function expandClick(text) {
     trackGAEvent({
@@ -54,86 +123,72 @@ const ASUSearchResultsList = ({
     onExpandClick();
   }
 
+  const seeMoreButton = (
+    <Button
+      color="maroon"
+      label={seeAllResultsText}
+      size="small"
+      onClick={() => expandClick("See all results from subdomain")}
+    />
+  );
+
   return (
     <SearchResultsList>
-      {results && (
-        <div className={size}>
-          <div
-            className={
-              size === "micro" ? "results-title-small" : "results-title"
-            }
-          >
-            {title}
-          </div>
-          {size !== "micro" && showNumResults && (
-            <div className="results-found">
-              Results found: <span>{totalResults}</span>
+      {!isLoading && (
+        <div className={type}>
+          {subtitle && type !== "micro" && (
+            <div className="message">
+              <div className="results-search-message">{subtitle}</div>
             </div>
           )}
-          <div className={summary ? "summary" : ""}>{displayResults}</div>
-          {size !== "micro" && !summary && !hidePager && (
+          {titleText && (
+            <div className={`results-title${type === "micro" ? "-small" : ""}`}>
+              {titleText}
+            </div>
+          )}
+          {results.length > 0 && <div className="results-found">{results}</div>}
+          {!hidePaginator && !isAnon && (
             <Pagination
               type="default"
               background="white"
               currentPage={currentPage}
-              totalPages={Math.ceil(totalResults / resultsPerPage)}
-              onChange={(e, action) => changePage(action)}
+              totalPages={Math.ceil(totalResults / itemsPerPage)}
+              onChange={(e, action) => onPageChange(action)}
               showFirstButton
               showLastButton
             />
           )}
-          {size !== "micro" && summary && results.length > 0 && (
-            <div className="summary-button">
-              <Button
-                color="maroon"
-                label={seeAllResultsText}
-                size="small"
-                onClick={() => expandClick("See all results from subdomain")}
-              />
-            </div>
-          )}
-          {size === "micro" && (
-            <div
-              className={`micro-options ${
-                results.length === 0 ? "push-right" : ""
-              }`}
-            >
-              {results.length > 0 && showNumResults && (
-                <span>{totalResults} total results</span>
-              )}
-              <Button
-                color="maroon"
-                label={seeAllResultsText}
-                size="small"
-                onClick={() => expandClick("See all results")}
-              />
+          {type === "preview" && <div className="summary">{seeMoreButton}</div>}
+          {type === "micro" && (
+            <div className="summary">
+              {subtitle}
+              {seeMoreButton}
             </div>
           )}
         </div>
       )}
-      {!isLoading && (!results || results.length === 0) && (
-        <div className="results-title" />
-      )}
+      {isLoading && <div>Loading...</div>}
     </SearchResultsList>
   );
 };
 
 ASUSearchResultsList.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.element),
-  totalResults: PropTypes.number,
-  resultsPerPage: PropTypes.number,
-  currentPage: PropTypes.number,
-  isLoading: PropTypes.bool,
-  onPageChange: PropTypes.func,
-  title: PropTypes.string,
-  size: PropTypes.string,
-  summary: PropTypes.bool,
-  showNumResults: PropTypes.bool,
-  onExpandClick: PropTypes.func,
+  term: PropTypes.string,
+  type: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  engine: PropTypes.object,
   seeAllResultsText: PropTypes.string,
-  fill: PropTypes.bool,
+  sort: PropTypes.string,
+  titleText: PropTypes.string,
+  showSearchMessage: PropTypes.bool,
+  itemsPerPage: PropTypes.number,
+  onExpandClick: PropTypes.func,
   GASource: PropTypes.string,
-  hidePager: PropTypes.bool,
+  setPromotedResult: PropTypes.func,
+  hidePaginator: PropTypes.bool,
+  registerResults: PropTypes.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  filters: PropTypes.object,
 };
 
 export { ASUSearchResultsList };
