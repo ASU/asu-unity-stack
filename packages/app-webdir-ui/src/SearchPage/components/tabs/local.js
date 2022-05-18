@@ -9,7 +9,7 @@ const LocalTab = ({ engines, term, site }) => {
   return (
     <LocalTabLayout>
       <ASUSearchResultsList
-        engine={engines[engineNames.SITES]}
+        engine={engines[engineNames.SITES_LOCAL]}
         term={term}
         itemsPerPage={6}
         type="full"
