@@ -87,7 +87,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
               titleText="Students"
               type="micro"
               seeAllResultsText="See all results"
-              onExpandClick={() => goToTab(tabIds.faculty)}
+              onExpandClick={() => goToTab(tabIds.students)}
               GASource="students"
               hidePaginator
               registerResults={registerResults}
