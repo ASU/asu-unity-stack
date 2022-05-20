@@ -5,7 +5,7 @@ import { engineNames } from "../../../helpers/search";
 import { ASUSearchResultsList } from "../../../SearchResultsList/index";
 import { StudentsTabLayout } from "./index.styles";
 
-const StudentsTab = ({ engines, term }) => {
+const StudentsTab = ({ engines, term, loggedIn }) => {
   return (
     <StudentsTabLayout>
       <ASUSearchResultsList
@@ -15,6 +15,7 @@ const StudentsTab = ({ engines, term }) => {
         type="full"
         GASource="all student results"
         titleText="All Student results"
+        loggedIn={loggedIn}
       />
     </StudentsTabLayout>
   );

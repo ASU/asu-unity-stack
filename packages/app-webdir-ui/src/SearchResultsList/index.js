@@ -26,6 +26,7 @@ const ASUSearchResultsList = ({
   hidePaginator,
   registerResults,
   filters,
+  loggedIn,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -68,6 +69,8 @@ const ASUSearchResultsList = ({
               <SearchMessage
                 term={term}
                 number={formattedResults.page.total_results}
+                loggedIn={loggedIn}
+                engine={engine}
               />
             );
           } else {
