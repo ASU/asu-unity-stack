@@ -20,9 +20,16 @@ const gaDefaultObject = {
  * @param {ButtonIconOnlyProps} props
  * @returns {JSX.Element}
  */
-export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => {
+export const ButtonIconOnly = ({
+  color,
+  icon,
+  innerRef,
+  onClick,
+  size,
+  cardTitle,
+}) => {
   const handleClick = text => {
-    trackGAEvent({ ...gaDefaultObject, text });
+    trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
     onClick?.();
   };
 
@@ -64,6 +71,10 @@ ButtonIconOnly.propTypes = {
   */
   onClick: PropTypes.func,
   /**
+   * Card title
+   */
+  cardTitle: PropTypes.string,
+  /**
     Button size
   */
   size: PropTypes.oneOf(["large", "small"]),
@@ -75,4 +86,5 @@ ButtonIconOnly.defaultProps = {
   innerRef: undefined,
   onClick: undefined,
   size: "small",
+  cardTitle: "",
 };
