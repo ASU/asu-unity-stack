@@ -53,6 +53,8 @@ const FeedHeader = ({
               action: "click",
               name: "onclick",
               type: "internal link",
+              region: "main content",
+              section: header.text,
               text: ctaButton.text,
             })
           }

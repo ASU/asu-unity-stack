@@ -46,7 +46,14 @@ export const Card = ({
 }) => {
   if (clickable && clickHref) {
     return (
-      <AnchorWrapper role="button" href={clickHref} className="c-card">
+      <AnchorWrapper
+        role="button"
+        href={clickHref}
+        className="c-card"
+        onClick={() =>
+          trackGAEvent({ ...gaDefaultObject, section: title, text: linkLabel })
+        }
+      >
         <BaseCard
           type={type}
           width={width}
@@ -377,6 +384,7 @@ const CardContent = ({
               onClick={button.onClick}
               size={button.size}
               target={button.target}
+              cardTitle={title}
             />
           </div>
         ))}
@@ -409,6 +417,7 @@ const CardContent = ({
             href={tag.href}
             label={tag.label}
             onClick={tag.onClick}
+            cardTitle={title}
           />
         ))}
       </div>

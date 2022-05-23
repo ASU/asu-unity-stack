@@ -141,7 +141,7 @@ export const engines = {
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
-    url: `webdir-departments/profiles`,
+    url: `webdir-profiles/faculty-staff/filtered`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
@@ -220,6 +220,22 @@ export const performSearch = function ({
           .map(n => `asurite_id[]=${n}`)
           .join("&");
         query = `${query}&${asuriteIDParam}`;
+      }
+      if (filters && filters.title) {
+        const titleParam = `title=${filters.title}`;
+        query = `${query}&${titleParam}`;
+      }
+      if (filters && filters.campuses) {
+        const campusesParam = `campuses=${filters.campuses}`;
+        query = `${query}&${campusesParam}`;
+      }
+      if (filters && filters.expertise) {
+        const expertiseParam = `expertise_areas=${filters.expertise}`;
+        query = `${query}&${expertiseParam}`;
+      }
+      if (filters && filters.employee_types) {
+        const employeeTypesParam = `campuses=${filters.employee_types}`;
+        query = `${query}&${employeeTypesParam}`;
       }
       APICall = () => axios.get(query);
     } else {
