@@ -221,7 +221,13 @@ export const staffConverter = (
   );
 };
 
-export const studentsConverter = (datum, size = "small", fill = false) => {
+export const studentsConverter = (
+  datum,
+  options = {
+    size: "small",
+    fill: false,
+  }
+) => {
   const filledDatum = fillInBlanks(datum);
   return (
     <ProfileCard
@@ -241,7 +247,7 @@ export const studentsConverter = (datum, size = "small", fill = false) => {
       linkedinLink={filledDatum.linkedin.raw}
       twitterLink={filledDatum.twitter.raw}
       size={options.size}
-      fill={fill}
+      fill={options.fill}
     />
   );
 };
