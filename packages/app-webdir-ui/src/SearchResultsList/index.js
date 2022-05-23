@@ -192,6 +192,7 @@ ASUSearchResultsList.propTypes = {
   registerResults: PropTypes.func,
   // eslint-disable-next-line react/forbid-prop-types
   filters: PropTypes.object,
+  loggedIn: PropTypes.bool,
 };
 
 export { ASUSearchResultsList };

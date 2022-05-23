@@ -25,6 +25,7 @@ StudentsTab.propTypes = {
   term: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
   engines: PropTypes.object,
+  loggedIn: PropTypes.bool,
 };
 
 export { StudentsTab };

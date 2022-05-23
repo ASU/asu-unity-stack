@@ -11,9 +11,10 @@ const SearchMessage = ({ term, number, loggedIn, engine }) => {
       <span>returned </span>
       <span className="search-message-emphasis">{number} </span>
       <span>results </span>
-      {!loggedIn && (engine === "web_dir_students") &&
-      (
-      <span><a href="cas/login">Sign in</a> to view results</span>
+      {!loggedIn && engine === "web_dir_students" && (
+        <span>
+          <a href="cas/login">Sign in</a> to view results
+        </span>
       )}
     </SearchMessageLayout>
   );
@@ -22,6 +23,8 @@ const SearchMessage = ({ term, number, loggedIn, engine }) => {
 SearchMessage.propTypes = {
   term: PropTypes.string,
   number: PropTypes.number,
+  loggedIn: PropTypes.bool,
+  engine: PropTypes.string,
 };
 
 export { SearchMessage };

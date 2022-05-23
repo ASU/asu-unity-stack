@@ -184,9 +184,9 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
         <Tab id={tabIds.students} title="Students">
           {preSearchOrContent(
             <StudentsTab
-            loggedIn={loggedIn}
-            engines={enginesWithParams}
-            term={term}
+              loggedIn={loggedIn}
+              engines={enginesWithParams}
+              term={term}
             />
           )}
         </Tab>
