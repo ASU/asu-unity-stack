@@ -13,7 +13,7 @@ fs.mkdirSync(outputDir, { recursive: true });
 // into the twig template below
 //fs.writeFileSync(path.join(outputDir, 'example.html'), Templates.FullExample);
 
-const PlaceHolder = `<div id="headerContainer">${Templates.HeaderTemplate}</div>`;
+const PlaceHolder = `<div id="headerContainer" data-elastic-exclude="data-elastic-exclude">${Templates.HeaderTemplate}</div>`;
 
 // This template is used in ASU Themes.
 // and can be found in AFS at /afs/asu.edu/www-dev/asuthemes/5.0/headers/component.html

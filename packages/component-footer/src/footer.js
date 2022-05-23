@@ -19,7 +19,7 @@ const Base = () => {
  */
 const ASUFooter = ({ social, contact }) => {
   return (
-    <footer role="contentinfo">
+    <footer role="contentinfo" data-elastic-exclude="data-elastic-exclude">
       {social && <Social social={social} />}
       {contact && <Contact contact={contact} />}
       <Base />
