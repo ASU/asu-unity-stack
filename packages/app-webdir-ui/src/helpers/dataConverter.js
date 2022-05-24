@@ -105,7 +105,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     console.log("title from service");
     // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
     // We don't need to consult titleMatch.peopleDeps.
-    matchedAffiliationTitle = profile.title[0];
+    matchedAffiliationTitle = profile.title;
     if (profile.dept_name) {
       matchedAffiliationDept = profile.dept_name;
     }
@@ -121,7 +121,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     // title they'll get. When precision is needed, users should use the
     // People or People in Departments component type.
 
-    // Find matching values our titleMatch.depts
+    // Find matching values against titleMatch.depts
     const deptValueMatch = profile.deptids.raw.filter(id =>
       titleMatch.depts.includes(id)
     );
