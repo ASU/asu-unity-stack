@@ -239,6 +239,9 @@ export const performSearch = function ({
       }
       APICall = () => axios.get(query);
     } else {
+      data["size"] = "";
+      data["page"] = "";
+      data["sort-by"] = "";
       if (!filters) {
         return;
       }
@@ -250,6 +253,11 @@ export const performSearch = function ({
         full_records: true,
         profiles: filters.peopleInDepts,
       };
+      if (engine.method === "POST") {
+        data["size"] = "";
+        data["page"] = "";
+        data["sort-by"] = "";
+      }
       APICall = () => axios.post(query, data, { headers });
     }
 
