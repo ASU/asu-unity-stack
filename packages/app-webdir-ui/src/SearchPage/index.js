@@ -95,9 +95,8 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   };
 
   const preSearchOrContent = content => {
-    if (term) {
-      return content;
-    }
+    if (term) return content;
+
     return <PreSearchMessage />;
   };
 
@@ -184,7 +183,11 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
         </Tab>
         <Tab id={tabIds.students} title="Students">
           {preSearchOrContent(
-            <StudentsTab engines={enginesWithParams} term={term} />
+            <StudentsTab
+              loggedIn={loggedIn}
+              engines={enginesWithParams}
+              term={term}
+            />
           )}
         </Tab>
       </TabbedPanels>
