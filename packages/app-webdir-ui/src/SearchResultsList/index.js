@@ -27,6 +27,7 @@ const ASUSearchResultsList = ({
   registerResults,
   filters,
   loggedIn,
+  display,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -193,6 +194,12 @@ ASUSearchResultsList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   filters: PropTypes.object,
   loggedIn: PropTypes.bool,
+  display: PropTypes.shape({
+    defaultSort: PropTypes.string,
+    doNotDisplayProfiles: PropTypes.string,
+    profilesPerPage: PropTypes.string,
+    usePager: PropTypes.string,
+  }),
 };
 
 export { ASUSearchResultsList };
