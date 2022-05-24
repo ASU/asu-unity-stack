@@ -147,7 +147,7 @@ const ASUSearchResultsList = ({
             </div>
           )}
           {results.length > 0 && <div className="results-found">{results}</div>}
-          {!hidePaginator && !isAnon && results.length >= itemsPerPage && (
+          {!hidePaginator && !isAnon && totalResults.length >= itemsPerPage && (
             <Pagination
               type="default"
               background="white"
