@@ -239,9 +239,6 @@ export const performSearch = function ({
       }
       APICall = () => axios.get(query);
     } else {
-      data["size"] = "";
-      data["page"] = "";
-      data["sort-by"] = "";
       if (!filters) {
         return;
       }
@@ -250,14 +247,12 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        full_records: true,
-        profiles: filters.peopleInDepts,
+        "size": "",
+        "page": "",
+        "sort-by": "",
+        "full_records": true,
+        "profiles": filters.peopleInDepts,
       };
-      if (engine.method === "POST") {
-        data["size"] = "";
-        data["page"] = "";
-        data["sort-by"] = "";
-      }
       APICall = () => axios.post(query, data, { headers });
     }
 
