@@ -80,12 +80,20 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
   }
-  const titleOverwrite = filters.peopleInDepts ? filters.peopleInDepts : null;
+  // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
+  // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
+  const titleOverwrite = filters.peopleInDepts
+    ? { peopleInDeps: filters.peopleInDepts }
+    : { depts: filters.deptIds };
+
   return {
     tab: engines[engineName].name,
     page: localPage,
     results: localResults.map(result =>
-      engines[engineName].converter(result, "large", titleOverwrite)
+      engines[engineName].converter(result, {
+        size: "large",
+        titleMatch: titleOverwrite,
+      })
     ),
   };
 };
@@ -210,16 +218,12 @@ export const performSearch = function ({
         query = `${query}&size=${itemsPerPage}`;
       }
       if (filters && filters.deptIds) {
-        const deptIDParam = filters.deptIds
-          .map(n => `dept_id[]=${n}`)
-          .join("&");
-        query = `${query}&${deptIDParam}`;
+        const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
+        query = `${query}&dept_ids=${deptIDValues}`;
       }
       if (filters && filters.peopleIds) {
-        const asuriteIDParam = filters.peopleIds
-          .map(n => `asurite_id[]=${n}`)
-          .join("&");
-        query = `${query}&${asuriteIDParam}`;
+        const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
+        query = `${query}&asurite_ids=${asuriteIDParam}`;
       }
       if (filters && filters.title) {
         const titleParam = `title=${filters.title}`;
