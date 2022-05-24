@@ -251,8 +251,11 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        full_records: true,
-        profiles: filters.peopleInDepts,
+        "size": "",
+        "page": "",
+        "sort-by": "",
+        "full_records": true,
+        "profiles": filters.peopleInDepts,
       };
       APICall = () => axios.post(query, data, { headers });
     }
