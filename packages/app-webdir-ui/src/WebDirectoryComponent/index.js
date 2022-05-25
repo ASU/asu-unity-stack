@@ -113,7 +113,7 @@ function WebDirectory({
           sort={searchParams.get(sortParamName)}
           hidePaginator={display.usePager !== "1"}
           filters={requestFilters}
-          display={display}
+          profilesToFilterOut={display.doNotDisplayProfiles}
         />
       </div>
     </WebDirLayout>

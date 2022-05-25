@@ -272,3 +272,29 @@ export const performSearch = function ({
   }
   return new Promise(search);
 };
+
+export const filterOutResults = (results, stringOfProfilesToExclude) => {
+  let arrOfTotalResults;
+  let filteredResults;
+  if (!Array.isArray(results)) {
+    arrOfTotalResults = results.results;
+  } else {
+    arrOfTotalResults = results;
+  }
+  const tempProfilesToFilterOut = stringOfProfilesToExclude
+    .split(",")
+    .map(x => x.trim());
+  if (arrOfTotalResults[0].asurite_id.raw) {
+    filteredResults = arrOfTotalResults.filter(x => {
+      return !tempProfilesToFilterOut.includes(x.asurite_id.raw);
+    });
+  } else {
+    filteredResults = arrOfTotalResults.filter(x => {
+      return !tempProfilesToFilterOut.includes(x.asurite_id);
+    });
+  }
+  if (!Array.isArray(results)) {
+    return { meta: { ...results.meta }, results: filteredResults };
+  }
+  return filteredResults;
+};
