@@ -4,6 +4,8 @@ Sidebar Navigation
 1. Component Mixins
 2. Sidebar
 -------------------------------------------------------------------*/
+$nav-item-padding-y: 0.7rem;
+$nav-item-min-height: 3rem;
 
 @mixin like-an-h4 {
   font-size: 1rem;
@@ -15,6 +17,11 @@ Sidebar Navigation
   font-size: 1rem;
   line-height: 1rem;
   letter-spacing: -0.015em;
+}
+
+@mixin nav-item-container {
+  padding: $nav-item-padding-y $uds-size-spacing-1;
+  min-height: $nav-item-min-height;
 }
 
 /*------------------------------------------------------------------
@@ -108,10 +115,9 @@ Sidebar Navigation
   }
 
   > .nav-link-container {
-    padding: 0 $uds-size-spacing-1;
+    @include nav-item-container;
     overflow: hidden;
     color: $uds-color-base-gray-7;
-    height: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,6 +136,10 @@ Sidebar Navigation
     }
 
     .card-header {
+      @include nav-item-container;
+      // Override the min-height to account for the border on .card-foldable
+      min-height: calc(#{$nav-item-min-height} - 1px);
+
       h1,
       h2,
       h3,
@@ -139,7 +149,9 @@ Sidebar Navigation
       }
 
       a {
-        padding: $uds-size-spacing-2 $uds-size-spacing-1;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
       }
 
       ~ .card-body {
@@ -152,7 +164,7 @@ Sidebar Navigation
     }
 
     .card-body > .nav-link {
-      padding: 0 $uds-size-spacing-5 0 $uds-size-spacing-3;
+      padding: 1rem $uds-size-spacing-5 0 $uds-size-spacing-3;
 
       &.is-active {
         &:after {

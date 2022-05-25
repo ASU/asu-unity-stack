@@ -127,7 +127,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch();
-  }, [term, sort, filters, profilesToFilterOut]);
+  }, [term, sort, filters, itemsPerPage, profilesToFilterOut]);
 
   function expandClick(text) {
     trackGAEvent({
