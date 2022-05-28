@@ -25,7 +25,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
-  const [site, setSite] = useState(null);
+  const [site, setSite] = useState("uto.asu.edu");
 
   const engineParams = {
     filters,

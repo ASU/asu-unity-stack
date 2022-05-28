@@ -47,7 +47,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
                 GASource={`all results from ${site}`}
                 hidePaginator
                 registerResults={registerResults}
-                setPromotedResult={site ? setPromotedProfile : null}
+                setPromotedResult={site ? setPromotedResult : null}
               />
             </div>
           )}
@@ -59,7 +59,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
               itemsPerPage={6}
               titleText="All asu.edu results"
               GASource="all asu.edu results"
-              setPromotedResult={!site ? setPromotedProfile : null}
+              setPromotedResult={!site ? setPromotedResult : null}
               registerResults={registerResults}
             />
           </div>
