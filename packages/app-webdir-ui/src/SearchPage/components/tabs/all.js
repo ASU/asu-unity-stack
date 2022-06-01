@@ -20,7 +20,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
   };
 
   const registerResults = num => {
-    setTotalResults(totalResults + num);
+    setTotalResults(num);
   };
 
   return (
