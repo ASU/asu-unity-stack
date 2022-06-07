@@ -94,6 +94,7 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       engines[engineName].converter(result, {
         size: "large",
         titleMatch: titleOverwrite,
+        profileURLBase: "https://isearch.asu.edu"
       })
     ),
   };
