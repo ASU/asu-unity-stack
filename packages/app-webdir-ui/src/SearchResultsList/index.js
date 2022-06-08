@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
 import { trackGAEvent } from "../core/services/googleAnalytics";
-import { performSearch, anonFormatter } from "../helpers/search";
+import {
+  performSearch,
+  anonFormatter,
+  filterOutResults,
+} from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
@@ -27,6 +31,7 @@ const ASUSearchResultsList = ({
   registerResults,
   filters,
   loggedIn,
+  profilesToFilterOut,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +47,17 @@ const ASUSearchResultsList = ({
 
       performSearch({ engine, term, page, itemsPerPage, sort, filters })
         .then(res => {
-          const formattedResults = engine.formatter(res, cardSize, filters);
+          let filteredResults = res;
+
+          if (profilesToFilterOut) {
+            filteredResults = filterOutResults(res, profilesToFilterOut);
+          }
+
+          const formattedResults = engine.formatter(
+            filteredResults,
+            cardSize,
+            filters
+          );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
@@ -112,7 +127,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch();
-  }, [term, sort, filters]);
+  }, [term, sort, filters, itemsPerPage, profilesToFilterOut]);
 
   function expandClick(text) {
     trackGAEvent({
@@ -150,7 +165,7 @@ const ASUSearchResultsList = ({
             </div>
           )}
           {results.length > 0 && <div className="results-found">{results}</div>}
-          {!hidePaginator && !isAnon && (
+          {!hidePaginator && !isAnon && totalResults >= itemsPerPage && (
             <Pagination
               type="default"
               background="white"
@@ -193,6 +208,7 @@ ASUSearchResultsList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   filters: PropTypes.object,
   loggedIn: PropTypes.bool,
+  profilesToFilterOut: PropTypes.string,
 };
 
 export { ASUSearchResultsList };

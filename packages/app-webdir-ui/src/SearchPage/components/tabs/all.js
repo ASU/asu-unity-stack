@@ -47,6 +47,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
                 GASource={`all results from ${site}`}
                 hidePaginator
                 registerResults={registerResults}
+                setPromotedResult={site ? setPromotedResult : null}
               />
             </div>
           )}
@@ -58,7 +59,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
               itemsPerPage={6}
               titleText="All asu.edu results"
               GASource="all asu.edu results"
-              setPromotedResult={setPromotedResult}
+              setPromotedResult={!site ? setPromotedResult : null}
               registerResults={registerResults}
             />
           </div>
@@ -87,7 +88,7 @@ const AllTab = ({ term, engines, site, goToTab }) => {
               titleText="Students"
               type="micro"
               seeAllResultsText="See all results"
-              onExpandClick={() => goToTab(tabIds.faculty)}
+              onExpandClick={() => goToTab(tabIds.students)}
               GASource="students"
               hidePaginator
               registerResults={registerResults}

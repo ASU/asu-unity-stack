@@ -24,6 +24,7 @@ const gaDefaultObject = {
  */
 export const Button = ({
   label,
+  cardTitle,
   ariaLabel,
   block,
   color,
@@ -52,7 +53,7 @@ export const Button = ({
   }
 
   const handleClick = text => {
-    trackGAEvent({ ...gaDefaultObject, text });
+    trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
     onClick?.();
   };
 
@@ -78,6 +79,10 @@ Button.propTypes = {
    * Button label
    */
   label: PropTypes.string,
+  /**
+   * Card title
+   */
+  cardTitle: PropTypes.string,
   /**
     ARIA label for accessibility
   */
@@ -151,6 +156,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   label: "",
+  cardTitle: "",
   ariaLabel: undefined,
   block: undefined,
   color: "gray",

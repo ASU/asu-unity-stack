@@ -32,6 +32,7 @@ const getTopResult = results => {
 };
 const standardFormatter = (engineName, results, cardSize) => {
   const topResult = getTopResult(results.results);
+  console.log(engineName);
   return {
     tab: engineName,
     page: results.meta.page,
@@ -80,12 +81,21 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
   }
-  const titleOverwrite = filters.peopleInDepts ? filters.peopleInDepts : null;
+  // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
+  // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
+  const titleOverwrite = filters.peopleInDepts
+    ? { peopleInDeps: filters.peopleInDepts }
+    : { depts: filters.deptIds };
+
   return {
     tab: engines[engineName].name,
     page: localPage,
     results: localResults.map(result =>
-      engines[engineName].converter(result, "large", titleOverwrite)
+      engines[engineName].converter(result, {
+        size: "large",
+        titleMatch: titleOverwrite,
+        profileURLBase: "https://isearch.asu.edu"
+      })
     ),
   };
 };
@@ -141,7 +151,7 @@ export const engines = {
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
-    url: `webdir-departments/profiles`,
+    url: `webdir-profiles/faculty-staff/filtered`,
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
@@ -210,16 +220,28 @@ export const performSearch = function ({
         query = `${query}&size=${itemsPerPage}`;
       }
       if (filters && filters.deptIds) {
-        const deptIDParam = filters.deptIds
-          .map(n => `dept_id[]=${n}`)
-          .join("&");
-        query = `${query}&${deptIDParam}`;
+        const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
+        query = `${query}&dept_ids=${deptIDValues}`;
       }
       if (filters && filters.peopleIds) {
-        const asuriteIDParam = filters.peopleIds
-          .map(n => `asurite_id[]=${n}`)
-          .join("&");
-        query = `${query}&${asuriteIDParam}`;
+        const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
+        query = `${query}&asurite_ids=${asuriteIDParam}`;
+      }
+      if (filters && filters.title) {
+        const titleParam = `title=${filters.title}`;
+        query = `${query}&${titleParam}`;
+      }
+      if (filters && filters.campuses) {
+        const campusesParam = `campuses=${filters.campuses}`;
+        query = `${query}&${campusesParam}`;
+      }
+      if (filters && filters.expertise) {
+        const expertiseParam = `expertise_areas=${filters.expertise}`;
+        query = `${query}&${expertiseParam}`;
+      }
+      if (filters && filters.employee_types) {
+        const employeeTypesParam = `campuses=${filters.employee_types}`;
+        query = `${query}&${employeeTypesParam}`;
       }
       APICall = () => axios.get(query);
     } else {
@@ -231,8 +253,11 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        full_records: true,
-        profiles: filters.peopleInDepts,
+        "size": "",
+        "page": "",
+        "sort-by": "",
+        "full_records": true,
+        "profiles": filters.peopleInDepts,
       };
       APICall = () => axios.post(query, data, { headers });
     }
@@ -251,4 +276,30 @@ export const performSearch = function ({
       });
   }
   return new Promise(search);
+};
+
+export const filterOutResults = (results, stringOfProfilesToExclude) => {
+  let arrOfTotalResults;
+  let filteredResults;
+  if (!Array.isArray(results)) {
+    arrOfTotalResults = results.results;
+  } else {
+    arrOfTotalResults = results;
+  }
+  const tempProfilesToFilterOut = stringOfProfilesToExclude
+    .split(",")
+    .map(x => x.trim());
+  if (arrOfTotalResults[0].asurite_id.raw) {
+    filteredResults = arrOfTotalResults.filter(x => {
+      return !tempProfilesToFilterOut.includes(x.asurite_id.raw);
+    });
+  } else {
+    filteredResults = arrOfTotalResults.filter(x => {
+      return !tempProfilesToFilterOut.includes(x.asurite_id);
+    });
+  }
+  if (!Array.isArray(results)) {
+    return { meta: { ...results.meta }, results: filteredResults };
+  }
+  return filteredResults;
 };
