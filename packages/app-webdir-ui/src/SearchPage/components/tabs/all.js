@@ -1,4 +1,5 @@
-import PropTypes from "prop-types"; import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 
 import { engineNames } from "../../../helpers/search";
 import { QuickLinks } from "../../../QuickLinks/index";
