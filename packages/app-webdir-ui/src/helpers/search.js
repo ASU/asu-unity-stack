@@ -10,6 +10,11 @@ import {
 
 const axios = require("axios");
 
+const getLastNameFromFullName = fullName => {
+  const tempNameArr = fullName.split(" ");
+  return tempNameArr[tempNameArr.length - 1];
+};
+
 export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
@@ -154,7 +159,7 @@ export const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
-    supportedSortTypes: ["_score_desc", "last_name_desc"],
+    supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "GET",
     formatter: (results, cardSize, filters) =>
       webDirDeptsFormatter(
@@ -265,8 +270,22 @@ export const performSearch = function ({
       .then(res => {
         // engine.inFlight = false;
         // engine.abortController = null;
+        const { data } = res;
+        if (
+          engine.method === "POST" &&
+          (sort === "last_name_desc" || sort === "last_name_asc")
+        ) {
+          data.sort((a, b) =>
+            getLastNameFromFullName(a.display_name).localeCompare(
+              getLastNameFromFullName(b.display_name)
+            )
+          );
 
-        resolve(res.data);
+          if (sort === "last_name_desc") {
+            data.reverse();
+          }
+        }
+        resolve(data);
       })
       .catch(err => {
         if (err.response.status === 403) {

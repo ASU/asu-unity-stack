@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
+import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout } from "./index.styles";
 
@@ -47,6 +48,16 @@ function WebDirectory({
 
   const RES_PER_PAGE = 6;
 
+  let departmentDefinedOption = searchType === "departments"
+    ? { value: "department_defined", label: "Department defined" }
+    : { value: "", label: "Choose Sort"};
+
+  const customSortOptions = [
+    departmentDefinedOption,
+    { value: "last_name_asc", label: "Last Name (ascending)" },
+    { value: "last_name_desc", label: "Last Name (descending)" },
+  ];
+
   const searchTypeEngineMap = {
     departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
     people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
@@ -68,12 +79,6 @@ function WebDirectory({
     setRequestFilters(tempFilters);
   }
 
-  const handleKeyPressSort = (event, val) => {
-    if (event.keyCode === 13) {
-      setNewSort(val);
-    }
-  };
-
   useEffect(() => {
     if ((searchType === "departments" && deptIds) || ids) {
       doSearch();
@@ -83,26 +88,11 @@ function WebDirectory({
   return (
     <WebDirLayout>
       <div className="sort">
-        Sort By:
-        <button
-          type="button"
-          className="plain-button"
-          onClick={() => setNewSort("last_name_desc")}
-          onKeyPress={event => handleKeyPressSort(event, "last_name_desc")}
-          tabIndex={0}
-        >
-          Last name
-        </button>
-        |
-        <button
-          type="button"
-          className="plain-button"
-          onClick={() => setNewSort("_score_desc")}
-          onKeyPress={event => handleKeyPressSort(event, "_score_desc")}
-          tabIndex={0}
-        >
-          Rank
-        </button>
+        <SortPicker
+          customSortOptions={customSortOptions}
+          sort={searchParams.get(sortParamName)}
+          onChange={val => setNewSort(val)}
+        />
       </div>
       <div className="results">
         <ASUSearchResultsList

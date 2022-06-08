@@ -4,8 +4,8 @@ import React from "react";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { SortLayout } from "./index.styles";
 
-const SortPicker = ({ sort, onChange }) => {
-  const sortOptions = [
+const SortPicker = ({ sort, onChange, customSortOptions }) => {
+  const sortOptions = customSortOptions || [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
@@ -56,9 +56,13 @@ const SortPicker = ({ sort, onChange }) => {
             onChange={event => updateSort(event.target.value)}
             onClick={openSort}
           >
-            {sortOptions.map(op => (
+            {sortOptions.map(op => ( op.value
+              ?
               <option key={op.value} value={op.value}>
                 {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
+              </option>
+              : <option disabled selected key={op.value} value={op.value}>
+                {op.label}
               </option>
             ))}
           </select>
@@ -71,6 +75,12 @@ const SortPicker = ({ sort, onChange }) => {
 SortPicker.propTypes = {
   sort: PropTypes.string,
   onChange: PropTypes.func,
+  customSortOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 export { SortPicker };
