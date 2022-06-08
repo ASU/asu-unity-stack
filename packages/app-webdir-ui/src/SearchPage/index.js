@@ -22,6 +22,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
 
   const [term, setTerm] = useState("");
   const [sort, setSort] = useState("");
+  const [totalResults, setTotalResults] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
@@ -61,6 +62,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
 
   const doSearch = () => {
     if (searchValue.length > 0) {
+      setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
   };
@@ -85,6 +87,7 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
 
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
+    setTotalResults(0);
   };
 
   const inputKeyPress = e => {
@@ -157,6 +160,8 @@ function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
         <Tab id={tabIds.all} title="All ASU search">
           {preSearchOrContent(
             <AllTab
+              totalResults={totalResults}
+              setTotalResults={setTotalResults}
               engines={enginesWithParams}
               site={site}
               goToTab={goToTab}

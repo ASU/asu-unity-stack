@@ -32,7 +32,6 @@ const getTopResult = results => {
 };
 const standardFormatter = (engineName, results, cardSize) => {
   const topResult = getTopResult(results.results);
-  console.log(engineName);
   return {
     tab: engineName,
     page: results.meta.page,

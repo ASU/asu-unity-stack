@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
