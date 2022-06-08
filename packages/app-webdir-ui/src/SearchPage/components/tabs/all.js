@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import React, { useState } from "react";
+import PropTypes from "prop-types"; import React, { useState, useEffect } from "react";
 
 import { engineNames } from "../../../helpers/search";
 import { QuickLinks } from "../../../QuickLinks/index";
@@ -7,10 +6,16 @@ import { ASUSearchResultsList } from "../../../SearchResultsList/index";
 import { SearchMessage } from "../SearchMessage";
 import { AllTabLayout } from "./index.styles";
 
-const AllTab = ({ term, engines, site, goToTab }) => {
+const AllTab = ({
+  term,
+  engines,
+  site,
+  goToTab,
+  setTotalResults,
+  totalResults,
+}) => {
   const [promotedProfile, setPromotedProfile] = useState(null);
   const [promotedResult, setPromotedResult] = useState(null);
-  const [totalResults, setTotalResults] = useState(0);
 
   const tabIds = {
     all: "all",
@@ -20,8 +25,12 @@ const AllTab = ({ term, engines, site, goToTab }) => {
   };
 
   const registerResults = num => {
-    setTotalResults(num);
+    setTotalResults(prev => prev + num);
   };
+
+  useEffect(() => {
+    return () => setTotalResults(0);
+  }, []);
 
   return (
     <AllTabLayout>
@@ -109,6 +118,8 @@ AllTab.propTypes = {
   engines: PropTypes.object,
   site: PropTypes.string,
   goToTab: PropTypes.func,
+  setTotalResults: PropTypes.func,
+  totalResults: PropTypes.number,
 };
 
 export { AllTab };
