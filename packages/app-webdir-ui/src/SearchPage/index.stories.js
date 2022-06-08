@@ -15,7 +15,7 @@ export const searchPageExample = createStory(
     <SearchPage
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
-      loggedIn
+      loggedIn={false}
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
