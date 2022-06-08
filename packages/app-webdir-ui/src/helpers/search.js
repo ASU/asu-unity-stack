@@ -32,7 +32,6 @@ const getTopResult = results => {
 };
 const standardFormatter = (engineName, results, cardSize) => {
   const topResult = getTopResult(results.results);
-  console.log(engineName);
   return {
     tab: engineName,
     page: results.meta.page,
@@ -94,6 +93,7 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       engines[engineName].converter(result, {
         size: "large",
         titleMatch: titleOverwrite,
+        profileURLBase: "https://isearch.asu.edu"
       })
     ),
   };
