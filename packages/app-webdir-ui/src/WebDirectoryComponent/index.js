@@ -48,8 +48,12 @@ function WebDirectory({
 
   const RES_PER_PAGE = 6;
 
+  let departmentDefinedOption = searchType === "departments"
+    ? { value: "department_defined", label: "Department defined" }
+    : { value: "", label: "Choose Sort"};
+
   const customSortOptions = [
-    { value: "department_defined", label: "Department defined" },
+    departmentDefinedOption,
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
   ];

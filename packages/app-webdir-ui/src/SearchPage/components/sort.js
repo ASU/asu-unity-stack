@@ -56,9 +56,13 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
             onChange={event => updateSort(event.target.value)}
             onClick={openSort}
           >
-            {sortOptions.map(op => (
+            {sortOptions.map(op => ( op.value
+              ?
               <option key={op.value} value={op.value}>
                 {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
+              </option>
+              : <option disabled selected key={op.value} value={op.value}>
+                {op.label}
               </option>
             ))}
           </select>
