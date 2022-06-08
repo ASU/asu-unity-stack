@@ -13,9 +13,9 @@ export default createComponent("Search Page", "Organisms", "Templates");
 export const searchPageExample = createStory(
   <div className="uds-content-align">
     <SearchPage
-      API_URL="https://pr-245-asu-isearch.pantheonsite.io/"
+      API_URL="https://dev-asu-isearch.ws.asu.edu//"
       searchApiVersion="api/v1/"
-      loggedIn
+      loggedIn={false}
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
