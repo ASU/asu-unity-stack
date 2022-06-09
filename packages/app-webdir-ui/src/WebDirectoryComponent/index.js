@@ -41,6 +41,7 @@ function WebDirectory({
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState();
   const [requestFilters, setRequestFilters] = useState();
+  const [defaultSort, setDefaultSort] = useState(false);
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
@@ -48,15 +49,20 @@ function WebDirectory({
 
   const RES_PER_PAGE = 6;
 
-  let departmentDefinedOption = searchType === "departments"
-    ? { value: "department_defined", label: "Department defined" }
-    : { value: "", label: "Choose Sort"};
+  const departmentDefinedOption =
+    searchType === "departments"
+      ? { value: "department_defined", label: "Department defined" }
+      : { value: "", label: "Choose Sort" };
 
   const customSortOptions = [
     departmentDefinedOption,
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
   ];
+
+  const defaultCMSOptions = {
+    last_name: "last_name_asc",
+  };
 
   const searchTypeEngineMap = {
     departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
@@ -80,6 +86,14 @@ function WebDirectory({
   }
 
   useEffect(() => {
+    if (defaultCMSOptions[display.defaultSort]) {
+      setSearchParams({
+        [sortParamName]: defaultCMSOptions[display.defaultSort],
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     if ((searchType === "departments" && deptIds) || ids) {
       doSearch();
     }
@@ -92,6 +106,7 @@ function WebDirectory({
           customSortOptions={customSortOptions}
           sort={searchParams.get(sortParamName)}
           onChange={val => setNewSort(val)}
+          defaultValue
         />
       </div>
       <div className="results">

@@ -4,7 +4,7 @@ import React from "react";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { SortLayout } from "./index.styles";
 
-const SortPicker = ({ sort, onChange, customSortOptions }) => {
+const SortPicker = ({ sort, onChange, customSortOptions, defaultValue }) => {
   const sortOptions = customSortOptions || [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
@@ -14,7 +14,7 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
   const getSortEventText = () => {
     let text = sortOptions.find(op => {
       return op.value === sort;
-    }).label;
+    })?.label;
     if (text === "Relevancy") {
       text = "Sort by Relevancy";
     }
@@ -52,19 +52,22 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
           <select
             className="form-control"
             id="sortBySelect"
-            value={sort}
+            // value={sort}
             onChange={event => updateSort(event.target.value)}
             onClick={openSort}
+            defaultValue={defaultValue ? "" : sort}
           >
-            {sortOptions.map(op => ( op.value
-              ?
-              <option key={op.value} value={op.value}>
-                {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
-              </option>
-              : <option disabled selected key={op.value} value={op.value}>
-                {op.label}
-              </option>
-            ))}
+            {sortOptions.map(op =>
+              op.value !== "" ? (
+                <option key={op.value} value={op.value}>
+                  {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
+                </option>
+              ) : (
+                <option disabled key={op.value} value={op.value}>
+                  {op.label}
+                </option>
+              )
+            )}
           </select>
         </div>
       </form>
@@ -81,6 +84,7 @@ SortPicker.propTypes = {
       label: PropTypes.string,
     })
   ),
+  defaultValue: PropTypes.bool,
 };
 
 export { SortPicker };

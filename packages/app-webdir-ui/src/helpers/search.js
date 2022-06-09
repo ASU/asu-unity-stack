@@ -98,7 +98,7 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       engines[engineName].converter(result, {
         size: "large",
         titleMatch: titleOverwrite,
-        profileURLBase: "https://isearch.asu.edu"
+        profileURLBase: "https://isearch.asu.edu",
       })
     ),
   };
@@ -176,7 +176,7 @@ export const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
-    supportedSortTypes: ["_score_desc", "last_name_desc"],
+    supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "POST",
     formatter: (results, cardSize, filters) =>
       webDirDeptsFormatter(
