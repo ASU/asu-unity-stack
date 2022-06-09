@@ -11,8 +11,13 @@ const StudentsTab = ({ engines, term, loggedIn }) => {
     <StudentsTabLayout>
       {!loggedIn && (
         <div className="all-message">
-      <SearchMessage term={term} number={0} loggedIn={loggedIn} engine={"web_dir_students"} />
-      </div>
+          <SearchMessage
+            term={term}
+            number={0}
+            loggedIn={loggedIn}
+            engine="web_dir_students"
+          />
+        </div>
       )}
       <ASUSearchResultsList
         term={term}
