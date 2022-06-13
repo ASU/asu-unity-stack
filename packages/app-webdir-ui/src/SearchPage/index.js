@@ -14,7 +14,13 @@ import {
 } from "./components/tabs";
 import { SearchPageLayout } from "./index.styles";
 
-function SearchPage({ API_URL, searchApiVersion, loggedIn, profileURLBase }) {
+function SearchPage({
+  API_URL,
+  searchApiVersion,
+  loggedIn,
+  profileURLBase,
+  appPathFolder,
+}) {
   const searchTabsId = "search-tabs";
   const queryParamName = "q";
   const sortParamName = "sort-by";
@@ -205,6 +211,7 @@ SearchPage.propTypes = {
   searchApiVersion: PropTypes.string,
   loggedIn: PropTypes.bool,
   profileURLBase: PropTypes.string,
+  appPathFolder: PropTypes.string,
 };
 
 export { SearchPage };
