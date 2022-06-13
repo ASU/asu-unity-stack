@@ -119,6 +119,7 @@ function WebDirectory({
           hidePaginator={display.usePager !== "1"}
           filters={requestFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
+          display={display}
         />
       </div>
     </WebDirLayout>

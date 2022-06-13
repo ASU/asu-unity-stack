@@ -32,11 +32,12 @@ const ASUSearchResultsList = ({
   filters,
   loggedIn,
   profilesToFilterOut,
+  display,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [subtitle, setSubtitle] = useState(null);
-  const [currentPage, setCurrentPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
@@ -45,7 +46,15 @@ const ASUSearchResultsList = ({
     if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
 
-      performSearch({ engine, term, page, itemsPerPage, sort, filters })
+      performSearch({
+        engine,
+        term,
+        page,
+        itemsPerPage,
+        sort,
+        filters,
+        display,
+      })
         .then(res => {
           let filteredResults = res;
 
@@ -61,8 +70,14 @@ const ASUSearchResultsList = ({
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
-          setCurrentPage(formattedResults.page.current);
-          setTotalResults(formattedResults.page.total_results);
+          if (engine.method === "GET") {
+            setCurrentPage(formattedResults.page.current);
+          }
+          if (engine.method === "POST") {
+            setTotalResults(filters.peopleInDepts.length);
+          } else {
+            setTotalResults(formattedResults.page.total_results);
+          }
           const resultsWithProps = formattedResults.results.map(
             (profile, idx) => {
               const newProps = {
@@ -209,6 +224,12 @@ ASUSearchResultsList.propTypes = {
   filters: PropTypes.object,
   loggedIn: PropTypes.bool,
   profilesToFilterOut: PropTypes.string,
+  display: PropTypes.shape({
+    defaultSort: PropTypes.string,
+    doNotDisplayProfiles: PropTypes.string,
+    profilesPerPage: PropTypes.string,
+    usePager: PropTypes.string,
+  }),
 };
 
 export { ASUSearchResultsList };
