@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
     // @ts-ignore
-    <LoginWrapper className="nav-link" breakpoint={breakpoint}>
+    <LoginWrapper className="nav-link login-status" breakpoint={breakpoint}>
       {loggedIn ? (
         <>
           {userName ? (
