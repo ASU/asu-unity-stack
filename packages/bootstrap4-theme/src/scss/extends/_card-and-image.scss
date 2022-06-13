@@ -1,5 +1,6 @@
 .uds-card-and-image {
-  background-position: top;
+  aspect-ratio: 16 / 9;
+  background-position: center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -38,6 +39,12 @@
     }
     @media screen and (max-width: $uds-breakpoint-sm) {
       width: 100%;
+    }
+  }
+
+  .card-body {
+    p {
+      margin: $uds-size-spacing-4 0 $uds-size-spacing-3 0;
     }
   }
 }
