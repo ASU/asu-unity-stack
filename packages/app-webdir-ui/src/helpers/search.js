@@ -196,6 +196,7 @@ export const performSearch = function ({
   itemsPerPage,
   sort,
   filters,
+  display,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort)
@@ -257,9 +258,9 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size": "",
-        "page": "",
-        "sort-by": "",
+        "size": display.profilesPerPage || "",
+        "page": page || "",
+        "sort-by": sort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
       };
