@@ -242,5 +242,4 @@ View our [Contributing Guidelines](./CONTRIBUTING.md)
 ![divider](./divider.png)
 
 ## ❯ License
-
 [MIT](/LICENSE)
