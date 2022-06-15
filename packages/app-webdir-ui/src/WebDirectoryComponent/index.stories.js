@@ -13,7 +13,7 @@ export default createComponent("Web Directory", "Organisms", "Templates");
 const display = {
   defaultSort: "last_name",
   doNotDisplayProfiles: "",
-  profilesPerPage: "20",
+  profilesPerPage: "5",
   usePager: "1",
 };
 const filters = {

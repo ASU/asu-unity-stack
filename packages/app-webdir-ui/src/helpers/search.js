@@ -66,7 +66,13 @@ export const anonFormatter = (engineName, numResults, cardSize) => {
   };
 };
 
-const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
+const webDirDeptsFormatter = (
+  engineName,
+  results,
+  cardSize,
+  filters,
+  currentPage
+) => {
   let localResults = null;
   let localPage = 1;
   if (engines[engineName].name === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
@@ -159,14 +165,20 @@ export const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
-    supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
+    supportedSortTypes: [
+      "_score_desc",
+      "last_name_desc",
+      "last_name_asc",
+      "employee_weight",
+    ],
     method: "GET",
-    formatter: (results, cardSize, filters) =>
+    formatter: (results, cardSize, filters, currentPage) =>
       webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
-        filters
+        filters,
+        currentPage
       ),
     needsTerm: false,
   },
@@ -199,9 +211,7 @@ export const performSearch = function ({
   display,
 }) {
   async function search(resolve, reject) {
-    const currentSort = engine.supportedSortTypes.includes(sort)
-      ? sort
-      : "_score_desc";
+    const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
 
     const searchURLOrDefault = engine.API_URL
       ? `${engine.API_URL}${engine.searchApiVersion}`
@@ -212,6 +222,12 @@ export const performSearch = function ({
     let APICall = null;
     if (engine.method === "GET") {
       query = `${query}?&sort-by=${currentSort}`;
+
+      // reassign endpoint to new custom endpoint and sort is not
+      // important since endpoint automatically only sorts by employee weight
+      if (currentSort === "employee_weight") {
+        query = `${engine.API_URL}endpoint/v1/department/custom-sort?`;
+      }
       if (term) {
         query = `${query}&query=${term}`;
       }
@@ -221,7 +237,9 @@ export const performSearch = function ({
       if (engine.site) {
         query = `${query}&url_host=${engine.site}`;
       }
-      if (itemsPerPage) {
+      if (itemsPerPage && sort === "employee_weight") {
+        query = `${query}&items_per_page=${itemsPerPage}`;
+      } else if (itemsPerPage) {
         query = `${query}&size=${itemsPerPage}`;
       }
       if (filters && filters.deptIds) {
@@ -258,9 +276,12 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size": display.profilesPerPage || "",
+        "size":
+          filters.peopleInDepts < itemsPerPage
+            ? filters.peopleInDepts.length
+            : itemsPerPage,
         "page": page || "",
-        "sort-by": sort || "",
+        "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
       };

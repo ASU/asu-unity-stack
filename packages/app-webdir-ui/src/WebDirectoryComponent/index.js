@@ -41,7 +41,6 @@ function WebDirectory({
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState();
   const [requestFilters, setRequestFilters] = useState();
-  const [defaultSort, setDefaultSort] = useState(false);
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
@@ -62,6 +61,7 @@ function WebDirectory({
 
   const defaultCMSOptions = {
     last_name: "last_name_asc",
+    webdir_customized: "employee_weight",
   };
 
   const searchTypeEngineMap = {

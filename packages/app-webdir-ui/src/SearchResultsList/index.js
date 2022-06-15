@@ -45,7 +45,6 @@ const ASUSearchResultsList = ({
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
-
       performSearch({
         engine,
         term,
@@ -61,7 +60,6 @@ const ASUSearchResultsList = ({
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
-
           const formattedResults = engine.formatter(
             filteredResults,
             cardSize,
