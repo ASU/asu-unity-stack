@@ -66,7 +66,13 @@ export const anonFormatter = (engineName, numResults, cardSize) => {
   };
 };
 
-const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
+const webDirDeptsFormatter = (
+  engineName,
+  results,
+  cardSize,
+  filters,
+  currentPage
+) => {
   let localResults = null;
   let localPage = 1;
   if (engines[engineName].name === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
@@ -76,6 +82,9 @@ const webDirDeptsFormatter = (engineName, results, cardSize, filters) => {
       // eslint-disable-next-line camelcase
       return { ...basicFields, ...full_record };
     });
+  } else if (Array.isArray(results)) {
+    localResults = results;
+    localPage = currentPage;
   } else {
     localResults = results.results;
     localPage = results.meta.page;
@@ -159,14 +168,20 @@ export const engines = {
     needsAuth: false,
     converter: staffConverter,
     resultsPerSummaryPage: 6,
-    supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
+    supportedSortTypes: [
+      "_score_desc",
+      "last_name_desc",
+      "last_name_asc",
+      "employee_weight",
+    ],
     method: "GET",
-    formatter: (results, cardSize, filters) =>
+    formatter: (results, cardSize, filters, currentPage) =>
       webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
-        filters
+        filters,
+        currentPage
       ),
     needsTerm: false,
   },
@@ -199,9 +214,7 @@ export const performSearch = function ({
   display,
 }) {
   async function search(resolve, reject) {
-    const currentSort = engine.supportedSortTypes.includes(sort)
-      ? sort
-      : "_score_desc";
+    const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
 
     const searchURLOrDefault = engine.API_URL
       ? `${engine.API_URL}${engine.searchApiVersion}`
@@ -212,6 +225,9 @@ export const performSearch = function ({
     let APICall = null;
     if (engine.method === "GET") {
       query = `${query}?&sort-by=${currentSort}`;
+      if (currentSort === "employee_weight") {
+        query = `${engine.API_URL}endpoint/v1/department/custom-sort?`;
+      }
       if (term) {
         query = `${query}&query=${term}`;
       }
@@ -221,7 +237,9 @@ export const performSearch = function ({
       if (engine.site) {
         query = `${query}&url_host=${engine.site}`;
       }
-      if (itemsPerPage) {
+      if (itemsPerPage && sort === "employee_weight") {
+        query = `${query}&items_per_page=${itemsPerPage}`;
+      } else if (itemsPerPage) {
         query = `${query}&size=${itemsPerPage}`;
       }
       if (filters && filters.deptIds) {
@@ -260,7 +278,7 @@ export const performSearch = function ({
       const data = {
         "size": display.profilesPerPage || "",
         "page": page || "",
-        "sort-by": sort || "",
+        "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
       };
@@ -289,10 +307,52 @@ export const performSearch = function ({
         resolve(data);
       })
       .catch(err => {
+        console.log(err);
         if (err.response.status === 403) {
           reject(403);
         }
       });
+  }
+  return new Promise(search);
+};
+
+export const oldQuery = function ({ engine, filters }) {
+  async function search(resolve, reject) {
+    const serachEndpoint = `${engine.API_URL}${engine.searchApiVersion}${engine.url}?`;
+    let query;
+    if (filters && filters.deptIds) {
+      const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
+      query = `&dept_ids=${deptIDValues}`;
+    }
+    if (filters && filters.peopleIds) {
+      const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
+      query = `${query}&asurite_ids=${asuriteIDParam}`;
+    }
+    if (filters && filters.title) {
+      const titleParam = `title=${filters.title}`;
+      query = `${query}&${titleParam}`;
+    }
+    if (filters && filters.campuses) {
+      const campusesParam = `campuses=${filters.campuses}`;
+      query = `${query}&${campusesParam}`;
+    }
+    if (filters && filters.expertise) {
+      const expertiseParam = `expertise_areas=${filters.expertise}`;
+      query = `${query}&${expertiseParam}`;
+    }
+    if (filters && filters.employee_types) {
+      const employeeTypesParam = `campuses=${filters.employee_types}`;
+      query = `${query}&${employeeTypesParam}`;
+    }
+    let totalResults;
+    try {
+      const rawResults = await fetch(`${serachEndpoint}${query}`);
+      const results = await rawResults.json();
+      totalResults = results.meta.page.total_results;
+      resolve(results.meta.page.total_results);
+    } catch (e) {
+      reject(e.message);
+    }
   }
   return new Promise(search);
 };

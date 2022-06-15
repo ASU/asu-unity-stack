@@ -41,7 +41,6 @@ function WebDirectory({
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState();
   const [requestFilters, setRequestFilters] = useState();
-  const [defaultSort, setDefaultSort] = useState(false);
 
   const setNewSort = newSort => {
     setSearchParams({ [sortParamName]: newSort });
@@ -62,6 +61,7 @@ function WebDirectory({
 
   const defaultCMSOptions = {
     last_name: "last_name_asc",
+    webdir_customized: "employee_weight",
   };
 
   const searchTypeEngineMap = {
@@ -100,29 +100,32 @@ function WebDirectory({
   }, [searchParams]);
 
   return (
-    <WebDirLayout>
-      <div className="sort">
-        <SortPicker
-          customSortOptions={customSortOptions}
-          sort={searchParams.get(sortParamName)}
-          onChange={val => setNewSort(val)}
-          defaultValue
-        />
-      </div>
-      <div className="results">
-        <ASUSearchResultsList
-          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
-          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          onPageChange={page => doSearch(page)}
-          size="large"
-          sort={searchParams.get(sortParamName)}
-          hidePaginator={display.usePager !== "1"}
-          filters={requestFilters}
-          profilesToFilterOut={display.doNotDisplayProfiles}
-          display={display}
-        />
-      </div>
-    </WebDirLayout>
+    <React.StrictMode>
+      <WebDirLayout>
+        <div className="sort">
+          <SortPicker
+            customSortOptions={customSortOptions}
+            sort={searchParams.get(sortParamName)}
+            onChange={val => setNewSort(val)}
+            defaultValue
+          />
+        </div>
+        <div className="results">
+          <ASUSearchResultsList
+            engine={enginesWithParams[searchTypeEngineMap[searchType]]}
+            itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
+            onPageChange={page => doSearch(page)}
+            size="large"
+            sort={searchParams.get(sortParamName)}
+            hidePaginator={display.usePager !== "1"}
+            filters={requestFilters}
+            profilesToFilterOut={display.doNotDisplayProfiles}
+            display={display}
+            searchType={searchType}
+          />
+        </div>
+      </WebDirLayout>
+    </React.StrictMode>
   );
 }
 

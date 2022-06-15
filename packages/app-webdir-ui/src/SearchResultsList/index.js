@@ -8,6 +8,7 @@ import {
   performSearch,
   anonFormatter,
   filterOutResults,
+  oldQuery,
 } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
@@ -33,6 +34,7 @@ const ASUSearchResultsList = ({
   loggedIn,
   profilesToFilterOut,
   display,
+  searchType,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +47,6 @@ const ASUSearchResultsList = ({
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
-
       performSearch({
         engine,
         term,
@@ -61,12 +62,21 @@ const ASUSearchResultsList = ({
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
-
-          const formattedResults = engine.formatter(
-            filteredResults,
-            cardSize,
-            filters
-          );
+          let formattedResults;
+          if (searchType === "departments") {
+            formattedResults = engine.formatter(
+              filteredResults,
+              cardSize,
+              filters,
+              page
+            );
+          } else {
+            formattedResults = engine.formatter(
+              filteredResults,
+              cardSize,
+              filters
+            );
+          }
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
@@ -75,6 +85,11 @@ const ASUSearchResultsList = ({
           }
           if (engine.method === "POST") {
             setTotalResults(filters.peopleInDepts.length);
+          } else if (searchType === "departments") {
+            oldQuery({ engine, filters }).then(response => {
+              setTotalResults(response);
+              setCurrentPage(page);
+            });
           } else {
             setTotalResults(formattedResults.page.total_results);
           }
@@ -142,7 +157,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch();
-  }, [term, sort, filters, itemsPerPage, profilesToFilterOut]);
+  }, [sort, filters, itemsPerPage, profilesToFilterOut]);
 
   function expandClick(text) {
     trackGAEvent({
@@ -230,6 +245,7 @@ ASUSearchResultsList.propTypes = {
     profilesPerPage: PropTypes.string,
     usePager: PropTypes.string,
   }),
+  searchType: PropTypes.string,
 };
 
 export { ASUSearchResultsList };
