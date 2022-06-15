@@ -122,6 +122,7 @@ function WebDirectory({
           filters={requestFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
           display={display}
+          appPathFolder
         />
       </div>
     </WebDirLayout>

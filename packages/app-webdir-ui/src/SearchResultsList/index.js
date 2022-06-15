@@ -33,6 +33,7 @@ const ASUSearchResultsList = ({
   loggedIn,
   profilesToFilterOut,
   display,
+  appPathFolder,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -229,6 +230,7 @@ ASUSearchResultsList.propTypes = {
     profilesPerPage: PropTypes.string,
     usePager: PropTypes.string,
   }),
+  appPathFolder: PropTypes.string,
 };
 
 export { ASUSearchResultsList };
