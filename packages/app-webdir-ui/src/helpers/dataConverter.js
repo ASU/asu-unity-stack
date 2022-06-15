@@ -5,6 +5,11 @@ import anonPic from "../assets/anon.png";
 import { ProfileCard } from "../ProfileCard/index";
 import { ResultCard } from "../ResultCard/index";
 
+// Use packaged image, but for CMS aggregation contexts we
+// override in converters below using appPathFolder prop.
+// See https://asudev.jira.com/browse/ASUIS-550
+let anonImg = anonPic;
+
 const fillInBlanks = datum => {
   const datumAdjusted = datum;
   // If in datum, but without .raw, delete so can be filled.
@@ -191,6 +196,9 @@ export const staffConverter = (
   const safeAsuriteID = filledDatum.asurite_id.raw.length
     ? filledDatum.asurite_id.raw.toString()
     : null;
+  if (options.appPathFolder) {
+    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  }
   return (
     <>
       {safeAsuriteID ? (
@@ -200,6 +208,7 @@ export const staffConverter = (
           profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
           key={safeAsuriteID}
           imgURL={filledDatum.photo_url.raw}
+          anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
           matchedAffiliationDept={titles.matchedAffiliationDept}
@@ -229,6 +238,9 @@ export const studentsConverter = (
   }
 ) => {
   const filledDatum = fillInBlanks(datum);
+  if (options.appPathFolder) {
+    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  }
   return (
     <ProfileCard
       isRequired={false}
@@ -236,6 +248,7 @@ export const studentsConverter = (
       profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
       key={filledDatum.asurite_id.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
+      anonImgURL={anonImg}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}
       email={filledDatum.email_address.raw}
@@ -258,13 +271,17 @@ export const anonConverter = (
     size: "small",
   }
 ) => {
+  if (options.appPathFolder) {
+    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  }
   return (
     <ProfileCard
       isRequired={false}
       id={datum.toString()}
       profileURL={null}
       key={datum}
-      imgURL={anonPic}
+      imgURL={anonImg}
+      anonImgURL={anonImg}
       name="Student name"
       titles={["Title"]}
       email="email@example.com"

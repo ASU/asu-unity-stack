@@ -39,6 +39,7 @@ function SearchPage({
     API_URL,
     searchApiVersion,
     profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    appPathFolder,
   };
 
   const enginesWithParams = {

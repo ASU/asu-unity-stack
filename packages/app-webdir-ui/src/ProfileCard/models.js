@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 export const profileCardType = {
   id: PropTypes.string,
   imgURL: PropTypes.string,
+  anonImgURL: PropTypes.string,
   name: PropTypes.string,
   titles: PropTypes.arrayOf(PropTypes.string),
   email: PropTypes.string,
