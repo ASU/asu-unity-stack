@@ -8,7 +8,6 @@ import {
   performSearch,
   anonFormatter,
   filterOutResults,
-  oldQuery,
 } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
