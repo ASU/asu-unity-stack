@@ -12,7 +12,7 @@ export default createComponent("Web Directory", "Organisms", "Templates");
 
 const display = {
   defaultSort: "last_name",
-  doNotDisplayProfiles: "mcrow",
+  doNotDisplayProfiles: "",
   profilesPerPage: "5",
   usePager: "1",
 };
