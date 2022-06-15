@@ -14,6 +14,7 @@ function WebDirectory({
   API_URL,
   searchApiVersion,
   profileURLBase,
+  appPathFolder,
   display,
   filters,
 }) {
@@ -22,6 +23,7 @@ function WebDirectory({
     API_URL,
     searchApiVersion,
     profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    appPathFolder,
   };
   const enginesWithParams = {
     [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
@@ -133,6 +135,7 @@ WebDirectory.propTypes = {
   searchType: PropTypes.string,
   ids: PropTypes.string,
   profileURLBase: PropTypes.string,
+  appPathFolder: PropTypes.string,
   display: PropTypes.shape({
     defaultSort: PropTypes.string,
     doNotDisplayProfiles: PropTypes.string,

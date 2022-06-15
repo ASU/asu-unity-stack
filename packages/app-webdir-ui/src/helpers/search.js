@@ -54,13 +54,22 @@ const standardFormatter = (engineName, results, cardSize) => {
   };
 };
 
-export const anonFormatter = (engineName, numResults, cardSize) => {
+export const anonFormatter = (
+  engineName,
+  numResults,
+  cardSize,
+  appPathFolder
+) => {
   const anonResults = new Array(numResults || 3).fill(1);
   return {
     tab: engineName,
     page: 1,
     results: anonResults.map((result, idx) =>
-      anonConverter(idx, { size: cardSize, fill: false })
+      anonConverter(idx, {
+        size: cardSize,
+        fill: false,
+        appPathFolder,
+      })
     ),
     topResult: null,
   };

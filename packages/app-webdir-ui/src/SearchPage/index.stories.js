@@ -16,6 +16,7 @@ export const searchPageExample = createStory(
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       loggedIn={false}
+      // appPathFolder="/my/custom/path/to/component/root/example"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }

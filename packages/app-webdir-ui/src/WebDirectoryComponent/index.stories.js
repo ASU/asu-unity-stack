@@ -32,6 +32,7 @@ export const webDirectoryExampleDepartments = createStory(
       searchApiVersion="api/v1/"
       filters={filters}
       display={display}
+      // appPathFolder="/my/custom/path/to/component/root/example"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -49,6 +50,7 @@ export const webDirectoryExamplePeople = createStory(
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       display={display}
+      // appPathFolder="/my/custom/path/to/component/root/example"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
@@ -66,6 +68,7 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       display={display}
+      // appPathFolder="/my/custom/path/to/component/root/example"
     />
   </div>,
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
