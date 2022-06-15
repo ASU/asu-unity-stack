@@ -82,7 +82,7 @@ const webDirDeptsFormatter = (
       // eslint-disable-next-line camelcase
       return { ...basicFields, ...full_record };
     });
-  }  else {
+  } else {
     localResults = results.results;
     localPage = results.meta.page;
   }

@@ -60,12 +60,11 @@ const ASUSearchResultsList = ({
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
-          let formattedResults;
-            formattedResults = engine.formatter(
-              filteredResults,
-              cardSize,
-              filters
-            );
+          const formattedResults = engine.formatter(
+            filteredResults,
+            cardSize,
+            filters
+          );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
@@ -74,8 +73,7 @@ const ASUSearchResultsList = ({
           }
           if (engine.method === "POST") {
             setTotalResults(filters.peopleInDepts.length);
-          }
-          else {
+          } else {
             setTotalResults(formattedResults.page.total_results);
           }
           const resultsWithProps = formattedResults.results.map(
