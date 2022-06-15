@@ -100,7 +100,6 @@ function WebDirectory({
   }, [searchParams]);
 
   return (
-    <React.StrictMode>
       <WebDirLayout>
         <div className="sort">
           <SortPicker
@@ -125,7 +124,6 @@ function WebDirectory({
           />
         </div>
       </WebDirLayout>
-    </React.StrictMode>
   );
 }
 

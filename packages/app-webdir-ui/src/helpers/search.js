@@ -307,7 +307,6 @@ export const performSearch = function ({
         resolve(data);
       })
       .catch(err => {
-        console.log(err);
         if (err.response.status === 403) {
           reject(403);
         }
