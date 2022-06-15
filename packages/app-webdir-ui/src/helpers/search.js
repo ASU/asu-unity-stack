@@ -82,10 +82,7 @@ const webDirDeptsFormatter = (
       // eslint-disable-next-line camelcase
       return { ...basicFields, ...full_record };
     });
-  } else if (Array.isArray(results)) {
-    localResults = results;
-    localPage = currentPage;
-  } else {
+  }  else {
     localResults = results.results;
     localPage = results.meta.page;
   }
@@ -225,6 +222,9 @@ export const performSearch = function ({
     let APICall = null;
     if (engine.method === "GET") {
       query = `${query}?&sort-by=${currentSort}`;
+
+      // reassign endpoint to new custom endpoint and sort is not
+      // important since endpoint automatically only sorts by employee weight
       if (currentSort === "employee_weight") {
         query = `${engine.API_URL}endpoint/v1/department/custom-sort?`;
       }
@@ -311,47 +311,6 @@ export const performSearch = function ({
           reject(403);
         }
       });
-  }
-  return new Promise(search);
-};
-
-export const oldQuery = function ({ engine, filters }) {
-  async function search(resolve, reject) {
-    const serachEndpoint = `${engine.API_URL}${engine.searchApiVersion}${engine.url}?`;
-    let query;
-    if (filters && filters.deptIds) {
-      const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
-      query = `&dept_ids=${deptIDValues}`;
-    }
-    if (filters && filters.peopleIds) {
-      const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
-      query = `${query}&asurite_ids=${asuriteIDParam}`;
-    }
-    if (filters && filters.title) {
-      const titleParam = `title=${filters.title}`;
-      query = `${query}&${titleParam}`;
-    }
-    if (filters && filters.campuses) {
-      const campusesParam = `campuses=${filters.campuses}`;
-      query = `${query}&${campusesParam}`;
-    }
-    if (filters && filters.expertise) {
-      const expertiseParam = `expertise_areas=${filters.expertise}`;
-      query = `${query}&${expertiseParam}`;
-    }
-    if (filters && filters.employee_types) {
-      const employeeTypesParam = `campuses=${filters.employee_types}`;
-      query = `${query}&${employeeTypesParam}`;
-    }
-    let totalResults;
-    try {
-      const rawResults = await fetch(`${serachEndpoint}${query}`);
-      const results = await rawResults.json();
-      totalResults = results.meta.page.total_results;
-      resolve(results.meta.page.total_results);
-    } catch (e) {
-      reject(e.message);
-    }
   }
   return new Promise(search);
 };

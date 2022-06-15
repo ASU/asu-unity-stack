@@ -120,7 +120,6 @@ function WebDirectory({
             filters={requestFilters}
             profilesToFilterOut={display.doNotDisplayProfiles}
             display={display}
-            searchType={searchType}
           />
         </div>
       </WebDirLayout>

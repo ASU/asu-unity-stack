@@ -34,7 +34,6 @@ const ASUSearchResultsList = ({
   loggedIn,
   profilesToFilterOut,
   display,
-  searchType,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,20 +62,11 @@ const ASUSearchResultsList = ({
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
           let formattedResults;
-          if (searchType === "departments") {
-            formattedResults = engine.formatter(
-              filteredResults,
-              cardSize,
-              filters,
-              page
-            );
-          } else {
             formattedResults = engine.formatter(
               filteredResults,
               cardSize,
               filters
             );
-          }
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
@@ -85,12 +75,8 @@ const ASUSearchResultsList = ({
           }
           if (engine.method === "POST") {
             setTotalResults(filters.peopleInDepts.length);
-          } else if (searchType === "departments") {
-            oldQuery({ engine, filters }).then(response => {
-              setTotalResults(response);
-              setCurrentPage(page);
-            });
-          } else {
+          }
+          else {
             setTotalResults(formattedResults.page.total_results);
           }
           const resultsWithProps = formattedResults.results.map(
@@ -245,7 +231,6 @@ ASUSearchResultsList.propTypes = {
     profilesPerPage: PropTypes.string,
     usePager: PropTypes.string,
   }),
-  searchType: PropTypes.string,
 };
 
 export { ASUSearchResultsList };
