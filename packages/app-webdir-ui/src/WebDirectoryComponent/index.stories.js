@@ -11,9 +11,9 @@ import {
 export default createComponent("Web Directory", "Organisms", "Templates");
 
 const display = {
-  defaultSort: "webdir_customized",
-  doNotDisplayProfiles: "",
-  profilesPerPage: "2",
+  defaultSort: "last_name",
+  doNotDisplayProfiles: "mcrow",
+  profilesPerPage: "5",
   usePager: "1",
 };
 const filters = {
@@ -28,7 +28,7 @@ export const webDirectoryExampleDepartments = createStory(
     <WebDirectory
       searchType="departments"
       deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003"
-      API_URL="https://pr-311-asu-isearch.pantheonsite.io/"
+      API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       filters={filters}
       display={display}
@@ -46,7 +46,7 @@ export const webDirectoryExamplePeople = createStory(
     <WebDirectory
       searchType="people"
       ids=",mcrow:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
-      API_URL=" https://pr-311-asu-isearch.pantheonsite.io/"
+      API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       display={display}
     />
@@ -63,7 +63,7 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
     <WebDirectory
       searchType="people_departments"
       ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
-      API_URL="https://pr-311-asu-isearch.pantheonsite.io/"
+      API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       display={display}
     />

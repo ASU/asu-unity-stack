@@ -276,7 +276,10 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size": display.profilesPerPage || "",
+        "size":
+          filters.peopleInDepts < itemsPerPage
+            ? filters.peopleInDepts.length
+            : itemsPerPage,
         "page": page || "",
         "sort-by": currentSort || "",
         "full_records": true,
