@@ -100,7 +100,7 @@ const ASUSearchResultsList = ({
                 term={term}
                 number={formattedResults.page.total_results}
                 loggedIn={loggedIn}
-                engine={engine}
+                engine={engine.name}
               />
             );
           } else {
@@ -123,7 +123,8 @@ const ASUSearchResultsList = ({
             const anonCards = anonFormatter(
               engine.name,
               itemsPerPage,
-              cardSize
+              cardSize,
+              engine.appPathFolder
             );
             setResults(anonCards.results);
             setCurrentPage(1);
