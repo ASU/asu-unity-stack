@@ -33,6 +33,7 @@ const ASUSearchResultsList = ({
   loggedIn,
   profilesToFilterOut,
   display,
+  appPathFolder,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +64,8 @@ const ASUSearchResultsList = ({
           const formattedResults = engine.formatter(
             filteredResults,
             cardSize,
-            filters
+            filters,
+            appPathFolder
           );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
@@ -229,6 +231,7 @@ ASUSearchResultsList.propTypes = {
     profilesPerPage: PropTypes.string,
     usePager: PropTypes.string,
   }),
+  appPathFolder: PropTypes.string,
 };
 
 export { ASUSearchResultsList };

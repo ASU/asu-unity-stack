@@ -1,6 +1,5 @@
 import React from "react";
 
-import anonPic from "../assets/anon.png";
 import { trackGAEvent } from "../core/services/googleAnalytics";
 import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";

@@ -35,22 +35,30 @@ const getTopResult = results => {
   }
   return null;
 };
-const standardFormatter = (engineName, results, cardSize) => {
+const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
   const topResult = getTopResult(results.results);
   return {
     tab: engineName,
     page: results.meta.page,
     results: results.results.map(result =>
-      engines[engineName].converter(result, { size: cardSize, fill: false })
+      engines[engineName].converter(
+        result,
+        { size: cardSize, fill: false },
+        appPathFolder
+      )
     ),
     topResult:
       topResult === null
         ? null
-        : engines[engineName].converter(topResult, {
-            size: "small",
-            profileURLBase: engines[engineName].profileURLBase,
-            fill: true,
-          }),
+        : engines[engineName].converter(
+            topResult,
+            {
+              size: "small",
+              profileURLBase: engines[engineName].profileURLBase,
+              fill: true,
+            },
+            appPathFolder
+          ),
   };
 };
 
@@ -65,11 +73,14 @@ export const anonFormatter = (
     tab: engineName,
     page: 1,
     results: anonResults.map((result, idx) =>
-      anonConverter(idx, {
-        size: cardSize,
-        fill: false,
-        appPathFolder,
-      })
+      anonConverter(
+        idx,
+        {
+          size: cardSize,
+          fill: false,
+        },
+        appPathFolder
+      )
     ),
     topResult: null,
   };
@@ -80,7 +91,7 @@ const webDirDeptsFormatter = (
   results,
   cardSize,
   filters,
-  currentPage
+  appPathFolder
 ) => {
   let localResults = null;
   let localPage = 1;
@@ -110,11 +121,15 @@ const webDirDeptsFormatter = (
     tab: engines[engineName].name,
     page: localPage,
     results: localResults.map(result =>
-      engines[engineName].converter(result, {
-        size: "large",
-        titleMatch: titleOverwrite,
-        profileURLBase: "https://isearch.asu.edu",
-      })
+      engines[engineName].converter(
+        result,
+        {
+          size: "large",
+          titleMatch: titleOverwrite,
+          profileURLBase: "https://isearch.asu.edu",
+        },
+        appPathFolder
+      )
     ),
   };
 };
@@ -128,8 +143,8 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize) =>
-      standardFormatter(engineNames.FACULTY, results, cardSize),
+    formatter: (results, cardSize, appPathFolder) =>
+      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder),
     needsTerm: true,
   },
   [engineNames.STUDENTS]: {
@@ -140,8 +155,8 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize) =>
-      standardFormatter(engineNames.STUDENTS, results, cardSize),
+    formatter: (results, cardSize, appPathFolder) =>
+      standardFormatter(engineNames.STUDENTS, results, cardSize, appPathFolder),
     needsTerm: true,
   },
   [engineNames.SITES]: {
@@ -152,8 +167,8 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
     method: "GET",
-    formatter: (results, cardSize) =>
-      standardFormatter(engineNames.SITES, results, cardSize),
+    formatter: (results, cardSize, appPathFolder) =>
+      standardFormatter(engineNames.SITES, results, cardSize, appPathFolder),
     needsTerm: true,
   },
   [engineNames.SITES_LOCAL]: {
@@ -164,8 +179,13 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
     method: "GET",
-    formatter: (results, cardSize) =>
-      standardFormatter(engineNames.SITES_LOCAL, results, cardSize),
+    formatter: (results, cardSize, appPathFolder) =>
+      standardFormatter(
+        engineNames.SITES_LOCAL,
+        results,
+        cardSize,
+        appPathFolder
+      ),
     needsTerm: true,
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
@@ -181,13 +201,13 @@ export const engines = {
       "employee_weight",
     ],
     method: "GET",
-    formatter: (results, cardSize, filters, currentPage) =>
+    formatter: (results, cardSize, filters, appPathFolder) =>
       webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
         filters,
-        currentPage
+        appPathFolder
       ),
     needsTerm: false,
   },
@@ -199,12 +219,13 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "POST",
-    formatter: (results, cardSize, filters) =>
+    formatter: (results, cardSize, filters, appPathFolder) =>
       webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
         results,
         cardSize,
-        filters
+        filters,
+        appPathFolder
       ),
     needsTerm: false,
   },
