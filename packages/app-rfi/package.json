@@ -78,7 +78,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-design-system/components-core": "^1.25.2",
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
