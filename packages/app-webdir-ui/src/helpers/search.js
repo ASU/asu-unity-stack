@@ -144,10 +144,8 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) => {
-      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder);
-      console.log(appPathFolder, "APPPPPPPPPPPPPP");
-    },
+    formatter: (results, cardSize, appPathFolder) =>
+      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder),
     needsTerm: true,
   },
   [engineNames.STUDENTS]: {
