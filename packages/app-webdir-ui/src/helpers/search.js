@@ -37,24 +37,29 @@ const getTopResult = results => {
 };
 const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
   const topResult = getTopResult(results.results);
+  console.log(appPathFolder, "HAAAAAAAPPPYYYYY");
   return {
     tab: engineName,
     page: results.meta.page,
     results: results.results.map(result =>
-      engines[engineName].converter(result, {
-        size: cardSize,
-        fill: false,
-        appPathFolder,
-      })
+      engines[engineName].converter(
+        result,
+        { size: cardSize, fill: false },
+        appPathFolder
+      )
     ),
     topResult:
       topResult === null
         ? null
-        : engines[engineName].converter(topResult, {
-            size: "small",
-            profileURLBase: engines[engineName].profileURLBase,
-            fill: true,
-          }),
+        : engines[engineName].converter(
+            topResult,
+            {
+              size: "small",
+              profileURLBase: engines[engineName].profileURLBase,
+              fill: true,
+            },
+            appPathFolder
+          ),
   };
 };
 
@@ -69,11 +74,14 @@ export const anonFormatter = (
     tab: engineName,
     page: 1,
     results: anonResults.map((result, idx) =>
-      anonConverter(idx, {
-        size: cardSize,
-        fill: false,
-        appPathFolder,
-      })
+      anonConverter(
+        idx,
+        {
+          size: cardSize,
+          fill: false,
+        },
+        appPathFolder
+      )
     ),
     topResult: null,
   };
@@ -84,7 +92,6 @@ const webDirDeptsFormatter = (
   results,
   cardSize,
   filters,
-  currentPage,
   appPathFolder
 ) => {
   let localResults = null;
@@ -115,12 +122,15 @@ const webDirDeptsFormatter = (
     tab: engines[engineName].name,
     page: localPage,
     results: localResults.map(result =>
-      engines[engineName].converter(result, {
-        size: "large",
-        titleMatch: titleOverwrite,
-        profileURLBase: "https://isearch.asu.edu",
-        appPathFolder,
-      })
+      engines[engineName].converter(
+        result,
+        {
+          size: "large",
+          titleMatch: titleOverwrite,
+          profileURLBase: "https://isearch.asu.edu",
+        },
+        appPathFolder
+      )
     ),
   };
 };
@@ -134,8 +144,10 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) =>
-      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder),
+    formatter: (results, cardSize, appPathFolder) => {
+      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder);
+      console.log(appPathFolder, "APPPPPPPPPPPPPP");
+    },
     needsTerm: true,
   },
   [engineNames.STUDENTS]: {
@@ -192,13 +204,12 @@ export const engines = {
       "employee_weight",
     ],
     method: "GET",
-    formatter: (results, cardSize, filters, currentPage, appPathFolder) =>
+    formatter: (results, cardSize, filters, appPathFolder) =>
       webDirDeptsFormatter(
         engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
         filters,
-        currentPage,
         appPathFolder
       ),
     needsTerm: false,

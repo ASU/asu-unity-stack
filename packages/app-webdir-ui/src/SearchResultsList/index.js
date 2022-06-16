@@ -43,6 +43,7 @@ const ASUSearchResultsList = ({
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
 
+  console.log(appPathFolder, "SearchResultsList");
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
@@ -64,7 +65,8 @@ const ASUSearchResultsList = ({
           const formattedResults = engine.formatter(
             filteredResults,
             cardSize,
-            filters
+            filters,
+            appPathFolder
           );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);

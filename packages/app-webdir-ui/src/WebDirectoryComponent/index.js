@@ -122,7 +122,7 @@ function WebDirectory({
           filters={requestFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
           display={display}
-          appPathFolder
+          appPathFolder={appPathFolder}
         />
       </div>
     </WebDirLayout>

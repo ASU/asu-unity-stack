@@ -185,7 +185,8 @@ export const staffConverter = (
     titleMatch: null,
     profileURLBase: null,
     fill: false,
-  }
+  },
+  appPathFolder
 ) => {
   const filledDatum = fillInBlanks(datum);
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
@@ -196,9 +197,9 @@ export const staffConverter = (
   const safeAsuriteID = filledDatum.asurite_id.raw.length
     ? filledDatum.asurite_id.raw.toString()
     : null;
-  console.log(options, "staff OPTIONS");
-  if (options.appPathFolder) {
-    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  console.log(appPathFolder, "staff appPathFolder");
+  if (appPathFolder) {
+    anonImg = `${appPathFolder}/assets/anon.png`;
     console.log(anonImg, "staffConverter");
   }
   return (
@@ -237,12 +238,13 @@ export const studentsConverter = (
   options = {
     size: "small",
     fill: false,
-  }
+  },
+  appPathFolder
 ) => {
   const filledDatum = fillInBlanks(datum);
-  console.log(options, "students OPTIONS");
-  if (options.appPathFolder) {
-    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  console.log(appPathFolder, "students appPathFolder");
+  if (appPathFolder) {
+    anonImg = `${appPathFolder}/assets/anon.png`;
     console.log(anonImg, "studentsConverter");
   }
   return (
@@ -273,11 +275,12 @@ export const anonConverter = (
   datum,
   options = {
     size: "small",
-  }
+  },
+  appPathFolder
 ) => {
-  console.log(options, "anon OPTIONS");
-  if (options.appPathFolder) {
-    anonImg = `${options.appPathFolder}/assets/anon.png`;
+  console.log(appPathFolder, "anon appPathFolder");
+  if (appPathFolder) {
+    anonImg = `${appPathFolder}/assets/anon.png`;
     console.log(anonImg, "anonConverter");
   }
   return (
