@@ -64,9 +64,8 @@ const common = {
             loader: "file-loader",
             options: {
               outputPath: "img/",
-              useRelativePaths: true
-            }
-
+              useRelativePaths: true,
+            },
           },
         ],
       },

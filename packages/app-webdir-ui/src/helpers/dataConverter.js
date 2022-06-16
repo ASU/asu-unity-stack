@@ -197,10 +197,8 @@ export const staffConverter = (
   const safeAsuriteID = filledDatum.asurite_id.raw.length
     ? filledDatum.asurite_id.raw.toString()
     : null;
-  console.log(appPathFolder, "staff appPathFolder");
   if (appPathFolder) {
-    anonImg = `${appPathFolder}/assets/anon.png`;
-    console.log(anonImg, "staffConverter");
+    anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <>
@@ -242,10 +240,8 @@ export const studentsConverter = (
   appPathFolder
 ) => {
   const filledDatum = fillInBlanks(datum);
-  console.log(appPathFolder, "students appPathFolder");
   if (appPathFolder) {
-    anonImg = `${appPathFolder}/assets/anon.png`;
-    console.log(anonImg, "studentsConverter");
+    anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <ProfileCard
@@ -278,10 +274,8 @@ export const anonConverter = (
   },
   appPathFolder
 ) => {
-  console.log(appPathFolder, "anon appPathFolder");
   if (appPathFolder) {
-    anonImg = `${appPathFolder}/assets/anon.png`;
-    console.log(anonImg, "anonConverter");
+    anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <ProfileCard

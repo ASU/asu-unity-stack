@@ -37,7 +37,6 @@ const getTopResult = results => {
 };
 const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
   const topResult = getTopResult(results.results);
-  console.log(appPathFolder, "HAAAAAAAPPPYYYYY");
   return {
     tab: engineName,
     page: results.meta.page,
