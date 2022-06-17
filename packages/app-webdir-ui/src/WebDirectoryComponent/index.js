@@ -41,30 +41,36 @@ function WebDirectory({
   };
   const sortParamName = "sort-by";
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sort, setSort] = useState();
+  const [sort, setSort] = useState(display.defaultSort);
   const [requestFilters, setRequestFilters] = useState();
-
-  const setNewSort = newSort => {
-    setSearchParams({ [sortParamName]: newSort });
-  };
-
-  const RES_PER_PAGE = 6;
-
-  const departmentDefinedOption =
-    searchType === "departments"
-      ? { value: "department_defined", label: "Department defined" }
-      : { value: "", label: "Choose Sort" };
-
-  const customSortOptions = [
-    departmentDefinedOption,
-    { value: "last_name_asc", label: "Last Name (ascending)" },
-    { value: "last_name_desc", label: "Last Name (descending)" },
-  ];
 
   const defaultCMSOptions = {
     last_name: "last_name_asc",
     webdir_customized: "employee_weight",
+    people_order: "people_order",
   };
+  const setNewSort = newSort => {
+    setSearchParams({ [sortParamName]: newSort });
+    setSort(defaultCMSOptions[display.defaultSort]);
+  };
+
+  const RES_PER_PAGE = 6;
+  let customSortOptions;
+
+  if (searchType === "departments") {
+    customSortOptions = [
+      { value: "", label: "Choose Sort", disabled: true },
+      { value: "last_name_asc", label: "Last Name (ascending)" },
+      { value: "last_name_desc", label: "Last Name (descending)" },
+      { value: "department_defined", label: "Department Defined" },
+    ];
+  } else {
+    customSortOptions = [
+      { value: "", label: "Choose Sort", disabled: true },
+      { value: "last_name_asc", label: "Last Name (ascending)" },
+      { value: "last_name_desc", label: "Last Name (descending)" },
+    ];
+  }
 
   const searchTypeEngineMap = {
     departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
@@ -88,10 +94,13 @@ function WebDirectory({
   }
 
   useEffect(() => {
-    if (defaultCMSOptions[display.defaultSort]) {
-      setSearchParams({
-        [sortParamName]: defaultCMSOptions[display.defaultSort],
-      });
+    if (
+      Object.prototype.hasOwnProperty.call(
+        defaultCMSOptions,
+        display.defaultSort
+      )
+    ) {
+      setNewSort(defaultCMSOptions[display.defaultSort]);
     }
   }, []);
 
@@ -106,9 +115,8 @@ function WebDirectory({
       <div className="sort">
         <SortPicker
           customSortOptions={customSortOptions}
-          sort={searchParams.get(sortParamName)}
+          sort={sort}
           onChange={val => setNewSort(val)}
-          defaultValue
         />
       </div>
       <div className="results">
