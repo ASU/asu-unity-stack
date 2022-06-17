@@ -1,15 +1,27 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { SortLayout } from "./index.styles";
 
-const SortPicker = ({ sort, onChange, customSortOptions, defaultValue }) => {
+const SortPicker = ({ sort, onChange, customSortOptions }) => {
+  const [defaultSortValue, setDefaultSortValue] = useState(sort);
+
   const sortOptions = customSortOptions || [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },
     { value: "last_name_desc", label: "Last Name (descending)" },
   ];
+
+  const checkIfDefaultSortInOptions = sortParam => {
+    const arr = sortOptions.filter(
+      option => option.value === sortParam && !option.disabled
+    );
+    if (arr.length >= 1) {
+      setDefaultSortValue(prev => setDefaultSortValue(prev + arr[0].value));
+    }
+    setDefaultSortValue("");
+  };
 
   const getSortEventText = () => {
     let text = sortOptions.find(op => {
@@ -44,6 +56,11 @@ const SortPicker = ({ sort, onChange, customSortOptions, defaultValue }) => {
     });
   };
 
+  useEffect(() => {
+    checkIfDefaultSortInOptions(sort);
+    return () => setDefaultSortValue("");
+  }, [sort]);
+
   return (
     <SortLayout>
       <form className="uds-form sort-form faculty-sort">
@@ -52,18 +69,20 @@ const SortPicker = ({ sort, onChange, customSortOptions, defaultValue }) => {
           <select
             className="form-control"
             id="sortBySelect"
-            // value={sort}
-            onChange={event => updateSort(event.target.value)}
+            onChange={event => {
+              updateSort(event.target.value);
+              setDefaultSortValue(event.target.value);
+            }}
             onClick={openSort}
-            defaultValue={defaultValue ? "" : sort}
+            value={defaultSortValue}
           >
             {sortOptions.map(op =>
-              op.value !== "" ? (
-                <option key={op.value} value={op.value}>
+              !Object.prototype.hasOwnProperty.call(op, "disabled") ? (
+                <option key={op.label} value={op.value}>
                   {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
                 </option>
               ) : (
-                <option disabled key={op.value} value={op.value}>
+                <option key={op.label} value="">
                   {op.label}
                 </option>
               )
@@ -84,7 +103,6 @@ SortPicker.propTypes = {
       label: PropTypes.string,
     })
   ),
-  defaultValue: PropTypes.bool,
 };
 
 export { SortPicker };
