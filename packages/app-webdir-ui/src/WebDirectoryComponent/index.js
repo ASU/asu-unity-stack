@@ -59,14 +59,14 @@ function WebDirectory({
 
   if (searchType === "departments") {
     customSortOptions = [
-      { value: "", label: "Choose Sort", disabled: true },
+      { value: "default", label: "Choose Sort", disabled: true },
       { value: "last_name_asc", label: "Last Name (ascending)" },
       { value: "last_name_desc", label: "Last Name (descending)" },
-      { value: "department_defined", label: "Department Defined" },
+      { value: "employee_weight", label: "Department Defined" },
     ];
   } else {
     customSortOptions = [
-      { value: "", label: "Choose Sort", disabled: true },
+      { value: "default", label: "Choose Sort", disabled: true },
       { value: "last_name_asc", label: "Last Name (ascending)" },
       { value: "last_name_desc", label: "Last Name (descending)" },
     ];
@@ -102,7 +102,7 @@ function WebDirectory({
     ) {
       setNewSort(defaultCMSOptions[display.defaultSort]);
     }
-  }, []);
+  }, [display.defaultSort]);
 
   useEffect(() => {
     if ((searchType === "departments" && deptIds) || ids) {
