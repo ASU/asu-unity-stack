@@ -18,9 +18,10 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
       option => option.value === sortParam && !option.disabled
     );
     if (arr.length >= 1) {
-      setDefaultSortValue(prev => setDefaultSortValue(prev + arr[0].value));
+      setDefaultSortValue(arr[0].value);
+    } else {
+      setDefaultSortValue("default");
     }
-    setDefaultSortValue("");
   };
 
   const getSortEventText = () => {
@@ -58,7 +59,7 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
 
   useEffect(() => {
     checkIfDefaultSortInOptions(sort);
-    return () => setDefaultSortValue("");
+    return () => setDefaultSortValue("default");
   }, [sort]);
 
   return (
@@ -82,7 +83,7 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
                   {op.label === "Relevancy" ? "Sort by Relevancy" : op.label}
                 </option>
               ) : (
-                <option key={op.label} value="">
+                <option disabled key={op.label} value="default">
                   {op.label}
                 </option>
               )

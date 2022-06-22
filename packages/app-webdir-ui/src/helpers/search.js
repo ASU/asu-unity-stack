@@ -120,17 +120,22 @@ const webDirDeptsFormatter = (
   return {
     tab: engines[engineName].name,
     page: localPage,
-    results: localResults.map(result =>
-      engines[engineName].converter(
-        result,
-        {
-          size: "large",
-          titleMatch: titleOverwrite,
-          profileURLBase: "https://isearch.asu.edu",
-        },
-        appPathFolder
-      )
-    ),
+    results: localResults.map(result => {
+      try {
+        return engines[engineName].converter(
+          result,
+          {
+            size: "large",
+            titleMatch: titleOverwrite,
+            profileURLBase: "https://isearch.asu.edu",
+          },
+          appPathFolder
+        );
+      } catch (e) {
+        console.log(e, result);
+        return null;
+      }
+    }),
   };
 };
 
@@ -261,7 +266,9 @@ export const performSearch = function ({
       if (term) {
         query = `${query}&query=${term}`;
       }
-      if (page) {
+      if (page && currentSort === "employee_weight") {
+        query = `${query}&page=${page - 1}`;
+      } else if (page) {
         query = `${query}&page=${page}`;
       }
       if (engine.site) {

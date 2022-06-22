@@ -57,7 +57,11 @@ const ASUSearchResultsList = ({
       })
         .then(res => {
           let filteredResults = res;
-
+          if (sort === "employee_weight" && engine?.name === "people_in_dept") {
+            filteredResults.results = filteredResults.results.filter(result => {
+              return Object.keys(result).length > 1;
+            });
+          }
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
@@ -71,7 +75,11 @@ const ASUSearchResultsList = ({
             registerResults(formattedResults.page.total_results);
           }
           if (engine.method === "GET") {
-            setCurrentPage(formattedResults.page.current);
+            if (sort === "employee_weight") {
+              setCurrentPage(formattedResults.page.current + 1);
+            } else {
+              setCurrentPage(formattedResults.page.current);
+            }
           }
           if (engine.method === "POST") {
             setTotalResults(filters.peopleInDepts.length);
