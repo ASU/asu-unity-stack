@@ -118,7 +118,8 @@ const getTitleFromProfile = (profile, titleMatch) => {
     titleMatch &&
     titleMatch.depts &&
     profile.deptids &&
-    profile.titles
+    profile.titles &&
+    profile.deptids.raw !== null
   ) {
     console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
