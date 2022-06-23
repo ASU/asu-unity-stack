@@ -77,16 +77,6 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
                 Privacy Statement.
               </a>
             </p>
-            <button
-              type="button"
-              className="close-btn"
-              onClick={() => {
-                handleCloseConsent();
-                trackGAEvent({ ...defaultGAEvent, text: "close cross" });
-              }}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
           </div>
           <button
             type="button"
@@ -97,6 +87,16 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
             }}
           >
             Ok, I agree
+          </button>
+          <button
+            type="button"
+            className="close-btn"
+            onClick={() => {
+              handleCloseConsent();
+              trackGAEvent({ ...defaultGAEvent, text: "close cross" });
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
       </div>
