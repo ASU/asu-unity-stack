@@ -147,7 +147,12 @@ function SearchPage({
           </div>
         </form>
         <div className="profile-options">
-          <Button color="gray" label="Edit my profile" href="/profile-edit" />
+          <Button
+            color="gray"
+            icon={["fas", "lock"]}
+            label="Edit my profile"
+            href="/profile-edit"
+          />
           {loggedIn && (
             <Button
               color="gray"
