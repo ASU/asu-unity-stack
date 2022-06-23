@@ -146,22 +146,17 @@ function SearchPage({
             </div>
           </div>
         </form>
-        {loggedIn && (
-          <div className="profile-options">
-            <Button
-              color="gray"
-              icon={["fas", "lock"]}
-              label="Edit my profile"
-              href="/profile-edit"
-            />
+        <div className="profile-options">
+          <Button color="gray" label="Edit my profile" href="/profile-edit" />
+          {loggedIn && (
             <Button
               color="gray"
               icon={["fas", "lock"]}
               label="Department admin"
               href="/groups"
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <TabbedPanels id={searchTabsId} onTabChange={() => true}>
         <Tab id={tabIds.all} title="All ASU search">
