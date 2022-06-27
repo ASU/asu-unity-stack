@@ -6,11 +6,22 @@ const AllTabLayout = styled.div`
   flex-direction: column;
   .all-message {
     margin-bottom: 88px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 12px;
+    }
   }
   .all-content {
     display: grid;
     grid-template-columns: 700px 1fr;
     grid-column-gap: 126px;
+    @media screen and (max-width: 1280px) {
+    grid-template-columns: 500px 1fr;
+  }
+  @media screen and (max-width: 1012px) {
+    grid-template-columns: 1fr;
+  }
+
     .all-content-column {
       display: flex;
       flex-direction: column;

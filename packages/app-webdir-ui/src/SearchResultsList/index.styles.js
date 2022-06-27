@@ -34,7 +34,7 @@ const SearchResultsList = styled.div`
     }
   }
   .micro {
-    max-width: 300px;
+    max-width: 500px;
   }
   .results-title {
     font-size: 40px;
