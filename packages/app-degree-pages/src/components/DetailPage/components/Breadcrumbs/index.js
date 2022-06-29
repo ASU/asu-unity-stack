@@ -28,7 +28,22 @@ function Breadcrumbs({ breadcrumbs, section }) {
                 className="breadcrumb-item active"
                 aria-current="page"
               >
-                {bread.text}
+                <a
+                  href={bread?.url}
+                  onClick={() =>
+                    trackGAEvent({
+                      event: "link",
+                      action: "click",
+                      name: "onclick",
+                      type: "internal link",
+                      region: "main content",
+                      section,
+                      text: bread.text,
+                    })
+                  }
+                >
+                  {bread.text}
+                </a>
               </li>
             ) : (
               <li key={genId.next().value} className="breadcrumb-item">
