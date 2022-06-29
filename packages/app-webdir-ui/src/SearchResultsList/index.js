@@ -109,6 +109,7 @@ const ASUSearchResultsList = ({
                 number={formattedResults.page.total_results}
                 loggedIn={loggedIn}
                 engine={engine.name}
+                GASource={GASource}
               />
             );
           } else {
