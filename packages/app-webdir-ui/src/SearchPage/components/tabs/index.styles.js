@@ -16,11 +16,11 @@ const AllTabLayout = styled.div`
     grid-template-columns: 700px 1fr;
     grid-column-gap: 126px;
     @media screen and (max-width: 1280px) {
-    grid-template-columns: 500px 1fr;
-  }
-  @media screen and (max-width: 1012px) {
-    grid-template-columns: 1fr;
-  }
+      grid-template-columns: 500px 1fr;
+    }
+    @media screen and (max-width: 1012px) {
+      grid-template-columns: 1fr;
+    }
 
     .all-content-column {
       display: flex;
