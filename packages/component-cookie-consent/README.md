@@ -81,4 +81,3 @@ You can find an example of how to set `CookieConsent` props [here](/packages/com
 
 ## Future improvements
 All the requirements for this component were covered, so there is no need of any further enhancements at the moment this is being written.
-
