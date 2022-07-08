@@ -68,7 +68,7 @@ function SearchPage({
   };
 
   const doSearch = () => {
-    if (searchValue.length > 0) {
+    if (searchValue.length > 0 && searchValue !== term) {
       setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
@@ -193,7 +193,7 @@ function SearchPage({
             />
           )}
         </Tab>
-        <Tab id={tabIds.students} title="Students">
+        <Tab id={tabIds.students} icon={["fa", "lock"]} title="Students">
           {preSearchOrContent(
             <StudentsTab
               loggedIn={loggedIn}

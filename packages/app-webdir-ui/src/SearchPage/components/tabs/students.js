@@ -27,6 +27,7 @@ const StudentsTab = ({ engines, term, loggedIn }) => {
         GASource="all student results"
         titleText="All Student results"
         loggedIn={loggedIn}
+        showSearchMessage
       />
     </StudentsTabLayout>
   );

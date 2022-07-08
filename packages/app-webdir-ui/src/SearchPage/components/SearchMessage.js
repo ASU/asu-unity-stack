@@ -13,7 +13,7 @@ const SearchMessage = ({ term, number, loggedIn, engine, GASource }) => {
       {GASource === "all faculty and staff results" && (
         <span>faculty and staff </span>
       )}
-      <span>results </span>
+      <span>results. </span>
       {!loggedIn && engine === "web_dir_students" && (
         <span>
           <a href="cas/login">Sign in</a> to view results
