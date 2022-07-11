@@ -68,7 +68,7 @@ function SearchPage({
   };
 
   const doSearch = () => {
-    if (searchValue.length > 0) {
+    if (searchValue.length > 0 && term !== searchValue) {
       setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
