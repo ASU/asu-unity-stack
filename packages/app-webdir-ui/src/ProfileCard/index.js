@@ -19,7 +19,7 @@ const ProfileCard = ({ ...props }) => {
   if (formattedTelephone) {
     const phoneArea = formattedTelephone.slice(0, 3);
     const phoneNumber = formattedTelephone.slice(3).replace("/", "");
-    formattedTelephone = `(${phoneArea}) ${phoneNumber}`;
+    formattedTelephone = `${phoneArea}-${phoneNumber}`;
   }
 
   const microLinkText = "ASU Knowledge Enterprise";
