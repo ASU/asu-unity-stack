@@ -24,7 +24,9 @@ const ResultCard = ({ ...props }) => {
       className={`uds-results-card ${props.fill ? "fill" : ""}`}
     >
       <div>
-        <div className="cookie-trail">{props.cookieTrail.join(" › ")}</div>
+        {props.cookieTrail.filter(n => n).length ? (
+          <div className="cookie-trail">{props.cookieTrail.join(" › ")}</div>
+        ) : null}
         <a
           onClick={sendEvent}
           href={props.link}
