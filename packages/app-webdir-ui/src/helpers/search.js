@@ -24,19 +24,23 @@ export const engineNames = {
   WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
 };
 
-const getTopResult = results => {
+const getTopResult = (results, engineName) => {
   const topResult = results.reduce((prev, curr) => {
     return prev === null || prev["_meta"].score < curr["_meta"].score
       ? curr
       : prev;
   }, null);
-  if (topResult && topResult["_meta"].score >= 1) {
+  // Set threshold bar for identifying promoted results to display based on
+  // whether it's the web_dir_faculty_staff engine or web_sites engine
+  // resultset.
+  const thresholdScore = engineName === "web_dir_faculty_staff" ? 100 : 1;
+  if (topResult && topResult["_meta"].score >= thresholdScore) {
     return topResult;
   }
   return null;
 };
 const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
-  const topResult = getTopResult(results.results);
+  const topResult = getTopResult(results.results, engineName);
   return {
     tab: engineName,
     page: results.meta.page,
