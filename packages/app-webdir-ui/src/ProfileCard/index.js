@@ -19,7 +19,7 @@ const ProfileCard = ({ ...props }) => {
   if (formattedTelephone) {
     const phoneArea = formattedTelephone.slice(0, 3);
     const phoneNumber = formattedTelephone.slice(3).replace("/", "");
-    formattedTelephone = `(${phoneArea}) ${phoneNumber}`;
+    formattedTelephone = `${phoneArea}-${phoneNumber}`;
   }
 
   const microLinkText = "ASU Knowledge Enterprise";
@@ -65,11 +65,11 @@ const ProfileCard = ({ ...props }) => {
           <ul className="person-contact-info">
             <li>
               <a
-                onClick={() => sendEvent(props.email)}
-                href={`mailto:${props.email}`}
+                onClick={() => sendEvent(props.email.toLowerCase())}
+                href={`mailto:${props.email.toLowerCase()}`}
                 aria-label="Email user"
               >
-                {props.email}
+                {props.email.toLowerCase()}
               </a>
             </li>
             <li>
