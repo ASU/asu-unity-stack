@@ -364,8 +364,8 @@ export const performSearch = function ({
         const expertiseParam = `expertise_areas=${filters.expertise}`;
         query = `${query}&${expertiseParam}`;
       }
-      if (filters && filters.employee_types) {
-        const employeeTypesParam = `campuses=${filters.employee_types}`;
+      if (filters && filters.employee) {
+        const employeeTypesParam = `employee_types=${filters.employee}`;
         query = `${query}&${employeeTypesParam}`;
       }
       APICall = () => axios.get(query);
