@@ -19,7 +19,7 @@ const display = {
 const filters = {
   employee: "",
   expertise: "",
-  title: "", // API searches against `titles` only, as of 2022-07-21
+  title: "",
   campuses: "",
 };
 /* For testing filters...
