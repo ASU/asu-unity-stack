@@ -155,6 +155,7 @@ WebDirectory.propTypes = {
     employee: PropTypes.string,
     expertise: PropTypes.string,
     title: PropTypes.string,
+    campuses: PropTypes.string,
   }),
 };
 

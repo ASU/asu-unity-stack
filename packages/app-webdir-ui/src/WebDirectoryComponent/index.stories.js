@@ -19,15 +19,23 @@ const display = {
 const filters = {
   employee: "",
   expertise: "",
-  title: "",
+  title: "", // API searches against `titles` only, as of 2022-07-21
   campuses: "",
 };
+/* For testing filters...
+const filters = {
+  employee: "Faculty,Administative",
+  expertise: "Big Data,Connected Learning",
+  title: "Professor",
+  campuses: "TEMPE,POLY",
+};
+*/
 
 export const webDirectoryExampleDepartments = createStory(
   <div className="uds-content-align">
     <WebDirectory
       searchType="departments"
-      deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003"
+      deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003,159390"
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       filters={filters}
