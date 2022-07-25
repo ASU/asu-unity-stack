@@ -58,6 +58,7 @@ const AllTab = ({
                 hidePaginator
                 registerResults={registerResults}
                 setPromotedResult={site ? setPromotedResult : null}
+                localSection
               />
             </div>
           )}
@@ -71,6 +72,7 @@ const AllTab = ({
               GASource="all asu.edu results"
               setPromotedResult={!site ? setPromotedResult : null}
               registerResults={registerResults}
+              localSection={false}
             />
           </div>
         </div>

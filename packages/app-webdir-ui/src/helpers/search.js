@@ -24,6 +24,30 @@ export const engineNames = {
   WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
 };
 
+export function logClick(query, docId, reqId, tags) {
+  function sendData(resolve, reject) {
+    const data = {
+      query,
+      doc_id: docId,
+      req_id: reqId,
+      tags,
+    };
+    axios
+      .post(
+        `https://pr-372-asu-isearch.pantheonsite.io/api/v1/webdir-click`,
+        data
+      )
+      .then(res => {
+        resolve(res);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  }
+
+  return new Promise(sendData);
+}
+
 const getTopResult = (results, engineName) => {
   const topResult = results.reduce((prev, curr) => {
     return prev === null || prev["_meta"].score < curr["_meta"].score
@@ -39,7 +63,13 @@ const getTopResult = (results, engineName) => {
   }
   return null;
 };
-const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
+const standardFormatter = (
+  engineName,
+  results,
+  cardSize,
+  appPathFolder,
+  localSection
+) => {
   const topResult = getTopResult(results.results, engineName);
   return {
     tab: engineName,
@@ -48,7 +78,10 @@ const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
       engines[engineName].converter(
         result,
         { size: cardSize, fill: false },
-        appPathFolder
+        appPathFolder,
+        logClick,
+        results["meta"].request_id,
+        localSection
       )
     ),
     topResult:
@@ -61,7 +94,9 @@ const standardFormatter = (engineName, results, cardSize, appPathFolder) => {
               profileURLBase: engines[engineName].profileURLBase,
               fill: true,
             },
-            appPathFolder
+            appPathFolder,
+            logClick,
+            results["meta"].request_id
           ),
   };
 };
@@ -176,8 +211,21 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) =>
-      standardFormatter(engineNames.SITES, results, cardSize, appPathFolder),
+    formatter: (
+      results,
+      cardSize,
+      filters = null,
+      appPathFolder,
+      localSection = null
+    ) => {
+      return standardFormatter(
+        engineNames.SITES_LOCAL,
+        results,
+        cardSize,
+        appPathFolder,
+        localSection
+      );
+    },
     needsTerm: true,
   },
   [engineNames.SITES_LOCAL]: {
@@ -188,13 +236,21 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) =>
-      standardFormatter(
+    formatter: (
+      results,
+      cardSize,
+      filters = null,
+      appPathFolder,
+      localSection = null
+    ) => {
+      return standardFormatter(
         engineNames.SITES_LOCAL,
         results,
         cardSize,
-        appPathFolder
-      ),
+        appPathFolder,
+        localSection
+      );
+    },
     needsTerm: true,
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
