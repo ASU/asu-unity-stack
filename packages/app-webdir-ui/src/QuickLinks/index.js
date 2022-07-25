@@ -7,6 +7,9 @@ const QuickLinks = () => {
   return (
     <QuickLinksTemplate>
       <span>Quick links</span>
+      <a href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff">
+        ASU directory
+      </a>
       <a href="https://students.asu.edu/advising">
         ASU advising directory by college
       </a>
