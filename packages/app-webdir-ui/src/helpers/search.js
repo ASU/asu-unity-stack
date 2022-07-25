@@ -24,7 +24,7 @@ export const engineNames = {
   WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
 };
 
-export function logClick(query, docId, reqId, tags) {
+export function logClick(query, docId, reqId, tags, { ...props }) {
   function sendData(resolve, reject) {
     const data = {
       query,
@@ -33,10 +33,7 @@ export function logClick(query, docId, reqId, tags) {
       tags,
     };
     axios
-      .post(
-        `https://pr-372-asu-isearch.pantheonsite.io/api/v1/webdir-click`,
-        data
-      )
+      .post(`${props.API_URL}${props.searchApiVersion}webdir-click`, data)
       .then(res => {
         resolve(res);
       })
@@ -68,7 +65,8 @@ const standardFormatter = (
   results,
   cardSize,
   appPathFolder,
-  localSection
+  localSection,
+  props
 ) => {
   const topResult = getTopResult(results.results, engineName);
   return {
@@ -81,7 +79,8 @@ const standardFormatter = (
         appPathFolder,
         logClick,
         results["meta"].request_id,
-        localSection
+        localSection,
+        { ...props }
       )
     ),
     topResult:
@@ -96,7 +95,9 @@ const standardFormatter = (
             },
             appPathFolder,
             logClick,
-            results["meta"].request_id
+            results["meta"].request_id,
+            null,
+            { ...props }
           ),
   };
 };
@@ -216,14 +217,16 @@ export const engines = {
       cardSize,
       filters = null,
       appPathFolder,
-      localSection = null
+      localSection = null,
+      { ...props }
     ) => {
       return standardFormatter(
         engineNames.SITES_LOCAL,
         results,
         cardSize,
         appPathFolder,
-        localSection
+        localSection,
+        { ...props }
       );
     },
     needsTerm: true,
@@ -241,14 +244,16 @@ export const engines = {
       cardSize,
       filters = null,
       appPathFolder,
-      localSection = null
+      localSection = null,
+      { ...props }
     ) => {
       return standardFormatter(
         engineNames.SITES_LOCAL,
         results,
         cardSize,
         appPathFolder,
-        localSection
+        localSection,
+        { ...props }
       );
     },
     needsTerm: true,

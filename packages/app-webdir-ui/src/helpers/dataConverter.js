@@ -310,7 +310,8 @@ export const subdomainConverter = (
   appPathFolder,
   logClick = () => {},
   requestId,
-  localSection = null
+  localSection = null,
+  { ...props }
 ) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
@@ -338,6 +339,7 @@ export const subdomainConverter = (
       logClick={logClick}
       requestId={requestId}
       localSection={localSection}
+      {...props}
     />
   );
 };

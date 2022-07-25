@@ -71,7 +71,8 @@ const ASUSearchResultsList = ({
             cardSize,
             filters,
             appPathFolder,
-            localSection
+            localSection,
+            engine
           );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);

@@ -29,7 +29,7 @@ const ResultCard = ({ ...props }) => {
     }
 
     try {
-      props.logClick(query, props.id, props.requestId, tags);
+      props.logClick(query, props.id, props.requestId, tags, props);
     } catch (e) {
       console.error(e);
     }
