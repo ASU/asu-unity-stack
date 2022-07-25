@@ -306,7 +306,12 @@ export const subdomainConverter = (
   options = {
     size: "small",
     fill: false,
-  }
+  },
+  appPathFolder,
+  logClick = () => {},
+  requestId,
+  localSection = null,
+  { ...props }
 ) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
@@ -331,6 +336,10 @@ export const subdomainConverter = (
       link={filledDatum.url.raw}
       size={options.size}
       fill={options.fill}
+      logClick={logClick}
+      requestId={requestId}
+      localSection={localSection}
+      {...props}
     />
   );
 };
