@@ -13,7 +13,7 @@ const ResultCard = ({ ...props }) => {
     const tab = searchParams.get("search-tabs");
     let tags;
     if (props.fill) {
-      tags = ["promoted-result"];
+      tags = ["promoted-result", "all-asu-search"];
     } else if (tab === "all" && !searchParams.get("url_host")) {
       tags = ["all-asu-search"];
     } else if (tab === "web_sites") {
