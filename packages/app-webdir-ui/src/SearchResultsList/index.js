@@ -72,7 +72,10 @@ const ASUSearchResultsList = ({
             filters,
             appPathFolder,
             localSection,
-            engine
+            {
+              API_URL: engine.API_URL,
+              searchApiVersion:  engine.searchApiVersion
+            }
           );
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
