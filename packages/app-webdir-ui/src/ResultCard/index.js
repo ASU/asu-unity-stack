@@ -62,8 +62,9 @@ const ResultCard = ({ ...props }) => {
             sendClick();
             sendEvent();
           }}
-          href={props.link}
+          // href={props.link}
         >{`${props.name} | ${props.area}`}</a>
+        {console.log(props, "PROPS IN RESULT CARDE")}
         <div className="description">{desc}</div>
       </div>
     </ResultCardTemplate>
