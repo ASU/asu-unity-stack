@@ -99,13 +99,17 @@ export const Pagination = ({
   const renderPages = () => {
     // Set the ranges to be shown in the pagination
     const lowerRange = createRange(
-      selectedPage - Math.floor(currentTotalNumbers / 2),
+      selectedPage -
+        (currentPage !== 1 ? 2 : 0) +
+        Math.floor(currentTotalNumbers / 2),
       selectedPage,
       totalPages
     );
     const upperRange = createRange(
       selectedPage,
-      selectedPage + 1 + Math.floor(currentTotalNumbers / 2),
+      selectedPage +
+        (currentPage === 1 ? 2 : 1) +
+        Math.floor(currentTotalNumbers / 2),
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
@@ -154,7 +158,7 @@ export const Pagination = ({
           }
         )}
       >
-        {!isSmallDevice && showFirstButton && (
+        {showFirstButton && (
           <PageItem
             dataId="first"
             isClickeable
@@ -171,7 +175,7 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
         >
-          {isXSmallDevice ? "" : "Prev"}
+          {isSmallDevice ? "<" : "Prev"}
         </PageItem>
         {renderPages()}
         <PageItem
@@ -181,9 +185,9 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         >
-          {isXSmallDevice ? "" : "Next"}
+          {isSmallDevice ? ">" : "Next"}
         </PageItem>
-        {!isSmallDevice && showLastButton && (
+        {showLastButton && (
           <PageItem
             dataId="last"
             isClickeable
