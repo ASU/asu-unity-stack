@@ -25,21 +25,27 @@ export const engineNames = {
 };
 
 export function logClick(query, docId, reqId, tags, { ...props }) {
-  function sendData(resolve, reject) {
+  async function sendData(resolve, reject) {
     const data = {
       query,
       doc_id: docId,
       req_id: reqId,
       tags,
     };
-    axios
-      .post(`${props.API_URL}${props.searchApiVersion}webdir-click`, data)
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
+    const tokenResponse = await axios.get(`${props.API_URL}/session/token`);
+    const headers = {
+      "X-CSRF-Token": tokenResponse.data,
+    };
+    const response = await axios.post(
+      `${props.API_URL}${props.searchApiVersion}webdir-click`,
+      data,
+      { headers }
+    );
+
+    if (response.status === 200) {
+      resolve(response.data);
+    }
+    reject(response.data);
   }
 
   return new Promise(sendData);
