@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 const WebDirLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 1fr 500px;
   grid-template-areas:
-    ".        sort"
-    "results    results";
+    "sort"
+    "results";
   grid-column-gap: 100px;
 
   .sort {
     grid-area: sort;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
   }
   .plain-button {
     background-color: #fff;
