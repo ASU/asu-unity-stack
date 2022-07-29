@@ -3,22 +3,11 @@ import React from "react";
 
 import { engineNames } from "../../../helpers/search";
 import { ASUSearchResultsList } from "../../../SearchResultsList/index";
-import { SearchMessage } from "../SearchMessage";
 import { StudentsTabLayout } from "./index.styles";
 
 const StudentsTab = ({ engines, term, loggedIn }) => {
   return (
     <StudentsTabLayout>
-      {!loggedIn && (
-        <div className="all-message">
-          <SearchMessage
-            term={term}
-            number={0}
-            loggedIn={loggedIn}
-            engine="web_dir_students"
-          />
-        </div>
-      )}
       <ASUSearchResultsList
         term={term}
         engine={engines[engineNames.STUDENTS]}
@@ -27,6 +16,7 @@ const StudentsTab = ({ engines, term, loggedIn }) => {
         GASource="all student results"
         titleText="All Student results"
         loggedIn={loggedIn}
+        showSearchMessage
       />
     </StudentsTabLayout>
   );
