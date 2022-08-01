@@ -36,14 +36,19 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
     const headers = {
       "X-CSRF-Token": tokenResponse.data,
     };
-    const response = await axios.post(
-      `${props.API_URL}${props.searchApiVersion}webdir-click`,
-      data,
-      { headers }
-    );
-
-    if (response.status === 200) {
+    let response;
+    if (props.loggedIn) {
+      response = await axios.post(
+        `${props.API_URL}${props.searchApiVersion}webdir-click`,
+        data,
+        { headers }
+      );
       resolve(response.data);
+    } else {
+      response = await axios.post(
+        `${props.API_URL}${props.searchApiVersion}webdir-click`,
+        data
+      );
     }
     reject(response.data);
   }
@@ -379,7 +384,7 @@ export const performSearch = function ({
       if (!filters) {
         return;
       }
-      const tokenResponse = await axios.get(`${engine.API_URL}session/token`);
+      const tokenResponse = await axios.get(`${engine.API_URL}/session/token`);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };

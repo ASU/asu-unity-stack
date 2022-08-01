@@ -5,7 +5,7 @@ import { engineNames } from "../../../helpers/search";
 import { ASUSearchResultsList } from "../../../SearchResultsList/index";
 import { LocalTabLayout } from "./index.styles";
 
-const LocalTab = ({ engines, term, site }) => {
+const LocalTab = ({ engines, term, site, loggedIn }) => {
   return (
     <LocalTabLayout>
       <ASUSearchResultsList
@@ -15,6 +15,7 @@ const LocalTab = ({ engines, term, site }) => {
         type="full"
         GASource={site}
         titleText={site}
+        loggedIn={loggedIn}
       />
     </LocalTabLayout>
   );
@@ -25,6 +26,7 @@ LocalTab.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   engines: PropTypes.object,
   site: PropTypes.string,
+  loggedIn: PropTypes.bool,
 };
 
 export { LocalTab };

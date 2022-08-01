@@ -14,6 +14,7 @@ const AllTab = ({
   goToTab,
   setTotalResults,
   totalResults,
+  loggedIn,
 }) => {
   const [promotedProfile, setPromotedProfile] = useState(null);
   const [promotedResult, setPromotedResult] = useState(null);
@@ -59,6 +60,7 @@ const AllTab = ({
                 registerResults={registerResults}
                 setPromotedResult={site ? setPromotedResult : null}
                 localSection
+                loggedIn={loggedIn}
               />
             </div>
           )}
@@ -73,6 +75,7 @@ const AllTab = ({
               setPromotedResult={!site ? setPromotedResult : null}
               registerResults={registerResults}
               localSection={false}
+              loggedIn={loggedIn}
             />
           </div>
         </div>
@@ -123,6 +126,7 @@ AllTab.propTypes = {
   goToTab: PropTypes.func,
   setTotalResults: PropTypes.func,
   totalResults: PropTypes.number,
+  loggedIn: PropTypes.bool,
 };
 
 export { AllTab };
