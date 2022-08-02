@@ -5,9 +5,16 @@ const WebDirLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 500px;
   grid-template-areas:
-    "sort"
-    "results";
+    ". sort"
+    "results results";
   grid-column-gap: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "sort sort"
+      "results results";
+  }
 
   .sort {
     grid-area: sort;
