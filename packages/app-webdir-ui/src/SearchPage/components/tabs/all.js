@@ -53,34 +53,44 @@ const AllTab = ({
   return (
     <AllTabLayout key={document.location.href}>
       <div className="all-message">
+        {/*
         <SearchMessage term={term} number={totalResults} />
+        */}
       </div>
       <div className="all-content">
         <div className="all-content-column">
-          <div className="top-results all-content-item">
-            <div>{promotedResult}</div>
-            <div>{promotedProfile}</div>
-          </div>
+          {(promotedResult || promotedProfile) && (
+            <div className="top-results all-content-item">
+              <div>{promotedResult}</div>
+              <div>{promotedProfile}</div>
+            </div>
+          )}
           {site && (
             <div className="subdomain-results all-content-item">
               <ASUSearchResultsList
                 engine={engines[engineNames.SITES_LOCAL]}
                 term={term}
                 type="preview"
-                itemsPerPage={6}
+                itemsPerPage={3}
                 titleText={`All results from ${site}`}
                 seeAllResultsText={`See all results from ${site}`}
                 onExpandClick={() => goToTab(tabIds.sites)}
                 GASource={`all results from ${site}`}
                 hidePaginator
                 registerResults={registerResults}
-                setPromotedResult={site ? setPromotedResult : null}
+                // Turn off first item automatic promotion for local
+                // setPromotedResult={site ? setPromotedResult : null}
                 localSection
               />
             </div>
           )}
           <div className="all-results all-content-item">
-            <div className="gcse-searchresults-only" />
+            {term && (
+              <>
+                <div className="results-title">All asu.edu results</div>
+                <div className="gcse-searchresults-only" />
+              </>
+            )}
             {/* Original Elastic site search for All ASU sites
             <ASUSearchResultsList
               engine={engines[engineNames.SITES]}
