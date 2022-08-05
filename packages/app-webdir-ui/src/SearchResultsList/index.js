@@ -76,6 +76,7 @@ const ASUSearchResultsList = ({
               API_URL: engine.API_URL,
               searchApiVersion: engine.searchApiVersion,
               loggedIn,
+
             }
           );
           if (registerResults) {

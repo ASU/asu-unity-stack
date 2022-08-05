@@ -34,37 +34,66 @@ const AllTab = ({
     return () => setTotalResults(0);
   }, []);
 
+  // Initialize Google Programmable Search Engine.
+  // Targets class gcse-searchresults-only (in this file)
+  // Gets search param from q url param. Relies on this useEfffect()
+  // being triggered by route changes, so added the
+  // key={document.location.href} to AllTabLayout component here.
+  // Docs for Programmable Search Engine:
+  // https://developers.google.com/custom-search/docs/element
+  useEffect(() => {
+    const cx = "007921449323584335659:7htbgpmmreu";
+    const gcse = document.createElement("script");
+    gcse.type = "text/javascript";
+    gcse.async = true;
+    gcse.src = `https://cse.google.com/cse.js?cx=${cx}`;
+    const s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gcse, s);
+  });
+
   return (
-    <AllTabLayout>
+    <AllTabLayout key={document.location.href}>
       <div className="all-message">
+        {/*
         <SearchMessage term={term} number={totalResults} />
+        */}
       </div>
       <div className="all-content">
         <div className="all-content-column">
-          <div className="top-results all-content-item">
-            <div>{promotedResult}</div>
-            <div>{promotedProfile}</div>
-          </div>
+          {(promotedResult || promotedProfile) && (
+            <div className="top-results all-content-item">
+              <div>{promotedResult}</div>
+              <div>{promotedProfile}</div>
+            </div>
+          )}
           {site && (
             <div className="subdomain-results all-content-item">
               <ASUSearchResultsList
                 engine={engines[engineNames.SITES_LOCAL]}
                 term={term}
                 type="preview"
-                itemsPerPage={6}
+                itemsPerPage={3}
                 titleText={`All results from ${site}`}
                 seeAllResultsText={`See all results from ${site}`}
                 onExpandClick={() => goToTab(tabIds.sites)}
                 GASource={`all results from ${site}`}
                 hidePaginator
                 registerResults={registerResults}
-                setPromotedResult={site ? setPromotedResult : null}
+                // Turn off first item automatic promotion for local
+                // setPromotedResult={site ? setPromotedResult : null}
                 localSection
                 loggedIn={loggedIn}
               />
             </div>
           )}
           <div className="all-results all-content-item">
+            {term && (
+              <>
+                <div className="results-title">All asu.edu results</div>
+                <div className="gcse-searchresults-only" />
+              </>
+            )}
+            {/* Original Elastic site search for All ASU sites
             <ASUSearchResultsList
               engine={engines[engineNames.SITES]}
               term={term}
@@ -77,6 +106,7 @@ const AllTab = ({
               localSection={false}
               loggedIn={loggedIn}
             />
+            */}
           </div>
         </div>
         <div className="all-content-column">

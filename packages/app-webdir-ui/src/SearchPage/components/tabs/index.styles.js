@@ -2,6 +2,84 @@
 import styled from "styled-components";
 
 const AllTabLayout = styled.div`
+  // Google Programmable Search styles
+  .gsc-control-cse {
+    font-size: 1rem;
+    .gsc-table-result {
+      font-size: 1rem;
+    }
+    .gs-spelling,
+    .gs-result .gs-title,
+    .gs-result .gs-title * {
+      font-size: 1.5rem;
+    }
+    .gsc-webResult.gsc-result {
+      padding: 0;
+      margin-bottom: 3rem;
+    }
+    .gsc-thumbnail-inside {
+      padding: 0;
+    }
+    &.gsc-control-cse-en {
+      padding: 0;
+    }
+    .gsc-orderby-container {
+      word-break: normal;
+    }
+    .gsc-result-info {
+      font-size: 1rem;
+      color: #000;
+    }
+    .gsc-above-wrapper-area {
+      border: none;
+    }
+    .gs-promotion-table {
+      padding: 2rem;
+    }
+    .gs-promotion-text-cell .gs-visibleUrl,
+    .gs-promotion-text-cell .gs-snippet {
+      font-size: 1rem;
+    }
+    // Pager
+    .gsc-resultsbox-visible .gsc-results .gsc-cursor-box .gsc-cursor-page {
+      font-weight: bold;
+      color: #000;
+      background-color: transparent;
+      padding: 0.5rem 0.75rem;
+      line-height: 1rem;
+      margin-right: 1rem;
+    }
+    .gsc-resultsbox-visible
+      .gsc-results
+      .gsc-cursor-box
+      .gsc-cursor-page:hover {
+      background-color: #e8e8e8;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      line-height: 1rem;
+      border-radius: 400px;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+    .gsc-resultsbox-visible
+      .gsc-results
+      .gsc-cursor-box
+      .gsc-cursor-page.gsc-cursor-current-page {
+      background-color: #8c1d40;
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+      line-height: 1rem;
+      border-radius: 400px;
+      margin-right: 1rem;
+    }
+  }
+  // End Google Programmable Search styles
+  .results-title {
+    font-size: 40px;
+    font-weight: bold;
+    max-width: 100%;
+  }
+
   display: flex;
   flex-direction: column;
   .all-message {
