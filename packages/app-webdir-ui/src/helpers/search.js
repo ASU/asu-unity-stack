@@ -49,6 +49,7 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
         `${props.API_URL}${props.searchApiVersion}webdir-click`,
         data
       );
+      resolve(response.data)
     }
     reject(response.data);
   }
