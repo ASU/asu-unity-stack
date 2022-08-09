@@ -244,6 +244,7 @@ export const studentsConverter = (
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
+  console.log(appPathFolder, "studentsConverter");
   return (
     <ProfileCard
       isRequired={false}

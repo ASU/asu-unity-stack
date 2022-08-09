@@ -188,7 +188,7 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) =>
+    formatter: (results, cardSize, filters = null, appPathFolder) =>
       standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder),
     needsTerm: true,
   },
@@ -200,7 +200,7 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, appPathFolder) =>
+    formatter: (results, cardSize, filters = null, appPathFolder) =>
       standardFormatter(engineNames.STUDENTS, results, cardSize, appPathFolder),
     needsTerm: true,
   },

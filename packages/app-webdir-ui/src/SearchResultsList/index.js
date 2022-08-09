@@ -70,7 +70,7 @@ const ASUSearchResultsList = ({
             filteredResults,
             cardSize,
             filters,
-            appPathFolder,
+            appPathFolder || engine.appPathFolder,
             localSection,
             {
               API_URL: engine.API_URL,
