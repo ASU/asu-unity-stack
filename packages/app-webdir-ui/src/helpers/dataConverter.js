@@ -139,7 +139,9 @@ const getTitleFromProfile = (profile, titleMatch) => {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title) {
       matchedAffiliationTitle = profile.working_title.raw[0];
-      !matchedAffiliationTitle ? matchedAffiliationTitle = profile.titles.raw[deptIndex] : null;
+      if (!matchedAffiliationTitle) {
+        matchedAffiliationTitle = profile.titles.raw[deptIndex];
+      }
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
