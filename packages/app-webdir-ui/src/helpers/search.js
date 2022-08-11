@@ -32,12 +32,12 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
       req_id: reqId,
       tags,
     };
-    const tokenResponse = await axios.get(`${props.API_URL}/session/token`);
-    const headers = {
-      "X-CSRF-Token": tokenResponse.data,
-    };
     let response;
     if (props.loggedIn) {
+      const tokenResponse = await axios.get(`${props.API_URL}/session/token`);
+      const headers = {
+        "X-CSRF-Token": tokenResponse.data,
+      };
       response = await axios.post(
         `${props.API_URL}${props.searchApiVersion}webdir-click`,
         data,
@@ -49,7 +49,7 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
         `${props.API_URL}${props.searchApiVersion}webdir-click`,
         data
       );
-      resolve(response.data)
+      resolve(response.data);
     }
     reject(response.data);
   }
