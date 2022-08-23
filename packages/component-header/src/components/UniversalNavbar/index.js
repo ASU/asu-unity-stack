@@ -20,6 +20,7 @@ const UniversalNavbar = () => {
       breakpoint={breakpoint}
       className="universal-nav"
       data-testid="universal-navbar"
+      data-elastic-exclude="data-elastic-exclude"
     >
       <div className="container-xl">
         <div className="header-top">
