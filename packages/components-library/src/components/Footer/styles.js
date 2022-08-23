@@ -331,7 +331,7 @@ const Footer = () => {
         }
       `}
     >
-      <div id="innovation-footer">
+      <div id="innovation-footer" data-elastic-exclude="data-elastic-exclude">
         <div id="innovation-bar">
           <div class="innovation-top">
             <div class="innovation-status">
