@@ -32,7 +32,7 @@ import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
-import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
+// import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
 import { SearchBar } from "./components/SearchBar";
 
 /**
@@ -307,14 +307,14 @@ const ListingPage = ({
                 onRemove={onFilterSummaryRemove}
               />
             ) : null}
-            <DataViewSwitch
+            {/* <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
                 setSearchLoading(false);
               }}
               checkedId={dataViewComponent}
-            />
+            /> */}
           </div>
         </section>
 
