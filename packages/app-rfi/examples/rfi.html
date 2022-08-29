@@ -86,11 +86,11 @@
      * Best viewed in Postman. To view in your browser, install a JSON
      * formatter extension.
      * - Undergrad
-     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=undergrad
+     *   https://degrees.apps.asu.edu/t5/service?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=undergrad
      * - Graduate
-     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=graduate
+     *   https://degrees.apps.asu.edu/t5/service?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=false&program=graduate
      * - Certs/Minors
-     *   https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=true&program=graduate
+     *   https://degrees.apps.asu.edu/t5/service?method=findAllDegrees&init=false&fields=Descr100,Degree,CollegeAcadOrg,CollegeDescr100,DepartmentCode,DepartmentName,AcadPlanType,AcadPlan,AcadProg,AcadProg,planCatDescr,CampusStringArray&cert=true&program=graduate
      *
      * RFI COMPONENT PROPS, FOR REFERENCE
      * - campus: One of a campus type: ONLNE, GROUND, NOPREF, or undefined
@@ -141,7 +141,7 @@
         stateProvince: "Wyoming", // Only US states or CA provinces
         successMsg: "Success. <strong>You made it.</strong>",
         test: false,
-        dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+        dataSourceDegreeSearch: undefined, // "https://degrees.apps.asu.edu/t5/service",
         dataSourceAsuOnline: undefined, // "https://asuonline.asu.edu/lead-submissions-v3.3/programs",
         dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
         submissionUrl: "https://httpbin.org/post", // Test endpoint

@@ -80,7 +80,7 @@ const AboutMe = () => {
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
+        const serviceUrl = `https://degrees.apps.asu.edu/t5/service?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
         // Alternate field graduateAllApplyDates has similar data, but lacks a
         // good label and appears like it might have more dupes.
 
