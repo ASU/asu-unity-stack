@@ -120,7 +120,7 @@ function ApplicationRequirements({
       data-testid="application-requirements"
     >
       <h2>
-        <span className="highlight-gold">Application requirements</span>
+        <span className="highlight-gold">Degree requirements</span>
       </h2>
       <h3 className="mt-4">General university admission requirements</h3>
       {graduateRequirements ? (
