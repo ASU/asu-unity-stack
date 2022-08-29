@@ -57,7 +57,7 @@ function degreeDataPropResolverService(row = {}) {
         // requirement[2]: unknown code. ex AUD88AUDD
         const flatRequirement1 = rawRequirement1
           .map(requirement => requirement?.[1])
-          .join(" ");
+          .join(", or<br />");
 
         // AdmissionsDegRequirements
         gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
