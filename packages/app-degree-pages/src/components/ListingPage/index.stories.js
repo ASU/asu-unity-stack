@@ -52,7 +52,7 @@ const actionUrls = {
 
 /** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  // OPTIONAL - endpoint: "https://degrees.apps.asu.edu/t5/service",
   // another example: dataSource: "/api/mocks/degree-search",
 
   // method: "findAllDegrees", // OPTIONAL

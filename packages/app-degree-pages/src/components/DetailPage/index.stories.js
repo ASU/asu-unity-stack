@@ -90,7 +90,7 @@ const queryAcadPllan = new URL(window.location.href).searchParams.get(
 const defaultArgs = {
   appPathFolder: ".", // OPTIONAL
   dataSource: {
-    // endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/", // OPTIONAL
+    // endpoint: "https://degrees.apps.asu.edu/t5/service", // OPTIONAL
     // method: "findDegreeByAcadPlan", // OPTIONAL
     // init: "false", // OPTIONAL
     acadPlan: queryAcadPllan || "BABUSGLBA",
