@@ -36,7 +36,7 @@ export const BreadcrumbsAgainstWhiteBackground = createStory(
             <a href="#">Second Nav Item</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            Current Page
+            <a href="#">Current Page</a>
           </li>
         </ol>
       </nav>

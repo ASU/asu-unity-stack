@@ -12,7 +12,7 @@ export const BreadcrumbsAgainstWhiteBackground = createStory(
         <a href="#">Second Nav Item</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        Current Page
+        <a href="#">Current Page</a>
       </li>
     </ol>
   </nav>
@@ -31,7 +31,7 @@ export const BreadcrumbsAgainstGray1Background = createStory(
         <a href="#">Second Nav Item</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        Current Page
+        <a href="#">Current Page</a>
       </li>
     </ol>
   </nav>
@@ -47,7 +47,7 @@ export const BreadcrumbsAgainstGray2Background = createStory(
         <a href="#">Second Nav Item</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        Current Page
+        <a href="#">Current Page</a>
       </li>
     </ol>
   </nav>
@@ -64,7 +64,7 @@ export const FullWidthBreadcrumbsAgainstGray7Background = createStory(
           <a href="#">Second Nav Item</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          Current Page
+          <a href="#">Current Page</a>
         </li>
       </ol>
     </nav>

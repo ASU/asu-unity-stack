@@ -135,10 +135,12 @@ const defaultArgs = {
       {
         text: "Undergraduate degrees",
         // this is just an example working on Storybook
-        url: `${getStoryBookBaseUrl()}?path=/story/listing-page--default`,
+        url: `${getStoryBookBaseUrl()}?path=/story/program-listing-page--default`,
       },
       {
         text: "Degree title",
+        // this is just an example working on Storybook
+        url: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--with-content`,
         isActive: true,
       },
     ],
