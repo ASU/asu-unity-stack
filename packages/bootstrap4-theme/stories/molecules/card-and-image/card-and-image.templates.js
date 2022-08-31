@@ -35,9 +35,7 @@ export const LeftFloatedCard = createStory((args) => {
               <h3 class="card-title">Headline goes here</h3>
             </div>
             <div class="card-body">
-              Body copy goes here. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla incidunt laborum reprehenderit dolorum architecto ab odit ipsa tempora dolorem aliquid quis similique inventore cumque facilis consequuntur, tempore asperiores eligendi delectus quidem totam qui alias iste. Dicta ut odio architecto quia voluptas quam reprehenderit doloremque eius voluptate iure minus explicabo nihil, cumque expedita qui, blanditiis in rerum possimus minima suscipit dolorum?
             </div>
             <div class="card-buttons">
               <div class="card-button">
