@@ -36,7 +36,7 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="main">
+    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
       <div className="content-container">
         <ul className="nav-list">
           {!!mobileNavTree?.length && isMobile
