@@ -62,7 +62,13 @@ function RequiredCourse({
     </div>
   );
 
-  return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;
+  return !concurrentDegreeMajorMaps &&
+    !onlineMajorMapURL &&
+    !majorMapOnCampusArchiveURL ? (
+    <div />
+  ) : (
+    template
+  );
 }
 
 RequiredCourse.propTypes = {
