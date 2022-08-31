@@ -11,7 +11,6 @@ const ButtonGroup = Styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-
   & a.btn {
     margin: 0;
   }
@@ -62,7 +61,13 @@ function RequiredCourse({
     </div>
   );
 
-  return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;
+  return !concurrentDegreeMajorMaps &&
+    !onlineMajorMapURL &&
+    !majorMapOnCampusArchiveURL ? (
+    <div />
+  ) : (
+    template
+  );
 }
 
 RequiredCourse.propTypes = {
