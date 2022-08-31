@@ -21,7 +21,7 @@ const formatCareerData = careerData =>
   careerData?.map(data => ({
     career: {
       text: data.careerDataAlterOnetTitle,
-      url: `${DOMAIN_URL}/programs/t5/careerdetails/${data.careerDataOnetCode}`,
+      url: `${DOMAIN_URL}/career-details/${data.careerDataOnetCode}`,
     },
     growth: data.careerDataGrowth,
     medianSalary: data.careerDataSalary,
