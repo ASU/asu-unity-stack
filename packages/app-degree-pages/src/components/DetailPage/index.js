@@ -160,13 +160,13 @@ const DetailPage = ({
                     />
                   ) : null}
 
-                  {!introContent?.hideRequiredCourses ? (
+                  {/* {!introContent?.hideRequiredCourses ? (
                     <RequiredCourse
                       concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                       onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
                       majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
                     />
-                  ) : null}
+                  ) : null} */}
                 </section>
 
                 {!atAGlance?.hide ? (
@@ -187,6 +187,14 @@ const DetailPage = ({
                     mathIntensity={
                       atAGlance?.mathIntensity || resolver.getMathIntensity()
                     }
+                  />
+                ) : null}
+
+                {!introContent?.hideRequiredCourses ? (
+                  <RequiredCourse
+                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
                   />
                 ) : null}
 
