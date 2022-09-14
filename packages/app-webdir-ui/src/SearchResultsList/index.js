@@ -134,19 +134,8 @@ const ASUSearchResultsList = ({
           });
         })
         .catch(err => {
-          if (err === 403) {
-            const anonCards = anonFormatter(
-              engine.name,
-              itemsPerPage,
-              cardSize,
-              engine.appPathFolder
-            );
-            setResults(anonCards.results);
-            setCurrentPage(1);
-            setTotalResults("unknown");
-            setIsLoading(false);
-            setIsAnon(true);
-          }
+          console.error(err);
+          setIsLoading(false);
         });
     }
   };
