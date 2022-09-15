@@ -24,6 +24,7 @@ function filterData({
     locations = [],
     keyword,
     showInactivePrograms,
+    blacklistAcadPlans,
   },
 }) {
   // ============================================================
@@ -63,6 +64,10 @@ function filterData({
       ? resolver.isValidActiveProgram()
       : true;
   // ============================================================
+  /** @param {PropResolver} resolver   */
+  const isNotOnBlacklist = resolver =>
+    !blacklistAcadPlans?.includes(resolver.getAcadPlan());
+  // ============================================================
   /** @param {Object.<string, any>} row  */
   const doFilter = row => {
     const resolver = degreeDataPropResolverService(row);
@@ -73,7 +78,8 @@ function filterData({
       isValidDepartmentCode(resolver) &&
       isValidCampus(resolver) &&
       isValidAcceleratedConcurrent(row) &&
-      isValidForKeyword(resolver)
+      isValidForKeyword(resolver) &&
+      isNotOnBlacklist(resolver)
     );
   };
 

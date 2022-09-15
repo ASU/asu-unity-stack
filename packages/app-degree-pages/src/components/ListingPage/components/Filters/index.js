@@ -45,6 +45,7 @@ const INITIAL_FILTER_STATE = {
   asuLocals: [],
   acceleratedConcurrent: { value: "all", text: "" },
   keyword: null,
+  blacklistAcadPlans: [],
 };
 
 const getOptionProps = option => ({

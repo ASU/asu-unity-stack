@@ -98,8 +98,12 @@ const ListingPage = ({
   const { defaultState } = useContext(AppContext);
   const { listingPageDefault } = defaultState;
   // These filter are input props which never change.
-  const { collegeAcadOrg, departmentCode, showInactivePrograms } =
-    programList.dataSource;
+  const {
+    collegeAcadOrg,
+    departmentCode,
+    showInactivePrograms,
+    blacklistAcadPlans,
+  } = programList.dataSource;
 
   /** @type {UseFiltersState} */
   const [stateFilters, setStateFilters] = useState({
@@ -134,6 +138,7 @@ const ListingPage = ({
         collegeAcadOrg,
         departmentCode,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
@@ -163,6 +168,7 @@ const ListingPage = ({
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
