@@ -61,6 +61,7 @@ const dataSource = {
   // cert: "true", // "true" | "false" // OPTIONAL
   // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
   // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+  // blacklistAcadPlans: ["BAACCBS", "LAACTBS"],
 };
 
 /** @type {AppProps} */
@@ -110,6 +111,23 @@ Default.args = {
   ...defaultArgs,
   introContent: null,
 };
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithBlacklistedPlanCodes = Template.bind({});
+DefaultWithBlacklistedPlanCodes.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      blacklistAcadPlans: ["BAACCBS", "LAACTBS"],
+    },
+  },
+};
+
 /**
  * @type {{ args: AppProps }}
  */
