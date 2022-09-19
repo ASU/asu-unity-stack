@@ -36,6 +36,7 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => row["Institution"],
     getAcadPlan: () => row["AcadPlan"],
     getDegree: () => row["Degree"],
+    getDegreeMajorMap: () => row["degreeMajorMap"],
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => !isUndergradProgram(row),
     /** @returns {"undergrad" |  "graduate"} */
@@ -61,6 +62,9 @@ function degreeDataPropResolverService(row = {}) {
 
         // AdmissionsDegRequirements
         gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
+      } else {
+        gradRequirement1 = row["degreeMajorMap"];
+        return `${gradRequirement1}`;
       }
 
       /** @type {string} */
