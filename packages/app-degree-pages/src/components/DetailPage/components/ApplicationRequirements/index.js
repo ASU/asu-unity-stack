@@ -115,24 +115,41 @@ function ApplicationRequirements({
   additionalRequirements,
 }) {
   return (
-    <section
-      id={progDetailSectionIds.applicationRequirements.targetIdName}
-      data-testid="application-requirements"
-    >
-      <h2>
-        <span className="highlight-gold">Degree requirements</span>
-      </h2>
-      <h3 className="mt-4">General university admission requirements</h3>
+    <>
+      <section
+        id={progDetailSectionIds.applicationRequirements.targetIdName}
+        data-testid="application-requirements"
+      >
+        <h2>
+          <span className="highlight-gold">Degree requirements</span>
+        </h2>
+        {graduateRequirements ? (
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+              graduateRequirements
+            )}
+          />
+        ) : (
+          undergraduateTemplate(transferRequirements, additionalRequirements)
+        )}
+      </section>
+
       {graduateRequirements ? (
-        <div
-          dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-            graduateRequirements
-          )}
-        />
-      ) : (
-        undergraduateTemplate(transferRequirements, additionalRequirements)
-      )}
-    </section>
+        <section
+          id={progDetailSectionIds.degreeRequirements.targetIdName}
+          data-testid="degree-requirements"
+        >
+          <h2>
+            <span className="highlight-gold">Admission requirements</span>
+          </h2>
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+              additionalRequirements
+            )}
+          />
+        </section>
+      ) : null}
+    </>
   );
 }
 
