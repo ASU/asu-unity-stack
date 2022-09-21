@@ -37,6 +37,7 @@ const detailPageDefaultDataSource = {
     // at a glance
     `Descr100,CollegeDescr100,CollegeUrl,` +
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
+    `degreeMajorMap,` +
     // Example Careers
     "careerData," +
     // flexible degree options
