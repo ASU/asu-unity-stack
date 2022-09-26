@@ -38,7 +38,7 @@ const Partner = () => {
         />
         <img
           className="horiz"
-          src={asuLogo?.mobileScr ?? asuHorizLogo}
+          src={asuLogo?.mobileSrc ?? asuHorizLogo}
           alt={asuLogo?.alt ?? "Arizona State University"}
         />
       </a>
