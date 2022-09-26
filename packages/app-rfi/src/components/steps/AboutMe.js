@@ -296,7 +296,10 @@ const aboutMeForm = {
     // validation is deferred to Formik and implemented via customValidate() in
     // RfiTextInput.js and RfiSelect.js for better access to sibling field
     // values thru useFormikContext.
-    ZipCode: Yup.string(),
+    ZipCode: Yup.string().max(
+      10,
+      "Error: a maximum of 10 characters is allowed for postal code."
+    ),
     EntryTerm: Yup.string(),
     GdprConsent: Yup.boolean()
       .required("Error: Consent is required")
