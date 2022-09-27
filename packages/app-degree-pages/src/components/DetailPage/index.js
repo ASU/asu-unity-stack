@@ -144,7 +144,8 @@ const DetailPage = ({
                     <CustomText content={resolver.getAsuCustomText()} />
                   ) : null}
 
-                  {!introContent?.hideMarketText && resolver.getMarketText() ? (
+                  {!introContent?.hideMarketText &&
+                  (introContent?.contents || resolver.getMarketText()) ? (
                     <MarketText
                       contents={
                         introContent?.contents || [
