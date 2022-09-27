@@ -116,7 +116,6 @@ function degreeDataPropResolverService(row = {}) {
     getMathIntensity: () => mathintensity[row["MathIntensity"]],
     getMathIntensityRawValue: () => row["MathIntensity"],
     getMinMathReq: () => row["MinMathReq"] || "",
-    /** @return {string} */
     getMarketText: () => row["marketText"]?.trim(),
     /** @return {string} */
     getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",

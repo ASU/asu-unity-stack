@@ -144,21 +144,14 @@ const DetailPage = ({
                     <CustomText content={resolver.getAsuCustomText()} />
                   ) : null}
 
-                  {!introContent?.hideMarketText && resolver.getMarketText() ? (
-                    <MarketText
-                      contents={
-                        introContent?.contents || [
-                          { text: resolver.getMarketText() },
-                        ]
-                      }
-                    />
-                  ) : null}
-
-                  {!introContent?.hideProgramDesc ? (
+                  {!introContent?.hideProgramDesc &&
+                  resolver.getMarketText() ? (
+                    <ProgramDescription content={resolver.getMarketText()} />
+                  ) : (
                     <ProgramDescription
                       content={resolver.getDescrLongExtented()}
                     />
-                  ) : null}
+                  )}
 
                   {/* {!introContent?.hideRequiredCourses ? (
                     <RequiredCourse
