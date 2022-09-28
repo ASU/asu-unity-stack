@@ -33,6 +33,7 @@ export const AnchorMenu = ({
 }) => {
   const anchorMenuRef = useRef(null);
   const [hasHeader, setHasHeader] = useState(false);
+  const [isDegreePage, setIsDegreePage] = useState(false);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
@@ -81,8 +82,18 @@ export const AnchorMenu = ({
     setHasHeader(!!pageHeader);
   };
 
+  // Sets prop for styled-component to change anchor menu style
+  // based on if it is a degree detail page
+  const findDegreeDetailPageContainer = () => {
+    const degreeDetailPageContainer = document.getElementById(
+      "degreeDetailPageContainer"
+    );
+    if (degreeDetailPageContainer) setIsDegreePage(true);
+  };
+
   useEffect(() => {
     setHeader();
+    findDegreeDetailPageContainer();
   }, []);
 
   useEffect(() => {
@@ -121,6 +132,8 @@ export const AnchorMenu = ({
 
   return (
     <AnchorMenuWrapper
+      // @ts-ignore
+      isDegreePage={isDegreePage}
       ref={anchorMenuRef}
       className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
         hasHeader ? "with-header " : ""
