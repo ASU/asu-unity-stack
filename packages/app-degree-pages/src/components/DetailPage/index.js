@@ -239,7 +239,7 @@ const DetailPage = ({
               </div>
             </div>
             <div className="row">
-              {!nextSteps?.hide ? (
+              {!nextSteps?.hide && !resolver.isMinorOrCertificate() ? (
                 <NextSteps
                   cards={nextSteps?.cards}
                   defaultCards={detailPageDefault.nextSteps.cards}

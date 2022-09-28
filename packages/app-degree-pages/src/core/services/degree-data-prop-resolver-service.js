@@ -39,6 +39,9 @@ function degreeDataPropResolverService(row = {}) {
     getDegreeMajorMap: () => row["degreeMajorMap"],
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => !isUndergradProgram(row),
+    isMinorOrCertificate: () => {
+      return !!(row["Degree"] === "Minor" || row["Degree"] === "Certificate");
+    },
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
