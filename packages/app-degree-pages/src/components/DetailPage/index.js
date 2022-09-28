@@ -191,7 +191,8 @@ const DetailPage = ({
                   />
                 ) : null}
 
-                {!introContent?.hideRequiredCourses ? (
+                {!introContent?.hideRequiredCourses &&
+                !resolver.isMinorOrCertificate() ? (
                   <RequiredCourse
                     concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                     onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
@@ -206,12 +207,15 @@ const DetailPage = ({
                         ? resolver.getGraduateRequirements()
                         : null
                     }
+                    isMinorOrCertificate={resolver.isMinorOrCertificate()}
                     additionalRequirements={resolver.getDescrLongExtented5()}
                     transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
 
-                {!changeMajorRequirements?.hide ? (
+                {!changeMajorRequirements?.hide &&
+                !resolver.isMinorOrCertificate() &&
+                !resolver.isGradProgram() ? (
                   <ChangeYourMajor content={resolver.getChangeMajor()} />
                 ) : null}
               </div>

@@ -112,8 +112,19 @@ const undergraduateTemplate = (
 function ApplicationRequirements({
   graduateRequirements,
   transferRequirements,
+  isMinorOrCertificate,
   additionalRequirements,
 }) {
+  let reqsLabel;
+  if (graduateRequirements) {
+    reqsLabel = !isMinorOrCertificate
+      ? "Degree requirements"
+      : "Program requirements";
+  } else {
+    reqsLabel = !isMinorOrCertificate
+      ? "Admission requirements"
+      : "Program requirements";
+  }
   return (
     <>
       <section
@@ -121,7 +132,7 @@ function ApplicationRequirements({
         data-testid="application-requirements"
       >
         <h2>
-          <span className="highlight-gold">Degree requirements</span>
+          <span className="highlight-gold">{reqsLabel}</span>
         </h2>
         {graduateRequirements ? (
           <div
@@ -156,6 +167,7 @@ function ApplicationRequirements({
 ApplicationRequirements.propTypes = {
   graduateRequirements: PropTypes.string,
   transferRequirements: PropTypes.string,
+  isMinorOrCertificate: PropTypes.bool,
   additionalRequirements: PropTypes.string,
 };
 
