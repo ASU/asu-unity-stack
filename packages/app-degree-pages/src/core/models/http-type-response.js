@@ -7,6 +7,7 @@
         EmailAddr: string;
         AsuCritTrackUrl: string;
         CollegeAcadOrg: string;
+        CollegeAcadOrgJoint: string[];
         Degree: string;
         CollegeDescr100: string;
         AsuOfficeLoc: string;

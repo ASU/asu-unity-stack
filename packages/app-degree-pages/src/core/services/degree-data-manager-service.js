@@ -28,10 +28,11 @@ function filterData({
   },
 }) {
   // ============================================================
+  // See WS2-1391 for details on why we use CollegeAcadOrgJoint field.
   /** @param {PropResolver} resolver   */
   const isValidCollegeAcadOrg = resolver =>
     collegeAcadOrg
-      ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
+      ? resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg)
       : true;
   // ============================================================
   /** @param {PropResolver} resolver   */

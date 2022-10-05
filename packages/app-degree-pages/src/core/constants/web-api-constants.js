@@ -11,7 +11,7 @@ const listingPageDefaultDataSource = {
   init: "false",
   fields:
     `graduateApplyDates,planDeadlines,AsuDegSrchFlg,` +
-    "CollegeAcadOrg,DepartmentCode," +
+    "CollegeAcadOrg,CollegeAcadOrgJoint,DepartmentCode," +
     "Descr100,Institution,AcadPlan," +
     "Degree,DegreeDescr,DegreeDescrlong," +
     "concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
