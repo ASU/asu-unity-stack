@@ -164,7 +164,7 @@ function SearchPage({
         </div>
       </div>
       <TabbedPanels id={searchTabsId} onTabChange={() => true}>
-        <Tab id={tabIds.all} title="All ASU search">
+        <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <AllTab
               totalResults={totalResults}
@@ -183,7 +183,7 @@ function SearchPage({
             )}
           </Tab>
         )}
-        <Tab id={tabIds.faculty} title="Faculty and staff">
+        <Tab id={tabIds.faculty} title="Faculty and Staff">
           {preSearchOrContent(
             <FacultyTab
               engines={enginesWithParams}
