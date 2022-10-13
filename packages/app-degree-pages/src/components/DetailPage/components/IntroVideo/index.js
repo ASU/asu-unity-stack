@@ -24,6 +24,7 @@ const IntroVideo = ({ type, url, vttUrl, title }) => (
       url={youtubeURLParser(type, url)}
       vttUrl={vttUrl}
       title={title}
+      controls
     />
   </VideoWrapper>
 );
