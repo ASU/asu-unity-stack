@@ -11,7 +11,6 @@ const ButtonGroup = Styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-
   & a.btn {
     margin: 0;
   }
@@ -31,8 +30,8 @@ function RequiredCourse({
   const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 1}`;
 
   const template = (
-    <div className="container pl-0" data-testid="required-course">
-      <h4>Required Course (Major Map)</h4>
+    <section className="container pl-0" data-testid="required-course">
+      <h4>Required Courses (Major Map)</h4>
       <ButtonGroup className="pt-1">
         {concurrentDegreeMajorMaps && (
           <Button
@@ -40,6 +39,14 @@ function RequiredCourse({
             color="maroon"
             element="button"
             href={concurrentDegreeMajorMaps}
+          />
+        )}
+        {majorMapOnCampusArchiveURL && (
+          <Button
+            label={`View ${acadYear} major map (on-campus)`}
+            color="maroon"
+            element="button"
+            href={majorMapOnCampusArchiveURL}
           />
         )}
         {onlineMajorMapURL && (
@@ -52,17 +59,20 @@ function RequiredCourse({
         )}
       </ButtonGroup>
       <div className="mt-3">
-        <a href={majorMapOnCampusArchiveURL}>Major map on-campus (archive)</a>
-      </div>
-      <div className="mt-3">
         <strong>What if:</strong> See how your courses can be applied to another
         major and find out how to&nbsp;
         <a href="https://changemajor.apps.asu.edu/">change your major</a>
       </div>
-    </div>
+    </section>
   );
 
-  return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;
+  return !concurrentDegreeMajorMaps &&
+    !onlineMajorMapURL &&
+    !majorMapOnCampusArchiveURL ? (
+    <div />
+  ) : (
+    template
+  );
 }
 
 RequiredCourse.propTypes = {

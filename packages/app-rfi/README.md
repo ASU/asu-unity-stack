@@ -76,9 +76,9 @@ until you do.
 
 ## Services consulted by the RFI Component
 * ASU Degree Search REST API (currently proxied through Cloudflare worker for CORS permissions) for main degree data:
-** findAllDegrees: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
-** findDegreeByAcadPlan: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
-** findDegreeByCollege: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
+** findAllDegrees: <https://degrees.apps.asu.edu/t5/service?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
+** findDegreeByAcadPlan: <https://degrees.apps.asu.edu/t5/service?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
+** findDegreeByCollege: <https://degrees.apps.asu.edu/t5/service?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
 * Data Potluck for Countries and States data:
 ** <https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states>
 ** [DPL docs](https://api.myasuplat-dpl.asu.edu)

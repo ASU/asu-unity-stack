@@ -57,7 +57,7 @@ module.exports = generateHTML = packages => `
       <div class="container-xl">
         <div class="row">
           <div id="header-top" class="col-12">
-            <nav class="nav" aria-label="Top">
+            <nav class="nav" aria-label="ASU">
               <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
               <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU home</a>

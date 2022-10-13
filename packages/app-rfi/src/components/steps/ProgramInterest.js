@@ -77,7 +77,7 @@ function filterDegreesByDeptOrCollegeOrCampus(degreeData, props) {
 
 // Options
 
-// Fetch degree data from our CF reverse proxy of Degree Search REST API.
+// Fetch degree data from Degree Search REST API.
 // Returns the full degree dataset for the given program (undergrad | graduate).
 // We do filtering in useEffect()s to manage filtering logic for our various
 // field options.

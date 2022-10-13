@@ -144,7 +144,8 @@ const DetailPage = ({
                     <CustomText content={resolver.getAsuCustomText()} />
                   ) : null}
 
-                  {!introContent?.hideMarketText && resolver.getMarketText() ? (
+                  {!introContent?.hideMarketText &&
+                  (introContent?.contents || resolver.getMarketText()) ? (
                     <MarketText
                       contents={
                         introContent?.contents || [
@@ -160,13 +161,13 @@ const DetailPage = ({
                     />
                   ) : null}
 
-                  {!introContent?.hideRequiredCourses ? (
+                  {/* {!introContent?.hideRequiredCourses ? (
                     <RequiredCourse
                       concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                       onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
                       majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
                     />
-                  ) : null}
+                  ) : null} */}
                 </section>
 
                 {!atAGlance?.hide ? (
@@ -190,6 +191,15 @@ const DetailPage = ({
                   />
                 ) : null}
 
+                {!introContent?.hideRequiredCourses &&
+                !resolver.isMinorOrCertificate() ? (
+                  <RequiredCourse
+                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
+                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                  />
+                ) : null}
+
                 {!applicationRequirements?.hide ? (
                   <ApplicationRequirements
                     graduateRequirements={
@@ -197,12 +207,15 @@ const DetailPage = ({
                         ? resolver.getGraduateRequirements()
                         : null
                     }
+                    isMinorOrCertificate={resolver.isMinorOrCertificate()}
                     additionalRequirements={resolver.getDescrLongExtented5()}
                     transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
 
-                {!changeMajorRequirements?.hide ? (
+                {!changeMajorRequirements?.hide &&
+                !resolver.isMinorOrCertificate() &&
+                !resolver.isGradProgram() ? (
                   <ChangeYourMajor content={resolver.getChangeMajor()} />
                 ) : null}
               </div>
@@ -230,7 +243,7 @@ const DetailPage = ({
               </div>
             </div>
             <div className="row">
-              {!nextSteps?.hide ? (
+              {!nextSteps?.hide && !resolver.isMinorOrCertificate() ? (
                 <NextSteps
                   cards={nextSteps?.cards}
                   defaultCards={detailPageDefault.nextSteps.cards}

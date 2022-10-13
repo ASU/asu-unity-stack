@@ -10,7 +10,7 @@ export const Basic = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -143,7 +143,7 @@ export const Basic = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="main">
+                      <nav class="navbar-nav" aria-label="Main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"
@@ -330,7 +330,7 @@ export const DropDownMenus = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -467,7 +467,7 @@ export const DropDownMenus = (
                   </div>
                   <div class="collapse navbar-collapse w-100" id="menubar">
                     <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="main">
+                      <nav class="navbar-nav" aria-label="Main">
                         <a
                           class="nav-link nav-link-home"
                           href="/"
@@ -1406,7 +1406,7 @@ export const NoNavigation = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -1632,7 +1632,7 @@ export const NoNavigationAndWithButtons = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -1873,7 +1873,7 @@ export const ScrolledState = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -2006,7 +2006,7 @@ export const ScrolledState = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="main">
+                      <nav class="navbar-nav" aria-label="Main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"
@@ -2306,7 +2306,7 @@ export const Partner = (
         <div class="container-xl">
           <div class="row">
             <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="Top">
+              <nav class="nav" aria-label="ASU">
                 <a
                   class="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
@@ -2440,7 +2440,7 @@ export const Partner = (
                     id="menubar"
                   >
                     <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="main">
+                      <nav class="navbar-nav" aria-label="Main">
                         <a
                           class="nav-link nav-link-home active"
                           href="/"

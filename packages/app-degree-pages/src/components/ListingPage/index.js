@@ -32,7 +32,7 @@ import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
-import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
+// import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
 import { SearchBar } from "./components/SearchBar";
 
 /**
@@ -98,8 +98,12 @@ const ListingPage = ({
   const { defaultState } = useContext(AppContext);
   const { listingPageDefault } = defaultState;
   // These filter are input props which never change.
-  const { collegeAcadOrg, departmentCode, showInactivePrograms } =
-    programList.dataSource;
+  const {
+    collegeAcadOrg,
+    departmentCode,
+    showInactivePrograms,
+    blacklistAcadPlans,
+  } = programList.dataSource;
 
   /** @type {UseFiltersState} */
   const [stateFilters, setStateFilters] = useState({
@@ -134,6 +138,7 @@ const ListingPage = ({
         collegeAcadOrg,
         departmentCode,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
@@ -163,6 +168,7 @@ const ListingPage = ({
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
@@ -307,14 +313,14 @@ const ListingPage = ({
                 onRemove={onFilterSummaryRemove}
               />
             ) : null}
-            <DataViewSwitch
+            {/* <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
                 setSearchLoading(false);
               }}
               checkedId={dataViewComponent}
-            />
+            /> */}
           </div>
         </section>
 

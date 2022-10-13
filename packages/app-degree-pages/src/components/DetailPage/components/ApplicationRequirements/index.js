@@ -112,33 +112,62 @@ const undergraduateTemplate = (
 function ApplicationRequirements({
   graduateRequirements,
   transferRequirements,
+  isMinorOrCertificate,
   additionalRequirements,
 }) {
+  let reqsLabel;
+  if (graduateRequirements) {
+    reqsLabel = !isMinorOrCertificate
+      ? "Degree requirements"
+      : "Program requirements";
+  } else {
+    reqsLabel = !isMinorOrCertificate
+      ? "Admission requirements"
+      : "Program requirements";
+  }
   return (
-    <section
-      id={progDetailSectionIds.applicationRequirements.targetIdName}
-      data-testid="application-requirements"
-    >
-      <h2>
-        <span className="highlight-gold">Application requirements</span>
-      </h2>
-      <h3 className="mt-4">General university admission requirements</h3>
+    <>
+      <section
+        id={progDetailSectionIds.applicationRequirements.targetIdName}
+        data-testid="application-requirements"
+      >
+        <h2>
+          <span className="highlight-gold">{reqsLabel}</span>
+        </h2>
+        {graduateRequirements ? (
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+              graduateRequirements
+            )}
+          />
+        ) : (
+          undergraduateTemplate(transferRequirements, additionalRequirements)
+        )}
+      </section>
+
       {graduateRequirements ? (
-        <div
-          dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-            graduateRequirements
-          )}
-        />
-      ) : (
-        undergraduateTemplate(transferRequirements, additionalRequirements)
-      )}
-    </section>
+        <section
+          id={progDetailSectionIds.degreeRequirements.targetIdName}
+          data-testid="degree-requirements"
+        >
+          <h2>
+            <span className="highlight-gold">Admission requirements</span>
+          </h2>
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+              additionalRequirements
+            )}
+          />
+        </section>
+      ) : null}
+    </>
   );
 }
 
 ApplicationRequirements.propTypes = {
   graduateRequirements: PropTypes.string,
   transferRequirements: PropTypes.string,
+  isMinorOrCertificate: PropTypes.bool,
   additionalRequirements: PropTypes.string,
 };
 

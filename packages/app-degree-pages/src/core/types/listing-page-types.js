@@ -45,6 +45,7 @@
  * @property {string} [collegeAcadOrg]
  * @property {string} [departmentCode]
  * @property {boolean | "true" | "false"} [showInactivePrograms]
+ * @property {Array} [blacklistAcadPlans]
  */
 
 /**

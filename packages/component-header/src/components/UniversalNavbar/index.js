@@ -24,7 +24,7 @@ const UniversalNavbar = () => {
     >
       <div className="container-xl">
         <div className="header-top">
-          <nav className="nav" aria-label="Top">
+          <nav className="nav" aria-label="ASU">
             <div className="links-container">
               <a
                 className="nav-link sr-only sr-only-focusable"
