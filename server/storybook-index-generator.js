@@ -190,7 +190,7 @@ module.exports = generateHTML = packages => `
 
   </main>
 
-  <footer id="asu-footer" role="contentinfo">
+  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
