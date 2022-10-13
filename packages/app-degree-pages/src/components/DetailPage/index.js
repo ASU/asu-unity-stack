@@ -123,7 +123,7 @@ const DetailPage = ({
         <OnThisPageAnchorMenu anchorMenu={filteredAnchorMenu} />
       ) : null}
 
-      <Main data-is-loading={loading} className="main-section">
+      <Main as="div" data-is-loading={loading} className="main-section">
         {loading ? (
           <Loader />
         ) : (
