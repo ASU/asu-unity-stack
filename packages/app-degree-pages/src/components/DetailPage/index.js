@@ -303,7 +303,7 @@ const DetailPage = ({
                 />
               ) : null}
 
-              {!attendOnline?.hide && resolver.getCurriculumUrl() ? (
+              {!attendOnline?.hide && resolver.isOnline() ? (
                 <AttendOnline
                   learnMoreLink={resolver.getCurriculumUrl()}
                   image={
