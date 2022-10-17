@@ -120,7 +120,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       {/* @ts-ignore */}
       <a
         href={link.href}
-        aria-expanded={!link.items ? null : opened ? "true" : "false"} // eslint-disable-line no-nested-ternary
+        aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
           link.selected ? " nav-item-selected" : ""
