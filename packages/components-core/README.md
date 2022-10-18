@@ -197,4 +197,3 @@ All the requirements for this component were covered, so there is no need of any
 
 - [How to convert prop types to definition types](https://github.com/mskelton/ratchet)
   - [Online tool](https://mskelton.dev/ratchet)
-
