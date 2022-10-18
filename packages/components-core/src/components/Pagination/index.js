@@ -96,6 +96,13 @@ export const Pagination = ({
     onChange?.(e, action);
   };
 
+  const renderArrows = (direction) => {
+    if (showArrowIcons) return "";
+    if (isSmallDevice && direction === "next") return ">";
+    if (isSmallDevice && direction === "prev") return "<";
+    return direction === "next" ? "Next" : "Prev";
+  };
+
   const renderPages = () => {
     // Set the ranges to be shown in the pagination
     const lowerRange = createRange(
@@ -175,7 +182,7 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
         >
-          {isSmallDevice ? "<" : "Prev"}
+          {renderArrows("prev")}
         </PageItem>
         {renderPages()}
         <PageItem
@@ -185,7 +192,7 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         >
-          {isSmallDevice ? ">" : "Next"}
+          {renderArrows("next")}
         </PageItem>
         {showLastButton && (
           <PageItem
