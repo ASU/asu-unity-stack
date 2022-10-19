@@ -5,7 +5,6 @@ import {
   layoutNames,
 } from '../../../helpers/wrapper.js';
 import { initVideo as initFunc } from './heroes-video';
-
 import stockVideo from '../../atoms/video/stock-video-person-drawing.mp4';
 
 export default createComponent('Heroes', 'Molecules', 'Examples');
