@@ -7,7 +7,7 @@ import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
-import { AnchorWrapper, CardWrapper } from "./index.styles";
+import { CardWrapper } from "./index.styles";
 
 const gaDefaultObject = {
   name: "onclick",
@@ -29,8 +29,6 @@ export const Card = ({
   type,
   width,
   horizontal,
-  clickable,
-  clickHref,
   image,
   imageAltText,
   title,
@@ -44,44 +42,11 @@ export const Card = ({
   linkUrl,
   tags,
 }) => {
-  if (clickable && clickHref) {
-    return (
-      <AnchorWrapper
-        role="button"
-        href={clickHref}
-        className="c-card"
-        onClick={() =>
-          trackGAEvent({ ...gaDefaultObject, section: title, text: linkLabel })
-        }
-      >
-        <BaseCard
-          type={type}
-          width={width}
-          horizontal={horizontal}
-          clickable={clickable}
-          image={image}
-          imageAltText={imageAltText}
-          title={title}
-          icon={icon}
-          body={body}
-          eventFormat={eventFormat}
-          eventLocation={eventLocation}
-          eventTime={eventTime}
-          buttons={buttons}
-          linkLabel={linkLabel}
-          linkUrl={linkUrl}
-          tags={tags}
-        />
-      </AnchorWrapper>
-    );
-  }
-
   return (
     <BaseCard
       type={type}
       width={width}
       horizontal={horizontal}
-      clickable={clickable}
       image={image}
       imageAltText={imageAltText}
       title={title}
@@ -111,14 +76,6 @@ Card.propTypes = {
    * Enable horizontal mode
    */
   horizontal: PropTypes.bool,
-  /**
-   * Enable clickable card
-   */
-  clickable: PropTypes.bool,
-  /**
-   * Card target if clickable
-   */
-  clickHref: PropTypes.string,
   /**
    * Card title
    */
@@ -186,8 +143,6 @@ Card.defaultProps = {
   type: "default",
   width: "100%",
   horizontal: false,
-  clickable: false,
-  clickHref: undefined,
   body: undefined,
   eventFormat: "stack",
   eventTime: undefined,
@@ -208,7 +163,6 @@ const BaseCard = ({
   type,
   width,
   horizontal,
-  clickable,
   image,
   imageAltText,
   title,
@@ -228,7 +182,6 @@ const BaseCard = ({
     [`card-story`]: type === "story",
     [`w-${width.replace("%", "")}`]: width !== "100%",
     [`card-horizontal`]: horizontal,
-    [`card-hover`]: clickable,
   });
 
   return (
@@ -286,7 +239,6 @@ BaseCard.propTypes = {
   type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
   width: PropTypes.oneOf(["25%", "50%", "75%", "100%"]),
   horizontal: PropTypes.bool,
-  clickable: PropTypes.bool,
   title: PropTypes.string.isRequired,
   icon: PropTypes.arrayOf(PropTypes.string), // React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   body: PropTypes.string,
@@ -324,7 +276,6 @@ BaseCard.defaultProps = {
   type: "default",
   width: "100%",
   horizontal: false,
-  clickable: false,
   body: "",
   eventFormat: "stack",
   eventTime: "",
@@ -372,10 +323,13 @@ const CardContent = ({
     {buttons && (
       <div className="card-buttons">
         {buttons.map(button => (
-          <div className="card-button" data-testid="card-button">
+          <div
+            className="card-button"
+            data-testid="card-button"
+            key={`${button.label}-${button.href}`}
+          >
             {/* @ts-ignore */}
             <Button
-              key={`${button.label}-${button.href}`}
               ariaLabel={button.ariaLabel}
               color={button.color}
               icon={button.icon}
