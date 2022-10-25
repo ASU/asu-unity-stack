@@ -21,8 +21,8 @@ This repository contains multiple packages which are managed and published using
 
 ## ❯ Package Multi Output Targets
 
-Due to [the many ways Javascript can be packaged as reusable modules](https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/), 
-Unity provides multiple target outputs. When built (or installed from the Unity package registry), the dist/ folder in a Unity **REACT component package** may 
+Due to [the many ways Javascript can be packaged as reusable modules](https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/),
+Unity provides multiple target outputs. When built (or installed from the Unity package registry), the dist/ folder in a Unity **REACT component package** may
 include JS files with the following naming convention:
 - *fileName*.umd.js which is a UMD module for inclusion in browser/CMS/HTML pages. (We use this type in the Webspark 2 CMS project as the packages are included in HTML output and loaded by the browser).
 - *fileName*.es.js which is an ES6/ESM module package which can be used in React apps where the library can be implemented within the React code.
@@ -123,6 +123,7 @@ The easiest way to get started is to spin up storybook as a dev environment:
 git clone https://github.com/ASU/asu-unity-stack.git # clone the package
 cd asu-unity-stack # cd into git root
 yarn install # do this at git root
+yarn build # do this at git root
 cd packages/<package-name> # step into package root
 yarn storybook # run storybook
 ```
