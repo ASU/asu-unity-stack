@@ -25,11 +25,13 @@ const Logo = () => {
         className="vert"
         src={logo?.src ?? vertLogo}
         alt={logo?.alt ?? "Arizona State University"}
+        title={logo?.title ?? "ASU home page"}
       />
       <img
         className="horiz"
         src={logo?.mobileSrc ?? horizLogo}
         alt={logo?.alt ?? "Arizona State University"}
+        title={logo?.title ?? "ASU home page"}
       />
     </LogoWrapper>
   );

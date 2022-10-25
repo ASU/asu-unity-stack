@@ -3,6 +3,7 @@
 /**
  * @typedef {{
  *    alt: string
+ *    title: string
  *    src: string
  *    mobileSrc: string
  *    brandLink: string
