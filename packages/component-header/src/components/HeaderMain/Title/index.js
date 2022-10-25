@@ -26,7 +26,6 @@ const Title = () => {
     }
   }, [active, animateTitle, baseUrl]);
 
-  console.log(parentOrg);
   if (parentOrg) {
     return (
       <TitleWrapper
