@@ -33,10 +33,18 @@ export const DefaultComponent = createStory(
       <tbody>
         <tr>
           <th scope="row">
-            <p>Metropolitan campus population</p>
+            <p>
+              use of <code>&lt;a&gt;</code> in cells{' '}
+              <a href="#">example link</a>
+            </p>
           </th>
           <td>
-            <p>71,946</p>
+            <p>
+              Lorem ipsum dolor sit amet <a href="#">consectetur</a> adipisicing
+              elit. Officia, vero. Quasi temporibus mollitia, quia doloribus
+              quam tenetur a eos iste repellendus distinctio vitae velit aperiam
+              esse facere odio qui ipsa.
+            </p>
           </td>
           <td>71,946</td>
           <td>71,946</td>
