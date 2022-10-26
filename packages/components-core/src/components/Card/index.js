@@ -8,6 +8,7 @@ import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 import { AnchorWrapper, CardWrapper } from "./index.styles";
+import { emailAddressParser } from "./utils/emailAddressParser";
 
 const gaDefaultObject = {
   name: "onclick",
@@ -393,7 +394,7 @@ const CardContent = ({
     {linkUrl && linkLabel && (
       <div className="card-link" data-testid="card-link">
         <a
-          href={linkUrl}
+          href={emailAddressParser(linkUrl)}
           onClick={() =>
             trackGAEvent({
               ...gaDefaultObject,
