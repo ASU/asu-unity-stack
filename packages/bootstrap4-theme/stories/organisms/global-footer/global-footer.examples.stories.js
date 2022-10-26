@@ -12,7 +12,7 @@ import {
   FourColumns,
   FiveColumns,
   SixColumns,
-} from './global-footer.templates.js';
+} from './global-footer.templates.stories.js';
 import { initFooterGA as initFunc } from './global-footer';
 
 export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, {
