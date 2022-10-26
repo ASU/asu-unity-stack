@@ -10,6 +10,7 @@ const degreeListPropTypes = {
     majorInfoUrl: PropTypes.string,
     majorInfoOnlineUrl: PropTypes.string,
   }),
+  degreesPerPage: PropTypes.number,
 };
 
 export { degreeListPropTypes };

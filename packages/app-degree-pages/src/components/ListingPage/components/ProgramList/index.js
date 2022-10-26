@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
  *    loading: boolean
  *    totalRows?: number
  *    actionUrls: import("src/core/types/listing-page-types").ActionUrlProps
+ *    degreesPerPage: number
  * }} GridListingProps
  */
 
@@ -55,8 +56,14 @@ const programViewer = {
  *  dataViewComponent: GRID_VIEW_ID | LIST_VIEW_ID
  * } & GridListingProps} props
  */
-function ProgramList({ dataViewComponent, loading, programs, actionUrls }) {
-  const ROW_PAGES = 8;
+function ProgramList({
+  dataViewComponent,
+  loading,
+  programs,
+  actionUrls,
+  degreesPerPage,
+}) {
+  const ROW_PAGES = degreesPerPage;
   const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
   const [tableView, setTableView] = useState([]);
@@ -82,6 +89,7 @@ function ProgramList({ dataViewComponent, loading, programs, actionUrls }) {
           programs={tableView}
           totalRows={programs?.length}
           actionUrls={actionUrls}
+          degreesPerPage={degreesPerPage}
         />
       </div>
 
@@ -91,6 +99,7 @@ function ProgramList({ dataViewComponent, loading, programs, actionUrls }) {
           programs={tableView}
           totalRows={programs?.length}
           actionUrls={actionUrls}
+          degreesPerPage={degreesPerPage}
         />
       </div>
 
@@ -116,6 +125,11 @@ function ProgramList({ dataViewComponent, loading, programs, actionUrls }) {
 ProgramList.propTypes = {
   dataViewComponent: PropTypes.string,
   ...degreeListPropTypes,
+  degreesPerPage: PropTypes.number,
+};
+
+ProgramList.defaultProps = {
+  degreesPerPage: 8,
 };
 
 export { ProgramList, GridView, ListView };
