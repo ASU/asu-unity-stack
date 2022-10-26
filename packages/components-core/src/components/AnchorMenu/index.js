@@ -33,6 +33,7 @@ export const AnchorMenu = ({
 }) => {
   const anchorMenuRef = useRef(null);
   const [hasHeader, setHasHeader] = useState(false);
+  const [requiresAltMenuSpacing, setRequiresAltMenuSpacing] = useState(false);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
@@ -81,8 +82,18 @@ export const AnchorMenu = ({
     setHasHeader(!!pageHeader);
   };
 
+  // Sets prop for styled-component to change anchor menu style
+  // based on if it requires different spacing for the ASU Header
+  const findContainersRequiringAltMenuSpacing = () => {
+    const degreeDetailPageContainer = document.getElementById(
+      "degreeDetailPageContainer"
+    );
+    if (degreeDetailPageContainer) setRequiresAltMenuSpacing(true);
+  };
+
   useEffect(() => {
     setHeader();
+    findContainersRequiringAltMenuSpacing();
   }, []);
 
   useEffect(() => {
@@ -121,6 +132,8 @@ export const AnchorMenu = ({
 
   return (
     <AnchorMenuWrapper
+      // @ts-ignore
+      requiresAltMenuSpacing={requiresAltMenuSpacing}
       ref={anchorMenuRef}
       className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
         hasHeader ? "with-header " : ""
