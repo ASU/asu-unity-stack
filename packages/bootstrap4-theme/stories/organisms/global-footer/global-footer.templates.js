@@ -3,24 +3,16 @@ import endorsedLogo from './ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.pn
 import innovationLockup from './200420-GlobalFooter-No1InnovationLockup.png';
 
 export const GlobalElementsOnly = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-footer-innovation">
       <div class="container" id="footer-innovation">
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -68,6 +60,18 @@ export const GlobalElementsOnly = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -145,7 +149,11 @@ export const GlobalElementsOnly = (
 );
 
 export const ZeroColumns = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -236,18 +244,6 @@ export const ZeroColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -295,6 +291,18 @@ export const ZeroColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -372,7 +380,11 @@ export const ZeroColumns = (
 );
 
 export const OneColumn = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -483,18 +495,6 @@ export const OneColumn = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -542,6 +542,18 @@ export const OneColumn = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -619,7 +631,11 @@ export const OneColumn = (
 );
 
 export const OneColumnNoLogoOrSocial = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-footer-columns">
       <div class="container" id="footer-columns">
         <div class="row">
@@ -645,18 +661,6 @@ export const OneColumnNoLogoOrSocial = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -704,6 +708,18 @@ export const OneColumnNoLogoOrSocial = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -781,7 +797,11 @@ export const OneColumnNoLogoOrSocial = (
 );
 
 export const TwoColumns = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -937,18 +957,6 @@ export const TwoColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -996,6 +1004,18 @@ export const TwoColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1073,7 +1093,11 @@ export const TwoColumns = (
 );
 
 export const ThreeColumns = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -1277,18 +1301,6 @@ export const ThreeColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -1336,6 +1348,18 @@ export const ThreeColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1413,7 +1437,12 @@ export const ThreeColumns = (
 );
 
 export const FourColumns = (
-  <footer id="asu-footer" role="contentinfo" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -1665,18 +1694,6 @@ export const FourColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -1724,6 +1741,18 @@ export const FourColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -1801,7 +1830,11 @@ export const FourColumns = (
 );
 
 export const FiveColumns = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -2101,18 +2134,6 @@ export const FiveColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -2160,6 +2181,18 @@ export const FiveColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -2237,7 +2270,11 @@ export const FiveColumns = (
 );
 
 export const SixColumns = (
-  <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <footer
+    id="asu-footer"
+    role="contentinfo"
+    data-elastic-exclude="data-elastic-exclude"
+  >
     <div class="wrapper" id="wrapper-endorsed-footer">
       <div class="container" id="endorsed-footer">
         <div class="row">
@@ -2579,18 +2616,6 @@ export const SixColumns = (
         <div class="row">
           <div class="col">
             <div class="d-flex footer-innovation-links">
-              <a
-                class="img-link"
-                href="https://www.asu.edu/rankings"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="secondary footer"
-                data-ga-footer="#1 in the u.s. for innovation"
-              >
-                <img
-                  src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
-                />
-              </a>
               <nav class="nav" aria-label="University Services">
                 <a
                   class="nav-link"
@@ -2638,6 +2663,18 @@ export const SixColumns = (
                   My ASU
                 </a>
               </nav>
+              <a
+                class="img-link"
+                href="https://www.asu.edu/rankings"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="#1 in the u.s. for innovation"
+              >
+                <img
+                  src={innovationLockup}
+                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                />
+              </a>
             </div>
           </div>
         </div>
