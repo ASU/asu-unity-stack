@@ -31,7 +31,7 @@ const Title = () => {
       <TitleWrapper
         // @ts-ignore
         breakpoint={breakpoint}
-        className={`title ${active ? "active" : ""}`}
+        className="title"
         data-testid="title"
       >
         <a
@@ -43,7 +43,7 @@ const Title = () => {
           {parentOrg}
         </a>
         <a
-          className="subunit-name"
+          className={`subunit-name ${active ? "active" : ""}`}
           href={baseUrl}
           onFocus={() => trackGAEvent({ text: title })}
           title={`${title} home page`}
@@ -57,11 +57,11 @@ const Title = () => {
     <TitleWrapper
       // @ts-ignore
       breakpoint={breakpoint}
-      className={`title ${active ? "active" : ""}`}
+      className="title"
       data-testid="title"
     >
       <a
-        className="title-subunit-name"
+        className={`title-subunit-name ${active ? "active" : ""}`}
         href={baseUrl}
         onFocus={() => trackGAEvent({ text: title })}
         title={`${title} home page`}
