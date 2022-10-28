@@ -11,18 +11,7 @@ const TitleWrapper = styled.div`
   font-weight: 700;
   padding: 0 2rem 1.5rem 2rem;
   letter-spacing: -1px;
-  background-image: linear-gradient(
-    to right,
-    transparent 51%,
-    #ffc626 51%,
-    95%,
-    transparent
-  );
-  background-position: 0 0;
-  background-size: 200%;
   display: inline-block;
-  transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-  transition-duration: 1.5s;
   margin: 0;
   width: max-content;
 
@@ -38,6 +27,26 @@ const TitleWrapper = styled.div`
   .title-subunit-name {
     color: #191919;
   }
+
+  .subunit-name,
+  .title-subunit-name {
+    background-image: linear-gradient(
+      to right,
+      transparent 51%,
+      #ffc626 51%,
+      95%,
+      transparent
+    );
+    background-position: 0 0;
+    background-size: 200%;
+    display: inline-block;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
+    transition-duration: 1.5s;
+    &.active {
+      background-position: -200%;
+    }
+  }
+
   @media (min-width: ${({ breakpoint }) => breakpointMap[breakpoint]}) {
     line-height: 1;
     font-weight: 700;
