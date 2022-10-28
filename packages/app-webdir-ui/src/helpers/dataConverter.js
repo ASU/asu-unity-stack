@@ -157,6 +157,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
 
+    // Used in directory component when dept id is provided with asurite
     if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
       matchedAffiliationTitle = profile.affiliations?.raw[0];
       matchedAffiliationDept = profile.subaffiliations?.raw[0];
@@ -176,6 +177,10 @@ const getTitleFromProfile = (profile, titleMatch) => {
       matchedAffiliationTitle = profile.working_title.raw[0];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
+  } else if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
+    console.log("title from fallback to courtesy affiliate");
+    matchedAffiliationTitle = profile.affiliations?.raw[0];
+    matchedAffiliationDept = profile.subaffiliations?.raw[0];
   } else {
     console.log("title from fallback3 to hr values - final");
     // Final fallback is to use the HR working title and department values.
