@@ -6,7 +6,7 @@ import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 export const FoldableCardDefaultOpen = createStory(
   <div class="card card-foldable">
     <div class="card-header">
-      <h4>
+      <h3>
         <a
           id="example-header-3"
           data-toggle="collapse"
@@ -24,7 +24,7 @@ export const FoldableCardDefaultOpen = createStory(
           This card starts off in an unfolded state.
           <span class="fas fa-chevron-up"></span>
         </a>
-      </h4>
+      </h3>
     </div>
     <div
       id="example-content-3"

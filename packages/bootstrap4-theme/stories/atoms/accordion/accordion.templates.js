@@ -10,7 +10,7 @@ const FoldableCardElement = (
 ) => (
   <div class="card card-foldable">
     <div class="card-header">
-      <h4>
+      <h3>
         <a
           id={`${linkID}`}
           class="collapsed"
@@ -30,7 +30,7 @@ const FoldableCardElement = (
           This card unfolds.
           <span class="fas fa-chevron-up"></span>
         </a>
-      </h4>
+      </h3>
     </div>
     <div
       id={`${bodyID}`}
