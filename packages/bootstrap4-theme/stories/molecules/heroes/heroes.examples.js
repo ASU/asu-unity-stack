@@ -220,9 +220,6 @@ export const HeroVideo = createStory(
             Be a collaborator in exploring space
           </span>
         </h1>
-        <div role="doc-subtitle">
-          <span class="highlight-white"></span>
-        </div>
         <div class="content">
           <p class="text-white">
             Humankind is on a path to becoming an interplanetary species, and
