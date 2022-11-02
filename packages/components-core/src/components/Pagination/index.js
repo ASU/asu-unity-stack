@@ -47,7 +47,7 @@ export const Pagination = ({
     window.innerWidth < X_SMALL_DEDVICE_WIDTH
   );
   // End small device
-  const [showArrowIcons, setShowArrowIcons] = useState(!showLastButton);
+  const [showArrowIcons, setShowArrowIcons] = useState(true);
 
   useEffect(() => {
     setSelectedPage(currentPage);
@@ -67,7 +67,7 @@ export const Pagination = ({
       setCurrentTotalNumbers(totalNumbers);
       setSmallDevice(false);
       setXSmallDevice(false);
-      setShowArrowIcons(!showLastButton);
+      setShowArrowIcons(true);
     }
   });
 
@@ -96,18 +96,11 @@ export const Pagination = ({
     onChange?.(e, action);
   };
 
-  const renderArrows = (direction) => {
-    if (showArrowIcons) return "";
-    if (isSmallDevice && direction === "next") return ">";
-    if (isSmallDevice && direction === "prev") return "<";
-    return direction === "next" ? "Next" : "Prev";
-  };
-
   const renderPages = () => {
     // Set the ranges to be shown in the pagination
     const lowerRange = createRange(
       selectedPage -
-        (currentPage !== 1 ? 2 : 0) +
+        (selectedPage !== 1 ? 2 : 0) +
         Math.floor(currentTotalNumbers / 2),
       selectedPage,
       totalPages
@@ -115,15 +108,28 @@ export const Pagination = ({
     const upperRange = createRange(
       selectedPage,
       selectedPage +
-        (currentPage === 1 ? 2 : 1) +
+        (selectedPage === 1 ? 2 : 1) +
         Math.floor(currentTotalNumbers / 2),
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
+    console.log(currentPage)
 
     return (
       <>
-        {!isSmallDevice && renderedPages[0] !== 1 && <PageItem>...</PageItem>}
+        {renderedPages[0] !== 1 && (
+          <>
+          <PageItem
+            dataId="first"
+            isClickeable
+            disabled={selectedPage === 1}
+            onClick={e => handleChangePage(e, "first")}
+          >
+            1
+          </PageItem>
+        <PageItem>...</PageItem>
+        </>
+        )}
         {renderedPages.map(
           page =>
             page && (
@@ -141,9 +147,19 @@ export const Pagination = ({
               </PageItem>
             )
         )}
-        {!isSmallDevice &&
-          renderedPages[renderedPages.length - 1] !== totalPages && (
+        {renderedPages[renderedPages.length - 1] !== totalPages && (
+          <>
             <PageItem>...</PageItem>
+            <PageItem
+            dataId="last"
+            isClickeable
+            disabled={selectedPage === totalPages}
+            onClick={e => handleChangePage(e, "last")}
+          >
+            {totalPages}
+          </PageItem>
+          </>
+
           )}
       </>
     );
@@ -165,25 +181,21 @@ export const Pagination = ({
           }
         )}
       >
-        {showFirstButton && (
-          <PageItem
+          {/* <PageItem
             dataId="first"
             isClickeable
             disabled={selectedPage === 1}
             onClick={e => handleChangePage(e, "first")}
           >
             First
-          </PageItem>
-        )}
+          </PageItem> */}
         <PageItem
           dataId="prev"
           isClickeable
           disabled={selectedPage === 1}
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
-        >
-          {renderArrows("prev")}
-        </PageItem>
+        />
         {renderPages()}
         <PageItem
           dataId="next"
@@ -191,19 +203,16 @@ export const Pagination = ({
           disabled={selectedPage === totalPages}
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
-        >
-          {renderArrows("next")}
-        </PageItem>
-        {showLastButton && (
-          <PageItem
+        />
+
+          {/* <PageItem
             dataId="last"
             isClickeable
             disabled={selectedPage === totalPages}
             onClick={e => handleChangePage(e, "last")}
           >
             Last
-          </PageItem>
-        )}
+          </PageItem> */}
       </ul>
     </nav>
   );
