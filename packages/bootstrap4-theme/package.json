@@ -5,12 +5,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {
     "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",
