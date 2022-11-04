@@ -5,6 +5,8 @@ module.exports = {
     '../stories/**/*.stories.[tj]s',
     '../stories/**/*.templates.[tj]s',
     '../stories/**/*.examples.[tj]s',
+    '../stories/**/*.templates.stories.js',
+    '../stories/**/*.examples.stories.js',
   ],
   addons: [
     '@storybook/addon-docs',
