@@ -184,7 +184,7 @@ StoryHeroLarge.args = {
 export const HeroVideo = createStory(
   (args) => {
     return (
-      <div class="uds-hero-lg uds-hero-video">
+      <div class="uds-hero-lg uds-video-hero">
         <img
           class="hero"
           src="https://source.unsplash.com/WeYamle9fDM/1920x256"
@@ -194,7 +194,7 @@ export const HeroVideo = createStory(
           <source src={stockVideo} />
           Your browser does not support the video tag.
         </video>
-        <div class="hero-video-controls">
+        <div class="video-hero-controls">
           <button
             id="playHeroVid"
             type="button"
@@ -212,14 +212,14 @@ export const HeroVideo = createStory(
             <span class="sr-only">Pause</span>
           </button>
         </div>
+        <div role="doc-subtitle">
+          <span class="highlight-black">Space Missions</span>
+        </div>
         <h1>
           <span class="highlight-white">
             Be a collaborator in exploring space
           </span>
         </h1>
-        <div role="doc-subtitle">
-          <span class="highlight-white"></span>
-        </div>
         <div class="content">
           <p class="text-white">
             Humankind is on a path to becoming an interplanetary species, and
