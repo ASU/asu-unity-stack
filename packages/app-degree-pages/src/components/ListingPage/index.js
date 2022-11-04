@@ -145,7 +145,7 @@ const ListingPage = ({
 
     setDataInitView(dataInit);
     setTableView(dataInit);
-  }, [data]);
+  }, [data, degreesPerPage]);
 
   /**
    * @param {FiltersState} activeFilters
