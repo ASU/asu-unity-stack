@@ -13,3 +13,30 @@ The markup contains a landmark for developers to target with any relevant JS for
 
 - `.login-status > a.name` should render with a font weight of 700;
 - `.login-status > a.signout` should surround the result with an open and close parenthesis. (Done via pseudo-elements and CSS.)
+
+## About local site search
+
+The following input **should be added** right below the other hidden fields on the `form[name="gs"]` element
+
+`<input name="url_host" value="mydomain.asu.edu" type="hidden" />`
+
+But replacing _mydomain.asu.edu_ with your domain **with no https and no trailing slash or path.**
+
+### Implementation
+
+```
+<form class="form-inline" action="https://search.asu.edu/search" method="get" name="gs">
+  <input
+    class="form-control"
+    type="search"
+    name="q"ß
+    aria-labelledby="header-top-search"
+    required
+    data-ga-input-header-event="search"
+  />
+  <label id="header-top-search">Search asu.edu</label>
+
+  <!-- Input added right here -->
+  <input name="url_host" value="mydomain.asu.edu" type="hidden" />
+</form>
+```
