@@ -19,6 +19,7 @@ export const PageItem = ({
   pageLinkIcon,
   selectedPage,
   onClick,
+  ellipses,
   children,
 }) => {
   return (
@@ -26,6 +27,7 @@ export const PageItem = ({
       className={classNames("page-item", {
         [`disabled`]: disabled,
         [`active`]: selectedPage,
+        [`elipses`]: ellipses,
       })}
     >
       {isClickeable ? (
@@ -58,6 +60,7 @@ PageItem.propTypes = {
   dataId: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
+  ellipses: PropTypes.bool,
 };
 
 PageItem.defaultProps = {

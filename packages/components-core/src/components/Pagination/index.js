@@ -113,22 +113,21 @@ export const Pagination = ({
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
-    console.log(currentPage)
 
     return (
       <>
         {renderedPages[0] !== 1 && (
           <>
-          <PageItem
-            dataId="first"
-            isClickeable
-            disabled={selectedPage === 1}
-            onClick={e => handleChangePage(e, "first")}
-          >
-            1
-          </PageItem>
-        <PageItem>...</PageItem>
-        </>
+            <PageItem
+              dataId="first"
+              isClickeable
+              disabled={selectedPage === 1}
+              onClick={e => handleChangePage(e, "first")}
+            >
+              1
+            </PageItem>
+            <PageItem ellipses>...</PageItem>
+          </>
         )}
         {renderedPages.map(
           page =>
@@ -149,18 +148,17 @@ export const Pagination = ({
         )}
         {renderedPages[renderedPages.length - 1] !== totalPages && (
           <>
-            <PageItem>...</PageItem>
+            <PageItem ellipses>...</PageItem>
             <PageItem
-            dataId="last"
-            isClickeable
-            disabled={selectedPage === totalPages}
-            onClick={e => handleChangePage(e, "last")}
-          >
-            {totalPages}
-          </PageItem>
+              dataId="last"
+              isClickeable
+              disabled={selectedPage === totalPages}
+              onClick={e => handleChangePage(e, "last")}
+            >
+              {totalPages}
+            </PageItem>
           </>
-
-          )}
+        )}
       </>
     );
   };
@@ -181,14 +179,6 @@ export const Pagination = ({
           }
         )}
       >
-          {/* <PageItem
-            dataId="first"
-            isClickeable
-            disabled={selectedPage === 1}
-            onClick={e => handleChangePage(e, "first")}
-          >
-            First
-          </PageItem> */}
         <PageItem
           dataId="prev"
           isClickeable
@@ -204,15 +194,6 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         />
-
-          {/* <PageItem
-            dataId="last"
-            isClickeable
-            disabled={selectedPage === totalPages}
-            onClick={e => handleChangePage(e, "last")}
-          >
-            Last
-          </PageItem> */}
       </ul>
     </nav>
   );
