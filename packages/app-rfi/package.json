@@ -20,7 +20,7 @@
     "directory": "packages/app-rfi"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {

@@ -20,7 +20,7 @@
     "directory": "packages/component-events"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {

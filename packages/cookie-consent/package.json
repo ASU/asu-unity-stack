@@ -22,7 +22,7 @@
     "directory": "packages/cookie-consent"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "devDependencies": {

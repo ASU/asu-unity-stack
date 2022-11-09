@@ -10,7 +10,7 @@
     "directory": "packages/components-library"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "author": "Colton Testamarck",

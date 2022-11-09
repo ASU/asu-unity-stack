@@ -20,7 +20,7 @@
     "directory": "packages/app-degree-pages"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {

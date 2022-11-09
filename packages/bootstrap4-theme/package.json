@@ -9,7 +9,7 @@
     "directory": "packages/bootstrap4-theme"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {
