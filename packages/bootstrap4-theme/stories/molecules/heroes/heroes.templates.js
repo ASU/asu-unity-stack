@@ -33,16 +33,14 @@ export const Hero = createStory(
   (args) => {
     return (
       <div class={`${args.size}`}>
+        <div className="hero-overlay" />
         <img
           class="hero"
           src="https://source.unsplash.com/WeYamle9fDM/1920x256"
           alt="Sample placeholder image."
         />
-        <div role="doc-subtitle">
-          <span class="highlight-white">The New American University</span>
-        </div>
         <h1>
-          <span class="highlight-black">By whom it includes</span>
+          <span class="highlight-white">This is a primary headline</span>
         </h1>
         <a
           href="#"

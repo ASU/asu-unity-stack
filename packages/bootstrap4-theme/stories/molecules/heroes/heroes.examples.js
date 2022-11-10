@@ -11,35 +11,16 @@ export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
+    <div className="hero-overlay" />
     <img
       class="hero"
       src="https://source.unsplash.com/IydYk-LGOhc/1920x512"
       alt="Sample placeholder image."
     />
     <h1>
-      <span class="highlight-gold">Gettysburg Address</span>
+      <span class="highlight-white">This is a primary headline</span>
     </h1>
-    <div class="content">
-      <p class="text-white">
-        Four score and seven years ago our fathers brought forth upon this
-        continent, a new nation, conceived in Liberty, and dedicated to the
-        proposition that all men are created equal.
-      </p>
-    </div>
     <div class="btn-row">
-      <a
-        href="#"
-        class="btn btn-default btn-gold"
-        data-ga="read more"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-        data-ga-section="gettysburg address"
-      >
-        Read more
-      </a>
       <a
         href="#"
         class="btn btn-default btn-gold"
@@ -51,7 +32,7 @@ export const HeroMedium = createStory(
         data-ga-region="main content"
         data-ga-section="gettysburg address"
       >
-        More quotes
+        Call to action button
       </a>
     </div>
   </div>,
@@ -65,37 +46,38 @@ HeroMedium.args = {
 };
 
 export const HeroLarge = createStory(
-  <div class="uds-hero-lg hide-content">
+  <div class="uds-hero-lg has-btn-row">
+    <div className="hero-overlay" />
     <img
       class="hero"
       src="https://source.unsplash.com/xyXcGADvAwE/1920x684"
       alt="Sample placeholder image."
     />
-    <div role="doc-subtitle">
-      <span class="highlight-black">Mass Ascension</span>
-    </div>
-    <h1 class="text-white">The Albuquerque International Balloon Fiesta</h1>
+    <h1>
+      <span class="highlight-gold">This is a primary headline</span>
+    </h1>
     <div class="content">
       <p class="text-white">
-        For nine days in October, the Albuquerque International Balloon Fiesta
-        creates an enchanted world of vibrant balloon-filled skies. Brisk autumn
-        mornings in the Rio Grande Valley create an otherworldly backdrop for
-        our most popular event, Mass Ascension.
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam ex
+        doloribus odio soluta tempora ratione illo reiciendis facilis vero
+        officiis qui saepe nemo, eum suscipit sequi repellat iste?
       </p>
     </div>
-    <a
-      href="#"
-      class="btn btn-maroon"
-      data-ga="get tickets"
-      data-ga-name="onclick"
-      data-ga-event="link"
-      data-ga-action="click"
-      data-ga-type="internal link"
-      data-ga-region="main content"
-      data-ga-section="mass ascension"
-    >
-      Get tickets
-    </a>
+    <div class="btn-row">
+      <a
+        href="#"
+        class="btn btn-default btn-gold"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Call to action button
+      </a>
+    </div>
   </div>,
   {
     initFunc,

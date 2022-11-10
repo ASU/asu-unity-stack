@@ -1,12 +1,27 @@
 /*--------------------------------------------------------------
 # Heroes
 
+0. Local variables
 1. Mixins
 2. Hero, Mobile
 3. Hero, Tablet
 4. Hero, Desktop
 5. Story Hero, Mobile
 6. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+0. Local variables
+--------------------------------------------------------------*/
+
+$uds-hero-gradient-overlay: linear-gradient(
+  180deg,
+  #19191900 0%,
+  #191919c9 100%
+);
+
+/*--------------------------------------------------------------
+1. Mixins
 --------------------------------------------------------------*/
 
 @mixin like-h3 {
@@ -161,23 +176,118 @@ div.uds-hero-lg {
 /*--------------------------------------------------------------
 2.5 Mobile Only
 --------------------------------------------------------------*/
-// Prevents white text on a white background when .content
-// is repositioned below the background image.
 @include media-breakpoint-down(sm) {
-  div[class^='uds-hero'] .content.text-white,
-  div[class^='uds-hero'] .content > .text-white {
-    color: $uds-color-base-gray-7 !important;
-  }
-  div.uds-hero-sm,
-  div.uds-hero-md {
-    .hero {
-      max-height: $uds-size-spacing-32;
-    }
-  }
+  div.uds-hero {
+    &-sm {
+      // we want dont want to display these elements in this size of hero
+      a.btn,
+      .content,
+      .btn-row,
+      [role='doc-subtitle'] {
+        display: none;
+      }
 
-  div.uds-hero-lg {
-    .hero {
-      max-height: $uds-size-spacing-64;
+      h1 {
+        z-index: 30;
+      }
+
+      .hero,
+      .hero-overlay {
+        height: $uds-size-spacing-32;
+      }
+
+      // Background shadow
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-image: $uds-hero-gradient-overlay;
+        z-index: 20;
+      }
+    }
+
+    &-md {
+      margin-bottom: 2rem;
+
+      h1,
+      [role='doc-subtitle'],
+      a.btn,
+      .content,
+      .btn-row {
+        z-index: 30;
+      }
+
+      h1 {
+        margin-bottom: 2.5rem;
+      }
+
+      .hero,
+      .hero-overlay {
+        height: $uds-size-spacing-32;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+      }
+
+      // Background shadow with a div
+      .hero-overlay {
+        width: 100%;
+        background-image: $uds-hero-gradient-overlay;
+        z-index: 10;
+      }
+
+      &.has-btn-row {
+        grid-template-rows: minmax(2rem, 1fr) auto;
+        .btn-row {
+          position: absolute;
+          left: 2rem;
+          bottom: 0;
+        }
+      }
+    }
+
+    &-lg {
+      margin-bottom: 2rem;
+
+      h1,
+      [role='doc-subtitle'],
+      a.btn,
+      .content,
+      .btn-row {
+        z-index: 30;
+      }
+
+      .content {
+        margin-top: 0;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero,
+      .hero-overlay {
+        height: $uds-size-spacing-64;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+      }
+
+      &.has-btn-row {
+        grid-template-rows: minmax(2rem, 1fr) auto;
+        .btn-row {
+          position: absolute;
+          left: 2rem;
+          bottom: 0;
+        }
+      }
+
+      // Background shadow with a div
+      .hero-overlay {
+        width: 100%;
+        background-image: $uds-hero-gradient-overlay;
+        z-index: 10;
+      }
     }
   }
 }
@@ -278,7 +388,7 @@ div.uds-hero-lg {
       content: '';
       height: 100%;
       width: 100%;
-      background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%);
+      background-image: $uds-hero-gradient-overlay;
       grid-column: 1 / span 3;
       grid-row: 1 / span 6;
       z-index: 20;
