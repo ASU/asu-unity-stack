@@ -90,6 +90,15 @@
     "webpack-node-externals": "^2.5.0"
   },
   "dependencies": {},
+  "resolutions": {
+    "@storybook/addon-essentials": "^6.4.0",
+    "loader-utils": "^2.0.3",
+    "immer": "^9.0.6",
+    "socket.io-parser": "4.2.1",
+    "parse-url": "^8.1.0",
+    "minimist": "^1.2.6",
+    "shell-quote": "^1.7.3"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
