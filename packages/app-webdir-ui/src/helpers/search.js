@@ -395,8 +395,8 @@ export const performSearch = function ({
           (sort === "last_name_desc" || sort === "last_name_asc")
         ) {
           data.sort((a, b) =>
-            a.display_last_name.localeCompare(
-              b.display_last_name)
+            a.full_record.display_last_name.raw.localeCompare(
+              b.full_record.display_last_name.raw)
           );
 
           if (sort === "last_name_desc") {
