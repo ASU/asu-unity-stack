@@ -29,32 +29,35 @@ export default createComponent(
   extraOptions
 );
 
-export const Hero = createStory(
+export const HeroSmallOneButton = createStory(
   (args) => {
     return (
-      <div class={`${args.size}`}>
-        <div className="hero-overlay" />
+      <div class={`${args.size} has-btn-row`}>
         <img
           class="hero"
-          src="https://source.unsplash.com/WeYamle9fDM/1920x256"
+          src="https://source.unsplash.com/WeYamle9fDM/1920x256&q=50"
           alt="Sample placeholder image."
         />
         <h1>
-          <span class="highlight-white">This is a primary headline</span>
+          <span class="highlight-white">
+            Lorem ipsum dolor sit amet, consectetur adip
+          </span>
         </h1>
-        <a
-          href="#"
-          class="btn btn-maroon"
-          data-ga="Call to action"
-          data-ga-name="onclick"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-type="internal link"
-          data-ga-region="main content"
-          data-ga-secion="the new american university"
-        >
-          Call to Action
-        </a>
+        <div class="btn-row">
+          <a
+            href="#"
+            class="btn btn-maroon btn-responsive"
+            data-ga="Call to action"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-secion="the new american university"
+          >
+            First Call to Action
+          </a>
+        </div>
       </div>
     );
   },
@@ -63,17 +66,17 @@ export const Hero = createStory(
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-Hero.args = {
+HeroSmallOneButton.args = {
   template: 0,
 };
 
-export const HeroWithButtonRow = createStory(
+export const HeroSmallTwoButtons = createStory(
   (args) => {
     return (
       <div class={`${args.size} has-btn-row`}>
         <img
           class="hero"
-          src="https://source.unsplash.com/IydYk-LGOhc/1920x512"
+          src="https://source.unsplash.com/WeYamle9fDM/1920x256&q=50"
           alt="Sample placeholder image."
         />
         <h1>
@@ -89,7 +92,7 @@ export const HeroWithButtonRow = createStory(
         <div class="btn-row">
           <a
             href="#"
-            class="btn btn-default btn-gold"
+            class="btn btn-default btn-gold btn-responsive"
             data-ga="Read more"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -102,7 +105,7 @@ export const HeroWithButtonRow = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-default btn-gold"
+            class="btn btn-default btn-gold btn-responsive"
             data-ga="More quotes"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -122,7 +125,7 @@ export const HeroWithButtonRow = createStory(
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-HeroWithButtonRow.args = {
+HeroSmallTwoButtons.args = {
   template: 0,
 };
 
