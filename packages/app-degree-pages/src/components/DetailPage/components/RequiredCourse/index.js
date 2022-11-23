@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import Styled from "styled-components";
+import { Button } from "../../../../../../components-core/src/components/Button";
 
 /** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
