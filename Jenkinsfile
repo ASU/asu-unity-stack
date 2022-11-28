@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:12.22.1'
+                    image 'node:14.17.6'
                     args '-p 3000:3000'
                 }
             }
@@ -53,7 +53,7 @@ pipeline {
         stage('Publish Packages to Registry') {
             agent {
                 docker {
-                    image 'node:12'
+                    image 'node:14'
                     args '-p 3000:3000'
                 }
             }
