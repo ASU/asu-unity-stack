@@ -134,6 +134,7 @@ BaseCarousel.propTypes = {
   perView: PropTypes.number,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
   carouselItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   cssClass: PropTypes.string,
   CustomNavComponent: PropTypes.func,

@@ -1,11 +1,11 @@
 // @ts-check
 /* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
-import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
+import { sanitizeDangerousMarkup } from "../../../../components-core/src/core/utils/html-utils";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
@@ -348,7 +348,9 @@ RfiStepper.defaultProps = {
 };
 
 RfiStepper.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
