@@ -11,9 +11,10 @@ export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
+    <div className="hero-overlay"></div>
     <img
       class="hero"
-      src="https://source.unsplash.com/WeYamle9fDM/1920x512&q=50"
+      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
       alt="Sample placeholder image."
     />
     <h1>
@@ -67,9 +68,10 @@ HeroMedium.args = {
 
 export const HeroLarge = createStory(
   <div class="uds-hero-lg has-btn-row">
+    <div className="hero-overlay"></div>
     <img
       class="hero"
-      src="https://source.unsplash.com/WeYamle9fDM/1920x512&q=50"
+      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
       alt="Sample placeholder image."
     />
     <h1>
@@ -97,6 +99,19 @@ export const HeroLarge = createStory(
       >
         Call to action button
       </a>
+      <a
+        href="#"
+        class="btn btn-default btn-maroon btn-responsive"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Default button
+      </a>
     </div>
   </div>,
   {
@@ -113,7 +128,7 @@ export const StoryHeroLarge = createStory(
     <section class="uds-story-hero uds-story-hero-lg entry-header">
       <img
         class="hero"
-        src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
+        src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
         alt="Be sure to include alt text in your image tag."
       />
       <div class="content">
@@ -187,9 +202,10 @@ export const HeroVideo = createStory(
   (args) => {
     return (
       <div class="uds-hero-lg uds-video-hero has-btn-row">
+        <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://source.unsplash.com/WeYamle9fDM/1920x256"
+          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
           alt="Sample placeholder image."
         />
         <video id="media-video" autoPlay muted loop>
@@ -241,7 +257,7 @@ export const HeroVideo = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-maroon btn-responsive"
+            class="btn btn-gold btn-responsive"
             data-ga="Call to action"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -250,7 +266,7 @@ export const HeroVideo = createStory(
             data-ga-region="main content"
             data-ga-secion="the new american university"
           >
-            Call to Action asdfasd asdasd asdasd
+            Second Call to Action
           </a>
         </div>
       </div>

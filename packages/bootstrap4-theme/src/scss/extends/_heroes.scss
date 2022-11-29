@@ -164,11 +164,17 @@ div[class^='uds-hero'] {
     background-image: $uds-hero-gradient-overlay;
     z-index: 20;
   }
+
+  .hero-overlay {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: $uds-hero-gradient-overlay;
+    z-index: 20;
+  }
 }
 
 div.uds-hero-sm {
-  height: $uds-size-spacing-32;
-
   h1,
   a.btn,
   .btn-row {
@@ -184,7 +190,7 @@ div.uds-hero-sm {
   }
 
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-4 12rem $uds-size-spacing-4;
+    grid-template-rows: $uds-size-spacing-2 13.9rem auto $uds-size-spacing-2;
 
     h1 {
       align-self: center;
@@ -195,32 +201,24 @@ div.uds-hero-sm {
     }
 
     .btn-row {
-      position: relative;
-      top: 16px;
       align-self: flex-start;
       flex-wrap: wrap;
 
       a.btn {
-        margin-bottom: 0;
+        margin-top: 0;
       }
     }
-  }
 
-  // Background shadow
-  &:after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    background-image: $uds-hero-gradient-overlay;
-    grid-column: 1 / span 3;
-    grid-row: 1 / span 3;
-    z-index: 20;
+    .hero-overlay {
+      height: $uds-size-spacing-32;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
 
 div.uds-hero-md {
-  height: 21rem;
-
   .content,
   [role='doc-subtitle'] {
     display: none;
@@ -233,10 +231,14 @@ div.uds-hero-md {
   }
 
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-2 17rem $uds-size-spacing-6;
+    grid-template-rows: $uds-size-spacing-2 19rem auto $uds-size-spacing-2;
 
     .hero {
-      grid-row: 1 / span 4;
+      grid-row: unset;
+      position: absolute;
+      height: 21rem;
+      top: 0;
+      left: 0;
     }
 
     h1 {
@@ -247,22 +249,20 @@ div.uds-hero-md {
 
     .btn-row {
       grid-row: 3;
-      position: relative;
-      top: 31px;
       flex-wrap: wrap;
       align-self: flex-start;
     }
-  }
 
-  &:after {
-    grid-column: 1 / span 3;
-    grid-row: 1 / span 3;
+    .hero-overlay {
+      height: 21rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
 
 div.uds-hero-lg {
-  height: $uds-size-spacing-64;
-
   h1,
   [role='doc-subtitle'],
   a.btn,
@@ -280,8 +280,15 @@ div.uds-hero-lg {
     margin-bottom: $uds-size-spacing-2;
   }
 
+  .hero {
+    height: $uds-size-spacing-64;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-2 1fr auto $uds-size-spacing-6;
+    grid-template-rows: $uds-size-spacing-2 19rem 11rem auto $uds-size-spacing-2;
 
     h1 {
       align-self: flex-end;
@@ -289,28 +296,29 @@ div.uds-hero-lg {
 
     .content {
       grid-row: 3;
-      align-self: flex-end;
+      align-self: start;
       margin-bottom: 0;
       p {
-        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
     .btn-row {
       grid-row: 4;
-      position: relative;
-      top: $uds-size-spacing-4;
       flex-wrap: wrap;
       align-self: flex-start;
       a.btn {
         margin-bottom: 0;
       }
     }
-  }
 
-  &:after {
-    grid-column: 1 / span 3;
-    grid-row: 1 / span 5;
+    .hero-overlay {
+      height: $uds-size-spacing-64;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
 
@@ -376,6 +384,7 @@ div.uds-hero-lg {
 
   div.uds-hero-sm {
     &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 13.4rem auto $uds-size-spacing-2;
       .btn-row {
         top: 24px;
         align-self: initial;
@@ -394,6 +403,8 @@ div.uds-hero-lg {
 
       .hero {
         grid-row: 1 / span 5;
+        position: initial;
+        height: inherit;
       }
 
       h1 {
@@ -415,22 +426,20 @@ div.uds-hero-lg {
           margin-top: 0;
         }
       }
-    }
-    // Background shadow
-    &:after {
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 5;
+
+      .hero-overlay {
+        height: $uds-size-spacing-64;
+      }
     }
   }
 
   div.uds-hero-lg {
     height: 42.75rem;
-
     &.has-btn-row {
       grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
 
       .hero {
-        grid-row: 1 / span 5;
+        height: 42.75rem;
       }
 
       h1 {
@@ -447,6 +456,10 @@ div.uds-hero-lg {
         a.btn {
           margin-top: 0;
         }
+      }
+
+      .hero-overlay {
+        height: 42.75rem;
       }
     }
   }
@@ -465,7 +478,7 @@ div.uds-hero-lg {
     a.btn,
     .content,
     .btn-row {
-      max-width: calc(940px - 34%);
+      max-width: calc(940px - 30%);
     }
 
     &.uds-video-hero {
@@ -475,10 +488,6 @@ div.uds-hero-lg {
 
       &.uds-video-hero video {
         display: block;
-        grid-row: 1 / span 6;
-        grid-column: 1 / span 3;
-        z-index: 30;
-        height: 100%;
         min-height: 100%;
         position: absolute;
         top: 0;

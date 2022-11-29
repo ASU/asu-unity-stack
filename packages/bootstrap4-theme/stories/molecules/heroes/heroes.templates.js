@@ -33,9 +33,10 @@ export const HeroSmallOneButton = createStory(
   (args) => {
     return (
       <div class={`${args.size} has-btn-row`}>
+        <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://source.unsplash.com/WeYamle9fDM/1920x256&q=50"
+          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
           alt="Sample placeholder image."
         />
         <h1>
@@ -74,9 +75,10 @@ export const HeroSmallTwoButtons = createStory(
   (args) => {
     return (
       <div class={`${args.size} has-btn-row`}>
+        <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://source.unsplash.com/WeYamle9fDM/1920x256&q=50"
+          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
           alt="Sample placeholder image."
         />
         <h1>
@@ -92,7 +94,7 @@ export const HeroSmallTwoButtons = createStory(
         <div class="btn-row">
           <a
             href="#"
-            class="btn btn-default btn-gold btn-responsive"
+            class="btn btn-default btn-maroon btn-responsive"
             data-ga="Read more"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -133,7 +135,7 @@ export const StoryHero = createStory(
   <section class="uds-story-hero">
     <img
       class="hero"
-      src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
+      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
       alt="Be sure to include alt text in your image tag."
     />
     <div class="content">
