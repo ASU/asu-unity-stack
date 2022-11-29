@@ -14,9 +14,14 @@
     "dist/*",
     "docs/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/app-webdir-ui"
+  },
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -33,11 +38,6 @@
     "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
     "dev": "webpack-dev-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/app-webdir-ui"
   },
   "dependencies": {
     "@asu-design-system/component-carousel": "^1.8.3",

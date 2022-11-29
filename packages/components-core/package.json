@@ -12,14 +12,14 @@
     "dist/*",
     "docs/*"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git",
     "directory": "packages/components-core"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
