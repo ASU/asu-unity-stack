@@ -1,7 +1,7 @@
 pipeline {
     agent {
-      kubernetes {
-        yaml """
+        kubernetes {
+            yaml """
 apiVersion: v1
 kind: Pod
 spec:
@@ -16,7 +16,7 @@ spec:
   imagePullSecrets:
   - name: docker-hub-credentials
 """
-      }
+        }
     }
     environment {
         // AWS_DEFAULT_REGION = 'us-west-2'
@@ -38,7 +38,7 @@ spec:
     stages {
         stage('Build') {
             steps {
-                container('node14') { 
+                container('node14') {
 		    // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
 		    // sh 'echo "always-auth=true" >> ~/.npmrc'
 		    // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
@@ -85,12 +85,11 @@ spec:
 
                 echo '## Publishing packages...'
                 try {
-                sh 'yarn publish-packages'
-                } catch (e){
+                  sh 'yarn publish-packages'
+                } catch (e) {
                   echo '### Publishing packages failed...'
                   echo "Error: ${e}"
                 }
-              }
             }
         }
         stage('Deploy Storybook to GitHub Pages') {
