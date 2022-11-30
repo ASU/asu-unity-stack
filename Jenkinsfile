@@ -65,30 +65,28 @@ spec:
             }
         }
         stage('Publish Packages to Registry') {
-            agent {
-                docker {
-                    image 'node:14'
-                    args '-p 3000:3000'
-                }
-            }
             steps {
-                // echo 'Publishing packages to private NPM registry...'
-                // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                // sh 'echo "always-auth=true" >> ~/.npmrc'
-                // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                echo '# Publishing packages to GitHub Packages...'
+                continer('node14') {
+                    script {
+			// echo 'Publishing packages to private NPM registry...'
+			// sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+			// sh 'echo "always-auth=true" >> ~/.npmrc'
+			// sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+			echo '# Publishing packages to GitHub Packages...'
 
-                echo '## Configuring .npmrc file...'
-                sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                sh 'echo "always-auth=true" >> ~/.npmrc'
-                sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+			echo '## Configuring .npmrc file...'
+			sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+			sh 'echo "always-auth=true" >> ~/.npmrc'
+			sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
 
-                echo '## Publishing packages...'
-                try {
-                  sh 'yarn publish-packages'
-                } catch (e) {
-                  echo '### Publishing packages failed...'
-                  echo "Error: ${e}"
+			echo '## Publishing packages...'
+			try {
+			  sh 'yarn publish-packages'
+			} catch (e) {
+			  echo '### Publishing packages failed...'
+			  echo "Error: ${e}"
+			}
+                    }
                 }
             }
         }
