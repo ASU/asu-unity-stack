@@ -1,5 +1,23 @@
 pipeline {
-    agent any
+    agent {
+      kubernetes {
+        yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  serviceAccountName: jenkins
+  containers:
+  - name: node14
+    image: 'node:14.17.6'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  imagePullSecrets:
+  - name: docker-hub-credentials
+"""
+      }
+    }
     environment {
         // AWS_DEFAULT_REGION = 'us-west-2'
         // HOME='.'
@@ -10,29 +28,25 @@ pipeline {
         // NPM_TOKEN = credentials('NPM_TOKEN')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
-        GH_TOKEN = credentials('GH_TOKEN')
+        GH_TOKEN = credentials('github-org-asu-pac')
     }
     options {
-      withAWS(credentials:'aws-jenkins')
+      // withAWS(credentials:'aws-jenkins')
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
       disableConcurrentBuilds()
     }
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:14.17.6'
-                    args '-p 3000:3000'
-                }
-            }
             steps {
-                // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                // sh 'echo "always-auth=true" >> ~/.npmrc'
-                // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-                sh 'yarn install'
-                sh 'yarn build'
-                // sh 'yarn build-storybook'
+                container('node14') { 
+		    // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+		    // sh 'echo "always-auth=true" >> ~/.npmrc'
+		    // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+		    sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+		    sh 'yarn install'
+		    sh 'yarn build'
+		    // sh 'yarn build-storybook'
+                }
             }
         }
         stage('Test') {
