@@ -5,7 +5,7 @@ import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const Sidebar = createStory(
   <div class="col-md-4">
-    <h3>Lorem ipsum</h3>
+    <h2>Lorem ipsum</h2>
     <div
       class="sidebar-toggler"
       data-toggle="collapse"

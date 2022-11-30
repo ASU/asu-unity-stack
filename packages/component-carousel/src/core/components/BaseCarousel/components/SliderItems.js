@@ -21,6 +21,7 @@ const SliderItems = ({ carouselItems }) => {
 };
 
 SliderItems.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   carouselItems: PropTypes.arrayOf(PropTypes.object),
 };
 
