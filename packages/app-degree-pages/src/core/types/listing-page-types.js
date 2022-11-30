@@ -70,6 +70,7 @@
  * @property {HeroProps} [hero]
  * @property {IntroContentProps} [introContent]
  * @property {GridListProps} [programList]
+ * @property {number} [degreesPerPage]
  */
 
 /**
