@@ -69,6 +69,9 @@ spec:
             }
         }
         stage('Publish Packages to Registry') {
+            when {
+                branch 'dev'
+            }
             steps {
                 continer('node14') {
                     script {
