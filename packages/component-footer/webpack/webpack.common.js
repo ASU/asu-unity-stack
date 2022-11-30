@@ -7,7 +7,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    Footer: "./index.js",
+    asuFooter: "./index.js",
   },
   module: {
     rules: [
@@ -46,20 +46,24 @@ const common = {
         exclude: /\.module\.css$/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.(jpg|png|svg)$/,
+        loader: "url-loader",
+        options: {
+          limit: Infinity, // everything
+        },
       },
     ],
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // TODO: with multiple outputs the cleanup needs to be externally.
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

@@ -1,7 +1,7 @@
 // @ts-check
-import { CardCarousel } from "@asu-design-system/component-carousel";
-import { FeedContext } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
+import { CardCarousel } from "../../../../component-carousel/src/components/CardCarousel";
+import { FeedContext } from "../../../../components-core/src/components/FeedAnatomy/FeedContainerContext";
 
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
@@ -60,7 +60,7 @@ const CarouselTemplate = ({ cardButton }) => {
  * @param {FeedType} props
  */
 const CardCarouselNews = ({ cardButton, ...props }) => (
-  // Calling the high order component that fetch the data
+  // Calling the high order component that fetches the data
   <BaseFeed {...props}>
     <CarouselTemplate
       cardButton={{ ...defaultProps.cardButton, ...cardButton }}

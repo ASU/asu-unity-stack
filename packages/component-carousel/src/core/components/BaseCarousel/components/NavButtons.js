@@ -2,8 +2,17 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../../services/googleAnalytics";
 import { NextButton } from "./NextButton";
 import { PrevButton } from "./PrevButton";
+
+const defaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  region: "main content",
+  type: "carousel",
+};
 
 const BaseNavButtonContainer = ({ children = null }) => (
   <div
@@ -28,9 +37,19 @@ BaseNavButtonContainer.propTypes = {
  */
 const NavButtons = ({ onClick = () => null, children = null }) => (
   <BaseNavButtonContainer>
-    <PrevButton onClick={onClick} />
+    <PrevButton
+      onClick={() => {
+        onClick();
+        trackGAEvent({ ...defaultGAEvent, text: "left chevron" });
+      }}
+    />
     {children}
-    <NextButton onClick={onClick} />
+    <NextButton
+      onClick={() => {
+        onClick();
+        trackGAEvent({ ...defaultGAEvent, text: "right chevron" });
+      }}
+    />
   </BaseNavButtonContainer>
 );
 

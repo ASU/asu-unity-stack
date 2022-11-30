@@ -1,6 +1,6 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core";
 import React from "react";
+import { Card } from "../../../../../../components-core/src/components/Card";
 
 import { progDetailSectionIds } from "../../../../core/models";
 import { Section, Background } from "./index.style";
@@ -27,7 +27,7 @@ function AffordingCollege() {
                 label: "Estimate tuition and fees",
                 ariaLabel: "Estimate tuition and fees",
                 color: "maroon",
-                href: "https://students.asu.edu/tuition",
+                href: "https://tuition.asu.edu/cost-calculator/tuition",
               },
             ]}
           />
@@ -42,7 +42,7 @@ function AffordingCollege() {
                 label: "Learn about scholarships",
                 ariaLabel: "Learn about scholarships",
                 color: "maroon",
-                href: "https://students.asu.edu/scholarships",
+                href: "https://scholarships.asu.edu/",
               },
             ]}
           />
@@ -57,7 +57,7 @@ function AffordingCollege() {
                 label: "Explore financial aid",
                 ariaLabel: "Explore financial aid",
                 color: "maroon",
-                href: "https://students.asu.edu/financialaid/types",
+                href: "https://tuition.asu.edu/financial-aid",
               },
             ]}
           />

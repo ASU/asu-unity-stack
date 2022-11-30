@@ -25,8 +25,7 @@ View component examples and source code below.
   },
 };
 
-const handleClick = e => {
-  e.preventDefault();
+const handleClick = () => {
   alert("The button was clicked.");
 };
 

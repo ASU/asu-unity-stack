@@ -15,6 +15,7 @@ const RfiTextInput = ({
   required,
   helperText,
   autoFocus,
+  onBlur,
 }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -54,6 +55,7 @@ const RfiTextInput = ({
               required={required}
               placeholder={helperText}
               autoFocus={autoFocus}
+              onBlur={onBlur}
             />
             <RfiError isError={!!isError} metaError={meta.error} />
           </div>
@@ -81,6 +83,7 @@ RfiTextInput.propTypes = {
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
   required: PropTypes.bool,
+  onBlur: PropTypes.func,
   helperText: PropTypes.string,
   autoFocus: PropTypes.bool,
 };

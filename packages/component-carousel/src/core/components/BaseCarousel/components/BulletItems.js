@@ -3,6 +3,17 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../../services/googleAnalytics";
+
+const defaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  region: "main content",
+  type: "pagination",
+  text: "owl dot",
+};
+
 /**
  *
  * @param {{ children: JSX.Element | JSX.Element[] }} props
@@ -46,6 +57,7 @@ const BulletItems = ({ buttonCount }) => {
         className="glide__bullet"
         data-glide-dir={`=${i}`}
         aria-label={`Slide view ${i + 1}`}
+        onClick={() => trackGAEvent({ ...defaultGAEvent })}
       />
     );
   }

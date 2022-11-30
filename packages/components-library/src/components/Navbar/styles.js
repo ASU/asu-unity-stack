@@ -123,7 +123,7 @@ const navbarStyles = breakpoint => css`
 
 const Navbar = ({ children, ...props }) => {
   return (
-    <div class={cx("navbar-component", props.class)}>
+    <div class={cx("navbar-component", props.class)} data-elastic-exclude="data-elastic-exclude">
       <div>{children}</div>
     </div>
   );

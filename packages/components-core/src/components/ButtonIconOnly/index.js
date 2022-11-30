@@ -2,6 +2,16 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const gaDefaultObject = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
+
 /**
  * @typedef {import('../../core/types/shared-types').ButtonIconOnlyProps} ButtonIconOnlyProps
  */
@@ -10,19 +20,33 @@ import React from "react";
  * @param {ButtonIconOnlyProps} props
  * @returns {JSX.Element}
  */
-export const ButtonIconOnly = ({ color, icon, innerRef, onClick, size }) => (
-  <button
-    type="button"
-    className={`btn btn-circle btn-circle-alt-${color} ${
-      size === "large" && "btn-circle-large"
-    }`}
-    ref={innerRef}
-    onClick={onClick}
-    aria-label="Close"
-  >
-    <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
-  </button>
-);
+export const ButtonIconOnly = ({
+  color,
+  icon,
+  innerRef,
+  onClick,
+  size,
+  cardTitle,
+}) => {
+  const handleClick = text => {
+    trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
+    onClick?.();
+  };
+
+  return (
+    <button
+      type="button"
+      className={`btn btn-circle btn-circle-alt-${color} ${
+        size === "large" && "btn-circle-large"
+      }`}
+      ref={innerRef}
+      onClick={() => handleClick(`${icon?.[1]} icon`)}
+      aria-label="Close"
+    >
+      <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
+    </button>
+  );
+};
 
 ButtonIconOnly.propTypes = {
   /**
@@ -47,6 +71,10 @@ ButtonIconOnly.propTypes = {
   */
   onClick: PropTypes.func,
   /**
+   * Card title
+   */
+  cardTitle: PropTypes.string,
+  /**
     Button size
   */
   size: PropTypes.oneOf(["large", "small"]),
@@ -58,4 +86,5 @@ ButtonIconOnly.defaultProps = {
   innerRef: undefined,
   onClick: undefined,
   size: "small",
+  cardTitle: "",
 };

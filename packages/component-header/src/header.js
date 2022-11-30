@@ -28,12 +28,16 @@ const ASUHeader = ({
   loggedIn,
   userName,
   loginLink,
+  onLoginClick,
   logoutLink,
+  onLogoutClick,
   buttons,
   breakpoint,
   animateTitle,
   expandOnHover,
   mobileNavTree,
+  searchUrl,
+  site,
 }) => {
   const headerRef = useRef(null);
 
@@ -65,13 +69,17 @@ const ASUHeader = ({
         loggedIn,
         userName,
         loginLink,
+        onLoginClick,
         logoutLink,
+        onLogoutClick,
         buttons,
         breakpoint,
         animateTitle,
         expandOnHover,
         mobileNavTree,
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
+        searchUrl,
+        site,
       }}
     >
       {/* @ts-ignore */}

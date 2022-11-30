@@ -28,7 +28,6 @@ const navItemStyles = breakpoint => css`
 
       &.nav-item {
         display: block;
-        text-transform: capitalize;
       }
     }
 
@@ -42,9 +41,10 @@ const navItemStyles = breakpoint => css`
   }
 
   .navlink {
+    margin: 0 1rem;
     > a {
       color: #191919;
-      padding: 1rem 0.5rem;
+      padding: 1rem;
     }
 
     & + .navbutton {
@@ -53,6 +53,7 @@ const navItemStyles = breakpoint => css`
     }
 
     @media (min-width: ${breakpointForMin(breakpoint)}) {
+      margin: 0;
       > a {
         padding: 0.5rem 0;
 

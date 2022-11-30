@@ -10,9 +10,12 @@
     width: 600px;
     position: absolute;
     top: 150px;
-
     background-color: white;
     padding: $uds-size-spacing-6;
+
+    &.uds-card-and-image {
+      background-color: transparent;
+    }
 
     h2 {
       margin: 0;

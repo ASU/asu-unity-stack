@@ -1,21 +1,22 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
+const { merge } = require("webpack-merge");
 
-const common = require("./webpack.common.js");
+const common = require("./webpack.common");
 
 const PROJECT_DIR = path.resolve(__dirname, "../");
 
 // production bundle
-const config = {
-  ...common,
-  context: path.join(PROJECT_DIR, "src"),
+const umdConfig = merge(common, {
   mode: "production",
   output: {
     path: path.resolve(PROJECT_DIR, "dist"),
-    filename: "[name].production.js",
-    libraryTarget: "umd",
-    library: "AsuWebCarousel",
-    umdNamedDefine: true,
+    filename: "[name].umd.js",
+    library: {
+      name: "AsuWebCarousel",
+      type: "umd",
+      umdNamedDefine: true,
+    },
   },
   optimization: {
     splitChunks: {
@@ -36,9 +37,38 @@ const config = {
       }),
     ],
   },
-  performance: {
-    maxEntrypointSize: 255000,
-  },
-};
+});
 
-module.exports = config;
+const cjsConfig = merge(common, {
+  mode: "production",
+  output: {
+    path: path.resolve(PROJECT_DIR, "dist"),
+    filename: "[name].cjs.js",
+    library: {
+      type: "commonjs2",
+    },
+  },
+});
+
+const esModuleConfig = merge(common, {
+  mode: "production",
+  output: {
+    path: path.resolve(PROJECT_DIR, "dist"),
+    filename: "[name].es.js",
+    library: {
+      type: "module",
+    },
+    environment: { module: true },
+  },
+  experiments: {
+    outputModule: true,
+  },
+  externalsType: "module",
+  externals: {
+    // these needs to be low-case spelled
+    "react": "react",
+    "react-dom": "react-dom",
+  },
+});
+
+module.exports = [umdConfig, cjsConfig, esModuleConfig];

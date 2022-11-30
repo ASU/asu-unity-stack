@@ -77,9 +77,11 @@
 <dd></dd>
 <dt><a href="#ChangeMajorRequirementsProps">ChangeMajorRequirementsProps</a> : <code>Object</code></dt>
 <dd></dd>
-<dt><a href="#NextStepsProps">NextStepsProps</a> : <code>Object</code></dt>
+<dt><a href="#NextStepsCardProp">NextStepsCardProp</a> : <code>Object</code></dt>
 <dd></dd>
-<dt><a href="#AffordingCollegeProps">AffordingCollegeProps</a> : <code>Object</code></dt>
+<dt><a href="#NextStepCardsProps">NextStepCardsProps</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#NextStepsProps">NextStepsProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#FlexibleDegreeOptionItem">FlexibleDegreeOptionItem</a> : <code>Object</code></dt>
 <dd></dd>
@@ -94,6 +96,12 @@
 <dt><a href="#HideProp">HideProp</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#ProgramDetailDataSource">ProgramDetailDataSource</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#WhyChooseAsuCardProp">WhyChooseAsuCardProp</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#WhyChooseAsuCardsProps">WhyChooseAsuCardsProps</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#WhyChooseAsuProps">WhyChooseAsuProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#DetailPageProps">DetailPageProps</a> : <code>Object</code></dt>
 <dd></dd>
@@ -609,6 +617,31 @@ This type set the `url` and `isActive` optional
 | --- | --- |
 | [contents] | [<code>Array.&lt;ContentItem&gt;</code>](#ContentItem) | 
 
+<a name="NextStepsCardProp"></a>
+
+## NextStepsCardProp : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [icon] | <code>Array.&lt;string&gt;</code> | 
+| [title] | <code>string</code> | 
+| [content] | <code>string</code> | 
+| [buttonLink] | [<code>ButtonProps</code>](#ButtonProps) | 
+
+<a name="NextStepCardsProps"></a>
+
+## NextStepCardsProps : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [learnMore] | [<code>NextStepsCardProp</code>](#NextStepsCardProp) | 
+| [apply] | [<code>NextStepsCardProp</code>](#NextStepsCardProp) | 
+| [visit] | [<code>NextStepsCardProp</code>](#NextStepsCardProp) | 
+
 <a name="NextStepsProps"></a>
 
 ## NextStepsProps : <code>Object</code>
@@ -618,17 +651,8 @@ This type set the `url` and `isActive` optional
 | Name | Type |
 | --- | --- |
 | [hide] | <code>boolean</code> | 
-| [cards] | [<code>Array.&lt;CardItem&gt;</code>](#CardItem) | 
-
-<a name="AffordingCollegeProps"></a>
-
-## AffordingCollegeProps : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [cards] | [<code>Array.&lt;CardItem&gt;</code>](#CardItem) | 
+| [cards] | [<code>NextStepCardsProps</code>](#NextStepCardsProps) | 
+| [defaultCards] | [<code>NextStepCardsProps</code>](#NextStepCardsProps) | 
 
 <a name="FlexibleDegreeOptionItem"></a>
 
@@ -713,6 +737,47 @@ This type set the `url` and `isActive` optional
 | [fields] | <code>string</code> | 
 | acadPlan | <code>string</code> | 
 
+<a name="WhyChooseAsuCardProp"></a>
+
+## WhyChooseAsuCardProp : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [image] | <code>ImageItem</code> | 
+| [title] | <code>string</code> | 
+| [text] | <code>string</code> | 
+| [button] | [<code>ButtonProps</code>](#ButtonProps) | 
+
+<a name="WhyChooseAsuCardsProps"></a>
+
+## WhyChooseAsuCardsProps : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [faculty] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+| [programs] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+| [research] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+| [inclusion] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+| [mentors] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+| [honors] | [<code>WhyChooseAsuCardProp</code>](#WhyChooseAsuCardProp) | 
+
+<a name="WhyChooseAsuProps"></a>
+
+## WhyChooseAsuProps : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [hide] | <code>boolean</code> | 
+| [sectionIntroText] | <code>string</code> | 
+| [cards] | [<code>WhyChooseAsuCardsProps</code>](#WhyChooseAsuCardsProps) | 
+| [defaultCards] | [<code>WhyChooseAsuCardsProps</code>](#WhyChooseAsuCardsProps) | 
+
 <a name="DetailPageProps"></a>
 
 ## DetailPageProps : <code>Object</code>
@@ -739,6 +804,7 @@ This type set the `url` and `isActive` optional
 | [globalOpportunity] | <code>GlobalOpportunityProps</code> | 
 | [attendOnline] | [<code>AttendOnlineProps</code>](#AttendOnlineProps) | 
 | [programContactInfo] | [<code>ProgramContactInfoProps</code>](#ProgramContactInfoProps) | 
+| [whyChooseAsu] | [<code>WhyChooseAsuProps</code>](#WhyChooseAsuProps) | 
 
 <a name="IntroContentProps"></a>
 

@@ -80,8 +80,7 @@ AsuRfi.defaultProps = {
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
-  dataSourceDegreeSearch:
-    "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline:
     "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:

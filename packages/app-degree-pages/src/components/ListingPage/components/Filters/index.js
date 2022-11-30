@@ -1,7 +1,7 @@
 // @ts-check
-import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
+import { Button } from "../../../../../../components-core/src/components/Button";
 
 import {
   locationOptions,
@@ -9,8 +9,22 @@ import {
   asuLocalOptions,
   acceleratedConcurrentOptions,
 } from "../../../../core/models";
+import { trackGAEvent } from "../../../../core/services/google-analytics";
 import { SelectFormGroup } from "./components";
 import { Section, ButtonLink } from "./index.style";
+
+const inputsDefaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+};
+
+const buttonsDefaultGAEvent = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+};
 
 /**
  *
@@ -31,6 +45,7 @@ const INITIAL_FILTER_STATE = {
   asuLocals: [],
   acceleratedConcurrent: { value: "all", text: "" },
   keyword: null,
+  blacklistAcadPlans: [],
 };
 
 const getOptionProps = option => ({
@@ -38,6 +53,16 @@ const getOptionProps = option => ({
   value: option.value,
   text: option.text,
 });
+
+const formatOptions = options => options.map(option => option.text).join(", ");
+
+const trackInputEvent = (type, text) => {
+  trackGAEvent({ ...inputsDefaultGAEvent, type, text });
+};
+
+const trackButtonEvent = text => {
+  trackGAEvent({ ...buttonsDefaultGAEvent, text });
+};
 
 /**
  *
@@ -72,6 +97,13 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
       locations: newLocations,
       asuLocals: newAsuLocals,
     });
+
+    const mapField = {
+      locations: "location or online",
+      asuLocals: "as local",
+    };
+
+    trackInputEvent(mapField[targetId], formatOptions(selectedItems));
   };
 
   const changeAcceleratedConcurrentField = /**
@@ -79,6 +111,10 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
    * @param {{ target: HTMLSelectElement}} event
    */ (targetId, { target: { selectedOptions } }) => {
     onChange({ ...value, [targetId]: getOptionProps(selectedOptions[0]) });
+    trackInputEvent(
+      "accelerated/concurrent",
+      getOptionProps(selectedOptions[0]).text
+    );
   };
 
   const applyFilters = () => {
@@ -139,12 +175,18 @@ const Filters = ({ value, onChange, onApply, onClean }) => {
           label="Apply filters"
           ariaLabel="Apply filters"
           size="default"
-          onClick={applyFilters}
+          onClick={() => {
+            applyFilters();
+            trackButtonEvent("apply filters");
+          }}
         />
         <ButtonLink
           data-testid="btn-clear-filters"
           className="btn btn-link"
-          onClick={cleanFilters}
+          onClick={() => {
+            cleanFilters();
+            trackButtonEvent("clean filters");
+          }}
         >
           Clear filters
         </ButtonLink>

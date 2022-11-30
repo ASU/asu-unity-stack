@@ -300,8 +300,8 @@ yarn jsdoc
 <div id="anotherCarouselContainer"></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.production.js"></script>
-<script src="/node_modules/@asu-design-system/component-carousel/dist/core.production.js"></script>
+<script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.umd.js"></script>
+<script src="/node_modules/@asu-design-system/component-carousel/dist/asuCarousel.umd.js"></script>
 <script>
   // Setup and initialize the first carousel.
   var props = {

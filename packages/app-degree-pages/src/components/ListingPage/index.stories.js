@@ -28,6 +28,7 @@ const Template = ({
   programList,
   hasFilters,
   hasSearchBar,
+  ...rest
 }) => (
   <ListingPage
     appPathFolder={appPathFolder}
@@ -37,6 +38,7 @@ const Template = ({
     programList={programList}
     hasSearchBar={hasSearchBar}
     hasFilters={hasFilters}
+    {...rest}
   />
 );
 
@@ -52,7 +54,7 @@ const actionUrls = {
 
 /** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  // OPTIONAL - endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  // OPTIONAL - endpoint: "https://degrees.apps.asu.edu/t5/service",
   // another example: dataSource: "/api/mocks/degree-search",
 
   // method: "findAllDegrees", // OPTIONAL
@@ -61,6 +63,7 @@ const dataSource = {
   // cert: "true", // "true" | "false" // OPTIONAL
   // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
   // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+  // blacklistAcadPlans: ["BAACCBS", "LAACTBS"],
 };
 
 /** @type {AppProps} */
@@ -110,6 +113,34 @@ Default.args = {
   ...defaultArgs,
   introContent: null,
 };
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithBlacklistedPlanCodes = Template.bind({});
+DefaultWithBlacklistedPlanCodes.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      blacklistAcadPlans: ["BAACCBS", "LAACTBS"],
+    },
+  },
+};
+
+// default story with degreesPerPage set to 2
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithDegreesPerPageSet = Template.bind({});
+DefaultWithDegreesPerPageSet.args = {
+  ...defaultArgs,
+  degreesPerPage: 2,
+};
+
 /**
  * @type {{ args: AppProps }}
  */

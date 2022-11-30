@@ -5,7 +5,18 @@ import { useState } from "preact/compat";
 import propTypes from "prop-types";
 import CookieConsent from "react-cookie-consent";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
 import "./index.scss";
+
+const defaultGAEvent = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "main content",
+  section: "cookie banner",
+};
 
 /**
  * @typedef {import("../../core/types/cookie-consent-types").CookieConsentProps} CookieConsentProps
@@ -61,7 +72,10 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
           buttonText="Ok, I agree"
           cookieName="asuCookieConsent"
           hideOnAccept={false} // Let us handle hiding on accept with "ease."
-          onAccept={easeOutTrigger} // Wire up ease-out class.
+          onAccept={() => {
+            easeOutTrigger();
+            trackGAEvent({ ...defaultGAEvent, text: "ok, i agree" });
+          }} // Wire up ease-out class.
           disableStyles="true"
           contentClasses="uds-cookie-consent-content"
           buttonClasses="uds-cookie-consent-btn"
@@ -114,7 +128,10 @@ const AsuCookieConsent = ({ enableCookieConsent, asuCookieDomain }) => {
             className="uds-cookie-consent-faux-close-btn"
             aria-label="Close"
             style="float:right;background-color:#ffffff;border: 1px solid #d0d0d0;"
-            onClick={distantClick}
+            onClick={() => {
+              distantClick();
+              trackGAEvent({ ...defaultGAEvent, text: "close cross" });
+            }}
           >
             <FontAwesomeIcon icon={faTimes} alt="" />
           </button>

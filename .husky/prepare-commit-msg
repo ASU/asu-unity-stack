@@ -1,2 +1,6 @@
 #!/bin/sh
+
+# don't execute if in CI context
+[ -n "$CI" ] && exit 0
+
 exec < /dev/tty && git cz --hook || true

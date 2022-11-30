@@ -1,3 +1,5 @@
+import { googleAnalytics } from '../../../src/js/googleAnalytics';
+
 export const initializeAnchorMenu = () => {
   const globalHeader = document.getElementById('asu-header');
   const navbar = document.getElementById('uds-anchor-menu');
@@ -90,4 +92,7 @@ export const initializeAnchorMenu = () => {
       e.target.classList.add('active');
     });
   }
-}
+
+  // Init google analytics
+  googleAnalytics();
+};

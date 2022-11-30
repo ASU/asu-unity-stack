@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { createComponent } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
 
 const extraOptions = {
@@ -78,13 +78,33 @@ export const cardNoTemplates = (args) => {
       {args.numButtons > 0 && (
         <div class="card-buttons">
           <div class="card-button">
-            <a href="#" class="btn btn-dark">
+            <a
+              href="#"
+              class="btn btn-dark"
+              data-ga="Button link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="heading"
+            >
               Button link here
             </a>
           </div>
           {args.numButtons === 2 && (
             <div class="card-button">
-              <a href="#" class="btn btn-md btn-dark">
+              <a
+                href="#"
+                class="btn btn-md btn-dark"
+                data-ga="Button link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="heading"
+              >
                 Button link here
               </a>
             </div>
@@ -93,7 +113,17 @@ export const cardNoTemplates = (args) => {
       )}
       {args.link && (
         <div class="card-link">
-          <a href="#" class="">
+          <a
+            href="#"
+            class=""
+            data-ga="Regular text link here"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-section="heading"
+          >
             Regular text link here
           </a>
         </div>

@@ -7,7 +7,8 @@ const AnchorMenuWrapper = styled.div`
     left: 0;
     width: 100%;
     &.with-header {
-      top: 142px;
+      top: ${({ requiresAltMenuSpacing }) =>
+        requiresAltMenuSpacing ? "112px" : "142px"};
       @media (max-width: 992px) {
         top: 110px;
       }

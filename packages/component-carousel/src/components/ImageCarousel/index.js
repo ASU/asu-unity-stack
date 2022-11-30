@@ -88,6 +88,7 @@ const ImageCarousel = ({
 
 ImageCarousel.propTypes = {
   perView: PropTypes.number.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   width: PropTypes.string,
   maxWidth: PropTypes.string,

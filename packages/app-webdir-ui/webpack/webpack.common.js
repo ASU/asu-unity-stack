@@ -8,7 +8,7 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = {
   context: path.join(PROJECT_DIR, "src"),
   entry: {
-    news: "./index.js",
+    webdirUI: "./index.js",
   },
   module: {
     rules: [
@@ -62,6 +62,10 @@ const common = {
         use: [
           {
             loader: "file-loader",
+            options: {
+              outputPath: "img/",
+              useRelativePaths: true,
+            },
           },
         ],
       },
@@ -69,15 +73,19 @@ const common = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
     new CopyWebpackPlugin({
       patterns: [
         // this is use only for storybook examples
+        { from: path.join(PROJECT_DIR, "src/assets"), to: "img" },
         {
           from: path.join(PROJECT_DIR, "__mocks__/api"),
           to: "__mocks__/api",

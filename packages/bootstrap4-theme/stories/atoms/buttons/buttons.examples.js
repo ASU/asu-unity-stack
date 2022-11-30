@@ -2,11 +2,22 @@ import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Buttons', 'Atoms', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const ButtonColorsComponent = createStory(
   <div>
     <br />
-    <a class="btn btn-primary" href="/">
+    {/* This same google analytics structure is for all the examples */}
+    <a
+      class="btn btn-primary"
+      href="/"
+      data-ga="btn-primary link"
+      data-ga-name="onclick"
+      data-ga-event="link"
+      data-ga-action="click"
+      data-ga-type="internal link"
+      data-ga-region="main content"
+    >
       btn-primary link
     </a>
     <hr />
@@ -33,7 +44,8 @@ export const ButtonColorsComponent = createStory(
     <button type="button" class="btn btn-dark">
       Dark
     </button>
-  </div>
+  </div>,
+  { initFunc }
 );
 ButtonColorsComponent.args = {
   template: 1,
@@ -119,7 +131,8 @@ export const ButtonSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 ButtonSizesComponent.args = {
   template: 1,
@@ -136,7 +149,8 @@ export const ButtonWithIconComponent = createStory(
         <span class="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const DisabledStateComponent = createStory(
@@ -170,7 +184,8 @@ export const DisabledStateComponent = createStory(
         Link
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const ButtonTagsComponent = createStory(
@@ -192,7 +207,8 @@ export const ButtonTagsComponent = createStory(
         </a>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const IconOnlyButtonsColorAndSizesComponent = createStory(
@@ -240,7 +256,8 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 export const IconOnlyButtonsColorCombinationsComponent = createStory(
   <div class="container-fluid">
@@ -326,7 +343,8 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const PrevAndNextButtonsComponent = createStory(
@@ -381,7 +399,8 @@ export const PrevAndNextButtonsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 const demoButtonStyle = {
@@ -389,52 +408,54 @@ const demoButtonStyle = {
   justifyContent: 'center',
   paddingTop: '10px',
 };
-const TestButtons = (
-  <div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-gold">
-        Gold
-      </button>
+const TestButtons =
+  ((
+    <div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-gold">
+          Gold
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-maroon">
+          Maroon
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-link">
+          Link
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-light">
+          Light
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-dark">
+          Dark
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-success">
+          Alert: Success
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-danger">
+          Alert: Danger
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-warning">
+          Alert: Warning
+        </button>
+      </div>
+      <div style={demoButtonStyle}>
+        <button type="button" class="btn btn-info">
+          Alert: Info
+        </button>
+      </div>
     </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-maroon">
-        Maroon
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-link">
-        Link
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-light">
-        Light
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-dark">
-        Dark
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-success">
-        Alert: Success
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-danger">
-        Alert: Danger
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-warning">
-        Alert: Warning
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" class="btn btn-info">
-        Alert: Info
-      </button>
-    </div>
-  </div>
-);
+  ),
+  { initFunc });

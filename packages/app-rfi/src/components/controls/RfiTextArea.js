@@ -16,6 +16,7 @@ const RfiTextArea = ({
   autoFocus,
   disabled,
   helperText,
+  onBlur,
 }) => (
   <Field name={name}>
     {({ field, form: { touched, errors }, meta }) => {
@@ -38,6 +39,7 @@ const RfiTextArea = ({
             autoFocus={autoFocus}
             disabled={disabled}
             placeholder={helperText}
+            onBlur={onBlur}
           />
           <RfiError isError={!!isError} metaError={meta.error} />
         </div>
@@ -67,6 +69,7 @@ RfiTextArea.propTypes = {
   required: PropTypes.bool,
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
+  onBlur: PropTypes.func,
   helperText: PropTypes.string,
 };
 

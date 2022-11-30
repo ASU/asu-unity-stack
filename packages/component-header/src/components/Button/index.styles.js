@@ -18,9 +18,11 @@ const ButtonWrapper = styled.a`
   }
   &.button-light {
     background-color: #bfbfbf !important;
+    color: #000000 !important;
   }
   &.button-gold {
     background-color: #ffc627 !important;
+    color: #000000 !important;
   }
   &.button-dark {
     background-color: #191919 !important;

@@ -20,10 +20,11 @@ const UniversalNavbar = () => {
       breakpoint={breakpoint}
       className="universal-nav"
       data-testid="universal-navbar"
+      data-elastic-exclude="data-elastic-exclude"
     >
       <div className="container-xl">
         <div className="header-top">
-          <nav className="nav" aria-label="Top">
+          <nav className="nav" aria-label="ASU">
             <div className="links-container">
               <a
                 className="nav-link sr-only sr-only-focusable"

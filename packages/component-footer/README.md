@@ -55,8 +55,8 @@ yarn test
     <!-- Create target container -->
     <div id="asuFooter"></div>
 
-    <script src="./vendor.production.js"></script>
-    <script src="./Footer.production.js"></script>
+    <script src="./vendor.umd.js"></script>
+    <script src="./asuFooter.umd.js"></script>
     <script>
       // Setup props for footer
       var props = {

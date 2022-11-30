@@ -1,15 +1,34 @@
 {
   "name": "@asu-design-system/component-carousel",
-  "version": "1.13.3",
+  "version": "1.16.0",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
-  "main": "src/index.js",
+  "main": "./dist/asuCarousel.cjs.js",
+  "browser": "./dist/asuCarousel.umd.js",
+  "module": "./dist/asuCarousel.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Michael Samuelson",
   "license": "UNLICENSED",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/component-carousel"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
+  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9009",
@@ -19,17 +38,8 @@
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/component-carousel"
-  },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-design-system/components-core": "^1.25.2",
     "@asu-design-system/design-tokens": "^1.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -53,8 +63,8 @@
     "mini-css-extract-plugin": "^1.6.0",
     "phone-fns": "^3.2.3",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
     "terser-webpack-plugin": "^5.1.1",
     "url-loader": "^4.1.1",
     "webpack-node-externals": "^3.0.0"
@@ -90,6 +100,7 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook-css-modules-preset": "^1.0.7",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "webpack-merge": "^5.8.0"
   }
 }

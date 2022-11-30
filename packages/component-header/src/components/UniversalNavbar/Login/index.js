@@ -10,12 +10,19 @@ const DEFAUL_GA_EVENT = {
 };
 
 const Login = () => {
-  const { loggedIn, userName, logoutLink, loginLink, breakpoint } =
-    useAppContext();
+  const {
+    loggedIn,
+    userName,
+    logoutLink,
+    loginLink,
+    onLoginClick,
+    onLogoutClick,
+    breakpoint,
+  } = useAppContext();
 
   return (
     // @ts-ignore
-    <LoginWrapper className="nav-link" breakpoint={breakpoint}>
+    <LoginWrapper className="nav-link login-status" breakpoint={breakpoint}>
       {loggedIn ? (
         <>
           {userName ? (
@@ -34,6 +41,7 @@ const Login = () => {
                 text: "sign out",
               })
             }
+            onClick={e => onLogoutClick?.(e)}
           >
             Sign Out
           </a>
@@ -47,6 +55,7 @@ const Login = () => {
               text: "sign in",
             })
           }
+          onClick={e => onLoginClick?.(e)}
         >
           Sign In
         </a>

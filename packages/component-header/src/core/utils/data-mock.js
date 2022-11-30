@@ -97,6 +97,9 @@ const basicNavTree = [
   {
     text: "Link option 6",
     href: "#",
+    onClick: () => {
+      alert("On Click Callback");
+    },
   },
   {
     text: "Link option 7",

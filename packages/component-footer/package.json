@@ -1,32 +1,42 @@
 {
   "name": "@asu-design-system/component-footer",
-  "version": "1.2.1",
+  "version": "1.5.1",
   "description": "ASU implementation of global footer",
-  "main": "src/index.js",
+  "main": "./dist/asuFooter.cjs.js",
+  "browser": "./dist/asuFooter.umd.js",
+  "module": "./dist/asuFooter.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Conner Shannon",
   "license": "UNLICENSED",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/component-footer"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
+  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9009",
     "build-storybook": "build-storybook -s ./dist"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/component-footer"
-  },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-design-system/components-core": "^1.25.2",
     "@asu-design-system/design-tokens": "^1.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -41,20 +51,19 @@
     "@storybook/addon-links": "^6.2.3",
     "@storybook/react": "^6.2.3",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
@@ -63,6 +72,8 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.1.1"
+    "terser-webpack-plugin": "^5.1.1",
+    "url-loader": "^4.1.1",
+    "webpack-merge": "^5.8.0"
   }
 }

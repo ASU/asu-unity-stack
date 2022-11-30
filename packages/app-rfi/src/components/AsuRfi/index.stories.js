@@ -47,7 +47,7 @@ RfiDefault.args = {
   stateProvince: undefined, // Only US states or CA provinces - use full name.
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
-  dataSourceDegreeSearch: undefined, // "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceDegreeSearch: undefined, // "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline: undefined, // "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
   submissionUrl: testSubmissionUrl, // Should point to host site's API Proxy endpoint so Source value can be added and submitted from backend.
@@ -260,8 +260,7 @@ RfiDevTester.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: "Success. <strong>You made it.</strong>",
   test: false,
-  dataSourceDegreeSearch:
-    "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline:
     "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:

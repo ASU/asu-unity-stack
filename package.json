@@ -3,7 +3,7 @@
   "private": true,
   "license": "UNLICENSED",
   "volta": {
-    "node": "12.22.1",
+    "node": "14.17.6",
     "yarn": "1.22.10"
   },
   "workspaces": [
@@ -12,8 +12,10 @@
   "scripts": {
     "clean": "lerna run clean",
     "lint": "lerna run lint",
-    "build": "lerna run build",
-    "prebuild": "yarn lint",
+    "build-components-core": "lerna run --scope @asu-design-system/components-core build",
+    "build-component-carousel": "lerna run --scope @asu-design-system/component-carousel build",
+    "build": "lerna run --ignore @asu-design-system/components-core --ignore @asu-design-system/component-carousel build",
+    "prebuild": "yarn build-components-core && yarn build-component-carousel && yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
@@ -40,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU/asu-unity-stack.git"
+    "url": "https://github.com/asu/asu-unity-stack.git"
   },
   "devDependencies": {
     "@americanexpress/purgecss-loader": "^2.0.0",
@@ -48,7 +50,7 @@
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/config-lerna-scopes": "^12.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@storybook/storybook-deployer": "^2.8.8",
+    "@storybook/storybook-deployer": "^2.8.16",
     "clean-webpack-plugin": "^3.0.0",
     "commitizen": "^4.2.3",
     "copy-webpack-plugin": "^8.1.1",

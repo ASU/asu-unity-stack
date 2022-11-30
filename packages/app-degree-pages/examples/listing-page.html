@@ -29,8 +29,7 @@
     ></script>
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
-    <script src="../dist/vendor.production.js"></script>
-    <script src="../dist/degreePages.production.js"></script>
+    <script src="../dist/degreePages.umd.js"></script>
   </head>
   <body>
     <!-- Provide target divs for the component. Must have unique ids or class name. -->
@@ -44,13 +43,14 @@
       // Setup and initialize component.
 
       const dataSource = {
-        endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+        endpoint: "https://degrees.apps.asu.edu/t5/service",
         method: "findAllDegrees",
         init: "false", // "true" | "false"Î
         program: "undergrad", // graduate | undergrad
         cert: "false", // "true" | "false"
         // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
         // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+        // blacklistAcadPlans: ["BAACCBS", "LAACTBS"], // OPTIONAL example filters out Accountancy and Actuarial Science
       };
 
       // those links are just examples
@@ -203,12 +203,13 @@
             // OPTIONAL
             settings: {
               hideCollegeSchool: true,
-              defaultView: "grid-view", // or "list-view"
+              defaultView: "list-view", // "grid-view""grid-view" or "list-view"
               cardDefaultImage: {
                 url: `examples/assets/img/ds_header_undergrad.jpg`,
               },
             },
           },
+          // degreesPerPage: 5, // OPTIONAL
         },
       });
     </script>

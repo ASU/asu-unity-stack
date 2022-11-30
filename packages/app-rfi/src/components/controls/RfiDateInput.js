@@ -15,6 +15,7 @@ const RfiDateInput = ({
   required,
   helperText,
   autoFocus,
+  onBlur,
 }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -55,6 +56,10 @@ const RfiDateInput = ({
                 required={required}
                 placeholder={helperText}
                 autoFocus={autoFocus}
+                onBlur={e => {
+                  field.onBlur?.(e);
+                  onBlur?.(e);
+                }}
               />
               <i className="far fa-calendar" aria-hidden="true" />
             </div>
@@ -86,6 +91,7 @@ RfiDateInput.propTypes = {
   required: PropTypes.bool,
   helperText: PropTypes.string,
   autoFocus: PropTypes.bool,
+  onBlur: PropTypes.func,
 };
 
 export { RfiDateInput };

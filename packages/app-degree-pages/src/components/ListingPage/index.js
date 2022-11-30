@@ -1,8 +1,9 @@
 // @ts-check
-import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { Hero } from "../../../../components-core/src/components/Hero";
+import { useFetch } from "../../../../components-core/src/core/hooks/use-fetch";
 
 import {
   Loader,
@@ -32,7 +33,7 @@ import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
 import { IntroContent } from "./components/IntroContent";
 import { ProgramList } from "./components/ProgramList";
-import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
+// import { DataViewSwitch } from "./components/ProgramList/DataViewSwitch";
 import { SearchBar } from "./components/SearchBar";
 
 /**
@@ -80,6 +81,7 @@ const ListingPage = ({
   hero,
   introContent,
   programList,
+  degreesPerPage,
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [searchLoading, setSearchLoading] = useState(false);
@@ -98,8 +100,12 @@ const ListingPage = ({
   const { defaultState } = useContext(AppContext);
   const { listingPageDefault } = defaultState;
   // These filter are input props which never change.
-  const { collegeAcadOrg, departmentCode, showInactivePrograms } =
-    programList.dataSource;
+  const {
+    collegeAcadOrg,
+    departmentCode,
+    showInactivePrograms,
+    blacklistAcadPlans,
+  } = programList.dataSource;
 
   /** @type {UseFiltersState} */
   const [stateFilters, setStateFilters] = useState({
@@ -134,12 +140,13 @@ const ListingPage = ({
         collegeAcadOrg,
         departmentCode,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
     setDataInitView(dataInit);
     setTableView(dataInit);
-  }, [data]);
+  }, [data, degreesPerPage]);
 
   /**
    * @param {FiltersState} activeFilters
@@ -163,6 +170,7 @@ const ListingPage = ({
           asuLocals.length > 0 ? locations.concat(onlneOption) : locations,
         keyword,
         showInactivePrograms: showInactivePrograms ?? false,
+        blacklistAcadPlans,
       },
     });
 
@@ -307,14 +315,14 @@ const ListingPage = ({
                 onRemove={onFilterSummaryRemove}
               />
             ) : null}
-            <DataViewSwitch
+            {/* <DataViewSwitch
               onChange={selectedViewId => {
                 setSearchLoading(true);
                 setDataViewComponent(selectedViewId);
                 setSearchLoading(false);
               }}
               checkedId={dataViewComponent}
-            />
+            /> */}
           </div>
         </section>
 
@@ -326,6 +334,7 @@ const ListingPage = ({
             loading={loading || searchLoading}
             programs={tableView}
             actionUrls={actionUrls}
+            degreesPerPage={degreesPerPage}
           />
         )}
       </Main>
@@ -346,6 +355,7 @@ ListingPage.propTypes = {
     dataSource: dataSourcePropShape,
     settings: columSettingsPropShape,
   }),
+  degreesPerPage: PropTypes.number,
 };
 
 /**

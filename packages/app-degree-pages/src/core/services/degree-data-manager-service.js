@@ -24,13 +24,15 @@ function filterData({
     locations = [],
     keyword,
     showInactivePrograms,
+    blacklistAcadPlans,
   },
 }) {
   // ============================================================
+  // See WS2-1391 for details on why we use CollegeAcadOrgJoint field.
   /** @param {PropResolver} resolver   */
   const isValidCollegeAcadOrg = resolver =>
     collegeAcadOrg
-      ? resolver.getCollegeAcadOrg().includes(collegeAcadOrg)
+      ? resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg)
       : true;
   // ============================================================
   /** @param {PropResolver} resolver   */
@@ -63,6 +65,10 @@ function filterData({
       ? resolver.isValidActiveProgram()
       : true;
   // ============================================================
+  /** @param {PropResolver} resolver   */
+  const isNotOnBlacklist = resolver =>
+    !blacklistAcadPlans?.includes(resolver.getAcadPlan());
+  // ============================================================
   /** @param {Object.<string, any>} row  */
   const doFilter = row => {
     const resolver = degreeDataPropResolverService(row);
@@ -73,7 +79,8 @@ function filterData({
       isValidDepartmentCode(resolver) &&
       isValidCampus(resolver) &&
       isValidAcceleratedConcurrent(row) &&
-      isValidForKeyword(resolver)
+      isValidForKeyword(resolver) &&
+      isNotOnBlacklist(resolver)
     );
   };
 

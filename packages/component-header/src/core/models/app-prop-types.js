@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const LogoPropTypes = {
   alt: PropTypes.string,
+  title: PropTypes.string,
   src: PropTypes.string,
   mobileSrc: PropTypes.string,
   brandLink: PropTypes.string,
@@ -26,6 +27,7 @@ const ButtonPropTypes = {
   text: PropTypes.string.isRequired,
   color: PropTypes.oneOf(["gold", "maroon", "light", "dark"]),
   href: PropTypes.string.isRequired,
+  classes: PropTypes.string,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
 };
@@ -53,13 +55,17 @@ const HeaderPropTypes = {
   loggedIn: LoginPropTypes.loggedIn,
   userName: LoginPropTypes.userName,
   loginLink: LoginPropTypes.loginLink,
+  onLoginClick: PropTypes.func,
   logoutLink: LoginPropTypes.logoutLink,
+  onLogoutClick: PropTypes.func,
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   breakpoint: PropTypes.oneOf(["Lg", "Xl"]),
   animateTitle: PropTypes.bool,
   expandOnHover: PropTypes.bool,
   mobileNavTree: PropTypes.arrayOf(NavTreePropTypes),
   hasNavigation: PropTypes.bool,
+  searchUrl: PropTypes.string,
+  site: PropTypes.string,
 };
 
 export {

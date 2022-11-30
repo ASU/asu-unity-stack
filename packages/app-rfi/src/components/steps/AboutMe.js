@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import {
   RfiTextInput,
   RfiTextArea,
@@ -13,6 +14,15 @@ import {
   RfiPhone,
   RfiCheckboxSingle,
 } from "../controls";
+
+const defaultInputEvent = {
+  event: "form",
+  action: "click",
+  name: "onclick",
+  type: "click",
+  region: "main content",
+  component: "step 2 of 3",
+};
 
 function createMarkup(output) {
   return { __html: output };
@@ -37,6 +47,16 @@ const RfiGdpr = ({ campus }) => {
         value="1"
         requiredIcon
         required
+        onBlur={e => {
+          trackGAEvent({
+            ...defaultInputEvent,
+            action: e.target.checked ? "click" : "unclick",
+            event: "select",
+            type: "checkbox",
+            section: "about me",
+            text: "i consent",
+          });
+        }}
       >
         I consent
       </RfiCheckboxSingle>
@@ -60,7 +80,7 @@ const AboutMe = () => {
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
+        const serviceUrl = `https://degrees.apps.asu.edu/t5/service?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
         // Alternate field graduateAllApplyDates has similar data, but lacks a
         // good label and appears like it might have more dupes.
 
@@ -137,6 +157,13 @@ const AboutMe = () => {
         requiredIcon
         required
         autoFocus
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ email address​",
+            text: e.target.value,
+          })
+        }
       />
       <RfiTextInput
         label="First name"
@@ -145,6 +172,13 @@ const AboutMe = () => {
         requiredIcon
         required
         helperText="First name"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ first name",
+            text: e.target.value,
+          })
+        }
       />
       <RfiTextInput
         label="Last name"
@@ -153,14 +187,41 @@ const AboutMe = () => {
         requiredIcon
         required
         helperText="Last name"
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ last name",
+            text: e.target.value,
+          })
+        }
       />
-      <RfiPhone label="Phone" id="Phone" name="Phone" requiredIcon required />
+      <RfiPhone
+        label="Phone"
+        id="Phone"
+        name="Phone"
+        requiredIcon
+        required
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ phone number​",
+            text: e.target.value,
+          })
+        }
+      />
       <RfiTextInput
         label="Postal code"
         id="ZipCode"
         name="ZipCode"
         requiredIcon={values.Campus !== "ONLNE"}
         required={values.Campus !== "ONLNE"}
+        onBlur={e =>
+          trackGAEvent({
+            ...defaultInputEvent,
+            section: "about me ^ zip code​",
+            text: e.target.value,
+          })
+        }
       />
       {termOptions.length ? (
         <RfiSelect
@@ -170,6 +231,15 @@ const AboutMe = () => {
           options={termOptions}
           requiredIcon={values.Campus !== "ONLNE"}
           required={values.Campus !== "ONLNE"}
+          onBlur={e =>
+            trackGAEvent({
+              ...defaultInputEvent,
+              event: "select",
+              type: "When do you anticipate starting at ASU?",
+              section: "about me ^ When do you anticipate starting at ASU?​",
+              text: e.target.selectedOptions[0].innerText,
+            })
+          }
         />
       ) : (
         <RfiTextArea
@@ -180,6 +250,13 @@ const AboutMe = () => {
           disabled
           requiredIcon={values.Campus !== "ONLNE"}
           required={values.Campus !== "ONLNE"}
+          onBlur={e =>
+            trackGAEvent({
+              ...defaultInputEvent,
+              section: "about me ^ When do you anticipate starting at ASU?​",
+              text: e.target.value,
+            })
+          }
         />
       )}
       <RfiGdpr campus={values.Campus} />
@@ -219,7 +296,10 @@ const aboutMeForm = {
     // validation is deferred to Formik and implemented via customValidate() in
     // RfiTextInput.js and RfiSelect.js for better access to sibling field
     // values thru useFormikContext.
-    ZipCode: Yup.string(),
+    ZipCode: Yup.string().max(
+      10,
+      "Error: a maximum of 10 characters is allowed for postal code."
+    ),
     EntryTerm: Yup.string(),
     GdprConsent: Yup.boolean()
       .required("Error: Consent is required")

@@ -1,15 +1,15 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/hero-types").HeroProps} HeroProps
+ * @typedef {import("@asu-design-system/components-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/shared-types").ImageProps} ImageItem
+ * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core/src/core/types/video-types").VideoProps} VideoItem
+ * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
  */
 
 /**
@@ -45,6 +45,7 @@
  * @property {string} [collegeAcadOrg]
  * @property {string} [departmentCode]
  * @property {boolean | "true" | "false"} [showInactivePrograms]
+ * @property {Array} [blacklistAcadPlans]
  */
 
 /**
@@ -69,6 +70,7 @@
  * @property {HeroProps} [hero]
  * @property {IntroContentProps} [introContent]
  * @property {GridListProps} [programList]
+ * @property {number} [degreesPerPage]
  */
 
 /**

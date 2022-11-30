@@ -1,7 +1,7 @@
 // @ts-check
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "@asu-design-system/components-core";
 import React, { useState } from "react";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { idGenerator } from "../../../../../components-core/src/core/utils/id-generator";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
@@ -36,7 +36,7 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint} data-testid="navigation">
+    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
       <div className="content-container">
         <ul className="nav-list">
           {!!mobileNavTree?.length && isMobile

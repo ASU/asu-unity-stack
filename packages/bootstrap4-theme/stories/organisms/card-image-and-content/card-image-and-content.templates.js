@@ -10,6 +10,7 @@ export default createComponent(
   'Organisms',
   'Templates'
 );
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
 
 export const CardAndImageContent = createStory(
   <div class="uds-card-image-and-content">
@@ -42,6 +43,7 @@ export const CardAndImageContent = createStory(
     </div>
   </div>,
   {
+    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );

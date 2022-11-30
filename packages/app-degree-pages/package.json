@@ -1,11 +1,28 @@
 {
   "name": "@asu-design-system/app-degree-pages",
-  "version": "1.16.2",
+  "version": "1.20.5",
   "description": "ASU implementation of degree pages",
-  "main": "src/index.js",
+  "main": "./dist/degreePages.cjs.js",
+  "browser": "./dist/degreePages.umd.js",
+  "module": "./dist/degreePages.es.js",
+  "types": "./dist/main.d.ts",
   "author": "Michele Di Benedetto",
   "license": "UNLICENSED",
   "private": false,
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/app-degree-pages"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
+  },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --passWithNoTests --coverage",
@@ -14,6 +31,7 @@
     "e2e": "yarn cy:open",
     "cy:run": "cypress run --headless",
     "cy:open": "cypress open",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
@@ -24,23 +42,14 @@
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
-    "directory": "packages/app-degree-pages"
-  },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.0.0",
+    "@asu-design-system/components-core": "^1.25.2",
     "@asu-design-system/design-tokens": "^1.1.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
     "react-popper": "^2.2.5",
     "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.0"
@@ -84,6 +93,7 @@
     "semantic-release-monorepo": "^7.0.4",
     "string.prototype.replaceall": "^1.0.5",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.1.1"
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack-merge": "^5.8.0"
   }
 }

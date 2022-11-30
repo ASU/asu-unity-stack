@@ -1,11 +1,13 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { NavControls, TabHeader } from "./components";
 
-export const Tab = ({ id, bgColor, selected, children }) => {
-  return (
+const Tab = ({ id, bgColor, selected, children }) =>
+  selected && (
     <div
       className={`tab-pane fade show ${selected ? "show active" : ""} ${
         bgColor === "bg-dark" ? "text-white" : ""
@@ -17,7 +19,6 @@ export const Tab = ({ id, bgColor, selected, children }) => {
       {children}
     </div>
   );
-};
 
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
@@ -29,23 +30,83 @@ Tab.propTypes = {
   ]),
 };
 
-export const TabbedPanels = ({ children, bgColor }) => {
+const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
+  const childrenArray = React.Children.toArray(children);
+  const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [navControlsNeeded, setNavControlsNeeded] = useState(false);
+  const headerTabs = useRef(null);
+  const tabbedPanels = useRef(null);
+
+  const updateTabParam = tab => {
+    const newParams = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const entry of searchParams.entries()) {
+      // eslint-disable-next-line prefer-destructuring
+      newParams[entry[0]] = entry[1];
+    }
+    const currentTab = newParams[id];
+    if (currentTab === null) {
+      newParams[id] = activeTabID;
+    } else {
+      setActiveTabID(currentTab);
+    }
+    newParams[id] = tab;
+    setSearchParams(newParams);
+  };
+
+  useEffect(() => {
+    setActiveTabID(searchParams.get(id) || activeTabID);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (!searchParams.get(id)) {
+      updateTabParam(searchParams.get(id) || activeTabID);
+    }
+  }, []);
+
+  useEffect(() => {
+    const allTabsWidth = [
+      ...headerTabs.current.querySelectorAll(".nav-item"),
+    ].reduce((prev, curr) => prev + curr.offsetWidth, 0);
+    const componentWidth = tabbedPanels.current.offsetWidth;
+    if (allTabsWidth >= componentWidth) {
+      setNavControlsNeeded(true);
+    }
+  }, []);
+
   const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
   const TabbedPanelsId = `tabbed-panels-${randId}`;
   const NavTabsId = `nav-tabs-${randId}`;
-  const [selectedId, setSelectedId] = useState(
-    `tab-${randId}-${children[0].props.id}`
-  );
-  const tabs = React.Children.toArray(
-    children.map(el => {
-      return React.cloneElement(el, {
-        bgColor: backgroundColor,
-        selected: selectedId === `tab-${randId}-${el.props.id}`,
-      });
-    })
-  );
 
+  const trackArrowsEvent = text => {
+    trackGAEvent({
+      event: "select",
+      action: "click",
+      name: "onclick",
+      type: "carousel",
+      region: "main content",
+      text,
+    });
+  };
+
+  const trackLinkEvent = text => {
+    trackGAEvent({
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
+      text,
+    });
+  };
+
+  const tabs = childrenArray.map(el => {
+    return React.cloneElement(el, {
+      bgColor: backgroundColor,
+      selected: activeTabID === el.props.id,
+    });
+  });
   const catchScroll = event => {
     const item = document.querySelector(`#${TabbedPanelsId}`);
     const nav = item.querySelector(".nav-tabs");
@@ -65,38 +126,83 @@ export const TabbedPanels = ({ children, bgColor }) => {
     });
   };
 
-  const switchToTab = (e, id) => {
+  const switchToTab = (e, tabID, title) => {
+    trackLinkEvent(title);
     e.preventDefault();
-    setSelectedId(id);
+    updateTabParam(tabID);
+    onTabChange(tabID);
   };
 
+  const focusOnTab = tabID => {
+    const panels = document.getElementById(TabbedPanelsId);
+    panels.querySelector(`#${tabID}`).focus();
+  };
+
+  const goLeft = () => {
+    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
+    if (currPos > 0) {
+      const newTabID = childrenArray[currPos - 1].props.id;
+      updateTabParam(newTabID);
+      focusOnTab(newTabID);
+      onTabChange(newTabID);
+    }
+  };
+  const goRight = () => {
+    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
+    if (currPos < childrenArray.length - 1) {
+      const newTabID = childrenArray[currPos + 1].props.id;
+      updateTabParam(newTabID);
+      focusOnTab(newTabID);
+      onTabChange(newTabID);
+    }
+  };
   let navClasses = "uds-tabbed-panels";
   if (backgroundColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
   }
 
   return (
-    <div className={backgroundColor}>
+    <div className={backgroundColor} ref={tabbedPanels}>
       <nav className={navClasses} onScroll={catchScroll} id={TabbedPanelsId}>
-        <div className="nav nav-tabs" id={NavTabsId} role="tablist">
-          {children.map(child => {
+        <div
+          className="nav nav-tabs"
+          id={NavTabsId}
+          role="tablist"
+          ref={headerTabs}
+        >
+          {childrenArray.map(child => {
             return (
               <TabHeader
-                id={`tab-${randId}-${child.props.id}`}
+                id={child.props.id}
                 title={child.props.title}
-                selected={selectedId === `tab-${randId}-${child.props.id}`}
+                selected={activeTabID === child.props.id}
                 selectTab={switchToTab}
                 key={child.props.id}
+                leftKeyPressed={goLeft}
+                rightKeyPressed={goRight}
               />
             );
           })}
         </div>
-        <NavControls
-          clickPrev={() => slideNav(-1)}
-          clickNext={() => slideNav(1)}
-        />
+        {navControlsNeeded && (
+          <NavControls
+            clickPrev={() => {
+              slideNav(-1);
+              trackArrowsEvent("left chevron");
+            }}
+            clickNext={() => {
+              slideNav(1);
+              trackArrowsEvent("right chevron");
+            }}
+          />
+        )}
       </nav>
-      <div className="tab-content" id="nav-tabContent">
+      <div
+        className="tab-content"
+        tabIndex={0}
+        role="tabpanel"
+        id="nav-tabContent"
+      >
         {tabs}
       </div>
     </div>
@@ -104,6 +210,10 @@ export const TabbedPanels = ({ children, bgColor }) => {
 };
 
 TabbedPanels.propTypes = {
+  id: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   bgColor: PropTypes.string,
+  onTabChange: PropTypes.func,
 };
+
+export { TabbedPanels, Tab };

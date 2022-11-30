@@ -1,6 +1,6 @@
 // @ts-check
-import { Card } from "@asu-design-system/components-core";
 import React from "react";
+import { Card } from "../../../../../../components-core/src/components/Card";
 
 import { whyChooseAsuShape } from "../../../../core/models";
 

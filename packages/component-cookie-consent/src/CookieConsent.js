@@ -5,7 +5,17 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { CookieConsentWrapper } from "./CookieConsent.styles";
+import { trackGAEvent } from "./core/services/googleAnalytics";
 import { addDays } from "./core/utils/helpers";
+
+const defaultGAEvent = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "main content",
+  section: "cookie banner",
+};
 
 const now = new Date();
 
@@ -67,20 +77,26 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
                 Privacy Statement.
               </a>
             </p>
-            <button
-              type="button"
-              className="close-btn"
-              onClick={handleCloseConsent}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
           </div>
           <button
             type="button"
             className="accept-btn"
-            onClick={handleCloseConsent}
+            onClick={() => {
+              handleCloseConsent();
+              trackGAEvent({ ...defaultGAEvent, text: "ok, i agree" });
+            }}
           >
             Ok, I agree
+          </button>
+          <button
+            type="button"
+            className="close-btn"
+            onClick={() => {
+              handleCloseConsent();
+              trackGAEvent({ ...defaultGAEvent, text: "close cross" });
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
       </div>

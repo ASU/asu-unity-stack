@@ -2,21 +2,71 @@
 Desktop styles
 --------------------------------------------------------------*/
 .uds-person-profile {
+  --max-width: 800px;
+  --pic-size: 180px;
+  --person-profession-bottom-margin: 16px;
+  --person-name-size: 24px;
+  --name-top-margin: 8px;
+  &.small {
+    --pic-size: 120px;
+  }
+  &.micro {
+    --max-width: 384px;
+    --pic-size: 78px;
+    --person-profession-bottom-margin: 8px;
+    --person-name-size: 20px;
+    --name-top-margin: 0;
+
+    .person-profession {
+      h4:not(:first-child) {
+        display: none;
+      }
+    }
+  }
   display: flex;
-  max-width: 800px;
-  .profile-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 100%;
+  max-width: var(--max-width);
+
+  &.fill {
+    background-color: #fafafa;
+    border: 1px solid #d0d0d0;
+    padding: 32px;
+  }
+  .profile-img-container {
+    width: var(--pic-size);
+    height: 100%;
+
+    .profile-img-placeholder {
+      background-size: 100%;
+      background-size: cover;
+      width: var(--pic-size);
+      height: var(--pic-size);
+
+      .profile-img {
+        width: var(--pic-size);
+        height: var(--pic-size);
+        border-radius: 100%;
+      }
+    }
   }
   .person {
     margin-left: $uds-size-spacing-3;
     &-name {
-      margin: $uds-size-spacing-1 0;
+      line-height: 1;
+      font-size: var(--person-name-size);
+      margin-top: var(--name-top-margin);
+      margin-bottom: $uds-size-spacing-1;
     }
     &-profession {
-      margin: 0 0 $uds-size-spacing-2 0;
-      font-size: $uds-size-font-medium;
+      margin: 0;
+      line-height: 1;
+      margin-bottom: var(--person-profession-bottom-margin);
+      h4 {
+        margin: 0;
+        font-size: $uds-size-font-medium;
+      }
+    }
+    .more-link {
+      line-height: 1;
     }
     ul {
       list-style-type: none;

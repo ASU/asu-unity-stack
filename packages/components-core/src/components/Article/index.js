@@ -174,7 +174,9 @@ export const Article = ({
     if (item.active) {
       return (
         <BreadcrumbItem active tag="li" className="breadcrumb-item">
-          {item.title}
+          <BreadcrumbItem tag="a" href={item.url}>
+            {item.title}
+          </BreadcrumbItem>
         </BreadcrumbItem>
       );
     }

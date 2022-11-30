@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 export default createComponent('Alerts', 'Atoms', 'Examples');
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
 
 export const AlertsComponent = createStory(
   <div>
@@ -22,6 +23,14 @@ export const AlertsComponent = createStory(
           class="btn btn-circle btn-circle-alt-black close"
           data-dismiss="alert"
           aria-label="Close"
+          data-ga="close cross"
+          data-ga-name="onclick"
+          data-ga-event="modal"
+          data-ga-action="close"
+          data-ga-type="click"
+          data-ga-region="main content"
+          data-ga-section="Warning (orange): This is a warning alert to alert, confirm or notify.
+          It is built using the Bootstrap 4 .alert-warning class"
         >
           <i class="fas fa-times"></i>
         </button>
@@ -46,6 +55,14 @@ export const AlertsComponent = createStory(
           class="btn btn-circle btn-circle-alt-black close"
           data-dismiss="alert"
           aria-label="Close"
+          data-ga="close cross"
+          data-ga-name="onclick"
+          data-ga-event="modal"
+          data-ga-action="close"
+          data-ga-type="click"
+          data-ga-region="main content"
+          data-ga-section="Success (green): This is a success alert to confirm or notify. It is
+          built using the Bootstrap 4 .alert-success class"
         >
           <i class="fas fa-times"></i>
         </button>
@@ -90,13 +107,22 @@ export const AlertsComponent = createStory(
           type="button"
           class="btn btn-circle btn-circle-alt-black close"
           aria-label="Close"
-          onclick="event.target.parentNode.parentNode.style.display='none';"
+          data-dismiss="alert"
+          data-ga="close cross"
+          data-ga-name="onclick"
+          data-ga-event="modal"
+          data-ga-action="close"
+          data-ga-type="click"
+          data-ga-region="main content"
+          data-ga-section="Error (red): This is a danger alert used specifically for errors. It is
+          built using the Bootstrap 4 .alert-danger class"
         >
           <i class="fas fa-times"></i>
         </button>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 AlertsComponent.args = {
   template: 1,

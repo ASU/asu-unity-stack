@@ -15,6 +15,10 @@ const progDetailSectionIds = {
     targetIdName: "application-requirements",
     text: "App. Requirements",
   },
+  degreeRequirements: {
+    targetIdName: "degree-requirements",
+    text: "Degree Requirements",
+  },
   changeMajorRequirements: {
     targetIdName: "change-major-requirements",
     text: "Change Major Requirement",

@@ -57,6 +57,8 @@ Default.args = {
   navTree: basicNavTree,
   title: "Subdomain name",
   breakpoint: "Lg",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const Empty = Template.bind({});
@@ -69,6 +71,8 @@ NoNavigation.args = {
   userName: "Sparky",
   logoutLink: "/caslogout",
   loginLink: "/cas",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const NoNavigationWithButtons = Template.bind({});
@@ -90,6 +94,8 @@ NoNavigationWithButtons.args = {
   userName: "Sparky",
   logoutLink: "/caslogout",
   loginLink: "/cas",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const BreakpointXL = Template.bind({});
@@ -103,6 +109,8 @@ BreakpointXL.args = {
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const WithMobileNavTree = Template.bind({});
@@ -117,6 +125,8 @@ WithMobileNavTree.args = {
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const WithButtons = Template.bind({});
@@ -128,6 +138,7 @@ WithButtons.args = {
       href: "/",
       text: "CTA Button 1",
       color: "gold",
+      classes: "custom-class",
     },
     {
       text: "CTA Button 2",
@@ -139,6 +150,8 @@ WithButtons.args = {
   userName: "Sparky",
   logoutLink: "/caslogout",
   loginLink: "/cas",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const WithMenuColumns = Template.bind({});
@@ -151,6 +164,8 @@ WithMenuColumns.args = {
   userName: "Sparky",
   logoutLink: "/caslogout",
   loginLink: "/cas",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const ExpandOnHover = Template.bind({});
@@ -164,6 +179,8 @@ ExpandOnHover.args = {
   logoutLink: "/caslogout",
   loginLink: "/cas",
   expandOnHover: true,
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const Partner = Template.bind({});
@@ -173,6 +190,8 @@ Partner.args = {
   loggedIn: false,
   userName: "",
   breakpoint: "Xl",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };
 
 export const AnimatedTitle = AnimatedTitleTemplate.bind({});
@@ -183,4 +202,6 @@ AnimatedTitle.args = {
   logoutLink: "/caslogout",
   loginLink: "/cas",
   breakpoint: "Xl",
+  searchUrl: "https://search.asu.edu/search",
+  site: "subdomain",
 };

@@ -3,6 +3,7 @@
 /**
  * @typedef {Object} ButtonProps
  * @property {string}   [label]
+ * @property {string}   [cardTitle]
  * @property {string}   [ariaLabel]
  * @property {boolean}  [block]
  * @property {boolean}  [disabled]
@@ -24,11 +25,13 @@
  * @property {React.RefObject} [innerRef]
  * @property {function():void} [onClick]
  * @property {"large"|"small"} [size]
+ * @property {string}   [cardTitle]
  */
 
 /**
  * @typedef {Object} TagsProps
  * @property {string}  [label]
+ * @property {string}   [cardTitle]
  * @property {string}  [ariaLabel]
  * @property {string}  [color]
  * @property {boolean} [disabled]
@@ -81,6 +84,7 @@
  * @callback ReactMouseEvent
  * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} event
  * @param {number} id
+ * @param {string} [cardTitle]
  * @returns {void}
  */
 

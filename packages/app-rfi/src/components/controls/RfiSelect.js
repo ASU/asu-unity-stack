@@ -19,6 +19,7 @@ const RfiSelect = ({
   options,
   disabled,
   autoFocus,
+  onBlur,
 }) => {
   const [field, meta, helpers] = useField({ name });
   const isError = meta.touched && meta.error; // TODO generating non fatal error
@@ -40,6 +41,10 @@ const RfiSelect = ({
         disabled={disabled}
         autoFocus={autoFocus}
         {...field}
+        onChange={e => {
+          field.onChange(e);
+          onBlur?.(e);
+        }}
       >
         <option defaultValue>Select&hellip;</option>
         {options.map(option => (
@@ -79,6 +84,7 @@ RfiSelect.propTypes = {
       text: PropTypes.string,
     })
   ).isRequired,
+  onBlur: PropTypes.func,
   disabled: PropTypes.bool,
   requiredIcon: PropTypes.bool,
   required: PropTypes.bool,

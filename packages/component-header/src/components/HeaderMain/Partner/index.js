@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// @ts-check
-import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
+// @ts-check
+import { getCurrentScriptPath } from "../../../../../components-core/src/core/utils/script-utils";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
@@ -38,7 +38,7 @@ const Partner = () => {
         />
         <img
           className="horiz"
-          src={asuLogo?.mobileScr ?? asuHorizLogo}
+          src={asuLogo?.mobileSrc ?? asuHorizLogo}
           alt={asuLogo?.alt ?? "Arizona State University"}
         />
       </a>

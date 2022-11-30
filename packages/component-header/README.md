@@ -1,5 +1,5 @@
-# ASU Footer
-ASU Web Standards-based implementation of global footer.
+# ASU Header
+ASU Web Standards-based implementation of global header.
 
 ## CLI Commands
 
@@ -37,4 +37,3 @@ yarn test
 
 ### Import for use in HTML page
 You can find an example of how to set `ASUHeader` props [here](/packages/component-header/examples/global-header.html)
-

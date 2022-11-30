@@ -1,11 +1,10 @@
 import React from 'react';
-import {
-  createComponent,
-  createStory,
-} from '../../../helpers/wrapper.js';
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
+
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const cardImages = createStory(
   <div style={{ width: '50%' }}>
@@ -182,13 +181,33 @@ export const degreeCard = createStory(
     </div>
     <div class="card-buttons">
       <div class="card-button">
-        <a href="#" class="btn btn-maroon">
+        <a
+          href="#"
+          class="btn btn-maroon"
+          data-ga="Button link here"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="card default title"
+        >
           Button link here
         </a>
       </div>
     </div>
     <div class="card-link">
-      <a href="#" class="">
+      <a
+        href="#"
+        class=""
+        data-ga="Regular text link here"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="card default title"
+      >
         Regular text link here
       </a>
     </div>
@@ -203,7 +222,8 @@ export const degreeCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const storyCard = createStory(
@@ -221,13 +241,33 @@ export const storyCard = createStory(
     </div>
     <div class="card-buttons">
       <div class="card-button">
-        <a href="#" class="btn btn-gold">
+        <a
+          href="#"
+          class="btn btn-gold"
+          data-ga="Button link here"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="card default title"
+        >
           Button link here
         </a>
       </div>
     </div>
     <div class="card-link">
-      <a href="#" class="">
+      <a
+        href="#"
+        class=""
+        data-ga="Regular text link here"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="card default title"
+      >
         Regular text link here
       </a>
     </div>
@@ -242,7 +282,8 @@ export const storyCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const eventCard = createStory(
@@ -274,13 +315,33 @@ export const eventCard = createStory(
     </div>
     <div class="card-buttons">
       <div class="card-button">
-        <a href="#" class="btn btn-dark">
+        <a
+          href="#"
+          class="btn btn-dark"
+          data-ga="Button link here"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="card default title"
+        >
           Button link here
         </a>
       </div>
     </div>
     <div class="card-link">
-      <a href="#" class="">
+      <a
+        href="#"
+        class=""
+        data-ga="Regular text link here"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="card default title"
+      >
         Regular text link here
       </a>
     </div>
@@ -295,7 +356,8 @@ export const eventCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const hoverable = createStory(
@@ -343,18 +405,48 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
               <div class="card-button">
-                <a href="#" class="btn btn-md btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-md btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
             </div>
             <div class="card-link">
-              <a href="#" class="">
+              <a
+                href="#"
+                class=""
+                data-ga="Regular text link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Regular text link here
               </a>
             </div>
@@ -441,7 +533,17 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -478,7 +580,17 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -507,13 +619,33 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
             </div>
             <div class="card-link">
-              <a href="#" class="">
+              <a
+                href="#"
+                class=""
+                data-ga="Regular text link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Regular text link here
               </a>
             </div>
@@ -540,7 +672,17 @@ export const variations = createStory(
               </div>
             </div>
             <div class="card-link">
-              <a href="#" class="">
+              <a
+                href="#"
+                class=""
+                data-ga="Regular text link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Regular text link here
               </a>
             </div>
@@ -583,7 +725,17 @@ export const variations = createStory(
               </div>
             </div>
             <div class="card-link">
-              <a href="#" class="">
+              <a
+                href="#"
+                class=""
+                data-ga="Regular link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Regular text link here
               </a>
             </div>
@@ -604,7 +756,17 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -619,7 +781,17 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -650,7 +822,17 @@ export const variations = createStory(
               </div>
             </div>
             <div class="card-link">
-              <a href="#" class="">
+              <a
+                href="#"
+                class=""
+                data-ga="Regular text link here"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Regular text link here
               </a>
             </div>
@@ -667,7 +849,17 @@ export const variations = createStory(
             </div>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -679,7 +871,17 @@ export const variations = createStory(
             <i class="fas fa-rocket fa-2x card-icon-top"></i>
             <div class="card-buttons">
               <div class="card-button">
-                <a href="#" class="btn btn-dark">
+                <a
+                  href="#"
+                  class="btn btn-dark"
+                  data-ga="Button link here"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="card default title"
+                >
                   Button link here
                 </a>
               </div>
@@ -690,6 +892,7 @@ export const variations = createStory(
     </div>
   </div>,
   {
+    initFunc,
     omitTemplate: true,
   }
 );
@@ -711,7 +914,17 @@ export const horizontal = createStory(
         </div>
         <div class="card-buttons">
           <div class="card-button">
-            <a href="#" class="btn btn-dark">
+            <a
+              href="#"
+              class="btn btn-dark"
+              data-ga="Button link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Button link here
             </a>
           </div>
@@ -736,7 +949,17 @@ export const horizontal = createStory(
         </div>
         <div class="card-buttons">
           <div class="card-button">
-            <a href="#" class="btn btn-dark">
+            <a
+              href="#"
+              class="btn btn-dark"
+              data-ga="Button link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Button link here
             </a>
           </div>
@@ -768,7 +991,17 @@ export const horizontal = createStory(
         </div>
         <div class="card-buttons">
           <div class="card-button">
-            <a href="#" class="btn btn-dark">
+            <a
+              href="#"
+              class="btn btn-dark"
+              data-ga="Button link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Button link here
             </a>
           </div>
@@ -793,14 +1026,25 @@ export const horizontal = createStory(
         </div>
         <div class="card-buttons">
           <div class="card-button">
-            <a href="#" class="btn btn-dark">
+            <a
+              href="#"
+              class="btn btn-dark"
+              data-ga="Button link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Button link here
             </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const checkboxStackedCard = createStory(
@@ -849,13 +1093,33 @@ export const checkboxStackedCard = createStory(
     </div>
     <div class="card-buttons">
       <div class="card-button">
-        <a href="#" class="btn btn-maroon">
+        <a
+          href="#"
+          class="btn btn-maroon"
+          data-ga="Default button"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="card default title"
+        >
           Default button
         </a>
       </div>
     </div>
     <div class="card-link">
-      <a href="#" class="">
+      <a
+        href="#"
+        class=""
+        data-ga="Regular text link here"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="card default title"
+      >
         Regular text link here
       </a>
     </div>
@@ -870,7 +1134,8 @@ export const checkboxStackedCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const checkboxInlineCard = createStory(
@@ -919,13 +1184,33 @@ export const checkboxInlineCard = createStory(
     </div>
     <div class="card-buttons">
       <div class="card-button">
-        <a href="#" class="btn btn-maroon">
+        <a
+          href="#"
+          class="btn btn-maroon"
+          data-ga="Default button"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="card default title"
+        >
           Default button
         </a>
       </div>
     </div>
     <div class="card-link">
-      <a href="#" class="">
+      <a
+        href="#"
+        class=""
+        data-ga="Regular text link here"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="card default title"
+      >
         Regular text link here
       </a>
     </div>
@@ -940,7 +1225,8 @@ export const checkboxInlineCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>
+  </div>,
+  { initFunc }
 );
 
 export const mediaTypeOverlayCard = createStory(
@@ -972,13 +1258,33 @@ export const mediaTypeOverlayCard = createStory(
           </div>
           <div class="card-buttons">
             <div class="card-button">
-              <a href="#" class="btn btn-maroon">
+              <a
+                href="#"
+                class="btn btn-maroon"
+                data-ga="Default button"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Default button
               </a>
             </div>
           </div>
           <div class="card-link">
-            <a href="#" class="">
+            <a
+              href="#"
+              class=""
+              data-ga="Regular text link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Regular text link here
             </a>
           </div>
@@ -1021,13 +1327,33 @@ export const mediaTypeOverlayCard = createStory(
           </div>
           <div class="card-buttons">
             <div class="card-button">
-              <a href="#" class="btn btn-maroon">
+              <a
+                href="#"
+                class="btn btn-maroon"
+                data-ga="Default button"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="card default title"
+              >
                 Default button
               </a>
             </div>
           </div>
           <div class="card-link">
-            <a href="#" class="">
+            <a
+              href="#"
+              class=""
+              data-ga="Regular text link here"
+              data-ga-name="onclick"
+              data-ga-event="link"
+              data-ga-action="click"
+              data-ga-type="internal link"
+              data-ga-region="main content"
+              data-ga-section="card default title"
+            >
               Regular text link here
             </a>
           </div>
@@ -1081,6 +1407,7 @@ export const mediaTypeOverlayCard = createStory(
     </div>
   </div>,
   {
+    initFunc,
     omitTemplate: true,
   }
 );

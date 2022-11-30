@@ -1,5 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 const extraOptions = {
   bgColor: {
@@ -34,57 +35,90 @@ export default createComponent(
   extraOptions
 );
 
-export const Basic = createStory((args) => {
-  return (
-    <nav aria-label="Page navigation example">
-      <ul
-        class={`pagination ${
-          args.border ? 'justify-content-center border p-2' : ''
-        } ${args.bgColor}`}
-      >
-        {args.icons && (
+export const Basic = createStory(
+  (args) => {
+    return (
+      <nav aria-label="Page navigation example">
+        <ul
+          class={`pagination ${
+            args.border ? 'justify-content-center border p-2' : ''
+          } ${args.bgColor}`}
+        >
+          {args.icons && (
+            <li class="page-item">
+              <a class="page-link page-link-icon" href="#">
+                Prev
+              </a>
+            </li>
+          )}
           <li class="page-item">
-            <a class="page-link page-link-icon" href="#">
+            <a class="page-link" href="#">
               Prev
             </a>
           </li>
-        )}
-        <li class="page-item">
-          <a class="page-link" href="#">
-            Prev
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            1
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            2
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            3
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            Next
-          </a>
-        </li>
-        {args.icons && (
           <li class="page-item">
-            <a class="page-link page-link-icon" href="#">
+            <a
+              class="page-link"
+              href="#"
+              data-ga-event="select"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="pagination"
+              data-ga-region="main content"
+              data-ga-section="pagination title"
+              data-ga="page 1"
+            >
+              1
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="#"
+              data-ga-event="select"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="pagination"
+              data-ga-region="main content"
+              data-ga-section="pagination title"
+              data-ga="page 2"
+            >
+              2
+            </a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="#"
+              data-ga-event="select"
+              data-ga-action="click"
+              data-ga-name="onclick"
+              data-ga-type="pagination"
+              data-ga-region="main content"
+              data-ga-section="pagination title"
+              data-ga="page 3"
+            >
+              3
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">
               Next
             </a>
           </li>
-        )}
-      </ul>
-    </nav>
-  );
-});
+          {args.icons && (
+            <li class="page-item">
+              <a class="page-link page-link-icon" href="#">
+                Next
+              </a>
+            </li>
+          )}
+        </ul>
+      </nav>
+    );
+  },
+  { initFunc }
+);
 Basic.args = {
   template: 1,
 };

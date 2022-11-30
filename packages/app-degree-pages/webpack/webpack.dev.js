@@ -6,7 +6,6 @@ const common = require("./webpack.common");
 const config = {
   ...common,
   mode: "development",
-
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].development.js",

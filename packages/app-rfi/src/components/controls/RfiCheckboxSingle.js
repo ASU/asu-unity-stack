@@ -13,6 +13,7 @@ const RfiCheckboxSingle = ({
   value,
   requiredIcon,
   required,
+  onBlur,
 }) => {
   const [field, meta] = useField({ name, type: "checkbox" });
   const isError = meta.touched && meta.error;
@@ -24,6 +25,10 @@ const RfiCheckboxSingle = ({
         name={name}
         className="form-check-input"
         required={required}
+        onChange={e => {
+          field.onChange?.(e);
+          onBlur?.(e);
+        }}
       />
       <RfiLabel
         label={children}
@@ -43,6 +48,7 @@ RfiCheckboxSingle.defaultProps = {
 
 RfiCheckboxSingle.propTypes = {
   children: PropTypes.node.isRequired,
+  onBlur: PropTypes.func,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,

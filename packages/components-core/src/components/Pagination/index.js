@@ -3,8 +3,17 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { createRange } from "../../core/utils/numbers";
 import { PageItem } from "./PageItem";
+
+const defaultGAEvent = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  type: "pagination",
+  region: "main content",
+};
 
 /**
  * @typedef {import('../../core/types/shared-types').PaginationProps} PaginationProps
@@ -71,6 +80,10 @@ export const Pagination = ({
   );
   // end small device
 
+  const trackEvent = page => {
+    trackGAEvent({ ...defaultGAEvent, text: `page ${page}` });
+  };
+
   const handleChangePage = (e, page) => {
     const actions = {
       first: 1,
@@ -80,19 +93,30 @@ export const Pagination = ({
     };
     const action = actions[page] ? actions[page] : page;
     setSelectedPage(action);
-    if (onChange) onChange(e, action);
+    onChange?.(e, action);
+  };
+
+  const renderArrows = direction => {
+    if (showArrowIcons) return "";
+    if (isSmallDevice && direction === "next") return ">";
+    if (isSmallDevice && direction === "prev") return "<";
+    return direction === "next" ? "Next" : "Prev";
   };
 
   const renderPages = () => {
     // Set the ranges to be shown in the pagination
     const lowerRange = createRange(
-      selectedPage - Math.floor(currentTotalNumbers / 2),
+      selectedPage -
+        (currentPage !== 1 ? 2 : 0) +
+        Math.floor(currentTotalNumbers / 2),
       selectedPage,
       totalPages
     );
     const upperRange = createRange(
       selectedPage,
-      selectedPage + 1 + Math.floor(currentTotalNumbers / 2),
+      selectedPage +
+        (currentPage === 1 ? 2 : 1) +
+        Math.floor(currentTotalNumbers / 2),
       totalPages
     );
     const renderedPages = [...lowerRange, ...upperRange];
@@ -108,7 +132,10 @@ export const Pagination = ({
                 isClickeable
                 key={page}
                 selectedPage={selectedPage === page}
-                onClick={e => handleChangePage(e, page)}
+                onClick={e => {
+                  trackEvent(page);
+                  handleChangePage(e, page);
+                }}
               >
                 {page}
               </PageItem>
@@ -138,7 +165,7 @@ export const Pagination = ({
           }
         )}
       >
-        {!isSmallDevice && showFirstButton && (
+        {showFirstButton && (
           <PageItem
             dataId="first"
             isClickeable
@@ -155,7 +182,7 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "prev")}
         >
-          {isXSmallDevice ? "" : "Prev"}
+          {renderArrows("prev")}
         </PageItem>
         {renderPages()}
         <PageItem
@@ -165,9 +192,9 @@ export const Pagination = ({
           pageLinkIcon={showArrowIcons}
           onClick={e => handleChangePage(e, "next")}
         >
-          {isXSmallDevice ? "" : "Next"}
+          {renderArrows("next")}
         </PageItem>
-        {!isSmallDevice && showLastButton && (
+        {showLastButton && (
           <PageItem
             dataId="last"
             isClickeable

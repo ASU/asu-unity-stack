@@ -1,15 +1,32 @@
 // @ts-check
 /* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
-import { sanitizeDangerousMarkup } from "@asu-design-system/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
+import { sanitizeDangerousMarkup } from "../../../../components-core/src/core/utils/html-utils";
+
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const defaultButtonEvent = {
+  event: "form",
+  action: "click",
+  name: "onclick",
+  type: "click",
+  region: "main content",
+};
+
+const mapSections = {
+  0: "Request information",
+  1: "About me",
+  2: "More about me",
+};
 
 const RfiStepper = props => {
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState("");
+  const section = mapSections[step];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -215,6 +232,7 @@ const RfiStepper = props => {
                 <RfiStepperButtons
                   stepNum={step}
                   lastStep={lastStep}
+                  section={section}
                   handleBack={prev}
                   submitting={formik.isSubmitting}
                 />
@@ -238,12 +256,29 @@ const RfiStepper = props => {
 // rewrite happens, the FA switcheroo is happening a layer below the element
 // that in this case React is trying to remove.
 
-const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
+const RfiStepperButtons = ({
+  stepNum,
+  lastStep,
+  section,
+  handleBack,
+  submitting,
+}) => (
   <nav aria-label="Request information form" className="container">
     <div className="row justify-content-end">
       <div className="col-6">
         {stepNum > 0 ? (
-          <Button type="button" onClick={handleBack}>
+          <Button
+            type="button"
+            onClick={() => {
+              handleBack();
+              trackGAEvent({
+                ...defaultButtonEvent,
+                section,
+                text: "prev",
+                component: `step ${stepNum + 1} of ${lastStep}`,
+              });
+            }}
+          >
             <span>
               <i className="fas fa-angle-left" aria-hidden="true" />
             </span>{" "}
@@ -254,7 +289,18 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
       <div className="col-6 text-right">
         {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
         {stepNum < lastStep - 1 ? (
-          <Button type="submit" className={`rfi-button-step${stepNum + 1}`}>
+          <Button
+            type="submit"
+            className={`rfi-button-step${stepNum + 1}`}
+            onClick={() =>
+              trackGAEvent({
+                ...defaultButtonEvent,
+                section,
+                text: "next",
+                component: `step ${stepNum + 1} of ${lastStep}`,
+              })
+            }
+          >
             Next{" "}
             <span>
               <i className="fas fa-angle-right" aria-hidden="true" />
@@ -265,6 +311,16 @@ const RfiStepperButtons = ({ stepNum, lastStep, handleBack, submitting }) => (
             type="submit"
             className="rfi-submit btn btn-gold"
             disabled={!!submitting}
+            onClick={() =>
+              trackGAEvent({
+                ...defaultButtonEvent,
+                event: "form",
+                type: "submit",
+                section,
+                text: "submit",
+                component: `step ${stepNum + 1} of ${lastStep}`,
+              })
+            }
           >
             Submit
           </Button>
@@ -292,7 +348,9 @@ RfiStepper.defaultProps = {
 };
 
 RfiStepper.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -317,6 +375,7 @@ RfiStepper.propTypes = {
 RfiStepperButtons.propTypes = {
   stepNum: PropTypes.number.isRequired,
   lastStep: PropTypes.number.isRequired,
+  section: PropTypes.string,
   handleBack: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };

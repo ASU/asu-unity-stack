@@ -4,11 +4,19 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { useMediaQuery } from "../../core/hooks/use-media-query";
+import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { queryFirstFocusable } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
 const menuTitle = "On This Page";
+
+const defaultMobileGAEvent = {
+  event: "collapse",
+  name: "onclick",
+  type: "click",
+  text: menuTitle,
+};
 
 /**
  * @typedef { import('../../core/types/shared-types').AnchorMenuProps } AnchorMenuProps
@@ -25,6 +33,7 @@ export const AnchorMenu = ({
 }) => {
   const anchorMenuRef = useRef(null);
   const [hasHeader, setHasHeader] = useState(false);
+  const [requiresAltMenuSpacing, setRequiresAltMenuSpacing] = useState(false);
   const [actualContainer, setActualContainer] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
@@ -73,8 +82,18 @@ export const AnchorMenu = ({
     setHasHeader(!!pageHeader);
   };
 
+  // Sets prop for styled-component to change anchor menu style
+  // based on if it requires different spacing for the ASU Header
+  const findContainersRequiringAltMenuSpacing = () => {
+    const degreeDetailPageContainer = document.getElementById(
+      "degreeDetailPageContainer"
+    );
+    if (degreeDetailPageContainer) setRequiresAltMenuSpacing(true);
+  };
+
   useEffect(() => {
     setHeader();
+    findContainersRequiringAltMenuSpacing();
   }, []);
 
   useEffect(() => {
@@ -100,12 +119,21 @@ export const AnchorMenu = ({
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
   };
 
+  const trackMobileDropdownEvent = () => {
+    trackGAEvent({
+      ...defaultMobileGAEvent,
+      action: showMenu ? "close" : "open",
+    });
+  };
+
   const handleMenuVisibility = () => {
     setShowMenu(prevState => !prevState);
   };
 
   return (
     <AnchorMenuWrapper
+      // @ts-ignore
+      requiresAltMenuSpacing={requiresAltMenuSpacing}
       ref={anchorMenuRef}
       className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
         hasHeader ? "with-header " : ""
@@ -117,7 +145,10 @@ export const AnchorMenu = ({
           <button
             className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
             type="button"
-            onClick={handleMenuVisibility}
+            onClick={() => {
+              trackMobileDropdownEvent();
+              handleMenuVisibility();
+            }}
             data-toggle="collapse"
             data-target="#collapseAnchorMenu"
             aria-controls="collapseAnchorMenu"

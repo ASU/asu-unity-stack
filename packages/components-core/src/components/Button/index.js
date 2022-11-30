@@ -4,6 +4,16 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+
+const gaDefaultObject = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
+
 /**
  * @typedef {import('../../core/types/shared-types').ButtonProps} ButtonProps
  */
@@ -14,6 +24,7 @@ import React from "react";
  */
 export const Button = ({
   label,
+  cardTitle,
   ariaLabel,
   block,
   color,
@@ -41,6 +52,11 @@ export const Button = ({
     Tag = "a";
   }
 
+  const handleClick = text => {
+    trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
+    onClick?.();
+  };
+
   return (
     <Tag
       type={Tag === "button" && onClick ? "button" : undefined}
@@ -48,7 +64,7 @@ export const Button = ({
       className={classNames(classes) || btnClasses}
       href={href}
       ref={innerRef}
-      onClick={onClick}
+      onClick={() => handleClick(label)}
       aria-label={ariaLabel}
       target={Tag === "a" ? target : null}
     >
@@ -63,6 +79,10 @@ Button.propTypes = {
    * Button label
    */
   label: PropTypes.string,
+  /**
+   * Card title
+   */
+  cardTitle: PropTypes.string,
   /**
     ARIA label for accessibility
   */
@@ -136,6 +156,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   label: "",
+  cardTitle: "",
   ariaLabel: undefined,
   block: undefined,
   color: "gray",

@@ -25,6 +25,8 @@
 
     svg {
       margin-left: $uds-size-spacing-1;
+      margin-right: $uds-size-spacing-1;
+      margin-top: 0.35rem;
       transform: rotate(0deg);
     }
 
@@ -47,6 +49,7 @@
   .nav-link {
     color: $uds-color-base-gray-7;
     padding: $uds-size-spacing-3 0;
+    padding-left: 0.5rem;
     text-align: start;
     font-weight: 400;
 
@@ -67,6 +70,7 @@
     svg {
       width: 2rem !important;
       margin-right: $uds-size-spacing-1;
+      margin-left: -0.5rem;
     }
   }
 }

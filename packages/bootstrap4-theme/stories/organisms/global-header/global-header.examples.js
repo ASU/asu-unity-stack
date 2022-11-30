@@ -28,11 +28,12 @@ export const StickyNoNavigationExample = createStory(
   <>
     {NoNavigationAndWithButtons}
     <main>
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="sr-only" data-elastic-exclude="data-elastic-exclude"></div>
       <div class="bg-gray-3" style={{ height: '200vh' }}></div>
     </main>
   </>,
   { initFunc }
 );
+
 export const ScrolledStateExample = createStory(ScrolledState, { initFunc });
 export const PartnerExample = createStory(Partner, { initFunc });
