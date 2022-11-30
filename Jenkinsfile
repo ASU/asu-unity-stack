@@ -94,25 +94,23 @@ spec:
             when {
                 branch 'dev'
             }
-            agent {
-              docker {
-                image 'node:12.22.1'
-                args '-p 3000:3000'
-              }
-            }
             steps {
-              sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-              sh 'yarn install'
-              sh 'yarn build'
-              try {
-                echo 'Prebuild storybook build deploy...'
-                sh 'yarn deploy-storybook --dry-run'
-                sh 'yarn gulp'
-                sh 'yarn deploy-storybook --existing-output-dir=build'
-              } catch (e) {
-                echo '### Deploy storybook failed...'
-                echo "Error: ${e}"
-              }
+                container('node14') {
+		    script {
+			sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+			sh 'yarn install'
+			sh 'yarn build'
+			try {
+			  echo 'Prebuild storybook build deploy...'
+			  sh 'yarn deploy-storybook --dry-run'
+			  sh 'yarn gulp'
+			  sh 'yarn deploy-storybook --existing-output-dir=build'
+			} catch (e) {
+			  echo '### Deploy storybook failed...'
+			  echo "Error: ${e}"
+			}
+		    }
+                }
             }
         }
         stage('Deploy QA Environment') {
