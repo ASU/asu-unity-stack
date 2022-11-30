@@ -13,6 +13,12 @@ spec:
     command:
     - cat
     tty: true
+  - name: puppeteer
+    image: 'buildkite/puppeteer:5.2.1'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
   imagePullSecrets:
   - name: docker-hub-credentials
 """
@@ -50,18 +56,16 @@ spec:
             }
         }
         stage('Test') {
-            /* agent {
-                docker {
-                    image 'buildkite/puppeteer:5.2.1'
-                    args '-p 3000:3000'
-                }
-            } */
             steps {
-                //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
-                //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
-                sh 'echo "SKIP visual regression testing"'
-                //sh 'echo "run visual regression testing"'
-                //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
+                container('puppeteer') {
+                    script {
+                        //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
+                        //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
+                        sh 'echo "SKIP visual regression testing"'
+                        //sh 'echo "run visual regression testing"'
+                        //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
+                    }
+                }
             }
         }
         stage('Publish Packages to Registry') {
