@@ -1,14 +1,14 @@
 // @ts-check
+import React from "react";
+import PropTypes from "prop-types";
+import { FeedContainerProvider } from "../../../../../components-core/src/components/FeedAnatomy/FeedContainerContext";
+import { FeedHeader } from "../../../../../components-core/src/components/FeedAnatomy/FeedHeader";
+import { FeedBody } from "../../../../../components-core/src/components/FeedAnatomy/FeedBody";
 import {
-  FeedContainerProvider,
-  FeedHeader,
-  FeedBody,
   feedHeaderShape,
   feedCtaButtonShape,
   feedDataSourceShape,
-} from "@asu-design-system/components-core";
-import PropTypes from "prop-types";
-import React from "react";
+} from "../../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
 
 import { defaultProps } from "../../constants/default-props";
 import { filterData } from "../../services/data-manager";

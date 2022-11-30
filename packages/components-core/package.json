@@ -12,14 +12,14 @@
     "dist/*",
     "docs/*"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git",
     "directory": "packages/components-core"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "bugs": {
     "url": "https://github.com/ASU/asu-unity-stack/issues"
@@ -65,8 +65,8 @@
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^7.0.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.2.1",
     "react-share": "^4.4.0",

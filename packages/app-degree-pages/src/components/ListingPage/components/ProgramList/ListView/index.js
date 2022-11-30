@@ -1,10 +1,8 @@
 /* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
-import {
-  idGenerator,
-  sanitizeDangerousMarkup,
-} from "@asu-design-system/components-core";
 import React, { Fragment, useContext, createRef } from "react";
+import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
+import { sanitizeDangerousMarkup } from "../../../../../../../components-core/src/core/utils/html-utils";
 
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";

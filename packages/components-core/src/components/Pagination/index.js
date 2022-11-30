@@ -96,7 +96,7 @@ export const Pagination = ({
     onChange?.(e, action);
   };
 
-  const renderArrows = (direction) => {
+  const renderArrows = direction => {
     if (showArrowIcons) return "";
     if (isSmallDevice && direction === "next") return ">";
     if (isSmallDevice && direction === "prev") return "<";

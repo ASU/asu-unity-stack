@@ -56,6 +56,8 @@
  *  animateTitle: boolean
  *  expandOnHover: boolean
  *  mobileNavTree: NavTreeProps[]
+ *  searchUrl: string
+ *  site: string
  * }} HeaderProps
  */
 

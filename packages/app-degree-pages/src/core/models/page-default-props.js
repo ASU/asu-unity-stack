@@ -1,5 +1,5 @@
 // @ts-check
-import { getCurrentScriptPath } from "@asu-design-system/components-core";
+import { getCurrentScriptPath } from "../../../../components-core/src/core/utils/script-utils";
 
 const currentScriptPath = getCurrentScriptPath();
 
