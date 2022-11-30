@@ -39,13 +39,13 @@ spec:
         stage('Build') {
             steps {
                 container('node14') {
-		    // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-		    // sh 'echo "always-auth=true" >> ~/.npmrc'
-		    // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-		    sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-		    sh 'yarn install'
-		    sh 'yarn build'
-		    // sh 'yarn build-storybook'
+                    // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    // sh 'echo "always-auth=true" >> ~/.npmrc'
+                    // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                    sh 'yarn install'
+                    sh 'yarn build'
+                    // sh 'yarn build-storybook'
                 }
             }
         }
@@ -68,24 +68,24 @@ spec:
             steps {
                 continer('node14') {
                     script {
-			// echo 'Publishing packages to private NPM registry...'
-			// sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-			// sh 'echo "always-auth=true" >> ~/.npmrc'
-			// sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-			echo '# Publishing packages to GitHub Packages...'
+                        // echo 'Publishing packages to private NPM registry...'
+                        // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                        // sh 'echo "always-auth=true" >> ~/.npmrc'
+                        // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                        echo '# Publishing packages to GitHub Packages...'
 
-			echo '## Configuring .npmrc file...'
-			sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-			sh 'echo "always-auth=true" >> ~/.npmrc'
-			sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                        echo '## Configuring .npmrc file...'
+                        sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                        sh 'echo "always-auth=true" >> ~/.npmrc'
+                        sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
 
-			echo '## Publishing packages...'
-			try {
-			  sh 'yarn publish-packages'
-			} catch (e) {
-			  echo '### Publishing packages failed...'
-			  echo "Error: ${e}"
-			}
+                        echo '## Publishing packages...'
+                        try {
+                          sh 'yarn publish-packages'
+                        } catch (e) {
+                          echo '### Publishing packages failed...'
+                          echo "Error: ${e}"
+                        }
                     }
                 }
             }
@@ -96,20 +96,20 @@ spec:
             }
             steps {
                 container('node14') {
-		    script {
-			sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-			sh 'yarn install'
-			sh 'yarn build'
-			try {
-			  echo 'Prebuild storybook build deploy...'
-			  sh 'yarn deploy-storybook --dry-run'
-			  sh 'yarn gulp'
-			  sh 'yarn deploy-storybook --existing-output-dir=build'
-			} catch (e) {
-			  echo '### Deploy storybook failed...'
-			  echo "Error: ${e}"
-			}
-		    }
+                    script {
+                        sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                        sh 'yarn install'
+                        sh 'yarn build'
+                        try {
+                          echo 'Prebuild storybook build deploy...'
+                          sh 'yarn deploy-storybook --dry-run'
+                          sh 'yarn gulp'
+                          sh 'yarn deploy-storybook --existing-output-dir=build'
+                        } catch (e) {
+                          echo '### Deploy storybook failed...'
+                          echo "Error: ${e}"
+                        }
+                    }
                 }
             }
         }
