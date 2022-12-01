@@ -73,7 +73,7 @@ spec:
                 branch 'dev'
             }
             steps {
-                continer('node14') {
+                container('node14') {
                     script {
                         // echo 'Publishing packages to private NPM registry...'
                         // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
