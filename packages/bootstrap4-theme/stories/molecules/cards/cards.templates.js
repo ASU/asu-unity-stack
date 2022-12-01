@@ -60,9 +60,12 @@ export const cardNoTemplates = (args) => {
       </div>
       <div class="card-body">
         <p class="card-text">
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua eiusmod tempo.
+          Body copy goes here. Limit to 5 lines max.{' '}
+          <a href="https://google.com" target="_blank">
+            Lorem
+          </a>{' '}
+          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
         </p>
       </div>
       {args.event && (
