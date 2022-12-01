@@ -206,7 +206,7 @@ const Nav = forwardRef(
       } else if (open !== -1) {
         setOpen(-1);
       }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [focused, navList]);
 
     /*** Detecting click outside of container */
@@ -259,6 +259,7 @@ const Nav = forwardRef(
 
             if (subs && subs.length > 0 && subs[0].length > 0) {
               return (
+                // eslint-disable-next-line react/jsx-key
                 <DropComponent
                   {...navItem}
                   pIndex={pindex}

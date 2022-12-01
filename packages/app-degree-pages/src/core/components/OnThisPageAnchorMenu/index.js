@@ -1,7 +1,7 @@
 // @ts-check
-import { AnchorMenu } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
+import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
 
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
