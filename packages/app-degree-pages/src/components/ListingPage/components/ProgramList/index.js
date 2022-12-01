@@ -1,8 +1,8 @@
 // @ts-check
-import { Pagination } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
+import { Pagination } from "../../../../../../components-core/src/components/Pagination";
 
 import { InfoAlert } from "../../../../core/components";
 import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";

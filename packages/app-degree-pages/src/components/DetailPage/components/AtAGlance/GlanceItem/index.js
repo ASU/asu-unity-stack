@@ -1,7 +1,7 @@
 // @ts-check
-import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
+import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
 
 import {
   glanceItemPropShape,

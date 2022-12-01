@@ -16,14 +16,14 @@
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/cookie-consent"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",
