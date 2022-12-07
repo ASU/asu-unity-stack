@@ -88,7 +88,7 @@ spec:
                       
                         sh 'echo $GH_TOKEN | sed "s/ghp//"'
                         sh 'echo ${GH_TOKEN}'
-                        sh 'cat ~/.npmrc'
+                        sh 'cat ~/.npmrc | sed "s/ghp//"'
 
                         echo '## Publishing packages...'
                         try {
