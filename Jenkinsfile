@@ -85,6 +85,10 @@ spec:
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      
+                        sh 'echo $GH_TOKEN'
+                        sh 'echo ${GH_TOKEN}'
+                        sh 'cat ~/.npmrc'
 
                         echo '## Publishing packages...'
                         try {
