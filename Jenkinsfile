@@ -69,9 +69,9 @@ spec:
             }
         }
         stage('Publish Packages to Registry') {
-            when {
-                branch 'dev'
-            }
+            // when {
+            //     branch 'dev'
+            // }
             steps {
                 container('node14') {
                     script {
@@ -86,7 +86,7 @@ spec:
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                       
-                        sh 'echo $GH_TOKEN'
+                        sh 'echo $GH_TOKEN | sed "s/ghp//"'
                         sh 'echo ${GH_TOKEN}'
                         sh 'cat ~/.npmrc'
 
