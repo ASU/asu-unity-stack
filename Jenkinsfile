@@ -34,6 +34,7 @@ spec:
         NPM_TOKEN = credentials('NPM_TOKEN')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
+        GH_URL = 'https://github.com/ASU/asu-unity-stack.git'
         GH_TOKEN = credentials('github-org-asu-pac')
     }
     options {
@@ -86,7 +87,7 @@ spec:
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                       
-                        echo "${GITHUB_URL}"
+                        echo "${GH_URL}"
 
                         echo '## Publishing packages...'
                         try {
