@@ -85,10 +85,6 @@ spec:
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-                      
-                        sh 'echo $GH_TOKEN | sed "s/ghp//"'
-                        sh 'echo ${GH_TOKEN}'
-                        sh 'cat ~/.npmrc | sed "s/ghp//"'
 
                         echo '## Publishing packages...'
                         try {
@@ -102,9 +98,9 @@ spec:
             }
         }
         stage('Deploy Storybook to GitHub Pages') {
-            when {
-                branch 'dev'
-            }
+            // when {
+            //     branch 'dev'
+            // }
             steps {
                 container('node14') {
                     script {
@@ -113,6 +109,7 @@ spec:
                         sh 'yarn build'
                         try {
                           echo 'Prebuild storybook build deploy...'
+                          sh 'whoami'
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
                           sh 'yarn deploy-storybook --existing-output-dir=build'
