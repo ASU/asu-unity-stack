@@ -86,7 +86,6 @@ spec:
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                       
-                        echo "${GH_URL}"
                         echo "${GITHUB_URL}"
 
                         echo '## Publishing packages...'
