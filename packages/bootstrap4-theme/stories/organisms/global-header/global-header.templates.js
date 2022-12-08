@@ -5,7 +5,7 @@ import starbucksLogo from './asu-starbucks.png';
 
 export const Basic = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -317,7 +317,7 @@ export const Basic = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="sr-only" data-elastic-exclude="data-elastic-exclude"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -325,7 +325,7 @@ export const Basic = (
 
 export const DropDownMenus = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1401,7 +1401,7 @@ export const DropDownMenus = (
 
 export const NoNavigation = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1627,7 +1627,7 @@ export const NoNavigation = (
 
 export const NoNavigationAndWithButtons = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1868,7 +1868,7 @@ export const NoNavigationAndWithButtons = (
 
 export const ScrolledState = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -2301,7 +2301,7 @@ export const ScrolledState = (
 
 export const Partner = (
   <>
-    <header id="asu-header" class="fixed-top">
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">

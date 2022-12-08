@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // @ts-check
-import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
+import { getCurrentScriptPath } from "../../../../../components-core/src/core/utils/script-utils";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
@@ -25,11 +25,13 @@ const Logo = () => {
         className="vert"
         src={logo?.src ?? vertLogo}
         alt={logo?.alt ?? "Arizona State University"}
+        title={logo?.title ?? "ASU home page"}
       />
       <img
         className="horiz"
         src={logo?.mobileSrc ?? horizLogo}
         alt={logo?.alt ?? "Arizona State University"}
+        title={logo?.title ?? "ASU home page"}
       />
     </LogoWrapper>
   );

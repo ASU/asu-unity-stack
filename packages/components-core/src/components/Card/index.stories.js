@@ -180,10 +180,12 @@ Story.args = {
       color: "maroon",
       size: "default",
       label: "CTA button",
+      href: "https://google.com",
+      target: "_blank",
     },
   ],
   linkLabel: "Default link",
-  linkUrl: "http://google.com",
+  linkUrl: "https://google.com",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },
@@ -208,57 +210,6 @@ Story.parameters = {
         imageAltText="An example image"
         linkLabel="Default link"
         linkUrl="http://google.com"
-        tags={[
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag1'
-          },
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag2'
-          },
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag3'
-          }
-        ]}
-        title="Story title"
-        type="story"
-      />`,
-    },
-  },
-};
-
-export const ClickableStoryCard = Template.bind({});
-ClickableStoryCard.args = {
-  type: "story",
-  horizontal: false,
-  clickable: true,
-  clickHref: "/#example-link",
-  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
-  imageAltText: "An example image",
-  title: "Story title",
-  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  tags: [
-    { color: "gray", label: "tag1", href: "/#example-link" },
-    { color: "gray", label: "tag2", href: "/#example-link" },
-    { color: "gray", label: "tag3", href: "/#example-link" },
-  ],
-};
-ClickableStoryCard.parameters = {
-  docs: {
-    description: {
-      story: `
-
-    <Card
-        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
-        clickHref="/#example-link"
-        clickable
-        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
-        imageAltText="An example image"
         tags={[
           {
             color: 'gray',

@@ -10,7 +10,7 @@ export const Sidebar = createStory(
         <h1>Take a look at the sidebar</h1>
       </div>
       <div class="col-md-4">
-        <h3>Lorem ipsum</h3>
+        <h2>Lorem ipsum</h2>
         <div
           class="sidebar-toggler"
           data-toggle="collapse"

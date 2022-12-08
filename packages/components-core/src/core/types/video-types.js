@@ -13,6 +13,7 @@
  * @property {string} [title]
  * @property {string} [caption]
  * @property {string} [className]
+ * @property {boolean} [controls]
  */
 
 /**

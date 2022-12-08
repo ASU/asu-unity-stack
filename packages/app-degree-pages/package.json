@@ -1,6 +1,6 @@
 {
   "name": "@asu-design-system/app-degree-pages",
-  "version": "1.19.6",
+  "version": "1.20.5",
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
@@ -14,14 +14,14 @@
     "dist/*",
     "docs/*"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/app-degree-pages"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -48,8 +48,8 @@
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
     "react-popper": "^2.2.5",
     "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.0"

@@ -28,6 +28,7 @@ const Template = ({
   programList,
   hasFilters,
   hasSearchBar,
+  ...rest
 }) => (
   <ListingPage
     appPathFolder={appPathFolder}
@@ -37,6 +38,7 @@ const Template = ({
     programList={programList}
     hasSearchBar={hasSearchBar}
     hasFilters={hasFilters}
+    {...rest}
   />
 );
 
@@ -126,6 +128,17 @@ DefaultWithBlacklistedPlanCodes.args = {
       blacklistAcadPlans: ["BAACCBS", "LAACTBS"],
     },
   },
+};
+
+// default story with degreesPerPage set to 2
+
+/**
+ * @type {{ args: AppProps }}
+ */
+export const DefaultWithDegreesPerPageSet = Template.bind({});
+DefaultWithDegreesPerPageSet.args = {
+  ...defaultArgs,
+  degreesPerPage: 2,
 };
 
 /**

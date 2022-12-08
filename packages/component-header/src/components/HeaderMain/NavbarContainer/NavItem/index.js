@@ -117,8 +117,11 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       onMouseEnter={handleOnMouseEnterLeave}
       onMouseLeave={handleOnMouseEnterLeave}
     >
+      {/* @ts-ignore */}
       <a
         href={link.href}
+        aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
+        aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
           link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
@@ -136,6 +139,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           buttons={link.buttons}
           dropdownName={link.text}
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
+          listId={`dropdown-${link.id}`}
         />
       )}
     </NavItemWrapper>

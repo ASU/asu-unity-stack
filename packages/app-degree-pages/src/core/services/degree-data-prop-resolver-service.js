@@ -131,6 +131,8 @@ function degreeDataPropResolverService(row = {}) {
     getGlobalExp: () => row["globalExp"]?.trim(),
     /** @return {string} */
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],
+    /** @return {Array} */
+    getCollegeAcadOrgJoint: () => row["CollegeAcadOrgJoint"],
     /** @return {string} */
     getDepartmentCode: () => row["DepartmentCode"],
     /** @return {Object.<string, string>} */

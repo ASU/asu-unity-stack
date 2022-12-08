@@ -4,8 +4,10 @@ import {
   createStory,
   layoutNames,
 } from '../../../helpers/wrapper.js';
+import { initVideo as initFunc } from './heroes-video';
+import stockVideo from '../../atoms/video/stock-video-person-drawing.mp4';
+
 export default createComponent('Heroes', 'Molecules', 'Examples');
-import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
@@ -176,5 +178,77 @@ export const StoryHeroLarge = createStory(
   }
 );
 StoryHeroLarge.args = {
+  template: 0,
+};
+
+export const HeroVideo = createStory(
+  (args) => {
+    return (
+      <div class="uds-hero-lg uds-video-hero">
+        <img
+          class="hero"
+          src="https://source.unsplash.com/WeYamle9fDM/1920x256"
+          alt="Sample placeholder image."
+        />
+        <video id="media-video" autoPlay muted loop>
+          <source src={stockVideo} />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-hero-controls">
+          <button
+            id="playHeroVid"
+            type="button"
+            class="btn btn-circle btn-circle-alt-white btn-circle-large"
+          >
+            <span class="fa fa-play"></span>
+            <span class="sr-only">Play hero video</span>
+          </button>
+          <button
+            id="pauseHeroVid"
+            type="button"
+            class="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
+          >
+            <span class="fa fa-pause"></span>
+            <span class="sr-only">Pause</span>
+          </button>
+        </div>
+        <div role="doc-subtitle">
+          <span class="highlight-black">Space Missions</span>
+        </div>
+        <h1>
+          <span class="highlight-white">
+            Be a collaborator in exploring space
+          </span>
+        </h1>
+        <div class="content">
+          <p class="text-white">
+            Humankind is on a path to becoming an interplanetary species, and
+            ASU is playing a leading role in making it happen. As a student, you
+            can be a collaborator with top scientists on one of ASU’s 25+ active
+            space missions.
+          </p>
+        </div>
+        <a
+          href="#"
+          class="btn btn-maroon"
+          data-ga="Call to action"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-secion="the new american university"
+        >
+          Call to Action
+        </a>
+      </div>
+    );
+  },
+  {
+    initFunc,
+    supportedTemplates: [layoutNames.FULL_WIDTH],
+  }
+);
+HeroVideo.args = {
   template: 0,
 };

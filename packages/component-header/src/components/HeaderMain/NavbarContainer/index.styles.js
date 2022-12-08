@@ -26,7 +26,7 @@ const Wrapper = styled.nav`
       min-height: calc(100vh - 277px);
       max-height: calc(100vh - 277px);
       > *:last-child {
-        margin-bottom: 40px;
+        margin-bottom: min(75px, 15vw);
       }
     }
     .nav-list {

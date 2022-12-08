@@ -3,6 +3,7 @@
 /**
  * @typedef {{
  *    alt: string
+ *    title: string
  *    src: string
  *    mobileSrc: string
  *    brandLink: string
@@ -55,6 +56,8 @@
  *  animateTitle: boolean
  *  expandOnHover: boolean
  *  mobileNavTree: NavTreeProps[]
+ *  searchUrl: string
+ *  site: string
  * }} HeaderProps
  */
 

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const LogoPropTypes = {
   alt: PropTypes.string,
+  title: PropTypes.string,
   src: PropTypes.string,
   mobileSrc: PropTypes.string,
   brandLink: PropTypes.string,

@@ -124,7 +124,7 @@ div[class^='uds-hero'] {
       .btn {
         white-space: normal;
         &:last-child {
-        margin-top: $uds-size-spacing-1;
+          margin-top: $uds-size-spacing-1;
 
           & + .btn {
             margin-left: 0;
@@ -140,6 +140,11 @@ div[class^='uds-hero'] {
 
   // Base class modifier: .hide-content {
   &.hide-content .content {
+    display: none;
+  }
+
+  &.uds-video-hero video,
+  &.uds-video-hero .video-hero-controls {
     display: none;
   }
 }
@@ -305,6 +310,60 @@ div.uds-hero-lg {
     .content,
     .btn-row {
       max-width: calc(940px - 34%);
+    }
+
+    &.uds-video-hero {
+      .hero {
+        display: none;
+      }
+
+      &.uds-video-hero video {
+        display: block;
+        grid-row: 1 / span 6;
+        grid-column: 1 / span 3;
+        z-index: 30;
+        height: 100%;
+        min-height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .video-hero-controls {
+        display: block;
+        position: relative;
+        z-index: 40;
+        grid-column: 2;
+        grid-row: 6;
+        align-self: end;
+        justify-self: flex-end;
+        top: -3rem;
+
+        .btn-circle-large {
+          width: 56px !important;
+          height: 56px !important;
+          font-size: 16px !important;
+          opacity: 0.3 !important;
+
+          &:hover {
+            opacity: 1 !important;
+            cursor: pointer;
+            transform: none;
+          }
+
+          .svg-inline--fa.fa-w-14 {
+            margin-left: 0 !important;
+          }
+        }
+
+        #playHeroVid {
+          // The play button starts as hidden as the video autoplays upoon page load.
+          display: none;
+        }
+      }
     }
   }
 }

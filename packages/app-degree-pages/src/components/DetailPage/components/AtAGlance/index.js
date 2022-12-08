@@ -52,6 +52,6 @@ AtAGlance.propTypes = {
   offeredBy: glanceItemPropShape.isRequired,
   locations: PropTypes.arrayOf(glanceItemPropShape).isRequired,
   firstRequirementMathCourse: PropTypes.string.isRequired,
-  mathIntensity: PropTypes.string.isRequired,
+  mathIntensity: PropTypes.string,
   timeCommitment: PropTypes.string,
 };
