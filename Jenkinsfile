@@ -113,6 +113,7 @@ spec:
                         try {
                           echo 'Prebuild storybook build deploy...'
                           sh 'whoami'
+                          sh 'git config --get remote.origin.url'
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
                           sh 'yarn deploy-storybook --existing-output-dir=build'
