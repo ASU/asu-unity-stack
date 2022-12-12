@@ -122,6 +122,8 @@ spec:
                           
                           sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           sh 'ls -la /home/jenkins/agent/workspace'
+                          sh 'chown -R node:node /home/jenkins/agent/workspace'
+                          sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
