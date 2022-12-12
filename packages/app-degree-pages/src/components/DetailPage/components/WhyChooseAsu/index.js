@@ -18,7 +18,10 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
   return (
     <section className="container" data-testid="why-choose-asu">
       <h2>Why choose ASU</h2>
-      <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)} />
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)}
+      />
       <div className="mt-2 row">
         <div className="mt-2 col-12 col-md-4">
           <Card
