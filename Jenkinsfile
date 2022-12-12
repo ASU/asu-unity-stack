@@ -120,8 +120,8 @@ spec:
                           sh 'echo "always-auth=true" >> ~/.npmrc'
                           sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                           
-                          sh 'ls /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
-                          sh 'ls /home/jenkins/agent/workspace'
+                          sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
+                          sh 'ls -la /home/jenkins/agent/workspace'
                           
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
