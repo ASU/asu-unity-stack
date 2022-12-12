@@ -76,6 +76,9 @@ spec:
             steps {
                 container('node14') {
                     script {
+                        # Use Github token as NPM token with GH Packages
+                        NPM_TOKEN = GH_TOKEN
+                      
                         // echo 'Publishing packages to private NPM registry...'
                         // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                         // sh 'echo "always-auth=true" >> ~/.npmrc'
@@ -107,6 +110,9 @@ spec:
             steps {
                 container('node14') {
                     script {
+                        # Use Github token as NPM token with GH Packages
+                        NPM_TOKEN = GH_TOKEN
+
                         sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                         sh 'yarn install'
                         sh 'yarn build'
@@ -120,10 +126,10 @@ spec:
                           sh 'echo "always-auth=true" >> ~/.npmrc'
                           sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                           
-                          sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
-                          sh 'ls -la /home/jenkins/agent/workspace'
-                          sh 'chown -R node:node /home/jenkins/agent/workspace'
-                          sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
+                          // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
+                          // sh 'ls -la /home/jenkins/agent/workspace'
+                          // sh 'chown -R node:node /home/jenkins/agent/workspace'
+                          // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
