@@ -118,7 +118,7 @@ spec:
                           echo '## Configuring .npmrc file...'
                           sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                           sh 'echo "always-auth=true" >> ~/.npmrc'
-                          sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                          sh 'echo "//npm.pkg.github.com/:_authToken=asu:$GH_TOKEN" >> ~/.npmrc'
                           
                           sh 'yarn deploy-storybook --dry-run'
                           sh 'yarn gulp'
