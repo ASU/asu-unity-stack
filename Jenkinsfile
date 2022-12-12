@@ -76,7 +76,7 @@ spec:
             steps {
                 container('node14') {
                     script {
-                        # Use Github token as NPM token with GH Packages
+                        // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
                       
                         // echo 'Publishing packages to private NPM registry...'
@@ -110,7 +110,7 @@ spec:
             steps {
                 container('node14') {
                     script {
-                        # Use Github token as NPM token with GH Packages
+                        // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
 
                         sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
