@@ -1,7 +1,9 @@
 // @ts-check
+// import { sanitizeDangerousMarkup } from "../components-core/src/core/utils";
 import React from "react";
-import { Card } from "../../../../../../components-core/src/components/Card";
 
+import { Card } from "../../../../../../components-core/src/components/Card";
+import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
 import { whyChooseAsuShape } from "../../../../core/models";
 
 /**
@@ -16,7 +18,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
   return (
     <section className="container" data-testid="why-choose-asu">
       <h2>Why choose ASU</h2>
-      <p>{sectionIntroText}</p>
+      <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)} />
       <div className="mt-2 row">
         <div className="mt-2 col-12 col-md-4">
           <Card
