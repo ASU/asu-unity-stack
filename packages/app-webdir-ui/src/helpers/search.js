@@ -390,7 +390,7 @@ export const performSearch = function ({
         query = `${query}&${employeeTypesParam}`;
       }
       if (rankGroup) {
-        query = `${query}&rank-group=${rankGroup}`;
+        query = `${query}&rank_group=${rankGroup}`;
       }
       APICall = () => axios.get(query);
     } else {

@@ -13,7 +13,7 @@ export default createComponent("Web Directory", "Organisms", "Templates");
 const display = {
   defaultSort: "last_name",
   doNotDisplayProfiles: "",
-  profilesPerPage: "5",
+  profilesPerPage: "10",
   usePager: "1",
 };
 const filters = {
@@ -86,8 +86,8 @@ export const facultyRankWebDirectory = createStory(
   <div className="uds-content-align">
     <WebDirectory
       searchType="faculty_rank"
-      deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003,159390"
-      API_URL="https://bf1d6c9d-6f98-41ae-aa9c-07db09453476.mock.pstmn.io/"
+      deptIds="1535"
+      API_URL="https://pr-419-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       filters={filters}
       display={display}
