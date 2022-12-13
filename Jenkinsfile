@@ -93,12 +93,8 @@ spec:
                         echo "${GH_URL}"
 
                         echo '## Publishing packages...'
-                        try {
-                          sh 'yarn publish-packages'
-                        } catch (e) {
-                          echo '### Publishing packages failed...'
-                          echo "Error: ${e}"
-                        }
+                        sh 'yarn publish-packages'
+
                     }
                 }
             }
@@ -116,28 +112,25 @@ spec:
                         sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                         sh 'yarn install'
                         sh 'yarn build'
-                        try {
-                          echo 'Prebuild storybook build deploy...'
-                          sh 'whoami'
-                          sh 'git config --get remote.origin.url'
+
+                        echo 'Prebuild storybook build deploy...'
+                        sh 'whoami'
+                        sh 'git config --get remote.origin.url'
                           
-                          echo '## Configuring .npmrc file...'
-                          sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                          sh 'echo "always-auth=true" >> ~/.npmrc'
-                          sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                        echo '## Configuring .npmrc file...'
+                        sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                        sh 'echo "always-auth=true" >> ~/.npmrc'
+                        sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                        
+                        // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
+                        // sh 'ls -la /home/jenkins/agent/workspace'
+                        // sh 'chown -R node:node /home/jenkins/agent/workspace'
+                        // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
-                          // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
-                          // sh 'ls -la /home/jenkins/agent/workspace'
-                          // sh 'chown -R node:node /home/jenkins/agent/workspace'
-                          // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
-                          
-                          sh 'yarn deploy-storybook --dry-run'
-                          sh 'yarn gulp'
-                          sh 'yarn deploy-storybook --existing-output-dir=build'
-                        } catch (e) {
-                          echo '### Deploy storybook failed...'
-                          echo "Error: ${e}"
-                        }
+                        sh 'yarn deploy-storybook --dry-run'
+                        sh 'yarn gulp'
+                        sh 'yarn deploy-storybook --existing-output-dir=build'
+
                     }
                 }
             }
