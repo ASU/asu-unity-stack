@@ -110,8 +110,11 @@ spec:
             steps {
                 container('node14') {
                     script {
+                        GH_TOKEN = asu:GH_TOKEN
+                        sh 'echo "$GH_TOKEN"'
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
+                        sh 'echo "$NPM_TOKEN"'
 
                         sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                         sh 'yarn install'
