@@ -110,7 +110,7 @@ spec:
             steps {
                 container('node14') {
                     script {
-                        GH_TOKEN = 'asu:${GH_TOKEN}'
+                        GH_TOKEN = "asu:${GH_TOKEN}"
                         sh 'echo "$GH_TOKEN"'
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
