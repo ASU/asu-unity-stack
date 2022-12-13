@@ -131,9 +131,9 @@ spec:
                           // sh 'chown -R node:node /home/jenkins/agent/workspace'
                           // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
-                          sh 'yarn deploy-storybook --dry-run'
+                          sh 'yarn deploy-storybook -- --ci --dry-run'
                           sh 'yarn gulp'
-                          sh 'yarn deploy-storybook --existing-output-dir=build'
+                          sh 'yarn deploy-storybook -- --ci --existing-output-dir=build'
                         } catch (e) {
                           echo '### Deploy storybook failed...'
                           echo "Error: ${e}"
