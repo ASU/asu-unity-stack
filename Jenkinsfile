@@ -31,8 +31,8 @@ spec:
         // SERVICE_NAME='UnityELBService'
         // TASK_FAMILY='UnityQATask'
         // REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
-        ////NPM_TOKEN = credentials('NPM_TOKEN')
-        NPM_TOKEN = credentials('github-org-asu-pac')
+        NPM_TOKEN = credentials('NPM_TOKEN')
+        // NPM_TOKEN = credentials('github-org-asu-pac')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
         GH_URL = 'https://github.com/ASU/asu-unity-stack.git'
@@ -45,30 +45,32 @@ spec:
     }
     stages {
         stage('Build Test') {
-            //environment {
-                // NPM_TOKEN = credentials('github-org-asu-pac')
-            //}
             steps {
                 container('node14') {
-                    //echo '## Configure .npmrc file for legacy registry...'
-                    //sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    //sh 'echo "always-auth=true" >> ~/.npmrc'
-                    //sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    script {
+                      // Use Github token as NPM token with GH Packages
+                      NPM_TOKEN = GH_TOKEN
+                      
+                      //echo '## Configure .npmrc file for legacy registry...'
+                      //sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                      //sh 'echo "always-auth=true" >> ~/.npmrc'
+                      //sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                   
-                    sh 'yarn config list'
-                    sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-                    sh 'yarn install'
-                    sh 'yarn build'                  
+                      sh 'yarn config list'
+                      sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                      sh 'yarn install'
+                      sh 'yarn build'                  
                   
-                    echo '## Configuring .npmrc file for new registry...'
-                    sh 'rm ~/.npmrc'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      echo '## Configuring .npmrc file for new registry...'
+                      sh 'rm ~/.npmrc'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                     
-                    sh 'yarn deploy-storybook --dry-run'
-                    sh 'yarn gulp'
-                    sh 'yarn deploy-storybook --existing-output-dir=build'
+                      sh 'yarn deploy-storybook --dry-run'
+                      sh 'yarn gulp'
+                      sh 'yarn deploy-storybook --existing-output-dir=build'
+                    }
                 }
             }
         }
