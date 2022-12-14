@@ -44,6 +44,36 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
+        stage('Build Test') {
+            steps {
+                container('node14') {
+                    //script {
+                      // Use Github token as NPM token with GH Packages
+                      //NPM_TOKEN = GH_TOKEN
+                      
+                      echo '## Configure .npmrc file for legacy registry...'
+                      sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                      
+                      sh 'yarn config list'
+                      //sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                      sh 'yarn install'
+                      sh 'yarn build'                  
+                  
+                      echo '## Configuring .npmrc file for new registry...'
+                      //sh 'rm ~/.npmrc'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      //sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    
+                      sh 'yarn deploy-storybook --dry-run'
+                      sh 'yarn gulp'
+                      sh 'yarn deploy-storybook --existing-output-dir=build'
+                    //}
+                }
+            }
+        }
         stage('Build') {
             steps {
                 container('node14') {
@@ -125,6 +155,8 @@ spec:
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                        
+                        sh 'cat ~/.npmrc'
                         
                         sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                         sh 'ls -la /home/jenkins/agent/workspace'
