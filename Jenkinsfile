@@ -31,7 +31,8 @@ spec:
         // SERVICE_NAME='UnityELBService'
         // TASK_FAMILY='UnityQATask'
         // REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
-        NPM_TOKEN = credentials('NPM_TOKEN')
+        ////NPM_TOKEN = credentials('NPM_TOKEN')
+        NPM_TOKEN = credentials('github-org-asu-pac')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
         GH_URL = 'https://github.com/ASU/asu-unity-stack.git'
@@ -49,10 +50,10 @@ spec:
             //}
             steps {
                 container('node14') {
-                    echo '## Configure .npmrc file for legacy registry...'
-                    sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    //echo '## Configure .npmrc file for legacy registry...'
+                    //sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    //sh 'echo "always-auth=true" >> ~/.npmrc'
+                    //sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                   
                     sh 'yarn config list'
                     sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
