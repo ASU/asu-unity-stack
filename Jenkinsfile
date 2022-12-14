@@ -86,7 +86,7 @@ spec:
                     // TODO remove after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    // sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
                     echo '## Configure .npmrc file for new Github Pacakge registry...'
