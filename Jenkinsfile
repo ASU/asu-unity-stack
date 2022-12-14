@@ -127,9 +127,9 @@ spec:
                         sh 'chown -R node:node /home/jenkins/agent/workspace'
                         sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
-                        sh 'yarn deploy-storybook --dry-run'
-                        sh 'yarn gulp'
-                        sh 'yarn deploy-storybook --existing-output-dir=build'
+                        sh 'su node; yarn deploy-storybook --dry-run'
+                        sh 'su node; yarn gulp'
+                        sh 'su node; yarn deploy-storybook --existing-output-dir=build'
 
                     }
                 }
