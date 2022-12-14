@@ -44,13 +44,17 @@ spec:
     }
     stages {
         stage('Build Test') {
+            environment {
+                // NPM_TOKEN = credentials('github-org-asu-pac')
+            }
             steps {
                 container('node14') {
                     
-                    //echo '## Configuring .npmrc file...'
-                    //sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    //sh 'echo "always-auth=true" >> ~/.npmrc'
-                    //sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    echo '## Configuring .npmrc file...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
                     
                     sh 'yarn config list'
                     sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
