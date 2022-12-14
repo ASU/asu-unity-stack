@@ -47,10 +47,10 @@ spec:
             steps {
                 container('node14') {
                     
-                    echo '## Configuring .npmrc file...'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    //echo '## Configuring .npmrc file...'
+                    //sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    //sh 'echo "always-auth=true" >> ~/.npmrc'
+                    //sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                     
                     sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                     sh 'yarn install'
