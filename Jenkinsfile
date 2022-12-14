@@ -52,6 +52,7 @@ spec:
                     //sh 'echo "always-auth=true" >> ~/.npmrc'
                     //sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                     
+                    sh 'yarn config list'
                     sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
                     sh 'yarn install'
                     sh 'yarn build'
