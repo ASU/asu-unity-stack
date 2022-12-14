@@ -38,7 +38,6 @@ spec:
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
     }
     options {
-      // withAWS(credentials:'aws-jenkins')
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
       disableConcurrentBuilds()
     }
@@ -78,9 +77,9 @@ spec:
             }
         }
         stage('Publish') {
-            // when {
-            //     branch 'dev'
-            // }
+            when {
+                branch 'dev'
+            }
             steps {
                 container('node14') {
                     script {
@@ -91,7 +90,7 @@ spec:
                         echo '# Publishing packages to GitHub Packages registry...'
 
                         echo '## Re-set .npmrc file for Github Package registry...'
-                        // Note: In the first command single > redirect (re)creates file
+                        // Note: In the first command, the single > redirect (re)creates file
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
@@ -102,10 +101,10 @@ spec:
                 }
             }
         }
-        stage('Deploy Storybook to GitHub Pages') {
-            // when {
-            //    branch 'dev'
-            // }
+        stage('Deploy') {
+            when {
+              branch 'dev'
+            }
             steps {
                 container('node14') {
                     script {
@@ -113,12 +112,9 @@ spec:
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
 
-                        // TODO Is this install and build redundant?
-                        // sh 'yarn install'
-                        // sh 'yarn build'
-
-                        // echo "Debug .npmrc"
+                        // echo "Debug persisted .npmrc..."
                         // sh 'cat ~/.npmrc'
+                        // sh 'yarn config list'
 
                         echo '# Prebuild Storybook as dry-run...'
                         sh 'yarn deploy-storybook --dry-run'
