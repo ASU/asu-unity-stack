@@ -146,7 +146,7 @@ const webDirDeptsFormatter = (
     localResults = results.results;
     localPage = results.meta.page;
   }
-  if (filters.peopleIds) {
+  if (!!filters.peopleIds) {
     localResults = localResults.filter(r => {
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
