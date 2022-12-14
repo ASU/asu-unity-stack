@@ -1,12 +1,13 @@
 pipeline {
     agent {
-        args '-u 1000:1000'
         kubernetes {
             yaml """
 apiVersion: v1
 kind: Pod
 spec:
   serviceAccountName: jenkins
+  securityContext:
+    runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
   - name: node14
     image: 'node:14.17.6'
