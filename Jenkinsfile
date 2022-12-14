@@ -26,7 +26,7 @@ spec:
     }
     environment {
         // AWS_DEFAULT_REGION = 'us-west-2'
-        // HOME='.'
+        HOME='.'
         // CLUSTER_NAME='UnityQACluster'
         // SERVICE_NAME='UnityELBService'
         // TASK_FAMILY='UnityQATask'
@@ -44,7 +44,7 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
-        stage('Build Test') {
+        stage('Debug') {
             steps {
                 container('node14') {
                     //script {
