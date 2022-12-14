@@ -109,9 +109,9 @@ spec:
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
 
-                        sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-                        sh 'yarn install'
-                        sh 'yarn build'
+                        sh 'su node; yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                        sh 'su node; yarn install'
+                        sh 'su node; yarn build'
 
                         echo 'Prebuild storybook build deploy...'
                         sh 'whoami'
@@ -124,8 +124,8 @@ spec:
                         
                         sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                         sh 'ls -la /home/jenkins/agent/workspace'
-                        sh 'chown -R node:node /home/jenkins/agent/workspace'
-                        sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
+                        // sh 'chown -R node:node /home/jenkins/agent/workspace'
+                        // sh 'ls -la /home/jenkins/agent/workspace/UDS_asu-unity-stack_PR-902/node_modules/@storybook/core-server/public/'
                           
                         sh 'su node; yarn deploy-storybook --dry-run'
                         sh 'su node; yarn gulp'
