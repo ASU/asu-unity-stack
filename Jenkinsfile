@@ -43,6 +43,23 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
+        stage('Build Test') {
+            steps {
+                container('node14') {
+                    // Use Github token as NPM token with GH Packages
+                    NPM_TOKEN = GH_TOKEN
+                    
+                    echo '## Configuring .npmrc file...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    
+                    sh 'yarn deploy-storybook --dry-run'
+                    sh 'yarn gulp'
+                    sh 'yarn deploy-storybook --existing-output-dir=build'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 container('node14') {
