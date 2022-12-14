@@ -44,9 +44,9 @@ spec:
     }
     stages {
         stage('Build Test') {
-            environment {
+            //environment {
                 // NPM_TOKEN = credentials('github-org-asu-pac')
-            }
+            //}
             steps {
                 container('node14') {
                     
