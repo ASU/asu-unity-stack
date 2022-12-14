@@ -116,11 +116,15 @@ spec:
                         // sh 'cat ~/.npmrc'
                         // sh 'yarn config list'
 
-                        echo '# Prebuild Storybook as dry-run...'
+                        echo '# Final, post-publish install and build...'
+                        sh 'yarn install'
+                        sh 'yarn build'
+
+                        echo '# Prebuild Storybook static site as dry-run...'
                         sh 'yarn deploy-storybook --dry-run'
                         echo '# Compile templates and copy files for build deploy...'
                         sh 'yarn gulp'
-                        echo '# Storybook final build and deploy...'
+                        echo '# Storybook static site final build and deploy...'
                         sh 'yarn deploy-storybook --existing-output-dir=build'
                     }
                 }
