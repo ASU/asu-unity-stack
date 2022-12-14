@@ -51,6 +51,8 @@ spec:
                       // Use Github token as NPM token with GH Packages
                       //NPM_TOKEN = GH_TOKEN
                       
+                      sh 'cat /etc/passwd | grep node'
+                  
                       echo '## Configure .npmrc file for legacy registry...'
                       sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                       sh 'echo "always-auth=true" >> ~/.npmrc'
