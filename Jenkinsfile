@@ -1,7 +1,7 @@
 pipeline {
     agent {
+        args '-u 1000:1000'
         kubernetes {
-            args '-u 1000:1000'
             yaml """
 apiVersion: v1
 kind: Pod
