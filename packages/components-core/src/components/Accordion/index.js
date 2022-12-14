@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
@@ -13,6 +13,11 @@ const defaultGAEvent = {
   region: "main content",
 };
 
+const AVAILABLE_GA_ACTIONS = {
+  OPEN: "open",
+  CLOSE: "close",
+};
+
 /**
  * @typedef {import('../../core/types/shared-types').AccordionProps} AccordionProps
  */
@@ -22,24 +27,34 @@ const defaultGAEvent = {
  * @returns {JSX.Element}
  */
 const Accordion = ({ cards, openedCard }) => {
-  const [openCard, setOpenCard] = useState(null);
+  const [currentOpenCard, setCurrentOpenCard] = useState(openedCard);
 
-  useEffect(() => {
-    setOpenCard(openedCard);
-  }, [openedCard]);
-
-  const trackEvent = (cardId, cardTitle) => {
+  const trackEvent = (cardTitle, action) => {
     trackGAEvent({
       ...defaultGAEvent,
-      action: openCard === cardId ? "close" : "open",
+      action,
       text: cardTitle,
     });
   };
 
-  const changeOpenCard = (event, card, cardTitle) => {
+  const toggleCard = (event, card, cardTitle) => {
     event.preventDefault();
-    trackEvent(card, cardTitle);
-    setOpenCard(prevState => (prevState === card ? null : card));
+
+    // If there is a difference between the previously opened card and the currently opened card, or if the same card is clicked, the close event is triggered.
+    if (currentOpenCard === card || currentOpenCard) {
+      // we get the header of the previous card and send it to the GA event from the cards list
+      trackEvent(
+        cards[currentOpenCard - 1].content.header,
+        AVAILABLE_GA_ACTIONS.CLOSE
+      );
+    }
+
+    if (currentOpenCard !== card) {
+      setCurrentOpenCard(card);
+      trackEvent(cardTitle, AVAILABLE_GA_ACTIONS.OPEN);
+    } else {
+      setCurrentOpenCard(null);
+    }
   };
 
   return (
@@ -53,8 +68,8 @@ const Accordion = ({ cards, openedCard }) => {
               key={key + 1}
               id={key + 1}
               item={card}
-              openCard={openCard}
-              onClick={changeOpenCard}
+              openCard={currentOpenCard}
+              onClick={toggleCard}
             />
           )
       )}
