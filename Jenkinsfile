@@ -44,10 +44,6 @@ spec:
     }
     stages {
         stage('Build Test') {
-            environment {
-                // Use Github token as NPM token with GH Packages
-                NPM_TOKEN = GH_TOKEN
-            }
             steps {
                 container('node14') {
                     
@@ -57,6 +53,8 @@ spec:
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                     
                     sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                    sh 'yarn install'
+                    sh 'yarn build'
                     sh 'yarn deploy-storybook --dry-run'
                     sh 'yarn gulp'
                     sh 'yarn deploy-storybook --existing-output-dir=build'
