@@ -43,53 +43,17 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
-        stage('Debug') {
-            when {
-                branch 'debug'
-            }
-            steps {
-                container('node14') {
-                    //script {
-                      // Use Github token as NPM token with GH Packages
-                      //NPM_TOKEN = GH_TOKEN
-
-                      sh 'cat /etc/passwd | grep node'
-                      sh 'cat /etc/passwd | grep root'
-                      sh 'id'
-
-                      // TODO remove after transition to new registry is complete
-                      echo '## Configure .npmrc file for legacy registry...'
-                      sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                      sh 'echo "always-auth=true" >> ~/.npmrc'
-                      sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-
-                      //sh 'yarn config list'
-                      sh 'yarn install'
-                      sh 'yarn build'
-
-                      echo '## Configuring .npmrc file for new registry...'
-                      //sh 'rm ~/.npmrc'
-                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                      //sh 'echo "always-auth=true" >> ~/.npmrc'
-                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-
-                      sh 'yarn deploy-storybook --dry-run'
-                      sh 'yarn gulp'
-                      sh 'yarn deploy-storybook --existing-output-dir=build'
-                    //}
-                }
-            }
-        }
         stage('Build') {
             steps {
                 container('node14') {
-                    // TODO remove after transition to new registry is complete
+                    // TODO Update after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
-                    // echo '## Configure .npmrc file for new Github Pacakge registry...'
+                    // echo '## Configure .npmrc file for Github Package registry...'
+                    // Note: In the first command single > redirect (re)creates file
                     // sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     // sh 'echo "always-auth=true" >> ~/.npmrc'
                     // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
@@ -113,22 +77,21 @@ spec:
                 }
             }
         }
-        stage('Publish Packages to Registry') {
+        stage('Publish') {
             // when {
             //     branch 'dev'
             // }
             steps {
                 container('node14') {
                     script {
-                        // TODO Remove after transition:
+                        // TODO Remove after transition as it will be set in environment block:
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
 
-                        echo '# Publishing packages to GitHub Packages...'
+                        echo '# Publishing packages to GitHub Packages registry...'
 
-                        echo "Confirm .npmrc persists"
-                        sh 'cat ~/.npmrc'
-                        echo '## Configuring .npmrc file...'
+                        echo '## Re-set .npmrc file for Github Package registry...'
+                        // Note: In the first command single > redirect (re)creates file
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
@@ -146,23 +109,22 @@ spec:
             steps {
                 container('node14') {
                     script {
+                        // TODO Remove after transition as it will be set in environment block:
                         // Use Github token as NPM token with GH Packages
                         NPM_TOKEN = GH_TOKEN
 
                         // TODO Is this install and build redundant?
-                        sh 'yarn install'
-                        sh 'yarn build'
+                        // sh 'yarn install'
+                        // sh 'yarn build'
 
-                        echo "Confirm .npmrc persists"
-                        sh 'cat ~/.npmrc'
-                        // echo '## Configuring .npmrc file...'
-                        // sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                        // sh 'echo "always-auth=true" >> ~/.npmrc'
-                        // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                        // echo "Debug .npmrc"
+                        // sh 'cat ~/.npmrc'
 
-                        echo '# Prebuild storybook build deploy...'
+                        echo '# Prebuild Storybook as dry-run...'
                         sh 'yarn deploy-storybook --dry-run'
+                        echo '# Compile templates and copy files for build deploy...'
                         sh 'yarn gulp'
+                        echo '# Storybook final build and deploy...'
                         sh 'yarn deploy-storybook --existing-output-dir=build'
                     }
                 }
