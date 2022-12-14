@@ -44,11 +44,11 @@ spec:
     }
     stages {
         stage('Build Test') {
+            environment {
+                // Use Github token as NPM token with GH Packages
+                NPM_TOKEN = GH_TOKEN
+            }
             steps {
-                environment {
-                    // Use Github token as NPM token with GH Packages
-                    NPM_TOKEN = GH_TOKEN
-                }
                 container('node14') {
                     
                     echo '## Configuring .npmrc file...'
