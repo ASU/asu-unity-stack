@@ -53,6 +53,7 @@ spec:
                       
                       sh 'cat /etc/passwd | grep node'
                       sh 'cat /etc/passwd | grep root'
+                      sh 'id'
                   
                       echo '## Configure .npmrc file for legacy registry...'
                       sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
