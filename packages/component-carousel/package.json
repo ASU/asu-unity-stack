@@ -39,7 +39,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asure": "^1.25.2",
+    "@asu/components-core": "^1.25.2",
     "@asu/design-tokens": "^1.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
