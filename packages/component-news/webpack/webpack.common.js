@@ -69,9 +69,10 @@ const common = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      "@asu/components-core": "@asu/components-core/dist/libCore.es.js",
-      "@asu/component-carousel":
-        "@asu/component-carousel/dist/asuCarousel.es.js",
+      "@asu-design-system/components-core":
+        "@asu-design-system/components-core/dist/libCore.es.js",
+      "@asu-design-system/component-carousel":
+        "@asu-design-system/component-carousel/dist/asuCarousel.es.js",
     },
   },
   plugins: [

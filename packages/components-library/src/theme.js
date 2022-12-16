@@ -26,7 +26,7 @@ import {
   ComponentButtonPaddingXMedium,
   ComponentButtonMaroonColor,
   ComponentButtonMaroonBackgroundColor,
-} from "@asu/design-tokens/build/es6/tokens";
+} from "@asu-design-system/design-tokens/build/es6/tokens";
 import { css } from "@emotion/css";
 
 const hiddenStyle = css`

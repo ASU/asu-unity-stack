@@ -6,7 +6,7 @@ import { AnchorMenu } from "../../../../../components-core/src/components/Anchor
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**
- * @typedef {import("@asu/components-core").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu-design-system/components-core").AnchorMenuItem} AnchorMenuItem
  * */
 
 /**

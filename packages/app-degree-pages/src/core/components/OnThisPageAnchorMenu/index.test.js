@@ -1,5 +1,5 @@
 // @ts-check
-import { AnchorMenu } from "@asu/components-core";
+import { AnchorMenu } from "@asu-design-system/components-core";
 import { render } from "@testing-library/react";
 import React from "react";
 

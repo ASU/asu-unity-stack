@@ -1,15 +1,15 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu/components-core").HeroProps} HeroProps
+ * @typedef {import("@asu-design-system/components-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
  */
 
 /**
