@@ -169,7 +169,7 @@ You can find a full list of props into the [docs/README.props.md](docs/README.pr
 
 ``` bash
 # add component-carousel
-yarn add @asu-design-system/component-carousel
+yarn add @asu/component-carousel
 
 # run storybook
 yarn storybook
@@ -192,13 +192,13 @@ yarn jsdoc
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/component-carousel```
+2. ```yarn add @asu/component-carousel```
 
 
 ## Use as a JS module in React app
 
 ```JAVASCRIPT
-    import { AsuCarousel } from '@asu-design-system/component-carousel@dev'
+    import { AsuCarousel } from '@asu/component-carousel@dev'
 
     // Define your carousel items. Contents of "item:" should be a Unity
     // Design System Card. Only one example provided below.
@@ -300,8 +300,8 @@ yarn jsdoc
 <div id="anotherCarouselContainer"></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.umd.js"></script>
-<script src="/node_modules/@asu-design-system/component-carousel/dist/asuCarousel.umd.js"></script>
+<script src="/node_modules/@asu/component-carousel/dist/vendor.umd.js"></script>
+<script src="/node_modules/@asu/component-carousel/dist/asuCarousel.umd.js"></script>
 <script>
   // Setup and initialize the first carousel.
   var props = {
@@ -351,10 +351,10 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 
 # Storybook
 
- - [Card Carousel](https://unity.web.asu.edu/@asu-design-system/component-carousel/index.html?path=/story/card-carousel--three-item-carousel)
- - [Immge Carousel](https://unity.web.asu.edu/@asu-design-system/component-carousel/index.html?path=/story/image-carousel--image-carousel-default)
- - [Image Galllery Carousel](https://unity.web.asu.edu/@asu-design-system/component-carousel/index.html?path=/story/image-gallery-carousel--image-gallery-carousel-default)
- - [Testomonial Carousel](https://unity.web.asu.edu/@asu-design-system/component-carousel/index.html?path=/story/testimonial-carousel--testimonial-carousel-default)
+ - [Card Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/card-carousel--three-item-carousel)
+ - [Immge Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/image-carousel--image-carousel-default)
+ - [Image Galllery Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/image-gallery-carousel--image-gallery-carousel-default)
+ - [Testomonial Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/testimonial-carousel--testimonial-carousel-default)
 
 # UX documents
 

@@ -9,8 +9,8 @@ module.exports = {
   },
   transformIgnorePatterns: ["/node_modules/"],
   testPathIgnorePatterns: [
-    "@asu-design-system/components-core",
-    "/node_modules/(?!@asu-design-system/*)(.*)",
+    "@asu/components-core",
+    "/node_modules/(?!@asu/*)(.*)",
   ],
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx}",

@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-news",
+  "name": "@asu/component-news",
   "version": "1.4.0",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",
@@ -40,8 +40,8 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu-design-system/component-carousel": "^1.8.3",
-    "@asu-design-system/components-core": "^1.25.2",
+    "@asu/component-carousel": "^1.8.3",
+    "@asu/components-core": "^1.25.2",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "prop-types": "^15.7.2",

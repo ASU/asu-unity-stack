@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-header",
+  "name": "@asu/component-header",
   "version": "1.8.2",
   "description": "ASU Global Header",
   "main": "./dist/asuHeader.cjs.js",

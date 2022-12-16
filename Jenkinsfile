@@ -42,6 +42,29 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
+         stage('Debug') {
+            steps {
+                container('node14') {
+                    // TODO Update after transition to new registry is complete
+                    echo '## Configure .npmrc file for legacy registry...'
+                    sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" >> ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+
+                    echo '## Install and build Unity monorepo...'
+                    sh 'yarn install'
+                    sh 'yarn build'
+
+                    echo '## Publishing packages...'
+                    sh 'yarn publish-packages'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 container('node14') {

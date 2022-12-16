@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-events",
+  "name": "@asu/component-events",
   "version": "1.4.0",
   "description": "ASU Events component",
   "main": "./dist/asuEvents.cjs.js",
@@ -40,7 +40,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.25.2",
+    "@asure": "^1.25.2",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",

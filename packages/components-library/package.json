@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/components-library",
+  "name": "@asu/components-library",
   "version": "2.4.0",
   "description": "[Deprecated] ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
@@ -33,7 +33,7 @@
     "semantic-release-monorepo": "^7.0.4"
   },
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/design-tokens": "^1.1.0",
     "@emotion/css": "^11.0.0",
     "@emotion/server": "^11.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

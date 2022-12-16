@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-cookie-consent",
+  "name": "@asu/component-cookie-consent",
   "version": "1.2.1",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",

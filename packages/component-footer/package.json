@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-footer",
+  "name": "@asu/component-footer",
   "version": "1.5.1",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
@@ -36,8 +36,8 @@
     "build-storybook": "build-storybook -s ./dist"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.25.2",
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/components-core": "^1.25.2",
+    "@asu/design-tokens": "^1.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
