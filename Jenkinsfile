@@ -6,6 +6,8 @@ apiVersion: v1
 kind: Pod
 spec:
   serviceAccountName: jenkins
+  securityContext:
+    runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
   - name: node14
     image: 'node:14.17.6'
@@ -25,19 +27,17 @@ spec:
         }
     }
     environment {
-        // AWS_DEFAULT_REGION = 'us-west-2'
-        // HOME='.'
-        // CLUSTER_NAME='UnityQACluster'
-        // SERVICE_NAME='UnityELBService'
-        // TASK_FAMILY='UnityQATask'
-        // REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
+        HOME='.'
+        GH_URL = 'https://github.com/ASU/asu-unity-stack.git'
+        GH_TOKEN = credentials('github-org-asu-pac')
+        // TODO After transition to new registry is complete, we can use the
+        // same token as GH_TOKEN since registry will be GitHub Packages.
+        // NPM_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
-        GH_TOKEN = credentials('github-org-asu-pac')
     }
     options {
-      // withAWS(credentials:'aws-jenkins')
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
       disableConcurrentBuilds()
     }
@@ -45,13 +45,21 @@ spec:
         stage('Build') {
             steps {
                 container('node14') {
+                    // TODO Update after transition to new registry is complete
+                    echo '## Configure .npmrc file for legacy registry...'
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                    // sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+
+                    // echo '## Configure .npmrc file for Github Package registry...'
+                    // Note: In the first command single > redirect (re)creates file
+                    // sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    // sh 'echo "always-auth=true" >> ~/.npmrc'
+                    // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+
+                    echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
                     sh 'yarn build'
-                    // sh 'yarn build-storybook'
                 }
             }
         }
@@ -68,79 +76,58 @@ spec:
                 }
             }
         }
-        stage('Publish Packages to Registry') {
+        stage('Publish') {
             when {
                 branch 'dev'
             }
             steps {
                 container('node14') {
                     script {
-                        // echo 'Publishing packages to private NPM registry...'
-                        // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                        // sh 'echo "always-auth=true" >> ~/.npmrc'
-                        // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                        echo '# Publishing packages to GitHub Packages...'
+                        // TODO Remove after transition as it will be set in environment block:
+                        // Use Github token as NPM token with GH Packages
+                        NPM_TOKEN = GH_TOKEN
 
-                        echo '## Configuring .npmrc file...'
+                        echo '# Publishing packages to GitHub Packages registry...'
+
+                        echo '## Re-set .npmrc file for Github Package registry...'
+                        // Note: In the first command, the single > redirect (re)creates file
                         sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                         sh 'echo "always-auth=true" >> ~/.npmrc'
                         sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-                      
-                        sh 'echo $GH_TOKEN'
-                        sh 'echo ${GH_TOKEN}'
-                        sh 'cat ~/.npmrc'
 
                         echo '## Publishing packages...'
-                        try {
-                          sh 'yarn publish-packages'
-                        } catch (e) {
-                          echo '### Publishing packages failed...'
-                          echo "Error: ${e}"
-                        }
+                        sh 'yarn publish-packages'
                     }
                 }
             }
         }
-        stage('Deploy Storybook to GitHub Pages') {
+        stage('Deploy') {
             when {
-                branch 'dev'
+              branch 'dev'
             }
             steps {
                 container('node14') {
                     script {
-                        sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
+                        // TODO Remove after transition as it will be set in environment block:
+                        // Use Github token as NPM token with GH Packages
+                        NPM_TOKEN = GH_TOKEN
+
+                        // echo "Debug persisted .npmrc..."
+                        // sh 'cat ~/.npmrc'
+                        // sh 'yarn config list'
+
+                        echo '# Final, post-publish install and build...'
                         sh 'yarn install'
                         sh 'yarn build'
-                        try {
-                          echo 'Prebuild storybook build deploy...'
-                          sh 'yarn deploy-storybook --dry-run'
-                          sh 'yarn gulp'
-                          sh 'yarn deploy-storybook --existing-output-dir=build'
-                        } catch (e) {
-                          echo '### Deploy storybook failed...'
-                          echo "Error: ${e}"
-                        }
+
+                        echo '# Prebuild Storybook static site as dry-run...'
+                        sh 'yarn deploy-storybook --dry-run'
+                        echo '# Compile templates and copy files for build deploy...'
+                        sh 'yarn gulp'
+                        echo '# Storybook static site final build and deploy...'
+                        sh 'yarn deploy-storybook --existing-output-dir=build'
                     }
                 }
-            }
-        }
-        stage('Deploy QA Environment') {
-            when {
-                branch 'dev'
-            }
-            steps {
-              sh 'echo "Remove this old task..."'
-                // echo 'Logging in to Amazon ECR...'
-                // sh 'aws --version'
-                // sh '$(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)'
-                // echo 'Building the Docker image...'
-                // sh 'docker build --build-arg NPM_TOKEN="$NPM_TOKEN" -t $REPOSITORY_URI:latest .'
-                // sh 'docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:v_$BUILD_NUMBER'
-                // echo 'Pushing the Docker images...'
-                // sh 'docker push $REPOSITORY_URI:latest'
-                // sh 'docker push $REPOSITORY_URI:v_$BUILD_NUMBER'
-                // echo 'Deploying container to ECS..'
-                // sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment'
             }
         }
     }
