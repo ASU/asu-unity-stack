@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
-import { sanitizeDangerousMarkup } from "../../../../components-core/src/core/utils/html-utils";
 
+import { sanitizeDangerousMarkup } from "../../../../components-core/src/core/utils/html-utils";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const defaultButtonEvent = {
