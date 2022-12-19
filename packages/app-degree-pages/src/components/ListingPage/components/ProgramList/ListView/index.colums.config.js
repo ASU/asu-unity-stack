@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
 import React from "react";
-import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
 
+import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
 import {
   ChevronIconButton,
   InfoButtonIcon,
@@ -68,7 +68,9 @@ const columns = [
         ? resolver.getOnlineMajorMapURL()
         : resolver.getAsuCritTrackUrl();
 
-      const directMapLink = <a href={directUrl}>Major Map</a>;
+      const directMapLink = (
+        <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
+      );
 
       return directMapLink;
     },
