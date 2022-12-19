@@ -69,3 +69,4 @@ Scenario 3 - Display Web Directory for people and departments:
 
 To see an example of how to use this page, take a look at `examples/web-directory.html`.
 You can also see the storybook example at `src/WebDirectoryComponent/index.stories.js`.
+
