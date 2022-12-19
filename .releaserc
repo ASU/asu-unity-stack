@@ -4,7 +4,8 @@
     {
       "name": "dev",
       "channel": "dev"
-    }
+    },
+    "build-publish"
   ],
   "repositoryUrl": "https://github.com/asu/asu-unity-stack.git",
   "plugins": [
