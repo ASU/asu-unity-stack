@@ -101,7 +101,7 @@ spec:
         }
         stage('Publish') {
             when {
-                branch 'dev'
+                branch 'NOdev'
             }
             steps {
                 container('node14') {
@@ -126,7 +126,7 @@ spec:
         }
         stage('Deploy') {
             when {
-              branch 'dev'
+              branch 'NOdev'
             }
             steps {
                 container('node14') {
