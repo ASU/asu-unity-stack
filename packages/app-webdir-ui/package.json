@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/app-webdir-ui",
+  "name": "@asu/app-webdir-ui",
   "version": "1.25.4",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",

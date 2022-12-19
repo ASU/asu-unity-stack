@@ -12,9 +12,9 @@
   "scripts": {
     "clean": "lerna run clean",
     "lint": "lerna run lint",
-    "build-components-core": "lerna run --scope @asu-design-system/components-core build",
-    "build-component-carousel": "lerna run --scope @asu-design-system/component-carousel build",
-    "build": "lerna run --ignore @asu-design-system/components-core --ignore @asu-design-system/component-carousel build",
+    "build-components-core": "lerna run --scope @asu/components-core build",
+    "build-component-carousel": "lerna run --scope @asu/component-carousel build",
+    "build": "lerna run --ignore @asu/components-core --ignore @asu/component-carousel build",
     "prebuild": "yarn build-components-core && yarn build-component-carousel && yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",

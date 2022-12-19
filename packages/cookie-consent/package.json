@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/cookie-consent",
+  "name": "@asu/cookie-consent",
   "version": "2.2.0",
   "description": "[Deprecated] ASU implementation of react-cookie-consent npm library",
   "main": "src/index.js",

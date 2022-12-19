@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/components-library",
+  "name": "@asu/components-library",
   "version": "2.4.0",
   "description": "[Deprecated] ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",

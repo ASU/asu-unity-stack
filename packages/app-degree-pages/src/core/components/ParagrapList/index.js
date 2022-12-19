@@ -2,10 +2,10 @@
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
+
 import { spreadClasses } from "../../../../../components-core/src/core/utils/css-utils";
 import { sanitizeDangerousMarkup } from "../../../../../components-core/src/core/utils/html-utils";
 import { idGenerator } from "../../../../../components-core/src/core/utils/id-generator";
-
 import { contentPropShape } from "../../models";
 import { isHtml } from "../../utils";
 

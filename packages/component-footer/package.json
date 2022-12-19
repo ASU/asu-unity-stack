@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-footer",
+  "name": "@asu/component-footer",
   "version": "1.5.1",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",

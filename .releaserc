@@ -1,10 +1,7 @@
 {
   "branches": [
-    "master",
-    {
-      "name": "dev",
-      "channel": "dev"
-    }
+    { "name": "dev" },
+    { "name": "build-publish" }
   ],
   "repositoryUrl": "https://github.com/asu/asu-unity-stack.git",
   "plugins": [

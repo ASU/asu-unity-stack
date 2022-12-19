@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-news",
+  "name": "@asu/component-news",
   "version": "1.4.0",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",

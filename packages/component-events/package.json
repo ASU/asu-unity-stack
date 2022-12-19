@@ -1,5 +1,5 @@
 {
-  "name": "@asu-design-system/component-events",
+  "name": "@asu/component-events",
   "version": "1.4.0",
   "description": "ASU Events component",
   "main": "./dist/asuEvents.cjs.js",
