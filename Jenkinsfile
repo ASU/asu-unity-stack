@@ -45,12 +45,14 @@ spec:
          stage('Debug') {
             steps {
                 container('node14') {
+                  script {
+                    
                     // TODO Update after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-
+                    
                     echo '## Configure .npmrc file for Github Package registry...'
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" >> ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
@@ -60,8 +62,13 @@ spec:
                     sh 'yarn install'
                     sh 'yarn build'
 
+                    // TODO Remove after transition as it will be set in environment block:
+                    // Use Github token as NPM token with GH Packages
+                    NPM_TOKEN = GH_TOKEN
+                    
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
+                  }
                 }
             }
         }
