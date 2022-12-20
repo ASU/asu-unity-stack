@@ -67,6 +67,9 @@ spec:
                     // Use Github token as NPM token with GH Packages
                     NPM_TOKEN = GH_TOKEN
                     
+                    echo "${GH_TOKEN}"
+                    echo "${env.GH_TOKEN}"
+                    
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
                   }
