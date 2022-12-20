@@ -29,7 +29,7 @@ spec:
     environment {
         HOME='.'
         GH_URL = 'https://github.com/ASU/asu-unity-stack.git'
-        GH_PREFIX = 'asu'
+        GH_PREFIX = 'ASU'
         GH_TOKEN = credentials('github-org-asu-pac')
         // TODO After transition to new registry is complete, we can use the
         // same token as GH_TOKEN since registry will be GitHub Packages.
