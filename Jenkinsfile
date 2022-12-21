@@ -54,11 +54,6 @@ spec:
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
-                    echo '## Configure .npmrc file for Github Package registry...'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com" >> ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
                     sh 'yarn build'
@@ -67,6 +62,11 @@ spec:
                     // Use Github token as NPM token with GH Packages
                     NPM_TOKEN = GH_TOKEN
                     NODE_AUTH_TOKEN = GH_TOKEN
+
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
 
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
