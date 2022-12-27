@@ -66,7 +66,7 @@ spec:
                     echo '## Configure .npmrc file for Github Package registry...'
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=${GH_TOKEN}" > ~/.npmrc'
 
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
