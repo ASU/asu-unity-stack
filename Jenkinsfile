@@ -71,7 +71,7 @@ spec:
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
-                    sh 'cat ~/.npmrc'
+                    sh 'cat /home/jenkins/agent/workspace/S_asu-unity-stack_testing-whoami/.npmrc'
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
                   }
