@@ -1,13 +1,13 @@
 name: development-workflow
 on:
   push:
-    branches: ["dev"]
+    branches: ["testing-user-ci"]
 
 jobs:
   run-yarn-build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     env:
       GH_TOKEN: ${{ secrets.ASU_DEV_STACK_GHP }}
@@ -39,7 +39,7 @@ jobs:
 
       - name: Install and build
         run: |
-          yarn install
+          yarn install --freeze-lockfile
           yarn build
 
       - name: Run tests
@@ -61,15 +61,19 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: "12.x"
-          registry-url: "https://npm.pkg.github.com"
+          node-version: "14.x"
+          registry-url: "https://npm.pkg.github.com/"
 
       - name: Yarn publish packages
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > ~/.npmrc
+          npm whoami --registry=https://npm.pkg.github.com/
           yarn publish-packages
 
       - name: Publish to Github Pages
         run: |
-          yarn deploy-storybook --existing-output-dir=build
+          echo 'skipping for now'

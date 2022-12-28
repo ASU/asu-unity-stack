@@ -16,12 +16,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASU/asu-unity-stack.git",
-    "directory": "packages/app-degree-pages"
+    "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
