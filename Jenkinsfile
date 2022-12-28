@@ -72,7 +72,7 @@ spec:
                     sh 'echo "//npm.pkg.github.com/:_authToken=${GH_TOKEN}" > ~/.npmrc'
 
                     echo '## Publishing packages...'
-                    echo 'npm whoami --registry=https://npm.pkg.github.com/'
+                    sh 'echo npm whoami --registry=https://npm.pkg.github.com/'
                     sh 'yarn publish-packages'
                   }
                 }
