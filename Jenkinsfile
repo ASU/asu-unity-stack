@@ -73,6 +73,7 @@ spec:
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
                     sh 'cat /home/jenkins/agent/workspace/S_asu-unity-stack_testing-whoami/.npmrc'
                     sh 'git remote -v'
+                    sh 'git config remote.origin.url git@github.com:ASU/asu-unity-stack.git'
                     sh 'npm whoami --registry=https://npm.pkg.github.com/'
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
