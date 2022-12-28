@@ -14,7 +14,7 @@
     "dist/*",
     "docs/*"
   ],
-  "repository": "https://github.com/ASU/asu-unity-stack.git",
+  "repository": "git@github.com:ASU/asu-unity-stack.git",
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

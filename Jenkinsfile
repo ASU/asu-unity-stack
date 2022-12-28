@@ -28,7 +28,7 @@ spec:
     }
     environment {
         HOME='.'
-        GH_URL = 'https://api.github.com'
+        // GH_URL = 'https://api.github.com'
         // GH_PREFIX = 'asu'
         GH_TOKEN = credentials('github-org-asu-pac')
         // TODO After transition to new registry is complete, we can use the
