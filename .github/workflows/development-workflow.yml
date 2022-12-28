@@ -39,7 +39,7 @@ jobs:
 
       - name: Install and build
         run: |
-          echo '@asu-design-system:registry=registry.web.asu.edu/:_authToken=${{secrets.NPM_TOKEN}}'
+          echo '@asu-design-system:registry=registry.web.asu.edu/:_authToken=${{secrets.NPM_TOKEN}} > ~/.npmrc'
           yarn install --freeze-lockfile
           yarn build
 

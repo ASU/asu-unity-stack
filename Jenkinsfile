@@ -44,6 +44,9 @@ spec:
     }
     stages {
          stage('Debug') {
+          when {
+            branch 'testing-user-ci'
+          }
             steps {
                 container('node14') {
                   script {
