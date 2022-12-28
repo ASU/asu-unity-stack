@@ -1,8 +1,6 @@
 {
   "branches": [
-    {
-      "name": "dev"
-    }
+    "testing-whoami"
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
