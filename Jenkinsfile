@@ -72,6 +72,8 @@ spec:
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
                     sh 'cat /home/jenkins/agent/workspace/S_asu-unity-stack_testing-whoami/.npmrc'
+                    sh 'curl --header "X-Private-Token: ${GH_TOKEN}" https://github.com/ASU/asu-unity-stack.git'
+                    sh 'curl --header "X-Private-Token: ${GH_TOKEN}" https://github.com/ASU/asu-unity-stack'
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
                   }
