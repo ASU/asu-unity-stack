@@ -72,7 +72,6 @@ spec:
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
                     sh 'cat ~/.npmrc'
-                    sh 'npm whoami --registry=https://npm.pkg.github.com/'
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
                   }
