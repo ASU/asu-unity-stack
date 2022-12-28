@@ -54,7 +54,7 @@ spec:
 
                     // TODO Update after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
-                    sh 'echo curl -sS -f -I -H "Authorization: token ${GH_TOKEN}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2- | tr -d "[:space:]" | tr ',' '\n' '
+                    sh 'echo curl -sS -f -I -H "Authorization: token ${GH_TOKEN}" https://api.github.com | grep ^x-oauth-scopes: '
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
