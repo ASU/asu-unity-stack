@@ -30,12 +30,12 @@ spec:
         HOME='.'
         // GH_URL = 'https://api.github.com'
         // GH_PREFIX = 'asu'
-        GH_TOKEN = credentials('github-org-asu-pac')
+        GH_TOKEN = credentials('github-ssh-asu-devops-jenkins')
         // TODO After transition to new registry is complete, we can use the
         // same token as GH_TOKEN since registry will be GitHub Packages.
         // NPM_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
-        NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
+        NODE_AUTH_TOKEN = credentials('github-ssh-asu-devops-jenkins')
         // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
         // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
     }
