@@ -28,7 +28,7 @@ spec:
     }
     environment {
         HOME='.'
-        // GH_URL = 'https://github.com/asu/asu-unity-stack.git'
+        GH_URL = 'https://api.github.com'
         // GH_PREFIX = 'asu'
         GH_TOKEN = credentials('github-org-asu-pac')
         // TODO After transition to new registry is complete, we can use the
@@ -59,7 +59,7 @@ spec:
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install --freeze-lockfile'
+                    sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
 
                     // TODO Remove after transition as it will be set in environment block:
