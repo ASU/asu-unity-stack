@@ -59,7 +59,7 @@ spec:
                     sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install'
+                    sh 'yarn install --freeze-lockfile'
                     sh 'yarn build'
 
                     // TODO Remove after transition as it will be set in environment block:
