@@ -52,7 +52,7 @@ spec:
                     echo '## Configure .npmrc file for legacy registry...'
                     sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=${NPM_TOKEN}" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
@@ -69,6 +69,7 @@ spec:
                     sh 'echo "//npm.pkg.github.com/:_authToken=${GH_TOKEN}" > ~/.npmrc'
 
                     echo '## Publishing packages...'
+                    echo 'npm whoami --registry=https://npm.pkg.github.com/'
                     sh 'yarn publish-packages'
                   }
                 }

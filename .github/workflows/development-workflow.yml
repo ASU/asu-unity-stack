@@ -19,9 +19,9 @@ jobs:
       - name: Setup node to install packages from npm
         uses: actions/setup-node@v2
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          node-version: "12.x"
+          node-version: "14.x"
           registry-url: "https://registry.web.asu.edu/"
 
       - name: Get yarn cache directory path
@@ -39,6 +39,7 @@ jobs:
 
       - name: Install and build
         run: |
+          echo '@asu-design-system:registry=registry.web.asu.edu/:_authToken=${{secrets.NPM_TOKEN}}'
           yarn install --freeze-lockfile
           yarn build
 
