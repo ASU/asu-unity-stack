@@ -52,6 +52,9 @@ spec:
                 container('node14') {
                   script {
 
+                    echo '## Print all environment variables'
+                    sh 'printenv'
+                    
                     // TODO Update after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
                     sh 'curl -I -H "Authorization: token ${GH_TOKEN_PSW}" https://api.github.com'
