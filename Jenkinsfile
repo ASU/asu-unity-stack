@@ -55,31 +55,29 @@ spec:
                     echo '## Print all environment variables'
                     sh 'printenv'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN_PSW" > ~/.npmrc'
-                    sh 'npm whoami --registry=https://npm.pkg.github.com/'
+                    sh 'echo npm whoami --registry=https://npm.pkg.github.com/'
 
                     // TODO Update after transition to new registry is complete
-                    // echo '## Configure .npmrc file for legacy registry...'
-                    // sh 'curl -I -H "Authorization: token ${GH_TOKEN_PSW}" https://api.github.com'
-                    // sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    // sh 'echo "always-auth=true" >> ~/.npmrc'
-                    // sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    echo '## Configure .npmrc file for legacy registry...'
+                    sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
-                    // echo '## Install and build Unity monorepo...'
-                    // sh 'yarn install --frozen-lockfile'
-                    // sh 'yarn build'
+                    echo '## Install and build Unity monorepo...'
+                    sh 'yarn install --frozen-lockfile'
+                    sh 'yarn build'
 
                     // TODO Remove after transition as it will be set in environment block:
                     // Use Github token as NPM token with GH Packages
-                    // NPM_TOKEN = GH_TOKEN
-                    // NODE_AUTH_TOKEN = GH_TOKEN
+                    NPM_TOKEN = GH_TOKEN
+                    NODE_AUTH_TOKEN = GH_TOKEN_PSW
 
-                    // echo '## Configure .npmrc file for Github Package registry...'
-                    // sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    // sh 'echo "always-auth=true" >> ~/.npmrc'
-                    // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
-                    // sh 'cat /home/jenkins/agent/workspace/S_asu-unity-stack_testing-whoami/.npmrc'
-                    // echo '## Publishing packages...'
-                    // sh 'yarn publish-packages'
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN_PSW" > ~/.npmrc'
+                    echo '## Publishing packages...'
+                    sh 'yarn publish-packages'
                   }
                 }
             }
