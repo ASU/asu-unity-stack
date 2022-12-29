@@ -2,6 +2,7 @@
 
 ASU Web Standards-based implementation of the Degree page component
 
+
 ## Architecture details
 
 ### Document reference
