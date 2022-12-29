@@ -74,7 +74,6 @@ spec:
 
                     withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                       sh 'echo "${GH_TOKEN}"'
-                      sh 'echo "${env.GH_TOKEN}"'
                       echo '## Configure .npmrc file for Github Package registry...'
                       sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                       sh 'echo "always-auth=true" >> ~/.npmrc'
