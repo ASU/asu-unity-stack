@@ -23,7 +23,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@asu-design-system/design-tokens": "^1.1.0",

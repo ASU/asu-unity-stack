@@ -14,10 +14,10 @@
     "dist/*",
     "docs/*"
   ],
-  "repository": "https://github.com/ASU/asu-unity-stack.git",
+  "repository": "https://github.com/asu/asu-unity-stack.git",
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",

@@ -10,7 +10,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "jest:integration": "jest -c jest.config.js --maxWorkers=2",

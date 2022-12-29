@@ -73,7 +73,7 @@ spec:
                     NODE_AUTH_TOKEN = GH_TOKEN
 
                     withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                      echo '$GH_TOKEN "${GH_TOKEN} ${env.GH_TOKEN}"'
+                      sh 'echo $GH_TOKEN "${GH_TOKEN} ${env.GH_TOKEN}"'
                       echo '## Configure .npmrc file for Github Package registry...'
                       sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                       sh 'echo "always-auth=true" >> ~/.npmrc'

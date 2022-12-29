@@ -11,7 +11,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
