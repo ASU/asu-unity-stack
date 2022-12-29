@@ -51,7 +51,7 @@ spec:
             steps {
                 container('node14') {
                   script {
-
+                    GH_TOKEN = GH_TOKEN_PSW
                     echo '## Print all environment variables'
                     sh 'printenv'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN_PSW" > ~/.npmrc'
@@ -70,7 +70,7 @@ spec:
                     // TODO Remove after transition as it will be set in environment block:
                     // Use Github token as NPM token with GH Packages
                     NPM_TOKEN = GH_TOKEN
-                    NODE_AUTH_TOKEN = GH_TOKEN_PSW
+                    NODE_AUTH_TOKEN = GH_TOKEN
 
                     echo '## Configure .npmrc file for Github Package registry...'
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
