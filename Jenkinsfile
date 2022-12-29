@@ -30,7 +30,7 @@ spec:
         HOME='.'
         // GH_URL = 'https://api.github.com'
         // GH_PREFIX = 'asu'
-        GH_TOKEN = credentials('github-org-asu-pac')
+        RAW_GH_TOKEN = credentials('github-org-asu-pac')
         // TODO After transition to new registry is complete, we can use the
         // same token as GH_TOKEN since registry will be GitHub Packages.
         // NPM_TOKEN = credentials('github-org-asu-pac')
@@ -51,10 +51,10 @@ spec:
             steps {
                 container('node14') {
                   script {
-                    GH_TOKEN = GH_TOKEN_PSW
+                    GH_TOKEN = RAW_GH_TOKEN_PSW
                     echo '## Print all environment variables'
                     sh 'printenv'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN_PSW" > ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
                     sh 'echo npm whoami --registry=https://npm.pkg.github.com/'
 
                     // TODO Update after transition to new registry is complete
@@ -75,7 +75,7 @@ spec:
                     echo '## Configure .npmrc file for Github Package registry...'
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN_PSW" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                     echo '## Publishing packages...'
                     sh 'yarn publish-packages'
                   }
