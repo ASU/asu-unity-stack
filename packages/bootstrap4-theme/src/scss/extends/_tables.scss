@@ -1,6 +1,6 @@
 .uds-table {
   border: 1px solid $uds-color-base-gray-2;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   & > table {
     width: 100%;
@@ -77,7 +77,7 @@
 }
 
 .uds-table-fixed {
-  overflow-x: scroll;
+  overflow-x: auto;
   border: 1px solid $uds-color-base-gray-2;
   scroll-behavior: smooth;
   &-wrapper {
@@ -146,12 +146,7 @@
 }
 
 @media screen and (max-width: $uds-breakpoint-md) {
-  .uds-table {
-    overflow-x: scroll;
-  }
-
   .uds-table-fixed {
-    overflow-x: scroll;
     &-wrapper {
       overflow-x: hidden;
       .scroll-control {
