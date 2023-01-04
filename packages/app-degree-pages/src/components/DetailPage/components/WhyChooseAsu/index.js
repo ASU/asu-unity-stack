@@ -4,7 +4,10 @@ import React from "react";
 
 import { Card } from "../../../../../../components-core/src/components/Card";
 import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
-import { whyChooseAsuShape } from "../../../../core/models";
+import {
+  whyChooseAsuShape,
+  progDetailSectionIds,
+} from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/types/detail-page-types').WhyChooseAsuProps} WhyChooseAsuProps
@@ -16,7 +19,11 @@ import { whyChooseAsuShape } from "../../../../core/models";
  */
 const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
   return (
-    <section className="container" data-testid="why-choose-asu">
+    <section
+      id={progDetailSectionIds.whyChooseAsu.targetIdName}
+      className="container"
+      data-testid="why-choose-asu"
+    >
       <h2>Why choose ASU</h2>
       <div
         // eslint-disable-next-line react/no-danger
