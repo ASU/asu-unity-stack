@@ -62,6 +62,7 @@
  * @property {boolean} [customizeYourCollegeExperience]
  * @property {boolean} [globalOpportunity]
  * @property {boolean} [attendOnline]
+ * @property {boolean} [whyChooseAsu]
  * @property {boolean} [programContactInfo]
  * @property {Array.<AnchorMenuItem>} [externalAnchors]
  */
