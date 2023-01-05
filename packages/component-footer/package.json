@@ -36,8 +36,8 @@
     "build-storybook": "build-storybook -s ./dist"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.25.2",
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/components-core": "latest",
+    "@asu/design-tokens": "latest",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
