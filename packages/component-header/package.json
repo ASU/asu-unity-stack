@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-header",
-  "version": "1.8.2",
+  "version": "1.0.0",
   "description": "ASU Global Header",
   "main": "./dist/asuHeader.cjs.js",
   "browser": "./dist/asuHeader.umd.js",
@@ -21,7 +21,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
