@@ -101,7 +101,7 @@ export const ButtonWithIcon = createStory(
         data-ga-type="internal link"
         data-ga-region="main content"
       >
-        <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
+        <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
     );
   },
@@ -111,7 +111,7 @@ export const ButtonWithIcon = createStory(
 export const ButtonTag = createStory(
   <a
     href="#"
-    class=""
+    className=""
     data-ga="This is a default link"
     data-ga-name="onclick"
     data-ga-event="link"

@@ -8,65 +8,65 @@ export const twoImagesInPageOfSections = createStory(
   () => (
     <div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 1
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 2
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 3
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 4
       </div>
-      <section class="parallax-container carve-your-path">
+      <section className="parallax-container carve-your-path">
         <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
       </section>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         <div style={{ height: '80%', width: '80%', margin: 'auto' }}>
-          <button type="button" class="btn btn-gold btn-md">
+          <button type="button" className="btn btn-gold btn-md">
             Medium button
           </button>
-          <button type="button" class="btn btn-maroon btn-md">
+          <button type="button" className="btn btn-maroon btn-md">
             Medium button
           </button>
           <hr />
-          <button type="button" class="btn btn-gold btn-sm">
+          <button type="button" className="btn btn-gold btn-sm">
             Small button
           </button>
-          <button type="button" class="btn btn-maroon btn-sm">
+          <button type="button" className="btn btn-maroon btn-sm">
             Small button
           </button>
         </div>
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 7
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 8
       </div>
-      <section class="parallax-container asu-for-you">
+      <section className="parallax-container asu-for-you">
         <img
           src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png"
           data-parallax-factor="1"
@@ -82,32 +82,32 @@ export const twoImagesWithContentInPageOfSections = createStory(
   () => (
     <div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 1
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 2
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 3
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 4
       </div>
-      <section class="parallax-container carve-your-path">
+      <section className="parallax-container carve-your-path">
         <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
-        <div class="parallax-container-content">
+        <div className="parallax-container-content">
           <h2>Carve your path</h2>
           <p>
             At Arizona State University, you'll join a community that will help
@@ -118,7 +118,7 @@ export const twoImagesWithContentInPageOfSections = createStory(
           </p>
           <button
             type="button"
-            class="btn btn-maroon"
+            className="btn btn-maroon"
             data-ga-image-parallax-section="carve your path"
             data-ga-image-parallax="visit asu"
           >
@@ -126,7 +126,7 @@ export const twoImagesWithContentInPageOfSections = createStory(
           </button>
           <button
             type="button"
-            class="btn btn-maroon"
+            className="btn btn-maroon"
             data-ga-image-parallax-section="carve your path"
             data-ga-image-parallax="request information"
           >
@@ -134,7 +134,7 @@ export const twoImagesWithContentInPageOfSections = createStory(
           </button>
           <button
             type="button"
-            class="btn btn-gold"
+            className="btn btn-gold"
             data-ga-image-parallax-section="carve your path"
             data-ga-image-parallax="apply now"
           >
@@ -143,32 +143,32 @@ export const twoImagesWithContentInPageOfSections = createStory(
         </div>
       </section>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 6
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 7
       </div>
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
         style={{ height: '500px' }}
       >
         Section 8
       </div>
-      <section class="parallax-container asu-for-you">
+      <section className="parallax-container asu-for-you">
         <img
           src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png"
           data-parallax-factor="1"
         />
-        <div class="parallax-container-content">
+        <div className="parallax-container-content">
           <h2>Reimagining education for everyone</h2>
           <h3>
-            <span class="highlight-gold">New programs for all ages</span>
+            <span className="highlight-gold">New programs for all ages</span>
           </h3>
           <p>
             Ambition, curiosity, creativity and passion don't fit in any one
@@ -182,7 +182,7 @@ export const twoImagesWithContentInPageOfSections = createStory(
           <div>
             <button
               type="button"
-              class="btn btn-maroon"
+              className="btn btn-maroon"
               data-ga-image-parallax-section="reimagining education for everyone"
               data-ga-image-parallax="learn more"
             >

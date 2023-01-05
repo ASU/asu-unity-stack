@@ -5,8 +5,8 @@ import { initChart } from './charts-and-graphs';
 export default createComponent('Charts And Graphs', 'Molecules', 'Templates');
 
 export const DonutChartMarkUp = createStory(
-  <div class="uds-charts-and-graphs-container">
-    <div class="uds-charts-and-graphs-overlay">
+  <div className="uds-charts-and-graphs-container">
+    <div className="uds-charts-and-graphs-overlay">
       <h4 id="percentage-display"></h4>
       <span>Fact goes here</span>
     </div>

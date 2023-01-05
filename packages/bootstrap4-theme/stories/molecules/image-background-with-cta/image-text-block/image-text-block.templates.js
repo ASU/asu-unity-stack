@@ -37,10 +37,10 @@ export const ImageLeftOrRight = createStory((args) => {
         args.right ? 'uds-image-text-block-container-right' : ''
       }`}
     >
-      <div class="uds-image-text-block-image-container">
+      <div className="uds-image-text-block-image-container">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
-          class="img-fluid"
+          className="img-fluid"
           alt="Random image. REPLACE with appropriate alt text for accessibility."
         ></img>
       </div>
@@ -55,8 +55,8 @@ export const ImageLeftOrRight = createStory((args) => {
           aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
           qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
         </p>
-        <div class="row">
-          <div class="col-12 col-md-6 py-1">
+        <div className="row">
+          <div className="col-12 col-md-6 py-1">
             <a
               href="#"
               class={`btn ${
@@ -66,7 +66,7 @@ export const ImageLeftOrRight = createStory((args) => {
               Button link here
             </a>
           </div>
-          <div class="col-12 col-md-6 py-1">
+          <div className="col-12 col-md-6 py-1">
             <a
               href="#"
               class={`btn ${

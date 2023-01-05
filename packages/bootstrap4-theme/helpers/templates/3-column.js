@@ -1,19 +1,13 @@
-import React from "react";
+import React from 'react';
 
 export default (content) => {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          {content}
-        </div>
-        <div class="col-4">
-          {content}
-        </div>
-        <div class="col-4">
-          {content}
-        </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-4">{content}</div>
+        <div className="col-4">{content}</div>
+        <div className="col-4">{content}</div>
       </div>
     </div>
-  )
-}
+  );
+};

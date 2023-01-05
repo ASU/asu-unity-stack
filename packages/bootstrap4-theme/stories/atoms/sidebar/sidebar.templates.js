@@ -4,10 +4,10 @@ export default createComponent('Sidebar', 'Atoms', 'Templates');
 import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 
 export const Sidebar = createStory(
-  <div class="col-md-4">
+  <div className="col-md-4">
     <h2>Lorem ipsum</h2>
     <div
-      class="sidebar-toggler"
+      className="sidebar-toggler"
       data-toggle="collapse"
       data-target="#sidebar-left"
       aria-expanded="false"
@@ -20,24 +20,24 @@ export const Sidebar = createStory(
       data-ga="Select section"
     >
       <p>Select Section</p>
-      <span class="fas fa-chevron-up" />
+      <span className="fas fa-chevron-up" />
     </div>
-    <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
-      <div class="nav-link-container">
-        <a class="nav-link" href="#">
+    <nav id="sidebar-left" className="sidebar collapse" aria-label="Secondary">
+      <div className="nav-link-container">
+        <a className="nav-link" href="#">
           Default Link
         </a>
       </div>
-      <div class="nav-link-container">
-        <a class="nav-link is-active" href="#">
+      <div className="nav-link-container">
+        <a className="nav-link is-active" href="#">
           Active Link
         </a>
       </div>
-      <div class="card card-foldable">
-        <div class="card-header">
+      <div className="card card-foldable">
+        <div className="card-header">
           <a
             id="cardOne"
-            class="collapsed nav-link"
+            className="collapsed nav-link"
             href="#cardBodyOne"
             data-toggle="collapse"
             data-target="#cardBodyOne"
@@ -51,34 +51,34 @@ export const Sidebar = createStory(
             data-ga="Expandable link sections"
           >
             Expandable link sections
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span className="fas fa-chevron-down ml-1"></span>
           </a>
         </div>
         {/* end .card-header */}
         <div
           id="cardBodyOne"
-          class="collapse card-body"
+          className="collapse card-body"
           aria-labelledby="cardOne"
           data-parent=".sidebar"
         >
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             A Long Link Total that is two or more lines of text
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Another link here
           </a>
-          <a href="#" class="nav-link is-active">
+          <a href="#" className="nav-link is-active">
             One more link
           </a>
         </div>
         {/* end .card-body */}
       </div>
       {/* end .card */}
-      <div class="card card-foldable">
-        <div class="card-header">
+      <div className="card card-foldable">
+        <div className="card-header">
           <a
             id="cardTwo"
-            class="collapsed nav-link"
+            className="collapsed nav-link"
             data-toggle="collapse"
             href="#cardBodyTwo"
             role="button"
@@ -92,53 +92,53 @@ export const Sidebar = createStory(
             data-ga="There should only be one open section at a time"
           >
             There should only be one open section at a time.
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span className="fas fa-chevron-down ml-1"></span>
           </a>
         </div>
         <div
           id="cardBodyTwo"
-          class="collapse card-body"
+          className="collapse card-body"
           aria-labelledby="cardTwo"
           data-parent=".sidebar"
         >
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Work it harder
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Make it better
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Do it faster
           </a>
-          <a href="#" class="nav-link is-active">
+          <a href="#" className="nav-link is-active">
             Makes us stronger
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             More than ever
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Hour after
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Our work is
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Never over
           </a>
         </div>
         {/* end .card-body */}
       </div>
       {/* end .card */}
-      <div class="nav-link-container">
-        <a class="nav-link" href="#">
+      <div className="nav-link-container">
+        <a className="nav-link" href="#">
           Link between cards
         </a>
       </div>
-      <div class="card card-foldable">
-        <div class="card-header">
+      <div className="card card-foldable">
+        <div className="card-header">
           <a
             id="cardThree"
-            class="collapsed nav-link"
+            className="collapsed nav-link"
             data-toggle="collapse"
             href="#cardBodyThree"
             role="button"
@@ -152,41 +152,41 @@ export const Sidebar = createStory(
             data-ga="There be gold inside"
           >
             There be gold inside
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span className="fas fa-chevron-down ml-1"></span>
           </a>
         </div>
         <div
           id="cardBodyThree"
-          class="collapse card-body"
+          className="collapse card-body"
           aria-labelledby="cardThree"
           data-parent=".sidebar"
         >
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Crow's nest square-rigged hands chase
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Davy Jones' Locker belaying pin Sail ho mizzen
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Lugger to go on account loaded to the gunwalls lad
           </a>
-          <a href="#" class="nav-link is-active">
+          <a href="#" className="nav-link is-active">
             Skysail fluke overhaul hardtack
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" className="nav-link">
             Sloop flogging chase guns lee
           </a>
         </div>
         {/* end .card-body */}
       </div>
       {/* end .card */}
-      <div class="nav-link-container">
-        <a class="nav-link" href="#">
+      <div className="nav-link-container">
+        <a className="nav-link" href="#">
           Default Link
         </a>
       </div>
-      <div class="nav-link-container">
-        <a class="nav-link" href="#">
+      <div className="nav-link-container">
+        <a className="nav-link" href="#">
           Last Link
         </a>
       </div>

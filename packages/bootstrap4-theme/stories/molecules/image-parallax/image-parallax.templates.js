@@ -6,9 +6,9 @@ export default createComponent('Image Parallax', 'Molecules', 'Templates');
 
 export const ImageParalax = createStory(
   () => (
-    <section class="parallax-container carve-your-path">
+    <section className="parallax-container carve-your-path">
       <img src="https://source.unsplash.com/WLUHO9A_xik/1200x900" />
-      <div class="parallax-container-content">
+      <div className="parallax-container-content">
         <h2>Carve your path</h2>
         <p>
           At Arizona State University, you'll join a community that will help
@@ -19,7 +19,7 @@ export const ImageParalax = createStory(
         </p>
         <button
           type="button"
-          class="btn btn-maroon"
+          className="btn btn-maroon"
           data-ga-image-parallax-section="carve your path"
           data-ga-image-parallax="visit asu"
         >
@@ -27,7 +27,7 @@ export const ImageParalax = createStory(
         </button>
         <button
           type="button"
-          class="btn btn-maroon"
+          className="btn btn-maroon"
           data-ga-image-parallax-section="carve your path"
           data-ga-image-parallax="request information"
         >
@@ -35,7 +35,7 @@ export const ImageParalax = createStory(
         </button>
         <button
           type="button"
-          class="btn btn-gold"
+          className="btn btn-gold"
           data-ga-image-parallax-section="carve your path"
           data-ga-image-parallax="apply now"
         >

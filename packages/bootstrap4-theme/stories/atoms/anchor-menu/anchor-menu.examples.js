@@ -6,26 +6,26 @@ import { Basic } from '../../organisms/global-header/global-header.templates.js'
 
 export const AnchorMenu = createStory(
   <div>
-    <div class="container-fluid">
+    <div className="container-fluid">
       {Basic}
 
-      <div class="uds-hero-lg has-btn-row">
+      <div className="uds-hero-lg has-btn-row">
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
           alt="Sample placeholder image."
         />
         <h1>
-          <span class="highlight-gold">Gettysburg Address</span>
+          <span className="highlight-gold">Gettysburg Address</span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div class="btn-row">
-          <a href="#" class="btn btn-default btn-gold">
+        <div className="btn-row">
+          <a href="#" className="btn btn-default btn-gold">
             Read the 13th Amendment
           </a>
         </div>
@@ -33,10 +33,10 @@ export const AnchorMenu = createStory(
 
       <div
         id="uds-anchor-menu"
-        class="uds-anchor-menu uds-anchor-menu-expanded-lg"
+        className="uds-anchor-menu uds-anchor-menu-expanded-lg"
       >
-        <div class="container">
-          <div class="uds-anchor-menu-wrapper">
+        <div className="container">
+          <div className="uds-anchor-menu-wrapper">
             <h4
               data-toggle="collapse"
               data-target="#collapseExample"
@@ -47,12 +47,12 @@ export const AnchorMenu = createStory(
               data-ga-type="click"
               data-ga="On this page"
             >
-              On This Page: <span class="fas fa-chevron-down"></span>
+              On This Page: <span className="fas fa-chevron-down"></span>
             </h4>
-            <div id="collapseExample" class="card card-body collapse">
-              <nav class="nav" aria-label="Same Page">
+            <div id="collapseExample" className="card card-body collapse">
+              <nav className="nav" aria-label="Same Page">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="#first"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -62,10 +62,10 @@ export const AnchorMenu = createStory(
                   data-ga-section="gettysburg address"
                   data-ga="Anchor item"
                 >
-                  <span class="fas fa-link"></span>Anchor item
+                  <span className="fas fa-link"></span>Anchor item
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="#second"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -75,10 +75,10 @@ export const AnchorMenu = createStory(
                   data-ga-section="gettysburg address"
                   data-ga="Anchor item"
                 >
-                  <span class="fas fa-link"></span>Anchor item
+                  <span className="fas fa-link"></span>Anchor item
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="#third"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -88,10 +88,10 @@ export const AnchorMenu = createStory(
                   data-ga-section="gettysburg address"
                   data-ga="Anchor item"
                 >
-                  <span class="fa fa-link"></span>Anchor item
+                  <span className="fa fa-link"></span>Anchor item
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="#fourth"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -101,10 +101,10 @@ export const AnchorMenu = createStory(
                   data-ga-section="gettysburg address"
                   data-ga="Anchor item"
                 >
-                  <span class="fa fa-link"></span>Anchor item
+                  <span className="fa fa-link"></span>Anchor item
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="#fifth"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -114,7 +114,7 @@ export const AnchorMenu = createStory(
                   data-ga-section="gettysburg address"
                   data-ga="Anchor item"
                 >
-                  <span class="fa fa-link"></span>Anchor item
+                  <span className="fa fa-link"></span>Anchor item
                 </a>
               </nav>
             </div>
@@ -122,10 +122,10 @@ export const AnchorMenu = createStory(
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 pb-5">
-          <div class="py-2">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12 pb-5">
+          <div className="py-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
             consectetur lectus nec laoreet elementum. Mauris ut sapien nibh.
             Aenean consequat pellentesque rutrum. Pellentesque habitant morbi
@@ -171,7 +171,7 @@ export const AnchorMenu = createStory(
             dictum ac elit at elementum. In sit amet hendrerit lacus.
           </div>
 
-          <div id="first" class="py-2">
+          <div id="first" className="py-2">
             First. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus consectetur lectus nec laoreet elementum. Mauris ut sapien
             nibh. Aenean consequat pellentesque rutrum. Pellentesque habitant
@@ -218,7 +218,7 @@ export const AnchorMenu = createStory(
             lacus.
           </div>
 
-          <div id="second" class="py-2">
+          <div id="second" className="py-2">
             Second. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus consectetur lectus nec laoreet elementum. Mauris ut sapien
             nibh. Aenean consequat pellentesque rutrum. Pellentesque habitant
@@ -265,7 +265,7 @@ export const AnchorMenu = createStory(
             lacus.
           </div>
 
-          <div id="third" class="py-2">
+          <div id="third" className="py-2">
             Third. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus consectetur lectus nec laoreet elementum. Mauris ut sapien
             nibh. Aenean consequat pellentesque rutrum. Pellentesque habitant
@@ -312,7 +312,7 @@ export const AnchorMenu = createStory(
             lacus.
           </div>
 
-          <div id="fourth" class="py-2">
+          <div id="fourth" className="py-2">
             Fourth. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus consectetur lectus nec laoreet elementum. Mauris ut sapien
             nibh. Aenean consequat pellentesque rutrum. Pellentesque habitant
@@ -359,7 +359,7 @@ export const AnchorMenu = createStory(
             lacus.
           </div>
         </div>
-        <div id="fifth" class="py-2">
+        <div id="fifth" className="py-2">
           Fifth. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Phasellus consectetur lectus nec laoreet elementum. Mauris ut sapien
           nibh. Aenean consequat pellentesque rutrum. Pellentesque habitant

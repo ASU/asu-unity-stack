@@ -5,26 +5,30 @@ import starbucksLogo from './asu-starbucks.png';
 
 export const Basic = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -32,7 +36,7 @@ export const Basic = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -40,19 +44,19 @@ export const Basic = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
-                  <a class="name" href="#">
+                <div className="nav-link login-status">
+                  <a className="name" href="#">
                     Sparky
                   </a>
                   <a
-                    class="signout"
+                    className="signout"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign out"
@@ -61,13 +65,13 @@ export const Basic = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -93,24 +97,24 @@ export const Basic = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="#" data-ga-header="asu logo">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar navbar-expand-xl">
+                <a className="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
-                    class="vert"
+                    className="vert"
                     src={vertlogo}
                     alt="Arizona State University"
                   />
                   <img
-                    class="horiz"
+                    className="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
                   />
                 </a>
                 <button
-                  class="navbar-toggler collapsed"
+                  className="navbar-toggler collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#menubar"
@@ -123,62 +127,62 @@ export const Basic = (
                 >
                   <span
                     title="Open mobile menu"
-                    class="fa fa-bars"
+                    className="fa fa-bars"
                     alt=""
                   ></span>
-                  <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  <span title="Close mobile menu" className="fa-stack">
+                    <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i className="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
-                <div class="navbar-container">
+                <div className="navbar-container">
                   <div
-                    class="title subdomain-name"
+                    className="title subdomain-name"
                     data-ga-header="Subdomain name"
                   >
                     Subdomain name
                   </div>
                   <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
+                    className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="Main">
+                    <div className="header-content-container">
+                      <nav className="navbar-nav" aria-label="Main">
                         <a
-                          class="nav-link nav-link-home active"
+                          className="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
                           title="Subdomain name home page"
                         >
                           <span
-                            class="d-xl-none"
+                            className="d-xl-none"
                             title="Subdomain name home page"
                           >
                             Home
                           </span>
                           <span
                             title="Subdomain name home page"
-                            class="fas fa-fw fa-home"
+                            className="fas fa-fw fa-home"
                             alt=""
                           ></span>
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 1"
                         >
                           Link option 1
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 2"
                         >
                           Link option 2
                         </a>
-                        <div class="nav-item dropdown header-dropdown-1">
+                        <div className="nav-item dropdown header-dropdown-1">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -190,15 +194,15 @@ export const Basic = (
                             data-ga-header-type="click"
                           >
                             Link option 3
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 1"
                                 data-ga-header-component="link option 3"
@@ -206,7 +210,7 @@ export const Basic = (
                                 Sublink 1
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 2"
                                 data-ga-header-component="link option 3"
@@ -214,7 +218,7 @@ export const Basic = (
                                 Sublink 2
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 3"
                                 data-ga-header-component="link option 3"
@@ -226,25 +230,25 @@ export const Basic = (
                         </div>
                       </nav>
                       {/* end .navbar-nav */}
-                      <form class="navbar-site-buttons form-inline">
+                      <form className="navbar-site-buttons form-inline">
                         <a
                           href="#"
-                          class="btn btn-md btn-maroon"
+                          className="btn btn-md btn-maroon"
                           data-ga-header="call to action"
                         >
                           Call to action
                         </a>
                       </form>
                     </div>
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search"
@@ -270,9 +274,9 @@ export const Basic = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -280,7 +284,7 @@ export const Basic = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -288,17 +292,17 @@ export const Basic = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schools"
                         >
                           Colleges and Schools
                         </a>
-                        <div class="nav-link login-status">
+                        <div className="nav-link login-status">
                           Sparky
                           <a
-                            class="signout"
+                            className="signout"
                             href="https://webapp4.asu.edu/myasu/Signout"
                             data-ga-header-section="topbar"
                             data-ga-header="sign out"
@@ -316,8 +320,12 @@ export const Basic = (
         </div>
       </div>
     </header>
-    <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only" data-elastic-exclude="data-elastic-exclude"></div>
+    <div className="wrapper" id="page-wrapper">
+      <div
+        id="skip-to-content"
+        className="sr-only"
+        data-elastic-exclude="data-elastic-exclude"
+      ></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -325,26 +333,30 @@ export const Basic = (
 
 export const DropDownMenus = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -352,7 +364,7 @@ export const DropDownMenus = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -360,16 +372,16 @@ export const DropDownMenus = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
+                <div className="nav-link login-status">
                   <a
-                    class="signin"
+                    className="signin"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign in"
@@ -378,13 +390,13 @@ export const DropDownMenus = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -410,24 +422,24 @@ export const DropDownMenus = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="#" data-ga-header="asu logo">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar navbar-expand-xl">
+                <a className="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
-                    class="vert"
+                    className="vert"
                     src={vertlogo}
                     alt="Arizona State University"
                   />
                   <img
-                    class="horiz"
+                    className="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
                   />
                 </a>
                 <button
-                  class="navbar-toggler collapsed"
+                  className="navbar-toggler collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#menubar"
@@ -440,55 +452,55 @@ export const DropDownMenus = (
                 >
                   <span
                     title="Open mobile menu"
-                    class="fa fa-bars"
+                    className="fa fa-bars"
                     alt=""
                   ></span>
-                  <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  <span title="Close mobile menu" className="fa-stack">
+                    <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i className="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
-                <div class="navbar-container">
-                  <div class="title">
+                <div className="navbar-container">
+                  <div className="title">
                     <a
                       href="#"
-                      class="unit-name"
+                      className="unit-name"
                       data-ga-header="Parent unit name"
                       title="Parent unit name home page"
                     >
                       Parent unit name
                     </a>
                     <span
-                      class="subdomain-name"
+                      className="subdomain-name"
                       data-ga-header="Subdomain name"
                     >
                       Subdomain name
                     </span>
                   </div>
-                  <div class="collapse navbar-collapse w-100" id="menubar">
-                    <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="Main">
+                  <div className="collapse navbar-collapse w-100" id="menubar">
+                    <div className="header-content-container">
+                      <nav className="navbar-nav" aria-label="Main">
                         <a
-                          class="nav-link nav-link-home"
+                          className="nav-link nav-link-home"
                           href="/"
                           data-ga-header="home button"
                           title="Subdomain name home page"
                         >
                           <span
-                            class="d-xl-none"
+                            className="d-xl-none"
                             title="Subdomain name home page"
                           >
                             Home
                           </span>
                           <span
                             title="Subdomain name home page"
-                            class="fas fa-fw fa-home"
+                            className="fas fa-fw fa-home"
                             alt=""
                           ></span>
                         </a>
-                        <div class="nav-item dropdown header-dropdown-1">
+                        <div className="nav-item dropdown header-dropdown-1">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -500,15 +512,15 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 1
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="massa nunc dictum nan venenatis"
                                 data-ga-header-component="link option 1"
@@ -516,7 +528,7 @@ export const DropDownMenus = (
                                 Massa nunc dictum nam venenatis
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="dis quam quis nisi ligula"
                                 data-ga-header-component="link option 1"
@@ -524,7 +536,7 @@ export const DropDownMenus = (
                                 Dis quam quis nisi ligula
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="dapibus lorem"
                                 data-ga-header-component="link option 1"
@@ -532,7 +544,7 @@ export const DropDownMenus = (
                                 Dapibus lorem
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="nisi ligula eget orci"
                                 data-ga-header-component="link option 1"
@@ -541,7 +553,7 @@ export const DropDownMenus = (
                               </a>
                               <a
                                 href="#"
-                                class="btn btn-sm btn-dark col-btn"
+                                className="btn btn-sm btn-dark col-btn"
                                 data-ga-header="cta action 2"
                                 data-ga-header-component="link option 2"
                               >
@@ -550,9 +562,9 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown header-dropdown-2">
+                        <div className="nav-item dropdown header-dropdown-2">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-two-col"
                             role="button"
@@ -564,16 +576,16 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 2
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-two-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <h3>Column One</h3>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="dis quam quis nisi ligula"
                                 data-ga-header-component="link option 2"
@@ -581,7 +593,7 @@ export const DropDownMenus = (
                                 Dis quam quis nisi ligula
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="nisi ligula eget orci"
                                 data-ga-header-component="link option 2"
@@ -589,7 +601,7 @@ export const DropDownMenus = (
                                 Nisi ligula eget orci
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="massa nunc dictum nam venenatis"
                                 data-ga-header-component="link option 2"
@@ -597,7 +609,7 @@ export const DropDownMenus = (
                                 Massa nunc dictum nam venenatis
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="dapibus lorem"
                                 data-ga-header-component="link option 2"
@@ -605,7 +617,7 @@ export const DropDownMenus = (
                                 Dapibus lorem
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="ultricies tellus eu"
                                 data-ga-header-component="link option 2"
@@ -613,7 +625,7 @@ export const DropDownMenus = (
                                 Ultricies tellus eu
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="pretium massa quis vitae pede quisque nulla
                               ultricies sit"
@@ -623,7 +635,7 @@ export const DropDownMenus = (
                                 ultricies sit
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="quis tempus aliquam semper imperdiet"
                                 data-ga-header-component="link option 2"
@@ -631,10 +643,10 @@ export const DropDownMenus = (
                                 Quis tempus aliquam semper imperdiet
                               </a>
                             </div>
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <h3>Brady Header</h3>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="here's the story"
                                 data-ga-header-component="link option 2"
@@ -642,7 +654,7 @@ export const DropDownMenus = (
                                 Here's the story
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="of a man named Brady"
                                 data-ga-header-component="link option 2"
@@ -650,7 +662,7 @@ export const DropDownMenus = (
                                 Of a man named Brady
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="who was busy with three"
                                 data-ga-header-component="link option 2"
@@ -658,7 +670,7 @@ export const DropDownMenus = (
                                 Who was busy with three
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="boys of his own"
                                 data-ga-header-component="link option 2"
@@ -668,9 +680,9 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown megamenu active header-dropdown-3">
+                        <div className="nav-item dropdown megamenu active header-dropdown-3">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="megamenu-three-col"
                             role="button"
@@ -682,18 +694,18 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 3
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu"
+                            className="dropdown-menu"
                             aria-labelledby="megamenu-three-col"
                           >
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-lg">
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-lg">
                                   <h3>Column one</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="recommended max of ten links"
                                     data-ga-header-component="link option 3"
@@ -701,7 +713,7 @@ export const DropDownMenus = (
                                     Recommended max of ten links
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="second link in the list"
                                     data-ga-header-component="link option 3"
@@ -709,7 +721,7 @@ export const DropDownMenus = (
                                     Second link in the list
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="here is link number three"
                                     data-ga-header-component="link option 3"
@@ -717,7 +729,7 @@ export const DropDownMenus = (
                                     Here is link number three
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 3"
@@ -725,7 +737,7 @@ export const DropDownMenus = (
                                     Dapibus lorem
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="ultricies tellus eu"
                                     data-ga-header-component="link option 3"
@@ -733,7 +745,7 @@ export const DropDownMenus = (
                                     Ultricies tellus eu
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 3"
@@ -741,10 +753,10 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column two</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dis quam quis nisi ligula"
                                     data-ga-header-component="link option 3"
@@ -752,7 +764,7 @@ export const DropDownMenus = (
                                     Dis quam quis nisi ligula
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 3"
@@ -760,7 +772,7 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="massa nunc dictum nam venenatis"
                                     data-ga-header-component="link option 3"
@@ -768,10 +780,10 @@ export const DropDownMenus = (
                                     Massa nunc dictum nam venenatis
                                   </a>
                                 </div>
-                                <div class="col-lg-4">
+                                <div className="col-lg-4">
                                   <h3>Last call 'em</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="navigation link"
                                     data-ga-header-component="link option 3"
@@ -779,7 +791,7 @@ export const DropDownMenus = (
                                     Navigation link
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="another link as an example of when something
                                   wraps"
@@ -789,7 +801,7 @@ export const DropDownMenus = (
                                     wraps
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="culture of inclusion"
                                     data-ga-header-component="link option 3"
@@ -797,7 +809,7 @@ export const DropDownMenus = (
                                     Culture of inclusion
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="public research university"
                                     data-ga-header-component="link option 3"
@@ -809,9 +821,9 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown megamenu header-dropdown-4">
+                        <div className="nav-item dropdown megamenu header-dropdown-4">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="megamenu-four-col"
                             role="button"
@@ -823,18 +835,18 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 4
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu"
+                            className="dropdown-menu"
                             aria-labelledby="megamenu-four-col"
                           >
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-lg">
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-lg">
                                   <h3>Column one</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="navigation link"
                                     data-ga-header-component="link option 4"
@@ -842,7 +854,7 @@ export const DropDownMenus = (
                                     Navigation link
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="second link in the list"
                                     data-ga-header-component="link option 4"
@@ -850,7 +862,7 @@ export const DropDownMenus = (
                                     Second link in the list
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="here is link number three"
                                     data-ga-header-component="link option 4"
@@ -858,7 +870,7 @@ export const DropDownMenus = (
                                     Here is link number three
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 4"
@@ -866,7 +878,7 @@ export const DropDownMenus = (
                                     Dapibus lorem
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="ultricies tellus eu"
                                     data-ga-header-component="link option 4"
@@ -874,10 +886,10 @@ export const DropDownMenus = (
                                     Ultricies tellus eu
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column two</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi eget orci"
                                     data-ga-header-component="link option 4"
@@ -885,7 +897,7 @@ export const DropDownMenus = (
                                     Nisi eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dis quam quis nisi ligula"
                                     data-ga-header-component="link option 4"
@@ -893,7 +905,7 @@ export const DropDownMenus = (
                                     Dis quam quis nisi ligula
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="massa nunc venenatis"
                                     data-ga-header-component="link option 4"
@@ -901,7 +913,7 @@ export const DropDownMenus = (
                                     Massa nunc venenatis
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pede quisque nulla ultricies sit"
                                     data-ga-header-component="link option 4"
@@ -909,7 +921,7 @@ export const DropDownMenus = (
                                     Pede quisque nulla ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 4"
@@ -917,7 +929,7 @@ export const DropDownMenus = (
                                     Dapibus lorem
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="ultricies tellus eu"
                                     data-ga-header-component="link option 4"
@@ -925,7 +937,7 @@ export const DropDownMenus = (
                                     Ultricies tellus eu
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 4"
@@ -933,10 +945,10 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column three</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dis quam quis nisi ligula"
                                     data-ga-header-component="link option 4"
@@ -944,7 +956,7 @@ export const DropDownMenus = (
                                     Dis quam quis nisi ligula
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 4"
@@ -952,7 +964,7 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="massa nunc dictum nam venenatis"
                                     data-ga-header-component="link option 4"
@@ -960,7 +972,7 @@ export const DropDownMenus = (
                                     Massa nunc dictum nam venenatis
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 4"
@@ -968,7 +980,7 @@ export const DropDownMenus = (
                                     Dapibus lorem
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="ultricies tellus eu"
                                     data-ga-header-component="link option 4"
@@ -976,7 +988,7 @@ export const DropDownMenus = (
                                     Ultricies tellus eu
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
@@ -986,7 +998,7 @@ export const DropDownMenus = (
                                     ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="semper imperdiet"
                                     data-ga-header-component="link option 4"
@@ -994,10 +1006,10 @@ export const DropDownMenus = (
                                     Semper imperdiet
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column four</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dis quam quis nisi ligula"
                                     data-ga-header-component="link option 4"
@@ -1005,7 +1017,7 @@ export const DropDownMenus = (
                                     Dis quam quis nisi ligula
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 4"
@@ -1013,7 +1025,7 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 4"
@@ -1022,11 +1034,11 @@ export const DropDownMenus = (
                                   </a>
                                 </div>
                               </div>
-                              <div class="row with-buttons">
-                                <div class="col-lg-12">
+                              <div className="row with-buttons">
+                                <div className="col-lg-12">
                                   <a
                                     href="#"
-                                    class="btn btn-sm btn-gold"
+                                    className="btn btn-sm btn-gold"
                                     data-ga-header="mega menu cta 1"
                                     data-ga-header-component="link option 34"
                                   >
@@ -1034,7 +1046,7 @@ export const DropDownMenus = (
                                   </a>
                                   <a
                                     href="#"
-                                    class="btn btn-sm btn-maroon"
+                                    className="btn btn-sm btn-maroon"
                                     data-ga-header="mega menu cta 2"
                                     data-ga-header-component="link option 4"
                                   >
@@ -1045,9 +1057,9 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown megamenu header-dropdown-5">
+                        <div className="nav-item dropdown megamenu header-dropdown-5">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="megamenu-five-col"
                             role="button"
@@ -1059,18 +1071,18 @@ export const DropDownMenus = (
                             data-ga-header-type="click"
                           >
                             Link option 5
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu"
+                            className="dropdown-menu"
                             aria-labelledby="megamenu-five-col"
                           >
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-lg">
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-lg">
                                   <h3>Column One</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="navigation link"
                                     data-ga-header-component="link option 5"
@@ -1078,7 +1090,7 @@ export const DropDownMenus = (
                                     Navigation link
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="second link in the list"
                                     data-ga-header-component="link option 5"
@@ -1086,17 +1098,17 @@ export const DropDownMenus = (
                                     Second link in the list
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="here is link number three"
                                     data-ga-header-component="link option 5"
                                   >
                                     Here is link number three
                                   </a>
-                                  <div class="btns-row">
+                                  <div className="btns-row">
                                     <a
                                       href="#"
-                                      class="btn btn-sm btn-dark col-btn"
+                                      className="btn btn-sm btn-dark col-btn"
                                       data-ga-header="cta in column"
                                       data-ga-header-component="link option 5"
                                     >
@@ -1104,7 +1116,7 @@ export const DropDownMenus = (
                                     </a>
                                     <a
                                       href="#"
-                                      class="btn btn-sm btn-dark col-btn"
+                                      className="btn btn-sm btn-dark col-btn"
                                       data-ga-header="cta in column"
                                       data-ga-header-component="link option 5"
                                     >
@@ -1112,10 +1124,10 @@ export const DropDownMenus = (
                                     </a>
                                   </div>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column Two</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
@@ -1125,7 +1137,7 @@ export const DropDownMenus = (
                                     ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 5"
@@ -1133,7 +1145,7 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
@@ -1143,7 +1155,7 @@ export const DropDownMenus = (
                                     ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 5"
@@ -1151,7 +1163,7 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 5"
@@ -1159,10 +1171,10 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column Three</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
@@ -1172,7 +1184,7 @@ export const DropDownMenus = (
                                     ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 5"
@@ -1180,7 +1192,7 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="pretium massa quis vitae pede quisque nulla
                                   ultricies sit"
@@ -1190,7 +1202,7 @@ export const DropDownMenus = (
                                     ultricies sit
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="quis tempus aliquam semper imperdiet"
                                     data-ga-header-component="link option 5"
@@ -1198,7 +1210,7 @@ export const DropDownMenus = (
                                     Quis tempus aliquam semper imperdiet
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 5"
@@ -1206,7 +1218,7 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 5"
@@ -1215,17 +1227,17 @@ export const DropDownMenus = (
                                   </a>
                                   <a
                                     href="#"
-                                    class="btn btn-sm btn-dark col-btn"
+                                    className="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
                                     data-ga-header-component="link option 5"
                                   >
                                     CTA in Column
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Column Four</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dis quam quis nisi ligula"
                                     data-ga-header-component="link option 5"
@@ -1233,7 +1245,7 @@ export const DropDownMenus = (
                                     Dis quam quis nisi ligula
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="nisi ligula eget orci"
                                     data-ga-header-component="link option 5"
@@ -1241,7 +1253,7 @@ export const DropDownMenus = (
                                     Nisi ligula eget orci
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="dapibus lorem"
                                     data-ga-header-component="link option 5"
@@ -1250,17 +1262,17 @@ export const DropDownMenus = (
                                   </a>
                                   <a
                                     href="#"
-                                    class="btn btn-sm btn-dark col-btn"
+                                    className="btn btn-sm btn-dark col-btn"
                                     data-ga-header="cta in column"
                                     data-ga-header-component="link option 5"
                                   >
                                     CTA in Column
                                   </a>
                                 </div>
-                                <div class="col-lg">
+                                <div className="col-lg">
                                   <h3>Mambo #5</h3>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="jump up and down and"
                                     data-ga-header-component="link option 5"
@@ -1268,7 +1280,7 @@ export const DropDownMenus = (
                                     Jump up and down and
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="shake your head to the sound"
                                     data-ga-header-component="link option 5"
@@ -1276,7 +1288,7 @@ export const DropDownMenus = (
                                     Shake your head to the sound
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="put your hand on the ground"
                                     data-ga-header-component="link option 5"
@@ -1284,7 +1296,7 @@ export const DropDownMenus = (
                                     Put your hand on the ground
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="take one step left and one step right"
                                     data-ga-header-component="link option 5"
@@ -1292,7 +1304,7 @@ export const DropDownMenus = (
                                     Take one step left and one step right
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="if it looks like this"
                                     data-ga-header-component="link option 5"
@@ -1300,7 +1312,7 @@ export const DropDownMenus = (
                                     If it looks like this
                                   </a>
                                   <a
-                                    class="dropdown-item"
+                                    className="dropdown-item"
                                     href="#"
                                     data-ga-header="then you doing it right"
                                     data-ga-header-component="link option 5"
@@ -1315,15 +1327,15 @@ export const DropDownMenus = (
                       </nav>
                       {/* end .navbar-nav */}
                     </div>
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search asu.edu"
@@ -1349,9 +1361,9 @@ export const DropDownMenus = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -1359,7 +1371,7 @@ export const DropDownMenus = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -1367,7 +1379,7 @@ export const DropDownMenus = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schools"
@@ -1375,7 +1387,7 @@ export const DropDownMenus = (
                           Colleges and Schools
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
                           data-ga-header-section="topbar"
                           data-ga-header="sign in"
@@ -1392,8 +1404,8 @@ export const DropDownMenus = (
         </div>
       </div>
     </header>
-    <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+    <div className="wrapper" id="page-wrapper">
+      <div id="skip-to-content" className="sr-only"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1401,26 +1413,30 @@ export const DropDownMenus = (
 
 export const NoNavigation = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -1428,7 +1444,7 @@ export const NoNavigation = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -1436,19 +1452,19 @@ export const NoNavigation = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
-                  <a class="name" href="#">
+                <div className="nav-link login-status">
+                  <a className="name" href="#">
                     Sparky
                   </a>
                   <a
-                    class="signout"
+                    className="signout"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign out"
@@ -1457,13 +1473,13 @@ export const NoNavigation = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -1489,24 +1505,24 @@ export const NoNavigation = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="#" data-ga-header="asu logo">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar navbar-expand-xl">
+                <a className="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
-                    class="vert"
+                    className="vert"
                     src={vertlogo}
                     alt="Arizona State University"
                   />
                   <img
-                    class="horiz"
+                    className="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
                   />
                 </a>
                 <button
-                  class="navbar-toggler collapsed"
+                  className="navbar-toggler collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#menubar"
@@ -1519,16 +1535,16 @@ export const NoNavigation = (
                 >
                   <span
                     title="Open mobile menu"
-                    class="fa fa-bars"
+                    className="fa fa-bars"
                     alt=""
                   ></span>
-                  <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  <span title="Close mobile menu" className="fa-stack">
+                    <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i className="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
-                <div class="navbar-container no-links">
-                  <div class="title subdomain-name">
+                <div className="navbar-container no-links">
+                  <div className="title subdomain-name">
                     <a
                       href="#"
                       data-ga-header="Subdomain name"
@@ -1538,18 +1554,18 @@ export const NoNavigation = (
                     </a>
                   </div>
                   <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
+                    className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search"
@@ -1575,9 +1591,9 @@ export const NoNavigation = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -1585,7 +1601,7 @@ export const NoNavigation = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -1593,7 +1609,7 @@ export const NoNavigation = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schools"
@@ -1601,7 +1617,7 @@ export const NoNavigation = (
                           Colleges and Schools
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
                           data-ga-header-section="topbar"
                           data-ga-header="sign in"
@@ -1618,8 +1634,8 @@ export const NoNavigation = (
         </div>
       </div>
     </header>
-    <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+    <div className="wrapper" id="page-wrapper">
+      <div id="skip-to-content" className="sr-only"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1627,26 +1643,30 @@ export const NoNavigation = (
 
 export const NoNavigationAndWithButtons = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -1654,7 +1674,7 @@ export const NoNavigationAndWithButtons = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -1662,16 +1682,16 @@ export const NoNavigationAndWithButtons = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
+                <div className="nav-link login-status">
                   <a
-                    class="signin"
+                    className="signin"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign in"
@@ -1680,13 +1700,13 @@ export const NoNavigationAndWithButtons = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -1712,24 +1732,24 @@ export const NoNavigationAndWithButtons = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="#" data-ga-header="asu logo">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar navbar-expand-xl">
+                <a className="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
-                    class="vert"
+                    className="vert"
                     src={vertlogo}
                     alt="Arizona State University"
                   />
                   <img
-                    class="horiz"
+                    className="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
                   />
                 </a>
                 <button
-                  class="navbar-toggler collapsed"
+                  className="navbar-toggler collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#menubar"
@@ -1742,16 +1762,16 @@ export const NoNavigationAndWithButtons = (
                 >
                   <span
                     title="Open mobile menu"
-                    class="fa fa-bars"
+                    className="fa fa-bars"
                     alt=""
                   ></span>
-                  <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  <span title="Close mobile menu" className="fa-stack">
+                    <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i className="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
-                <div class="navbar-container no-links">
-                  <div class="title subdomain-name">
+                <div className="navbar-container no-links">
+                  <div className="title subdomain-name">
                     <a
                       href="#"
                       data-ga-header="Subdomain name"
@@ -1761,36 +1781,36 @@ export const NoNavigationAndWithButtons = (
                     </a>
                   </div>
                   <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
+                    className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="header-content-container">
-                      <form class="navbar-site-buttons form-inline">
+                    <div className="header-content-container">
+                      <form className="navbar-site-buttons form-inline">
                         <a
                           href="#"
-                          class="btn btn-md btn-maroon"
+                          className="btn btn-md btn-maroon"
                           data-ga-header="cta button 1"
                         >
                           CTA button 1
                         </a>
                         <a
                           href="#"
-                          class="btn btn-md btn-dark"
+                          className="btn btn-md btn-dark"
                           data-ga-header="cta button 2"
                         >
                           CTA button 2
                         </a>
                       </form>
                     </div>
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search"
@@ -1816,9 +1836,9 @@ export const NoNavigationAndWithButtons = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -1826,7 +1846,7 @@ export const NoNavigationAndWithButtons = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -1834,7 +1854,7 @@ export const NoNavigationAndWithButtons = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schools"
@@ -1842,7 +1862,7 @@ export const NoNavigationAndWithButtons = (
                           Colleges and Schools
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
                           data-ga-header-section="topbar"
                           data-ga-header="sign in"
@@ -1859,8 +1879,8 @@ export const NoNavigationAndWithButtons = (
         </div>
       </div>
     </header>
-    <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+    <div className="wrapper" id="page-wrapper">
+      <div id="skip-to-content" className="sr-only"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1868,26 +1888,30 @@ export const NoNavigationAndWithButtons = (
 
 export const ScrolledState = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -1895,7 +1919,7 @@ export const ScrolledState = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -1903,19 +1927,19 @@ export const ScrolledState = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
-                  <a class="name" href="#">
+                <div className="nav-link login-status">
+                  <a className="name" href="#">
                     Sparky
                   </a>
                   <a
-                    class="signout"
+                    className="signout"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign out"
@@ -1924,13 +1948,13 @@ export const ScrolledState = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -1956,24 +1980,24 @@ export const ScrolledState = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar navbar-expand-xl">
-                <a class="navbar-brand" href="#" asu-ga="asu logo">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar navbar-expand-xl">
+                <a className="navbar-brand" href="#" asu-ga="asu logo">
                   <img
-                    class="vert"
+                    className="vert"
                     src={vertlogo}
                     alt="Arizona State University"
                   />
                   <img
-                    class="horiz"
+                    className="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
                   />
                 </a>
                 <button
-                  class="navbar-toggler collapsed"
+                  className="navbar-toggler collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#menubar"
@@ -1986,83 +2010,83 @@ export const ScrolledState = (
                 >
                   <span
                     title="Open mobile menu"
-                    class="fa fa-bars"
+                    className="fa fa-bars"
                     alt=""
                   ></span>
-                  <span title="Close mobile menu" class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  <span title="Close mobile menu" className="fa-stack">
+                    <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i className="fa fa-times fa-stack-1x" alt=""></i>
                   </span>
                 </button>
-                <div class="navbar-container">
+                <div className="navbar-container">
                   <div
-                    class="title subdomain-name"
+                    className="title subdomain-name"
                     data-ga-header="Subdomain name"
                   >
                     Subdomain name
                   </div>
                   <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
+                    className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="Main">
+                    <div className="header-content-container">
+                      <nav className="navbar-nav" aria-label="Main">
                         <a
-                          class="nav-link nav-link-home active"
+                          className="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
                           title="Subdomain name home page"
                         >
                           <span
-                            class="d-xl-none"
+                            className="d-xl-none"
                             title="Subdomain name home page"
                           >
                             Home
                           </span>
                           <span
                             title="Subdomain name home page"
-                            class="fas fa-fw fa-home"
+                            className="fas fa-fw fa-home"
                             alt=""
                           ></span>
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 1"
                         >
                           Link option 1
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 2"
                         >
                           Link option 2
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 3"
                         >
                           Link option 3
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 4"
                         >
                           Link option 4
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 5"
                         >
                           Link option 5
                         </a>
-                        <div class="nav-item dropdown header-dropdown-1">
+                        <div className="nav-item dropdown header-dropdown-1">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -2074,15 +2098,15 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 6
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 1"
                                 data-ga-header-component="link option 6"
@@ -2090,7 +2114,7 @@ export const ScrolledState = (
                                 Sublink 1
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 2"
                                 data-ga-header-component="link option 6"
@@ -2098,7 +2122,7 @@ export const ScrolledState = (
                                 Sublink 2
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 3"
                                 data-ga-header-component="link option 6"
@@ -2108,9 +2132,9 @@ export const ScrolledState = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown aligned-right header-dropdown-2">
+                        <div className="nav-item dropdown aligned-right header-dropdown-2">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -2122,15 +2146,15 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 7
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 1"
                                 data-ga-header-component="link option 7"
@@ -2138,7 +2162,7 @@ export const ScrolledState = (
                                 Sublink 1
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 2"
                                 data-ga-header-component="link option 7"
@@ -2146,7 +2170,7 @@ export const ScrolledState = (
                                 Sublink 2
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 3"
                                 data-ga-header-component="link option 7"
@@ -2156,9 +2180,9 @@ export const ScrolledState = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown aligned-right header-dropdown-3">
+                        <div className="nav-item dropdown aligned-right header-dropdown-3">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -2170,15 +2194,15 @@ export const ScrolledState = (
                             data-ga-header-type="click"
                           >
                             Link option 8
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 1"
                                 data-ga-header-component="link option 8"
@@ -2186,7 +2210,7 @@ export const ScrolledState = (
                                 Sublink 1
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 2"
                                 data-ga-header-component="link option 8"
@@ -2194,7 +2218,7 @@ export const ScrolledState = (
                                 Sublink 2
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 3"
                                 data-ga-header-component="link option 8"
@@ -2207,15 +2231,15 @@ export const ScrolledState = (
                       </nav>
                       {/* end .navbar-nav */}
                     </div>
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search"
@@ -2241,9 +2265,9 @@ export const ScrolledState = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -2251,7 +2275,7 @@ export const ScrolledState = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -2259,7 +2283,7 @@ export const ScrolledState = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schoold"
@@ -2267,7 +2291,7 @@ export const ScrolledState = (
                           Colleges and Schools
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
                           data-ga-header-section="topbar"
                           data-ga-header="sign in"
@@ -2285,42 +2309,46 @@ export const ScrolledState = (
       </div>
     </header>
     <main>
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" className="sr-only"></div>
       <div
         style={{
           background: "url('https://picsum.photos/id/1035/1900/500')",
           height: '500px',
         }}
       ></div>
-      <div class="bg-gray-6" style={{ height: '70vh' }}></div>
-      <div class="bg-gray-5" style={{ height: '70vh' }}></div>
-      <div class="bg-gray-4" style={{ height: '70vh' }}></div>
+      <div className="bg-gray-6" style={{ height: '70vh' }}></div>
+      <div className="bg-gray-5" style={{ height: '70vh' }}></div>
+      <div className="bg-gray-4" style={{ height: '70vh' }}></div>
     </main>
   </>
 );
 
 export const Partner = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      className="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-top" class="col-12">
-              <nav class="nav" aria-label="ASU">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-top" className="col-12">
+              <nav className="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  className="nav-link sr-only sr-only-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="asu home"
@@ -2328,7 +2356,7 @@ export const Partner = (
                   ASU Home
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu"
                   data-ga-header-section="topbar"
                   data-ga-header="my asu"
@@ -2336,19 +2364,19 @@ export const Partner = (
                   My ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/academics/colleges-schools"
                   data-ga-header-section="topbar"
                   data-ga-header="colleges and schools"
                 >
                   Colleges and Schools
                 </a>
-                <div class="nav-link login-status">
-                  <a class="name" href="#">
+                <div className="nav-link login-status">
+                  <a className="name" href="#">
                     Sparky
                   </a>
                   <a
-                    class="signout"
+                    className="signout"
                     href="#"
                     data-ga-header-section="topbar"
                     data-ga-header="sign out"
@@ -2357,13 +2385,13 @@ export const Partner = (
                   </a>
                 </div>
                 <form
-                  class="form-inline"
+                  className="form-inline"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
                 >
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="search"
                     name="q"
                     aria-labelledby="header-top-search"
@@ -2389,30 +2417,30 @@ export const Partner = (
         </div>
       </div>
       <div id="wrapper-header-main">
-        <div class="container-xl">
-          <div class="row">
-            <div id="header-main" class="col-12">
-              <div class="navbar-expand-xl">
-                <div class="partner">
-                  <div class="partners-logos">
+        <div className="container-xl">
+          <div className="row">
+            <div id="header-main" className="col-12">
+              <div className="navbar-expand-xl">
+                <div className="partner">
+                  <div className="partners-logos">
                     <a href="#" data-ga-header="starbucks logo">
                       <img src={starbucksLogo} alt="Asu Starbucks logo" />
                     </a>
                     <a href="#" data-ga-header="asu logo">
                       <img
-                        class="vert"
+                        className="vert"
                         src={vertlogo}
                         alt="Arizona State University"
                       />
                       <img
-                        class="horiz"
+                        className="horiz"
                         src={horizlogo}
                         alt="Arizona State University"
                       />
                     </a>
                   </div>
                   <button
-                    class="navbar-toggler collapsed"
+                    className="navbar-toggler collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#menubar"
@@ -2425,78 +2453,78 @@ export const Partner = (
                   >
                     <span
                       title="Open mobile menu"
-                      class="fa fa-bars"
+                      className="fa fa-bars"
                       alt=""
                     ></span>
-                    <span title="Close mobile menu" class="fa-stack">
-                      <i class="fa fa-circle fa-stack-2x" alt=""></i>
-                      <i class="fa fa-times fa-stack-1x" alt=""></i>
+                    <span title="Close mobile menu" className="fa-stack">
+                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
+                      <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                 </div>
-                <div class="navbar-container">
+                <div className="navbar-container">
                   <div
-                    class="collapse navbar-collapse w-100 justify-content-between"
+                    className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
-                    <div class="header-content-container">
-                      <nav class="navbar-nav" aria-label="Main">
+                    <div className="header-content-container">
+                      <nav className="navbar-nav" aria-label="Main">
                         <a
-                          class="nav-link nav-link-home active"
+                          className="nav-link nav-link-home active"
                           href="/"
                           data-ga-header="home button"
                           title="Subdomain name home page"
                         >
                           <span
-                            class="d-xl-none"
+                            className="d-xl-none"
                             title="Subdomain name home page"
                           >
                             Home
                           </span>
                           <span
                             title="Subdomain name home page"
-                            class="fas fa-fw fa-home"
+                            className="fas fa-fw fa-home"
                             alt=""
                           ></span>
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 1"
                         >
                           Link option 1
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 2"
                         >
                           Link option 2
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 3"
                         >
                           Link option 3
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 4"
                         >
                           Link option 4
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="#"
                           data-ga-header="Link option 5"
                         >
                           Link option 5
                         </a>
-                        <div class="nav-item dropdown header-dropdown-1">
+                        <div className="nav-item dropdown header-dropdown-1">
                           <a
-                            class="nav-link"
+                            className="nav-link"
                             href="#"
                             id="dropdown-one-col"
                             role="button"
@@ -2508,15 +2536,15 @@ export const Partner = (
                             data-ga-header-type="click"
                           >
                             Link option 6
-                            <span class="fa fa-chevron-down" alt=""></span>
+                            <span className="fa fa-chevron-down" alt=""></span>
                           </a>
                           <div
-                            class="dropdown-menu dropdown-columns"
+                            className="dropdown-menu dropdown-columns"
                             aria-labelledby="dropdown-one-col"
                           >
-                            <div class="dropdown-col">
+                            <div className="dropdown-col">
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 1"
                                 data-ga-header-component="link option 6"
@@ -2524,7 +2552,7 @@ export const Partner = (
                                 Sublink 1
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 2"
                                 data-ga-header-component="link option 6"
@@ -2532,7 +2560,7 @@ export const Partner = (
                                 Sublink 2
                               </a>
                               <a
-                                class="dropdown-item"
+                                className="dropdown-item"
                                 href="#"
                                 data-ga-header="Sublink 3"
                                 data-ga-header-component="link option 6"
@@ -2544,32 +2572,32 @@ export const Partner = (
                         </div>
                       </nav>
                       {/* end .navbar-nav */}
-                      <form class="navbar-site-buttons form-inline">
+                      <form className="navbar-site-buttons form-inline">
                         <a
                           href="#"
-                          class="btn btn-md btn-maroon"
+                          className="btn btn-md btn-maroon"
                           data-ga-header="cta button 1"
                         >
                           CTA Button 1
                         </a>
                         <a
                           href="#"
-                          class="btn btn-md btn-dark"
+                          className="btn btn-md btn-dark"
                           data-ga-header="cta button 2"
                         >
                           CTA Button 2
                         </a>
                       </form>
                     </div>
-                    <div class="navbar-mobile-footer pinned">
+                    <div className="navbar-mobile-footer pinned">
                       <form
-                        class="form-inline navbar-mobile-search"
+                        className="form-inline navbar-mobile-search"
                         action="https://search.asu.edu/search"
                         method="get"
                         name="gs"
                       >
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="search"
                           name="q"
                           aria-label="Search"
@@ -2595,9 +2623,9 @@ export const Partner = (
                           type="hidden"
                         />
                       </form>
-                      <div class="nav-grid">
+                      <div className="nav-grid">
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="asu home"
@@ -2605,7 +2633,7 @@ export const Partner = (
                           ASU Home
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://my.asu.edu"
                           data-ga-header-section="topbar"
                           data-ga-header="my asu"
@@ -2613,7 +2641,7 @@ export const Partner = (
                           My ASU
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://www.asu.edu/academics/colleges-schools"
                           data-ga-header-section="topbar"
                           data-ga-header="colleges and schools"
@@ -2621,7 +2649,7 @@ export const Partner = (
                           Colleges and Schools
                         </a>
                         <a
-                          class="nav-link"
+                          className="nav-link"
                           href="https://weblogin.asu.edu/cgi-bin/login"
                           data-ga-header-section="topbar"
                           data-ga-header="sign in"
@@ -2638,8 +2666,8 @@ export const Partner = (
         </div>
       </div>
     </header>
-    <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+    <div className="wrapper" id="page-wrapper">
+      <div id="skip-to-content" className="sr-only"></div>
       {/* Page content starts here */}
     </div>
   </>

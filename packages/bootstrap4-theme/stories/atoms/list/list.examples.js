@@ -38,32 +38,32 @@ export const UnorderedListMultiLevel = createStory((args) => {
     <ul class={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
-        <ul class="uds-list">
+        <ul className="uds-list">
           <li>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            <ul class="uds-list">
+            <ul className="uds-list">
               <li>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <ul class="uds-list">
+                <ul className="uds-list">
                   <li>
                     Lorem ipsum dolor sit amet
-                    <ul class="uds-list">
+                    <ul className="uds-list">
                       <li>
                         Lorem ipsum dolor sit amet
-                        <ul class="uds-list">
+                        <ul className="uds-list">
                           <li>
                             Lorem ipsum dolor sit amet
-                            <ul class="uds-list">
+                            <ul className="uds-list">
                               <li>
                                 Lorem ipsum dolor sit amet
-                                <ul class="uds-list">
+                                <ul className="uds-list">
                                   <li>
                                     Lorem ipsum dolor sit amet
-                                    <ul class="uds-list">
+                                    <ul className="uds-list">
                                       <li>
                                         Lorem ipsum dolor sit amet
-                                        <ul class="uds-list">
+                                        <ul className="uds-list">
                                           <li>Lorem ipsum dolor sit amet</li>
                                           <li>Lorem ipsum dolor sit amet</li>
                                         </ul>
@@ -103,32 +103,32 @@ export const OrderedListMultiLevel = createStory((args) => {
     <ol class={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
-        <ol class="uds-list">
+        <ol className="uds-list">
           <li>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            <ol class="uds-list">
+            <ol className="uds-list">
               <li>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <ol class="uds-list">
+                <ol className="uds-list">
                   <li>
                     Lorem ipsum dolor sit amet
-                    <ol class="uds-list">
+                    <ol className="uds-list">
                       <li>
                         Lorem ipsum dolor sit amet
-                        <ol class="uds-list">
+                        <ol className="uds-list">
                           <li>
                             Lorem ipsum dolor sit amet
-                            <ol class="uds-list">
+                            <ol className="uds-list">
                               <li>
                                 Lorem ipsum dolor sit amet
-                                <ol class="uds-list">
+                                <ol className="uds-list">
                                   <li>
                                     Lorem ipsum dolor sit amet
-                                    <ol class="uds-list">
+                                    <ol className="uds-list">
                                       <li>
                                         Lorem ipsum dolor sit amet
-                                        <ol class="uds-list">
+                                        <ol className="uds-list">
                                           <li>Lorem ipsum dolor sit amet</li>
                                           <li>Lorem ipsum dolor sit amet</li>
                                         </ol>

@@ -34,19 +34,19 @@ export const Hero = createStory(
     return (
       <div class={`${args.size}`}>
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/WeYamle9fDM/1920x256"
           alt="Sample placeholder image."
         />
         <div role="doc-subtitle">
-          <span class="highlight-white">The New American University</span>
+          <span className="highlight-white">The New American University</span>
         </div>
         <h1>
-          <span class="highlight-black">By whom it includes</span>
+          <span className="highlight-black">By whom it includes</span>
         </h1>
         <a
           href="#"
-          class="btn btn-maroon"
+          className="btn btn-maroon"
           data-ga="Call to action"
           data-ga-name="onclick"
           data-ga-event="link"
@@ -74,24 +74,24 @@ export const HeroWithButtonRow = createStory(
     return (
       <div class={`${args.size} has-btn-row`}>
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/IydYk-LGOhc/1920x512"
           alt="Sample placeholder image."
         />
         <h1>
-          <span class="highlight-gold">Gettysburg Address</span>
+          <span className="highlight-gold">Gettysburg Address</span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Four score and seven years ago our fathers brought forth upon this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.
           </p>
         </div>
-        <div class="btn-row">
+        <div className="btn-row">
           <a
             href="#"
-            class="btn btn-default btn-gold"
+            className="btn btn-default btn-gold"
             data-ga="Read more"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -104,7 +104,7 @@ export const HeroWithButtonRow = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-default btn-gold"
+            className="btn btn-default btn-gold"
             data-ga="More quotes"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -129,27 +129,27 @@ HeroWithButtonRow.args = {
 };
 
 export const StoryHero = createStory(
-  <section class="uds-story-hero">
+  <section className="uds-story-hero">
     <img
-      class="hero"
+      className="hero"
       src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
       alt="Be sure to include alt text in your image tag."
     />
-    <div class="content">
+    <div className="content">
       <nav aria-label="breadcrumbs">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <a href="#">Home</a>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <a href="#">Second Nav Item</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             <a href="#">Current Page</a>
           </li>
         </ol>
       </nav>
-      <h1 class="article">
+      <h1 className="article">
         ASU is measured not by whom we exclude, but rather by whom we include
         and how they succeed.
       </h1>

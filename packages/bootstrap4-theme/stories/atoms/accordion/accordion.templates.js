@@ -8,12 +8,12 @@ const FoldableCardElement = (
   linkID = null,
   bodyID = null
 ) => (
-  <div class="card card-foldable">
-    <div class="card-header">
+  <div className="card card-foldable">
+    <div className="card-header">
       <h3>
         <a
           id={`${linkID}`}
-          class="collapsed"
+          className="collapsed"
           data-toggle="collapse"
           data-target={bodyID ? `#${bodyID}` : ''}
           href={bodyID ? `#${bodyID}` : ''}
@@ -28,13 +28,13 @@ const FoldableCardElement = (
           data-ga-section="default"
         >
           This card unfolds.
-          <span class="fas fa-chevron-up"></span>
+          <span className="fas fa-chevron-up"></span>
         </a>
       </h3>
     </div>
     <div
       id={`${bodyID}`}
-      class="collapse card-body"
+      className="collapse card-body"
       aria-labelledby={`${linkID}`}
       data-parent={accordionID ? `#${accordionID}` : ''}
     >
@@ -64,7 +64,7 @@ export const FoldableCard = createStory(
 );
 
 export const Accordion = createStory(
-  <div class="accordion" id="accordionExample">
+  <div className="accordion" id="accordionExample">
     {FoldableCardElement('accordionExample', 'cardOne', 'cardBodyOne')}
     {FoldableCardElement('accordionExample', 'cardTwo', 'cardBodyTwo')}
     {FoldableCardElement('accordionExample', 'cardThree', 'cardBodyThree')}

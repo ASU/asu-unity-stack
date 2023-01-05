@@ -18,7 +18,7 @@ export default createComponent(
 import './tables';
 
 export const DefaultComponent = createStory(
-  <div class="uds-table" tabindex="0">
+  <div className="uds-table" tabindex="0">
     <table>
       <thead>
         <tr>
@@ -52,7 +52,7 @@ export const DefaultComponent = createStory(
           <td>71,946</td>
         </tr>
         <tr>
-          <th scope="row" class="indent">
+          <th scope="row" className="indent">
             Tempe
           </th>
           <td>51,869</td>
@@ -62,7 +62,7 @@ export const DefaultComponent = createStory(
           <td>51,869</td>
         </tr>
         <tr>
-          <th scope="row" class="indent">
+          <th scope="row" className="indent">
             Downtown
           </th>
           <td>11,737</td>
@@ -72,7 +72,7 @@ export const DefaultComponent = createStory(
           <td>11,737</td>
         </tr>
         <tr>
-          <th scope="row" class="indent">
+          <th scope="row" className="indent">
             Polytechnic
           </th>
           <td>4,380</td>
@@ -82,7 +82,7 @@ export const DefaultComponent = createStory(
           <td>4,380</td>
         </tr>
         <tr>
-          <th scope="row" class="indent">
+          <th scope="row" className="indent">
             West
           </th>
           <td>3,663</td>
@@ -92,7 +92,7 @@ export const DefaultComponent = createStory(
           <td>3,663</td>
         </tr>
         <tr>
-          <th scope="row" class="indent">
+          <th scope="row" className="indent">
             Thunderbird
           </th>
           <td>297</td>
@@ -102,7 +102,7 @@ export const DefaultComponent = createStory(
           <td>297</td>
         </tr>
         <tr>
-          <th scope="row" class="normal">
+          <th scope="row" className="normal">
             Skysong Campus
           </th>
           <td>26,200</td>
@@ -128,22 +128,22 @@ DefaultComponent.args = {
 };
 
 export const FixedComponent = createStory(
-  <div class="uds-table-fixed-wrapper">
-    <div class="scroll-control previous">
-      <button type="button" class="btn btn-circle btn-circle-alt-gray">
-        <i class="fas fa-chevron-left"></i>
-        <span class="sr-only">Previous</span>
+  <div className="uds-table-fixed-wrapper">
+    <div className="scroll-control previous">
+      <button type="button" className="btn btn-circle btn-circle-alt-gray">
+        <i className="fas fa-chevron-left"></i>
+        <span className="sr-only">Previous</span>
       </button>
     </div>
 
-    <div class="scroll-control next">
-      <button type="button" class="btn btn-circle btn-circle-alt-gray">
-        <i class="fas fa-chevron-right"></i>
-        <span class="sr-only">Next</span>
+    <div className="scroll-control next">
+      <button type="button" className="btn btn-circle btn-circle-alt-gray">
+        <i className="fas fa-chevron-right"></i>
+        <span className="sr-only">Next</span>
       </button>
     </div>
 
-    <div class="uds-table uds-table-fixed" tabindex="0">
+    <div className="uds-table uds-table-fixed" tabindex="0">
       <table>
         <thead>
           <tr>
@@ -175,7 +175,7 @@ export const FixedComponent = createStory(
             <td>71,946</td>
           </tr>
           <tr>
-            <th scope="row" class="indent">
+            <th scope="row" className="indent">
               Tempe
             </th>
             <td>51,869</td>
@@ -190,7 +190,7 @@ export const FixedComponent = createStory(
             <td>51,869</td>
           </tr>
           <tr>
-            <th scope="row" class="indent">
+            <th scope="row" className="indent">
               Downtown
             </th>
             <td>11,737</td>
@@ -205,7 +205,7 @@ export const FixedComponent = createStory(
             <td>11,737</td>
           </tr>
           <tr>
-            <th scope="row" class="indent">
+            <th scope="row" className="indent">
               Polytechnic
             </th>
             <td>4,380</td>
@@ -220,7 +220,7 @@ export const FixedComponent = createStory(
             <td>4,380</td>
           </tr>
           <tr>
-            <th scope="row" class="indent">
+            <th scope="row" className="indent">
               West
             </th>
             <td>3,663</td>
@@ -235,7 +235,7 @@ export const FixedComponent = createStory(
             <td>3,663</td>
           </tr>
           <tr>
-            <th scope="row" class="indent">
+            <th scope="row" className="indent">
               Thunderbird
             </th>
             <td>297</td>
@@ -250,7 +250,7 @@ export const FixedComponent = createStory(
             <td>297</td>
           </tr>
           <tr>
-            <th scope="row" class="normal">
+            <th scope="row" className="normal">
               Skysong Campus
             </th>
             <td>26,200</td>

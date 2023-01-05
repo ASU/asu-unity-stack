@@ -10,26 +10,26 @@ import stockVideo from '../../atoms/video/stock-video-person-drawing.mp4';
 export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
-  <div class="uds-hero-md has-btn-row">
+  <div className="uds-hero-md has-btn-row">
     <img
-      class="hero"
+      className="hero"
       src="https://source.unsplash.com/IydYk-LGOhc/1920x512"
       alt="Sample placeholder image."
     />
     <h1>
-      <span class="highlight-gold">Gettysburg Address</span>
+      <span className="highlight-gold">Gettysburg Address</span>
     </h1>
-    <div class="content">
-      <p class="text-white">
+    <div className="content">
+      <p className="text-white">
         Four score and seven years ago our fathers brought forth upon this
         continent, a new nation, conceived in Liberty, and dedicated to the
         proposition that all men are created equal.
       </p>
     </div>
-    <div class="btn-row">
+    <div className="btn-row">
       <a
         href="#"
-        class="btn btn-default btn-gold"
+        className="btn btn-default btn-gold"
         data-ga="read more"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -42,7 +42,7 @@ export const HeroMedium = createStory(
       </a>
       <a
         href="#"
-        class="btn btn-default btn-gold"
+        className="btn btn-default btn-gold"
         data-ga="more quotes"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -65,18 +65,18 @@ HeroMedium.args = {
 };
 
 export const HeroLarge = createStory(
-  <div class="uds-hero-lg hide-content">
+  <div className="uds-hero-lg hide-content">
     <img
-      class="hero"
+      className="hero"
       src="https://source.unsplash.com/xyXcGADvAwE/1920x684"
       alt="Sample placeholder image."
     />
     <div role="doc-subtitle">
-      <span class="highlight-black">Mass Ascension</span>
+      <span className="highlight-black">Mass Ascension</span>
     </div>
-    <h1 class="text-white">The Albuquerque International Balloon Fiesta</h1>
-    <div class="content">
-      <p class="text-white">
+    <h1 className="text-white">The Albuquerque International Balloon Fiesta</h1>
+    <div className="content">
+      <p className="text-white">
         For nine days in October, the Albuquerque International Balloon Fiesta
         creates an enchanted world of vibrant balloon-filled skies. Brisk autumn
         mornings in the Rio Grande Valley create an otherworldly backdrop for
@@ -85,7 +85,7 @@ export const HeroLarge = createStory(
     </div>
     <a
       href="#"
-      class="btn btn-maroon"
+      className="btn btn-maroon"
       data-ga="get tickets"
       data-ga-name="onclick"
       data-ga-event="link"
@@ -108,35 +108,35 @@ HeroLarge.args = {
 
 export const StoryHeroLarge = createStory(
   <div>
-    <section class="uds-story-hero uds-story-hero-lg entry-header">
+    <section className="uds-story-hero uds-story-hero-lg entry-header">
       <img
-        class="hero"
+        className="hero"
         src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
         alt="Be sure to include alt text in your image tag."
       />
-      <div class="content">
+      <div className="content">
         <nav aria-label="breadcrumbs">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="#">Home</a>
             </li>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <a href="#">Second Nav Item</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               <a href="#">Current Page</a>
             </li>
           </ol>
         </nav>
-        <h1 class="article">
+        <h1 className="article">
           The answer to the ultimate question of life, the universe, and
           everything
         </h1>
       </div>
     </section>
-    <div class="container-xl">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
+    <div className="container-xl">
+      <div className="row">
+        <div className="col-lg-10 offset-lg-1">
           <article>
             <p>
               Cuba Poland worldwide hotel South-America flexibility Amsterdam
@@ -184,9 +184,9 @@ StoryHeroLarge.args = {
 export const HeroVideo = createStory(
   (args) => {
     return (
-      <div class="uds-hero-lg uds-video-hero">
+      <div className="uds-hero-lg uds-video-hero">
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/WeYamle9fDM/1920x256"
           alt="Sample placeholder image."
         />
@@ -194,34 +194,34 @@ export const HeroVideo = createStory(
           <source src={stockVideo} />
           Your browser does not support the video tag.
         </video>
-        <div class="video-hero-controls">
+        <div className="video-hero-controls">
           <button
             id="playHeroVid"
             type="button"
-            class="btn btn-circle btn-circle-alt-white btn-circle-large"
+            className="btn btn-circle btn-circle-alt-white btn-circle-large"
           >
-            <span class="fa fa-play"></span>
-            <span class="sr-only">Play hero video</span>
+            <span className="fa fa-play"></span>
+            <span className="sr-only">Play hero video</span>
           </button>
           <button
             id="pauseHeroVid"
             type="button"
-            class="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
+            className="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
           >
-            <span class="fa fa-pause"></span>
-            <span class="sr-only">Pause</span>
+            <span className="fa fa-pause"></span>
+            <span className="sr-only">Pause</span>
           </button>
         </div>
         <div role="doc-subtitle">
-          <span class="highlight-black">Space Missions</span>
+          <span className="highlight-black">Space Missions</span>
         </div>
         <h1>
-          <span class="highlight-white">
+          <span className="highlight-white">
             Be a collaborator in exploring space
           </span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Humankind is on a path to becoming an interplanetary species, and
             ASU is playing a leading role in making it happen. As a student, you
             can be a collaborator with top scientists on one of ASU’s 25+ active
@@ -230,7 +230,7 @@ export const HeroVideo = createStory(
         </div>
         <a
           href="#"
-          class="btn btn-maroon"
+          className="btn btn-maroon"
           data-ga="Call to action"
           data-ga-name="onclick"
           data-ga-event="link"

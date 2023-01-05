@@ -13,25 +13,25 @@ If this does not apply to your site, the [default code can be modified](?path=/d
 The basic markup should resemble the following:
 
 ```
-<div class="navbar navbar-expand-xl">
-    <a class="navbar-brand" href="#">...</a>
-    <button class="navbar-toggler collapsed" type="button">...</button>
-    <div class="navbar-container">
-        <div class="title subdomain-name">University Technology Office</div>
-        <div class="collapse" id="menubar">
-            <div class="header-content-container">
-                <nav class="navbar-nav" aria-label="Main">
-                  <a class="nav-link nav-link-home active" href="/">
-                      <span class="d-xl-none">Home</span>
-                      <span title="Home" class="fas fa-fw fa-home"></span>
+<div className="navbar navbar-expand-xl">
+    <a className="navbar-brand" href="#">...</a>
+    <button className="navbar-toggler collapsed" type="button">...</button>
+    <div className="navbar-container">
+        <div className="title subdomain-name">University Technology Office</div>
+        <div className="collapse" id="menubar">
+            <div className="header-content-container">
+                <nav className="navbar-nav" aria-label="Main">
+                  <a className="nav-link nav-link-home active" href="/">
+                      <span className="d-xl-none">Home</span>
+                      <span title="Home" className="fas fa-fw fa-home"></span>
                   </a>
                   ...
                 </nav><!-- end .navbar-nav -->
-                <form class="navbar-site-buttons form-inline">
+                <form className="navbar-site-buttons form-inline">
                     ...
                 </form>
             </div>
-            <div class="navbar-mobile-footer pinned">...</div>
+            <div className="navbar-mobile-footer pinned">...</div>
         </div>
     </div>
 </div>
@@ -43,8 +43,8 @@ This contains both the horizontal and vertical logos used in the component.
 
 If you are copy/pasting directly from Storybook, you'll want to change the image `src` attribute to load the files correctly. The relative path to these files will change depending on your configuration, but within the `@asu` NPM package you can find them at `node_modules/@asu-design-system/bootstrap4-theme/src/img/asu-logo` Those will wind up looking something like this:
 
-- `<img class="vert" src="{path}/arizona-state-university-logo-vertical.png" alt="Arizona State University" />`
-- `<img class="horiz" src="{path}/arizona-state-university-logo.png" alt="Arizona State University" />`
+- `<img className="vert" src="{path}/arizona-state-university-logo-vertical.png" alt="Arizona State University" />`
+- `<img className="horiz" src="{path}/arizona-state-university-logo.png" alt="Arizona State University" />`
 
 ## .navbar-toggler
 
@@ -58,9 +58,9 @@ The site name and "parent" site name are represented by altering the contents of
 
 ```
 <!-- Recommended approach is to provide a link to the parent site only. -->
-<div class="title">
-  <a href="#" class="unit-name">Ira A. Fulton Schools of Engineering</a>
-  <span class="subdomain-name">School of Computing, Informatics, and Decisions Systems Engineering</span>
+<div className="title">
+  <a href="#" className="unit-name">Ira A. Fulton Schools of Engineering</a>
+  <span className="subdomain-name">School of Computing, Informatics, and Decisions Systems Engineering</span>
 </div>
 ```
 
@@ -68,10 +68,10 @@ The site name and "parent" site name are represented by altering the contents of
 
 ```
 <!-- Linked -->
-<div class="title subdomain-name"><a href="#">Landing Page Title</a></div>
+<div className="title subdomain-name"><a href="#">Landing Page Title</a></div>
 
 <!-- Unlinked -->
-<div class="title subdomain-name">University Technology Office</div>
+<div className="title subdomain-name">University Technology Office</div>
 ```
 
 ## .navbar-nav
@@ -81,9 +81,9 @@ The contents of this section are the actual navigation links and buttons for you
 Immediately following `.navbar-nav` should be a link for the home page of the site. In almost every case, this link should look exactly like the following:
 
 ```
-<a class="nav-link nav-link-home active" href="/">
-    <span class="d-xl-none">Home</span>
-    <span title="Home" class="fas fa-fw fa-home"></span>
+<a className="nav-link nav-link-home active" href="/">
+    <span className="d-xl-none">Home</span>
+    <span title="Home" className="fas fa-fw fa-home"></span>
 </a>
 ```
 
@@ -96,10 +96,10 @@ The form element immediately following `.navbar-nav` is the intended container e
 Use the medium sized buttons for this application. A maximum of two buttons are allowed.
 
 ```
-<form class="navbar-site-buttons form-inline">
-  <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
-  <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
-  <!-- <a href="#" class="btn btn-md btn-gold">Gold button is OK</a> -->
+<form className="navbar-site-buttons form-inline">
+  <a href="#" className="btn btn-md btn-maroon">CTA Button 1</a>
+  <a href="#" className="btn btn-md btn-dark">CTA Button 2</a>
+  <!-- <a href="#" className="btn btn-md btn-gold">Gold button is OK</a> -->
 </form>
 ```
 
@@ -110,13 +110,13 @@ This section of the header markup houses the footer at the bottom of the mobile 
 The structure of this element looks like this:
 
 ```
-<div class="navbar-mobile-footer">
-  <form class="navbar-mobile-search" action="https://search.asu.edu/search">
+<div className="navbar-mobile-footer">
+  <form className="navbar-mobile-search" action="https://search.asu.edu/search">
     ...
   </form>
-  <div class="nav-grid">
+  <div className="nav-grid">
     ...
-    <div class="nav-link login-status">
+    <div className="nav-link login-status">
       ...
     </div>
   </div>
@@ -127,10 +127,10 @@ Just like the `#top-header` element, the mobile footer contains a targetable lan
 
 ```
 <!-- Logged in -->
-Sparky<a class="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
+Sparky<a className="signout" href="https://webapp4.asu.edu/myasu/Signout">Sign Out</a>
 
 <!-- Logged out. (This is the normal format of links in this area.) -->
-<a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
+<a className="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign In</a>
 ```
 
 `.navbar-mobile-footer .login-status .signout` will wrap the result in parenthesis (via CSS psudo-elements) and provide a small left margin as a spacer for any leading text.

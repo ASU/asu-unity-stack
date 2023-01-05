@@ -22,7 +22,7 @@ export const Default = createStory(
           args.content ? 'uds-video-with-caption' : ''
         }`}
       >
-        <div class="uds-video-player">
+        <div className="uds-video-player">
           <video caption="Example video">
             <source src={stockVideo} />
             <track
@@ -32,10 +32,10 @@ export const Default = createStory(
               label="english_captions"
             />
           </video>
-          <div class="uds-video-overlay">
+          <div className="uds-video-overlay">
             <button
               type="button"
-              class="btn btn-circle btn-circle-large btn-circle-alt-white uds-video-btn-play"
+              className="btn btn-circle btn-circle-large btn-circle-alt-white uds-video-btn-play"
               data-ga="play button"
               data-ga-name="onclick"
               data-ga-event="link"
@@ -44,8 +44,8 @@ export const Default = createStory(
               data-ga-region="main content"
               data-ga-section="Example video"
             >
-              <i class="fa fa-play"></i>
-              <span class="sr-only">Play</span>
+              <i className="fa fa-play"></i>
+              <span className="sr-only">Play</span>
             </button>
           </div>
         </div>
@@ -70,7 +70,7 @@ export const YoutubeVideo = createStory((args) => {
         args.content ? 'uds-video-with-caption' : ''
       }`}
     >
-      <div class="uds-video-player youtube-video">
+      <div className="uds-video-player youtube-video">
         <iframe
           title="Example video"
           src="https://www.youtube.com/embed/YW2p0ctzK9c"

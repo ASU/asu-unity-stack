@@ -45,20 +45,20 @@ export const Basic = createStory(
           } ${args.bgColor}`}
         >
           {args.icons && (
-            <li class="page-item">
-              <a class="page-link page-link-icon" href="#">
+            <li className="page-item">
+              <a className="page-link page-link-icon" href="#">
                 Prev
               </a>
             </li>
           )}
-          <li class="page-item">
-            <a class="page-link" href="#">
+          <li className="page-item">
+            <a className="page-link" href="#">
               Prev
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -71,9 +71,9 @@ export const Basic = createStory(
               1
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -86,9 +86,9 @@ export const Basic = createStory(
               2
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -101,14 +101,14 @@ export const Basic = createStory(
               3
             </a>
           </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
+          <li className="page-item">
+            <a className="page-link" href="#">
               Next
             </a>
           </li>
           {args.icons && (
-            <li class="page-item">
-              <a class="page-link page-link-icon" href="#">
+            <li className="page-item">
+              <a className="page-link page-link-icon" href="#">
                 Next
               </a>
             </li>

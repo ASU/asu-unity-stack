@@ -9,7 +9,7 @@ export const ButtonColorsComponent = createStory(
     <br />
     {/* This same google analytics structure is for all the examples */}
     <a
-      class="btn btn-primary"
+      className="btn btn-primary"
       href="/"
       data-ga="btn-primary link"
       data-ga-name="onclick"
@@ -21,27 +21,27 @@ export const ButtonColorsComponent = createStory(
       btn-primary link
     </a>
     <hr />
-    <button class="btn btn-primary">btn-primary button</button>
+    <button className="btn btn-primary">btn-primary button</button>
     <hr />
-    <button class="btn btn-gold" type="submit">
+    <button className="btn btn-gold" type="submit">
       Button button
     </button>
     <hr />
-    <a class="btn btn-gold" type="button" href="#">
+    <a className="btn btn-gold" type="button" href="#">
       Anchor tag button
     </a>
     <hr />
-    <input class="btn btn-gold" type="submit" value="Input button" />
+    <input className="btn btn-gold" type="submit" value="Input button" />
     <hr />
-    <button type="button" class="btn btn-maroon">
+    <button type="button" className="btn btn-maroon">
       Maroon
     </button>
     <hr />
-    <button type="button" class="btn btn-gray">
+    <button type="button" className="btn btn-gray">
       Light
     </button>
     <hr />
-    <button type="button" class="btn btn-dark">
+    <button type="button" className="btn btn-dark">
       Dark
     </button>
   </div>,
@@ -63,70 +63,70 @@ export const ButtonSizesComponent = createStory(
   <div>
     <div style={sizesDemoStyle}>
       <div>
-        <button type="button" class="btn btn-maroon">
+        <button type="button" className="btn btn-maroon">
           Default button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-gold">
+        <button type="button" className="btn btn-gold">
           Default button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-dark">
+        <button type="button" className="btn btn-dark">
           Default button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-gray">
+        <button type="button" className="btn btn-gray">
           Default button
         </button>
       </div>
 
       <div>
-        <button type="button" class="btn btn-md btn-maroon">
+        <button type="button" className="btn btn-md btn-maroon">
           Small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-md btn-gold">
+        <button type="button" className="btn btn-md btn-gold">
           Small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-md btn-dark">
+        <button type="button" className="btn btn-md btn-dark">
           Small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-md btn-gray">
+        <button type="button" className="btn btn-md btn-gray">
           Small button
         </button>
       </div>
 
       <div>
-        <button type="button" class="btn btn-sm btn-maroon">
+        <button type="button" className="btn btn-sm btn-maroon">
           X-small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-sm btn-gold">
+        <button type="button" className="btn btn-sm btn-gold">
           X-small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-sm btn-dark">
+        <button type="button" className="btn btn-sm btn-dark">
           X-small button
         </button>
       </div>
       <div>
-        <button type="button" class="btn btn-sm btn-gray">
+        <button type="button" className="btn btn-sm btn-gray">
           X-small button
         </button>
       </div>
 
       <div>
-        <button type="button" class="btn btn-tag-alt-gray">
+        <button type="button" className="btn btn-tag-alt-gray">
           Tag item
         </button>
       </div>
@@ -139,14 +139,14 @@ ButtonSizesComponent.args = {
 };
 
 export const ButtonWithIconComponent = createStory(
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
-      <a href="#" class="btn btn-gold" role="button">
-        <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
+  <div className="container-fluid">
+    <div className="col col-sm-12 p-3">
+      <a href="#" className="btn btn-gold" role="button">
+        <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
       <hr />
-      <a href="#" class="btn btn-maroon" role="button">
-        <span class="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
+      <a href="#" className="btn btn-maroon" role="button">
+        <span className="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
     </div>
   </div>,
@@ -154,19 +154,19 @@ export const ButtonWithIconComponent = createStory(
 );
 
 export const DisabledStateComponent = createStory(
-  <div class="container-fluid">
-    <div class="col col-sm-12 p-3">
-      <button type="button" class="btn btn-gold" disabled>
+  <div className="container-fluid">
+    <div className="col col-sm-12 p-3">
+      <button type="button" className="btn btn-gold" disabled>
         Gold button
       </button>
       <hr />
-      <button type="button" class="btn btn-maroon" disabled>
+      <button type="button" className="btn btn-maroon" disabled>
         Button
       </button>
       <hr />
       <a
         href="#"
-        class="btn btn-gold disabled"
+        className="btn btn-gold disabled"
         tabindex="-1"
         role="button"
         aria-disabled="true"
@@ -176,7 +176,7 @@ export const DisabledStateComponent = createStory(
       <hr />
       <a
         href="#"
-        class="btn btn-maroon disabled"
+        className="btn btn-maroon disabled"
         tabindex="-1"
         role="button"
         aria-disabled="true"
@@ -189,20 +189,20 @@ export const DisabledStateComponent = createStory(
 );
 
 export const ButtonTagsComponent = createStory(
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-12 col-lg-4 bg-white p-3">
-        <a href="#" class="">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col col-12 col-lg-4 bg-white p-3">
+        <a href="#" className="">
           This is a default link
         </a>
       </div>
-      <div class="col col-12 col-lg-4 bg-light p-3">
-        <a href="#" class="">
+      <div className="col col-12 col-lg-4 bg-light p-3">
+        <a href="#" className="">
           This is a default link
         </a>
       </div>
-      <div class="col col-12 col-lg-4 bg-dark p-3">
-        <a href="#" class="text-gold">
+      <div className="col col-12 col-lg-4 bg-dark p-3">
+        <a href="#" className="text-gold">
           This is a link on a dark background
         </a>
       </div>
@@ -212,47 +212,47 @@ export const ButtonTagsComponent = createStory(
 );
 
 export const IconOnlyButtonsColorAndSizesComponent = createStory(
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-12 col-lg-4 bg-white p-3">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col col-12 col-lg-4 bg-white p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-gray">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-gray">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
 
-      <div class="col col-12 col-lg-4 bg-white p-3">
+      <div className="col col-12 col-lg-4 bg-white p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-white">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-white">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
     </div>
@@ -260,86 +260,86 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
   { initFunc }
 );
 export const IconOnlyButtonsColorCombinationsComponent = createStory(
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-12 col-lg-4 bg-white p-3">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col col-12 col-lg-4 bg-white p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-white">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-white">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
-      <div class="col col-12 col-lg-4 bg-light-gray p-3">
+      <div className="col col-12 col-lg-4 bg-light-gray p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-white"
+          className="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-white">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-white">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
-      <div class="col col-12 col-lg-4 bg-light p-3">
+      <div className="col col-12 col-lg-4 bg-light p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-gray">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-gray">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
-      <div class="col col-12 col-lg-4 bg-dark p-3">
+      <div className="col col-12 col-lg-4 bg-dark p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-large btn-circle-alt-gray"
+          className="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
-        <button type="button" class="btn btn-circle btn-circle-alt-gray">
-          <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+        <button type="button" className="btn btn-circle btn-circle-alt-gray">
+          <i className="fas fa-times"></i>
+          <span className="sr-only">Close</span>
         </button>
       </div>
     </div>
@@ -348,54 +348,54 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
 );
 
 export const PrevAndNextButtonsComponent = createStory(
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-12 col-lg-4 bg-white p-3">
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col col-12 col-lg-4 bg-white p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-white btn-circle-large"
+          className="btn btn-circle btn-circle-alt-white btn-circle-large"
         >
-          <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
+          <i className="fas fa-chevron-left"></i>
+          <span className="sr-only">Previous</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-white btn-circle-large"
+          className="btn btn-circle btn-circle-alt-white btn-circle-large"
         >
-          <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
-        </button>
-      </div>
-      <div class="col col-12 col-lg-4 bg-light p-3">
-        <button
-          type="button"
-          class="btn btn-circle btn-circle-alt-gray btn-circle-large"
-        >
-          <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button
-          type="button"
-          class="btn btn-circle btn-circle-alt-gray btn-circle-large"
-        >
-          <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
+          <i className="fas fa-chevron-right"></i>
+          <span className="sr-only">Next</span>
         </button>
       </div>
-      <div class="col col-12 col-lg-4 bg-dark p-3">
+      <div className="col col-12 col-lg-4 bg-light p-3">
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-black btn-circle-large"
+          className="btn btn-circle btn-circle-alt-gray btn-circle-large"
         >
-          <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
+          <i className="fas fa-chevron-left"></i>
+          <span className="sr-only">Previous</span>
         </button>
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-black btn-circle-large"
+          className="btn btn-circle btn-circle-alt-gray btn-circle-large"
         >
-          <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
+          <i className="fas fa-chevron-right"></i>
+          <span className="sr-only">Next</span>
+        </button>
+      </div>
+      <div className="col col-12 col-lg-4 bg-dark p-3">
+        <button
+          type="button"
+          className="btn btn-circle btn-circle-alt-black btn-circle-large"
+        >
+          <i className="fas fa-chevron-left"></i>
+          <span className="sr-only">Previous</span>
+        </button>
+        <button
+          type="button"
+          className="btn btn-circle btn-circle-alt-black btn-circle-large"
+        >
+          <i className="fas fa-chevron-right"></i>
+          <span className="sr-only">Next</span>
         </button>
       </div>
     </div>
@@ -412,47 +412,47 @@ const TestButtons =
   ((
     <div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-gold">
+        <button type="button" className="btn btn-gold">
           Gold
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-maroon">
+        <button type="button" className="btn btn-maroon">
           Maroon
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-link">
+        <button type="button" className="btn btn-link">
           Link
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-light">
+        <button type="button" className="btn btn-light">
           Light
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-dark">
+        <button type="button" className="btn btn-dark">
           Dark
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-success">
+        <button type="button" className="btn btn-success">
           Alert: Success
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-danger">
+        <button type="button" className="btn btn-danger">
           Alert: Danger
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-warning">
+        <button type="button" className="btn btn-warning">
           Alert: Warning
         </button>
       </div>
       <div style={demoButtonStyle}>
-        <button type="button" class="btn btn-info">
+        <button type="button" className="btn btn-info">
           Alert: Info
         </button>
       </div>

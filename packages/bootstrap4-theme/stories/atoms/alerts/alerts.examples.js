@@ -5,11 +5,11 @@ import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js'
 
 export const AlertsComponent = createStory(
   <div>
-    <div class="alert alert-warning alert-dismissable" role="alert">
-      <div class="alert-icon">
-        <span title="Alert" class="fa fa-icon fa-bell"></span>
+    <div className="alert alert-warning alert-dismissable" role="alert">
+      <div className="alert-icon">
+        <span title="Alert" className="fa fa-icon fa-bell"></span>
       </div>
-      <div class="alert-content">
+      <div className="alert-content">
         Warning (orange): This is a warning alert to alert, confirm or notify.
         It is built using{' '}
         <a href="https://getbootstrap.com/docs/4.0/components/alerts">
@@ -17,10 +17,10 @@ export const AlertsComponent = createStory(
         </a>
         .
       </div>
-      <div class="alert-close">
+      <div className="alert-close">
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-black close"
+          className="btn btn-circle btn-circle-alt-black close"
           data-dismiss="alert"
           aria-label="Close"
           data-ga="close cross"
@@ -32,16 +32,16 @@ export const AlertsComponent = createStory(
           data-ga-section="Warning (orange): This is a warning alert to alert, confirm or notify.
           It is built using the Bootstrap 4 .alert-warning class"
         >
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>
 
-    <div class="alert alert-success alert-dismissable" role="alert">
-      <div class="alert-icon">
-        <span title="Success" class="fa fa-icon fa-check-circle"></span>
+    <div className="alert alert-success alert-dismissable" role="alert">
+      <div className="alert-icon">
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
       </div>
-      <div class="alert-content">
+      <div className="alert-content">
         Success (green): This is a success alert to confirm or notify. It is
         built using{' '}
         <a href="https://getbootstrap.com/docs/4.0/components/alerts">
@@ -49,10 +49,10 @@ export const AlertsComponent = createStory(
         </a>
         .
       </div>
-      <div class="alert-close">
+      <div className="alert-close">
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-black close"
+          className="btn btn-circle btn-circle-alt-black close"
           data-dismiss="alert"
           aria-label="Close"
           data-ga="close cross"
@@ -64,16 +64,16 @@ export const AlertsComponent = createStory(
           data-ga-section="Success (green): This is a success alert to confirm or notify. It is
           built using the Bootstrap 4 .alert-success class"
         >
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>
 
-    <div class="alert alert-info" role="alert">
-      <div class="alert-icon">
-        <span title="Information" class="fa fa-icon fa-info-circle"></span>
+    <div className="alert alert-info" role="alert">
+      <div className="alert-icon">
+        <span title="Information" className="fa fa-icon fa-info-circle"></span>
       </div>
-      <div class="alert-content">
+      <div className="alert-content">
         <p>
           Information (blue): This is a info alert to confirm or notify. It is
           built using{' '}
@@ -90,11 +90,14 @@ export const AlertsComponent = createStory(
       </div>
     </div>
 
-    <div class="alert alert-danger" role="alert">
-      <div class="alert-icon">
-        <span title="Error" class="fa fa-icon fa-exclamation-triangle"></span>
+    <div className="alert alert-danger" role="alert">
+      <div className="alert-icon">
+        <span
+          title="Error"
+          className="fa fa-icon fa-exclamation-triangle"
+        ></span>
       </div>
-      <div class="alert-content">
+      <div className="alert-content">
         Error (red): This is a danger alert used specifically for errors. It is
         built using{' '}
         <a href="https://getbootstrap.com/docs/4.0/components/alerts">
@@ -102,10 +105,10 @@ export const AlertsComponent = createStory(
         </a>
         .
       </div>
-      <div class="alert-close">
+      <div className="alert-close">
         <button
           type="button"
-          class="btn btn-circle btn-circle-alt-black close"
+          className="btn btn-circle btn-circle-alt-black close"
           aria-label="Close"
           data-dismiss="alert"
           data-ga="close cross"
@@ -117,7 +120,7 @@ export const AlertsComponent = createStory(
           data-ga-section="Error (red): This is a danger alert used specifically for errors. It is
           built using the Bootstrap 4 .alert-danger class"
         >
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>

@@ -5,14 +5,14 @@ export default createComponent('Dividers', 'Atoms', 'Examples');
 export const Divider = createStory(
   <div>
     <h2>
-      <span class="highlight-gold">Horizontal Rules</span>
+      <span className="highlight-gold">Horizontal Rules</span>
     </h2>
     <h3>
-      <span class="highlight-black">Margin-width content divider</span>
+      <span className="highlight-black">Margin-width content divider</span>
     </h3>
     <hr />
     <h3>
-      <span class="highlight-black">Gold body copy divider</span>
+      <span className="highlight-black">Gold body copy divider</span>
     </h3>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -30,7 +30,7 @@ export const Divider = createStory(
       Donec et odio pellentesque diam volutpat commodo. Sed velit dignissim
       sodales ut eu sem integer. Adipiscing enim eu turpis egestas pretium.
     </p>
-    <hr class="copy-divider" />
+    <hr className="copy-divider" />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Mollis nunc sed id

@@ -8,7 +8,7 @@ export default createComponent(
 
 export const BlockquoteNoImage = createStory(
   <div>
-    <div class="uds-blockquote accent-maroon uds-content-align">
+    <div className="uds-blockquote accent-maroon uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
       </svg>
@@ -19,17 +19,17 @@ export const BlockquoteNoImage = createStory(
           Rights, that among these are Life, Liberty and the pursuit of
           Happiness.
         </p>
-        <div class="citation">
-          <div class="citation-content">
-            <cite class="name">Thomas Jefferson</cite>
-            <cite class="description">The Declaration of Independence</cite>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="name">Thomas Jefferson</cite>
+            <cite className="description">The Declaration of Independence</cite>
           </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="bg-gray-7">
-      <div class="uds-blockquote accent-gold text-white uds-content-align">
+    <div className="bg-gray-7">
+      <div className="uds-blockquote accent-gold text-white uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
         </svg>
@@ -39,10 +39,10 @@ export const BlockquoteNoImage = createStory(
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Abraham Lincoln Lincoln Lincoln </cite>
-              <cite class="description">Gettysburg Address</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Abraham Lincoln Lincoln Lincoln </cite>
+              <cite className="description">Gettysburg Address</cite>
             </div>
           </div>
         </blockquote>
@@ -56,7 +56,7 @@ BlockquoteNoImage.args = {
 
 export const BlockquoteWithImage = createStory(
   <div>
-    <div class="uds-blockquote with-image uds-content-align">
+    <div className="uds-blockquote with-image uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/600x400"
         alt="Pretend this is Michael M. Crow, President of ASU"
@@ -69,17 +69,17 @@ export const BlockquoteWithImage = createStory(
           fundamental responsibility for the economic, social, cultural and
           overall health of the communities it serves.
         </p>
-        <div class="citation">
-          <div class="citation-content">
-            <cite class="name">Michael M. Crow</cite>
-            <cite class="description">ASU Charter</cite>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="name">Michael M. Crow</cite>
+            <cite className="description">ASU Charter</cite>
           </div>
         </div>
       </blockquote>
     </div>
 
-    <section class="bg-gray-2">
-      <div class="uds-blockquote with-image reversed uds-content-align">
+    <section className="bg-gray-2">
+      <div className="uds-blockquote with-image reversed uds-content-align">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/300x300"
           alt="Pretend this is Michael M. Crow, President of ASU"
@@ -91,10 +91,10 @@ export const BlockquoteWithImage = createStory(
             in innovative ways throughout the university to achieve excellence,
             access and impact.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Michael M. Crow</cite>
-              <cite class="description">ASU Charter</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Michael M. Crow</cite>
+              <cite className="description">ASU Charter</cite>
             </div>
           </div>
         </blockquote>
@@ -105,30 +105,30 @@ export const BlockquoteWithImage = createStory(
 
 export const BlockquoteNoCitation = createStory(
   <div>
-    <div class="uds-blockquote no-citation with-image uds-content-align">
+    <div className="uds-blockquote no-citation with-image uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/300x300"
         alt="Image of Walt Disney"
       />
       <blockquote>
         <h3>
-          <span class="highlight-black">Walt Disney</span>
+          <span className="highlight-black">Walt Disney</span>
         </h3>
         <p>Laughter is timeless, imagination has no age, dreams are forever.</p>
       </blockquote>
     </div>
 
-    <div class="bg-gray-7">
-      <div class="uds-blockquote no-citation with-image reversed uds-content-align">
+    <div className="bg-gray-7">
+      <div className="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/300x300"
           alt="Image of Walt Disney"
         />
         <blockquote>
           <h3>
-            <span class="highlight-gold">Walt Disney</span>
+            <span className="highlight-gold">Walt Disney</span>
           </h3>
-          <p class="text-white">
+          <p className="text-white">
             We keep opening new doors and doing new things, because we’re
             curious and curiosity keeps leading us down new paths.
           </p>
@@ -140,7 +140,7 @@ export const BlockquoteNoCitation = createStory(
 
 export const BlockquoteAltCitation = createStory(
   <div>
-    <div class="uds-blockquote alt-citation accent-gold uds-content-align">
+    <div className="uds-blockquote alt-citation accent-gold uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
       </svg>
@@ -149,17 +149,17 @@ export const BlockquoteAltCitation = createStory(
           Some people want it to happen, some people wish it would happen and
           some people make it happen.
         </p>
-        <div class="citation">
-          <div class="citation-content">
-            <cite class="name">Michael Jordan</cite>
-            <cite class="description">NBA Superstar</cite>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="name">Michael Jordan</cite>
+            <cite className="description">NBA Superstar</cite>
           </div>
         </div>
       </blockquote>
     </div>
 
-    <section class="bg-gray-1">
-      <div class="uds-blockquote alt-citation accent-maroon uds-content-align">
+    <section className="bg-gray-1">
+      <div className="uds-blockquote alt-citation accent-maroon uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
         </svg>
@@ -167,10 +167,10 @@ export const BlockquoteAltCitation = createStory(
           <p>
             Talent wins games, but teamwork and intelligence wins championships.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Michael Jordan</cite>
-              <cite class="description">NBA Superstar</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Michael Jordan</cite>
+              <cite className="description">NBA Superstar</cite>
             </div>
           </div>
         </blockquote>
@@ -181,7 +181,7 @@ export const BlockquoteAltCitation = createStory(
 
 export const TestimonialsNoImage = createStory(
   <div>
-    <div class="uds-blockquote uds-testimonial accent-gold uds-content-align">
+    <div className="uds-blockquote uds-testimonial accent-gold uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
       </svg>
@@ -190,17 +190,17 @@ export const TestimonialsNoImage = createStory(
           Computers make excellent and efficient servants, but I have no wish to
           serve under them.
         </p>
-        <div class="citation">
-          <div class="citation-content">
-            <cite class="name">Spock</cite>
-            <cite class="description">First officer, USS Enterprise</cite>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="name">Spock</cite>
+            <cite className="description">First officer, USS Enterprise</cite>
           </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="bg-gray-2">
-      <div class="uds-blockquote uds-testimonial accent-maroon uds-content-align">
+    <div className="bg-gray-2">
+      <div className="uds-blockquote uds-testimonial accent-maroon uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
         </svg>
@@ -210,10 +210,10 @@ export const TestimonialsNoImage = createStory(
             accomplish together, of a friendship that will define you both in
             ways you cannot yet realize.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Spock</cite>
-              <cite class="description">First officer, USS Enterprise</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Spock</cite>
+              <cite className="description">First officer, USS Enterprise</cite>
             </div>
           </div>
         </blockquote>
@@ -227,7 +227,7 @@ TestimonialsNoImage.args = {
 
 export const TestimonialsWithImage = createStory(
   <div>
-    <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
+    <div className="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/600/400/arch"
         alt="Pretend this is Han Solo"
@@ -240,16 +240,16 @@ export const TestimonialsWithImage = createStory(
           Hokey religions and ancient weapons are no match for a good blaster at
           your side, kid.
         </p>
-        <div class="citation">
-          <div class="citation-content">
-            <cite class="name">Han Solo</cite>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="name">Han Solo</cite>
           </div>
         </div>
       </blockquote>
     </div>
 
-    <div class="bg-gray-7">
-      <div class="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
+    <div className="bg-gray-7">
+      <div className="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/400x400"
           alt="Pretend this is Han Solo"
@@ -264,9 +264,9 @@ export const TestimonialsWithImage = createStory(
             dark side and the light? Crazy thing is, it’s true. The Force, the
             Jedi — all of it. It’s all true.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Han Solo</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Han Solo</cite>
             </div>
           </div>
         </blockquote>

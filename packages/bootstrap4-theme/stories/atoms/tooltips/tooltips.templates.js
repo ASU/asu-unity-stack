@@ -25,7 +25,7 @@ export const Tooltips = createStory(
   (args) => {
     return (
       <div class={`uds-tooltip-bg-${args.color}`}>
-        <div class="uds-tooltip-container">
+        <div className="uds-tooltip-container">
           <button
             tabindex="0"
             class={`uds-tooltip uds-tooltip-${
@@ -33,18 +33,20 @@ export const Tooltips = createStory(
             }`}
             aria-describedby="tooltip-desc-1"
           >
-            <span class="fa-stack">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fas fa-info fa-stack-1x"></i>
+            <span className="fa-stack">
+              <i className="fas fa-circle fa-stack-2x"></i>
+              <i className="fas fa-info fa-stack-1x"></i>
             </span>
-            <span class="uds-tooltip-visually-hidden">Notifications</span>
+            <span className="uds-tooltip-visually-hidden">Notifications</span>
           </button>
           <div
             role="tooltip"
-            class="uds-tooltip-description"
+            className="uds-tooltip-description"
             id="tooltip-desc-1"
           >
-            <span class="uds-tooltip-heading">Lorem ipsum dolor sit amet</span>
+            <span className="uds-tooltip-heading">
+              Lorem ipsum dolor sit amet
+            </span>
             Other content
           </div>
         </div>
