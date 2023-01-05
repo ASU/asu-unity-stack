@@ -68,12 +68,14 @@ spec:
                     sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
 
-                    echo '## Configure .npmrc file for Github Package registry...'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com/" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
-                    echo '## Publishing packages...'
-                    sh 'yarn publish-packages'
+                    withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}", "NPM_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                      echo '## Configure .npmrc file for Github Package registry...'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      echo '## Publishing packages...'
+                      sh 'yarn publish-packages'
+                    }
                   }
                 }
             }
@@ -115,8 +117,14 @@ spec:
             steps {
                 container('node14') {
                     script {
-                        echo '# Publishing packages to GitHub Packages registry...'
-                        sh 'yarn publish-packages'
+                      withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}", "NPM_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                      echo '## Configure .npmrc file for Github Package registry...'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      echo '## Publishing packages...'
+                      sh 'yarn publish-packages'
+                      }
                     }
                 }
             }
