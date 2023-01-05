@@ -51,10 +51,9 @@ spec:
             steps {
                 container('node14') {
                   script {
-                    env.GH_TOKEN = RAW_GH_TOKEN_PSW
                     echo '## Print all environment variables'
                     sh 'printenv'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" > ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" > ~/.npmrc'
                     sh 'echo npm whoami --registry=https://npm.pkg.github.com/'
 
                     // TODO Update after transition to new registry is complete
@@ -67,20 +66,12 @@ spec:
                     sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
 
-                    // TODO Remove after transition as it will be set in environment block:
-                    // Use Github token as NPM token with GH Packages
-                    NPM_TOKEN = GH_TOKEN
-                    NODE_AUTH_TOKEN = GH_TOKEN
-
-                    withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                      sh 'echo "${GH_TOKEN}"'
-                      echo '## Configure .npmrc file for Github Package registry...'
-                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                      sh 'echo "always-auth=true" >> ~/.npmrc'
-                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-                      echo '## Publishing packages...'
-                      sh 'yarn publish-packages'
-                    }
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com/" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
+                    echo '## Publishing packages...'
+                    sh 'yarn publish-packages'
                   }
                 }
             }
@@ -88,20 +79,13 @@ spec:
         stage('Build') {
             steps {
                 container('node14') {
-                    // TODO Update after transition to new registry is complete
-                    echo '## Configure .npmrc file for legacy registry...'
-                    sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-
-                    // echo '## Configure .npmrc file for Github Package registry...'
-                    // Note: In the first command single > redirect (re)creates file
-                    // sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    // sh 'echo "always-auth=true" >> ~/.npmrc'
-                    // sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install'
+                    sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
                 }
             }
@@ -121,24 +105,12 @@ spec:
         }
         stage('Publish') {
             when {
-                branch 'NOdev'
+                branch 'dev'
             }
             steps {
                 container('node14') {
                     script {
-                        // TODO Remove after transition as it will be set in environment block:
-                        // Use Github token as NPM token with GH Packages
-                        NPM_TOKEN = GH_TOKEN
-
                         echo '# Publishing packages to GitHub Packages registry...'
-
-                        echo '## Re-set .npmrc file for Github Package registry...'
-                        // Note: In the first command, the single > redirect (re)creates file
-                        sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                        sh 'echo "always-auth=true" >> ~/.npmrc'
-                        sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
-
-                        echo '## Publishing packages...'
                         sh 'yarn publish-packages'
                     }
                 }
@@ -146,21 +118,13 @@ spec:
         }
         stage('Deploy') {
             when {
-              branch 'NOdev'
+              branch 'dev'
             }
             steps {
                 container('node14') {
                     script {
-                        // TODO Remove after transition as it will be set in environment block:
-                        // Use Github token as NPM token with GH Packages
-                        NPM_TOKEN = GH_TOKEN
-
-                        // echo "Debug persisted .npmrc..."
-                        // sh 'cat ~/.npmrc'
-                        // sh 'yarn config list'
-
                         echo '# Final, post-publish install and build...'
-                        sh 'yarn install'
+                        sh 'yarn install --frozen-lockfile'
                         sh 'yarn build'
 
                         echo '# Prebuild Storybook static site as dry-run...'
