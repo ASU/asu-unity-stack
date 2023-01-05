@@ -98,23 +98,21 @@ volta install npm
 
 ## ❯ How to use the private package registry:
 
-The ASU Unity Design System packages have been published to a private package service that requires user authentication. Before you can install or update these packages in this project (inlcuding running `yarn install` for the first time after the project is cloned to your local machine), you must create a user account on the ASU private Verdaccio package server and sign-in.
+The ASU Unity Design System packages have been published to GitHub's package registry. This is a prublic registry, but it is not the same as the NPM registry. To use the packages, you need to configure your local NPM to use the private registry.
 
-1. Visit this URL and follow step #1 to add yourself as a user: [http://registry.web.asu.edu/](http://registry.web.asu.edu/) Don't try to do step #2. Only certain users have access to publish packages.
+1. There is a ```.npmrc``` file in the root of this project with the correct scope of the newer ```@asu``` packages.
 
-2. Configure NPM to use our private registry. The easiest way is to add the following line to the .npmrc file in your home directory (e.g. `/home/{username}/.npmrc`):
-
-```@asu-design-system:registry=https://registry.web.asu.edu/```
-
-This config tells NPM that all packages with the ‘@asu-design-system’ should be grabbed from our private registry. If it says you are not authorized, login using:
-
-```npm login --registry https://registry.web.asu.edu/```
+2. This config tells NPM that all packages with the ‘@asu’ should be grabbed from our Github package registry. If it says you are not authorized, typically this means your local machine is not set up with ssh keys to access Github. You can fix this by following the instructions here: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
 3. Test installing packages using yarn or npm inside of another NPM project:
 
-```yarn add @asu-design-system/design-tokens```
+```yarn add @asu/design-tokens```
 
-Remember to add ‘@dev’ if you wish to install from ‘dev’ channel.
+### TROUBLESHOOTING INSTALLATION ERRORS
+
+if you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the root and look for ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
+### TODO
+add ‘@dev’ channel to release process for testing purposes
 
 #### Local development
 The easiest way to get started is to spin up storybook as a dev environment:
@@ -127,7 +125,7 @@ yarn build # do this at git root
 cd packages/<package-name> # step into package root
 yarn storybook # run storybook
 ```
-If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu-design-system:registry=https://registry.web.asu.edu` is in your `~/.npmrc` file. This will ensure that all @asu-design-system packages are sourced from the registry.
+If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu:registry=https://npm.pkg.github.com` is in your `.npmrc` file at root of package. This will ensure that all @asu packages are sourced from the registry.
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
@@ -304,23 +302,6 @@ To assist contributors with writing compliant commit messages, the `commitizen` 
 ## ❯ Contributing:
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
-
-# Github Actions Deployment Process (NOT YET IMPLEMENTED)
-
-A Github Action workflow is triggered by pushing to the `dev` branch. A push includes merging a pull request or pushing directly to the branch. The file containing the steps executed during the workflow is located at the project root, `.github/workflows/development-workflow.yml`. Currently, the workflow consists of a single job with several steps. Alternatively, the same workflow could be logically split up into several jobs (ex. Build/test/deploy). Both options have pros and cons. The pros to having the workflow consist of a single job include the fact that a single job executes steps on the same runner. If the build step and test step were different jobs, you would either need to build again in the test job, or save the build output as an artifact in the first job and retrieve it in the second. Depending on number of dependencies, etc, this could drastically increase build times. Reducing the workflow to a single job also saves on account minutes. See [here](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions) for more information about github account minutes and billing. Some considerations for whether to use multiple jobs include: breaking the workflow up logically into jobs, and ability for a job to depend on completion of a previous job, ex. deploy job depends on test job to successfully complete in order for the deploy job to run.
-
-The bulk of the workflow steps should be self explanatory. The "Setup node" step sets up the node environment to run commands from (yarn install, etc.). This setup step also creates a stubbed out .npmrc file. You can see the contents of that file [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry). Most of the work happens in the "Install and build" step. First, `yarn install` is ran to install dependencies in all packages. Secondly, `yarn build` is ran, which corresponds to the script `lerna run build`. This will run the build script in each package, which varies depending on the package. The bootstrap4-theme package utilizes gulp, while other packages build utilizing webpack, for example.
-
-If the storybook build needs the static files generated by a package's build output, that package must have a `"build-storybook"` script in its package.json file that passes the static build directory as a command line argument. For example, the bootstrap4-theme package build output directory is `dist`. The monorepo index.html file generated and published to Github pages relies on the css and images found in bootstrap4-theme's `dist` directory, so the bootstrap4-theme package must have a "build-storybook" script that specifies the location of these static files. The resulting "build-storybook" script for bootstrap4-theme looks like this: `"build-storybook": "build-storybook -s ./dist"`.
-
-Once each package has run its individual build process, the github action workflow runs the `yarn deploy-storybook` command. This is first done using the `--dry-run` flag. This causes the build to be created but does not publish it to github pages just yet. The reason for this is that the final static site includes some pages that were previously being served by an express server inside a docker container hosted in AWS. These pages were dynamically rendered nunjucks templates, but the move to Github Pages dicated that we compile them into static files to be served. After the storybook monorepo build is complete, the workflow runs the gulp file located at the project root. This gulp file simply moves the nunjucks templates into the storybook monorepo build in such a way that all the `includes` are still valid, then compiles them to static html files before once again moving them one directory up inside the storybook monorepo build (so they are linkable via index.html entry). After this is complete, we can run `yarn deploy-storybook` again, specifying the existing build output directory, to push the final built static site to Github Pages. The deploy-storybook command looks as follows:
-
-`storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=dev --dry-run`
-
-For more information on the arguments used, look [here](https://www.npmjs.com/package/@storybook/storybook-deployer)
-
-*** As a side note, one of the quirks of the storybook-deployer package where the `storybook-to-ghpages` command comes is that, when indicating that the repo is a monorepo, each package's storybook build is first output inside it's respective package, before being moved to the root of the project and combined with the other package's build outputs (and the index.html, linking to each package's storybook). While setting this up, it is being noted that the build directory itself is not being fully removed as part of cleanup. [This](https://github.com/storybookjs/storybook-deployer/blob/b850547021735c41e3d640fc05de3a73677d37c6/src/build.js#L47) is where the storybook-deployer package attempts to remove the directory. The project's .gitignore file already ignores directories named "build", so this should not be an issue, but in case anyone runs across this, this is why you may be seeing empty build directories inside the packages locally.
-
 
 ### TODO
 Dockerfile, Jenkinsfile, and server/server.js and server/stop.js will become unnecessary and can be removed.
