@@ -85,6 +85,9 @@ spec:
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
+                    sh 'echo "@asu-design-system:registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --frozen-lockfile'
