@@ -43,7 +43,7 @@
   "devDependencies": {
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/storybook": "^4.0.3",
-    "@asu/bootstrap4-theme": "latest",
+    "@asu/bootstrap4-theme": "^1.0.0",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.14",
     "@storybook/addon-actions": "^6.2.3",

@@ -24,7 +24,7 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
-    "@asu/design-tokens": "latest",
+    "@asu/design-tokens": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/storybook": "^4.0.3",

@@ -33,7 +33,7 @@
     "semantic-release-monorepo": "^7.0.4"
   },
   "dependencies": {
-    "@asu/design-tokens": "latest",
+    "@asu/design-tokens": "^1.0.0",
     "@emotion/css": "^11.0.0",
     "@emotion/server": "^11.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
