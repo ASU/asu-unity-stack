@@ -3703,7 +3703,7 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@storybook/addon-a11y@^6.1.15", "@storybook/addon-a11y@^6.3.4", "@storybook/addon-a11y@^6.5.15":
+"@storybook/addon-a11y@^6.1.15", "@storybook/addon-a11y@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.5.15.tgz#2e36fdadf2b1e0fd68d19a24c537bd2d73ad7cca"
   integrity sha512-4IgsCU7mrfooyGSgvyQdkZVu2iGJZqZ+2GDDIzzeIs1yXvuRy6QiHYNzesSrgeL52ykDXaPGuzKu2pcMKfDQHA==
@@ -3725,7 +3725,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-actions@6.5.15", "@storybook/addon-actions@^6.1.15", "@storybook/addon-actions@^6.3.4", "@storybook/addon-actions@^6.5.15":
+"@storybook/addon-actions@6.5.15", "@storybook/addon-actions@^6.1.15", "@storybook/addon-actions@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.5.15.tgz#ba737561dbf8a358ea8bc588f3da9fddd1a4267e"
   integrity sha512-cnLzVK1S+EydFDSuvxMmMAxVqNXijBGdV9QTgsu6ys5sOkoiXRETKZmxuN8/ZRbkfc4N+1KAylSCZOOHzBQTBQ==
@@ -3769,7 +3769,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-controls@6.5.15", "@storybook/addon-controls@^6.3.4", "@storybook/addon-controls@^6.5.15":
+"@storybook/addon-controls@6.5.15", "@storybook/addon-controls@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-6.5.15.tgz#2a1f590d5624f658561b8e0ff144667248baf907"
   integrity sha512-q5y0TvD0stvQoJZ2PnFmmKIRNSOI4/k2NKyZq//J2cBUBcP1reYlFxdsNwLZWmAFpSIkc2+nsliEzNxU1WByoA==
@@ -3787,7 +3787,7 @@
     lodash "^4.17.21"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@6.5.15", "@storybook/addon-docs@^6.2.9", "@storybook/addon-docs@^6.3.4", "@storybook/addon-docs@^6.5.15":
+"@storybook/addon-docs@6.5.15", "@storybook/addon-docs@^6.2.9", "@storybook/addon-docs@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.5.15.tgz#d5f4b991636953f30daea6aa89d5bfdfa97b9116"
   integrity sha512-k3LAu+wVp6pNhfh6B1soCRl6+7sNTNxtqy6WTrIeVJVCGbXbyc5s7gQ48gJ4WAk6meoDEZbypiP4NK1El03YLg==
@@ -3821,7 +3821,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-essentials@^6.2.3", "@storybook/addon-essentials@^6.3.4", "@storybook/addon-essentials@^6.5.15":
+"@storybook/addon-essentials@^6.2.3", "@storybook/addon-essentials@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-6.5.15.tgz#cfbf6cacfbc7d14ac30aab118efcac818f0814ba"
   integrity sha512-m3EY6BhUk6Z9Et7P5wGaRGNoEDHzJIOsLbGS/4IXvIoDfrqmNIilqUQl8kfDqpVdBSFprvpacHpKpLosu9H37w==
@@ -3859,7 +3859,7 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^3.2.0"
 
-"@storybook/addon-links@^6.2.3", "@storybook/addon-links@^6.3.4", "@storybook/addon-links@^6.5.15":
+"@storybook/addon-links@^6.2.3", "@storybook/addon-links@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.5.15.tgz#97508726090a006f6c042a687ec89496c96436c4"
   integrity sha512-L7Q3u/xEUuy1uPq8ttjDfvDj19Hr2Crq/Us0RfowfGAAzOb7fCoiUJDP37ADtRUlCYyuKM5V/nHxN8eGpWtugw==
@@ -4456,7 +4456,7 @@
     react-docgen-typescript "^2.1.1"
     tslib "^2.0.0"
 
-"@storybook/react@^6.2.3", "@storybook/react@^6.2.9", "@storybook/react@^6.3.4", "@storybook/react@^6.5.15":
+"@storybook/react@^6.2.3", "@storybook/react@^6.2.9", "@storybook/react@^6.5.15":
   version "6.5.15"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.5.15.tgz#83e645b16a4d241ec84a8d0015b1a7a2d55c5091"
   integrity sha512-iQta2xOs/oK0sw/zpn3g/huvOmvggzi8z2/WholmUmmRiSQRo9lOhRXH0u13T4ja4fEa+u7m58G83xOG6i73Kw==
@@ -21378,7 +21378,7 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.14.2.tgz#56138d200f9fe5f582ad63bc2704dbc0e4a45068"
   integrity sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==
 
-storybook-addon-mock@^1.3.0:
+storybook-addon-mock@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/storybook-addon-mock/-/storybook-addon-mock-1.7.0.tgz#94ab14c5684110a6bdf3d915293343c821b298db"
   integrity sha512-3VZFuEqWNYgYeMrTWvtGHzhA3twppwX983Sun1m+i2/beQi1D9vSeMheaUL1fPzy3ZZ78BNUaEA9XxTguAfXJw==
