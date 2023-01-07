@@ -14,7 +14,11 @@
     "dist/*",
     "docs/*"
   ],
-  "repository": "https://github.com/asu/asu-unity-stack.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/app-degree-pages"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com"
