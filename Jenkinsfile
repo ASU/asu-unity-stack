@@ -54,7 +54,7 @@ spec:
                     echo '## Print all environment variables'
                     sh 'printenv'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" > ~/.npmrc'
-                    sh 'echo npm whoami --registry=https://npm.pkg.github.com/'
+                    sh 'npm whoami --registry=https://npm.pkg.github.com/'
 
                     // TODO Update after transition to new registry is complete
                     echo '## Configure .npmrc file for legacy registry...'
