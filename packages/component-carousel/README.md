@@ -3,7 +3,6 @@ ASU Web Standards-based implementation of `@glidejs/glide` npm library carousel.
 
 ## Architecture details
 
-
 This component is a simple react application showing four different carousels in the `Component views` section.
 <br />The core functionalities, such as transitions, responsiveness, are provided by the library `glidejs`.
 <br />The `BaseCarousel` component is the core of the application that implements `glidejs` APIs,

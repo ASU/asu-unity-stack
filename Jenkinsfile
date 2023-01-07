@@ -68,7 +68,7 @@ spec:
                     sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
 
-                    withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}", "NPM_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                    withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                       echo '## Configure .npmrc file for Github Package registry...'
                       sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                       sh 'echo "always-auth=true" >> ~/.npmrc'
