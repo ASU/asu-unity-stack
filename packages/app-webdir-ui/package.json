@@ -40,7 +40,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
-    "@asu-design-system/component-carousel": "^1.8.3",
+    "@asu/component-carousel": "^1.0.0",
     "@asu/components-core": "^1.0.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
