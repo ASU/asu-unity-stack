@@ -43,7 +43,6 @@
   </head>
 
   <body>
-    {% include "components-library/templates/component.html" %}
     <div class="container">
       <!-- Include pre-rendered AsuBrandHeader React component -->
       {# <div id="headerContainer">{% include "static-header.njk" %}</div> #}
@@ -129,7 +128,6 @@
                         title: "ASU Themes Global Header Example",
                       };
 
-                      componentsLibrary.initHeader(props);
 
                       // Initialize cookie consent banner if needed
                       AsuCookieConsent.init();
@@ -226,7 +224,6 @@
                         ]
                       };
 
-                      componentsLibrary.initHeader(props);
 
                       // Initialize cookie consent banner
                       AsuCookieConsent.init();
@@ -261,7 +258,7 @@
       </section>-->
     </div>
     <footer>
-      {% include "components-library/templates/component-footer.html" %}
+
 
       <script>
 
@@ -350,10 +347,6 @@
           baseUrl: "/asuthemes"
         };
 
-        componentsLibrary.initHeader(props);
-
-        // Initialize cookie consent banner
-        AsuCookieConsent.init();
       </script>
     </footer>
   </body>
