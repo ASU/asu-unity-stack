@@ -87,9 +87,6 @@ spec:
                     sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                     sh 'echo "always-auth=true" >> ~/.npmrc'
                     sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
-                    sh 'echo "@asu-design-system:registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
 
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --frozen-lockfile'
@@ -117,7 +114,7 @@ spec:
             steps {
                 container('node14') {
                     script {
-                      withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}", "NPM_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                      withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                       echo '## Configure .npmrc file for Github Package registry...'
                       sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
                       sh 'echo "always-auth=true" >> ~/.npmrc'
