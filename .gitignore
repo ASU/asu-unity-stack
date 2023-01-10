@@ -105,6 +105,7 @@ build
 stats.html
 percy-storybook
 
+.npmrc
 .history
 .idea
 # End of https://www.gitignore.io/api/node

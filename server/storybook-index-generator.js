@@ -17,12 +17,12 @@ module.exports = generateHTML = packages => `
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./@asu-design-system/bootstrap4-theme/css/bootstrap-asu.css">
+    <link rel="stylesheet" href="./@asu/bootstrap4-theme/css/bootstrap-asu.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/js/global-header.js"></script>
-    <script type="text/javascript" src="./@asu-design-system/bootstrap4-theme/assets/fontawesome/js/all.js"></script>
+    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/global-header.js"></script>
+    <script type="text/javascript" src="./@asu/bootstrap4-theme/assets/fontawesome/js/all.js"></script>
 
     <style>
     #header-top input[type='search'] {
@@ -90,8 +90,8 @@ module.exports = generateHTML = packages => `
             <nav class="navbar navbar-expand-xl" aria-label="Main">
 
               <a class="navbar-brand" href="#">
-                <img class="vert" src="./@asu-design-system/bootstrap4-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
-                <img class="horiz" src="./@asu-design-system/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
+                <img class="vert" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
+                <img class="horiz" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
               </a>
 
               <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,9 +178,10 @@ module.exports = generateHTML = packages => `
 
         <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
-          <p>Learn how to install and use the packages listed below in your ASU projects. On your first visit, follow steps 1 and 3, skipping 2. Users cannot publish packages.
-          If you receive errors attempting to install packages from the registry, please ensure the line <strong>@asu-design-system:registry=https://registry.web.asu.edu</strong> is in your <strong>~/.npmrc</strong> file.</p>
-          <p><a class="btn btn-maroon btn-medium" href="https://registry.web.asu.edu/">Visit package registry</a></p>
+          <p><a href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
+            Learn How to use the private package registry</a> and begin using
+            Unity packages in your site or application.</p>
+          <p><a class="btn btn-maroon btn-medium" href="https://github.com/orgs/ASU/packages?repo_name=asu-unity-stack">Visit package registry</a></p>
         </div>
 
         ${packages.map(generateRow).join("")}
@@ -201,7 +202,7 @@ module.exports = generateHTML = packages => `
                 href="https://www.asu.edu/rankings"
               >
                 <img
-                  src="./@asu-design-system/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                  src="./@asu/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
                 />
               </a>
