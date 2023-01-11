@@ -159,6 +159,7 @@ yarn stop # stop the testing server
 This tool shows outdated markup into the folder `bootstrap4-theme`
 It takes as an argument the number of days past from the last file changes.
 
+
 Example:
 let's say today is 4 November 2021 and I want to show those files changed 8 days ago
 
