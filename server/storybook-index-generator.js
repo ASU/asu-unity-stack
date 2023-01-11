@@ -179,8 +179,9 @@ module.exports = generateHTML = packages => `
         <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
           <p><a href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
-            Learn how to use the private package registry</a> and begin using
-            Unity packages in your site or application.</p>
+            Learn how to use the private package registry</a> to incorporate
+            Unity packages in your site or application. Note: You must belong to the ASU GitHub organization
+            to access these packages. <a href="https://asu.edu/webservices">Request access to the Unity Design System GitHub Repo</a> if you need that.</p>
           <p><a class="btn btn-maroon btn-medium" href="https://github.com/orgs/ASU/packages?repo_name=asu-unity-stack">Visit package registry</a></p>
         </div>
 
