@@ -6,11 +6,11 @@ const filter = require("gulp-filter");
 copy = () =>
   gulp
     .src(["./server/views/**/*"])
-    .pipe(gulp.dest("./build/@asu-design-system"));
+    .pipe(gulp.dest("./build/@asu"));
 
 compile = () =>
   gulp
-    .src("./build/@asu-design-system/**/*.njk")
+    .src("./build/@asu/**/*.njk")
     .pipe(nunjucks.compile())
     // Commented out next line for Jenkins build. Breaks static build.
     // Uncomment with cutover to GitHub Actions build. UDS-634
@@ -20,10 +20,9 @@ compile = () =>
 cleanup = () =>
   gulp
     .src([
-      "./build/@asu-design-system/asuheader",
-      "./build/@asu-design-system/asuthemes",
-      "./build/@asu-design-system/kitchen-sink",
-      "./build/@asu-design-system/nav.njk",
+      "./build/@asu/asuheader",
+      "./build/@asu/asuthemes",
+      "./build/@asu/nav.njk",
     ])
     .pipe(clean());
 

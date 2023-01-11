@@ -26,11 +26,6 @@ app.use(express.static("packages"));
  * Kitchen sink page
  * Serve HTML page which tests bundled packages
  */
-app.get("/kitchen-sink", function (req, res) {
-  // Important: This index.njs is a nunjucks template and resides in 'server/views'.
-  // Not to be confused with the root index.html in the static Storybook 'build' directory.
-  res.render("kitchen-sink/index.njk");
-});
 
 /***
  * Asuthemes header includes example

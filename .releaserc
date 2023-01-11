@@ -1,6 +1,10 @@
 {
   "branches": [
-    "dev"
+    "dev",
+    {
+      "name": "testing-whoami",
+      "channel": "testing"
+    }
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",

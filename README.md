@@ -98,11 +98,11 @@ volta install npm
 
 ## ❯ How to use the private package registry:
 
-The ASU Unity Design System packages have been published to GitHub's package registry. This is a prublic registry, but it is not the same as the NPM registry. To use the packages, you need to configure your local NPM to use the private registry.
+The ASU Unity Design System packages have been published to GitHub's package registry. This is a public registry, but it is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use the private registry.
 
-1. There is a ```.npmrc``` file in the root of this project with the correct scope of the newer ```@asu``` packages.
+1. There is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. You can make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies in your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
 
-2. This config tells NPM that all packages with the ‘@asu’ should be grabbed from our Github package registry. If it says you are not authorized, typically this means your local machine is not set up with ssh keys to access Github. You can fix this by following the instructions here: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+2. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
 
 3. Test installing packages using yarn or npm inside of another NPM project:
 
@@ -110,9 +110,7 @@ The ASU Unity Design System packages have been published to GitHub's package reg
 
 ### TROUBLESHOOTING INSTALLATION ERRORS
 
-if you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the root and look for ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
-### TODO
-add ‘@dev’ channel to release process for testing purposes
+If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
 
 #### Local development
 The easiest way to get started is to spin up storybook as a dev environment:
@@ -125,7 +123,7 @@ yarn build # do this at git root
 cd packages/<package-name> # step into package root
 yarn storybook # run storybook
 ```
-If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu:registry=https://npm.pkg.github.com` is in your `.npmrc` file at root of package. This will ensure that all @asu packages are sourced from the registry.
+If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu:registry=https://npm.pkg.github.com` is in your `.npmrc` file. This will ensure that all @asu packages are sourced from the registry.
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
@@ -160,6 +158,7 @@ yarn stop # stop the testing server
 
 This tool shows outdated markup into the folder `bootstrap4-theme`
 It takes as an argument the number of days past from the last file changes.
+
 
 Example:
 let's say today is 4 November 2021 and I want to show those files changed 8 days ago
