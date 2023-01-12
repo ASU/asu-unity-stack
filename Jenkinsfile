@@ -44,7 +44,7 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
-         stage('Debug') {
+         stage('Developer release') {
             when {
                 branch 'testing'
             }
