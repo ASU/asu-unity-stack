@@ -1,5 +1,5 @@
 // @ts-check
-// import * as componentsCore from "@asu-design-system/components-core";
+// import * as componentsCore from "@asu/components-core";
 import { render, act, waitFor, cleanup } from "@testing-library/react";
 import React from "react";
 
