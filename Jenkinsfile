@@ -46,7 +46,7 @@ spec:
     stages {
          stage('Debug') {
             when {
-                branch 'testing-whoami'
+                branch 'testing'
             }
             steps {
                 container('node14') {
