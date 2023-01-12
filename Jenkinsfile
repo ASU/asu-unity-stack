@@ -44,9 +44,9 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
-         stage('Debug') {
+         stage('Developer release') {
             when {
-                branch 'testing-whoami'
+                branch 'testing'
             }
             steps {
                 container('node14') {
