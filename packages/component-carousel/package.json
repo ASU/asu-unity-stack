@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-carousel",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "./dist/asuCarousel.cjs.js",
   "browser": "./dist/asuCarousel.umd.js",
