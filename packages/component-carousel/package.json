@@ -7,7 +7,7 @@
   "module": "./dist/asuCarousel.es.js",
   "types": "./dist/main.d.ts",
   "author": "Michael Samuelson",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",

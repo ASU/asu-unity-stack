@@ -2,6 +2,7 @@
   "name": "@asu/design-tokens",
   "version": "1.0.0",
   "description": "",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/asu/asu-unity-stack.git",

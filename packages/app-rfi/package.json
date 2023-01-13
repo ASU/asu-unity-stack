@@ -8,7 +8,7 @@
   "types": "./dist/main.d.ts",
   "author": "Michael Samuelson <mlsamuel@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "files": [
     "examples/*",
     "dist/*",

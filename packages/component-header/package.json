@@ -7,7 +7,7 @@
   "module": "./dist/asuHeader.es.js",
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
