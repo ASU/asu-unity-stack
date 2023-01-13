@@ -7,7 +7,7 @@
   "module": "./dist/asuFooter.es.js",
   "types": "./dist/main.d.ts",
   "author": "Conner Shannon",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
