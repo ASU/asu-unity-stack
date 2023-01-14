@@ -313,7 +313,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
 
     <!-- *************************************************************** -->
@@ -354,7 +354,7 @@ You can find an extended example of how to set `DetailPage` props [here](/packag
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
 
     <!-- *************************************************************** -->
@@ -429,7 +429,7 @@ All the requirements for version 1 of this component were covered, further enhan
 - [Font Awesome](https://fontawesome.com/)
     - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
 - [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu/bootstrap4-theme)
-    - [CDN link](https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css)
+    - [CDN link](https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css)
 - [React](https://reactjs.org/)
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api)
