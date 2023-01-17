@@ -1,13 +1,13 @@
 {
   "name": "@asu/component-news",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",
   "browser": "./dist/asuNews.umd.js",
   "module": "./dist/asuNews.es.js",
   "types": "./dist/main.d.ts",
   "author": "Michele Dibenedetto",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",

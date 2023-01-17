@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -8,7 +8,7 @@
   "types": "./dist/main.d.ts",
   "author": "Michael Samuelson <mlsamuel@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "files": [
     "examples/*",
     "dist/*",

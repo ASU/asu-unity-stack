@@ -1,8 +1,9 @@
 {
   "name": "@asu/bootstrap4-theme",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/asu/asu-unity-stack.git",

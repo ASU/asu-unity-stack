@@ -1,13 +1,13 @@
 {
   "name": "@asu/component-cookie-consent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",
   "browser": "./dist/asuCookieConsent.umd.js",
   "module": "./dist/asuCookieConsent.es.js",
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",

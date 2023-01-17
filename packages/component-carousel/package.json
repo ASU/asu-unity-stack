@@ -1,13 +1,13 @@
 {
   "name": "@asu/component-carousel",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "./dist/asuCarousel.cjs.js",
   "browser": "./dist/asuCarousel.umd.js",
   "module": "./dist/asuCarousel.es.js",
   "types": "./dist/main.d.ts",
   "author": "Michael Samuelson",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",

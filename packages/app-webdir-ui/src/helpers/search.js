@@ -22,6 +22,7 @@ export const engineNames = {
   SITES_LOCAL: "web_sites_local",
   WEB_DIRECTORY_DEPARTMENTS: "people_in_dept",
   WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
+  WEB_DIRECTORY_FACULTY_RANK: "web_dir_faculty_rank",
 };
 
 export function logClick(query, docId, reqId, tags, { ...props }) {
@@ -146,16 +147,17 @@ const webDirDeptsFormatter = (
     localResults = results.results;
     localPage = results.meta.page;
   }
-  if (filters.peopleIds) {
+  if (!!filters && filters.peopleIds) {
     localResults = localResults.filter(r => {
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
   }
   // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
   // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
-  const titleOverwrite = filters.peopleInDepts
-    ? { peopleInDeps: filters.peopleInDepts }
-    : { depts: filters.deptIds };
+  const titleOverwrite =
+    !!filters && filters.peopleInDepts
+      ? { peopleInDeps: filters.peopleInDepts }
+      : { depts: filters.deptIds };
 
   return {
     tab: engines[engineName].name,
@@ -281,6 +283,24 @@ export const engines = {
       ),
     needsTerm: false,
   },
+  [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
+    name: engineNames.WEB_DIRECTORY_FACULTY_RANK,
+    url: `webdir-profiles/faculty-staff/filtered`,
+    needsAuth: false,
+    converter: staffConverter,
+    resultsPerSummaryPage: 6,
+    supportedSortTypes: ["faculty_rank"],
+    method: "GET",
+    formatter: (results, cardSize, filters, appPathFolder) =>
+      webDirDeptsFormatter(
+        engineNames.WEB_DIRECTORY_DEPARTMENTS,
+        results,
+        cardSize,
+        filters,
+        appPathFolder
+      ),
+    needsTerm: false,
+  },
   [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
     name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
     url: `webdir-profiles/department`,
@@ -309,6 +329,7 @@ export const performSearch = function ({
   sort,
   filters,
   display,
+  rankGroup,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -321,7 +342,7 @@ export const performSearch = function ({
 
     let APICall = null;
     if (engine.method === "GET") {
-      query = `${query}?&sort-by=${currentSort}`;
+      query = `${query}?sort-by=${currentSort}`;
 
       // reassign endpoint to new custom endpoint and sort is not
       // important since endpoint automatically only sorts by employee weight
@@ -367,6 +388,9 @@ export const performSearch = function ({
       if (filters && filters.employee) {
         const employeeTypesParam = `employee_types=${filters.employee}`;
         query = `${query}&${employeeTypesParam}`;
+      }
+      if (rankGroup) {
+        query = `${query}&rank_group=${rankGroup}`;
       }
       APICall = () => axios.get(query);
     } else {
