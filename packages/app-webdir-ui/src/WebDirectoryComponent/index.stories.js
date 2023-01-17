@@ -87,7 +87,7 @@ export const facultyRankWebDirectory = createStory(
     <WebDirectory
       searchType="faculty_rank"
       deptIds="1535"
-      API_URL="https://pr-419-asu-isearch.ws.asu.edu/"
+      API_URL="https://live-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
       filters={filters}
       display={display}
