@@ -46,7 +46,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
       newParams[entry[0]] = entry[1];
     }
     const currentTab = newParams[id];
-    if (currentTab === null) {
+    if (currentTab == null) {
       newParams[id] = activeTabID;
     } else {
       setActiveTabID(currentTab);

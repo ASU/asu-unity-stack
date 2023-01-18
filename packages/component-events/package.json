@@ -1,13 +1,13 @@
 {
   "name": "@asu/component-events",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "ASU Events component",
   "main": "./dist/asuEvents.cjs.js",
   "browser": "./dist/asuEvents.umd.js",
   "module": "./dist/asuEvents.es.js",
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",

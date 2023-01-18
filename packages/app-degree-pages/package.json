@@ -1,23 +1,27 @@
 {
   "name": "@asu/app-degree-pages",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
   "module": "./dist/degreePages.es.js",
   "types": "./dist/main.d.ts",
   "author": "Michele Di Benedetto",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
     "dist/*",
     "docs/*"
   ],
-  "repository": "https://github.com/asu/asu-unity-stack.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/app-degree-pages"
+  },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
