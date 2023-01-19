@@ -166,7 +166,7 @@ export const cardTags = createStory(
   </div>
 );
 
-export const degreeCard = createStory(
+export const cardDegree = createStory(
   <div class="card card-degree">
     <img class="card-img-top" src={exampleImage} alt="Card image cap" />
     <div class="card-header">
@@ -226,7 +226,7 @@ export const degreeCard = createStory(
   { initFunc }
 );
 
-export const storyCard = createStory(
+export const cardStory = createStory(
   <div class="card card-story">
     <img class="card-img-top" src={exampleImage} alt="Card image cap" />
     <div class="card-header">
@@ -286,7 +286,7 @@ export const storyCard = createStory(
   { initFunc }
 );
 
-export const eventCard = createStory(
+export const cardEvent = createStory(
   <div class="card card-event">
     <img class="card-img-top" src={exampleImage} alt="Card image cap" />
     <div class="card-header">
@@ -378,7 +378,7 @@ export const hoverable = createStory(
   </div>
 );
 
-export const variations = createStory(
+export const cardVariations = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
@@ -510,10 +510,10 @@ export const variations = createStory(
           </div>
         </div>
         <div class="col col-12 col-lg-4">
-          <div class="card">
+          <div class="card borderless">
             <img class="card-img-top" src={exampleImage} alt="Card image cap" />
             <div class="card-header">
-              <h3 class="card-title">Card default title</h3>
+              <h3 class="card-title">Card event without borders</h3>
             </div>
             <div class="card-event-details">
               <div class="card-event-icons">
@@ -566,10 +566,10 @@ export const variations = createStory(
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
         <div class="col col-12 col-lg-4">
-          <div class="card">
+          <div class="card borderless">
             <img class="card-img-top" src={exampleImage} alt="Card image cap" />
             <div class="card-header">
-              <h3 class="card-title">Card default title</h3>
+              <h3 class="card-title">Card with image and no borders</h3>
             </div>
             <div class="card-body">
               <p class="card-text">

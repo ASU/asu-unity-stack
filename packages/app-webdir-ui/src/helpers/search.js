@@ -10,11 +10,6 @@ import {
 
 const axios = require("axios");
 
-const getLastNameFromFullName = fullName => {
-  const tempNameArr = fullName.split(" ");
-  return tempNameArr[tempNameArr.length - 1];
-};
-
 export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
   STUDENTS: "web_dir_students",
@@ -424,9 +419,8 @@ export const performSearch = function ({
           (sort === "last_name_desc" || sort === "last_name_asc")
         ) {
           data.sort((a, b) =>
-            getLastNameFromFullName(a.display_name).localeCompare(
-              getLastNameFromFullName(b.display_name)
-            )
+            a.full_record.display_last_name.raw.localeCompare(
+              b.full_record.display_last_name.raw)
           );
 
           if (sort === "last_name_desc") {
