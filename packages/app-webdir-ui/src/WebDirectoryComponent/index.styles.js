@@ -35,4 +35,6 @@ const WebDirLayout = styled.div`
   }
 `;
 
-export { WebDirLayout };
+const FacultyRankLayout = styled.div``;
+
+export { WebDirLayout, FacultyRankLayout };

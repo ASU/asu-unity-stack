@@ -1,10 +1,10 @@
 // @ts-check
-import { AnchorMenu } from "@asu-design-system/components-core";
 import { render } from "@testing-library/react";
 import React from "react";
 
 import { OnThisPageAnchorMenu } from ".";
 
+import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
 import { progDetailSectionIds } from "../../models";
 
 describe("#OnThisPageAnchorMenu", () => {

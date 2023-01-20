@@ -1,13 +1,13 @@
 {
-  "name": "@asu-design-system/component-footer",
-  "version": "1.5.1",
+  "name": "@asu/component-footer",
+  "version": "1.1.2",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",
   "module": "./dist/asuFooter.es.js",
   "types": "./dist/main.d.ts",
   "author": "Conner Shannon",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
@@ -21,7 +21,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -36,8 +36,8 @@
     "build-storybook": "build-storybook -s ./dist"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.25.2",
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/components-core": "^1.0.0",
+    "@asu/design-tokens": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",

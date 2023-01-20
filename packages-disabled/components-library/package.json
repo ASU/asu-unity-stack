@@ -1,6 +1,6 @@
 {
-  "name": "@asu-design-system/components-library",
-  "version": "2.4.0",
+  "name": "@asu/components-library",
+  "version": "1.0.0",
   "description": "[Deprecated] ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
   "module": "src/index.js",
@@ -11,7 +11,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
@@ -33,7 +33,7 @@
     "semantic-release-monorepo": "^7.0.4"
   },
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/design-tokens": "^1.0.0",
     "@emotion/css": "^11.0.0",
     "@emotion/server": "^11.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

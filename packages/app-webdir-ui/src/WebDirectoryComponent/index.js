@@ -2,10 +2,11 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { FacultyRankTabPanels } from "../FacultyRankComponent";
 import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
-import { WebDirLayout } from "./index.styles";
+import { WebDirLayout, FacultyRankLayout } from "./index.styles";
 
 function WebDirectory({
   searchType,
@@ -25,6 +26,14 @@ function WebDirectory({
     profileURLBase: profileURLBase || "https://isearch.asu.edu",
     appPathFolder,
   };
+
+  const facultyRankParams = {
+    ...engineParams,
+    deptIds,
+    display,
+    searchType,
+  };
+
   const enginesWithParams = {
     [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
       ...engines[engineNames.WEB_DIRECTORY_DEPARTMENTS],
@@ -36,6 +45,10 @@ function WebDirectory({
     },
     [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
       ...engines[engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS],
+      ...engineParams,
+    },
+    [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
+      ...engines[engineNames.WEB_DIRECTORY_FACULTY__RANK],
       ...engineParams,
     },
   };
@@ -111,29 +124,39 @@ function WebDirectory({
   }, [searchParams]);
 
   return (
-    <WebDirLayout>
-      <div className="sort">
-        <SortPicker
-          customSortOptions={customSortOptions}
-          sort={sort}
-          onChange={val => setNewSort(val)}
-        />
-      </div>
-      <div className="results">
-        <ASUSearchResultsList
-          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
-          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          onPageChange={page => doSearch(page)}
-          size="large"
-          sort={searchParams.get(sortParamName)}
-          hidePaginator={display.usePager !== "1"}
-          filters={requestFilters}
-          profilesToFilterOut={display.doNotDisplayProfiles}
-          display={display}
-          appPathFolder={appPathFolder}
-        />
-      </div>
-    </WebDirLayout>
+    <>
+      {searchType === "faculty_rank" ? (
+        <FacultyRankLayout>
+          <FacultyRankTabPanels {...facultyRankParams} />
+        </FacultyRankLayout>
+      ) : (
+        <WebDirLayout>
+          <div className="sort">
+            <SortPicker
+              customSortOptions={customSortOptions}
+              sort={sort}
+              onChange={val => setNewSort(val)}
+            />
+          </div>
+          <div className="results">
+            <ASUSearchResultsList
+              engine={enginesWithParams[searchTypeEngineMap[searchType]]}
+              itemsPerPage={
+                parseInt(display.profilesPerPage, 10) || RES_PER_PAGE
+              }
+              onPageChange={page => doSearch(page)}
+              size="large"
+              sort={searchParams.get(sortParamName)}
+              hidePaginator={display.usePager !== "1"}
+              filters={requestFilters}
+              profilesToFilterOut={display.doNotDisplayProfiles}
+              display={display}
+              appPathFolder={appPathFolder}
+            />
+          </div>
+        </WebDirLayout>
+      )}
+    </>
   );
 }
 

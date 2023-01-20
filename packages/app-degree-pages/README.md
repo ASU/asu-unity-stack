@@ -2,9 +2,11 @@
 
 ASU Web Standards-based implementation of the Degree page component
 
+
 ## Architecture details
 
 ### Document reference
+
 
 [ux-doc-link]:https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen
 
@@ -137,7 +139,7 @@ You can find the full list of props types into the file [listing-page-types.js h
   /**
   * @typedef {{
   *  actionUrls?: ActionUrlProps
-  *  hero?: import("@asu-design-system/components-core").HeroProps
+  *  hero?: import("@asu/components-core").HeroProps
   *  introContent?: IntroContentProps
   *  hasSearchBar?: boolean
   *  hasFilters?: boolean
@@ -157,7 +159,7 @@ You can find the full list of props types into the file [program-detail-types.js
  *  @typedef {{
  *  dataSource: import("./listing-page-types").ProgramDetailDataSource | string
  *  anchorMenu?: AnchorMenuProps
- *  hero?: HideProp & import("@asu-design-system/components-core").HeroProps
+ *  hero?: HideProp & import("@asu/components-core").HeroProps
  *  introContent?: IntroContentProps
  *  programDescription?: ProgramDescriptionProps
  *  requiredCoursesProps?: RequiredCoursesProps
@@ -196,7 +198,7 @@ You can find a full list of props into the [docs/README.props.md](docs/README.pr
 
 ``` bash
 # add app-degree-pages
-yarn add @asu-design-system/app-degree-pages
+yarn add @asu/app-degree-pages
 
 # run storybook
 yarn storybook
@@ -221,7 +223,7 @@ yarn jsdoc
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu.
 <br/>See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/app-degree-pages```
+2. ```yarn add @asu/app-degree-pages```
 
 ## Use as a JS module in React app
 ### ListingPage component
@@ -229,7 +231,7 @@ yarn jsdoc
 You can find an extended example of how to set `ListingPage` props [here](/packages/app-degree-pages/src/components/ListingPage/index.stories.js)
 
 ```JS
-  import { ListingPage } from '@asu-design-system/app-degree-pages'
+  import { ListingPage } from '@asu/app-degree-pages'
 
   const ListingPageApp = ({
     actionUrls,
@@ -256,7 +258,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 You can find an extended example of how to set `DetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
 
 ```JS
- import { DetailPage } from '@asu-design-system/app-degree-pages'
+ import { DetailPage } from '@asu/app-degree-pages'
 
  const DetailPageApp = ({
     dataSource,
@@ -311,7 +313,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
 
     <!-- *************************************************************** -->
@@ -352,7 +354,7 @@ You can find an extended example of how to set `DetailPage` props [here](/packag
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
 
     <!-- *************************************************************** -->
@@ -408,8 +410,8 @@ All the requirements for version 1 of this component were covered, further enhan
 
 # Storybook
 
-- [Listing page](https://unity.web.asu.edu/@asu-design-system/app-degree-pages/index.html?path=/story/program-listing-page--default)
-- [Detail page](https://unity.web.asu.edu/@asu-design-system/app-degree-pages/index.html?path=/story/program-detail-page--default
+- [Listing page](https://unity.web.asu.edu/@asu/app-degree-pages/index.html?path=/story/program-listing-page--default)
+- [Detail page](https://unity.web.asu.edu/@asu/app-degree-pages/index.html?path=/story/program-detail-page--default
 )
 # UX documents
 
@@ -426,8 +428,8 @@ All the requirements for version 1 of this component were covered, further enhan
 
 - [Font Awesome](https://fontawesome.com/)
     - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
-- [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu-design-system/bootstrap4-theme)
-    - [CDN link](https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css)
+- [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu/bootstrap4-theme)
+    - [CDN link](https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css)
 - [React](https://reactjs.org/)
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api)
@@ -446,4 +448,3 @@ All the requirements for version 1 of this component were covered, further enhan
 - [JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
   - [Getting Started with JSDoc 3](https://jsdoc.app/about-getting-started.html)
   - [JSDoc @template: Generics](https://github.com/microsoft/TypeScript/issues/27387)
- 

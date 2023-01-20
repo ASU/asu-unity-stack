@@ -9,6 +9,17 @@
     width: 100%;
   }
 
+  &.borderless {
+    img {
+      border-color: transparent;
+    }
+    .uds-figure {
+      .uds-figure-caption {
+        border-color: transparent;
+      }
+    }
+  }
+
   // Images with captions
   .uds-figure {
     width: 100%;

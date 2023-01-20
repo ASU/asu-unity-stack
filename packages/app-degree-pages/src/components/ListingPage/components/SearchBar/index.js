@@ -2,8 +2,8 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button } from "../../../../../../components-core/src/components/Button";
 
+import { Button } from "../../../../../../components-core/src/components/Button";
 import { trackGAEvent } from "../../../../core/services/google-analytics";
 
 const Section = styled.div`

@@ -42,6 +42,9 @@ const fillInBlanks = datum => {
     display_name: {
       raw: "",
     },
+    display_last_name: {
+      raw: "",
+    },
     email_address: {
       raw: "",
     },
