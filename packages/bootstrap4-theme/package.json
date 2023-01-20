@@ -28,12 +28,12 @@
     "@asu/design-tokens": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@percy/cli": "^1.0.0-beta.68",
-    "@percy/storybook": "^4.0.3",
-    "@storybook/addon-a11y": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-storysource": "^6.3.4",
-    "@storybook/addon-viewport": "^6.3.4",
-    "@storybook/react": "^6.3.4",
+    "@percy/storybook": "^4.3.4",
+    "@storybook/addon-a11y": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-storysource": "^6.5.15",
+    "@storybook/addon-viewport": "^6.5.15",
+    "@storybook/react": "^6.5.15",
     "autoprefixer": "^10.2.5",
     "bootstrap": "^4.6.0",
     "chart.js": "^3.2.1",
@@ -63,12 +63,16 @@
     "sass-loader": "^10.0.2",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
-    "storybook-addon-xd-designs": "^5.5.0",
+    "storybook-addon-xd-designs": "^6.0.0",
     "style-loader": "^2.0.0"
   },
   "gitHead": "7ac8ef038f8d07c1dad2cb858db4914e178b42fb",
   "dependencies": {
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.10"
   }
 }
