@@ -51,28 +51,14 @@ spec:
             steps {
                 container('node14') {
                   script {
-                    echo '## Print all environment variables'
-                    sh 'printenv'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" > ~/.npmrc'
-                    sh 'npm whoami --registry=https://npm.pkg.github.com/'
-
-                    // TODO Update after transition to new registry is complete
-                    echo '## Configure .npmrc file for new registry...'
-                    sh 'echo "@asu-design-system:registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com/" >> ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
+                    echo '## Configure .npmrc file for @asu registry...'
+                    writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
+                      '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
 
                     withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                      echo '## Configure .npmrc file for Github Package registry...'
-                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                      sh 'echo "always-auth=true" >> ~/.npmrc'
-                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                       echo '## Publishing packages...'
                       sh 'yarn publish-packages'
                     }
@@ -84,10 +70,8 @@ spec:
             steps {
                 container('node14') {
                     echo '## Configure .npmrc file for Github Package registry...'
-                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                    sh 'echo "always-auth=true" >> ~/.npmrc'
-                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
-
+                    writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
+                      '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --frozen-lockfile'
                     sh 'yarn build'
@@ -115,10 +99,6 @@ spec:
                 container('node14') {
                     script {
                       withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                      echo '## Configure .npmrc file for Github Package registry...'
-                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
-                      sh 'echo "always-auth=true" >> ~/.npmrc'
-                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
                       echo '## Publishing packages...'
                       sh 'yarn publish-packages'
                       }
