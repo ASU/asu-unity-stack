@@ -49,6 +49,8 @@ export interface HeaderProps {
   animateTitle: boolean;
   expandOnHover: boolean;
   mobileNavTree: NavTreeProps[];
+  searchUrl: string;
+  site: string;
 }
 
 export const ASUHeader: React.FunctionComponent<HeaderProps>

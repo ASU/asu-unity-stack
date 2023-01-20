@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
-import { idGenerator } from "@asu-design-system/components-core";
 import React from "react";
 
+import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
 import {
   ChevronIconButton,
   InfoButtonIcon,

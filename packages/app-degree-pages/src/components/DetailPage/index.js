@@ -1,8 +1,9 @@
 // @ts-check
-import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
+import { Hero } from "../../../../components-core/src/components/Hero";
+import { useFetch } from "../../../../components-core/src/core/hooks/use-fetch";
 import {
   ErrorAlert,
   Loader,
@@ -352,6 +353,7 @@ DetailPage.propTypes = {
     hideProgramDesc: PropTypes.bool,
     hideRequiredCourses: PropTypes.bool,
     breadcrumbs: arrayOf(linkPropShape),
+    // eslint-disable-next-line react/forbid-prop-types
     contents: arrayOf(PropTypes.object),
     video: videoPropShape,
     image: imagePropShape,

@@ -1,15 +1,15 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core").HeroProps} HeroProps
+ * @typedef {import("@asu/components-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/components-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu/components-core").VideoProps} VideoItem
  */
 
 /**
@@ -70,6 +70,7 @@
  * @property {HeroProps} [hero]
  * @property {IntroContentProps} [introContent]
  * @property {GridListProps} [programList]
+ * @property {number} [degreesPerPage]
  */
 
 /**

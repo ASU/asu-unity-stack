@@ -1,7 +1,8 @@
 // @ts-check
-import { FeedContext, Card } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 
+import { Card } from "../../../../../components-core/src/components/Card";
+import { FeedContext } from "../../../../../components-core/src/components/FeedAnatomy/FeedContainerContext";
 import { formatDate, formatTime } from "../../../core/utils/date";
 import { ListViewWrapper } from "./index.styles";
 

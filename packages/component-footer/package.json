@@ -1,27 +1,27 @@
 {
-  "name": "@asu-design-system/component-footer",
-  "version": "1.5.1",
+  "name": "@asu/component-footer",
+  "version": "1.1.2",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",
   "module": "./dist/asuFooter.es.js",
   "types": "./dist/main.d.ts",
   "author": "Conner Shannon",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
     "dist/*",
     "docs/*"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/component-footer"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -36,8 +36,8 @@
     "build-storybook": "build-storybook -s ./dist"
   },
   "dependencies": {
-    "@asu-design-system/components-core": "^1.25.2",
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/components-core": "^1.0.0",
+    "@asu/design-tokens": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
@@ -51,8 +51,8 @@
     "@storybook/addon-links": "^6.2.3",
     "@storybook/react": "^6.2.3",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
@@ -64,7 +64,6 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
     "jest": "^26.6.3",
-    "url-loader": "^4.1.1",
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^2.1.0",
     "jest-transform-file": "^1.1.1",
@@ -74,6 +73,7 @@
     "semantic-release-monorepo": "^7.0.4",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
+    "url-loader": "^4.1.1",
     "webpack-merge": "^5.8.0"
   }
 }

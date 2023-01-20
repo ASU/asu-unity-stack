@@ -42,7 +42,7 @@ You can find a full list of props into the [docs/README.props.md](docs/README.pr
 
 ``` bash
 # add component-footer
-yarn add @asu-design-system/component-cookie-consent
+yarn add @asu/component-cookie-consent
 
 # run storybook
 yarn storybook
@@ -58,13 +58,13 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/component-cookie-consent@dev```
+2. ```yarn add @asu/component-cookie-consent@dev```
 
 ## Use as a JS module in React app
 
 ### Default import
 ```JAVASCRIPT
-    import { CookieConsent } from '@asu-design-system/component-cookie-consent@dev'
+    import { CookieConsent } from '@asu/component-cookie-consent@dev'
 ```
 
 ### Import for use in HTML page

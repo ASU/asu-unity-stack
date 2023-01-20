@@ -1,86 +1,152 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  serviceAccountName: jenkins
+  securityContext:
+    runAsUser: 1000 # default UID of jenkins user to node user in agent image
+  containers:
+  - name: node14
+    image: 'node:14.17.6'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  - name: puppeteer
+    image: 'buildkite/puppeteer:5.2.1'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  imagePullSecrets:
+  - name: docker-hub-credentials
+"""
+        }
+    }
     environment {
-        AWS_DEFAULT_REGION = 'us-west-2'
         HOME='.'
-        CLUSTER_NAME='UnityQACluster'
-        SERVICE_NAME='UnityELBService'
-        TASK_FAMILY='UnityQATask'
-        REPOSITORY_URI='239125824238.dkr.ecr.us-west-2.amazonaws.com/asunity'
-        GH_TOKEN = credentials('GH_TOKEN')
+        // GH_URL = 'https://api.github.com'
+        // GH_PREFIX = 'asu'
+        RAW_GH_TOKEN = credentials('github-org-asu-pac')
+        // TODO After transition to new registry is complete, we can use the
+        // same token as GH_TOKEN since registry will be GitHub Packages.
+        // NPM_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
-        PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
-        PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
+        NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
+        // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
+        // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
     }
     options {
-      withAWS(credentials:'aws-jenkins')
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
       disableConcurrentBuilds()
     }
     stages {
-        stage('Build') {
-            agent {
-                docker {
-                    image 'node:12.22.1'
-                    args '-p 3000:3000'
-                }
+         stage('Developer release') {
+            when {
+                branch 'testing'
             }
             steps {
-                sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                sh 'echo "always-auth=true" >> ~/.npmrc'
-                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                //sh 'yarn add @storybook/storybook-deployer --ignore-workspace-root-check --registry https://registry.npmjs.org'
-                sh 'yarn install'
-                sh 'yarn build'
-                sh 'yarn build-storybook'
+                container('node14') {
+                  script {
+                    echo '## Print all environment variables'
+                    sh 'printenv'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" > ~/.npmrc'
+                    sh 'npm whoami --registry=https://npm.pkg.github.com/'
+
+                    // TODO Update after transition to new registry is complete
+                    echo '## Configure .npmrc file for new registry...'
+                    sh 'echo "@asu-design-system:registry=https://registry.web.asu.edu/" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com/" >> ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
+                    echo '## Install and build Unity monorepo...'
+                    sh 'yarn install --frozen-lockfile'
+                    sh 'yarn build'
+
+                    withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                      echo '## Configure .npmrc file for Github Package registry...'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      echo '## Publishing packages...'
+                      sh 'yarn publish-packages'
+                    }
+                  }
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                container('node14') {
+                    echo '## Configure .npmrc file for Github Package registry...'
+                    sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                    sh 'echo "always-auth=true" >> ~/.npmrc'
+                    sh 'echo "//npm.pkg.github.com/:_authToken=$RAW_GH_TOKEN_PSW" >> ~/.npmrc'
+
+                    echo '## Install and build Unity monorepo...'
+                    sh 'yarn install --frozen-lockfile'
+                    sh 'yarn build'
+                }
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'buildkite/puppeteer:5.2.1'
-                    args '-p 3000:3000'
+            steps {
+                container('puppeteer') {
+                    script {
+                        //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
+                        //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
+                        sh 'echo "SKIP visual regression testing"'
+                        //sh 'echo "run visual regression testing"'
+                        //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
+                    }
                 }
             }
-            steps {
-                //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
-                //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
-                sh 'echo "SKIP visual regression testing"'
-                //sh 'echo "run visual regression testing"'
-                //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
-            }
         }
-        stage('Publish Packages to Registry') {
-            agent {
-                docker {
-                    image 'node:12'
-                    args '-p 3000:3000'
-                }
-            }
-            steps {
-                echo 'Publishing packages to private NPM registry...'
-                sh 'echo "registry=https://registry.web.asu.edu/" > ~/.npmrc'
-                sh 'echo "always-auth=true" >> ~/.npmrc'
-                sh 'echo "//registry.web.asu.edu/:_authToken=$NPM_TOKEN" >> ~/.npmrc'
-                sh 'yarn publish-packages'
-            }
-        }
-        stage('Deploy QA Environment') {
+        stage('Publish') {
             when {
                 branch 'dev'
             }
             steps {
-                echo 'Logging in to Amazon ECR...'
-                sh 'aws --version'
-                sh '$(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)'
-                echo 'Building the Docker image...'
-                sh 'docker build --build-arg NPM_TOKEN="$NPM_TOKEN" -t $REPOSITORY_URI:latest .'
-                sh 'docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:v_$BUILD_NUMBER'
-                echo 'Pushing the Docker images...'
-                sh 'docker push $REPOSITORY_URI:latest'
-                sh 'docker push $REPOSITORY_URI:v_$BUILD_NUMBER'
-                echo 'Deploying container to ECS..'
-                sh 'aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment'
+                container('node14') {
+                    script {
+                      withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                      echo '## Configure .npmrc file for Github Package registry...'
+                      sh 'echo "@asu:registry=https://npm.pkg.github.com" > ~/.npmrc'
+                      sh 'echo "always-auth=true" >> ~/.npmrc'
+                      sh 'echo "//npm.pkg.github.com/:_authToken=$GH_TOKEN" >> ~/.npmrc'
+                      echo '## Publishing packages...'
+                      sh 'yarn publish-packages'
+                      }
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+              branch 'dev'
+            }
+            steps {
+                container('node14') {
+                    script {
+                        echo '# Final, post-publish install and build to include just published pkgs...'
+                        sh 'yarn install --frozen-lockfile'
+                        sh 'yarn build'
+
+                        withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                            echo '# Prebuild Storybook static site as dry-run...'
+                            sh 'yarn deploy-storybook --dry-run'
+                            echo '# Compile templates and copy files for build deploy...'
+                            sh 'yarn gulp'
+                            echo '# Storybook static site final build and deploy...'
+                            sh 'yarn deploy-storybook --existing-output-dir=build'
+                        }
+                    }
+                }
             }
         }
     }

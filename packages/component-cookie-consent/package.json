@@ -1,27 +1,27 @@
 {
-  "name": "@asu-design-system/component-cookie-consent",
-  "version": "1.2.1",
+  "name": "@asu/component-cookie-consent",
+  "version": "1.0.1",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",
   "browser": "./dist/asuCookieConsent.umd.js",
   "module": "./dist/asuCookieConsent.es.js",
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
     "dist/*",
     "docs/*"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://registry.web.asu.edu/"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack",
+    "url": "https://github.com/asu/asu-unity-stack.git",
     "directory": "packages/component-cookie-consent"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -43,8 +43,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
