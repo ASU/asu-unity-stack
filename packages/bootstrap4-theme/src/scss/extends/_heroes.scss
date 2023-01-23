@@ -151,20 +151,7 @@ div[class^='uds-hero'] {
     display: none;
   }
 
-  &.uds-video-hero video,
-  &.uds-video-hero .video-hero-controls {
-    display: none;
-  }
-
   // General styles for brackground overlay
-  &:after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    background-image: $uds-hero-gradient-overlay;
-    z-index: 20;
-  }
-
   .hero-overlay {
     content: '';
     height: 100%;
@@ -320,6 +307,11 @@ div.uds-hero-lg {
       left: 0;
     }
   }
+
+  &.uds-video-hero video,
+  &.uds-video-hero .video-hero-controls {
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -355,7 +347,7 @@ div.uds-hero-lg {
       grid-row: 4;
       font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
       font-weight: $uds-font-weight-bold;
-      line-height: $uds-component-heroes-uds-hero-uds-hero-container-p-line-height;
+      line-height: 1.75rem;
       margin-top: $uds-size-spacing-2;
 
       p:last-child {
@@ -480,21 +472,42 @@ div.uds-hero-lg {
     .btn-row {
       max-width: calc(940px - 30%);
     }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  div[class^='uds-hero'] {
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    // Column alignment for decendent items
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
+      max-width: calc(1200px - 34%);
+    }
+  }
+  div.uds-hero-lg {
+    height: 42.75rem;
 
     &.uds-video-hero {
+      position: relative;
+      overflow: hidden;
+      &:after {
+        display: none;
+      }
       .hero {
         display: none;
       }
 
       &.uds-video-hero video {
         display: block;
-        min-height: 100%;
+        height: auto;
+        left: 0;
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
         width: 100%;
-        object-fit: cover;
       }
 
       .video-hero-controls {
@@ -529,21 +542,6 @@ div.uds-hero-lg {
           display: none;
         }
       }
-    }
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  div[class^='uds-hero'] {
-    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
-
-    // Column alignment for decendent items
-    h1,
-    [role='doc-subtitle'],
-    a.btn,
-    .content,
-    .btn-row {
-      max-width: calc(1200px - 34%);
     }
   }
 }
