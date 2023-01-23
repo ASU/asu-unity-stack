@@ -1,8 +1,8 @@
 /* eslint-disable no-alert */
 // @ts-check
 import React, { useContext } from "react";
-import { Card } from "../../../../../../../components-core/src/components/Card";
 
+import { Card } from "../../../../../../../components-core/src/components/Card";
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";

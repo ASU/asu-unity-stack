@@ -1,8 +1,13 @@
 // @ts-check
+// import { sanitizeDangerousMarkup } from "../components-core/src/core/utils";
 import React from "react";
-import { Card } from "../../../../../../components-core/src/components/Card";
 
-import { whyChooseAsuShape } from "../../../../core/models";
+import { Card } from "../../../../../../components-core/src/components/Card";
+import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
+import {
+  whyChooseAsuShape,
+  progDetailSectionIds,
+} from "../../../../core/models";
 
 /**
  * @typedef {import('../../../../core/types/detail-page-types').WhyChooseAsuProps} WhyChooseAsuProps
@@ -14,9 +19,16 @@ import { whyChooseAsuShape } from "../../../../core/models";
  */
 const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
   return (
-    <section className="container" data-testid="why-choose-asu">
+    <section
+      id={progDetailSectionIds.whyChooseAsu.targetIdName}
+      className="container"
+      data-testid="why-choose-asu"
+    >
       <h2>Why choose ASU</h2>
-      <p>{sectionIntroText}</p>
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)}
+      />
       <div className="mt-2 row">
         <div className="mt-2 col-12 col-md-4">
           <Card

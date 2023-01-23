@@ -1,6 +1,7 @@
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
+
 import {
   feedHeaderShape,
   feedCtaButtonShape,
@@ -9,7 +10,6 @@ import {
 import { FeedBody } from "../../../../../components-core/src/components/FeedAnatomy/FeedBody";
 import { FeedContainerProvider } from "../../../../../components-core/src/components/FeedAnatomy/FeedContainerContext";
 import { FeedHeader } from "../../../../../components-core/src/components/FeedAnatomy/FeedHeader";
-
 import { defaultProps } from "../../constants/default-props";
 import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";

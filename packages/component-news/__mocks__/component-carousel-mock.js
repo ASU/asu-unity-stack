@@ -6,6 +6,6 @@ const mockComponent = jest.fn(props => <>{props?.children}</>);
 
 const CardCarousel = mockComponent;
 
-jest.doMock("@asu-design-system/component-carousel", () => ({
+jest.doMock("@asu/component-carousel", () => ({
   CardCarousel,
 }));
