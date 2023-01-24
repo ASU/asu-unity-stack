@@ -1,12 +1,27 @@
 /*--------------------------------------------------------------
 # Heroes
 
+0. Local variables
 1. Mixins
-2. Hero, Mobile
+2. Hero, Mobile first
 3. Hero, Tablet
 4. Hero, Desktop
 5. Story Hero, Mobile
 6. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+0. Local variables
+--------------------------------------------------------------*/
+
+$uds-hero-gradient-overlay: linear-gradient(
+  180deg,
+  #19191900 0%,
+  #191919c9 100%
+);
+
+/*--------------------------------------------------------------
+1. Mixins
 --------------------------------------------------------------*/
 
 @mixin like-h3 {
@@ -34,13 +49,12 @@
 }
 
 /*--------------------------------------------------------------
-2. Hero, Mobile
+2. Hero, Mobile first
 --------------------------------------------------------------*/
 
 div[class^='uds-hero'] {
   display: grid;
   grid-template-columns: $uds-size-spacing-4 1fr $uds-size-spacing-4;
-  grid-template-rows: 1fr auto auto auto $uds-size-spacing-3 auto;
   gap: 0px 0px;
   max-width: 1920px;
   margin: 0 auto;
@@ -60,7 +74,7 @@ div[class^='uds-hero'] {
     grid-column: 1 / span 3;
     grid-row: 1 / span 5;
     object-fit: cover;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
   }
 
@@ -88,7 +102,6 @@ div[class^='uds-hero'] {
   h1 {
     grid-row: 3;
     margin: 0;
-    margin-bottom: $uds-size-spacing-4;
     span {
       margin-left: 0.15em;
     }
@@ -96,18 +109,20 @@ div[class^='uds-hero'] {
 
   a.btn {
     grid-row: 4;
-    margin-bottom: $uds-size-spacing-1;
+    margin-bottom: $uds-size-spacing-0;
   }
 
   .content {
     margin-top: $uds-size-spacing-3;
     grid-row: 6;
+    font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+    letter-spacing: $uds-component-heading-three-letter-spacing;
+    line-height: $uds-component-heading-three-line-height;
+    font-weight: $uds-font-weight-bold;
   }
 
   // Base class modifier: .has-btn-row
   &.has-btn-row {
-    grid-template-rows: 1fr auto auto $uds-size-spacing-3 auto;
-
     .hero {
       grid-row: 1 / span 4;
     }
@@ -119,17 +134,10 @@ div[class^='uds-hero'] {
     .btn-row {
       grid-row: 3;
       display: flex;
-      flex-direction: column;
+      gap: 8px;
 
       .btn {
         white-space: normal;
-        &:last-child {
-          margin-top: $uds-size-spacing-1;
-
-          & + .btn {
-            margin-left: 0;
-          }
-        }
       }
     }
 
@@ -143,42 +151,166 @@ div[class^='uds-hero'] {
     display: none;
   }
 
-  &.uds-video-hero video,
-  &.uds-video-hero .video-hero-controls {
-    display: none;
+  // General styles for brackground overlay
+  .hero-overlay {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: $uds-hero-gradient-overlay;
+    z-index: 20;
   }
 }
 
-div.uds-hero-sm,
+div.uds-hero-sm {
+  h1,
+  a.btn,
+  .btn-row {
+    z-index: 30;
+  }
+
+  .hero {
+    height: $uds-size-spacing-32;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 13.9rem auto $uds-size-spacing-2;
+
+    h1 {
+      align-self: center;
+    }
+
+    .content {
+      display: none;
+    }
+
+    .btn-row {
+      align-self: flex-start;
+      flex-wrap: wrap;
+
+      a.btn {
+        margin-top: 0;
+      }
+    }
+
+    .hero-overlay {
+      height: $uds-size-spacing-32;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
 div.uds-hero-md {
-  min-height: $uds-size-spacing-32;
+  .content,
+  [role='doc-subtitle'] {
+    display: none;
+  }
+
+  h1,
+  a.btn,
+  .btn-row {
+    z-index: 30;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 19rem auto $uds-size-spacing-2;
+
+    .hero {
+      grid-row: unset;
+      position: absolute;
+      height: 21rem;
+      top: 0;
+      left: 0;
+    }
+
+    h1 {
+      align-self: flex-end;
+      margin-bottom: 0;
+      margin-bottom: 3.125rem;
+    }
+
+    .btn-row {
+      grid-row: 3;
+      flex-wrap: wrap;
+      align-self: flex-start;
+    }
+
+    .hero-overlay {
+      height: 21rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 div.uds-hero-lg {
-  min-height: $uds-size-spacing-64;
-}
-
-/*--------------------------------------------------------------
-2.5 Mobile Only
---------------------------------------------------------------*/
-// Prevents white text on a white background when .content
-// is repositioned below the background image.
-@include media-breakpoint-down(sm) {
-  div[class^='uds-hero'] .content.text-white,
-  div[class^='uds-hero'] .content > .text-white {
-    color: $uds-color-base-gray-7 !important;
+  h1,
+  [role='doc-subtitle'],
+  a.btn,
+  .content,
+  .btn-row {
+    z-index: 30;
   }
-  div.uds-hero-sm,
-  div.uds-hero-md {
-    .hero {
-      max-height: $uds-size-spacing-32;
+
+  .content {
+    margin-top: 0;
+    margin-bottom: $uds-size-spacing-4;
+  }
+
+  h1 {
+    margin-bottom: $uds-size-spacing-2;
+  }
+
+  .hero {
+    height: $uds-size-spacing-64;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 19rem 11rem auto $uds-size-spacing-2;
+
+    h1 {
+      align-self: flex-end;
+    }
+
+    .content {
+      grid-row: 3;
+      align-self: start;
+      margin-bottom: 0;
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .btn-row {
+      grid-row: 4;
+      flex-wrap: wrap;
+      align-self: flex-start;
+      a.btn {
+        margin-bottom: 0;
+      }
+    }
+
+    .hero-overlay {
+      height: $uds-size-spacing-64;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 
-  div.uds-hero-lg {
-    .hero {
-      max-height: $uds-size-spacing-64;
-    }
+  &.uds-video-hero video,
+  &.uds-video-hero .video-hero-controls {
+    display: none;
   }
 }
 
@@ -213,9 +345,10 @@ div.uds-hero-lg {
 
     .content {
       grid-row: 4;
-      font-size: $uds-size-font-xl;
+      font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
       font-weight: $uds-font-weight-bold;
-      line-height: 1.5;
+      line-height: 1.75rem;
+      margin-top: $uds-size-spacing-2;
 
       p:last-child {
         margin-bottom: 0;
@@ -235,64 +368,92 @@ div.uds-hero-lg {
       }
     }
 
-    // Base class modifier: .has-btn-row
-    &.has-btn-row {
-      grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
-
-      .hero {
-        grid-row: 1 / span 6;
-      }
-      h1 {
-        grid-row: 2;
-      }
-
-      .content {
-        grid-row: 4;
-      }
-
-      .btn-row {
-        grid-row: 5;
-        flex-direction: row;
-
-        .btn {
-          margin-top: $uds-size-spacing-3;
-          margin-bottom: 0;
-
-          &:last-child {
-            margin-top: $uds-size-spacing-3;
-          }
-          & + .btn {
-            margin-left: $uds-size-spacing-2;
-          }
-        }
-      }
-    }
-
     // Base class modifier: .hide-content
     &.hide-content .content {
       display: block;
     }
-
-    // Background shadow
-    &:after {
-      content: '';
-      height: 100%;
-      width: 100%;
-      background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%);
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 6;
-      z-index: 20;
-    }
   }
 
   div.uds-hero-sm {
-    height: $uds-size-spacing-32;
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 13.4rem auto $uds-size-spacing-2;
+      .btn-row {
+        top: 24px;
+        align-self: initial;
+      }
+    }
   }
   div.uds-hero-md {
     height: $uds-size-spacing-64;
+
+    .content {
+      display: initial;
+    }
+
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
+
+      .hero {
+        grid-row: 1 / span 5;
+        position: initial;
+        height: inherit;
+      }
+
+      h1 {
+        margin-bottom: $uds-size-spacing-2;
+        grid-row: 2;
+      }
+
+      .content {
+        grid-row: 3;
+        margin-top: 0;
+        margin-bottom: $uds-size-spacing-4;
+      }
+
+      .btn-row {
+        grid-row: 4;
+        position: initial;
+
+        a.btn {
+          margin-top: 0;
+        }
+      }
+
+      .hero-overlay {
+        height: $uds-size-spacing-64;
+      }
+    }
   }
+
   div.uds-hero-lg {
     height: 42.75rem;
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
+
+      .hero {
+        height: 42.75rem;
+      }
+
+      h1 {
+        margin-bottom: $uds-size-spacing-2;
+      }
+      .content {
+        grid-row: 3;
+        margin-top: 0;
+        margin-bottom: $uds-size-spacing-4;
+      }
+      .btn-row {
+        position: initial;
+
+        a.btn {
+          margin-top: 0;
+        }
+      }
+
+      .hero-overlay {
+        height: 42.75rem;
+      }
+    }
   }
 }
 
@@ -309,27 +470,44 @@ div.uds-hero-lg {
     a.btn,
     .content,
     .btn-row {
-      max-width: calc(940px - 34%);
+      max-width: calc(940px - 30%);
     }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  div[class^='uds-hero'] {
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    // Column alignment for decendent items
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
+      max-width: calc(1200px - 34%);
+    }
+  }
+  div.uds-hero-lg {
+    height: 42.75rem;
 
     &.uds-video-hero {
+      position: relative;
+      overflow: hidden;
+      &:after {
+        display: none;
+      }
       .hero {
         display: none;
       }
 
       &.uds-video-hero video {
         display: block;
-        grid-row: 1 / span 6;
-        grid-column: 1 / span 3;
-        z-index: 30;
-        height: 100%;
-        min-height: 100%;
+        height: auto;
+        left: 0;
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
         width: 100%;
-        object-fit: cover;
       }
 
       .video-hero-controls {
@@ -364,21 +542,6 @@ div.uds-hero-lg {
           display: none;
         }
       }
-    }
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  div[class^='uds-hero'] {
-    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
-
-    // Column alignment for decendent items
-    h1,
-    [role='doc-subtitle'],
-    a.btn,
-    .content,
-    .btn-row {
-      max-width: calc(1200px - 34%);
     }
   }
 }

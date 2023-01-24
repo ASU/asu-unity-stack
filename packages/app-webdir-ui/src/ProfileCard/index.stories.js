@@ -36,21 +36,18 @@ export default createComponent(
   extraOptions
 );
 
-const profileCard = staffConverter(data);
-
 export const profileCardExample = createStory(
   args => {
-    const newProps = {
-      ...profileCard.props,
-      ...{ size: args.size, fill: args.fill },
-    };
-    const profile = {
-      ...profileCard,
-      ...{ props: newProps },
-    };
+    const profileCard = staffConverter(data, {
+      size: args.size,
+      titleMatch: null,
+      profileURLBase: null,
+      fill: args.fill,
+    });
+
     return (
       <div className="container-fluid">
-        <div className="col col-sm-12 p-3">{profile}</div>
+        <div className="col col-sm-12 p-3">{profileCard}</div>
       </div>
     );
   },

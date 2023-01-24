@@ -9,6 +9,9 @@ import { FacultyTabLayout } from "./index.styles";
 const FacultyTab = ({ engines, term, sort, onSortChange }) => {
   return (
     <FacultyTabLayout>
+      <div className="faculty-sort">
+        <SortPicker sort={sort} onChange={val => onSortChange(val)} />
+      </div>
       <div className="faculty-results">
         <ASUSearchResultsList
           term={term}
@@ -20,9 +23,6 @@ const FacultyTab = ({ engines, term, sort, onSortChange }) => {
           titleText="All faculty and staff results"
           showSearchMessage
         />
-      </div>
-      <div className="faculty-sort">
-        <SortPicker sort={sort} onChange={val => onSortChange(val)} />
       </div>
     </FacultyTabLayout>
   );
