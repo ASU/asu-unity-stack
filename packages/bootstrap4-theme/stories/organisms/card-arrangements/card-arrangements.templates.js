@@ -29,7 +29,7 @@ export default createComponent(
   'Templates',
   extraOptions
 );
-import { cardNoBorders as Card } from '../../molecules/cards/cards.templates';
+import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates';
 
 export const CardArrangement = createStory(
   (args) => {
