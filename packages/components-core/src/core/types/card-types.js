@@ -9,8 +9,6 @@
  * @typedef {Object} CardProps
  * @property {string} [type]
  * @property {boolean} [horizontal]
- * @property {boolean} [clickable]
- * @property {string} [clickHref]
  * @property {string} [image]
  * @property {string} [imageAltText]
  * @property {string} [title]

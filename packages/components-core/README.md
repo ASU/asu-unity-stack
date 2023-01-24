@@ -54,7 +54,6 @@ yarn test
           <Card
             type="default"
             horizontal={false}
-            clickable={false}
             image="https://picsum.photos/300 200"
             imageAltText="An example image"
             title="Default title"
@@ -110,7 +109,6 @@ yarn test
     props: {
       type: "default",
       horizontal: false,
-      clickable: false,
       image: "https://picsum.photos/300/200",
       imageAltText: "An example image",
       title: "Default title",
@@ -141,7 +139,6 @@ yarn test
     props: {
       type: "default",
       horizontal: false,
-      clickable: false,
       title: "Default title",
       body:
         "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmodtempo.",

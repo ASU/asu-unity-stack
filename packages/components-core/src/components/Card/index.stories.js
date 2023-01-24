@@ -49,7 +49,6 @@ export const Default = Template.bind({});
 Default.args = {
   type: "default",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
@@ -88,7 +87,6 @@ export const Icon = Template.bind({});
 Icon.args = {
   type: "default",
   horizontal: false,
-  clickable: false,
   title: "Default title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
@@ -105,7 +103,6 @@ export const Degree = Template.bind({});
 Degree.args = {
   type: "degree",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
@@ -131,7 +128,6 @@ export const Event = Template.bind({});
 Event.args = {
   type: "event",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Event title",
@@ -179,7 +175,6 @@ export const Story = Template.bind({});
 Story.args = {
   type: "story",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Story title",
@@ -247,7 +242,6 @@ export const HorizontalStoryCard = HorizontalTemplate.bind({});
 HorizontalStoryCard.args = {
   type: "story",
   horizontal: true,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Horizontal story",
@@ -296,7 +290,6 @@ export const AsuNewsStory = Template.bind({});
 AsuNewsStory.args = {
   type: "story",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "ASU News Story title",
