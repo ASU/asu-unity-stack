@@ -42,7 +42,7 @@ export const Card = ({
   linkLabel,
   linkUrl,
   tags,
-  bordered,
+  showBorders,
 }) => {
   return (
     <BaseCard
@@ -61,7 +61,7 @@ export const Card = ({
       linkLabel={linkLabel}
       linkUrl={linkUrl}
       tags={tags}
-      bordered={bordered}
+      showBorders={showBorders}
     />
   );
 };
@@ -143,7 +143,7 @@ Card.propTypes = {
   /**
    * Remove card borders
    */
-  bordered: PropTypes.bool,
+  showBorders: PropTypes.bool,
 };
 
 Card.defaultProps = {
@@ -161,7 +161,7 @@ Card.defaultProps = {
   linkLabel: undefined,
   linkUrl: undefined,
   tags: undefined,
-  bordered: true,
+  showBorders: true,
 };
 
 /*
@@ -183,7 +183,7 @@ const BaseCard = ({
   linkLabel,
   linkUrl,
   tags,
-  bordered,
+  showBorders,
 }) => {
   const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
@@ -191,7 +191,7 @@ const BaseCard = ({
     [`card-story`]: type === "story",
     [`w-${width.replace("%", "")}`]: width !== "100%",
     [`card-horizontal`]: horizontal,
-    [`borderless`]: !bordered,
+    [`borderless`]: !showBorders,
   });
 
   return (
@@ -280,7 +280,7 @@ BaseCard.propTypes = {
       onClick: PropTypes.func,
     })
   ),
-  bordered: PropTypes.bool,
+  showBorders: PropTypes.bool,
 };
 
 BaseCard.defaultProps = {
@@ -298,7 +298,7 @@ BaseCard.defaultProps = {
   linkLabel: undefined,
   linkUrl: undefined,
   tags: undefined,
-  bordered: false,
+  showBorders: true,
 };
 
 const CardContent = ({

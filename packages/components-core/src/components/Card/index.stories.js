@@ -73,7 +73,16 @@ Default.args = {
     { color: "gray", label: "tag2", href: "/#example-link" },
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
+  showBorders: true,
 };
+
+export const DefaultBorderless = Template.bind({});
+DefaultBorderless.args = {
+  ...Default.args,
+  title: "Default card - borderless",
+  showBorders: false,
+};
+DefaultBorderless.storyName = "Default (borderless)";
 
 export const Icon = Template.bind({});
 Icon.args = {
