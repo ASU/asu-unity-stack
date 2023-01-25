@@ -30,6 +30,8 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
           src={imageSource}
           className="uds-img figure-img img-fluid"
           alt={imageAltText}
+          loading="lazy"
+          decoding="async"
         />
         {(title || content) && (
           <figcaption
