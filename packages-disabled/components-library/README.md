@@ -28,13 +28,13 @@ yarn test
 ## How to install
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu-design-system/components-library@dev```
+2. ```yarn add @asu/components-library@dev```
 
 
 ## Use as a JS module in React app
 
 ```
-    import { Header } from '@asu-design-system/components-library@dev'
+    import { Header } from '@asu/components-library@dev'
 
 
     const App = (props) => {
@@ -55,8 +55,8 @@ yarn test
 <div id="headerContainer></div>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/components-library/dist/vendor.js"></script>
-<script src="/node_modules/@asu-design-system/components-library/dist/components-library.js"></script>
+<script src="/node_modules/@asu/components-library/dist/vendor.js"></script>
+<script src="/node_modules/@asu/components-library/dist/components-library.js"></script>
 
 <script>
 

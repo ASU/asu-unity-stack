@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "volta": {
     "node": "14.17.6",
     "yarn": "1.22.10"
@@ -12,18 +12,17 @@
   "scripts": {
     "clean": "lerna run clean",
     "lint": "lerna run lint",
-    "build-components-core": "lerna run --scope @asu-design-system/components-core build",
-    "build-component-carousel": "lerna run --scope @asu-design-system/component-carousel build",
-    "build": "lerna run --ignore @asu-design-system/components-core --ignore @asu-design-system/component-carousel build",
+    "build-components-core": "lerna run --scope @asu/components-core build",
+    "build-component-carousel": "lerna run --scope @asu/component-carousel build",
+    "build": "lerna run --ignore @asu/components-core --ignore @asu/component-carousel build",
     "prebuild": "yarn build-components-core && yarn build-component-carousel && yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
-    "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo",
+    "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release --debug -e semantic-release-monorepo",
     "percy": "lerna run percy",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "build-storybook": "storybook-to-aws-s3 --out=build --packages packages --bucket-path bucket/storybook --monorepo-index-generator server/storybook-index-generator.js --dry-run",
-    "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=develop-gha --ci",
+    "deploy-storybook": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=dev --ci",
     "prepare": "husky install",
     "commit": "cz",
     "check-element-changes": "node ./scripts/check-element-changes.js -d"
@@ -42,14 +41,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/asu/asu-unity-stack.git"
+    "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "devDependencies": {
     "@americanexpress/purgecss-loader": "^2.0.0",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/config-lerna-scopes": "^12.0.1",
-    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/git": "10.0.1",
     "@storybook/storybook-deployer": "^2.8.16",
     "clean-webpack-plugin": "^3.0.0",
     "commitizen": "^4.2.3",
@@ -78,7 +77,7 @@
     "prettier": "^2.2.1",
     "purgecss-webpack-plugin": "^4.0.3",
     "rimraf": "^3.0.2",
-    "semantic-release": "^17.4.2",
+    "semantic-release": "18.0.1",
     "semantic-release-monorepo": "^7.0.4",
     "start-server-and-test": "^1.9.1",
     "webpack": "^5.32.0",

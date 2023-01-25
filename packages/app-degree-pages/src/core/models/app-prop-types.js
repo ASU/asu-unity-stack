@@ -119,6 +119,7 @@ const anchorMenuPropType = {
   customizeYourCollegeExperience: PropTypes.bool,
   globalOpportunity: PropTypes.bool,
   attendOnline: PropTypes.bool,
+  whyChooseAsu: PropTypes.bool,
   programContactInfo: PropTypes.bool,
   externalAnchors: PropTypes.arrayOf(
     PropTypes.shape({

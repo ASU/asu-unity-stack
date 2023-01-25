@@ -91,6 +91,7 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
           <button
             type="button"
             className="close-btn"
+            aria-label="Close cookie consent"
             onClick={() => {
               handleCloseConsent();
               trackGAEvent({ ...defaultGAEvent, text: "close cross" });

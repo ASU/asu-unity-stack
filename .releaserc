@@ -1,12 +1,11 @@
 {
   "branches": [
-    "master",
+    "dev",
     {
-      "name": "dev",
-      "channel": "dev"
+      "name": "testing",
+      "channel": "testing"
     }
   ],
-  "repositoryUrl": "https://github.com/asu/asu-unity-stack.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

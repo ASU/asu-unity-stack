@@ -1,3 +1,10 @@
+// buttons mixins
+@mixin btn-md {
+  font-size: $uds-component-button-medium-font-size;
+  padding: $uds-component-button-padding-y-medium
+    $uds-component-button-padding-x-medium;
+}
+
 // Extra styles that don't have bootstrap variables to override
 .btn {
   text-decoration: $uds-component-button-text-decoration;
@@ -12,9 +19,7 @@
     background: $primary;
   }
   &.btn-md {
-    font-size: $uds-component-button-medium-font-size;
-    padding: $uds-component-button-padding-y-medium
-      $uds-component-button-padding-x-medium;
+    @include btn-md;
   }
   &.btn-sm {
     font-size: $uds-component-button-small-font-size;
@@ -101,6 +106,20 @@ a.text-gold:visited:not(.btn) {
   color: #daa000 !important;
 }
 
+/*--------------------------------------------------------------
+0 to SM breakpoint included
+--------------------------------------------------------------*/
+@include media-breakpoint-down(sm) {
+  .btn {
+    &.btn-responsive {
+      @include btn-md;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+LG and up
+--------------------------------------------------------------*/
 @include media-breakpoint-up(lg) {
   .btn {
     &:hover {

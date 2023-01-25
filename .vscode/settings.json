@@ -10,8 +10,8 @@
     "**/.git": true
   },
   "workbench.colorCustomizations": {
-    "activityBar.background": "#580846",
-    "titleBar.activeBackground": "#7B0B62",
-    "titleBar.activeForeground": "#FFFBFE"
+    "activityBar.background": "#000000",
+    "titleBar.activeBackground": "#8C1D40",
+    "titleBar.activeForeground": "#FFC627"
   }
 }

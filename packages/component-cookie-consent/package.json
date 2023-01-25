@@ -1,13 +1,13 @@
 {
-  "name": "@asu-design-system/component-cookie-consent",
-  "version": "1.2.1",
+  "name": "@asu/component-cookie-consent",
+  "version": "1.0.2",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",
   "browser": "./dist/asuCookieConsent.umd.js",
   "module": "./dist/asuCookieConsent.es.js",
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
-  "license": "Unlicensed",
+  "license": "MIT",
   "private": false,
   "files": [
     "examples/*",
@@ -21,7 +21,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
@@ -52,13 +52,13 @@
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.14.5",
-    "@storybook/addon-a11y": "^6.3.4",
-    "@storybook/addon-actions": "^6.3.4",
-    "@storybook/addon-controls": "^6.3.4",
-    "@storybook/addon-docs": "^6.3.4",
-    "@storybook/addon-essentials": "^6.3.4",
-    "@storybook/addon-links": "^6.3.4",
-    "@storybook/react": "^6.3.4",
+    "@storybook/addon-a11y": "^6.5.15",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-controls": "^6.5.15",
+    "@storybook/addon-docs": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/react": "^6.5.15",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "babel-loader": "^8.2.2",
@@ -88,5 +88,9 @@
     "terser-webpack-plugin": "^5.1.1",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.10"
   }
 }
