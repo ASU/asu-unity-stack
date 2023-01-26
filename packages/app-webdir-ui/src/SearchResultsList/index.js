@@ -103,6 +103,7 @@ const ASUSearchResultsList = ({
               return {
                 ...profile,
                 ...{ props: newProps },
+                key: profile.props?.children?.key ?? idx,
               };
             }
           );
