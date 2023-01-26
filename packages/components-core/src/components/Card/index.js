@@ -203,6 +203,8 @@ const BaseCard = ({
             src={image}
             alt={imageAltText}
             data-testid="card-image"
+            loading="lazy"
+            decoding="async"
           />
         )}
         {!image && icon && (
