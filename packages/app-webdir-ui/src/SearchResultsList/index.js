@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
@@ -44,6 +44,7 @@ const ASUSearchResultsList = ({
   const [totalResults, setTotalResults] = useState(null);
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
+  const searchList = useRef(null);
 
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
@@ -145,6 +146,11 @@ const ASUSearchResultsList = ({
   const onPageChange = val => {
     setCurrentPage(val);
     doSearch(val);
+    searchList.current.scrollIntoView({
+      behavior: "auto",
+      block: "start",
+      inline: "start",
+    });
   };
 
   useEffect(() => {
@@ -173,7 +179,7 @@ const ASUSearchResultsList = ({
   );
 
   return (
-    <SearchResultsList>
+    <SearchResultsList ref={searchList}>
       {!isLoading && (
         <div className={type}>
           {subtitle && type !== "micro" && (
