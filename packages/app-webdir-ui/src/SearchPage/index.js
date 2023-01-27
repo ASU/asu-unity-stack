@@ -193,7 +193,7 @@ function SearchPage({
             />
           )}
         </Tab>
-        <Tab id={tabIds.students} title="Students">
+        <Tab id={tabIds.students} icon={["fa", "lock"]} title="Students">
           {preSearchOrContent(
             <StudentsTab
               loggedIn={loggedIn}

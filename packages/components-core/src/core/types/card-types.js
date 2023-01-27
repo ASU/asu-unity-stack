@@ -9,8 +9,6 @@
  * @typedef {Object} CardProps
  * @property {string} [type]
  * @property {boolean} [horizontal]
- * @property {boolean} [clickable]
- * @property {string} [clickHref]
  * @property {string} [image]
  * @property {string} [imageAltText]
  * @property {string} [title]
@@ -24,7 +22,7 @@
  * @property {"stack"|"inline"} [eventFormat]
  * @property {"25%"|"50%"|"75%"|"100%"} [width]
  * @property {TagsProps[]} [tags]
- * @property {boolean} [bordered]
+ * @property {boolean} [showBorders]
  */
 
 /**

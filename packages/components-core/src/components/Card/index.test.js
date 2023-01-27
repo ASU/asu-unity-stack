@@ -75,23 +75,6 @@ describe("#Card options", () => {
 
   afterEach(cleanup);
 
-  describe("#Clickable card", () => {
-    const clickableProps = {
-      ...defaultArgs,
-      clickable: true,
-      clickHref: "/",
-    };
-
-    beforeEach(() => {
-      component = renderCard(clickableProps);
-      element = component.container.firstChild;
-    });
-
-    it("should render anchor element", () => {
-      expect(component).toBeDefined();
-      expect(element.nodeName.toLowerCase()).toBe("a");
-    });
-  });
   describe("#Icon card", () => {
     const iconProps = {
       ...defaultArgs,

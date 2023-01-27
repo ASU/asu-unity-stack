@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-carousel",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "./dist/asuCarousel.cjs.js",
   "browser": "./dist/asuCarousel.umd.js",
@@ -48,13 +48,13 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@glidejs/glide": "^3.4.1",
-    "@storybook/addon-a11y": "^6.1.15",
-    "@storybook/addon-actions": "^6.1.15",
-    "@storybook/addon-docs": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-a11y": "^6.5.15",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-docs": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-knobs": "^6.1.15",
-    "@storybook/addon-links": "^6.2.3",
-    "@storybook/react": "^6.2.3",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/react": "^6.5.15",
     "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
@@ -99,8 +99,12 @@
     "sass-loader": "^10",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
-    "storybook-css-modules-preset": "^1.0.7",
+    "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^2.0.0",
     "webpack-merge": "^5.8.0"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.10"
   }
 }

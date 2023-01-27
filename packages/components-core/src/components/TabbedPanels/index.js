@@ -180,6 +180,7 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
                 key={child.props.id}
                 leftKeyPressed={goLeft}
                 rightKeyPressed={goRight}
+                icon={child.props.icon}
               />
             );
           })}
