@@ -57,8 +57,7 @@ const common = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      "@asu-design-system/components-core":
-        "@asu-design-system/components-core/dist/libCore.es.js",
+      "@asu/components-core": "@asu/components-core/dist/libCore.es.js",
     },
   },
   plugins: [

@@ -55,6 +55,10 @@ const progDetailSectionIds = {
     targetIdName: "attend-online",
     text: "Attend Online",
   },
+  whyChooseAsu: {
+    targetIdName: "why-choose-asu",
+    text: "Why Choose ASU",
+  },
   programContactInfo: {
     targetIdName: "program-contact-info",
     text: "Program Contact Information",

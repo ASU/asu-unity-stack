@@ -1,6 +1,6 @@
 {
-  "name": "@asu-design-system/components-library",
-  "version": "2.4.0",
+  "name": "@asu/components-library",
+  "version": "1.0.0",
   "description": "[Deprecated] ASU Web Standards-compliant Preact components library",
   "main": "dist/components-library.js",
   "module": "src/index.js",
@@ -11,7 +11,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/@asu"
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "Colton Testamarck",
   "license": "UNLICENSED",
@@ -25,15 +25,15 @@
     "prerender": "node scripts/prerender-templates.js"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.1.15",
-    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-a11y": "^6.5.15",
+    "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-knobs": "^6.1.15",
-    "@storybook/preact": "^6.1.15",
+    "@storybook/preact": "^6.5.15",
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4"
   },
   "dependencies": {
-    "@asu-design-system/design-tokens": "^1.1.0",
+    "@asu/design-tokens": "^1.0.0",
     "@emotion/css": "^11.0.0",
     "@emotion/server": "^11.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -43,5 +43,9 @@
     "preact": "^10.5.10",
     "preact-render-to-string": "^5.1.19",
     "prop-types": "^15.7.2"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.10"
   }
 }

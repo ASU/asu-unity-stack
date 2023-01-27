@@ -13,7 +13,7 @@ export default createComponent("Web Directory", "Organisms", "Templates");
 const display = {
   defaultSort: "last_name",
   doNotDisplayProfiles: "",
-  profilesPerPage: "5",
+  profilesPerPage: "10",
   usePager: "1",
 };
 const filters = {
@@ -75,6 +75,21 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
       ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
       API_URL="https://test-asu-isearch.ws.asu.edu/"
       searchApiVersion="api/v1/"
+      display={display}
+      // appPathFolder="/my/custom/path/to/component/root/example"
+    />
+  </div>,
+  { supportedTemplates: [layoutNames.FULL_WIDTH] }
+);
+
+export const facultyRankWebDirectory = createStory(
+  <div className="uds-content-align">
+    <WebDirectory
+      searchType="faculty_rank"
+      deptIds="1535"
+      API_URL="https://live-asu-isearch.ws.asu.edu/"
+      searchApiVersion="api/v1/"
+      filters={filters}
       display={display}
       // appPathFolder="/my/custom/path/to/component/root/example"
     />

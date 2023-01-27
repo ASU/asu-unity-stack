@@ -35,6 +35,7 @@ const ASUSearchResultsList = ({
   display,
   appPathFolder,
   localSection,
+  rankGroup,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,6 +56,7 @@ const ASUSearchResultsList = ({
         sort,
         filters,
         display,
+        rankGroup,
       })
         .then(res => {
           let filteredResults = res;
@@ -101,6 +103,7 @@ const ASUSearchResultsList = ({
               return {
                 ...profile,
                 ...{ props: newProps },
+                key: profile.props?.children?.key ?? idx,
               };
             }
           );
@@ -237,6 +240,7 @@ ASUSearchResultsList.propTypes = {
   }),
   appPathFolder: PropTypes.string,
   localSection: PropTypes.bool,
+  rankGroup: PropTypes.string,
 };
 
 export { ASUSearchResultsList };
