@@ -139,6 +139,7 @@
  * @property {string} [dataId]
  * @property {function():void} [onClick]
  * @property {React.ReactNode} children
+ * @property {string} [ariaLabel]
  */
 
 /**
