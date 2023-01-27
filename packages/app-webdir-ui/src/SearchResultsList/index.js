@@ -146,11 +146,10 @@ const ASUSearchResultsList = ({
   const onPageChange = val => {
     setCurrentPage(val);
     doSearch(val);
-    searchList.current.scrollIntoView({
-      behavior: "auto",
-      block: "start",
-      inline: "start",
-    });
+    if (results.length > 0) { // Only scroll and focus if there are results
+      searchList.current.scrollIntoView(true);
+      searchList.current.firstElementChild.focus();
+    }
   };
 
   useEffect(() => {
@@ -179,7 +178,7 @@ const ASUSearchResultsList = ({
   );
 
   return (
-    <SearchResultsList ref={searchList}>
+    <SearchResultsList>
       {!isLoading && (
         <div className={type}>
           {subtitle && type !== "micro" && (
@@ -192,7 +191,11 @@ const ASUSearchResultsList = ({
               {titleText}
             </div>
           )}
-          {results.length > 0 && <div className="results-found">{results}</div>}
+          {results.length > 0 && (
+            <div ref={searchList} className="results-found">
+              {results}
+            </div>
+          )}
           {!hidePaginator && !isAnon && totalResults >= itemsPerPage && (
             <Pagination
               type="default"
