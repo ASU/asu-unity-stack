@@ -29,6 +29,11 @@ const Testimonial = ({
         src={imageSource}
         alt={imageAltText}
         data-testid="testimonial-image"
+        loading="lazy"
+        decoding="async"
+        // @ts-ignore
+        // eslint-disable-next-line
+        fetchPriority="high"
       />
     )}
     <svg role="presentation" viewBox="0 0 302.87 245.82">

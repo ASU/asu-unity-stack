@@ -1,6 +1,6 @@
 {
   "name": "@asu/components-core",
-  "version": "1.2.1",
+  "version": "1.4.0",
   "main": "./src/index.js",
   "description": "Core UDS React UI components required by other higher-order React packages",
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
