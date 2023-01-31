@@ -12,9 +12,7 @@ export const DisabledAndActiveStatesComponent = createStory(
           href="#"
           tabindex="-1"
           aria-disabled="true"
-        >
-          Prev
-        </a>
+        />
       </li>
       <li class="page-item active" aria-current="page">
         <a
@@ -62,9 +60,7 @@ export const DisabledAndActiveStatesComponent = createStory(
         </a>
       </li>
       <li class="page-item">
-        <a class="page-link page-link-icon" href="#">
-          Next
-        </a>
+        <a aria-label="next" class="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,
@@ -75,16 +71,14 @@ export const LargeNumbersComponent = createStory(
   <nav aria-label="...">
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" href="#">
-          First
-        </a>
+        <a class="page-link page-link-icon" href="#" />
       </li>
       <li class="page-item">
         <a class="page-link" href="#">
-          Prev
+          1
         </a>
       </li>
-      <li class="page-item">
+      <li class="page-item elipses">
         <span class="page-link">...</span>
       </li>
       <li class="page-item">
@@ -134,17 +128,15 @@ export const LargeNumbersComponent = createStory(
         </a>
       </li>
       <li class="page-item">
-        <span class="page-link">...</span>
+        <span class="page-link elipses">...</span>
       </li>
-      <li class="page-item">
+      <li class="page-item elipses">
         <a class="page-link" href="#">
-          Next
+          50
         </a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="#">
-          Last
-        </a>
+        <a class="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,
