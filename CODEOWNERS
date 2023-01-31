@@ -1,0 +1,8 @@
+*                           @ASU/asu-unity-stack-approvers
+
+/CODEOWNERS                 @ASU/devops-admins
+/Jenkinsfile                @ASU/devops-infrastructure
+
+# any file in a terraform or ansible directory anywhere in the repository
+terraform/                  @ASU/devops-infrastructure
+ansible/                    @ASU/devops-infrastructure

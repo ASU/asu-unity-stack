@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
 export interface AccordionCardProps {
   color?: "gold" | "maroon" | "gray" | "dark";
   content?: {
-    icon?: string,
-    header?: string,
-    body?: string
+    icon?: string;
+    header?: string;
+    body?: string;
   };
 }
 export interface AccordionProps {
-  openedCard?: number
-  cards: AccordionCardProps[]
+  openedCard?: number;
+  cards: AccordionCardProps[];
 }
-export const Accordion: React.FunctionComponent<AccordionProps>
+export const Accordion: React.FunctionComponent<AccordionProps>;
 
 export interface AnchorMenuItem {
   text: string;
@@ -34,12 +34,12 @@ export interface AnchorMenuProps {
    */
   focusFirstFocusableElement?: boolean;
 }
-export const AnchorMenu: React.FunctionComponent<AnchorMenuProps>
+export const AnchorMenu: React.FunctionComponent<AnchorMenuProps>;
 
 export interface ArticleProps {
   /**
-    * Type of article
-    */
+   * Type of article
+   */
   type?: "event" | "news";
   /**
    * This is the relative or absolute url to the full-page article
@@ -77,9 +77,9 @@ export interface ArticleProps {
    * Breadcrumbs array
    */
   breadcrumbs?: {
-    title?: string,
-    url?: string,
-    active?: boolean
+    title?: string;
+    url?: string;
+    active?: boolean;
   }[];
   /**
    * URL for an "add to calendar" button
@@ -106,12 +106,12 @@ export interface ArticleProps {
    */
   zoomUrl?: string;
 }
-export const Article: React.FunctionComponent<ArticleProps>
+export const Article: React.FunctionComponent<ArticleProps>;
 
 export interface ButtonProps {
   /**
-  * Button label
-  */
+   * Button label
+   */
   label?: string;
   /**
     ARIA label for accessibility
@@ -133,13 +133,19 @@ export interface ButtonProps {
     Pass in a Component to override default button element.
     For example: react-router Link
   */
-  element?: ((...args: unknown[]) => unknown) | string | {
-    $$typeof?: symbol,
-    render?(...args: unknown[]): unknown
-  } | ((...args: unknown[]) => unknown) | string | {
-    $$typeof?: symbol,
-    render?(...args: unknown[]): unknown
-  }[];
+  element?:
+    | ((...args: unknown[]) => unknown)
+    | string
+    | {
+        $$typeof?: symbol;
+        render?(...args: unknown[]): unknown;
+      }
+    | ((...args: unknown[]) => unknown)
+    | string
+    | {
+        $$typeof?: symbol;
+        render?(...args: unknown[]): unknown;
+      }[];
   /**
     Link target url; will cause button to be rendered as `<a>` link
   */
@@ -170,7 +176,7 @@ export interface ButtonProps {
    */
   target?: "_blank" | "_self" | "_top" | "_parent";
 }
-export const Button: React.FunctionComponent<ButtonProps>
+export const Button: React.FunctionComponent<ButtonProps>;
 
 export interface ButtonIconOnlyProps {
   /**
@@ -195,7 +201,7 @@ export interface ButtonIconOnlyProps {
   */
   size?: "large" | "small";
 }
-export const ButtonIconOnly: React.FunctionComponent<ButtonIconOnlyProps>
+export const ButtonIconOnly: React.FunctionComponent<ButtonIconOnlyProps>;
 
 export interface ButtonTagProps {
   /**
@@ -218,13 +224,19 @@ export interface ButtonTagProps {
     Pass in a Component to override default button element.
     For example: react-router Link
   */
-  element?: (...args: unknown[]) => unknown | string | {
-    $$typeof?: symbol,
-    render?(...args: unknown[]): unknown
-  } | ((...args: unknown[]) => unknown) | string | {
-    $$typeof?: symbol,
-    render?(...args: unknown[]): unknown
-  }[];
+  element?: (...args: unknown[]) =>
+    | unknown
+    | string
+    | {
+        $$typeof?: symbol;
+        render?(...args: unknown[]): unknown;
+      }
+    | ((...args: unknown[]) => unknown)
+    | string
+    | {
+        $$typeof?: symbol;
+        render?(...args: unknown[]): unknown;
+      }[];
   /**
     Link target url; will cause button to be rendered as `<a>` link
   */
@@ -239,12 +251,12 @@ export interface ButtonTagProps {
   */
   onClick?(...args: unknown[]): unknown;
 }
-export const ButtonTag: React.FunctionComponent<ButtonTagProps>
+export const ButtonTag: React.FunctionComponent<ButtonTagProps>;
 
 export interface CardProps {
   /**
-    * Type of card
-    */
+   * Type of card
+   */
   type?: "default" | "degree" | "event" | "news" | "story";
   /**
    * Width of card
@@ -254,14 +266,6 @@ export interface CardProps {
    * Enable horizontal mode
    */
   horizontal?: boolean;
-  /**
-   * Enable clickable card
-   */
-  clickable?: boolean;
-  /**
-   * Card target if clickable
-   */
-  clickHref?: string;
   /**
    * Card title
    */
@@ -298,14 +302,14 @@ export interface CardProps {
    * Buttons
    */
   buttons?: {
-    ariaLabel?: string,
-    color?: "gold" | "maroon" | "gray" | "dark",
-    icon?: string[],
-    href?: string,
-    label?: string,
-    onClick?(...args: unknown[]): unknown,
-    size?: "default" | "small" | "xsmall",
-    target?: "_blank" | "_self" | "_top" | "_parent"
+    ariaLabel?: string;
+    color?: "gold" | "maroon" | "gray" | "dark";
+    icon?: string[];
+    href?: string;
+    label?: string;
+    onClick?(...args: unknown[]): unknown;
+    size?: "default" | "small" | "xsmall";
+    target?: "_blank" | "_self" | "_top" | "_parent";
   }[];
   linkLabel?: string;
   linkUrl?: string;
@@ -313,32 +317,32 @@ export interface CardProps {
    * Tags
    */
   tags?: {
-    ariaLabel?: string,
-    color?: "white" | "gray" | "dark",
-    href?: string,
-    label?: string,
-    onClick?(...args: unknown[]): unknown
+    ariaLabel?: string;
+    color?: "white" | "gray" | "dark";
+    href?: string;
+    label?: string;
+    onClick?(...args: unknown[]): unknown;
   }[];
 }
-export const Card: React.FunctionComponent<CardProps>
+export const Card: React.FunctionComponent<CardProps>;
 
 export interface FeedHeaderProps {
   defaultProps?: {
-    header?: unknown,
-    ctaButton?: unknown,
-    dataSource?: unknown,
-    maxItems?: number
+    header?: unknown;
+    ctaButton?: unknown;
+    dataSource?: unknown;
+    maxItems?: number;
   };
   header?: {
-    color?: "white" | "dark",
-    text?: string
+    color?: "white" | "dark";
+    text?: string;
   };
   ctaButton?: {
-    color?: "gold" | "maroon" | "gray" | "dark",
-    text?: string
+    color?: "gold" | "maroon" | "gray" | "dark";
+    text?: string;
   };
 }
-export const FeedHeader: React.FunctionComponent<FeedHeaderProps>
+export const FeedHeader: React.FunctionComponent<FeedHeaderProps>;
 
 export interface FeedContainerProviderProps {
   renderHeader?: React.ReactElement;
@@ -348,17 +352,17 @@ export interface FeedContainerProviderProps {
   dataFilter?(...args: unknown[]): unknown;
   noFeedText?: string;
 }
-export const FeedContainerProvider: React.FunctionComponent<FeedContainerProviderProps>
+export const FeedContainerProvider: React.FunctionComponent<FeedContainerProviderProps>;
 
 export const FeedContext: React.Context<{
   value: {
-    feeds: any[]
-  }
-}>
+    feeds: any[];
+  };
+}>;
 
 export const FeedBody: React.FunctionComponent<{
   children?: React.ReactElement;
-}>
+}>;
 
 export interface HeroProps {
   hide?: boolean;
@@ -369,7 +373,7 @@ export interface HeroProps {
   contents?: ContentProps[];
   contentsColor?: string;
 }
-export const Hero: React.FunctionComponent<HeroProps>
+export const Hero: React.FunctionComponent<HeroProps>;
 
 export interface PaginationProps {
   /**
@@ -405,37 +409,37 @@ export interface PaginationProps {
    */
   onChange(...args: unknown[]): unknown;
 }
-export const Pagination: React.FunctionComponent<PaginationProps>
+export const Pagination: React.FunctionComponent<PaginationProps>;
 
 export interface TabbedPanelsProps {
   panels?: {
-    text?: string,
-    id?: string,
-    title?: string,
-    content?: React.ReactElement
+    text?: string;
+    id?: string;
+    title?: string;
+    content?: React.ReactElement;
   }[];
   bgColor?: string;
 }
-export const TabbedPanels: React.FunctionComponent<TabbedPanelsProps>
+export const TabbedPanels: React.FunctionComponent<TabbedPanelsProps>;
 
 export interface TestimonialProps {
   quote: {
-    title?: string,
-    content?: string,
+    title?: string;
+    content?: string;
     cite?: {
-      name?: string,
-      description?: string
-    }
+      name?: string;
+      description?: string;
+    };
   };
   imageSource?: string;
   imageAltText?: string;
   itemStyle?: {
-    containerCssClass?: string[],
-    titleCssClass?: string[],
-    contentCssClass?: string[]
+    containerCssClass?: string[];
+    titleCssClass?: string[];
+    contentCssClass?: string[];
   };
 }
-export const Testimonial: React.FunctionComponent<TestimonialProps>
+export const Testimonial: React.FunctionComponent<TestimonialProps>;
 
 export interface VideoProps {
   type?: "video" | "youtube";
@@ -445,7 +449,7 @@ export interface VideoProps {
   className?: string;
   caption?: string;
 }
-export const Video: React.FunctionComponent<VideoProps>
+export const Video: React.FunctionComponent<VideoProps>;
 
 export interface ContentProps {
   text?: string;
@@ -462,19 +466,23 @@ export interface ImageProps {
 }
 
 export interface FetchResponse<E> {
-  data: E
-  loading: boolean
-  error: object
+  data: E;
+  loading: boolean;
+  error: object;
 }
 export function useFetch<T>(): [FetchResponse<T>, (url: string) => void];
 
 export function useMediaQuery(query: string): boolean;
 
-export function idGenerator(key?: string, startIndex?: number):
-  Generator<string, string, string>;
+export function idGenerator(
+  key?: string,
+  startIndex?: number
+): Generator<string, string, string>;
 
-export function sanitizeDangerousMarkup(content: string): {
-  __html: string;
-} | undefined
+export function sanitizeDangerousMarkup(content: string):
+  | {
+      __html: string;
+    }
+  | undefined;
 
-export function spreadClasses(lasses: string[]): string
+export function spreadClasses(lasses: string[]): string;
