@@ -28,6 +28,11 @@ export const ImageOverlapRightOrLeft = createStory(
           class="img-fluid"
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
           alt="Generic image from PlaceIMG"
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <div class="content-wrapper">
           <h3>This is the content that goes in the box.</h3>

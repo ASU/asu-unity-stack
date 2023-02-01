@@ -54,7 +54,16 @@ export const cardNoTemplates = (args) => {
           />
         )}
         {args.cardHeader === 'image' && (
-          <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+          <img
+            class="card-img-top"
+            src={exampleImage}
+            alt="Card image cap"
+            width="600"
+            height="337"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="high"
+          />
         )}
         <div class="card-header pt-2">
           <h3>Heading</h3>

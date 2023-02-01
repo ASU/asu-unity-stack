@@ -18,7 +18,12 @@ export const LargeImageNoCaptionComponent = createStory((args) => {
         src="https://source.unsplash.com/random/1200x750"
         class="img-fluid"
         alt="Random image. REPLACE with appropriate alt text for accessibility."
-      ></img>
+        width="1200"
+        height="750"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
     </div>
   );
 });
@@ -31,7 +36,12 @@ export const LargeImageCaptionComponent = createStory((args) => {
           src="https://source.unsplash.com/random/800x600"
           class="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
-        ></img>
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
         <figcaption class="figure-caption uds-figure-caption">
           <span class="uds-caption-text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean

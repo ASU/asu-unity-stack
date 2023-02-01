@@ -42,6 +42,11 @@ export const ImageLeftOrRight = createStory((args) => {
           src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
           class="img-fluid"
           alt="Random image. REPLACE with appropriate alt text for accessibility."
+          width="1200"
+          height="750"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         ></img>
       </div>
       <div class={`uds-image-text-block-text-container ${args.bgColor}`}>
