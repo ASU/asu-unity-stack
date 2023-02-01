@@ -24,6 +24,15 @@ const fillInBlanks = datum => {
     id: {
       raw: "",
     },
+    campus_address: {
+      raw: "",
+    },
+    city: {
+      raw: "",
+    },
+    state: {
+      raw: "",
+    },
     asurite_id: {
       raw: "",
     },
@@ -40,6 +49,9 @@ const fillInBlanks = datum => {
       raw: "",
     },
     display_name: {
+      raw: "",
+    },
+    display_last_name: {
       raw: "",
     },
     email_address: {
@@ -229,8 +241,8 @@ export const staffConverter = (
           matchedAffiliationDept={titles.matchedAffiliationDept}
           email={filledDatum.email_address.raw}
           telephone={filledDatum.phone.raw}
-          addressLine1={filledDatum.address_line1.raw}
-          addressLine2={filledDatum.address_line2.raw}
+          addressLine1={filledDatum.campus_address?.raw}
+          addressLine2={`${filledDatum.city.raw} ${filledDatum.state.raw}`}
           description={filledDatum.bio.raw}
           shortBio={filledDatum.short_bio.raw}
           facebookLink={filledDatum.facebook.raw}

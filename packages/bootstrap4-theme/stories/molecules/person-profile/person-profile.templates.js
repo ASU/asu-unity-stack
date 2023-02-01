@@ -7,12 +7,11 @@ import anonPic from "./anon.png";
 const extraOptions = {
   size: {
     name: 'Size',
-    options: ['micro', 'small', ''],
+    options: ['small', ''],
     defaultValue: '',
     control: {
       type: 'radio',
       labels: {
-        'micro': 'Micro',
         'small': 'Small',
         '': 'Large',
       },
@@ -46,7 +45,7 @@ const PersonProfile = props => (
           <span>Regents Professor</span>
         </h4>
         <h4>
-          <span>Academic Associate</span>
+          <span>Edplus at ASU</span>
         </h4>
       </div>
       {props.size !== "micro" && (
@@ -82,22 +81,10 @@ const PersonProfile = props => (
           </a>
         </li>
         <li>
-          <a
-            href="#"
-            aria-label="See user address"
-            data-ga-event="link"
-            data-ga-action="click"
-            data-ga-name="onclick"
-            data-ga-type="internal link"
-            data-ga-region="main content"
-            data-ga-section="john smith"
-            data-ga="1234 Address St. Tempe AZ 12345"
-          >
             <address className="person-address">
               <span className="person-street">1234 Address St.</span>
               <span className="person-city">Tempe AZ 12345</span>
             </address>
-          </a>
         </li>
       </ul>
       )}
@@ -161,7 +148,7 @@ const PersonProfile = props => (
         <Button color="maroon" size="small" label="View Profile" />
       )}
       {props.size === "micro" && (
-        <span class="more-link"><a href="/asu-knowledge-enterprise">ASU Knowledge Enterprise</a></span>
+        <span class="more-link">Edplus at ASU</span>
       )}
     </div>
   </div>

@@ -78,6 +78,10 @@ const AllTabLayout = styled.div`
     font-size: 40px;
     font-weight: bold;
     max-width: 100%;
+    @media (max-width: 576px) {
+      // mobile breakpoint mapped to $uds-breakpoint-sm
+      display: none;
+    }
   }
 
   display: flex;

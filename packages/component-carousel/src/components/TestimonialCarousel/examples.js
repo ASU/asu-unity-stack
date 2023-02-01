@@ -12,7 +12,7 @@ const testimonialNoCitation = [
       content:
         "Laughter is timeless, imagination has no age, dreams are forever.",
     },
-    imageSource: `https://placeimg.com/300/300/nature`,
+    imageSource: `https://placeimg.com/300/300/nature?a=1`,
     imageAltText: `Image of Walt Disney`,
   },
   {
@@ -22,7 +22,7 @@ const testimonialNoCitation = [
       content: `We keep opening new doors and doing new things,
       because we’recurious and curiosity keeps leading us down new paths.`,
     },
-    imageSource: `https://placeimg.com/300/300/nature`,
+    imageSource: `https://placeimg.com/300/300/nature?a=2`,
     imageAltText: `Image of Walt Disney`,
   },
 ];

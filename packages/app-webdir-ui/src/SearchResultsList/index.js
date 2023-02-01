@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
@@ -35,6 +35,7 @@ const ASUSearchResultsList = ({
   display,
   appPathFolder,
   localSection,
+  rankGroup,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +44,7 @@ const ASUSearchResultsList = ({
   const [totalResults, setTotalResults] = useState(null);
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
+  const searchList = useRef(null);
 
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
@@ -55,6 +57,7 @@ const ASUSearchResultsList = ({
         sort,
         filters,
         display,
+        rankGroup,
       })
         .then(res => {
           let filteredResults = res;
@@ -101,6 +104,7 @@ const ASUSearchResultsList = ({
               return {
                 ...profile,
                 ...{ props: newProps },
+                key: profile.props?.children?.key ?? idx,
               };
             }
           );
@@ -143,6 +147,10 @@ const ASUSearchResultsList = ({
   const onPageChange = val => {
     setCurrentPage(val);
     doSearch(val);
+    if (results.length > 0) { // Only scroll and focus if there are results
+      searchList.current.scrollIntoView(true);
+      searchList.current.firstElementChild.focus();
+    }
   };
 
   useEffect(() => {
@@ -184,7 +192,13 @@ const ASUSearchResultsList = ({
               {titleText}
             </div>
           )}
-          {results.length > 0 && <div className="results-found">{results}</div>}
+          {(results.length > 0 && !isLoading) ? (
+            <div ref={searchList} className="results-found">
+              {results}
+            </div>
+          ) : (
+            <div className="results-found">No results found</div>
+          )}
           {!hidePaginator && !isAnon && totalResults >= itemsPerPage && (
             <Pagination
               type="default"
@@ -237,6 +251,7 @@ ASUSearchResultsList.propTypes = {
   }),
   appPathFolder: PropTypes.string,
   localSection: PropTypes.bool,
+  rankGroup: PropTypes.string,
 };
 
 export { ASUSearchResultsList };

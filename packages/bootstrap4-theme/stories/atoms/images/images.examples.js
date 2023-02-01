@@ -21,6 +21,19 @@ LargeImageNoCaptionComponent.args = {
   template: 1,
 };
 
+export const LargeImageNoCaptionComponentBorderless = createStory(
+  <div class="uds-img borderless">
+    <img
+      src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
+      class="img-fluid"
+      alt="Random image. REPLACE with appropriate alt text for accessibility."
+    ></img>
+  </div>
+);
+LargeImageNoCaptionComponentBorderless.args = {
+  template: 1,
+};
+
 export const LargeImageCaptionComponent = createStory(
   <div class="uds-img">
     <figure class="figure uds-figure">
@@ -41,6 +54,29 @@ export const LargeImageCaptionComponent = createStory(
   </div>
 );
 LargeImageCaptionComponent.args = {
+  template: 1,
+};
+
+export const LargeImageCaptionComponentBorderless = createStory(
+  <div class="uds-img borderless">
+    <figure class="figure uds-figure">
+      <img
+        src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+        class="uds-img figure-img img-fluid"
+        alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
+      ></img>
+      <figcaption class="figure-caption uds-figure-caption">
+        <span class="uds-caption-text">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+          et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
+          felis, ultricies nec, pellentesque eu, pretium &hellip;
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+);
+LargeImageCaptionComponentBorderless.args = {
   template: 1,
 };
 

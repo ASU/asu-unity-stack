@@ -1,8 +1,8 @@
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
-import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
 
+import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
 import { linkPropShape } from "../../../../core/models";
 import { trackGAEvent } from "../../../../core/services/google-analytics";
 

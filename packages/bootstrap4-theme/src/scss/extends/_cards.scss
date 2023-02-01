@@ -31,6 +31,10 @@ Cards - Table of Contents
   height: $uds-component-card-basic-height-percent;
   display: $uds-component-card-basic-display;
   flex-direction: $uds-component-card-basic-flex-direction;
+
+  &.borderless {
+    border-color: transparent;
+  }
 }
 
 .card-hover:hover {

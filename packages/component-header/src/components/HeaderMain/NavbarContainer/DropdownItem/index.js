@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
-
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";

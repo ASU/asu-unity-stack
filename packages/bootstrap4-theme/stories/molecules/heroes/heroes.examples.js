@@ -11,38 +11,27 @@ export default createComponent('Heroes', 'Molecules', 'Examples');
 
 export const HeroMedium = createStory(
   <div class="uds-hero-md has-btn-row">
+    <div className="hero-overlay"></div>
     <img
       class="hero"
-      src="https://source.unsplash.com/IydYk-LGOhc/1920x512"
+      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
       alt="Sample placeholder image."
     />
     <h1>
-      <span class="highlight-gold">Gettysburg Address</span>
+      <span class="highlight-white">
+        Lorem ipsum dolor sit amet, consectetur adip
+      </span>
     </h1>
     <div class="content">
       <p class="text-white">
-        Four score and seven years ago our fathers brought forth upon this
-        continent, a new nation, conceived in Liberty, and dedicated to the
-        proposition that all men are created equal.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        incididuntåç ut labore et dolore magna aliqua eiusmod tempo.
       </p>
     </div>
     <div class="btn-row">
       <a
         href="#"
-        class="btn btn-default btn-gold"
-        data-ga="read more"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-        data-ga-section="gettysburg address"
-      >
-        Read more
-      </a>
-      <a
-        href="#"
-        class="btn btn-default btn-gold"
+        class="btn btn-default btn-gold btn-responsive"
         data-ga="more quotes"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -51,7 +40,20 @@ export const HeroMedium = createStory(
         data-ga-region="main content"
         data-ga-section="gettysburg address"
       >
-        More quotes
+        Call to action button
+      </a>
+      <a
+        href="#"
+        class="btn btn-default btn-maroon btn-responsive"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Second Call to action button
       </a>
     </div>
   </div>,
@@ -65,37 +67,52 @@ HeroMedium.args = {
 };
 
 export const HeroLarge = createStory(
-  <div class="uds-hero-lg hide-content">
+  <div class="uds-hero-lg has-btn-row">
+    <div className="hero-overlay"></div>
     <img
       class="hero"
-      src="https://source.unsplash.com/xyXcGADvAwE/1920x684"
+      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
       alt="Sample placeholder image."
     />
-    <div role="doc-subtitle">
-      <span class="highlight-black">Mass Ascension</span>
-    </div>
-    <h1 class="text-white">The Albuquerque International Balloon Fiesta</h1>
+    <h1>
+      <span class="highlight-gold">
+        Lorem ipsum dolor sit amet, consectetur adip
+      </span>
+    </h1>
     <div class="content">
       <p class="text-white">
-        For nine days in October, the Albuquerque International Balloon Fiesta
-        creates an enchanted world of vibrant balloon-filled skies. Brisk autumn
-        mornings in the Rio Grande Valley create an otherworldly backdrop for
-        our most popular event, Mass Ascension.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        incididunt ut labore et dolore magna aliqua eiusmod tempo.
       </p>
     </div>
-    <a
-      href="#"
-      class="btn btn-maroon"
-      data-ga="get tickets"
-      data-ga-name="onclick"
-      data-ga-event="link"
-      data-ga-action="click"
-      data-ga-type="internal link"
-      data-ga-region="main content"
-      data-ga-section="mass ascension"
-    >
-      Get tickets
-    </a>
+    <div class="btn-row">
+      <a
+        href="#"
+        class="btn btn-default btn-gold btn-responsive"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Call to action button
+      </a>
+      <a
+        href="#"
+        class="btn btn-default btn-maroon btn-responsive"
+        data-ga="more quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Default button
+      </a>
+    </div>
   </div>,
   {
     initFunc,
@@ -111,7 +128,7 @@ export const StoryHeroLarge = createStory(
     <section class="uds-story-hero uds-story-hero-lg entry-header">
       <img
         class="hero"
-        src="https://source.unsplash.com/WLUHO9A_xik/1920x512"
+        src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
         alt="Be sure to include alt text in your image tag."
       />
       <div class="content">
@@ -184,10 +201,11 @@ StoryHeroLarge.args = {
 export const HeroVideo = createStory(
   (args) => {
     return (
-      <div class="uds-hero-lg uds-video-hero">
+      <div class="uds-hero-lg uds-video-hero has-btn-row">
+        <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://source.unsplash.com/WeYamle9fDM/1920x256"
+          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
           alt="Sample placeholder image."
         />
         <video id="media-video" autoPlay muted loop>
@@ -212,9 +230,6 @@ export const HeroVideo = createStory(
             <span class="sr-only">Pause</span>
           </button>
         </div>
-        <div role="doc-subtitle">
-          <span class="highlight-black">Space Missions</span>
-        </div>
         <h1>
           <span class="highlight-white">
             Be a collaborator in exploring space
@@ -222,25 +237,38 @@ export const HeroVideo = createStory(
         </h1>
         <div class="content">
           <p class="text-white">
-            Humankind is on a path to becoming an interplanetary species, and
-            ASU is playing a leading role in making it happen. As a student, you
-            can be a collaborator with top scientists on one of ASU’s 25+ active
-            space missions.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
         </div>
-        <a
-          href="#"
-          class="btn btn-maroon"
-          data-ga="Call to action"
-          data-ga-name="onclick"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-type="internal link"
-          data-ga-region="main content"
-          data-ga-secion="the new american university"
-        >
-          Call to Action
-        </a>
+        <div className="btn-row">
+          <a
+            href="#"
+            class="btn btn-maroon btn-responsive"
+            data-ga="Call to action"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-secion="the new american university"
+          >
+            Call to Action
+          </a>
+          <a
+            href="#"
+            class="btn btn-gold btn-responsive"
+            data-ga="Call to action"
+            data-ga-name="onclick"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-type="internal link"
+            data-ga-region="main content"
+            data-ga-secion="the new american university"
+          >
+            Second Call to Action
+          </a>
+        </div>
       </div>
     );
   },

@@ -1,8 +1,8 @@
 // @ts-check
 import React from "react";
 import styled from "styled-components";
-import { Video } from "../../../../../../components-core/src/components/Video";
 
+import { Video } from "../../../../../../components-core/src/components/Video";
 import { videoPropType } from "../../../../core/models";
 import { youtubeURLParser } from "./parseYoutubeURL";
 
