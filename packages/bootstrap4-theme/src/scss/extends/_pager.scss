@@ -75,6 +75,7 @@ span.page-link {
 }
 
 .pagination {
+  overflow-x: auto;
   &.uds-bg-gray1 {
     background-color: $uds-color-base-gray-1;
 

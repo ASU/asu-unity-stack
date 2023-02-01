@@ -36,8 +36,13 @@ export const HeroSmallOneButton = createStory(
         <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
+          src="https://source.unsplash.com/random/2560x512"
           alt="Sample placeholder image."
+          width="2560"
+          height="512"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <h1>
           <span class="highlight-white">
@@ -78,8 +83,13 @@ export const HeroSmallTwoButtons = createStory(
         <div className="hero-overlay"></div>
         <img
           class="hero"
-          src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
+          src="https://source.unsplash.com/random/2560x512"
           alt="Sample placeholder image."
+          width="2560"
+          height="512"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <h1>
           <span class="highlight-gold">Gettysburg Address</span>
@@ -135,8 +145,13 @@ export const StoryHero = createStory(
   <section class="uds-story-hero">
     <img
       class="hero"
-      src="https://i.picsum.photos/id/862/1920/512.jpg?hmac=PR_SqkJ9Ls8J-KZPWNPTm6tJCwP8VocQyD8RvLDxjrM"
-      alt="Be sure to include alt text in your image tag."
+      src="https://source.unsplash.com/random/2560x512"
+      alt="Sample placeholder image."
+      width="2560"
+      height="512"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
     />
     <div class="content">
       <nav aria-label="breadcrumbs">

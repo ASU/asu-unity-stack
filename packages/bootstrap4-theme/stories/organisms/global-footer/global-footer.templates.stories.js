@@ -70,6 +70,10 @@ export const GlobalElementsOnly = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -167,6 +171,10 @@ export const ZeroColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -301,6 +309,10 @@ export const ZeroColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -398,6 +410,10 @@ export const OneColumn = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -552,6 +568,10 @@ export const OneColumn = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -718,6 +738,10 @@ export const OneColumnNoLogoOrSocial = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -815,6 +839,10 @@ export const TwoColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -1014,6 +1042,10 @@ export const TwoColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -1111,6 +1143,10 @@ export const ThreeColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -1358,6 +1394,10 @@ export const ThreeColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -1440,7 +1480,6 @@ export const FourColumns = (
   <footer
     id="asu-footer"
     role="contentinfo"
-    role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
     <div class="wrapper" id="wrapper-endorsed-footer">
@@ -1456,6 +1495,10 @@ export const FourColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -1751,6 +1794,10 @@ export const FourColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -1848,6 +1895,10 @@ export const FiveColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -2191,6 +2242,10 @@ export const FiveColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -2288,6 +2343,10 @@ export const SixColumns = (
               <img
                 src={endorsedLogo}
                 alt="ASU University Technology Office Arizona State University."
+                width="311"
+                height="96"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -2673,6 +2732,10 @@ export const SixColumns = (
                 <img
                   src={innovationLockup}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>

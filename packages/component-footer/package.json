@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-footer",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",

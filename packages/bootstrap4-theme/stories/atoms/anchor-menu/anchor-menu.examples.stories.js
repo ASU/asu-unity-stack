@@ -14,6 +14,11 @@ export const AnchorMenu = createStory(
           class="hero"
           src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
           alt="Sample placeholder image."
+          width="1920"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <h1>
           <span class="highlight-gold">Gettysburg Address</span>

@@ -60,6 +60,10 @@ export const BlockquoteWithImage = createStory(
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/600x400"
         alt="Pretend this is Michael M. Crow, President of ASU"
+        width="600"
+        height="400"
+        loading="lazy"
+        decoding="async"
       />
       <blockquote>
         <p>
@@ -83,6 +87,11 @@ export const BlockquoteWithImage = createStory(
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/300x300"
           alt="Pretend this is Michael M. Crow, President of ASU"
+          width="300"
+          height="300"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <blockquote>
           <p>
@@ -109,6 +118,11 @@ export const BlockquoteNoCitation = createStory(
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/300x300"
         alt="Image of Walt Disney"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
       />
       <blockquote>
         <h3>
@@ -123,6 +137,11 @@ export const BlockquoteNoCitation = createStory(
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/300x300"
           alt="Image of Walt Disney"
+          width="300"
+          height="300"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <blockquote>
           <h3>
@@ -229,8 +248,13 @@ export const TestimonialsWithImage = createStory(
   <div>
     <div class="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/600/400/arch"
+        src="https://source.unsplash.com/WLUHO9A_xik/600x400"
         alt="Pretend this is Han Solo"
+        width="600"
+        height="400"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
       />
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -253,6 +277,11 @@ export const TestimonialsWithImage = createStory(
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/400x400"
           alt="Pretend this is Han Solo"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />

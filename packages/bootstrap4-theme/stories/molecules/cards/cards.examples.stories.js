@@ -9,17 +9,44 @@ import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics';
 export const cardImages = createStory(
   <div style={{ width: '50%' }}>
     <div class="card">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-header"></div>
     </div>
     <hr />
     <div class="card card-event">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-header"></div>
     </div>
     <hr />
     <div class="card card-story">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-header"></div>
     </div>
     <hr />
@@ -168,7 +195,16 @@ export const cardTags = createStory(
 
 export const cardDegree = createStory(
   <div class="card card-degree">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+    <img
+      class="card-img-top"
+      src={exampleImage}
+      alt="Card image cap"
+      width="600"
+      height="337"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
+    />
     <div class="card-header">
       <h3 class="card-title">Card default title</h3>
     </div>
@@ -228,7 +264,16 @@ export const cardDegree = createStory(
 
 export const cardStory = createStory(
   <div class="card card-story">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+    <img
+      class="card-img-top"
+      src={exampleImage}
+      alt="Card image cap"
+      width="600"
+      height="337"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
+    />
     <div class="card-header">
       <h3 class="card-title">Card default title</h3>
     </div>
@@ -288,7 +333,16 @@ export const cardStory = createStory(
 
 export const cardEvent = createStory(
   <div class="card card-event">
-    <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+    <img
+      class="card-img-top"
+      src={exampleImage}
+      alt="Card image cap"
+      width="600"
+      height="337"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
+    />
     <div class="card-header">
       <h3 class="card-title">Card default title</h3>
     </div>
@@ -360,31 +414,22 @@ export const cardEvent = createStory(
   { initFunc }
 );
 
-export const hoverable = createStory(
-  <div class="card card-hover">
-    <button>
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
-      <div class="card-header">
-        <h3 class="card-title">Card default title</h3>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </div>
-    </button>
-  </div>
-);
-
 export const cardVariations = createStory(
   <div>
     <div class="container">
       <div class="row row-spaced pt-2 pb-2">
         <div class="col col-12 col-lg-4">
           <div class="card">
-            <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+            <img
+              class="card-img-top"
+              src={exampleImage}
+              alt="Card image cap"
+              width="600"
+              height="337"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="high"
+            />
             <div class="card-header">
               <h3 class="card-title">Card default title</h3>
             </div>
@@ -511,7 +556,16 @@ export const cardVariations = createStory(
         </div>
         <div class="col col-12 col-lg-4">
           <div class="card borderless">
-            <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+            <img
+              class="card-img-top"
+              src={exampleImage}
+              alt="Card image cap"
+              width="600"
+              height="337"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="high"
+            />
             <div class="card-header">
               <h3 class="card-title">Card event without borders</h3>
             </div>
@@ -567,7 +621,16 @@ export const cardVariations = createStory(
       <div class="row row-spaced pt-2 pb-2">
         <div class="col col-12 col-lg-4">
           <div class="card borderless">
-            <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+            <img
+              class="card-img-top"
+              src={exampleImage}
+              alt="Card image cap"
+              width="600"
+              height="337"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="high"
+            />
             <div class="card-header">
               <h3 class="card-title">Card with image and no borders</h3>
             </div>
@@ -705,7 +768,16 @@ export const cardVariations = createStory(
       <div class="row row-spaced pt-2 pb-2">
         <div class="col col-12 col-lg-4">
           <div class="card">
-            <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+            <img
+              class="card-img-top"
+              src={exampleImage}
+              alt="Card image cap"
+              width="600"
+              height="337"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="high"
+            />
             <div class="card-header">
               <h3 class="card-title">Card default title</h3>
             </div>
@@ -805,7 +877,16 @@ export const cardVariations = createStory(
       <div class="row row-spaced pt-2 pb-2">
         <div class="col col-12 col-lg-4">
           <div class="card">
-            <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+            <img
+              class="card-img-top"
+              src={exampleImage}
+              alt="Card image cap"
+              width="600"
+              height="337"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="high"
+            />
             <div class="card-body">
               <p class="card-text">
                 Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
@@ -900,7 +981,16 @@ export const cardVariations = createStory(
 export const horizontal = createStory(
   <div>
     <div class="card card-horizontal">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-content-wrapper">
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
@@ -935,7 +1025,16 @@ export const horizontal = createStory(
     <hr />
 
     <div class="card card-degree card-horizontal">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-content-wrapper">
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
@@ -970,7 +1069,16 @@ export const horizontal = createStory(
     <hr />
 
     <div class="card card-event card-horizontal">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-content-wrapper">
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
@@ -1012,7 +1120,16 @@ export const horizontal = createStory(
     <hr />
 
     <div class="card card-story card-horizontal">
-      <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={exampleImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="card-content-wrapper">
         <div class="card-header">
           <h3 class="card-title">Card default title</h3>
@@ -1051,7 +1168,16 @@ export const checkboxStackedCard = createStory(
   <div class="card card-checkbox-stacked">
     <div class="card-image-content">
       <div class="card-image-gradient checkbox-card">
-        <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+        <img
+          class="card-img-top"
+          src={exampleImage}
+          alt="Card image cap"
+          width="600"
+          height="337"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       <form class="uds-form card-image-overlay-content ml-4">
         <fieldset class="card-image-fieldset">
@@ -1142,7 +1268,16 @@ export const checkboxInlineCard = createStory(
   <div class="card card-checkbox-inline">
     <div class="card-image-content">
       <div class="card-image-gradient checkbox-card">
-        <img class="card-img-top" src={exampleImage} alt="Card image cap" />
+        <img
+          class="card-img-top"
+          src={exampleImage}
+          alt="Card image cap"
+          width="600"
+          height="337"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       <form class="uds-form card-image-overlay-content ml-4">
         <fieldset class="card-image-fieldset inline">
@@ -1240,6 +1375,11 @@ export const mediaTypeOverlayCard = createStory(
                 class="card-img-top"
                 src={exampleImage}
                 alt="Card image cap"
+                width="600"
+                height="337"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="high"
               />
             </div>
             <div class="card-image-overlay-content media-type-overlay ml-4 mb-4">
@@ -1309,6 +1449,11 @@ export const mediaTypeOverlayCard = createStory(
                 class="card-img-top"
                 src={exampleImage}
                 alt="Card image cap"
+                width="600"
+                height="337"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="high"
               />
             </div>
             <div class="card-image-overlay-content media-type-overlay ml-4 mb-2">

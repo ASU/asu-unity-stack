@@ -5,7 +5,11 @@ import starbucksLogo from './asu-starbucks.png';
 
 export const Basic = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -102,11 +106,19 @@ export const Basic = (
                     class="vert"
                     src={vertlogo}
                     alt="Arizona State University"
+                    width="303"
+                    height="234"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                   <img
                     class="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
+                    width="400"
+                    height="72"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </a>
                 <button
@@ -317,7 +329,11 @@ export const Basic = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only" data-elastic-exclude="data-elastic-exclude"></div>
+      <div
+        id="skip-to-content"
+        class="sr-only"
+        data-elastic-exclude="data-elastic-exclude"
+      ></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -325,7 +341,11 @@ export const Basic = (
 
 export const DropDownMenus = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -419,11 +439,19 @@ export const DropDownMenus = (
                     class="vert"
                     src={vertlogo}
                     alt="Arizona State University"
+                    width="303"
+                    height="234"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                   <img
                     class="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
+                    width="400"
+                    height="72"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </a>
                 <button
@@ -1401,7 +1429,11 @@ export const DropDownMenus = (
 
 export const NoNavigation = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1498,11 +1530,19 @@ export const NoNavigation = (
                     class="vert"
                     src={vertlogo}
                     alt="Arizona State University"
+                    width="303"
+                    height="234"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                   <img
                     class="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
+                    width="400"
+                    height="72"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </a>
                 <button
@@ -1627,7 +1667,11 @@ export const NoNavigation = (
 
 export const NoNavigationAndWithButtons = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1721,11 +1765,19 @@ export const NoNavigationAndWithButtons = (
                     class="vert"
                     src={vertlogo}
                     alt="Arizona State University"
+                    width="303"
+                    height="234"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                   <img
                     class="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
+                    width="400"
+                    height="72"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </a>
                 <button
@@ -1868,7 +1920,11 @@ export const NoNavigationAndWithButtons = (
 
 export const ScrolledState = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -1965,11 +2021,19 @@ export const ScrolledState = (
                     class="vert"
                     src={vertlogo}
                     alt="Arizona State University"
+                    width="303"
+                    height="234"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                   <img
                     class="horiz"
                     src={horizlogo}
                     alt="Arizona State University"
+                    width="400"
+                    height="72"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </a>
                 <button
@@ -2301,7 +2365,11 @@ export const ScrolledState = (
 
 export const Partner = (
   <>
-    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <header
+      id="asu-header"
+      class="fixed-top"
+      data-elastic-exclude="data-elastic-exclude"
+    >
       <div id="wrapper-header-top">
         <div class="container-xl">
           <div class="row">
@@ -2396,18 +2464,33 @@ export const Partner = (
                 <div class="partner">
                   <div class="partners-logos">
                     <a href="#" data-ga-header="starbucks logo">
-                      <img src={starbucksLogo} alt="Asu Starbucks logo" />
+                      <img
+                        src={starbucksLogo}
+                        alt="ASU Starbucks logo"
+                        width="232"
+                        height="81"
+                        decoding="async"
+                        fetchPriority="high"
+                      />
                     </a>
                     <a href="#" data-ga-header="asu logo">
                       <img
                         class="vert"
                         src={vertlogo}
                         alt="Arizona State University"
+                        width="303"
+                        height="234"
+                        decoding="async"
+                        fetchPriority="high"
                       />
                       <img
                         class="horiz"
                         src={horizlogo}
                         alt="Arizona State University"
+                        width="400"
+                        height="72"
+                        decoding="async"
+                        fetchPriority="high"
                       />
                     </a>
                   </div>

@@ -7,7 +7,14 @@ export default createComponent('Image Parallax', 'Molecules', 'Templates');
 export const ImageParalax = createStory(
   () => (
     <section class="parallax-container carve-your-path">
-      <img src="https://source.unsplash.com/WLUHO9A_xik/1200x900" />
+      <img
+        src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+        width="1200"
+        height="900"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <div class="parallax-container-content">
         <h2>Carve your path</h2>
         <p>

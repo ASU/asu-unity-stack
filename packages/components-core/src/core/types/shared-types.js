@@ -135,9 +135,11 @@
  * @property {boolean} [disabled]
  * @property {boolean} [pageLinkIcon]
  * @property {boolean} [selectedPage]
+ * @property {boolean}  [ellipses]
  * @property {string} [dataId]
  * @property {function():void} [onClick]
  * @property {React.ReactNode} children
+ * @property {string} [ariaLabel]
  */
 
 /**
