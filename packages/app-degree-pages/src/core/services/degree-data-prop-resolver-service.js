@@ -144,6 +144,12 @@ function degreeDataPropResolverService(row = {}) {
     isValidActiveProgram: () => isValidActiveProgram(row),
     getAsuDegSrchFlg: () => row["AsuDegSrchFlg"],
     getAsuCustomText: () => row["AsuCustomText"],
+    getRequiredCoursesLabel: () => {
+      if (row["Degree"] === "Minor") return "Minor";
+      if (row["Degree"] === "Certificate") return "Certificate";
+
+      return "Major";
+    },
   };
 }
 

@@ -55,7 +55,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         ? resolver.getOnlineMajorMapURL()
         : resolver.getAsuCritTrackUrl();
 
-      return `<a href=${directUrl}>Major Map</a>`;
+      return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
     };
 
     const getAcceleratedConcurrent = () => `<div>
