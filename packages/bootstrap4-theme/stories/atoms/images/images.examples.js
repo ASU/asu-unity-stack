@@ -14,7 +14,12 @@ export const LargeImageNoCaptionComponent = createStory(
       src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
       class="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
-    ></img>
+      width="1200"
+      height="750"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
+    />
   </div>
 );
 LargeImageNoCaptionComponent.args = {
@@ -27,7 +32,12 @@ export const LargeImageNoCaptionComponentBorderless = createStory(
       src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
       class="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
-    ></img>
+      width="1200"
+      height="750"
+      loading="lazy"
+      decoding="async"
+      fetchPriority="high"
+    />
   </div>
 );
 LargeImageNoCaptionComponentBorderless.args = {
@@ -41,7 +51,12 @@ export const LargeImageCaptionComponent = createStory(
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
         class="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
-      ></img>
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <figcaption class="figure-caption uds-figure-caption">
         <span class="uds-caption-text">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -64,7 +79,12 @@ export const LargeImageCaptionComponentBorderless = createStory(
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
         class="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
-      ></img>
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
       <figcaption class="figure-caption uds-figure-caption">
         <span class="uds-caption-text">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -88,7 +108,12 @@ export const LargeImagesDropShadowComponent = createStory(
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
         class="uds-img XXuds-img-drop-shadow img-fluid"
         alt="Random image with dropshadow. REPLACE with appropriate alt text."
-      ></img>
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
     </div>
     {/* Component end */}
 
@@ -102,7 +127,12 @@ export const LargeImagesDropShadowComponent = createStory(
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
           class="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
-        ></img>
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
         <figcaption class="figure-caption uds-figure-caption">
           <span class="uds-caption-text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -143,7 +173,12 @@ export const SmallImagesComponent = createStory(
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
           class="uds-img img-fluid"
           alt="Random image with dropshadow. REPLACE with appropriate alt text."
-        ></img>
+          width="800"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       {/* Component end */}
     </div>
@@ -159,7 +194,12 @@ export const SmallImagesComponent = createStory(
             src="https://source.unsplash.com/WLUHO9A_xik/800x600"
             class="uds-img figure-img img-fluid"
             alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
-          ></img>
+            width="800"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="high"
+          />
           <figcaption class="figure-caption uds-figure-caption">
             <span class="uds-caption-text">
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
