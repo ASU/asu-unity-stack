@@ -58,7 +58,9 @@ In order to build the project, the dev environment needs to have the following p
 
 ### Installing and using Lerna
 
-Lerna is used as monorepo management tool. To take advantage of it, It can be installed globally by running ``` npm install -g lerna ```. After running that, ```npx nx graph``` can be used to visualize the dependency linking in the monorepo as such <img src="./docs/assets/nx-graph-example.png" alt="visualization of nx graph" style="height: 122px; width:304px;"/>
+Lerna is used as monorepo management tool. To take advantage of it, It can be installed globally by running ``` npm install -g lerna ```. After running that, ```npx nx graph``` can be used to visualize the dependency linking in the monorepo as such
+
+<img src="./docs/assets/nx-graph-example.png" alt="visualization of nx graph" style="height: 244px; width:608px;"/>
 
 Lerna will cache the builds locally, speeding up build times.
 
