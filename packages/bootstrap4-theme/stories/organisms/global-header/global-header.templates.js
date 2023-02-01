@@ -2466,7 +2466,7 @@ export const Partner = (
                     <a href="#" data-ga-header="starbucks logo">
                       <img
                         src={starbucksLogo}
-                        alt="Asu Starbucks logo"
+                        alt="ASU Starbucks logo"
                         width="232"
                         height="81"
                         decoding="async"
