@@ -68,7 +68,9 @@ const columns = [
         ? resolver.getOnlineMajorMapURL()
         : resolver.getAsuCritTrackUrl();
 
-      const directMapLink = <a href={directUrl}>Major Map</a>;
+      const directMapLink = (
+        <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
+      );
 
       return directMapLink;
     },
