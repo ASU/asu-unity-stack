@@ -56,6 +56,14 @@ In order to build the project, the dev environment needs to have the following p
 
 ## ❯ Setup Local Development Environment
 
+### Installing and using Lerna
+
+Lerna is used as monorepo management tool. To take advantage of it, It can be installed globally by running ``` npm install -g lerna ```. After running that, ```npx nx graph``` can be used to visualize the dependency linking in the monorepo as such
+
+<img src="./docs/assets/nx-graph-example.png" alt="visualization of nx graph" style="height: 244px; width:608px;"/>
+
+Lerna will cache the builds locally, speeding up build times.
+
 ### Install Node and Yarn
 
 You need to set up your development environment before you can build Unity locally. Unless you have a use case for that - contributing to Unity, or implementing something custom - you can probably stick with using packages from the registry as described above.
