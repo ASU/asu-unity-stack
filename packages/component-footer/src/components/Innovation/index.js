@@ -96,6 +96,10 @@ const Innovation = () => {
                 <img
                   src={innovationLogo}
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 8 years, 2016-2023"
+                  width="459"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
