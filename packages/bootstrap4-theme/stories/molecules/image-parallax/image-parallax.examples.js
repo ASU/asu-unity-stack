@@ -32,7 +32,15 @@ export const twoImagesInPageOfSections = createStory(
         Section 4
       </div>
       <section class="parallax-container carve-your-path">
-        <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
+        <img
+          src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+          alt="Img alt text"
+          width="1200"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
       </section>
       <div
         class="d-flex flex-column justify-content-center align-items-center"
@@ -68,9 +76,15 @@ export const twoImagesInPageOfSections = createStory(
       </div>
       <section class="parallax-container asu-for-you">
         <img
-          src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png"
+          src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+          alt="Img alt text"
           data-parallax-factor="1"
           data-parallax-type="scroll-to"
+          width="1200"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
       </section>
     </div>
@@ -106,7 +120,15 @@ export const twoImagesWithContentInPageOfSections = createStory(
         Section 4
       </div>
       <section class="parallax-container carve-your-path">
-        <img src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/Innovation-Collaboration-ISTB4.jpg" />
+        <img
+          src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+          alt="Img alt text"
+          width="1200"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
         <div class="parallax-container-content">
           <h2>Carve your path</h2>
           <p>
@@ -162,8 +184,14 @@ export const twoImagesWithContentInPageOfSections = createStory(
       </div>
       <section class="parallax-container asu-for-you">
         <img
-          src="https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouTexture.png"
+          src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+          alt="Img alt text"
           data-parallax-factor="1"
+          width="1200"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
         />
         <div class="parallax-container-content">
           <h2>Reimagining education for everyone</h2>
