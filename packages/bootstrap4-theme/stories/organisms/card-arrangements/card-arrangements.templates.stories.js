@@ -1,7 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import { googleAnalytics as initFunc } from '../../../src/js/googleAnalytics.js';
-
+import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates.stories';
 const extraOptions = {
   numCards: {
     name: 'Number Of Cards',
@@ -29,7 +29,7 @@ export default createComponent(
   'Templates',
   extraOptions
 );
-import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates';
+
 
 export const CardArrangement = createStory(
   (args) => {

@@ -22,7 +22,7 @@ const extraOptions = {
   },
 }
 
-export default createComponent('Breadcrumbs', 'Atoms', 'Templates', extraOptions);
+export default createComponent('Breadcrumbs', 'Atoms', 'Templates');
 
 export const BreadcrumbsAgainstWhiteBackground = createStory(
   (args) => {

@@ -4,7 +4,7 @@ import {
   createStory,
   layoutNames,
 } from '../../../helpers/wrapper.js';
-import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates';
+import { cardNoTemplates as Card } from '../../molecules/cards/cards.templates.stories';
 export default createComponent(
   'Content Sections/Card Image And Content',
   'Organisms',
