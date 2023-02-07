@@ -36,6 +36,7 @@ const ASUSearchResultsList = ({
   appPathFolder,
   localSection,
   rankGroup,
+  icon,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -147,7 +148,8 @@ const ASUSearchResultsList = ({
   const onPageChange = val => {
     setCurrentPage(val);
     doSearch(val);
-    if (results.length > 0) { // Only scroll and focus if there are results
+    if (results.length > 0) {
+      // Only scroll and focus if there are results
       searchList.current.scrollIntoView(true);
       searchList.current.firstElementChild.focus();
     }
@@ -189,10 +191,11 @@ const ASUSearchResultsList = ({
           )}
           {titleText && (
             <div className={`results-title${type === "micro" ? "-small" : ""}`}>
-              {titleText}
+              {titleText}{" "}
+              {icon && <i className={`${icon?.[0]} fa-${icon?.[1]}`} />}
             </div>
           )}
-          {(results.length > 0 && !isLoading) ? (
+          {results.length > 0 && !isLoading ? (
             <div ref={searchList} className="results-found">
               {results}
             </div>
@@ -252,6 +255,7 @@ ASUSearchResultsList.propTypes = {
   appPathFolder: PropTypes.string,
   localSection: PropTypes.bool,
   rankGroup: PropTypes.string,
+  icon: PropTypes.arrayOf(PropTypes.string),
 };
 
 export { ASUSearchResultsList };

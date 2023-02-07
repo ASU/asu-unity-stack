@@ -134,6 +134,7 @@ const AllTab = ({
               GASource="students"
               hidePaginator
               registerResults={registerResults}
+              icon={["fa", "lock"]}
             />
           </div>
           <div className="quick-links all-content-item">
