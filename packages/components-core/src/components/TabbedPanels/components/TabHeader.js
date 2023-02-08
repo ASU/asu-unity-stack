@@ -29,8 +29,8 @@ const TabHeader = ({
       onKeyDown={func}
       tabIndex={selected ? "" : "-1"}
     >
+      {title}{" "}
       {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} mr-1`} />}
-      {title}
     </a>
   );
 };

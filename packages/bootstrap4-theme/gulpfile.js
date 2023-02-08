@@ -131,7 +131,7 @@ gulp.task('scripts', function () {
 gulp.task('copy-assets', function (done) {
   // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}/@asu/build/assets/img/**/*`)
+    .src(`${paths.node}/@asu/design-tokens/build/assets/img/**/*`)
     .pipe(gulp.dest('./src/img'));
 
   // Copy font-awesome from design-token into src/

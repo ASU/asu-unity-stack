@@ -9,7 +9,7 @@ import {
   NoNavigationAndWithButtons,
   ScrolledState,
   Partner,
-} from './global-header.templates.js';
+} from './global-header.templates.stories.js';
 import { initGlobalHeader as initFunc } from './global-header';
 
 export const BasicExample = createStory(Basic, { initFunc });
