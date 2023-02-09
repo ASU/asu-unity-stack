@@ -22,8 +22,20 @@ export default createComponent(
   "Templates",
   extraOptions
 );
+const options = {
+  GASource: "Search Results",
+  localSection: true,
+};
 
-const resultsCard = subdomainConverter(data);
+const resultsCard = subdomainConverter(
+  data,
+  { size: "full" },
+  null,
+  null,
+  null,
+  null,
+  options
+);
 
 export const resultsCardExample = createStory(
   args => {
