@@ -92,9 +92,10 @@
 
 /**
  * @typedef {Object} RequiredCoursesProps
- * @property {string} concurrentDegreeMajorMaps
  * @property {string} onlineMajorMapURL
  * @property {string} majorMapOnCampusArchiveURL
+ * @property {string} subPlnMajorMaps
+ * @property {string} subPln
  */
 
 /**

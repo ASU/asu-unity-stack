@@ -150,6 +150,8 @@ function degreeDataPropResolverService(row = {}) {
 
       return "Major";
     },
+    getSubPlnMajorMaps: () => row["SubPlnMajorMaps"],
+    getSubPln: () => row["SubPln"],
   };
 }
 

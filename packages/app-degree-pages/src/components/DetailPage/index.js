@@ -191,13 +191,13 @@ const DetailPage = ({
                     }
                   />
                 ) : null}
-
                 {!introContent?.hideRequiredCourses &&
                 !resolver.isMinorOrCertificate() ? (
                   <RequiredCourse
-                    concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                     onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
                     majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                    subPlnMajorMaps={resolver.getSubPlnMajorMaps()}
+                    subPln={resolver.getSubPln()}
                   />
                 ) : null}
 
