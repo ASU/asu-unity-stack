@@ -34,7 +34,7 @@ const UniversalNavbar = () => {
               </a>
               <a
                 className="nav-link sr-only sr-only-focusable"
-                href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
+                href="https://accessibility.asu.edu/report"
               >
                 Report an accessibility problem
               </a>
