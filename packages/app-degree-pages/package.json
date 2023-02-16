@@ -31,6 +31,7 @@
     "e2e": "yarn cy:open",
     "cy:run": "cypress run --headless",
     "cy:open": "cypress open",
+    "percy": "percy storybook ./storybook-static",
     "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
