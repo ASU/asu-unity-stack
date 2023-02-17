@@ -80,7 +80,7 @@ export const FacultyRankTabPanels = ({
       </Tab>
       <Tab
         id="st-acad-pro"
-        title="Short-Term Faculty and Academic Professionals"
+        title="Fixed-Term Faculty and Academic Professionals"
       >
         <ASUSearchResultsList
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
