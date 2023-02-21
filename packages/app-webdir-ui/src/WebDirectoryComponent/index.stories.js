@@ -82,6 +82,10 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
 );
 
+webDirectoryExampleDepartmentsAndPeople.args = {
+  template: 0,
+};
+
 export const facultyRankWebDirectory = createStory(
   <div className="uds-content-align">
     <WebDirectory
@@ -97,6 +101,6 @@ export const facultyRankWebDirectory = createStory(
   { supportedTemplates: [layoutNames.FULL_WIDTH] }
 );
 
-webDirectoryExampleDepartmentsAndPeople.args = {
+facultyRankWebDirectory.args = {
   template: 0,
 };
