@@ -152,7 +152,7 @@ const webDirDeptsFormatter = (
   const titleOverwrite =
     !!filters && filters.peopleInDepts
       ? { peopleInDeps: filters.peopleInDepts }
-      : { depts: filters.deptIds };
+      : { depts: filters?.deptIds };
 
   return {
     tab: engines[engineName].name,
