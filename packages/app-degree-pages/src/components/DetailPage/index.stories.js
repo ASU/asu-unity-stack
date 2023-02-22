@@ -93,7 +93,7 @@ const defaultArgs = {
     // endpoint: "https://degrees.apps.asu.edu/t5/service", // OPTIONAL
     // method: "findDegreeByAcadPlan", // OPTIONAL
     // init: "false", // OPTIONAL
-    acadPlan: queryAcadPllan || "BABUSGLBA",
+    acadPlan: queryAcadPllan || "TBTGMBGM",
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },

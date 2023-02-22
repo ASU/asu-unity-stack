@@ -7,6 +7,10 @@ import React from "react";
 const CHANGEMAJOR_URL = "https://changemajor.apps.asu.edu/";
 const ONLINE = "ONLINE";
 
+const ONCAMPUS_TITLE = "ON-CAMPUS STUDENTS";
+const ONLINE_TITLE = "ONLINE STUDENTS";
+const VIEW_MAJOR_MAP_WITH_SLASH = "View major map -";
+const VIEW_MAJOR_MAP = "View major map";
 /**
  *
  * @param {RequiredCoursesProps} props
@@ -14,7 +18,7 @@ const ONLINE = "ONLINE";
  */
 function RequiredCourse({
   onlineMajorMapURL = "",
-  majorMapOnCampusArchiveURL = "",
+  majorMapOnCampusURL = "",
   subPlnMajorMaps = [],
   subPln = [],
 }) {
@@ -44,24 +48,24 @@ function RequiredCourse({
         const planDescription = getSubPlnDescription(
           item.SubplnMajorMapSubplanCode
         );
-        const bulletText = `View major map - ${planDescription}`;
+        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
         addLink(item.SubPlnMajorMapUrl, bulletText, oncampusLinks);
       } else {
         const planDescription = getSubPlnDescription(
           item.SubplnMajorMapSubplanCode
         );
-        const bulletText = `View major map - ${planDescription}`;
+        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
         addLink(item.SubPlnMajorMapUrl, bulletText, onlineLinks);
       }
     });
   }
 
-  if (majorMapOnCampusArchiveURL) {
-    addLink(majorMapOnCampusArchiveURL, "View major map", oncampusLinks);
+  if (majorMapOnCampusURL) {
+    addLink(majorMapOnCampusURL, VIEW_MAJOR_MAP, oncampusLinks);
   }
 
   if (onlineMajorMapURL) {
-    addLink(onlineMajorMapURL, "View major map", onlineLinks);
+    addLink(onlineMajorMapURL, VIEW_MAJOR_MAP, onlineLinks);
   }
 
   // render HTML links from array of links
@@ -69,7 +73,7 @@ function RequiredCourse({
     return (
       <>
         <h5>{title}</h5>
-        <ul>
+        <ul className="mb-3">
           {links.map(link => (
             <li key={link.href}>
               <a href={link.href}>{link.text}</a>
@@ -84,9 +88,8 @@ function RequiredCourse({
   const RequiredCourseSection = () => (
     <section className="container pl-0" data-testid="required-course">
       <h4>Required Courses (Major Map)</h4>
-      {oncampusLinks.length > 0 &&
-        renderLinks("ON-CAMPUS STUDENTS", oncampusLinks)}
-      {onlineLinks.length > 0 && renderLinks("ONLINE STUDENTS", onlineLinks)}
+      {oncampusLinks.length > 0 && renderLinks(ONCAMPUS_TITLE, oncampusLinks)}
+      {onlineLinks.length > 0 && renderLinks(ONLINE_TITLE, onlineLinks)}
       <div className="mt-3">
         <strong>What if:</strong> See how your courses can be applied to another
         major and find out how to&nbsp;
@@ -97,7 +100,7 @@ function RequiredCourse({
 
   return !subPlnMajorMaps?.length &&
     !onlineMajorMapURL &&
-    !majorMapOnCampusArchiveURL ? (
+    !majorMapOnCampusURL ? (
     <div />
   ) : (
     RequiredCourseSection()
@@ -106,7 +109,7 @@ function RequiredCourse({
 
 RequiredCourse.propTypes = {
   onlineMajorMapURL: PropTypes.string,
-  majorMapOnCampusArchiveURL: PropTypes.string,
+  majorMapOnCampusURL: PropTypes.string,
   subPlnMajorMaps: PropTypes.arrayOf(
     PropTypes.shape({
       SubplnMajorMapSubplanCode: PropTypes.string,
