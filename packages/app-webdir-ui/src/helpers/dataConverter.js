@@ -220,20 +220,20 @@ export const staffConverter = (
   // We guard against null asurite_id being returned from data source in some
   // instances by using a conditional render.
   const profileURLBase = options.profileURLBase ?? "";
-  const safeAsuriteID = filledDatum.asurite_id.raw.length
-    ? filledDatum.asurite_id.raw.toString()
-    : null;
+  const asuriteEID = filledDatum.eid.raw
+    ? filledDatum.eid.raw.toString()
+    : filledDatum.asurite_id.raw.toString();
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <>
-      {safeAsuriteID ? (
+      {asuriteEID ? (
         <ProfileCard
           isRequired={false}
-          id={safeAsuriteID}
-          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
-          key={safeAsuriteID}
+          id={asuriteEID}
+          profileURL={`${profileURLBase}/profile/${asuriteEID}`}
+          key={asuriteEID}
           imgURL={filledDatum.photo_url.raw}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
@@ -272,9 +272,9 @@ export const studentsConverter = (
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.asurite_id.raw.toString()}
-      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-      key={filledDatum.asurite_id.raw.toString()}
+      id={filledDatum.eid.raw.toString()}
+      profileURL={`/profile/${filledDatum.eid.raw.toString()}`}
+      key={filledDatum.eid.raw.toString()}
       imgURL={filledDatum.photo_url.raw}
       anonImgURL={anonImg}
       name={filledDatum.display_name.raw}
