@@ -1,6 +1,7 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
+import portraitImage from './portrait-image.jpg';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
 
@@ -1550,6 +1551,263 @@ export const mediaTypeOverlayCard = createStory(
         </div>
       </span>
     </div>
+  </div>,
+  {
+    initFunc,
+    omitTemplate: true,
+  }
+);
+
+export const ImageBasedCards = createStory(
+  <div class="container">
+    <h2>Portrait</h2>
+    <h3>SM</h3>
+    <div class="card card-image-based portrait-sm">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="255"
+        height="450"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-md btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <h3>MD</h3>
+    <div class="card card-image-based portrait-md">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="350"
+        height="620"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-md btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <br />
+    <br />
+    <h2>Landscape</h2>
+    <h3>SM</h3>
+    <div class="card card-image-based landscape-sm">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="255"
+        height="144"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-sm btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <h3>MD</h3>
+    <div class="card card-image-based landscape-md">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="350"
+        height="197"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-sm btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <h3>LG</h3>
+    <div class="card card-image-based landscape-lg">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="540"
+        height="304"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-md btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <br />
+    <br />
+    <h2>Square</h2>
+    <h3>SM</h3>
+    <div class="card card-image-based square-sm">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="255"
+        height="255"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-sm btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <h3>MD</h3>
+    <div class="card card-image-based square-md">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="350"
+        height="350"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-md btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <hr />
+    <h3>LG</h3>
+    <div class="card card-image-based square-lg">
+      <img
+        class="card-img"
+        src={portraitImage}
+        alt="Card image cap"
+        width="540"
+        height="540"
+        loading="lazy"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div class="card-img-overlay">
+        <h2 class="card-title text-white">Heading text</h2>
+        <a
+          href="#"
+          class="btn btn-md btn-gold btn-responsive"
+          data-ga="more quotes"
+          data-ga-name="onclick"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-type="internal link"
+          data-ga-region="main content"
+          data-ga-section="gettysburg address"
+        >
+          Call to action button
+        </a>
+      </div>
+    </div>
+    <br />
+    <br />
   </div>,
   {
     initFunc,
