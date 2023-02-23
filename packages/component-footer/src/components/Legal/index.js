@@ -32,7 +32,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/accessibility/"
+                href="https://accessibility.asu.edu/report"
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
