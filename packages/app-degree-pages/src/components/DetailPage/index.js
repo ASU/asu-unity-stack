@@ -195,7 +195,7 @@ const DetailPage = ({
                 !resolver.isMinorOrCertificate() ? (
                   <RequiredCourse
                     onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                    majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                    majorMapOnCampusURL={resolver.getAsuCritTrackUrl()}
                     subPlnMajorMaps={resolver.getSubPlnMajorMaps()}
                     subPln={resolver.getSubPln()}
                   />
