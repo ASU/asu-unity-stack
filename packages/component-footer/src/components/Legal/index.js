@@ -9,6 +9,16 @@ const DEFAULT_GA_EVENT = {
 };
 
 const Legal = () => {
+  function getURL() {
+    try {
+      const URL = window.location.href;
+      return URL;
+    } catch (error) {
+      console.error(error);
+      return "";
+    }
+  }
+
   return (
     <div className="wrapper" id="wrapper-footer-colophon" data-testid="legal">
       <div className="container" id="footer-colophon">
@@ -32,7 +42,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://accessibility.asu.edu/report"
+                href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
