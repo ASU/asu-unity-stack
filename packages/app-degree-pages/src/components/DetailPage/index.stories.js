@@ -81,7 +81,7 @@ const Template = ({
 // TEST:  this is just an example which shows how to parse the page URL querystring
 // to get the acadPlan
 // ====================================================================================
-const queryAcadPllan = new URL(window.location.href).searchParams.get(
+const queryAcadPlan = new URL(window.location.href).searchParams.get(
   "acadPlan"
 );
 // ====================================================================================
@@ -93,7 +93,7 @@ const defaultArgs = {
     // endpoint: "https://degrees.apps.asu.edu/t5/service", // OPTIONAL
     // method: "findDegreeByAcadPlan", // OPTIONAL
     // init: "false", // OPTIONAL
-    acadPlan: queryAcadPllan || "BABUSGLBA",
+    acadPlan: queryAcadPlan || "TBTGMBGM",
     // acadPlan: "LSBISBIS", // this has marketText
     // acadPlan: "ESBMEMDBSE", // this does not have required courses
   },

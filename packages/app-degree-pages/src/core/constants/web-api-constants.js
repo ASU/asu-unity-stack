@@ -33,7 +33,7 @@ const detailPageDefaultDataSource = {
   fields:
     `graduateApplyDates,planDeadlines,AsuDegSrchFlg,AsuCustomText,Degree,` +
     `marketText,DescrlongExtns,concurrentDegreeMajorMaps,onlineMajorMapURL,` +
-    `ChangeMajor,AsuCritTrackUrl,` +
+    `ChangeMajor,AsuCritTrackUrl,SubPlnMajorMaps,SubPln,` +
     // at a glance
     `Descr100,CollegeDescr100,CollegeUrl,` +
     `AsuOfficeLoc,CampusStringArray,campusWue,MinMathReq,MathIntensity,` +
