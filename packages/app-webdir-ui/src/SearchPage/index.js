@@ -38,7 +38,7 @@ function SearchPage({
     filters,
     API_URL,
     searchApiVersion,
-    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    profileURLBase: profileURLBase || "https://search.asu.edu",
     appPathFolder,
   };
 

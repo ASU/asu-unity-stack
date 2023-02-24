@@ -23,7 +23,7 @@ export const FacultyRankTabPanels = ({
     filters,
     API_URL,
     searchApiVersion,
-    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    profileURLBase: profileURLBase || "https://search.asu.edu",
     appPathFolder,
   };
 

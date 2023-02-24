@@ -164,7 +164,7 @@ const webDirDeptsFormatter = (
           {
             size: "large",
             titleMatch: titleOverwrite,
-            profileURLBase: "https://isearch.asu.edu",
+            profileURLBase: "https://search.asu.edu",
           },
           appPathFolder
         );
