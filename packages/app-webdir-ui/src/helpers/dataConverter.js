@@ -204,7 +204,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (
+export const staffConverter = ({
   datum,
   options = {
     size: "small",
@@ -212,8 +212,8 @@ export const staffConverter = (
     profileURLBase: null,
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
@@ -256,14 +256,14 @@ export const staffConverter = (
   );
 };
 
-export const studentsConverter = (
+export const studentsConverter = ({
   datum,
   options = {
     size: "small",
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
@@ -328,7 +328,7 @@ export const anonConverter = (
   );
 };
 
-export const subdomainConverter = (
+export const subdomainConverter = ({
   datum,
   options = {
     size: "small",
@@ -338,8 +338,8 @@ export const subdomainConverter = (
   logClick = () => {},
   requestId,
   localSection = null,
-  { ...props }
-) => {
+  props,
+}) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
   if (filledDatum.meta_description) {
