@@ -32,10 +32,10 @@ const ButtonList = styled.ul`
   }
 `;
 
-const undergraduateTemplate = (
+const undergraduateTemplate = ({
+  transferRequirements = "",
   additionalRequirements = "",
-  transferRequirements = ""
-) => {
+}) => {
   const generalRequirements = [
     {
       label: "Freshman",
@@ -139,7 +139,10 @@ function ApplicationRequirements({
             )}
           />
         ) : (
-          undergraduateTemplate(transferRequirements, additionalRequirements)
+          undergraduateTemplate({
+            transferRequirements,
+            additionalRequirements,
+          })
         )}
       </section>
 

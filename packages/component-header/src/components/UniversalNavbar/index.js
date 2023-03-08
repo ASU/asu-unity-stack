@@ -14,6 +14,16 @@ const DEFAUL_GA_EVENT = {
 const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
 
+  function getURL() {
+    try {
+      const URL = window.location.href;
+      return URL;
+    } catch (error) {
+      console.error(error);
+      return "";
+    }
+  }
+
   return (
     <Wrapper
       // @ts-ignore
@@ -34,7 +44,7 @@ const UniversalNavbar = () => {
               </a>
               <a
                 className="nav-link sr-only sr-only-focusable"
-                href="https://accessibility.asu.edu/report"
+                href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
               >
                 Report an accessibility problem
               </a>

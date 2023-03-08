@@ -152,7 +152,7 @@ const webDirDeptsFormatter = (
   const titleOverwrite =
     !!filters && filters.peopleInDepts
       ? { peopleInDeps: filters.peopleInDepts }
-      : { depts: filters.deptIds };
+      : { depts: filters?.deptIds };
 
   return {
     tab: engines[engineName].name,
@@ -164,7 +164,7 @@ const webDirDeptsFormatter = (
           {
             size: "large",
             titleMatch: titleOverwrite,
-            profileURLBase: "https://isearch.asu.edu",
+            profileURLBase: "https://search.asu.edu",
           },
           appPathFolder
         );
@@ -420,7 +420,8 @@ export const performSearch = function ({
         ) {
           data.sort((a, b) =>
             a.full_record.display_last_name.raw.localeCompare(
-              b.full_record.display_last_name.raw)
+              b.full_record.display_last_name.raw
+            )
           );
 
           if (sort === "last_name_desc") {
