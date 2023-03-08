@@ -23,7 +23,6 @@ function SearchPage({
 }) {
   const searchTabsId = "search-tabs";
   const queryParamName = "q";
-  const sortParamName = "sort-by";
   const siteParamName = "url_host";
 
   const [term, setTerm] = useState("");
@@ -75,22 +74,17 @@ function SearchPage({
   };
 
   const changeSort = value => {
-    updateSearchParams(sortParamName, value);
+    setSort(value);
   };
   useEffect(() => {
     if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
     }
-    if (searchParams.get(sortParamName)) {
-      setSort(searchParams.get(sortParamName));
-    } else {
-      setSort("_score_desc");
-    }
     if (searchParams.get(queryParamName)) {
       setTerm(searchParams.get(queryParamName));
       setSearchValue(searchParams.get(queryParamName));
     }
-  }, [searchParams]);
+  }, [searchParams, sort]);
 
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
