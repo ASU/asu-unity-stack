@@ -1,5 +1,5 @@
 .card-ranking {
-  height: 497px;
+  height: 543px;
   position: relative;
   border: 1px solid $uds-color-base-gray-3;
   overflow: hidden;
@@ -109,7 +109,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
 
     .info-layer {
@@ -142,12 +143,5 @@
   @media screen and (min-width: $uds-grid-container-max-width-md) {
     width: 282px;
     height: 497px;
-
-    &.large-image {
-      > img {
-        width: auto;
-        height: 100%;
-      }
-    }
   }
 }
