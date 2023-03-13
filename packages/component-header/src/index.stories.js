@@ -34,17 +34,25 @@ const Template = args => (
 );
 
 const AnimatedTitleTemplate = args => {
-  const [animate, setAnimate] = useState(false);
+  const handleClick = () => {
+    // get curent local storage value
+    const titleTimestamp = localStorage.getItem("title_loaded");
+
+    if (titleTimestamp) {
+      localStorage.removeItem("title_loaded");
+    }
+
+    setTimeout(() => {
+      // reload the page with button
+      window.location.reload();
+    }, 1000);
+  };
 
   return (
     <>
-      <ASUHeader {...{ ...args, animateTitle: animate }} />
+      <ASUHeader {...{ ...args, animateTitle: true }} />
       <div style={{ marginTop: 200, textAlign: "center" }}>
-        <Button
-          text="Animate Title"
-          color="dark"
-          onClick={() => setAnimate(prevState => !prevState)}
-        />
+        <Button text="Animate Title" color="dark" onClick={handleClick} />
       </div>
     </>
   );
