@@ -16,20 +16,26 @@ const addMinutesToDate = (date, minutes) => {
  * @param {string} root - The full URL of the site root, used to check against document.referrer
  */
 const checkFirstLoad = root => {
+  const LOCALHOST = "localhost";
+  const KEY_TITLE_LOADED = "title_loaded";
   const now = new Date();
-  const { localStorage } = window;
+
   const siteRoot = root || window.location.hostname;
   // Check if title_loaded is set
   const titleLoaded = localStorage.getItem("title_loaded");
   const titleLoadedExpired = now.getTime() > parseInt(titleLoaded, 10);
 
-  if (
-    !document.referrer.includes(siteRoot) &&
-    (!titleLoaded || titleLoadedExpired)
-  ) {
+  // Check for localhost to avoid the other validations (Storybook use case)
+  const isLocalSite = siteRoot === LOCALHOST;
+  // check if referrer matches site
+  const hasMatchingReferrer = document.referrer.includes(siteRoot);
+  // check if title is loaded and not expired
+  const hasValidTitle = !titleLoaded || titleLoadedExpired;
+
+  if (isLocalSite || (!hasMatchingReferrer && hasValidTitle)) {
     // Set 10 minutes to now date and set it as expiration time
     const expirationTime = addMinutesToDate(now, 10).getTime();
-    localStorage.setItem("title_loaded", expirationTime.toString());
+    localStorage.setItem(KEY_TITLE_LOADED, expirationTime.toString());
     return true;
   }
 
