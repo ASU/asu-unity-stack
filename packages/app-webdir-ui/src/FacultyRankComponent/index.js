@@ -15,8 +15,6 @@ export const FacultyRankTabPanels = ({
   profileURLBase,
   searchType,
 }) => {
-  const [requestFilters, setRequestFilters] = useState();
-
   const RES_PER_PAGE = 6;
   const sort = "faculty_rank";
   const engineParams = {
@@ -38,27 +36,24 @@ export const FacultyRankTabPanels = ({
     faculty_rank: engineNames.WEB_DIRECTORY_FACULTY_RANK,
   };
 
-  function doSearch() {
-    const tempFilters = { ...filters };
-    tempFilters["deptIds"] = deptIds.split(",");
-    setRequestFilters(tempFilters);
+  function doSearch(page) {
+
   }
 
-  useEffect(() => {
-    doSearch();
-  }, []);
+  const tempFilters = { ...filters };
+  tempFilters["deptIds"] = deptIds.split(",");
 
   return (
     <TabbedPanels onTabChange={() => true} id="faculty-rank-tabs">
       <Tab id="faculty" title="Faculty">
         <ASUSearchResultsList
+          key={1}
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
           itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          onPageChange={page => doSearch(page)}
           size="large"
           sort={sort}
           hidePaginator={display.usePager !== "1"}
-          filters={requestFilters}
+          filters={tempFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
           display={display}
           rankGroup="1"
@@ -68,11 +63,10 @@ export const FacultyRankTabPanels = ({
         <ASUSearchResultsList
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
           itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          onPageChange={page => doSearch(page)}
           size="large"
           sort={sort}
           hidePaginator={display.usePager !== "1"}
-          filters={requestFilters}
+          filters={tempFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
           display={display}
           rankGroup="2"
@@ -85,11 +79,10 @@ export const FacultyRankTabPanels = ({
         <ASUSearchResultsList
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
           itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          onPageChange={page => doSearch(page)}
           size="large"
           sort={sort}
           hidePaginator={display.usePager !== "1"}
-          filters={requestFilters}
+          filters={tempFilters}
           profilesToFilterOut={display.doNotDisplayProfiles}
           display={display}
           rankGroup="3"
