@@ -36,10 +36,6 @@ export const FacultyRankTabPanels = ({
     faculty_rank: engineNames.WEB_DIRECTORY_FACULTY_RANK,
   };
 
-  function doSearch(page) {
-
-  }
-
   const tempFilters = { ...filters };
   tempFilters["deptIds"] = deptIds.split(",");
 
