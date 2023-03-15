@@ -47,7 +47,6 @@ export const FacultyRankTabPanels = ({
     <TabbedPanels onTabChange={() => true} id="faculty-rank-tabs">
       <Tab id="faculty" title="Faculty">
         <ASUSearchResultsList
-          key={1}
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
           itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
           size="large"
