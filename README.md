@@ -133,6 +133,10 @@ If you get errors during `yarn install` regarding failures to install packages f
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
+## ❯ Adding dependencies to a package
+- If adding a dependency to a specific package, run `lerna exec yarn add <dependency-name> --scope=<package-name>` from the git root.
+- If removing, run `lerna exec yarn remove <dependency-name> --scope=<package-name>` from the git root.
+
 ## ❯ Structure
  - packages/[package-name] - NPM package root
  - packages/[package-name]/src - Source code
