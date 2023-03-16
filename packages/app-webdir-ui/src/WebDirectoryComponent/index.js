@@ -119,13 +119,9 @@ function WebDirectory({
     }
   }, [sort]);
 
-  return (
-    <>
-      {searchType === "faculty_rank" ? (
-        <FacultyRankLayout>
-          <FacultyRankTabPanels {...facultyRankParams} />
-        </FacultyRankLayout>
-      ) : (
+  if (searchType !== "faculty_rank") {
+    return (
+      <>
         <WebDirLayout>
           <div className="sort">
             <SortPicker
@@ -151,8 +147,13 @@ function WebDirectory({
             />
           </div>
         </WebDirLayout>
-      )}
-    </>
+      </>
+    );
+  }
+  return (
+    <FacultyRankLayout>
+      <FacultyRankTabPanels {...facultyRankParams} />
+    </FacultyRankLayout>
   );
 }
 
