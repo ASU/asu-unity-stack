@@ -2,16 +2,24 @@
   "name": "@asu/unity-bootstrap-theme",
   "version": "1.0.0",
   "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
-  "main": "index.js",
-  "license": "MIT",
   "author": "Mayco Barale <mbarale@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "license": "MIT",
+  "main": "./src/index.js",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
-  "keywords": [],
-  "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js"
+  },
+  "devDependencies": {
+    "bootstrap": "5.2.3",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0"
   }
 }
