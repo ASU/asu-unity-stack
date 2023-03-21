@@ -15,11 +15,28 @@
     "url": "git+https://github.com/ASU/asu-unity-stack.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js"
+    "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
+    "init-sb": "npx storybook init --type html",
+    "build": "yarn install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "bootstrap": "5.2.3",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0"
-  }
+    "@babel/core": "^7.21.3",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/html": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.3.0",
+    "bootstrap": "5.2.3"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.19.1"
+  },
+  "dependencies": {}
 }
