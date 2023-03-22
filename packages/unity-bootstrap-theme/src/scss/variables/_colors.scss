@@ -12,8 +12,7 @@ $gray-7: $uds-color-base-gray-7;
 
 $body-color: $uds-color-base-gray-7;
 
-// stylelint-disable-next-line scss/dollar-variable-default
-/* This is defined at the end of the file */
+// TODO: check grays map
 $grays: ();
 $grays: map-merge(
   (
@@ -40,7 +39,7 @@ $bluefocus: $uds-color-base-bluefocus;
 $darkgold: $uds-color-base-darkgold;
 $darkmaroon: $uds-color-base-darkmaroon;
 
-/* This is defined at the end of the file */
+// TODO: check colors map
 $colors: () !default;
 $colors: map-merge(
   (
@@ -64,29 +63,28 @@ $warning: $uds-color-alerts-warning;
 $success: $uds-color-alerts-success;
 $info: $uds-color-alerts-info;
 
-$theme-colors: ();
-// stylelint-disable-next-line scss/dollar-variable-default
-$theme-colors: map-merge(
-  (
-    "gold": $gold,
-    "maroon": $maroon,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "light": $light,
-    "gray": $gray-4,
-    "dark": $dark,
-    "gray-1": $gray-1,
-    "gray-2": $gray-2,
-    "gray-3": $gray-3,
-    "gray-4": $gray-4,
-    "gray-5": $gray-5,
-    "gray-6": $gray-6,
-    "gray-7": $gray-7,
-  ),
-  $theme-colors
+$asu-custom-colors: (
+  "gold": $gold,
+  "maroon": $maroon,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "gray": $gray-4,
+  "dark": $dark,
+  "gray-1": $gray-1,
+  "gray-2": $gray-2,
+  "gray-3": $gray-3,
+  "gray-4": $gray-4,
+  "gray-5": $gray-5,
+  "gray-6": $gray-6,
+  "gray-7": $gray-7,
 );
+
+// TODO: check theme-colors map
+$theme-colors: ();
+$theme-colors: map-merge($asu-custom-colors, $theme-colors);
 
 // Links
 //
@@ -100,6 +98,7 @@ $link-decoration: underline;
 $link-hover-color: $maroon;
 $link-hover-decoration: none;
 
+// TODO: this color must be a variable (bluefocus)
 :focus {
   outline: 0;
   box-shadow: 0 0 8px #00baff !important;
