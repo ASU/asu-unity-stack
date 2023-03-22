@@ -1,0 +1,132 @@
+// buttons mixins
+@mixin btn-md {
+  font-size: $uds-component-button-medium-font-size;
+  padding: $uds-component-button-padding-y-medium
+    $uds-component-button-padding-x-medium;
+}
+
+// Extra styles that don't have bootstrap variables to override
+.btn {
+  text-decoration: $uds-component-button-text-decoration;
+  font-weight: $uds-component-button-font-weight;
+  white-space: nowrap;
+  width: max-content !important;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  &.btn-primary {
+    color: $white;
+    background: $primary;
+  }
+  &.btn-md {
+    @include btn-md;
+  }
+  &.btn-sm {
+    font-size: $uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small
+      $uds-component-button-padding-x-small;
+  }
+  &.btn-tag {
+    font-size: $uds-component-button-small-font-size;
+    padding: $uds-component-button-padding-y-small
+      $uds-component-button-padding-x-small;
+    margin-top: 8px;
+    background: $gray-2;
+    &.btn-tag-alt-white {
+      background: $gray-2;
+      color: $body-color;
+    }
+    &.btn-tag-alt-gray {
+      background: $gray-3;
+      color: $body-color;
+    }
+    &.btn-tag-alt-black {
+      background: $gray-4;
+      color: $body-color;
+    }
+  }
+  &.btn-circle {
+    padding: $uds-size-spacing-half $uds-size-spacing-half;
+    width: $uds-size-spacing-4 !important;
+    height: $uds-size-spacing-4;
+    border: solid 1px $gray-3;
+    &.btn-circle-alt-white {
+      background: $gray-2;
+      color: $body-color;
+    }
+    &.btn-circle-alt-gray {
+      background: $white;
+      color: $body-color;
+    }
+    &.btn-circle-alt-black {
+      background: $white;
+      color: $gray-7;
+    }
+    &.btn-circle-large {
+      width: $uds-size-spacing-8 !important;
+      height: $uds-size-spacing-8;
+      font-size: 1.5rem;
+    }
+    &.btn-circle-x-large {
+      width: 6.5rem !important;
+      height: 6.5rem;
+      font-size: 3rem;
+    }
+  }
+  &:hover {
+    transform: none;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+.bg-light-gray {
+  background-color: $gray-1;
+}
+
+// Remove background changing hover effects from all buttons
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant(
+      $value,
+      $value,
+      $hover-background: $value,
+      $hover-border: $value,
+      $active-background: $value,
+      $active-border: $value
+    );
+  }
+}
+
+a.text-gold:hover,
+a.text-gold:focus {
+  color: #ffc627 !important;
+}
+a.text-gold:visited:not(.btn) {
+  color: #daa000 !important;
+}
+
+/*--------------------------------------------------------------
+0 to SM breakpoint included
+--------------------------------------------------------------*/
+@include media-breakpoint-down(sm) {
+  .btn {
+    &.btn-responsive {
+      @include btn-md;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+LG and up
+--------------------------------------------------------------*/
+@include media-breakpoint-up(lg) {
+  .btn {
+    &:hover {
+      transform: $uds-component-button-hover-state-transform;
+    }
+    &:active {
+      transform: $uds-component-button-active-state-transform;
+    }
+  }
+}

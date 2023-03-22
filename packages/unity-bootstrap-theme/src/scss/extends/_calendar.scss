@@ -1,0 +1,86 @@
+#calendar {
+  .calendar-grid {
+    margin: $uds-size-spacing-3 0;
+    text-align: left;
+    font-weight: 700;
+    p {
+      margin-bottom: 0;
+    }
+    .heading {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: ($uds-size-spacing-1 / 2);
+      &.mobile {
+        display: none;
+      }
+    }
+    .body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border-top: 1px solid $uds-color-base-gray-5;
+      border-left: 1px solid $uds-color-base-gray-5;
+      .calendar-item {
+        font-size: $uds-size-font-medium;
+        padding: $uds-size-spacing-8 $uds-size-spacing-1 $uds-size-spacing-1;
+        cursor: pointer;
+        border-bottom: 1px solid $uds-color-base-gray-5;
+        border-right: 1px solid $uds-color-base-gray-5;
+        margin: 0;
+      }
+      .today {
+        border-radius: $uds-component-button-border-radius;
+        background-color: $uds-component-button-maroon-background-color;
+        color: $uds-color-background-white;
+        padding: ($uds-size-spacing-1 / 2) $uds-size-spacing-1;
+      }
+      .prev,
+      .next {
+        color: $uds-color-base-gray-5;
+      }
+    }
+  }
+  .calendar-nav {
+    text-align: center;
+    button {
+      border: 1px solid $uds-color-base-gray-3;
+      border-radius: $uds-component-button-border-radius;
+      background-color: $uds-color-base-gray-2;
+      padding: ($uds-size-spacing-3 / 2) ($uds-size-spacing-7 / 3);
+      svg {
+        font-size: $uds-size-spacing-3;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+Mobile
+--------------------------------------------------------------*/
+@media screen and (max-width: $uds-breakpoint-lg) {
+  #calendar {
+    .calendar-grid {
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+      .heading {
+        border-bottom: 1px solid $uds-color-base-gray-5;
+        padding-bottom: $uds-size-spacing-1;
+        &.desktop {
+          display: none;
+        }
+        &.mobile {
+          display: grid;
+        }
+      }
+      .body {
+        border: unset;
+        .calendar-item {
+          padding: $uds-size-spacing-2 $uds-size-spacing-1 $uds-size-spacing-1;
+          border: unset;
+        }
+      }
+    }
+  }
+}

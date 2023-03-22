@@ -1,0 +1,74 @@
+.uds-image-text-block {
+  &-container {
+    width: 100%;
+    max-width: 1920px;
+    border: 1px solid $uds-color-base-gray-3;
+    background: $uds-color-background-white 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    &-right {
+      flex-direction: row-reverse;
+    }
+
+    @include media-breakpoint-up(md) {
+      max-height: 540px;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      flex-direction: column;
+    }
+  }
+
+  &-image-container {
+    width: 100%;
+    display: flex;
+    flex: 1;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      display: block;
+      object-fit: cover;
+      order: 1;
+    }
+  }
+
+  &-text-container {
+    flex: 1;
+    /*
+    * Set a max width of 50% here because padding/margins are added in addition to the space given for flex, therefore
+    * the width of the text container is actually bigger than of the image container otherwise.
+    */
+    max-width: 50%;
+    padding: 48px 96px;
+
+    &.gray-7-bg {
+      color: $uds-color-base-white;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-lg) {
+      padding: 48px;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-md) {
+      padding: 36px;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      max-width: 100%;
+      order: 2;
+
+      .btn {
+        font-size: $uds-component-button-small-font-size;
+        padding: $uds-component-button-padding-y-small
+          $uds-component-button-padding-x-small;
+        line-height: 1rem;
+      }
+    }
+  }
+}

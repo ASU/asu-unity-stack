@@ -19,7 +19,9 @@ export const createButton = ({
     // "storybook-button",
     // `storybook-button--${size}`,
     "btn",
-    "btn-primary",
+    // "btn-primary",
+    // "btn-maroon",
+    "btn-gray",
     mode,
   ].join(" ");
 

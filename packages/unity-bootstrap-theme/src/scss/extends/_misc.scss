@@ -1,0 +1,118 @@
+.img-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+}
+.col.card {
+  padding-right: 0;
+  padding-left: 0;
+}
+.page-link {
+  border-radius: 400px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.page-item:last-child .page-link {
+  border-radius: 400px;
+}
+.page-item:first-child .page-link {
+  border-radius: 400px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+//
+// Accordion
+//
+
+//
+// Cards
+//
+
+.card-img-top img {
+  max-width: 100%;
+  height: auto;
+}
+.card-header {
+  border-bottom: 0;
+}
+.card-header .card-title {
+  margin-bottom: 0;
+}
+.card-title a {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+}
+.card-title a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-header .card-title:after {
+  content: '';
+  width: 32px;
+  height: 4px;
+  display: block;
+  background-color: $gold;
+  margin-top: 16px;
+}
+.card-degree .card-footer {
+  background-color: $white;
+}
+.card-degree .card-footer a {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-degree .card-footer a:hover {
+  text-decoration: underline;
+}
+.card-degree .card-footer a:after {
+  float: right;
+  height: 20px;
+  width: 20px;
+  content: url("data:image/svg+xml; utf8, <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='arrow-right' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-arrow-right fa-w-14 fa-2x'><path fill='currentColor' d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'></path></svg>");
+}
+.card-news .card-header,
+.card-news .card-body {
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: $white;
+}
+.card-news .card-img-top {
+  margin-bottom: -32px;
+}
+.card-event .card-header {
+  border-top: solid 4px $gold;
+}
+.bg-dark a,
+.bg-primary a,
+.bg-black a {
+  color: $light;
+}
+.bg-light a,
+.bg-secondary a,
+.bg-white a {
+  color: $primary;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+}

@@ -1,2 +1,139 @@
+// load brand rules (former design tokens)
 @import "custom-asu-variables";
-@import "bootstrap/scss/bootstrap";
+// default path for image assets (assuming the images will be hosted from the web root). Storybook and themes override this for their particular path needs
+$image-assets-path: "../img" !default;
+
+/*
+  all imports below belong to the previous bootstrap 4 package, you have to check each import and be careful when removing it.
+*/
+
+// Apply variable overrides before importing Bootstrap’s Sass files
+@import "variables/colors";
+@import "variables/alerts";
+@import "variables/banners";
+@import "variables/spacing";
+@import "variables/typography";
+@import "variables/buttons";
+@import "variables/blockquotes";
+@import "variables/cards";
+@import "variables/icons";
+@import "variables/images";
+@import "variables/image-text-block";
+@import "variables/inset-box";
+@import "variables/headings";
+@import "variables/list";
+@import "variables/heroes";
+@import "variables/testimonials";
+@import "variables/paragraphs";
+@import "variables/pager";
+@import "variables/tabbed-panels";
+@import "variables/breadcrumb";
+@import "variables/dividers";
+@import "variables/dropdown";
+@import "variables/form-fields";
+@import "variables/quote-image-background";
+@import "variables/tooltips";
+@import "variables/video";
+@import "variables/card-and-image";
+@import "variables/grid-links";
+@import "variables/back-to-top-button";
+@import "variables/display-list";
+@import "variables/charts-and-graphs";
+@import "variables/card-image-and-content";
+@import "variables/card-arrangements";
+@import "variables/modals";
+@import "variables/image-background-with-cta";
+@import "variables/tables";
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+// clean the vanilla colors from 'colors' map
+$colors: map-remove(
+  $colors,
+  "blue",
+  "indigo",
+  "purple",
+  "pink",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "cyan",
+  "gray-dark"
+);
+
+// Remove vanilla grayscale colors
+$grays: map-remove(
+  $grays,
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900"
+);
+
+// Remove the vanilla primary and secondary brand colors
+$theme-colors: map-remove($theme-colors, "primary", "secondary");
+// Remove the vanilla spacing units not overwritten already
+$theme-colors: map-remove($theme-colors, 1, 3, 5);
+
+// 5. Configuration: Include remainder of required parts
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// 6. Layout & components: Optionally include any other parts as needed
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+// @import "bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+
+// css Bootstrap doesn't have variables for
+@import "unity-bootstrap-theme-extends";
+
+// import bootstrap core
+// @import "bootstrap/scss/bootstrap";

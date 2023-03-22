@@ -1,0 +1,622 @@
+/*--------------------------------------------------------------
+# Heroes
+
+0. Local variables
+1. Mixins
+2. Hero, Mobile first
+3. Hero, Tablet
+4. Hero, Desktop
+5. Story Hero, Mobile
+6. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+0. Local variables
+--------------------------------------------------------------*/
+
+$uds-hero-gradient-overlay: linear-gradient(
+  180deg,
+  #19191900 0%,
+  #191919c9 100%
+);
+
+/*--------------------------------------------------------------
+1. Mixins
+--------------------------------------------------------------*/
+
+@mixin like-h3 {
+  font-size: $uds-size-font-xl;
+  letter-spacing: $uds-component-heading-three-letter-spacing;
+  font-weight: 700;
+}
+
+@mixin like-h3-highlight-white {
+  box-shadow: -0.15em 0 0 #ffffff, 0.15em 0 0 #ffffff;
+  background: #ffffff;
+  color: #191919;
+}
+
+@mixin like-h3-highlight-black {
+  box-shadow: -0.15em 0 0 #191919, 0.15em 0 0 #191919;
+  background: #191919;
+  color: #fafafa;
+}
+
+@mixin like-h3-highlight-gold {
+  box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
+  background: #ffc627;
+  color: #191919;
+}
+
+/*--------------------------------------------------------------
+2. Hero, Mobile first
+--------------------------------------------------------------*/
+
+div[class^='uds-hero'] {
+  display: grid;
+  grid-template-columns: $uds-size-spacing-4 1fr $uds-size-spacing-4;
+  gap: 0px 0px;
+  max-width: 1920px;
+  margin: 0 auto;
+  justify-items: left;
+  align-items: flex-end;
+
+  // Column alignment for decendent items
+  h1,
+  [role='doc-subtitle'],
+  a.btn,
+  .content,
+  .btn-row {
+    grid-column: 2;
+  }
+
+  .hero {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 5;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  [role='doc-subtitle'] {
+    @include like-h3;
+    display: inline-block;
+    grid-row: 2;
+    line-height: 1;
+    .highlight-white {
+      @include like-h3-highlight-white;
+    }
+    .highlight-black {
+      @include like-h3-highlight-black;
+    }
+    .highlight-gold {
+      @include like-h3-highlight-gold;
+    }
+    span {
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      margin-left: 0.15em;
+    }
+  }
+
+  h1 {
+    grid-row: 3;
+    margin: 0;
+    span {
+      margin-left: 0.15em;
+    }
+  }
+
+  a.btn {
+    grid-row: 4;
+    margin-bottom: $uds-size-spacing-0;
+  }
+
+  .content {
+    margin-top: $uds-size-spacing-3;
+    grid-row: 6;
+    font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+    letter-spacing: $uds-component-heading-three-letter-spacing;
+    line-height: $uds-component-heading-three-line-height;
+    font-weight: $uds-font-weight-bold;
+  }
+
+  // Base class modifier: .has-btn-row
+  &.has-btn-row {
+    .hero {
+      grid-row: 1 / span 4;
+    }
+
+    h1 {
+      grid-row: 2;
+    }
+
+    .btn-row {
+      grid-row: 3;
+      display: flex;
+      gap: 8px;
+
+      .btn {
+        white-space: normal;
+      }
+    }
+
+    .content {
+      grid-row: 5;
+    }
+  }
+
+  // Base class modifier: .hide-content {
+  &.hide-content .content {
+    display: none;
+  }
+
+  // General styles for brackground overlay
+  .hero-overlay {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: $uds-hero-gradient-overlay;
+    z-index: 20;
+  }
+}
+
+div.uds-hero-sm {
+  h1,
+  a.btn,
+  .btn-row {
+    z-index: 30;
+  }
+
+  .hero {
+    height: $uds-size-spacing-32;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 13.9rem auto $uds-size-spacing-2;
+
+    h1 {
+      align-self: center;
+    }
+
+    .content {
+      display: none;
+    }
+
+    .btn-row {
+      align-self: flex-start;
+      flex-wrap: wrap;
+
+      a.btn {
+        margin-top: 0;
+      }
+    }
+
+    .hero-overlay {
+      height: $uds-size-spacing-32;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+div.uds-hero-md {
+  .content,
+  [role='doc-subtitle'] {
+    display: none;
+  }
+
+  h1,
+  a.btn,
+  .btn-row {
+    z-index: 30;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 19rem auto $uds-size-spacing-2;
+
+    .hero {
+      grid-row: unset;
+      position: absolute;
+      height: 21rem;
+      top: 0;
+      left: 0;
+    }
+
+    h1 {
+      align-self: flex-end;
+      margin-bottom: 0;
+      margin-bottom: 3.125rem;
+    }
+
+    .btn-row {
+      grid-row: 3;
+      flex-wrap: wrap;
+      align-self: flex-start;
+    }
+
+    .hero-overlay {
+      height: 21rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+div.uds-hero-lg {
+  h1,
+  [role='doc-subtitle'],
+  a.btn,
+  .content,
+  .btn-row {
+    z-index: 30;
+  }
+
+  .content {
+    margin-top: 0;
+    margin-bottom: $uds-size-spacing-4;
+  }
+
+  h1 {
+    margin-bottom: $uds-size-spacing-2;
+  }
+
+  .hero {
+    height: $uds-size-spacing-64;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &.has-btn-row {
+    grid-template-rows: $uds-size-spacing-2 19rem 11rem auto $uds-size-spacing-2;
+
+    h1 {
+      align-self: flex-end;
+    }
+
+    .content {
+      grid-row: 3;
+      align-self: start;
+      margin-bottom: 0;
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .btn-row {
+      grid-row: 4;
+      flex-wrap: wrap;
+      align-self: flex-start;
+      a.btn {
+        margin-bottom: 0;
+      }
+    }
+
+    .hero-overlay {
+      height: $uds-size-spacing-64;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.uds-video-hero video,
+  &.uds-video-hero .video-hero-controls {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+3. Hero, Tablet
+--------------------------------------------------------------*/
+@include media-breakpoint-up(md) {
+  div[class^='uds-hero'] {
+    grid-template-columns: 1fr minmax(0, 700px) 1fr;
+    grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
+
+    // Column alignment for decendent items
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
+      grid-column: 2;
+      max-width: 700px;
+      z-index: 30;
+    }
+
+    .btn-row {
+      align-items: center;
+    }
+
+    .hero {
+      grid-column: 1 / span 3;
+      grid-row: 1 / span 6;
+      z-index: 10;
+    }
+
+    .content {
+      grid-row: 4;
+      font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+      font-weight: $uds-font-weight-bold;
+      line-height: 1.75rem;
+      margin-top: $uds-size-spacing-2;
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
+
+    a.btn {
+      grid-row: 5;
+      margin-top: $uds-size-spacing-3;
+      margin-bottom: 0;
+      & + a.btn {
+        margin-left: $uds-size-spacing-2;
+      }
+    }
+
+    // Base class modifier: .hide-content
+    &.hide-content .content {
+      display: block;
+    }
+  }
+
+  div.uds-hero-sm {
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 13.4rem auto $uds-size-spacing-2;
+      .btn-row {
+        top: 24px;
+        align-self: initial;
+      }
+    }
+  }
+  div.uds-hero-md {
+    height: $uds-size-spacing-64;
+
+    .content {
+      display: initial;
+    }
+
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
+
+      .hero {
+        grid-row: 1 / span 5;
+        position: initial;
+        height: inherit;
+      }
+
+      h1 {
+        margin-bottom: $uds-size-spacing-2;
+        grid-row: 2;
+      }
+
+      .content {
+        grid-row: 3;
+        margin-top: 0;
+        margin-bottom: $uds-size-spacing-4;
+      }
+
+      .btn-row {
+        grid-row: 4;
+        position: initial;
+
+        a.btn {
+          margin-top: 0;
+        }
+      }
+
+      .hero-overlay {
+        height: $uds-size-spacing-64;
+      }
+    }
+  }
+
+  div.uds-hero-lg {
+    height: 42.75rem;
+    &.has-btn-row {
+      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
+
+      .hero {
+        height: 42.75rem;
+      }
+
+      h1 {
+        margin-bottom: $uds-size-spacing-2;
+      }
+      .content {
+        grid-row: 3;
+        margin-top: 0;
+        margin-bottom: $uds-size-spacing-4;
+      }
+      .btn-row {
+        position: initial;
+
+        a.btn {
+          margin-top: 0;
+        }
+      }
+
+      .hero-overlay {
+        height: 42.75rem;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+4. Hero, Desktop
+--------------------------------------------------------------*/
+@include media-breakpoint-up(lg) {
+  div[class^='uds-hero'] {
+    grid-template-columns: 1fr minmax(0, 940px) 1fr;
+
+    // Column alignment for decendent items
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
+      max-width: calc(940px - 30%);
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  div[class^='uds-hero'] {
+    grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+    // Column alignment for decendent items
+    h1,
+    [role='doc-subtitle'],
+    a.btn,
+    .content,
+    .btn-row {
+      max-width: calc(1200px - 34%);
+    }
+  }
+  div.uds-hero-lg {
+    height: 42.75rem;
+
+    &.uds-video-hero {
+      position: relative;
+      overflow: hidden;
+      &:after {
+        display: none;
+      }
+      .hero {
+        display: none;
+      }
+
+      &.uds-video-hero video {
+        display: block;
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .video-hero-controls {
+        display: block;
+        position: relative;
+        z-index: 40;
+        grid-column: 2;
+        grid-row: 6;
+        align-self: end;
+        justify-self: flex-end;
+        top: -3rem;
+
+        .btn-circle-large {
+          width: 56px !important;
+          height: 56px !important;
+          font-size: 16px !important;
+          opacity: 0.3 !important;
+
+          &:hover {
+            opacity: 1 !important;
+            cursor: pointer;
+            transform: none;
+          }
+
+          .svg-inline--fa.fa-w-14 {
+            margin-left: 0 !important;
+          }
+        }
+
+        #playHeroVid {
+          // The play button starts as hidden as the video autoplays upoon page load.
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+5. Story Hero, Mobile
+--------------------------------------------------------------*/
+.uds-story-hero {
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall mobile hero image - 4.5rem offset for the indented content.
+  display: grid;
+  grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
+  grid-template-rows: calc(#{$uds-size-spacing-32} - 4.5rem) 4.5rem auto;
+  gap: 0px 0px;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  .hero {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 2;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+    background-color: $uds-color-base-white;
+
+    // Padding from top of content box should be carried by whatever element comes within it.
+    padding: 0 $uds-size-spacing-2;
+
+    .breadcrumb,
+    p.meta {
+      padding: 0.75rem 0;
+      margin: $uds-size-spacing-half 0;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+6. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+// Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
+@media (min-width: 950px) {
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall hero image - 8rem offset for the indented content.
+  .uds-story-hero {
+    grid-template-columns: $uds-size-spacing-3 1fr $uds-size-spacing-3;
+    grid-template-rows: calc(#{$uds-size-spacing-64} - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+
+    &.uds-story-hero-lg {
+      grid-template-rows: calc(42.75rem - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+    }
+
+    // Calc value: 8.34% is the width of one bootstrap column. 12px is the gutter on the outside.
+    .content {
+      padding: 0 calc(8.34% + 12px);
+
+      .breadcrumb,
+      p.meta {
+        margin: 1.25rem 0 2.25rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .uds-story-hero {
+    grid-template-columns: 1fr calc(1200px + 12px + 12px) 1fr;
+  }
+}
