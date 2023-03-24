@@ -1,68 +1,125 @@
-// import { createButton } from "./button";
+// import React from "react";
+import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics.js";
 
-// More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
-// component metadata
-export default {
-  title: "Atoms/Button/Templates",
-  // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-    label: { control: "text" },
-    onClick: { action: "onClick" },
-    primary: { control: "boolean" },
-    size: {
-      control: { type: "select" },
-      options: ["small", "medium", "large"],
+/*
+We want to allow this component to change color, size, and disabled status.
+*/
+const extraOptions = {
+  color: {
+    name: "Color",
+    options: ["btn-gold", "btn-maroon", "btn-gray", "btn-dark"],
+    defaultValue: "btn-gold",
+    control: {
+      type: "radio",
+      labels: {
+        "btn-gold": "Gold",
+        "btn-maroon": "Maroon",
+        "btn-gray": "Gray",
+        "btn-dark": "Dark",
+      },
     },
   },
+  size: {
+    name: "Size",
+    options: ["btn-sm", "btn-md", ""],
+    defaultValue: "",
+    control: {
+      type: "radio",
+      labels: {
+        "btn-sm": "Small",
+        "btn-md": "Medium",
+        "": "Large",
+      },
+    },
+  },
+  disabled: {
+    name: "Disabled",
+    control: { type: "boolean" },
+    defaultValue: false,
+  },
 };
+export default createComponent("Buttons", "Atoms", "Templates", extraOptions);
 
-/* Template declarations */
+export const BasicButton = createStory(
+  args => {
+    return (
+      <button
+        class={`btn ${args.color} ${args.size}`}
+        disabled={args.disabled}
+        type="submit"
+        data-ga="Button button"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+      >
+        Button button
+      </button>
+    );
+  },
+  { initFunc }
+);
 
-// More on component templates: https://storybook.js.org/docs/html/writing-stories/introduction#using-args
-const TemplateForButton = ({ label, classes, disabled }) => {
-  return `<button class="${classes} ${disabled}" type="submit" data-ga="${label}" data-ga-name="onclick" data-ga-event="link" data-ga-action="click" data-ga-type="internal link" data-ga-region="main content">${label}</button>`;
-};
+export const ButtonAsLink = createStory(
+  args => {
+    return (
+      <a
+        href="#"
+        class={`btn ${args.color} ${args.size} ${
+          args.disabled ? "disabled" : ""
+        }`}
+        role="button"
+        data-ga="Button button"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+      >
+        Button button
+      </a>
+    );
+  },
+  { initFunc }
+);
 
-const TemplateForLink = ({ label, classes, disabled }) => {
-  return `<a href="#" role="button" class="${classes} ${disabled}" type="submit" data-ga="${label}" data-ga-name="onclick" data-ga-event="link" data-ga-action="click" data-ga-type="internal link" data-ga-region="main content">${label}</a>`;
-};
+export const ButtonWithIcon = createStory(
+  args => {
+    return (
+      <a
+        href="#"
+        class={`btn ${args.color} ${args.size} ${
+          args.disabled ? "disabled" : ""
+        }`}
+        role="button"
+        data-ga="Gold button"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+      >
+        <span class="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
+      </a>
+    );
+  },
+  { initFunc }
+);
 
-const TemplateForButtonWithIcon = ({
-  label,
-  classes,
-  disabled = "",
-  size = "",
-}) => {
-  return `<a href="#" class="${classes} ${size} ${disabled}" role="button" data-ga="${label}" data-ga-name="onclick" data-ga-event="link" data-ga-action="click" data-ga-type="internal link" data-ga-region="main content"><span class="fas fa-rocket"></span>${label}</a>`;
-};
-
-const TemplateForButtonTag = ({ label }) => {
-  return `<a href="#" class="" data-ga="${label}" data-ga-name="onclick" data-ga-event="link" data-ga-action="click" data-ga-type="internal link" data-ga-region="main content">${label}</a>`;
-};
-
-/* Bind templates to stories */
-
-export const BasicButton = TemplateForButton.bind({});
-// More on args: https://storybook.js.org/docs/html/writing-stories/args
-BasicButton.args = {
-  label: "Button Label",
-  classes: "btn btn-maroon",
-};
-
-export const ButtonAsLink = TemplateForLink.bind({});
-ButtonAsLink.args = {
-  label: "Button as link",
-  classes: "btn btn-gold",
-};
-
-export const ButtonWithIcon = TemplateForButtonWithIcon.bind({});
-ButtonWithIcon.args = {
-  label: "Button with icon",
-  classes: "btn btn-gold",
-};
-
-export const ButtonTag = TemplateForButtonTag.bind({});
-ButtonTag.args = {
-  label: "This is a default link",
-};
+export const ButtonTag = createStory(
+  <a
+    href="#"
+    class=""
+    data-ga="This is a default link"
+    data-ga-name="onclick"
+    data-ga-event="link"
+    data-ga-action="click"
+    data-ga-type="internal link"
+    data-ga-region="main content"
+  >
+    This is a default link
+  </a>,
+  { initFunc }
+);
