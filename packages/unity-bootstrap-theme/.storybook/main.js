@@ -17,10 +17,15 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     config.module.rules.push({
-      // scss rules config
       test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
-      include: path.resolve(__dirname, "../"),
+      use: [
+        "style-loader",
+        { loader: "css-loader", options: { importLoaders: 1 } },
+        {
+          loader: "sass-loader",
+          options: {},
+        },
+      ],
     });
 
     return config;

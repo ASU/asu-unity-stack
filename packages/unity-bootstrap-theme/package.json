@@ -36,6 +36,9 @@
     "babel-loader": "^8.3.0",
     "bootstrap": "5.2.3"
   },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3"
+  },
   "volta": {
     "node": "14.17.6",
     "yarn": "1.19.1"
