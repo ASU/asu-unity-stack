@@ -288,7 +288,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
 
 #wrapper-header-main {
   border-bottom: 1px solid $uds-color-base-gray-3;
-  background-color: #ffffff;
+  background-color: $uds-color-base-white;
 
   .container,
   .container-fluid,
@@ -465,7 +465,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
   .navbar-site-buttons {
     min-width: max-content;
     padding: 1rem 2rem;
-    border-top: 1px solid #d0d0d0;
+    border-top: 1px solid $uds-color-base-gray-3;
     flex-flow: initial;
 
     .btn {
@@ -806,7 +806,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         margin-bottom: 0;
 
         a {
-          color: #191919;
+          color: $uds-color-base-gray-7;
           text-decoration: none;
         }
 
@@ -821,7 +821,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         font-weight: 700;
 
         a {
-          color: #191919;
+          color: $uds-color-base-gray-7;
           text-decoration: none;
         }
 
@@ -1026,7 +1026,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       position: static;
 
       .dropdown-menu {
-        background-color: #ffffff;
+        background-color: $uds-color-base-white;
         border-bottom: 1px solid $uds-color-base-gray-4;
         width: 100vw;
         margin-left: calc(-50vw + 50%);

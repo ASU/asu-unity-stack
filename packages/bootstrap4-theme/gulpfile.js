@@ -127,26 +127,6 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(paths.dist + '/js'));
 });
 
-// Copy all master assets from the design-tokens library
-gulp.task('copy-assets', function (done) {
-  // Copy the master ASU images from the design-token
-  gulp
-    .src(`${paths.node}/@asu/design-tokens/build/assets/img/**/*`)
-    .pipe(gulp.dest('./src/img'));
-
-  // Copy font-awesome from design-token into src/
-  /* gulp
-    .src(`${paths.node}/@asu/design-tokens/build/assets/fontawesome/
-    .pipe(gulp.dest('./src/assets/fontawesome'));**/
-
-  // Copy the design-tokens SASS variables into src/
-  gulp
-    .src(`${paths.node}/@asu/design-tokens/build/scss/**/*`)
-    .pipe(gulp.dest('./src/scss/design-tokens'));
-
-  done();
-});
-
 // Copy assets into dist/
 gulp.task('copy-dist-assets', function (done) {
   // Copy font-awesome to dist/
@@ -183,7 +163,6 @@ gulp.task(
   'compile',
   gulp.series(
     'clean-dist',
-    'copy-assets',
     'styles',
     'imagemin',
     'copy-dist-assets'

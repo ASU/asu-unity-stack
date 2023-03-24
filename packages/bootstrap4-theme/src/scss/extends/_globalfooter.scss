@@ -185,7 +185,7 @@ footer {
     .card-header,
     .card-body {
       background: $uds-color-divider-darker;
-      color: #ffffff;
+      color: $uds-color-base-white;
       border: 0;
     }
 
@@ -212,7 +212,7 @@ footer {
       padding: 0 0 0 $uds-size-spacing-3;
 
       .nav-link {
-        color: #ffffff;
+        color: $uds-color-base-white;
         padding: 0 0 $uds-size-spacing-2;
         @include footer-links;
       }
