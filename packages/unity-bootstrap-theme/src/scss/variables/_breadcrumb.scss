@@ -1,16 +1,16 @@
 // Bootstrap breadcrumb variables to override.
 
-$breadcrumb-font-size: $uds-component-breadcrumb-font-size;
+$breadcrumb-font-size: 0.875rem;
 
-$breadcrumb-padding-y: $uds-component-breadcrumb-padding-y;
-$breadcrumb-padding-x: $uds-component-breadcrumb-padding-x;
-$breadcrumb-item-padding: $uds-component-breadcrumb-item-padding;
+$breadcrumb-padding-y: .75rem;
+$breadcrumb-padding-x: 1rem;
+$breadcrumb-item-padding: 0.5rem;
 
-$breadcrumb-margin-bottom: $uds-component-breadcrumb-margin-bottom;
+$breadcrumb-margin-bottom: 1rem;
 
-$breadcrumb-bg: $uds-component-breadcrumb-bg;
-$breadcrumb-divider-color: $uds-component-breadcrumb-divider-color;
-$breadcrumb-active-color: $uds-component-breadcrumb-active-color;
-$breadcrumb-divider: $uds-component-breadcrumb-divider;
+$breadcrumb-bg: transparent;
+$breadcrumb-divider-color: $uds-color-base-gray-4;
+$breadcrumb-active-color: $uds-color-base-gray-7;
+$breadcrumb-divider: quote('/');
 
-$breadcrumb-border-radius: $uds-component-breadcrumb-border-radius-none;
+$breadcrumb-border-radius: none;

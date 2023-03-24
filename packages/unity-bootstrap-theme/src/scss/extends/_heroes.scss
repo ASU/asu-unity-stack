@@ -26,26 +26,26 @@ $uds-hero-gradient-overlay: linear-gradient(
 
 @mixin like-h3 {
   font-size: $uds-size-font-xl;
-  letter-spacing: $uds-component-heading-three-letter-spacing;
+  letter-spacing: -0.0525rem;
   font-weight: 700;
 }
 
 @mixin like-h3-highlight-white {
-  box-shadow: -0.15em 0 0 #ffffff, 0.15em 0 0 #ffffff;
-  background: #ffffff;
-  color: #191919;
+  box-shadow: -0.15em 0 0 $uds-color-base-white, 0.15em 0 0 $uds-color-base-white;
+  background: $uds-color-base-white;
+  color: $uds-color-base-gray-7;
 }
 
 @mixin like-h3-highlight-black {
-  box-shadow: -0.15em 0 0 #191919, 0.15em 0 0 #191919;
-  background: #191919;
-  color: #fafafa;
+  box-shadow: -0.15em 0 0 $uds-color-base-gray-7, 0.15em 0 0 $uds-color-base-gray-7;
+  background: $uds-color-base-gray-7;
+  color: $uds-color-base-gray-1;
 }
 
 @mixin like-h3-highlight-gold {
-  box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
-  background: #ffc627;
-  color: #191919;
+  box-shadow: -0.15em 0 0 $uds-color-base-gold, 0.15em 0 0 $uds-color-base-gold;
+  background: $uds-color-base-gold;
+  color: $uds-color-base-gray-7;
 }
 
 /*--------------------------------------------------------------
@@ -115,9 +115,9 @@ div[class^='uds-hero'] {
   .content {
     margin-top: $uds-size-spacing-3;
     grid-row: 6;
-    font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
-    letter-spacing: $uds-component-heading-three-letter-spacing;
-    line-height: $uds-component-heading-three-line-height;
+    font-size: 1.5rem;
+    letter-spacing: -0.0525rem;
+    line-height: 1.75rem;
     font-weight: $uds-font-weight-bold;
   }
 
@@ -345,7 +345,7 @@ div.uds-hero-lg {
 
     .content {
       grid-row: 4;
-      font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
+      font-size: 1.5rem;
       font-weight: $uds-font-weight-bold;
       line-height: 1.75rem;
       margin-top: $uds-size-spacing-2;

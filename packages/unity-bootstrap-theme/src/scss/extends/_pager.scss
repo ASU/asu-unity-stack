@@ -24,16 +24,16 @@
 
 a.page-link,
 a.page-link:visited {
-  border-radius: $uds-component-pager-border-radius;
-  text-decoration: $uds-component-pager-text-decoration;
-  font-weight: $uds-component-pager-font-weight;
-  color: $uds-component-pager-color;
+  border-radius: $uds-component-border-radius;
+  text-decoration: none;
+  font-weight: bold;
+  color: $uds-color-base-gray-7;
   transition: 0.1s ease-out;
   font-size: 14px;
 }
 a.page-link:hover {
-  color: $uds-component-pager-color;
-  text-decoration: $uds-component-pager-hover-text-decoration;
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
 }
 span.page-link {
   padding-left: 0;
@@ -44,10 +44,10 @@ span.page-link {
   }
 }
 .page-item:last-child .page-link {
-  border-radius: $uds-component-pager-border-radius;
+  border-radius: $uds-component-border-radius;
 }
 .page-item:first-child .page-link {
-  border-radius: $uds-component-pager-border-radius;
+  border-radius: $uds-component-border-radius;
 }
 .page-item:last-child .page-link-icon:after {
   display: inline-block;
@@ -55,9 +55,9 @@ span.page-link {
   @include bg-arrow-icon('currentColor', right);
   transform: rotate(270deg);
   float: right;
-  height: $uds-component-pager-icon-height;
-  width: $uds-component-pager-icon-width;
-  margin-left: $uds-component-pager-icon-margin;
+  height: 1rem;
+  width: 1rem;
+  margin-left: 0.25rem;
 }
 .page-item:first-child .page-link-icon:before {
   display: inline-block;
@@ -65,13 +65,13 @@ span.page-link {
   @include bg-arrow-icon('currentColor', left);
   transform: rotate(90deg);
   float: left;
-  height: $uds-component-pager-icon-height;
-  width: $uds-component-pager-icon-width;
-  margin-right: $uds-component-pager-icon-margin;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.25rem;
 }
 .disabled .page-link-icon:before,
 .disabled .page-link-icon:after {
-  opacity: $uds-component-pager-disabled-opacity;
+  opacity: 0.5;
 }
 
 .pagination {
