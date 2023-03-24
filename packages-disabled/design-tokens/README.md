@@ -1,3 +1,4 @@
+NOTICE: Deprecated, as it was only used within Bootstrap4-theme
 # Unity Design Tokens Library
 > *Style once, use everywhere.*
 

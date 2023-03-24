@@ -11,7 +11,7 @@ The ASU Unity Design System packages are published to GitHub's package registry.
 2. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
 3. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
 4. Test installing packages using yarn or npm inside of another NPM project:
-```yarn add @asu/design-tokens```
+```yarn add @asu/components-core```
 
 ### TROUBLESHOOTING INSTALLATION ERRORS
 
@@ -33,7 +33,7 @@ This repository contains multiple packages which are managed and published using
 7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```bootstrap4-theme``` styles
 8. [component-news](./packages/component-news/README.md)
 9. [components-core](./packages/components-core/README.md)
-10. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
+10. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```with style-dictionary library.
 11. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
 12. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
