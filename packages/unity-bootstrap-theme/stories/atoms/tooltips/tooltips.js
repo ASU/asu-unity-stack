@@ -1,17 +1,27 @@
 export const initTooltip = () => {
-  jQuery(function () {
-    'use strict';
-    let element;
-    $('button.uds-tooltip').on('click', (_this, e) => {
-      if (element && element.is(':focus')) element.trigger('blur');
+  "use strict";
+
+  const DOM_ELEMENT_BUTTON = "button.uds-tooltip";
+  const EVENT_CLICK = "click";
+
+  const buttons = document.querySelectorAll(DOM_ELEMENT_BUTTON);
+  let element;
+
+  buttons.forEach($button => {
+    $button.addEventListener(EVENT_CLICK, e => {
+      if (element && element === document.activeElement) {
+        element.blur();
+      }
       element = element
         ? undefined
-        : $(
-            `button[aria-describedby=${$(_this)
-              .get(0)
-              .currentTarget.getAttribute('aria-describedby')}]`
+        : document.querySelector(
+            `button[aria-describedby="${e.currentTarget.getAttribute(
+              "aria-describedby"
+            )}"]`
           );
-      if (element && !element.is(':focus')) element.trigger('focus');
+      if (element && element !== document.activeElement) {
+        element.focus();
+      }
     });
   });
 };
