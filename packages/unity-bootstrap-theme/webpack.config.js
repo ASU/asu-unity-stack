@@ -1,13 +1,15 @@
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const nodeExternals = require("webpack-node-externals");
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = false;
 
 const paths = {
   js: path.resolve(__dirname, 'src/js'),
@@ -31,6 +33,7 @@ module.exports = {
     libraryTarget: 'umd',
     libraryExport: 'default',
     globalObject: 'this',
+    pathinfo: true,
   },
   devtool: false,
   resolve: {
@@ -77,7 +80,7 @@ module.exports = {
       //     filename: 'img/[name][ext]',
       //   },
       //   use: [
-      //     ImageMinimizerPlugin.loader,
+      //     ImageMinimizerPlugin()
       //   ],
       // },
     ],
@@ -90,21 +93,11 @@ module.exports = {
         ]
       }
     }),
-    new MiniCssExtractPlugin({
-      filename: '../css/bootstrap-asu.min.css',
-      chunkFilename: '../css/[id].css',
-    }),
-    // new ESLintPlugin({
-    //   emitError: true,
-    //   failOnError: true,
-    //   failOnWarning: true,
-    //   extensions: ['.js'],
-    //   fix: true,
-    // }),
+    new MiniCssExtractPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+          { from: paths.imgsrc, to: paths.img }
+      ]
+  })
   ],
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    port: 8080,
-  },
 };
