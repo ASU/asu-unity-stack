@@ -1,6 +1,6 @@
 {
   "name": "@asu/bootstrap4-theme",
-  "version": "1.10.5",
+  "version": "1.10.6",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "license": "MIT",
