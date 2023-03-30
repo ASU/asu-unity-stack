@@ -51,6 +51,16 @@ $uds-hero-gradient-overlay: linear-gradient(
 /*--------------------------------------------------------------
 2. Hero, Mobile first
 --------------------------------------------------------------*/
+@include media-breakpoint-down(sm) {
+  // Styles to handle the size of the buttons on mobile in the hero
+  div[class^='uds-hero'] {
+    .btn {
+      font-size: $uds-component-button-medium-font-size;
+      padding: $uds-component-button-padding-y-medium
+        $uds-component-button-padding-x-medium;
+    }
+  }
+}
 
 div[class^='uds-hero'] {
   display: grid;
@@ -118,7 +128,6 @@ div[class^='uds-hero'] {
   }
 
   .content {
-    margin-top: $uds-size-spacing-3;
     grid-row: 4;
     font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
     letter-spacing: $uds-component-heading-three-letter-spacing;
@@ -345,6 +354,11 @@ div.uds-hero-lg {
   }
   div.uds-hero-md {
     height: $uds-size-spacing-64;
+    // TODO; remove this, it's a fallback for buttons without has-btn-row
+    grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
+    h1 {
+      margin-bottom: $uds-size-spacing-4;
+    }
     .content {
       display: block;
     }
@@ -375,6 +389,8 @@ div.uds-hero-lg {
 
   div.uds-hero-lg {
     height: 42.75rem;
+    // TODO; remove this, it's a fallback for buttons without has-btn-row
+    grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
@@ -392,6 +408,10 @@ div.uds-hero-lg {
       .hero-overlay {
         height: 42.75rem;
       }
+    }
+
+    h1 {
+      margin-bottom: $uds-size-spacing-4;
     }
   }
 }
