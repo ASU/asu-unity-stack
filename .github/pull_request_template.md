@@ -3,7 +3,7 @@
 <!-- Description of problem -->
 <!-- Solution -->
 
-#### Links
+### Links
 
 - [Unity reference site](https://unity.web.asu.edu/)
 - [JIRA ticket](https://asudev.jira.com/browse/UDS-0000)
