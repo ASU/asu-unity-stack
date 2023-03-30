@@ -55,11 +55,13 @@ $uds-hero-gradient-overlay: linear-gradient(
 div[class^='uds-hero'] {
   display: grid;
   grid-template-columns: $uds-size-spacing-4 1fr $uds-size-spacing-4;
+  grid-template-rows: 1fr repeat(3, auto) $uds-size-spacing-6;
   gap: 0px 0px;
   max-width: 1920px;
   margin: 0 auto;
-  justify-items: left;
-  align-items: flex-end;
+  position: relative;
+  align-content: flex-end;
+  margin-bottom: $uds-size-spacing-8;
 
   // Column alignment for decendent items
   h1,
@@ -68,14 +70,16 @@ div[class^='uds-hero'] {
   .content,
   .btn-row {
     grid-column: 2;
+    z-index: 30;
   }
 
-  .hero {
-    grid-column: 1 / span 3;
-    grid-row: 1 / span 5;
-    object-fit: cover;
+  img.hero {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
   }
 
   [role='doc-subtitle'] {
@@ -83,6 +87,7 @@ div[class^='uds-hero'] {
     display: inline-block;
     grid-row: 2;
     line-height: 1;
+    height: min-content;
     .highlight-white {
       @include like-h3-highlight-white;
     }
@@ -107,14 +112,14 @@ div[class^='uds-hero'] {
     }
   }
 
-  a.btn {
-    grid-row: 4;
-    margin-bottom: $uds-size-spacing-0;
+  // TODO: Remove, fallback for buttons without btn-row
+  > a.btn {
+    position: absolute;
   }
 
   .content {
     margin-top: $uds-size-spacing-3;
-    grid-row: 6;
+    grid-row: 4;
     font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
     letter-spacing: $uds-component-heading-three-letter-spacing;
     line-height: $uds-component-heading-three-line-height;
@@ -123,32 +128,35 @@ div[class^='uds-hero'] {
 
   // Base class modifier: .has-btn-row
   &.has-btn-row {
-    .hero {
-      grid-row: 1 / span 4;
-    }
-
+    grid-template-rows: 1fr repeat(3, auto) $uds-size-spacing-6;
     h1 {
-      grid-row: 2;
+      grid-row: 3;
     }
 
     .btn-row {
-      grid-row: 3;
       display: flex;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      position: absolute;
 
-      .btn {
+      a.btn {
         white-space: normal;
       }
     }
 
     .content {
-      grid-row: 5;
+      grid-row: 4;
     }
   }
 
-  // Base class modifier: .hide-content {
-  &.hide-content .content {
-    display: none;
+  // TODO: Base class modifier: .hide-content {
+  &.hide-content {
+    h1 {
+      margin-bottom: 2rem;
+    }
+    .content {
+      display: none;
+    }
   }
 
   // General styles for brackground overlay
@@ -158,27 +166,27 @@ div[class^='uds-hero'] {
     width: 100%;
     background-image: $uds-hero-gradient-overlay;
     z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
 div.uds-hero-sm {
+  height: $uds-size-spacing-32;
+  grid-template-rows: 1fr auto auto 3rem;
+
   h1,
   a.btn,
   .btn-row {
     z-index: 30;
   }
 
-  .hero {
-    height: $uds-size-spacing-32;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
+  .content {
+    display: none;
   }
 
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-2 13.9rem auto $uds-size-spacing-2;
-
     h1 {
       align-self: center;
     }
@@ -190,6 +198,7 @@ div.uds-hero-sm {
     .btn-row {
       align-self: flex-start;
       flex-wrap: wrap;
+      top: 15rem;
 
       a.btn {
         margin-top: 0;
@@ -198,93 +207,51 @@ div.uds-hero-sm {
 
     .hero-overlay {
       height: $uds-size-spacing-32;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
+  }
+
+  > a.btn {
+    top: 15rem;
   }
 }
 
 div.uds-hero-md {
-  .content,
-  [role='doc-subtitle'] {
+  height: 21rem;
+  // by design, the hero-md has no content on mobile, change grid template rows and hide .content
+  grid-template-rows: 1fr auto auto 3rem;
+  .content {
     display: none;
   }
 
-  h1,
-  a.btn,
-  .btn-row {
-    z-index: 30;
-  }
-
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-2 19rem auto $uds-size-spacing-2;
-
-    .hero {
-      grid-row: unset;
-      position: absolute;
-      height: 21rem;
-      top: 0;
-      left: 0;
-    }
-
-    h1 {
-      align-self: flex-end;
-      margin-bottom: 0;
-      margin-bottom: 3.125rem;
-    }
-
     .btn-row {
-      grid-row: 3;
       flex-wrap: wrap;
       align-self: flex-start;
+      top: 20rem;
     }
 
     .hero-overlay {
       height: 21rem;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
+  }
+
+  // TODO: Remove, fallback for buttons without btn-row
+  > a.btn {
+    top: 20rem;
   }
 }
 
 div.uds-hero-lg {
-  h1,
-  [role='doc-subtitle'],
-  a.btn,
-  .content,
-  .btn-row {
-    z-index: 30;
-  }
-
-  .content {
-    margin-top: 0;
-    margin-bottom: $uds-size-spacing-4;
-  }
+  height: $uds-size-spacing-64;
 
   h1 {
     margin-bottom: $uds-size-spacing-2;
   }
 
-  .hero {
-    height: $uds-size-spacing-64;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   &.has-btn-row {
-    grid-template-rows: $uds-size-spacing-2 19rem 11rem auto $uds-size-spacing-2;
-
-    h1 {
-      align-self: flex-end;
-    }
+    grid-template-rows: 1fr repeat(3, auto) $uds-size-spacing-3;
 
     .content {
-      grid-row: 3;
-      align-self: start;
-      margin-bottom: 0;
       p {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -292,25 +259,23 @@ div.uds-hero-lg {
     }
 
     .btn-row {
-      grid-row: 4;
-      flex-wrap: wrap;
       align-self: flex-start;
-      a.btn {
-        margin-bottom: 0;
-      }
+      top: 31rem;
     }
 
     .hero-overlay {
       height: $uds-size-spacing-64;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
   }
 
   &.uds-video-hero video,
   &.uds-video-hero .video-hero-controls {
     display: none;
+  }
+
+  // TODO: Remove, fallback for buttons without btn-row
+  > a.btn {
+    top: 31rem;
   }
 }
 
@@ -320,7 +285,6 @@ div.uds-hero-lg {
 @include media-breakpoint-up(md) {
   div[class^='uds-hero'] {
     grid-template-columns: 1fr minmax(0, 700px) 1fr;
-    grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
     // Column alignment for decendent items
     h1,
@@ -337,18 +301,12 @@ div.uds-hero-lg {
       align-items: center;
     }
 
-    .hero {
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 6;
-      z-index: 10;
-    }
-
     .content {
       grid-row: 4;
       font-size: $uds-component-heroes-uds-hero-uds-hero-container-p-font-size;
       font-weight: $uds-font-weight-bold;
       line-height: 1.75rem;
-      margin-top: $uds-size-spacing-2;
+      margin-bottom: 2rem;
 
       p:last-child {
         margin-bottom: 0;
@@ -359,60 +317,50 @@ div.uds-hero-lg {
       margin-bottom: 0;
     }
 
-    a.btn {
-      grid-row: 5;
-      margin-top: $uds-size-spacing-3;
-      margin-bottom: 0;
-      & + a.btn {
-        margin-left: $uds-size-spacing-2;
-      }
-    }
-
     // Base class modifier: .hide-content
     &.hide-content .content {
       display: block;
     }
+
+    // TODO: fallback for buttons without btn-row
+    > a.btn {
+      position: static;
+      grid-row: 5;
+    }
   }
 
   div.uds-hero-sm {
+    grid-template-rows: 1fr auto auto $uds-size-spacing-7;
     &.has-btn-row {
-      grid-template-rows: $uds-size-spacing-2 13.4rem auto $uds-size-spacing-2;
       .btn-row {
-        top: 24px;
-        align-self: initial;
+        top: 14.5rem;
       }
+    }
+
+    > a.btn {
+      grid-row: unset;
+      position: absolute;
+      top: 14.5rem;
     }
   }
   div.uds-hero-md {
     height: $uds-size-spacing-64;
-
     .content {
-      display: initial;
+      display: block;
     }
-
     &.has-btn-row {
-      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
-
-      .hero {
-        grid-row: 1 / span 5;
-        position: initial;
-        height: inherit;
-      }
-
+      grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
       h1 {
-        margin-bottom: $uds-size-spacing-2;
-        grid-row: 2;
+        grid-row: 3;
       }
 
       .content {
-        grid-row: 3;
-        margin-top: 0;
-        margin-bottom: $uds-size-spacing-4;
+        grid-row: 4;
       }
 
       .btn-row {
-        grid-row: 4;
-        position: initial;
+        grid-row: 5;
+        position: static;
 
         a.btn {
           margin-top: 0;
@@ -427,24 +375,15 @@ div.uds-hero-lg {
 
   div.uds-hero-lg {
     height: 42.75rem;
+
     &.has-btn-row {
-      grid-template-rows: $uds-size-spacing-2 1fr auto auto $uds-size-spacing-6;
-
-      .hero {
-        height: 42.75rem;
-      }
-
-      h1 {
-        margin-bottom: $uds-size-spacing-2;
-      }
+      grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
       .content {
-        grid-row: 3;
-        margin-top: 0;
-        margin-bottom: $uds-size-spacing-4;
+        grid-row: 4;
       }
       .btn-row {
-        position: initial;
-
+        position: static;
+        grid-row: 5;
         a.btn {
           margin-top: 0;
         }
