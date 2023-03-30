@@ -73,81 +73,6 @@ HeroMedium.args = {
 
 export const HeroLarge = createStory(
   <>
-    <div class="uds-hero-lg">
-      <div className="hero-overlay"></div>
-      <img
-        class="hero"
-        src="https://source.unsplash.com/random/2560x512"
-        alt="Sample placeholder image."
-        width="2560"
-        height="512"
-        loading="lazy"
-        decoding="async"
-        fetchPriority="high"
-      />
-      <div role="doc-subtitle">
-        <span class="highlight-black">sub head</span>
-      </div>
-      <h1>
-        <span class="highlight-gold">
-          Lorem ipsum dolor sit amet, consectetur adip
-        </span>
-      </h1>
-      <a
-        href="#"
-        class="btn btn-default btn-gold"
-        data-ga="more quotes"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-        data-ga-section="gettysburg address"
-      >
-        Call to action button
-      </a>
-    </div>
-    <div class="uds-hero-lg">
-      <div className="hero-overlay"></div>
-      <img
-        class="hero"
-        src="https://source.unsplash.com/random/2560x512"
-        alt="Sample placeholder image."
-        width="2560"
-        height="512"
-        loading="lazy"
-        decoding="async"
-        fetchPriority="high"
-      />
-      <div role="doc-subtitle">
-        <span class="highlight-black">sub head</span>
-      </div>
-      <h1>
-        <span class="highlight-gold">
-          Lorem ipsum dolor sit amet, consectetur adip
-        </span>
-      </h1>
-      <div class="content">
-        <p class="text-white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </div>
-      <a
-        href="#"
-        class="btn btn-default btn-gold"
-        data-ga="more quotes"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-        data-ga-section="gettysburg address"
-      >
-        Call to action button
-      </a>
-    </div>
-    <hr />
     <div class="uds-hero-lg has-btn-row">
       <div className="hero-overlay"></div>
       <img
@@ -160,18 +85,15 @@ export const HeroLarge = createStory(
         decoding="async"
         fetchPriority="high"
       />
+      <div role="doc-subtitle">
+        <span class="highlight-black">sub head</span>
+      </div>
       <h1>
         <span class="highlight-gold">
           Lorem ipsum dolor sit amet, consectetur adip
         </span>
       </h1>
-      <div class="content">
-        <p class="text-white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
-        </p>
-      </div>
-      <div class="btn-row">
+      <div className="btn-row">
         <a
           href="#"
           class="btn btn-default btn-gold"
@@ -184,19 +106,6 @@ export const HeroLarge = createStory(
           data-ga-section="gettysburg address"
         >
           Call to action button
-        </a>
-        <a
-          href="#"
-          class="btn btn-default btn-maroon"
-          data-ga="more quotes"
-          data-ga-name="onclick"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-type="internal link"
-          data-ga-region="main content"
-          data-ga-section="gettysburg address"
-        >
-          Default button
         </a>
       </div>
     </div>
