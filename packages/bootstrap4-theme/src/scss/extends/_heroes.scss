@@ -51,12 +51,6 @@ $uds-hero-gradient-overlay: linear-gradient(
 /*--------------------------------------------------------------
 2. Hero, Mobile first
 --------------------------------------------------------------*/
-// buttons mixins
-@mixin btn-md {
-  font-size: $uds-component-button-medium-font-size;
-  padding: $uds-component-button-padding-y-medium
-    $uds-component-button-padding-x-medium;
-}
 @include media-breakpoint-down(sm) {
   // Styles to handle the size of the buttons on mobile in the hero
   div[class^='uds-hero'] {
