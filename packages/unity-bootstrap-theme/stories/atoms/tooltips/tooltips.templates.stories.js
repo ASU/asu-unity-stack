@@ -18,7 +18,6 @@ const extraOptions = {
 };
 
 export default createComponent("Tooltips", "Atoms", "Templates", extraOptions);
-// import { initTooltip as initFunc } from "./tooltips.js";
 
 export const Tooltips = createStory(args => {
   return (
