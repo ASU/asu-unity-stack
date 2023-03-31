@@ -78,7 +78,7 @@ button.uds-tooltip-dark {
 }
 
 div[role='tooltip'].uds-tooltip-description {
-  background: #191919 0% 0% no-repeat padding-box;
+  background: $uds-color-base-gray-7 0% 0% no-repeat padding-box;
   color: $uds-color-base-gray-1;
   font: normal normal normal $uds-size-spacing-2 Arial;
   line-height: $uds-size-spacing-3;
