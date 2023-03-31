@@ -74,15 +74,14 @@ const cssConfig = {
   devtool,
   entry: [path.resolve(paths.sass, "unity-bootstrap-theme.scss")],
   output: {
-    path: path.resolve(__dirname, "./.tmp"),
+    path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: 'img/[name][ext][query]'
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: path.join("..", "dist", "css", "unity-bootstrap-theme.css"),
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: paths.imgsrc, to: paths.img }],
-    }),
+
     // new webpack.LoaderOptionsPlugin({
     //   options: {
     //     postcss: [
@@ -104,15 +103,15 @@ const cssConfig = {
               // sourceMap: true
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     postcssOptions: {
-          //       plugins: [ 'autoprefixer']
-          //     },
-          //     sourceMap: true
-          //   }
-          // },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [ 'autoprefixer']
+              },
+              sourceMap: true
+            }
+          },
           {
             loader: "sass-loader",
             options: {
@@ -125,6 +124,10 @@ const cssConfig = {
             }
           */
         ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
       },
     ].filter(Boolean),
   },
