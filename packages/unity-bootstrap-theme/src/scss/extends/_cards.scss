@@ -542,7 +542,7 @@ Cards - Table of Contents
     &.card-header-icon {
       & .card-icon {
         display: flex;
-        margin-left: -($uds-size-spacing-3 / 2);
+        margin-left: calc($uds-size-spacing-3 / -2);
         align-items: flex-start;
 
         svg {
