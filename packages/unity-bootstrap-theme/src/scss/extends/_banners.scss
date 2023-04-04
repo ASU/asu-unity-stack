@@ -11,8 +11,8 @@
     text-align: left;
     svg {
       font-size: $uds-size-spacing-4;
-      margin: ($uds-size-spacing-1 / 2) $uds-size-spacing-4
-        ($uds-size-spacing-1 / 2) 0;
+      margin: calc($uds-size-spacing-1 / 2) $uds-size-spacing-4
+        calc($uds-size-spacing-1 / 2) 0;
     }
   }
   .banner-content {
@@ -42,11 +42,11 @@
 
     // Edits close button content (i.e. "X" inside bubble)
     .close {
-      opacity: $uds-component-button-close-opacity;
+      opacity: 1;
       font-size: 1rem;
 
       &:hover {
-        opacity: $uds-component-button-close-opacity;
+        opacity: 1;
       }
     }
   }
@@ -91,7 +91,7 @@
   a:visited:not(.btn) {
     color: $uds-color-font-light-visited;
     // May need the following instead for proper contrast.
-    //color: #ffc627;
+    //color: $uds-color-base-gold;
   }
 }
 

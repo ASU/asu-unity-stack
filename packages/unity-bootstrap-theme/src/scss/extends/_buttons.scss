@@ -1,14 +1,14 @@
 // buttons mixins
 @mixin btn-md {
-  font-size: $uds-component-button-medium-font-size;
-  padding: $uds-component-button-padding-y-medium
-    $uds-component-button-padding-x-medium;
+  font-size: 0.875rem;
+  padding: 0.5rem
+    1rem;
 }
 
 // Extra styles that don't have bootstrap variables to override
 .btn {
-  text-decoration: $uds-component-button-text-decoration;
-  font-weight: $uds-component-button-font-weight;
+  text-decoration: none;
+  font-weight: bold;
   white-space: nowrap;
   width: max-content !important;
   &::first-letter {
@@ -22,12 +22,12 @@
     @include btn-md;
   }
   &.btn-sm {
-    font-size: $uds-component-button-small-font-size;
+    font-size: 0.75rem;
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
   }
   &.btn-tag {
-    font-size: $uds-component-button-small-font-size;
+    font-size: 0.75rem;
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
     margin-top: 8px;
@@ -100,7 +100,7 @@
 
 a.text-gold:hover,
 a.text-gold:focus {
-  color: #ffc627 !important;
+  color: $uds-color-base-gold !important;
 }
 a.text-gold:visited:not(.btn) {
   color: #daa000 !important;
@@ -123,10 +123,10 @@ LG and up
 @include media-breakpoint-up(lg) {
   .btn {
     &:hover {
-      transform: $uds-component-button-hover-state-transform;
+      transform: scale(1.05);
     }
     &:active {
-      transform: $uds-component-button-active-state-transform;
+      transform: scale(1);
     }
   }
 }
