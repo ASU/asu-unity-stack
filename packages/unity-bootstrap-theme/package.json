@@ -17,7 +17,7 @@
   "scripts": {
     "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
     "init-sb": "npx storybook init --type html",
-    "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
+    "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail",
     "build:dev": "rimraf ./dist && webpack  --progress --bail && rimraf ./.tmp",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

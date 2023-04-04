@@ -20,6 +20,8 @@ const paths = {
   img: path.resolve(__dirname, "dist/img"),
   imgsrc: path.resolve(__dirname, "src/img"),
   sass: path.resolve(__dirname, "src/scss"),
+  node: path.resolve(__dirname, "node_modules"),
+  distJS: path.resolve(__dirname, "dist/js"),
 };
 
 const devtool = "source-map";
@@ -30,10 +32,8 @@ const jsConfig = {
   mode,
   devtool,
   entry: {
-    "bootstrap-asu": [
-      path.resolve(paths.js, "index.js"),
-      path.resolve(paths.js, "googleAnalytics.js"),
-    ],
+    "bootstrap-asu": [path.resolve(paths.js, "index.js")],
+    "googleAnalytics": path.resolve(paths.js, "googleAnalytics.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist/js"),
@@ -53,7 +53,19 @@ const jsConfig = {
       BUNDLE_VERSION: pkg.version,
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: paths.imgsrc, to: paths.img }],
+      patterns: [
+        { from: paths.imgsrc, to: paths.img },
+        {
+          from: path.resolve(
+            paths.node,
+            "bootstrap",
+            "dist",
+            "js",
+            "bootstrap.bundle.min.js"
+          ),
+          to: paths.distJS,
+        },
+      ],
     }),
   ].filter(Boolean),
   optimization: {
@@ -75,7 +87,7 @@ const cssConfig = {
   entry: [path.resolve(paths.sass, "unity-bootstrap-theme.scss")],
   output: {
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: 'img/[name][ext][query]'
+    assetModuleFilename: "img/[name][ext][query]",
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -100,17 +112,18 @@ const cssConfig = {
             loader: "css-loader",
             options: {
               // importLoaders: 1,
-              // sourceMap: true
+              sourceMap: true,
+              url: false,
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [ 'autoprefixer']
+                plugins: ["autoprefixer"],
               },
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "sass-loader",
@@ -127,7 +140,7 @@ const cssConfig = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ].filter(Boolean),
   },
