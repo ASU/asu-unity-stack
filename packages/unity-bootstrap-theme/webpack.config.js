@@ -1,38 +1,34 @@
-const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
-// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
+const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
-
-const pkg = require("./package.json");
 
 const env = process.env.NODE_ENV || "development";
 const mode = env === "production" ? "production" : "development";
 
 const paths = {
   js: path.resolve(__dirname, "src/js"),
-  css: path.resolve(__dirname, "dist/css"),
-  img: path.resolve(__dirname, "dist/img"),
-  imgsrc: path.resolve(__dirname, "src/img"),
-  sass: path.resolve(__dirname, "src/scss"),
-  node: path.resolve(__dirname, "node_modules"),
   distJS: path.resolve(__dirname, "dist/js"),
+  imgsrc: path.resolve(__dirname, "src/img"),
+  img: path.resolve(__dirname, "dist/img"),
+  sass: path.resolve(__dirname, "src/scss"),
+  css: path.resolve(__dirname, "dist/css"),
+  node: path.resolve(__dirname, "node_modules"),
 };
 
 const devtool = "source-map";
 
-/* */
 const jsConfig = {
   name: "JS",
   mode,
   devtool,
   entry: {
-    "bootstrap-asu": [path.resolve(paths.js, "index.js")],
+    "global-header": [path.resolve(paths.js, "global-header.js")],
     "googleAnalytics": path.resolve(paths.js, "googleAnalytics.js"),
   },
   output: {
@@ -47,11 +43,7 @@ const jsConfig = {
   externalsPresets: { node: true },
   externals: [nodeExternals(), "commonjs sharp"],
   plugins: [
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: env,
-      BUNDLE_NAME: pkg.name.substr(1),
-      BUNDLE_VERSION: pkg.version,
-    }),
+    new ESLintPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: paths.imgsrc, to: paths.img },
@@ -91,16 +83,11 @@ const cssConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.join("..", "dist", "css", "unity-bootstrap-theme.css"),
+      filename: path.join("..", "dist", "css", "[name].css"),
     }),
-
-    // new webpack.LoaderOptionsPlugin({
-    //   options: {
-    //     postcss: [
-    //       autoprefixer()
-    //     ]
-    //   }
-    // }),
+    new StylelintPlugin({
+      configFile: "./.stylerules.js"
+    }),
   ].filter(Boolean),
   module: {
     rules: [
@@ -111,7 +98,6 @@ const cssConfig = {
           {
             loader: "css-loader",
             options: {
-              // importLoaders: 1,
               sourceMap: true,
               url: false,
             },
@@ -131,11 +117,6 @@ const cssConfig = {
               sourceMap: true,
             },
           },
-          /* There is an issue with Sass changing image urls
-            .bg.morse-code-white {
-              background-image: url(../../.tmp/1fbe75652170f51c1e1d.png);
-            }
-          */
         ],
       },
       {
@@ -145,4 +126,7 @@ const cssConfig = {
     ].filter(Boolean),
   },
 };
-module.exports = [jsConfig, cssConfig];
+module.exports = [
+  jsConfig,
+  cssConfig,
+];
