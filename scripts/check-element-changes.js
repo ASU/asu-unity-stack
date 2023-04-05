@@ -50,7 +50,8 @@ runGit(GIT_COMMAND, (res = "") => {
 
   fileTemplates.forEach(filePath => {
     const fileName = path.parse(filePath).name;
-    printTitle(fileName);
+    const packageName = filePath.split(path.sep)[1];
+    printTitle(`${packageName}: ${fileName}`);
     printLine();
   });
 });

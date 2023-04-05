@@ -27,8 +27,8 @@ Desktop styles
   max-width: var(--max-width);
 
   &.fill {
-    background-color: #fafafa;
-    border: 1px solid #d0d0d0;
+    background-color: $uds-color-base-gray-1;
+    border: 1px solid $uds-color-base-gray-3;
     padding: 32px;
   }
   .profile-img-container {

@@ -114,5 +114,5 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none !important;
-  box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $uds-color-base-gray-7 !important;
 }

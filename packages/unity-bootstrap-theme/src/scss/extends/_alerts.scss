@@ -22,12 +22,12 @@
     // Edits close button content (i.e. "X" inside bubble)
     .close
     {
-      opacity: $uds-component-button-close-opacity;
+      opacity: 1;
       font-size: 1rem;
 
       &:hover
       {
-        opacity: $uds-component-button-close-opacity;
+        opacity: 1;
       }
     }
   }
@@ -55,7 +55,7 @@
 div[class='alert alert-block'] {
   /* Catch-all for default alert class */
   background-color: $uds-color-background-gray;
-  border-color: $uds-color-border-base;
+  border-color: $uds-color-base-gray-3;
 }
 
 // Media Queries

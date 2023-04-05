@@ -28,8 +28,8 @@
         margin: 0;
       }
       .today {
-        border-radius: $uds-component-button-border-radius;
-        background-color: $uds-component-button-maroon-background-color;
+        border-radius: $uds-component-border-radius;
+        background-color: $uds-color-base-maroon;
         color: $uds-color-background-white;
         padding: calc($uds-size-spacing-1 / 2) $uds-size-spacing-1;
       }
@@ -43,7 +43,7 @@
     text-align: center;
     button {
       border: 1px solid $uds-color-base-gray-3;
-      border-radius: $uds-component-button-border-radius;
+      border-radius: $uds-component-border-radius;
       background-color: $uds-color-base-gray-2;
       padding: calc($uds-size-spacing-3 / 2) calc($uds-size-spacing-7 / 3);
       svg {

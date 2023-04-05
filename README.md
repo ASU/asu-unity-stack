@@ -166,7 +166,7 @@ yarn stop # stop the testing server
 
 ### check-element-changes
 
-This tool shows outdated markup into the folder `bootstrap4-theme`
+This tool shows outdated markup into the folder `unity-bootstrap-theme`
 It takes as an argument the number of days past from the last file changes.
 
 
