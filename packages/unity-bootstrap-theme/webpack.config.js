@@ -76,17 +76,23 @@ const cssConfig = {
   name: "CSS and Images",
   mode,
   devtool,
-  entry: [path.resolve(paths.sass, "unity-bootstrap-theme.scss")],
+  entry: {
+    "unity-bootstrap-theme": path.resolve(paths.sass, "unity-bootstrap-theme.scss"),
+    "global-header": path.resolve(paths.sass, "extends", "_global-header.scss"),
+    "global-footer": path.resolve(paths.sass, "extends", "_globalfooter.scss"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "img/[name][ext][query]",
   },
   plugins: [
+    new StylelintPlugin({
+      configFile: "./.stylerules.js",
+      files: "./src/**/*.{scss,css}",
+    }),
     new MiniCssExtractPlugin({
       filename: path.join("..", "dist", "css", "[name].css"),
-    }),
-    new StylelintPlugin({
-      configFile: "./.stylerules.js"
+      // chunkFilename: '[id].css'
     }),
   ].filter(Boolean),
   module: {
@@ -127,6 +133,6 @@ const cssConfig = {
   },
 };
 module.exports = [
-  jsConfig,
+  // jsConfig,
   cssConfig,
 ];
