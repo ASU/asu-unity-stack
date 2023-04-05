@@ -133,6 +133,6 @@ const cssConfig = {
   },
 };
 module.exports = [
-  // jsConfig,
+  jsConfig,
   cssConfig,
 ];
