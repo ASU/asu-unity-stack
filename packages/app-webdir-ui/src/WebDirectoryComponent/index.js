@@ -1,3 +1,4 @@
+// @ts-check
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
@@ -18,6 +19,38 @@ function WebDirectory({
   display,
   filters,
 }) {
+  const [sort, setSort] = useState(display.defaultSort);
+  const [requestFilters, setRequestFilters] = useState();
+  const RES_PER_PAGE = 6;
+
+  /**
+   * This function returns an array of custom sort options based on the webDirSearchType and departmentIds parameters.
+   *
+   * @param {string} webDirSearchType - A string that specifies the type of search component.
+   * @param {string} departmentIds - A string of comma-separated department IDs.
+   * @returns {Array} An array of custom sort options.
+   */
+  function sortOptionsFunc(webDirSearchType, departmentIds) {
+    if (
+      webDirSearchType === "departments" &&
+      departmentIds?.split(",")?.length < 2
+    ) {
+      return [
+        { value: "default", label: "Choose Sort", disabled: true },
+        { value: "last_name_asc", label: "Last Name (ascending)" },
+        { value: "last_name_desc", label: "Last Name (descending)" },
+        { value: "employee_weight", label: "Department Defined" },
+      ];
+    }
+    return [
+      { value: "default", label: "Choose Sort", disabled: true },
+      { value: "last_name_asc", label: "Last Name (ascending)" },
+      { value: "last_name_desc", label: "Last Name (descending)" },
+    ];
+  }
+
+  const customSortOptions = sortOptionsFunc(searchType, deptIds);
+
   const engineParams = {
     filters,
     API_URL,
@@ -26,12 +59,6 @@ function WebDirectory({
     appPathFolder,
   };
 
-  const facultyRankParams = {
-    ...engineParams,
-    deptIds,
-    display,
-    searchType,
-  };
 
   const enginesWithParams = {
     [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
@@ -49,10 +76,11 @@ function WebDirectory({
     [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
       ...engines[engineNames.WEB_DIRECTORY_FACULTY__RANK],
       ...engineParams,
+      deptIds,
+      display,
+      searchType,
     },
   };
-  const [sort, setSort] = useState(display.defaultSort);
-  const [requestFilters, setRequestFilters] = useState();
 
   const defaultCMSOptions = {
     last_name: "last_name_asc",
@@ -63,28 +91,11 @@ function WebDirectory({
     setSort(prev => newSort);
   };
 
-  const RES_PER_PAGE = 6;
-  let customSortOptions;
-
-  if (searchType === "departments") {
-    customSortOptions = [
-      { value: "default", label: "Choose Sort", disabled: true },
-      { value: "last_name_asc", label: "Last Name (ascending)" },
-      { value: "last_name_desc", label: "Last Name (descending)" },
-      { value: "employee_weight", label: "Department Defined" },
-    ];
-  } else {
-    customSortOptions = [
-      { value: "default", label: "Choose Sort", disabled: true },
-      { value: "last_name_asc", label: "Last Name (ascending)" },
-      { value: "last_name_desc", label: "Last Name (descending)" },
-    ];
-  }
-
   const searchTypeEngineMap = {
     departments: engineNames.WEB_DIRECTORY_DEPARTMENTS,
     people: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
     people_departments: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+    faculty_rank: engineNames.WEB_DIRECTORY_FACULTY_RANK,
   };
   function doSearch() {
     const tempFilters = { ...filters };
@@ -136,8 +147,6 @@ function WebDirectory({
               itemsPerPage={
                 parseInt(display.profilesPerPage, 10) || RES_PER_PAGE
               }
-              onPageChange={page => doSearch(page)}
-              size="large"
               sort={sort}
               hidePaginator={display.usePager !== "1"}
               filters={requestFilters}
@@ -152,7 +161,9 @@ function WebDirectory({
   }
   return (
     <FacultyRankLayout>
-      <FacultyRankTabPanels {...facultyRankParams} />
+      <FacultyRankTabPanels
+        {...enginesWithParams[searchTypeEngineMap[searchType]]}
+      />
     </FacultyRankLayout>
   );
 }
