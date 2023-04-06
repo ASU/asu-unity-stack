@@ -1,7 +1,6 @@
 import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import exampleImage from './example-image.jpg';
-import portraitImage from './portrait-image.jpg';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
 
