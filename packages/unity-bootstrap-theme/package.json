@@ -21,8 +21,8 @@
     "build:dev": "rimraf ./dist && webpack  --progress --bail",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint \"**/*.{js}\"",
-    "lint:fix": "eslint \"**/*.{js}\" --fix"
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",

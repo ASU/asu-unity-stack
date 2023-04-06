@@ -16,8 +16,8 @@ export const parameters = {
     },
     root: ".row", // can be customized to wrap an element
     removeComments: /^\s*\s*$/,
-    transform: (code) => {
-      return code.replace(/<svg.*<\/svg>/g, "");
-    }
+    transform: code => {
+      return code.replace(/<svg.*?<\/svg>/g, "").replace(/()/gi, "$2");
+    },
   },
 };
