@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
 import { FacultyRankTabPanels } from "../FacultyRankComponent";
 import { engineNames, engines } from "../helpers/search";
@@ -23,7 +22,7 @@ function WebDirectory({
     filters,
     API_URL,
     searchApiVersion,
-    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    profileURLBase: profileURLBase || "https://search.asu.edu",
     appPathFolder,
   };
 
@@ -52,8 +51,6 @@ function WebDirectory({
       ...engineParams,
     },
   };
-  const sortParamName = "sort-by";
-  const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState(display.defaultSort);
   const [requestFilters, setRequestFilters] = useState();
 
@@ -63,8 +60,7 @@ function WebDirectory({
     people_order: "people_order",
   };
   const setNewSort = newSort => {
-    setSearchParams({ [sortParamName]: newSort });
-    setSort(defaultCMSOptions[display.defaultSort]);
+    setSort(prev => newSort);
   };
 
   const RES_PER_PAGE = 6;
@@ -121,15 +117,11 @@ function WebDirectory({
     if ((searchType === "departments" && deptIds) || ids) {
       doSearch();
     }
-  }, [searchParams]);
+  }, [sort]);
 
-  return (
-    <>
-      {searchType === "faculty_rank" ? (
-        <FacultyRankLayout>
-          <FacultyRankTabPanels {...facultyRankParams} />
-        </FacultyRankLayout>
-      ) : (
+  if (searchType !== "faculty_rank") {
+    return (
+      <>
         <WebDirLayout>
           <div className="sort">
             <SortPicker
@@ -146,7 +138,7 @@ function WebDirectory({
               }
               onPageChange={page => doSearch(page)}
               size="large"
-              sort={searchParams.get(sortParamName)}
+              sort={sort}
               hidePaginator={display.usePager !== "1"}
               filters={requestFilters}
               profilesToFilterOut={display.doNotDisplayProfiles}
@@ -155,8 +147,13 @@ function WebDirectory({
             />
           </div>
         </WebDirLayout>
-      )}
-    </>
+      </>
+    );
+  }
+  return (
+    <FacultyRankLayout>
+      <FacultyRankTabPanels {...facultyRankParams} />
+    </FacultyRankLayout>
   );
 }
 

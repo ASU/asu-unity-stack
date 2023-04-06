@@ -131,7 +131,13 @@ const getTitleFromProfile = (profile, titleMatch) => {
     titleMatch.depts &&
     profile.deptids &&
     profile.titles &&
-    profile.deptids.raw !== null
+    profile.deptids.raw !== null &&
+    /*
+      If titleMatch.depts[0] is '',
+      then no deptIds were supplied to query.
+      We can't use titleMatch.depts in that case.
+    */
+    !!titleMatch.depts[0]
   ) {
     console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
@@ -204,7 +210,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (
+export const staffConverter = ({
   datum,
   options = {
     size: "small",
@@ -212,28 +218,27 @@ export const staffConverter = (
     profileURLBase: null,
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
-  // We guard against null asurite_id being returned from data source in some
-  // instances by using a conditional render.
+  // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
-  const safeAsuriteID = filledDatum.asurite_id.raw.length
-    ? filledDatum.asurite_id.raw.toString()
-    : null;
+  const asuriteEID = filledDatum.eid.raw
+    ? filledDatum.eid.raw.toString()
+    : filledDatum.asurite_id.raw.toString();
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <>
-      {safeAsuriteID ? (
+      {asuriteEID ? (
         <ProfileCard
           isRequired={false}
-          id={safeAsuriteID}
-          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
-          key={safeAsuriteID}
+          id={asuriteEID}
+          profileURL={`${profileURLBase}/profile/${asuriteEID}`}
+          key={asuriteEID}
           imgURL={filledDatum.photo_url.raw}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
@@ -257,24 +262,27 @@ export const staffConverter = (
   );
 };
 
-export const studentsConverter = (
+export const studentsConverter = ({
   datum,
   options = {
     size: "small",
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
+  const asuriteEID = filledDatum.eid.raw
+    ? filledDatum.eid.raw.toString()
+    : filledDatum.asurite_id.raw.toString();
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.asurite_id.raw.toString()}
-      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-      key={filledDatum.asurite_id.raw.toString()}
+      id={asuriteEID}
+      profileURL={`/profile/${asuriteEID}`}
+      key={asuriteEID}
       imgURL={filledDatum.photo_url.raw}
       anonImgURL={anonImg}
       name={filledDatum.display_name.raw}
@@ -326,7 +334,7 @@ export const anonConverter = (
   );
 };
 
-export const subdomainConverter = (
+export const subdomainConverter = ({
   datum,
   options = {
     size: "small",
@@ -336,8 +344,8 @@ export const subdomainConverter = (
   logClick = () => {},
   requestId,
   localSection = null,
-  { ...props }
-) => {
+  props,
+}) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
   if (filledDatum.meta_description) {

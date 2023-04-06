@@ -70,17 +70,17 @@ const ASUSearchResultsList = ({
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
-          const formattedResults = engine.formatter(
-            filteredResults,
+          const formattedResults = engine.formatter({
+            results: filteredResults,
             cardSize,
             filters,
-            appPathFolder || engine.appPathFolder,
+            appPathFolder: appPathFolder || engine.appPathFolder,
             localSection,
-            {
+            props: {
               API_URL: engine.API_URL,
               searchApiVersion: engine.searchApiVersion,
-            }
-          );
+            },
+          });
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
