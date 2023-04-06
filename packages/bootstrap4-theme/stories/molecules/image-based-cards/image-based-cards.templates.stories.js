@@ -66,8 +66,6 @@ export const LandscapeSM = createStory(
     <img
       src={portraitImage}
       alt="Card image cap"
-      width="255"
-      height="144"
       loading="lazy"
       decoding="async"
     />
