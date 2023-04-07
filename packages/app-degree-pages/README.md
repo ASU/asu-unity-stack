@@ -77,7 +77,7 @@ You can find the UX document [here][ux-doc-link]
 
 
 ### Degree listing page template
-Degree listing pages are used for the actual degree browsing module where users can view a list of filterable degrees in either a table or grid view. Please note that the degree listing module is just one of severa l sections required for this template.
+Degree listing pages are used for the actual degree browsing module where users can view a list of filterable degrees in either a table or grid view. Please note that the degree listing module is just one of several sections required for this template.
 
 <table style="border:0px;">
   <tr>
@@ -221,9 +221,9 @@ yarn jsdoc
 ```
 ## How to install
 
-1. Make sure you are set up to use the private npm registry at registry.web.asu.edu.
-<br/>See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu/app-degree-pages```
+1. Either make sure you are part of the ASU github organization and follow the instructions [here](https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry)  or, if you are  you can clone this repo and run `yarn install` and `yarn build` to build the package locally.
+<br/>
+1. ```yarn add @asu/app-degree-pages``` or ```npm install @asu/app-degree-pages```
 
 ## Use as a JS module in React app
 ### ListingPage component
