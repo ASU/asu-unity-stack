@@ -27,7 +27,8 @@
               "dist/**/*.{js,css}",
               "build/**/*.{js,css}"
             ]
-          }
+          },
+          {"path": "docs/CHANGELOG.md", "label": "Changelog"}
         ]
       }
     ],
