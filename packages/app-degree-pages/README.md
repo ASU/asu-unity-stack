@@ -225,6 +225,7 @@ yarn jsdoc
 <br/>See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
 2. ```yarn add @asu/app-degree-pages```
 
+
 ## Use as a JS module in React app
 ### ListingPage component
 
