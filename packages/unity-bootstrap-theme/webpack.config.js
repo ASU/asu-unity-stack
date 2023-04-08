@@ -32,7 +32,7 @@ const jsConfig = {
     "googleAnalytics": path.resolve(paths.js, "googleAnalytics.js"),
   },
   output: {
-    path: path.resolve(__dirname, "dist/js"),
+    path: paths.distJS,
     filename: "[name].js",
     library: "bootstrapASU",
     libraryTarget: "umd",
@@ -64,8 +64,13 @@ const jsConfig = {
     minimize: env === "production",
     minimizer: [
       new TerserPlugin({
+        parallel: true,
+        extractComments: true,
         terserOptions: {
-          warnings: true,
+          compress: {
+            drop_console: true, // removes console statements
+            drop_debugger: true, // removes debugger statements
+          },
         },
       }),
     ],
@@ -77,9 +82,22 @@ const cssConfig = {
   mode,
   devtool,
   entry: {
-    "unity-bootstrap-theme": path.resolve(paths.sass, "unity-bootstrap-theme.scss"),
-    "global-header": path.resolve(paths.sass, "extends", "_global-header.scss"),
-    "global-footer": path.resolve(paths.sass, "extends", "_globalfooter.scss"),
+    "unity-bootstrap-theme.bundle": {
+      import: path.resolve(paths.sass, "styles.js"),
+      filename: "../.tmp/null.js",
+    },
+    "unity-bootstrap-theme": {
+      import: path.resolve(paths.sass, "unity-bootstrap-theme.scss"),
+      filename: "../.tmp/unity-bootstrap-theme.js",
+    },
+    "unity-bootstrap-header": {
+      import: path.resolve(paths.sass, "extends", "_global-header.scss"),
+      filename: "../.tmp/_global-header.js",
+    },
+    "unity-bootstrap-footer": {
+      import: path.resolve(paths.sass, "extends", "_globalfooter.scss"),
+      filename: "../.tmp/_globalfooter.js",
+    },
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -87,12 +105,13 @@ const cssConfig = {
   },
   plugins: [
     new StylelintPlugin({
-      configFile: "./.stylerules.js",
       files: "./src/**/*.{scss,css}",
     }),
     new MiniCssExtractPlugin({
+      // filename: ({ chunk }) => path.join("..", "dist", "css", `${chunk.name}.css`),
       filename: path.join("..", "dist", "css", "[name].css"),
-      // chunkFilename: '[id].css'
+      // filename: "[name].css",
+      chunkFilename: '[id].css'
     }),
   ].filter(Boolean),
   module: {
@@ -100,12 +119,28 @@ const cssConfig = {
       {
         test: /\.s?css$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false,
+              publicPath: (resourcePath, context) => {
+                // publicPath is the relative path of the resource to the context
+                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                // while for ./css/main.css the publicPath will be ../
+                return path.relative(path.dirname(resourcePath), context) + "/";
+              },
+            }
+          },
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
+              // esModule: false,
+              sourceMap: false,
               url: false,
+              // modules: {
+              //   namedExport: true,
+              //   localIdentName: "foo__[name]__[local]",
+              // },
             },
           },
           {
@@ -114,16 +149,17 @@ const cssConfig = {
               postcssOptions: {
                 plugins: ["autoprefixer"],
               },
-              sourceMap: true,
+              sourceMap: false,
             },
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true,
+              sourceMap: false,
             },
           },
         ],
+        sideEffects: true,
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -131,8 +167,12 @@ const cssConfig = {
       },
     ].filter(Boolean),
   },
+  optimization: {
+    minimize: env === "production",
+  },
 };
+
 module.exports = [
   jsConfig,
   cssConfig,
-];
+]
