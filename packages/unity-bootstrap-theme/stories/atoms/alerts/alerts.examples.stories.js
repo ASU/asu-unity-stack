@@ -20,7 +20,7 @@ export const AlertsComponent = createStory(
         <button
           type="button"
           class="btn btn-circle btn-circle-alt-black close"
-          data-dismiss="alert"
+          data-bs-dismiss="alert"
           aria-label="Close"
           data-ga="close cross"
           data-ga-name="onclick"
@@ -52,7 +52,7 @@ export const AlertsComponent = createStory(
         <button
           type="button"
           class="btn btn-circle btn-circle-alt-black close"
-          data-dismiss="alert"
+          data-bs-dismiss="alert"
           aria-label="Close"
           data-ga="close cross"
           data-ga-name="onclick"
@@ -83,8 +83,8 @@ export const AlertsComponent = createStory(
         <p>
           Creating a dismissable alert box requires the inclusion of the{" "}
           <code>alert-dismissable</code> class along with the{" "}
-          <code>data-dismiss="alert"</code> attribute on the close button. Alert
-          messages do not necessarily have to be dismissable.
+          <code>data-bs-dismiss="alert"</code> attribute on the close button.
+          Alert messages do not necessarily have to be dismissable.
         </p>
       </div>
     </div>
@@ -106,7 +106,7 @@ export const AlertsComponent = createStory(
           type="button"
           class="btn btn-circle btn-circle-alt-black close"
           aria-label="Close"
-          data-dismiss="alert"
+          data-bs-dismiss="alert"
           data-ga="close cross"
           data-ga-name="onclick"
           data-ga-event="modal"
