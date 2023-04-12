@@ -8,7 +8,7 @@ export const FoldableCardDefaultOpen = createStory(
       <h3>
         <a
           id="example-header-3"
-          data-toggle="collapse"
+          data-bs-toggle="collapse"
           href="#example-content-3"
           role="button"
           aria-expanded="true"
@@ -63,8 +63,8 @@ export const ColorAccents = createStory(
             id="cardOne"
             class="collapsed"
             href="#cardBodyOne"
-            data-toggle="collapse"
-            data-target="#cardBodyOne"
+            data-bs-toggle="collapse"
+            data-bs-target="#cardBodyOne"
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
@@ -85,7 +85,7 @@ export const ColorAccents = createStory(
         id="cardBodyOne"
         class="collapse card-body"
         aria-labelledby="cardOne"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <h4>Quatrenary Headline</h4>
         <p>
@@ -112,7 +112,7 @@ export const ColorAccents = createStory(
           <a
             id="cardTwo"
             class="collapsed"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             href="#cardBodyTwo"
             role="button"
             aria-expanded="false"
@@ -133,7 +133,7 @@ export const ColorAccents = createStory(
         id="cardBodyTwo"
         class="collapse card-body"
         aria-labelledby="cardTwo"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -163,7 +163,7 @@ export const ColorAccents = createStory(
           <a
             id="cardThree"
             class="collapsed"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             href="#cardBodyThree"
             role="button"
             aria-expanded="false"
@@ -184,7 +184,7 @@ export const ColorAccents = createStory(
         id="cardBodyThree"
         class="collapse card-body"
         aria-labelledby="cardThree"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -211,8 +211,8 @@ export const ColorAccents = createStory(
             id="cardFour"
             class="collapsed"
             href="#cardBodyFour"
-            data-toggle="collapse"
-            data-target="#cardBodyFour"
+            data-bs-toggle="collapse"
+            data-bs-target="#cardBodyFour"
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyFour"
@@ -233,7 +233,7 @@ export const ColorAccents = createStory(
         id="cardBodyFour"
         class="collapse card-body"
         aria-labelledby="cardFour"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <h4>Quatrenary Headline</h4>
         <p>
@@ -266,8 +266,8 @@ export const IncludedIcons = createStory(
             id="cardOne"
             class="collapsed"
             href="#cardBodyOne"
-            data-toggle="collapse"
-            data-target="#cardBodyOne"
+            data-bs-toggle="collapse"
+            data-bs-target="#cardBodyOne"
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
@@ -291,7 +291,7 @@ export const IncludedIcons = createStory(
         id="cardBodyOne"
         class="collapse card-body"
         aria-labelledby="cardOne"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <h4>Quatrenary Headline</h4>
         <p>
@@ -318,7 +318,7 @@ export const IncludedIcons = createStory(
           <a
             id="cardTwo"
             class="collapsed"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             href="#cardBodyTwo"
             role="button"
             aria-expanded="false"
@@ -342,7 +342,7 @@ export const IncludedIcons = createStory(
         id="cardBodyTwo"
         class="collapse card-body"
         aria-labelledby="cardTwo"
-        data-parent="#accordionExample"
+        data-bs-parent="#accordionExample"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -379,7 +379,7 @@ export const DisableFold = createStory(
             <h4>
               <a
                 id="example-header-2"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
                 href="#example-content-2"
                 role="button"
                 aria-expanded="false"
@@ -425,7 +425,7 @@ export const DisableFold = createStory(
             <h4>
               <a
                 id="example-header-3"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
                 href="#example-content-3"
                 role="button"
                 aria-expanded="false"

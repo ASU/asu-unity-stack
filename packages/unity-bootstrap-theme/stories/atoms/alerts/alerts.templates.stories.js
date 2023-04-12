@@ -53,7 +53,7 @@ export const Alert = createStory(
             <button
               type="button"
               class="btn btn-circle btn-circle-alt-black close"
-              data-dismiss="alert"
+              data-bs-dismiss="alert"
               aria-label="Close"
               data-ga="close cross"
               data-ga-name="onclick"

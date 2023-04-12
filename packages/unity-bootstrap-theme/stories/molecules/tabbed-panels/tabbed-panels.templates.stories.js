@@ -43,7 +43,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link active"
               id="nav-home-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-home"
               role="tab"
               aria-controls="nav-home"
@@ -59,7 +59,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link"
               id="nav-profile-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-profile"
               role="tab"
               aria-controls="nav-profile"
@@ -75,7 +75,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link"
               id="nav-contact-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-contact"
               role="tab"
               aria-controls="nav-contact"
@@ -91,7 +91,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link"
               id="nav-another-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-another"
               role="tab"
               aria-controls="nav-another"
@@ -107,7 +107,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link"
               id="nav-another-2-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-another-2"
               role="tab"
               aria-controls="nav-another-2"
@@ -123,7 +123,7 @@ export const TabbedPanels = createStory(
             <a
               class="nav-item nav-link"
               id="nav-another-3-tab"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#nav-another-3"
               role="tab"
               aria-controls="nav-another-3"

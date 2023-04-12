@@ -42,8 +42,8 @@ export const AnchorMenu = createStory(
         <div class="container">
           <div class="uds-anchor-menu-wrapper">
             <h4
-              data-toggle="collapse"
-              data-target="#collapseExample"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
               aria-expanded="false"
               aria-controls="collapseExample"
               data-ga-name="onclick"

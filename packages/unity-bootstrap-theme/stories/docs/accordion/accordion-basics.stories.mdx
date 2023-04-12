@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 <Meta title="Docs/Accordions" />
 
@@ -15,7 +15,7 @@ The recommended markup for a foldable card begins from the following pattern.
 <div class="card card-foldable">
   <div class="card-header">
     <h4>
-      <a id="example-header-1" class="collapsed" data-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">Header Text
+      <a id="example-header-1" class="collapsed" data-bs-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">Header Text
         <span class="fas fa-chevron-up"></span>
       </a>
     </h4>
@@ -33,12 +33,12 @@ Foldable cards can be accented with different colors from the ASU palette. The h
 
 Include a modifying class along side of `.card-foldable` to produce different accent colors. Allowable colors are below:
 
-| Modifier class  | Produced Color                |
-| --------------- | ----------------------------- |
-| (none)          | ASU Gold (default)            |
-| .card-maroon    | ASU Maroon                    |
-| .card-gray      | ASU Gray 4                    |
-| .card-dark      | ASU Gray 7 (Black)            |
+| Modifier class | Produced Color     |
+| -------------- | ------------------ |
+| (none)         | ASU Gold (default) |
+| .card-maroon   | ASU Maroon         |
+| .card-gray     | ASU Gray 4         |
+| .card-dark     | ASU Gray 7 (Black) |
 
 To add an icon:
 
@@ -51,7 +51,7 @@ A foldable card with an icon and and accent color might look like this:
 <div class="card card-foldable mt-3 card-maroon">
   <div class="card-header card-header-icon">
     <h4>
-      <a id="cardOne" class="collapsed" href="#cardBodyOne" data-toggle="collapse" data-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+      <a id="cardOne" class="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
         <span class="card-icon">
             <i class="fas fa-dog mr-2" role="img" aria-label="..."></i>
             Accordion with icon and gold color.
@@ -76,6 +76,7 @@ Include one of the following modifier classes next to the `.card-foldable` class
 - `.desktop-disable-lg` and `.desktop-disable-xl` are also available.
 
 Example:
+
 ```
 <div class="card card-foldable desktop-disable-lg">
   <div class="card-header">
@@ -92,7 +93,7 @@ Example:
 With some small modifications, a series of foldable cards can be connected together to form an accordion.
 
 - Wrap the collection of foldable cards with an element containing the class of `.accordion` and a unique ID.
-- Include the `data-parent` attribute within the card body element to properly toggle the folded/expanded state.
+- Include the `data-bs-parent` attribute within the card body element to properly toggle the folded/expanded state.
 - By default, foldable cards wrapped in an accordion will stack together with no spacing between them. Include a utility margin class between each card to space them apart properly. (`.mt-3` is recommended.)
 
 That markup looks like this when completed:
@@ -104,7 +105,7 @@ That markup looks like this when completed:
     <div class="card-header">
       ...
     </div>
-    <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-parent="#accordionExample">
+    <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-bs-parent="#accordionExample">
       ...
     </div>
   </div>
@@ -113,11 +114,10 @@ That markup looks like this when completed:
     <div class="card-header">
         ...
     </div>
-    <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-parent="#accordionExample">
+    <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-bs-parent="#accordionExample">
       ...
     </div>
   </div>
 
 </div>
 ```
-

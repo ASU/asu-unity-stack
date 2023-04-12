@@ -12,8 +12,8 @@ export const Sidebar = createStory(
         <h2>Lorem ipsum</h2>
         <div
           class="sidebar-toggler"
-          data-toggle="collapse"
-          data-target="#sidebar-left"
+          data-bs-toggle="collapse"
+          data-bs-target="#sidebar-left"
           aria-expanded="false"
           aria-controls="sidebar-left"
           data-ga-name="onclick"
@@ -43,8 +43,8 @@ export const Sidebar = createStory(
                 id="cardOne"
                 class="collapsed nav-link"
                 href="#cardBodyOne"
-                data-toggle="collapse"
-                data-target="#cardBodyOne"
+                data-bs-toggle="collapse"
+                data-bs-target="#cardBodyOne"
                 aria-expanded="false"
                 aria-controls="cardBodyOne"
                 data-ga-name="onclick"
@@ -63,7 +63,7 @@ export const Sidebar = createStory(
               id="cardBodyOne"
               class="collapse card-body"
               aria-labelledby="cardOne"
-              data-parent=".sidebar"
+              data-bs-parent=".sidebar"
             >
               <a href="#" class="nav-link">
                 A Long Link Total that is two or more lines of text
@@ -83,7 +83,7 @@ export const Sidebar = createStory(
               <a
                 id="cardTwo"
                 class="collapsed nav-link"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
                 href="#cardBodyTwo"
                 role="button"
                 aria-expanded="false"
@@ -103,7 +103,7 @@ export const Sidebar = createStory(
               id="cardBodyTwo"
               class="collapse card-body"
               aria-labelledby="cardTwo"
-              data-parent=".sidebar"
+              data-bs-parent=".sidebar"
             >
               <a href="#" class="nav-link">
                 Work it harder
@@ -143,7 +143,7 @@ export const Sidebar = createStory(
               <a
                 id="cardThree"
                 class="collapsed nav-link"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
                 href="#cardBodyThree"
                 role="button"
                 aria-expanded="false"
@@ -163,7 +163,7 @@ export const Sidebar = createStory(
               id="cardBodyThree"
               class="collapse card-body"
               aria-labelledby="cardThree"
-              data-parent=".sidebar"
+              data-bs-parent=".sidebar"
             >
               <a href="#" class="nav-link">
                 Crow's nest square-rigged hands chase

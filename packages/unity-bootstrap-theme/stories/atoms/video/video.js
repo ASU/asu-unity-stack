@@ -1,17 +1,26 @@
 import { googleAnalytics } from "../../../src/js/googleAnalytics";
 
 export const initVideo = () => {
+  // constants
+  const DOM_ELEMENT_VIDEO = "video";
+  const DOM_ELEMENT_VIDEO_BTN = ".uds-video-btn-play";
+  const DOM_ELEMENT_VIDEO_OVERLAY = ".uds-video-overlay";
+  const EVENT_CLICK = "click";
+  const EVENT_ENDED = "ended";
+  const STYLE_DISPLAY_FLEX = "flex";
+  const STYLE_DISPLAY_NONE = "none";
+
   // get elements to interact with
-  const videoPlayer = document.querySelector("video");
-  const videoOverlay = document.querySelector(".uds-video-overlay");
-  const videoBtnPlay = document.querySelector(".uds-video-btn-play");
+  const $videoPlayer = document.querySelector(DOM_ELEMENT_VIDEO);
+  const $videoOverlay = document.querySelector(DOM_ELEMENT_VIDEO_OVERLAY);
+  const $videoBtnPlay = document.querySelector(DOM_ELEMENT_VIDEO_BTN);
 
   // toggle video play/pause and overlay
   function toggleOverlay(overlay) {
-    if (overlay.style.display === "none") {
-      overlay.style.display = "flex";
+    if (overlay.style.display === STYLE_DISPLAY_NONE) {
+      overlay.style.display = STYLE_DISPLAY_FLEX;
     } else {
-      overlay.style.display = "none";
+      overlay.style.display = STYLE_DISPLAY_NONE;
     }
   }
 
@@ -20,29 +29,32 @@ export const initVideo = () => {
     else video.pause();
   }
 
-  // event listeners for Pause video
-  videoPlayer.addEventListener("click", function (e) {
+  function handleVideoPlayerClick(e) {
     toggleVideo(this);
     toggleOverlay(this.nextElementSibling);
-  });
+  }
 
-  // event listener for Play video
-  videoBtnPlay.addEventListener("click", function (e) {
+  function handleBtnPlayClick(e) {
     e.stopPropagation();
     const parentOverlay = this.parentNode;
     toggleOverlay(parentOverlay);
-    toggleVideo(videoPlayer);
-  });
+    toggleVideo($videoPlayer);
+  }
 
-  // event listener for Play video
-  videoOverlay.addEventListener("click", function (e) {
+  function handleOverlayClick(e) {
     toggleOverlay(this);
-    toggleVideo(videoPlayer);
-  });
+    toggleVideo($videoPlayer);
+  }
 
-  videoPlayer.addEventListener("ended", function (e) {
-    toggleOverlay(videoOverlay);
-  });
+  function handleVideoEnded(e) {
+    toggleOverlay($videoOverlay);
+  }
+
+  // add event listeners
+  $videoPlayer.addEventListener(EVENT_CLICK, handleVideoPlayerClick);
+  $videoBtnPlay.addEventListener(EVENT_CLICK, handleBtnPlayClick);
+  $videoOverlay.addEventListener(EVENT_CLICK, handleOverlayClick);
+  $videoPlayer.addEventListener(EVENT_ENDED, handleVideoEnded);
 
   // Init google analytics
   googleAnalytics();
