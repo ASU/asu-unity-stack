@@ -13,8 +13,8 @@ const FoldableCardElement = (
         <a
           id={`${linkID}`}
           class="collapsed"
-          data-toggle="collapse"
-          data-target={bodyID ? `#${bodyID}` : ""}
+          data-bs-toggle="collapse"
+          data-bs-target={bodyID ? `#${bodyID}` : ""}
           href={bodyID ? `#${bodyID}` : ""}
           role="button"
           aria-expanded="false"
@@ -35,7 +35,7 @@ const FoldableCardElement = (
       id={`${bodyID}`}
       class="collapse card-body"
       aria-labelledby={`${linkID}`}
-      data-parent={accordionID ? `#${accordionID}` : ""}
+      data-bs-parent={accordionID ? `#${accordionID}` : ""}
     >
       <h4>This is a quaternary headline</h4>
       <p>

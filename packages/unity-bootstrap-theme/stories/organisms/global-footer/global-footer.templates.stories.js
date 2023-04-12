@@ -939,7 +939,7 @@ export const TwoColumns = (
                     <a
                       id="footlink-header-two"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
                       aria-expanded="false"
@@ -1243,7 +1243,7 @@ export const ThreeColumns = (
                     <a
                       id="footlink-header-two"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
                       aria-expanded="false"
@@ -1286,7 +1286,7 @@ export const ThreeColumns = (
                     <a
                       id="footlink-header-three"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
                       aria-expanded="false"
@@ -1595,7 +1595,7 @@ export const FourColumns = (
                     <a
                       id="footlink-header-two"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
                       aria-expanded="false"
@@ -1638,7 +1638,7 @@ export const FourColumns = (
                     <a
                       id="footlink-header-three"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
                       aria-expanded="false"
@@ -1686,7 +1686,7 @@ export const FourColumns = (
                     <a
                       id="footlink-header-four"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
                       aria-expanded="false"
@@ -1995,7 +1995,7 @@ export const FiveColumns = (
                     <a
                       id="footlink-header-two"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
                       aria-expanded="false"
@@ -2038,7 +2038,7 @@ export const FiveColumns = (
                     <a
                       id="footlink-header-three"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
                       aria-expanded="false"
@@ -2086,7 +2086,7 @@ export const FiveColumns = (
                     <a
                       id="footlink-header-four"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
                       aria-expanded="false"
@@ -2134,7 +2134,7 @@ export const FiveColumns = (
                     <a
                       id="footlink-header-five"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-five"
                       role="button"
                       aria-expanded="false"
@@ -2443,7 +2443,7 @@ export const SixColumns = (
                     <a
                       id="footlink-header-two"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
                       aria-expanded="false"
@@ -2486,7 +2486,7 @@ export const SixColumns = (
                     <a
                       id="footlink-header-three"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
                       aria-expanded="false"
@@ -2534,7 +2534,7 @@ export const SixColumns = (
                     <a
                       id="footlink-header-four"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
                       aria-expanded="false"
@@ -2582,7 +2582,7 @@ export const SixColumns = (
                     <a
                       id="footlink-header-five"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-five"
                       role="button"
                       aria-expanded="false"
@@ -2630,7 +2630,7 @@ export const SixColumns = (
                     <a
                       id="footlink-header-six"
                       class="collapsed"
-                      data-toggle="collapse"
+                      data-bs-toggle="collapse"
                       href="#footlink-six"
                       role="button"
                       aria-expanded="false"
