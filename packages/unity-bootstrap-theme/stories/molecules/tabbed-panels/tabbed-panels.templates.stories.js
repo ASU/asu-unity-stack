@@ -151,7 +151,7 @@ export const TabbedPanels = createStory(
             data-ga="left chevron"
           >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="visually-hidden">Previous</span>
           </a>
           <a
             class="scroll-control-next"
@@ -167,7 +167,7 @@ export const TabbedPanels = createStory(
             data-ga="right chevron"
           >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="visually-hidden">Next</span>
           </a>
         </nav>
         <div class="tab-content" id="nav-tabContent">

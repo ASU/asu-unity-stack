@@ -131,14 +131,14 @@ export const FixedComponent = createStory(
     <div class="scroll-control previous">
       <button type="button" class="btn btn-circle btn-circle-alt-gray">
         <i class="fas fa-chevron-left"></i>
-        <span class="sr-only">Previous</span>
+        <span class="visually-hidden">Previous</span>
       </button>
     </div>
 
     <div class="scroll-control next">
       <button type="button" class="btn btn-circle btn-circle-alt-gray">
         <i class="fas fa-chevron-right"></i>
-        <span class="sr-only">Next</span>
+        <span class="visually-hidden">Next</span>
       </button>
     </div>
 
