@@ -39,7 +39,7 @@ const ASUSearchResultsList = ({
   icon,
 }) => {
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [subtitle, setSubtitle] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
