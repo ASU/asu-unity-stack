@@ -17,12 +17,18 @@
   "scripts": {
     "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
     "init-sb": "npx storybook init --type html",
-    "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail",
-    "build:dev": "rimraf ./dist && webpack  --progress --bail",
+    "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
+    "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
+    "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint \"**/*.{js}\"",
-    "lint:fix": "eslint \"**/*.{js}\" --fix"
+    "lint": "yarn js-lint && yarn css-lint",
+    "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
+    "js-lint": "eslint \"**/*.js\"",
+    "js-lint:fix": "eslint \"**/*.js\" --fix",
+    "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
+    "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
+
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",

@@ -20,7 +20,7 @@ module.exports = {
 		"scss/at-rule-no-unknown": true,
 		"scss/declaration-nested-properties-no-divided-groups": true,
 		"scss/dollar-variable-no-missing-interpolation": true,
-    "scss/dollar-variable-colon-space-after": true,
+    "scss/dollar-variable-colon-space-after": "at-least-one-space",
 		"scss/function-quote-no-quoted-strings-inside": true,
 		"scss/function-unquote-no-unquoted-strings-inside": true,
 		"scss/no-duplicate-mixins": true,
