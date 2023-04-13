@@ -1,4 +1,4 @@
-import "../src/scss/unity-bootstrap-theme.scss";
+import "../src/scss/unity-bootstrap-theme.bundle.scss";
 import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 export const parameters = {

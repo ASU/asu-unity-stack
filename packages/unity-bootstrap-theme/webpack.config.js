@@ -83,20 +83,20 @@ const cssConfig = {
   devtool,
   entry: {
     "unity-bootstrap-theme.bundle": {
-      import: path.resolve(paths.sass, "styles.js"),
-      filename: "../.tmp/null.js",
+      import: path.resolve(paths.sass, "unity-bootstrap-theme.bundle.scss"),
+      filename: "../.tmp/[name].js",
     },
     "unity-bootstrap-theme": {
       import: path.resolve(paths.sass, "unity-bootstrap-theme.scss"),
-      filename: "../.tmp/unity-bootstrap-theme.js",
+      filename: "../.tmp/[name].js",
     },
     "unity-bootstrap-header": {
-      import: path.resolve(paths.sass, "extends", "_global-header.scss"),
-      filename: "../.tmp/_global-header.js",
+      import: path.resolve(paths.sass, "unity-bootstrap-header.scss"),
+      filename: "../.tmp/[name].js",
     },
     "unity-bootstrap-footer": {
-      import: path.resolve(paths.sass, "extends", "_globalfooter.scss"),
-      filename: "../.tmp/_globalfooter.js",
+      import: path.resolve(paths.sass, "unity-bootstrap-footer.scss"),
+      filename: "../.tmp/[name].js",
     },
   },
   output: {
