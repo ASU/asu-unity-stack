@@ -13,7 +13,7 @@ $gray-7: $uds-color-base-gray-7;
 $body-color: $uds-color-base-gray-7;
 
 $grays: ();
-// stylelint-disable-next-line scss/dollar-variable-default
+
 $grays: map-merge(
   (
     '1': $gray-1,
@@ -64,7 +64,7 @@ $success: $uds-color-alerts-success;
 $info: $uds-color-alerts-info;
 
 $theme-colors: ();
-// stylelint-disable-next-line scss/dollar-variable-default
+
 $theme-colors: map-merge(
   (
     'gold': $gold,
