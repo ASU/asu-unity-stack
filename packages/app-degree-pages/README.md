@@ -252,6 +252,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
       />
     )
   };
+
 ```
 ### DetailPage component
 
