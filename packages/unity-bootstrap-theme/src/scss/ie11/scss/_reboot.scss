@@ -1,0 +1,41 @@
+// Workaround for the SVG overflow bug.
+// See https://github.com/twbs/bootstrap/issues/26878
+svg {
+  overflow: hidden;
+}
+
+// Remove the default vertical scrollbar
+textarea {
+  overflow: auto;
+}
+
+hr {
+  overflow: visible;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+// 1. Correct the color inheritance from `fieldset` elements
+// 2. Correct the text wrapping
+legend {
+  color: inherit;
+  white-space: normal;
+}
+
+pre {
+  // Disable auto-hiding scrollbar to avoid overlap,
+  // making it impossible to interact with the content
+  -ms-overflow-style: scrollbar;
+}
+
+// Add the correct display for template & main
+template {
+  display: none;
+}
+
+main {
+  display: block;
+}

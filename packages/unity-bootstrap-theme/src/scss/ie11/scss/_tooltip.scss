@@ -1,0 +1,6 @@
+// fix for  form validation feedback not being positioned correctly
+.invalid-tooltip,
+.valid-tooltip {
+  left: 0;
+  margin-left: 8px;
+}

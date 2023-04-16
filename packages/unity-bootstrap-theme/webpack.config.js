@@ -19,6 +19,7 @@ const paths = {
   sass: path.resolve(__dirname, "src/scss"),
   css: path.resolve(__dirname, "dist/css"),
   node: path.resolve(__dirname, "node_modules"),
+  ie11Scss: path.resolve(__dirname, "src/scss/ie11/scss"),
 };
 
 const devtool = "source-map";
@@ -96,6 +97,10 @@ const cssConfig = {
     },
     "unity-bootstrap-footer": {
       import: path.resolve(paths.sass, "unity-bootstrap-footer.scss"),
+      filename: "../.tmp/[name].js",
+    },
+    "unity-bootstrap-ie11": {
+      import: path.resolve(paths.ie11Scss, "bootstrap-ie11.scss"),
       filename: "../.tmp/[name].js",
     },
   },

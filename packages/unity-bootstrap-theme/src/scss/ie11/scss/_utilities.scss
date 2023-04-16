@@ -1,0 +1,318 @@
+// `pointer-events: none` isn't supported by IE11, setting `cursor: default` just makes it appear less like a link
+.pe-none {
+  cursor: default;
+}
+
+.text-break {
+  word-wrap: break-word !important;
+}
+
+.user-select-none {
+  -ms-user-select: none !important;
+}
+
+.user-select-auto {
+  -ms-user-select: auto !important;
+}
+
+// Text opacity
+.text-opacity-75 {
+  opacity: 0.75;
+}
+
+.text-opacity-50 {
+  opacity: 0.5;
+}
+
+.text-opacity-25 {
+  opacity: 0.25;
+}
+
+// Border colors
+.border {
+  border-color: #dee2e6;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.border-primary {
+  border-color: rgb(13, 110, 253);
+}
+
+.border-secondary {
+  border-color: rgb(108, 117, 125);
+}
+
+.border-success {
+  border-color: rgb(25, 135, 84);
+}
+
+.border-danger {
+  border-color: rgb(220, 53, 69);
+}
+
+.border-warning {
+  border-color: rgb(255, 193, 7);
+}
+
+.border-info {
+  border-color: rgb(13, 202, 240);
+}
+
+.border-light {
+  border-color: rgb(248, 249, 250);
+}
+
+.border-dark {
+  border-color: rgb(33, 37, 41);
+}
+
+.border-white {
+  border-color: rgb(255, 255, 255);
+}
+
+.border-top {
+  border-top-color: #dee2e6;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.border-bottom {
+  border-bottom-color: #dee2e6;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.border-start {
+  border-left-color: #dee2e6;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+
+.border-end {
+  border-right-color: #dee2e6;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+// Border Width
+.border-1 {
+  border-width: 1px !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-4 {
+  border-width: 4px !important;
+}
+
+.border-5 {
+  border-width: 5px !important;
+}
+
+// Radius
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.rounded-bottom {
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.rounded-end {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rounded-start {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.rounded-top {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+// Border Radius Size
+.rounded-1 {
+  border-radius: 0.375rem;
+}
+
+.rounded-2 {
+  border-radius: 0.25rem;
+}
+
+.rounded-3 {
+  border-radius: 0.5rem;
+}
+
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+.rounded-5 {
+  border-radius: 2rem;
+}
+
+.rounded-pill {
+  border-radius: 50rem;
+}
+
+// Text colors
+.text-primary {
+  color: rgb(13, 110, 253) !important;
+}
+
+.text-secondary {
+  color: rgb(108, 117, 125) !important;
+}
+
+.text-success {
+  color: rgb(25, 135, 84) !important;
+}
+
+.text-danger {
+  color: rgb(220, 53, 69) !important;
+}
+
+.text-warning {
+  color: rgb(255, 193, 7) !important;
+}
+
+.text-info {
+  color: rgb(13, 202, 240) !important;
+}
+
+.text-light {
+  color: rgb(248, 249, 250) !important;
+}
+
+.text-dark {
+  color: rgb(33, 37, 41) !important;
+}
+
+.text-body {
+  color: rgb(33, 37, 41) !important;
+}
+
+.text-muted {
+  color: rgb(108, 117, 125) !important;
+}
+
+.text-white {
+  color: rgb(255, 255, 255) !important;
+}
+
+// IE11 doesn't support :not(:focus-within) so the rules defined in Bootstrap 5 are repeated here
+.visually-hidden,
+.visually-hidden-focusable:not(:focus) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// horizontal stack gap
+.hstack.gap-1 > * {
+  margin-right: 0.25rem;
+}
+
+.hstack.gap-1 > *:last-child {
+  margin-right: 0;
+}
+
+.hstack.gap-2 > * {
+  margin-right: 0.5rem;
+}
+
+.hstack.gap-2 > *:last-child {
+  margin-right: 0;
+}
+
+.hstack.gap-3 > * {
+  margin-right: 1rem;
+}
+
+.hstack.gap-3 > *:last-child {
+  margin-right: 0;
+}
+
+.hstack.gap-4 > * {
+  margin-right: 1.5rem;
+}
+
+.hstack.gap-4 > *:last-child {
+  margin-right: 0;
+}
+
+.hstack.gap-5 > * {
+  margin-right: 3rem;
+}
+
+.hstack.gap-5 > *:last-child {
+  margin-right: 0;
+}
+
+// vertical stack gap
+.vstack.gap-1 > * {
+  margin-bottom: 0.25rem;
+}
+
+.vstack.gap-1 > *:last-child {
+  margin-bottom: 0;
+}
+
+.vstack.gap-2 > * {
+  margin-bottom: 0.5rem;
+}
+
+.vstack.gap-2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.vstack.gap-3 > * {
+  margin-bottom: 1rem;
+}
+
+.vstack.gap-3 > *:last-child {
+  margin-bottom: 0;
+}
+
+.vstack.gap-4 > * {
+  margin-bottom: 1.5rem;
+}
+
+.vstack.gap-4 > *:last-child {
+  margin-bottom: 0;
+}
+
+.vstack.gap-5 > * {
+  margin-bottom: 3rem;
+}
+
+.vstack.gap-5 > *:last-child {
+  margin-bottom: 0;
+}
+
+// vertical-rule
+.vr {
+  border-right: 1px solid rgb(33, 37, 41);
+}
+
+// flex
+.justify-content-evenly {
+  justify-content: space-around !important;
+}

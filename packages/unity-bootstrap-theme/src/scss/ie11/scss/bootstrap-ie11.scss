@@ -1,0 +1,25 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
+
+@media all and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  @import "reboot";
+  @import "tables";
+  @import "utilities";
+  @import "breadcrumb";
+  @import "buttons";
+  @import "forms/form-check";
+  @import "forms/form-control";
+  @import "forms/form-floating-labels";
+  @import "forms/form-range";
+  @import "forms/form-select";
+  @import "card";
+  @import "accordion";
+  @import "modal";
+  @import "progress";
+  @import "list-group";
+  @import "close";
+  @import "carousel";
+  @import "tooltip";
+  @import "helpers/ratio";
+}
+
+/* stylelint-enable no-invalid-position-at-import-rule */
