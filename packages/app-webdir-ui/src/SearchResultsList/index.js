@@ -81,7 +81,7 @@ const ASUSearchResultsList = ({
               searchApiVersion: engine.searchApiVersion,
               loggedIn,
             }
-          );
+        });
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
