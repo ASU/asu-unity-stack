@@ -14,16 +14,27 @@ const DEFAUL_GA_EVENT = {
 const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
 
+  function getURL() {
+    try {
+      const URL = window.location.href;
+      return URL;
+    } catch (error) {
+      console.error(error);
+      return "";
+    }
+  }
+
   return (
     <Wrapper
       // @ts-ignore
       breakpoint={breakpoint}
       className="universal-nav"
       data-testid="universal-navbar"
+      data-elastic-exclude="data-elastic-exclude"
     >
       <div className="container-xl">
         <div className="header-top">
-          <nav className="nav" aria-label="Top">
+          <nav className="nav" aria-label="ASU">
             <div className="links-container">
               <a
                 className="nav-link sr-only sr-only-focusable"
@@ -33,7 +44,7 @@ const UniversalNavbar = () => {
               </a>
               <a
                 className="nav-link sr-only sr-only-focusable"
-                href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
+                href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
               >
                 Report an accessibility problem
               </a>

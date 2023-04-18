@@ -1,8 +1,8 @@
 // @ts-check
-import { Testimonial } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { Testimonial } from "../../../../components-core/src/components/Testimonial";
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**

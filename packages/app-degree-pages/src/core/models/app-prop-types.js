@@ -65,6 +65,7 @@ const dataSourcePropShape = PropTypes.shape({
   id: PropTypes.string,
   sourceType: PropTypes.oneOf(["api", "shared-data-source", "static-json"]), // default `api`
   sharedDataSourceId: PropTypes.string, // only if `dataSourceType == "shared-data-source"``
+  // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.arrayOf(PropTypes.object), // only if `dataSourceType == "static-json"``
   apiUrl: PropTypes.string, // only if `dataSourceType == "api"``
 });
@@ -118,6 +119,7 @@ const anchorMenuPropType = {
   customizeYourCollegeExperience: PropTypes.bool,
   globalOpportunity: PropTypes.bool,
   attendOnline: PropTypes.bool,
+  whyChooseAsu: PropTypes.bool,
   programContactInfo: PropTypes.bool,
   externalAnchors: PropTypes.arrayOf(
     PropTypes.shape({

@@ -1,74 +1,122 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React from "react";
-import Styled from "styled-components";
 
 /** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
-const ButtonGroup = Styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
+const CHANGEMAJOR_URL = "https://changemajor.apps.asu.edu/";
+const ONLINE = "ONLINE";
 
-  & a.btn {
-    margin: 0;
-  }
-`;
-
+const ONCAMPUS_TITLE = "On-campus students";
+const ONLINE_TITLE = "Online students";
+const VIEW_MAJOR_MAP_WITH_SLASH = "View major map -";
+const VIEW_MAJOR_MAP = "View major map";
 /**
  *
  * @param {RequiredCoursesProps} props
  * @returns
  */
 function RequiredCourse({
-  concurrentDegreeMajorMaps = "",
   onlineMajorMapURL = "",
-  majorMapOnCampusArchiveURL,
+  majorMapOnCampusURL = "",
+  subPlnMajorMaps = [],
+  subPln = [],
 }) {
-  const dt = new Date();
-  const acadYear = `${dt.getFullYear()}-${dt.getFullYear() + 1}`;
+  const isOnlineURL = url => {
+    return url.includes(ONLINE);
+  };
 
-  const template = (
-    <div className="container pl-0" data-testid="required-course">
-      <h4>Required Course (Major Map)</h4>
-      <ButtonGroup className="pt-1">
-        {concurrentDegreeMajorMaps && (
-          <Button
-            label={`View ${acadYear} major map (on-campus)`}
-            color="maroon"
-            element="button"
-            href={concurrentDegreeMajorMaps}
-          />
-        )}
-        {onlineMajorMapURL && (
-          <Button
-            label={`View ${acadYear} major map (online)`}
-            color="maroon"
-            element="button"
-            href={onlineMajorMapURL}
-          />
-        )}
-      </ButtonGroup>
-      <div className="mt-3">
-        <a href={majorMapOnCampusArchiveURL}>Major map on-campus (archive)</a>
-      </div>
+  const getSubPlnDescription = subPlnCode => subPln[subPlnCode] || "";
+
+  // add link to array of links if url is not empty
+  const addLink = (url, text, arr) => {
+    if (url) {
+      arr.push({
+        href: url,
+        text,
+      });
+    }
+  };
+
+  // new arrays to hold the links by type
+  const oncampusLinks = [];
+  const onlineLinks = [];
+
+  if (subPlnMajorMaps.length > 0) {
+    subPlnMajorMaps.forEach(item => {
+      if (!isOnlineURL(item.SubPlnMajorMapUrl)) {
+        const planDescription = getSubPlnDescription(
+          item.SubplnMajorMapSubplanCode
+        );
+        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
+        addLink(item.SubPlnMajorMapUrl, bulletText, oncampusLinks);
+      } else {
+        const planDescription = getSubPlnDescription(
+          item.SubplnMajorMapSubplanCode
+        );
+        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
+        addLink(item.SubPlnMajorMapUrl, bulletText, onlineLinks);
+      }
+    });
+  }
+
+  if (majorMapOnCampusURL) {
+    addLink(majorMapOnCampusURL, VIEW_MAJOR_MAP, oncampusLinks);
+  }
+
+  if (onlineMajorMapURL) {
+    addLink(onlineMajorMapURL, VIEW_MAJOR_MAP, onlineLinks);
+  }
+
+  // render HTML links from array of links
+  const renderLinks = (title, links) => {
+    return (
+      <>
+        <h5>{title}</h5>
+        <ul className="mb-3">
+          {links.map(link => (
+            <li key={link.href}>
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  };
+
+  // Template component for required courses section
+  const RequiredCourseSection = () => (
+    <section className="container pl-0" data-testid="required-course">
+      <h4>Required courses (major map)</h4>
+      {oncampusLinks.length > 0 && renderLinks(ONCAMPUS_TITLE, oncampusLinks)}
+      {onlineLinks.length > 0 && renderLinks(ONLINE_TITLE, onlineLinks)}
       <div className="mt-3">
         <strong>What if:</strong> See how your courses can be applied to another
         major and find out how to&nbsp;
-        <a href="https://changemajor.apps.asu.edu/">change your major</a>
+        <a href={CHANGEMAJOR_URL}>change your major</a>
       </div>
-    </div>
+    </section>
   );
 
-  return !concurrentDegreeMajorMaps && !onlineMajorMapURL ? <div /> : template;
+  return !subPlnMajorMaps?.length &&
+    !onlineMajorMapURL &&
+    !majorMapOnCampusURL ? (
+    <div />
+  ) : (
+    RequiredCourseSection()
+  );
 }
 
 RequiredCourse.propTypes = {
-  concurrentDegreeMajorMaps: PropTypes.string,
   onlineMajorMapURL: PropTypes.string,
-  majorMapOnCampusArchiveURL: PropTypes.string,
+  majorMapOnCampusURL: PropTypes.string,
+  subPlnMajorMaps: PropTypes.arrayOf(
+    PropTypes.shape({
+      SubplnMajorMapSubplanCode: PropTypes.string,
+      SubPlnMajorMapUrl: PropTypes.string,
+    })
+  ),
+  subPln: PropTypes.objectOf(PropTypes.string),
 };
 
 export { RequiredCourse };

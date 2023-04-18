@@ -24,6 +24,15 @@ const fillInBlanks = datum => {
     id: {
       raw: "",
     },
+    campus_address: {
+      raw: "",
+    },
+    city: {
+      raw: "",
+    },
+    state: {
+      raw: "",
+    },
     asurite_id: {
       raw: "",
     },
@@ -40,6 +49,9 @@ const fillInBlanks = datum => {
       raw: "",
     },
     display_name: {
+      raw: "",
+    },
+    display_last_name: {
       raw: "",
     },
     email_address: {
@@ -119,7 +131,13 @@ const getTitleFromProfile = (profile, titleMatch) => {
     titleMatch.depts &&
     profile.deptids &&
     profile.titles &&
-    profile.deptids.raw !== null
+    profile.deptids.raw !== null &&
+    /*
+      If titleMatch.depts[0] is '',
+      then no deptIds were supplied to query.
+      We can't use titleMatch.depts in that case.
+    */
+    !!titleMatch.depts[0]
   ) {
     console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
@@ -138,7 +156,10 @@ const getTitleFromProfile = (profile, titleMatch) => {
     if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title) {
-      matchedAffiliationTitle = profile.working_title.raw[deptIndex];
+      matchedAffiliationTitle = profile.working_title.raw[0];
+      if (!matchedAffiliationTitle) {
+        matchedAffiliationTitle = profile.titles.raw[deptIndex];
+      }
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
@@ -149,10 +170,16 @@ const getTitleFromProfile = (profile, titleMatch) => {
     );
     if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
-    } else if (profile.working_title) {
+    } else if (profile.working_title && profile.working_title.raw[0]) {
       matchedAffiliationTitle = profile.working_title.raw[deptIndex];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
+
+    // Used in directory component when dept id is provided with asurite
+    if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
+      matchedAffiliationTitle = profile.affiliations?.raw[0];
+      matchedAffiliationDept = profile.subaffiliations?.raw[0];
+    }
   } else if (profile.primary_department && profile.primary_department.raw) {
     console.log("title from fallback2 to primary_department");
     // Fallback to using primary_department name to derive the match, using
@@ -168,6 +195,10 @@ const getTitleFromProfile = (profile, titleMatch) => {
       matchedAffiliationTitle = profile.working_title.raw[0];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
+  } else if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
+    console.log("title from fallback to courtesy affiliate");
+    matchedAffiliationTitle = profile.affiliations?.raw[0];
+    matchedAffiliationDept = profile.subaffiliations?.raw[0];
   } else {
     console.log("title from fallback3 to hr values - final");
     // Final fallback is to use the HR working title and department values.
@@ -179,7 +210,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
-export const staffConverter = (
+export const staffConverter = ({
   datum,
   options = {
     size: "small",
@@ -187,28 +218,27 @@ export const staffConverter = (
     profileURLBase: null,
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
-  // We guard against null asurite_id being returned from data source in some
-  // instances by using a conditional render.
+  // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
-  const safeAsuriteID = filledDatum.asurite_id.raw.length
-    ? filledDatum.asurite_id.raw.toString()
-    : null;
+  const asuriteEID = filledDatum.eid.raw
+    ? filledDatum.eid.raw.toString()
+    : filledDatum.asurite_id.raw.toString();
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
   return (
     <>
-      {safeAsuriteID ? (
+      {asuriteEID ? (
         <ProfileCard
           isRequired={false}
-          id={safeAsuriteID}
-          profileURL={`${profileURLBase}/profile/${safeAsuriteID}`}
-          key={safeAsuriteID}
+          id={asuriteEID}
+          profileURL={`${profileURLBase}/profile/${asuriteEID}`}
+          key={asuriteEID}
           imgURL={filledDatum.photo_url.raw}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
@@ -216,8 +246,8 @@ export const staffConverter = (
           matchedAffiliationDept={titles.matchedAffiliationDept}
           email={filledDatum.email_address.raw}
           telephone={filledDatum.phone.raw}
-          addressLine1={filledDatum.address_line1.raw}
-          addressLine2={filledDatum.address_line2.raw}
+          addressLine1={filledDatum.campus_address?.raw}
+          addressLine2={`${filledDatum.city.raw} ${filledDatum.state.raw}`}
           description={filledDatum.bio.raw}
           shortBio={filledDatum.short_bio.raw}
           facebookLink={filledDatum.facebook.raw}
@@ -232,24 +262,27 @@ export const staffConverter = (
   );
 };
 
-export const studentsConverter = (
+export const studentsConverter = ({
   datum,
   options = {
     size: "small",
     fill: false,
   },
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   const filledDatum = fillInBlanks(datum);
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
+  const asuriteEID = filledDatum.eid.raw
+    ? filledDatum.eid.raw.toString()
+    : filledDatum.asurite_id.raw.toString();
   return (
     <ProfileCard
       isRequired={false}
-      id={filledDatum.asurite_id.raw.toString()}
-      profileURL={`/profile/${filledDatum.asurite_id.raw.toString()}`}
-      key={filledDatum.asurite_id.raw.toString()}
+      id={asuriteEID}
+      profileURL={`/profile/${asuriteEID}`}
+      key={asuriteEID}
       imgURL={filledDatum.photo_url.raw}
       anonImgURL={anonImg}
       name={filledDatum.display_name.raw}
@@ -301,7 +334,7 @@ export const anonConverter = (
   );
 };
 
-export const subdomainConverter = (
+export const subdomainConverter = ({
   datum,
   options = {
     size: "small",
@@ -311,8 +344,8 @@ export const subdomainConverter = (
   logClick = () => {},
   requestId,
   localSection = null,
-  { ...props }
-) => {
+  props,
+}) => {
   const filledDatum = fillInBlanks(datum);
   let desc = null;
   if (filledDatum.meta_description) {

@@ -14,7 +14,7 @@
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
 
     <!-- *************************************************************** -->
@@ -43,13 +43,14 @@
       // Setup and initialize component.
 
       const dataSource = {
-        endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+        endpoint: "https://degrees.apps.asu.edu/t5/service",
         method: "findAllDegrees",
         init: "false", // "true" | "false"Î
         program: "undergrad", // graduate | undergrad
         cert: "false", // "true" | "false"
         // collegeAcadOrg: "CGF", // OPTIONAL example values: CLW, CTB, CTE
         // departmentCode: "CSFIS", // OPTIONAL example values: CMANAGE, CHUMARTCLT, CHL
+        // blacklistAcadPlans: ["BAACCBS", "LAACTBS"], // OPTIONAL example filters out Accountancy and Actuarial Science
       };
 
       // those links are just examples
@@ -208,6 +209,7 @@
               },
             },
           },
+          // degreesPerPage: 5, // OPTIONAL
         },
       });
     </script>

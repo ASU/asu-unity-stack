@@ -21,7 +21,7 @@ You can find a full list of props into the [docs/README.props.md](docs/README.pr
 
 ``` bash
 # add component-carousel
-yarn add @asu-design-system/components-core
+yarn add @asu/components-core
 
 # run storybook
 yarn storybook
@@ -38,12 +38,12 @@ yarn test
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
 2. Make sure to have included [FontAwesome](https://fontawesome.com/) on your project to allow icons to be shown
-3. ```yarn add @asu-design-system/components-core@dev```
+3. ```yarn add @asu/components-core@dev```
 
 ## Use as a JS module in React app
 
 ```JAVASCRIPT
-    import { Card } from '@asu-design-system/components-core@dev'
+    import { Card } from '@asu/components-core@dev'
 
     // Build out the component, providing the options depending on the card you wanna
     // have.
@@ -54,7 +54,6 @@ yarn test
           <Card
             type="default"
             horizontal={false}
-            clickable={false}
             image="https://picsum.photos/300 200"
             imageAltText="An example image"
             title="Default title"
@@ -101,8 +100,8 @@ yarn test
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- include bundled scripts from Preact packages -->
-<script src="/node_modules/@asu-design-system/component-carousel/dist/vendor.production.js"></script>
-<script src="/node_modules/@asu-design-system/component-carousel/dist/core.production.js"></script>
+<script src="/node_modules/@asu/component-carousel/dist/vendor.production.js"></script>
+<script src="/node_modules/@asu/component-carousel/dist/core.production.js"></script>
 <script>
   // Setup and initialize one card.
   AsuWebCore.initCard({
@@ -110,7 +109,6 @@ yarn test
     props: {
       type: "default",
       horizontal: false,
-      clickable: false,
       image: "https://picsum.photos/300/200",
       imageAltText: "An example image",
       title: "Default title",
@@ -141,7 +139,6 @@ yarn test
     props: {
       type: "default",
       horizontal: false,
-      clickable: false,
       title: "Default title",
       body:
         "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmodtempo.",

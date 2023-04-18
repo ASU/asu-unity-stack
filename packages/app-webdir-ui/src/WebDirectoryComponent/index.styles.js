@@ -3,16 +3,23 @@ import styled from "styled-components";
 
 const WebDirLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 1fr 500px;
   grid-template-areas:
-    ".        sort"
-    "results    results";
+    ". sort"
+    "results results";
   grid-column-gap: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "sort sort"
+      "results results";
+  }
 
   .sort {
     grid-area: sort;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
   }
   .plain-button {
     background-color: #fff;
@@ -28,4 +35,6 @@ const WebDirLayout = styled.div`
   }
 `;
 
-export { WebDirLayout };
+const FacultyRankLayout = styled.div``;
+
+export { WebDirLayout, FacultyRankLayout };

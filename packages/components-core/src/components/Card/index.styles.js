@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-const AnchorWrapper = styled.a`
-  &.c-card {
-    color: #191919 !important;
-    text-decoration: none;
-    display: block;
-    height: 100%;
-  }
-`;
-
 const CardWrapper = styled.div`
   &.cards-components a + &.cards-components a {
     margin-left: 5px;
@@ -21,4 +12,4 @@ const CardWrapper = styled.div`
   }
 `;
 
-export { AnchorWrapper, CardWrapper };
+export { CardWrapper };

@@ -1,8 +1,8 @@
 // @ts-check
-import { Video } from "@asu-design-system/components-core";
 import React from "react";
 import styled from "styled-components";
 
+import { Video } from "../../../../../../components-core/src/components/Video";
 import { videoPropType } from "../../../../core/models";
 import { youtubeURLParser } from "./parseYoutubeURL";
 
@@ -24,6 +24,7 @@ const IntroVideo = ({ type, url, vttUrl, title }) => (
       url={youtubeURLParser(type, url)}
       vttUrl={vttUrl}
       title={title}
+      controls
     />
   </VideoWrapper>
 );

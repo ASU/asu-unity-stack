@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-// Requires peer dependency of @asu-design-system/bootstrap4-theme
+// Requires peer dependency of @asu/bootstrap4-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
@@ -80,8 +80,7 @@ AsuRfi.defaultProps = {
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
-  dataSourceDegreeSearch:
-    "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline:
     "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:

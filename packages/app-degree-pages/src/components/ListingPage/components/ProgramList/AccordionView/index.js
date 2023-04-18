@@ -1,9 +1,8 @@
 // @ts-check
-
-import { Accordion } from "@asu-design-system/components-core";
 import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { Accordion } from "../../../../../../../components-core/src/components/Accordion";
 import { AppContext } from "../../../../../core/context";
 import {
   degreeDataPropResolverService,
@@ -56,7 +55,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         ? resolver.getOnlineMajorMapURL()
         : resolver.getAsuCritTrackUrl();
 
-      return `<a href=${directUrl}>Major Map</a>`;
+      return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
     };
 
     const getAcceleratedConcurrent = () => `<div>

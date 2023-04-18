@@ -23,7 +23,6 @@ function SearchPage({
 }) {
   const searchTabsId = "search-tabs";
   const queryParamName = "q";
-  const sortParamName = "sort-by";
   const siteParamName = "url_host";
 
   const [term, setTerm] = useState("");
@@ -38,7 +37,7 @@ function SearchPage({
     filters,
     API_URL,
     searchApiVersion,
-    profileURLBase: profileURLBase || "https://isearch.asu.edu",
+    profileURLBase: profileURLBase || "https://search.asu.edu",
     appPathFolder,
   };
 
@@ -75,22 +74,17 @@ function SearchPage({
   };
 
   const changeSort = value => {
-    updateSearchParams(sortParamName, value);
+    setSort(value);
   };
   useEffect(() => {
     if (searchParams.get(siteParamName)) {
       setSite(searchParams.get(siteParamName));
     }
-    if (searchParams.get(sortParamName)) {
-      setSort(searchParams.get(sortParamName));
-    } else {
-      setSort("_score_desc");
-    }
     if (searchParams.get(queryParamName)) {
       setTerm(searchParams.get(queryParamName));
       setSearchValue(searchParams.get(queryParamName));
     }
-  }, [searchParams]);
+  }, [searchParams, sort]);
 
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
@@ -164,7 +158,7 @@ function SearchPage({
         </div>
       </div>
       <TabbedPanels id={searchTabsId} onTabChange={() => true}>
-        <Tab id={tabIds.all} title="All ASU search">
+        <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <AllTab
               totalResults={totalResults}
@@ -189,7 +183,7 @@ function SearchPage({
             )}
           </Tab>
         )}
-        <Tab id={tabIds.faculty} title="Faculty and staff">
+        <Tab id={tabIds.faculty} title="Faculty and Staff">
           {preSearchOrContent(
             <FacultyTab
               engines={enginesWithParams}
@@ -199,7 +193,7 @@ function SearchPage({
             />
           )}
         </Tab>
-        <Tab id={tabIds.students} title="Students">
+        <Tab id={tabIds.students} icon={["fa", "lock"]} title="Students">
           {preSearchOrContent(
             <StudentsTab
               loggedIn={loggedIn}

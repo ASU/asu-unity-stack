@@ -14,11 +14,11 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
- * @typedef {import("@asu-design-system/components-core").ImageProps} ImageProps
+ * @typedef {import("@asu/components-core").ImageProps} ImageProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu/components-core").VideoProps} VideoItem
  */
 
 /** This type set the `text` optional
@@ -29,7 +29,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/components-core").ImageProps} ImageItem
  */
 
 /**
@@ -40,7 +40,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").CardProps} CardProps
+ * @typedef {import("@asu/components-core").CardProps} CardProps
  */
 
 /**
@@ -77,6 +77,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    asuLocals?: FilterOption []
  *    acceleratedConcurrent?: FilterOption
  *    showInactivePrograms?: boolean | "true" | "false"
+ *    blacklistAcadPlans?: Array
  * }} FiltersState
  */
 

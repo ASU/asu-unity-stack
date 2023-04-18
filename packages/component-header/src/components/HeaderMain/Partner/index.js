@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// @ts-check
-import { getCurrentScriptPath } from "@asu-design-system/components-core";
 import React from "react";
 
+// @ts-check
+import { getCurrentScriptPath } from "../../../../../components-core/src/core/utils/script-utils";
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { PartnerLogosWrapper } from "./index.styles";
@@ -24,7 +24,13 @@ const Partner = () => {
       >
         <img
           src={partnerLogo?.src ?? starbucksLogo}
-          alt={partnerLogo?.partnerLogo ?? "Asu Starbucks logo"}
+          alt={partnerLogo?.alt ?? "ASU Starbucks logo"}
+          width="232"
+          height="81"
+          decoding="async"
+          // @ts-ignore
+          // eslint-disable-next-line
+          fetchPriority="high"
         />
       </a>
       <a
@@ -35,11 +41,23 @@ const Partner = () => {
           className="vert"
           src={asuLogo?.src ?? asuVertLogo}
           alt={asuLogo?.alt ?? "Arizona State University"}
+          width="303"
+          height="234"
+          decoding="async"
+          // @ts-ignore
+          // eslint-disable-next-line
+          fetchPriority="high"
         />
         <img
           className="horiz"
-          src={asuLogo?.mobileScr ?? asuHorizLogo}
+          src={asuLogo?.mobileSrc ?? asuHorizLogo}
           alt={asuLogo?.alt ?? "Arizona State University"}
+          width="400"
+          height="72"
+          decoding="async"
+          // @ts-ignore
+          // eslint-disable-next-line
+          fetchPriority="high"
         />
       </a>
     </PartnerLogosWrapper>

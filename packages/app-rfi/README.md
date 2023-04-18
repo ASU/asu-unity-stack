@@ -1,5 +1,7 @@
 # ASU RFI Component
 
+
+
 The ASU RFI Component is a React-powered Request for Information form. It is
 intended to be implemented by a CMS module/plugin/extension that must provide a
 local endpoint at (TODO ADD PATH OR PROP?) to recieve the component's
@@ -22,13 +24,13 @@ read on:
 React and React-DOM are required as peer dependencies. Install with:
 `yarn add react react-dom`
 
-@asu-design-system/bootstrap4-theme is required as a peer dependency in your
+@asu/bootstrap4-theme is required as a peer dependency in your
 project. Install the latest version with the following command:
-`yarn add @asu-design-system/bootstrap4-theme@dev`
+`yarn add @asu/bootstrap4-theme@dev`
 
 Make sure to have included [FontAwesome](https://fontawesome.com/) in your
 project to allow icons to be shown:
-`yarn add @asu-design-system/components-core@dev`
+`yarn add @asu/components-core@dev`
 
 Additionally, Google Tag Manager (GTM) and a dataLayer should be provided by
 the site launching the RFI component so Google Analytics data can be properly
@@ -44,7 +46,7 @@ Includes example and description of the props to use to configure the
 RFI form. It should work if you open the file in your browser, allowing you
 to get to know the RFI component.
 
-See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu-design-system/app-rfi/index.html?path=/story/uds-asurfi--rfi-default)
+See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu/app-rfi/index.html?path=/story/uds-asurfi--rfi-default)
 for example configurations to match various use-cases.
 
 ## Requesting a Source ID
@@ -76,9 +78,9 @@ until you do.
 
 ## Services consulted by the RFI Component
 * ASU Degree Search REST API (currently proxied through Cloudflare worker for CORS permissions) for main degree data:
-** findAllDegrees: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
-** findDegreeByAcadPlan: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
-** findDegreeByCollege: <https://degreesearch-proxy.apps.asu.edu/degreesearch/?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
+** findAllDegrees: <https://degrees.apps.asu.edu/t5/service?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
+** findDegreeByAcadPlan: <https://degrees.apps.asu.edu/t5/service?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
+** findDegreeByCollege: <https://degrees.apps.asu.edu/t5/service?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
 * Data Potluck for Countries and States data:
 ** <https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states>
 ** [DPL docs](https://api.myasuplat-dpl.asu.edu)

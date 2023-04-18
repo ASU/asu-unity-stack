@@ -342,7 +342,10 @@ const optionalForm = {
     // We'll turn this into an iso date string in
     // src/components/utils/submission-helpers.js
     BirthDate: Yup.date().typeError("Error: Not a valid date of birth"),
-    Zip: Yup.string(),
+    Zip: Yup.string().max(
+      10,
+      "Error: a maximum of 10 characters is allowed for zip code."
+    ),
     MilitaryStatus: Yup.string(),
     Comments: Yup.string().max(
       250,

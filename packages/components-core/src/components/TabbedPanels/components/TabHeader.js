@@ -8,6 +8,7 @@ const TabHeader = ({
   selectTab,
   leftKeyPressed,
   rightKeyPressed,
+  icon,
 }) => {
   const func = e => {
     if (e.keyCode === 37) {
@@ -28,7 +29,7 @@ const TabHeader = ({
       onKeyDown={func}
       tabIndex={selected ? "" : "-1"}
     >
-      {title}
+      {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} mr-1`} />}
     </a>
   );
 };
@@ -40,6 +41,7 @@ TabHeader.propTypes = {
   selectTab: PropTypes.func.isRequired,
   leftKeyPressed: PropTypes.func.isRequired,
   rightKeyPressed: PropTypes.func.isRequired,
+  icon: PropTypes.arrayOf(PropTypes.string),
 };
 
 export { TabHeader };

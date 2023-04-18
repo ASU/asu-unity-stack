@@ -131,17 +131,17 @@ gulp.task('scripts', function () {
 gulp.task('copy-assets', function (done) {
   // Copy the master ASU images from the design-token
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/img/**/*`)
+    .src(`${paths.node}/@asu/design-tokens/build/assets/img/**/*`)
     .pipe(gulp.dest('./src/img'));
 
   // Copy font-awesome from design-token into src/
   /* gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/assets/fontawesome/
+    .src(`${paths.node}/@asu/design-tokens/build/assets/fontawesome/
     .pipe(gulp.dest('./src/assets/fontawesome'));**/
 
   // Copy the design-tokens SASS variables into src/
   gulp
-    .src(`${paths.node}/@asu-design-system/design-tokens/build/scss/**/*`)
+    .src(`${paths.node}/@asu/design-tokens/build/scss/**/*`)
     .pipe(gulp.dest('./src/scss/design-tokens'));
 
   done();
@@ -159,6 +159,11 @@ gulp.task('copy-dist-assets', function (done) {
 
   // Copy global header js to dist/ for use on monorepo index page
   gulp.src('./src/js/global-header.js').pipe(gulp.dest(paths.dist + '/js'));
+  // Copy js version of global-header.js with all datalayer events from organisms/stories js to dist/
+  gulp
+    .src('./stories/organisms/global-header/global-header.js')
+    .pipe(rename('global-header-datalayer.js'))
+    .pipe(gulp.dest(paths.dist + '/js'));
 
   // Copy Bootstrap's Scripts to dist/
   gulp.src(`${paths.node}/bootstrap/dist/js/*`).pipe(gulp.dest('./dist/js'));

@@ -1,19 +1,19 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu-design-system/components-core").HeroProps} HeroProps
+ * @typedef {import("@asu/components-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/components-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu/components-core").VideoProps} VideoItem
  */
 
 /**
- * @typedef {import("@asu-design-system/components-core").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu/components-core").AnchorMenuItem} AnchorMenuItem
  */
 
 /**
@@ -62,6 +62,7 @@
  * @property {boolean} [customizeYourCollegeExperience]
  * @property {boolean} [globalOpportunity]
  * @property {boolean} [attendOnline]
+ * @property {boolean} [whyChooseAsu]
  * @property {boolean} [programContactInfo]
  * @property {Array.<AnchorMenuItem>} [externalAnchors]
  */
@@ -91,9 +92,10 @@
 
 /**
  * @typedef {Object} RequiredCoursesProps
- * @property {string} concurrentDegreeMajorMaps
  * @property {string} onlineMajorMapURL
- * @property {string} majorMapOnCampusArchiveURL
+ * @property {string} majorMapOnCampusURL
+ * @property {string} subPlnMajorMaps
+ * @property {string} subPln
  */
 
 /**
@@ -109,6 +111,7 @@
 /**
  * @typedef {Object} ApplicationRequirementsProps
  * @property {string} graduateRequirements
+ * @property {boolean} isMinorOrCertificate
  * @property {string} additionalRequirements
  * @property {string} transferRequirements
  */

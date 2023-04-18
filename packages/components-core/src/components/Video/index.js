@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { VideoOverlay } from "./index.styles";
 
 const defaultGAEvent = {
   name: "onclick",
@@ -30,45 +29,13 @@ const videoTemplate = ({
   caption = null,
   title = "",
   className,
+  controls = true,
 }) => {
   /** @type {React.MutableRefObject<HTMLVideoElement>} */
   const videoRef = useRef();
-  const [playing, setPlaying] = useState(false);
-
-  const toggleVideo = () => {
-    const video = videoRef.current;
-    if (video.paused) video.play();
-    else video.pause();
-  };
-
-  const toggleOverLay = () => {
-    setPlaying(!playing);
-  };
 
   const onVideoClick = e => {
-    e.stopPropagation();
-    toggleVideo();
-    toggleOverLay();
-  };
-
-  const onVideoEnded = () => {
-    toggleOverLay();
-  };
-
-  const onPlayButtonClick = e => {
-    e.stopPropagation();
-    toggleOverLay();
-    toggleVideo();
-  };
-
-  const onOverlayClick = e => {
-    e.stopPropagation();
-    toggleOverLay();
-    toggleVideo();
-  };
-
-  const trackEvent = videoTitle => {
-    trackGAEvent({ ...defaultGAEvent, section: videoTitle });
+    trackGAEvent({ ...defaultGAEvent, section: title });
   };
 
   return (
@@ -82,8 +49,8 @@ const videoTemplate = ({
           ref={videoRef}
           title={title}
           onClick={onVideoClick}
-          onEnded={onVideoEnded}
           playsInline
+          controls={controls || true}
         >
           <source src={url} />
 
@@ -94,27 +61,6 @@ const videoTemplate = ({
             label="english_captions"
           />
         </video>
-
-        <VideoOverlay
-          role="button"
-          tabIndex={0}
-          className="uds-video-overlay"
-          onKeyDown={onOverlayClick}
-          onClick={onOverlayClick}
-          data-playing={playing}
-        >
-          <button
-            type="button"
-            onClick={e => {
-              onPlayButtonClick(e);
-              trackEvent(caption || "");
-            }}
-            className="btn btn-circle btn-circle-large btn-circle-alt-white uds-video-btn-play"
-          >
-            <i className="fas fa-play" />
-            <span className="sr-only">Play</span>
-          </button>
-        </VideoOverlay>
       </div>
       {caption && (
         <figure data-testid="video-caption">
@@ -165,6 +111,7 @@ const Video = props => {
     title = "",
     caption = null,
     className = null,
+    controls = true,
   } = props;
   return type === "youtube"
     ? youtubeTemplate({ url, title, caption, className })
@@ -174,6 +121,7 @@ const Video = props => {
         title,
         caption,
         className,
+        controls,
       });
 };
 
@@ -184,6 +132,7 @@ Video.propTypes = {
   title: PropTypes.string,
   className: PropTypes.string,
   caption: PropTypes.string,
+  controls: PropTypes.bool,
 };
 
 export { Video };

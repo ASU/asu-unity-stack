@@ -15,6 +15,10 @@ const progDetailSectionIds = {
     targetIdName: "application-requirements",
     text: "App. Requirements",
   },
+  degreeRequirements: {
+    targetIdName: "degree-requirements",
+    text: "Degree Requirements",
+  },
   changeMajorRequirements: {
     targetIdName: "change-major-requirements",
     text: "Change Major Requirement",
@@ -50,6 +54,10 @@ const progDetailSectionIds = {
   attendOnline: {
     targetIdName: "attend-online",
     text: "Attend Online",
+  },
+  whyChooseAsu: {
+    targetIdName: "why-choose-asu",
+    text: "Why Choose ASU",
   },
   programContactInfo: {
     targetIdName: "program-contact-info",

@@ -14,7 +14,7 @@
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/bootstrap4-theme/dist/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
     />
     <!-- *************************************************************** -->
     <!-- Load React. -->
@@ -94,7 +94,7 @@
         props: {
           appPathFolder: "http://localhost:3000/dist",
           dataSource: {
-            endpoint: "https://degreesearch-proxy.apps.asu.edu/degreesearch/",
+            endpoint: "https://degrees.apps.asu.edu/t5/service",
             method: "findDegreeByAcadPlan",
             init: "false",
             acadPlan: queryAcadPllan || "BABUSGLBA", // any valid acadPlan code
@@ -162,6 +162,7 @@
               },
               {
                 text: "Degree title",
+                url: "detail-page.html",
                 isActive: true,
               },
             ],

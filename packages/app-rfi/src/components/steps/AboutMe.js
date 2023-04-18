@@ -80,7 +80,7 @@ const AboutMe = () => {
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        const serviceUrl = `https://degreesearch-proxy.apps.asu.edu/degreesearch/?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
+        const serviceUrl = `https://degrees.apps.asu.edu/t5/service?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
         // Alternate field graduateAllApplyDates has similar data, but lacks a
         // good label and appears like it might have more dupes.
 
@@ -296,7 +296,10 @@ const aboutMeForm = {
     // validation is deferred to Formik and implemented via customValidate() in
     // RfiTextInput.js and RfiSelect.js for better access to sibling field
     // values thru useFormikContext.
-    ZipCode: Yup.string(),
+    ZipCode: Yup.string().max(
+      10,
+      "Error: a maximum of 10 characters is allowed for postal code."
+    ),
     EntryTerm: Yup.string(),
     GdprConsent: Yup.boolean()
       .required("Error: Consent is required")

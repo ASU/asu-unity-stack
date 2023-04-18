@@ -1,5 +1,4 @@
 // @ts-check
-import { Hero } from "@asu-design-system/components-core";
 import {
   render,
   act,
@@ -11,6 +10,7 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
+import { Hero } from "../../../../components-core/src/components/Hero";
 import { DOMAIN_URL } from "../../core/constants";
 import {
   locationOptions,

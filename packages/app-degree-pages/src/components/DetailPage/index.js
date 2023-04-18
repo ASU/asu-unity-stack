@@ -1,8 +1,9 @@
 // @ts-check
-import { Hero, useFetch } from "@asu-design-system/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
+import { Hero } from "../../../../components-core/src/components/Hero";
+import { useFetch } from "../../../../components-core/src/core/hooks/use-fetch";
 import {
   ErrorAlert,
   Loader,
@@ -123,7 +124,7 @@ const DetailPage = ({
         <OnThisPageAnchorMenu anchorMenu={filteredAnchorMenu} />
       ) : null}
 
-      <Main data-is-loading={loading} className="main-section">
+      <Main as="div" data-is-loading={loading} className="main-section">
         {loading ? (
           <Loader />
         ) : (
@@ -144,7 +145,8 @@ const DetailPage = ({
                     <CustomText content={resolver.getAsuCustomText()} />
                   ) : null}
 
-                  {!introContent?.hideMarketText && resolver.getMarketText() ? (
+                  {!introContent?.hideMarketText &&
+                  (introContent?.contents || resolver.getMarketText()) ? (
                     <MarketText
                       contents={
                         introContent?.contents || [
@@ -160,13 +162,13 @@ const DetailPage = ({
                     />
                   ) : null}
 
-                  {!introContent?.hideRequiredCourses ? (
+                  {/* {!introContent?.hideRequiredCourses ? (
                     <RequiredCourse
                       concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                       onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
                       majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
                     />
-                  ) : null}
+                  ) : null} */}
                 </section>
 
                 {!atAGlance?.hide ? (
@@ -189,6 +191,15 @@ const DetailPage = ({
                     }
                   />
                 ) : null}
+                {!introContent?.hideRequiredCourses &&
+                !resolver.isMinorOrCertificate() ? (
+                  <RequiredCourse
+                    onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
+                    majorMapOnCampusURL={resolver.getAsuCritTrackUrl()}
+                    subPlnMajorMaps={resolver.getSubPlnMajorMaps()}
+                    subPln={resolver.getSubPln()}
+                  />
+                ) : null}
 
                 {!applicationRequirements?.hide ? (
                   <ApplicationRequirements
@@ -197,12 +208,15 @@ const DetailPage = ({
                         ? resolver.getGraduateRequirements()
                         : null
                     }
+                    isMinorOrCertificate={resolver.isMinorOrCertificate()}
                     additionalRequirements={resolver.getDescrLongExtented5()}
                     transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
 
-                {!changeMajorRequirements?.hide ? (
+                {!changeMajorRequirements?.hide &&
+                !resolver.isMinorOrCertificate() &&
+                !resolver.isGradProgram() ? (
                   <ChangeYourMajor content={resolver.getChangeMajor()} />
                 ) : null}
               </div>
@@ -230,7 +244,7 @@ const DetailPage = ({
               </div>
             </div>
             <div className="row">
-              {!nextSteps?.hide ? (
+              {!nextSteps?.hide && !resolver.isMinorOrCertificate() ? (
                 <NextSteps
                   cards={nextSteps?.cards}
                   defaultCards={detailPageDefault.nextSteps.cards}
@@ -290,7 +304,7 @@ const DetailPage = ({
                 />
               ) : null}
 
-              {!attendOnline?.hide && resolver.getCurriculumUrl() ? (
+              {!attendOnline?.hide && resolver.isOnline() ? (
                 <AttendOnline
                   learnMoreLink={resolver.getCurriculumUrl()}
                   image={
@@ -339,6 +353,7 @@ DetailPage.propTypes = {
     hideProgramDesc: PropTypes.bool,
     hideRequiredCourses: PropTypes.bool,
     breadcrumbs: arrayOf(linkPropShape),
+    // eslint-disable-next-line react/forbid-prop-types
     contents: arrayOf(PropTypes.object),
     video: videoPropShape,
     image: imagePropShape,

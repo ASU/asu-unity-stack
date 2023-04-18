@@ -49,7 +49,6 @@ export const Default = Template.bind({});
 Default.args = {
   type: "default",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
@@ -73,13 +72,21 @@ Default.args = {
     { color: "gray", label: "tag2", href: "/#example-link" },
     { color: "gray", label: "tag3", href: "/#example-link" },
   ],
+  showBorders: true,
 };
+
+export const DefaultBorderless = Template.bind({});
+DefaultBorderless.args = {
+  ...Default.args,
+  title: "Default card - borderless",
+  showBorders: false,
+};
+DefaultBorderless.storyName = "Default (borderless)";
 
 export const Icon = Template.bind({});
 Icon.args = {
   type: "default",
   horizontal: false,
-  clickable: false,
   title: "Default title",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   buttons: [
@@ -96,7 +103,6 @@ export const Degree = Template.bind({});
 Degree.args = {
   type: "degree",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Default title",
@@ -122,7 +128,6 @@ export const Event = Template.bind({});
 Event.args = {
   type: "event",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Event title",
@@ -170,7 +175,6 @@ export const Story = Template.bind({});
 Story.args = {
   type: "story",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Story title",
@@ -180,10 +184,12 @@ Story.args = {
       color: "maroon",
       size: "default",
       label: "CTA button",
+      href: "https://google.com",
+      target: "_blank",
     },
   ],
   linkLabel: "Default link",
-  linkUrl: "http://google.com",
+  linkUrl: "https://google.com",
   tags: [
     { color: "gray", label: "tag1", href: "/#example-link" },
     { color: "gray", label: "tag2", href: "/#example-link" },
@@ -232,62 +238,10 @@ Story.parameters = {
   },
 };
 
-export const ClickableStoryCard = Template.bind({});
-ClickableStoryCard.args = {
-  type: "story",
-  horizontal: false,
-  clickable: true,
-  clickHref: "/#example-link",
-  image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
-  imageAltText: "An example image",
-  title: "Story title",
-  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
-  tags: [
-    { color: "gray", label: "tag1", href: "/#example-link" },
-    { color: "gray", label: "tag2", href: "/#example-link" },
-    { color: "gray", label: "tag3", href: "/#example-link" },
-  ],
-};
-ClickableStoryCard.parameters = {
-  docs: {
-    description: {
-      story: `
-
-    <Card
-        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
-        clickHref="/#example-link"
-        clickable
-        image="https://source.unsplash.com/WLUHO9A_xik/300x200"
-        imageAltText="An example image"
-        tags={[
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag1'
-          },
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag2'
-          },
-          {
-            color: 'gray',
-            href: '/#example-link',
-            label: 'tag3'
-          }
-        ]}
-        title="Story title"
-        type="story"
-      />`,
-    },
-  },
-};
-
 export const HorizontalStoryCard = HorizontalTemplate.bind({});
 HorizontalStoryCard.args = {
   type: "story",
   horizontal: true,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Horizontal story",
@@ -336,7 +290,6 @@ export const AsuNewsStory = Template.bind({});
 AsuNewsStory.args = {
   type: "story",
   horizontal: false,
-  clickable: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "ASU News Story title",

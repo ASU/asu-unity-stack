@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Button } from "../../../components-core/src/components/Button";
 import { Pagination } from "../../../components-core/src/components/Pagination";
@@ -35,14 +35,17 @@ const ASUSearchResultsList = ({
   display,
   appPathFolder,
   localSection,
+  rankGroup,
+  icon,
 }) => {
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [subtitle, setSubtitle] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
+  const searchList = useRef(null);
 
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
@@ -55,6 +58,7 @@ const ASUSearchResultsList = ({
         sort,
         filters,
         display,
+        rankGroup,
       })
         .then(res => {
           let filteredResults = res;
@@ -66,13 +70,13 @@ const ASUSearchResultsList = ({
           if (profilesToFilterOut) {
             filteredResults = filterOutResults(res, profilesToFilterOut);
           }
-          const formattedResults = engine.formatter(
-            filteredResults,
+          const formattedResults = engine.formatter({
+            results: filteredResults,
             cardSize,
             filters,
-            appPathFolder,
+            appPathFolder: appPathFolder || engine.appPathFolder,
             localSection,
-            {
+            props: {
               API_URL: engine.API_URL,
               searchApiVersion: engine.searchApiVersion,
               loggedIn,
@@ -102,6 +106,7 @@ const ASUSearchResultsList = ({
               return {
                 ...profile,
                 ...{ props: newProps },
+                key: profile.props?.children?.key ?? idx,
               };
             }
           );
@@ -135,19 +140,8 @@ const ASUSearchResultsList = ({
           });
         })
         .catch(err => {
-          if (err === 403) {
-            const anonCards = anonFormatter(
-              engine.name,
-              itemsPerPage,
-              cardSize,
-              engine.appPathFolder
-            );
-            setResults(anonCards.results);
-            setCurrentPage(1);
-            setTotalResults("unknown");
-            setIsLoading(false);
-            setIsAnon(true);
-          }
+          console.error(err);
+          setIsLoading(false);
         });
     }
   };
@@ -155,6 +149,11 @@ const ASUSearchResultsList = ({
   const onPageChange = val => {
     setCurrentPage(val);
     doSearch(val);
+    if (results.length > 0) {
+      // Only scroll and focus if there are results
+      searchList.current.scrollIntoView(true);
+      searchList.current.firstElementChild.focus();
+    }
   };
 
   useEffect(() => {
@@ -193,10 +192,17 @@ const ASUSearchResultsList = ({
           )}
           {titleText && (
             <div className={`results-title${type === "micro" ? "-small" : ""}`}>
-              {titleText}
+              {titleText}{" "}
+              {icon && <i className={`${icon?.[0]} fa-${icon?.[1]}`} />}
             </div>
           )}
-          {results.length > 0 && <div className="results-found">{results}</div>}
+          {results.length > 0 && !isLoading ? (
+            <div ref={searchList} className="results-found">
+              {results}
+            </div>
+          ) : (
+            <div className="results-found">No results found</div>
+          )}
           {!hidePaginator && !isAnon && totalResults >= itemsPerPage && (
             <Pagination
               type="default"
@@ -249,6 +255,8 @@ ASUSearchResultsList.propTypes = {
   }),
   appPathFolder: PropTypes.string,
   localSection: PropTypes.bool,
+  rankGroup: PropTypes.string,
+  icon: PropTypes.arrayOf(PropTypes.string),
 };
 
 export { ASUSearchResultsList };

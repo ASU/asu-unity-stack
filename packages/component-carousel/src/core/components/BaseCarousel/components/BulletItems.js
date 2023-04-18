@@ -97,6 +97,11 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
         src={img}
         alt={`Slide ${i + 1}`}
         className="glide__bullet bullet-image"
+        loading="lazy"
+        decoding="async"
+        // @ts-ignore
+        // eslint-disable-next-line
+        fetchPriority="low"
       />
     </button>
   ));

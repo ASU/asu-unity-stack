@@ -1,8 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "@asu-design-system/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";
@@ -25,7 +25,7 @@ import { DropdownWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const DropdownItem = ({ dropdownName, items, buttons, classes }) => {
+const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
   const dropdownRef = useRef(null);
@@ -96,7 +96,7 @@ const DropdownItem = ({ dropdownName, items, buttons, classes }) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
           return (
-            <ul key={key}>
+            <ul id={listId} key={key}>
               {item.map((link, index) => renderItem(link, index))}
             </ul>
           );
@@ -126,6 +126,7 @@ DropdownItem.propTypes = {
   items: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
+  listId: PropTypes.string,
 };
 
 export { DropdownItem };
