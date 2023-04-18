@@ -6,7 +6,7 @@ import portraitImage from './portrait-image.jpg';
 export default createComponent('Image Based Cards', 'Molecules', 'Templates');
 
 export const PortraitSM = createStory(
-  <div class="image-based-card portrait-sm">
+  <div class="uds-image-based-card portrait-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -34,7 +34,7 @@ export const PortraitSM = createStory(
 );
 
 export const PortraitMD = createStory(
-  <div class="image-based-card portrait-md">
+  <div class="uds-image-based-card portrait-md">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -62,7 +62,7 @@ export const PortraitMD = createStory(
 );
 
 export const LandscapeSM = createStory(
-  <div class="image-based-card landscape-sm">
+  <div class="uds-image-based-card landscape-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -90,7 +90,7 @@ export const LandscapeSM = createStory(
 );
 
 export const LandscapeMD = createStory(
-  <div class="image-based-card landscape-md">
+  <div class="uds-image-based-card landscape-md">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -118,7 +118,7 @@ export const LandscapeMD = createStory(
 );
 
 export const LandscapeLG = createStory(
-  <div class="card image-based-card landscape-lg">
+  <div class="uds-image-based-card landscape-lg">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -146,7 +146,7 @@ export const LandscapeLG = createStory(
 );
 
 export const SquareSM = createStory(
-  <div class="card image-based-card square-sm">
+  <div class="uds-image-based-card square-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -174,7 +174,7 @@ export const SquareSM = createStory(
 );
 
 export const SquareMD = createStory(
-  <div class="image-based-card square-md">
+  <div class="uds-image-based-card square-md">
     <img
       src={portraitImage}
       alt="Card image cap"
@@ -202,7 +202,7 @@ export const SquareMD = createStory(
 );
 
 export const SquareLG = createStory(
-  <div class="image-based-card square-lg">
+  <div class="uds-image-based-card square-lg">
     <img
       src={portraitImage}
       alt="Card image cap"
