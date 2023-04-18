@@ -4,7 +4,7 @@ export default (content) => {
   return (
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div id="html-root" class="col-12">
           {content}
         </div>
       </div>

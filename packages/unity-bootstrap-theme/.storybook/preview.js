@@ -1,4 +1,4 @@
-import "../src/scss/unity-bootstrap-theme.scss";
+import "../src/scss/unity-bootstrap-theme.bundle.scss";
 import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 // Import all the Bootstrap bundle
@@ -17,10 +17,13 @@ export const parameters = {
       tabWidth: 4,
       htmlWhitespaceSensitivity: "ignore",
     },
-    root: ".row", // can be customized to wrap an element
+    root: "#html-root", // can be customized to wrap an element
     removeComments: /^\s*\s*$/,
     transform: (code) => {
-      return code.replace(/<svg.*<\/svg>/g, "");
+      // remove Fontawesome transforming span into svg
+      code = code.replace(/<svg.*?<\/svg>/gi, "");
+      code = code.replace(/(<!--\s)(<span.*?class=.*?fa-.*?><\/span>)(\s-->)/gi, "$2");
+      return code;
     }
   },
 };
