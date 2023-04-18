@@ -28,7 +28,7 @@
               "build/**/*.{js,css}"
             ]
           },
-          {"path": "docs/CHANGELOG.md", "label": "Changelog"}
+          {"path": "CHANGELOG.md", "label": "Changelog"}
         ]
       }
     ],
