@@ -209,7 +209,7 @@ yarn gulp               # Execute the default Gulp task (validate)
 
 ## ❯ Contribute to Project
 
-View our [Contributing G`uidelines](./CONTRIBUTING.md)
+View our [Contributing Guidelines](./CONTRIBUTING.md)
 
 ## ❯ Further Documentation
 
