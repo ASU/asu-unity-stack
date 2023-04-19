@@ -98,7 +98,7 @@
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "volta": {
-    "node": "14.17.6",
+    "node": "18.16.0",
     "yarn": "1.22.10"
   }
 }

@@ -10,7 +10,7 @@ spec:
     runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
   - name: node14
-    image: 'node:14.17.6'
+    image: 'node:18.16.0'
     imagePullPolicy: Always
     command:
     - cat
