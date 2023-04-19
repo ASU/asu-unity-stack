@@ -40,7 +40,7 @@ $uds-card-height: 466px;
       padding-bottom: $uds-size-spacing-2 !important;
     }
     .card {
-      max-height: calc($uds-card-height - $uds-size-spacing-8);
+      max-height: calc(#{$uds-card-height} - #{$uds-size-spacing-8});
 
       .card-icon-top {
         // the negative value of margin bottom is a simple workaround, this allows to respect the space between the title and the icon if both elements are present or the H1 and the top border of the card if the icon is not present
