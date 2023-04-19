@@ -89,7 +89,6 @@
     "yup-phone": "^1.2.19"
   },
   "volta": {
-    "node": "18.16.0",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }
