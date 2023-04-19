@@ -1,3 +1,10 @@
+# [@asu/bootstrap4-theme-v1.11.1](https://github.com/asu/asu-unity-stack/compare/@asu/bootstrap4-theme-v1.11.0...@asu/bootstrap4-theme-v1.11.1) (2023-04-19)
+
+
+### Bug Fixes
+
+* **bootstrap4-theme:** fix css minification error ([9f98a7e](https://github.com/asu/asu-unity-stack/commit/9f98a7e83b06f1d6659c87b267e1293e80b3e145))
+
 # [@asu/bootstrap4-theme-v1.11.0](https://github.com/asu/asu-unity-stack/compare/@asu/bootstrap4-theme-v1.10.7...@asu/bootstrap4-theme-v1.11.0) (2023-04-19)
 
 
