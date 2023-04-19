@@ -698,7 +698,7 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown megamenu active header-dropdown-3">
+                        <div class="nav-item dropdown megamenu header-dropdown-3">
                           <a
                             class="nav-link"
                             href="#"

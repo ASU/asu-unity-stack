@@ -614,7 +614,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       @include transition;
     }
 
-    &.show svg.fa-chevron-down {
+    .show svg.fa-chevron-down {
       transform: rotate(180deg);
     }
 
@@ -622,7 +622,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       @include gold-underline-mobile;
     }
 
-    &.active:after {
+    &:has(.nav-link.show)::after {
       @include gold-underline-expand-mobile;
     }
 
@@ -948,7 +948,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         @include gold-underline-expand-desktop;
       }
 
-      &.dropdown.show:after {
+      &:has(.nav-link.show)::after {
         @include gold-underline-expand-desktop;
       }
 
