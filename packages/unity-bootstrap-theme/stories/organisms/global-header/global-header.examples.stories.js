@@ -9,7 +9,7 @@ import {
   ScrolledState,
   Partner,
 } from "./global-header.templates.stories.js";
-import { initGlobalHeader as initFunc } from "./global-header";
+import { initGlobalHeader as initFunc } from "../../../src/js/global-header.js";
 
 export const BasicExample = createStory(Basic, { initFunc });
 
