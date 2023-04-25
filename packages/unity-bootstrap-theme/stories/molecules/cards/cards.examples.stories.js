@@ -180,13 +180,13 @@ export const cardTags = createStory(
       <div class="card-header"></div>
       <div class="card-body">
         Need a card tag that does not behave like an anchor? Try the{" "}
-        <code>.badge</code> class. Be sure to include the modifier background
+        <code>.badge</code> class. Be sure to include the modifier text background
         class too.
       </div>
       <div class="card-tags">
-        <span class="badge badge-gray-2">No button class</span>
-        <span class="badge badge-gray-2">No hover effects</span>
-        <span class="badge badge-gray-7 text-gray-1">Dark mode</span>
+        <span class="badge text-bg-gray-2">No button class</span>
+        <span class="badge text-bg-gray-2">No hover effects</span>
+        <span class="badge text-bg-gray-7">Dark mode</span>
       </div>
     </div>
   </div>
