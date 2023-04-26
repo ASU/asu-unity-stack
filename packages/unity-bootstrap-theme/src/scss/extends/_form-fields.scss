@@ -9,6 +9,7 @@ form.uds-form {
   label,
   legend {
     font-size: $uds-size-spacing-2;
+    margin-bottom: 0.5rem;
     // Labels for required fields.
     svg.uds-field-required {
       font-size: $uds-size-spacing-1;
@@ -107,6 +108,7 @@ form.uds-form {
         display: inline-block;
         cursor: pointer;
         margin-left: $uds-size-spacing-2;
+        margin-bottom: 0;
 
         // Outer border.
         &::before {
