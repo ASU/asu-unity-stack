@@ -218,18 +218,18 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-gray">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
 
@@ -239,18 +239,18 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-white">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
     </div>
@@ -266,18 +266,18 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-white">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
       <div class="col col-12 col-lg-4 bg-light-gray p-3">
@@ -286,18 +286,18 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-white"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-white">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
       <div class="col col-12 col-lg-4 bg-light p-3">
@@ -306,18 +306,18 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-gray">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
       <div class="col col-12 col-lg-4 bg-dark p-3">
@@ -326,18 +326,18 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
           class="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-large btn-circle-alt-gray"
         >
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
         <button type="button" class="btn btn-circle btn-circle-alt-gray">
           <i class="fas fa-times"></i>
-          <span class="sr-only">Close</span>
+          <span class="visually-hidden">Close</span>
         </button>
       </div>
     </div>
@@ -354,14 +354,14 @@ export const PrevAndNextButtonsComponent = createStory(
           class="btn btn-circle btn-circle-alt-white btn-circle-large"
         >
           <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
+          <span class="visually-hidden">Previous</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-alt-white btn-circle-large"
         >
           <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
+          <span class="visually-hidden">Next</span>
         </button>
       </div>
       <div class="col col-12 col-lg-4 bg-light p-3">
@@ -370,14 +370,14 @@ export const PrevAndNextButtonsComponent = createStory(
           class="btn btn-circle btn-circle-alt-gray btn-circle-large"
         >
           <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
+          <span class="visually-hidden">Previous</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-alt-gray btn-circle-large"
         >
           <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
+          <span class="visually-hidden">Next</span>
         </button>
       </div>
       <div class="col col-12 col-lg-4 bg-dark p-3">
@@ -386,14 +386,14 @@ export const PrevAndNextButtonsComponent = createStory(
           class="btn btn-circle btn-circle-alt-black btn-circle-large"
         >
           <i class="fas fa-chevron-left"></i>
-          <span class="sr-only">Previous</span>
+          <span class="visually-hidden">Previous</span>
         </button>
         <button
           type="button"
           class="btn btn-circle btn-circle-alt-black btn-circle-large"
         >
           <i class="fas fa-chevron-right"></i>
-          <span class="sr-only">Next</span>
+          <span class="visually-hidden">Next</span>
         </button>
       </div>
     </div>

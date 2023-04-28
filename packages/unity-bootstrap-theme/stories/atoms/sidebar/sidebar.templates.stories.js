@@ -50,7 +50,7 @@ export const Sidebar = createStory(
             data-ga="Expandable link sections"
           >
             Expandable link sections
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span class="fas fa-chevron-down ms-1"></span>
           </a>
         </div>
         {/* end .card-header */}
@@ -91,7 +91,7 @@ export const Sidebar = createStory(
             data-ga="There should only be one open section at a time"
           >
             There should only be one open section at a time.
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span class="fas fa-chevron-down ms-1"></span>
           </a>
         </div>
         <div
@@ -151,7 +151,7 @@ export const Sidebar = createStory(
             data-ga="There be gold inside"
           >
             There be gold inside
-            <span class="fas fa-chevron-down ml-1"></span>
+            <span class="fas fa-chevron-down ms-1"></span>
           </a>
         </div>
         <div

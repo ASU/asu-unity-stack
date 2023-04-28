@@ -15,13 +15,13 @@ export const Basic = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -330,7 +330,7 @@ export const Basic = (
     <div class="wrapper" id="page-wrapper">
       <div
         id="skip-to-content"
-        class="sr-only"
+        class="visually-hidden"
         data-elastic-exclude="data-elastic-exclude"
       ></div>
       {/* Page content starts here */}
@@ -351,13 +351,13 @@ export const DropDownMenus = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1420,7 +1420,7 @@ export const DropDownMenus = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="visually-hidden"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1439,13 +1439,13 @@ export const NoNavigation = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1658,7 +1658,7 @@ export const NoNavigation = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="visually-hidden"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1677,13 +1677,13 @@ export const NoNavigationAndWithButtons = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1911,7 +1911,7 @@ export const NoNavigationAndWithButtons = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="visually-hidden"></div>
       {/* Page content starts here */}
     </div>
   </>
@@ -1930,13 +1930,13 @@ export const ScrolledState = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -2348,7 +2348,7 @@ export const ScrolledState = (
       </div>
     </header>
     <main>
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="visually-hidden"></div>
       <div
         style={{
           background: "url('https://picsum.photos/id/1035/1900/500')",
@@ -2375,13 +2375,13 @@ export const Partner = (
             <div id="header-top" class="col-12">
               <nav class="nav" aria-label="ASU">
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  class="nav-link sr-only sr-only-focusable"
+                  class="nav-link visually-hidden visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -2721,7 +2721,7 @@ export const Partner = (
       </div>
     </header>
     <div class="wrapper" id="page-wrapper">
-      <div id="skip-to-content" class="sr-only"></div>
+      <div id="skip-to-content" class="visually-hidden"></div>
       {/* Page content starts here */}
     </div>
   </>
