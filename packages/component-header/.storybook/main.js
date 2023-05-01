@@ -4,6 +4,10 @@ const common = require("../webpack/webpack.common");
 
 module.exports = {
   stories: ["../src/*.stories.js"],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
   webpackFinal: async config => {
     return {
       ...config,

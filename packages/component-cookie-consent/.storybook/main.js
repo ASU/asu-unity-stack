@@ -7,6 +7,10 @@ module.exports = {
     "@storybook/addon-a11y",
   ],
   stories: ["../src/*.stories.js"],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
   webpackFinal: async config => {
     return {
       ...config,
