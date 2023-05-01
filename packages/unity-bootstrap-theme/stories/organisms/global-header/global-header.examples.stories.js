@@ -29,7 +29,7 @@ export const StickyNoNavigationExample = createStory(
     <main>
       <div
         id="skip-to-content"
-        class="sr-only"
+        class="visually-hidden"
         data-elastic-exclude="data-elastic-exclude"
       ></div>
       <div class="bg-gray-3" style={{ height: "200vh" }}></div>

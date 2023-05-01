@@ -1178,7 +1178,7 @@ export const checkboxStackedCard = createStory(
           fetchPriority="high"
         />
       </div>
-      <form class="uds-form card-image-overlay-content ml-4">
+      <form class="uds-form card-image-overlay-content ms-4">
         <fieldset class="card-image-fieldset">
           <div class="form-check">
             <input
@@ -1278,7 +1278,7 @@ export const checkboxInlineCard = createStory(
           fetchPriority="high"
         />
       </div>
-      <form class="uds-form card-image-overlay-content ml-4">
+      <form class="uds-form card-image-overlay-content ms-4">
         <fieldset class="card-image-fieldset inline">
           <div class="form-check">
             <input
@@ -1381,7 +1381,7 @@ export const mediaTypeOverlayCard = createStory(
                 fetchPriority="high"
               />
             </div>
-            <div class="card-image-overlay-content media-type-overlay ml-4 mb-4">
+            <div class="card-image-overlay-content media-type-overlay ms-4 mb-4">
               <span class="fas icon-small fa-video" title="Video Icon"></span>
             </div>
           </div>
@@ -1455,7 +1455,7 @@ export const mediaTypeOverlayCard = createStory(
                 fetchPriority="high"
               />
             </div>
-            <div class="card-image-overlay-content media-type-overlay ml-4 mb-2">
+            <div class="card-image-overlay-content media-type-overlay ms-4 mb-2">
               <span class="fas icon-small fa-video" title="Video Icon"></span>
             </div>
           </div>
@@ -1524,25 +1524,25 @@ export const mediaTypeOverlayCard = createStory(
       </div>
     </div>
     <div class="row">
-      <span class="col mr-4">
+      <span class="col me-4">
         <h3>Video</h3>
         <div class="media-type-overlay mt-2">
           <span class="fas icon-small fa-video" title="Video Icon"></span>
         </div>
       </span>
-      <span class="col mr-4">
+      <span class="col me-4">
         <h3>Audio</h3>
         <div class="media-type-overlay mt-2">
           <span class="fas icon-small fa-volume-up" title="Video Icon"></span>
         </div>
       </span>
-      <span class="col mr-4">
+      <span class="col me-4">
         <h3>VR/AR/360</h3>
         <div class="media-type-overlay mt-2">
           <span class="fas icon-small fa-street-view" title="Video Icon"></span>
         </div>
       </span>
-      <span class="col mr-4">
+      <span class="col me-4">
         <h3>Image gallery</h3>
         <div class="media-type-overlay mt-2">
           <span class="fas icon-small fa-images" title="Video Icon"></span>
