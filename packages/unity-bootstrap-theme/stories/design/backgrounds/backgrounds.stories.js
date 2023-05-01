@@ -86,7 +86,7 @@ export const imageBackgrounds = createStory(
 );
 
 export const backgroundsScaling = createStory(
-  <div class="jumbotron-fluid max-size-container scaling-container">
+  <div class="container-fluid max-size-container scaling-container">
     <span class="content-description">1920px max width</span>
     <div class="section-line"></div>
     <div class="content-description-container scaling-container">

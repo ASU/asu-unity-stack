@@ -238,7 +238,7 @@ export const HeroVideo = createStory(
             class="btn btn-circle btn-circle-alt-white btn-circle-large"
           >
             <span class="fa fa-play"></span>
-            <span class="sr-only">Play hero video</span>
+            <span class="visually-hidden">Play hero video</span>
           </button>
           <button
             id="pauseHeroVid"
@@ -246,7 +246,7 @@ export const HeroVideo = createStory(
             class="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
           >
             <span class="fa fa-pause"></span>
-            <span class="sr-only">Pause</span>
+            <span class="visually-hidden">Pause</span>
           </button>
         </div>
         <h1>

@@ -44,7 +44,7 @@ export const Default = createStory(
               data-ga-section="Example video"
             >
               <i class="fa fa-play"></i>
-              <span class="sr-only">Play</span>
+              <span class="visually-hidden">Play</span>
             </button>
           </div>
         </div>

@@ -25,7 +25,7 @@ export const DisabledAndActiveStatesComponent = createStory(
           data-ga-section="pagination title"
           data-ga="page 1"
         >
-          1<span class="sr-only">(current)</span>
+          1<span class="visually-hidden">(current)</span>
         </a>
       </li>
       <li class="page-item">
@@ -108,7 +108,7 @@ export const LargeNumbersComponent = createStory(
           data-ga="page 41"
         >
           41
-          <span class="sr-only">(current)</span>
+          <span class="visually-hidden">(current)</span>
         </a>
       </li>
       <li class="page-item">

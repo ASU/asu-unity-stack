@@ -35,11 +35,8 @@ const jsConfig = {
   output: {
     path: paths.distJS,
     filename: "[name].js",
-    library: "bootstrapASU",
+    library: "[name].js",
     libraryTarget: "umd",
-    libraryExport: "default",
-    globalObject: "this",
-    pathinfo: true,
   },
   externalsPresets: { node: true },
   externals: [nodeExternals(), "commonjs sharp"],

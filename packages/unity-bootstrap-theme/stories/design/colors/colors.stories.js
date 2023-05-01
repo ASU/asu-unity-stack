@@ -9,7 +9,7 @@ export const ColorPaletteComponent = createStory(
           <h3>
             <span class="highlight-black">Primary Colors</span>
           </h3>
-          <h4 class="sr-only">Accessibility bypass</h4>
+          <h4 class="visually-hidden">Accessibility bypass</h4>
         </div>
         <div class="col-md-3">
           <div class="bg-gold p-3">
@@ -40,7 +40,7 @@ export const ColorPaletteComponent = createStory(
           <h3>
             <span class="highlight-black">Secondary Colors</span>
           </h3>
-          <h4 class="sr-only">Accessibility bypass</h4>
+          <h4 class="visually-hidden">Accessibility bypass</h4>
         </div>
         <div class="col-md-3">
           <div class="bg-success p-3">
@@ -72,7 +72,7 @@ export const ColorPaletteComponent = createStory(
           <h3>
             <span class="highlight-black">Grayscale</span>
           </h3>
-          <h4 class="sr-only">Accessibility bypass</h4>
+          <h4 class="visually-hidden">Accessibility bypass</h4>
         </div>
         <div class="col-md-3">
           <div class="bg-gray-1 p-3">

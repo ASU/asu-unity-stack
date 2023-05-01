@@ -279,7 +279,7 @@ export const IncludedIcons = createStory(
             data-ga-section="default"
           >
             <span class="card-icon">
-              <i class="fas fa-dog mr-2" role="img" aria-label="..."></i>
+              <i class="fas fa-dog me-2" role="img" aria-label="..."></i>
               Accordion with icon and gold color.
             </span>
             <span class="fas fa-chevron-up"></span>
@@ -331,7 +331,7 @@ export const IncludedIcons = createStory(
             data-ga-section="default"
           >
             <span class="card-icon">
-              <i class="fas fa-cat mr-2" role="img" aria-label="..."></i>
+              <i class="fas fa-cat me-2" role="img" aria-label="..."></i>
               Accordion with icon and maroon color.
             </span>
             <span class="fas fa-chevron-up"></span>

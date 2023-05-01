@@ -28,7 +28,7 @@ export const ModalComponent = createStory(
             data-ga="close cross"
           >
             <i class="fas fa-times fa-stack-1x"></i>
-            <span class="sr-only">Close</span>
+            <span class="visually-hidden">Close</span>
           </button>
           <h1>Content</h1>
         </div>
