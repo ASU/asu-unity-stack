@@ -622,8 +622,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       @include gold-underline-mobile;
     }
 
-    &:has(.nav-link.show)::after {
+    .nav-link.show::after {
       @include gold-underline-expand-mobile;
+      margin-left: 0;
+      width: 100%;
     }
 
     &.show:after {
@@ -948,8 +950,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         @include gold-underline-expand-desktop;
       }
 
-      &:has(.nav-link.show)::after {
+      .nav-link.show::after {
         @include gold-underline-expand-desktop;
+        margin-left: -.75rem; // parent element has left padding of .75rem
+        width: calc(100% + 1.5rem);
       }
 
       &.dropdown.megamenu.show:after {
