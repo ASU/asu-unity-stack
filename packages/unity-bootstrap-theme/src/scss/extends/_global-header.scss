@@ -110,7 +110,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       text-decoration: underline;
     }
 
-    &.sr-only {
+    &.visually-hidden {
       justify-self: flex-start;
     }
 

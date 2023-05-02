@@ -79,7 +79,7 @@
   },
   "exports": {
     "./src/scss/unity-bootstrap-theme.bundle.scss": {
-      "browser": "./dist/css/unity-bootstrap-theme.bundle.css",
+      "browser": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "default": "./dist/css/unity-bootstrap-theme.bundle.css"

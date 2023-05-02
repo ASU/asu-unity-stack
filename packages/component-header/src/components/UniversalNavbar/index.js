@@ -37,13 +37,13 @@ const UniversalNavbar = () => {
           <nav className="nav" aria-label="ASU">
             <div className="links-container">
               <a
-                className="nav-link sr-only sr-only-focusable"
+                className="nav-link visually-hidden visually-hidden-focusable"
                 href="#skip-to-content"
               >
                 Skip to main content
               </a>
               <a
-                className="nav-link sr-only sr-only-focusable"
+                className="nav-link visually-hidden visually-hidden-focusable"
                 href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
               >
                 Report an accessibility problem
