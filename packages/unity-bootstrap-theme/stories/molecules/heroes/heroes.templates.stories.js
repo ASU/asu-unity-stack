@@ -51,7 +51,7 @@ export const HeroSmallOneButton = createStory(
         <div class="btn-row">
           <a
             href="#"
-            class="btn btn-maroon btn-responsive"
+            class="btn btn-maroon"
             data-ga="Call to action"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -103,7 +103,7 @@ export const HeroSmallTwoButtons = createStory(
         <div class="btn-row">
           <a
             href="#"
-            class="btn btn-default btn-maroon btn-responsive"
+            class="btn btn-default btn-maroon"
             data-ga="Read more"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -116,7 +116,7 @@ export const HeroSmallTwoButtons = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-default btn-gold btn-responsive"
+            class="btn btn-default btn-gold"
             data-ga="More quotes"
             data-ga-name="onclick"
             data-ga-event="link"
