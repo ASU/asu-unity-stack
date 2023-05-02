@@ -23,6 +23,7 @@ export const parameters = {
       // remove Fontawesome transforming span into svg
       code = code.replace(/<svg.*?<\/svg>/gi, "");
       code = code.replace(/(<!--\s)(<span.*?class=.*?fa-.*?><\/span>)(\s-->)/gi, "$2");
+      code = code.replace(/(<!--\s)(<i.*?class=.*?fa-.*?><\/i>)(\s-->)/gi, "$2");
       return code;
     }
   },
