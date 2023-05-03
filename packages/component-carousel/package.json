@@ -38,9 +38,6 @@
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
-  "peerDependencies": {
-    "postcss": "^8.4.19"
-  },
   "dependencies": {
     "@asu/components-core": "^1.0.0",
     "@asu/design-tokens": "^1.0.0",
