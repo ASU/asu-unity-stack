@@ -682,6 +682,7 @@ Cards - Table of Contents
 .accordion {
   .accordion-item {
     border-bottom: 1px solid $uds-color-base-gray-3;
+    border-top: 1px solid $uds-color-base-gray-3;
   }
   .accordion-header .accordion-icon {
     display: flex;
