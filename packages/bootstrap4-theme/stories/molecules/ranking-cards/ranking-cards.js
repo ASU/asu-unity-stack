@@ -1,7 +1,13 @@
+import { googleAnalytics } from '../../../src/js/googleAnalytics';
+
 // method ot handle the custom behavior of the ranking card
 export const rankingFunc = () => {
-  const accordion = document.getElementById('dispatch');
-  accordion.addEventListener('click', function () {
-    this.classList.toggle('active');
+  const $infoLayer = document.querySelector('.info-layer');
+  const $toggleIcon = document.getElementById('dispatch');
+
+  $toggleIcon.addEventListener('click', function () {
+    $infoLayer.classList.toggle('active');
   });
+
+  googleAnalytics();
 };
