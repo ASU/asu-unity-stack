@@ -7,7 +7,7 @@ import { ImageCarousel } from ".";
 
 // eslint-disable-next-line jest/no-mocks-import
 import { imageCarouselItems } from "../../../__mocks__/data/props-mock";
-import { Basic as Header } from "../../../../bootstrap4-theme/stories/organisms/global-header/global-header.templates.stories";
+import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates.stories";
 
 const mockItemWithContent = () =>
   imageCarouselItems.map(item => ({

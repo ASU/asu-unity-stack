@@ -1,3 +1,4 @@
+import React from "react";
 import { GlobalElementsOnly as Footer } from "../stories/organisms/global-footer/global-footer.templates.stories.js";
 import { Basic as Header } from "../stories/organisms/global-header/global-header.templates.stories.js";
 import { template } from "./templates";

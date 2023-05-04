@@ -19,6 +19,7 @@ const paths = {
   sass: path.resolve(__dirname, "src/scss"),
   css: path.resolve(__dirname, "dist/css"),
   node: path.resolve(__dirname, "node_modules"),
+  rootNode: path.resolve(__dirname, "../../node_modules")
 };
 
 const devtool = "source-map";
@@ -46,7 +47,7 @@ const jsConfig = {
         { from: paths.imgsrc, to: paths.img },
         {
           from: path.resolve(
-            paths.node,
+            paths.rootNode,
             "bootstrap",
             "dist",
             "js",

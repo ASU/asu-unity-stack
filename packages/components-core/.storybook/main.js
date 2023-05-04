@@ -9,7 +9,23 @@ module.exports = {
     "storybook-css-modules-preset",
     "@storybook/addon-knobs",
   ],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
   webpackFinal: config => {
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        { loader: "css-loader", options: { importLoaders: 1 } },
+        {
+          loader: "sass-loader",
+          options: {},
+        },
+      ],
+    });
+
     return {
       ...config,
       resolve: {

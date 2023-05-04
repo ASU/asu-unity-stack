@@ -59,8 +59,8 @@ module.exports = generateHTML = packages => `
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="ASU">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
-              <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
+              <a class="nav-link visually-hidden visually-hidden-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link visually-hidden visually-hidden-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
@@ -95,7 +95,7 @@ module.exports = generateHTML = packages => `
                 <img class="horiz" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
               </a>
 
-              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
                 <span title="Open mobile menu" class="fa fa-bars"></span>
                 <span title="Close mobile menu" class="fa-stack">
                   <i class="fa fa-circle fa-stack-2x"></i>
@@ -147,7 +147,7 @@ module.exports = generateHTML = packages => `
   </header>
 
   <main>
-    <div id="skip-to-content" class="sr-only"></div>
+    <div id="skip-to-content" class="visually-hidden"></div>
 
     <div class="uds-hero-sm">
       <img class="hero" src="https://images.unsplash.com/photo-1454117096348-e4abbeba002c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=265&ixlib=rb-1.2.1&q=80&w=1920" alt="" />

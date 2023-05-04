@@ -37,9 +37,9 @@ function Table({ data }) {
                   {field.career.text}
                 </a>
                 {field.greenOccupation && (
-                  <LeafIcon className="fas fa-leaf ml-1" />
+                  <LeafIcon className="fas fa-leaf ms-1" />
                 )}
-                {field.brightOutlook && <SunIcon className="fas fa-sun ml-1" />}
+                {field.brightOutlook && <SunIcon className="fas fa-sun ms-1" />}
               </th>
               <td className="text-end">{+field.growth}%</td>
               <td className="text-end">{field.medianSalary || 0}</td>

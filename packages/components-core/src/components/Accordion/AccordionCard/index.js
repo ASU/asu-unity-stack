@@ -27,7 +27,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
         <a
           data-testid="accordion-opener"
           className={classNames({ [`collapsed`]: id !== openCard })}
-          data-toggle="collapse"
+          data-bs-toggle="collapse"
           href={`#card-body-${id}`}
           role="button"
           aria-expanded={id === openCard}
@@ -37,7 +37,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
           {item.content.icon ? (
             <span className="card-icon">
               <i
-                className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} mr-2`}
+                className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} me-2`}
               />
               {item.content.header}
             </span>
