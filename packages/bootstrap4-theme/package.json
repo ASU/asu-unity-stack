@@ -1,6 +1,6 @@
 {
   "name": "@asu/bootstrap4-theme",
-  "version": "1.10.3",
+  "version": "1.11.1",
   "description": "Base Bootstrap 4 UI theme for ASU Web Standards 2.0",
   "main": "index.js",
   "license": "MIT",
@@ -25,7 +25,6 @@
     "prepare": "yarn run build"
   },
   "devDependencies": {
-    "@asu/design-tokens": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@percy/cli": "^1.0.0-beta.68",
     "@percy/storybook": "^4.3.4",

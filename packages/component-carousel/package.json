@@ -39,8 +39,6 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/components-core": "^1.0.0",
-    "@asu/design-tokens": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
@@ -70,7 +68,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
-    "@asu/design-tokens": "^1.0.0",
     "@babel/core": "^7.13.14",
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.13.12",

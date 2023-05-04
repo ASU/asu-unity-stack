@@ -3,6 +3,7 @@
 
 Bootstrap 4 UI theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
 
+
 ## ❯ How to use the private package registry:
 
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
@@ -132,6 +133,10 @@ yarn storybook # run storybook
 If you get errors during `yarn install` regarding failures to install packages from the registry, please ensure that the line `@asu:registry=https://npm.pkg.github.com` is in your `.npmrc` file. This will ensure that all @asu packages are sourced from the registry.
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
+
+## ❯ Adding dependencies to a package
+- If adding a dependency to a specific package, run `lerna exec yarn add <dependency-name> --scope=<package-name>` from the git root.
+- If removing, run `lerna exec yarn remove <dependency-name> --scope=<package-name>` from the git root.
 
 ## ❯ Structure
  - packages/[package-name] - NPM package root
