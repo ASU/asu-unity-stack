@@ -40,8 +40,6 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/component-carousel": "^1.0.0",
-    "@asu/components-core": "^1.0.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "prop-types": "^15.7.2",

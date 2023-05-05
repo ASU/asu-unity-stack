@@ -27,15 +27,10 @@ const options = {
   localSection: true,
 };
 
-const resultsCard = subdomainConverter(
-  data,
-  { size: "full" },
-  null,
-  null,
-  null,
-  null,
-  options
-);
+const resultsCard = subdomainConverter({
+  datum: data,
+  options: { size: "full" },
+});
 
 export const resultsCardExample = createStory(
   args => {

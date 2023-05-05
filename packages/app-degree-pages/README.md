@@ -252,8 +252,10 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
       />
     )
   };
+
 ```
 ### DetailPage component
+
 
 You can find an extended example of how to set `DetailPage` props [here](/packages/app-degree-pages/src/components/ProgramDetailPage/index.stories.js)
 

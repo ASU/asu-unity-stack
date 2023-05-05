@@ -38,11 +38,14 @@ export default createComponent(
 
 export const profileCardExample = createStory(
   args => {
-    const profileCard = staffConverter(data, {
-      size: args.size,
-      titleMatch: null,
-      profileURLBase: null,
-      fill: args.fill,
+    const profileCard = staffConverter({
+      datum: data,
+      options: {
+        size: args.size,
+        titleMatch: null,
+        profileURLBase: null,
+        fill: args.fill,
+      },
     });
 
     return (
