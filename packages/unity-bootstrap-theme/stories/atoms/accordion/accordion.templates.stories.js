@@ -7,8 +7,8 @@ const FoldableCardElement = (
   linkID = null,
   bodyID = null
 ) => (
-  <div class="card card-foldable">
-    <div class="card-header">
+  <div class="card accordion-item">
+    <div class="accordion-header">
       <h3>
         <a
           id={`${linkID}`}
@@ -33,7 +33,7 @@ const FoldableCardElement = (
     </div>
     <div
       id={`${bodyID}`}
-      class="collapse card-body"
+      class="collapse accordion-body"
       aria-labelledby={`${linkID}`}
       data-bs-parent={accordionID ? `#${accordionID}` : ""}
     >
