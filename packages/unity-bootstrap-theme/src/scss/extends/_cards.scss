@@ -524,15 +524,6 @@ Cards - Table of Contents
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
-  &:first-of-type {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-  &:last-of-type {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
   &.accordion-item-maroon {
     border-left-color: $uds-color-base-maroon;
   }
