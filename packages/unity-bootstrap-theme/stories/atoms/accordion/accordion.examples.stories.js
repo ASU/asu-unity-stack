@@ -207,8 +207,7 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div class="card accordion-item mt-3 accordion-item
-    -dark">
+    <div class="card accordion-item mt-3 accordion-item-dark">
       <div class="accordion-header">
         <h4>
           <a
