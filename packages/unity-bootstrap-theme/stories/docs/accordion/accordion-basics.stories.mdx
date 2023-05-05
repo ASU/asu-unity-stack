@@ -2,65 +2,99 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 
 <Meta title="Docs/Accordions" />
 
-## Foldable Card
+## Accordion
 
-The `.card-foldable` class is a modifying class for a generic card which creates a single section that expands and contracts independently of other surrounding foldable cards.
+The `.accordion` class is a bootstrap5 class that is used to create an accordion.
 
-- The cards will conform to the width of the surrounding container.
+- The accordions will conform to the width of the surrounding container.
 - There is a recommended character limit of 75 characters for the text within the header of a foldable card.
 
-The recommended markup for a foldable card begins from the following pattern.
+The recommended markup for an accordion begins from the following pattern.
 
-```
-<div class="card card-foldable">
-  <div class="card-header">
-    <h4>
-      <a id="example-header-1" class="collapsed" data-bs-toggle="collapse" href="#example-content-1" role="button" aria-expanded="false" aria-controls="example-content-1">Header Text
-        <span class="fas fa-chevron-up"></span>
-      </a>
-    </h4>
+```html
+<div className="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <h3>
+        <a
+          id="example-header-3"
+          data-bs-toggle="collapse"
+          href="#example-content-3"
+          role="button"
+          aria-expanded="true"
+          aria-controls="example-content-3"
+          data-ga="This card starts off in an unfolded state."
+          data-ga-name="onclick"
+          data-ga-event="collapse"
+          data-ga-type="click"
+          data-ga-region="main content"
+          data-ga-section="default"
+        >
+          This card starts off in an unfolded state.
+          <span class="fas fa-chevron-up"></span>
+        </a>
+      </h3>
+    </div>
+    <div
+      id="example-content-3"
+      class="collapse show accordion-body"
+      aria-labelledby="example-header-3"
+    >
+      <h4>This is a quaternary headline</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud
+      </p>
+      <h5>This is a level five headline. There's a fancy word for that too.</h5>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor
+      </p>
+    </div>
   </div>
-  <div id="example-content-1" class="collapse card-body" aria-labelledby="example-header-1">
-    <h4>Content headline. Recommend H4 or H5.</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
   </div>
-</div>
 ```
 
 ## Accent Colors and Icons
 
-Foldable cards can be accented with different colors from the ASU palette. The header of a foldable card can also include an optional icon from Font Awesome.
+Accordions can be accented with different colors from the ASU palette. The header of an accordion can also include an optional icon from Font Awesome.
 
-Include a modifying class along side of `.card-foldable` to produce different accent colors. Allowable colors are below:
+Include a modifying class along side of `.accordion to produce different accent colors. Allowable colors are below:
 
 | Modifier class | Produced Color     |
 | -------------- | ------------------ |
 | (none)         | ASU Gold (default) |
-| .card-maroon   | ASU Maroon         |
-| .card-gray     | ASU Gray 4         |
-| .card-dark     | ASU Gray 7 (Black) |
+| .accordion-item-maroon   | ASU Maroon         |
+| .accordion-item-gray     | ASU Gray 4         |
+| .accordion-item-dark     | ASU Gray 7 (Black) |
 
 To add an icon:
 
-- Include the modifying class `.card-header-icon` next to the `.card-header` declaration.
+- Include the modifying class `.accordion-header-icon` next to the `.accordion-header` declaration.
 - Any Font Awesome icon from the collection may be used.
 
 A foldable card with an icon and and accent color might look like this:
 
 ```
-<div class="card card-foldable mt-3 card-maroon">
-  <div class="card-header card-header-icon">
+<div class=" accordion mt-3 accordion-item-maroon">
+  <div class="accordion-header accordion-header-icon">
     <h4>
-      <a id="cardOne" class="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#cardBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
-        <span class="card-icon">
-            <i class="fas fa-dog me-2" role="img" aria-label="..."></i>
+      <a id="accordionOne" class="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#accordionBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+        <span class="accordion-icon">
+            <i class="fas fa-dog mr-2" role="img" aria-label="..."></i>
             Accordion with icon and gold color.
         </span>
         <span class="fas fa-chevron-up"></span>
       </a>
     </h4>
   </div>
-  <div id="cardOne" class="collapse card-body" aria-labelledby="cardOne">
+  <div id="accordionTwo" class="collapse accordion-body" aria-labelledby="accordionOne">
     ...
   </div>
 </div>
@@ -70,7 +104,7 @@ A foldable card with an icon and and accent color might look like this:
 
 You may choose to disable the "fold" of a foldable card at a particular breakpoint in order to have an element appear expanded on desktop and collapsed on mobile.
 
-Include one of the following modifier classes next to the `.card-foldable` class to enable the functionality.
+Include one of the following modifier classes next to the `.accordion` class to enable the functionality.
 
 - `.desktop-disable-md` disables the fold at the `md` breakpoint and above.
 - `.desktop-disable-lg` and `.desktop-disable-xl` are also available.
@@ -78,46 +112,11 @@ Include one of the following modifier classes next to the `.card-foldable` class
 Example:
 
 ```
-<div class="card card-foldable desktop-disable-lg">
-  <div class="card-header">
+<div class="accordion desktop-disable-lg">
+  <div class="accordion-header">
     ...
   </div>
-  <div id="cardOne" class="collapse card-body" aria-labelledby="cardOne">
+  <div id="accordionOne" class="collapse accordion-body" aria-labelledby="accordionOne">
     ...
   </div>
 </div>
-```
-
-## Accordions
-
-With some small modifications, a series of foldable cards can be connected together to form an accordion.
-
-- Wrap the collection of foldable cards with an element containing the class of `.accordion` and a unique ID.
-- Include the `data-bs-parent` attribute within the card body element to properly toggle the folded/expanded state.
-- By default, foldable cards wrapped in an accordion will stack together with no spacing between them. Include a utility margin class between each card to space them apart properly. (`.mt-3` is recommended.)
-
-That markup looks like this when completed:
-
-```
-<div class="accordion" id="accordionExample">
-
-  <div class="card card-foldable mt-3">
-    <div class="card-header">
-      ...
-    </div>
-    <div id="cardBodyOne" class="collapse card-body" aria-labelledby="cardOne" data-bs-parent="#accordionExample">
-      ...
-    </div>
-  </div>
-
-  <div class="card card-foldable mt-3">
-    <div class="card-header">
-        ...
-    </div>
-    <div id="cardBodyTwo" class="collapse card-body" aria-labelledby="cardTwo" data-bs-parent="#accordionExample">
-      ...
-    </div>
-  </div>
-
-</div>
-```

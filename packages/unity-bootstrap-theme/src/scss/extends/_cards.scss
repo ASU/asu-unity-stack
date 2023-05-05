@@ -113,7 +113,7 @@ Cards - Table of Contents
   }
 }
 
-.card-body {
+.card-body, .accordion-body {
   padding: 0 32px 24px 32px;
   flex-grow: 100;
 }
@@ -518,28 +518,28 @@ Cards - Table of Contents
   background-color: transparent;
 }
 
-.card-foldable {
+.accordion-item  {
   border-color: $uds-color-base-gray-3;
   border-left: $uds-size-spacing-1 solid $uds-color-base-gold;
   height: auto;
 
-  &.card-maroon {
+  &.accordion-item {
     border-left-color: $uds-color-base-maroon;
   }
 
-  &.card-gray {
+  &.accordion-item-gray {
     border-left-color: $uds-color-base-gray-4;
   }
 
-  &.card-dark {
+  &.accordion-item-dark {
     border-left-color: $uds-color-base-gray-7;
   }
 
-  .card-header {
+  .accordion-header {
     padding: $uds-size-spacing-1;
 
-    &.card-header-icon {
-      & .card-icon {
+    &.accordion-header-icon {
+      & .accordion-icon {
         display: flex;
         margin-left: calc($uds-size-spacing-3 / -2);
         align-items: flex-start;
@@ -585,12 +585,12 @@ Cards - Table of Contents
       }
     }
 
-    + .card-body {
+    + .accordion-body {
       border-top: 1px solid $uds-color-base-gray-3;
     }
   }
 
-  .card-body {
+  .accordion-body {
     background-color: $uds-color-base-gray-1;
 
     > p:first-child {
@@ -609,7 +609,7 @@ Cards - Table of Contents
 @mixin desktop-disable {
   border-left: 1px solid $uds-color-base-gray-3;
 
-  .card-header {
+  .accordion-header {
     h4 a {
       padding-top: $uds-size-spacing-4;
       padding-bottom: $uds-size-spacing-4;
@@ -628,11 +628,11 @@ Cards - Table of Contents
     }
   }
 
-  .card-header + .card-body {
+  .accordion-header + .accordion-body {
     border-top: 0;
   }
 
-  .card-body {
+  .accordion-body {
     background-color: transparent;
 
     > p:first-child {
@@ -658,19 +658,19 @@ Cards - Table of Contents
 }
 
 @include media-breakpoint-up(xl) {
-  .card-foldable.desktop-disable-xl {
+  .accordion-item.desktop-disable-xl {
     @include desktop-disable;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .card-foldable.desktop-disable-lg {
+  .accordion-item.desktop-disable-lg {
     @include desktop-disable;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .card-foldable.desktop-disable-md {
+  .accordion-item.desktop-disable-md {
     @include desktop-disable;
   }
 }
@@ -679,10 +679,11 @@ Cards - Table of Contents
 7. Accordion
 --------------------------------------------------------------------*/
 .accordion {
-  .card.card-foldable {
+  .accordion-item {
     border-bottom: 1px solid $uds-color-base-gray-3;
+    border-top: 1px solid $uds-color-base-gray-3;
   }
-  .card-header .card-icon {
+  .accordion-header .accordion-icon {
     display: flex;
     align-items: center;
     margin-bottom: 0;
