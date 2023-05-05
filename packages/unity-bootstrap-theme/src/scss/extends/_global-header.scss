@@ -110,7 +110,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       text-decoration: underline;
     }
 
-    &.sr-only {
+    &.visually-hidden {
       justify-self: flex-start;
     }
 
@@ -620,7 +620,7 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       @include transition;
     }
 
-    &.show svg.fa-chevron-down {
+    .show svg.fa-chevron-down {
       transform: rotate(180deg);
     }
 
@@ -628,8 +628,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
       @include gold-underline-mobile;
     }
 
-    &.active:after {
+    .nav-link.show::after {
       @include gold-underline-expand-mobile;
+      margin-left: 0;
+      width: 100%;
     }
 
     &.show:after {
@@ -954,8 +956,10 @@ $fa-search: url($image-assets-path + '/font-awesome-svg/search.svg');
         @include gold-underline-expand-desktop;
       }
 
-      &.dropdown.show:after {
+      .nav-link.show::after {
         @include gold-underline-expand-desktop;
+        margin-left: -.75rem; // parent element has left padding of .75rem
+        width: calc(100% + 1.5rem);
       }
 
       &.dropdown.megamenu.show:after {

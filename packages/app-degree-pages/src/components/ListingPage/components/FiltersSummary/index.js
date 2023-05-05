@@ -39,7 +39,7 @@ function FiltersSummary({
         data-filter-id={filterName}
         onKeyDown={() => onRemove(filterName, filter)}
         onClick={() => onRemove(filterName, filter)}
-        className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center mr-2"
+        className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center me-2"
       >
         <span className="pr-1">{text}</span>
         <i className="fas fa-times" />

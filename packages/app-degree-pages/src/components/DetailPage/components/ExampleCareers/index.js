@@ -42,12 +42,12 @@ function ExampleCareers({ tableData }) {
         </p>
       </div>
       <div className="d-flex">
-        <p className="mr-3">
-          <SunIcon className="fas fa-sun mr-1" />
+        <p className="me-3">
+          <SunIcon className="fas fa-sun me-1" />
           Bright outlook
         </p>
         <p>
-          <LeafIcon className="fas fa-leaf mr-1" />
+          <LeafIcon className="fas fa-leaf me-1" />
           Green occupation
         </p>
       </div>

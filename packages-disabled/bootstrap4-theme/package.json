@@ -72,7 +72,6 @@
     "react-dom": ">= 16.14.0 < 18"
   },
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }

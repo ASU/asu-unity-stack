@@ -20,7 +20,7 @@
     "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 9000",
     "build-storybook": "build-storybook",
     "lint": "yarn js-lint && yarn css-lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
@@ -49,6 +49,7 @@
     "autoprefixer": "^10.4.14",
     "babel-loader": "^8.3.0",
     "bootstrap": "^5.2.3",
+    "chart.js": "^3.2.1",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.2",
@@ -57,7 +58,7 @@
     "eslint-webpack-plugin": "^4.0.0",
     "image-minimizer-webpack-plugin": "^3.8.2",
     "mini-css-extract-plugin": "^2.7.5",
-    "postcss": "^8.4.12",
+    "postcss": "^8.4.19",
     "postcss-discard-duplicates": "^5.1.0",
     "postcss-loader": "^7.1.0",
     "postcss-scss": "^4.0.6",
@@ -76,12 +77,19 @@
     "webpack-cli": "^4.10.0",
     "webpack-node-externals": "^3.0.0"
   },
+  "exports": {
+    "./src/scss/unity-bootstrap-theme.bundle.scss": {
+      "browser": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
+    }
+  },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3"
   },
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.19.1"
+    "extends": "../../package.json"
   },
   "dependencies": {}
 }

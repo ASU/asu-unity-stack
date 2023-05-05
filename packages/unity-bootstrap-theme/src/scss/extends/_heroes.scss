@@ -14,9 +14,11 @@
 0. Local variables
 --------------------------------------------------------------*/
 
-$uds-hero-gradient-overlay: linear-gradient(180deg,
-    #19191900 0%,
-    #191919c9 100%);
+$uds-hero-gradient-overlay: linear-gradient(
+  180deg,
+  #19191900 0%,
+  #191919c9 100%
+);
 
 /*--------------------------------------------------------------
 1. Mixins
@@ -50,17 +52,16 @@ $uds-hero-gradient-overlay: linear-gradient(180deg,
 2. Hero, Mobile first
 --------------------------------------------------------------*/
 @include media-breakpoint-down(sm) {
-
   // Styles to handle the size of the buttons on mobile in the hero
-  div[class^='uds-hero'] {
+  div[class^="uds-hero"] {
     .btn {
       font-size: 0.875rem;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
     }
   }
 }
 
-div[class^='uds-hero'] {
+div[class^="uds-hero"] {
   display: grid;
   grid-template-columns: $uds-size-spacing-4 1fr $uds-size-spacing-4;
   grid-template-rows: 1fr repeat(3, auto) $uds-size-spacing-6;
@@ -73,7 +74,7 @@ div[class^='uds-hero'] {
 
   // Column alignment for decendent items
   h1,
-  [role='doc-subtitle'],
+  [role="doc-subtitle"],
   a.btn,
   .content,
   .btn-row {
@@ -90,13 +91,12 @@ div[class^='uds-hero'] {
     object-fit: cover;
   }
 
-  [role='doc-subtitle'] {
+  [role="doc-subtitle"] {
     @include like-h3;
     display: inline-block;
     grid-row: 2;
     line-height: 1;
     height: min-content;
-
     .highlight-white {
       @include like-h3-highlight-white;
     }
@@ -126,13 +126,13 @@ div[class^='uds-hero'] {
   }
 
   // TODO: Remove, fallback for buttons without btn-row
-  >a.btn {
+  > a.btn {
     position: absolute;
   }
 
   .content {
     grid-row: 4;
-    font-size: 1.5rem;
+    font-size: $uds-size-font-xl;
     letter-spacing: -0.0525rem;
     line-height: 1.75rem;
     font-weight: $uds-font-weight-bold;
@@ -141,7 +141,6 @@ div[class^='uds-hero'] {
   // Base class modifier: .has-btn-row
   &.has-btn-row {
     grid-template-rows: 1fr repeat(3, auto) $uds-size-spacing-6;
-
     h1 {
       grid-row: 3;
     }
@@ -167,7 +166,6 @@ div[class^='uds-hero'] {
     h1 {
       margin-bottom: 2rem;
     }
-
     .content {
       display: none;
     }
@@ -175,7 +173,7 @@ div[class^='uds-hero'] {
 
   // General styles for brackground overlay
   .hero-overlay {
-    content: '';
+    content: "";
     height: 100%;
     width: 100%;
     background-image: $uds-hero-gradient-overlay;
@@ -224,7 +222,7 @@ div.uds-hero-sm {
     }
   }
 
-  >a.btn {
+  > a.btn {
     top: 15rem;
   }
 }
@@ -251,7 +249,7 @@ div.uds-hero-md {
   }
 
   // TODO: Remove, fallback for buttons without btn-row
-  >a.btn {
+  > a.btn {
     top: 20rem;
   }
 }
@@ -289,7 +287,7 @@ div.uds-hero-lg {
   }
 
   // TODO: Remove, fallback for buttons without btn-row
-  >a.btn {
+  > a.btn {
     top: 31rem;
   }
 }
@@ -298,12 +296,12 @@ div.uds-hero-lg {
 3. Hero, Tablet
 --------------------------------------------------------------*/
 @include media-breakpoint-up(md) {
-  div[class^='uds-hero'] {
+  div[class^="uds-hero"] {
     grid-template-columns: 1fr minmax(0, 700px) 1fr;
 
     // Column alignment for decendent items
     h1,
-    [role='doc-subtitle'],
+    [role="doc-subtitle"],
     a.btn,
     .content,
     .btn-row {
@@ -318,7 +316,7 @@ div.uds-hero-lg {
 
     .content {
       grid-row: 4;
-      font-size: 1.5rem;
+      font-size: $uds-size-font-xl;
       font-weight: $uds-font-weight-bold;
       line-height: 1.75rem;
       margin-bottom: 2rem;
@@ -338,7 +336,7 @@ div.uds-hero-lg {
     }
 
     // TODO: fallback for buttons without btn-row
-    >a.btn {
+    > a.btn {
       position: static;
       grid-row: 5;
     }
@@ -346,14 +344,13 @@ div.uds-hero-lg {
 
   div.uds-hero-sm {
     grid-template-rows: 1fr auto auto $uds-size-spacing-7;
-
     &.has-btn-row {
       .btn-row {
         top: 14.5rem;
       }
     }
 
-    >a.btn {
+    > a.btn {
       grid-row: unset;
       position: absolute;
       top: 14.5rem;
@@ -364,18 +361,14 @@ div.uds-hero-lg {
     height: $uds-size-spacing-64;
     // TODO; remove this, it's a fallback for buttons without has-btn-row
     grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
-
     h1 {
       margin-bottom: $uds-size-spacing-4;
     }
-
     .content {
       display: block;
     }
-
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
-
       h1 {
         grid-row: 3;
       }
@@ -406,7 +399,6 @@ div.uds-hero-lg {
 
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
-
       .content {
         grid-row: 4;
       }
@@ -414,7 +406,6 @@ div.uds-hero-lg {
       .btn-row {
         position: static;
         grid-row: 5;
-
         a.btn {
           margin-top: 0;
         }
@@ -435,12 +426,12 @@ div.uds-hero-lg {
 4. Hero, Desktop
 --------------------------------------------------------------*/
 @include media-breakpoint-up(lg) {
-  div[class^='uds-hero'] {
+  div[class^="uds-hero"] {
     grid-template-columns: 1fr minmax(0, 940px) 1fr;
 
     // Column alignment for decendent items
     h1,
-    [role='doc-subtitle'],
+    [role="doc-subtitle"],
     a.btn,
     .content,
     .btn-row {
@@ -450,12 +441,12 @@ div.uds-hero-lg {
 }
 
 @include media-breakpoint-up(xl) {
-  div[class^='uds-hero'] {
+  div[class^="uds-hero"] {
     grid-template-columns: 1fr minmax(0, 1200px) 1fr;
 
     // Column alignment for decendent items
     h1,
-    [role='doc-subtitle'],
+    [role="doc-subtitle"],
     a.btn,
     .content,
     .btn-row {
@@ -570,7 +561,6 @@ div.uds-hero-lg {
 
 // Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
 @media (min-width: 950px) {
-
   // Calc value in the grid-template row definitions:
   // First row = height of the overall hero image - 8rem offset for the indented content.
   .uds-story-hero {

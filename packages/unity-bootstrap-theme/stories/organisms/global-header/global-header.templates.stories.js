@@ -1,3 +1,4 @@
+import React from "react";
 import horizlogo from "./arizona-state-university-logo.png";
 import vertlogo from "./arizona-state-university-logo-vertical.png";
 import starbucksLogo from "./asu-starbucks.png";
@@ -100,6 +101,7 @@ export const Basic = (
           <div class="row">
             <div id="header-main" class="col-12">
               <div class="navbar navbar-expand-xl">
+                <div class="container-fluid">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -321,6 +323,7 @@ export const Basic = (
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -433,6 +436,7 @@ export const DropDownMenus = (
           <div class="row">
             <div id="header-main" class="col-12">
               <div class="navbar navbar-expand-xl">
+                <div class="container-fluid">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -695,7 +699,7 @@ export const DropDownMenus = (
                             </div>
                           </div>
                         </div>
-                        <div class="nav-item dropdown megamenu active header-dropdown-3">
+                        <div class="nav-item dropdown megamenu header-dropdown-3">
                           <a
                             class="nav-link"
                             href="#"
@@ -1413,6 +1417,7 @@ export const DropDownMenus = (
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1524,6 +1529,7 @@ export const NoNavigation = (
           <div class="row">
             <div id="header-main" class="col-12">
               <div class="navbar navbar-expand-xl">
+                <div class="container-fluid">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -1651,6 +1657,7 @@ export const NoNavigation = (
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1759,6 +1766,7 @@ export const NoNavigationAndWithButtons = (
           <div class="row">
             <div id="header-main" class="col-12">
               <div class="navbar navbar-expand-xl">
+                <div class="container-fluid">
                 <a class="navbar-brand" href="#" data-ga-header="asu logo">
                   <img
                     class="vert"
@@ -1904,6 +1912,7 @@ export const NoNavigationAndWithButtons = (
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2015,6 +2024,7 @@ export const ScrolledState = (
           <div class="row">
             <div id="header-main" class="col-12">
               <div class="navbar navbar-expand-xl">
+                <div class="container-fluid">
                 <a class="navbar-brand" href="#" asu-ga="asu logo">
                   <img
                     class="vert"
@@ -2340,6 +2350,7 @@ export const ScrolledState = (
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

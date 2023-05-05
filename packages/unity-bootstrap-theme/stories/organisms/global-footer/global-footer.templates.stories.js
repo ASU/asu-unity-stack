@@ -1,3 +1,4 @@
+import React from "react";
 import endorsedLogo from "./ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png";
 import innovationLockup from "./200420-GlobalFooter-No1InnovationLockup.png";
 

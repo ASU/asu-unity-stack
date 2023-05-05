@@ -2,7 +2,7 @@ import "../src/scss/unity-bootstrap-theme.bundle.scss";
 import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 // Import all the Bootstrap bundle
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
+import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -23,6 +23,7 @@ export const parameters = {
       // remove Fontawesome transforming span into svg
       code = code.replace(/<svg.*?<\/svg>/gi, "");
       code = code.replace(/(<!--\s)(<span.*?class=.*?fa-.*?><\/span>)(\s-->)/gi, "$2");
+      code = code.replace(/(<!--\s)(<i.*?class=.*?fa-.*?><\/i>)(\s-->)/gi, "$2");
       return code;
     }
   },
