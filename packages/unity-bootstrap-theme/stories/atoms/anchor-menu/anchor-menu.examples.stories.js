@@ -1,127 +1,95 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Anchor Menu", "Atoms", "Examples");
 import { initializeAnchorMenu as initFunc } from "./anchor-menu";
-import { Basic } from "../../organisms/global-header/global-header.templates.stories.js";
 
 export const AnchorMenu = createStory(
   <div>
-    <div class="container-fluid">
-      {Basic}
-
-      <div class="uds-hero-lg has-btn-row">
-        <img
-          class="hero"
-          src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
-          alt="Sample placeholder image."
-          width="1920"
-          height="1000"
-          loading="lazy"
-          decoding="async"
-          fetchPriority="high"
-        />
-        <h1>
-          <span class="highlight-gold">Gettysburg Address</span>
-        </h1>
-        <div class="content">
-          <p class="text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-        <div class="btn-row">
-          <a href="#" class="btn btn-default btn-gold">
-            Read the 13th Amendment
-          </a>
-        </div>
-      </div>
-
-      <div
-        id="uds-anchor-menu"
-        class="uds-anchor-menu uds-anchor-menu-expanded-lg"
-      >
-        <div class="container">
-          <div class="uds-anchor-menu-wrapper">
-            <h4
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseExample"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-              data-ga-name="onclick"
-              data-ga-event="collapse"
-              data-ga-type="click"
-              data-ga="On this page"
-            >
-              On This Page: <span class="fas fa-chevron-down"></span>
-            </h4>
-            <div id="collapseExample" class="card card-body collapse">
-              <nav class="nav" aria-label="Same Page">
-                <a
-                  class="nav-link"
-                  href="#first"
-                  data-ga-name="onclick"
-                  data-ga-event="link"
-                  data-ga-action="click"
-                  data-ga-type="internal link"
-                  data-ga-region="main content"
-                  data-ga-section="gettysburg address"
-                  data-ga="Anchor item"
-                >
-                  <span class="fas fa-link"></span>Anchor item
-                </a>
-                <a
-                  class="nav-link"
-                  href="#second"
-                  data-ga-name="onclick"
-                  data-ga-event="link"
-                  data-ga-action="click"
-                  data-ga-type="internal link"
-                  data-ga-region="main content"
-                  data-ga-section="gettysburg address"
-                  data-ga="Anchor item"
-                >
-                  <span class="fas fa-link"></span>Anchor item
-                </a>
-                <a
-                  class="nav-link"
-                  href="#third"
-                  data-ga-name="onclick"
-                  data-ga-event="link"
-                  data-ga-action="click"
-                  data-ga-type="internal link"
-                  data-ga-region="main content"
-                  data-ga-section="gettysburg address"
-                  data-ga="Anchor item"
-                >
-                  <span class="fa fa-link"></span>Anchor item
-                </a>
-                <a
-                  class="nav-link"
-                  href="#fourth"
-                  data-ga-name="onclick"
-                  data-ga-event="link"
-                  data-ga-action="click"
-                  data-ga-type="internal link"
-                  data-ga-region="main content"
-                  data-ga-section="gettysburg address"
-                  data-ga="Anchor item"
-                >
-                  <span class="fa fa-link"></span>Anchor item
-                </a>
-                <a
-                  class="nav-link"
-                  href="#fifth"
-                  data-ga-name="onclick"
-                  data-ga-event="link"
-                  data-ga-action="click"
-                  data-ga-type="internal link"
-                  data-ga-region="main content"
-                  data-ga-section="gettysburg address"
-                  data-ga="Anchor item"
-                >
-                  <span class="fa fa-link"></span>Anchor item
-                </a>
-              </nav>
-            </div>
+    <div
+      id="uds-anchor-menu"
+      class="uds-anchor-menu uds-anchor-menu-expanded-lg"
+    >
+      <div class="container">
+        <div class="uds-anchor-menu-wrapper">
+          <h4
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga="On this page"
+          >
+            On This Page: <span class="fas fa-chevron-down"></span>
+          </h4>
+          <div id="collapseExample" class="card card-body collapse">
+            <nav class="nav" aria-label="Same Page">
+              <a
+                class="nav-link"
+                href="#first"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="gettysburg address"
+                data-ga="Anchor item"
+              >
+                <span class="fas fa-link"></span>Anchor item
+              </a>
+              <a
+                class="nav-link"
+                href="#second"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="gettysburg address"
+                data-ga="Anchor item"
+              >
+                <span class="fas fa-link"></span>Anchor item
+              </a>
+              <a
+                class="nav-link"
+                href="#third"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="gettysburg address"
+                data-ga="Anchor item"
+              >
+                <span class="fa fa-link"></span>Anchor item
+              </a>
+              <a
+                class="nav-link"
+                href="#fourth"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="gettysburg address"
+                data-ga="Anchor item"
+              >
+                <span class="fa fa-link"></span>Anchor item
+              </a>
+              <a
+                class="nav-link"
+                href="#fifth"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section="gettysburg address"
+                data-ga="Anchor item"
+              >
+                <span class="fa fa-link"></span>Anchor item
+              </a>
+            </nav>
           </div>
         </div>
       </div>
@@ -414,7 +382,10 @@ export const AnchorMenu = createStory(
     <div style={{ height: "1000px" }}></div>
   </div>,
   {
-    initFunc,
-    omitTemplate: true,
+    initFunc
   }
 );
+
+AnchorMenu.args = {
+  template: 1,
+};
