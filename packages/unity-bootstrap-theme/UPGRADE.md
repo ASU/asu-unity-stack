@@ -27,10 +27,14 @@ Will vary from project to project - some CMS's supply FontAwesome as part of the
 `yarn add @fortawesome/fontawesome-free^5.15.3`
 
 ### Replace include/require/imports in your application with the new package.
-Note the updated files in `dist/`. We now ship with a 
-* TODO `dist/css/unity-bootstrap-theme.??????????.css` (required)
-* `dist/css/unity-bootstrap-header.css` (optional) - don't use if using the Unity `component-header` React component
-* `dist/css/unity-bootstrap-footer.css` (optional) - dont' use if using the Unity `component-footer` React component
+Note the updated CSS files in `dist/`. There are more options so don't have to include CSS you don't use.
+
+* `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
+* `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
+* `dist/css/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
+* `dist/css/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
+
+Note: the optional header and footer CSS require the base theme file to be included. If you want a truly standalone header with no other CSS dependencies, use the React version.
 
 See README.md for more details about using and extending the Unity Bootstrap 5 theme in your application.
 
