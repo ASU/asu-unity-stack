@@ -21,7 +21,7 @@
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
     "storybook": "start-storybook -p 9000",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./dist",
     "lint": "yarn js-lint && yarn css-lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
     "js-lint": "eslint \"**/*.js\"",
