@@ -5,6 +5,39 @@ import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scs
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 
 export const parameters = {
+  options: {
+    storySort: {
+      order: [
+        'Design',
+        [
+          'Colors',
+          'Typography',
+          'Layout',
+          'Icons',
+          'Backgrounds',
+          'Focus States',
+        ],
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Components',
+        'Docs',
+        [
+          'Global Header',
+          [
+            'Header top',
+            'Header main',
+            'Navbar options',
+            'No navigation',
+            'Additional considerations',
+          ],
+          'Content Sections',
+          'Hero',
+        ],
+      ],
+    },
+  },
+  layout: 'fullscreen',
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
