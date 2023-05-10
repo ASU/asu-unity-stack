@@ -15,16 +15,17 @@ To describe the effort necessary to move from the `bootstrap4-theme` package to 
 ## Steps to upgrade to the Unity Bootstrap 5 Theme
 
 ### Remove `bootstrap4-theme` package
-`yarn remove @asu/bootstrap4-theme`
+If using yarn, `yarn remove @asu/bootstrap4-theme`, or if using npm, `npm uninstall @asu/bootstrap4-theme`
 
 ### Add `unity-bootstrap-theme` package
-`yarn add @asu/unity-bootstrap-theme`
+If using yarn, `yarn add @asu/unity-bootstrap-theme`, or if using npm, `npm install @asu/unity-bootstrap-theme`
 
 You may want to specify a release tag.
+Leaving off the tag will install the latest version.
 
 ### Add new peerDependency for fontawesome
 Will vary from project to project - some CMS's supply FontAwesome as part of the application, while standalone applicaitons will want to add the requirement to their application, like so:
-`yarn add @fortawesome/fontawesome-free^5.15.3`
+`yarn add @fortawesome/fontawesome-free^5.15.3` or `npm install @fortawesome/fontawesome-free^5.15.3`
 
 ### Replace include/require/imports in your application with the new package.
 Note the updated CSS files in `dist/`. There are more options so don't have to include CSS you don't use.
@@ -40,8 +41,17 @@ See README.md for more details about using and extending the Unity Bootstrap 5 t
 
 ### ensure fontawesome is included/required/imported
 
-### update Unity design component markup used by your application. Most design components' markup changed little or not at all in this update. A few to pay close attention to are:
-TODO X
+### Update Unity design component markup used by your application. Most design components' markup changed little or not at all in this update. A few to pay close attention to are:
+
+#### Update Accordion markup
+
+
+- Accordions have deprecated the use of `foldable-card` classes. Instead, use `accordion` and `accordion-item` classes.
+- The `foldable-card-header` class has been replaced with `accordion-header` and the `foldable-card-header-button` class has been replaced with `accordion-button`.
+- The `foldable-card-body` class has been replaced with `accordion-body`.
+
+**Accordions require the use of Javascript to function. If using Webspark, this has already been done for you. If using the Unity Bootstrap 5 theme in a standalone application, you will need to import the bundled bootstrap javascript file which is available in `@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js`**
+
 TODO Y
 TODO Z
 
