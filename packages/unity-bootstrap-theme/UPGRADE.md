@@ -15,20 +15,23 @@ To describe the effort necessary to move from the `bootstrap4-theme` package to 
 ## Steps to upgrade to the Unity Bootstrap 5 Theme
 
 ### Remove `bootstrap4-theme` package
+
 If using yarn, `yarn remove @asu/bootstrap4-theme`, or if using npm, `npm uninstall @asu/bootstrap4-theme`
 
 ### Add `unity-bootstrap-theme` package
+
 If using yarn, `yarn add @asu/unity-bootstrap-theme`, or if using npm, `npm install @asu/unity-bootstrap-theme`
 
-You may want to specify a release tag.
-Leaving off the tag will install the latest version.
+You may want to specify a release tag. Leaving off the tag will install the latest version.
 
-### Add new peerDependency for fontawesome
-Will vary from project to project - some CMS's supply FontAwesome as part of the application, while standalone applicaitons will want to add the requirement to their application, like so:
+### Add new peerDependency for Font Awesome
+
+How consumers meet this dependency varies from project to project. Some CMS's supply Font Awesome as part of the application, while standalone applications may want to add the requirement using a package manager, for instance:
 `yarn add @fortawesome/fontawesome-free^5.15.3` or `npm install @fortawesome/fontawesome-free^5.15.3`
 
 ### Replace include/require/imports in your application with the new package.
-Note the updated CSS files in `dist/`. There are more options so don't have to include CSS you don't use.
+
+Note the updated CSS files in `dist/`. There are more options so you don't have to include CSS you don't use.
 
 * `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
 * `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
@@ -39,12 +42,11 @@ Note: the optional header and footer CSS require the base theme file to be inclu
 
 See README.md for more details about using and extending the Unity Bootstrap 5 theme in your application.
 
-### ensure fontawesome is included/required/imported
+### Update Unity component markup used by your application. 
 
-### Update Unity design component markup used by your application. Most design components' markup changed little or not at all in this update. A few to pay close attention to are:
+Most design components' markup changed little or not at all in this update. A few to pay close attention to are:
 
-#### Update Accordion markup
-
+#### Accordion markup
 
 - Accordions have deprecated the use of `foldable-card` classes. Instead, use `accordion` and `accordion-item` classes.
 - The `foldable-card-header` class has been replaced with `accordion-header` and the `foldable-card-header-button` class has been replaced with `accordion-button`.
@@ -52,10 +54,8 @@ See README.md for more details about using and extending the Unity Bootstrap 5 t
 
 **Accordions require the use of Javascript to function. If using Webspark, this has already been done for you. If using the Unity Bootstrap 5 theme in a standalone application, you will need to import the bundled bootstrap javascript file which is available in `@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js`**
 
-TODO Y
-TODO Z
-
 ### Update Unity design component tag attributes to comply with Bootstrap 5 conventions. Details follow:
+
 Regex of tag attribute changes:
 * change `data-(toggle|parent|target|dismiss)?=` to `data-bs-$1=`
 * change `mr-\d` to `me-$1`
@@ -66,4 +66,3 @@ Regex of tag attribute changes:
 New class pattern .text-bg-{color} used in badges
 
 Please note: these replacements encompass the Unity Bootstrap usage of the core Bootstrap attributes. If your application makes use of other Bootstrap classes and conventions, please refer to the official Bootstrap migration documentation linked above to ensure your application is fully updated for Bootstrap 5 when you switch to the `unity-bootstrap-theme`.
-
