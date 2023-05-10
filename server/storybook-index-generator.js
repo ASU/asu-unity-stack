@@ -17,24 +17,21 @@ module.exports = generateHTML = packages => `
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.css">
-    <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-header.css">
-    <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-footer.css">
+    <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/global-header.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/global-header-datalayer.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/assets/fontawesome/js/all.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header-datalayer.js"></script>
 
     <style>
     #header-top input[type='search'] {
-      background: url(/bootstrap4-theme/src/img/font-awesome-svg/search-gray-6.svg) no-repeat 10px 50%;
+      background: url(/unity-bootstrap-theme/src/img/font-awesome-svg/search-gray-6.svg) no-repeat 10px 50%;
       background-size: 12px;
     }
 
     #header-top input[type='search']:focus {
-      background: url(/bootstrap4-theme/src/img/font-awesome-svg/search-gray-5.svg) no-repeat 10px 50%;
+      background: url(/unity-bootstrap-theme/src/img/font-awesome-svg/search-gray-5.svg) no-repeat 10px 50%;
       background-size: 12px;
       background-color: #ffffff;
     }
@@ -93,8 +90,8 @@ module.exports = generateHTML = packages => `
             <nav class="navbar navbar-expand-xl" aria-label="Main">
 
               <a class="navbar-brand" href="#">
-                <img class="vert" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
-                <img class="horiz" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
+                <img class="vert" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
+                <img class="horiz" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
               </a>
 
               <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
@@ -206,7 +203,7 @@ module.exports = generateHTML = packages => `
                 href="https://www.asu.edu/rankings"
               >
                 <img
-                  src="./@asu/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                  src="./@asu/unity-bootstrap-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
                 />
               </a>
