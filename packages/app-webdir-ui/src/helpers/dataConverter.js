@@ -224,6 +224,7 @@ export const staffConverter = ({
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
   const dateVal = Date.now();
   const queryConcat = filledDatum.photo_url.raw.includes("?") ? "&" : "?";
+  const processedImage = `${filledDatum.photo_url.raw}${queryConcat}size=medium&break=${dateVal}`;
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
@@ -241,7 +242,7 @@ export const staffConverter = ({
           id={asuriteEID}
           profileURL={`${profileURLBase}/profile/${asuriteEID}`}
           key={asuriteEID}
-          imgURL={`${filledDatum.photo_url.raw}${queryConcat}size=medium&break=${dateVal}`}
+          imgURL={processedImage}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
