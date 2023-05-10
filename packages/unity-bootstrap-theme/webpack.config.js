@@ -29,8 +29,7 @@ const jsConfig = {
   mode,
   devtool,
   entry: {
-    "global-header": [path.resolve(paths.js, "global-header.js")],
-    "global-header-datalayer": path.resolve(paths.js, "googleAnalytics.js"),
+    "global-header-datalayer": [path.resolve(paths.js, "global-header-datalayer.js")]
   },
   output: {
     path: paths.distJS,
