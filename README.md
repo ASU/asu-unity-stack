@@ -166,31 +166,24 @@ yarn stop # stop the testing server
 
 ### check-element-changes
 
-This tool shows outdated markup into the folder `unity-bootstrap-theme`
-It takes as an argument the number of days past from the last file changes.
-
+This tool shows updated markup in the folder `unity-bootstrap-theme`.
+It takes as an argument the number of days since the last file change.
 
 Example:
-let's say today is 4 November 2021 and I want to show those files changed 8 days ago
+Let's say today is 4 November 2021 and I want to show those files changed within the last 8 days. Run the command  `node ./scripts/check-element-changes.js -d 8`
 
-run the command  `node ./scripts/check-element-changes.js -d 8`
+The output will display files with the extension `.templates.js` where date of last change is >= 28 October
 
-I will display  only those files, which extension is `.templates.js`
-which date change is  >= 28 October
-
-shortcut command `yarn check-element-changes 8`
+Shortcut command: `yarn check-element-changes 8`
 
 <img src = "./docs/assets/check-element-changes.png" />
 
 ### check-element-local-changes
 
-This tool is similar to `check-element-changes` which difference is that it does not look latest change in `git` but it does in your file system.
+This tool is similar to `check-element-changes` with the difference being that it does not look at latest changes in `git` but instead uses your file system.
 
 Example:
-today: 4 November 2021
-past days: 2
-
-run the command  `node ./scripts/check-element-local-changes.js -d 2`
+Find updates within the past 2 days by running the command  `node ./scripts/check-element-local-changes.js -d 2`
 
 <img src = "./docs/assets/check-element-local-changes.png" />
 
