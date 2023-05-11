@@ -205,11 +205,11 @@ After publishing, a QA environment is deployed to AWS ECS with the latest built 
 
 ## > Google Analytics integration
 
-The Google Analytics integration is being done throughout Google Tag manager, this means that the events, of the user interaction, are being cathed by Google Tag manager, and then delivered to Google Analytics.
+Google Analytics integration for Unity is handled via Google Tag Manager. During user interaction with Unity components, usage data is captured by Google Tag Manager and delivered to Google Analytics.
 
-This is posible using the window `dataLayer` object. For all of the components in every package(that has the integration) of this repository we take the `dataLayer` object, with GTM already initialized by another user (CMS/WS2 user), and push each event, using `push()` method of the `dataLayer`, to the object already mentioned. When each object is included in the array, Google Tag manager catch that event.
+This is enabled using the window `dataLayer` object. For components in each package of this repository we take the `dataLayer` object, with GTM and the dataLayer having already been initialized (by the host application or CMS - see [https://unity.web.asu.edu](https://unity.web.asu.edu) for details on GTM setup), and push events using the `push()` method of the `dataLayer`. For each object included in the array, Google Tag manager catches that event.
 
-Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that push each event, if the `dataLayer` object exists, and that service method is called on each jsx element event handler. For example:
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that pushes each event if the `dataLayer` object exists and that service method is called on each jsx element event handler. For example:
 
 #### **`src/component.js`**
 ```JS
@@ -223,7 +223,7 @@ const trackGAEvent = (event) => {
 }
 ```
 
-For `bootstrap4-theme` package the events are being dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
 
 #### **`src/component.html`**
 ```JS
@@ -243,8 +243,9 @@ elements.forEach((element) =>
   })
 );
 ```
+Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the README.md's in individual Unity packages for more Google Analytics, Google Tag Manager and data layer implementation details.
 
-To read more about Google Tag manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
+To read more about Google Tag Manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
 
 ## ❯ Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
