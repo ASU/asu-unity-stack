@@ -16,7 +16,6 @@
   },
   "scripts": {
     "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
-    "init-sb": "npx storybook init --type html",
     "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
@@ -28,7 +27,6 @@
     "js-lint:fix": "eslint \"**/*.js\" --fix",
     "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
     "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
-
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
