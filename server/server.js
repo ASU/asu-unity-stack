@@ -28,21 +28,21 @@ app.use(express.static("packages"));
  */
 
 /***
- * Asuthemes header includes example
- */
-app.get("/asuthemes", function (req, res) {
-  // Important: This index.njs is a nunjucks template and resides in 'server/views'.
-  // Not to be confused with the root index.html in the static Storybook 'build' directory.
-  res.render("asuthemes/index.njk");
-});
-
-/***
  * Asuheader guide
  */
 app.get("/asuheader", function (req, res) {
   // Important: This index.njs is a nunjucks template and resides in 'server/views'.
   // Not to be confused with the root index.html in the static Storybook 'build' directory.
   res.render("asuheader/index.njk");
+});
+
+/***
+ * gtm-datalayer guide
+ */
+app.get("/gtm-datalayer", function (req, res) {
+  // Important: This index.njs is a nunjucks template and resides in 'server/views'.
+  // Not to be confused with the root index.html in the static Storybook 'build' directory.
+  res.render("gtm-datalayer/index.njk");
 });
 
 // Listen for stop command with socket.io. Referenced from stackoverflow answer:
