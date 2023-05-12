@@ -30,6 +30,7 @@ export const parameters = {
             'Navbar options',
             'No navigation',
             'Additional considerations',
+            'Mobile Breakpoint'
           ],
           'Content Sections',
           'Hero',
