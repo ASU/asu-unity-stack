@@ -175,6 +175,12 @@ module.exports = generateHTML = packages => `
         </div>
 
         <div class="col-md-6 pb-8">
+          <h2>Google Tag Manager and data layer</h2>
+          <p>Ensure your site or application has the necessary analytics integrations.</p>
+          <p><a class="btn btn-maroon btn-medium" href="gtm-datalayer/index.html">GTM and data layer guide</a></p>
+        </div>
+
+        <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
           <p><a href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
             Learn how to use the private package registry</a> to incorporate
