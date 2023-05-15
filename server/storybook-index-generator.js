@@ -20,7 +20,8 @@ module.exports = generateHTML = packages => `
     <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header-datalayer.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/googleAnalyticsExample.js"></script>
 
     <style>
     #header-top input[type='search'] {
