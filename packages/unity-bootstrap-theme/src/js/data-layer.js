@@ -151,7 +151,3 @@
    */
   window.initDataLayer = window.initDataLayer || initDataLayer;
 })();
-
-/* Do Not Copy - Used for local development */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.googleAnalytics = window.initDataLayer;

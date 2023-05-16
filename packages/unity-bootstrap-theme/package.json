@@ -84,8 +84,14 @@
       "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "default": "./dist/css/unity-bootstrap-theme.bundle.css"
     },
-    "./js/global-header.js": "./src/js/global-header.js",
-    "./js/data-layer.js": "./src/js/data-layer.js"
+    "./js/global-header.js": {
+      "module": "./src/js/storybook-global-header.js",
+      "default": "./src/js/global-header.js"
+    },
+    "./js/data-layer.js": {
+      "module": "./src/js/storybook-data-layer.js",
+      "default": "./src/js/data-layer.js"
+    }
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3"

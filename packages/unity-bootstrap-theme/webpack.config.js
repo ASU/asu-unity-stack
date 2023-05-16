@@ -55,9 +55,11 @@ const jsConfig = {
           to: paths.distJS,
         },
         {
-          from: path.resolve(
-            paths.js
-          ),
+          from: path.resolve(paths.js, "data-layer.js"),
+          to: paths.distJS,
+        },
+        {
+          from: path.resolve(paths.js, "global-header.js"),
           to: paths.distJS,
         },
       ],

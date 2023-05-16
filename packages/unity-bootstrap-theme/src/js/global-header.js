@@ -19,7 +19,3 @@
    *   window.initGlobalHeader();
    */
 })();
-
-/* Do Not Copy - Used for local development */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.initGlobalHeader = window.initGlobalHeader;
