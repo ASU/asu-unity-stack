@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
   <link rel="stylesheet" href="../@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" type="text/css" media="all">
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/data-layer.js"></script>
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/data-layer.js"></script>
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/global-header.js"></script>
   <script src="https://kit.fontawesome.com/35fb12a3a9.js" crossorigin="anonymous"></script>
 
   <style>
@@ -538,6 +538,23 @@
             can serve as a starting point or as a reference for implementing
             your own data layer push code.
           </p>
+
+          <p>You should be initilaizing the GA push events similar to the following
+            code snippet if you implement the Bootstrap header: <br/>
+          </p>
+            <pre><code>
+            &lt;script type="text/javascript" src="example/path/to/@asu/unity-bootstrap-theme/js/data-layer.js"&gt; &lt;/script&gt;
+            &lt;script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"&gt; &lt;/script&gt;
+            </code></pre>
+            <p>Then, the following code should be placed towards the bottom of your html doc or deferred.
+              This initializes the data layer and the global header classes
+            </p>
+            <pre> <code>
+            &lt;script&gt;
+              window.initDataLayer();
+              window.initGlobalHeader();
+            &lt;/script&gt;
+            </code> </pre>
 
         </div>
       </div>

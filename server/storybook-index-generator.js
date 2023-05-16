@@ -281,11 +281,12 @@ module.exports = generateHTML = packages => `
       </div>
     </div>
   </footer>
-
+  <--- Initialize DataLayer script and add scrolled behavior for header --->
   <script>
     window.initDataLayer();
     window.initGlobalHeader();
   </script>
+  <--- End header script script --->
   </body>
 </html>
 `;
