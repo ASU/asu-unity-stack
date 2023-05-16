@@ -54,6 +54,13 @@ const jsConfig = {
           ),
           to: paths.distJS,
         },
+        {
+          from: path.resolve(
+            paths.js,
+            "dataLayerExample.js"
+          ),
+          to: paths.distJS,
+        },
       ],
     }),
   ].filter(Boolean),

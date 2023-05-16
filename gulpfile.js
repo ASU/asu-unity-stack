@@ -9,7 +9,6 @@ copy = () => gulp.src(["./server/views/**/*"]).pipe(gulp.dest("./build/@asu"));
 // in the /server folder.
 // https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages#cname-errors
 cname = () => gulp.src(["./server/CNAME"]).pipe(gulp.dest("./build/"));
-cname = () => gulp.src(["./server/dataLayerExample.js"]).pipe(gulp.dest("./build/"));
 
 compile = () =>
   gulp
