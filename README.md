@@ -11,7 +11,7 @@ The ASU Unity Design System packages are published to GitHub's package registry.
 2. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
 3. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
 4. Test installing packages using yarn or npm inside of another NPM project:
-```yarn add @asu/design-tokens```
+```yarn add @asu/unity-bootstrap-theme```
 
 ### TROUBLESHOOTING INSTALLATION ERRORS
 
@@ -22,7 +22,7 @@ If you get errors having to do with yarn not being able to find a package on the
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
-1. [bootstrap4-theme](./packages/bootstrap4-theme/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages.
+1. [unity-bootstrap-theme](./packages/unity-bootstrap-theme/README.md) - ASU-customized Bootstrap 5 CSS library. This library serves as a structural base for most of the styling across our packages.
 2. [app-degree-pages](./packages/app-degree-pages/README.md)
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
@@ -33,7 +33,7 @@ This repository contains multiple packages which are managed and published using
 7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```bootstrap4-theme``` styles
 8. [component-news](./packages/component-news/README.md)
 9. [components-core](./packages/components-core/README.md)
-10. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
+10. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
 11. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
 12. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
