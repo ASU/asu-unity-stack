@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
   <link rel="stylesheet" href="../@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" type="text/css" media="all">
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header-datalayer.js"></script>j
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../dataLayerExample.js"></script>
   <script src="https://kit.fontawesome.com/35fb12a3a9.js" crossorigin="anonymous"></script>
 
   <style>
@@ -537,6 +537,31 @@
             can serve as a starting point or as a reference for implementing
             your own data layer push code.
           </p>
+          <p>You should be initilaizing the GA push events similar to the following
+            code snippet if you implement the bootstrap header: </br>
+            <code>
+            &lt;script type="text/javascript" src="../dataLayerExample.js"&gt; &lt;/script&gt;
+            </code>
+          </p>
+            <p>Then, the following code should be placed towards the bottom of your html doc or deferred
+              This adds the correct classes when the user scrolls down the page.
+            </p>
+            <code>&lt;script&gt; (function initGlobalHeader() {
+              // Scroll state
+              const handleWindowScroll = () => {
+                const headerEl = document.getElementById('asu-header');
+                const curPos = window.scrollY;
+                curPos > headerEl?.getBoundingClientRect().top
+                  ? headerEl?.classList.add('scrolled')
+                  : headerEl?.classList.remove('scrolled');
+              };
+
+              window.addEventListener('scroll', handleWindowScroll);
+
+              window.initDataLayer();
+            })(); &lt;/script&gt;</code>
+
+          </p>
 
         </div>
       </div>
@@ -801,6 +826,22 @@
       AsuCookieConsent.init();
     </script>
   </footer>
+  <script>
+    (function initGlobalHeader() {
+      // Scroll state
+      const handleWindowScroll = () => {
+        const headerEl = document.getElementById('asu-header');
+        const curPos = window.scrollY;
+        curPos > headerEl?.getBoundingClientRect().top
+          ? headerEl?.classList.add('scrolled')
+          : headerEl?.classList.remove('scrolled');
+      };
+
+      window.addEventListener('scroll', handleWindowScroll);
+
+      window.initDataLayer();
+    })();
+  </script>
 </body>
 
 </html>
