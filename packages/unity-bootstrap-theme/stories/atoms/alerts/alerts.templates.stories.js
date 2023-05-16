@@ -3,7 +3,7 @@ import {
   createStory,
   layoutNames,
 } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics.js";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 const extraOptions = {
   type: {

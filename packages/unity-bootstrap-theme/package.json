@@ -83,7 +83,9 @@
       "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "default": "./dist/css/unity-bootstrap-theme.bundle.css"
-    }
+    },
+    "./js/global-header.js": "./src/js/global-header.js",
+    "./js/data-layer.js": "./src/js/data-layer.js"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3"

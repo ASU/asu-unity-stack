@@ -56,8 +56,7 @@ const jsConfig = {
         },
         {
           from: path.resolve(
-            paths.js,
-            "dataLayerExample.js"
+            paths.js
           ),
           to: paths.distJS,
         },
@@ -65,15 +64,15 @@ const jsConfig = {
     }),
   ].filter(Boolean),
   optimization: {
-    minimize: env === "production",
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        extractComments: true,
+        extractComments: false,
         terserOptions: {
           compress: {
-            drop_console: true, // removes console statements
-            drop_debugger: true, // removes debugger statements
+            drop_console: false, // removes console statements
+            drop_debugger: false, // removes debugger statements
           },
         },
       }),

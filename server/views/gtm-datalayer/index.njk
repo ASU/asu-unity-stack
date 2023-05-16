@@ -8,7 +8,8 @@
   <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
   <link rel="stylesheet" href="../@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" type="text/css" media="all">
   <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header-datalayer.js"></script>j
+  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/data-layer.js"></script>
+  <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
   <script src="https://kit.fontawesome.com/35fb12a3a9.js" crossorigin="anonymous"></script>
 
   <style>
@@ -533,7 +534,7 @@
           <p>Add event listeners to your code to capture click and change
             events related to your `data-ga` attributes and to push that event
             to the data layer. As a help to get you started, the
-            `unity-bootstrap-theme` package's `dist/js/googleAnalytics.js` file
+            `unity-bootstrap-theme` package's `dist/js/data-layer.js` file
             can serve as a starting point or as a reference for implementing
             your own data layer push code.
           </p>
@@ -801,6 +802,10 @@
       AsuCookieConsent.init();
     </script>
   </footer>
+  <script>
+    window.initDataLayer();
+    window.initGlobalHeader();
+  </script>
 </body>
 
 </html>

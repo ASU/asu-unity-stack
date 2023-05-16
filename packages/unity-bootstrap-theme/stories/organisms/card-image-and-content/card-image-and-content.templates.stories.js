@@ -9,7 +9,7 @@ export default createComponent(
   "Organisms",
   "Templates"
 );
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics.js";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const CardAndImageContent = createStory(
   <div class="uds-card-image-and-content">

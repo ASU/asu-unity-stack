@@ -20,7 +20,8 @@ module.exports = generateHTML = packages => `
     <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/dataLayerExample.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/data-layer.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
 
     <title>Unity Design Kit</title>
   </head>
@@ -282,20 +283,8 @@ module.exports = generateHTML = packages => `
   </footer>
 
   <script>
-    (function initGlobalHeader() {
-      // Scroll state
-      const handleWindowScroll = () => {
-        const headerEl = document.getElementById('asu-header');
-        const curPos = window.scrollY;
-        curPos > headerEl?.getBoundingClientRect().top
-          ? headerEl?.classList.add('scrolled')
-          : headerEl?.classList.remove('scrolled');
-      };
-
-      window.addEventListener('scroll', handleWindowScroll);
-
-      window.initDataLayer();
-    })();
+    window.initDataLayer();
+    window.initGlobalHeader();
   </script>
   </body>
 </html>
