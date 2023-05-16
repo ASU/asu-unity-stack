@@ -20,8 +20,7 @@ module.exports = generateHTML = packages => `
     <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
-    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/googleAnalyticsExample.js"></script>
+    <script type="text/javascript" src="./dataLayerExample.js"></script>
 
     <style>
     #header-top input[type='search'] {
@@ -295,7 +294,22 @@ module.exports = generateHTML = packages => `
     </div>
   </footer>
 
-  </body>
+  <script>
+    (function initGlobalHeader() {
+      // Scroll state
+      const handleWindowScroll = () => {
+        const headerEl = document.getElementById('asu-header');
+        const curPos = window.scrollY;
+        curPos > headerEl?.getBoundingClientRect().top
+          ? headerEl?.classList.add('scrolled')
+          : headerEl?.classList.remove('scrolled');
+      };
 
+      window.addEventListener('scroll', handleWindowScroll);
+
+      window.initDataLayer();
+    })();
+  </script>
+  </body>
 </html>
 `;
