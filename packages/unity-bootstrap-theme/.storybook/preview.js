@@ -20,7 +20,6 @@ export const parameters = {
         'Atoms',
         'Molecules',
         'Organisms',
-        'Components',
         'Docs',
         [
           'Global Header',
