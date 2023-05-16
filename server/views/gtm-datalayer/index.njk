@@ -538,30 +538,32 @@
             your own data layer push code.
           </p>
           <p>You should be initilaizing the GA push events similar to the following
-            code snippet if you implement the bootstrap header: <br/>
-            <code>
-            &lt;script type="text/javascript" src="../dataLayerExample.js"&gt; &lt;/script&gt;
-            </code>
+            code snippet if you implement the Bootstrap header: <br/>
           </p>
-            <p>Then, the following code should be placed towards the bottom of your html doc or deferred
-              This adds the correct classes when the user scrolls down the page.
+            <pre><code>
+            &lt;script type="text/javascript" src="example/path/to/@asu/unity-bootstrap-theme/js/data-layer.js"&gt; &lt;/script&gt;
+            </code></pre>
+            <p>Then, the following code should be placed towards the bottom of your html doc or deferred.
+              This adds the correct classes when the user scrolls down the page as well as initilaizes the data layer from the script above.
             </p>
-            <code>&lt;script&gt; (function initGlobalHeader() {
-              // Scroll state
-              const handleWindowScroll = () => {
-                const headerEl = document.getElementById('asu-header');
-                const curPos = window.scrollY;
-                curPos > headerEl?.getBoundingClientRect().top
-                  ? headerEl?.classList.add('scrolled')
-                  : headerEl?.classList.remove('scrolled');
-              };
+            <pre> <code>
+            &lt;script&gt;
+                (function initGlobalHeader() {
+                // Scroll state
+                const handleWindowScroll = () => {
+                  const headerEl = document.getElementById('asu-header');
+                  const curPos = window.scrollY;
+                  curPos > headerEl?.getBoundingClientRect().top
+                    ? headerEl?.classList.add('scrolled')
+                    : headerEl?.classList.remove('scrolled');
+                };
 
-              window.addEventListener('scroll', handleWindowScroll);
+                window.addEventListener('scroll', handleWindowScroll);
 
-              window.initDataLayer();
-            })(); &lt;/script&gt;</code>
-
-          </p>
+                window.initDataLayer();
+              })();
+            &lt;/script&gt;
+            </code> </pre>
 
         </div>
       </div>

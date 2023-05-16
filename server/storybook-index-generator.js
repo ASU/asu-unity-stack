@@ -20,7 +20,7 @@ module.exports = generateHTML = packages => `
     <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/dataLayerExample.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/data-layer.js"></script>
 
     <title>Unity Design Kit</title>
   </head>
@@ -281,6 +281,7 @@ module.exports = generateHTML = packages => `
     </div>
   </footer>
 
+  <--- Initialize DataLayer script and add scrolled behavior for header --->
   <script>
     (function initGlobalHeader() {
       // Scroll state
@@ -297,6 +298,7 @@ module.exports = generateHTML = packages => `
       window.initDataLayer();
     })();
   </script>
+  <--- End header script script --->
   </body>
 </html>
 `;
