@@ -1,6 +1,6 @@
 import React from "react";
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics.js";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
 const extraOptions = {
   numCards: {

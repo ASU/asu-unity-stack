@@ -1,4 +1,4 @@
-import { googleAnalytics } from '../../../src/js/googleAnalytics';
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const initModals = () => {
   document
