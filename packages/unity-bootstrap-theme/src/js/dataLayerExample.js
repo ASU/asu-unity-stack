@@ -149,5 +149,5 @@
    * Example:
    *   window.initDataLayer();
    */
-  window.initDataLayer = initDataLayer;
+  window.initDataLayer = window.initDataLayer || initDataLayer;
 })();

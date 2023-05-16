@@ -20,20 +20,7 @@ module.exports = generateHTML = packages => `
     <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
     <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./dataLayerExample.js"></script>
-
-    <style>
-    #header-top input[type='search'] {
-      background: url(/unity-bootstrap-theme/src/img/font-awesome-svg/search-gray-6.svg) no-repeat 10px 50%;
-      background-size: 12px;
-    }
-
-    #header-top input[type='search']:focus {
-      background: url(/unity-bootstrap-theme/src/img/font-awesome-svg/search-gray-5.svg) no-repeat 10px 50%;
-      background-size: 12px;
-      background-color: #ffffff;
-    }
-    </style>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/dataLayerExample.js"></script>
 
     <title>Unity Design Kit</title>
   </head>
