@@ -30,9 +30,9 @@ export default createComponent(
 
 export const BasicBlockquote = createStory(args => {
   return (
-    <div class={args.type}>
+    <div className={args.type}>
       <div
-        class={`uds-blockquote ${
+        className={`uds-blockquote ${
           args.type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
         } uds-content-align`}
       >
@@ -46,10 +46,10 @@ export const BasicBlockquote = createStory(args => {
             unalienable Rights, that among these are Life, Liberty and the
             pursuit of Happiness.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Thomas Jefferson</cite>
-              <cite class="description">The Declaration of Independence</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Thomas Jefferson</cite>
+              <cite className="description">The Declaration of Independence</cite>
             </div>
           </div>
         </blockquote>
@@ -60,9 +60,9 @@ export const BasicBlockquote = createStory(args => {
 
 export const BlockquoteWithImage = createStory(args => {
   return (
-    <div class={args.type}>
+    <div className={args.type}>
       <div
-        class={`uds-blockquote ${
+        className={`uds-blockquote ${
           args.type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
         } with-image ${args.reversed ? "reversed" : ""} uds-content-align`}
       >
@@ -73,7 +73,7 @@ export const BlockquoteWithImage = createStory(args => {
           height="400"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <blockquote>
           <p>
@@ -83,10 +83,10 @@ export const BlockquoteWithImage = createStory(args => {
             fundamental responsibility for the economic, social, cultural and
             overall health of the communities it serves.
           </p>
-          <div class="citation">
-            <div class="citation-content">
-              <cite class="name">Michael M. Crow</cite>
-              <cite class="description">ASU Charter</cite>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="name">Michael M. Crow</cite>
+              <cite className="description">ASU Charter</cite>
             </div>
           </div>
         </blockquote>

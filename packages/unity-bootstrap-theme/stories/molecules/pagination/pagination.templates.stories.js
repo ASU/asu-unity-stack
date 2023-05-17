@@ -1,5 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 const extraOptions = {
   bgColor: {
@@ -39,25 +39,25 @@ export const Basic = createStory(
     return (
       <nav aria-label="Page navigation example">
         <ul
-          class={`pagination ${
+          className={`pagination ${
             args.border ? "justify-content-center border p-2" : ""
           } ${args.bgColor}`}
         >
           {args.icons && (
-            <li class="page-item">
-              <a class="page-link page-link-icon" href="#">
+            <li className="page-item">
+              <a className="page-link page-link-icon" href="#">
                 Prev
               </a>
             </li>
           )}
-          <li class="page-item">
-            <a class="page-link" href="#">
+          <li className="page-item">
+            <a className="page-link" href="#">
               Prev
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -70,9 +70,9 @@ export const Basic = createStory(
               1
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -85,9 +85,9 @@ export const Basic = createStory(
               2
             </a>
           </li>
-          <li class="page-item">
+          <li className="page-item">
             <a
-              class="page-link"
+              className="page-link"
               href="#"
               data-ga-event="select"
               data-ga-action="click"
@@ -100,14 +100,14 @@ export const Basic = createStory(
               3
             </a>
           </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
+          <li className="page-item">
+            <a className="page-link" href="#">
               Next
             </a>
           </li>
           {args.icons && (
-            <li class="page-item">
-              <a class="page-link page-link-icon" href="#">
+            <li className="page-item">
+              <a className="page-link page-link-icon" href="#">
                 Next
               </a>
             </li>

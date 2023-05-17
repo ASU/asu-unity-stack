@@ -3,7 +3,7 @@ import {
   createStory,
   layoutNames,
 } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics.js";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 const extraOptions = {
   size: {
@@ -31,27 +31,27 @@ export default createComponent(
 export const HeroSmallOneButton = createStory(
   args => {
     return (
-      <div class={`${args.size} has-btn-row`}>
+      <div className={`${args.size} has-btn-row`}>
         <div className="hero-overlay"></div>
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/random/2560x512"
           alt="Sample placeholder image."
           width="2560"
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <h1>
-          <span class="highlight-white">
+          <span className="highlight-white">
             Lorem ipsum dolor sit amet, consectetur adip
           </span>
         </h1>
-        <div class="btn-row">
+        <div className="btn-row">
           <a
             href="#"
-            class="btn btn-maroon"
+            className="btn btn-maroon"
             data-ga="Call to action"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -78,32 +78,32 @@ HeroSmallOneButton.args = {
 export const HeroSmallTwoButtons = createStory(
   args => {
     return (
-      <div class={`${args.size} has-btn-row`}>
+      <div className={`${args.size} has-btn-row`}>
         <div className="hero-overlay"></div>
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/random/2560x512"
           alt="Sample placeholder image."
           width="2560"
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <h1>
-          <span class="highlight-gold">Gettysburg Address</span>
+          <span className="highlight-gold">Gettysburg Address</span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Four score and seven years ago our fathers brought forth upon this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.
           </p>
         </div>
-        <div class="btn-row">
+        <div className="btn-row">
           <a
             href="#"
-            class="btn btn-default btn-maroon"
+            className="btn btn-default btn-maroon"
             data-ga="Read more"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -116,7 +116,7 @@ export const HeroSmallTwoButtons = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-default btn-gold"
+            className="btn btn-default btn-gold"
             data-ga="More quotes"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -141,32 +141,32 @@ HeroSmallTwoButtons.args = {
 };
 
 export const StoryHero = createStory(
-  <section class="uds-story-hero">
+  <section className="uds-story-hero">
     <img
-      class="hero"
+      className="hero"
       src="https://source.unsplash.com/random/2560x512"
       alt="Sample placeholder image."
       width="2560"
       height="512"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
-    <div class="content">
+    <div className="content">
       <nav aria-label="breadcrumbs">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <a href="#">Home</a>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <a href="#">Second Nav Item</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             <a href="#">Current Page</a>
           </li>
         </ol>
       </nav>
-      <h1 class="article">
+      <h1 className="article">
         ASU is measured not by whom we exclude, but rather by whom we include
         and how they succeed.
       </h1>

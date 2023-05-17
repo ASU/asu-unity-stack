@@ -83,7 +83,7 @@ export const createStory = (
         typeof componentJSX === "function" ? componentJSX(args) : componentJSX;
 
       const componentCode = omitTemplate
-        ? codeWithArgs
+        ? <div id="html-root">{ codeWithArgs }</div>
         : template(codeWithArgs, args.template);
 
       return (

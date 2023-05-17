@@ -20,7 +20,7 @@
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
     "storybook": "start-storybook -p 9000",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./dist",
     "lint": "yarn js-lint && yarn css-lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
     "js-lint": "eslint \"**/*.js\"",
@@ -81,6 +81,14 @@
       "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
       "default": "./dist/css/unity-bootstrap-theme.bundle.css"
+    },
+    "./js/global-header.js": {
+      "module": "./src/js/storybook-global-header.js",
+      "default": "./src/js/global-header.js"
+    },
+    "./js/data-layer.js": {
+      "module": "./src/js/storybook-data-layer.js",
+      "default": "./src/js/data-layer.js"
     }
   },
   "peerDependencies": {

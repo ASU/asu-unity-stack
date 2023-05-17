@@ -1,18 +1,18 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Accordions", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 const FoldableCardElement = (
   accordionID = null,
   linkID = null,
   bodyID = null
 ) => (
-  <div class="card accordion-item">
-    <div class="accordion-header">
+  <div className="card accordion-item">
+    <div className="accordion-header">
       <h3>
         <a
           id={`${linkID}`}
-          class="collapsed"
+          className="collapsed"
           data-bs-toggle="collapse"
           data-bs-target={bodyID ? `#${bodyID}` : ""}
           href={bodyID ? `#${bodyID}` : ""}
@@ -27,13 +27,13 @@ const FoldableCardElement = (
           data-ga-section="default"
         >
           This card unfolds.
-          <span class="fas fa-chevron-up"></span>
+          <span className="fas fa-chevron-up"></span>
         </a>
       </h3>
     </div>
     <div
       id={`${bodyID}`}
-      class="collapse accordion-body"
+      className="collapse accordion-body"
       aria-labelledby={`${linkID}`}
       data-bs-parent={accordionID ? `#${accordionID}` : ""}
     >
@@ -63,7 +63,7 @@ export const FoldableCard = createStory(
 );
 
 export const Accordion = createStory(
-  <div class="accordion" id="accordionExample">
+  <div className="accordion" id="accordionExample">
     {FoldableCardElement("accordionExample", "cardOne", "cardBodyOne")}
     {FoldableCardElement("accordionExample", "cardTwo", "cardBodyTwo")}
     {FoldableCardElement("accordionExample", "cardThree", "cardBodyThree")}

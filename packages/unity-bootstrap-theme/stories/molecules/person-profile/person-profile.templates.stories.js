@@ -1,5 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "../../../src/js/googleAnalytics";
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 import { Button } from "../../../../components-core/src/components/Button";
 import anonPic from "./anon.png";
 
@@ -47,7 +47,7 @@ const PersonProfile = props => (
           height="300"
           decoding="async"
           loading="lazy"
-          fetchPriority="high"
+          fetchpriority="high"
           onError={e => (e.target.style.display = "none")}
         />
       </div>
@@ -162,7 +162,7 @@ const PersonProfile = props => (
       {props.size === "small" && (
         <Button color="maroon" size="small" label="View Profile" />
       )}
-      {props.size === "micro" && <span class="more-link">Edplus at ASU</span>}
+      {props.size === "micro" && <span className="more-link">Edplus at ASU</span>}
     </div>
   </div>
 );

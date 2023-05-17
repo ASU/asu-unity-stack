@@ -29,8 +29,7 @@ const jsConfig = {
   mode,
   devtool,
   entry: {
-    "global-header": [path.resolve(paths.js, "global-header.js")],
-    "googleAnalytics": path.resolve(paths.js, "googleAnalytics.js"),
+
   },
   output: {
     path: paths.distJS,
@@ -55,19 +54,27 @@ const jsConfig = {
           ),
           to: paths.distJS,
         },
+        {
+          from: path.resolve(paths.js, "data-layer.js"),
+          to: paths.distJS,
+        },
+        {
+          from: path.resolve(paths.js, "global-header.js"),
+          to: paths.distJS,
+        },
       ],
     }),
   ].filter(Boolean),
   optimization: {
-    minimize: env === "production",
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        extractComments: true,
+        extractComments: false,
         terserOptions: {
           compress: {
-            drop_console: true, // removes console statements
-            drop_debugger: true, // removes debugger statements
+            drop_console: false, // removes console statements
+            drop_debugger: false, // removes debugger statements
           },
         },
       }),

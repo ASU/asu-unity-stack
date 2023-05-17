@@ -11,7 +11,7 @@ The list of links within the navbar breaks from the normal tradition of a cumber
 The most basic representation of a link uses the default Bootstrap class.
 
 ```
-<a class="nav-link" href="#">Tour</a>
+<a className="nav-link" href="#">Tour</a>
 ```
 
 # Dropdown Menus
@@ -21,16 +21,16 @@ The anatomy of a dropdown menu breaks somewhat from you would find in Bootstrap 
 The maximum number of links recommended in any one column is eight.
 
 ```
-<div class="nav-item dropdown">
-  <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div className="nav-item dropdown">
+  <a className="nav-link" href="#" id="dropdown-one-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
-    <span class="fa fa-chevron-down"></span>
+    <span className="fa fa-chevron-down"></span>
   </a>
-  <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
-    <div class="dropdown-col">
-      <a class="dropdown-item" href="#">Navigation Link</a>
-      <a class="dropdown-item" href="#">Another Link</a>
-      <a class="dropdown-item" href="#">Third</a>
+  <div className="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+    <div className="dropdown-col">
+      <a className="dropdown-item" href="#">Navigation Link</a>
+      <a className="dropdown-item" href="#">Another Link</a>
+      <a className="dropdown-item" href="#">Third</a>
     </div>
   </div>
 </div>
@@ -39,19 +39,19 @@ The maximum number of links recommended in any one column is eight.
 The two column dropdown variant adds a second `.dropdown-col` to the `.dropdown-columns` container above. Our design system only allows for a maximum of two columns of links in this type of dropdown menu. (For more than three columns, use a [mega menu](?path=/docs/docs-global-header-navbar-options--page#mega-menus).)
 
 ```
-<div class="nav-item dropdown">
-  <a class="nav-link" href="#" id="dropdown-one-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div className="nav-item dropdown">
+  <a className="nav-link" href="#" id="dropdown-one-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
-    <span class="fa fa-chevron-down"></span>
+    <span className="fa fa-chevron-down"></span>
   </a>
-  <div class="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
-    <div class="dropdown-col">
-      <a class="dropdown-item" href="#">Link</a>
-      <a class="dropdown-item" href="#">Link</a>
+  <div className="dropdown-menu dropdown-columns" aria-labelledby="dropdown-one-col">
+    <div className="dropdown-col">
+      <a className="dropdown-item" href="#">Link</a>
+      <a className="dropdown-item" href="#">Link</a>
     </div>
-    <div class="dropdown-col">
-      <a class="dropdown-item" href="#">Link</a>
-      <a class="dropdown-item" href="#">Link</a>
+    <div className="dropdown-col">
+      <a className="dropdown-item" href="#">Link</a>
+      <a className="dropdown-item" href="#">Link</a>
     </div>
   </div>
 </div>
@@ -66,11 +66,11 @@ Dropdown columns can also optionally include headers at the top of each column a
 - All button colors are allowed in this context.
 
 ```
-<div class="dropdown-col">
+<div className="dropdown-col">
   <h3>Column Header</h3>
-  <a class="dropdown-item" href="#">Link</a>
-  <a class="dropdown-item" href="#">Link</a>
-  <a href="#" class="btn btn-sm btn-dark">Action</a>
+  <a className="dropdown-item" href="#">Link</a>
+  <a className="dropdown-item" href="#">Link</a>
+  <a href="#" className="btn btn-sm btn-dark">Action</a>
 </div>
 ```
 
@@ -85,28 +85,28 @@ In the default Boostrap menu system a "mega menu" is not a defined element. The 
 The three column variant of a mega menu looks like this:
 
 ```
-<div class="nav-item dropdown megamenu">
-  <a class="nav-link" href="#" id="megamenu-three-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div className="nav-item dropdown megamenu">
+  <a className="nav-link" href="#" id="megamenu-three-col" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Mega Menu (3 col)
-    <span class="fa fa-chevron-down"></span>
+    <span className="fa fa-chevron-down"></span>
   </a>
-  <div class="dropdown-menu" aria-labelledby="megamenu-three-col">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg">
+  <div className="dropdown-menu" aria-labelledby="megamenu-three-col">
+    <div className="container">
+      <div className="row">
+        <div className="col-lg">
           <h3>Column one</h3>
-          <a class="dropdown-item" href="#">Link</a>
-          <a class="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
         </div>
-        <div class="col-lg">
+        <div className="col-lg">
           <h3>Column two</h3>
-          <a class="dropdown-item" href="#">Link</a>
-          <a class="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
         </div>
-        <div class="col-lg">
+        <div className="col-lg">
           <h3>Column three</h3>
-          <a class="dropdown-item" href="#">Link</a>
-          <a class="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
+          <a className="dropdown-item" href="#">Link</a>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@ The three column variant of a mega menu looks like this:
 
 ## Adding more columns to the mega menu
 
-To extend the menu to the four and five column variants, add another `<div class="col-lg"></div>` to the designated row and fill it with your favorite links. Serve chilled with an olive or two as a garnish.
+To extend the menu to the four and five column variants, add another `<div className="col-lg"></div>` to the designated row and fill it with your favorite links. Serve chilled with an olive or two as a garnish.
 
 The mega menu system has also been tested with two and six column variations, although neither of these appear as options in the design document.
 
@@ -131,11 +131,11 @@ The markup for this resembles the markup for dropdown menus and follows the same
 - One button per column.
 
 ```
-<div class="col-lg">
+<div className="col-lg">
   <h3>Column three</h3>
-  <a class="dropdown-item" href="#">Link</a>
-  <a class="dropdown-item" href="#">Link</a>
-  <a href="#" class="btn btn-sm btn-dark">Column action</a>
+  <a className="dropdown-item" href="#">Link</a>
+  <a className="dropdown-item" href="#">Link</a>
+  <a href="#" className="btn btn-sm btn-dark">Column action</a>
 </div>
 ```
 
@@ -144,21 +144,21 @@ It is also possible to define a set of call to action buttons that correspond to
 The same rules apply for the button sizes and alllowed colors. A maximum of two buttons should be used in this space.
 
 ```
-<div class="dropdown-menu" aria-labelledby="dont-forget-aria-rules">
-  <div class="container">
-    <div class="row">
+<div className="dropdown-menu" aria-labelledby="dont-forget-aria-rules">
+  <div className="container">
+    <div className="row">
       ...
-      <div class="col-lg">
+      <div className="col-lg">
         <h3>Column four</h3>
-        <a class="dropdown-item" href="#">Link</a>
-        <a class="dropdown-item" href="#">Link</a>
+        <a className="dropdown-item" href="#">Link</a>
+        <a className="dropdown-item" href="#">Link</a>
       </div>
       ...
     </div>
-    <div class="row with-buttons">
-      <div class="col-lg-12">
-        <a href="#" class="btn btn-sm btn-gold">Mega menu action</a>
-        <a href="#" class="btn btn-sm btn-gold">Secondary action</a>
+    <div className="row with-buttons">
+      <div className="col-lg-12">
+        <a href="#" className="btn btn-sm btn-gold">Mega menu action</a>
+        <a href="#" className="btn btn-sm btn-gold">Secondary action</a>
       </div>
     </div>
   <div>
