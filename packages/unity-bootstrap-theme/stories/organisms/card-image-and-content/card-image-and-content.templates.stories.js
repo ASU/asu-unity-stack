@@ -16,7 +16,7 @@ export const CardAndImageContent = createStory(
     <div
       className="uds-card-image-and-content-image-container"
       style={{
-        "background-image":
+        backgroundImage:
           "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
       }}
     ></div>

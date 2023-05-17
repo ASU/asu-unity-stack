@@ -16,7 +16,7 @@ export const Componentfont = createStory(
           </strong>
         </p>
 
-        <h1 style={{ "font-weight": "100!important" }}>Arial regular</h1>
+        <h1 style={{ fontWeight: "100!important" }}>Arial regular</h1>
         <p>
           ABCDEFGHIJKLMNOPQRSTUVWXYZ
           <br />

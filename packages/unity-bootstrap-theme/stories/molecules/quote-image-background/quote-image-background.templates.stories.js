@@ -9,7 +9,7 @@ export const Default = createStory(
   <div
     className="uds-quote-image-background"
     style={{
-      "background-image":
+      backgroundImage:
         "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
     }}
   >

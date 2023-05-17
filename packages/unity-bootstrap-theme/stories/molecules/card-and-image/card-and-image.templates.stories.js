@@ -22,7 +22,7 @@ export const LeftFloatedCard = createStory(args => {
         args.left ? "" : "uds-card-and-image-right"
       }`}
       style={{
-        "background-image":
+        backgroundImage:
           "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
       }}
     >
@@ -80,7 +80,7 @@ export const RightFloatedCard = createStory(args => {
         args.left ? "" : "uds-card-and-image-right"
       }`}
       style={{
-        "background-image":
+        backgroundImage:
           "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
       }}
     >
