@@ -3,15 +3,27 @@
 
 Bootstrap 4 UI theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
 
+## ❯ For consumers of a single package:
+
+1. You must configure your local NPM to use the ASU Unity Design System package registry. You must add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
+```
+@asu:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
+```
+2. Install the package using yarn or npm:
+```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
+
+
 ## ❯ How to use the private package registry:
 
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
 
-1. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
-2. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
-3. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
-4. Test installing packages using yarn or npm inside of another NPM project:
-```yarn add @asu/unity-bootstrap-theme```
+1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
+2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
+3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
+4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
+5. Test installing packages using yarn or npm inside of another NPM project:
+```yarn add @asu/design-tokens```
 
 ### TROUBLESHOOTING INSTALLATION ERRORS
 

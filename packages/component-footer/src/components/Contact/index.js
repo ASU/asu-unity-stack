@@ -19,9 +19,11 @@ const Contact = ({
         <div className="row" data-testid="columns-container">
           <div className="col-xl-3" id="info-column">
             <h5>{title}</h5>
-            <p className="contact-link">
-              <a href={contactLink}>Contact Us</a>
-            </p>
+            {contactLink && (
+              <p className="contact-link">
+                <a href={contactLink}>Contact Us</a>
+              </p>
+            )}
             {contributionLink && (
               <p
                 className="contribute-button"

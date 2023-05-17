@@ -40,7 +40,6 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",

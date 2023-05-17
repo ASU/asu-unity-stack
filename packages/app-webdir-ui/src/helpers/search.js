@@ -56,45 +56,44 @@ const getTopResult = (results, engineName) => {
   }
   return null;
 };
-const standardFormatter = (
+const standardFormatter = ({
   engineName,
   results,
   cardSize,
   appPathFolder,
   localSection,
-  props
-) => {
+  props,
+}) => {
   const topResult = getTopResult(results.results, engineName);
   return {
     tab: engineName,
     page: results.meta.page,
     results: results.results.map(result =>
-      engines[engineName].converter(
-        result,
-        { size: cardSize, fill: false },
+      engines[engineName].converter({
+        datum: result,
+        options: { size: cardSize, fill: false },
         appPathFolder,
         logClick,
-        results["meta"].request_id,
+        requestId: results["meta"].request_id,
         localSection,
-        { ...props }
-      )
+        props: { ...props },
+      })
     ),
     topResult:
       topResult === null
         ? null
-        : engines[engineName].converter(
-            topResult,
-            {
+        : engines[engineName].converter({
+            datum: topResult,
+            options: {
               size: "small",
               profileURLBase: engines[engineName].profileURLBase,
               fill: true,
             },
             appPathFolder,
             logClick,
-            results["meta"].request_id,
-            null,
-            { ...props }
-          ),
+            requestId: results["meta"].request_id,
+            props: { ...props },
+          }),
   };
 };
 
@@ -122,13 +121,13 @@ export const anonFormatter = (
   };
 };
 
-const webDirDeptsFormatter = (
+const webDirDeptsFormatter = ({
   engineName,
   results,
   cardSize,
   filters,
-  appPathFolder
-) => {
+  appPathFolder,
+}) => {
   let localResults = null;
   let localPage = 1;
   if (engines[engineName].name === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
@@ -159,15 +158,15 @@ const webDirDeptsFormatter = (
     page: localPage,
     results: localResults.map(result => {
       try {
-        return engines[engineName].converter(
-          result,
-          {
+        return engines[engineName].converter({
+          datum: result,
+          options: {
             size: "large",
             titleMatch: titleOverwrite,
             profileURLBase: "https://search.asu.edu",
           },
-          appPathFolder
-        );
+          appPathFolder,
+        });
       } catch (e) {
         console.log(e, result);
         return null;
@@ -185,8 +184,13 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, filters = null, appPathFolder) =>
-      standardFormatter(engineNames.FACULTY, results, cardSize, appPathFolder),
+    formatter: ({ results, cardSize, filters = null, appPathFolder }) =>
+      standardFormatter({
+        engineName: engineNames.FACULTY,
+        results,
+        cardSize,
+        appPathFolder,
+      }),
     needsTerm: true,
   },
   [engineNames.STUDENTS]: {
@@ -197,8 +201,13 @@ export const engines = {
     resultsPerSummaryPage: 3,
     supportedSortTypes: ["_score_desc", "last_name_asc", "last_name_desc"],
     method: "GET",
-    formatter: (results, cardSize, filters = null, appPathFolder) =>
-      standardFormatter(engineNames.STUDENTS, results, cardSize, appPathFolder),
+    formatter: ({ results, cardSize, filters = null, appPathFolder }) =>
+      standardFormatter({
+        engineName: engineNames.STUDENTS,
+        results,
+        cardSize,
+        appPathFolder,
+      }),
     needsTerm: true,
   },
   [engineNames.SITES]: {
@@ -236,22 +245,22 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "date_desc"],
     method: "GET",
-    formatter: (
+    formatter: ({
       results,
       cardSize,
       filters = null,
       appPathFolder,
       localSection = null,
-      { ...props }
-    ) => {
-      return standardFormatter(
-        engineNames.SITES_LOCAL,
+      props: { ...props },
+    }) => {
+      return standardFormatter({
+        engineName: engineNames.SITES_LOCAL,
         results,
         cardSize,
         appPathFolder,
         localSection,
-        { ...props }
-      );
+        props: { ...props },
+      });
     },
     needsTerm: true,
   },
@@ -268,14 +277,14 @@ export const engines = {
       "employee_weight",
     ],
     method: "GET",
-    formatter: (results, cardSize, filters, appPathFolder) =>
-      webDirDeptsFormatter(
-        engineNames.WEB_DIRECTORY_DEPARTMENTS,
+    formatter: ({ results, cardSize, filters, appPathFolder }) =>
+      webDirDeptsFormatter({
+        engineName: engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
         filters,
-        appPathFolder
-      ),
+        appPathFolder,
+      }),
     needsTerm: false,
   },
   [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
@@ -286,14 +295,14 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["faculty_rank"],
     method: "GET",
-    formatter: (results, cardSize, filters, appPathFolder) =>
-      webDirDeptsFormatter(
-        engineNames.WEB_DIRECTORY_DEPARTMENTS,
+    formatter: ({ results, cardSize, filters, appPathFolder }) =>
+      webDirDeptsFormatter({
+        engineName: engineNames.WEB_DIRECTORY_DEPARTMENTS,
         results,
         cardSize,
         filters,
-        appPathFolder
-      ),
+        appPathFolder,
+      }),
     needsTerm: false,
   },
   [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
@@ -304,14 +313,14 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "POST",
-    formatter: (results, cardSize, filters, appPathFolder) =>
-      webDirDeptsFormatter(
-        engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
+    formatter: ({ results, cardSize, filters, appPathFolder }) =>
+      webDirDeptsFormatter({
+        engineName: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
         results,
         cardSize,
         filters,
-        appPathFolder
-      ),
+        appPathFolder,
+      }),
     needsTerm: false,
   },
 };
