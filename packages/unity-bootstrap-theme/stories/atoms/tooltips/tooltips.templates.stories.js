@@ -24,7 +24,7 @@ export const Tooltips = createStory(args => {
     <div className={`uds-tooltip-bg-${args.color}`}>
       <div className="uds-tooltip-container">
         <button
-          tabindex="0"
+          tabIndex="0"
           className={`uds-tooltip uds-tooltip-${
             args.color === "base-gray" ? "gray-1" : args.color
           }`}

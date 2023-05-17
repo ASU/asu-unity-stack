@@ -9,7 +9,7 @@ export const DisabledAndActiveStatesComponent = createStory(
         <a
           className="page-link page-link-icon"
           href="#"
-          tabindex="-1"
+          tabIndex="-1"
           aria-disabled="true"
         />
       </li>

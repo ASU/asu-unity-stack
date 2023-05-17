@@ -73,7 +73,7 @@ export const BlockquoteWithImage = createStory(args => {
           height="400"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <blockquote>
           <p>

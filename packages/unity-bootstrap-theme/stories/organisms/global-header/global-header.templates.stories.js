@@ -110,7 +110,7 @@ export const Basic = (
                     width="303"
                     height="234"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                   <img
                     className="horiz"
@@ -119,7 +119,7 @@ export const Basic = (
                     width="400"
                     height="72"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </a>
                 <button
@@ -445,7 +445,7 @@ export const DropDownMenus = (
                     width="303"
                     height="234"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                   <img
                     className="horiz"
@@ -454,7 +454,7 @@ export const DropDownMenus = (
                     width="400"
                     height="72"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </a>
                 <button
@@ -1538,7 +1538,7 @@ export const NoNavigation = (
                     width="303"
                     height="234"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                   <img
                     className="horiz"
@@ -1547,7 +1547,7 @@ export const NoNavigation = (
                     width="400"
                     height="72"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </a>
                 <button
@@ -1775,7 +1775,7 @@ export const NoNavigationAndWithButtons = (
                     width="303"
                     height="234"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                   <img
                     className="horiz"
@@ -1784,7 +1784,7 @@ export const NoNavigationAndWithButtons = (
                     width="400"
                     height="72"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </a>
                 <button
@@ -2033,7 +2033,7 @@ export const ScrolledState = (
                     width="303"
                     height="234"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                   <img
                     className="horiz"
@@ -2042,7 +2042,7 @@ export const ScrolledState = (
                     width="400"
                     height="72"
                     decoding="async"
-                    fetchPriority="high"
+                    fetchpriority="high"
                   />
                 </a>
                 <button
@@ -2480,7 +2480,7 @@ export const Partner = (
                         width="232"
                         height="81"
                         decoding="async"
-                        fetchPriority="high"
+                        fetchpriority="high"
                       />
                     </a>
                     <a href="#" data-ga-header="asu logo">
@@ -2491,7 +2491,7 @@ export const Partner = (
                         width="303"
                         height="234"
                         decoding="async"
-                        fetchPriority="high"
+                        fetchpriority="high"
                       />
                       <img
                         className="horiz"
@@ -2500,7 +2500,7 @@ export const Partner = (
                         width="400"
                         height="72"
                         decoding="async"
-                        fetchPriority="high"
+                        fetchpriority="high"
                       />
                     </a>
                   </div>

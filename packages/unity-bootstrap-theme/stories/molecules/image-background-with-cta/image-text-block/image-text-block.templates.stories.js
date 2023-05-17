@@ -45,7 +45,7 @@ export const ImageLeftOrRight = createStory(args => {
           height="750"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         ></img>
       </div>
       <div className={`uds-image-text-block-text-container ${args.bgColor}`}>

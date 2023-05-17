@@ -21,7 +21,7 @@ export const LargeImageNoCaptionComponent = createStory(args => {
         height="750"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
     </div>
   );
@@ -39,7 +39,7 @@ export const LargeImageCaptionComponent = createStory(args => {
           height="600"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <figcaption className="figure-caption uds-figure-caption">
           <span className="uds-caption-text">

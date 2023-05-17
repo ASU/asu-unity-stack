@@ -15,7 +15,7 @@ export const ImageParalax = createStory(
             height="900"
             loading="lazy"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
           <div className="parallax-container-content">
             <h2>Carve your path</h2>

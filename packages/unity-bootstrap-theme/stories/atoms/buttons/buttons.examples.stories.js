@@ -165,7 +165,7 @@ export const DisabledStateComponent = createStory(
       <a
         href="#"
         className="btn btn-gold disabled"
-        tabindex="-1"
+        tabIndex="-1"
         role="button"
         aria-disabled="true"
       >
@@ -175,7 +175,7 @@ export const DisabledStateComponent = createStory(
       <a
         href="#"
         className="btn btn-maroon disabled"
-        tabindex="-1"
+        tabIndex="-1"
         role="button"
         aria-disabled="true"
       >

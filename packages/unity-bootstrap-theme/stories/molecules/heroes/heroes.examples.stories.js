@@ -19,7 +19,7 @@ export const HeroMedium = createStory(
       height="512"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <h1>
       <span className="highlight-white">
@@ -82,7 +82,7 @@ export const HeroLarge = createStory(
         height="512"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div role="doc-subtitle">
         <span className="highlight-black">sub head</span>
@@ -129,7 +129,7 @@ export const StoryHeroLarge = createStory(
         height="512"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="content">
         <nav aria-label="breadcrumbs">
@@ -211,7 +211,7 @@ export const HeroVideo = createStory(
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <video id="media-video" autoPlay muted loop>
           <source src={stockVideo} />

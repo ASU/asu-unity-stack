@@ -47,7 +47,7 @@ const PersonProfile = props => (
           height="300"
           decoding="async"
           loading="lazy"
-          fetchPriority="high"
+          fetchpriority="high"
           onError={e => (e.target.style.display = "none")}
         />
       </div>

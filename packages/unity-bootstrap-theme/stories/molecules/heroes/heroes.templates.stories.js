@@ -41,7 +41,7 @@ export const HeroSmallOneButton = createStory(
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <h1>
           <span className="highlight-white">
@@ -88,7 +88,7 @@ export const HeroSmallTwoButtons = createStory(
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <h1>
           <span className="highlight-gold">Gettysburg Address</span>
@@ -150,7 +150,7 @@ export const StoryHero = createStory(
       height="512"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <div className="content">
       <nav aria-label="breadcrumbs">

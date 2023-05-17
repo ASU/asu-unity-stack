@@ -31,7 +31,7 @@ export const ImageOverlapRightOrLeft = createStory(
           height="600"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <div className="content-wrapper">
           <h3>This is the content that goes in the box.</h3>

@@ -62,7 +62,7 @@ export const cardNoTemplates = args => {
             height="337"
             loading="lazy"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         )}
         <div className="card-header pt-2">

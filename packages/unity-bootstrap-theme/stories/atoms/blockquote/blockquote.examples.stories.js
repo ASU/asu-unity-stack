@@ -90,7 +90,7 @@ export const BlockquoteWithImage = createStory(
           height="300"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <blockquote>
           <p>
@@ -121,7 +121,7 @@ export const BlockquoteNoCitation = createStory(
         height="300"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <blockquote>
         <h3>
@@ -140,7 +140,7 @@ export const BlockquoteNoCitation = createStory(
           height="300"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <blockquote>
           <h3>
@@ -253,7 +253,7 @@ export const TestimonialsWithImage = createStory(
         height="400"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -280,7 +280,7 @@ export const TestimonialsWithImage = createStory(
           height="400"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />

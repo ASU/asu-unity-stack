@@ -17,7 +17,7 @@ export const LargeImageNoCaptionComponent = createStory(
       height="750"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
   </div>
 );
@@ -35,7 +35,7 @@ export const LargeImageNoCaptionComponentBorderless = createStory(
       height="750"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
   </div>
 );
@@ -54,7 +54,7 @@ export const LargeImageCaptionComponent = createStory(
         height="600"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <figcaption className="figure-caption uds-figure-caption">
         <span className="uds-caption-text">
@@ -82,7 +82,7 @@ export const LargeImageCaptionComponentBorderless = createStory(
         height="600"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <figcaption className="figure-caption uds-figure-caption">
         <span className="uds-caption-text">
@@ -111,7 +111,7 @@ export const LargeImagesDropShadowComponent = createStory(
         height="600"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
     </div>
     {/* Component end */}
@@ -130,7 +130,7 @@ export const LargeImagesDropShadowComponent = createStory(
           height="600"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <figcaption className="figure-caption uds-figure-caption">
           <span className="uds-caption-text">
@@ -176,7 +176,7 @@ export const SmallImagesComponent = createStory(
           height="600"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
       </div>
       {/* Component end */}
@@ -197,7 +197,7 @@ export const SmallImagesComponent = createStory(
             height="600"
             loading="lazy"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
           <figcaption className="figure-caption uds-figure-caption">
             <span className="uds-caption-text">

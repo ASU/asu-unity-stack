@@ -17,7 +17,7 @@ export default createComponent(
 import "./tables";
 
 export const DefaultComponent = createStory(
-  <div className="uds-table" tabindex="0">
+  <div className="uds-table" tabIndex="0">
     <table>
       <thead>
         <tr>
@@ -142,7 +142,7 @@ export const FixedComponent = createStory(
       </button>
     </div>
 
-    <div className="uds-table uds-table-fixed" tabindex="0">
+    <div className="uds-table uds-table-fixed" tabIndex="0">
       <table>
         <thead>
           <tr>

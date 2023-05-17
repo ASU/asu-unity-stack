@@ -16,7 +16,7 @@ export const cardImages = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -30,7 +30,7 @@ export const cardImages = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -44,7 +44,7 @@ export const cardImages = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -202,7 +202,7 @@ export const cardDegree = createStory(
       height="337"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <div className="card-header">
       <h3 className="card-title">Card default title</h3>
@@ -271,7 +271,7 @@ export const cardStory = createStory(
       height="337"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <div className="card-header">
       <h3 className="card-title">Card default title</h3>
@@ -340,7 +340,7 @@ export const cardEvent = createStory(
       height="337"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <div className="card-header">
       <h3 className="card-title">Card default title</h3>
@@ -427,7 +427,7 @@ export const cardVariations = createStory(
               height="337"
               loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">Card default title</h3>
@@ -563,7 +563,7 @@ export const cardVariations = createStory(
               height="337"
               loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">Card event without borders</h3>
@@ -628,7 +628,7 @@ export const cardVariations = createStory(
               height="337"
               loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">Card with image and no borders</h3>
@@ -775,7 +775,7 @@ export const cardVariations = createStory(
               height="337"
               loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">Card default title</h3>
@@ -884,7 +884,7 @@ export const cardVariations = createStory(
               height="337"
               loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="card-body">
               <p className="card-text">
@@ -988,7 +988,7 @@ export const horizontal = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-content-wrapper">
         <div className="card-header">
@@ -1032,7 +1032,7 @@ export const horizontal = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-content-wrapper">
         <div className="card-header">
@@ -1076,7 +1076,7 @@ export const horizontal = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-content-wrapper">
         <div className="card-header">
@@ -1127,7 +1127,7 @@ export const horizontal = createStory(
         height="337"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="card-content-wrapper">
         <div className="card-header">
@@ -1175,7 +1175,7 @@ export const checkboxStackedCard = createStory(
           height="337"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
       </div>
       <form className="uds-form card-image-overlay-content ms-4">
@@ -1275,7 +1275,7 @@ export const checkboxInlineCard = createStory(
           height="337"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
       </div>
       <form className="uds-form card-image-overlay-content ms-4">
@@ -1378,7 +1378,7 @@ export const mediaTypeOverlayCard = createStory(
                 height="337"
                 loading="lazy"
                 decoding="async"
-                fetchPriority="high"
+                fetchpriority="high"
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-4">
@@ -1452,7 +1452,7 @@ export const mediaTypeOverlayCard = createStory(
                 height="337"
                 loading="lazy"
                 decoding="async"
-                fetchPriority="high"
+                fetchpriority="high"
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-2">
