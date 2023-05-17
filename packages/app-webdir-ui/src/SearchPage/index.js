@@ -18,6 +18,7 @@ function SearchPage({
   API_URL,
   searchApiVersion,
   loggedIn,
+  deptAdmin,
   profileURLBase,
   appPathFolder,
 }) {
@@ -147,7 +148,7 @@ function SearchPage({
             label="Edit my profile"
             href="/profile-edit"
           />
-          {loggedIn && (
+          {loggedIn && deptAdmin && (
             <Button
               color="gray"
               icon={["fas", "lock"]}
@@ -205,6 +206,7 @@ SearchPage.propTypes = {
   API_URL: PropTypes.string,
   searchApiVersion: PropTypes.string,
   loggedIn: PropTypes.bool,
+  deptAdmin: PropTypes.bool,
   profileURLBase: PropTypes.string,
   appPathFolder: PropTypes.string,
 };
