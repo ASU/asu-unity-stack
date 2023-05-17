@@ -25,22 +25,22 @@ export default createComponent(
 );
 
 export const Default = createStory(({ background }) => (
-  <div class={`uds-inset-box-container ${background}`}>
-    <div class="uds-inset-box-content">
+  <div className={`uds-inset-box-container ${background}`}>
+    <div className="uds-inset-box-content">
       <h3>Lorem ipsum dolor sit amet</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
       </p>
-      <div class="uds-inset-box-buttons">
-        <a href="#" class="btn btn-dark">
+      <div className="uds-inset-box-buttons">
+        <a href="#" className="btn btn-dark">
           Button link here
         </a>
-        <a href="#" class="btn btn-dark">
+        <a href="#" className="btn btn-dark">
           Button link here
         </a>
       </div>
-      <a href="#" class="">
+      <a href="#" className="">
         Regular text link here
       </a>
     </div>

@@ -33,7 +33,7 @@ const Testimonial = ({
         decoding="async"
         // @ts-ignore
         // eslint-disable-next-line
-        fetchPriority="high"
+        fetchpriority="high"
       />
     )}
     <svg role="presentation" viewBox="0 0 302.87 245.82">

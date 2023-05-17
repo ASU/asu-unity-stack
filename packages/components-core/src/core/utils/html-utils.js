@@ -15,7 +15,7 @@ function queryFirstFocusable(targetSelector) {
 
   /** @type {FocusableElement} */
   const focusable = target.querySelector(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])'
   );
 
   return focusable;

@@ -46,51 +46,51 @@ export default createComponent("Cards", "Molecules", "Templates", extraOptions);
 export const cardNoTemplates = args => {
   return (
     <div style={{ width: "50%" }}>
-      <div class="card">
+      <div className="card">
         {args.cardHeader === "icon" && (
           <span
-            class="far fa-calendar fa-2x card-icon-top"
+            className="far fa-calendar fa-2x card-icon-top"
             title="Calendar Icon"
           />
         )}
         {args.cardHeader === "image" && (
           <img
-            class="card-img-top"
+            className="card-img-top"
             src={exampleImage}
             alt="Card image cap"
             width="600"
             height="337"
             loading="lazy"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         )}
-        <div class="card-header pt-2">
+        <div className="card-header pt-2">
           <h3>Heading</h3>
         </div>
-        <div class="card-body">
-          <p class="card-text">
+        <div className="card-body">
+          <p className="card-text">
             Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
             amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua eiusmod tempo.
           </p>
         </div>
         {args.event && (
-          <div class="card-event-details">
-            <div class="card-event-icons">
+          <div className="card-event-details">
+            <div className="card-event-icons">
               <div>
-                <i class="fas fa-map-marker-alt"></i>
+                <i className="fas fa-map-marker-alt"></i>
               </div>
               <div>Downtown Phoenix campus</div>
             </div>
           </div>
         )}
         {args.numButtons > 0 && (
-          <div class="card-buttons">
-            <div class="card-button">
+          <div className="card-buttons">
+            <div className="card-button">
               <a
                 href="#"
-                class="btn btn-dark"
+                className="btn btn-dark"
                 data-ga="Button link here"
                 data-ga-name="onclick"
                 data-ga-event="link"
@@ -103,10 +103,10 @@ export const cardNoTemplates = args => {
               </a>
             </div>
             {args.numButtons === 2 && (
-              <div class="card-button">
+              <div className="card-button">
                 <a
                   href="#"
-                  class="btn btn-md btn-dark"
+                  className="btn btn-md btn-dark"
                   data-ga="Button link here"
                   data-ga-name="onclick"
                   data-ga-event="link"
@@ -122,10 +122,10 @@ export const cardNoTemplates = args => {
           </div>
         )}
         {args.link && (
-          <div class="card-link">
+          <div className="card-link">
             <a
               href="#"
-              class=""
+              className=""
               data-ga="Regular text link here"
               data-ga-name="onclick"
               data-ga-event="link"
@@ -139,14 +139,14 @@ export const cardNoTemplates = args => {
           </div>
         )}
         {args.tags && (
-          <div class="card-tags">
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
+          <div className="card-tags">
+            <a className="btn btn-tag btn-tag-alt-white" href="#">
               test tag
             </a>
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
+            <a className="btn btn-tag btn-tag-alt-white" href="#">
               test tag 2
             </a>
-            <a class="btn btn-tag btn-tag-alt-white" href="#">
+            <a className="btn btn-tag btn-tag-alt-white" href="#">
               test tag 3
             </a>
           </div>

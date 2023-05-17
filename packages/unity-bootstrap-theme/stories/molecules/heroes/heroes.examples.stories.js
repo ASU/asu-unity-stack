@@ -9,33 +9,33 @@ import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 export default createComponent("Heroes", "Molecules", "Examples");
 
 export const HeroMedium = createStory(
-  <div class="uds-hero-md has-btn-row">
+  <div className="uds-hero-md has-btn-row">
     <div className="hero-overlay"></div>
     <img
-      class="hero"
+      className="hero"
       src="https://source.unsplash.com/random/2560x512"
       alt="Sample placeholder image."
       width="2560"
       height="512"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <h1>
-      <span class="highlight-white">
+      <span className="highlight-white">
         Lorem ipsum dolor sit amet, consectetur adip
       </span>
     </h1>
-    <div class="content">
-      <p class="text-white">
+    <div className="content">
+      <p className="text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         incididuntåç ut labore et dolore magna aliqua eiusmod tempo.
       </p>
     </div>
-    <div class="btn-row">
+    <div className="btn-row">
       <a
         href="#"
-        class="btn btn-default btn-gold"
+        className="btn btn-default btn-gold"
         data-ga="more quotes"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -48,7 +48,7 @@ export const HeroMedium = createStory(
       </a>
       <a
         href="#"
-        class="btn btn-default btn-maroon"
+        className="btn btn-default btn-maroon"
         data-ga="more quotes"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -72,30 +72,30 @@ HeroMedium.args = {
 
 export const HeroLarge = createStory(
   <>
-    <div class="uds-hero-lg has-btn-row">
+    <div className="uds-hero-lg has-btn-row">
       <div className="hero-overlay"></div>
       <img
-        class="hero"
+        className="hero"
         src="https://source.unsplash.com/random/2560x512"
         alt="Sample placeholder image."
         width="2560"
         height="512"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div role="doc-subtitle">
-        <span class="highlight-black">sub head</span>
+        <span className="highlight-black">sub head</span>
       </div>
       <h1>
-        <span class="highlight-gold">
+        <span className="highlight-gold">
           Lorem ipsum dolor sit amet, consectetur adip
         </span>
       </h1>
       <div className="btn-row">
         <a
           href="#"
-          class="btn btn-default btn-gold"
+          className="btn btn-default btn-gold"
           data-ga="more quotes"
           data-ga-name="onclick"
           data-ga-event="link"
@@ -120,40 +120,40 @@ HeroLarge.args = {
 
 export const StoryHeroLarge = createStory(
   <div>
-    <section class="uds-story-hero uds-story-hero-lg entry-header">
+    <section className="uds-story-hero uds-story-hero-lg entry-header">
       <img
-        class="hero"
+        className="hero"
         src="https://source.unsplash.com/random/2560x512"
         alt="Sample placeholder image."
         width="2560"
         height="512"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
-      <div class="content">
+      <div className="content">
         <nav aria-label="breadcrumbs">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="#">Home</a>
             </li>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <a href="#">Second Nav Item</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               <a href="#">Current Page</a>
             </li>
           </ol>
         </nav>
-        <h1 class="article">
+        <h1 className="article">
           The answer to the ultimate question of life, the universe, and
           everything
         </h1>
       </div>
     </section>
-    <div class="container-xl">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
+    <div className="container-xl">
+      <div className="row">
+        <div className="col-lg-10 offset-lg-1">
           <article>
             <p>
               Cuba Poland worldwide hotel South-America flexibility Amsterdam
@@ -201,47 +201,47 @@ StoryHeroLarge.args = {
 export const HeroVideo = createStory(
   args => {
     return (
-      <div class="uds-hero-lg uds-video-hero has-btn-row">
+      <div className="uds-hero-lg uds-video-hero has-btn-row">
         <div className="hero-overlay"></div>
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/random/2560x512"
           alt="Sample placeholder image."
           width="2560"
           height="512"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <video id="media-video" autoPlay muted loop>
           <source src={stockVideo} />
           Your browser does not support the video tag.
         </video>
-        <div class="video-hero-controls">
+        <div className="video-hero-controls">
           <button
             id="playHeroVid"
             type="button"
-            class="btn btn-circle btn-circle-alt-white btn-circle-large"
+            className="btn btn-circle btn-circle-alt-white btn-circle-large"
           >
-            <span class="fa fa-play"></span>
-            <span class="visually-hidden">Play hero video</span>
+            <span className="fa fa-play"></span>
+            <span className="visually-hidden">Play hero video</span>
           </button>
           <button
             id="pauseHeroVid"
             type="button"
-            class="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
+            className="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
           >
-            <span class="fa fa-pause"></span>
-            <span class="visually-hidden">Pause</span>
+            <span className="fa fa-pause"></span>
+            <span className="visually-hidden">Pause</span>
           </button>
         </div>
         <h1>
-          <span class="highlight-white">
+          <span className="highlight-white">
             Be a collaborator in exploring space
           </span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
           </p>
@@ -249,7 +249,7 @@ export const HeroVideo = createStory(
         <div className="btn-row">
           <a
             href="#"
-            class="btn btn-maroon"
+            className="btn btn-maroon"
             data-ga="Call to action"
             data-ga-name="onclick"
             data-ga-event="link"
@@ -262,7 +262,7 @@ export const HeroVideo = createStory(
           </a>
           <a
             href="#"
-            class="btn btn-gold"
+            className="btn btn-gold"
             data-ga="Call to action"
             data-ga-name="onclick"
             data-ga-event="link"

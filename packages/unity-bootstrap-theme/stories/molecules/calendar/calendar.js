@@ -88,21 +88,21 @@ export const initCalendar = function () {
   const render = () => {
     const calendarContainer = document.getElementById('calendar');
     calendarContainer.innerHTML = `
-      <h2><span class="highlight-black">${months[state.month]} ${
+      <h2><span className="highlight-black">${months[state.month]} ${
       state.year
     }</span></h2>
-      <div class="calendar-grid">
-        <div class="heading desktop">
+      <div className="calendar-grid">
+        <div className="heading desktop">
           ${desktopDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
         </div>
-        <div class="heading mobile">
+        <div className="heading mobile">
           ${mobileDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
         </div>
-        <div class="body">
+        <div className="body">
           ${datesForGrid(state.year, state.month)
             .map(
               (date) =>
-                `<h3 id="${date.key}" class="calendar-item ${
+                `<h3 id="${date.key}" className="calendar-item ${
                   date.monthClass
                 }" ${
                   date.todayClass
@@ -111,7 +111,7 @@ export const initCalendar = function () {
                       )}"`
                     : ''
                 }>
-                  <span class="${date.todayClass ? date.todayClass : ''}">${
+                  <span className="${date.todayClass ? date.todayClass : ''}">${
                   date.date
                 }</span>
                 </h3>`
@@ -119,7 +119,7 @@ export const initCalendar = function () {
             .join('')}
         </div>
       </div>
-      <div class="calendar-nav">
+      <div className="calendar-nav">
         <button
           id="prev-month"
           aria-label="Previous month"
@@ -131,7 +131,7 @@ export const initCalendar = function () {
           data-ga-section="calendar"
           data-ga="left chevron"
         >
-          <span class="fas fa-angle-left"></span>
+          <span className="fas fa-angle-left"></span>
         </button>
         <button
           id="next-month"
@@ -144,7 +144,7 @@ export const initCalendar = function () {
           data-ga-section="calendar"
           data-ga="right chevron"
         >
-          <span class="fas fa-angle-right"></span>
+          <span className="fas fa-angle-right"></span>
         </button>
       </div>
   `;

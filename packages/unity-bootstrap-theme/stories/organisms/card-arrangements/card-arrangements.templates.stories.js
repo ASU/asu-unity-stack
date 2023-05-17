@@ -43,11 +43,11 @@ export const CardArrangement = createStory(
     });
     return (
       <div
-        class={`uds-card-arrangement ${
+        className={`uds-card-arrangement ${
           args.vertical ? "uds-card-arrangement-vertical" : ""
         }`}
       >
-        <div class="uds-card-arrangement-content-container">
+        <div className="uds-card-arrangement-content-container">
           <h2>Lorem ipsum dolor sit amet</h2>
           {args.vertical && (
             <p>
@@ -64,10 +64,10 @@ export const CardArrangement = createStory(
               fugiat nulla pariatur.
             </p>
           )}
-          <button class="btn btn-dark">Default button</button>
+          <button className="btn btn-dark">Default button</button>
         </div>
         <div
-          class={`uds-card-arrangement-card-container  ${
+          className={`uds-card-arrangement-card-container  ${
             args.autoArrangement ? "auto-arrangement" : ""
           }`}
         >

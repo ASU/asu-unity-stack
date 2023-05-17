@@ -33,15 +33,15 @@ export const Alert = createStory(
   args => {
     return (
       <div
-        class={`alert ${args.type} ${
+        className={`alert ${args.type} ${
           args.dismissable ? "alert-dismissable" : ""
         }`}
         role="alert"
       >
-        <div class="alert-icon">
-          <span title="Alert" class="fa fa-icon fa-bell"></span>
+        <div className="alert-icon">
+          <span title="Alert" className="fa fa-icon fa-bell"></span>
         </div>
-        <div class="alert-content">
+        <div className="alert-content">
           This is an alert to alert. It is built using{" "}
           <a href="https://getbootstrap.com/docs/4.0/components/alerts">
             the Bootstrap 4 alert classes
@@ -49,10 +49,10 @@ export const Alert = createStory(
           .
         </div>
         {args.dismissable && (
-          <div class="alert-close">
+          <div className="alert-close">
             <button
               type="button"
-              class="btn btn-circle btn-circle-alt-black close"
+              className="btn btn-circle btn-circle-alt-black close"
               data-bs-dismiss="alert"
               aria-label="Close"
               data-ga="close cross"
@@ -64,7 +64,7 @@ export const Alert = createStory(
               data-ga-section="This is an alert to alert. It is built using the Bootstrap 4
                 alert classes"
             >
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </button>
           </div>
         )}

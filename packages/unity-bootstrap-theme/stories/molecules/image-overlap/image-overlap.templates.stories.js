@@ -22,18 +22,18 @@ export default createComponent(
 export const ImageOverlapRightOrLeft = createStory(
   args => {
     return (
-      <div class={`uds-image-overlap ${args.left ? "content-left" : ""}`}>
+      <div className={`uds-image-overlap ${args.left ? "content-left" : ""}`}>
         <img
-          class="img-fluid"
+          className="img-fluid"
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
           alt="Generic image from PlaceIMG"
           width="800"
           height="600"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
-        <div class="content-wrapper">
+        <div className="content-wrapper">
           <h3>This is the content that goes in the box.</h3>
           <p>
             Instagram tour operator travel sailing flying package. Territory New

@@ -12,19 +12,19 @@ export default createComponent(
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const CardAndImageContent = createStory(
-  <div class="uds-card-image-and-content">
+  <div className="uds-card-image-and-content">
     <div
-      class="uds-card-image-and-content-image-container"
+      className="uds-card-image-and-content-image-container"
       style={{
-        "background-image":
+        backgroundImage:
           "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
       }}
     ></div>
-    <div class="uds-card-image-and-content-content-container uds-content-align">
-      <div class="uds-card-image-and-content-content-container-headline uds-content-align">
+    <div className="uds-card-image-and-content-content-container uds-content-align">
+      <div className="uds-card-image-and-content-content-container-headline uds-content-align">
         Section headline goes here
       </div>
-      <div class="content">
+      <div className="content">
         Here is some introductory text about the topic featured in this section.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

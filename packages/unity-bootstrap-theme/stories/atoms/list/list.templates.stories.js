@@ -34,7 +34,7 @@ export default createComponent("List", "Atoms", "Templates", extraOptions);
 
 export const UnorderedList = createStory(args => {
   return (
-    <ul class={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
       <li>
         Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
@@ -49,7 +49,7 @@ export const UnorderedList = createStory(args => {
 
 export const OrderedList = createStory(args => {
   return (
-    <ol class={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ol className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
       <li>
         Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
@@ -103,21 +103,21 @@ export const OrderedList = createStory(args => {
 
 export const IconList = createStory(args => {
   return (
-    <ul class={`uds-list fa-ul ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list fa-ul ${args.bulletColor} ${args.backgroundColor}`}>
       <li>
-        <span class="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
+        <span className="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
       </li>
       <li>
-        <span class="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum
+        <span className="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum
         dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua.
       </li>
       <li>
-        <span class="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur
+        <span className="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur
         adipiscing elit.
       </li>
       <li>
-        <span class="fa-li fas fa-bicycle"></span>We hide icons from assistive
+        <span className="fa-li fas fa-bicycle"></span>We hide icons from assistive
         technology in these examples, but whether to hide using
         aria-hidden="true" or not should be determined by the developer based on
         whether the icons are intended as decoration only or are intended to
@@ -134,7 +134,7 @@ export const IconList = createStory(args => {
 export const StepList = createStory(args => {
   return (
     <ol
-      class={`uds-list uds-steplist ${
+      className={`uds-list uds-steplist ${
         args.bulletColor !== "" ? "uds-steplist-" + args.bulletColor : ""
       } ${args.backgroundColor}`}
     >
@@ -172,7 +172,7 @@ export const StepList = createStory(args => {
 export const DisplayList = createStory(args => {
   return (
     <ul
-      class={`uds-list uds-display-list ${args.bulletColor} ${args.backgroundColor}`}
+      className={`uds-list uds-display-list ${args.bulletColor} ${args.backgroundColor}`}
     >
       <li>
         Lorem ipsum dolor sit amet

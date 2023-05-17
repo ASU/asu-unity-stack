@@ -4,18 +4,18 @@ import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-
 
 export const DisabledAndActiveStatesComponent = createStory(
   <nav aria-label="...">
-    <ul class="pagination">
-      <li class="page-item disabled">
+    <ul className="pagination">
+      <li className="page-item disabled">
         <a
-          class="page-link page-link-icon"
+          className="page-link page-link-icon"
           href="#"
-          tabindex="-1"
+          tabIndex="-1"
           aria-disabled="true"
         />
       </li>
-      <li class="page-item active" aria-current="page">
+      <li className="page-item active" aria-current="page">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -25,12 +25,12 @@ export const DisabledAndActiveStatesComponent = createStory(
           data-ga-section="pagination title"
           data-ga="page 1"
         >
-          1<span class="visually-hidden">(current)</span>
+          1<span className="visually-hidden">(current)</span>
         </a>
       </li>
-      <li class="page-item">
+      <li className="page-item">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -43,9 +43,9 @@ export const DisabledAndActiveStatesComponent = createStory(
           2
         </a>
       </li>
-      <li class="page-item">
+      <li className="page-item">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -58,8 +58,8 @@ export const DisabledAndActiveStatesComponent = createStory(
           3
         </a>
       </li>
-      <li class="page-item">
-        <a aria-label="next" class="page-link page-link-icon" href="#" />
+      <li className="page-item">
+        <a aria-label="next" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,
@@ -68,21 +68,21 @@ export const DisabledAndActiveStatesComponent = createStory(
 
 export const LargeNumbersComponent = createStory(
   <nav aria-label="...">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link page-link-icon" href="#" />
+    <ul className="pagination">
+      <li className="page-item">
+        <a className="page-link page-link-icon" href="#" />
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#">
+      <li className="page-item">
+        <a className="page-link" href="#">
           1
         </a>
       </li>
-      <li class="page-item elipses">
-        <span class="page-link">...</span>
+      <li className="page-item elipses">
+        <span className="page-link">...</span>
       </li>
-      <li class="page-item">
+      <li className="page-item">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -95,9 +95,9 @@ export const LargeNumbersComponent = createStory(
           40
         </a>
       </li>
-      <li class="page-item active" aria-current="page">
+      <li className="page-item active" aria-current="page">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -108,12 +108,12 @@ export const LargeNumbersComponent = createStory(
           data-ga="page 41"
         >
           41
-          <span class="visually-hidden">(current)</span>
+          <span className="visually-hidden">(current)</span>
         </a>
       </li>
-      <li class="page-item">
+      <li className="page-item">
         <a
-          class="page-link"
+          className="page-link"
           href="#"
           data-ga-event="select"
           data-ga-action="click"
@@ -126,16 +126,16 @@ export const LargeNumbersComponent = createStory(
           42
         </a>
       </li>
-      <li class="page-item">
-        <span class="page-link elipses">...</span>
+      <li className="page-item">
+        <span className="page-link elipses">...</span>
       </li>
-      <li class="page-item elipses">
-        <a class="page-link" href="#">
+      <li className="page-item elipses">
+        <a className="page-link" href="#">
           50
         </a>
       </li>
-      <li class="page-item">
-        <a class="page-link page-link-icon" href="#" />
+      <li className="page-item">
+        <a className="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,

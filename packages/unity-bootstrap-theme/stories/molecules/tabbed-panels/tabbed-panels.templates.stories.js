@@ -28,20 +28,20 @@ import { initTabs as initFunc } from "./tabbed-panels.js";
 export const TabbedPanels = createStory(
   args => {
     return (
-      <div class={args.bgColor}>
+      <div className={args.bgColor}>
         <nav
-          class={`uds-tabbed-panels uds-content-align ${
+          className={`uds-tabbed-panels uds-content-align ${
             args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
           }`}
         >
           <div
-            class="nav nav-tabs"
+            className="nav nav-tabs"
             id="nav-tab"
             role="tablist"
             data-scroll-position="0"
           >
             <a
-              class="nav-item nav-link active"
+              className="nav-item nav-link active"
               id="nav-home-tab"
               data-bs-toggle="tab"
               href="#nav-home"
@@ -57,7 +57,7 @@ export const TabbedPanels = createStory(
               Home long tab
             </a>
             <a
-              class="nav-item nav-link"
+              className="nav-item nav-link"
               id="nav-profile-tab"
               data-bs-toggle="tab"
               href="#nav-profile"
@@ -73,7 +73,7 @@ export const TabbedPanels = createStory(
               Profile long tab
             </a>
             <a
-              class="nav-item nav-link"
+              className="nav-item nav-link"
               id="nav-contact-tab"
               data-bs-toggle="tab"
               href="#nav-contact"
@@ -89,7 +89,7 @@ export const TabbedPanels = createStory(
               Contact us is a long tab
             </a>
             <a
-              class="nav-item nav-link"
+              className="nav-item nav-link"
               id="nav-another-tab"
               data-bs-toggle="tab"
               href="#nav-another"
@@ -105,7 +105,7 @@ export const TabbedPanels = createStory(
               Another tab, long tab
             </a>
             <a
-              class="nav-item nav-link"
+              className="nav-item nav-link"
               id="nav-another-2-tab"
               data-bs-toggle="tab"
               href="#nav-another-2"
@@ -121,7 +121,7 @@ export const TabbedPanels = createStory(
               Another tab, long tab
             </a>
             <a
-              class="nav-item nav-link"
+              className="nav-item nav-link"
               id="nav-another-3-tab"
               data-bs-toggle="tab"
               href="#nav-another-3"
@@ -138,7 +138,7 @@ export const TabbedPanels = createStory(
             </a>
           </div>
           <a
-            class="scroll-control-prev"
+            className="scroll-control-prev"
             href="#carouselExampleControls"
             role="button"
             data-scroll="prev"
@@ -150,11 +150,11 @@ export const TabbedPanels = createStory(
             data-ga-region="main content"
             data-ga="left chevron"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
           </a>
           <a
-            class="scroll-control-next"
+            className="scroll-control-next"
             href="#carouselExampleControls"
             role="button"
             data-scroll="next"
@@ -166,13 +166,13 @@ export const TabbedPanels = createStory(
             data-ga-region="main content"
             data-ga="right chevron"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
           </a>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
+        <div className="tab-content" id="nav-tabContent">
           <div
-            class={`tab-pane fade show active ${
+            className={`tab-pane fade show active ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-home"
@@ -186,7 +186,7 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${
+            className={`tab-pane fade ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-profile"
@@ -200,7 +200,7 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${
+            className={`tab-pane fade ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-contact"
@@ -214,7 +214,7 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${
+            className={`tab-pane fade ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-another"
@@ -228,7 +228,7 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${
+            className={`tab-pane fade ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-another-2"
@@ -242,7 +242,7 @@ export const TabbedPanels = createStory(
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            class={`tab-pane fade ${
+            className={`tab-pane fade ${
               args.bgColor === "bg-dark" ? "text-white" : ""
             }`}
             id="nav-another-3"

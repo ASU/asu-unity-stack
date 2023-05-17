@@ -51,31 +51,31 @@ export default createComponent(
 
 export const BackgroundWhiteStory = createStory(args => {
   return (
-    <section class={args.bgColor}>
-      <div class={`uds-grid-links ${args.numColumns} ${args.textColor}`}>
+    <section className={args.bgColor}>
+      <div className={`uds-grid-links ${args.numColumns} ${args.textColor}`}>
         <a href="#">
-          <span class="fa fa-fw fa-university"></span>First-year student
+          <span className="fa fa-fw fa-university"></span>First-year student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-desktop"></span>Online student
+          <span className="fa fa-fw fa-desktop"></span>Online student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-lightbulb"></span>Transfer student
+          <span className="fa fa-fw fa-lightbulb"></span>Transfer student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-user-graduate"></span>Veteran student
+          <span className="fa fa-fw fa-user-graduate"></span>Veteran student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-graduation-cap"></span>Graduate student
+          <span className="fa fa-fw fa-graduation-cap"></span>Graduate student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-rocket"></span>Universal Learner
+          <span className="fa fa-fw fa-rocket"></span>Universal Learner
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-globe-americas"></span>International student
+          <span className="fa fa-fw fa-globe-americas"></span>International student
         </a>
         <a href="#">
-          <span class="fa fa-fw fa-users"></span>Non-degree student
+          <span className="fa fa-fw fa-users"></span>Non-degree student
         </a>
       </div>
     </section>
